@@ -33,8 +33,7 @@ docker compose up
 ## Environment Variables
 
 Required in `.env` file for LLM operations:
-- `OPENAI_API_KEY` - For GPT-4o-mini (tag extraction)
-- `GOOGLE_API_KEY` - For Gemini 2.0 Flash (Text2Cypher, RAG)
+- `GOOGLE_API_KEY` - For Gemini 2.0 Flash (all LLM operations: tag extraction, Text2Cypher, RAG)
 - `ANTHROPIC_API_KEY` - Optional, for Claude models
 
 ## Architecture

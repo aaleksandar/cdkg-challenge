@@ -9,7 +9,6 @@ services:
     environment:
       - MODE=app
       - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - DB_PATH=/data/cdl_db.kuzu
       - TRANSCRIPTS_DIR=/app/Transcripts
     volumes:
@@ -26,7 +25,6 @@ services:
       dockerfile: src/kuzu/Dockerfile
     environment:
       - MODE=pipeline
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
       - DB_PATH=/data/cdl_db.kuzu
       - TRANSCRIPTS_DIR=/app/Transcripts

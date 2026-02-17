@@ -6,7 +6,7 @@ class Entity {
 
 // Create a function to extract the resume from a string.
 function ExtractTags(text: string) -> Entity {
-  client "openai/gpt-4o-mini"
+  client Gemini2Flash
   prompt #"
     Extract techniques/tools/frameworks mentioned in the following text:
 

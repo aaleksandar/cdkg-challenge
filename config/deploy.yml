@@ -23,7 +23,7 @@ env:
     DB_PATH: /data/cdl_db.kuzu
     PYTHONUNBUFFERED: "1"
   secret:
-    - OPENAI_API_KEY
+    - GOOGLE_API_KEY
 
 volumes:
   - "cdkg_data:/data"

@@ -8,9 +8,12 @@ import config
 
 def load_data(filepath: str) -> pl.DataFrame:
     """Load and clean data from CSV"""
-    # Drop rows with empty strings
+    # Only require core columns to be non-null (Podcast, File etc. can be null)
+    required_cols = ["Title", "Speaker", "Event", "Date", "Type", "Category"]
     return (
-        pl.read_csv(filepath).drop_nulls().filter(~pl.all_horizontal(pl.all().str.len_chars() == 0))
+        pl.read_csv(filepath)
+        .drop_nulls(subset=required_cols)
+        .filter(~pl.all_horizontal(pl.col(required_cols).str.len_chars() == 0))
     )
 
 

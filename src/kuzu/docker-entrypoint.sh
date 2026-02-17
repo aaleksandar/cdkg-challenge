@@ -25,7 +25,7 @@ fi
 
 case "$MODE" in
     pipeline)
-        echo "Running full pipeline (requires OPENAI_API_KEY for LLM extraction)..."
+        echo "Running full pipeline (requires GOOGLE_API_KEY for LLM extraction)..."
         python 00_extract_transcripts.py
         python 01_extract_tag_keywords.py
         python 02_domain_graph.py

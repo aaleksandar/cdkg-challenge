@@ -21,7 +21,7 @@ def load_data(filepath: str) -> pl.DataFrame:
     """Load and clean data from the metadata CSV file"""
     df = (
         pl.read_csv(filepath)
-        .drop_nulls()
+        .drop_nulls(subset=["Title", "File"])
         .select("Title", "File")
         .with_columns(
             pl.col("File")

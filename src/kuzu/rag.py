@@ -76,7 +76,7 @@ def get_schema_baml(conn: kuzu.Connection) -> str:
 class GraphRAG:
     def __init__(self, db_path=None):
         self.db_path = db_path or config.DB_PATH
-        self.db = kuzu.Database(db_path, read_only=True)
+        self.db = kuzu.Database(self.db_path, read_only=True)
         self.conn = kuzu.Connection(self.db)
         self.baml_schema = get_schema_baml(self.conn)
 
