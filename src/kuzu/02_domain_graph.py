@@ -3,6 +3,8 @@ from pathlib import Path
 import kuzu
 import polars as pl
 
+import config
+
 
 def load_data(filepath: str) -> pl.DataFrame:
     """Load and clean data from CSV"""
@@ -161,16 +163,14 @@ def write_knowledge_connexions_description(conn: kuzu.Connection, event_name: st
 
 if __name__ == "__main__":
     # Create the domain graph first - ensure we start with a clean database
-    DB_NAME = "cdl_db.kuzu"
+    DB_NAME = config.DB_PATH
     Path(DB_NAME).unlink(missing_ok=True)
 
     db = kuzu.Database(DB_NAME)
     conn = kuzu.Connection(db)
 
     # Load data
-    df = load_data(
-        "../../Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
-    )
+    df = load_data(str(config.METADATA_CSV))
 
     # Extract nodes
     speakers_df = extract_speakers(df)

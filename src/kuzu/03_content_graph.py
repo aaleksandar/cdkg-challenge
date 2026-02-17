@@ -10,7 +10,9 @@ from pathlib import Path
 import kuzu
 import polars as pl
 
-DB_NAME = "cdl_db.kuzu"
+import config
+
+DB_NAME = config.DB_PATH
 db = kuzu.Database(DB_NAME)
 conn = kuzu.Connection(db)
 
@@ -34,9 +36,7 @@ def load_data(filepath: str) -> pl.DataFrame:
 
 
 # Read the metadata file to associate filenames with speakers
-df = load_data(
-    "../../Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
-)
+df = load_data(str(config.METADATA_CSV))
 # Read entities from entities.json and insert into the lexical subgraph
 with open("entities.json", "r") as f:
     entities = json.load(f)

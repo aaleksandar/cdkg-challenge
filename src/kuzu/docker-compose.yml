@@ -1,10 +1,60 @@
 services:
+  # Streamlit app for querying the knowledge graph
+  cdkg-app:
+    build:
+      context: ../..
+      dockerfile: src/kuzu/Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      - MODE=app
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - DB_PATH=/data/cdl_db.kuzu
+      - TRANSCRIPTS_DIR=/app/Transcripts
+    volumes:
+      - kuzu_data:/data
+      - ../../Transcripts:/app/Transcripts:ro
+    profiles:
+      - app
+      - full
+
+  # Pipeline runner to rebuild the knowledge graph
+  pipeline:
+    build:
+      context: ../..
+      dockerfile: src/kuzu/Dockerfile
+    environment:
+      - MODE=pipeline
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - DB_PATH=/data/cdl_db.kuzu
+      - TRANSCRIPTS_DIR=/app/Transcripts
+      - DATA_DIR=/app/data
+    volumes:
+      - kuzu_data:/data
+      - ../../Transcripts:/app/Transcripts:ro
+      - ./data:/app/data
+    profiles:
+      - pipeline
+      - build
+
+  # Kuzu Explorer for graph visualization
   explorer:
     image: kuzudb/explorer:0.11.1
+    ports:
+      - "8000:8000"
     environment:
       - MODE=READ_ONLY
       - KUZU_FILE=cdl_db.kuzu
-    ports:
-      - 8000:8000
     volumes:
-      - ./:/database
+      - kuzu_data:/database
+    depends_on:
+      - cdkg-app
+    profiles:
+      - explorer
+      - full
+
+volumes:
+  kuzu_data:
+    driver: local

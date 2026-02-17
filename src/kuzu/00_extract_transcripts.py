@@ -2,7 +2,9 @@ import glob
 import re
 from pathlib import Path
 
-output_path = Path("./data")
+import config
+
+output_path = config.DATA_DIR
 output_path.mkdir(parents=True, exist_ok=True)
 
 
@@ -18,7 +20,7 @@ def convert_srt_to_text(srt_content):
 
 def process_srt_files():
     # Get all .srt files recursively
-    srt_files = glob.glob("../../Transcripts/**/*.srt", recursive=True)
+    srt_files = glob.glob(str(config.TRANSCRIPTS_DIR / "**/*.srt"), recursive=True)
 
     for srt_path in srt_files:
         filename = Path(srt_path).stem

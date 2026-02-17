@@ -11,7 +11,7 @@ class Answer {
 // --- Functions ---
 
 function RAGText2Cypher(schema: string, question: string) -> Cypher {
-  client Gemini2Flash
+  client CustomGPT4oMini
   prompt #"
     You are an expert in translating natural language questions into Cypher statements.
     You will be provided with a question and a graph schema.
@@ -42,7 +42,7 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
 }
 
 function RAGAnswerQuestion(question: string, context: string) -> Answer {
-  client Gemini2Flash
+  client CustomGPT4oMini
   prompt #"
     You are an AI assistant using Retrieval-Augmented Generation (RAG).
     RAG enhances your responses by retrieving relevant information from a knowledge base.

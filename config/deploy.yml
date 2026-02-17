@@ -1,0 +1,52 @@
+service: cdkg
+image: <%= ENV.fetch('KAMAL_REGISTRY_USERNAME') %>/cdkg
+
+servers:
+  web:
+    hosts:
+      - <%= ENV.fetch('SERVER_IP') %>
+
+proxy:
+  host: <%= ENV.fetch('CDKG_DOMAIN') %>
+  app_port: 8501
+  ssl: true
+
+registry:
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  clear:
+    MODE: app
+    DB_PATH: /data/cdl_db.kuzu
+    PYTHONUNBUFFERED: "1"
+  secret:
+    - OPENAI_API_KEY
+
+volumes:
+  - "cdkg_data:/data"
+
+builder:
+  arch: amd64
+  dockerfile: src/kuzu/Dockerfile
+  context: .
+
+ssh:
+  user: <%= ENV.fetch('SSH_USER', 'root') %>
+  port: <%= ENV.fetch('SSH_PORT', '22') %>
+  keys:
+    - <%= ENV.fetch('SSH_KEY', '~/.ssh/id_ed25519') %>
+
+accessories:
+  explorer:
+    image: kuzudb/explorer:0.11.1
+    host: <%= ENV.fetch('SERVER_IP') %>
+    port: 8000:8000
+    env:
+      clear:
+        MODE: READ_ONLY
+        KUZU_FILE: cdl_db.kuzu
+    volumes:
+      - "cdkg_data:/database"

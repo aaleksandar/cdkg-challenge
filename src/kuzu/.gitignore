@@ -2,3 +2,6 @@ cdl_db.kuzu
 data
 .DS_Store
 baml_client
+
+.env
+.env.docker

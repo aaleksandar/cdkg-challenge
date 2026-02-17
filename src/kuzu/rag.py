@@ -7,6 +7,7 @@ import os
 import kuzu
 from dotenv import load_dotenv
 
+import config
 from baml_client import b, types
 
 load_dotenv()
@@ -73,8 +74,8 @@ def get_schema_baml(conn: kuzu.Connection) -> str:
 
 
 class GraphRAG:
-    def __init__(self, db_path="cdl_db"):
-        self.db_path = db_path
+    def __init__(self, db_path=None):
+        self.db_path = db_path or config.DB_PATH
         self.db = kuzu.Database(db_path, read_only=True)
         self.conn = kuzu.Connection(self.db)
         self.baml_schema = get_schema_baml(self.conn)
@@ -113,7 +114,7 @@ class GraphRAG:
 
 
 if __name__ == "__main__":
-    graph_rag = GraphRAG(db_path="cdl_db.kuzu")
+    graph_rag = GraphRAG()
 
     question = "Who are the speakers whose talks have the tag 'rdf'? Return the speaker names as a numbered list."
     response = graph_rag.run(question)

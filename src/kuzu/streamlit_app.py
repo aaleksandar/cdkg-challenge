@@ -1,5 +1,6 @@
 import streamlit as st
 
+import config
 from rag import GraphRAG
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
@@ -12,7 +13,7 @@ if "messages" not in st.session_state:
 # Initialize the GraphRAG system
 @st.cache_resource
 def init_rag():
-    return GraphRAG("cdl_db.kuzu")
+    return GraphRAG(config.DB_PATH)
 
 
 rag = init_rag()

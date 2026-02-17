@@ -1,0 +1,37 @@
+# Git
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+
+# BAML generated client (regenerated at build time)
+src/kuzu/baml_client/
+
+# Database (built during image build)
+src/kuzu/cdl_db.kuzu/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Assets (not needed for runtime)
+src/kuzu/assets/
+
+# Extracted data (regenerated during build)
+src/kuzu/data/
+
+# Documentation
+*.md
+!src/kuzu/README.md
+
+# Other source directories (if any)
+docs/
