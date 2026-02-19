@@ -34,8 +34,9 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
     Instructions:
     1. Use only the provided node and relationship types and properties in the schema.
     2. When returning results, return property values rather than the entire node or relationship.
-    3. ALWAYS use the WHERE clause to compare string properties, and compare them using the
-       LOWER() function.
+    3. ALWAYS use the WHERE clause to compare string properties using LOWER() and CONTAINS
+       (never use = for string matching). For example:
+       WHERE LOWER(n.name) CONTAINS LOWER('search term')
 
     {{ ctx.output_format }}
   "#
