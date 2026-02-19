@@ -23,6 +23,9 @@ client<llm> Gemini2Flash {
   options {
     model "gemini-2.0-flash"
     api_key env.GOOGLE_API_KEY
+    generationConfig {
+      temperature 0
+    }
   }
 }
 
