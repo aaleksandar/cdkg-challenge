@@ -15,8 +15,8 @@ os.environ["BAML_LOG"] = "WARN"
 
 def get_schema_dict(conn: kuzu.Connection) -> dict[str, list[dict]]:
     # Get schema for LLM
-    nodes = conn._get_node_table_names()
-    relationships = conn._get_rel_table_names()
+    nodes = sorted(conn._get_node_table_names())
+    relationships = sorted(conn._get_rel_table_names(), key=lambda rel: (rel["src"], rel["name"], rel["dst"]))
 
     schema = {"nodes": [], "edges": []}
 
@@ -26,6 +26,7 @@ def get_schema_dict(conn: kuzu.Connection) -> dict[str, list[dict]]:
         while node_properties.has_next():  # type: ignore
             row = node_properties.get_next()  # type: ignore
             node_schema["properties"].append({"name": row[1], "type": row[2]})
+        node_schema["properties"].sort(key=lambda prop: (prop["name"], prop["type"]))
         schema["nodes"].append(node_schema)
 
     for rel in relationships:
@@ -39,6 +40,7 @@ def get_schema_dict(conn: kuzu.Connection) -> dict[str, list[dict]]:
         while rel_properties.has_next():  # type: ignore
             row = rel_properties.get_next()  # type: ignore
             edge["properties"].append({"name": row[1], "type": row[2]})
+        edge["properties"].sort(key=lambda prop: (prop["name"], prop["type"]))
         schema["edges"].append(edge)
 
     return schema
