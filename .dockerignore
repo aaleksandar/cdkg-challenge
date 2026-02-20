@@ -13,8 +13,8 @@ venv/
 # BAML generated client (regenerated at build time)
 src/kuzu/baml_client/
 
-# Database (built during image build)
-src/kuzu/cdl_db.kuzu/
+# Database (built at container startup, not baked into image)
+src/kuzu/cdl_db.kuzu
 
 # IDE
 .vscode/

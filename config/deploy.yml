@@ -21,7 +21,7 @@ env:
   clear:
     MODE: app
     DB_PATH: /data/cdl_db.kuzu
-    PYTHONUNBUFFERED: "1"
+    BAML_GENERATE_ON_START: "1"
   secret:
     - GOOGLE_API_KEY
 
