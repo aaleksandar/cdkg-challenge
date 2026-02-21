@@ -57,7 +57,7 @@ This what is included in the first release of the Connected Data Knowledge Graph
 - [Domain Metamodel](https://github.com/Connected-Data/cdkg-challenge/blob/main/Data%20Model/README.md): Technology agnostic, simple graph of entities and relationships
 - [Raw data](https://github.com/Connected-Data/cdkg-challenge/tree/main/Transcripts): Session transcripts 
 - [Metadata](https://github.com/Connected-Data/cdkg-challenge/blob/main/Transcripts/Connected%20Data%20Knowledge%20Graph%20Challenge%20-%20Transcript%20Metadata.csv): Speakers and Sessions 
-- [Evaluation data](https://github.com/Connected-Data/cdkg-challenge/tree/main/QA): Baseline questions and answers on the data included in the CDKG 
+- [Evaluation data](https://github.com/Connected-Data/cdkg-challenge/tree/main/QA): Baseline questions and answers on the data included in the CDKG, with an [automated evaluation script](https://github.com/Connected-Data/cdkg-challenge/blob/main/src/kuzu/evaluate.py) to benchmark RAG system performance
 - [Source code](https://github.com/Connected-Data/cdkg-challenge/tree/main/src/kuzu): Code used to construct and query the Knowledge Graph using Kuzu.
 - [Property Graph Schema](https://github.com/Connected-Data/cdkg-challenge/tree/main/cdl_db#property-graph-schema): Domain graph and Lexical graph
 - [Knowledge Graph](https://github.com/Connected-Data/cdkg-challenge/tree/main/cdl_db): Data on Categories, Events, Speakers, Talks, Tags and their relationships

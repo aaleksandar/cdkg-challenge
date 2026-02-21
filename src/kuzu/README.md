@@ -142,7 +142,30 @@ uv run rag.py
 Feel free to modify the prompts in the script and to experiment with different data models to
 answer a broader variety of questions!
 
-### 5. Run the Streamlit app
+### 5. Evaluate the RAG system
+
+An automated evaluation script benchmarks the RAG system against the 12 questions and baseline answers in [`QA/CDKGQA.csv`](../../QA/CDKGQA.csv).
+
+```bash
+uv run evaluate.py
+
+# Save full details (Cypher, responses, scores, reasoning) to JSON
+uv run evaluate.py --output results.json
+```
+
+Each question is scored 1–5 by an LLM judge:
+
+| Score | Label | Meaning |
+|-------|-------|---------|
+| 1 | no_answer | Nothing useful returned |
+| 2 | wrong | Factually incorrect or off-topic |
+| 3 | partial | Addresses the question but missing key information |
+| 4 | acceptable | Mostly correct, minor gaps |
+| 5 | correct | Accurate and covers the key points |
+
+The script prints a per-question table and a summary histogram, and optionally saves a JSON file with the full details for each question (generated Cypher, RAG response, score, judge reasoning).
+
+### 6. Run the Streamlit app
 
 A simple Streamlit app is provided to easily interact with the graph through a chat interface. You
 can also see the Cypher queries generated for each question.
