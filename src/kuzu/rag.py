@@ -85,16 +85,31 @@ class GraphRAG:
     def execute_query(self, question: str, cypher: str) -> types.Answer:
         """Use the generated Cypher statement to query the graph database."""
         response = self.conn.execute(cypher)
-        result = []
+        columns = response.get_column_names()  # type: ignore
+        rows = []
+        seen = set()
         while response.has_next():  # type: ignore
             item = response.get_next()  # type: ignore
-            if item not in result:
-                result.extend(item)
+            key = tuple(item)
+            if key not in seen:
+                seen.add(key)
+                rows.append(item)
 
-        # Create a context object that RAGAnswerQuestion can use
-        result_list = [x for i, x in enumerate(result) if x not in result[:i]]
-        result_str = ", ".join(result_list)
-        # Return the result as an Answer object
+        if not rows:
+            result_str = ""
+        elif len(columns) == 1:
+            # Single column: flat list
+            result_str = ", ".join(str(r[0]) for r in rows)
+        else:
+            # Multiple columns: format each row as "col: value | col: value"
+            parts = []
+            for row in rows:
+                pairs = " | ".join(
+                    f"{col}: {val}" for col, val in zip(columns, row) if val is not None
+                )
+                parts.append(pairs)
+            result_str = "\n".join(parts)
+
         return types.Answer(question=question, answer=result_str)
 
     def run(self, question: str) -> dict[str, str]:

@@ -26,17 +26,14 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
     {{ _.role("user") }}
     Task: Generate a Cypher statement to query a graph database.
 
-    {{ schema}}
+    {{ schema }}
 
     The question is:
     {{ question }}
 
-    Instructions:
+    INSTRUCTIONS:
     1. Use only the provided node and relationship types and properties in the schema.
     2. When returning results, return property values rather than the entire node or relationship.
-    3. ALWAYS use the WHERE clause to compare string properties using LOWER() and CONTAINS
-       (never use = for string matching). For example:
-       WHERE LOWER(n.name) CONTAINS LOWER('search term')
 
     {{ ctx.output_format }}
   "#
@@ -45,12 +42,11 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
 function RAGAnswerQuestion(question: string, context: string) -> Answer {
   client Gemini2Flash
   prompt #"
-    You are an AI assistant using Retrieval-Augmented Generation (RAG).
-    RAG enhances your responses by retrieving relevant information from a knowledge base.
-    You will be provided with a question and relevant context. Use only this context to answer
-    the question.
-    Do not make up an answer. If you don't know the answer, say so clearly.
-    Always strive to provide concise, helpful, and context-aware answers.
+    You are an AI assistant for the Connected Data conference knowledge base.
+    You will be provided with a question and graph query results as context.
+    Use the context as your primary source. If the context is empty or insufficient,
+    use your general knowledge about the Connected Data conference and community to answer.
+    Always strive to provide concise, helpful answers.
 
     {{ _.role("user") }}
     QUESTION: {{ question }}
