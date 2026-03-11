@@ -6,6 +6,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from baml_client import b
+import config
 
 load_dotenv()
 os.environ["BAML_LOG"] = "WARN"
@@ -19,7 +20,7 @@ def get_filenames(directory_path):
 
 def extract_entities_from_file(file_path):
     """Extract entities from a single file using BAML."""
-    with open(file_path, "r") as data_file:
+    with open(file_path, "r", encoding="utf-8") as data_file:
         text = data_file.read()
 
     entity = b.ExtractTags(text)
@@ -43,14 +44,14 @@ def process_files(directory_path):
 
 def save_entities_to_json(entities, output_file):
     """Save extracted entities to a JSON file."""
-    with open(output_file, "w") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(entities, f, indent=2)
 
 
 def main():
     """Main function to orchestrate the entity extraction process."""
-    directory_path = "./data"
-    output_file = "entities.json"
+    directory_path = str(config.DATA_DIR)
+    output_file = str(config.ENTITIES_JSON)
 
     all_entities = process_files(directory_path)
     save_entities_to_json(all_entities, output_file)

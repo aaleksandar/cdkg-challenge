@@ -38,7 +38,7 @@ def load_data(filepath: str) -> pl.DataFrame:
 # Read the metadata file to associate filenames with speakers
 df = load_data(str(config.METADATA_CSV))
 # Read entities from entities.json and insert into the lexical subgraph
-with open("entities.json", "r") as f:
+with open(str(config.ENTITIES_JSON), "r", encoding="utf-8") as f:
     entities = json.load(f)
 
 # Create the necessary node and relationship tables for the lexical graph

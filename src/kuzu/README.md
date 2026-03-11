@@ -28,6 +28,9 @@ Set up a virtual environment and install the dependencies:
 uv venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
+
+# Generate the BAML client from the prompt sources
+uv run baml-cli generate --from baml_src
 ```
 
 ## Workflow
@@ -171,7 +174,7 @@ A simple Streamlit app is provided to easily interact with the graph through a c
 can also see the Cypher queries generated for each question.
 
 ```bash
-uv run streamlit run app.py
+uv run streamlit run streamlit_app.py
 ```
 
 Any prior questions and answers are saved in the chat history, so you can refer back to them.
@@ -196,9 +199,9 @@ Alternatively, you can type in the following command in your terminal:
 
 ```bash
 docker run -p 8000:8000 \
-           -v ./cdl_db:/database
-           -e MODE=READ_WRITE \
-           --rm kuzudb/explorer:0.7.0
+           -v ./cdl_db.kuzu:/database \
+           -e MODE=READ_ONLY \
+           --rm kuzudb/explorer:0.11.1
 ```
 
 This will download and run the required Kuzu Explorer image, and you can access the UI at `http://localhost:8000`.
