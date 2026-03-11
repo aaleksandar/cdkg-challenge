@@ -28,12 +28,48 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
 
     {{ schema }}
 
+    DOMAIN NOTES:
+    - Event nodes represent editions of the Connected Data conference (e.g. "Connected Data World 2021").
+      "Connected Data" refers to this conference, not a talk title or tag keyword.
+    - Category nodes represent the three topic areas: Knowledge Graphs, Graph AI, Semantic Technology.
+    - Tag nodes hold keywords extracted from talk transcripts (always lowercase, one keyword per node).
+    - GIVES_TALK has a `date` property, but NEVER filter by date — always query all data regardless
+      of any timeframe mentioned in the question (e.g. "last 2 years", "recent", "latest").
+
+    EXAMPLES:
+    Q: What is Connected Data?
+    A: MATCH (e:Event) RETURN e.name, e.description
+
+    Q: What technologies does Connected Data cover?
+    A: MATCH (c:Category) RETURN c.name
+
+    Q: What are the most popular topics in the last 2 years?
+    A: MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) RETURN tag.keyword, count(*) AS cnt ORDER BY cnt DESC LIMIT 15
+
+    Q: Who are the speakers whose talks have the tag 'knowledge graph'?
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'knowledge graph' RETURN DISTINCT s.name
+
+    Q: What did Paco Nathan talk about?
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(s.name) CONTAINS 'paco nathan' RETURN t.title, collect(tag.keyword) AS tags
+
+    Q: What Connected Data technologies are relevant to transparency and explainability?
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'transparen' OR LOWER(tag.keyword) CONTAINS 'explainab' OR LOWER(t.description) CONTAINS 'transparen' OR LOWER(t.description) CONTAINS 'explainab' RETURN DISTINCT t.title, t.description, s.name
+
+    Q: Who are contributors to follow on transparency and explainability?
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'explainab' OR LOWER(tag.keyword) CONTAINS 'transparen' OR LOWER(tag.keyword) CONTAINS 'ontolog' OR LOWER(tag.keyword) CONTAINS 'semantic' OR LOWER(tag.keyword) CONTAINS 'owl' OR LOWER(tag.keyword) CONTAINS 'shacl' OR LOWER(t.description) CONTAINS 'explainab' OR LOWER(t.description) CONTAINS 'transparen' RETURN DISTINCT s.name, t.title, collect(tag.keyword) AS tags
+
+    Q: What resources are there on building enterprise knowledge graphs?
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'enterprise' OR LOWER(t.title) CONTAINS 'enterprise' OR LOWER(t.description) CONTAINS 'enterprise' RETURN DISTINCT t.title, t.description, s.name
+
     The question is:
     {{ question }}
 
     INSTRUCTIONS:
     1. Use only the provided node and relationship types and properties in the schema.
     2. When returning results, return property values rather than the entire node or relationship.
+    3. Use LOWER() + CONTAINS for all string comparisons, never exact equality on text fields.
+    4. Each Tag node holds a single keyword. When searching multiple concepts, use OR across
+       separate CONTAINS clauses — never AND on the same tag variable.
 
     {{ ctx.output_format }}
   "#

@@ -90,7 +90,7 @@ class GraphRAG:
         seen = set()
         while response.has_next():  # type: ignore
             item = response.get_next()  # type: ignore
-            key = tuple(item)
+            key = tuple(str(v) for v in item) 
             if key not in seen:
                 seen.add(key)
                 rows.append(item)
@@ -154,6 +154,11 @@ if __name__ == "__main__":
     print("---")
 
     question = "I am interested in building an enterprise knowledge graph. What are some good resources to get started?"
+    response = graph_rag.run(question)
+    print(response)
+    print("---")
+
+    question = "What types of use cases is Connected Data suitable for?"
     response = graph_rag.run(question)
     print(response)
     print("---")
