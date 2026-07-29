@@ -260,3 +260,19 @@ def test_a_2017_upload_does_not_inherit_the_2024_promo_event():
     p = parser.parse(info)
     assert p.event is None
     assert "Event" in p.missing
+
+
+def test_speaker_never_contains_a_url():
+    """A real ingest recorded "Panos Alexopoulos (https://www.panosalexopoulos.com/)"
+    as the Speaker. A URL is not part of anyone's name and the graph is built
+    from this column verbatim."""
+    assert parser.clean_speaker(
+        "Panos Alexopoulos (https://www.panosalexopoulos.com/)"
+    ) == "Panos Alexopoulos"
+    assert parser.clean_speaker("Jane Doe https://example.com") == "Jane Doe"
+    assert parser.clean_speaker("Jane Doe [IsA DataThing]") == "Jane Doe"
+
+
+def test_talk_by_line_with_a_trailing_link():
+    description = "A talk by Panos Alexopoulos (https://www.panosalexopoulos.com/)\n"
+    assert parser.parse_description(description)["speaker"] == "Panos Alexopoulos"

@@ -102,6 +102,11 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
         "parsed": parsed,
         "duration": duration,
         "needs_curation": bool(parsed.missing),
+        # Flattened so the panel can show what was actually established, and
+        # from which source, without unpacking the ParsedTalk.
+        "title": parsed.talk_title,
+        "speaker": parsed.speaker,
+        "event": parsed.event,
     })
 
 

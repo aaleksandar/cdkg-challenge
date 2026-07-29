@@ -15,61 +15,44 @@
   <div class="meta">{{ total }} talks reconciled</div>
 </header>
 
-{% set headline = [
-  ('in_graph',      'In graph',      false),
-  ('not_ingested',  'Not ingested',  false),
-  ('orphaned',      'Orphaned',      true),
-  ('untagged',      'Untagged',      false),
-  ('needs_curation','Needs curation',false),
-  ('excluded_short','Shorts',        false)
-] %}
-<div class="figures">
-  {% for key, label, alert in headline %}
-    {% if counts.get(key) %}
-    <div class="figure {{ 'is-alert' if alert else '' }} {{ 'is-quiet' if key in QUIET_STATUSES else '' }}">
-      <div class="n">{{ counts[key] }}</div>
-      <div class="k"><span class="state s-{{ key }}"><i class="dot"></i></span>{{ label }}</div>
-    </div>
+{# The figures are the navigation: one place showing both the count and the way
+   to see what it counts. A separate pill row repeated the same information. #}
+<nav class="figures">
+  {% for key, label in FIGURES %}
+    {% if counts.get(key) or key == 'all' %}
+    <button type="button"
+            class="figure {{ 'is-on' if status_filter == key }} {{ 'is-quiet' if key in QUIET_STATUSES }} {{ 'is-alert' if key in ALERT_STATUSES }}"
+            aria-pressed="{{ 'true' if status_filter == key else 'false' }}"
+            hx-get="/rows?status={{ key }}" hx-target="#sheet" hx-include="[name=q]">
+      <span class="n">{{ counts[key] if key != 'all' else actionable }}</span>
+      <span class="k">
+        {% if key != 'all' %}<span class="state s-{{ key }}"><i class="dot"></i></span>{% endif %}
+        {{ label }}
+      </span>
+    </button>
     {% endif %}
   {% endfor %}
-</div>
+</nav>
 
-<form id="picks"
-      hx-post="/ingest"
-      hx-target="#flash"
-      hx-swap="innerHTML">
+<form id="picks" hx-post="/ingest" hx-target="#flash" hx-swap="innerHTML"
+      hx-disabled-elt="#ingest-btn">
 
   <div class="controls">
-    <button type="button" class="chip" aria-pressed="{{ 'true' if status_filter == 'all' else 'false' }}"
-            hx-get="/rows?status=all" hx-target="#sheet" hx-include="[name=q]" hx-push-url="false">
-      Actionable<span class="c">{{ counts.values() | sum - (counts.get('excluded_short',0) + counts.get('upcoming',0) + counts.get('junk',0)) }}</span>
-    </button>
-    {% for key in STATUS_ORDER %}
-      {% if counts.get(key) %}
-      <button type="button" class="chip" aria-pressed="{{ 'true' if status_filter == key else 'false' }}"
-              hx-get="/rows?status={{ key }}" hx-target="#sheet" hx-include="[name=q]">
-        {{ STATUS_LABELS[key] }}<span class="c">{{ counts[key] }}</span>
-      </button>
-      {% endif %}
-    {% endfor %}
-
-    <div class="spacer"></div>
-
     <input class="search" type="search" name="q" placeholder="Search title, speaker, event…"
            value="{{ query }}"
-           hx-get="/rows" hx-target="#sheet" hx-trigger="input changed delay:250ms, search"
-           hx-vals='js:{status: document.querySelector(".chip[aria-pressed=true]")?.textContent.trim() ? new URLSearchParams(location.search).get("status") || "all" : "all"}'>
-
-    <button type="button" class="btn" hx-post="/refresh" hx-target="#flash" hx-swap="innerHTML">
-      Refresh channel
-    </button>
-    <button type="button" class="btn" hx-post="/rebuild" hx-target="#flash" hx-swap="innerHTML"
-            hx-indicator="#rebuilding">
-      Rebuild graph
-    </button>
-    <span id="rebuilding" class="htmx-indicator note">Rebuilding…</span>
+           hx-get="/rows" hx-target="#sheet"
+           hx-trigger="input changed delay:250ms, search"
+           hx-vals='js:{status: window.currentFilter}'>
+    <div class="spacer"></div>
+    <button type="button" class="btn" hx-post="/refresh" hx-target="#flash">Refresh channel</button>
+    <button type="button" class="btn" hx-post="/rebuild" hx-target="#flash"
+            hx-indicator="#busy">Rebuild graph</button>
+    <span id="busy" class="htmx-indicator muted">working…</span>
     <span id="flash"></span>
   </div>
+
+  {# Polls only while something is actually running, then stops. #}
+  <div id="live" hx-get="/live" hx-trigger="load, every 2s" hx-swap="innerHTML"></div>
 
   <div class="sheet" id="sheet">
     {% include "partials/rows.html" %}
@@ -77,30 +60,45 @@
 
   <div class="actionbar" id="actionbar" hidden>
     <span><strong id="picked">0</strong> selected</span>
-    <button class="btn" type="submit">Ingest selected</button>
+    <button class="btn" type="submit" id="ingest-btn">Ingest selected</button>
   </div>
 </form>
 
 <div id="drawer"></div>
 
 <script>
-  // Selection count drives the action bar; keep it out of the server round-trip.
+  window.currentFilter = {{ status_filter | tojson }};
   const form = document.getElementById('picks');
   const bar = document.getElementById('actionbar');
-  const count = document.getElementById('picked');
+  const picked = document.getElementById('picked');
+
   function sync() {
     const n = form.querySelectorAll('input[name=video_ids]:checked').length;
-    count.textContent = n;
+    picked.textContent = n;
     bar.hidden = n === 0;
   }
-  form.addEventListener('change', e => {
-    if (e.target.name === 'video_ids') sync();
-  });
-  document.body.addEventListener('htmx:afterSwap', sync);
+  form.addEventListener('change', e => { if (e.target.name === 'video_ids') sync(); });
 
-  // Row opens the drawer, except when the click was the checkbox itself.
+  // Track which figure is active so search keeps the current filter.
+  document.body.addEventListener('htmx:configRequest', e => {
+    const url = e.detail.path || '';
+    if (url.startsWith('/rows') && e.detail.parameters.status) {
+      window.currentFilter = e.detail.parameters.status;
+    }
+  });
+  document.body.addEventListener('htmx:afterSwap', e => {
+    sync();
+    if (e.detail.target.id === 'sheet') {
+      document.querySelectorAll('.figure').forEach(f => {
+        const on = f.getAttribute('hx-get') === '/rows?status=' + window.currentFilter;
+        f.classList.toggle('is-on', on);
+        f.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+  });
+
   document.body.addEventListener('click', e => {
-    if (e.target.closest('.scrim, .close')) { document.getElementById('drawer').innerHTML = ''; }
+    if (e.target.closest('.scrim, .close')) document.getElementById('drawer').innerHTML = '';
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') document.getElementById('drawer').innerHTML = '';

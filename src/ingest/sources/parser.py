@@ -72,10 +72,25 @@ SPEAKER_LEAD_IN = re.compile(r"^\s*(?:w/|with|by|feat\.?|ft\.?)\s+", re.I)
 NAME_AFFILIATION = re.compile(r"\s+[-–—]\s+")
 
 
+# Speakers in descriptions are often followed by a personal site or handle:
+# "Panos Alexopoulos (https://www.panosalexopoulos.com/)". A URL is not part of
+# anyone's name and must never reach the Speaker column.
+PARENTHETICAL = re.compile(r"\s*[\(\[][^)\]]*[\)\]]")
+BARE_URL = re.compile(r"\s*(?:https?://|www\.)\S+")
+
+
 def clean_speaker(segment: str) -> str:
-    """Reduce a speaker segment to the name, dropping lead-ins and affiliation."""
-    without_lead = SPEAKER_LEAD_IN.sub("", segment.strip())
-    return NAME_AFFILIATION.split(without_lead, maxsplit=1)[0].strip()
+    """Reduce a speaker segment to the name alone.
+
+    Drops lead-ins ("w/", "by"), affiliation after a spaced dash, parenthetical
+    asides, and any URL. Hyphenated surnames survive, since only spaced dashes
+    separate a name from a company.
+    """
+    cleaned = SPEAKER_LEAD_IN.sub("", segment.strip())
+    cleaned = PARENTHETICAL.sub("", cleaned)
+    cleaned = BARE_URL.sub("", cleaned)
+    cleaned = NAME_AFFILIATION.split(cleaned, maxsplit=1)[0]
+    return cleaned.strip(" ,;·–—-")
 
 
 @dataclass
@@ -197,8 +212,9 @@ def parse_description(description: str | None) -> dict:
 
     match = TALK_BY.search(description)
     if match:
-        # "Jörg Schad, CTO, ArangoDB" -> "Jörg Schad"
-        name = ROLE_SEPARATOR.split(match.group(1).strip())[0].strip()
+        # "Jörg Schad, CTO, ArangoDB" -> "Jörg Schad";
+        # "Panos Alexopoulos (https://…)" -> "Panos Alexopoulos"
+        name = clean_speaker(ROLE_SEPARATOR.split(match.group(1).strip())[0])
         if name and looks_like_person(name):
             result["speaker"] = name
 

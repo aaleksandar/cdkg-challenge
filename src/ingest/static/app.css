@@ -65,29 +65,34 @@ a:hover { text-decoration: underline; }
 
 /* ---- Figures ---- */
 .figures {
-  display: flex; flex-wrap: wrap;
-  gap: 0; padding: 0 var(--gutter);
+  display: flex; flex-wrap: nowrap;
+  padding: 0 var(--gutter);
   border-bottom: 1px solid var(--rule);
   background: var(--paper-raised);
+  /* Keep the strip on one line; narrow screens scroll rather than wrap into a
+     ragged second row. */
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 .figure {
-  padding: 1.15rem 1.9rem 1.25rem 0;
-  margin-right: 1.9rem;
+  padding: 1rem 1.15rem 1.05rem;
   border-right: 1px solid var(--rule);
-  min-width: 7.5rem;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 .figure:last-child { border-right: 0; }
 .figure .n {
+  display: block;
   font-family: var(--serif);
-  font-size: 1.95rem;
+  font-size: 1.7rem;
   line-height: 1;
   font-variant-numeric: tabular-nums lining-nums;
   letter-spacing: -0.015em;
 }
 .figure .k {
-  display: flex; align-items: center; gap: 0.4rem;
-  margin-top: 0.45rem;
-  font-size: 0.68rem;
+  display: flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.35rem;
+  font-size: 0.64rem;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: var(--ink-soft);
@@ -315,3 +320,49 @@ td.pick input { cursor: pointer; accent-color: var(--accent); }
 /* A parsed preview is visibly not a recorded fact. */
 .sub .guess { color: var(--ink-faint); font-style: italic; }
 .sub .guess::after { content: " (parsed)"; font-style: normal; font-size: .92em; opacity: .7; }
+
+/* ---- Figures as navigation ---- */
+.figure {
+  font: inherit; text-align: left; cursor: pointer;
+  background: none; border: 0; border-right: 1px solid var(--rule);
+  color: inherit; display: block;
+  transition: background .12s;
+}
+.figure:hover { background: var(--accent-wash); }
+.figure.is-on { background: var(--accent-wash); box-shadow: inset 0 -2px 0 var(--ink); }
+.figure.is-on .n { color: var(--ink); }
+
+/* ---- Live banner ---- */
+.live {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .55rem var(--gutter);
+  background: var(--accent-wash);
+  border-bottom: 1px solid var(--rule);
+  font-size: .82rem;
+}
+.pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--busy); animation: pulse 1.1s ease-in-out infinite; flex: none;
+}
+.muted { color: var(--ink-faint); font-size: .78rem; }
+
+/* ---- Stage detail ---- */
+.detail { margin-top: .4rem; display: flex; flex-wrap: wrap; gap: .3rem .5rem; align-items: baseline; }
+.fact {
+  font-size: .72rem; color: var(--ink-soft);
+  background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 3px; padding: .08rem .35rem;
+}
+.taglist { display: flex; flex-wrap: wrap; gap: .25rem; width: 100%; margin-bottom: .15rem; }
+.tag {
+  font-size: .71rem; color: var(--ink-soft);
+  background: var(--accent-wash); border: 1px solid #dbe6f4;
+  border-radius: 100px; padding: .07rem .45rem;
+}
+.path {
+  width: 100%; font-family: var(--mono); font-size: .68rem;
+  color: var(--ink-faint); word-break: break-all; margin-top: .2rem;
+}
+.stages .gated .nm { color: var(--ink-faint); }
+.stages .gated .msg { color: var(--ink-faint); font-style: italic; }
+.stages .queued .nm { color: var(--ink-faint); }

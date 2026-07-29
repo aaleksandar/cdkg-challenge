@@ -1,0 +1,23 @@
+{# Shown only while work is in flight. Its presence is also what tells an open
+   drawer to refresh, via the htmx trigger on #drawer-stages. #}
+<div class="live">
+  <span class="pulse"></span>
+  <span>
+    {% for run in active %}
+      <strong>{{ run.title or run.video_id }}</strong>
+      {% if run.current_stage %}
+        — {{ STAGE_LABELS.get(run.current_stage, run.current_stage) }}
+        <span class="muted">({{ run.done }}/{{ run.total }})</span>
+      {% else %}
+        <span class="muted">— queued</span>
+      {% endif %}
+      {% if not loop.last %}<span class="muted"> · </span>{% endif %}
+    {% endfor %}
+  </span>
+  {% if queued %}<span class="muted">{{ queued }} waiting</span>{% endif %}
+</div>
+<script>
+  // Work is in flight: refresh the open drawer so its status, presence and
+  // stage list stay truthful while the pipeline advances.
+  document.querySelectorAll('[data-drawer-refresh]').forEach(el => htmx.trigger(el, 'refresh'));
+</script>

@@ -1,0 +1,34 @@
+<div id="drawer-stages">
+  <ul class="stages">
+    {% for st in run.stages %}
+    <li class="{{ st.status }}">
+      <span class="mark"></span>
+      <span>
+        <div class="nm">{{ STAGE_LABELS.get(st.stage, st.stage) }}</div>
+        {% if st.message %}<div class="msg">{{ st.message }}</div>{% endif %}
+
+        {% set d = st.detail | fromjson %}
+        {% if d %}
+        <div class="detail">
+          {% if d.tags %}
+            <div class="taglist">
+              {% for t in d.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+            </div>
+          {% endif %}
+          {% if d.word_count %}<span class="fact">{{ '{:,}'.format(d.word_count) }} words</span>{% endif %}
+          {% if d.speaker %}<span class="fact">speaker: {{ d.speaker }}</span>{% endif %}
+          {% if d.event %}<span class="fact">event: {{ d.event }}</span>{% endif %}
+          {% if d.csv_appended is defined %}
+            <span class="fact">{{ 'row appended' if d.csv_appended else 'already present' }}</span>
+          {% endif %}
+          {% if d.counts %}<span class="fact">{{ d.counts.Talk }} talks, {{ d.counts.Tag }} tags</span>{% endif %}
+          {% if d.pr_url %}<a class="fact" href="{{ d.pr_url }}" target="_blank" rel="noopener">view PR ↗</a>{% endif %}
+          {% if d.srt_path %}<div class="path">{{ d.srt_path }}</div>{% endif %}
+        </div>
+        {% endif %}
+      </span>
+      <span class="t">{{ st.status }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

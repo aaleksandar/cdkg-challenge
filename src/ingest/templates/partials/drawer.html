@@ -1,14 +1,17 @@
-{% set STAGE_LABELS = {
-  'transcript_download':   'Download transcript',
-  'metadata_parse':        'Parse metadata',
-  'csv_append':            'Append metadata row',
-  'transcript_extraction': 'Extract plain text',
-  'tag_extraction':        'Extract tags',
-  'graph_rebuild':         'Rebuild graph',
-  'publish':               'Publish to GitHub'
-} %}
-
 <div class="scrim"></div>
+{# The whole drawer re-renders while a run is in flight: status, presence and
+   the stage list all change as the pipeline advances, so refreshing only the
+   timeline would leave the rest of the panel lying.
+
+   It polls on its own behalf rather than relying on the live banner, because
+   the banner vanishes the moment the run ends — which is exactly when the last,
+   most interesting refresh is due. Self-terminating: once the run is finished
+   the re-rendered drawer carries no trigger. #}
+{% set live = run and run.status in ['queued', 'running'] %}
+<span hidden data-drawer-refresh
+      hx-get="/video/{{ key | urlencode }}"
+      hx-trigger="refresh{% if live %}, every 2s{% endif %}"
+      hx-target="#drawer" hx-swap="innerHTML"></span>
 <aside class="drawer" role="dialog" aria-label="Talk detail">
 
   <div class="drawer-head">
@@ -106,27 +109,13 @@
   </section>
   {% endif %}
 
-  {% if run %}
   <section>
-    <h3>Pipeline — run #{{ run.id }}</h3>
-    <ul class="stages">
-      {% for st in run.stages %}
-      <li class="{{ st.status }}">
-        <span class="mark"></span>
-        <span>
-          <div class="nm">{{ STAGE_LABELS.get(st.stage, st.stage) }}</div>
-          {% if st.message %}<div class="msg">{{ st.message }}</div>{% endif %}
-        </span>
-        <span class="t">{{ st.status }}</span>
-      </li>
-      {% endfor %}
-    </ul>
+    <h3>Pipeline{% if run %} — run #{{ run.id }}{% endif %}</h3>
+    {% if run %}
+      {% include "partials/stages.html" %}
+    {% else %}
+      <p class="muted">Never run through the ingestion pipeline.</p>
+    {% endif %}
   </section>
-  {% else %}
-  <section>
-    <h3>Pipeline</h3>
-    <p class="pairs"><span class="vid">Never run through the ingestion pipeline.</span></p>
-  </section>
-  {% endif %}
 
 </aside>

@@ -22,10 +22,51 @@ def _duration(seconds: int | None) -> str:
     return f"{hours}:{minutes:02d}:{secs:02d}" if hours else f"{minutes}:{secs:02d}"
 
 
+def _fromjson(raw: str | None) -> dict:
+    """Stage detail is stored as JSON; a malformed blob must not break the page."""
+    import json
+
+    if not raw:
+        return {}
+    try:
+        return json.loads(raw)
+    except (TypeError, ValueError):
+        return {}
+
+
 templates.env.filters["duration"] = _duration
+templates.env.filters["fromjson"] = _fromjson
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
+templates.env.globals["ALERT_STATUSES"] = {"orphaned", "failed"}
+
+# The figure strip doubles as the filter, so it defines both the order shown and
+# the set of filters available.
+templates.env.globals["FIGURES"] = [
+    ("all", "Actionable"),
+    ("in_graph", "In graph"),
+    ("not_ingested", "Not ingested"),
+    ("orphaned", "Orphaned"),
+    ("untagged", "Untagged"),
+    ("needs_curation", "Needs curation"),
+    ("in_progress", "Running"),
+    ("failed", "Failed"),
+    ("excluded_short", "Shorts"),
+    ("upcoming", "Upcoming"),
+    ("junk", "Unusable"),
+]
+
+STAGE_LABELS = {
+    "metadata_parse": "Parse metadata",
+    "transcript_download": "Download transcript",
+    "csv_append": "Append metadata row",
+    "transcript_extraction": "Extract plain text",
+    "tag_extraction": "Extract tags",
+    "graph_rebuild": "Rebuild graph",
+    "publish": "Publish to GitHub",
+}
+templates.env.globals["STAGE_LABELS"] = STAGE_LABELS
 
 
 def _view(status_filter: str | None, query: str | None) -> dict:
@@ -52,10 +93,12 @@ def _view(status_filter: str | None, query: str | None) -> dict:
         ]
 
     visible.sort(key=lambda s: (R.STATUS_ORDER.index(s.status), (s.title or "").lower()))
+    quiet = sum(counts.get(s, 0) for s in R.QUIET_STATUSES)
     return {
         "states": visible,
         "counts": counts,
         "total": len(states),
+        "actionable": len(states) - quiet,
         "status_filter": status_filter or "all",
         "query": query or "",
         "active_runs": db.active_run_count(),
@@ -102,6 +145,33 @@ def video_detail(request: Request, key: str):
     )
 
 
+@router.get("/live", response_class=HTMLResponse)
+def live(request: Request):
+    """Banner for work in flight, and the signal that refreshes the open drawer.
+
+    Polled every couple of seconds; renders nothing at all when idle, so a quiet
+    panel costs one tiny request and no DOM churn.
+    """
+    from .pipeline.runner import queue_depth
+
+    active = db.active_runs()
+    if not active:
+        return HTMLResponse("")
+    return templates.TemplateResponse(
+        request, "partials/live.html",
+        {"active": active, "queued": queue_depth()},
+    )
+
+
+@router.get("/run/{run_id}", response_class=HTMLResponse)
+def run_stages(request: Request, run_id: int):
+    """Just the stage timeline, so a running drawer can refresh in place."""
+    run = db.run_with_stages(run_id)
+    if run is None:
+        return HTMLResponse("")
+    return templates.TemplateResponse(request, "partials/stages.html", {"run": run})
+
+
 @router.post("/refresh", response_class=HTMLResponse)
 def refresh(request: Request, background: BackgroundTasks):
     from .sources import youtube
@@ -130,12 +200,19 @@ def publishing_status(request: Request):
 
 
 @router.post("/ingest", response_class=HTMLResponse)
-def ingest(request: Request, background: BackgroundTasks, video_ids: list[str] = Form(default=[])):
+def ingest(request: Request, video_ids: list[str] = Form(default=[])):
     from .pipeline.runner import queue_videos
 
     if not video_ids:
         return HTMLResponse('<span class="note err">Nothing selected.</span>')
-    queued = queue_videos(video_ids, background)
-    return HTMLResponse(
-        f'<span class="note">Queued {queued} video{"s" if queued != 1 else ""} for ingestion.</span>'
-    )
+
+    # Ignore a video that already has work queued or in flight, so a double
+    # click cannot start the same ingestion twice.
+    busy = db.videos_with_active_runs()
+    fresh = [v for v in video_ids if v not in busy]
+    if not fresh:
+        return HTMLResponse('<span class="note">Already running.</span>')
+
+    queued = queue_videos(fresh)
+    plural = "s" if queued != 1 else ""
+    return HTMLResponse(f'<span class="note">Queued {queued} video{plural}.</span>')

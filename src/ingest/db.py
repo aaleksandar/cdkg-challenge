@@ -56,6 +56,9 @@ CREATE TABLE IF NOT EXISTS run_stages (
     started_at  TEXT,
     ended_at    TEXT,
     message     TEXT,
+    -- JSON of what the stage actually produced (tag list, word count, paths),
+    -- so an admin can inspect the output rather than a one-line summary.
+    detail      TEXT,
     UNIQUE (run_id, stage)
 );
 
@@ -85,6 +88,37 @@ def connect() -> Iterator[sqlite3.Connection]:
 def init_db() -> None:
     with connect() as conn:
         conn.executescript(SCHEMA)
+        # Additive migration for databases created before `detail` existed.
+        columns = {r["name"] for r in conn.execute("PRAGMA table_info(run_stages)")}
+        if "detail" not in columns:
+            conn.execute("ALTER TABLE run_stages ADD COLUMN detail TEXT")
+    recover_interrupted_runs()
+
+
+def recover_interrupted_runs() -> int:
+    """Close out runs that a restart killed mid-flight.
+
+    A process that dies during a run leaves it 'running' and its stages
+    'queued' forever, which reads in the panel as work that silently vanished.
+    Mark them plainly as interrupted so the state is never a lie.
+    """
+    with connect() as conn:
+        orphaned = conn.execute(
+            "SELECT id FROM runs WHERE status IN ('queued','running')"
+        ).fetchall()
+        for row in orphaned:
+            conn.execute(
+                "UPDATE run_stages SET status = 'failed', ended_at = ?, "
+                "message = COALESCE(message, 'Interrupted — the service restarted mid-run') "
+                "WHERE run_id = ? AND status IN ('queued','running')",
+                (now(), row["id"]),
+            )
+            conn.execute(
+                "UPDATE runs SET status = 'failed', ended_at = ?, "
+                "error = 'Interrupted — the service restarted mid-run' WHERE id = ?",
+                (now(), row["id"]),
+            )
+    return len(orphaned)
 
 
 # --- Inventory ---------------------------------------------------------------
@@ -148,11 +182,11 @@ def inventory_count() -> int:
 
 # --- Runs --------------------------------------------------------------------
 
-def start_run(video_id: str, stages: list[str]) -> int:
+def start_run(video_id: str, stages: list[str], status: str = "running") -> int:
     with connect() as conn:
         cur = conn.execute(
-            "INSERT INTO runs (video_id, status, started_at) VALUES (?, 'running', ?)",
-            (video_id, now()),
+            "INSERT INTO runs (video_id, status, started_at) VALUES (?, ?, ?)",
+            (video_id, status, now()),
         )
         run_id = cur.lastrowid
         for position, stage in enumerate(stages):
@@ -163,14 +197,24 @@ def start_run(video_id: str, stages: list[str]) -> int:
     return run_id
 
 
-def set_stage(run_id: int, stage: str, status: str, message: str | None = None) -> None:
+def set_stage(run_id: int, stage: str, status: str, message: str | None = None,
+              detail: dict | None = None) -> None:
+    import json
+
     field = "started_at" if status == "running" else "ended_at"
+    payload = json.dumps(detail, default=str) if detail else None
     with connect() as conn:
         conn.execute(
-            f"UPDATE run_stages SET status = ?, {field} = ?, message = COALESCE(?, message) "
+            f"UPDATE run_stages SET status = ?, {field} = ?, "
+            "message = COALESCE(?, message), detail = COALESCE(?, detail) "
             "WHERE run_id = ? AND stage = ?",
-            (status, now(), message, run_id, stage),
+            (status, now(), message, payload, run_id, stage),
         )
+
+
+def set_run_status(run_id: int, status: str) -> None:
+    with connect() as conn:
+        conn.execute("UPDATE runs SET status = ? WHERE id = ?", (status, run_id))
 
 
 def finish_run(run_id: int, status: str, error: str | None = None) -> None:
@@ -216,3 +260,31 @@ def active_run_count() -> int:
         return conn.execute(
             "SELECT COUNT(*) FROM runs WHERE status IN ('queued','running')"
         ).fetchone()[0]
+
+
+def active_runs() -> list[dict]:
+    """Runs queued or in flight, with the stage each one has reached."""
+    with connect() as conn:
+        rows = conn.execute(
+            """SELECT r.id, r.video_id, r.status, v.title,
+                      (SELECT stage FROM run_stages
+                        WHERE run_id = r.id AND status = 'running'
+                        ORDER BY position LIMIT 1) AS current_stage,
+                      (SELECT COUNT(*) FROM run_stages
+                        WHERE run_id = r.id
+                          AND status IN ('completed','gated','skipped')) AS done,
+                      (SELECT COUNT(*) FROM run_stages WHERE run_id = r.id) AS total
+                 FROM runs r LEFT JOIN videos v ON v.video_id = r.video_id
+                WHERE r.status IN ('queued','running')
+                ORDER BY r.id"""
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def videos_with_active_runs() -> set[str]:
+    with connect() as conn:
+        return {
+            r["video_id"] for r in conn.execute(
+                "SELECT DISTINCT video_id FROM runs WHERE status IN ('queued','running')"
+            )
+        }
