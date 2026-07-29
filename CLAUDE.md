@@ -72,7 +72,7 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 (:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 ```
 
-A full rebuild currently yields 42 Speakers, 39 Talks, 3 Events, 3 Categories, 581 Tags.
+A full rebuild yields 42 Speakers, 39 Talks, 3 Events, 3 Categories, 640 Tags — of which 37 Talks carry tags (measured 2026-07-29; re-measure after adding transcripts or metadata rows).
 
 ### Key Components
 
@@ -111,7 +111,7 @@ All LLM calls go through the single `GeminiFlash` client in `clients.baml`, pinn
 
 Pin a specific model rather than an alias like `gemini-flash-latest` — these prompts are tuned, and a model shifting underneath them silently changes behavior. Google retires models: `gemini-2.0-flash` was used here previously and now returns 404 on every call. If the whole system suddenly scores 1/5 across the benchmark with `NOT_FOUND` errors, check whether the model was retired before debugging anything else.
 
-Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 1.0/5, `gemini-2.5-flash` ~3.4/5, `gemini-3.6-flash` ~4.3/5 — so re-run `evaluate.py` whenever it changes.
+Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 1.0/5, `gemini-2.5-flash` 3.3–3.5/5, `gemini-3.6-flash` 4.2–4.4/5 — so re-run `evaluate.py` whenever it changes.
 
 ## Data Flow
 
@@ -124,7 +124,7 @@ Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 
 
 `QA/CDKGQA.csv` holds 12 questions with baseline answers. `evaluate.py` runs each through `GraphRAG` and scores the response 1–5 with a Gemini judge (1 = no_answer, 5 = correct), printing per-question detail and a summary histogram.
 
-**This is the regression check for any prompt or schema change.** Capture a baseline before touching `baml_src/graphrag.baml`, then compare after. Expect run-to-run variance of a few tenths even at `temperature 0` — judge a change by the shape of the distribution, not a single decimal. Current baseline is roughly 4.2–4.3/5 on `gemini-3.6-flash`, with no failed questions.
+**This is the regression check for any prompt or schema change.** Capture a baseline before touching `baml_src/graphrag.baml`, then compare after. Expect run-to-run variance of a few tenths even at `temperature 0` — judge a change by the shape of the distribution, not a single decimal. Current baseline is 4.2–4.4/5 across runs on `gemini-3.6-flash`, with no failed questions (measured 2026-07-29).
 
 ## Docker & Deployment
 
@@ -140,7 +140,7 @@ Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 
 ## Gotchas
 
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.
-- **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `03_content_graph.py` matches `entities.json` filenames against the CSV's `File` column and silently drops anything unmatched — 16 of the current 53 entries are dropped this way, so only 37 talks carry tags.
+- **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched — currently 25 of 62 entries, so only 37 of 39 Talks carry tags. Those 25 break down as 16 real talks missing from the CSV — all of them from Knowledge Connexions 2020, i.e. one gap in curation rather than 16 separate oversights — plus 9 unusable files named after bare YouTube IDs. Their tags are extracted at LLM cost on every pipeline run, then discarded.
 - **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples in `baml_src/graphrag.baml`, and `cdl_db/README.md`.
 - **`rag.py` opens Kuzu with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.
