@@ -172,3 +172,6 @@ src/kuzu/baml_client/
 ingest_state.db
 ingest_state.db-wal
 ingest_state.db-shm
+
+# Graph build marker (written on swap; sits beside the gitignored database)
+.graph-version
