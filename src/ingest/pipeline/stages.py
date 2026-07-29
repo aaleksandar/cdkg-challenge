@@ -56,8 +56,17 @@ def transcript_path(event: str | None, title: str) -> Path:
 
 
 def csv_file_reference(path: Path) -> str:
-    """The `/Transcripts/...` form the metadata CSV's File column uses."""
-    return "/" + str(path.relative_to(config.REPO_ROOT)).replace("\\", "/")
+    """The `/Transcripts/...` form the metadata CSV's File column uses.
+
+    Transcripts always live inside the repository, but a path from elsewhere
+    must not blow up mid-pipeline with a bare ValueError; fall back to the name
+    so the failure surfaces as an obviously-wrong row rather than a crash.
+    """
+    try:
+        relative = path.resolve().relative_to(config.REPO_ROOT.resolve())
+    except ValueError:
+        return "/" + path.name
+    return "/" + str(relative).replace("\\", "/")
 
 
 # --- Stages ------------------------------------------------------------------

@@ -5,6 +5,45 @@ servers:
   web:
     hosts:
       - <%= ENV.fetch('SERVER_IP') %>
+  # The admin panel: separate role, separate subdomain, separate blast radius.
+  # A fault here cannot take down the public RAG app.
+  ingest:
+    hosts:
+      - <%= ENV.fetch('SERVER_IP') %>
+    proxy:
+      host: <%= ENV.fetch('CDKG_ADMIN_DOMAIN', 'admin.' + ENV.fetch('CDKG_DOMAIN')) %>
+      app_port: 8503
+      ssl: true
+      healthcheck:
+        path: /health
+    env:
+      clear:
+        MODE: ingest
+        SERVICE_PORT: "8503"
+        REPO_ROOT: /repo
+        GITHUB_REPO: Connected-Data/cdkg-challenge
+        # Paths point into the git working copy, not the baked-in image.
+        TRANSCRIPTS_DIR: /repo/Transcripts
+        KUZU_DIR: /repo/src/kuzu
+        DATA_DIR: /repo/src/kuzu/data
+        ENTITIES_JSON: /repo/src/kuzu/entities.json
+        DB_PATH: /data/cdl_db.kuzu
+        STATE_DB_PATH: /data/ingest_state.db
+        SCHEDULER_ENABLED: "true"
+        # Both stay off until the data-model work is ready and the GitHub App
+        # is installed. Flip them deliberately, one at a time.
+        KG_ENABLED: "false"
+        GIT_PUSH_ENABLED: "false"
+        AUTO_INGEST_NEW: "false"
+      secret:
+        - GOOGLE_API_KEY
+        - GITHUB_APP_ID
+        - GITHUB_APP_PRIVATE_KEY
+        - ADMIN_USER
+        - ADMIN_PASSWORD
+    volumes:
+      - "cdkg_repo:/repo"
+      - "cdkg_data:/data"
 
 proxy:
   host: <%= ENV.fetch('CDKG_DOMAIN') %>
