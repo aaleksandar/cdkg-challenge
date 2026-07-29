@@ -1,0 +1,61 @@
+{# One talk. Rendered standalone too, so a row can replace itself while its run
+   advances — a status that stays "Not ingested" through a completed pipeline is
+   worse than no status at all.
+
+   Repo-only talks are keyed by transcript stem, which contains spaces and
+   punctuation, so the key is percent-encoded in URLs. #}
+{% set key = s.video_id if s.video_id else 'stem:' ~ s.stem %}
+{% set busy = s.status == 'in_progress' %}
+<tr class="{{ 'is-quiet' if s.status in QUIET_STATUSES }}"
+    hx-get="/video/{{ key | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
+  <td class="pick" onclick="event.stopPropagation()">
+    {# The row's own click opens the drawer, so its refresh lives on a separate
+       element that replaces the whole row. Polls only while the pipeline is
+       running and stops on its own, because the replacement carries no trigger. #}
+    {% if busy %}
+      <span hidden hx-get="/row/{{ key | urlencode }}"
+            hx-trigger="every 2s" hx-target="closest tr" hx-swap="outerHTML"></span>
+    {% endif %}
+    {% if s.video_id and s.status == 'not_ingested' %}
+      <input type="checkbox" name="video_ids" value="{{ s.video_id }}"
+             aria-label="Select {{ s.title }}">
+    {% endif %}
+  </td>
+  <td>
+    <div class="title">{{ s.csv_title or s.title }}</div>
+    <div class="sub">
+      {# Curated values read solid; parsed previews are dimmed and marked, so a
+         guess is never mistaken for a recorded fact. #}
+      {% if s.speaker %}<span class="who">{{ s.speaker }}</span>
+      {% elif s.parsed_speaker %}<span class="guess">{{ s.parsed_speaker }}</span>{% endif %}
+      {% if s.event %}<span>{{ s.event }}</span>
+      {% elif s.parsed_event %}<span class="guess">{{ s.parsed_event }}</span>{% endif %}
+      {% if s.missing_curation %}<span>missing {{ s.missing_curation | join(', ') }}</span>{% endif %}
+    </div>
+  </td>
+  <td>
+    <span class="state s-{{ s.status }}">
+      <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
+    </span>
+  </td>
+  <td class="num">{{ s.tag_count or '—' }}</td>
+  <td class="dur">{{ s.duration | duration }}</td>
+  <td class="vid">{{ s.video_id or '—' }}</td>
+  <td class="act" onclick="event.stopPropagation()">
+    {% if busy %}
+      <span class="muted">running…</span>
+    {% elif s.video_id and s.status in ['not_ingested', 'failed'] %}
+      {# Swaps the row for its live version, which arrives with the poller. #}
+      <button type="button" class="rowbtn"
+              hx-post="/ingest/{{ s.video_id }}"
+              hx-target="closest tr" hx-swap="outerHTML"
+              hx-disabled-elt="this">Ingest</button>
+    {% elif s.status == 'ready_for_graph' %}
+      <button type="button" class="rowbtn"
+              hx-post="/graph/add" hx-target="#flash" hx-swap="innerHTML"
+              hx-disabled-elt="this"
+              title="{{ 'Rebuilds the graph so this talk becomes queryable' if KG_ENABLED else 'The graph gate is closed — open it above' }}"
+              {{ 'disabled' if not KG_ENABLED }}>Add to graph</button>
+    {% endif %}
+  </td>
+</tr>

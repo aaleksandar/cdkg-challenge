@@ -36,8 +36,11 @@ YOUTUBE_ID_FILENAME = re.compile(r"^[A-Za-z0-9_-]{11}(\.en)?$")
 
 _YT_ID = re.compile(r"(?:v=|youtu\.be/|/embed/|/shorts/)([A-Za-z0-9_-]{11})")
 
-# Columns a human must fill in; the parser cannot infer them from a video.
-CURATION_COLUMNS = ("Date", "Type", "Category")
+# Exactly the columns 02_domain_graph.py requires. It calls drop_nulls on these,
+# so a row missing any one of them is silently discarded and the talk never
+# becomes a Talk node — no matter what the graph gate says. This list must track
+# `required_cols` in that script.
+CURATION_COLUMNS = ("Speaker", "Event", "Date", "Type", "Category")
 
 
 def extract_video_id(url: str | None) -> str | None:
@@ -127,12 +130,18 @@ class TalkState:
             return "orphaned"
         if not self.has_transcript and not self.in_csv:
             return "not_ingested"
-        if self.in_csv and self.missing_curation:
-            return "needs_curation"
-        if self.in_csv and not self.has_tags:
-            return "untagged"
         if self.in_graph and self.tagged_in_graph:
             return "in_graph"
+        # A blank required column is a hard stop, not a cosmetic gap:
+        # 02_domain_graph.py drops the row, so the talk cannot enter the graph
+        # however many times it is rebuilt. Checked before ready_for_graph so
+        # the panel names the real blocker.
+        if self.in_csv and self.missing_curation:
+            return "needs_curation"
+        # Curated and tagged, but absent from the graph: genuinely waiting on a
+        # rebuild, which is the one case the gate actually holds up.
+        if self.in_csv and self.has_tags:
+            return "ready_for_graph"
         if self.in_csv:
             return "untagged"
         return "not_ingested"
@@ -140,11 +149,14 @@ class TalkState:
     @property
     def actionable(self) -> bool:
         """True when an admin can move this forward with one click."""
-        return self.status in {"not_ingested", "orphaned", "untagged", "failed"}
+        return self.status in {
+            "not_ingested", "orphaned", "untagged", "failed", "ready_for_graph",
+        }
 
 
 STATUS_LABELS = {
     "in_graph": "In graph",
+    "ready_for_graph": "Ready for graph",
     "needs_curation": "Needs curation",
     "untagged": "Untagged",
     "orphaned": "Orphaned",
@@ -157,8 +169,8 @@ STATUS_LABELS = {
 }
 
 STATUS_ORDER = [
-    "failed", "in_progress", "orphaned", "not_ingested",
-    "untagged", "needs_curation", "in_graph", "excluded_short", "upcoming", "junk",
+    "failed", "in_progress", "needs_curation", "ready_for_graph", "orphaned",
+    "not_ingested", "untagged", "in_graph", "excluded_short", "upcoming", "junk",
 ]
 
 # Statuses that are working as intended and only clutter the default view.
@@ -315,13 +327,35 @@ def reconcile() -> list[TalkState]:
         apply_repo(state)
         states[vid] = state
 
-    # 3. Transcripts on disk with no CSV row and no video match. This is where
-    #    the orphans surface — tags extracted, nothing to attach them to.
+    # 3. Transcripts, text or tags on disk that no CSV row accounts for. This is
+    #    where the orphans surface — extraction paid for, nothing to attach it to.
     claimed = {s.stem for s in states.values() if s.stem}
+
+    # A transcript and the channel video it came from are the same talk. Match
+    # them on the normalised title so the panel shows one row carrying both
+    # facts, rather than an orphan and a "not ingested" video that look
+    # unrelated but are not.
+    by_title: dict[str, TalkState] = {}
+    for state in states.values():
+        if state.on_youtube:
+            by_title.setdefault(norm_title(state.title).lower(), state)
+
     for stem in set(transcripts) | set(entities) | texts:
         if stem in claimed:
             continue
         row = csv_by_stem.get(stem)
+
+        existing = by_title.get(norm_title(stem).lower())
+        if existing is not None and not existing.stem:
+            # Fold the on-disk artefacts into the video's own row.
+            existing.stem = stem
+            if row:
+                apply_csv(existing, row)
+                existing.stem = stem
+            apply_repo(existing)
+            claimed.add(stem)
+            continue
+
         state = TalkState(title=stem, stem=stem)
         if row:
             apply_csv(state, row)

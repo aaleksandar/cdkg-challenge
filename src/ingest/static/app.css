@@ -389,3 +389,30 @@ td.pick input { cursor: pointer; accent-color: var(--accent); }
 .stages .gated .nm { color: var(--ink-faint); }
 .stages .gated .msg { color: var(--ink-faint); font-style: italic; }
 .stages .queued .nm { color: var(--ink-faint); }
+
+/* ---- Row action ---- */
+td.act { text-align: right; width: 1%; white-space: nowrap; }
+.rowbtn {
+  font: inherit; font-size: .74rem;
+  padding: .22rem .6rem; border-radius: 4px;
+  border: 1px solid var(--rule-strong); background: var(--paper-raised);
+  color: var(--ink-soft); cursor: pointer;
+  opacity: 0; transition: opacity .12s, border-color .12s, color .12s;
+}
+tr:hover .rowbtn, .rowbtn:focus-visible, .rowbtn:disabled { opacity: 1; }
+.rowbtn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.rowbtn:disabled { cursor: not-allowed; color: var(--ink-faint); border-style: dashed; }
+
+/* ---- Graph gate ---- */
+.gate {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .76rem; cursor: pointer; user-select: none;
+  padding: .3rem .7rem; border-radius: 100px;
+  border: 1px solid var(--rule-strong); background: var(--paper-raised);
+  color: var(--ink-faint); transition: color .12s, border-color .12s;
+}
+.gate .dot { background: var(--rule-strong); }
+.gate:hover { border-color: var(--ink-faint); color: var(--ink-soft); }
+.gate.is-open { color: var(--ok); border-color: #bcd6c5; }
+.gate.is-open .dot { background: var(--ok); }
+.s-ready_for_graph .dot { background: var(--busy); box-shadow: inset 0 0 0 1px var(--busy); }

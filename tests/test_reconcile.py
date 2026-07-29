@@ -104,3 +104,24 @@ def test_every_state_has_a_label(states):
     for state in states:
         assert state.status in R.STATUS_LABELS
         assert state.status in R.STATUS_ORDER
+
+
+def test_curation_columns_match_what_the_graph_builder_requires():
+    """02_domain_graph.py drops rows missing any of these, so a talk with a blank
+    one can never enter the graph however often it is rebuilt. If that script's
+    `required_cols` changes, this list has to change with it."""
+    script = (config.KUZU_DIR / "02_domain_graph.py").read_text(encoding="utf-8")
+    declared = script.split("required_cols = [")[1].split("]")[0]
+    required = {c.strip().strip('"\'') for c in declared.split(",") if c.strip()}
+    # Title is always present, so it is not something a curator can be missing.
+    assert set(R.CURATION_COLUMNS) == required - {"Title"}
+
+
+def test_a_talk_missing_required_columns_is_not_called_ready():
+    """"Ready for graph" must mean the gate is the only thing left."""
+    blocked = R.TalkState(in_csv=True, has_tags=True, has_transcript=True,
+                          missing_curation=["Event"])
+    assert blocked.status == "needs_curation"
+
+    ready = R.TalkState(in_csv=True, has_tags=True, has_transcript=True)
+    assert ready.status == "ready_for_graph"

@@ -59,10 +59,11 @@ templates.env.globals["ALERT_STATUSES"] = {"orphaned", "failed"}
 templates.env.globals["FIGURES"] = [
     ("all", "Actionable"),
     ("in_graph", "In graph"),
+    ("needs_curation", "Needs curation"),
+    ("ready_for_graph", "Ready for graph"),
     ("not_ingested", "Not ingested"),
     ("orphaned", "Orphaned"),
     ("untagged", "Untagged"),
-    ("needs_curation", "Needs curation"),
     ("in_progress", "Running"),
     ("failed", "Failed"),
     ("excluded_short", "Shorts"),
@@ -115,6 +116,9 @@ def _view(status_filter: str | None, query: str | None) -> dict:
         "status_filter": status_filter or "all",
         "query": query or "",
         "active_runs": db.active_run_count(),
+        # Read per request, not baked into globals: the gate can be flipped at
+        # runtime and every row's action depends on it.
+        "KG_ENABLED": config.KG_ENABLED,
     }
 
 
@@ -183,6 +187,63 @@ def run_stages(request: Request, run_id: int):
     if run is None:
         return HTMLResponse("")
     return templates.TemplateResponse(request, "partials/stages.html", {"run": run})
+
+
+@router.get("/row/{key}", response_class=HTMLResponse)
+def row(request: Request, key: str):
+    """One row, so it can replace itself as its run advances."""
+    match = next(
+        (s for s in R.reconcile() if (s.video_id == key or f"stem:{s.stem}" == key)), None
+    )
+    if match is None:
+        return HTMLResponse("")
+    return templates.TemplateResponse(
+        request, "partials/row.html", {"s": match, "KG_ENABLED": config.KG_ENABLED}
+    )
+
+
+@router.post("/ingest/{video_id}", response_class=HTMLResponse)
+def ingest_one(request: Request, video_id: str):
+    """Ingest a single video — the common case, without select-then-confirm.
+
+    Returns the row itself rather than a message. The replacement is rendered
+    after the run is queued, so it comes back carrying the poller that keeps it
+    current; returning a toast would leave the row frozen on a stale status.
+    """
+    from .pipeline.runner import queue_videos
+
+    if video_id not in db.videos_with_active_runs():
+        queue_videos([video_id])
+    return row(request, video_id)
+
+
+@router.post("/gate", response_class=HTMLResponse)
+def toggle_gate(request: Request):
+    """Open or close the graph gate for this process.
+
+    Deliberately not persisted: the durable setting is KG_ENABLED in the
+    environment. Flipping it here lets an admin let work through and watch what
+    happens without a redeploy, and a restart returns to the configured default
+    rather than silently keeping a setting nobody remembers making.
+    """
+    config.KG_ENABLED = not config.KG_ENABLED
+    return templates.TemplateResponse(request, "partials/gate.html",
+                                      {"KG_ENABLED": config.KG_ENABLED})
+
+
+@router.post("/graph/add", response_class=HTMLResponse)
+def graph_add(request: Request):
+    """Bring every ready talk into the graph in one rebuild."""
+    if not config.KG_ENABLED:
+        return HTMLResponse(
+            '<span class="note err">The graph gate is closed — open it first.</span>'
+        )
+    from .pipeline.graph import rebuild_graph
+
+    result = rebuild_graph()
+    return HTMLResponse(
+        f'<span class="note{"" if result.ok else " err"}">{result.message}</span>'
+    )
 
 
 @router.post("/refresh", response_class=HTMLResponse)

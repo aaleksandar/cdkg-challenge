@@ -1,0 +1,8 @@
+{# The graph gate, stated plainly and openable from here. Without this an admin
+   can see that a stage was gated but has no way to act on it. #}
+<span class="gate {{ 'is-open' if KG_ENABLED }}"
+      hx-post="/gate" hx-target="#gate" hx-swap="outerHTML" id="gate"
+      role="button" tabindex="0" title="Graph population — click to {{ 'close' if KG_ENABLED else 'open' }}">
+  <i class="dot"></i>
+  <span>Graph {{ 'open' if KG_ENABLED else 'gated' }}</span>
+</span>

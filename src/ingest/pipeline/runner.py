@@ -82,6 +82,17 @@ def queue_depth() -> int:
     return _queue.qsize()
 
 
+def _abandon_remaining(run_id: int, after: str) -> None:
+    """Mark stages that will never run now that the pipeline has stopped.
+
+    Leaving them 'queued' reads as work still to come, when in fact nothing more
+    is going to happen.
+    """
+    reached = STAGE_ORDER.index(after)
+    for stage in STAGE_ORDER[reached + 1:]:
+        db.set_stage(run_id, stage, "skipped", "Not reached — an earlier stage stopped the run")
+
+
 def _execute(run_id: int, video_id: str) -> None:
     db.set_run_status(run_id, "running")
     context: dict = {"video_id": video_id}
@@ -101,15 +112,18 @@ def _execute(run_id: int, video_id: str) -> None:
             result = STAGE_RUNNERS[stage](context)
         except StageSkipped as exc:
             db.set_stage(run_id, stage, "skipped", str(exc))
+            _abandon_remaining(run_id, stage)
             db.finish_run(run_id, "skipped", str(exc))
             return
         except Exception as exc:  # noqa: BLE001 — surfaced to the panel verbatim
             db.set_stage(run_id, stage, "failed", f"{type(exc).__name__}: {exc}")
+            _abandon_remaining(run_id, stage)
             db.finish_run(run_id, "failed", traceback.format_exc(limit=3))
             return
 
         if not result.ok:
             db.set_stage(run_id, stage, "failed", result.message)
+            _abandon_remaining(run_id, stage)
             db.finish_run(run_id, "failed", result.message)
             return
 
