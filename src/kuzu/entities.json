@@ -1883,5 +1883,61 @@
         "taxonomies"
       ]
     }
+  },
+  {
+    "filename": "A 2020 Semantic Web vision for the real world.txt",
+    "entities": {
+      "tag": [
+        "serval",
+        "python",
+        "semantic web",
+        "knowledge graphs",
+        "ontology building",
+        "artificial intelligence",
+        "description logic",
+        "owl",
+        "web ontology language",
+        "linked data",
+        "deep learning",
+        "machine learning",
+        "nlp",
+        "freebase",
+        "wikipedia",
+        "dbpedia",
+        "schema.org",
+        "symbolic reasoning",
+        "semantic networks",
+        "expert systems",
+        "shacl",
+        "rdf",
+        "labeled property graph",
+        "neo4j",
+        "rdfs"
+      ]
+    }
+  },
+  {
+    "filename": "Causal Graph Identification_ optimization, performance bounds & reward optimization.txt",
+    "entities": {
+      "tag": [
+        "causal graph identification",
+        "causal graph inference",
+        "causal inference",
+        "knowledge graphs",
+        "structured statistics",
+        "information theory",
+        "lasso",
+        "sparse approximation",
+        "dagma",
+        "neural networks",
+        "causal subgraph learning",
+        "multi-armed bandit",
+        "reinforcement learning",
+        "causal reinforcement learning",
+        "deep learning",
+        "louvain partitioning",
+        "anomaly detection"
+      ]
+    }
   }
 ]

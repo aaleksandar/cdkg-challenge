@@ -1,0 +1,3816 @@
+1
+00:00:08,280 --> 00:00:11,600
+Next up, it's a real pleasure I get to
+
+2
+00:00:10,280 --> 00:00:14,920
+introduce
+
+3
+00:00:11,600 --> 00:00:17,240
+a friend Urbashi Mitra is the Gordon S.
+
+4
+00:00:14,920 --> 00:00:19,440
+Marshall Professor of Engineering at the
+
+5
+00:00:17,240 --> 00:00:22,200
+University of Southern California.
+
+6
+00:00:19,440 --> 00:00:24,880
+Urbashi received her
+
+7
+00:00:22,200 --> 00:00:27,080
+bachelor's and master's from Berkeley
+
+8
+00:00:24,880 --> 00:00:28,640
+and PhD from Princeton and she's
+
+9
+00:00:27,080 --> 00:00:30,200
+currently the Gordon S. Marshall
+
+10
+00:00:28,640 --> 00:00:32,360
+Professor of Engineering with
+
+11
+00:00:30,200 --> 00:00:34,680
+appointments in electrical engineering
+
+12
+00:00:32,360 --> 00:00:37,480
+and computer science. And I have to tell
+
+13
+00:00:34,680 --> 00:00:39,040
+a really brief story because we've both
+
+14
+00:00:37,480 --> 00:00:40,560
+Urbashi and I have both been
+
+15
+00:00:39,040 --> 00:00:42,280
+participating in this conference called
+
+16
+00:00:40,560 --> 00:00:44,280
+KFirst World
+
+17
+00:00:42,280 --> 00:00:46,360
+at Stanford every year and which has a
+
+18
+00:00:44,280 --> 00:00:49,440
+lot of knowledge graph content.
+
+19
+00:00:46,360 --> 00:00:51,720
+And I a year ago
+
+20
+00:00:49,440 --> 00:00:53,480
+she'd given my favorite talk.
+
+21
+00:00:51,720 --> 00:00:55,920
+And and I just come away with my mind
+
+22
+00:00:53,480 --> 00:00:58,000
+blown. I come back this year, same thing
+
+23
+00:00:55,920 --> 00:01:00,440
+again. So I I
+
+24
+00:00:58,000 --> 00:01:03,760
+begged and pleaded could we please bring
+
+25
+00:01:00,440 --> 00:01:05,720
+this content about causal graphs here to
+
+26
+00:01:03,760 --> 00:01:08,320
+to Connected Data London. And so the
+
+27
+00:01:05,720 --> 00:01:10,360
+topic is causal graph identification,
+
+28
+00:01:08,320 --> 00:01:12,640
+optimization, performance bounds and
+
+29
+00:01:10,360 --> 00:01:15,640
+reward optimization. Please join me in
+
+30
+00:01:12,640 --> 00:01:15,640
+welcoming Urbashi.
+
+31
+00:01:16,635 --> 00:01:19,680
+>> [applause]
+
+32
+00:01:17,840 --> 00:01:21,480
+>> Thank you very much. Um I really
+
+33
+00:01:19,680 --> 00:01:24,040
+appreciate Paco convincing the
+
+34
+00:01:21,480 --> 00:01:26,120
+organizers to let me come speak to you.
+
+35
+00:01:24,040 --> 00:01:27,840
+I can safely say this will be something
+
+36
+00:01:26,120 --> 00:01:29,040
+completely different.
+
+37
+00:01:27,840 --> 00:01:30,360
+Um
+
+38
+00:01:29,040 --> 00:01:32,840
+I want to start by telling you a little
+
+39
+00:01:30,360 --> 00:01:35,120
+bit about myself and what my day job
+
+40
+00:01:32,840 --> 00:01:36,800
+generally consists of. I do a lot of
+
+41
+00:01:35,120 --> 00:01:39,520
+work in structured statistics and
+
+42
+00:01:36,800 --> 00:01:41,560
+information theory and my original work
+
+43
+00:01:39,520 --> 00:01:43,720
+was looking at optimization and design
+
+44
+00:01:41,560 --> 00:01:45,880
+of wireless communication networks. And
+
+45
+00:01:43,720 --> 00:01:48,080
+when I finished my PhD 30 years ago, it
+
+46
+00:01:45,880 --> 00:01:49,760
+was completely legitimate to study
+
+47
+00:01:48,080 --> 00:01:51,920
+point-to-point communications which is
+
+48
+00:01:49,760 --> 00:01:54,320
+one transmitter, one receiver. But now
+
+49
+00:01:51,920 --> 00:01:56,520
+the entire world is starting to focus on
+
+50
+00:01:54,320 --> 00:01:58,240
+graphs and I too as a wireless
+
+51
+00:01:56,520 --> 00:02:00,400
+communications person, cannot worry
+
+52
+00:01:58,240 --> 00:02:02,320
+about point-to-point communications, but
+
+53
+00:02:00,400 --> 00:02:04,920
+need to worry about how we transfer
+
+54
+00:02:02,320 --> 00:02:07,040
+information across these complex graphs
+
+55
+00:02:04,920 --> 00:02:09,720
+with many nodes, heterogeneous data,
+
+56
+00:02:07,040 --> 00:02:12,200
+etc. I don't know how many of you caught
+
+57
+00:02:09,720 --> 00:02:15,160
+the masterclass yesterday by Amy Hodler
+
+58
+00:02:12,200 --> 00:02:18,360
+and Andrea Fronca teaching causal graph
+
+59
+00:02:15,160 --> 00:02:20,360
+inference and analysis. It was a really
+
+60
+00:02:18,360 --> 00:02:22,920
+nice presentation, and if you missed it,
+
+61
+00:02:20,360 --> 00:02:25,040
+I think you can still stream it. Um
+
+62
+00:02:22,920 --> 00:02:27,560
+looking at causal inference is actually
+
+63
+00:02:25,040 --> 00:02:29,640
+a very old problem. If you take a look
+
+64
+00:02:27,560 --> 00:02:31,440
+at the statistics literature, you will
+
+65
+00:02:29,640 --> 00:02:33,000
+see that individuals, the giants of
+
+66
+00:02:31,440 --> 00:02:35,600
+statistics, started worrying about these
+
+67
+00:02:33,000 --> 00:02:37,000
+problems as early as the 1920s.
+
+68
+00:02:35,600 --> 00:02:39,520
+Things that they were worried about were
+
+69
+00:02:37,000 --> 00:02:41,200
+really cause and effect issues, and in
+
+70
+00:02:39,520 --> 00:02:43,120
+our modern language, we would call it
+
+71
+00:02:41,200 --> 00:02:45,959
+interventions. If I do this kind of
+
+72
+00:02:43,120 --> 00:02:48,040
+intervention, use this medication, uh
+
+73
+00:02:45,959 --> 00:02:51,240
+purify water in this way, what is the
+
+74
+00:02:48,040 --> 00:02:53,120
+outcome going to be? And then it sort of
+
+75
+00:02:51,240 --> 00:02:56,880
+progressed, and there was a big step
+
+76
+00:02:53,120 --> 00:03:00,040
+change in the 1990s, largely due to the
+
+77
+00:02:56,880 --> 00:03:01,959
+generation of ideas and proselytization
+
+78
+00:03:00,040 --> 00:03:04,519
+of people like Judea Pearl, who many
+
+79
+00:03:01,959 --> 00:03:07,239
+people consider to be sort of the father
+
+80
+00:03:04,519 --> 00:03:09,080
+of modern causal inference. And that
+
+81
+00:03:07,239 --> 00:03:11,160
+defined a lot of what happened in that
+
+82
+00:03:09,080 --> 00:03:14,680
+field perhaps for the next 10 years or
+
+83
+00:03:11,160 --> 00:03:17,200
+so, maybe even 15. And the presentation
+
+84
+00:03:14,680 --> 00:03:20,519
+that Amy and Andrea gave yesterday is
+
+85
+00:03:17,200 --> 00:03:22,600
+very much in the spirit of the Judea
+
+86
+00:03:20,519 --> 00:03:24,760
+Pearl family of how to think about
+
+87
+00:03:22,600 --> 00:03:26,880
+causal inference in graphs. And it's
+
+88
+00:03:24,760 --> 00:03:28,280
+very important, but it has some
+
+89
+00:03:26,880 --> 00:03:30,760
+challenges, and one of the big
+
+90
+00:03:28,280 --> 00:03:33,519
+challenges has to do with the fact that
+
+91
+00:03:30,760 --> 00:03:35,280
+these methods are provably good. They
+
+92
+00:03:33,519 --> 00:03:37,920
+always work if you meet the right
+
+93
+00:03:35,280 --> 00:03:40,239
+conditions, and as a result, they end up
+
+94
+00:03:37,920 --> 00:03:41,640
+being computationally very expensive
+
+95
+00:03:40,239 --> 00:03:43,880
+because they are inherently
+
+96
+00:03:41,640 --> 00:03:45,519
+combinatorial. You have to check if a
+
+97
+00:03:43,880 --> 00:03:47,480
+lot of conditions hold or don't hold,
+
+98
+00:03:45,519 --> 00:03:50,160
+and if they do, you can make some very
+
+99
+00:03:47,480 --> 00:03:52,960
+strong statements. So, I feel that as a
+
+100
+00:03:50,160 --> 00:03:54,880
+community, we have evolved uh the recent
+
+101
+00:03:52,960 --> 00:03:56,600
+past. I would say in the last 10 15
+
+102
+00:03:54,880 --> 00:03:58,840
+years. Now we're taking a more
+
+103
+00:03:56,600 --> 00:04:00,320
+statistics view on these kinds of
+
+104
+00:03:58,840 --> 00:04:02,000
+problems, which means we're allowing
+
+105
+00:04:00,320 --> 00:04:04,000
+ourselves to make some mistakes, have
+
+106
+00:04:02,000 --> 00:04:07,120
+some noise, and have some trade-offs
+
+107
+00:04:04,000 --> 00:04:09,320
+between complexity uh and performance.
+
+108
+00:04:07,120 --> 00:04:11,240
+And so what I want to do today
+
+109
+00:04:09,320 --> 00:04:13,240
+uh through the lens of being
+
+110
+00:04:11,240 --> 00:04:15,400
+self-aggrandizing and talking about the
+
+111
+00:04:13,240 --> 00:04:17,760
+research that my group is doing is to
+
+112
+00:04:15,400 --> 00:04:19,440
+give you a little bit of of a feel of
+
+113
+00:04:17,760 --> 00:04:22,200
+the kinds of problem statements we think
+
+114
+00:04:19,440 --> 00:04:24,200
+about and also to offer you the
+
+115
+00:04:22,200 --> 00:04:25,960
+potential Well, I want to encourage you
+
+116
+00:04:24,200 --> 00:04:28,560
+to think about working with academics
+
+117
+00:04:25,960 --> 00:04:29,800
+like myself because especially for those
+
+118
+00:04:28,560 --> 00:04:32,560
+of us that are in electrical
+
+119
+00:04:29,800 --> 00:04:35,160
+engineering, we are very much interested
+
+120
+00:04:32,560 --> 00:04:36,960
+in application-driven research. We want
+
+121
+00:04:35,160 --> 00:04:39,240
+to understand your problems. What are
+
+122
+00:04:36,960 --> 00:04:41,000
+the unique features of your domain?
+
+123
+00:04:39,240 --> 00:04:43,280
+Because every time there's a new domain,
+
+124
+00:04:41,000 --> 00:04:44,800
+there are new constraints and um
+
+125
+00:04:43,280 --> 00:04:47,200
+selfishly that means for me there's a
+
+126
+00:04:44,800 --> 00:04:49,600
+new algorithm. So uh which means
+
+127
+00:04:47,200 --> 00:04:52,919
+publication then all things are good. So
+
+128
+00:04:49,600 --> 00:04:55,200
+what did I go ahead and get started? So
+
+129
+00:04:52,919 --> 00:04:57,160
+um I like this toy example. This came
+
+130
+00:04:55,200 --> 00:04:59,400
+from a real position paper that I found
+
+131
+00:04:57,160 --> 00:05:01,440
+online. I guess I should step back for a
+
+132
+00:04:59,400 --> 00:05:03,000
+moment um and forgive the professor hat
+
+133
+00:05:01,440 --> 00:05:05,400
+here, but how many of you know about
+
+134
+00:05:03,000 --> 00:05:07,640
+causal graphs?
+
+135
+00:05:05,400 --> 00:05:11,000
+Okay, a handful. Have you looked at or
+
+136
+00:05:07,640 --> 00:05:14,520
+played with causal inference algorithms?
+
+137
+00:05:11,000 --> 00:05:16,400
+Okay, smaller. All right, great. So um
+
+138
+00:05:14,520 --> 00:05:18,360
+I I think this is an example that we can
+
+139
+00:05:16,400 --> 00:05:20,080
+all relate to. So again, this is
+
+140
+00:05:18,360 --> 00:05:21,640
+something that was put out by
+
+141
+00:05:20,080 --> 00:05:24,919
+researchers at Lyft where of course
+
+142
+00:05:21,640 --> 00:05:27,120
+their objective is to maximize revenue
+
+143
+00:05:24,919 --> 00:05:29,120
+through maximizing the number of rides
+
+144
+00:05:27,120 --> 00:05:31,880
+that actually occur. And they've looked
+
+145
+00:05:29,120 --> 00:05:33,640
+at a variety of features that could
+
+146
+00:05:31,880 --> 00:05:35,000
+influence the number of rides that are
+
+147
+00:05:33,640 --> 00:05:37,520
+involved here.
+
+148
+00:05:35,000 --> 00:05:39,680
+And so I don't know what strategies they
+
+149
+00:05:37,520 --> 00:05:41,320
+used in order to come up with this
+
+150
+00:05:39,680 --> 00:05:44,120
+causal graph. This could be their
+
+151
+00:05:41,320 --> 00:05:46,760
+knowledge graph. They simply through um
+
+152
+00:05:44,120 --> 00:05:50,760
+expert knowledge etc. figured out that A
+
+153
+00:05:46,760 --> 00:05:52,840
+influences B, but the goal of uh causal
+
+154
+00:05:50,760 --> 00:05:55,160
+inference is to have an understanding of
+
+155
+00:05:52,840 --> 00:05:57,960
+what each of those nodes are, have
+
+156
+00:05:55,160 --> 00:05:59,840
+observations of those values, and then
+
+157
+00:05:57,960 --> 00:06:02,520
+use that collection of data to figure
+
+158
+00:05:59,840 --> 00:06:05,120
+out um the directions of the arrows, but
+
+159
+00:06:02,520 --> 00:06:07,440
+also weights on the arrows. Which node
+
+160
+00:06:05,120 --> 00:06:08,600
+is more influential on the other?
+
+161
+00:06:07,440 --> 00:06:10,560
+And so, one of the things that I've been
+
+162
+00:06:08,600 --> 00:06:12,560
+thinking about over the last 2 days, and
+
+163
+00:06:10,560 --> 00:06:15,200
+also starting with this interaction at K
+
+164
+00:06:12,560 --> 00:06:17,760
+first and meeting Paco, is you know, a
+
+165
+00:06:15,200 --> 00:06:20,400
+causal graph is not exactly a knowledge
+
+166
+00:06:17,760 --> 00:06:22,320
+graph. All right? Uh a knowledge graph,
+
+167
+00:06:20,400 --> 00:06:24,520
+the nodes of them may not be data
+
+168
+00:06:22,320 --> 00:06:26,520
+generators. And so, an interesting
+
+169
+00:06:24,520 --> 00:06:29,280
+question for us to understand and think
+
+170
+00:06:26,520 --> 00:06:31,200
+about in the future is how do we merge
+
+171
+00:06:29,280 --> 00:06:33,360
+this inherent knowledge that are in
+
+172
+00:06:31,200 --> 00:06:35,880
+these knowledge graphs to causal graph
+
+173
+00:06:33,360 --> 00:06:37,280
+identification. So, I will put forth to
+
+174
+00:06:35,880 --> 00:06:39,919
+you that if you already know what
+
+175
+00:06:37,280 --> 00:06:41,440
+influences what, and have a sense of the
+
+176
+00:06:39,919 --> 00:06:43,240
+strength of that influence, you don't
+
+177
+00:06:41,440 --> 00:06:45,240
+need someone like me or these
+
+178
+00:06:43,240 --> 00:06:47,560
+algorithms. The The interesting part
+
+179
+00:06:45,240 --> 00:06:49,600
+occurs when we try to bring these ideas
+
+180
+00:06:47,560 --> 00:06:51,440
+together, and in particular, try to
+
+181
+00:06:49,600 --> 00:06:53,720
+understand how we can use knowledge
+
+182
+00:06:51,440 --> 00:06:55,680
+graphs as prior information. And as
+
+183
+00:06:53,720 --> 00:06:57,200
+someone who, again, does structured
+
+184
+00:06:55,680 --> 00:07:00,120
+statistics, we always want to know what
+
+185
+00:06:57,200 --> 00:07:01,960
+the priors are in order to generate um
+
+186
+00:07:00,120 --> 00:07:04,600
+high-performance specialized algorithms.
+
+187
+00:07:01,960 --> 00:07:07,440
+So, at the risk of being a heretic, I
+
+188
+00:07:04,600 --> 00:07:09,520
+don't want to do AGI. All right? Because
+
+189
+00:07:07,440 --> 00:07:11,400
+general means that it's going to
+
+190
+00:07:09,520 --> 00:07:14,120
+hallucinate, it's going to be fragile,
+
+191
+00:07:11,400 --> 00:07:16,520
+etc. But if I can do ASI, where I'm
+
+192
+00:07:14,120 --> 00:07:19,240
+using S as smaller specialized, then we
+
+193
+00:07:16,520 --> 00:07:21,200
+have some hope of solving problems.
+
+194
+00:07:19,240 --> 00:07:23,000
+Okay. So, as I said, what I'd like to
+
+195
+00:07:21,200 --> 00:07:24,840
+do, these are my goals, is to learn the
+
+196
+00:07:23,000 --> 00:07:26,640
+topology. How do these nodes interact
+
+197
+00:07:24,840 --> 00:07:28,720
+with each other? What are the direction
+
+198
+00:07:26,640 --> 00:07:30,720
+of the arrows? And what are the values,
+
+199
+00:07:28,720 --> 00:07:32,520
+if you will? And notice if in my toy
+
+200
+00:07:30,720 --> 00:07:33,800
+example, and I made up these numbers, I
+
+201
+00:07:32,520 --> 00:07:36,400
+don't know if they have anything to do
+
+202
+00:07:33,800 --> 00:07:37,840
+with Lyft's causal graph, but some of
+
+203
+00:07:36,400 --> 00:07:39,280
+the numbers are negative. All right? So,
+
+204
+00:07:37,840 --> 00:07:41,680
+there can be things that are negatively
+
+205
+00:07:39,280 --> 00:07:44,000
+influential. Uh I want to understand the
+
+206
+00:07:41,680 --> 00:07:46,280
+weights and directions, and my talk is
+
+207
+00:07:44,000 --> 00:07:48,360
+in two parts, and in the second part, in
+
+208
+00:07:46,280 --> 00:07:50,760
+addition to learning the graph, I also
+
+209
+00:07:48,360 --> 00:07:52,880
+want to optimize some kind of reward.
+
+210
+00:07:50,760 --> 00:07:54,960
+Um, in this case, if I'm Lyft, it would
+
+211
+00:07:52,880 --> 00:07:58,800
+be the number of rides. And so, we'll be
+
+212
+00:07:54,960 --> 00:08:00,960
+interested in modifying behavior so that
+
+213
+00:07:58,800 --> 00:08:02,520
+we can maximize rewards while learning
+
+214
+00:08:00,960 --> 00:08:05,200
+the graph. So, I want to do I want to
+
+215
+00:08:02,520 --> 00:08:08,600
+walk and chew gum at the same time.
+
+216
+00:08:05,200 --> 00:08:11,320
+All right. So, if you are a follower of
+
+217
+00:08:08,600 --> 00:08:13,960
+the Judea Pearl view of causality in the
+
+218
+00:08:11,320 --> 00:08:16,320
+world, he talks about this ladder of
+
+219
+00:08:13,960 --> 00:08:17,960
+causality and how in the early days,
+
+220
+00:08:16,320 --> 00:08:20,560
+when we were figuring out correlations
+
+221
+00:08:17,960 --> 00:08:22,040
+or associations between nodes or
+
+222
+00:08:20,560 --> 00:08:24,560
+behaviors, we were sort of at this
+
+223
+00:08:22,040 --> 00:08:27,240
+lowest rung. And I would say even causal
+
+224
+00:08:24,560 --> 00:08:29,000
+graph identification on some level is at
+
+225
+00:08:27,240 --> 00:08:31,480
+this low lowest rung because you're
+
+226
+00:08:29,000 --> 00:08:33,560
+trying to understand these influences.
+
+227
+00:08:31,480 --> 00:08:36,800
+As we become more sophisticated, we try
+
+228
+00:08:33,560 --> 00:08:40,240
+to understand interventions. So, I have
+
+229
+00:08:36,800 --> 00:08:42,440
+an understanding of A influencing B, but
+
+230
+00:08:40,240 --> 00:08:44,720
+if I now change the environment, I give
+
+231
+00:08:42,440 --> 00:08:47,080
+you a medication, I offer you a coupon,
+
+232
+00:08:44,720 --> 00:08:49,200
+how is this going to change the graph
+
+233
+00:08:47,080 --> 00:08:52,040
+that underlies the system? What we
+
+234
+00:08:49,200 --> 00:08:54,040
+really want to get at is this top rung,
+
+235
+00:08:52,040 --> 00:08:56,160
+which is counterfactuals, which is to
+
+236
+00:08:54,040 --> 00:08:58,560
+ask kinds of the questions of
+
+237
+00:08:56,160 --> 00:09:00,920
+"How healthy would I be now if 10 years
+
+238
+00:08:58,560 --> 00:09:03,880
+ago I stopped eating ice cream?" All
+
+239
+00:09:00,920 --> 00:09:06,240
+right, I can't go back in time, but if
+
+240
+00:09:03,880 --> 00:09:07,960
+there is enough model data information
+
+241
+00:09:06,240 --> 00:09:09,640
+out there, I might be able to ask that
+
+242
+00:09:07,960 --> 00:09:11,400
+kind of question, especially when it
+
+243
+00:09:09,640 --> 00:09:14,320
+comes to designing things in the future,
+
+244
+00:09:11,400 --> 00:09:16,160
+right? So, can I decide how I might make
+
+245
+00:09:14,320 --> 00:09:18,360
+these sorts of designs? So,
+
+246
+00:09:16,160 --> 00:09:20,680
+people are working on counterfactuals.
+
+247
+00:09:18,360 --> 00:09:22,960
+It's, I think, very much in its infancy,
+
+248
+00:09:20,680 --> 00:09:25,240
+and there's a lot to be done, especially
+
+249
+00:09:22,960 --> 00:09:27,600
+since we still have a lot to do even at
+
+250
+00:09:25,240 --> 00:09:29,280
+the lowest rung in terms of association,
+
+251
+00:09:27,600 --> 00:09:31,880
+and in particular, when it comes to this
+
+252
+00:09:29,280 --> 00:09:35,560
+performance complexity trade-off.
+
+253
+00:09:31,880 --> 00:09:37,120
+So, again, I I want to underscore that
+
+254
+00:09:35,560 --> 00:09:39,280
+people have been working on these
+
+255
+00:09:37,120 --> 00:09:41,840
+problems for a while and even in our own
+
+256
+00:09:39,280 --> 00:09:43,560
+work, we've been trying to assess what
+
+257
+00:09:41,840 --> 00:09:44,600
+are the state-of-the-art algorithms that
+
+258
+00:09:43,560 --> 00:09:46,080
+we should be looking at. And
+
+259
+00:09:44,600 --> 00:09:48,440
+interestingly enough, there are things
+
+260
+00:09:46,080 --> 00:09:50,240
+from the 2010s and shortly after that
+
+261
+00:09:48,440 --> 00:09:52,640
+that remain sort of the state-of-the-art
+
+262
+00:09:50,240 --> 00:09:55,120
+when it comes to causal inference. So,
+
+263
+00:09:52,640 --> 00:09:56,920
+there's still a lot of room and in fact,
+
+264
+00:09:55,120 --> 00:09:58,640
+some of the theoretical work that I'm
+
+265
+00:09:56,920 --> 00:10:00,800
+going to show you today
+
+266
+00:09:58,640 --> 00:10:02,600
+essentially shows you that these
+
+267
+00:10:00,800 --> 00:10:04,800
+so-called state-of-the-art algorithms
+
+268
+00:10:02,600 --> 00:10:06,440
+are very far from what we can do. So,
+
+269
+00:10:04,800 --> 00:10:08,720
+there's still a lot of room for
+
+270
+00:10:06,440 --> 00:10:11,320
+improvement. Now,
+
+271
+00:10:08,720 --> 00:10:13,480
+because we are driven by particular
+
+272
+00:10:11,320 --> 00:10:14,800
+applications, there's some things that
+
+273
+00:10:13,480 --> 00:10:16,280
+we noticed in the literature that were
+
+274
+00:10:14,800 --> 00:10:19,120
+quite important to us that I want to
+
+275
+00:10:16,280 --> 00:10:21,400
+emphasize. And that is in the discovery
+
+276
+00:10:19,120 --> 00:10:23,000
+of this graph, is there an edge? Is
+
+277
+00:10:21,400 --> 00:10:25,360
+there not an edge? What's the direction
+
+278
+00:10:23,000 --> 00:10:27,400
+of the edge? Most of this prior art
+
+279
+00:10:25,360 --> 00:10:30,400
+assumes that any of the kinds of
+
+280
+00:10:27,400 --> 00:10:32,280
+mistakes that you might make are equally
+
+281
+00:10:30,400 --> 00:10:34,320
+deleterious, all right? And in many
+
+282
+00:10:32,280 --> 00:10:36,960
+applications, this is in fact not the
+
+283
+00:10:34,320 --> 00:10:38,960
+case. The other thing that we see is a
+
+284
+00:10:36,960 --> 00:10:41,360
+lot of the prior art needs a lot of
+
+285
+00:10:38,960 --> 00:10:42,720
+data, many observations in order to make
+
+286
+00:10:41,360 --> 00:10:45,080
+decisions.
+
+287
+00:10:42,720 --> 00:10:47,320
+And if you look at a lot of modern
+
+288
+00:10:45,080 --> 00:10:49,720
+problems, you will hear people use the
+
+289
+00:10:47,320 --> 00:10:51,640
+language big data.
+
+290
+00:10:49,720 --> 00:10:53,240
+Oftentimes when they say big data, they
+
+291
+00:10:51,640 --> 00:10:55,400
+mean that the data is very high
+
+292
+00:10:53,240 --> 00:10:57,440
+dimensional, but they don't mean that I
+
+293
+00:10:55,400 --> 00:10:59,920
+have millions of realizations of this
+
+294
+00:10:57,440 --> 00:11:01,600
+particular data. And so, we are
+
+295
+00:10:59,920 --> 00:11:03,520
+operating in the regime where maybe your
+
+296
+00:11:01,600 --> 00:11:04,760
+data is high dimensional, but you don't
+
+297
+00:11:03,520 --> 00:11:06,920
+have a lot of copies of it. And when I
+
+298
+00:11:04,760 --> 00:11:08,880
+say copies, I mean did you run a million
+
+299
+00:11:06,920 --> 00:11:10,560
+experiments so that I have that many
+
+300
+00:11:08,880 --> 00:11:12,480
+observations by which I can build
+
+301
+00:11:10,560 --> 00:11:14,360
+statistics and design some of these
+
+302
+00:11:12,480 --> 00:11:17,200
+algorithms.
+
+303
+00:11:14,360 --> 00:11:20,040
+Okay. So, to underscore this point that
+
+304
+00:11:17,200 --> 00:11:22,800
+I just made, um I have a toy graph here.
+
+305
+00:11:20,040 --> 00:11:24,880
+It has four nodes. You can see um the
+
+306
+00:11:22,800 --> 00:11:27,000
+black lines correspond to my so-called
+
+307
+00:11:24,880 --> 00:11:29,040
+true directions between the nodes
+
+308
+00:11:27,000 --> 00:11:31,440
+influencing each of them. We're going to
+
+309
+00:11:29,040 --> 00:11:33,760
+see later that these X's correspond to
+
+310
+00:11:31,440 --> 00:11:36,040
+observations at the of those nodes,
+
+311
+00:11:33,760 --> 00:11:38,000
+which might be number of rides, the
+
+312
+00:11:36,040 --> 00:11:39,760
+weather at a particular location over 2
+
+313
+00:11:38,000 --> 00:11:41,680
+months, etc.
+
+314
+00:11:39,760 --> 00:11:44,240
+And I could use two different algorithms
+
+315
+00:11:41,680 --> 00:11:46,160
+that will come up with two estimates of
+
+316
+00:11:44,240 --> 00:11:48,040
+you if you will of this causal graph.
+
+317
+00:11:46,160 --> 00:11:49,960
+I'm not worrying about weights yet. And
+
+318
+00:11:48,040 --> 00:11:52,080
+in both of the examples, they're both
+
+319
+00:11:49,960 --> 00:11:54,760
+wrong. And according to most of the
+
+320
+00:11:52,080 --> 00:11:57,360
+prior algorithms, they are equally wrong
+
+321
+00:11:54,760 --> 00:11:59,960
+because they both have two mistakes. One
+
+322
+00:11:57,360 --> 00:12:01,640
+has introduced edges that didn't exist
+
+323
+00:11:59,960 --> 00:12:04,080
+in the true graph, and the other one
+
+324
+00:12:01,640 --> 00:12:06,280
+removed edges that did exist in the true
+
+325
+00:12:04,080 --> 00:12:07,800
+graph. And again, in our applications,
+
+326
+00:12:06,280 --> 00:12:09,320
+and I think for a lot of applications
+
+327
+00:12:07,800 --> 00:12:11,840
+that you care about, these are
+
+328
+00:12:09,320 --> 00:12:13,520
+completely unequal problems, all right?
+
+329
+00:12:11,840 --> 00:12:16,080
+And I would argue, depending on what
+
+330
+00:12:13,520 --> 00:12:18,680
+nodes or KPIs you are, that you might
+
+331
+00:12:16,080 --> 00:12:21,200
+care differently about the presence or
+
+332
+00:12:18,680 --> 00:12:22,720
+absence of a link. And we believe with
+
+333
+00:12:21,200 --> 00:12:24,280
+the methods that we've created, we're
+
+334
+00:12:22,720 --> 00:12:26,160
+actually now in a
+
+335
+00:12:24,280 --> 00:12:28,200
+in a position, although it's going to be
+
+336
+00:12:26,160 --> 00:12:30,720
+computationally expensive, to actually
+
+337
+00:12:28,200 --> 00:12:33,400
+take those errors link by link and
+
+338
+00:12:30,720 --> 00:12:36,040
+decide which whether a false positive or
+
+339
+00:12:33,400 --> 00:12:37,800
+a false negative is more important.
+
+340
+00:12:36,040 --> 00:12:39,760
+And so again, I don't think I have to
+
+341
+00:12:37,800 --> 00:12:42,720
+sell this to you, you know, which one of
+
+342
+00:12:39,760 --> 00:12:45,000
+these errors is more critical to you is
+
+343
+00:12:42,720 --> 00:12:46,839
+very much application dependent. We've
+
+344
+00:12:45,000 --> 00:12:48,080
+been interacting with microbiologists
+
+345
+00:12:46,839 --> 00:12:50,000
+who are trying to understand the
+
+346
+00:12:48,080 --> 00:12:53,040
+underlying gene networks in these simple
+
+347
+00:12:50,000 --> 00:12:54,920
+single-cellular organisms. And for them,
+
+348
+00:12:53,040 --> 00:12:56,160
+interestingly enough, false positives on
+
+349
+00:12:54,920 --> 00:12:57,680
+our side mean they have to do
+
+350
+00:12:56,160 --> 00:12:59,880
+experiments that they shouldn't have to
+
+351
+00:12:57,680 --> 00:13:01,680
+do. On the other hand, if you're, you
+
+352
+00:12:59,880 --> 00:13:04,400
+know, in the medical field, then a false
+
+353
+00:13:01,680 --> 00:13:06,520
+negative might be more important to you.
+
+354
+00:13:04,400 --> 00:13:09,760
+Okay. So, um
+
+355
+00:13:06,520 --> 00:13:12,240
+not only am I standing between you and
+
+356
+00:13:09,760 --> 00:13:14,440
+drinks, cocktails,
+
+357
+00:13:12,240 --> 00:13:15,680
+being the last talk, I've also decided
+
+358
+00:13:14,440 --> 00:13:17,960
+to introduce equations, which is
+
+359
+00:13:15,680 --> 00:13:20,120
+probably something one should not do in
+
+360
+00:13:17,960 --> 00:13:22,760
+this particular community. I apologize,
+
+361
+00:13:20,120 --> 00:13:25,400
+but I it's very hard for me to not have
+
+362
+00:13:22,760 --> 00:13:27,000
+equations. So, um
+
+363
+00:13:25,400 --> 00:13:28,480
+I hope some of you have had linear
+
+364
+00:13:27,000 --> 00:13:30,720
+algebra, but these are very simple
+
+365
+00:13:28,480 --> 00:13:32,600
+equations. They actually belie the
+
+366
+00:13:30,720 --> 00:13:34,880
+challenge in doing causal graph
+
+367
+00:13:32,600 --> 00:13:35,920
+identification because if you look at
+
+368
+00:13:34,880 --> 00:13:38,280
+this,
+
+369
+00:13:35,920 --> 00:13:40,520
+what I have So, what's invisible here is
+
+370
+00:13:38,280 --> 00:13:42,880
+that there are these epsilons coming
+
+371
+00:13:40,520 --> 00:13:45,040
+into every node. It's like a exogenous
+
+372
+00:13:42,880 --> 00:13:47,280
+inputs often modeled by some form of
+
+373
+00:13:45,040 --> 00:13:49,680
+noise. And then I have these connections
+
+374
+00:13:47,280 --> 00:13:52,280
+which literally, for this example,
+
+375
+00:13:49,680 --> 00:13:54,280
+correspond to linear equations. Notice
+
+376
+00:13:52,280 --> 00:13:56,400
+that I don't allow for any self loops,
+
+377
+00:13:54,280 --> 00:13:58,480
+so there are no loops going backward on
+
+378
+00:13:56,400 --> 00:14:00,280
+each other. So, if you come up with a
+
+379
+00:13:58,480 --> 00:14:02,000
+parsimonious representation of this, you
+
+380
+00:14:00,280 --> 00:14:05,400
+essentially have either upper or lower
+
+381
+00:14:02,000 --> 00:14:07,760
+triangular matrices. So, on some level,
+
+382
+00:14:05,400 --> 00:14:10,360
+by trying to learn what this matrix B is
+
+383
+00:14:07,760 --> 00:14:11,800
+by looking at realizations of the X, you
+
+384
+00:14:10,360 --> 00:14:13,240
+can rearrange it and it's actually a
+
+385
+00:14:11,800 --> 00:14:16,040
+linear equation, which you would think
+
+386
+00:14:13,240 --> 00:14:17,880
+would be super easy to solve except that
+
+387
+00:14:16,040 --> 00:14:20,240
+I have to ensure that I have a directed
+
+388
+00:14:17,880 --> 00:14:22,240
+acyclic graph. And in many situations,
+
+389
+00:14:20,240 --> 00:14:24,200
+the number of connections are sparse and
+
+390
+00:14:22,240 --> 00:14:26,120
+I want to take that side information
+
+391
+00:14:24,200 --> 00:14:28,440
+into consideration. And so, these
+
+392
+00:14:26,120 --> 00:14:30,640
+various constraints actually convert
+
+393
+00:14:28,440 --> 00:14:33,280
+this into a nonlinear problem.
+
+394
+00:14:30,640 --> 00:14:35,440
+So, um So, this is what I want to do. I
+
+395
+00:14:33,280 --> 00:14:38,000
+want to figure out this matrix B, which
+
+396
+00:14:35,440 --> 00:14:40,800
+has an edge direction, weight, etc.
+
+397
+00:14:38,000 --> 00:14:42,360
+So, in the first piece of work that um
+
+398
+00:14:40,800 --> 00:14:44,160
+I want to talk to you about, we looked
+
+399
+00:14:42,360 --> 00:14:46,800
+at this from a very theoretical point of
+
+400
+00:14:44,160 --> 00:14:49,280
+view which asked the question of can I
+
+401
+00:14:46,800 --> 00:14:51,720
+figure out what is called the skeleton,
+
+402
+00:14:49,280 --> 00:14:54,120
+which is just the presence or absence of
+
+403
+00:14:51,720 --> 00:14:55,720
+links between various nodes. And we took
+
+404
+00:14:54,120 --> 00:14:58,520
+a statistical approach that said, "I'm
+
+405
+00:14:55,720 --> 00:15:00,440
+going to look at one link at a time
+
+406
+00:14:58,520 --> 00:15:03,480
+and compare the statistics under both
+
+407
+00:15:00,440 --> 00:15:05,320
+cases." This ends up being conceptually
+
+408
+00:15:03,480 --> 00:15:07,120
+a very straightforward thing to do, but
+
+409
+00:15:05,320 --> 00:15:10,200
+in practice, it's very challenging to
+
+410
+00:15:07,120 --> 00:15:13,440
+design because the underlying statistics
+
+411
+00:15:10,200 --> 00:15:15,800
+of these cases are very hard to compute
+
+412
+00:15:13,440 --> 00:15:18,240
+because there's so many of them. Um I
+
+413
+00:15:15,800 --> 00:15:20,480
+think this got mentioned during the
+
+414
+00:15:18,240 --> 00:15:21,680
+master class yesterday, but we often go
+
+415
+00:15:20,480 --> 00:15:24,720
+through this sort of
+
+416
+00:15:21,680 --> 00:15:27,440
+toy computation of look how few nodes it
+
+417
+00:15:24,720 --> 00:15:29,560
+takes and how many candidate directed
+
+418
+00:15:27,440 --> 00:15:31,600
+acyclic graphs there are out there. So,
+
+419
+00:15:29,560 --> 00:15:33,360
+with as little as eight nodes, I have,
+
+420
+00:15:31,600 --> 00:15:35,680
+you know, almost 10 to the 12 different
+
+421
+00:15:33,360 --> 00:15:37,240
+possibilities. So, computing the
+
+422
+00:15:35,680 --> 00:15:39,720
+statistics under these situations
+
+423
+00:15:37,240 --> 00:15:42,560
+becomes computationally very expensive.
+
+424
+00:15:39,720 --> 00:15:45,440
+I don't have the technical results here,
+
+425
+00:15:42,560 --> 00:15:47,520
+but I will tell you that this strategy,
+
+426
+00:15:45,440 --> 00:15:50,000
+computationally expensive as it is, is a
+
+427
+00:15:47,520 --> 00:15:51,880
+very easy to analyze. So, I can make
+
+428
+00:15:50,000 --> 00:15:54,200
+some very strong theoretical statements
+
+429
+00:15:51,880 --> 00:15:56,240
+about how quickly I learn and how does
+
+430
+00:15:54,200 --> 00:15:58,600
+my accuracy change as a function of the
+
+431
+00:15:56,240 --> 00:16:00,000
+number of observations that I have, but
+
+432
+00:15:58,600 --> 00:16:02,120
+when you plot performance against
+
+433
+00:16:00,000 --> 00:16:03,760
+state-of-the-art strategies, again, and
+
+434
+00:16:02,120 --> 00:16:06,680
+you will see some of these plots,
+
+435
+00:16:03,760 --> 00:16:08,480
+there's a huge gap between what this
+
+436
+00:16:06,680 --> 00:16:11,080
+optimal detector can do and what people
+
+437
+00:16:08,480 --> 00:16:14,160
+are using right now. To me, this says
+
+438
+00:16:11,080 --> 00:16:16,200
+that there's tremendous room for growth
+
+439
+00:16:14,160 --> 00:16:18,160
+for people to come up with new moderate
+
+440
+00:16:16,200 --> 00:16:20,760
+complexity strategies
+
+441
+00:16:18,160 --> 00:16:23,640
+for graph identification. So, again,
+
+442
+00:16:20,760 --> 00:16:25,920
+this is computationally very expensive.
+
+443
+00:16:23,640 --> 00:16:28,920
+So, this is unfortunate. So, we wanted
+
+444
+00:16:25,920 --> 00:16:31,080
+to worry about cheaper ways of trying to
+
+445
+00:16:28,920 --> 00:16:33,040
+design these strategies.
+
+446
+00:16:31,080 --> 00:16:34,920
+And again, I need to underscore going
+
+447
+00:16:33,040 --> 00:16:38,240
+back here that in the design of the
+
+448
+00:16:34,920 --> 00:16:40,040
+so-called optimal test, I am controlling
+
+449
+00:16:38,240 --> 00:16:42,880
+for either false positives or false
+
+450
+00:16:40,040 --> 00:16:45,360
+negatives. So, I can guarantee you that
+
+451
+00:16:42,880 --> 00:16:47,000
+my detector will give you the false
+
+452
+00:16:45,360 --> 00:16:49,120
+positive or false negative rate that you
+
+453
+00:16:47,000 --> 00:16:52,080
+want. And again, most strategies don't
+
+454
+00:16:49,120 --> 00:16:55,120
+worry about that. So, we designed a much
+
+455
+00:16:52,080 --> 00:16:57,240
+lower complexity algorithm that does
+
+456
+00:16:55,120 --> 00:16:59,080
+control edge errors. It's the red line
+
+457
+00:16:57,240 --> 00:17:01,040
+there. So, this is my false negative
+
+458
+00:16:59,080 --> 00:17:03,680
+rate and I want it to be as low as
+
+459
+00:17:01,040 --> 00:17:06,199
+possible as a as a function of the
+
+460
+00:17:03,680 --> 00:17:08,240
+so-called false positive rate. And what
+
+461
+00:17:06,199 --> 00:17:11,800
+you see above in the green and the sort
+
+462
+00:17:08,240 --> 00:17:14,640
+of yellow ochre lines are two of the
+
+463
+00:17:11,800 --> 00:17:16,439
+state-of-the-art strategies. Lasso is
+
+464
+00:17:14,640 --> 00:17:19,560
+based on sparse approximation
+
+465
+00:17:16,439 --> 00:17:22,920
+methodologies and ensures sparsity
+
+466
+00:17:19,560 --> 00:17:25,199
+in the system. And then Dagma is
+
+467
+00:17:22,920 --> 00:17:26,800
+So, you'll recall that earlier I said
+
+468
+00:17:25,199 --> 00:17:28,880
+there are these elegant strategies that
+
+469
+00:17:26,800 --> 00:17:30,960
+come out of the Judea Pearl way of
+
+470
+00:17:28,880 --> 00:17:33,240
+thinking about the world, but they are
+
+471
+00:17:30,960 --> 00:17:35,480
+inherently combinatorial and then also
+
+472
+00:17:33,240 --> 00:17:37,520
+computationally expensive. So, methods
+
+473
+00:17:35,480 --> 00:17:39,680
+like Dagma essentially convert these
+
+474
+00:17:37,520 --> 00:17:41,600
+combinatorial optimizations into
+
+475
+00:17:39,680 --> 00:17:43,880
+continuous ones, but they're still
+
+476
+00:17:41,600 --> 00:17:46,360
+somewhat expensive.
+
+477
+00:17:43,880 --> 00:17:48,760
+What's nice about the strategy that
+
+478
+00:17:46,360 --> 00:17:50,760
+we've designed and again for those of
+
+479
+00:17:48,760 --> 00:17:52,520
+you that are used to playing around with
+
+480
+00:17:50,760 --> 00:17:54,800
+neural network architectures, etc., is
+
+481
+00:17:52,520 --> 00:17:57,240
+that we have no hyperparameter tuning.
+
+482
+00:17:54,800 --> 00:17:59,000
+Right? So, you give me the false
+
+483
+00:17:57,240 --> 00:18:00,400
+positive rate that you want, I will give
+
+484
+00:17:59,000 --> 00:18:02,760
+you the best false negative or vice
+
+485
+00:18:00,400 --> 00:18:04,840
+versa, and I know exactly what to do and
+
+486
+00:18:02,760 --> 00:18:07,600
+how to set various thresholds within the
+
+487
+00:18:04,840 --> 00:18:10,040
+algorithm. So, this is something that's
+
+488
+00:18:07,600 --> 00:18:11,960
+that's nice, but it's
+
+489
+00:18:10,040 --> 00:18:13,280
+it's still expensive relative to other
+
+490
+00:18:11,960 --> 00:18:14,320
+strategies.
+
+491
+00:18:13,280 --> 00:18:15,680
+Uh
+
+492
+00:18:14,320 --> 00:18:18,080
+if you've been reading the slides
+
+493
+00:18:15,680 --> 00:18:20,400
+carefully, at least a third of you are
+
+494
+00:18:18,080 --> 00:18:22,400
+scoffing at the theoretical person on
+
+495
+00:18:20,400 --> 00:18:23,360
+the stage giving you these numerical
+
+496
+00:18:22,400 --> 00:18:25,160
+results because you're going to
+
+497
+00:18:23,360 --> 00:18:27,440
+recognize that this is a very small
+
+498
+00:18:25,160 --> 00:18:29,080
+graph, five nodes. I don't think any of
+
+499
+00:18:27,440 --> 00:18:31,680
+your knowledge graphs have five nodes,
+
+500
+00:18:29,080 --> 00:18:33,560
+they probably have hundreds. Um but, I
+
+501
+00:18:31,680 --> 00:18:35,320
+want to emphasize that there's only 10
+
+502
+00:18:33,560 --> 00:18:37,480
+samples here, which is like almost no
+
+503
+00:18:35,320 --> 00:18:38,720
+data. This is the kind of thing that my
+
+504
+00:18:37,480 --> 00:18:40,720
+grad students and I can do on our
+
+505
+00:18:38,720 --> 00:18:42,760
+laptops, it easily scales up. The
+
+506
+00:18:40,720 --> 00:18:44,320
+important thing is the relationship
+
+507
+00:18:42,760 --> 00:18:46,400
+between the number of nodes and the
+
+508
+00:18:44,320 --> 00:18:48,520
+number of samples, right? So, we're in a
+
+509
+00:18:46,400 --> 00:18:51,200
+regime that if you give me my GPU or my
+
+510
+00:18:48,520 --> 00:18:52,840
+servers, I can make this work well and
+
+511
+00:18:51,200 --> 00:18:54,560
+and you know, computationally
+
+512
+00:18:52,840 --> 00:18:57,160
+efficiently.
+
+513
+00:18:54,560 --> 00:18:59,520
+Can I go even cheaper?
+
+514
+00:18:57,160 --> 00:19:02,200
+So, to overcome this complexity
+
+515
+00:18:59,520 --> 00:19:04,320
+challenge, uh
+
+516
+00:19:02,200 --> 00:19:05,880
+we've introduced an idea which to me
+
+517
+00:19:04,320 --> 00:19:07,640
+must have been done before, but we can't
+
+518
+00:19:05,880 --> 00:19:10,560
+seem to find it. So, if anyone knows,
+
+519
+00:19:07,640 --> 00:19:12,880
+please tell us. And that is instead of
+
+520
+00:19:10,560 --> 00:19:14,800
+trying to learn the whole graph, we
+
+521
+00:19:12,880 --> 00:19:17,160
+learn sub graphs. And these sub graphs
+
+522
+00:19:14,800 --> 00:19:18,800
+are created in a very particular way
+
+523
+00:19:17,160 --> 00:19:21,040
+because if we essentially say, "I'm a
+
+524
+00:19:18,800 --> 00:19:23,760
+node, let's pick an interesting one,
+
+525
+00:19:21,040 --> 00:19:25,320
+number five here, who are my parents?"
+
+526
+00:19:23,760 --> 00:19:26,960
+That's the mini graph that I want to
+
+527
+00:19:25,320 --> 00:19:29,440
+learn. I only want to learn who my
+
+528
+00:19:26,960 --> 00:19:31,520
+parents are. And it turns out that this
+
+529
+00:19:29,440 --> 00:19:33,480
+is equivalent to learning, say, columns
+
+530
+00:19:31,520 --> 00:19:36,280
+or rows of that being matrix one at a
+
+531
+00:19:33,480 --> 00:19:37,920
+time. And by enforcing properties of the
+
+532
+00:19:36,280 --> 00:19:40,720
+graph, like it's a directed acyclic
+
+533
+00:19:37,920 --> 00:19:43,480
+graph, we can ensure consistencies
+
+534
+00:19:40,720 --> 00:19:45,160
+across the entire graph. And this is
+
+535
+00:19:43,480 --> 00:19:46,760
+much cheaper than learning the whole
+
+536
+00:19:45,160 --> 00:19:48,720
+graph at a time, and it works
+
+537
+00:19:46,760 --> 00:19:50,720
+surprisingly well.
+
+538
+00:19:48,720 --> 00:19:52,760
+And so, one of the things that we are
+
+539
+00:19:50,720 --> 00:19:55,000
+going to exploit harkens back to
+
+540
+00:19:52,760 --> 00:19:57,280
+classical strategies in causal graph
+
+541
+00:19:55,000 --> 00:19:59,120
+identification, which is the principle
+
+542
+00:19:57,280 --> 00:20:00,800
+of independent mechanisms, and
+
+543
+00:19:59,120 --> 00:20:03,640
+essentially says that the causal
+
+544
+00:20:00,800 --> 00:20:06,080
+variables are statistically independent
+
+545
+00:20:03,640 --> 00:20:07,440
+of the effect-producing mechanism, which
+
+546
+00:20:06,080 --> 00:20:10,080
+means we can design a pretty
+
+547
+00:20:07,440 --> 00:20:13,600
+straightforward statistical test that
+
+548
+00:20:10,080 --> 00:20:16,680
+looks at the um mutual information
+
+549
+00:20:13,600 --> 00:20:19,120
+between errors that we make and
+
+550
+00:20:16,680 --> 00:20:20,280
+essentially uh the parents, if you will.
+
+551
+00:20:19,120 --> 00:20:22,400
+Now,
+
+552
+00:20:20,280 --> 00:20:24,720
+in any kind of strategy like this, we
+
+553
+00:20:22,400 --> 00:20:26,240
+saw before examples of the mistakes you
+
+554
+00:20:24,720 --> 00:20:28,640
+could make, false positives, false
+
+555
+00:20:26,240 --> 00:20:30,720
+negatives. I can also make a mistake in
+
+556
+00:20:28,640 --> 00:20:32,520
+terms of the value of the weight. And
+
+557
+00:20:30,720 --> 00:20:34,160
+so, we looked at the impact of different
+
+558
+00:20:32,520 --> 00:20:36,760
+kinds of errors on these kinds of
+
+559
+00:20:34,160 --> 00:20:38,560
+strategies. And so, for example, what
+
+560
+00:20:36,760 --> 00:20:40,480
+the student has labeled an intrinsic
+
+561
+00:20:38,560 --> 00:20:43,160
+error means I have the correct edge, but
+
+562
+00:20:40,480 --> 00:20:44,640
+the incorrect weight value, or I could
+
+563
+00:20:43,160 --> 00:20:46,160
+have the wrong edge, in this case a
+
+564
+00:20:44,640 --> 00:20:48,200
+false positive. And they affect my
+
+565
+00:20:46,160 --> 00:20:50,800
+errors differently. Now, one of the
+
+566
+00:20:48,200 --> 00:20:53,600
+things that's interesting is that small
+
+567
+00:20:50,800 --> 00:20:55,880
+errors can still have a big impact in
+
+568
+00:20:53,600 --> 00:20:58,120
+terms of percolating through the system.
+
+569
+00:20:55,880 --> 00:20:59,680
+And so, the sort of secret sauce that
+
+570
+00:20:58,120 --> 00:21:02,560
+was introduced by the student in this
+
+571
+00:20:59,680 --> 00:21:04,160
+case was recognizing that even if an
+
+572
+00:21:02,560 --> 00:21:05,880
+edge weight is small and therefore the
+
+573
+00:21:04,160 --> 00:21:09,640
+causal error a
+
+574
+00:21:05,880 --> 00:21:12,040
+I still need to um incorporate this into
+
+575
+00:21:09,640 --> 00:21:14,600
+my algorithm design. And so we created a
+
+576
+00:21:12,040 --> 00:21:17,000
+new regularization that gives us very
+
+577
+00:21:14,600 --> 00:21:18,400
+strong improvement in our results. So to
+
+578
+00:21:17,000 --> 00:21:20,760
+emphasize how important this
+
+579
+00:21:18,400 --> 00:21:23,000
+regularization is, let's take a look
+
+580
+00:21:20,760 --> 00:21:26,040
+again at the graph false negative rate
+
+581
+00:21:23,000 --> 00:21:28,480
+here. Here um I'm increasing the number
+
+582
+00:21:26,040 --> 00:21:30,160
+of nodes. I want to emphasize that it's
+
+583
+00:21:28,480 --> 00:21:32,080
+bigger than what I had before and it
+
+584
+00:21:30,160 --> 00:21:34,600
+could be much bigger. What is
+
+585
+00:21:32,080 --> 00:21:37,760
+constraining us here is our competition
+
+586
+00:21:34,600 --> 00:21:39,880
+algorithms. They start to
+
+587
+00:21:37,760 --> 00:21:42,120
+meet the limits of our computational
+
+588
+00:21:39,880 --> 00:21:44,000
+abilities at 20 nodes, but ours does
+
+589
+00:21:42,120 --> 00:21:46,480
+not. We could keep going.
+
+590
+00:21:44,000 --> 00:21:48,360
+And so what I really want So there's
+
+591
+00:21:46,480 --> 00:21:50,480
+perhaps two or three big ideas that I
+
+592
+00:21:48,360 --> 00:21:52,120
+want you to see. The first is that if we
+
+593
+00:21:50,480 --> 00:21:53,800
+don't take this regularization into
+
+594
+00:21:52,120 --> 00:21:56,160
+consideration, I get the purple line,
+
+595
+00:21:53,800 --> 00:21:58,680
+which basically says I have a very large
+
+596
+00:21:56,160 --> 00:22:00,720
+false negative rate, not acceptable. And
+
+597
+00:21:58,680 --> 00:22:04,560
+then if Yes, that's that's bad. One is
+
+598
+00:22:00,720 --> 00:22:06,080
+not good. Um and that our new strategies
+
+599
+00:22:04,560 --> 00:22:08,240
+uh based on this causal subgraph
+
+600
+00:22:06,080 --> 00:22:10,440
+learning give us the smallest false
+
+601
+00:22:08,240 --> 00:22:11,560
+negative rate that we see here relative
+
+602
+00:22:10,440 --> 00:22:13,560
+to the other state-of-the-art
+
+603
+00:22:11,560 --> 00:22:16,000
+algorithms. And as the number of nodes
+
+604
+00:22:13,560 --> 00:22:19,680
+gets larger, you see everyone else um
+
+605
+00:22:16,000 --> 00:22:22,560
+starts to fail as well. All right. So
+
+606
+00:22:19,680 --> 00:22:24,720
+what is challenging the state-of-the-art
+
+607
+00:22:22,560 --> 00:22:26,360
+methodologies is the fact that they're
+
+608
+00:22:24,720 --> 00:22:28,160
+trying to learn the whole graph at the
+
+609
+00:22:26,360 --> 00:22:30,600
+at the same time. And this becomes
+
+610
+00:22:28,160 --> 00:22:33,200
+harder and harder sort of exponentially
+
+611
+00:22:30,600 --> 00:22:36,840
+as the number of nodes increases.
+
+612
+00:22:33,200 --> 00:22:39,520
+Okay. So let's do one last thing um
+
+613
+00:22:36,840 --> 00:22:42,480
+before you can get your pint, which is
+
+614
+00:22:39,520 --> 00:22:44,760
+So we worried about learning the graph.
+
+615
+00:22:42,480 --> 00:22:46,840
+Now I want to ask the question of how
+
+616
+00:22:44,760 --> 00:22:49,240
+should I design interventions so I can
+
+617
+00:22:46,840 --> 00:22:51,480
+optimize some kind of reward, all right?
+
+618
+00:22:49,240 --> 00:22:54,240
+So if I'm Lyft, for example, I could
+
+619
+00:22:51,480 --> 00:22:56,600
+potentially change the coupon budget,
+
+620
+00:22:54,240 --> 00:22:58,680
+all right? Or I could change the number
+
+621
+00:22:56,600 --> 00:23:00,320
+of hours that somebody works. Or I could
+
+622
+00:22:58,680 --> 00:23:03,200
+change the price. These are all levers
+
+623
+00:23:00,320 --> 00:23:05,560
+that are at my disposal. Now one of the
+
+624
+00:23:03,200 --> 00:23:07,640
+things that we are going to investigate
+
+625
+00:23:05,560 --> 00:23:10,080
+is an environment which I can apply
+
+626
+00:23:07,640 --> 00:23:11,480
+interventions, but I don't necessarily
+
+627
+00:23:10,080 --> 00:23:13,520
+know how that's going to affect the
+
+628
+00:23:11,480 --> 00:23:15,840
+graph because we believe this is a more
+
+629
+00:23:13,520 --> 00:23:17,320
+realistic environment to consider.
+
+630
+00:23:15,840 --> 00:23:19,520
+And I'll go through examples of
+
+631
+00:23:17,320 --> 00:23:22,160
+interventions. But, what I want to
+
+632
+00:23:19,520 --> 00:23:23,640
+emphasize, going back to this early
+
+633
+00:23:22,160 --> 00:23:25,680
+statement that I made that false
+
+634
+00:23:23,640 --> 00:23:28,240
+positives and false negatives can affect
+
+635
+00:23:25,680 --> 00:23:30,440
+things differently, for this particular
+
+636
+00:23:28,240 --> 00:23:33,240
+problem, false negatives in the graph
+
+637
+00:23:30,440 --> 00:23:35,000
+learning have a significant impact on my
+
+638
+00:23:33,240 --> 00:23:37,080
+optimization of interventions and
+
+639
+00:23:35,000 --> 00:23:39,240
+maximization of my rewards. All right,
+
+640
+00:23:37,080 --> 00:23:41,680
+so, in this particular application, for
+
+641
+00:23:39,240 --> 00:23:44,480
+example, if I'm Lyft, I really care if
+
+642
+00:23:41,680 --> 00:23:47,320
+I'm getting a particular kind of edge
+
+643
+00:23:44,480 --> 00:23:49,000
+incorrectly estimated in my graph.
+
+644
+00:23:47,320 --> 00:23:51,040
+All right, so again, people have been
+
+645
+00:23:49,000 --> 00:23:52,720
+worrying about this as well
+
+646
+00:23:51,040 --> 00:23:55,080
+uh with varying amounts of known
+
+647
+00:23:52,720 --> 00:23:56,240
+information. So, there's known topology
+
+648
+00:23:55,080 --> 00:23:58,600
+and known information about the
+
+649
+00:23:56,240 --> 00:24:00,960
+interventions, known topology but
+
+650
+00:23:58,600 --> 00:24:02,960
+unknown interventional distributions,
+
+651
+00:24:00,960 --> 00:24:04,320
+and then the much more challenging case
+
+652
+00:24:02,960 --> 00:24:05,960
+which we're working on right now is
+
+653
+00:24:04,320 --> 00:24:08,080
+unknown topology and unknown
+
+654
+00:24:05,960 --> 00:24:11,000
+interventional distributions. Even
+
+655
+00:24:08,080 --> 00:24:12,840
+though there is a lot new work emerging
+
+656
+00:24:11,000 --> 00:24:15,000
+in this particular space that we are
+
+657
+00:24:12,840 --> 00:24:16,840
+trying to compete in, it tends to be
+
+658
+00:24:15,000 --> 00:24:18,320
+very restricted in terms of its
+
+659
+00:24:16,840 --> 00:24:20,480
+assumptions. And I
+
+660
+00:24:18,320 --> 00:24:22,800
+I believe one of the contributions that
+
+661
+00:24:20,480 --> 00:24:25,720
+my student was able to make is to
+
+662
+00:24:22,800 --> 00:24:27,560
+strongly um generalize things. I do want
+
+663
+00:24:25,720 --> 00:24:29,320
+to highlight this bolded work here which
+
+664
+00:24:27,560 --> 00:24:31,560
+has finally come out in the Journal of
+
+665
+00:24:29,320 --> 00:24:34,040
+Machine Learning Research because it
+
+666
+00:24:31,560 --> 00:24:36,280
+essentially um is what inspired us to do
+
+667
+00:24:34,040 --> 00:24:38,200
+this particular work, and you'll see we
+
+668
+00:24:36,280 --> 00:24:39,840
+do a comparison to their strategy where
+
+669
+00:24:38,200 --> 00:24:41,640
+they know the topology, but they don't
+
+670
+00:24:39,840 --> 00:24:43,320
+know the intervention.
+
+671
+00:24:41,640 --> 00:24:44,480
+So,
+
+672
+00:24:43,320 --> 00:24:45,720
+what are the different things that can
+
+673
+00:24:44,480 --> 00:24:47,240
+happen, or what are the different kinds
+
+674
+00:24:45,720 --> 00:24:48,560
+of interventions people have considered?
+
+675
+00:24:47,240 --> 00:24:50,240
+So, again, here's a very simple
+
+676
+00:24:48,560 --> 00:24:52,200
+three-node network.
+
+677
+00:24:50,240 --> 00:24:55,240
+Hard intervention just says, I've
+
+678
+00:24:52,200 --> 00:24:57,080
+decided, you know, the price is this, or
+
+679
+00:24:55,240 --> 00:24:59,000
+I've decided the weather is raining,
+
+680
+00:24:57,080 --> 00:25:01,240
+which again might seem artificial and it
+
+681
+00:24:59,000 --> 00:25:03,760
+is because there are situations in which
+
+682
+00:25:01,240 --> 00:25:05,320
+you cannot declare the value of a node
+
+683
+00:25:03,760 --> 00:25:06,880
+because you don't have any control over
+
+684
+00:25:05,320 --> 00:25:08,960
+it. What we're going to do is a
+
+685
+00:25:06,880 --> 00:25:11,720
+so-called soft intervention, which means
+
+686
+00:25:08,960 --> 00:25:13,240
+we we change um we do apply an
+
+687
+00:25:11,720 --> 00:25:14,880
+intervention, but we are not always
+
+688
+00:25:13,240 --> 00:25:16,520
+clear as to how it's going to change the
+
+689
+00:25:14,880 --> 00:25:18,080
+weights in the graph.
+
+690
+00:25:16,520 --> 00:25:20,600
+And what we're going to do is model this
+
+691
+00:25:18,080 --> 00:25:22,920
+as a multi-armed bandit where the arm
+
+692
+00:25:20,600 --> 00:25:25,480
+that I pull essentially corresponds to a
+
+693
+00:25:22,920 --> 00:25:27,720
+set of interventions. Many arms in this
+
+694
+00:25:25,480 --> 00:25:29,960
+problem, all right? And yet still um
+
+695
+00:25:27,720 --> 00:25:31,720
+because of the causal subgraph learning,
+
+696
+00:25:29,960 --> 00:25:34,520
+we're able to decompose things into a
+
+697
+00:25:31,720 --> 00:25:36,360
+much uh lower complexity problem. So,
+
+698
+00:25:34,520 --> 00:25:39,240
+there's a lot of math and analytics here
+
+699
+00:25:36,360 --> 00:25:41,600
+as to how to pull the arms and there's a
+
+700
+00:25:39,240 --> 00:25:45,160
+strategy that you use which says, I'm
+
+701
+00:25:41,600 --> 00:25:47,320
+going to pull arms such that I um reduce
+
+702
+00:25:45,160 --> 00:25:48,760
+a best-case uncertainty bound. And so,
+
+703
+00:25:47,320 --> 00:25:50,360
+again, this is sort of the math that
+
+704
+00:25:48,760 --> 00:25:53,160
+happened here, which I will hide from
+
+705
+00:25:50,360 --> 00:25:56,680
+you. But let me show you how it works.
+
+706
+00:25:53,160 --> 00:25:58,480
+Uh and so here, we have adapted some of
+
+707
+00:25:56,680 --> 00:26:01,280
+those state-of-the-art methods so that
+
+708
+00:25:58,480 --> 00:26:04,120
+they also have a multi-armed bandit
+
+709
+00:26:01,280 --> 00:26:06,280
+version. What we want to see in this
+
+710
+00:26:04,120 --> 00:26:08,280
+particular plot is that we find the
+
+711
+00:26:06,280 --> 00:26:09,960
+optimal intervention as often as
+
+712
+00:26:08,280 --> 00:26:12,320
+possible. So, in this graph, we want the
+
+713
+00:26:09,960 --> 00:26:15,360
+numbers to be large. What you see in the
+
+714
+00:26:12,320 --> 00:26:17,120
+purple line is the strategy that doesn't
+
+715
+00:26:15,360 --> 00:26:19,080
+know the interventional distributions,
+
+716
+00:26:17,120 --> 00:26:21,480
+but does know the topology. So, it has
+
+717
+00:26:19,080 --> 00:26:23,760
+side information. So, purple in a way is
+
+718
+00:26:21,480 --> 00:26:26,120
+what we call a genie-aided scheme. And
+
+719
+00:26:23,760 --> 00:26:29,280
+our strategy is the red one, and you see
+
+720
+00:26:26,120 --> 00:26:31,440
+that it gets near optimal much more
+
+721
+00:26:29,280 --> 00:26:33,560
+quickly than the other strategies. And
+
+722
+00:26:31,440 --> 00:26:35,080
+it's because embedded in this is the
+
+723
+00:26:33,560 --> 00:26:36,880
+subgraph learning. So, we are getting
+
+724
+00:26:35,080 --> 00:26:39,200
+much closer to learning the graph as we
+
+725
+00:26:36,880 --> 00:26:41,480
+go versus the other methodologies which
+
+726
+00:26:39,200 --> 00:26:42,960
+take some time to learn the graph.
+
+727
+00:26:41,480 --> 00:26:43,960
+And so, we're totally benefiting from
+
+728
+00:26:42,960 --> 00:26:45,120
+this.
+
+729
+00:26:43,960 --> 00:26:48,480
+Um
+
+730
+00:26:45,120 --> 00:26:50,800
+we can also look at how we're doing in
+
+731
+00:26:48,480 --> 00:26:52,880
+uh reward optimization. And so, the
+
+732
+00:26:50,800 --> 00:26:54,640
+technical term here is called regret,
+
+733
+00:26:52,880 --> 00:26:56,440
+where we essentially compare the optimal
+
+734
+00:26:54,640 --> 00:26:59,160
+reward to the reward that we are
+
+735
+00:26:56,440 --> 00:27:01,240
+achieving. And um as the term would
+
+736
+00:26:59,160 --> 00:27:03,600
+imply, in contrast to the previous slide
+
+737
+00:27:01,240 --> 00:27:06,120
+where you wanted to maximize things, now
+
+738
+00:27:03,600 --> 00:27:08,000
+we want to minimize our regret. So once
+
+739
+00:27:06,120 --> 00:27:10,640
+again, we see that, you know, we're the
+
+740
+00:27:08,000 --> 00:27:12,680
+red line, we're performing very close
+
+741
+00:27:10,640 --> 00:27:14,880
+um to the optimal regret, which is being
+
+742
+00:27:12,680 --> 00:27:16,640
+achieved by the strategy that already
+
+743
+00:27:14,880 --> 00:27:17,720
+knew the topology, but we're learning as
+
+744
+00:27:16,640 --> 00:27:19,320
+we go.
+
+745
+00:27:17,720 --> 00:27:21,680
+And so um
+
+746
+00:27:19,320 --> 00:27:24,280
+again, our ability to learn the graph
+
+747
+00:27:21,680 --> 00:27:26,920
+with our modified uncertainty bounds
+
+748
+00:27:24,280 --> 00:27:30,920
+gives us much better performance.
+
+749
+00:27:26,920 --> 00:27:33,600
+Okay. So I'm going to end by showing you
+
+750
+00:27:30,920 --> 00:27:35,400
+inspirations and applications. So we
+
+751
+00:27:33,600 --> 00:27:36,760
+first started thinking about this causal
+
+752
+00:27:35,400 --> 00:27:38,440
+graph learning problem because of
+
+753
+00:27:36,760 --> 00:27:40,160
+interaction that we had with um
+
+754
+00:27:38,440 --> 00:27:42,920
+microbiologists.
+
+755
+00:27:40,160 --> 00:27:44,640
+Uh Jo Handelsman is uh at the University
+
+756
+00:27:42,920 --> 00:27:47,040
+of Wisconsin. She was one of Obama's
+
+757
+00:27:44,640 --> 00:27:48,720
+science advisors. If I understand the
+
+758
+00:27:47,040 --> 00:27:51,440
+history correctly, she's the mother of
+
+759
+00:27:48,720 --> 00:27:53,880
+metagenomics, quite an important field,
+
+760
+00:27:51,440 --> 00:27:54,880
+um uh an important person in this field.
+
+761
+00:27:53,880 --> 00:27:57,080
+And they've been studying these
+
+762
+00:27:54,880 --> 00:27:59,360
+multi-species uh
+
+763
+00:27:57,080 --> 00:28:01,600
+communities. And this particular one,
+
+764
+00:27:59,360 --> 00:28:04,280
+which has three species in it, exists in
+
+765
+00:28:01,600 --> 00:28:05,920
+the wild. And most species multi-species
+
+766
+00:28:04,280 --> 00:28:07,880
+communities in the wild have hundreds of
+
+767
+00:28:05,920 --> 00:28:09,040
+species. If we checked your gut biome
+
+768
+00:28:07,880 --> 00:28:10,960
+right now, you'd have, you know, a
+
+769
+00:28:09,040 --> 00:28:14,720
+couple of a hundred in there.
+
+770
+00:28:10,960 --> 00:28:16,400
+And this particular community influences
+
+771
+00:28:14,720 --> 00:28:18,840
+um root health in soybean. So
+
+772
+00:28:16,400 --> 00:28:21,240
+agricultures all over trying to
+
+773
+00:28:18,840 --> 00:28:23,760
+understand what's going on here. So the
+
+774
+00:28:21,240 --> 00:28:26,480
+the short description is three species.
+
+775
+00:28:23,760 --> 00:28:28,800
+If two of them exist, one creates an
+
+776
+00:28:26,480 --> 00:28:30,640
+antibiotic that kills the other. If the
+
+777
+00:28:28,800 --> 00:28:33,640
+third one exists, everyone exists in
+
+778
+00:28:30,640 --> 00:28:35,240
+harmony. And why that third species
+
+779
+00:28:33,640 --> 00:28:36,480
+should have this kind of influence in
+
+780
+00:28:35,240 --> 00:28:38,440
+this community is something that is
+
+781
+00:28:36,480 --> 00:28:41,560
+still not well understood.
+
+782
+00:28:38,440 --> 00:28:44,160
+So we've been analyzing their data, and
+
+783
+00:28:41,560 --> 00:28:45,600
+one of the things that we found is that
+
+784
+00:28:44,160 --> 00:28:48,080
+they knew that the The
+
+785
+00:28:45,600 --> 00:28:50,040
+K node influenced everybody. Everyone
+
+786
+00:28:48,080 --> 00:28:52,360
+was well aware of that. But the fact
+
+787
+00:28:50,040 --> 00:28:54,320
+that the A's influenced each other,
+
+788
+00:28:52,360 --> 00:28:56,480
+these are genes within a single species,
+
+789
+00:28:54,320 --> 00:28:58,560
+that was a big surprise. So, we're now
+
+790
+00:28:56,480 --> 00:29:01,080
+waiting for them to do the experiments
+
+791
+00:28:58,560 --> 00:29:02,720
+to understand, you know, does this
+
+792
+00:29:01,080 --> 00:29:04,720
+effect actually exist? Because in the
+
+793
+00:29:02,720 --> 00:29:06,760
+end we're only manipulating 74
+
+794
+00:29:04,720 --> 00:29:08,160
+replicates. So, we don't know if, you
+
+795
+00:29:06,760 --> 00:29:10,200
+know, we are in the statistically
+
+796
+00:29:08,160 --> 00:29:12,000
+significant regime. Let me finish with
+
+797
+00:29:10,200 --> 00:29:13,800
+something that's just started up, which
+
+798
+00:29:12,000 --> 00:29:16,000
+was a bit of a surprise to us, talking
+
+799
+00:29:13,800 --> 00:29:18,840
+to colleagues at Notre Dame who are
+
+800
+00:29:16,000 --> 00:29:21,080
+computer engineers. They want to
+
+801
+00:29:18,840 --> 00:29:22,720
+optimize the efficiency and performance
+
+802
+00:29:21,080 --> 00:29:24,640
+of very large neural network
+
+803
+00:29:22,720 --> 00:29:26,880
+architectures. And one of the ways they
+
+804
+00:29:24,640 --> 00:29:29,120
+do this to reduce power use is they
+
+805
+00:29:26,880 --> 00:29:31,360
+quantize weights at the layers. And one
+
+806
+00:29:29,120 --> 00:29:33,840
+of the things that they've discovered is
+
+807
+00:29:31,360 --> 00:29:35,960
+that there are correlations and
+
+808
+00:29:33,840 --> 00:29:38,040
+interactions between the quantization
+
+809
+00:29:35,960 --> 00:29:40,600
+levels at different layers. And they do
+
+810
+00:29:38,040 --> 00:29:42,440
+a lot of, you know, combinatorial try
+
+811
+00:29:40,600 --> 00:29:45,280
+this, see what happens.
+
+812
+00:29:42,440 --> 00:29:47,400
+I assumed that the
+
+813
+00:29:45,280 --> 00:29:50,160
+the causal dependency would flow through
+
+814
+00:29:47,400 --> 00:29:51,480
+the network, right? I have my inputs and
+
+815
+00:29:50,160 --> 00:29:53,880
+then the second layer and then third
+
+816
+00:29:51,480 --> 00:29:56,720
+layer. Apparently, this is not true. And
+
+817
+00:29:53,880 --> 00:29:59,360
+so, what we're doing right now is using
+
+818
+00:29:56,720 --> 00:30:01,160
+our interventional approach, where the
+
+819
+00:29:59,360 --> 00:30:04,000
+interventions are the quantization
+
+820
+00:30:01,160 --> 00:30:06,520
+levels at each layer in the graph, to
+
+821
+00:30:04,000 --> 00:30:08,120
+see if we can tell them, you know,
+
+822
+00:30:06,520 --> 00:30:09,760
+what's the optimal amount of
+
+823
+00:30:08,120 --> 00:30:11,120
+quantization at each of the different
+
+824
+00:30:09,760 --> 00:30:13,200
+levels. And
+
+825
+00:30:11,120 --> 00:30:15,040
+to for us, at least, curiously try to
+
+826
+00:30:13,200 --> 00:30:17,160
+understand what are, you know, the the
+
+827
+00:30:15,040 --> 00:30:20,120
+directions and weights between different
+
+828
+00:30:17,160 --> 00:30:22,160
+layers. So, let me stop there by saying
+
+829
+00:30:20,120 --> 00:30:24,280
+we're very interested in tailored causal
+
+830
+00:30:22,160 --> 00:30:26,040
+graph learning for some of the things
+
+831
+00:30:24,280 --> 00:30:27,920
+that we've been looking at inspired by
+
+832
+00:30:26,040 --> 00:30:29,600
+the bio- biological applications. We
+
+833
+00:30:27,920 --> 00:30:31,640
+look at asymmetric errors and a small
+
+834
+00:30:29,600 --> 00:30:33,880
+number of samples. We're also very
+
+835
+00:30:31,640 --> 00:30:36,040
+interested in complexity. Our new
+
+836
+00:30:33,880 --> 00:30:37,520
+strategy for optimal detection shows
+
+837
+00:30:36,040 --> 00:30:39,560
+that there's a lot of room for
+
+838
+00:30:37,520 --> 00:30:42,040
+improvement in terms of moderate
+
+839
+00:30:39,560 --> 00:30:43,920
+complexity state-of-the-art strategies.
+
+840
+00:30:42,040 --> 00:30:45,480
+And one of the things that we want to do
+
+841
+00:30:43,920 --> 00:30:47,360
+now is
+
+842
+00:30:45,480 --> 00:30:48,760
+look at causal reinforcement learning.
+
+843
+00:30:47,360 --> 00:30:49,800
+And there's two possible directions
+
+844
+00:30:48,760 --> 00:30:52,240
+here.
+
+845
+00:30:49,800 --> 00:30:53,680
+To use causality to do reinforcement
+
+846
+00:30:52,240 --> 00:30:56,120
+learning, and to use reinforcement
+
+847
+00:30:53,680 --> 00:30:57,360
+learning to do causal graph learning.
+
+848
+00:30:56,120 --> 00:30:58,440
+And um
+
+849
+00:30:57,360 --> 00:30:59,640
+although I don't think I have to sell
+
+850
+00:30:58,440 --> 00:31:02,160
+you on this, but I've had to do this
+
+851
+00:30:59,640 --> 00:31:05,920
+with others, this is an actual causal
+
+852
+00:31:02,160 --> 00:31:07,400
+graph based on wireless network KPIs. I
+
+853
+00:31:05,920 --> 00:31:09,640
+can't tell you what each of the nodes
+
+854
+00:31:07,400 --> 00:31:11,760
+mean because I wasn't told. Um but from
+
+855
+00:31:09,640 --> 00:31:13,880
+a causal get Ericsson. So these large
+
+856
+00:31:11,760 --> 00:31:16,160
+companies are are very interested in
+
+857
+00:31:13,880 --> 00:31:17,760
+trying to understand these strategies
+
+858
+00:31:16,160 --> 00:31:19,840
+because especially for a company like
+
+859
+00:31:17,760 --> 00:31:21,960
+Ericsson, they want to improve network
+
+860
+00:31:19,840 --> 00:31:24,160
+resiliency and robustness. And so trying
+
+861
+00:31:21,960 --> 00:31:26,440
+to understand how errors percolate
+
+862
+00:31:24,160 --> 00:31:29,160
+through the network can have profound
+
+863
+00:31:26,440 --> 00:31:31,661
+implications in terms of their business.
+
+864
+00:31:29,160 --> 00:31:33,681
+Thank you very much.
+
+865
+00:31:31,661 --> 00:31:33,681
+>> [applause]
+
+866
+00:31:35,760 --> 00:31:39,600
+>> Thank you very much.
+
+867
+00:31:36,760 --> 00:31:41,320
+And also uh I there's one other part
+
+868
+00:31:39,600 --> 00:31:43,240
+that I definitely want to ask you about.
+
+869
+00:31:41,320 --> 00:31:44,440
+I I believe you have an ask for some of
+
+870
+00:31:43,240 --> 00:31:47,360
+the people in the audience here.
+
+871
+00:31:44,440 --> 00:31:50,400
+>> goodness, I do.
+
+872
+00:31:47,360 --> 00:31:52,320
+Ha, sorry. There was one more slide. So
+
+873
+00:31:50,400 --> 00:31:54,000
+um we're looking for partners. We're
+
+874
+00:31:52,320 --> 00:31:56,080
+looking for data that we can manipulate.
+
+875
+00:31:54,000 --> 00:31:59,120
+We're very interested in domain-specific
+
+876
+00:31:56,080 --> 00:32:00,680
+problems. And because I'm a PhD advisor,
+
+877
+00:31:59,120 --> 00:32:03,920
+I'm also looking for opportunities for
+
+878
+00:32:00,680 --> 00:32:04,760
+my students. I think that uh especially
+
+879
+00:32:03,920 --> 00:32:06,840
+um
+
+880
+00:32:04,760 --> 00:32:10,520
+Yoni and Chen, the two students that
+
+881
+00:32:06,840 --> 00:32:12,960
+worked on this work, they are very adept
+
+882
+00:32:10,520 --> 00:32:14,440
+in manipulating um
+
+883
+00:32:12,960 --> 00:32:16,680
+deep learning and neural network
+
+884
+00:32:14,440 --> 00:32:18,160
+strategies. Even though we don't work on
+
+885
+00:32:16,680 --> 00:32:20,600
+that, I need to make sure that everyone
+
+886
+00:32:18,160 --> 00:32:22,000
+knows how to design them and use them
+
+887
+00:32:20,600 --> 00:32:24,320
+because then we can show everyone that
+
+888
+00:32:22,000 --> 00:32:26,200
+our strategies always work better than
+
+889
+00:32:24,320 --> 00:32:29,000
+the deep learning strategies, largely
+
+890
+00:32:26,200 --> 00:32:29,960
+because we work in the low data regime.
+
+891
+00:32:29,000 --> 00:32:33,440
+Thank you.
+
+892
+00:32:29,960 --> 00:32:33,440
+>> Wonderful. Questions?
+
+893
+00:32:33,720 --> 00:32:38,360
+And can I just take a minute to
+
+894
+00:32:36,120 --> 00:32:38,760
+translate something into this audience?
+
+895
+00:32:38,360 --> 00:32:40,680
+>> Jeez.
+
+896
+00:32:38,760 --> 00:32:42,240
+>> Cuz we were talking about this Okay, one
+
+897
+00:32:40,680 --> 00:32:43,680
+of the implications here is suppose you
+
+898
+00:32:42,240 --> 00:32:46,960
+have a graph with hundreds of millions
+
+899
+00:32:43,680 --> 00:32:48,920
+of nodes, and it's in manufacturing or
+
+900
+00:32:46,960 --> 00:32:50,320
+finance or health care. It's something
+
+901
+00:32:48,920 --> 00:32:51,600
+you care about, right? There's a lot of
+
+902
+00:32:50,320 --> 00:32:54,120
+interactions
+
+903
+00:32:51,600 --> 00:32:57,600
+flowing from one node to another.
+
+904
+00:32:54,120 --> 00:32:59,520
+Um taking a page from FinCEN, financial
+
+905
+00:32:57,600 --> 00:33:00,320
+crime, looking at fraud.
+
+906
+00:32:59,520 --> 00:33:03,000
+Uh
+
+907
+00:33:00,320 --> 00:33:05,000
+if you were to talk about causal graphs
+
+908
+00:33:03,000 --> 00:33:07,200
+in the sense of looking at fraud at a
+
+909
+00:33:05,000 --> 00:33:09,480
+very large scale, that would be an
+
+910
+00:33:07,200 --> 00:33:10,560
+enormous amount of computation. I don't
+
+911
+00:33:09,480 --> 00:33:12,600
+even want to think about it before you
+
+912
+00:33:10,560 --> 00:33:15,760
+could get anywhere.
+
+913
+00:33:12,600 --> 00:33:18,160
+The innovation here is to say much like
+
+914
+00:33:15,760 --> 00:33:20,320
+we do case management in fraud,
+
+915
+00:33:18,160 --> 00:33:22,440
+where there may be a node there may be a
+
+916
+00:33:20,320 --> 00:33:24,280
+graph that has 5 billion nodes, but at
+
+917
+00:33:22,440 --> 00:33:27,360
+the end of the day we use things like
+
+918
+00:33:24,280 --> 00:33:29,120
+Louvain partitioning or modularization,
+
+919
+00:33:27,360 --> 00:33:31,760
+and then we we use centrality to
+
+920
+00:33:29,120 --> 00:33:33,560
+identify nodes of interest, and we end
+
+921
+00:33:31,760 --> 00:33:36,320
+up working cases that might have 10 or
+
+922
+00:33:33,560 --> 00:33:38,240
+20 nodes of potential fraud. We don't
+
+923
+00:33:36,320 --> 00:33:40,480
+look at 5 billion.
+
+924
+00:33:38,240 --> 00:33:43,280
+And the innovation here is to say, "Yes,
+
+925
+00:33:40,480 --> 00:33:45,360
+we can do the causal graph optimization
+
+926
+00:33:43,280 --> 00:33:48,640
+on those subgraphs of approximately that
+
+927
+00:33:45,360 --> 00:33:50,640
+size and get really great results." So,
+
+928
+00:33:48,640 --> 00:33:52,560
+if you want to be looking at say for
+
+929
+00:33:50,640 --> 00:33:54,840
+instance threat detection, where you
+
+930
+00:33:52,560 --> 00:33:56,960
+know that there is an intruder operating
+
+931
+00:33:54,840 --> 00:33:58,760
+on one of your assets, you know they had
+
+932
+00:33:56,960 --> 00:34:00,600
+to have gotten there somehow or another,
+
+933
+00:33:58,760 --> 00:34:02,440
+maybe through a phishing attack, but you
+
+934
+00:34:00,600 --> 00:34:04,680
+don't know the entry point,
+
+935
+00:34:02,440 --> 00:34:06,920
+this would be ideally the kind of way to
+
+936
+00:34:04,680 --> 00:34:09,080
+go after that. So, if you are working in
+
+937
+00:34:06,920 --> 00:34:10,879
+areas of finance or manufacturing where
+
+938
+00:34:09,080 --> 00:34:11,840
+some of this would help out, I I think
+
+939
+00:34:10,879 --> 00:34:13,679
+that they would very much like to
+
+940
+00:34:11,840 --> 00:34:16,040
+partner on data.
+
+941
+00:34:13,679 --> 00:34:17,480
+>> I Thank you. Um if I were not an
+
+942
+00:34:16,040 --> 00:34:19,240
+academic, I would say check's in the
+
+943
+00:34:17,480 --> 00:34:22,120
+mail, but I can't afford to write you a
+
+944
+00:34:19,240 --> 00:34:23,760
+check. So, um we also do a lot of
+
+945
+00:34:22,120 --> 00:34:26,040
+anomaly detection, I should say. This
+
+946
+00:34:23,760 --> 00:34:28,560
+predates the graph analysis work that
+
+947
+00:34:26,040 --> 00:34:30,600
+we've done, but that's of course um sort
+
+948
+00:34:28,560 --> 00:34:33,200
+of a mainstay of statistical signal
+
+949
+00:34:30,600 --> 00:34:33,200
+processing.
+
+950
+00:34:34,280 --> 00:34:36,520
+>> Any questions?
+
+951
+00:34:35,399 --> 00:34:38,000
+>> I think everyone wants a drink.
+
+952
+00:34:36,520 --> 00:34:38,320
+>> Okay, cocktails. Thank you very much,
+
+953
+00:34:38,000 --> 00:34:41,200
+Gretchen.
+
+954
+00:34:38,320 --> 00:34:41,200
+>> Thank you so much.
+

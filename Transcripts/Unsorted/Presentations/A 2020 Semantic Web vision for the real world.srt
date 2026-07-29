@@ -1,0 +1,4768 @@
+1
+00:00:00,030 --> 00:00:06,629
+well so thanks welcome everyone first of
+
+2
+00:00:03,419 --> 00:00:08,309
+all to the second online meeting that we
+
+3
+00:00:06,629 --> 00:00:10,590
+organize here and connect the data
+
+4
+00:00:08,309 --> 00:00:13,940
+London even though you know London is a
+
+5
+00:00:10,590 --> 00:00:17,310
+kind of relative term because none of us
+
+6
+00:00:13,940 --> 00:00:19,859
+five people who are so it mean this
+
+7
+00:00:17,310 --> 00:00:22,289
+panel today is actually based in London
+
+8
+00:00:19,859 --> 00:00:26,250
+well this is the upside of having a
+
+9
+00:00:22,289 --> 00:00:29,010
+visual pun its face-to-face one which
+
+10
+00:00:26,250 --> 00:00:31,859
+was the original idea behind this panel
+
+11
+00:00:29,010 --> 00:00:34,350
+so just a sir with a little bit with the
+
+12
+00:00:31,859 --> 00:00:37,170
+world so the panel we're having today is
+
+13
+00:00:34,350 --> 00:00:39,989
+about 2020 vision for the Semantic Web
+
+14
+00:00:37,170 --> 00:00:43,680
+and it all started basically again very
+
+15
+00:00:39,989 --> 00:00:45,270
+slowly so a thread Twitter thread and
+
+16
+00:00:43,680 --> 00:00:47,460
+exchange between us that we were
+
+17
+00:00:45,270 --> 00:00:49,289
+planning to actually meet in Athens and
+
+18
+00:00:47,460 --> 00:00:51,660
+have this bundle of the real live
+
+19
+00:00:49,289 --> 00:00:53,340
+discussion well since we're not going to
+
+20
+00:00:51,660 --> 00:00:55,469
+be able to do that we thought we might
+
+21
+00:00:53,340 --> 00:00:58,199
+as well do that we can see how the
+
+22
+00:00:55,469 --> 00:01:02,370
+discussion even remotely so this is the
+
+23
+00:00:58,199 --> 00:01:05,909
+the idea behind today's panel so with
+
+24
+00:01:02,370 --> 00:01:07,590
+that I'm going to switch hand over
+
+25
+00:01:05,909 --> 00:01:10,260
+basically to go to David who will be
+
+26
+00:01:07,590 --> 00:01:13,439
+moderating I only have one last thing to
+
+27
+00:01:10,260 --> 00:01:16,280
+say before that which is to thank our
+
+28
+00:01:13,439 --> 00:01:18,990
+sponsors today Brimfield computers and
+
+29
+00:01:16,280 --> 00:01:21,270
+bringing computers are the makers of
+
+30
+00:01:18,990 --> 00:01:23,729
+several which is a software intelligence
+
+31
+00:01:21,270 --> 00:01:27,030
+tool that analyzes and investigates
+
+32
+00:01:23,729 --> 00:01:29,250
+running applications serval is a Python
+
+33
+00:01:27,030 --> 00:01:31,350
+agent and a web interface aiming to
+
+34
+00:01:29,250 --> 00:01:34,799
+understand existing information systems
+
+35
+00:01:31,350 --> 00:01:37,380
+and legacy applications and again many
+
+36
+00:01:34,799 --> 00:01:41,880
+thanks for for sponsoring today and
+
+37
+00:01:37,380 --> 00:01:44,909
+without further ado David it's on to you
+
+38
+00:01:41,880 --> 00:01:47,340
+and happy moderating and let's all enjoy
+
+39
+00:01:44,909 --> 00:01:49,799
+the conversation thank you very much
+
+40
+00:01:47,340 --> 00:01:51,930
+like a quick introduction basically both
+
+41
+00:01:49,799 --> 00:01:55,439
+to the subject matter and to our subject
+
+42
+00:01:51,930 --> 00:01:57,719
+experts today and in no particular order
+
+43
+00:01:55,439 --> 00:01:59,610
+the experts are George are not the Audis
+
+44
+00:01:57,719 --> 00:02:01,259
+who has written about extensively about
+
+45
+00:01:59,610 --> 00:02:03,299
+the Semantic Web he knows about graphs
+
+46
+00:02:01,259 --> 00:02:06,000
+and has extensive experience in the
+
+47
+00:02:03,299 --> 00:02:10,289
+online world we have Theodora pankova
+
+48
+00:02:06,000 --> 00:02:12,750
+and she has written a book about how on
+
+49
+00:02:10,289 --> 00:02:13,940
+the text how our text changes in the
+
+50
+00:02:12,750 --> 00:02:16,370
+Semantic Web how
+
+51
+00:02:13,940 --> 00:02:19,610
+all these links and changes in the way
+
+52
+00:02:16,370 --> 00:02:22,370
+we communicate we have panels Alex
+
+53
+00:02:19,610 --> 00:02:25,340
+applause with part of on the text and
+
+54
+00:02:22,370 --> 00:02:26,390
+he's an expert in ontology building and
+
+55
+00:02:25,340 --> 00:02:29,870
+for both of you
+
+56
+00:02:26,390 --> 00:02:33,500
+sorry yes I'm not part of the text sorry
+
+57
+00:02:29,870 --> 00:02:42,290
+I'm sorry mark there is there is some
+
+58
+00:02:33,500 --> 00:02:44,480
+text it's called and is an expert in
+
+59
+00:02:42,290 --> 00:02:47,180
+ontology building and correcting this
+
+60
+00:02:44,480 --> 00:02:48,710
+right and and for those of you who are
+
+61
+00:02:47,180 --> 00:02:51,860
+not familiar with ontology which is a
+
+62
+00:02:48,710 --> 00:02:53,990
+slightly philosophical subject which has
+
+63
+00:02:51,860 --> 00:02:55,400
+real-world applications it's the way
+
+64
+00:02:53,990 --> 00:02:57,290
+that things are classified in the web
+
+65
+00:02:55,400 --> 00:02:59,660
+and how we actually put things together
+
+66
+00:02:57,290 --> 00:03:02,510
+and finally we have professor professor
+
+67
+00:02:59,660 --> 00:03:04,400
+I made chef with us who is an expert in
+
+68
+00:03:02,510 --> 00:03:05,900
+quite a wide variety of things for
+
+69
+00:03:04,400 --> 00:03:08,180
+enterpreneurship to artificial
+
+70
+00:03:05,900 --> 00:03:10,640
+intelligence in the Semantic Web and how
+
+71
+00:03:08,180 --> 00:03:12,650
+those technologies come together today
+
+72
+00:03:10,640 --> 00:03:15,050
+subject which is essentially what is
+
+73
+00:03:12,650 --> 00:03:17,240
+happening in a Semantic Web it's a state
+
+74
+00:03:15,050 --> 00:03:19,640
+of play in many ways and we're looking
+
+75
+00:03:17,240 --> 00:03:21,350
+at 20 years of progress and also we're
+
+76
+00:03:19,640 --> 00:03:23,570
+trying to find out what the next step
+
+77
+00:03:21,350 --> 00:03:26,239
+will be so we've got some questions to
+
+78
+00:03:23,570 --> 00:03:28,280
+start off with which will help guide the
+
+79
+00:03:26,239 --> 00:03:30,140
+discussion and any of you attending now
+
+80
+00:03:28,280 --> 00:03:32,930
+if you have any kind of questions as we
+
+81
+00:03:30,140 --> 00:03:34,640
+progress if you ask them of the panel I
+
+82
+00:03:32,930 --> 00:03:38,209
+will try to bring them in and I'll try
+
+83
+00:03:34,640 --> 00:03:39,860
+to give you answers in real time so
+
+84
+00:03:38,209 --> 00:03:42,709
+let's begin with the first question and
+
+85
+00:03:39,860 --> 00:03:47,300
+the first question is we have 20 years
+
+86
+00:03:42,709 --> 00:03:50,269
+of semantic web building in the 21st
+
+87
+00:03:47,300 --> 00:03:52,730
+century it's come from the limelight to
+
+88
+00:03:50,269 --> 00:03:54,200
+obscurity and back again has this taught
+
+89
+00:03:52,730 --> 00:03:57,110
+us anything about how the Semantic Web
+
+90
+00:03:54,200 --> 00:03:58,820
+works and does it give us perhaps an
+
+91
+00:03:57,110 --> 00:04:01,400
+inkling of how it's going to progress
+
+92
+00:03:58,820 --> 00:04:02,840
+and we'll take this question perhaps to
+
+93
+00:04:01,400 --> 00:04:06,620
+George if George that's ok with you
+
+94
+00:04:02,840 --> 00:04:09,170
+George it's fine actually I can use the
+
+95
+00:04:06,620 --> 00:04:11,450
+opportunity to say a little bit about
+
+96
+00:04:09,170 --> 00:04:14,810
+how I got hooked let's say on the
+
+97
+00:04:11,450 --> 00:04:17,209
+Semantic Web and even though I'm not I'm
+
+98
+00:04:14,810 --> 00:04:19,430
+not one of the few of the people that
+
+99
+00:04:17,209 --> 00:04:22,070
+actually because it started like a myth
+
+100
+00:04:19,430 --> 00:04:24,700
+is for example I was a kind of early
+
+101
+00:04:22,070 --> 00:04:27,090
+adopter let's say and the thing that
+
+102
+00:04:24,700 --> 00:04:29,580
+attracted me back then
+
+103
+00:04:27,090 --> 00:04:31,650
+actually if you are the people in the
+
+104
+00:04:29,580 --> 00:04:34,230
+audience who may be familiar with what
+
+105
+00:04:31,650 --> 00:04:37,080
+we call the Semantic Web cake or stack
+
+106
+00:04:34,230 --> 00:04:40,290
+it's a kind of layer of functionalities
+
+107
+00:04:37,080 --> 00:04:43,790
+that when the Semantic Web first was
+
+108
+00:04:40,290 --> 00:04:45,870
+prescribed let's say I was supposed to
+
+109
+00:04:43,790 --> 00:04:47,430
+show the different layers of
+
+110
+00:04:45,870 --> 00:04:51,960
+functionality and how it's going to work
+
+111
+00:04:47,430 --> 00:04:54,990
+and you have things such as I arise at
+
+112
+00:04:51,960 --> 00:04:57,000
+the bottom so standards that help you
+
+113
+00:04:54,990 --> 00:04:59,580
+locate things basically and then you
+
+114
+00:04:57,000 --> 00:05:01,770
+kind of build on that actually that so
+
+115
+00:04:59,580 --> 00:05:04,470
+the part of the stack that got attracted
+
+116
+00:05:01,770 --> 00:05:07,020
+me the most was one that hasn't yet been
+
+117
+00:05:04,470 --> 00:05:10,830
+implemented actually and that was the
+
+118
+00:05:07,020 --> 00:05:13,650
+agent the agent part so I was much very
+
+119
+00:05:10,830 --> 00:05:16,500
+much attracted by the ability to have
+
+120
+00:05:13,650 --> 00:05:18,600
+different agents in my mind I could see
+
+121
+00:05:16,500 --> 00:05:20,100
+them but they're not kind of acting on
+
+122
+00:05:18,600 --> 00:05:23,100
+behalf of the user
+
+123
+00:05:20,100 --> 00:05:25,289
+who'd be able to get the Preferences of
+
+124
+00:05:23,100 --> 00:05:27,930
+the user there the cognitive domain of
+
+125
+00:05:25,289 --> 00:05:31,169
+the fusion and the underlying layers
+
+126
+00:05:27,930 --> 00:05:33,840
+would be the ones that kind of encoded
+
+127
+00:05:31,169 --> 00:05:37,950
+this knowledge and would be able to ask
+
+128
+00:05:33,840 --> 00:05:39,810
+an ago she ate and do different perform
+
+129
+00:05:37,950 --> 00:05:42,330
+different actions on behalf of the user
+
+130
+00:05:39,810 --> 00:05:45,320
+in the disability way it was ambitious
+
+131
+00:05:42,330 --> 00:05:48,720
+but then it's it's still ambitious today
+
+132
+00:05:45,320 --> 00:05:50,669
+which is why it hasn't been fully fully
+
+133
+00:05:48,720 --> 00:05:53,520
+realized but you know this is this is
+
+134
+00:05:50,669 --> 00:05:55,740
+the part that attracted me so to go back
+
+135
+00:05:53,520 --> 00:05:57,660
+to the question what going back to you
+
+136
+00:05:55,740 --> 00:06:00,030
+know from from the limelight to
+
+137
+00:05:57,660 --> 00:06:02,729
+obscurity and but again hostile to us I
+
+138
+00:06:00,030 --> 00:06:05,039
+would say Cass told us a number of
+
+139
+00:06:02,729 --> 00:06:07,590
+things and I basically start with the
+
+140
+00:06:05,039 --> 00:06:10,490
+ambition and when you have something
+
+141
+00:06:07,590 --> 00:06:11,990
+like this which has been initiated and
+
+142
+00:06:10,490 --> 00:06:14,820
+[Music]
+
+143
+00:06:11,990 --> 00:06:16,530
+advocated by someone like Sir Tim
+
+144
+00:06:14,820 --> 00:06:18,750
+berners-lee who's credited with the
+
+145
+00:06:16,530 --> 00:06:21,030
+invention of the web and to a large
+
+146
+00:06:18,750 --> 00:06:23,550
+extent he has been behind the semantic
+
+147
+00:06:21,030 --> 00:06:25,919
+world as well well ambition you know
+
+148
+00:06:23,550 --> 00:06:29,130
+lack of ambition is definitely not not
+
+149
+00:06:25,919 --> 00:06:30,930
+an issue maybe actually it's it was a
+
+150
+00:06:29,130 --> 00:06:33,720
+bit on the other side of the spectrum so
+
+151
+00:06:30,930 --> 00:06:36,360
+a bit over-ambitious let's say looking
+
+152
+00:06:33,720 --> 00:06:38,880
+at least today you know from from the
+
+153
+00:06:36,360 --> 00:06:40,740
+standpoint of almost 20 years after it
+
+154
+00:06:38,880 --> 00:06:43,710
+was you know this vision was way
+
+155
+00:06:40,740 --> 00:06:45,240
+way ahead of its time so this is one
+
+156
+00:06:43,710 --> 00:06:47,940
+thing you know when we talk about
+
+157
+00:06:45,240 --> 00:06:49,919
+semantic web failing or succeeding or
+
+158
+00:06:47,940 --> 00:06:52,319
+whatever today we have the luxury of
+
+159
+00:06:49,919 --> 00:06:54,330
+doing that almost two decades after it
+
+160
+00:06:52,319 --> 00:06:56,250
+was initially conceived so we have to
+
+161
+00:06:54,330 --> 00:06:58,199
+you know have to put that into
+
+162
+00:06:56,250 --> 00:07:00,539
+perspective and even though you know
+
+163
+00:06:58,199 --> 00:07:03,240
+some some parts of the stack didn't were
+
+164
+00:07:00,539 --> 00:07:06,240
+not fully realized on this part other
+
+165
+00:07:03,240 --> 00:07:08,130
+parts where and are and are very very
+
+166
+00:07:06,240 --> 00:07:10,110
+useful today and people actually use
+
+167
+00:07:08,130 --> 00:07:12,419
+them everyday even though they may not
+
+168
+00:07:10,110 --> 00:07:14,550
+realize it for a static this is actually
+
+169
+00:07:12,419 --> 00:07:17,449
+a good thing not realizing that you that
+
+170
+00:07:14,550 --> 00:07:20,729
+you're using it so in that sense it's
+
+171
+00:07:17,449 --> 00:07:23,759
+it's a success so I would say that you
+
+172
+00:07:20,729 --> 00:07:26,069
+know this is another take away if you
+
+173
+00:07:23,759 --> 00:07:28,800
+make the technology go in the background
+
+174
+00:07:26,069 --> 00:07:30,930
+so that people don't explicitly have to
+
+175
+00:07:28,800 --> 00:07:34,740
+use it then I would call it a success
+
+176
+00:07:30,930 --> 00:07:36,210
+you know it brings better adoption but I
+
+177
+00:07:34,740 --> 00:07:39,479
+think I've already said enough I mean I
+
+178
+00:07:36,210 --> 00:07:41,849
+could go on and on but I'm sorry the
+
+179
+00:07:39,479 --> 00:07:43,830
+other panels we have something to say
+
+180
+00:07:41,849 --> 00:07:45,509
+that's it that's great thank you very
+
+181
+00:07:43,830 --> 00:07:47,490
+much for that perspective and I think
+
+182
+00:07:45,509 --> 00:07:49,830
+it's sort of covered a lot of things in
+
+183
+00:07:47,490 --> 00:07:51,780
+a fairly spherical way so it gives a
+
+184
+00:07:49,830 --> 00:07:55,020
+nice grounding to where we are right now
+
+185
+00:07:51,780 --> 00:07:57,870
+so let's um we mentioned that the
+
+186
+00:07:55,020 --> 00:08:00,120
+Semantic Web began fairly strongly as an
+
+187
+00:07:57,870 --> 00:08:02,219
+idea then you fade into obscurity and
+
+188
+00:08:00,120 --> 00:08:04,500
+then it came back now
+
+189
+00:08:02,219 --> 00:08:06,750
+the question that arises from this is
+
+190
+00:08:04,500 --> 00:08:10,139
+that just like perceptual rebranding and
+
+191
+00:08:06,750 --> 00:08:12,210
+some pragmatism those required or do we
+
+192
+00:08:10,139 --> 00:08:18,240
+need something deeper here and perhaps
+
+193
+00:08:12,210 --> 00:08:22,770
+some Ghidorah would like to try this yes
+
+194
+00:08:18,240 --> 00:08:26,180
+sir I just wanna I have something to say
+
+195
+00:08:22,770 --> 00:08:31,919
+about fade into obscurity
+
+196
+00:08:26,180 --> 00:08:37,529
+I've never faded into already it it was
+
+197
+00:08:31,919 --> 00:08:40,770
+I mean also I am thinking about why do
+
+198
+00:08:37,529 --> 00:08:45,950
+we say that it's 20 years around as many
+
+199
+00:08:40,770 --> 00:08:48,720
+we're just reminding about a 94
+
+200
+00:08:45,950 --> 00:08:53,040
+presentation Tim berners-lee in Geneva
+
+201
+00:08:48,720 --> 00:08:57,570
+where he talks about the way content
+
+202
+00:08:53,040 --> 00:09:00,690
+needs to be described for machines so
+
+203
+00:08:57,570 --> 00:09:10,319
+that what the web is not flat for them
+
+204
+00:09:00,690 --> 00:09:13,440
+and we mean the machines so yeah yeah
+
+205
+00:09:10,319 --> 00:09:17,880
+bathing into obscurity of something that
+
+206
+00:09:13,440 --> 00:09:20,100
+is thirty years old he's a bit I don't
+
+207
+00:09:17,880 --> 00:09:22,829
+know I don't like the framing the
+
+208
+00:09:20,100 --> 00:09:25,680
+breathing I would go with what an
+
+209
+00:09:22,829 --> 00:09:28,470
+exciting thing the web is and the web
+
+210
+00:09:25,680 --> 00:09:30,810
+will never be done the same is with the
+
+211
+00:09:28,470 --> 00:09:34,100
+Semantic Web it will never be done
+
+212
+00:09:30,810 --> 00:09:36,540
+it's a way forward and that's
+
+213
+00:09:34,100 --> 00:09:39,470
+professorship won't the beautiful
+
+214
+00:09:36,540 --> 00:09:44,459
+article about building knowledge graphs
+
+215
+00:09:39,470 --> 00:09:47,759
+it takes a hundred ten for a thousand
+
+216
+00:09:44,459 --> 00:09:51,029
+and to build a knowledge graph so the
+
+217
+00:09:47,759 --> 00:09:55,350
+Semantic Web would take a lot more and a
+
+218
+00:09:51,029 --> 00:09:58,019
+lot more coherence and debate and
+
+219
+00:09:55,350 --> 00:10:02,069
+finally I didn't answer your question
+
+220
+00:09:58,019 --> 00:10:05,370
+David what was your question well the
+
+221
+00:10:02,069 --> 00:10:07,519
+question was and I will also ask commit
+
+222
+00:10:05,370 --> 00:10:10,680
+to add to this the question was that
+
+223
+00:10:07,519 --> 00:10:12,180
+perceptually in order for us to begin to
+
+224
+00:10:10,680 --> 00:10:14,970
+actually thinking about the Semantic Web
+
+225
+00:10:12,180 --> 00:10:18,420
+in a broader context with a large a much
+
+226
+00:10:14,970 --> 00:10:21,120
+larger base of people was all that was
+
+227
+00:10:18,420 --> 00:10:24,600
+required a case of rebranding it so that
+
+228
+00:10:21,120 --> 00:10:26,579
+becomes perhaps more accessible no I
+
+229
+00:10:24,600 --> 00:10:30,209
+don't think it was Metro its matter of
+
+230
+00:10:26,579 --> 00:10:32,880
+rebranding it so I was in this area I
+
+231
+00:10:30,209 --> 00:10:35,699
+felt at my first paper I can actually
+
+232
+00:10:32,880 --> 00:10:38,399
+show that had the same concern schematic
+
+233
+00:10:35,699 --> 00:10:40,470
+web was 1994 published in C I came
+
+234
+00:10:38,399 --> 00:10:42,510
+conference which had multiple
+
+235
+00:10:40,470 --> 00:10:45,000
+oncologists and use of introduced to
+
+236
+00:10:42,510 --> 00:10:47,389
+access data he twitches databases that
+
+237
+00:10:45,000 --> 00:10:50,009
+was the paper in that was 1994
+
+238
+00:10:47,389 --> 00:10:51,810
+unfortunately I use the word semantic
+
+239
+00:10:50,009 --> 00:10:56,610
+information proclaiming to call whatever
+
+240
+00:10:51,810 --> 00:11:01,170
+I meant the word Semantic Web was far I
+
+241
+00:10:56,610 --> 00:11:06,660
+guess catchy and it came from timber
+
+242
+00:11:01,170 --> 00:11:09,360
+asleep now following reason why
+
+243
+00:11:06,660 --> 00:11:11,339
+a Semantic Web did not succeed a whole
+
+244
+00:11:09,360 --> 00:11:12,660
+lot as much as people thought was that
+
+245
+00:11:11,339 --> 00:11:15,329
+they're too much first of all they were
+
+246
+00:11:12,660 --> 00:11:17,879
+sweating where was two communities so
+
+247
+00:11:15,329 --> 00:11:20,670
+one was people who went for logic and
+
+248
+00:11:17,879 --> 00:11:23,310
+who won for completeness of knowledge
+
+249
+00:11:20,670 --> 00:11:27,300
+and he went for reasoning and other
+
+250
+00:11:23,310 --> 00:11:29,459
+where people who already understood the
+
+251
+00:11:27,300 --> 00:11:31,649
+value of the knowledge and use of
+
+252
+00:11:29,459 --> 00:11:35,129
+knowledge in applications processing
+
+253
+00:11:31,649 --> 00:11:36,870
+search and things of that nature 1999 I
+
+254
+00:11:35,129 --> 00:11:38,759
+started my first company in my second
+
+255
+00:11:36,870 --> 00:11:40,290
+company which was the Semantic Web
+
+256
+00:11:38,759 --> 00:11:42,269
+company the first time interior company
+
+257
+00:11:40,290 --> 00:11:45,839
+and we got the first pattern with
+
+258
+00:11:42,269 --> 00:11:49,589
+Semantic Web in the title in 2001 5 1 it
+
+259
+00:11:45,839 --> 00:11:52,920
+was filing year 2000 so cement Semantic
+
+260
+00:11:49,589 --> 00:11:54,720
+Web for semantic search browsing
+
+261
+00:11:52,920 --> 00:11:56,670
+personalization and advertisement that
+
+262
+00:11:54,720 --> 00:11:58,230
+was what the patent was about and the
+
+263
+00:11:56,670 --> 00:12:02,220
+fundamental thing about the pattern was
+
+264
+00:11:58,230 --> 00:12:04,560
+that I choose the more practical you
+
+265
+00:12:02,220 --> 00:12:09,259
+know route compared to the year 2000
+
+266
+00:12:04,560 --> 00:12:13,680
+paper but Tim berners-lee handler paper
+
+267
+00:12:09,259 --> 00:12:16,889
+which talked about agents and logic and
+
+268
+00:12:13,680 --> 00:12:18,810
+this is making this was about creating a
+
+269
+00:12:16,889 --> 00:12:21,660
+very large we used to call world model
+
+270
+00:12:18,810 --> 00:12:24,120
+or ontology or federal is same as
+
+271
+00:12:21,660 --> 00:12:26,850
+knowledge graph in the sense that it was
+
+272
+00:12:24,120 --> 00:12:29,220
+much more practical representational
+
+273
+00:12:26,850 --> 00:12:32,160
+knowledge that did not seek the
+
+274
+00:12:29,220 --> 00:12:35,819
+completeness that did not require logic
+
+275
+00:12:32,160 --> 00:12:38,790
+another foundation the reasoning being
+
+276
+00:12:35,819 --> 00:12:41,279
+this very practical aspect how many
+
+277
+00:12:38,790 --> 00:12:44,339
+people are not logical like to use logic
+
+278
+00:12:41,279 --> 00:12:46,649
+after they graduate and our peoples are
+
+279
+00:12:44,339 --> 00:12:48,449
+taught graph and it's such data
+
+280
+00:12:46,649 --> 00:12:50,809
+structure and they can use those such
+
+281
+00:12:48,449 --> 00:12:53,910
+data structure after they graduate and
+
+282
+00:12:50,809 --> 00:12:56,759
+the second thing is that being able to
+
+283
+00:12:53,910 --> 00:13:00,600
+create knowledge that is not perfectly
+
+284
+00:12:56,759 --> 00:13:03,050
+accurate but is large enough to catch
+
+285
+00:13:00,600 --> 00:13:05,699
+the laughing as much bigger value then
+
+286
+00:13:03,050 --> 00:13:07,800
+but very hard to get a small knowledge
+
+287
+00:13:05,699 --> 00:13:10,050
+base that is very consistent and
+
+288
+00:13:07,800 --> 00:13:12,600
+complete and you know you can have
+
+289
+00:13:10,050 --> 00:13:14,540
+proved theoretical travel cavities so
+
+290
+00:13:12,600 --> 00:13:16,829
+we've been the search engine my company
+
+291
+00:13:14,540 --> 00:13:18,899
+the company I founded still survives
+
+292
+00:13:16,829 --> 00:13:20,220
+except that because of the internal
+
+293
+00:13:18,899 --> 00:13:22,950
+bubble burst we have to become
+
+294
+00:13:20,220 --> 00:13:27,960
+ethical market focus so it only works in
+
+295
+00:13:22,950 --> 00:13:30,480
+the financial services market then what
+
+296
+00:13:27,960 --> 00:13:32,010
+happened is that in the first five to
+
+297
+00:13:30,480 --> 00:13:35,010
+ten years of semantic web a lot of
+
+298
+00:13:32,010 --> 00:13:36,620
+things happen with owl and description
+
+299
+00:13:35,010 --> 00:13:38,520
+logic and many things like that
+
+300
+00:13:36,620 --> 00:13:40,590
+there's nothing that has really
+
+301
+00:13:38,520 --> 00:13:43,800
+succeeded from that line of work
+
+302
+00:13:40,590 --> 00:13:45,120
+all right little there is succeeded just
+
+303
+00:13:43,800 --> 00:13:46,410
+for the I'm sorry to interrupt for the
+
+304
+00:13:45,120 --> 00:13:48,090
+benefit of the people who may not be
+
+305
+00:13:46,410 --> 00:13:50,250
+familiar with that owl is Prabha is a
+
+306
+00:13:48,090 --> 00:13:52,380
+language which is used to essentially
+
+307
+00:13:50,250 --> 00:13:54,360
+code specific aspects of it
+
+308
+00:13:52,380 --> 00:13:56,130
+yeah that knowledge to the personal
+
+309
+00:13:54,360 --> 00:13:58,860
+knowledge I always used the web ontology
+
+310
+00:13:56,130 --> 00:14:00,750
+language is to represent that but there
+
+311
+00:13:58,860 --> 00:14:03,510
+was a lighter version of that that also
+
+312
+00:14:00,750 --> 00:14:05,970
+Tim berners-lee read not is not in year
+
+313
+00:14:03,510 --> 00:14:08,130
+2000 but in around you know three four
+
+314
+00:14:05,970 --> 00:14:11,190
+five years later and he coin oh he
+
+315
+00:14:08,130 --> 00:14:13,200
+really got into this link data that
+
+316
+00:14:11,190 --> 00:14:16,530
+ended up being a lot more practical
+
+317
+00:14:13,200 --> 00:14:20,400
+aspect of the Semantic Web the Hydra
+
+318
+00:14:16,530 --> 00:14:23,130
+server very well now like rather giving
+
+319
+00:14:20,400 --> 00:14:26,310
+a very long answer I'll give very simple
+
+320
+00:14:23,130 --> 00:14:28,200
+and straight answer why is what we want
+
+321
+00:14:26,310 --> 00:14:31,170
+to call semantic way back many people
+
+322
+00:14:28,200 --> 00:14:32,670
+will not give semantic web a credit for
+
+323
+00:14:31,170 --> 00:14:35,010
+what is happening in the knowledge graph
+
+324
+00:14:32,670 --> 00:14:37,830
+in it work now that if you like to take
+
+325
+00:14:35,010 --> 00:14:39,620
+a trade because I had pattern greens or
+
+326
+00:14:37,830 --> 00:14:43,140
+somatic web that had knowledge graph and
+
+327
+00:14:39,620 --> 00:14:45,810
+others also work on that the reason is
+
+328
+00:14:43,140 --> 00:14:50,370
+that people who recognize a fundamental
+
+329
+00:14:45,810 --> 00:14:52,320
+value of knowledge in year 2012 they you
+
+330
+00:14:50,370 --> 00:14:54,810
+know this deep learning happened before
+
+331
+00:14:52,320 --> 00:14:56,880
+that turns machine learn and much of the
+
+332
+00:14:54,810 --> 00:15:00,480
+AI was all about machine learning and
+
+333
+00:14:56,880 --> 00:15:02,790
+deep learning a little bit about NLP now
+
+334
+00:15:00,480 --> 00:15:05,010
+they have reached the limit much of it
+
+335
+00:15:02,790 --> 00:15:07,400
+in NLP and machine learning and deep
+
+336
+00:15:05,010 --> 00:15:10,290
+learning and everybody's recognized that
+
+337
+00:15:07,400 --> 00:15:12,390
+knowledge is power edit ease whatever
+
+338
+00:15:10,290 --> 00:15:13,890
+investment you need to make is what
+
+339
+00:15:12,390 --> 00:15:16,560
+making the investment because Google
+
+340
+00:15:13,890 --> 00:15:19,770
+prude it in year 2012
+
+341
+00:15:16,560 --> 00:15:22,140
+they started with meta where freebase
+
+342
+00:15:19,770 --> 00:15:26,220
+and clearly this knowledge graph and
+
+343
+00:15:22,140 --> 00:15:28,920
+since then 2013 in semantic search you
+
+344
+00:15:26,220 --> 00:15:33,150
+can't think of search without knowledge
+
+345
+00:15:28,920 --> 00:15:34,080
+graph so the value was so overwhelming
+
+346
+00:15:33,150 --> 00:15:36,150
+that whatever
+
+347
+00:15:34,080 --> 00:15:41,100
+the investment to create knowledge graph
+
+348
+00:15:36,150 --> 00:15:42,030
+is what it and that now is really a
+
+349
+00:15:41,100 --> 00:15:44,430
+sticker
+
+350
+00:15:42,030 --> 00:15:45,840
+so every company basically has their own
+
+351
+00:15:44,430 --> 00:15:48,180
+knowledge graph or their licensing
+
+352
+00:15:45,840 --> 00:15:50,160
+knowledge graph on somebody else and
+
+353
+00:15:48,180 --> 00:15:52,800
+they feel that the investment they're
+
+354
+00:15:50,160 --> 00:15:54,630
+making it is still well worth it I have
+
+355
+00:15:52,800 --> 00:15:56,250
+a student I'll end up with just one
+
+356
+00:15:54,630 --> 00:16:00,710
+observation I was told who went to
+
+357
+00:15:56,250 --> 00:16:04,020
+Amazon last year because of mrs. dorset
+
+358
+00:16:00,710 --> 00:16:07,800
+around me I can't find a single project
+
+359
+00:16:04,020 --> 00:16:08,670
+that does not use knowledge graph so so
+
+360
+00:16:07,800 --> 00:16:10,440
+I and
+
+361
+00:16:08,670 --> 00:16:12,920
+if to the extent the Semantic Web can
+
+362
+00:16:10,440 --> 00:16:15,810
+take credit for noise but graph means
+
+363
+00:16:12,920 --> 00:16:18,690
+ecosystem and I'm happy to describe that
+
+364
+00:16:15,810 --> 00:16:21,450
+later on okay at xx and this is really
+
+365
+00:16:18,690 --> 00:16:24,420
+succeeded now perfect perfect it's
+
+366
+00:16:21,450 --> 00:16:28,140
+really good yes yes you can
+
+367
+00:16:24,420 --> 00:16:30,180
+I think what I'm it's very correct but
+
+368
+00:16:28,140 --> 00:16:32,790
+the like to clarify something at least
+
+369
+00:16:30,180 --> 00:16:35,850
+my perspective definitely yes and
+
+370
+00:16:32,790 --> 00:16:41,550
+knowledge graph what we're witnessing
+
+371
+00:16:35,850 --> 00:16:43,650
+right now this year right here is the
+
+372
+00:16:41,550 --> 00:16:45,750
+coming back not of the Shimon develop in
+
+373
+00:16:43,650 --> 00:16:48,300
+my opinion but coming back this the
+
+374
+00:16:45,750 --> 00:16:50,820
+power of symbolic knowledge and
+
+375
+00:16:48,300 --> 00:16:53,910
+reasoning the Semantic Web started in
+
+376
+00:16:50,820 --> 00:16:55,770
+1994 but that is nice before in the 80s
+
+377
+00:16:53,910 --> 00:16:58,830
+they were already the idea of semantic
+
+378
+00:16:55,770 --> 00:17:01,950
+networks of expert systems but then etc
+
+379
+00:16:58,830 --> 00:17:06,920
+so ultimate inaccurate to say that it's
+
+380
+00:17:01,950 --> 00:17:09,470
+the Semantic Web that brought this into
+
+381
+00:17:06,920 --> 00:17:13,940
+existence was a model of trying to do is
+
+382
+00:17:09,470 --> 00:17:16,290
+bring that into a large scale right by
+
+383
+00:17:13,940 --> 00:17:19,250
+creating some standards based on which
+
+384
+00:17:16,290 --> 00:17:21,839
+anyone can do that at the web level and
+
+385
+00:17:19,250 --> 00:17:24,480
+to some extent what we're witnessing
+
+386
+00:17:21,839 --> 00:17:26,010
+right now is the larger scale of
+
+387
+00:17:24,480 --> 00:17:27,930
+knowledge graph so instead of having a
+
+388
+00:17:26,010 --> 00:17:29,940
+small ontology or a small knowledge
+
+389
+00:17:27,930 --> 00:17:33,060
+graph of the couple hundred of entities
+
+390
+00:17:29,940 --> 00:17:36,840
+we have millions of entities the other
+
+391
+00:17:33,060 --> 00:17:39,360
+hand I am I really doubt well there we
+
+392
+00:17:36,840 --> 00:17:41,550
+have it semantic interoperability so
+
+393
+00:17:39,360 --> 00:17:43,320
+whether for instance the knowledge graph
+
+394
+00:17:41,550 --> 00:17:45,420
+of I don't know a compound like Thomson
+
+395
+00:17:43,320 --> 00:17:45,980
+Reuters is really semantic interoperable
+
+396
+00:17:45,420 --> 00:17:50,120
+with
+
+397
+00:17:45,980 --> 00:17:51,920
+the knowledge graph JP Morgan for
+
+398
+00:17:50,120 --> 00:17:54,590
+instance if the event recycling
+
+399
+00:17:51,920 --> 00:17:56,440
+knowledge is still trapped in silos
+
+400
+00:17:54,590 --> 00:17:58,340
+although silos uh perhaps elute
+
+401
+00:17:56,440 --> 00:17:59,780
+enterprise knowledge graph that's why
+
+402
+00:17:58,340 --> 00:18:02,720
+the term enterprise noise graph is
+
+403
+00:17:59,780 --> 00:18:05,320
+coming to be yes listen so I think we're
+
+404
+00:18:02,720 --> 00:18:08,930
+listening now at least the way I have
+
+405
+00:18:05,320 --> 00:18:11,240
+seen it in in in the other price level
+
+406
+00:18:08,930 --> 00:18:14,420
+because this is the where I mostly wore
+
+407
+00:18:11,240 --> 00:18:16,460
+is that indeed because of the
+
+408
+00:18:14,420 --> 00:18:19,520
+limitations that exist in the machine
+
+409
+00:18:16,460 --> 00:18:21,230
+learning approach etc we still need
+
+410
+00:18:19,520 --> 00:18:23,150
+domain knowledge within symbolic
+
+411
+00:18:21,230 --> 00:18:26,240
+knowledge and reasoning to enhance this
+
+412
+00:18:23,150 --> 00:18:28,460
+so companies now have incentive
+
+413
+00:18:26,240 --> 00:18:30,680
+additional incentives to do that because
+
+414
+00:18:28,460 --> 00:18:31,910
+they have realized that you know we have
+
+415
+00:18:30,680 --> 00:18:33,980
+all this amount of data
+
+416
+00:18:31,910 --> 00:18:38,360
+it's nothing have to put them in a data
+
+417
+00:18:33,980 --> 00:18:39,910
+link and we need the semantic layer we
+
+418
+00:18:38,360 --> 00:18:45,340
+tell us what these are about
+
+419
+00:18:39,910 --> 00:18:45,340
+right and this is partial still on
+
+420
+00:18:48,430 --> 00:18:57,980
+can you see me yeah yes certainly we
+
+421
+00:18:53,210 --> 00:18:59,750
+have so this is partially the revision
+
+422
+00:18:57,980 --> 00:19:03,140
+regime at the web but also the same and
+
+423
+00:18:59,750 --> 00:19:05,540
+we've got other aspect not very forward
+
+424
+00:19:03,140 --> 00:19:07,190
+now so it would be an example the MIDI
+
+425
+00:19:05,540 --> 00:19:10,160
+web dissol about the open world
+
+426
+00:19:07,190 --> 00:19:13,640
+assumption I don't think many companies
+
+427
+00:19:10,160 --> 00:19:17,840
+would would like to to use that's why
+
+428
+00:19:13,640 --> 00:19:21,080
+subtle came arouse the last couple of
+
+429
+00:19:17,840 --> 00:19:23,420
+years right or the Semantic Web is about
+
+430
+00:19:21,080 --> 00:19:25,190
+in the leaking data right there is this
+
+431
+00:19:23,420 --> 00:19:28,610
+mantra that Intel evening is good you
+
+432
+00:19:25,190 --> 00:19:30,650
+know we need to link data personally I'm
+
+433
+00:19:28,610 --> 00:19:34,760
+very careful what I link my knowledge
+
+434
+00:19:30,650 --> 00:19:38,030
+graph right because it's not that simple
+
+435
+00:19:34,760 --> 00:19:40,310
+it's not that simple to ensure that just
+
+436
+00:19:38,030 --> 00:19:42,530
+by using image WebP and I think the
+
+437
+00:19:40,310 --> 00:19:46,220
+little data you ensure that everything
+
+438
+00:19:42,530 --> 00:19:48,910
+is nicely written correct right that's
+
+439
+00:19:46,220 --> 00:19:48,910
+my five cents
+
+440
+00:19:51,049 --> 00:20:05,220
+David come Afghanistan yeah we can hear
+
+441
+00:19:53,760 --> 00:20:08,070
+you today we yep just to add to what
+
+442
+00:20:05,220 --> 00:20:11,630
+panel said and actually I think
+
+443
+00:20:08,070 --> 00:20:14,789
+something that none of us highlighted
+
+444
+00:20:11,630 --> 00:20:16,559
+explicitly up to up to this point which
+
+445
+00:20:14,789 --> 00:20:19,019
+sees the connection let's say between
+
+446
+00:20:16,559 --> 00:20:21,059
+oldest crafts and cement and the
+
+447
+00:20:19,019 --> 00:20:23,399
+Semantic Web because I guess most people
+
+448
+00:20:21,059 --> 00:20:26,450
+not necessarily in this audience because
+
+449
+00:20:23,399 --> 00:20:29,820
+it probably attracted the kind of
+
+450
+00:20:26,450 --> 00:20:31,830
+special nice possibly but most people
+
+451
+00:20:29,820 --> 00:20:33,690
+these days are quite familiar with Nolan
+
+452
+00:20:31,830 --> 00:20:35,669
+scrubs while they're not necessarily
+
+453
+00:20:33,690 --> 00:20:38,639
+equally familiar with the Semantic Web
+
+454
+00:20:35,669 --> 00:20:40,620
+well knowledge graphs are entirely based
+
+455
+00:20:38,639 --> 00:20:43,019
+on cement not just a semantic web
+
+456
+00:20:40,620 --> 00:20:45,450
+approach but in many many cases on the
+
+457
+00:20:43,019 --> 00:20:47,779
+semantic web technology as well even
+
+458
+00:20:45,450 --> 00:20:50,250
+though you know this is not an absolute
+
+459
+00:20:47,779 --> 00:20:52,909
+requirements it's it's basically the
+
+460
+00:20:50,250 --> 00:20:55,909
+same thing this is why we talked about
+
+461
+00:20:52,909 --> 00:20:55,909
+rebranding
+
+462
+00:20:56,100 --> 00:21:02,070
+yeah and partly that is to some extent
+
+463
+00:20:59,010 --> 00:21:04,470
+is true because for example one very
+
+464
+00:21:02,070 --> 00:21:09,750
+widely used knowledge is key murat orb
+
+465
+00:21:04,470 --> 00:21:11,789
+oh and there is kind of some aspect of
+
+466
+00:21:09,750 --> 00:21:13,710
+what we you know standardization work
+
+467
+00:21:11,789 --> 00:21:19,889
+that we had done that gets reflected
+
+468
+00:21:13,710 --> 00:21:21,990
+there and and you know one very common
+
+469
+00:21:19,889 --> 00:21:25,580
+knowledge graph that almost everybody
+
+470
+00:21:21,990 --> 00:21:29,549
+uses his knowledge graph extracted from
+
+471
+00:21:25,580 --> 00:21:34,110
+wikipedia the dbpedia and again there is
+
+472
+00:21:29,549 --> 00:21:37,649
+use of what a pie for a piece was
+
+473
+00:21:34,110 --> 00:21:42,830
+implemented dbpedia so in the period
+
+474
+00:21:37,649 --> 00:21:45,510
+tool so that that also used Semantic Web
+
+475
+00:21:42,830 --> 00:21:48,779
+technologies I mean when I ask you
+
+476
+00:21:45,510 --> 00:21:54,380
+something do you know any any company
+
+477
+00:21:48,779 --> 00:21:58,010
+that uses Wikipedia for for-profit I
+
+478
+00:21:54,380 --> 00:22:01,139
+mean your way that to self clients and
+
+479
+00:21:58,010 --> 00:22:02,639
+trusts the DPD arts quality and all
+
+480
+00:22:01,139 --> 00:22:03,279
+aspects right because it doesn't really
+
+481
+00:22:02,639 --> 00:22:06,950
+have
+
+482
+00:22:03,279 --> 00:22:10,330
+so I'm wondering yeah all the such
+
+483
+00:22:06,950 --> 00:22:12,259
+companies you know I just in fact saw
+
+484
+00:22:10,330 --> 00:22:15,710
+somebody who came up with the knowledge
+
+485
+00:22:12,259 --> 00:22:16,999
+panel and the knowledge panel it's the
+
+486
+00:22:15,710 --> 00:22:20,389
+first version of the honest press all
+
+487
+00:22:16,999 --> 00:22:23,139
+based on Wikipedia so so in the search
+
+488
+00:22:20,389 --> 00:22:25,879
+context they are really monetizing
+
+489
+00:22:23,139 --> 00:22:30,559
+Wikipedia in whatever they are doing
+
+490
+00:22:25,879 --> 00:22:33,970
+they basically anything that is consumer
+
+491
+00:22:30,559 --> 00:22:37,179
+facing there is extensive use of
+
+492
+00:22:33,970 --> 00:22:41,419
+Wikipedia hiding media when it is
+
+493
+00:22:37,179 --> 00:22:46,809
+business or you know customer facing
+
+494
+00:22:41,419 --> 00:22:46,809
+then they they build their own stuff
+
+495
+00:22:50,830 --> 00:23:04,940
+okay David are you connection problems
+
+496
+00:22:58,249 --> 00:23:06,220
+oh okay then I think you want to Georgia
+
+497
+00:23:04,940 --> 00:23:10,820
+take the next question
+
+498
+00:23:06,220 --> 00:23:12,679
+yep since actually Theodora we were
+
+499
+00:23:10,820 --> 00:23:15,859
+supposed you were supposed to be given
+
+500
+00:23:12,679 --> 00:23:18,200
+that one and somehow we lost we lost the
+
+501
+00:23:15,859 --> 00:23:20,419
+flow in the process so your point on
+
+502
+00:23:18,200 --> 00:23:22,249
+whether you know the semantic weight
+
+503
+00:23:20,419 --> 00:23:25,429
+should be framed as having gone to
+
+504
+00:23:22,249 --> 00:23:27,649
+obscurity was was well taken but but I
+
+505
+00:23:25,429 --> 00:23:30,279
+think if he may actually wanted to to
+
+506
+00:23:27,649 --> 00:23:35,480
+address the question that that was
+
+507
+00:23:30,279 --> 00:23:37,580
+framed by David which is what's going
+
+508
+00:23:35,480 --> 00:23:40,580
+back and forth let's say not let's not
+
+509
+00:23:37,580 --> 00:23:42,320
+use the word obscurity since you've made
+
+510
+00:23:40,580 --> 00:23:43,909
+the point of that but basically what
+
+511
+00:23:42,320 --> 00:23:46,999
+happened with uh sematic what was that
+
+512
+00:23:43,909 --> 00:23:49,190
+you know when it was first introduced
+
+513
+00:23:46,999 --> 00:23:51,799
+let's say there were high hopes about it
+
+514
+00:23:49,190 --> 00:23:53,239
+then but actually I did I would I would
+
+515
+00:23:51,799 --> 00:23:55,340
+argue that you know this basically
+
+516
+00:23:53,239 --> 00:23:57,139
+happens with pretty much all technology
+
+517
+00:23:55,340 --> 00:23:58,970
+when it's first introduced you know it
+
+518
+00:23:57,139 --> 00:24:01,100
+means everything to everyone and you
+
+519
+00:23:58,970 --> 00:24:03,139
+know everybody expects it to be the
+
+520
+00:24:01,100 --> 00:24:04,789
+greatest thing and to do that you know
+
+521
+00:24:03,139 --> 00:24:06,590
+immediately within the next couple of
+
+522
+00:24:04,789 --> 00:24:08,509
+years and of course when this doesn't
+
+523
+00:24:06,590 --> 00:24:11,240
+happen there's this kind of you know
+
+524
+00:24:08,509 --> 00:24:13,070
+disappointment let's say so for the why
+
+525
+00:24:11,240 --> 00:24:15,440
+this happened to the Semantic Web then
+
+526
+00:24:13,070 --> 00:24:15,740
+it's also the the additional aspect that
+
+527
+00:24:15,440 --> 00:24:18,590
+it
+
+528
+00:24:15,740 --> 00:24:21,620
+has in some ways and for some reason
+
+529
+00:24:18,590 --> 00:24:23,990
+being as being associated connected to
+
+530
+00:24:21,620 --> 00:24:25,700
+having an academic approach whatever
+
+531
+00:24:23,990 --> 00:24:28,520
+that may be we're going to touch on that
+
+532
+00:24:25,700 --> 00:24:31,250
+further on but you know for for very
+
+533
+00:24:28,520 --> 00:24:36,559
+real reasons the Semantic Web has kind
+
+534
+00:24:31,250 --> 00:24:38,690
+of you know lost its appeal and so now
+
+535
+00:24:36,559 --> 00:24:40,880
+we're saying that it's making a comeback
+
+536
+00:24:38,690 --> 00:24:42,410
+under a different name you know James
+
+537
+00:24:40,880 --> 00:24:44,120
+the reference to you know no lets graphs
+
+538
+00:24:42,410 --> 00:24:47,240
+and all these this kind of terminology
+
+539
+00:24:44,120 --> 00:24:49,429
+so the question to you the after this
+
+540
+00:24:47,240 --> 00:24:51,559
+very long introduction is so what do you
+
+541
+00:24:49,429 --> 00:24:53,720
+think that this course has has told us
+
+542
+00:24:51,559 --> 00:24:54,820
+if anything you know from going from
+
+543
+00:24:53,720 --> 00:24:57,679
+being the next best thing to
+
+544
+00:24:54,820 --> 00:25:01,450
+disillusionment and now actually seeing
+
+545
+00:24:57,679 --> 00:25:07,070
+some some actual real world adoption
+
+546
+00:25:01,450 --> 00:25:10,040
+thanks for the question I was thinking
+
+547
+00:25:07,070 --> 00:25:12,950
+about this about the high hopes about
+
+548
+00:25:10,040 --> 00:25:16,760
+the Semantic Web and maybe because I'm
+
+549
+00:25:12,950 --> 00:25:19,309
+not into the gist of it white pants is
+
+550
+00:25:16,760 --> 00:25:22,700
+and I totally agree with all of the
+
+551
+00:25:19,309 --> 00:25:27,740
+points he made that who for example who
+
+552
+00:25:22,700 --> 00:25:30,350
+uses dbpedia I think the the argument
+
+553
+00:25:27,740 --> 00:25:34,300
+there and thumbs please correct me if
+
+554
+00:25:30,350 --> 00:25:37,280
+I'm wrong is that the day there is dirty
+
+555
+00:25:34,300 --> 00:25:40,820
+not dirty but you need to clean the data
+
+556
+00:25:37,280 --> 00:25:44,540
+and work a lot on the data indeed will
+
+557
+00:25:40,820 --> 00:25:46,750
+be near as no use it as a as part of
+
+558
+00:25:44,540 --> 00:25:50,210
+your knowledge graph is this for you man
+
+559
+00:25:46,750 --> 00:25:52,580
+yeah so the quality in general is that
+
+560
+00:25:50,210 --> 00:25:54,980
+it's not only accuracy its accuracy plus
+
+561
+00:25:52,580 --> 00:25:57,380
+context plus what it is useful for so
+
+562
+00:25:54,980 --> 00:25:59,000
+it's not only when it comes to a
+
+563
+00:25:57,380 --> 00:26:01,040
+knowledge graph for a particular purpose
+
+564
+00:25:59,000 --> 00:26:02,960
+it's not only what it contains initially
+
+565
+00:26:01,040 --> 00:26:07,940
+but how it is governed that how it is
+
+566
+00:26:02,960 --> 00:26:09,620
+evolved right the one thing that you can
+
+567
+00:26:07,940 --> 00:26:11,630
+control it you want to control when you
+
+568
+00:26:09,620 --> 00:26:13,250
+use a knowledge graph is its evolution
+
+569
+00:26:11,630 --> 00:26:16,580
+you want to go towards the direction you
+
+570
+00:26:13,250 --> 00:26:19,100
+want so if dbpedia has a hundred domains
+
+571
+00:26:16,580 --> 00:26:24,410
+who decides what domain will be covered
+
+572
+00:26:19,100 --> 00:26:27,530
+next or that's important it is very
+
+573
+00:26:24,410 --> 00:26:29,800
+important and I use it to make my point
+
+574
+00:26:27,530 --> 00:26:33,440
+that again it's a
+
+575
+00:26:29,800 --> 00:26:36,770
+effort and it gets effort and yes it
+
+576
+00:26:33,440 --> 00:26:41,390
+takes money and yes it's not something
+
+577
+00:26:36,770 --> 00:26:44,570
+busy the Semantic Web and about the high
+
+578
+00:26:41,390 --> 00:26:49,460
+hopes I can't think of any higher
+
+579
+00:26:44,570 --> 00:26:53,960
+purpose than mapping knowledge in a
+
+580
+00:26:49,460 --> 00:26:57,760
+machine-readable way so whatever we do
+
+581
+00:26:53,960 --> 00:27:01,370
+we are to bump into challenges the
+
+582
+00:26:57,760 --> 00:27:07,970
+challenges of the knowledge soup and the
+
+583
+00:27:01,370 --> 00:27:11,240
+challenges of learn to think together
+
+584
+00:27:07,970 --> 00:27:15,680
+this is regarding the the question about
+
+585
+00:27:11,240 --> 00:27:19,190
+academia and business I'm facing the
+
+586
+00:27:15,680 --> 00:27:22,880
+same challenge with academic literature
+
+587
+00:27:19,190 --> 00:27:26,420
+sometimes not very but not being very
+
+588
+00:27:22,880 --> 00:27:31,310
+coherent with business practices but why
+
+589
+00:27:26,420 --> 00:27:34,730
+don't we just leave this as it is like
+
+590
+00:27:31,310 --> 00:27:37,880
+academia for thinking and business for
+
+591
+00:27:34,730 --> 00:27:41,570
+trying to translate these think this
+
+592
+00:27:37,880 --> 00:27:44,870
+thinking into actions of course there
+
+593
+00:27:41,570 --> 00:27:57,110
+there will be discrepancy discrepancies
+
+594
+00:27:44,870 --> 00:28:00,770
+and then let's handle them in in the eye
+
+595
+00:27:57,110 --> 00:28:04,400
+Institute which I have now I we do a lot
+
+596
+00:28:00,770 --> 00:28:07,940
+of real-world projects in medicine and
+
+597
+00:28:04,400 --> 00:28:10,670
+public health in many other things so I
+
+598
+00:28:07,940 --> 00:28:14,570
+don't think that I mean then it's not a
+
+599
+00:28:10,670 --> 00:28:19,190
+straight some of us are as practical as
+
+600
+00:28:14,570 --> 00:28:21,110
+industry maybe and you know I currently
+
+601
+00:28:19,190 --> 00:28:23,080
+have three companies that use knowledge
+
+602
+00:28:21,110 --> 00:28:27,350
+graph one way or other that I found it
+
+603
+00:28:23,080 --> 00:28:30,140
+so there is no such you know strong
+
+604
+00:28:27,350 --> 00:28:33,830
+distinction one point I would like to
+
+605
+00:28:30,140 --> 00:28:36,590
+make you said look the knowledge that is
+
+606
+00:28:33,830 --> 00:28:39,170
+created by collective work as in
+
+607
+00:28:36,590 --> 00:28:41,150
+Wikipedia or as a schema or odd is
+
+608
+00:28:39,170 --> 00:28:43,790
+essentially free because everybody chips
+
+609
+00:28:41,150 --> 00:28:46,250
+in a little bit it has its limit
+
+610
+00:28:43,790 --> 00:28:50,200
+but because it is free it is going to be
+
+611
+00:28:46,250 --> 00:28:50,200
+widely using it is being widely used and
+
+612
+00:28:50,500 --> 00:28:55,250
+then there is a need for specialized
+
+613
+00:28:52,790 --> 00:28:57,020
+knowledge you need to go deep into a
+
+614
+00:28:55,250 --> 00:28:59,420
+subject area that a public knowledge
+
+615
+00:28:57,020 --> 00:29:02,630
+source like Wikipedia won't be
+
+616
+00:28:59,420 --> 00:29:05,000
+appropriate we were developing a
+
+617
+00:29:02,630 --> 00:29:08,840
+knowledge graph for human performance
+
+618
+00:29:05,000 --> 00:29:11,780
+and cognition well that's a specialized
+
+619
+00:29:08,840 --> 00:29:14,420
+field and there is only so much about
+
+620
+00:29:11,780 --> 00:29:17,420
+human performance in cognition dopa mind
+
+621
+00:29:14,420 --> 00:29:19,760
+and other chemicals and how brain works
+
+622
+00:29:17,420 --> 00:29:22,490
+on those car things that is in Wikipedia
+
+623
+00:29:19,760 --> 00:29:24,860
+so then we have to go and really invest
+
+624
+00:29:22,490 --> 00:29:28,190
+our own time and effort to develop and
+
+625
+00:29:24,860 --> 00:29:31,370
+flush out to you the details and depth
+
+626
+00:29:28,190 --> 00:29:33,830
+that is necessary to use but we actually
+
+627
+00:29:31,370 --> 00:29:36,230
+use skeletal information just to get
+
+628
+00:29:33,830 --> 00:29:39,590
+started from Wikipedia and then we went
+
+629
+00:29:36,230 --> 00:29:42,620
+on to mine knowledge from very
+
+630
+00:29:39,590 --> 00:29:45,140
+specifically treasure in that domain to
+
+631
+00:29:42,620 --> 00:29:47,660
+create that highly specialized knowledge
+
+632
+00:29:45,140 --> 00:29:50,900
+graph so I think both of them can work
+
+633
+00:29:47,660 --> 00:29:53,960
+together there isn't any that doesn't
+
+634
+00:29:50,900 --> 00:29:56,540
+have to be very strict deadlines I know
+
+635
+00:29:53,960 --> 00:30:01,220
+distinction is what I think it can if it
+
+636
+00:29:56,540 --> 00:30:03,260
+has to do much better than it has the
+
+637
+00:30:01,220 --> 00:30:04,280
+way the past is to give us the train
+
+638
+00:30:03,260 --> 00:30:07,400
+manpower
+
+639
+00:30:04,280 --> 00:30:10,820
+you know people who are trained to
+
+640
+00:30:07,400 --> 00:30:13,640
+deliver systems a long semantic web and
+
+641
+00:30:10,820 --> 00:30:15,830
+our knowledge graph means technologies
+
+642
+00:30:13,640 --> 00:30:17,870
+there are too many people being trained
+
+643
+00:30:15,830 --> 00:30:24,170
+for machine learning to queue for
+
+644
+00:30:17,870 --> 00:30:26,210
+knowledge centric ecosystem if I may add
+
+645
+00:30:24,170 --> 00:30:29,750
+to that emitter that was exactly what I
+
+646
+00:30:26,210 --> 00:30:32,290
+wanted to say I mean as far as the the
+
+647
+00:30:29,750 --> 00:30:37,070
+tension let's say between academia and
+
+648
+00:30:32,290 --> 00:30:39,410
+industry ghosts so I mean this this or
+
+649
+00:30:37,070 --> 00:30:41,720
+anyway this exists anyway regardless of
+
+650
+00:30:39,410 --> 00:30:43,790
+the domain but in this case here we're
+
+651
+00:30:41,720 --> 00:30:45,470
+talking about a very specific domain a
+
+652
+00:30:43,790 --> 00:30:47,770
+Theodora pointed out earlier we're
+
+653
+00:30:45,470 --> 00:30:50,750
+talking about capturing know--let's and
+
+654
+00:30:47,770 --> 00:30:53,650
+this mix in my opinion makes the tension
+
+655
+00:30:50,750 --> 00:30:56,600
+even more pronounced because academia is
+
+656
+00:30:53,650 --> 00:30:57,180
+specifically trained and geared towards
+
+657
+00:30:56,600 --> 00:30:59,070
+doing
+
+658
+00:30:57,180 --> 00:31:02,070
+without and you know this kind of
+
+659
+00:30:59,070 --> 00:31:02,940
+analytical thinking and abstraction and
+
+660
+00:31:02,070 --> 00:31:04,530
+so on and so forth
+
+661
+00:31:02,940 --> 00:31:06,240
+business on the industry on the other
+
+662
+00:31:04,530 --> 00:31:09,210
+hand has a totally different approach
+
+663
+00:31:06,240 --> 00:31:10,860
+more practical goal-oriented
+
+664
+00:31:09,210 --> 00:31:13,560
+you know and in many times that also
+
+665
+00:31:10,860 --> 00:31:16,290
+means cutting corners and not actually
+
+666
+00:31:13,560 --> 00:31:19,500
+investing enough in seeing the bigger
+
+667
+00:31:16,290 --> 00:31:23,580
+picture and actually documenting that so
+
+668
+00:31:19,500 --> 00:31:25,550
+this is already a kind of tension in
+
+669
+00:31:23,580 --> 00:31:29,070
+terms of approach and if you add to that
+
+670
+00:31:25,550 --> 00:31:30,990
+the very specific issues that have to do
+
+671
+00:31:29,070 --> 00:31:32,690
+with software develop and so this is
+
+672
+00:31:30,990 --> 00:31:35,280
+something that you know admittedly
+
+673
+00:31:32,690 --> 00:31:38,070
+industry is much better at for a number
+
+674
+00:31:35,280 --> 00:31:40,530
+of reasons I mean it's not actually the
+
+675
+00:31:38,070 --> 00:31:42,540
+the main job of academics is not to
+
+676
+00:31:40,530 --> 00:31:43,710
+build software so they haven't many of
+
+677
+00:31:42,540 --> 00:31:45,990
+them you know haven't had like you know
+
+678
+00:31:43,710 --> 00:31:47,880
+proper training in that and haven't
+
+679
+00:31:45,990 --> 00:31:50,910
+actually had the experience of building
+
+680
+00:31:47,880 --> 00:31:53,370
+you know industrial-strength software
+
+681
+00:31:50,910 --> 00:31:56,550
+systems and and so on plus you know in
+
+682
+00:31:53,370 --> 00:31:59,250
+academia there is a high level so people
+
+683
+00:31:56,550 --> 00:32:01,740
+don't stay long enough in a certain
+
+684
+00:31:59,250 --> 00:32:04,500
+position to be able you know to to
+
+685
+00:32:01,740 --> 00:32:07,260
+develop the skills and there's no actual
+
+686
+00:32:04,500 --> 00:32:08,790
+business model in academia this also has
+
+687
+00:32:07,260 --> 00:32:11,220
+a lot to do you know if you're building
+
+688
+00:32:08,790 --> 00:32:13,830
+a social product you need to think about
+
+689
+00:32:11,220 --> 00:32:16,470
+you know things such as how is it going
+
+690
+00:32:13,830 --> 00:32:18,540
+to appeal to users how am I going to
+
+691
+00:32:16,470 --> 00:32:20,520
+market it and all of these things this
+
+692
+00:32:18,540 --> 00:32:22,410
+these things are not in the mindset of
+
+693
+00:32:20,520 --> 00:32:24,300
+academics and you know rightfully so I
+
+694
+00:32:22,410 --> 00:32:27,630
+would say you know it's not their job to
+
+695
+00:32:24,300 --> 00:32:31,680
+do these things but for a long time the
+
+696
+00:32:27,630 --> 00:32:34,140
+software development that related to the
+
+697
+00:32:31,680 --> 00:32:35,910
+Semantic Web was more or less in the
+
+698
+00:32:34,140 --> 00:32:38,310
+hands of academics for you know people
+
+699
+00:32:35,910 --> 00:32:40,860
+who are directly out of academia and
+
+700
+00:32:38,310 --> 00:32:42,330
+that had a very real I would say
+
+701
+00:32:40,860 --> 00:32:45,600
+affecting the quality of the software
+
+702
+00:32:42,330 --> 00:32:48,210
+and so many people who got exposed to
+
+703
+00:32:45,600 --> 00:32:52,950
+the software that came out you know of
+
+704
+00:32:48,210 --> 00:32:55,530
+the Semantic Web camp would say around
+
+705
+00:32:52,950 --> 00:32:57,930
+that time got disillusioned and you know
+
+706
+00:32:55,530 --> 00:32:59,820
+mad mad some of them may have returned
+
+707
+00:32:57,930 --> 00:33:01,470
+others just stayed with that impression
+
+708
+00:32:59,820 --> 00:33:03,660
+oh you know it's the software just
+
+709
+00:33:01,470 --> 00:33:05,940
+doesn't work and they just walk away
+
+710
+00:33:03,660 --> 00:33:08,100
+hopefully they they made a return by now
+
+711
+00:33:05,940 --> 00:33:09,900
+because by now there's a ton of vendors
+
+712
+00:33:08,100 --> 00:33:10,659
+that use similar technology and they do
+
+713
+00:33:09,900 --> 00:33:13,389
+a very very
+
+714
+00:33:10,659 --> 00:33:15,369
+job but you know it's kind of you have
+
+715
+00:33:13,389 --> 00:33:18,820
+to change that that preconception in
+
+716
+00:33:15,369 --> 00:33:21,729
+order to we have a couple of questions
+
+717
+00:33:18,820 --> 00:33:24,340
+which perhaps should be addressed from
+
+718
+00:33:21,729 --> 00:33:26,830
+the chart one of them is the first one
+
+719
+00:33:24,340 --> 00:33:29,859
+is practical it's from Mohammed and he's
+
+720
+00:33:26,830 --> 00:33:33,960
+asking how does gtp are applied to data
+
+721
+00:33:29,859 --> 00:33:37,619
+management especially knowledge graphs
+
+722
+00:33:33,960 --> 00:33:37,619
+somebody would like to pick this up
+
+723
+00:33:38,390 --> 00:33:46,269
+[Music]
+
+724
+00:33:40,139 --> 00:33:49,109
+Amit yes in the knowledge graph it
+
+725
+00:33:46,269 --> 00:33:52,119
+defense aa depends on how you define it
+
+726
+00:33:49,109 --> 00:33:56,019
+I'll give you an example we develop an
+
+727
+00:33:52,119 --> 00:33:59,739
+application that was about electronic
+
+728
+00:33:56,019 --> 00:34:02,499
+medical records and we had knowledge
+
+729
+00:33:59,739 --> 00:34:06,759
+graph about how drugs you know what the
+
+730
+00:34:02,499 --> 00:34:10,599
+medical drugs and in that drug to drug
+
+731
+00:34:06,759 --> 00:34:14,789
+interaction for example was model as
+
+732
+00:34:10,599 --> 00:34:21,190
+rules to the alternative concept now
+
+733
+00:34:14,789 --> 00:34:24,490
+similarly gdpr can be translated you
+
+734
+00:34:21,190 --> 00:34:27,760
+know can be represented as constraints
+
+735
+00:34:24,490 --> 00:34:30,700
+and rules that may you know that will
+
+736
+00:34:27,760 --> 00:34:34,000
+constrain on the utilization of the data
+
+737
+00:34:30,700 --> 00:34:36,010
+so if the data is personally
+
+738
+00:34:34,000 --> 00:34:38,099
+identifiable data then you're going to
+
+739
+00:34:36,010 --> 00:34:41,849
+do something or the other
+
+740
+00:34:38,099 --> 00:34:44,409
+and for that you can think of it as a
+
+741
+00:34:41,849 --> 00:34:46,899
+enhancement of knowledge graph or a
+
+742
+00:34:44,409 --> 00:34:49,929
+layer or knowledge graph to capture
+
+743
+00:34:46,899 --> 00:34:53,470
+these kind of rules and regulations that
+
+744
+00:34:49,929 --> 00:34:57,099
+can tend constraint on the use of the
+
+745
+00:34:53,470 --> 00:34:59,589
+detail of this side when describing Amit
+
+746
+00:34:57,099 --> 00:35:02,589
+does this reflect a little bit on what
+
+747
+00:34:59,589 --> 00:35:05,349
+panels described earlier when he said it
+
+748
+00:35:02,589 --> 00:35:07,180
+is a lot of company knowledge graphs
+
+749
+00:35:05,349 --> 00:35:10,660
+which are essentially siloed and there's
+
+750
+00:35:07,180 --> 00:35:12,279
+no internet interoperability in the data
+
+751
+00:35:10,660 --> 00:35:17,140
+from one knowledge graph to another for
+
+752
+00:35:12,279 --> 00:35:19,480
+various reasons know allows physical
+
+753
+00:35:17,140 --> 00:35:22,359
+thing is that the composition of
+
+754
+00:35:19,480 --> 00:35:24,940
+knowledge graph you know when you talk
+
+755
+00:35:22,359 --> 00:35:27,520
+about knowledge you can limit it to
+
+756
+00:35:24,940 --> 00:35:30,220
+see the facts that's the core of Raja
+
+757
+00:35:27,520 --> 00:35:32,619
+but you can also incorporate in that the
+
+758
+00:35:30,220 --> 00:35:36,910
+actions that we can take using that
+
+759
+00:35:32,619 --> 00:35:39,160
+knowledge we actions of creating the
+
+760
+00:35:36,910 --> 00:35:42,069
+knowledge and storing something leader
+
+761
+00:35:39,160 --> 00:35:45,160
+those can be modeled and can be called
+
+762
+00:35:42,069 --> 00:35:49,359
+as part of knowledge graph and hence the
+
+763
+00:35:45,160 --> 00:35:53,940
+answer to Hammad will be that some of
+
+764
+00:35:49,359 --> 00:35:58,089
+the companies could choose to codify
+
+765
+00:35:53,940 --> 00:36:00,130
+gdpr as part of their knowledge graph
+
+766
+00:35:58,089 --> 00:36:03,099
+representation extensive knowledge graph
+
+767
+00:36:00,130 --> 00:36:06,190
+and has consistently deployed deployed
+
+768
+00:36:03,099 --> 00:36:10,540
+better the other way and keep the GDP
+
+769
+00:36:06,190 --> 00:36:13,359
+are you don't within the logic of a
+
+770
+00:36:10,540 --> 00:36:16,839
+replication which can be more costly and
+
+771
+00:36:13,359 --> 00:36:19,720
+more hidden and so I think it's you can
+
+772
+00:36:16,839 --> 00:36:21,490
+you can make it more explicit and put it
+
+773
+00:36:19,720 --> 00:36:23,410
+as part of knowledge graph rather than
+
+774
+00:36:21,490 --> 00:36:25,690
+leave it to just the applications to
+
+775
+00:36:23,410 --> 00:36:27,369
+implement GDP a that right application
+
+776
+00:36:25,690 --> 00:36:30,420
+that use knowledge graph and so that was
+
+777
+00:36:27,369 --> 00:36:33,910
+my answer to each question right
+
+778
+00:36:30,420 --> 00:36:36,970
+honestly so I will give the example of
+
+779
+00:36:33,910 --> 00:36:39,339
+text journal so what we do is that our
+
+780
+00:36:36,970 --> 00:36:43,030
+notice graph is about occupations and
+
+781
+00:36:39,339 --> 00:36:46,119
+skills for the labor market and much of
+
+782
+00:36:43,030 --> 00:36:48,010
+the data that we use in order to process
+
+783
+00:36:46,119 --> 00:36:51,310
+note but also to construct the knowledge
+
+784
+00:36:48,010 --> 00:36:54,460
+graph from our CVS right curriculum with
+
+785
+00:36:51,310 --> 00:36:57,040
+us and vacancies so CV is a really
+
+786
+00:36:54,460 --> 00:36:58,690
+sensitive right if a company gives us a
+
+787
+00:36:57,040 --> 00:37:00,700
+fist process we need to be really
+
+788
+00:36:58,690 --> 00:37:02,640
+careful what to do with them right
+
+789
+00:37:00,700 --> 00:37:05,200
+because they're sensitive personal data
+
+790
+00:37:02,640 --> 00:37:07,240
+so obviously the first level in the
+
+791
+00:37:05,200 --> 00:37:09,099
+knowledge graph about gtp are is if
+
+792
+00:37:07,240 --> 00:37:11,800
+you're going to explicitly present
+
+793
+00:37:09,099 --> 00:37:14,560
+persons write medical records this can
+
+794
+00:37:11,800 --> 00:37:17,109
+be or I don't know financial
+
+795
+00:37:14,560 --> 00:37:18,730
+transactions of individual people right
+
+796
+00:37:17,109 --> 00:37:22,240
+you need to ensure that you have there
+
+797
+00:37:18,730 --> 00:37:23,829
+okay that's that's the explicit level
+
+798
+00:37:22,240 --> 00:37:25,720
+right that you talked about David Tamara
+
+799
+00:37:23,829 --> 00:37:27,069
+learn and it says you know let's panel
+
+800
+00:37:25,720 --> 00:37:30,819
+that they've done Berlin I don't know
+
+801
+00:37:27,069 --> 00:37:35,859
+he's a serial killer right for instance
+
+802
+00:37:30,819 --> 00:37:38,240
+with not true the second the second
+
+803
+00:37:35,859 --> 00:37:44,810
+level which is a more gray area is when
+
+804
+00:37:38,240 --> 00:37:47,869
+use this data to derive facts for the
+
+805
+00:37:44,810 --> 00:37:49,880
+population right to say for example that
+
+806
+00:37:47,869 --> 00:37:52,730
+you look we analyzed one millions
+
+807
+00:37:49,880 --> 00:37:58,420
+degrees and one with in vacancies and we
+
+808
+00:37:52,730 --> 00:38:01,640
+found that this particular age group is
+
+809
+00:37:58,420 --> 00:38:05,650
+more skilled in I don't know in deep
+
+810
+00:38:01,640 --> 00:38:08,390
+learning this is is that something that
+
+811
+00:38:05,650 --> 00:38:14,390
+we are Tatars
+
+812
+00:38:08,390 --> 00:38:16,130
+but it can be that biases out if you
+
+813
+00:38:14,390 --> 00:38:18,710
+have to really to really be careful for
+
+814
+00:38:16,130 --> 00:38:20,960
+that not to be should right but rather
+
+815
+00:38:18,710 --> 00:38:22,280
+not to any hard not to create bias in
+
+816
+00:38:20,960 --> 00:38:24,110
+your knowledge browser so we may be
+
+817
+00:38:22,280 --> 00:38:26,119
+thinking that you know it's machine
+
+818
+00:38:24,110 --> 00:38:29,990
+learning and deep learning that our
+
+819
+00:38:26,119 --> 00:38:31,700
+biases or certain biases but also the
+
+820
+00:38:29,990 --> 00:38:38,630
+explicit knowledge that we put in our
+
+821
+00:38:31,700 --> 00:38:41,330
+graphs right okay and there's an
+
+822
+00:38:38,630 --> 00:38:42,650
+observation more than I've more an
+
+823
+00:38:41,330 --> 00:38:44,540
+observation and a question that's
+
+824
+00:38:42,650 --> 00:38:47,690
+appeared in the chat and it's from Jose
+
+825
+00:38:44,540 --> 00:38:50,480
+and he's saying the idea of the Semantic
+
+826
+00:38:47,690 --> 00:38:52,880
+Web is a worldwide distributed mutual
+
+827
+00:38:50,480 --> 00:38:54,560
+knowledge base he still to be realized
+
+828
+00:38:52,880 --> 00:38:56,240
+nothing panels this is what you were
+
+829
+00:38:54,560 --> 00:38:59,690
+alluding to when he said that there can
+
+830
+00:38:56,240 --> 00:39:01,430
+be implicit bias there Jose says it is a
+
+831
+00:38:59,690 --> 00:39:03,890
+continuous endless battle between
+
+832
+00:39:01,430 --> 00:39:06,320
+proponents of an open world which is
+
+833
+00:39:03,890 --> 00:39:08,750
+more beneficial to society on longer
+
+834
+00:39:06,320 --> 00:39:10,640
+term versus proponents of market
+
+835
+00:39:08,750 --> 00:39:12,800
+oriented world gardens that have been
+
+836
+00:39:10,640 --> 00:39:17,030
+successful in the last ten years like
+
+837
+00:39:12,800 --> 00:39:19,460
+Facebook Google etc and says this poses
+
+838
+00:39:17,030 --> 00:39:21,830
+a challenge which we haven't yet met I
+
+839
+00:39:19,460 --> 00:39:31,550
+suppose would anybody like to comment on
+
+840
+00:39:21,830 --> 00:39:34,040
+this yes yes I know so inherently Tim
+
+841
+00:39:31,550 --> 00:39:38,720
+berners-lee whom we do pretty credit for
+
+842
+00:39:34,040 --> 00:39:44,500
+this term is you know very much a into
+
+843
+00:39:38,720 --> 00:39:47,150
+open openness and you know creating
+
+844
+00:39:44,500 --> 00:39:48,010
+products that are good for Humanity and
+
+845
+00:39:47,150 --> 00:39:49,750
+let
+
+846
+00:39:48,010 --> 00:39:52,780
+in everybody should contribute to a
+
+847
+00:39:49,750 --> 00:39:56,890
+common thing and and benefit from that
+
+848
+00:39:52,780 --> 00:40:00,220
+what says as Josh mentioned the wall
+
+849
+00:39:56,890 --> 00:40:03,130
+gardens that companies wanted to do and
+
+850
+00:40:00,220 --> 00:40:05,920
+that's where for example Facebook is on
+
+851
+00:40:03,130 --> 00:40:11,500
+the web but is not consistent with the
+
+852
+00:40:05,920 --> 00:40:15,760
+web's vision now but i but i think i
+
+853
+00:40:11,500 --> 00:40:18,040
+mean i use semantic principles and you
+
+854
+00:40:15,760 --> 00:40:20,230
+know the complete right sign in 1999 we
+
+855
+00:40:18,040 --> 00:40:23,350
+had commercial products and services web
+
+856
+00:40:20,230 --> 00:40:26,500
+search engine in 2000 2000 in no time
+
+857
+00:40:23,350 --> 00:40:29,080
+frame well it was a commercial company
+
+858
+00:40:26,500 --> 00:40:32,440
+and I did not make knowledge graph that
+
+859
+00:40:29,080 --> 00:40:33,730
+we build in the company public so you
+
+860
+00:40:32,440 --> 00:40:39,400
+know the cost of building this knowledge
+
+861
+00:40:33,730 --> 00:40:41,800
+graph is very quite significant in a we
+
+862
+00:40:39,400 --> 00:40:44,619
+had figured out amazing way missing a
+
+863
+00:40:41,800 --> 00:40:47,710
+lot of automation but by and large I was
+
+864
+00:40:44,619 --> 00:40:49,930
+giving a keynote to my conference of
+
+865
+00:40:47,710 --> 00:40:52,980
+knowledge graph there were 600 people in
+
+866
+00:40:49,930 --> 00:40:58,080
+audience and the guy who introduced me
+
+867
+00:40:52,980 --> 00:41:00,609
+was from Google knowledge graph you know
+
+868
+00:40:58,080 --> 00:41:02,650
+what you're just transitioning out from
+
+869
+00:41:00,609 --> 00:41:04,630
+goal lines graph but he told me that
+
+870
+00:41:02,650 --> 00:41:08,170
+they have 10,000 people contributing to
+
+871
+00:41:04,630 --> 00:41:11,109
+the knowledge graph amazing the amount
+
+872
+00:41:08,170 --> 00:41:13,000
+of investment in and it also tells you
+
+873
+00:41:11,109 --> 00:41:17,260
+clearly that so much of the knowledge
+
+874
+00:41:13,000 --> 00:41:20,050
+graph work is manual and that it also
+
+875
+00:41:17,260 --> 00:41:22,630
+the same way so much of the work cream
+
+876
+00:41:20,050 --> 00:41:31,270
+or involving removing hateful content is
+
+877
+00:41:22,630 --> 00:41:33,130
+manual during right so when I said that
+
+878
+00:41:31,270 --> 00:41:37,090
+it's not and they still but it's not
+
+879
+00:41:33,130 --> 00:41:38,710
+about when I say that the linking is not
+
+880
+00:41:37,090 --> 00:41:40,630
+always good is that this is it's not
+
+881
+00:41:38,710 --> 00:41:44,920
+that you can behave you corporations
+
+882
+00:41:40,630 --> 00:41:47,980
+from the one hand and the hippies on the
+
+883
+00:41:44,920 --> 00:41:52,619
+other it's about the fact that there are
+
+884
+00:41:47,980 --> 00:41:54,700
+both technological and human reasons why
+
+885
+00:41:52,619 --> 00:41:56,530
+knowledge agent is not beautiful
+
+886
+00:41:54,700 --> 00:41:59,870
+knowledge is not neutral we have to
+
+887
+00:41:56,530 --> 00:42:02,450
+accept it
+
+888
+00:41:59,870 --> 00:42:05,120
+it's quite neutral to talk about where
+
+889
+00:42:02,450 --> 00:42:06,890
+was a person born in etc but when we
+
+890
+00:42:05,120 --> 00:42:08,360
+start thinking about politics we talk
+
+891
+00:42:06,890 --> 00:42:11,930
+about history when we start talking
+
+892
+00:42:08,360 --> 00:42:14,330
+about all these things right very
+
+893
+00:42:11,930 --> 00:42:16,880
+difficult to create an objective neutral
+
+894
+00:42:14,330 --> 00:42:18,890
+truth about all these things right now
+
+895
+00:42:16,880 --> 00:42:22,780
+vaguely you have uncertainty you have
+
+896
+00:42:18,890 --> 00:42:25,910
+immunity have context specificity and
+
+897
+00:42:22,780 --> 00:42:28,280
+one big limitation of the Semantic Web
+
+898
+00:42:25,910 --> 00:42:30,260
+which after 20 or something years hasn't
+
+899
+00:42:28,280 --> 00:42:33,860
+really been realized is the person we're
+
+900
+00:42:30,260 --> 00:42:37,220
+still taking booyah we still have more
+
+901
+00:42:33,860 --> 00:42:39,980
+that talks about true and false right
+
+902
+00:42:37,220 --> 00:42:43,670
+and and even though there have been some
+
+903
+00:42:39,980 --> 00:42:48,880
+efforts to try to reason with uncertain
+
+904
+00:42:43,670 --> 00:42:51,290
+and vague information it hasn't yet so I
+
+905
+00:42:48,880 --> 00:42:53,540
+cannot work with just boolean or if I
+
+906
+00:42:51,290 --> 00:42:58,210
+have to work on it with boolean and it
+
+907
+00:42:53,540 --> 00:43:01,040
+to somehow constrained the potential
+
+908
+00:42:58,210 --> 00:43:02,840
+range of opinions because much of the
+
+909
+00:43:01,040 --> 00:43:07,700
+noleads whether we like it or not are
+
+910
+00:43:02,840 --> 00:43:10,670
+opinions or subjective opinions on that
+
+911
+00:43:07,700 --> 00:43:13,010
+score Pano's has a question which is
+
+912
+00:43:10,670 --> 00:43:15,320
+right into your expertise
+
+913
+00:43:13,010 --> 00:43:18,050
+it's from Anna hunter and she's say
+
+914
+00:43:15,320 --> 00:43:20,480
+asking how do you connect ontology to
+
+915
+00:43:18,050 --> 00:43:23,000
+knowledge graph in domain specific use
+
+916
+00:43:20,480 --> 00:43:25,220
+cases with complex and unstructured data
+
+917
+00:43:23,000 --> 00:43:31,010
+how much ontology is important so
+
+918
+00:43:25,220 --> 00:43:32,150
+there's two questions there really the
+
+919
+00:43:31,010 --> 00:43:41,920
+famous question what is the difference
+
+920
+00:43:32,150 --> 00:43:45,410
+between neurology and in this graph say
+
+921
+00:43:41,920 --> 00:43:46,880
+the borders Harry and then there is a
+
+922
+00:43:45,410 --> 00:43:48,430
+specific reason for that so if we take
+
+923
+00:43:46,880 --> 00:43:53,030
+the same month the web is a MIDI web
+
+924
+00:43:48,430 --> 00:43:55,840
+talked about with all especially try to
+
+925
+00:43:53,030 --> 00:43:58,730
+split the world between classes and
+
+926
+00:43:55,840 --> 00:44:00,260
+individuals right and then one idea was
+
+927
+00:43:58,730 --> 00:44:04,640
+that you know individuals of the data
+
+928
+00:44:00,260 --> 00:44:07,250
+and classes are the conceptual lab but
+
+929
+00:44:04,640 --> 00:44:10,309
+in the end this class of individuals are
+
+930
+00:44:07,250 --> 00:44:13,130
+all right so if if identified
+
+931
+00:44:10,309 --> 00:44:15,259
+take the concept that a scientist I can
+
+932
+00:44:13,130 --> 00:44:17,539
+make it a class and all of us are
+
+933
+00:44:15,259 --> 00:44:19,459
+instances of this or I can make it a
+
+934
+00:44:17,539 --> 00:44:22,009
+concept and I can say that it's the
+
+935
+00:44:19,459 --> 00:44:23,299
+profession of all of us right I make it
+
+936
+00:44:22,009 --> 00:44:26,299
+I can make it sorry I can make it an
+
+937
+00:44:23,299 --> 00:44:30,349
+individual concept so really the
+
+938
+00:44:26,299 --> 00:44:31,640
+question is about so what what is your
+
+939
+00:44:30,349 --> 00:44:35,269
+ontology it can be my knowledge graph
+
+940
+00:44:31,640 --> 00:44:39,739
+and vice versa yeah it's really it
+
+941
+00:44:35,269 --> 00:44:42,259
+really depends on the representation my
+
+942
+00:44:39,739 --> 00:44:43,519
+view is that what you have is a entities
+
+943
+00:44:42,259 --> 00:44:46,609
+in their structured data you have
+
+944
+00:44:43,519 --> 00:44:50,299
+strings you have you have terms if you
+
+945
+00:44:46,609 --> 00:44:51,949
+life by giving when will you build
+
+946
+00:44:50,299 --> 00:44:56,660
+semantics you have to give meaning to
+
+947
+00:44:51,949 --> 00:44:58,910
+terms and give meaning to terms by by
+
+948
+00:44:56,660 --> 00:45:00,890
+transforming them into concepts right so
+
+949
+00:44:58,910 --> 00:45:02,989
+you have the concept that then back how
+
+950
+00:45:00,890 --> 00:45:04,849
+many minutes will it have 20 minutes you
+
+951
+00:45:02,989 --> 00:45:09,759
+need to have 20 concepts and started
+
+952
+00:45:04,849 --> 00:45:13,880
+relating the concepts right now how much
+
+953
+00:45:09,759 --> 00:45:16,519
+meaning you need to give it depends a
+
+954
+00:45:13,880 --> 00:45:19,969
+lot on what or how how big is your
+
+955
+00:45:16,519 --> 00:45:22,339
+domain how big is your ambiguity and the
+
+956
+00:45:19,969 --> 00:45:24,079
+more ambiguous it is the more background
+
+957
+00:45:22,339 --> 00:45:26,929
+knowledge you need it depends also on
+
+958
+00:45:24,079 --> 00:45:29,420
+the methods you use right it's not a
+
+959
+00:45:26,929 --> 00:45:32,900
+clear-cut question excellent the thing I
+
+960
+00:45:29,420 --> 00:45:35,479
+think that's that actually showcases the
+
+961
+00:45:32,900 --> 00:45:38,059
+difficulties of other people having in a
+
+962
+00:45:35,479 --> 00:45:40,759
+commercial in a commercial sort of
+
+963
+00:45:38,059 --> 00:45:43,929
+respect in terms of getting their
+
+964
+00:45:40,759 --> 00:45:46,339
+websites and their domains accurately
+
+965
+00:45:43,929 --> 00:45:49,939
+represented and accurately appear in
+
+966
+00:45:46,339 --> 00:45:53,259
+search queries in search and sort of
+
+967
+00:45:49,939 --> 00:45:55,880
+they're in a contextual sort of an
+
+968
+00:45:53,259 --> 00:45:57,859
+environment which reflects exactly what
+
+969
+00:45:55,880 --> 00:45:59,179
+they do it I think that actually shows
+
+970
+00:45:57,859 --> 00:46:02,869
+why and thank you very much for
+
+971
+00:45:59,179 --> 00:46:04,009
+mentioning this is brilliant how about
+
+972
+00:46:02,869 --> 00:46:05,630
+the question of how do you connect
+
+973
+00:46:04,009 --> 00:46:07,130
+ontology to a knowledge graph I mean how
+
+974
+00:46:05,630 --> 00:46:08,989
+would you do that in a practical term
+
+975
+00:46:07,130 --> 00:46:11,509
+and I think again this is probably the
+
+976
+00:46:08,989 --> 00:46:13,789
+main specific one but if you saw your
+
+977
+00:46:11,509 --> 00:46:17,359
+general answer you know and I gave a
+
+978
+00:46:13,789 --> 00:46:18,979
+link to the paper that we wrote which
+
+979
+00:46:17,359 --> 00:46:21,410
+kind of we try to make the distinction
+
+980
+00:46:18,979 --> 00:46:23,650
+or or connect the terms ontology and
+
+981
+00:46:21,410 --> 00:46:25,930
+knowledge knowledge graph and
+
+982
+00:46:23,650 --> 00:46:29,980
+recently one of the three Turing Award
+
+983
+00:46:25,930 --> 00:46:32,609
+winner also use the word world model
+
+984
+00:46:29,980 --> 00:46:37,920
+which also we had used it in our patent
+
+985
+00:46:32,609 --> 00:46:43,000
+point is that it is my view is that the
+
+986
+00:46:37,920 --> 00:46:45,180
+for any user there isn't you can use the
+
+987
+00:46:43,000 --> 00:46:48,070
+word Ultron G or knowledge graph
+
+988
+00:46:45,180 --> 00:46:52,030
+generally speaking knowledge graph
+
+989
+00:46:48,070 --> 00:46:54,940
+representations are not as reaches what
+
+990
+00:46:52,030 --> 00:46:58,300
+we used to call our ology generally
+
+991
+00:46:54,940 --> 00:47:00,849
+speaking all technologies were largely
+
+992
+00:46:58,300 --> 00:47:02,770
+model deposited in our language or
+
+993
+00:47:00,849 --> 00:47:05,349
+something of the Third Kind description
+
+994
+00:47:02,770 --> 00:47:06,940
+logic and they'll be speaking ultra
+
+995
+00:47:05,349 --> 00:47:10,510
+rodney's represent ontological
+
+996
+00:47:06,940 --> 00:47:12,940
+commitment very fundamental aspect of
+
+997
+00:47:10,510 --> 00:47:15,130
+ultros the definition itself the two
+
+998
+00:47:12,940 --> 00:47:17,020
+aspects of ontology it seems that also
+
+999
+00:47:15,130 --> 00:47:20,440
+you commit to insert means there is a by
+
+1000
+00:47:17,020 --> 00:47:22,450
+by the community or by being by those
+
+1001
+00:47:20,440 --> 00:47:24,520
+who are going to use this ontology there
+
+1002
+00:47:22,450 --> 00:47:27,609
+is a fundamental aspects of otology
+
+1003
+00:47:24,520 --> 00:47:29,050
+engineering work and in the case of
+
+1004
+00:47:27,609 --> 00:47:32,560
+knowledge graph people don't care about
+
+1005
+00:47:29,050 --> 00:47:34,540
+it or if you know that and that is where
+
+1006
+00:47:32,560 --> 00:47:37,089
+it comes the use knowledge graph you
+
+1007
+00:47:34,540 --> 00:47:40,359
+know within an enterprise in Walt Garvey
+
+1008
+00:47:37,089 --> 00:47:43,180
+and you're not looking for seeking the I
+
+1009
+00:47:40,359 --> 00:47:45,490
+know you are saying this is you know my
+
+1010
+00:47:43,180 --> 00:47:48,160
+company's view on it and this see or
+
+1011
+00:47:45,490 --> 00:47:50,500
+this is how industry will use what I
+
+1012
+00:47:48,160 --> 00:47:51,790
+define and take-it-or-leave-it kind of
+
+1013
+00:47:50,500 --> 00:47:54,460
+thing so you have market power and
+
+1014
+00:47:51,790 --> 00:47:57,730
+you're exercising that to exploit that
+
+1015
+00:47:54,460 --> 00:48:01,270
+but there's no effort so in general it
+
+1016
+00:47:57,730 --> 00:48:02,680
+is a there's a prat in oh if you can
+
+1017
+00:48:01,270 --> 00:48:05,050
+make a sense where you want to call it
+
+1018
+00:48:02,680 --> 00:48:07,630
+ultra G or knowledge graph but at the
+
+1019
+00:48:05,050 --> 00:48:10,060
+fundamental level but first for both of
+
+1020
+00:48:07,630 --> 00:48:12,940
+them is a saying that you infuse
+
+1021
+00:48:10,060 --> 00:48:15,880
+knowledge in understanding the Rinka in
+
+1022
+00:48:12,940 --> 00:48:18,369
+processing of the data in associating
+
+1023
+00:48:15,880 --> 00:48:20,290
+meaning with the data in gaining
+
+1024
+00:48:18,369 --> 00:48:23,230
+insights from the data knowledge just
+
+1025
+00:48:20,290 --> 00:48:26,170
+the same way that in deep learning new
+
+1026
+00:48:23,230 --> 00:48:27,520
+networks statistical processing pattern
+
+1027
+00:48:26,170 --> 00:48:30,690
+decree no recognition plays a
+
+1028
+00:48:27,520 --> 00:48:32,770
+fundamental role what they do
+
+1029
+00:48:30,690 --> 00:48:35,619
+knowledge plays fundamental role in
+
+1030
+00:48:32,770 --> 00:48:37,030
+making connection between whatever you
+
+1031
+00:48:35,619 --> 00:48:40,360
+have in the data with what we
+
+1032
+00:48:37,030 --> 00:48:42,940
+to call conceptual representation and
+
+1033
+00:48:40,360 --> 00:48:47,800
+then make connections so the moment I
+
+1034
+00:48:42,940 --> 00:48:50,050
+say that this this thing string is David
+
+1035
+00:48:47,800 --> 00:48:52,750
+a melon and that he has this company
+
+1036
+00:48:50,050 --> 00:48:54,280
+that is this concept along with that I
+
+1037
+00:48:52,750 --> 00:48:55,720
+immediately get the knowledge that he
+
+1038
+00:48:54,280 --> 00:48:57,790
+works for this company he has made this
+
+1039
+00:48:55,720 --> 00:49:00,490
+contribution so on so forth that power
+
+1040
+00:48:57,790 --> 00:49:02,170
+you get you get it whether you colleague
+
+1041
+00:49:00,490 --> 00:49:04,060
+on Rajee or you can acknowledge graphs
+
+1042
+00:49:02,170 --> 00:49:05,970
+and the minimum of both of them the most
+
+1043
+00:49:04,060 --> 00:49:09,220
+important construct is relationship
+
+1044
+00:49:05,970 --> 00:49:11,380
+label label relationship so named
+
+1045
+00:49:09,220 --> 00:49:14,140
+earlier there was a very interesting a
+
+1046
+00:49:11,380 --> 00:49:16,570
+point been made about label property
+
+1047
+00:49:14,140 --> 00:49:18,700
+graph versus nod EF the common part is
+
+1048
+00:49:16,570 --> 00:49:21,520
+still relationship and a neighbor
+
+1049
+00:49:18,700 --> 00:49:25,420
+relationship and there's some more that
+
+1050
+00:49:21,520 --> 00:49:28,450
+people have not found that valuable the
+
+1051
+00:49:25,420 --> 00:49:30,460
+the practical world and Industry who
+
+1052
+00:49:28,450 --> 00:49:34,120
+built Enterprise in the knowledge graph
+
+1053
+00:49:30,460 --> 00:49:35,890
+have not found all the representation
+
+1054
+00:49:34,120 --> 00:49:38,890
+and challenges of RDF to be worth the
+
+1055
+00:49:35,890 --> 00:49:41,320
+effort and that's basically why it has
+
+1056
+00:49:38,890 --> 00:49:45,100
+come down to that you get 90% of things
+
+1057
+00:49:41,320 --> 00:49:47,800
+with lower cost by using labor graph so
+
+1058
+00:49:45,100 --> 00:49:50,830
+my own company I I had research papers
+
+1059
+00:49:47,800 --> 00:49:53,920
+in 1990s that used knowledge graph 1996
+
+1060
+00:49:50,830 --> 00:49:55,750
+and 1998 but when I implemented
+
+1061
+00:49:53,920 --> 00:49:58,980
+you know our knowledge graph we did not
+
+1062
+00:49:55,750 --> 00:50:00,540
+use RDF as a whole we use RDF light
+
+1063
+00:49:58,980 --> 00:50:03,820
+right
+
+1064
+00:50:00,540 --> 00:50:07,150
+okay and and on that score yes Pano's by
+
+1065
+00:50:03,820 --> 00:50:10,020
+all means agree on that what I said
+
+1066
+00:50:07,150 --> 00:50:12,910
+indeed ontology is a commitment right
+
+1067
+00:50:10,020 --> 00:50:14,620
+but I'd like again to say that like if
+
+1068
+00:50:12,910 --> 00:50:16,930
+we take the VP Dia for instance what is
+
+1069
+00:50:14,620 --> 00:50:19,150
+the ontology of dbpedia so maybe there
+
+1070
+00:50:16,930 --> 00:50:20,740
+has some classes like 300 or for campus
+
+1071
+00:50:19,150 --> 00:50:22,780
+classes right but this is not the
+
+1072
+00:50:20,740 --> 00:50:24,970
+ontology so every time in dbpedia
+
+1073
+00:50:22,780 --> 00:50:26,620
+defines a concept for example data
+
+1074
+00:50:24,970 --> 00:50:30,550
+scientists which is not necessarily a
+
+1075
+00:50:26,620 --> 00:50:32,080
+class but pay it's a resource we still
+
+1076
+00:50:30,550 --> 00:50:35,200
+have a commitment there so that we all
+
+1077
+00:50:32,080 --> 00:50:37,330
+agree what a data scientist is so it's
+
+1078
+00:50:35,200 --> 00:50:40,060
+not that the what I won't clarify is
+
+1079
+00:50:37,330 --> 00:50:41,380
+that people should not think that there
+
+1080
+00:50:40,060 --> 00:50:43,180
+is a distinction between
+
+1081
+00:50:41,380 --> 00:50:44,490
+ontologies just the classes in the
+
+1082
+00:50:43,180 --> 00:50:47,490
+axioms
+
+1083
+00:50:44,490 --> 00:50:49,080
+you know and all the rest of the
+
+1084
+00:50:47,490 --> 00:50:51,270
+entities do not have ontological
+
+1085
+00:50:49,080 --> 00:50:53,160
+commitments the whole goal is for this
+
+1086
+00:50:51,270 --> 00:50:56,430
+to have also commitments and this is
+
+1087
+00:50:53,160 --> 00:50:59,790
+something we need to address a second
+
+1088
+00:50:56,430 --> 00:51:03,060
+thing about question about labels
+
+1089
+00:50:59,790 --> 00:51:05,220
+property graphs and RDF indeed the main
+
+1090
+00:51:03,060 --> 00:51:07,920
+difference between these two for me is
+
+1091
+00:51:05,220 --> 00:51:09,960
+the predefined semantics so the thing is
+
+1092
+00:51:07,920 --> 00:51:12,210
+that for instance RDF gives me a
+
+1093
+00:51:09,960 --> 00:51:14,280
+constant is called a DFS subclass for
+
+1094
+00:51:12,210 --> 00:51:17,970
+instance right which has a meaning that
+
+1095
+00:51:14,280 --> 00:51:20,790
+we all agree what it is whereas in I
+
+1096
+00:51:17,970 --> 00:51:23,520
+cannot I can also implement that in in
+
+1097
+00:51:20,790 --> 00:51:25,860
+my new for J in my in my property graph
+
+1098
+00:51:23,520 --> 00:51:29,370
+is just that it's not going to be a
+
+1099
+00:51:25,860 --> 00:51:32,040
+standard right so that I think is what
+
+1100
+00:51:29,370 --> 00:51:35,280
+makes one framework more semantic than
+
+1101
+00:51:32,040 --> 00:51:37,680
+the other as long as this commitment is
+
+1102
+00:51:35,280 --> 00:51:41,510
+respected because in this commitment is
+
+1103
+00:51:37,680 --> 00:51:44,910
+not respected and people abuse the
+
+1104
+00:51:41,510 --> 00:51:47,880
+constructs of RDF or of all then we're
+
+1105
+00:51:44,910 --> 00:51:50,640
+not getting so much interoperability and
+
+1106
+00:51:47,880 --> 00:51:53,580
+this is happening and one example one
+
+1107
+00:51:50,640 --> 00:51:57,570
+basic example is they all say must try
+
+1108
+00:51:53,580 --> 00:51:58,770
+to see how many mistakes are there great
+
+1109
+00:51:57,570 --> 00:52:00,870
+and I think that's really cool and
+
+1110
+00:51:58,770 --> 00:52:03,450
+there's one more question which is
+
+1111
+00:52:00,870 --> 00:52:05,730
+coming and perhaps Teodoro is best
+
+1112
+00:52:03,450 --> 00:52:08,430
+suited for this and there is written
+
+1113
+00:52:05,730 --> 00:52:10,830
+about the way that text morphs across
+
+1114
+00:52:08,430 --> 00:52:15,410
+the web in terms of definitions and how
+
+1115
+00:52:10,830 --> 00:52:17,850
+we use it and the question is is text
+
+1116
+00:52:15,410 --> 00:52:20,400
+constantly mutating or can we somehow
+
+1117
+00:52:17,850 --> 00:52:25,950
+fix it as we go across the web in terms
+
+1118
+00:52:20,400 --> 00:52:28,410
+of definitions dildora know we can fix
+
+1119
+00:52:25,950 --> 00:52:33,840
+it we're not in the business of fixing
+
+1120
+00:52:28,410 --> 00:52:37,860
+meaning but rather of dancing with it so
+
+1121
+00:52:33,840 --> 00:52:42,600
+much like the Semantic Web which promise
+
+1122
+00:52:37,860 --> 00:52:48,090
+that you'll see the way I do on the back
+
+1123
+00:52:42,600 --> 00:52:52,620
+of that calm very quickly Theodora is if
+
+1124
+00:52:48,090 --> 00:52:54,450
+we if meaning is constantly in flux then
+
+1125
+00:52:52,620 --> 00:52:58,700
+how do we communicate across different
+
+1126
+00:52:54,450 --> 00:52:58,700
+cultures or different contexts
+
+1127
+00:53:00,600 --> 00:53:13,030
+so this is a pretty deep question I'll
+
+1128
+00:53:07,420 --> 00:53:15,970
+give you a simple example the person is
+
+1129
+00:53:13,030 --> 00:53:19,270
+married to person person is matrix and B
+
+1130
+00:53:15,970 --> 00:53:21,520
+and the two are in really you know
+
+1131
+00:53:19,270 --> 00:53:24,400
+marriage relationship then there is a
+
+1132
+00:53:21,520 --> 00:53:27,030
+divorce the two persons are no longer
+
+1133
+00:53:24,400 --> 00:53:30,720
+married and person a marries person C
+
+1134
+00:53:27,030 --> 00:53:33,100
+that's another person with relationship
+
+1135
+00:53:30,720 --> 00:53:35,020
+in between there is no relationship with
+
+1136
+00:53:33,100 --> 00:53:38,320
+any other person of the same kind and so
+
+1137
+00:53:35,020 --> 00:53:41,530
+on so forth so one of the many aspects
+
+1138
+00:53:38,320 --> 00:53:44,740
+of this transient relationship is the
+
+1139
+00:53:41,530 --> 00:53:48,040
+fact that things evolve but this is just
+
+1140
+00:53:44,740 --> 00:53:50,650
+one of many aspects of the evolution and
+
+1141
+00:53:48,040 --> 00:53:53,490
+it changes the meaning and there's more
+
+1142
+00:53:50,650 --> 00:53:57,970
+that you can think about it's a pretty
+
+1143
+00:53:53,490 --> 00:54:03,250
+challenging and deep subject the meaning
+
+1144
+00:53:57,970 --> 00:54:06,460
+of though it was even more difficult so
+
+1145
+00:54:03,250 --> 00:54:09,690
+for example you would expect that the
+
+1146
+00:54:06,460 --> 00:54:13,150
+relationship of marriage has a more
+
+1147
+00:54:09,690 --> 00:54:15,850
+reliable and long-term relationship but
+
+1148
+00:54:13,150 --> 00:54:19,660
+as we know in our lifetime in lasts for
+
+1149
+00:54:15,850 --> 00:54:23,230
+20 years no change right what used to be
+
+1150
+00:54:19,660 --> 00:54:25,980
+called marriage or you know on between
+
+1151
+00:54:23,230 --> 00:54:28,720
+man and woman is no longer a restriction
+
+1152
+00:54:25,980 --> 00:54:33,940
+and in fact in many countries it's
+
+1153
+00:54:28,720 --> 00:54:37,860
+legally accepted as such so all the you
+
+1154
+00:54:33,940 --> 00:54:40,750
+know the meaning both the schema level
+
+1155
+00:54:37,860 --> 00:54:42,370
+can change as in the example like said
+
+1156
+00:54:40,750 --> 00:54:44,830
+of the marriage and the meaning of the
+
+1157
+00:54:42,370 --> 00:54:46,360
+instance level can change as in the
+
+1158
+00:54:44,830 --> 00:54:48,160
+example of person being married to
+
+1159
+00:54:46,360 --> 00:54:50,590
+person and divorced and other things can
+
+1160
+00:54:48,160 --> 00:54:53,040
+change also and there are more of those
+
+1161
+00:54:50,590 --> 00:54:55,270
+things we probably don't have time for
+
+1162
+00:54:53,040 --> 00:54:58,390
+okay thank you very much and we are
+
+1163
+00:54:55,270 --> 00:55:01,510
+indeed running out of time now despite
+
+1164
+00:54:58,390 --> 00:55:03,910
+the fact that all of you tried to put in
+
+1165
+00:55:01,510 --> 00:55:07,900
+as much depth to everything I think
+
+1166
+00:55:03,910 --> 00:55:10,180
+we've barely scratched the conversation
+
+1167
+00:55:07,900 --> 00:55:10,540
+here in the conversation it was probably
+
+1168
+00:55:10,180 --> 00:55:12,100
+enough
+
+1169
+00:55:10,540 --> 00:55:14,230
+materials some of the questions and
+
+1170
+00:55:12,100 --> 00:55:15,340
+certainly in your knowledge to go on for
+
+1171
+00:55:14,230 --> 00:55:18,430
+several hours on this
+
+1172
+00:55:15,340 --> 00:55:21,010
+however we are getting near the end of
+
+1173
+00:55:18,430 --> 00:55:24,100
+this session so George would you like to
+
+1174
+00:55:21,010 --> 00:55:27,760
+sort of um have our final word here yes
+
+1175
+00:55:24,100 --> 00:55:29,860
+well first of all yes as you said David
+
+1176
+00:55:27,760 --> 00:55:31,630
+we only just scratched the surface and
+
+1177
+00:55:29,860 --> 00:55:34,120
+you know we would actually go on for a
+
+1178
+00:55:31,630 --> 00:55:36,100
+long time but it's it's a complex it's a
+
+1179
+00:55:34,120 --> 00:55:37,810
+complex topic so maybe we can we can
+
+1180
+00:55:36,100 --> 00:55:40,720
+have a part two at some point and
+
+1181
+00:55:37,810 --> 00:55:43,030
+hopefully with better sound on my side I
+
+1182
+00:55:40,720 --> 00:55:45,610
+apologize for that there was nothing in
+
+1183
+00:55:43,030 --> 00:55:50,740
+the plan but you know how live shows are
+
+1184
+00:55:45,610 --> 00:55:52,450
+sometimes so anyway since we have to
+
+1185
+00:55:50,740 --> 00:55:54,640
+prepare for the next session I would
+
+1186
+00:55:52,450 --> 00:55:57,130
+just like to thank all of you for for
+
+1187
+00:55:54,640 --> 00:55:59,590
+your insights and well hopefully we can
+
+1188
+00:55:57,130 --> 00:56:01,960
+continue the conversation next time
+
+1189
+00:55:59,590 --> 00:56:03,670
+thank you thank you very much to all
+
+1190
+00:56:01,960 --> 00:56:07,230
+those who participated in with our
+
+1191
+00:56:03,670 --> 00:56:10,440
+questions yes thank you very much so
+
+1192
+00:56:07,230 --> 00:56:10,440
+take care
+
