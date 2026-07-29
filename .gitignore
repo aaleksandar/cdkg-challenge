@@ -168,3 +168,7 @@ cython_debug/
 
 # BAML generated client — source of truth is baml_src/, regenerated at build/startup time
 src/kuzu/baml_client/
+# Ingestion service state (derived; rebuilt from the repo + YouTube)
+ingest_state.db
+ingest_state.db-wal
+ingest_state.db-shm

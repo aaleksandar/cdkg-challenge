@@ -1,0 +1,106 @@
+"""Reconciliation must stay correct about the corpus that predates the service.
+
+These assert against the real repository rather than fixtures: the metadata CSV
+and entities.json are both committed, so the orphan detection is deterministic.
+Graph assertions are skipped when cdl_db.kuzu is absent, since it is a gitignored
+build artefact.
+"""
+
+import pytest
+
+from ingest import config, reconcile as R
+
+
+@pytest.fixture(scope="module")
+def states():
+    return R.reconcile()
+
+
+def test_norm_title_collapses_whitespace():
+    # A real CSV row carries a trailing space that 02_domain_graph.py copies
+    # verbatim into the Talk node. Comparing raw titles silently loses it.
+    assert R.norm_title("Hybridization of AI ") == R.norm_title("Hybridization of AI")
+    assert R.norm_title("  a   b  ") == "a b"
+    assert R.norm_title(None) == ""
+
+
+@pytest.mark.parametrize(
+    "url,expected",
+    [
+        ("https://www.youtube.com/watch?v=zTHv0JQS7_g", "zTHv0JQS7_g"),
+        (" https://www.youtube.com/watch?v=nK0s2BMA73o", "nK0s2BMA73o"),
+        ("https://youtu.be/ReEqDt_57Jg", "ReEqDt_57Jg"),
+        ("https://www.youtube.com/shorts/4HIVkE07_fo", "4HIVkE07_fo"),
+        ("not a url", None),
+        (None, None),
+    ],
+)
+def test_extract_video_id(url, expected):
+    assert R.extract_video_id(url) == expected
+
+
+def test_junk_detection_matches_bare_youtube_ids():
+    junk = R.TalkState(stem="y-lhpGxhm8c")
+    junk_en = R.TalkState(stem="y-lhpGxhm8c.en")
+    real = R.TalkState(stem="Data-Centric Security")
+    assert junk.is_junk and junk_en.is_junk
+    assert not real.is_junk
+
+
+def test_orphans_are_detected(states):
+    """Transcripts with extracted tags but no CSV row produce nothing in the graph.
+
+    This is real, unreported data loss: the extraction cost was paid and thrown
+    away. Every orphan must carry tags, or the status is meaningless.
+    """
+    orphans = [s for s in states if s.status == "orphaned"]
+    assert len(orphans) == 16, [s.title for s in orphans]
+    assert all(s.has_tags and not s.in_csv for s in orphans)
+    assert all(s.tag_count > 0 for s in orphans)
+
+
+def test_orphans_all_belong_to_one_event(states):
+    """All 16 are Knowledge Connexions 2020 — one curation gap, not 16 oversights."""
+    orphans = [s for s in states if s.status == "orphaned"]
+    srts = [
+        next(config.TRANSCRIPTS_DIR.rglob(f"{s.stem}.srt"), None)
+        for s in orphans
+        if s.stem
+    ]
+    events = {p.relative_to(config.TRANSCRIPTS_DIR).parts[0] for p in srts if p}
+    assert events == {"Knowledge Connexions 2020"}
+
+
+def test_unusable_files_are_quarantined(states):
+    """Bare-YouTube-ID transcripts are never offered as curatable work."""
+    junk = [s for s in states if s.status == "junk"]
+    assert junk, "expected the untitled yt-dlp downloads to be flagged"
+    assert all(not s.actionable for s in junk)
+
+
+@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+def test_every_tagged_talk_in_the_graph_is_accounted_for(states):
+    """No talk may be tagged in Kuzu yet invisible to the panel."""
+    _, tagged = R.read_graph()
+    seen = {R.norm_title(s.csv_title) for s in states if s.tagged_in_graph}
+    assert tagged - seen == set()
+    assert sum(1 for s in states if s.tagged_in_graph) == len(tagged)
+
+
+@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+def test_in_graph_talks_are_curated_and_tagged(states):
+    in_graph = [s for s in states if s.status == "in_graph"]
+    assert in_graph
+    assert all(s.in_csv and s.tagged_in_graph for s in in_graph)
+
+
+def test_quiet_statuses_are_never_actionable(states):
+    for state in states:
+        if state.status in R.QUIET_STATUSES:
+            assert not state.actionable, f"{state.status}: {state.title}"
+
+
+def test_every_state_has_a_label(states):
+    for state in states:
+        assert state.status in R.STATUS_LABELS
+        assert state.status in R.STATUS_ORDER
