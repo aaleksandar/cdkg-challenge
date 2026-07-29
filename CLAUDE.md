@@ -120,6 +120,24 @@ Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 
 3. Metadata CSV + `entities.json` → Kuzu database (`cdl_db.kuzu`, gitignored)
 4. User question → Text2Cypher → Cypher query → Graph results → RAG answer
 
+## Ingestion Service (`src/ingest/`)
+
+A FastAPI admin panel that reconciles the @ConnectedData YouTube channel against the graph and runs the ingestion pipeline. Runs as a second Kamal role on its own subdomain.
+
+```bash
+PYTHONPATH=src uv run uvicorn ingest.main:app --port 8503
+```
+
+**It derives state rather than storing it.** `reconcile.py` computes each talk's status at read time from six sources that disagree — the channel inventory, `Transcripts/**.srt`, the metadata CSV, `data/*.txt`, `entities.json` and Kuzu. This is why the panel is correct about talks ingested long before the service existed, and about their defects. SQLite holds only the inventory cache and run history.
+
+**Enumerate the uploads playlist, not the `/videos` tab.** Every channel's uploads playlist is its channel ID with `UC` swapped for `UU`. The `/videos` tab omits Shorts — 229 entries versus 290 — and Shorts are precisely what the teaser filter needs to see in order to exclude them.
+
+**The parser never guesses.** Anything it cannot establish is reported in `ParsedTalk.missing` and left blank for a curator, because the graph is built from the CSV verbatim and a wrong row is worse than no row.
+
+Pipeline stages, in order: `metadata_parse → transcript_download → csv_append → transcript_extraction → tag_extraction → graph_rebuild → publish`. Download, extraction and tag extraction are content-addressed and skip when their output exists, which is what makes a rebuild for a new model cheap — it re-runs neither YouTube nor the LLM.
+
+**Three gates, all shipping `false`:** `KG_ENABLED` (write to the graph), `GIT_PUSH_ENABLED` (publish to GitHub), `AUTO_INGEST_NEW` (ingest detected videos without asking). Turn them on one at a time.
+
 ## Evaluation Loop
 
 `QA/CDKGQA.csv` holds 12 questions with baseline answers. `evaluate.py` runs each through `GraphRAG` and scores the response 1–5 with a Gemini judge (1 = no_answer, 5 = correct), printing per-question detail and a summary histogram.
@@ -146,12 +164,14 @@ Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.
 - **`rag.py` reads the schema through Kuzu private APIs** (`conn._get_node_table_names()`, `_get_rel_table_names()`). These can break on upgrade; `kuzu` is pinned to `==0.11.3`.
 - **`03_content_graph.py` has no `__main__` guard** — it opens the database at import time.
+- **YouTube descriptions end with an advert for the current conference.** A talk uploaded in 2017 carries "Connected Data London 2024 has been announced!" in its footer, and reading that as the talk's event mis-files most of the channel. `ingest/sources/parser.py` truncates at the promo markers *and* rejects any description-derived event whose year contradicts the upload date. Do not weaken either guard on its own.
+- **Never rebuild the graph in place.** `02_domain_graph.py` deletes the database while the Streamlit app holds a long-lived handle. `ingest/pipeline/graph.py` builds at a scratch path, refuses to swap in a graph with zero talks or zero tagged talks, then renames atomically and writes `.graph-version` — which is how the app knows to drop its cached connection.
 
 ## Known Rough Edges
 
 Not defects to fix incidentally, but worth knowing before working nearby:
 
 - `evaluate.py`'s judge calls `google.genai` directly with hand-rolled JSON parsing instead of going through BAML like everything else.
-- There is no test suite and no lint configuration, despite `.ruff_cache`/`.pytest_cache` in the tree and empty `tests/` and `src/service/` directories.
+- `tests/` covers the ingestion service (`uv run pytest`), but the `src/kuzu/` pipeline scripts have no tests of their own. There is still no lint configuration despite `.ruff_cache` in the tree.
 - `02_domain_graph.py`'s `extract_talks()` applies a blanket `.drop_nulls()` across `Web`/`Description`, contradicting `load_data()`'s comment that non-core columns may be null. Harmless today, but a row lacking a description would vanish from the `Talk` table.
 - `docker-entrypoint.sh` re-runs `baml-cli generate` on every container boot (`BAML_GENERATE_ON_START=1`) even though the Dockerfile already generated the client at build time.
