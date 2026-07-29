@@ -119,9 +119,16 @@ def test_a_talk_by_line_yields_the_speaker_without_role_or_company():
     assert parser.parse_description(description)["speaker"] == "Jörg Schad"
 
 
-def test_description_recovers_event_from_promo_hashtag():
+def test_promo_hashtag_is_not_the_talks_event():
+    """A "check #CDL24 for more" footer advertises the current conference, not
+    the event this talk was given at."""
     description = "blah blah\n\nIf you liked this video, check #CDL24 for more Presentations"
-    assert parser.parse_description(description)["event"] == "Connected Data London 2024"
+    assert parser.parse_description(description).get("event") is None
+
+
+def test_event_stated_in_the_abstract_is_recovered():
+    description = "This session was recorded at Connected Data World 2021 in London."
+    assert parser.parse_description(description)["event"] == "Connected Data World 2021"
 
 
 def test_full_talk_link_after_semicolon():
@@ -204,3 +211,52 @@ def test_speaker_segment_with_lead_in_and_affiliation():
 def test_long_segments_are_not_mistaken_for_names():
     p = parser.parse_title("Some Talk | a rambling subtitle that is clearly not a person's name")
     assert p.speaker is None
+
+
+# --- Promotional footers (caught by a real end-to-end ingest) ----------------
+
+PROMO_FOOTER = (
+    "Christian explains how GRAKN.AI models biomedical data.\n\n"
+    "---\n"
+    "Connected Data London 2024 has been announced!\n\n"
+    "December 11-13, etc Venues St. Paul's, City of London\n\n"
+    "If you liked this video, check #CDL24 for more Presentations\n"
+)
+
+
+def test_promo_footer_is_not_read_as_the_talks_event():
+    """Every description ends with an advertisement for the *current* event.
+    A 2017 talk carries "Connected Data London 2024 has been announced!", and
+    reading that as its event mis-files every old video."""
+    assert parser.parse_description(PROMO_FOOTER).get("event") is None
+
+
+def test_content_before_the_footer_is_still_searched():
+    description = "Recorded at Connected Data World 2021.\n\n---\nCheck #CDL24 for more\n"
+    assert parser.parse_description(description)["event"] == "Connected Data World 2021"
+
+
+@pytest.mark.parametrize(
+    "event,upload_date,plausible",
+    [
+        ("Connected Data London 2024", "20241201", True),
+        ("Connected Data London 2024", "20231201", True),   # uploaded just before
+        ("Connected Data London 2024", "20171218", False),  # the real case
+        ("Connected Data London 2017", "20171218", True),
+        ("Some Event", "20171218", True),                   # no year to check
+        ("Connected Data London 2024", None, True),         # nothing to check against
+    ],
+)
+def test_event_is_plausible(event, upload_date, plausible):
+    assert parser.event_is_plausible(event, upload_date) is plausible
+
+
+def test_a_2017_upload_does_not_inherit_the_2024_promo_event():
+    info = {
+        "title": "A Knowledge Graph-Based Semantic Database, Christian Jakenfelds, GRAKN.AI",
+        "description": PROMO_FOOTER,
+        "upload_date": "20171218",
+    }
+    p = parser.parse(info)
+    assert p.event is None
+    assert "Event" in p.missing

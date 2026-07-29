@@ -166,6 +166,28 @@ def parse_title(title: str | None) -> ParsedTalk:
     return parsed
 
 
+# Descriptions end with a standing advertisement for the *current* event, which
+# has nothing to do with the talk. A 2017 GRAKN.AI talk carries "Connected Data
+# London 2024 has been announced!" and "#CDL24" in its footer; reading that as
+# the talk's event mis-files every old video under the latest conference.
+PROMO_MARKERS = [
+    re.compile(r"\n[ \t]*-{3,}[ \t]*\n"),          # the "---" rule before the footer
+    re.compile(r"has been announced", re.I),
+    re.compile(r"If you liked this video", re.I),
+    re.compile(r"check\s+#?CD[LW]\s?\d{2}\b", re.I),
+]
+
+
+def strip_promo_footer(description: str) -> str:
+    """Everything before the first promotional marker."""
+    cut = len(description)
+    for marker in PROMO_MARKERS:
+        match = marker.search(description)
+        if match:
+            cut = min(cut, match.start())
+    return description[:cut]
+
+
 def parse_description(description: str | None) -> dict:
     """Recover what the title did not give: speaker, event, and the talk link."""
     if not description or not description.strip():
@@ -180,7 +202,7 @@ def parse_description(description: str | None) -> dict:
         if name and looks_like_person(name):
             result["speaker"] = name
 
-    event = find_event(description)
+    event = find_event(strip_promo_footer(description))
     if event:
         result["event"] = event
 
@@ -189,6 +211,27 @@ def parse_description(description: str | None) -> dict:
         result["web"] = link.group(1).rstrip(".,);")
 
     return result
+
+
+EVENT_YEAR = re.compile(r"\b(20\d{2})\b")
+
+
+def event_is_plausible(event: str, upload_date: str | None, tolerance: int = 1) -> bool:
+    """Whether an event's year is consistent with when the video was published.
+
+    Talks are uploaded during or shortly after their event, so a video published
+    in 2017 did not come from a 2024 conference. Without an upload date there is
+    nothing to check against, so the event is accepted.
+    """
+    if not upload_date or len(upload_date) < 4:
+        return True
+    match = EVENT_YEAR.search(event)
+    if not match:
+        return True
+    try:
+        return abs(int(match.group(1)) - int(upload_date[:4])) <= tolerance
+    except ValueError:
+        return True
 
 
 def parse(info: dict) -> ParsedTalk:
@@ -206,9 +249,15 @@ def parse(info: dict) -> ParsedTalk:
     if not parsed.speaker and fallback.get("speaker"):
         parsed.speaker = fallback["speaker"]
         parsed.speaker_source = "description"
+
     if not parsed.event and fallback.get("event"):
-        parsed.event = fallback["event"]
-        parsed.event_source = "description"
+        # Only trust a description-derived event if its year is consistent with
+        # when the video was published. The title is written deliberately by the
+        # uploader; the description is prose that may still mention another year.
+        if event_is_plausible(fallback["event"], info.get("upload_date")):
+            parsed.event = fallback["event"]
+            parsed.event_source = "description"
+
     parsed.web = fallback.get("web") or info.get("webpage_url")
 
     if not parsed.talk_title:
