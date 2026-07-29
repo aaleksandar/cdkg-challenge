@@ -15,24 +15,7 @@
   <div class="meta">{{ total }} talks reconciled</div>
 </header>
 
-{# The figures are the navigation: one place showing both the count and the way
-   to see what it counts. A separate pill row repeated the same information. #}
-<nav class="figures">
-  {% for key, label in FIGURES %}
-    {% if counts.get(key) or key == 'all' %}
-    <button type="button"
-            class="figure {{ 'is-on' if status_filter == key }} {{ 'is-quiet' if key in QUIET_STATUSES }} {{ 'is-alert' if key in ALERT_STATUSES }}"
-            aria-pressed="{{ 'true' if status_filter == key else 'false' }}"
-            hx-get="/rows?status={{ key }}" hx-target="#sheet" hx-include="[name=q]">
-      <span class="n">{{ counts[key] if key != 'all' else actionable }}</span>
-      <span class="k">
-        {% if key != 'all' %}<span class="state s-{{ key }}"><i class="dot"></i></span>{% endif %}
-        {{ label }}
-      </span>
-    </button>
-    {% endif %}
-  {% endfor %}
-</nav>
+{% include "partials/figures.html" %}
 
 <form id="picks" hx-post="/ingest" hx-target="#flash" hx-swap="innerHTML"
       hx-disabled-elt="#ingest-btn">
@@ -42,7 +25,7 @@
            value="{{ query }}"
            hx-get="/rows" hx-target="#sheet"
            hx-trigger="input changed delay:250ms, search"
-           hx-vals='js:{status: window.currentFilter}'>
+           hx-vals='js:{status: new URLSearchParams(location.search).get("status") || "all"}'>
     <div class="spacer"></div>
     {% include "partials/gate.html" %}
     <button type="button" class="btn" hx-post="/refresh" hx-target="#flash">Refresh channel</button>
@@ -68,7 +51,6 @@
 <div id="drawer"></div>
 
 <script>
-  window.currentFilter = {{ status_filter | tojson }};
   const form = document.getElementById('picks');
   const bar = document.getElementById('actionbar');
   const picked = document.getElementById('picked');
@@ -80,23 +62,7 @@
   }
   form.addEventListener('change', e => { if (e.target.name === 'video_ids') sync(); });
 
-  // Track which figure is active so search keeps the current filter.
-  document.body.addEventListener('htmx:configRequest', e => {
-    const url = e.detail.path || '';
-    if (url.startsWith('/rows') && e.detail.parameters.status) {
-      window.currentFilter = e.detail.parameters.status;
-    }
-  });
-  document.body.addEventListener('htmx:afterSwap', e => {
-    sync();
-    if (e.detail.target.id === 'sheet') {
-      document.querySelectorAll('.figure').forEach(f => {
-        const on = f.getAttribute('hx-get') === '/rows?status=' + window.currentFilter;
-        f.classList.toggle('is-on', on);
-        f.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-    }
-  });
+  document.body.addEventListener('htmx:afterSwap', sync);
 
   document.body.addEventListener('click', e => {
     if (e.target.closest('.scrim, .close')) document.getElementById('drawer').innerHTML = '';

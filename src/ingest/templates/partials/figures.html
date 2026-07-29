@@ -1,0 +1,20 @@
+{# The figures are the navigation. Rendered by the server on every rows request
+   and swapped out-of-band, so the active tab and the counts are always whatever
+   the server just decided — no client-side mirror of the filter to drift. #}
+<nav class="figures" id="figures"{% if oob %} hx-swap-oob="true"{% endif %}>
+  {% for key, label in FIGURES %}
+    {% if counts.get(key) or key == 'all' %}
+    <button type="button"
+            class="figure {{ 'is-on' if status_filter == key }} {{ 'is-quiet' if key in QUIET_STATUSES }} {{ 'is-alert' if key in ALERT_STATUSES }}"
+            aria-pressed="{{ 'true' if status_filter == key else 'false' }}"
+            hx-get="/rows?status={{ key }}" hx-target="#sheet" hx-include="[name=q]"
+            hx-push-url="/?status={{ key }}">
+      <span class="n">{{ counts[key] if key != 'all' else actionable }}</span>
+      <span class="k">
+        {% if key != 'all' %}<span class="state s-{{ key }}"><i class="dot"></i></span>{% endif %}
+        {{ label }}
+      </span>
+    </button>
+    {% endif %}
+  {% endfor %}
+</nav>

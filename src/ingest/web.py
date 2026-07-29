@@ -130,8 +130,14 @@ def index(request: Request, status: str | None = None, q: str | None = None):
 
 @router.get("/rows", response_class=HTMLResponse)
 def rows(request: Request, status: str | None = None, q: str | None = None):
+    """Rows for the sheet, plus the figures swapped out-of-band.
+
+    The figures come back with every response so the active tab and the counts
+    are whatever the server just computed. Mirroring the filter in JavaScript
+    drifted the moment the two disagreed.
+    """
     ctx = _view(status, q)
-    return templates.TemplateResponse(request, "partials/rows.html", ctx)
+    return templates.TemplateResponse(request, "partials/rows_oob.html", ctx)
 
 
 @router.get("/video/{key}", response_class=HTMLResponse)

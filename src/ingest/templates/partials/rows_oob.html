@@ -1,0 +1,4 @@
+{# Response to a filter or search: the rows for #sheet, plus the figures swapped
+   out-of-band so the active tab and every count follow along. #}
+{% include "partials/rows.html" %}
+{% with oob = true %}{% include "partials/figures.html" %}{% endwith %}
