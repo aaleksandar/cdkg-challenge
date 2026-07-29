@@ -83,8 +83,13 @@ class TalkState:
     stem: str | None = None           # transcript filename stem = the CSV join key
     srt_path: str | None = None
     csv_title: str | None = None
+    # Curated values, from the metadata CSV. Authoritative.
     speaker: str | None = None
     event: str | None = None
+    # What the parser reads off the YouTube title. A preview, never authoritative:
+    # it shows an admin what ingestion would record before they commit to it.
+    parsed_speaker: str | None = None
+    parsed_event: str | None = None
     tag_count: int = 0
     missing_curation: list[str] = field(default_factory=list)
     run: dict | None = None
@@ -285,6 +290,14 @@ def reconcile() -> list[TalkState]:
             on_youtube=True,
             run=runs.get(vid),
         )
+        # Preview what ingestion would extract. Cheap — the title is already
+        # cached — and it is what tells an admin whether a video is worth adding.
+        from .sources import parser
+
+        preview = parser.parse_title(video["title"])
+        state.parsed_speaker = preview.speaker
+        state.parsed_event = preview.event
+
         row = csv_by_video_id.get(vid)
         if row:
             apply_csv(state, row)

@@ -1,0 +1,55 @@
+{% if not states %}
+  <div class="empty">
+    <div class="big">Nothing here.</div>
+    <p>No talks match this filter.</p>
+  </div>
+{% else %}
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Talk</th>
+      <th>Status</th>
+      <th>Tags</th>
+      <th>Length</th>
+      <th>Video</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for s in states %}
+    {# Repo-only talks are keyed by transcript stem, which contains spaces and
+       punctuation, so the key must be percent-encoded to survive the URL. #}
+    {% set key = s.video_id if s.video_id else 'stem:' ~ s.stem %}
+    <tr class="{{ 'is-quiet' if s.status in QUIET_STATUSES }}"
+        hx-get="/video/{{ key | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
+      <td class="pick" onclick="event.stopPropagation()">
+        {% if s.status == 'not_ingested' and s.video_id %}
+          <input type="checkbox" name="video_ids" value="{{ s.video_id }}"
+                 aria-label="Select {{ s.title }}">
+        {% endif %}
+      </td>
+      <td>
+        <div class="title">{{ s.csv_title or s.title }}</div>
+        <div class="sub">
+          {# Curated values read solid; parsed previews are dimmed and marked,
+             so a guess is never mistaken for a recorded fact. #}
+          {% if s.speaker %}<span class="who">{{ s.speaker }}</span>
+          {% elif s.parsed_speaker %}<span class="guess">{{ s.parsed_speaker }}</span>{% endif %}
+          {% if s.event %}<span>{{ s.event }}</span>
+          {% elif s.parsed_event %}<span class="guess">{{ s.parsed_event }}</span>{% endif %}
+          {% if s.missing_curation %}<span>missing {{ s.missing_curation | join(', ') }}</span>{% endif %}
+        </div>
+      </td>
+      <td>
+        <span class="state s-{{ s.status }}">
+          <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
+        </span>
+      </td>
+      <td class="num">{{ s.tag_count or '—' }}</td>
+      <td class="dur">{{ s.duration | duration }}</td>
+      <td class="vid">{{ s.video_id or '—' }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}

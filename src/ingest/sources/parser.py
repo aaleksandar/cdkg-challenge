@@ -64,6 +64,19 @@ ROLE_SEPARATOR = re.compile(r"\s*[,–—]\s*")
 # Multiple speakers: "Bogdan Arsintescu & Justin Fine", "X and Y".
 SPEAKER_SPLIT = re.compile(r"\s*(?:&|\band\b|\+)\s*", re.I)
 
+# Lead-ins some titles put before the name: "w/ Ashleigh Faith", "by Jane Doe".
+SPEAKER_LEAD_IN = re.compile(r"^\s*(?:w/|with|by|feat\.?|ft\.?)\s+", re.I)
+
+# A spaced dash separates a name from their company: "Ashleigh Faith - IsA
+# DataThing". Only spaced, so hyphenated surnames ("Haderlein-Høgberg") survive.
+NAME_AFFILIATION = re.compile(r"\s+[-–—]\s+")
+
+
+def clean_speaker(segment: str) -> str:
+    """Reduce a speaker segment to the name, dropping lead-ins and affiliation."""
+    without_lead = SPEAKER_LEAD_IN.sub("", segment.strip())
+    return NAME_AFFILIATION.split(without_lead, maxsplit=1)[0].strip()
+
 
 @dataclass
 class ParsedTalk:
@@ -109,14 +122,15 @@ def looks_like_person(segment: str) -> bool:
     Shape-based, because position is not reliable: ``Title | Event`` and
     ``Title | Speaker | Event`` both occur, so the second segment could be either.
     """
-    segment = segment.strip()
+    segment = clean_speaker(segment)
     if not segment or re.search(r"\d", segment):
         return False
     if EVENT_WORDS.search(segment):
         return False
-    # Names are short. Allow up to 6 words to cover "Veronika Haderlein-Høgberg"
-    # and two names joined by "&".
-    return 1 <= len(segment.split()) <= 6
+    # Length is checked per name, not across the joined segment, so a pair like
+    # "Bogdan Arsintescu & Justin Fine" passes while a sentence fragment does not.
+    names = [n for n in SPEAKER_SPLIT.split(segment) if n.strip()]
+    return bool(names) and all(1 <= len(name.split()) <= 4 for name in names)
 
 
 def strip_hashtags(title: str) -> str:
@@ -139,7 +153,7 @@ def parse_title(title: str | None) -> ParsedTalk:
             parsed.event = event
             parsed.event_source = "title"
         elif not parsed.speaker and looks_like_person(segment):
-            parsed.speaker = segment
+            parsed.speaker = clean_speaker(segment)
             parsed.speaker_source = "title"
         # Anything else is a truncated event segment; the description may recover it.
 

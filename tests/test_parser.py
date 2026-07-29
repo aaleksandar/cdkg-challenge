@@ -174,3 +174,33 @@ def test_confident_parse_has_nothing_missing():
     })
     assert p.is_confident
     assert p.missing == []
+
+
+# --- Speaker segment cleaning (found by running against the live channel) ----
+
+@pytest.mark.parametrize(
+    "segment,expected",
+    [
+        ("w/ Ashleigh Faith - IsA DataThing", "Ashleigh Faith"),
+        ("with Jane Doe", "Jane Doe"),
+        ("by Jane Doe", "Jane Doe"),
+        # A hyphenated surname has no spaces around the hyphen and must survive.
+        ("Veronika Haderlein-Høgberg", "Veronika Haderlein-Høgberg"),
+        ("Jörg Schad – ArangoDB", "Jörg Schad"),
+        ("Bogdan Arsintescu & Justin Fine", "Bogdan Arsintescu & Justin Fine"),
+    ],
+)
+def test_clean_speaker(segment, expected):
+    assert parser.clean_speaker(segment) == expected
+
+
+def test_speaker_segment_with_lead_in_and_affiliation():
+    """Real title from the channel: the segment carries a "w/" prefix and the
+    speaker's company, neither of which belongs in the Speaker column."""
+    p = parser.parse_title("5 Considerations for More Responsible AI | w/ Ashleigh Faith - IsA DataThing")
+    assert p.speaker == "Ashleigh Faith"
+
+
+def test_long_segments_are_not_mistaken_for_names():
+    p = parser.parse_title("Some Talk | a rambling subtitle that is clearly not a person's name")
+    assert p.speaker is None

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDKG Ingestion</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/htmx.min.js" defer></script>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wordmark">Connected Data <span>· Knowledge Graph ingestion</span></div>
+  <div class="spacer"></div>
+  <div class="meta">{{ total }} talks reconciled</div>
+</header>
+
+{% set headline = [
+  ('in_graph',      'In graph',      false),
+  ('not_ingested',  'Not ingested',  false),
+  ('orphaned',      'Orphaned',      true),
+  ('untagged',      'Untagged',      false),
+  ('needs_curation','Needs curation',false),
+  ('excluded_short','Shorts',        false)
+] %}
+<div class="figures">
+  {% for key, label, alert in headline %}
+    {% if counts.get(key) %}
+    <div class="figure {{ 'is-alert' if alert else '' }} {{ 'is-quiet' if key in QUIET_STATUSES else '' }}">
+      <div class="n">{{ counts[key] }}</div>
+      <div class="k"><span class="state s-{{ key }}"><i class="dot"></i></span>{{ label }}</div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<form id="picks"
+      hx-post="/ingest"
+      hx-target="#flash"
+      hx-swap="innerHTML">
+
+  <div class="controls">
+    <button type="button" class="chip" aria-pressed="{{ 'true' if status_filter == 'all' else 'false' }}"
+            hx-get="/rows?status=all" hx-target="#sheet" hx-include="[name=q]" hx-push-url="false">
+      Actionable<span class="c">{{ counts.values() | sum - (counts.get('excluded_short',0) + counts.get('upcoming',0) + counts.get('junk',0)) }}</span>
+    </button>
+    {% for key in STATUS_ORDER %}
+      {% if counts.get(key) %}
+      <button type="button" class="chip" aria-pressed="{{ 'true' if status_filter == key else 'false' }}"
+              hx-get="/rows?status={{ key }}" hx-target="#sheet" hx-include="[name=q]">
+        {{ STATUS_LABELS[key] }}<span class="c">{{ counts[key] }}</span>
+      </button>
+      {% endif %}
+    {% endfor %}
+
+    <div class="spacer"></div>
+
+    <input class="search" type="search" name="q" placeholder="Search title, speaker, event…"
+           value="{{ query }}"
+           hx-get="/rows" hx-target="#sheet" hx-trigger="input changed delay:250ms, search"
+           hx-vals='js:{status: document.querySelector(".chip[aria-pressed=true]")?.textContent.trim() ? new URLSearchParams(location.search).get("status") || "all" : "all"}'>
+
+    <button type="button" class="btn" hx-post="/refresh" hx-target="#flash" hx-swap="innerHTML">
+      Refresh channel
+    </button>
+    <span id="flash"></span>
+  </div>
+
+  <div class="sheet" id="sheet">
+    {% include "partials/rows.html" %}
+  </div>
+
+  <div class="actionbar" id="actionbar" hidden>
+    <span><strong id="picked">0</strong> selected</span>
+    <button class="btn" type="submit">Ingest selected</button>
+  </div>
+</form>
+
+<div id="drawer"></div>
+
+<script>
+  // Selection count drives the action bar; keep it out of the server round-trip.
+  const form = document.getElementById('picks');
+  const bar = document.getElementById('actionbar');
+  const count = document.getElementById('picked');
+  function sync() {
+    const n = form.querySelectorAll('input[name=video_ids]:checked').length;
+    count.textContent = n;
+    bar.hidden = n === 0;
+  }
+  form.addEventListener('change', e => {
+    if (e.target.name === 'video_ids') sync();
+  });
+  document.body.addEventListener('htmx:afterSwap', sync);
+
+  // Row opens the drawer, except when the click was the checkbox itself.
+  document.body.addEventListener('click', e => {
+    if (e.target.closest('.scrim, .close')) { document.getElementById('drawer').innerHTML = ''; }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.getElementById('drawer').innerHTML = '';
+  });
+</script>
+
+</body>
+</html>
