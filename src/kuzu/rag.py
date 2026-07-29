@@ -113,19 +113,33 @@ class GraphRAG:
         return types.Answer(question=question, answer=result_str)
 
     def run(self, question: str) -> dict[str, str]:
-        cypher = b.RAGText2Cypher(self.baml_schema, question)
-
         result = {
             "question": question,
-            "cypher": cypher.query if cypher else "N/A",
+            "cypher": "N/A",
             "response": "N/A",
+            "error": "",
         }
-        # Query the database
-        if cypher:
+
+        # Two things here can fail on well-formed input, so neither is allowed to
+        # reach the caller (e.g. the Streamlit app) as an unhandled exception:
+        # the generated Cypher may be invalid against the schema, and either LLM
+        # call may return a response BAML cannot parse into its output type.
+        try:
+            cypher = b.RAGText2Cypher(self.baml_schema, question)
+            if not cypher:
+                return result
+            result["cypher"] = cypher.query
+
             query_response = self.execute_query(question, cypher.query)
             r = b.RAGAnswerQuestion(question, query_response.answer)
             # Overwrite answer with the answer from the RAGAnswerQuestion function
             result["response"] = r.answer
+        except Exception as e:
+            result["error"] = str(e)
+            result["response"] = (
+                "I couldn't answer that — the query or the answer generation failed. "
+                "Try rephrasing the question."
+            )
 
         return result
 

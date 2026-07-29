@@ -25,10 +25,9 @@ from google import genai
 from google.genai import types as genai_types
 
 import config
-from baml_client import b, types as baml_types
 from rag import GraphRAG
 
-QA_CSV = Path(__file__).parent.parent.parent / "QA" / "CDKGQA.csv"
+QA_CSV = config.QA_CSV
 
 SCORE_LABELS = {
     1: "no_answer",
@@ -37,37 +36,6 @@ SCORE_LABELS = {
     4: "acceptable",
     5: "correct",
 }
-
-
-class RobustGraphRAG(GraphRAG):
-    """GraphRAG that handles unhashable column values (e.g. from collect())."""
-
-    def execute_query(self, question: str, cypher: str) -> baml_types.Answer:
-        response = self.conn.execute(cypher)
-        columns = response.get_column_names()
-        rows = []
-        seen = set()
-        while response.has_next():
-            item = response.get_next()
-            key = tuple(str(v) for v in item)
-            if key not in seen:
-                seen.add(key)
-                rows.append(item)
-
-        if not rows:
-            result_str = ""
-        elif len(columns) == 1:
-            result_str = ", ".join(str(r[0]) for r in rows)
-        else:
-            parts = []
-            for row in rows:
-                pairs = " | ".join(
-                    f"{col}: {val}" for col, val in zip(columns, row) if val is not None
-                )
-                parts.append(pairs)
-            result_str = "\n".join(parts)
-
-        return baml_types.Answer(question=question, answer=result_str)
 
 
 def load_questions(path: Path) -> list[dict]:
@@ -112,7 +80,7 @@ SYSTEM ANSWER: {response}
 Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
 
     result = get_judge_client().models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-3.6-flash",
         contents=prompt,
         config=genai_types.GenerateContentConfig(
             temperature=0,
@@ -131,7 +99,7 @@ Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
 
 def run_evaluation(output_path: str | None = None) -> list[dict]:
     questions = load_questions(QA_CSV)
-    rag = RobustGraphRAG()
+    rag = GraphRAG()
     results = []
 
     print(f"Running evaluation on {len(questions)} questions...\n")

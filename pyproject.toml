@@ -6,12 +6,15 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "kuzu==0.11.3",
-    "polars>=1.38.1",
-    "pyarrow>=23.0.1",
-    "baml-py>=0.220.0",
-    "pydantic>=2.12.5",
+    "polars>=1.43.1",
+    # streamlit caps this at <25; do not raise past that until streamlit does
+    "pyarrow>=24.0.0,<25",
+    # Pinned: baml_src/generators.baml hard-codes this version, and codegen
+    # must match the installed runtime. Bump both together.
+    "baml-py==0.223.0",
+    "pydantic>=2.13.4",
     "python-dotenv>=1.2.2",
-    "streamlit>=1.55.0",
-    "google-genai>=1.66.0",
-    "anthropic>=0.84.0",
+    "streamlit>=1.60.0",
+    # Used directly by evaluate.py's LLM judge
+    "google-genai>=2.14.0",
 ]

@@ -24,3 +24,6 @@ DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 
 # Entities JSON file (LLM-extracted tags)
 ENTITIES_JSON = BASE_DIR / "entities.json"
+
+# Evaluation benchmark: questions and baseline answers
+QA_CSV = Path(os.getenv("QA_CSV", BASE_DIR.parent.parent / "QA" / "CDKGQA.csv"))

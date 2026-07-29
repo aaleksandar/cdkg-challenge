@@ -33,6 +33,11 @@ if question:
         with st.expander("View Cypher Query", expanded=True):
             st.code(output["cypher"], language="sql")
 
+        # The Cypher is LLM-generated and may not run against the schema, and the
+        # answer generation can fail to parse — GraphRAG.run reports both here
+        if output.get("error"):
+            st.warning(f"Could not complete the query: {output['error']}")
+
         # Get and show the response
         st.write("### Answer")
         st.write(output["response"])

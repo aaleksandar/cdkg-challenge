@@ -13,9 +13,9 @@ os.environ["BAML_LOG"] = "WARN"
 
 
 def get_filenames(directory_path):
-    """Get all filenames from the specified directory."""
+    """Get the transcript filenames from the specified directory."""
     path = Path(directory_path)
-    return [f.name for f in path.glob("*")]
+    return sorted(f.name for f in path.glob("*.txt"))
 
 
 def extract_entities_from_file(file_path):
@@ -35,7 +35,13 @@ def process_files(directory_path):
 
     for filename in filenames:
         full_path = f"{directory_path}/{filename}"
-        entities = extract_entities_from_file(full_path)
+        # Isolate failures per file: results are only written to disk once every
+        # file is done, so an unhandled error would discard the whole batch of LLM calls
+        try:
+            entities = extract_entities_from_file(full_path)
+        except Exception as e:
+            print(f"Error processing file {filename}: {e}")
+            continue
         all_entities.append({"filename": filename, "entities": entities})
         print(f"Finished processing file {filename}")
 

@@ -23,7 +23,8 @@ def extract_speakers(df: pl.DataFrame) -> pl.DataFrame:
         df.select("Speaker")
         .with_columns(pl.col("Speaker").str.replace_all(" & ", " and "))
         .with_columns(pl.col("Speaker").str.split(" and "))
-        .explode("Speaker")
+        # Polars 2.0 flips the empty_as_null default; pin current behavior explicitly
+        .explode("Speaker", empty_as_null=True)
         .with_columns(pl.col("Speaker").str.strip_chars())
         .drop_nulls()
         .unique()
@@ -69,7 +70,8 @@ def get_speaker_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
         .with_columns(pl.col("Date").str.to_date(strict=False))
         .with_columns(pl.col("Speaker").str.replace_all(" & ", " and "))
         .with_columns(pl.col("Speaker").str.split(" and "))
-        .explode("Speaker")
+        # Polars 2.0 flips the empty_as_null default; pin current behavior explicitly
+        .explode("Speaker", empty_as_null=True)
         .with_columns(pl.col("Speaker").str.strip_chars())
         .rename({"Speaker": "speaker", "Title": "talk", "Date": "date", "Category": "category"})
         .drop_nulls()
