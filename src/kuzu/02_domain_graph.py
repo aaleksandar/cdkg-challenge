@@ -32,8 +32,16 @@ def extract_speakers(df: pl.DataFrame) -> pl.DataFrame:
     return speakers_df
 
 
-def extract_talks(df: pl.DataFrame) -> list[str]:
-    """Extract unique talk titles from dataframe"""
+def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
+    """Extract unique talks from the dataframe.
+
+    Only `title` may not be null — it is the primary key. `url` and `description`
+    are optional and are filled with empty strings rather than dropping the row:
+    a blanket drop_nulls here deletes the Talk while its speaker and event
+    relationships survive, and the subsequent COPY fails with "Unable to find
+    primary key value". Automatically ingested talks have no description, so
+    this is the ordinary case, not an edge case.
+    """
     talks_df = (
         df.select(["Title", "Category", "Web", "Description", "Type"])
         .rename(
@@ -45,7 +53,13 @@ def extract_talks(df: pl.DataFrame) -> list[str]:
                 "Type": "type",
             }
         )
-        .drop_nulls()
+        .drop_nulls(subset=["title"])
+        .with_columns(
+            pl.col("url").fill_null(""),
+            pl.col("description").fill_null(""),
+            pl.col("category").fill_null(""),
+            pl.col("type").fill_null(""),
+        )
         .unique()
     )
     return talks_df

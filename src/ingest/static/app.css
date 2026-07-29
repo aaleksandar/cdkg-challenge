@@ -416,3 +416,19 @@ tr:hover .rowbtn, .rowbtn:focus-visible, .rowbtn:disabled { opacity: 1; }
 .gate.is-open { color: var(--ok); border-color: #bcd6c5; }
 .gate.is-open .dot { background: var(--ok); }
 .s-ready_for_graph .dot { background: var(--busy); box-shadow: inset 0 0 0 1px var(--busy); }
+
+/* ---- Curation ---- */
+.note.warn { border-color: #e0cfa8; background: #fdf9f0; color: var(--ink); }
+.curate { background: var(--paper); }
+.curate-form { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .9rem; align-items: flex-end; }
+.curate-form label { display: flex; flex-direction: column; gap: .28rem; flex: 1 1 8.5rem; }
+.curate-form label span {
+  font-size: .64rem; text-transform: uppercase; letter-spacing: .09em; color: var(--ink-faint);
+}
+.curate-form input {
+  font: inherit; font-size: .82rem;
+  padding: .34rem .55rem; border: 1px solid var(--rule-strong);
+  border-radius: 4px; background: var(--paper-raised); width: 100%;
+}
+.curate-form input:focus { outline: none; border-color: var(--accent); }
+.curate-form button { flex: 0 0 auto; }

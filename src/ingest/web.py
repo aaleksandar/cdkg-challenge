@@ -162,9 +162,26 @@ def video_detail(request: Request, key: str):
         parsed = parser.parse(raw)
 
     run = db.latest_run_for(match.video_id) if match.video_id else None
+
+    # Offer what is already known rather than an empty form: the upload date as
+    # the talk's date, and whatever the parser read off the title for the fields
+    # nobody recorded. Both are starting points a curator corrects, not answers.
+    from .pipeline.csv_writer import curation_vocabularies
+
+    suggested_date = ""
+    if raw and raw.get("upload_date") and len(raw["upload_date"]) == 8:
+        stamp = raw["upload_date"]
+        suggested_date = f"{stamp[6:8]}/{stamp[4:6]}/{stamp[:4]}"
+    suggestions = {
+        k: v for k, v in
+        {"Speaker": match.parsed_speaker, "Event": match.parsed_event}.items() if v
+    }
+
     return templates.TemplateResponse(
         request, "partials/drawer.html",
-        {"s": match, "parsed": parsed, "raw": raw, "run": run, "key": key},
+        {"s": match, "parsed": parsed, "raw": raw, "run": run, "key": key,
+         "vocab": curation_vocabularies(), "suggested_date": suggested_date,
+         "suggestions": suggestions},
     )
 
 
@@ -221,6 +238,21 @@ def ingest_one(request: Request, video_id: str):
     if video_id not in db.videos_with_active_runs():
         queue_videos([video_id])
     return row(request, video_id)
+
+
+@router.post("/curate/{video_id}", response_class=HTMLResponse)
+async def curate(request: Request, video_id: str):
+    """Fill in the columns blocking a talk from the graph, then re-render the drawer.
+
+    Only the curation columns are accepted, so a crafted form cannot rewrite the
+    Title, the File path or the Video link that the joins depend on.
+    """
+    from .pipeline.csv_writer import update_row
+
+    submitted = await request.form()
+    fields = {k: str(v) for k, v in submitted.items() if k in R.CURATION_COLUMNS}
+    update_row(video_id, fields)
+    return video_detail(request, video_id)
 
 
 @router.post("/gate", response_class=HTMLResponse)

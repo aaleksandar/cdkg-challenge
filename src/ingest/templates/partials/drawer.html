@@ -22,6 +22,10 @@
     </span>
   </div>
 
+  {% if s.status == 'needs_curation' and s.video_id %}
+    {% include "partials/curate.html" %}
+  {% endif %}
+
   {% if s.status == 'orphaned' %}
   <section>
     <div class="note">

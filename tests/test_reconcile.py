@@ -125,3 +125,32 @@ def test_a_talk_missing_required_columns_is_not_called_ready():
 
     ready = R.TalkState(in_csv=True, has_tags=True, has_transcript=True)
     assert ready.status == "ready_for_graph"
+
+
+def test_a_talk_without_a_description_still_becomes_a_node():
+    """02_domain_graph.py used to drop_nulls across url/description, deleting the
+    Talk while its speaker and event relationships survived — the COPY then fails
+    with "Unable to find primary key value". Ingested talks have no description,
+    so this is the ordinary case rather than an edge case."""
+    import polars as pl
+
+    # The script imports its sibling `config` module, so it has to be importable.
+    import sys
+    if str(config.KUZU_DIR) not in sys.path:
+        sys.path.insert(0, str(config.KUZU_DIR))
+
+    source = (config.KUZU_DIR / "02_domain_graph.py").read_text(encoding="utf-8")
+    namespace: dict = {}
+    # Import just the pure functions; the script builds a database at __main__.
+    exec(source.split('if __name__ == "__main__":')[0], namespace)  # noqa: S102
+
+    df = pl.DataFrame({
+        "Title": ["Curated talk", "Freshly ingested talk"],
+        "Category": ["Knowledge Graphs", "Knowledge Graphs"],
+        "Web": ["https://example.com", None],
+        "Description": ["An abstract.", None],
+        "Type": ["Presentation", "Presentation"],
+    })
+    talks = namespace["extract_talks"](df)
+    assert set(talks["title"]) == {"Curated talk", "Freshly ingested talk"}
+    assert talks.filter(pl.col("title") == "Freshly ingested talk")["url"][0] == ""

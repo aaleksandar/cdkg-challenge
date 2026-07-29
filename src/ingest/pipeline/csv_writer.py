@@ -68,6 +68,72 @@ def build_row(parsed, video_id: str, srt_path: Path, columns: list[str]) -> dict
     return row
 
 
+def curation_vocabularies(csv_path: Path | None = None) -> dict[str, list[str]]:
+    """Values already in use, to offer as choices rather than free text.
+
+    Read from the file rather than hard-coded: the curator's own vocabulary is
+    the correct one, and a new value added by hand becomes an option next time.
+    """
+    csv_path = csv_path or config.METADATA_CSV
+    if not csv_path.exists():
+        return {}
+    seen: dict[str, set[str]] = {"Type": set(), "Category": set(), "Event": set()}
+    with open(csv_path, newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            for column in seen:
+                value = (row.get(column) or "").strip()
+                if value:
+                    seen[column].add(value)
+    return {column: sorted(values) for column, values in seen.items()}
+
+
+def update_row(video_id: str, fields: dict[str, str],
+               csv_path: Path | None = None) -> tuple[bool, str]:
+    """Fill in curation fields on an existing row, identified by YouTube ID.
+
+    The bot only ever appends; this is the human-directed counterpart, and the
+    one case where an existing row is edited. It touches only the named columns
+    of the one matching row, rewrites through a temporary file so an interrupted
+    write cannot truncate the CSV, and leaves every other row byte-identical.
+    """
+    csv_path = csv_path or config.METADATA_CSV
+
+    with _write_lock:
+        if not csv_path.exists():
+            return False, "Metadata CSV not found"
+
+        with open(csv_path, newline="", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            columns = reader.fieldnames or list(FALLBACK_COLUMNS)
+            rows = list(reader)
+
+        target = None
+        for row in rows:
+            if reconcile.extract_video_id(row.get("Video")) == video_id:
+                target = row
+                break
+        if target is None:
+            return False, "No metadata row for this video"
+
+        applied = []
+        for column, value in fields.items():
+            value = (value or "").strip()
+            if column in columns and value:
+                target[column] = value
+                applied.append(column)
+        if not applied:
+            return False, "Nothing to update"
+
+        temporary = csv_path.with_suffix(".csv.tmp")
+        with open(temporary, "w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(rows)
+        temporary.replace(csv_path)
+
+    return True, f"Updated {', '.join(applied)}"
+
+
 def append_row(parsed, video_id: str, srt_path: Path,
                csv_path: Path | None = None) -> tuple[bool, str]:
     """Append one row. Returns (appended, human-readable reason)."""

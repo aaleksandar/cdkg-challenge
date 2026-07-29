@@ -1,0 +1,36 @@
+{# The blocker, stated plainly, with the means to clear it.
+
+   These columns are not cosmetic: 02_domain_graph.py drops any row missing one,
+   so the talk cannot enter the graph until they are filled. Showing the reason
+   without a way to act on it is what made this a dead end. #}
+<section class="curate" id="curate">
+  <div class="note warn">
+    <strong>Not in the graph yet.</strong>
+    {{ s.missing_curation | join(', ') }}
+    {{ 'is' if s.missing_curation | length == 1 else 'are' }} blank, and the graph
+    builder drops rows missing {{ 'it' if s.missing_curation | length == 1 else 'them' }}.
+    Fill {{ 'it' if s.missing_curation | length == 1 else 'them' }} in to bring this talk in.
+  </div>
+
+  <form hx-post="/curate/{{ s.video_id }}" hx-target="#drawer" hx-swap="innerHTML"
+        class="curate-form">
+    {% for column in s.missing_curation %}
+      <label>
+        <span>{{ column }}</span>
+        {% if column == 'Date' %}
+          <input name="Date" placeholder="DD/MM/YYYY" value="{{ suggested_date or '' }}"
+                 pattern="\d{2}/\d{2}/\d{4}" required>
+        {% elif column in vocab and vocab[column] %}
+          <input name="{{ column }}" list="vocab-{{ column }}" required
+                 value="{{ suggestions.get(column, '') }}" placeholder="Choose or type">
+          <datalist id="vocab-{{ column }}">
+            {% for option in vocab[column] %}<option value="{{ option }}">{% endfor %}
+          </datalist>
+        {% else %}
+          <input name="{{ column }}" required value="{{ suggestions.get(column, '') }}">
+        {% endif %}
+      </label>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Save and unblock</button>
+  </form>
+</section>
