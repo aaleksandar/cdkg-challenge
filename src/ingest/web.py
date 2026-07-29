@@ -34,8 +34,21 @@ def _fromjson(raw: str | None) -> dict:
         return {}
 
 
+def _asset_version() -> str:
+    """Fingerprint the stylesheet so a browser cannot serve a stale one.
+
+    Without this an edited stylesheet keeps rendering from cache, which reads as
+    a broken design rather than as a caching problem.
+    """
+    try:
+        return str(int((Path(__file__).parent / "static" / "app.css").stat().st_mtime))
+    except OSError:
+        return "0"
+
+
 templates.env.filters["duration"] = _duration
 templates.env.filters["fromjson"] = _fromjson
+templates.env.globals["asset_version"] = _asset_version
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES

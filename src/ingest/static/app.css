@@ -66,39 +66,72 @@ a:hover { text-decoration: underline; }
 /* ---- Figures ---- */
 .figures {
   display: flex; flex-wrap: nowrap;
-  padding: 0 var(--gutter);
+  padding: 0 calc(var(--gutter) - 0.9rem);
   border-bottom: 1px solid var(--rule);
   background: var(--paper-raised);
-  /* Keep the strip on one line; narrow screens scroll rather than wrap into a
-     ragged second row. */
+  /* One line always; narrow screens scroll rather than wrap into a ragged row. */
   overflow-x: auto;
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
+.figures::-webkit-scrollbar { display: none; }
+
+/* Tabs, but they must read as typography rather than as controls: no chrome,
+   no fill, just a number and a label that respond to the pointer. */
 .figure {
-  padding: 1rem 1.15rem 1.05rem;
-  border-right: 1px solid var(--rule);
-  flex: 0 0 auto;
-  white-space: nowrap;
+  appearance: none; -webkit-appearance: none;
+  font: inherit; color: inherit; text-align: left;
+  background: transparent; border: 0; border-radius: 0;
+  margin: 0; cursor: pointer;
+  padding: 1.05rem 0.9rem 0;
+  flex: 0 0 auto; white-space: nowrap;
+  position: relative;
 }
-.figure:last-child { border-right: 0; }
+/* The rule between tabs is drawn as a pseudo-element so it can be inset from
+   the padding and stop short of the baseline, which a border cannot do. */
+.figure + .figure::before {
+  content: ""; position: absolute; left: 0; top: 1.25rem; bottom: 1.1rem;
+  width: 1px; background: var(--rule);
+}
 .figure .n {
   display: block;
   font-family: var(--serif);
-  font-size: 1.7rem;
-  line-height: 1;
+  font-size: 1.75rem; line-height: 1;
   font-variant-numeric: tabular-nums lining-nums;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  color: var(--ink-soft);
+  transition: color .14s;
 }
 .figure .k {
-  display: flex; align-items: center; gap: 0.35rem;
-  margin-top: 0.35rem;
-  font-size: 0.64rem;
+  display: flex; align-items: center; gap: 0.34rem;
+  margin-top: 0.38rem;
+  font-size: 0.63rem; letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--ink-soft);
+  color: var(--ink-faint);
+  transition: color .14s;
 }
-.figure.is-quiet .n { color: var(--ink-faint); font-weight: 400; }
+/* The active marker: a short rule under the label, drawn in ink. Sits in the
+   tab's own bottom padding so nothing shifts when it appears. */
+.figure::after {
+  content: ""; position: absolute; left: 0.9rem; right: 0.9rem; bottom: 0;
+  height: 2px; background: var(--ink);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .16s cubic-bezier(.22,.61,.36,1);
+}
+.figure { padding-bottom: 0.85rem; }
+.figure:hover .n { color: var(--ink); }
+.figure:hover .k { color: var(--ink-soft); }
+.figure:hover::after { transform: scaleX(1); background: var(--rule-strong); }
+.figure.is-on .n { color: var(--ink); }
+.figure.is-on .k { color: var(--ink); }
+.figure.is-on::after { transform: scaleX(1); background: var(--ink); }
+.figure:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+
+/* Counts that want attention, and counts that do not. */
 .figure.is-alert .n { color: var(--warn); }
+.figure.is-alert.is-on::after { background: var(--warn); }
+.figure.is-quiet .n { font-size: 1.4rem; color: var(--ink-faint); }
+.figure.is-quiet .k { color: var(--rule-strong); }
+.figure.is-quiet:hover .n { color: var(--ink-soft); }
 
 /* ---- Controls ---- */
 .controls {
@@ -321,16 +354,6 @@ td.pick input { cursor: pointer; accent-color: var(--accent); }
 .sub .guess { color: var(--ink-faint); font-style: italic; }
 .sub .guess::after { content: " (parsed)"; font-style: normal; font-size: .92em; opacity: .7; }
 
-/* ---- Figures as navigation ---- */
-.figure {
-  font: inherit; text-align: left; cursor: pointer;
-  background: none; border: 0; border-right: 1px solid var(--rule);
-  color: inherit; display: block;
-  transition: background .12s;
-}
-.figure:hover { background: var(--accent-wash); }
-.figure.is-on { background: var(--accent-wash); box-shadow: inset 0 -2px 0 var(--ink); }
-.figure.is-on .n { color: var(--ink); }
 
 /* ---- Live banner ---- */
 .live {
