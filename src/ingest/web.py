@@ -110,6 +110,25 @@ def refresh(request: Request, background: BackgroundTasks):
     return HTMLResponse('<span class="note">Refreshing channel inventory…</span>')
 
 
+@router.post("/rebuild", response_class=HTMLResponse)
+def rebuild(request: Request):
+    """Rebuild the graph from what is already on disk. No network, no LLM."""
+    from .pipeline.graph import rebuild_graph
+
+    result = rebuild_graph()
+    css = "note" if result.ok else "note err"
+    return HTMLResponse(f'<span class="{css}">{result.message}</span>')
+
+
+@router.get("/status", response_class=HTMLResponse)
+def publishing_status(request: Request):
+    from .gitops import health
+
+    state = health()
+    css = "note" if state["ok"] else "note err"
+    return HTMLResponse(f'<span class="{css}">{state["detail"]}</span>')
+
+
 @router.post("/ingest", response_class=HTMLResponse)
 def ingest(request: Request, background: BackgroundTasks, video_ids: list[str] = Form(default=[])):
     from .pipeline.runner import queue_videos

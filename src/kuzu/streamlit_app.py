@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import streamlit as st
 
 import config
@@ -10,13 +12,27 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 
-# Initialize the GraphRAG system
+def graph_version() -> str:
+    """Token written by the ingestion service each time it swaps in a new graph.
+
+    The connection below is cached for the life of the process, so without this
+    the app would keep serving the graph it opened at startup and newly ingested
+    talks would stay unanswerable until a redeploy.
+    """
+    try:
+        return (Path(config.DB_PATH).parent / ".graph-version").read_text(encoding="utf-8")
+    except OSError:
+        return ""
+
+
+# Keyed on the version token: a rebuild changes the key, so Streamlit discards
+# the old connection and opens the new database.
 @st.cache_resource
-def init_rag():
+def init_rag(version: str):
     return GraphRAG(config.DB_PATH)
 
 
-rag = init_rag()
+rag = init_rag(graph_version())
 
 # Create the input box
 question = st.text_input(

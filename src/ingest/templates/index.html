@@ -63,6 +63,11 @@
     <button type="button" class="btn" hx-post="/refresh" hx-target="#flash" hx-swap="innerHTML">
       Refresh channel
     </button>
+    <button type="button" class="btn" hx-post="/rebuild" hx-target="#flash" hx-swap="innerHTML"
+            hx-indicator="#rebuilding">
+      Rebuild graph
+    </button>
+    <span id="rebuilding" class="htmx-indicator note">Rebuilding…</span>
     <span id="flash"></span>
   </div>
 
