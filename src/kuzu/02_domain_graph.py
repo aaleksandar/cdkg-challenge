@@ -6,14 +6,33 @@ import polars as pl
 import config
 
 
+OPTIONAL_COLS = ["Date", "Type", "Category"]
+
+
 def load_data(filepath: str) -> pl.DataFrame:
-    """Load and clean data from CSV"""
-    # Only require core columns to be non-null (Podcast, File etc. can be null)
-    required_cols = ["Title", "Speaker", "Event", "Date", "Type", "Category"]
+    """Load the metadata CSV, keeping every row that can become a Talk.
+
+    Only Title, Speaker and Event are required: they are the primary key and the
+    two relationships every talk must have. Date, Type and Category are curator
+    detail — a talk with none of them is a poorer node, not an absent one, and
+    dropping the row here loses the transcript, the tags and the speaker along
+    with it. Everything downstream must therefore tolerate them being null.
+
+    Blank strings are normalised to null so "" and a missing value cannot behave
+    differently three functions later.
+    """
+    required_cols = ["Title", "Speaker", "Event"]
+    blank_to_null = [
+        pl.when(pl.col(c).str.strip_chars().str.len_chars() == 0)
+        .then(None)
+        .otherwise(pl.col(c))
+        .alias(c)
+        for c in required_cols + OPTIONAL_COLS
+    ]
     return (
         pl.read_csv(filepath)
+        .with_columns(blank_to_null)
         .drop_nulls(subset=required_cols)
-        .filter(~pl.all_horizontal(pl.col(required_cols).str.len_chars() == 0))
     )
 
 
@@ -78,7 +97,12 @@ def extract_categories(df: pl.DataFrame) -> list[str]:
 
 
 def get_speaker_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
-    """Get relationships between speakers and talks"""
+    """Get relationships between speakers and talks.
+
+    Nulls are dropped on the two endpoints only. A blank or unparseable Date is
+    a null property on the edge, not a reason to delete the edge: doing that
+    detached the talk from its speaker over a missing curator field.
+    """
     return (
         df.select("Speaker", "Title", "Date", "Category")
         .with_columns(pl.col("Date").str.to_date(strict=False))
@@ -88,14 +112,23 @@ def get_speaker_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
         .explode("Speaker", empty_as_null=True)
         .with_columns(pl.col("Speaker").str.strip_chars())
         .rename({"Speaker": "speaker", "Title": "talk", "Date": "date", "Category": "category"})
-        .drop_nulls()
+        .drop_nulls(subset=["speaker", "talk"])
         .unique()
     )
 
 
 def get_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
-    """Get relationships between talks and categories"""
-    return df.select("Title", "Category").rename({"Title": "from", "Category": "to"})
+    """Get relationships between talks and categories.
+
+    Only where there is a category: an uncategorised talk keeps its node and
+    every other relationship, but has no edge to a Category that does not exist.
+    """
+    return (
+        df.select("Title", "Category")
+        .drop_nulls(subset=["Category"])
+        .rename({"Title": "from", "Category": "to"})
+        .unique()
+    )
 
 
 def create_tables(conn: kuzu.Connection):

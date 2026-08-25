@@ -117,6 +117,24 @@ def test_curation_columns_match_what_the_graph_builder_requires():
     assert set(R.CURATION_COLUMNS) == required - {"Title"}
 
 
+def test_optional_columns_match_what_the_graph_builder_tolerates():
+    """The counterpart: these are curator detail the builder keeps the row
+    without. Calling them blockers held talks out of the graph over a blank Type."""
+    script = (config.KUZU_DIR / "02_domain_graph.py").read_text(encoding="utf-8")
+    declared = script.split("OPTIONAL_COLS = [")[1].split("]")[0]
+    optional = {c.strip().strip('"\'') for c in declared.split(",") if c.strip()}
+    assert set(R.OPTIONAL_COLUMNS) == optional
+    assert not set(R.CURATION_COLUMNS) & optional
+
+
+def test_a_blank_optional_column_does_not_block_a_talk():
+    """Date, Type and Category are not blockers. A talk missing only those is
+    ready for the graph, not waiting on a curator."""
+    thin = R.TalkState(in_csv=True, has_tags=True, has_transcript=True,
+                       missing_optional=["Date", "Type", "Category"])
+    assert thin.status == "ready_for_graph"
+
+
 def test_a_talk_missing_required_columns_is_not_called_ready():
     """"Ready for graph" must mean the gate is the only thing left."""
     blocked = R.TalkState(in_csv=True, has_tags=True, has_transcript=True,

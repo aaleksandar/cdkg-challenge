@@ -40,7 +40,18 @@ _YT_ID = re.compile(r"(?:v=|youtu\.be/|/embed/|/shorts/)([A-Za-z0-9_-]{11})")
 # so a row missing any one of them is silently discarded and the talk never
 # becomes a Talk node — no matter what the graph gate says. This list must track
 # `required_cols` in that script.
-CURATION_COLUMNS = ("Speaker", "Event", "Date", "Type", "Category")
+CURATION_COLUMNS = ("Speaker", "Event")
+
+# Curator detail, and genuinely optional: the graph builder keeps the Talk, its
+# speaker and its event without them. Worth filling in — an uncategorised talk
+# has no Category edge and an undated one has a null date — but never a reason
+# to hold a talk out of the graph. Must track `OPTIONAL_COLS` in that script.
+OPTIONAL_COLUMNS = ("Date", "Type", "Category")
+
+# What the curation form may write. Anything outside this cannot be edited from
+# the panel, so a crafted form cannot rewrite the Title, File or Video that the
+# joins depend on.
+EDITABLE_COLUMNS = CURATION_COLUMNS + OPTIONAL_COLUMNS
 
 
 def extract_video_id(url: str | None) -> str | None:
@@ -94,8 +105,24 @@ class TalkState:
     parsed_speaker: str | None = None
     parsed_event: str | None = None
     tag_count: int = 0
+    # Blank columns that block the graph, and blank columns that merely leave the
+    # node thinner. Only the first sort decides a status.
     missing_curation: list[str] = field(default_factory=list)
+    missing_optional: list[str] = field(default_factory=list)
     run: dict | None = None
+
+    @property
+    def display_title(self) -> str:
+        """What the panel shows: the full YouTube title whenever there is one.
+
+        The channel writes ``Talk | Speaker | Event``, so the complete title says
+        what kind of video a row is without opening it. The CSV title is used
+        only for talks that are not on the channel — older rows whose Title was
+        recorded as the first segment alone.
+        """
+        if self.on_youtube and self.title:
+            return self.title
+        return self.csv_title or self.title or self.stem or ""
 
     @property
     def is_short(self) -> bool:
@@ -268,6 +295,9 @@ def reconcile() -> list[TalkState]:
         state.event = (row.get("Event") or "").strip() or None
         state.missing_curation = [
             c for c in CURATION_COLUMNS if not (row.get(c) or "").strip()
+        ]
+        state.missing_optional = [
+            c for c in OPTIONAL_COLUMNS if not (row.get(c) or "").strip()
         ]
         file_ref = (row.get("File") or "").strip()
         if file_ref:

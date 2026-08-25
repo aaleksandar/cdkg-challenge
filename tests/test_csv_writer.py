@@ -51,6 +51,23 @@ def test_appends_a_row(metadata_csv, tmp_path):
     assert rows[1]["Video"] == "https://www.youtube.com/watch?v=bbbbbbbbbbb"
 
 
+def test_the_title_column_gets_the_whole_youtube_title(metadata_csv, tmp_path):
+    """The channel writes "Talk | Speaker | Event", and that shape is how a
+    curator tells at a glance what kind of video a row is."""
+    parsed = ParsedTalk(
+        talk_title="A New Talk",
+        full_title="A New Talk | Jane Doe | Connected Data London 2024",
+        speaker="Jane Doe", event="Connected Data London 2024",
+    )
+    csv_writer.append_row(
+        parsed, video_id="bbbbbbbbbbb", srt_path=tmp_path / "A New Talk.srt",
+        csv_path=metadata_csv,
+    )
+    assert _rows(metadata_csv)[1]["Title"] == (
+        "A New Talk | Jane Doe | Connected Data London 2024"
+    )
+
+
 def test_curation_columns_are_left_blank(metadata_csv, tmp_path):
     """Date, Type and Category cannot be derived from a video. Guessing them
     would put wrong data straight into the graph."""

@@ -57,7 +57,10 @@ def build_row(parsed, video_id: str, srt_path: Path, columns: list[str]) -> dict
     from .stages import csv_file_reference
 
     row = dict.fromkeys(columns, "")
-    row["Title"] = parsed.talk_title
+    # The complete YouTube title, not just its first segment: the channel's
+    # "Talk | Speaker | Event" convention is what makes a row identifiable at a
+    # glance, and dropping it loses the only signal of what kind of video it is.
+    row["Title"] = parsed.record_title
     row["Speaker"] = parsed.speaker or ""
     row["Event"] = parsed.event or ""
     row["File"] = csv_file_reference(srt_path)
@@ -165,7 +168,7 @@ def append_row(parsed, video_id: str, srt_path: Path,
                 writer.writeheader()
             writer.writerow(row)
 
-    detail = f"Appended {parsed.talk_title!r}"
+    detail = f"Appended {parsed.record_title!r}"
     if parsed.missing:
         detail += f" — {', '.join(parsed.missing)} left blank for curation"
     return True, detail

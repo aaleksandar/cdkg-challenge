@@ -6,7 +6,13 @@
    punctuation, so the key is percent-encoded in URLs. #}
 {% set key = s.video_id if s.video_id else 'stem:' ~ s.stem %}
 {% set busy = s.status == 'in_progress' %}
+{# Identified only when there is a video ID, which is safe in a selector: the id
+   exists so that ingesting from the drawer can swap this row out of band, and
+   only videos can be ingested. Transcript stems carry spaces and punctuation
+   and would not make a usable id. #}
 <tr class="{{ 'is-quiet' if s.status in QUIET_STATUSES }}"
+    {% if s.video_id %}id="talk-{{ s.video_id }}"{% endif %}
+    {% if oob and s.video_id %}hx-swap-oob="true"{% endif %}
     hx-get="/video/{{ key | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
   <td class="pick" onclick="event.stopPropagation()">
     {# The row's own click opens the drawer, so its refresh lives on a separate
@@ -18,11 +24,13 @@
     {% endif %}
     {% if s.video_id and s.status == 'not_ingested' %}
       <input type="checkbox" name="video_ids" value="{{ s.video_id }}"
-             aria-label="Select {{ s.title }}">
+             aria-label="Select {{ s.display_title }}">
     {% endif %}
   </td>
   <td>
-    <div class="title">{{ s.csv_title or s.title }}</div>
+    {# The full YouTube title, "Talk | Speaker | Event", so the kind of video is
+       readable by scanning the column. #}
+    <div class="title">{{ s.display_title }}</div>
     <div class="sub">
       {# Curated values read solid; parsed previews are dimmed and marked, so a
          guess is never mistaken for a recorded fact. #}
@@ -34,7 +42,9 @@
     </div>
   </td>
   <td>
-    <span class="state s-{{ s.status }}">
+    {# The status word explains itself on hover — "orphaned" and "untagged" are
+       terms of art here, and the row is where they are first met. #}
+    <span class="state s-{{ s.status }}" data-tip="{{ FIGURE_NOTES.get(s.status, '') }}">
       <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
     </span>
   </td>
@@ -53,8 +63,8 @@
     {% elif s.status == 'ready_for_graph' %}
       <button type="button" class="rowbtn"
               hx-post="/graph/add" hx-target="#flash" hx-swap="innerHTML"
-              hx-disabled-elt="this"
-              title="{{ 'Rebuilds the graph so this talk becomes queryable' if KG_ENABLED else 'The graph gate is closed — open it above' }}"
+              hx-disabled-elt="this" hx-on::after-request="refreshSheet()"
+              data-tip="{{ 'Rebuilds the graph so this talk becomes queryable' if KG_ENABLED else 'The graph gate is closed. Open it in the toolbar above.' }}"
               {{ 'disabled' if not KG_ENABLED }}>Add to graph</button>
     {% endif %}
   </td>

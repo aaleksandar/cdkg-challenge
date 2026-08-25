@@ -1,8 +1,24 @@
 {# The graph gate, stated plainly and openable from here. Without this an admin
-   can see that a stage was gated but has no way to act on it. #}
-<span class="gate {{ 'is-open' if KG_ENABLED }}"
-      hx-post="/gate" hx-target="#gate" hx-swap="outerHTML" id="gate"
-      role="button" tabindex="0" title="Graph population — click to {{ 'close' if KG_ENABLED else 'open' }}">
+   can see that a stage was gated but has no way to act on it.
+
+   Flipping it changes what every "Add to graph" button is allowed to do, so the
+   toggle asks for the sheet back and returns itself out of band. It cannot use
+   an after-request hook to refresh the rest: this element replaces itself, and a
+   handler on a replaced element never runs, which is why the buttons used to
+   keep the enabled state they were drawn with until the page was reloaded. #}
+<span class="gate {{ 'is-open' if KG_ENABLED }}" id="gate"
+      {% if oob %}hx-swap-oob="true"{% endif %}
+      hx-post="/gate" hx-target="#sheet" hx-swap="innerHTML"
+      hx-vals='js:{status: new URLSearchParams(location.search).get("status") || "all"}'
+      role="button" tabindex="0"
+      data-tip="{% if KG_ENABLED %}The graph is open: ingestion is allowed to write talks and
+                tags into the knowledge graph the public app queries. Click to close it
+                again.{% else %}The graph is closed: talks are downloaded, curated and tagged
+                as normal, but the final step that writes them into the knowledge graph is
+                held back, so nothing done here can change what the public app answers.
+                Click to open it.{% endif %} The switch lasts until the service
+                restarts, which then returns to the KG_ENABLED setting."
+      aria-label="Graph {{ 'open' if KG_ENABLED else 'gated' }}. {% if KG_ENABLED %}Ingestion may write to the knowledge graph. Click to close.{% else %}Ingestion is blocked from writing to the knowledge graph. Click to open.{% endif %}">
   <i class="dot"></i>
   <span>Graph {{ 'open' if KG_ENABLED else 'gated' }}</span>
 </span>

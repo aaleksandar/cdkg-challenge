@@ -1,0 +1,14 @@
+{# The one failure that reads as a missing feature: with no cached inventory
+   there are no channel videos, so "Not ingested" has nothing to count and its
+   tab is not drawn at all. Name it rather than leave an admin to wonder.
+
+   Swapped out-of-band with every rows response, so it goes away the moment a
+   refresh actually populates the inventory. #}
+{% if not inventory %}
+<div class="strip">
+  <strong>No channel inventory yet.</strong>
+  Only talks already in the repository are shown, nothing from YouTube, so
+  there is no <em>Not ingested</em> section. Press <em>Refresh channel</em> to
+  read the channel and populate it.
+</div>
+{% endif %}

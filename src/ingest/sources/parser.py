@@ -95,13 +95,25 @@ def clean_speaker(segment: str) -> str:
 
 @dataclass
 class ParsedTalk:
+    # The first segment: the talk's name with the speaker and event stripped off.
+    # Used for the transcript filename, which must stay short and clean.
     talk_title: str
+    # The complete YouTube title, verbatim apart from collapsed whitespace. The
+    # channel's ``Talk | Speaker | Event`` convention is legible at a glance, so
+    # this is what goes in the CSV and what the panel shows: scanning the full
+    # title tells you what kind of video a row is without opening it.
+    full_title: str = ""
     speaker: str | None = None
     event: str | None = None
     web: str | None = None
     speaker_source: str | None = None   # "title" | "description"
     event_source: str | None = None     # "title" | "description"
     missing: list[str] = field(default_factory=list)
+
+    @property
+    def record_title(self) -> str:
+        """What is written to the metadata CSV's Title column."""
+        return self.full_title or self.talk_title
 
     @property
     def is_confident(self) -> bool:
@@ -157,11 +169,14 @@ def parse_title(title: str | None) -> ParsedTalk:
     # Hashtags can also carry the event ("... | CDL24 #python"), so search the
     # original before they are removed.
     segments = [s.strip() for s in cleaned.split("|") if s.strip()]
+    # Kept whole, separators and all. Only whitespace is normalised, because a
+    # title that lost a segment could no longer be matched against the video.
+    full_title = " ".join((title or "").split())
 
     if not segments:
-        return ParsedTalk(talk_title=cleaned)
+        return ParsedTalk(talk_title=cleaned, full_title=full_title)
 
-    parsed = ParsedTalk(talk_title=segments[0])
+    parsed = ParsedTalk(talk_title=segments[0], full_title=full_title)
     for segment in segments[1:]:
         event = find_event(segment)
         if event and not parsed.event:

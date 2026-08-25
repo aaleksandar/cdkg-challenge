@@ -1,0 +1,5 @@
+{# The answer to an action taken inside the drawer: the drawer's own body, plus
+   the talk's row in the sheet behind it swapped out of band so it carries the
+   new status — and, while a run is in flight, the poller that keeps it current. #}
+{% include "partials/drawer_body.html" %}
+{% with oob = true %}{% include "partials/row.html" %}{% endwith %}

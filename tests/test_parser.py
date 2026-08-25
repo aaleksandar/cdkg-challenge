@@ -108,6 +108,42 @@ def test_pipes_inside_the_talk_title_do_not_break_the_first_segment():
     assert p.talk_title == "Graph Machine Learning in Practice"
 
 
+# --- Full title --------------------------------------------------------------
+# The channel's "Talk | Speaker | Event" convention is legible at a glance, so
+# the whole title is what gets recorded; the first segment only names the file.
+
+def test_the_full_title_is_kept_whole():
+    raw = "How To Perform Visual Analytics of Graph Data | Weidong Yang | Connected Data London 2024"
+    p = parser.parse_title(raw)
+    assert p.full_title == raw
+    assert p.record_title == raw
+    assert p.talk_title == "How To Perform Visual Analytics of Graph Data"
+
+
+def test_the_full_title_keeps_the_hashtags_the_short_title_drops():
+    raw = "Full Stack Graph Machine Learning | Russel Jurney | CDL24 #python #AI"
+    p = parser.parse_title(raw)
+    assert p.full_title == raw
+    assert p.talk_title == "Full Stack Graph Machine Learning"
+
+
+def test_only_whitespace_is_normalised_in_the_full_title():
+    p = parser.parse_title("  A Talk   |  Jane Doe |\tCDL24\n")
+    assert p.full_title == "A Talk | Jane Doe | CDL24"
+
+
+def test_a_title_with_no_separators_is_both_titles():
+    raw = "Urban Serendipity - Manufacturing good luck using network science"
+    p = parser.parse_title(raw)
+    assert p.full_title == raw and p.talk_title == raw
+
+
+def test_record_title_falls_back_to_the_short_title():
+    """ParsedTalk is constructed directly in a few places; a bare talk_title
+    must still produce a usable CSV Title rather than an empty cell."""
+    assert parser.ParsedTalk(talk_title="A Talk").record_title == "A Talk"
+
+
 # --- Descriptions ------------------------------------------------------------
 
 def test_a_talk_by_line_yields_the_speaker_without_role_or_company():

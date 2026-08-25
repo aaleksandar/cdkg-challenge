@@ -93,7 +93,7 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
         )
 
     parsed = parser.parse(info)
-    message = f"Parsed from {source}: {parsed.talk_title!r}"
+    message = f"Parsed from {source}: {parsed.record_title!r}"
     if parsed.missing:
         message += f" — could not determine {', '.join(parsed.missing)}"
 
@@ -104,7 +104,7 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
         "needs_curation": bool(parsed.missing),
         # Flattened so the panel can show what was actually established, and
         # from which source, without unpacking the ParsedTalk.
-        "title": parsed.talk_title,
+        "title": parsed.record_title,
         "speaker": parsed.speaker,
         "event": parsed.event,
     })
@@ -112,6 +112,9 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
 
 def stage_transcript_download(ctx: dict) -> StageResult:
     parsed = ctx["parsed"]
+    # The short first segment, not the full title: the filename is the join key
+    # to the CSV and follows the existing "<Title>.srt" convention, which carries
+    # neither the speaker nor the event nor the promo hashtags.
     destination = transcript_path(parsed.event, parsed.talk_title)
 
     if destination.exists():

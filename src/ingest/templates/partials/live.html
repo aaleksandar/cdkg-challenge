@@ -1,5 +1,5 @@
-{# Shown only while work is in flight. Its presence is also what tells an open
-   drawer to refresh, via the htmx trigger on #drawer-stages. #}
+{# Shown only while work is in flight. It also starts an open drawer refreshing
+   when a run begins for the talk it is showing. #}
 <div class="live">
   <span class="pulse"></span>
   <span>
@@ -17,7 +17,14 @@
   {% if queued %}<span class="muted">{{ queued }} waiting</span>{% endif %}
 </div>
 <script>
-  // Work is in flight: refresh the open drawer so its status, presence and
-  // stage list stay truthful while the pipeline advances.
-  document.querySelectorAll('[data-drawer-refresh]').forEach(el => htmx.trigger(el, 'refresh'));
+  // Kick an open drawer once, when a run starts for the talk it is showing. A
+  // drawer already tracking a live run polls itself ("live"), and one showing an
+  // unrelated talk has nothing to learn from this poll — triggering either of
+  // them just churned the panel twice a second.
+  (function () {
+    const running = new Set({{ active | map(attribute='video_id') | list | tojson }});
+    document.querySelectorAll('[data-drawer-refresh="idle"]').forEach(el => {
+      if (running.has(el.dataset.drawerVideo)) htmx.trigger(el, 'refresh');
+    });
+  })();
 </script>

@@ -72,7 +72,9 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 (:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 ```
 
-A full rebuild yields 42 Speakers, 39 Talks, 3 Events, 3 Categories, 640 Tags — of which 37 Talks carry tags (measured 2026-07-29; re-measure after adding transcripts or metadata rows).
+A full rebuild yields 46 Speakers, 43 Talks, 5 Events, 3 Categories, 698 Tags — of which 41 Talks carry tags (measured 2026-08-25; re-measure after adding transcripts or metadata rows).
+
+Only `Title`, `Speaker` and `Event` are required to become a `Talk`. `Date`, `Type` and `Category` are optional: the row is kept without them, and the talk simply has a null date or no `IS_CATEGORIZED_AS` edge. Requiring all six used to drop a fully transcribed, fully tagged talk over a blank `Type`.
 
 ### Key Components
 
@@ -134,6 +136,10 @@ PYTHONPATH=src uv run uvicorn ingest.main:app --port 8503
 
 **The parser never guesses.** Anything it cannot establish is reported in `ParsedTalk.missing` and left blank for a curator, because the graph is built from the CSV verbatim and a wrong row is worse than no row.
 
+**Two titles, deliberately.** `ParsedTalk.full_title` is the complete YouTube title (`Talk | Speaker | Event`), and it is what `record_title` writes to the CSV `Title` column and what the panel displays — the convention is legible at a glance, so the whole title is how a curator tells what kind of video a row is. `talk_title` is the first segment alone, used only for the `.srt` filename, which must stay short and match the existing `Transcripts/<Event>/Presentations/<Title>.srt` layout.
+
+**The panel is empty until the channel has been read.** Every `not_ingested` row is derived from the cached inventory, and a figure tab with a zero count is not drawn — so a failed or never-run "Refresh channel" removes that whole section rather than showing it empty. `/refresh` therefore enumerates synchronously and reports its result; only the duration backfill is left to the background.
+
 Pipeline stages, in order: `metadata_parse → transcript_download → csv_append → transcript_extraction → tag_extraction → graph_rebuild → publish`. Download, extraction and tag extraction are content-addressed and skip when their output exists, which is what makes a rebuild for a new model cheap — it re-runs neither YouTube nor the LLM.
 
 **Three gates, all shipping `false`:** `KG_ENABLED` (write to the graph), `GIT_PUSH_ENABLED` (publish to GitHub), `AUTO_INGEST_NEW` (ingest detected videos without asking). Turn them on one at a time.
@@ -158,13 +164,15 @@ Pipeline stages, in order: `metadata_parse → transcript_download → csv_appen
 ## Gotchas
 
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.
-- **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched — currently 25 of 62 entries, so only 37 of 39 Talks carry tags. Those 25 break down as 16 real talks missing from the CSV — all of them from Knowledge Connexions 2020, i.e. one gap in curation rather than 16 separate oversights — plus 9 unusable files named after bare YouTube IDs. Their tags are extracted at LLM cost on every pipeline run, then discarded.
+- **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched — currently 25 of 68 entries, so only 41 of 43 Talks carry tags. Those 25 break down as 16 real talks missing from the CSV — all of them from Knowledge Connexions 2020, i.e. one gap in curation rather than 16 separate oversights — plus 9 unusable files named after bare YouTube IDs. Their tags are extracted at LLM cost on every pipeline run, then discarded.
 - **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples in `baml_src/graphrag.baml`, and `cdl_db/README.md`.
 - **`rag.py` opens Kuzu with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.
 - **`rag.py` reads the schema through Kuzu private APIs** (`conn._get_node_table_names()`, `_get_rel_table_names()`). These can break on upgrade; `kuzu` is pinned to `==0.11.3`.
 - **`03_content_graph.py` has no `__main__` guard** — it opens the database at import time.
 - **YouTube descriptions end with an advert for the current conference.** A talk uploaded in 2017 carries "Connected Data London 2024 has been announced!" in its footer, and reading that as the talk's event mis-files most of the channel. `ingest/sources/parser.py` truncates at the promo markers *and* rejects any description-derived event whose year contradicts the upload date. Do not weaken either guard on its own.
+- **Anything the gate governs must be re-rendered by the toggle itself.** Every "Add to graph" button is rendered enabled or disabled from `KG_ENABLED`, so `POST /gate` returns the whole sheet (plus the figures, counts and gate out of band) and sets `HX-Trigger: gate-changed`, which an open drawer listens for. The toggle cannot use an `hx-on::after-request` hook: it replaces itself, and a handler on a replaced element never runs — which is why the buttons used to stay disabled until the page was reloaded.
+- **The drawer refreshes its body, never its shell.** `.scrim` and `.drawer` carry the open animation, so `partials/drawer.html` is rendered once and only `#drawer-body` (`/video/<key>?body=1`) is swapped afterwards. Re-rendering the whole drawer on a poll replayed the fade and slide every two seconds and reset the scroll position. For the same reason the live banner kicks only drawers whose own video is running — a drawer tracking a live run already polls itself.
 - **Never rebuild the graph in place.** `02_domain_graph.py` deletes the database while the Streamlit app holds a long-lived handle. `ingest/pipeline/graph.py` builds at a scratch path, refuses to swap in a graph with zero talks or zero tagged talks, then renames atomically and writes `.graph-version` — which is how the app knows to drop its cached connection.
 
 ## Known Rough Edges
@@ -173,5 +181,4 @@ Not defects to fix incidentally, but worth knowing before working nearby:
 
 - `evaluate.py`'s judge calls `google.genai` directly with hand-rolled JSON parsing instead of going through BAML like everything else.
 - `tests/` covers the ingestion service (`uv run pytest`), but the `src/kuzu/` pipeline scripts have no tests of their own. There is still no lint configuration despite `.ruff_cache` in the tree.
-- `02_domain_graph.py`'s `extract_talks()` applies a blanket `.drop_nulls()` across `Web`/`Description`, contradicting `load_data()`'s comment that non-core columns may be null. Harmless today, but a row lacking a description would vanish from the `Talk` table.
 - `docker-entrypoint.sh` re-runs `baml-cli generate` on every container boot (`BAML_GENERATE_ON_START=1`) even though the Dockerfile already generated the client at build time.

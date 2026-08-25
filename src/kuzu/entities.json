@@ -1939,5 +1939,110 @@
         "anomaly detection"
       ]
     }
+  },
+  {
+    "filename": "Assessing and Improving Knowledge Graph Quality in GraphRAG applications.txt",
+    "entities": {
+      "tag": [
+        "knowledge graphs",
+        "llms",
+        "retrieval augmented generation",
+        "rag",
+        "graph rag",
+        "transformers",
+        "deep learning",
+        "fine-tuning",
+        "prompt engineering",
+        "sentiment analysis",
+        "text generation",
+        "text classification",
+        "entity extraction",
+        "relation extraction",
+        "xml",
+        "sql",
+        "cypher",
+        "sparql",
+        "neo4j",
+        "rdf",
+        "gpt",
+        "vector database",
+        "basic rag",
+        "esco",
+        "wikidata",
+        "freebase",
+        "dbpedia",
+        "skos",
+        "owl",
+        "rdfs",
+        "shacl",
+        "python",
+        "zero-shot learning",
+        "few-shot learning",
+        "llm as a judge",
+        "microsoft graphrag"
+      ]
+    }
+  },
+  {
+    "filename": "Big Graphs, Machine Learning & Rich Interactions_ the recipe for the future of search.txt",
+    "entities": {
+      "tag": [
+        "null",
+        "pubmed",
+        "scopus",
+        "google scholar",
+        "microsoft academic",
+        "google maps",
+        "data visualization",
+        "faceted filters",
+        "nlp",
+        "entity recognition",
+        "metadata enrichments",
+        "machine learning",
+        "citation network graph",
+        "force directed layout",
+        "dimension reduction",
+        "umap",
+        "tsne",
+        "hdbscan",
+        "hierarchical clustering",
+        "k-means",
+        "density-based clustering",
+        "automatic classification"
+      ]
+    }
+  },
+  {
+    "filename": "BizDevOps_ Aligning the Business and IT with a Graph Knowledge Base.txt",
+    "entities": {
+      "tag": [
+        "enterprise web",
+        "ipass",
+        "knowledge graph",
+        "graph knowledge base",
+        "message oriented middleware",
+        "kaa",
+        "amazon lambda",
+        "kubernetes",
+        "12 factor",
+        "rdf",
+        "uml",
+        "json",
+        "graphql",
+        "digital twins",
+        "upper ontology",
+        "uda loops",
+        "directed acyclic graphs",
+        "dag",
+        "rest interfaces",
+        "rest api",
+        "swagger",
+        "xml",
+        "serverless functions",
+        "tolley's life cycle information model",
+        "ml language",
+        "abstract rewriting and transition theory"
+      ]
+    }
   }
 ]

@@ -71,6 +71,42 @@ templates.env.globals["FIGURES"] = [
     ("junk", "Unusable"),
 ]
 
+# One line per section, in the vocabulary of the panel rather than of the code:
+# "orphaned" and "needs curation" mean nothing to an admin who has not read
+# reconcile.py. Printed above the toolbar for the active section, and shown on
+# hover for every tab and every row status, so a term is never left unexplained.
+_TEASER_MINUTES = max(1, config.SHORT_VIDEO_MAX_SECONDS // 60)
+FIGURE_NOTES = {
+    "all": "Everything you can act on now. Shorts, premieres and unusable files are hidden.",
+    "in_graph": "Curated, tagged, and queryable in the knowledge graph. Nothing left to do.",
+    "needs_curation": (
+        "In the metadata CSV but missing a Speaker or an Event, which the graph "
+        "builder requires. Open one to fill it in."
+    ),
+    "ready_for_graph": "Curated and tagged, waiting only on a graph rebuild.",
+    "not_ingested": (
+        "On the YouTube channel and nowhere else. This is the work queue: "
+        "ingesting one fetches its captions and extracts its tags."
+    ),
+    "orphaned": (
+        "Tags were extracted and paid for, but no metadata row exists for them "
+        "to attach to. Adding a row brings the talk in without re-running the LLM."
+    ),
+    "untagged": "In the metadata CSV with no tags extracted, so no topic search will find it.",
+    "in_progress": "Pipeline runs queued or in flight right now.",
+    "failed": (
+        "The last run stopped with an error. Open one to see which stage; "
+        "ingesting again resumes from what is on disk."
+    ),
+    "excluded_short": (
+        f"Teasers and Shorts of {_TEASER_MINUTES} minutes or less. Catalogued, "
+        "never ingested."
+    ),
+    "upcoming": "Premieres that have not aired, so they have no captions to ingest yet.",
+    "junk": "Transcripts named after a bare YouTube ID. Untitled, and often duplicated.",
+}
+templates.env.globals["FIGURE_NOTES"] = FIGURE_NOTES
+
 STAGE_LABELS = {
     "metadata_parse": "Parse metadata",
     "transcript_download": "Download transcript",
@@ -116,6 +152,10 @@ def _view(status_filter: str | None, query: str | None) -> dict:
         "status_filter": status_filter or "all",
         "query": query or "",
         "active_runs": db.active_run_count(),
+        # An empty inventory is why a whole section can vanish: every
+        # channel-derived status ("Not ingested" above all) is computed from it,
+        # and a zero count hides its tab. Say so rather than show a short panel.
+        "inventory": len([s for s in states if s.on_youtube]),
         # Read per request, not baked into globals: the gate can be flipped at
         # runtime and every row's action depends on it.
         "KG_ENABLED": config.KG_ENABLED,
@@ -141,8 +181,13 @@ def rows(request: Request, status: str | None = None, q: str | None = None):
 
 
 @router.get("/video/{key}", response_class=HTMLResponse)
-def video_detail(request: Request, key: str):
-    """Detail drawer. ``key`` is a video ID, or ``stem:<name>`` for repo-only talks."""
+def video_detail(request: Request, key: str, body: int = 0, with_row: bool = False):
+    """Detail drawer. ``key`` is a video ID, or ``stem:<name>`` for repo-only talks.
+
+    ``body=1`` returns the contents alone, for the refresh a running drawer
+    issues. The shell carries the open animation, so re-rendering it every two
+    seconds made the panel flicker.
+    """
     match = next(
         (s for s in R.reconcile() if (s.video_id == key or f"stem:{s.stem}" == key)),
         None,
@@ -177,11 +222,17 @@ def video_detail(request: Request, key: str):
         {"Speaker": match.parsed_speaker, "Event": match.parsed_event}.items() if v
     }
 
+    template = "partials/drawer_body.html" if body else "partials/drawer.html"
+    if with_row:
+        # The drawer's own action changed this talk, so the row behind it is now
+        # stale. Sent back with the body and swapped out of band, because two
+        # views of one talk disagreeing is worse than either being late.
+        template = "partials/drawer_with_row.html"
     return templates.TemplateResponse(
-        request, "partials/drawer.html",
+        request, template,
         {"s": match, "parsed": parsed, "raw": raw, "run": run, "key": key,
          "vocab": curation_vocabularies(), "suggested_date": suggested_date,
-         "suggestions": suggestions},
+         "suggestions": suggestions, "KG_ENABLED": config.KG_ENABLED},
     )
 
 
@@ -226,47 +277,57 @@ def row(request: Request, key: str):
 
 
 @router.post("/ingest/{video_id}", response_class=HTMLResponse)
-def ingest_one(request: Request, video_id: str):
+def ingest_one(request: Request, video_id: str, view: str = "row"):
     """Ingest a single video — the common case, without select-then-confirm.
 
-    Returns the row itself rather than a message. The replacement is rendered
-    after the run is queued, so it comes back carrying the poller that keeps it
-    current; returning a toast would leave the row frozen on a stale status.
+    Returns the view the click came from rather than a message: the row for a
+    click in the sheet, the drawer body (plus the row, out of band) for a click
+    in the drawer. Either way the reply is rendered after the run is queued, so
+    it carries the poller that keeps it current; a toast would leave the caller
+    frozen on a stale status.
     """
     from .pipeline.runner import queue_videos
 
     if video_id not in db.videos_with_active_runs():
         queue_videos([video_id])
+    if view == "drawer":
+        return video_detail(request, video_id, body=1, with_row=True)
     return row(request, video_id)
 
 
 @router.post("/curate/{video_id}", response_class=HTMLResponse)
 async def curate(request: Request, video_id: str):
-    """Fill in the columns blocking a talk from the graph, then re-render the drawer.
+    """Fill in a talk's blank curation columns, then re-render the drawer.
 
-    Only the curation columns are accepted, so a crafted form cannot rewrite the
+    Only the editable columns are accepted, so a crafted form cannot rewrite the
     Title, the File path or the Video link that the joins depend on.
     """
     from .pipeline.csv_writer import update_row
 
     submitted = await request.form()
-    fields = {k: str(v) for k, v in submitted.items() if k in R.CURATION_COLUMNS}
+    fields = {k: str(v) for k, v in submitted.items() if k in R.EDITABLE_COLUMNS}
     update_row(video_id, fields)
-    return video_detail(request, video_id)
+    return video_detail(request, video_id, body=1)
 
 
 @router.post("/gate", response_class=HTMLResponse)
-def toggle_gate(request: Request):
-    """Open or close the graph gate for this process.
+def toggle_gate(request: Request, status: str = Form("all"), q: str = Form("")):
+    """Open or close the graph gate for this process, and re-render what it governs.
 
     Deliberately not persisted: the durable setting is KG_ENABLED in the
     environment. Flipping it here lets an admin let work through and watch what
     happens without a redeploy, and a restart returns to the configured default
     rather than silently keeping a setting nobody remembers making.
+
+    The whole sheet comes back, because every "Add to graph" button is rendered
+    enabled or disabled from this setting; ``HX-Trigger`` tells an open drawer to
+    re-render its own for the same reason.
     """
     config.KG_ENABLED = not config.KG_ENABLED
-    return templates.TemplateResponse(request, "partials/gate.html",
-                                      {"KG_ENABLED": config.KG_ENABLED})
+    return templates.TemplateResponse(
+        request, "partials/gate_response.html", _view(status, q),
+        headers={"HX-Trigger": "gate-changed"},
+    )
 
 
 @router.post("/graph/add", response_class=HTMLResponse)
@@ -286,10 +347,30 @@ def graph_add(request: Request):
 
 @router.post("/refresh", response_class=HTMLResponse)
 def refresh(request: Request, background: BackgroundTasks):
+    """Re-read the channel, and say what happened.
+
+    The enumeration itself is fast (a flat playlist extraction, a couple of
+    seconds for the whole channel) and is done here so its result — or its
+    failure — reaches the admin. Run as a background task it could fail
+    silently, leaving an empty inventory and a panel with whole sections
+    missing and nothing to explain why. Only the duration backfill, which is one
+    request per video, is left to the background.
+    """
     from .sources import youtube
 
-    background.add_task(youtube.refresh_inventory)
-    return HTMLResponse('<span class="note">Refreshing channel inventory…</span>')
+    try:
+        videos = youtube.enumerate_channel()
+    except Exception as exc:  # yt-dlp raises a wide variety; all mean "no inventory"
+        return HTMLResponse(
+            f'<span class="note err">Could not read the channel: {exc}</span>'
+        )
+
+    new, updated = db.upsert_videos(videos)
+    background.add_task(youtube.backfill_durations)
+    return HTMLResponse(
+        f'<span class="note">{len(videos)} videos on the channel — '
+        f'{new} new, {updated} already known.</span>'
+    )
 
 
 @router.post("/rebuild", response_class=HTMLResponse)
