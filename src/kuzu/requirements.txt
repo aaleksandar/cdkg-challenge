@@ -19,7 +19,7 @@ attrs==25.3.0
     # via
     #   jsonschema
     #   referencing
-baml-py==0.223.0
+baml-py==0.226.1
     # via kuzu-cdkg
 blinker==1.9.0
     # via streamlit

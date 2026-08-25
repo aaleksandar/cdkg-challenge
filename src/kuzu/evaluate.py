@@ -80,7 +80,7 @@ SYSTEM ANSWER: {response}
 Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
 
     result = get_judge_client().models.generate_content(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         contents=prompt,
         config=genai_types.GenerateContentConfig(
             temperature=0,

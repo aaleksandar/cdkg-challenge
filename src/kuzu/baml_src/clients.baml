@@ -9,7 +9,7 @@ client<llm> GeminiFlash {
   provider google-ai
   retry_policy Exponential
   options {
-    model "gemini-3.6-flash"
+    model "gemini-3.7-flash"
     api_key env.GOOGLE_API_KEY
     generationConfig {
       temperature 0
