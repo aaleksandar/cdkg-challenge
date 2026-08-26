@@ -49,7 +49,8 @@ async def lifespan(app: FastAPI):
         scheduler.shutdown(wait=False)
 
 
-app = FastAPI(title="CDKG Ingestion", lifespan=lifespan, docs_url=None, redoc_url=None)
+app = FastAPI(title="CDKG Ingestion", lifespan=lifespan, docs_url=None,
+              redoc_url=None, root_path=config.ROOT_PATH)
 app.mount(
     "/static",
     StaticFiles(directory=str(config.__file__.rsplit("/", 1)[0] + "/static")),

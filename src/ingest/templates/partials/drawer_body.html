@@ -14,7 +14,7 @@
 {% set live = run and run.status in ['queued', 'running'] %}
 <span hidden data-drawer-refresh="{{ 'live' if live else 'idle' }}"
       data-drawer-video="{{ s.video_id or '' }}"
-      hx-get="/video/{{ key | urlencode }}?body=1"
+      hx-get="{{ base }}/video/{{ key | urlencode }}?body=1"
       {# `gate-changed` arrives as an HX-Trigger on the gate's own response, so the
          drawer's buttons follow the switch without the drawer knowing about it. #}
       hx-trigger="refresh, gate-changed from:body{% if live %}, every 2s{% endif %}"
@@ -53,7 +53,7 @@
 {% elif s.video_id and s.status in ['not_ingested', 'failed'] %}
 <div class="drawer-actions">
   <button type="button" class="btn btn-primary"
-          hx-post="/ingest/{{ s.video_id }}?view=drawer"
+          hx-post="{{ base }}/ingest/{{ s.video_id }}?view=drawer"
           hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this"
           data-tip="Downloads this video's captions, appends a metadata row, extracts its
                     plain text and then its tags with an LLM, which costs money, and
@@ -69,7 +69,7 @@
 {% elif s.status == 'ready_for_graph' %}
 <div class="drawer-actions">
   <button type="button" class="btn btn-primary"
-          hx-post="/graph/add" hx-target="#drawer-flash" hx-swap="innerHTML"
+          hx-post="{{ base }}/graph/add" hx-target="#drawer-flash" hx-swap="innerHTML"
           hx-disabled-elt="this"
           {# The sheet only: the outcome of the rebuild is written into the flash
              beside this button, and refreshing the drawer would wipe it. #}
@@ -92,7 +92,7 @@
 {% if s.video_id and s.status not in ['in_progress', 'not_ingested', 'failed'] %}
 <div class="drawer-actions is-secondary">
   <button type="button" class="btn btn-quiet"
-          hx-post="/ingest/{{ s.video_id }}?view=drawer"
+          hx-post="{{ base }}/ingest/{{ s.video_id }}?view=drawer"
           hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this"
           data-tip="Runs the pipeline over this talk again. The transcript, the plain text
                     and the tags are content-addressed, so whatever is already on disk is

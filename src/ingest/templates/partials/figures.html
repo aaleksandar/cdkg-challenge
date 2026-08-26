@@ -15,9 +15,9 @@
                one hover away even when the tab is not selected. #}
             data-tip="{{ LANE_NOTES.get(key, '') }}"
             aria-label="{{ label }} — {{ LANE_NOTES.get(key, '') }}"
-            hx-get="/rows?lane={{ key }}" hx-target="#sheet"
+            hx-get="{{ base }}/rows?lane={{ key }}" hx-target="#sheet"
             hx-include="[name=q], [name=shorts]"
-            hx-push-url="/?lane={{ key }}">
+            hx-push-url="{{ base }}/?lane={{ key }}">
       <span class="n">{{ count }}</span>
       <span class="k">
         {% if key != 'all' %}<span class="state l-{{ key }}"><i class="dot"></i></span>{% endif %}

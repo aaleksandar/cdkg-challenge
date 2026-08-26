@@ -101,6 +101,13 @@ SCHEDULER_ENABLED = _flag("SCHEDULER_ENABLED", "true")
 # hundreds of LLM calls at once rather than one.
 AUTO_INGEST_NEW = _flag("AUTO_INGEST_NEW", "true")
 
+# --- Mount point -------------------------------------------------------------
+# The panel is served under a path on the main domain rather than its own
+# subdomain, so kamal-proxy routes `/ingestion/*` here and strips the prefix
+# before forwarding: the app still sees `/rows`, and only the URLs it *generates*
+# need to know. Empty locally, where it is served from the root.
+ROOT_PATH = os.getenv("ROOT_PATH", "").rstrip("/")
+
 # --- Panel auth --------------------------------------------------------------
 ADMIN_USER = os.getenv("ADMIN_USER", "admin")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD") or None  # None disables auth (local dev)

@@ -23,7 +23,7 @@
     {% set on = KG_ENABLED if name == 'KG_ENABLED' else AUTO_INGEST_NEW %}
     <div class="setting">
       <span class="gate {{ 'is-open' if on }}"
-            hx-post="/flag/{{ name }}" hx-target="#drawer-body" hx-swap="innerHTML"
+            hx-post="{{ base }}/flag/{{ name }}" hx-target="#drawer-body" hx-swap="innerHTML"
             hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all",
                          q: document.querySelector(".search").value,
                          shorts: document.querySelector("[name=shorts]").checked ? 1 : 0}'
@@ -78,13 +78,13 @@
 <section>
   <h3>Maintenance</h3>
   <div class="actions">
-    <button type="button" class="btn" hx-post="/refresh" hx-target="#adv-flash"
+    <button type="button" class="btn" hx-post="{{ base }}/refresh" hx-target="#adv-flash"
             hx-indicator="#adv-busy" hx-disabled-elt="this"
             hx-on::after-request="refreshSheet()"
             data-tip="Re-reads the list of videos on the @ConnectedData channel and
                       caches it. Titles and lengths only — no videos, no transcripts,
                       no LLM calls, nothing written to the graph.">Refresh channel</button>
-    <button type="button" class="btn" hx-post="/rebuild" hx-target="#adv-flash"
+    <button type="button" class="btn" hx-post="{{ base }}/rebuild" hx-target="#adv-flash"
             hx-indicator="#adv-busy" hx-disabled-elt="this"
             hx-on::after-request="refreshSheet()"
             data-tip="Rebuilds the graph from the metadata CSV and the tags already on
@@ -96,7 +96,7 @@
   </div>
 
   <div class="drain">
-    <button type="button" class="btn is-spendy" hx-post="/backlog/ingest"
+    <button type="button" class="btn is-spendy" hx-post="{{ base }}/backlog/ingest"
             hx-target="#adv-flash" hx-indicator="#adv-busy" hx-disabled-elt="this"
             hx-on::after-request="refreshSheet()"
             {{ 'disabled' if not backlog }}>
@@ -137,7 +137,7 @@
          talk in without re-running the LLM.</p>
       <ul class="strand">
         {% for s in orphans %}
-          <li hx-get="/video/{{ ('stem:' ~ s.stem) | urlencode }}"
+          <li hx-get="{{ base }}/video/{{ ('stem:' ~ s.stem) | urlencode }}"
               hx-target="#drawer" hx-swap="innerHTML">
             <span class="t">{{ s.display_title }}</span>
             <span class="muted">{{ s.tag_count }} tags</span>
@@ -167,7 +167,7 @@
          material, or a video since made private.</p>
       <ul class="strand">
         {% for s in stranded %}
-          <li hx-get="/video/{{ ('stem:' ~ s.stem) | urlencode }}"
+          <li hx-get="{{ base }}/video/{{ ('stem:' ~ s.stem) | urlencode }}"
               hx-target="#drawer" hx-swap="innerHTML">
             <span class="t">{{ s.display_title }}</span>
             <span class="muted">{{ LANE_LABELS[s.lane] }}</span>

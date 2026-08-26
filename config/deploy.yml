@@ -5,21 +5,39 @@ servers:
   web:
     hosts:
       - <%= ENV.fetch('SERVER_IP') %>
-  # The admin panel: separate role, separate subdomain, separate blast radius.
+  # The admin panel: separate role, separate container, separate blast radius.
   # A fault here cannot take down the public RAG app.
+  #
+  # Mounted under a path on the main domain rather than its own subdomain, so it
+  # needs no second DNS record and no second certificate. kamal-proxy routes the
+  # most specific path first, so /ingestion/* reaches this role and everything
+  # else still reaches `web`.
+  #
+  # The prefix is deliberately NOT stripped, and ROOT_PATH tells the app the same
+  # thing. Starlette strips a matching root_path itself before routing, and it is
+  # the only one of the two that also does so for mounts: with the proxy stripping
+  # instead, /ingestion/static/app.css arrived as /static/app.css and 404'd, and
+  # the panel rendered with no stylesheet at all.
   ingest:
     hosts:
       - <%= ENV.fetch('SERVER_IP') %>
     proxy:
-      host: <%= ENV.fetch('CDKG_ADMIN_DOMAIN', 'admin.' + ENV.fetch('CDKG_DOMAIN')) %>
+      host: <%= ENV.fetch('CDKG_DOMAIN') %>
+      path_prefix: /ingestion
+      strip_path_prefix: false
       app_port: 8503
-      ssl: true
+      # Not `ssl: true`: only one role may hold the certificate for a host, and
+      # that is `web`, which owns the domain. kamal-proxy terminates TLS once and
+      # then routes by path, so this role is reached over the same HTTPS
+      # connection without a certificate of its own.
+      ssl: false
       healthcheck:
         path: /health
     env:
       clear:
         MODE: ingest
         SERVICE_PORT: "8503"
+        ROOT_PATH: /ingestion
         REPO_ROOT: /repo
         GITHUB_REPO: Connected-Data/cdkg-challenge
         # Paths point into the git working copy, not the baked-in image.
@@ -44,9 +62,13 @@ servers:
         - GITHUB_APP_PRIVATE_KEY
         - ADMIN_USER
         - ADMIN_PASSWORD
-    volumes:
-      - "cdkg_repo:/repo"
-      - "cdkg_data:/data"
+    # A role takes no `volumes:` key — Kamal validates it away, which is why this
+    # role had never survived `kamal config`. Volumes are either global or passed
+    # as docker run options. /data is global below and already reaches this role;
+    # only the git working copy is specific to it, and the web app has no business
+    # mounting that.
+    options:
+      volume: "cdkg_repo:/repo"
 
 proxy:
   host: <%= ENV.fetch('CDKG_DOMAIN') %>

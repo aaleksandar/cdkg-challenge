@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CDKG Ingestion</title>
-  <link rel="stylesheet" href="/static/app.css?v={{ asset_version() }}">
-  <script src="/static/htmx.min.js" defer></script>
+  <link rel="stylesheet" href="{{ base }}/static/app.css?v={{ asset_version() }}">
+  <script src="{{ base }}/static/htmx.min.js" defer></script>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
      the channel refresh, the graph rebuild, the backlog drain, and the on-disk
      defects that are not channel videos at all. The front page is for the one
      question that matters — is anything stuck? #}
-  <button type="button" class="linkbtn" hx-get="/advanced" hx-target="#drawer"
+  <button type="button" class="linkbtn" hx-get="{{ base }}/advanced" hx-target="#drawer"
           hx-swap="innerHTML" hx-include="[name=q], [name=shorts]"
           data-tip="Automation settings, maintenance actions, and the transcripts
                     on disk that no channel video accounts for.">Advanced</button>
@@ -31,14 +31,14 @@
 <div class="controls">
   <input class="search" type="search" name="q" placeholder="Search title, speaker, event…"
          value="{{ query }}"
-         hx-get="/rows" hx-target="#sheet"
+         hx-get="{{ base }}/rows" hx-target="#sheet"
          hx-trigger="input changed delay:250ms, search"
          hx-include="[name=shorts]"
          hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
   <label class="toggle" data-tip="Teasers, Shorts and premieres that have not aired.
                                   Catalogued, never ingested.">
     <input type="checkbox" name="shorts" value="1" {{ 'checked' if shorts }}
-           hx-get="/rows" hx-target="#sheet" hx-include="[name=q]"
+           hx-get="{{ base }}/rows" hx-target="#sheet" hx-include="[name=q]"
            hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
     Show Shorts &amp; premieres
   </label>
@@ -50,7 +50,7 @@
 <div id="inventory-strip">{% include "partials/inventory_strip.html" %}</div>
 
 {# Renders nothing at all when idle, so a quiet panel costs one tiny request. #}
-<div id="live" hx-get="/live" hx-trigger="load, every 2s" hx-swap="innerHTML"></div>
+<div id="live" hx-get="{{ base }}/live" hx-trigger="load, every 2s" hx-swap="innerHTML"></div>
 
 <div class="sheet" id="sheet">
   {% include "partials/rows.html" %}

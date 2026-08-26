@@ -63,6 +63,10 @@ templates.env.filters["duration"] = _duration
 templates.env.filters["day"] = _day
 templates.env.filters["fromjson"] = _fromjson
 templates.env.globals["asset_version"] = _asset_version
+# Prepended to every absolute URL the templates emit. Empty when the panel is
+# served from the root, "/ingestion" when it is mounted under a path — the proxy
+# strips the prefix on the way in, so nothing else in the app changes.
+templates.env.globals["base"] = config.ROOT_PATH
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES

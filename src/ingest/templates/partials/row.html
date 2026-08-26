@@ -9,13 +9,13 @@
 <tr class="{{ 'is-quiet' if s.lane == 'excluded' }}"
     id="talk-{{ s.video_id }}"
     {% if oob %}hx-swap-oob="true"{% endif %}
-    hx-get="/video/{{ s.video_id | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
+    hx-get="{{ base }}/video/{{ s.video_id | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
   <td>
     {# The row's own click opens the drawer, so its refresh lives on a separate
        element that replaces the whole row. Polls only while the pipeline is
        running and stops on its own, because the replacement carries no trigger. #}
     {% if busy %}
-      <span hidden hx-get="/row/{{ s.video_id | urlencode }}"
+      <span hidden hx-get="{{ base }}/row/{{ s.video_id | urlencode }}"
             hx-trigger="every 2s" hx-target="closest tr" hx-swap="outerHTML"></span>
     {% endif %}
     {# The full YouTube title, "Talk | Speaker | Event", so the kind of video is
@@ -56,12 +56,12 @@
     {% elif s.status in ['not_ingested', 'failed'] %}
       {# Swaps the row for its live version, which arrives with the poller. #}
       <button type="button" class="rowbtn"
-              hx-post="/ingest/{{ s.video_id }}"
+              hx-post="{{ base }}/ingest/{{ s.video_id }}"
               hx-target="closest tr" hx-swap="outerHTML"
               hx-disabled-elt="this">Ingest</button>
     {% elif s.status == 'ready_for_graph' %}
       <button type="button" class="rowbtn"
-              hx-post="/graph/add" hx-target="#flash" hx-swap="innerHTML"
+              hx-post="{{ base }}/graph/add" hx-target="#flash" hx-swap="innerHTML"
               hx-disabled-elt="this" hx-on::after-request="refreshSheet()"
               data-tip="{{ 'Rebuilds the graph so this talk becomes queryable' if KG_ENABLED else 'Graph writes are paused. Resume them under Advanced.' }}"
               {{ 'disabled' if not KG_ENABLED }}>Add to graph</button>

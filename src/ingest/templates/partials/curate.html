@@ -28,7 +28,7 @@
   {% if 'Speaker' in s.missing_curation and s.video_id %}
   <div class="suggest">
     <button type="button" class="btn"
-            hx-post="/suggest/{{ s.video_id }}" hx-target="#drawer-body"
+            hx-post="{{ base }}/suggest/{{ s.video_id }}" hx-target="#drawer-body"
             hx-swap="innerHTML" hx-disabled-elt="this"
             data-tip="Reads this video's YouTube description with the LLM and fills in
                       the Speaker if the description actually names one. Costs one LLM
@@ -53,7 +53,7 @@
 
   {# Into the body, not the whole drawer: swapping the drawer itself would
      replay its open animation and scroll the panel back to the top. #}
-  <form hx-post="/curate/{{ s.video_id }}" hx-target="#drawer-body" hx-swap="innerHTML"
+  <form hx-post="{{ base }}/curate/{{ s.video_id }}" hx-target="#drawer-body" hx-swap="innerHTML"
         class="curate-form">
     {% for column in s.missing_curation + s.missing_optional %}
       {% set blocking = column in s.missing_curation %}
