@@ -23,10 +23,23 @@
 <div class="drawer-head">
   <button class="close" aria-label="Close">&times;</button>
   <h2>{{ s.display_title }}</h2>
-  <span class="state s-{{ s.status }}" data-tip="{{ FIGURE_NOTES.get(s.status, '') }}">
-    <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
-  </span>
+  <div class="drawer-meta">
+    <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
+      <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
+    </span>
+    {% if s.published_at %}<span class="muted">Published {{ s.published_at | day }}</span>{% endif %}
+  </div>
 </div>
+
+{# The question a row in the attention lane exists to answer. Printed before the
+   actions, because knowing why something is stuck is what tells an admin which
+   action is the right one. #}
+{% if s.lane == 'attention' and blocker_for(s) %}
+<div class="blocker">
+  <div class="blocker-head">Not in the graph</div>
+  <p>{{ blocker_for(s) }}</p>
+</div>
+{% endif %}
 
 {# The same one-click action the row offers, where an admin actually decides:
    having read the panel, they should not have to close it and hunt for the row.
@@ -44,8 +57,8 @@
           hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this"
           data-tip="Downloads this video's captions, appends a metadata row, extracts its
                     plain text and then its tags with an LLM, which costs money, and
-                    finally rebuilds the graph if the graph gate is open. Anything already
-                    on disk is reused rather than fetched or extracted again.">
+                    finally rebuilds the graph. Anything already on disk is reused rather
+                    than fetched or extracted again.">
     {{ 'Ingest again' if s.status == 'failed' else 'Ingest this talk' }}
   </button>
   <span class="muted">
@@ -65,8 +78,32 @@
                     which is all this talk is waiting on. No YouTube, no LLM calls."
           {{ 'disabled' if not KG_ENABLED }}>Add to graph</button>
   <span class="muted" id="drawer-flash">
-    {% if not KG_ENABLED %}The graph gate is closed. Open it in the toolbar first.
+    {% if not KG_ENABLED %}Graph writes are paused. Resume them under Advanced.
     {% else %}Curated and tagged; waiting only on a rebuild.{% endif %}
+  </span>
+</div>
+{% endif %}
+
+{# Re-running is always available, for any talk with a video that is not already
+   moving. It is the answer to "the parser got better — apply it to this one",
+   which is otherwise impossible without deleting files by hand. Offered as a
+   secondary action so it never competes with the primary one above, and absent
+   for the two statuses whose primary action already IS a run. #}
+{% if s.video_id and s.status not in ['in_progress', 'not_ingested', 'failed'] %}
+<div class="drawer-actions is-secondary">
+  <button type="button" class="btn btn-quiet"
+          hx-post="/ingest/{{ s.video_id }}?view=drawer"
+          hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this"
+          data-tip="Runs the pipeline over this talk again. The transcript, the plain text
+                    and the tags are content-addressed, so whatever is already on disk is
+                    reused rather than re-downloaded or re-extracted — no LLM cost for the
+                    tags. What does re-run is the metadata parse, which can fill a blank
+                    Speaker or Event it can now establish. A value you curated is never
+                    overwritten.">Run the pipeline again</button>
+  <span class="muted">
+    Re-reads the metadata. Existing transcript and tags are reused, so no LLM cost
+    for tagging{% if s.missing_curation %}; it may fill the blank
+    {{ s.missing_curation | join(' and ') }}{% endif %}.
   </span>
 </div>
 {% endif %}
@@ -76,16 +113,6 @@
    in the panel they can be filled in at all. #}
 {% if s.video_id and s.in_csv and (s.missing_curation or s.missing_optional) %}
   {% include "partials/curate.html" %}
-{% endif %}
-
-{% if s.status == 'orphaned' %}
-<section>
-  <div class="note">
-    This transcript has <strong>{{ s.tag_count }} extracted tags</strong> but no row in the
-    metadata&nbsp;CSV, so there is no Talk node for them to attach to. The extraction was paid
-    for and discarded. Adding a CSV row brings it into the graph without re-running the LLM.
-  </div>
-</section>
 {% endif %}
 
 <section>
@@ -101,6 +128,10 @@
     <dd class="{{ 'none' if not s.event }}">{{ s.event or 'not recorded' }}</dd>
     <dt>Length</dt>
     <dd>{{ s.duration | duration }}</dd>
+    {% if s.published_at %}
+    <dt>Published</dt>
+    <dd>{{ s.published_at | day }}</dd>
+    {% endif %}
     {% if s.video_id %}
     <dt>Video</dt>
     <dd><a href="https://www.youtube.com/watch?v={{ s.video_id }}" target="_blank" rel="noopener">{{ s.video_id }} ↗</a></dd>
@@ -176,10 +207,32 @@
 {% endif %}
 
 <section>
-  <h3>Pipeline{% if run %} — run #{{ run.id }}{% endif %}</h3>
+  <h3>Ingestion{% if run %} — run #{{ run.id }}{% endif %}</h3>
   {% if run %}
+    <dl class="pairs">
+      <dt>Started</dt><dd>{{ run.started_at }}</dd>
+      {% if run.ended_at %}<dt>Finished</dt><dd>{{ run.ended_at }}</dd>{% endif %}
+      <dt>Tags</dt>
+      <dd class="{{ 'none' if not s.tag_count }}">{{ s.tag_count or 'none' }} extracted</dd>
+      <dt>Model</dt>
+      {# Recorded per run, from the tag stage. Absent when the tags were reused
+         from an earlier run, where naming today's model would be a guess. #}
+      {% set tagging = (run.stages | selectattr('stage', 'equalto', 'tag_extraction') | list | first) %}
+      {% set detail = tagging.detail | fromjson if tagging else {} %}
+      {% if detail.model %}
+        <dd><code>{{ detail.model }}</code></dd>
+      {% elif detail.reused %}
+        <dd class="none">tags reused from an earlier run — model not recorded</dd>
+      {% else %}
+        <dd class="none">not recorded</dd>
+      {% endif %}
+    </dl>
     {% include "partials/stages.html" %}
   {% else %}
-    <p class="muted">Never run through the ingestion pipeline.</p>
+    <p class="muted">
+      Never run through this service.
+      {% if s.has_tags %}Its {{ s.tag_count }} tags were extracted before the service
+        existed, so the model that produced them was not recorded.{% endif %}
+    </p>
   {% endif %}
 </section>

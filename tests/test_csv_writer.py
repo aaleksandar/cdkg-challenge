@@ -136,3 +136,68 @@ def test_unresolved_fields_are_reported_in_the_reason(metadata_csv, tmp_path):
         talk, video_id="bbbbbbbbbbb", srt_path=tmp_path / "x.srt", csv_path=metadata_csv
     )
     assert "Speaker, Event" in reason and "curation" in reason
+
+
+# --- Re-running the pipeline over a row that already exists ------------------
+
+@pytest.fixture
+def blank_speaker_csv(tmp_path) -> Path:
+    """A row a first run wrote before the parser could establish its Speaker."""
+    path = tmp_path / "blank.csv"
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        row = dict.fromkeys(COLUMNS, "")
+        row.update({
+            "Title": "Talk to your data | CDL24", "Speaker": "",
+            "Event": "Connected Data London 2024",
+            "Video": "https://www.youtube.com/watch?v=bbbbbbbbbbb",
+        })
+        writer.writerow(row)
+    return path
+
+
+def test_a_rerun_fills_a_blank_the_first_run_could_not(blank_speaker_csv):
+    """The point of re-running after a parser improvement. Without this the run
+    reports success, changes nothing, and the talk stays out of the graph."""
+    parsed = ParsedTalk(talk_title="Talk to your data", full_title="Talk to your data | CDL24",
+                        speaker="Atanas Kiryakov", event="Connected Data London 2024")
+
+    appended, detail = csv_writer.append_row(
+        parsed, "bbbbbbbbbbb", Path("/t.srt"), csv_path=blank_speaker_csv)
+
+    assert appended is False, "a second row was written for a video already present"
+    assert "filled blank" in detail and "Speaker" in detail
+
+    rows = list(csv.DictReader(open(blank_speaker_csv, newline="", encoding="utf-8")))
+    assert len(rows) == 1
+    assert rows[0]["Speaker"] == "Atanas Kiryakov"
+
+
+def test_a_rerun_never_overwrites_what_a_curator_decided(metadata_csv):
+    """A person editing a row means to change it; a machine that has re-read the
+    description may only fill a gap. This is why the file is append-only."""
+    parsed = ParsedTalk(talk_title="An existing talk", full_title="An existing talk",
+                        speaker="Someone The LLM Preferred", event="A Different Event")
+
+    csv_writer.append_row(parsed, "aaaaaaaaaaa", Path("/t.srt"), csv_path=metadata_csv)
+
+    row = next(iter(csv.DictReader(open(metadata_csv, newline="", encoding="utf-8"))))
+    assert row["Speaker"] == "Someone"
+    assert row["Date"] == "01/01/2024"      # and nothing else was touched
+    assert row["Type"] == "Presentation"
+
+
+def test_a_rerun_with_nothing_new_leaves_the_file_byte_identical(blank_speaker_csv):
+    """A re-run that learned nothing must not rewrite the file, or every rerun
+    shows up as a diff in the ingestion PR."""
+    before = blank_speaker_csv.read_bytes()
+    parsed = ParsedTalk(talk_title="Talk to your data", full_title="Talk to your data | CDL24",
+                        speaker=None, event="Connected Data London 2024")
+
+    appended, detail = csv_writer.append_row(
+        parsed, "bbbbbbbbbbb", Path("/t.srt"), csv_path=blank_speaker_csv)
+
+    assert appended is False
+    assert detail == "Already in the metadata CSV — not duplicated"
+    assert blank_speaker_csv.read_bytes() == before

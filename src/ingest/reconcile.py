@@ -180,6 +180,11 @@ class TalkState:
             "not_ingested", "orphaned", "untagged", "failed", "ready_for_graph",
         }
 
+    @property
+    def lane(self) -> str:
+        """The triage bucket the panel sorts and filters on. See LANE_OF."""
+        return LANE_OF[self.status]
+
 
 STATUS_LABELS = {
     "in_graph": "In graph",
@@ -200,8 +205,40 @@ STATUS_ORDER = [
     "not_ingested", "untagged", "in_graph", "excluded_short", "upcoming", "junk",
 ]
 
+# The eleven statuses above stay the diagnosis — they are what the drawer shows
+# when an admin asks "why is this not in the graph?". A lane is the triage, and
+# it is all the sheet shows: of the five, only "attention" asks for a human.
+#
+# "not_ingested" is deliberately its own lane rather than attention. Ingesting
+# the backlog is a deliberate, paid-for action, so 155 waiting videos are a
+# normal state of the system and must not read as 155 problems.
+LANE_OF = {
+    "in_graph": "in_graph",
+    "in_progress": "working",
+    "not_ingested": "not_ingested",
+    "needs_curation": "attention",
+    "failed": "attention",
+    "untagged": "attention",
+    "ready_for_graph": "attention",
+    "orphaned": "attention",
+    "excluded_short": "excluded",
+    "upcoming": "excluded",
+    "junk": "excluded",
+}
+
+# Attention first, then anything moving, then the backlog; settled work last.
+LANE_ORDER = ["attention", "working", "not_ingested", "in_graph", "excluded"]
+
+LANE_LABELS = {
+    "attention": "Needs attention",
+    "working": "Working",
+    "not_ingested": "Not ingested",
+    "in_graph": "In graph",
+    "excluded": "Not a talk",
+}
+
 # Statuses that are working as intended and only clutter the default view.
-QUIET_STATUSES = {"excluded_short", "upcoming", "junk"}
+QUIET_STATUSES = {s for s, lane in LANE_OF.items() if lane == "excluded"}
 
 
 # --- Source readers ----------------------------------------------------------
@@ -400,4 +437,14 @@ def summarise(states: list[TalkState]) -> dict[str, int]:
     counts = {status: 0 for status in STATUS_ORDER}
     for state in states:
         counts[state.status] = counts.get(state.status, 0) + 1
+    return counts
+
+
+def summarise_lanes(states: list[TalkState]) -> dict[str, int]:
+    """Per-lane tally, for the figure strip. Every lane is keyed even at zero:
+    a tab that vanishes when its count reaches zero reads as a missing feature.
+    """
+    counts = {lane: 0 for lane in LANE_ORDER}
+    for state in states:
+        counts[state.lane] = counts.get(state.lane, 0) + 1
     return counts

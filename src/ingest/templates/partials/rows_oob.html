@@ -1,9 +1,11 @@
 {# Response to a filter or search: the rows for #sheet, plus everything outside
-   it that the same reconciliation just re-decided — the figures, the total and
-   the empty-inventory notice — swapped out-of-band, so nothing on the page is
-   left asserting something the server no longer believes. #}
+   it that the same reconciliation just re-decided — the lane strip, the total
+   and the empty-inventory notice — swapped out-of-band, so nothing on the page
+   is left asserting something the server no longer believes. #}
 {% include "partials/rows.html" %}
 {% with oob = true %}{% include "partials/figures.html" %}{% endwith %}
 <div id="section-note" hx-swap-oob="true">{% include "partials/section_note.html" %}</div>
-<div class="meta" id="reconciled" hx-swap-oob="true">{{ total }} talks reconciled</div>
+<div class="meta" id="reconciled" hx-swap-oob="true">
+  {{ total }} videos on the channel{% if offchannel %} · {{ offchannel }} off-channel{% endif %}
+</div>
 <div id="inventory-strip" hx-swap-oob="true">{% include "partials/inventory_strip.html" %}</div>

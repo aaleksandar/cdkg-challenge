@@ -1,10 +1,10 @@
-{# One line saying what the selected section is, directly under its tab and
-   above the toolbar, so the answer to "what is an orphan?" is already on screen.
-   Swapped out-of-band with every rows response, since the section changes with
-   the filter. #}
-{% if FIGURE_NOTES.get(status_filter) %}
+{# One line saying what the selected lane is, directly under its tab and above
+   the toolbar, so the answer to "what does this mean?" is already on screen.
+   Swapped out-of-band with every rows response, since the lane changes with the
+   filter. #}
+{% if LANE_NOTES.get(lane) %}
 <p class="section-note">
-  <span class="what">{{ STATUS_LABELS.get(status_filter, 'Actionable') }}</span>
-  {{ FIGURE_NOTES[status_filter] }}
+  <span class="what">{{ LANE_LABELS.get(lane, 'All videos') }}</span>
+  {{ LANE_NOTES[lane] }}
 </p>
 {% endif %}

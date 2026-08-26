@@ -100,39 +100,52 @@ def update_row(video_id: str, fields: dict[str, str],
     write cannot truncate the CSV, and leaves every other row byte-identical.
     """
     csv_path = csv_path or config.METADATA_CSV
-
     with _write_lock:
-        if not csv_path.exists():
-            return False, "Metadata CSV not found"
+        return _apply_to_row(csv_path, video_id, fields)
 
-        with open(csv_path, newline="", encoding="utf-8") as handle:
-            reader = csv.DictReader(handle)
-            columns = reader.fieldnames or list(FALLBACK_COLUMNS)
-            rows = list(reader)
 
-        target = None
-        for row in rows:
-            if reconcile.extract_video_id(row.get("Video")) == video_id:
-                target = row
-                break
-        if target is None:
-            return False, "No metadata row for this video"
+def _apply_to_row(csv_path: Path, video_id: str, fields: dict[str, str],
+                  only_if_blank: bool = False) -> tuple[bool, str]:
+    """Patch one row in place. Callers hold ``_write_lock`` — this does not take it.
 
-        applied = []
-        for column, value in fields.items():
-            value = (value or "").strip()
-            if column in columns and value:
-                target[column] = value
-                applied.append(column)
-        if not applied:
-            return False, "Nothing to update"
+    ``only_if_blank`` is the difference between a curator and the pipeline. A
+    person editing a row means to change it; a re-run that has learned a Speaker
+    may only fill a gap, never overwrite what someone decided.
+    """
+    if not csv_path.exists():
+        return False, "Metadata CSV not found"
 
-        temporary = csv_path.with_suffix(".csv.tmp")
-        with open(temporary, "w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
-            writer.writeheader()
-            writer.writerows(rows)
-        temporary.replace(csv_path)
+    with open(csv_path, newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        columns = reader.fieldnames or list(FALLBACK_COLUMNS)
+        rows = list(reader)
+
+    target = None
+    for row in rows:
+        if reconcile.extract_video_id(row.get("Video")) == video_id:
+            target = row
+            break
+    if target is None:
+        return False, "No metadata row for this video"
+
+    applied = []
+    for column, value in fields.items():
+        value = (value or "").strip()
+        if not value or column not in columns:
+            continue
+        if only_if_blank and (target.get(column) or "").strip():
+            continue
+        target[column] = value
+        applied.append(column)
+    if not applied:
+        return False, "Nothing to update"
+
+    temporary = csv_path.with_suffix(".csv.tmp")
+    with open(temporary, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    temporary.replace(csv_path)
 
     return True, f"Updated {', '.join(applied)}"
 
@@ -144,6 +157,17 @@ def append_row(parsed, video_id: str, srt_path: Path,
 
     with _write_lock:
         if video_id in existing_video_ids(csv_path):
+            # Not a duplicate, but a re-run may have established something the
+            # first one could not — a Speaker recovered from the description, say.
+            # Only gaps are filled: a curator's value is never overwritten by a
+            # machine, which is the whole reason this file is append-only.
+            filled, detail = _apply_to_row(
+                csv_path, video_id,
+                {"Speaker": parsed.speaker or "", "Event": parsed.event or ""},
+                only_if_blank=True,
+            )
+            if filled:
+                return False, f"Already in the metadata CSV — filled blank {detail[8:]}"
             return False, "Already in the metadata CSV — not duplicated"
 
         columns = read_columns(csv_path)

@@ -30,11 +30,14 @@ servers:
         DB_PATH: /data/cdl_db.kuzu
         STATE_DB_PATH: /data/ingest_state.db
         SCHEDULER_ENABLED: "true"
-        # Both stay off until the data-model work is ready and the GitHub App
-        # is installed. Flip them deliberately, one at a time.
-        KG_ENABLED: "false"
+        # The system runs itself: a newly published talk is detected, ingested
+        # and written into the graph without being asked. Both switches can be
+        # paused at runtime from the panel's Advanced section.
+        KG_ENABLED: "true"
+        AUTO_INGEST_NEW: "true"
+        # Stays off until the GitHub App is installed. It writes outside this
+        # machine, so it is not a click — flip it here, deliberately.
         GIT_PUSH_ENABLED: "false"
-        AUTO_INGEST_NEW: "false"
       secret:
         - GOOGLE_API_KEY
         - GITHUB_APP_ID

@@ -72,9 +72,11 @@ YTDLP_COOKIES_FILE = os.getenv("YTDLP_COOKIES_FILE") or None
 YTDLP_COOKIES_FROM_BROWSER = os.getenv("YTDLP_COOKIES_FROM_BROWSER") or None
 
 # --- Feature gates -----------------------------------------------------------
-# STEP ONE is ingestion only: the graph stages stay wired and visible in the
-# panel but do not run until the data-model work is ready.
-KG_ENABLED = _flag("KG_ENABLED")
+# The graph is written by default: an ingested talk that never reaches the graph
+# is work the public app cannot see, so holding it back is the exception, not the
+# posture. The switch survives as a pause valve under the panel's Advanced
+# section for when a rebuild is misbehaving.
+KG_ENABLED = _flag("KG_ENABLED", "true")
 
 # Guards every write to GitHub. Off means the service is strictly read-only.
 GIT_PUSH_ENABLED = _flag("GIT_PUSH_ENABLED")
@@ -91,10 +93,13 @@ GITHUB_INGEST_BRANCH = os.getenv("GITHUB_INGEST_BRANCH", "ingest/auto")
 # --- Scheduler ---------------------------------------------------------------
 RSS_POLL_MINUTES = int(os.getenv("RSS_POLL_MINUTES", "15"))
 INVENTORY_REFRESH_HOURS = int(os.getenv("INVENTORY_REFRESH_HOURS", "24"))
-SCHEDULER_ENABLED = _flag("SCHEDULER_ENABLED")
-# Detected videos are catalogued automatically; ingesting them costs LLM spend,
-# so it stays an explicit admin action unless this is turned on.
-AUTO_INGEST_NEW = _flag("AUTO_INGEST_NEW")
+SCHEDULER_ENABLED = _flag("SCHEDULER_ENABLED", "true")
+# A newly published talk ingests itself: that is a handful of videos a year, and
+# an admin who must press a button for each one is a system that quietly falls
+# behind. The existing backlog is NOT covered by this — draining it is a
+# deliberate, costed action in the panel's Advanced section, because it is
+# hundreds of LLM calls at once rather than one.
+AUTO_INGEST_NEW = _flag("AUTO_INGEST_NEW", "true")
 
 # --- Panel auth --------------------------------------------------------------
 ADMIN_USER = os.getenv("ADMIN_USER", "admin")

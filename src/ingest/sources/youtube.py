@@ -11,6 +11,7 @@ Two distinct jobs with different tools:
 
 from __future__ import annotations
 
+import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -178,31 +179,81 @@ def _cleanup(work_dir: Path) -> None:
 
 # --- Sync --------------------------------------------------------------------
 
-def backfill_durations(max_lookups: int = 25) -> int:
-    """Fill in durations the flat enumeration could not provide.
+def _cached_info(video_id: str) -> dict | None:
+    """The committed yt-dlp metadata for one video, if it was ever fetched."""
+    path = config.INGEST_CACHE_DIR / f"{video_id}.json"
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
 
-    A handful of entries (streams, premieres, and anything added via the RSS
-    feed) arrive without a duration. The teaser/Shorts filter depends on it, so
-    resolve them with per-video lookups — capped, since each one is a request.
+
+def _published_from(info: dict) -> str | None:
+    """``upload_date`` is YYYYMMDD; the inventory stores ISO."""
+    stamp = info.get("upload_date")
+    if not stamp or len(stamp) != 8 or not stamp.isdigit():
+        return _iso_from_timestamp(info.get("timestamp"))
+    return f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:8]}T00:00:00Z"
+
+
+def backfill_metadata(max_lookups: int = 120) -> dict:
+    """Fill in what the flat enumeration cannot provide: duration and upload date.
+
+    Neither the uploads playlist nor the /videos tab returns a date in flat mode —
+    ``timestamp`` comes back null for every entry — and a handful of entries
+    (streams, premieres, anything seen first via RSS) arrive with no duration
+    either. The Shorts filter depends on the one and the panel shows the other,
+    so both are resolved with per-video lookups.
+
+    Each lookup is a request, so it is capped and the committed ``.ingest`` cache
+    is consulted first: a video that has been ingested costs nothing here. What
+    is fetched is written to the inventory only — the cache is part of the
+    repository, and filling it for the whole channel is a commit, not a refresh.
+
+    Premieres are re-checked rather than skipped. ``is_upcoming`` is a fact about
+    the moment it was cached, and a premiere's whole purpose is to stop being one:
+    left alone, an aired premiere keeps its stale flag forever, which hides it
+    from the panel and denies it a date and a duration. They are few, and the
+    cache cannot answer the question — ``trim_info`` does not record live status —
+    so they are always fetched fresh.
     """
     from .. import db
 
-    # Premieres and scheduled streams legitimately have no duration until they
-    # air; looking them up just errors, so leave them alone.
-    missing = [
+    pending = [
         v for v in db.all_videos()
-        if not v.get("duration") and v.get("live_status") != "is_upcoming"
+        if not v.get("duration") or not v.get("published_at")
+        or v.get("live_status") == "is_upcoming"
     ]
-    resolved = 0
-    for video in missing[:max_lookups]:
-        try:
-            info = fetch_video_info(video["video_id"])
-        except Exception:
-            continue
-        if info.get("duration"):
-            db.upsert_videos([{**video, "duration": int(info["duration"])}])
+
+    resolved, spent, updates = 0, 0, []
+    for video in pending:
+        stale_premiere = video.get("live_status") == "is_upcoming"
+        info = None if stale_premiere else _cached_info(video["video_id"])
+        if info is None:
+            if spent >= max_lookups:
+                continue
+            spent += 1
+            try:
+                info = fetch_video_info(video["video_id"])
+            except Exception:  # a private or removed video must not stop the rest
+                continue
+
+        patch = {}
+        if not video.get("duration") and info.get("duration"):
+            patch["duration"] = int(info["duration"])
+        if not video.get("published_at") and _published_from(info):
+            patch["published_at"] = _published_from(info)
+        # Only ever narrows: a video that has aired stops being "upcoming", and
+        # nothing here should promote a live video back into a premiere.
+        if stale_premiere and info.get("live_status") not in (None, "is_upcoming"):
+            patch["live_status"] = info["live_status"]
+        if patch:
+            updates.append({**video, **patch})
             resolved += 1
-    return resolved
+
+    if updates:
+        db.upsert_videos(updates)
+    return {"resolved": resolved, "fetched": spent, "remaining": len(pending) - resolved}
 
 
 def refresh_inventory(limit: int | None = None, backfill: bool = True) -> dict:
@@ -213,7 +264,7 @@ def refresh_inventory(limit: int | None = None, backfill: bool = True) -> dict:
     new, updated = db.upsert_videos(videos)
     result = {"fetched": len(videos), "new": new, "updated": updated}
     if backfill:
-        result["durations_resolved"] = backfill_durations()
+        result["backfill"] = backfill_metadata()
     return result
 
 

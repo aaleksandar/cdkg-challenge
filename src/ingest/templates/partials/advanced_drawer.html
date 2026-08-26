@@ -1,0 +1,10 @@
+{# The Advanced panel reuses the drawer shell verbatim: the scrim and the aside
+   carry the open animation and the close handlers, so a second slide-over
+   mechanism would be a second set of the same bugs. Only #drawer-body is
+   swapped afterwards. #}
+<div class="scrim"></div>
+<aside class="drawer" role="dialog" aria-label="Advanced settings">
+  <div id="drawer-body">
+    {% include "partials/advanced.html" %}
+  </div>
+</aside>

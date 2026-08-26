@@ -1,25 +1,26 @@
-{# The figures are the navigation. Rendered by the server on every rows request
-   and swapped out-of-band, so the active tab and the counts are always whatever
+{# The lanes are the navigation. Rendered by the server on every rows request
+   and swapped out-of-band, so the active lane and the counts are always whatever
    the server just decided — no client-side mirror of the filter to drift.
 
-   Every stage is listed even at zero. The set of stages a talk can be in is
-   worth knowing in itself, and a tab that disappears when it empties reads as a
-   missing feature rather than as an empty section. #}
+   Every lane is listed even at zero. "Needs attention: 0" is the single most
+   useful thing this panel can say, and a tab that disappears when it empties
+   reads as a missing feature rather than as good news. #}
 <nav class="figures" id="figures"{% if oob %} hx-swap-oob="true"{% endif %}>
-  {% for key, label in FIGURES %}
-    {% set count = counts.get(key, 0) if key != 'all' else actionable %}
+  {% for key, label in LANES %}
+    {% set count = total if key == 'all' else lane_counts.get(key, 0) %}
     <button type="button"
-            class="figure {{ 'is-on' if status_filter == key }} {{ 'is-quiet' if key in QUIET_STATUSES }} {{ 'is-alert' if key in ALERT_STATUSES and count }} {{ 'is-zero' if not count }}"
-            aria-pressed="{{ 'true' if status_filter == key else 'false' }}"
-            {# The same sentence the active section prints below, so the meaning
-               of a term is one hover away even when the tab is not selected. #}
-            data-tip="{{ FIGURE_NOTES.get(key, '') }}"
-            aria-label="{{ label }} — {{ FIGURE_NOTES.get(key, '') }}"
-            hx-get="/rows?status={{ key }}" hx-target="#sheet" hx-include="[name=q]"
-            hx-push-url="/?status={{ key }}">
+            class="figure l-{{ key }} {{ 'is-on' if lane == key }} {{ 'is-alert' if key == 'attention' and count }} {{ 'is-zero' if not count }}"
+            aria-pressed="{{ 'true' if lane == key else 'false' }}"
+            {# The same sentence the active lane prints below, so the meaning is
+               one hover away even when the tab is not selected. #}
+            data-tip="{{ LANE_NOTES.get(key, '') }}"
+            aria-label="{{ label }} — {{ LANE_NOTES.get(key, '') }}"
+            hx-get="/rows?lane={{ key }}" hx-target="#sheet"
+            hx-include="[name=q], [name=shorts]"
+            hx-push-url="/?lane={{ key }}">
       <span class="n">{{ count }}</span>
       <span class="k">
-        {% if key != 'all' %}<span class="state s-{{ key }}"><i class="dot"></i></span>{% endif %}
+        {% if key != 'all' %}<span class="state l-{{ key }}"><i class="dot"></i></span>{% endif %}
         {{ label }}
       </span>
     </button>

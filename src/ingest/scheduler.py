@@ -22,7 +22,14 @@ log = logging.getLogger("ingest.scheduler")
 
 
 def poll_for_new_videos() -> None:
+    from . import db
     from .sources import youtube
+
+    # "New" means "not in the inventory", so on a service that has never read the
+    # channel every entry in the feed is new and auto-ingest would spend an LLM
+    # call on each. Catalogue them, but let the first full enumeration establish
+    # the baseline before anything is ingested on its own.
+    first_run = not db.all_videos()
 
     try:
         result = youtube.poll_rss()
@@ -35,6 +42,10 @@ def poll_for_new_videos() -> None:
     log.info("RSS poll found %d new video(s): %s", result["new"], result["new_ids"])
 
     if not config.AUTO_INGEST_NEW:
+        return
+    if first_run:
+        log.info("Inventory was empty; catalogued %d video(s) without ingesting them",
+                 result["new"])
         return
 
     from .pipeline.runner import run_pipeline

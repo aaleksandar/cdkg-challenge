@@ -1,6 +1,0 @@
-{# Answer to a gate toggle: the sheet re-rendered under the new setting, every
-   count and notice that follows from it swapped out of band, and the gate itself
-   returned in its new state. The response also carries an HX-Trigger, which is
-   what tells an open drawer to re-render its own buttons. #}
-{% include "partials/rows_oob.html" %}
-{% with oob = true %}{% include "partials/gate.html" %}{% endwith %}

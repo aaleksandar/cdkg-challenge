@@ -12,88 +12,64 @@
 <header class="masthead">
   <div class="wordmark">Connected Data <span>· Knowledge Graph ingestion</span></div>
   <div class="spacer"></div>
-  <div class="meta" id="reconciled">{{ total }} talks reconciled</div>
+  <div class="meta" id="reconciled">
+    {{ total }} videos on the channel{% if offchannel %} · {{ offchannel }} off-channel{% endif %}
+  </div>
+  {# Everything an admin needs occasionally lives behind here: the pause valves,
+     the channel refresh, the graph rebuild, the backlog drain, and the on-disk
+     defects that are not channel videos at all. The front page is for the one
+     question that matters — is anything stuck? #}
+  <button type="button" class="linkbtn" hx-get="/advanced" hx-target="#drawer"
+          hx-swap="innerHTML" hx-include="[name=q], [name=shorts]"
+          data-tip="Automation settings, maintenance actions, and the transcripts
+                    on disk that no channel video accounts for.">Advanced</button>
 </header>
 
 {% include "partials/figures.html" %}
 <div id="section-note">{% include "partials/section_note.html" %}</div>
 
-<form id="picks" hx-post="/ingest" hx-target="#flash" hx-swap="innerHTML"
-      hx-disabled-elt="#ingest-btn">
+<div class="controls">
+  <input class="search" type="search" name="q" placeholder="Search title, speaker, event…"
+         value="{{ query }}"
+         hx-get="/rows" hx-target="#sheet"
+         hx-trigger="input changed delay:250ms, search"
+         hx-include="[name=shorts]"
+         hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
+  <label class="toggle" data-tip="Teasers, Shorts and premieres that have not aired.
+                                  Catalogued, never ingested.">
+    <input type="checkbox" name="shorts" value="1" {{ 'checked' if shorts }}
+           hx-get="/rows" hx-target="#sheet" hx-include="[name=q]"
+           hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
+    Show Shorts &amp; premieres
+  </label>
+  <div class="spacer"></div>
+  <span id="busy" class="htmx-indicator muted">working…</span>
+  <span id="flash"></span>
+</div>
 
-  <div class="controls">
-    <input class="search" type="search" name="q" placeholder="Search title, speaker, event…"
-           value="{{ query }}"
-           hx-get="/rows" hx-target="#sheet"
-           hx-trigger="input changed delay:250ms, search"
-           hx-vals='js:{status: new URLSearchParams(location.search).get("status") || "all"}'>
-    <div class="spacer"></div>
-    {% include "partials/gate.html" %}
-    {# Every control here says plainly what it will do, what it costs and what it
-       will not touch. An admin should never have to try one to find out. #}
-    <button type="button" class="btn" hx-post="/refresh" hx-target="#flash"
-            hx-indicator="#busy"
-            hx-on::after-request="refreshSheet()"
-            data-tip="Re-reads the list of videos on the @ConnectedData YouTube channel and
-                      caches it. This is where every &ldquo;Not ingested&rdquo; row comes from,
-                      so nothing appears here until it has been run at least once.
-                      It reads titles and lengths only. No videos, no transcripts, no LLM
-                      calls, and nothing written to the graph."
-            aria-label="Refresh channel. Re-reads the list of videos on the YouTube channel
-                        and caches it. Reads metadata only; downloads nothing.">Refresh channel</button>
-    <button type="button" class="btn" hx-post="/rebuild" hx-target="#flash"
-            hx-indicator="#busy"
-            data-tip="Rebuilds the knowledge graph from what is already on disk, meaning the
-                      metadata CSV and the extracted tags, and swaps it in only if the new
-                      one is sound. Use it after curating a talk or adding tags. No YouTube,
-                      no LLM calls, no cost. The app keeps serving the old graph until the
-                      swap."
-            aria-label="Rebuild graph. Rebuilds the knowledge graph from the metadata CSV and
-                        extracted tags already on disk. Contacts neither YouTube nor the LLM.">Rebuild graph</button>
-    <span id="busy" class="htmx-indicator muted">working…</span>
-    <span id="flash"></span>
-  </div>
+<div id="inventory-strip">{% include "partials/inventory_strip.html" %}</div>
 
-  <div id="inventory-strip">{% include "partials/inventory_strip.html" %}</div>
+{# Renders nothing at all when idle, so a quiet panel costs one tiny request. #}
+<div id="live" hx-get="/live" hx-trigger="load, every 2s" hx-swap="innerHTML"></div>
 
-  {# Polls only while something is actually running, then stops. #}
-  <div id="live" hx-get="/live" hx-trigger="load, every 2s" hx-swap="innerHTML"></div>
-
-  <div class="sheet" id="sheet">
-    {% include "partials/rows.html" %}
-  </div>
-
-  <div class="actionbar" id="actionbar" hidden>
-    <span><strong id="picked">0</strong> selected</span>
-    <button class="btn" type="submit" id="ingest-btn">Ingest selected</button>
-  </div>
-</form>
+<div class="sheet" id="sheet">
+  {% include "partials/rows.html" %}
+</div>
 
 <div id="drawer"></div>
 <div id="tip" role="tooltip" hidden></div>
 
 <script>
-  const form = document.getElementById('picks');
-  const bar = document.getElementById('actionbar');
-  const picked = document.getElementById('picked');
-
-  function sync() {
-    const n = form.querySelectorAll('input[name=video_ids]:checked').length;
-    picked.textContent = n;
-    bar.hidden = n === 0;
-  }
-  form.addEventListener('change', e => { if (e.target.name === 'video_ids') sync(); });
-
-  document.body.addEventListener('htmx:afterSwap', sync);
-
   // Re-ask the server for the rows it would render now. Anything that changes
   // what a row says without replacing the row itself (a channel refresh, a graph
-  // rebuild) calls this, or the sheet keeps showing what was true before.
-  // The search input carries the active filter, so triggering it re-runs exactly
-  // the query on screen.
+  // rebuild, resuming graph writes) calls this, or the sheet keeps showing what
+  // was true before. The search input carries the active filter, so triggering
+  // it re-runs exactly the query on screen.
   function refreshSheet() {
     htmx.trigger(document.querySelector('.search'), 'search');
   }
+  // Flipping a setting under Advanced changes what the rows are allowed to do.
+  document.body.addEventListener('gate-changed', refreshSheet);
 
   document.body.addEventListener('click', e => {
     if (e.target.closest('.scrim, .close')) document.getElementById('drawer').innerHTML = '';
@@ -103,7 +79,7 @@
   });
 
   // Tooltips. Delegated, so controls that arrive by htmx swap carry them too;
-  // positioned against the viewport, because the figures strip and the drawer
+  // positioned against the viewport, because the lane strip and the drawer
   // both scroll and would otherwise clip the box.
   (function () {
     const tip = document.getElementById('tip');

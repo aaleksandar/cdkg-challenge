@@ -7,21 +7,47 @@
    Keeping the two apart is the whole point — treating all five as blockers held
    talks out of the graph over a missing Type. #}
 <section class="curate" id="curate">
-  {% if s.missing_curation %}
-  <div class="note warn">
-    <strong>Not in the graph yet.</strong>
-    {{ s.missing_curation | join(', ') }}
-    {{ 'is' if s.missing_curation | length == 1 else 'are' }} blank, and the graph
-    builder drops rows missing {{ 'it' if s.missing_curation | length == 1 else 'them' }}.
-    Fill {{ 'it' if s.missing_curation | length == 1 else 'them' }} in to bring this talk in.
-  </div>
-  {% elif s.missing_optional %}
+  {# The blocking case is stated once, at the top of the drawer, by the blocker
+     block — repeating it here said the same sentence twice on one screen. Only
+     the optional gaps, which have no blocker block, are introduced here. #}
+  {% if not s.missing_curation and s.missing_optional %}
   <div class="note">
     <strong>Optional detail missing.</strong>
     {{ s.missing_optional | join(', ') }}
     {{ 'is' if s.missing_optional | length == 1 else 'are' }} blank. The talk is in
     the graph either way. An uncategorised talk simply has no Category to be found
     through, and an undated one no date to sort by.
+  </div>
+  {% endif %}
+
+  {# The name is often in the description, on its own line above a biography,
+     with no phrasing the parser can match on. Offered as a click rather than run
+     on open: it costs an LLM call, and a suggestion nobody asked for that turns
+     out wrong is worse than a blank field. What it finds is filled in below with
+     the line it came from, for the curator to accept or overwrite. #}
+  {% if 'Speaker' in s.missing_curation and s.video_id %}
+  <div class="suggest">
+    <button type="button" class="btn"
+            hx-post="/suggest/{{ s.video_id }}" hx-target="#drawer-body"
+            hx-swap="innerHTML" hx-disabled-elt="this"
+            data-tip="Reads this video's YouTube description with the LLM and fills in
+                      the Speaker if the description actually names one. Costs one LLM
+                      call. Nothing is saved until you press Save.">Read the speaker from the description</button>
+    <span class="muted">One LLM call. Fills the field; saving is still yours.</span>
+  </div>
+  {% endif %}
+
+  {% if suggestion_evidence %}
+  <div class="note evidence">
+    <strong>Read from the description:</strong>
+    <span class="quote">{{ suggestion_evidence }}</span>
+    Check it before saving — this is the line the name was taken from.
+  </div>
+  {% elif suggestion_failed %}
+  <div class="note">
+    <strong>Nothing found.</strong>
+    The description does not name who gave this talk, so there is nothing to fill
+    in from it. It needs a person who knows.
   </div>
   {% endif %}
 

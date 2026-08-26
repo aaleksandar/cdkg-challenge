@@ -18,7 +18,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .. import config
-from ..sources import parser, youtube
+from ..model import tag_model
+from ..sources import parser, speaker_llm, youtube
 
 
 class StageSkipped(Exception):
@@ -93,7 +94,25 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
         )
 
     parsed = parser.parse(info)
+
+    # Last resort, and only for the one field that blocks the graph on its own.
+    # The title convention and the handful of description phrasings the parser
+    # knows cover most of the channel; what is left is usually a name on its own
+    # line above a biography, which is a reading problem rather than a pattern.
+    evidence = None
+    if "Speaker" in parsed.missing:
+        recovered = speaker_llm.recover_speaker(
+            parsed.record_title, info.get("description")
+        )
+        if recovered:
+            parsed.speaker = recovered["speaker"]
+            parsed.speaker_source = "description-llm"
+            parsed.missing.remove("Speaker")
+            evidence = recovered["evidence"]
+
     message = f"Parsed from {source}: {parsed.record_title!r}"
+    if parsed.speaker_source == "description-llm":
+        message += f" — Speaker read from the description by the LLM: {parsed.speaker!r}"
     if parsed.missing:
         message += f" — could not determine {', '.join(parsed.missing)}"
 
@@ -106,6 +125,8 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
         # from which source, without unpacking the ParsedTalk.
         "title": parsed.record_title,
         "speaker": parsed.speaker,
+        "speaker_source": parsed.speaker_source,
+        "speaker_evidence": evidence,
         "event": parsed.event,
     })
 
@@ -173,7 +194,10 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
         entities = json.loads(config.ENTITIES_JSON.read_text(encoding="utf-8"))
 
     if any(e.get("filename") == txt_path.name for e in entities):
-        return StageResult(True, "Tags already extracted for this transcript")
+        # Reused, so the model that produced them is whatever ran back then —
+        # claiming today's would be a guess dressed as provenance.
+        return StageResult(True, "Tags already extracted for this transcript",
+                           {"reused": True})
 
     # baml_client lives beside the pipeline scripts, not on the package path.
     if str(config.KUZU_DIR) not in sys.path:
@@ -188,7 +212,8 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
     config.ENTITIES_JSON.write_text(
         json.dumps(entities, indent=2, ensure_ascii=False), encoding="utf-8"
     )
-    return StageResult(True, f"Extracted {len(tags)} tags", {"tags": tags})
+    return StageResult(True, f"Extracted {len(tags)} tags",
+                       {"tags": tags, "model": tag_model()})
 
 
 def stage_graph_rebuild(ctx: dict) -> StageResult:

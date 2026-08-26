@@ -1,33 +1,23 @@
-{# One talk. Rendered standalone too, so a row can replace itself while its run
+{# One video. Rendered standalone too, so a row can replace itself while its run
    advances — a status that stays "Not ingested" through a completed pipeline is
    worse than no status at all.
 
-   Repo-only talks are keyed by transcript stem, which contains spaces and
-   punctuation, so the key is percent-encoded in URLs. #}
-{% set key = s.video_id if s.video_id else 'stem:' ~ s.stem %}
+   Only channel videos reach the sheet, so the key is always a video ID. Talks
+   that exist only on disk are listed under Advanced, where the fix for each of
+   them lives. #}
 {% set busy = s.status == 'in_progress' %}
-{# Identified only when there is a video ID, which is safe in a selector: the id
-   exists so that ingesting from the drawer can swap this row out of band, and
-   only videos can be ingested. Transcript stems carry spaces and punctuation
-   and would not make a usable id. #}
-<tr class="{{ 'is-quiet' if s.status in QUIET_STATUSES }}"
-    {% if s.video_id %}id="talk-{{ s.video_id }}"{% endif %}
-    {% if oob and s.video_id %}hx-swap-oob="true"{% endif %}
-    hx-get="/video/{{ key | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
-  <td class="pick" onclick="event.stopPropagation()">
+<tr class="{{ 'is-quiet' if s.lane == 'excluded' }}"
+    id="talk-{{ s.video_id }}"
+    {% if oob %}hx-swap-oob="true"{% endif %}
+    hx-get="/video/{{ s.video_id | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
+  <td>
     {# The row's own click opens the drawer, so its refresh lives on a separate
        element that replaces the whole row. Polls only while the pipeline is
        running and stops on its own, because the replacement carries no trigger. #}
     {% if busy %}
-      <span hidden hx-get="/row/{{ key | urlencode }}"
+      <span hidden hx-get="/row/{{ s.video_id | urlencode }}"
             hx-trigger="every 2s" hx-target="closest tr" hx-swap="outerHTML"></span>
     {% endif %}
-    {% if s.video_id and s.status == 'not_ingested' %}
-      <input type="checkbox" name="video_ids" value="{{ s.video_id }}"
-             aria-label="Select {{ s.display_title }}">
-    {% endif %}
-  </td>
-  <td>
     {# The full YouTube title, "Talk | Speaker | Event", so the kind of video is
        readable by scanning the column. #}
     <div class="title">{{ s.display_title }}</div>
@@ -41,20 +31,29 @@
       {% if s.missing_curation %}<span>missing {{ s.missing_curation | join(', ') }}</span>{% endif %}
     </div>
   </td>
+  <td class="when">{{ s.published_at | day }}</td>
   <td>
-    {# The status word explains itself on hover — "orphaned" and "untagged" are
-       terms of art here, and the row is where they are first met. #}
-    <span class="state s-{{ s.status }}" data-tip="{{ FIGURE_NOTES.get(s.status, '') }}">
-      <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
+    {# The lane is what the column says; the specific diagnosis behind it is one
+       hover away, because "orphaned" and "untagged" mean nothing to an admin who
+       has not read reconcile.py. #}
+    <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
+      <i class="dot"></i><span class="label">{{ LANE_LABELS[s.lane] }}</span>
     </span>
   </td>
   <td class="num">{{ s.tag_count or '—' }}</td>
   <td class="dur">{{ s.duration | duration }}</td>
-  <td class="vid">{{ s.video_id or '—' }}</td>
+  <td class="vid" onclick="event.stopPropagation()">
+    {# A real link, not a printed ID: checking a talk against the source is the
+       commonest reason to look one up. #}
+    {% if s.url %}
+      <a href="{{ s.url }}" target="_blank" rel="noopener"
+         aria-label="Watch {{ s.display_title }} on YouTube">{{ s.video_id }} &#8599;</a>
+    {% else %}—{% endif %}
+  </td>
   <td class="act" onclick="event.stopPropagation()">
     {% if busy %}
       <span class="muted">running…</span>
-    {% elif s.video_id and s.status in ['not_ingested', 'failed'] %}
+    {% elif s.status in ['not_ingested', 'failed'] %}
       {# Swaps the row for its live version, which arrives with the poller. #}
       <button type="button" class="rowbtn"
               hx-post="/ingest/{{ s.video_id }}"
@@ -64,7 +63,7 @@
       <button type="button" class="rowbtn"
               hx-post="/graph/add" hx-target="#flash" hx-swap="innerHTML"
               hx-disabled-elt="this" hx-on::after-request="refreshSheet()"
-              data-tip="{{ 'Rebuilds the graph so this talk becomes queryable' if KG_ENABLED else 'The graph gate is closed. Open it in the toolbar above.' }}"
+              data-tip="{{ 'Rebuilds the graph so this talk becomes queryable' if KG_ENABLED else 'Graph writes are paused. Resume them under Advanced.' }}"
               {{ 'disabled' if not KG_ENABLED }}>Add to graph</button>
     {% endif %}
   </td>

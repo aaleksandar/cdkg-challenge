@@ -1,0 +1,179 @@
+{# Everything an admin needs occasionally. Three sections, in the order they are
+   wanted: what the system does on its own, what to press when it needs a push,
+   and what is broken on disk.
+
+   Re-rendered whole by every toggle. A switch that replaces itself cannot run a
+   handler to update its neighbours, and the neighbours here describe what the
+   switch just changed. #}
+<button type="button" class="close" aria-label="Close">&times;</button>
+
+<div class="drawer-head">
+  <h2>Advanced</h2>
+  <p class="lede">Settings and maintenance. The panel runs without any of this;
+     everything here is for when it needs a push or something has gone wrong.</p>
+</div>
+
+<section>
+  <h3>Automation</h3>
+  <p class="note-body">These switches last until the service restarts, which then
+     returns to the configured environment variable. Flipping one here lets you
+     watch what happens without a redeploy.</p>
+
+  {% for name, label in TOGGLEABLE.items() %}
+    {% set on = KG_ENABLED if name == 'KG_ENABLED' else AUTO_INGEST_NEW %}
+    <div class="setting">
+      <span class="gate {{ 'is-open' if on }}"
+            hx-post="/flag/{{ name }}" hx-target="#drawer-body" hx-swap="innerHTML"
+            hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all",
+                         q: document.querySelector(".search").value,
+                         shorts: document.querySelector("[name=shorts]").checked ? 1 : 0}'
+            role="button" tabindex="0"
+            aria-label="{{ label }}: {{ 'on' if on else 'paused' }}. Click to {{ 'pause' if on else 'resume' }}.">
+        <i class="dot"></i><span>{{ 'On' if on else 'Paused' }}</span>
+      </span>
+      <div>
+        <div class="setting-label">{{ label }}</div>
+        <div class="setting-why">
+          {% if name == 'KG_ENABLED' %}
+            {% if KG_ENABLED %}Ingested talks are written into the knowledge graph
+              the public app queries. This is the normal state.
+            {% else %}Talks are downloaded, curated and tagged as normal, but the
+              step that writes them into the graph is held back — so nothing done
+              here can change what the public app answers. Pause this only while
+              a rebuild is misbehaving.{% endif %}
+          {% else %}
+            {% if AUTO_INGEST_NEW %}A video published on the channel is ingested
+              end-to-end without being asked. This covers new uploads only; the
+              existing backlog is drained below.
+            {% else %}Newly published videos are catalogued and listed as
+              <em>Not ingested</em>, but wait for a click.{% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+  <dl class="facts">
+    <dt>Publish to GitHub</dt>
+    <dd>{{ 'Enabled' if GIT_PUSH_ENABLED else 'Disabled' }} —
+        set by <code>GIT_PUSH_ENABLED</code> in the deploy configuration.
+        It writes outside this machine, so it is not a click.</dd>
+    <dt>Scheduler</dt>
+    <dd>{% if SCHEDULER_ENABLED %}Checking for new uploads every
+        {{ RSS_POLL_MINUTES }} min; re-reading the whole channel every
+        {{ INVENTORY_REFRESH_HOURS }} h.{% else %}Off. Nothing is detected
+        automatically.{% endif %}</dd>
+    <dt>Tagging model</dt>
+    <dd>{% if model %}<code>{{ model }}</code>, pinned in
+        <code>baml_src/clients.baml</code>.{% else %}Not resolvable from
+        <code>clients.baml</code>.{% endif %}</dd>
+    {% if last_rebuild %}
+      <dt>Last graph rebuild</dt>
+      <dd class="{{ '' if last_rebuild.ok else 'bad' }}">{{ last_rebuild.message }}
+          {% if last_rebuild.at %}<span class="muted">· {{ last_rebuild.at }}</span>{% endif %}</dd>
+    {% endif %}
+  </dl>
+</section>
+
+<section>
+  <h3>Maintenance</h3>
+  <div class="actions">
+    <button type="button" class="btn" hx-post="/refresh" hx-target="#adv-flash"
+            hx-indicator="#adv-busy" hx-disabled-elt="this"
+            hx-on::after-request="refreshSheet()"
+            data-tip="Re-reads the list of videos on the @ConnectedData channel and
+                      caches it. Titles and lengths only — no videos, no transcripts,
+                      no LLM calls, nothing written to the graph.">Refresh channel</button>
+    <button type="button" class="btn" hx-post="/rebuild" hx-target="#adv-flash"
+            hx-indicator="#adv-busy" hx-disabled-elt="this"
+            hx-on::after-request="refreshSheet()"
+            data-tip="Rebuilds the graph from the metadata CSV and the tags already on
+                      disk, and swaps it in only if the new one is sound. No YouTube,
+                      no LLM calls, no cost. The app keeps serving the old graph until
+                      the swap.">Rebuild graph</button>
+    <span id="adv-busy" class="htmx-indicator muted">working…</span>
+    <span id="adv-flash"></span>
+  </div>
+
+  <div class="drain">
+    <button type="button" class="btn is-spendy" hx-post="/backlog/ingest"
+            hx-target="#adv-flash" hx-indicator="#adv-busy" hx-disabled-elt="this"
+            hx-on::after-request="refreshSheet()"
+            {{ 'disabled' if not backlog }}>
+      Ingest the backlog ({{ backlog | length }})
+    </button>
+    <p class="note-body">
+      {% if backlog %}
+        Downloads captions for {{ backlog | length }} videos and runs tag
+        extraction on each — <strong>{{ backlog | length }} LLM calls</strong>,
+        billed to <code>GOOGLE_API_KEY</code>. Runs one at a time in the
+        background; the graph rebuilds once at the end rather than after every
+        video. Safe to leave: anything already downloaded or tagged is skipped.
+      {% else %}
+        Nothing waiting. Every video on the channel has been ingested.
+      {% endif %}
+      {% if queue_depth %}<br><strong>{{ queue_depth }} already queued.</strong>{% endif %}
+    </p>
+  </div>
+</section>
+
+<section>
+  <h3>Data health</h3>
+  <p class="note-body">Transcripts on disk that no video on the channel accounts
+     for. They have no upload date and no link, which is why they are not in the
+     main list — but each one is a real gap in the graph.</p>
+
+  {% if not orphans and not junk and not stranded %}
+    <p class="ok-line">Nothing stranded. Every transcript on disk belongs to a
+       video on the channel.</p>
+  {% endif %}
+
+  {% if orphans %}
+    <details open>
+      <summary><strong>{{ orphans | length }}</strong> orphaned transcripts</summary>
+      <p class="note-body">Tags were extracted and paid for, but no metadata row
+         exists for them to attach to, so <code>03_content_graph.py</code>
+         discards them on every run. Adding a row to the metadata CSV brings each
+         talk in without re-running the LLM.</p>
+      <ul class="strand">
+        {% for s in orphans %}
+          <li hx-get="/video/{{ ('stem:' ~ s.stem) | urlencode }}"
+              hx-target="#drawer" hx-swap="innerHTML">
+            <span class="t">{{ s.display_title }}</span>
+            <span class="muted">{{ s.tag_count }} tags</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+
+  {% if junk %}
+    <details>
+      <summary><strong>{{ junk | length }}</strong> unusable files</summary>
+      <p class="note-body">Transcripts named after a bare YouTube ID rather than a
+         title — untitled, and often duplicates of a talk that is already in. They
+         cost an LLM call on every full pipeline run and are then discarded.
+         Renaming or deleting them is a repository change, not a panel action.</p>
+      <ul class="strand">
+        {% for s in junk %}<li><code>{{ s.stem }}</code></li>{% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+
+  {% if stranded %}
+    <details>
+      <summary><strong>{{ stranded | length }}</strong> off-channel talks</summary>
+      <p class="note-body">In the repository but not on the channel — older
+         material, or a video since made private.</p>
+      <ul class="strand">
+        {% for s in stranded %}
+          <li hx-get="/video/{{ ('stem:' ~ s.stem) | urlencode }}"
+              hx-target="#drawer" hx-swap="innerHTML">
+            <span class="t">{{ s.display_title }}</span>
+            <span class="muted">{{ LANE_LABELS[s.lane] }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+</section>

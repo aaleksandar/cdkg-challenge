@@ -123,6 +123,7 @@ def swap_in(build_path: Path, counts: dict) -> None:
     whole old graph or the whole new one, never a half-written directory.
     """
     from ..db import now
+    from ..model import tag_model
 
     live = config.GRAPH_DB_PATH
     previous = live.with_suffix(".previous")
@@ -134,9 +135,15 @@ def swap_in(build_path: Path, counts: dict) -> None:
 
     # The Streamlit app caches its connection; this file is how it learns to
     # drop it, so a new talk becomes answerable without a redeploy.
+    # The model is recorded beside the counts because CLAUDE.md documents that it
+    # moves the benchmark by whole points: "which model built this graph" has to
+    # be answerable from the graph itself, not inferred from a deploy date.
     version_file = live.parent / ".graph-version"
     version_file.write_text(
-        json.dumps({"built_at": now(), "counts": counts}, indent=2), encoding="utf-8"
+        json.dumps(
+            {"built_at": now(), "counts": counts, "model": tag_model()}, indent=2
+        ),
+        encoding="utf-8",
     )
 
     _clear(previous)

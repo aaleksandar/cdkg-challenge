@@ -1,14 +1,20 @@
 {% if not states %}
   <div class="empty">
-    <div class="big">Nothing here.</div>
-    <p>No talks match this filter.</p>
+    {% if lane == 'attention' %}
+      <div class="big">Nothing needs you.</div>
+      <p>Every video on the channel is either in the graph, being ingested, or
+         waiting in the backlog. This is what a healthy panel looks like.</p>
+    {% else %}
+      <div class="big">Nothing here.</div>
+      <p>No videos match this filter.</p>
+    {% endif %}
   </div>
 {% else %}
 <table>
   <thead>
     <tr>
-      <th></th>
       <th>Talk</th>
+      <th>Published</th>
       <th>Status</th>
       <th>Tags</th>
       <th>Length</th>
