@@ -17,7 +17,11 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from typing import Iterator
 
-from .config import STATE_DB_PATH
+# Read through the module, not `from .config import STATE_DB_PATH`: a bare name
+# is bound once at import, so a test that points the service at a temporary
+# database — or any runtime override — was silently ignored and every write
+# landed in the real one.
+from . import config
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS videos (
@@ -73,8 +77,8 @@ def now() -> str:
 
 @contextmanager
 def connect() -> Iterator[sqlite3.Connection]:
-    STATE_DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(STATE_DB_PATH, check_same_thread=False)
+    config.STATE_DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(config.STATE_DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA foreign_keys=ON")
