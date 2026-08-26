@@ -58,10 +58,17 @@ servers:
         GIT_PUSH_ENABLED: "false"
       secret:
         - GOOGLE_API_KEY
-        - GITHUB_APP_ID
-        - GITHUB_APP_PRIVATE_KEY
+        # The panel spends money and rewrites the graph, so it is never served
+        # open: `require_admin` falls through to "anonymous" when ADMIN_PASSWORD
+        # is empty. Listing it here is what makes that impossible — Kamal refuses
+        # to deploy at all when the secret is missing, which is the behaviour we
+        # want, not something to work around by passing a blank value.
         - ADMIN_USER
         - ADMIN_PASSWORD
+        # GITHUB_APP_ID and GITHUB_APP_PRIVATE_KEY belong here too, but only once
+        # GIT_PUSH_ENABLED goes true. gitops reads them as optional and refuses to
+        # publish without them, so requiring them now would block a deploy for a
+        # feature that is switched off.
     # A role takes no `volumes:` key — Kamal validates it away, which is why this
     # role had never survived `kamal config`. Volumes are either global or passed
     # as docker run options. /data is global below and already reaches this role;

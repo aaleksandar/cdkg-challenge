@@ -41,6 +41,8 @@ jobs:
           KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          ADMIN_USER: ${{ secrets.ADMIN_USER }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
           {
             echo "CDKG_DOMAIN=$CDKG_DOMAIN"
@@ -51,6 +53,11 @@ jobs:
             echo "KAMAL_REGISTRY_USERNAME=$KAMAL_REGISTRY_USERNAME"
             echo "KAMAL_REGISTRY_PASSWORD=$KAMAL_REGISTRY_PASSWORD"
             echo "GOOGLE_API_KEY=$GOOGLE_API_KEY"
+            # The ingestion panel's HTTP Basic credentials. Deliberately not
+            # defaulted: an empty password disables auth in the app, and this
+            # panel is reachable from the public internet.
+            echo "ADMIN_USER=$ADMIN_USER"
+            echo "ADMIN_PASSWORD=$ADMIN_PASSWORD"
           } > .kamal/secrets
 
       - name: Deploy
@@ -63,4 +70,6 @@ jobs:
           KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          ADMIN_USER: ${{ secrets.ADMIN_USER }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: kamal deploy
