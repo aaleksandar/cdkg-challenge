@@ -1,0 +1,10256 @@
+1
+00:00:04,160 --> 00:00:10,559
+Right. So, I think we have the uh first
+
+2
+00:00:07,359 --> 00:00:13,440
+members of the audience uh joining. So,
+
+3
+00:00:10,559 --> 00:00:16,000
+welcome. And uh while we're waiting for
+
+4
+00:00:13,440 --> 00:00:19,600
+everyone else to to join as well. uh on
+
+5
+00:00:16,000 --> 00:00:22,320
+behalf of the uh organizing committee of
+
+6
+00:00:19,600 --> 00:00:25,519
+uh connected data world I'd like to
+
+7
+00:00:22,320 --> 00:00:29,599
+welcome you all to today's session uh in
+
+8
+00:00:25,519 --> 00:00:33,600
+which we're going to uh look at um some
+
+9
+00:00:29,599 --> 00:00:36,800
+usually deep tech uh matters in uh
+
+10
+00:00:33,600 --> 00:00:39,920
+hopefully in a different lens so uh more
+
+11
+00:00:36,800 --> 00:00:43,200
+u from market point of view so my name
+
+12
+00:00:39,920 --> 00:00:46,399
+is George Anadotis I'm actually a member
+
+13
+00:00:43,200 --> 00:00:50,079
+of the organiza organizing team of
+
+14
+00:00:46,399 --> 00:00:52,239
+connected data world and I'm going to uh
+
+15
+00:00:50,079 --> 00:00:54,160
+tell you a little bit about myself but
+
+16
+00:00:52,239 --> 00:00:56,559
+first uh the polite thing to do is
+
+17
+00:00:54,160 --> 00:00:59,680
+actually to introduce the people in the
+
+18
+00:00:56,559 --> 00:01:02,160
+uh the panel with me tonight. So in no
+
+19
+00:00:59,680 --> 00:01:04,320
+particular order uh simply uh in the
+
+20
+00:01:02,160 --> 00:01:07,920
+order I see them in the in this gallery
+
+21
+00:01:04,320 --> 00:01:11,920
+view. I'm going to start by uh Bob Bob
+
+22
+00:01:07,920 --> 00:01:14,799
+Flout who is the uh uh founder and CEO
+
+23
+00:01:11,920 --> 00:01:17,280
+co-founder and CEO of uh semi
+
+24
+00:01:14,799 --> 00:01:21,439
+technologies and uh Bob if you'd like to
+
+25
+00:01:17,280 --> 00:01:23,040
+say a few words about yourself.
+
+26
+00:01:21,439 --> 00:01:25,920
+>> Yeah so first of all thank you for
+
+27
+00:01:23,040 --> 00:01:29,119
+having me. So I'm indeed co-founder of
+
+28
+00:01:25,920 --> 00:01:32,079
+semi technologies. um we create an open-
+
+29
+00:01:29,119 --> 00:01:35,840
+source uh uh factor search engine called
+
+30
+00:01:32,079 --> 00:01:38,079
+uh weate and um graph connections play a
+
+31
+00:01:35,840 --> 00:01:40,000
+big role in the in the search engine. So
+
+32
+00:01:38,079 --> 00:01:42,799
+I'm looking forward to the discussion
+
+33
+00:01:40,000 --> 00:01:45,200
+tonight. Thank you for having me.
+
+34
+00:01:42,799 --> 00:01:48,159
+>> Great. Thanks Bob. And then let's
+
+35
+00:01:45,200 --> 00:01:51,280
+continue this uh clockwise I guess uh
+
+36
+00:01:48,159 --> 00:01:54,079
+round of introduction. So uh next in
+
+37
+00:01:51,280 --> 00:01:55,920
+round is Panos Papadopoulos from
+
+38
+00:01:54,079 --> 00:01:58,079
+Marathon VC.
+
+39
+00:01:55,920 --> 00:01:59,840
+>> Uh hello all. I'm a partner at Marathon
+
+40
+00:01:58,079 --> 00:02:01,680
+Venture Capital where we invest
+
+41
+00:01:59,840 --> 00:02:04,320
+predominantly in developer tools and
+
+42
+00:02:01,680 --> 00:02:07,680
+enterprise productivity. Before that was
+
+43
+00:02:04,320 --> 00:02:10,080
+an entrepreneur uh with experience
+
+44
+00:02:07,680 --> 00:02:12,480
+mostly in the big data space not so much
+
+45
+00:02:10,080 --> 00:02:14,319
+in connected uh but that's a repeating
+
+46
+00:02:12,480 --> 00:02:16,319
+issue we're seeing now with startups
+
+47
+00:02:14,319 --> 00:02:18,400
+that they try to create essentially
+
+48
+00:02:16,319 --> 00:02:21,360
+knowledge graphs and tools to help us
+
+49
+00:02:18,400 --> 00:02:24,319
+make sense of the world.
+
+50
+00:02:21,360 --> 00:02:26,959
+>> Great. Thanks Panos. And then last but
+
+51
+00:02:24,319 --> 00:02:28,640
+not least, we have uh Constantine from
+
+52
+00:02:26,959 --> 00:02:30,640
+Runa Capital.
+
+53
+00:02:28,640 --> 00:02:33,120
+>> Hi everybody. It's pleasure to be here
+
+54
+00:02:30,640 --> 00:02:35,519
+today. Uh I represent Runa Capital. We
+
+55
+00:02:33,120 --> 00:02:37,599
+are investing at early stages in tech
+
+56
+00:02:35,519 --> 00:02:39,599
+companies including a lot of data
+
+57
+00:02:37,599 --> 00:02:41,599
+related companies. And I personally
+
+58
+00:02:39,599 --> 00:02:43,760
+focus on enterprise software, machine
+
+59
+00:02:41,599 --> 00:02:46,800
+learning applications, open source cloud
+
+60
+00:02:43,760 --> 00:02:48,319
+infrastructure and other kind of related
+
+61
+00:02:46,800 --> 00:02:51,440
+things.
+
+62
+00:02:48,319 --> 00:02:53,280
+>> Great. So yeah, after this first round
+
+63
+00:02:51,440 --> 00:02:55,680
+of introduction, I guess uh my turn to
+
+64
+00:02:53,280 --> 00:02:58,640
+say a few words about myself. So besides
+
+65
+00:02:55,680 --> 00:03:02,400
+uh well organizing this uh this entire
+
+66
+00:02:58,640 --> 00:03:05,040
+event, um I also do a number of things
+
+67
+00:03:02,400 --> 00:03:07,760
+uh including writing. So I write for
+
+68
+00:03:05,040 --> 00:03:10,720
+ZDNet and venture bit. I also do uh
+
+69
+00:03:07,760 --> 00:03:12,959
+consulting and I work as an analyst as
+
+70
+00:03:10,720 --> 00:03:14,879
+well. So that's [snorts] uh that's many
+
+71
+00:03:12,959 --> 00:03:18,560
+uh that's a lot of hats to wear. uh
+
+72
+00:03:14,879 --> 00:03:20,720
+which is why um it allows me to look at
+
+73
+00:03:18,560 --> 00:03:22,800
+things in many different ways and that's
+
+74
+00:03:20,720 --> 00:03:24,640
+also the motivation for for organizing
+
+75
+00:03:22,800 --> 00:03:27,920
+this uh this session today. I thought
+
+76
+00:03:24,640 --> 00:03:30,480
+that while there is by now enough uh
+
+77
+00:03:27,920 --> 00:03:33,519
+technology let's say analysis in this
+
+78
+00:03:30,480 --> 00:03:36,560
+space uh I thought that maybe um what
+
+79
+00:03:33,519 --> 00:03:38,879
+was a bit missing was um a more uh
+
+80
+00:03:36,560 --> 00:03:41,360
+market oriented point of view and this
+
+81
+00:03:38,879 --> 00:03:43,599
+is why uh I thought it would be a good
+
+82
+00:03:41,360 --> 00:03:46,159
+idea to get together uh a panel of
+
+83
+00:03:43,599 --> 00:03:48,720
+people some of which have uh investment
+
+84
+00:03:46,159 --> 00:03:51,599
+experience so so from they're on the
+
+85
+00:03:48,720 --> 00:03:54,239
+investor side of things and uh while Bob
+
+86
+00:03:51,599 --> 00:03:56,799
+on the other hand is u is is an
+
+87
+00:03:54,239 --> 00:03:58,879
+entrepreneur. Uh he has a startup which
+
+88
+00:03:56,799 --> 00:04:01,280
+has received uh investment. So uh
+
+89
+00:03:58,879 --> 00:04:03,599
+together we're trying to uh demystify
+
+90
+00:04:01,280 --> 00:04:06,239
+let's say uh this uh this entire space.
+
+91
+00:04:03,599 --> 00:04:09,040
+But uh the first thing to do is actually
+
+92
+00:04:06,239 --> 00:04:12,319
+to to try and define it. So uh what do
+
+93
+00:04:09,040 --> 00:04:14,959
+we mean uh by uh by connected data? And
+
+94
+00:04:12,319 --> 00:04:17,600
+since I'm at least um co-responsible,
+
+95
+00:04:14,959 --> 00:04:21,040
+let's say for uh for coining the term, I
+
+96
+00:04:17,600 --> 00:04:23,600
+may as well start by uh explaining um
+
+97
+00:04:21,040 --> 00:04:25,759
+referencing let's say the what we see as
+
+98
+00:04:23,600 --> 00:04:27,600
+uh in connected data, what we see as the
+
+99
+00:04:25,759 --> 00:04:32,000
+the four pillars of this of this
+
+100
+00:04:27,600 --> 00:04:33,600
+category. So um uh when people ask me uh
+
+101
+00:04:32,000 --> 00:04:35,360
+so you know what what is connected data
+
+102
+00:04:33,600 --> 00:04:36,720
+all about and actually I gave a
+
+103
+00:04:35,360 --> 00:04:38,800
+presentation recently which was
+
+104
+00:04:36,720 --> 00:04:42,800
+precisely about that uh what I usually
+
+105
+00:04:38,800 --> 00:04:46,080
+try to do is uh give a quick uh timeline
+
+106
+00:04:42,800 --> 00:04:48,720
+let's say so if you if you start in uh
+
+107
+00:04:46,080 --> 00:04:51,199
+chronological order uh you could say
+
+108
+00:04:48,720 --> 00:04:53,520
+that probably the first uh pillar would
+
+109
+00:04:51,199 --> 00:04:56,000
+be uh graph analytics and you know the
+
+110
+00:04:53,520 --> 00:04:57,919
+the story there uh the usual story that
+
+111
+00:04:56,000 --> 00:05:01,600
+many of you uh may have heard goes back
+
+112
+00:04:57,919 --> 00:05:04,160
+to the 18th century when uh this uh
+
+113
+00:05:01,600 --> 00:05:06,479
+brilliant scientist named Leonard Doer
+
+114
+00:05:04,160 --> 00:05:09,759
+was trying to come up with a way to uh
+
+115
+00:05:06,479 --> 00:05:11,680
+cross bridges in uh in an optimal manner
+
+116
+00:05:09,759 --> 00:05:13,520
+let's say and that led to the
+
+117
+00:05:11,680 --> 00:05:16,560
+development of graph theory and graph
+
+118
+00:05:13,520 --> 00:05:20,320
+analytics that are used in in many use
+
+119
+00:05:16,560 --> 00:05:22,400
+case today. Uh the next uh the next uh
+
+120
+00:05:20,320 --> 00:05:25,199
+step let's say in that uh journey would
+
+121
+00:05:22,400 --> 00:05:28,880
+be uh quite a few years later actually.
+
+122
+00:05:25,199 --> 00:05:31,759
+So um for me that's the um the semantic
+
+123
+00:05:28,880 --> 00:05:34,960
+web which was uh conceived let's say um
+
+124
+00:05:31,759 --> 00:05:37,360
+in the early uh 2000s
+
+125
+00:05:34,960 --> 00:05:39,759
+and that was also the time when the
+
+126
+00:05:37,360 --> 00:05:43,759
+first graph databases were um were
+
+127
+00:05:39,759 --> 00:05:46,560
+crafted as uh as the need uh arose to uh
+
+128
+00:05:43,759 --> 00:05:49,440
+to store uh those those triples uh RDF
+
+129
+00:05:46,560 --> 00:05:52,560
+triples that uh semantic web uh
+
+130
+00:05:49,440 --> 00:05:54,400
+introduced and then fast forwarding a
+
+131
+00:05:52,560 --> 00:05:57,280
+little bit to today and that's that's
+
+132
+00:05:54,400 --> 00:05:58,880
+also by the way uh the um the core the
+
+133
+00:05:57,280 --> 00:06:00,880
+essence let's say of of knowledge graphs
+
+134
+00:05:58,880 --> 00:06:03,280
+and fast forward fast forwarding a
+
+135
+00:06:00,880 --> 00:06:06,319
+little bit to today uh we also have
+
+136
+00:06:03,280 --> 00:06:09,440
+graph machine learning which is uh uh
+
+137
+00:06:06,319 --> 00:06:12,080
+the latest and according to many people
+
+138
+00:06:09,440 --> 00:06:15,039
+the most promising let's say um sub uh
+
+139
+00:06:12,080 --> 00:06:18,000
+subdomain of uh machine learning. So
+
+140
+00:06:15,039 --> 00:06:20,319
+those are uh the four technological
+
+141
+00:06:18,000 --> 00:06:24,000
+areas let's say that uh we think uh
+
+142
+00:06:20,319 --> 00:06:26,454
+comprise uh this uh this domain.
+
+143
+00:06:24,000 --> 00:06:26,639
+Uh so the next
+
+144
+00:06:26,454 --> 00:06:29,120
+>> [snorts]
+
+145
+00:06:26,639 --> 00:06:32,880
+>> uh part let's say after having uh
+
+146
+00:06:29,120 --> 00:06:35,360
+defined those would be to try and um and
+
+147
+00:06:32,880 --> 00:06:37,840
+see how they're interesting where they
+
+148
+00:06:35,360 --> 00:06:40,880
+uh where they interact with how they
+
+149
+00:06:37,840 --> 00:06:43,520
+interact with each other and um how we
+
+150
+00:06:40,880 --> 00:06:46,880
+could possibly define the uh the market
+
+151
+00:06:43,520 --> 00:06:49,600
+let's say for uh for each of those. Um I
+
+152
+00:06:46,880 --> 00:06:52,240
+would start probably let's let's do this
+
+153
+00:06:49,600 --> 00:06:54,400
+in in in the order that uh that uh the
+
+154
+00:06:52,240 --> 00:06:59,360
+that we introduce them. So let's start
+
+155
+00:06:54,400 --> 00:07:02,080
+with uh with graph analytics and uh try
+
+156
+00:06:59,360 --> 00:07:05,520
+to see what what use cases we uh we may
+
+157
+00:07:02,080 --> 00:07:08,160
+have there and by doing so uh we may be
+
+158
+00:07:05,520 --> 00:07:10,160
+able to uh to get a feeling of uh the
+
+159
+00:07:08,160 --> 00:07:13,520
+applicability let's say and therefore uh
+
+160
+00:07:10,160 --> 00:07:15,919
+the market. So anyone would like to uh
+
+161
+00:07:13,520 --> 00:07:18,400
+to address that to pick that up and
+
+162
+00:07:15,919 --> 00:07:21,960
+share some some use cases and some some
+
+163
+00:07:18,400 --> 00:07:21,960
+ideas with us.
+
+164
+00:07:23,280 --> 00:07:27,199
+or if you feel shy um I I can't do that
+
+165
+00:07:25,919 --> 00:07:28,800
+but
+
+166
+00:07:27,199 --> 00:07:30,639
+>> no [clears throat]
+
+167
+00:07:28,800 --> 00:07:33,199
+happy to say a few words out of what we
+
+168
+00:07:30,639 --> 00:07:34,880
+know out of practice so what we see
+
+169
+00:07:33,199 --> 00:07:39,120
+especially about the last pillar that
+
+170
+00:07:34,880 --> 00:07:41,840
+you mentioned George is the um uh the
+
+171
+00:07:39,120 --> 00:07:44,479
+graph machine learning um right is that
+
+172
+00:07:41,840 --> 00:07:46,160
+from a horizontal perspective if if I
+
+173
+00:07:44,479 --> 00:07:49,120
+look at the use cases that we are
+
+174
+00:07:46,160 --> 00:07:50,880
+currently um gathering
+
+175
+00:07:49,120 --> 00:07:52,160
+there's there are literally and I mean
+
+176
+00:07:50,880 --> 00:07:54,879
+is this in the positive sense of the
+
+177
+00:07:52,160 --> 00:07:56,639
+word they're all over the place. So it's
+
+178
+00:07:54,879 --> 00:07:59,199
+like it doesn't matter if it's finance,
+
+179
+00:07:56,639 --> 00:08:03,759
+medical, um smaller startups, bigger
+
+180
+00:07:59,199 --> 00:08:06,400
+enterprises. So it really feels that um
+
+181
+00:08:03,759 --> 00:08:08,879
+this type of technology that it came to
+
+182
+00:08:06,400 --> 00:08:10,720
+a point where people really can use it
+
+183
+00:08:08,879 --> 00:08:13,440
+in production. So that it's like it's
+
+184
+00:08:10,720 --> 00:08:16,319
+out of the promise and it's moving into
+
+185
+00:08:13,440 --> 00:08:17,599
+a production stage. So it's like um then
+
+186
+00:08:16,319 --> 00:08:18,879
+that's not really answering your
+
+187
+00:08:17,599 --> 00:08:21,120
+question because you were asking like
+
+188
+00:08:18,879 --> 00:08:23,919
+how big is the market? Well, I if I had
+
+189
+00:08:21,120 --> 00:08:27,520
+to guess, I think this will be following
+
+190
+00:08:23,919 --> 00:08:29,280
+like the data warehouse market. So, um
+
+191
+00:08:27,520 --> 00:08:32,880
+as as a comparison, so the data
+
+192
+00:08:29,280 --> 00:08:34,560
+warehouse problem is solved and I I make
+
+193
+00:08:32,880 --> 00:08:36,000
+air quotes because of course it's
+
+194
+00:08:34,560 --> 00:08:37,919
+software so we can always improve it.
+
+195
+00:08:36,000 --> 00:08:39,519
+But it's like people figured it out. We
+
+196
+00:08:37,919 --> 00:08:43,200
+know what the what the importance is of
+
+197
+00:08:39,519 --> 00:08:45,680
+it. And I think that these kinds of uh
+
+198
+00:08:43,200 --> 00:08:47,760
+linked data regardless on how you define
+
+199
+00:08:45,680 --> 00:08:49,680
+it use cases but especially when it
+
+200
+00:08:47,760 --> 00:08:51,200
+comes to um when it includes machine
+
+201
+00:08:49,680 --> 00:08:53,360
+learning
+
+202
+00:08:51,200 --> 00:08:56,000
+um it's just it's it's all over if you
+
+203
+00:08:53,360 --> 00:08:57,760
+have data there's a there there is a a a
+
+204
+00:08:56,000 --> 00:09:00,720
+problem that can be solved mostly
+
+205
+00:08:57,760 --> 00:09:02,720
+related to search um indexing and those
+
+206
+00:09:00,720 --> 00:09:05,600
+kind of things.
+
+207
+00:09:02,720 --> 00:09:07,680
+>> Yeah. Actually I was not as ambitious or
+
+208
+00:09:05,600 --> 00:09:10,160
+maybe foolish to to believe that we
+
+209
+00:09:07,680 --> 00:09:12,959
+could uh somehow define let's say the uh
+
+210
+00:09:10,160 --> 00:09:15,760
+total addressable market here but I was
+
+211
+00:09:12,959 --> 00:09:18,240
+more thinking of well if we um if we can
+
+212
+00:09:15,760 --> 00:09:20,480
+maybe highlight the most prominent use
+
+213
+00:09:18,240 --> 00:09:22,560
+cases that would give us an
+
+214
+00:09:20,480 --> 00:09:25,600
+approximation let's say a rough estimate
+
+215
+00:09:22,560 --> 00:09:27,600
+of well how how many use cases are there
+
+216
+00:09:25,600 --> 00:09:30,640
+and therefore how much how big the
+
+217
+00:09:27,600 --> 00:09:32,800
+market may be. Yeah, I think uh comment
+
+218
+00:09:30,640 --> 00:09:34,240
+here is that even the technologies
+
+219
+00:09:32,800 --> 00:09:36,320
+around for some year, you know, we have
+
+220
+00:09:34,240 --> 00:09:39,120
+seen predominantly the data world being
+
+221
+00:09:36,320 --> 00:09:41,440
+dominated by DBMS because essentially
+
+222
+00:09:39,120 --> 00:09:43,200
+the BMS is modeling very simplistic
+
+223
+00:09:41,440 --> 00:09:45,440
+operations simplistic like compared to
+
+224
+00:09:43,200 --> 00:09:48,480
+the physical world uh inside enterprises
+
+225
+00:09:45,440 --> 00:09:50,160
+right so it's like a order book or a
+
+226
+00:09:48,480 --> 00:09:53,519
+customer list and of course those can
+
+227
+00:09:50,160 --> 00:09:56,000
+have huge complexity uh but as we now
+
+228
+00:09:53,519 --> 00:09:57,839
+see like modeling the physical world uh
+
+229
+00:09:56,000 --> 00:09:59,760
+we start seeing that you know our BMSS
+
+230
+00:09:57,839 --> 00:10:02,560
+have created there they were never made
+
+231
+00:09:59,760 --> 00:10:04,959
+to be making so complex queries. So some
+
+232
+00:10:02,560 --> 00:10:08,240
+examples that we are seeing is one
+
+233
+00:10:04,959 --> 00:10:11,040
+predominantly in computational chemistry
+
+234
+00:10:08,240 --> 00:10:13,120
+in computational biology right so we
+
+235
+00:10:11,040 --> 00:10:14,800
+have entities that interact in many
+
+236
+00:10:13,120 --> 00:10:17,680
+different ways with other entities
+
+237
+00:10:14,800 --> 00:10:19,120
+inside the body or inside the molecules
+
+238
+00:10:17,680 --> 00:10:21,680
+uh and it's kind of possible to keep
+
+239
+00:10:19,120 --> 00:10:24,959
+those relationships like in their own
+
+240
+00:10:21,680 --> 00:10:26,720
+tables. uh so we start seeing a great
+
+241
+00:10:24,959 --> 00:10:29,040
+deal of applications of grad databases
+
+242
+00:10:26,720 --> 00:10:31,279
+to create essentially knowledge that
+
+243
+00:10:29,040 --> 00:10:33,040
+knowledge databases where you can go and
+
+244
+00:10:31,279 --> 00:10:34,640
+query I'm going to jump into a
+
+245
+00:10:33,040 --> 00:10:37,440
+demonstration later from one of our
+
+246
+00:10:34,640 --> 00:10:39,519
+portfolio companies of how you can
+
+247
+00:10:37,440 --> 00:10:41,839
+navigate the complex world of realities
+
+248
+00:10:39,519 --> 00:10:43,440
+where everything is interconnected
+
+249
+00:10:41,839 --> 00:10:45,680
+another space where we're seeing a lot
+
+250
+00:10:43,440 --> 00:10:47,920
+of adoption of graph databases is in the
+
+251
+00:10:45,680 --> 00:10:49,920
+financial world you can imagine all
+
+252
+00:10:47,920 --> 00:10:52,399
+sorts of trades interacting entities
+
+253
+00:10:49,920 --> 00:10:55,279
+they have different interests uh they
+
+254
+00:10:52,399 --> 00:10:57,760
+have several different contracts and
+
+255
+00:10:55,279 --> 00:11:00,720
+when you also need to to understand
+
+256
+00:10:57,760 --> 00:11:02,720
+who's behind what entities a lot of
+
+257
+00:11:00,720 --> 00:11:08,000
+financial entities now are using graph
+
+258
+00:11:02,720 --> 00:11:10,079
+databases to be able to do uh AML so to
+
+259
+00:11:08,000 --> 00:11:13,279
+understand who is the beneficial owner
+
+260
+00:11:10,079 --> 00:11:15,839
+of a cascading list of entities that are
+
+261
+00:11:13,279 --> 00:11:18,000
+dominating the current the current world
+
+262
+00:11:15,839 --> 00:11:19,920
+uh if it's fine I can uh share my screen
+
+263
+00:11:18,000 --> 00:11:22,160
+where I can show for example two cases
+
+264
+00:11:19,920 --> 00:11:23,920
+of using graph databases behind and the
+
+265
+00:11:22,160 --> 00:11:26,320
+scene that make it extremely easy for
+
+266
+00:11:23,920 --> 00:11:28,000
+people uh who interact with them. So the
+
+267
+00:11:26,320 --> 00:11:30,959
+point of course as with any great
+
+268
+00:11:28,000 --> 00:11:33,680
+software is not like to burden the end
+
+269
+00:11:30,959 --> 00:11:36,800
+users uh with all the intricacies of a
+
+270
+00:11:33,680 --> 00:11:39,920
+database uh but also they expose just
+
+271
+00:11:36,800 --> 00:11:42,800
+the bits that are related to graph in
+
+272
+00:11:39,920 --> 00:11:45,680
+terms of visualizations and in terms of
+
+273
+00:11:42,800 --> 00:11:47,680
+doing uh queries on graphs which is also
+
+274
+00:11:45,680 --> 00:11:50,079
+very a very different topic that most
+
+275
+00:11:47,680 --> 00:11:51,839
+people are not used to.
+
+276
+00:11:50,079 --> 00:11:53,360
+>> Yeah. Yeah. By all means, I mean, if if
+
+277
+00:11:51,839 --> 00:11:54,399
+you want to share something now, yeah,
+
+278
+00:11:53,360 --> 00:11:59,040
+feel free.
+
+279
+00:11:54,399 --> 00:12:02,240
+>> Okay. Um, so let me choose another tab.
+
+280
+00:11:59,040 --> 00:12:04,079
+Uh, okay. So, this is Coali. Coali is
+
+281
+00:12:02,240 --> 00:12:07,120
+one of our investments here at SmartBC.
+
+282
+00:12:04,079 --> 00:12:09,440
+And what Coali does is that is parsing
+
+283
+00:12:07,120 --> 00:12:11,680
+uh huge corpuses of biomedical,
+
+284
+00:12:09,440 --> 00:12:16,240
+literature, scientific
+
+285
+00:12:11,680 --> 00:12:18,480
+uh they do clinical studies uh and also
+
+286
+00:12:16,240 --> 00:12:19,920
+private resources. So as you can
+
+287
+00:12:18,480 --> 00:12:21,279
+understand in there there are multiple
+
+288
+00:12:19,920 --> 00:12:24,160
+of entities that they can understand
+
+289
+00:12:21,279 --> 00:12:27,120
+through NLP. Uh so for example you know
+
+290
+00:12:24,160 --> 00:12:28,639
+there are genes, cells, molecules,
+
+291
+00:12:27,120 --> 00:12:31,120
+viruses,
+
+292
+00:12:28,639 --> 00:12:32,880
+drugs and so on and all of these things
+
+293
+00:12:31,120 --> 00:12:35,440
+all of these entities are interacting in
+
+294
+00:12:32,880 --> 00:12:37,440
+a very intricate web of different
+
+295
+00:12:35,440 --> 00:12:41,040
+relationships. So you know what will be
+
+296
+00:12:37,440 --> 00:12:44,399
+you know the very uh hot topic today is
+
+297
+00:12:41,040 --> 00:12:46,720
+what are the symptoms of COVID right? Uh
+
+298
+00:12:44,399 --> 00:12:48,639
+typically uh if you use PubMet and you
+
+299
+00:12:46,720 --> 00:12:50,800
+search for COVID 19, you're going to see
+
+300
+00:12:48,639 --> 00:12:52,959
+like a list uh you're going to search
+
+301
+00:12:50,800 --> 00:12:55,680
+for COVID 19, you're going to see like
+
+302
+00:12:52,959 --> 00:12:56,959
+uh a list of articles like you know and
+
+303
+00:12:55,680 --> 00:13:00,000
+you have to read them to understand
+
+304
+00:12:56,959 --> 00:13:01,680
+what's going on. Uh this doesn't scale
+
+305
+00:13:00,000 --> 00:13:04,480
+very well. It doesn't scale for people.
+
+306
+00:13:01,680 --> 00:13:07,120
+Uh the literature is expanding is
+
+307
+00:13:04,480 --> 00:13:08,959
+actually blowing up and there is no way
+
+308
+00:13:07,120 --> 00:13:10,720
+to be able to use like traditional
+
+309
+00:13:08,959 --> 00:13:13,920
+search to match documents and read
+
+310
+00:13:10,720 --> 00:13:16,079
+absolutely everything. So what does uh
+
+311
+00:13:13,920 --> 00:13:18,480
+they have parsed all the all the all the
+
+312
+00:13:16,079 --> 00:13:20,880
+literature they have recognized
+
+313
+00:13:18,480 --> 00:13:23,120
+different entities and now they can give
+
+314
+00:13:20,880 --> 00:13:26,639
+us a user interface that's giving us
+
+315
+00:13:23,120 --> 00:13:30,079
+like the graph of for example how we go
+
+316
+00:13:26,639 --> 00:13:32,240
+from a covid-19 virus to the disorders I
+
+317
+00:13:30,079 --> 00:13:35,839
+can also search for the physiology or
+
+318
+00:13:32,240 --> 00:13:38,880
+procedures to be coorbidities and then
+
+319
+00:13:35,839 --> 00:13:40,800
+go into the symptoms so of course we all
+
+320
+00:13:38,880 --> 00:13:44,160
+know co
+
+321
+00:13:40,800 --> 00:13:48,079
+uh causes fever. I can see how I got
+
+322
+00:13:44,160 --> 00:13:50,240
+there through the different uh through
+
+323
+00:13:48,079 --> 00:13:52,639
+the graph and then they will point me at
+
+324
+00:13:50,240 --> 00:13:55,360
+where exactly it was noted. Now that's a
+
+325
+00:13:52,639 --> 00:13:58,639
+very easy example right uh what I would
+
+326
+00:13:55,360 --> 00:14:01,120
+like to do u is to be able to understand
+
+327
+00:13:58,639 --> 00:14:02,639
+now more complex topics right so more
+
+328
+00:14:01,120 --> 00:14:05,680
+complex topics as I said you know they
+
+329
+00:14:02,639 --> 00:14:08,240
+are better uh
+
+330
+00:14:05,680 --> 00:14:10,079
+they are better uh visualized in a graph
+
+331
+00:14:08,240 --> 00:14:11,839
+so something which is I thought it was
+
+332
+00:14:10,079 --> 00:14:13,760
+like bogus science is that actually
+
+333
+00:14:11,839 --> 00:14:17,360
+vinegar
+
+334
+00:14:13,760 --> 00:14:21,440
+what we all know can help you to reduce
+
+335
+00:14:17,360 --> 00:14:22,639
+your glucose in the blood
+
+336
+00:14:21,440 --> 00:14:25,360
+Mhm.
+
+337
+00:14:22,639 --> 00:14:28,560
+>> Uh so very easy everything is powered by
+
+338
+00:14:25,360 --> 00:14:30,560
+uh by Neo forj and of course if my
+
+339
+00:14:28,560 --> 00:14:35,120
+glucose changes maybe then my insulin
+
+340
+00:14:30,560 --> 00:14:37,839
+resistance is going to be reduced. So is
+
+341
+00:14:35,120 --> 00:14:41,040
+this sorry I didn't type it well is is
+
+342
+00:14:37,839 --> 00:14:44,079
+this true or is it not? So as you can
+
+343
+00:14:41,040 --> 00:14:46,800
+see now when I type insulin coselli is
+
+344
+00:14:44,079 --> 00:14:49,519
+going to give me different
+
+345
+00:14:46,800 --> 00:14:54,880
+u categories of what insulin could be
+
+346
+00:14:49,519 --> 00:14:57,120
+right. uh and I'm looking here for
+
+347
+00:14:54,880 --> 00:14:59,680
+a situation where it's resistance with a
+
+348
+00:14:57,120 --> 00:15:02,000
+pathologic function. So now I can do
+
+349
+00:14:59,680 --> 00:15:03,600
+this query as you can see in a graph
+
+350
+00:15:02,000 --> 00:15:05,680
+database that people do know right but
+
+351
+00:15:03,600 --> 00:15:10,399
+I'm looking here for causality this an
+
+352
+00:15:05,680 --> 00:15:13,440
+of causality uh is vinegar causing
+
+353
+00:15:10,399 --> 00:15:16,160
+glucose to do something that then causes
+
+354
+00:15:13,440 --> 00:15:18,959
+a change in insulin resistance. This is
+
+355
+00:15:16,160 --> 00:15:20,560
+the query I'm making. And as you can see
+
+356
+00:15:18,959 --> 00:15:23,360
+here, it tells me that vinegar
+
+357
+00:15:20,560 --> 00:15:27,600
+downregulates glucose. So it's reducing
+
+358
+00:15:23,360 --> 00:15:30,560
+uh uh its levels which leads to higher
+
+359
+00:15:27,600 --> 00:15:32,880
+insulin resistance and I can see that in
+
+360
+00:15:30,560 --> 00:15:34,480
+a network right so this is a very simple
+
+361
+00:15:32,880 --> 00:15:36,959
+network perhaps I should try something
+
+362
+00:15:34,480 --> 00:15:38,880
+more complex. If for example you know I
+
+363
+00:15:36,959 --> 00:15:42,320
+choose all concepts of glucose. You can
+
+364
+00:15:38,880 --> 00:15:45,920
+see now that this becoming a bit more
+
+365
+00:15:42,320 --> 00:15:48,000
+complex and I can navigate this graph to
+
+366
+00:15:45,920 --> 00:15:51,040
+see all the different connections and of
+
+367
+00:15:48,000 --> 00:15:52,480
+course and then I can dive into just in
+
+368
+00:15:51,040 --> 00:15:55,279
+the relationships that I'm interested
+
+369
+00:15:52,480 --> 00:15:57,680
+just by looking uh by diving into and
+
+370
+00:15:55,279 --> 00:15:59,839
+looking then and reading the biography
+
+371
+00:15:57,680 --> 00:16:02,720
+uh sorry the biography I mean the the
+
+372
+00:15:59,839 --> 00:16:04,399
+bibliography. Uh
+
+373
+00:16:02,720 --> 00:16:05,759
+so that's that's what I had to share for
+
+374
+00:16:04,399 --> 00:16:08,160
+now.
+
+375
+00:16:05,759 --> 00:16:11,040
+Okay. Okay. Cool. That's that's an
+
+376
+00:16:08,160 --> 00:16:13,680
+interesting uh use case. And actually uh
+
+377
+00:16:11,040 --> 00:16:16,399
+it sort of touches upon uh something
+
+378
+00:16:13,680 --> 00:16:18,480
+that uh well I was thinking that we we
+
+379
+00:16:16,399 --> 00:16:20,959
+would maybe drill down to a little bit
+
+380
+00:16:18,480 --> 00:16:23,600
+later but we may as well bring it up
+
+381
+00:16:20,959 --> 00:16:26,240
+now. So uh the interesting point uh that
+
+382
+00:16:23,600 --> 00:16:28,160
+I see there is that uh this is actually
+
+383
+00:16:26,240 --> 00:16:30,320
+a very it's a it's a very interesting
+
+384
+00:16:28,160 --> 00:16:33,040
+use case first of all and it's one that
+
+385
+00:16:30,320 --> 00:16:36,560
+actually sort of built let's I would I
+
+386
+00:16:33,040 --> 00:16:40,399
+would say on on deep tech. So uh it's um
+
+387
+00:16:36,560 --> 00:16:42,480
+a use case in uh in uh biio medicine I
+
+388
+00:16:40,399 --> 00:16:44,720
+guess that has been built on top of a
+
+389
+00:16:42,480 --> 00:16:46,720
+graph database. So you have the deep
+
+390
+00:16:44,720 --> 00:16:50,079
+tech layer and then you have different
+
+391
+00:16:46,720 --> 00:16:52,880
+different commercial use cases and uh
+
+392
+00:16:50,079 --> 00:16:55,360
+since it's uh sharing time I guess uh
+
+393
+00:16:52,880 --> 00:16:59,279
+before we get into this distinction and
+
+394
+00:16:55,360 --> 00:17:02,000
+how um from the investment point of view
+
+395
+00:16:59,279 --> 00:17:04,559
+um this may be interesting I would also
+
+396
+00:17:02,000 --> 00:17:07,280
+like to uh share something which well I
+
+397
+00:17:04,559 --> 00:17:11,280
+guess um many people will be familiar
+
+398
+00:17:07,280 --> 00:17:14,400
+with but I want to show it anyway. Um
+
+399
+00:17:11,280 --> 00:17:17,600
+and that is since we mentioned uh graph
+
+400
+00:17:14,400 --> 00:17:20,880
+databases and I hope you can uh see my
+
+401
+00:17:17,600 --> 00:17:24,240
+screen. So this is the um the trend uh
+
+402
+00:17:20,880 --> 00:17:26,880
+chart for uh actually for all databases
+
+403
+00:17:24,240 --> 00:17:30,480
+uh including graph databases and as you
+
+404
+00:17:26,880 --> 00:17:32,960
+can see there's a very clear um leader
+
+405
+00:17:30,480 --> 00:17:35,919
+let's say in terms of uh trend here and
+
+406
+00:17:32,960 --> 00:17:38,559
+that is graph databases. uh you can see
+
+407
+00:17:35,919 --> 00:17:40,320
+that relational has been kind of
+
+408
+00:17:38,559 --> 00:17:42,640
+stalling let's say for for many years
+
+409
+00:17:40,320 --> 00:17:45,600
+now while on the other hand uh the
+
+410
+00:17:42,640 --> 00:17:48,240
+growth on graph databases is quite quite
+
+411
+00:17:45,600 --> 00:17:50,799
+phenomenal actually it's um just off the
+
+412
+00:17:48,240 --> 00:17:52,960
+charts really that doesn't necessarily
+
+413
+00:17:50,799 --> 00:17:55,200
+mean something in terms of uh you know
+
+414
+00:17:52,960 --> 00:17:57,840
+market value and capitalization and all
+
+415
+00:17:55,200 --> 00:18:01,200
+of that but it's it's an indication and
+
+416
+00:17:57,840 --> 00:18:04,480
+this is why I'm I'm bringing it up and
+
+417
+00:18:01,200 --> 00:18:09,840
+yeah just just wanted to uh to show
+
+418
+00:18:04,480 --> 00:18:11,760
+that. So, um perhaps that's a good um uh
+
+419
+00:18:09,840 --> 00:18:14,480
+conversation starter, let's say, to get
+
+420
+00:18:11,760 --> 00:18:17,120
+a little bit more into the uh specifics.
+
+421
+00:18:14,480 --> 00:18:20,400
+So, I'd like to ask uh you actually
+
+422
+00:18:17,120 --> 00:18:23,440
+Constantin. So, what do you think? Um
+
+423
+00:18:20,400 --> 00:18:24,960
+so, we saw already uh the overall uh
+
+424
+00:18:23,440 --> 00:18:27,840
+trend, let's say, for for graph
+
+425
+00:18:24,960 --> 00:18:29,440
+databases. And we already saw um a very
+
+426
+00:18:27,840 --> 00:18:30,960
+interesting uh use case, a very
+
+427
+00:18:29,440 --> 00:18:34,720
+interesting startup actually that is
+
+428
+00:18:30,960 --> 00:18:38,160
+building on on graph databases. So um
+
+429
+00:18:34,720 --> 00:18:40,400
+where do you think as an investor is um
+
+430
+00:18:38,160 --> 00:18:42,320
+is the most interesting aspect right now
+
+431
+00:18:40,400 --> 00:18:45,520
+in this space. So would you be looking
+
+432
+00:18:42,320 --> 00:18:47,919
+to invest in deep tech uh companies or
+
+433
+00:18:45,520 --> 00:18:50,559
+would you be looking to invest in um use
+
+434
+00:18:47,919 --> 00:18:52,880
+cases in startups that build use cases
+
+435
+00:18:50,559 --> 00:18:55,039
+such as the one that Pano showed us
+
+436
+00:18:52,880 --> 00:18:57,440
+previously. Well, there are plenty of
+
+437
+00:18:55,039 --> 00:19:00,320
+use cases and probably would like to
+
+438
+00:18:57,440 --> 00:19:02,400
+continue a thought of panas about uh
+
+439
+00:19:00,320 --> 00:19:04,400
+potential applications of graph graph
+
+440
+00:19:02,400 --> 00:19:07,440
+database. Actually there are two kinds
+
+441
+00:19:04,400 --> 00:19:10,080
+of data in the world generated by humans
+
+442
+00:19:07,440 --> 00:19:12,799
+and generated by nature and nature is
+
+443
+00:19:10,080 --> 00:19:14,720
+already very complex and that's why you
+
+444
+00:19:12,799 --> 00:19:18,080
+need graph databases in chemistry in
+
+445
+00:19:14,720 --> 00:19:20,640
+drug discovery other kind of uh complex
+
+446
+00:19:18,080 --> 00:19:23,280
+fields and uh humanity also generated
+
+447
+00:19:20,640 --> 00:19:25,280
+enough data for last dozens of years
+
+448
+00:19:23,280 --> 00:19:27,520
+stored it in relational databases or
+
+449
+00:19:25,280 --> 00:19:29,919
+other kind of tradition more traditional
+
+450
+00:19:27,520 --> 00:19:31,919
+types of databases and now it's time to
+
+451
+00:19:29,919 --> 00:19:33,760
+work with this complexity which was
+
+452
+00:19:31,919 --> 00:19:35,679
+created Now it's time for graph
+
+453
+00:19:33,760 --> 00:19:37,760
+databases. Frankly speaking, I think
+
+454
+00:19:35,679 --> 00:19:40,480
+that in terms of technology, we already
+
+455
+00:19:37,760 --> 00:19:43,280
+have enough good companies on the
+
+456
+00:19:40,480 --> 00:19:45,280
+market, but we lack a good applications
+
+457
+00:19:43,280 --> 00:19:50,080
+of these technologies for some specific
+
+458
+00:19:45,280 --> 00:19:52,640
+areas like which was already shown today
+
+459
+00:19:50,080 --> 00:19:54,559
+in medical space and there are plenty of
+
+460
+00:19:52,640 --> 00:19:57,120
+other spaces which I found very
+
+461
+00:19:54,559 --> 00:20:00,400
+promising. One of them for example is
+
+462
+00:19:57,120 --> 00:20:04,640
+sales acceleration tools. Actually if we
+
+463
+00:20:00,400 --> 00:20:07,360
+just think about sales uh B2B sales it's
+
+464
+00:20:04,640 --> 00:20:08,799
+very simple thing you just to deliver
+
+465
+00:20:07,360 --> 00:20:10,320
+some information about your product to
+
+466
+00:20:08,799 --> 00:20:13,360
+some relevant people at relevant
+
+467
+00:20:10,320 --> 00:20:16,240
+organizations which will turn into sales
+
+468
+00:20:13,360 --> 00:20:18,480
+in your contracts but there are plenty
+
+469
+00:20:16,240 --> 00:20:21,200
+of different tools helping to do such
+
+470
+00:20:18,480 --> 00:20:23,760
+kind of this kind of work and they all
+
+471
+00:20:21,200 --> 00:20:26,880
+cover a very small segment of of this
+
+472
+00:20:23,760 --> 00:20:29,679
+job but by the end of the day you have
+
+473
+00:20:26,880 --> 00:20:31,919
+kind of B2B universe right you have a
+
+474
+00:20:29,679 --> 00:20:33,919
+number of entities in the world, legal
+
+475
+00:20:31,919 --> 00:20:37,120
+entities and number of people working at
+
+476
+00:20:33,919 --> 00:20:39,840
+these entities and these enterprises and
+
+477
+00:20:37,120 --> 00:20:41,840
+it this data is stored in different
+
+478
+00:20:39,840 --> 00:20:43,679
+government ledgers other kind of data
+
+479
+00:20:41,840 --> 00:20:46,400
+but by the end of the day this is a
+
+480
+00:20:43,679 --> 00:20:48,080
+graph and
+
+481
+00:20:46,400 --> 00:20:50,480
+somebody who could just collect this
+
+482
+00:20:48,080 --> 00:20:53,039
+data and connect it properly turned into
+
+483
+00:20:50,480 --> 00:20:55,360
+real graph covering all these relations
+
+484
+00:20:53,039 --> 00:20:58,400
+between people and organization could
+
+485
+00:20:55,360 --> 00:21:02,480
+build ultimate sales tool
+
+486
+00:20:58,400 --> 00:21:04,400
+and uh build probably 10 billion dollar
+
+487
+00:21:02,480 --> 00:21:07,280
+company on top of it or maybe a $100
+
+488
+00:21:04,400 --> 00:21:09,200
+billion company if if it's done
+
+489
+00:21:07,280 --> 00:21:12,880
+properly. It's one of the stories.
+
+490
+00:21:09,200 --> 00:21:14,799
+Another um particular segment which I'm
+
+491
+00:21:12,880 --> 00:21:18,720
+excited about is blockchain because
+
+492
+00:21:14,799 --> 00:21:20,480
+blockchain is also just a graph uh in
+
+493
+00:21:18,720 --> 00:21:23,200
+just number of objects connected with
+
+494
+00:21:20,480 --> 00:21:25,039
+each other with different relations and
+
+495
+00:21:23,200 --> 00:21:27,840
+uh immutable ledger of operations on top
+
+496
+00:21:25,039 --> 00:21:30,640
+of them and there for example chain
+
+497
+00:21:27,840 --> 00:21:32,799
+analysis which is doing just graph
+
+498
+00:21:30,640 --> 00:21:35,120
+analytics on top of blockchain and it's
+
+499
+00:21:32,799 --> 00:21:38,720
+worth more than $1 billion I believe
+
+500
+00:21:35,120 --> 00:21:40,799
+there will be more such use cases uh for
+
+501
+00:21:38,720 --> 00:21:44,159
+specific structured data like blockchain
+
+502
+00:21:40,799 --> 00:21:47,200
+or there will be um just new companies
+
+503
+00:21:44,159 --> 00:21:49,280
+applying existing graph technologies on
+
+504
+00:21:47,200 --> 00:21:51,919
+top of connected data from different
+
+505
+00:21:49,280 --> 00:21:53,440
+ledgers and say more traditional data
+
+506
+00:21:51,919 --> 00:21:58,159
+sources.
+
+507
+00:21:53,440 --> 00:22:01,039
+Mhm. So um you have a clear preference
+
+508
+00:21:58,159 --> 00:22:03,360
+it seems for not for not so much for
+
+509
+00:22:01,039 --> 00:22:05,679
+vendors let's say so technologies that
+
+510
+00:22:03,360 --> 00:22:08,640
+that so for companies that provide the
+
+511
+00:22:05,679 --> 00:22:10,960
+technology but for companies that use
+
+512
+00:22:08,640 --> 00:22:14,559
+that uh deep tech let's say to to build
+
+513
+00:22:10,960 --> 00:22:17,280
+on on use cases. So in that respect uh
+
+514
+00:22:14,559 --> 00:22:19,039
+what's your opinion about the um the
+
+515
+00:22:17,280 --> 00:22:22,320
+fragmentation let's say that uh
+
+516
+00:22:19,039 --> 00:22:24,400
+currently exists in this graph database
+
+517
+00:22:22,320 --> 00:22:26,640
+market but also more more broadly in the
+
+518
+00:22:24,400 --> 00:22:29,919
+uh connected data market. So if if we
+
+519
+00:22:26,640 --> 00:22:32,400
+just stay to graph databases uh speaking
+
+520
+00:22:29,919 --> 00:22:34,640
+from experience as I have just recently
+
+521
+00:22:32,400 --> 00:22:38,320
+done an analysis there I think there are
+
+522
+00:22:34,640 --> 00:22:41,280
+maybe over 30 vendors at uh at this
+
+523
+00:22:38,320 --> 00:22:44,400
+point which is probably a little bit too
+
+524
+00:22:41,280 --> 00:22:47,039
+much. So um off the record many people
+
+525
+00:22:44,400 --> 00:22:49,600
+uh many people who are um executives
+
+526
+00:22:47,039 --> 00:22:51,520
+actually in in graph database vendors uh
+
+527
+00:22:49,600 --> 00:22:53,520
+they all say well you know it's a bit
+
+528
+00:22:51,520 --> 00:22:56,480
+too too much and we expect to see a
+
+529
+00:22:53,520 --> 00:22:58,880
+consolidation uh soon. Do you think that
+
+530
+00:22:56,480 --> 00:23:02,080
+that makes sense? Well, it could happen.
+
+531
+00:22:58,880 --> 00:23:05,360
+Frankly speaking, we track a lot of the
+
+532
+00:23:02,080 --> 00:23:07,840
+open source databases and I can't see
+
+533
+00:23:05,360 --> 00:23:09,440
+any graph database among top 10
+
+534
+00:23:07,840 --> 00:23:11,360
+databases by number for example of
+
+535
+00:23:09,440 --> 00:23:14,480
+active contributors in the world right
+
+536
+00:23:11,360 --> 00:23:16,159
+now. I think uh the time for let's say
+
+537
+00:23:14,480 --> 00:23:18,320
+uh number one and number two graph
+
+538
+00:23:16,159 --> 00:23:20,559
+databases is still to come. I mean
+
+539
+00:23:18,320 --> 00:23:24,960
+they're they're not so popular as
+
+540
+00:23:20,559 --> 00:23:27,280
+relational databases or transactional or
+
+541
+00:23:24,960 --> 00:23:29,919
+analytical database like click house or
+
+542
+00:23:27,280 --> 00:23:33,120
+MongoDB or other kind of more
+
+543
+00:23:29,919 --> 00:23:36,320
+traditional players. I think um graph
+
+544
+00:23:33,120 --> 00:23:40,720
+database market is at very early stage
+
+545
+00:23:36,320 --> 00:23:43,840
+of its development and we could see few
+
+546
+00:23:40,720 --> 00:23:47,039
+u clear winners maybe focus on different
+
+547
+00:23:43,840 --> 00:23:49,440
+use cases where they show their
+
+548
+00:23:47,039 --> 00:23:52,000
+competitive advantages. Yeah, I think
+
+549
+00:23:49,440 --> 00:23:53,679
+the fragmentation uh the vendor
+
+550
+00:23:52,000 --> 00:23:55,919
+fragmentation is not that important
+
+551
+00:23:53,679 --> 00:23:59,280
+because in DBMS we can see that you know
+
+552
+00:23:55,919 --> 00:24:01,679
+there are the basis on a list of the
+
+553
+00:23:59,280 --> 00:24:03,520
+basis and they all harness SQL and
+
+554
+00:24:01,679 --> 00:24:05,919
+pretty much you know it's mostly
+
+555
+00:24:03,520 --> 00:24:08,480
+standardized and the last product the
+
+556
+00:24:05,919 --> 00:24:11,440
+first standardization of SQL happened in
+
+557
+00:24:08,480 --> 00:24:15,279
+the 80s so far we have kind of failed to
+
+558
+00:24:11,440 --> 00:24:17,360
+see like a winning uh query language or
+
+559
+00:24:15,279 --> 00:24:19,679
+graph of the basis and perhaps graphql
+
+560
+00:24:17,360 --> 00:24:21,279
+which is more now popular even for other
+
+561
+00:24:19,679 --> 00:24:23,760
+use cases might be perhaps you know one
+
+562
+00:24:21,279 --> 00:24:25,360
+of the way that you know we get like uh
+
+563
+00:24:23,760 --> 00:24:27,840
+the holy grail for at least you know
+
+564
+00:24:25,360 --> 00:24:30,400
+being able to interact with them uh so I
+
+565
+00:24:27,840 --> 00:24:33,279
+think the biggest recommendation for me
+
+566
+00:24:30,400 --> 00:24:37,720
+is mostly uh on the tooling and the
+
+567
+00:24:33,279 --> 00:24:37,720
+interface rather than the vor itself
+
+568
+00:24:38,000 --> 00:24:44,480
+>> well on graphql is an interesting point
+
+569
+00:24:41,039 --> 00:24:47,760
+actually and uh well one that I can't
+
+570
+00:24:44,480 --> 00:24:50,320
+can't resist sort of jumping in well It
+
+571
+00:24:47,760 --> 00:24:53,440
+is true that it's being adopted across
+
+572
+00:24:50,320 --> 00:24:55,919
+the board on by by many uh by many
+
+573
+00:24:53,440 --> 00:24:58,159
+databases in general. So regardless of
+
+574
+00:24:55,919 --> 00:25:00,240
+whether they're relational or uh or
+
+575
+00:24:58,159 --> 00:25:02,880
+anything else and many products in fact
+
+576
+00:25:00,240 --> 00:25:04,799
+I see uh Bob waving there and he Bob
+
+577
+00:25:02,880 --> 00:25:07,200
+you're you're next up and you're going
+
+578
+00:25:04,799 --> 00:25:08,880
+to be telling us exactly how you use
+
+579
+00:25:07,200 --> 00:25:11,520
+GraphQL because it's it's an interesting
+
+580
+00:25:08,880 --> 00:25:13,039
+use case that you have but just for the
+
+581
+00:25:11,520 --> 00:25:15,039
+record while you know it's very useful
+
+582
+00:25:13,039 --> 00:25:17,600
+and very popular and all of those things
+
+583
+00:25:15,039 --> 00:25:19,520
+it's not really a graph query language
+
+584
+00:25:17,600 --> 00:25:23,039
+so you can do lots of things with
+
+585
+00:25:19,520 --> 00:25:26,080
+GraphQL but not so not really graph
+
+586
+00:25:23,039 --> 00:25:28,320
+queries So with that, I'll I'll actually
+
+587
+00:25:26,080 --> 00:25:30,100
+pass on to to you Bob because you're
+
+588
+00:25:28,320 --> 00:25:31,679
+using that in your product and it's it
+
+589
+00:25:30,100 --> 00:25:33,120
+[snorts] would be interesting to uh to
+
+590
+00:25:31,679 --> 00:25:36,000
+know how.
+
+591
+00:25:33,120 --> 00:25:37,600
+>> Yeah. So uh yeah. Yeah, that that's
+
+592
+00:25:36,000 --> 00:25:39,120
+that's a good point and actually to
+
+593
+00:25:37,600 --> 00:25:43,039
+start with your last point that is
+
+594
+00:25:39,120 --> 00:25:45,440
+actually true. So I think what's
+
+595
+00:25:43,039 --> 00:25:47,039
+important a distinction that's important
+
+596
+00:25:45,440 --> 00:25:49,440
+to make is that the the difference
+
+597
+00:25:47,039 --> 00:25:51,679
+between really graph queries that you
+
+598
+00:25:49,440 --> 00:25:53,840
+want to do so like shortest path
+
+599
+00:25:51,679 --> 00:25:55,440
+algorithms those kind of things or the
+
+600
+00:25:53,840 --> 00:25:57,520
+way that you want to structure your data
+
+601
+00:25:55,440 --> 00:26:00,880
+so that you say like my the data that I
+
+602
+00:25:57,520 --> 00:26:02,480
+have represents itself as a graph very
+
+603
+00:26:00,880 --> 00:26:05,039
+similar to what Constantin just said
+
+604
+00:26:02,480 --> 00:26:07,360
+right so the the like blockchain it's a
+
+605
+00:26:05,039 --> 00:26:10,000
+form of a graph
+
+606
+00:26:07,360 --> 00:26:11,600
+um so what we are interested in what
+
+607
+00:26:10,000 --> 00:26:13,440
+we're working on and that's like where
+
+608
+00:26:11,600 --> 00:26:16,400
+the machine learning part comes in and I
+
+609
+00:26:13,440 --> 00:26:20,080
+will also share in a bit how I'll show a
+
+610
+00:26:16,400 --> 00:26:22,720
+quick demo how graph relates to that is
+
+611
+00:26:20,080 --> 00:26:24,799
+that if you have a note in the graph you
+
+612
+00:26:22,720 --> 00:26:27,360
+somehow want to be able to find that
+
+613
+00:26:24,799 --> 00:26:28,799
+note so you one of the big problems
+
+614
+00:26:27,360 --> 00:26:30,240
+right now is that if you have a data
+
+615
+00:26:28,799 --> 00:26:31,679
+object that's been presented as a node
+
+616
+00:26:30,240 --> 00:26:36,159
+in your graph like how are you going to
+
+617
+00:26:31,679 --> 00:26:37,679
+find it and what we do is like so we is
+
+618
+00:26:36,159 --> 00:26:41,279
+called like a vector search engine and
+
+619
+00:26:37,679 --> 00:26:44,000
+it has a graph data model to model the
+
+620
+00:26:41,279 --> 00:26:47,919
+data out. That's why we use GraphQL.
+
+621
+00:26:44,000 --> 00:26:50,080
+Um um is is is very suited for
+
+622
+00:26:47,919 --> 00:26:52,000
+organizing the data. One thing before I
+
+623
+00:26:50,080 --> 00:26:54,799
+go in the demo that I just I just want
+
+624
+00:26:52,000 --> 00:26:56,640
+to mention maybe it's not the most
+
+625
+00:26:54,799 --> 00:26:59,200
+important thing or for some people it
+
+626
+00:26:56,640 --> 00:27:01,679
+might be the an important thing but one
+
+627
+00:26:59,200 --> 00:27:04,720
+thing that GraphQL has which is some
+
+628
+00:27:01,679 --> 00:27:09,360
+sometimes in my opinion overlooked is
+
+629
+00:27:04,720 --> 00:27:10,960
+how um intuitive that it is. So I the
+
+630
+00:27:09,360 --> 00:27:13,679
+demo that I'm going to give you in a bit
+
+631
+00:27:10,960 --> 00:27:15,360
+is just pure GraphQL and people who are
+
+632
+00:27:13,679 --> 00:27:18,000
+on the call right now who go like I have
+
+633
+00:27:15,360 --> 00:27:20,799
+no idea what GraphQL is they will be
+
+634
+00:27:18,000 --> 00:27:23,039
+able to read it. It's very intuitive and
+
+635
+00:27:20,799 --> 00:27:25,200
+if I would have to write it in let's say
+
+636
+00:27:23,039 --> 00:27:27,919
+sparkle it would be a completely
+
+637
+00:27:25,200 --> 00:27:29,600
+different story. Not saying that there
+
+638
+00:27:27,919 --> 00:27:32,480
+is not a good reason for that to exist.
+
+639
+00:27:29,600 --> 00:27:34,240
+It's more like it's a I I personally I
+
+640
+00:27:32,480 --> 00:27:35,840
+think that the success of GraphQL has to
+
+641
+00:27:34,240 --> 00:27:37,360
+do with the fact how in like how
+
+642
+00:27:35,840 --> 00:27:39,600
+intuitive
+
+643
+00:27:37,360 --> 00:27:40,960
+it is to write it and to and to and to
+
+644
+00:27:39,600 --> 00:27:41,440
+read it.
+
+645
+00:27:40,960 --> 00:27:43,360
+>> Uh
+
+646
+00:27:41,440 --> 00:27:46,400
+>> that's that's a good point about GraphQL
+
+647
+00:27:43,360 --> 00:27:48,159
+and yeah I was going to say sure um feel
+
+648
+00:27:46,400 --> 00:27:50,400
+free to uh to do the demo and then
+
+649
+00:27:48,159 --> 00:27:52,159
+actually after the demo I have a
+
+650
+00:27:50,400 --> 00:27:54,320
+question for you which uh sort of ties
+
+651
+00:27:52,159 --> 00:27:56,159
+it all together but let's do the demo.
+
+652
+00:27:54,320 --> 00:28:01,279
+>> Yeah. So so so let me quickly do that.
+
+653
+00:27:56,159 --> 00:28:04,000
+So I um uh let me quickly find my my
+
+654
+00:28:01,279 --> 00:28:06,720
+screen. Here we go. Yes.
+
+655
+00:28:04,000 --> 00:28:07,520
+Is this uh is this properly sharing?
+
+656
+00:28:06,720 --> 00:28:09,760
+>> Mhm.
+
+657
+00:28:07,520 --> 00:28:12,640
+>> Yeah. So what I'm going to do is I'm
+
+658
+00:28:09,760 --> 00:28:14,799
+going to give you a quick demo. Uh so
+
+659
+00:28:12,640 --> 00:28:16,799
+the demo that we just seen with the with
+
+660
+00:28:14,799 --> 00:28:19,679
+the um with the with the graphical
+
+661
+00:28:16,799 --> 00:28:21,840
+interface, we are a layer lower. So we
+
+662
+00:28:19,679 --> 00:28:24,159
+are like what one might call deep tech.
+
+663
+00:28:21,840 --> 00:28:25,919
+So we are the database technology. So
+
+664
+00:28:24,159 --> 00:28:28,159
+that means that our solution ends on the
+
+665
+00:28:25,919 --> 00:28:30,799
+level of the database and in our
+
+666
+00:28:28,159 --> 00:28:33,360
+database you can load or in we can load
+
+667
+00:28:30,799 --> 00:28:35,840
+any data that you want doesn't matter
+
+668
+00:28:33,360 --> 00:28:37,360
+what the what the data is but uh for
+
+669
+00:28:35,840 --> 00:28:39,679
+this specific demo that I'm going to
+
+670
+00:28:37,360 --> 00:28:41,440
+give I'm going to use Wikipedia. So the
+
+671
+00:28:39,679 --> 00:28:44,640
+demo that's in this demo data set
+
+672
+00:28:41,440 --> 00:28:47,760
+contains uh let me quickly see it
+
+673
+00:28:44,640 --> 00:28:52,640
+contains like uh 11 uh million articles
+
+674
+00:28:47,760 --> 00:28:54,720
+and 27 million paragraphs. And so if we
+
+675
+00:28:52,640 --> 00:28:56,240
+look at the perspective of the of the oh
+
+676
+00:28:54,720 --> 00:28:58,320
+of the paragraph. So I can do something
+
+677
+00:28:56,240 --> 00:28:59,840
+like this paragraph
+
+678
+00:28:58,320 --> 00:29:03,200
+and then there are a few things in
+
+679
+00:28:59,840 --> 00:29:06,000
+there. So let me run it. And this is how
+
+680
+00:29:03,200 --> 00:29:08,640
+we represent a graph. So this is like
+
+681
+00:29:06,000 --> 00:29:10,480
+this is pure graphql. So what you see
+
+682
+00:29:08,640 --> 00:29:13,600
+here this what I selected right now is
+
+683
+00:29:10,480 --> 00:29:15,840
+one graph uh sorry one note in the graph
+
+684
+00:29:13,600 --> 00:29:17,760
+that is um uh that is that is
+
+685
+00:29:15,840 --> 00:29:21,919
+represented. Uh but one of the things
+
+686
+00:29:17,760 --> 00:29:24,080
+that we can do is that I can say like if
+
+687
+00:29:21,919 --> 00:29:26,720
+I limit this to the first result. So we
+
+688
+00:29:24,080 --> 00:29:29,840
+just now see the first paragraph. I can
+
+689
+00:29:26,720 --> 00:29:31,679
+do something. So I can say well show me
+
+690
+00:29:29,840 --> 00:29:34,640
+how the machine learning model is
+
+691
+00:29:31,679 --> 00:29:38,080
+representing this data object in the um
+
+692
+00:29:34,640 --> 00:29:40,000
+in the graph. So if I run this uh one of
+
+693
+00:29:38,080 --> 00:29:42,159
+the things that you will see is that
+
+694
+00:29:40,000 --> 00:29:44,080
+here you see all these coordinates and
+
+695
+00:29:42,159 --> 00:29:46,720
+that's that's the so-called vector
+
+696
+00:29:44,080 --> 00:29:50,880
+representation but this is the dimen
+
+697
+00:29:46,720 --> 00:29:54,159
+highly dimensional space how um the this
+
+698
+00:29:50,880 --> 00:29:56,000
+note in the graph is uh uh represented
+
+699
+00:29:54,159 --> 00:29:58,080
+and the reason why that is interesting
+
+700
+00:29:56,000 --> 00:30:01,520
+is become because we can make relations
+
+701
+00:29:58,080 --> 00:30:04,480
+based on these um uh um these these
+
+702
+00:30:01,520 --> 00:30:06,960
+dimensional representations. So let me
+
+703
+00:30:04,480 --> 00:30:09,679
+take one step back. So again, so this is
+
+704
+00:30:06,960 --> 00:30:13,279
+the complete Wikipedia with what is it a
+
+705
+00:30:09,679 --> 00:30:15,919
+little bit over 27 million uh articles,
+
+706
+00:30:13,279 --> 00:30:18,880
+sorry, paragraphs. So I can do something
+
+707
+00:30:15,919 --> 00:30:21,039
+like this. I can ask a question. And
+
+708
+00:30:18,880 --> 00:30:24,240
+what I'm going to try to do is I'm going
+
+709
+00:30:21,039 --> 00:30:26,159
+to try to find the right note in the
+
+710
+00:30:24,240 --> 00:30:29,440
+graph. So I can ask a question and I can
+
+711
+00:30:26,159 --> 00:30:33,200
+say question and I can say like what is
+
+712
+00:30:29,440 --> 00:30:35,600
+an edge in a graph? just a question and
+
+713
+00:30:33,200 --> 00:30:39,200
+I going to tell it. I want you to find
+
+714
+00:30:35,600 --> 00:30:41,200
+the answer in the in the content of the
+
+715
+00:30:39,200 --> 00:30:43,760
+uh of the paragraph.
+
+716
+00:30:41,200 --> 00:30:45,919
+I just want to see the first uh the
+
+717
+00:30:43,760 --> 00:30:47,520
+first result and then I'm going to make
+
+718
+00:30:45,919 --> 00:30:49,600
+a graph relation where I'm going to say
+
+719
+00:30:47,520 --> 00:30:52,080
+also show me the article in which you
+
+720
+00:30:49,600 --> 00:30:53,919
+found this and just show me the title.
+
+721
+00:30:52,080 --> 00:30:55,120
+So little bit more sophisticated but
+
+722
+00:30:53,919 --> 00:30:56,799
+we're going to say like okay we're going
+
+723
+00:30:55,120 --> 00:30:58,480
+to oh and of course we want to see
+
+724
+00:30:56,799 --> 00:31:01,760
+before I forget we of course want to see
+
+725
+00:30:58,480 --> 00:31:03,840
+the answer to the question right? So
+
+726
+00:31:01,760 --> 00:31:05,120
+this is a graph query, GraphQL query
+
+727
+00:31:03,840 --> 00:31:06,559
+where we're going to ask a natural
+
+728
+00:31:05,120 --> 00:31:09,200
+language question over the complete
+
+729
+00:31:06,559 --> 00:31:11,200
+Wikipedia. And if I now run this query,
+
+730
+00:31:09,200 --> 00:31:14,080
+you see that it results as an abstract
+
+731
+00:31:11,200 --> 00:31:18,640
+object connecting two graph vertices. So
+
+732
+00:31:14,080 --> 00:31:23,200
+it found this uh uh data object
+
+733
+00:31:18,640 --> 00:31:25,520
+in in the graph of 27 million uh um uh
+
+734
+00:31:23,200 --> 00:31:27,520
+uh data objects and it even went as far
+
+735
+00:31:25,520 --> 00:31:29,120
+as using the machine learning model to
+
+736
+00:31:27,520 --> 00:31:31,840
+find the answers in the questions. But
+
+737
+00:31:29,120 --> 00:31:35,520
+we can also do something like uh let's
+
+738
+00:31:31,840 --> 00:31:37,679
+say uh well I'm a uh uh uh I'm a big
+
+739
+00:31:35,520 --> 00:31:40,000
+music fan. So I can say like what was
+
+740
+00:31:37,679 --> 00:31:44,480
+Frank Zappa's
+
+741
+00:31:40,000 --> 00:31:46,000
+uh band called? Oh, and now I run run it
+
+742
+00:31:44,480 --> 00:31:48,159
+again and it says the mothers of
+
+743
+00:31:46,000 --> 00:31:51,120
+invention. So it found that that that
+
+744
+00:31:48,159 --> 00:31:53,279
+node in the graph. Um, or you could do
+
+745
+00:31:51,120 --> 00:31:58,159
+something more specific like for
+
+746
+00:31:53,279 --> 00:32:01,440
+example, how many people fit in
+
+747
+00:31:58,159 --> 00:32:03,600
+an air bus
+
+748
+00:32:01,440 --> 00:32:06,640
+a 380.
+
+749
+00:32:03,600 --> 00:32:09,279
+So again another uh another query. So
+
+750
+00:32:06,640 --> 00:32:11,039
+now it's found 656.
+
+751
+00:32:09,279 --> 00:32:14,559
+So as you can see it found the right
+
+752
+00:32:11,039 --> 00:32:18,480
+note in the graph. And here 656 seats
+
+753
+00:32:14,559 --> 00:32:20,720
+838200 was proposed etc. So th this is
+
+754
+00:32:18,480 --> 00:32:22,159
+like this is what we believe is the next
+
+755
+00:32:20,720 --> 00:32:23,600
+step in dealing with graphs and
+
+756
+00:32:22,159 --> 00:32:25,519
+searching with graphs. So we constantly
+
+757
+00:32:23,600 --> 00:32:29,519
+find these notes. But one of the things
+
+758
+00:32:25,519 --> 00:32:36,640
+that I can do as well is is um this. So
+
+759
+00:32:29,519 --> 00:32:40,720
+I can say for example um uh uh uh why is
+
+760
+00:32:36,640 --> 00:32:44,000
+uh a corona virus
+
+761
+00:32:40,720 --> 00:32:46,720
+called corona? So you know a little bit
+
+762
+00:32:44,000 --> 00:32:48,320
+vagger term. So then I run this term and
+
+763
+00:32:46,720 --> 00:32:51,039
+it's it says like well that's because of
+
+764
+00:32:48,320 --> 00:32:53,360
+its garland red or crown which is in
+
+765
+00:32:51,039 --> 00:32:56,000
+this graph notation which is coming from
+
+766
+00:32:53,360 --> 00:32:59,360
+the article coronavirus disease. But now
+
+767
+00:32:56,000 --> 00:33:03,519
+I can even go as far as saying like has
+
+768
+00:32:59,360 --> 00:33:05,679
+uh um oh sorry no not has paragraphs but
+
+769
+00:33:03,519 --> 00:33:07,919
+um
+
+770
+00:33:05,679 --> 00:33:09,360
+uh let me quickly oh yeah links to
+
+771
+00:33:07,919 --> 00:33:11,679
+articles. So now I can make a graph
+
+772
+00:33:09,360 --> 00:33:15,840
+relation that I can say like okay on
+
+773
+00:33:11,679 --> 00:33:18,720
+articles which articles does this uh
+
+774
+00:33:15,840 --> 00:33:21,200
+this um note connect to. So if I run
+
+775
+00:33:18,720 --> 00:33:23,279
+this query this is a longer query. So
+
+776
+00:33:21,200 --> 00:33:24,799
+you see it still finds the note with the
+
+777
+00:33:23,279 --> 00:33:27,120
+right answer based on the question that
+
+778
+00:33:24,799 --> 00:33:29,279
+I'm asking. It's showing me the content
+
+779
+00:33:27,120 --> 00:33:31,679
+where it found it in but it even says
+
+780
+00:33:29,279 --> 00:33:34,640
+like okay these are all the articles on
+
+781
+00:33:31,679 --> 00:33:39,200
+Wikipedia. this the graph relations that
+
+782
+00:33:34,640 --> 00:33:44,159
+this data set is uh uh referring to. So
+
+783
+00:33:39,200 --> 00:33:46,880
+this is an example of one using GraphQL
+
+784
+00:33:44,159 --> 00:33:49,919
+and secondly how you how machine
+
+785
+00:33:46,880 --> 00:33:52,000
+learning is directly integrated into the
+
+786
+00:33:49,919 --> 00:33:55,760
+uh into the graph. So I hope that kind
+
+787
+00:33:52,000 --> 00:33:57,919
+of answers your question uh George. Um
+
+788
+00:33:55,760 --> 00:34:00,880
+well I haven't asked the question yet
+
+789
+00:33:57,919 --> 00:34:03,279
+actually so and it's going to be in a
+
+790
+00:34:00,880 --> 00:34:06,399
+sort of different direction really. So
+
+791
+00:34:03,279 --> 00:34:08,639
+my question is actually like I said I'm
+
+792
+00:34:06,399 --> 00:34:11,200
+trying to tie that all together. So as
+
+793
+00:34:08,639 --> 00:34:13,119
+you said um what you do is basically on
+
+794
+00:34:11,200 --> 00:34:15,839
+the on the deep tech level let's say if
+
+795
+00:34:13,119 --> 00:34:18,000
+we talk on um abstract terms. So
+
+796
+00:34:15,839 --> 00:34:20,639
+>> that's correct. I'm wondering how were
+
+797
+00:34:18,000 --> 00:34:23,679
+you able to to pitch that uh to uh to
+
+798
+00:34:20,639 --> 00:34:25,679
+investors to get uh to get uh funding in
+
+799
+00:34:23,679 --> 00:34:28,320
+your company? Were for example, would a
+
+800
+00:34:25,679 --> 00:34:30,399
+demo like the one that you uh showed us
+
+801
+00:34:28,320 --> 00:34:32,320
+uh be convincing to them? Is that
+
+802
+00:34:30,399 --> 00:34:35,200
+something like what you did? I'm trying
+
+803
+00:34:32,320 --> 00:34:36,960
+to think here, you know, and in to to to
+
+804
+00:34:35,200 --> 00:34:39,839
+wear the shoes, let's say, of people who
+
+805
+00:34:36,960 --> 00:34:42,399
+may, you know, have potentially uh ideas
+
+806
+00:34:39,839 --> 00:34:44,320
+they find interesting technologically.
+
+807
+00:34:42,399 --> 00:34:47,040
+What kind of advice would you give them
+
+808
+00:34:44,320 --> 00:34:49,839
+to be able to pitch those ideas to uh to
+
+809
+00:34:47,040 --> 00:34:51,280
+get in investment to to pursue them?
+
+810
+00:34:49,839 --> 00:34:53,839
+>> Yeah, that is a great question actually
+
+811
+00:34:51,280 --> 00:34:57,119
+and there are three answers to that. So
+
+812
+00:34:53,839 --> 00:34:59,280
+answer number one is that we know from
+
+813
+00:34:57,119 --> 00:35:01,280
+research that 93% of data is
+
+814
+00:34:59,280 --> 00:35:04,800
+unstructured. So anything that you can
+
+815
+00:35:01,280 --> 00:35:07,599
+do to improve search through that um
+
+816
+00:35:04,800 --> 00:35:09,839
+helps. In the case with investors, how
+
+817
+00:35:07,599 --> 00:35:11,359
+do you do that? Well, you make that
+
+818
+00:35:09,839 --> 00:35:13,520
+case. So you say like okay this is the
+
+819
+00:35:11,359 --> 00:35:15,599
+case of 93%.
+
+820
+00:35:13,520 --> 00:35:16,880
+Um this is what I like to call top down
+
+821
+00:35:15,599 --> 00:35:18,480
+approach. So you make that case. The
+
+822
+00:35:16,880 --> 00:35:20,640
+second thing that you do is like you
+
+823
+00:35:18,480 --> 00:35:22,880
+show a bunch of use cases. So in our
+
+824
+00:35:20,640 --> 00:35:24,960
+case we have like hundreds of use cases
+
+825
+00:35:22,880 --> 00:35:28,720
+going into the medical cases going into
+
+826
+00:35:24,960 --> 00:35:30,560
+the finance cases go into the well all
+
+827
+00:35:28,720 --> 00:35:31,920
+kinds of cases and say okay so these are
+
+828
+00:35:30,560 --> 00:35:34,640
+the things that people are building. So
+
+829
+00:35:31,920 --> 00:35:36,480
+this is how they solving that 93% case.
+
+830
+00:35:34,640 --> 00:35:38,079
+So for example the example that that
+
+831
+00:35:36,480 --> 00:35:39,680
+panels just showed we see a lot of
+
+832
+00:35:38,079 --> 00:35:42,320
+startups using our technology to build
+
+833
+00:35:39,680 --> 00:35:44,640
+those kind of solutions on top of that
+
+834
+00:35:42,320 --> 00:35:46,480
+is that is what answer number one. So
+
+835
+00:35:44,640 --> 00:35:49,520
+what you do is like you show how big the
+
+836
+00:35:46,480 --> 00:35:52,079
+problem is you you give examples of how
+
+837
+00:35:49,520 --> 00:35:54,720
+people are using it and then you attach
+
+838
+00:35:52,079 --> 00:35:57,280
+that to um uh uh the value that you're
+
+839
+00:35:54,720 --> 00:35:58,960
+trying to create. That's one.
+
+840
+00:35:57,280 --> 00:36:02,800
+The second way is and that is more if
+
+841
+00:35:58,960 --> 00:36:05,119
+you talk to more um I like to call it
+
+842
+00:36:02,800 --> 00:36:06,079
+techsavvy investors is the other way
+
+843
+00:36:05,119 --> 00:36:08,160
+around.
+
+844
+00:36:06,079 --> 00:36:10,720
+>> So you start from the bottom up. So you
+
+845
+00:36:08,160 --> 00:36:13,440
+show this demo what I just showed is
+
+846
+00:36:10,720 --> 00:36:14,720
+very hard to achieve. Doing these kinds
+
+847
+00:36:13,440 --> 00:36:16,400
+of machine learning queries finding
+
+848
+00:36:14,720 --> 00:36:18,880
+these nodes in the graph in milliseconds
+
+849
+00:36:16,400 --> 00:36:23,839
+in a data set as large as the as
+
+850
+00:36:18,880 --> 00:36:25,839
+Wikipedia that's hard. and um uh they
+
+851
+00:36:23,839 --> 00:36:27,920
+know and then often you don't have to
+
+852
+00:36:25,839 --> 00:36:29,599
+explain how big the problem is because
+
+853
+00:36:27,920 --> 00:36:32,960
+they already know and they're searching
+
+854
+00:36:29,599 --> 00:36:35,200
+for companies that aim to solve that.
+
+855
+00:36:32,960 --> 00:36:38,560
+What is important to bear in mind though
+
+856
+00:36:35,200 --> 00:36:40,640
+is that the um if you build technology
+
+857
+00:36:38,560 --> 00:36:42,960
+like we are building which is like what
+
+858
+00:36:40,640 --> 00:36:45,520
+it's called like deep technology
+
+859
+00:36:42,960 --> 00:36:48,560
+there's always a distance from the
+
+860
+00:36:45,520 --> 00:36:50,240
+solution that you build to the end user.
+
+861
+00:36:48,560 --> 00:36:52,800
+So there always needs to be a company
+
+862
+00:36:50,240 --> 00:36:54,480
+like if I may give that example panels
+
+863
+00:36:52,800 --> 00:36:57,200
+like the company that you showed that
+
+864
+00:36:54,480 --> 00:36:58,240
+use your technology to get to an end
+
+865
+00:36:57,200 --> 00:37:00,640
+user
+
+866
+00:36:58,240 --> 00:37:02,160
+>> and anecdotally I would like to say that
+
+867
+00:37:00,640 --> 00:37:05,119
+uh
+
+868
+00:37:02,160 --> 00:37:06,960
+we discovered causally by just browsing
+
+869
+00:37:05,119 --> 00:37:08,800
+primitive website they had and we could
+
+870
+00:37:06,960 --> 00:37:11,200
+see only see like a graph of going for
+
+871
+00:37:08,800 --> 00:37:14,000
+example from one substance to its
+
+872
+00:37:11,200 --> 00:37:16,400
+effects that's it that's all the moment
+
+873
+00:37:14,000 --> 00:37:19,200
+we saw that was we say okay we need to
+
+874
+00:37:16,400 --> 00:37:20,880
+find these guys fund them. We didn't
+
+875
+00:37:19,200 --> 00:37:21,599
+have to say anything else.
+
+876
+00:37:20,880 --> 00:37:22,880
+>> Basically,
+
+877
+00:37:21,599 --> 00:37:25,280
+>> I was actually going to ask you
+
+878
+00:37:22,880 --> 00:37:27,440
+precisely that. So, what what did they
+
+879
+00:37:25,280 --> 00:37:29,440
+do uh to um to get you on board
+
+880
+00:37:27,440 --> 00:37:31,680
+basically and I was wondering if you
+
+881
+00:37:29,440 --> 00:37:33,680
+know they gave you a demo or how did it
+
+882
+00:37:31,680 --> 00:37:34,640
+work? But it was actually you coming to
+
+883
+00:37:33,680 --> 00:37:36,560
+them.
+
+884
+00:37:34,640 --> 00:37:38,320
+>> Yeah, we came to them. They weren't
+
+885
+00:37:36,560 --> 00:37:42,640
+raising money at the time. Uh they were
+
+886
+00:37:38,320 --> 00:37:45,359
+mostly working uh some PC's with a top
+
+887
+00:37:42,640 --> 00:37:47,760
+three pharma company in the world. and
+
+888
+00:37:45,359 --> 00:37:51,200
+we persuade them to go to to take our
+
+889
+00:37:47,760 --> 00:37:53,760
+money and go after more customers and
+
+890
+00:37:51,200 --> 00:37:55,440
+build product faster. U and they're now
+
+891
+00:37:53,760 --> 00:37:58,560
+doing extremely well. Uh they are
+
+892
+00:37:55,440 --> 00:38:01,680
+selling to several top health related
+
+893
+00:37:58,560 --> 00:38:04,079
+institutions, pharma companies, uh
+
+894
+00:38:01,680 --> 00:38:06,640
+health plans, insurance companies, even
+
+895
+00:38:04,079 --> 00:38:10,079
+hedge funds. Everybody who needs like to
+
+896
+00:38:06,640 --> 00:38:12,480
+be able to parse the bibliography in
+
+897
+00:38:10,079 --> 00:38:14,320
+this uh in this field as we know it's
+
+898
+00:38:12,480 --> 00:38:16,079
+extremely complicated. It changes very
+
+899
+00:38:14,320 --> 00:38:18,079
+fast. there's new evidence coming in all
+
+900
+00:38:16,079 --> 00:38:20,240
+the time and they need a solution like
+
+901
+00:38:18,079 --> 00:38:23,040
+that. So we are pretty sure that you
+
+902
+00:38:20,240 --> 00:38:24,800
+know anybody who can give similar demos
+
+903
+00:38:23,040 --> 00:38:28,079
+in other fields so definitely it's going
+
+904
+00:38:24,800 --> 00:38:30,480
+to uh have our full intention. I have
+
+905
+00:38:28,079 --> 00:38:31,839
+seen a a demo from an entrepreneur in
+
+906
+00:38:30,480 --> 00:38:34,000
+the US that of course we couldn't
+
+907
+00:38:31,839 --> 00:38:37,520
+invest. Uh they was doing the same thing
+
+908
+00:38:34,000 --> 00:38:40,480
+for smart for contracts for legal and
+
+909
+00:38:37,520 --> 00:38:42,720
+insurance and debt contracts and be able
+
+910
+00:38:40,480 --> 00:38:45,920
+to understand all the entities being
+
+911
+00:38:42,720 --> 00:38:48,160
+described there. Uh so a bank could just
+
+912
+00:38:45,920 --> 00:38:51,040
+use it to visualize for example uh you
+
+913
+00:38:48,160 --> 00:38:54,000
+know how they are exposed to risks and
+
+914
+00:38:51,040 --> 00:38:56,160
+eventually they could create a graph uh
+
+915
+00:38:54,000 --> 00:38:59,200
+a weighted graph where they can see you
+
+916
+00:38:56,160 --> 00:39:02,720
+know uh which pools of capital or what
+
+917
+00:38:59,200 --> 00:39:05,680
+branches or who people issued depth to
+
+918
+00:39:02,720 --> 00:39:07,520
+which entities by sector and see where
+
+919
+00:39:05,680 --> 00:39:08,960
+the risk resides and all of that was
+
+920
+00:39:07,520 --> 00:39:10,960
+visualized on a graph and they were
+
+921
+00:39:08,960 --> 00:39:13,520
+using graph database beneath to be able
+
+922
+00:39:10,960 --> 00:39:15,520
+to make uh these associations
+
+923
+00:39:13,520 --> 00:39:17,680
+Uh so as I said you know what changes
+
+924
+00:39:15,520 --> 00:39:19,839
+right now is we have big data but the
+
+925
+00:39:17,680 --> 00:39:22,720
+point of big data is not just to be like
+
+926
+00:39:19,839 --> 00:39:24,720
+you know time series or log data. This
+
+927
+00:39:22,720 --> 00:39:26,720
+is kind of boring to be honest. There
+
+928
+00:39:24,720 --> 00:39:29,359
+are so many tools that tackle the
+
+929
+00:39:26,720 --> 00:39:32,880
+problem very well but all these murky
+
+930
+00:39:29,359 --> 00:39:35,520
+relationships all these uh complex
+
+931
+00:39:32,880 --> 00:39:37,359
+problems that they have a lot of uh a
+
+932
+00:39:35,520 --> 00:39:39,599
+network of effects and second order
+
+933
+00:39:37,359 --> 00:39:42,000
+effects and third order effects cannot
+
+934
+00:39:39,599 --> 00:39:44,960
+be understood and studied and analyzed
+
+935
+00:39:42,000 --> 00:39:46,960
+in any other way. uh so I think but the
+
+936
+00:39:44,960 --> 00:39:49,280
+point is to be able to start from data
+
+937
+00:39:46,960 --> 00:39:52,079
+sets and build the graph that's the very
+
+938
+00:39:49,280 --> 00:39:53,680
+tricky part the technology is there but
+
+939
+00:39:52,079 --> 00:39:56,240
+for example the case of coal you know
+
+940
+00:39:53,680 --> 00:39:57,760
+they're using a lot of NLP technology
+
+941
+00:39:56,240 --> 00:40:00,240
+sometimes doesn't have to be like very
+
+942
+00:39:57,760 --> 00:40:02,240
+advanced NLP and machine learning it has
+
+943
+00:40:00,240 --> 00:40:03,920
+to be you know some very good huristics
+
+944
+00:40:02,240 --> 00:40:05,680
+and a good very good definition of the
+
+945
+00:40:03,920 --> 00:40:08,320
+language people are using when they are
+
+946
+00:40:05,680 --> 00:40:10,560
+writing biomedical papers uh same thing
+
+947
+00:40:08,320 --> 00:40:12,640
+could be done for other kind of sources
+
+948
+00:40:10,560 --> 00:40:15,359
+right the point is how you
+
+949
+00:40:12,640 --> 00:40:19,200
+deconstruct existing data sets and
+
+950
+00:40:15,359 --> 00:40:21,359
+create entities and edges.
+
+951
+00:40:19,200 --> 00:40:23,680
+>> Yeah, I may I add something there
+
+952
+00:40:21,359 --> 00:40:26,880
+because I one of the things that I
+
+953
+00:40:23,680 --> 00:40:28,880
+always like to say is that if you look
+
+954
+00:40:26,880 --> 00:40:32,400
+at the software stack and it also goes
+
+955
+00:40:28,880 --> 00:40:35,599
+for for example craft technology
+
+956
+00:40:32,400 --> 00:40:38,079
+is I I like to divide that into three
+
+957
+00:40:35,599 --> 00:40:39,760
+sections. So at the bottom layer, so the
+
+958
+00:40:38,079 --> 00:40:42,000
+lowest, the most abstract in the stack,
+
+959
+00:40:39,760 --> 00:40:44,320
+we have the hardware. And there are
+
+960
+00:40:42,000 --> 00:40:47,200
+certain hardware providers that are very
+
+961
+00:40:44,320 --> 00:40:49,200
+good at creating technology
+
+962
+00:40:47,200 --> 00:40:51,040
+uh uh uh like hardware technology that's
+
+963
+00:40:49,200 --> 00:40:53,680
+very good at for example calculating
+
+964
+00:40:51,040 --> 00:40:55,440
+graph relations comparable with like G
+
+965
+00:40:53,680 --> 00:40:57,440
+what GPUs are doing for machine
+
+966
+00:40:55,440 --> 00:40:59,040
+learning, right? Or those kind of
+
+967
+00:40:57,440 --> 00:41:01,520
+things. So that's at the bottom layer.
+
+968
+00:40:59,040 --> 00:41:03,040
+It's very abstract, but it's hardware
+
+969
+00:41:01,520 --> 00:41:05,920
+and that hardware helps you to
+
+970
+00:41:03,040 --> 00:41:08,240
+accelerate search. On top of that you
+
+971
+00:41:05,920 --> 00:41:10,000
+have the the infrastructure and the or
+
+972
+00:41:08,240 --> 00:41:12,400
+the the deep tech infrastructure if you
+
+973
+00:41:10,000 --> 00:41:14,560
+will. So that is where the databases
+
+974
+00:41:12,400 --> 00:41:16,400
+mostly sit like so that's the example
+
+975
+00:41:14,560 --> 00:41:18,000
+that we just talked about where NOPJ
+
+976
+00:41:16,400 --> 00:41:20,240
+sits that's where we sit and those kind
+
+977
+00:41:18,000 --> 00:41:22,319
+of things they add value from a
+
+978
+00:41:20,240 --> 00:41:24,880
+functional perspective
+
+979
+00:41:22,319 --> 00:41:26,800
+and then on top of that you have the use
+
+980
+00:41:24,880 --> 00:41:29,520
+case startups and the use case
+
+981
+00:41:26,800 --> 00:41:31,599
+businesses so they solve a specific
+
+982
+00:41:29,520 --> 00:41:33,680
+problem. So there was for example the
+
+983
+00:41:31,599 --> 00:41:35,440
+demo that Panos gave was a great example
+
+984
+00:41:33,680 --> 00:41:37,760
+of that right. So you see that there's a
+
+985
+00:41:35,440 --> 00:41:40,319
+specific use case, specific need in the
+
+986
+00:41:37,760 --> 00:41:44,000
+market and that is what's being shown. I
+
+987
+00:41:40,319 --> 00:41:46,480
+what I know from experience is that
+
+988
+00:41:44,000 --> 00:41:48,720
+you have different types of investors
+
+989
+00:41:46,480 --> 00:41:52,560
+for for these three different types in
+
+990
+00:41:48,720 --> 00:41:56,000
+the market. So you cannot ask from
+
+991
+00:41:52,560 --> 00:41:58,880
+snowflake for for for sake of argument
+
+992
+00:41:56,000 --> 00:42:00,800
+what's your use case because the the on
+
+993
+00:41:58,880 --> 00:42:03,040
+the use case level because the thing is
+
+994
+00:42:00,800 --> 00:42:05,359
+if you just have a lot of data and you
+
+995
+00:42:03,040 --> 00:42:07,839
+want to stare that store that in a
+
+996
+00:42:05,359 --> 00:42:10,079
+persistent data warehouse then you need
+
+997
+00:42:07,839 --> 00:42:12,000
+us. It's a functional thing. It's a
+
+998
+00:42:10,079 --> 00:42:13,839
+functional problem that they solve. So
+
+999
+00:42:12,000 --> 00:42:17,359
+what I've learned from experience is
+
+1000
+00:42:13,839 --> 00:42:19,440
+that um on the lowest level with the in
+
+1001
+00:42:17,359 --> 00:42:21,599
+with the infrastructure, the investors
+
+1002
+00:42:19,440 --> 00:42:24,960
+who sit there ask very sophisticated
+
+1003
+00:42:21,599 --> 00:42:27,359
+questions like um uh um so who's using
+
+1004
+00:42:24,960 --> 00:42:29,359
+this? How much can you improve it? Is
+
+1005
+00:42:27,359 --> 00:42:32,720
+there a need for the speed improvement?
+
+1006
+00:42:29,359 --> 00:42:34,480
+Uh those kind of things
+
+1007
+00:42:32,720 --> 00:42:36,240
+go to market.
+
+1008
+00:42:34,480 --> 00:42:38,000
+>> No, no, no, no, no. I I think the lower
+
+1009
+00:42:36,240 --> 00:42:40,000
+No, I I disagree with that. So the lower
+
+1010
+00:42:38,000 --> 00:42:41,599
+you go in the stack, the less important
+
+1011
+00:42:40,000 --> 00:42:42,400
+the go to market becomes.
+
+1012
+00:42:41,599 --> 00:42:45,119
+>> Mhm.
+
+1013
+00:42:42,400 --> 00:42:48,160
+>> Because the thing is if you are able to
+
+1014
+00:42:45,119 --> 00:42:51,040
+prove that you're creating hardware
+
+1015
+00:42:48,160 --> 00:42:52,880
+silicon that is improving these graph
+
+1016
+00:42:51,040 --> 00:42:54,720
+calculations
+
+1017
+00:42:52,880 --> 00:42:57,040
+but you go like yeah sorry but it's like
+
+1018
+00:42:54,720 --> 00:42:58,960
+it's three years go to market and I I I
+
+1019
+00:42:57,040 --> 00:43:00,880
+don't know yet what that means. The
+
+1020
+00:42:58,960 --> 00:43:03,680
+investors who are sophisticated in that
+
+1021
+00:43:00,880 --> 00:43:05,359
+layer they don't care. They go like they
+
+1022
+00:43:03,680 --> 00:43:06,640
+see it, they understand it and they
+
+1023
+00:43:05,359 --> 00:43:08,000
+>> No. Yeah. True. True. when you raise
+
+1024
+00:43:06,640 --> 00:43:10,000
+your seat down, you don't have to do
+
+1025
+00:43:08,000 --> 00:43:12,400
+that, right? But you need still to be
+
+1026
+00:43:10,000 --> 00:43:14,480
+able to understand some
+
+1027
+00:43:12,400 --> 00:43:16,000
+how you're going to also make the case
+
+1028
+00:43:14,480 --> 00:43:17,599
+in front of people because there are so
+
+1029
+00:43:16,000 --> 00:43:20,160
+many great technologies that never find
+
+1030
+00:43:17,599 --> 00:43:21,760
+adoption because the founders cannot uh
+
+1031
+00:43:20,160 --> 00:43:24,160
+demonstrate but there on the hardware
+
+1032
+00:43:21,760 --> 00:43:27,119
+it's quite interesting. we
+
+1033
+00:43:24,160 --> 00:43:29,200
+in a company doing FPGA acceleration and
+
+1034
+00:43:27,119 --> 00:43:31,200
+to be honest you know it's kind of
+
+1035
+00:43:29,200 --> 00:43:32,400
+difficult sometimes to in this noise
+
+1036
+00:43:31,200 --> 00:43:36,160
+environment
+
+1037
+00:43:32,400 --> 00:43:38,960
+>> to make performance gains uh sought
+
+1038
+00:43:36,160 --> 00:43:41,280
+after like you know some that's why you
+
+1039
+00:43:38,960 --> 00:43:43,440
+need specific very good investors that
+
+1040
+00:43:41,280 --> 00:43:45,359
+have a lot of money to keep investing in
+
+1041
+00:43:43,440 --> 00:43:47,280
+this endeavor for a very long time to to
+
+1042
+00:43:45,359 --> 00:43:49,119
+be able to
+
+1043
+00:43:47,280 --> 00:43:53,040
+>> to find your first customers
+
+1044
+00:43:49,119 --> 00:43:55,599
+>> yeah I I I some through that. Yeah,
+
+1045
+00:43:53,040 --> 00:43:58,480
+>> just to add to um to what you're um
+
+1046
+00:43:55,599 --> 00:44:00,560
+debating let's say about I have a very
+
+1047
+00:43:58,480 --> 00:44:02,800
+specific actually a number of very
+
+1048
+00:44:00,560 --> 00:44:04,960
+specific use cases to uh to reference
+
+1049
+00:44:02,800 --> 00:44:07,520
+there and some of them we actually
+
+1050
+00:44:04,960 --> 00:44:09,440
+hosted earlier in one of our sessions.
+
+1051
+00:44:07,520 --> 00:44:12,160
+So one of our sessions was precisely
+
+1052
+00:44:09,440 --> 00:44:14,640
+about that uh graph processing on the
+
+1053
+00:44:12,160 --> 00:44:17,920
+hardware level and we had people from uh
+
+1054
+00:44:14,640 --> 00:44:20,720
+Sananova uh we had people from graph
+
+1055
+00:44:17,920 --> 00:44:23,839
+core and a couple of uh other companies
+
+1056
+00:44:20,720 --> 00:44:27,200
+as well who specialize in precisely that
+
+1057
+00:44:23,839 --> 00:44:30,800
+making optimized hardware for processing
+
+1058
+00:44:27,200 --> 00:44:33,119
+uh graph uh graph operations and as far
+
+1059
+00:44:30,800 --> 00:44:35,440
+as I know as far as I've been able to uh
+
+1060
+00:44:33,119 --> 00:44:37,200
+to talk with uh executives from from all
+
+1061
+00:44:35,440 --> 00:44:39,200
+of these companies and actually there's
+
+1062
+00:44:37,200 --> 00:44:40,720
+a bunch more, not not just the ones that
+
+1063
+00:44:39,200 --> 00:44:43,520
+we hosted. There's there's more that's
+
+1064
+00:44:40,720 --> 00:44:45,839
+just popping up by the day almost. And
+
+1065
+00:44:43,520 --> 00:44:49,200
+what I what I [snorts] observe is that
+
+1066
+00:44:45,839 --> 00:44:52,880
+well people funds who invest in those
+
+1067
+00:44:49,200 --> 00:44:54,720
+seem to somehow to um to add to um to uh
+
+1068
+00:44:52,880 --> 00:44:57,440
+to support actually Bob's argument, they
+
+1069
+00:44:54,720 --> 00:44:59,440
+seem to be focused on that specific uh
+
+1070
+00:44:57,440 --> 00:45:01,359
+on that specific area. So they
+
+1071
+00:44:59,440 --> 00:45:04,640
+understand very well that you know even
+
+1072
+00:45:01,359 --> 00:45:07,520
+what may seem like um marginal let's say
+
+1073
+00:45:04,640 --> 00:45:10,880
+improvement today uh could be actually a
+
+1074
+00:45:07,520 --> 00:45:12,800
+big deal if you apply that uh at scale.
+
+1075
+00:45:10,880 --> 00:45:15,760
+>> Yeah. And and a case in point there is
+
+1076
+00:45:12,800 --> 00:45:18,400
+the GPU. So what is the GPU nowadays
+
+1077
+00:45:15,760 --> 00:45:22,079
+used for the most machine learning
+
+1078
+00:45:18,400 --> 00:45:23,119
+training and uh um uh um uh everything
+
+1079
+00:45:22,079 --> 00:45:25,680
+related to blockchain and
+
+1080
+00:45:23,119 --> 00:45:28,960
+cryptocurrency. What does the G and GPU
+
+1081
+00:45:25,680 --> 00:45:31,839
+mean? graphical processing unit. So when
+
+1082
+00:45:28,960 --> 00:45:34,160
+it was created, it had the focus on
+
+1083
+00:45:31,839 --> 00:45:37,359
+processing like you know calculating the
+
+1084
+00:45:34,160 --> 00:45:40,480
+triangles in in in showing 3D graphics
+
+1085
+00:45:37,359 --> 00:45:42,560
+and and if I may uh if I may quickly
+
+1086
+00:45:40,480 --> 00:45:46,720
+finish my my thought about like the the
+
+1087
+00:45:42,560 --> 00:45:48,560
+the stack the so so yeah what because we
+
+1088
+00:45:46,720 --> 00:45:50,960
+were talking about the hardware then on
+
+1089
+00:45:48,560 --> 00:45:52,880
+top of that so this is where I kind of
+
+1090
+00:45:50,960 --> 00:45:55,680
+know that's where I sit so I know the
+
+1091
+00:45:52,880 --> 00:45:56,960
+most about the deep tech people are you
+
+1092
+00:45:55,680 --> 00:45:59,200
+interest or sorry the investor interest
+
+1093
+00:45:56,960 --> 00:46:01,280
+in the horizontal scalability So like
+
+1094
+00:45:59,200 --> 00:46:04,800
+and I don't mean no not scalability the
+
+1095
+00:46:01,280 --> 00:46:06,400
+horizontal applications. So the more
+
+1096
+00:46:04,800 --> 00:46:08,960
+different companies that you can find
+
+1097
+00:46:06,400 --> 00:46:11,760
+that use your technology
+
+1098
+00:46:08,960 --> 00:46:14,400
+shows how valuable it is. So if you have
+
+1099
+00:46:11,760 --> 00:46:18,000
+insurance companies, financial com uh uh
+
+1100
+00:46:14,400 --> 00:46:20,400
+companies uh uh startups uh uh uh
+
+1101
+00:46:18,000 --> 00:46:22,960
+chemicalbased whatever you can think of
+
+1102
+00:46:20,400 --> 00:46:25,839
+using your technology that shows the the
+
+1103
+00:46:22,960 --> 00:46:30,000
+broad applicability and then on that
+
+1104
+00:46:25,839 --> 00:46:31,599
+layer above that's the use case um u
+
+1105
+00:46:30,000 --> 00:46:33,359
+layer. So where you just for example
+
+1106
+00:46:31,599 --> 00:46:35,920
+have a graphical user interface where
+
+1107
+00:46:33,359 --> 00:46:38,000
+people use it then I believe it becomes
+
+1108
+00:46:35,920 --> 00:46:40,480
+very important early on to show that go
+
+1109
+00:46:38,000 --> 00:46:41,920
+to market because then you are very
+
+1110
+00:46:40,480 --> 00:46:43,440
+specific about your use case and then
+
+1111
+00:46:41,920 --> 00:46:45,680
+the question becomes how much are people
+
+1112
+00:46:43,440 --> 00:46:47,680
+willing to pay for that. But if you are
+
+1113
+00:46:45,680 --> 00:46:50,640
+lower in that stack and you just show
+
+1114
+00:46:47,680 --> 00:46:52,560
+the value and a lot of people using it
+
+1115
+00:46:50,640 --> 00:46:54,079
+then that is that then that creates
+
+1116
+00:46:52,560 --> 00:46:56,319
+interest in the investors who are
+
+1117
+00:46:54,079 --> 00:46:59,440
+knowledgeable about that specific space.
+
+1118
+00:46:56,319 --> 00:47:00,160
+>> Let me maybe a few words about this. Y
+
+1119
+00:46:59,440 --> 00:47:02,000
+sure
+
+1120
+00:47:00,160 --> 00:47:03,920
+>> I think it's significantly depends on
+
+1121
+00:47:02,000 --> 00:47:07,680
+type of the market. So you don't need to
+
+1122
+00:47:03,920 --> 00:47:09,760
+show go to market at develop at hardware
+
+1123
+00:47:07,680 --> 00:47:11,440
+level or middleware level but you need
+
+1124
+00:47:09,760 --> 00:47:13,200
+to show that the market is big because
+
+1125
+00:47:11,440 --> 00:47:16,800
+obviously if you develop hardware which
+
+1126
+00:47:13,200 --> 00:47:18,240
+is greater than current GPUs and TPUs in
+
+1127
+00:47:16,800 --> 00:47:20,560
+terms of machine learning processing
+
+1128
+00:47:18,240 --> 00:47:22,880
+then it's fine you definitely will find
+
+1129
+00:47:20,560 --> 00:47:25,040
+some good funding. The same for quantum
+
+1130
+00:47:22,880 --> 00:47:27,200
+computers which we invested by the way.
+
+1131
+00:47:25,040 --> 00:47:30,160
+If you create
+
+1132
+00:47:27,200 --> 00:47:32,800
+working quantum computer with
+
+1133
+00:47:30,160 --> 00:47:34,560
+>> with meaningful amount of cubits and
+
+1134
+00:47:32,800 --> 00:47:36,800
+they are working and so on you have
+
+1135
+00:47:34,560 --> 00:47:38,560
+something to show at least at your lab
+
+1136
+00:47:36,800 --> 00:47:41,280
+laboratory then it's fine. definitely
+
+1137
+00:47:38,560 --> 00:47:42,640
+will find good market and because a lot
+
+1138
+00:47:41,280 --> 00:47:45,119
+of governments already committed
+
+1139
+00:47:42,640 --> 00:47:48,480
+billions of dollars for quantum programs
+
+1140
+00:47:45,119 --> 00:47:50,960
+and we maybe we'll never know uh for
+
+1141
+00:47:48,480 --> 00:47:52,720
+sure I mean if we will see a real world
+
+1142
+00:47:50,960 --> 00:47:54,480
+applications of quantum computing in the
+
+1143
+00:47:52,720 --> 00:47:56,720
+next 10 years but we definitely know
+
+1144
+00:47:54,480 --> 00:47:58,480
+that there is budget for next 10 years
+
+1145
+00:47:56,720 --> 00:48:01,280
+that's why for example we see company
+
+1146
+00:47:58,480 --> 00:48:03,359
+like inq right now it's a public company
+
+1147
+00:48:01,280 --> 00:48:07,359
+worth I think around four or five
+
+1148
+00:48:03,359 --> 00:48:09,440
+billion dollar which has zero sales and
+
+1149
+00:48:07,359 --> 00:48:10,880
+has no working quantum computer yet, but
+
+1150
+00:48:09,440 --> 00:48:13,359
+it's already worth billions because
+
+1151
+00:48:10,880 --> 00:48:15,280
+people believe that there is market for
+
+1152
+00:48:13,359 --> 00:48:17,599
+such kind of solutions. But we're
+
+1153
+00:48:15,280 --> 00:48:19,920
+talking about hardware for graph
+
+1154
+00:48:17,599 --> 00:48:22,079
+database processing. Well, I'm not sure
+
+1155
+00:48:19,920 --> 00:48:24,480
+even if you develop the best hardware in
+
+1156
+00:48:22,079 --> 00:48:26,800
+this particular niche that it makes a
+
+1157
+00:48:24,480 --> 00:48:30,000
+lot of sense in terms of a meaning
+
+1158
+00:48:26,800 --> 00:48:32,160
+because this market niche is is more
+
+1159
+00:48:30,000 --> 00:48:34,400
+narrow than let's say quantum computing
+
+1160
+00:48:32,160 --> 00:48:37,520
+or machine learning applications. So it
+
+1161
+00:48:34,400 --> 00:48:41,599
+all depends about on size of the market
+
+1162
+00:48:37,520 --> 00:48:44,640
+and people's people beliefs about its
+
+1163
+00:48:41,599 --> 00:48:47,760
+size in the future at least.
+
+1164
+00:48:44,640 --> 00:48:49,839
+>> Yes. So I sorry go ahead.
+
+1165
+00:48:47,760 --> 00:48:52,720
+>> Yeah I was just going to say that well
+
+1166
+00:48:49,839 --> 00:48:54,880
+um you know I'm just relaying basically
+
+1167
+00:48:52,720 --> 00:48:57,920
+here the uh the arguments of the people
+
+1168
+00:48:54,880 --> 00:49:00,240
+building uh graph centered hardware but
+
+1169
+00:48:57,920 --> 00:49:02,800
+uh their ar their main point is that
+
+1170
+00:49:00,240 --> 00:49:05,359
+well basically at the compiler level
+
+1171
+00:49:02,800 --> 00:49:08,880
+everything is a graph operation. So uh
+
+1172
+00:49:05,359 --> 00:49:11,280
+by optimizing this you make you make
+
+1173
+00:49:08,880 --> 00:49:12,960
+hardware that's that can accelerate
+
+1174
+00:49:11,280 --> 00:49:16,079
+everything. You know I'm simplifying it
+
+1175
+00:49:12,960 --> 00:49:17,839
+as much as possible.
+
+1176
+00:49:16,079 --> 00:49:20,160
+Yeah and and that is that is exactly my
+
+1177
+00:49:17,839 --> 00:49:22,720
+point. So the where where the where the
+
+1178
+00:49:20,160 --> 00:49:26,480
+the graph operation adds the value in
+
+1179
+00:49:22,720 --> 00:49:29,040
+that stack. So um the hardware deep tech
+
+1180
+00:49:26,480 --> 00:49:32,480
+or the on the functionality layer is
+
+1181
+00:49:29,040 --> 00:49:34,160
+completely different. So what I notice
+
+1182
+00:49:32,480 --> 00:49:35,920
+and I don't know if you guys notice that
+
+1183
+00:49:34,160 --> 00:49:37,839
+as well but on the on the top layer if
+
+1184
+00:49:35,920 --> 00:49:39,680
+people talk about graph they talk about
+
+1185
+00:49:37,839 --> 00:49:41,599
+the visualization of the graph that they
+
+1186
+00:49:39,680 --> 00:49:45,920
+want to see it. If you talk at the
+
+1187
+00:49:41,599 --> 00:49:48,400
+lowest level, we talk about um u um
+
+1188
+00:49:45,920 --> 00:49:50,240
+graph operations in for example on C CPU
+
+1189
+00:49:48,400 --> 00:49:52,559
+level or a machine learning model,
+
+1190
+00:49:50,240 --> 00:49:55,280
+right? That's also some form of a graph.
+
+1191
+00:49:52,559 --> 00:49:57,760
+So that you somehow want to optimize uh
+
+1192
+00:49:55,280 --> 00:50:01,680
+which is not per se very visible and
+
+1193
+00:49:57,760 --> 00:50:03,200
+then on our layer it's just unless that
+
+1194
+00:50:01,680 --> 00:50:05,599
+you're dealing with things like time
+
+1195
+00:50:03,200 --> 00:50:09,040
+series and those kind of things. the
+
+1196
+00:50:05,599 --> 00:50:12,000
+fact that we decided to create VV8 in a
+
+1197
+00:50:09,040 --> 00:50:14,640
+um and have a graph data model that was
+
+1198
+00:50:12,000 --> 00:50:16,160
+just that may just the reason not to do
+
+1199
+00:50:14,640 --> 00:50:18,800
+that I mean there's enough computing
+
+1200
+00:50:16,160 --> 00:50:21,040
+power to do it so why not just do that
+
+1201
+00:50:18,800 --> 00:50:22,960
+and
+
+1202
+00:50:21,040 --> 00:50:25,200
+so so the point I want to make with this
+
+1203
+00:50:22,960 --> 00:50:27,119
+is that in these different layers the
+
+1204
+00:50:25,200 --> 00:50:31,920
+role of the graph and where the graph
+
+1205
+00:50:27,119 --> 00:50:33,599
+adds value is different and uh and I I I
+
+1206
+00:50:31,920 --> 00:50:36,319
+think that should be that's something
+
+1207
+00:50:33,599 --> 00:50:39,040
+that that we should to um um should
+
+1208
+00:50:36,319 --> 00:50:41,440
+think about and the so maybe even should
+
+1209
+00:50:39,040 --> 00:50:44,400
+acknowledge when we talk about where the
+
+1210
+00:50:41,440 --> 00:50:48,200
+value of these graph-based technologies
+
+1211
+00:50:44,400 --> 00:50:48,200
+uh is added.
+
+1212
+00:50:49,040 --> 00:50:54,720
+>> Okay. So we kind of danced [snorts]
+
+1213
+00:50:51,920 --> 00:50:57,280
+around let's say the uh the topic of how
+
+1214
+00:50:54,720 --> 00:51:00,079
+how big this this market is or even how
+
+1215
+00:50:57,280 --> 00:51:02,079
+how to define it and well Bob you
+
+1216
+00:51:00,079 --> 00:51:04,559
+provided one one way to to look at
+
+1217
+00:51:02,079 --> 00:51:06,720
+things by uh this three layer stack
+
+1218
+00:51:04,559 --> 00:51:09,359
+let's say and depending if you adopt
+
+1219
+00:51:06,720 --> 00:51:12,160
+this view you may choose to to address
+
+1220
+00:51:09,359 --> 00:51:14,480
+uh the the market the associated markets
+
+1221
+00:51:12,160 --> 00:51:16,480
+actually in in a similar way so let's
+
+1222
+00:51:14,480 --> 00:51:18,800
+say the the hardware market and the deep
+
+1223
+00:51:16,480 --> 00:51:21,760
+tech market and then the uh applications
+
+1224
+00:51:18,800 --> 00:51:23,359
+let's a uh market. That's one way of of
+
+1225
+00:51:21,760 --> 00:51:25,760
+looking at things. The other way would
+
+1226
+00:51:23,359 --> 00:51:28,480
+be to approach it as a kind of in the
+
+1227
+00:51:25,760 --> 00:51:31,520
+kind of uh technology segmentation let's
+
+1228
+00:51:28,480 --> 00:51:35,280
+say that we initially adopted in this uh
+
+1229
+00:51:31,520 --> 00:51:37,680
+connected data uh world look at look at
+
+1230
+00:51:35,280 --> 00:51:40,160
+things. So the graph database market
+
+1231
+00:51:37,680 --> 00:51:43,280
+then the knowledge graph market the uh
+
+1232
+00:51:40,160 --> 00:51:45,040
+the graph machine learning market and uh
+
+1233
+00:51:43,280 --> 00:51:47,200
+the uh semantic technology market.
+
+1234
+00:51:45,040 --> 00:51:49,119
+That's another another way of looking at
+
+1235
+00:51:47,200 --> 00:51:51,920
+things. It all depends on on the lens
+
+1236
+00:51:49,119 --> 00:51:55,599
+you choose. Whatever lens you choose, uh
+
+1237
+00:51:51,920 --> 00:51:57,280
+let's generalize a little bit. How would
+
+1238
+00:51:55,599 --> 00:52:00,000
+you well actually the lens that you
+
+1239
+00:51:57,280 --> 00:52:03,280
+choose does make uh does play a role
+
+1240
+00:52:00,000 --> 00:52:05,280
+because it um it kind of dictates let's
+
+1241
+00:52:03,280 --> 00:52:07,920
+say uh what what sources you would be
+
+1242
+00:52:05,280 --> 00:52:09,760
+looking at. So I would like to address
+
+1243
+00:52:07,920 --> 00:52:12,800
+this question to all of you and you can
+
+1244
+00:52:09,760 --> 00:52:15,280
+take turns as you uh as you please u
+
+1245
+00:52:12,800 --> 00:52:17,680
+answering it. So, what are your go-to
+
+1246
+00:52:15,280 --> 00:52:20,480
+sources if you want to uh evaluate,
+
+1247
+00:52:17,680 --> 00:52:24,920
+let's say, um or get a feeling of uh how
+
+1248
+00:52:20,480 --> 00:52:24,920
+how big this this market is?
+
+1249
+00:52:31,599 --> 00:52:34,480
+>> Would you?
+
+1250
+00:52:32,160 --> 00:52:36,800
+>> Well, let let me give some simple
+
+1251
+00:52:34,480 --> 00:52:39,920
+answer. For most of the markets we
+
+1252
+00:52:36,800 --> 00:52:42,079
+consider investing investments
+
+1253
+00:52:39,920 --> 00:52:45,200
+uh it's pretty obvious that the markets
+
+1254
+00:52:42,079 --> 00:52:46,960
+are large enough. So we don't even need
+
+1255
+00:52:45,200 --> 00:52:48,880
+to
+
+1256
+00:52:46,960 --> 00:52:52,000
+uh collect a lot of data because it's
+
+1257
+00:52:48,880 --> 00:52:55,040
+obviously that if you building let's say
+
+1258
+00:52:52,000 --> 00:52:58,480
+data warehouse then the market is huge.
+
+1259
+00:52:55,040 --> 00:53:01,040
+uh the same for most of things uh we
+
+1260
+00:52:58,480 --> 00:53:02,800
+consider. There are some uh specific
+
+1261
+00:53:01,040 --> 00:53:05,760
+areas for example like quantum computing
+
+1262
+00:53:02,800 --> 00:53:07,760
+which is not obvious current moment and
+
+1263
+00:53:05,760 --> 00:53:10,000
+then well we just talk with a lot of
+
+1264
+00:53:07,760 --> 00:53:13,280
+experts of the market trying to
+
+1265
+00:53:10,000 --> 00:53:15,200
+understand uh what kind of budgets would
+
+1266
+00:53:13,280 --> 00:53:17,599
+be available in the next five or 10
+
+1267
+00:53:15,200 --> 00:53:20,559
+years maybe by by governments or by
+
+1268
+00:53:17,599 --> 00:53:22,640
+enterprises or maybe by consumers in
+
+1269
+00:53:20,559 --> 00:53:25,760
+different areas.
+
+1270
+00:53:22,640 --> 00:53:28,720
+>> Okay. So it sounds like your um primary
+
+1271
+00:53:25,760 --> 00:53:31,200
+way of uh evaluation in that case is in
+
+1272
+00:53:28,720 --> 00:53:33,839
+a way doing your own research. So uh
+
+1273
+00:53:31,200 --> 00:53:36,079
+talking to uh to people um who may be
+
+1274
+00:53:33,839 --> 00:53:38,800
+potential users.
+
+1275
+00:53:36,079 --> 00:53:41,520
+>> Uh yeah but by the end of the day I mean
+
+1276
+00:53:38,800 --> 00:53:44,800
+uh well if you can see just Gardner
+
+1277
+00:53:41,520 --> 00:53:48,079
+report about some market and it shows
+
+1278
+00:53:44,800 --> 00:53:50,319
+that it's say5 billion dollar then as a
+
+1279
+00:53:48,079 --> 00:53:52,880
+VC you don't really care if it's correct
+
+1280
+00:53:50,319 --> 00:53:54,880
+number or wrong. you care more about,
+
+1281
+00:53:52,880 --> 00:53:57,040
+let's say, order of magnitude of this
+
+1282
+00:53:54,880 --> 00:53:58,880
+number. I mean, it could be three or
+
+1283
+00:53:57,040 --> 00:54:01,280
+seven. You don't really care. You care
+
+1284
+00:53:58,880 --> 00:54:02,640
+that it's much higher than 1 billion
+
+1285
+00:54:01,280 --> 00:54:03,200
+dollar.
+
+1286
+00:54:02,640 --> 00:54:07,119
+>> Mhm.
+
+1287
+00:54:03,200 --> 00:54:09,680
+>> And it's enough big market to create a
+
+1288
+00:54:07,119 --> 00:54:12,640
+valuable company in this market. If
+
+1289
+00:54:09,680 --> 00:54:15,520
+things will go well, uh I think you know
+
+1290
+00:54:12,640 --> 00:54:18,079
+we are not interested so much in how big
+
+1291
+00:54:15,520 --> 00:54:19,440
+is the market when you start. The
+
+1292
+00:54:18,079 --> 00:54:21,760
+question is you know how big is the
+
+1293
+00:54:19,440 --> 00:54:23,680
+market when you exit, right? So in seven
+
+1294
+00:54:21,760 --> 00:54:25,760
+eight years something will be extremely
+
+1295
+00:54:23,680 --> 00:54:27,200
+different. So if you go back and look at
+
+1296
+00:54:25,760 --> 00:54:29,280
+infrastructure like you know let's say
+
+1297
+00:54:27,200 --> 00:54:30,800
+new graph database I think what really
+
+1298
+00:54:29,280 --> 00:54:32,559
+matters is adoption like open source
+
+1299
+00:54:30,800 --> 00:54:34,800
+adoption how you can actually create a
+
+1300
+00:54:32,559 --> 00:54:38,559
+vibrant community and how you can
+
+1301
+00:54:34,800 --> 00:54:39,760
+diversify versus everything else. Um so
+
+1302
+00:54:38,559 --> 00:54:42,400
+sometimes you know people are just
+
+1303
+00:54:39,760 --> 00:54:44,079
+taking like a Java database application
+
+1304
+00:54:42,400 --> 00:54:46,079
+and then they rewrite it in C and
+
+1305
+00:54:44,079 --> 00:54:48,720
+they're claiming that it's going to be
+
+1306
+00:54:46,079 --> 00:54:50,559
+30% cheaper to operate.
+
+1307
+00:54:48,720 --> 00:54:51,920
+uh that's a great feature but it's not
+
+1308
+00:54:50,559 --> 00:54:53,760
+like a winning feature. A winning
+
+1309
+00:54:51,920 --> 00:54:55,599
+feature is like to do something in a
+
+1310
+00:54:53,760 --> 00:54:57,599
+very different way. If you see for
+
+1311
+00:54:55,599 --> 00:55:00,000
+example other parts of the of the market
+
+1312
+00:54:57,599 --> 00:55:02,079
+of data market you will see for example
+
+1313
+00:55:00,000 --> 00:55:04,559
+how now everything is becoming like a
+
+1314
+00:55:02,079 --> 00:55:06,880
+stream even likedms now they are
+
+1315
+00:55:04,559 --> 00:55:08,559
+materialized using streams. So it's a
+
+1316
+00:55:06,880 --> 00:55:10,720
+different way to do something more
+
+1317
+00:55:08,559 --> 00:55:12,640
+traditional uh which is quite
+
+1318
+00:55:10,720 --> 00:55:14,880
+interesting. So there I think you know
+
+1319
+00:55:12,640 --> 00:55:16,800
+you need to have a huge edge versus you
+
+1320
+00:55:14,880 --> 00:55:18,480
+know the incumbents a new way to do
+
+1321
+00:55:16,800 --> 00:55:20,000
+things and of course show that the
+
+1322
+00:55:18,480 --> 00:55:21,920
+market resonates with you and when I
+
+1323
+00:55:20,000 --> 00:55:24,160
+make markets I mean developer adoption
+
+1324
+00:55:21,920 --> 00:55:25,440
+essentially right now on the application
+
+1325
+00:55:24,160 --> 00:55:27,599
+that's where things can get more
+
+1326
+00:55:25,440 --> 00:55:29,760
+interesting because there are some very
+
+1327
+00:55:27,599 --> 00:55:32,800
+narrow markets so someone somebody is
+
+1328
+00:55:29,760 --> 00:55:35,920
+using I don't know a graph at the base
+
+1329
+00:55:32,800 --> 00:55:37,760
+application just to analyze uh 10
+
+1330
+00:55:35,920 --> 00:55:39,760
+proteins and just this 10 proteins
+
+1331
+00:55:37,760 --> 00:55:41,599
+because they apply I don't know in uh
+
+1332
+00:55:39,760 --> 00:55:43,920
+some I don't know food production
+
+1333
+00:55:41,599 --> 00:55:45,680
+Maybe that's a small market, right? Uh
+
+1334
+00:55:43,920 --> 00:55:47,440
+but they may have like a plan to to go
+
+1335
+00:55:45,680 --> 00:55:49,440
+much bigger. They might want to be able
+
+1336
+00:55:47,440 --> 00:55:51,599
+to analyze or chemicals are going into
+
+1337
+00:55:49,440 --> 00:55:53,280
+food or cosmetics or anything else and
+
+1338
+00:55:51,599 --> 00:55:56,720
+create like a virtual solution for a
+
+1339
+00:55:53,280 --> 00:55:58,960
+market. Uh also we see you know what uh
+
+1340
+00:55:56,720 --> 00:56:01,520
+founders are starting with is just you
+
+1341
+00:55:58,960 --> 00:56:03,839
+know opening up their appetite uh and
+
+1342
+00:56:01,520 --> 00:56:04,960
+eventually they expand and expand. It's
+
+1343
+00:56:03,839 --> 00:56:06,880
+very important to know that you know
+
+1344
+00:56:04,960 --> 00:56:08,799
+they can nail a market first even a
+
+1345
+00:56:06,880 --> 00:56:11,839
+narrow one in a niche market and I think
+
+1346
+00:56:08,799 --> 00:56:14,400
+it's more important to start with a
+
+1347
+00:56:11,839 --> 00:56:16,720
+niche market and find love in the market
+
+1348
+00:56:14,400 --> 00:56:19,040
+that people don't go back to the life
+
+1349
+00:56:16,720 --> 00:56:21,680
+before using your tool and then you can
+
+1350
+00:56:19,040 --> 00:56:24,160
+go and adjusted markets and win over. Uh
+
+1351
+00:56:21,680 --> 00:56:26,000
+we have seen it again and again. Uh so
+
+1352
+00:56:24,160 --> 00:56:28,240
+the question is not about how big is the
+
+1353
+00:56:26,000 --> 00:56:29,760
+market now. How the question the the the
+
+1354
+00:56:28,240 --> 00:56:31,680
+question is how big is going to be in
+
+1355
+00:56:29,760 --> 00:56:35,280
+the future and what are the changes that
+
+1356
+00:56:31,680 --> 00:56:38,000
+going to enabling this market to 10x or
+
+1357
+00:56:35,280 --> 00:56:41,760
+100x in the future as I said before uh
+
+1358
+00:56:38,000 --> 00:56:44,480
+in my previous uh comment. Uh what we
+
+1359
+00:56:41,760 --> 00:56:47,920
+see right now as a make as a huge
+
+1360
+00:56:44,480 --> 00:56:49,920
+enabler for graph the basis is
+
+1361
+00:56:47,920 --> 00:56:52,240
+remodeling the world analyzing existing
+
+1362
+00:56:49,920 --> 00:56:53,920
+corpuses and breaking down into more and
+
+1363
+00:56:52,240 --> 00:56:57,280
+more relationship that before with
+
+1364
+00:56:53,920 --> 00:56:59,599
+previous technology wasn't possible. Um
+
+1365
+00:56:57,280 --> 00:57:02,160
+so yeah I think you know it's it's not
+
+1366
+00:56:59,599 --> 00:57:04,480
+going to be like a dedicated let's say
+
+1367
+00:57:02,160 --> 00:57:06,960
+segment of the market like in a way it
+
+1368
+00:57:04,480 --> 00:57:09,760
+might be as big as the that market is
+
+1369
+00:57:06,960 --> 00:57:13,440
+right now.
+
+1370
+00:57:09,760 --> 00:57:14,880
+>> Yeah. So um somebody mentioned the uh I
+
+1371
+00:57:13,440 --> 00:57:17,680
+think it was you consenting somebody
+
+1372
+00:57:14,880 --> 00:57:20,240
+mentioned the the magic word uh gardener
+
+1373
+00:57:17,680 --> 00:57:22,640
+and predictions and all that. So it's a
+
+1374
+00:57:20,240 --> 00:57:26,160
+very good segue for me to share
+
+1375
+00:57:22,640 --> 00:57:29,839
+something that I wanted to uh to share.
+
+1376
+00:57:26,160 --> 00:57:32,079
+>> If I may sh I would love to also add add
+
+1377
+00:57:29,839 --> 00:57:34,160
+an answer there if I if I may. Mhm.
+
+1378
+00:57:32,079 --> 00:57:36,240
+>> Y yeah.
+
+1379
+00:57:34,160 --> 00:57:39,119
+So quickly before because what's
+
+1380
+00:57:36,240 --> 00:57:41,440
+interesting from the from the other two
+
+1381
+00:57:39,119 --> 00:57:44,880
+guests here is like looking at it from
+
+1382
+00:57:41,440 --> 00:57:46,319
+the perspective of a an investor. Um but
+
+1383
+00:57:44,880 --> 00:57:48,400
+I'm of course looking at it from a
+
+1384
+00:57:46,319 --> 00:57:49,520
+perspective of a of a startup making new
+
+1385
+00:57:48,400 --> 00:57:52,400
+technology
+
+1386
+00:57:49,520 --> 00:57:54,319
+>> and I I think so I you have a different
+
+1387
+00:57:52,400 --> 00:57:56,000
+point of view to the in your business
+
+1388
+00:57:54,319 --> 00:57:57,760
+development towards the market because
+
+1389
+00:57:56,000 --> 00:57:59,280
+the thing that you've created that's
+
+1390
+00:57:57,760 --> 00:58:03,119
+your starting point that's what you need
+
+1391
+00:57:59,280 --> 00:58:06,559
+to work with and so what we have done is
+
+1392
+00:58:03,119 --> 00:58:08,960
+that we said like okay what we can do we
+
+1393
+00:58:06,559 --> 00:58:12,640
+so we use machine learning to identify
+
+1394
+00:58:08,960 --> 00:58:15,280
+these graph notes in the graph as I just
+
+1395
+00:58:12,640 --> 00:58:16,720
+shared in the Wikipedia um demo and then
+
+1396
+00:58:15,280 --> 00:58:18,559
+the question becomes like so where does
+
+1397
+00:58:16,720 --> 00:58:20,240
+that add a lot of value and then you
+
+1398
+00:58:18,559 --> 00:58:22,720
+make a few assumptions. So for example
+
+1399
+00:58:20,240 --> 00:58:25,440
+in fast move consumer goods in in the
+
+1400
+00:58:22,720 --> 00:58:28,079
+medical space in insurance finance and
+
+1401
+00:58:25,440 --> 00:58:29,839
+those kind of things you create a use
+
+1402
+00:58:28,079 --> 00:58:31,760
+case on top of that in the three
+
+1403
+00:58:29,839 --> 00:58:35,680
+sections that I mentioned in the topper
+
+1404
+00:58:31,760 --> 00:58:38,400
+in the higher layer and you try to find
+
+1405
+00:58:35,680 --> 00:58:39,760
+users or customers there. users is a
+
+1406
+00:58:38,400 --> 00:58:41,440
+little bit different when you have open
+
+1407
+00:58:39,760 --> 00:58:43,920
+source software like us because they
+
+1408
+00:58:41,440 --> 00:58:46,079
+often find you but you also try to find
+
+1409
+00:58:43,920 --> 00:58:48,079
+customers. So what you can do with these
+
+1410
+00:58:46,079 --> 00:58:50,480
+kind of deep technologies is that you
+
+1411
+00:58:48,079 --> 00:58:52,720
+can assume a use case.
+
+1412
+00:58:50,480 --> 00:58:54,160
+You show that to the end users and then
+
+1413
+00:58:52,720 --> 00:58:56,000
+probably you often you're like a little
+
+1414
+00:58:54,160 --> 00:58:57,440
+bit wrong but then it's like well you
+
+1415
+00:58:56,000 --> 00:58:59,440
+can do it like this or you can do it
+
+1416
+00:58:57,440 --> 00:59:02,240
+like that. And at some point on a
+
+1417
+00:58:59,440 --> 00:59:04,240
+horizontal level you start to just get
+
+1418
+00:59:02,240 --> 00:59:08,640
+in all these different use cases from
+
+1419
+00:59:04,240 --> 00:59:10,640
+all these different um um uh uh uh
+
+1420
+00:59:08,640 --> 00:59:14,799
+industries and that's what we have. So
+
+1421
+00:59:10,640 --> 00:59:18,319
+we have currently uh uh a few hundred
+
+1422
+00:59:14,799 --> 00:59:21,200
+use cases in 18 industries and that is
+
+1423
+00:59:18,319 --> 00:59:23,680
+just for one technology and that's how
+
+1424
+00:59:21,200 --> 00:59:25,119
+that's how we do it. So you just make an
+
+1425
+00:59:23,680 --> 00:59:27,760
+assumption. and you say like I think
+
+1426
+00:59:25,119 --> 00:59:30,480
+that in a medical space I don't know a
+
+1427
+00:59:27,760 --> 00:59:33,359
+hospital could add value by using wevier
+
+1428
+00:59:30,480 --> 00:59:34,960
+by doing XYZ and then you just ask
+
+1429
+00:59:33,359 --> 00:59:37,680
+people like would this adds value and
+
+1430
+00:59:34,960 --> 00:59:41,119
+then if they say yes then you build on
+
+1431
+00:59:37,680 --> 00:59:42,880
+top of that and um what we also see is
+
+1432
+00:59:41,119 --> 00:59:46,559
+that when you create something new so
+
+1433
+00:59:42,880 --> 00:59:49,280
+with in these uh ML in in graphs like
+
+1434
+00:59:46,559 --> 00:59:51,040
+what we are doing is that you also see a
+
+1435
+00:59:49,280 --> 00:59:52,559
+lot of inbound coming in at some point
+
+1436
+00:59:51,040 --> 00:59:54,000
+but not at the beginning but the people
+
+1437
+00:59:52,559 --> 00:59:56,079
+already figured that
+
+1438
+00:59:54,000 --> 00:59:57,440
+and then they always seem to fit in
+
+1439
+00:59:56,079 --> 00:59:59,599
+these pillars that you already
+
+1440
+00:59:57,440 --> 01:00:01,599
+identified. So that's uh I don't know if
+
+1441
+00:59:59,599 --> 01:00:04,160
+this is helpful for anybody on listening
+
+1442
+01:00:01,599 --> 01:00:06,960
+but that's how we do it. Yeah,
+
+1443
+01:00:04,160 --> 01:00:09,520
+>> it probably is. Uh I hope it is [snorts]
+
+1444
+01:00:06,960 --> 01:00:12,480
+and uh thanks thanks for sharing. So
+
+1445
+01:00:09,520 --> 01:00:14,960
+just to um to validate basically what
+
+1446
+01:00:12,480 --> 01:00:20,160
+all of you I think have been saying each
+
+1447
+01:00:14,960 --> 01:00:22,720
+of you in their own way uh about uh well
+
+1448
+01:00:20,160 --> 01:00:26,079
+about not not necessarily being very
+
+1449
+01:00:22,720 --> 01:00:29,680
+specific but uh being able to uh to see
+
+1450
+01:00:26,079 --> 01:00:32,079
+the trends and kind of um kind of create
+
+1451
+01:00:29,680 --> 01:00:34,799
+a ballpark let's say estimate of of
+
+1452
+01:00:32,079 --> 01:00:37,119
+where this is going. So if there is one
+
+1453
+01:00:34,799 --> 01:00:39,680
+uh analyst house that is uh famous for
+
+1454
+01:00:37,119 --> 01:00:42,240
+for doing that that would be Gartner and
+
+1455
+01:00:39,680 --> 01:00:45,359
+again to um to tie everything uh that
+
+1456
+01:00:42,240 --> 01:00:48,079
+you've said together I think uh the way
+
+1457
+01:00:45,359 --> 01:00:50,960
+that they framed it like uh graph
+
+1458
+01:00:48,079 --> 01:00:53,119
+relates everything is a is a very uh is
+
+1459
+01:00:50,960 --> 01:00:55,440
+a very good uh phrase a very nice uh way
+
+1460
+01:00:53,119 --> 01:00:57,920
+of putting that let's say so these are
+
+1461
+01:00:55,440 --> 01:01:01,119
+the Gartner top 10 data and analytics
+
+1462
+01:00:57,920 --> 01:01:04,079
+trends for 2021
+
+1463
+01:01:01,119 --> 01:01:06,400
+and as you can see uh well under the um
+
+1464
+01:01:04,079 --> 01:01:09,040
+distributed everything uh moniker they
+
+1465
+01:01:06,400 --> 01:01:12,400
+have this graph relates everything. So
+
+1466
+01:01:09,040 --> 01:01:14,240
+to expand a little bit uh on that um uh
+
+1467
+01:01:12,400 --> 01:01:16,400
+they have given a number of uh
+
+1468
+01:01:14,240 --> 01:01:18,799
+predictions. So uh and actually not just
+
+1469
+01:01:16,400 --> 01:01:21,359
+predictions but also let's say anecdotal
+
+1470
+01:01:18,799 --> 01:01:24,160
+evidence based on uh feedback that they
+
+1471
+01:01:21,359 --> 01:01:26,720
+get from from their customers. So uh
+
+1472
+01:01:24,160 --> 01:01:30,160
+their prediction is that uh by the year
+
+1473
+01:01:26,720 --> 01:01:33,760
+2025 uh they expect to see something
+
+1474
+01:01:30,160 --> 01:01:37,280
+like I think they said 80% uh increase
+
+1475
+01:01:33,760 --> 01:01:40,480
+in the current uh level of uh use for
+
+1476
+01:01:37,280 --> 01:01:44,240
+for graph databases. So that's uh that's
+
+1477
+01:01:40,480 --> 01:01:46,799
+quite huge actually uh and uh they they
+
+1478
+01:01:44,240 --> 01:01:49,520
+sort of attribute that to the interest
+
+1479
+01:01:46,799 --> 01:01:52,559
+that they see uh from queries from their
+
+1480
+01:01:49,520 --> 01:01:54,640
+customers. So uh one of their uh market
+
+1481
+01:01:52,559 --> 01:01:58,000
+uh research leaders uh has mentioned
+
+1482
+01:01:54,640 --> 01:02:01,920
+that uh today uh already something like
+
+1483
+01:01:58,000 --> 01:02:04,559
+50% of their inbound uh queries uh for
+
+1484
+01:02:01,920 --> 01:02:07,280
+uh for new technologies are about graph
+
+1485
+01:02:04,559 --> 01:02:10,559
+in in one way or another and that's up
+
+1486
+01:02:07,280 --> 01:02:14,720
+from uh 10% I think a couple of years uh
+
+1487
+01:02:10,559 --> 01:02:17,280
+back and so to them that's uh that's
+
+1488
+01:02:14,720 --> 01:02:20,000
+evidence that uh the need that the
+
+1489
+01:02:17,280 --> 01:02:22,960
+realization that uh people need graph
+
+1490
+01:02:20,000 --> 01:02:26,480
+more and more is is settling in is is
+
+1491
+01:02:22,960 --> 01:02:30,079
+sinking in and this is why that they
+
+1492
+01:02:26,480 --> 01:02:32,559
+have upgraded let's say uh graph to uh
+
+1493
+01:02:30,079 --> 01:02:34,720
+to an up and front and up and coming uh
+
+1494
+01:02:32,559 --> 01:02:37,040
+technology in their uh predictions and
+
+1495
+01:02:34,720 --> 01:02:41,040
+they're uh they're betting uh heavily uh
+
+1496
+01:02:37,040 --> 01:02:43,200
+on that as well and for uh people like
+
+1497
+01:02:41,040 --> 01:02:46,240
+uh myself actually who have been into
+
+1498
+01:02:43,200 --> 01:02:49,200
+that uh and into that technology for uh
+
+1499
+01:02:46,240 --> 01:02:50,720
+for a while it's sort of uh as as the
+
+1500
+01:02:49,200 --> 01:02:52,720
+colleague said it's sort of a
+
+1501
+01:02:50,720 --> 01:02:55,119
+vindication let's say. So you invest in
+
+1502
+01:02:52,720 --> 01:02:57,440
+something early on and uh then you see
+
+1503
+01:02:55,119 --> 01:02:59,359
+it uh paying off. So investment in the
+
+1504
+01:02:57,440 --> 01:03:01,920
+more general sense not necessarily in
+
+1505
+01:02:59,359 --> 01:03:04,480
+term of uh capital investment but also
+
+1506
+01:03:01,920 --> 01:03:09,760
+time and interest and all of those uh
+
+1507
+01:03:04,480 --> 01:03:12,240
+things. So um would you say do you see
+
+1508
+01:03:09,760 --> 01:03:15,039
+um and that's mostly a question for uh
+
+1509
+01:03:12,240 --> 01:03:17,839
+the uh investors in uh in the group. So
+
+1510
+01:03:15,039 --> 01:03:20,160
+do you see that playing out also in the
+
+1511
+01:03:17,839 --> 01:03:22,640
+uh in the pitches that that you get? So
+
+1512
+01:03:20,160 --> 01:03:26,240
+do um do you see more people knocking on
+
+1513
+01:03:22,640 --> 01:03:28,799
+your doors um whether they are
+
+1514
+01:03:26,240 --> 01:03:31,599
+representing deep tech companies or use
+
+1515
+01:03:28,799 --> 01:03:33,920
+case companies that utilize graph in one
+
+1516
+01:03:31,599 --> 01:03:37,680
+way or another.
+
+1517
+01:03:33,920 --> 01:03:40,079
+Yeah, definitely. I for last I think uh
+
+1518
+01:03:37,680 --> 01:03:43,039
+half a year I talk with many companies
+
+1519
+01:03:40,079 --> 01:03:45,200
+in data sphere and many of them are
+
+1520
+01:03:43,039 --> 01:03:47,440
+using graphs of developing new graphs.
+
+1521
+01:03:45,200 --> 01:03:49,119
+So I could name a few which I found
+
+1522
+01:03:47,440 --> 01:03:52,559
+quite interesting. One of them is a
+
+1523
+01:03:49,119 --> 01:03:56,640
+company called Terminos DB. Uh another
+
+1524
+01:03:52,559 --> 01:03:59,839
+one is Vatical which was the formerly
+
+1525
+01:03:56,640 --> 01:04:02,960
+named Graen which tried which started as
+
+1526
+01:03:59,839 --> 01:04:05,680
+graph database. Now they developing uh
+
+1527
+01:04:02,960 --> 01:04:08,640
+type uh strongly type database not only
+
+1528
+01:04:05,680 --> 01:04:10,400
+graph but some kind of declarative
+
+1529
+01:04:08,640 --> 01:04:12,240
+language
+
+1530
+01:04:10,400 --> 01:04:15,119
+using uh advantages of graph
+
+1531
+01:04:12,240 --> 01:04:17,760
+technologies and I see more and more
+
+1532
+01:04:15,119 --> 01:04:20,319
+coming uh it's really I think we are at
+
+1533
+01:04:17,760 --> 01:04:23,359
+the point when the world become became
+
+1534
+01:04:20,319 --> 01:04:26,480
+very complex and you can't properly
+
+1535
+01:04:23,359 --> 01:04:29,039
+analyze that amount of data which was
+
+1536
+01:04:26,480 --> 01:04:31,920
+generated without graph technology. It
+
+1537
+01:04:29,039 --> 01:04:35,799
+was not true for let's say last 10 years
+
+1538
+01:04:31,920 --> 01:04:35,799
+but it's true I tell
+
+1539
+01:04:36,480 --> 01:04:41,760
+>> what about you panos have you been
+
+1540
+01:04:38,640 --> 01:04:44,480
+getting more pitches from a uh whether
+
+1541
+01:04:41,760 --> 01:04:45,599
+it's graph companies directly or graph
+
+1542
+01:04:44,480 --> 01:04:47,920
+use case companies
+
+1543
+01:04:45,599 --> 01:04:50,880
+>> mostly we haven't seen any graph uh
+
+1544
+01:04:47,920 --> 01:04:54,480
+infrastructure graph uh database company
+
+1545
+01:04:50,880 --> 01:04:56,079
+uh but to be honest uh we on even the
+
+1546
+01:04:54,480 --> 01:04:58,400
+application level like you know I don't
+
+1547
+01:04:56,079 --> 01:05:00,160
+think it's a good idea like in Europe to
+
+1548
+01:04:58,400 --> 01:05:02,240
+say we're using graph or we are using
+
+1549
+01:05:00,160 --> 01:05:04,319
+whatever xyz technology that's something
+
+1550
+01:05:02,240 --> 01:05:07,280
+that uh
+
+1551
+01:05:04,319 --> 01:05:08,880
+uh it's something you you we prefer like
+
+1552
+01:05:07,280 --> 01:05:10,400
+to discuss you when we're doing let's
+
+1553
+01:05:08,880 --> 01:05:12,559
+say the deep dive on the product and the
+
+1554
+01:05:10,400 --> 01:05:14,720
+technology and we see like you know how
+
+1555
+01:05:12,559 --> 01:05:16,960
+well verse people are actually like to
+
+1556
+01:05:14,720 --> 01:05:19,359
+solve the problem right um the
+
+1557
+01:05:16,960 --> 01:05:20,720
+technology let's say is the lesser part
+
+1558
+01:05:19,359 --> 01:05:22,000
+right if you are actually good
+
+1559
+01:05:20,720 --> 01:05:23,680
+technologist then I will show in a
+
+1560
+01:05:22,000 --> 01:05:26,000
+conversation you're going to create
+
+1561
+01:05:23,680 --> 01:05:28,720
+something that people love it to use it
+
+1562
+01:05:26,000 --> 01:05:30,720
+right so if your secret source that is a
+
+1563
+01:05:28,720 --> 01:05:33,200
+graph database because your development
+
+1564
+01:05:30,720 --> 01:05:34,319
+and your quering can be faster or you
+
+1565
+01:05:33,200 --> 01:05:36,559
+have a better understanding of the
+
+1566
+01:05:34,319 --> 01:05:38,000
+modeling of the problem. Uh that's
+
+1567
+01:05:36,559 --> 01:05:39,599
+that's really shows at the end of the
+
+1568
+01:05:38,000 --> 01:05:41,760
+day in the application you develop if
+
+1569
+01:05:39,599 --> 01:05:43,440
+we're talking about the use case, right?
+
+1570
+01:05:41,760 --> 01:05:44,799
+So it becomes like it fades in the
+
+1571
+01:05:43,440 --> 01:05:46,559
+background, right? And I think you know
+
+1572
+01:05:44,799 --> 01:05:49,359
+that's will be the success for the
+
+1573
+01:05:46,559 --> 01:05:52,799
+industry and not to be raising it as an
+
+1574
+01:05:49,359 --> 01:05:55,839
+exotic flag in trying to to lure
+
+1575
+01:05:52,799 --> 01:05:59,119
+investors by using like a hide word like
+
+1576
+01:05:55,839 --> 01:06:00,559
+blockchain or AI or graph interface
+
+1577
+01:05:59,119 --> 01:06:02,559
+right the problem is that you actually
+
+1578
+01:06:00,559 --> 01:06:04,319
+solve the problem very nicely and your
+
+1579
+01:06:02,559 --> 01:06:05,760
+end users are really excited about the
+
+1580
+01:06:04,319 --> 01:06:07,119
+way you do it that's that's what really
+
+1581
+01:06:05,760 --> 01:06:09,920
+matters
+
+1582
+01:06:07,119 --> 01:06:12,000
+>> sure I mean I would I would definitely
+
+1583
+01:06:09,920 --> 01:06:14,000
+agree with you on the um on how you
+
+1584
+01:06:12,000 --> 01:06:16,880
+frame the issue let's say I was for uh
+
+1585
+01:06:14,000 --> 01:06:18,960
+referring. Okay. So, yes, people people
+
+1586
+01:06:16,880 --> 01:06:21,200
+should should should frame it in the way
+
+1587
+01:06:18,960 --> 01:06:23,359
+you uh you approach it basically. But
+
+1588
+01:06:21,200 --> 01:06:25,680
+having gotten having gotten the framing
+
+1589
+01:06:23,359 --> 01:06:27,359
+out of the way, do you see uh people
+
+1590
+01:06:25,680 --> 01:06:29,280
+solving interesting problems and
+
+1591
+01:06:27,359 --> 01:06:31,200
+approaching them you know in a nice way
+
+1592
+01:06:29,280 --> 01:06:32,640
+for the for the users actually using
+
+1593
+01:06:31,200 --> 01:06:34,720
+that kind of technology?
+
+1594
+01:06:32,640 --> 01:06:36,480
+>> Yes. Yes. We have seen we have seen as
+
+1595
+01:06:34,720 --> 01:06:38,720
+as described causally we have seen
+
+1596
+01:06:36,480 --> 01:06:40,400
+another one in the blockchain space that
+
+1597
+01:06:38,720 --> 01:06:42,480
+we didn't invest for other reasons that
+
+1598
+01:06:40,400 --> 01:06:44,400
+they were also using graph databases and
+
+1599
+01:06:42,480 --> 01:06:47,839
+we have a small portfolio only 16
+
+1600
+01:06:44,400 --> 01:06:49,760
+investments so far and uh two of them
+
+1601
+01:06:47,839 --> 01:06:51,680
+already using graph database and there
+
+1602
+01:06:49,760 --> 01:06:54,079
+might be another cyber security one
+
+1603
+01:06:51,680 --> 01:06:55,760
+that's going to use as well uh and the
+
+1604
+01:06:54,079 --> 01:06:57,760
+cyber security again is a very very
+
+1605
+01:06:55,760 --> 01:07:00,240
+interesting space for applications on
+
+1606
+01:06:57,760 --> 01:07:04,160
+top of craft databases
+
+1607
+01:07:00,240 --> 01:07:06,319
+>> okay so three out of 16 is probably an
+
+1608
+01:07:04,160 --> 01:07:07,760
+interesting uh interesting ratio
+
+1609
+01:07:06,319 --> 01:07:08,240
+>> if we're going to do this investment.
+
+1610
+01:07:07,760 --> 01:07:11,039
+Yeah.
+
+1611
+01:07:08,240 --> 01:07:12,240
+>> Sure. Sure.
+
+1612
+01:07:11,039 --> 01:07:16,000
+>> It it seems it's becoming more
+
+1613
+01:07:12,240 --> 01:07:18,640
+mainstream from anecdotal data.
+
+1614
+01:07:16,000 --> 01:07:21,839
+>> All right.
+
+1615
+01:07:18,640 --> 01:07:24,240
+Right. And speaking of uh anecdotal
+
+1616
+01:07:21,839 --> 01:07:26,559
+data, here's something else I'd [snorts]
+
+1617
+01:07:24,240 --> 01:07:29,039
+like to uh to share with you. again in
+
+1618
+01:07:26,559 --> 01:07:32,079
+the uh in the spirit of trying to
+
+1619
+01:07:29,039 --> 01:07:35,520
+approximate let's say how big this
+
+1620
+01:07:32,079 --> 01:07:38,319
+market could uh possibly be. So this is
+
+1621
+01:07:35,520 --> 01:07:41,359
+anecdotal data uh by all means and this
+
+1622
+01:07:38,319 --> 01:07:43,440
+is why I'm not going to uh to uh to
+
+1623
+01:07:41,359 --> 01:07:46,720
+trace it uh back [snorts] to uh to a
+
+1624
+01:07:43,440 --> 01:07:49,680
+source. Um it's basically uh it's based
+
+1625
+01:07:46,720 --> 01:07:52,240
+on um kind of numbers flying around
+
+1626
+01:07:49,680 --> 01:07:55,359
+let's say in a way but uh it tries to
+
+1627
+01:07:52,240 --> 01:07:58,880
+approximate uh the um total addressable
+
+1628
+01:07:55,359 --> 01:08:00,880
+uh market for graph databases uh for
+
+1629
+01:07:58,880 --> 01:08:03,359
+some reason actually uh because of the
+
+1630
+01:08:00,880 --> 01:08:06,480
+fact that uh the people that uh did this
+
+1631
+01:08:03,359 --> 01:08:09,359
+work started uh with it uh before COVID
+
+1632
+01:08:06,480 --> 01:08:11,119
+and they um got uh caught up in the uh
+
+1633
+01:08:09,359 --> 01:08:14,960
+this whole COVID situation like all of
+
+1634
+01:08:11,119 --> 01:08:17,520
+us and so they um they did uh two
+
+1635
+01:08:14,960 --> 01:08:20,719
+estimates uh one precoid and one
+
+1636
+01:08:17,520 --> 01:08:23,839
+postcoid and as you can see uh this uh
+
+1637
+01:08:20,719 --> 01:08:26,960
+this chart is in uh million dollars. So
+
+1638
+01:08:23,839 --> 01:08:30,960
+their projection is that um this uh
+
+1639
+01:08:26,960 --> 01:08:34,159
+market started uh worth uh in in 2018
+
+1640
+01:08:30,960 --> 01:08:38,080
+and it was worth something like $850
+
+1641
+01:08:34,159 --> 01:08:42,239
+million and then it grew in 2019. it
+
+1642
+01:08:38,080 --> 01:08:45,199
+grew a little bit more in 2020 and 21.
+
+1643
+01:08:42,239 --> 01:08:49,199
+And so by that rate of growth their
+
+1644
+01:08:45,199 --> 01:08:53,839
+estimate is that uh by 2026 it will be
+
+1645
+01:08:49,199 --> 01:08:55,920
+worth around four or five billion dollar
+
+1646
+01:08:53,839 --> 01:08:58,239
+I guess which you know in the in the
+
+1647
+01:08:55,920 --> 01:09:00,880
+greater scheme of things may not be uh
+
+1648
+01:08:58,239 --> 01:09:03,199
+that much but um as [snorts] I think
+
+1649
+01:09:00,880 --> 01:09:05,359
+some of you pointed out earlier what
+
+1650
+01:09:03,199 --> 01:09:08,319
+you're trying to get into this uh into
+
+1651
+01:09:05,359 --> 01:09:10,640
+this game is not in an exact number but
+
+1652
+01:09:08,319 --> 01:09:13,199
+uh more like an estimate more like a
+
+1653
+01:09:10,640 --> 01:09:16,239
+size of uh what this market uh could be
+
+1654
+01:09:13,199 --> 01:09:19,359
+worth. Does that resonate with you? Does
+
+1655
+01:09:16,239 --> 01:09:24,359
+does that make sense to you depend based
+
+1656
+01:09:19,359 --> 01:09:24,359
+on on on your own feeling of the market?
+
+1657
+01:09:31,839 --> 01:09:37,120
+>> Yeah, I think so. The numbers look
+
+1658
+01:09:33,920 --> 01:09:37,440
+reasonable enough.
+
+1659
+01:09:37,120 --> 01:09:38,880
+>> Mhm.
+
+1660
+01:09:37,440 --> 01:09:41,279
+>> I think we'll know when you know one of
+
+1661
+01:09:38,880 --> 01:09:45,040
+the big vendors IPOs. we're gonna have a
+
+1662
+01:09:41,279 --> 01:09:49,279
+much better understanding of the market.
+
+1663
+01:09:45,040 --> 01:09:51,839
+>> But we need to wait till I think 2026 to
+
+1664
+01:09:49,279 --> 01:09:52,880
+really figure it out.
+
+1665
+01:09:51,839 --> 01:09:54,880
+>> Fair enough.
+
+1666
+01:09:52,880 --> 01:09:56,880
+>> Neo forj I guess it's in a it's in a
+
+1667
+01:09:54,880 --> 01:09:59,199
+stage that they could go public a bit
+
+1668
+01:09:56,880 --> 01:10:01,280
+earlier.
+
+1669
+01:09:59,199 --> 01:10:03,440
+>> Yeah, actually Neoforj is um you know
+
+1670
+01:10:01,280 --> 01:10:05,760
+it's a is a good is a good talking point
+
+1671
+01:10:03,440 --> 01:10:09,040
+basically for for a number of uh
+
+1672
+01:10:05,760 --> 01:10:12,000
+reasons. I think uh they raised money I
+
+1673
+01:10:09,040 --> 01:10:15,360
+think actually twice in uh in the in the
+
+1674
+01:10:12,000 --> 01:10:17,760
+recent months and so their uh initial so
+
+1675
+01:10:15,360 --> 01:10:20,239
+they had two funding rounds in 2021
+
+1676
+01:10:17,760 --> 01:10:22,159
+already. Their first one was if my
+
+1677
+01:10:20,239 --> 01:10:26,560
+memory served me right something like
+
+1678
+01:10:22,159 --> 01:10:29,280
+$350 million which uh on their own
+
+1679
+01:10:26,560 --> 01:10:31,920
+account is was the uh the largest ever
+
+1680
+01:10:29,280 --> 01:10:34,640
+funding round in the database uh space.
+
+1681
+01:10:31,920 --> 01:10:36,960
+So I guess that that says something and
+
+1682
+01:10:34,640 --> 01:10:38,880
+their valuation is now well over a
+
+1683
+01:10:36,960 --> 01:10:42,960
+billion. So I guess that puts them in
+
+1684
+01:10:38,880 --> 01:10:44,960
+unicorn territory and and so on. So
+
+1685
+01:10:42,960 --> 01:10:46,880
+by most people's accounts and you know
+
+1686
+01:10:44,960 --> 01:10:49,280
+these things are quite uh quite sicky.
+
+1687
+01:10:46,880 --> 01:10:51,679
+They are the the leaders in this market.
+
+1688
+01:10:49,280 --> 01:10:54,000
+So that that probably shows that
+
+1689
+01:10:51,679 --> 01:10:55,920
+probably tells us something about uh the
+
+1690
+01:10:54,000 --> 01:10:58,480
+uh the overall growth in the market
+
+1691
+01:10:55,920 --> 01:11:00,159
+there. But even when Neo forj will
+
+1692
+01:10:58,480 --> 01:11:03,440
+become a public company, we still be
+
+1693
+01:11:00,159 --> 01:11:05,520
+thinking more about expectations about
+
+1694
+01:11:03,440 --> 01:11:08,159
+the market not real market size. The
+
+1695
+01:11:05,520 --> 01:11:09,760
+company already mentioned today IMQ
+
+1696
+01:11:08,159 --> 01:11:11,920
+which is doing quantum computing. It's
+
+1697
+01:11:09,760 --> 01:11:13,920
+worth billions of dollars but there is
+
+1698
+01:11:11,920 --> 01:11:16,000
+almost no market for quantum computing
+
+1699
+01:11:13,920 --> 01:11:19,000
+right now. It's all about some future
+
+1700
+01:11:16,000 --> 01:11:19,000
+estimations.
+
+1701
+01:11:19,600 --> 01:11:24,000
+>> Yeah. But I I I really think that is
+
+1702
+01:11:21,679 --> 01:11:26,480
+that is kind of mixing up stuff, right?
+
+1703
+01:11:24,000 --> 01:11:29,440
+So I mean if you look at a relational
+
+1704
+01:11:26,480 --> 01:11:32,560
+database
+
+1705
+01:11:29,440 --> 01:11:35,440
+the the relational fact the fact that it
+
+1706
+01:11:32,560 --> 01:11:37,360
+has the word relational in there assumes
+
+1707
+01:11:35,440 --> 01:11:39,199
+that you can make graph relations just
+
+1708
+01:11:37,360 --> 01:11:41,760
+turns out that the way that these
+
+1709
+01:11:39,199 --> 01:11:43,760
+databases are built uh that al that
+
+1710
+01:11:41,760 --> 01:11:46,640
+joining of tables that doesn't work very
+
+1711
+01:11:43,760 --> 01:11:49,760
+well. So this is a specific problem that
+
+1712
+01:11:46,640 --> 01:11:54,360
+NORJ has solved which is great and good
+
+1713
+01:11:49,760 --> 01:11:54,360
+for them. But I think
+
+1714
+01:11:54,400 --> 01:11:59,199
+the looking at the market from the
+
+1715
+01:11:56,719 --> 01:12:02,880
+perspective of saying like graph
+
+1716
+01:11:59,199 --> 01:12:05,440
+databases like for example NFJ
+
+1717
+01:12:02,880 --> 01:12:08,320
+is really I think missing the bigger
+
+1718
+01:12:05,440 --> 01:12:10,239
+point of linked data and I think the
+
+1719
+01:12:08,320 --> 01:12:13,840
+bigger point is that we've gotten to a
+
+1720
+01:12:10,239 --> 01:12:17,120
+to a to a to a point in time where
+
+1721
+01:12:13,840 --> 01:12:19,440
+thanks to all the CPU powers the the the
+
+1722
+01:12:17,120 --> 01:12:21,520
+the amount of memory the amount of GPUs
+
+1723
+01:12:19,440 --> 01:12:24,000
+that we have available with the big
+
+1724
+01:12:21,520 --> 01:12:25,679
+cloud providers means that we can
+
+1725
+01:12:24,000 --> 01:12:29,600
+finally
+
+1726
+01:12:25,679 --> 01:12:33,600
+use whatever tool we need to build stuff
+
+1727
+01:12:29,600 --> 01:12:35,440
+uh uh to make linked data solutions and
+
+1728
+01:12:33,600 --> 01:12:37,920
+I think that's the bigger thing. So I I
+
+1729
+01:12:35,440 --> 01:12:42,480
+think the overarching thing is that
+
+1730
+01:12:37,920 --> 01:12:44,800
+connecting no pun intended connecting uh
+
+1731
+01:12:42,480 --> 01:12:47,679
+uh linked data to what the size of the
+
+1732
+01:12:44,800 --> 01:12:49,760
+market is of graph databases
+
+1733
+01:12:47,679 --> 01:12:52,320
+is I think missing the point. I think
+
+1734
+01:12:49,760 --> 01:12:55,840
+the the bigger point is like do we see
+
+1735
+01:12:52,320 --> 01:12:58,320
+the market as a whole move towards link
+
+1736
+01:12:55,840 --> 01:13:02,080
+data and I think that we can say yes it
+
+1737
+01:12:58,320 --> 01:13:04,239
+is and uh
+
+1738
+01:13:02,080 --> 01:13:08,080
+with the exception maybe of time series
+
+1739
+01:13:04,239 --> 01:13:09,520
+data name me a startup that is not
+
+1740
+01:13:08,080 --> 01:13:12,480
+looking at their data from the
+
+1741
+01:13:09,520 --> 01:13:15,440
+perspective of linked data anymore.
+
+1742
+01:13:12,480 --> 01:13:18,320
+I I I really from my colleagues I can't
+
+1743
+01:13:15,440 --> 01:13:20,400
+think of any. If the if you're an IoT,
+
+1744
+01:13:18,320 --> 01:13:21,920
+you look at it as a big graph. If you do
+
+1745
+01:13:20,400 --> 01:13:24,480
+blockchain stuff, you look at it as a
+
+1746
+01:13:21,920 --> 01:13:27,040
+big graph. And why can you do that?
+
+1747
+01:13:24,480 --> 01:13:29,360
+Because the uh we're getting we got to a
+
+1748
+01:13:27,040 --> 01:13:31,199
+point in time where the technology sorry
+
+1749
+01:13:29,360 --> 01:13:33,840
+the hard drive became good enough or
+
+1750
+01:13:31,199 --> 01:13:35,199
+fast enough to represent everything as
+
+1751
+01:13:33,840 --> 01:13:40,000
+graphs. That's the big difference with
+
+1752
+01:13:35,199 --> 01:13:41,520
+like 10 years ago or something. So I I I
+
+1753
+01:13:40,000 --> 01:13:43,280
+understand the sentiment also what
+
+1754
+01:13:41,520 --> 01:13:45,920
+you're trying to show with the with the
+
+1755
+01:13:43,280 --> 01:13:49,280
+graph George but I think it's just it
+
+1756
+01:13:45,920 --> 01:13:51,040
+it's it's magnitudes bigger because
+
+1757
+01:13:49,280 --> 01:13:52,560
+everybody's looking going into the
+
+1758
+01:13:51,040 --> 01:13:55,040
+direction let me give you a practical
+
+1759
+01:13:52,560 --> 01:13:56,960
+example so what is the second thing that
+
+1760
+01:13:55,040 --> 01:14:00,080
+snowflake is offering besides their data
+
+1761
+01:13:56,960 --> 01:14:02,960
+warehouse that is connecting data
+
+1762
+01:14:00,080 --> 01:14:05,920
+relating data to each other
+
+1763
+01:14:02,960 --> 01:14:07,040
+I dare to bet you a nice bottle of wine
+
+1764
+01:14:05,920 --> 01:14:09,440
+that they're looking at that from the
+
+1765
+01:14:07,040 --> 01:14:10,960
+perspective of link data [laughter]
+
+1766
+01:14:09,440 --> 01:14:13,040
+and if they're going to be successful in
+
+1767
+01:14:10,960 --> 01:14:15,280
+that I don't care what database they use
+
+1768
+01:14:13,040 --> 01:14:17,360
+or kind of way they use to visualize it.
+
+1769
+01:14:15,280 --> 01:14:22,080
+It's just the world is moving towards
+
+1770
+01:14:17,360 --> 01:14:23,760
+that big vision that also uh um web 3.0
+
+1771
+01:14:22,080 --> 01:14:26,496
+and I don't mean the
+
+1772
+01:14:23,760 --> 01:14:27,120
+>> blockchain 3.0 but the previous 3.0
+
+1773
+01:14:26,496 --> 01:14:29,920
+[laughter]
+
+1774
+01:14:27,120 --> 01:14:31,120
+>> the semantic web 3.0 had it's moving in
+
+1775
+01:14:29,920 --> 01:14:33,120
+that direction. I think the big thing
+
+1776
+01:14:31,120 --> 01:14:36,320
+that has changed and that was what I was
+
+1777
+01:14:33,120 --> 01:14:38,560
+trying to show with my demo is that
+
+1778
+01:14:36,320 --> 01:14:41,040
+we try to solve that and we being
+
+1779
+01:14:38,560 --> 01:14:43,280
+humanity try to solve that problem by
+
+1780
+01:14:41,040 --> 01:14:46,080
+somehow trying to agree on definitions
+
+1781
+01:14:43,280 --> 01:14:49,199
+in the semantics has changed to like you
+
+1782
+01:14:46,080 --> 01:14:51,440
+know what let the machine u uh the the
+
+1783
+01:14:49,199 --> 01:14:54,239
+machine learning model figure it out and
+
+1784
+01:14:51,440 --> 01:14:57,360
+that was such an an an epiphany and an
+
+1785
+01:14:54,239 --> 01:14:58,880
+eye openener that it became easier to
+
+1786
+01:14:57,360 --> 01:15:00,000
+connect these nodes in these graphs
+
+1787
+01:14:58,880 --> 01:15:02,320
+together.
+
+1788
+01:15:00,000 --> 01:15:05,520
+Going back to my point,
+
+1789
+01:15:02,320 --> 01:15:08,239
+name somebody um who isn't building a
+
+1790
+01:15:05,520 --> 01:15:10,400
+startup um that that is not making graph
+
+1791
+01:15:08,239 --> 01:15:13,600
+legends anymore.
+
+1792
+01:15:10,400 --> 01:15:15,760
+Quick asterisk if your startup really
+
+1793
+01:15:13,600 --> 01:15:18,320
+relies. So for example, what Pana showed
+
+1794
+01:15:15,760 --> 01:15:19,520
+us in like shortest paths and those kind
+
+1795
+01:15:18,320 --> 01:15:22,000
+of things, of course, you're going to
+
+1796
+01:15:19,520 --> 01:15:24,400
+choose Neo forj because NORAJ is good at
+
+1797
+01:15:22,000 --> 01:15:26,560
+showing shortest paths in nodes in a
+
+1798
+01:15:24,400 --> 01:15:29,679
+graph. But you could even argue that if
+
+1799
+01:15:26,560 --> 01:15:33,040
+you store your data in uh MongoDB that
+
+1800
+01:15:29,679 --> 01:15:34,960
+these individual data objects are nodes
+
+1801
+01:15:33,040 --> 01:15:36,719
+that you connect to each other, it's
+
+1802
+01:15:34,960 --> 01:15:39,600
+just not very good at the computations
+
+1803
+01:15:36,719 --> 01:15:43,199
+that NEOJ is doing, but it's good at
+
+1804
+01:15:39,600 --> 01:15:45,040
+other computations. But it it's for me a
+
+1805
+01:15:43,199 --> 01:15:47,040
+no-brainer that the market is just
+
+1806
+01:15:45,040 --> 01:15:50,480
+moving in the direction of connecting
+
+1807
+01:15:47,040 --> 01:15:52,080
+everything together and and which is way
+
+1808
+01:15:50,480 --> 01:15:55,040
+bigger than just looking at it from the
+
+1809
+01:15:52,080 --> 01:15:58,480
+perspective of a graph database. Sure.
+
+1810
+01:15:55,040 --> 01:16:00,800
+It it depends very much on, you know, on
+
+1811
+01:15:58,480 --> 01:16:03,199
+how you look at things. If you're graph,
+
+1812
+01:16:00,800 --> 01:16:04,719
+people tend to uh to see connections
+
+1813
+01:16:03,199 --> 01:16:08,320
+everywhere and they tend to see
+
+1814
+01:16:04,719 --> 01:16:11,199
+everything as as a graph. So, it's makes
+
+1815
+01:16:08,320 --> 01:16:14,400
+sense. And just to um to add to to your
+
+1816
+01:16:11,199 --> 01:16:17,440
+point and actually we have a question
+
+1817
+01:16:14,400 --> 01:16:20,880
+comment from Katarina in uh in the chat.
+
+1818
+01:16:17,440 --> 01:16:23,280
+So, um I think well the the comment part
+
+1819
+01:16:20,880 --> 01:16:25,199
+is that well she see she agrees with uh
+
+1820
+01:16:23,280 --> 01:16:27,040
+the point you're making Bob that uh well
+
+1821
+01:16:25,199 --> 01:16:29,600
+it's um [snorts]
+
+1822
+01:16:27,040 --> 01:16:32,480
+trying to pick one particular segment
+
+1823
+01:16:29,600 --> 01:16:34,880
+and look at it in in isolation may be
+
+1824
+01:16:32,480 --> 01:16:36,880
+helpful because it sort of helps you
+
+1825
+01:16:34,880 --> 01:16:39,760
+narrow down the scope and it makes it
+
+1826
+01:16:36,880 --> 01:16:41,920
+more more feasible let's say to uh to do
+
+1827
+01:16:39,760 --> 01:16:44,480
+these projections and come up with these
+
+1828
+01:16:41,920 --> 01:16:47,120
+numbers but it may be misleading in the
+
+1829
+01:16:44,480 --> 01:16:49,440
+in the ter in the in the sense that well
+
+1830
+01:16:47,120 --> 01:16:51,440
+it's uh in the sense that graph is
+
+1831
+01:16:49,440 --> 01:16:54,320
+everywhere basically. So trying to to
+
+1832
+01:16:51,440 --> 01:16:57,040
+narrow it down maybe um yeah not not the
+
+1833
+01:16:54,320 --> 01:16:58,960
+uh not a very uh wise thing to do. Uh
+
+1834
+01:16:57,040 --> 01:17:00,800
+but
+
+1835
+01:16:58,960 --> 01:17:03,280
+the comment the the question part from
+
+1836
+01:17:00,800 --> 01:17:05,280
+from Kadarin is that well so fine we
+
+1837
+01:17:03,280 --> 01:17:07,120
+we've talked a lot about graph databases
+
+1838
+01:17:05,280 --> 01:17:09,760
+and by the way the the reason we did it
+
+1839
+01:17:07,120 --> 01:17:12,480
+is basically because um there seems to
+
+1840
+01:17:09,760 --> 01:17:14,560
+be more data around this particular
+
+1841
+01:17:12,480 --> 01:17:17,280
+sector you know all these projections
+
+1842
+01:17:14,560 --> 01:17:20,080
+and um hype estimations and and all
+
+1843
+01:17:17,280 --> 01:17:22,560
+those things but Katern is making an
+
+1844
+01:17:20,080 --> 01:17:26,159
+interesting uh question so what about
+
+1845
+01:17:22,560 --> 01:17:28,239
+other uh graphy let's say uh products
+
+1846
+01:17:26,159 --> 01:17:31,520
+and uh parts of the market. So what
+
+1847
+01:17:28,239 --> 01:17:35,199
+about graph visualization for example or
+
+1848
+01:17:31,520 --> 01:17:38,719
+uh things like uh data modeling editors?
+
+1849
+01:17:35,199 --> 01:17:44,000
+Are those in your radar at all? Do you
+
+1850
+01:17:38,719 --> 01:17:45,920
+see any any interest or uptake in those?
+
+1851
+01:17:44,000 --> 01:17:48,239
+>> Yeah, that's a great question. Uh I
+
+1852
+01:17:45,920 --> 01:17:50,640
+think it goes in tandem with uh overall
+
+1853
+01:17:48,239 --> 01:17:52,400
+adoption of databases. The more data
+
+1854
+01:17:50,640 --> 01:17:55,120
+that is there, the more need for these
+
+1855
+01:17:52,400 --> 01:17:57,280
+kind of tools emerges. Uh so for example
+
+1856
+01:17:55,120 --> 01:17:59,840
+you know nobody will imagine 15 years
+
+1857
+01:17:57,280 --> 01:18:02,719
+ago that PHP my admin will be a product
+
+1858
+01:17:59,840 --> 01:18:05,040
+right. So right now we have a magnitude
+
+1859
+01:18:02,719 --> 01:18:07,679
+of products that just give you like
+
+1860
+01:18:05,040 --> 01:18:10,800
+search SQL uh notebooks where you can
+
+1861
+01:18:07,679 --> 01:18:12,320
+share your queries and view the data and
+
+1862
+01:18:10,800 --> 01:18:14,960
+uh some of these companies now they are
+
+1863
+01:18:12,320 --> 01:18:17,840
+raising they have sorry they have
+
+1864
+01:18:14,960 --> 01:18:21,120
+reached unicorn status just for allowing
+
+1865
+01:18:17,840 --> 01:18:24,080
+companies to reshare SQL queries and
+
+1866
+01:18:21,120 --> 01:18:25,920
+preview your data and collaborate on top
+
+1867
+01:18:24,080 --> 01:18:27,600
+of your data. I guess something similar
+
+1868
+01:18:25,920 --> 01:18:29,840
+will happen. Now the question is if it's
+
+1869
+01:18:27,600 --> 01:18:32,640
+going to be a dedicated product or it's
+
+1870
+01:18:29,840 --> 01:18:34,640
+going to be part of this uh data
+
+1871
+01:18:32,640 --> 01:18:36,880
+workbook collaboration tools that we
+
+1872
+01:18:34,640 --> 01:18:38,080
+already exist and they using and they
+
+1873
+01:18:36,880 --> 01:18:40,560
+are built on top of relational
+
+1874
+01:18:38,080 --> 01:18:42,239
+databases. Uh so do we need another
+
+1875
+01:18:40,560 --> 01:18:44,480
+point solution or we need a broader
+
+1876
+01:18:42,239 --> 01:18:47,600
+solution and some of the big ones is
+
+1877
+01:18:44,480 --> 01:18:49,920
+going to to expand. Similarly I guess we
+
+1878
+01:18:47,600 --> 01:18:51,520
+might need to see things like uh
+
+1879
+01:18:49,920 --> 01:18:54,080
+governance
+
+1880
+01:18:51,520 --> 01:18:58,320
+uh access control uh to expanding to
+
+1881
+01:18:54,080 --> 01:19:00,560
+graph databases. uh my take is that some
+
+1882
+01:18:58,320 --> 01:19:02,480
+startup will emerge to address the there
+
+1883
+01:19:00,560 --> 01:19:05,040
+is the issue and very quickly it will be
+
+1884
+01:19:02,480 --> 01:19:07,520
+acquired by a more established company
+
+1885
+01:19:05,040 --> 01:19:09,360
+in the space that they also want to
+
+1886
+01:19:07,520 --> 01:19:11,679
+cover the emerging use case of gra
+
+1887
+01:19:09,360 --> 01:19:13,679
+databases so definitely a place of
+
+1888
+01:19:11,679 --> 01:19:15,679
+interest now if it's going to be really
+
+1889
+01:19:13,679 --> 01:19:18,719
+big I think it's a bit n in the broader
+
+1890
+01:19:15,679 --> 01:19:21,120
+realm of data management right or data
+
+1891
+01:19:18,719 --> 01:19:23,520
+access and BI usually like data
+
+1892
+01:19:21,120 --> 01:19:26,239
+visualization it's like another feature
+
+1893
+01:19:23,520 --> 01:19:28,239
+in a broader BI my tool when talking
+
+1894
+01:19:26,239 --> 01:19:30,000
+when we're talking about visualization,
+
+1895
+01:19:28,239 --> 01:19:32,480
+but it might be a good run. It might be
+
+1896
+01:19:30,000 --> 01:19:36,080
+a good run.
+
+1897
+01:19:32,480 --> 01:19:38,560
+>> If I may if I may weigh in specifically
+
+1898
+01:19:36,080 --> 01:19:40,239
+on the visualization part, well, you're
+
+1899
+01:19:38,560 --> 01:19:43,199
+right. I mean, there's a bunch there's a
+
+1900
+01:19:40,239 --> 01:19:46,480
+tone actually of uh BI and visualization
+
+1901
+01:19:43,199 --> 01:19:50,320
+tools out there already. However, there
+
+1902
+01:19:46,480 --> 01:19:53,600
+may be some some specific needs, let's
+
+1903
+01:19:50,320 --> 01:19:56,400
+say, and some specific um some
+
+1904
+01:19:53,600 --> 01:19:58,640
+peculiarities about visualizing graphs.
+
+1905
+01:19:56,400 --> 01:20:01,600
+Uh which has to do with the fact that
+
+1906
+01:19:58,640 --> 01:20:03,600
+well, it's it's a less explored area. Uh
+
+1907
+01:20:01,600 --> 01:20:06,960
+by now, you know, visualizing, I don't
+
+1908
+01:20:03,600 --> 01:20:09,520
+know, tables and uh pie charts and and
+
+1909
+01:20:06,960 --> 01:20:12,159
+whatnot has been, you know, over
+
+1910
+01:20:09,520 --> 01:20:14,239
+overused even. Uh visualizing graphs on
+
+1911
+01:20:12,159 --> 01:20:16,080
+the other hand, not so much. And I would
+
+1912
+01:20:14,239 --> 01:20:17,760
+also, you know, this and this is a
+
+1913
+01:20:16,080 --> 01:20:20,320
+personal opinion. I think this is it's
+
+1914
+01:20:17,760 --> 01:20:22,880
+it may also be harder to to crack that
+
+1915
+01:20:20,320 --> 01:20:25,520
+nut because if you've ever tried
+
+1916
+01:20:22,880 --> 01:20:27,679
+visualizing a large enough graph, uh you
+
+1917
+01:20:25,520 --> 01:20:30,880
+know that gets very [snorts] messy very
+
+1918
+01:20:27,679 --> 01:20:33,280
+quickly. So, and I know that there
+
+1919
+01:20:30,880 --> 01:20:36,159
+already are uh some specialized
+
+1920
+01:20:33,280 --> 01:20:38,719
+companies that address this particular
+
+1921
+01:20:36,159 --> 01:20:41,199
+need. Um how much you know there is room
+
+1922
+01:20:38,719 --> 01:20:43,600
+for growth there? Yeah, I don't know
+
+1923
+01:20:41,199 --> 01:20:45,120
+what what you said, Panos. May, you
+
+1924
+01:20:43,600 --> 01:20:48,000
+know, it sounds to me like a reasonable
+
+1925
+01:20:45,120 --> 01:20:49,840
+take. Eventually, probably someone will
+
+1926
+01:20:48,000 --> 01:20:51,679
+want to uh to add them to their
+
+1927
+01:20:49,840 --> 01:20:55,960
+portfolio when uh the need for that
+
+1928
+01:20:51,679 --> 01:20:55,960
+becomes pronounced enough.
+
+1929
+01:20:57,920 --> 01:21:01,520
+>> Constantine, what's what's your take? Uh
+
+1930
+01:20:59,679 --> 01:21:05,040
+well yeah I'm thinking about
+
+1931
+01:21:01,520 --> 01:21:07,600
+visualization of graph databases and uh
+
+1932
+01:21:05,040 --> 01:21:09,600
+uh I think I don't think that there will
+
+1933
+01:21:07,600 --> 01:21:12,159
+be a lot of big players on this
+
+1934
+01:21:09,600 --> 01:21:15,679
+particular segment because if we think
+
+1935
+01:21:12,159 --> 01:21:18,080
+about BI tools like PowerBI or Tableau
+
+1936
+01:21:15,679 --> 01:21:19,840
+or other kind of things which allow
+
+1937
+01:21:18,080 --> 01:21:22,560
+graphana which allows to have some kind
+
+1938
+01:21:19,840 --> 01:21:25,280
+of dynamic dashboards and other kind of
+
+1939
+01:21:22,560 --> 01:21:27,199
+visualization things. It all uh came
+
+1940
+01:21:25,280 --> 01:21:29,600
+from
+
+1941
+01:21:27,199 --> 01:21:32,159
+visualization which was static like
+
+1942
+01:21:29,600 --> 01:21:34,560
+let's say PowerPoint slides or word
+
+1943
+01:21:32,159 --> 01:21:38,480
+documents or something which existed
+
+1944
+01:21:34,560 --> 01:21:41,840
+even on paper in pre computer era uh and
+
+1945
+01:21:38,480 --> 01:21:44,239
+people use pie charts people used tables
+
+1946
+01:21:41,840 --> 01:21:47,120
+other kind of visualization things but
+
+1947
+01:21:44,239 --> 01:21:49,600
+people did not use a lot of graphs
+
+1948
+01:21:47,120 --> 01:21:52,239
+frankly speaking and if you open current
+
+1949
+01:21:49,600 --> 01:21:54,880
+Microsoft PowerPoint it's well you could
+
+1950
+01:21:52,239 --> 01:21:56,880
+now embed some kind of graph like
+
+1951
+01:21:54,880 --> 01:22:00,000
+structure but it's also you know it's
+
+1952
+01:21:56,880 --> 01:22:02,400
+not a straightforward kind of tool and
+
+1953
+01:22:00,000 --> 01:22:04,800
+my takeaway is just people don't use a
+
+1954
+01:22:02,400 --> 01:22:06,960
+lot of graphs even simple one if if
+
+1955
+01:22:04,800 --> 01:22:09,440
+we're not talking about very large
+
+1956
+01:22:06,960 --> 01:22:12,719
+graphs which is quite hard to v
+
+1957
+01:22:09,440 --> 01:22:15,360
+visualize but even about simpler ones so
+
+1958
+01:22:12,719 --> 01:22:17,920
+I think that that if uh graph
+
+1959
+01:22:15,360 --> 01:22:20,320
+visualization will be
+
+1960
+01:22:17,920 --> 01:22:23,440
+will be actually popular it will be
+
+1961
+01:22:20,320 --> 01:22:25,920
+let's say more domain specific and will
+
+1962
+01:22:23,440 --> 01:22:29,199
+be more about some applications which
+
+1963
+01:22:25,920 --> 01:22:32,960
+has specific way of vis visualizing
+
+1964
+01:22:29,199 --> 01:22:34,719
+graphs in some particular area of of
+
+1965
+01:22:32,960 --> 01:22:37,520
+knowledge and it will be very different.
+
+1966
+01:22:34,719 --> 01:22:40,159
+I don't believe in general purpose graph
+
+1967
+01:22:37,520 --> 01:22:41,920
+visualization tool as a standalone
+
+1968
+01:22:40,159 --> 01:22:46,080
+valuable company.
+
+1969
+01:22:41,920 --> 01:22:49,120
+>> Mhm. Okay. Um there's also something
+
+1970
+01:22:46,080 --> 01:22:52,320
+else which is of interest even though it
+
+1971
+01:22:49,120 --> 01:22:55,600
+at at this time it may it may seem niche
+
+1972
+01:22:52,320 --> 01:22:58,639
+at first and that's uh the u we talked
+
+1973
+01:22:55,600 --> 01:23:00,800
+so far about the uh visualization part
+
+1974
+01:22:58,639 --> 01:23:02,719
+um from the uh from the user let's say
+
+1975
+01:23:00,800 --> 01:23:04,800
+from the end user perspective so you
+
+1976
+01:23:02,719 --> 01:23:07,280
+know you have a big uh data set and it's
+
+1977
+01:23:04,800 --> 01:23:09,199
+graph shaped how do you visualize it and
+
+1978
+01:23:07,280 --> 01:23:11,840
+how do you explore it there are a few
+
+1979
+01:23:09,199 --> 01:23:15,520
+solutions for that around I know um
+
+1980
+01:23:11,840 --> 01:23:19,520
+Karina's um uh question also has the
+
+1981
+01:23:15,520 --> 01:23:22,880
+data modeler uh aspect uh in uh in in
+
+1982
+01:23:19,520 --> 01:23:25,840
+it. So if you're a data modeler and you
+
+1983
+01:23:22,880 --> 01:23:28,159
+know you are you are working on a on an
+
+1984
+01:23:25,840 --> 01:23:30,800
+enterprise knowledge graph for example
+
+1985
+01:23:28,159 --> 01:23:34,739
+the solutions that are available to you
+
+1986
+01:23:30,800 --> 01:23:35,600
+uh at this point are well not you know
+
+1987
+01:23:34,739 --> 01:23:37,120
+[snorts]
+
+1988
+01:23:35,600 --> 01:23:38,880
+they not necessarily they don't
+
+1989
+01:23:37,120 --> 01:23:42,320
+necessarily score very high on the
+
+1990
+01:23:38,880 --> 01:23:44,159
+usability uh aspect. So, and I know that
+
+1991
+01:23:42,320 --> 01:23:47,040
+that Katarina has that in mind because
+
+1992
+01:23:44,159 --> 01:23:49,360
+she is a data modeler herself. So, do
+
+1993
+01:23:47,040 --> 01:23:52,400
+you think there is a need to address
+
+1994
+01:23:49,360 --> 01:23:56,080
+that? It's probably an even smaller
+
+1995
+01:23:52,400 --> 01:23:58,400
+let's say uh subdomain than the one um
+
+1996
+01:23:56,080 --> 01:24:00,159
+addressed to end users. But do you think
+
+1997
+01:23:58,400 --> 01:24:03,199
+do you see that that's important? Do you
+
+1998
+01:24:00,159 --> 01:24:05,679
+do you think that um it's something that
+
+1999
+01:24:03,199 --> 01:24:09,199
+a few enterprises would be willing to
+
+2000
+01:24:05,679 --> 01:24:11,840
+pay for for a good solution? uh I think
+
+2001
+01:24:09,199 --> 01:24:14,320
+you know we have to look it like uh from
+
+2002
+01:24:11,840 --> 01:24:17,440
+another perspective like I think you can
+
+2003
+01:24:14,320 --> 01:24:19,920
+unlock a lot of uh value right by
+
+2004
+01:24:17,440 --> 01:24:21,520
+abstracting a lot of developer work
+
+2005
+01:24:19,920 --> 01:24:23,679
+right that's that's one of the kind of
+
+2006
+01:24:21,520 --> 01:24:25,920
+solutions trying to do trying to remove
+
+2007
+01:24:23,679 --> 01:24:28,159
+all the ground work uh everything you
+
+2008
+01:24:25,920 --> 01:24:30,000
+will do like in your text editor and
+
+2009
+01:24:28,159 --> 01:24:34,239
+pushing the code so the question is you
+
+2010
+01:24:30,000 --> 01:24:36,320
+know can you actually create your models
+
+2011
+01:24:34,239 --> 01:24:39,120
+and control them add the semantics
+
+2012
+01:24:36,320 --> 01:24:41,840
+around the fields do governance, do the
+
+2013
+01:24:39,120 --> 01:24:43,760
+line age as well, being able to do
+
+2014
+01:24:41,840 --> 01:24:46,080
+enterprise connectors and start
+
+2015
+01:24:43,760 --> 01:24:48,960
+populating in this new model the
+
+2016
+01:24:46,080 --> 01:24:51,040
+entries. Uh all of this combined
+
+2017
+01:24:48,960 --> 01:24:53,199
+together I think will be making for a
+
+2018
+01:24:51,040 --> 01:24:55,199
+very compelling use case. For example,
+
+2019
+01:24:53,199 --> 01:24:57,760
+we just exited from a company that was
+
+2020
+01:24:55,199 --> 01:25:00,960
+doing pretty much what I described but
+
+2021
+01:24:57,760 --> 01:25:03,280
+for streams on top of Kafka. So you know
+
+2022
+01:25:00,960 --> 01:25:05,520
+they they had like a governance model
+
+2023
+01:25:03,280 --> 01:25:07,280
+they had a schema registry you could
+
+2024
+01:25:05,520 --> 01:25:09,440
+search for the meta fields you can look
+
+2025
+01:25:07,280 --> 01:25:12,239
+at the data from the source during the
+
+2026
+01:25:09,440 --> 01:25:14,400
+stream and in the sync right so
+
+2027
+01:25:12,239 --> 01:25:16,639
+something similar that allows you to do
+
+2028
+01:25:14,400 --> 01:25:19,600
+let's say all the ops all the operation
+
+2029
+01:25:16,639 --> 01:25:22,560
+of starting from somewhere and go to a
+
+2030
+01:25:19,600 --> 01:25:24,400
+functional database uh it's really
+
+2031
+01:25:22,560 --> 01:25:28,239
+important it's like this productivity
+
+2032
+01:25:24,400 --> 01:25:29,280
+layer on top of the of the database and
+
+2033
+01:25:28,239 --> 01:25:31,280
+then you know there are different
+
+2034
+01:25:29,280 --> 01:25:33,840
+solutions built on top. I think that's a
+
+2035
+01:25:31,280 --> 01:25:34,880
+pretty exciting space.
+
+2036
+01:25:33,840 --> 01:25:37,199
+>> Okay.
+
+2037
+01:25:34,880 --> 01:25:39,360
+>> But you have to think not just like you
+
+2038
+01:25:37,199 --> 01:25:42,239
+know the the narrow part of just doing
+
+2039
+01:25:39,360 --> 01:25:44,480
+the model but everything around it. It's
+
+2040
+01:25:42,239 --> 01:25:46,880
+government it's linets collaboration on
+
+2041
+01:25:44,480 --> 01:25:49,040
+it how you feed it how you monitor the
+
+2042
+01:25:46,880 --> 01:25:50,400
+quality of the data. I think when you if
+
+2043
+01:25:49,040 --> 01:25:55,360
+you can do something like that it could
+
+2044
+01:25:50,400 --> 01:25:57,440
+be a quite interesting uh use case.
+
+2045
+01:25:55,360 --> 01:25:59,600
+Just to to tie that back to the previous
+
+2046
+01:25:57,440 --> 01:26:01,360
+conversation on graph databases, we seem
+
+2047
+01:25:59,600 --> 01:26:04,560
+to uh to coming to be coming back to
+
+2048
+01:26:01,360 --> 01:26:07,920
+them constantly. But uh well so many of
+
+2049
+01:26:04,560 --> 01:26:10,080
+them are actually trying to grow in this
+
+2050
+01:26:07,920 --> 01:26:13,440
+direction that you're that you just
+
+2051
+01:26:10,080 --> 01:26:16,719
+described P. So um go basically beyond
+
+2052
+01:26:13,440 --> 01:26:20,400
+just well just uh store for for graph
+
+2053
+01:26:16,719 --> 01:26:22,480
+data for graph data into uh more into
+
+2054
+01:26:20,400 --> 01:26:26,159
+covering more and more of these areas.
+
+2055
+01:26:22,480 --> 01:26:28,560
+So um adding visualization u
+
+2056
+01:26:26,159 --> 01:26:31,600
+capabilities is one of the areas that
+
+2057
+01:26:28,560 --> 01:26:34,080
+they're growing uh towards uh adding
+
+2058
+01:26:31,600 --> 01:26:35,920
+some governance layer. [snorts] I
+
+2059
+01:26:34,080 --> 01:26:37,920
+haven't I haven't seen that so much yet
+
+2060
+01:26:35,920 --> 01:26:40,320
+but I know that some of them at least
+
+2061
+01:26:37,920 --> 01:26:42,400
+would like to to go there. Uh helping
+
+2062
+01:26:40,320 --> 01:26:44,480
+developer productivity is also something
+
+2063
+01:26:42,400 --> 01:26:47,040
+that I see them addressing. So many of
+
+2064
+01:26:44,480 --> 01:26:50,480
+them these days also come with their own
+
+2065
+01:26:47,040 --> 01:26:53,120
+built-in integrated uh developer uh
+
+2066
+01:26:50,480 --> 01:26:56,719
+environments uh tailored specifically to
+
+2067
+01:26:53,120 --> 01:26:59,600
+the needs uh for uh of people developing
+
+2068
+01:26:56,719 --> 01:27:02,639
+on on top of graph models. So it seems
+
+2069
+01:26:59,600 --> 01:27:07,320
+that you know what what you're saying uh
+
+2070
+01:27:02,639 --> 01:27:07,320
+resonates with with them on some level.
+
+2071
+01:27:09,920 --> 01:27:16,719
+Um so Bob let me let me come back to you
+
+2072
+01:27:14,560 --> 01:27:19,120
+um from you know to to give us your um
+
+2073
+01:27:16,719 --> 01:27:22,960
+your view on the um on the from the
+
+2074
+01:27:19,120 --> 01:27:25,920
+vendor let's say uh perspective. So when
+
+2075
+01:27:22,960 --> 01:27:29,840
+people uh when you on board people to uh
+
+2076
+01:27:25,920 --> 01:27:31,600
+to weiate how many of those things that
+
+2077
+01:27:29,840 --> 01:27:35,360
+uh those requirements let's say that
+
+2078
+01:27:31,600 --> 01:27:37,760
+Panos uh just mentioned um do people
+
+2079
+01:27:35,360 --> 01:27:42,320
+address to you and how many of those are
+
+2080
+01:27:37,760 --> 01:27:45,360
+you able to um uh to satisfy let's say.
+
+2081
+01:27:42,320 --> 01:27:47,760
+>> Yeah. So that's a great question. So the
+
+2082
+01:27:45,360 --> 01:27:50,159
+um
+
+2083
+01:27:47,760 --> 01:27:51,760
+not a lot to be honest. So because the
+
+2084
+01:27:50,159 --> 01:27:55,120
+reason that people on board to us is
+
+2085
+01:27:51,760 --> 01:27:57,120
+that they want to solve that problem. So
+
+2086
+01:27:55,120 --> 01:27:59,600
+um that can be a corporate that says
+
+2087
+01:27:57,120 --> 01:28:01,440
+like okay there's nothing on the market
+
+2088
+01:27:59,600 --> 01:28:04,159
+that we can now pick off the shelf that
+
+2089
+01:28:01,440 --> 01:28:05,760
+really specifically fits our needs. So
+
+2090
+01:28:04,159 --> 01:28:07,440
+we go a little bit deeper in the stack
+
+2091
+01:28:05,760 --> 01:28:10,080
+and we start on a database level and
+
+2092
+01:28:07,440 --> 01:28:11,679
+then build something on top of that or a
+
+2093
+01:28:10,080 --> 01:28:13,440
+startup that says like hey we have an
+
+2094
+01:28:11,679 --> 01:28:14,960
+idea to visualize something or work on
+
+2095
+01:28:13,440 --> 01:28:18,320
+something
+
+2096
+01:28:14,960 --> 01:28:22,000
+to um uh present it to the to the end
+
+2097
+01:28:18,320 --> 01:28:23,520
+user and I'm a very strong believer when
+
+2098
+01:28:22,000 --> 01:28:25,520
+it comes to these kind of things like if
+
+2099
+01:28:23,520 --> 01:28:29,520
+you look at the stack and then again if
+
+2100
+01:28:25,520 --> 01:28:32,320
+I may in my three sections the value of
+
+2101
+01:28:29,520 --> 01:28:34,000
+your product sits somewhere. So it sits
+
+2102
+01:28:32,320 --> 01:28:36,080
+in the top layer, it sits in the middle
+
+2103
+01:28:34,000 --> 01:28:38,159
+layer or in the bottom layer. And I
+
+2104
+01:28:36,080 --> 01:28:42,320
+think that's the most important thing to
+
+2105
+01:28:38,159 --> 01:28:43,840
+to um to look at. So so for example, and
+
+2106
+01:28:42,320 --> 01:28:47,199
+what I really liked about the point that
+
+2107
+01:28:43,840 --> 01:28:49,040
+Kathrina was making is like I get that
+
+2108
+01:28:47,199 --> 01:28:50,800
+for people who are doing the data
+
+2109
+01:28:49,040 --> 01:28:52,960
+modeling that there's a need for that
+
+2110
+01:28:50,800 --> 01:28:54,960
+kind of an interface.
+
+2111
+01:28:52,960 --> 01:28:57,840
+I don't know from a value creation point
+
+2112
+01:28:54,960 --> 01:28:59,920
+of view how much value specifically the
+
+2113
+01:28:57,840 --> 01:29:02,800
+interface creates. it is more like how
+
+2114
+01:28:59,920 --> 01:29:04,880
+that uh rest how it works together in
+
+2115
+01:29:02,800 --> 01:29:06,400
+harmony with the database. So what you
+
+2116
+01:29:04,880 --> 01:29:08,880
+just mentioned also George that you said
+
+2117
+01:29:06,400 --> 01:29:11,760
+like we see more companies move in that
+
+2118
+01:29:08,880 --> 01:29:13,600
+direction. Sure, if I would be if if I
+
+2119
+01:29:11,760 --> 01:29:15,679
+would be tomorrow, snap of a finger, I
+
+2120
+01:29:13,600 --> 01:29:17,440
+would be the CEO of Snop forJ, I would
+
+2121
+01:29:15,679 --> 01:29:18,800
+do the same thing, of course, because
+
+2122
+01:29:17,440 --> 01:29:20,320
+it's not hurting your business because
+
+2123
+01:29:18,800 --> 01:29:22,639
+you know that the value of what you're
+
+2124
+01:29:20,320 --> 01:29:24,239
+creating sits in the database and not
+
+2125
+01:29:22,639 --> 01:29:26,239
+per se in how you're visualizing stuff
+
+2126
+01:29:24,239 --> 01:29:27,840
+on top. And if people are have a unique
+
+2127
+01:29:26,239 --> 01:29:30,880
+way of visualizing something on top of
+
+2128
+01:29:27,840 --> 01:29:33,600
+your software, then you charge them. So
+
+2129
+01:29:30,880 --> 01:29:35,360
+it's like it's the you see so that
+
+2130
+01:29:33,600 --> 01:29:38,080
+that's how I look at it from a vendor
+
+2131
+01:29:35,360 --> 01:29:40,719
+perspective that I'm a strong believer
+
+2132
+01:29:38,080 --> 01:29:42,719
+that where we are right now the value
+
+2133
+01:29:40,719 --> 01:29:45,280
+sits in actually being able to do the
+
+2134
+01:29:42,719 --> 01:29:46,960
+data modeling and and with data modeling
+
+2135
+01:29:45,280 --> 01:29:49,600
+I don't mean the visualization but the
+
+2136
+01:29:46,960 --> 01:29:51,360
+the just the the raw computing power and
+
+2137
+01:29:49,600 --> 01:29:54,560
+even especially when we include machine
+
+2138
+01:29:51,360 --> 01:29:56,880
+learning to show the right results in a
+
+2139
+01:29:54,560 --> 01:29:58,560
+few milliseconds that's the that is
+
+2140
+01:29:56,880 --> 01:30:00,560
+where I think the most value is being
+
+2141
+01:29:58,560 --> 01:30:02,639
+created right now and if you need the
+
+2142
+01:30:00,560 --> 01:30:05,600
+specific way to visualize it. Sure, by
+
+2143
+01:30:02,639 --> 01:30:07,280
+all means. But it's like I'm not sure
+
+2144
+01:30:05,600 --> 01:30:08,880
+how much value that would add to my
+
+2145
+01:30:07,280 --> 01:30:12,159
+business today.
+
+2146
+01:30:08,880 --> 01:30:14,239
+>> Mhm. Okay. So, you think that um where
+
+2147
+01:30:12,159 --> 01:30:16,320
+we are right now, it's getting it's it's
+
+2148
+01:30:14,239 --> 01:30:19,920
+mostly about getting uh the basic, let's
+
+2149
+01:30:16,320 --> 01:30:25,560
+say, and um well, visualization may be
+
+2150
+01:30:19,920 --> 01:30:25,560
+um a bit out of your scope. uh at least
+
+2151
+01:30:25,600 --> 01:30:29,280
+>> they're yes they're out of my scope but
+
+2152
+01:30:27,600 --> 01:30:31,920
+I also really mean it from a value
+
+2153
+01:30:29,280 --> 01:30:33,679
+creating perspective. So let let's take
+
+2154
+01:30:31,920 --> 01:30:35,280
+that example that you because you you
+
+2155
+01:30:33,679 --> 01:30:36,719
+made a very good point George and I know
+
+2156
+01:30:35,280 --> 01:30:39,360
+some companies that you probably also
+
+2157
+01:30:36,719 --> 01:30:41,600
+know that are really good at visualizing
+
+2158
+01:30:39,360 --> 01:30:43,440
+these huge graphs like you take the
+
+2159
+01:30:41,600 --> 01:30:45,840
+Facebook graph and they have technology
+
+2160
+01:30:43,440 --> 01:30:48,080
+to actually make a visual for it. The
+
+2161
+01:30:45,840 --> 01:30:50,320
+thing is
+
+2162
+01:30:48,080 --> 01:30:53,760
+you first need to be able to get the
+
+2163
+01:30:50,320 --> 01:30:55,600
+data out to know what to visualize
+
+2164
+01:30:53,760 --> 01:30:57,520
+which goes down in the stack on the
+
+2165
+01:30:55,600 --> 01:30:59,440
+lowest level. You need to have the CPU
+
+2166
+01:30:57,520 --> 01:31:01,280
+and memory power to actually do that.
+
+2167
+01:30:59,440 --> 01:31:04,480
+Now we now have that thanks to all the
+
+2168
+01:31:01,280 --> 01:31:05,760
+big uh uh infrastructure companies. Then
+
+2169
+01:31:04,480 --> 01:31:07,360
+on top of that you need to have the
+
+2170
+01:31:05,760 --> 01:31:09,920
+databases or the search engines to
+
+2171
+01:31:07,360 --> 01:31:11,280
+actually give you the coordinates and
+
+2172
+01:31:09,920 --> 01:31:13,760
+the data points that you want to
+
+2173
+01:31:11,280 --> 01:31:15,360
+visualize. And then on top of that you
+
+2174
+01:31:13,760 --> 01:31:17,520
+might have some companies that actually
+
+2175
+01:31:15,360 --> 01:31:19,120
+do the visualization.
+
+2176
+01:31:17,520 --> 01:31:22,480
+Now
+
+2177
+01:31:19,120 --> 01:31:24,880
+depends a little bit on why on on on per
+
+2178
+01:31:22,480 --> 01:31:27,840
+company where the that actual value sits
+
+2179
+01:31:24,880 --> 01:31:31,360
+because I know of a company that is
+
+2180
+01:31:27,840 --> 01:31:34,400
+really good at showing these billion uh
+
+2181
+01:31:31,360 --> 01:31:36,960
+node graphs in a visual. That's a hard
+
+2182
+01:31:34,400 --> 01:31:39,280
+thing to solve. So their value sits in
+
+2183
+01:31:36,960 --> 01:31:41,360
+the top layer. But if somebody says like
+
+2184
+01:31:39,280 --> 01:31:42,960
+yeah I'm so the example that I just
+
+2185
+01:31:41,360 --> 01:31:45,120
+showed you finding these notes in the
+
+2186
+01:31:42,960 --> 01:31:46,480
+graph and if somebody would say I'm
+
+2187
+01:31:45,120 --> 01:31:49,120
+going to make a graphical interface on
+
+2188
+01:31:46,480 --> 01:31:51,760
+top of that to show these search results
+
+2189
+01:31:49,120 --> 01:31:54,080
+that's great good for them but I'm not
+
+2190
+01:31:51,760 --> 01:31:57,719
+sure how much value that is adding from
+
+2191
+01:31:54,080 --> 01:31:57,719
+a monetary perspective.
+
+2192
+01:31:57,760 --> 01:32:01,199
+>> Okay that's
+
+2193
+01:32:00,403 --> 01:32:03,360
+[snorts]
+
+2194
+01:32:01,199 --> 01:32:06,159
+I'm I'm not sure about that either. what
+
+2195
+01:32:03,360 --> 01:32:08,719
+I do uh know what what I can relate to
+
+2196
+01:32:06,159 --> 01:32:12,000
+you from um from experience basically
+
+2197
+01:32:08,719 --> 01:32:14,639
+from from working with uh people in uh
+
+2198
+01:32:12,000 --> 01:32:16,800
+in many organizations is that well
+
+2199
+01:32:14,639 --> 01:32:19,920
+visualization does matter if you're
+
+2200
+01:32:16,800 --> 01:32:23,600
+trying to convey the value that a use
+
+2201
+01:32:19,920 --> 01:32:26,639
+case may bring to um to to enterprise
+
+2202
+01:32:23,600 --> 01:32:28,400
+users for example yes I mean obviously
+
+2203
+01:32:26,639 --> 01:32:30,960
+you know if it doesn't work on the on
+
+2204
+01:32:28,400 --> 01:32:33,440
+the data modeling layer on the hardware
+
+2205
+01:32:30,960 --> 01:32:35,920
+layer on all of those it's going to be
+
+2206
+01:32:33,440 --> 01:32:38,480
+um it's your your use case is not going
+
+2207
+01:32:35,920 --> 01:32:40,320
+to be practical. But no matter you know
+
+2208
+01:32:38,480 --> 01:32:42,480
+how fast this is or you know how how
+
+2209
+01:32:40,320 --> 01:32:45,360
+brilliant your data model is or you know
+
+2210
+01:32:42,480 --> 01:32:48,960
+how you may elaborate on on all of those
+
+2211
+01:32:45,360 --> 01:32:50,639
+things in a sort of abstract way. Uh to
+
+2212
+01:32:48,960 --> 01:32:52,719
+repeat what Katarina said you know the
+
+2213
+01:32:50,639 --> 01:32:55,040
+moment they they see it you know there's
+
+2214
+01:32:52,719 --> 01:32:58,320
+this wow effect and they sort of get it.
+
+2215
+01:32:55,040 --> 01:33:00,480
+So my two sense is that well yes I see
+
+2216
+01:32:58,320 --> 01:33:02,560
+your point of view that visualization
+
+2217
+01:33:00,480 --> 01:33:04,400
+couldn't exist without the underlying
+
+2218
+01:33:02,560 --> 01:33:06,320
+layers but I think that it really
+
+2219
+01:33:04,400 --> 01:33:08,719
+matters.
+
+2220
+01:33:06,320 --> 01:33:10,159
+>> No no no so I I I I don't disagree with
+
+2221
+01:33:08,719 --> 01:33:13,760
+that. It's more the point that I'm
+
+2222
+01:33:10,159 --> 01:33:16,480
+trying to like the question is if that's
+
+2223
+01:33:13,760 --> 01:33:19,920
+what where the value sits. So let's
+
+2224
+01:33:16,480 --> 01:33:21,760
+let's take um let me give you a cheesy
+
+2225
+01:33:19,920 --> 01:33:23,520
+example to make my point.
+
+2226
+01:33:21,760 --> 01:33:26,400
+>> Cheesy example. Let's say you had like
+
+2227
+01:33:23,520 --> 01:33:29,840
+Google search in the early days. So you
+
+2228
+01:33:26,400 --> 01:33:32,000
+had like that that that famous white
+
+2229
+01:33:29,840 --> 01:33:34,159
+page with just a few blue links on it
+
+2230
+01:33:32,000 --> 01:33:36,880
+top layer the visualization.
+
+2231
+01:33:34,159 --> 01:33:38,400
+>> Then you had the engine that that um the
+
+2232
+01:33:36,880 --> 01:33:41,120
+founders of Google created to actually
+
+2233
+01:33:38,400 --> 01:33:42,480
+show you the right results and then you
+
+2234
+01:33:41,120 --> 01:33:45,120
+had the infrastructure that it was
+
+2235
+01:33:42,480 --> 01:33:47,440
+running on. So let's say you show this
+
+2236
+01:33:45,120 --> 01:33:50,000
+to an investor and yes you use that you
+
+2237
+01:33:47,440 --> 01:33:52,239
+use that graphical interface
+
+2238
+01:33:50,000 --> 01:33:54,400
+to show it. So these this very clear
+
+2239
+01:33:52,239 --> 01:33:57,199
+overview that Google still has today.
+
+2240
+01:33:54,400 --> 01:33:59,440
+It's a little more fancy now but makes
+
+2241
+01:33:57,199 --> 01:34:01,600
+my point. And now just as a thought
+
+2242
+01:33:59,440 --> 01:34:03,360
+experiment you would ask an investor do
+
+2243
+01:34:01,600 --> 01:34:05,440
+you like this? And then an investor
+
+2244
+01:34:03,360 --> 01:34:07,280
+would say this is fantastic because I
+
+2245
+01:34:05,440 --> 01:34:09,120
+can now search the web. And then you
+
+2246
+01:34:07,280 --> 01:34:11,760
+would ask the investor, okay, but you're
+
+2247
+01:34:09,120 --> 01:34:14,639
+allowed to invest in one thing or in the
+
+2248
+01:34:11,760 --> 01:34:16,239
+graphical interface that Google has or
+
+2249
+01:34:14,639 --> 01:34:19,040
+in the technology and the database that
+
+2250
+01:34:16,239 --> 01:34:21,920
+they created to show these results or in
+
+2251
+01:34:19,040 --> 01:34:24,239
+the hardware that it's running on then I
+
+2252
+01:34:21,920 --> 01:34:27,440
+think that every investor would jump on
+
+2253
+01:34:24,239 --> 01:34:29,520
+the database that they created like you
+
+2254
+01:34:27,440 --> 01:34:31,840
+know it's like yes the the interface is
+
+2255
+01:34:29,520 --> 01:34:33,040
+intuitive but
+
+2256
+01:34:31,840 --> 01:34:34,719
+the value
+
+2257
+01:34:33,040 --> 01:34:37,440
+>> chicken and deck problem frankly
+
+2258
+01:34:34,719 --> 01:34:39,520
+speaking because uh I mean Google is
+
+2259
+01:34:37,440 --> 01:34:41,440
+full stack right it's about database
+
+2260
+01:34:39,520 --> 01:34:44,480
+it's about page rank algorithm it's
+
+2261
+01:34:41,440 --> 01:34:46,960
+about search engine page and so on and
+
+2262
+01:34:44,480 --> 01:34:48,960
+when Google appeared it was not the
+
+2263
+01:34:46,960 --> 01:34:50,480
+first search engine on the market and
+
+2264
+01:34:48,960 --> 01:34:52,560
+people already knew how it could work
+
+2265
+01:34:50,480 --> 01:34:54,239
+and how what is final use case for
+
+2266
+01:34:52,560 --> 01:34:56,960
+people who are using search and that
+
+2267
+01:34:54,239 --> 01:34:59,679
+it's valuable and then Google introduced
+
+2268
+01:34:56,960 --> 01:35:03,120
+some better algorithm better database
+
+2269
+01:34:59,679 --> 01:35:05,520
+and so on which actually people well let
+
+2270
+01:35:03,120 --> 01:35:08,480
+me put in that simple way people do not
+
+2271
+01:35:05,520 --> 01:35:11,760
+need graph databases. They need to solve
+
+2272
+01:35:08,480 --> 01:35:13,920
+problems. And uh if you know that graph
+
+2273
+01:35:11,760 --> 01:35:15,679
+database could solve real problems, then
+
+2274
+01:35:13,920 --> 01:35:17,520
+well people will invest in graph
+
+2275
+01:35:15,679 --> 01:35:19,040
+database as a technology.
+
+2276
+01:35:17,520 --> 01:35:20,800
+>> I need to need to show how it could
+
+2277
+01:35:19,040 --> 01:35:22,320
+could solve real world problems first.
+
+2278
+01:35:20,800 --> 01:35:24,400
+>> Yeah, but I I disagree with that
+
+2279
+01:35:22,320 --> 01:35:25,920
+proposition because that's saying like
+
+2280
+01:35:24,400 --> 01:35:29,440
+people don't need water, they're just
+
+2281
+01:35:25,920 --> 01:35:31,600
+thirsty, right? So the the the the the
+
+2282
+01:35:29,440 --> 01:35:34,239
+thing is like the Google is well known
+
+2283
+01:35:31,600 --> 01:35:35,760
+for the graph that they created and it I
+
+2284
+01:35:34,239 --> 01:35:36,880
+I'm I'm just I'm just I'm also a little
+
+2285
+01:35:35,760 --> 01:35:38,560
+bit surprised about this because I'm
+
+2286
+01:35:36,880 --> 01:35:41,360
+like you you mentioned page rank which
+
+2287
+01:35:38,560 --> 01:35:45,520
+of course nowadays is rank brain. If I
+
+2288
+01:35:41,360 --> 01:35:47,760
+if you could choose to invest in the
+
+2289
+01:35:45,520 --> 01:35:50,000
+design that they created the interface
+
+2290
+01:35:47,760 --> 01:35:52,400
+when you do Google search which I'm not
+
+2291
+01:35:50,000 --> 01:35:53,679
+complicating about because I'm I'm sorry
+
+2292
+01:35:52,400 --> 01:35:56,400
+complaining about because I'm using that
+
+2293
+01:35:53,679 --> 01:35:58,320
+on a on a daily basis myself
+
+2294
+01:35:56,400 --> 01:36:00,639
+or as an investor I had to invest in
+
+2295
+01:35:58,320 --> 01:36:02,480
+rank brain for me
+
+2296
+01:36:00,639 --> 01:36:04,880
+>> depends on timing
+
+2297
+01:36:02,480 --> 01:36:07,360
+>> it's I I mean it's it's very easy to you
+
+2298
+01:36:04,880 --> 01:36:09,120
+know to connect dots looking backward
+
+2299
+01:36:07,360 --> 01:36:11,520
+but it's very hard to do when you try to
+
+2300
+01:36:09,120 --> 01:36:13,360
+look forward it's very hard I mean to
+
+2301
+01:36:11,520 --> 01:36:16,960
+understand such kind of things when
+
+2302
+01:36:13,360 --> 01:36:19,600
+you're in 1992
+
+2303
+01:36:16,960 --> 01:36:21,600
+it's easy right now to understand what
+
+2304
+01:36:19,600 --> 01:36:23,520
+was it better investment or worse
+
+2305
+01:36:21,600 --> 01:36:25,600
+investment but it's not that clear when
+
+2306
+01:36:23,520 --> 01:36:28,320
+you don't see real applications of this
+
+2307
+01:36:25,600 --> 01:36:31,280
+technology because if you remember there
+
+2308
+01:36:28,320 --> 01:36:33,920
+are a lot of uh misconceptions about
+
+2309
+01:36:31,280 --> 01:36:36,320
+possible technology for example let's
+
+2310
+01:36:33,920 --> 01:36:38,639
+mention very famous quote of Bill Gates
+
+2311
+01:36:36,320 --> 01:36:41,840
+about that I think 4 kilobytes of memory
+
+2312
+01:36:38,639 --> 01:36:44,880
+will be enough for everybody and uh and
+
+2313
+01:36:41,840 --> 01:36:47,440
+so on. I mean this is and it it was
+
+2314
+01:36:44,880 --> 01:36:50,719
+quoted by the guy who already knew
+
+2315
+01:36:47,440 --> 01:36:53,520
+applications and still uh at that moment
+
+2316
+01:36:50,719 --> 01:36:54,960
+it look like it's I mean we don't need
+
+2317
+01:36:53,520 --> 01:36:56,719
+enough we don't need very strong
+
+2318
+01:36:54,960 --> 01:36:59,440
+technology in this particular segment 4
+
+2319
+01:36:56,719 --> 01:37:02,239
+kilobyt is enough now we know that it's
+
+2320
+01:36:59,440 --> 01:37:04,000
+was because well people produce
+
+2321
+01:37:02,239 --> 01:37:06,480
+a lot of data they need a lot of memory
+
+2322
+01:37:04,000 --> 01:37:08,560
+to process this data
+
+2323
+01:37:06,480 --> 01:37:11,040
+and the same for all other technologies
+
+2324
+01:37:08,560 --> 01:37:13,440
+I mean you need to see real applications
+
+2325
+01:37:11,040 --> 01:37:15,360
+only then you're comfortable and
+
+2326
+01:37:13,440 --> 01:37:17,600
+confident about investing in
+
+2327
+01:37:15,360 --> 01:37:20,320
+technologies which will further improve
+
+2328
+01:37:17,600 --> 01:37:22,400
+these applications. People know how to
+
+2329
+01:37:20,320 --> 01:37:24,560
+search in the in the web before Google
+
+2330
+01:37:22,400 --> 01:37:28,080
+appeared. That's why it was very
+
+2331
+01:37:24,560 --> 01:37:29,760
+available to invest in Google.
+
+2332
+01:37:28,080 --> 01:37:32,239
+>> Yes, I'm I'm not saying I disagree with
+
+2333
+01:37:29,760 --> 01:37:33,840
+you, but from me being on the other side
+
+2334
+01:37:32,239 --> 01:37:37,440
+of the table in this conversation, I
+
+2335
+01:37:33,840 --> 01:37:40,560
+like to poke the investors here. So you
+
+2336
+01:37:37,440 --> 01:37:42,320
+could also argue you could also argue
+
+2337
+01:37:40,560 --> 01:37:44,320
+that what you just said you're using
+
+2338
+01:37:42,320 --> 01:37:46,480
+your own words you could also said like
+
+2339
+01:37:44,320 --> 01:37:50,000
+if you need to see it first before
+
+2340
+01:37:46,480 --> 01:37:52,080
+believing it you might be too late.
+
+2341
+01:37:50,000 --> 01:37:55,119
+>> Uh you you need to see a real world
+
+2342
+01:37:52,080 --> 01:37:57,280
+applications could be applications uh
+
+2343
+01:37:55,119 --> 01:37:59,440
+based on different technology. We don't
+
+2344
+01:37:57,280 --> 01:38:02,239
+need to you know uh we know that the
+
+2345
+01:37:59,440 --> 01:38:04,239
+world need to compute something uh and
+
+2346
+01:38:02,239 --> 01:38:06,719
+that's enough uh to invest in quantum
+
+2347
+01:38:04,239 --> 01:38:08,800
+computing while we can see real world
+
+2348
+01:38:06,719 --> 01:38:11,199
+evidence that quantum computing works
+
+2349
+01:38:08,800 --> 01:38:13,440
+for to solve business problems but we
+
+2350
+01:38:11,199 --> 01:38:16,639
+know that classic computing works that's
+
+2351
+01:38:13,440 --> 01:38:18,480
+enough for us is yeah I think but that's
+
+2352
+01:38:16,639 --> 01:38:20,560
+that's like the catch 22 for you right
+
+2353
+01:38:18,480 --> 01:38:22,800
+so the you know the computing needs to
+
+2354
+01:38:20,560 --> 01:38:25,360
+happen but ideally you would also see
+
+2355
+01:38:22,800 --> 01:38:27,360
+like to see a great quantum computing
+
+2356
+01:38:25,360 --> 01:38:29,600
+application it's always about yeah it's
+
+2357
+01:38:27,360 --> 01:38:31,760
+question 22 what chicken you can problem
+
+2358
+01:38:29,600 --> 01:38:33,119
+I mean it's always about you know you
+
+2359
+01:38:31,760 --> 01:38:35,280
+need to you would like to know
+
+2360
+01:38:33,119 --> 01:38:39,280
+everything and you as a venture investor
+
+2361
+01:38:35,280 --> 01:38:41,520
+you always knew just very small uh area
+
+2362
+01:38:39,280 --> 01:38:44,320
+of data you would like to to know
+
+2363
+01:38:41,520 --> 01:38:46,719
+actually you always have to make
+
+2364
+01:38:44,320 --> 01:38:48,719
+decisions in
+
+2365
+01:38:46,719 --> 01:38:51,600
+certain substances
+
+2366
+01:38:48,719 --> 01:38:54,080
+>> I think it is a catch 22 so if you are
+
+2367
+01:38:51,600 --> 01:38:56,480
+and it's in some ways I see it as a sort
+
+2368
+01:38:54,080 --> 01:38:58,800
+of leap of faith I mean If there were
+
+2369
+01:38:56,480 --> 01:39:00,880
+already enough, you know, applications,
+
+2370
+01:38:58,800 --> 01:39:02,960
+tangible applications that you could
+
+2371
+01:39:00,880 --> 01:39:05,520
+see, then it means that maybe you're a
+
+2372
+01:39:02,960 --> 01:39:07,920
+bit late in this market, then if there's
+
+2373
+01:39:05,520 --> 01:39:10,159
+none, there's, you know, the element of
+
+2374
+01:39:07,920 --> 01:39:11,440
+risk. But that's that's how investors
+
+2375
+01:39:10,159 --> 01:39:15,000
+live, I guess. You know, that's that's
+
+2376
+01:39:11,440 --> 01:39:15,000
+your bread and butter.
+
+2377
+01:39:15,760 --> 01:39:21,760
+What about you, Puns? Just to uh to
+
+2378
+01:39:17,920 --> 01:39:24,320
+round to um to to to round up this uh
+
+2379
+01:39:21,760 --> 01:39:26,320
+this round of questions. So what where
+
+2380
+01:39:24,320 --> 01:39:27,520
+would you invest the um the bottom
+
+2381
+01:39:26,320 --> 01:39:30,719
+layer, the middle layer or the
+
+2382
+01:39:27,520 --> 01:39:32,880
+application layer in in Bob's uh Google
+
+2383
+01:39:30,719 --> 01:39:34,719
+example, the visualization layer? Sorry.
+
+2384
+01:39:32,880 --> 01:39:36,000
+>> Um I will invest everywhere, right? But
+
+2385
+01:39:34,719 --> 01:39:38,400
+you know there are different attributes
+
+2386
+01:39:36,000 --> 01:39:40,239
+when you're looking to different layers.
+
+2387
+01:39:38,400 --> 01:39:42,800
+U should be honest if someone comes up
+
+2388
+01:39:40,239 --> 01:39:46,239
+with a new database implementation if
+
+2389
+01:39:42,800 --> 01:39:48,239
+there's no real traction I don't care.
+
+2390
+01:39:46,239 --> 01:39:50,000
+It might be like an amazing algorithm
+
+2391
+01:39:48,239 --> 01:39:52,639
+but if you can't create a community
+
+2392
+01:39:50,000 --> 01:39:54,080
+around it it still doesn't matter. Now
+
+2393
+01:39:52,639 --> 01:39:55,920
+where you have already foundation
+
+2394
+01:39:54,080 --> 01:39:57,920
+already like big players in the in the
+
+2395
+01:39:55,920 --> 01:40:00,400
+space but the adoption may be a bit
+
+2396
+01:39:57,920 --> 01:40:03,360
+slow. So the example I gave to Katarina
+
+2397
+01:40:00,400 --> 01:40:05,119
+before around creating like the solution
+
+2398
+01:40:03,360 --> 01:40:07,360
+which is what I will describe as the
+
+2399
+01:40:05,119 --> 01:40:08,960
+workbench where you describe your
+
+2400
+01:40:07,360 --> 01:40:10,960
+models, you do your modeling, you can
+
+2401
+01:40:08,960 --> 01:40:12,480
+bring your data in, you can visualize,
+
+2402
+01:40:10,960 --> 01:40:15,440
+you can monitor, you can monitor the
+
+2403
+01:40:12,480 --> 01:40:16,880
+quality and execution. Uh the middle
+
+2404
+01:40:15,440 --> 01:40:20,000
+layer is something I really really like
+
+2405
+01:40:16,880 --> 01:40:22,560
+and our our investment lenses on top of
+
+2406
+01:40:20,000 --> 01:40:24,159
+Kafka proved that. Uh so we're very
+
+2407
+01:40:22,560 --> 01:40:25,520
+happy with the results and there's
+
+2408
+01:40:24,159 --> 01:40:28,400
+actually a few more investments that
+
+2409
+01:40:25,520 --> 01:40:32,480
+took in in similar products that were
+
+2410
+01:40:28,400 --> 01:40:34,480
+announced this week by Excel. Um and the
+
+2411
+01:40:32,480 --> 01:40:36,320
+application layer of course is uh
+
+2412
+01:40:34,480 --> 01:40:39,119
+another one but I don't think that the
+
+2413
+01:40:36,320 --> 01:40:42,159
+application layer it matters. It gives
+
+2414
+01:40:39,119 --> 01:40:44,080
+you perhaps a good uh indication that
+
+2415
+01:40:42,159 --> 01:40:45,520
+you know the technology team is on top
+
+2416
+01:40:44,080 --> 01:40:48,000
+of it that they really know how to
+
+2417
+01:40:45,520 --> 01:40:49,840
+tackle the problem. Uh but it won't
+
+2418
+01:40:48,000 --> 01:40:52,239
+guarantee any success. the fact that
+
+2419
+01:40:49,840 --> 01:40:53,520
+they chose graph B over any other new
+
+2420
+01:40:52,239 --> 01:40:58,239
+technology, right? Then there are
+
+2421
+01:40:53,520 --> 01:41:02,960
+different factors in play there.
+
+2422
+01:40:58,239 --> 01:41:06,639
+>> Okay, so let's have one final round of
+
+2423
+01:41:02,960 --> 01:41:08,159
+um questions from uh and answers to
+
+2424
+01:41:06,639 --> 01:41:10,560
+those questions from from all of you and
+
+2425
+01:41:08,159 --> 01:41:13,920
+wrap this up. We're almost out of time
+
+2426
+01:41:10,560 --> 01:41:16,719
+and it it just flew by. So since this is
+
+2427
+01:41:13,920 --> 01:41:20,400
+the um this is time for wrap-up, let's
+
+2428
+01:41:16,719 --> 01:41:22,480
+do a little bit of uh forwardlooking um
+
+2429
+01:41:20,400 --> 01:41:25,520
+yeah guesses, speculations, whatever it
+
+2430
+01:41:22,480 --> 01:41:27,440
+is you you want to call it. So where do
+
+2431
+01:41:25,520 --> 01:41:31,280
+you see I think we'll probably all agree
+
+2432
+01:41:27,440 --> 01:41:34,400
+that this market is growing. So let's
+
+2433
+01:41:31,280 --> 01:41:36,400
+let's first see if my my assumption
+
+2434
+01:41:34,400 --> 01:41:38,719
+resonates with you that well we agree
+
+2435
+01:41:36,400 --> 01:41:40,400
+that this is going to grow and then uh
+
+2436
+01:41:38,719 --> 01:41:42,239
+where where do you see the uh the
+
+2437
+01:41:40,400 --> 01:41:44,320
+challenges and opportunities and where
+
+2438
+01:41:42,239 --> 01:41:46,880
+do you think uh this market will be you
+
+2439
+01:41:44,320 --> 01:41:48,320
+know typical kind of projection question
+
+2440
+01:41:46,880 --> 01:41:50,239
+so where do you think this market will
+
+2441
+01:41:48,320 --> 01:41:53,440
+be in let's say five years from now we
+
+2442
+01:41:50,239 --> 01:41:55,840
+talked earlier I think about 2026 so
+
+2443
+01:41:53,440 --> 01:41:58,159
+let's let's pick that as our uh
+
+2444
+01:41:55,840 --> 01:42:00,960
+guesstimate
+
+2445
+01:41:58,159 --> 01:42:00,960
+who wants to go
+
+2446
+01:42:01,520 --> 01:42:06,159
+Hello. Uh I guess we're going to see the
+
+2447
+01:42:03,840 --> 01:42:09,440
+first IPO in the space most likely being
+
+2448
+01:42:06,159 --> 01:42:12,159
+Neo forj. Uh we already now have let's
+
+2449
+01:42:09,440 --> 01:42:14,159
+say a solid set of vendors that are big
+
+2450
+01:42:12,159 --> 01:42:16,560
+enough and well financed like to further
+
+2451
+01:42:14,159 --> 01:42:19,280
+build the foundation of the market
+
+2452
+01:42:16,560 --> 01:42:22,880
+namely Tiger Graph, Draft and Then we
+
+2453
+01:42:19,280 --> 01:42:27,040
+see things like Neptune from AWS
+
+2454
+01:42:22,880 --> 01:42:29,040
+and so on. uh most likely we're going to
+
+2455
+01:42:27,040 --> 01:42:31,840
+see uh further proliferation in
+
+2456
+01:42:29,040 --> 01:42:33,840
+developer adoption thanks to GraphQL
+
+2457
+01:42:31,840 --> 01:42:35,280
+with its own issues when it comes to
+
+2458
+01:42:33,840 --> 01:42:38,480
+that but I think it's going to be a net
+
+2459
+01:42:35,280 --> 01:42:41,520
+positive uh to on board more people on
+
+2460
+01:42:38,480 --> 01:42:43,920
+graph theory and graph databases
+
+2461
+01:42:41,520 --> 01:42:47,520
+uh we're going to see an explosion of
+
+2462
+01:42:43,920 --> 01:42:49,520
+adoption uh thanks to being able to
+
+2463
+01:42:47,520 --> 01:42:51,600
+model the real world and take existing
+
+2464
+01:42:49,520 --> 01:42:53,760
+data sets and reinterpret them or
+
+2465
+01:42:51,600 --> 01:42:57,119
+interpret them for the first time ever
+
+2466
+01:42:53,760 --> 01:42:58,960
+as graphs. Uh, and I think it'll be
+
+2467
+01:42:57,119 --> 01:43:01,199
+quite bullish to see something emerging
+
+2468
+01:42:58,960 --> 01:43:03,119
+on this middle layer we just described.
+
+2469
+01:43:01,199 --> 01:43:07,119
+So, in order to make every everyone's
+
+2470
+01:43:03,119 --> 01:43:08,159
+life easier and faster to work with
+
+2471
+01:43:07,119 --> 01:43:11,199
+>> if you're working on something like
+
+2472
+01:43:08,159 --> 01:43:13,280
+that, I would like to talk to you.
+
+2473
+01:43:11,199 --> 01:43:15,840
+>> Well, you you just mentioned earlier
+
+2474
+01:43:13,280 --> 01:43:18,000
+that uh you were actually able to find
+
+2475
+01:43:15,840 --> 01:43:20,480
+at least the first uh well, let's say
+
+2476
+01:43:18,000 --> 01:43:22,800
+graph related company in your portfolio
+
+2477
+01:43:20,480 --> 01:43:24,239
+on your own. So now that you uh that you
+
+2478
+01:43:22,800 --> 01:43:26,320
+made your head start, well, it's
+
+2479
+01:43:24,239 --> 01:43:28,239
+probably easier for for people to find
+
+2480
+01:43:26,320 --> 01:43:30,126
+you as well. So yeah,
+
+2481
+01:43:28,239 --> 01:43:31,600
+>> thank you.
+
+2482
+01:43:30,126 --> 01:43:32,560
+[gasps]
+
+2483
+01:43:31,600 --> 01:43:34,560
+What do you think?
+
+2484
+01:43:32,560 --> 01:43:36,639
+>> Well, I expect a new wave of
+
+2485
+01:43:34,560 --> 01:43:39,520
+applications based on graph technology.
+
+2486
+01:43:36,639 --> 01:43:41,679
+Um I could give you some simple example.
+
+2487
+01:43:39,520 --> 01:43:43,520
+Take a look at CRM. So initially it was
+
+2488
+01:43:41,679 --> 01:43:45,920
+on premise, then it was in the cloud
+
+2489
+01:43:43,520 --> 01:43:48,239
+like Salesforce. Then everybody talks
+
+2490
+01:43:45,920 --> 01:43:51,760
+about AI and Salesforce for example
+
+2491
+01:43:48,239 --> 01:43:54,239
+acquired company related IQ. uh many
+
+2492
+01:43:51,760 --> 01:43:56,719
+years ago and I think the next let's say
+
+2493
+01:43:54,239 --> 01:43:59,840
+version of the CRM of the future would
+
+2494
+01:43:56,719 --> 01:44:02,159
+be not just uh some kind of tool which
+
+2495
+01:43:59,840 --> 01:44:03,440
+aggregates the maybe predict something
+
+2496
+01:44:02,159 --> 01:44:06,480
+but actually this is some kind of
+
+2497
+01:44:03,440 --> 01:44:08,800
+algorithm working on limited set of data
+
+2498
+01:44:06,480 --> 01:44:10,880
+because there is limited set of people
+
+2499
+01:44:08,800 --> 01:44:15,600
+and enterprises in the world and this is
+
+2500
+01:44:10,880 --> 01:44:17,520
+a graph and I expect to see more um
+
+2501
+01:44:15,600 --> 01:44:21,119
+applications like this in different
+
+2502
+01:44:17,520 --> 01:44:22,960
+areas not only in sales But pl could be
+
+2503
+01:44:21,119 --> 01:44:24,560
+plenty of other industries. But because
+
+2504
+01:44:22,960 --> 01:44:27,199
+I mean we have enough computing power,
+
+2505
+01:44:24,560 --> 01:44:28,639
+we have hardware, we have a lot of
+
+2506
+01:44:27,199 --> 01:44:31,360
+things and we have proper data
+
+2507
+01:44:28,639 --> 01:44:33,840
+structures like graph databases. Now we
+
+2508
+01:44:31,360 --> 01:44:37,760
+could uh actually implement applications
+
+2509
+01:44:33,840 --> 01:44:41,199
+for very large but limited data uh data
+
+2510
+01:44:37,760 --> 01:44:43,360
+sets and we could uh probably it will be
+
+2511
+01:44:41,199 --> 01:44:45,119
+one the final phase of let's say how it
+
+2512
+01:44:43,360 --> 01:44:48,320
+could like because when you have well
+
+2513
+01:44:45,119 --> 01:44:50,639
+let's say you you don't need to put uh
+
+2514
+01:44:48,320 --> 01:44:53,119
+some small leads some kind of leads in
+
+2515
+01:44:50,639 --> 01:44:55,360
+CRM but you have let's say graph with
+
+2516
+01:44:53,119 --> 01:44:57,520
+all people in the world and all entities
+
+2517
+01:44:55,360 --> 01:44:58,880
+in the world and you just need you don't
+
+2518
+01:44:57,520 --> 01:45:01,760
+don't need to add you just need to
+
+2519
+01:44:58,880 --> 01:45:03,600
+select something in in the in the graph
+
+2520
+01:45:01,760 --> 01:45:06,320
+and it could be probably the final
+
+2521
+01:45:03,600 --> 01:45:08,159
+possible data structure for many
+
+2522
+01:45:06,320 --> 01:45:11,199
+applications. You just don't need to
+
+2523
+01:45:08,159 --> 01:45:14,239
+add, you just select.
+
+2524
+01:45:11,199 --> 01:45:16,239
+>> Okay. Thank you, Conarin. And Bob, what
+
+2525
+01:45:14,239 --> 01:45:18,560
+about you? What what do you think will
+
+2526
+01:45:16,239 --> 01:45:20,719
+be in five years from now?
+
+2527
+01:45:18,560 --> 01:45:22,800
+>> I think five years from now, if I just
+
+2528
+01:45:20,719 --> 01:45:25,440
+look at my crystal ball,
+
+2529
+01:45:22,800 --> 01:45:28,400
+>> uh there will be another connected data
+
+2530
+01:45:25,440 --> 01:45:30,400
+London event. It's like remember five
+
+2531
+01:45:28,400 --> 01:45:31,840
+years ago this guy was here talking
+
+2532
+01:45:30,400 --> 01:45:34,639
+about vectors [laughter]
+
+2533
+01:45:31,840 --> 01:45:37,679
+in graphs and look where they are now.
+
+2534
+01:45:34,639 --> 01:45:39,840
+So no but to be serious like I really
+
+2535
+01:45:37,679 --> 01:45:41,440
+believe in that. So I and of course I'm
+
+2536
+01:45:39,840 --> 01:45:43,600
+highly biased but I believe in the fact
+
+2537
+01:45:41,440 --> 01:45:46,719
+that that mixing of machine learning
+
+2538
+01:45:43,600 --> 01:45:48,080
+into the graph it there's so much value
+
+2539
+01:45:46,719 --> 01:45:50,639
+coming from that and that's what we see
+
+2540
+01:45:48,080 --> 01:45:51,920
+in the use cases. So I think that five
+
+2541
+01:45:50,639 --> 01:45:54,800
+years from now that's that's going to be
+
+2542
+01:45:51,920 --> 01:45:56,239
+a no-brainer. I really think that.
+
+2543
+01:45:54,800 --> 01:45:59,040
+>> Okay.
+
+2544
+01:45:56,239 --> 01:46:02,400
+Fair enough. Well, thank you all
+
+2545
+01:45:59,040 --> 01:46:05,360
+gentlemen for uh for um coming along and
+
+2546
+01:46:02,400 --> 01:46:07,520
+uh having this conversation. And like I
+
+2547
+01:46:05,360 --> 01:46:10,000
+said, I hope it was interesting for you.
+
+2548
+01:46:07,520 --> 01:46:13,600
+It certainly was for me. It just uh flew
+
+2549
+01:46:10,000 --> 01:46:16,159
+by. We're almost to 2 hours uh here by
+
+2550
+01:46:13,600 --> 01:46:18,320
+now and I didn't even realize. So,
+
+2551
+01:46:16,159 --> 01:46:21,040
+thanks for uh staying with us this late
+
+2552
+01:46:18,320 --> 01:46:24,239
+and I hope it was uh enjoyable for you
+
+2553
+01:46:21,040 --> 01:46:26,800
+as well as uh the audience. And well uh
+
+2554
+01:46:24,239 --> 01:46:29,119
+as I said feel free to check our
+
+2555
+01:46:26,800 --> 01:46:31,280
+upcoming sessions as well. Uh if you uh
+
+2556
+01:46:29,119 --> 01:46:33,520
+if you feel like uh hanging around a
+
+2557
+01:46:31,280 --> 01:46:35,440
+little bit longer there is one more uh
+
+2558
+01:46:33,520 --> 01:46:38,000
+there's actually three more coming up uh
+
+2559
+01:46:35,440 --> 01:46:40,719
+after this one and then we start again
+
+2560
+01:46:38,000 --> 01:46:43,199
+tomorrow uh around uh noon and then
+
+2561
+01:46:40,719 --> 01:46:46,159
+there's the final day on Friday. Thank
+
+2562
+01:46:43,199 --> 01:46:48,320
+you all very much and uh see you around.
+
+2563
+01:46:46,159 --> 01:46:51,320
+Have a good evening. Bye-bye.
+
+2564
+01:46:48,320 --> 01:46:51,320
+>> Bye.
+

@@ -72,7 +72,7 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 (:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 ```
 
-A full rebuild yields 46 Speakers, 43 Talks, 5 Events, 3 Categories, 698 Tags — of which 41 Talks carry tags (measured 2026-08-25; re-measure after adding transcripts or metadata rows).
+A full rebuild yields 50 Speakers, 45 Talks, 5 Events, 3 Categories, 738 Tags — of which 43 Talks carry tags (measured 2026-09-02; re-measure after adding transcripts or metadata rows).
 
 Only `Title`, `Speaker` and `Event` are required to become a `Talk`. `Date`, `Type` and `Category` are optional: the row is kept without them, and the talk simply has a null date or no `IS_CATEGORIZED_AS` edge. Requiring all six used to drop a fully transcribed, fully tagged talk over a blank `Type`.
 
@@ -189,7 +189,7 @@ Pipeline stages, in order: `metadata_parse → transcript_download → csv_appen
 ## Gotchas
 
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.
-- **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched — currently 25 of 68 entries, so only 41 of 43 Talks carry tags. Those 25 break down as 16 real talks missing from the CSV — all of them from Knowledge Connexions 2020, i.e. one gap in curation rather than 16 separate oversights — plus 9 unusable files named after bare YouTube IDs. Their tags are extracted at LLM cost on every pipeline run, then discarded.
+- **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched — currently 25 of 72 entries, so only 43 of 45 Talks carry tags. Those 25 break down as 16 real talks missing from the CSV — all of them from Knowledge Connexions 2020, i.e. one gap in curation rather than 16 separate oversights — plus 9 unusable files named after bare YouTube IDs. Their tags are extracted at LLM cost on every pipeline run, then discarded.
 - **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples in `baml_src/graphrag.baml`, and `cdl_db/README.md`.
 - **`rag.py` opens Kuzu with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.

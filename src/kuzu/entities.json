@@ -2129,5 +2129,73 @@
         "entity disambiguation"
       ]
     }
+  },
+  {
+    "filename": "Knowledge graph data analysis for organizational intelligence and continuous business improvement.txt",
+    "entities": {
+      "tag": [
+        "network coding",
+        "generative ai",
+        "graph structures",
+        "graph neural networks",
+        "gps",
+        "operational technology",
+        "enterprise ai",
+        "industrial ai",
+        "information organization framework",
+        "lm",
+        "gnn"
+      ]
+    }
+  },
+  {
+    "filename": "Investing in Connected Data.txt",
+    "entities": {
+      "tag": [
+        "graph analytics",
+        "graph theory",
+        "semantic web",
+        "rdf",
+        "graph databases",
+        "knowledge graphs",
+        "graph machine learning",
+        "machine learning",
+        "data warehouse",
+        "dbms",
+        "rdbms",
+        "nlp",
+        "neo4j",
+        "clickhouse",
+        "mongodb",
+        "sql",
+        "graphql",
+        "sparql",
+        "vector search",
+        "fpga",
+        "gpu",
+        "tpu",
+        "cpu",
+        "sambanova",
+        "graphcore",
+        "quantum computing",
+        "linked data",
+        "terminusdb",
+        "vaticle",
+        "grakn",
+        "phpmyadmin",
+        "powerbi",
+        "tableau",
+        "grafana",
+        "kafka",
+        "weaviate",
+        "pagerank",
+        "rankbrain",
+        "tigergraph",
+        "dgraph",
+        "aws neptune",
+        "salesforce",
+        "relateiq"
+      ]
+    }
   }
 ]
