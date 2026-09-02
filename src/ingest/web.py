@@ -69,6 +69,7 @@ templates.env.globals["asset_version"] = _asset_version
 # served from the root, "/ingestion" when it is mounted under a path — the proxy
 # strips the prefix on the way in, so nothing else in the app changes.
 templates.env.globals["base"] = config.ROOT_PATH
+templates.env.globals["YOUTUBE_CHANNEL_HANDLE"] = config.YOUTUBE_CHANNEL_HANDLE
 templates.env.filters["cost"] = spend.format_cost
 
 
@@ -153,7 +154,10 @@ LANE_NOTES = {
         "Advanced."
     ),
     "in_graph": "Curated, tagged and queryable in the knowledge graph. Nothing to do.",
-    "excluded": "Not talks: teasers, Shorts and premieres that have not aired.",
+    "excluded": (
+        "Not talks: teasers, Shorts and premieres that have not aired. Listed "
+        "because they are on the channel, and ignored by everything else."
+    ),
 }
 templates.env.globals["LANE_NOTES"] = LANE_NOTES
 
@@ -183,8 +187,10 @@ STATUS_NOTES = {
         "ingesting again resumes from what is on disk."
     ),
     "excluded_short": (
-        f"A teaser or Short of {_TEASER_MINUTES} minutes or less. Catalogued, "
-        "never ingested."
+        f"A teaser or Short of {_TEASER_MINUTES} minutes or less. Catalogued so "
+        "the channel is accounted for, and never ingested — it is a trailer for "
+        "a talk, not the talk. If one has a metadata row it is listed under "
+        "Advanced, Data health."
     ),
     "upcoming": "A premiere that has not aired, so it has no captions to ingest yet.",
     "junk": "A transcript named after a bare YouTube ID. Untitled, and often duplicated.",
@@ -429,7 +435,17 @@ def ingest_one(request: Request, video_id: str, view: str = "row"):
     """
     from .pipeline.runner import queue_videos
 
-    if video_id not in db.videos_with_active_runs():
+    # A Short is never ingested, from any button — the row and the drawer do not
+    # offer one, and this is the same rule for a POST that arrives anyway. The
+    # pipeline's own teaser guard would stop it a moment later, but only after
+    # recording a run, and a history full of skipped Shorts reads as work that
+    # went wrong rather than a video that was never work.
+    #
+    # Read from the inventory rather than a reconcile: the duration is the whole
+    # question, and this route already renders one full reconcile below.
+    video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+    ignored = R.is_short_duration((video or {}).get("duration"))
+    if not ignored and video_id not in db.videos_with_active_runs():
         queue_videos([video_id])
     if view == "drawer":
         return video_detail(request, video_id, body=1, with_row=True)
@@ -502,12 +518,17 @@ async def curate(request: Request, video_id: str):
     return video_detail(request, video_id, body=1)
 
 
-# Only these may be flipped from the panel. GIT_PUSH_ENABLED is not here on
-# purpose: it writes to GitHub, which is outward-facing and belongs to the
-# deploy configuration rather than to a click.
+# Only these may be flipped from the panel, and they are listed in the order the
+# work happens: read the channel, ingest what is found, write it to the graph.
+# Each one is a valve on the stage after it, so turning off an earlier one makes
+# the later ones moot — which is what "leave everything manual" means.
+#
+# GIT_PUSH_ENABLED is not here on purpose: it writes to GitHub, which is
+# outward-facing and belongs to the deploy configuration rather than to a click.
 TOGGLEABLE = {
-    "KG_ENABLED": "Write to the knowledge graph",
+    "SCHEDULER_ENABLED": "Read the channel automatically",
     "AUTO_INGEST_NEW": "Ingest newly published videos automatically",
+    "KG_ENABLED": "Write to the knowledge graph",
 }
 templates.env.globals["TOGGLEABLE"] = TOGGLEABLE
 
@@ -530,6 +551,12 @@ def toggle_flag(request: Request, name: str, lane: str = Form("all"),
         return HTMLResponse('<span class="note err">Unknown setting.</span>', 400)
 
     setattr(config, name, not getattr(config, name))
+    if name == "SCHEDULER_ENABLED":
+        # This one governs a running thread rather than a branch taken later, so
+        # flipping the value is not enough: the jobs are paused and resumed here.
+        from .scheduler import set_polling
+
+        set_polling(config.SCHEDULER_ENABLED)
     return templates.TemplateResponse(
         request, "partials/advanced.html", _advanced_view(lane, q, bool(shorts)),
         headers={"HX-Trigger": "gate-changed"},
@@ -539,6 +566,7 @@ def toggle_flag(request: Request, name: str, lane: str = Form("all"),
 def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dict:
     """Context for the Advanced panel: the flags, and everything not on the channel."""
     from .pipeline.runner import last_rebuild, queue_depth
+    from .scheduler import is_polling
 
     states = R.reconcile()
     offchannel = [s for s in states if not s.on_youtube]
@@ -546,10 +574,19 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
         "lane": lane or "all",
         "query": q or "",
         "shorts": shorts,
+        # Keyed by flag name so the switches can be rendered from TOGGLEABLE
+        # alone. Reading them positionally meant a third flag silently drew the
+        # second one's state.
+        "flags": {name: getattr(config, name) for name in TOGGLEABLE},
         "KG_ENABLED": config.KG_ENABLED,
-        "AUTO_INGEST_NEW": config.AUTO_INGEST_NEW,
         "GIT_PUSH_ENABLED": config.GIT_PUSH_ENABLED,
+        # The intention, and whether jobs are actually running. The switch keeps
+        # the two in step, so they agree in the served app — but a flag says what
+        # was asked for and only the scheduler knows what happened, and a panel
+        # claiming to watch a channel it is not watching is the one lie here that
+        # nothing else would catch.
         "SCHEDULER_ENABLED": config.SCHEDULER_ENABLED,
+        "polling": is_polling(),
         "RSS_POLL_MINUTES": config.RSS_POLL_MINUTES,
         "INVENTORY_REFRESH_HOURS": config.INVENTORY_REFRESH_HOURS,
         "model": tag_model(),
@@ -558,6 +595,13 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
         "junk": [s for s in offchannel if s.status == "junk"],
         "stranded": [s for s in offchannel
                      if s.status not in {"orphaned", "junk"}],
+        # Shorts are never ingested, but the filter has not always been there and
+        # depends on a duration the RSS feed does not carry. One that slipped
+        # through is a Talk node built from a two-minute trailer, and nothing
+        # else in the panel would ever say so — the sheet files it under "Not a
+        # talk" and moves on.
+        "ingested_shorts": [s for s in states
+                            if s.is_short and (s.in_csv or s.has_tags)],
         "queue_depth": queue_depth(),
         "last_rebuild": last_rebuild(),
     }

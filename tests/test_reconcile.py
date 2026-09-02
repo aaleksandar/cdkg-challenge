@@ -172,3 +172,28 @@ def test_a_talk_without_a_description_still_becomes_a_node():
     talks = namespace["extract_talks"](df)
     assert set(talks["title"]) == {"Curated talk", "Freshly ingested talk"}
     assert talks.filter(pl.col("title") == "Freshly ingested talk")["url"][0] == ""
+
+
+def test_a_short_stays_a_short_even_once_it_has_a_metadata_row():
+    """The Shorts rule used to give way the moment a Short reached the CSV.
+
+    A two-minute trailer that slipped past the filter then read as an ordinary
+    talk with a blank Speaker — an invitation to curate it into the graph, which
+    is the opposite of the fix. It is a Short whatever else has happened to it,
+    and the defect is reported under Data health instead.
+    """
+    short = R.TalkState(
+        video_id="JxvcmkW7s0M", title="GraphRAG for Exploring #knowledgegraph",
+        on_youtube=True, duration=153, in_csv=True, has_tags=True, tag_count=12,
+        missing_curation=["Speaker"],
+    )
+    assert short.status == "excluded_short"
+    assert short.lane == "excluded"
+
+
+def test_an_unknown_duration_is_not_a_short():
+    """The RSS feed carries no duration, and treating "unknown" as "exclude"
+    would hide every newly published talk from the panel."""
+    assert not R.is_short_duration(None)
+    assert R.is_short_duration(config.SHORT_VIDEO_MAX_SECONDS)
+    assert not R.is_short_duration(config.SHORT_VIDEO_MAX_SECONDS + 1)

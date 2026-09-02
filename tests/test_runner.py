@@ -152,3 +152,85 @@ def test_a_first_poll_catalogues_but_does_not_auto_ingest(state, monkeypatch):
     db.upsert_videos([{"video_id": "z", "title": "Known", "url": "u"}])
     scheduler.poll_for_new_videos()          # baseline established
     assert ingested == ["a", "b"]
+
+
+def test_a_newly_published_short_is_never_auto_ingested(state, monkeypatch):
+    """The bug this guards: the feed carries no duration, so a Short arrived in
+    the inventory indistinguishable from a talk and auto-ingest took it.
+
+    The running time is resolved for the ids the poll turned up, before anything
+    decides what they are — and the Short is then left alone rather than being
+    put through the pipeline for its own guard to skip.
+    """
+    from ingest import scheduler
+    from ingest.sources import youtube
+
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    db.upsert_videos([{"video_id": "known", "title": "Known", "url": "u"}])
+
+    def poll():
+        # What the feed gives: a title and a link, no duration, no live status.
+        db.upsert_videos([
+            {"video_id": "shorty", "title": "Teaser #knowledgegraph", "url": "u"},
+            {"video_id": "talky", "title": "A real talk", "url": "u"},
+        ])
+        return {"fetched": 2, "new": 2, "new_ids": ["shorty", "talky"]}
+
+    monkeypatch.setattr(youtube, "poll_rss", poll)
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": 153 if vid == "shorty" else 2400,
+        "upload_date": "20260901", "live_status": "not_live",
+    })
+    ingested = []
+    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+
+    scheduler.poll_for_new_videos()
+
+    assert ingested == ["talky"]
+    # And the panel can tell them apart from now on, without waiting for the
+    # daily backfill to reach them.
+    durations = {v["video_id"]: v["duration"] for v in db.all_videos()}
+    assert durations["shorty"] == 153
+
+
+def test_a_premiere_that_has_not_aired_is_not_auto_ingested(state, monkeypatch):
+    """It has no captions yet, so the run could only fail."""
+    from ingest import scheduler
+    from ingest.sources import youtube
+
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    db.upsert_videos([{"video_id": "known", "title": "Known", "url": "u"}])
+
+    def poll():
+        db.upsert_videos([{"video_id": "soon", "title": "Premiere", "url": "u"}])
+        return {"fetched": 1, "new": 1, "new_ids": ["soon"]}
+
+    monkeypatch.setattr(youtube, "poll_rss", poll)
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": None, "live_status": "is_upcoming",
+    })
+    ingested = []
+    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+
+    scheduler.poll_for_new_videos()
+    assert ingested == []
+
+
+def test_pausing_the_scheduler_stops_the_jobs_themselves(state, monkeypatch):
+    """The switch has to hold even for a job already dispatched when it flipped,
+    which is why the flag is checked inside the job and not only at the
+    scheduler."""
+    from ingest import scheduler
+    from ingest.sources import youtube
+
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", False)
+    polled = []
+    monkeypatch.setattr(youtube, "poll_rss", lambda: polled.append(1) or
+                        {"fetched": 0, "new": 0, "new_ids": []})
+    monkeypatch.setattr(youtube, "refresh_inventory", lambda: polled.append(1) or {})
+
+    scheduler.poll_for_new_videos()
+    scheduler.refresh_inventory()
+    assert polled == []

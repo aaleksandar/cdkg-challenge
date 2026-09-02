@@ -39,14 +39,14 @@ def require_admin(credentials: HTTPBasicCredentials | None = Depends(_basic)) ->
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     db.init_db()
-    scheduler = None
-    if config.SCHEDULER_ENABLED:
-        from .scheduler import start_scheduler
+    # Always started, and started paused when SCHEDULER_ENABLED is false. The
+    # panel's switch pauses and resumes this scheduler, and a scheduler that was
+    # never created could only be turned back on by a redeploy.
+    from . import scheduler
 
-        scheduler = start_scheduler()
+    scheduler.start_scheduler()
     yield
-    if scheduler:
-        scheduler.shutdown(wait=False)
+    scheduler.shutdown()
 
 
 app = FastAPI(title="CDKG Ingestion", lifespan=lifespan, docs_url=None,

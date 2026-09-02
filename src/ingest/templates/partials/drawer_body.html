@@ -41,6 +41,23 @@
 </div>
 {% endif %}
 
+{# A Short with a metadata row is the one case where "ignored" is not the whole
+   truth: it is already in the graph, and only this drawer and Data health say
+   so. Printed where the blocker would be, because it is the same question in
+   reverse — why is this in the graph? #}
+{% if s.is_short and (s.in_csv or s.has_tags) %}
+<div class="blocker">
+  <div class="blocker-head">Ingested, and should not have been</div>
+  <p>This is a Short: {{ s.duration | duration }} of captions, not a talk.
+     Shorts are catalogued and never ingested, but this one was — its
+     {% if s.in_csv %}metadata row{% if s.has_tags %} and {{ s.tag_count }} extracted
+     tags are{% else %} is{% endif %}{% else %}{{ s.tag_count }} extracted tags are{% endif %}
+     still on disk{% if s.in_graph %}, and it is a Talk node the public app can
+     answer from{% endif %}. Removing the row from the metadata CSV is a
+     repository change, not a panel action.</p>
+</div>
+{% endif %}
+
 {# The same one-click action the row offers, where an admin actually decides:
    having read the panel, they should not have to close it and hunt for the row.
    It returns the drawer's own body, so the pipeline appears here immediately,
@@ -89,7 +106,8 @@
    which is otherwise impossible without deleting files by hand. Offered as a
    secondary action so it never competes with the primary one above, and absent
    for the two statuses whose primary action already IS a run. #}
-{% if s.video_id and s.status not in ['in_progress', 'not_ingested', 'failed'] %}
+{% if s.video_id and not s.is_short
+      and s.status not in ['in_progress', 'not_ingested', 'failed'] %}
 <div class="drawer-actions is-secondary">
   <button type="button" class="btn btn-quiet"
           hx-post="{{ base }}/ingest/{{ s.video_id }}?view=drawer"
@@ -111,7 +129,8 @@
 {# Offered whenever something is blank, not only when the blank blocks the graph:
    Date, Type and Category no longer hold a talk back, and this is the only place
    in the panel they can be filled in at all. #}
-{% if s.video_id and s.in_csv and (s.missing_curation or s.missing_optional) %}
+{% if s.video_id and s.in_csv and not s.is_short
+      and (s.missing_curation or s.missing_optional) %}
   {% include "partials/curate.html" %}
 {% endif %}
 

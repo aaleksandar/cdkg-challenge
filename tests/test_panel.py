@@ -449,3 +449,104 @@ def test_a_note_is_never_trusted_as_markup(client, monkeypatch):
     from ingest.web import _linkify_channel
 
     assert "&lt;script&gt;" in _linkify_channel("<script>alert(1)</script>")
+
+
+def test_each_switch_draws_its_own_state(client, monkeypatch):
+    """The Advanced panel used to pick a flag's state positionally — anything
+    that was not KG_ENABLED drew AUTO_INGEST_NEW's. A third switch made that a
+    lie on screen: pausing the scheduler showed auto-ingest paused instead."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", False)
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(config, "KG_ENABLED", True)
+
+    from ingest.web import _advanced_view
+
+    view = _advanced_view("all", "")
+    assert view["flags"] == {
+        "SCHEDULER_ENABLED": False, "AUTO_INGEST_NEW": True, "KG_ENABLED": True,
+    }
+    body = client.get("/advanced?body=1").text
+    for label in ("Read the channel automatically",
+                  "Ingest newly published videos automatically",
+                  "Write to the knowledge graph"):
+        assert label in body
+
+
+def test_pausing_the_scheduler_pauses_the_running_jobs(client, monkeypatch):
+    """This flag governs a live thread rather than a branch taken later, so
+    flipping the value alone would leave the channel being read every 15
+    minutes by a panel that says it is not."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    paused = []
+    monkeypatch.setattr("ingest.scheduler.set_polling", paused.append)
+
+    client.post("/flag/SCHEDULER_ENABLED", data={"lane": "all", "q": ""})
+    assert config.SCHEDULER_ENABLED is False
+    assert paused == [False]
+
+    client.post("/flag/SCHEDULER_ENABLED", data={"lane": "all", "q": ""})
+    assert config.SCHEDULER_ENABLED is True
+    assert paused == [False, True]
+
+
+SHORT = R.TalkState(
+    video_id="ccccccccccc", title="A teaser #knowledgegraph", on_youtube=True,
+    duration=153, url="https://www.youtube.com/watch?v=ccccccccccc",
+)
+
+
+def test_a_short_cannot_be_ingested_from_the_panel(client, monkeypatch):
+    """Not even by posting the route directly. The pipeline's teaser guard would
+    stop it a moment later, but only after recording a run — and a history full
+    of skipped Shorts reads as work that went wrong."""
+    waiting = R.TalkState(
+        video_id="eeeeeeeeeee", title="A real talk", on_youtube=True, duration=2400,
+    )
+    monkeypatch.setattr(R, "reconcile", _only(SHORT, waiting))
+    # The route reads the running time from the inventory, which is where it
+    # lives — the reconcile above is only what it renders afterwards.
+    db.upsert_videos([
+        {"video_id": "ccccccccccc", "title": "A teaser", "url": "u", "duration": 153},
+        {"video_id": "eeeeeeeeeee", "title": "A real talk", "url": "u", "duration": 2400},
+    ])
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", queued.append)
+
+    client.post("/ingest/ccccccccccc")
+    assert queued == []
+
+    # The same click on a talk still works, so the guard is the Short and not
+    # the route.
+    client.post("/ingest/eeeeeeeeeee")
+    assert queued == [["eeeeeeeeeee"]]
+
+
+def test_a_short_is_never_offered_a_run_or_a_curation_form(client, monkeypatch):
+    """Every other talk with a video can be re-run; a Short is the exception,
+    because there is no outcome of a run that would be an improvement."""
+    monkeypatch.setattr(R, "reconcile", _only(SHORT))
+    drawer = client.get("/video/ccccccccccc?body=1").text
+    assert "Run the pipeline again" not in drawer
+    assert "Short — ignored" in drawer
+
+
+def test_a_short_that_was_ingested_is_reported_not_hidden(client, monkeypatch):
+    """It is filed under "Not a talk", which is right and also the whole risk:
+    nothing else in the panel would ever mention that a trailer is answering
+    questions in the public app."""
+    ingested_short = R.TalkState(
+        video_id="ddddddddddd", title="A teaser that got in", on_youtube=True,
+        duration=153, in_csv=True, csv_title="A teaser that got in",
+        has_tags=True, tag_count=9, in_graph=True,
+    )
+    monkeypatch.setattr(R, "reconcile", _only(READY, ingested_short))
+
+    assert ingested_short.status == "excluded_short"
+    advanced = client.get("/advanced?body=1").text
+    assert "A teaser that got in" in advanced
+    assert "Shorts that were ingested" in advanced
+
+    drawer = client.get("/video/ddddddddddd?body=1").text
+    assert "Ingested, and should not have been" in drawer

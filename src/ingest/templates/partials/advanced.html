@@ -19,8 +19,10 @@
      returns to the configured environment variable. Flipping one here lets you
      watch what happens without a redeploy.</p>
 
+  {# Indexed by name, never positionally: the third switch would otherwise draw
+     the second one's state. #}
   {% for name, label in TOGGLEABLE.items() %}
-    {% set on = KG_ENABLED if name == 'KG_ENABLED' else AUTO_INGEST_NEW %}
+    {% set on = flags[name] %}
     <div class="setting">
       <span class="gate {{ 'is-open' if on }}"
             hx-post="{{ base }}/flag/{{ name }}" hx-target="#drawer-body" hx-swap="innerHTML"
@@ -34,19 +36,29 @@
       <div>
         <div class="setting-label">{{ label }}</div>
         <div class="setting-why">
-          {% if name == 'KG_ENABLED' %}
-            {% if KG_ENABLED %}Ingested talks are written into the knowledge graph
+          {% if name == 'SCHEDULER_ENABLED' %}
+            {% if on %}The {{ YOUTUBE_CHANNEL_HANDLE }} channel is read on a
+              timer — the feed every {{ RSS_POLL_MINUTES }} min for new uploads,
+              the whole channel every {{ INVENTORY_REFRESH_HOURS }} h. Reading
+              costs nothing; what happens to what it finds is the switch below.
+            {% else %}Nothing is read on a timer, so the panel shows the channel
+              as it was at the last <strong>Refresh channel</strong>. Everything
+              is manual: a video published now will not appear until you press
+              it.{% endif %}
+          {% elif name == 'AUTO_INGEST_NEW' %}
+            {% if on %}A video published on the channel is ingested end-to-end
+              without being asked. Shorts, teasers and premieres that have not
+              aired are never ingested, whatever this says. Covers new uploads
+              only; the existing backlog is drained below.
+            {% else %}Newly published videos are catalogued and listed as
+              <em>Not ingested</em>, but wait for a click.{% endif %}
+          {% else %}
+            {% if on %}Ingested talks are written into the knowledge graph
               the public app queries. This is the normal state.
             {% else %}Talks are downloaded, curated and tagged as normal, but the
               step that writes them into the graph is held back — so nothing done
               here can change what the public app answers. Pause this only while
               a rebuild is misbehaving.{% endif %}
-          {% else %}
-            {% if AUTO_INGEST_NEW %}A video published on the channel is ingested
-              end-to-end without being asked. This covers new uploads only; the
-              existing backlog is drained below.
-            {% else %}Newly published videos are catalogued and listed as
-              <em>Not ingested</em>, but wait for a click.{% endif %}
           {% endif %}
         </div>
       </div>
@@ -59,10 +71,16 @@
         set by <code>GIT_PUSH_ENABLED</code> in the deploy configuration.
         It writes outside this machine, so it is not a click.</dd>
     <dt>Scheduler</dt>
-    <dd>{% if SCHEDULER_ENABLED %}Checking for new uploads every
+    {# What the jobs are doing, not what the switch above asked for. The two
+       agree in the served app, and the third branch is what it looks like when
+       they do not. #}
+    <dd>{% if polling %}Running — checking for new uploads every
         {{ RSS_POLL_MINUTES }} min; re-reading the whole channel every
-        {{ INVENTORY_REFRESH_HOURS }} h.{% else %}Off. Nothing is detected
-        automatically.{% endif %}</dd>
+        {{ INVENTORY_REFRESH_HOURS }} h.
+        {% elif SCHEDULER_ENABLED %}Switched on, but no jobs are running in this
+        process — nothing is being detected. Restarting the service starts them.
+        {% else %}Paused. Nothing is detected automatically; use
+        <strong>Refresh channel</strong> below.{% endif %}</dd>
     <dt>Tagging model</dt>
     <dd>{% if model %}<code>{{ model }}</code>, pinned in
         <code>baml_src/clients.baml</code>.{% else %}Not resolvable from
@@ -120,10 +138,32 @@
 <section>
   <h3>Data health</h3>
   <p class="note-body">Transcripts on disk that no video on the channel accounts
-     for. They have no upload date and no link, which is why they are not in the
-     main list — but each one is a real gap in the graph.</p>
+     for, and videos that reached the graph without belonging there. Neither is
+     visible from the main list — but each one is a real defect in the graph.</p>
 
-  {% if not orphans and not junk and not stranded %}
+  {% if ingested_shorts %}
+    <details open>
+      <summary><strong>{{ ingested_shorts | length }}</strong> Shorts that were ingested</summary>
+      <p class="note-body">Shorts and teasers are never ingested, but the filter
+         reads a running time — and the feed that detects a new upload does not
+         carry one, so a few got through before their length was known. Each of
+         these is a Talk node built from a trailer: a couple of minutes of
+         captions, tagged as if it were a talk, answering questions in the public
+         app. Removing the row from the metadata CSV is a repository change, not
+         a panel action — the file is append-only here on purpose.</p>
+      <ul class="strand">
+        {% for s in ingested_shorts %}
+          <li hx-get="{{ base }}/video/{{ s.video_id | urlencode }}"
+              hx-target="#drawer" hx-swap="innerHTML">
+            <span class="t">{{ s.display_title }}</span>
+            <span class="muted">{{ s.duration | duration }}{% if s.in_graph %} · in graph{% endif %}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+
+  {% if not orphans and not junk and not stranded and not ingested_shorts %}
     <p class="ok-line">Nothing stranded. Every transcript on disk belongs to a
        video on the channel.</p>
   {% endif %}

@@ -78,7 +78,13 @@ YOUTUBE_CHANNEL_PAGE = os.getenv(
 )
 
 # Videos at or below this length are teasers/Shorts that point viewers at the
-# real talk. They are catalogued but never ingested.
+# real talk. They are catalogued but never ingested — a Talk node built from two
+# minutes of trailer captions answers questions in the public app as if it were
+# the talk itself.
+#
+# The rule is a running time, so it can only be applied once one is known. The
+# RSS feed carries none, which is why `youtube.resolve_videos` runs over newly
+# detected ids before anything decides what they are.
 SHORT_VIDEO_MAX_SECONDS = int(os.getenv("SHORT_VIDEO_MAX_SECONDS", "300"))
 
 # YouTube gates transcript downloads behind a bot check. Supply either a
@@ -108,6 +114,10 @@ GITHUB_INGEST_BRANCH = os.getenv("GITHUB_INGEST_BRANCH", "ingest/auto")
 # --- Scheduler ---------------------------------------------------------------
 RSS_POLL_MINUTES = int(os.getenv("RSS_POLL_MINUTES", "15"))
 INVENTORY_REFRESH_HOURS = int(os.getenv("INVENTORY_REFRESH_HOURS", "24"))
+# Whether the channel is read on a timer at all. Reading costs nothing, so this
+# is on by default; it is a pause valve in the panel for "leave everything
+# manual", and the scheduler is always started — paused when this is false — so
+# the switch works in both directions without a redeploy.
 SCHEDULER_ENABLED = _flag("SCHEDULER_ENABLED", "true")
 # A newly published talk ingests itself: that is a handful of videos a year, and
 # an admin who must press a button for each one is a system that quietly falls

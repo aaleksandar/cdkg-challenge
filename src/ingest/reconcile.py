@@ -61,6 +61,21 @@ def extract_video_id(url: str | None) -> str | None:
     return match.group(1) if match else None
 
 
+def is_short_duration(duration: int | None) -> bool:
+    """Whether a running time makes this a Short or a teaser rather than a talk.
+
+    A free function because the scheduler has to answer the same question about
+    a raw inventory row, before there is a :class:`TalkState` at all. Two copies
+    of this rule would drift, and the one that drifts is the one that ingests a
+    Short.
+
+    An unknown duration is deliberately not a Short: the RSS feed carries none,
+    and treating "unknown" as "exclude" would hide every newly published talk.
+    Resolving it is the caller's job — see ``youtube.resolve_videos``.
+    """
+    return duration is not None and duration <= config.SHORT_VIDEO_MAX_SECONDS
+
+
 def norm_title(title: str | None) -> str:
     """Normalise a talk title for comparison across sources.
 
@@ -129,7 +144,7 @@ class TalkState:
 
     @property
     def is_short(self) -> bool:
-        return self.duration is not None and self.duration <= config.SHORT_VIDEO_MAX_SECONDS
+        return is_short_duration(self.duration)
 
     @property
     def is_upcoming(self) -> bool:
@@ -146,14 +161,19 @@ class TalkState:
         """One display status. Order matters: most specific first."""
         if self.run and self.run.get("status") in {"queued", "running"}:
             return "in_progress"
+        # A Short is never a talk, whatever else has happened to it. Checked
+        # before every other verdict — including the CSV — because one that
+        # reached the metadata file is a defect to report, not a talk to curate,
+        # and reading it as "needs curation" invites someone to finish the job.
+        # Advanced -> Data health is where that defect is named and fixed.
+        if self.is_short:
+            return "excluded_short"
         if self.run and self.run.get("status") == "failed":
             return "failed"
         if self.is_junk:
             return "junk"
         if self.is_upcoming and not self.in_csv:
             return "upcoming"
-        if self.on_youtube and self.is_short and not self.in_csv:
-            return "excluded_short"
         # Tags were extracted but no CSV row exists, so there is no Talk node for
         # them to attach to. The extraction cost was paid and thrown away.
         if self.has_tags and not self.in_csv:
@@ -196,7 +216,7 @@ STATUS_LABELS = {
     "untagged": "Untagged",
     "orphaned": "Orphaned",
     "not_ingested": "Not ingested",
-    "excluded_short": "Short / teaser",
+    "excluded_short": "Short — ignored",
     "upcoming": "Upcoming",
     "junk": "Unusable",
     "in_progress": "Running",

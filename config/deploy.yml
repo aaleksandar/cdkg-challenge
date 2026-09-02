@@ -47,12 +47,17 @@ servers:
         ENTITIES_JSON: /repo/src/kuzu/entities.json
         DB_PATH: /data/cdl_db.kuzu
         STATE_DB_PATH: /data/ingest_state.db
-        SCHEDULER_ENABLED: "true"
         # The system runs itself: a newly published talk is detected, ingested
-        # and written into the graph without being asked. Both switches can be
-        # paused at runtime from the panel's Advanced section.
-        KG_ENABLED: "true"
+        # and written into the graph without being asked. All three are pause
+        # valves in the panel's Advanced section, in the order the work happens —
+        # read the channel, ingest what is found, write it to the graph — and a
+        # restart returns to the value set here.
+        #
+        # The scheduler is started either way and started paused when this is
+        # false, so the panel's switch can turn it back on without a redeploy.
+        SCHEDULER_ENABLED: "true"
         AUTO_INGEST_NEW: "true"
+        KG_ENABLED: "true"
         # Stays off until the GitHub App is installed. It writes outside this
         # machine, so it is not a click — flip it here, deliberately.
         GIT_PUSH_ENABLED: "false"

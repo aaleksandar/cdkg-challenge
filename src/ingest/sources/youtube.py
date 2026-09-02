@@ -256,6 +256,51 @@ def backfill_metadata(max_lookups: int = 120) -> dict:
     return {"resolved": resolved, "fetched": spent, "remaining": len(pending) - resolved}
 
 
+def resolve_videos(video_ids: list[str]) -> int:
+    """Fill in duration, date and live status for specific videos, right now.
+
+    The RSS feed carries none of the three, so a video detected there arrives
+    with no running time — and a video with no running time is indistinguishable
+    from a talk. That is exactly the gap a Short falls through: catalogued with a
+    null duration, it reads as ordinary work waiting to be ingested, and
+    auto-ingest obliges.
+
+    Uncapped and unbatched on purpose. It is called with the handful of ids one
+    poll turned up, and it has to finish before anything decides what they are —
+    unlike ``backfill_metadata``, which grinds through the whole channel in the
+    background and may not reach these for hours.
+
+    Returns the number of videos it actually learned something about. A lookup
+    that fails leaves the row as it was: the pipeline's own teaser guard is the
+    backstop, so a missed resolution costs a skipped run, never a bad ingestion.
+    """
+    from .. import db
+
+    known = {v["video_id"]: v for v in db.all_videos()}
+    updates = []
+    for video_id in video_ids:
+        base = known.get(video_id)
+        if base is None:
+            continue
+        try:
+            info = fetch_video_info(video_id)
+        except Exception:  # private, removed, or a premiere yt-dlp will not open
+            continue
+        patch = {}
+        if info.get("duration"):
+            patch["duration"] = int(info["duration"])
+        if _published_from(info):
+            patch["published_at"] = _published_from(info)
+        if info.get("live_status"):
+            patch["live_status"] = info["live_status"]
+        if patch:
+            updates.append({**base, **patch})
+
+    if updates:
+        db.upsert_videos(updates)
+    return len(updates)
+
+
 def refresh_inventory(limit: int | None = None, backfill: bool = True) -> dict:
     """Enumerate the channel and update the cached inventory."""
     from .. import db
