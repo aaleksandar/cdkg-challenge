@@ -44,20 +44,38 @@ jobs:
           ADMIN_USER: ${{ secrets.ADMIN_USER }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
+          # Kamal parses this file with dotenv, where an UNQUOTED value ends at
+          # the first "#" — the rest is a comment. A password of a8#!vC@YJ~fQ
+          # therefore reached the container as "a8", and the panel rejected the
+          # real password with no error anywhere to explain it. Inside single
+          # quotes dotenv takes the value literally: no comment, and no $VAR
+          # interpolation either, which an unquoted or double-quoted value does
+          # perform. So every value is written quoted, not just the password.
+          emit() {
+            case $2 in
+              # The one character single quoting cannot carry. Fail loudly rather
+              # than write a value that would be silently wrong, which is the
+              # whole bug being fixed here.
+              *"'"*)
+                echo "::error::$1 contains an apostrophe; not representable in .kamal/secrets" >&2
+                exit 1 ;;
+            esac
+            printf "%s='%s'\n" "$1" "$2"
+          }
           {
-            echo "CDKG_DOMAIN=$CDKG_DOMAIN"
-            echo "SERVER_IP=$SERVER_IP"
-            echo "SSH_USER=$SSH_USER"
-            echo "SSH_PORT=$SSH_PORT"
-            echo "SSH_KEY=~/.ssh/id_ed25519_deploy"
-            echo "KAMAL_REGISTRY_USERNAME=$KAMAL_REGISTRY_USERNAME"
-            echo "KAMAL_REGISTRY_PASSWORD=$KAMAL_REGISTRY_PASSWORD"
-            echo "GOOGLE_API_KEY=$GOOGLE_API_KEY"
+            emit CDKG_DOMAIN "$CDKG_DOMAIN"
+            emit SERVER_IP "$SERVER_IP"
+            emit SSH_USER "$SSH_USER"
+            emit SSH_PORT "$SSH_PORT"
+            emit SSH_KEY "~/.ssh/id_ed25519_deploy"
+            emit KAMAL_REGISTRY_USERNAME "$KAMAL_REGISTRY_USERNAME"
+            emit KAMAL_REGISTRY_PASSWORD "$KAMAL_REGISTRY_PASSWORD"
+            emit GOOGLE_API_KEY "$GOOGLE_API_KEY"
             # The ingestion panel's HTTP Basic credentials. Deliberately not
             # defaulted: an empty password disables auth in the app, and this
             # panel is reachable from the public internet.
-            echo "ADMIN_USER=$ADMIN_USER"
-            echo "ADMIN_PASSWORD=$ADMIN_PASSWORD"
+            emit ADMIN_USER "$ADMIN_USER"
+            emit ADMIN_PASSWORD "$ADMIN_PASSWORD"
           } > .kamal/secrets
 
       - name: Deploy
