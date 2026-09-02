@@ -8,6 +8,8 @@ rather than being baked into the image.
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 
 def _flag(name: str, default: str = "false") -> bool:
     return os.getenv(name, default).strip().lower() in {"1", "true", "yes", "on"}
@@ -27,6 +29,12 @@ METADATA_CSV = Path(
 )
 
 KUZU_DIR = Path(os.getenv("KUZU_DIR", REPO_ROOT / "src" / "kuzu"))
+
+# The application env file the pipeline scripts already use. Loaded here so the
+# panel reads it once at import rather than lazily in the two places that happen
+# to need an API key. `load_dotenv` does not override variables already set, so
+# the container's own environment still wins and a missing file is a no-op.
+load_dotenv(KUZU_DIR / ".env")
 ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", KUZU_DIR / "entities.json"))
 DATA_DIR = Path(os.getenv("DATA_DIR", KUZU_DIR / "data"))
 GRAPH_DB_PATH = Path(os.getenv("DB_PATH", KUZU_DIR / "cdl_db.kuzu"))
@@ -60,6 +68,13 @@ YOUTUBE_CHANNEL_URL = os.getenv(
 )
 YOUTUBE_RSS_URL = (
     f"https://www.youtube.com/feeds/videos.xml?channel_id={YOUTUBE_CHANNEL_ID}"
+)
+
+# The @handle, as a person writes it. The panel prints it and links it, and both
+# are built from this so the text and the destination cannot drift apart.
+YOUTUBE_CHANNEL_HANDLE = os.getenv("YOUTUBE_CHANNEL_HANDLE", "@ConnectedData")
+YOUTUBE_CHANNEL_PAGE = os.getenv(
+    "YOUTUBE_CHANNEL_PAGE", f"https://www.youtube.com/{YOUTUBE_CHANNEL_HANDLE}"
 )
 
 # Videos at or below this length are teasers/Shorts that point viewers at the
@@ -107,6 +122,18 @@ AUTO_INGEST_NEW = _flag("AUTO_INGEST_NEW", "true")
 # before forwarding: the app still sees `/rows`, and only the URLs it *generates*
 # need to know. Empty locally, where it is served from the root.
 ROOT_PATH = os.getenv("ROOT_PATH", "").rstrip("/")
+
+# --- What an ingestion costs -------------------------------------------------
+# USD per *million* tokens, which is how providers quote them. Deliberately not
+# defaulted: a price written into the repository is wrong the moment the provider
+# moves it, and a confidently wrong number is worse than a blank one. Unset means
+# the panel reports tokens and says the rates are not configured.
+#
+# Take the current figures from the provider's pricing page for the model pinned
+# in baml_src/clients.baml, and note that introductory rates expire.
+INPUT_COST_PER_MTOK = os.getenv("INGEST_INPUT_COST_PER_MTOK")
+OUTPUT_COST_PER_MTOK = os.getenv("INGEST_OUTPUT_COST_PER_MTOK")
+CACHED_INPUT_COST_PER_MTOK = os.getenv("INGEST_CACHED_INPUT_COST_PER_MTOK")
 
 # --- Panel auth --------------------------------------------------------------
 ADMIN_USER = os.getenv("ADMIN_USER", "admin")

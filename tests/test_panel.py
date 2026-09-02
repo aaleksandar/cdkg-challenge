@@ -345,3 +345,107 @@ def test_the_drawer_never_uses_a_row_scoped_button(client, monkeypatch):
     drawer = client.get("/video/ggggggggggg?body=1").text
     assert "Run the pipeline again" in drawer
     assert 'class="rowbtn"' not in drawer
+
+
+def test_the_drawer_lists_the_tags_behind_the_count(client, monkeypatch):
+    """"38 extracted" is a number an admin cannot check. The tags are the whole
+    content layer of the graph, and the drawer is where a talk is inspected."""
+    tagged = R.TalkState(
+        video_id="hhhhhhhhhhh", title="A tagged talk", on_youtube=True, in_csv=True,
+        stem="A tagged talk", has_transcript=True, has_tags=True,
+        tags=["knowledge graphs", "sparql", "graph rag"], tag_count=3,
+        in_graph=True, tagged_in_graph=True,
+    )
+    monkeypatch.setattr(R, "reconcile", _only(tagged))
+
+    drawer = client.get("/video/hhhhhhhhhhh?body=1").text
+    assert "3 extracted" in drawer
+    for tag in tagged.tags:
+        assert f">{tag}</li>" in drawer, f"{tag!r} is not listed"
+    # Collapsed by default: the row sits between two the eye is scanning.
+    assert "<details class=\"taglist\">" in drawer
+
+
+def test_a_talk_with_no_tags_says_so_without_an_empty_disclosure(client, monkeypatch):
+    untagged = R.TalkState(
+        video_id="iiiiiiiiiii", title="An untagged talk", on_youtube=True,
+        in_csv=True, stem="An untagged talk", has_transcript=True,
+    )
+    monkeypatch.setattr(R, "reconcile", _only(untagged))
+
+    drawer = client.get("/video/iiiiiiiiiii?body=1").text
+    assert "taglist" not in drawer
+
+
+def test_the_drawer_reports_what_a_run_spent(client, monkeypatch):
+    """An ingestion can bill twice — tag extraction always, speaker recovery when
+    the description had to be read — and "what did this cost" means the run."""
+    import json
+
+    run = {
+        "id": 7, "status": "completed", "started_at": "2026-08-26T10:00:00Z",
+        "ended_at": "2026-08-26T10:00:12Z",
+        "stages": [
+            {"stage": "metadata_parse", "status": "completed", "position": 0,
+             "message": "", "detail": json.dumps(
+                 {"input_tokens": 1060, "output_tokens": 47})},
+            {"stage": "tag_extraction", "status": "completed", "position": 4,
+             "message": "", "detail": json.dumps(
+                 {"model": "gemini-3.7-flash", "input_tokens": 15501,
+                  "output_tokens": 400})},
+        ],
+    }
+    monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
+        video_id="jjjjjjjjjjj", title="A costed talk", on_youtube=True, in_csv=True,
+        stem="A costed talk", has_transcript=True, has_tags=True, tag_count=9,
+        in_graph=True, tagged_in_graph=True, run=run)))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/jjjjjjjjjjj?body=1").text
+    assert "16,561 in" in drawer      # summed across both paid calls
+    assert "447 out" in drawer
+    assert "across 2 calls" in drawer
+
+
+def test_a_run_that_spent_nothing_shows_no_token_row(client, monkeypatch):
+    """A re-run that reused everything on disk made no paid call at all."""
+    import json
+
+    run = {
+        "id": 8, "status": "completed", "started_at": "x", "ended_at": "y",
+        "stages": [{"stage": "tag_extraction", "status": "completed", "position": 4,
+                    "message": "", "detail": json.dumps({"reused": True})}],
+    }
+    monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
+        video_id="kkkkkkkkkkk", title="A reused talk", on_youtube=True, in_csv=True,
+        stem="A reused talk", has_transcript=True, has_tags=True, tag_count=9,
+        in_graph=True, tagged_in_graph=True, run=run)))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/kkkkkkkkkkk?body=1").text
+    assert "<dt>Tokens</dt>" not in drawer
+
+
+def test_the_channel_handle_is_a_link_in_the_note(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    note = client.get("/rows?lane=all").text
+    assert '<a href="https://www.youtube.com/@ConnectedData"' in note
+    assert 'target="_blank"' in note and 'rel="noopener"' in note
+
+
+def test_the_handle_is_not_marked_up_inside_attributes(client, monkeypatch):
+    """The same notes are printed into data-tip and aria-label. An anchor there
+    would break the attribute, so only the prose rendering is linkified."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    html = client.get("/rows?lane=all").text
+    import re
+
+    for attr in re.findall(r'(?:data-tip|aria-label)="([^"]*)"', html):
+        assert "<a href" not in attr, f"markup leaked into an attribute: {attr[:60]}"
+
+
+def test_a_note_is_never_trusted_as_markup(client, monkeypatch):
+    """The filter escapes first and splices the anchor into the result."""
+    from ingest.web import _linkify_channel
+
+    assert "&lt;script&gt;" in _linkify_channel("<script>alert(1)</script>")

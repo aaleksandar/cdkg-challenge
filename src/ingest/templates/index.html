@@ -71,6 +71,24 @@
   // Flipping a setting under Advanced changes what the rows are allowed to do.
   document.body.addEventListener('gate-changed', refreshSheet);
 
+  // A finished run rewrites the sheet behind it: the row's status, its tag count,
+  // and every figure in the strip. Nothing noticed before — the drawer polls
+  // itself, and a row only polls while it is the one running, so an ingestion
+  // started from the drawer left the whole list a run out of date until reload.
+  //
+  // The banner is the signal. It is rendered only while work is in flight, so
+  // the swap that empties it is the moment the run ended.
+  (function () {
+    const live = document.getElementById('live');
+    let wasBusy = false;
+    document.body.addEventListener('htmx:afterSwap', e => {
+      if (e.target !== live) return;
+      const busy = live.children.length > 0;
+      if (wasBusy && !busy) refreshSheet();
+      wasBusy = busy;
+    });
+  })();
+
   document.body.addEventListener('click', e => {
     if (e.target.closest('.scrim, .close')) document.getElementById('drawer').innerHTML = '';
   });

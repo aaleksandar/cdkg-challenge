@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .. import config
+from .. import spend
 from ..model import tag_model
 from ..sources import parser, speaker_llm, youtube
 
@@ -99,7 +100,7 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
     # The title convention and the handful of description phrasings the parser
     # knows cover most of the channel; what is left is usually a name on its own
     # line above a biography, which is a reading problem rather than a pattern.
-    evidence = None
+    evidence, usage = None, {}
     if "Speaker" in parsed.missing:
         recovered = speaker_llm.recover_speaker(
             parsed.record_title, info.get("description")
@@ -109,6 +110,7 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
             parsed.speaker_source = "description-llm"
             parsed.missing.remove("Speaker")
             evidence = recovered["evidence"]
+            usage = recovered.get("usage") or {}
 
     message = f"Parsed from {source}: {parsed.record_title!r}"
     if parsed.speaker_source == "description-llm":
@@ -128,6 +130,7 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
         "speaker_source": parsed.speaker_source,
         "speaker_evidence": evidence,
         "event": parsed.event,
+        **usage,
     })
 
 
@@ -205,15 +208,23 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
     from dotenv import load_dotenv
 
     load_dotenv(config.KUZU_DIR / ".env")
+    from baml_py import Collector
+
     from baml_client import b
 
-    tags = b.ExtractTags(txt_path.read_text(encoding="utf-8")).tag
+    # What this call actually cost. The provider reports the tokens and BAML
+    # hands them back here; without a collector they are simply discarded.
+    collector = Collector(name=f"tags-{ctx['video_id']}")
+    tags = b.with_options(collector=collector).ExtractTags(
+        txt_path.read_text(encoding="utf-8")
+    ).tag
     entities.append({"filename": txt_path.name, "entities": {"tag": tags}})
     config.ENTITIES_JSON.write_text(
         json.dumps(entities, indent=2, ensure_ascii=False), encoding="utf-8"
     )
     return StageResult(True, f"Extracted {len(tags)} tags",
-                       {"tags": tags, "model": tag_model()})
+                       {"tags": tags, "model": tag_model(),
+                        **spend.usage_of(collector)})
 
 
 def stage_graph_rebuild(ctx: dict) -> StageResult:

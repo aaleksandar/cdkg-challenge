@@ -13,10 +13,16 @@ from ingest.sources import speaker_llm
 
 
 def _model(**fields):
-    """Stand in for the BAML client, which is the only thing reached over a wire."""
+    """Stand in for the BAML client, which is the only thing reached over a wire.
+
+    `with_options` is how a usage collector is attached, so the double has to
+    offer it and return itself.
+    """
     answer = SimpleNamespace(**{"found": True, "speaker": None, "evidence": None,
                                 **fields})
-    return SimpleNamespace(ExtractSpeaker=lambda title, description: answer)
+    client = SimpleNamespace(ExtractSpeaker=lambda title, description: answer)
+    client.with_options = lambda **_: client
+    return client
 
 
 def test_a_named_speaker_is_recovered_with_its_evidence(monkeypatch):
@@ -24,8 +30,11 @@ def test_a_named_speaker_is_recovered_with_its_evidence(monkeypatch):
         speaker="Atanas Kiryakov", evidence="Atanas Kiryakov. CEO & Founder, Ontotext"))
 
     found = speaker_llm.recover_speaker("Talk to your data | CDL24", "…a description…")
-    assert found == {"speaker": "Atanas Kiryakov",
-                     "evidence": "Atanas Kiryakov. CEO & Founder, Ontotext"}
+    assert found["speaker"] == "Atanas Kiryakov"
+    assert found["evidence"] == "Atanas Kiryakov. CEO & Founder, Ontotext"
+    # A real collector reports tokens; the double has none, and an empty usage
+    # must not stop a speaker being recovered.
+    assert found["usage"] == {}
 
 
 def test_not_found_stays_blank(monkeypatch):
@@ -74,7 +83,9 @@ def test_a_long_description_is_truncated_before_it_is_sent(monkeypatch):
         def extract(title, description):
             seen["len"] = len(description)
             return SimpleNamespace(found=False, speaker=None, evidence=None)
-        return SimpleNamespace(ExtractSpeaker=extract)
+        c = SimpleNamespace(ExtractSpeaker=extract)
+        c.with_options = lambda **_: c
+        return c
 
     monkeypatch.setattr(speaker_llm, "_client", client)
     speaker_llm.recover_speaker("A talk", "x" * 50_000)

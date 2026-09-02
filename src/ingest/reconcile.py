@@ -105,6 +105,9 @@ class TalkState:
     parsed_speaker: str | None = None
     parsed_event: str | None = None
     tag_count: int = 0
+    # The extracted tags themselves, so the drawer can show what was paid for
+    # rather than only how much of it there is.
+    tags: list[str] = field(default_factory=list)
     # Blank columns that block the graph, and blank columns that merely leave the
     # node thinner. Only the first sort decides a status.
     missing_curation: list[str] = field(default_factory=list)
@@ -257,8 +260,14 @@ def read_transcript_stems() -> dict[str, Path]:
     return {p.stem: p for p in config.TRANSCRIPTS_DIR.rglob("*.srt")}
 
 
-def read_entities() -> dict[str, int]:
-    """Transcript stem -> tag count, from entities.json."""
+def read_entities() -> dict[str, list[str]]:
+    """Transcript stem -> its extracted tags, from entities.json.
+
+    The tags themselves, not just how many: they are the whole content layer of
+    the graph, and "38 extracted" is a number an admin cannot check. The file is
+    read once per reconciliation either way, so carrying the lists costs nothing
+    beyond the strings already parsed.
+    """
     if not config.ENTITIES_JSON.exists():
         return {}
     try:
@@ -266,7 +275,7 @@ def read_entities() -> dict[str, int]:
     except (json.JSONDecodeError, OSError):
         return {}
     return {
-        Path(e["filename"]).stem: len(e.get("entities", {}).get("tag", []))
+        Path(e["filename"]).stem: list(e.get("entities", {}).get("tag", []))
         for e in entries
         if e.get("filename")
     }
@@ -352,7 +361,8 @@ def reconcile() -> list[TalkState]:
         state.has_transcript = path is not None
         state.srt_path = str(path.relative_to(config.REPO_ROOT)) if path else None
         state.has_text = state.stem in texts
-        state.tag_count = entities.get(state.stem, 0)
+        state.tags = entities.get(state.stem, [])
+        state.tag_count = len(state.tags)
         state.has_tags = state.stem in entities
 
     # 1. Every video on the channel.

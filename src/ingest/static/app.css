@@ -209,14 +209,30 @@ td.pick input { cursor: pointer; accent-color: var(--accent); }
   display: flex; gap: 0.55rem; flex-wrap: wrap;
 }
 .sub .who { color: var(--ink-soft); }
-.num, .vid, .dur {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
+/* Published, Tags and Length are read as a column, so they are right-aligned:
+   "6 Aug 2026" under "20 Aug 2026" only lines its year up that way, and the same
+   goes for 9 tags under 158, or 24:02 under 1:51:54. Tabular figures keep the
+   digits on a common width so nothing shimmies as the numbers change.
+
+   The video ID keeps the mono face — it is an identifier to be compared
+   character by character — but the dates do not need it and read better without. */
+.num, .dur, .when {
+  text-align: right;
+  font-variant-numeric: tabular-nums lining-nums;
+  white-space: nowrap;
   color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+.vid {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
   white-space: nowrap;
 }
-.vid { font-size: 0.7rem; color: var(--ink-faint); }
+.when { color: var(--ink-faint); }
+/* The header has to follow its column, or the label sits over empty space. */
+thead th.r { text-align: right; }
 
 /* ---- Status ---- */
 .state { display: inline-flex; align-items: center; gap: 0.42rem; white-space: nowrap; font-size: 0.79rem; }
@@ -538,13 +554,6 @@ td.act .rowbtn:disabled { opacity: 1; }
 .curate-form button { flex: 0 0 auto; }
 
 
-/* ---- Published column ---- */
-.when {
-  font-size: .78rem; color: var(--ink-faint);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums lining-nums;
-}
-
 /* ---- The blocker ----
    A row in the attention lane exists to answer one question, and this is the
    answer. Given the weight of a pull-quote rather than of an error: nothing here
@@ -660,3 +669,44 @@ details + details { border-top: 1px solid var(--rule); }
   color: var(--ink-soft);
 }
 .btn-quiet:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+/* ---- Tag list ----
+   Inside a definition list, so the disclosure has to sit flush with the value
+   it replaces: no marker indent, no extra leading. The tags themselves are set
+   as chips because they are a set, not prose — the eye counts them by shape. */
+.taglist > summary {
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: .3rem;
+}
+.taglist > summary::-webkit-details-marker { display: none; }
+.taglist > summary::after {
+  content: "";
+  width: 0; height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid var(--ink-faint);
+  transition: transform .12s;
+}
+.taglist[open] > summary::after { transform: rotate(180deg); }
+.taglist > summary:hover { color: var(--accent); }
+.taglist > summary:hover::after { border-top-color: var(--accent); }
+
+.taglist ul {
+  list-style: none;
+  margin: .55rem 0 .2rem;
+  padding: 0;
+  display: flex; flex-wrap: wrap; gap: .3rem;
+}
+.taglist li {
+  font-size: .72rem;
+  line-height: 1.35;
+  padding: .16rem .45rem .18rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink-soft);
+}

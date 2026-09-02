@@ -49,6 +49,9 @@ _DETAIL_KEYS = {
     # Which LLM produced the tags. Absent when they were reused from a previous
     # run, which is exactly the case where today's model name would be a lie.
     "model",
+    # What the call cost. Tokens are reported by the provider; cost_usd appears
+    # only when the rates have been configured — see ingest/spend.py.
+    "input_tokens", "output_tokens", "cached_input_tokens", "cost_usd",
 }
 
 

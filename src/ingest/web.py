@@ -7,8 +7,10 @@ from pathlib import Path
 from fastapi import APIRouter, BackgroundTasks, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from markupsafe import Markup, escape
 
 from . import config, db, reconcile as R
+from . import spend
 from .model import tag_model
 
 router = APIRouter()
@@ -67,6 +69,55 @@ templates.env.globals["asset_version"] = _asset_version
 # served from the root, "/ingestion" when it is mounted under a path — the proxy
 # strips the prefix on the way in, so nothing else in the app changes.
 templates.env.globals["base"] = config.ROOT_PATH
+templates.env.filters["cost"] = spend.format_cost
+
+
+def _linkify_channel(text: str) -> Markup:
+    """Turn the channel handle in a note into a link to the channel.
+
+    Applied only where a note is rendered as prose. The same strings are also
+    printed into ``data-tip`` and ``aria-label`` attributes, and an anchor there
+    would either be escaped into visible markup or break the attribute outright —
+    so the notes themselves stay plain text and this is the one place that does not.
+
+    The text is escaped first and the anchor spliced into the result, so a note is
+    never trusted as markup.
+    """
+    handle = config.YOUTUBE_CHANNEL_HANDLE
+    escaped = escape(text)
+    if handle not in text:
+        return escaped
+    link = Markup(
+        '<a href="{}" target="_blank" rel="noopener">{}</a>'
+    ).format(config.YOUTUBE_CHANNEL_PAGE, handle)
+    return Markup(escaped.replace(escape(handle), link))
+
+
+templates.env.filters["linkify_channel"] = _linkify_channel
+
+
+def run_spend(run: dict | None) -> dict:
+    """Everything one run spent, summed over the stages that made a paid call.
+
+    An ingestion can bill twice — tag extraction always, speaker recovery when
+    the description had to be read — and an admin asking "what did this cost"
+    means the run, not one stage of it.
+    """
+    totals = {"input_tokens": 0, "output_tokens": 0, "cached_input_tokens": 0,
+              "calls": 0, "cost_usd": None}
+    for stage in (run or {}).get("stages", []):
+        detail = _fromjson(stage.get("detail"))
+        if not (detail.get("input_tokens") or detail.get("output_tokens")):
+            continue
+        totals["calls"] += 1
+        for key in ("input_tokens", "output_tokens", "cached_input_tokens"):
+            totals[key] += detail.get(key) or 0
+    if totals["calls"]:
+        totals["cost_usd"] = spend.estimate_cost(totals)
+    return totals
+
+
+templates.env.globals["run_spend"] = run_spend
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
@@ -88,8 +139,8 @@ templates.env.globals["LANES"] = [
 # lane and shown on hover for each tab.
 LANE_NOTES = {
     "all": (
-        "Every video on the @ConnectedData channel. Shorts and premieres are "
-        "hidden unless you ask for them."
+        f"Every video on the {config.YOUTUBE_CHANNEL_HANDLE} channel. Shorts and "
+        "premieres are hidden unless you ask for them."
     ),
     "attention": (
         "Stuck, and it will stay stuck until someone looks. Open one to see the "

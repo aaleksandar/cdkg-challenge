@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import logging
 
+from .. import spend
 from . import parser
 
 log = logging.getLogger("ingest.speaker_llm")
@@ -37,17 +38,20 @@ MAX_DESCRIPTION_CHARS = 6000
 def recover_speaker(title: str, description: str | None) -> dict | None:
     """Ask the LLM who gave this talk. None when it cannot be established.
 
-    Returns ``{"speaker": str, "evidence": str | None}`` on success. Every
-    failure — no description, no attribution, a name that does not survive the
-    parser's own guards, an API error — is None, because the caller's fallback
-    for None is to leave the column blank, which is always safe.
+    Returns ``{"speaker": str, "evidence": str | None, "usage": dict}`` on
+    success. Every failure — no description, no attribution, a name that does not
+    survive the parser's own guards, an API error — is None, because the caller's
+    fallback for None is to leave the column blank, which is always safe.
     """
     if not description or not description.strip():
         return None
 
+    from baml_py import Collector
+
+    collector = Collector(name="speaker")
     try:
         b = _client()
-        result = b.ExtractSpeaker(
+        result = b.with_options(collector=collector).ExtractSpeaker(
             title=title or "", description=description[:MAX_DESCRIPTION_CHARS]
         )
     except Exception:
@@ -67,7 +71,8 @@ def recover_speaker(title: str, description: str | None) -> dict | None:
                  result.speaker, title)
         return None
 
-    return {"speaker": name, "evidence": result.evidence}
+    return {"speaker": name, "evidence": result.evidence,
+            "usage": spend.usage_of(collector)}
 
 
 def _client():

@@ -5,6 +5,6 @@
 {% if LANE_NOTES.get(lane) %}
 <p class="section-note">
   <span class="what">{{ LANE_LABELS.get(lane, 'All videos') }}</span>
-  {{ LANE_NOTES[lane] }}
+  {{ LANE_NOTES[lane] | linkify_channel }}
 </p>
 {% endif %}
