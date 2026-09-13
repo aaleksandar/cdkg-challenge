@@ -87,7 +87,7 @@ def test_unusable_files_are_quarantined(states):
 def test_every_tagged_talk_in_the_graph_is_accounted_for(states):
     """No talk may be tagged in Kuzu yet invisible to the panel."""
     _, tagged = R.read_graph()
-    seen = {R.norm_title(s.csv_title) for s in states if s.tagged_in_graph}
+    seen = {s.talk_id for s in states if s.tagged_in_graph}
     assert tagged - seen == set()
     assert sum(1 for s in states if s.tagged_in_graph) == len(tagged)
 
@@ -118,8 +118,10 @@ def test_curation_columns_match_what_the_graph_builder_requires():
     script = (config.KUZU_DIR / "02_domain_graph.py").read_text(encoding="utf-8")
     declared = script.split("required_cols = [")[1].split("]")[0]
     required = {c.strip().strip('"\'') for c in declared.split(",") if c.strip()}
-    # Title is always present, so it is not something a curator can be missing.
-    assert set(R.CURATION_COLUMNS) == required - {"Title"}
+    # Title and TalkID are not things a curator can be missing: Title is always
+    # present, and TalkID is minted by the writer. A row lacking either is a
+    # defect to report, not a task to hand someone.
+    assert set(R.CURATION_COLUMNS) == required - {"Title", "TalkID"}
 
 
 def test_optional_columns_match_what_the_graph_builder_tolerates():
@@ -168,6 +170,7 @@ def test_a_talk_without_a_description_still_becomes_a_node():
     exec(source.split('if __name__ == "__main__":')[0], namespace)  # noqa: S102
 
     df = pl.DataFrame({
+        "TalkID": ["t-aaaa1111", "t-bbbb2222"],
         "Title": ["Curated talk", "Freshly ingested talk"],
         "Category": ["Knowledge Graphs", "Knowledge Graphs"],
         "Web": ["https://example.com", None],
@@ -201,3 +204,33 @@ def test_an_unknown_duration_is_not_a_short():
     assert not R.is_short_duration(None)
     assert R.is_short_duration(config.SHORT_VIDEO_MAX_SECONDS)
     assert not R.is_short_duration(config.SHORT_VIDEO_MAX_SECONDS + 1)
+
+
+@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+def test_two_talks_may_share_a_title():
+    """Keyed on the title, a second talk called "Opening Keynote" either aborted
+    the COPY or silently merged into the first, taking its speaker with it.
+    Conferences reuse titles; identities are not reused."""
+    import kuzu
+    import polars as pl
+
+    db = kuzu.Database(":memory:")
+    conn = kuzu.Connection(db)
+    conn.execute("CREATE NODE TABLE Talk (talk_id STRING, title STRING, PRIMARY KEY (talk_id))")
+    conn.execute("CREATE NODE TABLE Speaker (name STRING, PRIMARY KEY (name))")
+    conn.execute("CREATE REL TABLE GIVES_TALK (FROM Speaker TO Talk)")
+
+    talks = pl.DataFrame([{"talk_id": "t-one", "title": "Opening Keynote"},
+                          {"talk_id": "t-two", "title": "Opening Keynote"}])
+    speakers = pl.DataFrame([{"name": "Alice"}, {"name": "Bob"}])
+    edges = pl.DataFrame([{"from": "Alice", "to": "t-one"},
+                          {"from": "Bob", "to": "t-two"}])
+    conn.execute("COPY Talk FROM talks")
+    conn.execute("COPY Speaker FROM speakers")
+    conn.execute("COPY GIVES_TALK FROM edges")
+
+    assert conn.execute("MATCH (t:Talk) RETURN count(t)").get_next()[0] == 2
+    speakers_of_one = conn.execute(
+        "MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk {talk_id: 't-one'}) RETURN count(s)"
+    ).get_next()[0]
+    assert speakers_of_one == 1

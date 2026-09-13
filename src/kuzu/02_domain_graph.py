@@ -12,7 +12,7 @@ OPTIONAL_COLS = ["Date", "Type", "Category"]
 def load_data(filepath: str) -> pl.DataFrame:
     """Load the metadata CSV, keeping every row that can become a Talk.
 
-    Only Title, Speaker and Event are required: they are the primary key and the
+    Only TalkID, Title, Speaker and Event are required: the identity, and the
     two relationships every talk must have. Date, Type and Category are curator
     detail — a talk with none of them is a poorer node, not an absent one, and
     dropping the row here loses the transcript, the tags and the speaker along
@@ -21,7 +21,7 @@ def load_data(filepath: str) -> pl.DataFrame:
     Blank strings are normalised to null so "" and a missing value cannot behave
     differently three functions later.
     """
-    required_cols = ["Title", "Speaker", "Event"]
+    required_cols = ["TalkID", "Title", "Speaker", "Event"]
     blank_to_null = [
         pl.when(pl.col(c).str.strip_chars().str.len_chars() == 0)
         .then(None)
@@ -40,7 +40,7 @@ def extract_speakers(df: pl.DataFrame) -> pl.DataFrame:
     """Extract unique speaker names from dataframe"""
     speakers_df = (
         df.select("Speaker")
-        .with_columns(pl.col("Speaker").str.replace_all(" & ", " and "))
+        .with_columns(pl.col("Speaker").str.replace_all(r"\s*&\s*", " and "))
         .with_columns(pl.col("Speaker").str.split(" and "))
         # Polars 2.0 flips the empty_as_null default; pin current behavior explicitly
         .explode("Speaker", empty_as_null=True)
@@ -54,7 +54,7 @@ def extract_speakers(df: pl.DataFrame) -> pl.DataFrame:
 def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
     """Extract unique talks from the dataframe.
 
-    Only `title` may not be null — it is the primary key. `url` and `description`
+    Only `talk_id` may not be null — it is the primary key. `url` and `description`
     are optional and are filled with empty strings rather than dropping the row:
     a blanket drop_nulls here deletes the Talk while its speaker and event
     relationships survive, and the subsequent COPY fails with "Unable to find
@@ -62,9 +62,10 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
     this is the ordinary case, not an edge case.
     """
     talks_df = (
-        df.select(["Title", "Category", "Web", "Description", "Type"])
+        df.select(["TalkID", "Title", "Category", "Web", "Description", "Type"])
         .rename(
             {
+                "TalkID": "talk_id",
                 "Title": "title",
                 "Category": "category",
                 "Web": "url",
@@ -72,7 +73,7 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
                 "Type": "type",
             }
         )
-        .drop_nulls(subset=["title"])
+        .drop_nulls(subset=["talk_id"])
         .with_columns(
             pl.col("url").fill_null(""),
             pl.col("description").fill_null(""),
@@ -104,14 +105,16 @@ def get_speaker_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
     detached the talk from its speaker over a missing curator field.
     """
     return (
-        df.select("Speaker", "Title", "Date", "Category")
-        .with_columns(pl.col("Date").str.to_date(strict=False))
-        .with_columns(pl.col("Speaker").str.replace_all(" & ", " and "))
+        df.select("Speaker", "TalkID", "Date", "Category")
+        # An explicit format, because strict=False turns anything else into a
+        # null silently: the row looks curated and the edge carries no date.
+        .with_columns(pl.col("Date").str.to_date(format="%d/%m/%Y", strict=False))
+        .with_columns(pl.col("Speaker").str.replace_all(r"\s*&\s*", " and "))
         .with_columns(pl.col("Speaker").str.split(" and "))
         # Polars 2.0 flips the empty_as_null default; pin current behavior explicitly
         .explode("Speaker", empty_as_null=True)
         .with_columns(pl.col("Speaker").str.strip_chars())
-        .rename({"Speaker": "speaker", "Title": "talk", "Date": "date", "Category": "category"})
+        .rename({"Speaker": "speaker", "TalkID": "talk", "Date": "date", "Category": "category"})
         .drop_nulls(subset=["speaker", "talk"])
         .unique()
     )
@@ -124,9 +127,9 @@ def get_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
     every other relationship, but has no edge to a Category that does not exist.
     """
     return (
-        df.select("Title", "Category")
+        df.select("TalkID", "Category")
         .drop_nulls(subset=["Category"])
-        .rename({"Title": "from", "Category": "to"})
+        .rename({"TalkID": "from", "Category": "to"})
         .unique()
     )
 
@@ -135,12 +138,13 @@ def create_tables(conn: kuzu.Connection):
     conn.execute("CREATE NODE TABLE IF NOT EXISTS Speaker (name STRING, PRIMARY KEY (name))")
     conn.execute("""
         CREATE NODE TABLE IF NOT EXISTS Talk (
+            talk_id STRING,
             title STRING,
-            category STRING, 
+            category STRING,
             url STRING,
             description STRING,
             type STRING,
-            PRIMARY KEY (title)
+            PRIMARY KEY (talk_id)
         )
     """)
     conn.execute(
@@ -161,7 +165,7 @@ def create_tables(conn: kuzu.Connection):
 
 def get_talk_event_relationships(df: pl.DataFrame) -> pl.DataFrame:
     """Get relationships between talks and events"""
-    return df.select("Title", "Event")
+    return df.select("TalkID", "Event")
 
 
 def write_cdl_description(conn: kuzu.Connection, event_name: str) -> None:

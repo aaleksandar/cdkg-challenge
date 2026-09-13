@@ -367,21 +367,22 @@ def read_text_stems() -> set[str]:
 
 
 def read_graph() -> tuple[set[str], set[str]]:
-    """(talk titles in the graph, talk titles carrying at least one tag)."""
+    """(talk ids in the graph, talk ids carrying at least one tag)."""
     if not config.GRAPH_DB_PATH.exists():
         return set(), set()
     try:
         import kuzu
 
         conn = kuzu.Connection(kuzu.Database(str(config.GRAPH_DB_PATH), read_only=True))
-        titles, tagged = set(), set()
-        result = conn.execute("MATCH (t:Talk) RETURN t.title")
+        ids, tagged = set(), set()
+        result = conn.execute("MATCH (t:Talk) RETURN t.talk_id")
         while result.has_next():
-            titles.add(norm_title(result.get_next()[0]))
-        result = conn.execute("MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) RETURN DISTINCT t.title")
+            ids.add(result.get_next()[0])
+        result = conn.execute(
+            "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) RETURN DISTINCT t.talk_id")
         while result.has_next():
-            tagged.add(norm_title(result.get_next()[0]))
-        return titles, tagged
+            tagged.add(result.get_next()[0])
+        return ids, tagged
     except Exception:
         # A rebuild may be swapping the database underneath us; report nothing
         # rather than failing the whole panel.
@@ -396,7 +397,7 @@ def reconcile() -> list[TalkState]:
     transcripts = read_transcript_stems()
     entities = read_entities()
     texts = read_text_stems()
-    graph_titles, graph_tagged = read_graph()
+    graph_ids, graph_tagged = read_graph()
     inventory = db.all_videos()
     runs = db.latest_runs()
 
@@ -414,10 +415,9 @@ def reconcile() -> list[TalkState]:
         file_ref = (row.get("File") or "").strip()
         if file_ref:
             state.stem = Path(file_ref).stem
-        if state.csv_title:
-            key = norm_title(state.csv_title)
-            state.in_graph = key in graph_titles
-            state.tagged_in_graph = key in graph_tagged
+        if state.talk_id:
+            state.in_graph = state.talk_id in graph_ids
+            state.tagged_in_graph = state.talk_id in graph_tagged
 
     def apply_repo(state: TalkState) -> None:
         """Fill in transcript/text/tag presence once the stem is known."""
