@@ -103,7 +103,7 @@ KG_ENABLED = _flag("KG_ENABLED", "true")
 GIT_PUSH_ENABLED = _flag("GIT_PUSH_ENABLED")
 
 # --- GitHub App --------------------------------------------------------------
-GITHUB_REPO = os.getenv("GITHUB_REPO", "Connected-Data/cdkg-challenge")
+GITHUB_REPO = os.getenv("GITHUB_REPO", "aaleksandar/cdkg-challenge")
 GITHUB_APP_ID = os.getenv("GITHUB_APP_ID") or None
 GITHUB_APP_PRIVATE_KEY = os.getenv("GITHUB_APP_PRIVATE_KEY") or None
 GITHUB_BASE_BRANCH = os.getenv("GITHUB_BASE_BRANCH", "main")

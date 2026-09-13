@@ -39,7 +39,7 @@ servers:
         SERVICE_PORT: "8503"
         ROOT_PATH: /ingestion
         REPO_ROOT: /repo
-        GITHUB_REPO: Connected-Data/cdkg-challenge
+        GITHUB_REPO: aaleksandar/cdkg-challenge
         # Paths point into the git working copy, not the baked-in image.
         TRANSCRIPTS_DIR: /repo/Transcripts
         KUZU_DIR: /repo/src/kuzu
