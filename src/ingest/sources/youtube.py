@@ -117,10 +117,25 @@ def fetch_rss() -> list[dict]:
 # --- Per-video ---------------------------------------------------------------
 
 def fetch_video_info(video_id: str) -> dict:
-    """Full metadata for one video, including the description the parser needs."""
+    """Full metadata for one video, including the description the parser needs.
+
+    A premiere that has not aired is returned, not raised. yt-dlp raises on one
+    ("Premieres in 5 hours") because it has no formats, and that error is what
+    every ``live_status == "is_upcoming"`` guard downstream never got to see: the
+    scheduler auto-ingested premieres and the run failed at this lookup.
+    """
     url = f"https://www.youtube.com/watch?v={video_id}"
-    with yt_dlp.YoutubeDL(_base_opts()) as ydl:
-        return ydl.extract_info(url, download=False)
+    try:
+        with yt_dlp.YoutubeDL(_base_opts()) as ydl:
+            return ydl.extract_info(url, download=False)
+    except yt_dlp.utils.DownloadError:
+        # Only on failure, so a normal lookup costs one request. Any other
+        # no-formats failure (sign-in, rate limit) keeps its own error message.
+        with yt_dlp.YoutubeDL({**_base_opts(), "ignore_no_formats_error": True}) as ydl:
+            info = ydl.extract_info(url, download=False)
+        if info.get("live_status") != "is_upcoming":
+            raise
+        return info
 
 
 def trim_info(info: dict) -> dict:
@@ -284,7 +299,7 @@ def resolve_videos(video_ids: list[str]) -> int:
             continue
         try:
             info = fetch_video_info(video_id)
-        except Exception:  # private, removed, or a premiere yt-dlp will not open
+        except Exception:  # private or removed
             continue
         patch = {}
         if info.get("duration"):

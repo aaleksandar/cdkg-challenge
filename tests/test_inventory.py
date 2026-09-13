@@ -65,3 +65,50 @@ def test_a_failed_lookup_does_not_stop_the_rest(state, monkeypatch):
 
     monkeypatch.setattr(youtube, "fetch_video_info", flaky)
     assert youtube.backfill_metadata()["resolved"] == 1
+
+
+class _YoutubeDL:
+    """Behaves as yt-dlp does on an unaired premiere: no formats, so it raises
+    unless told to ignore that."""
+
+    live_status = "is_upcoming"
+
+    def __init__(self, opts):
+        self.lenient = opts.get("ignore_no_formats_error")
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def extract_info(self, url, download):
+        if not self.lenient:
+            raise youtube.yt_dlp.utils.DownloadError("Premieres in 5 hours")
+        return {"id": "soon", "live_status": self.live_status}
+
+
+def test_a_premiere_that_has_not_aired_is_returned_not_raised(monkeypatch):
+    """The raise hid `is_upcoming` from every guard that checks it, so the
+    scheduler auto-ingested premieres and the run failed at this lookup."""
+    monkeypatch.setattr(youtube.yt_dlp, "YoutubeDL", _YoutubeDL)
+    assert youtube.fetch_video_info("soon")["live_status"] == "is_upcoming"
+
+
+def test_any_other_lookup_failure_still_raises(monkeypatch):
+    monkeypatch.setattr(_YoutubeDL, "live_status", None)
+    monkeypatch.setattr(youtube.yt_dlp, "YoutubeDL", _YoutubeDL)
+    with pytest.raises(youtube.yt_dlp.utils.DownloadError, match="Premieres in"):
+        youtube.fetch_video_info("gone")
+
+
+def test_a_premiere_is_skipped_and_not_cached(state, monkeypatch):
+    """trim_info drops live_status, so a cached premiere would later parse as a
+    talk with no date and no captions."""
+    from ingest.pipeline import stages
+
+    monkeypatch.setattr(youtube, "fetch_video_info",
+                        lambda vid: {"id": vid, "live_status": "is_upcoming"})
+    with pytest.raises(stages.StageSkipped):
+        stages.stage_metadata_parse({"video_id": "soon"})
+    assert not (config.INGEST_CACHE_DIR / "soon.json").exists()
