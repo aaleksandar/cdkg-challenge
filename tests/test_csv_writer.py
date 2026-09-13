@@ -20,6 +20,7 @@ def metadata_csv(tmp_path) -> Path:
         writer.writeheader()
         row = dict.fromkeys(COLUMNS, "")
         row.update({
+            "TalkID": "t-existing",
             "Title": "An existing talk", "Speaker": "Someone",
             "Video": "https://www.youtube.com/watch?v=aaaaaaaaaaa",
             "Date": "01/01/2024", "Type": "Presentation", "Category": "Knowledge Graphs",
@@ -149,6 +150,7 @@ def blank_speaker_csv(tmp_path) -> Path:
         writer.writeheader()
         row = dict.fromkeys(COLUMNS, "")
         row.update({
+            "TalkID": "t-blankspk",
             "Title": "Talk to your data | CDL24", "Speaker": "",
             "Event": "Connected Data London 2024",
             "Video": "https://www.youtube.com/watch?v=bbbbbbbbbbb",
@@ -201,3 +203,62 @@ def test_a_rerun_with_nothing_new_leaves_the_file_byte_identical(blank_speaker_c
     assert appended is False
     assert detail == "Already in the metadata CSV — not duplicated"
     assert blank_speaker_csv.read_bytes() == before
+
+
+def test_a_talk_with_no_video_can_still_be_updated(tmp_path):
+    """The whole point of a TalkID. Rows used to be found by the video id parsed
+    out of the Video column, so a talk no video carries — one known only to
+    another source — could not be addressed, let alone curated."""
+    path = tmp_path / "no-video.csv"
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        row = dict.fromkeys(COLUMNS, "")
+        row.update({"TalkID": "t-novideo", "Title": "A talk with no video",
+                    "HeySummit": "600680"})
+        writer.writerow(row)
+
+    updated, _ = csv_writer.update_row(
+        "t-novideo", {"Speaker": "Jane Doe", "Date": "11/09/2026"}, csv_path=path)
+
+    assert updated is True
+    assert _rows(path)[0]["Speaker"] == "Jane Doe"
+
+
+def test_a_source_finds_the_talk_already_holding_its_record(tmp_path):
+    """How two sources become one talk: each asks the same question about its
+    own record, and gets back the identity rather than making a second one."""
+    path = tmp_path / "two-sources.csv"
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=COLUMNS, lineterminator="\n")
+        writer.writeheader()
+        row = dict.fromkeys(COLUMNS, "")
+        row.update({"TalkID": "t-both", "Title": "A talk",
+                    "Video": "https://www.youtube.com/watch?v=aaaaaaaaaaa",
+                    "HeySummit": "600680"})
+        writer.writerow(row)
+
+    assert csv_writer.find_talk_by_source(path, "youtube", "aaaaaaaaaaa") == "t-both"
+    assert csv_writer.find_talk_by_source(path, "heysummit", "600680") == "t-both"
+    assert csv_writer.find_talk_by_source(path, "heysummit", "999999") is None
+
+
+def test_an_identity_is_never_rewritten(blank_speaker_csv, tmp_path):
+    """Minted once. A re-run that learns something new fills the blank and
+    leaves the talk the same talk."""
+    before = _rows(blank_speaker_csv)[0]["TalkID"]
+    csv_writer.append_row(
+        _talk(title="Talk to your data", speaker="Atanas Kiryakov",
+              event="Connected Data London 2024"),
+        "bbbbbbbbbbb", Path("/t.srt"), csv_path=blank_speaker_csv)
+    rows = _rows(blank_speaker_csv)
+    assert len(rows) == 1
+    assert rows[0]["TalkID"] == before
+
+
+def test_every_appended_row_gets_its_own_identity(metadata_csv, tmp_path):
+    for vid in ("bbbbbbbbbbb", "ccccccccccc"):
+        csv_writer.append_row(_talk(speaker="Jane Doe"), video_id=vid,
+                              srt_path=tmp_path / "x.srt", csv_path=metadata_csv)
+    ids = [r["TalkID"] for r in _rows(metadata_csv)]
+    assert all(ids) and len(set(ids)) == len(ids)

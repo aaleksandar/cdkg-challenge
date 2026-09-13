@@ -153,7 +153,7 @@
          a panel action — the file is append-only here on purpose.</p>
       <ul class="strand">
         {% for s in ingested_shorts %}
-          <li hx-get="{{ base }}/video/{{ s.video_id | urlencode }}"
+          <li hx-get="{{ base }}/video/{{ s.key | urlencode }}"
               hx-target="#drawer" hx-swap="innerHTML">
             <span class="t">{{ s.display_title }}</span>
             <span class="muted">{{ s.duration | duration }}{% if s.in_graph %} · in graph{% endif %}</span>
@@ -177,7 +177,7 @@
          talk in without re-running the LLM.</p>
       <ul class="strand">
         {% for s in orphans %}
-          <li hx-get="{{ base }}/video/{{ ('stem:' ~ s.stem) | urlencode }}"
+          <li hx-get="{{ base }}/video/{{ s.key | urlencode }}"
               hx-target="#drawer" hx-swap="innerHTML">
             <span class="t">{{ s.display_title }}</span>
             <span class="muted">{{ s.tag_count }} tags</span>
@@ -207,7 +207,7 @@
          material, or a video since made private.</p>
       <ul class="strand">
         {% for s in stranded %}
-          <li hx-get="{{ base }}/video/{{ ('stem:' ~ s.stem) | urlencode }}"
+          <li hx-get="{{ base }}/video/{{ s.key | urlencode }}"
               hx-target="#drawer" hx-swap="innerHTML">
             <span class="t">{{ s.display_title }}</span>
             <span class="muted">{{ LANE_LABELS[s.lane] }}</span>

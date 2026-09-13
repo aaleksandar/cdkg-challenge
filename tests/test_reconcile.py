@@ -8,11 +8,16 @@ build artefact.
 
 import pytest
 
-from ingest import config, reconcile as R
+from ingest import config, db, reconcile as R
 
 
 @pytest.fixture(scope="module")
-def states():
+def states(tmp_path_factory):
+    # reconcile() reads the inventory, so the state DB has to exist. Without
+    # this the whole module errors on a clone that has never run the panel,
+    # which is every clone but the author's.
+    config.STATE_DB_PATH = tmp_path_factory.mktemp("state") / "state.db"
+    db.init_db()
     return R.reconcile()
 
 
@@ -183,8 +188,7 @@ def test_a_short_stays_a_short_even_once_it_has_a_metadata_row():
     and the defect is reported under Data health instead.
     """
     short = R.TalkState(
-        video_id="JxvcmkW7s0M", title="GraphRAG for Exploring #knowledgegraph",
-        on_youtube=True, duration=153, in_csv=True, has_tags=True, tag_count=12,
+        sources={"youtube": "JxvcmkW7s0M"}, title="GraphRAG for Exploring #knowledgegraph", duration=153, in_csv=True, has_tags=True, tag_count=12,
         missing_curation=["Speaker"],
     )
     assert short.status == "excluded_short"

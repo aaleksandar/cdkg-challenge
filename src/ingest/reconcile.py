@@ -15,9 +15,10 @@ reports that.
 Nothing here is stored: state is computed at read time, so the panel is correct
 about talks ingested long before this service existed.
 
-The CSV ``Video`` column (a YouTube URL) is the join key. Talks predating the
-channel convention are matched by transcript filename stem instead, which is how
-``03_content_graph.py`` joins today.
+A talk is identified by its CSV ``TalkID``, which belongs to no source. Sources
+are peers: each holds a record about the talk and contributes what it has, and
+the CSV names the record each one holds in a column of its own. Adding a source
+adds a column and an entry in ``SOURCE_COLUMNS``, nothing else.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -61,6 +63,27 @@ def extract_video_id(url: str | None) -> str | None:
     return match.group(1) if match else None
 
 
+# Which CSV column names each source's own record, and how to read an id out of
+# it. The whole registry of sources: adding one is a column and a line here.
+# Values differ in shape because the columns predate this — Video has always held
+# a URL — so each source says how to read its own.
+SOURCE_COLUMNS: dict[str, tuple[str, Callable[[str], "str | None"]]] = {
+    "youtube": ("Video", lambda v: extract_video_id(v)),
+    "heysummit": ("HeySummit", lambda v: v.strip() or None),
+    "file": ("File", lambda v: Path(v.strip()).stem or None),
+}
+
+
+def source_ids(row: dict) -> dict[str, str]:
+    """Every source that holds a record for this row, and its id there."""
+    found = {}
+    for source, (column, read) in SOURCE_COLUMNS.items():
+        native_id = read(row.get(column) or "")
+        if native_id:
+            found[source] = native_id
+    return found
+
+
 def is_short_duration(duration: int | None) -> bool:
     """Whether a running time makes this a Short or a teaser rather than a talk.
 
@@ -89,9 +112,23 @@ def norm_title(title: str | None) -> str:
 
 @dataclass
 class TalkState:
-    """Everything known about one talk, from every source."""
+    """Everything known about one talk, from every source.
 
-    video_id: str | None = None
+    ``talk_id`` is the talk's own identity and belongs to no source. It exists
+    once the talk has a metadata CSV row; before that there is only a record
+    some source holds, which is what ``sources`` carries.
+    """
+
+    # The CSV's TalkID. None means no row yet — a source record nobody has
+    # resolved into a talk.
+    talk_id: str | None = None
+    # source name -> that source's own id for this talk. No source outranks
+    # another: each holds what it holds (only YouTube has transcripts, only
+    # HeySummit has dates), and where two hold the same field, which one wins
+    # is a per-field choice made where that field is written — not a property
+    # of the source. Adding a source adds a key here.
+    sources: dict[str, str] = field(default_factory=dict)
+
     title: str = ""
     url: str | None = None
     duration: int | None = None
@@ -100,7 +137,6 @@ class TalkState:
     live_status: str | None = None
 
     # Presence in each source
-    on_youtube: bool = False
     has_transcript: bool = False
     in_csv: bool = False
     has_text: bool = False
@@ -128,6 +164,29 @@ class TalkState:
     missing_curation: list[str] = field(default_factory=list)
     missing_optional: list[str] = field(default_factory=list)
     run: dict | None = None
+
+    @property
+    def key(self) -> str:
+        """What addresses this state in a URL.
+
+        A talk is addressed by its own id. A source record that is not yet a
+        talk is addressed by the source and the id that source uses, because
+        that is genuinely all it is — ``youtube:dQw4w9WgXcQ``, ``file:<stem>``.
+        Resolving a record into a talk is what mints a TalkID.
+        """
+        if self.talk_id:
+            return self.talk_id
+        for source, native_id in self.sources.items():
+            return f"{source}:{native_id}"
+        return f"file:{self.stem}"
+
+    @property
+    def video_id(self) -> str | None:
+        return self.sources.get("youtube")
+
+    @property
+    def on_youtube(self) -> bool:
+        return "youtube" in self.sources
 
     @property
     def display_title(self) -> str:
@@ -332,7 +391,7 @@ def read_graph() -> tuple[set[str], set[str]]:
 # --- Reconciliation ----------------------------------------------------------
 
 def reconcile() -> list[TalkState]:
-    """Build the full picture: every YouTube video plus every repo talk."""
+    """Build the full picture: every talk, plus every source record not yet a talk."""
     csv_rows = read_csv_rows()
     transcripts = read_transcript_stems()
     entities = read_entities()
@@ -340,19 +399,6 @@ def reconcile() -> list[TalkState]:
     graph_titles, graph_tagged = read_graph()
     inventory = db.all_videos()
     runs = db.latest_runs()
-
-    # Index CSV rows by both join keys.
-    csv_by_video_id: dict[str, dict] = {}
-    csv_by_stem: dict[str, dict] = {}
-    for row in csv_rows:
-        vid = extract_video_id(row.get("Video"))
-        if vid:
-            csv_by_video_id[vid] = row
-        file_ref = (row.get("File") or "").strip()
-        if file_ref:
-            csv_by_stem[Path(file_ref).stem] = row
-
-    states: dict[str, TalkState] = {}   # keyed by video_id or "stem:<stem>"
 
     def apply_csv(state: TalkState, row: dict) -> None:
         state.in_csv = True
@@ -385,20 +431,43 @@ def reconcile() -> list[TalkState]:
         state.tag_count = len(state.tags)
         state.has_tags = state.stem in entities
 
-    # 1. Every video on the channel.
+    states: dict[str, TalkState] = {}     # keyed by TalkState.key
+    by_source: dict[tuple[str, str], TalkState] = {}
+
+    # 1. Every curated talk. The CSV is the registry of what a talk is, so this
+    #    is the only loop that produces a talk_id — and the only one that can see
+    #    a talk no source has a record for yet, or whose only record is one this
+    #    service cannot enumerate.
+    for row in csv_rows:
+        state = TalkState(
+            talk_id=(row.get("TalkID") or "").strip() or None,
+            sources=source_ids(row),
+            title=(row.get("Title") or "").strip(),
+            url=(row.get("Video") or "").strip() or None,
+        )
+        apply_csv(state, row)
+        apply_repo(state)
+        state.run = runs.get(state.video_id) if state.video_id else None
+        states[state.key] = state
+        for source, native_id in state.sources.items():
+            by_source[(source, native_id)] = state
+
+    # 2. The YouTube inventory. A video a talk already claims fills in what only
+    #    the channel knows; one nothing claims is a source record on its own —
+    #    the backlog — and carries no talk_id until it is ingested.
     for video in inventory:
         vid = video["video_id"]
-        state = TalkState(
-            video_id=vid,
-            title=video["title"],
-            url=video["url"],
-            duration=video.get("duration"),
-            published_at=video.get("published_at"),
-            thumbnail=video.get("thumbnail"),
-            live_status=video.get("live_status"),
-            on_youtube=True,
-            run=runs.get(vid),
-        )
+        state = by_source.get(("youtube", vid))
+        if state is None:
+            state = TalkState(sources={"youtube": vid}, run=runs.get(vid))
+            states[state.key] = state
+            by_source[("youtube", vid)] = state
+        state.title = video["title"]
+        state.url = video["url"]
+        state.duration = video.get("duration")
+        state.published_at = video.get("published_at")
+        state.thumbnail = video.get("thumbnail")
+        state.live_status = video.get("live_status")
         # Preview what ingestion would extract. Cheap — the title is already
         # cached — and it is what tells an admin whether a video is worth adding.
         from .sources import parser
@@ -406,23 +475,7 @@ def reconcile() -> list[TalkState]:
         preview = parser.parse_title(video["title"])
         state.parsed_speaker = preview.speaker
         state.parsed_event = preview.event
-
-        row = csv_by_video_id.get(vid)
-        if row:
-            apply_csv(state, row)
         apply_repo(state)
-        states[vid] = state
-
-    # 2. CSV rows whose video is not in the inventory (older talks, or a video
-    #    that has since been unlisted).
-    for vid, row in csv_by_video_id.items():
-        if vid in states:
-            continue
-        state = TalkState(video_id=vid, title=(row.get("Title") or "").strip(),
-                          url=(row.get("Video") or "").strip() or None, run=runs.get(vid))
-        apply_csv(state, row)
-        apply_repo(state)
-        states[vid] = state
 
     # 3. Transcripts, text or tags on disk that no CSV row accounts for. This is
     #    where the orphans surface — extraction paid for, nothing to attach it to.
@@ -440,25 +493,19 @@ def reconcile() -> list[TalkState]:
     for stem in set(transcripts) | set(entities) | texts:
         if stem in claimed:
             continue
-        row = csv_by_stem.get(stem)
 
         existing = by_title.get(norm_title(stem).lower())
         if existing is not None and not existing.stem:
-            # Fold the on-disk artefacts into the video's own row.
+            # Fold the on-disk artefacts into the record that already exists.
             existing.stem = stem
-            if row:
-                apply_csv(existing, row)
-                existing.stem = stem
+            existing.sources["file"] = stem
             apply_repo(existing)
             claimed.add(stem)
             continue
 
-        state = TalkState(title=stem, stem=stem)
-        if row:
-            apply_csv(state, row)
-            state.stem = stem
+        state = TalkState(sources={"file": stem}, title=stem, stem=stem)
         apply_repo(state)
-        states[f"stem:{stem}"] = state
+        states[state.key] = state
 
     return list(states.values())
 

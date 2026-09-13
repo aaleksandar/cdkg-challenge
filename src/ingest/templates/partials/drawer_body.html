@@ -70,7 +70,7 @@
 {% elif s.video_id and s.status in ['not_ingested', 'failed'] %}
 <div class="drawer-actions">
   <button type="button" class="btn btn-primary"
-          hx-post="{{ base }}/ingest/{{ s.video_id }}?view=drawer"
+          hx-post="{{ base }}/ingest/{{ s.key | urlencode }}?view=drawer"
           hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this"
           data-tip="Downloads this video's captions, appends a metadata row, extracts its
                     plain text and then its tags with an LLM, which costs money, and
@@ -110,7 +110,7 @@
       and s.status not in ['in_progress', 'not_ingested', 'failed'] %}
 <div class="drawer-actions is-secondary">
   <button type="button" class="btn btn-quiet"
-          hx-post="{{ base }}/ingest/{{ s.video_id }}?view=drawer"
+          hx-post="{{ base }}/ingest/{{ s.key | urlencode }}?view=drawer"
           hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this"
           data-tip="Runs the pipeline over this talk again. The transcript, the plain text
                     and the tags are content-addressed, so whatever is already on disk is

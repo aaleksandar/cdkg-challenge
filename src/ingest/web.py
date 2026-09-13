@@ -327,21 +327,24 @@ def rows(request: Request, lane: str | None = None, q: str | None = None,
     )
 
 
+def _find(key: str) -> R.TalkState | None:
+    """The state a URL addresses — a TalkID, or ``<source>:<id>`` for a record
+    that is not a talk yet. One lookup, so every route agrees what a key means."""
+    return next((s for s in R.reconcile() if s.key == key), None)
+
+
 @router.get("/video/{key}", response_class=HTMLResponse)
 def video_detail(request: Request, key: str, body: int = 0, with_row: bool = False,
                  suggested_speaker: str | None = None,
                  suggestion_evidence: str | None = None,
                  suggestion_failed: bool = False):
-    """Detail drawer. ``key`` is a video ID, or ``stem:<name>`` for repo-only talks.
+    """Detail drawer. ``key`` is a TalkID, or ``<source>:<id>`` before there is one.
 
     ``body=1`` returns the contents alone, for the refresh a running drawer
     issues. The shell carries the open animation, so re-rendering it every two
     seconds made the panel flicker.
     """
-    match = next(
-        (s for s in R.reconcile() if (s.video_id == key or f"stem:{s.stem}" == key)),
-        None,
-    )
+    match = _find(key)
     if match is None:
         return HTMLResponse('<div class="drawer"><section>Not found.</section></div>', 404)
 
@@ -413,9 +416,7 @@ def live(request: Request):
 @router.get("/row/{key}", response_class=HTMLResponse)
 def row(request: Request, key: str):
     """One row, so it can replace itself as its run advances."""
-    match = next(
-        (s for s in R.reconcile() if (s.video_id == key or f"stem:{s.stem}" == key)), None
-    )
+    match = _find(key)
     if match is None:
         return HTMLResponse("")
     return templates.TemplateResponse(
@@ -423,8 +424,8 @@ def row(request: Request, key: str):
     )
 
 
-@router.post("/ingest/{video_id}", response_class=HTMLResponse)
-def ingest_one(request: Request, video_id: str, view: str = "row"):
+@router.post("/ingest/{key}", response_class=HTMLResponse)
+def ingest_one(request: Request, key: str, view: str = "row"):
     """Ingest a single video — the common case, without select-then-confirm.
 
     Returns the view the click came from rather than a message: the row for a
@@ -443,17 +444,23 @@ def ingest_one(request: Request, video_id: str, view: str = "row"):
     #
     # Read from the inventory rather than a reconcile: the duration is the whole
     # question, and this route already renders one full reconcile below.
-    video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
-    ignored = R.is_short_duration((video or {}).get("duration"))
-    if not ignored and video_id not in db.videos_with_active_runs():
-        queue_videos([video_id])
+    # Only YouTube carries transcripts, so only a talk with a YouTube record has
+    # anything for this pipeline to fetch. That is a difference in what the
+    # source holds, not in rank.
+    state = _find(key)
+    video_id = state.video_id if state else None
+    if video_id:
+        video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+        ignored = R.is_short_duration((video or {}).get("duration"))
+        if not ignored and video_id not in db.videos_with_active_runs():
+            queue_videos([video_id])
     if view == "drawer":
-        return video_detail(request, video_id, body=1, with_row=True)
-    return row(request, video_id)
+        return video_detail(request, key, body=1, with_row=True)
+    return row(request, key)
 
 
-@router.post("/suggest/{video_id}", response_class=HTMLResponse)
-def suggest_speaker(request: Request, video_id: str):
+@router.post("/suggest/{key}", response_class=HTMLResponse)
+def suggest_speaker(request: Request, key: str):
     """Read the Speaker out of the video's description with the LLM.
 
     Nothing is written. The name comes back filled into the curation form with
@@ -469,17 +476,18 @@ def suggest_speaker(request: Request, video_id: str):
 
     from .sources import speaker_llm
 
-    match = next((s for s in R.reconcile() if s.video_id == video_id), None)
+    match = _find(key)
     if match is None:
-        return HTMLResponse('<span class="note err">Unknown video.</span>', 404)
+        return HTMLResponse('<span class="note err">Unknown talk.</span>', 404)
 
-    cached = config.INGEST_CACHE_DIR / f"{video_id}.json"
+    video_id = match.video_id
+    cached = config.INGEST_CACHE_DIR / f"{video_id}.json" if video_id else None
     description, title = None, match.display_title
-    if cached.exists():
+    if cached and cached.exists():
         raw = json.loads(cached.read_text(encoding="utf-8"))
         description = raw.get("description")
         title = raw.get("title") or title
-    else:
+    elif video_id:
         from .sources import youtube
 
         try:
@@ -489,15 +497,15 @@ def suggest_speaker(request: Request, video_id: str):
 
     found = speaker_llm.recover_speaker(title, description)
     return video_detail(
-        request, video_id, body=1,
+        request, key, body=1,
         suggested_speaker=found["speaker"] if found else None,
         suggestion_evidence=found["evidence"] if found else None,
         suggestion_failed=found is None,
     )
 
 
-@router.post("/curate/{video_id}", response_class=HTMLResponse)
-async def curate(request: Request, video_id: str):
+@router.post("/curate/{key}", response_class=HTMLResponse)
+async def curate(request: Request, key: str):
     """Fill in a talk's blank curation columns, then re-render the drawer.
 
     Only the editable columns are accepted, so a crafted form cannot rewrite the
@@ -509,13 +517,15 @@ async def curate(request: Request, video_id: str):
 
     submitted = await request.form()
     fields = {k: str(v) for k, v in submitted.items() if k in R.EDITABLE_COLUMNS}
-    update_row(video_id, fields)
+    state = _find(key)
+    if state and state.talk_id:
+        update_row(state.talk_id, fields)
     # Filling in the Speaker that was blocking a talk should put it in the graph,
     # not leave it "ready" until someone finds a button. Coalesced, so curating
     # several talks in a row rebuilds once.
     if config.KG_ENABLED:
         request_rebuild()
-    return video_detail(request, video_id, body=1)
+    return video_detail(request, key, body=1)
 
 
 # Only these may be flipped from the panel, and they are listed in the order the
