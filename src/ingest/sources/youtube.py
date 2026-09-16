@@ -168,6 +168,12 @@ def fetch_video_info(video_id: str) -> dict:
     error keeps metadata parsing working when the caption download would not —
     which is exactly when a curator needs the parsed title to upload captions
     by hand.
+
+    The same leniency is what lets a premiere that has not aired come back
+    with ``live_status == "is_upcoming"`` instead of raising "Premieres in 5
+    hours": every guard downstream checks that field, and a raise here hid it
+    from all of them, so the scheduler auto-ingested premieres and the run
+    failed at this lookup.
     """
     url = f"https://www.youtube.com/watch?v={video_id}"
     opts = {**_base_opts(), "ignore_no_formats_error": True}
@@ -342,7 +348,7 @@ def resolve_videos(video_ids: list[str]) -> int:
             continue
         try:
             info = fetch_video_info(video_id)
-        except Exception:  # private, removed, or a premiere yt-dlp will not open
+        except Exception:  # private or removed
             continue
         patch = {}
         if info.get("duration"):

@@ -83,7 +83,12 @@ def load_info(video_id: str) -> tuple[dict, str]:
     cache_path = config.INGEST_CACHE_DIR / f"{video_id}.json"
     if cache_path.exists():
         return json.loads(cache_path.read_text(encoding="utf-8")), "cache"
-    info = youtube.trim_info(youtube.fetch_video_info(video_id))
+    info = youtube.fetch_video_info(video_id)
+    # Before the cache is written: trim_info drops live_status, and a cached
+    # premiere would later parse as a talk with no date and no captions.
+    if info.get("live_status") == "is_upcoming":
+        raise StageSkipped("A premiere that has not aired: no captions yet")
+    info = youtube.trim_info(info)
     config.INGEST_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     cache_path.write_text(json.dumps(info, indent=2, ensure_ascii=False), encoding="utf-8")
     return info, "youtube"
