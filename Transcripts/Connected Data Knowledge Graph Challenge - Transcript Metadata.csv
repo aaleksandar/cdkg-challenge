@@ -5,7 +5,7 @@ Here, I will present the Neural Algorithmic Reasoning (NAR) direction and how it
 
 More precisely, I will summarise how a neural network can imitate a dynamic programming planning algorithm, that can guarantee finding optimal solutions, resulting in performance gains especially in low-data environments.
 
-If you’re looking at solving a real-world problem and you think there are heuristics that could be helpful, but not fully solving it and/or that require the data to be thoroughly denoised before being useful, I would say this talk is for you!",t-aaf194fa,
+If you’re looking at solving a real-world problem and you think there are heuristics that could be helpful, but not fully solving it and/or that require the data to be thoroughly denoised before being useful, I would say this talk is for you!",t-aaf194fa,246970
 Applying Semantic Web Standards for Knowledge Representation at Elsevier,Veronique Moore,/Transcripts/Connected Data World 2021/Presentations/Applying Semantic Web Standards for Knowledge Representation at Elsevier _ Veronique Moore.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology, https://www.youtube.com/watch?v=nK0s2BMA73o,,https://2021.connecteddataworld.com/talks/applying-semantic-web-standards-for-knowledge-representation-at-elsevier-quality-assurance-and-release-processes/,"In our talk we will touch on our mission at Elsevier is to deliver data to improve our customer’s efficiency, may they be researchers, students, geo professionals or medical professionals.
 
 To achieve this goal, we are working simultaneously on keeping our data up to date, accurate and on streamlining the delivery of the knowledge representation structures (KRS) backing our tools and products such as ScienceDirect, - Topic Pages, Engineering Village and more.
@@ -14,21 +14,21 @@ We align our quality assurance (QA) and delivery methods with Semantic Web stand
 
 To make our data searchable, we also aim at dereferencing 100% of our entities on an internal platform based on a triple store and have achieved this goal for over 20 KRSs serving 5 different products.
 
-We also work on mappings and cross-references across the KRSs to increase the efficiency of data management, and boost product interoperability.",t-a88a459a,
+We also work on mappings and cross-references across the KRSs to increase the efficiency of data management, and boost product interoperability.",t-a88a459a,260783
 Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,Barr Moses,/Transcripts/Connected Data World 2021/Presentations/Data Observability_ How to Eliminate Data Downtime and Start Trusting Your Data _ Barr Moses.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology, https://www.youtube.com/watch?v=g1_RaYDeXFs,,https://2021.connecteddataworld.com/talks/data-observability-how-to-eliminate-data-downtime-and-start-trusting-your-data/,"Broken data is costly, time-consuming, and nowadays, an all-too-common reality for even the most advanced data teams.
 
 In this talk, I’ll introduce this problem, called “data downtime” — periods of time when data is partial, erroneous, missing or otherwise inaccurate — and discuss how to eliminate it in your data ecosystem with end-to-end data observability.
 
 Drawing corollaries to application observability in software engineering, data observability is a critical component of the modern DataOps workflow and the key to ensuring data trust at scale.
 
-I’ll share a quick start approach to achieving data observability at scale and highlight the important role of graph analytics and metadata in driving this process.",t-c3247612,
+I’ll share a quick start approach to achieving data observability at scale and highlight the important role of graph analytics and metadata in driving this process.",t-c3247612,257341
 One graph to bind them all! Linking data & apps for event-driven interoperability,Dave Duggal,/Transcripts/Connected Data World 2021/Presentations/Dave Duggal - One graph to bind them all! Linking data & apps for event-driven interoperability.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=kub4BL5003Y,,https://2021.connecteddataworld.com/talks/one-graph-to-bind-them-all-linking-data-and-apps-for-event-driven-interoperability-and-automation/,"IT, and our world in general, is increasingly fraught with false binaries intended to divide us. Reifying data over applications, or vice-versa, simply reinforces silos and obscures holistic solutions. It’s time for a unified approach!
 
 The solution to increasingly fragmented business operations is a digital business platform that brings together data products and business capabilities. A unified interface provides a consistent experience, shared metadata & domain semantics, and common tools across teams so everyone can benefit, contribute and collaborate. After all, the digital business is about IT productivity, service velocity and business agility.
 
 This session will demonstrate how EnterpriseWeb’s platform provides an umbrella, graph-connected abstraction over diverse service elements, distributed endpoints and federated components to enable discovery, interoperability & automation.
 
-The presentation will feature a short use-case demo. It will show how a no-code platform can leverage a graph language to rapidly model complex domains, onboard objects to a catalog, compose objects into services and chain services in to event-driven, end-to-end processes across business silos, ecosystem partners and cloud-services.",t-3de77131,
+The presentation will feature a short use-case demo. It will show how a no-code platform can leverage a graph language to rapidly model complex domains, onboard objects to a catalog, compose objects into services and chain services in to event-driven, end-to-end processes across business silos, ecosystem partners and cloud-services.",t-3de77131,257054
 Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises, David Amzallag and Szymon Klarman,/Transcripts/Connected Data World 2021/Presentations/David Amzallag & Szymon Klarman - Knowledge Mesh_ From Data Silos to Data Fabric at Global 2000 EPs.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=EyuBXiWcASQ,,https://2021.connecteddataworld.com/talks/knowledge-mesh-from-data-silos-to-data-fabric-at-global-2000-enterprises/,"A common go-to data strategy adopted in large, data-intensive enterprises, is based on creation of centralized, monolithic data platforms, such as data warehouses or data lakes. Such platforms are well-known for their many limitations and lack of long-term sustainability: growing stale data silos, loss of ownership and domain context of data assets, and organizational bottlenecks around highly specialized data engineering teams. The ultimate outcome is the increase of the cost of effective data utilization within the enterprise.
 
 Data fabric is a design concept combining multiple modern data management technologies aimed towards supporting “frictionless access and sharing of data in a distributed network environment” (Gartner).
@@ -40,12 +40,12 @@ In this presentation we will:
 - Introduce BlackSwan Technologies with its core technology vision and offering
 - Describe the challenges involved in 360-degree entity view use-cases at Global 2000 enterprises
 - Explain how enterprise knowledge graphs (EKG) help addressing these challenges
-- Introduce the concept of data fabric via its implementation as Knowledge Mesh, and argue for its capabilities of scaling and automating EKG development in multiple domains",t-4677fc5a,
+- Introduce the concept of data fabric via its implementation as Knowledge Mesh, and argue for its capabilities of scaling and automating EKG development in multiple domains",t-4677fc5a,261307
 Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,Gadi Singer,/Transcripts/Connected Data World 2021/Presentations/Gadi Singer - Thrill-K_ Rethinking knowledge layering and construction for higher machine cognition.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs, https://www.youtube.com/watch?v=akCuZ1UYlWw,https://pod.co/the-connected-data-podcast/thrill-k-rethinking-knowledge-layering-and-construction-for-higher-machine-cognition,https://2021.connecteddataworld.com/talks/gadi-singer-thrill-k-rethinking-knowledge-layering-and-construction-for-higher-machine-cognition/,"The AI industry is now facing its next big challenge.
 
 What are the necessary properties of representational structures that could allow vast amounts of data become meaningful in the human sense of the word? How can knowledge architectures be constructed in a way that allows for both the efficiency and effectiveness of models they support?
 
-In this keynote, Gadi Singer will discuss anthropomorphic conceptual structures and their benefits for enhancing Cognitive AI capabilities, as well as his model of the three levels of knowledge – Thrill-K – which can serve as a blueprint for building AI systems that are both efficient and scalable.",t-d7dbb358,
+In this keynote, Gadi Singer will discuss anthropomorphic conceptual structures and their benefits for enhancing Cognitive AI capabilities, as well as his model of the three levels of knowledge – Thrill-K – which can serve as a blueprint for building AI systems that are both efficient and scalable.",t-d7dbb358,262032
 Graph Thinking,Paco Nathan,/Transcripts/Connected Data World 2021/Presentations/Graph Thinking _ Paco Nathan _ Connected Data World 2021.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs, https://www.youtube.com/watch?v=oTehzXynnLM,,https://2021.connecteddataworld.com/talks/graph-thinking/,"This talk explores Graph Thinking as a means for conceptualizing problems which can be solved using graph technologies.
 
 Parallels can be found in learning theory, for example how people organize knowledge into graph-like cognitive structures as they progress from novice to practitioner to expert levels in a given field.
@@ -55,7 +55,7 @@ This approach has been refined through business use cases in industrial AI for f
 
 To put this into context, we'll review a set of common use cases in industry and how graph data science practices can be built using Python open source, along with a survey of available libraries to leverage for different aspects of graph technologies.
 
-Then we'll show the 'kglab' abstraction layer whichintegrates these various libraries into the PyData stack",t-a674751f,
+Then we'll show the 'kglab' abstraction layer whichintegrates these various libraries into the PyData stack",t-a674751f,262035
 How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Marcus Nölke,/Transcripts/Connected Data World 2021/Presentations/How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management _ Marcus Nölke.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs, https://www.youtube.com/watch?v=BayxNXUS6uA,,https://2021.connecteddataworld.com/talks/how-a-knowledge-graph-can-support-advanced-price-analytics-in-supply-chain-management/,"In a company with high purchasing volume, it is crucial to design cost-efficient parts and procure these parts at competitive pricing level.
 
 Data analytics can support on both aspects. Unfortunately, supply chain transactional data but also product life cycle data can be messy and distributed among many applications and data silos.
@@ -88,10 +88,10 @@ The regression chart can be used to determine an average price level or for dete
 
 This procedure is also called (multi) linear performance pricing (see https://commons.wikimedia.org/wiki/File:Linear_Performance_Pricing.png) where sales prices are shown related to performance. Performance is an aggregated value considering the important part properties.
 
-Using a Knowledge Graph with reasoning capabilities it is possible to apply linear performance pricing at scale for all parts which need to be purchased within a company. The relevant data can be automatically mapped from legacy data bases into the Knowledge Graph. No manual data collection, curation and update processes are necessary.",t-75ec9bb5,
+Using a Knowledge Graph with reasoning capabilities it is possible to apply linear performance pricing at scale for all parts which need to be purchased within a company. The relevant data can be automatically mapped from legacy data bases into the Knowledge Graph. No manual data collection, curation and update processes are necessary.",t-75ec9bb5,262036
 Humans and the Graph - Inspiring and empowering GraphQL adoption,Dan Boerner,/Transcripts/Connected Data World 2021/Presentations/Humans and the Graph - Inspiring and empowering GraphQL adoption _ Dan Boerner _ Connected Data Worl.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs, https://www.youtube.com/watch?v=i9sOdhA24nM,,https://2021.connecteddataworld.com/talks/humans-and-the-graph-inspiring-and-empowering-graphql-adoption/,"Realizing the transformational benefits of GraphQL involves much more than learning and adopting a new API technology; it requires new mindsets, new collaboration patterns and new models of governance to maximize the value of this new enterprise-wide asset.
 
-In this talk, Dan Boerner, Apollo’s Graph Champion, will explore the human factors side of GraphQL and share how leading graph adopting companies are focusing on empathy, inspiration, change management and communications to deliver the change and the benefits they seek.",t-ac27b722,
+In this talk, Dan Boerner, Apollo’s Graph Champion, will explore the human factors side of GraphQL and share how leading graph adopting companies are focusing on empathy, inspiration, change management and communications to deliver the change and the benefits they seek.",t-ac27b722,261961
 Hybridization of Machine Learning and Operational Research is the future of AI ,Nikolaj van Omme,/Transcripts/Connected Data World 2021/Presentations/Hybridization of Machine Learning and Operational Research is the future of AI _ Nikolaj van Omme.srt,Connected Data World 2021,03/12/2021,Presentation,Graph AI, https://www.youtube.com/watch?v=zTHv0JQS7_g,,https://2021.connecteddataworld.com/talks/hybridization-of-machine-learning-and-operational-research-is-the-future-of-ai/,"Recently, Graph Neural Network (GNN) gained a lot of attention, but did you know that Graph theory is actually considered by some as a subfield of Operations Research?
 
 Even better, did you know that Machine Learning (ML) was considered as a subfield of Operations Research (OR) a few years ago without (much) controversy?
@@ -112,7 +112,7 @@ The second and third combinations are essentially the subject of academic resear
 
 The fourth combination is quite unknown but is probably the most interesting one as - in my view - it could lead to real intelligence.
 
-In this talk, I'll briefly present what OR is and how it is related to ML. Then I'll present real and successful industrial cases for the first three combinations. I will conclude by briefly presenting what I believe can be done with the fourth combination.",t-a654aaef,
+In this talk, I'll briefly present what OR is and how it is related to ML. Then I'll present real and successful industrial cases for the first three combinations. I will conclude by briefly presenting what I believe can be done with the fourth combination.",t-a654aaef,262039
 Implementing Informed Consent with Knowledge Graphs,Anelia Kurteva,/Transcripts/Connected Data World 2021/Presentations/Implementing Informed Consent with Knowledge Graphs _ Anelia Kurteva _ Connected Data World 2021.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=Jeck1Rj65i8,,https://2021.connecteddataworld.com/talks/implementing-informed-consent-with-knowledge-graphs/,"The GDPR legislation has brought to light one’s rights and has highlighted the importance of consent, which has caused a major shift in how data processing and sharing are handled.
 
 Data sharing has been a popular research topic for many years, however, a unified solution for the transparent implementation of consent, in compliance with GDPR that could be used as a standard, has not been presented yet.
@@ -121,27 +121,27 @@ In this talk I will present my research, which proposes a solution for implement
 
 The main objectives are to model the life cycle of informed consent (i.e. the request, comprehension, decision and use of consent) with knowledge graphs so that it is easily interpretable by machines, and to graphically visualise it to individuals in order to raise legal awareness of what it means to consent and the implications that follow.
 
-The talk is suitable for both academia researchers and industry professionals.",t-f226cc58,
+The talk is suitable for both academia researchers and industry professionals.",t-f226cc58,262033
 Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,Peter Kaloroumakis,/Transcripts/Connected Data World 2021/Presentations/Introducing D3FEND_ A Knowledge Graph of Cybersecurity Countermeasures _ Peter Kaloroumakis _ CDW21.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=JQCO07KASP0,,https://2021.connecteddataworld.com/talks/introducing-d3fend-a-knowledge-graph-of-cybersecurity-countermeasures/,"Cybersecurity architects are using D3FEND to describe specific technical functions within cyber technologies in a common language of countermeasure techniques. A research project funded by the National Security Agency, D3FEND provides a large collection of digital artifacts to model cyber systems and related countermeasures.
 
 This creates a foundation for automated reasoning about the complex interplay between computer network architectures, threats, and cyber countermeasures. Our is goal to make it easier for architects to understand how countermeasures work, so that they can more effectively design, deploy, and ultimately better defend networked systems.
 
 D3FEND is a framework which provides a countermeasure knowledge base, but more specifically, a knowledge graph. The graph contains semantically rigorous types and relations that define both the key concepts in the cybersecurity countermeasure domain and the relations necessary to link those concepts to each other.
 
-We ground each of the concepts and relations to particular references in the cybersecurity literature. Numerous sources of research and development literature were analyzed, including a targeted sample of over 500 countermeasure patents drawn from the U.S. Patent Office corpus. The graph supports queries that can inferentially map architectural elements to both cybersecurity countermeasures and offensive TTPs.",t-a81054f0,
+We ground each of the concepts and relations to particular references in the cybersecurity literature. Numerous sources of research and development literature were analyzed, including a targeted sample of over 500 countermeasure patents drawn from the U.S. Patent Office corpus. The graph supports queries that can inferentially map architectural elements to both cybersecurity countermeasures and offensive TTPs.",t-a81054f0,261060
 Graph Analytics vs Graph Machine Learning,Jörg Schad,/Transcripts/Connected Data World 2021/Presentations/Jörg Schad - Graph Analytics vs Graph Machine Learning _ CDW21 Presentation.srt,Connected Data World 2021,03/12/2021,Presentation,Graph AI, https://www.youtube.com/watch?v=GCpN9m2mQDE,https://pod.co/the-connected-data-podcast/graph-analytics-vs-graph-machine-learning-jrg-schad,https://2021.connecteddataworld.com/talks/graph-analytics-vs-graph-ml/,"Graph Analytics has long demonstrated that it solves real-world problems including Fraud, Ranking, Recommendation, text summarization and other NLP tasks.
 
 More recently, Graph Machine Learning applied directly on graphs using graph algorithms and machine learning, has been demonstrating significant advantages in solving the same problems as graph analytics as well as problems that are impractical to solve using graph analytics.  Graph Machine Learning does this by training statistical models on the graph  resulting in Graph Embeddings and Graph Neural Networks that are used to complex problems in a different way.
 
 In this talk, we will compare and contrast these two approaches (spoiler: often complexity vs precision) in real-world scenarios. What factors should you consider when choosing one over the other and when do you even have a choice?
-Join this talk to learn about exciting new developments in Graph ML, as the  graph techniques on which they are based.",t-5c4bcd15,
+Join this talk to learn about exciting new developments in Graph ML, as the  graph techniques on which they are based.",t-5c4bcd15,254939
 "Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",Keshav Pingali,"/Transcripts/Connected Data World 2021/Presentations/Keshav Pingali - Knowledge Graphs, Graph AI, & the Need for High-performance Graph Computing _ CDW21.srt",Connected Data World 2021,03/12/2021,Presentation,Graph AI,https://www.youtube.com/watch?v=q5DDKKx15so,,https://2021.connecteddataworld.com/talks/knowledge-graphs-graph-ai-and-the-need-for-high-performance-graph-computing/,"Learn how to extract actionable insights from massive datasets using a Graph Intelligence Platform.
 
 - The need for Graph Intelligence
 - The next era of graph computing
 - Platform overview
 - Use cases in Life Sciences, Financial Services, and Information Security
-- Benchmarks and proof points",t-966508ee,
+- Benchmarks and proof points",t-966508ee,264597
 Knowledge Graphs: Moving Beyond RDF,Kurt Cagle,/Transcripts/Connected Data World 2021/Presentations/Knowledge Graphs_ Moving Beyond RDF _ Kurt Cagle _ Connected Data World 2021 Presentation.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=lBvnxItuou4,,https://2021.connecteddataworld.com/talks/knowledge-graphs-moving-beyond-rdf/,"The Semantic Web is twenty years old, and like many twenty-year-old technologies, many of the original concepts that drove the technology have become increasingly outdated even as the need for a compelling graph technology story has only become greater.
 
 Several technologies have arisen in the last few years, including JSON, machine learning systems, GraphQL, Lambdas, and others.
@@ -152,7 +152,7 @@ The focus of this talk is to explore the emergence of second-generation knowledg
 
 Additionally, such tools make mutational processing independent of platform, and even, utilizing such abstractions, make it possible to create truly functional and dynamic properties in the space.
 
-This author hopes to explore how GraphQL and related paradigms (DIDs, machine learning models, web component frameworks, distributed ledgers and hyperstatial systems) all will impact the future of the knowledge graph over the course of the next decade and beyond.",t-336f4f2e,
+This author hopes to explore how GraphQL and related paradigms (DIDs, machine learning models, web component frameworks, distributed ledgers and hyperstatial systems) all will impact the future of the knowledge graph over the course of the next decade and beyond.",t-336f4f2e,262034
 Legal Knowledge Graphs,Vaishali Raghvani,/Transcripts/Connected Data World 2021/Presentations/Legal Knowledge Graphs _ Vaishali Raghvani _ Connected Data World.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=CN0HGTxXXKI,,https://2021.connecteddataworld.com/talks/legal-knowledge-graphs/,"Creating and negotiating legal documents and contracts usually requires legal expertise which can be prohibitively expensive for small businesses and unlawyered individuals.
 
 Accessing what’s in a contract and knowing which contracts have been signed is complicated because of the traditional text/pdf structure of documents.
@@ -167,17 +167,17 @@ By knowing exactly what terms are in a contract and where they are, Legislate co
 
 Legislate’s knowledge graph contract metrics give deeper insight into a portfolio of a landlord or a small business owner.
 
-For example a property owner can see how much rent they are earning each year from all their properties as well as the distribution for their properties and corresponding rental prices. Employers can better understand their real time payroll across employees, interns and consultants.",t-b44a5553,
+For example a property owner can see how much rent they are earning each year from all their properties as well as the distribution for their properties and corresponding rental prices. Employers can better understand their real time payroll across employees, interns and consultants.",t-b44a5553,262038
 Leveraging Graphcore’s IPU architecture for large scale GNN compute,Carlo Luschi,/Transcripts/Connected Data World 2021/Presentations/Leveraging Graphcore’s IPU architecture for large scale GNN compute _ Carlo Luschi _ Connected Data.srt,Connected Data World 2021,03/12/2021,Presentation,Graph AI,https://www.youtube.com/watch?v=WTkC6hJgJRM,,https://2021.connecteddataworld.com/talks/leveraging-graphcores-ipu-architecture-for-large-scale-gnn-compute/,"Machine Learning on large scale graphs presents several unique challenges, due to the sparsity of the connections. Exact computation is often intractable on current accelerators, and algorithmic approximations fall short of modelling interesting aspects like long range dependencies effectively.
 
-We present how Graphcore’s IPU design tackles these challenges, creating the opportunity to accelerate deep GNNs on large graphs. This talk aims at stimulating Data Scientists, Machine Learning Researchers and Engineers to think about different ways to deploy current large scale GNNs and to develop algorithms that exploit the full potential of our new hardware architecture.",t-0415c386,
+We present how Graphcore’s IPU design tackles these challenges, creating the opportunity to accelerate deep GNNs on large graphs. This talk aims at stimulating Data Scientists, Machine Learning Researchers and Engineers to think about different ways to deploy current large scale GNNs and to develop algorithms that exploit the full potential of our new hardware architecture.",t-0415c386,261322
 Taxonomies: Connecting Data with Duct Tape,Mike Dillinger,/Transcripts/Connected Data World 2021/Presentations/Mike Dillinger - Taxonomies_ Connecting Data with Duct Tape _ CDW21 Presentation.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology,https://www.youtube.com/watch?v=gvoU75vHPQI,https://pod.co/the-connected-data-podcast/taxonomies-connecting-data-with-duct-tape-mike-dillinger,https://2021.connecteddataworld.com/talks/mike-dillinger-taxonomies-connecting-data-with-duct-tape/,"Taxonomies are the duct tape of connected data. They seem simple, flexible, and familiar. They are widely used. And they seem to work across many use cases and many domains.
 
 But when looked at in more detail, taxonomies turn out to be crude tools for knowledge organization that are very difficult to create, to scale, to adapt, to align, and to build on.
 
 They don't work well for larger or more complex domains and use cases. Experienced talent and flexible tools for creating them are hard to find and to develop. Often taxonomies are built then abandoned for other, more robust approaches to knowledge organization.
 
-It is essential to re-evaluate your connected data strategies in the context of alternative approaches to knowledge organization.",t-18eae410,
+It is essential to re-evaluate your connected data strategies in the context of alternative approaches to knowledge organization.",t-18eae410,261612
 UBS Helix Knowledge Graph: The Power of Information,Natasa Varytimou,/Transcripts/Connected Data World 2021/Presentations/Natasa+recording.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=cod2Al7ooZs,,https://2021.connecteddataworld.com/talks/natasa-varytimou-ubs-helix-knowledge-graph-the-power-of-information/,"UBS Helix Knowledge Graph was created to unify and streamline the information about our technical estate to maximize the impact of our technology spend :
 
 - Break the silos of our applications
@@ -223,7 +223,7 @@ Provides an open framework for data publishers to integrate with Helix and also 
 
 No more spreadsheets, no more predefined APIs and reports that need programmatical effort.
 
-UBS Helix Knowledge Graph is the new generation and the technical landscape is only the beginning.",t-69996db8,
+UBS Helix Knowledge Graph is the new generation and the technical landscape is only the beginning.",t-69996db8,246972
 The Enterprise Knowledge Graph,Omar Khan and David Newman,/Transcripts/Connected Data World 2021/Presentations/Omar Khan and David Newman - The Enterprise Knowledge Graph _ CDW21 Presentation.srt,Connected Data World 2021,03/12/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=fNz_aWgtIuA,,https://2021.connecteddataworld.com/talks/the-enterprise-knowledge-graph/,"In this talk we’ll canvas the Enterprise Knowledge Graph, and how you can apply it using its cornerstones of:
 
 - Foundational building blocks
@@ -235,7 +235,7 @@ The Enterprise Knowledge Graph,Omar Khan and David Newman,/Transcripts/Connected
 - Contrasting an unlinked with linked data environment
 - Question and answering model emergence
 - Semantic similarity & embedding
-- Focused UI",t-21c6c2c4,
+- Focused UI",t-21c6c2c4,264346
 Graph Abstractions Matter,Ora Lassila,/Transcripts/Connected Data World 2021/Presentations/Ora Lassila - Graph Abstractions Matter _ CDW21 Presentations.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology,https://www.youtube.com/watch?v=-3fRKaz94WI,https://pod.co/the-connected-data-podcast/graph-abstractions-matter-ora-lassila,https://2021.connecteddataworld.com/talks/graph-abstractions-matter/,"While mathematicians have used graph theory since the 18th century to solve problems, the software patterns for graph data are new to most developers. To enable ""mass adoption"" of graph technology, we need to establish the right abstractions, access APIs, and data models.
 
 RDF triples, while of paramount importance in establishing RDF graph semantics, are a low-level abstraction, much like using assembly language. For practical and productive “graph programming” we need something different.
@@ -244,14 +244,14 @@ Similarly, existing declarative graph query languages (such as SPARQL and Cypher
 
 Furthermore, the nascent graph database industry has not been able to settle on a single graph model: Developers are forced to choose between RDF, a standard that offers broad interoperability, and Labeled Property Graphs (LPG), which offer an object model-like abstraction but lack interoperability.
 
-We present ongoing work towards “OneGraph” (1G), a unifying logical model for graphs. 1G will enable developers to choose their higher-level graph abstractions and query language(s) independent of a particular graph model (RDF or LPG), and thus they do not have to worry that this choice will later limit their access to other available tooling (ETL, visualization, etc.).",t-c9b1eee4,
+We present ongoing work towards “OneGraph” (1G), a unifying logical model for graphs. 1G will enable developers to choose their higher-level graph abstractions and query language(s) independent of a particular graph model (RDF or LPG), and thus they do not have to worry that this choice will later limit their access to other available tooling (ETL, visualization, etc.).",t-c9b1eee4,261519
 Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,Peter Crocker,/Transcripts/Connected Data World 2021/Presentations/Peter Crocker - Reasoning for the Answer_ Who is the Greatest Formula 1 Driver of all Time_ _ CDW21.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology,https://www.youtube.com/watch?v=YLJv87usKss,,https://2021.connecteddataworld.com/talks/reasoning-for-the-answer-who-is-the-greatest-formula-1-driver-of-all-time/,"RDFox, the high-performance knowledge graph and semantic reasoner, is used to answer business questions by manipulating and enriching data, extracting insights.
 
 At the highest level, questions often take the form: ‘what is the best _?’. Today we ask a question appropriate for its unmatched speed, finding like for like as the fastest out there. Who is the greatest Formula 1 driver of all time?
 
 Affected by so many variables, how can you compare Hamilton to Schumacher to Lauda when they raced decades apart? With half a century of race data, RDFox gives the answer.
 
-Designed around a highly optimised in-memory approach, it affords query and loading times that are orders of magnitudes faster than alternative triplestores. RDFox is developed by Oxford Semantic Technologies—an Oxford University spin-out founded by leading academics and backed by decades of cutting-edge research in semantic web technologies, recognised with a Lovelace Medal.",t-561733aa,
+Designed around a highly optimised in-memory approach, it affords query and loading times that are orders of magnitudes faster than alternative triplestores. RDFox is developed by Oxford Semantic Technologies—an Oxford University spin-out founded by leading academics and backed by decades of cutting-edge research in semantic web technologies, recognised with a Lovelace Medal.",t-561733aa,261394
 "RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",Atanas Kiryakov,"/Transcripts/Connected Data World 2021/Presentations/RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits_ Standards, Semantics & Interoperability.srt",Connected Data World 2021,03/12/2021,Presentation,Semantic Technology,https://www.youtube.com/watch?v=cwgj6nF53Tg,,https://2021.connecteddataworld.com/talks/rdf-leveled-the-advantages-of-lpg-and-keeps-3-key-benefits-standards-semantics-and-interoperability/,"Knowledge graphs are the next generation tool for helping businesses make critical decisions, based on harmonized knowledge models and data derived from siloed source systems. Due to the huge value generated by their data standardization and semantic modeling capabilities, knowledge graphs are most often associated with data integration, linking, unification and information reuse. As more and more organizations are turning to knowledge graphs for better data and content analytics, search and graph exploration become key requirements also.
 
 For many years, two main advantages of labeled property graphs (LPG) have been pointed out: they can deal with properties on edges in the graph and they are good for graph traversal. They are gone now, given that the leading triplestores support:
@@ -266,31 +266,31 @@ Having graph-exploration covered, let us go back to the core requirements for kn
 
 On the other hand, LPGs lack many features that are an absolute must for enterprise data management, e.g. schema language, data serialization formats and federation. On the semantics side, they lack ontology modelling language and data validation. What’s most important, there are no standards in the LPG space to guarantee interoperability and reduce vendor lock in.
 
-RDF engines check all the boxes: simple-yet-powerful graph model, standard schema and query languages, formal semantics, efficient graph traversal, analytics and reasoning, packed with all the enterprise features. There are a couple of cases where LPGs still have an edge: micromanaged exploration using Gremlin and heavy analytics for wardrobes with TBs of RAM.",t-53009b49,
+RDF engines check all the boxes: simple-yet-powerful graph model, standard schema and query languages, formal semantics, efficient graph traversal, analytics and reasoning, packed with all the enterprise features. There are a couple of cases where LPGs still have an edge: micromanaged exploration using Gremlin and heavy analytics for wardrobes with TBs of RAM.",t-53009b49,266498
 Systems that learn and reason,Frank van Harmelen,/Transcripts/Connected Data World 2021/Presentations/Systems that learn and reason _ Frank van Harmelen _ Connected Data World 2021.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology,https://www.youtube.com/watch?v=0OnvkuKcGN0,https://pod.co/the-connected-data-podcast/systems-that-learn-and-reason-frank-van-harmelen,https://2021.connecteddataworld.com/talks/frank-van-harmelen-systems-that-learn-and-reason/,"After the amazing breakthroughs of machine learning (deep learning or otherwise) in the past decade, the shortcomings of machine learning are also becoming increasingly clear: unexplainable results, data hunger and limited generalisability are all becoming bottlenecks.
 
-In this talk we will look at how the combination with symbolic AI (in the form of very large knowledge graphs) can give us a way forward, towards machine learning systems that can explain their results, that need less data, and that generalise better outside their training set.",t-4d120139,
+In this talk we will look at how the combination with symbolic AI (in the form of very large knowledge graphs) can give us a way forward, towards machine learning systems that can explain their results, that need less data, and that generalise better outside their training set.",t-4d120139,246971
 The Business Case for Data Management,Mike Atkin,/Transcripts/Connected Data World 2021/Presentations/The Business Case for Data Management _ Mike Atkin _ Connected Data World 2021.srt,Connected Data World 2021,03/12/2021,Presentation,Semantic Technology,https://www.youtube.com/watch?v=BGM8cHYeJAI,,https://2021.connecteddataworld.com/talks/the-business-case-for-data-management/,"The data that flows around our organizations and across our industry is the result of complex business processes that can represent legal obligations, client commitments or critical parameters related to research. Content that is extracted from these original sources must be precise and understood in context – but have often been transformed, modified and renamed to drive the software that propels our applications.
 
 The result is the use of common words that mean different things and the expression of common concepts using a variety of words. The problem is exacerbated when seeking to align systems and processes because the terms used in one application do not always capture critical nuances that are needed for onward processing.
 
 We refer to this problem as “data incongruence” and it is a serious liability. It was created by technology fragmentation and proprietary approaches to data integration. It adds cost, complexity and structural rigidity to operations. It diverts resources away from business goals and leads to frustration by stakeholders. It extends the time-to-value for new initiatives and often leads to more regulatory oversight challenges.
 
-This is a problem that can be solved. The payoff is significant, and the value is sustainable. There is a real cost associated with the transformation, but the cost is relatively short-term (and the transition can be managed incrementally). And while it is not a ‘rip and replace’ technology cost – it does require a mindset shift and does include a series of data integration challenges.",t-49841368,
+This is a problem that can be solved. The payoff is significant, and the value is sustainable. There is a real cost associated with the transformation, but the cost is relatively short-term (and the transition can be managed incrementally). And while it is not a ‘rip and replace’ technology cost – it does require a mindset shift and does include a series of data integration challenges.",t-49841368,262040
 Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,Victor Lee,/Transcripts/Connected Data World 2021/Presentations/Victor_Lee_graph_alg_and_graph_ML_making_sense_Recording_1920x1050.srt,Connected Data World 2021,03/12/2021,Presentation,Graph AI,https://www.youtube.com/watch?v=d1oLRt1_-X8,,https://2021.connecteddataworld.com/talks/graph-algorithms-and-graph-machine-learning-making-sense-of-todays-choices/,"Graph machine learning is coming of age, with rapid research development and growing interest. Users now have several alternatives to choose from: graph pattern matching, graph algorithms, graph embeddings, and graph neutral networks.
 
 Does graph machine learning replace graph algorithms? How does graph machine learning different from other machine learning? What sort of system do I need to run these analytical techniques?
 
 This talk provides a description of these four categories of graph analytics, what sort of problems they tackle, their benefits, and their requirements.
 
-The explanations will be illustrated with examples for fraud detection, recommendation, supply chain management, and other real-world use cases.",t-aceeb502,
+The explanations will be illustrated with examples for fraud detection, recommendation, supply chain management, and other real-world use cases.",t-aceeb502,260753
 (DataCatalog)_-[poweredBy]-_(KnowledgeGraph),Juan Sequeda & Bryon Jacob,/Transcripts/Knowledge Connexions 2020/Presentations/(DataCatalog)_-[poweredBy]-_(KnowledgeGraph).srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=6HoVC6cq4dQ,,https://knowledge-connexions-conference.heysummit.com/talks/datacatalog-poweredby-knowledgegraph/,"Your data catalog, ergo your company knowledge, must be powered by a knowledge graph.
 
 But most organizations don't have a clear picture of their data assets, how they are connected, or how they're being used.
 
 Bryon and Juan will discuss why a successful journey from metadata to data to knowledge management depends on a graph foundation that enables flexibility, extensibility and agility in order to future-proof your enterprise data investment.
 
-They'll share their experiences on building large scale data catalogs and knowledge graphs and how you can get started on this journey.",t-9d1de2e2,
+They'll share their experiences on building large scale data catalogs and knowledge graphs and how you can get started on this journey.",t-9d1de2e2,181462
 DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,Sebastian Hellmann,/Transcripts/Knowledge Connexions 2020/Presentations/DBpedia Databus - A platform to evolve knowledge and AI from versioned web files.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=PcxJrlTsVxg,,https://knowledge-connexions-conference.heysummit.com/talks/dbpedia-databus-a-platform-to-evolve-knowledge-and-ai-from-versioned-web-files/,"Most existing systems employ a software-driven workflow to achieve their development goals. They ignore data engineering completely. This is a fatal mistake, when it comes to knowledge intensive development projects such as AI.
 
 While a plethora of tools is available to manage software issues, around 80% of the effort in AI goes into data engineering with hardly any tool support for acquisition, data quality curation and validation or integration.
@@ -299,14 +299,14 @@ In the presentation, we elaborate on the agile data engineering methodology that
 
 In the theoretical part, we will introduce the notion of abstract datasets that follow the Maven model and show how rich metadata can be exploited to structure web files in an interoperable way.
 
-Towards the end, we will present practical use cases that have been realized with the DBpedia Databus and introduce some very useful tools for knowledge engineers that speed up the data massaging for AI by a factor of 50.",t-618d24a2,
+Towards the end, we will present practical use cases that have been realized with the DBpedia Databus and introduce some very useful tools for knowledge engineers that speed up the data massaging for AI by a factor of 50.",t-618d24a2,180841
 "Deep Learning on Graphs: Past, Present, And Future",Michael Bronstein,"/Transcripts/Knowledge Connexions 2020/Presentations/Deep Learning on Graphs_ Past, Present, And Future.srt",Knowledge Connexions 2020,02/12/2020,Presentation,Graph AI,https://www.youtube.com/watch?v=3VvNae5mHY0,https://pod.co/the-connected-data-podcast/deep-learning-on-graphs-past-present-and-future-michael-bronstein,https://knowledge-connexions-conference.heysummit.com/talks/deep-learning-on-graphs-past-present-and-future/,"Graph representation learning has recently become one of the hottest topics in machine learning.
 
 One particular instance, graph neural networks, is being used in a broad spectrum of applications ranging from 3D computer vision and graphics to high energy physics and drug design.
 
 Despite the promise and a series of success stories of graph deep learning methods, we have not witnessed so far anything close to the smashing success convolutional networks have had in computer vision.
 
-In this talk, I will outline my views on the possible reasons and how the field could progress in the next few years.",t-06361396,
+In this talk, I will outline my views on the possible reasons and how the field could progress in the next few years.",t-06361396,181316
 GraphEDM: A Unified Framework for Machine Learning on Graphs,Ines Chami,/Transcripts/Knowledge Connexions 2020/Presentations/GraphEDM A Unified Framework for Machine Learning on Graphs.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Graph AI,https://www.youtube.com/watch?v=F-JYqMCWaaM,,https://knowledge-connexions-conference.heysummit.com/talks/ines-chami-presentation/,"There has been a surge of recent interest in learning representations for graph-structured data.
 
 Graph representation learning methods have generally fallen into three main categories, based on the availability of labeled data.
@@ -319,12 +319,12 @@ The third, graph neural networks, aims to learn differentiable functions over di
 
 In this talk, we present our recent GraphEDM unified framework which bridges the gap between these disparate bodies.
 
-We use GraphEDM to describe many popular graph representation learning methods such as DeepWalk and Graph Convolutional Neural Networks.",t-1ec2f46f,
+We use GraphEDM to describe many popular graph representation learning methods such as DeepWalk and Graph Convolutional Neural Networks.",t-1ec2f46f,181375
 Secret Knowledge: Visualizing Complexity,Kirell Benzi,/Transcripts/Knowledge Connexions 2020/Presentations/Kirell_Benzi_Secret Knowledge_ Visualizing Complexity.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=RKLFPZhzfkw,,https://knowledge-connexions-conference.heysummit.com/talks/secret-knowledge-visualizing-complexity/,"In this interactive presentation, where the audience's choice determines the outcome, we will introduce Data Art and demonstrate how it can be used as a new communication medium to tell impactful stories by connecting scientific rigor with creativity.
 
 Most of the presentation will focus on graph-based datasets born from complexity with a small detour through deep neural networks and other surprises.
 
-Come and vote to choose how our journey will unravel in real-time while being comfortable being your screen. Originality and novelty guaranteed!",t-a22e3e2b,
+Come and vote to choose how our journey will unravel in real-time while being comfortable being your screen. Originality and novelty guaranteed!",t-a22e3e2b,169706
 "Knowledge Graphs as Hub for Data, Metadata and Content",Atanas Kiryakov and Vassil Momtchev,"/Transcripts/Knowledge Connexions 2020/Presentations/Knowledge Graphs as Hub for Data, Metadata and Content. And the Partners Needed to Deliver the Multitude of Applications.srt",Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=zWqd9sdvO9Q,,https://knowledge-connexions-conference.heysummit.com/talks/knowledge-graphs-as-hub-for-data-metadata-and-content/,"There is no mature market for Knowledge Graphs! Not yet. But they disrupt data and content management by offering flexible integration, unified access and a platform for analytics.
 
 We will mindmap the markets and the applications where knowledge graphs add value:
@@ -336,12 +336,12 @@ We will mindmap the markets and the applications where knowledge graphs add valu
 - Operations: infrastructure monitoring and configuration management.
 We will present how Ontotext puts together the technology stack and the partner ecosystem needed to deliver all these applications.
 
-Finally, we will show how the JDBC driver and the data virtualization, recently added to GraphDB, make it easier to transform your data into a graph, mapp them to a big ontology (e.g. FIBO) and access them from a BI tool.",t-81bb281f,
+Finally, we will show how the JDBC driver and the data virtualization, recently added to GraphDB, make it easier to transform your data into a graph, mapp them to a big ontology (e.g. FIBO) and access them from a BI tool.",t-81bb281f,186853
 Modelling regulation requirements using SHACL,Veronika Heimsbakk,/Transcripts/Knowledge Connexions 2020/Presentations/Modelling regulation requirements using SHACL.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Semantic Technology,https://www.youtube.com/watch?v=dWisDVCQT5E,,https://knowledge-connexions-conference.heysummit.com/talks/modelling-regulation-requirements-using-shacl/,"When working for a public agency in Norway it became apparent that the Web Ontology Language (OWL) was not expressive enough to represent a detailed model for requirements described in regulations.
 
 The Shape Constraint Language (SHACL) came to a rescue!
 
-This presentation will talk you through how to go from regulation text to SHACL model used for information withdrawal in an ongoing project.",t-501e3e9e,
+This presentation will talk you through how to go from regulation text to SHACL model used for information withdrawal in an ongoing project.",t-501e3e9e,180814
 Protecting vital public health programs with AI and Knowledge Graphs,Vanessa Lopez,/Transcripts/Knowledge Connexions 2020/Presentations/Protecting vital public health programs with AI and Knowledge Graphs.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=8QxMssbx5Xg,,https://knowledge-connexions-conference.heysummit.com/talks/vanessa-lopez-presentation/,"Health and social services are complex domains that have a direct impact on people's lives and where vast amounts of money are spent globally.
 
 When funding intended for public health programs is lost to Fraud Waste and Abuse, vulnerable citizens are ultimately the victims. In challenging times, ensuring financial integrity and fairer distribution of services by reducing disparities are among the top priorities for healthcare systems.
@@ -354,7 +354,7 @@ Through a combination of natural language understanding, deep learning, and know
 
 We identify medical claims that infringe policy, either intentionally (fraudulent) or unintentionally (e.g., providing unnecessary services or inconsistent with accepted medical practices).
 
-We aim to understand the social program levers that drive positive health.",t-eb7fef0d,
+We aim to understand the social program levers that drive positive health.",t-eb7fef0d,181330
 Sales AI: Building and maintaining a knowledge graph,Eran Avidan,/Transcripts/Knowledge Connexions 2020/Presentations/Sales AI - Building and maintaining a knowledge graph.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=R4Ui-QCY2ww,,https://knowledge-connexions-conference.heysummit.com/talks/sales-ai-building-and-maintaining-a-knowledge-graph/,"The staggering increase in private data stored by corporations is driving numerous efforts aimed at utilizing the data for business purposes.
 
 One compelling approach is to merge private data with the plethora of available public sources into a seemingly single unit that is searchable and regularly updated.
@@ -369,19 +369,19 @@ This solution serves as a knowledge base for new AI models that are used by Inte
 
 The Sales AI knowledge graph currently holds hundreds of millions of connected entities with thousands being fetched, enriched and connected to the graph by the hour.
 
-The approach is highly generalizable and can be applied to a broad range of settings that could benefit from integration of large private and public data into a rich graph of knowledge.",t-8b65e4d2,
+The approach is highly generalizable and can be applied to a broad range of settings that could benefit from integration of large private and public data into a rich graph of knowledge.",t-8b65e4d2,175812
 The game plan for your Knowledge Graph-driven FAIR data platform,Sebastian Schmidt,/Transcripts/Knowledge Connexions 2020/Presentations/The game plan for your Knowledge Graph-driven FAIR data platform.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=40FpKUFU6Zo,,https://knowledge-connexions-conference.heysummit.com/talks/the-game-plan-for-your-knowledge-graph-driven-fair-data-platform/,"This talk will highlight our lessons learned and best practices for building a Knowledge Graph-driven FAIR data platform to drive digital transformation.
 
 The session will focus on agile data management and governance with Knowledge Graphs, following the FAIR Data principles.
 
-It will cover topics such as data catalogues, ontology modelling, taxonomy integration, user experience development, and how low-code platforms allow you to get from idea to production in less than 2 weeks.",t-d50a517e,
+It will cover topics such as data catalogues, ontology modelling, taxonomy integration, user experience development, and how low-code platforms allow you to get from idea to production in less than 2 weeks.",t-d50a517e,184064
 Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,Michiel Hildebrand,/Transcripts/Knowledge Connexions 2020/Presentations/Van Gogh Worldwide -- constructing and searching a knowledge graph of linked art.srt,Knowledge Connexions 2020,02/12/2020,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=QgnDyFS0e5s,,https://knowledge-connexions-conference.heysummit.com/talks/michiel-hildebrand-presentation/,"Van Gogh Worldwideis a platform that brings together professional information about the work and life of Vincent van Gogh.
 
 In this presentation we share how Spinque realized the platform using information from cultural heritage institutions worldwide.
 
 On the knowledge construction side we touch upon the lessons learned to construct a knowledge graph in a loosely distributed fashion, to capture the sweet spot in data modeling complexity and the challenges to motivate a community.
 
-On the knowledge access side we demonstrate how Spinque’s probabilistic graph database is used to implement both the graph queries as well as the full-text search.",t-138f9b4b,
+On the knowledge access side we demonstrate how Spinque’s probabilistic graph database is used to implement both the graph queries as well as the full-text search.",t-138f9b4b,181331
 "Leveraging Large Language Models & Knowledge Graphs for Environmental, Social & Governance Analysis",Adam Wangrat,,Knowledge Graphs & Large Language Model integration: Real world examples. April 2024 Meetup,25/04/2024,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=EfrUZA_13Ts,,https://www.meetup.com/connected-data-london/events/300191567/,"Adam Wangrat, Lead Knowledge Graph Engineer, Neural Alpha explores how integrating Large Language Models (LLMs) and Knowledge Graphs can revolutionize Environmental, Social, and Governance (ESG) research, disclosure analysis, custom benchmarking and other requirements.
 
 By combining the power of an LLM-based question-answering system with a Neo4j Knowledge Graph containing rich ESG-related data, we can enable more accurate, context-aware, and insightful responses to user queries about ESG factors.
@@ -399,14 +399,249 @@ The demo concentrates on the use of an LLM in comprehending natural language, in
 
 It then covers how the use of rules and reasoning enhances the LLM's understanding and interpretation. The potential for other use cases across a variety of industries is also be explored.",t-f4674e3a,
 5 Considerations for More Responsible AI,Ashleigh Faith,/Transcripts/Connected Data London 2021/Presentations/5 Considerations for More Responsible AI.srt,Connected Data London 2021,14/04/2021,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=2ZB7Oo3rMCE,,,,t-55745cb8,
-A 2020 Semantic Web vision for the real world,Panos Alexopoulos,/Transcripts/Unsorted/Presentations/A 2020 Semantic Web vision for the real world.srt,,,,,https://www.youtube.com/watch?v=nm-5-rQNGkY,,,,t-6b4537d8,
-"Causal Graph Identification: optimization, performance bounds & reward optimization",Mitra,"/Transcripts/Connected Data London 2024/Presentations/Causal Graph Identification_ optimization, performance bounds & reward optimization.srt",Connected Data London 2024,,,,https://www.youtube.com/watch?v=NYOZUMXjtW8,,,,t-b35c1acd,
-Assessing and Improving Knowledge Graph Quality in GraphRAG applications | Panos Alexopoulos | CDL24,Panos Alexopoulos,/Transcripts/Connected Data London 2024/Presentations/Assessing and Improving Knowledge Graph Quality in GraphRAG applications.srt,Connected Data London 2024,,,,https://www.youtube.com/watch?v=Cv3yHVP7rlk,,,,t-647fcf1a,
-"Big Graphs, Machine Learning & Rich Interactions: the recipe for the future of search | KnowCon 2020",,"/Transcripts/Connected Data London 2024/Presentations/Big Graphs, Machine Learning & Rich Interactions_ the recipe for the future of search.srt",Connected Data London 2024,,,,https://www.youtube.com/watch?v=1REb6Z7_-34,,,,t-07b04e2c,
-BizDevOps: Aligning the Business and IT with a Graph Knowledge Base | Dave Duggal and Bill Malyk,Dave Duggal and Bill Malyk,/Transcripts/Unsorted/Presentations/BizDevOps_ Aligning the Business and IT with a Graph Knowledge Base.srt,Connected Data London 2024,14/11/2024,,,https://www.youtube.com/watch?v=Q9TVRbLdTAk,,,,t-8998e62d,
-Talk to your data: leverage open schema & knowledge for efficient self-service insights | CDL24,Atanas Kiryakov,/Transcripts/Connected Data London 2024/Presentations/Talk to your data_ leverage open schema & knowledge for efficient self-service insights.srt,Connected Data London 2024,,,,https://www.youtube.com/watch?v=eb4GFJWlDUs,,,,t-a638ae6b,
-The role of Google's Knowledge Graph and Machine Learning in queryless search & Google Discover,Andrea Volpini & Jason Barnard & Dawn Anderson & Cindy Krum,/Transcripts/Unsorted/Presentations/The role of Google's Knowledge Graph and Machine Learning in queryless search & Google Discover.srt,,,,,https://www.youtube.com/watch?v=2gE1968wRKs,,,,t-06355617,
-Knowledge graph data analysis for organizational intelligence and continuous business improvement,Yuta Yajima & Kunihiko Harada & Shigenori Matumoto,/Transcripts/Unsorted/Presentations/Knowledge graph data analysis for organizational intelligence and continuous business improvement.srt,,,,,https://www.youtube.com/watch?v=0EDYLkzIHW8,,,,t-c339cef3,
-Investing in Connected Data | Connected Data World 2021 Panel,Konstantin Vinogradov & Panos Papadopoulos & George Anadiotis & Bob van Luijt,/Transcripts/Connected Data World 2021/Presentations/Investing in Connected Data.srt,Connected Data World 2021,,,,https://www.youtube.com/watch?v=2Uqy9nkH0v4,,,,t-ea0ad9de,
-Graph Machine Learning: Research and industry applications | Panel | Connected Data World 2021,Andreea Deac & Mikhail Galkin & Charles Hoyt & Tiffany Callahan & Sergei Ivanov,/Transcripts/Connected Data World 2021/Presentations/Graph Machine Learning_ Research and industry applications.srt,Connected Data World 2021,,,,https://www.youtube.com/watch?v=PuqNjswMiK0,,,,t-4bd0754d,
-How To Perform Visual Analytics of Graph Data | Weidong Yang | Connected Data London 2024,Weidong Yang,/Transcripts/Connected Data London 2024/Presentations/How To Perform Visual Analytics of Graph Data.srt,Connected Data London 2024,,,,https://www.youtube.com/watch?v=Q5Kn8nxxQdc,,,,t-43e59285,
+A 2020 Semantic Web vision for the real world,Panos Alexopoulos,/Transcripts/Unsorted/Presentations/A 2020 Semantic Web vision for the real world.srt,,29/06/2020,,,https://www.youtube.com/watch?v=nm-5-rQNGkY,,https://cdl-2-online-meetup-june-29th.heysummit.com/talks/a-2020-semantic-web-vision-for-the-real-world-panel-discussion/,"You may not know it, but you use the Semantic Web every day, and you love it.
+Every time you search for something on the Web, the Semantic Web makes sure the search engine knows what you're looking for, and returns the best results in a structured way.
+Every time you use a medication, chances are the Semantic Web has powered the research behind it.
+The Semantic Web, soon to celebrate its 20th anniversary, may not enjoy the kind of universal acclaim the WWW got on its 30th birthday. It does, however, underpin Knowledge Graphs, and in that sense, it is in its heyday.
+A group of people beyond suspicion confess their intimate relationship with the Semantic Web in this panel. We have known, loved, and used the Semantic Web for a long time, and we think you should, too.
+Moderator: David Amerland. Panelists: Panos Alexopoulos, George Anadiotis, Teodora Petkova, Prof. Amit Sheth.
+<hr>
+It's been almost 20 years since the Semantic Web vision was laid out. Initial excitement soon gave way to disillusion, as the grand vision met with the hard realities of the real world.
+In many ways, the Semantic Web was ahead of its time, and it's slowly but steadily coming to fruition, as per its die-hard defenders.
+The emphasis on reasoning at web scale in the face of conflicting knowledge sources could never have worked, argue the critics.
+Add to this:The reasonable doubt as to whether academics are well-equipped to produce high-quality, developer- and user-friendly software.
+The fact that academia has a high churn rate, and not a great track record in sustainable business models.
+As the CEO of a very successful graph database vendor put it: ""We are spiritual brothers and sisters. But we obsess over our APIs; the Semantic Web people obsess over wording"".
+And yet, it seems like the Semantic Web is taking over the world, under different monikers - Knowledge Graphs, anyone? Was a rebranding, and some pragmatism, all the Semantic Web ever needed?
+What have those 20 years, and going from the limelight to obscurity and back again, taught us?
+What are some ways people are using Semantic Web principles and technologies in their every day work today?
+What are the real-world problems those principles and technologies can help address?
+What will it take to make them accessible enough for this to happen?
+What is the role of academia in this?
+This is what our panel of distinguished guests will discuss. Some of them have a Semantic Web and academic background, while others do not. But all of them are active, mindful, users of Semantic Web technologies.",t-6b4537d8,98539
+"Causal Graph Identification: optimization, performance bounds & reward optimization",Mitra,"/Transcripts/Connected Data London 2024/Presentations/Causal Graph Identification_ optimization, performance bounds & reward optimization.srt",Connected Data London 2024,12/12/2024,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=NYOZUMXjtW8,,https://2024.connected-data.london/talks/causal-graph-identification-optimization-performance-bounds-and-reward-optimization/,"Describing the underlying causes of phenomena affected by multiple variables can often by done via the representation of causal graphs, which are often assumed to be directed and acyclic.
+The identification of causal graphs – delineating the cause and effect between collection of variables has relevance in wireless networks, genetic networks, epidemiology, economics, and the social sciences to name just a few application areas. Graph identification is done via the collection of observations or realizations of the random variables which are the nodes in the graph.
+A host of strategies have been proposed for causal graph identification from greedy methods to those based on sparse approximation. We consider two problems in graph identification, the first is the recovery of the full directed graph by first detecting individual links in the graph.
+Unique to our approach, but relevant to many applications is directly considering unequal error protection for edge detection, that is false negatives versus false positives. We derive the optimal link detection rule and bound performance. These bounds can be used as benchmarks for current discovery algorithms.
+A challenge with our approach (as is also true for many causal graph identification methods) is the attendant computational complexity. Motivated by this issue, the second problem we address is the development of a modest complexity strategy via the learning of sub-graphs.
+A new edge detection method based on mutual information is derived and shown to offer superior performance to state-of-the-art methods. We apply our low complexity approach to the optimization of interventions in multi-armed bandits wherein the goal is to determine how to select choices (e.g. which slot-machine arm to pull) to maximize a reward.
+Interventions could include allocation of resources or enforcing nodes in a graph to have certain values or links to have certain weights. We see that unequal error protection has a significant impact in reward optimization in causal multi-armed bandits.
+Joint work with Joni Shaska and Chen Peng",t-b35c1acd,587093
+Assessing and Improving Knowledge Graph Quality in GraphRAG applications | Panos Alexopoulos | CDL24,Panos Alexopoulos,/Transcripts/Connected Data London 2024/Presentations/Assessing and Improving Knowledge Graph Quality in GraphRAG applications.srt,Connected Data London 2024,11/12/2024,Masterclass,Knowledge Graphs,https://www.youtube.com/watch?v=Cv3yHVP7rlk,,https://2024.connected-data.london/talks/assessing-and-improving-knowledge-graph-quality-in-graphrag-applications/,"The rapid rise of Graph Retrieval-Augmented Generation (Graph RAG) has introduced an innovative approach to grounding Large Language Models (LLMs) with factual information from knowledge graphs (KGs). This is an approach that has gained significant traction due to its ability to enhance the factual accuracy and contextual relevance of LLM outputs better than document-based RAG.
+However, many of the knowledge graphs employed in Graph RAG applications are automatically constructed using LLM-based techniques and, quite often, lack the necessary accuracy, completeness, and consistency for reliable knowledge grounding.
+This masterclass will focus on the critical issue of knowledge graph quality for Graph RAG applications and will teach participants practical methods and techniques for assessing graph quality and identifying gaps and inaccuracies that prevent them from better supporting LLMs in generating accurate and reliable responses.
+Key TopicsGraph Retrieval Augmented GenerationKnowledge Graph QualityTarget AudienceData scientists and engineers involved in Knowledge Graph construction and management.Professionals interested in leveraging Knowledge Graphs for enhancing the quality and accuracy of language model outputs.Developers and architects designing retrieval-augmented systems that rely on high-quality factual grounding.GoalsBy the end of the masterclass, participants will be able to:
+Understand the importance of high-quality Knowledge Graphs in Graph RAG applications and their role in grounding LLM outputs.Identify common challenges in LLM-based Knowledge Graph construction, including issues of accuracy, completeness, and relevance.Apply methods and metrics for assessing the quality of Knowledge Graphs, including error detection, validation, and refinement techniques.Implement best practices and strategies to improve Knowledge Graph quality, enhancing the overall performance of Graph RAG applications.Session outline:Introduction to Graph RAG and Knowledge Graphs (20 minutes)Brief introduction to knowledge graphsOverview of Graph RAG and its role in grounding LLMs with factual data.The importance of high-quality knowledge graphs in Graph RAG applications.Common issues with LLM-based knowledge graph construction.Understanding Knowledge Graph Quality (20 mins)Key quality dimensionsCommon quality Issues and causesAssessing Knowledge Graph Quality (50 mins)Quality assessment techniquesError detection and validationInteractive case study: evaluating and debugging an LLM-derived knowledge graphImproving Knowledge Graph Quality (20 mins)Improving the knowledge graphImproving the knowledge graph construction processQ&A and Wrap-up (10 mins)Summary of key takeaways.Questions and discussions on specific use cases or challenges.FormatLecture-based, with a coding-based case study
+LevelBeginner - Intermediate
+Prerequisite KnowledgePrior exposure to RAG applications and/or knowledge graphs is desirable but not necessary",t-647fcf1a,585305
+"Big Graphs, Machine Learning & Rich Interactions: the recipe for the future of search | KnowCon 2020",Caroline Goulard,"/Transcripts/Connected Data London 2024/Presentations/Big Graphs, Machine Learning & Rich Interactions_ the recipe for the future of search.srt",Connected Data London 2024,02/12/2020,Presentation,,https://www.youtube.com/watch?v=1REb6Z7_-34,,https://knowledge-connexions-conference.heysummit.com/talks/big-graphs-machine-learning-rich-interactions-the-recipe-for-the-future-of-search/,"In this presentation, I will discuss the idea that visualizing knowledge graphs can help uncover information that would otherwise remain unseen.
+Network graphs are often rejected by non-technical users because of their visual complexity, sometimes for aesthetic but often indecipherable appearance.
+However, I am convinced that they bring out new uses of information retrieval, to which we are not accustomed yet, but will perhaps prove to be more effective than our classic search engines in the future.
+To fuel this discussion, I will present a case study of the Knowl tool, produced by Dataveyes, the studio I co-founded.
+Knowl is a graph visualization tool that helps you find useful information and understand how content is organized when dealing with a very large corpus of research publications.
+It aims to overcome the weaknesses of traditional search engines (like Google Scholar), when looking for something you don’t know how to formulate.
+For example, when looking for scenarios to work on the next anti-Covid vaccine.
+How can graph visualization provide solutions to this Dark Knowledge problem?
+This is the bet I would like to offer for your consideration.
+👉 Book Your Ticket Now",t-07b04e2c,180838
+BizDevOps: Aligning the Business and IT with a Graph Knowledge Base | Dave Duggal and Bill Malyk,Dave Duggal and Bill Malyk,/Transcripts/Unsorted/Presentations/BizDevOps_ Aligning the Business and IT with a Graph Knowledge Base.srt,Connected Data London 2024,14/11/2024,Presentation,Knowledge Graphs,https://www.youtube.com/watch?v=Q9TVRbLdTAk,,https://knowledge-connexions-conference.heysummit.com/talks/dave-duggal-presentation/,,t-8998e62d,182113
+Talk to your data: leverage open schema & knowledge for efficient self-service insights | CDL24,Atanas Kiryakov,/Transcripts/Connected Data London 2024/Presentations/Talk to your data_ leverage open schema & knowledge for efficient self-service insights.srt,Connected Data London 2024,12/12/2024,Presentation,,https://www.youtube.com/watch?v=eb4GFJWlDUs,,https://2024.connected-data.london/talks/talk-to-your-data-leverage-open-schema-and-knowledge-for-efficient-self-service-insights/,"Discover how to democratize data access and eliminate the traditional bottleneck where business users must wait weeks for technical experts to build queries. This technical presentation explores cutting-edge approaches to self-service analytics using knowledge graphs, semantic technologies, and generative AI.
+Key Topics CoveredGraphRAG Architecture PatternsLearn about three distinct GraphRAG implementations:
+Type 1: Content metadata store with enhanced filtering capabilitiesType 2: Domain knowledge enrichment for contextual understandingType 3: Direct graph querying with natural language to SPARQL translationOvercoming Traditional Knowledge Graph LimitationsAddress the common challenge where sophisticated knowledge graphs become inaccessible to non-technical users, requiring specialized SPARQL expertise and creating organizational data silos.
+Leveraging Open Standards for AI IntegrationExplore how using established ontologies like Schema.org and existing knowledge bases such as Wikidata dramatically reduces implementation complexity. Large language models are already trained on these standards, eliminating the need for custom fine-tuning.
+Real-World Implementation: The NASA Case StudyFollow a practical demonstration using 1,000 marketing documents to solve entity disambiguation challenges. See how traditional chunking-based RAG fails to connect implicit knowledge (NASA as a government organization) and how graph-enhanced approaches succeed.
+Technical Architecture Deep DiveMulti-modal data fabric combining structured data, documents, and metadata12+ billion triple knowledge graph implementationEntity linking services for automatic knowledge graph populationSelf-healing SPARQL query generation with automatic error correctionDevelopment Efficiency BreakthroughWitness how modern GraphRAG tooling reduces implementation time from days/weeks to hours, with live demonstrations of natural language querying against massive knowledge graphs.
+Performance Optimization StrategiesUnderstand the four critical subtasks in GraphRAG implementations:
+Relevant chunk retrievalEntity extraction and linkingDatabase queryingResponse synthesisLearn when to use LLMs versus specialized models for optimal speed, accuracy, and cost-effectiveness.
+Target AudienceData scientists and engineersSolution architectsBusiness intelligence professionalsKnowledge management specialistsOrganizations seeking to democratize data accessKey TakeawaysTransform knowledge graphs from expert-only tools to self-service platformsLeverage existing ontologies and standards for faster AI integrationImplement GraphRAG patterns appropriate for your data architectureAchieve enterprise-scale semantic search with minimal development overheadBridge the gap between complex semantic technologies and business user needsThis presentation combines 25+ years of semantic web expertise with practical AI implementation strategies, offering attendees actionable insights for building next-generation self-service analytics platforms using knowledge graphs and generative AI.",t-a638ae6b,587058
+The role of Google's Knowledge Graph and Machine Learning in queryless search & Google Discover,Andrea Volpini & Jason Barnard & Dawn Anderson & Cindy Krum,/Transcripts/Unsorted/Presentations/The role of Google's Knowledge Graph and Machine Learning in queryless search & Google Discover.srt,,01/12/2021,,,https://www.youtube.com/watch?v=2gE1968wRKs,,https://2021.connecteddataworld.com/talks/the-role-of-googles-knowledge-graph-and-machine-learning-in-queryless-search-google-discover-and-google-moments/,"Description
+What relationship is there between Google’s knowledge graph and Google’s push features such as Discover and Big Moments?
+A lot, actually. And it is the future!
+With the increasing role of Google Discover and the introduction of a new feature called Big Moments that aims to curate news as events unfold, the search engine is using its own Knowledge Graph to pre-emptively display content that matches users' interests.
+The traffic generated by Google's push features seems to be complementary to the traditional Search traffic and dependent, among other factors, on the saliency score of entities in the graph.
+This panel will help you understand how Google's automated systems surface content in Discover, what we can do to interact with Google's graph and the best practices for producing content that performs well on Discover.
+Key Topics
+Google’s Knowledge Graph
+Entities in SEO
+Google Discover and Google Moments
+Content recommendations
+Target Audience
+SEO
+Data Scientists and ML practitioners
+Digital Marketers
+Goal
+Explore the interplay between content discovery, entities, and knowledge-based technologies
+Answer questions that matter
+How to create an entity in Google’s Knowledge Graph?
+How do news and social engagement interact with the saliency score of an Entity in the Knowledge Graph?
+How do Google Discover and Google Moments function?
+How do Entities and Google’s Knowledge Graph play into  Google Discover and Google Moments?
+What kind of content dominates? (News, products, web stories, videos…) and what role can automatic content generation play?)
+Session Outline
+Introduction
+Meet and Greet
+Setting the stage
+Google Knowledge Graph and Entities
+How does Google populate its own knowledge graphs?
+What drives the saliency score of an entity in the graph?
+How can we help Google reconcile entities?
+Google Discover and Google Big Moments
+What is Google Discover?
+What is Google targeting with Big Moments?
+Can a newsroom be fully automated?
+What are the best practices for Google Discover
+What type of content works best?
+Can automatically generated content rank on Discover?
+Format
+Panel Discussion
+Expert discussion, coordinated by moderator
+1,5 hours running time
+Running time includes modules of expert discussion, interspersed with modules of audience Q&A / interaction
+Level
+Intermediate - Advanced
+Prerequisite Knowledge
+Basic understanding of Knowledge Graphs
+Basic understanding of SEO
+You need an access pass to attend this session: Diversity Access Pass or Full Access Pass apply",t-06355617,262797
+Knowledge graph data analysis for organizational intelligence and continuous business improvement,Yuta Yajima & Kunihiko Harada & Shigenori Matumoto,/Transcripts/Unsorted/Presentations/Knowledge graph data analysis for organizational intelligence and continuous business improvement.srt,,12/12/2024,Presentation,,https://www.youtube.com/watch?v=0EDYLkzIHW8,,https://2024.connected-data.london/talks/knowledge-graph-data-analysis-for-organizational-intelligence-to-support-continuous-business-improvement/,"The collaboration between management and frontline staff has long been a critical issue in corporate management. However, it is challenging to clarify or model the relationship between the issues faced by management and those faced by frontline staff. Additionally, knowledge within the organization tends to be confined to specific departments or individuals, making it difficult to share, leading to information shortages and redundancies, which hinder efficient decision-making and innovation.
+In response to these problems, we have a track record of business achievements across various industry fields and possess cross-sectional problem-solving know-how. Therefore, we believe that leveraging digital knowledge utilization presents a business opportunity.
+Currently, generative AI is increasingly being used to enhance and automate existing operations. In the near future, it is expected to be utilized for advanced decision-making in management and the transformation of business processes. As one of the few companies that can combine AI technology with expertise in corporate management, operations, and products, we aim to be at the forefront of providing these technologies and solutions to the world.
+The target audience includes data scientists, business analysts, and sales professionals who face challenges with the speed of solving customer issues. Additionally, it also targets engineers interested in applications of knowledge graphs and GNNs. Participants will learn methods for data-driven decision-making, how to apply past success stories to new business challenges, and the technical implementation of these methods.
+We extract and organize customer information into four graph data structures, and utilize it effectively. The four graph data structures are as follows:
+Value Chain: Share policies based on the flow of value among stakeholders, which is crucial for expanding sales and horizontal deployment.Value Graph: Set goals based on the causality of business issues and operational measures, which is important for verifying the effectiveness of analysis.Profiling: Identify operational constraints and short-term effective measures, which are important for delivery realization.Solution: Select appropriate analytical methods based on the types of analysis and data analysis constraints, which are important for systematization and implementation.The aim is to leverage the information accumulated through projects with customers across various industries to generate new ideas in new customer projects by utilizing cross-industry knowledge. To achieve this, we are developing technology that uses GNN (Graph Neural Networks) to extract and reconstruct graph structures from previously created graph information, leading to the creation of new challenges.
+Furthermore, to create these graphs for new customers, we are also developing technology that automatically generates initial graphs by utilizing graph construction know-how and generative AI.
+We help organize and visualize customer information in a graph structure to support business reform in companies by facilitating consensus building and decision-making.",t-c339cef3,585138
+Investing in Connected Data | Connected Data World 2021 Panel,Konstantin Vinogradov & Panos Papadopoulos & George Anadiotis & Bob van Luijt,/Transcripts/Connected Data World 2021/Presentations/Investing in Connected Data.srt,Connected Data World 2021,01/12/2021,,,https://www.youtube.com/watch?v=2Uqy9nkH0v4,,https://2021.connecteddataworld.com/talks/investing-in-connected-data/,"Description
+What is Connected Data, and how is it interesting from a market point of view?
+Knowledge Graphs have reached peak Gartner hype. Graph data science and graph AI are the fastest growing areas in AI. Graph databases are the fastest growing category in enterprise software.
+Add to this the historical foundations of graph algorithms and analytics and semantic technology, which have been invigorated and are seeing widespread adoption, and you get the burgeoning Connected Data landscape.
+While there is ongoing technical innovation happening in the domain, how does this translate to market value and opportunities for investment?
+How is this market defined, and what is driving its growth?
+Join us as we define and explore this landscape, discuss technology and use cases, challenges and opportunities for growth and investment, and where the future may take us.
+Key Topics
+Defining the Connected Data technology and market landscape
+Exploring the Connected Data market
+Providing an outlook for the future
+Target Audience
+Entrepreneurs
+Technical people with entrepreneurial spirit
+CxOs
+Decision makers
+Investors
+Goals
+Define and explore the Connected Data landscape for people who are interested in it from a market perspective
+Answer questions that matter
+How is this market defined?
+What are some key drivers for growth?
+Where are the opportunities for investment?
+What is the outlook for the future?
+Session outline:
+Introduction
+Meet and Greet
+Setting the stage
+What is Connected Data?
+A bit of history
+The 4 pillars of Graph Technology
+Graph algorithms & analytics
+Knowledge Graphs
+Graph Databases
+Graph Machine Learning
+Bonus track: Semantic technology
+What are some prominent use cases for this technology?
+The market landscape today
+How do you define the market?
+How could we reach an estimate of TAM (Total Addressable Market)?
+What are some good resources to help evaluate the market?
+What are the challenges and opportunities in the market?
+What are the criteria for defining interesting Connected Data startups?
+What are some interesting Connected Data startups, and why?
+What is the role of open source in the market?
+The future
+Deep tech vs applications
+What are some major roadblocks / goals, how could we address them, and what would that enable?
+What will define this space going forward?
+Who are some key players to keep an eye on?
+Format
+Extended panel
+Expert discussion, coordinated by moderator
+2 hours running time
+Running time includes modules of expert discussion, interspersed with modules of audience Q&A / interaction
+Level
+Beginner - Intermediate
+Prerequisite Knowledge
+None
+You need an access pass to attend this session: Diversity Access Pass or Full Access Pass apply",t-ea0ad9de,255223
+Graph Machine Learning: Research and industry applications | Panel | Connected Data World 2021,Andreea Deac & Mikhail Galkin & Charles Hoyt & Tiffany Callahan & Sergei Ivanov,/Transcripts/Connected Data World 2021/Presentations/Graph Machine Learning_ Research and industry applications.srt,Connected Data World 2021,01/12/2021,,,https://www.youtube.com/watch?v=PuqNjswMiK0,,https://2021.connecteddataworld.com/talks/graph-machine-learning-research-and-industry-applications/,"Description
+Graph-based technologies became first-class citizens in various industries and many practical applications. Still, building performant and reliable machine learning pipelines over graph data, e.g., graph machine learning applications and products, remains a non-trivial task.
+This panel discussion brings together academic and industrial experts from fields where Graph ML yields significant gains and greatly improves traditional processes. In addition to highlighting successful business cases, the panel concentrates on questions often dismissed or hidden behind the curtains of modern Graph ML applications.
+In particular, we will talk about the origins of graph data, its modeling, organization, and processing aspects; best communication interfaces; bridging a gap between products and ML algorithms as well as measuring their practical impact. On a higher level, the panel will discuss upcoming trends in industrial Graph ML and prospective disruptive applications.
+Key Topics
+Graph Machine Learning
+Deep Learning
+Graph Data Management
+Knowledge Graphs
+Graph ML in Production
+Target Audience
+Machine Learning Practitioners
+Data Scientists
+Data Modelers
+CxOs
+Investors
+Goals
+Explore the interplay between machine learning and knowledge based technologies
+How to get the “actionable” knowledge from the graph data?
+How can those approaches complement one another, and what would that unlock?
+What is the current state of the art, how and where is it used in the wild?
+NLP
+Biomed
+Industry (say, Ad Tech)
+What are the next milestones / roadblocks?
+Where are the opportunities for investment?
+We know drug discovery is on its highs, NLP is being democratized rapidly, what else?
+Session outline:
+Introduction
+Meet and Greet
+Setting the stage
+Knowledge Graphs, meet Graph Machine Learning
+It’s all about the data:
+How do you create, maintain, and process graphs?
+Databases or tabular sources?
+Do you consider data modeling aspects?
+Best communication interface: natural language or structured query languages?
+How can machine learning help create and populate graphs (including KGs)?
+Cover some of the current state of the art
+An edge - does it appear naturally or derived from node similarities?
+What kind of problems can we solve by using it?
+NLP, Biomed, Industry (say, adtech)
+How academic datasets align with real-world tasks
+Where is this used in production?
+Success stories and business cases
+What are the major roadblocks / goals, how could we address them, and what would that enable?
+How to bridge the gap between business goals and Graph ML models?
+How do we measure the impact of applying ML models in real-world tasks? Metrics, A/B testing, generally about setting things in production
+Who are some key players to keep an eye on?
+Both from industry and research
+Format
+Extended panel
+Expert discussion, coordinated by moderator
+2 hours running time
+Running time includes modules of expert discussion, interspersed with modules of audience Q&A / interaction
+Level
+Intermediate - Advanced
+Prerequisite Knowledge
+Basic understanding of Knowledge Graphs
+Basic understanding of Machine Learning / Deep Learning
+You need an access pass to attend this session: Diversity Access Pass or Full Access Pass apply",t-4bd0754d,260792
+How To Perform Visual Analytics of Graph Data | Weidong Yang | Connected Data London 2024,Weidong Yang,/Transcripts/Connected Data London 2024/Presentations/How To Perform Visual Analytics of Graph Data.srt,Connected Data London 2024,11/12/2024,Masterclass,Graph AI,https://www.youtube.com/watch?v=Q5Kn8nxxQdc,,https://2024.connected-data.london/talks/how-to-perform-visual-analytics-of-graph-data/,"This master class provides best practices for visual analytics of graph data across various tools. You’ll learn how to better use data visualization to enhance cognitive abilities and accelerate the human process of solving complex problems.
+Many visualization techniques have been developed for tabular data, but graph data demands more sophisticated approaches to enable meaningful insights. Using real-world examples and various graph technologies, we will walk through:
+-   Visualization of Graph Data: Techniques for representing graph data, including transformations to high-dimensional, associative, and hierarchical structures.
+-   Visual Strategy: Effective use of color, shape, size, distribution, animation, and shifting perspectives to convey information.
+-  Visual Transformation Strategy: Visual methods for performing graph-based calculations and data transformations.
+-   Visual Analytics Workflow: Best practices for creating repeatable, traceable workflows in visual analytics.
+Using a laptop, you will be able to follow along a set of hands-on exercises using tools like Gephi, Neo4j Bloom, Jupyter Notebook, and GraphXR. You’ll walk away with an understanding of when to use infographics, typically designed for communication, to present information in a highly simplified, focused manner for specific topics. And we’ll contrast that with when to use visual analytics for discovery tasks that emphasizes an exploratory process aimed at uncovering insights from messy and complex data.
+Join us for practical tips on communicating your graph data with an approach that emphasizes analytical reasoning through interactive visualizations and intuitive visual interfaces.
+Key TopicsVisualisation of Graph Data: Techniques for representing graph data, including transformations to high-dimensional, associative, and hierarchical structures.Visual Strategy: Effective use of colour, shape, size, distribution, animation, and shifting perspectives to convey information.Visual Transformation Strategy: Visual methods for performing graph-based calculations and data transformations.Visual Analytics Workflow: Best practices for creating repeatable, traceable workflows in visual analytics.Target AudienceData AnalystsData ScientistsData EngineeringMachine Learning EngineersGoalsGain hands-on experience in applying graph based visual analytics to solve complex data problems. Learn graph data visualisation techniques, and best practices in visual analytics.
+Session outline:Graph Data Visualization with hands on exercises:Overview of key visualisation techniques.Exploration of visual elements for effective information display.Overview of common tools: Gephi, Bloom, Python libraries, JavaScript libraries, GraphXR.Advanced Visualization Techniques with hands on exercises:Shifting perspectives and dynamic visualisations.Interconnection between graph connection and high-dimensionality.Introduction to Visual Analytics:How is visual analytics different from visualisation?Visual methods for graph-based calculations and data transformations.Schema, and the evolution of schema during an analytics process.Practical exercises in conducting visual analytics.Introduction to Visual Analytics Workflows.Best practices for creating repeatable and traceable workflows in visual analytics.FormatThis class is highly hands-on. We’ll start with a brief lecture, but will quickly transition to practical data visualisation exercises. We’ll be using tools like Gephi, Bloom, Jupyter Notebook, and GraphXR to work through a series of exercises, from simple to complex. We’ll learn both the commonalities and the key differences between these tools.
+Graph data transformations will be demonstrated using Cypher and visual transforms in GraphXR. Exercises will be conducted in Neo4j Desktop, Bloom, and GraphXR. The introduction to visual analytics workflows will be delivered in a lecture format.
+LevelIntermediate
+Prerequisite KnowledgeBasic knowledge of Python and Cypher will be helpful for the hands-on exercises, but much of the lecture will cover general visualisation approaches that are broadly applicable.",t-43e59285,585038
