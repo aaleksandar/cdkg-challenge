@@ -2197,5 +2197,91 @@
         "relateiq"
       ]
     }
+  },
+  {
+    "filename": "Graph Machine Learning_ Research and industry applications.txt",
+    "entities": {
+      "tag": [
+        "graph representation learning",
+        "combinatorial optimization",
+        "symbolic ai",
+        "probabilistic modeling",
+        "pykeen",
+        "graph machine learning",
+        "recommender systems",
+        "reinforcement learning",
+        "geometric dl",
+        "biological expression language",
+        "rdf",
+        "kernel methods",
+        "knowledge graph embedding",
+        "graph neural networks",
+        "pytorch geometric",
+        "dgl",
+        "pagerank",
+        "owl",
+        "text mining",
+        "inductive learning",
+        "inductive link prediction",
+        "online learning",
+        "ab testing",
+        "transformers",
+        "rnn",
+        "matrix factorization",
+        "logistic regression",
+        "mlp",
+        "gradient boosted decision trees",
+        "xgboost",
+        "catboost",
+        "lightgbm",
+        "graphsage",
+        "svm",
+        "gpt-3",
+        "federated learning",
+        "marius",
+        "nodepiece",
+        "pytorch lightning",
+        "pytorch",
+        "variational autoencoders",
+        "rust",
+        "node2vec",
+        "causal inference",
+        "message passing"
+      ]
+    }
+  },
+  {
+    "filename": "How To Perform Visual Analytics of Graph Data.txt",
+    "entities": {
+      "tag": [
+        "visual analytics",
+        "graph databases",
+        "rdf",
+        "labeled property graph",
+        "neo4j",
+        "neo4j browser",
+        "python",
+        "networkx",
+        "javascript",
+        "d3",
+        "powerbi",
+        "kuzu",
+        "tigergraph",
+        "neo4j bloom",
+        "graphxr",
+        "cypher",
+        "mapreduce",
+        "pagerank",
+        "betweenness centrality",
+        "closeness centrality",
+        "eigenvector centrality",
+        "visual catalyst",
+        "graph walk",
+        "virtual reality",
+        "flow cytometry",
+        "json",
+        "csv"
+      ]
+    }
   }
 ]

@@ -1,0 +1,6448 @@
+1
+00:00:06,160 --> 00:00:10,719
+So um
+
+2
+00:00:08,320 --> 00:00:13,840
+uh well
+
+3
+00:00:10,719 --> 00:00:17,520
+since we have small room people and we
+
+4
+00:00:13,840 --> 00:00:19,439
+have a few people online uh let's get
+
+5
+00:00:17,520 --> 00:00:22,320
+people close to each other so we can
+
+6
+00:00:19,439 --> 00:00:25,600
+talk more intimately and I think today
+
+7
+00:00:22,320 --> 00:00:27,760
+let's let's just I know I'll share a lot
+
+8
+00:00:25,600 --> 00:00:31,279
+of ideas some idea about the visual
+
+9
+00:00:27,760 --> 00:00:33,840
+analytics and uh by visual analytics and
+
+10
+00:00:31,279 --> 00:00:36,559
+but I also wanted to hear from you. What
+
+11
+00:00:33,840 --> 00:00:41,600
+do you think? What's your interest? Yes.
+
+12
+00:00:36,559 --> 00:00:44,160
+Um I want to just do a quick survey
+
+13
+00:00:41,600 --> 00:00:48,079
+like it's supposed to be presentation uh
+
+14
+00:00:44,160 --> 00:00:52,480
+but there's I can't present right now
+
+15
+00:00:48,079 --> 00:00:54,160
+so just that's okay. So uh are you guys
+
+16
+00:00:52,480 --> 00:00:56,800
+all working with the graph? I know he's
+
+17
+00:00:54,160 --> 00:00:59,280
+he's he's making graph databases
+
+18
+00:00:56,800 --> 00:01:02,079
+but [laughter]
+
+19
+00:00:59,280 --> 00:01:04,159
+is from graph
+
+20
+00:01:02,079 --> 00:01:06,880
+right outside. It's a really exciting
+
+21
+00:01:04,159 --> 00:01:09,760
+part. So, are you guys all like familiar
+
+22
+00:01:06,880 --> 00:01:14,479
+with graph using graph in day out? Yeah.
+
+23
+00:01:09,760 --> 00:01:21,799
+Oh, that's um let's see. And uh are you
+
+24
+00:01:14,479 --> 00:01:21,799
+guys using RDF? RDF. Yeah. LPG.
+
+25
+00:01:22,159 --> 00:01:29,119
+Yeah. That's good. Yeah. How many people
+
+26
+00:01:25,840 --> 00:01:32,759
+use 4J?
+
+27
+00:01:29,119 --> 00:01:32,759
+We used to use
+
+28
+00:01:35,040 --> 00:01:38,040
+>> box.
+
+29
+00:01:38,079 --> 00:01:44,240
+What is that?
+
+30
+00:01:39,600 --> 00:01:46,399
+>> It's also a database but it's triple
+
+31
+00:01:44,240 --> 00:01:49,280
+>> triple
+
+32
+00:01:46,399 --> 00:01:51,119
+inter.
+
+33
+00:01:49,280 --> 00:01:55,040
+>> Oh, interesting.
+
+34
+00:01:51,119 --> 00:01:59,720
+Yeah, cool. Um
+
+35
+00:01:55,040 --> 00:01:59,720
+Oh, here. So
+
+36
+00:02:00,399 --> 00:02:03,399
+well
+
+37
+00:02:04,000 --> 00:02:08,640
+what kind of visualization tools you
+
+38
+00:02:05,840 --> 00:02:12,720
+guys use like
+
+39
+00:02:08,640 --> 00:02:15,760
+Python network access and do you build
+
+40
+00:02:12,720 --> 00:02:20,800
+your own like visualization layers using
+
+41
+00:02:15,760 --> 00:02:26,040
+JavaScript D3 or what what what kind of
+
+42
+00:02:20,800 --> 00:02:26,040
+tool you use? So we used to use
+
+43
+00:02:26,800 --> 00:02:32,080
+>> Yeah. But now we are using
+
+44
+00:02:29,840 --> 00:02:34,959
+connecting.
+
+45
+00:02:32,080 --> 00:02:37,200
+>> Yeah.
+
+46
+00:02:34,959 --> 00:02:40,200
+>> Yeah.
+
+47
+00:02:37,200 --> 00:02:40,200
+>> Yeah.
+
+48
+00:02:41,440 --> 00:02:46,519
+But we are still not there yet.
+
+49
+00:02:43,519 --> 00:02:46,519
+>> Yeah.
+
+50
+00:02:46,640 --> 00:02:51,200
+>> So it's on.
+
+51
+00:02:48,560 --> 00:02:53,519
+>> Yeah. PowerBI. That's interesting.
+
+52
+00:02:51,200 --> 00:02:58,080
+PowerBI. I would love to hear more about
+
+53
+00:02:53,519 --> 00:03:02,760
+you doing the graph and PowerBI. It's
+
+54
+00:02:58,080 --> 00:03:02,760
+very interesting. Yes. Um
+
+55
+00:03:03,519 --> 00:03:08,680
+>> yeah,
+
+56
+00:03:05,680 --> 00:03:08,680
+view
+
+57
+00:03:09,280 --> 00:03:13,480
+the name of it.
+
+58
+00:03:10,319 --> 00:03:13,480
+>> We can
+
+59
+00:03:18,480 --> 00:03:23,200
+have a presentation.
+
+60
+00:03:20,239 --> 00:03:24,560
+>> Okay. I think because of the sh
+
+61
+00:03:23,200 --> 00:03:27,200
+>> Okay.
+
+62
+00:03:24,560 --> 00:03:31,760
+>> Unfortunately.
+
+63
+00:03:27,200 --> 00:03:34,560
+>> Uh one question maybe from my personal
+
+64
+00:03:31,760 --> 00:03:38,080
+interest is how many do you guys like
+
+65
+00:03:34,560 --> 00:03:40,799
+practice like any sort of art form?
+
+66
+00:03:38,080 --> 00:03:43,599
+What kind of art? Guitar music.
+
+67
+00:03:40,799 --> 00:03:46,959
+>> Oh nice.
+
+68
+00:03:43,599 --> 00:03:49,120
+I I used to play guitar too but all
+
+69
+00:03:46,959 --> 00:03:51,280
+trainer myself realized that guitar is
+
+70
+00:03:49,120 --> 00:03:54,000
+when I realized that you got to take the
+
+71
+00:03:51,280 --> 00:03:57,280
+classes as for training otherwise you
+
+72
+00:03:54,000 --> 00:04:00,480
+have a consistency. Yeah, there's a a
+
+73
+00:03:57,280 --> 00:04:04,080
+lot of structural thing in the music and
+
+74
+00:04:00,480 --> 00:04:05,519
+and visualization that really connect
+
+75
+00:04:04,080 --> 00:04:07,920
+you guys.
+
+76
+00:04:05,519 --> 00:04:10,879
+>> My first career was design
+
+77
+00:04:07,920 --> 00:04:12,879
+>> design. Yeah. Then move on to computer
+
+78
+00:04:10,879 --> 00:04:19,479
+animation business.
+
+79
+00:04:12,879 --> 00:04:19,479
+>> Yeah. Design on computer design.
+
+80
+00:04:20,560 --> 00:04:26,160
+>> Yes. And you guys any sort of painting
+
+81
+00:04:24,560 --> 00:04:31,759
+drawing.
+
+82
+00:04:26,160 --> 00:04:34,240
+>> Yeah. And so uh I actually um started
+
+83
+00:04:31,759 --> 00:04:38,320
+dancing when I was doing posttock in in
+
+84
+00:04:34,240 --> 00:04:41,520
+Berkeley and um and found out a lot of
+
+85
+00:04:38,320 --> 00:04:46,560
+inspirations from uh dance choreography
+
+86
+00:04:41,520 --> 00:04:51,280
+and visualization how we how we like how
+
+87
+00:04:46,560 --> 00:04:53,280
+I wouldn't see like creating names of
+
+88
+00:04:51,280 --> 00:04:56,800
+things but me how we perceive
+
+89
+00:04:53,280 --> 00:04:59,840
+information perceive as like really a
+
+90
+00:04:56,800 --> 00:05:05,919
+lot of things that actually connected.
+
+91
+00:04:59,840 --> 00:05:10,240
+Um, so let's see where I can go. Um,
+
+92
+00:05:05,919 --> 00:05:12,639
+so this was supposed to be a handsome uh
+
+93
+00:05:10,240 --> 00:05:16,000
+class and but I noticed that you guys
+
+94
+00:05:12,639 --> 00:05:18,560
+don't really have a computer with you.
+
+95
+00:05:16,000 --> 00:05:23,039
+Uh,
+
+96
+00:05:18,560 --> 00:05:26,000
+>> yeah. But um it's okay. Like if you want
+
+97
+00:05:23,039 --> 00:05:28,560
+to follow through and try something on
+
+98
+00:05:26,000 --> 00:05:30,560
+your own, you can. If you don't, it's
+
+99
+00:05:28,560 --> 00:05:34,240
+it's fine. I just just see what I'm
+
+100
+00:05:30,560 --> 00:05:38,720
+doing. Yeah. Yeah.
+
+101
+00:05:34,240 --> 00:05:42,000
+So this is this is a data set that u
+
+102
+00:05:38,720 --> 00:05:45,520
+uh I have a few data set in there use as
+
+103
+00:05:42,000 --> 00:05:47,600
+example to to illustrate some ideas
+
+104
+00:05:45,520 --> 00:05:50,080
+introduced today.
+
+105
+00:05:47,600 --> 00:05:53,600
+So, so really today's mostly I want to
+
+106
+00:05:50,080 --> 00:05:57,919
+share uh my own past experience and and
+
+107
+00:05:53,600 --> 00:06:00,000
+own research on how the visual works.
+
+108
+00:05:57,919 --> 00:06:01,919
+What is the what is the need? what kind
+
+109
+00:06:00,000 --> 00:06:05,240
+of tool we need to build to perform
+
+110
+00:06:01,919 --> 00:06:05,240
+visual analys
+
+111
+00:06:10,960 --> 00:06:13,960
+so
+
+112
+00:06:14,560 --> 00:06:18,960
+what what's your interest in getting out
+
+113
+00:06:17,039 --> 00:06:22,800
+from this
+
+114
+00:06:18,960 --> 00:06:25,280
+session I'm curious
+
+115
+00:06:22,800 --> 00:06:26,400
+>> yeah for me it's uh because I'm very
+
+116
+00:06:25,280 --> 00:06:29,600
+technical
+
+117
+00:06:26,400 --> 00:06:33,240
+>> so I work in large enterprise
+
+118
+00:06:29,600 --> 00:06:33,240
+And we try to
+
+119
+00:06:33,680 --> 00:06:37,000
+no one cares
+
+120
+00:06:43,039 --> 00:06:46,039
+ideally.
+
+121
+00:06:52,000 --> 00:06:54,960
+>> Yeah.
+
+122
+00:06:54,080 --> 00:06:56,720
+>> My interest.
+
+123
+00:06:54,960 --> 00:06:58,319
+>> Yeah.
+
+124
+00:06:56,720 --> 00:07:01,039
+alternatives
+
+125
+00:06:58,319 --> 00:07:04,039
+to knowledge.
+
+126
+00:07:01,039 --> 00:07:04,039
+>> Something
+
+127
+00:07:11,840 --> 00:07:17,479
+very
+
+128
+00:07:14,479 --> 00:07:17,479
+mysterious.
+
+129
+00:07:18,080 --> 00:07:21,759
+>> Yeah. How about you guys? Anybody want
+
+130
+00:07:20,400 --> 00:07:25,280
+to share?
+
+131
+00:07:21,759 --> 00:07:28,800
+>> We have a visualization. visualization
+
+132
+00:07:25,280 --> 00:07:31,599
+capability within software
+
+133
+00:07:28,800 --> 00:07:34,240
+um which is
+
+134
+00:07:31,599 --> 00:07:37,680
+very powerful at the moment.
+
+135
+00:07:34,240 --> 00:07:41,560
+We can show our clients
+
+136
+00:07:37,680 --> 00:07:41,560
+>> within the business itself
+
+137
+00:07:44,160 --> 00:07:47,160
+visualizations
+
+138
+00:07:48,080 --> 00:07:49,919
+impact. [clears throat]
+
+139
+00:07:49,199 --> 00:07:51,599
+>> Yeah.
+
+140
+00:07:49,919 --> 00:07:55,960
+>> To the client.
+
+141
+00:07:51,599 --> 00:07:55,960
+>> Yeah. for for me
+
+142
+00:07:57,199 --> 00:08:02,000
+broader
+
+143
+00:07:58,240 --> 00:08:04,560
+>> yeah a broader example
+
+144
+00:08:02,000 --> 00:08:06,720
+choice in data visualization
+
+145
+00:08:04,560 --> 00:08:08,800
+>> yeah
+
+146
+00:08:06,720 --> 00:08:12,039
+is out there
+
+147
+00:08:08,800 --> 00:08:12,039
+>> I see
+
+148
+00:08:13,680 --> 00:08:17,840
+marketing aspect being able to sell
+
+149
+00:08:15,360 --> 00:08:20,000
+ideas so you need something that
+
+150
+00:08:17,840 --> 00:08:22,560
+attention looks good but also has that
+
+151
+00:08:20,000 --> 00:08:27,479
+meaning ask questions
+
+152
+00:08:22,560 --> 00:08:27,479
+stories and stuff you can show every
+
+153
+00:08:27,599 --> 00:08:34,159
+significant
+
+154
+00:08:30,479 --> 00:08:36,640
+>> right and
+
+155
+00:08:34,159 --> 00:08:38,719
+>> for me it's like I started my career as
+
+156
+00:08:36,640 --> 00:08:41,760
+a data analytics
+
+157
+00:08:38,719 --> 00:08:44,560
+>> and I've been doing data analysis for
+
+158
+00:08:41,760 --> 00:08:48,160
+almost two years now and I was always
+
+159
+00:08:44,560 --> 00:08:52,920
+missing a part where how do you get this
+
+160
+00:08:48,160 --> 00:08:52,920
+to end user Yeah.
+
+161
+00:08:54,800 --> 00:08:59,760
+>> Yeah.
+
+162
+00:08:56,560 --> 00:09:02,480
+>> As you said, it already has that. Yes.
+
+163
+00:08:59,760 --> 00:09:05,200
+For certain people who need to show it
+
+164
+00:09:02,480 --> 00:09:07,600
+as visualized as possible so that they
+
+165
+00:09:05,200 --> 00:09:10,720
+can understand that okay
+
+166
+00:09:07,600 --> 00:09:14,160
+looks like at least uh so for me it's
+
+167
+00:09:10,720 --> 00:09:15,920
+like to understand how it could be done
+
+168
+00:09:14,160 --> 00:09:17,920
+>> right
+
+169
+00:09:15,920 --> 00:09:22,200
+>> what all the needed.
+
+170
+00:09:17,920 --> 00:09:22,200
+>> Yeah. How easy does
+
+171
+00:09:22,800 --> 00:09:27,279
+>> right
+
+172
+00:09:24,480 --> 00:09:29,200
+that's great. Yeah. So I also notic
+
+173
+00:09:27,279 --> 00:09:34,320
+people online
+
+174
+00:09:29,200 --> 00:09:36,320
+um really apologize I'm not able to um
+
+175
+00:09:34,320 --> 00:09:41,760
+like really like share the attention
+
+176
+00:09:36,320 --> 00:09:44,480
+because it's very interactive. Uh so um
+
+177
+00:09:41,760 --> 00:09:46,880
+so here's the uh the data set that I I
+
+178
+00:09:44,480 --> 00:09:49,279
+put together like some some sample data
+
+179
+00:09:46,880 --> 00:09:51,600
+can use it be interesting follow along
+
+180
+00:09:49,279 --> 00:09:54,320
+try something
+
+181
+00:09:51,600 --> 00:09:58,320
+yeah
+
+182
+00:09:54,320 --> 00:10:01,360
+just so I want to just show a quick
+
+183
+00:09:58,320 --> 00:10:03,360
+video so the mic we're having trouble
+
+184
+00:10:01,360 --> 00:10:05,040
+with your Oh
+
+185
+00:10:03,360 --> 00:10:06,880
+>> okay
+
+186
+00:10:05,040 --> 00:10:09,519
+turn that one off and we'll just use the
+
+187
+00:10:06,880 --> 00:10:09,519
+handheld
+
+188
+00:10:10,320 --> 00:10:16,240
+That sounds better.
+
+189
+00:10:13,279 --> 00:10:18,720
+So
+
+190
+00:10:16,240 --> 00:10:22,959
+this is pretty much one of the first
+
+191
+00:10:18,720 --> 00:10:25,200
+visualization of data that I made a
+
+192
+00:10:22,959 --> 00:10:27,120
+while ago
+
+193
+00:10:25,200 --> 00:10:30,640
+that actually
+
+194
+00:10:27,120 --> 00:10:34,320
+so hearing you guys like you very
+
+195
+00:10:30,640 --> 00:10:38,160
+interested in how to transend in a most
+
+196
+00:10:34,320 --> 00:10:40,399
+effective way. Um so
+
+197
+00:10:38,160 --> 00:10:43,279
+when we talk about the visualization of
+
+198
+00:10:40,399 --> 00:10:46,800
+graph data I think there's a there's a
+
+199
+00:10:43,279 --> 00:10:51,200
+few things one is what you can present
+
+200
+00:10:46,800 --> 00:10:58,040
+how you can using visualization to this
+
+201
+00:10:51,200 --> 00:10:58,040
+is strange myself really strange
+
+202
+00:10:58,320 --> 00:11:05,839
+is it possible to just mute the sound of
+
+203
+00:11:01,519 --> 00:11:08,839
+people this is only Yeah.
+
+204
+00:11:05,839 --> 00:11:08,839
+>> Yeah.
+
+205
+00:11:15,920 --> 00:11:22,079
+>> Yeah. Uh, okay. Can you just make sure
+
+206
+00:11:19,440 --> 00:11:24,240
+the online people can hear?
+
+207
+00:11:22,079 --> 00:11:27,120
+>> Yeah. Okay, I'm talking. Yeah. Okay,
+
+208
+00:11:24,240 --> 00:11:30,160
+that's good. Yeah, much better.
+
+209
+00:11:27,120 --> 00:11:32,720
+So, so when we come to visualization,
+
+210
+00:11:30,160 --> 00:11:35,760
+there's um there's a few things. There's
+
+211
+00:11:32,720 --> 00:11:38,160
+the first is effective visualization. Um
+
+212
+00:11:35,760 --> 00:11:40,800
+the effective visualization has has in
+
+213
+00:11:38,160 --> 00:11:44,880
+my in my in my opinion has two things.
+
+214
+00:11:40,800 --> 00:11:48,240
+One is to uh illustrate the information
+
+215
+00:11:44,880 --> 00:11:52,640
+you want you want to present. Two is to
+
+216
+00:11:48,240 --> 00:11:54,800
+discover the things that you not yet um
+
+217
+00:11:52,640 --> 00:11:57,360
+know what sometime you don't even have
+
+218
+00:11:54,800 --> 00:12:00,959
+like I think Einstein said that right
+
+219
+00:11:57,360 --> 00:12:04,880
+like if I have one hour to to answer the
+
+220
+00:12:00,959 --> 00:12:07,760
+most answer most important question uh I
+
+221
+00:12:04,880 --> 00:12:10,320
+spend like 55 minutes or something to
+
+222
+00:12:07,760 --> 00:12:13,040
+figure out what question to ask. I think
+
+223
+00:12:10,320 --> 00:12:16,560
+that's that's from my experience is very
+
+224
+00:12:13,040 --> 00:12:20,000
+often figure out the question to ask is
+
+225
+00:12:16,560 --> 00:12:21,600
+is like the hardest once you have the
+
+226
+00:12:20,000 --> 00:12:24,639
+question once you know what question to
+
+227
+00:12:21,600 --> 00:12:27,440
+ask you can formulate strategy to get
+
+228
+00:12:24,639 --> 00:12:30,160
+answer and or in this case visualize
+
+229
+00:12:27,440 --> 00:12:32,880
+effectively but figure out what to ask
+
+230
+00:12:30,160 --> 00:12:34,480
+what question even to to dig into it
+
+231
+00:12:32,880 --> 00:12:37,120
+that usually takes quite a few
+
+232
+00:12:34,480 --> 00:12:41,200
+iterations. So hence I think the the
+
+233
+00:12:37,120 --> 00:12:43,360
+visualization is important in both
+
+234
+00:12:41,200 --> 00:12:46,480
+seeing what's coming out but also to
+
+235
+00:12:43,360 --> 00:12:48,399
+guide you towards like iterative process
+
+236
+00:12:46,480 --> 00:12:51,760
+of asking questions discover new
+
+237
+00:12:48,399 --> 00:12:54,560
+questions ask next questions and the
+
+238
+00:12:51,760 --> 00:12:57,600
+faster you can cut through the loop uh
+
+239
+00:12:54,560 --> 00:13:00,560
+the more effective analytics workflow uh
+
+240
+00:12:57,600 --> 00:13:05,760
+will be so I want to just quickly just
+
+241
+00:13:00,560 --> 00:13:05,760
+show a example that I have let's
+
+242
+00:13:06,399 --> 00:13:09,399
+Okay.
+
+243
+00:13:15,519 --> 00:13:18,519
+So,
+
+244
+00:13:18,880 --> 00:13:23,160
+okay. Online is not working.
+
+245
+00:13:53,519 --> 00:13:58,279
+This part is interesting. Check this
+
+246
+00:13:55,279 --> 00:13:58,279
+out.
+
+247
+00:14:18,320 --> 00:14:23,480
+So, do do you guys notice the
+
+248
+00:14:24,320 --> 00:14:33,560
+the uh different industries graph?
+
+249
+00:14:28,079 --> 00:14:33,560
+Maybe I play that again. Let's see.
+
+250
+00:14:44,639 --> 00:14:51,000
+Yeah, this is the part
+
+251
+00:14:47,600 --> 00:14:51,000
+that's healthare.
+
+252
+00:14:57,760 --> 00:15:01,959
+So when we first
+
+253
+00:15:02,160 --> 00:15:06,880
+when you first look at the data, so the
+
+254
+00:15:03,839 --> 00:15:08,959
+data is collected from the uh the blocks
+
+255
+00:15:06,880 --> 00:15:11,519
+on the blocks, right?
+
+256
+00:15:08,959 --> 00:15:14,800
+It's like a Dropbox but more targeting
+
+257
+00:15:11,519 --> 00:15:17,440
+enterprise space. It's an enterprise
+
+258
+00:15:14,800 --> 00:15:20,000
+space of a like a file sharing like a
+
+259
+00:15:17,440 --> 00:15:22,560
+collaboration platform. So we work with
+
+260
+00:15:20,000 --> 00:15:25,199
+them to to analyze the data collected on
+
+261
+00:15:22,560 --> 00:15:28,480
+their platform which is generating
+
+262
+00:15:25,199 --> 00:15:32,720
+visualization. Um
+
+263
+00:15:28,480 --> 00:15:35,199
+so um they did a lot of work on
+
+264
+00:15:32,720 --> 00:15:38,880
+generating analytics like statistics
+
+265
+00:15:35,199 --> 00:15:43,120
+like uh the like the degree of
+
+266
+00:15:38,880 --> 00:15:45,839
+connections like uh the how many average
+
+267
+00:15:43,120 --> 00:15:48,720
+average like sharing activities like
+
+268
+00:15:45,839 --> 00:15:51,199
+collaboration activities has done like
+
+269
+00:15:48,720 --> 00:15:54,079
+the the frequency the distribution of
+
+270
+00:15:51,199 --> 00:15:55,680
+the time they did a lot of that
+
+271
+00:15:54,079 --> 00:15:57,839
+but there's certain certain
+
+272
+00:15:55,680 --> 00:16:01,839
+characteristic it's really difficult to
+
+273
+00:15:57,839 --> 00:16:04,560
+see um from those numbers um it's really
+
+274
+00:16:01,839 --> 00:16:07,839
+like how overall the collaboration
+
+275
+00:16:04,560 --> 00:16:10,480
+happens in the organization So when we
+
+276
+00:16:07,839 --> 00:16:13,279
+visualize the data in this way and you
+
+277
+00:16:10,480 --> 00:16:16,639
+can actually see very clearly that look
+
+278
+00:16:13,279 --> 00:16:19,600
+at the health care health care is almost
+
+279
+00:16:16,639 --> 00:16:23,279
+like living or organism it's quite
+
+280
+00:16:19,600 --> 00:16:27,519
+distributed like uh but in each each hub
+
+281
+00:16:23,279 --> 00:16:30,160
+there's in collaborations but then
+
+282
+00:16:27,519 --> 00:16:31,440
+there's among them among many hubs
+
+283
+00:16:30,160 --> 00:16:34,000
+there's a different kind of
+
+284
+00:16:31,440 --> 00:16:35,920
+visualization different kind of like
+
+285
+00:16:34,000 --> 00:16:41,120
+loose connections
+
+286
+00:16:35,920 --> 00:16:43,519
+um And the finance space it's um um
+
+287
+00:16:41,120 --> 00:16:45,120
+this is actually already make it a
+
+288
+00:16:43,519 --> 00:16:47,120
+little bit random but if you look at it
+
+289
+00:16:45,120 --> 00:16:49,680
+it's very centralized.
+
+290
+00:16:47,120 --> 00:16:52,880
+There's a there's a clear hierarchy of
+
+291
+00:16:49,680 --> 00:16:55,519
+how information gets distributed from
+
+292
+00:16:52,880 --> 00:16:58,480
+one or two people in the center go to
+
+293
+00:16:55,519 --> 00:17:01,199
+the next layer like only ring to the
+
+294
+00:16:58,480 --> 00:17:05,039
+next next layer. There's very little
+
+295
+00:17:01,199 --> 00:17:08,000
+interconnections. uh this
+
+296
+00:17:05,039 --> 00:17:10,559
+and then you go look at the uh software
+
+297
+00:17:08,000 --> 00:17:11,919
+industry. Software industry is also is
+
+298
+00:17:10,559 --> 00:17:13,919
+very interesting in the sense that
+
+299
+00:17:11,919 --> 00:17:16,319
+there's you can't you can you cannot
+
+300
+00:17:13,919 --> 00:17:19,120
+discover hierarchy in the software
+
+301
+00:17:16,319 --> 00:17:21,039
+industry. It's communication is very
+
+302
+00:17:19,120 --> 00:17:23,520
+random. It's everybody talk to
+
+303
+00:17:21,039 --> 00:17:25,839
+everybody. So that's really uh
+
+304
+00:17:23,520 --> 00:17:27,919
+interesting thing like software industry
+
+305
+00:17:25,839 --> 00:17:30,240
+like in in finance industry you need
+
+306
+00:17:27,919 --> 00:17:33,919
+this kind of hierarchical
+
+307
+00:17:30,240 --> 00:17:36,720
+maintain order. So something happens you
+
+308
+00:17:33,919 --> 00:17:40,640
+know who to talk to how to solve it. In
+
+309
+00:17:36,720 --> 00:17:44,080
+software industry there's a lot on like
+
+310
+00:17:40,640 --> 00:17:49,080
+a impromptu conversation
+
+311
+00:17:44,080 --> 00:17:49,080
+happen. Um and
+
+312
+00:17:49,120 --> 00:17:54,000
+like uh there's a we look into many
+
+313
+00:17:51,679 --> 00:17:57,520
+different industries and we notice a lot
+
+314
+00:17:54,000 --> 00:18:02,480
+of patterns is that it's very difficult
+
+315
+00:17:57,520 --> 00:18:05,360
+to to to give a name but you can see the
+
+316
+00:18:02,480 --> 00:18:07,280
+clear difference and the next question
+
+317
+00:18:05,360 --> 00:18:10,240
+really is how do you measure that those
+
+318
+00:18:07,280 --> 00:18:12,480
+difference like without looking at the
+
+319
+00:18:10,240 --> 00:18:15,760
+patents it's actually quite difficult to
+
+320
+00:18:12,480 --> 00:18:19,120
+construct matrix. So we can can we can
+
+321
+00:18:15,760 --> 00:18:22,160
+actually see the difference in the uh uh
+
+322
+00:18:19,120 --> 00:18:24,400
+in the different industry. Um so that
+
+323
+00:18:22,160 --> 00:18:27,440
+project we originally want to drive
+
+324
+00:18:24,400 --> 00:18:30,320
+deeper like looking for comparative like
+
+325
+00:18:27,440 --> 00:18:33,520
+finding a set companies in each industry
+
+326
+00:18:30,320 --> 00:18:37,280
+doing comparative study. Uh in the end
+
+327
+00:18:33,520 --> 00:18:39,760
+um because of the IFC issues and other
+
+328
+00:18:37,280 --> 00:18:43,559
+issues we decide not to go forward with
+
+329
+00:18:39,760 --> 00:18:43,559
+that. So,
+
+330
+00:18:45,919 --> 00:18:48,919
+and
+
+331
+00:18:49,440 --> 00:18:58,320
+so you guys are in the LPJ like RDF
+
+332
+00:18:53,919 --> 00:19:02,559
+space. Uh I'm more in the uh labor
+
+333
+00:18:58,320 --> 00:19:06,000
+property graph space. Um
+
+334
+00:19:02,559 --> 00:19:07,919
+when it come to visualization so so in
+
+335
+00:19:06,000 --> 00:19:12,720
+fact in early days we developed the
+
+336
+00:19:07,919 --> 00:19:15,360
+software for for RDF to visualize RDF
+
+337
+00:19:12,720 --> 00:19:19,360
+information. uh we found the challenge
+
+338
+00:19:15,360 --> 00:19:24,480
+is that uh RDF in RDF is very break down
+
+339
+00:19:19,360 --> 00:19:27,760
+to the detail a lot of details it's
+
+340
+00:19:24,480 --> 00:19:30,480
+really great for semantic reasoning
+
+341
+00:19:27,760 --> 00:19:32,720
+really great for like set up the rules
+
+342
+00:19:30,480 --> 00:19:34,320
+and inference but when it come to
+
+343
+00:19:32,720 --> 00:19:36,080
+visualization we found it very
+
+344
+00:19:34,320 --> 00:19:39,039
+challenging
+
+345
+00:19:36,080 --> 00:19:44,320
+and so in the end we we like I found out
+
+346
+00:19:39,039 --> 00:19:46,080
+that LPG is easier information to for
+
+347
+00:19:44,320 --> 00:19:48,559
+the visualization purpose. I'm still
+
+348
+00:19:46,080 --> 00:19:52,640
+trying to figure out a way to uh convert
+
+349
+00:19:48,559 --> 00:19:54,320
+RDF data into a form that's easier to
+
+350
+00:19:52,640 --> 00:19:55,840
+visualize.
+
+351
+00:19:54,320 --> 00:19:58,320
+We should talk about if you guys have
+
+352
+00:19:55,840 --> 00:20:01,600
+any ideas, I really love to talk to you
+
+353
+00:19:58,320 --> 00:20:04,240
+about it. So, so here's like a lot of
+
+354
+00:20:01,600 --> 00:20:07,600
+database like that happened over the
+
+355
+00:20:04,240 --> 00:20:10,160
+over years like Neo 4j came out like
+
+356
+00:20:07,600 --> 00:20:15,760
+2007 I believe.
+
+357
+00:20:10,160 --> 00:20:20,880
+um multipart title graph um like later
+
+358
+00:20:15,760 --> 00:20:23,919
+and lately there's a couple database
+
+359
+00:20:20,880 --> 00:20:27,200
+the kuzu they're talking the next four
+
+360
+00:20:23,919 --> 00:20:31,120
+invalid database um and on one one end
+
+361
+00:20:27,200 --> 00:20:33,520
+spectrum uh that make you don't need to
+
+362
+00:20:31,120 --> 00:20:37,679
+no more no need to server and on the
+
+363
+00:20:33,520 --> 00:20:39,840
+device there's a google
+
+364
+00:20:37,679 --> 00:20:43,039
+that I think they gonna they just
+
+365
+00:20:39,840 --> 00:20:45,600
+released. It's a it's a cloud database.
+
+366
+00:20:43,039 --> 00:20:50,480
+So it's like graph database is really
+
+367
+00:20:45,600 --> 00:20:54,080
+expanding uh from like a road from the
+
+368
+00:20:50,480 --> 00:20:57,280
+like a data lake on the one end to
+
+369
+00:20:54,080 --> 00:20:58,880
+embedded on the other end and
+
+370
+00:20:57,280 --> 00:21:02,720
+performance is also improving
+
+371
+00:20:58,880 --> 00:21:07,440
+drastically from the Neo 4j to like
+
+372
+00:21:02,720 --> 00:21:12,919
+tiger pip nap that performance really
+
+373
+00:21:07,440 --> 00:21:12,919
+has improved a lot over the time. Yeah.
+
+374
+00:21:13,120 --> 00:21:19,520
+And then I also look at the
+
+375
+00:21:15,120 --> 00:21:22,880
+visualization toolings. Uh roughly kind
+
+376
+00:21:19,520 --> 00:21:25,520
+of separate from the library approach to
+
+377
+00:21:22,880 --> 00:21:29,840
+the application approach.
+
+378
+00:21:25,520 --> 00:21:35,600
+On the one end you have a network X3 C.
+
+379
+00:21:29,840 --> 00:21:38,559
+JS it's all like library approach. uh
+
+380
+00:21:35,600 --> 00:21:41,919
+on the on the other hand like the bloom
+
+381
+00:21:38,559 --> 00:21:45,520
+in curious and graphics is like that's
+
+382
+00:21:41,919 --> 00:21:48,480
+we make this on as a more application
+
+383
+00:21:45,520 --> 00:21:51,520
+project and then you have something I
+
+384
+00:21:48,480 --> 00:21:53,280
+see is more geared towards a uh
+
+385
+00:21:51,520 --> 00:21:56,559
+exploration
+
+386
+00:21:53,280 --> 00:21:59,840
+they use graph to explore to a solution
+
+387
+00:21:56,559 --> 00:22:03,679
+building I use graph for application
+
+388
+00:21:59,840 --> 00:22:05,440
+so so that is like I know I'm Leaving
+
+389
+00:22:03,679 --> 00:22:10,039
+something out here, but this is the
+
+390
+00:22:05,440 --> 00:22:10,039
+things I most familiar with.
+
+391
+00:22:14,640 --> 00:22:21,919
+Well, um what attract me to the graph is
+
+392
+00:22:18,960 --> 00:22:24,159
+like a how intuitive it is. It really
+
+393
+00:22:21,919 --> 00:22:26,559
+mir mirrors how how we think about
+
+394
+00:22:24,159 --> 00:22:30,799
+things. [clears throat]
+
+395
+00:22:26,559 --> 00:22:33,039
+So it's it's a given that um graph uh is
+
+396
+00:22:30,799 --> 00:22:34,960
+the really helps with to help us
+
+397
+00:22:33,039 --> 00:22:37,440
+reasoning
+
+398
+00:22:34,960 --> 00:22:39,679
+but there's a
+
+399
+00:22:37,440 --> 00:22:44,400
+but if you think about it um I actually
+
+400
+00:22:39,679 --> 00:22:47,200
+did look look up research and we our
+
+401
+00:22:44,400 --> 00:22:49,120
+brain can only hold
+
+402
+00:22:47,200 --> 00:22:50,799
+roughly seven piece of information at a
+
+403
+00:22:49,120 --> 00:22:53,520
+time
+
+404
+00:22:50,799 --> 00:22:55,515
+and so
+
+405
+00:22:53,520 --> 00:22:55,840
+if a if a graph
+
+406
+00:22:55,515 --> 00:22:58,320
+>> [clears throat]
+
+407
+00:22:55,840 --> 00:23:01,280
+>> So one one challenging thing for us is
+
+408
+00:22:58,320 --> 00:23:04,240
+visualizing graph is the number of
+
+409
+00:23:01,280 --> 00:23:06,320
+elements on the screen right if you have
+
+410
+00:23:04,240 --> 00:23:09,280
+a few elements on the graph on the
+
+411
+00:23:06,320 --> 00:23:11,600
+screen with the connections it's amazing
+
+412
+00:23:09,280 --> 00:23:14,400
+it's great it makes sense we immediately
+
+413
+00:23:11,600 --> 00:23:18,320
+can see can see the connections
+
+414
+00:23:14,400 --> 00:23:21,360
+but if you have hundreds thousands like
+
+415
+00:23:18,320 --> 00:23:25,360
+tens of thousands of or millions of data
+
+416
+00:23:21,360 --> 00:23:31,039
+points nodes on the screen suddenly They
+
+417
+00:23:25,360 --> 00:23:33,840
+um you it's very inspiring.
+
+418
+00:23:31,039 --> 00:23:35,760
+It's like
+
+419
+00:23:33,840 --> 00:23:40,159
+impressive. It's like a galaxy. It's
+
+420
+00:23:35,760 --> 00:23:43,039
+beautiful. But what is what what any
+
+421
+00:23:40,159 --> 00:23:46,559
+meaning you get out of it? Um it's
+
+422
+00:23:43,039 --> 00:23:48,240
+challenging. So it's um like the the
+
+423
+00:23:46,559 --> 00:23:51,039
+visualization example I just show
+
+424
+00:23:48,240 --> 00:23:53,120
+earlier. um it's important because we we
+
+425
+00:23:51,039 --> 00:23:55,840
+get a sense of the difference between
+
+426
+00:23:53,120 --> 00:23:58,640
+different industry uh that serves as the
+
+427
+00:23:55,840 --> 00:24:02,080
+purpose. The next question is really is
+
+428
+00:23:58,640 --> 00:24:05,120
+like what is the um um specificities of
+
+429
+00:24:02,080 --> 00:24:07,840
+it? What's the individual things of it?
+
+430
+00:24:05,120 --> 00:24:11,039
+If we start driving down drilling down
+
+431
+00:24:07,840 --> 00:24:13,760
+and uh having too many elements on the
+
+432
+00:24:11,039 --> 00:24:17,360
+screen is actually become a problem. Uh
+
+433
+00:24:13,760 --> 00:24:21,919
+so for that reason um like I found it
+
+434
+00:24:17,360 --> 00:24:24,720
+really hard to thinking RDF. I think RDF
+
+435
+00:24:21,919 --> 00:24:27,520
+is like uh once we have a logical
+
+436
+00:24:24,720 --> 00:24:30,400
+reasoning using using machine to think
+
+437
+00:24:27,520 --> 00:24:32,640
+about to reason to to derive is great
+
+438
+00:24:30,400 --> 00:24:35,360
+but for me to think in RDF is really
+
+439
+00:24:32,640 --> 00:24:39,039
+really challenging. But same thing for
+
+440
+00:24:35,360 --> 00:24:41,120
+LPG is the same like uh like LPG the
+
+441
+00:24:39,039 --> 00:24:43,600
+data if you stop putting putting like a
+
+442
+00:24:41,120 --> 00:24:46,559
+gigabyte of data in there like I can't
+
+443
+00:24:43,600 --> 00:24:49,200
+think over it and so I have to uh so
+
+444
+00:24:46,559 --> 00:24:53,360
+that's really I feel like there's a I
+
+445
+00:24:49,200 --> 00:24:55,279
+need a strategy in in helps to to think
+
+446
+00:24:53,360 --> 00:24:58,080
+over the large amount of data and also I
+
+447
+00:24:55,279 --> 00:25:00,000
+think the graph what is the graph like
+
+448
+00:24:58,080 --> 00:25:03,679
+really
+
+449
+00:25:00,000 --> 00:25:05,760
+has a we need to uh think about the
+
+450
+00:25:03,679 --> 00:25:09,520
+difference between the different stage
+
+451
+00:25:05,760 --> 00:25:11,679
+of the graph like namely like for the
+
+452
+00:25:09,520 --> 00:25:14,720
+data capture how do you capture the
+
+453
+00:25:11,679 --> 00:25:16,240
+graph capture the data using the graph's
+
+454
+00:25:14,720 --> 00:25:21,039
+structure
+
+455
+00:25:16,240 --> 00:25:23,520
+also the very uh like uh reasoning and
+
+456
+00:25:21,039 --> 00:25:27,120
+the presentation uh the final final
+
+457
+00:25:23,520 --> 00:25:30,799
+stage presentation um is is to me it's
+
+458
+00:25:27,120 --> 00:25:33,360
+very different like uh with with with
+
+459
+00:25:30,799 --> 00:25:36,640
+the storage like the traditional form is
+
+460
+00:25:33,360 --> 00:25:40,080
+table and then you have the like JSON
+
+461
+00:25:36,640 --> 00:25:43,440
+document and then you have like the
+
+462
+00:25:40,080 --> 00:25:46,400
+graph is very efficient way of like
+
+463
+00:25:43,440 --> 00:25:48,400
+have a flexible way of capturing
+
+464
+00:25:46,400 --> 00:25:51,600
+information but still maintain
+
+465
+00:25:48,400 --> 00:25:55,559
+structure. Um I want to show you
+
+466
+00:25:51,600 --> 00:25:55,559
+example. See?
+
+467
+00:25:57,919 --> 00:26:05,080
+So,
+
+468
+00:25:59,679 --> 00:26:05,080
+this is a uh see if I can
+
+469
+00:26:14,080 --> 00:26:18,000
+So, I'm totally improvising here today
+
+470
+00:26:15,919 --> 00:26:20,480
+because we have small number of people.
+
+471
+00:26:18,000 --> 00:26:24,000
+just really feel free just help me ask
+
+472
+00:26:20,480 --> 00:26:25,679
+questions and uh u
+
+473
+00:26:24,000 --> 00:26:29,919
+to help drive this conversation
+
+474
+00:26:25,679 --> 00:26:33,039
+together. Uh so
+
+475
+00:26:29,919 --> 00:26:37,760
+this particular data set is a uh in in
+
+476
+00:26:33,039 --> 00:26:39,679
+the US um they have um um all the flight
+
+477
+00:26:37,760 --> 00:26:46,080
+information become public after two
+
+478
+00:26:39,679 --> 00:26:47,760
+weeks. Um so we we data out look at it.
+
+479
+00:26:46,080 --> 00:26:51,120
+So there's many many ways looking at
+
+480
+00:26:47,760 --> 00:26:53,360
+that data which is one of this is data
+
+481
+00:26:51,120 --> 00:26:56,720
+set I I used to supposed to be like
+
+482
+00:26:53,360 --> 00:26:59,840
+hands on step by step I think I'm just
+
+483
+00:26:56,720 --> 00:27:01,679
+going to skip it and show you guys what
+
+484
+00:26:59,840 --> 00:27:03,760
+what's possible what's the thinking
+
+485
+00:27:01,679 --> 00:27:07,600
+behind it
+
+486
+00:27:03,760 --> 00:27:12,000
+doing that is um using animation to uh
+
+487
+00:27:07,600 --> 00:27:15,039
+to display the information um now
+
+488
+00:27:12,000 --> 00:27:17,600
+the purpose for this is really to to to
+
+489
+00:27:15,039 --> 00:27:20,320
+see
+
+490
+00:27:17,600 --> 00:27:23,200
+>> if there any surprises is any pattern we
+
+491
+00:27:20,320 --> 00:27:25,279
+can discover. Um
+
+492
+00:27:23,200 --> 00:27:27,760
+just looking at the data is is is
+
+493
+00:27:25,279 --> 00:27:32,559
+challenging but looking at the looking
+
+494
+00:27:27,760 --> 00:27:35,360
+at the um this animation will reveal
+
+495
+00:27:32,559 --> 00:27:36,960
+some some interesting patterns.
+
+496
+00:27:35,360 --> 00:27:41,520
+So
+
+497
+00:27:36,960 --> 00:27:44,480
+the data it's um I want to quickly talk
+
+498
+00:27:41,520 --> 00:27:46,960
+about the the data. So the data is from
+
+499
+00:27:44,480 --> 00:27:50,799
+the data downloaded from from department
+
+500
+00:27:46,960 --> 00:27:53,679
+transportation has 119 columns. Uh if
+
+501
+00:27:50,799 --> 00:27:57,600
+you look at 119 columns uh there's a
+
+502
+00:27:53,679 --> 00:28:01,840
+large empty space right on the right.
+
+503
+00:27:57,600 --> 00:28:05,200
+It's it's very sparse and it turned out
+
+504
+00:28:01,840 --> 00:28:07,279
+each flight can be diverted uh diverted
+
+505
+00:28:05,200 --> 00:28:09,600
+and when when there's a diversion you
+
+506
+00:28:07,279 --> 00:28:12,000
+need a record. So, so you need to
+
+507
+00:28:09,600 --> 00:28:14,240
+reserve a set of columns to to uh to
+
+508
+00:28:12,000 --> 00:28:17,440
+record a diversion.
+
+509
+00:28:14,240 --> 00:28:21,360
+But sum has two. Now you have the second
+
+510
+00:28:17,440 --> 00:28:23,760
+column set. Sum has three. And in this
+
+511
+00:28:21,360 --> 00:28:26,960
+data set you have five. So basically if
+
+512
+00:28:23,760 --> 00:28:29,440
+the airplane gets diverted five times it
+
+513
+00:28:26,960 --> 00:28:33,279
+can be recorded. But if you somehow get
+
+514
+00:28:29,440 --> 00:28:36,000
+diverted six times too bad
+
+515
+00:28:33,279 --> 00:28:39,360
+that won't you cannot exist according to
+
+516
+00:28:36,000 --> 00:28:42,320
+this table. So this is really
+
+517
+00:28:39,360 --> 00:28:45,039
+interesting things like how we
+
+518
+00:28:42,320 --> 00:28:46,720
+structured information
+
+519
+00:28:45,039 --> 00:28:51,279
+determines what information can be
+
+520
+00:28:46,720 --> 00:28:54,080
+captured. Um and it actually comes back
+
+521
+00:28:51,279 --> 00:28:56,559
+to even deeper question about the
+
+522
+00:28:54,080 --> 00:29:00,200
+naming. Actually let me go back to your
+
+523
+00:28:56,559 --> 00:29:00,200
+slides and
+
+524
+00:29:02,000 --> 00:29:08,320
+like the naming of things is I found
+
+525
+00:29:04,240 --> 00:29:12,799
+that to be fascinating. Um the uh the
+
+526
+00:29:08,320 --> 00:29:17,520
+western philosophy from Greek time um
+
+527
+00:29:12,799 --> 00:29:21,039
+this Aristotle think uh the name is
+
+528
+00:29:17,520 --> 00:29:23,679
+focused on significant by convention
+
+529
+00:29:21,039 --> 00:29:25,200
+and it really believe there's a
+
+530
+00:29:23,679 --> 00:29:27,679
+substance
+
+531
+00:29:25,200 --> 00:29:30,679
+of underlying reality that exists
+
+532
+00:29:27,679 --> 00:29:30,679
+independ
+
+533
+00:29:32,799 --> 00:29:38,080
+I think really really crucial
+
+534
+00:29:35,440 --> 00:29:42,159
+um that
+
+535
+00:29:38,080 --> 00:29:45,600
+that first there's underlying reality
+
+536
+00:29:42,159 --> 00:29:47,520
+second there's name that we approximate
+
+537
+00:29:45,600 --> 00:29:49,760
+that we're trying to get as close to the
+
+538
+00:29:47,520 --> 00:29:54,799
+reality as possible
+
+539
+00:29:49,760 --> 00:29:56,480
+uh that really influence uh all the
+
+540
+00:29:54,799 --> 00:29:58,640
+developments science technical
+
+541
+00:29:56,480 --> 00:30:01,919
+development in the west
+
+542
+00:29:58,640 --> 00:30:04,000
+responsible for the the technology boom
+
+543
+00:30:01,919 --> 00:30:08,399
+that we see for the past last several
+
+544
+00:30:04,000 --> 00:30:12,240
+centuries is the the eastern the Chinese
+
+545
+00:30:08,399 --> 00:30:16,320
+that this all happens like two 2,600
+
+546
+00:30:12,240 --> 00:30:20,080
+years ago around the same time right so
+
+547
+00:30:16,320 --> 00:30:22,240
+the Chinese philosy says like if you can
+
+548
+00:30:20,080 --> 00:30:26,000
+name something if you name something you
+
+549
+00:30:22,240 --> 00:30:31,520
+get it wrong and uh it also further says
+
+550
+00:30:26,000 --> 00:30:34,000
+that uh nothing has a permanent u uh
+
+551
+00:30:31,520 --> 00:30:37,200
+like substance
+
+552
+00:30:34,000 --> 00:30:39,600
+uh you can only
+
+553
+00:30:37,200 --> 00:30:42,320
+literally you only have meaning when in
+
+554
+00:30:39,600 --> 00:30:45,440
+when it's in the interaction with other
+
+555
+00:30:42,320 --> 00:30:48,799
+things. So basically the context is
+
+556
+00:30:45,440 --> 00:30:52,399
+everything like when when the the naming
+
+557
+00:30:48,799 --> 00:30:56,320
+of things is not that uh crucial because
+
+558
+00:30:52,399 --> 00:30:59,360
+name the the essence always shifting but
+
+559
+00:30:56,320 --> 00:31:02,159
+the context is everything. So basically
+
+560
+00:30:59,360 --> 00:31:05,360
+the uh the the the Chinese philosophy
+
+561
+00:31:02,159 --> 00:31:10,480
+really thinking in graph
+
+562
+00:31:05,360 --> 00:31:12,000
+more less thinking in entities. And so I
+
+563
+00:31:10,480 --> 00:31:14,960
+just had a conversation with somebody
+
+564
+00:31:12,000 --> 00:31:17,440
+yesterday. We start talking about when
+
+565
+00:31:14,960 --> 00:31:20,320
+we put things in the graph format
+
+566
+00:31:17,440 --> 00:31:22,000
+sometimes not that important to have a
+
+567
+00:31:20,320 --> 00:31:24,080
+name for the relationship or the name
+
+568
+00:31:22,000 --> 00:31:27,200
+for the entity. Just the fact that
+
+569
+00:31:24,080 --> 00:31:29,200
+there's a connection, the patterns
+
+570
+00:31:27,200 --> 00:31:32,240
+already tells a lot about what's going
+
+571
+00:31:29,200 --> 00:31:36,240
+on. You may not be able to describe it,
+
+572
+00:31:32,240 --> 00:31:39,279
+but it's actually like a really um
+
+573
+00:31:36,240 --> 00:31:42,559
+telling. So hence I think you when when
+
+574
+00:31:39,279 --> 00:31:47,440
+we use graph visualization we have a lot
+
+575
+00:31:42,559 --> 00:31:50,640
+of those kind of um um perspective
+
+576
+00:31:47,440 --> 00:31:53,679
+information that we need to observe and
+
+577
+00:31:50,640 --> 00:31:56,799
+we need to reason over it rather than a
+
+578
+00:31:53,679 --> 00:31:58,240
+descriptive uh information. Yeah. So
+
+579
+00:31:56,799 --> 00:32:00,399
+that's something I I've been
+
+580
+00:31:58,240 --> 00:32:03,600
+experienced. This is also where I look
+
+581
+00:32:00,399 --> 00:32:06,240
+at the what kind of data format the data
+
+582
+00:32:03,600 --> 00:32:10,159
+structure to capture the data and that's
+
+583
+00:32:06,240 --> 00:32:14,080
+the um um that's like looking for from
+
+584
+00:32:10,159 --> 00:32:18,399
+the table format uh to the uh the JSON
+
+585
+00:32:14,080 --> 00:32:20,799
+format to do format to the like RDF
+
+586
+00:32:18,399 --> 00:32:24,399
+label property graph each one of them
+
+587
+00:32:20,799 --> 00:32:26,960
+has their special like applications some
+
+588
+00:32:24,399 --> 00:32:28,640
+special places that's really the right
+
+589
+00:32:26,960 --> 00:32:30,640
+data structure to
+
+590
+00:32:28,640 --> 00:32:33,279
+But each one of them has all also have
+
+591
+00:32:30,640 --> 00:32:37,360
+their uh limitations. So in essence
+
+592
+00:32:33,279 --> 00:32:39,279
+there's no uh easy way to know the right
+
+593
+00:32:37,360 --> 00:32:42,080
+way. There's no right way to capture
+
+594
+00:32:39,279 --> 00:32:43,279
+everything. Uh like table is extremely
+
+595
+00:32:42,080 --> 00:32:45,120
+easy to manage like all the
+
+596
+00:32:43,279 --> 00:32:48,480
+transactional stuff like putting the
+
+597
+00:32:45,120 --> 00:32:51,679
+table is so easy to manage to scale. Uh
+
+598
+00:32:48,480 --> 00:32:55,200
+like graph is challenging.
+
+599
+00:32:51,679 --> 00:32:58,320
+I know Ricky has a solution but I don't
+
+600
+00:32:55,200 --> 00:33:00,240
+I'm thinking about it. graph you
+
+601
+00:32:58,320 --> 00:33:03,279
+changing one bit information potentially
+
+602
+00:33:00,240 --> 00:33:06,080
+you change changing a lot of cascading
+
+603
+00:33:03,279 --> 00:33:08,320
+connections but the graph is amazing for
+
+604
+00:33:06,080 --> 00:33:12,880
+analytics
+
+605
+00:33:08,320 --> 00:33:15,519
+uh label probably like RDF in certain uh
+
+606
+00:33:12,880 --> 00:33:18,559
+like when you have a very clearly
+
+607
+00:33:15,519 --> 00:33:22,720
+defined domain it's amazing because it's
+
+608
+00:33:18,559 --> 00:33:24,880
+it's clearly uh it's the information is
+
+609
+00:33:22,720 --> 00:33:26,720
+is coded in a way that you can reason
+
+610
+00:33:24,880 --> 00:33:28,640
+with the
+
+611
+00:33:26,720 --> 00:33:31,120
+But then if you're in a high dynamic
+
+612
+00:33:28,640 --> 00:33:34,799
+situation and everything
+
+613
+00:33:31,120 --> 00:33:40,640
+shifts, the devolution shifts, uh you
+
+614
+00:33:34,799 --> 00:33:44,320
+have trouble. Like um we um I found out
+
+615
+00:33:40,640 --> 00:33:46,799
+that uh between Japan, Japanese culture
+
+616
+00:33:44,320 --> 00:33:50,399
+and American culture,
+
+617
+00:33:46,799 --> 00:33:52,000
+when does the green become blue is
+
+618
+00:33:50,399 --> 00:33:54,640
+different.
+
+619
+00:33:52,000 --> 00:33:58,159
+So by coding something by the color as
+
+620
+00:33:54,640 --> 00:33:59,840
+green or blue and reason on top of it uh
+
+621
+00:33:58,159 --> 00:34:01,840
+if you don't attach the cultural
+
+622
+00:33:59,840 --> 00:34:03,519
+background you may potentially be in
+
+623
+00:34:01,840 --> 00:34:06,240
+trouble.
+
+624
+00:34:03,519 --> 00:34:11,359
+And so that's kind of things that's like
+
+625
+00:34:06,240 --> 00:34:15,520
+um how much a uh a symbolic coding can
+
+626
+00:34:11,359 --> 00:34:18,159
+code the reality um is very depends on
+
+627
+00:34:15,520 --> 00:34:21,359
+the context. Like if you can accept your
+
+628
+00:34:18,159 --> 00:34:24,800
+boundaries it may work very well but
+
+629
+00:34:21,359 --> 00:34:27,119
+anytime the you need to uh qualify
+
+630
+00:34:24,800 --> 00:34:32,200
+what's the boundary of the of the
+
+631
+00:34:27,119 --> 00:34:32,200
+application where I'm coding it. Yeah.
+
+632
+00:34:33,599 --> 00:34:40,320
+So back to this data set. Um
+
+633
+00:34:37,359 --> 00:34:43,599
+here's all the columns I found in the in
+
+634
+00:34:40,320 --> 00:34:46,000
+the data set. And uh you have the date
+
+635
+00:34:43,599 --> 00:34:48,960
+information, you have airline
+
+636
+00:34:46,000 --> 00:34:52,720
+information, flight number and you have
+
+637
+00:34:48,960 --> 00:34:55,200
+original uh where is come from airport
+
+638
+00:34:52,720 --> 00:34:58,000
+and destination
+
+639
+00:34:55,200 --> 00:34:59,520
+uh and uh you have the departure
+
+640
+00:34:58,000 --> 00:35:01,599
+information.
+
+641
+00:34:59,520 --> 00:35:05,280
+So when when I look at it, I realize
+
+642
+00:35:01,599 --> 00:35:10,400
+like oh wow the the airplane the flight
+
+643
+00:35:05,280 --> 00:35:13,760
+is really not as simple as I thought.
+
+644
+00:35:10,400 --> 00:35:15,839
+And that's actually the thing with
+
+645
+00:35:13,760 --> 00:35:20,240
+everything I did with the data is like
+
+646
+00:35:15,839 --> 00:35:22,240
+once you look into data this always
+
+647
+00:35:20,240 --> 00:35:23,520
+things you don't expect the more
+
+648
+00:35:22,240 --> 00:35:26,480
+information more data you need to
+
+649
+00:35:23,520 --> 00:35:29,040
+capture and not even talking about edge
+
+650
+00:35:26,480 --> 00:35:33,119
+cases when you start talking edge cases
+
+651
+00:35:29,040 --> 00:35:35,599
+that's um suddenly the the the thing you
+
+652
+00:35:33,119 --> 00:35:40,800
+need to consider is
+
+653
+00:35:35,599 --> 00:35:43,680
+ex exploding um arrival information um
+
+654
+00:35:40,800 --> 00:35:48,160
+cancel and delay information
+
+655
+00:35:43,680 --> 00:35:53,760
+um and then diversion diversion one two
+
+656
+00:35:48,160 --> 00:35:57,680
+three I just skip it so
+
+657
+00:35:53,760 --> 00:36:01,599
+this information um so on the right it's
+
+658
+00:35:57,680 --> 00:36:05,680
+trying to group them into like in the
+
+659
+00:36:01,599 --> 00:36:09,280
+graph format because what one one
+
+660
+00:36:05,680 --> 00:36:13,359
+examp one thing immediately jumps out is
+
+661
+00:36:09,280 --> 00:36:16,240
+uh If you model as a graph right now,
+
+662
+00:36:13,359 --> 00:36:18,480
+you can actually test have as many
+
+663
+00:36:16,240 --> 00:36:20,320
+diversion as possible. It doesn't matter
+
+664
+00:36:18,480 --> 00:36:24,480
+anymore like how many diversion you
+
+665
+00:36:20,320 --> 00:36:27,280
+have. So so really um when you we break
+
+666
+00:36:24,480 --> 00:36:30,400
+this the table down into graph format as
+
+667
+00:36:27,280 --> 00:36:33,040
+a relationship the the constraint of
+
+668
+00:36:30,400 --> 00:36:35,680
+what information can capture um is
+
+669
+00:36:33,040 --> 00:36:39,119
+loosened. This is like a big improvement
+
+670
+00:36:35,680 --> 00:36:44,880
+of the graph. Yeah, that's um I what I
+
+671
+00:36:39,119 --> 00:36:48,720
+really really appreciate and um now
+
+672
+00:36:44,880 --> 00:36:51,720
+let's load the data in the uh database.
+
+673
+00:36:48,720 --> 00:36:51,720
+So
+
+674
+00:36:52,400 --> 00:36:59,040
+so I actually
+
+675
+00:36:54,640 --> 00:37:01,119
+in the GitHub I prepared this like uh
+
+676
+00:36:59,040 --> 00:37:03,520
+data set. So if you guys interested you
+
+677
+00:37:01,119 --> 00:37:06,960
+can make work later I can just
+
+678
+00:37:03,520 --> 00:37:10,400
+demonstrate how it works today.
+
+679
+00:37:06,960 --> 00:37:15,520
+So I I used used new 4J for this
+
+680
+00:37:10,400 --> 00:37:19,839
+exercise. uh using new forj like a
+
+681
+00:37:15,520 --> 00:37:23,520
+data database like browser new browser
+
+682
+00:37:19,839 --> 00:37:26,640
+just uh create a project you guys all
+
+683
+00:37:23,520 --> 00:37:31,520
+use new browser right
+
+684
+00:37:26,640 --> 00:37:33,920
+you use the yeah yeah okay so I don't
+
+685
+00:37:31,520 --> 00:37:37,280
+even go over that
+
+686
+00:37:33,920 --> 00:37:40,480
+great yeah so
+
+687
+00:37:37,280 --> 00:37:43,359
+short it's just like I have some scripts
+
+688
+00:37:40,480 --> 00:37:44,800
+in how to load this data sets can if
+
+689
+00:37:43,359 --> 00:37:49,680
+you're interested you can look at that
+
+690
+00:37:44,800 --> 00:37:56,000
+later um basically just like here I just
+
+691
+00:37:49,680 --> 00:38:00,079
+modeled the data into uh airport
+
+692
+00:37:56,000 --> 00:38:03,359
+um originally you have
+
+693
+00:38:00,079 --> 00:38:05,760
+the you have origin and destination so
+
+694
+00:38:03,359 --> 00:38:08,079
+normalize the name
+
+695
+00:38:05,760 --> 00:38:11,880
+uh airline [clears throat]
+
+696
+00:38:08,079 --> 00:38:11,880
+and flight information
+
+697
+00:38:12,560 --> 00:38:19,000
+for this exercise. I just ignore the um
+
+698
+00:38:16,000 --> 00:38:19,000
+diversions
+
+699
+00:38:19,731 --> 00:38:23,480
+[clears throat]
+
+700
+00:38:20,400 --> 00:38:23,480
+and and
+
+701
+00:38:23,599 --> 00:38:28,320
+you can use so what I what I want to
+
+702
+00:38:25,599 --> 00:38:30,240
+demonstrate here first is um so so when
+
+703
+00:38:28,320 --> 00:38:34,000
+I look at the how we work with the graph
+
+704
+00:38:30,240 --> 00:38:36,000
+data perform an analysis investigations
+
+705
+00:38:34,000 --> 00:38:39,599
+I notice there's a couple different
+
+706
+00:38:36,000 --> 00:38:41,440
+patterns uh one pattern I call a graph
+
+707
+00:38:39,599 --> 00:38:44,560
+walk
+
+708
+00:38:41,440 --> 00:38:49,520
+graph walk is you start with some place
+
+709
+00:38:44,560 --> 00:38:51,200
+um like a name, a address, an entity and
+
+710
+00:38:49,520 --> 00:38:54,400
+you start looking for what are the
+
+711
+00:38:51,200 --> 00:38:58,400
+connected things. So this is the most
+
+712
+00:38:54,400 --> 00:39:02,240
+similar to how we think and it's like we
+
+713
+00:38:58,400 --> 00:39:03,680
+think by like even how we remember
+
+714
+00:39:02,240 --> 00:39:05,839
+things, how we memorize things, we
+
+715
+00:39:03,680 --> 00:39:07,839
+memorize things by association. So we
+
+716
+00:39:05,839 --> 00:39:11,599
+often think from one place go to the
+
+717
+00:39:07,839 --> 00:39:15,200
+next go to the next start building off a
+
+718
+00:39:11,599 --> 00:39:17,599
+a map of this. So I found that that
+
+719
+00:39:15,200 --> 00:39:20,800
+approach is like in the a lot of
+
+720
+00:39:17,599 --> 00:39:23,200
+investigation uh use cases. I see the
+
+721
+00:39:20,800 --> 00:39:29,680
+investigators analysts they use this
+
+722
+00:39:23,200 --> 00:39:32,480
+most often. Um now with the um
+
+723
+00:39:29,680 --> 00:39:35,280
+with the new 4J browser you you could
+
+724
+00:39:32,480 --> 00:39:39,839
+write this type of query to pull out the
+
+725
+00:39:35,280 --> 00:39:43,040
+specific informations. Uh um but in the
+
+726
+00:39:39,839 --> 00:39:46,160
+application uh that
+
+727
+00:39:43,040 --> 00:39:48,880
+go into the production for the
+
+728
+00:39:46,160 --> 00:39:52,000
+enterprise it's more convenient to
+
+729
+00:39:48,880 --> 00:39:54,960
+building search and then expand. So I
+
+730
+00:39:52,000 --> 00:39:57,920
+call that search expand is the uh like
+
+731
+00:39:54,960 --> 00:40:04,320
+fundamental elements for for for graph
+
+732
+00:39:57,920 --> 00:40:06,400
+walk. Yeah. And so it seems
+
+733
+00:40:04,320 --> 00:40:08,000
+I just want to have a quick like
+
+734
+00:40:06,400 --> 00:40:11,040
+introduction. So I'm just going to use
+
+735
+00:40:08,000 --> 00:40:14,560
+use graphics are to to illustrate this.
+
+736
+00:40:11,040 --> 00:40:19,119
+Um so
+
+737
+00:40:14,560 --> 00:40:23,040
+let me just like uh clean up the let's
+
+738
+00:40:19,119 --> 00:40:23,040
+see let me put this
+
+739
+00:40:23,680 --> 00:40:26,680
+Okay.
+
+740
+00:40:28,800 --> 00:40:33,599
+So
+
+741
+00:40:30,320 --> 00:40:36,720
+in the data we created we have those
+
+742
+00:40:33,599 --> 00:40:38,560
+categories being created like aircraft,
+
+743
+00:40:36,720 --> 00:40:42,523
+airport,
+
+744
+00:40:38,560 --> 00:40:44,160
+such and such. Um
+
+745
+00:40:42,523 --> 00:40:47,599
+[clears throat]
+
+746
+00:40:44,160 --> 00:40:52,560
+to make it easy to search. Um so
+
+747
+00:40:47,599 --> 00:40:52,560
+basically uh did I just one second
+
+748
+00:41:02,880 --> 00:41:09,400
+I think I've got the
+
+749
+00:41:05,920 --> 00:41:09,400
+Yeah, that's the
+
+750
+00:41:26,319 --> 00:41:34,800
+So, uh let me go back a little bit. So,
+
+751
+00:41:30,240 --> 00:41:37,119
+here's in the uh in the uh read in the
+
+752
+00:41:34,800 --> 00:41:39,520
+data set I have this.
+
+753
+00:41:37,119 --> 00:41:42,400
+So basically you create a project
+
+754
+00:41:39,520 --> 00:41:45,359
+because I'm I'm running the new database
+
+755
+00:41:42,400 --> 00:41:48,000
+on the on the local host. So just give a
+
+756
+00:41:45,359 --> 00:41:51,280
+credential. I'm asking to connect the
+
+757
+00:41:48,000 --> 00:41:54,079
+data directly to the database.
+
+758
+00:41:51,280 --> 00:41:56,800
+So so the data does not go through the
+
+759
+00:41:54,079 --> 00:41:59,359
+internet. There's one um practical
+
+760
+00:41:56,800 --> 00:42:05,359
+reason is because the when you're
+
+761
+00:41:59,359 --> 00:42:08,880
+running Neo4j locally um it's HTTP HTTP
+
+762
+00:42:05,359 --> 00:42:13,119
+uh connection uh however any web app
+
+763
+00:42:08,880 --> 00:42:15,280
+that is over internet HTTPS
+
+764
+00:42:13,119 --> 00:42:17,920
+um you won't be able to talk to another
+
+765
+00:42:15,280 --> 00:42:22,079
+database on the another server using
+
+766
+00:42:17,920 --> 00:42:24,160
+HTTP but locally you can so
+
+767
+00:42:22,079 --> 00:42:27,119
+that's why we asked the connection to
+
+768
+00:42:24,160 --> 00:42:31,640
+just a fast directly to the to the local
+
+769
+00:42:27,119 --> 00:42:31,640
+database. Um so
+
+770
+00:42:32,400 --> 00:42:38,960
+once you you uh so here's the uh this
+
+771
+00:42:35,520 --> 00:42:42,240
+the three entities like categories uh
+
+772
+00:42:38,960 --> 00:42:44,960
+the loading script created and u here
+
+773
+00:42:42,240 --> 00:42:50,319
+are all the relationship I created but
+
+774
+00:42:44,960 --> 00:42:53,359
+to to to perform um the the graph walk
+
+775
+00:42:50,319 --> 00:42:56,319
+so the easiest way I do is I first I
+
+776
+00:42:53,359 --> 00:43:01,680
+create index so basically I say here
+
+777
+00:42:56,319 --> 00:43:06,800
+like a I add uh the area code city to
+
+778
+00:43:01,680 --> 00:43:08,800
+the index. And once we have indexed um I
+
+779
+00:43:06,800 --> 00:43:13,119
+can just quickly say hey let me search
+
+780
+00:43:08,800 --> 00:43:18,599
+for uh SF
+
+781
+00:43:13,119 --> 00:43:18,599
+since I come from San Francisco that
+
+782
+00:43:18,640 --> 00:43:21,640
+let's
+
+783
+00:43:30,319 --> 00:43:40,200
+once we have the just expand from here.
+
+784
+00:43:34,079 --> 00:43:40,200
+Yeah, we can see uh let's see let's see
+
+785
+00:43:41,359 --> 00:43:49,440
+which other cities is connected and
+
+786
+00:43:46,240 --> 00:43:51,760
+and maybe we can look at the secondary
+
+787
+00:43:49,440 --> 00:43:54,760
+connection. Let's connect them all to
+
+788
+00:43:51,760 --> 00:43:54,760
+the
+
+789
+00:43:55,750 --> 00:44:00,599
+[clears throat]
+
+790
+00:43:57,599 --> 00:44:00,599
+spend.
+
+791
+00:44:03,359 --> 00:44:07,800
+Oh, that's a lot.
+
+792
+00:44:09,359 --> 00:44:14,319
+So
+
+793
+00:44:10,880 --> 00:44:15,839
+I think I made a a
+
+794
+00:44:14,319 --> 00:44:18,560
+choice wrong choice because San
+
+795
+00:44:15,839 --> 00:44:20,240
+Francisco is a hub. So when San
+
+796
+00:44:18,560 --> 00:44:22,640
+Francisco system go to the other hub
+
+797
+00:44:20,240 --> 00:44:24,880
+then suddenly you have a the graph
+
+798
+00:44:22,640 --> 00:44:27,839
+become very dense. And this graph is
+
+799
+00:44:24,880 --> 00:44:29,920
+actually I think also called skillfree
+
+800
+00:44:27,839 --> 00:44:31,599
+network because if you look at the
+
+801
+00:44:29,920 --> 00:44:34,960
+distribution of the number of
+
+802
+00:44:31,599 --> 00:44:38,319
+connections it's it's a logarithm um
+
+803
+00:44:34,960 --> 00:44:42,000
+change thing. So
+
+804
+00:44:38,319 --> 00:44:45,040
+let me go back to it the stuff on SFO.
+
+805
+00:44:42,000 --> 00:44:48,040
+Let me just finding a just look at the
+
+806
+00:44:45,040 --> 00:44:48,040
+first
+
+807
+00:44:48,640 --> 00:44:56,480
+first line display and then maybe do a
+
+808
+00:44:52,400 --> 00:45:00,680
+uh perform a layout uh let's see a tree
+
+809
+00:44:56,480 --> 00:45:00,680
+layout or circular layout.
+
+810
+00:45:01,119 --> 00:45:07,119
+So to just like uh make information
+
+811
+00:45:04,319 --> 00:45:09,119
+easier to digest or I can put on the
+
+812
+00:45:07,119 --> 00:45:11,920
+graph look at all the cities that
+
+813
+00:45:09,119 --> 00:45:15,280
+connected from has a direct flight from
+
+814
+00:45:11,920 --> 00:45:16,880
+San Francisco. Uh so this is really I I
+
+815
+00:45:15,280 --> 00:45:21,760
+I found that this kind of way of working
+
+816
+00:45:16,880 --> 00:45:24,000
+with data is more um hands-on
+
+817
+00:45:21,760 --> 00:45:26,960
+explorative deep on the information and
+
+818
+00:45:24,000 --> 00:45:30,240
+then like maybe I can see hey uh from
+
+819
+00:45:26,960 --> 00:45:34,319
+this city over here uh that's Spokam
+
+820
+00:45:30,240 --> 00:45:37,839
+what others cities has
+
+821
+00:45:34,319 --> 00:45:41,040
+connected to. So you can just like uh
+
+822
+00:45:37,839 --> 00:45:43,760
+step by step explore. So this is manual
+
+823
+00:45:41,040 --> 00:45:47,119
+investigation process uh which I found
+
+824
+00:45:43,760 --> 00:45:49,599
+it to be uh happens very often in in the
+
+825
+00:45:47,119 --> 00:45:52,880
+investigation workflow. The other
+
+826
+00:45:49,599 --> 00:45:56,880
+process is where you actually have a
+
+827
+00:45:52,880 --> 00:45:58,960
+idea about I I want to pull certain a
+
+828
+00:45:56,880 --> 00:46:01,359
+subgraph I want to pull certain
+
+829
+00:45:58,960 --> 00:46:04,160
+information out and then I want to find
+
+830
+00:46:01,359 --> 00:46:07,760
+a way to visualize the information uh in
+
+831
+00:46:04,160 --> 00:46:10,480
+the most effective way. Um
+
+832
+00:46:07,760 --> 00:46:13,839
+so um
+
+833
+00:46:10,480 --> 00:46:16,720
+with um with the data loaded in the in
+
+834
+00:46:13,839 --> 00:46:18,800
+the graph database where of course you
+
+835
+00:46:16,720 --> 00:46:21,200
+can start to run a lot of graph
+
+836
+00:46:18,800 --> 00:46:26,680
+algorithms. Uh so in this case what I
+
+837
+00:46:21,200 --> 00:46:26,680
+what I did is like uh uh
+
+838
+00:46:26,880 --> 00:46:35,440
+I added some statistical calculations of
+
+839
+00:46:30,720 --> 00:46:38,640
+of the the of the airports. Uh now like
+
+840
+00:46:35,440 --> 00:46:41,760
+for each airport look at the uh how many
+
+841
+00:46:38,640 --> 00:46:43,839
+arrivals it has
+
+842
+00:46:41,760 --> 00:46:45,920
+how many departures it has. Uh by the
+
+843
+00:46:43,839 --> 00:46:49,760
+way I only know single day for for this
+
+844
+00:46:45,920 --> 00:46:52,880
+purpose and the data set I have on the
+
+845
+00:46:49,760 --> 00:46:56,240
+on the on the GitHub is about one month
+
+846
+00:46:52,880 --> 00:46:58,720
+data but it's pretty big and if you
+
+847
+00:46:56,240 --> 00:47:02,079
+start doing one one year data you can
+
+848
+00:46:58,720 --> 00:47:05,280
+start doing like a seasonal uh analysis
+
+849
+00:47:02,079 --> 00:47:08,560
+trend analysis but even for one day uh
+
+850
+00:47:05,280 --> 00:47:11,599
+for a uh like this like illustration
+
+851
+00:47:08,560 --> 00:47:14,960
+purpose is more than sufficient
+
+852
+00:47:11,599 --> 00:47:17,599
+and you can look at um uh delays like
+
+853
+00:47:14,960 --> 00:47:21,040
+you can look at is there any association
+
+854
+00:47:17,599 --> 00:47:23,520
+with the uh how busy the airport is with
+
+855
+00:47:21,040 --> 00:47:25,920
+how long the delay is which airport has
+
+856
+00:47:23,520 --> 00:47:31,280
+abnormally high
+
+857
+00:47:25,920 --> 00:47:35,680
+like delay times. Yeah. So all all a lot
+
+858
+00:47:31,280 --> 00:47:37,440
+realize that graph um there's problem
+
+859
+00:47:35,680 --> 00:47:39,599
+definitely graph answer but there's a
+
+860
+00:47:37,440 --> 00:47:43,680
+lot of problems is really in the
+
+861
+00:47:39,599 --> 00:47:46,960
+traditional like BI or analytics realm
+
+862
+00:47:43,680 --> 00:47:51,359
+that the the graph platform should also
+
+863
+00:47:46,960 --> 00:47:57,040
+be able to answer and so
+
+864
+00:47:51,359 --> 00:48:01,040
+once we have those informations in uh
+
+865
+00:47:57,040 --> 00:48:03,680
+let me let me just pull all the uh
+
+866
+00:48:01,040 --> 00:48:06,680
+graph data all the air point out let's
+
+867
+00:48:03,680 --> 00:48:06,680
+see
+
+868
+00:48:11,599 --> 00:48:17,839
+okay let's get rid of the connections
+
+869
+00:48:13,520 --> 00:48:21,520
+just look at the airport itself
+
+870
+00:48:17,839 --> 00:48:24,960
+so here are all the airports uh airports
+
+871
+00:48:21,520 --> 00:48:28,480
+in the US and in in this data set and if
+
+872
+00:48:24,960 --> 00:48:32,559
+you look at the properties that we have
+
+873
+00:48:28,480 --> 00:48:37,440
+and uh there's uh many properties like
+
+874
+00:48:32,559 --> 00:48:40,240
+uh the uh delay uh arrival flight delay
+
+875
+00:48:37,440 --> 00:48:42,800
+uh departure flight delay that's average
+
+876
+00:48:40,240 --> 00:48:48,800
+computer for each city and then I have
+
+877
+00:48:42,800 --> 00:48:51,680
+some like between closeness uh vector um
+
+878
+00:48:48,800 --> 00:48:55,280
+like centrality
+
+879
+00:48:51,680 --> 00:48:59,119
+page rank and the total total number
+
+880
+00:48:55,280 --> 00:49:02,319
+arrival total number departure. So, so a
+
+881
+00:48:59,119 --> 00:49:04,960
+lot of so a lot of attributes here is
+
+882
+00:49:02,319 --> 00:49:07,680
+calculated on the graph and using the
+
+883
+00:49:04,960 --> 00:49:10,079
+graph calculation. Now then how we how
+
+884
+00:49:07,680 --> 00:49:14,280
+we visualize it, how we make sense of it
+
+885
+00:49:10,079 --> 00:49:14,280
+is um
+
+886
+00:49:14,800 --> 00:49:20,720
+those are dimensional data. So we
+
+887
+00:49:17,359 --> 00:49:23,200
+probably just want to uh using a uh
+
+888
+00:49:20,720 --> 00:49:26,079
+dimensional visualiz.
+
+889
+00:49:23,200 --> 00:49:29,440
+So that's something very easy to do with
+
+890
+00:49:26,079 --> 00:49:32,800
+any Python or JS code here. It just
+
+891
+00:49:29,440 --> 00:49:34,880
+makes it uh so let's look at um let's
+
+892
+00:49:32,800 --> 00:49:40,119
+say between
+
+893
+00:49:34,880 --> 00:49:40,119
+uh closeness and page.
+
+894
+00:49:46,559 --> 00:49:51,760
+That's interesting.
+
+895
+00:49:49,040 --> 00:49:54,240
+So by the way this I haven't done that
+
+896
+00:49:51,760 --> 00:49:58,160
+before. really just my first time just
+
+897
+00:49:54,240 --> 00:50:01,440
+like uh look at the data and with you
+
+898
+00:49:58,160 --> 00:50:04,400
+guys to see what we can what we can see.
+
+899
+00:50:01,440 --> 00:50:06,640
+Um so
+
+900
+00:50:04,400 --> 00:50:10,559
+you see there's some nodes with very
+
+901
+00:50:06,640 --> 00:50:13,359
+highness. Uh let me let me see if I can
+
+902
+00:50:10,559 --> 00:50:18,160
+could see the
+
+903
+00:50:13,359 --> 00:50:22,640
+oh DFW. Where's DFW?
+
+904
+00:50:18,160 --> 00:50:25,760
+>> Oh yeah, Dallas sport. Yeah. um
+
+905
+00:50:22,640 --> 00:50:29,040
+that one has like a
+
+906
+00:50:25,760 --> 00:50:30,960
+very high in all three matrix. So this
+
+907
+00:50:29,040 --> 00:50:34,640
+this this this is a very important
+
+908
+00:50:30,960 --> 00:50:36,400
+airport. If this airport somehow if
+
+909
+00:50:34,640 --> 00:50:38,079
+there's like a hurricane or something
+
+910
+00:50:36,400 --> 00:50:41,359
+happens over there, it's going to affect
+
+911
+00:50:38,079 --> 00:50:44,480
+a lot of flight and the second one is
+
+912
+00:50:41,359 --> 00:50:48,400
+Denver. Uh but what's interesting is
+
+913
+00:50:44,480 --> 00:50:51,520
+like uh most of this like uh airports
+
+914
+00:50:48,400 --> 00:50:55,440
+even they have a high closeness
+
+915
+00:50:51,520 --> 00:50:59,440
+but between us is pretty low meaning
+
+916
+00:50:55,440 --> 00:51:01,040
+there's a few hugs that really like
+
+917
+00:50:59,440 --> 00:51:03,040
+there I I think what's what's
+
+918
+00:51:01,040 --> 00:51:05,920
+interesting airlines this something I
+
+919
+00:51:03,040 --> 00:51:08,480
+realized is um
+
+920
+00:51:05,920 --> 00:51:10,720
+there's a big flight connecting major
+
+921
+00:51:08,480 --> 00:51:13,440
+cities and then there's a lot of this
+
+922
+00:51:10,720 --> 00:51:16,559
+like spikes like connect to smaller
+
+923
+00:51:13,440 --> 00:51:20,240
+cities. [clears throat] So
+
+924
+00:51:16,559 --> 00:51:23,599
+the the rod between big cities become
+
+925
+00:51:20,240 --> 00:51:28,160
+important like spies.
+
+926
+00:51:23,599 --> 00:51:29,760
+This is really like uh illustrated like
+
+927
+00:51:28,160 --> 00:51:31,760
+that
+
+928
+00:51:29,760 --> 00:51:35,119
+what happened in the in the in the road
+
+929
+00:51:31,760 --> 00:51:40,319
+design of of of the industry.
+
+930
+00:51:35,119 --> 00:51:43,200
+So next let's look at um um
+
+931
+00:51:40,319 --> 00:51:46,880
+let's look at let's see
+
+932
+00:51:43,200 --> 00:51:49,119
+look look uh total arrival
+
+933
+00:51:46,880 --> 00:51:54,920
+total departure
+
+934
+00:51:49,119 --> 00:51:54,920
+versus uh average arrival delay.
+
+935
+00:51:58,160 --> 00:52:05,599
+So that's also interesting. uh you see a
+
+936
+00:52:01,280 --> 00:52:08,480
+almost perfect um connection well total
+
+937
+00:52:05,599 --> 00:52:10,800
+arrival to departure they are the same
+
+938
+00:52:08,480 --> 00:52:15,280
+because when you have arrival you need
+
+939
+00:52:10,800 --> 00:52:20,079
+to go back so it's no surprise here um
+
+940
+00:52:15,280 --> 00:52:23,359
+so with you look at this look at the um
+
+941
+00:52:20,079 --> 00:52:25,920
+correlation between um
+
+942
+00:52:23,359 --> 00:52:28,800
+like average delay
+
+943
+00:52:25,920 --> 00:52:31,359
+uh and u so that that's interesting that
+
+944
+00:52:28,800 --> 00:52:33,680
+it means like uh the okay let's look
+
+945
+00:52:31,359 --> 00:52:38,720
+from here
+
+946
+00:52:33,680 --> 00:52:41,680
+it the uh the number of uh flights the
+
+947
+00:52:38,720 --> 00:52:44,000
+how busy the airport is is there's not a
+
+948
+00:52:41,680 --> 00:52:48,480
+direct correlation with the with the
+
+949
+00:52:44,000 --> 00:52:51,520
+delay um so
+
+950
+00:52:48,480 --> 00:52:53,839
+and in fact there's a few
+
+951
+00:52:51,520 --> 00:52:58,480
+this is one airport that's particularly
+
+952
+00:52:53,839 --> 00:53:01,760
+bad SMS see which one is it
+
+953
+00:52:58,480 --> 00:53:04,160
+Santa Maria Yeah, maybe most like it has
+
+954
+00:53:01,760 --> 00:53:07,200
+a bad day.
+
+955
+00:53:04,160 --> 00:53:10,480
+Once we look at the over the time, we
+
+956
+00:53:07,200 --> 00:53:14,720
+might see some different patterns. Um,
+
+957
+00:53:10,480 --> 00:53:16,480
+but this is one one important thing to
+
+958
+00:53:14,720 --> 00:53:19,520
+to to
+
+959
+00:53:16,480 --> 00:53:23,040
+like look at the data like really even
+
+960
+00:53:19,520 --> 00:53:25,040
+though our data is kept in the graph but
+
+961
+00:53:23,040 --> 00:53:28,079
+very often we really want to look at
+
+962
+00:53:25,040 --> 00:53:30,559
+data as dimensional as well. Yeah.
+
+963
+00:53:28,079 --> 00:53:34,480
+>> Question. How hard can [clears throat]
+
+964
+00:53:30,559 --> 00:53:39,400
+this over time because in America
+
+965
+00:53:34,480 --> 00:53:39,400
+I know there are many more direct
+
+966
+00:53:39,920 --> 00:53:43,760
+>> a lot of things change really
+
+967
+00:53:41,280 --> 00:53:47,599
+interesting to me just as travel
+
+968
+00:53:43,760 --> 00:53:52,240
+>> to see this time
+
+969
+00:53:47,599 --> 00:53:54,160
+>> well it's here is pretty easy because um
+
+970
+00:53:52,240 --> 00:53:56,720
+there's a couple way to do that one is
+
+971
+00:53:54,160 --> 00:54:00,079
+like I just load every data data as as
+
+972
+00:53:56,720 --> 00:54:03,680
+as a note and then I can apply a filter
+
+973
+00:54:00,079 --> 00:54:05,680
+to to filter on the time that you can
+
+974
+00:54:03,680 --> 00:54:09,040
+when I filter immediately can see how
+
+975
+00:54:05,680 --> 00:54:10,800
+things jump. The other thing is um uh
+
+976
+00:54:09,040 --> 00:54:12,640
+this is one another concept is called
+
+977
+00:54:10,800 --> 00:54:14,240
+like data driven data mapping
+
+978
+00:54:12,640 --> 00:54:16,960
+visualization.
+
+979
+00:54:14,240 --> 00:54:20,240
+So if you have a like here it's a data
+
+980
+00:54:16,960 --> 00:54:23,440
+mapping meaning if I change the property
+
+981
+00:54:20,240 --> 00:54:28,559
+on on this node it's going to shove in
+
+982
+00:54:23,440 --> 00:54:31,440
+the in the position. So, so we through a
+
+983
+00:54:28,559 --> 00:54:34,240
+so through a we can just change the
+
+984
+00:54:31,440 --> 00:54:37,280
+numbers or even live change the numbers
+
+985
+00:54:34,240 --> 00:54:40,440
+and you will see things animates over
+
+986
+00:54:37,280 --> 00:54:40,440
+the time.
+
+987
+00:54:40,720 --> 00:54:47,440
+So um one of the thing I noticed is like
+
+988
+00:54:45,520 --> 00:54:49,200
+the importance is of a change in
+
+989
+00:54:47,440 --> 00:54:52,319
+perspective.
+
+990
+00:54:49,200 --> 00:54:55,760
+Here we look at the one perspective of
+
+991
+00:54:52,319 --> 00:54:59,040
+uh like a departure and um and a delay
+
+992
+00:54:55,760 --> 00:55:03,920
+but we maybe we want to like for example
+
+993
+00:54:59,040 --> 00:55:07,040
+let's say here um if I go to shift into
+
+994
+00:55:03,920 --> 00:55:10,079
+the users
+
+995
+00:55:07,040 --> 00:55:13,040
+let's see I'm just going to let it start
+
+996
+00:55:10,079 --> 00:55:14,559
+rotating slowly and
+
+997
+00:55:13,040 --> 00:55:17,119
+shifting between two different
+
+998
+00:55:14,559 --> 00:55:17,119
+perspective
+
+999
+00:55:21,680 --> 00:55:30,880
+So this technique is actually quite
+
+1000
+00:55:26,559 --> 00:55:34,880
+useful in many situations. Um especially
+
+1001
+00:55:30,880 --> 00:55:38,480
+in highdimensional data like um very
+
+1002
+00:55:34,880 --> 00:55:41,359
+often we because what we can visualize
+
+1003
+00:55:38,480 --> 00:55:43,599
+is is two-dimensional
+
+1004
+00:55:41,359 --> 00:55:46,240
+information. two dimension information.
+
+1005
+00:55:43,599 --> 00:55:51,040
+Let's say if you if you add the color,
+
+1006
+00:55:46,240 --> 00:55:53,119
+shape, um size
+
+1007
+00:55:51,040 --> 00:55:55,599
+plus two dimension, you have roughly
+
+1008
+00:55:53,119 --> 00:55:59,599
+five dimension information can be coded
+
+1009
+00:55:55,599 --> 00:56:02,880
+visually at the same time. Um be able to
+
+1010
+00:55:59,599 --> 00:56:06,480
+have added third dimension is very
+
+1011
+00:56:02,880 --> 00:56:10,079
+helpful because uh one thing like adding
+
+1012
+00:56:06,480 --> 00:56:15,119
+a dimension is not 1 + 1= to two. is is
+
+1013
+00:56:10,079 --> 00:56:17,920
+really um it's like the volume the area
+
+1014
+00:56:15,119 --> 00:56:20,559
+we can compare. So be able to have a
+
+1015
+00:56:17,920 --> 00:56:24,000
+third additional dimension to visualize
+
+1016
+00:56:20,559 --> 00:56:26,880
+information often is very very helpful
+
+1017
+00:56:24,000 --> 00:56:29,440
+uh in in gaining the insight. We
+
+1018
+00:56:26,880 --> 00:56:31,760
+actually have a I actually have a video
+
+1019
+00:56:29,440 --> 00:56:33,680
+since we have a
+
+1020
+00:56:31,760 --> 00:56:35,920
+random talk. I just going to show you
+
+1021
+00:56:33,680 --> 00:56:39,839
+guys things I have done before like
+
+1022
+00:56:35,920 --> 00:56:44,839
+information. Okay. I show sure what is
+
+1023
+00:56:39,839 --> 00:56:44,839
+uh let me see actually it's in the
+
+1024
+00:56:48,240 --> 00:56:51,640
+let me see
+
+1025
+00:56:51,839 --> 00:56:55,319
+is that one
+
+1026
+00:56:56,000 --> 00:57:00,280
+yeah that's a video
+
+1027
+00:57:06,240 --> 00:57:08,559
+I was
+
+1028
+00:57:10,319 --> 00:57:14,680
+This is example of
+
+1029
+00:57:15,119 --> 00:57:21,640
+just one second. Uh let me change the
+
+1030
+00:57:18,640 --> 00:57:21,640
+sharing.
+
+1031
+00:57:46,079 --> 00:57:50,480
+This is not exactly graph visualization
+
+1032
+00:57:48,640 --> 00:57:53,280
+but it's more like a high dimensional
+
+1033
+00:57:50,480 --> 00:57:55,520
+visualization. So this is a uh
+
+1034
+00:57:53,280 --> 00:57:58,480
+measurement so called flow seytometry.
+
+1035
+00:57:55,520 --> 00:58:00,079
+really uh you take the blood cell from
+
+1036
+00:57:58,480 --> 00:58:02,720
+the
+
+1037
+00:58:00,079 --> 00:58:06,960
+blood samples. You send each blood cells
+
+1038
+00:58:02,720 --> 00:58:11,119
+through a uh um instrument to measure
+
+1039
+00:58:06,960 --> 00:58:12,960
+about between 20 to 45 primeters.
+
+1040
+00:58:11,119 --> 00:58:15,280
+And then you can look at this like high
+
+1041
+00:58:12,960 --> 00:58:18,799
+dimension information. We're trying to
+
+1042
+00:58:15,280 --> 00:58:20,480
+figure out like uh whether um the
+
+1043
+00:58:18,799 --> 00:58:24,720
+patient has cancer or what kind of
+
+1044
+00:58:20,480 --> 00:58:27,359
+cancer the patient is patient has. And
+
+1045
+00:58:24,720 --> 00:58:29,599
+to look through this those like uh high
+
+1046
+00:58:27,359 --> 00:58:33,359
+dimension informations it literally
+
+1047
+00:58:29,599 --> 00:58:36,640
+takes a expert doctor four hours at
+
+1048
+00:58:33,359 --> 00:58:38,960
+least to compare many many two
+
+1049
+00:58:36,640 --> 00:58:42,160
+dimensional
+
+1050
+00:58:38,960 --> 00:58:45,760
+plots to to identify uh what actually
+
+1051
+00:58:42,160 --> 00:58:50,480
+happened what actually uh
+
+1052
+00:58:45,760 --> 00:58:54,079
+like plaster of the blood cells uh that
+
+1053
+00:58:50,480 --> 00:58:57,599
+indicating of the cancer And so what we
+
+1054
+00:58:54,079 --> 00:59:00,720
+did is um we uh so this is a VR
+
+1055
+00:58:57,599 --> 00:59:03,520
+application. We really represent each
+
+1056
+00:59:00,720 --> 00:59:06,240
+cells as a node in the space and and
+
+1057
+00:59:03,520 --> 00:59:10,640
+also
+
+1058
+00:59:06,240 --> 00:59:14,160
+um there's a there's a two connected 3D
+
+1059
+00:59:10,640 --> 00:59:17,839
+3D scatter plot. So essentially you look
+
+1060
+00:59:14,160 --> 00:59:22,000
+at the six dimension spatially uh at one
+
+1061
+00:59:17,839 --> 00:59:24,240
+time and that the ability to select a
+
+1062
+00:59:22,000 --> 00:59:27,119
+group and look at the all the splitting
+
+1063
+00:59:24,240 --> 00:59:30,079
+in the other presentations
+
+1064
+00:59:27,119 --> 00:59:33,040
+that dynamically change your selections
+
+1065
+00:59:30,079 --> 00:59:33,760
+change the parameters that you use
+
+1066
+00:59:33,040 --> 00:59:36,640
+present [clears throat]
+
+1067
+00:59:33,760 --> 00:59:41,920
+that literally help them to identify the
+
+1068
+00:59:36,640 --> 00:59:45,359
+like important clusters down to 10 to 15
+
+1069
+00:59:41,920 --> 00:59:47,760
+And uh so there was the example that the
+
+1070
+00:59:45,359 --> 00:59:50,079
+the person who just is talking about he
+
+1071
+00:59:47,760 --> 00:59:53,440
+was in London here at a gas guys
+
+1072
+00:59:50,079 --> 00:59:55,680
+hospital just across the cross river. So
+
+1073
+00:59:53,440 --> 00:59:58,720
+they gave him a case that hey this case
+
+1074
+00:59:55,680 --> 01:00:01,119
+would took us a week. What you what can
+
+1075
+00:59:58,720 --> 01:00:03,599
+you find in in 15 minutes? He figured
+
+1076
+01:00:01,119 --> 01:00:05,839
+out, hey, look, this is this is class
+
+1077
+01:00:03,599 --> 01:00:10,160
+cluster B cells indicating that the
+
+1078
+01:00:05,839 --> 01:00:13,040
+person has this um cancer cells. And
+
+1079
+01:00:10,160 --> 01:00:15,920
+this ability to identify that clustering
+
+1080
+01:00:13,040 --> 01:00:17,680
+is really because he he was able to look
+
+1081
+01:00:15,920 --> 01:00:20,880
+at the sixdimensional information all at
+
+1082
+01:00:17,680 --> 01:00:23,200
+once without be able like does not need
+
+1083
+01:00:20,880 --> 01:00:26,079
+to shift context because if you look
+
+1084
+01:00:23,200 --> 01:00:28,720
+from the a static two dimensional
+
+1085
+01:00:26,079 --> 01:00:30,880
+scatter shifting to another shifting
+
+1086
+01:00:28,720 --> 01:00:33,200
+there's a lot of contextual shift that
+
+1087
+01:00:30,880 --> 01:00:36,480
+really slows you down be able to see
+
+1088
+01:00:33,200 --> 01:00:40,079
+them in one place it's things everything
+
+1089
+01:00:36,480 --> 01:00:40,079
+becomes so much easier to digest
+
+1090
+01:00:40,640 --> 01:00:45,280
+That's really the the power of
+
+1091
+01:00:42,880 --> 01:00:48,720
+visualization, right?
+
+1092
+01:00:45,280 --> 01:00:51,760
+That makes so much easier to gain what's
+
+1093
+01:00:48,720 --> 01:00:56,520
+to see see into data, see what's what's
+
+1094
+01:00:51,760 --> 01:00:56,520
+what's in there. Um,
+
+1095
+01:01:04,240 --> 01:01:07,880
+which one is that?
+
+1096
+01:01:12,720 --> 01:01:15,720
+So,
+
+1097
+01:01:26,240 --> 01:01:33,400
+now I just want to show you one more
+
+1098
+01:01:27,760 --> 01:01:33,400
+thing is with this example. And um
+
+1099
+01:01:34,640 --> 01:01:40,960
+here we have all the airports like
+
+1100
+01:01:37,280 --> 01:01:43,520
+loaded with on the map.
+
+1101
+01:01:40,960 --> 01:01:46,640
+Uh
+
+1102
+01:01:43,520 --> 01:01:50,400
+we want to see a uh [clears throat]
+
+1103
+01:01:46,640 --> 01:01:52,319
+so this is where my thinking is uh the
+
+1104
+01:01:50,400 --> 01:01:55,760
+graphi.
+
+1105
+01:01:52,319 --> 01:01:59,280
+Uh with a graph we can analyze a lot of
+
+1106
+01:01:55,760 --> 01:02:01,920
+graph specific questions
+
+1107
+01:01:59,280 --> 01:02:04,240
+but in application very often you have a
+
+1108
+01:02:01,920 --> 01:02:08,160
+lot of traditional statistic question
+
+1109
+01:02:04,240 --> 01:02:12,799
+you need to answer. Um so a uh a uh
+
+1110
+01:02:08,160 --> 01:02:16,799
+connected uh uh charts uh which is a
+
+1111
+01:02:12,799 --> 01:02:20,799
+standard like uh chart today is really
+
+1112
+01:02:16,799 --> 01:02:23,280
+easy to make with D3 with all the a lot
+
+1113
+01:02:20,799 --> 01:02:26,640
+of framework allow you to make this but
+
+1114
+01:02:23,280 --> 01:02:30,559
+unify with the unify the dashboard with
+
+1115
+01:02:26,640 --> 01:02:32,480
+the graph exploration tools is very
+
+1116
+01:02:30,559 --> 01:02:34,640
+handy very powerful like especially if
+
+1117
+01:02:32,480 --> 01:02:37,920
+you can make things interactive like for
+
+1118
+01:02:34,640 --> 01:02:39,520
+example Like I look at this dot I can
+
+1119
+01:02:37,920 --> 01:02:42,480
+immediately
+
+1120
+01:02:39,520 --> 01:02:47,160
+drive into the visualization to to see
+
+1121
+01:02:42,480 --> 01:02:47,160
+what's going on like
+
+1122
+01:02:53,200 --> 01:03:00,240
+it tells you like so
+
+1123
+01:02:56,640 --> 01:03:03,359
+that that kind of connectivity of uh of
+
+1124
+01:03:00,240 --> 01:03:06,240
+like statistical visualization
+
+1125
+01:03:03,359 --> 01:03:09,520
+and graph visualization. is is very
+
+1126
+01:03:06,240 --> 01:03:13,960
+handy which I think uh is the future of
+
+1127
+01:03:09,520 --> 01:03:13,960
+the like a lot of graph analytics.
+
+1128
+01:03:18,160 --> 01:03:21,160
+So,
+
+1129
+01:03:23,280 --> 01:03:30,880
+so from my own experience, I feel like
+
+1130
+01:03:25,760 --> 01:03:34,160
+um um there's a visualization for
+
+1131
+01:03:30,880 --> 01:03:36,000
+communicating u purpose, presenting,
+
+1132
+01:03:34,160 --> 01:03:38,640
+communicating, but there's also
+
+1133
+01:03:36,000 --> 01:03:42,559
+visualization for the for the reason of
+
+1134
+01:03:38,640 --> 01:03:46,000
+uh uh discovery analysis and they have
+
+1135
+01:03:42,559 --> 01:03:49,280
+very different requirements. Uh one of
+
+1136
+01:03:46,000 --> 01:03:52,960
+the thing is
+
+1137
+01:03:49,280 --> 01:03:55,280
+like how do you go from the data in the
+
+1138
+01:03:52,960 --> 01:03:57,359
+management layer to the data in the
+
+1139
+01:03:55,280 --> 01:03:59,520
+communication layer. Data in the
+
+1140
+01:03:57,359 --> 01:04:01,920
+management layer has a different
+
+1141
+01:03:59,520 --> 01:04:04,480
+requirement like it requires the data
+
+1142
+01:04:01,920 --> 01:04:06,720
+easy to be captured requires that you
+
+1143
+01:04:04,480 --> 01:04:10,720
+can you can capture the truth of the
+
+1144
+01:04:06,720 --> 01:04:12,799
+data like the nuance of the data and u
+
+1145
+01:04:10,720 --> 01:04:15,760
+have enough flexibility to capture
+
+1146
+01:04:12,799 --> 01:04:20,880
+different scenario different situations
+
+1147
+01:04:15,760 --> 01:04:23,280
+and so the data needs to be uh verbals
+
+1148
+01:04:20,880 --> 01:04:26,720
+and needs to be for example one one
+
+1149
+01:04:23,280 --> 01:04:28,640
+example is like emails like if If you
+
+1150
+01:04:26,720 --> 01:04:32,079
+want to capture the transaction of
+
+1151
+01:04:28,640 --> 01:04:34,319
+emails, then like if you if you just
+
+1152
+01:04:32,079 --> 01:04:38,160
+capture
+
+1153
+01:04:34,319 --> 01:04:40,880
+person A, person B as nodes and you you
+
+1154
+01:04:38,160 --> 01:04:44,559
+encode the email interactivity as the
+
+1155
+01:04:40,880 --> 01:04:46,880
+edge, now you have a problem, right? If
+
+1156
+01:04:44,559 --> 01:04:48,880
+you have to forward email, how do you
+
+1157
+01:04:46,880 --> 01:04:51,920
+code that?
+
+1158
+01:04:48,880 --> 01:04:55,680
+uh if you if you have to like describe
+
+1159
+01:04:51,920 --> 01:04:58,000
+like a reply email uh or the reply to
+
+1160
+01:04:55,680 --> 01:05:01,119
+the email which emails the emails on the
+
+1161
+01:04:58,000 --> 01:05:05,039
+edge uh it's very difficult to to to
+
+1162
+01:05:01,119 --> 01:05:08,480
+code all those informations. So if you
+
+1163
+01:05:05,039 --> 01:05:12,559
+if you encode each email exchange has
+
+1164
+01:05:08,480 --> 01:05:14,480
+separate node then you can apply the
+
+1165
+01:05:12,559 --> 01:05:16,720
+email not being received the email being
+
+1166
+01:05:14,480 --> 01:05:19,440
+forwarded email being replied email
+
+1167
+01:05:16,720 --> 01:05:21,599
+being deleted. So, so a lot of
+
+1168
+01:05:19,440 --> 01:05:24,720
+information can be can can be can be
+
+1169
+01:05:21,599 --> 01:05:26,559
+captured. So, this is where uh but but
+
+1170
+01:05:24,720 --> 01:05:28,160
+the same thing in the visualization
+
+1171
+01:05:26,559 --> 01:05:30,480
+layer. If you have a visualization of
+
+1172
+01:05:28,160 --> 01:05:32,960
+two people with a thousand email
+
+1173
+01:05:30,480 --> 01:05:35,760
+exchange, you know, have a thousand
+
+1174
+01:05:32,960 --> 01:05:40,079
+email notes and two people that's very
+
+1175
+01:05:35,760 --> 01:05:43,599
+hard very difficult to to uh to to
+
+1176
+01:05:40,079 --> 01:05:45,839
+reason to think because um as as I said
+
+1177
+01:05:43,599 --> 01:05:48,960
+earlier, we can only think about seven
+
+1178
+01:05:45,839 --> 01:05:52,160
+elements at the same time. So when we
+
+1179
+01:05:48,960 --> 01:05:55,359
+when we when we visualize information uh
+
+1180
+01:05:52,160 --> 01:05:57,599
+we need to really simplify the graph as
+
+1181
+01:05:55,359 --> 01:05:59,599
+much as possible to support thinking
+
+1182
+01:05:57,599 --> 01:06:01,359
+make it easy for our brain to digest to
+
+1183
+01:05:59,599 --> 01:06:04,559
+think.
+
+1184
+01:06:01,359 --> 01:06:08,559
+Now that really have a present a unique
+
+1185
+01:06:04,559 --> 01:06:11,680
+challenge is how do you go from data
+
+1186
+01:06:08,559 --> 01:06:15,280
+when it's in the data capture layer it's
+
+1187
+01:06:11,680 --> 01:06:18,400
+a to the communication layer there's a
+
+1188
+01:06:15,280 --> 01:06:21,280
+big gaps needs to be covered. Um now
+
+1189
+01:06:18,400 --> 01:06:24,319
+with the with the common visualization
+
+1190
+01:06:21,280 --> 01:06:26,400
+technique we have today is you have the
+
+1191
+01:06:24,319 --> 01:06:28,640
+data in the database and you send a
+
+1192
+01:06:26,400 --> 01:06:32,000
+query pull the data out and visualize
+
+1193
+01:06:28,640 --> 01:06:34,480
+it. uh that is also of the problem
+
+1194
+01:06:32,000 --> 01:06:38,240
+because um
+
+1195
+01:06:34,480 --> 01:06:40,079
+um you stuck with the schema you build
+
+1196
+01:06:38,240 --> 01:06:45,760
+in the database.
+
+1197
+01:06:40,079 --> 01:06:48,400
+So really um what I found out is
+
+1198
+01:06:45,760 --> 01:06:52,079
+you really have a um you need to have a
+
+1199
+01:06:48,400 --> 01:06:54,480
+system to evolve the schema from where
+
+1200
+01:06:52,079 --> 01:06:56,720
+it is in the uh in the data management
+
+1201
+01:06:54,480 --> 01:07:01,200
+layer data storage layer to the data
+
+1202
+01:06:56,720 --> 01:07:04,480
+communication layer and that schema
+
+1203
+01:07:01,200 --> 01:07:08,319
+like uh evolving is the key to the
+
+1204
+01:07:04,480 --> 01:07:12,079
+analytic workflow. Um this is something
+
+1205
+01:07:08,319 --> 01:07:15,119
+I felt is it's a a void in the all the
+
+1206
+01:07:12,079 --> 01:07:18,240
+graph analytic platforms. It's like how
+
+1207
+01:07:15,119 --> 01:07:22,079
+do you you could you could use a query
+
+1208
+01:07:18,240 --> 01:07:25,599
+to build a a new graph
+
+1209
+01:07:22,079 --> 01:07:28,079
+but it's really not easy to do and and
+
+1210
+01:07:25,599 --> 01:07:29,760
+not easy to think about how you do that
+
+1211
+01:07:28,079 --> 01:07:32,960
+and
+
+1212
+01:07:29,760 --> 01:07:36,559
+for that reason by the way do you know
+
+1213
+01:07:32,960 --> 01:07:39,920
+what time is med
+
+1214
+01:07:36,559 --> 01:07:41,920
+>> 25 minutes good so
+
+1215
+01:07:39,920 --> 01:07:44,240
+this is where
+
+1216
+01:07:41,920 --> 01:07:48,319
+uh
+
+1217
+01:07:44,240 --> 01:07:52,400
+I came up with this uh framework of
+
+1218
+01:07:48,319 --> 01:07:55,520
+called visual catalyst. Uh so it really
+
+1219
+01:07:52,400 --> 01:07:57,839
+to just to think about how we can mutate
+
+1220
+01:07:55,520 --> 01:07:59,440
+the graph data
+
+1221
+01:07:57,839 --> 01:08:02,240
+um
+
+1222
+01:07:59,440 --> 01:08:04,880
+to perform the uh the schema mutation
+
+1223
+01:08:02,240 --> 01:08:08,400
+data trans transformation
+
+1224
+01:08:04,880 --> 01:08:10,720
+uh visually without the need to to
+
+1225
+01:08:08,400 --> 01:08:13,760
+result to the coding. And so so I came
+
+1226
+01:08:10,720 --> 01:08:17,759
+up with a few common patterns. One is
+
+1227
+01:08:13,760 --> 01:08:20,239
+the the map. Map is in the map reduce
+
+1228
+01:08:17,759 --> 01:08:24,000
+map is you you have a function. You take
+
+1229
+01:08:20,239 --> 01:08:26,560
+a set of input you get output. Uh the
+
+1230
+01:08:24,000 --> 01:08:29,440
+second one is aggregate.
+
+1231
+01:08:26,560 --> 01:08:32,159
+Aggregate is really a reduced function.
+
+1232
+01:08:29,440 --> 01:08:34,239
+Basically you query all your neighbors
+
+1233
+01:08:32,159 --> 01:08:36,880
+to look at properties or query all the
+
+1234
+01:08:34,239 --> 01:08:40,159
+edges you connected to. Look at all prop
+
+1235
+01:08:36,880 --> 01:08:45,279
+properties come back uh with a uh a
+
+1236
+01:08:40,159 --> 01:08:49,440
+number or property. Um link essentially
+
+1237
+01:08:45,279 --> 01:08:52,319
+is a link prediction inference or like
+
+1238
+01:08:49,440 --> 01:08:54,880
+you give a condition to see whether two
+
+1239
+01:08:52,319 --> 01:08:56,880
+entities should be connected and give a
+
+1240
+01:08:54,880 --> 01:08:59,880
+give a link.
+
+1241
+01:08:56,880 --> 01:08:59,880
+um
+
+1242
+01:09:01,759 --> 01:09:07,120
+extract is a remodeling technique right
+
+1243
+01:09:05,199 --> 01:09:09,679
+let's say in this group of people if
+
+1244
+01:09:07,120 --> 01:09:11,679
+there's something common you can pull
+
+1245
+01:09:09,679 --> 01:09:14,000
+that out
+
+1246
+01:09:11,679 --> 01:09:17,440
+now you make in this particular case I
+
+1247
+01:09:14,000 --> 01:09:19,359
+use game of throne data set example so
+
+1248
+01:09:17,440 --> 01:09:23,120
+here's all the characters in game of
+
+1249
+01:09:19,359 --> 01:09:25,199
+throne they all belong to house man so
+
+1250
+01:09:23,120 --> 01:09:28,000
+you can you can represent that as a
+
+1251
+01:09:25,199 --> 01:09:29,279
+dimension information where which house
+
+1252
+01:09:28,000 --> 01:09:31,199
+they belong to. You guys are watching
+
+1253
+01:09:29,279 --> 01:09:34,000
+Game of Thrones, right?
+
+1254
+01:09:31,199 --> 01:09:35,920
+>> No. Good for you. Yeah.
+
+1255
+01:09:34,000 --> 01:09:39,319
+>> I just watched Breaking Bad.
+
+1256
+01:09:35,920 --> 01:09:39,319
+>> Breaking Bad.
+
+1257
+01:09:40,880 --> 01:09:46,000
+>> Yeah. Game story is very bloody like a
+
+1258
+01:09:44,400 --> 01:09:49,679
+lot of killings, a lot of things going
+
+1259
+01:09:46,000 --> 01:09:52,080
+on there. So extremely popular the TV
+
+1260
+01:09:49,679 --> 01:09:55,760
+series. So, so you can look at the house
+
+1261
+01:09:52,080 --> 01:09:59,679
+like Lannister as a um dimensional
+
+1262
+01:09:55,760 --> 01:10:01,520
+things which is like a a property but
+
+1263
+01:09:59,679 --> 01:10:04,960
+you can also look at the graph
+
+1264
+01:10:01,520 --> 01:10:07,199
+perspective you have this is house those
+
+1265
+01:10:04,960 --> 01:10:10,080
+character belong to this house but that
+
+1266
+01:10:07,199 --> 01:10:11,920
+transformation give you a uh flexibility
+
+1267
+01:10:10,080 --> 01:10:14,400
+of
+
+1268
+01:10:11,920 --> 01:10:18,239
+when you record the data originally
+
+1269
+01:10:14,400 --> 01:10:20,560
+right you don't really have to
+
+1270
+01:10:18,239 --> 01:10:22,080
+pull that out model that as a separate
+
+1271
+01:10:20,560 --> 01:10:24,719
+entity
+
+1272
+01:10:22,080 --> 01:10:27,679
+uh
+
+1273
+01:10:24,719 --> 01:10:31,040
+un unless we need it. So that give you
+
+1274
+01:10:27,679 --> 01:10:34,480
+flexibility in when you record the data
+
+1275
+01:10:31,040 --> 01:10:38,000
+um knowing that you can establish that
+
+1276
+01:10:34,480 --> 01:10:40,080
+graph later uh that allow you to record
+
+1277
+01:10:38,000 --> 01:10:42,960
+data in the most simple way. So that's
+
+1278
+01:10:40,080 --> 01:10:45,120
+one. Yeah, go ahead. So the things that
+
+1279
+01:10:42,960 --> 01:10:47,120
+you now describe visual language that's
+
+1280
+01:10:45,120 --> 01:10:50,719
+basically
+
+1281
+01:10:47,120 --> 01:10:52,159
+an infer schema on the Right. You know
+
+1282
+01:10:50,719 --> 01:10:55,840
+that's part of it. It would seem
+
+1283
+01:10:52,159 --> 01:10:57,199
+already. Yes, we can do that.
+
+1284
+01:10:55,840 --> 01:10:59,520
+>> Yeah,
+
+1285
+01:10:57,199 --> 01:11:03,640
+>> I was going to ask architecturally this
+
+1286
+01:10:59,520 --> 01:11:03,640
+seems like a problem.
+
+1287
+01:11:07,040 --> 01:11:13,000
+It's not
+
+1288
+01:11:09,199 --> 01:11:13,000
+just an
+
+1289
+01:11:25,840 --> 01:11:33,199
+absolutely absolutely so
+
+1290
+01:11:29,760 --> 01:11:37,040
+like in the enterprise like management
+
+1291
+01:11:33,199 --> 01:11:40,640
+you deal with data automatically. So you
+
+1292
+01:11:37,040 --> 01:11:44,000
+once you establish those layers you get
+
+1293
+01:11:40,640 --> 01:11:46,400
+automatically here is more
+
+1294
+01:11:44,000 --> 01:11:51,520
+establishing set operators so you can
+
+1295
+01:11:46,400 --> 01:11:53,920
+work with any data set like on demand
+
+1296
+01:11:51,520 --> 01:11:56,800
+but the concept is the same it's like
+
+1297
+01:11:53,920 --> 01:12:00,400
+you can leave your data in the original
+
+1298
+01:11:56,800 --> 01:12:03,760
+forms simple graph forms knowing that it
+
+1299
+01:12:00,400 --> 01:12:07,840
+can be morphed into a form that you need
+
+1300
+01:12:03,760 --> 01:12:11,520
+to ask a question because Really whether
+
+1301
+01:12:07,840 --> 01:12:14,880
+this needs to be a no or needs to be
+
+1302
+01:12:11,520 --> 01:12:17,440
+property depends on what question you
+
+1303
+01:12:14,880 --> 01:12:18,800
+you're trying to ask.
+
+1304
+01:12:17,440 --> 01:12:21,040
+Unfortunately, the question you try to
+
+1305
+01:12:18,800 --> 01:12:23,040
+ask is often not clear at the beginning
+
+1306
+01:12:21,040 --> 01:12:24,640
+when you collect all the data. You don't
+
+1307
+01:12:23,040 --> 01:12:27,920
+really know what exactly question you
+
+1308
+01:12:24,640 --> 01:12:29,679
+want to ask. So you're trying to perfect
+
+1309
+01:12:27,920 --> 01:12:33,600
+your schema
+
+1310
+01:12:29,679 --> 01:12:36,640
+uh in early stage is challenging.
+
+1311
+01:12:33,600 --> 01:12:38,719
+You need a you want to build a schema
+
+1312
+01:12:36,640 --> 01:12:40,880
+that can support different kind of
+
+1313
+01:12:38,719 --> 01:12:43,920
+questions but at a time you don't even
+
+1314
+01:12:40,880 --> 01:12:45,760
+know you fully understand your questions
+
+1315
+01:12:43,920 --> 01:12:50,480
+that's challenging
+
+1316
+01:12:45,760 --> 01:12:52,800
+and uh the last one is a shortcut
+
+1317
+01:12:50,480 --> 01:12:55,120
+shortcut example of like early example
+
+1318
+01:12:52,800 --> 01:12:58,719
+use email as example like two people has
+
+1319
+01:12:55,120 --> 01:13:00,719
+a thousand emails and the shortcut is
+
+1320
+01:12:58,719 --> 01:13:02,880
+where the company translating to hey
+
+1321
+01:13:00,719 --> 01:13:05,120
+those two people just had email exchange
+
+1322
+01:13:02,880 --> 01:13:07,679
+like reading chip.
+
+1323
+01:13:05,120 --> 01:13:10,560
+Um now what that what that what that
+
+1324
+01:13:07,679 --> 01:13:13,840
+does is really help you to simplify the
+
+1325
+01:13:10,560 --> 01:13:16,000
+graph conceptually because um like it's
+
+1326
+01:13:13,840 --> 01:13:18,880
+important if we want to know whether
+
+1327
+01:13:16,000 --> 01:13:21,840
+email gets forwarded or deleted the
+
+1328
+01:13:18,880 --> 01:13:23,760
+level but in the let's for example if
+
+1329
+01:13:21,840 --> 01:13:27,360
+you want to analyze the culture of the
+
+1330
+01:13:23,760 --> 01:13:30,080
+company look at the sharing uh patterns
+
+1331
+01:13:27,360 --> 01:13:32,640
+you just need to know how people whether
+
+1332
+01:13:30,080 --> 01:13:35,600
+the people has some sort of interactions
+
+1333
+01:13:32,640 --> 01:13:39,199
+or how many how any interaction they
+
+1334
+01:13:35,600 --> 01:13:42,880
+have in this case simply have edge exist
+
+1335
+01:13:39,199 --> 01:13:48,960
+between two two two people is sufficient
+
+1336
+01:13:42,880 --> 01:13:52,400
+that's so the last is better um and um
+
+1337
+01:13:48,960 --> 01:13:56,000
+in the um um I can quickly demonstrate
+
+1338
+01:13:52,400 --> 01:14:00,239
+how can you perform this like uh
+
+1339
+01:13:56,000 --> 01:14:03,600
+visually uh let's see
+
+1340
+01:14:00,239 --> 01:14:06,239
+let's see I
+
+1341
+01:14:03,600 --> 01:14:08,880
+think I have a data set here. Yes, I do
+
+1342
+01:14:06,239 --> 01:14:12,320
+have a data set here.
+
+1343
+01:14:08,880 --> 01:14:15,280
+So here this is the original data set uh
+
+1344
+01:14:12,320 --> 01:14:19,199
+which is the you have character name,
+
+1345
+01:14:15,280 --> 01:14:22,000
+house name, character image and you also
+
+1346
+01:14:19,199 --> 01:14:25,840
+have who killed who
+
+1347
+01:14:22,000 --> 01:14:27,440
+how many other character people killed.
+
+1348
+01:14:25,840 --> 01:14:30,400
+So
+
+1349
+01:14:27,440 --> 01:14:34,719
+it's already a graph if you realize that
+
+1350
+01:14:30,400 --> 01:14:37,199
+Q Q by is really it's reading shell but
+
+1351
+01:14:34,719 --> 01:14:40,320
+we store that in the table format. So
+
+1352
+01:14:37,199 --> 01:14:44,080
+now let's just uh not going to save it.
+
+1353
+01:14:40,320 --> 01:14:49,679
+Let's just pull this into this window.
+
+1354
+01:14:44,080 --> 01:14:52,159
+Um so so here we have a 38 87 characters
+
+1355
+01:14:49,679 --> 01:14:56,880
+have been generated.
+
+1356
+01:14:52,159 --> 01:14:59,040
+We happen to have a uh URL like if you
+
+1357
+01:14:56,880 --> 01:15:01,840
+look at the any data you can see there's
+
+1358
+01:14:59,040 --> 01:15:06,239
+a character image and that we can just
+
+1359
+01:15:01,840 --> 01:15:09,280
+use as advertised a bit more visual.
+
+1360
+01:15:06,239 --> 01:15:13,440
+Now let's do the first transformation.
+
+1361
+01:15:09,280 --> 01:15:16,719
+Um let's see we want to
+
+1362
+01:15:13,440 --> 01:15:19,520
+find find all the house the house name.
+
+1363
+01:15:16,719 --> 01:15:22,520
+Okay, there we go. Uh,
+
+1364
+01:15:19,520 --> 01:15:22,520
+so
+
+1365
+01:15:28,320 --> 01:15:33,480
+>> I'm lazy. Just call in the house.
+
+1366
+01:15:33,962 --> 01:15:35,280
+[clears throat]
+
+1367
+01:15:34,480 --> 01:15:35,679
+>> Stupid question.
+
+1368
+01:15:35,280 --> 01:15:37,199
+>> Yeah.
+
+1369
+01:15:35,679 --> 01:15:39,360
+>> Category
+
+1370
+01:15:37,199 --> 01:15:44,880
+just
+
+1371
+01:15:39,360 --> 01:15:49,120
+>> category. Yes. So in LG L is category.
+
+1372
+01:15:44,880 --> 01:15:51,920
+>> Yeah. Label. But I I prefer category. Um
+
+1373
+01:15:49,120 --> 01:15:55,840
+I found like
+
+1374
+01:15:51,920 --> 01:15:58,480
+label can be received.
+
+1375
+01:15:55,840 --> 01:16:02,159
+Um this also has implication on how you
+
+1376
+01:15:58,480 --> 01:16:06,000
+manage data. Label implies you have no
+
+1377
+01:16:02,159 --> 01:16:09,199
+schema. It's just a label on things.
+
+1378
+01:16:06,000 --> 01:16:12,800
+But I think in in the enterprise space
+
+1379
+01:16:09,199 --> 01:16:16,560
+manage data schema is important.
+
+1380
+01:16:12,800 --> 01:16:18,719
+category means you have a new set of
+
+1381
+01:16:16,560 --> 01:16:22,320
+properties associated with that have
+
+1382
+01:16:18,719 --> 01:16:25,560
+that expectation. So that's why uh we
+
+1383
+01:16:22,320 --> 01:16:25,560
+use categories.
+
+1384
+01:16:25,679 --> 01:16:32,560
+Yes. So
+
+1385
+01:16:29,199 --> 01:16:34,960
+so now we have um find out like those
+
+1386
+01:16:32,560 --> 01:16:36,843
+those characters that have have host
+
+1387
+01:16:34,960 --> 01:16:37,679
+that they they belong to. So that's
+
+1388
+01:16:36,843 --> 01:16:40,080
+[clears throat] one transit
+
+1389
+01:16:37,679 --> 01:16:42,560
+transformation and then uh once you have
+
+1390
+01:16:40,080 --> 01:16:48,719
+that you can do a calculation. Let's see
+
+1391
+01:16:42,560 --> 01:16:52,000
+I I want to aggregate to house and agg
+
+1392
+01:16:48,719 --> 01:16:53,920
+just just to see like do a do a do a
+
+1393
+01:16:52,000 --> 01:16:55,760
+count
+
+1394
+01:16:53,920 --> 01:17:00,600
+because like
+
+1395
+01:16:55,760 --> 01:17:00,600
+number uh character.
+
+1396
+01:17:04,800 --> 01:17:12,159
+So this can be easily done in
+
+1397
+01:17:08,880 --> 01:17:15,440
+cypher or any quer language too. The
+
+1398
+01:17:12,159 --> 01:17:18,159
+difference is when you have a operator
+
+1399
+01:17:15,440 --> 01:17:20,719
+designing visually you can perform those
+
+1400
+01:17:18,159 --> 01:17:24,400
+kind of calculations like without
+
+1401
+01:17:20,719 --> 01:17:29,440
+breaking your flow.
+
+1402
+01:17:24,400 --> 01:17:32,800
+So now now I have um
+
+1403
+01:17:29,440 --> 01:17:36,040
+oh something is wrong.
+
+1404
+01:17:32,800 --> 01:17:36,040
+I'm sorry.
+
+1405
+01:17:38,320 --> 01:17:44,280
+See,
+
+1406
+01:17:40,960 --> 01:17:44,280
+there you go.
+
+1407
+01:17:46,320 --> 01:17:56,360
+I can start to see like the characters.
+
+1408
+01:17:51,120 --> 01:17:56,360
+We can behave. uh let me
+
+1409
+01:17:56,800 --> 01:18:02,960
+use use the size to represent uh how
+
+1410
+01:18:00,880 --> 01:18:05,760
+many how
+
+1411
+01:18:02,960 --> 01:18:10,000
+popular is is the house. So this is one
+
+1412
+01:18:05,760 --> 01:18:12,320
+way of um looking at information. But
+
+1413
+01:18:10,000 --> 01:18:15,280
+now for example we have established a
+
+1414
+01:18:12,320 --> 01:18:18,239
+person in a house some other person is
+
+1415
+01:18:15,280 --> 01:18:21,600
+also house we can we can infer they are
+
+1416
+01:18:18,239 --> 01:18:27,840
+in the same house they so we can do
+
+1417
+01:18:21,600 --> 01:18:34,760
+another transformation like um shortcut
+
+1418
+01:18:27,840 --> 01:18:34,760
+using house pivot we can see like uh
+
+1419
+01:18:39,600 --> 01:18:44,480
+that you pass of people who are
+
+1420
+01:18:42,320 --> 01:18:48,080
+fellowship with each other uh with the
+
+1421
+01:18:44,480 --> 01:18:50,560
+house. So this is example of how you
+
+1422
+01:18:48,080 --> 01:18:54,560
+perform. At this point I can just drop
+
+1423
+01:18:50,560 --> 01:18:57,679
+house just like now the other way to do
+
+1424
+01:18:54,560 --> 01:19:01,199
+it is um
+
+1425
+01:18:57,679 --> 01:19:03,600
+earlier we have see who killed the who
+
+1426
+01:19:01,199 --> 01:19:09,040
+want to represent represent like
+
+1427
+01:19:03,600 --> 01:19:11,280
+visually. So let's see go to link and
+
+1428
+01:19:09,040 --> 01:19:16,920
+kill uh
+
+1429
+01:19:11,280 --> 01:19:16,920
+kill the buy. So this will be Q
+
+1430
+01:19:19,520 --> 01:19:26,120
+that immediately give you let's make it
+
+1431
+01:19:23,120 --> 01:19:26,120
+look
+
+1432
+01:19:27,520 --> 01:19:30,760
+let's see
+
+1433
+01:19:35,520 --> 01:19:41,600
+like
+
+1434
+01:19:37,120 --> 01:19:48,880
+the network of John if you watch
+
+1435
+01:19:41,600 --> 01:19:54,679
+this person is and white water and uh
+
+1436
+01:19:48,880 --> 01:19:54,679
+and so all the all the people's
+
+1437
+01:19:55,120 --> 01:20:00,640
+area stock that came up. So this is
+
+1438
+01:19:58,080 --> 01:20:04,400
+really a way of
+
+1439
+01:20:00,640 --> 01:20:07,520
+transform how you represent the data uh
+
+1440
+01:20:04,400 --> 01:20:10,719
+easily. So you can
+
+1441
+01:20:07,520 --> 01:20:12,640
+you can think it while you work with the
+
+1442
+01:20:10,719 --> 01:20:14,400
+data and simplify your graph
+
+1443
+01:20:12,640 --> 01:20:17,760
+representations
+
+1444
+01:20:14,400 --> 01:20:21,199
+for so this is where I feel like is
+
+1445
+01:20:17,760 --> 01:20:24,400
+needed for a visualization called
+
+1446
+01:20:21,199 --> 01:20:28,000
+purpose. So this is visualization to to
+
+1447
+01:20:24,400 --> 01:20:30,080
+count information to just to to show the
+
+1448
+01:20:28,000 --> 01:20:33,360
+information for this here is what what
+
+1449
+01:20:30,080 --> 01:20:35,440
+you what you need is visualization for a
+
+1450
+01:20:33,360 --> 01:20:39,000
+uh for that for the purpose of
+
+1451
+01:20:35,440 --> 01:20:39,000
+performing analytics.
+
+1452
+01:20:42,400 --> 01:20:46,239
+How many minutes do I have?
+
+1453
+01:20:44,239 --> 01:20:49,075
+>> Uh about 10 more minutes.
+
+1454
+01:20:46,239 --> 01:20:49,075
+>> 10 more minutes. [clears throat]
+
+1455
+01:20:56,000 --> 01:21:05,440
+So this is um
+
+1456
+01:20:59,840 --> 01:21:07,440
+the code uh to to perform like a few
+
+1457
+01:21:05,440 --> 01:21:09,679
+like a visual transformations I just
+
+1458
+01:21:07,440 --> 01:21:14,239
+described like if you use the
+
+1459
+01:21:09,679 --> 01:21:16,159
+traditional just use coding it's very
+
+1460
+01:21:14,239 --> 01:21:19,040
+elaborate
+
+1461
+01:21:16,159 --> 01:21:21,360
+how you make it simp
+
+1462
+01:21:19,040 --> 01:21:26,920
+But if you using visual operators and
+
+1463
+01:21:21,360 --> 01:21:26,920
+it's very simple uh concept
+
+1464
+01:21:30,400 --> 01:21:37,440
+and I want to just show one more example
+
+1465
+01:21:32,800 --> 01:21:43,520
+and this is all like uh in the uh data
+
+1466
+01:21:37,440 --> 01:21:45,760
+set there's a example called let's see
+
+1467
+01:21:43,520 --> 01:21:48,640
+transaction
+
+1468
+01:21:45,760 --> 01:21:53,199
+this transaction is modeled after some
+
+1469
+01:21:48,640 --> 01:21:55,760
+global uh talk money uh flow transaction
+
+1470
+01:21:53,199 --> 01:21:59,520
+around the globe. Yeah.
+
+1471
+01:21:55,760 --> 01:22:02,000
+So uh you have the
+
+1472
+01:21:59,520 --> 01:22:06,560
+CSV slight
+
+1473
+01:22:02,000 --> 01:22:10,400
+to just a standard receiver date and
+
+1474
+01:22:06,560 --> 01:22:12,480
+amount and
+
+1475
+01:22:10,400 --> 01:22:15,520
+you can
+
+1476
+01:22:12,480 --> 01:22:17,600
+using the same same technique as we did
+
+1477
+01:22:15,520 --> 01:22:20,480
+before. I'm going to delete this. I'm
+
+1478
+01:22:17,600 --> 01:22:23,960
+just gonna
+
+1479
+01:22:20,480 --> 01:22:23,960
+drag and drop.
+
+1480
+01:22:26,400 --> 01:22:34,480
+So now each row of the data is
+
+1481
+01:22:30,080 --> 01:22:37,440
+represented as a a note in a space and
+
+1482
+01:22:34,480 --> 01:22:42,920
+we can see what they are. There's a
+
+1483
+01:22:37,440 --> 01:22:42,920
+month, there's a date, there's a who.
+
+1484
+01:22:43,280 --> 01:22:48,159
+Now
+
+1485
+01:22:45,040 --> 01:22:52,960
+obviously we can just like uh start to
+
+1486
+01:22:48,159 --> 01:22:58,000
+we can color by the um standard
+
+1487
+01:22:52,960 --> 01:23:00,960
+receiver or we can see uh use the uh
+
+1488
+01:22:58,000 --> 01:23:05,600
+size amount
+
+1489
+01:23:00,960 --> 01:23:08,239
+using a P scale to to show size the
+
+1490
+01:23:05,600 --> 01:23:12,800
+transaction amount obviously
+
+1491
+01:23:08,239 --> 01:23:12,800
+let's just make the size the uh
+
+1492
+01:23:13,360 --> 01:23:20,880
+to this work
+
+1493
+01:23:17,520 --> 01:23:24,000
+shifting uh like visual representations
+
+1494
+01:23:20,880 --> 01:23:28,159
+between the size, the color, the shape
+
+1495
+01:23:24,000 --> 01:23:30,639
+is very helpful in the visualization. Um
+
+1496
+01:23:28,159 --> 01:23:35,199
+but what's more interesting is we know
+
+1497
+01:23:30,639 --> 01:23:38,800
+this is a graph. How can we easily do
+
+1498
+01:23:35,199 --> 01:23:41,679
+all of them? So let's perform a uh
+
+1499
+01:23:38,800 --> 01:23:45,600
+extract. So we have sender in the data
+
+1500
+01:23:41,679 --> 01:23:51,320
+set. So let's pull the sender out.
+
+1501
+01:23:45,600 --> 01:23:51,320
+Send is a person. So like it's a person.
+
+1502
+01:23:52,080 --> 01:23:57,080
+Uh so now it's like from
+
+1503
+01:24:01,120 --> 01:24:07,840
+all the people who uh create transaction
+
+1504
+01:24:04,560 --> 01:24:12,159
+init transaction and we can do the same
+
+1505
+01:24:07,840 --> 01:24:16,080
+thing to uh get rid of
+
+1506
+01:24:12,159 --> 01:24:18,159
+I should make a mistake here.
+
+1507
+01:24:16,080 --> 01:24:21,159
+Yes, I made a mistake. Let me do it
+
+1508
+01:24:18,159 --> 01:24:21,159
+again.
+
+1509
+01:24:22,639 --> 01:24:26,120
+person from
+
+1510
+01:24:28,719 --> 01:24:33,920
+name
+
+1511
+01:24:31,679 --> 01:24:36,920
+as a person. The topology should be
+
+1512
+01:24:33,920 --> 01:24:36,920
+named
+
+1513
+01:24:53,920 --> 01:24:58,679
+Now we can look at the receivers
+
+1514
+01:25:02,639 --> 01:25:05,639
+too.
+
+1515
+01:25:10,320 --> 01:25:18,400
+So now we have money trans like a flow
+
+1516
+01:25:13,600 --> 01:25:21,199
+of money network and and this network as
+
+1517
+01:25:18,400 --> 01:25:24,480
+I said earlier you have between the
+
+1518
+01:25:21,199 --> 01:25:30,560
+nodes you have a lot of transaction and
+
+1519
+01:25:24,480 --> 01:25:33,560
+one look at the flow is only add the uh
+
+1520
+01:25:30,560 --> 01:25:33,560
+use
+
+1521
+01:25:45,040 --> 01:25:51,920
+then I can over the time
+
+1522
+01:25:47,760 --> 01:25:53,600
+the transaction happens in this specific
+
+1523
+01:25:51,920 --> 01:25:57,040
+network.
+
+1524
+01:25:53,600 --> 01:26:00,840
+And this is very ination
+
+1525
+01:25:57,040 --> 01:26:00,840
+that you can exam
+
+1526
+01:26:08,719 --> 01:26:15,159
+look at the dynamic system of change.
+
+1527
+01:26:23,360 --> 01:26:30,239
+We want to just have a uh
+
+1528
+01:26:27,360 --> 01:26:35,040
+like a pool and who has transaction how
+
+1529
+01:26:30,239 --> 01:26:39,040
+much happen. So in this case we want the
+
+1530
+01:26:35,040 --> 01:26:42,480
+uh short like
+
+1531
+01:26:39,040 --> 01:26:46,400
+transaction from to
+
+1532
+01:26:42,480 --> 01:26:51,120
+uh so that will be
+
+1533
+01:26:46,400 --> 01:26:53,840
+as transaction to simplify it. So and we
+
+1534
+01:26:51,120 --> 01:26:58,159
+want to do the uh
+
+1535
+01:26:53,840 --> 01:27:01,440
+total amount and uh also how many
+
+1536
+01:26:58,159 --> 01:27:05,600
+session have amounted.
+
+1537
+01:27:01,440 --> 01:27:10,239
+So now we have the new relation created
+
+1538
+01:27:05,600 --> 01:27:14,159
+that is get rid of the old transaction
+
+1539
+01:27:10,239 --> 01:27:16,480
+which give you a more concise uh map of
+
+1540
+01:27:14,159 --> 01:27:18,800
+things. So the
+
+1541
+01:27:16,480 --> 01:27:22,239
+so the fact that you can do this makes
+
+1542
+01:27:18,800 --> 01:27:25,280
+reduce a lot of um overhead in the in
+
+1543
+01:27:22,239 --> 01:27:26,960
+the data modeling for data storage here
+
+1544
+01:27:25,280 --> 01:27:29,280
+because when you capture the data you
+
+1545
+01:27:26,960 --> 01:27:33,360
+really focus on capturing the data to
+
+1546
+01:27:29,280 --> 01:27:36,639
+preserve as much nuance as much like um
+
+1547
+01:27:33,360 --> 01:27:40,159
+details as possible capture the truth
+
+1548
+01:27:36,639 --> 01:27:43,360
+and what you know as you
+
+1549
+01:27:40,159 --> 01:27:47,520
+as you start doing analysis you will be
+
+1550
+01:27:43,360 --> 01:27:50,080
+able to uh simplify your schema to per
+
+1551
+01:27:47,520 --> 01:27:53,080
+to like transform schema for the for the
+
+1552
+01:27:50,080 --> 01:27:53,080
+analysis.
+
+1553
+01:27:54,800 --> 01:27:58,760
+So here's one of [clears throat]
+
+1554
+01:28:00,880 --> 01:28:05,600
+you have a you could just like
+
+1555
+01:28:03,120 --> 01:28:07,920
+dynamically play through the
+
+1556
+01:28:05,600 --> 01:28:10,159
+transaction. Here we actually when we
+
+1557
+01:28:07,920 --> 01:28:12,159
+look at it we find out
+
+1558
+01:28:10,159 --> 01:28:14,080
+there's people who is always standing
+
+1559
+01:28:12,159 --> 01:28:16,800
+out there's a people who is always
+
+1560
+01:28:14,080 --> 01:28:19,760
+receiving and there's couple in the
+
+1561
+01:28:16,800 --> 01:28:23,679
+middle you can see a very tiny pattern
+
+1562
+01:28:19,760 --> 01:28:26,800
+of transaction coming in goes out
+
+1563
+01:28:23,679 --> 01:28:29,199
+somewhere somewhere in the middle
+
+1564
+01:28:26,800 --> 01:28:30,480
+>> way we're just about time and we have a
+
+1565
+01:28:29,199 --> 01:28:32,320
+short lunch break today so I want to
+
+1566
+01:28:30,480 --> 01:28:33,920
+make sure we wrap up
+
+1567
+01:28:32,320 --> 01:28:37,280
+>> yeah but if anybody has any one last
+
+1568
+01:28:33,920 --> 01:28:39,679
+question we've got a one or two minutes.
+
+1569
+01:28:37,280 --> 01:28:41,679
+>> Yeah.
+
+1570
+01:28:39,679 --> 01:28:44,679
+>> Otherwise, yeah, let's just Oh, go
+
+1571
+01:28:41,679 --> 01:28:44,679
+ahead.
+
+1572
+01:28:45,199 --> 01:28:50,600
+>> Is it possible to see transactions?
+
+1573
+01:28:47,600 --> 01:28:50,600
+>> Yeah.
+
+1574
+01:28:53,840 --> 01:28:56,840
+>> Yeah.
+
+1575
+01:28:56,960 --> 01:29:02,360
+Well, that's close to
+
+1576
+01:28:59,360 --> 01:29:02,360
+>> Yeah,
+
+1577
+01:29:05,040 --> 01:29:09,560
+interesting to see.
+
+1578
+01:29:06,560 --> 01:29:09,560
+>> Yeah,
+
+1579
+01:29:10,159 --> 01:29:16,320
+>> that is um I can see lots of different
+
+1580
+01:29:13,760 --> 01:29:19,320
+way of visual
+
+1581
+01:29:16,320 --> 01:29:19,320
+visualiz.
+
+1582
+01:29:24,239 --> 01:29:28,320
+>> Yeah.
+
+1583
+01:29:25,600 --> 01:29:28,320
+>> Yeah.
+
+1584
+01:29:29,040 --> 01:29:36,560
+Yeah. So it's like there's some you can
+
+1585
+01:29:32,960 --> 01:29:38,880
+detect loops in the in the
+
+1586
+01:29:36,560 --> 01:29:45,040
+um and highlights
+
+1587
+01:29:38,880 --> 01:29:46,639
+and also here we have something uh
+
+1588
+01:29:45,040 --> 01:29:50,480
+there's starting time there's ending
+
+1589
+01:29:46,639 --> 01:29:52,400
+time. So basically you know the two into
+
+1590
+01:29:50,480 --> 01:29:55,199
+a starting point like who starts the
+
+1591
+01:29:52,400 --> 01:29:58,960
+transaction then who is the mutual
+
+1592
+01:29:55,199 --> 01:30:01,679
+receiver of that those transactions
+
+1593
+01:29:58,960 --> 01:30:04,679
+>> like temporal do that
+
+1594
+01:30:01,679 --> 01:30:04,679
+>> yeah
+
+1595
+01:30:06,719 --> 01:30:12,280
+yeah
+
+1596
+01:30:08,000 --> 01:30:12,280
+>> thanks you have
+
+1597
+01:30:12,400 --> 01:30:17,440
+you start
+
+1598
+01:30:15,280 --> 01:30:20,239
+goes out to the first neighbor, second
+
+1599
+01:30:17,440 --> 01:30:23,520
+neighbor, third neighbor. You can see if
+
+1600
+01:30:20,239 --> 01:30:26,239
+there something that somehow comes back.
+
+1601
+01:30:23,520 --> 01:30:28,000
+That's one possibility you can let it
+
+1602
+01:30:26,239 --> 01:30:30,560
+follow the direction.
+
+1603
+01:30:28,000 --> 01:30:35,679
+>> Uh also just want to add
+
+1604
+01:30:30,560 --> 01:30:38,960
+>> weakness thinking. So we can come into
+
+1605
+01:30:35,679 --> 01:30:42,639
+you know layer layer by layer layer.
+
+1606
+01:30:38,960 --> 01:30:45,360
+dependent situation can track
+
+1607
+01:30:42,639 --> 01:30:48,239
+you know those the starting participant
+
+1608
+01:30:45,360 --> 01:30:52,840
+entity then layers layers layers
+
+1609
+01:30:48,239 --> 01:30:52,840
+eventually the final destinations
+
+1610
+01:30:55,199 --> 01:30:59,840
+>> you're welcome thank you
+
+1611
+01:30:57,199 --> 01:31:03,000
+>> thanks
+
+1612
+01:30:59,840 --> 01:31:03,000
+thank you
+
