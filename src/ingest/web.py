@@ -798,12 +798,14 @@ def heysummit_sync(request: Request):
     try:
         talks = heysummit.refresh_catalog()
     except Exception as exc:  # no token, the API, or Cloudflare; all mean "no catalogue"
-        return HTMLResponse(f'<span class="note err">Could not read HeySummit: {exc}</span>')
+        return HTMLResponse(
+            f'<span class="note err">Could not read HeySummit: {escape(str(exc))}</span>')
 
     result = heysummit.attach()
     if result["filled"] and config.KG_ENABLED:
         request_rebuild()
-    candidates = "; ".join(f"{ours} ≈ {theirs}" for ours, theirs in result["candidates"])
+    candidates = "; ".join(f"{escape(ours)} ≈ {escape(theirs)}"
+                           for ours, theirs in result["candidates"])
     return HTMLResponse(
         f'<span class="note">{talks} talks on HeySummit. {result["attached"]} newly '
         f'matched, blanks filled on {result["filled"]} talks, '

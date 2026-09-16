@@ -21,6 +21,7 @@ from datetime import datetime
 import httpx
 
 from .. import config
+from .. import reconcile
 from ..pipeline import csv_writer
 from . import parser
 
@@ -47,11 +48,9 @@ _UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ch
 
 # --- Catalogue ---------------------------------------------------------------
 
-def _pages(url: str):
-    headers = {"Authorization": f"Token {config.HEYSUMMIT_API_TOKEN}",
-               "Accept": "application/json", "User-Agent": _UA}
+def _pages(client: httpx.Client, url: str):
     while url:
-        response = httpx.get(url, headers=headers, timeout=60)
+        response = client.get(url)
         response.raise_for_status()
         page = response.json()
         yield from page["results"]
@@ -89,8 +88,11 @@ def refresh_catalog() -> int:
     """Read every in-scope event from the API and write the catalogue."""
     if not config.HEYSUMMIT_API_TOKEN:
         raise RuntimeError("HEYSUMMIT_API_TOKEN is not set")
-    talks = [trim_talk(t) for event_id in EVENTS
-             for t in _pages(f"{API}/events/{event_id}/talks/") if is_talk(t)]
+    headers = {"Authorization": f"Token {config.HEYSUMMIT_API_TOKEN}",
+               "Accept": "application/json", "User-Agent": _UA}
+    with httpx.Client(headers=headers, timeout=60) as client:
+        talks = [trim_talk(t) for event_id in EVENTS
+                 for t in _pages(client, f"{API}/events/{event_id}/talks/") if is_talk(t)]
     talks.sort(key=lambda t: t["id"])
     config.HEYSUMMIT_CATALOG.parent.mkdir(parents=True, exist_ok=True)
     config.HEYSUMMIT_CATALOG.write_text(
@@ -163,34 +165,32 @@ def match(row: dict, catalog: list[dict]) -> tuple[str, dict | None]:
 
     Attach only when the title agrees and nothing contradicts it: a speaker on
     both sides must share a surname. Anything weaker is a candidate for a curator.
+    ``catalog`` entries carry ``norm``, their title normalised once by ``attach``.
     """
     key = _norm(parser.parse_title(row.get("Title")).talk_title or row.get("Title") or "")
     if not key:
         return "none", None
     ours = _surnames(parser.SPEAKER_SPLIT.split(row.get("Speaker") or ""))
-    agrees = lambda t: not ours or not t["speakers"] or bool(ours & _surnames(t["speakers"]))
+    shares = lambda t: bool(ours & _surnames(t["speakers"]))
 
-    same = [t for t in catalog if _norm(t["title"]) == key]
+    same = [t for t in catalog if t["norm"] == key]
     if same:
-        agreeing = [t for t in same if agrees(t)]
+        agreeing = [t for t in same if not ours or not t["speakers"] or shares(t)]
         if len(agreeing) == 1 and (ours or len(same) == 1):
             return "attach", agreeing[0]
         return "candidate", same[0]
 
     # One title extending the other ("… at Elsevier: Quality Assurance …",
     # "… | Panel Discussion") is the same talk when the speakers agree.
-    extended = [t for t in catalog if ours and ours & _surnames(t["speakers"])
-                and (_norm(t["title"]).startswith(key) or key.startswith(_norm(t["title"])))]
+    extended = [t for t in catalog if shares(t)
+                and (t["norm"].startswith(key) or key.startswith(t["norm"]))]
     if len(extended) == 1:
         return "attach", extended[0]
 
     # ponytail: a linear scan per row; fine for a few hundred talks.
-    best = max(catalog, default=None,
-               key=lambda t: difflib.SequenceMatcher(None, key, _norm(t["title"])).ratio())
-    if best is None:
-        return "none", None
-    score = difflib.SequenceMatcher(None, key, _norm(best["title"])).ratio()
-    if score >= 0.90 and ours and ours & _surnames(best["speakers"]):
+    score, best = max(((difflib.SequenceMatcher(None, key, t["norm"]).ratio(), t)
+                       for t in catalog), key=lambda pair: pair[0], default=(0, None))
+    if score >= 0.90 and shares(best):
         return "attach", best
     if score >= 0.75:
         return "candidate", best
@@ -204,33 +204,31 @@ def attach(csv_path=None) -> dict:
     re-run brings in whatever the catalogue has gained. No talk attaches to
     two rows.
     """
-    csv_path = csv_path or config.METADATA_CSV
-    catalog = read_catalog()
+    catalog = [{**t, "norm": _norm(t["title"])} for t in read_catalog()]
     by_id = {str(t["id"]): t for t in catalog}
+    rows = [r for r in csv_writer.read_rows(csv_path or config.METADATA_CSV)
+            if (r.get("TalkID") or "").strip()]
+    held = {r["TalkID"]: reconcile.source_ids(r).get("heysummit") for r in rows}
+    taken = set(held.values())
+    free = [t for t in catalog if str(t["id"]) not in taken]
+
     result = {"attached": 0, "filled": 0, "candidates": [], "unmatched": 0}
-
-    with csv_writer._write_lock:
-        rows = [r for r in csv_writer.read_rows(csv_path) if (r.get("TalkID") or "").strip()]
-        taken = {r["HeySummit"].strip() for r in rows if (r.get("HeySummit") or "").strip()}
-        free = [t for t in catalog if str(t["id"]) not in taken]
-
-        for row in rows:
-            held = (row.get("HeySummit") or "").strip()
-            if held:
-                talk = by_id.get(held)
-            else:
-                verdict, talk = match(row, free)
-                if verdict == "candidate":
-                    result["candidates"].append((row["Title"], talk["title"]))
-                if verdict != "attach":
-                    result["unmatched"] += verdict == "none"
-                    continue
-                free.remove(talk)
-                result["attached"] += 1
-            if talk:
-                changed, _ = csv_writer._apply_to_row(
-                    csv_path, row["TalkID"].strip(), fields(talk), only_if_blank=True)
-                result["filled"] += changed
+    patches = {}
+    for row in rows:
+        talk = by_id.get(held[row["TalkID"]] or "")
+        if not held[row["TalkID"]]:
+            verdict, talk = match(row, free)
+            if verdict == "candidate":
+                result["candidates"].append((row["Title"], talk["title"]))
+            if verdict == "none":
+                result["unmatched"] += 1
+            if verdict != "attach":
+                continue
+            free.remove(talk)
+            result["attached"] += 1
+        if talk:
+            patches[row["TalkID"].strip()] = fields(talk)
+    result["filled"] = csv_writer.fill_blanks(patches, csv_path)
     return result
 
 

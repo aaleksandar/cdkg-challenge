@@ -147,39 +147,65 @@ def _apply_to_row(csv_path: Path, talk_id: str, fields: dict[str, str],
     if not csv_path.exists():
         return False, "Metadata CSV not found"
 
-    with open(csv_path, newline="", encoding="utf-8") as handle:
-        reader = csv.DictReader(handle)
-        columns = reader.fieldnames or list(FALLBACK_COLUMNS)
-        rows = list(reader)
-
-    target = None
-    for row in rows:
-        if (row.get("TalkID") or "").strip() == talk_id:
-            target = row
-            break
+    columns, rows = _read_table(csv_path)
+    target = next((r for r in rows if (r.get("TalkID") or "").strip() == talk_id), None)
     if target is None:
         return False, "No metadata row for this talk"
 
+    applied = _patch(target, fields, columns, only_if_blank)
+    if not applied:
+        return False, "Nothing to update"
+    _write_table(csv_path, columns, rows)
+    return True, f"Updated {', '.join(applied)}"
+
+
+def fill_blanks(patches: dict[str, dict[str, str]], csv_path: Path | None = None) -> int:
+    """Fill blank columns on many rows, keyed by TalkID, in one write.
+
+    The pipeline's path for a source that has more to say about talks that
+    already exist. Never overwrites. Returns the number of rows changed.
+    """
+    csv_path = csv_path or config.METADATA_CSV
+    with _write_lock:
+        if not csv_path.exists() or not patches:
+            return 0
+        columns, rows = _read_table(csv_path)
+        changed = sum(bool(_patch(row, patches[talk_id], columns, only_if_blank=True))
+                      for row in rows
+                      if (talk_id := (row.get("TalkID") or "").strip()) in patches)
+        if changed:
+            _write_table(csv_path, columns, rows)
+        return changed
+
+
+def _read_table(csv_path: Path) -> tuple[list[str], list[dict]]:
+    with open(csv_path, newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        return reader.fieldnames or list(FALLBACK_COLUMNS), list(reader)
+
+
+def _patch(row: dict, fields: dict[str, str], columns: list[str],
+           only_if_blank: bool) -> list[str]:
     applied = []
     for column, value in fields.items():
         value = (value or "").strip()
         if not value or column not in columns:
             continue
-        if only_if_blank and (target.get(column) or "").strip():
+        if only_if_blank and (row.get(column) or "").strip():
             continue
-        target[column] = value
+        row[column] = value
         applied.append(column)
-    if not applied:
-        return False, "Nothing to update"
+    return applied
 
+
+def _write_table(csv_path: Path, columns: list[str], rows: list[dict]) -> None:
+    """Rewrite through a temporary file, so an interrupted write cannot truncate."""
     temporary = csv_path.with_suffix(".csv.tmp")
     with open(temporary, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     temporary.replace(csv_path)
-
-    return True, f"Updated {', '.join(applied)}"
 
 
 def append_row(parsed, video_id: str, srt_path: Path,

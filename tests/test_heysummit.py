@@ -11,10 +11,11 @@ from ingest.pipeline import csv_writer
 from ingest.sources import heysummit
 
 
-def _talk(id, title, speakers=("Jane Doe",), categories=(), **kw):
-    return {"id": id, "event_id": 16412, "title": title, "url": f"https://hs/{id}",
-            "date": "2021-12-01T15:00:00", "speakers": list(speakers),
-            "categories": list(categories), "description": "Abstract.", **kw}
+def _talk(id, title, speakers=("Jane Doe",), categories=()):
+    return {"id": id, "event_id": 16412, "title": title, "norm": heysummit._norm(title),
+            "url": f"https://hs/{id}", "date": "2021-12-01T15:00:00",
+            "speakers": list(speakers), "categories": list(categories),
+            "description": "Abstract."}
 
 
 def _row(**kw):
@@ -69,10 +70,11 @@ def catalog_and_csv(tmp_path, monkeypatch):
     with open(path, "w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=csv_writer.FALLBACK_COLUMNS, lineterminator="\n")
         writer.writeheader()
-        writer.writerow({**dict.fromkeys(csv_writer.FALLBACK_COLUMNS, ""), "TalkID": "t-1",
+        blank = dict.fromkeys(csv_writer.FALLBACK_COLUMNS, "")
+        writer.writerow({**blank, "TalkID": "t-1",
                          "Title": "Graph Thinking", "Speaker": "Paco Nathan",
                          "Category": "Knowledge Graphs"})
-        writer.writerow({**dict.fromkeys(csv_writer.FALLBACK_COLUMNS, ""), "TalkID": "t-2",
+        writer.writerow({**blank, "TalkID": "t-2",
                          "Title": "Graph Thinking", "Speaker": "Paco Nathan"})
     return path
 
