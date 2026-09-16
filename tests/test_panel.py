@@ -25,7 +25,7 @@ def _only(*states):
 
 
 READY = R.TalkState(
-    video_id="aaaaaaaaaaa", title="A Talk | Jane Doe | CDL24", on_youtube=True,
+    sources={"youtube": "aaaaaaaaaaa"}, title="A Talk | Jane Doe | CDL24",
     in_csv=True, csv_title="A Talk | Jane Doe | CDL24", has_transcript=True,
     has_tags=True, tag_count=5, stem="A Talk", published_at="2024-03-12T09:00:00Z",
     url="https://www.youtube.com/watch?v=aaaaaaaaaaa",
@@ -70,7 +70,7 @@ def test_a_flag_toggle_tells_an_open_drawer_to_re_render(client, monkeypatch):
     assert response.headers.get("HX-Trigger") == "gate-changed"
     client.post("/flag/KG_ENABLED", data={"lane": "all", "q": ""})  # restore
 
-    drawer = client.get("/video/aaaaaaaaaaa?body=1").text
+    drawer = client.get("/video/youtube:aaaaaaaaaaa?body=1").text
     assert "gate-changed from:body" in drawer
 
 
@@ -125,7 +125,7 @@ def test_a_row_carries_the_publish_date_and_a_link_to_the_video(client, monkeypa
 
 def test_shorts_are_hidden_until_asked_for(client, monkeypatch):
     short = R.TalkState(
-        video_id="bbbbbbbbbbb", title="Teaser", on_youtube=True, duration=42,
+        sources={"youtube": "bbbbbbbbbbb"}, title="Teaser", duration=42,
     )
     monkeypatch.setattr(R, "reconcile", _only(READY, short))
     assert short.lane == "excluded"
@@ -138,14 +138,14 @@ def test_a_blocked_talk_says_what_is_blocking_it(client, monkeypatch):
     """The whole point of the attention lane: the row says something is stuck,
     and the drawer says what and what ends it."""
     blocked = R.TalkState(
-        video_id="ccccccccccc", title="Blocked talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "ccccccccccc"}, title="Blocked talk", in_csv=True,
         csv_title="Blocked talk", has_transcript=True, has_tags=True, tag_count=3,
         stem="Blocked talk", missing_curation=["Speaker"],
     )
     monkeypatch.setattr(R, "reconcile", _only(blocked))
     assert blocked.status == "needs_curation"
 
-    drawer = client.get("/video/ccccccccccc?body=1").text
+    drawer = client.get("/video/youtube:ccccccccccc?body=1").text
     assert "Not in the graph" in drawer
     assert "missing Speaker" in drawer or "02_domain_graph.py" in drawer
 
@@ -154,7 +154,7 @@ def test_curating_a_talk_asks_for_the_rebuild_that_unblocks_it(client, monkeypat
     """Saving the Speaker that was blocking a talk should put it in the graph,
     not leave it 'ready' until someone finds a button."""
     blocked = R.TalkState(
-        video_id="ddddddddddd", title="Blocked talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "ddddddddddd"}, title="Blocked talk", in_csv=True,
         stem="Blocked talk", has_transcript=True, has_tags=True, tag_count=3,
         missing_curation=["Speaker"],
     )
@@ -166,7 +166,7 @@ def test_curating_a_talk_asks_for_the_rebuild_that_unblocks_it(client, monkeypat
     monkeypatch.setattr("ingest.pipeline.runner.request_rebuild",
                         lambda: asked.append(True))
 
-    client.post("/curate/ddddddddddd", data={"Speaker": "Jane Doe"})
+    client.post("/curate/youtube:ddddddddddd", data={"Speaker": "Jane Doe"})
     assert asked == [True]
 
 
@@ -174,16 +174,16 @@ def test_ingesting_from_the_drawer_answers_with_the_drawer_and_the_row(
     client, monkeypatch
 ):
     """The drawer's own Ingest button must not leave the sheet behind it stale."""
-    fresh = R.TalkState(video_id="bbbbbbbbbbb", title="Another Talk", on_youtube=True)
+    fresh = R.TalkState(sources={"youtube": "bbbbbbbbbbb"}, title="Another Talk",)
     monkeypatch.setattr(R, "reconcile", _only(fresh))
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos", queued.extend)
 
-    response = client.post("/ingest/bbbbbbbbbbb?view=drawer")
+    response = client.post("/ingest/youtube:bbbbbbbbbbb?view=drawer")
 
     assert queued == ["bbbbbbbbbbb"]
     assert "drawer-head" in response.text          # the drawer's own body
-    assert 'id="talk-bbbbbbbbbbb"' in response.text  # and the row, out of band
+    assert 'id="talk-youtube:bbbbbbbbbbb"' in response.text  # and the row, out of band
     assert 'hx-swap-oob="true"' in response.text
     # Not the shell: swapping that would replay the open animation.
     assert "scrim" not in response.text
@@ -191,17 +191,17 @@ def test_ingesting_from_the_drawer_answers_with_the_drawer_and_the_row(
 
 def test_the_drawer_offers_the_same_action_the_row_does(client, monkeypatch):
     monkeypatch.setattr(R, "reconcile", _only(
-        R.TalkState(video_id="ccccccccccc", title="Not ingested talk", on_youtube=True)
+        R.TalkState(sources={"youtube": "ccccccccccc"}, title="Not ingested talk",)
     ))
-    drawer = client.get("/video/ccccccccccc").text
+    drawer = client.get("/video/youtube:ccccccccccc").text
     assert "Ingest this talk" in drawer
-    assert "/ingest/ccccccccccc?view=drawer" in drawer
+    assert "/ingest/youtube%3Accccccccccc?view=drawer" in drawer
 
 
 def test_draining_the_backlog_queues_the_channel_not_the_page(client, monkeypatch):
     """Computed server-side, so a stale sheet cannot re-queue a talk that has
     since been ingested."""
-    fresh = R.TalkState(video_id="eeeeeeeeeee", title="Waiting", on_youtube=True)
+    fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting",)
     monkeypatch.setattr(R, "reconcile", _only(READY, fresh))
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
@@ -218,7 +218,7 @@ def test_the_sheet_is_newest_first_regardless_of_status(client, monkeypatch):
     a status changed; the lane tabs isolate them instead. Undated rows sort last,
     because an empty string beats every real date under a reverse sort."""
     def talk(vid, title, published, **kw):
-        return R.TalkState(video_id=vid, title=title, on_youtube=True,
+        return R.TalkState(sources={"youtube": vid}, title=title,
                            published_at=published, url=f"u/{vid}", **kw)
 
     monkeypatch.setattr(R, "reconcile", _only(
@@ -243,7 +243,7 @@ def test_the_suggest_button_fills_the_field_but_saves_nothing(client, monkeypatc
     """The CSV is what the graph is built from verbatim, so a machine-read name
     still passes through a person before it becomes a row."""
     blocked = R.TalkState(
-        video_id="eeeeeeeeeee", title="Talk to your data | CDL24", on_youtube=True,
+        sources={"youtube": "eeeeeeeeeee"}, title="Talk to your data | CDL24",
         in_csv=True, stem="Talk to your data", has_transcript=True,
         missing_curation=["Speaker"],
     )
@@ -258,7 +258,7 @@ def test_the_suggest_button_fills_the_field_but_saves_nothing(client, monkeypatc
     monkeypatch.setattr("ingest.pipeline.csv_writer.update_row",
                         lambda video_id, fields: wrote.append(fields))
 
-    body = client.post("/suggest/eeeeeeeeeee").text
+    body = client.post("/suggest/youtube:eeeeeeeeeee").text
 
     assert 'value="Atanas Kiryakov"' in body
     assert "Atanas Kiryakov. CEO &amp; Founder, Ontotext" in body  # the evidence
@@ -269,7 +269,7 @@ def test_the_suggest_button_says_so_when_the_description_names_nobody(
     client, monkeypatch
 ):
     blocked = R.TalkState(
-        video_id="fffffffffff", title="Highlights", on_youtube=True, in_csv=True,
+        sources={"youtube": "fffffffffff"}, title="Highlights", in_csv=True,
         stem="Highlights", has_transcript=True, missing_curation=["Speaker"],
     )
     monkeypatch.setattr(R, "reconcile", _only(blocked))
@@ -278,7 +278,7 @@ def test_the_suggest_button_says_so_when_the_description_names_nobody(
     monkeypatch.setattr("ingest.sources.youtube.fetch_video_info",
                         lambda v: {"description": "No one is named here."})
 
-    body = client.post("/suggest/fffffffffff").text
+    body = client.post("/suggest/youtube:fffffffffff").text
     assert "Nothing found" in body
     assert "It needs a person who knows" in body
 
@@ -288,29 +288,29 @@ def test_any_talk_with_a_video_can_be_run_again(client, monkeypatch):
     deleting files by hand: the Ingest button only ever rendered for a talk that
     had never run or had failed."""
     blocked = R.TalkState(
-        video_id="eeeeeeeeeee", title="Blocked talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "eeeeeeeeeee"}, title="Blocked talk", in_csv=True,
         stem="Blocked talk", has_transcript=True, has_tags=True, tag_count=3,
         missing_curation=["Speaker"],
     )
     monkeypatch.setattr(R, "reconcile", _only(blocked))
     assert blocked.status == "needs_curation"
 
-    drawer = client.get("/video/eeeeeeeeeee?body=1").text
+    drawer = client.get("/video/youtube:eeeeeeeeeee?body=1").text
     assert "Run the pipeline again" in drawer
-    assert "/ingest/eeeeeeeeeee?view=drawer" in drawer
+    assert "/ingest/youtube%3Aeeeeeeeeeee?view=drawer" in drawer
     # And it says what it will not re-spend.
     assert "no LLM cost" in drawer
 
 
 def test_a_talk_already_running_is_not_offered_a_second_run(client, monkeypatch):
     busy = R.TalkState(
-        video_id="fffffffffff", title="Busy talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "fffffffffff"}, title="Busy talk", in_csv=True,
         run={"id": 1, "status": "running", "started_at": "now", "stages": []},
     )
     monkeypatch.setattr(R, "reconcile", _only(busy))
     assert busy.status == "in_progress"
 
-    assert "Run the pipeline again" not in client.get("/video/fffffffffff?body=1").text
+    assert "Run the pipeline again" not in client.get("/video/youtube:fffffffffff?body=1").text
 
 
 def test_the_reveal_on_hover_rule_cannot_hide_a_button_outside_a_row(client):
@@ -335,14 +335,14 @@ def test_the_reveal_on_hover_rule_cannot_hide_a_button_outside_a_row(client):
 def test_the_drawer_never_uses_a_row_scoped_button(client, monkeypatch):
     """The drawer has no <tr> to hover, so a row action placed there is invisible."""
     settled = R.TalkState(
-        video_id="ggggggggggg", title="A finished talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "ggggggggggg"}, title="A finished talk", in_csv=True,
         stem="A finished talk", has_transcript=True, has_tags=True, tag_count=9,
         in_graph=True, tagged_in_graph=True,
     )
     monkeypatch.setattr(R, "reconcile", _only(settled))
     assert settled.status == "in_graph"
 
-    drawer = client.get("/video/ggggggggggg?body=1").text
+    drawer = client.get("/video/youtube:ggggggggggg?body=1").text
     assert "Run the pipeline again" in drawer
     assert 'class="rowbtn"' not in drawer
 
@@ -351,14 +351,14 @@ def test_the_drawer_lists_the_tags_behind_the_count(client, monkeypatch):
     """"38 extracted" is a number an admin cannot check. The tags are the whole
     content layer of the graph, and the drawer is where a talk is inspected."""
     tagged = R.TalkState(
-        video_id="hhhhhhhhhhh", title="A tagged talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "hhhhhhhhhhh"}, title="A tagged talk", in_csv=True,
         stem="A tagged talk", has_transcript=True, has_tags=True,
         tags=["knowledge graphs", "sparql", "graph rag"], tag_count=3,
         in_graph=True, tagged_in_graph=True,
     )
     monkeypatch.setattr(R, "reconcile", _only(tagged))
 
-    drawer = client.get("/video/hhhhhhhhhhh?body=1").text
+    drawer = client.get("/video/youtube:hhhhhhhhhhh?body=1").text
     assert "3 extracted" in drawer
     for tag in tagged.tags:
         assert f">{tag}</li>" in drawer, f"{tag!r} is not listed"
@@ -368,12 +368,12 @@ def test_the_drawer_lists_the_tags_behind_the_count(client, monkeypatch):
 
 def test_a_talk_with_no_tags_says_so_without_an_empty_disclosure(client, monkeypatch):
     untagged = R.TalkState(
-        video_id="iiiiiiiiiii", title="An untagged talk", on_youtube=True,
+        sources={"youtube": "iiiiiiiiiii"}, title="An untagged talk",
         in_csv=True, stem="An untagged talk", has_transcript=True,
     )
     monkeypatch.setattr(R, "reconcile", _only(untagged))
 
-    drawer = client.get("/video/iiiiiiiiiii?body=1").text
+    drawer = client.get("/video/youtube:iiiiiiiiiii?body=1").text
     assert "taglist" not in drawer
 
 
@@ -396,12 +396,12 @@ def test_the_drawer_reports_what_a_run_spent(client, monkeypatch):
         ],
     }
     monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
-        video_id="jjjjjjjjjjj", title="A costed talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "jjjjjjjjjjj"}, title="A costed talk", in_csv=True,
         stem="A costed talk", has_transcript=True, has_tags=True, tag_count=9,
         in_graph=True, tagged_in_graph=True, run=run)))
     monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
 
-    drawer = client.get("/video/jjjjjjjjjjj?body=1").text
+    drawer = client.get("/video/youtube:jjjjjjjjjjj?body=1").text
     assert "16,561 in" in drawer      # summed across both paid calls
     assert "447 out" in drawer
     assert "across 2 calls" in drawer
@@ -417,7 +417,7 @@ def test_a_run_that_spent_nothing_shows_no_token_row(client, monkeypatch):
                     "message": "", "detail": json.dumps({"reused": True})}],
     }
     monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
-        video_id="kkkkkkkkkkk", title="A reused talk", on_youtube=True, in_csv=True,
+        sources={"youtube": "kkkkkkkkkkk"}, title="A reused talk", in_csv=True,
         stem="A reused talk", has_transcript=True, has_tags=True, tag_count=9,
         in_graph=True, tagged_in_graph=True, run=run)))
     monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
@@ -492,7 +492,7 @@ def test_pausing_the_scheduler_pauses_the_running_jobs(client, monkeypatch):
 
 
 SHORT = R.TalkState(
-    video_id="ccccccccccc", title="A teaser #knowledgegraph", on_youtube=True,
+    sources={"youtube": "ccccccccccc"}, title="A teaser #knowledgegraph",
     duration=153, url="https://www.youtube.com/watch?v=ccccccccccc",
 )
 
@@ -502,7 +502,7 @@ def test_a_short_cannot_be_ingested_from_the_panel(client, monkeypatch):
     stop it a moment later, but only after recording a run — and a history full
     of skipped Shorts reads as work that went wrong."""
     waiting = R.TalkState(
-        video_id="eeeeeeeeeee", title="A real talk", on_youtube=True, duration=2400,
+        sources={"youtube": "eeeeeeeeeee"}, title="A real talk", duration=2400,
     )
     monkeypatch.setattr(R, "reconcile", _only(SHORT, waiting))
     # The route reads the running time from the inventory, which is where it
@@ -514,12 +514,12 @@ def test_a_short_cannot_be_ingested_from_the_panel(client, monkeypatch):
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos", queued.append)
 
-    client.post("/ingest/ccccccccccc")
+    client.post("/ingest/youtube:ccccccccccc")
     assert queued == []
 
     # The same click on a talk still works, so the guard is the Short and not
     # the route.
-    client.post("/ingest/eeeeeeeeeee")
+    client.post("/ingest/youtube:eeeeeeeeeee")
     assert queued == [["eeeeeeeeeee"]]
 
 
@@ -527,7 +527,7 @@ def test_a_short_is_never_offered_a_run_or_a_curation_form(client, monkeypatch):
     """Every other talk with a video can be re-run; a Short is the exception,
     because there is no outcome of a run that would be an improvement."""
     monkeypatch.setattr(R, "reconcile", _only(SHORT))
-    drawer = client.get("/video/ccccccccccc?body=1").text
+    drawer = client.get("/video/youtube:ccccccccccc?body=1").text
     assert "Run the pipeline again" not in drawer
     assert "Short — ignored" in drawer
 
@@ -537,7 +537,7 @@ def test_a_short_that_was_ingested_is_reported_not_hidden(client, monkeypatch):
     nothing else in the panel would ever mention that a trailer is answering
     questions in the public app."""
     ingested_short = R.TalkState(
-        video_id="ddddddddddd", title="A teaser that got in", on_youtube=True,
+        sources={"youtube": "ddddddddddd"}, title="A teaser that got in",
         duration=153, in_csv=True, csv_title="A teaser that got in",
         has_tags=True, tag_count=9, in_graph=True,
     )
@@ -548,12 +548,12 @@ def test_a_short_that_was_ingested_is_reported_not_hidden(client, monkeypatch):
     assert "A teaser that got in" in advanced
     assert "Shorts that were ingested" in advanced
 
-    drawer = client.get("/video/ddddddddddd?body=1").text
+    drawer = client.get("/video/youtube:ddddddddddd?body=1").text
     assert "Ingested, and should not have been" in drawer
 
 
 FAILED_DOWNLOAD = R.TalkState(
-    video_id="lllllllllll", title="A refused talk | Jane Doe | CDL24", on_youtube=True,
+    sources={"youtube": "lllllllllll"}, title="A refused talk | Jane Doe | CDL24",
     duration=2400, url="https://www.youtube.com/watch?v=lllllllllll",
 )
 
@@ -584,7 +584,7 @@ def test_a_bot_check_is_explained_with_its_remedy(client, monkeypatch):
     monkeypatch.setattr(R, "reconcile", _only(state))
     monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
 
-    drawer = client.get("/video/lllllllllll?body=1").text
+    drawer = client.get("/video/youtube:lllllllllll?body=1").text
 
     assert "download transcript failed" in drawer
     assert "bot check" in drawer
@@ -600,7 +600,7 @@ def test_a_failure_recorded_before_kinds_existed_is_still_classified(client, mon
     monkeypatch.setattr(R, "reconcile", _only(state))
     monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
 
-    drawer = client.get("/video/lllllllllll?body=1").text
+    drawer = client.get("/video/youtube:lllllllllll?body=1").text
     assert "bot check" in drawer
 
 
@@ -619,8 +619,8 @@ def upload_env(client, monkeypatch, tmp_path):
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
     monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
-        video_id="mmmmmmmmmmm", title="Graphs Everywhere | Jane Doe | CDL24",
-        on_youtube=True, duration=2400, url="https://www.youtube.com/watch?v=mmmmmmmmmmm")))
+        sources={"youtube": "mmmmmmmmmmm"}, title="Graphs Everywhere | Jane Doe | CDL24",
+        duration=2400, url="https://www.youtube.com/watch?v=mmmmmmmmmmm")))
     return queued
 
 
@@ -645,7 +645,7 @@ def test_uploaded_captions_land_where_the_download_stage_looks(client, upload_en
 
 
 def test_a_transcript_without_captions_is_offered_the_upload(client, upload_env):
-    drawer = client.get("/video/mmmmmmmmmmm?body=1").text
+    drawer = client.get("/video/youtube:mmmmmmmmmmm?body=1").text
     assert 'hx-post="/transcript/mmmmmmmmmmm"' in drawer
     assert 'hx-encoding="multipart/form-data"' in drawer
 
@@ -660,8 +660,8 @@ def test_an_empty_caption_file_is_refused_beside_the_button(client, upload_env):
 
 
 def test_a_short_never_takes_an_upload(client, upload_env, monkeypatch):
-    monkeypatch.setattr("ingest.db.all_videos",
-                        lambda: [{"video_id": "mmmmmmmmmmm", "duration": 90}])
+    monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
+        sources={"youtube": "mmmmmmmmmmm"}, title="A teaser | Jane Doe | CDL24", duration=90)))
     reply = client.post("/transcript/mmmmmmmmmmm",
                         files={"captions": ("talk.vtt", GOOD_VTT.encode(), "text/vtt")})
     assert "Short" in reply.text and upload_env == []

@@ -66,15 +66,26 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 
 ### Property Graph Schema (Kuzu)
 ```
-(:Speaker) -[:GIVES_TALK]-> (:Talk)      // has a `date` property
+(:Speaker) -[:GIVES_TALK]-> (:Talk)      // has a `date` property; Talk's key is `talk_id`
 (:Talk) -[:IS_PART_OF]-> (:Event)
 (:Talk) -[:IS_CATEGORIZED_AS]-> (:Category)
 (:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 ```
 
-A full rebuild yields 55 Speakers, 47 Talks, 5 Events, 3 Categories, 777 Tags — of which 45 Talks carry tags (measured 2026-09-16; re-measure after adding transcripts or metadata rows).
+A full rebuild yields 56 Speakers, 47 Talks, 5 Events, 3 Categories, 777 Tags — of which 45 Talks carry tags (measured 2026-09-16, after the TalkID merge; re-measure after adding transcripts or metadata rows).
 
-Only `Title`, `Speaker` and `Event` are required to become a `Talk`. `Date`, `Type` and `Category` are optional: the row is kept without them, and the talk simply has a null date or no `IS_CATEGORIZED_AS` edge. Requiring all six used to drop a fully transcribed, fully tagged talk over a blank `Type`.
+Only `TalkID`, `Title`, `Speaker` and `Event` are required to become a `Talk`. `Date`, `Type` and `Category` are optional: the row is kept without them, and the talk simply has a null date or no `IS_CATEGORIZED_AS` edge. Requiring all six used to drop a fully transcribed, fully tagged talk over a blank `Type`.
+
+### A talk's identity, and its sources
+
+**A talk is a row in the metadata CSV. Sources attach to it. None of them is its identity.** `TalkID` — `t-` plus eight hex — is minted once and never rewritten, and belongs to no source. It is the `Talk` node's primary key and the key every panel route addresses.
+
+Sources are peers: no source outranks another overall. Each holds what it holds — only YouTube has transcripts, only HeySummit has a talk's date and abstract — and **where two hold the same field, which one wins is a per-field preference**, declared where that field is written rather than implied by which source arrived first. Today there is one source and nothing to resolve; the preference table arrives with the second. Each names its own record in a CSV column of its own — `Video`, `HeySummit`, `File` — and `reconcile.SOURCE_COLUMNS` is the whole registry. **Adding a source is a column and a line there**, plus how to read an id out of that column.
+
+Two consequences worth knowing before working nearby:
+
+- **A talk with no video is representable.** It was not: rows were found by the video id parsed out of `Video`, so a talk no video carried could not be addressed, let alone curated. `_view()` still filters the sheet to `on_youtube`, which is a display choice, not a limit of the model.
+- **A record that is not yet a talk has no `TalkID`**, and is addressed as `<source>:<id>` — `youtube:dQw4w9WgXcQ`, `file:<stem>`. That is the backlog. Resolving a record into a talk is what mints an identity, and `csv_writer.find_talk_by_source` is where two sources become one talk rather than two rows.
 
 ### Key Components
 
@@ -210,7 +221,7 @@ If YouTube refuses the captions, the drawer says so and offers an upload; the ru
 
 `QA/CDKGQA.csv` holds 12 questions with baseline answers. `evaluate.py` runs each through `GraphRAG` and scores the response 1–5 with a Gemini judge (1 = no_answer, 5 = correct), printing per-question detail and a summary histogram.
 
-**This is the regression check for any prompt or schema change.** Capture a baseline before touching `baml_src/graphrag.baml`, then compare after. Expect run-to-run variance of a few tenths even at `temperature 0` — judge a change by the shape of the distribution, not a single decimal. Current baseline is 4.3–4.5/5 across five runs on `gemini-3.7-flash` (measured 2026-08-25). Q5 ("latest developments") is the marginal one: it normally scores 3 but dipped to 2 in one run of five with no code change in between, so a single 2 there is judge noise at a boundary rather than a regression. Two 2s, or a 2 anywhere else, is worth investigating.
+**This is the regression check for any prompt or schema change.** Capture a baseline before touching `baml_src/graphrag.baml`, then compare after. Expect run-to-run variance of a few tenths even at `temperature 0` — judge a change by the shape of the distribution, not a single decimal. Current baseline is 4.4–4.6/5 across five runs on `gemini-3.7-flash` (measured 2026-09-11, after the `talk_id` migration; the previous measurement was 4.3–4.5 on 2026-08-25). Q5 ("latest developments") is the marginal one: it normally scores 3 but dipped to 2 in one run of five with no code change in between, so a single 2 there is judge noise at a boundary rather than a regression. Two 2s, or a 2 anywhere else, is worth investigating. Q7 and Q10 also move by a point between otherwise identical runs — four of the five runs on 2026-09-11 were score-for-score identical and the fifth dropped both by one.
 
 ## Docker & Deployment
 
@@ -227,6 +238,7 @@ If YouTube refuses the captions, the drawer says so and offers an upload; the ru
 
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.
 - **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched — currently 25 of 74 entries, so only 45 of 47 Talks carry tags. Those 25 break down as 16 real talks missing from the CSV — all of them from Knowledge Connexions 2020, i.e. one gap in curation rather than 16 separate oversights — plus 9 unusable files named after bare YouTube IDs. Their tags are extracted at LLM cost on every pipeline run, then discarded.
+- **`Talk` is keyed on `talk_id`, not on `title`.** Titles are not unique — conferences reuse "Opening Keynote" — and with `title` as the primary key a duplicate either aborted the whole `COPY Talk` (rows differing) or silently merged two talks into one node carrying both speakers (rows identical, which is the ordinary case for an ingested talk, whose Category/Type/Web/Description are all blank). `title` remains a property and every few-shot Cypher example filters on it, so generated queries were unaffected by the change.
 - **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples in `baml_src/graphrag.baml`, and `cdl_db/README.md`.
 - **`rag.py` opens Kuzu with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.

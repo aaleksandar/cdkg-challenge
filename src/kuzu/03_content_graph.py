@@ -21,21 +21,21 @@ def load_data(filepath: str) -> pl.DataFrame:
     """Load and clean data from the metadata CSV file"""
     df = (
         pl.read_csv(filepath)
-        .drop_nulls(subset=["Title", "File"])
-        .select("Title", "File")
+        .drop_nulls(subset=["TalkID", "File"])
+        .select("TalkID", "File")
         .with_columns(
             pl.col("File")
             .map_elements(lambda x: Path(x).stem, return_dtype=pl.String)
             .alias("filename")
         )
-        .rename({"Title": "title"})
+        .rename({"TalkID": "talk_id"})
         .drop("File")
-        .select("filename", "title")
+        .select("filename", "talk_id")
     )
     return df
 
 
-# Read the metadata file to associate filenames with speakers
+# Read the metadata file to associate transcript filenames with talk identities
 df = load_data(str(config.METADATA_CSV))
 # Read entities from entities.json and insert into the lexical subgraph
 with open(str(config.ENTITIES_JSON), "r", encoding="utf-8") as f:
@@ -48,15 +48,17 @@ conn.execute("CREATE REL TABLE IF NOT EXISTS IS_DESCRIBED_BY(FROM Talk TO Tag);"
 
 for data in entities:
     filename = Path(data["filename"]).stem
-    talk = df.filter(pl.col("filename") == filename).select("title").to_series().to_list()
+    talk = df.filter(pl.col("filename") == filename).select("talk_id").to_series().to_list()
     if talk:
-        title = talk[0]
+        # Matched on the talk's identity, not its name: two talks may share a
+        # title, and attaching a transcript's tags to both would be worse than
+        # attaching them to neither.
         conn.execute(
             """
-            MATCH (talk:Talk {title: $title})
+            MATCH (talk:Talk {talk_id: $talk_id})
             UNWIND $data.entities.tag AS keyword
             MERGE (tag:Tag {keyword: keyword})
             MERGE (tag)<-[:IS_DESCRIBED_BY]-(talk)
             """,
-            parameters={"data": data, "title": title},
+            parameters={"data": data, "talk_id": talk[0]},
         )

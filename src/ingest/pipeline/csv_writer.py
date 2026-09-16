@@ -5,8 +5,9 @@ keep their edits from colliding:
 
 * **Append only.** Existing rows are never rewritten, so a curator filling in
   Date/Type/Category can never be clobbered.
-* **Idempotent by YouTube ID.** Re-ingesting a video already present is a no-op,
-  which makes reruns safe and keeps duplicate rows out of the file.
+* **Idempotent per source.** A source that already has a record on some row
+  updates that row rather than adding one, which makes reruns safe and is how a
+  second source attaches to a talk instead of duplicating it.
 * **Serialised.** A file lock means one writer at a time within this process.
 * **Normalised.** Stable quoting and line endings keep each PR diff to the single
   line that was actually added, so it stays reviewable.
@@ -18,6 +19,7 @@ keep their edits from colliding:
 from __future__ import annotations
 
 import csv
+import secrets
 import threading
 from pathlib import Path
 
@@ -29,7 +31,7 @@ _write_lock = threading.Lock()
 # does not silently shift every appended row.
 FALLBACK_COLUMNS = [
     "Title", "Speaker", "File", "Event", "Date", "Type",
-    "Category", "Video", "Podcast", "Web", "Description",
+    "Category", "Video", "Podcast", "Web", "Description", "TalkID", "HeySummit",
 ]
 
 
@@ -41,22 +43,52 @@ def read_columns(csv_path: Path) -> list[str]:
     return header or list(FALLBACK_COLUMNS)
 
 
-def existing_video_ids(csv_path: Path) -> set[str]:
+def mint_talk_id(taken: set[str]) -> str:
+    """A new identity, belonging to no source.
+
+    Random rather than sequential: this file is appended to by the pipeline, by
+    curators, and on branches that are merged later, and a counter needs a
+    coordination point none of those have.
+    """
+    while True:
+        talk_id = "t-" + secrets.token_hex(4)
+        if talk_id not in taken:
+            return talk_id
+
+
+def read_rows(csv_path: Path) -> list[dict]:
     if not csv_path.exists():
-        return set()
+        return []
     with open(csv_path, newline="", encoding="utf-8") as handle:
-        return {
-            vid
-            for row in csv.DictReader(handle)
-            if (vid := reconcile.extract_video_id(row.get("Video")))
-        }
+        return list(csv.DictReader(handle))
 
 
-def build_row(parsed, video_id: str, srt_path: Path, columns: list[str]) -> dict:
+def existing_talk_ids(csv_path: Path) -> set[str]:
+    return {t for row in read_rows(csv_path) if (t := (row.get("TalkID") or "").strip())}
+
+
+def find_talk_by_source(csv_path: Path, source: str, native_id: str) -> str | None:
+    """The TalkID of the row already holding this source's record, if any.
+
+    The question every source asks before writing: has someone already resolved
+    this record into a talk? Sources are peers, so they all ask it the same way.
+    """
+    for row in read_rows(csv_path):
+        if reconcile.source_ids(row).get(source) == native_id:
+            return (row.get("TalkID") or "").strip() or None
+    return None
+
+
+def build_row(parsed, video_id: str, srt_path: Path, columns: list[str],
+              talk_id: str) -> dict:
     """Only what was actually established. Curation columns stay empty."""
     from .stages import csv_file_reference
 
     row = dict.fromkeys(columns, "")
+    # The talk's own identity. Minted here because this is where a talk starts
+    # existing; the Video column below is just the record YouTube happens to
+    # hold, the same way HeySummit will hold one.
+    row["TalkID"] = talk_id
     # The complete YouTube title, not just its first segment: the channel's
     # "Talk | Speaker | Event" convention is what makes a row identifiable at a
     # glance, and dropping it loses the only signal of what kind of video it is.
@@ -90,9 +122,9 @@ def curation_vocabularies(csv_path: Path | None = None) -> dict[str, list[str]]:
     return {column: sorted(values) for column, values in seen.items()}
 
 
-def update_row(video_id: str, fields: dict[str, str],
+def update_row(talk_id: str, fields: dict[str, str],
                csv_path: Path | None = None) -> tuple[bool, str]:
-    """Fill in curation fields on an existing row, identified by YouTube ID.
+    """Fill in curation fields on an existing row, identified by its TalkID.
 
     The bot only ever appends; this is the human-directed counterpart, and the
     one case where an existing row is edited. It touches only the named columns
@@ -101,10 +133,10 @@ def update_row(video_id: str, fields: dict[str, str],
     """
     csv_path = csv_path or config.METADATA_CSV
     with _write_lock:
-        return _apply_to_row(csv_path, video_id, fields)
+        return _apply_to_row(csv_path, talk_id, fields)
 
 
-def _apply_to_row(csv_path: Path, video_id: str, fields: dict[str, str],
+def _apply_to_row(csv_path: Path, talk_id: str, fields: dict[str, str],
                   only_if_blank: bool = False) -> tuple[bool, str]:
     """Patch one row in place. Callers hold ``_write_lock`` — this does not take it.
 
@@ -122,11 +154,11 @@ def _apply_to_row(csv_path: Path, video_id: str, fields: dict[str, str],
 
     target = None
     for row in rows:
-        if reconcile.extract_video_id(row.get("Video")) == video_id:
+        if (row.get("TalkID") or "").strip() == talk_id:
             target = row
             break
     if target is None:
-        return False, "No metadata row for this video"
+        return False, "No metadata row for this talk"
 
     applied = []
     for column, value in fields.items():
@@ -156,13 +188,17 @@ def append_row(parsed, video_id: str, srt_path: Path,
     csv_path = csv_path or config.METADATA_CSV
 
     with _write_lock:
-        if video_id in existing_video_ids(csv_path):
+        # Has any row already resolved this source's record into a talk? If so
+        # this is that talk, not a new one — the same question HeySummit will ask
+        # about its own record, and the point where two sources become one talk.
+        talk_id = find_talk_by_source(csv_path, "youtube", video_id)
+        if talk_id:
             # Not a duplicate, but a re-run may have established something the
             # first one could not — a Speaker recovered from the description, say.
             # Only gaps are filled: a curator's value is never overwritten by a
             # machine, which is the whole reason this file is append-only.
             filled, detail = _apply_to_row(
-                csv_path, video_id,
+                csv_path, talk_id,
                 {"Speaker": parsed.speaker or "", "Event": parsed.event or ""},
                 only_if_blank=True,
             )
@@ -171,7 +207,8 @@ def append_row(parsed, video_id: str, srt_path: Path,
             return False, "Already in the metadata CSV — not duplicated"
 
         columns = read_columns(csv_path)
-        row = build_row(parsed, video_id, srt_path, columns)
+        row = build_row(parsed, video_id, srt_path, columns,
+                        talk_id=mint_talk_id(existing_talk_ids(csv_path)))
 
         is_new_file = not csv_path.exists()
         csv_path.parent.mkdir(parents=True, exist_ok=True)

@@ -32,7 +32,7 @@ def mounted(monkeypatch, tmp_path):
 
 
 TALK = R.TalkState(
-    video_id="aaaaaaaaaaa", title="A Talk | Jane Doe | CDL24", on_youtube=True,
+    sources={"youtube": "aaaaaaaaaaa"}, title="A Talk | Jane Doe | CDL24",
     in_csv=True, csv_title="A Talk | Jane Doe | CDL24", has_transcript=True,
     has_tags=True, tag_count=5, stem="A Talk", published_at="2024-03-12T09:00:00Z",
     url="https://www.youtube.com/watch?v=aaaaaaaaaaa",

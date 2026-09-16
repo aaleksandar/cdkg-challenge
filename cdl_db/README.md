@@ -19,6 +19,7 @@ Node properties:
   - Tag
     - keyword: string
   - Talk
+    - talk_id: string
     - title: string
     - category: string
     - url: string
