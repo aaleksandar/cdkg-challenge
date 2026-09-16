@@ -105,6 +105,14 @@ SHORT_VIDEO_MAX_SECONDS = int(os.getenv("SHORT_VIDEO_MAX_SECONDS", "300"))
 YTDLP_COOKIES_FILE = os.getenv("YTDLP_COOKIES_FILE") or None
 YTDLP_COOKIES_FROM_BROWSER = os.getenv("YTDLP_COOKIES_FROM_BROWSER") or None
 
+# --- HeySummit ---------------------------------------------------------------
+HEYSUMMIT_API_TOKEN = os.getenv("HEYSUMMIT_API_TOKEN") or None
+# The talks as HeySummit holds them, trimmed and committed beside the .ingest
+# cache, so matching can be re-run without the API.
+HEYSUMMIT_CATALOG = Path(
+    os.getenv("HEYSUMMIT_CATALOG", TRANSCRIPTS_DIR / ".heysummit" / "catalog.json")
+)
+
 # --- Feature gates -----------------------------------------------------------
 # The graph is written by default: an ingested talk that never reaches the graph
 # is work the public app cannot see, so holding it back is the exception, not the

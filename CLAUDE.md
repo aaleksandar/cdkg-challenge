@@ -72,7 +72,7 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 (:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 ```
 
-A full rebuild yields 56 Speakers, 47 Talks, 5 Events, 3 Categories, 777 Tags — of which 45 Talks carry tags (measured 2026-09-16, after the TalkID merge; re-measure after adding transcripts or metadata rows).
+A full rebuild yields 57 Speakers, 48 Talks, 5 Events, 3 Categories, 795 Tags — of which 46 Talks carry tags (measured 2026-09-16, after the first HeySummit sync; re-measure after adding transcripts or metadata rows).
 
 Only `TalkID`, `Title`, `Speaker` and `Event` are required to become a `Talk`. `Date`, `Type` and `Category` are optional: the row is kept without them, and the talk simply has a null date or no `IS_CATEGORIZED_AS` edge. Requiring all six used to drop a fully transcribed, fully tagged talk over a blank `Type`.
 
@@ -80,7 +80,7 @@ Only `TalkID`, `Title`, `Speaker` and `Event` are required to become a `Talk`. `
 
 **A talk is a row in the metadata CSV. Sources attach to it. None of them is its identity.** `TalkID` — `t-` plus eight hex — is minted once and never rewritten, and belongs to no source. It is the `Talk` node's primary key and the key every panel route addresses.
 
-Sources are peers: no source outranks another overall. Each holds what it holds — only YouTube has transcripts, only HeySummit has a talk's date and abstract — and **where two hold the same field, which one wins is a per-field preference**, declared where that field is written rather than implied by which source arrived first. Today there is one source and nothing to resolve; the preference table arrives with the second. Each names its own record in a CSV column of its own — `Video`, `HeySummit`, `File` — and `reconcile.SOURCE_COLUMNS` is the whole registry. **Adding a source is a column and a line there**, plus how to read an id out of that column.
+Sources are peers: no source outranks another overall. Each holds what it holds — only YouTube has transcripts, only HeySummit has a talk's date and abstract — and **where two hold the same field, which one wins is a per-field preference**, declared where that field is written rather than implied by which source arrived first. HeySummit is the second source, and for now its preference is the simplest one: it fills blanks and never overwrites. Date, Type, Category and Description are never written by the pipeline, so a value there came from a person; Speaker, Event and Web are written by the parser and edited by curators, and the CSV does not record which. Each names its own record in a CSV column of its own — `Video`, `HeySummit`, `File` — and `reconcile.SOURCE_COLUMNS` is the whole registry. **Adding a source is a column and a line there**, plus how to read an id out of that column.
 
 Two consequences worth knowing before working nearby:
 
@@ -171,6 +171,8 @@ Two call sites, deliberately different:
 **The sheet shows five lanes, not eleven statuses.** `reconcile.py` still derives all eleven — they are the diagnosis the drawer prints — but `LANE_OF` maps each to one of `attention · working · not_ingested · in_graph · excluded`, and only `attention` asks for a human. `not_ingested` is deliberately not `attention`: the backlog is a normal state of the system, and 155 waiting videos must not read as 155 problems. A status added to `STATUS_LABELS` without a `LANE_OF` entry raises `KeyError` on the first row that hits it; `tests/test_panel.py` guards that.
 
 **The sheet is the channel and nothing else.** `_view()` filters to `on_youtube`, so talks that exist only on disk — orphaned transcripts, files named after a bare video ID — are not rows there. They have no upload date and no link, and a row for them is mostly empty columns. They are counted and listed under **Advanced → Data health**, with the fix for each.
+
+**HeySummit is joined by title, corroborated by speaker.** Its talks carry no link to their video (`external_url` is empty everywhere), so `sources/heysummit.py` matches on the normalised title: exact, or one title extending the other, and never when a speaker on both sides disagrees. Anything weaker is reported to the curator, not written. `refresh_catalog` reads the in-scope events — an explicit allowlist in `EVENTS`, because the account also holds training courses, `(copy)` clones and test events that no field tells apart — into the committed `Transcripts/.heysummit/catalog.json`; `attach` joins it to the CSV without the network. Advanced → "Sync HeySummit" runs both. Type and Category are written only when HeySummit's mixed category list names exactly one of each: against the curated rows that rule agreed 37/37 on Type and 12/12 on Category. The API sits behind Cloudflare, which refuses a library's default User-Agent.
 
 Pipeline stages, in order: `metadata_parse → transcript_download → csv_append → transcript_extraction → tag_extraction → graph_rebuild → publish`. Download, extraction and tag extraction are content-addressed and skip when their output exists, which is what makes a rebuild for a new model cheap — it re-runs neither YouTube nor the LLM.
 

@@ -789,6 +789,30 @@ def refresh(request: Request, background: BackgroundTasks):
     )
 
 
+@router.post("/heysummit", response_class=HTMLResponse)
+def heysummit_sync(request: Request):
+    """Re-read HeySummit, and fill the blanks of the talks it matches. No LLM calls."""
+    from .pipeline.runner import request_rebuild
+    from .sources import heysummit
+
+    try:
+        talks = heysummit.refresh_catalog()
+    except Exception as exc:  # no token, the API, or Cloudflare; all mean "no catalogue"
+        return HTMLResponse(f'<span class="note err">Could not read HeySummit: {exc}</span>')
+
+    result = heysummit.attach()
+    if result["filled"] and config.KG_ENABLED:
+        request_rebuild()
+    candidates = "; ".join(f"{ours} ≈ {theirs}" for ours, theirs in result["candidates"])
+    return HTMLResponse(
+        f'<span class="note">{talks} talks on HeySummit. {result["attached"]} newly '
+        f'matched, blanks filled on {result["filled"]} talks, '
+        f'{result["unmatched"]} with no match.'
+        + (f' Possible matches for a curator: {candidates}' if candidates else "")
+        + '</span>'
+    )
+
+
 @router.post("/rebuild", response_class=HTMLResponse)
 def rebuild(request: Request):
     """Rebuild the graph from what is already on disk. No network, no LLM."""
