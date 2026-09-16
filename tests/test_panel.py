@@ -712,3 +712,18 @@ def test_the_advanced_panel_offers_the_snapshot_button(client, monkeypatch):
     panel = client.get("/advanced?body=1").text
     assert 'hx-post="/snapshots"' in panel
     assert 'hx-get="/snapshots"' in panel
+
+
+def test_the_advanced_panel_names_the_api_key_by_its_tail(client, monkeypatch):
+    """Which key is paying — the org's or a personal one — has to be readable
+    off the panel, without the key itself being readable off the panel."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    monkeypatch.setenv("GOOGLE_API_KEY", "AIzaSyFAKEFAKEFAKEFAKEFAKE93es")
+
+    panel = client.get("/advanced?body=1").text
+
+    assert "••••••••93es" in panel
+    assert "AIzaSyFAKE" not in panel
+
+    monkeypatch.delenv("GOOGLE_API_KEY")
+    assert "Not set." in client.get("/advanced?body=1").text

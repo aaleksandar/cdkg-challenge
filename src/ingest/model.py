@@ -37,3 +37,19 @@ def tag_model() -> str | None:
     except OSError:
         return None
     return match.group(1) if match else None
+
+
+def api_key_hint() -> str | None:
+    """The tail of the Google API key, masked, so the panel can say which key
+    is paying — the org's or someone's personal one — without showing it.
+
+    Read at call time, not import time: the key comes from the environment
+    and a redeploy is the only thing that changes it. Four characters is
+    enough to tell two keys apart and not enough to reconstruct one.
+    """
+    import os
+
+    key = os.getenv("GOOGLE_API_KEY") or ""
+    if len(key) < 8:
+        return None
+    return "\u2022" * 8 + key[-4:]

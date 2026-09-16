@@ -619,7 +619,7 @@ td.act .rowbtn:disabled { opacity: 1; }
   color: var(--ink-faint); margin-top: .8rem;
 }
 .facts dd { margin: .2rem 0 0; color: var(--ink-soft); line-height: 1.55; }
-.facts dd.bad { color: var(--alert); }
+.facts dd.bad, .facts .bad { color: var(--alert); }
 .facts code, .note-body code, .strand code {
   font-family: var(--mono); font-size: .92em; color: var(--ink);
 }

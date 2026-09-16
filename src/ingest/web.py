@@ -12,7 +12,7 @@ from markupsafe import Markup, escape
 from . import config, db, reconcile as R
 from . import spend
 from .sources import youtube
-from .model import tag_model
+from .model import api_key_hint, tag_model
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
@@ -698,6 +698,7 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
         "RSS_POLL_MINUTES": config.RSS_POLL_MINUTES,
         "INVENTORY_REFRESH_HOURS": config.INVENTORY_REFRESH_HOURS,
         "model": tag_model(),
+        "api_key_hint": api_key_hint(),
         "backlog": [s for s in states if s.on_youtube and s.status == "not_ingested"],
         "orphans": [s for s in offchannel if s.status == "orphaned"],
         "junk": [s for s in offchannel if s.status == "junk"],

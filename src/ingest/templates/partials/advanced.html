@@ -85,6 +85,13 @@
     <dd>{% if model %}<code>{{ model }}</code>, pinned in
         <code>baml_src/clients.baml</code>.{% else %}Not resolvable from
         <code>clients.baml</code>.{% endif %}</dd>
+    <dt>API key</dt>
+    {# The tail only. Enough to tell the org's key from a personal one that
+       was never meant to be billed; not enough to reconstruct either. #}
+    <dd>{% if api_key_hint %}<code>{{ api_key_hint }}</code> — <code>GOOGLE_API_KEY</code>
+        as this process sees it; every LLM call, tags and speaker recovery alike,
+        bills to it.{% else %}<span class="bad">Not set.</span> Tag extraction
+        will fail on the first call.{% endif %}</dd>
     {% if last_rebuild %}
       <dt>Last graph rebuild</dt>
       <dd class="{{ '' if last_rebuild.ok else 'bad' }}">{{ last_rebuild.message }}
