@@ -73,19 +73,26 @@ def csv_file_reference(path: Path) -> str:
 
 # --- Stages ------------------------------------------------------------------
 
+def load_info(video_id: str) -> tuple[dict, str]:
+    """The video's trimmed metadata, from the committed cache or from YouTube.
+
+    Returns the info and where it came from. Shared with the panel's caption
+    upload, which has to parse the title exactly as the pipeline does to put
+    the file where the download stage will look for it.
+    """
+    cache_path = config.INGEST_CACHE_DIR / f"{video_id}.json"
+    if cache_path.exists():
+        return json.loads(cache_path.read_text(encoding="utf-8")), "cache"
+    info = youtube.trim_info(youtube.fetch_video_info(video_id))
+    config.INGEST_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(json.dumps(info, indent=2, ensure_ascii=False), encoding="utf-8")
+    return info, "youtube"
+
+
 def stage_metadata_parse(ctx: dict) -> StageResult:
     """Fetch the video's metadata and parse it. Nothing is guessed."""
     video_id = ctx["video_id"]
-    cache_path = config.INGEST_CACHE_DIR / f"{video_id}.json"
-
-    if cache_path.exists():
-        info = json.loads(cache_path.read_text(encoding="utf-8"))
-        source = "cache"
-    else:
-        info = youtube.trim_info(youtube.fetch_video_info(video_id))
-        config.INGEST_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        cache_path.write_text(json.dumps(info, indent=2, ensure_ascii=False), encoding="utf-8")
-        source = "youtube"
+    info, source = load_info(video_id)
 
     duration = info.get("duration")
     if duration and duration <= config.SHORT_VIDEO_MAX_SECONDS:
@@ -145,11 +152,28 @@ def stage_transcript_download(ctx: dict) -> StageResult:
         return StageResult(True, f"Already on disk: {destination.name}",
                            {"srt_path": destination})
 
-    written = youtube.download_transcript(ctx["video_id"], destination)
+    try:
+        written = youtube.download_transcript(ctx["video_id"], destination)
+    except youtube.TranscriptUnavailable as exc:
+        return StageResult(False, FAILURE_MESSAGES[exc.kind],
+                           {"failure_kind": exc.kind, "failure_detail": exc.detail[:500]})
     if written is None:
-        return StageResult(False, "No English captions are available for this video")
+        return StageResult(False, FAILURE_MESSAGES["no_captions"],
+                           {"failure_kind": "no_captions"})
     return StageResult(True, f"Downloaded to {csv_file_reference(written)}",
                        {"srt_path": written})
+
+
+# One sentence per way the caption download can fail, in the words an admin
+# needs rather than the words yt-dlp raised. The bot check in particular reads
+# like a request to log in, and was taken for one at the last demo.
+FAILURE_MESSAGES = {
+    "bot_check": ("YouTube refused the caption download from this server's address "
+                  "(\"sign in to confirm you're not a bot\")"),
+    "rate_limited": "YouTube is rate-limiting this server; it usually clears within an hour",
+    "unavailable": "YouTube reports this video as private, removed or otherwise unavailable",
+    "no_captions": "No English captions are available for this video",
+}
 
 
 def stage_csv_append(ctx: dict) -> StageResult:
@@ -203,8 +227,8 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
                            {"reused": True})
 
     # baml_client lives beside the pipeline scripts, not on the package path.
-    if str(config.KUZU_DIR) not in sys.path:
-        sys.path.insert(0, str(config.KUZU_DIR))
+    if str(config.PIPELINE_SCRIPTS_DIR) not in sys.path:
+        sys.path.insert(0, str(config.PIPELINE_SCRIPTS_DIR))
     from dotenv import load_dotenv
 
     load_dotenv(config.KUZU_DIR / ".env")
@@ -228,9 +252,32 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
 
 
 def stage_graph_rebuild(ctx: dict) -> StageResult:
-    from .graph import rebuild_graph
+    from .graph import rebuild_graph, talk_is_tagged
 
-    return rebuild_graph()
+    result = rebuild_graph()
+    if not result.ok:
+        return result
+
+    # The point of this run was to put *this* talk into the graph with its
+    # tags. A rebuild that succeeded without doing so is still a better graph
+    # than the old one, so it stays swapped in — but the run must say so, or
+    # the talk sits in the attention lane as "untagged" with no explanation.
+    parsed = ctx.get("parsed")
+    if parsed is None or not (ctx.get("tags") or ctx.get("reused")):
+        return result
+    try:
+        tagged = talk_is_tagged(config.GRAPH_DB_PATH, parsed.record_title)
+    except Exception:  # noqa: BLE001 — a swap may be racing; the count is advisory
+        return result
+    result.data["tagged"] = tagged
+    if not tagged:
+        result.message += (
+            " — but this talk carries no tags in the new graph. Its metadata "
+            "row and its entry in entities.json are joined on the transcript "
+            "filename; check that they match and that ENTITIES_JSON points at "
+            "the file the tag stage wrote."
+        )
+    return result
 
 
 def stage_publish(ctx: dict) -> StageResult:

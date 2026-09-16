@@ -30,6 +30,13 @@ METADATA_CSV = Path(
 
 KUZU_DIR = Path(os.getenv("KUZU_DIR", REPO_ROOT / "src" / "kuzu"))
 
+# Where the pipeline *scripts* are run from. Locally that is the checkout; in
+# the container it is /app, the image the deploy just built. KUZU_DIR points
+# into the git working copy, which is cloned once at first boot and never
+# pulled, so running the scripts from there meant a code fix in the image never
+# reached production. Code comes from the image; data lives in the clone.
+PIPELINE_SCRIPTS_DIR = Path(os.getenv("PIPELINE_SCRIPTS_DIR", KUZU_DIR))
+
 # The application env file the pipeline scripts already use. Loaded here so the
 # panel reads it once at import rather than lazily in the two places that happen
 # to need an API key. `load_dotenv` does not override variables already set, so
@@ -38,6 +45,12 @@ load_dotenv(KUZU_DIR / ".env")
 ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", KUZU_DIR / "entities.json"))
 DATA_DIR = Path(os.getenv("DATA_DIR", KUZU_DIR / "data"))
 GRAPH_DB_PATH = Path(os.getenv("DB_PATH", KUZU_DIR / "cdl_db.kuzu"))
+
+# Graph snapshots: CSV exports of the live graph, zipped, beside the database on
+# the shared data volume so they survive a redeploy. Bounded, because every
+# snapshot is a full export and nobody prunes by hand.
+SNAPSHOT_DIR = Path(os.getenv("SNAPSHOT_DIR", GRAPH_DB_PATH.parent / "snapshots"))
+SNAPSHOT_KEEP = int(os.getenv("SNAPSHOT_KEEP", "20"))
 
 # Cached yt-dlp metadata, committed so a parser improvement can be re-applied
 # without re-downloading from YouTube, and so a server move loses nothing.

@@ -234,3 +234,24 @@ def test_pausing_the_scheduler_stops_the_jobs_themselves(state, monkeypatch):
     scheduler.poll_for_new_videos()
     scheduler.refresh_inventory()
     assert polled == []
+
+
+def test_a_failed_stage_keeps_the_reason_it_failed(state, stub_stages, monkeypatch):
+    """The drawer offers a remedy per kind of failure. That needs the kind to
+    survive into the stage record, which a failed stage used to drop."""
+    runners = dict(runner.STAGE_RUNNERS)
+    runners["transcript_download"] = lambda _ctx: StageResult(
+        False, "YouTube refused the caption download",
+        {"failure_kind": "bot_check", "failure_detail": "Sign in to confirm…"},
+    )
+    monkeypatch.setattr("ingest.pipeline.runner.STAGE_RUNNERS", runners)
+    run_id = db.start_run("aaaaaaaaaaa", STAGE_ORDER, status="queued")
+
+    runner._execute(run_id, "aaaaaaaaaaa")
+
+    run = db.run_with_stages(run_id)
+    assert run["status"] == "failed"
+    assert run["error"] == "YouTube refused the caption download"
+    download = next(s for s in run["stages"] if s["stage"] == "transcript_download")
+    assert download["status"] == "failed"
+    assert json.loads(download["detail"])["failure_kind"] == "bot_check"

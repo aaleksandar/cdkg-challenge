@@ -113,6 +113,22 @@
     <span id="adv-flash"></span>
   </div>
 
+  <div class="snapshots-block">
+    <div class="actions">
+      <button type="button" class="btn" hx-post="{{ base }}/snapshots" hx-target="#snapshots"
+              hx-swap="innerHTML" hx-indicator="#snap-busy" hx-disabled-elt="this"
+              data-tip="Exports every node and relationship table of the live graph to
+                        CSV — the same files as cdl_db/ in the repository — zipped with a
+                        manifest of the graph version it came from. Take one before and
+                        one after an ingestion to see exactly what changed. No YouTube,
+                        no LLM calls.">Snapshot the graph</button>
+      <span id="snap-busy" class="htmx-indicator muted">exporting…</span>
+    </div>
+    <div id="snapshots" hx-get="{{ base }}/snapshots" hx-trigger="load" hx-swap="innerHTML">
+      <p class="note-body muted">Reading snapshots…</p>
+    </div>
+  </div>
+
   <div class="drain">
     <button type="button" class="btn is-spendy" hx-post="{{ base }}/backlog/ingest"
             hx-target="#adv-flash" hx-indicator="#adv-busy" hx-disabled-elt="this"

@@ -444,6 +444,14 @@ thead th.r { text-align: right; }
   background: var(--paper); border: 1px solid var(--rule);
   border-radius: 3px; padding: .08rem .35rem;
 }
+.fact.is-warn { color: var(--warn); }
+.raw-error { margin-top: .6rem; font-size: .76rem; }
+.raw-error summary { cursor: pointer; color: var(--ink-faint); }
+.raw-error pre {
+  margin: .4rem 0 0; padding: .5rem .6rem; font-size: .7rem; line-height: 1.45;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 3px;
+  white-space: pre-wrap; word-break: break-word; color: var(--ink-soft);
+}
 .taglist { display: flex; flex-wrap: wrap; gap: .25rem; width: 100%; margin-bottom: .15rem; }
 .tag {
   font-size: .71rem; color: var(--ink-soft);
@@ -552,6 +560,8 @@ td.act .rowbtn:disabled { opacity: 1; }
 }
 .curate-form input:focus { outline: none; border-color: var(--accent); }
 .curate-form button { flex: 0 0 auto; }
+.upload-head { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; }
+.upload-form input[type="file"] { font-size: .78rem; padding: .3rem 0; }
 
 
 /* ---- The blocker ----
@@ -616,6 +626,13 @@ td.act .rowbtn:disabled { opacity: 1; }
 
 .actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 .drain { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.snapshots-block { margin-top: 1rem; }
+.snapshots { width: 100%; border-collapse: collapse; font-size: .76rem; margin-top: .6rem; }
+.snapshots th, .snapshots td { padding: .3rem .45rem; border-bottom: 1px solid var(--rule); text-align: left; }
+.snapshots th { color: var(--ink-faint); font-weight: 500; }
+.snapshots .r { text-align: right; }
+.snapshots .dl { color: var(--accent); text-decoration: none; }
+.snapshots .dl:hover { text-decoration: underline; }
 .btn.is-spendy { border-color: var(--warn); color: var(--warn); }
 .btn.is-spendy:hover:not(:disabled) { background: var(--warn); color: var(--paper-raised); }
 .btn.is-spendy:disabled { border-color: var(--rule-strong); color: var(--ink-faint); }

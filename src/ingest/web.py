@@ -4,13 +4,14 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import APIRouter, BackgroundTasks, Form, Request
+from fastapi import APIRouter, BackgroundTasks, Form, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup, escape
 
 from . import config, db, reconcile as R
 from . import spend
+from .sources import youtube
 from .model import tag_model
 
 router = APIRouter()
@@ -119,6 +120,47 @@ def run_spend(run: dict | None) -> dict:
 
 
 templates.env.globals["run_spend"] = run_spend
+
+
+# What to do about each kind of caption-download failure. The bot check is the
+# one an admin cannot fix from the panel except by supplying the captions.
+FAILURE_ADVICE = {
+    "bot_check": ("This is YouTube's bot check, which fires on datacenter addresses. "
+                  "Upload the captions below (an .srt or .vtt export, from YouTube "
+                  "Studio or any downloader on your own machine) and the run will "
+                  "continue from them."),
+    "rate_limited": "Wait an hour, then ingest again. Nothing on disk is lost.",
+    "unavailable": ("Check the video on YouTube. If it has been made private or "
+                    "removed, there is nothing to ingest; if you have the captions, "
+                    "upload them below."),
+    "no_captions": ("YouTube has no English track for this video. If you have the "
+                    "captions from elsewhere, upload them below."),
+}
+
+
+def failure_of(run: dict | None) -> dict | None:
+    """Why a run failed, in terms of the remedy — or None when it did not.
+
+    Runs recorded before stages started naming their failures still carry the
+    raw text in the stage message, so it is classified here as a fallback.
+    """
+    for stage in (run or {}).get("stages", []):
+        if stage.get("status") != "failed":
+            continue
+        detail = _fromjson(stage.get("detail"))
+        kind = detail.get("failure_kind") or youtube.classify_error(stage.get("message") or "")
+        return {
+            "stage": stage["stage"],
+            "kind": kind,
+            "message": stage.get("message") or "",
+            "detail": detail.get("failure_detail"),
+            "advice": FAILURE_ADVICE.get(kind),
+            "can_upload": stage["stage"] == "transcript_download",
+        }
+    return None
+
+
+templates.env.globals["failure_of"] = failure_of
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
@@ -452,6 +494,72 @@ def ingest_one(request: Request, video_id: str, view: str = "row"):
     return row(request, video_id)
 
 
+# Larger than any caption file for a conference talk; smaller than anything
+# that would be a mistake to read into memory on the panel's thread.
+MAX_CAPTION_BYTES = 5 * 1024 * 1024
+
+
+@router.post("/transcript/{video_id}", response_class=HTMLResponse)
+async def upload_transcript(request: Request, video_id: str, captions: UploadFile):
+    """Take the captions from a curator when YouTube will not hand them over.
+
+    The file is written where ``stage_transcript_download`` looks — the same
+    parse of the same metadata, so the next run finds it "already on disk" and
+    carries on from there. That early return is the audit trail: a run that
+    started from an uploaded file says so in its first two stages.
+
+    Nothing about the talk is guessed from the upload. If the metadata cannot
+    be read at all, the file has no place to go and the curator is told so,
+    because a caption file in the wrong folder is one the pipeline never sees.
+    """
+    from .pipeline import stages
+    from .pipeline.runner import queue_videos
+    from .sources import captions as caps, parser
+
+    def refuse(reason: str):
+        # 200 with a retarget, not a 4xx: htmx does not swap error responses,
+        # so a refusal sent as one would leave the form silent. The message
+        # lands beside the button and the drawer stays as it was.
+        return HTMLResponse(f'<span class="note err">{escape(reason)}</span>',
+                            headers={"HX-Retarget": "#upload-flash", "HX-Reswap": "innerHTML"})
+
+    video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+    if R.is_short_duration((video or {}).get("duration")):
+        return refuse("This is a Short; Shorts are never ingested.")
+    if video_id in db.videos_with_active_runs():
+        return refuse("A run is in progress for this video; wait for it to finish.")
+
+    try:
+        info, _ = stages.load_info(video_id)
+    except Exception as exc:  # noqa: BLE001 — reported to the curator, never fatal
+        return refuse(f"The video's metadata could not be read, so there is no title "
+                      f"to file the captions under: {exc}")
+    parsed = parser.parse(info)
+    destination = stages.transcript_path(parsed.event, parsed.talk_title)
+
+    raw = await captions.read(MAX_CAPTION_BYTES + 1)
+    if len(raw) > MAX_CAPTION_BYTES:
+        return refuse("That file is larger than 5 MB, which no caption file is.")
+    text = raw.decode("utf-8", errors="replace")
+    name = (captions.filename or "").lower()
+    if name.endswith(".vtt") or caps.looks_like_vtt(text):
+        text = caps.vtt_to_srt(text)
+    elif name.endswith(".srt"):
+        # Normalise a loosely formatted SRT too; the pipeline's regex is strict.
+        text = caps.vtt_to_srt(text)
+    else:
+        return refuse("Upload an .srt or .vtt file.")
+    words = len(stages.srt_to_text(text).split())
+    if words < 20:
+        return refuse(f"Only {words} words of captions were read from that file; "
+                      f"it does not look like a transcript.")
+
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(text, encoding="utf-8")
+    queue_videos([video_id])
+    return video_detail(request, video_id, body=1, with_row=True)
+
+
 @router.post("/suggest/{video_id}", response_class=HTMLResponse)
 def suggest_speaker(request: Request, video_id: str):
     """Read the Speaker out of the video's description with the LLM.
@@ -676,6 +784,56 @@ def rebuild(request: Request):
     result = rebuild_graph()
     css = "note" if result.ok else "note err"
     return HTMLResponse(f'<span class="{css}">{result.message}</span>')
+
+
+@router.get("/snapshots", response_class=HTMLResponse)
+def snapshots(request: Request):
+    """The list of graph exports on disk, newest first."""
+    from .pipeline import snapshot
+
+    return templates.TemplateResponse(
+        request, "partials/snapshots.html",
+        {"snapshots": snapshot.list_snapshots(), "keep": config.SNAPSHOT_KEEP},
+    )
+
+
+@router.post("/snapshots", response_class=HTMLResponse)
+def take_snapshot(request: Request):
+    """Export the live graph now, and come back with the refreshed list.
+
+    A failed export is reported in the list rather than raised: the usual
+    cause is a rebuild swapping the database out from under the reader, and
+    the remedy is to press the button again.
+    """
+    from .pipeline import snapshot
+
+    error = None
+    try:
+        snapshot.create_snapshot()
+    except Exception as exc:  # noqa: BLE001 — shown to the admin, never fatal
+        error = f"Snapshot failed: {exc}"
+    return templates.TemplateResponse(
+        request, "partials/snapshots.html",
+        {"snapshots": snapshot.list_snapshots(), "keep": config.SNAPSHOT_KEEP,
+         "error": error},
+    )
+
+
+@router.get("/snapshots/{name}.zip")
+def download_snapshot(name: str):
+    """One snapshot as a zip. The name is validated before it touches a path."""
+    from fastapi.responses import FileResponse
+
+    from .pipeline import snapshot
+
+    try:
+        path = snapshot.snapshot_path(name)
+    except ValueError:
+        return HTMLResponse("Not found.", 404)
+    if not path.exists():
+        return HTMLResponse("Not found.", 404)
+    return FileResponse(path, media_type="application/zip",
+                        filename=f"cdkg-graph-{name}.zip")
 
 
 @router.post("/backlog/ingest", response_class=HTMLResponse)

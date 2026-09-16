@@ -34,7 +34,15 @@
 {# The question a row in the attention lane exists to answer. Printed before the
    actions, because knowing why something is stuck is what tells an admin which
    action is the right one. #}
-{% if s.lane == 'attention' and blocker_for(s) %}
+{% set failure = failure_of(run) if s.status == 'failed' else none %}
+{% if failure %}
+<div class="blocker">
+  <div class="blocker-head">Not in the graph — {{ STAGE_LABELS.get(failure.stage, failure.stage) | lower }} failed</div>
+  <p>{{ failure.message }}.{% if failure.advice %} {{ failure.advice }}{% else %}
+     The timeline below shows the stage. Ingesting again resumes from what is
+     already on disk.{% endif %}</p>
+</div>
+{% elif s.lane == 'attention' and blocker_for(s) %}
 <div class="blocker">
   <div class="blocker-head">Not in the graph</div>
   <p>{{ blocker_for(s) }}</p>
@@ -99,6 +107,35 @@
     {% else %}Curated and tagged; waiting only on a rebuild.{% endif %}
   </span>
 </div>
+{% endif %}
+
+{# The way around YouTube refusing the captions: a curator supplies them. Shown
+   after a download failure, and for any talk that has no transcript yet, since
+   a curator may know before the pipeline does that YouTube will not oblige.
+   The file goes exactly where the download stage would have put it, so the
+   run that follows reports "already on disk" and continues from there. #}
+{% if s.video_id and not s.is_short and not s.has_transcript
+      and s.status != 'in_progress'
+      and (not failure or failure.can_upload) %}
+<section class="curate upload">
+  <div class="upload-head">
+    <strong>Have the captions?</strong>
+    <span class="muted">
+      An .srt or .vtt export — from YouTube Studio, or a downloader on your own
+      machine, which YouTube does not refuse the way it refuses this server.
+      Uploading starts the pipeline from the file.
+    </span>
+  </div>
+  <form hx-post="{{ base }}/transcript/{{ s.video_id }}" hx-target="#drawer-body"
+        hx-swap="innerHTML" hx-encoding="multipart/form-data" class="curate-form upload-form">
+    <label>
+      <span>Caption file</span>
+      <input type="file" name="captions" accept=".srt,.vtt,text/vtt,application/x-subrip" required>
+    </label>
+    <button type="submit" class="btn btn-primary">Upload and ingest</button>
+    <span id="upload-flash" class="muted"></span>
+  </form>
+</section>
 {% endif %}
 
 {# Re-running is always available, for any talk with a video that is not already
@@ -287,6 +324,15 @@
       {% endif %}
     </dl>
     {% include "partials/stages.html" %}
+    {# The run-level error — a traceback tail, or the failed stage's message —
+       was recorded from the start but never shown. Collapsed: it is for the
+       person debugging, not the person curating. #}
+    {% if run.status == 'failed' and run.error %}
+    <details class="raw-error">
+      <summary>Error detail</summary>
+      <pre>{{ run.error }}</pre>
+    </details>
+    {% endif %}
   {% else %}
     <p class="muted">
       Never run through this service.

@@ -12,6 +12,7 @@ Two distinct jobs with different tools:
 from __future__ import annotations
 
 import json
+import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -27,8 +28,51 @@ _ATOM = {
 }
 
 
+class TranscriptUnavailable(Exception):
+    """YouTube would not hand over the captions, for a reason we can name.
+
+    ``kind`` is one of the keys of :data:`FAILURE_KINDS`. Anything yt-dlp raises
+    that does not match one of them propagates unchanged, because a failure we
+    cannot explain must not be dressed up as one we can.
+    """
+
+    def __init__(self, kind: str, detail: str):
+        super().__init__(detail)
+        self.kind = kind
+        self.detail = detail
+
+
+# Substrings of yt-dlp's error text, lowercased, and the name we give them.
+# The bot check is the one that matters: it fires on datacenter addresses and
+# looks, verbatim, like a request to log in — which is what the demo showed.
+FAILURE_KINDS = {
+    "bot_check": ("sign in to confirm", "not a bot", "confirm you’re not a bot"),
+    "rate_limited": ("rate-limit", "rate limit", "try again later", "too many requests"),
+    "unavailable": ("private video", "video unavailable", "has been removed",
+                    "is not available", "no longer available"),
+}
+
+
+def classify_error(text: str) -> str | None:
+    """Name a yt-dlp failure from its message, or None when it is unfamiliar.
+
+    Module-level so the panel can classify runs recorded before the stage
+    started naming them itself — their stage message still carries the text.
+    """
+    lowered = (text or "").lower()
+    for kind, needles in FAILURE_KINDS.items():
+        if any(needle in lowered for needle in needles):
+            return kind
+    return None
+
+
 def _base_opts() -> dict:
-    opts = {"quiet": True, "no_warnings": True, "noprogress": True, "skip_download": True}
+    opts = {
+        "quiet": True, "no_warnings": True, "noprogress": True, "skip_download": True,
+        # One transient refusal should not fail a run that a second attempt
+        # would have completed.
+        "extractor_retries": 3,
+    }
     # YouTube increasingly gates extraction behind a bot check; supply cookies to
     # get through it when configured.
     if config.YTDLP_COOKIES_FILE:
@@ -117,9 +161,17 @@ def fetch_rss() -> list[dict]:
 # --- Per-video ---------------------------------------------------------------
 
 def fetch_video_info(video_id: str) -> dict:
-    """Full metadata for one video, including the description the parser needs."""
+    """Full metadata for one video, including the description the parser needs.
+
+    A video behind YouTube's bot check still reports its title, description and
+    duration; only the media formats are withheld. Not treating that as an
+    error keeps metadata parsing working when the caption download would not —
+    which is exactly when a curator needs the parsed title to upload captions
+    by hand.
+    """
     url = f"https://www.youtube.com/watch?v={video_id}"
-    with yt_dlp.YoutubeDL(_base_opts()) as ydl:
+    opts = {**_base_opts(), "ignore_no_formats_error": True}
+    with yt_dlp.YoutubeDL(opts) as ydl:
         return ydl.extract_info(url, download=False)
 
 
@@ -152,29 +204,35 @@ def download_transcript(video_id: str, destination: Path) -> Path | None:
         "writeautomaticsub": True,
         "subtitleslangs": ["en", "en-orig", "en-US", "en-GB"],
         "subtitlesformat": "srt",
-        "convertsubtitles": "srt",
         "outtmpl": str(work_dir / "%(id)s"),
     }
-    with yt_dlp.YoutubeDL(opts) as ydl:
-        ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=True)
-
-    produced = sorted(work_dir.glob(f"{video_id}*.srt"))
-    if not produced:
+    # The scratch directory sits inside the git working copy, so it is removed
+    # whatever happens — a failed download used to leave it behind as noise in
+    # the next ingestion PR.
+    try:
+        with yt_dlp.YoutubeDL(opts) as ydl:
+            ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=True)
+    except yt_dlp.utils.DownloadError as exc:
+        kind = classify_error(str(exc))
+        if kind is None:
+            raise
+        raise TranscriptUnavailable(kind, str(exc)) from exc
+    finally:
+        produced = sorted(work_dir.glob(f"{video_id}*.srt"))
+        # Human-authored tracks lack the ".en-orig"/auto marker yt-dlp adds;
+        # prefer the shortest suffix, which is the manual track when one exists.
+        chosen = min(produced, key=lambda p: len(p.name)) if produced else None
+        text = chosen.read_text(encoding="utf-8", errors="replace") if chosen else None
         _cleanup(work_dir)
-        return None
 
-    # Human-authored tracks lack the ".en-orig"/auto marker yt-dlp adds; prefer
-    # the shortest suffix, which is the manual track when one exists.
-    chosen = min(produced, key=lambda p: len(p.name))
-    destination.write_text(chosen.read_text(encoding="utf-8", errors="replace"), encoding="utf-8")
-    _cleanup(work_dir)
+    if text is None:
+        return None
+    destination.write_text(text, encoding="utf-8")
     return destination
 
 
 def _cleanup(work_dir: Path) -> None:
-    for leftover in work_dir.glob("*"):
-        leftover.unlink(missing_ok=True)
-    work_dir.rmdir()
+    shutil.rmtree(work_dir, ignore_errors=True)
 
 
 # --- Sync --------------------------------------------------------------------

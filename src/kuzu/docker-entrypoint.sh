@@ -50,6 +50,13 @@ ensure_repo_clone() {
     REPO_ROOT="${REPO_ROOT:-/repo}"
     if [ -d "$REPO_ROOT/.git" ]; then
         echo "Repository present at $REPO_ROOT"
+        # The clone is made once and kept across deploys, so a changed
+        # GITHUB_REPO would otherwise never take effect. Only the remote moves:
+        # the working copy holds ingestion output that has not been published,
+        # and pulling over it is a decision for a person, not a boot script.
+        if [ -n "$GITHUB_REPO" ]; then
+            git -C "$REPO_ROOT" remote set-url origin "https://github.com/${GITHUB_REPO}.git"
+        fi
         return
     fi
     if [ -z "$GITHUB_REPO" ]; then

@@ -32,7 +32,36 @@ def init_rag(version: str):
     return GraphRAG(config.DB_PATH)
 
 
-rag = init_rag(graph_version())
+version = graph_version()
+rag = init_rag(version)
+
+
+def describe_graph(token: str) -> str:
+    """One line saying which graph is answering, so a before/after test can be
+    read off the page: an ingestion that changed the graph changes this line."""
+    import json
+
+    try:
+        info = json.loads(token or "{}")
+    except ValueError:
+        return ""
+    counts = info.get("counts") or {}
+    if not counts:
+        return ""
+    parts = [
+        f"{counts.get('Talk', '?')} talks",
+        f"{counts.get('tagged_talks', '?')} tagged",
+        f"{counts.get('Tag', '?')} tags",
+        f"{counts.get('Speaker', '?')} speakers",
+    ]
+    built = (info.get("built_at") or "").replace("T", " ").rstrip("Z")
+    model = info.get("model")
+    return (f"Graph built {built} UTC · " + " · ".join(parts)
+            + (f" · tagged by {model}" if model else ""))
+
+
+if describe_graph(version):
+    st.caption(describe_graph(version))
 
 # Create the input box
 question = st.text_input(

@@ -55,3 +55,95 @@ def test_an_empty_build_is_refused(monkeypatch, tmp_path):
     assert not result.ok
     assert "Refusing to swap in an empty graph" in result.message
     assert not swapped
+
+
+def test_the_scripts_run_from_the_image_and_read_the_working_copy(monkeypatch, tmp_path):
+    """Code comes from PIPELINE_SCRIPTS_DIR; every data path is passed explicitly.
+
+    The tag stage writes entities.json into the working copy. A script left to
+    derive that path from its own location read the image's stale copy, and a
+    talk ingested on the server entered the graph with no tags.
+    """
+    scripts = tmp_path / "image"
+    entities = tmp_path / "repo" / "entities.json"
+    monkeypatch.setattr(config, "PIPELINE_SCRIPTS_DIR", scripts)
+    monkeypatch.setattr(config, "ENTITIES_JSON", entities)
+    calls = []
+
+    def fake_run(argv, **kwargs):
+        calls.append(kwargs)
+        return type("R", (), {"returncode": 0, "stdout": "", "stderr": ""})()
+
+    monkeypatch.setattr(graph.subprocess, "run", fake_run)
+
+    ok, error = graph._run_script("02_domain_graph.py", tmp_path / "build.kuzu")
+
+    assert ok and error == ""
+    assert calls[0]["cwd"] == str(scripts)
+    env = calls[0]["env"]
+    assert env["ENTITIES_JSON"] == str(entities)
+    assert env["DB_PATH"] == str(tmp_path / "build.kuzu")
+
+
+def test_kuzu_config_honours_the_entities_json_override(monkeypatch, tmp_path):
+    """src/kuzu/config.py is what the scripts import; it must read the env."""
+    import importlib.util
+
+    monkeypatch.setenv("ENTITIES_JSON", str(tmp_path / "elsewhere.json"))
+    spec = importlib.util.spec_from_file_location(
+        "kuzu_config_under_test", config.KUZU_DIR / "config.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    assert module.ENTITIES_JSON == tmp_path / "elsewhere.json"
+
+
+def _tiny_graph(path):
+    """A Kuzu database with one tagged talk and one untagged talk."""
+    import kuzu
+
+    conn = kuzu.Connection(kuzu.Database(str(path)))
+    conn.execute("CREATE NODE TABLE Talk(title STRING, PRIMARY KEY(title))")
+    conn.execute("CREATE NODE TABLE Tag(keyword STRING, PRIMARY KEY(keyword))")
+    conn.execute("CREATE REL TABLE IS_DESCRIBED_BY(FROM Talk TO Tag)")
+    conn.execute("CREATE (:Talk {title: 'Tagged | A | E'})")
+    conn.execute("CREATE (:Talk {title: 'Bare | B | E'})")
+    conn.execute("CREATE (:Tag {keyword: 'graphs'})")
+    conn.execute(
+        "MATCH (t:Talk {title: 'Tagged | A | E'}), (g:Tag {keyword: 'graphs'}) "
+        "CREATE (t)-[:IS_DESCRIBED_BY]->(g)"
+    )
+    return path
+
+
+def test_talk_is_tagged_reads_the_content_layer(tmp_path):
+    db = _tiny_graph(tmp_path / "g.kuzu")
+    assert graph.talk_is_tagged(db, "Tagged | A | E")
+    assert not graph.talk_is_tagged(db, "Bare | B | E")
+    assert not graph.talk_is_tagged(db, "Never heard of it")
+
+
+def test_the_rebuild_stage_reports_a_talk_that_lost_its_tags(monkeypatch, tmp_path):
+    """The swap stands, but the run says the talk it was for is untagged."""
+    from ingest.pipeline import stages
+    from ingest.sources.parser import ParsedTalk
+
+    db = _tiny_graph(tmp_path / "g.kuzu")
+    monkeypatch.setattr(config, "GRAPH_DB_PATH", db)
+    monkeypatch.setattr(graph, "rebuild_graph", lambda: stages.StageResult(True, "Rebuilt", {}))
+
+    bare = ParsedTalk(talk_title="Bare", full_title="Bare | B | E")
+    result = stages.stage_graph_rebuild({"parsed": bare, "tags": ["graphs"]})
+    assert result.ok
+    assert result.data["tagged"] is False
+    assert "carries no tags" in result.message
+
+    tagged = ParsedTalk(talk_title="Tagged", full_title="Tagged | A | E")
+    result = stages.stage_graph_rebuild({"parsed": tagged, "reused": True})
+    assert result.ok and result.data["tagged"] is True
+    assert "carries no tags" not in result.message
+
+    # A run that never reached tag extraction has nothing to check.
+    result = stages.stage_graph_rebuild({"parsed": bare})
+    assert "tagged" not in result.data

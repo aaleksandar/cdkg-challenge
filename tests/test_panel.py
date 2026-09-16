@@ -550,3 +550,165 @@ def test_a_short_that_was_ingested_is_reported_not_hidden(client, monkeypatch):
 
     drawer = client.get("/video/ddddddddddd?body=1").text
     assert "Ingested, and should not have been" in drawer
+
+
+FAILED_DOWNLOAD = R.TalkState(
+    video_id="lllllllllll", title="A refused talk | Jane Doe | CDL24", on_youtube=True,
+    duration=2400, url="https://www.youtube.com/watch?v=lllllllllll",
+)
+
+
+def _failed_run(detail=None, message="YouTube refused the caption download from this "
+                                     "server's address (\"sign in to confirm you're not a bot\")"):
+    import json
+
+    return {
+        "id": 9, "status": "failed", "started_at": "x", "ended_at": "y",
+        "error": "Traceback (most recent call last):\n  ...\nDownloadError: Sign in to confirm",
+        "stages": [
+            {"stage": "metadata_parse", "status": "completed", "position": 0,
+             "message": "Parsed", "detail": None},
+            {"stage": "transcript_download", "status": "failed", "position": 1,
+             "message": message, "detail": json.dumps(detail) if detail else None},
+            {"stage": "csv_append", "status": "skipped", "position": 2,
+             "message": "Not reached", "detail": None},
+        ],
+    }
+
+
+def test_a_bot_check_is_explained_with_its_remedy(client, monkeypatch):
+    """The last demo failed here, and the drawer said "a stage failed". The
+    admin needs the failure in their words and the way out of it."""
+    run = _failed_run({"failure_kind": "bot_check", "failure_detail": "Sign in to confirm…"})
+    state = R.TalkState(**{**FAILED_DOWNLOAD.__dict__, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/lllllllllll?body=1").text
+
+    assert "download transcript failed" in drawer
+    assert "bot check" in drawer
+    assert "Upload the captions below" in drawer
+    assert "Error detail" in drawer and "DownloadError: Sign in to confirm" in drawer
+
+
+def test_a_failure_recorded_before_kinds_existed_is_still_classified(client, monkeypatch):
+    """Older runs carry only yt-dlp's raw text in the stage message."""
+    run = _failed_run(message="DownloadError: ERROR: [youtube] x: Sign in to confirm "
+                              "you’re not a bot. Use --cookies-from-browser")
+    state = R.TalkState(**{**FAILED_DOWNLOAD.__dict__, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/lllllllllll?body=1").text
+    assert "bot check" in drawer
+
+
+@pytest.fixture
+def upload_env(client, monkeypatch, tmp_path):
+    """A working copy in tmp_path, with the metadata of one talk already cached."""
+    import json
+
+    monkeypatch.setattr(config, "TRANSCRIPTS_DIR", tmp_path / "Transcripts")
+    monkeypatch.setattr(config, "INGEST_CACHE_DIR", tmp_path / "Transcripts" / ".ingest")
+    config.INGEST_CACHE_DIR.mkdir(parents=True)
+    (config.INGEST_CACHE_DIR / "mmmmmmmmmmm.json").write_text(json.dumps({
+        "id": "mmmmmmmmmmm", "title": "Graphs Everywhere | Jane Doe | CDL24",
+        "description": "", "duration": 2400, "upload_date": "20240312",
+    }))
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
+    monkeypatch.setattr(R, "reconcile", _only(R.TalkState(
+        video_id="mmmmmmmmmmm", title="Graphs Everywhere | Jane Doe | CDL24",
+        on_youtube=True, duration=2400, url="https://www.youtube.com/watch?v=mmmmmmmmmmm")))
+    return queued
+
+
+GOOD_VTT = "WEBVTT\n\n" + "".join(
+    f"00:00:{i:02d}.000 --> 00:00:{i + 1:02d}.000\nword{i} word word word\n\n" for i in range(10)
+)
+
+
+def test_uploaded_captions_land_where_the_download_stage_looks(client, upload_env):
+    """The whole point: the next run must find the file "already on disk"."""
+    from ingest.pipeline import stages
+
+    reply = client.post("/transcript/mmmmmmmmmmm",
+                        files={"captions": ("talk.vtt", GOOD_VTT.encode(), "text/vtt")})
+
+    assert reply.status_code == 200
+    expected = stages.transcript_path("Connected Data London 2024", "Graphs Everywhere")
+    assert expected.exists(), "written under the event and short title the pipeline uses"
+    assert expected.read_text().startswith("1\n00:00:00,000 --> 00:00:01,000\n")
+    assert upload_env == ["mmmmmmmmmmm"]
+    assert "HX-Retarget" not in reply.headers
+
+
+def test_a_transcript_without_captions_is_offered_the_upload(client, upload_env):
+    drawer = client.get("/video/mmmmmmmmmmm?body=1").text
+    assert 'hx-post="/transcript/mmmmmmmmmmm"' in drawer
+    assert 'hx-encoding="multipart/form-data"' in drawer
+
+
+def test_an_empty_caption_file_is_refused_beside_the_button(client, upload_env):
+    reply = client.post("/transcript/mmmmmmmmmmm",
+                        files={"captions": ("talk.srt", b"1\n00:00:01,000 --> 00:00:02,000\nhi\n\n")})
+
+    assert "does not look like a transcript" in reply.text
+    assert reply.headers["HX-Retarget"] == "#upload-flash"
+    assert upload_env == []
+
+
+def test_a_short_never_takes_an_upload(client, upload_env, monkeypatch):
+    monkeypatch.setattr("ingest.db.all_videos",
+                        lambda: [{"video_id": "mmmmmmmmmmm", "duration": 90}])
+    reply = client.post("/transcript/mmmmmmmmmmm",
+                        files={"captions": ("talk.vtt", GOOD_VTT.encode(), "text/vtt")})
+    assert "Short" in reply.text and upload_env == []
+
+
+def test_an_unknown_file_type_is_refused(client, upload_env):
+    reply = client.post("/transcript/mmmmmmmmmmm",
+                        files={"captions": ("talk.txt", b"just some words " * 20)})
+    assert "Upload an .srt or .vtt file" in reply.text and upload_env == []
+
+
+def test_taking_a_snapshot_renders_it_in_the_list(client, monkeypatch):
+    taken = []
+    fake = {"name": "20260915T120000Z", "created_at": "2026-09-15T12:00:00Z",
+            "graph_version": {"built_at": "2026-09-02T10:39:50Z", "model": "gemini-3.7-flash"},
+            "counts": {"Talk": 45, "Tag": 738, "tagged_talks": 43}, "rows": {},
+            "size_bytes": 40960}
+    monkeypatch.setattr("ingest.pipeline.snapshot.create_snapshot", lambda: taken.append(1))
+    monkeypatch.setattr("ingest.pipeline.snapshot.list_snapshots", lambda: [fake])
+
+    listing = client.post("/snapshots").text
+
+    assert taken == [1]
+    assert "20260915T120000Z" in listing and "gemini-3.7-flash" in listing
+    assert 'href="/snapshots/20260915T120000Z.zip"' in listing
+    assert "40 KB" in listing
+
+
+def test_a_failed_snapshot_is_reported_not_raised(client, monkeypatch):
+    def boom():
+        raise RuntimeError("database is being swapped")
+    monkeypatch.setattr("ingest.pipeline.snapshot.create_snapshot", boom)
+    monkeypatch.setattr("ingest.pipeline.snapshot.list_snapshots", lambda: [])
+
+    reply = client.post("/snapshots")
+    assert reply.status_code == 200
+    assert "Snapshot failed: database is being swapped" in reply.text
+
+
+def test_the_download_route_refuses_anything_but_a_snapshot_name(client):
+    assert client.get("/snapshots/evil.zip").status_code == 404
+    assert client.get("/snapshots/..%2F..%2Fetc.zip").status_code == 404
+    assert client.get("/snapshots/20260915T120000Z.zip").status_code == 404   # none taken
+
+
+def test_the_advanced_panel_offers_the_snapshot_button(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    panel = client.get("/advanced?body=1").text
+    assert 'hx-post="/snapshots"' in panel
+    assert 'hx-get="/snapshots"' in panel

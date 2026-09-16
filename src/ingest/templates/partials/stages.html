@@ -22,8 +22,12 @@
             <span class="fact">{{ 'row appended' if d.csv_appended else 'already present' }}</span>
           {% endif %}
           {% if d.counts %}<span class="fact">{{ d.counts.Talk }} talks, {{ d.counts.Tag }} tags</span>{% endif %}
+          {% if d.tagged is defined %}
+            <span class="fact {{ '' if d.tagged else 'is-warn' }}">{{ 'this talk: tagged' if d.tagged else 'this talk: no tags' }}</span>
+          {% endif %}
           {% if d.pr_url %}<a class="fact" href="{{ d.pr_url }}" target="_blank" rel="noopener">view PR ↗</a>{% endif %}
           {% if d.srt_path %}<div class="path">{{ d.srt_path }}</div>{% endif %}
+          {% if d.failure_detail %}<div class="path">{{ d.failure_detail }}</div>{% endif %}
         </div>
         {% endif %}
       </span>

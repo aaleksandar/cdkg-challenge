@@ -52,6 +52,11 @@ _DETAIL_KEYS = {
     # What the call cost. Tokens are reported by the provider; cost_usd appears
     # only when the rates have been configured — see ingest/spend.py.
     "input_tokens", "output_tokens", "cached_input_tokens", "cost_usd",
+    # Whether the talk this run ingested carries tags in the rebuilt graph.
+    "tagged",
+    # Why a stage failed, when it can say: the kind names the remedy the drawer
+    # offers, the detail is the provider's own text for anyone who needs it.
+    "failure_kind", "failure_detail",
 }
 
 
@@ -194,7 +199,9 @@ def _execute(run_id: int, video_id: str) -> None:
             return
 
         if not result.ok:
-            db.set_stage(run_id, stage, "failed", result.message)
+            # A failed stage may still know *why* — the detail is what lets
+            # the drawer offer the right remedy instead of "try again".
+            db.set_stage(run_id, stage, "failed", result.message, _detail(result.data))
             _abandon_remaining(run_id, stage)
             db.finish_run(run_id, "failed", result.message)
             return

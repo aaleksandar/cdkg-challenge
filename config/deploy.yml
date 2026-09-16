@@ -39,12 +39,18 @@ servers:
         SERVICE_PORT: "8503"
         ROOT_PATH: /ingestion
         REPO_ROOT: /repo
-        GITHUB_REPO: Connected-Data/cdkg-challenge
-        # Paths point into the git working copy, not the baked-in image.
+        # The fork is what this workflow deploys, so the working copy tracks it
+        # too; switch back to Connected-Data/cdkg-challenge once upstream merges.
+        GITHUB_REPO: aaleksandar/cdkg-challenge
+        # Data paths point into the git working copy, not the baked-in image.
         TRANSCRIPTS_DIR: /repo/Transcripts
         KUZU_DIR: /repo/src/kuzu
         DATA_DIR: /repo/src/kuzu/data
         ENTITIES_JSON: /repo/src/kuzu/entities.json
+        # The pipeline scripts run from the image, which is the code this
+        # deploy built. The clone is made once and never pulled, so running
+        # them from /repo meant a fix to src/kuzu never reached production.
+        PIPELINE_SCRIPTS_DIR: /app
         DB_PATH: /data/cdl_db.kuzu
         STATE_DB_PATH: /data/ingest_state.db
         # The system runs itself: a newly published talk is detected, ingested

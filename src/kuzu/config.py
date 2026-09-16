@@ -22,8 +22,11 @@ METADATA_CSV = TRANSCRIPTS_DIR / "Connected Data Knowledge Graph Challenge - Tra
 # Data directory for extracted .txt files
 DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 
-# Entities JSON file (LLM-extracted tags)
-ENTITIES_JSON = BASE_DIR / "entities.json"
+# Entities JSON file (LLM-extracted tags). Overridable like every other path:
+# the ingestion service writes it into its git working copy and rebuilds the
+# graph from there, while the scripts themselves run from the image — a default
+# derived from BASE_DIR would read the image's stale copy instead.
+ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", BASE_DIR / "entities.json"))
 
 # Evaluation benchmark: questions and baseline answers
 QA_CSV = Path(os.getenv("QA_CSV", BASE_DIR.parent.parent / "QA" / "CDKGQA.csv"))

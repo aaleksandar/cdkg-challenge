@@ -94,6 +94,8 @@ Only `Title`, `Speaker` and `Event` are required to become a `Talk`. `Date`, `Ty
 
 `src/kuzu/config.py` resolves `BASE_DIR`, `DB_PATH`, `TRANSCRIPTS_DIR`, `DATA_DIR`, `METADATA_CSV`, `ENTITIES_JSON`, and `QA_CSV`. Each is overridable by an environment variable so the same code runs locally and in the container. Never hard-code a path in a pipeline script — add it to `config.py`.
 
+`ENTITIES_JSON` being overridable is load-bearing: the ingestion service writes it into its git working copy and passes the path to the rebuild scripts, which run from the image. Deriving it from `BASE_DIR` (which is `/app` in the container) made every production rebuild read the image's stale copy, so a talk ingested on the server entered the graph with no tags.
+
 ### BAML Integration
 
 Uses [BAML](https://docs.boundaryml.com) for structured LLM interactions:
@@ -161,6 +163,18 @@ Two call sites, deliberately different:
 
 Pipeline stages, in order: `metadata_parse → transcript_download → csv_append → transcript_extraction → tag_extraction → graph_rebuild → publish`. Download, extraction and tag extraction are content-addressed and skip when their output exists, which is what makes a rebuild for a new model cheap — it re-runs neither YouTube nor the LLM.
 
+**Code runs from the image; data lives in the clone.** In production the ingest container clones `GITHUB_REPO` into `/repo` once, at first boot, and never pulls it (only `gitops.sync_with_main` does, and only when publishing, which is off). `KUZU_DIR`, `TRANSCRIPTS_DIR`, `DATA_DIR` and `ENTITIES_JSON` point into that clone because it is where ingestion output accumulates. `PIPELINE_SCRIPTS_DIR` points at `/app`, the image, because that is the code the deploy just built — running `02_domain_graph.py` from the clone meant a fix to `src/kuzu` never reached production. `graph._script_env` names every data path explicitly so the scripts read the clone regardless of where they run from. A changed `GITHUB_REPO` only moves the clone's remote at boot (`docker-entrypoint.sh`); bringing the clone's contents up to date is a deliberate `git` step on the server, because the working copy holds unpublished ingestion output.
+
+**The rebuild stage checks its own work.** After a successful swap, `stage_graph_rebuild` asks the new graph whether the talk this run was for carries tags (`graph.talk_is_tagged`) and records `tagged` in the stage detail. A talk that lost its tags is still a better graph than the old one, so the swap stands, but the stage message says so and the drawer prints "this talk: no tags". This is the check that would have caught the `ENTITIES_JSON` bug above.
+
+**Caption download failures are named, not relayed.** yt-dlp's bot check reads, verbatim, like a request to log in ("Sign in to confirm you're not a bot"), and was taken for one at a demo. `youtube.download_transcript` classifies `DownloadError` text via `classify_error` into `bot_check | rate_limited | unavailable` and raises `TranscriptUnavailable`; the stage turns that into one human sentence plus `failure_kind`/`failure_detail` in the stage detail (the runner persists detail on failed stages too), and `web.failure_of` pairs the kind with advice in the drawer. Runs recorded before this carry only the raw text in the stage message, so `failure_of` classifies that as a fallback. The drawer also prints the run-level error (the traceback tail) in a collapsed block; it was recorded from the start but never shown. The `.yt-tmp` scratch directory is removed in a `finally`, because it sits inside the git working copy.
+
+The bot check fires on datacenter addresses. `yt-dlp` is declared with its `default`, `deno` and `curl-cffi` extras so the image has a JS runtime and an impersonation target, which is what current YouTube extraction needs; without them yt-dlp warns on every call. Both are ordinary wheels, so the Dockerfile needs nothing extra. If the server's IP is still refused, the way through is the upload below; cookies or a proxy are not wired up.
+
+**A curator can supply the captions.** `POST /transcript/{video_id}` takes an `.srt` or `.vtt` upload from the drawer (offered after a download failure, and for any talk without a transcript). It parses the video's metadata exactly as `stage_metadata_parse` does (`stages.load_info`, shared) and writes the file to `transcript_path(parsed.event, parsed.talk_title)` — the one place the download stage looks — then queues a run, whose first two stages read "Parsed from cache" and "Already on disk". That is the audit trail. WebVTT is converted in pure Python (`sources/captions.py`; no ffmpeg in the image), and a file under 20 words is refused as the extraction stage would refuse it. Refusals come back as `200` with `HX-Retarget` to a flash beside the button, because htmx does not swap error responses. Shorts are refused, as everywhere.
+
+**Snapshots are the graph as CSV.** `pipeline/snapshot.py` runs Kuzu's `EXPORT DATABASE` (one CSV per table — the same filenames as `cdl_db/` — plus `schema.cypher`/`copy.cypher`) into `SNAPSHOT_DIR` (default: `snapshots/` beside the database, so `/data/snapshots` in production, on the shared volume), adds a `manifest.json` carrying the `.graph-version` it was taken from plus node and row counts, zips it, and keeps the newest `SNAPSHOT_KEEP` (20). Advanced → "Snapshot the graph" takes one; the list below it downloads them via `GET /snapshots/{name}.zip`, where the name must match the UTC-stamp pattern before it touches a path. Two snapshots around an ingestion diff to exactly what the talk added. The checked-in `cdl_db/*.csv` are a stale hand export (37 talks against 45 live); `snapshot.export_csv` is the seam for refreshing them deliberately.
+
 **Re-running is the way a parser improvement reaches an existing talk.** Every talk with a video offers "Run the pipeline again" in the drawer, not just one that never ran or failed — the one exception being a Short, for which no outcome of a run would be an improvement. For that to mean anything, `csv_append` had to stop being a pure no-op on a row that already exists: it now backfills *blank* `Speaker`/`Event` from what the re-parse established, via `_apply_to_row(..., only_if_blank=True)`. A curated value is never overwritten — that is the difference between the human path (`update_row`) and the pipeline path, and the reason the file is otherwise append-only. A re-run that learned nothing leaves the file byte-identical, so it does not show up as a diff in the ingestion PR.
 
 **The system runs itself by default.** `SCHEDULER_ENABLED` (read the channel on a timer), `AUTO_INGEST_NEW` (ingest newly detected videos) and `KG_ENABLED` (write to the graph) all ship `true`. `GIT_PUSH_ENABLED` stays `false`: it writes outside the machine and is not a click. The three are pause valves under the panel's **Advanced** section, flipped per-process via `POST /flag/{name}` over the `TOGGLEABLE` allowlist — a restart returns to the environment value. They are listed in the order the work happens, each a valve on the stage after it, so turning off the first is what "leave everything manual" means. `AUTO_INGEST_NEW` covers **new uploads only**; the existing backlog is drained by an explicit, costed button, because it is hundreds of LLM calls at once.
@@ -178,6 +192,19 @@ A Short that reached the CSV before any of this is listed under **Advanced → D
 **What a run spent is recorded; what it cost is not assumed.** Both paid calls — tag extraction, and speaker recovery when it runs — attach a `baml_py.Collector`, and `ingest/spend.py` turns it into `input_tokens` / `output_tokens` / `cached_input_tokens` in `run_stages.detail`. The drawer sums them across the run, because one ingestion can bill twice. Money is deliberately *not* derived from a hardcoded table: prices move and differ per model and region, so a rate that lives in code becomes a lie without anyone noticing. Set `INGEST_INPUT_COST_PER_MTOK` / `INGEST_OUTPUT_COST_PER_MTOK` (and optionally `INGEST_CACHED_INPUT_COST_PER_MTOK`) and the panel prints a cost; leave them unset and it says the rates are not configured. Cached input is subtracted from the plain input count so it is never billed twice. Runs recorded before this existed carry no token data and correctly show no row at all.
 
 **Which model tagged a talk is recorded.** `ingest/model.py` parses the pin out of `baml_src/clients.baml` rather than duplicating it, `stage_tag_extraction` returns it, and `runner._DETAIL_KEYS` persists it into `run_stages.detail`. `swap_in` writes it into `.graph-version` too. Tags reused from an earlier run carry `reused` instead — naming today's model for them would be a guess.
+
+## QA an ingestion
+
+What George does after a fix, and what to do before saying an ingestion works:
+
+1. Advanced → **Snapshot the graph**. Note the Streamlit caption under the title (built time, talks, tagged, tags, model).
+2. In Streamlit, ask two or three questions the new talk should affect (its speaker, its topic, its event).
+3. Open the talk in the panel and **Ingest**. Every stage should go green; tag extraction shows the model and tokens; the rebuild line shows the counts and "this talk: tagged".
+4. Reload Streamlit: the caption changes (later build time, talks +1, tagged +1). Ask the same questions again.
+5. Snapshot again. Download both zips and diff `Talk.csv` and `IS_DESCRIBED_BY_Talk_Tag.csv`.
+6. Optionally `uv run evaluate.py --output results-after.json` against a baseline, judged by distribution as below.
+
+If YouTube refuses the captions, the drawer says so and offers an upload; the run then starts from the file and everything after it is unchanged.
 
 ## Evaluation Loop
 
@@ -215,5 +242,6 @@ A Short that reached the CSV before any of this is listed under **Advanced → D
 Not defects to fix incidentally, but worth knowing before working nearby:
 
 - `evaluate.py`'s judge calls `google.genai` directly with hand-rolled JSON parsing instead of going through BAML like everything else.
-- `tests/` covers the ingestion service (`uv run pytest`), but the `src/kuzu/` pipeline scripts have no tests of their own. There is still no lint configuration despite `.ruff_cache` in the tree.
+- `tests/` covers the ingestion service (`uv run pytest`; `tests/conftest.py` points `SNAPSHOT_DIR` at a temp dir for every test), but the `src/kuzu/` pipeline scripts have no tests of their own. There is still no lint configuration despite `.ruff_cache` in the tree.
+- `config/deploy.yml` points `GITHUB_REPO` at the fork `aaleksandar/cdkg-challenge`, which is what the deploy workflow builds. Switch it back to `Connected-Data/cdkg-challenge` once upstream merges.
 - `docker-entrypoint.sh` re-runs `baml-cli generate` on every container boot (`BAML_GENERATE_ON_START=1`) even though the Dockerfile already generated the client at build time.

@@ -24,20 +24,30 @@ from .. import config
 
 
 def _script_env(db_path: Path) -> dict:
-    """Environment that points the pipeline scripts at our paths."""
+    """Environment that points the pipeline scripts at our paths.
+
+    Every input the scripts read is named here explicitly. ENTITIES_JSON in
+    particular: the tag stage writes it into the working copy, and a script
+    left to derive the path from its own location reads the image's copy —
+    which is how a talk ingested on the server used to enter the graph with
+    no tags at all.
+    """
     return {
         **os.environ,
         "DB_PATH": str(db_path),
         "TRANSCRIPTS_DIR": str(config.TRANSCRIPTS_DIR),
         "DATA_DIR": str(config.DATA_DIR),
+        "ENTITIES_JSON": str(config.ENTITIES_JSON),
         "BAML_LOG": "WARN",
     }
 
 
 def _run_script(name: str, db_path: Path) -> tuple[bool, str]:
+    # cwd is where the *code* lives (the image, in production), not the data
+    # working copy — see config.PIPELINE_SCRIPTS_DIR.
     result = subprocess.run(
         [sys.executable, name],
-        cwd=str(config.KUZU_DIR),
+        cwd=str(config.PIPELINE_SCRIPTS_DIR),
         env=_script_env(db_path),
         capture_output=True,
         text=True,
@@ -60,6 +70,19 @@ def graph_counts(db_path: Path) -> dict[str, int]:
         "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) RETURN count(DISTINCT t.title)"
     ).get_next()[0]
     return counts
+
+
+def talk_is_tagged(db_path: Path, title: str) -> bool:
+    """Whether the Talk with this exact title carries at least one tag."""
+    import kuzu
+
+    conn = kuzu.Connection(kuzu.Database(str(db_path), read_only=True))
+    result = conn.execute(
+        "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) WHERE t.title = $title "
+        "RETURN count(*) > 0",
+        {"title": title},
+    )
+    return bool(result.get_next()[0])
 
 
 def _clear(path: Path) -> None:

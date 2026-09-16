@@ -1,0 +1,33 @@
+{# The graph exports on disk, newest first. Each row is enough to tell two
+   snapshots apart without opening them: when, how big a graph, which model
+   tagged it — the manifest inside says the same in full. #}
+{% if error %}<span class="note err">{{ error }}</span>{% endif %}
+{% if snapshots %}
+<table class="snapshots">
+  <thead>
+    <tr><th>Taken</th><th>Graph built</th><th class="r">Talks</th><th class="r">Tagged</th>
+        <th class="r">Tags</th><th>Model</th><th class="r">Size</th><th></th></tr>
+  </thead>
+  <tbody>
+    {% for snap in snapshots %}
+    <tr>
+      <td><code>{{ snap.name }}</code></td>
+      <td class="muted">{{ snap.graph_version.built_at or '—' }}</td>
+      <td class="r">{{ snap.counts.Talk }}</td>
+      <td class="r">{{ snap.counts.tagged_talks }}</td>
+      <td class="r">{{ snap.counts.Tag }}</td>
+      <td><code>{{ snap.graph_version.model or '—' }}</code></td>
+      <td class="r muted">{{ (snap.size_bytes / 1024) | round | int }} KB</td>
+      <td><a class="dl" href="{{ base }}/snapshots/{{ snap.name }}.zip">download ↓</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p class="note-body">
+  CSV per table plus <code>schema.cypher</code>, <code>copy.cypher</code> and a
+  <code>manifest.json</code>. The {{ keep }} most recent are kept.
+</p>
+{% else %}
+<p class="note-body">No snapshots yet. Take one before an ingestion and one after,
+  and the two zips diff to exactly what the talk added.</p>
+{% endif %}
