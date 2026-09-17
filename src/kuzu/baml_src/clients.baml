@@ -18,13 +18,20 @@ client<llm> GeminiFlash {
 }
 
 // https://docs.boundaryml.com/docs/snippets/clients/retry
+//
+// Sized for Google's 503 "high demand" spikes, which last well beyond a
+// second: the previous two retries at 300 ms burned all three attempts inside
+// about a second and failed the run before the spike had a chance to pass.
+// Five retries at 1 s, doubling and capped at 30 s, wait up to about a minute
+// in total — long enough to ride out a short spike, short enough that a real
+// outage still fails the run promptly. Nothing on disk is lost either way:
+// ingesting again resumes at tag extraction.
 retry_policy Exponential {
-  max_retries 2
-  // Strategy is optional
+  max_retries 5
   strategy {
     type exponential_backoff
-    delay_ms 300
-    multiplier 1.5
-    max_delay_ms 10000
+    delay_ms 1000
+    multiplier 2
+    max_delay_ms 30000
   }
 }

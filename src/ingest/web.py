@@ -143,20 +143,33 @@ FAILURE_ADVICE = {
                       "did not accept it. Until then, upload the captions below."),
     "timeout": "Ingest again; if it keeps happening, upload the captions below.",
     "error": "Ingest again; if it keeps happening, upload the captions below.",
+    # Not a caption failure at all: the tagging model refused or was unreachable.
+    "llm_error": ("The tagging model was overloaded or unreachable, which is on Google's "
+                  "side and usually passes within the hour. The transcript is on disk, "
+                  "so ingesting again resumes from tag extraction without touching "
+                  "YouTube or Supadata."),
 }
 
 
 def failure_of(run: dict | None) -> dict | None:
     """Why a run failed, in terms of the remedy — or None when it did not.
 
-    Runs recorded before stages started naming their failures still carry the
-    raw text in the stage message, so it is classified here as a fallback.
+    Runs recorded before the download stage started naming its failures still
+    carry yt-dlp's raw text in the stage message, so that stage — and only that
+    stage — is classified by text as a fallback. Applied to any failed stage, the
+    same needles read Google's "please try again later" on an overloaded tagging
+    model as a caption rate limit, and the drawer advised uploading captions for
+    an LLM outage. A stage that raised gets its own kind instead, or none.
     """
     for stage in (run or {}).get("stages", []):
         if stage.get("status") != "failed":
             continue
         detail = _fromjson(stage.get("detail"))
-        kind = detail.get("failure_kind") or youtube.classify_error(stage.get("message") or "")
+        kind = detail.get("failure_kind")
+        if kind is None and stage["stage"] == "transcript_download":
+            kind = youtube.classify_error(stage.get("message") or "")
+        elif kind is None and stage["stage"] == "tag_extraction":
+            kind = "llm_error"
         return {
             "stage": stage["stage"],
             "kind": kind,
