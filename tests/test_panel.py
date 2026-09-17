@@ -802,3 +802,28 @@ def test_health_reports_the_caption_fallback(client, monkeypatch):
     assert client.get("/health").json()["supadata"] is False
     monkeypatch.setattr(config, "SUPADATA_API_KEY", "sd_key")
     assert client.get("/health").json()["supadata"] is True
+
+
+def test_an_llm_outage_is_not_explained_as_a_caption_problem(client, monkeypatch):
+    """Google's 503 says "please try again later", which the caption classifier
+    reads as a rate limit — so an overloaded tagging model was explained with
+    advice about Supadata credits and uploading captions."""
+    run = _failed_run()
+    run["stages"][1] = {"stage": "transcript_download", "status": "completed", "position": 1,
+                        "message": "Downloaded via Supadata (en)", "detail": None}
+    run["stages"].append({
+        "stage": "tag_extraction", "status": "failed", "position": 4,
+        "message": ('BamlClientHttpError: 503 Service Unavailable. {"error":{"message":'
+                    '"This model is currently experiencing high demand. Please try again later."}}'),
+        "detail": None,
+    })
+    state = R.TalkState(**{**FAILED_DOWNLOAD.__dict__, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/youtube:lllllllllll?body=1").text
+
+    assert "tagging model was overloaded" in drawer
+    assert "Supadata's monthly credits" not in drawer
+    assert "resumes from tag extraction" in drawer
+    assert "Upload and ingest" not in drawer   # the upload form is for caption failures only
