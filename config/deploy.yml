@@ -69,6 +69,7 @@ servers:
         GIT_PUSH_ENABLED: "false"
       secret:
         - GOOGLE_API_KEY
+        - HEYSUMMIT_API_TOKEN
         # The panel spends money and rewrites the graph, so it is never served
         # open: `require_admin` falls through to "anonymous" when ADMIN_PASSWORD
         # is empty. Listing it here is what makes that impossible — Kamal refuses

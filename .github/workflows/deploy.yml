@@ -41,6 +41,7 @@ jobs:
           KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          HEYSUMMIT_API_TOKEN: ${{ secrets.HEYSUMMIT_API_TOKEN }}
           ADMIN_USER: ${{ secrets.ADMIN_USER }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
@@ -71,6 +72,8 @@ jobs:
             emit KAMAL_REGISTRY_USERNAME "$KAMAL_REGISTRY_USERNAME"
             emit KAMAL_REGISTRY_PASSWORD "$KAMAL_REGISTRY_PASSWORD"
             emit GOOGLE_API_KEY "$GOOGLE_API_KEY"
+            # Optional: empty until set, and the panel says so on "Sync HeySummit".
+            emit HEYSUMMIT_API_TOKEN "$HEYSUMMIT_API_TOKEN"
             # The ingestion panel's HTTP Basic credentials. Deliberately not
             # defaulted: an empty password disables auth in the app, and this
             # panel is reachable from the public internet.
@@ -88,6 +91,7 @@ jobs:
           KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          HEYSUMMIT_API_TOKEN: ${{ secrets.HEYSUMMIT_API_TOKEN }}
           ADMIN_USER: ${{ secrets.ADMIN_USER }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: kamal deploy

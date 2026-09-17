@@ -116,6 +116,13 @@
                       disk, and swaps it in only if the new one is sound. No YouTube,
                       no LLM calls, no cost. The app keeps serving the old graph until
                       the swap.">Rebuild graph</button>
+    <button type="button" class="btn" hx-post="{{ base }}/heysummit" hx-target="#adv-flash"
+            hx-indicator="#adv-busy" hx-disabled-elt="this"
+            hx-on::after-request="refreshSheet()"
+            data-tip="Re-reads the Connected Data talks on HeySummit, matches them to
+                      talks in the metadata CSV by title and speaker, and fills blank
+                      Date, Type, Category, Description, Web and Speaker. Never
+                      overwrites a value. No LLM calls.">Sync HeySummit</button>
     <span id="adv-busy" class="htmx-indicator muted">working…</span>
     <span id="adv-flash"></span>
   </div>
