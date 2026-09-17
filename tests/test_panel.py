@@ -727,3 +727,78 @@ def test_the_advanced_panel_names_the_api_key_by_its_tail(client, monkeypatch):
 
     monkeypatch.delenv("GOOGLE_API_KEY")
     assert "Not set." in client.get("/advanced?body=1").text
+
+
+def test_a_completed_download_says_which_source_delivered(client, monkeypatch):
+    """A transcript that cost a credit says so; one that did not says which
+    free path won. Both are the stage's own detail."""
+    import json
+
+    run = {
+        "id": 10, "status": "completed", "started_at": "x", "ended_at": "y", "error": None,
+        "stages": [
+            {"stage": "transcript_download", "status": "completed", "position": 1,
+             "message": "Downloaded via Supadata (en) to /Transcripts/x.srt",
+             "detail": json.dumps({"caption_source": "supadata", "caption_lang": "en",
+                                   "caption_credits": 1})},
+        ],
+    }
+    state = R.TalkState(**{**READY.__dict__, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/youtube:aaaaaaaaaaa?body=1").text
+    assert "captions from supadata (en)" in drawer
+
+
+def test_a_failure_after_both_sources_lists_what_each_said(client, monkeypatch):
+    run = _failed_run({
+        "failure_kind": "no_captions",
+        "caption_attempts": [
+            {"source": "yt-dlp", "kind": "bot_check", "detail": "Sign in to confirm"},
+            {"source": "supadata", "kind": "no_captions", "detail": ""},
+        ],
+    }, message="No English captions are available for this video")
+    state = R.TalkState(**{**FAILED_DOWNLOAD.__dict__, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/youtube:lllllllllll?body=1").text
+
+    assert "Neither YouTube nor Supadata" in drawer
+    assert '<code>yt-dlp</code> — bot check' in drawer
+    assert '<code>supadata</code> — no English captions' in drawer
+    assert "Upload and ingest" in drawer
+
+
+def test_a_failure_from_one_source_shows_no_ladder(client, monkeypatch):
+    run = _failed_run({"failure_kind": "bot_check", "failure_detail": "Sign in…",
+                       "caption_attempts": [{"source": "yt-dlp", "kind": "bot_check",
+                                             "detail": "Sign in…"}]})
+    state = R.TalkState(**{**FAILED_DOWNLOAD.__dict__, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get("/video/youtube:lllllllllll?body=1").text
+    assert 'class="ladder"' not in drawer
+    assert "SUPADATA_API_KEY" in drawer   # the advice names the way past it
+
+
+def test_advanced_says_whether_a_refused_download_has_somewhere_to_go(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+
+    monkeypatch.delenv("SUPADATA_API_KEY", raising=False)
+    assert "Supadata not configured" in client.get("/advanced").text
+
+    monkeypatch.setenv("SUPADATA_API_KEY", "sd_live_abcdef1234")
+    advanced = client.get("/advanced").text
+    assert "Supadata not configured" not in advanced
+    assert "••••••••1234" in advanced
+    assert "1 credit per talk" in advanced
+
+
+def test_health_reports_the_caption_fallback(client, monkeypatch):
+    monkeypatch.setattr(config, "SUPADATA_API_KEY", None)
+    assert client.get("/health").json()["supadata"] is False
+    monkeypatch.setattr(config, "SUPADATA_API_KEY", "sd_key")
+    assert client.get("/health").json()["supadata"] is True

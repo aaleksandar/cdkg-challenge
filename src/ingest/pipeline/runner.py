@@ -57,6 +57,10 @@ _DETAIL_KEYS = {
     # Why a stage failed, when it can say: the kind names the remedy the drawer
     # offers, the detail is the provider's own text for anyone who needs it.
     "failure_kind", "failure_detail",
+    # Where the captions came from — yt-dlp, Supadata or a curator's upload —
+    # and what each source said before one of them delivered. A transcript
+    # that cost a credit says so; one that did not says which free path won.
+    "caption_source", "caption_lang", "caption_credits", "caption_attempts",
 }
 
 

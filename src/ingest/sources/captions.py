@@ -72,3 +72,33 @@ def vtt_to_srt(text: str) -> str:
         f"{n}\n{start} --> {end}\n" + "\n".join(payload) + "\n\n"
         for n, (start, end, payload) in enumerate(deduped, start=1)
     )
+
+
+def _stamp_from_ms(millis: int) -> str:
+    """Milliseconds since the start of the video to SRT's ``HH:MM:SS,mmm``."""
+    millis = max(0, int(millis))
+    seconds, ms = divmod(millis, 1000)
+    minutes, s = divmod(seconds, 60)
+    hours, m = divmod(minutes, 60)
+    return f"{hours:02d}:{m:02d}:{s:02d},{ms:03d}"
+
+
+def segments_to_srt(segments: list[dict]) -> str:
+    """Timed segments (``text``, ``offset`` and ``duration`` in ms) to strict SRT.
+
+    The shape Supadata returns, which has no SRT output of its own. Blank
+    segments are dropped and the rest renumbered, so the result is exactly what
+    ``vtt_to_srt`` would have produced from the same cues.
+    """
+    cues = []
+    for segment in segments or []:
+        text = " ".join(str(segment.get("text") or "").split())
+        if not text:
+            continue
+        start = int(segment.get("offset") or 0)
+        end = start + int(segment.get("duration") or 0)
+        cues.append((_stamp_from_ms(start), _stamp_from_ms(end), text))
+    return "".join(
+        f"{n}\n{start} --> {end}\n{text}\n\n"
+        for n, (start, end, text) in enumerate(cues, start=1)
+    )

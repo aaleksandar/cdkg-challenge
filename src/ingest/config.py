@@ -113,6 +113,20 @@ HEYSUMMIT_CATALOG = Path(
     os.getenv("HEYSUMMIT_CATALOG", TRANSCRIPTS_DIR / ".heysummit" / "catalog.json")
 )
 
+# --- Supadata ----------------------------------------------------------------
+# The fallback for captions when YouTube refuses yt-dlp from this server, which
+# it does for datacenter addresses. Supadata fetches the same captions from its
+# own infrastructure; native mode only, so it never generates a transcript with
+# a speech model (2 credits per video minute — a month's free plan in one talk).
+# One native transcript is 1 credit and the free plan has 100 a month, many
+# times the channel's output. Unset, a refused download can only be completed
+# by a curator's upload. Local development normally never reaches it, because
+# yt-dlp succeeds first from a residential address.
+SUPADATA_API_KEY = os.getenv("SUPADATA_API_KEY") or None
+# Talks over 20 minutes — all of them — come back as a job to poll; this bounds
+# the wait so a stuck job is a named failure rather than a hung run.
+SUPADATA_POLL_SECONDS = int(os.getenv("SUPADATA_POLL_SECONDS", "120"))
+
 # --- Feature gates -----------------------------------------------------------
 # The graph is written by default: an ingested talk that never reaches the graph
 # is work the public app cannot see, so holding it back is the exception, not the

@@ -55,3 +55,20 @@ def test_looks_like_vtt():
     assert captions.looks_like_vtt("﻿WEBVTT\n\n")
     assert captions.looks_like_vtt("  webvtt")
     assert not captions.looks_like_vtt("1\n00:00:01,000 --> 00:00:02,000\nx\n")
+
+
+def test_timed_segments_render_as_numbered_srt_cues():
+    """Supadata hands back offsets and durations in milliseconds, no SRT."""
+    srt = captions.segments_to_srt([
+        {"text": "Knowledge  graphs", "offset": 1000, "duration": 1500},
+        {"text": "", "offset": 2500, "duration": 100},
+        {"text": "are everywhere", "offset": 3_661_250, "duration": 2000},
+    ])
+    assert srt == ("1\n00:00:01,000 --> 00:00:02,500\nKnowledge graphs\n\n"
+                   "2\n01:01:01,250 --> 01:01:03,250\nare everywhere\n\n")
+    assert srt_to_text(srt) == "Knowledge graphs are everywhere"
+
+
+def test_no_segments_is_an_empty_string():
+    assert captions.segments_to_srt([]) == ""
+    assert captions.segments_to_srt([{"text": " ", "offset": 0, "duration": 0}]) == ""

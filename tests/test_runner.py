@@ -255,3 +255,26 @@ def test_a_failed_stage_keeps_the_reason_it_failed(state, stub_stages, monkeypat
     download = next(s for s in run["stages"] if s["stage"] == "transcript_download")
     assert download["status"] == "failed"
     assert json.loads(download["detail"])["failure_kind"] == "bot_check"
+
+
+def test_a_completed_download_keeps_where_the_captions_came_from(state, stub_stages, monkeypatch):
+    """The drawer prints the source and the ladder; both live only in the
+    stage record, so the runner has to let them through."""
+    runners = dict(runner.STAGE_RUNNERS)
+    runners["transcript_download"] = lambda _ctx: StageResult(
+        True, "Downloaded via Supadata (en)",
+        {"srt_path": "/x.srt", "caption_source": "supadata", "caption_lang": "en",
+         "caption_credits": 1,
+         "caption_attempts": [{"source": "yt-dlp", "kind": "bot_check", "detail": "Sign in"}]},
+    )
+    monkeypatch.setattr("ingest.pipeline.runner.STAGE_RUNNERS", runners)
+    run_id = db.start_run("aaaaaaaaaaa", STAGE_ORDER, status="queued")
+
+    runner._execute(run_id, "aaaaaaaaaaa")
+
+    download = next(s for s in db.run_with_stages(run_id)["stages"]
+                    if s["stage"] == "transcript_download")
+    detail = json.loads(download["detail"])
+    assert detail["caption_source"] == "supadata"
+    assert detail["caption_credits"] == 1
+    assert detail["caption_attempts"][0]["kind"] == "bot_check"
