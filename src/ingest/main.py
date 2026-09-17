@@ -62,4 +62,8 @@ app.include_router(router, dependencies=[Depends(require_admin)])
 @app.get("/health", include_in_schema=False)
 def health() -> dict:
     """Unauthenticated, so the container healthcheck does not need credentials."""
-    return {"status": "ok", "videos": db.inventory_count()}
+    from .sources import supadata
+
+    return {"status": "ok", "videos": db.inventory_count(),
+            # Whether a refused caption download has somewhere to fall back to.
+            "supadata": supadata.configured()}

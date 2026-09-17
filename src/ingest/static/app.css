@@ -580,6 +580,10 @@ td.act .rowbtn:disabled { opacity: 1; }
   color: var(--warn); margin-bottom: .3rem;
 }
 .blocker p { margin: 0; font-size: .84rem; line-height: 1.55; color: var(--ink); }
+/* What each caption source said, in the order asked. */
+.blocker .ladder { margin: .55rem 0 0; padding-left: 1.2rem; font-size: .8rem; line-height: 1.5; }
+.blocker .ladder li { margin: 0; }
+.blocker .ladder .muted { display: block; font-size: .72rem; word-break: break-word; }
 
 /* ---- Shorts toggle ---- */
 .toggle {

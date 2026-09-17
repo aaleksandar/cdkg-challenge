@@ -199,6 +199,10 @@ def download_transcript(video_id: str, destination: Path) -> Path | None:
 
     Prefers human-authored subtitles over YouTube's ASR when both exist. Returns
     the written path, or None when the video has no English captions at all.
+
+    The first source the download stage tries, and the only one that is free.
+    A refusal it can name (:class:`TranscriptUnavailable`) sends the stage to
+    ``sources/supadata.py`` for the same captions from another address.
     """
     destination.parent.mkdir(parents=True, exist_ok=True)
     work_dir = destination.parent / ".yt-tmp"

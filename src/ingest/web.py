@@ -122,19 +122,27 @@ def run_spend(run: dict | None) -> dict:
 templates.env.globals["run_spend"] = run_spend
 
 
-# What to do about each kind of caption-download failure. The bot check is the
-# one an admin cannot fix from the panel except by supplying the captions.
+# What to do about each kind of caption-download failure. Every remedy ends in
+# the upload, because a curator's file is the one source nothing can refuse.
 FAILURE_ADVICE = {
     "bot_check": ("This is YouTube's bot check, which fires on datacenter addresses. "
                   "Upload the captions below (an .srt or .vtt export, from YouTube "
                   "Studio or any downloader on your own machine) and the run will "
-                  "continue from them."),
-    "rate_limited": "Wait an hour, then ingest again. Nothing on disk is lost.",
+                  "continue from them — or set SUPADATA_API_KEY in the deploy "
+                  "configuration so refused downloads fall back to Supadata on "
+                  "their own."),
+    "rate_limited": ("Wait an hour, then ingest again. If Supadata's monthly credits "
+                     "are used up, they reset with the month — or upload the captions "
+                     "below. Nothing on disk is lost."),
     "unavailable": ("Check the video on YouTube. If it has been made private or "
                     "removed, there is nothing to ingest; if you have the captions, "
                     "upload them below."),
-    "no_captions": ("YouTube has no English track for this video. If you have the "
-                    "captions from elsewhere, upload them below."),
+    "no_captions": ("Neither YouTube nor Supadata has an English track for this "
+                    "video. If you have the captions from elsewhere, upload them below."),
+    "misconfigured": ("Check SUPADATA_API_KEY in the deploy configuration; Supadata "
+                      "did not accept it. Until then, upload the captions below."),
+    "timeout": "Ingest again; if it keeps happening, upload the captions below.",
+    "error": "Ingest again; if it keeps happening, upload the captions below.",
 }
 
 
@@ -156,11 +164,22 @@ def failure_of(run: dict | None) -> dict | None:
             "detail": detail.get("failure_detail"),
             "advice": FAILURE_ADVICE.get(kind),
             "can_upload": stage["stage"] == "transcript_download",
+            # What each caption source said, in the order asked; shown when a
+            # credit was spent or refused after the free path had already failed.
+            "attempts": detail.get("caption_attempts") or [],
         }
     return None
 
 
 templates.env.globals["failure_of"] = failure_of
+
+# One or two words per kind, for the list of what each caption source said.
+CAPTION_KIND_LABELS = {
+    "bot_check": "bot check", "rate_limited": "rate-limited", "unavailable": "unavailable",
+    "no_captions": "no English captions", "misconfigured": "key rejected",
+    "timeout": "timed out", "error": "error", "not_configured": "not configured",
+}
+templates.env.globals["CAPTION_KIND_LABELS"] = CAPTION_KIND_LABELS
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
@@ -711,6 +730,9 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
         "INVENTORY_REFRESH_HOURS": config.INVENTORY_REFRESH_HOURS,
         "model": tag_model(),
         "api_key_hint": api_key_hint(),
+        # The caption fallback. The tail only, as for the Google key; None
+        # means yt-dlp is the only automatic source and a refusal is upload-only.
+        "supadata_key_hint": api_key_hint("SUPADATA_API_KEY"),
         "backlog": [s for s in states if s.on_youtube and s.status == "not_ingested"],
         "orphans": [s for s in offchannel if s.status == "orphaned"],
         "junk": [s for s in offchannel if s.status == "junk"],

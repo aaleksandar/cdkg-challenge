@@ -92,6 +92,20 @@
         as this process sees it; every LLM call, tags and speaker recovery alike,
         bills to it.{% else %}<span class="bad">Not set.</span> Tag extraction
         will fail on the first call.{% endif %}</dd>
+    <dt>Captions</dt>
+    {# The order tried, and whether the paid-for rung exists. yt-dlp is free and
+       first; Supadata is the way past YouTube's bot check on this server's
+       address; a curator's upload is always last and never refused. #}
+    <dd>yt-dlp first, from this server.
+        {% if supadata_key_hint %}When YouTube refuses it, Supadata
+          (<code>{{ supadata_key_hint }}</code>, <code>SUPADATA_API_KEY</code>):
+          1 credit per talk, 100 a month on the free plan, native captions only —
+          it never generates a transcript.
+        {% else %}<span class="bad">Supadata not configured</span> — set
+          <code>SUPADATA_API_KEY</code> in the deploy configuration; until then a
+          download YouTube refuses can only be completed by uploading the
+          captions.{% endif %}
+        A curator's upload is always the last resort.</dd>
     {% if last_rebuild %}
       <dt>Last graph rebuild</dt>
       <dd class="{{ '' if last_rebuild.ok else 'bad' }}">{{ last_rebuild.message }}
@@ -157,6 +171,9 @@
         billed to <code>GOOGLE_API_KEY</code>. Runs one at a time in the
         background; the graph rebuilds once at the end rather than after every
         video. Safe to leave: anything already downloaded or tagged is skipped.
+        {% if supadata_key_hint %}On a server YouTube refuses, each caption
+        download here is also <strong>one Supadata credit</strong>, and the free
+        plan has 100 a month.{% endif %}
       {% else %}
         Nothing waiting. Every video on the channel has been ingested.
       {% endif %}

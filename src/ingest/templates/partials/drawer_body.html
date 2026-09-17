@@ -41,6 +41,17 @@
   <p>{{ failure.message }}.{% if failure.advice %} {{ failure.advice }}{% else %}
      The timeline below shows the stage. Ingesting again resumes from what is
      already on disk.{% endif %}</p>
+  {# What each caption source said, when more than one was asked: the free
+     path's refusal is why the next one ran, and an admin reading "no captions"
+     needs to know both were tried. #}
+  {% if failure.attempts | length > 1 %}
+  <ol class="ladder">
+    {% for a in failure.attempts %}
+      <li><code>{{ a.source }}</code> — {{ CAPTION_KIND_LABELS.get(a.kind, a.kind) }}{% if a.detail %}
+          <span class="muted">{{ a.detail | truncate(140) }}</span>{% endif %}</li>
+    {% endfor %}
+  </ol>
+  {% endif %}
 </div>
 {% elif s.lane == 'attention' and blocker_for(s) %}
 <div class="blocker">
@@ -122,7 +133,7 @@
     <strong>Have the captions?</strong>
     <span class="muted">
       An .srt or .vtt export — from YouTube Studio, or a downloader on your own
-      machine, which YouTube does not refuse the way it refuses this server.
+      machine — for when neither YouTube nor Supadata will hand them over.
       Uploading starts the pipeline from the file.
     </span>
   </div>

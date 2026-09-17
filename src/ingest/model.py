@@ -39,9 +39,9 @@ def tag_model() -> str | None:
     return match.group(1) if match else None
 
 
-def api_key_hint() -> str | None:
-    """The tail of the Google API key, masked, so the panel can say which key
-    is paying — the org's or someone's personal one — without showing it.
+def api_key_hint(name: str = "GOOGLE_API_KEY") -> str | None:
+    """The tail of an API key, masked, so the panel can say which key is
+    paying — the org's or someone's personal one — without showing it.
 
     Read at call time, not import time: the key comes from the environment
     and a redeploy is the only thing that changes it. Four characters is
@@ -49,7 +49,7 @@ def api_key_hint() -> str | None:
     """
     import os
 
-    key = os.getenv("GOOGLE_API_KEY") or ""
+    key = os.getenv(name) or ""
     if len(key) < 8:
         return None
     return "\u2022" * 8 + key[-4:]

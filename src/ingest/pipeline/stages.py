@@ -20,7 +20,7 @@ from pathlib import Path
 from .. import config
 from .. import spend
 from ..model import tag_model
-from ..sources import parser, speaker_llm, youtube
+from ..sources import parser, speaker_llm, supadata, youtube
 
 
 class StageSkipped(Exception):
@@ -147,7 +147,20 @@ def stage_metadata_parse(ctx: dict) -> StageResult:
 
 
 def stage_transcript_download(ctx: dict) -> StageResult:
+    """The captions, from the first source that will hand them over.
+
+    yt-dlp first: free, and it works from a laptop and from some servers. When
+    YouTube refuses it for a reason we can name, or reports no English track,
+    Supadata is asked for the same captions from its own address — one credit,
+    and only when a key is configured. A curator's upload is the early return
+    at the top: a file already on disk is never fetched again.
+
+    An error yt-dlp cannot name propagates and fails the run, as it always has.
+    Spending a credit to paper over a failure we do not understand would hide
+    exactly the kind of breakage that needs a person to look at it.
+    """
     parsed = ctx["parsed"]
+    video_id = ctx["video_id"]
     # The short first segment, not the full title: the filename is the join key
     # to the CSV and follows the existing "<Title>.srt" convention, which carries
     # neither the speaker nor the event nor the promo hashtags.
@@ -155,30 +168,68 @@ def stage_transcript_download(ctx: dict) -> StageResult:
 
     if destination.exists():
         return StageResult(True, f"Already on disk: {destination.name}",
-                           {"srt_path": destination})
+                           {"srt_path": destination, "caption_source": "upload"})
+
+    # Every source's verdict, in the order asked, so the drawer can show why
+    # the free path was passed over when a credit was spent.
+    attempts: list[dict] = []
 
     try:
-        written = youtube.download_transcript(ctx["video_id"], destination)
+        written = youtube.download_transcript(video_id, destination)
     except youtube.TranscriptUnavailable as exc:
-        return StageResult(False, FAILURE_MESSAGES[exc.kind],
-                           {"failure_kind": exc.kind, "failure_detail": exc.detail[:500]})
-    if written is None:
+        attempts.append({"source": "yt-dlp", "kind": exc.kind, "detail": exc.detail[:500]})
+    else:
+        if written is not None:
+            return StageResult(True, f"Downloaded via yt-dlp to {csv_file_reference(written)}",
+                               {"srt_path": written, "caption_source": "yt-dlp",
+                                "caption_attempts": attempts})
+        attempts.append({"source": "yt-dlp", "kind": "no_captions", "detail": ""})
+
+    if not supadata.configured():
+        attempts.append({"source": "supadata", "kind": "not_configured",
+                         "detail": "SUPADATA_API_KEY is not set"})
+        # yt-dlp's verdict is the headline: nothing else ran.
+        first = attempts[0]
+        return StageResult(False, FAILURE_MESSAGES.get(first["kind"], FAILURE_DEFAULT),
+                           {"failure_kind": first["kind"], "failure_detail": first["detail"],
+                            "caption_attempts": attempts})
+
+    try:
+        fetched = supadata.download_transcript(video_id, destination)
+    except youtube.TranscriptUnavailable as exc:
+        attempts.append({"source": "supadata", "kind": exc.kind, "detail": exc.detail[:500]})
+        return StageResult(False, FAILURE_MESSAGES.get(exc.kind, FAILURE_DEFAULT),
+                           {"failure_kind": exc.kind, "failure_detail": exc.detail[:500],
+                            "caption_attempts": attempts})
+    if fetched is None:
+        attempts.append({"source": "supadata", "kind": "no_captions", "detail": ""})
         return StageResult(False, FAILURE_MESSAGES["no_captions"],
-                           {"failure_kind": "no_captions"})
-    return StageResult(True, f"Downloaded to {csv_file_reference(written)}",
-                       {"srt_path": written})
+                           {"failure_kind": "no_captions", "caption_attempts": attempts})
+
+    path, lang = fetched
+    return StageResult(True, f"Downloaded via Supadata ({lang}) to {csv_file_reference(path)}",
+                       {"srt_path": path, "caption_source": "supadata", "caption_lang": lang,
+                        "caption_credits": 1, "caption_attempts": attempts})
 
 
 # One sentence per way the caption download can fail, in the words an admin
-# needs rather than the words yt-dlp raised. The bot check in particular reads
-# like a request to log in, and was taken for one at the last demo.
+# needs rather than the words yt-dlp or Supadata raised. The bot check in
+# particular reads like a request to log in, and was taken for one at a demo.
+# Keyed by the kind either source raises; the drawer pairs each with advice.
 FAILURE_MESSAGES = {
     "bot_check": ("YouTube refused the caption download from this server's address "
-                  "(\"sign in to confirm you're not a bot\")"),
-    "rate_limited": "YouTube is rate-limiting this server; it usually clears within an hour",
-    "unavailable": "YouTube reports this video as private, removed or otherwise unavailable",
+                  "(\"sign in to confirm you're not a bot\"), and no Supadata key is "
+                  "configured to fall back to"),
+    "rate_limited": ("YouTube or Supadata is rate-limiting this server, or the month's "
+                     "Supadata credits are used up"),
+    "unavailable": "The video is reported as private, removed or otherwise unavailable",
     "no_captions": "No English captions are available for this video",
+    "misconfigured": "Supadata rejected this server's API key",
+    "timeout": "Supadata did not finish the transcript job in time",
+    "error": "Supadata returned an unexpected error",
+    "not_configured": "No Supadata API key is configured on this server",
 }
+FAILURE_DEFAULT = "The caption download failed"
 
 
 def stage_csv_append(ctx: dict) -> StageResult:
