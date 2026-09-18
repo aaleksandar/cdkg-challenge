@@ -1,12 +1,11 @@
 name: Test
 
-# Every pull request and every push to a branch other than main. A push to
-# main is tested by the deploy workflow's own test job, which the deploy
-# depends on, so the suite is not run twice for it.
+# Every pull request, and by hand. A push to main is tested by the deploy
+# workflow's own test job, which the deploy depends on. Not on every branch
+# push as well: a push to a branch with a PR open would run the suite twice.
 on:
   pull_request:
-  push:
-    branches-ignore: [main]
+  workflow_dispatch:
 
 concurrency:
   group: test-${{ github.ref }}
