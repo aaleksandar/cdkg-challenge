@@ -326,3 +326,33 @@ def test_attach_reports_issues_as_rows_for_the_panel(catalog_and_csv):
         "csv": "Connected Data London 2024", "heysummit": "Connected Data World 2021",
         "heysummit_title": "Graph Thinking", "heysummit_id": "1", "url": "https://hs/1",
     }]
+
+
+def test_differences_name_the_fields_the_sources_disagree_on(catalog_and_csv):
+    rows = csv_writer.read_rows(catalog_and_csv)
+    rows[0].update({"HeySummit": "1", "Event": "Connected Data London 2024",
+                    "Speaker": "P. Nathan", "Date": "02/12/2021", "Type": "Presentation"})
+    csv_writer._write_table(catalog_and_csv, csv_writer.read_columns(catalog_and_csv), rows)
+
+    result = heysummit.differences("t-1", catalog_and_csv)
+
+    assert result["kind"] == "attached" and result["heysummit_id"] == "1"
+    assert [(d["field"], d["csv"], d["heysummit"]) for d in result["fields"]] == [
+        ("Event", "Connected Data London 2024", "Connected Data World 2021"),
+        ("Date", "02/12/2021", "01/12/2021"),
+        ("Category", "Knowledge Graphs", "Graph AI"),
+    ]                                   # Speaker agrees by surname; Type agrees
+    assert heysummit.differences("t-2", catalog_and_csv) is None   # its only lookalike is t-1's talk
+    assert heysummit.differences("t-none", catalog_and_csv) is None
+
+
+def test_differences_show_the_candidate_a_row_resembles(catalog_and_csv):
+    rows = csv_writer.read_rows(catalog_and_csv)
+    rows[1].update({"Title": "Graph Thinking", "Speaker": "Someone Else"})
+    csv_writer._write_table(catalog_and_csv, csv_writer.read_columns(catalog_and_csv), rows[1:])
+
+    result = heysummit.differences("t-2", catalog_and_csv)
+
+    assert result["kind"] == "candidate" and result["heysummit_id"] == "1"
+    assert result["speakers"] == "Paco Nathan" and result["fields"] == [
+        {"field": "Speaker", "csv": "Someone Else", "heysummit": "Paco Nathan"}]

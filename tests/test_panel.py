@@ -1030,3 +1030,30 @@ def test_the_disagreements_tab_lists_what_the_sources_do_not_agree_on(client, mo
 
     monkeypatch.setattr(heysummit, "attach", lambda *a, **k: {"candidates": [], "issues": []})
     assert "Nothing disagrees" in client.get("/rows?lane=disagreements").text
+
+
+def test_the_drawer_shows_where_the_sources_disagree(client, monkeypatch):
+    """The tab says that they disagree; the record on screen must say where."""
+    from ingest.sources import heysummit
+
+    talk = R.TalkState(**{**READY.__dict__, "talk_id": "t-07b04e2c",
+                          "speaker": "Kolena", "event": "Connected Data London 2024"})
+    monkeypatch.setattr(R, "reconcile", _only(talk))
+    monkeypatch.setattr(heysummit, "read_catalog", lambda: [{"id": 1}])
+    monkeypatch.setattr(heysummit, "differences", lambda talk_id, csv_path=None: {
+        "kind": "attached", "heysummit_id": "171780", "title": "Big Graphs",
+        "url": "https://hs/big-graphs", "speakers": "Kolena",
+        "fields": [{"field": "Event", "csv": "Connected Data London 2024",
+                    "heysummit": "Knowledge Connexions 2020"},
+                   {"field": "Date", "csv": "12/12/2024", "heysummit": "30/11/2020"}]})
+
+    drawer = client.get("/video/t-07b04e2c?body=1").text
+
+    assert "The sources disagree" in drawer
+    assert "differ on Event, Date" in drawer
+    assert "Knowledge Connexions 2020" in drawer and "30/11/2020" in drawer
+    assert 'class=" differs">Connected Data London 2024' in drawer      # the Record row is marked
+    assert '<dd class="differs">12/12/2024' in drawer
+
+    monkeypatch.setattr(heysummit, "differences", lambda talk_id, csv_path=None: None)
+    assert "The sources disagree" not in client.get("/video/t-07b04e2c?body=1").text

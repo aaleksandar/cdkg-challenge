@@ -277,6 +277,58 @@ def attach(csv_path=None, only: set[str] | None = None, write: bool = True) -> d
     return result
 
 
+# The columns two sources can both hold, and how each is compared. Speaker by
+# surname set, because "A and B" and "B & A" are the same people; the rest
+# verbatim once trimmed. Title is left out: a video-first row carries the
+# whole YouTube title and HeySummit the talk alone, which is not a
+# disagreement but a convention, and the match already judged the two alike.
+_COMPARED = ("Speaker", "Event", "Date", "Type", "Category")
+
+
+def _same(column: str, ours: str, theirs: str) -> bool:
+    if column == "Speaker":
+        return (matching.surnames(parser.SPEAKER_SPLIT.split(ours))
+                == matching.surnames(parser.SPEAKER_SPLIT.split(theirs)))
+    return ours == theirs
+
+
+def differences(talk_id: str, csv_path=None) -> dict | None:
+    """Every field where a row and its HeySummit talk say different things.
+
+    For the drawer: the Disagreements tab says *that* a talk's sources differ,
+    this says *where*, field by field, so a curator can settle it from the
+    record in front of them. A row with no HeySummit talk yields None; a row
+    a talk merely resembles yields the candidate, so the resemblance is on
+    screen too. Nothing here is written.
+    """
+    row = next((r for r in csv_writer.read_rows(csv_path or config.METADATA_CSV)
+                if (r.get("TalkID") or "").strip() == talk_id), None)
+    if row is None:
+        return None
+    catalog = _catalog()
+    held = reconcile.source_ids(row).get("heysummit")
+    if held:
+        talk = next((t for t in catalog if str(t["id"]) == held), None)
+        kind = "attached"
+    else:
+        taken = {reconcile.source_ids(r).get("heysummit")
+                 for r in csv_writer.read_rows(csv_path or config.METADATA_CSV)} - {None}
+        verdict, talk = match(row, [t for t in catalog if str(t["id"]) not in taken])
+        kind = verdict if verdict == "candidate" else None
+    if talk is None or kind is None:
+        return None
+
+    theirs = fields(talk)
+    diffs = [{"field": column, "csv": (row.get(column) or "").strip(),
+              "heysummit": theirs.get(column, "")}
+             for column in _COMPARED
+             if (row.get(column) or "").strip() and theirs.get(column)
+             and not _same(column, (row.get(column) or "").strip(), theirs[column])]
+    return {"kind": kind, "heysummit_id": str(talk["id"]), "title": talk["title"],
+            "url": talk.get("url") or "", "speakers": " & ".join(talk["speakers"]),
+            "fields": diffs}
+
+
 # --- Seeding -----------------------------------------------------------------
 
 def _channel_videos() -> list[dict]:

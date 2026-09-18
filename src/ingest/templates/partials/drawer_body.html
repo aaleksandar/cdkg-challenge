@@ -61,6 +61,40 @@
 </div>
 {% endif %}
 
+{# Where the two sources disagree about this talk, field by field, printed
+   with the blockers because it is the same question — what is wrong with
+   this record — and the Record section below marks the same fields. Nothing
+   here is written: a curator settles it with the form, or leaves it. #}
+{% set differing = disagreement.fields | map(attribute='field') | list if disagreement else [] %}
+{% if disagreement and (disagreement.fields or disagreement.kind == 'candidate') %}
+<div class="blocker disagree">
+  <div class="blocker-head">
+    {% if disagreement.kind == 'candidate' %}HeySummit lists a talk that may be this one
+    {% else %}The sources disagree{% endif %}
+  </div>
+  {% if disagreement.kind == 'candidate' %}
+  <p><a href="{{ disagreement.url }}" target="_blank" rel="noopener">{{ disagreement.title }}</a>
+     by {{ disagreement.speakers or 'no speaker' }} was not joined to this row: the titles
+     resemble each other but the match is not certain. If it is the same talk, put the
+     HeySummit id <code>{{ disagreement.heysummit_id }}</code> on the row; if not, nothing to do.</p>
+  {% else %}
+  <p>The metadata CSV and <a href="{{ disagreement.url }}" target="_blank" rel="noopener">HeySummit's
+     record</a> of this talk differ on {{ differing | join(', ') }}. Neither was overwritten;
+     the CSV's values stand until a curator changes them below.</p>
+  {% endif %}
+  {% if disagreement.fields %}
+  <table class="issues compact">
+    <thead><tr><th>Field</th><th>Metadata CSV says</th><th>HeySummit says</th></tr></thead>
+    <tbody>
+    {% for d in disagreement.fields %}
+      <tr><td>{{ d.field }}</td><td>{{ d.csv }}</td><td>{{ d.heysummit }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+{% endif %}
+
 {# A Short with a metadata row is the one case where "ignored" is not the whole
    truth: it is already in the graph, and only this drawer and Data health say
    so. Printed where the blocker would be, because it is the same question in
@@ -218,9 +252,13 @@
     <dd>{{ s.csv_title }}</dd>
     {% endif %}
     <dt>Speaker</dt>
-    <dd class="{{ 'none' if not s.speaker }}">{{ s.speaker or 'not recorded' }}</dd>
+    <dd class="{{ 'none' if not s.speaker }} {{ 'differs' if 'Speaker' in differing }}">{{ s.speaker or 'not recorded' }}</dd>
     <dt>Event</dt>
-    <dd class="{{ 'none' if not s.event }}">{{ s.event or 'not recorded' }}</dd>
+    <dd class="{{ 'none' if not s.event }} {{ 'differs' if 'Event' in differing }}">{{ s.event or 'not recorded' }}</dd>
+    {% for d in disagreement.fields if disagreement and d.field not in ('Speaker', 'Event') %}
+    <dt>{{ d.field }}</dt>
+    <dd class="differs">{{ d.csv }}</dd>
+    {% endfor %}
     {% if s.duration %}
     <dt>Length</dt>
     <dd>{{ s.duration | duration }}</dd>

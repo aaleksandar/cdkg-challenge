@@ -496,6 +496,13 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
     if suggested_speaker:
         suggestions["Speaker"] = suggested_speaker
 
+    # Where this talk's sources disagree, field by field, for the record on
+    # screen — the tab says that they do; the drawer says where.
+    from .sources import heysummit
+
+    disagreement = (heysummit.differences(match.talk_id)
+                    if match.talk_id and match.in_csv and heysummit.read_catalog() else None)
+
     template = "partials/drawer_body.html" if body else "partials/drawer.html"
     if with_row:
         # The drawer's own action changed this talk, so the row behind it is now
@@ -508,7 +515,7 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
          "vocab": curation_vocabularies(), "suggested_date": suggested_date,
          "suggestions": suggestions, "KG_ENABLED": config.KG_ENABLED,
          "suggestion_evidence": suggestion_evidence,
-         "suggestion_failed": suggestion_failed},
+         "suggestion_failed": suggestion_failed, "disagreement": disagreement},
     )
 
 
