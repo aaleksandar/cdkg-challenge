@@ -257,6 +257,9 @@ thead th.r { text-align: right; }
 .l-in_graph      .dot { background: var(--ok); }
 .l-attention     .dot { background: var(--warn); }
 .l-working       .dot { background: var(--busy); animation: pulse 1.1s ease-in-out infinite; }
+.l-disagreements .dot { background: var(--warn); }
+.issues td { vertical-align: top; }
+.issues td a.muted { display: block; margin-top: .15rem; }
 .l-not_ingested  .dot { background: transparent; box-shadow: inset 0 0 0 1px var(--rule-strong); }
 .l-excluded      .dot { background: var(--rule-strong); }
 .l-attention .label { color: var(--ink); font-weight: 500; }

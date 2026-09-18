@@ -312,3 +312,17 @@ def test_the_programme_s_furniture_is_not_a_talk(seeding):
     result = heysummit.seed(seeding)
     assert "5" not in {r["HeySummit"] for r in csv_writer.read_rows(seeding)}
     assert result["seeded"] == 2
+
+
+def test_attach_reports_issues_as_rows_for_the_panel(catalog_and_csv):
+    rows = csv_writer.read_rows(catalog_and_csv)
+    rows[0]["Event"] = "Connected Data London 2024"
+    csv_writer._write_table(catalog_and_csv, csv_writer.read_columns(catalog_and_csv), rows)
+
+    issues = heysummit.attach(catalog_and_csv, write=False)["issues"]
+
+    assert issues == [{
+        "kind": "event", "talk_id": "t-1", "title": "Graph Thinking",
+        "csv": "Connected Data London 2024", "heysummit": "Connected Data World 2021",
+        "heysummit_title": "Graph Thinking", "heysummit_id": "1", "url": "https://hs/1",
+    }]

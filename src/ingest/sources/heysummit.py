@@ -234,15 +234,26 @@ def attach(csv_path=None, only: set[str] | None = None, write: bool = True) -> d
         rows = [r for r in rows if r["TalkID"].strip() in only]
 
     result = {"attached": 0, "filled": 0, "candidates": [], "candidate_ids": set(),
-              "unmatched": 0, "disagreements": [], "matched": {}, "filled_columns": {}}
+              "unmatched": 0, "disagreements": [], "matched": {}, "filled_columns": {},
+              # The same two lists as rows for the panel's Disagreements tab:
+              # what the CSV says, what HeySummit says, and where to look.
+              "issues": []}
     patches = {}
     for row in rows:
+        talk_id = row["TalkID"].strip()
         talk = by_id.get(held[row["TalkID"]] or "")
         if not held[row["TalkID"]]:
             verdict, talk = match(row, free)
             if verdict == "candidate":
                 result["candidates"].append((row["Title"], talk["title"]))
                 result["candidate_ids"].add(str(talk["id"]))
+                result["issues"].append({
+                    "kind": "candidate", "talk_id": talk_id, "title": row["Title"],
+                    "csv": (row.get("Speaker") or "").strip() or "no speaker",
+                    "heysummit": " & ".join(talk["speakers"]) or "no speaker",
+                    "heysummit_title": talk["title"], "heysummit_id": str(talk["id"]),
+                    "url": talk.get("url") or "",
+                })
             if verdict == "none":
                 result["unmatched"] += 1
             if verdict != "attach":
@@ -250,12 +261,16 @@ def attach(csv_path=None, only: set[str] | None = None, write: bool = True) -> d
             free.remove(talk)
             result["attached"] += 1
         if talk:
-            talk_id = row["TalkID"].strip()
             patches[talk_id] = fields(talk)
             result["matched"][talk_id] = str(talk["id"])
             ours, theirs = (row.get("Event") or "").strip(), patches[talk_id]["Event"]
             if ours and theirs and ours != theirs:
                 result["disagreements"].append((row["Title"], ours, theirs))
+                result["issues"].append({
+                    "kind": "event", "talk_id": talk_id, "title": row["Title"],
+                    "csv": ours, "heysummit": theirs, "heysummit_title": talk["title"],
+                    "heysummit_id": str(talk["id"]), "url": talk.get("url") or "",
+                })
     if write:
         result["filled"] = csv_writer.fill_blanks(patches, csv_path,
                                                   report=result["filled_columns"])
@@ -402,7 +417,7 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
 
     seeded = seed(csv_path)
     claimed = claim_transcripts(csv_path)
-    summary.update({k: v for k, v in seeded.items() if k != "candidate_ids"})
+    summary.update({k: v for k, v in seeded.items() if k not in {"candidate_ids", "issues"}})
     summary.update(claimed)
     summary["changed"] = bool(seeded["filled"] or seeded["seeded"] or claimed["claimed"])
     return summary

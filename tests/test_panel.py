@@ -1000,3 +1000,33 @@ def test_data_health_lists_heysummit_talks_that_may_already_be_a_row(client, mon
 def test_the_count_line_counts_talks_not_videos(client, monkeypatch):
     monkeypatch.setattr(R, "reconcile", _only(READY, AWAITING))
     assert "2 talks" in client.get("/rows").text
+
+
+def test_the_disagreements_tab_lists_what_the_sources_do_not_agree_on(client, monkeypatch):
+    """An admin asking "what went wrong?" gets a table, not a note in a flash."""
+    from ingest.sources import heysummit
+
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    monkeypatch.setattr(heysummit, "read_catalog", lambda: [{"id": 1}])
+    monkeypatch.setattr(heysummit, "attach", lambda *a, **k: {"candidates": [], "issues": [
+        {"kind": "event", "talk_id": "t-07b04e2c", "title": "Big Graphs | KnowCon 2020",
+         "csv": "Connected Data London 2024", "heysummit": "Knowledge Connexions 2020",
+         "heysummit_title": "Big Graphs", "heysummit_id": "171780", "url": "https://hs/big-graphs"},
+        {"kind": "candidate", "talk_id": "t-647fcf1a", "title": "Grounding LLMs on Solid Knowledge",
+         "csv": "Panos Alexopoulos", "heysummit": "Someone Else",
+         "heysummit_title": "Grounding LLMs on solid knowledge graphs", "heysummit_id": "9", "url": ""},
+    ]})
+
+    strip = client.get("/rows").text
+    assert "Disagreements" in strip and 'hx-get="/rows?lane=disagreements"' in strip
+
+    tab = client.get("/rows?lane=disagreements").text
+    assert "Event differs" in tab and "Possible duplicate" in tab
+    assert "Connected Data London 2024" in tab and "Knowledge Connexions 2020" in tab
+    assert 'href="https://hs/big-graphs"' in tab
+    assert 'hx-get="/video/t-07b04e2c"' in tab              # each line opens the drawer
+    assert "Grounding LLMs on solid knowledge graphs" in tab
+    assert "A Talk | Jane Doe | CDL24" not in tab            # no ordinary rows here
+
+    monkeypatch.setattr(heysummit, "attach", lambda *a, **k: {"candidates": [], "issues": []})
+    assert "Nothing disagrees" in client.get("/rows?lane=disagreements").text

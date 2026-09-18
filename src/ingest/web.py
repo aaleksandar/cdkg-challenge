@@ -196,7 +196,9 @@ templates.env.globals["CAPTION_KIND_LABELS"] = CAPTION_KIND_LABELS
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
-templates.env.globals["LANE_LABELS"] = R.LANE_LABELS
+# The sixth tab is not a lane a row can be in: it is what the sources say
+# about the same talk when they do not agree, listed for a curator.
+templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "disagreements": "Disagreements"}
 
 # The strip doubles as the filter, so it defines both the order shown and the
 # set of filters available. Five entries, not twelve: an admin should be able to
@@ -208,6 +210,7 @@ templates.env.globals["LANES"] = [
     ("working", "Working"),
     ("not_ingested", "Not ingested"),
     ("in_graph", "In graph"),
+    ("disagreements", "Disagreements"),
 ]
 
 # The lane a row is in, in plain terms. Printed under the strip for the active
@@ -216,7 +219,7 @@ LANE_NOTES = {
     "all": (
         f"Every talk: the {config.YOUTUBE_CHANNEL_HANDLE} channel's videos and the "
         "programme HeySummit holds, whether or not a video exists yet. Shorts and "
-        "premieres are hidden unless you ask for them."
+        "premieres hidden by default."
     ),
     "attention": (
         "Stuck, and it will stay stuck until someone looks. Open one to see the "
@@ -233,6 +236,11 @@ LANE_NOTES = {
     "excluded": (
         "Not talks: teasers, Shorts and premieres that have not aired. Listed "
         "because they are on the channel, and ignored by everything else."
+    ),
+    "disagreements": (
+        "Where the metadata CSV and HeySummit tell different stories about the "
+        "same talk, and HeySummit talks that resemble a row without matching it. "
+        "Nothing here is written automatically; a curator settles each one."
     ),
 }
 templates.env.globals["LANE_NOTES"] = LANE_NOTES
@@ -343,12 +351,20 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
     real defects and they are not dropped: they are counted and listed under
     Advanced, where the fix for each of them lives.
     """
+    from .sources import heysummit
+
     states = R.reconcile()
     talks = [s for s in states if s.on_youtube or s.in_csv]
     lane_counts = R.summarise_lanes(talks)
+    # Not a lane a row is in: the sources' disagreements, decided without
+    # writing, counted on the tab like the lanes are.
+    issues = heysummit.attach(write=False)["issues"] if heysummit.read_catalog() else []
+    lane_counts["disagreements"] = len(issues)
 
     visible = talks
-    if lane and lane != "all":
+    if lane == "disagreements":
+        visible = []
+    elif lane and lane != "all":
         visible = [s for s in visible if s.lane == lane]
     elif not shorts:
         # Shorts and premieres are working as intended; they would bury the rest.
@@ -375,6 +391,7 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
     visible.sort(key=lambda s: (bool(s.when), s.when or ""), reverse=True)
     return {
         "states": visible,
+        "issues": issues,
         "lane_counts": lane_counts,
         "total": len(talks),
         "offchannel": len(states) - len(talks),
