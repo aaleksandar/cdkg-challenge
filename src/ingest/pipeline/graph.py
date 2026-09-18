@@ -67,20 +67,25 @@ def graph_counts(db_path: Path) -> dict[str, int]:
     for label in ("Speaker", "Talk", "Event", "Category", "Tag"):
         counts[label] = conn.execute(f"MATCH (n:{label}) RETURN count(n)").get_next()[0]
     counts["tagged_talks"] = conn.execute(
-        "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) RETURN count(DISTINCT t.title)"
+        "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) RETURN count(DISTINCT t.talk_id)"
     ).get_next()[0]
     return counts
 
 
-def talk_is_tagged(db_path: Path, title: str) -> bool:
-    """Whether the Talk with this exact title carries at least one tag."""
+def talk_is_tagged(db_path: Path, talk_id: str) -> bool:
+    """Whether the Talk with this id carries at least one tag.
+
+    By id, not title: a row HeySummit seeded keeps the CMS title while the
+    video that attaches to it carries YouTube's, and titles repeat across
+    conferences anyway.
+    """
     import kuzu
 
     conn = kuzu.Connection(kuzu.Database(str(db_path), read_only=True))
     result = conn.execute(
-        "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) WHERE t.title = $title "
+        "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) WHERE t.talk_id = $talk_id "
         "RETURN count(*) > 0",
-        {"title": title},
+        {"talk_id": talk_id},
     )
     return bool(result.get_next()[0])
 

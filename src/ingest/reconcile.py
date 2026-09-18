@@ -164,6 +164,15 @@ class TalkState:
     missing_curation: list[str] = field(default_factory=list)
     missing_optional: list[str] = field(default_factory=list)
     run: dict | None = None
+    # What the CSV knows that no video does: the talk's own date (HeySummit's,
+    # or a curator's), ISO for sorting, and the conference page for the talk.
+    talk_date: str | None = None
+    web: str | None = None
+
+    @property
+    def when(self) -> str | None:
+        """The date the sheet sorts and prints: upload date, else the talk's own."""
+        return self.published_at or self.talk_date
 
     @property
     def key(self) -> str:
@@ -247,6 +256,20 @@ class TalkState:
         # the panel names the real blocker.
         if self.in_csv and self.missing_curation:
             return "needs_curation"
+        # A row with a video and no transcript is a video not yet ingested —
+        # linked to a talk HeySummit seeded, or by hand — and belongs with the
+        # backlog, where the Ingest button is. Before the inversion a row
+        # always had its transcript, so this could only mean a broken File;
+        # ingesting again is the right answer for that too.
+        if self.in_csv and self.on_youtube and not self.has_transcript:
+            return "not_ingested"
+        # HeySummit's talk, waiting for the channel: a row and a Talk node with
+        # its speaker, event, date and abstract, and nothing to tag until a
+        # video is released and attached. The normal state of a whole
+        # conference's programme, so it sits with the backlog, not with the
+        # problems.
+        if self.in_csv and not self.on_youtube and not self.has_transcript:
+            return "awaiting_video"
         # Curated and tagged, but absent from the graph: genuinely waiting on a
         # rebuild, which is the one case the gate actually holds up.
         if self.in_csv and self.has_tags:
@@ -275,6 +298,7 @@ STATUS_LABELS = {
     "untagged": "Untagged",
     "orphaned": "Orphaned",
     "not_ingested": "Not ingested",
+    "awaiting_video": "Awaiting video",
     "excluded_short": "Short — ignored",
     "upcoming": "Upcoming",
     "junk": "Unusable",
@@ -284,10 +308,11 @@ STATUS_LABELS = {
 
 STATUS_ORDER = [
     "failed", "in_progress", "needs_curation", "ready_for_graph", "orphaned",
-    "not_ingested", "untagged", "in_graph", "excluded_short", "upcoming", "junk",
+    "not_ingested", "awaiting_video", "untagged", "in_graph", "excluded_short",
+    "upcoming", "junk",
 ]
 
-# The eleven statuses above stay the diagnosis — they are what the drawer shows
+# The twelve statuses above stay the diagnosis — they are what the drawer shows
 # when an admin asks "why is this not in the graph?". A lane is the triage, and
 # it is all the sheet shows: of the five, only "attention" asks for a human.
 #
@@ -298,6 +323,7 @@ LANE_OF = {
     "in_graph": "in_graph",
     "in_progress": "working",
     "not_ingested": "not_ingested",
+    "awaiting_video": "not_ingested",
     "needs_curation": "attention",
     "failed": "attention",
     "untagged": "attention",
@@ -321,6 +347,16 @@ LANE_LABELS = {
 
 # Statuses that are working as intended and only clutter the default view.
 QUIET_STATUSES = {s for s, lane in LANE_OF.items() if lane == "excluded"}
+
+
+def _iso_date(value: str | None) -> str | None:
+    """The CSV's ``DD/MM/YYYY`` as ``YYYY-MM-DD``, or None when it is not one."""
+    from datetime import datetime
+
+    try:
+        return datetime.strptime((value or "").strip(), "%d/%m/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return None
 
 
 # --- Source readers ----------------------------------------------------------
@@ -415,6 +451,8 @@ def reconcile() -> list[TalkState]:
         file_ref = (row.get("File") or "").strip()
         if file_ref:
             state.stem = Path(file_ref).stem
+        state.web = (row.get("Web") or "").strip() or None
+        state.talk_date = _iso_date(row.get("Date"))
         if state.talk_id:
             state.in_graph = state.talk_id in graph_ids
             state.tagged_in_graph = state.talk_id in graph_tagged

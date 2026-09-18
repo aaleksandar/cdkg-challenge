@@ -230,10 +230,24 @@ def finish_run(run_id: int, status: str, error: str | None = None) -> None:
 
 
 def latest_runs() -> dict[str, dict]:
-    """Most recent run per video, keyed by video_id."""
+    """Most recent run per video, keyed by video_id.
+
+    Carries the stage a live run has reached (``current_stage``, ``done``,
+    ``total``), the same three figures ``active_runs`` reports, so the row of a
+    talk being ingested can say "Download transcript (1/7)" where its status
+    goes rather than in a banner above the sheet.
+    """
     with connect() as conn:
         rows = conn.execute(
-            """SELECT r.* FROM runs r
+            """SELECT r.*,
+                      (SELECT stage FROM run_stages
+                        WHERE run_id = r.id AND status = 'running'
+                        ORDER BY position LIMIT 1) AS current_stage,
+                      (SELECT COUNT(*) FROM run_stages
+                        WHERE run_id = r.id
+                          AND status IN ('completed','gated','skipped')) AS done,
+                      (SELECT COUNT(*) FROM run_stages WHERE run_id = r.id) AS total
+                 FROM runs r
                JOIN (SELECT video_id, MAX(id) AS id FROM runs GROUP BY video_id) latest
                  ON r.id = latest.id"""
         ).fetchall()

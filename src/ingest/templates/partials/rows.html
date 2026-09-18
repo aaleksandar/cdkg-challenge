@@ -1,12 +1,53 @@
-{% if not states %}
+{% if lane == 'disagreements' %}
+  {# Not rows: pairs. What the CSV records, what HeySummit records, for the
+     same talk. Each line opens the talk's drawer, where the curation form
+     is; the HeySummit column links to the programme page it was read from. #}
+  {% if not issues %}
+    <div class="empty">
+      <div class="big">Nothing disagrees.</div>
+      <p>Every HeySummit talk either matches a row outright or is a row of its
+         own, and no row names a different event than the programme does.</p>
+    </div>
+  {% else %}
+  <table class="issues">
+    <thead>
+      <tr>
+        <th>Talk</th>
+        <th>Issue</th>
+        <th>Metadata CSV says</th>
+        <th>HeySummit says</th>
+        <th>Talk ID</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in issues %}
+      <tr hx-get="{{ base }}/video/{{ i.talk_id | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
+        <td><div class="title">{{ i.title }}</div></td>
+        <td>
+          {% if i.kind == 'event' %}<span class="state badge l-attention"><i class="dot"></i><span class="label">Event differs</span></span>
+          {% else %}<span class="state badge l-not_ingested"><i class="dot"></i><span class="label">Possible duplicate</span></span>{% endif %}
+        </td>
+        <td>{{ i.csv }}</td>
+        <td onclick="event.stopPropagation()">
+          {% if i.kind == 'candidate' %}<div class="title">{{ i.heysummit_title }}</div>{% endif %}
+          {{ i.heysummit }}
+          {% if i.url %}<a href="{{ i.url }}" target="_blank" rel="noopener" class="muted">programme page &#8599;</a>{% endif %}
+        </td>
+        <td class="vid"><code>{{ i.talk_id }}</code></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+{% elif not states %}
   <div class="empty">
     {% if lane == 'attention' %}
       <div class="big">Nothing needs you.</div>
-      <p>Every video on the channel is either in the graph, being ingested, or
-         waiting in the backlog. This is what a healthy panel looks like.</p>
+      <p>Every talk is either in the graph, being ingested, waiting in the
+         backlog, or waiting for its video. This is what a healthy panel looks like.</p>
     {% else %}
       <div class="big">Nothing here.</div>
-      <p>No videos match this filter.</p>
+      <p>No talks match this filter.</p>
     {% endif %}
   </div>
 {% else %}
@@ -21,6 +62,7 @@
       <th class="r">Tags</th>
       <th class="r">Length</th>
       <th>Video</th>
+      <th>HeySummit</th>
       <th></th>
     </tr>
   </thead>

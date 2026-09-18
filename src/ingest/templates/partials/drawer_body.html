@@ -27,7 +27,8 @@
     <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
       <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
     </span>
-    {% if s.published_at %}<span class="muted">Published {{ s.published_at | day }}</span>{% endif %}
+    {% if s.published_at %}<span class="muted">Published {{ s.published_at | day }}</span>
+    {% elif s.talk_date %}<span class="muted">Given {{ s.talk_date | day }}</span>{% endif %}
   </div>
 </div>
 
@@ -57,6 +58,82 @@
 <div class="blocker">
   <div class="blocker-head">Not in the graph</div>
   <p>{{ blocker_for(s) }}</p>
+</div>
+{% endif %}
+
+{# Where the two sources disagree about this talk, field by field, printed
+   with the blockers because it is the same question — what is wrong with
+   this record — and the Record section below marks the same fields. Nothing
+   here is written: a curator settles it with the form, or leaves it. #}
+{% set differing = disagreement.fields | map(attribute='field') | list if disagreement else [] %}
+{% if disagreement and (disagreement.fields or disagreement.kind == 'candidate') %}
+<div class="blocker disagree">
+  <div class="blocker-head">
+    {% if disagreement.kind == 'candidate' %}HeySummit lists a talk that may be this one
+    {% else %}The sources disagree{% endif %}
+  </div>
+  {% if disagreement.kind == 'candidate' %}
+  <p><a href="{{ disagreement.url }}" target="_blank" rel="noopener">{{ disagreement.title }}</a>
+     by {{ disagreement.speakers or 'no speaker' }} was not joined to this row: the titles
+     resemble each other but the match is not certain. If it is the same talk, put the
+     HeySummit id <code>{{ disagreement.heysummit_id }}</code> on the row; if not, nothing to do.</p>
+  {% else %}
+  <p>The metadata CSV and <a href="{{ disagreement.url }}" target="_blank" rel="noopener">HeySummit's
+     record</a> of this talk differ on {{ differing | join(', ') }}. Neither was overwritten;
+     the CSV's values stand until a curator changes them below.</p>
+  {% endif %}
+  {% if disagreement.fields %}
+  {# Each value with where it was read from. The CSV side is reconstructed
+     from the video's own record — the title, the description, or its promo
+     footer, which is the standing advert for the next conference and how a
+     talk comes to be filed under the wrong one. The HeySummit side is a page. #}
+  <table class="issues compact">
+    <thead><tr><th>Field</th><th>Metadata CSV says</th><th>HeySummit says</th></tr></thead>
+    <tbody>
+    {% for d in disagreement.fields %}
+      <tr>
+        <td>{{ d.field }}</td>
+        <td>
+          <strong>{{ d.csv }}</strong>
+          {% set ev = d.csv_evidence %}
+          {% if ev %}
+            <div class="where {{ 'is-footer' if ev.where == 'promo footer' }}">
+              {% if ev.where == 'title' %}read from the video's title:
+              {% elif ev.where == 'description' %}found in the video's description:
+              {% else %}found in the description's <em>promo footer</em> — the standing
+                advert for the next conference, not this talk:{% endif %}
+              <span class="quote">{{ ev.quote.before }}<mark>{{ ev.quote.match }}</mark>{{ ev.quote.after }}</span>
+            </div>
+          {% else %}
+            <div class="where">not in the video's title or description — entered by
+              a curator, or from an earlier source</div>
+          {% endif %}
+          <div class="links" onclick="event.stopPropagation()">
+            {% if disagreement.csv_row.url %}
+              <a href="{{ disagreement.csv_row.url }}" target="_blank" rel="noopener">row {{ disagreement.csv_row.line }} of the CSV on GitHub &#8599;</a>
+            {% endif %}
+            {% if disagreement.video_id %}
+              <a href="https://www.youtube.com/watch?v={{ disagreement.video_id }}" target="_blank"
+                 rel="noopener">the video on YouTube &#8599;</a>
+            {% endif %}
+          </div>
+        </td>
+        <td>
+          <strong>{{ d.heysummit }}</strong>
+          {% set hs = d.heysummit_evidence %}
+          <div class="links" onclick="event.stopPropagation()">
+            {% if hs.url %}<a href="{{ hs.url }}" target="_blank" rel="noopener">the talk's page &#8599;</a>{% endif %}
+            {% if hs.event_id %}
+              <span class="muted">event {{ hs.event_id }}</span>
+              {% if hs.event_site %}<a href="{{ hs.event_site }}" target="_blank" rel="noopener">the event's site &#8599;</a>{% endif %}
+            {% endif %}
+          </div>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
 </div>
 {% endif %}
 
@@ -174,10 +251,37 @@
 </div>
 {% endif %}
 
+{# The curator's join. The automatic one is by title and speaker, and a video
+   whose title strays from the programme's never finds its row on its own.
+   Pasting the video here records it on the row and starts the ingestion, which
+   looks a row up by its video before appending one. #}
+{% if s.talk_id and not s.video_id and not s.is_short and s.status != 'in_progress' %}
+<section class="curate attach">
+  <div class="upload-head">
+    <strong>Have the video?</strong>
+    <span class="muted">
+      A talk HeySummit lists and the channel does not yet — or one whose video
+      has a different title. Paste the YouTube link and it is ingested onto
+      this row.
+    </span>
+  </div>
+  <form hx-post="{{ base }}/video/{{ s.key | urlencode }}/attach" hx-target="#drawer-body"
+        hx-swap="innerHTML" class="curate-form attach-form">
+    <label>
+      <span>YouTube link or id</span>
+      <input type="text" name="video" placeholder="https://www.youtube.com/watch?v=…" required>
+    </label>
+    <button type="submit" class="btn btn-primary">Attach and ingest</button>
+    <span id="attach-flash" class="muted"></span>
+  </form>
+</section>
+{% endif %}
+
 {# Offered whenever something is blank, not only when the blank blocks the graph:
    Date, Type and Category no longer hold a talk back, and this is the only place
-   in the panel they can be filled in at all. #}
-{% if s.video_id and s.in_csv and not s.is_short
+   in the panel they can be filled in at all. A talk with no video can be
+   curated like any other; the row is the talk, not the video. #}
+{% if s.in_csv and not s.is_short
       and (s.missing_curation or s.missing_optional) %}
   {% include "partials/curate.html" %}
 {% endif %}
@@ -190,18 +294,31 @@
     <dd>{{ s.csv_title }}</dd>
     {% endif %}
     <dt>Speaker</dt>
-    <dd class="{{ 'none' if not s.speaker }}">{{ s.speaker or 'not recorded' }}</dd>
+    <dd class="{{ 'none' if not s.speaker }} {{ 'differs' if 'Speaker' in differing }}">{{ s.speaker or 'not recorded' }}</dd>
     <dt>Event</dt>
-    <dd class="{{ 'none' if not s.event }}">{{ s.event or 'not recorded' }}</dd>
+    <dd class="{{ 'none' if not s.event }} {{ 'differs' if 'Event' in differing }}">{{ s.event or 'not recorded' }}</dd>
+    {% for d in disagreement.fields if disagreement and d.field not in ('Speaker', 'Event') %}
+    <dt>{{ d.field }}</dt>
+    <dd class="differs">{{ d.csv }}</dd>
+    {% endfor %}
+    {% if s.duration %}
     <dt>Length</dt>
     <dd>{{ s.duration | duration }}</dd>
+    {% endif %}
     {% if s.published_at %}
     <dt>Published</dt>
     <dd>{{ s.published_at | day }}</dd>
+    {% elif s.talk_date %}
+    <dt>Date</dt>
+    <dd>{{ s.talk_date | day }}</dd>
     {% endif %}
     {% if s.video_id %}
     <dt>Video</dt>
     <dd><a href="https://www.youtube.com/watch?v={{ s.video_id }}" target="_blank" rel="noopener">{{ s.video_id }} ↗</a></dd>
+    {% endif %}
+    {% if s.web %}
+    <dt>HeySummit</dt>
+    <dd><a href="{{ s.web }}" target="_blank" rel="noopener">programme page ↗</a></dd>
     {% endif %}
     {% if s.missing_curation %}
     <dt>Needs</dt>

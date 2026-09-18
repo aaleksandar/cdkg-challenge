@@ -52,6 +52,14 @@
               only; the existing backlog is drained below.
             {% else %}Newly published videos are catalogued and listed as
               <em>Not ingested</em>, but wait for a click.{% endif %}
+          {% elif name == 'HEYSUMMIT_SYNC_ENABLED' %}
+            {% if on %}Every {{ INVENTORY_REFRESH_HOURS }} h the HeySummit
+              catalogue is re-read: a talk not yet in the metadata CSV gets a
+              row of its own, blanks are filled, a channel video with the same
+              title is linked, and transcripts on disk are claimed by title. No
+              LLM calls, no YouTube.
+            {% else %}HeySummit is read only when <strong>Sync HeySummit</strong>
+              is pressed. A talk added to the programme waits for that.{% endif %}
           {% else %}
             {% if on %}Ingested talks are written into the knowledge graph
               the public app queries. This is the normal state.
@@ -75,8 +83,8 @@
        agree in the served app, and the third branch is what it looks like when
        they do not. #}
     <dd>{% if polling %}Running — checking for new uploads every
-        {{ RSS_POLL_MINUTES }} min; re-reading the whole channel every
-        {{ INVENTORY_REFRESH_HOURS }} h.
+        {{ RSS_POLL_MINUTES }} min; re-reading the whole channel and HeySummit
+        every {{ INVENTORY_REFRESH_HOURS }} h.
         {% elif SCHEDULER_ENABLED %}Switched on, but no jobs are running in this
         process — nothing is being detected. Restarting the service starts them.
         {% else %}Paused. Nothing is detected automatically; use
@@ -133,10 +141,12 @@
     <button type="button" class="btn" hx-post="{{ base }}/heysummit" hx-target="#adv-flash"
             hx-indicator="#adv-busy" hx-disabled-elt="this"
             hx-on::after-request="refreshSheet()"
-            data-tip="Re-reads the Connected Data talks on HeySummit, matches them to
-                      talks in the metadata CSV by title and speaker, and fills blank
-                      Date, Type, Category, Description, Web and Speaker. Never
-                      overwrites a value. No LLM calls.">Sync HeySummit</button>
+            data-tip="Re-reads the Connected Data talks on HeySummit. Every talk not
+                      yet in the metadata CSV gets a row of its own — with its
+                      speaker, event, date and abstract, and no video until one is
+                      released — blanks on existing rows are filled, a channel video
+                      carrying the same title is linked, and transcripts on disk are
+                      claimed by title. Never overwrites a value. No LLM calls.">Sync HeySummit</button>
     <span id="adv-busy" class="htmx-indicator muted">working…</span>
     <span id="adv-flash"></span>
   </div>
@@ -210,6 +220,22 @@
     </details>
   {% endif %}
 
+  {% if heysummit_candidates %}
+    <details open>
+      <summary><strong>{{ heysummit_candidates | length }}</strong> HeySummit talks that may already be a row</summary>
+      <p class="note-body">The title resembles a row's but does not match it, or
+         the speakers disagree. Seeding one would risk a second row for the same
+         talk in an append-only file, so these wait for a person: fix the row's
+         title or speaker and sync again, or leave the two apart if they really
+         are two talks.</p>
+      <ul class="strand">
+        {% for ours, theirs in heysummit_candidates %}
+          <li><span class="t">{{ ours }}</span><span class="muted">≈ {{ theirs }}</span></li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+
   {% if not orphans and not junk and not stranded and not ingested_shorts %}
     <p class="ok-line">Nothing stranded. Every transcript on disk belongs to a
        video on the channel.</p>
@@ -249,9 +275,10 @@
 
   {% if stranded %}
     <details>
-      <summary><strong>{{ stranded | length }}</strong> off-channel talks</summary>
-      <p class="note-body">In the repository but not on the channel — older
-         material, or a video since made private.</p>
+      <summary><strong>{{ stranded | length }}</strong> files on disk only</summary>
+      <p class="note-body">A transcript or extracted text that is neither a
+         channel video nor a metadata row — older material, or a video since
+         made private.</p>
       <ul class="strand">
         {% for s in stranded %}
           <li hx-get="{{ base }}/video/{{ s.key | urlencode }}"

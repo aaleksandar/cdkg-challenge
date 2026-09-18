@@ -99,29 +99,49 @@ def test_kuzu_config_honours_the_entities_json_override(monkeypatch, tmp_path):
     assert module.ENTITIES_JSON == tmp_path / "elsewhere.json"
 
 
+def test_kuzu_config_derives_the_metadata_csv_from_transcripts_dir(monkeypatch, tmp_path):
+    """The scripts are handed TRANSCRIPTS_DIR and find the CSV beside it by its
+    fixed name — which is what lets the integration sandbox point them at a
+    temporary tree, and what breaks the moment the filename or the derivation
+    changes."""
+    import importlib.util
+
+    monkeypatch.setenv("TRANSCRIPTS_DIR", str(tmp_path))
+    spec = importlib.util.spec_from_file_location(
+        "kuzu_config_under_test_2", config.KUZU_DIR / "config.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    assert module.METADATA_CSV == \
+        tmp_path / "Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
+
+
 def _tiny_graph(path):
     """A Kuzu database with one tagged talk and one untagged talk."""
     import kuzu
 
     conn = kuzu.Connection(kuzu.Database(str(path)))
-    conn.execute("CREATE NODE TABLE Talk(title STRING, PRIMARY KEY(title))")
+    conn.execute("CREATE NODE TABLE Talk(talk_id STRING, title STRING, PRIMARY KEY(talk_id))")
     conn.execute("CREATE NODE TABLE Tag(keyword STRING, PRIMARY KEY(keyword))")
     conn.execute("CREATE REL TABLE IS_DESCRIBED_BY(FROM Talk TO Tag)")
-    conn.execute("CREATE (:Talk {title: 'Tagged | A | E'})")
-    conn.execute("CREATE (:Talk {title: 'Bare | B | E'})")
+    conn.execute("CREATE (:Talk {talk_id: 't-tagged', title: 'Tagged | A | E'})")
+    conn.execute("CREATE (:Talk {talk_id: 't-bare', title: 'Bare | B | E'})")
     conn.execute("CREATE (:Tag {keyword: 'graphs'})")
     conn.execute(
-        "MATCH (t:Talk {title: 'Tagged | A | E'}), (g:Tag {keyword: 'graphs'}) "
+        "MATCH (t:Talk {talk_id: 't-tagged'}), (g:Tag {keyword: 'graphs'}) "
         "CREATE (t)-[:IS_DESCRIBED_BY]->(g)"
     )
     return path
 
 
 def test_talk_is_tagged_reads_the_content_layer(tmp_path):
+    """By id, not title: a seeded row keeps the CMS title while its video
+    carries YouTube's, and titles repeat across conferences anyway."""
     db = _tiny_graph(tmp_path / "g.kuzu")
-    assert graph.talk_is_tagged(db, "Tagged | A | E")
-    assert not graph.talk_is_tagged(db, "Bare | B | E")
-    assert not graph.talk_is_tagged(db, "Never heard of it")
+    assert graph.talk_is_tagged(db, "t-tagged")
+    assert not graph.talk_is_tagged(db, "t-bare")
+    assert not graph.talk_is_tagged(db, "t-never")
 
 
 def test_the_rebuild_stage_reports_a_talk_that_lost_its_tags(monkeypatch, tmp_path):
@@ -134,16 +154,16 @@ def test_the_rebuild_stage_reports_a_talk_that_lost_its_tags(monkeypatch, tmp_pa
     monkeypatch.setattr(graph, "rebuild_graph", lambda: stages.StageResult(True, "Rebuilt", {}))
 
     bare = ParsedTalk(talk_title="Bare", full_title="Bare | B | E")
-    result = stages.stage_graph_rebuild({"parsed": bare, "tags": ["graphs"]})
+    result = stages.stage_graph_rebuild({"parsed": bare, "talk_id": "t-bare", "tags": ["graphs"]})
     assert result.ok
     assert result.data["tagged"] is False
     assert "carries no tags" in result.message
 
     tagged = ParsedTalk(talk_title="Tagged", full_title="Tagged | A | E")
-    result = stages.stage_graph_rebuild({"parsed": tagged, "reused": True})
+    result = stages.stage_graph_rebuild({"parsed": tagged, "talk_id": "t-tagged", "reused": True})
     assert result.ok and result.data["tagged"] is True
     assert "carries no tags" not in result.message
 
     # A run that never reached tag extraction has nothing to check.
-    result = stages.stage_graph_rebuild({"parsed": bare})
+    result = stages.stage_graph_rebuild({"parsed": bare, "talk_id": "t-bare"})
     assert "tagged" not in result.data

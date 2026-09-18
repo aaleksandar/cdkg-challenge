@@ -1,0 +1,7500 @@
+1
+00:00:05,040 --> 00:00:09,840
+I guess let's just get started with the
+
+2
+00:00:06,720 --> 00:00:11,920
+panel. I'd like uh all the panelists to
+
+3
+00:00:09,840 --> 00:00:14,320
+introduce themselves, say what they
+
+4
+00:00:11,920 --> 00:00:17,760
+happen to be, what organization they um
+
+5
+00:00:14,320 --> 00:00:20,240
+are with and how their work relates to
+
+6
+00:00:17,760 --> 00:00:22,640
+uh data analytics or network science.
+
+7
+00:00:20,240 --> 00:00:23,279
+So, uh what Allison, you've got the mic.
+
+8
+00:00:22,640 --> 00:00:25,760
+Go for it.
+
+9
+00:00:23,279 --> 00:00:28,400
+>> Apparently, I have the mic, so I'm up. I
+
+10
+00:00:25,760 --> 00:00:31,760
+am Allison Coette. I am a developer
+
+11
+00:00:28,400 --> 00:00:36,440
+relations advocate at Neo4j and my
+
+12
+00:00:31,760 --> 00:00:36,440
+specialty is in graph data science.
+
+13
+00:00:36,880 --> 00:00:42,480
+>> Hi, I'm Arit. Uh I'm a senior lecturer
+
+14
+00:00:39,760 --> 00:00:45,680
+for strategy and complexity university
+
+15
+00:00:42,480 --> 00:00:48,000
+London and most of my work is on cities
+
+16
+00:00:45,680 --> 00:00:50,960
+and the future of cities and cities are
+
+17
+00:00:48,000 --> 00:00:53,360
+networks by definition. So that's kind
+
+18
+00:00:50,960 --> 00:00:56,640
+of what got me through the door.
+
+19
+00:00:53,360 --> 00:00:59,280
+>> Yeah, I'm Andre. I'm the CTO at
+
+20
+00:00:56,640 --> 00:01:01,199
+agodicc.ai. Uh, and our work is
+
+21
+00:00:59,280 --> 00:01:03,840
+essentially building world models for
+
+22
+00:01:01,199 --> 00:01:06,880
+organizations that entails essentially
+
+23
+00:01:03,840 --> 00:01:08,799
+creating like a magic twin of an
+
+24
+00:01:06,880 --> 00:01:10,560
+organization to understand what are the
+
+25
+00:01:08,799 --> 00:01:13,520
+best actions that they can take to
+
+26
+00:01:10,560 --> 00:01:15,920
+improve certain outcomes. And we do view
+
+27
+00:01:13,520 --> 00:01:18,320
+uh an organization as essentially like a
+
+28
+00:01:15,920 --> 00:01:23,159
+very big network uh with an underlying
+
+29
+00:01:18,320 --> 00:01:23,159
+graph as the as a primary data model.
+
+30
+00:01:24,720 --> 00:01:30,400
+Uh I'm
+
+31
+00:01:26,720 --> 00:01:35,520
+Wayong or just call me way. Um my
+
+32
+00:01:30,400 --> 00:01:37,520
+previous life I was a physicist and then
+
+33
+00:01:35,520 --> 00:01:41,040
+I start two companies. One called
+
+34
+00:01:37,520 --> 00:01:44,799
+kinetic arts uh focus on bringing
+
+35
+00:01:41,040 --> 00:01:48,000
+science, technology, data into dance
+
+36
+00:01:44,799 --> 00:01:49,680
+performances. We host weekly labs where
+
+37
+00:01:48,000 --> 00:01:52,640
+people come together, experiment on
+
+38
+00:01:49,680 --> 00:01:55,119
+things. Uh the idea is if you have
+
+39
+00:01:52,640 --> 00:01:57,759
+something working it's probably not does
+
+40
+00:01:55,119 --> 00:02:00,640
+not belong here. If it's not working yes
+
+41
+00:01:57,759 --> 00:02:04,159
+let's get let's play with it. Uh the
+
+42
+00:02:00,640 --> 00:02:06,320
+other side is founded kavis is focus on
+
+43
+00:02:04,159 --> 00:02:09,520
+uh that that's the other way around.
+
+44
+00:02:06,320 --> 00:02:12,000
+Let's bring art and uh how human
+
+45
+00:02:09,520 --> 00:02:15,040
+perceive the information into data
+
+46
+00:02:12,000 --> 00:02:18,879
+visualization and solving um some
+
+47
+00:02:15,040 --> 00:02:22,000
+practical problems and uh found out the
+
+48
+00:02:18,879 --> 00:02:24,319
+graph is really interesting and very
+
+49
+00:02:22,000 --> 00:02:26,640
+very practical very helpful. So that's
+
+50
+00:02:24,319 --> 00:02:29,040
+how we started using graph and getting
+
+51
+00:02:26,640 --> 00:02:31,120
+deep into the graph. Today we offer a
+
+52
+00:02:29,040 --> 00:02:34,000
+lot of graph solutions but a lot of this
+
+53
+00:02:31,120 --> 00:02:36,400
+focus on visual uh visualizations and
+
+54
+00:02:34,000 --> 00:02:37,760
+visual transformation of the graph data.
+
+55
+00:02:36,400 --> 00:02:39,760
+Thank you.
+
+56
+00:02:37,760 --> 00:02:43,360
+So I'm going to ask a question out of
+
+57
+00:02:39,760 --> 00:02:45,200
+order here. Uh that uh I've noticed this
+
+58
+00:02:43,360 --> 00:02:47,440
+and actually while I know your
+
+59
+00:02:45,200 --> 00:02:49,440
+background also has a lot of physics in
+
+60
+00:02:47,440 --> 00:02:52,400
+it, but I've noticed in both network
+
+61
+00:02:49,440 --> 00:02:54,720
+science and in the graph uh analytics or
+
+62
+00:02:52,400 --> 00:02:58,400
+more advanced graph space, there's a lot
+
+63
+00:02:54,720 --> 00:03:00,319
+of people with physics backgrounds.
+
+64
+00:02:58,400 --> 00:03:01,200
+What gives? Why is that? I mean, I love
+
+65
+00:03:00,319 --> 00:03:03,440
+both spaces,
+
+66
+00:03:01,200 --> 00:03:05,120
+>> but but it just seems like an unusual,
+
+67
+00:03:03,440 --> 00:03:07,120
+you know, cross uh cross pattern. What
+
+68
+00:03:05,120 --> 00:03:07,760
+do you what do you guys think? You
+
+69
+00:03:07,120 --> 00:03:08,640
+>> want to go ahead?
+
+70
+00:03:07,760 --> 00:03:11,519
+>> Yeah.
+
+71
+00:03:08,640 --> 00:03:13,200
+>> So, yeah. So, in physics, um I was
+
+72
+00:03:11,519 --> 00:03:16,159
+working on things that were in the
+
+73
+00:03:13,200 --> 00:03:20,000
+adjacency of statistical physics applied
+
+74
+00:03:16,159 --> 00:03:22,239
+to both condensed matter, which is
+
+75
+00:03:20,000 --> 00:03:25,440
+basically understanding like okay, if I
+
+76
+00:03:22,239 --> 00:03:27,760
+put a lot of a lot of particles in this
+
+77
+00:03:25,440 --> 00:03:29,440
+box, what's going to happen to them? And
+
+78
+00:03:27,760 --> 00:03:31,120
+also to high energy physics, for
+
+79
+00:03:29,440 --> 00:03:34,080
+instance, what happens when a black for
+
+80
+00:03:31,120 --> 00:03:36,159
+a black hole is formed? uh so one thing
+
+81
+00:03:34,080 --> 00:03:38,560
+that generally happens in physics is
+
+82
+00:03:36,159 --> 00:03:40,799
+that uh look there is one way of
+
+83
+00:03:38,560 --> 00:03:43,200
+understanding a system which is let's
+
+84
+00:03:40,799 --> 00:03:46,319
+say like an ensemble right so I have all
+
+85
+00:03:43,200 --> 00:03:48,080
+the air in the room I don't need to care
+
+86
+00:03:46,319 --> 00:03:50,159
+about what each particle is doing I
+
+87
+00:03:48,080 --> 00:03:52,480
+don't need to care about the network
+
+88
+00:03:50,159 --> 00:03:55,680
+because I know that it all sort of
+
+89
+00:03:52,480 --> 00:03:57,200
+averages out so the chances that all the
+
+90
+00:03:55,680 --> 00:04:00,159
+gas in the room are going to go to the
+
+91
+00:03:57,200 --> 00:04:05,920
+corner and suffocate me to death in here
+
+92
+00:04:00,159 --> 00:04:07,680
+are essentially zero uh but not zero. Uh
+
+93
+00:04:05,920 --> 00:04:10,159
+which is what happens when systems they
+
+94
+00:04:07,680 --> 00:04:11,920
+get complex, right? Which is why the the
+
+95
+00:04:10,159 --> 00:04:14,560
+study of complexity is so interesting
+
+96
+00:04:11,920 --> 00:04:17,840
+because if the dynamics they're
+
+97
+00:04:14,560 --> 00:04:20,000
+complicated, then you can no longer go
+
+98
+00:04:17,840 --> 00:04:21,600
+on this assumption that you can just
+
+99
+00:04:20,000 --> 00:04:23,840
+average out everything, right? There's
+
+100
+00:04:21,600 --> 00:04:26,160
+no such thing as the average person in
+
+101
+00:04:23,840 --> 00:04:28,400
+the room or the average commute in a
+
+102
+00:04:26,160 --> 00:04:31,040
+system. So you actually need to go deep
+
+103
+00:04:28,400 --> 00:04:32,960
+into the system to understand okay what
+
+104
+00:04:31,040 --> 00:04:34,320
+are the intricacies of all of the
+
+105
+00:04:32,960 --> 00:04:37,040
+different couplings between the
+
+106
+00:04:34,320 --> 00:04:39,360
+different elements in there in order to
+
+107
+00:04:37,040 --> 00:04:41,199
+actually simulate and study what are the
+
+108
+00:04:39,360 --> 00:04:44,800
+non-trivial
+
+109
+00:04:41,199 --> 00:04:48,000
+uh dynamics that will arrive from there
+
+110
+00:04:44,800 --> 00:04:49,759
+right so and often times you actually
+
+111
+00:04:48,000 --> 00:04:51,600
+need to think in terms of networks you
+
+112
+00:04:49,759 --> 00:04:54,639
+need to think in terms of graphs because
+
+113
+00:04:51,600 --> 00:04:57,440
+it is the best way to model uh the the
+
+114
+00:04:54,639 --> 00:04:59,280
+the agency of each one of the the
+
+115
+00:04:57,440 --> 00:05:00,000
+elements of of the system.
+
+116
+00:04:59,280 --> 00:05:02,400
+>> Yeah.
+
+117
+00:05:00,000 --> 00:05:04,160
+>> I'm kind of curious or um in the city
+
+118
+00:05:02,400 --> 00:05:05,759
+space in the network science and city
+
+119
+00:05:04,160 --> 00:05:08,080
+space do you also find a lot of
+
+120
+00:05:05,759 --> 00:05:10,479
+crossover from physics or is this more
+
+121
+00:05:08,080 --> 00:05:12,080
+kind of in the computer science network
+
+122
+00:05:10,479 --> 00:05:15,520
+science space that we see this?
+
+123
+00:05:12,080 --> 00:05:18,160
+>> No, it is absolutely I mean by essence
+
+124
+00:05:15,520 --> 00:05:20,720
+it is interdisciplinary.
+
+125
+00:05:18,160 --> 00:05:22,560
+Um so a city is a physical space to
+
+126
+00:05:20,720 --> 00:05:25,039
+begin with right? So the movement within
+
+127
+00:05:22,560 --> 00:05:28,240
+that space is really really important.
+
+128
+00:05:25,039 --> 00:05:31,039
+uh but then how do you pull together
+
+129
+00:05:28,240 --> 00:05:33,199
+physical elements and psychological and
+
+130
+00:05:31,039 --> 00:05:37,280
+cultural and technological and economic
+
+131
+00:05:33,199 --> 00:05:39,919
+and political and for me this is the
+
+132
+00:05:37,280 --> 00:05:42,800
+magic of it. So really starting with the
+
+133
+00:05:39,919 --> 00:05:45,039
+observation of of almost like problem
+
+134
+00:05:42,800 --> 00:05:47,199
+solving. So this is a state of the
+
+135
+00:05:45,039 --> 00:05:50,400
+system. So we look at it at the system
+
+136
+00:05:47,199 --> 00:05:52,000
+level but we want to change it. We want
+
+137
+00:05:50,400 --> 00:05:54,080
+to move the air from one place to
+
+138
+00:05:52,000 --> 00:05:56,720
+another. So how do you start doing that
+
+139
+00:05:54,080 --> 00:05:59,520
+and how do you make sense of the system
+
+140
+00:05:56,720 --> 00:06:01,919
+is always what is driving me in that
+
+141
+00:05:59,520 --> 00:06:04,080
+sense and and you need that input from
+
+142
+00:06:01,919 --> 00:06:05,280
+everyone which is you know why it's
+
+143
+00:06:04,080 --> 00:06:07,199
+fascinating.
+
+144
+00:06:05,280 --> 00:06:10,000
+>> I I love that we're we're like getting
+
+145
+00:06:07,199 --> 00:06:11,840
+super geeky really fast. Um we do you
+
+146
+00:06:10,000 --> 00:06:15,120
+have some more uh geek for us?
+
+147
+00:06:11,840 --> 00:06:16,720
+>> Yeah just couple points my own
+
+148
+00:06:15,120 --> 00:06:18,479
+experience.
+
+149
+00:06:16,720 --> 00:06:22,639
+Um,
+
+150
+00:06:18,479 --> 00:06:25,199
+one physics training trains you to model
+
+151
+00:06:22,639 --> 00:06:27,840
+everything. It's like you you have this
+
+152
+00:06:25,199 --> 00:06:31,039
+hammer a magic hammer
+
+153
+00:06:27,840 --> 00:06:32,720
+of hammering things to model things.
+
+154
+00:06:31,039 --> 00:06:34,400
+You're trying to simplify things like
+
+155
+00:06:32,720 --> 00:06:36,720
+the simplest way you can describe
+
+156
+00:06:34,400 --> 00:06:38,800
+something usually it's the right way.
+
+157
+00:06:36,720 --> 00:06:41,600
+That's what people wants to believe. So
+
+158
+00:06:38,800 --> 00:06:42,880
+we have this bad habit or good habit of
+
+159
+00:06:41,600 --> 00:06:44,880
+trying to model everything. That's
+
+160
+00:06:42,880 --> 00:06:46,400
+number one. Number two, I happen to be
+
+161
+00:06:44,880 --> 00:06:50,000
+in the same field, condensed matter
+
+162
+00:06:46,400 --> 00:06:53,039
+field, work on the quantum dots. And a
+
+163
+00:06:50,000 --> 00:06:54,720
+lesson I learned is, you know, when you
+
+164
+00:06:53,039 --> 00:06:58,800
+grow up, you learn everything,
+
+165
+00:06:54,720 --> 00:07:01,039
+everything seems to be so clear. So um
+
+166
+00:06:58,800 --> 00:07:03,520
+solid foundation like it's beautiful
+
+167
+00:07:01,039 --> 00:07:05,520
+palace and then you go to condensed
+
+168
+00:07:03,520 --> 00:07:08,400
+matter you realize it's dirty it's
+
+169
+00:07:05,520 --> 00:07:10,800
+madness it's nothing is solid everything
+
+170
+00:07:08,400 --> 00:07:12,000
+is like fuzzy and you're trying to
+
+171
+00:07:10,800 --> 00:07:15,680
+figure out something that you can
+
+172
+00:07:12,000 --> 00:07:18,160
+actually hold on to and um that
+
+173
+00:07:15,680 --> 00:07:20,479
+experience uh really echoes when I work
+
+174
+00:07:18,160 --> 00:07:23,440
+with the data with the with the graph
+
+175
+00:07:20,479 --> 00:07:27,199
+data it's like there's part that you
+
+176
+00:07:23,440 --> 00:07:29,360
+think it's it's clear it's um um it's
+
+177
+00:07:27,199 --> 00:07:31,039
+solid but then when you get into it get
+
+178
+00:07:29,360 --> 00:07:34,400
+deeper into it you realize a lot of
+
+179
+00:07:31,039 --> 00:07:38,080
+things is really not as clear as it is.
+
+180
+00:07:34,400 --> 00:07:41,680
+So that's just my experience thing.
+
+181
+00:07:38,080 --> 00:07:42,800
+>> So if we um maybe maybe uh Allison this
+
+182
+00:07:41,680 --> 00:07:44,400
+might be a question that that you might
+
+183
+00:07:42,800 --> 00:07:46,319
+want to jump in. How should we think
+
+184
+00:07:44,400 --> 00:07:49,680
+about the difference between network
+
+185
+00:07:46,319 --> 00:07:51,840
+science uh graph theory and graph
+
+186
+00:07:49,680 --> 00:07:54,879
+technology?
+
+187
+00:07:51,840 --> 00:07:56,319
+It's a I I think the key for me
+
+188
+00:07:54,879 --> 00:08:00,160
+obviously I come from the graph
+
+189
+00:07:56,319 --> 00:08:02,560
+technology side. Uh I think the more we
+
+190
+00:08:00,160 --> 00:08:05,360
+spend time together the better. Honestly
+
+191
+00:08:02,560 --> 00:08:07,520
+I I think sometimes the way it's viewed
+
+192
+00:08:05,360 --> 00:08:10,400
+is that the graph technology side is
+
+193
+00:08:07,520 --> 00:08:13,199
+over overly simplified. And in some ways
+
+194
+00:08:10,400 --> 00:08:15,039
+that's true. If we look at what's
+
+195
+00:08:13,199 --> 00:08:16,639
+possible in exploring a graph like
+
+196
+00:08:15,039 --> 00:08:19,759
+you're mentioning with cities and like
+
+197
+00:08:16,639 --> 00:08:21,680
+true complex systems approaches um I
+
+198
+00:08:19,759 --> 00:08:25,199
+think there's a lot more that can be
+
+199
+00:08:21,680 --> 00:08:27,599
+done in our commercial space to bring
+
+200
+00:08:25,199 --> 00:08:29,039
+that thinking to the enterprise right
+
+201
+00:08:27,599 --> 00:08:31,280
+obviously this is what you folks are
+
+202
+00:08:29,039 --> 00:08:33,760
+doing right now um and I definitely
+
+203
+00:08:31,280 --> 00:08:36,719
+think there's a call for that and you
+
+204
+00:08:33,760 --> 00:08:38,399
+know for me
+
+205
+00:08:36,719 --> 00:08:39,919
+you know let's be honest most of the
+
+206
+00:08:38,399 --> 00:08:41,680
+graph algorithms that people are running
+
+207
+00:08:39,919 --> 00:08:44,240
+right now are pretty simple and pretty
+
+208
+00:08:41,680 --> 00:08:47,680
+straightforward. And I don't think that
+
+209
+00:08:44,240 --> 00:08:49,440
+it's because there's a I I think it's
+
+210
+00:08:47,680 --> 00:08:52,320
+just a matter of evolution and a matter
+
+211
+00:08:49,440 --> 00:08:54,880
+of timing because we're starting to move
+
+212
+00:08:52,320 --> 00:08:58,160
+from being data driven to being system
+
+213
+00:08:54,880 --> 00:09:01,440
+driven and it's just taking folks a
+
+214
+00:08:58,160 --> 00:09:04,800
+little bit of time to really get there.
+
+215
+00:09:01,440 --> 00:09:07,440
+So, so sorry. Uh, Orura, uh, as a
+
+216
+00:09:04,800 --> 00:09:09,200
+network and a practicing network
+
+217
+00:09:07,440 --> 00:09:10,480
+scientist, how do you view the
+
+218
+00:09:09,200 --> 00:09:12,640
+difference in and what do you think
+
+219
+00:09:10,480 --> 00:09:14,880
+about what Allison had to say?
+
+220
+00:09:12,640 --> 00:09:17,920
+>> I think it really is and and going back
+
+221
+00:09:14,880 --> 00:09:20,720
+to what we said as well, the magic is in
+
+222
+00:09:17,920 --> 00:09:22,640
+the messiness. Um, and the real
+
+223
+00:09:20,720 --> 00:09:24,160
+challenge is how do you capture that
+
+224
+00:09:22,640 --> 00:09:27,279
+messiness?
+
+225
+00:09:24,160 --> 00:09:29,360
+And from my experience, it's it's always
+
+226
+00:09:27,279 --> 00:09:33,839
+been really really difficult. and and
+
+227
+00:09:29,360 --> 00:09:36,560
+and with you know a lot of failure. Um
+
+228
+00:09:33,839 --> 00:09:39,839
+and it drives a lot of work actually
+
+229
+00:09:36,560 --> 00:09:43,279
+towards the more abstract and conceptual
+
+230
+00:09:39,839 --> 00:09:45,920
+and qualitative side of things. And I
+
+231
+00:09:43,279 --> 00:09:47,839
+think that trying to figure out how you
+
+232
+00:09:45,920 --> 00:09:50,160
+can actually capture the messiness
+
+233
+00:09:47,839 --> 00:09:52,880
+without reducing it
+
+234
+00:09:50,160 --> 00:09:54,560
+>> is is the real challenge. And this is
+
+235
+00:09:52,880 --> 00:09:55,839
+why I'm here to learn how you can
+
+236
+00:09:54,560 --> 00:09:58,080
+actually do that.
+
+237
+00:09:55,839 --> 00:10:00,080
+>> Okay. that I like that the the magic is
+
+238
+00:09:58,080 --> 00:10:02,800
+in the messiness. Maybe that's a a
+
+239
+00:10:00,080 --> 00:10:05,360
+wonderful that is a great t-shirt, too.
+
+240
+00:10:02,800 --> 00:10:07,120
+But as uh computer scientists or and and
+
+241
+00:10:05,360 --> 00:10:10,160
+some of us um you know trying to make a
+
+242
+00:10:07,120 --> 00:10:12,320
+living in the technology space um we
+
+243
+00:10:10,160 --> 00:10:13,839
+tend to hate messiness like it messes
+
+244
+00:10:12,320 --> 00:10:15,920
+with our models. It messes with our
+
+245
+00:10:13,839 --> 00:10:19,519
+predictions. It but it is where the
+
+246
+00:10:15,920 --> 00:10:20,800
+magic is. So how you know how how do you
+
+247
+00:10:19,519 --> 00:10:22,240
+you know try to deal with that? I'm
+
+248
+00:10:20,800 --> 00:10:23,600
+going to throw that at you. Yeah,
+
+249
+00:10:22,240 --> 00:10:25,600
+actually that was a perfect question
+
+250
+00:10:23,600 --> 00:10:28,880
+because echo exactly what I had what I
+
+251
+00:10:25,600 --> 00:10:30,640
+had in mind which is like okay uh
+
+252
+00:10:28,880 --> 00:10:33,279
+because I'm a physicist and because you
+
+253
+00:10:30,640 --> 00:10:35,279
+open that can of worms I have to go back
+
+254
+00:10:33,279 --> 00:10:39,760
+in there right which is the following
+
+255
+00:10:35,279 --> 00:10:41,519
+look if I'm modeling uh an airplane uh
+
+256
+00:10:39,760 --> 00:10:45,120
+or even something simple as let's say
+
+257
+00:10:41,519 --> 00:10:48,240
+the the like the sound waves on that
+
+258
+00:10:45,120 --> 00:10:50,880
+table I don't need to understand like
+
+259
+00:10:48,240 --> 00:10:53,360
+the deep fundamental truth about the
+
+260
+00:10:50,880 --> 00:10:55,200
+universe and everything. I just need to
+
+261
+00:10:53,360 --> 00:10:57,519
+know like basic Newtonian physics,
+
+262
+00:10:55,200 --> 00:11:00,399
+right? So all that messiness gets
+
+263
+00:10:57,519 --> 00:11:03,360
+encapsulated into a certain degrees of
+
+264
+00:11:00,399 --> 00:11:06,240
+freedom that actively represent the
+
+265
+00:11:03,360 --> 00:11:10,000
+system for all intents and purposes
+
+266
+00:11:06,240 --> 00:11:12,320
+almost perfectly. Right? So uh that uh
+
+267
+00:11:10,000 --> 00:11:13,920
+that element of course graining allows
+
+268
+00:11:12,320 --> 00:11:16,240
+us to actually capture what is
+
+269
+00:11:13,920 --> 00:11:18,320
+essential. So for me it's always about
+
+270
+00:11:16,240 --> 00:11:20,160
+okay what is essential about that system
+
+271
+00:11:18,320 --> 00:11:21,600
+that needs to be modeled and then going
+
+272
+00:11:20,160 --> 00:11:23,200
+back to the point below about the
+
+273
+00:11:21,600 --> 00:11:25,519
+connection between the network science
+
+274
+00:11:23,200 --> 00:11:27,440
+and the graph like I I I don't know
+
+275
+00:11:25,519 --> 00:11:30,640
+because to be fair I'm new to the whole
+
+276
+00:11:27,440 --> 00:11:32,160
+like knowledge graph uh world but it
+
+277
+00:11:30,640 --> 00:11:33,920
+seems to me that there is a point of
+
+278
+00:11:32,160 --> 00:11:36,240
+course graining right which is if I want
+
+279
+00:11:33,920 --> 00:11:37,839
+to go deep deep deep there is nothing
+
+280
+00:11:36,240 --> 00:11:39,920
+more fundamental than let's say an
+
+281
+00:11:37,839 --> 00:11:41,680
+agent-based model where I'm modeling
+
+282
+00:11:39,920 --> 00:11:44,000
+each person's intentions and
+
+283
+00:11:41,680 --> 00:11:46,160
+interactions with the environment as an
+
+284
+00:11:44,000 --> 00:11:48,320
+individual element that's incredibly
+
+285
+00:11:46,160 --> 00:11:50,560
+messy. That's a network. That that's
+
+286
+00:11:48,320 --> 00:11:52,240
+what it is. But at the same time, maybe
+
+287
+00:11:50,560 --> 00:11:53,920
+if I'm smart enough, I'm going to
+
+288
+00:11:52,240 --> 00:11:55,920
+understand there are certain attributes
+
+289
+00:11:53,920 --> 00:11:59,519
+to each one of these elements in my
+
+290
+00:11:55,920 --> 00:12:01,600
+network that are interacting nicely with
+
+291
+00:11:59,519 --> 00:12:06,000
+the environment that these patterns are
+
+292
+00:12:01,600 --> 00:12:07,600
+picked up. Right? If I live here and I
+
+293
+00:12:06,000 --> 00:12:10,800
+work in finance, that means that I need
+
+294
+00:12:07,600 --> 00:12:14,240
+to take the Jubilee line all the way to
+
+295
+00:12:10,800 --> 00:12:17,200
+Canary Warf. Right? So that creates a
+
+296
+00:12:14,240 --> 00:12:20,480
+very stable
+
+297
+00:12:17,200 --> 00:12:22,959
+edge in my high level description of the
+
+298
+00:12:20,480 --> 00:12:24,800
+system which is finance people take the
+
+299
+00:12:22,959 --> 00:12:26,880
+jubilee line to Canary Warf which
+
+300
+00:12:24,800 --> 00:12:29,839
+actually allows me to understand maybe
+
+301
+00:12:26,880 --> 00:12:31,440
+not perfectly but at least it's a it's a
+
+302
+00:12:29,839 --> 00:12:33,279
+almost like a symmetry of the system
+
+303
+00:12:31,440 --> 00:12:35,360
+right it's something that's fundamental
+
+304
+00:12:33,279 --> 00:12:37,200
+and and there are different levels to
+
+305
+00:12:35,360 --> 00:12:38,959
+that right which is maybe I'm going to
+
+306
+00:12:37,200 --> 00:12:40,560
+end up with a huge knowledge graph that
+
+307
+00:12:38,959 --> 00:12:41,760
+tells me all of the professions and all
+
+308
+00:12:40,560 --> 00:12:43,279
+of the destinations
+
+309
+00:12:41,760 --> 00:12:44,800
+But maybe I'm only interested in that
+
+310
+00:12:43,279 --> 00:12:47,760
+one thing. So how can I actually
+
+311
+00:12:44,800 --> 00:12:49,360
+simplify further that graph and I think
+
+312
+00:12:47,760 --> 00:12:51,120
+this is where the connection lies right
+
+313
+00:12:49,360 --> 00:12:54,720
+between network science which is very
+
+314
+00:12:51,120 --> 00:12:58,399
+much down to the barebones to graph
+
+315
+00:12:54,720 --> 00:13:00,079
+theory which is still complex but at
+
+316
+00:12:58,399 --> 00:13:02,240
+least it's representing something that's
+
+317
+00:13:00,079 --> 00:13:03,920
+stable about the system to you know
+
+318
+00:13:02,240 --> 00:13:06,639
+basic data science tableabler right
+
+319
+00:13:03,920 --> 00:13:08,880
+which is even more course grade.
+
+320
+00:13:06,639 --> 00:13:10,639
+So, so, uh, I want to hear from wei on
+
+321
+00:13:08,880 --> 00:13:13,040
+this because, uh, you said something
+
+322
+00:13:10,639 --> 00:13:15,120
+about the the coarse grain concept and
+
+323
+00:13:13,040 --> 00:13:17,760
+I've heard U wei speak about
+
+324
+00:13:15,120 --> 00:13:20,000
+abstractions and how to compute, how to
+
+325
+00:13:17,760 --> 00:13:22,000
+communicate the essence of something and
+
+326
+00:13:20,000 --> 00:13:23,760
+the need for information hierarchy and
+
+327
+00:13:22,000 --> 00:13:25,200
+and analytics hierarchy. So, I think
+
+328
+00:13:23,760 --> 00:13:25,600
+there's there's some interesting points
+
+329
+00:13:25,200 --> 00:13:28,320
+there.
+
+330
+00:13:25,600 --> 00:13:32,639
+>> Yeah, that's very interesting.
+
+331
+00:13:28,320 --> 00:13:37,920
+Uh I have to be very honest like and I
+
+332
+00:13:32,639 --> 00:13:39,760
+was googling or we chatting what's no
+
+333
+00:13:37,920 --> 00:13:41,200
+chibing
+
+334
+00:13:39,760 --> 00:13:43,360
+what's the difference between network
+
+335
+00:13:41,200 --> 00:13:43,839
+science and the graph theory this
+
+336
+00:13:43,360 --> 00:13:47,600
+morning
+
+337
+00:13:43,839 --> 00:13:50,240
+>> oh what did it say I um it's still not
+
+338
+00:13:47,600 --> 00:13:53,200
+very clear to me I think it's a like you
+
+339
+00:13:50,240 --> 00:13:55,440
+said it's it's a two side of single coin
+
+340
+00:13:53,200 --> 00:14:01,920
+um I and the difference never occurred
+
+341
+00:13:55,440 --> 00:14:06,320
+to me that uh what Um but one thing um I
+
+342
+00:14:01,920 --> 00:14:07,839
+my own experience is uh
+
+343
+00:14:06,320 --> 00:14:10,720
+it's just like you're modeling things
+
+344
+00:14:07,839 --> 00:14:13,600
+the modeling things depends on what
+
+345
+00:14:10,720 --> 00:14:15,760
+exactly you're modeling first and with
+
+346
+00:14:13,600 --> 00:14:19,519
+the graph I realized this is my own
+
+347
+00:14:15,760 --> 00:14:22,800
+experience okay so graph is one
+
+348
+00:14:19,519 --> 00:14:25,120
+projection of the data like the data can
+
+349
+00:14:22,800 --> 00:14:27,120
+be projection as a dimensional data can
+
+350
+00:14:25,120 --> 00:14:29,600
+be projection into the graph
+
+351
+00:14:27,120 --> 00:14:32,160
+how you project into the graph. Uh you
+
+352
+00:14:29,600 --> 00:14:34,880
+have a choice like that's exactly how
+
+353
+00:14:32,160 --> 00:14:36,639
+the graph is formed and uh the same data
+
+354
+00:14:34,880 --> 00:14:41,600
+set can be projecting to many different
+
+355
+00:14:36,639 --> 00:14:44,800
+kind of graph and so u my uh personal
+
+356
+00:14:41,600 --> 00:14:47,920
+experience is like uh it's like the
+
+357
+00:14:44,800 --> 00:14:51,519
+messiness here. It's there's a lot work
+
+358
+00:14:47,920 --> 00:14:54,160
+into how do you figure out what exactly
+
+359
+00:14:51,519 --> 00:14:57,120
+you want to represent in the graph. I'm
+
+360
+00:14:54,160 --> 00:14:58,720
+not sure if I answered the question, but
+
+361
+00:14:57,120 --> 00:15:00,160
+>> I think it's a it's good insight though
+
+362
+00:14:58,720 --> 00:15:02,800
+is is you know understanding the
+
+363
+00:15:00,160 --> 00:15:04,959
+hierarchy and the coarse grace what to
+
+364
+00:15:02,800 --> 00:15:06,399
+course grain depends on what you're
+
+365
+00:15:04,959 --> 00:15:08,240
+trying to what questions you're trying
+
+366
+00:15:06,399 --> 00:15:10,959
+to answer and and what you're trying to
+
+367
+00:15:08,240 --> 00:15:13,680
+model. Um that kind of you know makes me
+
+368
+00:15:10,959 --> 00:15:15,519
+think that we jumped into some detail.
+
+369
+00:15:13,680 --> 00:15:17,600
+Um but I' I'd actually like to talk a
+
+370
+00:15:15,519 --> 00:15:21,680
+little bit about um the networks
+
+371
+00:15:17,600 --> 00:15:22,959
+themselves and what they tell us. So one
+
+372
+00:15:21,680 --> 00:15:25,040
+of the things I've noticed the last few
+
+373
+00:15:22,959 --> 00:15:28,160
+days um we have a lot of knowledge graph
+
+374
+00:15:25,040 --> 00:15:30,959
+professionals here that are trying to
+
+375
+00:15:28,160 --> 00:15:32,560
+you know abstract or or contain um
+
+376
+00:15:30,959 --> 00:15:34,320
+domain specific knowledge so they can
+
+377
+00:15:32,560 --> 00:15:36,959
+then query it so they can ask it
+
+378
+00:15:34,320 --> 00:15:39,360
+something but one of the magics of
+
+379
+00:15:36,959 --> 00:15:41,519
+networks I I believe is they tell us
+
+380
+00:15:39,360 --> 00:15:43,360
+things that we're not looking for. Uh,
+
+381
+00:15:41,519 --> 00:15:44,959
+and so I was wondering if each of you
+
+382
+00:15:43,360 --> 00:15:48,639
+maybe could could talk a little bit
+
+383
+00:15:44,959 --> 00:15:51,759
+about um either the the typical networks
+
+384
+00:15:48,639 --> 00:15:54,240
+you tend to work with and uh if there
+
+385
+00:15:51,759 --> 00:15:56,880
+are common ways that they function or
+
+386
+00:15:54,240 --> 00:15:59,120
+operate um that that they're actually
+
+387
+00:15:56,880 --> 00:16:01,360
+communicating to us if we're actually
+
+388
+00:15:59,120 --> 00:16:02,560
+listening. So um way you've got the mic
+
+389
+00:16:01,360 --> 00:16:03,600
+if you want to you want to go ahead and
+
+390
+00:16:02,560 --> 00:16:08,240
+start go for it.
+
+391
+00:16:03,600 --> 00:16:10,399
+>> Yeah. I I I there's a two side of it. Um
+
+392
+00:16:08,240 --> 00:16:14,079
+there's um there's a beauty side of it
+
+393
+00:16:10,399 --> 00:16:16,240
+and there's a utility side of it. Um so
+
+394
+00:16:14,079 --> 00:16:19,040
+like when we listen to music uh when we
+
+395
+00:16:16,240 --> 00:16:20,880
+watch a dance performance it's it's not
+
+396
+00:16:19,040 --> 00:16:22,720
+something we can describe especially
+
+397
+00:16:20,880 --> 00:16:25,920
+watch a dance performance it can be so
+
+398
+00:16:22,720 --> 00:16:28,480
+abstract and uh you just feel something
+
+399
+00:16:25,920 --> 00:16:30,480
+but you can't really describe it. uh I
+
+400
+00:16:28,480 --> 00:16:32,880
+found that with the especially with the
+
+401
+00:16:30,480 --> 00:16:36,079
+graph data visualization there's a lot
+
+402
+00:16:32,880 --> 00:16:37,759
+of it is in you getting you you you see
+
+403
+00:16:36,079 --> 00:16:40,160
+something happening you see a very
+
+404
+00:16:37,759 --> 00:16:42,800
+distinctive qu uh qualities like for
+
+405
+00:16:40,160 --> 00:16:44,079
+example we we did a study of uh uh how
+
+406
+00:16:42,800 --> 00:16:47,040
+people collaborate in the different
+
+407
+00:16:44,079 --> 00:16:48,720
+industries and once you you look at the
+
+408
+00:16:47,040 --> 00:16:51,199
+data there's no way you can tell
+
+409
+00:16:48,720 --> 00:16:53,279
+anything but once you present them as a
+
+410
+00:16:51,199 --> 00:16:55,839
+graph you suddenly realize there's a
+
+411
+00:16:53,279 --> 00:16:57,279
+very distinctive qualities in the how
+
+412
+00:16:55,839 --> 00:16:58,480
+people communicate in the different
+
+413
+00:16:57,279 --> 00:17:00,560
+industry
+
+414
+00:16:58,480 --> 00:17:02,880
+But then you can find the design some
+
+415
+00:17:00,560 --> 00:17:05,199
+matrix to capture it. But then the first
+
+416
+00:17:02,880 --> 00:17:08,160
+step of like this is the match of a
+
+417
+00:17:05,199 --> 00:17:10,079
+graph that you can actually feel just
+
+418
+00:17:08,160 --> 00:17:11,600
+like watch a dance like a two dancers
+
+419
+00:17:10,079 --> 00:17:13,520
+you feel they're very distinctive
+
+420
+00:17:11,600 --> 00:17:16,000
+qualities and then you can trying to
+
+421
+00:17:13,520 --> 00:17:18,240
+figure out the other side is like when
+
+422
+00:17:16,000 --> 00:17:22,720
+you go to the small like you were trying
+
+423
+00:17:18,240 --> 00:17:26,079
+to quantify uh some like specific uh
+
+424
+00:17:22,720 --> 00:17:28,240
+elements in that things I felt like it's
+
+425
+00:17:26,079 --> 00:17:30,960
+more traditional data science work like
+
+426
+00:17:28,240 --> 00:17:33,360
+uh the working at the detailed designing
+
+427
+00:17:30,960 --> 00:17:36,559
+formulas to to ma to measure it to
+
+428
+00:17:33,360 --> 00:17:38,880
+quantify it. So that's my experience.
+
+429
+00:17:36,559 --> 00:17:40,799
+>> I actually or um to kind of go like on
+
+430
+00:17:38,880 --> 00:17:43,280
+the exact like almost the other end of
+
+431
+00:17:40,799 --> 00:17:45,360
+the spectrum I would imagine and maybe
+
+432
+00:17:43,280 --> 00:17:47,039
+this is a misconception that a lot of
+
+433
+00:17:45,360 --> 00:17:48,960
+times you're you're looking at a network
+
+434
+00:17:47,039 --> 00:17:50,640
+or analyzing network and you don't know
+
+435
+00:17:48,960 --> 00:17:52,720
+what you're looking for like you're
+
+436
+00:17:50,640 --> 00:17:54,799
+you're trying to get it to speak to you.
+
+437
+00:17:52,720 --> 00:17:55,600
+Is that the case? And and what's if so
+
+438
+00:17:54,799 --> 00:17:58,160
+what's that like?
+
+439
+00:17:55,600 --> 00:18:01,200
+>> So I'm looking at things at two levels.
+
+440
+00:17:58,160 --> 00:18:03,280
+One is democra where I'm looking at
+
+441
+00:18:01,200 --> 00:18:06,799
+different patterns. So there could be
+
+442
+00:18:03,280 --> 00:18:09,440
+shifts in culture and how people shop or
+
+443
+00:18:06,799 --> 00:18:11,919
+how people move and what people actually
+
+444
+00:18:09,440 --> 00:18:15,120
+like to do and it might be economic
+
+445
+00:18:11,919 --> 00:18:18,480
+trends uh and you know it might be new
+
+446
+00:18:15,120 --> 00:18:20,240
+technologies that are being
+
+447
+00:18:18,480 --> 00:18:22,880
+in introduced into the environment. So
+
+448
+00:18:20,240 --> 00:18:24,480
+you see all of these patterns and you
+
+449
+00:18:22,880 --> 00:18:26,640
+can start to see some kind of
+
+450
+00:18:24,480 --> 00:18:28,960
+correlation definitely not causation.
+
+451
+00:18:26,640 --> 00:18:32,799
+going back to your talk, but you look at
+
+452
+00:18:28,960 --> 00:18:36,240
+it at the systemic level and the key
+
+453
+00:18:32,799 --> 00:18:39,360
+element for me is always okay how do I
+
+454
+00:18:36,240 --> 00:18:42,400
+understand the network behavior that
+
+455
+00:18:39,360 --> 00:18:45,039
+explains that given that that at the
+
+456
+00:18:42,400 --> 00:18:48,000
+network level which is the local level
+
+457
+00:18:45,039 --> 00:18:51,120
+it won't actually represent those
+
+458
+00:18:48,000 --> 00:18:52,880
+systemic uh phenomena because the whole
+
+459
+00:18:51,120 --> 00:18:54,640
+point of a systemic phenomena is that
+
+460
+00:18:52,880 --> 00:18:57,280
+you can't actually see it at the unit
+
+461
+00:18:54,640 --> 00:18:59,120
+level but everything is generated at the
+
+462
+00:18:57,280 --> 00:19:00,960
+unit level. At the end of the day, no
+
+463
+00:18:59,120 --> 00:19:03,760
+one works, no one operates at the
+
+464
+00:19:00,960 --> 00:19:06,480
+systemic level. It is for us to make
+
+465
+00:19:03,760 --> 00:19:08,720
+sense of a system, but everything around
+
+466
+00:19:06,480 --> 00:19:10,320
+us from you know who created the carpet
+
+467
+00:19:08,720 --> 00:19:12,559
+to who put the lights to who put the
+
+468
+00:19:10,320 --> 00:19:17,120
+conference together is all individual
+
+469
+00:19:12,559 --> 00:19:19,120
+network interactions. So it's really I
+
+470
+00:19:17,120 --> 00:19:21,520
+think that is you know the big challenge
+
+471
+00:19:19,120 --> 00:19:23,360
+of how do you start to connect that
+
+472
+00:19:21,520 --> 00:19:25,760
+understand the incentive structure and
+
+473
+00:19:23,360 --> 00:19:27,840
+then try to iterate and experiment and
+
+474
+00:19:25,760 --> 00:19:30,240
+and at the end of the day shift
+
+475
+00:19:27,840 --> 00:19:33,039
+individual incentive structures within
+
+476
+00:19:30,240 --> 00:19:35,200
+interactions at the network level in
+
+477
+00:19:33,039 --> 00:19:36,720
+order to change the systemic patterns
+
+478
+00:19:35,200 --> 00:19:39,600
+that we see.
+
+479
+00:19:36,720 --> 00:19:41,840
+Um, so, so, and I'm sure we could talk
+
+480
+00:19:39,600 --> 00:19:44,880
+on just that alone for for a long time,
+
+481
+00:19:41,840 --> 00:19:46,799
+but Allison, um, as as someone who is
+
+482
+00:19:44,880 --> 00:19:48,400
+hasn't been a network scientist, but now
+
+483
+00:19:46,799 --> 00:19:49,919
+you're you're looking at networks from a
+
+484
+00:19:48,400 --> 00:19:52,640
+data science standpoint. Yeah.
+
+485
+00:19:49,919 --> 00:19:54,720
+>> Um, are there any surprises, uh, where
+
+486
+00:19:52,640 --> 00:19:56,240
+you felt like the the, uh, the data set
+
+487
+00:19:54,720 --> 00:19:58,080
+was actually telling you something you
+
+488
+00:19:56,240 --> 00:20:00,880
+didn't know, you know, ahead of time?
+
+489
+00:19:58,080 --> 00:20:05,280
+>> Yeah. Um, so I've been a graph lover for
+
+490
+00:20:00,880 --> 00:20:08,000
+many, many years. And so for me like to
+
+491
+00:20:05,280 --> 00:20:10,480
+your point when I when I think of my
+
+492
+00:20:08,000 --> 00:20:12,400
+traditional data science and the way I
+
+493
+00:20:10,480 --> 00:20:13,919
+would always teach my students is just
+
+494
+00:20:12,400 --> 00:20:16,000
+keep slicing and dicing and looking at
+
+495
+00:20:13,919 --> 00:20:17,520
+it until you say oh that's weird and as
+
+496
+00:20:16,000 --> 00:20:19,440
+soon as you start saying oh that's weird
+
+497
+00:20:17,520 --> 00:20:21,280
+a couple of times like and getting back
+
+498
+00:20:19,440 --> 00:20:23,919
+to our earlier point of the magic is in
+
+499
+00:20:21,280 --> 00:20:26,000
+the messy I think this the same applies
+
+500
+00:20:23,919 --> 00:20:29,760
+when we're looking at networks and we're
+
+501
+00:20:26,000 --> 00:20:32,000
+looking at graphs in general is yes you
+
+502
+00:20:29,760 --> 00:20:35,280
+build you build the graph to answer a
+
+503
+00:20:32,000 --> 00:20:37,760
+question, but we have to maintain that
+
+504
+00:20:35,280 --> 00:20:40,960
+curiosity and that exploration in order
+
+505
+00:20:37,760 --> 00:20:43,760
+to let it tell us those stories and find
+
+506
+00:20:40,960 --> 00:20:46,960
+those things. And I think that's where
+
+507
+00:20:43,760 --> 00:20:50,320
+the the real art of being in graph
+
+508
+00:20:46,960 --> 00:20:52,159
+analytics comes to light where you can
+
+509
+00:20:50,320 --> 00:20:53,520
+take the soft eye and look at it in
+
+510
+00:20:52,159 --> 00:20:56,960
+general and see if there's something
+
+511
+00:20:53,520 --> 00:21:00,320
+nuanced or just spend the time to poke
+
+512
+00:20:56,960 --> 00:21:02,240
+around and see what's there because
+
+513
+00:21:00,320 --> 00:21:03,760
+there are definitely interesting things
+
+514
+00:21:02,240 --> 00:21:05,919
+happening and there are definitely
+
+515
+00:21:03,760 --> 00:21:08,400
+things that we are not necessarily aware
+
+516
+00:21:05,919 --> 00:21:10,559
+of and we have to let that speak. you
+
+517
+00:21:08,400 --> 00:21:13,440
+know, right now everybody's doing, you
+
+518
+00:21:10,559 --> 00:21:14,799
+know, talk to your PDFs and, you know,
+
+519
+00:21:13,440 --> 00:21:17,200
+knowledge graphs and like all this
+
+520
+00:21:14,799 --> 00:21:18,320
+stuff. Um, and you know, we have
+
+521
+00:21:17,200 --> 00:21:19,679
+something called the knowledge graph
+
+522
+00:21:18,320 --> 00:21:21,840
+builder and really it just goes through
+
+523
+00:21:19,679 --> 00:21:24,640
+and does entity recognition and creates
+
+524
+00:21:21,840 --> 00:21:27,520
+relationships based on that. And I
+
+525
+00:21:24,640 --> 00:21:30,640
+always tell people run it with no
+
+526
+00:21:27,520 --> 00:21:32,960
+guidance. Just let it imagine and just
+
+527
+00:21:30,640 --> 00:21:34,159
+tell you what's in the text because it's
+
+528
+00:21:32,960 --> 00:21:36,640
+very possible there's something there
+
+529
+00:21:34,159 --> 00:21:40,720
+that you don't know about. So I think to
+
+530
+00:21:36,640 --> 00:21:42,400
+bring the the the freedom of even when
+
+531
+00:21:40,720 --> 00:21:45,919
+you're building the graph to let it
+
+532
+00:21:42,400 --> 00:21:48,240
+build itself in some ways and to have
+
+533
+00:21:45,919 --> 00:21:50,559
+that curiosity and that exploration when
+
+534
+00:21:48,240 --> 00:21:52,960
+looking at what it's giving you. That's
+
+535
+00:21:50,559 --> 00:21:54,640
+where I think you're going to find those
+
+536
+00:21:52,960 --> 00:21:56,880
+let letting the graph talk to you,
+
+537
+00:21:54,640 --> 00:21:59,360
+letting the network speak to you.
+
+538
+00:21:56,880 --> 00:22:01,760
+>> All right, Andre. The weird. What have
+
+539
+00:21:59,360 --> 00:22:02,799
+you seen that's the weird in your
+
+540
+00:22:01,760 --> 00:22:05,360
+networks?
+
+541
+00:22:02,799 --> 00:22:08,080
+>> Thank you. Thank you. Yeah, I think that
+
+542
+00:22:05,360 --> 00:22:09,679
+like uh I'm going to try to answer two
+
+543
+00:22:08,080 --> 00:22:11,280
+questions in one, right? which is to
+
+544
+00:22:09,679 --> 00:22:15,120
+complement exactly what you just said
+
+545
+00:22:11,280 --> 00:22:17,600
+which is uh I think that the role of the
+
+546
+00:22:15,120 --> 00:22:19,440
+role of science in data science is
+
+547
+00:22:17,600 --> 00:22:22,000
+actually
+
+548
+00:22:19,440 --> 00:22:23,600
+um how do I put it right which is you're
+
+549
+00:22:22,000 --> 00:22:25,600
+looking at the data but the data is
+
+550
+00:22:23,600 --> 00:22:28,880
+often times an incomplete representation
+
+551
+00:22:25,600 --> 00:22:31,360
+of reality because it hides many things
+
+552
+00:22:28,880 --> 00:22:34,559
+that aren't necessarily that cannot be
+
+553
+00:22:31,360 --> 00:22:36,640
+expressable through the snapshot of data
+
+554
+00:22:34,559 --> 00:22:38,240
+that you have access to. Right? So
+
+555
+00:22:36,640 --> 00:22:40,559
+you're seeing someone commute from one
+
+556
+00:22:38,240 --> 00:22:43,200
+place to the other. How how do you know
+
+557
+00:22:40,559 --> 00:22:44,640
+what's motivating that? H but that's the
+
+558
+00:22:43,200 --> 00:22:46,559
+core of that's the reason why we're
+
+559
+00:22:44,640 --> 00:22:48,320
+here, right? Because our role as
+
+560
+00:22:46,559 --> 00:22:50,720
+scientists is actually to propose
+
+561
+00:22:48,320 --> 00:22:53,520
+hypothesis, derive the consequences of
+
+562
+00:22:50,720 --> 00:22:55,679
+this hypothesis, measure that against
+
+563
+00:22:53,520 --> 00:22:58,480
+the data and then to say this is a good
+
+564
+00:22:55,679 --> 00:23:00,640
+hypothesis. Yes. How do I continue to
+
+565
+00:22:58,480 --> 00:23:03,679
+look for evidence that my hypothesis is
+
+566
+00:23:00,640 --> 00:23:05,200
+false? Uh which is oh that's weird.
+
+567
+00:23:03,679 --> 00:23:07,120
+That's when I realized that actually
+
+568
+00:23:05,200 --> 00:23:10,080
+some hypothesis that I had before about
+
+569
+00:23:07,120 --> 00:23:12,159
+the data have been uh falsified and
+
+570
+00:23:10,080 --> 00:23:14,559
+actually I need to learn something else.
+
+571
+00:23:12,159 --> 00:23:16,720
+So it's always that process of uh
+
+572
+00:23:14,559 --> 00:23:18,880
+proposing something, observing something
+
+573
+00:23:16,720 --> 00:23:22,159
+that shatters it, learning something and
+
+574
+00:23:18,880 --> 00:23:25,039
+actually creating an even bigger image
+
+575
+00:23:22,159 --> 00:23:28,799
+uh that that's more conceptually sound
+
+576
+00:23:25,039 --> 00:23:31,039
+and also verified by the data um which
+
+577
+00:23:28,799 --> 00:23:33,200
+is goes but that's always an incomplete
+
+578
+00:23:31,039 --> 00:23:35,600
+process, right? Because if I I have
+
+579
+00:23:33,200 --> 00:23:38,000
+light that shines through the wall, if I
+
+580
+00:23:35,600 --> 00:23:40,159
+put a sphere in there, I know that the
+
+581
+00:23:38,000 --> 00:23:42,960
+shadow is going to be circular. But if I
+
+582
+00:23:40,159 --> 00:23:45,120
+put a cylinder rotated exactly the right
+
+583
+00:23:42,960 --> 00:23:46,640
+way, it's also going to be a circle. So
+
+584
+00:23:45,120 --> 00:23:48,159
+you need to be always aware about the
+
+585
+00:23:46,640 --> 00:23:51,039
+fact that there may be competing
+
+586
+00:23:48,159 --> 00:23:54,240
+hypothesis that explain the data. Uh
+
+587
+00:23:51,039 --> 00:23:57,200
+right. So so and and that's an issue
+
+588
+00:23:54,240 --> 00:23:59,039
+especially when you go into more uh like
+
+589
+00:23:57,200 --> 00:24:01,280
+specific use cases in the industry.
+
+590
+00:23:59,039 --> 00:24:04,320
+Right? So if you if you're a bank and
+
+591
+00:24:01,280 --> 00:24:07,120
+you need to measure you need to uh you
+
+592
+00:24:04,320 --> 00:24:09,520
+issue loans to lots of different people
+
+593
+00:24:07,120 --> 00:24:11,919
+you have the data which is how often do
+
+594
+00:24:09,520 --> 00:24:15,039
+they uh correlate like how often do the
+
+595
+00:24:11,919 --> 00:24:18,559
+defaults correlate together which is uh
+
+596
+00:24:15,039 --> 00:24:21,520
+uh very much like a a simple data
+
+597
+00:24:18,559 --> 00:24:24,720
+science problem. uh you can extrapolate
+
+598
+00:24:21,520 --> 00:24:26,559
+that into the future and think well the
+
+599
+00:24:24,720 --> 00:24:28,559
+correlations are low so I'm well
+
+600
+00:24:26,559 --> 00:24:30,159
+protected right it's very unlikely that
+
+601
+00:24:28,559 --> 00:24:33,279
+everyone is going to default at the same
+
+602
+00:24:30,159 --> 00:24:35,600
+time that's a bad hypothesis because
+
+603
+00:24:33,279 --> 00:24:37,600
+you're not explaining why that
+
+604
+00:24:35,600 --> 00:24:39,440
+correlation exists you're just assuming
+
+605
+00:24:37,600 --> 00:24:41,520
+that it's there but now let's say that
+
+606
+00:24:39,440 --> 00:24:43,919
+you go an extra step and it's like let
+
+607
+00:24:41,520 --> 00:24:46,480
+me build a model of the world which is
+
+608
+00:24:43,919 --> 00:24:48,880
+like a network these people they work in
+
+609
+00:24:46,480 --> 00:24:51,200
+different companies these companies they
+
+610
+00:24:48,880 --> 00:24:53,120
+have these properties is which you know
+
+611
+00:24:51,200 --> 00:24:54,799
+imagine that you're in a city where
+
+612
+00:24:53,120 --> 00:24:56,320
+everyone works for exactly the same
+
+613
+00:24:54,799 --> 00:24:58,559
+company what happens if that company
+
+614
+00:24:56,320 --> 00:25:01,760
+goes under everyone is going to default
+
+615
+00:24:58,559 --> 00:25:03,760
+on their loans so that that is a more
+
+616
+00:25:01,760 --> 00:25:07,520
+robust model because I can ask now the
+
+617
+00:25:03,760 --> 00:25:09,279
+question what would happen if something
+
+618
+00:25:07,520 --> 00:25:11,679
+goes all right right and that company
+
+619
+00:25:09,279 --> 00:25:13,440
+goes down and I have a better risk model
+
+620
+00:25:11,679 --> 00:25:15,520
+and that's exactly what for instance
+
+621
+00:25:13,440 --> 00:25:17,919
+happened in 2008 which is everyone is
+
+622
+00:25:15,520 --> 00:25:20,080
+using goshopolis which is just let's fit
+
+623
+00:25:17,919 --> 00:25:21,760
+a correlation but not thinking about the
+
+624
+00:25:20,080 --> 00:25:25,279
+network effects. That is actually the
+
+625
+00:25:21,760 --> 00:25:29,120
+true underlying model that uh would
+
+626
+00:25:25,279 --> 00:25:31,440
+capture these joint uh uh default
+
+627
+00:25:29,120 --> 00:25:35,039
+probabilities that ended up you know
+
+628
+00:25:31,440 --> 00:25:37,200
+putting a lot of people out of business.
+
+629
+00:25:35,039 --> 00:25:39,039
+So it occurs to me that um maybe it
+
+630
+00:25:37,200 --> 00:25:40,720
+might make sense to talk a little bit
+
+631
+00:25:39,039 --> 00:25:43,919
+about what does it mean to take a
+
+632
+00:25:40,720 --> 00:25:47,520
+network science approach to a problem or
+
+633
+00:25:43,919 --> 00:25:49,679
+a data set and when should people either
+
+634
+00:25:47,520 --> 00:25:51,840
+apply that or maybe not apply that
+
+635
+00:25:49,679 --> 00:25:54,080
+because not believe it or not everything
+
+636
+00:25:51,840 --> 00:25:55,760
+is a network science problem. Um some
+
+637
+00:25:54,080 --> 00:25:57,360
+things it's just statistical
+
+638
+00:25:55,760 --> 00:25:59,440
+correlations you're trying to do. So
+
+639
+00:25:57,360 --> 00:26:02,000
+yeah when um since if you would like to
+
+640
+00:25:59,440 --> 00:26:04,480
+go first since you have the mic. Yeah, I
+
+641
+00:26:02,000 --> 00:26:06,480
+think that the the
+
+642
+00:26:04,480 --> 00:26:08,559
+there are certain things that you I mean
+
+643
+00:26:06,480 --> 00:26:10,320
+there's no point in in trying to come up
+
+644
+00:26:08,559 --> 00:26:11,600
+with like a solid model for that, right?
+
+645
+00:26:10,320 --> 00:26:13,919
+Suppose that I just want to understand
+
+646
+00:26:11,600 --> 00:26:15,440
+where it's going to rain tomorrow. Yeah,
+
+647
+00:26:13,919 --> 00:26:18,320
+I mean I can just predict the weather
+
+648
+00:26:15,440 --> 00:26:20,640
+and that's it. My my my life doesn't
+
+649
+00:26:18,320 --> 00:26:23,279
+depend on it like the outcomes don't
+
+650
+00:26:20,640 --> 00:26:25,039
+depend on it. Uh don't depend on on the
+
+651
+00:26:23,279 --> 00:26:26,559
+on the idea of being able to model the
+
+652
+00:26:25,039 --> 00:26:28,320
+system exactly. I just want a clear
+
+653
+00:26:26,559 --> 00:26:30,720
+prediction. But now I have other
+
+654
+00:26:28,320 --> 00:26:33,039
+situations which are I want to intervene
+
+655
+00:26:30,720 --> 00:26:34,960
+on the system. If I want to intervene on
+
+656
+00:26:33,039 --> 00:26:37,360
+the system then I'm automatically
+
+657
+00:26:34,960 --> 00:26:39,200
+shifting the system out of distribution.
+
+658
+00:26:37,360 --> 00:26:43,440
+Right? I have the observed data. The
+
+659
+00:26:39,200 --> 00:26:45,039
+observed data is dead in the past.
+
+660
+00:26:43,440 --> 00:26:47,600
+>> It's only telling me about things that
+
+661
+00:26:45,039 --> 00:26:49,120
+have happened uh but they were generated
+
+662
+00:26:47,600 --> 00:26:50,559
+by the truth and the truth is the
+
+663
+00:26:49,120 --> 00:26:52,880
+hardest thing right because there's only
+
+664
+00:26:50,559 --> 00:26:55,520
+one truth. Everything else is a lie. uh
+
+665
+00:26:52,880 --> 00:26:57,120
+so but if I want to go beyond the data
+
+666
+00:26:55,520 --> 00:27:00,000
+that I've observed I actually need to
+
+667
+00:26:57,120 --> 00:27:02,159
+think in in more precise terms like what
+
+668
+00:27:00,000 --> 00:27:04,720
+was the right truth that generated that
+
+669
+00:27:02,159 --> 00:27:08,000
+thing or the distribution of possible
+
+670
+00:27:04,720 --> 00:27:09,440
+tourists that generated that thing and
+
+671
+00:27:08,000 --> 00:27:11,440
+what will be the impacts of my
+
+672
+00:27:09,440 --> 00:27:14,240
+intervention in the system how risky is
+
+673
+00:27:11,440 --> 00:27:15,919
+it for me if this thing happens versus
+
+674
+00:27:14,240 --> 00:27:18,960
+that other thing happens and I think
+
+675
+00:27:15,919 --> 00:27:20,880
+this is when your when your outcomes
+
+676
+00:27:18,960 --> 00:27:23,520
+depend on not necessarily what happened
+
+677
+00:27:20,880 --> 00:27:26,240
+or what may happen But like what can you
+
+678
+00:27:23,520 --> 00:27:28,799
+do about it and what if this this this
+
+679
+00:27:26,240 --> 00:27:30,799
+happens then you need to to be very
+
+680
+00:27:28,799 --> 00:27:32,720
+clear in your thinking about producing
+
+681
+00:27:30,799 --> 00:27:34,000
+like the the true underlying model of
+
+682
+00:27:32,720 --> 00:27:36,880
+that system.
+
+683
+00:27:34,000 --> 00:27:39,200
+>> Uh interesting or uh and I wonder if or
+
+684
+00:27:36,880 --> 00:27:41,039
+agrees because you know even basic
+
+685
+00:27:39,200 --> 00:27:42,559
+research is even if you're not trying to
+
+686
+00:27:41,039 --> 00:27:45,039
+make an intervention you're trying to
+
+687
+00:27:42,559 --> 00:27:46,559
+you know just understand. Um I' I'd love
+
+688
+00:27:45,039 --> 00:27:48,880
+to hear your thoughts on you know the
+
+689
+00:27:46,559 --> 00:27:50,960
+kinds of problems that you try to solve.
+
+690
+00:27:48,880 --> 00:27:53,039
+And for those that didn't hear uh
+
+691
+00:27:50,960 --> 00:27:54,880
+yesterday, just a even a little bit
+
+692
+00:27:53,039 --> 00:27:57,520
+about your serendipity research because
+
+693
+00:27:54,880 --> 00:28:00,880
+it's fascinating. Yeah.
+
+694
+00:27:57,520 --> 00:28:02,720
+>> Um so as I mentioned um I'm researching
+
+695
+00:28:00,880 --> 00:28:05,120
+the future of cities and what I'm
+
+696
+00:28:02,720 --> 00:28:08,159
+particularly interested in is the social
+
+697
+00:28:05,120 --> 00:28:12,320
+fabric. So there's so much great work,
+
+698
+00:28:08,159 --> 00:28:15,440
+you know, being done on mobility and all
+
+699
+00:28:12,320 --> 00:28:19,440
+the infrastructure and making, you know,
+
+700
+00:28:15,440 --> 00:28:22,080
+our cities green and and viable. Um and
+
+701
+00:28:19,440 --> 00:28:24,559
+another side of it is how do we keep our
+
+702
+00:28:22,080 --> 00:28:27,600
+social fabric viable and thriving
+
+703
+00:28:24,559 --> 00:28:30,240
+especially given that social friction
+
+704
+00:28:27,600 --> 00:28:32,000
+that has enabled this vibrancy is
+
+705
+00:28:30,240 --> 00:28:34,320
+actually being removed through
+
+706
+00:28:32,000 --> 00:28:37,039
+technology because we don't need to ask
+
+707
+00:28:34,320 --> 00:28:39,600
+for directions or to interact with just
+
+708
+00:28:37,039 --> 00:28:42,240
+those little everyday uh social
+
+709
+00:28:39,600 --> 00:28:44,640
+frictions that we had before. So if you
+
+710
+00:28:42,240 --> 00:28:47,679
+think about cities as networks by
+
+711
+00:28:44,640 --> 00:28:51,360
+definition and cities have evolved as a
+
+712
+00:28:47,679 --> 00:28:54,159
+solution to allow humans to operate in
+
+713
+00:28:51,360 --> 00:28:57,120
+dense networks and therefore maximize
+
+714
+00:28:54,159 --> 00:28:59,600
+our innovation. So think about any era
+
+715
+00:28:57,120 --> 00:29:02,720
+in history with huge innovation. You
+
+716
+00:28:59,600 --> 00:29:04,880
+know you will always find a city at its
+
+717
+00:29:02,720 --> 00:29:07,279
+core. So there is something there in
+
+718
+00:29:04,880 --> 00:29:11,440
+terms of how we organize oursel. This is
+
+719
+00:29:07,279 --> 00:29:13,679
+our hive. Um so if if this is about
+
+720
+00:29:11,440 --> 00:29:15,760
+allowing networks to thrive then under
+
+721
+00:29:13,679 --> 00:29:18,000
+what conditions do social networks
+
+722
+00:29:15,760 --> 00:29:21,120
+really thrive. So it is about the
+
+723
+00:29:18,000 --> 00:29:25,520
+stickiness of interconnectivity but also
+
+724
+00:29:21,120 --> 00:29:27,919
+accessibility. So how can you access the
+
+725
+00:29:25,520 --> 00:29:30,000
+networks and connect to new nodes? You
+
+726
+00:29:27,919 --> 00:29:32,159
+can think about it in those terms and a
+
+727
+00:29:30,000 --> 00:29:35,440
+lot of it is serendipitous right? the
+
+728
+00:29:32,159 --> 00:29:37,760
+more interactions we have, the more
+
+729
+00:29:35,440 --> 00:29:39,440
+connections we can potentially
+
+730
+00:29:37,760 --> 00:29:41,919
+probabilistically
+
+731
+00:29:39,440 --> 00:29:46,640
+build. Um, so I'm looking at it from
+
+732
+00:29:41,919 --> 00:29:48,320
+this direction. And I think that so the
+
+733
+00:29:46,640 --> 00:29:50,320
+problem is that there is so much data
+
+734
+00:29:48,320 --> 00:29:53,200
+and so many elements and so many
+
+735
+00:29:50,320 --> 00:29:55,039
+variables that you could look at. Uh the
+
+736
+00:29:53,200 --> 00:29:56,720
+difficulty and this kind of to answer
+
+737
+00:29:55,039 --> 00:30:01,200
+your question of when you shouldn't use
+
+738
+00:29:56,720 --> 00:30:03,679
+it is really when you don't really have
+
+739
+00:30:01,200 --> 00:30:06,080
+enough data about the different
+
+740
+00:30:03,679 --> 00:30:08,320
+variables and I think that there's a
+
+741
+00:30:06,080 --> 00:30:11,279
+natural inclination so we'll just work
+
+742
+00:30:08,320 --> 00:30:14,399
+with what we have but then it reduces
+
+743
+00:30:11,279 --> 00:30:18,480
+the phenomena that you can actually
+
+744
+00:30:14,399 --> 00:30:21,520
+explore so much that you kind of lose a
+
+745
+00:30:18,480 --> 00:30:24,240
+lot of your hypothesis. So, uh, if you
+
+746
+00:30:21,520 --> 00:30:26,640
+can actually test your hypothesis with
+
+747
+00:30:24,240 --> 00:30:29,600
+the data, then that's great. But if this
+
+748
+00:30:26,640 --> 00:30:31,600
+is about a negotiation of, well, I can't
+
+749
+00:30:29,600 --> 00:30:34,000
+really do this, so maybe I'll redefine
+
+750
+00:30:31,600 --> 00:30:35,360
+it in a different way, then don't go
+
+751
+00:30:34,000 --> 00:30:38,080
+down that route.
+
+752
+00:30:35,360 --> 00:30:40,000
+>> All right. Al Allison is somebody who,
+
+753
+00:30:38,080 --> 00:30:43,279
+you know, has to sometimes just make
+
+754
+00:30:40,000 --> 00:30:44,880
+something work.
+
+755
+00:30:43,279 --> 00:30:46,399
+>> What you're talking about, do you Yeah.
+
+756
+00:30:44,880 --> 00:30:49,039
+What do What do you think about what Or
+
+757
+00:30:46,399 --> 00:30:52,320
+just said about when not to use it?
+
+758
+00:30:49,039 --> 00:30:54,159
+Well, I mean, my my inclination is
+
+759
+00:30:52,320 --> 00:30:56,000
+there's so many people who aren't using
+
+760
+00:30:54,159 --> 00:30:59,440
+it when they're supposed to that the
+
+761
+00:30:56,000 --> 00:31:00,880
+default is I would say check and see if
+
+762
+00:30:59,440 --> 00:31:03,120
+there's something you can get from that
+
+763
+00:31:00,880 --> 00:31:06,240
+context first because I think most of
+
+764
+00:31:03,120 --> 00:31:08,240
+the time folks fall more often to the
+
+765
+00:31:06,240 --> 00:31:11,039
+other side. Obviously in this crowd
+
+766
+00:31:08,240 --> 00:31:14,240
+we're in a network you know um and we're
+
+767
+00:31:11,039 --> 00:31:17,039
+in a graph space but for everybody else
+
+768
+00:31:14,240 --> 00:31:20,159
+at home who may not be I would say look
+
+769
+00:31:17,039 --> 00:31:23,120
+to it more. Um but to your point what do
+
+770
+00:31:20,159 --> 00:31:24,880
+we do when we don't have the data we
+
+771
+00:31:23,120 --> 00:31:26,880
+need to
+
+772
+00:31:24,880 --> 00:31:28,399
+test a hypothesis or come to a
+
+773
+00:31:26,880 --> 00:31:30,880
+conclusion.
+
+774
+00:31:28,399 --> 00:31:34,080
+I mean for me it always goes back to the
+
+775
+00:31:30,880 --> 00:31:38,640
+word thoughtful which is if you have to
+
+776
+00:31:34,080 --> 00:31:40,320
+be really clear about is it can I
+
+777
+00:31:38,640 --> 00:31:44,880
+actually
+
+778
+00:31:40,320 --> 00:31:48,880
+stand on this statement or this outcome
+
+779
+00:31:44,880 --> 00:31:52,880
+that I'm saying this analysis or not and
+
+780
+00:31:48,880 --> 00:31:57,360
+it it really comes down to just
+
+781
+00:31:52,880 --> 00:31:59,760
+mathematical integrity and am I am I
+
+782
+00:31:57,360 --> 00:32:03,679
+forcing an answer where there isn't one
+
+783
+00:31:59,760 --> 00:32:05,600
+and we as analysts have to be
+
+784
+00:32:03,679 --> 00:32:08,399
+comfortable having the voice saying no
+
+785
+00:32:05,600 --> 00:32:11,039
+we can't actually test this hypothesis.
+
+786
+00:32:08,399 --> 00:32:13,200
+Um we don't have we don't have that
+
+787
+00:32:11,039 --> 00:32:15,360
+answer and to be okay with not having
+
+788
+00:32:13,200 --> 00:32:17,519
+that answer. And you can move the
+
+789
+00:32:15,360 --> 00:32:20,000
+conversation into proxy. You can move
+
+790
+00:32:17,519 --> 00:32:23,120
+the conversation into well let's
+
+791
+00:32:20,000 --> 00:32:24,960
+possibly look at it another way. But we
+
+792
+00:32:23,120 --> 00:32:26,960
+have to be very comfortable saying no I
+
+793
+00:32:24,960 --> 00:32:29,279
+can't test that.
+
+794
+00:32:26,960 --> 00:32:32,080
+Um, okay. So, so way I'm going to ask
+
+795
+00:32:29,279 --> 00:32:34,080
+you to tell me if I'm wrong or missing
+
+796
+00:32:32,080 --> 00:32:35,039
+something. So, what I what I'm uh what
+
+797
+00:32:34,080 --> 00:32:37,039
+I'm hearing from some of this
+
+798
+00:32:35,039 --> 00:32:38,240
+conversation is, you know, if you're if
+
+799
+00:32:37,039 --> 00:32:40,559
+you're thinking about applying a network
+
+800
+00:32:38,240 --> 00:32:43,519
+science approach to a a problem or data
+
+801
+00:32:40,559 --> 00:32:45,760
+set, um there are things like um
+
+802
+00:32:43,519 --> 00:32:47,200
+influence that you might want to see if
+
+803
+00:32:45,760 --> 00:32:49,200
+even if you're thinking about like
+
+804
+00:32:47,200 --> 00:32:50,480
+trying to find the arrow of why or or
+
+805
+00:32:49,200 --> 00:32:53,120
+the cause, you're talking about
+
+806
+00:32:50,480 --> 00:32:54,480
+influence. Um there might be groupings.
+
+807
+00:32:53,120 --> 00:32:56,320
+I think a lot of people are used to
+
+808
+00:32:54,480 --> 00:32:58,320
+working with groups and communities that
+
+809
+00:32:56,320 --> 00:33:00,960
+you you know how are things clustered.
+
+810
+00:32:58,320 --> 00:33:03,039
+Uh you might be looking at resource flow
+
+811
+00:33:00,960 --> 00:33:07,200
+uh something or and I have talked a lot
+
+812
+00:33:03,039 --> 00:33:09,519
+or or just any how anything flows uh and
+
+813
+00:33:07,200 --> 00:33:12,000
+uh you might also be just trying to
+
+814
+00:33:09,519 --> 00:33:13,919
+understand how something moves through a
+
+815
+00:33:12,000 --> 00:33:16,080
+system is as well and I might be I'm
+
+816
+00:33:13,919 --> 00:33:18,640
+probably missing a few things as well.
+
+817
+00:33:16,080 --> 00:33:21,039
+So, so we what do you is there anything
+
+818
+00:33:18,640 --> 00:33:23,519
+in there missing or what other things
+
+819
+00:33:21,039 --> 00:33:26,320
+types of questions um that you might
+
+820
+00:33:23,519 --> 00:33:30,360
+want to take a graph data science or a
+
+821
+00:33:26,320 --> 00:33:30,360
+network science approach to?
+
+822
+00:33:31,200 --> 00:33:37,679
+>> That's a really good question
+
+823
+00:33:34,960 --> 00:33:40,320
+and partially it's because the whole
+
+824
+00:33:37,679 --> 00:33:40,799
+thing is so messy
+
+825
+00:33:40,320 --> 00:33:42,559
+and
+
+826
+00:33:40,799 --> 00:33:45,679
+>> way to bring it back.
+
+827
+00:33:42,559 --> 00:33:48,480
+>> Yeah. Um in my
+
+828
+00:33:45,679 --> 00:33:50,480
+so my works become more and more
+
+829
+00:33:48,480 --> 00:33:53,760
+practical these days. is just solving
+
+830
+00:33:50,480 --> 00:33:57,360
+practical problem and the data science
+
+831
+00:33:53,760 --> 00:33:59,919
+is everywhere in the problem solving but
+
+832
+00:33:57,360 --> 00:34:01,760
+often the most difficult part is getting
+
+833
+00:33:59,919 --> 00:34:07,440
+the data right
+
+834
+00:34:01,760 --> 00:34:10,560
+>> and um and also even like I think and
+
+835
+00:34:07,440 --> 00:34:12,399
+you touch up on like the data collected
+
+836
+00:34:10,560 --> 00:34:16,560
+um
+
+837
+00:34:12,399 --> 00:34:18,960
+there's um so many
+
+838
+00:34:16,560 --> 00:34:22,079
+like fundamentally defining things is so
+
+839
+00:34:18,960 --> 00:34:24,960
+hard, right? We our our knowledge
+
+840
+00:34:22,079 --> 00:34:26,639
+depends on how we define things. And
+
+841
+00:34:24,960 --> 00:34:29,119
+when it come to the network, you have
+
+842
+00:34:26,639 --> 00:34:31,359
+abstract to node and edge, abstract to
+
+843
+00:34:29,119 --> 00:34:35,119
+the type and relationships.
+
+844
+00:34:31,359 --> 00:34:37,760
+That level abstraction already
+
+845
+00:34:35,119 --> 00:34:39,280
+kind of limits a lot of uh informations.
+
+846
+00:34:37,760 --> 00:34:41,280
+You als you already cast a lot of
+
+847
+00:34:39,280 --> 00:34:43,839
+shadows like a ball and versus a
+
+848
+00:34:41,280 --> 00:34:47,839
+cylinder. you already cast them or a lot
+
+849
+00:34:43,839 --> 00:34:51,119
+of shadows and then you perform a uh
+
+850
+00:34:47,839 --> 00:34:52,800
+network science uh analysis over it like
+
+851
+00:34:51,119 --> 00:34:56,079
+there's certain things like where the
+
+852
+00:34:52,800 --> 00:34:58,079
+top topography is really tell you a lot
+
+853
+00:34:56,079 --> 00:34:58,560
+of informations but then there are
+
+854
+00:34:58,079 --> 00:35:00,560
+certain
+
+855
+00:34:58,560 --> 00:35:03,440
+>> can you give us an example of that
+
+856
+00:35:00,560 --> 00:35:07,520
+>> uh like uh
+
+857
+00:35:03,440 --> 00:35:09,599
+the uh uh the flocking of the birds how
+
+858
+00:35:07,520 --> 00:35:12,400
+like how the birds relate to each other
+
+859
+00:35:09,599 --> 00:35:14,079
+they creates flocking phenomenon
+
+860
+00:35:12,400 --> 00:35:16,000
+fractals
+
+861
+00:35:14,079 --> 00:35:18,880
+uh that come out they have a very
+
+862
+00:35:16,000 --> 00:35:21,920
+distinctive features um a uh a
+
+863
+00:35:18,880 --> 00:35:25,280
+scale-free network. Uh so all those
+
+864
+00:35:21,920 --> 00:35:28,560
+things they have very very clear like uh
+
+865
+00:35:25,280 --> 00:35:32,240
+um things you can actually measure you
+
+866
+00:35:28,560 --> 00:35:34,800
+can you can observe and measure uh that
+
+867
+00:35:32,240 --> 00:35:37,280
+that system level things you can
+
+868
+00:35:34,800 --> 00:35:39,839
+actually measure really well. Um I
+
+869
+00:35:37,280 --> 00:35:42,800
+remember like 2016 I was really
+
+870
+00:35:39,839 --> 00:35:45,520
+interesting to see uh the left cam the
+
+871
+00:35:42,800 --> 00:35:48,560
+right cam in US election if if anybody
+
+872
+00:35:45,520 --> 00:35:52,000
+remember the trauma of those days. Um so
+
+873
+00:35:48,560 --> 00:35:54,720
+I monitored uh Twitter network from the
+
+874
+00:35:52,000 --> 00:35:56,880
+whole year and then started the network
+
+875
+00:35:54,720 --> 00:35:59,599
+of the left camp versus right camp with
+
+876
+00:35:56,880 --> 00:36:03,040
+the goal to see is there any people
+
+877
+00:35:59,599 --> 00:36:06,320
+change the camp? What may cause them
+
+878
+00:36:03,040 --> 00:36:09,200
+change the camp? To my uh disappointment
+
+879
+00:36:06,320 --> 00:36:12,079
+in the end my conclusion is like nobody
+
+880
+00:36:09,200 --> 00:36:13,920
+changed their mind
+
+881
+00:36:12,079 --> 00:36:16,720
+but
+
+882
+00:36:13,920 --> 00:36:20,160
+the the whole process uh requires a lot
+
+883
+00:36:16,720 --> 00:36:22,400
+of um like clustering uh community
+
+884
+00:36:20,160 --> 00:36:24,720
+detection can work but in the end I
+
+885
+00:36:22,400 --> 00:36:26,880
+realized that that like when they come
+
+886
+00:36:24,720 --> 00:36:30,400
+to the specific information like thing I
+
+887
+00:36:26,880 --> 00:36:34,240
+want to extract I almost have to rewrite
+
+888
+00:36:30,400 --> 00:36:36,240
+algorithm to be able to describe that um
+
+889
+00:36:34,240 --> 00:36:41,040
+and even then because we only have a
+
+890
+00:36:36,240 --> 00:36:44,640
+partial data that um
+
+891
+00:36:41,040 --> 00:36:47,200
+that really to to con uh
+
+892
+00:36:44,640 --> 00:36:49,520
+at the network and the on the on the
+
+893
+00:36:47,200 --> 00:36:52,560
+whole system level I felt like network
+
+894
+00:36:49,520 --> 00:36:56,480
+science can give a lot of information
+
+895
+00:36:52,560 --> 00:36:59,359
+but on the detailed individual level uh
+
+896
+00:36:56,480 --> 00:37:00,480
+that the picture might be different
+
+897
+00:36:59,359 --> 00:37:01,839
+that's my feeling
+
+898
+00:37:00,480 --> 00:37:04,079
+>> I that's interesting you think about
+
+899
+00:37:01,839 --> 00:37:06,880
+like system level versus, you know,
+
+900
+00:37:04,079 --> 00:37:09,599
+individual. And I I I do sometimes think
+
+901
+00:37:06,880 --> 00:37:11,760
+about when I think about um you know,
+
+902
+00:37:09,599 --> 00:37:14,079
+people that are are are really steeped
+
+903
+00:37:11,760 --> 00:37:15,119
+in the knowledge graph um industry, a
+
+904
+00:37:14,079 --> 00:37:16,880
+lot of times we're we're trying to
+
+905
+00:37:15,119 --> 00:37:19,280
+answer a question. We know what we want
+
+906
+00:37:16,880 --> 00:37:23,200
+to ask. And I think there's this um
+
+907
+00:37:19,280 --> 00:37:25,839
+serend serendipitous discovery uh you
+
+908
+00:37:23,200 --> 00:37:28,079
+know, that can happen uh when you're
+
+909
+00:37:25,839 --> 00:37:29,200
+looking at a larger system level. Um,
+
+910
+00:37:28,079 --> 00:37:31,599
+but it's you don't know what you're
+
+911
+00:37:29,200 --> 00:37:34,720
+looking at ahead of time and it's at a
+
+912
+00:37:31,599 --> 00:37:35,839
+kind of a a larger mass level. Um, I'm
+
+913
+00:37:34,720 --> 00:37:37,839
+wondering actually if there are
+
+914
+00:37:35,839 --> 00:37:40,320
+questions here in the audience and we we
+
+915
+00:37:37,839 --> 00:37:41,119
+do have one and I'm very close. So, oh,
+
+916
+00:37:40,320 --> 00:37:45,000
+>> can you take
+
+917
+00:37:41,119 --> 00:37:45,000
+>> Yeah, I got it. I got it.
+
+918
+00:37:45,760 --> 00:37:51,599
+>> Uh, so what I'm interested in is uh
+
+919
+00:37:49,839 --> 00:37:54,079
+trying to connect what you're talking
+
+920
+00:37:51,599 --> 00:37:56,400
+about with with ontology and some of the
+
+921
+00:37:54,079 --> 00:37:58,800
+other stuff that that is going on. And I
+
+922
+00:37:56,400 --> 00:38:01,680
+am interested in that in a in a very
+
+923
+00:37:58,800 --> 00:38:04,000
+fundamental way which is that um as
+
+924
+00:38:01,680 --> 00:38:05,200
+you're talking about if
+
+925
+00:38:04,000 --> 00:38:06,560
+in order to act in the world we've got
+
+926
+00:38:05,200 --> 00:38:07,920
+to model things. We've got we've got to
+
+927
+00:38:06,560 --> 00:38:09,440
+generate a representation that is a
+
+928
+00:38:07,920 --> 00:38:13,040
+simplification
+
+929
+00:38:09,440 --> 00:38:15,920
+um and we as humans do that and that
+
+930
+00:38:13,040 --> 00:38:19,040
+those representations are are in our
+
+931
+00:38:15,920 --> 00:38:22,160
+neural network. Likewise in an LLM the
+
+932
+00:38:19,040 --> 00:38:24,800
+it will be developing something like a a
+
+933
+00:38:22,160 --> 00:38:27,760
+symbolic representation in the network.
+
+934
+00:38:24,800 --> 00:38:30,720
+And I'm wondering if any of you have any
+
+935
+00:38:27,760 --> 00:38:33,680
+thoughts on the feasibility of using
+
+936
+00:38:30,720 --> 00:38:36,960
+network and analytics tools or graph
+
+937
+00:38:33,680 --> 00:38:39,599
+data science tools to start getting an
+
+938
+00:38:36,960 --> 00:38:42,640
+understanding of what are the emergent
+
+939
+00:38:39,599 --> 00:38:45,359
+uh concepts or symbols in some of these
+
+940
+00:38:42,640 --> 00:38:48,160
+networks in order to then connect them
+
+941
+00:38:45,359 --> 00:38:51,440
+with the the explicit formal semantics
+
+942
+00:38:48,160 --> 00:38:53,839
+of the systems.
+
+943
+00:38:51,440 --> 00:38:55,359
+So let let me play back to you just to
+
+944
+00:38:53,839 --> 00:38:56,880
+just just to make sure that uh I'm
+
+945
+00:38:55,359 --> 00:38:59,280
+answering the right question which is
+
+946
+00:38:56,880 --> 00:39:02,320
+for instance you can view uh a language
+
+947
+00:38:59,280 --> 00:39:05,839
+model itself as a network right in which
+
+948
+00:39:02,320 --> 00:39:08,560
+there is some level of complexity that
+
+949
+00:39:05,839 --> 00:39:10,560
+is happening within the way that
+
+950
+00:39:08,560 --> 00:39:12,560
+information is flowing through that
+
+951
+00:39:10,560 --> 00:39:15,040
+network because effectively it's just a
+
+952
+00:39:12,560 --> 00:39:17,119
+connection of nodes that are connected
+
+953
+00:39:15,040 --> 00:39:20,160
+by certain weights with some
+
+954
+00:39:17,119 --> 00:39:22,320
+nonlinearity that are transforming these
+
+955
+00:39:20,160 --> 00:39:24,720
+ad nauseion until it spits something
+
+956
+00:39:22,320 --> 00:39:26,960
+out. Yeah. So you may want to look into
+
+957
+00:39:24,720 --> 00:39:30,480
+a paper which is called Hopfield is all
+
+958
+00:39:26,960 --> 00:39:33,680
+you need. Uh Hopfield who actually won
+
+959
+00:39:30,480 --> 00:39:37,680
+the Nobel Prize uh for doing something
+
+960
+00:39:33,680 --> 00:39:39,280
+which is uh associative uh memories. I
+
+961
+00:39:37,680 --> 00:39:41,520
+hope that I'm not butchering the the
+
+962
+00:39:39,280 --> 00:39:43,520
+whole research program. But the idea is
+
+963
+00:39:41,520 --> 00:39:44,720
+the following, right? His idea is is is
+
+964
+00:39:43,520 --> 00:39:46,320
+like this. So you're you're in
+
+965
+00:39:44,720 --> 00:39:48,000
+statistical physics so you know this
+
+966
+00:39:46,320 --> 00:39:51,359
+much better than everyone here which is
+
+967
+00:39:48,000 --> 00:39:53,520
+I have a spin system basically particles
+
+968
+00:39:51,359 --> 00:39:56,400
+in a latis and they communicate with
+
+969
+00:39:53,520 --> 00:39:59,200
+each other and there is some repulsion
+
+970
+00:39:56,400 --> 00:40:01,200
+or some attraction between them in such
+
+971
+00:39:59,200 --> 00:40:03,760
+a way that if I flip the spin of one
+
+972
+00:40:01,200 --> 00:40:06,000
+particle up the others one around it
+
+973
+00:40:03,760 --> 00:40:08,079
+will react to it and we want to go up or
+
+974
+00:40:06,000 --> 00:40:09,839
+down right so now you can think about it
+
+975
+00:40:08,079 --> 00:40:11,839
+yeah okay that's a boring system what
+
+976
+00:40:09,839 --> 00:40:15,040
+can I do with it now it turns out that
+
+977
+00:40:11,839 --> 00:40:17,839
+if you make the interaction s
+
+978
+00:40:15,040 --> 00:40:21,119
+complicated enough. You can actually
+
+979
+00:40:17,839 --> 00:40:23,520
+define the connections in such a way
+
+980
+00:40:21,119 --> 00:40:24,720
+like those coupling
+
+981
+00:40:23,520 --> 00:40:26,560
+strengths between the different
+
+982
+00:40:24,720 --> 00:40:29,520
+particles like let's say particle 0 is
+
+983
+00:40:26,560 --> 00:40:31,200
+coupled to particle 00 is coupled to 01
+
+984
+00:40:29,520 --> 00:40:32,960
+which is coupled to one one and so on
+
+985
+00:40:31,200 --> 00:40:35,680
+with a different coupling per particle.
+
+986
+00:40:32,960 --> 00:40:38,560
+There's a big matrix. So you can define
+
+987
+00:40:35,680 --> 00:40:42,000
+these couplings in such a way that the
+
+988
+00:40:38,560 --> 00:40:44,640
+couplings themselves the system stores
+
+989
+00:40:42,000 --> 00:40:47,119
+memories right in such a way that if I
+
+990
+00:40:44,640 --> 00:40:49,200
+encode an image in there it will
+
+991
+00:40:47,119 --> 00:40:51,920
+remember that image in such a way that
+
+992
+00:40:49,200 --> 00:40:54,480
+now I reinitialize the spins all the way
+
+993
+00:40:51,920 --> 00:40:57,040
+and I kick one spin in one direction I
+
+994
+00:40:54,480 --> 00:41:00,160
+let the system evolve and it will evolve
+
+995
+00:40:57,040 --> 00:41:03,599
+to exactly uh give me back my image in
+
+996
+00:41:00,160 --> 00:41:06,640
+which which was stored. Uh so this was
+
+997
+00:41:03,599 --> 00:41:08,720
+his work back in the in the old days.
+
+998
+00:41:06,640 --> 00:41:10,160
+Turns out that transformers look like a
+
+999
+00:41:08,720 --> 00:41:11,599
+completely different beast, right? Is
+
+1000
+00:41:10,160 --> 00:41:14,160
+essentially just a bunch of matrix
+
+1001
+00:41:11,599 --> 00:41:16,640
+matrix multiplications. But there's a
+
+1002
+00:41:14,160 --> 00:41:20,400
+lot of research in actually trying to
+
+1003
+00:41:16,640 --> 00:41:23,119
+represent the transformer like
+
+1004
+00:41:20,400 --> 00:41:27,839
+essentially that specific calculation
+
+1005
+00:41:23,119 --> 00:41:29,760
+into the output of that hopfield
+
+1006
+00:41:27,839 --> 00:41:31,760
+network, right?
+
+1007
+00:41:29,760 --> 00:41:33,680
+uh to essentially link the two things
+
+1008
+00:41:31,760 --> 00:41:36,720
+which turns out mathematically you can
+
+1009
+00:41:33,680 --> 00:41:38,560
+show that there is exact uh
+
+1010
+00:41:36,720 --> 00:41:40,640
+correspondence between them and that
+
+1011
+00:41:38,560 --> 00:41:43,359
+leads to something which is energybased
+
+1012
+00:41:40,640 --> 00:41:46,400
+models in which language models aren't
+
+1013
+00:41:43,359 --> 00:41:48,240
+necessarily doing that that
+
+1014
+00:41:46,400 --> 00:41:51,040
+transformation just because they are
+
+1015
+00:41:48,240 --> 00:41:54,160
+doing it because they are minimizing an
+
+1016
+00:41:51,040 --> 00:41:56,800
+energy functional where the underlying
+
+1017
+00:41:54,160 --> 00:42:00,480
+let's say system whose energy is being
+
+1018
+00:41:56,800 --> 00:42:03,440
+minimized is just a spin network. So
+
+1019
+00:42:00,480 --> 00:42:05,359
+there is an exact correspondence between
+
+1020
+00:42:03,440 --> 00:42:07,680
+like what language models are doing and
+
+1021
+00:42:05,359 --> 00:42:09,440
+and these sorts of very complicated uh
+
+1022
+00:42:07,680 --> 00:42:14,720
+networks.
+
+1023
+00:42:09,440 --> 00:42:17,040
+>> Way to go deep Andre. Wow. Yeah. So I
+
+1024
+00:42:14,720 --> 00:42:19,760
+take some note. I'm wondering um as
+
+1025
+00:42:17,040 --> 00:42:23,680
+people weey and Allison that that deal
+
+1026
+00:42:19,760 --> 00:42:26,640
+with um uh a people already using graphs
+
+1027
+00:42:23,680 --> 00:42:29,839
+if there are ways that um have helped
+
+1028
+00:42:26,640 --> 00:42:32,240
+them connect network science ideas,
+
+1029
+00:42:29,839 --> 00:42:36,599
+principles, practices to maybe current
+
+1030
+00:42:32,240 --> 00:42:36,599
+graphs that that they may have.
+
+1031
+00:42:37,200 --> 00:42:43,040
+>> You're up first.
+
+1032
+00:42:40,319 --> 00:42:47,280
+Um
+
+1033
+00:42:43,040 --> 00:42:51,520
+I I have uh collaborated with uh some um
+
+1034
+00:42:47,280 --> 00:42:54,079
+researchers on how to optimize the uh um
+
+1035
+00:42:51,520 --> 00:42:58,640
+efficiency in the collaboration in the
+
+1036
+00:42:54,079 --> 00:43:01,599
+uh in in the industry. Um now of course
+
+1037
+00:42:58,640 --> 00:43:04,960
+the the the end result is not very clear
+
+1038
+00:43:01,599 --> 00:43:07,359
+and there's some ideas and the there's
+
+1039
+00:43:04,960 --> 00:43:10,480
+some some also practical things is more
+
+1040
+00:43:07,359 --> 00:43:14,800
+like um um
+
+1041
+00:43:10,480 --> 00:43:17,440
+in large network um in application of
+
+1042
+00:43:14,800 --> 00:43:19,440
+taking down some like uh nefarious
+
+1043
+00:43:17,440 --> 00:43:21,040
+network activities
+
+1044
+00:43:19,440 --> 00:43:23,119
+and
+
+1045
+00:43:21,040 --> 00:43:25,040
+trying to figure out. So that those are
+
+1046
+00:43:23,119 --> 00:43:28,640
+really clear example of you need to look
+
+1047
+00:43:25,040 --> 00:43:31,760
+at the both large scale systematic
+
+1048
+00:43:28,640 --> 00:43:33,680
+characteristic but also also it's very
+
+1049
+00:43:31,760 --> 00:43:36,640
+important to be able to get down to the
+
+1050
+00:43:33,680 --> 00:43:38,960
+local level. uh the local level is often
+
+1051
+00:43:36,640 --> 00:43:42,160
+things gets more complicated gets like
+
+1052
+00:43:38,960 --> 00:43:44,560
+uh fuzzy like uh uh then the information
+
+1053
+00:43:42,160 --> 00:43:47,359
+from network is often not sufficient
+
+1054
+00:43:44,560 --> 00:43:51,119
+that it give you indication but then you
+
+1055
+00:43:47,359 --> 00:43:55,760
+have augment with other some real world
+
+1056
+00:43:51,119 --> 00:43:58,880
+informations that's just my experience
+
+1057
+00:43:55,760 --> 00:44:01,359
+>> I think one of the things that um you
+
+1058
+00:43:58,880 --> 00:44:03,440
+and if let me know if this is not the
+
+1059
+00:44:01,359 --> 00:44:05,680
+question you were asking one of the
+
+1060
+00:44:03,440 --> 00:44:07,839
+things that's possible is, you know,
+
+1061
+00:44:05,680 --> 00:44:09,680
+when sometimes when folks go in and
+
+1062
+00:44:07,839 --> 00:44:11,920
+they're using graph for the first time,
+
+1063
+00:44:09,680 --> 00:44:14,560
+they have an idea of what the ontology
+
+1064
+00:44:11,920 --> 00:44:17,599
+should be and it's not always
+
+1065
+00:44:14,560 --> 00:44:19,680
+necessarily what's in the data itself.
+
+1066
+00:44:17,599 --> 00:44:23,040
+And so I think sometimes there are
+
+1067
+00:44:19,680 --> 00:44:25,520
+opportunities to let the ontology speak
+
+1068
+00:44:23,040 --> 00:44:28,800
+to you. The way that I see it most often
+
+1069
+00:44:25,520 --> 00:44:32,800
+is from unstructured data. And it's like
+
+1070
+00:44:28,800 --> 00:44:35,280
+I was saying before to really let what's
+
+1071
+00:44:32,800 --> 00:44:37,200
+naturally in that unstructured data sort
+
+1072
+00:44:35,280 --> 00:44:40,160
+of come to the four and tell you what
+
+1073
+00:44:37,200 --> 00:44:42,000
+its ontology is and then put that back
+
+1074
+00:44:40,160 --> 00:44:45,040
+to you know does that actually make
+
+1075
+00:44:42,000 --> 00:44:46,960
+sense but really keeping it open to
+
+1076
+00:44:45,040 --> 00:44:49,599
+understanding
+
+1077
+00:44:46,960 --> 00:44:51,520
+are there other aspects of a hierarchy
+
+1078
+00:44:49,599 --> 00:44:53,440
+or other aspects of a representation
+
+1079
+00:44:51,520 --> 00:44:56,400
+that we haven't considered that is
+
+1080
+00:44:53,440 --> 00:44:58,000
+already existing in the data itself.
+
+1081
+00:44:56,400 --> 00:45:01,920
+So, I don't know if that answers your
+
+1082
+00:44:58,000 --> 00:45:04,640
+question, but that's where I I think I
+
+1083
+00:45:01,920 --> 00:45:08,720
+think oftent times there's much more of
+
+1084
+00:45:04,640 --> 00:45:11,839
+a need for an ontological layer in order
+
+1085
+00:45:08,720 --> 00:45:14,079
+for the graph to and that network to
+
+1086
+00:45:11,839 --> 00:45:16,240
+really speak to answering the questions
+
+1087
+00:45:14,079 --> 00:45:18,640
+and really have being a good
+
+1088
+00:45:16,240 --> 00:45:22,720
+representation and abstraction of what
+
+1089
+00:45:18,640 --> 00:45:25,280
+that data actually is. Um, and so I just
+
+1090
+00:45:22,720 --> 00:45:27,599
+think we need more of it in a lot of
+
+1091
+00:45:25,280 --> 00:45:29,200
+those commercial settings.
+
+1092
+00:45:27,599 --> 00:45:31,440
+>> So, so Orura, I don't know if you have
+
+1093
+00:45:29,200 --> 00:45:34,560
+some ideas um either with somebody
+
+1094
+00:45:31,440 --> 00:45:36,560
+already using a graph or um maybe what
+
+1095
+00:45:34,560 --> 00:45:39,680
+tools, you know, you find the most
+
+1096
+00:45:36,560 --> 00:45:43,280
+helpful um for your analysis.
+
+1097
+00:45:39,680 --> 00:45:45,440
+>> So, I actually don't have solutions. Um,
+
+1098
+00:45:43,280 --> 00:45:47,760
+and I'm I'm really interested in in
+
+1099
+00:45:45,440 --> 00:45:50,400
+those types of challenges. So, so my
+
+1100
+00:45:47,760 --> 00:45:55,200
+talk yesterday was mainly about how can
+
+1101
+00:45:50,400 --> 00:45:57,599
+you analyze a vibe? Um, can you actually
+
+1102
+00:45:55,200 --> 00:45:59,760
+capture a vibe? And that that relates to
+
+1103
+00:45:57,599 --> 00:46:02,000
+what you mentioned about humans doing
+
+1104
+00:45:59,760 --> 00:46:04,319
+things in a very natural way and can we
+
+1105
+00:46:02,000 --> 00:46:06,640
+replicate it? Because when we go into a
+
+1106
+00:46:04,319 --> 00:46:09,119
+room or any other space, we we
+
+1107
+00:46:06,640 --> 00:46:11,200
+intuitively immediately sense the vibe
+
+1108
+00:46:09,119 --> 00:46:13,680
+and we can describe it for ourselves.
+
+1109
+00:46:11,200 --> 00:46:17,599
+It's an it's an you know it's an emotion
+
+1110
+00:46:13,680 --> 00:46:20,400
+that we intuitively sense and yet
+
+1111
+00:46:17,599 --> 00:46:22,720
+what would it mean in terms of you know
+
+1112
+00:46:20,400 --> 00:46:25,920
+understanding its ontological mapping
+
+1113
+00:46:22,720 --> 00:46:27,760
+and understanding it it's its um process
+
+1114
+00:46:25,920 --> 00:46:29,440
+of emergence I'm not even going there
+
+1115
+00:46:27,760 --> 00:46:32,480
+but how do you actually capture that
+
+1116
+00:46:29,440 --> 00:46:35,119
+within the system and I think that if we
+
+1117
+00:46:32,480 --> 00:46:38,640
+had an almost vibe machine where we
+
+1118
+00:46:35,119 --> 00:46:40,800
+could analyze a vibe and then intervene
+
+1119
+00:46:38,640 --> 00:46:43,680
+within the space to to make the vibe
+
+1120
+00:46:40,800 --> 00:46:46,560
+better then it would be a very useful
+
+1121
+00:46:43,680 --> 00:46:49,359
+instrument and I think that this is more
+
+1122
+00:46:46,560 --> 00:46:52,160
+of a puzzle for me right now in terms of
+
+1123
+00:46:49,359 --> 00:46:54,400
+what you could use. So
+
+1124
+00:46:52,160 --> 00:46:55,680
+any suggestions?
+
+1125
+00:46:54,400 --> 00:46:58,160
+Well, it just brings me back to what
+
+1126
+00:46:55,680 --> 00:46:59,680
+Andre was saying before about the you
+
+1127
+00:46:58,160 --> 00:47:01,839
+know the mapping of the spinning of
+
+1128
+00:46:59,680 --> 00:47:04,319
+everything. It it seems to me like it's
+
+1129
+00:47:01,839 --> 00:47:06,319
+a very similar type of situation. So if
+
+1130
+00:47:04,319 --> 00:47:08,319
+you want to get to a particular picture,
+
+1131
+00:47:06,319 --> 00:47:10,480
+you want to get to a particular vibe,
+
+1132
+00:47:08,319 --> 00:47:13,119
+you have just have to figure out which
+
+1133
+00:47:10,480 --> 00:47:15,440
+levers to move, right? And we see that
+
+1134
+00:47:13,119 --> 00:47:18,880
+just as humans, right? I mean, you walk
+
+1135
+00:47:15,440 --> 00:47:21,119
+into a room and something is weird is a
+
+1136
+00:47:18,880 --> 00:47:23,280
+way and you say, "How can I bring X to
+
+1137
+00:47:21,119 --> 00:47:24,800
+this and how can I move that?" So it
+
+1138
+00:47:23,280 --> 00:47:25,839
+just sounds very much like what you were
+
+1139
+00:47:24,800 --> 00:47:27,920
+saying earlier.
+
+1140
+00:47:25,839 --> 00:47:30,720
+>> Exactly.
+
+1141
+00:47:27,920 --> 00:47:32,319
+Yeah, it's true because I I think that
+
+1142
+00:47:30,720 --> 00:47:34,160
+what you're saying as well is really
+
+1143
+00:47:32,319 --> 00:47:37,920
+interesting because there are concepts
+
+1144
+00:47:34,160 --> 00:47:40,400
+which are really hard to uh put a box on
+
+1145
+00:47:37,920 --> 00:47:43,440
+it, right? They live in they live in an
+
+1146
+00:47:40,400 --> 00:47:45,920
+abstract layer which uh it's almost like
+
+1147
+00:47:43,440 --> 00:47:49,520
+I know it when I see it. Yeah.
+
+1148
+00:47:45,920 --> 00:47:52,000
+>> Uh but but the question is maybe is
+
+1149
+00:47:49,520 --> 00:47:55,280
+there a way to look at a 100 different
+
+1150
+00:47:52,000 --> 00:47:57,040
+rooms, capture data on everything and
+
+1151
+00:47:55,280 --> 00:47:58,960
+then cluster the rooms and then point
+
+1152
+00:47:57,040 --> 00:48:01,359
+out, oh this room has a good vibe, this
+
+1153
+00:47:58,960 --> 00:48:04,319
+room has a bad vibe.
+
+1154
+00:48:01,359 --> 00:48:06,079
+>> Sure. Exactly. Let's do that. That that
+
+1155
+00:48:04,319 --> 00:48:08,400
+seems amazing. Right. Because I do think
+
+1156
+00:48:06,079 --> 00:48:09,839
+that there like as human beings even
+
+1157
+00:48:08,400 --> 00:48:11,839
+when it comes to communication, right?
+
+1158
+00:48:09,839 --> 00:48:14,160
+because we're so focused on language now
+
+1159
+00:48:11,839 --> 00:48:16,079
+but in reality most of our communication
+
+1160
+00:48:14,160 --> 00:48:20,240
+doesn't even happen at the at the level
+
+1161
+00:48:16,079 --> 00:48:22,319
+of language and uh and it seems a lot
+
+1162
+00:48:20,240 --> 00:48:24,079
+it's it's not only multimodal in the
+
+1163
+00:48:22,319 --> 00:48:26,000
+sense that I'm seeing things but it's
+
+1164
+00:48:24,079 --> 00:48:28,079
+also multiensorial
+
+1165
+00:48:26,000 --> 00:48:30,400
+sensorial is not the right word but like
+
+1166
+00:48:28,079 --> 00:48:32,559
+there is a system in my brain that I can
+
+1167
+00:48:30,400 --> 00:48:35,760
+look at someone and I can kind of feel
+
+1168
+00:48:32,559 --> 00:48:37,680
+some type of uh you know either like a a
+
+1169
+00:48:35,760 --> 00:48:40,640
+good feeling right because a person
+
+1170
+00:48:37,680 --> 00:48:42,800
+seems receptive or not or the person
+
+1171
+00:48:40,640 --> 00:48:45,040
+seems aggressive, but are these tiny
+
+1172
+00:48:42,800 --> 00:48:47,359
+little things and we don't have a good
+
+1173
+00:48:45,040 --> 00:48:49,520
+taxonomy or ontology or whatever to
+
+1174
+00:48:47,359 --> 00:48:50,960
+classify this. And this is a trouble
+
+1175
+00:48:49,520 --> 00:48:54,000
+going back to what you were saying
+
+1176
+00:48:50,960 --> 00:48:57,119
+yesterday uh way, which is when you put
+
+1177
+00:48:54,000 --> 00:48:59,440
+a a label on it, you're automatically
+
+1178
+00:48:57,119 --> 00:49:01,599
+reducing the complexity of its
+
+1179
+00:48:59,440 --> 00:49:03,680
+description, which is like how do I put
+
+1180
+00:49:01,599 --> 00:49:05,280
+a label on a vibe? Even though it's
+
+1181
+00:49:03,680 --> 00:49:07,440
+useful from the point of view of like
+
+1182
+00:49:05,280 --> 00:49:09,200
+okay I want to do science I need a label
+
+1183
+00:49:07,440 --> 00:49:12,240
+but
+
+1184
+00:49:09,200 --> 00:49:15,040
+yeah what else how how can I you know
+
+1185
+00:49:12,240 --> 00:49:16,880
+make it softer right such that I can put
+
+1186
+00:49:15,040 --> 00:49:20,800
+things on a on a bigger spectrum rather
+
+1187
+00:49:16,880 --> 00:49:20,800
+than just true or false
+
+1188
+00:49:21,440 --> 00:49:24,319
+>> yeah I think the soft edges thing is
+
+1189
+00:49:23,520 --> 00:49:27,599
+really
+
+1190
+00:49:24,319 --> 00:49:30,240
+>> No I'm just saying just to ask you more
+
+1191
+00:49:27,599 --> 00:49:32,240
+questions I mean I think creating softer
+
+1192
+00:49:30,240 --> 00:49:34,800
+boundaries is is one of the key
+
+1193
+00:49:32,240 --> 00:49:37,040
+challenges is almost like membranes that
+
+1194
+00:49:34,800 --> 00:49:38,240
+things can still move through and it's
+
+1195
+00:49:37,040 --> 00:49:38,720
+not a boundary.
+
+1196
+00:49:38,240 --> 00:49:41,359
+>> Yeah.
+
+1197
+00:49:38,720 --> 00:49:44,000
+>> Exactly. So I just like I I like to say
+
+1198
+00:49:41,359 --> 00:49:47,920
+this but people may laugh at me but
+
+1199
+00:49:44,000 --> 00:49:50,480
+there's um there's a uh about 2500 years
+
+1200
+00:49:47,920 --> 00:49:53,839
+ago there's a two philosophical thought
+
+1201
+00:49:50,480 --> 00:49:56,400
+happening in one Greek way in China. Uh
+
+1202
+00:49:53,839 --> 00:50:00,319
+the uh the the Greek philosophy is more
+
+1203
+00:49:56,400 --> 00:50:02,559
+focused on categorization and naming.
+
+1204
+00:50:00,319 --> 00:50:05,040
+identify that everything has essence.
+
+1205
+00:50:02,559 --> 00:50:07,839
+the naming is a pro approximation is
+
+1206
+00:50:05,040 --> 00:50:10,000
+necessary which leads into the uh the
+
+1207
+00:50:07,839 --> 00:50:12,240
+vibrant science technology developed in
+
+1208
+00:50:10,000 --> 00:50:15,280
+the in in the Europe in the in the west
+
+1209
+00:50:12,240 --> 00:50:17,760
+world the Chinese way have a intuition
+
+1210
+00:50:15,280 --> 00:50:21,040
+that's really interesting says like uh
+
+1211
+00:50:17,760 --> 00:50:22,640
+do so translate English is if you name
+
+1212
+00:50:21,040 --> 00:50:24,800
+something you get it wrong
+
+1213
+00:50:22,640 --> 00:50:26,960
+>> so
+
+1214
+00:50:24,800 --> 00:50:28,400
+>> and uh it's really interesting
+
+1215
+00:50:26,960 --> 00:50:28,720
+>> you do know where you are right
+
+1216
+00:50:28,400 --> 00:50:30,000
+>> what
+
+1217
+00:50:28,720 --> 00:50:33,720
+>> no I said you do know what conference
+
+1218
+00:50:30,000 --> 00:50:33,720
+you're at no I'm Right.
+
+1219
+00:50:33,920 --> 00:50:38,480
+>> Yeah. The next thing it says like uh
+
+1220
+00:50:36,319 --> 00:50:43,760
+everything nothing has the permanent
+
+1221
+00:50:38,480 --> 00:50:47,200
+like essence. The essence only be like
+
+1222
+00:50:43,760 --> 00:50:50,240
+emerges when it's in contact of other
+
+1223
+00:50:47,200 --> 00:50:54,559
+things. So hence like I'm looking at the
+
+1224
+00:50:50,240 --> 00:50:58,079
+like you talk about the uh uh using LM
+
+1225
+00:50:54,559 --> 00:51:00,559
+to decipher language. Jul talk about let
+
+1226
+00:50:58,079 --> 00:51:03,200
+let the ontology
+
+1227
+00:51:00,559 --> 00:51:06,000
+>> come out to you emerge from it instead
+
+1228
+00:51:03,200 --> 00:51:08,319
+of uh instead of uh like trying to
+
+1229
+00:51:06,000 --> 00:51:10,880
+predefine it and then try to fit into
+
+1230
+00:51:08,319 --> 00:51:12,880
+into the into the box. I think that's
+
+1231
+00:51:10,880 --> 00:51:15,880
+like you you probably grew up in China I
+
+1232
+00:51:12,880 --> 00:51:15,880
+guess.
+
+1233
+00:51:16,000 --> 00:51:20,160
+So, so that's that's that that way of
+
+1234
+00:51:18,079 --> 00:51:22,720
+thinking for me it's it's really it's
+
+1235
+00:51:20,160 --> 00:51:25,440
+interesting because on one hand if you
+
+1236
+00:51:22,720 --> 00:51:28,400
+don't name things uh everything is just
+
+1237
+00:51:25,440 --> 00:51:30,559
+like you can't develop things if you
+
+1238
+00:51:28,400 --> 00:51:32,319
+name things too strictly too early uh
+
+1239
+00:51:30,559 --> 00:51:35,760
+you also have a problem you you fit
+
+1240
+00:51:32,319 --> 00:51:38,880
+everything into a small silos and it's
+
+1241
+00:51:35,760 --> 00:51:42,000
+the deviate from the true essence
+
+1242
+00:51:38,880 --> 00:51:43,520
+uh so I think that the uh the balance is
+
+1243
+00:51:42,000 --> 00:51:46,000
+the network
+
+1244
+00:51:43,520 --> 00:51:48,640
+>> uh the uh when you have when you can
+
+1245
+00:51:46,000 --> 00:51:51,520
+describe things in network you actually
+
+1246
+00:51:48,640 --> 00:51:55,040
+have a lot of tolerance of uh of feeding
+
+1247
+00:51:51,520 --> 00:51:58,079
+things in the silo or a lot of un like a
+
+1248
+00:51:55,040 --> 00:52:00,480
+lot of uh uncertainty to emerge like you
+
+1249
+00:51:58,079 --> 00:52:02,800
+just said in the in in this approach. So
+
+1250
+00:52:00,480 --> 00:52:05,440
+I think the one of the thing that it's
+
+1251
+00:52:02,800 --> 00:52:09,119
+more intuition to me but have not yet be
+
+1252
+00:52:05,440 --> 00:52:12,000
+able to like uh uh really like bring
+
+1253
+00:52:09,119 --> 00:52:16,079
+that out the verbalize is is how a
+
+1254
+00:52:12,000 --> 00:52:19,440
+network can be used to to to represent
+
+1255
+00:52:16,079 --> 00:52:22,000
+the the uh the system the environment in
+
+1256
+00:52:19,440 --> 00:52:25,280
+a way that impossible to represent
+
+1257
+00:52:22,000 --> 00:52:25,599
+before with the ontology.
+
+1258
+00:52:25,280 --> 00:52:26,640
+>> Yeah.
+
+1259
+00:52:25,599 --> 00:52:28,880
+>> Can I add to that?
+
+1260
+00:52:26,640 --> 00:52:31,359
+>> Yeah, go ahead. And we we have about
+
+1261
+00:52:28,880 --> 00:52:31,920
+five minutes left I think. How we
+
+1262
+00:52:31,359 --> 00:52:35,200
+>> about 15?
+
+1263
+00:52:31,920 --> 00:52:36,319
+>> Oh we have 15. Never go we can go for
+
+1264
+00:52:35,200 --> 00:52:40,559
+it. We have 15 minutes.
+
+1265
+00:52:36,319 --> 00:52:43,359
+>> So just a question maybe it is about
+
+1266
+00:52:40,559 --> 00:52:45,760
+inserting flows. So focusing on the
+
+1267
+00:52:43,359 --> 00:52:48,160
+flows rather than on the nodes and on
+
+1268
+00:52:45,760 --> 00:52:52,079
+the structure because then you could
+
+1269
+00:52:48,160 --> 00:52:54,880
+capture those elements in their
+
+1270
+00:52:52,079 --> 00:52:57,520
+temporary state. Uh so I don't know if
+
+1271
+00:52:54,880 --> 00:52:59,200
+any of you are doing any flows analysis
+
+1272
+00:52:57,520 --> 00:53:02,000
+within the structure.
+
+1273
+00:52:59,200 --> 00:53:04,000
+>> There is a there's a lot of people
+
+1274
+00:53:02,000 --> 00:53:07,119
+thinking about flows right now and now
+
+1275
+00:53:04,000 --> 00:53:10,079
+sorry I'm going to nerd out again.
+
+1276
+00:53:07,119 --> 00:53:13,119
+Wake me up uh in a second. No for
+
+1277
+00:53:10,079 --> 00:53:14,880
+instance uh because we we we're often
+
+1278
+00:53:13,119 --> 00:53:17,920
+thinking about these things in a very
+
+1279
+00:53:14,880 --> 00:53:20,319
+much like uh
+
+1280
+00:53:17,920 --> 00:53:23,760
+as in this is a snapshot of my system,
+
+1281
+00:53:20,319 --> 00:53:26,079
+right? But in reality you like you can
+
+1282
+00:53:23,760 --> 00:53:28,480
+sort of represent the data as these are
+
+1283
+00:53:26,079 --> 00:53:31,280
+my states and there is a transition
+
+1284
+00:53:28,480 --> 00:53:33,440
+between different states. Uh and that
+
+1285
+00:53:31,280 --> 00:53:34,880
+that itself is going to be a network as
+
+1286
+00:53:33,440 --> 00:53:37,200
+well right because you can have a
+
+1287
+00:53:34,880 --> 00:53:39,599
+network of different states. uh the
+
+1288
+00:53:37,200 --> 00:53:41,359
+boring cases if you think about uh I
+
+1289
+00:53:39,599 --> 00:53:43,119
+don't know like or actually not not
+
+1290
+00:53:41,359 --> 00:53:45,440
+boring the really interesting is we were
+
+1291
+00:53:43,119 --> 00:53:48,000
+in a talk about football yesterday and
+
+1292
+00:53:45,440 --> 00:53:49,920
+we're like okay this is the the network
+
+1293
+00:53:48,000 --> 00:53:51,599
+which is there is a transition between
+
+1294
+00:53:49,920 --> 00:53:53,599
+different states which is the ball is
+
+1295
+00:53:51,599 --> 00:53:54,800
+here now the ball is there because of
+
+1296
+00:53:53,599 --> 00:53:56,960
+this action
+
+1297
+00:53:54,800 --> 00:53:58,880
+>> and the players are flowing around which
+
+1298
+00:53:56,960 --> 00:54:02,640
+is uh I think it's it's an interesting
+
+1299
+00:53:58,880 --> 00:54:04,800
+area uh for AI as well uh because you
+
+1300
+00:54:02,640 --> 00:54:05,760
+you have people like even Joshua Benju
+
+1301
+00:54:04,800 --> 00:54:08,640
+is working on something called
+
+1302
+00:54:05,760 --> 00:54:10,960
+generative flow networks. Uh there the
+
+1303
+00:54:08,640 --> 00:54:12,319
+whole um
+
+1304
+00:54:10,960 --> 00:54:13,839
+uh there's a whole reinforcement
+
+1305
+00:54:12,319 --> 00:54:17,440
+learning community which is kind of
+
+1306
+00:54:13,839 --> 00:54:19,920
+working on top of a network exactly of
+
+1307
+00:54:17,440 --> 00:54:24,640
+states and transitions between states.
+
+1308
+00:54:19,920 --> 00:54:28,559
+Uh so so the the question is how to sort
+
+1309
+00:54:24,640 --> 00:54:29,920
+of putting this world this this world of
+
+1310
+00:54:28,559 --> 00:54:32,720
+reinforcement learning this world of
+
+1311
+00:54:29,920 --> 00:54:35,440
+state modeling and this world of kind of
+
+1312
+00:54:32,720 --> 00:54:37,119
+knowledge graph which if you think about
+
+1313
+00:54:35,440 --> 00:54:40,079
+text if you think about the description
+
+1314
+00:54:37,119 --> 00:54:43,920
+of a system it's not so it's a bit more
+
+1315
+00:54:40,079 --> 00:54:45,760
+fluid right uh so so yeah so it's not a
+
+1316
+00:54:43,920 --> 00:54:47,920
+right answer to you but it's a statement
+
+1317
+00:54:45,760 --> 00:54:50,319
+that there are people working on kind of
+
+1318
+00:54:47,920 --> 00:54:53,280
+flow within networks but in slightly
+
+1319
+00:54:50,319 --> 00:54:55,920
+different uh uh uh slightly different
+
+1320
+00:54:53,280 --> 00:54:57,599
+contexts.
+
+1321
+00:54:55,920 --> 00:54:59,280
+>> All right, since we do have a few more
+
+1322
+00:54:57,599 --> 00:55:02,480
+minutes, are there more questions? Uh
+
+1323
+00:54:59,280 --> 00:55:04,480
+Brashant, let me I got them all the
+
+1324
+00:55:02,480 --> 00:55:06,240
+questions.
+
+1325
+00:55:04,480 --> 00:55:08,079
+>> Uh yeah, so I also have a physics
+
+1326
+00:55:06,240 --> 00:55:11,520
+background and I came into computer
+
+1327
+00:55:08,079 --> 00:55:13,440
+science. So uh one frustration I have
+
+1328
+00:55:11,520 --> 00:55:15,200
+with uh graph data science network
+
+1329
+00:55:13,440 --> 00:55:18,240
+science whatever the broad fuzzy bubble
+
+1330
+00:55:15,200 --> 00:55:20,559
+of that whole field is unlike physics
+
+1331
+00:55:18,240 --> 00:55:22,160
+where it's first principles driven you
+
+1332
+00:55:20,559 --> 00:55:25,119
+have governing equations you have an
+
+1333
+00:55:22,160 --> 00:55:27,200
+underlying theory and there are some
+
+1334
+00:55:25,119 --> 00:55:29,920
+foundation ways of thinking that allow
+
+1335
+00:55:27,200 --> 00:55:31,280
+you to construct the problem and define
+
+1336
+00:55:29,920 --> 00:55:33,920
+what you're the what questions you're
+
+1337
+00:55:31,280 --> 00:55:36,079
+asking and you have models that help you
+
+1338
+00:55:33,920 --> 00:55:37,839
+answer those questions. So it's a very
+
+1339
+00:55:36,079 --> 00:55:39,760
+structured way in my opinion of thinking
+
+1340
+00:55:37,839 --> 00:55:41,680
+about things. But my frustration when I
+
+1341
+00:55:39,760 --> 00:55:43,119
+look at the way graph data science is
+
+1342
+00:55:41,680 --> 00:55:44,880
+done and all the material I've seen
+
+1343
+00:55:43,119 --> 00:55:47,440
+online, the blogs, the videos, I've
+
+1344
+00:55:44,880 --> 00:55:48,880
+pretty much done them all. And every
+
+1345
+00:55:47,440 --> 00:55:50,240
+single time I have this question when
+
+1346
+00:55:48,880 --> 00:55:52,720
+people are talking about how to do graph
+
+1347
+00:55:50,240 --> 00:55:54,559
+data science, it seems very handwavy to
+
+1348
+00:55:52,720 --> 00:55:57,119
+me. It feels like an art more than a
+
+1349
+00:55:54,559 --> 00:55:58,880
+science. It feels like part of it is
+
+1350
+00:55:57,119 --> 00:56:01,359
+because of the reason you brought up Amy
+
+1351
+00:55:58,880 --> 00:56:03,119
+that is there is graph theory, there is
+
+1352
+00:56:01,359 --> 00:56:04,960
+graph technology and there is network
+
+1353
+00:56:03,119 --> 00:56:06,319
+science. I guess some statistical
+
+1354
+00:56:04,960 --> 00:56:08,079
+methods along the way. So they're all
+
+1355
+00:56:06,319 --> 00:56:12,160
+kind of different fields converging into
+
+1356
+00:56:08,079 --> 00:56:14,480
+this one area. And in my case when I
+
+1357
+00:56:12,160 --> 00:56:18,000
+work with a data set I have moved that
+
+1358
+00:56:14,480 --> 00:56:20,559
+data from one form into a graph. So I
+
+1359
+00:56:18,000 --> 00:56:24,160
+have already imposed a sort of structure
+
+1360
+00:56:20,559 --> 00:56:26,400
+on that data. I have in many cases that
+
+1361
+00:56:24,160 --> 00:56:27,680
+data makes conceptual sense. The way the
+
+1362
+00:56:26,400 --> 00:56:30,559
+things are connected makes conceptual
+
+1363
+00:56:27,680 --> 00:56:33,599
+sense. So what I'm my my bigger question
+
+1364
+00:56:30,559 --> 00:56:35,839
+here is when you go through that process
+
+1365
+00:56:33,599 --> 00:56:38,960
+when you have the data set is is it
+
+1366
+00:56:35,839 --> 00:56:40,960
+always the case that you you can apply
+
+1367
+00:56:38,960 --> 00:56:42,799
+these network science methods on it.
+
+1368
+00:56:40,960 --> 00:56:44,559
+Does every data set have a network
+
+1369
+00:56:42,799 --> 00:56:46,400
+science angle through which you can view
+
+1370
+00:56:44,559 --> 00:56:47,680
+it and answer questions about it. Some
+
+1371
+00:56:46,400 --> 00:56:49,920
+some of them you can just answer via
+
+1372
+00:56:47,680 --> 00:56:51,520
+queries or aggregations uh you know
+
+1373
+00:56:49,920 --> 00:56:54,240
+those kinds of highle questions. But
+
+1374
+00:56:51,520 --> 00:56:56,400
+then can do you know that you're missing
+
+1375
+00:56:54,240 --> 00:56:57,920
+out something where a network science
+
+1376
+00:56:56,400 --> 00:57:00,799
+approach could have helped you answer
+
+1377
+00:56:57,920 --> 00:57:02,319
+something new about that data and unlike
+
+1378
+00:57:00,799 --> 00:57:04,799
+physics I don't have a framework of
+
+1379
+00:57:02,319 --> 00:57:06,400
+thinking I can't do it that way so many
+
+1380
+00:57:04,799 --> 00:57:09,119
+times I have data sets where I'm staring
+
+1381
+00:57:06,400 --> 00:57:11,119
+at it I can see something intuitively
+
+1382
+00:57:09,119 --> 00:57:13,599
+and my aggregations tell me that okay
+
+1383
+00:57:11,119 --> 00:57:15,839
+the numbers make sense but then I have
+
+1384
+00:57:13,599 --> 00:57:17,200
+no clue how to proceed like I I can
+
+1385
+00:57:15,839 --> 00:57:18,720
+throw a dart and pick any of these
+
+1386
+00:57:17,200 --> 00:57:21,839
+centrality algorithms or whatever other
+
+1387
+00:57:18,720 --> 00:57:23,280
+algorithms there are But am I asking the
+
+1388
+00:57:21,839 --> 00:57:24,559
+right question? Am I missing questions
+
+1389
+00:57:23,280 --> 00:57:26,480
+that I could have asked that could have
+
+1390
+00:57:24,559 --> 00:57:28,559
+helped me understand that data better?
+
+1391
+00:57:26,480 --> 00:57:30,400
+And what more insights can I get by
+
+1392
+00:57:28,559 --> 00:57:32,799
+thinking about that data in a more
+
+1393
+00:57:30,400 --> 00:57:36,440
+fundamental way using a more structural
+
+1394
+00:57:32,799 --> 00:57:36,440
+way of thinking about it?
+
+1395
+00:57:39,200 --> 00:57:43,280
+>> As the as a graph data scientist, I feel
+
+1396
+00:57:41,599 --> 00:57:47,200
+an obligation to be the first person to
+
+1397
+00:57:43,280 --> 00:57:48,720
+answer your question. Um, so there were
+
+1398
+00:57:47,200 --> 00:57:50,799
+many many things you discussed. The
+
+1399
+00:57:48,720 --> 00:57:53,680
+first was the handwavy part. So, we'll
+
+1400
+00:57:50,799 --> 00:57:56,160
+we'll get to that. But I think I think
+
+1401
+00:57:53,680 --> 00:57:57,839
+your last question is probably the most
+
+1402
+00:57:56,160 --> 00:58:01,359
+the one that needs to be addressed
+
+1403
+00:57:57,839 --> 00:58:05,200
+first, which is how do we Oh, sorry. Oh,
+
+1404
+00:58:01,359 --> 00:58:08,720
+thank you. Um, how do we know when we're
+
+1405
+00:58:05,200 --> 00:58:11,839
+looking at a network or a graph that I'm
+
+1406
+00:58:08,720 --> 00:58:13,119
+asking the right questions? And I'll be
+
+1407
+00:58:11,839 --> 00:58:15,040
+honest, I don't think there's an answer
+
+1408
+00:58:13,119 --> 00:58:17,040
+to that, right? It's it's like when
+
+1409
+00:58:15,040 --> 00:58:19,040
+you're looking at any phenomenon, how do
+
+1410
+00:58:17,040 --> 00:58:21,040
+you know that you've explored it fully?
+
+1411
+00:58:19,040 --> 00:58:23,920
+How do you know what you haven't looked
+
+1412
+00:58:21,040 --> 00:58:26,240
+at? I think, you know, there are there
+
+1413
+00:58:23,920 --> 00:58:28,400
+are pieces you can go through, you know,
+
+1414
+00:58:26,240 --> 00:58:30,400
+classic exploratory data analysis. I
+
+1415
+00:58:28,400 --> 00:58:32,000
+want to look at this and that. And you
+
+1416
+00:58:30,400 --> 00:58:33,359
+you can certainly have a framework of
+
+1417
+00:58:32,000 --> 00:58:36,480
+steps you want to go through when you're
+
+1418
+00:58:33,359 --> 00:58:38,559
+looking at the graph, but I don't I
+
+1419
+00:58:36,480 --> 00:58:40,799
+don't know that
+
+1420
+00:58:38,559 --> 00:58:44,240
+it it's hard to know that you've hit
+
+1421
+00:58:40,799 --> 00:58:46,400
+everything, right? So some of some of
+
+1422
+00:58:44,240 --> 00:58:47,920
+that is I does that answer your
+
+1423
+00:58:46,400 --> 00:58:50,240
+question? It's not helpful though, is
+
+1424
+00:58:47,920 --> 00:58:54,000
+it? Right. It it feels very handwavy,
+
+1425
+00:58:50,240 --> 00:58:57,119
+right? Um yeah. So but I don't know. But
+
+1426
+00:58:54,000 --> 00:58:59,440
+I think that's true. I think we can, you
+
+1427
+00:58:57,119 --> 00:59:02,079
+know, as scientists and people who
+
+1428
+00:58:59,440 --> 00:59:04,240
+explore, we can look at something an
+
+1429
+00:59:02,079 --> 00:59:06,000
+infinite number of ways. And how do you
+
+1430
+00:59:04,240 --> 00:59:07,920
+know that you've looked at it enough
+
+1431
+00:59:06,000 --> 00:59:11,040
+ways? I don't know, maybe life in
+
+1432
+00:59:07,920 --> 00:59:12,160
+physics is different, but I feel like,
+
+1433
+00:59:11,040 --> 00:59:13,760
+you know, especially when you're looking
+
+1434
+00:59:12,160 --> 00:59:16,079
+at a complex system, like you could look
+
+1435
+00:59:13,760 --> 00:59:17,599
+at a a city forever, right? Like there
+
+1436
+00:59:16,079 --> 00:59:20,960
+there's an infinite number of things you
+
+1437
+00:59:17,599 --> 00:59:23,359
+could look at. Um, going back to sort of
+
+1438
+00:59:20,960 --> 00:59:25,760
+from a practical perspective, what do we
+
+1439
+00:59:23,359 --> 00:59:27,119
+want to do when we put it together? I
+
+1440
+00:59:25,760 --> 00:59:28,880
+think even just what you were saying,
+
+1441
+00:59:27,119 --> 00:59:30,720
+you've transformed that data into the
+
+1442
+00:59:28,880 --> 00:59:34,079
+graph itself. And that's the one thing
+
+1443
+00:59:30,720 --> 00:59:37,359
+that I also wanted to talk about is
+
+1444
+00:59:34,079 --> 00:59:39,200
+the the human element of what is a what
+
+1445
+00:59:37,359 --> 00:59:40,880
+is an entity, what is a relationship,
+
+1446
+00:59:39,200 --> 00:59:42,880
+what goes in as a property, what don't
+
+1447
+00:59:40,880 --> 00:59:46,319
+you include, what do you include, how do
+
+1448
+00:59:42,880 --> 00:59:48,960
+you I mean there is a lot of art in it
+
+1449
+00:59:46,319 --> 00:59:50,960
+and there is a lot of possibility and
+
+1450
+00:59:48,960 --> 00:59:53,359
+there's an infinite number of ways that
+
+1451
+00:59:50,960 --> 00:59:57,119
+you can take tabular data and put it
+
+1452
+00:59:53,359 --> 00:59:59,359
+into a network and there's a there's a
+
+1453
+00:59:57,119 --> 01:00:01,440
+certain amount of responsibility of your
+
+1454
+00:59:59,359 --> 01:00:04,799
+own perspective that you have to own
+
+1455
+01:00:01,440 --> 01:00:07,040
+when you then look at it. So I don't
+
+1456
+01:00:04,799 --> 01:00:10,799
+know that you can say I've looked at it
+
+1457
+01:00:07,040 --> 01:00:13,119
+enough ever. Um but I don't know how
+
+1458
+01:00:10,799 --> 01:00:15,440
+that differs from physics.
+
+1459
+01:00:13,119 --> 01:00:17,520
+>> So that's actually really good points
+
+1460
+01:00:15,440 --> 01:00:20,799
+and really good talk. I have two
+
+1461
+01:00:17,520 --> 01:00:24,559
+thoughts and I felt like feel like the
+
+1462
+01:00:20,799 --> 01:00:28,319
+today's tooling uh is missing. uh salt
+
+1463
+01:00:24,559 --> 01:00:30,319
+number one um I use analogy like in uh
+
+1464
+01:00:28,319 --> 01:00:32,240
+in physics since we have phys we have
+
+1465
+01:00:30,319 --> 01:00:34,799
+people in physics background like when
+
+1466
+01:00:32,240 --> 01:00:36,559
+you describe a wave right you can
+
+1467
+01:00:34,799 --> 01:00:38,400
+there's two way describe it one is in
+
+1468
+01:00:36,559 --> 01:00:39,920
+the physical space like something
+
+1469
+01:00:38,400 --> 01:00:41,839
+oscillating
+
+1470
+01:00:39,920 --> 01:00:43,520
+the other things in the frequency space
+
+1471
+01:00:41,839 --> 01:00:46,319
+like oh I have a peak here I have the
+
+1472
+01:00:43,520 --> 01:00:49,359
+frequency distribution and when I look
+
+1473
+01:00:46,319 --> 01:00:50,880
+at the data and uh I think the data has
+
+1474
+01:00:49,359 --> 01:00:53,599
+two representations you have a
+
+1475
+01:00:50,880 --> 01:00:55,440
+dimensional representation a table
+
+1476
+01:00:53,599 --> 01:00:58,720
+things like and you have a graph
+
+1477
+01:00:55,440 --> 01:01:01,440
+representation the edges things. Now how
+
+1478
+01:00:58,720 --> 01:01:04,400
+do you like look at the data from like
+
+1479
+01:01:01,440 --> 01:01:06,319
+reconcile those two different
+
+1480
+01:01:04,400 --> 01:01:08,240
+representations just like you you
+
+1481
+01:01:06,319 --> 01:01:10,079
+sometime you look at the wave you you're
+
+1482
+01:01:08,240 --> 01:01:11,599
+measuring in physical space sometime you
+
+1483
+01:01:10,079 --> 01:01:14,480
+measure the frequency you can filter on
+
+1484
+01:01:11,599 --> 01:01:17,680
+the frequency it's very convenient and
+
+1485
+01:01:14,480 --> 01:01:19,520
+in in the graph data data science I
+
+1486
+01:01:17,680 --> 01:01:21,280
+think it's connect to the the bigger
+
+1487
+01:01:19,520 --> 01:01:24,079
+data science world through those two
+
+1488
+01:01:21,280 --> 01:01:26,720
+projections but how do we go from in
+
+1489
+01:01:24,079 --> 01:01:29,040
+between that's not been defined today
+
+1490
+01:01:26,720 --> 01:01:31,440
+and then and in in the in the practical
+
+1491
+01:01:29,040 --> 01:01:33,920
+solution I I encounter that all the time
+
+1492
+01:01:31,440 --> 01:01:37,200
+there like I constantly need to look at
+
+1493
+01:01:33,920 --> 01:01:39,440
+the data from a graph perspective and
+
+1494
+01:01:37,200 --> 01:01:41,680
+also from just a data like traditional
+
+1495
+01:01:39,440 --> 01:01:43,760
+data perspective
+
+1496
+01:01:41,680 --> 01:01:45,680
+uh that being said the other thing is I
+
+1497
+01:01:43,760 --> 01:01:47,920
+say the graph like today when we talk
+
+1498
+01:01:45,680 --> 01:01:51,040
+about graph is we we often think about
+
+1499
+01:01:47,920 --> 01:01:55,200
+as a concrete graph like we have a
+
+1500
+01:01:51,040 --> 01:01:57,599
+person connection I think LM is like
+
+1501
+01:01:55,200 --> 01:02:00,480
+vector embeddings is really good way of
+
+1502
+01:01:57,599 --> 01:02:03,119
+a uh of of a kind pushing the boundary a
+
+1503
+01:02:00,480 --> 01:02:05,280
+little bit. Now the graph is what we see
+
+1504
+01:02:03,119 --> 01:02:07,839
+the graph I can I see that as as a
+
+1505
+01:02:05,280 --> 01:02:09,920
+manifest of graph but be beyond the
+
+1506
+01:02:07,839 --> 01:02:11,760
+manifest graph you have you have latent
+
+1507
+01:02:09,920 --> 01:02:14,319
+graph like if you take a vector
+
+1508
+01:02:11,760 --> 01:02:16,880
+embedding of of entities look at the
+
+1509
+01:02:14,319 --> 01:02:18,799
+vector similarities that depends on if
+
+1510
+01:02:16,880 --> 01:02:20,799
+you can project vector similarity in the
+
+1511
+01:02:18,799 --> 01:02:22,400
+different domain different dimension you
+
+1512
+01:02:20,799 --> 01:02:25,440
+can actually construct many different
+
+1513
+01:02:22,400 --> 01:02:28,240
+kind of graph from the same data set so
+
+1514
+01:02:25,440 --> 01:02:30,960
+so you have a latent graph that hidden
+
+1515
+01:02:28,240 --> 01:02:33,359
+in the similarity like vector embedding
+
+1516
+01:02:30,960 --> 01:02:35,599
+But you also you can have a manifest
+
+1517
+01:02:33,359 --> 01:02:37,119
+graph. Now that's just really like in
+
+1518
+01:02:35,599 --> 01:02:40,319
+physics problem depends on how you
+
+1519
+01:02:37,119 --> 01:02:42,240
+project into into which dimension you
+
+1520
+01:02:40,319 --> 01:02:44,400
+look at it. You may have a very
+
+1521
+01:02:42,240 --> 01:02:46,720
+different thing. So in the practical
+
+1522
+01:02:44,400 --> 01:02:48,960
+application I I felt like that kind of
+
+1523
+01:02:46,720 --> 01:02:51,040
+thing come up all the time but we don't
+
+1524
+01:02:48,960 --> 01:02:53,040
+really have a good framework to to even
+
+1525
+01:02:51,040 --> 01:02:54,880
+think about that.
+
+1526
+01:02:53,040 --> 01:02:56,720
+>> Uh I don't know or if you want to add
+
+1527
+01:02:54,880 --> 01:03:00,400
+anything or or can you ever look at a
+
+1528
+01:02:56,720 --> 01:03:02,480
+city enough ways? Um so that's the thing
+
+1529
+01:03:00,400 --> 01:03:05,119
+it goes back to you know the map is not
+
+1530
+01:03:02,480 --> 01:03:07,359
+the territory element I think that you
+
+1531
+01:03:05,119 --> 01:03:10,960
+always start with what are you trying to
+
+1532
+01:03:07,359 --> 01:03:13,520
+do so for me it is the puzzle and there
+
+1533
+01:03:10,960 --> 01:03:16,799
+is no model for the system you cannot
+
+1534
+01:03:13,520 --> 01:03:19,440
+represent the system in any model you
+
+1535
+01:03:16,799 --> 01:03:21,599
+are modeling in order to help you make
+
+1536
+01:03:19,440 --> 01:03:24,079
+sense of the system and there are two
+
+1537
+01:03:21,599 --> 01:03:26,079
+different things so the boundaries that
+
+1538
+01:03:24,079 --> 01:03:28,799
+you place on the system really depends
+
+1539
+01:03:26,079 --> 01:03:31,359
+on what is the puzzle and who you are
+
+1540
+01:03:28,799 --> 01:03:34,240
+within the system because in terms of
+
+1541
+01:03:31,359 --> 01:03:36,720
+what you can do, your capacities, your
+
+1542
+01:03:34,240 --> 01:03:39,440
+mandate, your position within the system
+
+1543
+01:03:36,720 --> 01:03:41,280
+that actually influence how you will
+
+1544
+01:03:39,440 --> 01:03:43,440
+look at the system that you're trying to
+
+1545
+01:03:41,280 --> 01:03:46,160
+change. So I think it's more of the
+
+1546
+01:03:43,440 --> 01:03:47,440
+strategy behind it rather than the
+
+1547
+01:03:46,160 --> 01:03:49,039
+formation.
+
+1548
+01:03:47,440 --> 01:03:51,520
+>> I don't know if that helps. I
+
+1549
+01:03:49,039 --> 01:03:53,680
+>> I think that's great advice. Um I want
+
+1550
+01:03:51,520 --> 01:03:54,960
+to wrap up with some final thoughts and
+
+1551
+01:03:53,680 --> 01:03:57,440
+and maybe
+
+1552
+01:03:54,960 --> 01:03:58,720
+>> Oh, and one more question. But hey, we
+
+1553
+01:03:57,440 --> 01:04:00,559
+we've got time.
+
+1554
+01:03:58,720 --> 01:04:00,880
+>> Yeah, we got time. Do you have a
+
+1555
+01:04:00,559 --> 01:04:01,440
+question?
+
+1556
+01:04:00,880 --> 01:04:04,920
+>> Do one or two?
+
+1557
+01:04:01,440 --> 01:04:04,920
+>> Yeah, let's do it.
+
+1558
+01:04:05,039 --> 01:04:09,520
+>> And and thanks for really interesting
+
+1559
+01:04:06,880 --> 01:04:11,839
+discussion. So, uh working from the
+
+1560
+01:04:09,520 --> 01:04:14,160
+initial uh discussion from the other
+
+1561
+01:04:11,839 --> 01:04:16,799
+session, we we there was a term that
+
+1562
+01:04:14,160 --> 01:04:19,359
+sort of resonated with me, the idea of a
+
+1563
+01:04:16,799 --> 01:04:22,000
+noledge graph because I think it's such
+
+1564
+01:04:19,359 --> 01:04:26,000
+a beautiful expression for research
+
+1565
+01:04:22,000 --> 01:04:30,400
+proposal. So if we follow your your your
+
+1566
+01:04:26,000 --> 01:04:32,960
+causality graph and it works and we fast
+
+1567
+01:04:30,400 --> 01:04:36,400
+forward a thousand years, wouldn't that
+
+1568
+01:04:32,960 --> 01:04:39,359
+be a a a danger to society that we could
+
+1569
+01:04:36,400 --> 01:04:42,079
+become uh dogmatic in sort of getting
+
+1570
+01:04:39,359 --> 01:04:44,799
+rid of information noise, data noise in
+
+1571
+01:04:42,079 --> 01:04:47,039
+that process? So do we need an
+
+1572
+01:04:44,799 --> 01:04:50,000
+anti-thesis to that? a sort
+
+1573
+01:04:47,039 --> 01:04:51,839
+offormational antimatter where a
+
+1574
+01:04:50,000 --> 01:04:54,640
+knowledge graph could contain elements
+
+1575
+01:04:51,839 --> 01:04:57,119
+that could be both uh true and false.
+
+1576
+01:04:54,640 --> 01:04:58,880
+Could that be a sort of quantum causal
+
+1577
+01:04:57,119 --> 01:05:00,880
+graph?
+
+1578
+01:04:58,880 --> 01:05:05,119
+>> That's an interesting problem.
+
+1579
+01:05:00,880 --> 01:05:06,880
+>> Look, I I think that there there are two
+
+1580
+01:05:05,119 --> 01:05:09,680
+okay there are three underlying problems
+
+1581
+01:05:06,880 --> 01:05:11,280
+there which is like the data may lie to
+
+1582
+01:05:09,680 --> 01:05:13,680
+you.
+
+1583
+01:05:11,280 --> 01:05:15,119
+uh or actually I I wasn't part of the
+
+1584
+01:05:13,680 --> 01:05:16,240
+other discussion but let me try to
+
+1585
+01:05:15,119 --> 01:05:18,640
+paraphrase what you're trying to say
+
+1586
+01:05:16,240 --> 01:05:20,400
+which is that you have an anti knowledge
+
+1587
+01:05:18,640 --> 01:05:22,559
+graph which is these things are false
+
+1588
+01:05:20,400 --> 01:05:24,799
+and I know that they're false right and
+
+1589
+01:05:22,559 --> 01:05:26,640
+I'm trying to represent that yeah I I
+
+1590
+01:05:24,799 --> 01:05:29,359
+think that this is beautiful right and
+
+1591
+01:05:26,640 --> 01:05:34,079
+like I I I won't try to answer your
+
+1592
+01:05:29,359 --> 01:05:36,319
+question specifically because I I see
+
+1593
+01:05:34,079 --> 01:05:38,240
+this as
+
+1594
+01:05:36,319 --> 01:05:41,039
+um how do I put it there are things that
+
+1595
+01:05:38,240 --> 01:05:43,200
+are inevitable right in the
+
+1596
+01:05:41,039 --> 01:05:45,280
+And I think that the move from like a
+
+1597
+01:05:43,200 --> 01:05:47,680
+tablo representation of the world to a
+
+1598
+01:05:45,280 --> 01:05:49,839
+graph representation is something that I
+
+1599
+01:05:47,680 --> 01:05:51,599
+kind of see it as inevitable because
+
+1600
+01:05:49,839 --> 01:05:54,000
+it's a better way to represent the
+
+1601
+01:05:51,599 --> 01:05:56,240
+systems and just it what's going to come
+
+1602
+01:05:54,000 --> 01:05:59,920
+next I don't know maybe we're going to
+
+1603
+01:05:56,240 --> 01:06:01,440
+move from graph to like tensor graphs
+
+1604
+01:05:59,920 --> 01:06:03,680
+right where instead of an adjacency
+
+1605
+01:06:01,440 --> 01:06:05,200
+matrix you have an adjacency tensor or
+
+1606
+01:06:03,680 --> 01:06:06,480
+maybe there will come someone who is
+
+1607
+01:06:05,200 --> 01:06:09,440
+really smart and is going to come up
+
+1608
+01:06:06,480 --> 01:06:11,200
+with let's say the quantum uh knowledge
+
+1609
+01:06:09,440 --> 01:06:13,039
+graph right because now we have quantum
+
+1610
+01:06:11,200 --> 01:06:15,200
+computers as well. Or maybe there is a
+
+1611
+01:06:13,039 --> 01:06:17,039
+need to to to represent anti-
+
+1612
+01:06:15,200 --> 01:06:18,960
+relationships, right? Which is these
+
+1613
+01:06:17,039 --> 01:06:21,200
+things are false no matter what. And
+
+1614
+01:06:18,960 --> 01:06:22,960
+it's another type of domain expertise
+
+1615
+01:06:21,200 --> 01:06:26,559
+that we should input. All of these
+
+1616
+01:06:22,960 --> 01:06:29,119
+things, they sort of evolve in a in a
+
+1617
+01:06:26,559 --> 01:06:30,960
+like in a need to solve a problem type
+
+1618
+01:06:29,119 --> 01:06:32,640
+of way, right? someone is facing an
+
+1619
+01:06:30,960 --> 01:06:34,799
+issue, they figure out that there is a
+
+1620
+01:06:32,640 --> 01:06:37,200
+data structure that helps understand
+
+1621
+01:06:34,799 --> 01:06:40,160
+that issue better and it helps as well
+
+1622
+01:06:37,200 --> 01:06:43,520
+produce the right modeling techniques on
+
+1623
+01:06:40,160 --> 01:06:46,319
+top of that. So why not? But but but I
+
+1624
+01:06:43,520 --> 01:06:47,680
+do think that this is just the
+
+1625
+01:06:46,319 --> 01:06:50,400
+beginning, right? So if you think about
+
+1626
+01:06:47,680 --> 01:06:55,200
+it, this is a fairly small conference,
+
+1627
+01:06:50,400 --> 01:06:56,720
+but it's very packed with uh uh
+
+1628
+01:06:55,200 --> 01:06:58,640
+>> really smart people.
+
+1629
+01:06:56,720 --> 01:07:00,480
+>> Exactly.
+
+1630
+01:06:58,640 --> 01:07:01,839
+And Yeah. And it's not just smart,
+
+1631
+01:07:00,480 --> 01:07:03,280
+right? Because if you go to Europe,
+
+1632
+01:07:01,839 --> 01:07:06,079
+you're also going to find a lot of smart
+
+1633
+01:07:03,280 --> 01:07:08,160
+people, but it's but you kind of feel
+
+1634
+01:07:06,079 --> 01:07:11,119
+like you're in a point of saturation
+
+1635
+01:07:08,160 --> 01:07:14,400
+where there's a lot of uh tiny little
+
+1636
+01:07:11,119 --> 01:07:16,960
+things that get thrown into a wall uh in
+
+1637
+01:07:14,400 --> 01:07:18,799
+order to improve to do incremental
+
+1638
+01:07:16,960 --> 01:07:22,559
+improvements which are very small.
+
+1639
+01:07:18,799 --> 01:07:24,960
+Whereas here I think that the scope of
+
+1640
+01:07:22,559 --> 01:07:28,799
+uh innovation that is happening in this
+
+1641
+01:07:24,960 --> 01:07:31,359
+space is way more disproportionate
+
+1642
+01:07:28,799 --> 01:07:34,640
+to the amount of effort that it takes
+
+1643
+01:07:31,359 --> 01:07:36,559
+for instance your question is a very
+
+1644
+01:07:34,640 --> 01:07:38,079
+like reasonable question like it's a
+
+1645
+01:07:36,559 --> 01:07:39,680
+very big problem there are people like
+
+1646
+01:07:38,079 --> 01:07:40,880
+with massive problems like there are
+
+1647
+01:07:39,680 --> 01:07:43,520
+people who are talking about saving
+
+1648
+01:07:40,880 --> 01:07:44,799
+lives and the amount of thought that is
+
+1649
+01:07:43,520 --> 01:07:46,720
+needed like going back to your question
+
+1650
+01:07:44,799 --> 01:07:48,880
+as well I don't have the right toolkits
+
+1651
+01:07:46,720 --> 01:07:50,960
+that's great that that's that's
+
+1652
+01:07:48,880 --> 01:07:52,960
+That's an amazing statement for for
+
+1653
+01:07:50,960 --> 01:07:55,440
+someone to have because that means that
+
+1654
+01:07:52,960 --> 01:07:58,960
+we we we we have more problems than
+
+1655
+01:07:55,440 --> 01:08:01,520
+solutions and I think it's basically our
+
+1656
+01:07:58,960 --> 01:08:04,319
+job to sort of come up with the right
+
+1657
+01:08:01,520 --> 01:08:06,000
+ways of of uh dealing with it. Yeah.
+
+1658
+01:08:04,319 --> 01:08:08,720
+Sorry that was a known answer to your
+
+1659
+01:08:06,000 --> 01:08:10,400
+question but hopefully it was
+
+1660
+01:08:08,720 --> 01:08:12,480
+>> there's some interesting research by the
+
+1661
+01:08:10,400 --> 01:08:15,760
+way um going on right now on um
+
+1662
+01:08:12,480 --> 01:08:17,520
+creativity in AI um where you're you're
+
+1663
+01:08:15,760 --> 01:08:21,120
+it's not a hallucination. you're
+
+1664
+01:08:17,520 --> 01:08:22,560
+purposely um creating connections. Uh
+
+1665
+01:08:21,120 --> 01:08:24,719
+and there's a there's some colleagues
+
+1666
+01:08:22,560 --> 01:08:27,600
+actually a colleague of of of wean eyes
+
+1667
+01:08:24,719 --> 01:08:30,080
+um that has been talking about uh using
+
+1668
+01:08:27,600 --> 01:08:34,159
+some approaches where you um you might
+
+1669
+01:08:30,080 --> 01:08:37,120
+even call it dreaming um where you're uh
+
+1670
+01:08:34,159 --> 01:08:39,120
+allowing a system to basically do link
+
+1671
+01:08:37,120 --> 01:08:42,239
+prediction making links depending on
+
+1672
+01:08:39,120 --> 01:08:44,719
+weights uh and maybe arbitrarily at
+
+1673
+01:08:42,239 --> 01:08:47,040
+times dropping them depending on you
+
+1674
+01:08:44,719 --> 01:08:50,400
+know circumstances. And I think what
+
+1675
+01:08:47,040 --> 01:08:52,319
+that kind of shows is a well we it is
+
+1676
+01:08:50,400 --> 01:08:54,880
+early days but this understanding that
+
+1677
+01:08:52,319 --> 01:08:57,120
+messiness is important and if we take
+
+1678
+01:08:54,880 --> 01:09:01,359
+all the messiness out of the system if
+
+1679
+01:08:57,120 --> 01:09:04,960
+we um try to assume that we've named
+
+1680
+01:09:01,359 --> 01:09:06,719
+everything correctly uh that uh that we
+
+1681
+01:09:04,960 --> 01:09:08,239
+we could understand the model of the
+
+1682
+01:09:06,719 --> 01:09:10,159
+system and say okay that's it we're
+
+1683
+01:09:08,239 --> 01:09:12,000
+going to go forward this is our our AI
+
+1684
+01:09:10,159 --> 01:09:15,359
+system that knows everything we know we
+
+1685
+01:09:12,000 --> 01:09:17,440
+are wrong uh and so building some
+
+1686
+01:09:15,359 --> 01:09:18,960
+messiness iness into the systems I I
+
+1687
+01:09:17,440 --> 01:09:20,880
+think is absolutely important. I love
+
+1688
+01:09:18,960 --> 01:09:23,359
+the question. Um there are people
+
+1689
+01:09:20,880 --> 01:09:25,759
+talking about it. I haven't seen a paper
+
+1690
+01:09:23,359 --> 01:09:28,000
+on it yet. I haven't seen any system on
+
+1691
+01:09:25,759 --> 01:09:30,239
+it yet. It's just conversations which
+
+1692
+01:09:28,000 --> 01:09:32,480
+maybe goes back to your point about the
+
+1693
+01:09:30,239 --> 01:09:36,239
+um the conversation the innovation level
+
+1694
+01:09:32,480 --> 01:09:38,960
+to you know to to the problems. Um uh
+
+1695
+01:09:36,239 --> 01:09:41,920
+the other thing I do so I I don't know.
+
+1696
+01:09:38,960 --> 01:09:44,640
+So so thank you for that. Um fascinating
+
+1697
+01:09:41,920 --> 01:09:46,080
+area. Uh, the other thing I've noticed,
+
+1698
+01:09:44,640 --> 01:09:47,759
+I don't know if everyone else has
+
+1699
+01:09:46,080 --> 01:09:50,080
+noticed this. It's there's this
+
+1700
+01:09:47,759 --> 01:09:52,080
+interesting tension and I've I saw it a
+
+1701
+01:09:50,080 --> 01:09:55,120
+little bit in Tony Seal's um talk and
+
+1702
+01:09:52,080 --> 01:09:56,719
+I'm I'm seeing it a lot here between
+
+1703
+01:09:55,120 --> 01:09:58,480
+let's name things, let's not name
+
+1704
+01:09:56,719 --> 01:09:59,920
+things. Let's look at the gran we've
+
+1705
+01:09:58,480 --> 01:10:01,280
+practically have to look at the granular
+
+1706
+01:09:59,920 --> 01:10:03,040
+level, but oh god, don't look at the
+
+1707
+01:10:01,280 --> 01:10:05,280
+granular levers. We we we will miss out
+
+1708
+01:10:03,040 --> 01:10:08,480
+on the big emergent, you know, level.
+
+1709
+01:10:05,280 --> 01:10:10,640
+Um, let's model, let's not model. um
+
+1710
+01:10:08,480 --> 01:10:14,640
+this kind of tension of of back and
+
+1711
+01:10:10,640 --> 01:10:18,640
+forth between uh capturing the messiness
+
+1712
+01:10:14,640 --> 01:10:22,159
+and uh not being overly uh overbearing
+
+1713
+01:10:18,640 --> 01:10:24,960
+about it. And I and I I I find that a
+
+1714
+01:10:22,159 --> 01:10:26,480
+fascinating area and one where I'm
+
+1715
+01:10:24,960 --> 01:10:28,320
+hoping
+
+1716
+01:10:26,480 --> 01:10:30,000
+as opposed to saying we need a
+
+1717
+01:10:28,320 --> 01:10:32,800
+centralized system that does X or a
+
+1718
+01:10:30,000 --> 01:10:34,880
+decentralized system that does Y that if
+
+1719
+01:10:32,800 --> 01:10:38,480
+you think about networks themselves and
+
+1720
+01:10:34,880 --> 01:10:40,960
+I often think about fungus because who
+
+1721
+01:10:38,480 --> 01:10:42,560
+doesn't love fungus um from a from a
+
+1722
+01:10:40,960 --> 01:10:45,360
+network scientist standpoint and
+
+1723
+01:10:42,560 --> 01:10:48,800
+resource flow and expansion is there's
+
+1724
+01:10:45,360 --> 01:10:52,159
+this natural back and forth between edge
+
+1725
+01:10:48,800 --> 01:10:54,480
+messing iness and taking a wrong path
+
+1726
+01:10:52,159 --> 01:10:57,199
+and centralization of resources but not
+
+1727
+01:10:54,480 --> 01:10:59,520
+overly centralization communication but
+
+1728
+01:10:57,199 --> 01:11:03,120
+not too much communication. So I think
+
+1729
+01:10:59,520 --> 01:11:06,560
+nature has somehow figured this out and
+
+1730
+01:11:03,120 --> 01:11:08,640
+uh the structure uh and the shape that a
+
+1731
+01:11:06,560 --> 01:11:12,640
+lot of things happen in nature is for a
+
+1732
+01:11:08,640 --> 01:11:15,840
+function. And I I often wonder if
+
+1733
+01:11:12,640 --> 01:11:20,080
+we might be moving at some point into AI
+
+1734
+01:11:15,840 --> 01:11:21,520
+systems that can be more network like or
+
+1735
+01:11:20,080 --> 01:11:23,120
+more nature-like where they can
+
+1736
+01:11:21,520 --> 01:11:25,520
+understand the balance of these two
+
+1737
+01:11:23,120 --> 01:11:27,679
+tensions because you know we've been
+
+1738
+01:11:25,520 --> 01:11:29,440
+saying you know this last couple hours
+
+1739
+01:11:27,679 --> 01:11:32,480
+or however long it's been you know the
+
+1740
+01:11:29,440 --> 01:11:34,320
+kind of this tension between it's it's
+
+1741
+01:11:32,480 --> 01:11:36,880
+you know you need this but don't do too
+
+1742
+01:11:34,320 --> 01:11:38,159
+much of that sort of a thing. So, I
+
+1743
+01:11:36,880 --> 01:11:40,480
+don't know if if you guys are are
+
+1744
+01:11:38,159 --> 01:11:42,080
+sensing that as well, but I I'm seeing a
+
+1745
+01:11:40,480 --> 01:11:44,480
+lot of that. Um, I don't know what to do
+
+1746
+01:11:42,080 --> 01:11:46,560
+with that, though. Uh, any final
+
+1747
+01:11:44,480 --> 01:11:48,640
+thoughts as we we start to uh
+
+1748
+01:11:46,560 --> 01:11:50,159
+incentives, right? Because nature gives
+
+1749
+01:11:48,640 --> 01:11:51,600
+us very good incentives, which is to
+
+1750
+01:11:50,159 --> 01:11:54,239
+survive, and then you end up with these
+
+1751
+01:11:51,600 --> 01:11:55,920
+things like self-organized criticality
+
+1752
+01:11:54,239 --> 01:11:58,000
+or whatever you may want to call it,
+
+1753
+01:11:55,920 --> 01:12:00,239
+which to be fair right now, you go to
+
+1754
+01:11:58,000 --> 01:12:02,159
+every every layer in a hierarchy. Then
+
+1755
+01:12:00,239 --> 01:12:03,440
+you observe phenomena which are emerging
+
+1756
+01:12:02,159 --> 01:12:05,520
+phenomena, which are sort of
+
+1757
+01:12:03,440 --> 01:12:07,280
+self-organizing. City is the perfect
+
+1758
+01:12:05,520 --> 01:12:10,159
+example of that, right? Which to some
+
+1759
+01:12:07,280 --> 01:12:13,440
+extent no one no one told the city to be
+
+1760
+01:12:10,159 --> 01:12:16,239
+a city. The city just came to be because
+
+1761
+01:12:13,440 --> 01:12:17,920
+it's beneficial for everyone to be in
+
+1762
+01:12:16,239 --> 01:12:19,440
+the city. You have things such as
+
+1763
+01:12:17,920 --> 01:12:21,199
+competition but you then you have
+
+1764
+01:12:19,440 --> 01:12:23,679
+cooperation, right? You have a street
+
+1765
+01:12:21,199 --> 01:12:25,360
+with only carpet sellers like they're
+
+1766
+01:12:23,679 --> 01:12:27,040
+competing but at the same time they know
+
+1767
+01:12:25,360 --> 01:12:29,199
+that they need to cooperate. So these
+
+1768
+01:12:27,040 --> 01:12:31,040
+things are fascinating to me and I think
+
+1769
+01:12:29,199 --> 01:12:34,719
+they're sort of unexplored in the AI
+
+1770
+01:12:31,040 --> 01:12:37,440
+space which is how do how do we uh how
+
+1771
+01:12:34,719 --> 01:12:39,840
+do we put the right incentives for
+
+1772
+01:12:37,440 --> 01:12:43,040
+different agentic systems to cooperate
+
+1773
+01:12:39,840 --> 01:12:45,280
+and maybe compete in such a way that the
+
+1774
+01:12:43,040 --> 01:12:48,560
+uh that the emergent properties are
+
+1775
+01:12:45,280 --> 01:12:50,640
+bigger than the sum.
+
+1776
+01:12:48,560 --> 01:12:52,400
+>> Yeah just to continue on that because
+
+1777
+01:12:50,640 --> 01:12:55,040
+there is a logic to the emergent
+
+1778
+01:12:52,400 --> 01:12:58,400
+property that's the key. So cities have
+
+1779
+01:12:55,040 --> 01:13:00,880
+have evolved as a solution to a problem
+
+1780
+01:12:58,400 --> 01:13:04,480
+and the problem was how do human
+
+1781
+01:13:00,880 --> 01:13:06,239
+networks uh thrive. So in that sense
+
+1782
+01:13:04,480 --> 01:13:07,840
+this is why my talk yesterday was about
+
+1783
+01:13:06,239 --> 01:13:11,199
+serendipity. There is the random
+
+1784
+01:13:07,840 --> 01:13:13,679
+element. So the density maximizes
+
+1785
+01:13:11,199 --> 01:13:16,480
+actually the random collisions between
+
+1786
+01:13:13,679 --> 01:13:20,159
+people and that is the engine that makes
+
+1787
+01:13:16,480 --> 01:13:22,560
+the magic happen. Um, and I'm wondering
+
+1788
+01:13:20,159 --> 01:13:25,760
+where you on the one hand model and in
+
+1789
+01:13:22,560 --> 01:13:28,800
+just insert randomity into models and
+
+1790
+01:13:25,760 --> 01:13:30,320
+see what happens, but also for me uh
+
+1791
+01:13:28,800 --> 01:13:32,880
+going back to what I said, I'm looking
+
+1792
+01:13:30,320 --> 01:13:35,360
+also at individual behavior but overall
+
+1793
+01:13:32,880 --> 01:13:36,880
+trends. I'm always looking for
+
+1794
+01:13:35,360 --> 01:13:40,000
+contradictions
+
+1795
+01:13:36,880 --> 01:13:42,400
+and I'm wondering if some of the models
+
+1796
+01:13:40,000 --> 01:13:44,800
+uh should rather than highlight states
+
+1797
+01:13:42,400 --> 01:13:46,719
+or highlight you know give us answers
+
+1798
+01:13:44,800 --> 01:13:49,440
+just highlight the contradictions
+
+1799
+01:13:46,719 --> 01:13:52,480
+because it is within within those
+
+1800
+01:13:49,440 --> 01:13:57,320
+systemic tensions that I find the most
+
+1801
+01:13:52,480 --> 01:13:57,320
+interesting kind of solutions lie.
+
+1802
+01:13:57,760 --> 01:14:04,159
+Uh I am going to make the case for more
+
+1803
+01:14:00,960 --> 01:14:08,239
+randomness and more noise in our models.
+
+1804
+01:14:04,159 --> 01:14:11,760
+Um I think you know especially in our AI
+
+1805
+01:14:08,239 --> 01:14:13,679
+systems when we I think I'll be honest I
+
+1806
+01:14:11,760 --> 01:14:17,679
+think the data science community over
+
+1807
+01:14:13,679 --> 01:14:19,840
+the last 10 to 15 years has been so
+
+1808
+01:14:17,679 --> 01:14:21,440
+committed to getting the right answer
+
+1809
+01:14:19,840 --> 01:14:25,679
+that we've actually done a lot of
+
+1810
+01:14:21,440 --> 01:14:27,440
+damage. um you know the echo chamber the
+
+1811
+01:14:25,679 --> 01:14:30,239
+idea that we just keep giving people
+
+1812
+01:14:27,440 --> 01:14:33,120
+more and more of what we want then we
+
+1813
+01:14:30,239 --> 01:14:38,159
+lose the tail we lose the serendipity we
+
+1814
+01:14:33,120 --> 01:14:41,600
+lose the the exposure to other and I
+
+1815
+01:14:38,159 --> 01:14:43,920
+think it is extremely critical in this
+
+1816
+01:14:41,600 --> 01:14:48,080
+the AI space that we're in and the fact
+
+1817
+01:14:43,920 --> 01:14:50,159
+that you know everyone is using AI now
+
+1818
+01:14:48,080 --> 01:14:53,040
+and there's this lack of understanding
+
+1819
+01:14:50,159 --> 01:14:56,719
+of what it does and I Think the more
+
+1820
+01:14:53,040 --> 01:14:58,880
+that we can encourage our own industry
+
+1821
+01:14:56,719 --> 01:15:01,360
+to
+
+1822
+01:14:58,880 --> 01:15:03,280
+veer away a little bit from the signal,
+
+1823
+01:15:01,360 --> 01:15:05,199
+we can't stay just on the signal. We
+
+1824
+01:15:03,280 --> 01:15:07,760
+have to keep that randomness. We have to
+
+1825
+01:15:05,199 --> 01:15:10,320
+keep those messy edges of the system in
+
+1826
+01:15:07,760 --> 01:15:13,920
+order for the system to thrive. And so
+
+1827
+01:15:10,320 --> 01:15:16,640
+we have to find a way to really be
+
+1828
+01:15:13,920 --> 01:15:18,480
+committed to that for the overall
+
+1829
+01:15:16,640 --> 01:15:20,560
+impact, the societal impact of what
+
+1830
+01:15:18,480 --> 01:15:23,600
+we're doing.
+
+1831
+01:15:20,560 --> 01:15:27,440
+Well, um I just feel like we're living
+
+1832
+01:15:23,600 --> 01:15:29,199
+in a very very interesting time. Um and
+
+1833
+01:15:27,440 --> 01:15:32,719
+thinking about the graph, I felt that
+
+1834
+01:15:29,199 --> 01:15:36,159
+the um graph is such important
+
+1835
+01:15:32,719 --> 01:15:38,480
+technology. Uh but it's um constantly
+
+1836
+01:15:36,159 --> 01:15:40,719
+being kind of considered as a niche
+
+1837
+01:15:38,480 --> 01:15:42,719
+market, niche technology and it's
+
+1838
+01:15:40,719 --> 01:15:44,640
+because there's not enough data for
+
+1839
+01:15:42,719 --> 01:15:46,880
+graph. There's a specific problem that
+
+1840
+01:15:44,640 --> 01:15:50,800
+fits graph. But now we have a large
+
+1841
+01:15:46,880 --> 01:15:53,199
+language model which can turn all the
+
+1842
+01:15:50,800 --> 01:15:54,960
+informations that we otherwise never
+
+1843
+01:15:53,199 --> 01:15:57,600
+consider as the data suddenly become
+
+1844
+01:15:54,960 --> 01:16:00,880
+data and guess what and uh that data
+
+1845
+01:15:57,600 --> 01:16:04,560
+needs graph to to hold it. So suddenly
+
+1846
+01:16:00,880 --> 01:16:07,120
+we have uh unlimit among the data coming
+
+1847
+01:16:04,560 --> 01:16:08,719
+towards us as a as a graph like
+
+1848
+01:16:07,120 --> 01:16:11,920
+specialist.
+
+1849
+01:16:08,719 --> 01:16:13,760
+uh you know I I just felt like um it's
+
+1850
+01:16:11,920 --> 01:16:16,239
+be interesting time to start thinking
+
+1851
+01:16:13,760 --> 01:16:19,280
+about how the network science can be
+
+1852
+01:16:16,239 --> 01:16:22,159
+applied to this new wave of graph data
+
+1853
+01:16:19,280 --> 01:16:24,640
+that coming towards us.
+
+1854
+01:16:22,159 --> 01:16:27,280
+>> All right. I feel so honored just to be
+
+1855
+01:16:24,640 --> 01:16:29,440
+in this conversation. I this is probably
+
+1856
+01:16:27,280 --> 01:16:32,719
+um it has to rank as maybe the best
+
+1857
+01:16:29,440 --> 01:16:34,239
+conversation uh in the last few days.
+
+1858
+01:16:32,719 --> 01:16:36,320
+Really made me think about some things
+
+1859
+01:16:34,239 --> 01:16:38,000
+differently. I I keep thinking there's
+
+1860
+01:16:36,320 --> 01:16:41,199
+oh there's some keynote talks in here on
+
+1861
+01:16:38,000 --> 01:16:43,600
+Jesse subic randomness. Thank god it's
+
+1862
+01:16:41,199 --> 01:16:45,920
+wrong you know whatever you know let's
+
+1863
+01:16:43,600 --> 01:16:47,360
+drop the signal. Yay noise. Um there's
+
+1864
+01:16:45,920 --> 01:16:49,920
+all sorts of there's all sorts of fun
+
+1865
+01:16:47,360 --> 01:16:52,159
+things we could do. Um if there are no
+
+1866
+01:16:49,920 --> 01:16:53,840
+other questions I think we probably need
+
+1867
+01:16:52,159 --> 01:16:56,000
+to wrap it up. I'm
+
+1868
+01:16:53,840 --> 01:16:58,239
+>> we should Okay. All right. So um thank
+
+1869
+01:16:56,000 --> 01:17:01,280
+you for you know thoughts, energy,
+
+1870
+01:16:58,239 --> 01:17:04,000
+creativity. Thank you for the weird uh
+
+1871
+01:17:01,280 --> 01:17:07,120
+the random, the phil uh philosophy, the
+
+1872
+01:17:04,000 --> 01:17:08,239
+physics uh yeah and the ontology in the
+
+1873
+01:17:07,120 --> 01:17:08,800
+middle of it all. So, thank you
+
+1874
+01:17:08,239 --> 01:17:12,600
+everybody.
+
+1875
+01:17:08,800 --> 01:17:12,600
+>> Thank you very much.
+

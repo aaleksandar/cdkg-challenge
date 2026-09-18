@@ -233,14 +233,45 @@ FAILURE_DEFAULT = "The caption download failed"
 
 
 def stage_csv_append(ctx: dict) -> StageResult:
-    from .csv_writer import append_row
+    """Give the talk a row, then let HeySummit fill what the video could not.
+
+    The join to HeySummit used to be a button, so a talk ingested after the
+    last press sat with a blank Event — the one blank that keeps it out of the
+    graph — while the catalogue on disk had held the answer all along. It runs
+    here, for this one talk, from the committed catalogue: no network, no LLM,
+    and nothing a curator wrote is overwritten.
+    """
+    from ..sources import heysummit
+    from .csv_writer import append_row, find_talk_by_source
 
     appended, reason = append_row(
         parsed=ctx["parsed"],
         video_id=ctx["video_id"],
         srt_path=ctx["srt_path"],
     )
-    return StageResult(True, reason, {"csv_appended": appended})
+    data = {"csv_appended": appended}
+
+    talk_id = find_talk_by_source(config.METADATA_CSV, "youtube", ctx["video_id"])
+    if talk_id:
+        # The talk this run is now about, whichever row it turned out to be —
+        # its own, or one HeySummit seeded. The rebuild stage checks tags by it.
+        data["talk_id"] = talk_id
+    if talk_id and heysummit.read_catalog():
+        joined = heysummit.attach(only={talk_id})
+        heysummit_id = joined["matched"].get(talk_id)
+        if heysummit_id:
+            filled = joined["filled_columns"].get(talk_id, [])
+            data.update({"heysummit_id": heysummit_id, "heysummit_filled": filled})
+            reason += (f" — HeySummit talk {heysummit_id}: filled {', '.join(filled)}"
+                       if filled else f" — HeySummit talk {heysummit_id}: nothing to fill")
+            if joined["disagreements"]:
+                _, ours, theirs = joined["disagreements"][0]
+                reason += f"; Event disagrees (CSV {ours!r}, HeySummit {theirs!r}) — left as is"
+        elif joined["candidates"]:
+            reason += f" — HeySummit: possible match {joined['candidates'][0][1]!r}, for a curator"
+        else:
+            reason += " — HeySummit: no matching talk"
+    return StageResult(True, reason, data)
 
 
 def stage_transcript_extraction(ctx: dict) -> StageResult:
@@ -267,10 +298,29 @@ def srt_to_text(srt: str) -> str:
     return " ".join(m.group(1).replace("\n", " ").strip() for m in cues)
 
 
-def stage_tag_extraction(ctx: dict) -> StageResult:
-    """The expensive stage. Skipped when this transcript already has tags."""
+def _tag_client():
+    """The generated BAML client, which lives beside the pipeline scripts.
+
+    Not on this package's path, and gitignored: it is generated into
+    ``src/kuzu/baml_client`` at build time. Reached through a function so the
+    integration tests can put a stand-in here — BAML's runtime does its own
+    HTTP, so the client is the only honest seam — the same way
+    ``speaker_llm._client`` is.
+    """
     import sys
 
+    if str(config.PIPELINE_SCRIPTS_DIR) not in sys.path:
+        sys.path.insert(0, str(config.PIPELINE_SCRIPTS_DIR))
+    from dotenv import load_dotenv
+
+    load_dotenv(config.KUZU_DIR / ".env")
+    from baml_client import b
+
+    return b
+
+
+def stage_tag_extraction(ctx: dict) -> StageResult:
+    """The expensive stage. Skipped when this transcript already has tags."""
     txt_path: Path = ctx["txt_path"]
     entities = []
     if config.ENTITIES_JSON.exists():
@@ -282,20 +332,12 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
         return StageResult(True, "Tags already extracted for this transcript",
                            {"reused": True})
 
-    # baml_client lives beside the pipeline scripts, not on the package path.
-    if str(config.PIPELINE_SCRIPTS_DIR) not in sys.path:
-        sys.path.insert(0, str(config.PIPELINE_SCRIPTS_DIR))
-    from dotenv import load_dotenv
-
-    load_dotenv(config.KUZU_DIR / ".env")
     from baml_py import Collector
-
-    from baml_client import b
 
     # What this call actually cost. The provider reports the tokens and BAML
     # hands them back here; without a collector they are simply discarded.
     collector = Collector(name=f"tags-{ctx['video_id']}")
-    tags = b.with_options(collector=collector).ExtractTags(
+    tags = _tag_client().with_options(collector=collector).ExtractTags(
         txt_path.read_text(encoding="utf-8")
     ).tag
     entities.append({"filename": txt_path.name, "entities": {"tag": tags}})
@@ -318,11 +360,15 @@ def stage_graph_rebuild(ctx: dict) -> StageResult:
     # tags. A rebuild that succeeded without doing so is still a better graph
     # than the old one, so it stays swapped in — but the run must say so, or
     # the talk sits in the attention lane as "untagged" with no explanation.
-    parsed = ctx.get("parsed")
-    if parsed is None or not (ctx.get("tags") or ctx.get("reused")):
+    from .csv_writer import find_talk_by_source
+
+    talk_id = ctx.get("talk_id")
+    if talk_id is None and ctx.get("video_id"):
+        talk_id = find_talk_by_source(config.METADATA_CSV, "youtube", ctx["video_id"])
+    if talk_id is None or not (ctx.get("tags") or ctx.get("reused")):
         return result
     try:
-        tagged = talk_is_tagged(config.GRAPH_DB_PATH, parsed.record_title)
+        tagged = talk_is_tagged(config.GRAPH_DB_PATH, talk_id)
     except Exception:  # noqa: BLE001 — a swap may be racing; the count is advisory
         return result
     result.data["tagged"] = tagged

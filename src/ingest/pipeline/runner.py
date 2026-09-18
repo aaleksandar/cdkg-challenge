@@ -61,6 +61,11 @@ _DETAIL_KEYS = {
     # and what each source said before one of them delivered. A transcript
     # that cost a credit says so; one that did not says which free path won.
     "caption_source", "caption_lang", "caption_credits", "caption_attempts",
+    # Which HeySummit talk the row was joined to during the run, and what it
+    # filled in, so a Date or Event that appeared can be traced to its source.
+    "heysummit_id", "heysummit_filled",
+    # The row the run settled on: its own, or one HeySummit seeded first.
+    "talk_id",
 }
 
 

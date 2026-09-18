@@ -196,26 +196,30 @@ templates.env.globals["CAPTION_KIND_LABELS"] = CAPTION_KIND_LABELS
 templates.env.globals["STATUS_LABELS"] = R.STATUS_LABELS
 templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
-templates.env.globals["LANE_LABELS"] = R.LANE_LABELS
+# The sixth tab is not a lane a row can be in: it is what the sources say
+# about the same talk when they do not agree, listed for a curator.
+templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "disagreements": "Disagreements"}
 
 # The strip doubles as the filter, so it defines both the order shown and the
 # set of filters available. Five entries, not twelve: an admin should be able to
 # read the state of the whole channel without learning this project's vocabulary
 # first. The specific status is still one hover — or one click — away.
 templates.env.globals["LANES"] = [
-    ("all", "All videos"),
+    ("all", "All talks"),
     ("attention", "Needs attention"),
     ("working", "Working"),
     ("not_ingested", "Not ingested"),
     ("in_graph", "In graph"),
+    ("disagreements", "Disagreements"),
 ]
 
 # The lane a row is in, in plain terms. Printed under the strip for the active
 # lane and shown on hover for each tab.
 LANE_NOTES = {
     "all": (
-        f"Every video on the {config.YOUTUBE_CHANNEL_HANDLE} channel. Shorts and "
-        "premieres are hidden unless you ask for them."
+        f"Every talk: the {config.YOUTUBE_CHANNEL_HANDLE} channel's videos and the "
+        "programme HeySummit holds, whether or not a video exists yet. Shorts and "
+        "premieres hidden by default."
     ),
     "attention": (
         "Stuck, and it will stay stuck until someone looks. Open one to see the "
@@ -223,14 +227,20 @@ LANE_NOTES = {
     ),
     "working": "Being ingested right now.",
     "not_ingested": (
-        "On the channel and nowhere else. New uploads ingest themselves; these "
-        "are the backlog, and draining it costs LLM calls — the button is under "
+        "Videos on the channel that have not been ingested, and HeySummit talks "
+        "with no video yet. New uploads ingest themselves; the videos here are "
+        "the backlog, and draining it costs LLM calls — the button is under "
         "Advanced."
     ),
     "in_graph": "Curated, tagged and queryable in the knowledge graph. Nothing to do.",
     "excluded": (
         "Not talks: teasers, Shorts and premieres that have not aired. Listed "
         "because they are on the channel, and ignored by everything else."
+    ),
+    "disagreements": (
+        "Where the metadata CSV and HeySummit tell different stories about the "
+        "same talk, and HeySummit talks that resemble a row without matching it. "
+        "Nothing here is written automatically; a curator settles each one."
     ),
 }
 templates.env.globals["LANE_NOTES"] = LANE_NOTES
@@ -247,14 +257,19 @@ STATUS_NOTES = {
     ),
     "ready_for_graph": "Curated and tagged, waiting only on a graph rebuild.",
     "not_ingested": (
-        "On the YouTube channel and nowhere else. Ingesting it fetches the "
-        "captions and extracts its tags."
+        "A channel video not yet ingested — on its own, or linked to a talk "
+        "HeySummit seeded. Ingesting it fetches the captions and extracts its tags."
     ),
     "orphaned": (
         "Tags were extracted and paid for, but no metadata row exists for them "
         "to attach to. Adding a row brings the talk in without re-running the LLM."
     ),
     "untagged": "In the metadata CSV with no tags extracted, so no topic search will find it.",
+    "awaiting_video": (
+        "On HeySummit; no video on the channel yet. A Talk node with its speaker, "
+        "event, date and abstract, which gains tags once a video is attached and "
+        "ingested."
+    ),
     "in_progress": "Pipeline running right now.",
     "failed": (
         "The last run stopped with an error. Open it to see which stage; "
@@ -287,7 +302,8 @@ BLOCKERS = {
     "untagged": (
         "There is a metadata row but no extracted tags, so the talk exists in "
         "the graph without a single topic and no topic search will reach it. "
-        "Ingesting it runs the tag extraction."
+        "Ingesting its video runs the tag extraction; attach one below if the "
+        "row has none."
     ),
     "orphaned": (
         "Tags for this transcript were extracted and paid for, but no metadata "
@@ -327,18 +343,28 @@ templates.env.globals["STAGE_LABELS"] = STAGE_LABELS
 def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
     """Reconcile, then apply the current lane and search.
 
-    The sheet is the channel and nothing but the channel. Talks that exist only
-    on disk — orphaned transcripts, files named after a bare video ID — have no
-    upload date and no link, so a row for them is mostly empty columns and a
-    puzzle. They are real defects and they are not dropped: they are counted and
-    listed under Advanced, where the fix for each of them lives.
+    The sheet is every talk: the channel's videos, and the rows HeySummit
+    seeded for talks whose video has not been released — or never will be.
+    What is left out is a file on disk that is neither: an orphaned transcript,
+    a file named after a bare video ID. Those have no date, no link and no
+    source, so a row for them is mostly empty columns and a puzzle. They are
+    real defects and they are not dropped: they are counted and listed under
+    Advanced, where the fix for each of them lives.
     """
-    states = R.reconcile()
-    channel = [s for s in states if s.on_youtube]
-    lane_counts = R.summarise_lanes(channel)
+    from .sources import heysummit
 
-    visible = channel
-    if lane and lane != "all":
+    states = R.reconcile()
+    talks = [s for s in states if s.on_youtube or s.in_csv]
+    lane_counts = R.summarise_lanes(talks)
+    # Not a lane a row is in: the sources' disagreements, decided without
+    # writing, counted on the tab like the lanes are.
+    issues = heysummit.attach(write=False)["issues"] if heysummit.read_catalog() else []
+    lane_counts["disagreements"] = len(issues)
+
+    visible = talks
+    if lane == "disagreements":
+        visible = []
+    elif lane and lane != "all":
         visible = [s for s in visible if s.lane == lane]
     elif not shorts:
         # Shorts and premieres are working as intended; they would bury the rest.
@@ -349,32 +375,33 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
         visible = [
             s for s in visible
             if needle in (s.title or "").lower()
+            or needle in (s.csv_title or "").lower()
             or needle in (s.speaker or "").lower()
             or needle in (s.event or "").lower()
             or needle in (s.video_id or "").lower()
         ]
 
     # Newest first, always. The channel is a timeline and this is the order it
-    # is published in; floating the stuck rows to the top instead would reorder
-    # the list under the admin every time a status changed, and the lane tabs
+    # is published in; a talk with no video yet takes its place by the date it
+    # was given. Floating the stuck rows to the top instead would reorder the
+    # list under the admin every time a status changed, and the lane tabs
     # already isolate what needs attention. Undated rows sort last rather than
     # first — an empty string would beat every real date under a reverse sort.
-    visible.sort(key=lambda s: (s.title or "").lower())
-    visible.sort(key=lambda s: (bool(s.published_at), s.published_at or ""),
-                 reverse=True)
+    visible.sort(key=lambda s: (s.display_title or "").lower())
+    visible.sort(key=lambda s: (bool(s.when), s.when or ""), reverse=True)
     return {
         "states": visible,
+        "issues": issues,
         "lane_counts": lane_counts,
-        "total": len(channel),
-        "offchannel": len(states) - len(channel),
+        "total": len(talks),
+        "offchannel": len(states) - len(talks),
         "lane": lane or "all",
         "shorts": shorts,
         "query": query or "",
         "active_runs": db.active_run_count(),
-        # An empty inventory is why a whole section can vanish: every
-        # channel-derived lane is computed from it, and nothing appears here
-        # until the channel has been read at least once.
-        "inventory": len(channel),
+        # Nothing at all to show only when neither the channel has been read
+        # nor HeySummit synced: every row derives from one or the other.
+        "inventory": len(talks),
         # Read per request, not baked into globals: the pause valve can be
         # flipped at runtime and every row's action depends on it.
         "KG_ENABLED": config.KG_ENABLED,
@@ -403,8 +430,20 @@ def rows(request: Request, lane: str | None = None, q: str | None = None,
 
 def _find(key: str) -> R.TalkState | None:
     """The state a URL addresses — a TalkID, or ``<source>:<id>`` for a record
-    that is not a talk yet. One lookup, so every route agrees what a key means."""
-    return next((s for s in R.reconcile() if s.key == key), None)
+    that is not a talk yet. One lookup, so every route agrees what a key means.
+
+    A record's key changes under a running pipeline: ``youtube:<id>`` becomes a
+    TalkID the moment ``csv_append`` mints one. Everything that was addressing
+    the record by its source — the row's own poller, an open drawer, the live
+    signal — would find nothing from that stage on, so a source key resolves
+    to whichever talk now holds that source's record.
+    """
+    states = R.reconcile()
+    match = next((s for s in states if s.key == key), None)
+    if match is None and ":" in key:
+        source, _, native_id = key.partition(":")
+        match = next((s for s in states if s.sources.get(source) == native_id), None)
+    return match
 
 
 @router.get("/video/{key}", response_class=HTMLResponse)
@@ -424,8 +463,8 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
 
     parsed = None
     raw = None
-    cached = config.INGEST_CACHE_DIR / f"{match.video_id}.json"
-    if cached.exists():
+    cached = config.INGEST_CACHE_DIR / f"{match.video_id}.json" if match.video_id else None
+    if cached and cached.exists():
         import json
 
         from .sources import parser
@@ -441,7 +480,11 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
     from .pipeline.csv_writer import curation_vocabularies
 
     suggested_date = ""
-    if raw and raw.get("upload_date") and len(raw["upload_date"]) == 8:
+    if match.talk_date:
+        # The talk's own date, from HeySummit or a curator, beats the upload date.
+        year, month, day = match.talk_date.split("-")
+        suggested_date = f"{day}/{month}/{year}"
+    elif raw and raw.get("upload_date") and len(raw["upload_date"]) == 8:
         stamp = raw["upload_date"]
         suggested_date = f"{stamp[6:8]}/{stamp[4:6]}/{stamp[:4]}"
     suggestions = {
@@ -452,6 +495,13 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
     # failed for this talk — that is why the button was pressed.
     if suggested_speaker:
         suggestions["Speaker"] = suggested_speaker
+
+    # Where this talk's sources disagree, field by field, for the record on
+    # screen — the tab says that they do; the drawer says where.
+    from .sources import heysummit
+
+    disagreement = (heysummit.differences(match.talk_id)
+                    if match.talk_id and match.in_csv and heysummit.read_catalog() else None)
 
     template = "partials/drawer_body.html" if body else "partials/drawer.html"
     if with_row:
@@ -465,7 +515,7 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
          "vocab": curation_vocabularies(), "suggested_date": suggested_date,
          "suggestions": suggestions, "KG_ENABLED": config.KG_ENABLED,
          "suggestion_evidence": suggestion_evidence,
-         "suggestion_failed": suggestion_failed},
+         "suggestion_failed": suggestion_failed, "disagreement": disagreement},
     )
 
 
@@ -680,6 +730,7 @@ async def curate(request: Request, key: str):
 TOGGLEABLE = {
     "SCHEDULER_ENABLED": "Read the channel automatically",
     "AUTO_INGEST_NEW": "Ingest newly published videos automatically",
+    "HEYSUMMIT_SYNC_ENABLED": "Sync HeySummit automatically",
     "KG_ENABLED": "Write to the knowledge graph",
 }
 templates.env.globals["TOGGLEABLE"] = TOGGLEABLE
@@ -720,9 +771,17 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
     from .pipeline.runner import last_rebuild, queue_depth
     from .scheduler import is_polling
 
+    from .sources import heysummit
+
     states = R.reconcile()
-    offchannel = [s for s in states if not s.on_youtube]
+    # Neither a channel video nor a row: a file on disk and nothing else.
+    offchannel = [s for s in states if not s.on_youtube and not s.in_csv]
+    # Catalogue talks that resemble a row without matching it. Never seeded
+    # (the wrong answer is a duplicate row); a curator settles each one.
+    candidates = (heysummit.attach(write=False)["candidates"]
+                  if heysummit.read_catalog() else [])
     return {
+        "heysummit_candidates": candidates,
         "lane": lane or "all",
         "query": q or "",
         "shorts": shorts,
@@ -824,28 +883,90 @@ def refresh(request: Request, background: BackgroundTasks):
     )
 
 
+@router.post("/video/{key}/attach", response_class=HTMLResponse)
+def attach_video(request: Request, key: str, video: str = Form("")):
+    """Give a talk HeySummit seeded the channel video that is it, then ingest.
+
+    The automatic join is by title and speaker, and a video whose title strays
+    from the programme's never finds its row. This is the curator's join: paste
+    the video, the row records it, and the pipeline — which looks a row up by
+    its video before it appends one — attaches the transcript to that row.
+    """
+    from .pipeline.csv_writer import find_talk_by_source, update_row
+    from .pipeline.runner import queue_videos
+    from .sources import youtube
+
+    def refuse(reason: str):
+        return HTMLResponse(f'<span class="note err">{escape(reason)}</span>',
+                            headers={"HX-Retarget": "#attach-flash", "HX-Reswap": "innerHTML"})
+
+    state = _find(key)
+    if state is None or not state.talk_id:
+        return refuse("Unknown talk.")
+    if state.video_id:
+        return refuse("This talk already has a video.")
+    video = (video or "").strip()
+    video_id = R.extract_video_id(video) or (video if R.YOUTUBE_ID_FILENAME.fullmatch(video)
+                                             and ".en" not in video else None)
+    if not video_id:
+        return refuse("Paste a YouTube link or an 11-character video id.")
+    holder = find_talk_by_source(config.METADATA_CSV, "youtube", video_id)
+    if holder and holder != state.talk_id:
+        return refuse(f"That video already belongs to talk {holder}.")
+
+    known = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+    if known is None:
+        db.upsert_videos([{"video_id": video_id, "title": state.display_title,
+                           "url": f"https://www.youtube.com/watch?v={video_id}"}])
+        try:
+            youtube.resolve_videos([video_id])
+        except Exception:  # noqa: BLE001 — a lookup that fails leaves the stub
+            pass
+        known = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+    if R.is_short_duration((known or {}).get("duration")):
+        return refuse("That video is a Short or teaser; the talk itself is a longer video.")
+
+    update_row(state.talk_id, {"Video": f"https://www.youtube.com/watch?v={video_id}"})
+    queue_videos([video_id])
+    return video_detail(request, state.talk_id, body=1, with_row=True)
+
+
 @router.post("/heysummit", response_class=HTMLResponse)
 def heysummit_sync(request: Request):
-    """Re-read HeySummit, and fill the blanks of the talks it matches. No LLM calls."""
+    """Re-read HeySummit; seed the talks it lists; claim transcripts; fill blanks.
+
+    No LLM calls. The API is the refresh; the join runs from the committed
+    catalogue either way, and says which happened.
+    """
     from .pipeline.runner import request_rebuild
     from .sources import heysummit
 
-    try:
-        talks = heysummit.refresh_catalog()
-    except Exception as exc:  # no token, the API, or Cloudflare; all mean "no catalogue"
+    summary = heysummit.sync(refresh=True)
+    if summary.get("error"):
         return HTMLResponse(
-            f'<span class="note err">Could not read HeySummit: {escape(str(exc))}</span>')
+            f'<span class="note err">Could not read HeySummit, and there is no '
+            f'catalogue on disk: {escape(summary.get("refresh_error") or summary["error"])}</span>')
+    if summary.get("refresh_error"):
+        refreshed = (f'<span class="bad">Could not refresh from HeySummit</span> '
+                     f'({escape(summary["refresh_error"])}); joined from the catalogue on disk.')
+    else:
+        refreshed = f'{summary["refreshed"]} talks on HeySummit.'
 
-    result = heysummit.attach()
-    if result["filled"] and config.KG_ENABLED:
+    if summary["changed"] and config.KG_ENABLED:
         request_rebuild()
     candidates = "; ".join(f"{escape(ours)} ≈ {escape(theirs)}"
-                           for ours, theirs in result["candidates"])
+                           for ours, theirs in summary["candidates"])
+    disagreements = "; ".join(f"{escape(title)}: CSV {escape(ours)}, HeySummit {escape(theirs)}"
+                              for title, ours, theirs in summary["disagreements"])
     return HTMLResponse(
-        f'<span class="note">{talks} talks on HeySummit. {result["attached"]} newly '
-        f'matched, blanks filled on {result["filled"]} talks, '
-        f'{result["unmatched"]} with no match.'
-        + (f' Possible matches for a curator: {candidates}' if candidates else "")
+        f'<span class="note">{refreshed} {summary["attached"]} newly matched, blanks '
+        f'filled on {summary["filled"]} talks, {summary["seeded"]} new talks seeded '
+        f'({len(summary["linked_videos"])} linked to a channel video), '
+        f'{summary["claimed"]} transcripts on disk claimed, {summary["unmatched"]} '
+        f'rows with no match.'
+        + (f' Possibly already a row, so not seeded: {candidates}.' if candidates else "")
+        + (f' Event disagrees on {len(summary["disagreements"])} '
+           f'(left as is): {disagreements}.' if disagreements else "")
         + '</span>'
     )
 

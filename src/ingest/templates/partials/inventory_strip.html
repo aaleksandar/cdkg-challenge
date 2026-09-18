@@ -1,14 +1,15 @@
-{# The one failure that reads as a missing feature: with no cached inventory
-   there are no channel videos at all, so the sheet is simply empty and every
-   lane counts zero. Name it rather than leave an admin to wonder.
+{# The one failure that reads as a missing feature: with nothing read from
+   YouTube and nothing seeded from HeySummit there are no talks at all, so the
+   sheet is simply empty and every lane counts zero. Name it rather than leave
+   an admin to wonder.
 
-   Swapped out-of-band with every rows response, so it goes away the moment a
-   refresh actually populates the inventory. #}
+   Swapped out-of-band with every rows response, so it goes away the moment
+   either source populates it. #}
 {% if not inventory %}
 <div class="strip">
-  <strong>No channel inventory yet.</strong>
-  Nothing has been read from YouTube, so there is nothing to show. Open
-  <em>Advanced</em> and press <em>Refresh channel</em> to read the channel and
-  populate it.
+  <strong>No talks yet.</strong>
+  Nothing has been read from YouTube or HeySummit, so there is nothing to show.
+  Open <em>Advanced</em> and press <em>Refresh channel</em> or
+  <em>Sync HeySummit</em>.
 </div>
 {% endif %}

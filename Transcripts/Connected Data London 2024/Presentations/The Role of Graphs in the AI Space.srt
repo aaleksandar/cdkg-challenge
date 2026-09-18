@@ -1,0 +1,6940 @@
+1
+00:00:04,960 --> 00:00:10,480
+All right. So, welcome as folks uh
+
+2
+00:00:08,000 --> 00:00:11,360
+trickle in. So, if you weren't aware,
+
+3
+00:00:10,480 --> 00:00:13,920
+we're going to be talking about
+
+4
+00:00:11,360 --> 00:00:15,920
+knowledge graph and AI. Big surprise,
+
+5
+00:00:13,920 --> 00:00:17,920
+right? This has not been discussed at
+
+6
+00:00:15,920 --> 00:00:18,960
+all at this conference in any way,
+
+7
+00:00:17,920 --> 00:00:21,039
+shape, or form. So, we're going to learn
+
+8
+00:00:18,960 --> 00:00:22,960
+a lot today. [laughter]
+
+9
+00:00:21,039 --> 00:00:25,199
+So, I am Ashley Faith. If you don't know
+
+10
+00:00:22,960 --> 00:00:26,480
+me, most people know me from my YouTube
+
+11
+00:00:25,199 --> 00:00:28,400
+channel. It's just my name if you want
+
+12
+00:00:26,480 --> 00:00:30,240
+to go check that out. Um, but I also
+
+13
+00:00:28,400 --> 00:00:32,960
+have a day job where I build graphs with
+
+14
+00:00:30,240 --> 00:00:35,680
+a giant team. Um, and we build stuff for
+
+15
+00:00:32,960 --> 00:00:38,000
+scholarship and research. But we're
+
+16
+00:00:35,680 --> 00:00:40,399
+going to go and do introductions down
+
+17
+00:00:38,000 --> 00:00:43,360
+the line here and then we're going to
+
+18
+00:00:40,399 --> 00:00:45,040
+get into discussion. But I've been in
+
+19
+00:00:43,360 --> 00:00:46,960
+some other sessions already today. I
+
+20
+00:00:45,040 --> 00:00:48,559
+hope you've all had some caffeine or
+
+21
+00:00:46,960 --> 00:00:50,800
+some tea or whatever it is that you need
+
+22
+00:00:48,559 --> 00:00:52,879
+to perk up because I hope we all have
+
+23
+00:00:50,800 --> 00:00:56,879
+some discussion with the rest of the
+
+24
+00:00:52,879 --> 00:00:58,719
+group. Okay, so Anthony, you're up next.
+
+25
+00:00:56,879 --> 00:01:01,199
+And I want to start. Yeah. [laughter]
+
+26
+00:00:58,719 --> 00:01:04,640
+Okay. I got the impression that I am in
+
+27
+00:01:01,199 --> 00:01:06,000
+front of a grand jury. So [laughter]
+
+28
+00:01:04,640 --> 00:01:07,920
+I will try to be nice.
+
+29
+00:01:06,000 --> 00:01:11,119
+>> No tomatoes to be thrown. It's okay.
+
+30
+00:01:07,920 --> 00:01:14,240
+>> Do not bite. Um so myself, so I am
+
+31
+00:01:11,119 --> 00:01:17,119
+Anthony. So I work at AWS. Um I am a
+
+32
+00:01:14,240 --> 00:01:21,360
+senior IML strategist and business
+
+33
+00:01:17,119 --> 00:01:24,479
+development guy. Um so what I do, my
+
+34
+00:01:21,360 --> 00:01:27,520
+team cover and spot the best funer
+
+35
+00:01:24,479 --> 00:01:29,759
+around here in Europe. um and we we help
+
+36
+00:01:27,520 --> 00:01:32,240
+them grow. So I am also in relationship
+
+37
+00:01:29,759 --> 00:01:35,759
+with VCs. So this is my main role. But
+
+38
+00:01:32,240 --> 00:01:39,040
+alongside that uh I like to do some kind
+
+39
+00:01:35,759 --> 00:01:42,880
+of thought leadership around uh graph
+
+40
+00:01:39,040 --> 00:01:45,759
+and generative AI. My belief is that the
+
+41
+00:01:42,880 --> 00:01:50,079
+best way to build GI products is to
+
+42
+00:01:45,759 --> 00:01:52,320
+combine it with graph technologies. So
+
+43
+00:01:50,079 --> 00:01:55,520
+this is a a strong belief that I have
+
+44
+00:01:52,320 --> 00:01:58,640
+that is more and more backed by data.
+
+45
+00:01:55,520 --> 00:02:00,560
+Before that I worked as a I civil
+
+46
+00:01:58,640 --> 00:02:03,439
+servant in France uh in the social
+
+47
+00:02:00,560 --> 00:02:06,799
+security system where where I push for
+
+48
+00:02:03,439 --> 00:02:09,440
+IML project there and uh in in startup
+
+49
+00:02:06,799 --> 00:02:13,720
+and large corporation like L'Oreal. So
+
+50
+00:02:09,440 --> 00:02:13,720
+yeah that's my uh
+
+51
+00:02:14,080 --> 00:02:17,280
+Leah. Yeah.
+
+52
+00:02:15,360 --> 00:02:20,319
+>> Thank you. Thank you. Uh I'm Leah
+
+53
+00:02:17,280 --> 00:02:24,480
+Miller. I'm a lead ontologist at SNP
+
+54
+00:02:20,319 --> 00:02:27,520
+Global and um my background is in uh
+
+55
+00:02:24,480 --> 00:02:31,760
+philosophy and sociology originally and
+
+56
+00:02:27,520 --> 00:02:35,120
+I've been uh a knowledge engineer and a
+
+57
+00:02:31,760 --> 00:02:38,720
+data architect and an ontologist and I
+
+58
+00:02:35,120 --> 00:02:41,680
+am uh my involvement in the AI space
+
+59
+00:02:38,720 --> 00:02:44,879
+right now is uh working with developers
+
+60
+00:02:41,680 --> 00:02:47,440
+on uh creating knowledge graphs for
+
+61
+00:02:44,879 --> 00:02:50,160
+graph rag or text to query.
+
+62
+00:02:47,440 --> 00:02:52,480
+And so I'm kind of on the uh use case
+
+63
+00:02:50,160 --> 00:02:54,239
+end and trying to get it to work with uh
+
+64
+00:02:52,480 --> 00:02:58,080
+enterprise data which is a really
+
+65
+00:02:54,239 --> 00:03:00,160
+exciting and uh experimental uh thing
+
+66
+00:02:58,080 --> 00:03:01,519
+happening now.
+
+67
+00:03:00,160 --> 00:03:02,720
+>> Peter, you can go next.
+
+68
+00:03:01,519 --> 00:03:04,800
+>> Sure.
+
+69
+00:03:02,720 --> 00:03:07,120
+>> Hi everyone. Um so my name is Peter
+
+70
+00:03:04,800 --> 00:03:11,040
+Crocker. I'm chief exec at Oxford
+
+71
+00:03:07,120 --> 00:03:13,519
+Semantic Technologies. Um
+
+72
+00:03:11,040 --> 00:03:15,760
+uh chief exec but joined as CTO. So
+
+73
+00:03:13,519 --> 00:03:18,879
+please don't uh pigeon hole me as just
+
+74
+00:03:15,760 --> 00:03:21,360
+the business guy. Um uh passion for
+
+75
+00:03:18,879 --> 00:03:23,360
+technology from a from a very early age
+
+76
+00:03:21,360 --> 00:03:28,080
+since since I was first introduced to
+
+77
+00:03:23,360 --> 00:03:30,799
+Lego I think. Um background I started my
+
+78
+00:03:28,080 --> 00:03:33,840
+working life I guess as a mainframe
+
+79
+00:03:30,799 --> 00:03:37,599
+programmer for for IBM. Spent many years
+
+80
+00:03:33,840 --> 00:03:39,599
+in enterprise IT consulting
+
+81
+00:03:37,599 --> 00:03:43,360
+um architect
+
+82
+00:03:39,599 --> 00:03:46,319
+and the lot. um and then was approached
+
+83
+00:03:43,360 --> 00:03:47,920
+uh to come and uh go back to back to my
+
+84
+00:03:46,319 --> 00:03:50,959
+roots, go back to Oxford where I was
+
+85
+00:03:47,920 --> 00:03:52,720
+born and and studied um to look at this
+
+86
+00:03:50,959 --> 00:03:55,920
+small startup that was being spun out of
+
+87
+00:03:52,720 --> 00:03:59,280
+the university. Um from there we built
+
+88
+00:03:55,920 --> 00:04:00,959
+our company Oxford Sm Technologies. Um
+
+89
+00:03:59,280 --> 00:04:04,319
+our core technology comes out of that
+
+90
+00:04:00,959 --> 00:04:07,200
+research RDF Fox and it's been a
+
+91
+00:04:04,319 --> 00:04:09,360
+pleasure privilege um to to work with a
+
+92
+00:04:07,200 --> 00:04:12,080
+fantastic team of very talented people
+
+93
+00:04:09,360 --> 00:04:13,599
+to to build that company uh and take it
+
+94
+00:04:12,080 --> 00:04:16,239
+from
+
+95
+00:04:13,599 --> 00:04:18,880
+well just a handful of people in an idea
+
+96
+00:04:16,239 --> 00:04:21,840
+some code to a company that recently was
+
+97
+00:04:18,880 --> 00:04:24,000
+acquired by Samsung and put at the heart
+
+98
+00:04:21,840 --> 00:04:25,120
+of their AI strategy. So pleasure to be
+
+99
+00:04:24,000 --> 00:04:27,120
+with you today.
+
+100
+00:04:25,120 --> 00:04:30,080
+>> If you needed any more uh evidence that
+
+101
+00:04:27,120 --> 00:04:32,240
+knowledge graph and AI go together
+
+102
+00:04:30,080 --> 00:04:34,639
+>> right there. I've literally sent that to
+
+103
+00:04:32,240 --> 00:04:35,360
+tons of people just to say that exact
+
+104
+00:04:34,639 --> 00:04:38,479
+phrase.
+
+105
+00:04:35,360 --> 00:04:38,960
+>> Yeah, we had a sorry
+
+106
+00:04:38,479 --> 00:04:40,800
+>> no
+
+107
+00:04:38,960 --> 00:04:44,400
+>> we you will get your introduction. Yeah,
+
+108
+00:04:40,800 --> 00:04:47,520
+we we recently recently I think we had a
+
+109
+00:04:44,400 --> 00:04:50,880
+article in Forbes where you know graph
+
+110
+00:04:47,520 --> 00:04:52,800
+was the center of attention. Um, I think
+
+111
+00:04:50,880 --> 00:04:54,000
+you're you'll be seeing a lot more.
+
+112
+00:04:52,800 --> 00:04:56,160
+>> Yeah, that's the one I sent around. I
+
+113
+00:04:54,000 --> 00:04:58,683
+said the thing I just said, guys, if you
+
+114
+00:04:56,160 --> 00:05:00,320
+if you've had doubts, here you go. Okay.
+
+115
+00:04:58,683 --> 00:05:02,639
+[laughter]
+
+116
+00:05:00,320 --> 00:05:04,720
+>> Uh, hi everyone. I'm Tony Seal, the
+
+117
+00:05:02,639 --> 00:05:06,960
+knowledge graph guy. So, I've been
+
+118
+00:05:04,720 --> 00:05:09,039
+working with uh knowledge graphs now
+
+119
+00:05:06,960 --> 00:05:11,759
+primarily in investment banks uh sort of
+
+120
+00:05:09,039 --> 00:05:13,280
+for the last uh 10 years. So, rubber
+
+121
+00:05:11,759 --> 00:05:15,199
+meets the road in terms of trying to
+
+122
+00:05:13,280 --> 00:05:18,988
+apply the technology in these highly
+
+123
+00:05:15,199 --> 00:05:21,600
+regulated high stakes uh environments.
+
+124
+00:05:18,988 --> 00:05:24,320
+[clears throat] initially uh doing the
+
+125
+00:05:21,600 --> 00:05:26,880
+machine learning side with uh GNN's so
+
+126
+00:05:24,320 --> 00:05:30,479
+like uh graph-based neural networks but
+
+127
+00:05:26,880 --> 00:05:32,320
+then obviously uh two two three years
+
+128
+00:05:30,479 --> 00:05:34,720
+ago the out came the large language
+
+129
+00:05:32,320 --> 00:05:36,800
+models and so recently I've just been
+
+130
+00:05:34,720 --> 00:05:39,360
+focused on the connection of those two
+
+131
+00:05:36,800 --> 00:05:41,520
+technologies uh together and seeing how
+
+132
+00:05:39,360 --> 00:05:43,840
+you get the best out of both of those.
+
+133
+00:05:41,520 --> 00:05:46,240
+>> Very nice. And if you haven't caught on,
+
+134
+00:05:43,840 --> 00:05:48,160
+we have a powerhouse of experience up
+
+135
+00:05:46,240 --> 00:05:50,880
+here and honestly in the audience as
+
+136
+00:05:48,160 --> 00:05:54,000
+well. So this is going to be exciting.
+
+137
+00:05:50,880 --> 00:05:57,120
+So let's go ahead and kick it off. And
+
+138
+00:05:54,000 --> 00:05:59,120
+the the big question, why are people
+
+139
+00:05:57,120 --> 00:06:01,120
+talking about AI and graphs together so
+
+140
+00:05:59,120 --> 00:06:03,280
+much from your experience, from your
+
+141
+00:06:01,120 --> 00:06:05,680
+perspective? And you have the mic
+
+142
+00:06:03,280 --> 00:06:07,759
+already, so why don't you start?
+
+143
+00:06:05,680 --> 00:06:11,199
+>> Yeah, I would I would break that down
+
+144
+00:06:07,759 --> 00:06:14,080
+into two parts probably. So, so, so one
+
+145
+00:06:11,199 --> 00:06:16,240
+part is the uh data side which for
+
+146
+00:06:14,080 --> 00:06:19,199
+anybody that was listening to my uh
+
+147
+00:06:16,240 --> 00:06:21,360
+keynote uh yesterday I you know I think
+
+148
+00:06:19,199 --> 00:06:24,960
+I I pretty elaborately went into that
+
+149
+00:06:21,360 --> 00:06:28,639
+that essentially you can't do AI without
+
+150
+00:06:24,960 --> 00:06:31,680
+data and therefore for any organization
+
+151
+00:06:28,639 --> 00:06:33,199
+their primary AI strategy before
+
+152
+00:06:31,680 --> 00:06:35,039
+anything else is to get their data
+
+153
+00:06:33,199 --> 00:06:37,759
+strategy right. So just organize your
+
+154
+00:06:35,039 --> 00:06:39,759
+data because at the moment most
+
+155
+00:06:37,759 --> 00:06:43,520
+organizations it's like a kind of dirty
+
+156
+00:06:39,759 --> 00:06:45,840
+secret um that in a large organization
+
+157
+00:06:43,520 --> 00:06:47,759
+their data is in disarray at the moment
+
+158
+00:06:45,840 --> 00:06:50,400
+and and I kind of coming from the
+
+159
+00:06:47,759 --> 00:06:52,160
+finance I see it like the credit default
+
+160
+00:06:50,400 --> 00:06:54,400
+swap crisis that we had with the credit
+
+161
+00:06:52,160 --> 00:06:55,759
+crunch where it was like kind of a few
+
+162
+00:06:54,400 --> 00:06:57,520
+people were kind of looking around
+
+163
+00:06:55,759 --> 00:06:59,919
+saying do you know what these mortgage
+
+164
+00:06:57,520 --> 00:07:02,080
+back securities they they don't actually
+
+165
+00:06:59,919 --> 00:07:04,240
+add up like there's this bad mortgage in
+
+166
+00:07:02,080 --> 00:07:06,080
+here and you know Anybody that's been
+
+167
+00:07:04,240 --> 00:07:08,960
+inside a large enterprise, if they think
+
+168
+00:07:06,080 --> 00:07:10,560
+about it, kind of knows this the data
+
+169
+00:07:08,960 --> 00:07:12,160
+estate does not add up at the moment.
+
+170
+00:07:10,560 --> 00:07:15,120
+It's not well organized. It's not well
+
+171
+00:07:12,160 --> 00:07:16,479
+connected. So that's on one level. And
+
+172
+00:07:15,120 --> 00:07:18,000
+then I think the other level, which is
+
+173
+00:07:16,479 --> 00:07:20,639
+kind of going to be the more interesting
+
+174
+00:07:18,000 --> 00:07:22,880
+one to go into, I think I'm hoping we're
+
+175
+00:07:20,639 --> 00:07:24,560
+going to go into on the panel today, is
+
+176
+00:07:22,880 --> 00:07:26,880
+more kind of on then on the other side
+
+177
+00:07:24,560 --> 00:07:28,720
+of like, well, generative models, you
+
+178
+00:07:26,880 --> 00:07:30,639
+know, they're they're they're great that
+
+179
+00:07:28,720 --> 00:07:32,960
+they're awesome. Uh they've got this
+
+180
+00:07:30,639 --> 00:07:35,039
+kind of creative uh ability. They can
+
+181
+00:07:32,960 --> 00:07:38,639
+write poetry. They can do all this sort
+
+182
+00:07:35,039 --> 00:07:40,400
+of stuff. But in a again in in in a in
+
+183
+00:07:38,639 --> 00:07:42,160
+any kind of complex situation or
+
+184
+00:07:40,400 --> 00:07:45,919
+regulated environment, I don't want you
+
+185
+00:07:42,160 --> 00:07:48,080
+writing poetry. I want you you know
+
+186
+00:07:45,919 --> 00:07:51,199
+executing this particular business case
+
+187
+00:07:48,080 --> 00:07:53,120
+and doing it with accuracy all uh right
+
+188
+00:07:51,199 --> 00:07:54,879
+all of the time. So then the question
+
+189
+00:07:53,120 --> 00:07:56,560
+kind of comes well how do you put
+
+190
+00:07:54,879 --> 00:07:58,639
+control around one of these models? And
+
+191
+00:07:56,560 --> 00:08:00,479
+we can kind of we can we can go into it
+
+192
+00:07:58,639 --> 00:08:01,919
+and I won't talk about it and take too
+
+193
+00:08:00,479 --> 00:08:04,400
+long now. But I think there's a there's
+
+194
+00:08:01,919 --> 00:08:07,520
+a strong hypothesis uh that that that
+
+195
+00:08:04,400 --> 00:08:10,240
+that be keen to explore that graphs are
+
+196
+00:08:07,520 --> 00:08:13,280
+the way of most effectively putting
+
+197
+00:08:10,240 --> 00:08:15,360
+control in to the uh generative models
+
+198
+00:08:13,280 --> 00:08:17,440
+and and I think it's it's it's probably
+
+199
+00:08:15,360 --> 00:08:19,280
+this latter one that is the major reason
+
+200
+00:08:17,440 --> 00:08:22,400
+why it's hyping up so much now.
+
+201
+00:08:19,280 --> 00:08:25,440
+>> Absolutely. And you know accuracy for
+
+202
+00:08:22,400 --> 00:08:26,879
+your use case and your company, right? I
+
+203
+00:08:25,440 --> 00:08:28,160
+mean, I know you you know that, of
+
+204
+00:08:26,879 --> 00:08:30,080
+course, but you know, for the audience
+
+205
+00:08:28,160 --> 00:08:32,159
+that isn't maybe as familiar with these
+
+206
+00:08:30,080 --> 00:08:33,839
+things. That's the thing that AI doesn't
+
+207
+00:08:32,159 --> 00:08:35,680
+really understand. It's a general model.
+
+208
+00:08:33,839 --> 00:08:37,760
+It knows a whole lot about, you know,
+
+209
+00:08:35,680 --> 00:08:39,680
+who Nicki Minaj is, but that's not
+
+210
+00:08:37,760 --> 00:08:41,039
+really helpful for my um banking use
+
+211
+00:08:39,680 --> 00:08:42,640
+case, unless, you know, we're trying to
+
+212
+00:08:41,039 --> 00:08:44,720
+insure her, which I don't know if I
+
+213
+00:08:42,640 --> 00:08:47,200
+would do. Anyways, if anyone knows who
+
+214
+00:08:44,720 --> 00:08:48,560
+Nicki Minaj is. Uh Peter, it looks like
+
+215
+00:08:47,200 --> 00:08:51,200
+you're up next.
+
+216
+00:08:48,560 --> 00:08:55,200
+>> Yeah. So, just to really carry on and
+
+217
+00:08:51,200 --> 00:08:57,519
+try not to repeat um what T was saying,
+
+218
+00:08:55,200 --> 00:08:59,040
+accuracy, explanability, these are all
+
+219
+00:08:57,519 --> 00:09:01,519
+characteristics we need when we're
+
+220
+00:08:59,040 --> 00:09:04,000
+dealing with, you know, real people,
+
+221
+00:09:01,519 --> 00:09:06,800
+their their data and real businesses and
+
+222
+00:09:04,000 --> 00:09:08,640
+their data. I I guess I'd add sort of
+
+223
+00:09:06,800 --> 00:09:10,480
+helping scale the expert knowledge
+
+224
+00:09:08,640 --> 00:09:12,320
+that's intrinsic or actually
+
+225
+00:09:10,480 --> 00:09:15,440
+differentiate differentiates you as a
+
+226
+00:09:12,320 --> 00:09:18,240
+business or an organization. Um and and
+
+227
+00:09:15,440 --> 00:09:20,640
+for that it's graphs are a fantastic way
+
+228
+00:09:18,240 --> 00:09:22,240
+to organize your data. Um graphs are
+
+229
+00:09:20,640 --> 00:09:25,120
+also an excellent place on which to
+
+230
+00:09:22,240 --> 00:09:27,680
+perform logic on top of your data. So
+
+231
+00:09:25,120 --> 00:09:29,680
+we'll talking a fair amount about
+
+232
+00:09:27,680 --> 00:09:32,080
+reasoning and and that really for me is
+
+233
+00:09:29,680 --> 00:09:34,800
+the application of logic on top of on
+
+234
+00:09:32,080 --> 00:09:36,800
+top of your data to expand it to to to
+
+235
+00:09:34,800 --> 00:09:39,279
+something that's useful and and yeah in
+
+236
+00:09:36,800 --> 00:09:41,200
+terms of the connection back to to
+
+237
+00:09:39,279 --> 00:09:44,000
+generative AI you know they are they are
+
+238
+00:09:41,200 --> 00:09:46,240
+very much complimentary but one will
+
+239
+00:09:44,000 --> 00:09:48,320
+make stuff up one will get you accurate
+
+240
+00:09:46,240 --> 00:09:50,080
+answers let's let's let's build the
+
+241
+00:09:48,320 --> 00:09:51,760
+poetry if you like to use your analogy
+
+242
+00:09:50,080 --> 00:09:55,040
+let's build the poetry on on top of
+
+243
+00:09:51,760 --> 00:09:59,120
+facts and accuracy and something that is
+
+244
+00:09:55,040 --> 00:10:01,680
+explainable um and um and uh and going
+
+245
+00:09:59,120 --> 00:10:05,519
+to compute things accurately for you.
+
+246
+00:10:01,680 --> 00:10:07,440
+Thank you. Um
+
+247
+00:10:05,519 --> 00:10:11,200
+I will try to to not repeat what has
+
+248
+00:10:07,440 --> 00:10:14,240
+been said. Um I think so we will have a
+
+249
+00:10:11,200 --> 00:10:17,519
+second phase in genai that is agentic
+
+250
+00:10:14,240 --> 00:10:20,720
+systems. So we are talking more and more
+
+251
+00:10:17,519 --> 00:10:22,640
+about this. Um a lot of investments are
+
+252
+00:10:20,720 --> 00:10:26,720
+going into these kind of startups. So
+
+253
+00:10:22,640 --> 00:10:29,920
+agentic is like using genai to automate
+
+254
+00:10:26,720 --> 00:10:34,240
+processes uh make decision adapt to
+
+255
+00:10:29,920 --> 00:10:36,000
+context and my belief but I see more and
+
+256
+00:10:34,240 --> 00:10:38,800
+more papers more and more product that
+
+257
+00:10:36,000 --> 00:10:41,519
+are doing this is that by using
+
+258
+00:10:38,800 --> 00:10:44,560
+knowledge graph craft technologies it
+
+259
+00:10:41,519 --> 00:10:47,040
+allow these agentic system to perform
+
+260
+00:10:44,560 --> 00:10:48,720
+much more better more accurate more
+
+261
+00:10:47,040 --> 00:10:50,880
+interpretable
+
+262
+00:10:48,720 --> 00:10:52,079
+uh you can have a reasoning layer on the
+
+263
+00:10:50,880 --> 00:10:54,320
+graph also
+
+264
+00:10:52,079 --> 00:10:58,399
+Uh let me take an example on memory
+
+265
+00:10:54,320 --> 00:11:01,920
+systems. Um so lots of those agents
+
+266
+00:10:58,399 --> 00:11:04,800
+wants to have a memory of what has been
+
+267
+00:11:01,920 --> 00:11:07,519
+happening with the user. The best way to
+
+268
+00:11:04,800 --> 00:11:10,560
+build this memory system is this graph.
+
+269
+00:11:07,519 --> 00:11:12,399
+Um if you vectorized because one
+
+270
+00:11:10,560 --> 00:11:15,200
+alternative could be to use only a
+
+271
+00:11:12,399 --> 00:11:17,279
+vector database. Um if you only
+
+272
+00:11:15,200 --> 00:11:19,040
+vectorize those memories, you can't
+
+273
+00:11:17,279 --> 00:11:22,000
+reason on it. Okay? you will only
+
+274
+00:11:19,040 --> 00:11:25,200
+perform semantic similarities on those
+
+275
+00:11:22,000 --> 00:11:27,839
+memories uh and the accuracy would be
+
+276
+00:11:25,200 --> 00:11:30,079
+bad and the more memories you will have
+
+277
+00:11:27,839 --> 00:11:32,720
+the more memory system will scale and
+
+278
+00:11:30,079 --> 00:11:36,640
+the more the accuracy will drop. Okay.
+
+279
+00:11:32,720 --> 00:11:40,240
+So by by organizing your data in a graph
+
+280
+00:11:36,640 --> 00:11:43,120
+system by adding um
+
+281
+00:11:40,240 --> 00:11:48,160
+my colleague from semantic I explained
+
+282
+00:11:43,120 --> 00:11:50,640
+logic um logic inference on this data
+
+283
+00:11:48,160 --> 00:11:54,480
+you can have much more accurate aent
+
+284
+00:11:50,640 --> 00:11:57,519
+agentic system. Yeah. So this is um I
+
+285
+00:11:54,480 --> 00:12:00,000
+think uh this neuros symbolic approach
+
+286
+00:11:57,519 --> 00:12:04,079
+is the best approach we have right now
+
+287
+00:12:00,000 --> 00:12:10,040
+in AI to to tackle the challenges that
+
+288
+00:12:04,079 --> 00:12:10,040
+uh we want to to to deal with here.
+
+289
+00:12:10,639 --> 00:12:14,880
+>> Yeah. So [clears throat] plus one to
+
+290
+00:12:11,920 --> 00:12:19,600
+what everyone has said. Um I think uh
+
+291
+00:12:14,880 --> 00:12:23,040
+from the um the enterprise data side I'm
+
+292
+00:12:19,600 --> 00:12:26,639
+really excited to see that uh graphs are
+
+293
+00:12:23,040 --> 00:12:29,440
+becoming uh more and more um uh
+
+294
+00:12:26,639 --> 00:12:32,800
+prevalent as a solution for the for our
+
+295
+00:12:29,440 --> 00:12:35,839
+AI uh solutions and adding adding that
+
+296
+00:12:32,800 --> 00:12:38,399
+to our to our pipelines. Uh so there's
+
+297
+00:12:35,839 --> 00:12:40,639
+just more demand for uh okay what is a
+
+298
+00:12:38,399 --> 00:12:43,519
+knowledge graph? how do I uh convert my
+
+299
+00:12:40,639 --> 00:12:45,360
+data into a knowledge graph or how do I
+
+300
+00:12:43,519 --> 00:12:49,519
+uh leverage ontologies to add in
+
+301
+00:12:45,360 --> 00:12:53,120
+metadata about my data? And I think it's
+
+302
+00:12:49,519 --> 00:12:55,279
+um uh you know we're we're on the end of
+
+303
+00:12:53,120 --> 00:12:57,279
+you know using all the the the different
+
+304
+00:12:55,279 --> 00:13:00,240
+methods and tools and and testing it out
+
+305
+00:12:57,279 --> 00:13:03,600
+and seeing uh seeing what works. And
+
+306
+00:13:00,240 --> 00:13:05,440
+it's it's very much um I know that it's
+
+307
+00:13:03,600 --> 00:13:07,120
+extremely important to have graphs.
+
+308
+00:13:05,440 --> 00:13:10,399
+I've, you know, we all know that we're
+
+309
+00:13:07,120 --> 00:13:12,720
+all here and I think it's just becoming
+
+310
+00:13:10,399 --> 00:13:14,399
+uh more and more known that that's just
+
+311
+00:13:12,720 --> 00:13:17,200
+something that we're going to need to to
+
+312
+00:13:14,399 --> 00:13:20,880
+leverage uh when it comes to accuracy
+
+313
+00:13:17,200 --> 00:13:22,160
+and representing our data accurately. Um
+
+314
+00:13:20,880 --> 00:13:23,920
+yeah.
+
+315
+00:13:22,160 --> 00:13:26,639
+>> So, one thing that you have all
+
+316
+00:13:23,920 --> 00:13:28,959
+mentioned is accuracy.
+
+317
+00:13:26,639 --> 00:13:31,760
+How many of us agree on everything all
+
+318
+00:13:28,959 --> 00:13:33,519
+the time? We're all experts or experts
+
+319
+00:13:31,760 --> 00:13:35,279
+in something.
+
+320
+00:13:33,519 --> 00:13:37,040
+It doesn't always happen. And in fact,
+
+321
+00:13:35,279 --> 00:13:39,519
+there was someone earlier today that was
+
+322
+00:13:37,040 --> 00:13:41,680
+talking about this is that is if you ask
+
+323
+00:13:39,519 --> 00:13:44,079
+a room full of lawyers how this one
+
+324
+00:13:41,680 --> 00:13:45,760
+thing is, what is the fact, they will
+
+325
+00:13:44,079 --> 00:13:48,000
+all disagree. So, how do you deal with
+
+326
+00:13:45,760 --> 00:13:51,480
+disagreements in your data which might
+
+327
+00:13:48,000 --> 00:13:51,480
+actually be valid?
+
+328
+00:13:52,720 --> 00:13:54,880
+>> Whoever wants to go first.
+
+329
+00:13:54,079 --> 00:13:56,480
+>> Yeah,
+
+330
+00:13:54,880 --> 00:13:59,120
+>> I caught them with a new question.
+
+331
+00:13:56,480 --> 00:14:02,320
+Sorry.
+
+332
+00:13:59,120 --> 00:14:05,519
+Maybe I won't not give a direct answer
+
+333
+00:14:02,320 --> 00:14:08,000
+but um introduce this team because I
+
+334
+00:14:05,519 --> 00:14:10,639
+think evaluation
+
+335
+00:14:08,000 --> 00:14:13,360
+um so when I talk to startups when a
+
+336
+00:14:10,639 --> 00:14:15,839
+startup told me I ask one question do
+
+337
+00:14:13,360 --> 00:14:17,360
+you have an evaluation system of your
+
+338
+00:14:15,839 --> 00:14:20,480
+solution
+
+339
+00:14:17,360 --> 00:14:23,040
+uh and if it if they don't have think
+
+340
+00:14:20,480 --> 00:14:25,920
+about it I think it's a it's a big
+
+341
+00:14:23,040 --> 00:14:28,000
+mistake okay because AI system are
+
+342
+00:14:25,920 --> 00:14:31,279
+evolving systems uh they will
+
+343
+00:14:28,000 --> 00:14:33,839
+continuously be improved and you need to
+
+344
+00:14:31,279 --> 00:14:36,480
+be able to measure what is happening and
+
+345
+00:14:33,839 --> 00:14:39,120
+to improve it. Okay, it's a basics
+
+346
+00:14:36,480 --> 00:14:40,959
+principle of machine learning operation.
+
+347
+00:14:39,120 --> 00:14:44,320
+Okay, classical machine learning for
+
+348
+00:14:40,959 --> 00:14:48,399
+geni is the same thing. the stack to
+
+349
+00:14:44,320 --> 00:14:52,399
+evaluate it is emerging. Okay. Um I will
+
+350
+00:14:48,399 --> 00:14:55,519
+give you for example a startup that is
+
+351
+00:14:52,399 --> 00:14:56,800
+successful in this is for example. So
+
+352
+00:14:55,519 --> 00:14:59,680
+I'm not biased but it's a French
+
+353
+00:14:56,800 --> 00:15:02,000
+startup. Okay. In French but but but
+
+354
+00:14:59,680 --> 00:15:06,160
+yeah they I think they are doing great.
+
+355
+00:15:02,000 --> 00:15:09,279
+Um yeah but on your question um
+
+356
+00:15:06,160 --> 00:15:10,800
+depending on the task you are dealing
+
+357
+00:15:09,279 --> 00:15:12,880
+with
+
+358
+00:15:10,800 --> 00:15:16,399
+that can be case where you have one
+
+359
+00:15:12,880 --> 00:15:18,399
+correct answer if you take healthcare
+
+360
+00:15:16,399 --> 00:15:20,399
+um
+
+361
+00:15:18,399 --> 00:15:23,920
+depending on the state-of-the-art of the
+
+362
+00:15:20,399 --> 00:15:27,600
+scientific comm knowledge okay there is
+
+363
+00:15:23,920 --> 00:15:30,160
+one answer to this disease
+
+364
+00:15:27,600 --> 00:15:33,360
+so you have I mean an agreement of
+
+365
+00:15:30,160 --> 00:15:37,120
+experts on on this and so on. Okay. For
+
+366
+00:15:33,360 --> 00:15:39,440
+more creative task
+
+367
+00:15:37,120 --> 00:15:42,320
+like writing
+
+368
+00:15:39,440 --> 00:15:45,920
+a new way to sales to sell a product,
+
+369
+00:15:42,320 --> 00:15:48,639
+there is no correct answer. Okay. Um but
+
+370
+00:15:45,920 --> 00:15:52,079
+the more the contextual knowledge model
+
+371
+00:15:48,639 --> 00:15:55,120
+will be will have the more it will
+
+372
+00:15:52,079 --> 00:15:57,600
+explore path. Okay. For creative you you
+
+373
+00:15:55,120 --> 00:16:00,000
+you want to the product to to explore
+
+374
+00:15:57,600 --> 00:16:02,240
+different option and for the user to
+
+375
+00:16:00,000 --> 00:16:04,880
+choose. Okay. So I I think we need to
+
+376
+00:16:02,240 --> 00:16:07,120
+think about the nature of the task.
+
+377
+00:16:04,880 --> 00:16:11,680
+Yeah. And of course you need to have a
+
+378
+00:16:07,120 --> 00:16:15,199
+collect that evaluation data and and
+
+379
+00:16:11,680 --> 00:16:17,839
+evaluate uh your output based on this
+
+380
+00:16:15,199 --> 00:16:20,959
+benchmark etc. And more and more what we
+
+381
+00:16:17,839 --> 00:16:22,480
+are seeing is the emergence of LLM as
+
+382
+00:16:20,959 --> 00:16:26,320
+judge.
+
+383
+00:16:22,480 --> 00:16:29,440
+Okay. And I will end here.
+
+384
+00:16:26,320 --> 00:16:32,800
+I think for the current state the
+
+385
+00:16:29,440 --> 00:16:37,360
+scientific uh thinking about LLM as
+
+386
+00:16:32,800 --> 00:16:41,839
+judge is very early. Um and there might
+
+387
+00:16:37,360 --> 00:16:45,120
+be uh an opportunity to use a graph also
+
+388
+00:16:41,839 --> 00:16:46,560
+to evaluate because what you want to do
+
+389
+00:16:45,120 --> 00:16:48,480
+when you do evaluation you want
+
+390
+00:16:46,560 --> 00:16:50,800
+consistency.
+
+391
+00:16:48,480 --> 00:16:53,360
+uh you want to remember what has been
+
+392
+00:16:50,800 --> 00:16:56,560
+evaluated before and maybe there is
+
+393
+00:16:53,360 --> 00:17:00,160
+opportunity here to build a graph uh
+
+394
+00:16:56,560 --> 00:17:02,639
+agentic graph evaluation system uh to
+
+395
+00:17:00,160 --> 00:17:04,959
+have this kind of consistency
+
+396
+00:17:02,639 --> 00:17:06,799
+memory of what has been evaluated etc
+
+397
+00:17:04,959 --> 00:17:09,520
+start to create yeah so this is my
+
+398
+00:17:06,799 --> 00:17:11,120
+thinking
+
+399
+00:17:09,520 --> 00:17:13,679
+I think your question is taking us in
+
+400
+00:17:11,120 --> 00:17:15,679
+philosophy and um you remind me of a
+
+401
+00:17:13,679 --> 00:17:19,439
+conversation dinner table my my daughter
+
+402
+00:17:15,679 --> 00:17:20,880
+was studied philosophy Um and you know I
+
+403
+00:17:19,439 --> 00:17:25,199
+was talking about truth and she said
+
+404
+00:17:20,880 --> 00:17:27,600
+well what is truth right? Um so so yes
+
+405
+00:17:25,199 --> 00:17:30,480
+truth truth is um can be can be
+
+406
+00:17:27,600 --> 00:17:34,000
+subjective truth does evolve over time
+
+407
+00:17:30,480 --> 00:17:36,080
+um but as
+
+408
+00:17:34,000 --> 00:17:38,640
+I guess as a business as an organization
+
+409
+00:17:36,080 --> 00:17:40,400
+you you are taking a position right you
+
+410
+00:17:38,640 --> 00:17:42,080
+are taking a position to say this is
+
+411
+00:17:40,400 --> 00:17:43,840
+what I understand truth to be this is
+
+412
+00:17:42,080 --> 00:17:46,160
+how I'm maybe representing you in a
+
+413
+00:17:43,840 --> 00:17:48,160
+legal position and I am going to stick
+
+414
+00:17:46,160 --> 00:17:49,840
+to this truth or in a medical context
+
+415
+00:17:48,160 --> 00:17:51,760
+you don't go to your doctor and expect
+
+416
+00:17:49,840 --> 00:17:53,520
+them to come back with well actually the
+
+417
+00:17:51,760 --> 00:17:55,360
+the research search is divided and
+
+418
+00:17:53,520 --> 00:17:56,799
+there's 10 different things but I'm
+
+419
+00:17:55,360 --> 00:17:59,200
+going to pres prescribe you you know
+
+420
+00:17:56,799 --> 00:18:01,440
+this one thing so businesses do take a
+
+421
+00:17:59,200 --> 00:18:03,360
+position businesses are are there to
+
+422
+00:18:01,440 --> 00:18:05,360
+differentiate themselves from other
+
+423
+00:18:03,360 --> 00:18:08,880
+businesses to take a position on what
+
+424
+00:18:05,360 --> 00:18:10,799
+they believe truth to be um and uh and I
+
+425
+00:18:08,880 --> 00:18:11,280
+think from there we can we can progress
+
+426
+00:18:10,799 --> 00:18:12,960
+you can
+
+427
+00:18:11,280 --> 00:18:15,200
+>> sounds like there's a theme there too to
+
+428
+00:18:12,960 --> 00:18:17,360
+make sure the information is presented
+
+429
+00:18:15,200 --> 00:18:18,240
+so that the end user can make a decision
+
+430
+00:18:17,360 --> 00:18:19,840
+it's informed
+
+431
+00:18:18,240 --> 00:18:22,480
+>> if if that's appropriate for your use
+
+432
+00:18:19,840 --> 00:18:24,080
+case yes or if as a business you want to
+
+433
+00:18:22,480 --> 00:18:25,840
+you know you are you are taken position
+
+434
+00:18:24,080 --> 00:18:29,039
+which you think is the best
+
+435
+00:18:25,840 --> 00:18:31,200
+>> truth to follow then you know both but I
+
+436
+00:18:29,039 --> 00:18:33,440
+I think you know and ultimately we can
+
+437
+00:18:31,200 --> 00:18:36,400
+all say well we could we could model
+
+438
+00:18:33,440 --> 00:18:38,400
+alternative truths but but mostly we
+
+439
+00:18:36,400 --> 00:18:40,000
+find businesses you know want to take a
+
+440
+00:18:38,400 --> 00:18:41,360
+position want to mark their position as
+
+441
+00:18:40,000 --> 00:18:44,160
+this is where I think I'm going to add
+
+442
+00:18:41,360 --> 00:18:46,240
+value to you as a customer and um yes
+
+443
+00:18:44,160 --> 00:18:47,600
+other truths exist go by
+
+444
+00:18:46,240 --> 00:18:50,000
+>> ultimately it's about the accuracy of
+
+445
+00:18:47,600 --> 00:18:53,000
+the the LLM that it's supporting right
+
+446
+00:18:50,000 --> 00:18:53,000
+Yeah.
+
+447
+00:18:53,200 --> 00:18:59,679
+>> Yeah. So, so I think to answer this
+
+448
+00:18:57,120 --> 00:19:02,000
+question, it gets to the heart of things
+
+449
+00:18:59,679 --> 00:19:04,640
+in a way. So, the best the best thing to
+
+450
+00:19:02,000 --> 00:19:07,039
+do is to to to zoom out a little bit and
+
+451
+00:19:04,640 --> 00:19:09,200
+look at the relationship between the
+
+452
+00:19:07,039 --> 00:19:10,559
+large language model and the graph. So,
+
+453
+00:19:09,200 --> 00:19:12,320
+okay, we're kind of making it a bit of
+
+454
+00:19:10,559 --> 00:19:14,320
+an assumption that the graph is the best
+
+455
+00:19:12,320 --> 00:19:16,799
+way of of of doing this, which maybe we
+
+456
+00:19:14,320 --> 00:19:20,018
+can we can talk about, but let's let's
+
+457
+00:19:16,799 --> 00:19:21,679
+forget that for a second and just say
+
+458
+00:19:20,018 --> 00:19:25,120
+[clears throat] you can divide the world
+
+459
+00:19:21,679 --> 00:19:27,280
+into like natural systems and formal
+
+460
+00:19:25,120 --> 00:19:29,840
+systems. So, an example of a formal
+
+461
+00:19:27,280 --> 00:19:32,720
+system would be mathematics. Okay, it's
+
+462
+00:19:29,840 --> 00:19:35,520
+it's it's it's a perfectly good formal
+
+463
+00:19:32,720 --> 00:19:39,600
+system. Um, an ontology is another
+
+464
+00:19:35,520 --> 00:19:41,280
+example of a uh formal system. Um and
+
+465
+00:19:39,600 --> 00:19:43,200
+and you can think of any number of uh
+
+466
+00:19:41,280 --> 00:19:45,600
+Java is a programming language with a
+
+467
+00:19:43,200 --> 00:19:47,760
+compiler is a formal system and then we
+
+468
+00:19:45,600 --> 00:19:50,799
+have natural systems. So natural systems
+
+469
+00:19:47,760 --> 00:19:53,679
+exist in the biological world and they
+
+470
+00:19:50,799 --> 00:19:55,440
+they represent reality. They're the and
+
+471
+00:19:53,679 --> 00:19:58,880
+and the nature of these two different
+
+472
+00:19:55,440 --> 00:20:02,080
+systems are quite are quite distinct
+
+473
+00:19:58,880 --> 00:20:04,080
+because uh natural systems are existing
+
+474
+00:20:02,080 --> 00:20:06,080
+in this kind of continuous world. you
+
+475
+00:20:04,080 --> 00:20:07,919
+can kind of see it almost like a a
+
+476
+00:20:06,080 --> 00:20:09,679
+river, you know, it's like everything's
+
+477
+00:20:07,919 --> 00:20:11,200
+flowing into everything else. There's
+
+478
+00:20:09,679 --> 00:20:13,600
+not there's not one thing that's
+
+479
+00:20:11,200 --> 00:20:15,360
+discreet. And and actually when you
+
+480
+00:20:13,600 --> 00:20:18,400
+think of large language models in many
+
+481
+00:20:15,360 --> 00:20:20,160
+ways, although that we kind of like go
+
+482
+00:20:18,400 --> 00:20:21,840
+around between these natural and formal
+
+483
+00:20:20,160 --> 00:20:24,559
+systems and large language models are
+
+484
+00:20:21,840 --> 00:20:27,039
+obviously based on peace-wise linear
+
+485
+00:20:24,559 --> 00:20:28,480
+algebra at the end of the day, which but
+
+486
+00:20:27,039 --> 00:20:31,280
+when you kind of put them all together
+
+487
+00:20:28,480 --> 00:20:33,360
+into one of these very big models with
+
+488
+00:20:31,280 --> 00:20:36,960
+all of this kind of nonlinearity going
+
+489
+00:20:33,360 --> 00:20:39,200
+on in there, the large language model is
+
+490
+00:20:36,960 --> 00:20:41,360
+more like is is better considered like a
+
+491
+00:20:39,200 --> 00:20:43,840
+natural system in that context really.
+
+492
+00:20:41,360 --> 00:20:46,880
+So it's probi it's probabilistic it's
+
+493
+00:20:43,840 --> 00:20:49,520
+huristic it's continuous
+
+494
+00:20:46,880 --> 00:20:51,360
+um it has this uh creativity that the
+
+495
+00:20:49,520 --> 00:20:53,440
+other the flip side of which is
+
+496
+00:20:51,360 --> 00:20:55,919
+hallucination
+
+497
+00:20:53,440 --> 00:20:58,480
+and it's not computable so you can't
+
+498
+00:20:55,919 --> 00:21:01,679
+compute over uh that and and you can't
+
+499
+00:20:58,480 --> 00:21:03,120
+look inside it um because it's a black
+
+500
+00:21:01,679 --> 00:21:04,320
+box inside it you know with people are
+
+501
+00:21:03,120 --> 00:21:06,559
+trying and there is stuff that you can
+
+502
+00:21:04,320 --> 00:21:08,640
+do to like break down back to that kind
+
+503
+00:21:06,559 --> 00:21:10,480
+of peace-wise linear algebra stuff to to
+
+504
+00:21:08,640 --> 00:21:12,720
+to do stuff there but you but but
+
+505
+00:21:10,480 --> 00:21:14,000
+fundamentally it isn't. And and and so
+
+506
+00:21:12,720 --> 00:21:17,280
+you can think of that as like
+
+507
+00:21:14,000 --> 00:21:21,120
+simulation. It's like it's it's it's a
+
+508
+00:21:17,280 --> 00:21:23,440
+simulation of the world. And then what
+
+509
+00:21:21,120 --> 00:21:25,919
+like an ontology or a graph is and I
+
+510
+00:21:23,440 --> 00:21:29,120
+think this kind of comes into why graphs
+
+511
+00:21:25,919 --> 00:21:32,240
+are particularly good at this is graphs
+
+512
+00:21:29,120 --> 00:21:34,400
+are a discrete uh representation of
+
+513
+00:21:32,240 --> 00:21:37,039
+that. So like like at a mathematical
+
+514
+00:21:34,400 --> 00:21:39,039
+level then when we're putting stuff into
+
+515
+00:21:37,039 --> 00:21:42,480
+graphs they tend to be the discrete
+
+516
+00:21:39,039 --> 00:21:45,280
+versions of uh continuous calculations.
+
+517
+00:21:42,480 --> 00:21:46,960
+So um you've got separate nodes and
+
+518
+00:21:45,280 --> 00:21:49,360
+you've got separate edges and I can
+
+519
+00:21:46,960 --> 00:21:52,720
+compute and I can do things like logical
+
+520
+00:21:49,360 --> 00:21:55,440
+deductive closure on there. And then
+
+521
+00:21:52,720 --> 00:21:58,320
+when you when you so apologies for the
+
+522
+00:21:55,440 --> 00:22:00,799
+kind of the the the background to that
+
+523
+00:21:58,320 --> 00:22:02,400
+but then if if we kind of take that lens
+
+524
+00:22:00,799 --> 00:22:05,200
+between seeing these kind of two
+
+525
+00:22:02,400 --> 00:22:08,480
+different parts like the natural system
+
+526
+00:22:05,200 --> 00:22:09,760
+and the formal formalized system and
+
+527
+00:22:08,480 --> 00:22:12,960
+then we kind of think of that question
+
+528
+00:22:09,760 --> 00:22:14,400
+of ambiguity. All right. So in both
+
+529
+00:22:12,960 --> 00:22:16,400
+sense they're a form of knowledge
+
+530
+00:22:14,400 --> 00:22:18,080
+capture and a form of intelligence and
+
+531
+00:22:16,400 --> 00:22:20,880
+quite a good way of understanding
+
+532
+00:22:18,080 --> 00:22:24,240
+intelligence is the ability to abstract
+
+533
+00:22:20,880 --> 00:22:26,559
+like can you uh abstract the pertinent
+
+534
+00:22:24,240 --> 00:22:29,039
+details and and bring up the level of
+
+535
+00:22:26,559 --> 00:22:30,640
+abstraction and within like ontology
+
+536
+00:22:29,039 --> 00:22:32,400
+design that's exactly what we're doing.
+
+537
+00:22:30,640 --> 00:22:36,240
+We you know we're creating these like
+
+538
+00:22:32,400 --> 00:22:38,159
+kind of abstractions uh and and we're
+
+539
+00:22:36,240 --> 00:22:40,000
+taking a position we're doing we're not
+
+540
+00:22:38,159 --> 00:22:42,320
+doing simula simulation we're doing
+
+541
+00:22:40,000 --> 00:22:44,720
+modeling. So, and as as as Peter was
+
+542
+00:22:42,320 --> 00:22:46,880
+saying like at in a company at the end
+
+543
+00:22:44,720 --> 00:22:49,120
+of the day, you need to take a position.
+
+544
+00:22:46,880 --> 00:22:51,120
+You you you are nailing your onlogical
+
+545
+00:22:49,120 --> 00:22:53,039
+colors to the mast at that point. Yeah.
+
+546
+00:22:51,120 --> 00:22:56,960
+Yeah. You you you this is what we think
+
+547
+00:22:53,039 --> 00:22:59,360
+and this is what differentiates us. And
+
+548
+00:22:56,960 --> 00:23:03,600
+I in in that sense
+
+549
+00:22:59,360 --> 00:23:05,760
+um I think that you can think of the
+
+550
+00:23:03,600 --> 00:23:07,840
+situations where you have ambiguity then
+
+551
+00:23:05,760 --> 00:23:10,720
+you have we have two techniques uh for
+
+552
+00:23:07,840 --> 00:23:12,480
+handling that within or or or so all
+
+553
+00:23:10,720 --> 00:23:14,159
+right ambiguity within the large
+
+554
+00:23:12,480 --> 00:23:15,679
+language model that's handled just kind
+
+555
+00:23:14,159 --> 00:23:18,000
+of because it's a natural system it
+
+556
+00:23:15,679 --> 00:23:20,080
+naturally handles ambiguity. So one
+
+557
+00:23:18,000 --> 00:23:22,240
+concept flows into another concept. It's
+
+558
+00:23:20,080 --> 00:23:24,720
+a on a continuous it's that it's that
+
+559
+00:23:22,240 --> 00:23:26,480
+watery kind of uh metaphor. I can just
+
+560
+00:23:24,720 --> 00:23:28,559
+and you you can see it with the large
+
+561
+00:23:26,480 --> 00:23:30,400
+with with with the with the image uh
+
+562
+00:23:28,559 --> 00:23:32,720
+models they they'll just morph one image
+
+563
+00:23:30,400 --> 00:23:34,799
+into another on this continuous uh
+
+564
+00:23:32,720 --> 00:23:36,799
+space. You know a cat can turn into a
+
+565
+00:23:34,799 --> 00:23:38,400
+dog and you'll see on this continuous
+
+566
+00:23:36,799 --> 00:23:40,880
+spectrum as it moves from one to the
+
+567
+00:23:38,400 --> 00:23:42,159
+other. On our graph side it doesn't work
+
+568
+00:23:40,880 --> 00:23:43,919
+like that because I have a separate
+
+569
+00:23:42,159 --> 00:23:46,240
+category and I have a for dog and I have
+
+570
+00:23:43,919 --> 00:23:48,720
+a separate category for cat but they're
+
+571
+00:23:46,240 --> 00:23:51,200
+both mammals. So I can model that within
+
+572
+00:23:48,720 --> 00:23:54,240
+that kind of formal uh uh abstraction
+
+573
+00:23:51,200 --> 00:23:55,679
+that I can put into the ontology. The
+
+574
+00:23:54,240 --> 00:23:58,320
+other thing that we can do is then put
+
+575
+00:23:55,679 --> 00:24:00,000
+context in. So again like the on on the
+
+576
+00:23:58,320 --> 00:24:02,000
+large language model the context is kind
+
+577
+00:24:00,000 --> 00:24:04,320
+of naturally flowing from one thing into
+
+578
+00:24:02,000 --> 00:24:07,039
+the next smeared across this embedding
+
+579
+00:24:04,320 --> 00:24:10,000
+vector space. But within a graph in the
+
+580
+00:24:07,039 --> 00:24:11,440
+discrete space I can have edges linking
+
+581
+00:24:10,000 --> 00:24:13,440
+into these different things. And that
+
+582
+00:24:11,440 --> 00:24:16,559
+will allow me to look at the context.
+
+583
+00:24:13,440 --> 00:24:18,159
+And it's with these two mechanisms that
+
+584
+00:24:16,559 --> 00:24:20,640
+ambiguity
+
+585
+00:24:18,159 --> 00:24:24,320
+uh can be handled on the discrete side
+
+586
+00:24:20,640 --> 00:24:26,480
+which is context on one side by by
+
+587
+00:24:24,320 --> 00:24:28,480
+putting edges in and knowing what the
+
+588
+00:24:26,480 --> 00:24:31,600
+kind of local neighborhood is within the
+
+589
+00:24:28,480 --> 00:24:33,360
+graph and then abstraction on the
+
+590
+00:24:31,600 --> 00:24:35,679
+ontology side by being able to create
+
+591
+00:24:33,360 --> 00:24:39,760
+the formal modeling. But the really cool
+
+592
+00:24:35,679 --> 00:24:42,559
+thing, the really cool thing is that now
+
+593
+00:24:39,760 --> 00:24:44,480
+that we're not limited just to that to
+
+594
+00:24:42,559 --> 00:24:46,080
+to to doing that because we've got the
+
+595
+00:24:44,480 --> 00:24:47,679
+large language model and because we have
+
+596
+00:24:46,080 --> 00:24:50,240
+these two systems, you can create this
+
+597
+00:24:47,679 --> 00:24:52,159
+like neural symbolic loop and that's
+
+598
+00:24:50,240 --> 00:24:53,840
+where the real power comes because now
+
+599
+00:24:52,159 --> 00:24:55,279
+we're like iterating between these
+
+600
+00:24:53,840 --> 00:24:56,559
+different spaces. We're going into the
+
+601
+00:24:55,279 --> 00:24:58,720
+natural world and we're using the power
+
+602
+00:24:56,559 --> 00:25:01,200
+of the large language model to explore a
+
+603
+00:24:58,720 --> 00:25:02,640
+space in continuous world and then we're
+
+604
+00:25:01,200 --> 00:25:05,760
+saying well within the context of this
+
+605
+00:25:02,640 --> 00:25:07,600
+organization having explored the world
+
+606
+00:25:05,760 --> 00:25:09,039
+I'm now going to extract a formal model
+
+607
+00:25:07,600 --> 00:25:10,640
+from that which is like a kind of piece
+
+608
+00:25:09,039 --> 00:25:12,559
+of knowledge which I believe to be
+
+609
+00:25:10,640 --> 00:25:14,559
+useful and I'm going to actually kind of
+
+610
+00:25:12,559 --> 00:25:16,240
+represent in this discrete way and now
+
+611
+00:25:14,559 --> 00:25:17,840
+I'm going to persist that down into the
+
+612
+00:25:16,240 --> 00:25:19,600
+graph or I'm going to persist that into
+
+613
+00:25:17,840 --> 00:25:22,240
+the ontology and then that'll be
+
+614
+00:25:19,600 --> 00:25:24,080
+available for me to use later on. Sorry
+
+615
+00:25:22,240 --> 00:25:25,520
+for kind of going on there. That's
+
+616
+00:25:24,080 --> 00:25:27,440
+that's a really good explanation. I'm
+
+617
+00:25:25,520 --> 00:25:29,760
+glad you went through that because I
+
+618
+00:25:27,440 --> 00:25:33,440
+mean in my experience, you know, dealing
+
+619
+00:25:29,760 --> 00:25:35,760
+with things like this, it's when you see
+
+620
+00:25:33,440 --> 00:25:38,000
+something that has it's a disputed
+
+621
+00:25:35,760 --> 00:25:40,640
+thing. So, a good example, there's a lot
+
+622
+00:25:38,000 --> 00:25:43,600
+of uh academic research that says
+
+623
+00:25:40,640 --> 00:25:45,600
+vitamin C can help with cancer patients,
+
+624
+00:25:43,600 --> 00:25:47,120
+and there's a tiny subset that says it
+
+625
+00:25:45,600 --> 00:25:48,559
+actually hurts. And it's like, well,
+
+626
+00:25:47,120 --> 00:25:51,520
+wait a minute, those are completely
+
+627
+00:25:48,559 --> 00:25:53,039
+opposite. One has a ton of ev evidence,
+
+628
+00:25:51,520 --> 00:25:55,360
+one does not have as much. But wow,
+
+629
+00:25:53,039 --> 00:25:58,400
+that's really dangerous. So we need to
+
+630
+00:25:55,360 --> 00:26:00,080
+understand that for specific use cases.
+
+631
+00:25:58,400 --> 00:26:02,480
+So what I found when doing some
+
+632
+00:26:00,080 --> 00:26:05,440
+investigation into this is that that it
+
+633
+00:26:02,480 --> 00:26:08,240
+was really an outlier. It was and if you
+
+634
+00:26:05,440 --> 00:26:10,960
+are on this specific cancer drug, it is
+
+635
+00:26:08,240 --> 00:26:13,279
+not good for you. That was the critical
+
+636
+00:26:10,960 --> 00:26:15,760
+piece. So normally when I see this in
+
+637
+00:26:13,279 --> 00:26:18,000
+real life when looking at at things in
+
+638
+00:26:15,760 --> 00:26:20,720
+the graph in the AI space, those
+
+639
+00:26:18,000 --> 00:26:22,640
+disputes actually just mean there's more
+
+640
+00:26:20,720 --> 00:26:24,159
+context that's needed for the model to
+
+641
+00:26:22,640 --> 00:26:25,440
+understand it more appropriately and
+
+642
+00:26:24,159 --> 00:26:27,120
+then you put that into your graph and
+
+643
+00:26:25,440 --> 00:26:29,520
+then it understands it every single time
+
+644
+00:26:27,120 --> 00:26:30,960
+which is lovely. Um and we've seen a lot
+
+645
+00:26:29,520 --> 00:26:31,840
+of people claiming and this is where
+
+646
+00:26:30,960 --> 00:26:34,080
+we're going to get into the next
+
+647
+00:26:31,840 --> 00:26:36,320
+question and let's do Leah do you want
+
+648
+00:26:34,080 --> 00:26:37,679
+to respond to the question that we just
+
+649
+00:26:36,320 --> 00:26:40,720
+went through? I want no. Okay. Okay.
+
+650
+00:26:37,679 --> 00:26:42,080
+We'll go we'll go on then. Um, but a lot
+
+651
+00:26:40,720 --> 00:26:44,320
+of people are claiming that, you know,
+
+652
+00:26:42,080 --> 00:26:47,360
+with a knowledge graph, you can increase
+
+653
+00:26:44,320 --> 00:26:48,480
+the accuracy of your LM by X percent and
+
+654
+00:26:47,360 --> 00:26:50,320
+we've seen lots of different
+
+655
+00:26:48,480 --> 00:26:53,200
+percentages. It depends on the use case
+
+656
+00:26:50,320 --> 00:26:55,279
+and the data and so on and so forth. But
+
+657
+00:26:53,200 --> 00:26:58,000
+who's measuring this? How is it being
+
+658
+00:26:55,279 --> 00:26:59,600
+measured? Do you have thoughts on how
+
+659
+00:26:58,000 --> 00:27:05,000
+others are measuring it? How you think
+
+660
+00:26:59,600 --> 00:27:05,000
+that measuring the accuracy can be done?
+
+661
+00:27:05,440 --> 00:27:10,480
+So this is a question of like uh what
+
+662
+00:27:07,679 --> 00:27:13,120
+what data do we have on graph rag
+
+663
+00:27:10,480 --> 00:27:15,520
+actually being more effective than than
+
+664
+00:27:13,120 --> 00:27:17,919
+than other mechanisms of rank. Yeah,
+
+665
+00:27:15,520 --> 00:27:20,159
+there there there are a bunch of paper I
+
+666
+00:27:17,919 --> 00:27:22,880
+had someone on one of my LinkedIn uh
+
+667
+00:27:20,159 --> 00:27:25,279
+people put it exactly that question and
+
+668
+00:27:22,880 --> 00:27:27,120
+so I could share uh with this group
+
+669
+00:27:25,279 --> 00:27:28,400
+afterwards like the papers that I
+
+670
+00:27:27,120 --> 00:27:29,600
+responded to. Uh
+
+671
+00:27:28,400 --> 00:27:30,159
+>> yeah, there's a ton of them out there.
+
+672
+00:27:29,600 --> 00:27:32,400
+That's
+
+673
+00:27:30,159 --> 00:27:34,480
+>> there. Uh Juan's one from data.orld,
+
+674
+00:27:32,400 --> 00:27:36,559
+Worldw and Dean's one is is a really
+
+675
+00:27:34,480 --> 00:27:39,120
+good one that's just like kind of on the
+
+676
+00:27:36,559 --> 00:27:40,559
+you know the SQL uh benchmark and it's
+
+677
+00:27:39,120 --> 00:27:42,159
+kind of like a no-brainer that you kind
+
+678
+00:27:40,559 --> 00:27:44,320
+of putting the semantic layer in and
+
+679
+00:27:42,159 --> 00:27:45,919
+that's increasing the accuracy. And then
+
+680
+00:27:44,320 --> 00:27:48,000
+there's a bunch of more academic ones
+
+681
+00:27:45,919 --> 00:27:50,000
+which tend to go into like the reasoning
+
+682
+00:27:48,000 --> 00:27:51,279
+path. So you know it's like okay I'm
+
+683
+00:27:50,000 --> 00:27:52,720
+going to I'm going to show it these kind
+
+684
+00:27:51,279 --> 00:27:55,279
+of reasoning facts from the knowledge
+
+685
+00:27:52,720 --> 00:27:56,480
+graph and then uh then they do benchmark
+
+686
+00:27:55,279 --> 00:27:57,679
+on accuracy.
+
+687
+00:27:56,480 --> 00:27:59,360
+>> Yeah. At the end of the day we need to
+
+688
+00:27:57,679 --> 00:28:02,159
+have the data to support this with our
+
+689
+00:27:59,360 --> 00:28:04,640
+businesses right. So
+
+690
+00:28:02,159 --> 00:28:07,520
+>> yeah, I guess um just echo plenty plenty
+
+691
+00:28:04,640 --> 00:28:10,000
+of research in this space. Um but maybe
+
+692
+00:28:07,520 --> 00:28:11,440
+to to add to that, if you're looking to
+
+693
+00:28:10,000 --> 00:28:13,440
+convince your business, they may not
+
+694
+00:28:11,440 --> 00:28:16,399
+want to troll through the the research.
+
+695
+00:28:13,440 --> 00:28:17,919
+So just to to add to that, um you know,
+
+696
+00:28:16,399 --> 00:28:20,640
+look look at the announcements of of big
+
+697
+00:28:17,919 --> 00:28:22,159
+organizations. Um look actually at the
+
+698
+00:28:20,640 --> 00:28:24,000
+very first announcement I think in the
+
+699
+00:28:22,159 --> 00:28:26,799
+FT from Microsoft when they talked about
+
+700
+00:28:24,000 --> 00:28:28,640
+their partnership with OpenAI. Buried
+
+701
+00:28:26,799 --> 00:28:30,880
+within that text was the word, you know,
+
+702
+00:28:28,640 --> 00:28:34,320
+semantic technology. Um, you know, it
+
+703
+00:28:30,880 --> 00:28:36,399
+was was uh it was it was a side note,
+
+704
+00:28:34,320 --> 00:28:36,960
+but it was clear that that's what
+
+705
+00:28:36,399 --> 00:28:38,720
+they're building.
+
+706
+00:28:36,960 --> 00:28:41,279
+>> Change the narrative. Not a side note.
+
+707
+00:28:38,720 --> 00:28:43,840
+>> Yeah. Um,
+
+708
+00:28:41,279 --> 00:28:45,039
+look at the analysis that's, you know,
+
+709
+00:28:43,840 --> 00:28:46,159
+always a bit slow. They're finally
+
+710
+00:28:45,039 --> 00:28:48,320
+coming out from from the likes of
+
+711
+00:28:46,159 --> 00:28:49,600
+Gartner, the other analysts. Um, they
+
+712
+00:28:48,320 --> 00:28:54,000
+generally catch up with the industry
+
+713
+00:28:49,600 --> 00:28:56,320
+eventually. Um, and look at events like
+
+714
+00:28:54,000 --> 00:28:59,440
+Samsung acquiring us. I mean that's a
+
+715
+00:28:56,320 --> 00:29:03,039
+cheap one but um or just think about it
+
+716
+00:28:59,440 --> 00:29:04,960
+right um do you want to rely on symbolic
+
+717
+00:29:03,039 --> 00:29:06,880
+predictable explicit links that where
+
+718
+00:29:04,960 --> 00:29:10,399
+you are to our earlier point you know
+
+719
+00:29:06,880 --> 00:29:12,320
+taking a position or do you want to rely
+
+720
+00:29:10,399 --> 00:29:14,799
+on a statistical model and sometimes
+
+721
+00:29:12,320 --> 00:29:17,440
+that's that's good um but but remember
+
+722
+00:29:14,799 --> 00:29:19,440
+what that statistical model's trained on
+
+723
+00:29:17,440 --> 00:29:20,559
+um if you've got the budget of open
+
+724
+00:29:19,440 --> 00:29:22,399
+maybe you could train it on your
+
+725
+00:29:20,559 --> 00:29:23,919
+business maybe you could nudge a model
+
+726
+00:29:22,399 --> 00:29:26,000
+into your direction but it's it's
+
+727
+00:29:23,919 --> 00:29:28,960
+trained on the internet or or a
+
+728
+00:29:26,000 --> 00:29:30,720
+collection of articles from um it's it's
+
+729
+00:29:28,960 --> 00:29:32,559
+the average intelligence of the internet
+
+730
+00:29:30,720 --> 00:29:35,039
+rather than
+
+731
+00:29:32,559 --> 00:29:37,279
+the accurate or or the position your
+
+732
+00:29:35,039 --> 00:29:39,360
+business wishes to take. Um and I think
+
+733
+00:29:37,279 --> 00:29:41,279
+just just thinking about it from that
+
+734
+00:29:39,360 --> 00:29:44,559
+point of view I I know which one I would
+
+735
+00:29:41,279 --> 00:29:47,279
+bet my business on
+
+736
+00:29:44,559 --> 00:29:50,240
+>> on the accuracies. Um one one study that
+
+737
+00:29:47,279 --> 00:29:53,360
+I like study data world is really good
+
+738
+00:29:50,240 --> 00:29:54,960
+on text to SQL. So it shows that using
+
+739
+00:29:53,360 --> 00:29:56,720
+graph technology you increase
+
+740
+00:29:54,960 --> 00:29:59,600
+considerably the accuracy of your text
+
+741
+00:29:56,720 --> 00:30:01,840
+to text tossql application and there is
+
+742
+00:29:59,600 --> 00:30:04,399
+a second paper that shows that by using
+
+743
+00:30:01,840 --> 00:30:05,855
+an ontology on top of that you increase
+
+744
+00:30:04,399 --> 00:30:05,919
+it even more
+
+745
+00:30:05,855 --> 00:30:08,720
+>> [snorts]
+
+746
+00:30:05,919 --> 00:30:10,320
+>> um but recently there has been a study
+
+747
+00:30:08,720 --> 00:30:12,480
+by
+
+748
+00:30:10,320 --> 00:30:15,600
+so
+
+749
+00:30:12,480 --> 00:30:19,279
+and they showed pretty scientifically I
+
+750
+00:30:15,600 --> 00:30:22,960
+mean the data is pretty um clear there
+
+751
+00:30:19,279 --> 00:30:26,399
+is 30% accuracy gap between vector a
+
+752
+00:30:22,960 --> 00:30:29,840
+good vector databased approach and and
+
+753
+00:30:26,399 --> 00:30:33,039
+graph rag. Um and what is interesting is
+
+754
+00:30:29,840 --> 00:30:35,520
+on the they classified the different
+
+755
+00:30:33,039 --> 00:30:38,480
+types of question. So you have for
+
+756
+00:30:35,520 --> 00:30:41,760
+example multihop questions where you
+
+757
+00:30:38,480 --> 00:30:44,880
+need to um to fetch multiple facts to
+
+758
+00:30:41,760 --> 00:30:48,720
+answer answer the particular question.
+
+759
+00:30:44,880 --> 00:30:52,080
+Here uh it is twice as accurate than
+
+760
+00:30:48,720 --> 00:30:54,559
+vector database. Um
+
+761
+00:30:52,080 --> 00:30:58,399
+for example if you have a temporal
+
+762
+00:30:54,559 --> 00:31:03,039
+reasoning the I know there's a colleague
+
+763
+00:30:58,399 --> 00:31:06,159
+here is working on that you you by
+
+764
+00:31:03,039 --> 00:31:09,360
+representing temporality on the graph of
+
+765
+00:31:06,159 --> 00:31:11,279
+course will help the LLM sub better this
+
+766
+00:31:09,360 --> 00:31:14,000
+question you can't do that with vector
+
+767
+00:31:11,279 --> 00:31:17,520
+database so um what I like about graph
+
+768
+00:31:14,000 --> 00:31:20,159
+is that it's a reasoning layer by itself
+
+769
+00:31:17,520 --> 00:31:23,360
+uh so you will have you will two
+
+770
+00:31:20,159 --> 00:31:26,880
+reasoning layer. You will have the um
+
+771
+00:31:23,360 --> 00:31:29,520
+fuzzy uh semantic
+
+772
+00:31:26,880 --> 00:31:33,760
+the the [snorts] predictive next token
+
+773
+00:31:29,520 --> 00:31:36,240
+one and the symbolic one. But that can
+
+774
+00:31:33,760 --> 00:31:39,039
+be also predictive. I I mean on on on
+
+775
+00:31:36,240 --> 00:31:41,760
+graph you can do leak prediction, you
+
+776
+00:31:39,039 --> 00:31:44,000
+can do uh clustering, you can do
+
+777
+00:31:41,760 --> 00:31:46,000
+centrality analysis, you can do multiple
+
+778
+00:31:44,000 --> 00:31:49,039
+analysis on the graph that will help the
+
+779
+00:31:46,000 --> 00:31:51,600
+reasoning and and what is emerging um
+
+780
+00:31:49,039 --> 00:31:56,559
+because I I follow also our collect from
+
+781
+00:31:51,600 --> 00:32:00,399
+Stanford um they are building graph
+
+782
+00:31:56,559 --> 00:32:04,159
+foundational models okay uh Google has
+
+783
+00:32:00,399 --> 00:32:07,159
+been doing is doing this also uh it's
+
+784
+00:32:04,159 --> 00:32:07,159
+called
+
+785
+00:32:07,279 --> 00:32:12,960
+and there are two models currently where
+
+786
+00:32:10,320 --> 00:32:16,480
+you so it's a functional graph model
+
+787
+00:32:12,960 --> 00:32:19,919
+they can understand any types of graph
+
+788
+00:32:16,480 --> 00:32:23,120
+and perform prediction uh
+
+789
+00:32:19,919 --> 00:32:27,600
+graph task on it uh without any training
+
+790
+00:32:23,120 --> 00:32:31,440
+okay so what a prediction that an
+
+791
+00:32:27,600 --> 00:32:34,399
+hypothesis by using the term of
+
+792
+00:32:31,440 --> 00:32:36,159
+of Tony that he has been using I I think
+
+793
+00:32:34,399 --> 00:32:38,559
+this kind of technology will become more
+
+794
+00:32:36,159 --> 00:32:43,880
+and more complimentary with a large
+
+795
+00:32:38,559 --> 00:32:43,880
+language model. Yeah. Uh yeah. So
+
+796
+00:32:44,799 --> 00:32:49,760
+>> uh so from uh our perspective it's very
+
+797
+00:32:47,440 --> 00:32:52,799
+very important that we are um
+
+798
+00:32:49,760 --> 00:32:54,960
+benchmarking uh improvements or uh
+
+799
+00:32:52,799 --> 00:32:58,080
+properly testing that. And I think what
+
+800
+00:32:54,960 --> 00:33:01,600
+we're running into so uh for example the
+
+801
+00:32:58,080 --> 00:33:04,799
+the text to SQL versus text to sparkle
+
+802
+00:33:01,600 --> 00:33:07,039
+um that's we've seen in research uh that
+
+803
+00:33:04,799 --> 00:33:09,039
+that is performing better. It's handling
+
+804
+00:33:07,039 --> 00:33:12,159
+certain types of complex questions
+
+805
+00:33:09,039 --> 00:33:14,640
+better if you have it in um a graph
+
+806
+00:33:12,159 --> 00:33:18,480
+format and you're using text to uh
+
+807
+00:33:14,640 --> 00:33:21,760
+sparkle layer. Um the the caveat there
+
+808
+00:33:18,480 --> 00:33:24,320
+is when it comes to enterprise data it's
+
+809
+00:33:21,760 --> 00:33:28,159
+very very very messy. So we're running
+
+810
+00:33:24,320 --> 00:33:30,320
+into uh if I just make uh improvements
+
+811
+00:33:28,159 --> 00:33:33,919
+to my existing data just as part of that
+
+812
+00:33:30,320 --> 00:33:36,320
+AI ready data initiative uh will I see
+
+813
+00:33:33,919 --> 00:33:39,360
+improvements even without even touching
+
+814
+00:33:36,320 --> 00:33:41,760
+um this uh text to SQL sorry text to
+
+815
+00:33:39,360 --> 00:33:45,679
+sparkle experiment will I already make
+
+816
+00:33:41,760 --> 00:33:47,200
+improvements and I think that's uh uh
+
+817
+00:33:45,679 --> 00:33:50,320
+that's what I'm curious about and I
+
+818
+00:33:47,200 --> 00:33:53,279
+think it's really sparking the um AI
+
+819
+00:33:50,320 --> 00:33:55,679
+ready data uh we need to see our you
+
+820
+00:33:53,279 --> 00:33:57,919
+know evaluate our tech debt and see how
+
+821
+00:33:55,679 --> 00:33:59,440
+we can optimize uh our existing
+
+822
+00:33:57,919 --> 00:34:01,360
+databases
+
+823
+00:33:59,440 --> 00:34:03,279
+um and how we can improve with proper
+
+824
+00:34:01,360 --> 00:34:06,399
+annotations and cataloging and other
+
+825
+00:34:03,279 --> 00:34:08,079
+optimizations even before we get to uh
+
+826
+00:34:06,399 --> 00:34:10,240
+knowledge graph creation or or that
+
+827
+00:34:08,079 --> 00:34:12,960
+solution I think is really important to
+
+828
+00:34:10,240 --> 00:34:15,040
+properly benchmark it. So if I can
+
+829
+00:34:12,960 --> 00:34:18,159
+improve my database, maybe we're where
+
+830
+00:34:15,040 --> 00:34:19,760
+we want to be. Um, and right now it's
+
+831
+00:34:18,159 --> 00:34:22,240
+we're seeing improvements, you know,
+
+832
+00:34:19,760 --> 00:34:24,320
+with um, you know, adding a graph
+
+833
+00:34:22,240 --> 00:34:26,240
+structure, but it's it's it's uh,
+
+834
+00:34:24,320 --> 00:34:30,639
+difficult to make that call without kind
+
+835
+00:34:26,240 --> 00:34:32,480
+of optimizing on both both sides. Yeah,
+
+836
+00:34:30,639 --> 00:34:35,040
+>> I can just just pick up on that on the
+
+837
+00:34:32,480 --> 00:34:37,280
+on the text to sparkle and and that has
+
+838
+00:34:35,040 --> 00:34:39,280
+I think come through
+
+839
+00:34:37,280 --> 00:34:41,520
+big big improvements and just in the
+
+840
+00:34:39,280 --> 00:34:43,679
+last in the last few months really uh
+
+841
+00:34:41,520 --> 00:34:46,560
+with some of the more uh with more
+
+842
+00:34:43,679 --> 00:34:51,760
+recent um updates to the uh to the
+
+843
+00:34:46,560 --> 00:34:53,440
+models. um uh but they yeah they they
+
+844
+00:34:51,760 --> 00:34:55,280
+still struggle and and you you mentioned
+
+845
+00:34:53,440 --> 00:35:00,000
+right if you if you've got multiple
+
+846
+00:34:55,280 --> 00:35:03,599
+leaps that you're asking the um the LLM
+
+847
+00:35:00,000 --> 00:35:05,680
+or the model to generate for you that
+
+848
+00:35:03,599 --> 00:35:07,440
+they're you're increasing your chances
+
+849
+00:35:05,680 --> 00:35:09,440
+of them going into hallucination and and
+
+850
+00:35:07,440 --> 00:35:10,800
+generating you know generating sparkle
+
+851
+00:35:09,440 --> 00:35:13,040
+perhaps that that doesn't exist and
+
+852
+00:35:10,800 --> 00:35:15,520
+that's true for sparkle it's it's true
+
+853
+00:35:13,040 --> 00:35:16,800
+for for SQL so the maybe the point I'd
+
+854
+00:35:15,520 --> 00:35:18,480
+add here is
+
+855
+00:35:16,800 --> 00:35:20,160
+What our customers are then doing is
+
+856
+00:35:18,480 --> 00:35:22,079
+adding
+
+857
+00:35:20,160 --> 00:35:24,640
+reasoning steps into the graph to
+
+858
+00:35:22,079 --> 00:35:26,960
+generate connections that don't
+
+859
+00:35:24,640 --> 00:35:30,240
+necessarily exist within your source
+
+860
+00:35:26,960 --> 00:35:31,839
+source data putting shortcuts if you
+
+861
+00:35:30,240 --> 00:35:34,880
+like into the data performing
+
+862
+00:35:31,839 --> 00:35:36,480
+aggregations you know something that you
+
+863
+00:35:34,880 --> 00:35:38,560
+don't see in the benchmarks are some of
+
+864
+00:35:36,480 --> 00:35:40,320
+the things that well they the LLM can't
+
+865
+00:35:38,560 --> 00:35:44,160
+do right why benchmark something it
+
+866
+00:35:40,320 --> 00:35:46,640
+can't do so if I want to aggregate data
+
+867
+00:35:44,160 --> 00:35:49,680
+if I want to ask questions that span
+
+868
+00:35:46,640 --> 00:35:51,599
+vast amounts of the data traditional rag
+
+869
+00:35:49,680 --> 00:35:53,280
+approaches struggle. So they don't
+
+870
+00:35:51,599 --> 00:35:55,839
+actually bench bother benchmarking those
+
+871
+00:35:53,280 --> 00:35:57,760
+that stuff, right? Um but with graph and
+
+872
+00:35:55,839 --> 00:35:59,520
+with reasoning with by adding in rules
+
+873
+00:35:57,760 --> 00:36:01,839
+to say well give me a count of all the
+
+874
+00:35:59,520 --> 00:36:03,680
+things connected to here or or shortcut
+
+875
+00:36:01,839 --> 00:36:05,920
+across the things that match this filter
+
+876
+00:36:03,680 --> 00:36:08,480
+and give that a new meaning give that a
+
+877
+00:36:05,920 --> 00:36:10,880
+new meaning in the graph and now expose
+
+878
+00:36:08,480 --> 00:36:13,839
+that to the LLM as a as a new attribute
+
+879
+00:36:10,880 --> 00:36:15,599
+of the graph. you've suddenly given it
+
+880
+00:36:13,839 --> 00:36:17,839
+this this superpower where it doesn't
+
+881
+00:36:15,599 --> 00:36:20,000
+need to go and make up that extra bit of
+
+882
+00:36:17,839 --> 00:36:23,280
+sparkle that's going to get it in a
+
+883
+00:36:20,000 --> 00:36:24,320
+twist. Um it it's there as as far as it
+
+884
+00:36:23,280 --> 00:36:26,880
+was concerned. It was there in the
+
+885
+00:36:24,320 --> 00:36:29,920
+source data but no reasoning's brought
+
+886
+00:36:26,880 --> 00:36:33,400
+that in for you um with with some rules.
+
+887
+00:36:29,920 --> 00:36:33,400
+>> Well, and some
+
+888
+00:36:34,000 --> 00:36:38,320
+>> Well, I was just going to do like a
+
+889
+00:36:35,920 --> 00:36:40,320
+little bit of devil's advocate in the
+
+890
+00:36:38,320 --> 00:36:41,760
+the kind of
+
+891
+00:36:40,320 --> 00:36:44,320
+>> we had too much agreement. Yeah, we had
+
+892
+00:36:41,760 --> 00:36:46,160
+too too too much agreement and just to
+
+893
+00:36:44,320 --> 00:36:48,880
+kind of like throw into the picture like
+
+894
+00:36:46,160 --> 00:36:50,960
+the 01 models uh and stuff like that
+
+895
+00:36:48,880 --> 00:36:53,760
+where you know now we are seeing
+
+896
+00:36:50,960 --> 00:36:56,320
+reasoning that's being introduced in at
+
+897
+00:36:53,760 --> 00:36:58,880
+the large language model level. So there
+
+898
+00:36:56,320 --> 00:37:01,680
+they're using reinforcement learning. Um
+
+899
+00:36:58,880 --> 00:37:03,520
+and you know OpenAI I just saw they
+
+900
+00:37:01,680 --> 00:37:05,119
+announced like one of their their kind
+
+901
+00:37:03,520 --> 00:37:07,359
+of slightly silly thing of all their
+
+902
+00:37:05,119 --> 00:37:08,880
+releases before Christmas thing but one
+
+903
+00:37:07,359 --> 00:37:11,680
+of them was well now you can actually
+
+904
+00:37:08,880 --> 00:37:14,720
+custom train 01's reasoning process on
+
+905
+00:37:11,680 --> 00:37:16,720
+your own reasoning structure. So you can
+
+906
+00:37:14,720 --> 00:37:18,160
+you can feed it in examples of what your
+
+907
+00:37:16,720 --> 00:37:19,760
+reasoning structure would be and then
+
+908
+00:37:18,160 --> 00:37:22,079
+you're using reinforcement learning
+
+909
+00:37:19,760 --> 00:37:23,839
+there to custom train it on your
+
+910
+00:37:22,079 --> 00:37:28,480
+reasoning and then you're applying that
+
+911
+00:37:23,839 --> 00:37:31,359
+to uh to the to the data problem. So you
+
+912
+00:37:28,480 --> 00:37:33,440
+know there's I think there is a there is
+
+913
+00:37:31,359 --> 00:37:36,560
+a legitimate there is more there is I
+
+914
+00:37:33,440 --> 00:37:40,560
+feel still more work to be done here in
+
+915
+00:37:36,560 --> 00:37:43,520
+terms of like working out exactly what
+
+916
+00:37:40,560 --> 00:37:45,760
+role graph is going to play. How big is
+
+917
+00:37:43,520 --> 00:37:47,440
+that? I mean, I think the the the key
+
+918
+00:37:45,760 --> 00:37:49,119
+point like some kind of something that's
+
+919
+00:37:47,440 --> 00:37:50,880
+undisputable is on the rag on the
+
+920
+00:37:49,119 --> 00:37:53,040
+retrieval side. I think Anthony
+
+921
+00:37:50,880 --> 00:37:56,640
+something you said in one of your talks
+
+922
+00:37:53,040 --> 00:37:58,960
+that uh retrieval is reasoning. You
+
+923
+00:37:56,640 --> 00:38:02,240
+know, you you you are to do smart
+
+924
+00:37:58,960 --> 00:38:03,760
+retrieval in a dynamic situation uh you
+
+925
+00:38:02,240 --> 00:38:06,000
+are reasoning. So to a certain extent,
+
+926
+00:38:03,760 --> 00:38:08,000
+how much do I want to pull down push
+
+927
+00:38:06,000 --> 00:38:10,079
+down some of that reasoning process into
+
+928
+00:38:08,000 --> 00:38:12,640
+the retrieval so that I'm getting just
+
+929
+00:38:10,079 --> 00:38:15,520
+the right context specific information
+
+930
+00:38:12,640 --> 00:38:17,119
+back and vector search and BM25 we're
+
+931
+00:38:15,520 --> 00:38:19,440
+only going to go so far there and we
+
+932
+00:38:17,119 --> 00:38:21,280
+anybody that's done it knows knows that
+
+933
+00:38:19,440 --> 00:38:24,640
+but yeah I think there's an interesting
+
+934
+00:38:21,280 --> 00:38:27,520
+question to like well as
+
+935
+00:38:24,640 --> 00:38:30,320
+as test time as like kind of inference
+
+936
+00:38:27,520 --> 00:38:33,040
+time test time compute increases as
+
+937
+00:38:30,320 --> 00:38:35,839
+reasoning models increase with And you
+
+938
+00:38:33,040 --> 00:38:39,720
+can custom train them. How much do we
+
+939
+00:38:35,839 --> 00:38:39,720
+need the graph there?
+
+940
+00:38:40,160 --> 00:38:47,440
+So what is so Tony has evoked the notion
+
+941
+00:38:44,560 --> 00:38:50,480
+of inference scaling that is to say you
+
+942
+00:38:47,440 --> 00:38:54,800
+make more compute as a reasoning time on
+
+943
+00:38:50,480 --> 00:38:56,400
+the LM. um the problem so it's an
+
+944
+00:38:54,800 --> 00:38:58,320
+approach that will be more and more
+
+945
+00:38:56,400 --> 00:39:00,480
+explored but it I think it's
+
+946
+00:38:58,320 --> 00:39:04,640
+complimentary with graph rag and it
+
+947
+00:39:00,480 --> 00:39:08,160
+won't be used for all reasoning task uh
+
+948
+00:39:04,640 --> 00:39:12,400
+because it it cost more okay um it's not
+
+949
+00:39:08,160 --> 00:39:15,520
+efficient um
+
+950
+00:39:12,400 --> 00:39:18,400
+the way openai is selling it is for
+
+951
+00:39:15,520 --> 00:39:21,760
+scientific mathematical
+
+952
+00:39:18,400 --> 00:39:25,359
+uh scientific Iand task
+
+953
+00:39:21,760 --> 00:39:29,920
+Okay. So, I think it will be used for
+
+954
+00:39:25,359 --> 00:39:33,599
+really specific uh high value task that
+
+955
+00:39:29,920 --> 00:39:38,480
+you don't really need in 90
+
+956
+00:39:33,599 --> 00:39:42,320
+60% of current Excel task in business
+
+957
+00:39:38,480 --> 00:39:44,320
+operation. Yeah. So, yeah, I think it
+
+958
+00:39:42,320 --> 00:39:48,000
+will have a place in the stack but not
+
+959
+00:39:44,320 --> 00:39:50,320
+as as much as Yeah. for the the
+
+960
+00:39:48,000 --> 00:39:52,480
+reasoning. Yeah. I think reasoning is
+
+961
+00:39:50,320 --> 00:39:54,160
+retrieval. Why? So there is a a
+
+962
+00:39:52,480 --> 00:39:58,400
+beautiful paper that has been released
+
+963
+00:39:54,160 --> 00:40:01,760
+uh last week that is called a agentless.
+
+964
+00:39:58,400 --> 00:40:05,760
+They show that you don't need a
+
+965
+00:40:01,760 --> 00:40:07,359
+sophisticated uh agentic system to do
+
+966
+00:40:05,760 --> 00:40:11,599
+coding.
+
+967
+00:40:07,359 --> 00:40:15,040
+you you just only need to give the LLM
+
+968
+00:40:11,599 --> 00:40:18,800
+or the agent the proper parts of the
+
+969
+00:40:15,040 --> 00:40:22,960
+codebase to help the coder perform its
+
+970
+00:40:18,800 --> 00:40:25,440
+coding operation. So agent for code is
+
+971
+00:40:22,960 --> 00:40:28,160
+more a problem of what to retrieve from
+
+972
+00:40:25,440 --> 00:40:31,920
+the codebase to perform the task than it
+
+973
+00:40:28,160 --> 00:40:35,440
+is to have a sophisticated LLM that has
+
+974
+00:40:31,920 --> 00:40:38,160
+been uh that has were 100% on code
+
+975
+00:40:35,440 --> 00:40:40,880
+benchmark etc. Okay. Why? Because in
+
+976
+00:40:38,160 --> 00:40:42,560
+codebase you have dependencies.
+
+977
+00:40:40,880 --> 00:40:44,480
+Uh
+
+978
+00:40:42,560 --> 00:40:47,440
+yeah, you need to retrieve the proper
+
+979
+00:40:44,480 --> 00:40:49,680
+part in the code to to to for the agent
+
+980
+00:40:47,440 --> 00:40:51,839
+to be really helpful. Yeah. So this is
+
+981
+00:40:49,680 --> 00:40:54,160
+what I Yeah.
+
+982
+00:40:51,839 --> 00:40:56,880
+Well, one of the things that um comes up
+
+983
+00:40:54,160 --> 00:40:59,760
+all the time in research that you know
+
+984
+00:40:56,880 --> 00:41:04,560
+that I'm seeing is there's a lot of
+
+985
+00:40:59,760 --> 00:41:07,119
+guard rails on the the vanilla models
+
+986
+00:41:04,560 --> 00:41:08,319
+before you use any uh anything that
+
+987
+00:41:07,119 --> 00:41:10,400
+we're talking about with with a
+
+988
+00:41:08,319 --> 00:41:12,640
+knowledge graph. And that's a good
+
+989
+00:41:10,400 --> 00:41:16,800
+thing, right? Um guardrails are good
+
+990
+00:41:12,640 --> 00:41:18,880
+except when it's so vanilla that it's
+
+991
+00:41:16,800 --> 00:41:20,560
+almost useless. And that's where a
+
+992
+00:41:18,880 --> 00:41:23,520
+knowledge graph also helps where it can
+
+993
+00:41:20,560 --> 00:41:25,920
+add back in some of that specificity
+
+994
+00:41:23,520 --> 00:41:27,760
+that otherwise would have been taken out
+
+995
+00:41:25,920 --> 00:41:29,920
+because the AI doesn't want to get it
+
+996
+00:41:27,760 --> 00:41:31,599
+wrong. It is to trained I don't want to
+
+997
+00:41:29,920 --> 00:41:33,520
+get it wrong. So I'm going to go super
+
+998
+00:41:31,599 --> 00:41:35,440
+vague here. And I look at it as a
+
+999
+00:41:33,520 --> 00:41:38,079
+research and say that is totally useless
+
+1000
+00:41:35,440 --> 00:41:40,480
+for me. Thank you. Um so having the
+
+1001
+00:41:38,079 --> 00:41:42,640
+graph there to help supplant that is
+
+1002
+00:41:40,480 --> 00:41:44,560
+also very helpful as far as the the
+
+1003
+00:41:42,640 --> 00:41:47,040
+reasoning goes. But we're talking about
+
+1004
+00:41:44,560 --> 00:41:48,720
+rag a little bit. Where does rag fit
+
+1005
+00:41:47,040 --> 00:41:51,200
+into all of this? Do you need to use
+
+1006
+00:41:48,720 --> 00:41:53,520
+rag? Can you use your graph for other
+
+1007
+00:41:51,200 --> 00:41:55,359
+things in the AI space without having to
+
+1008
+00:41:53,520 --> 00:41:59,079
+go into the rag direction? What's what's
+
+1009
+00:41:55,359 --> 00:41:59,079
+that look like for you?
+
+1010
+00:42:05,200 --> 00:42:06,960
+>> Okay.
+
+1011
+00:42:05,599 --> 00:42:10,240
+>> I don't want to stump anyone.
+
+1012
+00:42:06,960 --> 00:42:12,800
+>> You want um
+
+1013
+00:42:10,240 --> 00:42:14,880
+what I I like.
+
+1014
+00:42:12,800 --> 00:42:18,240
+So
+
+1015
+00:42:14,880 --> 00:42:21,280
+I am uh I'm writing I want I want I
+
+1016
+00:42:18,240 --> 00:42:24,319
+don't want to do marketing I'm writing
+
+1017
+00:42:21,280 --> 00:42:27,359
+something on agentic okay in agent rag
+
+1018
+00:42:24,319 --> 00:42:29,599
+is only one component okay um so you
+
+1019
+00:42:27,359 --> 00:42:32,560
+have a tool management memory management
+
+1020
+00:42:29,599 --> 00:42:35,200
+like I told okay you have all of these
+
+1021
+00:42:32,560 --> 00:42:38,000
+components to make the agent work um
+
+1022
+00:42:35,200 --> 00:42:41,119
+what I like for example is to use the
+
+1023
+00:42:38,000 --> 00:42:43,359
+graph database to integrate also
+
+1024
+00:42:41,119 --> 00:42:45,359
+predictive modeling
+
+1025
+00:42:43,359 --> 00:42:48,960
+uh classical machine learning for
+
+1026
+00:42:45,359 --> 00:42:52,880
+example within it uh it's not only rag
+
+1027
+00:42:48,960 --> 00:42:57,280
+is to use a graph as a reasoning engine
+
+1028
+00:42:52,880 --> 00:42:59,440
+um I like it I mean um uh graph has been
+
+1029
+00:42:57,280 --> 00:43:02,640
+used for recommendation they have been
+
+1030
+00:42:59,440 --> 00:43:04,720
+used for uh fraud detection they have
+
+1031
+00:43:02,640 --> 00:43:09,520
+been used they have many usage that you
+
+1032
+00:43:04,720 --> 00:43:12,880
+can that you can uh recycle or even um
+
+1033
+00:43:09,520 --> 00:43:14,720
+integrate into an agentic pipeline.
+
+1034
+00:43:12,880 --> 00:43:16,960
+Okay. And I think I think we will more
+
+1035
+00:43:14,720 --> 00:43:19,839
+and more see this because what is coming
+
+1036
+00:43:16,960 --> 00:43:21,680
+with aentic is that
+
+1037
+00:43:19,839 --> 00:43:24,000
+it's a bold prediction but it has
+
+1038
+00:43:21,680 --> 00:43:27,920
+already been made.
+
+1039
+00:43:24,000 --> 00:43:30,720
+The future of interaction between
+
+1040
+00:43:27,920 --> 00:43:33,280
+computer the future interaction with
+
+1041
+00:43:30,720 --> 00:43:35,200
+computer will be more and more be done
+
+1042
+00:43:33,280 --> 00:43:37,760
+by agents.
+
+1043
+00:43:35,200 --> 00:43:40,000
+You will have less and less interaction
+
+1044
+00:43:37,760 --> 00:43:41,839
+between human and computer. You will
+
+1045
+00:43:40,000 --> 00:43:44,400
+have an intermediary
+
+1046
+00:43:41,839 --> 00:43:46,079
+that will do the task for us. Okay, I
+
+1047
+00:43:44,400 --> 00:43:48,000
+will give you an example. I won't sell
+
+1048
+00:43:46,079 --> 00:43:51,119
+their product but perplexity they are
+
+1049
+00:43:48,000 --> 00:43:54,960
+integrating shopping agent. Okay, that
+
+1050
+00:43:51,119 --> 00:43:57,920
+shop for us. Okay, you will have um
+
+1051
+00:43:54,960 --> 00:44:00,240
+Slack agents that read all your messages
+
+1052
+00:43:57,920 --> 00:44:04,000
+and give you maybe a sum up or answer
+
+1053
+00:44:00,240 --> 00:44:06,160
+for you. Myself, I have integrated
+
+1054
+00:44:04,000 --> 00:44:08,720
+don't take it bad but LinkedIn agent
+
+1055
+00:44:06,160 --> 00:44:11,920
+okay that can answer your DM or analyze
+
+1056
+00:44:08,720 --> 00:44:14,000
+it. uh prioritize them etc etc. So you
+
+1057
+00:44:11,920 --> 00:44:16,720
+will have more and more of those
+
+1058
+00:44:14,000 --> 00:44:19,119
+intermediaries into the stack. So and
+
+1059
+00:44:16,720 --> 00:44:21,839
+for those to work properly I think you
+
+1060
+00:44:19,119 --> 00:44:24,880
+will need some kind of persistent memory
+
+1061
+00:44:21,839 --> 00:44:27,200
+and and gra graph technologies is for
+
+1062
+00:44:24,880 --> 00:44:30,000
+it's for sure I think it's the best data
+
+1063
+00:44:27,200 --> 00:44:32,560
+model the best data modeling approach
+
+1064
+00:44:30,000 --> 00:44:36,680
+that we have comes from the graph space
+
+1065
+00:44:32,560 --> 00:44:36,680
+it's my thinking. Oh yeah,
+
+1066
+00:44:38,160 --> 00:44:42,319
+>> I can speak.
+
+1067
+00:44:40,079 --> 00:44:44,480
+>> Yeah, I' I'd echo that. I think it comes
+
+1068
+00:44:42,319 --> 00:44:48,480
+back to that conceptualization of like
+
+1069
+00:44:44,480 --> 00:44:52,480
+the uh formal and natural systems. So
+
+1070
+00:44:48,480 --> 00:44:56,480
+the agents is are where we're going and
+
+1071
+00:44:52,480 --> 00:44:58,480
+therefore I believe that you going to
+
+1072
+00:44:56,480 --> 00:45:00,480
+need at least some kind of formal
+
+1073
+00:44:58,480 --> 00:45:02,319
+representation for all tasks. So that's
+
+1074
+00:45:00,480 --> 00:45:04,240
+planning within the agent as well, you
+
+1075
+00:45:02,319 --> 00:45:06,560
+know. So we've had kind of like we
+
+1076
+00:45:04,240 --> 00:45:08,480
+started out with like plain prompts then
+
+1077
+00:45:06,560 --> 00:45:10,000
+we kind of went graph of thought and now
+
+1078
+00:45:08,480 --> 00:45:12,480
+we're currently on this kind of tree of
+
+1079
+00:45:10,000 --> 00:45:15,040
+thought and tree search but for anybody
+
+1080
+00:45:12,480 --> 00:45:17,680
+who's done ETL you know we use we use
+
+1081
+00:45:15,040 --> 00:45:19,599
+DAGs for any kind of workflow because
+
+1082
+00:45:17,680 --> 00:45:21,520
+within a graph structure you know even
+
+1083
+00:45:19,599 --> 00:45:24,640
+just like a direct a directed as cyclic
+
+1084
+00:45:21,520 --> 00:45:26,640
+graph you can do branch and join
+
+1085
+00:45:24,640 --> 00:45:29,280
+operations which you can't do in a tree.
+
+1086
+00:45:26,640 --> 00:45:31,119
+So you know I could have parallel plans
+
+1087
+00:45:29,280 --> 00:45:33,680
+that are going off that are exploring
+
+1088
+00:45:31,119 --> 00:45:36,880
+different avenues of the thought process
+
+1089
+00:45:33,680 --> 00:45:38,720
+that I then converge down into one node
+
+1090
+00:45:36,880 --> 00:45:40,640
+which I can do with a directed cyclic
+
+1091
+00:45:38,720 --> 00:45:42,160
+graph that I you can't do that with a
+
+1092
+00:45:40,640 --> 00:45:43,599
+tree because you you can just think of a
+
+1093
+00:45:42,160 --> 00:45:46,000
+tree structure they can't branch and
+
+1094
+00:45:43,599 --> 00:45:49,119
+join. That's just like one example and
+
+1095
+00:45:46,000 --> 00:45:51,760
+that's before you get out of where I
+
+1096
+00:45:49,119 --> 00:45:53,839
+think my personal view which is when I
+
+1097
+00:45:51,760 --> 00:45:56,160
+like project like way out into the
+
+1098
+00:45:53,839 --> 00:45:58,400
+future is [clears throat]
+
+1099
+00:45:56,160 --> 00:46:00,400
+the real power is actually in kind of
+
+1100
+00:45:58,400 --> 00:46:02,640
+some of this nonlinear stuff. So like
+
+1101
+00:46:00,400 --> 00:46:04,480
+you go beyond gra DAGs which are
+
+1102
+00:46:02,640 --> 00:46:07,440
+directed as cyclic graphs which don't
+
+1103
+00:46:04,480 --> 00:46:09,520
+have cycles in them. Actually the real
+
+1104
+00:46:07,440 --> 00:46:12,079
+magic is is often in the cycles
+
+1105
+00:46:09,520 --> 00:46:14,560
+themselves. So we we're not we're not
+
+1106
+00:46:12,079 --> 00:46:16,480
+there yet. But you know that's I think
+
+1107
+00:46:14,560 --> 00:46:17,839
+once we kind of get to that point that
+
+1108
+00:46:16,480 --> 00:46:20,240
+you're actually kind of working some of
+
+1109
+00:46:17,839 --> 00:46:22,160
+these like non these nonlinearities that
+
+1110
+00:46:20,240 --> 00:46:24,079
+the graph structure can handle and then
+
+1111
+00:46:22,160 --> 00:46:25,920
+it's it's it's all just also just like a
+
+1112
+00:46:24,079 --> 00:46:28,560
+question of like break it down to like
+
+1113
+00:46:25,920 --> 00:46:30,480
+the mathematics of like what is the most
+
+1114
+00:46:28,560 --> 00:46:32,640
+when you know in maths when you want a
+
+1115
+00:46:30,480 --> 00:46:34,640
+data structure that is the most flexible
+
+1116
+00:46:32,640 --> 00:46:37,760
+discrete data structure what is it? it's
+
+1117
+00:46:34,640 --> 00:46:39,680
+a graph and you know that's you know
+
+1118
+00:46:37,760 --> 00:46:41,359
+anything else is not as expressive as
+
+1119
+00:46:39,680 --> 00:46:44,560
+that. So we want the most expressive
+
+1120
+00:46:41,359 --> 00:46:46,079
+data structure you know okay like hyper
+
+1121
+00:46:44,560 --> 00:46:48,640
+graphs and all this stuff that that I
+
+1122
+00:46:46,079 --> 00:46:52,160
+don't fully you know get [laughter]
+
+1123
+00:46:48,640 --> 00:46:53,839
+the getting get into uh you know maybe
+
+1124
+00:46:52,160 --> 00:46:56,480
+down the line too. Well, it's
+
+1125
+00:46:53,839 --> 00:46:57,680
+interesting too. The the the train has
+
+1126
+00:46:56,480 --> 00:47:00,240
+left the station. They are called
+
+1127
+00:46:57,680 --> 00:47:02,720
+agents. But in my mind, anytime I
+
+1128
+00:47:00,240 --> 00:47:05,040
+describe this to non-technical folks, I
+
+1129
+00:47:02,720 --> 00:47:07,520
+always say, hey, uh you know what a grad
+
+1130
+00:47:05,040 --> 00:47:10,079
+student does. That's what this is,
+
+1131
+00:47:07,520 --> 00:47:12,800
+right? It's not to your point, it's not
+
+1132
+00:47:10,079 --> 00:47:14,480
+just give a task, go because you don't
+
+1133
+00:47:12,800 --> 00:47:16,319
+necessarily need this very sophisticated
+
+1134
+00:47:14,480 --> 00:47:18,079
+system to to do that as a you know, like
+
+1135
+00:47:16,319 --> 00:47:20,160
+a travel agent. You say, I'm going to
+
+1136
+00:47:18,079 --> 00:47:22,240
+this place, go find me the best route
+
+1137
+00:47:20,160 --> 00:47:23,839
+there. It's more like a grad student or
+
+1138
+00:47:22,240 --> 00:47:26,160
+having lots of grad students, which is
+
+1139
+00:47:23,839 --> 00:47:28,079
+nice where you give they're very
+
+1140
+00:47:26,160 --> 00:47:29,440
+talented, but they're not quite there.
+
+1141
+00:47:28,079 --> 00:47:31,920
+They're not experts, but you can give
+
+1142
+00:47:29,440 --> 00:47:33,200
+them lots of tasks, but they come back
+
+1143
+00:47:31,920 --> 00:47:34,160
+to you and say, "Is this right? No, no,
+
+1144
+00:47:33,200 --> 00:47:35,920
+no, that's not right." And then you
+
+1145
+00:47:34,160 --> 00:47:38,880
+correct them. So, it's this cyclical way
+
+1146
+00:47:35,920 --> 00:47:41,520
+of of adding in that that knowledge to
+
+1147
+00:47:38,880 --> 00:47:44,160
+make it better and better.
+
+1148
+00:47:41,520 --> 00:47:48,640
+>> Yeah. And I think you know there's a big
+
+1149
+00:47:44,160 --> 00:47:51,839
+part here where you um
+
+1150
+00:47:48,640 --> 00:47:54,079
+generative systems can can add content
+
+1151
+00:47:51,839 --> 00:47:57,119
+to the graph as well, right? Um but
+
+1152
+00:47:54,079 --> 00:48:00,079
+again, you want you do want to apply
+
+1153
+00:47:57,119 --> 00:48:02,160
+some constraints to that or at least
+
+1154
+00:48:00,079 --> 00:48:04,000
+tell tell the system this is what's
+
+1155
+00:48:02,160 --> 00:48:05,680
+going to be useful. This is what I'd
+
+1156
+00:48:04,000 --> 00:48:07,040
+actually like you to capture because
+
+1157
+00:48:05,680 --> 00:48:08,480
+coming back to our earlier points, this
+
+1158
+00:48:07,040 --> 00:48:10,000
+is the position I'm taking and this is
+
+1159
+00:48:08,480 --> 00:48:13,599
+the value I'm trying to offer to my
+
+1160
+00:48:10,000 --> 00:48:15,440
+customers. So here is the
+
+1161
+00:48:13,599 --> 00:48:17,440
+here is the schema if you like. Here is
+
+1162
+00:48:15,440 --> 00:48:19,839
+the here's the logic I'd like you to
+
+1163
+00:48:17,440 --> 00:48:22,480
+capture from this piece of text or this
+
+1164
+00:48:19,839 --> 00:48:24,400
+this user's email or interaction or or
+
+1165
+00:48:22,480 --> 00:48:25,599
+so on. But I'd like to capture I'd like
+
+1166
+00:48:24,400 --> 00:48:27,839
+you to capture it in this way because
+
+1167
+00:48:25,599 --> 00:48:29,839
+this is how I think about my my business
+
+1168
+00:48:27,839 --> 00:48:31,760
+or the value that I'm prop you know
+
+1169
+00:48:29,839 --> 00:48:33,280
+proposing to my to my customers. So
+
+1170
+00:48:31,760 --> 00:48:36,319
+there's there's a piece where you know
+
+1171
+00:48:33,280 --> 00:48:39,280
+agents can can help you
+
+1172
+00:48:36,319 --> 00:48:41,839
+organize what a you know we would call
+
+1173
+00:48:39,280 --> 00:48:44,319
+thoughts but organize our organize our
+
+1174
+00:48:41,839 --> 00:48:46,640
+data in a way that we think is going to
+
+1175
+00:48:44,319 --> 00:48:51,079
+mean we we project the best value into
+
+1176
+00:48:46,640 --> 00:48:51,079
+into society. Um
+
+1177
+00:48:52,000 --> 00:48:55,839
+>> no you go first.
+
+1178
+00:48:53,599 --> 00:48:59,839
+>> Okay. Are you sure?
+
+1179
+00:48:55,839 --> 00:49:02,559
+Um so yeah I wanted to uh so back to the
+
+1180
+00:48:59,839 --> 00:49:07,599
+the question around um not always using
+
+1181
+00:49:02,559 --> 00:49:10,160
+rag or using agents um I think uh so
+
+1182
+00:49:07,599 --> 00:49:12,960
+back to not necessarily at S&P but uh
+
+1183
+00:49:10,160 --> 00:49:17,760
+the Amazon days uh voice assistants
+
+1184
+00:49:12,960 --> 00:49:21,040
+Alexa uh this was you know pre uh LLM
+
+1185
+00:49:17,760 --> 00:49:24,240
+explosion uh it's normal to have uh
+
+1186
+00:49:21,040 --> 00:49:26,000
+several um response systems and you have
+
+1187
+00:49:24,240 --> 00:49:29,520
+that planning there. That's that's kind
+
+1188
+00:49:26,000 --> 00:49:33,119
+of uh not a new concept at all to have
+
+1189
+00:49:29,520 --> 00:49:34,960
+different sources. Uh you're going to um
+
+1190
+00:49:33,119 --> 00:49:37,280
+ping your knowledge graph for for an
+
+1191
+00:49:34,960 --> 00:49:39,040
+answer particular kind of question.
+
+1192
+00:49:37,280 --> 00:49:41,599
+You're going to get your statistical
+
+1193
+00:49:39,040 --> 00:49:44,800
+layer to respond. So I think that's uh
+
+1194
+00:49:41,599 --> 00:49:47,280
+that seems like the the the way to go.
+
+1195
+00:49:44,800 --> 00:49:50,720
+So it's not um you know an overemphasis
+
+1196
+00:49:47,280 --> 00:49:53,839
+on uh graph rag or graphs in particular
+
+1197
+00:49:50,720 --> 00:49:57,599
+to respond to everything. Uh and I also
+
+1198
+00:49:53,839 --> 00:50:01,760
+wanted to point out I'm noticing that uh
+
+1199
+00:49:57,599 --> 00:50:05,839
+some things that an LLM uh can handle uh
+
+1200
+00:50:01,760 --> 00:50:08,480
+some you know standard uh NLP techniques
+
+1201
+00:50:05,839 --> 00:50:11,280
+can also handle and so the you know the
+
+1202
+00:50:08,480 --> 00:50:13,680
+lazy graph rag is is doing just that you
+
+1203
+00:50:11,280 --> 00:50:15,520
+know kind of we don't need to use an LLM
+
+1204
+00:50:13,680 --> 00:50:19,280
+at this point. Let's go back to this
+
+1205
+00:50:15,520 --> 00:50:21,839
+triedand-true uh step for you know cost
+
+1206
+00:50:19,280 --> 00:50:24,079
+and efficiency. So I uh yeah don't want
+
+1207
+00:50:21,839 --> 00:50:26,640
+to overemphasize on all the expensive
+
+1208
+00:50:24,079 --> 00:50:27,680
+bits but kind of you know being more uh
+
+1209
+00:50:26,640 --> 00:50:29,359
+strategic with
+
+1210
+00:50:27,680 --> 00:50:32,800
+>> that's part of being responsible AI
+
+1211
+00:50:29,359 --> 00:50:34,559
+right is try the other
+
+1212
+00:50:32,800 --> 00:50:36,640
+other solutions that might be just as
+
+1213
+00:50:34,559 --> 00:50:38,800
+good but more responsible from
+
+1214
+00:50:36,640 --> 00:50:40,079
+environment and cost and and you know
+
+1215
+00:50:38,800 --> 00:50:40,400
+social responsibility and all those
+
+1216
+00:50:40,079 --> 00:50:43,359
+things
+
+1217
+00:50:40,400 --> 00:50:45,839
+>> my my belief is that in production
+
+1218
+00:50:43,359 --> 00:50:49,119
+because what allow this kind of
+
+1219
+00:50:45,839 --> 00:50:49,839
+technology of having an LLM or SLM and
+
+1220
+00:50:49,119 --> 00:50:51,839
+graph
+
+1221
+00:50:49,839 --> 00:50:53,680
+is to continuously improve it because
+
+1222
+00:50:51,839 --> 00:50:56,160
+you continuously improve the knowledge
+
+1223
+00:50:53,680 --> 00:50:58,240
+base. Uh you would continuously improve
+
+1224
+00:50:56,160 --> 00:51:01,680
+also the LLM because you can fine-tune
+
+1225
+00:50:58,240 --> 00:51:04,400
+it or or even distill it and find a
+
+1226
+00:51:01,680 --> 00:51:06,960
+smaller ones that perform as good. this
+
+1227
+00:51:04,400 --> 00:51:10,240
+morning has been released and I do talk
+
+1228
+00:51:06,960 --> 00:51:13,680
+about competition a paper by Microsoft
+
+1229
+00:51:10,240 --> 00:51:19,280
+about the new FI model that perform as
+
+1230
+00:51:13,680 --> 00:51:22,720
+good as a 70B model uh in small model.
+
+1231
+00:51:19,280 --> 00:51:27,359
+uh okay uh we will I think I think see
+
+1232
+00:51:22,720 --> 00:51:31,200
+uh a movement to efficiency small model
+
+1233
+00:51:27,359 --> 00:51:33,680
+etc and graph allow this because um
+
+1234
+00:51:31,200 --> 00:51:36,079
+graph uh so we can optimize also the
+
+1235
+00:51:33,680 --> 00:51:39,280
+query on the graphics but allow graph is
+
+1236
+00:51:36,079 --> 00:51:42,480
+a isn't is an evolving system is not a
+
+1237
+00:51:39,280 --> 00:51:45,599
+fixed system it can be improved you when
+
+1238
+00:51:42,480 --> 00:51:48,319
+you analyze
+
+1239
+00:51:45,599 --> 00:51:52,079
+inaccuracy you can go back to the graph
+
+1240
+00:51:48,319 --> 00:51:54,000
+maybe to improve it. Uh my colleague
+
+1241
+00:51:52,079 --> 00:51:56,720
+speak about feature engineering on the
+
+1242
+00:51:54,000 --> 00:51:59,040
+graph also. You can we go back to the
+
+1243
+00:51:56,720 --> 00:52:00,800
+old days of ML where you perform
+
+1244
+00:51:59,040 --> 00:52:03,440
+features engineering on your data set.
+
+1245
+00:52:00,800 --> 00:52:05,280
+It's the same thing with a graph. So I
+
+1246
+00:52:03,440 --> 00:52:08,160
+think it will be a an essential
+
+1247
+00:52:05,280 --> 00:52:12,640
+companion of genai application okay for
+
+1248
+00:52:08,160 --> 00:52:17,280
+a long time u because uh I don't think
+
+1249
+00:52:12,640 --> 00:52:22,800
+um we will see uh any major breakthrough
+
+1250
+00:52:17,280 --> 00:52:26,800
+in AI uh that is as effective as the LLM
+
+1251
+00:52:22,800 --> 00:52:29,119
+in the coming month I mean okay let me
+
+1252
+00:52:26,800 --> 00:52:32,000
+make a bold prediction but I don't see
+
+1253
+00:52:29,119 --> 00:52:34,800
+this coming this soon okay new types of
+
+1254
+00:52:32,000 --> 00:52:37,839
+model But even then when you think about
+
+1255
+00:52:34,800 --> 00:52:41,440
+it every model needs data and needs
+
+1256
+00:52:37,839 --> 00:52:44,319
+training its training is fixed. Okay. Uh
+
+1257
+00:52:41,440 --> 00:52:47,440
+when you train a model is has been
+
+1258
+00:52:44,319 --> 00:52:51,760
+trained on certain data. Uh it has been
+
+1259
+00:52:47,440 --> 00:52:55,520
+trained on the past. Okay. Uh so
+
+1260
+00:52:51,760 --> 00:52:58,480
+we don't have uh we only can create
+
+1261
+00:52:55,520 --> 00:53:01,599
+better reasoning agent reasoning uh
+
+1262
+00:52:58,480 --> 00:53:05,520
+models. Okay. uh but they need to reason
+
+1263
+00:53:01,599 --> 00:53:08,079
+on something. Okay. Uh even the best
+
+1264
+00:53:05,520 --> 00:53:11,440
+reasoning uh model if it don't have
+
+1265
+00:53:08,079 --> 00:53:14,079
+access to the data of the company it
+
+1266
+00:53:11,440 --> 00:53:16,720
+will create no value at all. Okay. And
+
+1267
+00:53:14,079 --> 00:53:20,160
+the best way to reason on the data of
+
+1268
+00:53:16,720 --> 00:53:24,720
+the company is to model it as a graph
+
+1269
+00:53:20,160 --> 00:53:26,960
+system. It's uh for me it's evident.
+
+1270
+00:53:24,720 --> 00:53:29,040
+Yeah. I think um thing that's just come
+
+1271
+00:53:26,960 --> 00:53:31,359
+out in the recent comments is um yeah e
+
+1272
+00:53:29,040 --> 00:53:33,680
+efficiency you know doing using the
+
+1273
+00:53:31,359 --> 00:53:36,559
+right tool for the for the job right and
+
+1274
+00:53:33,680 --> 00:53:37,920
+for us that recent recent times that
+
+1275
+00:53:36,559 --> 00:53:39,440
+that's focused when you're trying to put
+
+1276
+00:53:37,920 --> 00:53:41,200
+all of this technology on on these
+
+1277
+00:53:39,440 --> 00:53:45,040
+things right on on these devices because
+
+1278
+00:53:41,200 --> 00:53:46,559
+ultimately your your your battery will
+
+1279
+00:53:45,040 --> 00:53:48,400
+uh your battery life will be dependent
+
+1280
+00:53:46,559 --> 00:53:50,800
+on where you're where you're performing
+
+1281
+00:53:48,400 --> 00:53:52,720
+the where you're performing the task and
+
+1282
+00:53:50,800 --> 00:53:55,359
+if you are performing logical reasoning
+
+1283
+00:53:52,720 --> 00:53:57,440
+it doesn't make sense to put that in
+
+1284
+00:53:55,359 --> 00:53:59,359
+in the LLM and throw seven billion or
+
+1285
+00:53:57,440 --> 00:54:01,680
+however many parameters in a neural
+
+1286
+00:53:59,359 --> 00:54:03,839
+network to go and compute some some
+
+1287
+00:54:01,680 --> 00:54:06,480
+piece of logic the right task for the
+
+1288
+00:54:03,839 --> 00:54:09,359
+right right job. So
+
+1289
+00:54:06,480 --> 00:54:11,280
+>> so we are nearing time so I want to
+
+1290
+00:54:09,359 --> 00:54:12,880
+before we get into closing remarks I
+
+1291
+00:54:11,280 --> 00:54:17,720
+want to ask the audience if there are
+
+1292
+00:54:12,880 --> 00:54:17,720
+any questions for our lovely panelists.
+
+1293
+00:54:21,119 --> 00:54:26,480
+>> Um it's for Anthony. uh you mentioned
+
+1294
+00:54:23,359 --> 00:54:28,000
+that Google are foraying into like
+
+1295
+00:54:26,480 --> 00:54:29,280
+building knowledge graphs or
+
+1296
+00:54:28,000 --> 00:54:30,559
+foundational models that you said that
+
+1297
+00:54:29,280 --> 00:54:32,319
+run off knowledge graphs.
+
+1298
+00:54:30,559 --> 00:54:34,480
+>> Is it just a matter of time before open
+
+1299
+00:54:32,319 --> 00:54:38,400
+AI and anthropic follow suit?
+
+1300
+00:54:34,480 --> 00:54:40,400
+>> No no um so they are doing a beautiful
+
+1301
+00:54:38,400 --> 00:54:43,200
+research on this. It's called the talk
+
+1302
+00:54:40,400 --> 00:54:45,920
+to any graph or I don't remember the the
+
+1303
+00:54:43,200 --> 00:54:49,680
+name of the paper but but they have two
+
+1304
+00:54:45,920 --> 00:54:53,359
+it's open source even you can um
+
+1305
+00:54:49,680 --> 00:54:55,599
+we are experiment experimenting in my my
+
+1306
+00:54:53,359 --> 00:54:57,359
+in my my intellectual work on this on
+
+1307
+00:54:55,599 --> 00:55:01,200
+yeah you have a foundational graph
+
+1308
+00:54:57,359 --> 00:55:03,920
+models that are emerging it's a trend uh
+
+1309
+00:55:01,200 --> 00:55:05,920
+um they are not
+
+1310
+00:55:03,920 --> 00:55:09,760
+with the spread right now but yeah it's
+
+1311
+00:55:05,920 --> 00:55:12,480
+a so it's model that can understand that
+
+1312
+00:55:09,760 --> 00:55:14,960
+has been trained to understand any types
+
+1313
+00:55:12,480 --> 00:55:18,559
+of it does in context learning on the
+
+1314
+00:55:14,960 --> 00:55:20,319
+graph. The the main advantages of LLM is
+
+1315
+00:55:18,559 --> 00:55:22,720
+that they can understand any context.
+
+1316
+00:55:20,319 --> 00:55:24,720
+Okay, they perform in context learning.
+
+1317
+00:55:22,720 --> 00:55:28,240
+Okay, it's the main value of LM today.
+
+1318
+00:55:24,720 --> 00:55:30,319
+Okay, it can learn on the task that you
+
+1319
+00:55:28,240 --> 00:55:33,440
+give it as example.
+
+1320
+00:55:30,319 --> 00:55:35,119
+Those um foundational graph model will
+
+1321
+00:55:33,440 --> 00:55:36,960
+do the same. They will learn on the
+
+1322
+00:55:35,119 --> 00:55:38,720
+graph that they have been provided. The
+
+1323
+00:55:36,960 --> 00:55:40,960
+problem right now with graph technology
+
+1324
+00:55:38,720 --> 00:55:42,720
+is that you need to train your GNN you
+
+1325
+00:55:40,960 --> 00:55:44,800
+need to train your algorithm. Okay. To
+
+1326
+00:55:42,720 --> 00:55:47,520
+have this kind of graph national model
+
+1327
+00:55:44,800 --> 00:55:51,119
+they can perfectly understand
+
+1328
+00:55:47,520 --> 00:55:53,680
+uh what what the graph is about. Okay.
+
+1329
+00:55:51,119 --> 00:55:56,400
+Um and their research for example has
+
+1330
+00:55:53,680 --> 00:55:58,960
+been at first to transform to translate
+
+1331
+00:55:56,400 --> 00:56:03,200
+the graph as something that can be
+
+1332
+00:55:58,960 --> 00:56:05,760
+understood by an LLM. Okay. and they are
+
+1333
+00:56:03,200 --> 00:56:08,559
+moving for I mean alongside that they
+
+1334
+00:56:05,760 --> 00:56:11,040
+they are creating also yes graph for
+
+1335
+00:56:08,559 --> 00:56:14,000
+national model but it's also Stanford
+
+1336
+00:56:11,040 --> 00:56:16,559
+thing uh Stanford is working on on this
+
+1337
+00:56:14,000 --> 00:56:18,160
+also yeah I think they're two they're
+
+1338
+00:56:16,559 --> 00:56:19,280
+two separate efforts I think at the
+
+1339
+00:56:18,160 --> 00:56:21,440
+moment but they're bringing them
+
+1340
+00:56:19,280 --> 00:56:24,079
+together so like the foundation the
+
+1341
+00:56:21,440 --> 00:56:26,880
+graph foundational is that they've uh
+
+1342
+00:56:24,079 --> 00:56:32,079
+they they've taken like the neural
+
+1343
+00:56:26,880 --> 00:56:33,599
+bellman Ford stuff uh and which is like
+
+1344
+00:56:32,079 --> 00:56:35,440
+path-based
+
+1345
+00:56:33,599 --> 00:56:38,240
+learning and then they've trained that
+
+1346
+00:56:35,440 --> 00:56:40,400
+on every known knowledge graph and then
+
+1347
+00:56:38,240 --> 00:56:42,240
+what turns out is that the patterns that
+
+1348
+00:56:40,400 --> 00:56:45,920
+exist within that at the kind of
+
+1349
+00:56:42,240 --> 00:56:47,920
+categorical level they apply across all
+
+1350
+00:56:45,920 --> 00:56:49,760
+graphs so like the foundational models
+
+1351
+00:56:47,920 --> 00:56:51,760
+do and then the the talk to your graph
+
+1352
+00:56:49,760 --> 00:56:54,554
+thing what they're doing is in the final
+
+1353
+00:56:51,760 --> 00:56:56,400
+layer of the neural network they're um
+
+1354
+00:56:54,554 --> 00:56:59,760
+[clears throat] putting some waitings in
+
+1355
+00:56:56,400 --> 00:57:01,680
+they just kind of append like some uh uh
+
+1356
+00:56:59,760 --> 00:57:04,319
+um waitings in on the vector which are
+
+1357
+00:57:01,680 --> 00:57:06,480
+like graph specific. Uh so then you can
+
+1358
+00:57:04,319 --> 00:57:08,160
+you basically train up those particular
+
+1359
+00:57:06,480 --> 00:57:11,680
+parameters so that it can then handle
+
+1360
+00:57:08,160 --> 00:57:13,760
+graph tasks uh more efficiently like you
+
+1361
+00:57:11,680 --> 00:57:14,640
+know finding shortest path finding
+
+1362
+00:57:13,760 --> 00:57:16,559
+centrality.
+
+1363
+00:57:14,640 --> 00:57:20,000
+>> So that's one good point though you
+
+1364
+00:57:16,559 --> 00:57:22,559
+mentioned all known graphs so most if
+
+1365
+00:57:20,000 --> 00:57:24,160
+not all LLMs that are the most popular
+
+1366
+00:57:22,559 --> 00:57:26,240
+right now trained on the open web.
+
+1367
+00:57:24,160 --> 00:57:28,000
+There's tons of link data graphs that
+
+1368
+00:57:26,240 --> 00:57:29,680
+are already on the open web. So they
+
+1369
+00:57:28,000 --> 00:57:31,119
+didn't train it specifically on those
+
+1370
+00:57:29,680 --> 00:57:32,559
+knowledge graphs and treat them as
+
+1371
+00:57:31,119 --> 00:57:33,760
+knowledge graphs, but they're in there,
+
+1372
+00:57:32,559 --> 00:57:34,799
+right? I mean, that's why you can get
+
+1373
+00:57:33,760 --> 00:57:36,480
+anything wiki out of it.
+
+1374
+00:57:34,799 --> 00:57:38,640
+>> Yeah. Not we were having this discussion
+
+1375
+00:57:36,480 --> 00:57:40,559
+actually earlier before. Not as much as
+
+1376
+00:57:38,640 --> 00:57:41,920
+like I had originally assumed. So
+
+1377
+00:57:40,559 --> 00:57:44,000
+originally I thought, ah, they're going
+
+1378
+00:57:41,920 --> 00:57:45,920
+to be scraping all of that link data
+
+1379
+00:57:44,000 --> 00:57:48,000
+that's on the web and then they're going
+
+1380
+00:57:45,920 --> 00:57:50,319
+to be using that as part of the training
+
+1381
+00:57:48,000 --> 00:57:51,839
+process. But um and initial
+
+1382
+00:57:50,319 --> 00:57:54,000
+experimentation seemed to bear that out,
+
+1383
+00:57:51,839 --> 00:57:55,599
+but actually I don't think I don't think
+
+1384
+00:57:54,000 --> 00:57:56,559
+so much. Yeah,
+
+1385
+00:57:55,599 --> 00:57:59,119
+>> it's very messy
+
+1386
+00:57:56,559 --> 00:58:00,400
+>> and and I guess approach with caution
+
+1387
+00:57:59,119 --> 00:58:03,200
+because that's not always helpful
+
+1388
+00:58:00,400 --> 00:58:05,680
+because it can mean they they
+
+1389
+00:58:03,200 --> 00:58:08,240
+hallucinate in areas where they have
+
+1390
+00:58:05,680 --> 00:58:10,240
+seen structure out on the web that isn't
+
+1391
+00:58:08,240 --> 00:58:12,000
+representative in the [snorts] in the
+
+1392
+00:58:10,240 --> 00:58:14,079
+ontology or the schema that you're then
+
+1393
+00:58:12,000 --> 00:58:15,440
+providing it. So, you know, you might
+
+1394
+00:58:14,079 --> 00:58:17,119
+occasionally want to play tricks and
+
+1395
+00:58:15,440 --> 00:58:19,520
+say, "Okay, actually, I'm going to
+
+1396
+00:58:17,119 --> 00:58:22,400
+present to you this ontology or this
+
+1397
+00:58:19,520 --> 00:58:24,160
+schema, and I've renamed things so that
+
+1398
+00:58:22,400 --> 00:58:25,599
+you don't get confused by that that
+
+1399
+00:58:24,160 --> 00:58:27,040
+stuff you've been trained out and are
+
+1400
+00:58:25,599 --> 00:58:31,720
+going to, I know, going to hallucinate
+
+1401
+00:58:27,040 --> 00:58:31,720
+on. So, be be warned." Yeah.
+
+1402
+00:58:36,000 --> 00:58:41,280
+>> Thank you. Hey everyone. Um, my name is
+
+1403
+00:58:38,400 --> 00:58:43,440
+Nia Nia Mlin and I'm from Neoforj. So, a
+
+1404
+00:58:41,280 --> 00:58:46,720
+big fan of everyone here, especially the
+
+1405
+00:58:43,440 --> 00:58:50,640
+the wonderful Ashley. Um, so my question
+
+1406
+00:58:46,720 --> 00:58:53,440
+is, uh, what are some, uh, books or
+
+1407
+00:58:50,640 --> 00:58:55,520
+white papers or even people that you all
+
+1408
+00:58:53,440 --> 00:58:57,520
+look up to who are doing either cutting
+
+1409
+00:58:55,520 --> 00:58:59,760
+edge research specifically or just in
+
+1410
+00:58:57,520 --> 00:59:02,240
+general that folk can continue to dive
+
+1411
+00:58:59,760 --> 00:59:05,799
+in and learn from um, about these
+
+1412
+00:59:02,240 --> 00:59:05,799
+specific topics?
+
+1413
+00:59:07,200 --> 00:59:17,760
+One scientist I am fond of is um
+
+1414
+00:59:12,799 --> 00:59:21,440
+Marcus G. Buller is from MIT and he's um
+
+1415
+00:59:17,760 --> 00:59:24,559
+working on um aentic graph system that I
+
+1416
+00:59:21,440 --> 00:59:26,559
+call it for scientific discoveries and
+
+1417
+00:59:24,559 --> 00:59:31,760
+recently he has released a paper where
+
+1418
+00:59:26,559 --> 00:59:34,720
+um he used um kandis kandiski um
+
+1419
+00:59:31,760 --> 00:59:37,839
+painting to find new material new
+
+1420
+00:59:34,720 --> 00:59:39,920
+material design here. So he's mixing
+
+1421
+00:59:37,839 --> 00:59:43,839
+different field to perform scientific
+
+1422
+00:59:39,920 --> 00:59:46,000
+discovery and I mean um they are not
+
+1423
+00:59:43,839 --> 00:59:48,720
+only publishing paper but they are also
+
+1424
+00:59:46,000 --> 00:59:52,160
+releasing um GitHub open source GitHub
+
+1425
+00:59:48,720 --> 00:59:54,640
+you can reproduce what it has been doing
+
+1426
+00:59:52,160 --> 00:59:58,720
+it's very inspiring in term of I would
+
+1427
+00:59:54,640 --> 01:00:02,240
+say reasoning uh implementation
+
+1428
+00:59:58,720 --> 01:00:05,440
+yeah it's really his talk also are
+
+1429
+01:00:02,240 --> 01:00:10,520
+really he publish a lot on on LinkedIn
+
+1430
+01:00:05,440 --> 01:00:10,520
+for each each of his research. Yeah.
+
+1431
+01:00:11,200 --> 01:00:20,319
+>> Um so there's uh so much out there. Uh
+
+1432
+01:00:15,839 --> 01:00:22,720
+um I uh there's a few um GitHub
+
+1433
+01:00:20,319 --> 01:00:25,599
+repositories where they put they kind of
+
+1434
+01:00:22,720 --> 01:00:29,760
+a combination of papers. Uh I signed up
+
+1435
+01:00:25,599 --> 01:00:34,079
+for hugging face uh uh the daily um
+
+1436
+01:00:29,760 --> 01:00:36,720
+updates. I think it's um I try to take
+
+1437
+01:00:34,079 --> 01:00:40,240
+uh I you know uh pay attention to any of
+
+1438
+01:00:36,720 --> 01:00:42,160
+the um major companies that are you know
+
+1439
+01:00:40,240 --> 01:00:44,480
+building these models what the latest
+
+1440
+01:00:42,160 --> 01:00:47,760
+they have on it I think is um always
+
+1441
+01:00:44,480 --> 01:00:50,400
+good to uh or I guess easy to to keep on
+
+1442
+01:00:47,760 --> 01:00:52,400
+top of. Uh but it's uh it's quite
+
+1443
+01:00:50,400 --> 01:00:54,000
+overwhelming to be honest on what to
+
+1444
+01:00:52,400 --> 01:00:56,720
+follow. And there's going to be a paper
+
+1445
+01:00:54,000 --> 01:01:01,680
+out tomorrow that'll completely change
+
+1446
+01:00:56,720 --> 01:01:01,680
+something I'm doing. So that's it.
+
+1447
+01:01:02,480 --> 01:01:08,799
+Um yeah so so for me I'm kind of a
+
+1448
+01:01:05,680 --> 01:01:10,559
+hands-on sort of person so I prefer to
+
+1449
+01:01:08,799 --> 01:01:12,480
+go and find the the notebooks that
+
+1450
+01:01:10,559 --> 01:01:16,160
+people are providing find the popular
+
+1451
+01:01:12,480 --> 01:01:18,400
+ones of those GitHub um
+
+1452
+01:01:16,160 --> 01:01:20,319
+lots of people lots of community folks
+
+1453
+01:01:18,400 --> 01:01:22,960
+already mentioned hugging face lang
+
+1454
+01:01:20,319 --> 01:01:25,520
+chain plenty out there but for for me
+
+1455
+01:01:22,960 --> 01:01:28,000
+it's uh try it and see see what's
+
+1456
+01:01:25,520 --> 01:01:29,839
+actually working
+
+1457
+01:01:28,000 --> 01:01:33,440
+>> my problem is I can never remember
+
+1458
+01:01:29,839 --> 01:01:36,799
+people's uh names.
+
+1459
+01:01:33,440 --> 01:01:38,480
+Um you've obviously got uh you've got
+
+1460
+01:01:36,799 --> 01:01:41,440
+the people on the the papers that so
+
+1461
+01:01:38,480 --> 01:01:43,599
+there's a is it Brian Pres or something
+
+1462
+01:01:41,440 --> 01:01:45,040
+who's the guy at Google who did the talk
+
+1463
+01:01:43,599 --> 01:01:48,319
+to your graph stuff. He's definitely
+
+1464
+01:01:45,040 --> 01:01:51,440
+worth listening to and having a chat to.
+
+1465
+01:01:48,319 --> 01:01:53,440
+Then Michael Grainen is it or something?
+
+1466
+01:01:51,440 --> 01:01:55,119
+I can never pronounce this the surnames.
+
+1467
+01:01:53,440 --> 01:01:56,640
+He's he's now gone to Google as well
+
+1468
+01:01:55,119 --> 01:01:58,720
+actually, but before that he was with
+
+1469
+01:01:56,640 --> 01:02:00,880
+Nvidia and he's doing a lot of the stuff
+
+1470
+01:01:58,720 --> 01:02:04,240
+with the kind of that that graph
+
+1471
+01:02:00,880 --> 01:02:08,079
+foundational stuff. And then Peter uh
+
+1472
+01:02:04,240 --> 01:02:09,920
+what's his name? Uh who who was doing
+
+1473
+01:02:08,079 --> 01:02:12,799
+you know who's done all of the GNN stuff
+
+1474
+01:02:09,920 --> 01:02:16,000
+and has done the uh category theory uh
+
+1475
+01:02:12,799 --> 01:02:18,559
+stuff. And then weirdly I' I'd kind of
+
+1476
+01:02:16,000 --> 01:02:21,119
+recommend like to get your head around
+
+1477
+01:02:18,559 --> 01:02:23,280
+if you want to get your head around the
+
+1478
+01:02:21,119 --> 01:02:25,599
+um this kind of idea of formal and
+
+1479
+01:02:23,280 --> 01:02:27,119
+natural systems which was would kind of
+
+1480
+01:02:25,599 --> 01:02:29,599
+give you the background to like where
+
+1481
+01:02:27,119 --> 01:02:32,000
+this thing is on the bigger level. Um
+
+1482
+01:02:29,599 --> 01:02:34,880
+I'd actually go read an old book by a
+
+1483
+01:02:32,000 --> 01:02:38,160
+mathematical biologist called uh Robert
+
+1484
+01:02:34,880 --> 01:02:41,040
+Rosen and it's called uh what is what is
+
+1485
+01:02:38,160 --> 01:02:43,839
+it? What is it called? Uh life itself.
+
+1486
+01:02:41,040 --> 01:02:46,160
+And he uses uh he takes a categorical so
+
+1487
+01:02:43,839 --> 01:02:48,480
+like category theory which is kind of
+
+1488
+01:02:46,160 --> 01:02:51,440
+like our graphy stuff but in maths and
+
+1489
+01:02:48,480 --> 01:02:55,640
+he takes a category theory view uh of
+
+1490
+01:02:51,440 --> 01:02:55,640
+biological uh systems.
+
+1491
+01:02:55,920 --> 01:03:01,839
+>> Um hi everyone uh my name is Labanu uh
+
+1492
+01:02:58,880 --> 01:03:03,839
+from Oracle. Um I really appreciate
+
+1493
+01:03:01,839 --> 01:03:06,240
+being in the session. I've quite learned
+
+1494
+01:03:03,839 --> 01:03:07,599
+a lot. I really appreciate I just had
+
+1495
+01:03:06,240 --> 01:03:10,880
+two questions but I'm just going to
+
+1496
+01:03:07,599 --> 01:03:15,039
+combine them as one. So with regards to
+
+1497
+01:03:10,880 --> 01:03:17,039
+LLMs you mentioned about guards uh just
+
+1498
+01:03:15,039 --> 01:03:19,839
+very keen to just check so because we
+
+1499
+01:03:17,039 --> 01:03:21,760
+have like a lot of LLMs out there and
+
+1500
+01:03:19,839 --> 01:03:23,760
+most of them still uh you know with
+
+1501
+01:03:21,760 --> 01:03:25,440
+enterprises uh data and all that we are
+
+1502
+01:03:23,760 --> 01:03:28,720
+trying to like you know put moderation
+
+1503
+01:03:25,440 --> 01:03:30,400
+onto that. So can we say that uh graph
+
+1504
+01:03:28,720 --> 01:03:33,599
+databases are going to like come and
+
+1505
+01:03:30,400 --> 01:03:35,920
+place guardrails to that um in the sense
+
+1506
+01:03:33,599 --> 01:03:38,880
+that to ensure that we we can be able to
+
+1507
+01:03:35,920 --> 01:03:42,640
+like filter uh bad contents within the
+
+1508
+01:03:38,880 --> 01:03:45,039
+LLMs. Can we can we uh you know ensure
+
+1509
+01:03:42,640 --> 01:03:47,200
+that can can we have or can we say that
+
+1510
+01:03:45,039 --> 01:03:48,880
+the graph graph databases are going to
+
+1511
+01:03:47,200 --> 01:03:51,039
+like you know make the LLMs more
+
+1512
+01:03:48,880 --> 01:03:53,440
+deterministics in the sense that they
+
+1513
+01:03:51,039 --> 01:03:55,440
+can give the answer as you know without
+
+1514
+01:03:53,440 --> 01:03:57,920
+hallucinating and that and then the
+
+1515
+01:03:55,440 --> 01:04:01,440
+other thing was with regards to security
+
+1516
+01:03:57,920 --> 01:04:03,599
+are are the graph uh you know databases
+
+1517
+01:04:01,440 --> 01:04:05,039
+going to enhance security for the LLMs
+
+1518
+01:04:03,599 --> 01:04:07,039
+thank you
+
+1519
+01:04:05,039 --> 01:04:09,359
+>> I can go given I've got the mic I can go
+
+1520
+01:04:07,039 --> 01:04:12,400
+first on both of those ones so the so
+
+1521
+01:04:09,359 --> 01:04:14,960
+the uh so yes absolutely and that is
+
+1522
+01:04:12,400 --> 01:04:17,520
+this neural symbolic loop. So um
+
+1523
+01:04:14,960 --> 01:04:18,960
+basically what you do is you you use the
+
+1524
+01:04:17,520 --> 01:04:20,799
+large language model to do a bit of
+
+1525
+01:04:18,960 --> 01:04:22,640
+exploration for instance you might point
+
+1526
+01:04:20,799 --> 01:04:24,559
+it at something some textual document
+
+1527
+01:04:22,640 --> 01:04:26,880
+and say extract me out an ontology from
+
+1528
+01:04:24,559 --> 01:04:29,039
+this and then once you've compiled that
+
+1529
+01:04:26,880 --> 01:04:30,880
+ontology down you can pass that into the
+
+1530
+01:04:29,039 --> 01:04:32,880
+context of the large language model to
+
+1531
+01:04:30,880 --> 01:04:35,359
+say do something but here's my formal
+
+1532
+01:04:32,880 --> 01:04:38,640
+specification of what that of
+
+1533
+01:04:35,359 --> 01:04:40,319
+ontologically what that concept is. Then
+
+1534
+01:04:38,640 --> 01:04:42,000
+when it comes back out of the large
+
+1535
+01:04:40,319 --> 01:04:43,839
+language model, you can do this thing
+
+1536
+01:04:42,000 --> 01:04:45,359
+that they call corrective rag, but like
+
+1537
+01:04:43,839 --> 01:04:47,200
+the graph-based version of that, which
+
+1538
+01:04:45,359 --> 01:04:49,200
+is that basically I'll transform the
+
+1539
+01:04:47,200 --> 01:04:51,039
+large language models response back into
+
+1540
+01:04:49,200 --> 01:04:52,559
+a graph and then I'm going to validate
+
+1541
+01:04:51,039 --> 01:04:54,400
+it against you know I could like have a
+
+1542
+01:04:52,559 --> 01:04:57,359
+shackle validation for instance against
+
+1543
+01:04:54,400 --> 01:04:59,599
+the uh against the data that comes out.
+
+1544
+01:04:57,359 --> 01:05:01,280
+So that's on one side. The other and
+
+1545
+01:04:59,599 --> 01:05:03,760
+then on the security side I think the
+
+1546
+01:05:01,280 --> 01:05:05,920
+thing with large language models is
+
+1547
+01:05:03,760 --> 01:05:08,640
+they're very hackable. So you can always
+
+1548
+01:05:05,920 --> 01:05:10,319
+hack them. So the key thing is to
+
+1549
+01:05:08,640 --> 01:05:13,039
+control the data going into them and
+
+1550
+01:05:10,319 --> 01:05:14,720
+that is really about data lineage. So
+
+1551
+01:05:13,039 --> 01:05:16,000
+essentially what you need to do and this
+
+1552
+01:05:14,720 --> 01:05:17,280
+kind of goes into that deep product
+
+1553
+01:05:16,000 --> 01:05:19,119
+deepro thing I was talking about
+
+1554
+01:05:17,280 --> 01:05:22,160
+yesterday. you need to understand all of
+
+1555
+01:05:19,119 --> 01:05:24,319
+the data that is going in to the context
+
+1556
+01:05:22,160 --> 01:05:26,720
+of the LLM that you're feeding it
+
+1557
+01:05:24,319 --> 01:05:29,119
+whether you're fine-tuning it um or you
+
+1558
+01:05:26,720 --> 01:05:30,880
+are uh putting it in in within the
+
+1559
+01:05:29,119 --> 01:05:32,480
+context and you need to make you need to
+
+1560
+01:05:30,880 --> 01:05:35,119
+understand the lineage of where the data
+
+1561
+01:05:32,480 --> 01:05:38,480
+is in a very detailed level uh in order
+
+1562
+01:05:35,119 --> 01:05:40,240
+not to leak things out and and and even
+
+1563
+01:05:38,480 --> 01:05:42,079
+actually again as a conversation we were
+
+1564
+01:05:40,240 --> 01:05:45,359
+having earlier this is going to become
+
+1565
+01:05:42,079 --> 01:05:46,640
+much more subtle as kind of you you've
+
+1566
+01:05:45,359 --> 01:05:48,319
+got to imagine that the generative
+
+1567
+01:05:46,640 --> 01:05:49,920
+models are like suck sucking information
+
+1568
+01:05:48,319 --> 01:05:51,280
+into them. So, so you're going to get
+
+1569
+01:05:49,920 --> 01:05:53,119
+have to people going have to get a lot
+
+1570
+01:05:51,280 --> 01:05:54,880
+more savvy about what information
+
+1571
+01:05:53,119 --> 01:05:56,960
+they're exposing out on the boundary of
+
+1572
+01:05:54,880 --> 01:05:59,039
+their their their their organization
+
+1573
+01:05:56,960 --> 01:06:01,200
+because it's going to be a lot smarter
+
+1574
+01:05:59,039 --> 01:06:02,640
+in terms of the environment that
+
+1575
+01:06:01,200 --> 01:06:05,200
+organizations are in is going to be a
+
+1576
+01:06:02,640 --> 01:06:06,960
+lot smarter in terms of like sucking
+
+1577
+01:06:05,200 --> 01:06:10,480
+signal out of that. You know, you're
+
+1578
+01:06:06,960 --> 01:06:12,799
+inadvertently revealing secrets that you
+
+1579
+01:06:10,480 --> 01:06:15,280
+didn't realize that you were revealing.
+
+1580
+01:06:12,799 --> 01:06:17,280
+Uh yeah.
+
+1581
+01:06:15,280 --> 01:06:20,079
+>> Yeah. Yeah, I think I think you pretty
+
+1582
+01:06:17,280 --> 01:06:21,440
+much answered it in terms of the in
+
+1583
+01:06:20,079 --> 01:06:24,000
+terms of the guardrails you're providing
+
+1584
+01:06:21,440 --> 01:06:26,880
+that by providing a context to say you
+
+1585
+01:06:24,000 --> 01:06:28,480
+know um for this answer here is here is
+
+1586
+01:06:26,880 --> 01:06:31,520
+your context and that context has come
+
+1587
+01:06:28,480 --> 01:06:34,079
+from from from this graph. The the piece
+
+1588
+01:06:31,520 --> 01:06:35,599
+that you can then add is you can make
+
+1589
+01:06:34,079 --> 01:06:38,480
+you can make links to that. So you can
+
+1590
+01:06:35,599 --> 01:06:41,760
+expose to the user here's my here is my
+
+1591
+01:06:38,480 --> 01:06:43,599
+like written answer or
+
+1592
+01:06:41,760 --> 01:06:45,680
+whatever you're choosing to generate. Um
+
+1593
+01:06:43,599 --> 01:06:48,400
+but here's the reference for that and
+
+1594
+01:06:45,680 --> 01:06:50,160
+that reference is now linked and when
+
+1595
+01:06:48,400 --> 01:06:53,839
+logic has been applied to generate some
+
+1596
+01:06:50,160 --> 01:06:57,280
+of that reference material um logical AI
+
+1597
+01:06:53,839 --> 01:06:59,680
+is backing backing some of that context
+
+1598
+01:06:57,280 --> 01:07:02,240
+um you can be explainable about it. So
+
+1599
+01:06:59,680 --> 01:07:04,720
+you can go, you know, one step one step
+
+1600
+01:07:02,240 --> 01:07:06,319
+beyond what generative on its own is
+
+1601
+01:07:04,720 --> 01:07:07,920
+gonna is going to lack which is that
+
+1602
+01:07:06,319 --> 01:07:09,760
+that explanability.
+
+1603
+01:07:07,920 --> 01:07:11,920
+>> I think it's important to also mention
+
+1604
+01:07:09,760 --> 01:07:13,680
+guard rails are there's a lot of
+
+1605
+01:07:11,920 --> 01:07:14,880
+different types of guardrails. So is it
+
+1606
+01:07:13,680 --> 01:07:16,720
+going I think one of the things you
+
+1607
+01:07:14,880 --> 01:07:18,799
+asked was is it going to is graph going
+
+1608
+01:07:16,720 --> 01:07:20,240
+to replace I would say no. I agree with
+
+1609
+01:07:18,799 --> 01:07:22,720
+everything that's being said here but
+
+1610
+01:07:20,240 --> 01:07:24,240
+things like prompt injection a graph is
+
+1611
+01:07:22,720 --> 01:07:25,760
+not going to be the beall endall for
+
+1612
+01:07:24,240 --> 01:07:28,480
+that. So that I just wanted to clarify
+
+1613
+01:07:25,760 --> 01:07:30,480
+that.
+
+1614
+01:07:28,480 --> 01:07:34,880
+Sorry, just I guess just on the security
+
+1615
+01:07:30,480 --> 01:07:38,160
+piece as well. Um, yeah, that that that
+
+1616
+01:07:34,880 --> 01:07:39,839
+that's a challenge, but that's kind of
+
+1617
+01:07:38,160 --> 01:07:41,920
+many aspects to that. So, is this
+
+1618
+01:07:39,839 --> 01:07:46,240
+security of who you're sharing your data
+
+1619
+01:07:41,920 --> 01:07:48,079
+with? Um, is is this security over um
+
+1620
+01:07:46,240 --> 01:07:51,280
+yeah, who who has access to what
+
+1621
+01:07:48,079 --> 01:07:54,880
+information? So all of the classical I
+
+1622
+01:07:51,280 --> 01:07:56,799
+guess um enterprise security questions
+
+1623
+01:07:54,880 --> 01:07:58,880
+exist whenever you're accessing any data
+
+1624
+01:07:56,799 --> 01:08:01,280
+but we also have you know the security
+
+1625
+01:07:58,880 --> 01:08:03,520
+of where are you running your your LLM?
+
+1626
+01:08:01,280 --> 01:08:05,200
+Who's whose services are you relying on
+
+1627
+01:08:03,520 --> 01:08:07,200
+or are you going to bring that inhouse
+
+1628
+01:08:05,200 --> 01:08:09,119
+and protect protect the users in that
+
+1629
+01:08:07,200 --> 01:08:12,720
+way. So there's plenty of aspects to
+
+1630
+01:08:09,119 --> 01:08:14,880
+security that are important to you.
+
+1631
+01:08:12,720 --> 01:08:18,080
+I think the craft won't solve the
+
+1632
+01:08:14,880 --> 01:08:20,080
+security current problem because um it's
+
+1633
+01:08:18,080 --> 01:08:22,799
+a there is a funny competition right now
+
+1634
+01:08:20,080 --> 01:08:25,440
+on the internet. Uh someone has created
+
+1635
+01:08:22,799 --> 01:08:28,159
+an application where you you have to act
+
+1636
+01:08:25,440 --> 01:08:32,480
+the LLM and you can earn money. Uh
+
+1637
+01:08:28,159 --> 01:08:35,440
+recently someone has earned $70,000.
+
+1638
+01:08:32,480 --> 01:08:37,839
+Uh it's a system a payment system where
+
+1639
+01:08:35,440 --> 01:08:40,400
+you have to convince the LLM that he has
+
+1640
+01:08:37,839 --> 01:08:43,520
+to give you money. Uh and you have to
+
+1641
+01:08:40,400 --> 01:08:46,880
+pay to try it. Okay. So it's [snorts]
+
+1642
+01:08:43,520 --> 01:08:50,159
+it's very funny and it has been break
+
+1643
+01:08:46,880 --> 01:08:52,880
+five time I think uh since it has been
+
+1644
+01:08:50,159 --> 01:08:56,080
+put in place. So of course this LLM
+
+1645
+01:08:52,880 --> 01:08:59,199
+system use a lot of guard rails etc to
+
+1646
+01:08:56,080 --> 01:09:01,920
+uh prevent you to hacking it but people
+
+1647
+01:08:59,199 --> 01:09:03,520
+has acted. So I think on the security
+
+1648
+01:09:01,920 --> 01:09:06,799
+layer we will see more and more
+
+1649
+01:09:03,520 --> 01:09:09,040
+innovation. Um, one innovation I think
+
+1650
+01:09:06,799 --> 01:09:12,640
+but maybe I'm mistaken it's on the
+
+1651
+01:09:09,040 --> 01:09:15,759
+structure output on the LM. Uh, there is
+
+1652
+01:09:12,640 --> 01:09:18,642
+a company called takes.
+
+1653
+01:09:15,759 --> 01:09:21,279
+Uh, it's a French one also. I'm biased
+
+1654
+01:09:18,642 --> 01:09:23,120
+[laughter] definitely but they they are
+
+1655
+01:09:21,279 --> 01:09:26,000
+currently outlines. Uh, it's a best
+
+1656
+01:09:23,120 --> 01:09:28,640
+library for structure output. Uh, they
+
+1657
+01:09:26,000 --> 01:09:30,960
+they beat basically everyone. Entropic,
+
+1658
+01:09:28,640 --> 01:09:34,560
+OpenAI, Microsoft
+
+1659
+01:09:30,960 --> 01:09:38,799
+because their structure output is uh uh
+
+1660
+01:09:34,560 --> 01:09:40,960
+more efficient. So 33 times uh the best
+
+1661
+01:09:38,799 --> 01:09:43,600
+library out there for structure output.
+
+1662
+01:09:40,960 --> 01:09:46,319
+Uh and they are more accurate as so it's
+
+1663
+01:09:43,600 --> 01:09:49,279
+100% accurate. Sure. And the outline
+
+1664
+01:09:46,319 --> 01:09:52,799
+library is open source. But um yeah I I
+
+1665
+01:09:49,279 --> 01:09:55,360
+think to make sure the LLM obey to a
+
+1666
+01:09:52,799 --> 01:09:57,440
+certain schema of response for sensitive
+
+1667
+01:09:55,360 --> 01:10:00,960
+application or something like that can
+
+1668
+01:09:57,440 --> 01:10:02,320
+prevent prompt injection or Yeah, I have
+
+1669
+01:10:00,960 --> 01:10:04,080
+been thinking about that with your
+
+1670
+01:10:02,320 --> 01:10:05,803
+question. Yeah. Yeah. I didn't mean to
+
+1671
+01:10:04,080 --> 01:10:08,080
+get us off on a security tangent.
+
+1672
+01:10:05,803 --> 01:10:09,360
+[laughter] I was just not a security
+
+1673
+01:10:08,080 --> 01:10:09,920
+guard rails apply to lots of different
+
+1674
+01:10:09,360 --> 01:10:12,080
+areas,
+
+1675
+01:10:09,920 --> 01:10:14,640
+>> but but graph I think it's not. No, it
+
+1676
+01:10:12,080 --> 01:10:16,320
+won't be enough. Yeah. No,
+
+1677
+01:10:14,640 --> 01:10:17,920
+>> what's it called again?
+
+1678
+01:10:16,320 --> 01:10:20,480
+>> Outlines. Yeah.
+
+1679
+01:10:17,920 --> 01:10:22,800
+>> Yeah, it's currently on GitHub. It's the
+
+1680
+01:10:20,480 --> 01:10:25,600
+most used library for structural output
+
+1681
+01:10:22,800 --> 01:10:28,320
+and there is a real um interconnection
+
+1682
+01:10:25,600 --> 01:10:30,480
+with graph technologies because with the
+
+1683
+01:10:28,320 --> 01:10:34,800
+structure output you can make the LM
+
+1684
+01:10:30,480 --> 01:10:37,120
+respect a certain schema or certain yeah
+
+1685
+01:10:34,800 --> 01:10:38,880
+they have raised 11 million recently and
+
+1686
+01:10:37,120 --> 01:10:39,440
+they have a product that is even better.
+
+1687
+01:10:38,880 --> 01:10:39,920
+So
+
+1688
+01:10:39,440 --> 01:10:43,360
+>> just
+
+1689
+01:10:39,920 --> 01:10:46,480
+>> if you are interested in Yeah.
+
+1690
+01:10:43,360 --> 01:10:47,440
+Yeah. We are really great.
+
+1691
+01:10:46,480 --> 01:10:49,120
+>> You can go to the next.
+
+1692
+01:10:47,440 --> 01:10:50,159
+>> Oh, I was just going to say um time
+
+1693
+01:10:49,120 --> 01:10:50,400
+check. That's all.
+
+1694
+01:10:50,159 --> 01:10:51,920
+>> Okay.
+
+1695
+01:10:50,400 --> 01:10:54,080
+>> Yeah, we're we're pretty much out of
+
+1696
+01:10:51,920 --> 01:10:55,679
+time. So I wanted to make sure that we
+
+1697
+01:10:54,080 --> 01:10:57,280
+cognizant of that.
+
+1698
+01:10:55,679 --> 01:10:59,120
+>> But yeah, I want to make sure my two
+
+1699
+01:10:57,280 --> 01:11:01,600
+cents. Yes. Yeah, I don't know if it
+
+1700
+01:10:59,120 --> 01:11:04,000
+fully um covers what you you know are
+
+1701
+01:11:01,600 --> 01:11:06,400
+meaning by uh guardrails completely, but
+
+1702
+01:11:04,000 --> 01:11:10,159
+just uh um I think it's really important
+
+1703
+01:11:06,400 --> 01:11:13,840
+to uh go back to this AI ready data
+
+1704
+01:11:10,159 --> 01:11:16,320
+initiative and um make sure you have a
+
+1705
+01:11:13,840 --> 01:11:18,800
+data catalog that is semantically
+
+1706
+01:11:16,320 --> 01:11:21,840
+enabled is the best way to capture
+
+1707
+01:11:18,800 --> 01:11:25,120
+provenence and lineage and uh think
+
+1708
+01:11:21,840 --> 01:11:27,360
+about annotations that are um coming up.
+
+1709
+01:11:25,120 --> 01:11:29,280
+even I I know that sounds strange, but
+
+1710
+01:11:27,360 --> 01:11:31,600
+getting ahead of uh how we're going to
+
+1711
+01:11:29,280 --> 01:11:36,320
+have to anni annotate bits of the data
+
+1712
+01:11:31,600 --> 01:11:40,960
+in order to um uh make our uh systems
+
+1713
+01:11:36,320 --> 01:11:45,280
+more secure. Um so with data access um
+
+1714
+01:11:40,960 --> 01:11:47,520
+data source um data security even at a
+
+1715
+01:11:45,280 --> 01:11:49,280
+uh document level uh so with our
+
+1716
+01:11:47,520 --> 01:11:51,520
+chunking as well I mean thinking about
+
+1717
+01:11:49,280 --> 01:11:54,560
+it that far ahead of how we're going to
+
+1718
+01:11:51,520 --> 01:11:58,800
+actually annotate uh the data that will
+
+1719
+01:11:54,560 --> 01:12:01,360
+um uh allow us to uh only um pull in
+
+1720
+01:11:58,800 --> 01:12:03,360
+certain parts that are relevant um for
+
+1721
+01:12:01,360 --> 01:12:04,640
+this part of the organization. We we we
+
+1722
+01:12:03,360 --> 01:12:07,040
+don't want to share our data here. It's
+
+1723
+01:12:04,640 --> 01:12:10,159
+very important having those guard rails
+
+1724
+01:12:07,040 --> 01:12:13,199
+is all in the data cataloging annotation
+
+1725
+01:12:10,159 --> 01:12:15,840
+part of it. Uh AI ready data um
+
+1726
+01:12:13,199 --> 01:12:18,400
+initiative that is that uh those
+
+1727
+01:12:15,840 --> 01:12:20,159
+cataloges are backed by graphs usually.
+
+1728
+01:12:18,400 --> 01:12:22,960
+So that's that's where that graph would
+
+1729
+01:12:20,159 --> 01:12:25,040
+come in is in that data cataloging step.
+
+1730
+01:12:22,960 --> 01:12:28,400
+If you're not into AI yet and you're not
+
+1731
+01:12:25,040 --> 01:12:31,120
+into graph yet, invest in your data and
+
+1732
+01:12:28,400 --> 01:12:33,440
+you will be better set. That's my final
+
+1733
+01:12:31,120 --> 01:12:35,120
+thought. Okay. I want to thank our
+
+1734
+01:12:33,440 --> 01:12:39,080
+panelists. Thank you so much. This has
+
+1735
+01:12:35,120 --> 01:12:39,080
+been a lovely conversation.
+

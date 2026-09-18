@@ -1,0 +1,2660 @@
+1
+00:00:05,200 --> 00:00:10,480
+So, uh my name is Chess. I have a PhD in
+
+2
+00:00:08,720 --> 00:00:13,600
+computational neuroscience. That's just
+
+3
+00:00:10,480 --> 00:00:15,480
+so you know I'm legitimate. Um and uh
+
+4
+00:00:13,600 --> 00:00:18,040
+and I also represent a company called
+
+5
+00:00:15,480 --> 00:00:21,240
+Co-node. I am the CEO and Johanna is our
+
+6
+00:00:18,040 --> 00:00:22,800
+VP of growth. Um please uh challenge her
+
+7
+00:00:21,240 --> 00:00:25,400
+with all the most technical questions. I
+
+8
+00:00:22,800 --> 00:00:27,880
+think she will do actually quite well.
+
+9
+00:00:25,400 --> 00:00:29,200
+Um I've been shocked at how much you uh
+
+10
+00:00:27,880 --> 00:00:30,800
+have been able to understand in such a
+
+11
+00:00:29,200 --> 00:00:33,640
+short period of time.
+
+12
+00:00:30,800 --> 00:00:34,880
+Um it's uh I on the other hand I'm going
+
+13
+00:00:33,640 --> 00:00:36,840
+to make things I'm going to make a mess
+
+14
+00:00:34,880 --> 00:00:38,560
+of things. Well, so let's get started
+
+15
+00:00:36,840 --> 00:00:40,800
+with that.
+
+16
+00:00:38,560 --> 00:00:42,720
+Here's our agenda.
+
+17
+00:00:40,800 --> 00:00:44,600
+Uh the problem, why hasn't GenAI
+
+18
+00:00:42,720 --> 00:00:46,000
+revolutionized business yet? I mean,
+
+19
+00:00:44,600 --> 00:00:47,320
+maybe none of us think that's a problem
+
+20
+00:00:46,000 --> 00:00:50,080
+cuz we're all here cuz we know it's
+
+21
+00:00:47,320 --> 00:00:51,520
+happening. But um but maybe it hasn't
+
+22
+00:00:50,080 --> 00:00:54,640
+happened as much as any as we expected
+
+23
+00:00:51,520 --> 00:00:56,440
+in the last 2 years of the LLM wave. Um
+
+24
+00:00:54,640 --> 00:00:58,800
+the solution of course of course is
+
+25
+00:00:56,440 --> 00:01:00,280
+going to be to ground GenAI in graphs.
+
+26
+00:00:58,800 --> 00:01:02,760
+Uh we're going to show some quick
+
+27
+00:01:00,280 --> 00:01:04,000
+examples of text retrieval which we have
+
+28
+00:01:02,760 --> 00:01:05,680
+all been seeing throughout this
+
+29
+00:01:04,000 --> 00:01:07,120
+conference and I think many of us
+
+30
+00:01:05,680 --> 00:01:09,480
+experiment with but it's just worth
+
+31
+00:01:07,120 --> 00:01:10,600
+seeing again. And how we can do some
+
+32
+00:01:09,480 --> 00:01:12,920
+kind of
+
+33
+00:01:10,600 --> 00:01:14,680
+broad-scale text retrieval uh that's
+
+34
+00:01:12,920 --> 00:01:17,080
+more about drawing conclusions from the
+
+35
+00:01:14,680 --> 00:01:19,520
+graph instead of just finding uh
+
+36
+00:01:17,080 --> 00:01:21,160
+things that you're looking for. Um and
+
+37
+00:01:19,520 --> 00:01:22,240
+then how we might solve what we think is
+
+38
+00:01:21,160 --> 00:01:24,160
+the hard part which is building the
+
+39
+00:01:22,240 --> 00:01:26,320
+graphs. Um
+
+40
+00:01:24,160 --> 00:01:29,240
+a little note on agentic AI cuz you have
+
+41
+00:01:26,320 --> 00:01:31,960
+to. Uh and then a couple examples and
+
+42
+00:01:29,240 --> 00:01:33,960
+then well, in conclusion. All right, so
+
+43
+00:01:31,960 --> 00:01:35,960
+the motivator for this talk I think is
+
+44
+00:01:33,960 --> 00:01:37,960
+where is my starship computer? So, I'm
+
+45
+00:01:35,960 --> 00:01:39,520
+going to ask for hands again. Who
+
+46
+00:01:37,960 --> 00:01:41,280
+thought
+
+47
+00:01:39,520 --> 00:01:44,240
+after the first time you experimented
+
+48
+00:01:41,280 --> 00:01:46,640
+with ChatGPT or Perplexity or any of the
+
+49
+00:01:44,240 --> 00:01:48,040
+the big popular LLMs,
+
+50
+00:01:46,640 --> 00:01:49,840
+who thought that it was going to be just
+
+51
+00:01:48,040 --> 00:01:51,680
+a matter of time,
+
+52
+00:01:49,840 --> 00:01:54,040
+maybe months, before you'd be able to
+
+53
+00:01:51,680 --> 00:01:57,120
+walk into your office and ask a natural
+
+54
+00:01:54,040 --> 00:01:58,560
+language question of the wall and then
+
+55
+00:01:57,120 --> 00:02:02,120
+have it come back like the Star Trek
+
+56
+00:01:58,560 --> 00:02:02,120
+Starship computer with the answer.
+
+57
+00:02:02,320 --> 00:02:05,560
+I was worried about it. I mean, I was I
+
+58
+00:02:04,000 --> 00:02:06,800
+was hoping we'd be part of this anyway.
+
+59
+00:02:05,560 --> 00:02:08,720
+Okay, nobody thought that. Okay, you
+
+60
+00:02:06,800 --> 00:02:10,560
+guys are way sophisticated.
+
+61
+00:02:08,720 --> 00:02:12,640
+So, I think a lot of people do think
+
+62
+00:02:10,560 --> 00:02:14,280
+that though. Perhaps perhaps more
+
+63
+00:02:12,640 --> 00:02:15,720
+business audience than this. They think
+
+64
+00:02:14,280 --> 00:02:17,480
+that they're that Starship computer's
+
+65
+00:02:15,720 --> 00:02:18,920
+going to happen. And I think we kind of
+
+66
+00:02:17,480 --> 00:02:20,560
+know it's it's going to take something
+
+67
+00:02:18,920 --> 00:02:23,080
+else for it to happen.
+
+68
+00:02:20,560 --> 00:02:24,959
+Not just answer questions, but show you
+
+69
+00:02:23,080 --> 00:02:26,480
+stuff that you didn't expect like
+
+70
+00:02:24,959 --> 00:02:28,560
+there's a Klingon warship approaching,
+
+71
+00:02:26,480 --> 00:02:30,240
+right? You don't query that. You but you
+
+72
+00:02:28,560 --> 00:02:31,800
+need it to tell you.
+
+73
+00:02:30,240 --> 00:02:33,640
+Um
+
+74
+00:02:31,800 --> 00:02:35,520
+So, I think a lot of I'm going to all
+
+75
+00:02:33,640 --> 00:02:37,640
+just skip past this. We know GenAI
+
+76
+00:02:35,520 --> 00:02:39,560
+hallucinates. This is a classic example.
+
+77
+00:02:37,640 --> 00:02:40,920
+At this point GPT-4 doesn't have this
+
+78
+00:02:39,560 --> 00:02:43,000
+problem anymore. It doesn't think people
+
+79
+00:02:40,920 --> 00:02:45,680
+cross the English Channel on foot. But,
+
+80
+00:02:43,000 --> 00:02:47,440
+if you really asked it, it would also
+
+81
+00:02:45,680 --> 00:02:49,640
+not tell you the times when people might
+
+82
+00:02:47,440 --> 00:02:51,120
+have walked through the channel. So, it
+
+83
+00:02:49,640 --> 00:02:53,880
+it still doesn't have an internal model
+
+84
+00:02:51,120 --> 00:02:56,000
+that a human could do. Um
+
+85
+00:02:53,880 --> 00:02:57,720
+Uh for this reason Goldman Sachs thinks
+
+86
+00:02:56,000 --> 00:02:59,000
+a lot of, you know, companies have
+
+87
+00:02:57,720 --> 00:03:01,959
+already wasted a trillion dollar in
+
+88
+00:02:59,000 --> 00:03:03,360
+CapEx on on GenAI. Maybe.
+
+89
+00:03:01,959 --> 00:03:05,959
+Maybe.
+
+90
+00:03:03,360 --> 00:03:07,800
+Um but we I think we a lot of people in
+
+91
+00:03:05,959 --> 00:03:09,040
+this audience already believe I'm
+
+92
+00:03:07,800 --> 00:03:10,680
+speaking preaching to the choir that
+
+93
+00:03:09,040 --> 00:03:12,600
+having some knowledge base in the
+
+94
+00:03:10,680 --> 00:03:15,560
+background to ground
+
+95
+00:03:12,600 --> 00:03:17,400
+the GenAI is a good solution. And in
+
+96
+00:03:15,560 --> 00:03:19,000
+fact, it is a perfectly good solution in
+
+97
+00:03:17,400 --> 00:03:20,760
+this particular case if we make a simple
+
+98
+00:03:19,000 --> 00:03:22,880
+graph that's got all of the world
+
+99
+00:03:20,760 --> 00:03:26,120
+records in it. It can answer this
+
+100
+00:03:22,880 --> 00:03:29,360
+perfectly perfectly accurately.
+
+101
+00:03:26,120 --> 00:03:31,840
+Um so
+
+102
+00:03:29,360 --> 00:03:34,160
+knowledge graphs are potentially great
+
+103
+00:03:31,840 --> 00:03:36,959
+background data source. Now, I've just
+
+104
+00:03:34,160 --> 00:03:39,800
+mentioned one particularly popular
+
+105
+00:03:36,959 --> 00:03:42,680
+project here, but there are many.
+
+106
+00:03:39,800 --> 00:03:44,400
+There's a lot of evidence that graph rag
+
+107
+00:03:42,680 --> 00:03:45,880
+that is to say retrieval through graphs.
+
+108
+00:03:44,400 --> 00:03:48,120
+I know most people here know what that
+
+109
+00:03:45,880 --> 00:03:50,280
+means. But, retrieval augmentation
+
+110
+00:03:48,120 --> 00:03:51,960
+generation or I'll just say retrieval
+
+111
+00:03:50,280 --> 00:03:53,880
+via graphs leads to a substantial
+
+112
+00:03:51,960 --> 00:03:57,280
+improvements over naive rag, perhaps
+
+113
+00:03:53,880 --> 00:04:00,000
+just simple vector rag. Um, and I would
+
+114
+00:03:57,280 --> 00:04:01,840
+also just highlight that the graphs that
+
+115
+00:04:00,000 --> 00:04:04,600
+you use for these may be architected in
+
+116
+00:04:01,840 --> 00:04:06,800
+a different way than graphs that we use
+
+117
+00:04:04,600 --> 00:04:08,959
+for social networks.
+
+118
+00:04:06,800 --> 00:04:10,520
+So, just
+
+119
+00:04:08,959 --> 00:04:12,640
+talking about retrieval, here are some
+
+120
+00:04:10,520 --> 00:04:14,800
+simple examples like trivial dashboards
+
+121
+00:04:12,640 --> 00:04:17,079
+that I built on top of a graph back end
+
+122
+00:04:14,800 --> 00:04:19,079
+that our company happens to produce.
+
+123
+00:04:17,079 --> 00:04:21,200
+And what you're seeing is that I'm
+
+124
+00:04:19,079 --> 00:04:22,280
+asking for different kinds of queries
+
+125
+00:04:21,200 --> 00:04:24,280
+that have very different qualities.
+
+126
+00:04:22,280 --> 00:04:25,919
+Sometimes, you know, like an individual
+
+127
+00:04:24,280 --> 00:04:27,000
+paper from a conference, sometimes a
+
+128
+00:04:25,919 --> 00:04:29,200
+summary of everything that was in the
+
+129
+00:04:27,000 --> 00:04:30,919
+conference. This is the back end. It's
+
+130
+00:04:29,200 --> 00:04:32,960
+got all the data in it in a graph that
+
+131
+00:04:30,919 --> 00:04:34,800
+you can look at and see. We might al-
+
+132
+00:04:32,960 --> 00:04:37,000
+also want to ask quantitative questions
+
+133
+00:04:34,800 --> 00:04:38,360
+that have to do with things that could
+
+134
+00:04:37,000 --> 00:04:40,360
+be derived from the graph but aren't
+
+135
+00:04:38,360 --> 00:04:42,000
+sitting in the graph. And so, if you
+
+136
+00:04:40,360 --> 00:04:43,760
+wanted to say calculate percent change
+
+137
+00:04:42,000 --> 00:04:44,919
+of two securities against each other,
+
+138
+00:04:43,760 --> 00:04:47,600
+which isn't something you can do on
+
+139
+00:04:44,919 --> 00:04:48,960
+Yahoo Finance easily, um, you could
+
+140
+00:04:47,600 --> 00:04:50,400
+still have a graph back end that
+
+141
+00:04:48,960 --> 00:04:51,720
+provided that kind of quantitative
+
+142
+00:04:50,400 --> 00:04:53,360
+answer even if it didn't represent a
+
+143
+00:04:51,720 --> 00:04:56,160
+fact that was sitting in a node in the
+
+144
+00:04:53,360 --> 00:04:57,480
+graph. And again, we happen to use this
+
+145
+00:04:56,160 --> 00:04:59,680
+sort of flexible knowledge graph in the
+
+146
+00:04:57,480 --> 00:05:01,120
+background that supports all of that.
+
+147
+00:04:59,680 --> 00:05:02,919
+So, I would say these are two examples
+
+148
+00:05:01,120 --> 00:05:04,800
+of the kinds of things, ways in which we
+
+149
+00:05:02,919 --> 00:05:06,800
+expect business users to be able to use
+
+150
+00:05:04,800 --> 00:05:08,280
+rag and a graph in the background is a
+
+151
+00:05:06,800 --> 00:05:09,280
+good way to do it.
+
+152
+00:05:08,280 --> 00:05:11,120
+Um,
+
+153
+00:05:09,280 --> 00:05:13,200
+not just us, I lots of people know this
+
+154
+00:05:11,120 --> 00:05:16,240
+already, but graphs and AI together are
+
+155
+00:05:13,200 --> 00:05:18,600
+getting really, really popular.
+
+156
+00:05:16,240 --> 00:05:20,480
+Uh, here's my
+
+157
+00:05:18,600 --> 00:05:21,960
+conceptualization of why it's better.
+
+158
+00:05:20,480 --> 00:05:23,160
+And again, I think this is a really
+
+159
+00:05:21,960 --> 00:05:25,040
+sophisticated audience, so I'd be
+
+160
+00:05:23,160 --> 00:05:27,400
+interested in what y'all think. But, I
+
+161
+00:05:25,040 --> 00:05:29,600
+would say that
+
+162
+00:05:27,400 --> 00:05:32,280
+the one of the ways in which it's just
+
+163
+00:05:29,600 --> 00:05:33,800
+clearly better than a non-graph solution
+
+164
+00:05:32,280 --> 00:05:35,560
+is because
+
+165
+00:05:33,800 --> 00:05:38,720
+you have a single source of truth inside
+
+166
+00:05:35,560 --> 00:05:41,560
+of graphs. And so, I find that that, um,
+
+167
+00:05:38,720 --> 00:05:43,480
+makes it in if I compare it to certainly
+
+168
+00:05:41,560 --> 00:05:44,760
+searching through any native database,
+
+169
+00:05:43,480 --> 00:05:47,240
+um,
+
+170
+00:05:44,760 --> 00:05:49,680
+it's much easier for the AI to sort of
+
+171
+00:05:47,240 --> 00:05:51,200
+construct the queries, if you will, or
+
+172
+00:05:49,680 --> 00:05:53,840
+match up with an embedding of the right
+
+173
+00:05:51,200 --> 00:05:54,960
+sub graph. I think others might have
+
+174
+00:05:53,840 --> 00:05:56,560
+different views on what graphs are
+
+175
+00:05:54,960 --> 00:05:59,600
+better, but that's my simplification of
+
+176
+00:05:56,560 --> 00:06:00,680
+it. Happy to entertain demurrals later
+
+177
+00:05:59,600 --> 00:06:02,400
+on.
+
+178
+00:06:00,680 --> 00:06:03,880
+So, um
+
+179
+00:06:02,400 --> 00:06:04,880
+So, why haven't they taken over yet?
+
+180
+00:06:03,880 --> 00:06:06,840
+Well,
+
+181
+00:06:04,880 --> 00:06:08,080
+I would Neo4j has made this quote, which
+
+182
+00:06:06,840 --> 00:06:09,480
+I've shown twice in this. This is the
+
+183
+00:06:08,080 --> 00:06:11,840
+harder part of graph rag is building the
+
+184
+00:06:09,480 --> 00:06:13,000
+knowledge graph. So, what's the what
+
+185
+00:06:11,840 --> 00:06:15,360
+what are the problems? Well, first of
+
+186
+00:06:13,000 --> 00:06:17,080
+all, constructing them is laborious,
+
+187
+00:06:15,360 --> 00:06:19,080
+especially if you decide on the ontology
+
+188
+00:06:17,080 --> 00:06:21,200
+beforehand, and if you've got to go
+
+189
+00:06:19,080 --> 00:06:22,800
+write notebooks in order to make a graph
+
+190
+00:06:21,200 --> 00:06:24,800
+that you can't see. Like, if you're
+
+191
+00:06:22,800 --> 00:06:26,400
+trying to make a graph that's got, you
+
+192
+00:06:24,800 --> 00:06:28,720
+know, that that references terabytes of
+
+193
+00:06:26,400 --> 00:06:30,200
+data and is maybe, you know, tens of
+
+194
+00:06:28,720 --> 00:06:31,960
+gigabytes, and you can't actually look
+
+195
+00:06:30,200 --> 00:06:33,240
+at it, then
+
+196
+00:06:31,960 --> 00:06:34,960
+you have to constantly guess what's in
+
+197
+00:06:33,240 --> 00:06:37,160
+it. It's like the worst of trying to
+
+198
+00:06:34,960 --> 00:06:39,440
+build databases in my experience. So,
+
+199
+00:06:37,160 --> 00:06:40,840
+you So, at at a very minimum for us,
+
+200
+00:06:39,440 --> 00:06:42,160
+having a lot of observability is an
+
+201
+00:06:40,840 --> 00:06:43,440
+important part.
+
+202
+00:06:42,160 --> 00:06:45,640
+And it gets for that same reason it gets
+
+203
+00:06:43,440 --> 00:06:47,280
+messy really fast. Um and sort of
+
+204
+00:06:45,640 --> 00:06:50,280
+violates your expectations in ways that
+
+205
+00:06:47,280 --> 00:06:52,440
+you don't expect if you can't see it. Um
+
+206
+00:06:50,280 --> 00:06:54,160
+I would also say that databases are so
+
+207
+00:06:52,440 --> 00:06:56,240
+themselves, traditional graph databases
+
+208
+00:06:54,160 --> 00:06:57,919
+are built to expect homogeneous data
+
+209
+00:06:56,240 --> 00:06:59,400
+types. So, they're made to like
+
+210
+00:06:57,919 --> 00:07:00,800
+think about individual people in a
+
+211
+00:06:59,400 --> 00:07:02,280
+social network that all have like a
+
+212
+00:07:00,800 --> 00:07:04,080
+finite number of properties and are
+
+213
+00:07:02,280 --> 00:07:07,760
+connected to other people. What they're
+
+214
+00:07:04,080 --> 00:07:09,240
+not meant to do is encode arbitrarily
+
+215
+00:07:07,760 --> 00:07:11,280
+levels arbitrarily the levels of
+
+216
+00:07:09,240 --> 00:07:12,760
+hierarchy inside of a
+
+217
+00:07:11,280 --> 00:07:14,400
+direct acyclic graph where you can have
+
+218
+00:07:12,760 --> 00:07:16,360
+concepts pointed to concepts pointed to
+
+219
+00:07:14,400 --> 00:07:18,520
+concepts, or even data that might
+
+220
+00:07:16,360 --> 00:07:20,000
+represent a concept depending on an
+
+221
+00:07:18,520 --> 00:07:21,160
+interpretation.
+
+222
+00:07:20,000 --> 00:07:22,560
+That's the kind of thing that I would
+
+223
+00:07:21,160 --> 00:07:24,720
+say you need a different differently
+
+224
+00:07:22,560 --> 00:07:26,320
+architected graph database for.
+
+225
+00:07:24,720 --> 00:07:28,080
+And then, I would also say that, yeah,
+
+226
+00:07:26,320 --> 00:07:30,680
+human assumptions inserted during
+
+227
+00:07:28,080 --> 00:07:32,160
+construction can make graphs inflexible.
+
+228
+00:07:30,680 --> 00:07:33,360
+So, I think these are the reasons why
+
+229
+00:07:32,160 --> 00:07:35,400
+it's going to be slow to construct a
+
+230
+00:07:33,360 --> 00:07:37,080
+knowledge graph. For what it's worth,
+
+231
+00:07:35,400 --> 00:07:39,400
+we've tried to solve some of that in our
+
+232
+00:07:37,080 --> 00:07:41,080
+company. You can read about this in
+
+233
+00:07:39,400 --> 00:07:42,560
+publications, or in this case in a in a
+
+234
+00:07:41,080 --> 00:07:45,840
+particular patent that happens to have
+
+235
+00:07:42,560 --> 00:07:48,960
+been granted. Um, we think that it's
+
+236
+00:07:45,840 --> 00:07:50,840
+quite useful to convert uh
+
+237
+00:07:48,960 --> 00:07:52,280
+all of the data into a graph
+
+238
+00:07:50,840 --> 00:07:53,200
+automatically,
+
+239
+00:07:52,280 --> 00:07:56,240
+um
+
+240
+00:07:53,200 --> 00:07:58,440
+look at all of it, and then uh start to
+
+241
+00:07:56,240 --> 00:08:00,240
+reduce it or start to collapse nodes in
+
+242
+00:07:58,440 --> 00:08:02,720
+order to come up with the best or most
+
+243
+00:08:00,240 --> 00:08:04,000
+economical subgraph that represents
+
+244
+00:08:02,720 --> 00:08:05,520
+everything that you might want to query
+
+245
+00:08:04,000 --> 00:08:07,160
+in your rag system.
+
+246
+00:08:05,520 --> 00:08:09,280
+So, I would be very pleased to go into
+
+247
+00:08:07,160 --> 00:08:10,840
+all this in detail, but short version is
+
+248
+00:08:09,280 --> 00:08:12,120
+you want to do as much automatic fusion
+
+249
+00:08:10,840 --> 00:08:14,240
+as possible.
+
+250
+00:08:12,120 --> 00:08:16,320
+You want to use uh lots of agents,
+
+251
+00:08:14,240 --> 00:08:17,840
+obviously, for structuring unstructured
+
+252
+00:08:16,320 --> 00:08:20,680
+text, but you want to have that process
+
+253
+00:08:17,840 --> 00:08:22,200
+be observable. Um and then you want to
+
+254
+00:08:20,680 --> 00:08:24,080
+be able to explore high-dimensional
+
+255
+00:08:22,200 --> 00:08:25,640
+distributions. So, look at lots of
+
+256
+00:08:24,080 --> 00:08:28,000
+embeddings of lots of different possible
+
+257
+00:08:25,640 --> 00:08:32,200
+clusters of data or subgraphs.
+
+258
+00:08:28,000 --> 00:08:33,520
+Um and then uh look at uh uh uh
+
+259
+00:08:32,200 --> 00:08:35,000
+co-distributions or look at two
+
+260
+00:08:33,520 --> 00:08:36,320
+distributions at the same time with two
+
+261
+00:08:35,000 --> 00:08:38,159
+things that might represent the same
+
+262
+00:08:36,320 --> 00:08:39,520
+thing, but you're not sure while you're
+
+263
+00:08:38,159 --> 00:08:42,320
+going through the sort of humanated
+
+264
+00:08:39,520 --> 00:08:44,720
+process of deciding, you know, what your
+
+265
+00:08:42,320 --> 00:08:47,880
+what your final graph is going to be.
+
+266
+00:08:44,720 --> 00:08:50,560
+Um I I should just also note like we're
+
+267
+00:08:47,880 --> 00:08:52,200
+all talking about agentic AI. AI agents
+
+268
+00:08:50,560 --> 00:08:54,160
+are going to be part of this.
+
+269
+00:08:52,200 --> 00:08:56,640
+The I don't think agentic AI means one
+
+270
+00:08:54,160 --> 00:08:58,120
+thing right now. Uh the video here is
+
+271
+00:08:56,640 --> 00:08:59,640
+happens to be sitting inside of our
+
+272
+00:08:58,120 --> 00:09:02,280
+graph, but is and anybody here can
+
+273
+00:08:59,640 --> 00:09:04,560
+access this is an overview of all the
+
+274
+00:09:02,280 --> 00:09:05,880
+agents or at least 400 of the agents
+
+275
+00:09:04,560 --> 00:09:07,240
+that are really, really powerful uh
+
+276
+00:09:05,880 --> 00:09:09,680
+popular right now. So, you can go and
+
+277
+00:09:07,240 --> 00:09:12,480
+navigate them in the space of agent
+
+278
+00:09:09,680 --> 00:09:13,800
+features if you like. Um you know, our
+
+279
+00:09:12,480 --> 00:09:15,640
+view of this was going to be graphs
+
+280
+00:09:13,800 --> 00:09:17,560
+themselves were going to act as the
+
+281
+00:09:15,640 --> 00:09:19,040
+medium for agents to interact. I'd be
+
+282
+00:09:17,560 --> 00:09:21,080
+very curious on everybody's views on
+
+283
+00:09:19,040 --> 00:09:22,320
+that anyway. But, short version is
+
+284
+00:09:21,080 --> 00:09:23,640
+you're going to need some set of agents
+
+285
+00:09:22,320 --> 00:09:25,520
+to help you construct your graph as it
+
+286
+00:09:23,640 --> 00:09:28,080
+gets complicated. So, bringing it all
+
+287
+00:09:25,520 --> 00:09:30,560
+together, I would say we need a fast uh
+
+288
+00:09:28,080 --> 00:09:33,040
+underlying graph database, uh ability to
+
+289
+00:09:30,560 --> 00:09:34,400
+calculate embedding embeddings fast,
+
+290
+00:09:33,040 --> 00:09:36,600
+that the deep connections inside of the
+
+291
+00:09:34,400 --> 00:09:39,120
+graph, and then its single source of
+
+292
+00:09:36,600 --> 00:09:40,920
+truthness provide an advantage for
+
+293
+00:09:39,120 --> 00:09:43,440
+getting deep, you know, transient but
+
+294
+00:09:40,920 --> 00:09:45,120
+true grounded insights
+
+295
+00:09:43,440 --> 00:09:48,160
+and that you need collaboration among
+
+296
+00:09:45,120 --> 00:09:50,120
+agents. So, again, we have a particular
+
+297
+00:09:48,160 --> 00:09:51,880
+solution. It's called Kônode. These are
+
+298
+00:09:50,120 --> 00:09:53,440
+actual screenshots from it. It
+
+299
+00:09:51,880 --> 00:09:55,440
+automatically fuses data in the way I've
+
+300
+00:09:53,440 --> 00:09:57,120
+said. It does no code and total
+
+301
+00:09:55,440 --> 00:09:58,440
+observability
+
+302
+00:09:57,120 --> 00:09:59,920
+in the sense that you can look at a lot
+
+303
+00:09:58,440 --> 00:10:02,040
+more of the data and connections than
+
+304
+00:09:59,920 --> 00:10:03,360
+you could with a normal framework.
+
+305
+00:10:02,040 --> 00:10:05,080
+You know, it's like you look at like
+
+306
+00:10:03,360 --> 00:10:06,520
+three or four times
+
+307
+00:10:05,080 --> 00:10:09,800
+three or four orders of magnitude more
+
+308
+00:10:06,520 --> 00:10:11,320
+than like Neo4j Bloom, for example.
+
+309
+00:10:09,800 --> 00:10:13,560
+It's fast
+
+310
+00:10:11,320 --> 00:10:16,000
+and it's got a lot of AI agents in it.
+
+311
+00:10:13,560 --> 00:10:17,680
+I've said some of this already, but
+
+312
+00:10:16,000 --> 00:10:20,160
+again, whether you're using our tool or
+
+313
+00:10:17,680 --> 00:10:21,800
+not, we think it's valuable to do fast
+
+314
+00:10:20,160 --> 00:10:24,200
+knowledge graph creation, fast data
+
+315
+00:10:21,800 --> 00:10:25,560
+fusion and prep, automatic ontology
+
+316
+00:10:24,200 --> 00:10:27,280
+design in the sense that you want the
+
+317
+00:10:25,560 --> 00:10:28,960
+ontology to be emergent. You don't want
+
+318
+00:10:27,280 --> 00:10:30,760
+to have to guess it ahead of time, but
+
+319
+00:10:28,960 --> 00:10:32,760
+if you have one, you want to insert it
+
+320
+00:10:30,760 --> 00:10:34,520
+as data and then you want to combine it
+
+321
+00:10:32,760 --> 00:10:36,720
+with the existing data inside the graph
+
+322
+00:10:34,520 --> 00:10:40,640
+instead of making it into like a
+
+323
+00:10:36,720 --> 00:10:42,520
+human-driven ontology design process. In
+
+324
+00:10:40,640 --> 00:10:44,120
+our case, we got really fast exploratory
+
+325
+00:10:42,520 --> 00:10:46,400
+data analysis which is part of the graph
+
+326
+00:10:44,120 --> 00:10:48,560
+creation process, very fast predictive
+
+327
+00:10:46,400 --> 00:10:49,720
+modeling.
+
+328
+00:10:48,560 --> 00:10:51,240
+You can do things like failure mode
+
+329
+00:10:49,720 --> 00:10:52,720
+detection for autonomous vehicles. We
+
+330
+00:10:51,240 --> 00:10:54,640
+have a lot of autonomous vehicle
+
+331
+00:10:52,720 --> 00:10:56,240
+developers, cut down on development
+
+332
+00:10:54,640 --> 00:10:58,440
+cycles and and it's really fun that it's
+
+333
+00:10:56,240 --> 00:11:01,320
+no code. Okay. I showed a little bit of
+
+334
+00:10:58,440 --> 00:11:03,000
+this before, but one use case is, you
+
+335
+00:11:01,320 --> 00:11:04,240
+know, transcontinental airline dumping
+
+336
+00:11:03,000 --> 00:11:07,040
+all their data automatically into a
+
+337
+00:11:04,240 --> 00:11:09,160
+knowledge graph and finding like a 10 to
+
+338
+00:11:07,040 --> 00:11:11,720
+30 million dollar savings opportunity in
+
+339
+00:11:09,160 --> 00:11:14,440
+like four hours. That was cool.
+
+340
+00:11:11,720 --> 00:11:15,600
+And I showed this video beforehand. This
+
+341
+00:11:14,440 --> 00:11:17,120
+is supposed to be a blitz talk, so I'm
+
+342
+00:11:15,600 --> 00:11:20,720
+not going to show it again until I
+
+343
+00:11:17,120 --> 00:11:20,720
+unless I get questions afterwards.
+
+344
+00:11:20,760 --> 00:11:24,120
+Another example is structuring clinical
+
+345
+00:11:22,520 --> 00:11:25,800
+text. You can have the graph sitting as
+
+346
+00:11:24,120 --> 00:11:27,920
+an ontology in the background. Once
+
+347
+00:11:25,800 --> 00:11:29,440
+you've gotten all the data in, it can
+
+348
+00:11:27,920 --> 00:11:32,360
+serve as an ontology in the background
+
+349
+00:11:29,440 --> 00:11:33,840
+for dynamic message translation. So, in
+
+350
+00:11:32,360 --> 00:11:34,760
+this case this is a This is a pilot we
+
+351
+00:11:33,840 --> 00:11:36,040
+did
+
+352
+00:11:34,760 --> 00:11:37,800
+with a
+
+353
+00:11:36,040 --> 00:11:39,320
+healthcare data provider in which the
+
+354
+00:11:37,800 --> 00:11:41,120
+graph that you're seeing on the left
+
+355
+00:11:39,320 --> 00:11:42,480
+there represented all the ideas that we
+
+356
+00:11:41,120 --> 00:11:44,800
+were pretty sure we were looking for in
+
+357
+00:11:42,480 --> 00:11:46,800
+the messages and dramatically by having
+
+358
+00:11:44,800 --> 00:11:48,680
+that ontology in the background of the
+
+359
+00:11:46,800 --> 00:11:51,120
+LLM-based message translation
+
+360
+00:11:48,680 --> 00:11:52,360
+dramatically improve the accuracy.
+
+361
+00:11:51,120 --> 00:11:54,320
+Um
+
+362
+00:11:52,360 --> 00:11:55,440
+and then continuous AI improvement. This
+
+363
+00:11:54,320 --> 00:11:58,520
+is something just kind of fun. I can
+
+364
+00:11:55,440 --> 00:11:59,800
+show a video of this. Um so, in this
+
+365
+00:11:58,520 --> 00:12:02,560
+case this is an autonomous vehicle
+
+366
+00:11:59,800 --> 00:12:03,800
+developer. And this is I think again,
+
+367
+00:12:02,560 --> 00:12:06,280
+this is going to look like a data
+
+368
+00:12:03,800 --> 00:12:08,280
+science example, but I think what it's
+
+369
+00:12:06,280 --> 00:12:11,520
+really showing is the power of getting
+
+370
+00:12:08,280 --> 00:12:13,760
+deep insights inside of a graph. So, um
+
+371
+00:12:11,520 --> 00:12:15,680
+what you see here is a graph in which a
+
+372
+00:12:13,760 --> 00:12:18,160
+bunch of behaviors from autonomous
+
+373
+00:12:15,680 --> 00:12:19,800
+vehicles are encoded. And so, you've got
+
+374
+00:12:18,160 --> 00:12:21,720
+a lot of
+
+375
+00:12:19,800 --> 00:12:23,640
+dimensions or observers on the left-hand
+
+376
+00:12:21,720 --> 00:12:25,800
+side. A graph that represents a lot of
+
+377
+00:12:23,640 --> 00:12:28,080
+features. Uh on the bottom right you
+
+378
+00:12:25,800 --> 00:12:29,360
+have a single risk measure which happens
+
+379
+00:12:28,080 --> 00:12:32,200
+to have been calculated from those
+
+380
+00:12:29,360 --> 00:12:34,520
+features. On the top right you have a a
+
+381
+00:12:32,200 --> 00:12:36,240
+map which is also encoded in the graph.
+
+382
+00:12:34,520 --> 00:12:38,520
+And you can see that the high-risk ones
+
+383
+00:12:36,240 --> 00:12:41,040
+have been um highlighted as as as large
+
+384
+00:12:38,520 --> 00:12:43,240
+and red. And you can't see anyone
+
+385
+00:12:41,040 --> 00:12:45,320
+particular pattern here, but because
+
+386
+00:12:43,240 --> 00:12:47,440
+we're using a graph, we can find the
+
+387
+00:12:45,320 --> 00:12:49,280
+pattern if it's buried in the graph
+
+388
+00:12:47,440 --> 00:12:51,040
+through one or potentially multiple
+
+389
+00:12:49,280 --> 00:12:53,560
+layers going backwards inside of the
+
+390
+00:12:51,040 --> 00:12:55,760
+feature space encoded in the graph.
+
+391
+00:12:53,560 --> 00:12:57,560
+So, in this case we're using what we
+
+392
+00:12:55,760 --> 00:12:59,080
+call one of our agents. Although, I will
+
+393
+00:12:57,560 --> 00:13:00,960
+be honest with you guys this one is the
+
+394
+00:12:59,080 --> 00:13:02,839
+least AI of all the agents because it's
+
+395
+00:13:00,960 --> 00:13:05,360
+running a Kolmogorov-Smirnov test in the
+
+396
+00:13:02,839 --> 00:13:07,160
+background. There, I gave it away. Um
+
+397
+00:13:05,360 --> 00:13:08,720
+and uh but what it's doing is it's
+
+398
+00:13:07,160 --> 00:13:10,120
+running that test hunting back through
+
+399
+00:13:08,720 --> 00:13:12,800
+the graph which is kind of the cool
+
+400
+00:13:10,120 --> 00:13:14,560
+part. And it's already showing us what
+
+401
+00:13:12,800 --> 00:13:15,720
+the pattern is, but if you want to see
+
+402
+00:13:14,560 --> 00:13:17,160
+it in a way that's a little bit easier
+
+403
+00:13:15,720 --> 00:13:18,839
+to visualize,
+
+404
+00:13:17,160 --> 00:13:20,200
+uh you can take with our little agent
+
+405
+00:13:18,839 --> 00:13:21,920
+drawer on the right-hand side you can
+
+406
+00:13:20,200 --> 00:13:23,600
+take the output of the agent and make it
+
+407
+00:13:21,920 --> 00:13:25,440
+into more graph. So, that's what we're
+
+408
+00:13:23,600 --> 00:13:27,320
+doing here. You can see that it's
+
+409
+00:13:25,440 --> 00:13:28,920
+identified that what's common among all
+
+410
+00:13:27,320 --> 00:13:30,480
+of those is that it's an optic obstacle
+
+411
+00:13:28,920 --> 00:13:31,640
+hazard and not all of the other
+
+412
+00:13:30,480 --> 00:13:32,840
+features.
+
+413
+00:13:31,640 --> 00:13:34,680
+And then
+
+414
+00:13:32,840 --> 00:13:36,120
+uh and then lo and behold, you can
+
+415
+00:13:34,680 --> 00:13:37,360
+just that's a that's a reminder that
+
+416
+00:13:36,120 --> 00:13:39,920
+everything's just connected inside this
+
+417
+00:13:37,360 --> 00:13:41,280
+graph. And then uh you get to look at
+
+418
+00:13:39,920 --> 00:13:43,640
+some fun
+
+419
+00:13:41,280 --> 00:13:46,080
+3D ray traced. Yeah, I said that really
+
+420
+00:13:43,640 --> 00:13:48,240
+is a failure mode. So, um and you'd be
+
+421
+00:13:46,080 --> 00:13:49,840
+surprised how often autonomous vehicle
+
+422
+00:13:48,240 --> 00:13:50,920
+developers have trouble finding those
+
+423
+00:13:49,840 --> 00:13:52,600
+failure modes in this very high
+
+424
+00:13:50,920 --> 00:13:54,880
+dimensional space. And I think that's a
+
+425
+00:13:52,600 --> 00:13:56,360
+real benefit of having a graph.
+
+426
+00:13:54,880 --> 00:13:57,640
+All right. This is meant to be a blitz
+
+427
+00:13:56,360 --> 00:13:59,200
+talk, so I'm going to end with the thing
+
+428
+00:13:57,640 --> 00:14:01,160
+I'm most proud of. We have a really
+
+429
+00:13:59,200 --> 00:14:03,520
+really fantastic team. I've introduced
+
+430
+00:14:01,160 --> 00:14:05,120
+Johanna already, but um there's a lot
+
+431
+00:14:03,520 --> 00:14:06,600
+more where that came from. Most of us
+
+432
+00:14:05,120 --> 00:14:07,800
+are here in London.
+
+433
+00:14:06,600 --> 00:14:09,720
+Uh uh although we have a little bit of a
+
+434
+00:14:07,800 --> 00:14:10,680
+pied-à-terre in Southern California as
+
+435
+00:14:09,720 --> 00:14:12,880
+well.
+
+436
+00:14:10,680 --> 00:14:14,520
+All right. So, in conclusion, problem,
+
+437
+00:14:12,880 --> 00:14:16,800
+GenAI hasn't revolutionized business
+
+438
+00:14:14,520 --> 00:14:18,280
+yet. Solution, grounding GenAI great
+
+439
+00:14:16,800 --> 00:14:20,080
+GenAI with graphs.
+
+440
+00:14:18,280 --> 00:14:23,240
+Um we showed a couple examples of how
+
+441
+00:14:20,080 --> 00:14:25,880
+that could work. Um and uh how we can
+
+442
+00:14:23,240 --> 00:14:27,160
+capitalize on it. And so, I would say in
+
+443
+00:14:25,880 --> 00:14:29,240
+conclusion, if you hadn't thought of it
+
+444
+00:14:27,160 --> 00:14:32,640
+already, please consider using graphs
+
+445
+00:14:29,240 --> 00:14:35,160
+for your ongoing AI efforts.
+
+446
+00:14:32,640 --> 00:14:35,160
+Basta.
+
+447
+00:14:35,745 --> 00:14:39,800
+>> [applause]
+
+448
+00:14:37,760 --> 00:14:42,520
+>> Any questions? Thank you for joining.
+
+449
+00:14:39,800 --> 00:14:45,400
+Any questions, please.
+
+450
+00:14:42,520 --> 00:14:47,120
+>> Yeah, um if you don't have any knowledge
+
+451
+00:14:45,400 --> 00:14:48,480
+of your domain and you just have a bunch
+
+452
+00:14:47,120 --> 00:14:50,480
+of data
+
+453
+00:14:48,480 --> 00:14:52,320
+and you just throw it in the graph,
+
+454
+00:14:50,480 --> 00:14:54,240
+how can you
+
+455
+00:14:52,320 --> 00:14:56,080
+create the right
+
+456
+00:14:54,240 --> 00:14:58,200
+nodes? Yeah, let's just call them the
+
+457
+00:14:56,080 --> 00:14:59,360
+right things. I mean, I'm let's just say
+
+458
+00:14:58,200 --> 00:15:01,440
+I've got
+
+459
+00:14:59,360 --> 00:15:04,080
+lots of source of data. I've got client
+
+460
+00:15:01,440 --> 00:15:05,680
+data, customer information, counterparty
+
+461
+00:15:04,080 --> 00:15:07,280
+information,
+
+462
+00:15:05,680 --> 00:15:09,640
+you know, one could argue they're all
+
+463
+00:15:07,280 --> 00:15:11,520
+the same. And then how do you then
+
+464
+00:15:09,640 --> 00:15:13,520
+disambiguate and then actually say, you
+
+465
+00:15:11,520 --> 00:15:13,920
+know, these are all the same thing?
+
+466
+00:15:13,520 --> 00:15:15,440
+>> Right. [snorts]
+
+467
+00:15:13,920 --> 00:15:16,880
+>> Entity resolution, I guess as well, but
+
+468
+00:15:15,440 --> 00:15:17,800
+semantic resolution as well as entity
+
+469
+00:15:16,880 --> 00:15:19,480
+resolution.
+
+470
+00:15:17,800 --> 00:15:21,080
+>> I think that we can all agree that the
+
+471
+00:15:19,480 --> 00:15:22,960
+that the idea of the statement graph
+
+472
+00:15:21,080 --> 00:15:24,720
+cannot be the solution to that entire
+
+473
+00:15:22,960 --> 00:15:26,680
+problem, right? Cuz if it could be, you
+
+474
+00:15:24,720 --> 00:15:28,840
+do it all automatically and then the
+
+475
+00:15:26,680 --> 00:15:31,200
+graph would be incidental, right?
+
+476
+00:15:28,840 --> 00:15:34,160
+So, there has to be something where the
+
+477
+00:15:31,200 --> 00:15:35,600
+graph is under human control, right? And
+
+478
+00:15:34,160 --> 00:15:37,000
+if you don't have any idea what's in
+
+479
+00:15:35,600 --> 00:15:39,560
+there, you either have to develop an
+
+480
+00:15:37,000 --> 00:15:40,840
+idea or somebody else with the access to
+
+481
+00:15:39,560 --> 00:15:41,880
+your graph has to know it or something
+
+482
+00:15:40,840 --> 00:15:44,880
+like that.
+
+483
+00:15:41,880 --> 00:15:46,880
+So, um or maybe there's an agent that
+
+484
+00:15:44,880 --> 00:15:48,800
+somebody else had trained, you know,
+
+485
+00:15:46,880 --> 00:15:51,360
+that they can help. So, maybe there's a
+
+486
+00:15:48,800 --> 00:15:52,880
+nice intermediate stage there someplace.
+
+487
+00:15:51,360 --> 00:15:54,720
+I'm going to tell you how we do it right
+
+488
+00:15:52,880 --> 00:15:56,600
+now because I I think that's most
+
+489
+00:15:54,720 --> 00:15:57,640
+interesting to everybody in here.
+
+490
+00:15:56,600 --> 00:15:59,920
+Again, I'm going to talk about our
+
+491
+00:15:57,640 --> 00:16:02,120
+product, but I think it's also sort of
+
+492
+00:15:59,920 --> 00:16:03,680
+telling of what, you know,
+
+493
+00:16:02,120 --> 00:16:05,120
+I'm not the smartest person on this team
+
+494
+00:16:03,680 --> 00:16:06,200
+and other people on the team do the same
+
+495
+00:16:05,120 --> 00:16:07,480
+thing.
+
+496
+00:16:06,200 --> 00:16:09,440
+So,
+
+497
+00:16:07,480 --> 00:16:10,960
+we toss all the data in our graph and
+
+498
+00:16:09,440 --> 00:16:13,000
+then usually
+
+499
+00:16:10,960 --> 00:16:15,360
+usually for us there's a customer. And
+
+500
+00:16:13,000 --> 00:16:18,400
+so we ask them what's important to them
+
+501
+00:16:15,360 --> 00:16:20,880
+and then we have a a family of ways of
+
+502
+00:16:18,400 --> 00:16:22,480
+finding of creating that it's like some
+
+503
+00:16:20,880 --> 00:16:24,520
+predictive feature, we just store it
+
+504
+00:16:22,480 --> 00:16:26,520
+inside the graph. Now, if it's already
+
+505
+00:16:24,520 --> 00:16:29,000
+in one of the fields in one of their
+
+506
+00:16:26,520 --> 00:16:30,600
+structured databases, it's easy.
+
+507
+00:16:29,000 --> 00:16:32,480
+But if it isn't, we now have this like
+
+508
+00:16:30,600 --> 00:16:34,120
+little family of agents that help with
+
+509
+00:16:32,480 --> 00:16:36,160
+this. So, we have this little panel on
+
+510
+00:16:34,120 --> 00:16:37,640
+our tool on the right-hand side
+
+511
+00:16:36,160 --> 00:16:39,680
+and we have these agents. One of them is
+
+512
+00:16:37,640 --> 00:16:42,600
+called the featurizer and one of them is
+
+513
+00:16:39,680 --> 00:16:44,320
+called the retrieval agent. And they all
+
+514
+00:16:42,600 --> 00:16:45,400
+operate on the graph in different ways.
+
+515
+00:16:44,320 --> 00:16:47,560
+And for the most part, they're
+
+516
+00:16:45,400 --> 00:16:50,160
+translating it into some LLM
+
+517
+00:16:47,560 --> 00:16:53,880
+understandable thing and sometimes doing
+
+518
+00:16:50,160 --> 00:16:55,680
+graph rag on their own. And they help us
+
+519
+00:16:53,880 --> 00:16:57,080
+you can say, "Okay, I've got 100
+
+520
+00:16:55,680 --> 00:16:59,280
+different fields in here. I've no idea
+
+521
+00:16:57,080 --> 00:17:01,280
+what they mean, but just find me all the
+
+522
+00:16:59,280 --> 00:17:02,760
+ones and rank how likely they are to
+
+523
+00:17:01,280 --> 00:17:04,920
+represent something that has to do with
+
+524
+00:17:02,760 --> 00:17:06,199
+monetary value." And it does an
+
+525
+00:17:04,920 --> 00:17:07,319
+excellent job at that. And then you get
+
+526
+00:17:06,199 --> 00:17:09,280
+like one of those ranking plots. I
+
+527
+00:17:07,319 --> 00:17:12,240
+showed one of those before. This is how
+
+528
+00:17:09,280 --> 00:17:13,760
+likely that the gen AI thinks that this,
+
+529
+00:17:12,240 --> 00:17:16,640
+you know, these acronyms have to do
+
+530
+00:17:13,760 --> 00:17:18,319
+with, you know, or another use case
+
+531
+00:17:16,640 --> 00:17:20,720
+which we're we're doing in in a pilot
+
+532
+00:17:18,319 --> 00:17:23,880
+right now with I can't say who but a big
+
+533
+00:17:20,720 --> 00:17:25,520
+four accounting firm is is
+
+534
+00:17:23,880 --> 00:17:26,920
+is uh
+
+535
+00:17:25,520 --> 00:17:28,360
+forensic accountant.
+
+536
+00:17:26,920 --> 00:17:29,720
+And if you don't know the entities
+
+537
+00:17:28,360 --> 00:17:32,520
+you're looking for and you don't even
+
+538
+00:17:29,720 --> 00:17:35,720
+know whether there are any entities, you
+
+539
+00:17:32,520 --> 00:17:37,200
+can ask the agents to just pull out
+
+540
+00:17:35,720 --> 00:17:38,720
+ideas from the text that wouldn't
+
+541
+00:17:37,200 --> 00:17:40,200
+normally be there.
+
+542
+00:17:38,720 --> 00:17:42,280
+And then the agents do that and then you
+
+543
+00:17:40,200 --> 00:17:43,800
+can in the graph start seeing how
+
+544
+00:17:42,280 --> 00:17:45,480
+frequently they're mentioned, start
+
+545
+00:17:43,800 --> 00:17:47,360
+seeing how unusual they are in English
+
+546
+00:17:45,480 --> 00:17:50,040
+language. And that's a way of starting
+
+547
+00:17:47,360 --> 00:17:51,320
+to start derive information. And then
+
+548
+00:17:50,040 --> 00:17:52,880
+when you've done that it becomes more
+
+549
+00:17:51,320 --> 00:17:54,600
+graph that then becomes queryable for
+
+550
+00:17:52,880 --> 00:17:56,640
+downstream processes.
+
+551
+00:17:54,600 --> 00:17:59,120
+Was that a decent answer to long-winded
+
+552
+00:17:56,640 --> 00:18:00,400
+not I not I hope.
+
+553
+00:17:59,120 --> 00:18:01,680
+All right. So that's how we do it right
+
+554
+00:18:00,400 --> 00:18:02,840
+now. I think it's I think all that's
+
+555
+00:18:01,680 --> 00:18:05,040
+going to get
+
+556
+00:18:02,840 --> 00:18:06,920
+more and more automated in ways that we
+
+557
+00:18:05,040 --> 00:18:09,240
+can all imagine is really interesting,
+
+558
+00:18:06,920 --> 00:18:11,400
+you know, like in my conception, we all
+
+559
+00:18:09,240 --> 00:18:13,320
+just sit on one massive graph and we're
+
+560
+00:18:11,400 --> 00:18:16,240
+in charge of a bunch of AI agents that
+
+561
+00:18:13,320 --> 00:18:18,520
+are constantly extracting value out of
+
+562
+00:18:16,240 --> 00:18:20,920
+the the bit of the domain that we are
+
+563
+00:18:18,520 --> 00:18:22,280
+responsible for and have control over.
+
+564
+00:18:20,920 --> 00:18:24,120
+Uh but we can always see what they're
+
+565
+00:18:22,280 --> 00:18:26,240
+doing and see whether it makes sense. I
+
+566
+00:18:24,120 --> 00:18:27,800
+hope it gets that gets that way.
+
+567
+00:18:26,240 --> 00:18:30,480
+Yeah, go ahead.
+
+568
+00:18:27,800 --> 00:18:30,480
+>> Just for the recording.
+
+569
+00:18:30,600 --> 00:18:33,960
+Yeah, I mean I have lot lots of
+
+570
+00:18:32,240 --> 00:18:36,120
+questions some of which we can sort of
+
+571
+00:18:33,960 --> 00:18:39,920
+like talk about later. I I guess my main
+
+572
+00:18:36,120 --> 00:18:41,760
+question is around this automated
+
+573
+00:18:39,920 --> 00:18:42,120
+ontology inference.
+
+574
+00:18:41,760 --> 00:18:43,000
+>> Yeah.
+
+575
+00:18:42,120 --> 00:18:45,080
+>> So I'll give you an example. So we've
+
+576
+00:18:43,000 --> 00:18:46,360
+been working on this for about a year.
+
+577
+00:18:45,080 --> 00:18:47,520
+Let tree as in like we're a huge
+
+578
+00:18:46,360 --> 00:18:48,120
+customer of theirs.
+
+579
+00:18:47,520 --> 00:18:51,280
+>> Great.
+
+580
+00:18:48,120 --> 00:18:53,880
+>> And if you automate your ontology or
+
+581
+00:18:51,280 --> 00:18:55,800
+even your graph structure,
+
+582
+00:18:53,880 --> 00:18:57,440
+the deduplication process becomes really
+
+583
+00:18:55,800 --> 00:19:00,640
+tricky sometimes and you get over
+
+584
+00:18:57,440 --> 00:19:03,400
+representation especially in big graphs
+
+585
+00:19:00,640 --> 00:19:05,440
+which then come out when you then say
+
+586
+00:19:03,400 --> 00:19:06,800
+build a conversational agent interface
+
+587
+00:19:05,440 --> 00:19:08,200
+on top of it or even if you do something
+
+588
+00:19:06,800 --> 00:19:08,960
+like structural analysis. So
+
+589
+00:19:08,200 --> 00:19:11,000
+>> Absolutely.
+
+590
+00:19:08,960 --> 00:19:11,760
+>> Let me give you an example. Let's say
+
+591
+00:19:11,000 --> 00:19:13,960
+um,
+
+592
+00:19:11,760 --> 00:19:15,840
+we're working with a fund. They want to
+
+593
+00:19:13,960 --> 00:19:17,040
+use graphs to kind of like get the data
+
+594
+00:19:15,840 --> 00:19:19,360
+room,
+
+595
+00:19:17,040 --> 00:19:20,960
+graphify it, and then
+
+596
+00:19:19,360 --> 00:19:22,400
+basically shortcut on due diligence. I
+
+597
+00:19:20,960 --> 00:19:23,760
+think it's a horrible idea, but
+
+598
+00:19:22,400 --> 00:19:25,680
+regardless, that's what they're trying
+
+599
+00:19:23,760 --> 00:19:27,160
+to do. And then when they start doing a
+
+600
+00:19:25,680 --> 00:19:28,440
+sort of structural analysis, they're
+
+601
+00:19:27,160 --> 00:19:30,280
+like, "How many of the nodes that have
+
+602
+00:19:28,440 --> 00:19:32,880
+been derived in this graph represent,
+
+603
+00:19:30,280 --> 00:19:34,960
+say, information about customers?" And
+
+604
+00:19:32,880 --> 00:19:36,200
+if you don't deduplicate that properly,
+
+605
+00:19:34,960 --> 00:19:38,760
+and and or you don't know the
+
+606
+00:19:36,200 --> 00:19:40,400
+domain-specific terminologies that these
+
+607
+00:19:38,760 --> 00:19:42,120
+people use, you get these
+
+608
+00:19:40,400 --> 00:19:44,160
+over-representations.
+
+609
+00:19:42,120 --> 00:19:46,320
+And so it kind of throws the whole thing
+
+610
+00:19:44,160 --> 00:19:49,320
+off. And so it feels like there's a
+
+611
+00:19:46,320 --> 00:19:51,840
+solution out there, but I'm I'm like I'm
+
+612
+00:19:49,320 --> 00:19:53,920
+still uncomfortable with automated
+
+613
+00:19:51,840 --> 00:19:54,840
+ontologies for this reason. So I just
+
+614
+00:19:53,920 --> 00:19:55,200
+wanted to know what you thought about
+
+615
+00:19:54,840 --> 00:19:58,240
+that.
+
+616
+00:19:55,200 --> 00:20:00,000
+>> But but but maybe you would allow that
+
+617
+00:19:58,240 --> 00:20:02,160
+that if you've got a system that tries
+
+618
+00:20:00,000 --> 00:20:04,560
+to automate it and has even a little bit
+
+619
+00:20:02,160 --> 00:20:05,920
+of uncertainty and then flags that the
+
+620
+00:20:04,560 --> 00:20:07,760
+the things it doesn't want to automate
+
+621
+00:20:05,920 --> 00:20:09,240
+for you for you,
+
+622
+00:20:07,760 --> 00:20:11,480
+that that there might be like some
+
+623
+00:20:09,240 --> 00:20:12,920
+savings there in terms of time, right?
+
+624
+00:20:11,480 --> 00:20:14,280
+So like this happens this I'm playing
+
+625
+00:20:12,920 --> 00:20:15,520
+this little video this tiny video, but
+
+626
+00:20:14,280 --> 00:20:17,320
+this happens to be an example in which
+
+627
+00:20:15,520 --> 00:20:19,120
+we had healthcare data in which somebody
+
+628
+00:20:17,320 --> 00:20:22,040
+had inserted another field that they
+
+629
+00:20:19,120 --> 00:20:24,360
+needed to use for a a different app that
+
+630
+00:20:22,040 --> 00:20:25,960
+had almost complete duplication, but not
+
+631
+00:20:24,360 --> 00:20:28,320
+total duplication with another field and
+
+632
+00:20:25,960 --> 00:20:30,320
+I put an underscore in front of it. And
+
+633
+00:20:28,320 --> 00:20:32,880
+you if you can flag those things when
+
+634
+00:20:30,320 --> 00:20:34,640
+they're in there, then you don't you
+
+635
+00:20:32,880 --> 00:20:35,920
+don't treat it like it's a whole, you
+
+636
+00:20:34,640 --> 00:20:38,080
+know, set of people with completely
+
+637
+00:20:35,920 --> 00:20:40,080
+independent names, you fuse the ones
+
+638
+00:20:38,080 --> 00:20:41,360
+that are that that are in common, and
+
+639
+00:20:40,080 --> 00:20:43,520
+then you just take the the little ones
+
+640
+00:20:41,360 --> 00:20:46,080
+that are on the side and add another
+
+641
+00:20:43,520 --> 00:20:48,880
+node and know to treat them differently,
+
+642
+00:20:46,080 --> 00:20:49,640
+you know, in all your processes. So
+
+643
+00:20:48,880 --> 00:20:52,120
+it
+
+644
+00:20:49,640 --> 00:20:53,600
+I maintain that it's possible to
+
+645
+00:20:52,120 --> 00:20:55,440
+flag
+
+646
+00:20:53,600 --> 00:20:57,800
+problems with duplication, problems
+
+647
+00:20:55,440 --> 00:20:59,640
+with, you know, anomalies inside of just
+
+648
+00:20:57,800 --> 00:21:01,000
+large data distributions
+
+649
+00:20:59,640 --> 00:21:03,360
+and rank them in the process of
+
+650
+00:21:01,000 --> 00:21:05,720
+constructing the graph as opposed to
+
+651
+00:21:03,360 --> 00:21:07,600
+going through every field one by one.
+
+652
+00:21:05,720 --> 00:21:10,320
+That's I mean that right that is I I'm
+
+653
+00:21:07,600 --> 00:21:12,000
+that's not Yeah, all right. And so I
+
+654
+00:21:10,320 --> 00:21:13,120
+you know, for what it's worth, if you
+
+655
+00:21:12,000 --> 00:21:14,520
+want to try it with this particular
+
+656
+00:21:13,120 --> 00:21:16,520
+tool, you might find that there's some
+
+657
+00:21:14,520 --> 00:21:18,760
+savings in that process. Very, very
+
+658
+00:21:16,520 --> 00:21:22,200
+pleased to you know
+
+659
+00:21:18,760 --> 00:21:22,200
+riff for an hour on some actual data.
+
+660
+00:21:23,160 --> 00:21:25,960
+Any other questions?
+
+661
+00:21:26,680 --> 00:21:30,160
+It was a good last question, actually.
+
+662
+00:21:28,399 --> 00:21:31,760
+>> [laughter]
+
+663
+00:21:30,160 --> 00:21:32,984
+>> All right. Well, thanks all. That was
+
+664
+00:21:31,760 --> 00:21:35,004
+very enjoyable.
+
+665
+00:21:32,984 --> 00:21:35,004
+>> [applause]
+

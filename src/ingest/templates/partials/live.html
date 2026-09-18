@@ -1,30 +1,32 @@
-{# Shown only while work is in flight. It also starts an open drawer refreshing
-   when a run begins for the talk it is showing. #}
-<div class="live">
-  <span class="pulse"></span>
-  <span>
-    {% for run in active %}
-      <strong>{{ run.title or run.video_id }}</strong>
-      {% if run.current_stage %}
-        — {{ STAGE_LABELS.get(run.current_stage, run.current_stage) }}
-        <span class="muted">({{ run.done }}/{{ run.total }})</span>
-      {% else %}
-        <span class="muted">— queued</span>
-      {% endif %}
-      {% if not loop.last %}<span class="muted"> · </span>{% endif %}
-    {% endfor %}
-  </span>
-  {% if queued %}<span class="muted">{{ queued }} waiting</span>{% endif %}
-</div>
+{# Rendered only while work is in flight, and invisible: the rows show the
+   status, in place. What this carries is the signal — the page watches this
+   element empty to learn that a run ended, an open drawer is kicked once when
+   a run starts for its talk, and a row that was drawn before its run began is
+   replaced by its live version so it starts polling on its own. #}
+<span class="live-signal" hidden
+      data-running="{{ active | map(attribute='video_id') | list | tojson | forceescape }}"></span>
 <script>
-  // Kick an open drawer once, when a run starts for the talk it is showing. A
-  // drawer already tracking a live run polls itself ("live"), and one showing an
-  // unrelated talk has nothing to learn from this poll — triggering either of
-  // them just churned the panel twice a second.
   (function () {
     const running = new Set({{ active | map(attribute='video_id') | list | tojson }});
+    // Kick an open drawer once, when a run starts for the talk it is showing. A
+    // drawer already tracking a live run polls itself ("live"), and one showing
+    // an unrelated talk has nothing to learn — triggering either churned the
+    // panel twice a second.
     document.querySelectorAll('[data-drawer-refresh="idle"]').forEach(el => {
       if (running.has(el.dataset.drawerVideo)) htmx.trigger(el, 'refresh');
+    });
+    // A row rendered before its run was queued still says "Not ingested" and
+    // carries no poller: an ingestion started from the drawer, or by the
+    // scheduler, or on a sheet loaded a moment too early. Replace it once with
+    // its live version, which polls itself from then on.
+    // By video, not by key: a talk's key is its TalkID once it has a row, and
+    // a source key resolves to that talk server-side either way.
+    running.forEach(id => {
+      const row = document.querySelector('tr[data-video="' + id + '"]');
+      if (row && !row.classList.contains('is-live')) {
+        htmx.ajax('GET', '{{ base }}/row/' + encodeURIComponent('youtube:' + id),
+                  {target: row, swap: 'outerHTML'});
+      }
     });
   })();
 </script>

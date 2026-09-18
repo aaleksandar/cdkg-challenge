@@ -160,6 +160,12 @@ SCHEDULER_ENABLED = _flag("SCHEDULER_ENABLED", "true")
 # deliberate, costed action in the panel's Advanced section, because it is
 # hundreds of LLM calls at once rather than one.
 AUTO_INGEST_NEW = _flag("AUTO_INGEST_NEW", "true")
+# HeySummit is where a talk starts: the conference's programme, with dates and
+# abstracts, months before any recording. Read on the inventory's timer, it
+# gives every new talk a row of its own, fills blanks on the rest and claims
+# transcripts on disk by title — no LLM, no YouTube. A pause valve like the
+# others; the button under Advanced does the same by hand.
+HEYSUMMIT_SYNC_ENABLED = _flag("HEYSUMMIT_SYNC_ENABLED", "true")
 
 # --- Mount point -------------------------------------------------------------
 # The panel is served under a path on the main domain rather than its own

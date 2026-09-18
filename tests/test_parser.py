@@ -24,6 +24,8 @@ from ingest.sources import parser
         ("#CDL24", "Connected Data London 2024"),
         ("CDL 24", "Connected Data London 2024"),
         ("CDW21", "Connected Data World 2021"),
+        ("CDW 2021", "Connected Data World 2021"),
+        ("CDL 2024", "Connected Data London 2024"),
         # Casing is normalised to the canonical CSV spelling.
         ("connected data london 2024", "Connected Data London 2024"),
         ("no event here", None),
