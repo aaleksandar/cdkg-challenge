@@ -10,7 +10,23 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # The gate. A push to main that fails the suite never reaches kamal, and a
+  # manual dispatch runs the tests first too. Same steps as test.yml.
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - run: uv python install
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

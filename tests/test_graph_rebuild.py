@@ -99,6 +99,24 @@ def test_kuzu_config_honours_the_entities_json_override(monkeypatch, tmp_path):
     assert module.ENTITIES_JSON == tmp_path / "elsewhere.json"
 
 
+def test_kuzu_config_derives_the_metadata_csv_from_transcripts_dir(monkeypatch, tmp_path):
+    """The scripts are handed TRANSCRIPTS_DIR and find the CSV beside it by its
+    fixed name — which is what lets the integration sandbox point them at a
+    temporary tree, and what breaks the moment the filename or the derivation
+    changes."""
+    import importlib.util
+
+    monkeypatch.setenv("TRANSCRIPTS_DIR", str(tmp_path))
+    spec = importlib.util.spec_from_file_location(
+        "kuzu_config_under_test_2", config.KUZU_DIR / "config.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    assert module.METADATA_CSV == \
+        tmp_path / "Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
+
+
 def _tiny_graph(path):
     """A Kuzu database with one tagged talk and one untagged talk."""
     import kuzu

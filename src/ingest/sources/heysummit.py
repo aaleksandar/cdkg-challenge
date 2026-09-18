@@ -31,7 +31,7 @@ import httpx
 from .. import config
 from .. import reconcile
 from ..pipeline import csv_writer
-from . import matching, parser
+from . import evidence, matching, parser
 
 log = logging.getLogger("ingest.heysummit")
 
@@ -319,14 +319,49 @@ def differences(talk_id: str, csv_path=None) -> dict | None:
         return None
 
     theirs = fields(talk)
-    diffs = [{"field": column, "csv": (row.get(column) or "").strip(),
-              "heysummit": theirs.get(column, "")}
-             for column in _COMPARED
-             if (row.get(column) or "").strip() and theirs.get(column)
-             and not _same(column, (row.get(column) or "").strip(), theirs[column])]
+    video_id = reconcile.source_ids(row).get("youtube")
+    raw = _cached_video(video_id) if video_id else None
+    event_site = _event_site(talk.get("url") or "")
+    diffs = []
+    for column in _COMPARED:
+        ours, their = (row.get(column) or "").strip(), theirs.get(column, "")
+        if not (ours and their) or _same(column, ours, their):
+            continue
+        diffs.append({
+            "field": column, "csv": ours, "heysummit": their,
+            # Where the CSV's value can be found in the video's own record —
+            # the title, the description, or its promo footer — quoted.
+            "csv_evidence": evidence.locate(ours, column, raw),
+            # HeySummit's side is a page, not a parse: the talk's, and for the
+            # event the event's own site.
+            "heysummit_evidence": {
+                "url": talk.get("url") or "",
+                "event_id": talk.get("event_id") if column == "Event" else None,
+                "event_site": event_site if column == "Event" else None,
+            },
+        })
     return {"kind": kind, "heysummit_id": str(talk["id"]), "title": talk["title"],
             "url": talk.get("url") or "", "speakers": " & ".join(talk["speakers"]),
-            "fields": diffs}
+            "fields": diffs, "video_id": video_id,
+            "csv_row": {"line": csv_writer.row_line(csv_path or config.METADATA_CSV, talk_id),
+                        "url": csv_writer.github_row_url(csv_path or config.METADATA_CSV, talk_id)}}
+
+
+def _cached_video(video_id: str) -> dict | None:
+    """The committed yt-dlp record for a video, or None. The file only; no network."""
+    path = config.INGEST_CACHE_DIR / f"{video_id}.json"
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+
+
+def _event_site(talk_url: str) -> str | None:
+    """The event's own site, which is the host a talk's page lives on."""
+    from urllib.parse import urlsplit
+
+    parts = urlsplit(talk_url)
+    return f"{parts.scheme}://{parts.netloc}/" if parts.scheme and parts.netloc else None
 
 
 # --- Seeding -----------------------------------------------------------------

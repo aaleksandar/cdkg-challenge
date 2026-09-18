@@ -354,5 +354,33 @@ def test_differences_show_the_candidate_a_row_resembles(catalog_and_csv):
     result = heysummit.differences("t-2", catalog_and_csv)
 
     assert result["kind"] == "candidate" and result["heysummit_id"] == "1"
-    assert result["speakers"] == "Paco Nathan" and result["fields"] == [
-        {"field": "Speaker", "csv": "Someone Else", "heysummit": "Paco Nathan"}]
+    assert result["speakers"] == "Paco Nathan"
+    assert [(d["field"], d["csv"], d["heysummit"]) for d in result["fields"]] == [
+        ("Speaker", "Someone Else", "Paco Nathan")]
+
+
+def test_differences_carry_where_each_value_was_read_from(catalog_and_csv, monkeypatch, tmp_path):
+    """The tab says that the sources differ; the drawer says where — quoting
+    the promo footer when that is where the CSV's event came from."""
+    monkeypatch.setattr(config, "INGEST_CACHE_DIR", tmp_path / ".ingest")
+    monkeypatch.setattr(config, "REPO_ROOT", tmp_path)
+    config.INGEST_CACHE_DIR.mkdir()
+    (config.INGEST_CACHE_DIR / "vvvvvvvvvvv.json").write_text(json.dumps({
+        "id": "vvvvvvvvvvv", "title": "Graph Thinking | Paco Nathan",
+        "description": "About graphs.\n---\nConnected Data London 2024 has been announced!",
+        "upload_date": "20211201"}))
+    rows = csv_writer.read_rows(catalog_and_csv)
+    rows[0].update({"HeySummit": "1", "Event": "Connected Data London 2024",
+                    "Video": "https://www.youtube.com/watch?v=vvvvvvvvvvv"})
+    csv_writer._write_table(catalog_and_csv, csv_writer.read_columns(catalog_and_csv), rows)
+
+    result = heysummit.differences("t-1", catalog_and_csv)
+
+    event = next(d for d in result["fields"] if d["field"] == "Event")
+    assert event["csv_evidence"]["where"] == "promo footer"
+    assert event["csv_evidence"]["quote"]["match"] == "Connected Data London 2024"
+    assert event["heysummit_evidence"] == {"url": "https://hs/1", "event_id": 16412,
+                                           "event_site": "https://hs/"}
+    assert result["video_id"] == "vvvvvvvvvvv"
+    assert result["csv_row"]["line"] == 2
+    assert result["csv_row"]["url"].endswith("metadata.csv?plain=1#L2")

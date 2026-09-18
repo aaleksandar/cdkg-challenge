@@ -210,7 +210,6 @@ def test_an_unknown_duration_is_not_a_short():
     assert not R.is_short_duration(config.SHORT_VIDEO_MAX_SECONDS + 1)
 
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
 def test_two_talks_may_share_a_title():
     """Keyed on the title, a second talk called "Opening Keynote" either aborted
     the COPY or silently merged into the first, taking its speaker with it.

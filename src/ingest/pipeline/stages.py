@@ -298,10 +298,29 @@ def srt_to_text(srt: str) -> str:
     return " ".join(m.group(1).replace("\n", " ").strip() for m in cues)
 
 
-def stage_tag_extraction(ctx: dict) -> StageResult:
-    """The expensive stage. Skipped when this transcript already has tags."""
+def _tag_client():
+    """The generated BAML client, which lives beside the pipeline scripts.
+
+    Not on this package's path, and gitignored: it is generated into
+    ``src/kuzu/baml_client`` at build time. Reached through a function so the
+    integration tests can put a stand-in here — BAML's runtime does its own
+    HTTP, so the client is the only honest seam — the same way
+    ``speaker_llm._client`` is.
+    """
     import sys
 
+    if str(config.PIPELINE_SCRIPTS_DIR) not in sys.path:
+        sys.path.insert(0, str(config.PIPELINE_SCRIPTS_DIR))
+    from dotenv import load_dotenv
+
+    load_dotenv(config.KUZU_DIR / ".env")
+    from baml_client import b
+
+    return b
+
+
+def stage_tag_extraction(ctx: dict) -> StageResult:
+    """The expensive stage. Skipped when this transcript already has tags."""
     txt_path: Path = ctx["txt_path"]
     entities = []
     if config.ENTITIES_JSON.exists():
@@ -313,20 +332,12 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
         return StageResult(True, "Tags already extracted for this transcript",
                            {"reused": True})
 
-    # baml_client lives beside the pipeline scripts, not on the package path.
-    if str(config.PIPELINE_SCRIPTS_DIR) not in sys.path:
-        sys.path.insert(0, str(config.PIPELINE_SCRIPTS_DIR))
-    from dotenv import load_dotenv
-
-    load_dotenv(config.KUZU_DIR / ".env")
     from baml_py import Collector
-
-    from baml_client import b
 
     # What this call actually cost. The provider reports the tokens and BAML
     # hands them back here; without a collector they are simply discarded.
     collector = Collector(name=f"tags-{ctx['video_id']}")
-    tags = b.with_options(collector=collector).ExtractTags(
+    tags = _tag_client().with_options(collector=collector).ExtractTags(
         txt_path.read_text(encoding="utf-8")
     ).tag
     entities.append({"filename": txt_path.name, "entities": {"tag": tags}})

@@ -1,0 +1,37 @@
+name: Test
+
+# Every pull request and every push to a branch other than main. A push to
+# main is tested by the deploy workflow's own test job, which the deploy
+# depends on, so the suite is not run twice for it.
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install Python
+        run: uv python install          # reads .python-version
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      # No secrets: the network and LLM edges are doubled, and the generated
+      # BAML client is never imported — tests/integration replaces the client
+      # seam — so nothing here needs a key or a codegen step.
+      - name: Run tests
+        run: uv run pytest -q

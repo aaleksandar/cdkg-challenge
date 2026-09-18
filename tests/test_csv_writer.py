@@ -334,3 +334,23 @@ def test_a_row_linked_by_hand_gains_its_file_on_ingest(metadata_csv):
     assert appended is False and "filled blank File" in detail
     row = next(r for r in _rows(metadata_csv) if r["TalkID"] == talk_id)
     assert row["File"] == "/t.srt" and row["Event"] == "Connected Data World 2021"
+
+
+def test_a_row_s_physical_line_survives_multi_line_descriptions(metadata_csv, monkeypatch):
+    from ingest import config
+
+    csv_writer.append_rows([
+        {"TalkID": "t-multi", "Title": "Multi", "Description": "line one\nline two\nline three"},
+        {"TalkID": "t-after", "Title": "After"},
+    ], metadata_csv)
+
+    assert csv_writer.row_line(metadata_csv, "t-existing") == 2
+    assert csv_writer.row_line(metadata_csv, "t-multi") == 3
+    assert csv_writer.row_line(metadata_csv, "t-after") == 6      # the quoted description took three lines
+    assert csv_writer.row_line(metadata_csv, "t-none") is None
+
+    monkeypatch.setattr(config, "REPO_ROOT", metadata_csv.parent)
+    monkeypatch.setattr(config, "GITHUB_REPO", "org/repo")
+    monkeypatch.setattr(config, "GITHUB_BASE_BRANCH", "main")
+    assert csv_writer.github_row_url(metadata_csv, "t-after") == \
+        "https://github.com/org/repo/blob/main/metadata.csv?plain=1#L6"

@@ -933,7 +933,7 @@ def test_a_talk_without_a_video_is_a_row_with_its_own_date_and_link(client, monk
     rows = client.get("/rows").text
 
     assert "Network Science Panel" in rows
-    assert 'HeySummit &#8599;' in rows or "HeySummit ↗" in rows
+    assert 'href="https://2025.connected-data.london/talks/network-science/"' in rows
     # The row shows the lane; the specific status is the hover, as for every row.
     assert "Not ingested" in rows and "no video on the channel yet" in rows
     assert rows.index("Network Science Panel") < rows.index("A Talk | Jane Doe | CDL24")   # newer first
@@ -1040,12 +1040,20 @@ def test_the_drawer_shows_where_the_sources_disagree(client, monkeypatch):
                           "speaker": "Kolena", "event": "Connected Data London 2024"})
     monkeypatch.setattr(R, "reconcile", _only(talk))
     monkeypatch.setattr(heysummit, "read_catalog", lambda: [{"id": 1}])
+    hs = {"url": "https://hs/big-graphs", "event_id": None, "event_site": None}
     monkeypatch.setattr(heysummit, "differences", lambda talk_id, csv_path=None: {
         "kind": "attached", "heysummit_id": "171780", "title": "Big Graphs",
-        "url": "https://hs/big-graphs", "speakers": "Kolena",
+        "url": "https://hs/big-graphs", "speakers": "Kolena", "video_id": "aaaaaaaaaaa",
+        "csv_row": {"line": 437, "url": "https://github.com/org/repo/blob/main/x.csv?plain=1#L437"},
         "fields": [{"field": "Event", "csv": "Connected Data London 2024",
-                    "heysummit": "Knowledge Connexions 2020"},
-                   {"field": "Date", "csv": "12/12/2024", "heysummit": "30/11/2020"}]})
+                    "heysummit": "Knowledge Connexions 2020",
+                    "csv_evidence": {"where": "promo footer", "quote": {
+                        "before": "…", "match": "Connected Data London 2024",
+                        "after": "has been announced!"}},
+                    "heysummit_evidence": {**hs, "event_id": 10037,
+                                           "event_site": "https://knowledgeconnexions.heysummit.com/"}},
+                   {"field": "Date", "csv": "12/12/2024", "heysummit": "30/11/2020",
+                    "csv_evidence": None, "heysummit_evidence": hs}]})
 
     drawer = client.get("/video/t-07b04e2c?body=1").text
 
@@ -1054,6 +1062,32 @@ def test_the_drawer_shows_where_the_sources_disagree(client, monkeypatch):
     assert "Knowledge Connexions 2020" in drawer and "30/11/2020" in drawer
     assert 'class=" differs">Connected Data London 2024' in drawer      # the Record row is marked
     assert '<dd class="differs">12/12/2024' in drawer
+    # Where each value came from: the footer, quoted and marked; the CSV row on
+    # GitHub; the video; the talk's page and the event's site.
+    assert "promo footer" in drawer and "<mark>Connected Data London 2024</mark>" in drawer
+    assert "not in the video&#39;s title or description" in drawer or "not in the video's title or description" in drawer
+    assert "row 437 of the CSV on GitHub" in drawer and "#L437" in drawer
+    assert "watch?v=aaaaaaaaaaa" in drawer
+    assert "https://knowledgeconnexions.heysummit.com/" in drawer and "event 10037" in drawer
 
     monkeypatch.setattr(heysummit, "differences", lambda talk_id, csv_path=None: None)
     assert "The sources disagree" not in client.get("/video/t-07b04e2c?body=1").text
+
+
+def test_the_sheet_links_both_sources_in_their_own_columns(client, monkeypatch):
+    """A talk can have a video and a programme page; one cell showing one of
+    them hid the other."""
+    both = R.TalkState(**{**READY.__dict__, "sources": {"youtube": "aaaaaaaaaaa", "heysummit": "42"},
+                          "web": "https://hs/talks/a-talk/"})
+    monkeypatch.setattr(R, "reconcile", _only(both, AWAITING))
+
+    rows = client.get("/rows").text
+    assert "<th>Video</th>" in rows and "<th>HeySummit</th>" in rows
+
+    row = client.get("/row/youtube:aaaaaaaaaaa").text
+    assert 'href="https://www.youtube.com/watch?v=aaaaaaaaaaa"' in row
+    assert 'href="https://hs/talks/a-talk/"' in row and ">42 &#8599;<" in row
+
+    seeded = client.get("/row/t-await01").text
+    assert "watch?v=" not in seeded and ">—<" in seeded            # no video yet
+    assert 'href="https://2025.connected-data.london/talks/network-science/"' in seeded

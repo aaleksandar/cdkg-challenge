@@ -5,6 +5,7 @@ Run this script _after_ creating the domain graph, i.e., after running `create_d
 """
 
 import json
+import os
 from pathlib import Path
 
 import kuzu
@@ -37,9 +38,14 @@ def load_data(filepath: str) -> pl.DataFrame:
 
 # Read the metadata file to associate transcript filenames with talk identities
 df = load_data(str(config.METADATA_CSV))
-# Read entities from entities.json and insert into the lexical subgraph
-with open(str(config.ENTITIES_JSON), "r", encoding="utf-8") as f:
-    entities = json.load(f)
+# Read entities from entities.json and insert into the lexical subgraph. A
+# deployment that has seeded talks but ingested none has no file yet: that is
+# a graph with no tags, which the rebuild's own guard names, not a crash.
+if os.path.exists(str(config.ENTITIES_JSON)):
+    with open(str(config.ENTITIES_JSON), "r", encoding="utf-8") as f:
+        entities = json.load(f)
+else:
+    entities = []
 
 # Create the necessary node and relationship tables for the lexical graph
 # In this case, the lexical graph is a subgraph that attaches to the domain graph

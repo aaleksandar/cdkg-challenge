@@ -83,11 +83,53 @@
      the CSV's values stand until a curator changes them below.</p>
   {% endif %}
   {% if disagreement.fields %}
+  {# Each value with where it was read from. The CSV side is reconstructed
+     from the video's own record — the title, the description, or its promo
+     footer, which is the standing advert for the next conference and how a
+     talk comes to be filed under the wrong one. The HeySummit side is a page. #}
   <table class="issues compact">
     <thead><tr><th>Field</th><th>Metadata CSV says</th><th>HeySummit says</th></tr></thead>
     <tbody>
     {% for d in disagreement.fields %}
-      <tr><td>{{ d.field }}</td><td>{{ d.csv }}</td><td>{{ d.heysummit }}</td></tr>
+      <tr>
+        <td>{{ d.field }}</td>
+        <td>
+          <strong>{{ d.csv }}</strong>
+          {% set ev = d.csv_evidence %}
+          {% if ev %}
+            <div class="where {{ 'is-footer' if ev.where == 'promo footer' }}">
+              {% if ev.where == 'title' %}read from the video's title:
+              {% elif ev.where == 'description' %}found in the video's description:
+              {% else %}found in the description's <em>promo footer</em> — the standing
+                advert for the next conference, not this talk:{% endif %}
+              <span class="quote">{{ ev.quote.before }}<mark>{{ ev.quote.match }}</mark>{{ ev.quote.after }}</span>
+            </div>
+          {% else %}
+            <div class="where">not in the video's title or description — entered by
+              a curator, or from an earlier source</div>
+          {% endif %}
+          <div class="links" onclick="event.stopPropagation()">
+            {% if disagreement.csv_row.url %}
+              <a href="{{ disagreement.csv_row.url }}" target="_blank" rel="noopener">row {{ disagreement.csv_row.line }} of the CSV on GitHub &#8599;</a>
+            {% endif %}
+            {% if disagreement.video_id %}
+              <a href="https://www.youtube.com/watch?v={{ disagreement.video_id }}" target="_blank"
+                 rel="noopener">the video on YouTube &#8599;</a>
+            {% endif %}
+          </div>
+        </td>
+        <td>
+          <strong>{{ d.heysummit }}</strong>
+          {% set hs = d.heysummit_evidence %}
+          <div class="links" onclick="event.stopPropagation()">
+            {% if hs.url %}<a href="{{ hs.url }}" target="_blank" rel="noopener">the talk's page &#8599;</a>{% endif %}
+            {% if hs.event_id %}
+              <span class="muted">event {{ hs.event_id }}</span>
+              {% if hs.event_site %}<a href="{{ hs.event_site }}" target="_blank" rel="noopener">the event's site &#8599;</a>{% endif %}
+            {% endif %}
+          </div>
+        </td>
+      </tr>
     {% endfor %}
     </tbody>
   </table>

@@ -56,16 +56,20 @@
   </td>
   <td class="num">{{ s.tag_count or '—' }}</td>
   <td class="dur">{{ s.duration | duration }}</td>
+  {# Real links, not printed IDs: checking a talk against its sources is the
+     commonest reason to look one up. One cell per source, because a talk can
+     have both and a curator wants to see which it has. #}
   <td class="vid" onclick="event.stopPropagation()">
-    {# A real link, not a printed ID: checking a talk against the source is the
-       commonest reason to look one up. The video when there is one; the
-       conference page when HeySummit is all that holds the talk so far. #}
     {% if s.video_id and s.url %}
       <a href="{{ s.url }}" target="_blank" rel="noopener"
          aria-label="Watch {{ s.display_title }} on YouTube">{{ s.video_id }} &#8599;</a>
-    {% elif s.web %}
+    {% else %}—{% endif %}
+  </td>
+  <td class="vid hs" onclick="event.stopPropagation()">
+    {% if s.web %}
       <a href="{{ s.web }}" target="_blank" rel="noopener"
-         aria-label="{{ s.display_title }} on HeySummit">HeySummit &#8599;</a>
+         aria-label="{{ s.display_title }} on HeySummit">{{ s.sources.heysummit or 'HeySummit' }} &#8599;</a>
+    {% elif s.sources.heysummit %}{{ s.sources.heysummit }}
     {% else %}—{% endif %}
   </td>
   <td class="act" onclick="event.stopPropagation()">

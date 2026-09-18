@@ -67,6 +67,43 @@ def existing_talk_ids(csv_path: Path) -> set[str]:
     return {t for row in read_rows(csv_path) if (t := (row.get("TalkID") or "").strip())}
 
 
+def row_line(csv_path: Path, talk_id: str) -> int | None:
+    """The physical line the row starts on, for a link into the file.
+
+    Not the row's index: descriptions are quoted and span lines, so the reader
+    is asked where each record ended and the next one starts after it.
+    """
+    if not csv_path.exists():
+        return None
+    with open(csv_path, newline="", encoding="utf-8") as handle:
+        reader = csv.reader(handle)
+        header = next(reader, None)
+        if not header or "TalkID" not in header:
+            return None
+        column = header.index("TalkID")
+        start = reader.line_num + 1
+        for record in reader:
+            if len(record) > column and record[column].strip() == talk_id:
+                return start
+            start = reader.line_num + 1
+    return None
+
+
+def github_row_url(csv_path: Path, talk_id: str) -> str | None:
+    """The row on GitHub, on the base branch — which a row ingested on the
+    server and not yet published does not reach until its PR merges."""
+    from urllib.parse import quote
+
+    from .stages import csv_file_reference
+
+    line = row_line(csv_path, talk_id)
+    if line is None:
+        return None
+    relative = csv_file_reference(csv_path).lstrip("/")
+    return (f"https://github.com/{config.GITHUB_REPO}/blob/{config.GITHUB_BASE_BRANCH}/"
+            f"{quote(relative)}?plain=1#L{line}")
+
+
 def find_talk_by_source(csv_path: Path, source: str, native_id: str) -> str | None:
     """The TalkID of the row already holding this source's record, if any.
 

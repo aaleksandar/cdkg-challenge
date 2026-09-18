@@ -34,11 +34,12 @@ EVENT_PATTERNS: list[tuple[re.Pattern, str]] = [
     (re.compile(r"Knowledge Connexions\s+(\d{4})", re.I), "Knowledge Connexions {}"),
 ]
 
-# Abbreviations used heavily in titles and promo text: "CDL24", "#CDW21".
+# Abbreviations used heavily in titles and promo text: "CDL24", "#CDW21", and
+# the same with the century written out, "CDW 2021".
 EVENT_ABBREVIATIONS: list[tuple[re.Pattern, str]] = [
-    (re.compile(r"#?\bCDL\s?(\d{2})\b", re.I), "Connected Data London 20{}"),
-    (re.compile(r"#?\bCDW\s?(\d{2})\b", re.I), "Connected Data World 20{}"),
-    (re.compile(r"#?\bKC\s?(\d{2})\b"), "Knowledge Connexions 20{}"),
+    (re.compile(r"#?\bCDL\s?(?:20)?(\d{2})\b", re.I), "Connected Data London 20{}"),
+    (re.compile(r"#?\bCDW\s?(?:20)?(\d{2})\b", re.I), "Connected Data World 20{}"),
+    (re.compile(r"#?\bKC\s?(?:20)?(\d{2})\b"), "Knowledge Connexions 20{}"),
 ]
 
 # Words that mark a title segment as an event rather than a person.
@@ -128,19 +129,30 @@ class ParsedTalk:
         return [s.strip() for s in SPEAKER_SPLIT.split(self.speaker) if s.strip()]
 
 
-def find_event(text: str | None) -> str | None:
-    """Return a canonical event name found in ``text``, expanding abbreviations."""
+def find_event_match(text: str | None) -> tuple[str, re.Match] | None:
+    """The canonical event name found in ``text``, and the match it came from.
+
+    The match is the evidence — the literal "CDL24" or "Connected Data World
+    2021" and where it sits — which the panel quotes back to a curator asking
+    where a value was read from.
+    """
     if not text:
         return None
     for pattern, template in EVENT_PATTERNS:
         match = pattern.search(text)
         if match:
-            return template.format(match.group(1))
+            return template.format(match.group(1)), match
     for pattern, template in EVENT_ABBREVIATIONS:
         match = pattern.search(text)
         if match:
-            return template.format(match.group(1))
+            return template.format(match.group(1)), match
     return None
+
+
+def find_event(text: str | None) -> str | None:
+    """Return a canonical event name found in ``text``, expanding abbreviations."""
+    found = find_event_match(text)
+    return found[0] if found else None
 
 
 def looks_like_person(segment: str) -> bool:
@@ -208,14 +220,20 @@ PROMO_MARKERS = [
 ]
 
 
-def strip_promo_footer(description: str) -> str:
-    """Everything before the first promotional marker."""
+def promo_footer_start(description: str) -> int:
+    """Where the standing advertisement begins: the offset of the first marker,
+    or the end of the text when there is none."""
     cut = len(description)
     for marker in PROMO_MARKERS:
         match = marker.search(description)
         if match:
             cut = min(cut, match.start())
-    return description[:cut]
+    return cut
+
+
+def strip_promo_footer(description: str) -> str:
+    """Everything before the first promotional marker."""
+    return description[:promo_footer_start(description)]
 
 
 def parse_description(description: str | None) -> dict:

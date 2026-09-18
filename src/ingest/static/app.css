@@ -176,7 +176,8 @@ a:hover { text-decoration: underline; }
 .btn-primary:hover:not(:disabled) { background: #143d73; }
 
 /* ---- Table ---- */
-.sheet { padding: 0 var(--gutter) 5rem; }
+.sheet { padding: 0 var(--gutter) 5rem; overflow-x: auto; }
+td.vid { width: 1%; white-space: nowrap; }
 table { width: 100%; border-collapse: collapse; }
 thead th {
   text-align: left;
@@ -363,7 +364,13 @@ thead th.r { text-align: right; }
 .pairs dd.differs { box-shadow: inset 2px 0 0 var(--warn); padding-left: .5rem; }
 .pairs dd.differs::after { content: " · HeySummit differs"; color: var(--warn); font-size: .72rem; }
 .blocker.disagree .issues.compact { margin-top: .6rem; font-size: .8rem; }
-.blocker.disagree .issues.compact th, .blocker.disagree .issues.compact td { padding: .25rem .5rem; }
+.blocker.disagree .issues.compact th, .blocker.disagree .issues.compact td { padding: .25rem .5rem; vertical-align: top; }
+/* Where a value was read from: the matched text, marked, in its surroundings. */
+.blocker.disagree .where { margin-top: .25rem; font-size: .76rem; color: var(--ink-soft); }
+.blocker.disagree .where.is-footer { color: var(--warn); }
+.blocker.disagree .quote { display: block; margin-top: .15rem; color: var(--ink-faint); font-style: italic; }
+.blocker.disagree .quote mark { background: color-mix(in srgb, var(--warn) 25%, transparent); color: var(--ink); font-style: normal; padding: 0 .15rem; }
+.blocker.disagree .links { margin-top: .3rem; display: flex; flex-wrap: wrap; gap: .25rem .8rem; font-size: .74rem; }
 
 /* Stage timeline */
 .stages { list-style: none; margin: 0; padding: 0; }

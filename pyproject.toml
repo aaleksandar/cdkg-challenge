@@ -34,3 +34,7 @@ dev = ["pytest>=8.4"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = [
+    "integration: runs the real stages and the real src/kuzu scripts in a subprocess (~30 s); deselect with -m 'not integration'",
+]
