@@ -278,3 +278,31 @@ def test_a_completed_download_keeps_where_the_captions_came_from(state, stub_sta
     assert detail["caption_source"] == "supadata"
     assert detail["caption_credits"] == 1
     assert detail["caption_attempts"][0]["kind"] == "bot_check"
+
+
+def test_the_heysummit_job_stands_down_when_either_valve_is_closed(state, monkeypatch):
+    from ingest import scheduler
+    from ingest.sources import heysummit
+
+    synced = []
+    monkeypatch.setattr(heysummit, "sync", lambda refresh=True: synced.append(refresh) or
+                        {"changed": True})
+    rebuilds = []
+    monkeypatch.setattr("ingest.pipeline.runner.request_rebuild", lambda: rebuilds.append(1))
+
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", False)
+    monkeypatch.setattr(config, "HEYSUMMIT_SYNC_ENABLED", True)
+    scheduler.sync_heysummit()
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    monkeypatch.setattr(config, "HEYSUMMIT_SYNC_ENABLED", False)
+    scheduler.sync_heysummit()
+    assert synced == [] and rebuilds == []
+
+    monkeypatch.setattr(config, "HEYSUMMIT_SYNC_ENABLED", True)
+    monkeypatch.setattr(config, "KG_ENABLED", True)
+    scheduler.sync_heysummit()
+    assert synced == [True] and rebuilds == [1]
+
+    monkeypatch.setattr(heysummit, "sync", lambda refresh=True: {"changed": False})
+    scheduler.sync_heysummit()
+    assert rebuilds == [1]                        # nothing changed: no rebuild

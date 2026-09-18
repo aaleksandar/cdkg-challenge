@@ -56,16 +56,20 @@ def test_orphans_are_detected(states):
     """Transcripts with extracted tags but no CSV row produce nothing in the graph.
 
     This is real, unreported data loss: the extraction cost was paid and thrown
-    away. Every orphan must carry tags, or the status is meaningless.
+    away. Every orphan must carry tags, or the status is meaningless. Sixteen
+    sat here for a year until HeySummit seeding claimed thirteen by title; the
+    three left are two recordings of rows whose File already points at a CDL
+    2024 transcript (the Event-disagreement pair) and one talk HeySummit does
+    not list.
     """
     orphans = [s for s in states if s.status == "orphaned"]
-    assert len(orphans) == 16, [s.title for s in orphans]
+    assert len(orphans) == 3, [s.title for s in orphans]
     assert all(s.has_tags and not s.in_csv for s in orphans)
     assert all(s.tag_count > 0 for s in orphans)
 
 
 def test_orphans_all_belong_to_one_event(states):
-    """All 16 are Knowledge Connexions 2020 — one curation gap, not 16 oversights."""
+    """All of them are Knowledge Connexions 2020 — one curation gap, not several."""
     orphans = [s for s in states if s.status == "orphaned"]
     srts = [
         next(config.TRANSCRIPTS_DIR.rglob(f"{s.stem}.srt"), None)
@@ -234,3 +238,33 @@ def test_two_talks_may_share_a_title():
         "MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk {talk_id: 't-one'}) RETURN count(s)"
     ).get_next()[0]
     assert speakers_of_one == 1
+
+
+def test_a_seeded_talk_with_no_video_is_awaiting_one():
+    """HeySummit's talk before the channel has it: a row, a Talk node, and
+    nothing to tag. The normal state of a programme, so it sits with the
+    backlog rather than the problems."""
+    from ingest.reconcile import LANE_OF, STATUS_LABELS, TalkState
+
+    talk = TalkState(talk_id="t-1", sources={"heysummit": "587108"}, in_csv=True,
+                     speaker="Jane Doe", event="CDL 2025", in_graph=True)
+    assert talk.status == "awaiting_video"
+    assert LANE_OF["awaiting_video"] == "not_ingested"
+    assert STATUS_LABELS["awaiting_video"] == "Awaiting video"
+
+    # Once a video is linked it is the ordinary backlog case — the Ingest
+    # button, not the attention lane — and once a transcript is on disk with
+    # no tags it is the ordinary untagged one.
+    linked = TalkState(**{**talk.__dict__, "sources": {"heysummit": "1", "youtube": "v"}})
+    assert linked.status == "not_ingested" and linked.lane == "not_ingested"
+    assert TalkState(**{**talk.__dict__, "has_transcript": True, "stem": "x"}).status == "untagged"
+
+
+def test_the_talk_date_comes_from_the_csv_and_yields_to_the_upload_date():
+    from ingest.reconcile import TalkState, _iso_date
+
+    assert _iso_date("13/12/2024") == "2024-12-13"
+    assert _iso_date("") is None and _iso_date("2024-12-13") is None
+    talk = TalkState(talk_id="t-1", talk_date="2024-12-13")
+    assert talk.when == "2024-12-13"
+    assert TalkState(**{**talk.__dict__, "published_at": "2025-01-01T00:00:00Z"}).when == "2025-01-01T00:00:00Z"

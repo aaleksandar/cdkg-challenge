@@ -27,7 +27,8 @@
     <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
       <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
     </span>
-    {% if s.published_at %}<span class="muted">Published {{ s.published_at | day }}</span>{% endif %}
+    {% if s.published_at %}<span class="muted">Published {{ s.published_at | day }}</span>
+    {% elif s.talk_date %}<span class="muted">Given {{ s.talk_date | day }}</span>{% endif %}
   </div>
 </div>
 
@@ -174,10 +175,37 @@
 </div>
 {% endif %}
 
+{# The curator's join. The automatic one is by title and speaker, and a video
+   whose title strays from the programme's never finds its row on its own.
+   Pasting the video here records it on the row and starts the ingestion, which
+   looks a row up by its video before appending one. #}
+{% if s.talk_id and not s.video_id and not s.is_short and s.status != 'in_progress' %}
+<section class="curate attach">
+  <div class="upload-head">
+    <strong>Have the video?</strong>
+    <span class="muted">
+      A talk HeySummit lists and the channel does not yet — or one whose video
+      has a different title. Paste the YouTube link and it is ingested onto
+      this row.
+    </span>
+  </div>
+  <form hx-post="{{ base }}/video/{{ s.key | urlencode }}/attach" hx-target="#drawer-body"
+        hx-swap="innerHTML" class="curate-form attach-form">
+    <label>
+      <span>YouTube link or id</span>
+      <input type="text" name="video" placeholder="https://www.youtube.com/watch?v=…" required>
+    </label>
+    <button type="submit" class="btn btn-primary">Attach and ingest</button>
+    <span id="attach-flash" class="muted"></span>
+  </form>
+</section>
+{% endif %}
+
 {# Offered whenever something is blank, not only when the blank blocks the graph:
    Date, Type and Category no longer hold a talk back, and this is the only place
-   in the panel they can be filled in at all. #}
-{% if s.video_id and s.in_csv and not s.is_short
+   in the panel they can be filled in at all. A talk with no video can be
+   curated like any other; the row is the talk, not the video. #}
+{% if s.in_csv and not s.is_short
       and (s.missing_curation or s.missing_optional) %}
   {% include "partials/curate.html" %}
 {% endif %}
@@ -193,15 +221,24 @@
     <dd class="{{ 'none' if not s.speaker }}">{{ s.speaker or 'not recorded' }}</dd>
     <dt>Event</dt>
     <dd class="{{ 'none' if not s.event }}">{{ s.event or 'not recorded' }}</dd>
+    {% if s.duration %}
     <dt>Length</dt>
     <dd>{{ s.duration | duration }}</dd>
+    {% endif %}
     {% if s.published_at %}
     <dt>Published</dt>
     <dd>{{ s.published_at | day }}</dd>
+    {% elif s.talk_date %}
+    <dt>Date</dt>
+    <dd>{{ s.talk_date | day }}</dd>
     {% endif %}
     {% if s.video_id %}
     <dt>Video</dt>
     <dd><a href="https://www.youtube.com/watch?v={{ s.video_id }}" target="_blank" rel="noopener">{{ s.video_id }} ↗</a></dd>
+    {% endif %}
+    {% if s.web %}
+    <dt>HeySummit</dt>
+    <dd><a href="{{ s.web }}" target="_blank" rel="noopener">programme page ↗</a></dd>
     {% endif %}
     {% if s.missing_curation %}
     <dt>Needs</dt>

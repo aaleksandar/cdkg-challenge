@@ -92,3 +92,223 @@ def test_attach_fills_blanks_never_overwrites_and_is_idempotent(catalog_and_csv)
     before = catalog_and_csv.read_bytes()
     heysummit.attach(catalog_and_csv)
     assert catalog_and_csv.read_bytes() == before
+
+
+def test_event_comes_from_the_event_id():
+    """The one blank that keeps a talk out of the graph, from the conference's
+    own record of where it was given."""
+    assert heysummit.fields(_talk(1, "x"))["Event"] == "Connected Data World 2021"
+    assert heysummit.fields({**_talk(1, "x"), "event_id": 999999})["Event"] == ""
+
+
+def test_attach_fills_event_and_reports_which_columns(catalog_and_csv):
+    result = heysummit.attach(catalog_and_csv)
+    first = csv_writer.read_rows(catalog_and_csv)[0]
+
+    assert first["Event"] == "Connected Data World 2021"
+    assert result["matched"] == {"t-1": "1"}
+    assert set(result["filled_columns"]["t-1"]) >= {"HeySummit", "Event", "Date", "Type"}
+
+
+def test_attach_only_touches_the_named_rows(catalog_and_csv):
+    result = heysummit.attach(catalog_and_csv, only={"t-2"})
+    first, second = csv_writer.read_rows(catalog_and_csv)
+
+    # t-2 has the same title and speaker, so with t-1 out of the running it
+    # attaches; t-1 is untouched.
+    assert first["HeySummit"] == "" and first["Event"] == ""
+    assert second["HeySummit"] == "1" and second["Event"] == "Connected Data World 2021"
+    assert result["matched"] == {"t-2": "1"}
+
+
+def test_a_different_event_is_reported_not_overwritten(catalog_and_csv):
+    rows = csv_writer.read_rows(catalog_and_csv)
+    rows[0]["Event"] = "Connected Data London 2024"   # the promo-footer misfile
+    columns = csv_writer.read_columns(catalog_and_csv)
+    csv_writer._write_table(catalog_and_csv, columns, rows)
+
+    result = heysummit.attach(catalog_and_csv, only={"t-1"})
+
+    assert csv_writer.read_rows(catalog_and_csv)[0]["Event"] == "Connected Data London 2024"
+    assert result["disagreements"] == [
+        ("Graph Thinking", "Connected Data London 2024", "Connected Data World 2021")]
+
+
+def test_the_append_stage_joins_the_new_row_to_heysummit(catalog_and_csv, monkeypatch, tmp_path):
+    """A talk ingested after the last sync used to sit with a blank Event until
+    someone pressed the button; the catalogue on disk had the answer."""
+    from ingest.pipeline import stages
+    from ingest.sources.parser import ParsedTalk
+
+    monkeypatch.setattr(config, "METADATA_CSV", catalog_and_csv)
+    monkeypatch.setattr(config, "REPO_ROOT", tmp_path)
+    # Start from a CSV without the talk: the fixture's rows are other talks.
+    columns = csv_writer.read_columns(catalog_and_csv)
+    csv_writer._write_table(catalog_and_csv, columns, [])
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps([
+        _talk(7, "Network Science for Graph Practitioners: Seeing Beyond Nodes and Edges",
+              ["Amy Hodler", "Orit Gal"], ["Panels"]),
+    ]))
+    parsed = ParsedTalk(talk_title="Network Science for Graph Practitioners Seeing Beyond Nodes and Edges",
+                        full_title="Network Science for Graph Practitioners Seeing Beyond Nodes and Edges",
+                        speaker="Orit Gal & Amy Hodler", event=None)
+    srt = tmp_path / "Transcripts" / "Unsorted" / "Presentations" / "x.srt"
+    srt.parent.mkdir(parents=True); srt.write_text("1\n00:00:01,000 --> 00:00:02,000\nhi\n\n")
+
+    result = stages.stage_csv_append({"parsed": parsed, "video_id": "9Mkg5pfqS5Q", "srt_path": srt})
+
+    row = csv_writer.read_rows(catalog_and_csv)[0]
+    assert row["Event"] == "Connected Data World 2021" and row["HeySummit"] == "7"
+    assert row["Type"] == "Panel" and row["Date"] == "01/12/2021"
+    assert result.data["heysummit_id"] == "7"
+    assert "Event" in result.data["heysummit_filled"]
+    assert "HeySummit talk 7: filled" in result.message
+
+
+def test_the_append_stage_says_when_heysummit_has_no_match(catalog_and_csv, monkeypatch, tmp_path):
+    from ingest.pipeline import stages
+    from ingest.sources.parser import ParsedTalk
+
+    monkeypatch.setattr(config, "METADATA_CSV", catalog_and_csv)
+    monkeypatch.setattr(config, "REPO_ROOT", tmp_path)
+    srt = tmp_path / "x.srt"; srt.write_text("1\n00:00:01,000 --> 00:00:02,000\nhi\n\n")
+    parsed = ParsedTalk(talk_title="Something else entirely", full_title="Something else entirely",
+                        speaker="Nobody Known", event="CDL24")
+
+    result = stages.stage_csv_append({"parsed": parsed, "video_id": "zzzzzzzzzzz", "srt_path": srt})
+
+    assert "HeySummit: no matching talk" in result.message
+    assert "heysummit_id" not in result.data
+
+
+# --- Seeding: HeySummit is where a talk starts --------------------------------
+
+@pytest.fixture
+def seeding(catalog_and_csv, monkeypatch, tmp_path):
+    """The fixture's catalogue plus two talks no row holds, and an inventory."""
+    from ingest import db
+
+    monkeypatch.setattr(config, "STATE_DB_PATH", tmp_path / "state.db")
+    monkeypatch.setattr(config, "TRANSCRIPTS_DIR", tmp_path / "Transcripts")
+    monkeypatch.setattr(config, "REPO_ROOT", tmp_path)
+    db.init_db()
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps([
+        _talk(1, "Graph Thinking", ["Paco Nathan"], ["Presentations", "Graph AI"]),
+        _talk(2, "Knowledge Graphs: The Frontier", ["Ada Lovelace"], ["Keynotes"]),
+        _talk(3, "Reinforcement Learning for KG Reasoning", ["Alan Turing"], ["Panels"]),
+        {**_talk(4, "A course, not a talk", ["Nobody"]), "event_id": 999999},
+    ]))
+    return catalog_and_csv
+
+
+def test_seed_gives_every_free_talk_a_row_and_is_idempotent(seeding):
+    result = heysummit.seed(seeding)
+    rows = csv_writer.read_rows(seeding)
+
+    assert result["seeded"] == 2 and result["attached"] == 1
+    by_hs = {r["HeySummit"]: r for r in rows}
+    frontier = by_hs["2"]
+    assert frontier["Title"] == "Knowledge Graphs: The Frontier"
+    assert frontier["Speaker"] == "Ada Lovelace"
+    assert frontier["Event"] == "Connected Data World 2021"
+    assert (frontier["Date"], frontier["Type"]) == ("01/12/2021", "Presentation")
+    assert frontier["TalkID"].startswith("t-") and frontier["File"] == "" and frontier["Video"] == ""
+    assert "4" not in by_hs                      # not an allow-listed event
+    assert set(result["seeded_talks"]) == {r["TalkID"] for r in rows if r["HeySummit"] in {"2", "3"}}
+
+    before = seeding.read_bytes()
+    again = heysummit.seed(seeding)
+    assert again["seeded"] == 0 and seeding.read_bytes() == before
+
+
+def test_a_candidate_is_reported_and_never_seeded(seeding):
+    """The wrong answer is a duplicate row in an append-only file."""
+    rows = csv_writer.read_rows(seeding)
+    columns = csv_writer.read_columns(seeding)
+    rows.append({**dict.fromkeys(columns, ""), "TalkID": "t-9",
+                 "Title": "Knowledge Graphs: The Frontier", "Speaker": "Someone Else"})
+    csv_writer._write_table(seeding, columns, rows)
+
+    result = heysummit.seed(seeding)
+
+    assert ("Knowledge Graphs: The Frontier", "Knowledge Graphs: The Frontier") in result["candidates"]
+    assert "2" in result["candidate_ids"]
+    assert [r["HeySummit"] for r in csv_writer.read_rows(seeding)].count("2") == 0
+    assert result["seeded"] == 1                 # only talk 3
+
+
+def test_seed_links_the_channel_video_that_is_the_talk_and_skips_a_short(seeding):
+    from ingest import db
+
+    db.upsert_videos([
+        {"video_id": "vvvvvvvvvvv", "title": "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021",
+         "url": "https://www.youtube.com/watch?v=vvvvvvvvvvv", "duration": 2400},
+        {"video_id": "sssssssssss", "title": "Reinforcement Learning for KG Reasoning | Alan Turing",
+         "url": "https://www.youtube.com/watch?v=sssssssssss", "duration": 90},   # a teaser
+    ])
+
+    result = heysummit.seed(seeding)
+    by_hs = {r["HeySummit"]: r for r in csv_writer.read_rows(seeding)}
+
+    assert result["linked_videos"] == {"2": "vvvvvvvvvvv"}
+    assert by_hs["2"]["Video"] == "https://www.youtube.com/watch?v=vvvvvvvvvvv"
+    assert by_hs["3"]["Video"] == ""
+
+
+def test_claim_transcripts_by_title_including_the_underscore_for_a_colon(seeding, tmp_path):
+    heysummit.seed(seeding)
+    folder = tmp_path / "Transcripts" / "CDW 2021" / "Presentations"
+    folder.mkdir(parents=True)
+    (folder / "Knowledge Graphs_ The Frontier.srt").write_text("1\n00:00:01,000 --> 00:00:02,000\nhi\n\n")
+    (folder / "Ambiguous.srt").write_text("x"); (tmp_path / "Transcripts" / "Ambiguous.srt").write_text("x")
+    (folder / "aaaaaaaaaaa.srt").write_text("x")   # a bare video id: never claimed
+
+    result = heysummit.claim_transcripts(seeding)
+    by_hs = {r["HeySummit"]: r for r in csv_writer.read_rows(seeding)}
+
+    assert result["claimed"] == 1
+    assert by_hs["2"]["File"] == "/Transcripts/CDW 2021/Presentations/Knowledge Graphs_ The Frontier.srt"
+    assert by_hs["3"]["File"] == ""
+    assert heysummit.claim_transcripts(seeding)["claimed"] == 0
+
+
+def test_sync_runs_everything_from_disk_when_the_api_refuses(seeding, monkeypatch):
+    monkeypatch.setattr(heysummit, "refresh_catalog",
+                        lambda: (_ for _ in ()).throw(RuntimeError("HEYSUMMIT_API_TOKEN is not set")))
+
+    summary = heysummit.sync(refresh=True, csv_path=seeding)
+
+    assert "HEYSUMMIT_API_TOKEN" in summary["refresh_error"]
+    assert summary["seeded"] == 2 and summary["claimed"] == 0 and summary["changed"] is True
+    assert "candidate_ids" not in summary
+    assert heysummit.sync(refresh=False, csv_path=seeding)["changed"] is False
+
+
+def test_sync_with_no_catalogue_is_an_error_not_a_crash(monkeypatch, tmp_path):
+    monkeypatch.setattr(config, "HEYSUMMIT_CATALOG", tmp_path / "missing.json")
+    summary = heysummit.sync(refresh=False, csv_path=tmp_path / "x.csv")
+    assert summary["error"] and summary["changed"] is False
+
+
+def test_attach_can_decide_without_writing(catalog_and_csv):
+    before = catalog_and_csv.read_bytes()
+    result = heysummit.attach(catalog_and_csv, write=False)
+    assert result["attached"] == 1 and result["filled"] == 0
+    assert catalog_and_csv.read_bytes() == before
+
+
+def test_the_programme_s_furniture_is_not_a_talk(seeding):
+    """Coffee, lunch and the closing party arrive as talks with a host as
+    speaker; the networking category is what marks them."""
+    assert not heysummit.is_talk({"is_active": True, "talk_cancelled": False, "is_agenda_item": False,
+                                  "categories": [{"title": "Networking & Fun"}]})
+    assert heysummit.is_talk({"is_active": True, "talk_cancelled": False, "is_agenda_item": False,
+                              "categories": [{"title": "Presentations"}]})
+
+    catalog = json.loads(config.HEYSUMMIT_CATALOG.read_text())
+    catalog.append(_talk(5, "Closing Party", ["The Host"], ["Networking"]))
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps(catalog))
+
+    result = heysummit.seed(seeding)
+    assert "5" not in {r["HeySummit"] for r in csv_writer.read_rows(seeding)}
+    assert result["seeded"] == 2

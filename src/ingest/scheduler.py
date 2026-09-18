@@ -9,7 +9,11 @@ Detection is separate from ingestion. A newly spotted video is catalogued and
 surfaced in the panel, but ingesting it spends money on LLM calls, so that stays
 an explicit admin action unless AUTO_INGEST_NEW is turned on.
 
-Both jobs are governed by ``SCHEDULER_ENABLED``, which is a pause valve in the
+The third job reads HeySummit, the conference's own programme, on the
+inventory's timer: every talk it lists becomes a row of its own — before, and
+whether or not, a recording reaches the channel.
+
+Every job is governed by ``SCHEDULER_ENABLED``, which is a pause valve in the
 panel rather than a start-up decision: see ``start_scheduler``.
 """
 
@@ -120,6 +124,32 @@ def refresh_inventory() -> None:
         log.exception("Inventory refresh failed")
 
 
+def sync_heysummit() -> None:
+    """Refresh the catalogue, seed the talks it lists, claim their transcripts.
+
+    Two valves, both checked here: the scheduler's own, and the HeySummit one,
+    for an admin who wants the channel read but the CMS left alone. Nothing
+    here costs an LLM call; a rebuild follows only when the CSV changed.
+    """
+    from .sources import heysummit
+
+    if not (config.SCHEDULER_ENABLED and config.HEYSUMMIT_SYNC_ENABLED):
+        return
+    try:
+        summary = heysummit.sync(refresh=True)
+    except Exception:
+        log.exception("HeySummit sync failed")
+        return
+    log.info("HeySummit sync: %s", {k: v for k, v in summary.items()
+                                    if k not in {"seeded_talks", "linked_videos",
+                                                 "matched", "filled_columns",
+                                                 "claimed_files"}})
+    if summary.get("changed") and config.KG_ENABLED:
+        from .pipeline.runner import request_rebuild
+
+        request_rebuild()
+
+
 def start_scheduler() -> BackgroundScheduler:
     """Start the background jobs, paused when automatic reading is switched off.
 
@@ -142,12 +172,19 @@ def start_scheduler() -> BackgroundScheduler:
         hours=config.INVENTORY_REFRESH_HOURS, id="inventory_refresh",
         max_instances=1, coalesce=True,
     )
+    scheduler.add_job(
+        sync_heysummit, "interval",
+        hours=config.INVENTORY_REFRESH_HOURS, id="heysummit_sync",
+        max_instances=1, coalesce=True,
+    )
     scheduler.start(paused=not config.SCHEDULER_ENABLED)
     _scheduler = scheduler
     log.info(
-        "Scheduler started (%s): RSS every %dm, inventory every %dh, auto-ingest=%s",
+        "Scheduler started (%s): RSS every %dm, inventory and HeySummit every %dh, "
+        "auto-ingest=%s, heysummit-sync=%s",
         "polling" if config.SCHEDULER_ENABLED else "paused",
         config.RSS_POLL_MINUTES, config.INVENTORY_REFRESH_HOURS, config.AUTO_INGEST_NEW,
+        config.HEYSUMMIT_SYNC_ENABLED,
     )
     return scheduler
 

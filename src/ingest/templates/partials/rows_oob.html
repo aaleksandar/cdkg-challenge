@@ -6,6 +6,6 @@
 {% with oob = true %}{% include "partials/figures.html" %}{% endwith %}
 <div id="section-note" hx-swap-oob="true">{% include "partials/section_note.html" %}</div>
 <div class="meta" id="reconciled" hx-swap-oob="true">
-  {{ total }} videos on the channel{% if offchannel %} · {{ offchannel }} off-channel{% endif %}
+  {{ total }} talks{% if offchannel %} · {{ offchannel }} on disk only{% endif %}
 </div>
 <div id="inventory-strip" hx-swap-oob="true">{% include "partials/inventory_strip.html" %}</div>

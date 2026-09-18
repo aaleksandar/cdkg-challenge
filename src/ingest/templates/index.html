@@ -13,7 +13,7 @@
   <div class="wordmark">Connected Data <span>· Knowledge Graph ingestion</span></div>
   <div class="spacer"></div>
   <div class="meta" id="reconciled">
-    {{ total }} videos on the channel{% if offchannel %} · {{ offchannel }} off-channel{% endif %}
+    {{ total }} talks{% if offchannel %} · {{ offchannel }} on disk only{% endif %}
   </div>
   {# Everything an admin needs occasionally lives behind here: the pause valves,
      the channel refresh, the graph rebuild, the backlog drain, and the on-disk
@@ -49,7 +49,9 @@
 
 <div id="inventory-strip">{% include "partials/inventory_strip.html" %}</div>
 
-{# Renders nothing at all when idle, so a quiet panel costs one tiny request. #}
+{# Invisible either way: rows show a running talk's status in place. This is
+   the signal that a run started or ended. Renders nothing at all when idle, so
+   a quiet panel costs one tiny request. #}
 <div id="live" hx-get="{{ base }}/live" hx-trigger="load, every 2s" hx-swap="innerHTML"></div>
 
 <div class="sheet" id="sheet">
@@ -76,8 +78,8 @@
   // itself, and a row only polls while it is the one running, so an ingestion
   // started from the drawer left the whole list a run out of date until reload.
   //
-  // The banner is the signal. It is rendered only while work is in flight, so
-  // the swap that empties it is the moment the run ended.
+  // The live signal is rendered only while work is in flight, so the swap
+  // that empties it is the moment the run ended.
   (function () {
     const live = document.getElementById('live');
     let wasBusy = false;

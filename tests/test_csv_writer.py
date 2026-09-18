@@ -154,6 +154,7 @@ def blank_speaker_csv(tmp_path) -> Path:
             "Title": "Talk to your data | CDL24", "Speaker": "",
             "Event": "Connected Data London 2024",
             "Video": "https://www.youtube.com/watch?v=bbbbbbbbbbb",
+            "File": "/t.srt",
         })
         writer.writerow(row)
     return path
@@ -262,3 +263,74 @@ def test_every_appended_row_gets_its_own_identity(metadata_csv, tmp_path):
                               srt_path=tmp_path / "x.srt", csv_path=metadata_csv)
     ids = [r["TalkID"] for r in _rows(metadata_csv)]
     assert all(ids) and len(set(ids)) == len(ids)
+
+
+# --- HeySummit seeds a row; the video attaches to it ---------------------------
+
+def _seeded(path: Path, title="Knowledge Graphs: The Frontier", speaker="Ada Lovelace"):
+    row = dict.fromkeys(COLUMNS, "")
+    row.update({"Title": title, "Speaker": speaker, "Event": "Connected Data World 2021",
+                "HeySummit": "2", "Date": "01/12/2021"})
+    return csv_writer.append_rows([row], path)[0]
+
+
+def test_append_rows_mints_ids_and_survives_a_missing_trailing_newline(metadata_csv):
+    with open(metadata_csv, "rb+") as handle:      # chop the trailing newline
+        handle.seek(-1, 2); handle.truncate()
+
+    ids = csv_writer.append_rows([
+        {"Title": "One", "Speaker": "A", "Unknown column": "dropped"},
+        {"Title": "Two", "Speaker": "B", "TalkID": "t-given"},
+    ], metadata_csv)
+
+    rows = _rows(metadata_csv)
+    assert len(rows) == 3
+    assert ids[0].startswith("t-") and ids[1] == "t-given"
+    assert [r["Title"] for r in rows[1:]] == ["One", "Two"]
+    assert rows[1]["Video"] == "" and "Unknown column" not in rows[1]
+
+
+def test_a_video_attaches_to_the_row_heysummit_seeded(metadata_csv):
+    """The inversion: the talk existed before the video; the video joins it."""
+    talk_id = _seeded(metadata_csv)
+    parsed = _talk(title="Knowledge Graphs: The Frontier",
+                   full_title="Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021",
+                   speaker="Ada Lovelace", event="Connected Data World 2021")
+
+    appended, detail = csv_writer.append_row(parsed, "vvvvvvvvvvv", Path("/t.srt"), csv_path=metadata_csv)
+
+    assert appended is False
+    assert detail.startswith(f"Attached to {talk_id}, seeded from HeySummit — filled Video, File")
+    row = next(r for r in _rows(metadata_csv) if r["TalkID"] == talk_id)
+    assert row["Video"] == "https://www.youtube.com/watch?v=vvvvvvvvvvv"
+    assert row["File"] == "/t.srt"
+    assert row["Title"] == "Knowledge Graphs: The Frontier"     # the CMS title stands
+    assert len(_rows(metadata_csv)) == 2
+
+
+def test_a_resembling_title_is_appended_and_reported_not_taken(metadata_csv):
+    talk_id = _seeded(metadata_csv, speaker="Ada Lovelace")
+    parsed = _talk(title="Knowledge Graphs: The Frontiers", full_title="Knowledge Graphs: The Frontiers",
+                   speaker="Someone Else", event="E")
+
+    appended, detail = csv_writer.append_row(parsed, "wwwwwwwwwww", Path("/w.srt"), csv_path=metadata_csv)
+
+    assert appended is True
+    assert f"possibly the same talk as {talk_id}" in detail
+    assert len(_rows(metadata_csv)) == 3
+
+
+def test_a_row_linked_by_hand_gains_its_file_on_ingest(metadata_csv):
+    """A seeded row given its Video by the attach form, or at seed time, has
+    no File yet; the run that follows must write it or tags never join."""
+    talk_id = _seeded(metadata_csv)
+    csv_writer.update_row(talk_id, {"Video": "https://www.youtube.com/watch?v=vvvvvvvvvvv"},
+                          csv_path=metadata_csv)
+    parsed = _talk(title="Whatever the video says", full_title="Whatever the video says",
+                   speaker="Ada Lovelace", event="E")
+
+    appended, detail = csv_writer.append_row(parsed, "vvvvvvvvvvv", Path("/t.srt"), csv_path=metadata_csv)
+
+    assert appended is False and "filled blank File" in detail
+    row = next(r for r in _rows(metadata_csv) if r["TalkID"] == talk_id)
+    assert row["File"] == "/t.srt" and row["Event"] == "Connected Data World 2021"

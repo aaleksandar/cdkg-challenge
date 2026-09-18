@@ -2,11 +2,11 @@
   <div class="empty">
     {% if lane == 'attention' %}
       <div class="big">Nothing needs you.</div>
-      <p>Every video on the channel is either in the graph, being ingested, or
-         waiting in the backlog. This is what a healthy panel looks like.</p>
+      <p>Every talk is either in the graph, being ingested, waiting in the
+         backlog, or waiting for its video. This is what a healthy panel looks like.</p>
     {% else %}
       <div class="big">Nothing here.</div>
-      <p>No videos match this filter.</p>
+      <p>No talks match this filter.</p>
     {% endif %}
   </div>
 {% else %}
@@ -20,7 +20,7 @@
       <th>Status</th>
       <th class="r">Tags</th>
       <th class="r">Length</th>
-      <th>Video</th>
+      <th>Source</th>
       <th></th>
     </tr>
   </thead>

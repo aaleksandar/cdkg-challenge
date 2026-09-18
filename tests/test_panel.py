@@ -464,11 +464,13 @@ def test_each_switch_draws_its_own_state(client, monkeypatch):
 
     view = _advanced_view("all", "")
     assert view["flags"] == {
-        "SCHEDULER_ENABLED": False, "AUTO_INGEST_NEW": True, "KG_ENABLED": True,
+        "SCHEDULER_ENABLED": False, "AUTO_INGEST_NEW": True,
+        "HEYSUMMIT_SYNC_ENABLED": config.HEYSUMMIT_SYNC_ENABLED, "KG_ENABLED": True,
     }
     body = client.get("/advanced?body=1").text
     for label in ("Read the channel automatically",
                   "Ingest newly published videos automatically",
+                  "Sync HeySummit automatically",
                   "Write to the knowledge graph"):
         assert label in body
 
@@ -827,3 +829,174 @@ def test_an_llm_outage_is_not_explained_as_a_caption_problem(client, monkeypatch
     assert "Supadata's monthly credits" not in drawer
     assert "resumes from tag extraction" in drawer
     assert "Upload and ingest" not in drawer   # the upload form is for caption failures only
+
+
+def test_sync_heysummit_joins_from_the_catalogue_when_the_api_is_unreachable(client, monkeypatch):
+    """Without a token the button used to stop before the join, though the
+    catalogue on disk held every talk it needed. It now seeds and claims too,
+    and says how much of each it did."""
+    from ingest.sources import heysummit
+
+    monkeypatch.setattr(heysummit, "sync", lambda refresh=True, csv_path=None: {
+        "refresh_error": "HEYSUMMIT_API_TOKEN is not set",
+        "attached": 1, "filled": 1, "seeded": 3, "linked_videos": {"1": "aaaaaaaaaaa"},
+        "claimed": 2, "candidates": [("Our row", "Their talk")], "unmatched": 0,
+        "disagreements": [("A talk", "Connected Data London 2024", "Knowledge Connexions 2020")],
+        "changed": True})
+    monkeypatch.setattr(config, "KG_ENABLED", False)
+
+    note = client.post("/heysummit").text
+
+    assert "Could not refresh from HeySummit" in note
+    assert "joined from the catalogue on disk" in note
+    assert "blanks filled on 1 talks" in note
+    assert "3 new talks seeded (1 linked to a channel video)" in note
+    assert "2 transcripts on disk claimed" in note
+    assert "not seeded: Our row ≈ Their talk" in note
+    assert "Event disagrees on 1" in note and "Knowledge Connexions 2020" in note
+
+
+def _live_run(stage="transcript_download", done=1, total=7):
+    return {"id": 3, "video_id": "aaaaaaaaaaa", "status": "running",
+            "current_stage": stage, "done": done, "total": total}
+
+
+def test_a_running_talk_shows_its_stage_in_its_own_row(client, monkeypatch):
+    """The banner above the sheet named the talk while its row still said
+    "Not ingested": the same video, read as two. The row is the status now."""
+    state = R.TalkState(**{**READY.__dict__, "in_csv": False, "has_transcript": False,
+                           "has_tags": False, "tag_count": 0, "run": _live_run()})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+
+    row = client.get("/row/youtube:aaaaaaaaaaa").text
+
+    assert 'is-live' in row
+    assert "Download transcript" in row and "1/7" in row
+    assert "Not ingested" not in row
+    assert 'hx-trigger="every 2s"' in row          # it keeps itself current
+
+
+def test_a_queued_talk_says_so_in_its_row(client, monkeypatch):
+    run = {**_live_run(), "status": "queued", "current_stage": None, "done": 0}
+    state = R.TalkState(**{**READY.__dict__, "in_csv": False, "has_transcript": False,
+                           "has_tags": False, "tag_count": 0, "run": run})
+    monkeypatch.setattr(R, "reconcile", _only(state))
+
+    assert "Queued" in client.get("/row/youtube:aaaaaaaaaaa").text
+
+
+def test_the_live_poll_is_a_signal_not_a_banner(client, monkeypatch):
+    monkeypatch.setattr("ingest.db.active_runs", lambda: [
+        {"id": 3, "video_id": "aaaaaaaaaaa", "status": "running", "title": "A Talk",
+         "current_stage": "transcript_download", "done": 1, "total": 7}])
+    monkeypatch.setattr("ingest.pipeline.runner.queue_depth", lambda: 0)
+
+    live = client.get("/live").text
+
+    assert 'class="live-signal" hidden' in live
+    assert "aaaaaaaaaaa" in live                   # the ids the page kicks rows for
+    assert 'class="live"' not in live and "Download transcript" not in live
+
+    monkeypatch.setattr("ingest.db.active_runs", lambda: [])
+    assert client.get("/live").text == ""         # idle: nothing at all
+
+
+def test_a_source_key_still_resolves_once_the_record_is_a_talk(client, monkeypatch):
+    """csv_append mints a TalkID mid-run, so the row's poller and the live
+    signal, both addressing youtube:<id>, went on finding nothing."""
+    talk = R.TalkState(**{**READY.__dict__, "talk_id": "t-deadbeef"})
+    monkeypatch.setattr(R, "reconcile", _only(talk))   # a curated talk: key is its TalkID
+    assert talk.key == "t-deadbeef"
+
+    row = client.get("/row/youtube:aaaaaaaaaaa").text
+    assert 'data-video="aaaaaaaaaaa"' in row
+    assert "A Talk | Jane Doe | CDL24" in row
+
+
+# --- Talks HeySummit seeded, before the channel has them ----------------------
+
+AWAITING = R.TalkState(
+    talk_id="t-await01", sources={"heysummit": "587108"}, title="Network Science Panel",
+    csv_title="Network Science Panel", in_csv=True, in_graph=True,
+    speaker="Amy Hodler & Orit Gal", event="Connected Data London 2025",
+    talk_date="2025-12-11", web="https://2025.connected-data.london/talks/network-science/",
+    missing_optional=["Category"],
+)
+
+
+def test_a_talk_without_a_video_is_a_row_with_its_own_date_and_link(client, monkeypatch):
+    """The sheet used to be the channel: a talk HeySummit knew and YouTube did
+    not was invisible. It is a row now, dated by when it was given."""
+    older = R.TalkState(**{**READY.__dict__, "published_at": "2024-03-12T09:00:00Z"})
+    monkeypatch.setattr(R, "reconcile", _only(older, AWAITING))
+
+    rows = client.get("/rows").text
+
+    assert "Network Science Panel" in rows
+    assert 'HeySummit &#8599;' in rows or "HeySummit ↗" in rows
+    # The row shows the lane; the specific status is the hover, as for every row.
+    assert "Not ingested" in rows and "no video on the channel yet" in rows
+    assert rows.index("Network Science Panel") < rows.index("A Talk | Jane Doe | CDL24")   # newer first
+    row = client.get("/row/t-await01").text
+    assert ">Ingest<" not in row                   # nothing to ingest without a video
+    assert 'data-video=""' in row
+
+
+def test_a_talk_without_a_video_can_be_curated_and_given_a_video(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(AWAITING))
+
+    drawer = client.get("/video/t-await01?body=1").text
+
+    assert 'hx-post="/curate/t-await01"' in drawer          # the curation form
+    assert 'name="Category"' in drawer
+    assert "<dt>Date</dt>" in drawer                        # the talk's own date, not an upload
+    assert "Awaiting video" in drawer                       # the drawer names the status
+    assert 'hx-post="/video/t-await01/attach"' in drawer    # the attach form
+    assert "programme page" in drawer
+    assert "Read the speaker from the description" not in drawer   # needs a video
+
+
+def test_attaching_a_video_records_it_and_queues_the_run(client, monkeypatch, tmp_path):
+    from ingest.pipeline import csv_writer
+
+    csv_path = tmp_path / "metadata.csv"
+    monkeypatch.setattr(config, "METADATA_CSV", csv_path)
+    csv_writer.append_rows([{"TalkID": "t-await01", "Title": "Network Science Panel",
+                             "Speaker": "Amy Hodler", "Event": "CDL 2025"}], csv_path)
+    csv_writer.append_rows([{"TalkID": "t-other", "Title": "Other",
+                             "Video": "https://www.youtube.com/watch?v=ttttttttttt"}], csv_path)
+    monkeypatch.setattr(R, "reconcile", _only(AWAITING))
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
+    monkeypatch.setattr("ingest.sources.youtube.resolve_videos", lambda ids: 0)
+
+    taken = client.post("/video/t-await01/attach", data={"video": "ttttttttttt"})
+    assert "already belongs to talk t-other" in taken.text and queued == []
+
+    nonsense = client.post("/video/t-await01/attach", data={"video": "not a video"})
+    assert "Paste a YouTube link" in nonsense.text
+
+    ok = client.post("/video/t-await01/attach",
+                     data={"video": "https://youtu.be/nnnnnnnnnnn"})
+    assert ok.status_code == 200
+    assert queued == ["nnnnnnnnnnn"]
+    row = next(r for r in csv_writer.read_rows(csv_path) if r["TalkID"] == "t-await01")
+    assert row["Video"] == "https://www.youtube.com/watch?v=nnnnnnnnnnn"
+
+
+def test_data_health_lists_heysummit_talks_that_may_already_be_a_row(client, monkeypatch):
+    from ingest.sources import heysummit
+
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    monkeypatch.setattr(heysummit, "read_catalog", lambda: [{"id": 1}])
+    monkeypatch.setattr(heysummit, "attach", lambda *a, **k: {
+        "candidates": [("Grounding LLMs on Solid Knowledge", "Grounding LLMs on solid knowledge graphs")]})
+
+    advanced = client.get("/advanced?body=1").text
+    assert "HeySummit talks that may already be a row" in advanced
+    assert "Grounding LLMs on solid knowledge graphs" in advanced
+
+
+def test_the_count_line_counts_talks_not_videos(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(READY, AWAITING))
+    assert "2 talks" in client.get("/rows").text

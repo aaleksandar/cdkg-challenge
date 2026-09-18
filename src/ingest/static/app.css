@@ -423,14 +423,10 @@ thead th.r { text-align: right; }
 .sub .guess::after { content: " (parsed)"; font-style: normal; font-size: .92em; opacity: .7; }
 
 
-/* ---- Live banner ---- */
-.live {
-  display: flex; align-items: center; gap: .6rem;
-  padding: .55rem var(--gutter);
-  background: var(--accent-wash);
-  border-bottom: 1px solid var(--rule);
-  font-size: .82rem;
-}
+/* ---- A talk being ingested: the row is the status ---- */
+tbody tr.is-live, tbody tr.is-live:hover { background: var(--accent-wash); }
+tbody tr.is-live td:first-child { box-shadow: inset 2px 0 0 var(--busy); }
+.badge .step { color: var(--ink-faint); font-weight: normal; margin-left: .25rem; }
 .pulse {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--busy); animation: pulse 1.1s ease-in-out infinite; flex: none;

@@ -233,14 +233,45 @@ FAILURE_DEFAULT = "The caption download failed"
 
 
 def stage_csv_append(ctx: dict) -> StageResult:
-    from .csv_writer import append_row
+    """Give the talk a row, then let HeySummit fill what the video could not.
+
+    The join to HeySummit used to be a button, so a talk ingested after the
+    last press sat with a blank Event — the one blank that keeps it out of the
+    graph — while the catalogue on disk had held the answer all along. It runs
+    here, for this one talk, from the committed catalogue: no network, no LLM,
+    and nothing a curator wrote is overwritten.
+    """
+    from ..sources import heysummit
+    from .csv_writer import append_row, find_talk_by_source
 
     appended, reason = append_row(
         parsed=ctx["parsed"],
         video_id=ctx["video_id"],
         srt_path=ctx["srt_path"],
     )
-    return StageResult(True, reason, {"csv_appended": appended})
+    data = {"csv_appended": appended}
+
+    talk_id = find_talk_by_source(config.METADATA_CSV, "youtube", ctx["video_id"])
+    if talk_id:
+        # The talk this run is now about, whichever row it turned out to be —
+        # its own, or one HeySummit seeded. The rebuild stage checks tags by it.
+        data["talk_id"] = talk_id
+    if talk_id and heysummit.read_catalog():
+        joined = heysummit.attach(only={talk_id})
+        heysummit_id = joined["matched"].get(talk_id)
+        if heysummit_id:
+            filled = joined["filled_columns"].get(talk_id, [])
+            data.update({"heysummit_id": heysummit_id, "heysummit_filled": filled})
+            reason += (f" — HeySummit talk {heysummit_id}: filled {', '.join(filled)}"
+                       if filled else f" — HeySummit talk {heysummit_id}: nothing to fill")
+            if joined["disagreements"]:
+                _, ours, theirs = joined["disagreements"][0]
+                reason += f"; Event disagrees (CSV {ours!r}, HeySummit {theirs!r}) — left as is"
+        elif joined["candidates"]:
+            reason += f" — HeySummit: possible match {joined['candidates'][0][1]!r}, for a curator"
+        else:
+            reason += " — HeySummit: no matching talk"
+    return StageResult(True, reason, data)
 
 
 def stage_transcript_extraction(ctx: dict) -> StageResult:
@@ -318,11 +349,15 @@ def stage_graph_rebuild(ctx: dict) -> StageResult:
     # tags. A rebuild that succeeded without doing so is still a better graph
     # than the old one, so it stays swapped in — but the run must say so, or
     # the talk sits in the attention lane as "untagged" with no explanation.
-    parsed = ctx.get("parsed")
-    if parsed is None or not (ctx.get("tags") or ctx.get("reused")):
+    from .csv_writer import find_talk_by_source
+
+    talk_id = ctx.get("talk_id")
+    if talk_id is None and ctx.get("video_id"):
+        talk_id = find_talk_by_source(config.METADATA_CSV, "youtube", ctx["video_id"])
+    if talk_id is None or not (ctx.get("tags") or ctx.get("reused")):
         return result
     try:
-        tagged = talk_is_tagged(config.GRAPH_DB_PATH, parsed.record_title)
+        tagged = talk_is_tagged(config.GRAPH_DB_PATH, talk_id)
     except Exception:  # noqa: BLE001 — a swap may be racing; the count is advisory
         return result
     result.data["tagged"] = tagged

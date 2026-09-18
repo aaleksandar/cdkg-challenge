@@ -1,13 +1,16 @@
-{# One video. Rendered standalone too, so a row can replace itself while its run
+{# One talk. Rendered standalone too, so a row can replace itself while its run
    advances — a status that stays "Not ingested" through a completed pipeline is
    worse than no status at all.
 
-   Only channel videos reach the sheet, so the key is always a video ID. Talks
-   that exist only on disk are listed under Advanced, where the fix for each of
-   them lives. #}
+   A row is a channel video, a talk HeySummit seeded that has no video yet, or
+   both once they have met. Files on disk that are neither are listed under
+   Advanced, where the fix for each of them lives. #}
 {% set busy = s.status == 'in_progress' %}
-<tr class="{{ 'is-quiet' if s.lane == 'excluded' }}"
-    id="talk-{{ s.key }}"
+{# A talk being ingested is highlighted in place and its status cell names the
+   stage. There is no banner above the sheet: the same talk in two places, with
+   the row still saying "Not ingested", read as two different videos. #}
+<tr class="{{ 'is-quiet' if s.lane == 'excluded' }} {{ 'is-live' if busy }}"
+    id="talk-{{ s.key }}" data-video="{{ s.video_id or '' }}"
     {% if oob %}hx-swap-oob="true"{% endif %}
     hx-get="{{ base }}/video/{{ s.key | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
   <td>
@@ -31,29 +34,44 @@
       {% if s.missing_curation %}<span>missing {{ s.missing_curation | join(', ') }}</span>{% endif %}
     </div>
   </td>
-  <td class="when">{{ s.published_at | day }}</td>
+  {# The upload date when there is a video; the date the talk was given when
+     there is not yet. Both are the timeline the sheet reads in. #}
+  <td class="when">{{ s.when | day }}</td>
   <td>
     {# The lane is what the column says; the specific diagnosis behind it is one
        hover away, because "orphaned" and "untagged" mean nothing to an admin who
        has not read reconcile.py. #}
     <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
-      <i class="dot"></i><span class="label">{{ LANE_LABELS[s.lane] }}</span>
+      <i class="dot"></i><span class="label">
+        {%- if busy and s.run and s.run.current_stage -%}
+          {{ STAGE_LABELS.get(s.run.current_stage, s.run.current_stage) }}
+          <span class="step">{{ s.run.done }}/{{ s.run.total }}</span>
+        {%- elif busy -%}
+          Queued
+        {%- else -%}
+          {{ LANE_LABELS[s.lane] }}
+        {%- endif -%}
+      </span>
     </span>
   </td>
   <td class="num">{{ s.tag_count or '—' }}</td>
   <td class="dur">{{ s.duration | duration }}</td>
   <td class="vid" onclick="event.stopPropagation()">
     {# A real link, not a printed ID: checking a talk against the source is the
-       commonest reason to look one up. #}
-    {% if s.url %}
+       commonest reason to look one up. The video when there is one; the
+       conference page when HeySummit is all that holds the talk so far. #}
+    {% if s.video_id and s.url %}
       <a href="{{ s.url }}" target="_blank" rel="noopener"
          aria-label="Watch {{ s.display_title }} on YouTube">{{ s.video_id }} &#8599;</a>
+    {% elif s.web %}
+      <a href="{{ s.web }}" target="_blank" rel="noopener"
+         aria-label="{{ s.display_title }} on HeySummit">HeySummit &#8599;</a>
     {% else %}—{% endif %}
   </td>
   <td class="act" onclick="event.stopPropagation()">
     {% if busy %}
       <span class="muted">running…</span>
-    {% elif s.status in ['not_ingested', 'failed'] %}
+    {% elif s.video_id and s.status in ['not_ingested', 'failed'] %}
       {# Swaps the row for its live version, which arrives with the poller. #}
       <button type="button" class="rowbtn"
               hx-post="{{ base }}/ingest/{{ s.key | urlencode }}"

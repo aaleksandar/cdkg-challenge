@@ -63,6 +63,7 @@ servers:
         # false, so the panel's switch can turn it back on without a redeploy.
         SCHEDULER_ENABLED: "true"
         AUTO_INGEST_NEW: "true"
+        HEYSUMMIT_SYNC_ENABLED: "true"
         KG_ENABLED: "true"
         # Stays off until the GitHub App is installed. It writes outside this
         # machine, so it is not a click — flip it here, deliberately.

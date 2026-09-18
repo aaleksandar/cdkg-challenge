@@ -159,20 +159,30 @@ def _apply_to_row(csv_path: Path, talk_id: str, fields: dict[str, str],
     return True, f"Updated {', '.join(applied)}"
 
 
-def fill_blanks(patches: dict[str, dict[str, str]], csv_path: Path | None = None) -> int:
+def fill_blanks(patches: dict[str, dict[str, str]], csv_path: Path | None = None,
+                report: dict[str, list[str]] | None = None) -> int:
     """Fill blank columns on many rows, keyed by TalkID, in one write.
 
     The pipeline's path for a source that has more to say about talks that
-    already exist. Never overwrites. Returns the number of rows changed.
+    already exist. Never overwrites. Returns the number of rows changed, and
+    when ``report`` is given, records which columns each changed row gained —
+    the stage line says "filled Event, Date" rather than "filled 1".
     """
     csv_path = csv_path or config.METADATA_CSV
     with _write_lock:
         if not csv_path.exists() or not patches:
             return 0
         columns, rows = _read_table(csv_path)
-        changed = sum(bool(_patch(row, patches[talk_id], columns, only_if_blank=True))
-                      for row in rows
-                      if (talk_id := (row.get("TalkID") or "").strip()) in patches)
+        changed = 0
+        for row in rows:
+            talk_id = (row.get("TalkID") or "").strip()
+            if talk_id not in patches:
+                continue
+            applied = _patch(row, patches[talk_id], columns, only_if_blank=True)
+            if applied:
+                changed += 1
+                if report is not None:
+                    report[talk_id] = applied
         if changed:
             _write_table(csv_path, columns, rows)
         return changed
@@ -208,54 +218,130 @@ def _write_table(csv_path: Path, columns: list[str], rows: list[dict]) -> None:
     temporary.replace(csv_path)
 
 
+def _append(csv_path: Path, columns: list[str], rows: list[dict]) -> None:
+    """Append rows to the file. The caller holds ``_write_lock``."""
+    is_new_file = not csv_path.exists()
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # A file whose last line lacks a newline would otherwise splice the new
+    # row onto the previous one.
+    if not is_new_file and csv_path.stat().st_size:
+        with open(csv_path, "rb") as handle:
+            handle.seek(-1, 2)
+            needs_newline = handle.read(1) != b"\n"
+        if needs_newline:
+            with open(csv_path, "a", encoding="utf-8", newline="") as handle:
+                handle.write("\n")
+
+    with open(csv_path, "a", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
+        if is_new_file:
+            writer.writeheader()
+        writer.writerows(rows)
+
+
+def append_rows(rows: list[dict], csv_path: Path | None = None) -> list[str]:
+    """Append many rows in one write, minting a TalkID for each. Returns the ids.
+
+    HeySummit's path: a talk the conference knows and nothing else does yet
+    becomes a row with no File and no Video, which the transcript and the
+    video attach to later. Columns the row does not name are written blank;
+    columns the file does not have are dropped.
+    """
+    csv_path = csv_path or config.METADATA_CSV
+    with _write_lock:
+        columns = read_columns(csv_path)
+        taken = existing_talk_ids(csv_path)
+        written, ids = [], []
+        for row in rows:
+            talk_id = (row.get("TalkID") or "").strip() or mint_talk_id(taken)
+            taken.add(talk_id)
+            complete = dict.fromkeys(columns, "")
+            complete.update({k: v for k, v in row.items() if k in columns})
+            complete["TalkID"] = talk_id
+            written.append(complete)
+            ids.append(talk_id)
+        if written:
+            _append(csv_path, columns, written)
+    return ids
+
+
+def _video_less_rows(csv_path: Path) -> list[dict]:
+    """Rows with no Video yet, as match candidates for a video that has arrived."""
+    from ..sources import matching, parser
+
+    return [{
+        "norm": matching.title_key(r.get("Title")),
+        "speakers": [n for n in parser.SPEAKER_SPLIT.split(r.get("Speaker") or "") if n.strip()],
+        "talk_id": r["TalkID"].strip(),
+        "title": (r.get("Title") or "").strip(),
+    } for r in read_rows(csv_path)
+        if (r.get("TalkID") or "").strip() and not (r.get("Video") or "").strip()]
+
+
 def append_row(parsed, video_id: str, srt_path: Path,
                csv_path: Path | None = None) -> tuple[bool, str]:
-    """Append one row. Returns (appended, human-readable reason)."""
+    """Give a video's talk a row — or the row it already has. Returns (appended, reason).
+
+    Three cases, in order. A row already holds this video: fill its gaps. A row
+    HeySummit seeded carries this talk's title and speaker: that is the talk,
+    so the video and its transcript attach to it and no row is added. Neither:
+    the talk starts here, as a new row. A title that merely resembles a seeded
+    row is not taken for it — the row is added, and the resemblance is reported
+    for a curator, because a wrong join in an append-only file is a duplicate
+    nobody can remove from the panel.
+    """
+    from ..sources import matching
+    from .stages import csv_file_reference
+
     csv_path = csv_path or config.METADATA_CSV
+    url = f"https://www.youtube.com/watch?v={video_id}"
 
     with _write_lock:
         # Has any row already resolved this source's record into a talk? If so
-        # this is that talk, not a new one — the same question HeySummit will ask
+        # this is that talk, not a new one — the same question HeySummit asks
         # about its own record, and the point where two sources become one talk.
         talk_id = find_talk_by_source(csv_path, "youtube", video_id)
         if talk_id:
             # Not a duplicate, but a re-run may have established something the
-            # first one could not — a Speaker recovered from the description, say.
-            # Only gaps are filled: a curator's value is never overwritten by a
-            # machine, which is the whole reason this file is append-only.
+            # first one could not — a Speaker recovered from the description, say
+            # — and a row that was seeded, or linked to this video by hand, has
+            # no File yet: the transcript joins the talk to its tags. Only gaps
+            # are filled: a curator's value is never overwritten by a machine,
+            # which is the whole reason this file is append-only.
             filled, detail = _apply_to_row(
                 csv_path, talk_id,
-                {"Speaker": parsed.speaker or "", "Event": parsed.event or ""},
+                {"Speaker": parsed.speaker or "", "Event": parsed.event or "",
+                 "File": csv_file_reference(srt_path), "Video": url},
                 only_if_blank=True,
             )
             if filled:
                 return False, f"Already in the metadata CSV — filled blank {detail[8:]}"
             return False, "Already in the metadata CSV — not duplicated"
 
+        verdict, hit = matching.best_match(
+            matching.norm(parsed.talk_title), matching.surnames(parsed.speakers),
+            _video_less_rows(csv_path),
+        )
+        if verdict == "attach":
+            filled, detail = _apply_to_row(
+                csv_path, hit["talk_id"],
+                {"Video": url, "File": csv_file_reference(srt_path),
+                 "Speaker": parsed.speaker or "", "Event": parsed.event or ""},
+                only_if_blank=True,
+            )
+            return False, (f"Attached to {hit['talk_id']}, seeded from HeySummit"
+                           + (f" — filled {detail[8:]}" if filled else ""))
+
         columns = read_columns(csv_path)
         row = build_row(parsed, video_id, srt_path, columns,
                         talk_id=mint_talk_id(existing_talk_ids(csv_path)))
-
-        is_new_file = not csv_path.exists()
-        csv_path.parent.mkdir(parents=True, exist_ok=True)
-
-        # A file whose last line lacks a newline would otherwise splice the new
-        # row onto the previous one.
-        if not is_new_file and csv_path.stat().st_size:
-            with open(csv_path, "rb") as handle:
-                handle.seek(-1, 2)
-                needs_newline = handle.read(1) != b"\n"
-            if needs_newline:
-                with open(csv_path, "a", encoding="utf-8", newline="") as handle:
-                    handle.write("\n")
-
-        with open(csv_path, "a", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
-            if is_new_file:
-                writer.writeheader()
-            writer.writerow(row)
+        _append(csv_path, columns, [row])
 
     detail = f"Appended {parsed.record_title!r}"
     if parsed.missing:
         detail += f" — {', '.join(parsed.missing)} left blank for curation"
+    if verdict == "candidate":
+        detail += (f" — possibly the same talk as {hit['talk_id']} "
+                   f"({hit['title']!r}); left for a curator")
     return True, detail
