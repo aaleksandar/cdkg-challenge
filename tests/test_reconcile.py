@@ -174,16 +174,29 @@ def test_a_talk_without_a_description_still_becomes_a_node():
     exec(source.split('if __name__ == "__main__":')[0], namespace)  # noqa: S102
 
     df = pl.DataFrame({
-        "TalkID": ["t-aaaa1111", "t-bbbb2222"],
-        "Title": ["Curated talk", "Freshly ingested talk"],
-        "Category": ["Knowledge Graphs", "Knowledge Graphs"],
-        "Web": ["https://example.com", None],
-        "Description": ["An abstract.", None],
-        "Type": ["Presentation", "Presentation"],
+        "TalkID": ["t-aaaa1111", "t-bbbb2222", "t-cccc3333"],
+        "Title": ["Curated talk", "Freshly ingested talk", "Seeded talk"],
+        "Category": ["Knowledge Graphs", "Knowledge Graphs", None],
+        "Web": ["https://example.com", None, "https://hs/seeded"],
+        "Description": ["An abstract.", None, "From the programme."],
+        "Type": ["Presentation", "Presentation", None],
+        "Video": [None, "https://www.youtube.com/watch?v=aaaaaaaaaaa", None],
+        "HeySummit": [None, None, 587108],
+        "File": [None, "/Transcripts/E/Presentations/Freshly ingested talk.srt", None],
     })
     talks = namespace["extract_talks"](df)
-    assert set(talks["title"]) == {"Curated talk", "Freshly ingested talk"}
-    assert talks.filter(pl.col("title") == "Freshly ingested talk")["url"][0] == ""
+    assert set(talks["title"]) == {"Curated talk", "Freshly ingested talk", "Seeded talk"}
+    ingested = talks.filter(pl.col("title") == "Freshly ingested talk").row(0, named=True)
+    assert ingested["url"] == "" and ingested["description_source"] == ""
+    assert ingested["video"].endswith("aaaaaaaaaaa") and ingested["transcript"] == "Freshly ingested talk"
+    # Where a description came from is recorded, so an answer can say so.
+    curated = talks.filter(pl.col("title") == "Curated talk").row(0, named=True)
+    assert curated["description_source"] == "curator" and curated["heysummit"] == ""
+    seeded = talks.filter(pl.col("title") == "Seeded talk").row(0, named=True)
+    assert seeded["description_source"] == "heysummit" and seeded["heysummit"] == "587108"
+    # COPY is positional: the frame's columns are the DDL's, in order.
+    assert talks.columns == ["talk_id", "title", "category", "url", "description", "type",
+                             "video", "heysummit", "transcript", "description_source"]
 
 
 def test_a_short_stays_a_short_even_once_it_has_a_metadata_row():

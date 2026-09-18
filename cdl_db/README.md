@@ -22,21 +22,32 @@ Node properties:
     - talk_id: string
     - title: string
     - category: string
-    - url: string
+    - url: string                 # the talk's page on HeySummit (the conference programme)
     - description: string
     - type: string
+    - video: string               # the YouTube URL, blank until a video exists
+    - heysummit: string           # the HeySummit talk id, blank when HeySummit does not list it
+    - transcript: string          # the caption file's stem, blank when no transcript; the join key to its tags
+    - description_source: string  # "heysummit" | "curator" | "" — where the description was written from
   - Speaker
     - name: string
   - Event
     - name: string
     - description: string
+    - url: string                 # the page the description was taken from, blank when none
   - Category
     - name: string
 
 Edge properties:
 - GIVES_TALK
     - date: date
+- IS_DESCRIBED_BY
+    - source: string              # where the tag came from; only "transcript" (YouTube captions) today
 ```
+
+The four provenance properties on `Talk`, `Event.url` and `IS_DESCRIBED_BY.source`
+exist so that an answer from the knowledge graph can say where its knowledge came
+from: the talk's HeySummit description, its transcript's tags, or an event's page.
 
 ### Node files
 
