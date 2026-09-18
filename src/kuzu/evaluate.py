@@ -109,11 +109,25 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
         question = q["question"]
         baseline = q["baseline"]
 
+        anchoring = {"grounding": "general", "from_general_knowledge": False,
+                     "row_count": 0, "sources": []}
         try:
             rag_result = rag.run(question)
             response = rag_result.get("response", "")
             cypher = rag_result.get("cypher", "")
             error = None
+            # Where the answer came from, compactly: the judge never sees it,
+            # but a reviewer asking "is this anchored?" does.
+            anchoring = {
+                "grounding": rag_result.get("grounding", "general"),
+                "from_general_knowledge": rag_result.get("from_general_knowledge", False),
+                "row_count": rag_result.get("row_count", 0),
+                "sources": [
+                    {"talk_id": s["talk_id"], "title": s["title"], "evidence": s["evidence"]}
+                    if s.get("kind") == "talk" else {"event": s["title"], "url": s.get("url", "")}
+                    for s in rag_result.get("sources") or []
+                ],
+            }
         except Exception:
             response = ""
             cypher = ""
@@ -133,6 +147,8 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
         print(f"     Answer:   {response or '(none)'}")
         print(f"     Baseline: {baseline}")
         print(f"     Reason:   {reasoning}")
+        print(f"     Anchored: {len(anchoring['sources'])} sources / {anchoring['grounding']}"
+              + (" / general knowledge" if anchoring["from_general_knowledge"] else ""))
         if error:
             print(f"     ERROR:    {error.splitlines()[-1]}")
         print()
@@ -147,6 +163,7 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
             "label": label,
             "reasoning": reasoning,
             "error": error,
+            **anchoring,
         })
 
     scores = [r["score"] for r in results]

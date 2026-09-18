@@ -50,7 +50,10 @@ else:
 # Create the necessary node and relationship tables for the lexical graph
 # In this case, the lexical graph is a subgraph that attaches to the domain graph
 conn.execute("CREATE NODE TABLE IF NOT EXISTS Tag(keyword STRING, PRIMARY KEY(keyword));")
-conn.execute("CREATE REL TABLE IF NOT EXISTS IS_DESCRIBED_BY(FROM Talk TO Tag);")
+# `source` says where a tag came from. Only transcripts produce tags today; the
+# property is the seam for a second source, and what lets an answer say "from
+# its transcript's tags" rather than guessing.
+conn.execute("CREATE REL TABLE IF NOT EXISTS IS_DESCRIBED_BY(FROM Talk TO Tag, source STRING);")
 
 for data in entities:
     filename = Path(data["filename"]).stem
@@ -64,7 +67,8 @@ for data in entities:
             MATCH (talk:Talk {talk_id: $talk_id})
             UNWIND $data.entities.tag AS keyword
             MERGE (tag:Tag {keyword: keyword})
-            MERGE (tag)<-[:IS_DESCRIBED_BY]-(talk)
+            MERGE (tag)<-[r:IS_DESCRIBED_BY]-(talk)
+            SET r.source = 'transcript'
             """,
             parameters={"data": data, "talk_id": talk[0]},
         )
