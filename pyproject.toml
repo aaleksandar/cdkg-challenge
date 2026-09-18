@@ -29,7 +29,10 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.4"]
+dev = [
+    "httpx2>=2.13",
+    "pytest>=8.4",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
