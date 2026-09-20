@@ -60,9 +60,21 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
     relationships survive, and the subsequent COPY fails with "Unable to find
     primary key value". Automatically ingested talks have no description, so
     this is the ordinary case, not an edge case.
+
+    Provenance rides along so an answer can say where it came from: the video
+    (`Video`), the HeySummit talk id (`HeySummit`), the transcript's filename
+    stem (`File`, the join key to its tags), and `description_source` —
+    `heysummit` when the row holds a HeySummit id and a description, `curator`
+    when a description and no id, blank when there is no description. The
+    column order here is the COPY order, which is positional: it must match
+    the DDL in ``create_tables``.
     """
+    # Evaluated after the rename below, so the renamed columns are the names.
+    has_id = pl.col("heysummit").cast(pl.String).fill_null("").str.strip_chars() != ""
+    has_description = pl.col("description").fill_null("").str.strip_chars() != ""
     talks_df = (
-        df.select(["TalkID", "Title", "Category", "Web", "Description", "Type"])
+        df.select(["TalkID", "Title", "Category", "Web", "Description", "Type",
+                   "Video", "HeySummit", "File"])
         .rename(
             {
                 "TalkID": "talk_id",
@@ -71,6 +83,8 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
                 "Web": "url",
                 "Description": "description",
                 "Type": "type",
+                "Video": "video",
+                "HeySummit": "heysummit",
             }
         )
         .drop_nulls(subset=["talk_id"])
@@ -79,7 +93,18 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
             pl.col("description").fill_null(""),
             pl.col("category").fill_null(""),
             pl.col("type").fill_null(""),
+            pl.col("video").fill_null(""),
+            pl.col("heysummit").cast(pl.String).fill_null(""),
+            pl.col("File").fill_null("")
+            .map_elements(lambda x: Path(x).stem if x else "", return_dtype=pl.String)
+            .alias("transcript"),
+            pl.when(~has_description).then(pl.lit(""))
+            .when(has_id).then(pl.lit("heysummit"))
+            .otherwise(pl.lit("curator"))
+            .alias("description_source"),
         )
+        .select(["talk_id", "title", "category", "url", "description", "type",
+                 "video", "heysummit", "transcript", "description_source"])
         .unique()
     )
     return talks_df
@@ -144,6 +169,10 @@ def create_tables(conn: kuzu.Connection):
             url STRING,
             description STRING,
             type STRING,
+            video STRING,
+            heysummit STRING,
+            transcript STRING,
+            description_source STRING,
             PRIMARY KEY (talk_id)
         )
     """)
@@ -152,6 +181,7 @@ def create_tables(conn: kuzu.Connection):
         CREATE NODE TABLE IF NOT EXISTS Event (
             name STRING,
             description STRING,
+            url STRING,
             PRIMARY KEY (name)
         )
         """
@@ -168,33 +198,22 @@ def get_talk_event_relationships(df: pl.DataFrame) -> pl.DataFrame:
     return df.select("TalkID", "Event")
 
 
-def write_cdl_description(conn: kuzu.Connection, event_name: str) -> None:
-    """
-    We obtain the conference desrciption for 2021 from the following URL:
-    https://2021.connecteddataworld.com/connected-data-world-2021-program-announced/
-    """
-    description = """
+# The conference's own description of two editions, and the page each was
+# taken from. The page is written onto the Event node as well, so an answer
+# built from the description can say where it was read.
+EVENT_DESCRIPTIONS = {
+    "Connected Data World 2021": (
+        "https://2021.connecteddataworld.com/connected-data-world-2021-program-announced/",
+        """
     Connected Data London, the top event for leaders and innovators on all things Knowledge Graphs,
     Graph Data Science and AI, Graph Databases and Semantic Technology, is back as what it has de facto
     become: Connected Data World. Building on our legacy, we are sharing a visionary outlook on Graph
     as a foundational technology stack for the 2020s.
-    """
-    description_clean = description.replace("\n", " ").strip()
-    conn.execute(
+    """,
+    ),
+    "Knowledge Connexions 2020": (
+        "https://knowledge-connexions-conference.heysummit.com/knowledge-connexions-2020-program-announced/",
         """
-        MERGE (e:Event {name: $event_name})
-        ON MATCH SET e.description = $description
-        """,
-        parameters={"event_name": event_name, "description": description_clean},
-    )
-
-
-def write_knowledge_connexions_description(conn: kuzu.Connection, event_name: str) -> None:
-    """
-    We obtain the conference desrciption for Knowledge Connexions 2020 from the following URL:
-    https://knowledge-connexions-conference.heysummit.com/knowledge-connexions-2020-program-announced/
-    """
-    description = """
     This visionary event featuring a rich array of technological building blocks to support the
     transition to a knowledge-based economy is taking place online. The representation of the
     relationships among data, information, knowledge and --ultimately-- wisdom, known as the data
@@ -206,15 +225,32 @@ def write_knowledge_connexions_description(conn: kuzu.Connection, event_name: st
     knowledge is the key to making progress and staying competitive. So how do we go from data to
     information, and from information to knowledge? This is the key question Knowledge Connexions
     aims to address.
-    """
-    description_clean = description.replace("\n", " ").strip()
+    """,
+    ),
+}
+
+
+def write_event_description(conn: kuzu.Connection, event_name: str,
+                            description: str, url: str) -> None:
+    """Attach a description and its source page to an Event that already exists."""
     conn.execute(
         """
         MERGE (e:Event {name: $event_name})
-        ON MATCH SET e.description = $description
+        ON MATCH SET e.description = $description, e.url = $url
         """,
-        parameters={"event_name": event_name, "description": description_clean},
+        parameters={"event_name": event_name,
+                    "description": description.replace("\n", " ").strip(), "url": url},
     )
+
+
+def write_cdl_description(conn: kuzu.Connection, event_name: str) -> None:
+    url, description = EVENT_DESCRIPTIONS["Connected Data World 2021"]
+    write_event_description(conn, event_name, description, url)
+
+
+def write_knowledge_connexions_description(conn: kuzu.Connection, event_name: str) -> None:
+    url, description = EVENT_DESCRIPTIONS["Knowledge Connexions 2020"]
+    write_event_description(conn, event_name, description, url)
 
 
 if __name__ == "__main__":
@@ -259,6 +295,9 @@ if __name__ == "__main__":
     conn.execute("COPY IS_PART_OF FROM is_part_of_df")
     conn.execute("COPY IS_CATEGORIZED_AS FROM is_categorized_as_df")
 
-    # Write the event descriptions as properties
-    write_cdl_description(conn, "Connected Data World 2021")
-    write_knowledge_connexions_description(conn, "Knowledge Connexions 2020")
+    # Write the event descriptions as properties, with the page each came from.
+    for event_name, (url, description) in EVENT_DESCRIPTIONS.items():
+        write_event_description(conn, event_name, description, url)
+    # Every other event has no source page; blank rather than null, so nothing
+    # downstream renders "None".
+    conn.execute("MATCH (e:Event) WHERE e.url IS NULL SET e.url = ''")

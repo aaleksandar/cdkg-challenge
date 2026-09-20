@@ -63,6 +63,52 @@ def describe_graph(token: str) -> str:
 if describe_graph(version):
     st.caption(describe_graph(version))
 
+GENERAL_KNOWLEDGE = ("No talk in the knowledge graph answers this directly; this comes from "
+                     "general knowledge about the conference.")
+
+
+def describe_evidence(source: dict) -> str:
+    """What the graph holds for this talk, in the words a reader needs."""
+    parts = []
+    if "description" in source.get("evidence", []):
+        parts.append("from its HeySummit description")
+    if "tags" in source.get("evidence", []):
+        tags = source.get("tags") or []
+        parts.append("matched on its transcript's tags (YouTube captions)"
+                     + (f": {', '.join(tags)}" if tags else ""))
+    return " and ".join(parts) or "listed in the knowledge graph"
+
+
+def render_sources(output: dict) -> None:
+    """Where the answer came from: the talks and events it drew on, with links.
+
+    The label for an answer from general knowledge is gated on the model's own
+    flag, not on whether talks were retrieved: an aggregate ("most popular
+    topics") legitimately cites no talk and is not general knowledge.
+    """
+    if output.get("from_general_knowledge"):
+        st.info(GENERAL_KNOWLEDGE)
+    sources = output.get("sources") or []
+    if not sources:
+        return
+    st.write("### Sources")
+    for source in sources:
+        if source.get("kind") == "event":
+            if source.get("url"):
+                st.markdown(f"- Event page: [{source['title']}]({source['url']})")
+            else:
+                st.markdown(f"- Event: {source['title']}")
+            continue
+        links = " · ".join(
+            f"[{label}]({url})" for label, url in
+            (("video", source.get("video_url")), ("HeySummit", source.get("heysummit_url"))) if url
+        )
+        meta = " · ".join(x for x in (", ".join(source.get("speakers") or []),
+                                      source.get("event"), source.get("date")) if x)
+        line = f"- **{source['title']}**" + (f" — {meta}" if meta else "") + (f" — {links}" if links else "")
+        st.markdown(line)
+        st.caption("  " + describe_evidence(source))
+
 # Create the input box
 question = st.text_input(
     "Ask a question to the CDL Knowledge Graph built on top of Kuzu, an embedded graph database:",
@@ -74,9 +120,12 @@ if question:
         # Get the Cypher query
         output = rag.run(question)
 
-        # Show the Cypher query in an expander
+        # Show the Cypher query in an expander, and the rows it returned
         with st.expander("View Cypher Query", expanded=True):
             st.code(output["cypher"], language="sql")
+        if output.get("results"):
+            with st.expander(f"Retrieved rows ({output.get('row_count', len(output['results']))})"):
+                st.dataframe(output["results"])
 
         # The Cypher is LLM-generated and may not run against the schema, and the
         # answer generation can fail to parse — GraphRAG.run reports both here
@@ -86,11 +135,17 @@ if question:
         # Get and show the response
         st.write("### Answer")
         st.write(output["response"])
-        # Append the question and answer to the history
-        st.session_state.messages.append({"question": question, "answer": output["response"]})
+        render_sources(output)
+        # Append the question, the answer and where it came from to the history
+        st.session_state.messages.append({
+            "question": question, "answer": output["response"],
+            "sources": output.get("sources") or [],
+            "from_general_knowledge": output.get("from_general_knowledge", False),
+        })
 
 # Display history
 for msg in reversed(st.session_state.messages):
     with st.container(border=True):
         st.write("**Q:** " + msg["question"])
         st.write("**A:** " + msg["answer"])
+        render_sources(msg)

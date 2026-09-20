@@ -6,6 +6,8 @@ class Cypher {
 class Answer {
   question string
   answer string
+  used_talk_ids string[] @description("The talk_id values, exactly as they appear in square brackets in the context, of the talks the answer actually drew on. Empty when the answer drew on none.")
+  from_general_knowledge bool @description("true when the answer rests on the domain knowledge rather than on any talk or event in the context")
 }
 
 // --- Functions ---
@@ -35,6 +37,9 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
     - Tag nodes hold keywords extracted from talk transcripts (always lowercase, one keyword per node).
     - GIVES_TALK has a `date` property, but NEVER filter by date — always query all data regardless
       of any timeframe mentioned in the question (e.g. "last 2 years", "recent", "latest").
+    - Talk.video, Talk.heysummit, Talk.transcript, Talk.description_source, Event.url and
+      IS_DESCRIBED_BY.source are provenance fields: they say where a value came from. Do not
+      filter on them unless the question asks where something came from.
 
     EXAMPLES:
     Q: What is Connected Data?
@@ -50,19 +55,19 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
     A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'knowledge graph' RETURN DISTINCT s.name
 
     Q: What did Paco Nathan talk about?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(s.name) CONTAINS 'paco nathan' RETURN t.title, collect(tag.keyword) AS tags
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(s.name) CONTAINS 'paco nathan' RETURN t.talk_id, t.title, collect(tag.keyword) AS tags
 
     Q: What Connected Data technologies are relevant to transparency and explainability?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'transparen' OR LOWER(tag.keyword) CONTAINS 'explainab' OR LOWER(t.description) CONTAINS 'transparen' OR LOWER(t.description) CONTAINS 'explainab' RETURN DISTINCT t.title, t.description, s.name
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'transparen' OR LOWER(tag.keyword) CONTAINS 'explainab' OR LOWER(t.description) CONTAINS 'transparen' OR LOWER(t.description) CONTAINS 'explainab' RETURN DISTINCT t.talk_id, t.title, t.description, s.name
 
     Q: Who are contributors to follow on transparency and explainability?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'explainab' OR LOWER(tag.keyword) CONTAINS 'transparen' OR LOWER(tag.keyword) CONTAINS 'ontolog' OR LOWER(tag.keyword) CONTAINS 'semantic' OR LOWER(tag.keyword) CONTAINS 'owl' OR LOWER(tag.keyword) CONTAINS 'shacl' OR LOWER(t.description) CONTAINS 'explainab' OR LOWER(t.description) CONTAINS 'transparen' RETURN DISTINCT s.name, t.title, collect(tag.keyword) AS tags
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'explainab' OR LOWER(tag.keyword) CONTAINS 'transparen' OR LOWER(tag.keyword) CONTAINS 'ontolog' OR LOWER(tag.keyword) CONTAINS 'semantic' OR LOWER(tag.keyword) CONTAINS 'owl' OR LOWER(tag.keyword) CONTAINS 'shacl' OR LOWER(t.description) CONTAINS 'explainab' OR LOWER(t.description) CONTAINS 'transparen' RETURN DISTINCT t.talk_id, s.name, t.title, collect(tag.keyword) AS tags
 
     Q: What resources are there on building enterprise knowledge graphs?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'enterprise' OR LOWER(t.title) CONTAINS 'enterprise' OR LOWER(t.description) CONTAINS 'enterprise' RETURN DISTINCT t.title, t.description, s.name
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'enterprise' OR LOWER(t.title) CONTAINS 'enterprise' OR LOWER(t.description) CONTAINS 'enterprise' RETURN DISTINCT t.talk_id, t.title, t.description, s.name
 
     Q: I am building an enterprise knowledge graph. Should I use OWL or SHACL? What are the arguments for and against each, and who has given them?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) = 'owl' RETURN 'OWL' AS technology, t.title, t.description, s.name UNION MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) = 'shacl' RETURN 'SHACL' AS technology, t.title, t.description, s.name
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) = 'owl' RETURN 'OWL' AS technology, t.talk_id, t.title, t.description, s.name UNION MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) = 'shacl' RETURN 'SHACL' AS technology, t.talk_id, t.title, t.description, s.name
     NOTE: For technology comparison questions (X vs Y), the UNION query filters ONLY on the technology tags — never add extra WHERE clauses from the question preamble (e.g. "enterprise"). Retrieve all talks mentioning either technology so the answer has real content to compare.
 
     The question is:
@@ -74,12 +79,14 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
     3. Use LOWER() + CONTAINS for all string comparisons, never exact equality on text fields.
     4. Each Tag node holds a single keyword. When searching multiple concepts, use OR across
        separate CONTAINS clauses — never AND on the same tag variable.
+    5. Whenever a Talk is part of the answer, return t.talk_id alongside its other properties,
+       so the answer can cite the talk. Never return only talk_id: include t.title too.
 
     {{ ctx.output_format }}
   "#
 }
 
-function RAGAnswerQuestion(question: string, context: string) -> Answer {
+function RAGAnswerQuestion(question: string, context: string, grounding: string) -> Answer {
   client GeminiFlash
   prompt #"
     You are an AI assistant for the Connected Data conference knowledge base.
@@ -91,6 +98,17 @@ function RAGAnswerQuestion(question: string, context: string) -> Answer {
     explicitly stated in the provided context. Do not add general knowledge trade-offs.
     If no explicit argument exists for one side, say so clearly.
 
+    The context was retrieved from the knowledge graph, and GROUNDING says what it holds:
+    "talks" — talks, each introduced by its id in square brackets, e.g. [t-1a2b3c4d];
+    "events" — only editions of the conference; "general" — nothing that answers the question.
+    Base the answer on the context, and anchor it: name the talks and the speakers the answer
+    draws on in the answer text itself, as a well-read colleague would ("Veronika Heimsbakk's
+    'Modelling regulation requirements using SHACL' argues that…"). In used_talk_ids, list the
+    ids of those talks, and only those. Set from_general_knowledge to true when the answer rests
+    on the domain knowledge below rather than on the context. Two things stay out of the answer
+    text: the bracketed ids themselves, and a trailing "Sources" list — the application renders
+    the references from used_talk_ids. Do not use the word "context".
+
     DOMAIN KNOWLEDGE:
     - "Connected Data" is an umbrella term for technologies that treat connections in data as
       first-class citizens, including Knowledge Graphs, Graph Databases, Graph Analytics,
@@ -98,8 +116,9 @@ function RAGAnswerQuestion(question: string, context: string) -> Answer {
     - The term was coined and popularized by the Connected Data London conference. As an event,
       Connected Data first started as a series of London-based Meetups in 2016. That same year,
       the first Connected Data London conference was held.
-    - The knowledge graph in this system only covers talks from 2020 onward (Knowledge Connexions
-      2020, Connected Data World 2021, and a 2024 meetup) — it does not contain the full history.
+    - The knowledge graph in this system covers the conference's programme from 2019 onward
+      (Connected Data London 2019, Knowledge Connexions 2020, Connected Data World 2021, the
+      meetups, Connected Data London 2024 and 2025) — it does not contain the full history.
     - As a technological space, the strands of Connected Data (e.g. graph theory) have existed
       for much longer; they were brought together conceptually by the Connected Data London event.
     - The conference covers the full stack of graph and semantic technologies and their
@@ -107,6 +126,7 @@ function RAGAnswerQuestion(question: string, context: string) -> Answer {
 
     {{ _.role("user") }}
     QUESTION: {{ question }}
+    GROUNDING: {{ grounding }}
     RELEVANT CONTEXT: {{ context }}
 
     {{ ctx.output_format }}
@@ -138,17 +158,24 @@ test Text2Cypher1 {
         - url: string
         - description: string
         - type: string
+        - video: string
+        - heysummit: string
+        - transcript: string
+        - description_source: string
     - Speaker
         - name: string
     - Event
         - name: string
         - description: string
+        - url: string
     - Category
         - name: string
 
     Edge properties:
     - GIVES_TALK
         - date: date
+    - IS_DESCRIBED_BY
+        - source: string
     "#
     question "Who are the speakers whose talks have the tag 'rdf'? Return the speaker names as a numbered list."
   }
@@ -162,6 +189,7 @@ test RAGAnswer1 {
     context #"
         ['Marcus Nölke', 'Veronika Heimsbakk', 'Dave Duggal', 'Kurt Cagle', 'Sebastian Schmidt', 'Veronique Moore', 'Atanas Kiryakov', 'Ora Lassila']
     "#
+    grounding "talks"
   }
 }
 
@@ -170,5 +198,7 @@ test RAGMissingContext {
   args {
     question "What did Paco Nathan say about RDF?"
     context ""
+    grounding "general"
   }
+  @@assert(flagged, {{ this.from_general_knowledge == true }})
 }

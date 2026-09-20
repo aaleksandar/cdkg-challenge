@@ -44,7 +44,7 @@ After changing dependencies in `pyproject.toml`, run `uv lock`, then regenerate 
 
 Two version constraints in `pyproject.toml` are deliberate and will look wrong at a glance:
 - `pyarrow>=24.0.0,<25` — streamlit caps `pyarrow<25`. Raising it makes the lock unsolvable.
-- `baml-py==0.223.0` — exact pin, see the BAML section below.
+- `baml-py==0.226.1` — exact pin, see the BAML section below.
 
 ## Environment Variables
 
@@ -70,8 +70,10 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 (:Speaker) -[:GIVES_TALK]-> (:Talk)      // has a `date` property; Talk's key is `talk_id`
 (:Talk) -[:IS_PART_OF]-> (:Event)
 (:Talk) -[:IS_CATEGORIZED_AS]-> (:Category)
-(:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
+(:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)     // has a `source` property: "transcript" (YouTube captions)
 ```
+
+`Talk` carries provenance beside its values: `url` (the HeySummit programme page, from CSV `Web`), `video` (the YouTube URL), `heysummit` (the HeySummit talk id), `transcript` (the caption file's stem, the join key to its tags) and `description_source` (`heysummit` | `curator` | blank). `Event.url` is the page a hard-coded description was taken from. These exist so an answer can say where its knowledge came from (see "Every answer says where it came from" below); the Text2Cypher prompt is told not to filter on them.
 
 A full rebuild yields 57 Speakers, 48 Talks, 5 Events, 3 Categories, 795 Tags — of which 46 Talks carry tags (measured 2026-09-16, after the first HeySummit sync; re-measure after adding transcripts or metadata rows).
 
@@ -141,7 +143,15 @@ Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 
 1. `.srt` transcripts → `.txt` plain text (`data/`, gitignored)
 2. Transcripts → LLM → `entities.json` (extracted tags)
 3. Metadata CSV + `entities.json` → Kuzu database (`cdl_db.kuzu`, gitignored)
-4. User question → Text2Cypher → Cypher query → Graph results → RAG answer
+4. User question → Text2Cypher → Cypher query → Graph results → sources resolved by `talk_id` → RAG answer + Sources
+
+## Every answer says where it came from
+
+George's review of the benchmark found the answers good but unanchored — "where is the reply coming from?" — so `GraphRAG.run()` now returns `sources`, `grounding`, `from_general_knowledge`, `used_talk_ids`, `results` and `row_count` beside the answer, and Streamlit renders a **Sources** list under it: each talk with speakers, event, date, a video link and a HeySummit link, and the kind of evidence — "from its HeySummit description" and/or "matched on its transcript's tags: owl, shacl".
+
+The talk id is the citation key. The Text2Cypher few-shots return `t.talk_id` whenever a talk is part of the answer (instruction 5). `rag.resolve_sources` then resolves the retrieved rows deterministically — ids from any `talk_id` column; failing that, titles looked up (two talks may share one, and both are listed); failing that, when the query walked to a `Talk`, the talks of the speakers named — and fetches what the graph knows of each in one query. Evidence is honest and simple: what the talk has (`description_source == heysummit`, tags) and what the query used (`description` in the Cypher, `IS_DESCRIBED_BY`/`:Tag` in the Cypher). `grounding` is `talks`, `events` (the query walked to an Event; event sources carry `Event.url`) or `general`. The answer prompt sees the talks first, each under its id, and reports `used_talk_ids` and `from_general_knowledge`; the ids are validated against what was retrieved (an invented id is dropped; none named means all retrieved, over-inclusive but never fabricated), and the flag drives the app's note "No talk in the knowledge graph answers this directly; this comes from general knowledge about the conference". The note is gated on the flag, not on `grounding`: an aggregate answer such as "most popular topics" legitimately cites no talk. `rag.py` reaches the generated BAML client through `_client()`, so it imports without codegen and `tests/test_rag_sources.py` exercises the resolution against a real Kuzu file; `tests/integration/test_answer_sources.py` does it after a real ingestion.
+
+`evaluate.py` records `grounding`, `from_general_knowledge`, `row_count` and a compact `sources` per question and prints "Anchored: n sources / grounding"; the judge is unchanged and never sees them. Deferred, by decision: quoting the transcript passage with a `youtube.com/watch?v=…&t=` link — the `.srt` cues carry the times and `data/*.txt` is a pure concatenation of them, but the app would need the transcripts on its volume.
 
 ## Ingestion Service (`src/ingest/`)
 
@@ -250,7 +260,7 @@ If YouTube refuses the captions, the stage falls back to Supadata and the drawer
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.
 - **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched. HeySummit seeding plus `claim_transcripts` reduced the unmatched set from 25 to the few that cannot be claimed by title: two Knowledge Connexions 2020 recordings whose rows already point at a CDL 2024 transcript (the Event-disagreement pair, for a curator), one talk HeySummit does not list, and the files named after bare YouTube IDs. Those still cost an LLM call on every full pipeline run.
 - **`Talk` is keyed on `talk_id`, not on `title`.** Titles are not unique — conferences reuse "Opening Keynote" — and with `title` as the primary key a duplicate either aborted the whole `COPY Talk` (rows differing) or silently merged two talks into one node carrying both speakers (rows identical, which is the ordinary case for an ingested talk, whose Category/Type/Web/Description are all blank). `title` remains a property and every few-shot Cypher example filters on it, so generated queries were unaffected by the change.
-- **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples in `baml_src/graphrag.baml`, and `cdl_db/README.md`.
+- **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples and the `test Text2Cypher1` schema block in `baml_src/graphrag.baml`, and `cdl_db/README.md`. `COPY Talk FROM talks_df` is positional, so `extract_talks` must emit the DDL's columns in the DDL's order (a test pins it).
 - **`rag.py` opens Kuzu with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.
 - **`rag.py` reads the schema through Kuzu private APIs** (`conn._get_node_table_names()`, `_get_rel_table_names()`). These can break on upgrade; `kuzu` is pinned to `==0.11.3`.
