@@ -1111,8 +1111,10 @@ def test_a_premiere_is_shown_by_default_and_labelled_by_its_date(client, monkeyp
 
     shown = client.get("/rows?shorts=1").text
     assert "Combating Cyber Threats" in shown and SHORT.title in shown
-    # The row shows the lane; the hover names the status; neither says Failed.
-    assert "Not a talk" in shown and "A premiere that has not aired" in shown
+    # A premiere is a talk that has not aired: the row says so, in the backlog
+    # lane, never "Not a talk" and never Failed.
+    assert "Premieres soon" in shown and "A premiere that has not aired" in shown
+    assert "Not a talk" not in client.get("/row/youtube:tAPqdlsuJYg").text
     assert "Failed" not in shown and "24 Sep 2026" in shown
     assert ">Ingest<" not in client.get("/row/youtube:tAPqdlsuJYg").text
 

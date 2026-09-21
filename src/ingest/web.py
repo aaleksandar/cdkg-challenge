@@ -199,6 +199,7 @@ templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
 # The sixth tab is not a lane a row can be in: it is what the sources say
 # about the same talk when they do not agree, listed for a curator.
 templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "disagreements": "Disagreements"}
+templates.env.globals["ROW_SAYS_STATUS"] = R.ROW_SAYS_STATUS
 
 # The strip doubles as the filter, so it defines both the order shown and the
 # set of filters available. Five entries, not twelve: an admin should be able to
@@ -227,15 +228,16 @@ LANE_NOTES = {
     ),
     "working": "Being ingested right now.",
     "not_ingested": (
-        "Videos on the channel that have not been ingested, and HeySummit talks "
-        "with no video yet. New uploads ingest themselves; the videos here are "
+        "Videos on the channel that have not been ingested, HeySummit talks "
+        "with no video yet, and premieres that have not aired. New uploads "
+        "ingest themselves, and so does a premiere once it airs; the videos here are "
         "the backlog, and draining it costs LLM calls — the button is under "
         "Advanced."
     ),
     "in_graph": "Curated, tagged and queryable in the knowledge graph. Nothing to do.",
     "excluded": (
-        "Not talks: teasers, Shorts and premieres that have not aired. Listed "
-        "because they are on the channel, and ignored by everything else."
+        "Not talks: teasers and Shorts. Listed because they are on the channel, "
+        "and ignored by everything else."
     ),
     "disagreements": (
         "Where the metadata CSV and HeySummit tell different stories about the "
