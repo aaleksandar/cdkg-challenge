@@ -281,7 +281,8 @@ STATUS_NOTES = {
         "a talk, not the talk. If one has a metadata row it is listed under "
         "Advanced, Data health."
     ),
-    "upcoming": "A premiere that has not aired, so it has no captions to ingest yet.",
+    "upcoming": ("A premiere that has not aired, so it has no captions to ingest yet. "
+                 "The date shown is when it premieres; it is ingested once it has."),
     "junk": "A transcript named after a bare YouTube ID. Untitled, and often duplicated.",
 }
 templates.env.globals["STATUS_NOTES"] = STATUS_NOTES
@@ -575,7 +576,12 @@ def ingest_one(request: Request, key: str, view: str = "row"):
     video_id = state.video_id if state else None
     if video_id:
         video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
-        ignored = R.is_short_duration((video or {}).get("duration"))
+        # A Short is never a talk; a premiere is not one yet. Neither gets a
+        # run from a click — the scheduler already refuses both, and a run
+        # against a premiere can only fail, which is how a premiere came to sit
+        # in the attention lane as "Failed" eight days before it aired.
+        ignored = (R.is_short_duration((video or {}).get("duration"))
+                   or (video or {}).get("live_status") == "is_upcoming")
         if not ignored and video_id not in db.videos_with_active_runs():
             queue_videos([video_id])
     if view == "drawer":

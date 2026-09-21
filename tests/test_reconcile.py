@@ -280,3 +280,26 @@ def test_the_talk_date_comes_from_the_csv_and_yields_to_the_upload_date():
     talk = TalkState(talk_id="t-1", talk_date="2024-12-13")
     assert talk.when == "2024-12-13"
     assert TalkState(**{**talk.__dict__, "published_at": "2025-01-01T00:00:00Z"}).when == "2025-01-01T00:00:00Z"
+
+
+def test_a_premiere_that_has_not_aired_is_upcoming_even_after_a_failed_run():
+    """Production showed a premiere eight days out as "Failed" and offered
+    Ingest again: a run had been recorded against it before the code could
+    recognise premieres, and "failed" was checked before "upcoming". The
+    premiere is the fact; the failure is stale by definition."""
+    from ingest.reconcile import LANE_OF, TalkState
+
+    premiere = TalkState(sources={"youtube": "tAPqdlsuJYg"}, title="Combating Cyber Threats",
+                         live_status="is_upcoming", published_at="2026-09-24T14:00:00Z",
+                         run={"status": "failed"})
+    assert premiere.status == "upcoming"
+    assert LANE_OF["upcoming"] == "excluded"          # hidden unless Shorts & premieres is ticked
+
+    # Once it airs, the backfill settles it and the stale failure shows again —
+    # correctly, since that run is the last word until the next one.
+    aired = TalkState(**{**premiere.__dict__, "live_status": "not_live"})
+    assert aired.status == "failed"
+    # A premiere that already has a row keeps that row's status.
+    seeded = TalkState(**{**premiere.__dict__, "talk_id": "t-1", "in_csv": True,
+                          "speaker": "A", "event": "E", "run": None})
+    assert seeded.status != "upcoming"

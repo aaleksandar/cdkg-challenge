@@ -1091,3 +1091,40 @@ def test_the_sheet_links_both_sources_in_their_own_columns(client, monkeypatch):
     seeded = client.get("/row/t-await01").text
     assert "watch?v=" not in seeded and ">—<" in seeded            # no video yet
     assert 'href="https://2025.connected-data.london/talks/network-science/"' in seeded
+
+
+PREMIERE = R.TalkState(
+    sources={"youtube": "tAPqdlsuJYg"}, title="Combating Cyber Threats #knowledgegraph",
+    live_status="is_upcoming", published_at="2026-09-24T14:00:00Z",
+    url="https://www.youtube.com/watch?v=tAPqdlsuJYg", run={"status": "failed"},
+)
+
+
+def test_a_premiere_is_hidden_by_default_and_labelled_by_its_date(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(READY, PREMIERE))
+
+    default = client.get("/rows").text
+    assert "Combating Cyber Threats" not in default          # hidden unless asked for
+    assert "tAPqdlsuJYg" not in default
+
+    shown = client.get("/rows?shorts=1").text
+    assert "Combating Cyber Threats" in shown
+    # The row shows the lane; the hover names the status; neither says Failed.
+    assert "Not a talk" in shown and "A premiere that has not aired" in shown
+    assert "Failed" not in shown and "24 Sep 2026" in shown
+    assert ">Ingest<" not in client.get("/row/youtube:tAPqdlsuJYg").text
+
+    drawer = client.get("/video/youtube:tAPqdlsuJYg?body=1").text
+    assert "Premieres soon" in drawer and "Premieres 24 Sep 2026" in drawer
+    assert "Ingest again" not in drawer and "Not in the graph" not in drawer
+
+
+def test_the_ingest_button_refuses_a_premiere_that_has_not_aired(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(PREMIERE))
+    db.upsert_videos([{"video_id": "tAPqdlsuJYg", "title": "Combating Cyber Threats", "url": "u",
+                       "live_status": "is_upcoming"}])
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
+
+    assert client.post("/ingest/youtube:tAPqdlsuJYg").status_code == 200
+    assert queued == []

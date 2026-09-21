@@ -27,7 +27,7 @@
     <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
       <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
     </span>
-    {% if s.published_at %}<span class="muted">Published {{ s.published_at | day }}</span>
+    {% if s.published_at %}<span class="muted">{{ 'Premieres' if s.is_upcoming else 'Published' }} {{ s.published_at | day }}</span>
     {% elif s.talk_date %}<span class="muted">Given {{ s.talk_date | day }}</span>{% endif %}
   </div>
 </div>
@@ -306,7 +306,7 @@
     <dd>{{ s.duration | duration }}</dd>
     {% endif %}
     {% if s.published_at %}
-    <dt>Published</dt>
+    <dt>{{ 'Premieres' if s.is_upcoming else 'Published' }}</dt>
     <dd>{{ s.published_at | day }}</dd>
     {% elif s.talk_date %}
     <dt>Date</dt>

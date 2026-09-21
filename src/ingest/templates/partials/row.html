@@ -36,7 +36,7 @@
   </td>
   {# The upload date when there is a video; the date the talk was given when
      there is not yet. Both are the timeline the sheet reads in. #}
-  <td class="when">{{ s.when | day }}</td>
+  <td class="when">{{ s.when | day }}{% if s.is_upcoming %} <span class="muted" title="Premieres on this date">soon</span>{% endif %}</td>
   <td>
     {# The lane is what the column says; the specific diagnosis behind it is one
        hover away, because "orphaned" and "untagged" mean nothing to an admin who
