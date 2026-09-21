@@ -170,3 +170,56 @@ def test_a_settled_video_s_date_is_never_rewritten(state, monkeypatch):
     youtube.backfill_metadata()                        # fetched for its missing duration
     video = db.all_videos()[0]
     assert video["duration"] == 100 and video["published_at"] == "2026-08-20T00:00:00Z"
+
+
+# --- "Aired" is a transition, observed by whoever writes the settled status ---
+
+def _premiere(video_id="9Mkg5pfqS5Q", live_status="is_upcoming", published_at=None):
+    db.upsert_videos([{"video_id": video_id, "title": "Premiere", "url": "u",
+                       "live_status": live_status, "published_at": published_at}])
+
+
+def test_resolving_a_premiere_that_settled_reports_it_as_aired(state, monkeypatch):
+    _premiere()
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": 4633, "timestamp": 1789653609, "live_status": "not_live"})
+
+    result = youtube.resolve_videos(["9Mkg5pfqS5Q"])
+
+    assert result == {"resolved": 1, "aired": ["9Mkg5pfqS5Q"]}
+    assert db.all_videos()[0]["live_status"] == "not_live"
+
+
+def test_a_premiere_still_on_air_has_not_aired(state, monkeypatch):
+    """`is_upcoming` → `is_live` is progress, not the moment captions exist."""
+    _premiere()
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": 4633, "release_timestamp": 1789653609, "live_status": "is_live"})
+
+    assert youtube.resolve_videos(["9Mkg5pfqS5Q"]) == {"resolved": 1, "aired": []}
+
+
+def test_a_video_that_was_already_settled_never_airs_again(state, monkeypatch):
+    """Resolving a plain upload — what every RSS poll does — is not an airing,
+    or every new video would be ingested twice."""
+    _premiere(live_status="not_live")
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": 900, "timestamp": 1789653609, "live_status": "not_live"})
+
+    assert youtube.resolve_videos(["9Mkg5pfqS5Q"])["aired"] == []
+
+
+def test_the_backfill_reports_the_premieres_it_found_aired(state, monkeypatch):
+    _premiere("aired000000", "post_live")
+    _premiere("stillsoon00", "is_upcoming")
+    _premiere("settled0000", "not_live", "2026-08-01T00:00:00Z")
+    answers = {
+        "aired000000": {"duration": 4633, "timestamp": 1789653609, "live_status": "not_live"},
+        "stillsoon00": {"duration": 4633, "release_timestamp": 1790000000, "live_status": "is_upcoming"},
+        "settled0000": {"duration": 900, "timestamp": 1789653609, "live_status": "not_live"},
+    }
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {"id": vid, **answers[vid]})
+
+    assert youtube.backfill_metadata()["aired"] == ["aired000000"]
+    # Settled now, so the next pass has nothing to report: observed exactly once.
+    assert youtube.backfill_metadata()["aired"] == []

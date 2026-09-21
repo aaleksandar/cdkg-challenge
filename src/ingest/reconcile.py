@@ -236,12 +236,19 @@ class TalkState:
         # Advanced -> Data health is where that defect is named and fixed.
         if self.is_short:
             return "excluded_short"
+        # A premiere that has not aired is not a talk yet, and a run recorded
+        # against it can only have failed: there are no captions to fetch. So
+        # it outranks "failed" — a stale failure must not put a premiere in the
+        # attention lane, nor offer an Ingest button that would fail the same
+        # way. Once it airs the backfill settles it and any verdict below
+        # applies again. A premiere that already has a row (seeded from
+        # HeySummit, or linked by hand) stays visible under that row's status.
+        if self.is_upcoming and not self.in_csv:
+            return "upcoming"
         if self.run and self.run.get("status") == "failed":
             return "failed"
         if self.is_junk:
             return "junk"
-        if self.is_upcoming and not self.in_csv:
-            return "upcoming"
         # Tags were extracted but no CSV row exists, so there is no Talk node for
         # them to attach to. The extraction cost was paid and thrown away.
         if self.has_tags and not self.in_csv:
@@ -300,7 +307,7 @@ STATUS_LABELS = {
     "not_ingested": "Not ingested",
     "awaiting_video": "Awaiting video",
     "excluded_short": "Short — ignored",
-    "upcoming": "Upcoming",
+    "upcoming": "Premieres soon",
     "junk": "Unusable",
     "in_progress": "Running",
     "failed": "Failed",
