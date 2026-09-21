@@ -1166,3 +1166,36 @@ def test_refreshing_the_channel_ingests_a_premiere_the_backfill_found_aired(clie
 
     assert client.post("/refresh").status_code == 200     # background tasks run before it returns
     assert ingested == ["tAPqdlsuJYg"]
+
+
+def test_advanced_says_whether_publishing_can_work(client, monkeypatch):
+    """The flag alone says what was asked for; the line under it says whether
+    a run's last stage will succeed or fail."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    monkeypatch.setattr(config, "GIT_PUSH_ENABLED", False)
+    page = client.get("/advanced").text
+    assert "Disabled" in page and "Every run will fail" not in page
+
+    monkeypatch.setattr(config, "GIT_PUSH_ENABLED", True)
+    monkeypatch.setattr(config, "GITHUB_APP_ID", None)
+    page = client.get("/advanced").text
+    assert "GitHub App credentials are not configured" in page and "Every run will fail" in page
+
+    monkeypatch.setattr(config, "GITHUB_APP_ID", "12345")
+    monkeypatch.setattr(config, "GITHUB_APP_PRIVATE_KEY", "-----BEGIN RSA PRIVATE KEY-----\nx")
+    page = client.get("/advanced").text
+    assert "GitHub App 12345 publishes to" in page and "Run the pipeline again" in page
+
+
+def test_a_failed_publish_says_the_talk_is_safe_here_and_how_to_retry(client, monkeypatch):
+    run = {"id": 7, "status": "failed", "started_at": "now", "error": "GitOpsError: …",
+           "stages": [{"stage": "graph_rebuild", "status": "completed", "message": "rebuilt",
+                       "detail": '{"tagged": true}'},
+                      {"stage": "publish", "status": "failed", "detail": None,
+                       "message": "GitOpsError: Could not merge main into the ingest branch — README.md"}]}
+    monkeypatch.setattr(R, "reconcile", _only(R.TalkState(**{**READY.__dict__, "run": run})))
+    monkeypatch.setattr("ingest.db.latest_run_for", lambda vid: run)
+
+    drawer = client.get(f"/video/{READY.key}?body=1").text
+    assert "not yet on GitHub" in drawer and "retries only the publish" in drawer
+    assert "Could not merge main" in drawer

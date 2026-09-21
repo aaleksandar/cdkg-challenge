@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import secrets
 from contextlib import asynccontextmanager
 
@@ -12,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from . import config, db
 from .web import router
 
+log = logging.getLogger("ingest.main")
 _basic = HTTPBasic(auto_error=False)
 
 
@@ -45,6 +47,14 @@ async def lifespan(app: FastAPI):
     from . import scheduler
 
     scheduler.start_scheduler()
+    # A rebuilt server's fresh clone is at main; the talks published before it
+    # are on the ingest branch. Adopting that history while the tree is clean
+    # is free; doing it at the first publish, over a talk's files, is a merge.
+    from . import gitops
+
+    note = gitops.adopt_published_history()
+    if note:
+        log.info(note)
     yield
     scheduler.shutdown()
 
