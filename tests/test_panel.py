@@ -1100,15 +1100,17 @@ PREMIERE = R.TalkState(
 )
 
 
-def test_a_premiere_is_hidden_by_default_and_labelled_by_its_date(client, monkeypatch):
-    monkeypatch.setattr(R, "reconcile", _only(READY, PREMIERE))
+def test_a_premiere_is_shown_by_default_and_labelled_by_its_date(client, monkeypatch):
+    """Only Shorts are hidden. A premiere is the newest talk on the channel,
+    days from being one; hiding it made the sheet look as if it were missing."""
+    monkeypatch.setattr(R, "reconcile", _only(READY, PREMIERE, SHORT))
 
     default = client.get("/rows").text
-    assert "Combating Cyber Threats" not in default          # hidden unless asked for
-    assert "tAPqdlsuJYg" not in default
+    assert "Combating Cyber Threats" in default
+    assert SHORT.title not in default                        # the Short waits for the box
 
     shown = client.get("/rows?shorts=1").text
-    assert "Combating Cyber Threats" in shown
+    assert "Combating Cyber Threats" in shown and SHORT.title in shown
     # The row shows the lane; the hover names the status; neither says Failed.
     assert "Not a talk" in shown and "A premiere that has not aired" in shown
     assert "Failed" not in shown and "24 Sep 2026" in shown

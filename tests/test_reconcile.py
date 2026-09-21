@@ -293,7 +293,7 @@ def test_a_premiere_that_has_not_aired_is_upcoming_even_after_a_failed_run():
                          live_status="is_upcoming", published_at="2026-09-24T14:00:00Z",
                          run={"status": "failed"})
     assert premiere.status == "upcoming"
-    assert LANE_OF["upcoming"] == "excluded"          # hidden unless Shorts & premieres is ticked
+    assert LANE_OF["upcoming"] == "excluded"          # not a talk yet; still shown by default
 
     # Once it airs, the backfill settles it and the stale failure shows again —
     # correctly, since that run is the last word until the next one.

@@ -218,8 +218,8 @@ templates.env.globals["LANES"] = [
 LANE_NOTES = {
     "all": (
         f"Every talk: the {config.YOUTUBE_CHANNEL_HANDLE} channel's videos and the "
-        "programme HeySummit holds, whether or not a video exists yet. Shorts and "
-        "premieres hidden by default."
+        "programme HeySummit holds, whether or not a video exists yet. Shorts "
+        "hidden by default."
     ),
     "attention": (
         "Stuck, and it will stay stuck until someone looks. Open one to see the "
@@ -368,8 +368,10 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
     elif lane and lane != "all":
         visible = [s for s in visible if s.lane == lane]
     elif not shorts:
-        # Shorts and premieres are working as intended; they would bury the rest.
-        visible = [s for s in visible if s.lane != "excluded"]
+        # Shorts are working as intended and would bury the rest. A premiere
+        # stays: it is a talk, days from being one, and hiding it made the
+        # newest entries on the channel look missing.
+        visible = [s for s in visible if not s.is_short]
 
     if query:
         needle = query.lower().strip()

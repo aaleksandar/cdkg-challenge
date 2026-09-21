@@ -35,12 +35,11 @@
          hx-trigger="input changed delay:250ms, search"
          hx-include="[name=shorts]"
          hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
-  <label class="toggle" data-tip="Teasers, Shorts and premieres that have not aired.
-                                  Catalogued, never ingested.">
+  <label class="toggle" data-tip="Teasers and Shorts: catalogued, never ingested.">
     <input type="checkbox" name="shorts" value="1" {{ 'checked' if shorts }}
            hx-get="{{ base }}/rows" hx-target="#sheet" hx-include="[name=q]"
            hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
-    Show Shorts &amp; premieres
+    Show Shorts
   </label>
   <div class="spacer"></div>
   <span id="busy" class="htmx-indicator muted">working…</span>
