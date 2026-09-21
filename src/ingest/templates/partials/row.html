@@ -48,6 +48,8 @@
           <span class="step">{{ s.run.done }}/{{ s.run.total }}</span>
         {%- elif busy -%}
           Queued
+        {%- elif s.status in ROW_SAYS_STATUS -%}
+          {{ STATUS_LABELS[s.status] }}
         {%- else -%}
           {{ LANE_LABELS[s.lane] }}
         {%- endif -%}

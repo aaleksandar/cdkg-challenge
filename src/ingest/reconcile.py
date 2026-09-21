@@ -337,7 +337,10 @@ LANE_OF = {
     "ready_for_graph": "attention",
     "orphaned": "attention",
     "excluded_short": "excluded",
-    "upcoming": "excluded",
+    # A premiere is a talk that has not aired: the backlog, not "not a talk".
+    # Filing it as excluded printed "Not a talk" beside the newest talk on the
+    # channel. The row prints its own status instead of the lane's label.
+    "upcoming": "not_ingested",
     "junk": "excluded",
 }
 
@@ -354,6 +357,11 @@ LANE_LABELS = {
 
 # Statuses that are working as intended and only clutter the default view.
 QUIET_STATUSES = {s for s, lane in LANE_OF.items() if lane == "excluded"}
+
+# Statuses whose row says the status rather than the lane, because the lane's
+# word would mislead: a premiere is "not ingested", but what a reader needs to
+# know is that it cannot be yet.
+ROW_SAYS_STATUS = {"upcoming"}
 
 
 def _iso_date(value: str | None) -> str | None:
