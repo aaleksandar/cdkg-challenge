@@ -112,8 +112,9 @@ def _settle_due_premieres() -> None:
     except Exception:
         log.exception("Could not re-read premieres %s", due)
         return
-    if aired:
-        log.info("Premiere(s) aired: %s", aired)
+    # Logged whatever the answer, so that a premiere stuck "soon" on a server
+    # whose lookups YouTube refuses can be told apart from one nobody asked about.
+    log.info("Re-read %d due premiere(s) %s: aired %s", len(due), due, aired or "none")
     ingest_new(aired)
 
 
