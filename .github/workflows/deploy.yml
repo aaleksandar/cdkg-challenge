@@ -59,6 +59,8 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           HEYSUMMIT_API_TOKEN: ${{ secrets.HEYSUMMIT_API_TOKEN }}
           SUPADATA_API_KEY: ${{ secrets.SUPADATA_API_KEY }}
+          GITHUB_APP_ID: ${{ secrets.CDKG_GITHUB_APP_ID }}
+          GITHUB_APP_PRIVATE_KEY: ${{ secrets.CDKG_GITHUB_APP_PRIVATE_KEY }}
           ADMIN_USER: ${{ secrets.ADMIN_USER }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
@@ -94,6 +96,12 @@ jobs:
             # Optional: the caption fallback. Unset in GitHub, this writes an
             # empty value, which the app reads as "not configured".
             emit SUPADATA_API_KEY "$SUPADATA_API_KEY"
+            # The GitHub App that publishes talks as a pull request. The private
+            # key is stored base64-encoded (one line; a PEM is sixty) and the
+            # app decodes it. Empty until the App exists: the panel then says
+            # publishing cannot work, and every run fails at its last stage.
+            emit GITHUB_APP_ID "$GITHUB_APP_ID"
+            emit GITHUB_APP_PRIVATE_KEY "$GITHUB_APP_PRIVATE_KEY"
             # The ingestion panel's HTTP Basic credentials. Deliberately not
             # defaulted: an empty password disables auth in the app, and this
             # panel is reachable from the public internet.
@@ -113,6 +121,8 @@ jobs:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           HEYSUMMIT_API_TOKEN: ${{ secrets.HEYSUMMIT_API_TOKEN }}
           SUPADATA_API_KEY: ${{ secrets.SUPADATA_API_KEY }}
+          GITHUB_APP_ID: ${{ secrets.CDKG_GITHUB_APP_ID }}
+          GITHUB_APP_PRIVATE_KEY: ${{ secrets.CDKG_GITHUB_APP_PRIVATE_KEY }}
           ADMIN_USER: ${{ secrets.ADMIN_USER }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: kamal deploy

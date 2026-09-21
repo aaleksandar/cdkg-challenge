@@ -140,7 +140,30 @@ GIT_PUSH_ENABLED = _flag("GIT_PUSH_ENABLED")
 # --- GitHub App --------------------------------------------------------------
 GITHUB_REPO = os.getenv("GITHUB_REPO", "aaleksandar/cdkg-challenge")
 GITHUB_APP_ID = os.getenv("GITHUB_APP_ID") or None
-GITHUB_APP_PRIVATE_KEY = os.getenv("GITHUB_APP_PRIVATE_KEY") or None
+
+
+def _private_key(value: str | None) -> str | None:
+    """The App's PEM, given either verbatim or base64-encoded.
+
+    The deploy writes secrets into a dotenv file one value per line, and a PEM
+    is sixty lines; base64 keeps it on one. Either form is accepted so a key
+    pasted verbatim into a local .env works too.
+    """
+    if not value:
+        return None
+    if "-----BEGIN" in value:
+        return value
+    import base64
+    import binascii
+
+    try:
+        decoded = base64.b64decode(value, validate=True).decode()
+    except (binascii.Error, UnicodeDecodeError):
+        return value            # not base64 either; health() will say so
+    return decoded if "-----BEGIN" in decoded else value
+
+
+GITHUB_APP_PRIVATE_KEY = _private_key(os.getenv("GITHUB_APP_PRIVATE_KEY"))
 GITHUB_BASE_BRANCH = os.getenv("GITHUB_BASE_BRANCH", "main")
 # One long-lived branch and one PR: N videos across N branches would produce N
 # mutually-conflicting appends to the same CSV.

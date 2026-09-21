@@ -77,7 +77,13 @@
     <dt>Publish to GitHub</dt>
     <dd>{{ 'Enabled' if GIT_PUSH_ENABLED else 'Disabled' }} —
         set by <code>GIT_PUSH_ENABLED</code> in the deploy configuration.
-        It writes outside this machine, so it is not a click.</dd>
+        It writes outside this machine, so it is not a click.
+        {% if GIT_PUSH_ENABLED %}<br>{% if publish.ok %}{{ publish.detail }}. Each ingested talk
+        is one commit — its transcript, metadata cache, CSV row and tags — behind one
+        pull request; a talk ingested while this was off is published by
+        <strong>Run the pipeline again</strong> in its drawer.{% else %}
+        <span class="err">{{ publish.detail }}.</span> Every run will fail at its last stage
+        until this is fixed.{% endif %}{% endif %}</dd>
     <dt>Scheduler</dt>
     {# What the jobs are doing, not what the switch above asked for. The two
        agree in the served app, and the third branch is what it looks like when

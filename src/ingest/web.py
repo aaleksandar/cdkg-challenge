@@ -148,6 +148,9 @@ FAILURE_ADVICE = {
                   "side and usually passes within the hour. The transcript is on disk, "
                   "so ingesting again resumes from tag extraction without touching "
                   "YouTube or Supadata."),
+    "publish_error": ("The talk is in the graph on this server but not yet on GitHub, so it "
+                      "is not durable until this is fixed. Every earlier stage skips on a "
+                      "re-run, so \"Run the pipeline again\" retries only the publish."),
 }
 
 
@@ -170,6 +173,8 @@ def failure_of(run: dict | None) -> dict | None:
             kind = youtube.classify_error(stage.get("message") or "")
         elif kind is None and stage["stage"] == "tag_extraction":
             kind = "llm_error"
+        elif kind is None and stage["stage"] == "publish":
+            kind = "publish_error"
         return {
             "stage": stage["stage"],
             "kind": kind,
@@ -780,6 +785,7 @@ def toggle_flag(request: Request, name: str, lane: str = Form("all"),
 
 def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dict:
     """Context for the Advanced panel: the flags, and everything not on the channel."""
+    from . import gitops
     from .pipeline.runner import last_rebuild, queue_depth
     from .scheduler import is_polling
 
@@ -803,6 +809,7 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
         "flags": {name: getattr(config, name) for name in TOGGLEABLE},
         "KG_ENABLED": config.KG_ENABLED,
         "GIT_PUSH_ENABLED": config.GIT_PUSH_ENABLED,
+        "publish": gitops.health(),
         # The intention, and whether jobs are actually running. The switch keeps
         # the two in step, so they agree in the served app — but a flag says what
         # was asked for and only the scheduler knows what happened, and a panel

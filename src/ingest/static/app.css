@@ -432,6 +432,7 @@ thead th.r { text-align: right; }
   border: 1px solid var(--rule-strong); background: var(--paper-raised);
 }
 .note.err { border-color: var(--alert); color: var(--alert); }
+.facts .err { color: var(--alert); }
 
 /* A parsed preview is visibly not a recorded fact. */
 .sub .guess { color: var(--ink-faint); font-style: italic; }
