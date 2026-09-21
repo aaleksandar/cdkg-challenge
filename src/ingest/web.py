@@ -979,19 +979,19 @@ def heysummit_sync(request: Request):
 
     if summary["changed"] and config.KG_ENABLED:
         request_rebuild()
-    candidates = "; ".join(f"{escape(ours)} ≈ {escape(theirs)}"
-                           for ours, theirs in summary["candidates"])
-    disagreements = "; ".join(f"{escape(title)}: CSV {escape(ours)}, HeySummit {escape(theirs)}"
-                              for title, ours, theirs in summary["disagreements"])
+    # Counts only. Each disagreement and candidate has a row of its own on the
+    # Disagreements tab, with links; listing them here made a paragraph.
+    issues = len(summary["candidates"]) + len(summary["disagreements"])
     return HTMLResponse(
         f'<span class="note">{refreshed} {summary["attached"]} newly matched, blanks '
         f'filled on {summary["filled"]} talks, {summary["seeded"]} new talks seeded '
         f'({len(summary["linked_videos"])} linked to a channel video), '
         f'{summary["claimed"]} transcripts on disk claimed, {summary["unmatched"]} '
         f'rows with no match.'
-        + (f' Possibly already a row, so not seeded: {candidates}.' if candidates else "")
-        + (f' Event disagrees on {len(summary["disagreements"])} '
-           f'(left as is): {disagreements}.' if disagreements else "")
+        + (f' {issues} to look at on the Disagreements tab: '
+           f'{len(summary["disagreements"])} where the event differs, '
+           f'{len(summary["candidates"])} possibly already a row and so not seeded.'
+           if issues else "")
         + '</span>'
     )
 
