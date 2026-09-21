@@ -852,8 +852,10 @@ def test_sync_heysummit_joins_from_the_catalogue_when_the_api_is_unreachable(cli
     assert "blanks filled on 1 talks" in note
     assert "3 new talks seeded (1 linked to a channel video)" in note
     assert "2 transcripts on disk claimed" in note
-    assert "not seeded: Our row ≈ Their talk" in note
-    assert "Event disagrees on 1" in note and "Knowledge Connexions 2020" in note
+    # Counts, and a pointer: the details are rows on the Disagreements tab.
+    assert "2 to look at on the Disagreements tab" in note
+    assert "1 where the event differs, 1 possibly already a row" in note
+    assert "Knowledge Connexions 2020" not in note
 
 
 def _live_run(stage="transcript_download", done=1, total=7):

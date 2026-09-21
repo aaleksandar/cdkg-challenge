@@ -148,8 +148,10 @@
                       carrying the same title is linked, and transcripts on disk are
                       claimed by title. Never overwrites a value. No LLM calls.">Sync HeySummit</button>
     <span id="adv-busy" class="htmx-indicator muted">working…</span>
-    <span id="adv-flash"></span>
   </div>
+  {# Below the buttons, not beside them: a sync result is a paragraph, and a
+     paragraph in the button row wrapped through the buttons. #}
+  <div id="adv-flash" class="flash"></div>
 
   <div class="snapshots-block">
     <div class="actions">

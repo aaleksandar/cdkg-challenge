@@ -640,6 +640,8 @@ td.act .rowbtn:disabled { opacity: 1; }
 }
 
 .actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.flash:not(:empty) { margin-top: .7rem; }
+.flash .note { display: block; line-height: 1.55; }
 .drain { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .snapshots-block { margin-top: 1rem; }
 .snapshots { width: 100%; border-collapse: collapse; font-size: .76rem; margin-top: .6rem; }
