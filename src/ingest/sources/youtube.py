@@ -189,6 +189,10 @@ def trim_info(info: dict) -> dict:
         "description": info.get("description"),
         "duration": info.get("duration"),
         "upload_date": info.get("upload_date"),
+        # The moment it went public, to the second; ``upload_date`` alone is a
+        # day, and for a premiere the wrong day. Entries cached before this
+        # lack it and fall back to ``upload_date``, which is right once aired.
+        "timestamp": info.get("timestamp"),
         "url": info.get("webpage_url"),
         "channel": info.get("channel"),
     }
@@ -256,11 +260,29 @@ def _cached_info(video_id: str) -> dict | None:
         return None
 
 
+# Live status values that mean the date YouTube reports today may still move:
+# a premiere's ``upload_date`` is the day the file was uploaded until it airs,
+# and the row stays worth re-reading until YouTube calls it settled.
+UNSETTLED = {"is_upcoming", "is_live", "post_live"}
+
+
 def _published_from(info: dict) -> str | None:
-    """``upload_date`` is YYYYMMDD; the inventory stores ISO."""
+    """When the video became public, ISO, or None.
+
+    Not ``upload_date`` first. For a scheduled premiere yt-dlp reports the
+    day the file was uploaded there — nine days early for one talk — while
+    ``release_timestamp`` carries the moment it goes public and ``timestamp``
+    the moment it did. Those are the date a viewer sees on YouTube and the
+    date the channel feed prints, so they come first; ``upload_date`` is the
+    fallback for the odd record that carries neither.
+    """
+    for key in ("release_timestamp", "timestamp"):
+        stamp = _iso_from_timestamp(info.get(key))
+        if stamp:
+            return stamp
     stamp = info.get("upload_date")
     if not stamp or len(stamp) != 8 or not stamp.isdigit():
-        return _iso_from_timestamp(info.get("timestamp"))
+        return None
     return f"{stamp[:4]}-{stamp[4:6]}-{stamp[6:8]}T00:00:00Z"
 
 
@@ -278,24 +300,31 @@ def backfill_metadata(max_lookups: int = 120) -> dict:
     is fetched is written to the inventory only — the cache is part of the
     repository, and filling it for the whole channel is a commit, not a refresh.
 
-    Premieres are re-checked rather than skipped. ``is_upcoming`` is a fact about
-    the moment it was cached, and a premiere's whole purpose is to stop being one:
-    left alone, an aired premiere keeps its stale flag forever, which hides it
-    from the panel and denies it a date and a duration. They are few, and the
-    cache cannot answer the question — ``trim_info`` does not record live status —
-    so they are always fetched fresh.
+    Premieres are re-checked rather than skipped, and until YouTube calls them
+    settled. ``is_upcoming`` is a fact about the moment it was cached, and a
+    premiere's whole purpose is to stop being one: left alone, an aired
+    premiere keeps its stale flag forever, which hides it from the panel and
+    denies it a date and a duration. Re-checking only while ``is_upcoming``
+    was not enough either: a backfill that ran during the premiere itself
+    recorded ``is_live``, which then never qualified again, so the row froze
+    mid-air — and with the date it had been given nine days early, because a
+    premiere's ``upload_date`` is the file's upload day. So every unsettled
+    row (see ``UNSETTLED``) is fetched fresh, and for those rows the fetch
+    replaces the date and the status rather than only filling blanks. They
+    are few, and the cache cannot answer the question — ``trim_info`` does
+    not record live status.
     """
     from .. import db
 
     pending = [
         v for v in db.all_videos()
         if not v.get("duration") or not v.get("published_at")
-        or v.get("live_status") == "is_upcoming"
+        or v.get("live_status") in UNSETTLED
     ]
 
     resolved, spent, updates = 0, 0, []
     for video in pending:
-        stale_premiere = video.get("live_status") == "is_upcoming"
+        stale_premiere = video.get("live_status") in UNSETTLED
         info = None if stale_premiere else _cached_info(video["video_id"])
         if info is None:
             if spent >= max_lookups:
@@ -309,11 +338,16 @@ def backfill_metadata(max_lookups: int = 120) -> dict:
         patch = {}
         if not video.get("duration") and info.get("duration"):
             patch["duration"] = int(info["duration"])
-        if not video.get("published_at") and _published_from(info):
-            patch["published_at"] = _published_from(info)
-        # Only ever narrows: a video that has aired stops being "upcoming", and
-        # nothing here should promote a live video back into a premiere.
-        if stale_premiere and info.get("live_status") not in (None, "is_upcoming"):
+        published = _published_from(info)
+        # A settled video's date is filled once and kept; a premiere's is
+        # whatever YouTube says now, because what it said before it aired was
+        # the upload day of a file nobody could yet watch.
+        if published and (not video.get("published_at")
+                          or (stale_premiere and published != video.get("published_at"))):
+            patch["published_at"] = published
+        # Only ever moves forward — upcoming, live, then settled — and nothing
+        # here promotes a video back into a premiere.
+        if stale_premiere and info.get("live_status") not in (None, video.get("live_status")):
             patch["live_status"] = info["live_status"]
         if patch:
             updates.append({**video, **patch})

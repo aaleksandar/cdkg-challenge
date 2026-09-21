@@ -114,3 +114,59 @@ def test_a_premiere_is_skipped_and_not_cached(state, monkeypatch):
     with pytest.raises(stages.StageSkipped):
         stages.stage_metadata_parse({"video_id": "soon"})
     assert not (config.INGEST_CACHE_DIR / "soon.json").exists()
+
+
+def test_the_published_date_is_when_it_went_public_not_when_the_file_was_uploaded():
+    """A premiere's ``upload_date`` is the day the file was uploaded, nine days
+    early for one talk; ``release_timestamp`` is the moment it goes public and
+    ``timestamp`` the moment it did — the date YouTube and the channel feed show."""
+    premiere = {"upload_date": "20260908", "timestamp": 1788854400,        # 2026-09-08 upload
+                "release_timestamp": 1789653609, "live_status": "is_upcoming"}   # 2026-09-17T14:00:09Z
+    assert youtube._published_from(premiere) == "2026-09-17T14:00:09Z"
+    aired = {"upload_date": "20260917", "timestamp": 1789653609, "live_status": "not_live"}
+    assert youtube._published_from(aired) == "2026-09-17T14:00:09Z"
+    assert youtube._published_from({"upload_date": "20260820"}) == "2026-08-20T00:00:00Z"
+    assert youtube._published_from({"upload_date": "soon"}) is None
+
+
+def test_a_premiere_is_corrected_at_every_stage_until_it_settles(state, monkeypatch):
+    """The row froze at "live, 8 Sep" in production: a backfill during the
+    premiere narrowed upcoming to live, the date was only ever filled when
+    blank, and a live row no longer qualified for a re-check. Each backfill
+    must take YouTube's current word for both, until the video is settled."""
+    db.upsert_videos([{"video_id": "9Mkg5pfqS5Q", "title": "Network Science", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2026-09-08T00:00:00Z",
+                       "duration": 4633}])
+    answers = iter([
+        {"id": "9Mkg5pfqS5Q", "duration": 4633, "upload_date": "20260908",
+         "release_timestamp": 1789653609, "live_status": "is_live"},        # during the premiere
+        {"id": "9Mkg5pfqS5Q", "duration": 4633, "upload_date": "20260917",
+         "timestamp": 1789653609, "live_status": "not_live"},               # afterwards
+    ])
+    fetched = []
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: fetched.append(vid) or next(answers))
+
+    youtube.backfill_metadata()
+    video = db.all_videos()[0]
+    assert (video["live_status"], video["published_at"]) == ("is_live", "2026-09-17T14:00:09Z")
+
+    youtube.backfill_metadata()
+    video = db.all_videos()[0]
+    assert (video["live_status"], video["published_at"]) == ("not_live", "2026-09-17T14:00:09Z")
+
+    # Settled: no longer pending, so nothing is fetched again.
+    youtube.backfill_metadata()
+    assert fetched == ["9Mkg5pfqS5Q", "9Mkg5pfqS5Q"]
+
+
+def test_a_settled_video_s_date_is_never_rewritten(state, monkeypatch):
+    """The correction is for premieres only: a video that is not live keeps
+    the date it was given, whatever a later fetch says."""
+    db.upsert_videos([{"video_id": "aaaaaaaaaaa", "title": "Talk", "url": "u",
+                       "live_status": "not_live", "published_at": "2026-08-20T00:00:00Z"}])
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": 100, "timestamp": 1789653609, "live_status": "not_live"})
+
+    youtube.backfill_metadata()                        # fetched for its missing duration
+    video = db.all_videos()[0]
+    assert video["duration"] == 100 and video["published_at"] == "2026-08-20T00:00:00Z"
