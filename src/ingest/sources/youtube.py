@@ -322,7 +322,7 @@ def backfill_metadata(max_lookups: int = 120) -> dict:
         or v.get("live_status") in UNSETTLED
     ]
 
-    resolved, spent, updates = 0, 0, []
+    resolved, spent, updates, aired = 0, 0, [], []
     for video in pending:
         stale_premiere = video.get("live_status") in UNSETTLED
         info = None if stale_premiere else _cached_info(video["video_id"])
@@ -349,16 +349,24 @@ def backfill_metadata(max_lookups: int = 120) -> dict:
         # here promotes a video back into a premiere.
         if stale_premiere and info.get("live_status") not in (None, video.get("live_status")):
             patch["live_status"] = info["live_status"]
+            if _settled(info["live_status"]):
+                aired.append(video["video_id"])
         if patch:
             updates.append({**video, **patch})
             resolved += 1
 
     if updates:
         db.upsert_videos(updates)
-    return {"resolved": resolved, "fetched": spent, "remaining": len(pending) - resolved}
+    return {"resolved": resolved, "fetched": spent, "remaining": len(pending) - resolved,
+            "aired": aired}
 
 
-def resolve_videos(video_ids: list[str]) -> int:
+def _settled(live_status: str | None) -> bool:
+    """Whether YouTube has finished with a video: it is neither scheduled nor on air."""
+    return bool(live_status) and live_status not in UNSETTLED
+
+
+def resolve_videos(video_ids: list[str]) -> dict:
     """Fill in duration, date and live status for specific videos, right now.
 
     The RSS feed carries none of the three, so a video detected there arrives
@@ -372,14 +380,21 @@ def resolve_videos(video_ids: list[str]) -> int:
     unlike ``backfill_metadata``, which grinds through the whole channel in the
     background and may not reach these for hours.
 
-    Returns the number of videos it actually learned something about. A lookup
-    that fails leaves the row as it was: the pipeline's own teaser guard is the
-    backstop, so a missed resolution costs a skipped run, never a bad ingestion.
+    Returns ``resolved``, the number of videos it actually learned something
+    about, and ``aired``: the ids that were a premiere or a stream when this was
+    called and are settled now. That transition is the one moment a premiere
+    becomes a talk with captions to fetch, and whoever observes it — this, or
+    ``backfill_metadata`` — hands the ids on to auto-ingest. Nothing records
+    "aired"; it is observed once, by the call that writes the settled status.
+
+    A lookup that fails leaves the row as it was: the pipeline's own teaser
+    guard is the backstop, so a missed resolution costs a skipped run, never a
+    bad ingestion.
     """
     from .. import db
 
     known = {v["video_id"]: v for v in db.all_videos()}
-    updates = []
+    updates, aired = [], []
     for video_id in video_ids:
         base = known.get(video_id)
         if base is None:
@@ -395,12 +410,14 @@ def resolve_videos(video_ids: list[str]) -> int:
             patch["published_at"] = _published_from(info)
         if info.get("live_status"):
             patch["live_status"] = info["live_status"]
+            if base.get("live_status") in UNSETTLED and _settled(info["live_status"]):
+                aired.append(video_id)
         if patch:
             updates.append({**base, **patch})
 
     if updates:
         db.upsert_videos(updates)
-    return len(updates)
+    return {"resolved": len(updates), "aired": aired}
 
 
 def refresh_inventory(limit: int | None = None, backfill: bool = True) -> dict:

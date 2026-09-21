@@ -29,6 +29,7 @@
     </span>
     {% if s.published_at %}<span class="muted">{{ 'Premieres' if s.is_upcoming else 'Published' }} {{ s.published_at | day }}</span>
     {% elif s.talk_date %}<span class="muted">Given {{ s.talk_date | day }}</span>{% endif %}
+    {% if s.is_upcoming and auto_ingest_on %}<span class="muted" title="The channel is polled every few minutes; the first poll to find this premiere aired ingests its transcript.">Its transcript is ingested automatically once it airs.</span>{% endif %}
   </div>
 </div>
 

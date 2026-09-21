@@ -515,6 +515,8 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
         {"s": match, "parsed": parsed, "raw": raw, "run": run, "key": key,
          "vocab": curation_vocabularies(), "suggested_date": suggested_date,
          "suggestions": suggestions, "KG_ENABLED": config.KG_ENABLED,
+         # Read here, not in the template: both valves are per-process state.
+         "auto_ingest_on": config.SCHEDULER_ENABLED and config.AUTO_INGEST_NEW,
          "suggestion_evidence": suggestion_evidence,
          "suggestion_failed": suggestion_failed, "disagreement": disagreement},
     )
@@ -857,6 +859,19 @@ def graph_add(request: Request):
     )
 
 
+def _backfill_then_ingest() -> None:
+    """The backfill behind "Refresh channel" — and what the timer would do with it.
+
+    The backfill is where a premiere is found to have aired, and pressing the
+    button after one must not be the one path on which that goes unnoticed.
+    """
+    from . import scheduler
+    from .sources import youtube
+
+    result = youtube.backfill_metadata()
+    scheduler.ingest_new(result.get("aired", []))
+
+
 @router.post("/refresh", response_class=HTMLResponse)
 def refresh(request: Request, background: BackgroundTasks):
     """Re-read the channel, and say what happened.
@@ -880,7 +895,7 @@ def refresh(request: Request, background: BackgroundTasks):
     new, updated = db.upsert_videos(videos)
     # Upload dates and a few durations are not in the flat enumeration and cost
     # one request each, so they fill in behind this rather than holding it up.
-    background.add_task(youtube.backfill_metadata)
+    background.add_task(_backfill_then_ingest)
     undated = sum(1 for v in db.all_videos() if not v.get("published_at"))
     dating = f' Fetching dates for {undated} of them.' if undated else ""
     return HTMLResponse(

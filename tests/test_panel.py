@@ -968,7 +968,7 @@ def test_attaching_a_video_records_it_and_queues_the_run(client, monkeypatch, tm
     monkeypatch.setattr(R, "reconcile", _only(AWAITING))
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
-    monkeypatch.setattr("ingest.sources.youtube.resolve_videos", lambda ids: 0)
+    monkeypatch.setattr("ingest.sources.youtube.resolve_videos", lambda ids: {"resolved": 0, "aired": []})
 
     taken = client.post("/video/t-await01/attach", data={"video": "ttttttttttt"})
     assert "already belongs to talk t-other" in taken.text and queued == []
@@ -1128,3 +1128,37 @@ def test_the_ingest_button_refuses_a_premiere_that_has_not_aired(client, monkeyp
 
     assert client.post("/ingest/youtube:tAPqdlsuJYg").status_code == 200
     assert queued == []
+
+
+def test_the_drawer_says_a_premiere_will_be_ingested_when_it_airs(client, monkeypatch):
+    """The sentence is the promise the scheduler keeps — printed only while
+    both valves that keep it are open."""
+    monkeypatch.setattr(R, "reconcile", _only(PREMIERE))
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    assert "ingested automatically once it airs" in client.get("/video/youtube:tAPqdlsuJYg?body=1").text
+
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", False)
+    assert "ingested automatically" not in client.get("/video/youtube:tAPqdlsuJYg?body=1").text
+
+    # Only a premiere gets the sentence; an aired video is simply published.
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    assert "ingested automatically" not in client.get(f"/video/{READY.key}?body=1").text
+
+
+def test_refreshing_the_channel_ingests_a_premiere_the_backfill_found_aired(client, monkeypatch):
+    """Pressing the button after a premiere does what the timer would have."""
+    from ingest.sources import youtube
+
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(youtube, "enumerate_channel", lambda: [
+        {"video_id": "tAPqdlsuJYg", "title": "Combating Cyber Threats", "url": "u", "duration": 4000}])
+    monkeypatch.setattr(youtube, "backfill_metadata", lambda: {
+        "resolved": 1, "fetched": 1, "remaining": 0, "aired": ["tAPqdlsuJYg"]})
+    ingested = []
+    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+
+    assert client.post("/refresh").status_code == 200     # background tasks run before it returns
+    assert ingested == ["tAPqdlsuJYg"]
