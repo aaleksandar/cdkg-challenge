@@ -83,3 +83,53 @@ def test_a_graph_of_only_seeded_talks_is_refused(sandbox):
     assert "Refusing to swap in an empty graph (1 talks, 0 tagged)" in result.message
     assert not config.GRAPH_DB_PATH.exists()
     assert not config.GRAPH_DB_PATH.with_suffix(".build").exists()
+
+
+def test_a_seeded_talk_gets_its_transcript_the_poll_after_its_premiere_airs(sandbox, monkeypatch):
+    """George's flow, end to end: the programme puts the talk in the graph; the
+    recording is scheduled as a premiere and catalogued days early; nobody
+    presses anything; the poll that finds it aired runs the pipeline, which
+    joins the video to the seeded row and tags that talk."""
+    from ingest import db, scheduler
+    from ingest.sources import youtube
+
+    sb = sandbox
+    sb.add_video("bbbbbbbbbbb", "Graph Thinking | Paco Nathan | Connected Data World 2021")
+    assert sb.run("bbbbbbbbbbb")["status"] == "completed"
+    _write_catalog()
+    assert heysummit.sync(refresh=False)["seeded"] == 1
+    seeded = next(r for r in sb.rows() if r["HeySummit"] == "2")
+
+    # The premiere is catalogued with its slot, which has now passed.
+    sb.add_video("ccccccccccc", "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021 #knowledgegraph",
+                 in_inventory=False)
+    db.upsert_videos([{"video_id": "ccccccccccc", "title": "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021 #knowledgegraph",
+                       "url": "https://www.youtube.com/watch?v=ccccccccccc", "duration": 2400,
+                       "live_status": "is_upcoming", "published_at": "2021-12-03T14:00:00Z"}])
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(youtube, "poll_rss", lambda: {"fetched": 15, "new": 0, "new_ids": []})
+
+    # Still on air at the first poll: nothing runs.
+    sb.videos["ccccccccccc"]["live_status"] = "is_live"
+    scheduler.poll_for_new_videos()
+    assert db.latest_run_for("ccccccccccc") is None
+    assert sb.yt.calls == ["bbbbbbbbbbb"]
+
+    # Over by the next one: the run happens on its own.
+    sb.videos["ccccccccccc"]["live_status"] = "not_live"
+    scheduler.poll_for_new_videos()
+    run = db.latest_run_for("ccccccccccc")
+
+    assert run["status"] == "completed", run
+    assert detail(run, "csv_append")["talk_id"] == seeded["TalkID"]
+    joined = next(r for r in sb.rows() if r["HeySummit"] == "2")
+    assert joined["Video"] == "https://www.youtube.com/watch?v=ccccccccccc"
+    assert graph.talk_is_tagged(config.GRAPH_DB_PATH, seeded["TalkID"])
+    assert detail(run, "graph_rebuild")["tagged"] is True
+
+    # And it is not new the poll after either: observed once, ingested once.
+    scheduler.poll_for_new_videos()
+    assert sb.yt.calls == ["bbbbbbbbbbb", "ccccccccccc"]
+    with db.connect() as conn:
+        assert conn.execute("SELECT COUNT(*) FROM runs WHERE video_id = 'ccccccccccc'").fetchone()[0] == 1

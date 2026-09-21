@@ -306,3 +306,129 @@ def test_the_heysummit_job_stands_down_when_either_valve_is_closed(state, monkey
     monkeypatch.setattr(heysummit, "sync", lambda refresh=True: {"changed": False})
     scheduler.sync_heysummit()
     assert rebuilds == [1]                        # nothing changed: no rebuild
+
+
+# --- A premiere that has aired is a new talk, however long it was catalogued ---
+
+def _auto(monkeypatch):
+    from ingest.sources import youtube
+
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(config, "SCHEDULER_ENABLED", True)
+    # The feed has nothing new: the premiere was catalogued days ago.
+    monkeypatch.setattr(youtube, "poll_rss", lambda: {"fetched": 15, "new": 0, "new_ids": []})
+    db.upsert_videos([{"video_id": "known", "title": "Known", "url": "u",
+                       "live_status": "not_live", "published_at": "2026-01-01T00:00:00Z"}])
+    ingested = []
+    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    return ingested
+
+
+def _status(video_id):
+    return next(v["live_status"] for v in db.all_videos() if v["video_id"] == video_id)
+
+
+def _answer(monkeypatch, *infos):
+    """`fetch_video_info` answers in order, and records what it was asked."""
+    from ingest.sources import youtube
+
+    asked, answers = [], iter(infos)
+    monkeypatch.setattr(youtube, "fetch_video_info",
+                        lambda vid: asked.append(vid) or {"id": vid, **next(answers)})
+    return asked
+
+
+def test_a_premiere_is_ingested_by_the_poll_that_finds_it_aired(state, monkeypatch):
+    """It is not new to the feed on the day it airs — it was catalogued when it
+    was scheduled — so nothing else would ever start its run."""
+    from ingest import scheduler
+
+    ingested = _auto(monkeypatch)
+    db.upsert_videos([{"video_id": "soon", "title": "Premiere", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2026-01-02T14:00:00Z"}])
+    asked = _answer(monkeypatch,
+                    {"duration": 4633, "timestamp": 1789653609, "live_status": "not_live"})
+
+    scheduler.poll_for_new_videos()
+
+    assert asked == ["soon"] and ingested == ["soon"]
+    # Settled now: the next poll neither asks about it nor ingests it again.
+    scheduler.poll_for_new_videos()
+    assert asked == ["soon"] and ingested == ["soon"]
+
+
+def test_a_premiere_whose_slot_has_not_come_is_left_alone(state, monkeypatch):
+    from ingest import scheduler
+
+    ingested = _auto(monkeypatch)
+    db.upsert_videos([{"video_id": "later", "title": "Premiere", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2999-01-01T00:00:00Z"}])
+    asked = _answer(monkeypatch)
+
+    scheduler.poll_for_new_videos()
+    assert asked == [] and ingested == []
+
+
+def test_a_premiere_on_air_waits_for_the_poll_after(state, monkeypatch):
+    """During the premiere YouTube says `is_live`; there are no captions to
+    fetch until it says the video is over."""
+    from ingest import scheduler
+
+    ingested = _auto(monkeypatch)
+    db.upsert_videos([{"video_id": "soon", "title": "Premiere", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2026-01-02T14:00:00Z"}])
+    asked = _answer(monkeypatch,
+                    {"duration": 4633, "release_timestamp": 1789653609, "live_status": "is_live"},
+                    {"duration": 4633, "timestamp": 1789653609, "live_status": "not_live"})
+
+    scheduler.poll_for_new_videos()
+    assert ingested == [] and _status("soon") == "is_live"
+
+    scheduler.poll_for_new_videos()
+    assert asked == ["soon", "soon"] and ingested == ["soon"]
+
+
+def test_an_aired_premiere_is_settled_but_not_ingested_when_auto_ingest_is_off(state, monkeypatch):
+    from ingest import scheduler
+
+    ingested = _auto(monkeypatch)
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", False)
+    db.upsert_videos([{"video_id": "soon", "title": "Premiere", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2026-01-02T14:00:00Z"}])
+    _answer(monkeypatch, {"duration": 4633, "timestamp": 1789653609, "live_status": "not_live"})
+
+    scheduler.poll_for_new_videos()
+
+    assert ingested == []
+    assert _status("soon") == "not_live"     # the panel still learns it aired
+
+
+def test_the_daily_refresh_ingests_what_its_backfill_found_aired(state, monkeypatch):
+    """Whichever job notices first: the backfill re-reads every unsettled row too."""
+    from ingest import scheduler
+    from ingest.sources import youtube
+
+    ingested = _auto(monkeypatch)
+    db.upsert_videos([{"video_id": "soon", "title": "Premiere", "url": "u",
+                       "duration": 4633, "live_status": "not_live", "published_at": "2026-01-02T14:00:00Z"}])
+    monkeypatch.setattr(youtube, "refresh_inventory", lambda: {
+        "fetched": 2, "new": 0, "updated": 0,
+        "backfill": {"resolved": 1, "fetched": 1, "remaining": 0, "aired": ["soon"]}})
+
+    scheduler.refresh_inventory()
+    assert ingested == ["soon"]
+
+
+def test_what_is_not_yet_a_talk_is_skipped_with_a_reason(state, monkeypatch):
+    from ingest import scheduler
+
+    db.upsert_videos([
+        {"video_id": "short", "title": "Teaser", "url": "u", "duration": 90},
+        {"video_id": "live", "title": "On air", "url": "u", "duration": 4000, "live_status": "is_live"},
+        {"video_id": "after", "title": "Just over", "url": "u", "duration": 4000, "live_status": "post_live"},
+        {"video_id": "talk", "title": "Talk", "url": "u", "duration": 4000, "live_status": "not_live"},
+    ])
+    verdicts = dict(scheduler._ingestable(["short", "live", "after", "talk"]))
+    assert "Short" in verdicts["short"]
+    assert "not finished airing" in verdicts["live"] and "not finished airing" in verdicts["after"]
+    assert verdicts["talk"] is None
