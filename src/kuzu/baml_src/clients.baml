@@ -42,6 +42,22 @@ client<llm> GeminiFlashChat {
   }
 }
 
+// A candidate for the chat, compared with GeminiFlashChat by
+// `evaluate.py --client GeminiFlashLite`. The free tier allows about 500
+// requests a day per Flash-Lite model against about 20 for gemini-3.7-flash,
+// and a chat question costs two.
+client<llm> GeminiFlashLite {
+  provider google-ai
+  retry_policy Brief
+  options {
+    model "gemini-3.5-flash-lite"
+    api_key env.GOOGLE_API_KEY
+    generationConfig {
+      temperature 0
+    }
+  }
+}
+
 retry_policy Brief {
   max_retries 2
   strategy {

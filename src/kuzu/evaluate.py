@@ -63,7 +63,11 @@ def get_judge_client() -> genai.Client:
     return _judge_client
 
 
-def judge_response(question: str, baseline: str, response: str) -> tuple[int, str]:
+JUDGE_MODEL = "gemini-3.7-flash"
+
+
+def judge_response(question: str, baseline: str, response: str,
+                   model: str = JUDGE_MODEL) -> tuple[int, str]:
     """Use an LLM to score the RAG response against the baseline. Returns (score 1-5, reasoning)."""
     prompt = f"""You are evaluating a RAG system's answer against a baseline (expected) answer.
 
@@ -83,7 +87,7 @@ SYSTEM ANSWER: {response}
 Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
 
     result = get_judge_client().models.generate_content(
-        model="gemini-3.7-flash",
+        model=model,
         contents=prompt,
         config=genai_types.GenerateContentConfig(
             temperature=0,
@@ -100,14 +104,17 @@ Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
         return 1, f"Could not parse judge response: {result.text}"
 
 
-def run_evaluation(output_path: str | None = None) -> list[dict]:
+def run_evaluation(output_path: str | None = None, judge_model: str = JUDGE_MODEL,
+                   pause: float = 0) -> list[dict]:
     questions = load_questions(QA_CSV)
     rag = GraphRAG()
     results = []
 
     print(f"Running evaluation on {len(questions)} questions...\n")
 
-    for q in questions:
+    for index, q in enumerate(questions):
+        if pause and index:
+            time.sleep(pause)
         qid = q["id"]
         question = q["question"]
         baseline = q["baseline"]
@@ -145,7 +152,7 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
         elif not response or response == "N/A":
             score, reasoning = 1, "No response returned"
         else:
-            score, reasoning = judge_response(question, baseline, response)
+            score, reasoning = judge_response(question, baseline, response, judge_model)
 
         label = SCORE_LABELS.get(score, "unknown")
         short_q = question[:55] + "..." if len(question) > 55 else question
@@ -172,6 +179,7 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
             "label": label,
             "reasoning": reasoning,
             "error": error,
+            "judge": judge_model,
             "seconds": seconds,
             "timings": timings,
             **anchoring,
@@ -209,7 +217,11 @@ if __name__ == "__main__":
     parser.add_argument("--output", "-o", help="Save detailed results to a JSON file", default=None)
     parser.add_argument("--client", default=None,
                         help="Answer with this clients.baml client instead of the one graphrag.baml names")
+    parser.add_argument("--judge-model", default=JUDGE_MODEL,
+                        help="Gemini model that scores the answers (compare runs only under the same judge)")
+    parser.add_argument("--pause", type=float, default=0,
+                        help="Seconds to wait between questions, for a per-minute rate limit")
     args = parser.parse_args()
     if args.client:
         os.environ["RAG_CLIENT"] = args.client
-    run_evaluation(output_path=args.output)
+    run_evaluation(output_path=args.output, judge_model=args.judge_model, pause=args.pause)

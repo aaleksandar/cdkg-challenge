@@ -244,6 +244,8 @@ If YouTube refuses the captions, the stage falls back to Supadata and the drawer
 
 `QA/CDKGQA.csv` holds 12 questions with baseline answers. `evaluate.py` runs each through `GraphRAG` and scores the response 1–5 with a Gemini judge (1 = no_answer, 5 = correct), printing per-question detail and a summary histogram.
 
+`--client NAME` answers with another `clients.baml` client, `--judge-model` changes the scoring model (compare runs only under the same judge), and `--pause SECONDS` spaces questions out for a free tier's per-minute limit — a 429 scores 1 and measures the quota, not the answer.
+
 **This is the regression check for any prompt or schema change.** Capture a baseline before touching `baml_src/graphrag.baml`, then compare after. Expect run-to-run variance of a few tenths even at `temperature 0` — judge a change by the shape of the distribution, not a single decimal. Current baseline is 4.4–4.6/5 across five runs on `gemini-3.7-flash` (measured 2026-09-11, after the `talk_id` migration; the previous measurement was 4.3–4.5 on 2026-08-25). Q5 ("latest developments") is the marginal one: it normally scores 3 but dipped to 2 in one run of five with no code change in between, so a single 2 there is judge noise at a boundary rather than a regression. Two 2s, or a 2 anywhere else, is worth investigating. Q7 and Q10 also move by a point between otherwise identical runs — four of the five runs on 2026-09-11 were score-for-score identical and the fifth dropped both by one.
 
 ## Docker & Deployment
