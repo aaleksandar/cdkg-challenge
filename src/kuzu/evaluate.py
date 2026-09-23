@@ -25,6 +25,7 @@ load_dotenv()
 os.environ["BAML_LOG"] = "WARN"
 
 from google import genai
+from google.genai import errors as genai_errors
 from google.genai import types as genai_types
 
 import config
@@ -86,14 +87,23 @@ SYSTEM ANSWER: {response}
 
 Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
 
-    result = get_judge_client().models.generate_content(
-        model=model,
-        contents=prompt,
-        config=genai_types.GenerateContentConfig(
-            temperature=0,
-            response_mime_type="application/json",
-        ),
-    )
+    # Google's 503 "high demand" spikes pass within a minute; without a retry
+    # one of them aborts the whole run after the answers were already paid for.
+    for attempt in range(5):
+        try:
+            result = get_judge_client().models.generate_content(
+                model=model,
+                contents=prompt,
+                config=genai_types.GenerateContentConfig(
+                    temperature=0,
+                    response_mime_type="application/json",
+                ),
+            )
+            break
+        except genai_errors.ServerError:
+            if attempt == 4:
+                raise
+            time.sleep(2 ** attempt * 2)
     try:
         parsed = json.loads(result.text)
         return int(parsed["score"]), parsed.get("reasoning", "")
