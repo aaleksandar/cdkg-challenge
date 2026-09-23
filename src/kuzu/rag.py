@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import os
 import re
+import time
 from datetime import date, datetime
 
 import kuzu
@@ -41,6 +42,24 @@ def _client():
     from baml_client import b
 
     return b
+
+
+def _options() -> dict:
+    """Extra keyword arguments for the BAML calls: which client answers, when
+    RAG_CLIENT overrides it.
+
+    Both RAG functions name GeminiFlashChat in graphrag.baml. RAG_CLIENT names
+    any other client in clients.baml to answer instead — evaluate.py uses it to
+    run the benchmark on the ingestion client for comparison.
+    """
+    name = os.environ.get("RAG_CLIENT")
+    if not name:
+        return {}
+    from baml_py import ClientRegistry
+
+    registry = ClientRegistry()
+    registry.set_primary(name)
+    return {"baml_options": {"client_registry": registry}}
 
 
 def get_schema_dict(conn: kuzu.Connection) -> dict[str, list[dict]]:
@@ -320,7 +339,17 @@ class GraphRAG:
             "grounding": "general",
             "from_general_knowledge": False,
             "used_talk_ids": [],
+            # Seconds per step, so a slow answer says where its time went.
+            "timings": {},
         }
+        timings = result["timings"]
+        clock = time.perf_counter()
+
+        def lap(step: str) -> None:
+            nonlocal clock
+            now = time.perf_counter()
+            timings[step] = round(now - clock, 3)
+            clock = now
 
         # Two things here can fail on well-formed input, so neither is allowed to
         # reach the caller (e.g. the Streamlit app) as an unhandled exception:
@@ -328,7 +357,9 @@ class GraphRAG:
         # call may return a response BAML cannot parse into its output type.
         try:
             b = _client()
-            cypher = b.RAGText2Cypher(self.baml_schema, question)
+            options = _options()
+            cypher = b.RAGText2Cypher(self.baml_schema, question, **options)
+            lap("text2cypher")
             if not cypher:
                 return result
             result["cypher"] = cypher.query
@@ -336,6 +367,7 @@ class GraphRAG:
             columns, rows = self.execute_query(cypher.query)
             result["results"] = [dict(zip(columns, _json_safe(row))) for row in rows[:RESULTS_CAP]]
             result["row_count"] = len(rows)
+            lap("query")
 
             sources = self.resolve_sources(columns, rows, cypher.query)
             grounding = ("talks" if any(s["kind"] == "talk" for s in sources)
@@ -343,7 +375,9 @@ class GraphRAG:
             result["grounding"] = grounding
 
             context = self.build_context(sources, format_rows(columns, rows))
-            answer = b.RAGAnswerQuestion(question, context, grounding)
+            lap("sources")
+            answer = b.RAGAnswerQuestion(question, context, grounding, **options)
+            lap("answer")
             result["response"] = answer.answer
             result["from_general_knowledge"] = bool(getattr(answer, "from_general_knowledge", False))
 

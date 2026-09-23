@@ -7,12 +7,15 @@ through GraphRAG, and uses an LLM judge to score the response.
 Usage:
     uv run evaluate.py
     uv run evaluate.py --output results.json
+    uv run evaluate.py --client GeminiFlash   # the chat on the ingestion client, to compare
 """
 
 import argparse
 import csv
 import json
 import os
+import statistics
+import time
 import traceback
 from pathlib import Path
 
@@ -111,8 +114,11 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
 
         anchoring = {"grounding": "general", "from_general_knowledge": False,
                      "row_count": 0, "sources": []}
+        timings = {}
+        started = time.perf_counter()
         try:
             rag_result = rag.run(question)
+            timings = rag_result.get("timings") or {}
             response = rag_result.get("response", "")
             cypher = rag_result.get("cypher", "")
             error = None
@@ -132,6 +138,7 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
             response = ""
             cypher = ""
             error = traceback.format_exc()
+        seconds = round(time.perf_counter() - started, 2)
 
         if error:
             score, reasoning = 1, f"Exception: {error.splitlines()[-1]}"
@@ -149,6 +156,8 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
         print(f"     Reason:   {reasoning}")
         print(f"     Anchored: {len(anchoring['sources'])} sources / {anchoring['grounding']}"
               + (" / general knowledge" if anchoring["from_general_knowledge"] else ""))
+        print(f"     Time:     {seconds:.1f}s  "
+              + "  ".join(f"{k} {v:.1f}s" for k, v in timings.items()))
         if error:
             print(f"     ERROR:    {error.splitlines()[-1]}")
         print()
@@ -163,6 +172,8 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
             "label": label,
             "reasoning": reasoning,
             "error": error,
+            "seconds": seconds,
+            "timings": timings,
             **anchoring,
         })
 
@@ -179,6 +190,10 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
         label = SCORE_LABELS[score_val]
         count = label_counts.get(label, 0)
         print(f"  {score_val} {label:<12} {count:>2}  {'█' * count}")
+    times = [r["seconds"] for r in results]
+    if times:
+        print(f"  time per answer: median {statistics.median(times):.1f}s, "
+              f"max {max(times):.1f}s, total {sum(times):.0f}s")
     print("=" * 80)
 
     if output_path:
@@ -192,5 +207,9 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate GraphRAG against CDKGQA benchmark")
     parser.add_argument("--output", "-o", help="Save detailed results to a JSON file", default=None)
+    parser.add_argument("--client", default=None,
+                        help="Answer with this clients.baml client instead of the one graphrag.baml names")
     args = parser.parse_args()
+    if args.client:
+        os.environ["RAG_CLIENT"] = args.client
     run_evaluation(output_path=args.output)

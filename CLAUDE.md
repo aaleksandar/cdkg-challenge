@@ -130,7 +130,7 @@ The `Exponential` retry policy in `clients.baml` is sized for Google's 503 "high
 
 ### Model choice
 
-All LLM calls go through the single `GeminiFlash` client in `clients.baml`, pinned to `gemini-3.7-flash`. `evaluate.py`'s judge is set to the same model and must be updated alongside it.
+All LLM calls use `gemini-3.7-flash`, through two clients in `clients.baml`: `GeminiFlash` for ingestion (tag extraction, speaker recovery) and `GeminiFlashChat` for the two RAG calls. The chat client sets `thinkingLevel "low"` and a short retry policy: Gemini 3.x thinks at length by default, and with two calls back to back on every question that made an answer take most of a minute. Change the model in both. `evaluate.py`'s judge is set to the same model and must be updated alongside it. `rag.run()` returns `timings` per step, Streamlit prints them under the answer, and `evaluate.py --client GeminiFlash` runs the benchmark with the chat on the ingestion client, which is how the two are compared.
 
 Pin a specific model rather than an alias like `gemini-flash-latest` — these prompts are tuned, and a model shifting underneath them silently changes behavior. Google retires models: `gemini-2.0-flash` was used here previously and now returns 404 on every call. If the whole system suddenly scores 1/5 across the benchmark with `NOT_FOUND` errors, check whether the model was retired before debugging anything else.
 

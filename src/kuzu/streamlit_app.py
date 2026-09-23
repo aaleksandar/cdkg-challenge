@@ -135,6 +135,10 @@ if question:
         # Get and show the response
         st.write("### Answer")
         st.write(output["response"])
+        timings = output.get("timings") or {}
+        if timings:
+            st.caption(f"Answered in {sum(timings.values()):.1f}s — "
+                       + " · ".join(f"{step} {t:.1f}s" for step, t in timings.items()))
         render_sources(output)
         # Append the question, the answer and where it came from to the history
         st.session_state.messages.append({

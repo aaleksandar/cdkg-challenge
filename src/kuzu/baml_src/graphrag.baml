@@ -13,7 +13,7 @@ class Answer {
 // --- Functions ---
 
 function RAGText2Cypher(schema: string, question: string) -> Cypher {
-  client GeminiFlash
+  client GeminiFlashChat
   prompt #"
     You are an expert in translating natural language questions into Cypher statements.
     You will be provided with a question and a graph schema.
@@ -87,7 +87,7 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
 }
 
 function RAGAnswerQuestion(question: string, context: string, grounding: string) -> Answer {
-  client GeminiFlash
+  client GeminiFlashChat
   prompt #"
     You are an AI assistant for the Connected Data conference knowledge base.
     You will be provided with a question and graph query results as context.
