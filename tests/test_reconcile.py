@@ -89,7 +89,7 @@ def test_unusable_files_are_quarantined(states):
 
 @pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
 def test_every_tagged_talk_in_the_graph_is_accounted_for(states):
-    """No talk may be tagged in Kuzu yet invisible to the panel."""
+    """No talk may be tagged in the graph yet invisible to the panel."""
     _, tagged = R.read_graph()
     seen = {s.talk_id for s in states if s.tagged_in_graph}
     assert tagged - seen == set()
@@ -227,11 +227,11 @@ def test_two_talks_may_share_a_title():
     """Keyed on the title, a second talk called "Opening Keynote" either aborted
     the COPY or silently merged into the first, taking its speaker with it.
     Conferences reuse titles; identities are not reused."""
-    import kuzu
+    import ladybug as lb
     import polars as pl
 
-    db = kuzu.Database(":memory:")
-    conn = kuzu.Connection(db)
+    db = lb.Database(":memory:")
+    conn = lb.Connection(db)
     conn.execute("CREATE NODE TABLE Talk (talk_id STRING, title STRING, PRIMARY KEY (talk_id))")
     conn.execute("CREATE NODE TABLE Speaker (name STRING, PRIMARY KEY (name))")
     conn.execute("CREATE REL TABLE GIVES_TALK (FROM Speaker TO Talk)")

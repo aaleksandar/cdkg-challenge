@@ -422,9 +422,9 @@ def read_graph() -> tuple[set[str], set[str]]:
     if not config.GRAPH_DB_PATH.exists():
         return set(), set()
     try:
-        import kuzu
+        import ladybug as lb
 
-        conn = kuzu.Connection(kuzu.Database(str(config.GRAPH_DB_PATH), read_only=True))
+        conn = lb.Connection(lb.Database(str(config.GRAPH_DB_PATH), read_only=True))
         ids, tagged = set(), set()
         result = conn.execute("MATCH (t:Talk) RETURN t.talk_id")
         while result.has_next():

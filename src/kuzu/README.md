@@ -1,21 +1,22 @@
-# Construct and query the Knowledge Graph using Kuzu
+# Construct and query the Knowledge Graph using Ladybug
 
-This directory contains the code used to construct and query the Knowledge Graph using [Kuzu](https://kuzudb.com/),
+This directory contains the code used to construct and query the Knowledge Graph using [Ladybug](https://ladybugdb.com/),
 an embedded, highly scalable graph database that supports the property graph data model through a convenient Cypher query language interface.
 
-## Why Kuzu?
+## Why Ladybug?
 
-As a modern embedded graph database, Kuzu offers the following benefits:
+Ladybug continues the development of Kuzu, which is archived. As a modern
+embedded graph database, it offers the following benefits:
 
-- Kuzu is designed to be embedded into your application, so you can easily begin building with minimum hassles (no servers or DB admin)
+- Ladybug is designed to be embedded into your application, so you can easily begin building with minimum hassles (no servers or DB admin)
 - Permissively licensed (MIT license)
-- **Interoperability**: Graphs are typically constructed from a variety of structured & unstructured sources. Kuzu allows you to seamlessly transform data between various formats while iterating on your graph data model
+- **Interoperability**: Graphs are typically constructed from a variety of structured & unstructured sources. Ladybug allows you to seamlessly transform data between various formats while iterating on your graph data model
 - **Structured property graph** data model, with strict types and more control over the schema
 - Add a persistent graph layer to advanced Graph RAG methods for larger-than-memory graph applications
-- Where many existing implementations of Graph RAG utilize NetworkX, an in-memory graph library, Kuzu can serve as a persistent backend for larger-than-memory graph applications (all graph traversals are performed on disk, so it can easily handle graphs that are too large to fit in memory)
-- Kuzu seamlessly interoperates with NetworkX, so you can use NetworkX for your graph algorithms, and Kuzu for data storage
-- Kuzu can also serve as a PyTorch Geometric backend for more advanced graph neural network (GNN) use cases that involve node embeddings and graph machine learning (GNNs)
-- Fast! Although retrieval latency is typically a small fraction of overall RAG application latency, Kuzu is designed to be performant and can handle large (1B node/edge) graphs, so you can move from PoC to production without worries.
+- Where many existing implementations of Graph RAG utilize NetworkX, an in-memory graph library, Ladybug can serve as a persistent backend for larger-than-memory graph applications (all graph traversals are performed on disk, so it can easily handle graphs that are too large to fit in memory)
+- Ladybug seamlessly interoperates with NetworkX, so you can use NetworkX for your graph algorithms, and Ladybug for data storage
+- Ladybug can also serve as a PyTorch Geometric backend for more advanced graph neural network (GNN) use cases that involve node embeddings and graph machine learning (GNNs)
+- Fast! Although retrieval latency is typically a small fraction of overall RAG application latency, Ladybug is designed to be performant and can handle large (1B node/edge) graphs, so you can move from PoC to production without worries.
 
 ## Setup
 
@@ -109,7 +110,7 @@ this graph comes from real-world data curation and human knowledge.
 uv run 02_domain_graph.py
 ```
 
-This creates the domain graph of speakers, categories, events and talks, and stores it in a Kuzu database.
+This creates the domain graph of speakers, categories, events and talks, and stores it in a Ladybug database.
 The database is at the `cdl_db` directory.
 
 ![](./assets/domain_graph.png)
@@ -135,7 +136,7 @@ The full graph consisting of the tags that are connected to the existing domain 
 ### 4. Query the graph and run Graph RAG
 
 We are now ready to query the graph and run Graph RAG! This is done in the `rag.py` script. We use
-an LLM to translate the given natural language questions into Kuzu Cypher queries, following which
+an LLM to translate the given natural language questions into Cypher queries, following which
 the retrieved results are passed as context to an LLM to answer the questions in natural language.
 
 ```bash
@@ -184,10 +185,10 @@ Any prior questions and answers are saved in the chat history, so you can refer 
 ## Visualization
 
 Graph visualization is a great method to understand the structure and the "connectedness" of your data.
-We will be visualizing graphs in Kuzu using its browser-based UI,
-[Kuzu Explorer](https://docs.kuzudb.com/visualization/). Docker is required to run Kuzu Explorer.
-You can run the latest version of Kuzu Explorer by pulling the image from DockerHub provided using
-the provided `docker-compose.yml` file.
+We will be visualizing graphs in Ladybug using its browser-based UI,
+[Ladybug Explorer](https://docs.ladybugdb.com/visualization/lbug-explorer). Docker is required to
+run Ladybug Explorer. The provided `docker-compose.yml` pulls the image and mounts the database
+read-only.
 
 Run the following command in this directory that uses the provided `docker-compose.yml`:
 
@@ -199,12 +200,13 @@ Alternatively, you can type in the following command in your terminal:
 
 ```bash
 docker run -p 8000:8000 \
-           -v ./cdl_db.kuzu:/database \
+           -v ./cdl_db.kuzu:/database/cdl_db.kuzu \
+           -e LBUG_FILE=cdl_db.kuzu \
            -e MODE=READ_ONLY \
-           --rm kuzudb/explorer:0.11.1
+           --rm ghcr.io/ladybugdb/explorer:0.19.1
 ```
 
-This will download and run the required Kuzu Explorer image, and you can access the UI at `http://localhost:8000`.
+This will download and run the required Ladybug Explorer image, and you can access the UI at `http://localhost:8000`.
 
 Enter the following Cypher query in the shell editor to visualize the graph:
 

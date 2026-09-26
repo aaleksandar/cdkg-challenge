@@ -6,7 +6,7 @@ import config
 from rag import GraphRAG
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
-st.title("Graph RAG using Kuzu")
+st.title("Graph RAG using Ladybug")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -111,7 +111,7 @@ def render_sources(output: dict) -> None:
 
 # Create the input box
 question = st.text_input(
-    "Ask a question to the CDL Knowledge Graph built on top of Kuzu, an embedded graph database:",
+    "Ask a question to the CDL Knowledge Graph built on top of Ladybug, an embedded graph database:",
     placeholder="e.g., Can you tell me about Connected Data World 2021?",
 )
 

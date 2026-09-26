@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import kuzu
+import ladybug as lb
 import polars as pl
 
 import config
@@ -159,7 +159,7 @@ def get_talk_category_relationships(df: pl.DataFrame) -> pl.DataFrame:
     )
 
 
-def create_tables(conn: kuzu.Connection):
+def create_tables(conn: lb.Connection):
     conn.execute("CREATE NODE TABLE IF NOT EXISTS Speaker (name STRING, PRIMARY KEY (name))")
     conn.execute("""
         CREATE NODE TABLE IF NOT EXISTS Talk (
@@ -230,7 +230,7 @@ EVENT_DESCRIPTIONS = {
 }
 
 
-def write_event_description(conn: kuzu.Connection, event_name: str,
+def write_event_description(conn: lb.Connection, event_name: str,
                             description: str, url: str) -> None:
     """Attach a description and its source page to an Event that already exists."""
     conn.execute(
@@ -243,12 +243,12 @@ def write_event_description(conn: kuzu.Connection, event_name: str,
     )
 
 
-def write_cdl_description(conn: kuzu.Connection, event_name: str) -> None:
+def write_cdl_description(conn: lb.Connection, event_name: str) -> None:
     url, description = EVENT_DESCRIPTIONS["Connected Data World 2021"]
     write_event_description(conn, event_name, description, url)
 
 
-def write_knowledge_connexions_description(conn: kuzu.Connection, event_name: str) -> None:
+def write_knowledge_connexions_description(conn: lb.Connection, event_name: str) -> None:
     url, description = EVENT_DESCRIPTIONS["Knowledge Connexions 2020"]
     write_event_description(conn, event_name, description, url)
 
@@ -258,8 +258,8 @@ if __name__ == "__main__":
     DB_NAME = config.DB_PATH
     Path(DB_NAME).unlink(missing_ok=True)
 
-    db = kuzu.Database(DB_NAME)
-    conn = kuzu.Connection(db)
+    db = lb.Database(DB_NAME)
+    conn = lb.Connection(db)
 
     # Load data
     df = load_data(str(config.METADATA_CSV))

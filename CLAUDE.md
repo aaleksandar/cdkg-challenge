@@ -30,7 +30,7 @@ uv run evaluate.py --output results.json
 # Streamlit app
 uv run streamlit run streamlit_app.py
 
-# Kuzu Explorer for visualization (requires Docker), from src/kuzu/
+# Ladybug Explorer for visualization (requires Docker), from src/kuzu/
 docker compose up                   # http://localhost:8000
 ```
 
@@ -42,9 +42,13 @@ uv export --frozen --no-dev --no-hashes --no-emit-project -o src/kuzu/requiremen
 
 After changing dependencies in `pyproject.toml`, run `uv lock`, then regenerate that file so images match local dev.
 
-Two version constraints in `pyproject.toml` are deliberate and will look wrong at a glance:
+Three version constraints in `pyproject.toml` are deliberate and will look wrong at a glance:
 - `pyarrow>=24.0.0,<25` — streamlit caps `pyarrow<25`. Raising it makes the lock unsolvable.
 - `baml-py==0.226.1` — exact pin, see the BAML section below.
+- `ladybug==0.19.1` — not the newest. 0.20 writes storage format 47 and every
+  published Ladybug Explorer image reads at most 43, so a database 0.20 wrote
+  cannot be opened by the Explorer at all. The pin and the explorer tag in
+  `config/deploy.yml` and `src/kuzu/docker-compose.yml` move together.
 
 ## Environment Variables
 
@@ -65,7 +69,7 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 1. **Domain Graph** (expert-curated): Speaker → Talk → Event/Category relationships from metadata CSV
 2. **Content/Lexical Graph** (LLM-extracted): Talk → Tag relationships from transcript analysis
 
-### Property Graph Schema (Kuzu)
+### Property Graph Schema (Ladybug)
 ```
 (:Speaker) -[:GIVES_TALK]-> (:Talk)      // has a `date` property; Talk's key is `talk_id`
 (:Talk) -[:IS_PART_OF]-> (:Event)
@@ -142,14 +146,14 @@ Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 
 
 1. `.srt` transcripts → `.txt` plain text (`data/`, gitignored)
 2. Transcripts → LLM → `entities.json` (extracted tags)
-3. Metadata CSV + `entities.json` → Kuzu database (`cdl_db.kuzu`, gitignored)
+3. Metadata CSV + `entities.json` → Ladybug database (`cdl_db.kuzu`, gitignored)
 4. User question → Text2Cypher → Cypher query → Graph results → sources resolved by `talk_id` → RAG answer + Sources
 
 ## Every answer says where it came from
 
 George's review of the benchmark found the answers good but unanchored — "where is the reply coming from?" — so `GraphRAG.run()` now returns `sources`, `grounding`, `from_general_knowledge`, `used_talk_ids`, `results` and `row_count` beside the answer, and Streamlit renders a **Sources** list under it: each talk with speakers, event, date, a video link and a HeySummit link, and the kind of evidence — "from its HeySummit description" and/or "matched on its transcript's tags: owl, shacl".
 
-The talk id is the citation key. The Text2Cypher few-shots return `t.talk_id` whenever a talk is part of the answer (instruction 5). `rag.resolve_sources` then resolves the retrieved rows deterministically — ids from any `talk_id` column; failing that, titles looked up (two talks may share one, and both are listed); failing that, when the query walked to a `Talk`, the talks of the speakers named — and fetches what the graph knows of each in one query. Evidence is honest and simple: what the talk has (`description_source == heysummit`, tags) and what the query used (`description` in the Cypher, `IS_DESCRIBED_BY`/`:Tag` in the Cypher). `grounding` is `talks`, `events` (the query walked to an Event; event sources carry `Event.url`) or `general`. The answer prompt sees the talks first, each under its id, and reports `used_talk_ids` and `from_general_knowledge`; the ids are validated against what was retrieved (an invented id is dropped; none named means all retrieved, over-inclusive but never fabricated), and the flag drives the app's note "No talk in the knowledge graph answers this directly; this comes from general knowledge about the conference". The note is gated on the flag, not on `grounding`: an aggregate answer such as "most popular topics" legitimately cites no talk. `rag.py` reaches the generated BAML client through `_client()`, so it imports without codegen and `tests/test_rag_sources.py` exercises the resolution against a real Kuzu file; `tests/integration/test_answer_sources.py` does it after a real ingestion.
+The talk id is the citation key. The Text2Cypher few-shots return `t.talk_id` whenever a talk is part of the answer (instruction 5). `rag.resolve_sources` then resolves the retrieved rows deterministically — ids from any `talk_id` column; failing that, titles looked up (two talks may share one, and both are listed); failing that, when the query walked to a `Talk`, the talks of the speakers named — and fetches what the graph knows of each in one query. Evidence is honest and simple: what the talk has (`description_source == heysummit`, tags) and what the query used (`description` in the Cypher, `IS_DESCRIBED_BY`/`:Tag` in the Cypher). `grounding` is `talks`, `events` (the query walked to an Event; event sources carry `Event.url`) or `general`. The answer prompt sees the talks first, each under its id, and reports `used_talk_ids` and `from_general_knowledge`; the ids are validated against what was retrieved (an invented id is dropped; none named means all retrieved, over-inclusive but never fabricated), and the flag drives the app's note "No talk in the knowledge graph answers this directly; this comes from general knowledge about the conference". The note is gated on the flag, not on `grounding`: an aggregate answer such as "most popular topics" legitimately cites no talk. `rag.py` reaches the generated BAML client through `_client()`, so it imports without codegen and `tests/test_rag_sources.py` exercises the resolution against a real Ladybug file; `tests/integration/test_answer_sources.py` does it after a real ingestion.
 
 `evaluate.py` records `grounding`, `from_general_knowledge`, `row_count` and a compact `sources` per question and prints "Anchored: n sources / grounding"; the judge is unchanged and never sees them. Deferred, by decision: quoting the transcript passage with a `youtube.com/watch?v=…&t=` link — the `.srt` cues carry the times and `data/*.txt` is a pure concatenation of them, but the app would need the transcripts on its volume.
 
@@ -161,7 +165,7 @@ A FastAPI admin panel that reconciles the @ConnectedData YouTube channel against
 PYTHONPATH=src uv run uvicorn ingest.main:app --port 8503
 ```
 
-**It derives state rather than storing it.** `reconcile.py` computes each talk's status at read time from six sources that disagree — the channel inventory, `Transcripts/**.srt`, the metadata CSV, `data/*.txt`, `entities.json` and Kuzu. This is why the panel is correct about talks ingested long before the service existed, and about their defects. SQLite holds only the inventory cache and run history.
+**It derives state rather than storing it.** `reconcile.py` computes each talk's status at read time from six sources that disagree — the channel inventory, `Transcripts/**.srt`, the metadata CSV, `data/*.txt`, `entities.json` and Ladybug. This is why the panel is correct about talks ingested long before the service existed, and about their defects. SQLite holds only the inventory cache and run history.
 
 **Enumerate the uploads playlist, not the `/videos` tab.** Every channel's uploads playlist is its channel ID with `UC` swapped for `UU`. The `/videos` tab omits Shorts — 229 entries versus 290 — and Shorts are precisely what the teaser filter needs to see in order to exclude them.
 
@@ -205,7 +209,7 @@ The bot check fires on datacenter addresses. `yt-dlp` is declared with its `defa
 
 **A curator can supply the captions.** `POST /transcript/{video_id}` takes an `.srt` or `.vtt` upload from the drawer (offered after both sources fail, and for any talk without a transcript). It parses the video's metadata exactly as `stage_metadata_parse` does (`stages.load_info`, shared) and writes the file to `transcript_path(parsed.event, parsed.talk_title)` — the one place the download stage looks — then queues a run, whose first two stages read "Parsed from cache" and "Already on disk". That is the audit trail. WebVTT is converted in pure Python (`sources/captions.py`; no ffmpeg in the image), and a file under 20 words is refused as the extraction stage would refuse it. Refusals come back as `200` with `HX-Retarget` to a flash beside the button, because htmx does not swap error responses. Shorts are refused, as everywhere.
 
-**Snapshots are the graph as CSV.** `pipeline/snapshot.py` runs Kuzu's `EXPORT DATABASE` (one CSV per table — the same filenames as `cdl_db/` — plus `schema.cypher`/`copy.cypher`) into `SNAPSHOT_DIR` (default: `snapshots/` beside the database, so `/data/snapshots` in production, on the shared volume), adds a `manifest.json` carrying the `.graph-version` it was taken from plus node and row counts, zips it, and keeps the newest `SNAPSHOT_KEEP` (20). Advanced → "Snapshot the graph" takes one; the list below it downloads them via `GET /snapshots/{name}.zip`, where the name must match the UTC-stamp pattern before it touches a path. Two snapshots around an ingestion diff to exactly what the talk added. The checked-in `cdl_db/*.csv` are a stale hand export (37 talks against 45 live); `snapshot.export_csv` is the seam for refreshing them deliberately.
+**Snapshots are the graph as CSV.** `pipeline/snapshot.py` runs Ladybug's `EXPORT DATABASE` (one CSV per table — the same filenames as `cdl_db/` — plus `schema.cypher`/`copy.cypher`) into `SNAPSHOT_DIR` (default: `snapshots/` beside the database, so `/data/snapshots` in production, on the shared volume), adds a `manifest.json` carrying the `.graph-version` it was taken from plus node and row counts, zips it, and keeps the newest `SNAPSHOT_KEEP` (20). Advanced → "Snapshot the graph" takes one; the list below it downloads them via `GET /snapshots/{name}.zip`, where the name must match the UTC-stamp pattern before it touches a path. Two snapshots around an ingestion diff to exactly what the talk added. The checked-in `cdl_db/*.csv` are a stale hand export (37 talks against 45 live); `snapshot.export_csv` is the seam for refreshing them deliberately.
 
 **Re-running is the way a parser improvement reaches an existing talk.** Every talk with a video offers "Run the pipeline again" in the drawer, not just one that never ran or failed — the one exception being a Short, for which no outcome of a run would be an improvement. For that to mean anything, `csv_append` had to stop being a pure no-op on a row that already exists: it now backfills *blank* `Speaker`/`Event` from what the re-parse established, via `_apply_to_row(..., only_if_blank=True)`. A curated value is never overwritten — that is the difference between the human path (`update_row`) and the pipeline path, and the reason the file is otherwise append-only. A re-run that learned nothing leaves the file byte-identical, so it does not show up as a diff in the ingestion PR.
 
@@ -255,17 +259,26 @@ If YouTube refuses the captions, the stage falls back to Supadata and the drawer
   - `rag` — run `rag.py`
 - The entrypoint auto-rebuilds the database when it is missing or when `entities.json`'s hash has changed.
 - Deployment is [Kamal](https://kamal-deploy.org) via `config/deploy.yml`, triggered by `.github/workflows/deploy.yml` on every push to `main`. That workflow runs the test suite first (`needs: test`), so a red suite never reaches `kamal deploy`; `.github/workflows/test.yml` runs the same suite on every pull request and non-main push. Requiring the `test` check before a merge is branch protection, a GitHub setting outside the repo. There is still no lint gate.
-- A `cdkg_data` volume is shared between the app and the Kuzu Explorer accessory, so the Explorer reads the same database the app serves.
+- A `cdkg_data` volume is shared between the app and the Ladybug Explorer accessory, so the Explorer reads the same database the app serves.
 
 ## Gotchas
 
+- **Ladybug cannot open a database Kuzu wrote.** The engine is Ladybug, which
+  continues the archived Kuzu; the API is the same (`import ladybug as lb`,
+  `lb.Database`, `lb.Connection`) but the storage format is not. The graph is
+  derived from the metadata CSV and `entities.json`, so the answer is a rebuild,
+  never a conversion: delete `cdl_db.kuzu` and run `02_domain_graph.py` and
+  `03_content_graph.py`, or press Advanced → "Rebuild graph" in the panel. The failure reads "The
+  file is not a valid Lbug database file!". Paths and names still say `kuzu`
+  (`src/kuzu/`, `cdl_db.kuzu`, `KUZU_DIR`, `DB_PATH`) because they are the
+  production environment's contract, not a statement about the engine.
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.
 - **Adding a talk means adding a row to the metadata CSV**, not just a transcript. `Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv` is the sole source of `Talk` nodes, so a transcript with no matching row has nothing for its tags to attach to. `03_content_graph.py` joins the two on the filename stem (CSV `File` column ↔ `entities.json` filename) and silently drops anything unmatched. HeySummit seeding plus `claim_transcripts` reduced the unmatched set from 25 to the few that cannot be claimed by title: two Knowledge Connexions 2020 recordings whose rows already point at a CDL 2024 transcript (the Event-disagreement pair, for a curator), one talk HeySummit does not list, and the files named after bare YouTube IDs. Those still cost an LLM call on every full pipeline run.
 - **`Talk` is keyed on `talk_id`, not on `title`.** Titles are not unique — conferences reuse "Opening Keynote" — and with `title` as the primary key a duplicate either aborted the whole `COPY Talk` (rows differing) or silently merged two talks into one node carrying both speakers (rows identical, which is the ordinary case for an ingested talk, whose Category/Type/Web/Description are all blank). `title` remains a property and every few-shot Cypher example filters on it, so generated queries were unaffected by the change.
 - **Schema changes must be mirrored in three places**: the DDL in `02_domain_graph.py`/`03_content_graph.py`, the few-shot examples and the `test Text2Cypher1` schema block in `baml_src/graphrag.baml`, and `cdl_db/README.md`. `COPY Talk FROM talks_df` is positional, so `extract_talks` must emit the DDL's columns in the DDL's order (a test pins it).
-- **`rag.py` opens Kuzu with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
+- **`rag.py` opens Ladybug with `read_only=True`.** That, not prompt filtering, is what prevents LLM-generated Cypher from mutating the graph. Keep it.
 - **`GraphRAG.run()` never raises.** Both the Cypher execution and the two LLM calls are guarded; failures come back as a populated `error` key with a fallback `response`. Callers should surface `error` rather than assume success.
-- **`rag.py` reads the schema through Kuzu private APIs** (`conn._get_node_table_names()`, `_get_rel_table_names()`). These can break on upgrade; `kuzu` is pinned to `==0.11.3`.
+- **`rag.py` reads the schema through Ladybug private APIs** (`conn._get_node_table_names()`, `_get_rel_table_names()`). These can break on upgrade; `ladybug` is pinned to `==0.19.1`.
 - **`03_content_graph.py` has no `__main__` guard** — it opens the database at import time.
 - **YouTube descriptions end with an advert for the current conference.** A talk uploaded in 2017 carries "Connected Data London 2024 has been announced!" in its footer, and reading that as the talk's event mis-files most of the channel. `ingest/sources/parser.py` truncates at the promo markers *and* rejects any description-derived event whose year contradicts the upload date. Do not weaken either guard on its own.
 - **Anything a flag governs must be re-rendered by the toggle itself.** Every "Add to graph" button is drawn enabled or disabled from `KG_ENABLED`, so `POST /flag/{name}` returns the whole Advanced panel and sets `HX-Trigger: gate-changed`, which the page listens for (re-fetching the sheet) and an open drawer listens for too. The toggle cannot use an `hx-on::after-request` hook: it replaces itself, and a handler on a replaced element never runs — which is why the buttons used to stay disabled until the page was reloaded.
@@ -277,6 +290,6 @@ If YouTube refuses the captions, the stage falls back to Supadata and the drawer
 Not defects to fix incidentally, but worth knowing before working nearby:
 
 - `evaluate.py`'s judge calls `google.genai` directly with hand-rolled JSON parsing instead of going through BAML like everything else.
-- `tests/` covers the ingestion service (`uv run pytest`; `tests/conftest.py` points `SNAPSHOT_DIR` at a temp dir for every test). `tests/integration/` runs the real stage sequence end to end — real `csv_writer`, real `02_domain_graph.py`/`03_content_graph.py` in a subprocess against a temporary Kuzu — with only the network and LLM edges doubled: `youtube.fetch_video_info`, `youtube.download_transcript`, `supadata.download_transcript`, `speaker_llm.recover_speaker`, and the BAML client through `stages._tag_client()`. Its `sandbox` fixture redirects every path in `ingest.config` into `tmp_path` and leaves `KUZU_DIR`/`PIPELINE_SCRIPTS_DIR` real; the metadata CSV must sit at its exact filename under the temp `TRANSCRIPTS_DIR`, because `src/kuzu/config.py` derives it from there (a unit test pins that). Marked `integration`, on by default so CI covers it; `-m 'not integration'` is the fast local loop. `tests/test_reconcile.py` asserts against the committed CSV and `entities.json` on purpose: it is the repo's own consistency check. The `src/kuzu` scripts have no unit tests of their own beyond that, and there is still no lint configuration despite `.ruff_cache` in the tree.
+- `tests/` covers the ingestion service (`uv run pytest`; `tests/conftest.py` points `SNAPSHOT_DIR` at a temp dir for every test). `tests/integration/` runs the real stage sequence end to end — real `csv_writer`, real `02_domain_graph.py`/`03_content_graph.py` in a subprocess against a temporary Ladybug — with only the network and LLM edges doubled: `youtube.fetch_video_info`, `youtube.download_transcript`, `supadata.download_transcript`, `speaker_llm.recover_speaker`, and the BAML client through `stages._tag_client()`. Its `sandbox` fixture redirects every path in `ingest.config` into `tmp_path` and leaves `KUZU_DIR`/`PIPELINE_SCRIPTS_DIR` real; the metadata CSV must sit at its exact filename under the temp `TRANSCRIPTS_DIR`, because `src/kuzu/config.py` derives it from there (a unit test pins that). Marked `integration`, on by default so CI covers it; `-m 'not integration'` is the fast local loop. `tests/test_reconcile.py` asserts against the committed CSV and `entities.json` on purpose: it is the repo's own consistency check. The `src/kuzu` scripts have no unit tests of their own beyond that, and there is still no lint configuration despite `.ruff_cache` in the tree.
 - `config/deploy.yml` points `GITHUB_REPO` at the fork `aaleksandar/cdkg-challenge`, which is what the deploy workflow builds. Switch it back to `Connected-Data/cdkg-challenge` once upstream merges.
 - `docker-entrypoint.sh` re-runs `baml-cli generate` on every container boot (`BAML_GENERATE_ON_START=1`) even though the Dockerfile already generated the client at build time.
