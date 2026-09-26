@@ -118,10 +118,10 @@ def test_kuzu_config_derives_the_metadata_csv_from_transcripts_dir(monkeypatch, 
 
 
 def _tiny_graph(path):
-    """A Kuzu database with one tagged talk and one untagged talk."""
-    import kuzu
+    """A Ladybug database with one tagged talk and one untagged talk."""
+    import ladybug as lb
 
-    conn = kuzu.Connection(kuzu.Database(str(path)))
+    conn = lb.Connection(lb.Database(str(path)))
     conn.execute("CREATE NODE TABLE Talk(talk_id STRING, title STRING, PRIMARY KEY(talk_id))")
     conn.execute("CREATE NODE TABLE Tag(keyword STRING, PRIMARY KEY(keyword))")
     conn.execute("CREATE REL TABLE IS_DESCRIBED_BY(FROM Talk TO Tag)")

@@ -60,9 +60,9 @@ def _run_script(name: str, db_path: Path) -> tuple[bool, str]:
 
 
 def graph_counts(db_path: Path) -> dict[str, int]:
-    import kuzu
+    import ladybug as lb
 
-    conn = kuzu.Connection(kuzu.Database(str(db_path), read_only=True))
+    conn = lb.Connection(lb.Database(str(db_path), read_only=True))
     counts = {}
     for label in ("Speaker", "Talk", "Event", "Category", "Tag"):
         counts[label] = conn.execute(f"MATCH (n:{label}) RETURN count(n)").get_next()[0]
@@ -79,9 +79,9 @@ def talk_is_tagged(db_path: Path, talk_id: str) -> bool:
     video that attaches to it carries YouTube's, and titles repeat across
     conferences anyway.
     """
-    import kuzu
+    import ladybug as lb
 
-    conn = kuzu.Connection(kuzu.Database(str(db_path), read_only=True))
+    conn = lb.Connection(lb.Database(str(db_path), read_only=True))
     result = conn.execute(
         "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) WHERE t.talk_id = $talk_id "
         "RETURN count(*) > 0",
@@ -91,7 +91,7 @@ def talk_is_tagged(db_path: Path, talk_id: str) -> bool:
 
 
 def _clear(path: Path) -> None:
-    """Kuzu databases are directories on some versions and files on others."""
+    """Ladybug databases are directories on some versions and files on others."""
     shutil.rmtree(path, ignore_errors=True)
     path.unlink(missing_ok=True)
 

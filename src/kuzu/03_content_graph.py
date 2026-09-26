@@ -8,14 +8,14 @@ import json
 import os
 from pathlib import Path
 
-import kuzu
+import ladybug as lb
 import polars as pl
 
 import config
 
 DB_NAME = config.DB_PATH
-db = kuzu.Database(DB_NAME)
-conn = kuzu.Connection(db)
+db = lb.Database(DB_NAME)
+conn = lb.Connection(db)
 
 
 def load_data(filepath: str) -> pl.DataFrame:

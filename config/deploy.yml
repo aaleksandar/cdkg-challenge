@@ -130,12 +130,14 @@ ssh:
 
 accessories:
   explorer:
-    image: kuzudb/explorer:0.11.1
+    # The newest published Explorer image reads storage format 43, which is what
+    # the `ladybug` pin in pyproject.toml writes. Raise both together, never one.
+    image: ghcr.io/ladybugdb/explorer:0.19.1
     host: <%= ENV.fetch('SERVER_IP') %>
     port: 8000:8000
     env:
       clear:
         MODE: READ_ONLY
-        KUZU_FILE: cdl_db.kuzu
+        LBUG_FILE: cdl_db.kuzu
     volumes:
       - "cdkg_data:/database"

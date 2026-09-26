@@ -4,7 +4,7 @@ Only the edges that leave the machine are doubled — YouTube's metadata and
 captions, Supadata's captions, the LLM that reads a speaker, and the BAML
 client that extracts tags. Everything between them runs as in production:
 the stage functions, the CSV writer, the real ``02_domain_graph.py`` and
-``03_content_graph.py`` in a subprocess against a temporary Kuzu database,
+``03_content_graph.py`` in a subprocess against a temporary Ladybug database,
 and the panel over ``TestClient``. This is where the chain
 ``srt_path → data/<stem>.txt → entities.json filename → CSV File column →
 03_content_graph.py join`` is exercised in one run.
