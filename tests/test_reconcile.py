@@ -9,6 +9,13 @@ build artefact.
 import pytest
 
 from ingest import config, db, reconcile as R
+from ingest.pipeline import graph
+
+# read_graph reports a file this engine cannot open as empty, which would pass
+# the graph assertions below without checking anything.
+needs_graph = pytest.mark.skipif(
+    not (config.GRAPH_DB_PATH.exists() and graph.is_readable(config.GRAPH_DB_PATH)),
+    reason="graph not built, or written by another engine")
 
 
 @pytest.fixture(scope="module")
@@ -87,7 +94,7 @@ def test_unusable_files_are_quarantined(states):
     assert all(not s.actionable for s in junk)
 
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+@needs_graph
 def test_every_tagged_talk_in_the_graph_is_accounted_for(states):
     """No talk may be tagged in the graph yet invisible to the panel."""
     _, tagged = R.read_graph()
@@ -96,7 +103,7 @@ def test_every_tagged_talk_in_the_graph_is_accounted_for(states):
     assert sum(1 for s in states if s.tagged_in_graph) == len(tagged)
 
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+@needs_graph
 def test_in_graph_talks_are_curated_and_tagged(states):
     in_graph = [s for s in states if s.status == "in_graph"]
     assert in_graph

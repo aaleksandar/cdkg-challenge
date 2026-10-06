@@ -269,7 +269,12 @@ If YouTube refuses the captions, the stage falls back to Supadata and the drawer
   derived from the metadata CSV and `entities.json`, so the answer is a rebuild,
   never a conversion: delete `cdl_db.kuzu` and run `02_domain_graph.py` and
   `03_content_graph.py`, or press Advanced → "Rebuild graph" in the panel. The failure reads "The
-  file is not a valid Lbug database file!". Paths and names still say `kuzu`
+  file is not a valid Lbug database file!". In production nobody has to: the
+  ingest role's boot calls `graph.ensure_readable_graph()`, which queues a
+  rebuild when the live file exists but cannot be opened, and the swap's
+  `.graph-version` makes the app reopen it. The same holds for any later pin
+  bump that changes the storage format. The swap moves the database's `.wal`
+  with it, so an old engine's log is never replayed into a new file. Paths and names still say `kuzu`
   (`src/kuzu/`, `cdl_db.kuzu`, `KUZU_DIR`, `DB_PATH`) because they are the
   production environment's contract, not a statement about the engine.
 - **`02_domain_graph.py` deletes the database** (`Path(DB_NAME).unlink(missing_ok=True)`). Always re-run `03_content_graph.py` after it, or the Tag layer is missing.

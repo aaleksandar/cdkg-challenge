@@ -200,7 +200,7 @@ Alternatively, you can type in the following command in your terminal:
 
 ```bash
 docker run -p 8000:8000 \
-           -v ./cdl_db.kuzu:/database/cdl_db.kuzu \
+           -v .:/database \
            -e LBUG_FILE=cdl_db.kuzu \
            -e MODE=READ_ONLY \
            --rm ghcr.io/ladybugdb/explorer:0.19.1

@@ -7,15 +7,20 @@ import pytest
 from ingest import config
 from ingest.pipeline import graph
 
+# A file this engine cannot open (one Kuzu wrote, say) is no graph to test.
+needs_graph = pytest.mark.skipif(
+    not (config.GRAPH_DB_PATH.exists() and graph.is_readable(config.GRAPH_DB_PATH)),
+    reason="graph not built, or written by another engine")
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+
+@needs_graph
 def test_counts_are_readable():
     counts = graph.graph_counts(config.GRAPH_DB_PATH)
     assert counts["Talk"] > 0
     assert counts["tagged_talks"] > 0
 
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+@needs_graph
 def test_rebuild_is_idempotent():
     before = graph.graph_counts(config.GRAPH_DB_PATH)
     result = graph.rebuild_graph()
@@ -28,7 +33,8 @@ def test_a_failing_script_leaves_the_live_graph_untouched(monkeypatch):
     monkeypatch.setattr(graph, "_run_script", lambda name, db: (False, f"{name} exploded"))
     before = (
         graph.graph_counts(config.GRAPH_DB_PATH)
-        if config.GRAPH_DB_PATH.exists() else None
+        if config.GRAPH_DB_PATH.exists() and graph.is_readable(config.GRAPH_DB_PATH)
+        else None
     )
 
     result = graph.rebuild_graph()
@@ -167,3 +173,42 @@ def test_the_rebuild_stage_reports_a_talk_that_lost_its_tags(monkeypatch, tmp_pa
     # A run that never reached tag extraction has nothing to check.
     result = stages.stage_graph_rebuild({"parsed": bare, "talk_id": "t-bare"})
     assert "tagged" not in result.data
+
+
+def test_an_unreadable_graph_queues_a_rebuild(tmp_path, monkeypatch):
+    """The first deploy of a new engine finds the old engine's file."""
+    from ingest.pipeline import runner
+
+    live = tmp_path / "cdl_db.kuzu"
+    live.write_bytes(b"written by another engine")
+    monkeypatch.setattr(config, "GRAPH_DB_PATH", live)
+    queued = []
+    monkeypatch.setattr(runner, "request_rebuild", lambda: queued.append(True))
+
+    assert not graph.is_readable(live)
+    assert graph.ensure_readable_graph()
+    assert queued == [True]
+
+
+def test_a_missing_graph_is_left_to_the_entrypoint(tmp_path, monkeypatch):
+    from ingest.pipeline import runner
+
+    monkeypatch.setattr(config, "GRAPH_DB_PATH", tmp_path / "cdl_db.kuzu")
+    monkeypatch.setattr(runner, "request_rebuild", lambda: pytest.fail("queued"))
+    assert not graph.ensure_readable_graph()
+
+
+def test_the_swap_takes_the_old_log_with_the_old_graph(tmp_path, monkeypatch):
+    """A write-ahead log left at the live name would be replayed into the new graph."""
+    live = tmp_path / "cdl_db.kuzu"
+    live.write_bytes(b"old")
+    (tmp_path / "cdl_db.kuzu.wal").write_bytes(b"old log")
+    build = tmp_path / "cdl_db.build"
+    build.write_bytes(b"new")
+    monkeypatch.setattr(config, "GRAPH_DB_PATH", live)
+    monkeypatch.setattr("ingest.model.tag_model", lambda: "test-model")
+
+    graph.swap_in(build, {"Talk": 1})
+
+    assert live.read_bytes() == b"new"
+    assert sorted(p.name for p in tmp_path.iterdir()) == [".graph-version", "cdl_db.kuzu"]

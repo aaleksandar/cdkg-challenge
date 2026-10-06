@@ -9,4 +9,6 @@ services:
       MODE: READ_ONLY
       LBUG_FILE: cdl_db.kuzu
     volumes:
-      - ./cdl_db.kuzu:/database/cdl_db.kuzu
+      # The directory, not the file: a rebuild deletes and recreates
+      # cdl_db.kuzu, and a single-file mount stays on the deleted one.
+      - .:/database

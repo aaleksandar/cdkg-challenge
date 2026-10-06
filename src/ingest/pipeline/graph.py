@@ -14,6 +14,7 @@ not a second copy of it.
 from __future__ import annotations
 
 import json
+import logging
 import os
 import shutil
 import subprocess
@@ -21,6 +22,8 @@ import sys
 from pathlib import Path
 
 from .. import config
+
+log = logging.getLogger(__name__)
 
 
 def _script_env(db_path: Path) -> dict:
@@ -90,10 +93,56 @@ def talk_is_tagged(db_path: Path, talk_id: str) -> bool:
     return bool(result.get_next()[0])
 
 
+# Files the engine keeps beside a database while it is open. A database moved
+# or deleted without its write-ahead log leaves that log to be replayed into
+# whatever next takes the name — after the move from Kuzu, a log in a foreign
+# format.
+SIDECARS = (".wal", ".shadow")
+
+
+def _sidecars(path: Path) -> list[Path]:
+    return [path.with_name(path.name + suffix) for suffix in SIDECARS]
+
+
 def _clear(path: Path) -> None:
     """Ladybug databases are directories on some versions and files on others."""
-    shutil.rmtree(path, ignore_errors=True)
-    path.unlink(missing_ok=True)
+    for p in (path, *_sidecars(path)):
+        shutil.rmtree(p, ignore_errors=True)
+        p.unlink(missing_ok=True)
+
+
+def is_readable(db_path: Path) -> bool:
+    """Whether this engine can open the database at all.
+
+    False for a file written by Kuzu, which Ladybug refuses ("not a valid Lbug
+    database file"), and for one written by a newer storage format.
+    """
+    import ladybug as lb
+
+    try:
+        lb.Connection(lb.Database(str(db_path), read_only=True))
+    except Exception:  # noqa: BLE001
+        return False
+    return True
+
+
+def ensure_readable_graph() -> bool:
+    """Queue a rebuild when the live graph exists but cannot be opened.
+
+    The first deploy of a new engine finds the old engine's file on the volume.
+    Rebuilding is cheap — the CSV and entities.json, no LLM — and swapping it in
+    writes ``.graph-version``, which is what makes the app reopen it. It goes
+    through the runner's queue like every other rebuild, so it never races a
+    run. A missing graph is left alone: the app's entrypoint builds that one.
+    """
+    live = config.GRAPH_DB_PATH
+    if not live.exists() or is_readable(live):
+        return False
+    from .runner import request_rebuild
+
+    log.warning("Graph at %s cannot be opened by this engine; queueing a rebuild", live)
+    request_rebuild()
+    return True
 
 
 def rebuild_graph(extract_tags: bool = False):
@@ -159,6 +208,10 @@ def swap_in(build_path: Path, counts: dict) -> None:
     _clear(previous)
     if live.exists():
         live.replace(previous)
+    # The old graph's log goes with it, never left to be replayed into the new.
+    for stale in _sidecars(live):
+        if stale.exists():
+            stale.replace(previous.with_name(previous.name + stale.name[len(live.name):]))
     build_path.replace(live)
 
     # The Streamlit app caches its connection; this file is how it learns to
