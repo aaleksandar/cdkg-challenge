@@ -1,7 +1,7 @@
 """An answer's sources are resolved from the rows, deterministically, by talk id.
 
 The generated BAML client is never imported: `rag` reaches it through a
-function, and nothing here needs it. Kuzu is real, in a temporary file.
+function, and nothing here needs it. Ladybug is real, in a temporary file.
 """
 
 import importlib
@@ -27,10 +27,10 @@ def rag():
 def graph(rag, tmp_path):
     """Two talks that share a title — one tagged with a HeySummit description,
     one bare — an event with a source page, and one without."""
-    import kuzu
+    import ladybug as lb
 
     path = tmp_path / "g.kuzu"
-    conn = kuzu.Connection(kuzu.Database(str(path)))
+    conn = lb.Connection(lb.Database(str(path)))
     conn.execute("CREATE NODE TABLE Speaker(name STRING, PRIMARY KEY(name))")
     conn.execute("""CREATE NODE TABLE Talk(talk_id STRING, title STRING, category STRING, url STRING,
                     description STRING, type STRING, video STRING, heysummit STRING, transcript STRING,

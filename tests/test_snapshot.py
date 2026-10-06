@@ -12,10 +12,10 @@ from ingest.pipeline import snapshot
 @pytest.fixture
 def tiny_graph(monkeypatch, tmp_path):
     """One tagged talk, one untagged, in a database of the real schema's shape."""
-    import kuzu
+    import ladybug as lb
 
     db = tmp_path / "g.kuzu"
-    conn = kuzu.Connection(kuzu.Database(str(db)))
+    conn = lb.Connection(lb.Database(str(db)))
     conn.execute("CREATE NODE TABLE Speaker(name STRING, PRIMARY KEY(name))")
     conn.execute("CREATE NODE TABLE Talk(talk_id STRING, title STRING, description STRING, PRIMARY KEY(talk_id))")
     conn.execute("CREATE NODE TABLE Event(name STRING, PRIMARY KEY(name))")

@@ -1,5 +1,5 @@
 """
-Graph RAG with BAML + Kuzu.
+Graph RAG with BAML + Ladybug.
 
 A question becomes a Cypher statement, the statement becomes rows, and the rows
 become an answer — and, since the answer must say where it came from, the rows
@@ -16,7 +16,7 @@ import os
 import re
 from datetime import date, datetime
 
-import kuzu
+import ladybug as lb
 from dotenv import load_dotenv
 
 import config
@@ -43,7 +43,7 @@ def _client():
     return b
 
 
-def get_schema_dict(conn: kuzu.Connection) -> dict[str, list[dict]]:
+def get_schema_dict(conn: lb.Connection) -> dict[str, list[dict]]:
     # Get schema for LLM
     nodes = sorted(conn._get_node_table_names())
     relationships = sorted(conn._get_rel_table_names(), key=lambda rel: (rel["src"], rel["name"], rel["dst"]))
@@ -76,7 +76,7 @@ def get_schema_dict(conn: kuzu.Connection) -> dict[str, list[dict]]:
     return schema
 
 
-def get_schema_baml(conn: kuzu.Connection) -> str:
+def get_schema_baml(conn: lb.Connection) -> str:
     schema = get_schema_dict(conn)
     lines = []
 
@@ -179,8 +179,8 @@ RETURN t.talk_id AS talk_id, t.title AS title, t.description AS description,
 class GraphRAG:
     def __init__(self, db_path=None):
         self.db_path = db_path or config.DB_PATH
-        self.db = kuzu.Database(self.db_path, read_only=True)
-        self.conn = kuzu.Connection(self.db)
+        self.db = lb.Database(self.db_path, read_only=True)
+        self.conn = lb.Connection(self.db)
         self.baml_schema = get_schema_baml(self.conn)
 
     def execute_query(self, cypher: str) -> tuple[list[str], list[list]]:

@@ -5,7 +5,12 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "kuzu==0.11.3",
+    # Exact pin, and deliberately not the newest: 0.20 writes storage format
+    # 47 and every published Ladybug Explorer image reads at most 43, so the
+    # Explorer accessory cannot open a database 0.20 wrote. Raise this and
+    # the explorer tag in config/deploy.yml and src/kuzu/docker-compose.yml
+    # together, once an image that reads the newer format is published.
+    "ladybug==0.19.1",
     "polars>=1.43.1",
     # streamlit caps this at <25; do not raise past that until streamlit does
     "pyarrow>=24.0.0,<25",

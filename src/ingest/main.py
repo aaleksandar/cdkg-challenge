@@ -55,6 +55,12 @@ async def lifespan(app: FastAPI):
     note = gitops.adopt_published_history()
     if note:
         log.info(note)
+    # A graph written by an older engine cannot be opened; the app is down
+    # until it is rebuilt, so this does not wait for someone to press a button.
+    # After the adoption above, so the rebuild reads the published history.
+    from .pipeline.graph import ensure_readable_graph
+
+    ensure_readable_graph()
     yield
     scheduler.shutdown()
 
