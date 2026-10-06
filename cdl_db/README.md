@@ -6,7 +6,7 @@ The CSV files are available in the [./cdl_db](./cdl_db) directory of this reposi
 
 ### Property graph schema
 
-The data was initially created using the [Kuzu](https://kuzudb.com/) graph database, so
+The data was initially created using the [Ladybug](https://ladybugdb.com/) graph database, so
 a property graph schema is used. The schema is as follows:
 
 ```

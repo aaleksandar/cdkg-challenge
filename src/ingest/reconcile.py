@@ -25,12 +25,15 @@ from __future__ import annotations
 
 import csv
 import json
+import logging
 import re
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from . import config, db
+
+log = logging.getLogger(__name__)
 
 # A bare YouTube ID as a filename means an auto-downloaded transcript nobody has
 # titled yet: no speaker, no event, and `.en` variants duplicate their twin.
@@ -422,9 +425,9 @@ def read_graph() -> tuple[set[str], set[str]]:
     if not config.GRAPH_DB_PATH.exists():
         return set(), set()
     try:
-        import kuzu
+        import ladybug as lb
 
-        conn = kuzu.Connection(kuzu.Database(str(config.GRAPH_DB_PATH), read_only=True))
+        conn = lb.Connection(lb.Database(str(config.GRAPH_DB_PATH), read_only=True))
         ids, tagged = set(), set()
         result = conn.execute("MATCH (t:Talk) RETURN t.talk_id")
         while result.has_next():
@@ -434,9 +437,12 @@ def read_graph() -> tuple[set[str], set[str]]:
         while result.has_next():
             tagged.add(result.get_next()[0])
         return ids, tagged
-    except Exception:
+    except Exception as exc:  # noqa: BLE001
         # A rebuild may be swapping the database underneath us; report nothing
-        # rather than failing the whole panel.
+        # rather than failing the whole panel. Logged, because the same silence
+        # also covers a file this engine cannot read at all, which the ingest
+        # boot rebuilds (graph.ensure_readable_graph).
+        log.warning("Graph unreadable, reporting it empty: %s", exc)
         return set(), set()
 
 

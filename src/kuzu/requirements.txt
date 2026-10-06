@@ -97,7 +97,7 @@ jsonschema==4.25.0
     # via altair
 jsonschema-specifications==2025.4.1
     # via jsonschema
-kuzu==0.11.3
+ladybug==0.19.1
     # via kuzu-cdkg
 markupsafe==3.0.2
     # via jinja2

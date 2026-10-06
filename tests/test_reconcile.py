@@ -9,6 +9,13 @@ build artefact.
 import pytest
 
 from ingest import config, db, reconcile as R
+from ingest.pipeline import graph
+
+# read_graph reports a file this engine cannot open as empty, which would pass
+# the graph assertions below without checking anything.
+needs_graph = pytest.mark.skipif(
+    not (config.GRAPH_DB_PATH.exists() and graph.is_readable(config.GRAPH_DB_PATH)),
+    reason="graph not built, or written by another engine")
 
 
 @pytest.fixture(scope="module")
@@ -87,16 +94,16 @@ def test_unusable_files_are_quarantined(states):
     assert all(not s.actionable for s in junk)
 
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+@needs_graph
 def test_every_tagged_talk_in_the_graph_is_accounted_for(states):
-    """No talk may be tagged in Kuzu yet invisible to the panel."""
+    """No talk may be tagged in the graph yet invisible to the panel."""
     _, tagged = R.read_graph()
     seen = {s.talk_id for s in states if s.tagged_in_graph}
     assert tagged - seen == set()
     assert sum(1 for s in states if s.tagged_in_graph) == len(tagged)
 
 
-@pytest.mark.skipif(not config.GRAPH_DB_PATH.exists(), reason="graph not built")
+@needs_graph
 def test_in_graph_talks_are_curated_and_tagged(states):
     in_graph = [s for s in states if s.status == "in_graph"]
     assert in_graph
@@ -227,11 +234,11 @@ def test_two_talks_may_share_a_title():
     """Keyed on the title, a second talk called "Opening Keynote" either aborted
     the COPY or silently merged into the first, taking its speaker with it.
     Conferences reuse titles; identities are not reused."""
-    import kuzu
+    import ladybug as lb
     import polars as pl
 
-    db = kuzu.Database(":memory:")
-    conn = kuzu.Connection(db)
+    db = lb.Database(":memory:")
+    conn = lb.Connection(db)
     conn.execute("CREATE NODE TABLE Talk (talk_id STRING, title STRING, PRIMARY KEY (talk_id))")
     conn.execute("CREATE NODE TABLE Speaker (name STRING, PRIMARY KEY (name))")
     conn.execute("CREATE REL TABLE GIVES_TALK (FROM Speaker TO Talk)")

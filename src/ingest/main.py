@@ -45,6 +45,11 @@ async def lifespan(app: FastAPI):
     from . import scheduler
 
     scheduler.start_scheduler()
+    # A graph written by an older engine cannot be opened; the app is down
+    # until it is rebuilt, so this does not wait for someone to press a button.
+    from .pipeline.graph import ensure_readable_graph
+
+    ensure_readable_graph()
     yield
     scheduler.shutdown()
 

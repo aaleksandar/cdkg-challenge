@@ -1,7 +1,7 @@
 """Export the live graph as CSV, zipped, with a record of what it was.
 
-The graph is a Kuzu file nobody can open without Kuzu. A snapshot is the same
-graph as plain CSV — one file per node and relationship table, the shape the
+The graph is a Ladybug file nobody can open without Ladybug. A snapshot is the
+same graph as plain CSV — one file per node and relationship table, the shape the
 ``cdl_db/`` folder in the repository documents — so it can be downloaded,
 diffed, and loaded into whatever someone else uses. Every snapshot carries the
 ``.graph-version`` it was taken from, which is what makes two of them
@@ -39,15 +39,15 @@ def snapshot_path(name: str) -> Path:
 
 
 def export_csv(db_path: Path, dest_dir: Path) -> None:
-    """Kuzu's own export: a CSV per table plus the schema and COPY statements.
+    """Ladybug's own export: a CSV per table plus the schema and COPY statements.
 
-    ``dest_dir`` must not exist; Kuzu creates it. This is also the seam for
+    ``dest_dir`` must not exist; Ladybug creates it. This is also the seam for
     refreshing the repository's ``cdl_db/`` folder, which is the same export
     into a different directory.
     """
-    import kuzu
+    import ladybug as lb
 
-    conn = kuzu.Connection(kuzu.Database(str(db_path), read_only=True))
+    conn = lb.Connection(lb.Database(str(db_path), read_only=True))
     conn.execute(f"EXPORT DATABASE '{dest_dir}' (format='csv', header=true)")
 
 
