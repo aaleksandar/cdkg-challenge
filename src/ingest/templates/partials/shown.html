@@ -1,0 +1,6 @@
+{# How many rows the sheet is showing now, of every talk. Sent with each rows
+   response, out of band, so the box, the search and the lane tabs all move it. #}
+<span class="shown" id="shown" aria-live="polite"{% if oob %} hx-swap-oob="true"{% endif %}
+      data-tip="Rows in the sheet below, after the tab, the search and Show all videos.">
+  Showing <strong>{{ states | length }}</strong> of {{ total }}
+</span>

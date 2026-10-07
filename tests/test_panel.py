@@ -1298,3 +1298,16 @@ def test_a_video_from_before_heysummit_says_so_and_is_offered_no_match(client, m
     assert sheet.count("before HeySummit") == 1
     drawer = client.get("/video/youtube:ooooooooooo?body=1").text
     assert "Before HeySummit" in drawer and "Same talk?" not in drawer
+
+
+def test_the_sheet_says_how_many_rows_it_is_showing(client, monkeypatch):
+    """Updated by every rows response: the box, the search and the tabs."""
+    short = R.TalkState(sources={"youtube": "bbbbbbbbbbb"}, title="Teaser", duration=42)
+    monkeypatch.setattr(R, "reconcile", _only(READY, short))
+    shown = lambda url: " ".join(client.get(url).text.split())
+    assert "Showing <strong>1</strong> of 2" in shown("/rows?lane=all")
+    assert "Showing <strong>2</strong> of 2" in shown("/rows?lane=all&all=1")
+    assert "Showing <strong>0</strong> of 2" in shown("/rows?lane=all&q=nothing+like+it")
+    import re
+    assert re.search(r'id="shown"[^>]*hx-swap-oob="true"', client.get("/rows?lane=all").text)
+    assert 'id="shown"' in client.get("/").text
