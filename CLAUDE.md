@@ -265,7 +265,7 @@ If YouTube refuses the captions, the stage falls back to Supadata and the drawer
   - `rag` — run `rag.py`
 - The entrypoint auto-rebuilds the database when it is missing or when `entities.json`'s hash has changed.
 - Deployment is [Kamal](https://kamal-deploy.org) via `config/deploy.yml`, triggered by `.github/workflows/deploy.yml` on every push to `main`. That workflow runs the test suite first (`needs: test`), so a red suite never reaches `kamal deploy`; `.github/workflows/test.yml` runs the same suite on every pull request and non-main push. Requiring the `test` check before a merge is branch protection, a GitHub setting outside the repo. There is still no lint gate.
-- A `cdkg_data` volume is shared between the app and the Ladybug Explorer accessory, so the Explorer reads the same database the app serves.
+- A `cdkg_data` volume is shared between the app and the Ladybug Explorer accessory, so the Explorer reads the same database the app serves. The Explorer is served by kamal-proxy at `https://explorer.eudaform.org` (`EXPLORER_DOMAIN`), with its own certificate; it used to be plain HTTP on a published port 8000 (`kuzu.eudaform.org:8000`). `kamal deploy` never touches accessories, so a change to its block in `config/deploy.yml` takes effect only after `kamal accessory reboot explorer`.
 
 ## Gotchas
 
