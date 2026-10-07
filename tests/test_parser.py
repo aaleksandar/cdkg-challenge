@@ -26,6 +26,10 @@ from ingest.sources import parser
         ("CDW21", "Connected Data World 2021"),
         ("CDW 2021", "Connected Data World 2021"),
         ("CDL 2024", "Connected Data London 2024"),
+        # The channel's own name for Knowledge Connexions.
+        ("KnowCon 2020", "Knowledge Connexions 2020"),
+        ("#KnowCon2020", "Knowledge Connexions 2020"),
+        ("KnowCon20", "Knowledge Connexions 2020"),
         # Casing is normalised to the canonical CSV spelling.
         ("connected data london 2024", "Connected Data London 2024"),
         ("no event here", None),
@@ -272,6 +276,42 @@ def test_promo_footer_is_not_read_as_the_talks_event():
 def test_content_before_the_footer_is_still_searched():
     description = "Recorded at Connected Data World 2021.\n\n---\nCheck #CDL24 for more\n"
     assert parser.parse_description(description)["event"] == "Connected Data World 2021"
+
+
+# The real shape of a 2020 talk uploaded in 2024: no "---" rule, so the first
+# marker is "has been announced", which comes *after* the event's name.
+ADVERT_WITHOUT_RULE = (
+    "Caroline explains how visualising knowledge graphs reveals what would stay "
+    "unseen.\n\n"
+    "Connected Data London 2024 has been announced!\n\n"
+    "December 11-13, etc Venues St. Paul's, City of London\n\n"
+    "If you liked this video, check #CDL24 for more Presentations\n"
+)
+
+
+def test_an_advert_with_no_rule_before_it_is_still_not_the_talks_event():
+    """The cut used to land on "has", leaving "Connected Data London 2024" in
+    the talk's text: two Knowledge Connexions 2020 talks were filed under it."""
+    assert parser.parse_description(ADVERT_WITHOUT_RULE).get("event") is None
+
+
+def test_the_footer_starts_at_the_beginning_of_the_adverts_line():
+    cut = parser.promo_footer_start(ADVERT_WITHOUT_RULE)
+    assert ADVERT_WITHOUT_RULE[cut:].startswith("Connected Data London 2024 has been")
+
+
+def test_an_event_in_the_body_survives_an_advert_with_no_rule():
+    description = "Recorded at Connected Data World 2021.\n" + ADVERT_WITHOUT_RULE
+    assert parser.parse_description(description)["event"] == "Connected Data World 2021"
+
+
+def test_an_old_talk_uploaded_late_takes_its_event_from_the_title():
+    """The year guard cannot help here: the upload year matches the advert."""
+    parsed = parser.parse({
+        "title": "Big Graphs, Machine Learning & Rich Interactions | KnowCon 2020",
+        "description": ADVERT_WITHOUT_RULE, "upload_date": "20240919",
+    })
+    assert (parsed.event, parsed.event_source) == ("Knowledge Connexions 2020", "title")
 
 
 @pytest.mark.parametrize(

@@ -245,7 +245,7 @@ thead th.r { text-align: right; }
 .s-failed         .dot { background: var(--alert); }
 .s-in_progress    .dot { background: var(--busy); animation: pulse 1.1s ease-in-out infinite; }
 .s-not_ingested   .dot { background: transparent; box-shadow: inset 0 0 0 1px var(--rule-strong); }
-.s-excluded_short .dot, .s-upcoming .dot, .s-junk .dot { background: var(--rule-strong); }
+.s-excluded_short .dot, .s-multi_speaker .dot, .s-upcoming .dot, .s-junk .dot { background: var(--rule-strong); }
 .s-orphaned .label, .s-failed .label { color: var(--ink); font-weight: 500; }
 
 /* Lanes. The sheet shows these; the eleven statuses above survive for the
@@ -596,7 +596,23 @@ td.act .rowbtn:disabled { opacity: 1; }
 .blocker .ladder li { margin: 0; }
 .blocker .ladder .muted { display: block; font-size: .72rem; word-break: break-word; }
 
-/* ---- Shorts toggle ---- */
+/* A panel or workshop: left out on purpose, not stuck, so neutral rather
+   than the amber of something unfinished. */
+.blocker.session {
+  background: var(--paper-raised);
+  border-left-color: var(--rule-strong);
+}
+.blocker.session .blocker-head { color: var(--ink-soft); }
+
+/* "Panel" / "Workshop" beside a title, wherever the talk is. */
+.chip {
+  display: inline-block; margin-left: .4rem; padding: 0 .4rem;
+  font-size: .62rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  line-height: 1.5; vertical-align: .1em;
+  color: var(--ink-soft); border: 1px solid var(--rule-strong); border-radius: 3px;
+}
+
+/* ---- Show-all toggle ---- */
 .toggle {
   display: inline-flex; align-items: center; gap: .4rem;
   font-size: .76rem; color: var(--ink-faint); cursor: pointer; user-select: none;

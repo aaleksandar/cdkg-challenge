@@ -102,6 +102,76 @@ def is_short_duration(duration: int | None) -> bool:
     return duration is not None and duration <= config.SHORT_VIDEO_MAX_SECONDS
 
 
+# A panel or workshop is a talk, but not one whose words belong to one speaker:
+# several people talk, and a transcript's tags cannot be attributed to any one
+# of them. The graph is built for single-speaker lectures, so these are never
+# chosen automatically. A curator can still ingest one; nothing refuses it.
+#
+# HeySummit's format categories are the strongest signal. Its "Workshops" at
+# Knowledge Connexions 2020 and Connected Data World 2021 were panel
+# discussions of four to six people, whose videos say "Panel". The title is the
+# only signal for the channel's older panels, which HeySummit does not list.
+# Masterclasses (one instructor, as a rule) and co-presented talks are
+# deliberately not caught.
+SESSION_CATEGORIES = {"Panels": "panel", "Workshops": "workshop"}
+SESSION_TYPES = {"panel": "panel", "workshop": "workshop"}
+SESSION_TITLE = re.compile(
+    r"\b(panel|workshop|roundtable|unconference)\b", re.IGNORECASE)
+SESSION_TITLE_FORMAT = {"panel": "panel", "workshop": "workshop",
+                        "roundtable": "panel", "unconference": "panel"}
+SESSION_LABELS = {"panel": "Panel", "workshop": "Workshop"}
+
+
+def session_format(title: str | None = None, csv_type: str | None = None,
+                   hs_categories=(), other_titles=()) -> tuple[str, str] | None:
+    """``(format, evidence)`` when this is a panel or a workshop, else None.
+
+    A free function for the same reason as :func:`is_short_duration`: the
+    scheduler asks it of a raw inventory row. The evidence is what the panel
+    prints, so a reader can check the call rather than trust it. Sources are
+    asked in order of how deliberately they were written: the conference's own
+    programme, then the curated Type, then the title.
+    """
+    for category in hs_categories or ():
+        if category in SESSION_CATEGORIES:
+            return SESSION_CATEGORIES[category], f"HeySummit lists it under {category}"
+    kind = SESSION_TYPES.get((csv_type or "").strip().lower())
+    if kind:
+        return kind, f"its metadata Type is {csv_type.strip()}"
+    for text in (title, *other_titles):
+        match = SESSION_TITLE.search(text or "")
+        if match:
+            return (SESSION_TITLE_FORMAT[match.group(1).lower()],
+                    f"its title says “{match.group(1)}”")
+    return None
+
+
+def session_formats_by_video() -> dict[str, tuple[str, str]]:
+    """What the metadata CSV and HeySummit say about each linked video.
+
+    For the scheduler, which sees only inventory rows: a premiere whose row
+    HeySummit seeded as a panel carries no "Panel" in its YouTube title.
+    """
+    from .sources import heysummit
+
+    try:
+        categories = {str(t["id"]): t.get("categories") or []
+                      for t in heysummit.read_catalog()}
+    except (OSError, ValueError, KeyError):
+        categories = {}
+    found = {}
+    for row in read_csv_rows():
+        video_id = source_ids(row).get("youtube")
+        if not video_id:
+            continue
+        verdict = session_format(
+            row.get("Title"), row.get("Type"),
+            categories.get((row.get("HeySummit") or "").strip(), ()))
+        if verdict:
+            found[video_id] = verdict
+    return found
+
+
 def norm_title(title: str | None) -> str:
     """Normalise a talk title for comparison across sources.
 
@@ -171,6 +241,12 @@ class TalkState:
     # or a curator's), ISO for sorting, and the conference page for the talk.
     talk_date: str | None = None
     web: str | None = None
+    # What says whether this is a panel or a workshop: the CSV's Type and the
+    # format categories HeySummit files the talk under.
+    csv_type: str | None = None
+    hs_categories: list[str] = field(default_factory=list)
+    # The earlier upload of the same recording, when this video repeats one.
+    duplicate_of: str | None = None
 
     @property
     def when(self) -> str | None:
@@ -218,6 +294,18 @@ class TalkState:
         return is_short_duration(self.duration)
 
     @property
+    def session(self) -> tuple[str, str] | None:
+        """``(format, evidence)`` for a panel or workshop. See session_format."""
+        return session_format(self.title, self.csv_type, self.hs_categories,
+                              (self.csv_title,))
+
+    @property
+    def session_label(self) -> str | None:
+        """"Panel" or "Workshop", for the chip and the drawer."""
+        found = self.session
+        return SESSION_LABELS[found[0]] if found else None
+
+    @property
     def is_upcoming(self) -> bool:
         """A premiere or scheduled stream that has not aired, so has no captions."""
         return self.live_status == "is_upcoming"
@@ -229,7 +317,20 @@ class TalkState:
 
     @property
     def status(self) -> str:
-        """One display status. Order matters: most specific first."""
+        """One display status.
+
+        A panel or workshop that has not been ingested is not backlog: it is
+        left out on purpose, and saying "not ingested" would offer it to the
+        drain. Anything that has happened to it — a run, a failure, the graph —
+        keeps its own status, which is what lets a curator ingest one by hand.
+        """
+        status = self._status()
+        if status in ("not_ingested", "awaiting_video") and self.session:
+            return "multi_speaker"
+        return status
+
+    def _status(self) -> str:
+        """The status before the panel rule. Order matters: most specific first."""
         if self.run and self.run.get("status") in {"queued", "running"}:
             return "in_progress"
         # A Short is never a talk, whatever else has happened to it. Checked
@@ -256,6 +357,10 @@ class TalkState:
         # them to attach to. The extraction cost was paid and thrown away.
         if self.has_tags and not self.in_csv:
             return "orphaned"
+        # The same recording uploaded again: the talk is the earlier upload,
+        # and ingesting this one would make a second Talk of it.
+        if self.duplicate_of and not self.has_transcript and not self.in_csv:
+            return "duplicate_upload"
         if not self.has_transcript and not self.in_csv:
             return "not_ingested"
         if self.in_graph and self.tagged_in_graph:
@@ -309,17 +414,19 @@ STATUS_LABELS = {
     "orphaned": "Orphaned",
     "not_ingested": "Not ingested",
     "awaiting_video": "Awaiting video",
-    "excluded_short": "Short — ignored",
+    "excluded_short": "Too short",
+    "multi_speaker": "Panel or workshop — not ingested",
+    "duplicate_upload": "Duplicate upload",
     "upcoming": "Premieres soon",
-    "junk": "Unusable",
+    "junk": "Unusable file",
     "in_progress": "Running",
     "failed": "Failed",
 }
 
 STATUS_ORDER = [
     "failed", "in_progress", "needs_curation", "ready_for_graph", "orphaned",
-    "not_ingested", "awaiting_video", "untagged", "in_graph", "excluded_short",
-    "upcoming", "junk",
+    "not_ingested", "awaiting_video", "untagged", "in_graph", "multi_speaker",
+    "excluded_short", "duplicate_upload", "upcoming", "junk",
 ]
 
 # The twelve statuses above stay the diagnosis — they are what the drawer shows
@@ -340,6 +447,10 @@ LANE_OF = {
     "ready_for_graph": "attention",
     "orphaned": "attention",
     "excluded_short": "excluded",
+    # Left out on purpose, like a Short — but it is a talk, and the row says
+    # what it is rather than the lane's word for it.
+    "multi_speaker": "excluded",
+    "duplicate_upload": "excluded",
     # A premiere is a talk that has not aired: the backlog, not "not a talk".
     # Filing it as excluded printed "Not a talk" beside the newest talk on the
     # channel. The row prints its own status instead of the lane's label.
@@ -355,7 +466,7 @@ LANE_LABELS = {
     "working": "Working",
     "not_ingested": "Not ingested",
     "in_graph": "In graph",
-    "excluded": "Not a talk",
+    "excluded": "Skipped",
 }
 
 # Statuses that are working as intended and only clutter the default view.
@@ -364,7 +475,9 @@ QUIET_STATUSES = {s for s, lane in LANE_OF.items() if lane == "excluded"}
 # Statuses whose row says the status rather than the lane, because the lane's
 # word would mislead: a premiere is "not ingested", but what a reader needs to
 # know is that it cannot be yet.
-ROW_SAYS_STATUS = {"upcoming"}
+# Every skipped row says why it was skipped — "Too short", "Panel — not
+# ingested" — because the lane's own word names no reason at all.
+ROW_SAYS_STATUS = {"upcoming"} | QUIET_STATUSES
 
 
 def _iso_date(value: str | None) -> str | None:
@@ -457,6 +570,13 @@ def reconcile() -> list[TalkState]:
     graph_ids, graph_tagged = read_graph()
     inventory = db.all_videos()
     runs = db.latest_runs()
+    from .sources import heysummit
+
+    try:
+        hs_categories = {str(t["id"]): list(t.get("categories") or [])
+                         for t in heysummit.read_catalog()}
+    except (OSError, ValueError, KeyError):
+        hs_categories = {}
 
     def apply_csv(state: TalkState, row: dict) -> None:
         state.in_csv = True
@@ -473,6 +593,8 @@ def reconcile() -> list[TalkState]:
         if file_ref:
             state.stem = Path(file_ref).stem
         state.web = (row.get("Web") or "").strip() or None
+        state.csv_type = (row.get("Type") or "").strip() or None
+        state.hs_categories = hs_categories.get((row.get("HeySummit") or "").strip(), [])
         state.talk_date = _iso_date(row.get("Date"))
         if state.talk_id:
             state.in_graph = state.talk_id in graph_ids
@@ -535,6 +657,14 @@ def reconcile() -> list[TalkState]:
         state.parsed_speaker = preview.speaker
         state.parsed_event = preview.event
         apply_repo(state)
+
+    # The channel re-published some talks: same title, same running time.
+    from .sources import matching
+
+    for video_id, original in matching.duplicate_uploads(inventory).items():
+        state = by_source.get(("youtube", video_id))
+        if state is not None:
+            state.duplicate_of = original
 
     # 3. Transcripts, text or tags on disk that no CSV row accounts for. This is
     #    where the orphans surface — extraction paid for, nothing to attach it to.

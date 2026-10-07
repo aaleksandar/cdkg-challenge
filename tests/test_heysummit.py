@@ -56,6 +56,13 @@ def test_type_and_category_only_when_exactly_one_applies():
     assert one["Date"] == "01/12/2021"
 
 
+def test_a_workshop_is_typed_as_one_only_when_nothing_else_is_claimed():
+    workshop = heysummit.fields(_talk(1, "t", categories=["Knowledge Graphs", "Workshops"]))
+    assert workshop["Type"] == "Workshop"
+    both = heysummit.fields(_talk(1, "t", categories=["Workshops", "Masterclasses"]))
+    assert both["Type"] == ""
+
+
 def test_html_descriptions_become_plain_text():
     assert heysummit._plain_text("<p>One &amp; two</p><p><br></p><p>Three</p>") == "One & two\nThree"
 
@@ -384,3 +391,46 @@ def test_differences_carry_where_each_value_was_read_from(catalog_and_csv, monke
     assert result["video_id"] == "vvvvvvvvvvv"
     assert result["csv_row"]["line"] == 2
     assert result["csv_row"]["url"].endswith("metadata.csv?plain=1#L2")
+
+
+def test_link_videos_joins_a_row_seeded_before_its_video_arrived(seeding):
+    """Seeding links only when it creates a row; a video catalogued later was
+    never looked at again, and the talk showed twice in the sheet."""
+    from ingest import db
+
+    heysummit.seed(seeding)                       # no videos yet: nothing linked
+    db.upsert_videos([
+        {"video_id": "vvvvvvvvvvv", "title": "Knowledge Graphs: The Frontier. Ada Lovelace",
+         "url": "u", "duration": 2400},
+        {"video_id": "sssssssssss", "title": "Reinforcement Learning for KG Reasoning | teaser",
+         "url": "u", "duration": 90},
+        {"video_id": "nnnnnnnnnnn", "title": "Reinforcement Learning for KG Reasoning. Alan Turing",
+         "url": "u", "duration": None},            # length not known yet
+    ])
+
+    dry = heysummit.link_videos(seeding, write=False)
+    assert dry["linked"] == {_id_of(seeding, "2"): "vvvvvvvvvvv"}
+    assert all(r["Video"] == "" for r in csv_writer.read_rows(seeding) if r["HeySummit"] == "2")
+
+    result = heysummit.link_videos(seeding)
+    by_hs = {r["HeySummit"]: r for r in csv_writer.read_rows(seeding)}
+    assert result["linked"] == {by_hs["2"]["TalkID"]: "vvvvvvvvvvv"}
+    assert by_hs["2"]["Video"] == "https://www.youtube.com/watch?v=vvvvvvvvvvv"
+    assert by_hs["3"]["Video"] == ""               # a Short and an unknown length: never
+    assert heysummit.link_videos(seeding)["linked"] == {}   # once
+
+
+def test_sync_reports_the_videos_it_joined(seeding, monkeypatch):
+    from ingest import db
+
+    heysummit.seed(seeding)
+    db.upsert_videos([{"video_id": "vvvvvvvvvvv", "url": "u", "duration": 2400,
+                       "title": "Knowledge Graphs: The Frontier. Ada Lovelace"}])
+    summary = heysummit.sync(refresh=False, csv_path=seeding)
+    assert list(summary["videos_linked"].values()) == ["vvvvvvvvvvv"]
+    assert summary["changed"]
+
+
+def _id_of(csv_path, heysummit_id):
+    return next(r["TalkID"] for r in csv_writer.read_rows(csv_path)
+                if r["HeySummit"] == heysummit_id)

@@ -33,17 +33,8 @@ def _quote(text: str, start: int, end: int) -> dict:
 
 
 def _in_description(description: str, start: int) -> str:
-    """"description", or "promo footer" when the match belongs to the advert.
-
-    The footer's cut is the first marker, and the marker often follows the
-    event name on the same line — "Connected Data London 2024 has been
-    announced!" — so a match at or after the cut, or on a line the cut falls
-    in, is the advert, not the talk.
-    """
-    cut = parser.promo_footer_start(description)
-    line_end = description.find("\n", start)
-    line_end = len(description) if line_end == -1 else line_end
-    return "promo footer" if start >= cut or cut < line_end else "description"
+    """"description", or "promo footer" when the match belongs to the advert."""
+    return "promo footer" if start >= parser.promo_footer_start(description) else "description"
 
 
 def _find_event(value: str, text: str) -> re.Match | None:
