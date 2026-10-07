@@ -428,6 +428,9 @@ thead th.r { text-align: right; }
 .htmx-request .htmx-indicator { opacity: 1; }
 
 .note {
+  /* One box, however many lines it wraps to: as an inline span its border
+     broke at every line end. */
+  display: inline-block; line-height: 1.5;
   padding: 0.55rem 0.85rem; border-radius: 4px; font-size: 0.8rem;
   border: 1px solid var(--rule-strong); background: var(--paper-raised);
 }
@@ -656,6 +659,8 @@ td.act .rowbtn:disabled { opacity: 1; }
 }
 
 .actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+/* A result under the buttons takes its own line, the row's full width. */
+.actions > #adv-flash:not(:empty) { flex-basis: 100%; }
 .drain { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .snapshots-block { margin-top: 1rem; }
 .snapshots { width: 100%; border-collapse: collapse; font-size: .76rem; margin-top: .6rem; }
