@@ -56,6 +56,13 @@ def test_type_and_category_only_when_exactly_one_applies():
     assert one["Date"] == "01/12/2021"
 
 
+def test_a_workshop_is_typed_as_one_only_when_nothing_else_is_claimed():
+    workshop = heysummit.fields(_talk(1, "t", categories=["Knowledge Graphs", "Workshops"]))
+    assert workshop["Type"] == "Workshop"
+    both = heysummit.fields(_talk(1, "t", categories=["Workshops", "Masterclasses"]))
+    assert both["Type"] == ""
+
+
 def test_html_descriptions_become_plain_text():
     assert heysummit._plain_text("<p>One &amp; two</p><p><br></p><p>Three</p>") == "One & two\nThree"
 

@@ -25,7 +25,7 @@
   <h2>{{ s.display_title }}</h2>
   <div class="drawer-meta">
     <span class="state badge l-{{ s.lane }}" data-tip="{{ STATUS_NOTES.get(s.status, '') }}">
-      <i class="dot"></i><span class="label">{{ STATUS_LABELS[s.status] }}</span>
+      <i class="dot"></i><span class="label">{{ s.session_label ~ ' — not ingested' if s.status == 'multi_speaker' else STATUS_LABELS[s.status] }}</span>
     </span>
     {% if s.published_at %}<span class="muted">{{ 'Premieres' if s.is_upcoming else 'Published' }} {{ s.published_at | day }}</span>
     {% elif s.talk_date %}<span class="muted">Given {{ s.talk_date | day }}</span>{% endif %}
@@ -155,6 +155,19 @@
 </div>
 {% endif %}
 
+{# A panel or workshop is a talk, left out on purpose rather than broken: the
+   note says why, and what says it is one, so a curator can check the call. #}
+{% if s.session %}
+<div class="blocker session">
+  <div class="blocker-head">{{ s.session_label }} — several speakers</div>
+  <p>Its transcript cannot be attributed to any one speaker, so it is never
+     ingested automatically and is hidden from the sheet by default.
+     {% if s.status == 'multi_speaker' %}It can still be ingested by hand.
+     {% elif s.in_graph %}It was ingested before this rule, and stays in the graph.{% endif %}
+     <span class="muted">Why: {{ s.session[1] }}.</span></p>
+</div>
+{% endif %}
+
 {# The same one-click action the row offers, where an admin actually decides:
    having read the panel, they should not have to close it and hunt for the row.
    It returns the drawer's own body, so the pipeline appears here immediately,
@@ -164,7 +177,7 @@
   <span class="pulse"></span>
   <span class="muted">Running. The pipeline below updates as it goes.</span>
 </div>
-{% elif s.video_id and s.status in ['not_ingested', 'failed'] %}
+{% elif s.video_id and s.status in ['not_ingested', 'failed', 'multi_speaker'] %}
 <div class="drawer-actions">
   <button type="button" class="btn btn-primary"
           hx-post="{{ base }}/ingest/{{ s.key | urlencode }}?view=drawer"
@@ -173,10 +186,11 @@
                     plain text and then its tags with an LLM, which costs money, and
                     finally rebuilds the graph. Anything already on disk is reused rather
                     than fetched or extracted again.">
-    {{ 'Ingest again' if s.status == 'failed' else 'Ingest this talk' }}
+    {{ 'Ingest again' if s.status == 'failed' else 'Ingest anyway' if s.status == 'multi_speaker' else 'Ingest this talk' }}
   </button>
   <span class="muted">
     {% if s.status == 'failed' %}Resumes from whatever is already on disk.
+    {% elif s.status == 'multi_speaker' %}Its tags will be attributed to every speaker on the panel. Costs an LLM call.
     {% else %}Captions, then tags. Costs an LLM call.{% endif %}
   </span>
 </div>
@@ -233,7 +247,7 @@
    secondary action so it never competes with the primary one above, and absent
    for the two statuses whose primary action already IS a run. #}
 {% if s.video_id and not s.is_short
-      and s.status not in ['in_progress', 'not_ingested', 'failed'] %}
+      and s.status not in ['in_progress', 'not_ingested', 'failed', 'multi_speaker'] %}
 <div class="drawer-actions is-secondary">
   <button type="button" class="btn btn-quiet"
           hx-post="{{ base }}/ingest/{{ s.key | urlencode }}?view=drawer"

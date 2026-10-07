@@ -5,6 +5,8 @@ Every test here stands for a bug an admin hit. The panel is server-rendered, so
 checked without a browser.
 """
 
+import html
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -92,7 +94,7 @@ def test_every_lane_is_listed_even_when_empty(client, monkeypatch):
     from ingest.web import templates
 
     for _, label in templates.env.globals["LANES"]:
-        assert label in strip, f"{label} tab is not listed"
+        assert html.escape(label) in strip, f"{label} tab is not listed"
 
 
 def test_the_sheet_is_the_channel_and_the_rest_is_under_advanced(client, monkeypatch):
@@ -131,7 +133,7 @@ def test_shorts_are_hidden_until_asked_for(client, monkeypatch):
     assert short.lane == "excluded"
 
     assert "Teaser" not in client.get("/rows?lane=all").text
-    assert "Teaser" in client.get("/rows?lane=all&shorts=1").text
+    assert "Teaser" in client.get("/rows?lane=all&all=1").text
 
 
 def test_a_blocked_talk_says_what_is_blocking_it(client, monkeypatch):
@@ -916,8 +918,8 @@ def test_a_source_key_still_resolves_once_the_record_is_a_talk(client, monkeypat
 # --- Talks HeySummit seeded, before the channel has them ----------------------
 
 AWAITING = R.TalkState(
-    talk_id="t-await01", sources={"heysummit": "587108"}, title="Network Science Panel",
-    csv_title="Network Science Panel", in_csv=True, in_graph=True,
+    talk_id="t-await01", sources={"heysummit": "587108"}, title="Network Science for Practitioners",
+    csv_title="Network Science for Practitioners", in_csv=True, in_graph=True,
     speaker="Amy Hodler & Orit Gal", event="Connected Data London 2025",
     talk_date="2025-12-11", web="https://2025.connected-data.london/talks/network-science/",
     missing_optional=["Category"],
@@ -932,11 +934,11 @@ def test_a_talk_without_a_video_is_a_row_with_its_own_date_and_link(client, monk
 
     rows = client.get("/rows").text
 
-    assert "Network Science Panel" in rows
+    assert "Network Science for Practitioners" in rows
     assert 'href="https://2025.connected-data.london/talks/network-science/"' in rows
     # The row shows the lane; the specific status is the hover, as for every row.
     assert "Not ingested" in rows and "no video on the channel yet" in rows
-    assert rows.index("Network Science Panel") < rows.index("A Talk | Jane Doe | CDL24")   # newer first
+    assert rows.index("Network Science for Practitioners") < rows.index("A Talk | Jane Doe | CDL24")   # newer first
     row = client.get("/row/t-await01").text
     assert ">Ingest<" not in row                   # nothing to ingest without a video
     assert 'data-video=""' in row
@@ -961,7 +963,7 @@ def test_attaching_a_video_records_it_and_queues_the_run(client, monkeypatch, tm
 
     csv_path = tmp_path / "metadata.csv"
     monkeypatch.setattr(config, "METADATA_CSV", csv_path)
-    csv_writer.append_rows([{"TalkID": "t-await01", "Title": "Network Science Panel",
+    csv_writer.append_rows([{"TalkID": "t-await01", "Title": "Network Science for Practitioners",
                              "Speaker": "Amy Hodler", "Event": "CDL 2025"}], csv_path)
     csv_writer.append_rows([{"TalkID": "t-other", "Title": "Other",
                              "Video": "https://www.youtube.com/watch?v=ttttttttttt"}], csv_path)
@@ -1109,7 +1111,7 @@ def test_a_premiere_is_shown_by_default_and_labelled_by_its_date(client, monkeyp
     assert "Combating Cyber Threats" in default
     assert SHORT.title not in default                        # the Short waits for the box
 
-    shown = client.get("/rows?shorts=1").text
+    shown = client.get("/rows?all=1").text
     assert "Combating Cyber Threats" in shown and SHORT.title in shown
     # A premiere is a talk that has not aired: the row says so, in the backlog
     # lane, never "Not a talk" and never Failed.
@@ -1166,3 +1168,69 @@ def test_refreshing_the_channel_ingests_a_premiere_the_backfill_found_aired(clie
 
     assert client.post("/refresh").status_code == 200     # background tasks run before it returns
     assert ingested == ["tAPqdlsuJYg"]
+
+
+# --- Panels and workshops ----------------------------------------------------
+
+PANEL = R.TalkState(
+    sources={"youtube": "ppppppppppp"},
+    title="Building knowledge graphs in the real world. Expert panel at CDL 2018",
+    duration=1982, published_at="2019-01-10T00:00:00Z", url="u/ppppppppppp",
+)
+
+PANEL_IN_GRAPH = R.TalkState(
+    talk_id="t-panel001", sources={"youtube": "qqqqqqqqqqq", "heysummit": "1"},
+    title="The Role of Graphs in the AI Space | Panel | CDL24",
+    csv_title="The Role of Graphs in the AI Space", hs_categories=["Panels"],
+    in_csv=True, has_transcript=True, has_tags=True, tag_count=9,
+    in_graph=True, tagged_in_graph=True, duration=4364, url="u/qqqqqqqqqqq",
+)
+
+
+def test_a_panel_is_hidden_from_the_sheet_until_asked_for(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(READY, PANEL, PANEL_IN_GRAPH))
+    assert PANEL.status == "multi_speaker" and PANEL.lane == "excluded"
+
+    default = client.get("/rows?lane=all").text
+    assert "Expert panel" not in default
+    assert "The Role of Graphs" not in default     # labelled, and still hidden
+    shown = client.get("/rows?lane=all&all=1").text
+    assert "Expert panel" in shown and "The Role of Graphs" in shown
+    assert "Panel — not ingested" in shown
+
+
+def test_the_panels_tab_lists_every_panel_with_its_reason(client, monkeypatch):
+    """Including the ones already in the graph, which stay there, labelled."""
+    monkeypatch.setattr(R, "reconcile", _only(READY, PANEL, PANEL_IN_GRAPH))
+    tab = client.get("/rows?lane=panels").text
+    assert "Expert panel" in tab and "The Role of Graphs" in tab
+    assert "A Talk | Jane Doe" not in tab
+    assert "HeySummit lists it under Panels" in tab
+    assert PANEL_IN_GRAPH.status == "in_graph"
+
+
+def test_draining_the_backlog_leaves_panels_for_a_curator(client, monkeypatch):
+    fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting")
+    monkeypatch.setattr(R, "reconcile", _only(fresh, PANEL))
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
+                        lambda ids: queued.extend(ids) or len(ids))
+    client.post("/backlog/ingest")
+    assert queued == ["eeeeeeeeeee"]
+
+
+def test_a_panel_says_why_and_can_still_be_ingested_by_hand(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _only(PANEL))
+    drawer = client.get("/video/youtube:ppppppppppp?body=1").text
+    assert "Panel — several speakers" in drawer
+    assert "its title says" in drawer
+    assert "Ingest anyway" in drawer
+    assert "Panel — not ingested" in drawer
+    assert "Run the pipeline again" not in drawer      # one way in, not two
+
+    db.upsert_videos([{"video_id": "ppppppppppp", "title": PANEL.title,
+                       "url": "u", "duration": 1982}])
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", queued.append)
+    client.post("/ingest/youtube:ppppppppppp")
+    assert queued == [["ppppppppppp"]]

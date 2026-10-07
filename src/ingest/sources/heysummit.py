@@ -137,7 +137,11 @@ def read_catalog() -> list[dict]:
 # Keynotes are Presentations: that is how curators filed all four in the CSV.
 TYPES = {"Presentations": "Presentation", "Presentation": "Presentation",
          "Keynotes": "Presentation",
-         "Panels": "Panel", "Masterclasses": "Masterclass", "Masterclass": "Masterclass"}
+         "Panels": "Panel", "Masterclasses": "Masterclass", "Masterclass": "Masterclass",
+         # Its "workshops" were panel discussions of four to six people; the
+         # Type is what keeps one out of automatic ingestion once its video
+         # attaches. See reconcile.session_format.
+         "Workshops": "Workshop"}
 CATEGORIES = {
     "Knowledge Graphs": "Knowledge Graphs",
     "Enterprise Knowledge Graphs": "Knowledge Graphs",

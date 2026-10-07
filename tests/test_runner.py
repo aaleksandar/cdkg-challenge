@@ -432,3 +432,23 @@ def test_what_is_not_yet_a_talk_is_skipped_with_a_reason(state, monkeypatch):
     assert "Short" in verdicts["short"]
     assert "not finished airing" in verdicts["live"] and "not finished airing" in verdicts["after"]
     assert verdicts["talk"] is None
+
+
+def test_a_panel_is_never_auto_ingested(state, monkeypatch):
+    """By its title, or by what its metadata row says when the title does not."""
+    from ingest import reconcile, scheduler
+
+    db.upsert_videos([
+        {"video_id": "panel", "title": "AI tribes. Panel at Connected Data London 2018",
+         "url": "u", "duration": 2568, "live_status": "not_live"},
+        {"video_id": "seeded", "title": "The State of Graph in 2025", "url": "u",
+         "duration": 3600, "live_status": "not_live"},
+        {"video_id": "talk", "title": "Talk", "url": "u", "duration": 4000,
+         "live_status": "not_live"},
+    ])
+    monkeypatch.setattr(reconcile, "session_formats_by_video", lambda: {
+        "seeded": ("panel", "HeySummit lists it under Panels")})
+    verdicts = dict(scheduler._ingestable(["panel", "seeded", "talk"]))
+    assert verdicts["panel"] == "a panel (its title says “Panel”)"
+    assert verdicts["seeded"] == "a panel (HeySummit lists it under Panels)"
+    assert verdicts["talk"] is None

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import APIRouter, BackgroundTasks, Form, Request, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Form, Query, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup, escape
@@ -198,7 +198,8 @@ templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
 # The sixth tab is not a lane a row can be in: it is what the sources say
 # about the same talk when they do not agree, listed for a curator.
-templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "disagreements": "Disagreements"}
+templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "panels": "Panels & workshops",
+                                        "disagreements": "Disagreements"}
 templates.env.globals["ROW_SAYS_STATUS"] = R.ROW_SAYS_STATUS
 
 # The strip doubles as the filter, so it defines both the order shown and the
@@ -211,6 +212,10 @@ templates.env.globals["LANES"] = [
     ("working", "Working"),
     ("not_ingested", "Not ingested"),
     ("in_graph", "In graph"),
+    # Not a lane either: every panel and workshop, ingested or not, with what
+    # says it is one. The waiting ones sit in the excluded lane; the ones
+    # already in the graph stay "In graph" and carry a chip.
+    ("panels", "Panels & workshops"),
     ("disagreements", "Disagreements"),
 ]
 
@@ -219,8 +224,8 @@ templates.env.globals["LANES"] = [
 LANE_NOTES = {
     "all": (
         f"Every talk: the {config.YOUTUBE_CHANNEL_HANDLE} channel's videos and the "
-        "programme HeySummit holds, whether or not a video exists yet. Shorts "
-        "hidden by default."
+        "programme HeySummit holds, whether or not a video exists yet. Shorts, "
+        "panels and workshops hidden by default."
     ),
     "attention": (
         "Stuck, and it will stay stuck until someone looks. Open one to see the "
@@ -236,8 +241,14 @@ LANE_NOTES = {
     ),
     "in_graph": "Curated, tagged and queryable in the knowledge graph. Nothing to do.",
     "excluded": (
-        "Not talks: teasers and Shorts. Listed because they are on the channel, "
-        "and ignored by everything else."
+        "Left out on purpose: teasers and Shorts, which are not talks, and "
+        "panels and workshops, whose transcripts belong to no single speaker."
+    ),
+    "panels": (
+        "Panels and workshops: several people speak, so a transcript's tags "
+        "cannot be attributed to one of them. Never ingested automatically, "
+        "and hidden from the sheet by default; open one to ingest it anyway. "
+        "Those already in the graph stay there, labelled."
     ),
     "disagreements": (
         "Where the metadata CSV and HeySummit tell different stories about the "
@@ -282,6 +293,11 @@ STATUS_NOTES = {
         "the channel is accounted for, and never ingested — it is a trailer for "
         "a talk, not the talk. If one has a metadata row it is listed under "
         "Advanced, Data health."
+    ),
+    "multi_speaker": (
+        "A panel or workshop: several speakers, so its transcript cannot be "
+        "attributed to one person. Left out of automatic ingestion and the "
+        "backlog; a curator can still ingest it from its drawer."
     ),
     "upcoming": ("A premiere that has not aired, so it has no captions to ingest yet. "
                  "The date shown is when it premieres; it is ingested once it has."),
@@ -343,7 +359,7 @@ STAGE_LABELS = {
 templates.env.globals["STAGE_LABELS"] = STAGE_LABELS
 
 
-def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
+def _view(lane: str | None, query: str | None, show_all: bool = False) -> dict:
     """Reconcile, then apply the current lane and search.
 
     The sheet is every talk: the channel's videos, and the rows HeySummit
@@ -363,17 +379,23 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
     # writing, counted on the tab like the lanes are.
     issues = heysummit.attach(write=False)["issues"] if heysummit.read_catalog() else []
     lane_counts["disagreements"] = len(issues)
+    lane_counts["panels"] = sum(1 for s in talks if s.session)
 
     visible = talks
     if lane == "disagreements":
         visible = []
+    elif lane == "panels":
+        visible = [s for s in visible if s.session]
     elif lane and lane != "all":
         visible = [s for s in visible if s.lane == lane]
-    elif not shorts:
-        # Shorts are working as intended and would bury the rest. A premiere
-        # stays: it is a talk, days from being one, and hiding it made the
-        # newest entries on the channel look missing.
-        visible = [s for s in visible if not s.is_short]
+    elif not show_all:
+        # Shorts are working as intended and would bury the rest, and panels
+        # and workshops are left out on purpose. A panel someone is ingesting
+        # by hand, or whose run failed, stays: that asks for a human. A
+        # premiere stays too: it is a talk, days from being one, and hiding it
+        # made the newest entries on the channel look missing.
+        visible = [s for s in visible if not s.is_short and not (
+            s.session and s.lane not in ("attention", "working"))]
 
     if query:
         needle = query.lower().strip()
@@ -401,7 +423,7 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
         "total": len(talks),
         "offchannel": len(states) - len(talks),
         "lane": lane or "all",
-        "shorts": shorts,
+        "show_all": show_all,
         "query": query or "",
         "active_runs": db.active_run_count(),
         # Nothing at all to show only when neither the channel has been read
@@ -415,13 +437,13 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
 
 @router.get("/", response_class=HTMLResponse)
 def index(request: Request, lane: str | None = None, q: str | None = None,
-          shorts: int = 0):
-    return templates.TemplateResponse(request, "index.html", _view(lane, q, bool(shorts)))
+          show_all: int = Query(0, alias="all")):
+    return templates.TemplateResponse(request, "index.html", _view(lane, q, bool(show_all)))
 
 
 @router.get("/rows", response_class=HTMLResponse)
 def rows(request: Request, lane: str | None = None, q: str | None = None,
-         shorts: int = 0):
+         show_all: int = Query(0, alias="all")):
     """Rows for the sheet, plus the lane strip swapped out-of-band.
 
     The strip comes back with every response so the active lane and the counts
@@ -429,7 +451,7 @@ def rows(request: Request, lane: str | None = None, q: str | None = None,
     drifted the moment the two disagreed.
     """
     return templates.TemplateResponse(
-        request, "partials/rows_oob.html", _view(lane, q, bool(shorts))
+        request, "partials/rows_oob.html", _view(lane, q, bool(show_all))
     )
 
 
@@ -750,7 +772,7 @@ templates.env.globals["TOGGLEABLE"] = TOGGLEABLE
 
 @router.post("/flag/{name}", response_class=HTMLResponse)
 def toggle_flag(request: Request, name: str, lane: str = Form("all"),
-                q: str = Form(""), shorts: int = Form(0)):
+                q: str = Form(""), show_all: int = Form(0, alias="all")):
     """Flip a runtime flag for this process, and re-render what it governs.
 
     Deliberately not persisted: the durable setting is the environment variable.
@@ -773,12 +795,12 @@ def toggle_flag(request: Request, name: str, lane: str = Form("all"),
 
         set_polling(config.SCHEDULER_ENABLED)
     return templates.TemplateResponse(
-        request, "partials/advanced.html", _advanced_view(lane, q, bool(shorts)),
+        request, "partials/advanced.html", _advanced_view(lane, q, bool(show_all)),
         headers={"HX-Trigger": "gate-changed"},
     )
 
 
-def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dict:
+def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> dict:
     """Context for the Advanced panel: the flags, and everything not on the channel."""
     from .pipeline.runner import last_rebuild, queue_depth
     from .scheduler import is_polling
@@ -796,7 +818,7 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
         "heysummit_candidates": candidates,
         "lane": lane or "all",
         "query": q or "",
-        "shorts": shorts,
+        "show_all": show_all,
         # Keyed by flag name so the switches can be rendered from TOGGLEABLE
         # alone. Reading them positionally meant a third flag silently drew the
         # second one's state.
@@ -836,13 +858,13 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
 
 @router.get("/advanced", response_class=HTMLResponse)
 def advanced(request: Request, lane: str | None = None, q: str | None = None,
-             shorts: int = 0, body: int = 0):
+             show_all: int = Query(0, alias="all"), body: int = 0):
     """Everything an admin needs occasionally and should not be shown constantly.
 
     Rendered into the drawer shell, which is generic — only #drawer-body is ever
     swapped, so the open animation is not replayed by a refresh.
     """
-    ctx = _advanced_view(lane, q, bool(shorts))
+    ctx = _advanced_view(lane, q, bool(show_all))
     template = "partials/advanced.html" if body else "partials/advanced_drawer.html"
     return templates.TemplateResponse(request, template, ctx)
 

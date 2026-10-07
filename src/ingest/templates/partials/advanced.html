@@ -28,7 +28,7 @@
             hx-post="{{ base }}/flag/{{ name }}" hx-target="#drawer-body" hx-swap="innerHTML"
             hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all",
                          q: document.querySelector(".search").value,
-                         shorts: document.querySelector("[name=shorts]").checked ? 1 : 0}'
+                         all: document.querySelector("[name=all]").checked ? 1 : 0}'
             role="button" tabindex="0"
             aria-label="{{ label }}: {{ 'on' if on else 'paused' }}. Click to {{ 'pause' if on else 'resume' }}.">
         <i class="dot"></i><span>{{ 'On' if on else 'Paused' }}</span>
@@ -48,7 +48,8 @@
           {% elif name == 'AUTO_INGEST_NEW' %}
             {% if on %}A video published on the channel is ingested end-to-end
               without being asked. Shorts, teasers and premieres that have not
-              aired are never ingested, whatever this says. Covers new uploads
+              aired are never ingested, whatever this says, and panels and
+              workshops wait for a curator. Covers new uploads
               only; the existing backlog is drained below.
             {% else %}Newly published videos are catalogued and listed as
               <em>Not ingested</em>, but wait for a click.{% endif %}

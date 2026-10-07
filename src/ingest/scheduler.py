@@ -151,11 +151,17 @@ def _ingestable(video_ids: list[str]) -> list[tuple[str, str | None]]:
     skip both anyway, but a skipped run is a run: it appears in the panel's
     history and reads as something having gone wrong with a video that is simply
     not a talk.
+
+    A panel or workshop is a talk, but not one whose transcript belongs to a
+    single speaker, so it waits for a curator. The title is asked, and so are
+    the metadata CSV and HeySummit: a premiere whose row HeySummit seeded as a
+    panel carries no "Panel" in its YouTube title.
     """
     from . import db, reconcile
     from .sources import youtube
 
     inventory = {v["video_id"]: v for v in db.all_videos()}
+    known_sessions = reconcile.session_formats_by_video()
     verdicts = []
     for video_id in video_ids:
         video = inventory.get(video_id, {})
@@ -163,6 +169,9 @@ def _ingestable(video_ids: list[str]) -> list[tuple[str, str | None]]:
             verdicts.append((video_id, f"a Short or teaser ({video['duration']}s)"))
         elif video.get("live_status") in youtube.UNSETTLED:
             verdicts.append((video_id, "a premiere that has not finished airing"))
+        elif session := (known_sessions.get(video_id)
+                         or reconcile.session_format(video.get("title"))):
+            verdicts.append((video_id, f"a {session[0]} ({session[1]})"))
         else:
             verdicts.append((video_id, None))
     return verdicts
