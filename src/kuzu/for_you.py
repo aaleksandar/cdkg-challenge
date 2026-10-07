@@ -110,7 +110,11 @@ def render_tab(rag: GraphRAG, version: str) -> None:
     left, right = st.columns([2, 3], gap="large")
     with left:
         st.markdown(HOW_TO)
-        photo = st.camera_input("Take a photo", key=f"visitor-photo-{n}", label_visibility="collapsed")
+        # 1080p, not the default: Streamlit otherwise captures at the widget's
+        # on-screen size (~460 px here), at which a phone's text is unreadable
+        # and the model misreads names rather than giving up.
+        photo = st.camera_input("Take a photo", key=f"visitor-photo-{n}", label_visibility="collapsed",
+                                resolution="1080p")
         topics = st.pills("Or pick what you're into", visitor.topic_buttons(vocabulary),
                           selection_mode="multi", key=f"visitor-topics-{n}")
         if st.button("Next person", icon="🔄", width="stretch"):

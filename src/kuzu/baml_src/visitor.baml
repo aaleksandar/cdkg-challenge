@@ -39,6 +39,9 @@ function ReadVisitor(photo: image, tags: string) -> VisitorProfile {
     - Only read what is visible. If the photo shows no profile, badge or card,
       or nothing is legible, set found=false and leave everything empty.
     - Copy name, headline and company verbatim. Never guess a name.
+    - If a word is too small or blurred to read with certainty, leave that
+      field null rather than filling in a plausible word. A wrong name on the
+      screen is worse than no name.
     - interests: what this person works on, inferred from their role and what
       their company does. Prefer concrete topics ("clinical data integration",
       "fraud detection") over generic ones ("technology").
