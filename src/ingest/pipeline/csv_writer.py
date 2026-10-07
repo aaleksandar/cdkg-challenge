@@ -308,6 +308,7 @@ def _video_less_rows(csv_path: Path) -> list[dict]:
     from ..sources import parser
 
     return [{
+        "event": (r.get("Event") or "").strip() or None,
         "speakers": [n for n in parser.SPEAKER_SPLIT.split(r.get("Speaker") or "") if n.strip()],
         "talk_id": r["TalkID"].strip(),
         "title": (r.get("Title") or "").strip(),
@@ -357,7 +358,8 @@ def append_row(parsed, video_id: str, srt_path: Path,
 
         # By the whole title: "Talk. Speaker" puts no pipe where parse_title
         # would cut, so the talk's title is what the video's starts with.
-        verdict, hit, _ = matching.talk_for_video(parsed.full_title, _video_less_rows(csv_path))
+        verdict, hit, _ = matching.talk_for_video(parsed.full_title, _video_less_rows(csv_path),
+                                                  parsed.speakers)
         if verdict == "attach":
             filled, detail = _apply_to_row(
                 csv_path, hit["talk_id"],

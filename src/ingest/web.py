@@ -201,6 +201,9 @@ templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
 templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "panels": "Panels & workshops",
                                         "disagreements": "Disagreements"}
 templates.env.globals["ROW_SAYS_STATUS"] = R.ROW_SAYS_STATUS
+templates.env.globals["BEFORE_HEYSUMMIT"] = (
+    "Before HeySummit: Connected Data London 2016–2018 are on no programme the "
+    "sync reads, so there is no record to link.")
 
 # The strip doubles as the filter, so it defines both the order shown and the
 # set of filters available. Five entries, not twelve: an admin should be able to
@@ -564,6 +567,8 @@ def _same_talk(state: R.TalkState) -> dict | None:
     were linked by the sync. A curator's click is what makes one of these a join.
     """
     if not (state.talk_id and not state.video_id) and not (state.video_id and not state.in_csv):
+        return None
+    if state.before_heysummit:
         return None
     from .sources import heysummit
 

@@ -78,6 +78,7 @@
       <a href="{{ s.web }}" target="_blank" rel="noopener"
          aria-label="{{ s.display_title }} on HeySummit">{{ s.sources.heysummit or 'HeySummit' }} &#8599;</a>
     {% elif s.sources.heysummit %}{{ s.sources.heysummit }}
+    {% elif s.before_heysummit %}<span class="muted" data-tip="{{ BEFORE_HEYSUMMIT }}">before HeySummit</span>
     {% else %}—{% endif %}
   </td>
   <td class="act" onclick="event.stopPropagation()">
