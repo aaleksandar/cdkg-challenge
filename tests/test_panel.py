@@ -1281,3 +1281,20 @@ def test_an_open_drawer_names_its_talk_for_the_address_bar(client, monkeypatch):
     assert 'data-talk-key="youtube:aaaaaaaaaaa"' in shell
     page = client.get("/").text
     assert "openFromAnchor" in page and "hashchange" in page
+
+
+def test_a_video_from_before_heysummit_says_so_and_is_offered_no_match(client, monkeypatch):
+    old = R.TalkState(sources={"youtube": "ooooooooooo"}, duration=2400,
+                      title="Building knowledge graphs in the real world. Expert talk at CDL 2018",
+                      published_at="2018-12-01T00:00:00Z", url="u/ooooooooooo")
+    late = R.TalkState(sources={"youtube": "lllllllllll"}, duration=2400,
+                       title="Graph intelligence | Connected Data London 2017",
+                       published_at="2024-05-01T00:00:00Z", url="u/lllllllllll")
+    recent = R.TalkState(sources={"youtube": "rrrrrrrrrrr"}, duration=2400, title="A 2024 talk",
+                         published_at="2024-05-01T00:00:00Z", url="u/rrrrrrrrrrr")
+    assert old.before_heysummit and late.before_heysummit and not recent.before_heysummit
+    monkeypatch.setattr(R, "reconcile", _only(old, recent))
+    sheet = client.get("/rows?lane=all").text
+    assert sheet.count("before HeySummit") == 1
+    drawer = client.get("/video/youtube:ooooooooooo?body=1").text
+    assert "Before HeySummit" in drawer and "Same talk?" not in drawer
