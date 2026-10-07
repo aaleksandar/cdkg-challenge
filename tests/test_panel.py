@@ -1272,3 +1272,12 @@ def test_a_possible_match_is_offered_from_the_drawer_and_links_without_ingesting
     client.post("/video/t-seeded1/attach", data={"video": "ggggggggggg", "ingest": "0"})
     assert written == [("t-seeded1", {"Video": "https://www.youtube.com/watch?v=ggggggggggg"})]
     assert queued == []
+
+
+def test_an_open_drawer_names_its_talk_for_the_address_bar(client, monkeypatch):
+    """The page writes it into the URL as #<key>, so a link opens the same talk."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    shell = client.get("/video/youtube:aaaaaaaaaaa").text
+    assert 'data-talk-key="youtube:aaaaaaaaaaa"' in shell
+    page = client.get("/").text
+    assert "openFromAnchor" in page and "hashchange" in page

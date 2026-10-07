@@ -90,11 +90,53 @@
     });
   })();
 
+  // The open talk lives in the address bar as an anchor — #t-07b04e2c, or
+  // #youtube:<id> for a video that is not a talk yet — so the URL can be sent
+  // to someone, or pasted into a bug report, and opens the same drawer. An
+  // anchor rather than a query parameter: the server never needs it, and the
+  // lane and search in the query string stay exactly as they were.
+  // replaceState, not a new history entry per talk, so Back still leaves the page.
+  (function () {
+    const drawer = document.getElementById('drawer');
+    const base = {{ base | tojson }};
+
+    function setAnchor(key) {
+      const url = location.pathname + location.search + (key ? '#' + encodeURIComponent(key).replace(/%3A/gi, ':') : '');
+      if (url !== location.pathname + location.search + location.hash) {
+        history.replaceState(history.state, '', url);
+      }
+    }
+    function anchorKey() {
+      return location.hash.length > 1 ? decodeURIComponent(location.hash.slice(1)) : '';
+    }
+    function openFromAnchor() {
+      const key = anchorKey();
+      const open = drawer.querySelector('.drawer[data-talk-key]');
+      if (!key || (open && open.dataset.talkKey === key)) return;
+      htmx.ajax('GET', base + '/video/' + encodeURIComponent(key), {target: drawer, swap: 'innerHTML'});
+    }
+    window.closeDrawer = function () {
+      drawer.innerHTML = '';
+      setAnchor('');
+    };
+
+    // Whatever lands in the drawer says what the URL should be: a talk sets
+    // its anchor, the Advanced panel clears it.
+    document.body.addEventListener('htmx:afterSwap', e => {
+      if (e.target !== drawer) return;
+      const talk = drawer.querySelector('.drawer[data-talk-key]');
+      setAnchor(talk ? talk.dataset.talkKey : '');
+    });
+    // A link pasted into this tab's address bar changes only the anchor.
+    window.addEventListener('hashchange', openFromAnchor);
+    document.addEventListener('DOMContentLoaded', openFromAnchor);
+  })();
+
   document.body.addEventListener('click', e => {
-    if (e.target.closest('.scrim, .close')) document.getElementById('drawer').innerHTML = '';
+    if (e.target.closest('.scrim, .close')) closeDrawer();
   });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') document.getElementById('drawer').innerHTML = '';
+    if (e.key === 'Escape') closeDrawer();
   });
 
   // Tooltips. Delegated, so controls that arrive by htmx swap carry them too;
