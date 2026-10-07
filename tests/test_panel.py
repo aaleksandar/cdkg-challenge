@@ -533,7 +533,7 @@ def test_a_short_is_never_offered_a_run_or_a_curation_form(client, monkeypatch):
     monkeypatch.setattr(R, "reconcile", _only(SHORT))
     drawer = client.get("/video/youtube:ccccccccccc?body=1").text
     assert "Run the pipeline again" not in drawer
-    assert "Short — ignored" in drawer
+    assert "Too short" in drawer
 
 
 def test_a_short_that_was_ingested_is_reported_not_hidden(client, monkeypatch):

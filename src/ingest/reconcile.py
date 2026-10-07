@@ -408,10 +408,10 @@ STATUS_LABELS = {
     "orphaned": "Orphaned",
     "not_ingested": "Not ingested",
     "awaiting_video": "Awaiting video",
-    "excluded_short": "Short — ignored",
+    "excluded_short": "Too short",
     "multi_speaker": "Panel or workshop — not ingested",
     "upcoming": "Premieres soon",
-    "junk": "Unusable",
+    "junk": "Unusable file",
     "in_progress": "Running",
     "failed": "Failed",
 }
@@ -458,7 +458,7 @@ LANE_LABELS = {
     "working": "Working",
     "not_ingested": "Not ingested",
     "in_graph": "In graph",
-    "excluded": "Not ingested by design",
+    "excluded": "Skipped",
 }
 
 # Statuses that are working as intended and only clutter the default view.
@@ -467,7 +467,9 @@ QUIET_STATUSES = {s for s, lane in LANE_OF.items() if lane == "excluded"}
 # Statuses whose row says the status rather than the lane, because the lane's
 # word would mislead: a premiere is "not ingested", but what a reader needs to
 # know is that it cannot be yet.
-ROW_SAYS_STATUS = {"upcoming", "multi_speaker"}
+# Every skipped row says why it was skipped — "Too short", "Panel — not
+# ingested" — because the lane's own word names no reason at all.
+ROW_SAYS_STATUS = {"upcoming"} | QUIET_STATUSES
 
 
 def _iso_date(value: str | None) -> str | None:
