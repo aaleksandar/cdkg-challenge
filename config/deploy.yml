@@ -114,6 +114,8 @@ env:
   clear:
     MODE: app
     DB_PATH: /data/cdl_db.kuzu
+    # Where the "Talks for you" take-away QR code points a visitor's phone.
+    PUBLIC_APP_URL: https://<%= ENV.fetch('CDKG_DOMAIN') %>
     BAML_GENERATE_ON_START: "1"
   secret:
     - GOOGLE_API_KEY

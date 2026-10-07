@@ -54,6 +54,7 @@ Three version constraints in `pyproject.toml` are deliberate and will look wrong
 
 - `GOOGLE_API_KEY` — **the only key actually required.** Every BAML function binds to the `GeminiFlash` client, and `evaluate.py`'s judge uses Gemini directly.
 - `SUPADATA_API_KEY` — **optional; the caption fallback.** When YouTube refuses yt-dlp from the server's address, the download stage asks Supadata for the same captions (`src/ingest/sources/supadata.py`). Free plan: 100 credits a month, 1 per talk. Unset, a refused download can only be completed by a curator's upload. `SUPADATA_POLL_SECONDS` (120) bounds the wait on its transcript job.
+- `PUBLIC_APP_URL` — **optional; where the "Talks for you" QR code points.** The demo laptop serves the app on localhost, which a visitor's phone cannot reach, so the take-away link points at the deployed app. Unset, it falls back to `https://$CDKG_DOMAIN`; with neither, the tab shows no QR code. Set in `config/deploy.yml`; on the laptop, put it in `src/kuzu/.env`.
 - `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` — **not needed.** No code path uses them. `src/kuzu/.env` may still list them from an earlier setup; they can be dropped. If you ever add a non-Gemini client, note that BAML implements providers natively in Rust — it needs the API key, not the provider's Python SDK.
 
 There are two `.env` locations, and they serve different purposes:
@@ -103,7 +104,7 @@ Two consequences worth knowing before working nearby:
   - `config.py`: centralized path resolution — **use it instead of hard-coding paths**
   - `rag.py`: `GraphRAG` class — Text2Cypher, query execution, answer generation
   - `evaluate.py`: benchmark runner with an LLM judge
-  - `streamlit_app.py`: chat UI over `GraphRAG`
+  - `streamlit_app.py`: chat UI over `GraphRAG`, with a second tab, "Talks for you" (`for_you.py`, logic in `visitor.py`)
   - `baml_src/`: BAML prompts and client configuration
   - `baml_client/`: **generated, gitignored, never edit by hand**
 - **Transcripts/**: Source `.srt` files and the metadata CSV
@@ -134,13 +135,19 @@ The `Exponential` retry policy in `clients.baml` is sized for Google's 503 "high
 
 ### Model choice
 
-All LLM calls go through the single `GeminiFlash` client in `clients.baml`, pinned to `gemini-3.7-flash`. `evaluate.py`'s judge is set to the same model and must be updated alongside it.
+All LLM calls go through the `GeminiFlash` client in `clients.baml`, pinned to `gemini-3.7-flash`. `evaluate.py`'s judge is set to the same model and must be updated alongside it. The one exception is `GeminiFlashLive`, the same model with a 15 s timeout and a single retry, used only by the live "Talks for you" tab (`visitor.baml`): someone is standing at the screen, so a Gemini spike must drop to the topic buttons in seconds, not ride `Exponential`'s minute of retries. Its model line moves with `GeminiFlash`'s; `ingest/model.py` reads only `GeminiFlash`'s.
 
 Pin a specific model rather than an alias like `gemini-flash-latest` — these prompts are tuned, and a model shifting underneath them silently changes behavior. Google retires models: `gemini-2.0-flash` was used here previously and now returns 404 on every call. If the whole system suddenly scores 1/5 across the benchmark with `NOT_FOUND` errors, check whether the model was retired before debugging anything else.
 
 Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 1.0/5, `gemini-2.5-flash` 3.3–3.5/5, `gemini-3.6-flash` 4.2–4.6/5, `gemini-3.7-flash` 4.3–4.5/5 — so re-run `evaluate.py` whenever it changes.
 
 3.7 is not a clear win over 3.6 on this benchmark; it was adopted to stay ahead of retirement, not for a score. The one stable difference is Q7, where 3.7 writes a narrower `WHERE` clause — literal terms from the question (`hiring`, `recruitment`) where 3.6 reached for the broader `ontolog`/`semantic` tags — and so recalls fewer of the baseline's speakers. If Text2Cypher recall matters more than precision here, that is the prompt to tune.
+
+## Talks for you (the conference demo)
+
+The second Streamlit tab. A visitor holds their LinkedIn profile (open on their phone), badge or business card up to the laptop's camera; `ReadVisitor` (`baml_src/visitor.baml`, one Gemini vision call) reads name, headline, company and about text and picks 5–12 tags **from the graph's own vocabulary**, which is passed in the prompt (every tag on at least one talk, most used first) and enforced afterwards by `visitor.clean_tags` — an invented tag is dropped, never fuzzily matched. The talks are then chosen by a fixed Cypher query, not by the model: ranked by how many of the visitor's tags each shares, ties broken by rarity (sum of 1 / talks carrying the tag), so "knowledge graphs" cannot outvote "entity resolution". If the name is a `Speaker`'s, their own talks come first ("Welcome back") and their tags join the visitor's. Cards are drawn through `GraphRAG.resolve_sources` as soon as the photo is read; `WhyForYou` writes one line per card afterwards, its ids validated against the cards on screen. Topic buttons (the most used tags) are the fallback when the photo cannot be read or Gemini is down.
+
+Nothing about the visitor is stored: the photo lives in session state for the round and "Next person" clears it. The take-away QR code (`segno`) encodes `PUBLIC_APP_URL/?for=<tags>` — topics only, never a name — and that URL renders the same picks on the phone with no model call. `?tab=for-you` opens the app on this tab, for the demo laptop. Why not LinkedIn's API: "Sign in with LinkedIn" gives only name, photo and email, and a profile URL can only be turned into data by scraping, so the visitor showing their own screen is both the consent and the data source.
 
 ## Data Flow
 
