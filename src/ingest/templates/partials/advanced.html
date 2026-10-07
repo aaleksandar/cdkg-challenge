@@ -237,6 +237,22 @@
     </details>
   {% endif %}
 
+  {% if video_candidates %}
+    <details open>
+      <summary><strong>{{ video_candidates | length }}</strong> possibly the same talk: a HeySummit row and a channel video</summary>
+      <p class="note-body">Alike, but not enough to join on their own — the
+         titles differ, or two videos are equally alike. Open one and press
+         <em>Link them</em> if they are one talk; leave them apart if not.</p>
+      <ul class="strand">
+        {% for c in video_candidates %}
+          <li hx-get="{{ base }}/video/{{ c.talk_id | urlencode }}" hx-target="#drawer"
+              hx-swap="innerHTML" role="button" tabindex="0">
+            <span class="t">{{ c.title }}</span><span class="muted">≈ {{ c.video_title }} · {{ c.evidence }}</span></li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+
   {% if not orphans and not junk and not stranded and not ingested_shorts %}
     <p class="ok-line">Nothing stranded. Every transcript on disk belongs to a
        video on the channel.</p>

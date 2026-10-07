@@ -305,10 +305,9 @@ def append_rows(rows: list[dict], csv_path: Path | None = None) -> list[str]:
 
 def _video_less_rows(csv_path: Path) -> list[dict]:
     """Rows with no Video yet, as match candidates for a video that has arrived."""
-    from ..sources import matching, parser
+    from ..sources import parser
 
     return [{
-        "norm": matching.title_key(r.get("Title")),
         "speakers": [n for n in parser.SPEAKER_SPLIT.split(r.get("Speaker") or "") if n.strip()],
         "talk_id": r["TalkID"].strip(),
         "title": (r.get("Title") or "").strip(),
@@ -356,10 +355,9 @@ def append_row(parsed, video_id: str, srt_path: Path,
                 return False, f"Already in the metadata CSV — filled blank {detail[8:]}"
             return False, "Already in the metadata CSV — not duplicated"
 
-        verdict, hit = matching.best_match(
-            matching.norm(parsed.talk_title), matching.surnames(parsed.speakers),
-            _video_less_rows(csv_path),
-        )
+        # By the whole title: "Talk. Speaker" puts no pipe where parse_title
+        # would cut, so the talk's title is what the video's starts with.
+        verdict, hit, _ = matching.talk_for_video(parsed.full_title, _video_less_rows(csv_path))
         if verdict == "attach":
             filled, detail = _apply_to_row(
                 csv_path, hit["talk_id"],

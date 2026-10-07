@@ -1234,3 +1234,41 @@ def test_a_panel_says_why_and_can_still_be_ingested_by_hand(client, monkeypatch)
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos", queued.append)
     client.post("/ingest/youtube:ppppppppppp")
     assert queued == [["ppppppppppp"]]
+
+
+def test_a_second_upload_is_labelled_and_left_out_of_the_backlog(client, monkeypatch):
+    again = R.TalkState(sources={"youtube": "rrrrrrrrrrr"}, title="Same talk, again",
+                        duration=2140, duplicate_of="ooooooooooo")
+    monkeypatch.setattr(R, "reconcile", _only(again))
+    assert again.status == "duplicate_upload" and again.lane == "excluded"
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
+                        lambda ids: queued.extend(ids) or len(ids))
+    client.post("/backlog/ingest")
+    assert queued == []
+    assert "Duplicate upload" in client.get("/rows?lane=excluded").text
+
+
+def test_a_possible_match_is_offered_from_the_drawer_and_links_without_ingesting(client, monkeypatch):
+    from ingest.sources import heysummit
+
+    seeded = R.TalkState(talk_id="t-seeded1", sources={"heysummit": "9"}, in_csv=True,
+                         title="Graph stories", csv_title="Graph stories")
+    monkeypatch.setattr(R, "reconcile", _only(seeded))
+    monkeypatch.setattr(heysummit, "link_videos", lambda write=True: {"linked": {}, "candidates": [
+        {"talk_id": "t-seeded1", "title": "Graph stories", "video_id": "ggggggggggg",
+         "video_title": "Graph stories & metaphors", "evidence": "titles 0.91 alike"}]})
+    drawer = client.get("/video/t-seeded1?body=1").text
+    assert "Same talk?" in drawer and "Graph stories &amp; metaphors" in drawer
+    assert 'name="ingest" value="0"' in drawer
+
+    written, queued = [], []
+    monkeypatch.setattr("ingest.pipeline.csv_writer.update_row",
+                        lambda talk_id, fields, *a: written.append((talk_id, fields)) or (True, ""))
+    monkeypatch.setattr("ingest.pipeline.csv_writer.find_talk_by_source", lambda *a: None)
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", queued.append)
+    db.upsert_videos([{"video_id": "ggggggggggg", "title": "Graph stories & metaphors",
+                       "url": "u", "duration": 2400}])
+    client.post("/video/t-seeded1/attach", data={"video": "ggggggggggg", "ingest": "0"})
+    assert written == [("t-seeded1", {"Video": "https://www.youtube.com/watch?v=ggggggggggg"})]
+    assert queued == []

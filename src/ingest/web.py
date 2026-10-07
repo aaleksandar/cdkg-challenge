@@ -299,6 +299,11 @@ STATUS_NOTES = {
         "attributed to one person. Left out of automatic ingestion and the "
         "backlog; a curator can still ingest it from its drawer."
     ),
+    "duplicate_upload": (
+        "The same recording as an earlier upload on the channel: same title, "
+        "same running time. The talk is the earlier one, so this one is never "
+        "ingested."
+    ),
     "upcoming": ("A premiere that has not aired, so it has no captions to ingest yet. "
                  "The date shown is when it premieres; it is ingested once it has."),
     "junk": "A transcript named after a bare YouTube ID. Untitled, and often duplicated.",
@@ -393,9 +398,11 @@ def _view(lane: str | None, query: str | None, show_all: bool = False) -> dict:
         # and workshops are left out on purpose. A panel someone is ingesting
         # by hand, or whose run failed, stays: that asks for a human. A
         # premiere stays too: it is a talk, days from being one, and hiding it
-        # made the newest entries on the channel look missing.
-        visible = [s for s in visible if not s.is_short and not (
-            s.session and s.lane not in ("attention", "working"))]
+        # made the newest entries on the channel look missing. A second upload
+        # of a recording is hidden too: the talk is the first.
+        visible = [s for s in visible
+                   if not s.is_short and s.status != "duplicate_upload" and not (
+                       s.session and s.lane not in ("attention", "working"))]
 
     if query:
         needle = query.lower().strip()
@@ -529,6 +536,7 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
 
     disagreement = (heysummit.differences(match.talk_id)
                     if match.talk_id and match.in_csv and heysummit.read_catalog() else None)
+    same_talk = _same_talk(match)
 
     template = "partials/drawer_body.html" if body else "partials/drawer.html"
     if with_row:
@@ -544,8 +552,25 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
          # Read here, not in the template: both valves are per-process state.
          "auto_ingest_on": config.SCHEDULER_ENABLED and config.AUTO_INGEST_NEW,
          "suggestion_evidence": suggestion_evidence,
-         "suggestion_failed": suggestion_failed, "disagreement": disagreement},
+         "suggestion_failed": suggestion_failed, "disagreement": disagreement,
+         "same_talk": same_talk},
     )
+
+
+def _same_talk(state: R.TalkState) -> dict | None:
+    """A video and a row that may be one talk, offered from either side.
+
+    Only the matches too weak to write on their own reach here: the strong ones
+    were linked by the sync. A curator's click is what makes one of these a join.
+    """
+    if not (state.talk_id and not state.video_id) and not (state.video_id and not state.in_csv):
+        return None
+    from .sources import heysummit
+
+    for candidate in heysummit.link_videos(write=False)["candidates"]:
+        if candidate["talk_id"] == state.talk_id or candidate["video_id"] == state.video_id:
+            return candidate
+    return None
 
 
 @router.get("/live", response_class=HTMLResponse)
@@ -816,6 +841,10 @@ def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> d
                   if heysummit.read_catalog() else [])
     return {
         "heysummit_candidates": candidates,
+        # A row and a channel video that may be one talk: too weak to link on
+        # their own, each opens a drawer with a "Same talk?" button.
+        "video_candidates": (heysummit.link_videos(write=False)["candidates"]
+                             if heysummit.read_catalog() else []),
         "lane": lane or "all",
         "query": q or "",
         "show_all": show_all,
@@ -931,7 +960,8 @@ def refresh(request: Request, background: BackgroundTasks):
 
 
 @router.post("/video/{key}/attach", response_class=HTMLResponse)
-def attach_video(request: Request, key: str, video: str = Form("")):
+def attach_video(request: Request, key: str, video: str = Form(""),
+                 ingest: int = Form(1)):
     """Give a talk HeySummit seeded the channel video that is it, then ingest.
 
     The automatic join is by title and speaker, and a video whose title strays
@@ -974,7 +1004,10 @@ def attach_video(request: Request, key: str, video: str = Form("")):
         return refuse("That video is a Short or teaser; the talk itself is a longer video.")
 
     update_row(state.talk_id, {"Video": f"https://www.youtube.com/watch?v={video_id}"})
-    queue_videos([video_id])
+    # "Same talk?" only joins the two: whether to spend an LLM call on the
+    # video is the backlog's question, asked on its own.
+    if ingest:
+        queue_videos([video_id])
     return video_detail(request, state.talk_id, body=1, with_row=True)
 
 
@@ -1009,6 +1042,7 @@ def heysummit_sync(request: Request):
         f'<span class="note">{refreshed} {summary["attached"]} newly matched, blanks '
         f'filled on {summary["filled"]} talks, {summary["seeded"]} new talks seeded '
         f'({len(summary["linked_videos"])} linked to a channel video), '
+        f'{len(summary.get("videos_linked", {}))} earlier talks joined to their video, '
         f'{summary["claimed"]} transcripts on disk claimed, {summary["unmatched"]} '
         f'rows with no match.'
         + (f' Possibly already a row, so not seeded: {candidates}.' if candidates else "")

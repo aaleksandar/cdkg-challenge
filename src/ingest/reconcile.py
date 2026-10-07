@@ -245,6 +245,8 @@ class TalkState:
     # format categories HeySummit files the talk under.
     csv_type: str | None = None
     hs_categories: list[str] = field(default_factory=list)
+    # The earlier upload of the same recording, when this video repeats one.
+    duplicate_of: str | None = None
 
     @property
     def when(self) -> str | None:
@@ -355,6 +357,10 @@ class TalkState:
         # them to attach to. The extraction cost was paid and thrown away.
         if self.has_tags and not self.in_csv:
             return "orphaned"
+        # The same recording uploaded again: the talk is the earlier upload,
+        # and ingesting this one would make a second Talk of it.
+        if self.duplicate_of and not self.has_transcript and not self.in_csv:
+            return "duplicate_upload"
         if not self.has_transcript and not self.in_csv:
             return "not_ingested"
         if self.in_graph and self.tagged_in_graph:
@@ -410,6 +416,7 @@ STATUS_LABELS = {
     "awaiting_video": "Awaiting video",
     "excluded_short": "Too short",
     "multi_speaker": "Panel or workshop — not ingested",
+    "duplicate_upload": "Duplicate upload",
     "upcoming": "Premieres soon",
     "junk": "Unusable file",
     "in_progress": "Running",
@@ -419,7 +426,7 @@ STATUS_LABELS = {
 STATUS_ORDER = [
     "failed", "in_progress", "needs_curation", "ready_for_graph", "orphaned",
     "not_ingested", "awaiting_video", "untagged", "in_graph", "multi_speaker",
-    "excluded_short", "upcoming", "junk",
+    "excluded_short", "duplicate_upload", "upcoming", "junk",
 ]
 
 # The twelve statuses above stay the diagnosis — they are what the drawer shows
@@ -443,6 +450,7 @@ LANE_OF = {
     # Left out on purpose, like a Short — but it is a talk, and the row says
     # what it is rather than the lane's word for it.
     "multi_speaker": "excluded",
+    "duplicate_upload": "excluded",
     # A premiere is a talk that has not aired: the backlog, not "not a talk".
     # Filing it as excluded printed "Not a talk" beside the newest talk on the
     # channel. The row prints its own status instead of the lane's label.
@@ -649,6 +657,14 @@ def reconcile() -> list[TalkState]:
         state.parsed_speaker = preview.speaker
         state.parsed_event = preview.event
         apply_repo(state)
+
+    # The channel re-published some talks: same title, same running time.
+    from .sources import matching
+
+    for video_id, original in matching.duplicate_uploads(inventory).items():
+        state = by_source.get(("youtube", video_id))
+        if state is not None:
+            state.duplicate_of = original
 
     # 3. Transcripts, text or tags on disk that no CSV row accounts for. This is
     #    where the orphans surface — extraction paid for, nothing to attach it to.

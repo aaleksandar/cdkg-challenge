@@ -270,6 +270,29 @@
    whose title strays from the programme's never finds its row on its own.
    Pasting the video here records it on the row and starts the ingestion, which
    looks a row up by its video before appending one. #}
+{# A match too weak to write on its own: the other half of this talk, maybe.
+   Offered from both sides, and joined only by a click. #}
+{% if same_talk %}
+<section class="curate same-talk">
+  <div class="upload-head">
+    <strong>Same talk?</strong>
+    <span class="muted">
+      {% if s.video_id %}HeySummit lists “{{ same_talk.title }}”, which may be this video.
+      {% else %}The channel has “{{ same_talk.video_title }}”, which may be this talk's video.{% endif %}
+      {{ same_talk.evidence | capitalize }}.
+    </span>
+  </div>
+  <form hx-post="{{ base }}/video/{{ same_talk.talk_id | urlencode }}/attach" hx-target="#drawer-body"
+        hx-swap="innerHTML" class="curate-form attach-form">
+    <input type="hidden" name="video" value="{{ same_talk.video_id }}">
+    <input type="hidden" name="ingest" value="0">
+    <button type="submit" class="btn btn-primary">Link them</button>
+    <span class="muted">Joins the video to the talk's row. Nothing is ingested.</span>
+    <span id="attach-flash" class="muted"></span>
+  </form>
+</section>
+{% endif %}
+
 {% if s.talk_id and not s.video_id and not s.is_short and s.status != 'in_progress' %}
 <section class="curate attach">
   <div class="upload-head">

@@ -452,3 +452,17 @@ def test_a_panel_is_never_auto_ingested(state, monkeypatch):
     assert verdicts["panel"] == "a panel (its title says “Panel”)"
     assert verdicts["seeded"] == "a panel (HeySummit lists it under Panels)"
     assert verdicts["talk"] is None
+
+
+def test_a_second_upload_of_a_recording_is_never_auto_ingested(state):
+    from ingest import scheduler
+
+    db.upsert_videos([
+        {"video_id": "old", "title": "Same Talk: Graphs", "url": "u", "duration": 2140,
+         "published_at": "2021-09-20T00:00:00Z", "live_status": "not_live"},
+        {"video_id": "new", "title": "Same Talk Graphs", "url": "u", "duration": 2141,
+         "published_at": "2024-05-10T00:00:00Z", "live_status": "not_live"},
+    ])
+    verdicts = dict(scheduler._ingestable(["old", "new"]))
+    assert verdicts["old"] is None
+    assert verdicts["new"] == "a second upload of old"
