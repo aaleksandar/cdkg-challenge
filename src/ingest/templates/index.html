@@ -41,6 +41,7 @@
            hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all"}'>
     Show all videos
   </label>
+  {% include "partials/shown.html" %}
   <div class="spacer"></div>
   <span id="busy" class="htmx-indicator muted">working…</span>
   <span id="flash"></span>
