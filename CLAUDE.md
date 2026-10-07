@@ -52,7 +52,7 @@ Three version constraints in `pyproject.toml` are deliberate and will look wrong
 
 ## Environment Variables
 
-- `GOOGLE_API_KEY` — **the only key actually required.** Every BAML function binds to the `GeminiFlash` client, and `evaluate.py`'s judge uses Gemini directly.
+- `GOOGLE_API_KEY` — **the only key actually required.** Every BAML function uses a Google Gemini client: normally `GeminiFlash`, with `GeminiFlashLive` used by the live visitor flow; `evaluate.py`'s judge uses Gemini directly.
 - `SUPADATA_API_KEY` — **optional; the caption fallback.** When YouTube refuses yt-dlp from the server's address, the download stage asks Supadata for the same captions (`src/ingest/sources/supadata.py`). Free plan: 100 credits a month, 1 per talk. Unset, a refused download can only be completed by a curator's upload. `SUPADATA_POLL_SECONDS` (120) bounds the wait on its transcript job.
 - `PUBLIC_APP_URL` — **optional; where the "Talks for you" QR code points.** The demo laptop serves the app on localhost, which a visitor's phone cannot reach, so the take-away link points at the deployed app. Unset, it falls back to `https://$CDKG_DOMAIN`; with neither, the tab shows no QR code. Set in `config/deploy.yml`; on the laptop, put it in `src/kuzu/.env`.
 - `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` — **not needed.** No code path uses them. `src/kuzu/.env` may still list them from an earlier setup; they can be dropped. If you ever add a non-Gemini client, note that BAML implements providers natively in Rust — it needs the API key, not the provider's Python SDK.
