@@ -12,25 +12,25 @@ dependencies = [
     # together, once an image that reads the newer format is published.
     "ladybug==0.19.1",
     "polars>=1.43.1",
-    # streamlit caps this at <25; do not raise past that until streamlit does
-    "pyarrow>=24.0.0,<25",
+    # streamlit 1.65 allows <26 but excludes 25.0.0; raise the cap with streamlit's
+    "pyarrow>=25.0.1,<26",
     # Pinned: baml_src/generators.baml hard-codes this version, and codegen
     # must match the installed runtime. Bump both together.
-    "baml-py==0.226.1",
-    "pydantic>=2.13.4",
-    "python-dotenv>=1.2.2",
-    "streamlit>=1.60.0",
+    "baml-py==0.226.2",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.4",
+    "streamlit>=1.65.0",
     # Used directly by evaluate.py's LLM judge
-    "google-genai>=2.14.0",
+    "google-genai>=2.28.0",
     # --- Ingestion service (src/ingest) ---
-    "fastapi>=0.120.0",
-    "uvicorn[standard]>=0.38.0",
+    "fastapi>=0.142.2",
+    "uvicorn[standard]>=0.54.0",
     "jinja2>=3.1.6",
     "python-multipart>=0.0.20",
     "yt-dlp[default,deno,curl-cffi]>=2026.8.19",
     "apscheduler>=3.11.0",
     "httpx>=0.28.1",
-    "pyjwt[crypto]>=2.10.1",
+    "pyjwt[crypto]>=2.15.1",
 ]
 
 [dependency-groups]

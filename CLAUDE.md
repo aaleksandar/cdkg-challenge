@@ -43,8 +43,8 @@ uv export --frozen --no-dev --no-hashes --no-emit-project -o src/kuzu/requiremen
 After changing dependencies in `pyproject.toml`, run `uv lock`, then regenerate that file so images match local dev.
 
 Three version constraints in `pyproject.toml` are deliberate and will look wrong at a glance:
-- `pyarrow>=24.0.0,<25` — streamlit caps `pyarrow<25`. Raising it makes the lock unsolvable.
-- `baml-py==0.226.1` — exact pin, see the BAML section below.
+- `pyarrow>=25.0.1,<26` — streamlit (1.65) requires `pyarrow<26,!=25.0.0`. Raising the cap past streamlit's makes the lock unsolvable.
+- `baml-py==0.226.2` — exact pin, see the BAML section below.
 - `ladybug==0.19.1` — not the newest. 0.20 writes storage format 47 and every
   published Ladybug Explorer image reads at most 43, so a database 0.20 wrote
   cannot be opened by the Explorer at all. The pin and the explorer tag in
