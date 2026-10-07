@@ -201,3 +201,11 @@ def test_speakers_who_disagree_make_even_an_exact_title_a_curators_call():
         [{"title": "Knowledge Graphs: The Frontier", "speakers": ["Ada Lovelace"], "event": None}],
         speakers=["Someone Else"])
     assert verdict == "candidate"
+
+
+def test_an_affiliation_after_the_speakers_name_is_not_a_different_speaker():
+    found = matching.same_talk(
+        "cuGraph: When all you need is a GPU accelerated graph engine", ["Bradley Rees"],
+        "cuGraph: When all you need is a GPU accelerated graph engine | Brad Rees, Nvidia | CDL24",
+        "Connected Data London 2024", video_speakers=["Brad Rees, Nvidia"])
+    assert found["title"] == "exact" and found["corroborated"]

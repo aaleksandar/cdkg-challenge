@@ -177,7 +177,10 @@ def same_talk(talk_title: str | None, speakers: Iterable[str], video_title: str 
             return None
     ours = {norm(n) for n in surnames(speakers)} - {""}
     theirs = {norm(n) for n in surnames(video_speakers)} - {""}
-    if ours and theirs and not ours & theirs:
+    # Not when a surname of ours is named in the video at all: the parser keeps
+    # an affiliation after a comma ("Brad Rees, Nvidia"), whose last word is not
+    # a surname.
+    if ours and theirs and not ours & theirs and not named:
         return {"title": "possible", "score": min(score, 0.9), "corroborated": False,
                 "why": why + ", but the speakers differ"}
     if agreed:
