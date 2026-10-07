@@ -1062,6 +1062,34 @@ def rebuild(request: Request):
     return HTMLResponse(f'<span class="{css}">{result.message}</span>')
 
 
+@router.post("/gemini/check", response_class=HTMLResponse)
+def gemini_check(request: Request):
+    """Ask the tagging model a few times, without retries, and say how it went."""
+    from .sources import gemini_check as gc
+
+    result = gc.check()
+    if result["verdict"] == "unconfigured":
+        return HTMLResponse(f'<span class="note err">Cannot test Gemini: '
+                            f'{escape(result["detail"])}.</span>')
+    headline = {
+        "stable": "Gemini is answering normally",
+        "unstable": "Gemini is unstable — an ingestion now may need its retries, or fail",
+        "down": "Gemini is not answering — tag extraction would fail now; try later",
+    }[result["verdict"]]
+    lines = "".join(
+        f'<li>{escape(gc.KINDS[a["kind"]])}'
+        + (f' ({a["status"]})' if a["status"] and a["kind"] == "error" else "")
+        + f' · {a["ms"] / 1000:.1f} s'
+        + (f' <span class="muted">{escape(a["detail"])}</span>' if a["detail"] else "")
+        + '</li>'
+        for a in result["attempts"])
+    css = {"stable": "note", "unstable": "note warn", "down": "note err"}[result["verdict"]]
+    return HTMLResponse(
+        f'<span class="{css} gemini-check"><strong>{headline}.</strong> '
+        f'<code>{escape(result["model"])}</code>, {len(result["attempts"])} requests '
+        f'without retries:<ol>{lines}</ol></span>')
+
+
 @router.get("/snapshots", response_class=HTMLResponse)
 def snapshots(request: Request):
     """The list of graph exports on disk, newest first."""

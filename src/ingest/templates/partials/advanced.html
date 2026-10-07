@@ -148,6 +148,12 @@
                       released — blanks on existing rows are filled, a channel video
                       carrying the same title is linked, and transcripts on disk are
                       claimed by title. Never overwrites a value. No LLM calls.">Sync HeySummit</button>
+    <button type="button" class="btn" hx-post="{{ base }}/gemini/check" hx-target="#adv-flash"
+            hx-indicator="#adv-busy" hx-disabled-elt="this"
+            data-tip="Sends three tiny requests to the tagging model, one after another and
+                      without retries, and says what each got back and how long it took.
+                      Use it before Ingest again after a failed tag extraction. Costs a
+                      fraction of a cent.">Test Gemini</button>
     <span id="adv-busy" class="htmx-indicator muted">working…</span>
     <span id="adv-flash"></span>
   </div>
