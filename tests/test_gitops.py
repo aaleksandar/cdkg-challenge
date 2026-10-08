@@ -75,12 +75,18 @@ def test_git_errors_redact_the_token():
 CSV = "Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
 
 
+def _env(cwd: Path) -> dict:
+    # An explicit identity: a CI runner has none, and git there refuses to
+    # merge at all rather than invent one from the hostname as macOS does.
+    return {"PATH": "/usr/bin:/bin:/usr/local/bin", "HOME": str(cwd),
+            "GIT_AUTHOR_NAME": "Curator", "GIT_AUTHOR_EMAIL": "c@example.org",
+            "GIT_COMMITTER_NAME": "Curator", "GIT_COMMITTER_EMAIL": "c@example.org"}
+
+
 def _run(cwd: Path, *args: str) -> str:
     return subprocess.run(
         ["git", *args], cwd=str(cwd), capture_output=True, text=True, check=True,
-        env={"PATH": "/usr/bin:/bin:/usr/local/bin", "HOME": str(cwd),
-             "GIT_AUTHOR_NAME": "Curator", "GIT_AUTHOR_EMAIL": "c@example.org",
-             "GIT_COMMITTER_NAME": "Curator", "GIT_COMMITTER_EMAIL": "c@example.org"},
+        env=_env(cwd),
     ).stdout.strip()
 
 
@@ -293,8 +299,9 @@ def test_a_real_conflict_is_named_after_the_talk_is_safe(repos):
     # Resolved on GitHub: the resolution is a commit on the remote ingest branch.
     _run(curator, "fetch", "-q", "origin", "ingest/auto")
     _run(curator, "checkout", "-q", "-b", "ingest/auto", "origin/ingest/auto")
-    subprocess.run(["git", "merge", "--no-edit", "origin/main"], cwd=str(curator),
-                   capture_output=True, env={"PATH": "/usr/bin:/bin", "HOME": str(curator)})
+    merging = subprocess.run(["git", "merge", "--no-edit", "origin/main"], cwd=str(curator),
+                             capture_output=True, text=True, env=_env(curator))
+    assert "CONFLICT" in merging.stdout, merging.stdout + merging.stderr
     (curator / "README.md").write_text("resolved\n")
     _run(curator, "add", "-A"); _run(curator, "commit", "-q", "-m", "Resolve"); _run(curator, "push", "-q", "origin", "ingest/auto")
 
