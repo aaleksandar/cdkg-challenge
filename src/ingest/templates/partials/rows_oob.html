@@ -4,6 +4,7 @@
    is left asserting something the server no longer believes. #}
 {% include "partials/rows.html" %}
 {% with oob = true %}{% include "partials/figures.html" %}{% endwith %}
+{% with oob = true %}{% include "partials/shown.html" %}{% endwith %}
 <div id="section-note" hx-swap-oob="true">{% include "partials/section_note.html" %}</div>
 <div class="meta" id="reconciled" hx-swap-oob="true">
   {{ total }} talks{% if offchannel %} · {{ offchannel }} on disk only{% endif %}

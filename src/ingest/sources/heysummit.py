@@ -427,7 +427,8 @@ def seed(csv_path=None) -> dict:
         if str(talk["id"]) in joined["candidate_ids"]:
             continue
         row = {"Title": " ".join(talk["title"].split()), **fields(talk)}
-        verdict, video, _ = matching.video_for_talk(talk["title"], talk["speakers"], videos)
+        verdict, video, _ = matching.video_for_talk(
+            talk["title"], talk["speakers"], videos, EVENTS.get(talk.get("event_id")))
         if verdict == "attach":
             row["Video"] = f"https://www.youtube.com/watch?v={video['video_id']}"
             videos.remove(video)
@@ -440,38 +441,47 @@ def seed(csv_path=None) -> dict:
             "linked_videos": linked}
 
 
+def first_year() -> int:
+    """The year of the earliest allow-listed event: talks before it predate HeySummit."""
+    years = [int(y) for name in EVENTS.values() for y in re.findall(r"\b(20\d{2})\b", name)]
+    return min(years) if years else 0
+
+
 def link_videos(csv_path=None, write: bool = True) -> dict:
     """Give every row with no video the channel video that records it.
 
     Seeding links a video only when it creates a row, and a row seeded before
     its video was catalogued — or before the backfill knew the video's length,
     which a candidate needs — was never looked at again: the talk showed twice
-    in the sheet, once awaiting a video and once as a video nobody had
-    ingested. So this runs on every sync. Only a blank Video is filled, and
-    only on a strong, unrivalled match (``matching.video_for_talk``); anything
-    weaker is returned as a candidate for a curator and never written.
+    in the sheet. So this runs on every sync, and judges every row against
+    every unlinked video at once (``matching.assign``), so two rows alike to one
+    video do not both claim it. Only a blank Video is filled, and only on a
+    strong, uncontested match; anything weaker is returned as a candidate for a
+    curator and never written. Videos uploaded before HeySummit's first event
+    are left out: there is no programme record for them to match.
     """
     csv_path = csv_path or config.METADATA_CSV
     rows = csv_writer.read_rows(csv_path)
     held = {reconcile.source_ids(r).get("youtube") for r in rows} - {None}
-    videos = [v for v in _channel_videos() if v["video_id"] not in held]
-    linked, candidates = {}, []
-    for row in rows:
-        talk_id = (row.get("TalkID") or "").strip()
-        if not talk_id or (row.get("Video") or "").strip():
-            continue
-        speakers = [n for n in parser.SPEAKER_SPLIT.split(row.get("Speaker") or "") if n.strip()]
-        verdict, video, why = matching.video_for_talk(row.get("Title"), speakers, videos)
-        if verdict == "attach":
-            linked[talk_id] = video["video_id"]
-            videos.remove(video)
-            if write:
-                csv_writer.update_row(talk_id, {
-                    "Video": f"https://www.youtube.com/watch?v={video['video_id']}"}, csv_path)
-        elif verdict == "candidate":
-            candidates.append({"talk_id": talk_id, "title": row.get("Title") or "",
-                               "video_id": video["video_id"], "video_title": video["title"],
-                               "evidence": why})
+    cutoff = str(first_year())
+    videos = [v for v in _channel_videos() if v["video_id"] not in held
+              and not (v.get("published_at") or "9999") < cutoff]
+    repeats = matching.duplicate_uploads(videos)
+    videos = [v for v in videos if v["video_id"] not in repeats]
+    talks = [{"talk_id": (r.get("TalkID") or "").strip(), "title": r.get("Title") or "",
+              "event": (r.get("Event") or "").strip() or None,
+              "speakers": [n for n in parser.SPEAKER_SPLIT.split(r.get("Speaker") or "") if n.strip()]}
+             for r in rows if (r.get("TalkID") or "").strip() and not (r.get("Video") or "").strip()]
+
+    pairs, alike = matching.assign(talks, videos)
+    linked = {}
+    for talk, video, _ in pairs:
+        linked[talk["talk_id"]] = video["video_id"]
+        if write:
+            csv_writer.update_row(talk["talk_id"], {
+                "Video": f"https://www.youtube.com/watch?v={video['video_id']}"}, csv_path)
+    candidates = [{"talk_id": t["talk_id"], "title": t["title"], "video_id": v["video_id"],
+                   "video_title": v["title"], "evidence": why} for t, v, why in alike]
     return {"linked": linked, "candidates": candidates}
 
 

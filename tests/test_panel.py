@@ -1272,3 +1272,42 @@ def test_a_possible_match_is_offered_from_the_drawer_and_links_without_ingesting
     client.post("/video/t-seeded1/attach", data={"video": "ggggggggggg", "ingest": "0"})
     assert written == [("t-seeded1", {"Video": "https://www.youtube.com/watch?v=ggggggggggg"})]
     assert queued == []
+
+
+def test_an_open_drawer_names_its_talk_for_the_address_bar(client, monkeypatch):
+    """The page writes it into the URL as #<key>, so a link opens the same talk."""
+    monkeypatch.setattr(R, "reconcile", _only(READY))
+    shell = client.get("/video/youtube:aaaaaaaaaaa").text
+    assert 'data-talk-key="youtube:aaaaaaaaaaa"' in shell
+    page = client.get("/").text
+    assert "openFromAnchor" in page and "hashchange" in page
+
+
+def test_a_video_from_before_heysummit_says_so_and_is_offered_no_match(client, monkeypatch):
+    old = R.TalkState(sources={"youtube": "ooooooooooo"}, duration=2400,
+                      title="Building knowledge graphs in the real world. Expert talk at CDL 2018",
+                      published_at="2018-12-01T00:00:00Z", url="u/ooooooooooo")
+    late = R.TalkState(sources={"youtube": "lllllllllll"}, duration=2400,
+                       title="Graph intelligence | Connected Data London 2017",
+                       published_at="2024-05-01T00:00:00Z", url="u/lllllllllll")
+    recent = R.TalkState(sources={"youtube": "rrrrrrrrrrr"}, duration=2400, title="A 2024 talk",
+                         published_at="2024-05-01T00:00:00Z", url="u/rrrrrrrrrrr")
+    assert old.before_heysummit and late.before_heysummit and not recent.before_heysummit
+    monkeypatch.setattr(R, "reconcile", _only(old, recent))
+    sheet = client.get("/rows?lane=all").text
+    assert sheet.count("before HeySummit") == 1
+    drawer = client.get("/video/youtube:ooooooooooo?body=1").text
+    assert "Before HeySummit" in drawer and "Same talk?" not in drawer
+
+
+def test_the_sheet_says_how_many_rows_it_is_showing(client, monkeypatch):
+    """Updated by every rows response: the box, the search and the tabs."""
+    short = R.TalkState(sources={"youtube": "bbbbbbbbbbb"}, title="Teaser", duration=42)
+    monkeypatch.setattr(R, "reconcile", _only(READY, short))
+    shown = lambda url: " ".join(client.get(url).text.split())
+    assert "Showing <strong>1</strong> of 2" in shown("/rows?lane=all")
+    assert "Showing <strong>2</strong> of 2" in shown("/rows?lane=all&all=1")
+    assert "Showing <strong>0</strong> of 2" in shown("/rows?lane=all&q=nothing+like+it")
+    import re
+    assert re.search(r'id="shown"[^>]*hx-swap-oob="true"', client.get("/rows?lane=all").text)
+    assert 'id="shown"' in client.get("/").text
