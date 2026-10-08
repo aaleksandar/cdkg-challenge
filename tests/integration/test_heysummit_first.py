@@ -133,3 +133,27 @@ def test_a_seeded_talk_gets_its_transcript_the_poll_after_its_premiere_airs(sand
     assert sb.yt.calls == ["bbbbbbbbbbb", "ccccccccccc"]
     with db.connect() as conn:
         assert conn.execute("SELECT COUNT(*) FROM runs WHERE video_id = 'ccccccccccc'").fetchone()[0] == 1
+
+
+def test_a_video_titled_talk_dot_speaker_joins_the_row_seeded_before_it(sandbox):
+    """The 2020–2021 uploads write "Talk. Speaker". Catalogued after the talk
+    was seeded, such a video used to stay a second row for the same talk; the
+    next sync joins it, and its run tags the HeySummit talk."""
+    sb = sandbox
+    sb.add_video("bbbbbbbbbbb", "Graph Thinking | Paco Nathan | Connected Data World 2021")
+    assert sb.run("bbbbbbbbbbb")["status"] == "completed"
+    _write_catalog()
+    assert heysummit.sync(refresh=False)["seeded"] == 1
+    seeded = next(r for r in sb.rows() if r["HeySummit"] == "2")
+
+    sb.add_video("ccccccccccc", "Knowledge Graphs: The Frontier. Ada Lovelace")
+    summary = heysummit.sync(refresh=False)
+    assert summary["videos_linked"] == {seeded["TalkID"]: "ccccccccccc"}
+    rows = sb.rows()
+    assert len(rows) == 2
+    assert "2 talks" in sb.client.get("/rows").text       # one row for it, not two
+
+    run = sb.run("ccccccccccc")
+    assert run["status"] == "completed"
+    assert detail(run, "csv_append")["talk_id"] == seeded["TalkID"]
+    assert graph.talk_is_tagged(config.GRAPH_DB_PATH, seeded["TalkID"])

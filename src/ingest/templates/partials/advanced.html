@@ -28,7 +28,7 @@
             hx-post="{{ base }}/flag/{{ name }}" hx-target="#drawer-body" hx-swap="innerHTML"
             hx-vals='js:{lane: new URLSearchParams(location.search).get("lane") || "all",
                          q: document.querySelector(".search").value,
-                         shorts: document.querySelector("[name=shorts]").checked ? 1 : 0}'
+                         all: document.querySelector("[name=all]").checked ? 1 : 0}'
             role="button" tabindex="0"
             aria-label="{{ label }}: {{ 'on' if on else 'paused' }}. Click to {{ 'pause' if on else 'resume' }}.">
         <i class="dot"></i><span>{{ 'On' if on else 'Paused' }}</span>
@@ -48,7 +48,8 @@
           {% elif name == 'AUTO_INGEST_NEW' %}
             {% if on %}A video published on the channel is ingested end-to-end
               without being asked. Shorts, teasers and premieres that have not
-              aired are never ingested, whatever this says. Covers new uploads
+              aired are never ingested, whatever this says, and panels and
+              workshops wait for a curator. Covers new uploads
               only; the existing backlog is drained below.
             {% else %}Newly published videos are catalogued and listed as
               <em>Not ingested</em>, but wait for a click.{% endif %}
@@ -153,6 +154,12 @@
                       released — blanks on existing rows are filled, a channel video
                       carrying the same title is linked, and transcripts on disk are
                       claimed by title. Never overwrites a value. No LLM calls.">Sync HeySummit</button>
+    <button type="button" class="btn" hx-post="{{ base }}/gemini/check" hx-target="#adv-flash"
+            hx-indicator="#adv-busy" hx-disabled-elt="this"
+            data-tip="Sends three tiny requests to the tagging model, one after another and
+                      without retries, and says what each got back and how long it took.
+                      Use it before Ingest again after a failed tag extraction. Costs a
+                      fraction of a cent.">Test Gemini</button>
     <span id="adv-busy" class="htmx-indicator muted">working…</span>
     <span id="adv-flash"></span>
   </div>
@@ -237,6 +244,22 @@
       <ul class="strand">
         {% for ours, theirs in heysummit_candidates %}
           <li><span class="t">{{ ours }}</span><span class="muted">≈ {{ theirs }}</span></li>
+        {% endfor %}
+      </ul>
+    </details>
+  {% endif %}
+
+  {% if video_candidates %}
+    <details open>
+      <summary><strong>{{ video_candidates | length }}</strong> possibly the same talk: a HeySummit row and a channel video</summary>
+      <p class="note-body">Alike, but not enough to join on their own — the
+         titles differ, or two videos are equally alike. Open one and press
+         <em>Link them</em> if they are one talk; leave them apart if not.</p>
+      <ul class="strand">
+        {% for c in video_candidates %}
+          <li hx-get="{{ base }}/video/{{ c.talk_id | urlencode }}" hx-target="#drawer"
+              hx-swap="innerHTML" role="button" tabindex="0">
+            <span class="t">{{ c.title }}</span><span class="muted">≈ {{ c.video_title }} · {{ c.evidence }}</span></li>
         {% endfor %}
       </ul>
     </details>

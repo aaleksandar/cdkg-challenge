@@ -5,7 +5,9 @@
    and slide every two seconds, which read as a flicker and threw away the
    scroll position. Only #drawer-body is ever swapped after this. #}
 <div class="scrim"></div>
-<aside class="drawer" role="dialog" aria-label="Talk detail">
+{# data-talk-key is what the address bar carries (#<key>), so the URL of an open
+   drawer opens the same talk for whoever it is sent to. #}
+<aside class="drawer" role="dialog" aria-label="Talk detail" data-talk-key="{{ s.key }}">
   <div id="drawer-body">
     {% include "partials/drawer_body.html" %}
   </div>

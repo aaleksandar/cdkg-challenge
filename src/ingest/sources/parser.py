@@ -40,6 +40,8 @@ EVENT_ABBREVIATIONS: list[tuple[re.Pattern, str]] = [
     (re.compile(r"#?\bCDL\s?(?:20)?(\d{2})\b", re.I), "Connected Data London 20{}"),
     (re.compile(r"#?\bCDW\s?(?:20)?(\d{2})\b", re.I), "Connected Data World 20{}"),
     (re.compile(r"#?\bKC\s?(?:20)?(\d{2})\b"), "Knowledge Connexions 20{}"),
+    # "KnowCon 2020", "#KnowCon2020": the channel's name for Knowledge Connexions.
+    (re.compile(r"#?\bKnowCon\s?(?:20)?(\d{2})\b", re.I), "Knowledge Connexions 20{}"),
 ]
 
 # Words that mark a title segment as an event rather than a person.
@@ -221,13 +223,22 @@ PROMO_MARKERS = [
 
 
 def promo_footer_start(description: str) -> int:
-    """Where the standing advertisement begins: the offset of the first marker,
-    or the end of the text when there is none."""
+    """Where the standing advertisement begins: the start of the line holding
+    the first marker, or the end of the text when there is none.
+
+    The line, not the marker: the advert names its event *before* the words
+    that mark it — "Connected Data London 2024 has been announced!" — so
+    cutting at the marker left "Connected Data London 2024" in the talk's own
+    text, and a 2020 talk uploaded in 2024 was filed under CDL 2024. The year
+    guard cannot catch that case: the upload year agrees with the advert.
+    """
     cut = len(description)
     for marker in PROMO_MARKERS:
         match = marker.search(description)
         if match:
-            cut = min(cut, match.start())
+            # +1 so a match that begins with its own newline (the "---"
+            # rule) keeps the line before it.
+            cut = min(cut, description.rfind("\n", 0, match.start() + 1) + 1)
     return cut
 
 

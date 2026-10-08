@@ -23,7 +23,11 @@
     {% endif %}
     {# The full YouTube title, "Talk | Speaker | Event", so the kind of video is
        readable by scanning the column. #}
-    <div class="title">{{ s.display_title }}</div>
+    <div class="title">{{ s.display_title }}
+      {# A panel or workshop says so wherever it is, ingested or not, with what
+         says it is one. #}
+      {% if s.session %}<span class="chip" data-tip="Several speakers, so not ingested automatically: {{ s.session[1] }}.">{{ s.session_label }}</span>{% endif %}
+    </div>
     <div class="sub">
       {# Curated values read solid; parsed previews are dimmed and marked, so a
          guess is never mistaken for a recorded fact. #}
@@ -48,6 +52,8 @@
           <span class="step">{{ s.run.done }}/{{ s.run.total }}</span>
         {%- elif busy -%}
           Queued
+        {%- elif s.status == 'multi_speaker' -%}
+          {{ s.session_label }} — not ingested
         {%- elif s.status in ROW_SAYS_STATUS -%}
           {{ STATUS_LABELS[s.status] }}
         {%- else -%}
@@ -72,6 +78,7 @@
       <a href="{{ s.web }}" target="_blank" rel="noopener"
          aria-label="{{ s.display_title }} on HeySummit">{{ s.sources.heysummit or 'HeySummit' }} &#8599;</a>
     {% elif s.sources.heysummit %}{{ s.sources.heysummit }}
+    {% elif s.before_heysummit %}<span class="muted" data-tip="{{ BEFORE_HEYSUMMIT }}">before HeySummit</span>
     {% else %}—{% endif %}
   </td>
   <td class="act" onclick="event.stopPropagation()">

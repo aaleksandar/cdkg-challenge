@@ -5,20 +5,21 @@
 {% if snapshots %}
 <table class="snapshots">
   <thead>
-    <tr><th>Taken</th><th>Graph built</th><th class="r">Talks</th><th class="r">Tagged</th>
-        <th class="r">Tags</th><th>Model</th><th class="r">Size</th><th></th></tr>
+    <tr><th>Taken (UTC)</th><th>Graph built</th><th class="r">Talks</th><th class="r">Tagged</th>
+        <th class="r">Tags</th><th>Model</th><th class="r">Size</th></tr>
   </thead>
   <tbody>
     {% for snap in snapshots %}
+    {% set model = snap.graph_version.model %}
     <tr>
-      <td><code>{{ snap.name }}</code></td>
-      <td class="muted">{{ snap.graph_version.built_at or '—' }}</td>
+      <td><a class="dl" href="{{ base }}/snapshots/{{ snap.name }}.zip"
+             title="Download {{ snap.name }}.zip">{{ snap.name | moment }} ↓</a></td>
+      <td class="muted" title="{{ snap.graph_version.built_at or '' }}">{{ snap.graph_version.built_at | moment }}</td>
       <td class="r">{{ snap.counts.Talk }}</td>
       <td class="r">{{ snap.counts.tagged_talks }}</td>
       <td class="r">{{ snap.counts.Tag }}</td>
-      <td><code>{{ snap.graph_version.model or '—' }}</code></td>
+      <td title="{{ model or '' }}">{{ (model or '—') | replace('gemini-', '') }}</td>
       <td class="r muted">{{ (snap.size_bytes / 1024) | round | int }} KB</td>
-      <td><a class="dl" href="{{ base }}/snapshots/{{ snap.name }}.zip">download ↓</a></td>
     </tr>
     {% endfor %}
   </tbody>

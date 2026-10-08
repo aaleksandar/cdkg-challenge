@@ -16,7 +16,7 @@
             data-tip="{{ LANE_NOTES.get(key, '') }}"
             aria-label="{{ label }} — {{ LANE_NOTES.get(key, '') }}"
             hx-get="{{ base }}/rows?lane={{ key }}" hx-target="#sheet"
-            hx-include="[name=q], [name=shorts]"
+            hx-include="[name=q], [name=all]"
             hx-push-url="{{ base }}/?lane={{ key }}">
       <span class="n">{{ count }}</span>
       <span class="k">

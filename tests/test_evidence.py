@@ -43,15 +43,15 @@ def test_a_value_found_nowhere_is_none():
 
 def test_the_parser_exposes_the_footer_cut_and_the_matched_text():
     cut = parser.promo_footer_start(RAW["description"])
-    assert RAW["description"][cut:].startswith("\n---")
+    assert RAW["description"][cut:].startswith("---")   # the rule's own line
     name, match = parser.find_event_match("see you at #CDW21")
     assert name == "Connected Data World 2021" and match.group(0) == "#CDW21"
     assert parser.find_event("nothing here") is None
 
 
 def test_a_marker_later_on_the_same_line_still_means_the_footer():
-    """"Connected Data London 2024 has been announced!": the cut is at "has",
-    after the event name, but the line is the advert."""
+    """"Connected Data London 2024 has been announced!": the marker is "has",
+    after the event name, and the cut is the start of its line."""
     raw = {"title": "A talk", "description": "About graphs.\nConnected Data London 2024 has been announced! Tickets at…"}
     found = evidence.locate("Connected Data London 2024", "Event", raw)
     assert found["where"] == "promo footer"

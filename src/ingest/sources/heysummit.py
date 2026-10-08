@@ -137,7 +137,11 @@ def read_catalog() -> list[dict]:
 # Keynotes are Presentations: that is how curators filed all four in the CSV.
 TYPES = {"Presentations": "Presentation", "Presentation": "Presentation",
          "Keynotes": "Presentation",
-         "Panels": "Panel", "Masterclasses": "Masterclass", "Masterclass": "Masterclass"}
+         "Panels": "Panel", "Masterclasses": "Masterclass", "Masterclass": "Masterclass",
+         # Its "workshops" were panel discussions of four to six people; the
+         # Type is what keeps one out of automatic ingestion once its video
+         # attaches. See reconcile.session_format.
+         "Workshops": "Workshop"}
 CATEGORIES = {
     "Knowledge Graphs": "Knowledge Graphs",
     "Enterprise Knowledge Graphs": "Knowledge Graphs",
@@ -386,6 +390,9 @@ def _channel_videos() -> list[dict]:
             "norm": matching.norm(preview.talk_title or video.get("title")),
             "speakers": preview.speakers,
             "video_id": video["video_id"],
+            "title": video.get("title") or "",
+            "duration": duration,
+            "published_at": video.get("published_at"),
         })
     return candidates
 
@@ -420,8 +427,8 @@ def seed(csv_path=None) -> dict:
         if str(talk["id"]) in joined["candidate_ids"]:
             continue
         row = {"Title": " ".join(talk["title"].split()), **fields(talk)}
-        verdict, video = matching.best_match(
-            talk["norm"], matching.surnames(talk["speakers"]), videos)
+        verdict, video, _ = matching.video_for_talk(
+            talk["title"], talk["speakers"], videos, EVENTS.get(talk.get("event_id")))
         if verdict == "attach":
             row["Video"] = f"https://www.youtube.com/watch?v={video['video_id']}"
             videos.remove(video)
@@ -432,6 +439,50 @@ def seed(csv_path=None) -> dict:
     seeded = {talk_id: row["HeySummit"] for talk_id, row in zip(talk_ids, new_rows)}
     return {**joined, "seeded": len(new_rows), "seeded_talks": seeded,
             "linked_videos": linked}
+
+
+def first_year() -> int:
+    """The year of the earliest allow-listed event: talks before it predate HeySummit."""
+    years = [int(y) for name in EVENTS.values() for y in re.findall(r"\b(20\d{2})\b", name)]
+    return min(years) if years else 0
+
+
+def link_videos(csv_path=None, write: bool = True) -> dict:
+    """Give every row with no video the channel video that records it.
+
+    Seeding links a video only when it creates a row, and a row seeded before
+    its video was catalogued — or before the backfill knew the video's length,
+    which a candidate needs — was never looked at again: the talk showed twice
+    in the sheet. So this runs on every sync, and judges every row against
+    every unlinked video at once (``matching.assign``), so two rows alike to one
+    video do not both claim it. Only a blank Video is filled, and only on a
+    strong, uncontested match; anything weaker is returned as a candidate for a
+    curator and never written. Videos uploaded before HeySummit's first event
+    are left out: there is no programme record for them to match.
+    """
+    csv_path = csv_path or config.METADATA_CSV
+    rows = csv_writer.read_rows(csv_path)
+    held = {reconcile.source_ids(r).get("youtube") for r in rows} - {None}
+    cutoff = str(first_year())
+    videos = [v for v in _channel_videos() if v["video_id"] not in held
+              and not (v.get("published_at") or "9999") < cutoff]
+    repeats = matching.duplicate_uploads(videos)
+    videos = [v for v in videos if v["video_id"] not in repeats]
+    talks = [{"talk_id": (r.get("TalkID") or "").strip(), "title": r.get("Title") or "",
+              "event": (r.get("Event") or "").strip() or None,
+              "speakers": [n for n in parser.SPEAKER_SPLIT.split(r.get("Speaker") or "") if n.strip()]}
+             for r in rows if (r.get("TalkID") or "").strip() and not (r.get("Video") or "").strip()]
+
+    pairs, alike = matching.assign(talks, videos)
+    linked = {}
+    for talk, video, _ in pairs:
+        linked[talk["talk_id"]] = video["video_id"]
+        if write:
+            csv_writer.update_row(talk["talk_id"], {
+                "Video": f"https://www.youtube.com/watch?v={video['video_id']}"}, csv_path)
+    candidates = [{"talk_id": t["talk_id"], "title": t["title"], "video_id": v["video_id"],
+                   "video_title": v["title"], "evidence": why} for t, v, why in alike]
+    return {"linked": linked, "candidates": candidates}
 
 
 def claim_transcripts(csv_path=None) -> dict:
@@ -503,10 +554,15 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
         return summary
 
     seeded = seed(csv_path)
+    # Before the transcripts: a row that gains its video here can then claim
+    # the transcript that video's run left on disk.
+    videos = link_videos(csv_path)
     claimed = claim_transcripts(csv_path)
     summary.update({k: v for k, v in seeded.items() if k not in {"candidate_ids", "issues"}})
+    summary["videos_linked"] = videos["linked"]
     summary.update(claimed)
-    summary["changed"] = bool(seeded["filled"] or seeded["seeded"] or claimed["claimed"])
+    summary["changed"] = bool(seeded["filled"] or seeded["seeded"] or videos["linked"]
+                              or claimed["claimed"])
     return summary
 
 

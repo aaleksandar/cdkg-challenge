@@ -138,7 +138,18 @@ accessories:
     # the `ladybug` pin in pyproject.toml writes. Raise both together, never one.
     image: ghcr.io/ladybugdb/explorer:0.19.1
     host: <%= ENV.fetch('SERVER_IP') %>
-    port: 8000:8000
+    # Behind kamal-proxy on its own subdomain, with its own certificate, rather
+    # than plain HTTP on a published port (it was reached at kuzu.eudaform.org:8000).
+    # The subdomain must resolve straight to the server, not through Cloudflare's
+    # proxy, for Let's Encrypt to issue. Kamal's deploy does not reboot
+    # accessories: after changing this block, run `kamal accessory reboot explorer`.
+    proxy:
+      host: <%= ENV.fetch('EXPLORER_DOMAIN', 'explorer.eudaform.org') %>
+      ssl: true
+      app_port: 8000
+      healthcheck:
+        # The Explorer has no /up; its front page answers when it is ready.
+        path: /
     env:
       clear:
         MODE: READ_ONLY

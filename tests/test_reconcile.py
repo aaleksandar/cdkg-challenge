@@ -310,3 +310,52 @@ def test_a_premiere_that_has_not_aired_is_upcoming_even_after_a_failed_run():
     seeded = TalkState(**{**premiere.__dict__, "talk_id": "t-1", "in_csv": True,
                           "speaker": "A", "event": "E", "run": None})
     assert seeded.status != "upcoming"
+
+
+# --- Panels and workshops ----------------------------------------------------
+
+@pytest.mark.parametrize("kwargs, expected", [
+    ({"hs_categories": ["Knowledge Graphs", "Panels"]},
+     ("panel", "HeySummit lists it under Panels")),
+    ({"hs_categories": ["Workshops"], "title": "Investing in Connected Data"},
+     ("workshop", "HeySummit lists it under Workshops")),
+    ({"csv_type": "Panel"}, ("panel", "its metadata Type is Panel")),
+    ({"title": "The Year of the Graph. Panel discussion at Connected Data London"},
+     ("panel", "its title says “Panel”")),
+    ({"title": "Connected Data World 2021 Program Roundtable"},
+     ("panel", "its title says “Roundtable”")),
+    ({"title": "Knowledge Graphs & SEO | #KnowCon2020 Workshop"},
+     ("workshop", "its title says “Workshop”")),
+])
+def test_what_makes_a_talk_a_panel_or_a_workshop(kwargs, expected):
+    assert R.session_format(**kwargs) == expected
+
+
+@pytest.mark.parametrize("kwargs", [
+    {"title": "SHACL Masterclass", "hs_categories": ["Masterclasses"],
+     "csv_type": "Masterclass"},
+    {"title": "The Enterprise Knowledge Graph | Omar Khan and David Newman",
+     "hs_categories": ["Presentations"], "csv_type": "Presentation"},
+    {"title": "Solar-paneled graphs"},
+])
+def test_a_masterclass_or_a_co_presented_talk_is_not_a_panel(kwargs):
+    assert R.session_format(**kwargs) is None
+
+
+def test_a_panel_is_left_out_but_what_happened_to_it_keeps_its_status():
+    waiting = R.TalkState(sources={"youtube": "ppppppppppp"},
+                          title="AI tribes. Panel at Connected Data London 2018")
+    assert waiting.status == "multi_speaker" and not waiting.actionable
+
+    seeded = R.TalkState(talk_id="t-1", sources={"heysummit": "1"}, in_csv=True,
+                         title="The State of Graph in 2025", hs_categories=["Panels"])
+    assert seeded.status == "multi_speaker"
+
+    failed = R.TalkState(sources={"youtube": "ppppppppppp"}, title=waiting.title,
+                         run={"status": "failed"})
+    assert failed.status == "failed"
+
+    in_graph = R.TalkState(talk_id="t-2", sources={"youtube": "ppppppppppp"},
+                           title=waiting.title, in_csv=True, has_transcript=True,
+                           has_tags=True, in_graph=True, tagged_in_graph=True)
+    assert in_graph.status == "in_graph" and in_graph.session_label == "Panel"

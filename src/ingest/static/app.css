@@ -245,7 +245,7 @@ thead th.r { text-align: right; }
 .s-failed         .dot { background: var(--alert); }
 .s-in_progress    .dot { background: var(--busy); animation: pulse 1.1s ease-in-out infinite; }
 .s-not_ingested   .dot { background: transparent; box-shadow: inset 0 0 0 1px var(--rule-strong); }
-.s-excluded_short .dot, .s-upcoming .dot, .s-junk .dot { background: var(--rule-strong); }
+.s-excluded_short .dot, .s-multi_speaker .dot, .s-upcoming .dot, .s-junk .dot { background: var(--rule-strong); }
 .s-orphaned .label, .s-failed .label { color: var(--ink); font-weight: 500; }
 
 /* Lanes. The sheet shows these; the eleven statuses above survive for the
@@ -322,6 +322,8 @@ thead th.r { text-align: right; }
   box-shadow: -18px 0 48px rgba(22,21,15,.09);
   overflow-y: auto; animation: slide .2s cubic-bezier(.22,.61,.36,1);
 }
+/* Advanced holds tables (snapshots) that a talk's drawer does not. */
+.drawer-wide { width: min(640px, 96vw); }
 @keyframes fade { from { opacity: 0 } }
 @keyframes slide { from { transform: translateX(18px); opacity: .4 } }
 
@@ -428,6 +430,9 @@ thead th.r { text-align: right; }
 .htmx-request .htmx-indicator { opacity: 1; }
 
 .note {
+  /* One box, however many lines it wraps to: as an inline span its border
+     broke at every line end. */
+  display: inline-block; line-height: 1.5;
   padding: 0.55rem 0.85rem; border-radius: 4px; font-size: 0.8rem;
   border: 1px solid var(--rule-strong); background: var(--paper-raised);
 }
@@ -597,7 +602,23 @@ td.act .rowbtn:disabled { opacity: 1; }
 .blocker .ladder li { margin: 0; }
 .blocker .ladder .muted { display: block; font-size: .72rem; word-break: break-word; }
 
-/* ---- Shorts toggle ---- */
+/* A panel or workshop: left out on purpose, not stuck, so neutral rather
+   than the amber of something unfinished. */
+.blocker.session {
+  background: var(--paper-raised);
+  border-left-color: var(--rule-strong);
+}
+.blocker.session .blocker-head { color: var(--ink-soft); }
+
+/* "Panel" / "Workshop" beside a title, wherever the talk is. */
+.chip {
+  display: inline-block; margin-left: .4rem; padding: 0 .4rem;
+  font-size: .62rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  line-height: 1.5; vertical-align: .1em;
+  color: var(--ink-soft); border: 1px solid var(--rule-strong); border-radius: 3px;
+}
+
+/* ---- Show-all toggle ---- */
 .toggle {
   display: inline-flex; align-items: center; gap: .4rem;
   font-size: .76rem; color: var(--ink-faint); cursor: pointer; user-select: none;
@@ -605,6 +626,8 @@ td.act .rowbtn:disabled { opacity: 1; }
 }
 .toggle:hover { color: var(--ink-soft); }
 .toggle input { accent-color: var(--accent); margin: 0; }
+.shown { margin-left: .9rem; font-size: .76rem; color: var(--ink-faint); white-space: nowrap; }
+.shown strong { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
 
 /* ---- Advanced ----
    Lives in the drawer, so it inherits the shell, the animation and the close
@@ -641,10 +664,15 @@ td.act .rowbtn:disabled { opacity: 1; }
 }
 
 .actions { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+/* A result under the buttons takes its own line, the row's full width. */
+.actions > #adv-flash:not(:empty) { flex-basis: 100%; }
+.gemini-check ol { margin: .35rem 0 0; padding-left: 1.3rem; }
+.gemini-check li { margin: .1rem 0; }
 .drain { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .snapshots-block { margin-top: 1rem; }
+#snapshots { overflow-x: auto; }
 .snapshots { width: 100%; border-collapse: collapse; font-size: .76rem; margin-top: .6rem; }
-.snapshots th, .snapshots td { padding: .3rem .45rem; border-bottom: 1px solid var(--rule); text-align: left; }
+.snapshots th, .snapshots td { padding: .3rem .45rem; border-bottom: 1px solid var(--rule); text-align: left; white-space: nowrap; }
 .snapshots th { color: var(--ink-faint); font-weight: 500; }
 .snapshots .r { text-align: right; }
 .snapshots .dl { color: var(--accent); text-decoration: none; }

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import APIRouter, BackgroundTasks, Form, Request, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Form, Query, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup, escape
@@ -38,6 +38,20 @@ def _day(stamp: str | None) -> str:
         return "—"
 
 
+def _moment(stamp: str | None) -> str:
+    """A snapshot's UTC stamp, compact or ISO, as a short time: 18 Sep 06:34."""
+    if not stamp:
+        return "—"
+    from datetime import datetime
+
+    for fmt in ("%Y%m%dT%H%M%SZ", "%Y-%m-%dT%H:%M:%SZ"):
+        try:
+            return datetime.strptime(stamp, fmt).strftime("%-d %b %H:%M")
+        except ValueError:
+            pass
+    return stamp
+
+
 def _fromjson(raw: str | None) -> dict:
     """Stage detail is stored as JSON; a malformed blob must not break the page."""
     import json
@@ -65,6 +79,7 @@ def _asset_version() -> str:
 templates.env.filters["duration"] = _duration
 templates.env.filters["day"] = _day
 templates.env.filters["fromjson"] = _fromjson
+templates.env.filters["moment"] = _moment
 templates.env.globals["asset_version"] = _asset_version
 # Prepended to every absolute URL the templates emit. Empty when the panel is
 # served from the root, "/ingestion" when it is mounted under a path — the proxy
@@ -203,8 +218,12 @@ templates.env.globals["STATUS_ORDER"] = R.STATUS_ORDER
 templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
 # The sixth tab is not a lane a row can be in: it is what the sources say
 # about the same talk when they do not agree, listed for a curator.
-templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "disagreements": "Disagreements"}
+templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "panels": "Panels & workshops",
+                                        "disagreements": "Disagreements"}
 templates.env.globals["ROW_SAYS_STATUS"] = R.ROW_SAYS_STATUS
+templates.env.globals["BEFORE_HEYSUMMIT"] = (
+    "Before HeySummit: Connected Data London 2016–2018 are on no programme the "
+    "sync reads, so there is no record to link.")
 
 # The strip doubles as the filter, so it defines both the order shown and the
 # set of filters available. Five entries, not twelve: an admin should be able to
@@ -216,6 +235,10 @@ templates.env.globals["LANES"] = [
     ("working", "Working"),
     ("not_ingested", "Not ingested"),
     ("in_graph", "In graph"),
+    # Not a lane either: every panel and workshop, ingested or not, with what
+    # says it is one. The waiting ones sit in the excluded lane; the ones
+    # already in the graph stay "In graph" and carry a chip.
+    ("panels", "Panels & workshops"),
     ("disagreements", "Disagreements"),
 ]
 
@@ -224,8 +247,8 @@ templates.env.globals["LANES"] = [
 LANE_NOTES = {
     "all": (
         f"Every talk: the {config.YOUTUBE_CHANNEL_HANDLE} channel's videos and the "
-        "programme HeySummit holds, whether or not a video exists yet. Shorts "
-        "hidden by default."
+        "programme HeySummit holds, whether or not a video exists yet. Shorts, "
+        "panels and workshops hidden by default."
     ),
     "attention": (
         "Stuck, and it will stay stuck until someone looks. Open one to see the "
@@ -241,8 +264,14 @@ LANE_NOTES = {
     ),
     "in_graph": "Curated, tagged and queryable in the knowledge graph. Nothing to do.",
     "excluded": (
-        "Not talks: teasers and Shorts. Listed because they are on the channel, "
-        "and ignored by everything else."
+        "Left out on purpose: teasers and Shorts, which are not talks, and "
+        "panels and workshops, whose transcripts belong to no single speaker."
+    ),
+    "panels": (
+        "Panels and workshops: several people speak, so a transcript's tags "
+        "cannot be attributed to one of them. Never ingested automatically, "
+        "and hidden from the sheet by default; open one to ingest it anyway. "
+        "Those already in the graph stay there, labelled."
     ),
     "disagreements": (
         "Where the metadata CSV and HeySummit tell different stories about the "
@@ -287,6 +316,16 @@ STATUS_NOTES = {
         "the channel is accounted for, and never ingested — it is a trailer for "
         "a talk, not the talk. If one has a metadata row it is listed under "
         "Advanced, Data health."
+    ),
+    "multi_speaker": (
+        "A panel or workshop: several speakers, so its transcript cannot be "
+        "attributed to one person. Left out of automatic ingestion and the "
+        "backlog; a curator can still ingest it from its drawer."
+    ),
+    "duplicate_upload": (
+        "The same recording as an earlier upload on the channel: same title, "
+        "same running time. The talk is the earlier one, so this one is never "
+        "ingested."
     ),
     "upcoming": ("A premiere that has not aired, so it has no captions to ingest yet. "
                  "The date shown is when it premieres; it is ingested once it has."),
@@ -348,7 +387,7 @@ STAGE_LABELS = {
 templates.env.globals["STAGE_LABELS"] = STAGE_LABELS
 
 
-def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
+def _view(lane: str | None, query: str | None, show_all: bool = False) -> dict:
     """Reconcile, then apply the current lane and search.
 
     The sheet is every talk: the channel's videos, and the rows HeySummit
@@ -368,17 +407,25 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
     # writing, counted on the tab like the lanes are.
     issues = heysummit.attach(write=False)["issues"] if heysummit.read_catalog() else []
     lane_counts["disagreements"] = len(issues)
+    lane_counts["panels"] = sum(1 for s in talks if s.session)
 
     visible = talks
     if lane == "disagreements":
         visible = []
+    elif lane == "panels":
+        visible = [s for s in visible if s.session]
     elif lane and lane != "all":
         visible = [s for s in visible if s.lane == lane]
-    elif not shorts:
-        # Shorts are working as intended and would bury the rest. A premiere
-        # stays: it is a talk, days from being one, and hiding it made the
-        # newest entries on the channel look missing.
-        visible = [s for s in visible if not s.is_short]
+    elif not show_all:
+        # Shorts are working as intended and would bury the rest, and panels
+        # and workshops are left out on purpose. A panel someone is ingesting
+        # by hand, or whose run failed, stays: that asks for a human. A
+        # premiere stays too: it is a talk, days from being one, and hiding it
+        # made the newest entries on the channel look missing. A second upload
+        # of a recording is hidden too: the talk is the first.
+        visible = [s for s in visible
+                   if not s.is_short and s.status != "duplicate_upload" and not (
+                       s.session and s.lane not in ("attention", "working"))]
 
     if query:
         needle = query.lower().strip()
@@ -406,7 +453,7 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
         "total": len(talks),
         "offchannel": len(states) - len(talks),
         "lane": lane or "all",
-        "shorts": shorts,
+        "show_all": show_all,
         "query": query or "",
         "active_runs": db.active_run_count(),
         # Nothing at all to show only when neither the channel has been read
@@ -420,13 +467,13 @@ def _view(lane: str | None, query: str | None, shorts: bool = False) -> dict:
 
 @router.get("/", response_class=HTMLResponse)
 def index(request: Request, lane: str | None = None, q: str | None = None,
-          shorts: int = 0):
-    return templates.TemplateResponse(request, "index.html", _view(lane, q, bool(shorts)))
+          show_all: int = Query(0, alias="all")):
+    return templates.TemplateResponse(request, "index.html", _view(lane, q, bool(show_all)))
 
 
 @router.get("/rows", response_class=HTMLResponse)
 def rows(request: Request, lane: str | None = None, q: str | None = None,
-         shorts: int = 0):
+         show_all: int = Query(0, alias="all")):
     """Rows for the sheet, plus the lane strip swapped out-of-band.
 
     The strip comes back with every response so the active lane and the counts
@@ -434,7 +481,7 @@ def rows(request: Request, lane: str | None = None, q: str | None = None,
     drifted the moment the two disagreed.
     """
     return templates.TemplateResponse(
-        request, "partials/rows_oob.html", _view(lane, q, bool(shorts))
+        request, "partials/rows_oob.html", _view(lane, q, bool(show_all))
     )
 
 
@@ -512,6 +559,7 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
 
     disagreement = (heysummit.differences(match.talk_id)
                     if match.talk_id and match.in_csv and heysummit.read_catalog() else None)
+    same_talk = _same_talk(match)
 
     template = "partials/drawer_body.html" if body else "partials/drawer.html"
     if with_row:
@@ -527,8 +575,27 @@ def video_detail(request: Request, key: str, body: int = 0, with_row: bool = Fal
          # Read here, not in the template: both valves are per-process state.
          "auto_ingest_on": config.SCHEDULER_ENABLED and config.AUTO_INGEST_NEW,
          "suggestion_evidence": suggestion_evidence,
-         "suggestion_failed": suggestion_failed, "disagreement": disagreement},
+         "suggestion_failed": suggestion_failed, "disagreement": disagreement,
+         "same_talk": same_talk},
     )
+
+
+def _same_talk(state: R.TalkState) -> dict | None:
+    """A video and a row that may be one talk, offered from either side.
+
+    Only the matches too weak to write on their own reach here: the strong ones
+    were linked by the sync. A curator's click is what makes one of these a join.
+    """
+    if not (state.talk_id and not state.video_id) and not (state.video_id and not state.in_csv):
+        return None
+    if state.before_heysummit:
+        return None
+    from .sources import heysummit
+
+    for candidate in heysummit.link_videos(write=False)["candidates"]:
+        if candidate["talk_id"] == state.talk_id or candidate["video_id"] == state.video_id:
+            return candidate
+    return None
 
 
 @router.get("/live", response_class=HTMLResponse)
@@ -755,7 +822,7 @@ templates.env.globals["TOGGLEABLE"] = TOGGLEABLE
 
 @router.post("/flag/{name}", response_class=HTMLResponse)
 def toggle_flag(request: Request, name: str, lane: str = Form("all"),
-                q: str = Form(""), shorts: int = Form(0)):
+                q: str = Form(""), show_all: int = Form(0, alias="all")):
     """Flip a runtime flag for this process, and re-render what it governs.
 
     Deliberately not persisted: the durable setting is the environment variable.
@@ -778,12 +845,12 @@ def toggle_flag(request: Request, name: str, lane: str = Form("all"),
 
         set_polling(config.SCHEDULER_ENABLED)
     return templates.TemplateResponse(
-        request, "partials/advanced.html", _advanced_view(lane, q, bool(shorts)),
+        request, "partials/advanced.html", _advanced_view(lane, q, bool(show_all)),
         headers={"HX-Trigger": "gate-changed"},
     )
 
 
-def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dict:
+def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> dict:
     """Context for the Advanced panel: the flags, and everything not on the channel."""
     from . import gitops
     from .pipeline.runner import last_rebuild, queue_depth
@@ -800,9 +867,13 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
                   if heysummit.read_catalog() else [])
     return {
         "heysummit_candidates": candidates,
+        # A row and a channel video that may be one talk: too weak to link on
+        # their own, each opens a drawer with a "Same talk?" button.
+        "video_candidates": (heysummit.link_videos(write=False)["candidates"]
+                             if heysummit.read_catalog() else []),
         "lane": lane or "all",
         "query": q or "",
-        "shorts": shorts,
+        "show_all": show_all,
         # Keyed by flag name so the switches can be rendered from TOGGLEABLE
         # alone. Reading them positionally meant a third flag silently drew the
         # second one's state.
@@ -843,13 +914,13 @@ def _advanced_view(lane: str | None, q: str | None, shorts: bool = False) -> dic
 
 @router.get("/advanced", response_class=HTMLResponse)
 def advanced(request: Request, lane: str | None = None, q: str | None = None,
-             shorts: int = 0, body: int = 0):
+             show_all: int = Query(0, alias="all"), body: int = 0):
     """Everything an admin needs occasionally and should not be shown constantly.
 
     Rendered into the drawer shell, which is generic — only #drawer-body is ever
     swapped, so the open animation is not replayed by a refresh.
     """
-    ctx = _advanced_view(lane, q, bool(shorts))
+    ctx = _advanced_view(lane, q, bool(show_all))
     template = "partials/advanced.html" if body else "partials/advanced_drawer.html"
     return templates.TemplateResponse(request, template, ctx)
 
@@ -916,7 +987,8 @@ def refresh(request: Request, background: BackgroundTasks):
 
 
 @router.post("/video/{key}/attach", response_class=HTMLResponse)
-def attach_video(request: Request, key: str, video: str = Form("")):
+def attach_video(request: Request, key: str, video: str = Form(""),
+                 ingest: int = Form(1)):
     """Give a talk HeySummit seeded the channel video that is it, then ingest.
 
     The automatic join is by title and speaker, and a video whose title strays
@@ -959,7 +1031,10 @@ def attach_video(request: Request, key: str, video: str = Form("")):
         return refuse("That video is a Short or teaser; the talk itself is a longer video.")
 
     update_row(state.talk_id, {"Video": f"https://www.youtube.com/watch?v={video_id}"})
-    queue_videos([video_id])
+    # "Same talk?" only joins the two: whether to spend an LLM call on the
+    # video is the backlog's question, asked on its own.
+    if ingest:
+        queue_videos([video_id])
     return video_detail(request, state.talk_id, body=1, with_row=True)
 
 
@@ -994,6 +1069,7 @@ def heysummit_sync(request: Request):
         f'<span class="note">{refreshed} {summary["attached"]} newly matched, blanks '
         f'filled on {summary["filled"]} talks, {summary["seeded"]} new talks seeded '
         f'({len(summary["linked_videos"])} linked to a channel video), '
+        f'{len(summary.get("videos_linked", {}))} earlier talks joined to their video, '
         f'{summary["claimed"]} transcripts on disk claimed, {summary["unmatched"]} '
         f'rows with no match.'
         + (f' Possibly already a row, so not seeded: {candidates}.' if candidates else "")
@@ -1011,6 +1087,34 @@ def rebuild(request: Request):
     result = rebuild_graph()
     css = "note" if result.ok else "note err"
     return HTMLResponse(f'<span class="{css}">{result.message}</span>')
+
+
+@router.post("/gemini/check", response_class=HTMLResponse)
+def gemini_check(request: Request):
+    """Ask the tagging model a few times, without retries, and say how it went."""
+    from .sources import gemini_check as gc
+
+    result = gc.check()
+    if result["verdict"] == "unconfigured":
+        return HTMLResponse(f'<span class="note err">Cannot test Gemini: '
+                            f'{escape(result["detail"])}.</span>')
+    headline = {
+        "stable": "Gemini is answering normally",
+        "unstable": "Gemini is unstable — an ingestion now may need its retries, or fail",
+        "down": "Gemini is not answering — tag extraction would fail now; try later",
+    }[result["verdict"]]
+    lines = "".join(
+        f'<li>{escape(gc.KINDS[a["kind"]])}'
+        + (f' ({a["status"]})' if a["status"] and a["kind"] == "error" else "")
+        + f' · {a["ms"] / 1000:.1f} s'
+        + (f' <span class="muted">{escape(a["detail"])}</span>' if a["detail"] else "")
+        + '</li>'
+        for a in result["attempts"])
+    css = {"stable": "note", "unstable": "note warn", "down": "note err"}[result["verdict"]]
+    return HTMLResponse(
+        f'<span class="{css} gemini-check"><strong>{headline}.</strong> '
+        f'<code>{escape(result["model"])}</code>, {len(result["attempts"])} requests '
+        f'without retries:<ol>{lines}</ol></span>')
 
 
 @router.get("/snapshots", response_class=HTMLResponse)
