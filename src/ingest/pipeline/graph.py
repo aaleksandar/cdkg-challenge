@@ -22,6 +22,7 @@ import sys
 from pathlib import Path
 
 from .. import config
+from ..files import write_atomic
 
 log = logging.getLogger(__name__)
 
@@ -48,14 +49,19 @@ def _script_env(db_path: Path) -> dict:
 def _run_script(name: str, db_path: Path) -> tuple[bool, str]:
     # cwd is where the *code* lives (the image, in production), not the data
     # working copy — see config.PIPELINE_SCRIPTS_DIR.
-    result = subprocess.run(
-        [sys.executable, name],
-        cwd=str(config.PIPELINE_SCRIPTS_DIR),
-        env=_script_env(db_path),
-        capture_output=True,
-        text=True,
-        timeout=1800,
-    )
+    try:
+        result = subprocess.run(
+            [sys.executable, name],
+            cwd=str(config.PIPELINE_SCRIPTS_DIR),
+            env=_script_env(db_path),
+            capture_output=True,
+            text=True,
+            timeout=1800,
+        )
+    except subprocess.TimeoutExpired:
+        # A failed build like any other: rebuild_graph clears the scratch copy
+        # and the live graph stays as it was.
+        return False, f"{name} did not finish within 30 minutes"
     if result.returncode != 0:
         tail = (result.stderr or result.stdout or "").strip().splitlines()
         return False, f"{name} failed: {tail[-1] if tail else 'no output'}"
@@ -220,12 +226,8 @@ def swap_in(build_path: Path, counts: dict) -> None:
     # moves the benchmark by whole points: "which model built this graph" has to
     # be answerable from the graph itself, not inferred from a deploy date.
     version_file = live.parent / ".graph-version"
-    version_file.write_text(
-        json.dumps(
-            {"built_at": now(), "counts": counts, "model": tag_model()}, indent=2
-        ),
-        encoding="utf-8",
-    )
+    write_atomic(version_file, json.dumps(
+        {"built_at": now(), "counts": counts, "model": tag_model()}, indent=2))
 
     _clear(previous)
 

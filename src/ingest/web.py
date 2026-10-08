@@ -10,6 +10,7 @@ from fastapi.templating import Jinja2Templates
 from markupsafe import Markup, escape
 
 from . import config, db, reconcile as R
+from .files import write_atomic
 from . import spend
 from .sources import youtube
 from .model import api_key_hint, tag_model
@@ -166,6 +167,10 @@ FAILURE_ADVICE = {
     "publish_error": ("The talk is in the graph on this server but not yet on GitHub, so it "
                       "is not durable until this is fixed. Every earlier stage skips on a "
                       "re-run, so \"Run the pipeline again\" retries only the publish."),
+    "title_collision": ("Transcripts, their text and their tags are filed under the talk's "
+                        "short title, and another talk already has this one. Running it "
+                        "anyway would give this talk the other's transcript and tags. "
+                        "Rename one of the two talks in the repository, then run it again."),
 }
 
 
@@ -196,7 +201,7 @@ def failure_of(run: dict | None) -> dict | None:
             "message": stage.get("message") or "",
             "detail": detail.get("failure_detail"),
             "advice": FAILURE_ADVICE.get(kind),
-            "can_upload": stage["stage"] == "transcript_download",
+            "can_upload": stage["stage"] == "transcript_download" and kind != "title_collision",
             # What each caption source said, in the order asked; shown when a
             # credit was spent or refused after the free path had already failed.
             "attempts": detail.get("caption_attempts") or [],
@@ -729,8 +734,16 @@ async def upload_transcript(request: Request, video_id: str, captions: UploadFil
         return refuse(f"Only {words} words of captions were read from that file; "
                       f"it does not look like a transcript.")
 
-    destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(text, encoding="utf-8")
+    owner = stages.transcript_owner(destination, video_id)
+    if owner:
+        return refuse(f"Another talk's transcript already has this name "
+                      f"({owner.get('Title')}); two talks share the title "
+                      f"{parsed.talk_title!r}, and it needs a distinct title first.")
+    if destination.exists() and destination.read_text(encoding="utf-8") != text:
+        # New captions for the same talk: what was extracted from the old ones
+        # would otherwise be reused, and the upload would never reach the graph.
+        stages.forget_derived(destination)
+    write_atomic(destination, text)
     queue_videos([video_id])
     return video_detail(request, state.key, body=1, with_row=True)
 
@@ -933,12 +946,7 @@ def graph_add(request: Request):
             '<span class="note err">Graph writes are paused. Resume them under '
             'Advanced.</span>'
         )
-    from .pipeline.graph import rebuild_graph
-
-    result = rebuild_graph()
-    return HTMLResponse(
-        f'<span class="note{"" if result.ok else " err"}">{escape(result.message)}</span>'
-    )
+    return _rebuild_queued()
 
 
 def _backfill_then_ingest() -> None:
@@ -1082,11 +1090,23 @@ def heysummit_sync(request: Request):
 @router.post("/rebuild", response_class=HTMLResponse)
 def rebuild(request: Request):
     """Rebuild the graph from what is already on disk. No network, no LLM."""
-    from .pipeline.graph import rebuild_graph
+    if not config.KG_ENABLED:
+        return HTMLResponse('<span class="note err">Graph writes are paused. Resume them '
+                            'under Advanced.</span>')
+    return _rebuild_queued()
 
-    result = rebuild_graph()
-    css = "note" if result.ok else "note err"
-    return HTMLResponse(f'<span class="{css}">{escape(result.message)}</span>')
+
+def _rebuild_queued() -> HTMLResponse:
+    """A rebuild is queued behind any run in flight, never run on this thread:
+    two builds share one scratch path, and a rebuild beside an ingestion could
+    swap in a graph built from half-written files."""
+    from .pipeline.runner import queue_depth, request_rebuild
+
+    request_rebuild()
+    busy = queue_depth() or bool(db.active_runs())
+    when = "after the ingestion in progress" if busy else "now"
+    return HTMLResponse(f'<span class="note">Rebuild queued; it runs {when}. Its result '
+                        f'appears under Advanced as "Last graph rebuild".</span>')
 
 
 @router.post("/gemini/check", response_class=HTMLResponse)

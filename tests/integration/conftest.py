@@ -110,16 +110,7 @@ class Sandbox:
     def drain(self) -> None:
         """Empty the worker's queue on this thread, the way the worker does."""
         while not runner._queue.empty():
-            item = runner._queue.get()
-            try:
-                if item is None:
-                    runner._rebuild_pending = True
-                else:
-                    runner._execute(*item)
-            finally:
-                runner._queue.task_done()
-            if runner._rebuild_pending and runner._queue.empty():
-                runner._rebuild_now()
+            runner.process_one(runner._queue.get())
 
     def counts(self) -> dict:
         return graph.graph_counts(config.GRAPH_DB_PATH)
@@ -169,6 +160,7 @@ def sandbox(monkeypatch, tmp_path):
     monkeypatch.setattr(runner, "ensure_worker", lambda: None)
     monkeypatch.setattr(runner, "_rebuild_pending", False)
     monkeypatch.setattr(runner, "_last_rebuild", None)
+    monkeypatch.setattr(runner, "_pending", {})
     assert runner._queue.empty()
 
     videos: dict[str, dict] = {}

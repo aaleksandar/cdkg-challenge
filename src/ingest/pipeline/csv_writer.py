@@ -19,13 +19,15 @@ keep their edits from colliding:
 from __future__ import annotations
 
 import csv
+import io
 import secrets
 import threading
 from pathlib import Path
 
 from .. import config, reconcile
+from ..files import write_atomic
 
-_write_lock = threading.Lock()
+_write_lock = threading.RLock()
 
 # The canonical column order. Read from the file so a curator adding a column
 # does not silently shift every appended row.
@@ -246,35 +248,33 @@ def _patch(row: dict, fields: dict[str, str], columns: list[str],
 
 
 def _write_table(csv_path: Path, columns: list[str], rows: list[dict]) -> None:
-    """Rewrite through a temporary file, so an interrupted write cannot truncate."""
-    temporary = csv_path.with_suffix(".csv.tmp")
-    with open(temporary, "w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
-        writer.writeheader()
-        writer.writerows(rows)
-    temporary.replace(csv_path)
+    """Rewrite the whole file atomically."""
+    out = io.StringIO()
+    writer = csv.DictWriter(out, fieldnames=columns, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    write_atomic(csv_path, out.getvalue())
 
 
 def _append(csv_path: Path, columns: list[str], rows: list[dict]) -> None:
-    """Append rows to the file. The caller holds ``_write_lock``."""
-    is_new_file = not csv_path.exists()
-    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    """Append rows to the file. The caller holds ``_write_lock``.
 
+    Through a whole-file atomic write rather than an append: a row cut off by a
+    crash would leave a quote open, and the CSV reader would then fold every
+    later row into one field. The file is a few megabytes and appends are rare.
+    """
+    # Bytes, decoded without newline translation: existing rows stay byte-identical.
+    existing = csv_path.read_bytes().decode("utf-8") if csv_path.exists() else ""
     # A file whose last line lacks a newline would otherwise splice the new
     # row onto the previous one.
-    if not is_new_file and csv_path.stat().st_size:
-        with open(csv_path, "rb") as handle:
-            handle.seek(-1, 2)
-            needs_newline = handle.read(1) != b"\n"
-        if needs_newline:
-            with open(csv_path, "a", encoding="utf-8", newline="") as handle:
-                handle.write("\n")
-
-    with open(csv_path, "a", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=columns, lineterminator="\n")
-        if is_new_file:
-            writer.writeheader()
-        writer.writerows(rows)
+    if existing and not existing.endswith("\n"):
+        existing += "\n"
+    out = io.StringIO()
+    writer = csv.DictWriter(out, fieldnames=columns, lineterminator="\n")
+    if not existing:
+        writer.writeheader()
+    writer.writerows(rows)
+    write_atomic(csv_path, existing + out.getvalue())
 
 
 def append_rows(rows: list[dict], csv_path: Path | None = None) -> list[str]:

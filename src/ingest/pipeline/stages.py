@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .. import config
+from ..files import write_atomic
 from .. import spend
 from ..model import tag_model
 from ..sources import parser, speaker_llm, supadata, youtube
@@ -57,6 +58,41 @@ def transcript_path(event: str | None, title: str) -> Path:
     return config.TRANSCRIPTS_DIR / folder / "Presentations" / f"{safe_filename(title)}.srt"
 
 
+def transcript_owner(path: Path, video_id: str) -> dict | None:
+    """The CSV row of *another* video whose transcript shares this one's name.
+
+    Transcripts, their text in data/ and their tags in entities.json are all
+    keyed by the file's stem, and the stem is the talk's short title. Two talks
+    called "Opening Keynote" would therefore share one transcript and one set
+    of tags, each step reporting "already done". A row with no video is not an
+    owner: that is a talk this video may be about to join.
+    """
+    from ..reconcile import extract_video_id
+    from .csv_writer import read_rows
+
+    if not config.METADATA_CSV.exists():
+        return None
+    for row in read_rows(config.METADATA_CSV):
+        name = (row.get("File") or "").strip()
+        if not name or Path(name).stem != path.stem:
+            continue
+        other = extract_video_id(row.get("Video") or "")
+        if other and other != video_id:
+            return row
+    return None
+
+
+def forget_derived(srt_path: Path) -> None:
+    """Drop the text and tags extracted from a transcript that was replaced,
+    so the next run extracts them from the new one instead of reusing them."""
+    (config.DATA_DIR / f"{srt_path.stem}.txt").unlink(missing_ok=True)
+    if config.ENTITIES_JSON.exists():
+        entities = json.loads(config.ENTITIES_JSON.read_text(encoding="utf-8"))
+        kept = [e for e in entities if e.get("filename") != f"{srt_path.stem}.txt"]
+        if len(kept) != len(entities):
+            write_atomic(config.ENTITIES_JSON, json.dumps(kept, indent=2, ensure_ascii=False))
+
+
 def csv_file_reference(path: Path) -> str:
     """The `/Transcripts/...` form the metadata CSV's File column uses.
 
@@ -90,7 +126,7 @@ def load_info(video_id: str) -> tuple[dict, str]:
         raise StageSkipped("A premiere that has not aired: no captions yet")
     info = youtube.trim_info(info)
     config.INGEST_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-    cache_path.write_text(json.dumps(info, indent=2, ensure_ascii=False), encoding="utf-8")
+    write_atomic(cache_path, json.dumps(info, indent=2, ensure_ascii=False))
     return info, "youtube"
 
 
@@ -166,6 +202,14 @@ def stage_transcript_download(ctx: dict) -> StageResult:
     # neither the speaker nor the event nor the promo hashtags.
     destination = transcript_path(parsed.event, parsed.talk_title)
 
+    owner = transcript_owner(destination, video_id)
+    if owner:
+        return StageResult(False, (
+            f"Another talk's transcript already has this name: {owner.get('Title')!r} "
+            f"({owner.get('Video')}). Two talks share the title {parsed.talk_title!r}, and "
+            f"reusing that file would give this talk the other's text and tags. It needs "
+            f"a distinct title before it can be ingested."),
+            {"failure_kind": "title_collision"})
     if destination.exists():
         return StageResult(True, f"Already on disk: {destination.name}",
                            {"srt_path": destination, "caption_source": "upload"})
@@ -287,7 +331,7 @@ def stage_transcript_extraction(ctx: dict) -> StageResult:
     if words < 20:
         return StageResult(False, f"Extracted only {words} words — captions look empty")
 
-    txt_path.write_text(text, encoding="utf-8")
+    write_atomic(txt_path, text)
     return StageResult(True, f"Extracted {words:,} words", {"txt_path": txt_path})
 
 
@@ -341,9 +385,7 @@ def stage_tag_extraction(ctx: dict) -> StageResult:
         txt_path.read_text(encoding="utf-8")
     ).tag
     entities.append({"filename": txt_path.name, "entities": {"tag": tags}})
-    config.ENTITIES_JSON.write_text(
-        json.dumps(entities, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
+    write_atomic(config.ENTITIES_JSON, json.dumps(entities, indent=2, ensure_ascii=False))
     return StageResult(True, f"Extracted {len(tags)} tags",
                        {"tags": tags, "model": tag_model(),
                         **spend.usage_of(collector)})

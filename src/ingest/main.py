@@ -75,19 +75,30 @@ async def lifespan(app: FastAPI):
     # A rebuilt server's fresh clone is at main; the talks published before it
     # are on the ingest branch. Adopting that history while the tree is clean
     # is free; doing it at the first publish, over a talk's files, is a merge.
+    #
+    # In the background: it talks to GitHub (a token, then up to three git
+    # calls), and the deploy's health check must not wait on that. A graph
+    # written by an older engine cannot be opened, and the app is down until
+    # it is rebuilt, so the check follows — after the adoption, so the rebuild
+    # reads the published history.
+    import threading
+
+    threading.Thread(target=_prepare_working_copy, name="boot-prepare", daemon=True).start()
+    yield
+    scheduler.shutdown()
+
+
+def _prepare_working_copy() -> None:
     from . import gitops
+    from .pipeline.graph import ensure_readable_graph
 
     note = gitops.adopt_published_history()
     if note:
         log.info(note)
-    # A graph written by an older engine cannot be opened; the app is down
-    # until it is rebuilt, so this does not wait for someone to press a button.
-    # After the adoption above, so the rebuild reads the published history.
-    from .pipeline.graph import ensure_readable_graph
-
-    ensure_readable_graph()
-    yield
-    scheduler.shutdown()
+    try:
+        ensure_readable_graph()
+    except Exception:  # noqa: BLE001 — logged; the panel's rebuild button remains
+        log.exception("Could not check the live graph at boot")
 
 
 app = FastAPI(title="CDKG Ingestion", lifespan=lifespan, docs_url=None,

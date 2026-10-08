@@ -1167,7 +1167,7 @@ def test_refreshing_the_channel_ingests_a_premiere_the_backfill_found_aired(clie
     monkeypatch.setattr(youtube, "backfill_metadata", lambda: {
         "resolved": 1, "fetched": 1, "remaining": 0, "aired": ["tAPqdlsuJYg"]})
     ingested = []
-    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    monkeypatch.setattr("ingest.pipeline.runner.enqueue", ingested.append)
 
     assert client.post("/refresh").status_code == 200     # background tasks run before it returns
     assert ingested == ["tAPqdlsuJYg"]

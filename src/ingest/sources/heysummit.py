@@ -24,11 +24,13 @@ import html
 import json
 import logging
 import re
+import threading
 from datetime import datetime
 
 import httpx
 
 from .. import config
+from ..files import write_atomic
 from .. import reconcile
 from ..pipeline import csv_writer
 from . import evidence, matching, parser
@@ -117,9 +119,15 @@ def refresh_catalog() -> int:
         talks = [trim_talk(t) for event_id in EVENTS
                  for t in _pages(client, f"{API}/events/{event_id}/talks/") if is_talk(t)]
     talks.sort(key=lambda t: t["id"])
-    config.HEYSUMMIT_CATALOG.parent.mkdir(parents=True, exist_ok=True)
-    config.HEYSUMMIT_CATALOG.write_text(
-        json.dumps(talks, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    # An answer that lost most of the programme is an API hiccup, not the
+    # conference cancelling its talks: keep the catalogue on disk, which the
+    # next publish would otherwise commit as hundreds of deleted talks.
+    before = len(read_catalog() or [])
+    if before and len(talks) < before // 2:
+        raise RuntimeError(f"HeySummit returned {len(talks)} talks where the catalogue "
+                           f"holds {before}; keeping the catalogue on disk")
+    write_atomic(config.HEYSUMMIT_CATALOG,
+                 json.dumps(talks, indent=1, ensure_ascii=False) + "\n")
     return len(talks)
 
 
@@ -530,6 +538,9 @@ def claim_transcripts(csv_path=None) -> dict:
     return {"claimed": len(claimed), "claimed_files": claimed}
 
 
+_sync_lock = threading.Lock()
+
+
 def sync(refresh: bool = True, csv_path=None) -> dict:
     """Everything HeySummit has to say about the CSV, in one call.
 
@@ -553,11 +564,15 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
         summary["changed"] = False
         return summary
 
-    seeded = seed(csv_path)
-    # Before the transcripts: a row that gains its video here can then claim
-    # the transcript that video's run left on disk.
-    videos = link_videos(csv_path)
-    claimed = claim_transcripts(csv_path)
+    # One sync at a time (the timer and the button), and no CSV write from a
+    # run while it decides: each step reads the rows, decides, then writes,
+    # and a row appended in between would be seeded a second time.
+    with _sync_lock, csv_writer._write_lock:
+        seeded = seed(csv_path)
+        # Before the transcripts: a row that gains its video here can then
+        # claim the transcript that video's run left on disk.
+        videos = link_videos(csv_path)
+        claimed = claim_transcripts(csv_path)
     summary.update({k: v for k, v in seeded.items() if k not in {"candidate_ids", "issues"}})
     summary["videos_linked"] = videos["linked"]
     summary.update(claimed)

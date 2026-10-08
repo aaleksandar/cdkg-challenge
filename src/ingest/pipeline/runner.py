@@ -38,6 +38,12 @@ _worker_lock = threading.Lock()
 _rebuild_pending = False
 _last_rebuild: dict | None = None
 
+# Videos accepted and not yet finished, with their run. The poll and a
+# "Refresh channel" can both see the same premiere air; the second asks for a
+# run that already exists and gets that one back instead of a duplicate.
+_pending: dict[str, int] = {}
+_pending_lock = threading.Lock()
+
 # Values worth keeping in the stage record. Everything else in a StageResult is
 # an internal path object or a large blob.
 _DETAIL_KEYS = {
@@ -87,31 +93,47 @@ def ensure_worker() -> None:
 
 
 def _drain() -> None:
-    global _rebuild_pending
     while True:
-        item = _queue.get()
-        try:
-            if item is None:
-                _rebuild_pending = True
-            else:
-                run_id, video_id = item
-                try:
-                    _execute(run_id, video_id)
-                except Exception:
-                    log.exception("Run %s for %s crashed", run_id, video_id)
-                    db.finish_run(run_id, "failed", traceback.format_exc(limit=3))
-        finally:
-            _queue.task_done()
+        process_one(_queue.get())
 
-        # The coalescing point: everything queued has now been done, so the one
-        # rebuild that all of it was waiting for can run.
-        if _rebuild_pending and _queue.empty():
-            _rebuild_now()
+
+def process_one(item: tuple[int, str] | None) -> None:
+    """Handle one item taken off the queue, as the worker does. The integration
+    tests drain the queue on their own thread through this, not a copy of it."""
+    global _rebuild_pending
+    try:
+        if item is None:
+            _rebuild_pending = True
+        else:
+            run_id, video_id = item
+            try:
+                _execute(run_id, video_id)
+            except Exception:
+                log.exception("Run %s for %s crashed", run_id, video_id)
+                db.finish_run(run_id, "failed", traceback.format_exc(limit=3))
+            finally:
+                with _pending_lock:
+                    _pending.pop(video_id, None)
+    finally:
+        _queue.task_done()
+
+    # The coalescing point: everything queued has now been done, so the one
+    # rebuild that all of it was waiting for can run.
+    if _rebuild_pending and _queue.empty():
+        _rebuild_now()
 
 
 def enqueue(video_id: str) -> int:
-    """Accept a video for ingestion. Returns the run id, visible immediately."""
-    run_id = db.start_run(video_id, STAGE_ORDER, status="queued")
+    """Accept a video for ingestion. Returns the run id, visible immediately.
+
+    Every run goes through here and is executed by the one worker thread. A
+    video already queued or running is not queued twice; its run is returned.
+    """
+    with _pending_lock:
+        if video_id in _pending:
+            return _pending[video_id]
+        run_id = db.start_run(video_id, STAGE_ORDER, status="queued")
+        _pending[video_id] = run_id
     ensure_worker()
     _queue.put((run_id, video_id))
     return run_id
@@ -227,6 +249,7 @@ def _execute(run_id: int, video_id: str) -> None:
 
 
 def run_pipeline(video_id: str) -> None:
-    """Run one video to completion on the calling thread (scheduler, tests)."""
+    """Run one video to completion on the calling thread. For tests only: in
+    the service every run is queued, so the worker is the only writer."""
     run_id = db.start_run(video_id, STAGE_ORDER, status="queued")
     _execute(run_id, video_id)

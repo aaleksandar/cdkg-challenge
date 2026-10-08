@@ -119,6 +119,7 @@ def test_a_seeded_talk_gets_its_transcript_the_poll_after_its_premiere_airs(sand
     # Over by the next one: the run happens on its own.
     sb.videos["ccccccccccc"]["live_status"] = "not_live"
     scheduler.poll_for_new_videos()
+    sb.drain()      # the poll queues the run; the worker runs it
     run = db.latest_run_for("ccccccccccc")
 
     assert run["status"] == "completed", run

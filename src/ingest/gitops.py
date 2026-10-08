@@ -34,6 +34,7 @@ last talk ride along in the CSV, as they did in the hand-made history.
 
 from __future__ import annotations
 
+import logging
 import os
 import subprocess
 import threading
@@ -46,6 +47,7 @@ import jwt
 from . import config
 
 API = "https://api.github.com"
+log = logging.getLogger("ingest.gitops")
 
 # Git operations mutate the shared working copy; never two at once.
 _git_lock = threading.Lock()
@@ -180,7 +182,12 @@ def ensure_ingest_branch(token: str) -> None:
             return
         except GitOpsError:      # uncommitted work in the way; keep it
             pass
-    git("checkout", "-B", config.GITHUB_INGEST_BRANCH, token=token)
+    if _ref_exists(f"refs/heads/{config.GITHUB_INGEST_BRANCH}", token):
+        # Switch to it, never reset it: -B here would point the branch at HEAD
+        # and orphan any commit on it that was not pushed yet.
+        git("checkout", config.GITHUB_INGEST_BRANCH, token=token)
+        return
+    git("checkout", "-b", config.GITHUB_INGEST_BRANCH, token=token)
 
 
 def adopt_published_history() -> str | None:
@@ -207,9 +214,9 @@ def _merge(ref: str, what: str, token: str) -> None:
     no conflict at all to the data: the metadata CSV is keyed by TalkID and
     ``entities.json`` by filename, and both sides simply added entries. Those
     two files — the ones every publish and every curation touch — are merged
-    as a union, GitHub's version of a shared entry winning because a curator's
-    edit there was a decision. Anything else that conflicts aborts the merge
-    with the files named; the commit stays, and the next publish tries again.
+    entry by entry against their common ancestor (``_merge_entries``). Anything
+    else that conflicts aborts the merge with the files named; the commit
+    stays, and the next publish tries again.
     """
     try:
         git("merge", "--no-edit", ref, token=token)
@@ -236,12 +243,12 @@ def _merge(ref: str, what: str, token: str) -> None:
 
 
 def _resolve_by_key(path: str, token: str) -> bool:
-    """Union-merge one conflicted append-only file; False when it is not one."""
+    """Merge one conflicted keyed file entry by entry; False when it is not one."""
     full = config.REPO_ROOT / path
     if full == config.METADATA_CSV:
-        key, merge = "TalkID", _union_csv
+        key, merge = "TalkID", _merge_csv
     elif full == config.ENTITIES_JSON:
-        key, merge = "filename", _union_json
+        key, merge = "filename", _merge_json
     else:
         return False
     try:
@@ -249,37 +256,76 @@ def _resolve_by_key(path: str, token: str) -> bool:
         theirs = git("show", f":3:{path}", token=token)
     except GitOpsError:      # added on one side only, or deleted: not ours to decide
         return False
-    full.write_text(merge(ours, theirs, key), encoding="utf-8")
+    try:
+        base = git("show", f":1:{path}", token=token)
+    except GitOpsError:      # both sides created the file: no common ancestor
+        base = ""
+    from .files import write_atomic
+    from .pipeline import csv_writer
+
+    # Under the CSV's lock: a curation or a sync writing the same file while
+    # the merge does would lose one of the two.
+    with csv_writer._write_lock:
+        write_atomic(full, merge(base, ours, theirs, key))
     git("add", "--", path, token=token)
     return True
 
 
-def _union_csv(ours: str, theirs: str, key: str) -> str:
+def _merge_entries(base: list[dict], ours: list[dict], theirs: list[dict],
+                   key: str) -> list[dict]:
+    """A three-way merge of keyed entries, the way git merges lines.
+
+    Changed on one side only: that side. Changed on both: GitHub's, because an
+    edit there was a curator's decision (logged). Deleted on one side and left
+    alone on the other: deleted. A plain union cannot tell "deleted there"
+    from "added here", and would bring back every row removed on main. An
+    entry without a key is matched on its whole content.
+    """
+    def ident(entry: dict) -> str:
+        return entry.get(key) or repr(sorted(entry.items()))
+
+    b = {ident(e): e for e in base}
+    o = {ident(e): e for e in ours}
+    t = {ident(e): e for e in theirs}
+    merged = []
+    for k in list(t) + [k for k in o if k not in t]:
+        mine, other, was = o.get(k), t.get(k), b.get(k)
+        if mine is not None and other is not None:
+            if mine != other and mine != was and other != was:
+                log.warning("Both sides changed %s %s; GitHub's version kept", key, k)
+            merged.append(mine if other == was else other)
+        elif other is not None:
+            if was is None or other != was:      # added there, or edited there
+                merged.append(other)
+        elif mine is not None:
+            if was is None or mine != was:       # added here, or edited here
+                merged.append(mine)
+    return merged
+
+
+def _merge_csv(base: str, ours: str, theirs: str, key: str) -> str:
     import csv
     import io
 
-    def rows(text):
+    def table(text):
         reader = csv.DictReader(io.StringIO(text))
-        return reader.fieldnames or [], list(reader)
+        return list(reader.fieldnames or []), list(reader)
 
-    columns, mine = rows(ours)
-    their_columns, other = rows(theirs)
-    columns = their_columns or columns
-    seen = {r.get(key) for r in other}
+    _, base_rows = table(base)
+    our_columns, mine = table(ours)
+    their_columns, other = table(theirs)
+    columns = their_columns + [c for c in our_columns if c not in their_columns]
     out = io.StringIO()
-    writer = csv.DictWriter(out, fieldnames=columns, lineterminator="\n", extrasaction="ignore")
+    writer = csv.DictWriter(out, fieldnames=columns, lineterminator="\n", restval="")
     writer.writeheader()
-    writer.writerows(other)
-    writer.writerows(r for r in mine if r.get(key) not in seen)
+    writer.writerows(_merge_entries(base_rows, mine, other, key))
     return out.getvalue()
 
 
-def _union_json(ours: str, theirs: str, key: str) -> str:
+def _merge_json(base: str, ours: str, theirs: str, key: str) -> str:
     import json
 
-    mine, other = json.loads(ours), json.loads(theirs)
-    seen = {e.get(key) for e in other}
-    merged = other + [e for e in mine if e.get(key) not in seen]
+    merged = _merge_entries(json.loads(base or "[]"), json.loads(ours), json.loads(theirs), key)
     return json.dumps(merged, indent=2, ensure_ascii=False)   # as the stage writes it
 
 
