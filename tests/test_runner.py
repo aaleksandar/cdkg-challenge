@@ -144,7 +144,7 @@ def test_a_first_poll_catalogues_but_does_not_auto_ingest(state, monkeypatch):
     monkeypatch.setattr("ingest.sources.youtube.poll_rss",
                         lambda: {"fetched": 2, "new": 2, "new_ids": ["a", "b"]})
     ingested = []
-    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    monkeypatch.setattr("ingest.pipeline.runner.enqueue", ingested.append)
 
     scheduler.poll_for_new_videos()          # inventory empty
     assert ingested == []
@@ -183,7 +183,7 @@ def test_a_newly_published_short_is_never_auto_ingested(state, monkeypatch):
         "upload_date": "20260901", "live_status": "not_live",
     })
     ingested = []
-    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    monkeypatch.setattr("ingest.pipeline.runner.enqueue", ingested.append)
 
     scheduler.poll_for_new_videos()
 
@@ -212,7 +212,7 @@ def test_a_premiere_that_has_not_aired_is_not_auto_ingested(state, monkeypatch):
         "id": vid, "duration": None, "live_status": "is_upcoming",
     })
     ingested = []
-    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    monkeypatch.setattr("ingest.pipeline.runner.enqueue", ingested.append)
 
     scheduler.poll_for_new_videos()
     assert ingested == []
@@ -320,7 +320,7 @@ def _auto(monkeypatch):
     db.upsert_videos([{"video_id": "known", "title": "Known", "url": "u",
                        "live_status": "not_live", "published_at": "2026-01-01T00:00:00Z"}])
     ingested = []
-    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    monkeypatch.setattr("ingest.pipeline.runner.enqueue", ingested.append)
     return ingested
 
 
