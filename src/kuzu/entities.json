@@ -2835,5 +2835,42 @@
         "fibo"
       ]
     }
+  },
+  {
+    "filename": "Graph Machine Learning in Practice From Fraud Analytics to GraphRAG.txt",
+    "entities": {
+      "tag": [
+        "graph machine learning",
+        "graph rag",
+        "retrieval augmented generation",
+        "oracle database",
+        "multi-model database",
+        "converged database",
+        "rdf",
+        "property graphs",
+        "pattern matching",
+        "centrality",
+        "community detection",
+        "feature engineering",
+        "neural networks",
+        "vector similarity search",
+        "vertex embeddings",
+        "random walks",
+        "word to vec",
+        "deep walk",
+        "doc to vec",
+        "graph sage",
+        "gnn explainer",
+        "lstm",
+        "named entity recognition",
+        "relationship extraction",
+        "co-reference resolution",
+        "bert",
+        "llms",
+        "sql/pgq",
+        "gql",
+        "autonomous database"
+      ]
+    }
   }
 ]
