@@ -1,0 +1,10 @@
+{
+  "id": "7qli3qZ6WtA",
+  "title": "Graph Machine Learning in Practice From Fraud Analytics to GraphRAG | Hans Viehmann | CDL24",
+  "description": "Graph Machine Learning in Practice: From Fraud Analysis to GraphRAG\n\nCombining machine learning techniques with graphs is becoming increasingly popular, not least because of the current advancements in the availability of powerful large language models (LLMs).\n\nWorkflows based on Retrieval-Augmented Generation benefit significantly from using graphs in the retrieval step, producing more accurate results while making the results more easily explainable.\n\nThat said, even without LLMs, graphs can significantly enhance machine learning models, enabling organizations to uncover hidden patterns and dependencies in data that other methods might miss.\n\nIn this talk, Hans Viehmann shares the experience from implementation projects, primarily in the financial services industry, where customers use graph pattern matching and different graph-empowered machine learning algorithms for both supervised and unsupervised learning.\n\nHe shows how these techniques are used for fraud analytics based on structured data or similarity searches in a GraphRAG scenario with text documents. The presentation covers how to prepare and model the data, review the methodology, and briefly discusses the results.\n\n--\n\nHans Viehmann. Director of Product Management, Oracle\n\nHans Viehmann is responsible for Oracle's Spatial and Graph technologies and the associated cloud services as a Director of Product Management.\n\n--\n\nWelcome to Connected Data London's #ThrowbackThursday\n\nEvery Thursday at 3pm GMT, we are releasing gems from our vault on #YouTube\n\nTune in and learn from leaders and innovators; subscribe to our channel and watch premieres as they are released!\n\n#knowledgegraph #graphdatabase #graph #AI #datascience #analytics #semtech #ontology",
+  "duration": null,
+  "upload_date": "20260423",
+  "timestamp": null,
+  "url": "https://www.youtube.com/watch?v=7qli3qZ6WtA",
+  "channel": "Connected Data"
+}

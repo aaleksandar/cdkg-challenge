@@ -1,0 +1,3120 @@
+1
+00:00:05,080 --> 00:00:08,040
+And um
+
+2
+00:00:09,600 --> 00:00:14,120
+I would now like to invite Lea Miller to
+
+3
+00:00:12,280 --> 00:00:15,960
+stage. She actually has a background in
+
+4
+00:00:14,120 --> 00:00:17,640
+philosophy, but she's been doing
+
+5
+00:00:15,960 --> 00:00:19,640
+knowledge graphs and the semantic web
+
+6
+00:00:17,640 --> 00:00:21,600
+technologies for quite some time having
+
+7
+00:00:19,640 --> 00:00:24,200
+a background at Amazon and then at
+
+8
+00:00:21,600 --> 00:00:26,440
+Bloomberg. And right now, um you're lead
+
+9
+00:00:24,200 --> 00:00:28,960
+ontologist at SAP.
+
+10
+00:00:26,440 --> 00:00:30,880
+And um we're looking forward to This is
+
+11
+00:00:28,960 --> 00:00:33,280
+going to be for those who are interested
+
+12
+00:00:30,880 --> 00:00:34,640
+coming from the LLM space and interested
+
+13
+00:00:33,280 --> 00:00:36,360
+in well
+
+14
+00:00:34,640 --> 00:00:38,760
+what how could knowledge graphs improve
+
+15
+00:00:36,360 --> 00:00:40,640
+here? This is your talk. This is going
+
+16
+00:00:38,760 --> 00:00:43,360
+to give you some practical pointers on
+
+17
+00:00:40,640 --> 00:00:45,840
+that and yeah, thank you, Lea. The stage
+
+18
+00:00:43,360 --> 00:00:45,840
+is yours.
+
+19
+00:00:46,680 --> 00:00:49,480
+Can you hear me okay? Is it close
+
+20
+00:00:48,440 --> 00:00:50,760
+enough?
+
+21
+00:00:49,480 --> 00:00:53,800
+Can you hear me?
+
+22
+00:00:50,760 --> 00:00:56,520
+Yes. No. Hello. Is this better?
+
+23
+00:00:53,800 --> 00:00:59,040
+I will keep it up as high as I can. Uh
+
+24
+00:00:56,520 --> 00:01:02,520
+okay. So, thank you all for coming. Um
+
+25
+00:00:59,040 --> 00:01:04,519
+I wanted to talk about, hopefully,
+
+26
+00:01:02,520 --> 00:01:06,800
+uh knowledge graph creation or
+
+27
+00:01:04,519 --> 00:01:10,560
+construction. So, I think this is a
+
+28
+00:01:06,800 --> 00:01:14,280
+uh a big theme um and it's a uh
+
+29
+00:01:10,560 --> 00:01:15,920
+a part of this process of uh all the new
+
+30
+00:01:14,280 --> 00:01:17,480
+um LLM
+
+31
+00:01:15,920 --> 00:01:20,520
+uh innovations with graph rag or
+
+32
+00:01:17,480 --> 00:01:21,880
+text-to-query. So, everyone uh even even
+
+33
+00:01:20,520 --> 00:01:24,320
+before that, but especially now,
+
+34
+00:01:21,880 --> 00:01:26,520
+developers are coming to our team
+
+35
+00:01:24,320 --> 00:01:28,000
+uh asking about uh knowledge graphs and
+
+36
+00:01:26,520 --> 00:01:30,000
+how to incorporate it into their LLM
+
+37
+00:01:28,000 --> 00:01:31,040
+pipeline for whatever they're trying to
+
+38
+00:01:30,000 --> 00:01:32,880
+solve.
+
+39
+00:01:31,040 --> 00:01:35,840
+And so, I wanted to talk about this bit
+
+40
+00:01:32,880 --> 00:01:39,400
+of it that's uh still a very We're
+
+41
+00:01:35,840 --> 00:01:41,680
+trying to find ways LLMs can help um
+
+42
+00:01:39,400 --> 00:01:44,720
+streamline the uh creation of knowledge
+
+43
+00:01:41,680 --> 00:01:46,880
+graphs, but it's still very much a
+
+44
+00:01:44,720 --> 00:01:47,440
+uh opaque or
+
+45
+00:01:46,880 --> 00:01:50,440
+uh
+
+46
+00:01:47,440 --> 00:01:51,960
+cumbersome process and it requires
+
+47
+00:01:50,440 --> 00:01:53,600
+people, human in the loop, and all that.
+
+48
+00:01:51,960 --> 00:01:56,640
+So, I just wanted to go through very
+
+49
+00:01:53,600 --> 00:01:59,320
+high level and very as encompassing as I
+
+50
+00:01:56,640 --> 00:02:01,680
+possibly can be without uh
+
+51
+00:01:59,320 --> 00:02:06,320
+using any tool. So, it's tool agnostic.
+
+52
+00:02:01,680 --> 00:02:08,080
+It's um use case agnostic. Uh it's not
+
+53
+00:02:06,320 --> 00:02:11,320
+saying which type of graph you should
+
+54
+00:02:08,080 --> 00:02:14,560
+use, if it's labeled property graph, uh
+
+55
+00:02:11,320 --> 00:02:16,080
+RDF, or if it's um working at Amazon and
+
+56
+00:02:14,560 --> 00:02:18,200
+Google, they have their own graph
+
+57
+00:02:16,080 --> 00:02:19,640
+structures and query languages, and I
+
+58
+00:02:18,200 --> 00:02:21,400
+think a lot of other other companies do.
+
+59
+00:02:19,640 --> 00:02:23,320
+So, it's not making a call on the type
+
+60
+00:02:21,400 --> 00:02:24,400
+of graph, either. It's just going
+
+61
+00:02:23,320 --> 00:02:26,480
+through
+
+62
+00:02:24,400 --> 00:02:28,480
+uh just the the process, what goes on,
+
+63
+00:02:26,480 --> 00:02:30,240
+and then what bits can kind of be
+
+64
+00:02:28,480 --> 00:02:32,800
+uh automated, and what's still very much
+
+65
+00:02:30,240 --> 00:02:34,800
+a manual process.
+
+66
+00:02:32,800 --> 00:02:36,360
+Uh so, first, I'll go through
+
+67
+00:02:34,800 --> 00:02:38,040
+uh what is an ontology, and what is a
+
+68
+00:02:36,360 --> 00:02:41,000
+knowledge graph, and there are many
+
+69
+00:02:38,040 --> 00:02:44,120
+definitions, so we'll uh I'll present
+
+70
+00:02:41,000 --> 00:02:45,560
+what I'm going with today. Uh and then I
+
+71
+00:02:44,120 --> 00:02:48,480
+will uh
+
+72
+00:02:45,560 --> 00:02:50,640
+look at a little bit just how I'm seeing
+
+73
+00:02:48,480 --> 00:02:53,480
+how knowledge graphs and ontologies can
+
+74
+00:02:50,640 --> 00:02:54,680
+help LLMs. So, I'm trying to be very
+
+75
+00:02:53,480 --> 00:02:57,680
+specific, not necessarily all the
+
+76
+00:02:54,680 --> 00:03:00,000
+benefits, but just looking at concretely
+
+77
+00:02:57,680 --> 00:03:03,800
+what you can add to your LLM pipeline,
+
+78
+00:03:00,000 --> 00:03:07,200
+the information to enrich it, to get um
+
+79
+00:03:03,800 --> 00:03:09,360
+more accurate responses from your um LLM
+
+80
+00:03:07,200 --> 00:03:12,800
+solution around your enterprise data, in
+
+81
+00:03:09,360 --> 00:03:14,959
+particular. So, this is very much around
+
+82
+00:03:12,800 --> 00:03:17,360
+focusing on enterprise data and
+
+83
+00:03:14,959 --> 00:03:19,560
+structured data, I think principally.
+
+84
+00:03:17,360 --> 00:03:21,560
+Uh then we'll go into the
+
+85
+00:03:19,560 --> 00:03:23,480
+uh knowledge creation uh knowledge graph
+
+86
+00:03:21,560 --> 00:03:25,680
+creation process, which is a data
+
+87
+00:03:23,480 --> 00:03:28,519
+modeling process. And we'll look at an
+
+88
+00:03:25,680 --> 00:03:31,080
+example from our open data portal at
+
+89
+00:03:28,519 --> 00:03:33,920
+S&P, called donnel.org.
+
+90
+00:03:31,080 --> 00:03:37,000
+And donnel stands is a short form for of
+
+91
+00:03:33,920 --> 00:03:38,920
+uh data unlocked is donnel.
+
+92
+00:03:37,000 --> 00:03:41,120
+And so, we'll take that example from
+
+93
+00:03:38,920 --> 00:03:43,840
+from there, and go through all the
+
+94
+00:03:41,120 --> 00:03:47,280
+steps. Then I will touch on uh
+
+95
+00:03:43,840 --> 00:03:49,840
+challenges uh that I that I faced as a
+
+96
+00:03:47,280 --> 00:03:52,400
+um an ontologist data modeler at uh
+
+97
+00:03:49,840 --> 00:03:55,240
+these organizations, and then the tips,
+
+98
+00:03:52,400 --> 00:03:58,360
+and the spoiler alert is it's all about
+
+99
+00:03:55,240 --> 00:04:00,640
+AI-ready data first before
+
+100
+00:03:58,360 --> 00:04:02,480
+thinking even about
+
+101
+00:04:00,640 --> 00:04:03,760
+knowledge graphs too much, but just the
+
+102
+00:04:02,480 --> 00:04:06,440
+general
+
+103
+00:04:03,760 --> 00:04:09,440
+getting your data AI-ready is the main
+
+104
+00:04:06,440 --> 00:04:09,440
+message here.
+
+105
+00:04:09,560 --> 00:04:12,600
+So, what is an ontology? So, in
+
+106
+00:04:11,800 --> 00:04:14,280
+philosophy, do you have any
+
+107
+00:04:12,600 --> 00:04:16,200
+philosophers?
+
+108
+00:04:14,280 --> 00:04:17,400
+Philosophy background, anyone? All
+
+109
+00:04:16,200 --> 00:04:19,160
+right.
+
+110
+00:04:17,400 --> 00:04:22,160
+So, the the concept dates back to
+
+111
+00:04:19,160 --> 00:04:24,360
+ancient Greece. So, we've got
+
+112
+00:04:22,160 --> 00:04:27,000
+we've got Plato, the the older gentleman
+
+113
+00:04:24,360 --> 00:04:29,280
+on the the left, and Aristotle
+
+114
+00:04:27,000 --> 00:04:31,680
+on the on the right there.
+
+115
+00:04:29,280 --> 00:04:33,520
+So, it later becomes a branch of
+
+116
+00:04:31,680 --> 00:04:37,800
+metaphysics within
+
+117
+00:04:33,520 --> 00:04:39,800
+within philosophy, and it's just about
+
+118
+00:04:37,800 --> 00:04:41,760
+looking at how we should be categorizing
+
+119
+00:04:39,800 --> 00:04:44,280
+things, how things are related, how we
+
+120
+00:04:41,760 --> 00:04:47,280
+should be talking about existence, and
+
+121
+00:04:44,280 --> 00:04:49,400
+it's a very fun and
+
+122
+00:04:47,280 --> 00:04:50,840
+very deep field
+
+123
+00:04:49,400 --> 00:04:54,120
+in philosophy. So, that's where that's
+
+124
+00:04:50,840 --> 00:04:55,880
+coming from. In computer science, it's a
+
+125
+00:04:54,120 --> 00:04:58,919
+formal representation of knowledge. So,
+
+126
+00:04:55,880 --> 00:05:00,520
+it's something very specific, and it's
+
+127
+00:04:58,919 --> 00:05:02,880
+defining concepts, relationships,
+
+128
+00:05:00,520 --> 00:05:04,280
+properties within a specific domain, and
+
+129
+00:05:02,880 --> 00:05:06,600
+it is machine readable. So, it's
+
+130
+00:05:04,280 --> 00:05:08,360
+something very very specific in computer
+
+131
+00:05:06,600 --> 00:05:10,040
+science.
+
+132
+00:05:08,360 --> 00:05:12,240
+From our perspective, so from a data
+
+133
+00:05:10,040 --> 00:05:14,560
+modeling perspective, an ontology is a
+
+134
+00:05:12,240 --> 00:05:18,320
+schema for a graph structure, or more
+
+135
+00:05:14,560 --> 00:05:18,320
+specifically, a knowledge graph.
+
+136
+00:05:20,200 --> 00:05:25,200
+A knowledge graph is a like a graph, but
+
+137
+00:05:22,960 --> 00:05:28,080
+it is semantically enriched is the best
+
+138
+00:05:25,200 --> 00:05:29,560
+way I can think of to describe it, where
+
+139
+00:05:28,080 --> 00:05:31,280
+we're being very explicit about
+
+140
+00:05:29,560 --> 00:05:34,640
+relationships between entities, and
+
+141
+00:05:31,280 --> 00:05:37,280
+we're just adding an enormous amount of
+
+142
+00:05:34,640 --> 00:05:40,440
+information about all of these entities
+
+143
+00:05:37,280 --> 00:05:42,520
+as opposed to just the general graph
+
+144
+00:05:40,440 --> 00:05:45,000
+node edge structure.
+
+145
+00:05:42,520 --> 00:05:48,120
+And then some common applications,
+
+146
+00:05:45,000 --> 00:05:50,560
+uh Knowledge Graph being the most famous
+
+147
+00:05:48,120 --> 00:05:53,720
+um but other uh use cases include
+
+148
+00:05:50,560 --> 00:05:55,600
+recommendations. So, IKEA uh will be
+
+149
+00:05:53,720 --> 00:05:58,560
+they'll be presenting that in the
+
+150
+00:05:55,600 --> 00:06:00,880
+the other section. Uh also voice
+
+151
+00:05:58,560 --> 00:06:03,040
+assistants use um
+
+152
+00:06:00,880 --> 00:06:05,400
+uh knowledge graphs as well. Social
+
+153
+00:06:03,040 --> 00:06:08,080
+networks and data catalogs, they have a
+
+154
+00:06:05,400 --> 00:06:10,360
+semantically enriched data catalog and
+
+155
+00:06:08,080 --> 00:06:13,040
+they're using uh this graph technology
+
+156
+00:06:10,360 --> 00:06:13,040
+to do that.
+
+157
+00:06:13,160 --> 00:06:18,240
+So, a few ways and it's cutting off a
+
+158
+00:06:15,480 --> 00:06:20,480
+little bit. Sorry about that. Um
+
+159
+00:06:18,240 --> 00:06:21,960
+uh So, a few ways that I'm seeing, so
+
+160
+00:06:20,480 --> 00:06:23,280
+when I'm working with developers, they
+
+161
+00:06:21,960 --> 00:06:25,200
+want to
+
+162
+00:06:23,280 --> 00:06:27,560
+either in the context of text to query
+
+163
+00:06:25,200 --> 00:06:29,640
+or text to sequel, text to sparkle, so
+
+164
+00:06:27,560 --> 00:06:31,160
+that's a really big thing right now,
+
+165
+00:06:29,640 --> 00:06:32,919
+especially uh when it comes to
+
+166
+00:06:31,160 --> 00:06:34,960
+enterprise data. This is what they're
+
+167
+00:06:32,919 --> 00:06:35,600
+trying to add in their
+
+168
+00:06:34,960 --> 00:06:39,000
+um
+
+169
+00:06:35,600 --> 00:06:41,880
+LLM pipelines. And so, I'm uh just in if
+
+170
+00:06:39,000 --> 00:06:43,440
+they have a, you know, traditional uh
+
+171
+00:06:41,880 --> 00:06:45,840
+config that they're just trying to add
+
+172
+00:06:43,440 --> 00:06:48,080
+in uh this metadata for for their their
+
+173
+00:06:45,840 --> 00:06:49,520
+enterprise data to to get more accurate
+
+174
+00:06:48,080 --> 00:06:51,720
+answers, it's kind of separating out
+
+175
+00:06:49,520 --> 00:06:54,280
+what you can put in there as opposed to
+
+176
+00:06:51,720 --> 00:06:55,960
+the additional uh information you can
+
+177
+00:06:54,280 --> 00:06:59,120
+add leveraging a knowledge graph. So, if
+
+178
+00:06:55,960 --> 00:07:00,600
+you have a use case um where you uh you
+
+179
+00:06:59,120 --> 00:07:03,120
+want to have um
+
+180
+00:07:00,600 --> 00:07:05,720
+more scalable language tagging or
+
+181
+00:07:03,120 --> 00:07:07,320
+uh lineage or um
+
+182
+00:07:05,720 --> 00:07:09,560
+inferencing, that kind of that kind of
+
+183
+00:07:07,320 --> 00:07:11,680
+thing, go with a knowledge graph.
+
+184
+00:07:09,560 --> 00:07:13,800
+And I see uh two ways here, so there's
+
+185
+00:07:11,680 --> 00:07:15,240
+more. This is not an exhaustive list at
+
+186
+00:07:13,800 --> 00:07:18,160
+all and I'd love to talk with with you
+
+187
+00:07:15,240 --> 00:07:20,280
+all about this uh sometime after. Uh but
+
+188
+00:07:18,160 --> 00:07:21,760
+there are two ways that I'm seeing uh
+
+189
+00:07:20,280 --> 00:07:24,040
+how knowledge graphs or ontologies are
+
+190
+00:07:21,760 --> 00:07:26,600
+helping. So, one is the enriched
+
+191
+00:07:24,040 --> 00:07:29,880
+metadata side of it, that's um
+
+192
+00:07:26,600 --> 00:07:32,200
+using the domain uh ontology mapping to
+
+193
+00:07:29,880 --> 00:07:33,720
+your actual data elements being put into
+
+194
+00:07:32,200 --> 00:07:34,919
+the pipeline to give the LLM more
+
+195
+00:07:33,720 --> 00:07:37,720
+information
+
+196
+00:07:34,919 --> 00:07:40,240
+uh or completely converting your
+
+197
+00:07:37,720 --> 00:07:42,840
+original data structure into a knowledge
+
+198
+00:07:40,240 --> 00:07:44,920
+graph and using that. So, there's a lot
+
+199
+00:07:42,840 --> 00:07:46,600
+of studies showing um
+
+200
+00:07:44,920 --> 00:07:48,080
+that uh
+
+201
+00:07:46,600 --> 00:07:50,200
+it's uh
+
+202
+00:07:48,080 --> 00:07:52,560
+performing better if you're going with a
+
+203
+00:07:50,200 --> 00:07:54,360
+text-to-SQL or sorry, text-to-SPARQL
+
+204
+00:07:52,560 --> 00:07:56,920
+over text-to-SQL
+
+205
+00:07:54,360 --> 00:07:59,080
+um pipeline. So,
+
+206
+00:07:56,920 --> 00:08:00,200
+those are the two ways I'm seeing it.
+
+207
+00:07:59,080 --> 00:08:02,120
+Uh
+
+208
+00:08:00,200 --> 00:08:03,960
+So, yeah. Now, we'll go into the data
+
+209
+00:08:02,120 --> 00:08:05,920
+modeling process. So, very high level,
+
+210
+00:08:03,960 --> 00:08:06,920
+what's happening uh in an enterprise
+
+211
+00:08:05,920 --> 00:08:08,960
+setting.
+
+212
+00:08:06,920 --> 00:08:11,160
+Uh we start with our requirements. So,
+
+213
+00:08:08,960 --> 00:08:13,880
+that's the product owner. Uh all of
+
+214
+00:08:11,160 --> 00:08:16,520
+these things here in the requirements
+
+215
+00:08:13,880 --> 00:08:18,240
+actually help shape our data modeling
+
+216
+00:08:16,520 --> 00:08:19,240
+later on. So, it's really important to
+
+217
+00:08:18,240 --> 00:08:21,520
+have
+
+218
+00:08:19,240 --> 00:08:23,800
+um those product requirements, the use
+
+219
+00:08:21,520 --> 00:08:25,240
+cases, the features that are needed.
+
+220
+00:08:23,800 --> 00:08:27,440
+That'll actually help with the design
+
+221
+00:08:25,240 --> 00:08:29,480
+later. It's really important to have
+
+222
+00:08:27,440 --> 00:08:32,159
+uh that up front. Uh then there's a
+
+223
+00:08:29,480 --> 00:08:33,599
+discovery phase, and this is where the
+
+224
+00:08:32,159 --> 00:08:35,000
+uh subject matter expert is very
+
+225
+00:08:33,599 --> 00:08:36,640
+important.
+
+226
+00:08:35,000 --> 00:08:38,760
+Uh where we're working with the subject
+
+227
+00:08:36,640 --> 00:08:40,919
+matter expert to uh come up with a
+
+228
+00:08:38,760 --> 00:08:43,360
+conceptual model, to create a more
+
+229
+00:08:40,919 --> 00:08:44,800
+detailed data dictionary. Uh at this
+
+230
+00:08:43,360 --> 00:08:46,480
+point, we're already looking at source
+
+231
+00:08:44,800 --> 00:08:49,400
+data. So, we're not going to do data
+
+232
+00:08:46,480 --> 00:08:50,960
+modeling without looking at actual data.
+
+233
+00:08:49,400 --> 00:08:52,400
+Uh and we're coming up with competency
+
+234
+00:08:50,960 --> 00:08:55,040
+questions that we're going to use to
+
+235
+00:08:52,400 --> 00:08:56,839
+test our model later on. Then we're in
+
+236
+00:08:55,040 --> 00:08:59,280
+the design phase. This is where the
+
+237
+00:08:56,839 --> 00:09:01,440
+ontologist knowledge engineer or data
+
+238
+00:08:59,280 --> 00:09:02,560
+architect, sometimes they're called data
+
+239
+00:09:01,440 --> 00:09:04,160
+modeler,
+
+240
+00:09:02,560 --> 00:09:06,680
+uh is going to
+
+241
+00:09:04,160 --> 00:09:08,800
+uh take everything before it and create
+
+242
+00:09:06,680 --> 00:09:12,760
+a logical model. Uh there's going to be
+
+243
+00:09:08,800 --> 00:09:14,360
+some mapping and to the physical model.
+
+244
+00:09:12,760 --> 00:09:16,160
+Uh and then we move over to
+
+245
+00:09:14,360 --> 00:09:18,200
+implementation. And these all kind of
+
+246
+00:09:16,160 --> 00:09:20,080
+work everyone kind of works together
+
+247
+00:09:18,200 --> 00:09:21,960
+across the bottom is what I'm I'm
+
+248
+00:09:20,080 --> 00:09:24,960
+showing here.
+
+249
+00:09:21,960 --> 00:09:26,920
+So, we will first we'll start with the
+
+250
+00:09:24,960 --> 00:09:30,360
+an example from Dunel. So, please visit
+
+251
+00:09:26,920 --> 00:09:32,360
+dunel.org to see we've got uh tabular
+
+252
+00:09:30,360 --> 00:09:34,800
+relational representation
+
+253
+00:09:32,360 --> 00:09:36,120
+and RDF representation of the same data.
+
+254
+00:09:34,800 --> 00:09:37,840
+So, you You kind of
+
+255
+00:09:36,120 --> 00:09:39,640
+see an example of what it looks like in
+
+256
+00:09:37,840 --> 00:09:42,960
+both. We also have a
+
+257
+00:09:39,640 --> 00:09:44,640
+CS VW metadata document for each of the
+
+258
+00:09:42,960 --> 00:09:45,920
+data sets, so you can see what that
+
+259
+00:09:44,640 --> 00:09:47,000
+looks like.
+
+260
+00:09:45,920 --> 00:09:50,040
+Um
+
+261
+00:09:47,000 --> 00:09:51,240
+and the kind of data that we're working
+
+262
+00:09:50,040 --> 00:09:53,640
+with is
+
+263
+00:09:51,240 --> 00:09:55,920
+uh around it's so we've got company
+
+264
+00:09:53,640 --> 00:09:56,880
+data, price assessment data.
+
+265
+00:09:55,920 --> 00:09:59,000
+Um
+
+266
+00:09:56,880 --> 00:10:00,600
+we've got units of measure data. So, a
+
+267
+00:09:59,000 --> 00:10:03,000
+lot of reference data sets that are
+
+268
+00:10:00,600 --> 00:10:05,880
+really helpful to customers just to use
+
+269
+00:10:03,000 --> 00:10:08,200
+generally, so they're they're linked to
+
+270
+00:10:05,880 --> 00:10:10,240
+their specific data sets if they need to
+
+271
+00:10:08,200 --> 00:10:13,200
+uh have additional reference data to
+
+272
+00:10:10,240 --> 00:10:15,760
+enrich their their product.
+
+273
+00:10:13,200 --> 00:10:15,760
+Um
+
+274
+00:10:15,880 --> 00:10:19,960
+So, if we take a first take first look.
+
+275
+00:10:17,880 --> 00:10:22,200
+So, the the first step is the conceptual
+
+276
+00:10:19,960 --> 00:10:23,240
+model. This is part of the uh design
+
+277
+00:10:22,200 --> 00:10:25,320
+phase.
+
+278
+00:10:23,240 --> 00:10:26,680
+And uh I want to call out the conceptual
+
+279
+00:10:25,320 --> 00:10:28,120
+model. There are other artifacts that
+
+280
+00:10:26,680 --> 00:10:30,160
+you produce
+
+281
+00:10:28,120 --> 00:10:32,560
+uh during this design phase, but I think
+
+282
+00:10:30,160 --> 00:10:34,960
+this is a really important one to uh
+
+283
+00:10:32,560 --> 00:10:37,120
+it's a an excellent tool to go into
+
+284
+00:10:34,960 --> 00:10:39,480
+these uh sessions with your subject
+
+285
+00:10:37,120 --> 00:10:41,560
+matter experts to sit down and just come
+
+286
+00:10:39,480 --> 00:10:43,839
+up with your uh what are the main
+
+287
+00:10:41,560 --> 00:10:45,720
+concepts in this domain? How do they
+
+288
+00:10:43,839 --> 00:10:47,640
+kind of roughly link together? You don't
+
+289
+00:10:45,720 --> 00:10:49,400
+have to worry too much about specific
+
+290
+00:10:47,640 --> 00:10:51,960
+data points or if they should be
+
+291
+00:10:49,400 --> 00:10:52,880
+entities or uh
+
+292
+00:10:51,960 --> 00:10:54,240
+uh
+
+293
+00:10:52,880 --> 00:10:55,800
+data type properties or object
+
+294
+00:10:54,240 --> 00:10:57,440
+properties yet. You don't You don't care
+
+295
+00:10:55,800 --> 00:11:00,160
+about any of that. You just want to
+
+296
+00:10:57,440 --> 00:11:03,200
+understand the domain and uh this is
+
+297
+00:11:00,160 --> 00:11:06,040
+where maybe LLMs can help as part of a a
+
+298
+00:11:03,200 --> 00:11:06,600
+domain research or uh
+
+299
+00:11:06,040 --> 00:11:09,560
+uh
+
+300
+00:11:06,600 --> 00:11:12,280
+an entity extraction or other uh
+
+301
+00:11:09,560 --> 00:11:14,960
+tried and tested NLP techniques that uh
+
+302
+00:11:12,280 --> 00:11:16,920
+Paco in that talk yesterday goes over.
+
+303
+00:11:14,960 --> 00:11:19,240
+This is a great time to to do that. I
+
+304
+00:11:16,920 --> 00:11:21,880
+think the developer and the uh
+
+305
+00:11:19,240 --> 00:11:23,720
+ontologist can work together on
+
+306
+00:11:21,880 --> 00:11:25,640
+providing that um
+
+307
+00:11:23,720 --> 00:11:28,360
+that really helpful information in those
+
+308
+00:11:25,640 --> 00:11:30,400
+conversations with with the SMEs.
+
+309
+00:11:28,360 --> 00:11:32,320
+So, this kind of this takes a long time.
+
+310
+00:11:30,400 --> 00:11:34,280
+I think this is a uh
+
+311
+00:11:32,320 --> 00:11:37,240
+an iterative process that you aren't
+
+312
+00:11:34,280 --> 00:11:38,440
+going to get right with just either only
+
+313
+00:11:37,240 --> 00:11:40,960
+talking to SMEs, not looking at your
+
+314
+00:11:38,440 --> 00:11:42,360
+data, or only kind of doing these
+
+315
+00:11:40,960 --> 00:11:42,960
+automated
+
+316
+00:11:42,360 --> 00:11:44,160
+um
+
+317
+00:11:42,960 --> 00:11:45,840
+uh
+
+318
+00:11:44,160 --> 00:11:48,480
+techniques to to build it. You have to
+
+319
+00:11:45,840 --> 00:11:50,240
+kind of combine the two.
+
+320
+00:11:48,480 --> 00:11:52,080
+Uh then you're going to go to you're
+
+321
+00:11:50,240 --> 00:11:53,880
+going to create your logical model, and
+
+322
+00:11:52,080 --> 00:11:56,160
+this is supposed to be structure
+
+323
+00:11:53,880 --> 00:11:57,960
+agnostic, platform independent. So, you
+
+324
+00:11:56,160 --> 00:12:01,320
+don't you're not making any calls yet if
+
+325
+00:11:57,960 --> 00:12:03,760
+you're going to make a graph or
+
+326
+00:12:01,320 --> 00:12:05,960
+relational database or
+
+327
+00:12:03,760 --> 00:12:08,360
+use a certain type of graph that it
+
+328
+00:12:05,960 --> 00:12:10,720
+doesn't matter. You just want to now
+
+329
+00:12:08,360 --> 00:12:13,440
+with each data point, you want to be
+
+330
+00:12:10,720 --> 00:12:15,640
+able to classify it as what it is.
+
+331
+00:12:13,440 --> 00:12:17,320
+Uh so, the looking at your data is very
+
+332
+00:12:15,640 --> 00:12:19,280
+important. You're you're going to cover
+
+333
+00:12:17,320 --> 00:12:21,680
+all of your enterprise data here.
+
+334
+00:12:19,280 --> 00:12:24,080
+Uh and you want to adhere to
+
+335
+00:12:21,680 --> 00:12:26,920
+or agree on the diagramming standards
+
+336
+00:12:24,080 --> 00:12:30,280
+that you you want to use here. Uh so,
+
+337
+00:12:26,920 --> 00:12:32,680
+UML is a is a great one to use.
+
+338
+00:12:30,280 --> 00:12:34,440
+Um one caveat for knowledge graphs, it's
+
+339
+00:12:32,680 --> 00:12:35,560
+really important to
+
+340
+00:12:34,440 --> 00:12:37,920
+uh
+
+341
+00:12:35,560 --> 00:12:40,400
+to create your object property or the
+
+342
+00:12:37,920 --> 00:12:42,240
+relationship between entities or objects
+
+343
+00:12:40,400 --> 00:12:42,839
+is really important.
+
+344
+00:12:42,240 --> 00:12:44,000
+Uh
+
+345
+00:12:42,839 --> 00:12:47,320
+because your those are going to be
+
+346
+00:12:44,000 --> 00:12:47,320
+explicit in your graph later.
+
+347
+00:12:47,680 --> 00:12:51,680
+Um
+
+348
+00:12:49,200 --> 00:12:52,920
+So, next we've got the physical model.
+
+349
+00:12:51,680 --> 00:12:55,200
+So, this is where you're going to make a
+
+350
+00:12:52,920 --> 00:12:57,560
+call and based on your logical model, a
+
+351
+00:12:55,200 --> 00:12:59,480
+lot of it translates pretty quickly and
+
+352
+00:12:57,560 --> 00:13:01,920
+easily over into
+
+353
+00:12:59,480 --> 00:13:05,560
+uh your your physical model. So, at the
+
+354
+00:13:01,920 --> 00:13:10,680
+top we have an example of a
+
+355
+00:13:05,560 --> 00:13:12,720
+an ER diagram and a SQL DDL
+
+356
+00:13:10,680 --> 00:13:15,960
+uh schema. And at the bottom we have the
+
+357
+00:13:12,720 --> 00:13:20,040
+same the same data in a an ontology
+
+358
+00:13:15,960 --> 00:13:22,720
+diagram. And a the actual RDF file
+
+359
+00:13:20,040 --> 00:13:25,000
+turtle serialization. Um there are other
+
+360
+00:13:22,720 --> 00:13:26,520
+serializations as well for
+
+361
+00:13:25,000 --> 00:13:28,720
+uh for RDF
+
+362
+00:13:26,520 --> 00:13:31,680
+uh we've seen, like JSON-LD.
+
+363
+00:13:28,720 --> 00:13:33,520
+Um but this is the Turtle serialization.
+
+364
+00:13:31,680 --> 00:13:34,960
+And then you're going to want to map
+
+365
+00:13:33,520 --> 00:13:36,600
+between these two if you're going to go
+
+366
+00:13:34,960 --> 00:13:38,920
+with that first option of just sending
+
+367
+00:13:36,600 --> 00:13:42,200
+in enriched metadata. So you'll want to
+
+368
+00:13:38,920 --> 00:13:45,800
+map those domain entities to your
+
+369
+00:13:42,200 --> 00:13:47,160
+um your uh tabular entities or your data
+
+370
+00:13:45,800 --> 00:13:49,360
+elements.
+
+371
+00:13:47,160 --> 00:13:50,560
+Uh and sometimes this is uh so you can
+
+372
+00:13:49,360 --> 00:13:53,280
+do this with There's a lot of tools out
+
+373
+00:13:50,560 --> 00:13:55,640
+there to to do this. You can also create
+
+374
+00:13:53,280 --> 00:13:56,480
+your own to do this kind of
+
+375
+00:13:55,640 --> 00:13:58,520
+um
+
+376
+00:13:56,480 --> 00:14:00,400
+uh for instance, R2RML you can use.
+
+377
+00:13:58,520 --> 00:14:02,240
+There's tools that do that to help
+
+378
+00:14:00,400 --> 00:14:03,800
+automate this process of mapping to your
+
+379
+00:14:02,240 --> 00:14:04,640
+data elements.
+
+380
+00:14:03,800 --> 00:14:06,280
+Uh
+
+381
+00:14:04,640 --> 00:14:07,880
+however, there's still a lot of manual
+
+382
+00:14:06,280 --> 00:14:11,120
+intervention with that because our data
+
+383
+00:14:07,880 --> 00:14:13,160
+is quite messy and a table a lot of it
+
+384
+00:14:11,120 --> 00:14:15,000
+is denormalized usually and your your
+
+385
+00:14:13,160 --> 00:14:19,000
+table isn't going to necessarily always
+
+386
+00:14:15,000 --> 00:14:20,840
+equate to the uh domain entity.
+
+387
+00:14:19,000 --> 00:14:22,600
+Uh there's going to be several entities
+
+388
+00:14:20,840 --> 00:14:25,000
+within a table and you have to tease out
+
+389
+00:14:22,600 --> 00:14:27,040
+which attributes actually apply to which
+
+390
+00:14:25,000 --> 00:14:28,880
+uh domain entity. So there's still a
+
+391
+00:14:27,040 --> 00:14:32,680
+manual process even if a lot of it can
+
+392
+00:14:28,880 --> 00:14:32,680
+be quickly mapped.
+
+393
+00:14:33,440 --> 00:14:37,480
+So putting it all together, uh if you go
+
+394
+00:14:35,839 --> 00:14:39,320
+with this this first route where we're
+
+395
+00:14:37,480 --> 00:14:41,480
+we're not converting our data structure
+
+396
+00:14:39,320 --> 00:14:44,160
+into a graph, we're just sending
+
+397
+00:14:41,480 --> 00:14:46,480
+additional uh enriched metadata,
+
+398
+00:14:44,160 --> 00:14:48,320
+uh you're going to send your ontology
+
+399
+00:14:46,480 --> 00:14:51,240
+and your mapping to your data elements
+
+400
+00:14:48,320 --> 00:14:53,800
+to inform the LLM uh which table they
+
+401
+00:14:51,240 --> 00:14:56,520
+should be looking at uh for specific
+
+402
+00:14:53,800 --> 00:15:00,200
+questions that are uh more related to
+
+403
+00:14:56,520 --> 00:15:02,680
+the the the text uh question that you're
+
+404
+00:15:00,200 --> 00:15:05,000
+uh that you're asking the LLM. And then
+
+405
+00:15:02,680 --> 00:15:06,720
+if you're converting it into
+
+406
+00:15:05,000 --> 00:15:08,720
+uh knowledge graph, you're going to
+
+407
+00:15:06,720 --> 00:15:10,520
+somehow um
+
+408
+00:15:08,720 --> 00:15:13,160
+uh hook this up. So this is more the the
+
+409
+00:15:10,520 --> 00:15:15,640
+graph rag solution uh and convert your
+
+410
+00:15:13,160 --> 00:15:17,760
+your data into um a knowledge graph and
+
+411
+00:15:15,640 --> 00:15:19,960
+that can be done through virtualization
+
+412
+00:15:17,760 --> 00:15:22,720
+or it can be actually materialized. But
+
+413
+00:15:19,960 --> 00:15:24,240
+just um you're going to send in your
+
+414
+00:15:22,720 --> 00:15:26,520
+your ontology and your knowledge graph
+
+415
+00:15:24,240 --> 00:15:26,520
+there.
+
+416
+00:15:27,040 --> 00:15:30,600
+So, challenges that I see
+
+417
+00:15:29,520 --> 00:15:32,520
+um
+
+418
+00:15:30,600 --> 00:15:35,200
+So, the just the the complexity of
+
+419
+00:15:32,520 --> 00:15:36,600
+enterprise data is is enormous.
+
+420
+00:15:35,200 --> 00:15:38,640
+Uh there's
+
+421
+00:15:36,600 --> 00:15:39,360
+uh we're working with a lot of
+
+422
+00:15:38,640 --> 00:15:41,480
+uh
+
+423
+00:15:39,360 --> 00:15:43,840
+tech debt or a lot of different views, a
+
+424
+00:15:41,480 --> 00:15:46,800
+lot of tables, especially in relational
+
+425
+00:15:43,840 --> 00:15:49,600
+database land that are almost identical.
+
+426
+00:15:46,800 --> 00:15:51,560
+And the maybe your LLM is is having
+
+427
+00:15:49,600 --> 00:15:54,680
+trouble deciphering which one to query
+
+428
+00:15:51,560 --> 00:15:56,120
+because they are they are so um
+
+429
+00:15:54,680 --> 00:15:57,520
+there's just a lot of mess, a lot of
+
+430
+00:15:56,120 --> 00:16:00,240
+duplication.
+
+431
+00:15:57,520 --> 00:16:03,240
+Um and so, we're we're having to deal
+
+432
+00:16:00,240 --> 00:16:05,200
+with with that um as we're building a
+
+433
+00:16:03,240 --> 00:16:06,240
+knowledge graph, which is already
+
+434
+00:16:05,200 --> 00:16:06,840
+um
+
+435
+00:16:06,240 --> 00:16:09,000
+uh
+
+436
+00:16:06,840 --> 00:16:10,760
+much more complicated than some of the
+
+437
+00:16:09,000 --> 00:16:12,640
+examples, including the one I've shown,
+
+438
+00:16:10,760 --> 00:16:14,080
+um that is very they're very simple
+
+439
+00:16:12,640 --> 00:16:17,240
+examples that work really well with
+
+440
+00:16:14,080 --> 00:16:19,280
+these automated uh solutions. But, the
+
+441
+00:16:17,240 --> 00:16:20,880
+actual nature of our enterprise data is
+
+442
+00:16:19,280 --> 00:16:23,920
+is just much messier.
+
+443
+00:16:20,880 --> 00:16:27,560
+Um the automation versus manual uh
+
+444
+00:16:23,920 --> 00:16:29,400
+effort here. So, I uh you can
+
+445
+00:16:27,560 --> 00:16:30,800
+automate uh
+
+446
+00:16:29,400 --> 00:16:32,720
+several bits of this whole entire
+
+447
+00:16:30,800 --> 00:16:33,960
+process, but you can't automate the
+
+448
+00:16:32,720 --> 00:16:36,520
+whole thing. It's just a it's a
+
+449
+00:16:33,960 --> 00:16:38,520
+combination of this manual effort and
+
+450
+00:16:36,520 --> 00:16:41,040
+consulting uh
+
+451
+00:16:38,520 --> 00:16:43,080
+uh various SMEs.
+
+452
+00:16:41,040 --> 00:16:44,920
+Um and then I'm seeing just a lot of
+
+453
+00:16:43,080 --> 00:16:47,480
+sparse metadata documentation. So,
+
+454
+00:16:44,920 --> 00:16:49,800
+that's something that uh
+
+455
+00:16:47,480 --> 00:16:51,400
+we could improve upon. So, anywhere you
+
+456
+00:16:49,800 --> 00:16:53,160
+go uh
+
+457
+00:16:51,400 --> 00:16:55,240
+I'm I'm finding that we just didn't
+
+458
+00:16:53,160 --> 00:16:57,680
+document that or just updates haven't
+
+459
+00:16:55,240 --> 00:17:01,600
+been documented, so it becomes obsolete.
+
+460
+00:16:57,680 --> 00:17:02,800
+Uh we're not using uh data catalogs or
+
+461
+00:17:01,600 --> 00:17:04,240
+there's a missing feature. It's not
+
+462
+00:17:02,800 --> 00:17:05,800
+capturing lineage, and that's something
+
+463
+00:17:04,240 --> 00:17:08,400
+we really need.
+
+464
+00:17:05,800 --> 00:17:11,120
+Uh or we're not looking at the source
+
+465
+00:17:08,400 --> 00:17:13,680
+data, and we're building on top of uh
+
+466
+00:17:11,120 --> 00:17:15,520
+these different views, like I say, and
+
+467
+00:17:13,680 --> 00:17:18,120
+we're not actually fixing some of the
+
+468
+00:17:15,520 --> 00:17:19,360
+optimization we could um we could
+
+469
+00:17:18,120 --> 00:17:21,800
+actually addressing the source data
+
+470
+00:17:19,360 --> 00:17:24,839
+first.
+
+471
+00:17:21,800 --> 00:17:26,240
+Okay, so some of the the tips.
+
+472
+00:17:24,839 --> 00:17:28,720
+So
+
+473
+00:17:26,240 --> 00:17:31,320
+it's the whole theme is to make you all
+
+474
+00:17:28,720 --> 00:17:32,800
+of your data AI ready and a lot of that
+
+475
+00:17:31,320 --> 00:17:35,120
+is
+
+476
+00:17:32,800 --> 00:17:37,640
+investment in assessing your existing
+
+477
+00:17:35,120 --> 00:17:39,360
+data structure. So working with one
+
+478
+00:17:37,640 --> 00:17:42,320
+developer
+
+479
+00:17:39,360 --> 00:17:44,440
+just actually looking at and deciphering
+
+480
+00:17:42,320 --> 00:17:46,280
+or reverse engineering the tables they
+
+481
+00:17:44,440 --> 00:17:48,280
+were given to
+
+482
+00:17:46,280 --> 00:17:50,080
+include in their LLM pipeline for a text
+
+483
+00:17:48,280 --> 00:17:52,200
+to SQL example.
+
+484
+00:17:50,080 --> 00:17:53,840
+Just optimizing some of those tables
+
+485
+00:17:52,200 --> 00:17:56,600
+actually helped their text to SQL
+
+486
+00:17:53,840 --> 00:17:58,600
+performance. So it will get better if
+
+487
+00:17:56,600 --> 00:18:01,000
+they convert it into a graph and use
+
+488
+00:17:58,600 --> 00:18:02,600
+text to sparkle, but already you're
+
+489
+00:18:01,000 --> 00:18:05,000
+you're seeing improvement on just
+
+490
+00:18:02,600 --> 00:18:06,200
+addressing some existing
+
+491
+00:18:05,000 --> 00:18:08,720
+tech debt.
+
+492
+00:18:06,200 --> 00:18:12,120
+An organizational commitment to semantic
+
+493
+00:18:08,720 --> 00:18:15,080
+data cataloging. So everyone needs to
+
+494
+00:18:12,120 --> 00:18:18,360
+contribute to this. This is something
+
+495
+00:18:15,080 --> 00:18:19,800
+and it's semantic is also it's important
+
+496
+00:18:18,360 --> 00:18:21,440
+that it's semantic that you have it
+
+497
+00:18:19,800 --> 00:18:24,080
+backed up with a
+
+498
+00:18:21,440 --> 00:18:25,560
+a graph cuz a lot of this
+
+499
+00:18:24,080 --> 00:18:29,080
+a lot of this representation can't be
+
+500
+00:18:25,560 --> 00:18:31,560
+captured easily with some other um
+
+501
+00:18:29,080 --> 00:18:34,440
+some other methods like lineage is best
+
+502
+00:18:31,560 --> 00:18:37,040
+handled with a graph data structure.
+
+503
+00:18:34,440 --> 00:18:39,080
+Plan ahead for comprehensive annotations
+
+504
+00:18:37,040 --> 00:18:43,440
+especially when it comes to
+
+505
+00:18:39,080 --> 00:18:45,400
+regulatory compliance and AI ready
+
+506
+00:18:43,440 --> 00:18:46,880
+data rights and access and all of that.
+
+507
+00:18:45,400 --> 00:18:49,640
+That's becoming an increasingly more
+
+508
+00:18:46,880 --> 00:18:52,880
+important. So planning ahead for that.
+
+509
+00:18:49,640 --> 00:18:55,960
+Also languages that's something that um
+
+510
+00:18:52,880 --> 00:18:57,880
+10 Okay, thanks. Languages that's also
+
+511
+00:18:55,960 --> 00:18:59,480
+something that is
+
+512
+00:18:57,880 --> 00:19:00,840
+best handled with
+
+513
+00:18:59,480 --> 00:19:03,760
+with a graph.
+
+514
+00:19:00,840 --> 00:19:05,720
+So thinking ahead of
+
+515
+00:19:03,760 --> 00:19:08,200
+all the things that you need to annotate
+
+516
+00:19:05,720 --> 00:19:11,160
+up front and if that can be scaled or
+
+517
+00:19:08,200 --> 00:19:14,720
+expanded as you as you go on.
+
+518
+00:19:11,160 --> 00:19:16,520
+Enhanced documentation and methods
+
+519
+00:19:14,720 --> 00:19:18,800
+uh uh enhanced documentation methods and
+
+520
+00:19:16,520 --> 00:19:21,040
+practices. So, here I wanted to note
+
+521
+00:19:18,800 --> 00:19:23,800
+I've noticed it's really
+
+522
+00:19:21,040 --> 00:19:26,640
+important to automate where you can.
+
+523
+00:19:23,800 --> 00:19:29,040
+And, uh, if anything needs to be updated
+
+524
+00:19:26,640 --> 00:19:32,040
+to keep it as close to the code as
+
+525
+00:19:29,040 --> 00:19:34,680
+possible. So, if you, uh,
+
+526
+00:19:32,040 --> 00:19:35,960
+developers and ontologists were all
+
+527
+00:19:34,680 --> 00:19:37,760
+switching teams or going to new
+
+528
+00:19:35,960 --> 00:19:40,040
+organizations, we're inheriting all of
+
+529
+00:19:37,760 --> 00:19:42,520
+this, uh, data usually and all the stuff
+
+530
+00:19:40,040 --> 00:19:43,960
+documentation. And, it's really hard to
+
+531
+00:19:42,520 --> 00:19:45,400
+you might not even know about a Word
+
+532
+00:19:43,960 --> 00:19:46,840
+document that exists somewhere that was
+
+533
+00:19:45,400 --> 00:19:50,400
+the original design document you need to
+
+534
+00:19:46,840 --> 00:19:52,120
+update. Um, or, uh, you know, something
+
+535
+00:19:50,400 --> 00:19:53,440
+falls flat and isn't updated if it's an
+
+536
+00:19:52,120 --> 00:19:55,560
+external catalog that isn't
+
+537
+00:19:53,440 --> 00:19:58,240
+automatically hooked up to any updates
+
+538
+00:19:55,560 --> 00:19:59,600
+that you're making in your code. So, uh,
+
+539
+00:19:58,240 --> 00:20:01,840
+documentation as close to code as
+
+540
+00:19:59,600 --> 00:20:04,120
+possible and any automated processes you
+
+541
+00:20:01,840 --> 00:20:06,320
+you can put in place to link it to your
+
+542
+00:20:04,120 --> 00:20:08,440
+data catalog is going to be, uh, the
+
+543
+00:20:06,320 --> 00:20:10,720
+best way to keep up with updates. That's
+
+544
+00:20:08,440 --> 00:20:12,680
+the the toughest part.
+
+545
+00:20:10,720 --> 00:20:14,200
+Uh, avoid lock-in and leverage existing
+
+546
+00:20:12,680 --> 00:20:16,600
+standards. So, there's a lot of
+
+547
+00:20:14,200 --> 00:20:20,320
+standards out there that will help you,
+
+548
+00:20:16,600 --> 00:20:23,680
+uh, model what you need to model or, um,
+
+549
+00:20:20,320 --> 00:20:25,680
+uh, this mapping CSVW or R2RML, there's
+
+550
+00:20:23,680 --> 00:20:26,960
+existing things out there. So, don't
+
+551
+00:20:25,680 --> 00:20:29,760
+create your own and then you're kind of
+
+552
+00:20:26,960 --> 00:20:31,960
+locked in and, uh, if you want to your
+
+553
+00:20:29,760 --> 00:20:33,560
+organization wants to change something,
+
+554
+00:20:31,960 --> 00:20:36,320
+uh, you you don't know how to translate
+
+555
+00:20:33,560 --> 00:20:38,360
+that into uh, a more open or, uh,
+
+556
+00:20:36,320 --> 00:20:40,360
+standardized um
+
+557
+00:20:38,360 --> 00:20:42,600
+uh, way of doing it. And, then
+
+558
+00:20:40,360 --> 00:20:44,200
+prioritize source data when, uh,
+
+559
+00:20:42,600 --> 00:20:46,160
+review during your modeling process,
+
+560
+00:20:44,200 --> 00:20:48,400
+extremely important.
+
+561
+00:20:46,160 --> 00:20:50,520
+Uh, we forget that, uh, it just takes a
+
+562
+00:20:48,400 --> 00:20:52,800
+lot longer if we have to
+
+563
+00:20:50,520 --> 00:20:55,360
+do, uh, reverse engineer everything that
+
+564
+00:20:52,800 --> 00:20:56,640
+we're we're working with, uh, all alone.
+
+565
+00:20:55,360 --> 00:20:57,960
+So, it's it's really important to have
+
+566
+00:20:56,640 --> 00:21:02,440
+access to that source data right from
+
+567
+00:20:57,960 --> 00:21:03,920
+the uh, design, um, discovery phase.
+
+568
+00:21:02,440 --> 00:21:06,080
+And uh
+
+569
+00:21:03,920 --> 00:21:08,800
+uh, yeah, and I wanted to just mention
+
+570
+00:21:06,080 --> 00:21:10,880
+as part of the AI-ready data is just
+
+571
+00:21:08,800 --> 00:21:12,480
+following a lot of
+
+572
+00:21:10,880 --> 00:21:14,400
+a lot from these fair principles. A lot
+
+573
+00:21:12,480 --> 00:21:17,000
+of companies are doing that. Or five
+
+574
+00:21:14,400 --> 00:21:19,480
+star open data from Tim Berners-Lee.
+
+575
+00:21:17,000 --> 00:21:22,400
+I think that's the the key here in order
+
+576
+00:21:19,480 --> 00:21:24,120
+to make knowledge graph creation faster,
+
+577
+00:21:22,400 --> 00:21:27,720
+not necessarily the automated processes,
+
+578
+00:21:24,120 --> 00:21:30,800
+but having our AI ready or having our uh
+
+579
+00:21:27,720 --> 00:21:33,960
+uh data AI ready is going to help with
+
+580
+00:21:30,800 --> 00:21:35,520
+that process is my main uh
+
+581
+00:21:33,960 --> 00:21:39,280
+is the main takeaway here.
+
+582
+00:21:35,520 --> 00:21:39,280
+So, thank you. Any questions?
+
+583
+00:21:54,960 --> 00:21:58,800
+Yeah. Um a quick question regarding the
+
+584
+00:21:58,000 --> 00:22:02,760
+use of
+
+585
+00:21:58,800 --> 00:22:06,240
+existing domain specific ontologies
+
+586
+00:22:02,760 --> 00:22:08,160
+When in the process would you propose to
+
+587
+00:22:06,240 --> 00:22:10,360
+um this kind of existing modeling
+
+588
+00:22:08,160 --> 00:22:11,840
+methods cuz that would also influence
+
+589
+00:22:10,360 --> 00:22:13,600
+potentially the conceptual model for
+
+590
+00:22:11,840 --> 00:22:15,280
+example right?
+
+591
+00:22:13,600 --> 00:22:16,680
+Absolutely.
+
+592
+00:22:15,280 --> 00:22:19,880
+Yeah, I would start right at the
+
+593
+00:22:16,680 --> 00:22:22,360
+discovery phase. uh with the conceptual
+
+594
+00:22:19,880 --> 00:22:24,680
+model. So, that's part of the the domain
+
+595
+00:22:22,360 --> 00:22:26,440
+research is is finding existing
+
+596
+00:22:24,680 --> 00:22:27,720
+vocabularies that that describe your
+
+597
+00:22:26,440 --> 00:22:29,000
+domain.
+
+598
+00:22:27,720 --> 00:22:29,600
+Um
+
+599
+00:22:29,000 --> 00:22:31,320
+uh
+
+600
+00:22:29,600 --> 00:22:33,000
+yeah, that that that should happen right
+
+601
+00:22:31,320 --> 00:22:34,800
+away. I think it to be familiar that can
+
+602
+00:22:33,000 --> 00:22:37,160
+also help uh
+
+603
+00:22:34,800 --> 00:22:38,840
+the subject matter expert learn more
+
+604
+00:22:37,160 --> 00:22:40,360
+about what's happening outside of their
+
+605
+00:22:38,840 --> 00:22:42,960
+own organization. It's just helpful for
+
+606
+00:22:40,360 --> 00:22:44,720
+everyone to have that very objective
+
+607
+00:22:42,960 --> 00:22:47,000
+view of the domain to see what else is
+
+608
+00:22:44,720 --> 00:22:49,600
+how other people are modeling it.
+
+609
+00:22:47,000 --> 00:22:51,680
+Very important, yeah.
+
+610
+00:22:49,600 --> 00:22:53,480
+Are you using any um upper level
+
+611
+00:22:51,680 --> 00:22:57,320
+ontologies to the one that you do when
+
+612
+00:22:53,480 --> 00:23:00,200
+you make the first uh design?
+
+613
+00:22:57,320 --> 00:23:01,960
+Like um you know, there's BFO, UFO, all
+
+614
+00:23:00,200 --> 00:23:04,720
+those like top level ontologies. is
+
+615
+00:23:01,960 --> 00:23:06,520
+there any use in your work?
+
+616
+00:23:04,720 --> 00:23:09,640
+Yeah, I've I've used them before, but I
+
+617
+00:23:06,520 --> 00:23:11,080
+will I will say I'm finding that it's a
+
+618
+00:23:09,640 --> 00:23:13,520
+lot easier
+
+619
+00:23:11,080 --> 00:23:15,200
+within an enterprise context to
+
+620
+00:23:13,520 --> 00:23:16,800
+create your own.
+
+621
+00:23:15,200 --> 00:23:18,800
+So that it
+
+622
+00:23:16,800 --> 00:23:21,280
+relates directly to the data that you
+
+623
+00:23:18,800 --> 00:23:24,080
+have in your in your organization. So
+
+624
+00:23:21,280 --> 00:23:24,080
+I've tried
+
+625
+00:23:24,160 --> 00:23:28,720
+you know, using something like FIBO
+
+626
+00:23:26,640 --> 00:23:29,840
+hasn't always been easy for financial
+
+627
+00:23:28,720 --> 00:23:32,280
+data
+
+628
+00:23:29,840 --> 00:23:34,520
+because it is it's awesome and it's it's
+
+629
+00:23:32,280 --> 00:23:37,120
+it's well constructed but there's so
+
+630
+00:23:34,520 --> 00:23:39,280
+many nuances with the specific
+
+631
+00:23:37,120 --> 00:23:41,840
+enterprise data that it's it has been
+
+632
+00:23:39,280 --> 00:23:44,000
+challenging. So it's more about linking,
+
+633
+00:23:41,840 --> 00:23:46,880
+making it linkable to these other
+
+634
+00:23:44,000 --> 00:23:48,640
+ontologies as opposed to using them
+
+635
+00:23:46,880 --> 00:23:50,600
+principally. So that's my experience,
+
+636
+00:23:48,640 --> 00:23:52,880
+but I'd love to hear what you
+
+637
+00:23:50,600 --> 00:23:56,120
+what how you all handle
+
+638
+00:23:52,880 --> 00:24:00,000
+using domain-specific ontologies
+
+639
+00:23:56,120 --> 00:24:00,000
+in a very specific context. Yeah.
+
+640
+00:24:04,960 --> 00:24:10,240
+No, I agree with you and I think it's
+
+641
+00:24:08,280 --> 00:24:13,560
+good to link it to the upper level if
+
+642
+00:24:10,240 --> 00:24:15,720
+you if you can. Starting with this for
+
+643
+00:24:13,560 --> 00:24:18,360
+my personal experience it's been very
+
+644
+00:24:15,720 --> 00:24:20,120
+rewarding to use those top level to have
+
+645
+00:24:18,360 --> 00:24:22,080
+the the most
+
+646
+00:24:20,120 --> 00:24:23,600
+upper abstraction you can.
+
+647
+00:24:22,080 --> 00:24:25,480
+So you can think about how to put the
+
+648
+00:24:23,600 --> 00:24:26,960
+different things you are using in your
+
+649
+00:24:25,480 --> 00:24:29,560
+enterprise into the the different
+
+650
+00:24:26,960 --> 00:24:32,360
+categories. It's it's good for thinking
+
+651
+00:24:29,560 --> 00:24:35,040
+to look at those upper level my opinion.
+
+652
+00:24:32,360 --> 00:24:35,040
+Yeah definitely.
+
+653
+00:24:35,120 --> 00:24:40,840
+We actually have Jeremy is our next
+
+654
+00:24:37,320 --> 00:24:43,240
+speaker. So we will have also
+
+655
+00:24:40,840 --> 00:24:45,840
+panel discussion tomorrow with everyone
+
+656
+00:24:43,240 --> 00:24:47,080
+from this track. So we can definitely I
+
+657
+00:24:45,840 --> 00:24:50,160
+already have them in notes. We can
+
+658
+00:24:47,080 --> 00:24:51,880
+definitely have the top top ontology or
+
+659
+00:24:50,160 --> 00:24:55,640
+middle ontology as you mentioned in
+
+660
+00:24:51,880 --> 00:24:58,040
+conversation. So that's that's tomorrow.
+
+661
+00:24:55,640 --> 00:25:00,120
+Welcome to that. Any other questions?
+
+662
+00:24:58,040 --> 00:25:02,360
+We're very good on time. Frederick had
+
+663
+00:25:00,120 --> 00:25:04,000
+uh his questions cut out. Sorry about
+
+664
+00:25:02,360 --> 00:25:08,040
+that, but now we're on time, so thank
+
+665
+00:25:04,000 --> 00:25:08,040
+you. And um here, please.
+
+666
+00:25:08,240 --> 00:25:12,200
+I was interested [clears throat] that
+
+667
+00:25:09,120 --> 00:25:14,360
+you uh put the the ontology strictly in
+
+668
+00:25:12,200 --> 00:25:15,800
+the in the the physical
+
+669
+00:25:14,360 --> 00:25:17,200
+stage. And especially with your
+
+670
+00:25:15,800 --> 00:25:19,200
+philosophical
+
+671
+00:25:17,200 --> 00:25:21,240
+background, do you do you see that that
+
+672
+00:25:19,200 --> 00:25:23,240
+the ontology sits only with in in the
+
+673
+00:25:21,240 --> 00:25:24,760
+physical stage or
+
+674
+00:25:23,240 --> 00:25:27,360
+can you see that it can represent things
+
+675
+00:25:24,760 --> 00:25:29,320
+that are more logical and conceptual?
+
+676
+00:25:27,360 --> 00:25:30,520
+Well, that's a great question. Um I
+
+677
+00:25:29,320 --> 00:25:31,440
+think
+
+678
+00:25:30,520 --> 00:25:33,800
+uh
+
+679
+00:25:31,440 --> 00:25:36,200
+I'm very pragmatic. And I I I think it's
+
+680
+00:25:33,800 --> 00:25:37,400
+easier to look at it uh how it actually
+
+681
+00:25:36,200 --> 00:25:39,120
+fits in
+
+682
+00:25:37,400 --> 00:25:40,800
+alongside the data
+
+683
+00:25:39,120 --> 00:25:43,000
+uh itself. That's why I put it in the
+
+684
+00:25:40,800 --> 00:25:46,840
+the logical um
+
+685
+00:25:43,000 --> 00:25:48,760
+uh part cuz what I'm noticing is it's uh
+
+686
+00:25:46,840 --> 00:25:50,080
+ontology is a very
+
+687
+00:25:48,760 --> 00:25:51,320
+um
+
+688
+00:25:50,080 --> 00:25:53,480
+um
+
+689
+00:25:51,320 --> 00:25:56,160
+I don't fuzzy concept.
+
+690
+00:25:53,480 --> 00:25:57,960
+And I I don't it is just harder for
+
+691
+00:25:56,160 --> 00:25:59,200
+developers or someone new to the domain
+
+692
+00:25:57,960 --> 00:26:00,880
+to really understand what it is. And
+
+693
+00:25:59,200 --> 00:26:02,920
+then they're kind of left
+
+694
+00:26:00,880 --> 00:26:03,800
+uh you know, just uh what is this? I
+
+695
+00:26:02,920 --> 00:26:06,360
+don't know. And never really
+
+696
+00:26:03,800 --> 00:26:09,200
+understanding it. Uh I'm trying to
+
+697
+00:26:06,360 --> 00:26:11,000
+put it in the that that category to kind
+
+698
+00:26:09,200 --> 00:26:12,560
+of demystify it. And it's something very
+
+699
+00:26:11,000 --> 00:26:15,560
+machine readable and concrete and
+
+700
+00:26:12,560 --> 00:26:18,080
+related to the data uh is kind of the
+
+701
+00:26:15,560 --> 00:26:19,560
+the message uh for for that term in this
+
+702
+00:26:18,080 --> 00:26:21,400
+context. But if we
+
+703
+00:26:19,560 --> 00:26:23,040
+if we wanted to, you know, kind of have
+
+704
+00:26:21,400 --> 00:26:24,880
+debates, philosophical debates, then I
+
+705
+00:26:23,040 --> 00:26:28,760
+would I would go much higher level with
+
+706
+00:26:24,880 --> 00:26:28,760
+the with the the terminology.
+
+707
+00:26:30,920 --> 00:26:35,480
+Thank you. Great talk. Um we have quite
+
+708
+00:26:33,080 --> 00:26:38,200
+a lot of experience with data cataloging
+
+709
+00:26:35,480 --> 00:26:41,320
+uh in my company. Um I'm just wondering
+
+710
+00:26:38,200 --> 00:26:43,720
+in your view, what makes a good semantic
+
+711
+00:26:41,320 --> 00:26:46,720
+data catalog?
+
+712
+00:26:43,720 --> 00:26:49,280
+Um I think it's uh
+
+713
+00:26:46,720 --> 00:26:51,840
+having um
+
+714
+00:26:49,280 --> 00:26:56,240
+uh it links to domain ontologies that
+
+715
+00:26:51,840 --> 00:26:58,160
+are all uh connected to a what Tony Seal
+
+716
+00:26:56,240 --> 00:27:02,000
+was talking about this core enterprise
+
+717
+00:26:58,160 --> 00:27:04,040
+ontology. So, having that domain um
+
+718
+00:27:02,000 --> 00:27:05,200
+uh representation there in the data
+
+719
+00:27:04,040 --> 00:27:06,840
+catalog.
+
+720
+00:27:05,200 --> 00:27:09,520
+Uh I think lineage is extremely
+
+721
+00:27:06,840 --> 00:27:11,840
+important. I've seen So, having that
+
+722
+00:27:09,520 --> 00:27:13,440
+capability there that's not always
+
+723
+00:27:11,840 --> 00:27:15,560
+um even with some semantic tooling
+
+724
+00:27:13,440 --> 00:27:17,240
+that's not always evident to have the
+
+725
+00:27:15,560 --> 00:27:18,120
+the lineage feature there. So, I think
+
+726
+00:27:17,240 --> 00:27:19,320
+that's
+
+727
+00:27:18,120 --> 00:27:20,000
+um
+
+728
+00:27:19,320 --> 00:27:21,840
+uh
+
+729
+00:27:20,000 --> 00:27:23,680
+maybe the most important one I see that
+
+730
+00:27:21,840 --> 00:27:26,360
+you can't do with other
+
+731
+00:27:23,680 --> 00:27:28,320
+non-semantic data catalogs.
+
+732
+00:27:26,360 --> 00:27:30,520
+Um yeah.
+
+733
+00:27:28,320 --> 00:27:31,920
+Uh I'd like to hear more about uh
+
+734
+00:27:30,520 --> 00:27:34,400
+your data catalog as well, what you
+
+735
+00:27:31,920 --> 00:27:34,400
+think too.
+
+736
+00:27:40,480 --> 00:27:45,080
+Hello.
+
+737
+00:27:41,960 --> 00:27:47,200
+Um imagine I have to hire an ontology
+
+738
+00:27:45,080 --> 00:27:49,120
+designer in my team.
+
+739
+00:27:47,200 --> 00:27:53,440
+What are good questions I should ask at
+
+740
+00:27:49,120 --> 00:27:55,080
+during the interview or good exercises?
+
+741
+00:27:53,440 --> 00:27:57,160
+Oh, could you repeat the first part? You
+
+742
+00:27:55,080 --> 00:27:59,200
+are in an Imagine I have to hire in my
+
+743
+00:27:57,160 --> 00:28:00,880
+team You have to hire an ontology
+
+744
+00:27:59,200 --> 00:28:02,760
+designer. So, someone that is going to
+
+745
+00:28:00,880 --> 00:28:04,640
+do what you would just explain. Ooh,
+
+746
+00:28:02,760 --> 00:28:06,520
+this is a good topic for tomorrow, as
+
+747
+00:28:04,640 --> 00:28:08,800
+well. I'd love to know what everyone uh
+
+748
+00:28:06,520 --> 00:28:10,480
+thinks. Um
+
+749
+00:28:08,800 --> 00:28:12,040
+Well, that's a good one because I I
+
+750
+00:28:10,480 --> 00:28:13,920
+think there's
+
+751
+00:28:12,040 --> 00:28:16,800
+there's so many different
+
+752
+00:28:13,920 --> 00:28:17,760
+formats for graphs or query languages or
+
+753
+00:28:16,800 --> 00:28:20,560
+things like that. So, it's really hard
+
+754
+00:28:17,760 --> 00:28:23,720
+to have a concrete uh
+
+755
+00:28:20,560 --> 00:28:25,160
+question um for for everyone.
+
+756
+00:28:23,720 --> 00:28:26,960
+Uh but I
+
+757
+00:28:25,160 --> 00:28:29,760
+I I've always liked it when it's been
+
+758
+00:28:26,960 --> 00:28:31,440
+around. So, I'm on that I'm on the
+
+759
+00:28:29,760 --> 00:28:34,520
+ontologist side. So, I've liked it when
+
+760
+00:28:31,440 --> 00:28:36,280
+it's been around some kind of um
+
+761
+00:28:34,520 --> 00:28:38,680
+uh logical puzzle that you have to
+
+762
+00:28:36,280 --> 00:28:40,080
+solve, some specific question
+
+763
+00:28:38,680 --> 00:28:41,840
+uh that relates to your domain, so
+
+764
+00:28:40,080 --> 00:28:44,400
+you're familiar with it and you know,
+
+765
+00:28:41,840 --> 00:28:45,520
+how would you walk through uh modeling
+
+766
+00:28:44,400 --> 00:28:48,120
+this
+
+767
+00:28:45,520 --> 00:28:49,600
+um without, you know, alluding to any
+
+768
+00:28:48,120 --> 00:28:51,280
+um, kind of representation or anything
+
+769
+00:28:49,600 --> 00:28:52,320
+like that, but just how
+
+770
+00:28:51,280 --> 00:28:54,200
+um,
+
+771
+00:28:52,320 --> 00:28:56,240
+uh, how the ontologist thinks, you know,
+
+772
+00:28:54,200 --> 00:28:57,880
+I think is is really helpful.
+
+773
+00:28:56,240 --> 00:29:01,000
+Uh, but I'll come up with more tomorrow.
+
+774
+00:28:57,880 --> 00:29:01,000
+I'll think about that. Yeah.
+
+775
+00:29:08,240 --> 00:29:11,600
+We are ahead of time,
+
+776
+00:29:10,040 --> 00:29:13,840
+which is quite interesting, having
+
+777
+00:29:11,600 --> 00:29:15,560
+started 15 minutes late. Um, and that's
+
+778
+00:29:13,840 --> 00:29:18,440
+really thanks to the uh, fantastic
+
+779
+00:29:15,560 --> 00:29:23,760
+speakers. Maybe um,
+
+780
+00:29:18,440 --> 00:29:23,760
+but I think we can keep going, yeah? Uh,
+

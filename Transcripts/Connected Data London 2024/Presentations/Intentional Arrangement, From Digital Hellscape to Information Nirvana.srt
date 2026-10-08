@@ -1,0 +1,2808 @@
+1
+00:00:05,040 --> 00:00:10,880
+Hello everyone and thanks for joining me
+
+2
+00:00:07,040 --> 00:00:14,799
+today. Um, so as Paco so kindly
+
+3
+00:00:10,880 --> 00:00:17,520
+introduced, uh, I work at Adobe as a
+
+4
+00:00:14,799 --> 00:00:19,279
+senior information architect for Adobe's
+
+5
+00:00:17,520 --> 00:00:21,439
+Experience League, which is the primary
+
+6
+00:00:19,279 --> 00:00:24,080
+learning gateway and documentation
+
+7
+00:00:21,439 --> 00:00:26,240
+platform for Adobe products, mainly the
+
+8
+00:00:24,080 --> 00:00:28,800
+B2B powerhouse tools like Adobe
+
+9
+00:00:26,240 --> 00:00:30,800
+Experience Manager and Adobe Analytics.
+
+10
+00:00:28,800 --> 00:00:32,640
+connects the pre-sale to post sale for a
+
+11
+00:00:30,800 --> 00:00:34,399
+lot of our products and is a sort of a
+
+12
+00:00:32,640 --> 00:00:36,640
+critical cornerstone or touchstone
+
+13
+00:00:34,399 --> 00:00:38,239
+within the organization. I'm currently
+
+14
+00:00:36,640 --> 00:00:40,160
+building a knowledge graph and semantic
+
+15
+00:00:38,239 --> 00:00:42,879
+system to improve customer journeys in a
+
+16
+00:00:40,160 --> 00:00:44,960
+multitude of ways. Um, today we're going
+
+17
+00:00:42,879 --> 00:00:46,960
+to talk about intentional arrangement.
+
+18
+00:00:44,960 --> 00:00:50,640
+Intentional arrangement is the explicit
+
+19
+00:00:46,960 --> 00:00:53,360
+or implicit acts of organization by
+
+20
+00:00:50,640 --> 00:00:55,680
+people or by computational processes
+
+21
+00:00:53,360 --> 00:00:59,600
+acting as proxies for or as
+
+22
+00:00:55,680 --> 00:01:02,800
+implementations of human intentionality.
+
+23
+00:00:59,600 --> 00:01:04,559
+By organizing with intention, we can go
+
+24
+00:01:02,800 --> 00:01:06,799
+from
+
+25
+00:01:04,559 --> 00:01:10,360
+digital hellscape and yes this is an AI
+
+26
+00:01:06,799 --> 00:01:10,360
+generated image
+
+27
+00:01:11,439 --> 00:01:16,400
+to information nirvana.
+
+28
+00:01:14,400 --> 00:01:19,119
+A structured and curated information
+
+29
+00:01:16,400 --> 00:01:21,439
+landscape, a semantic by design and
+
+30
+00:01:19,119 --> 00:01:23,439
+intentionally organized to make sense to
+
+31
+00:01:21,439 --> 00:01:27,880
+humans and machines, including
+
+32
+00:01:23,439 --> 00:01:27,880
+generative artificial intelligence.
+
+33
+00:01:28,479 --> 00:01:34,000
+Information begins with data. We can all
+
+34
+00:01:30,640 --> 00:01:37,040
+agree on that. LLMs are an assemblage of
+
+35
+00:01:34,000 --> 00:01:39,600
+statistical models representing patterns
+
+36
+00:01:37,040 --> 00:01:41,680
+of language. But having data or having a
+
+37
+00:01:39,600 --> 00:01:43,759
+lot of data is not enough to solve
+
+38
+00:01:41,680 --> 00:01:46,320
+business problems. To solve business
+
+39
+00:01:43,759 --> 00:01:48,880
+problems, data must be structured and
+
+40
+00:01:46,320 --> 00:01:50,960
+contextualized in order to deliver
+
+41
+00:01:48,880 --> 00:01:54,880
+results relevant to a domain, a
+
+42
+00:01:50,960 --> 00:01:57,040
+business, the internet, or the world.
+
+43
+00:01:54,880 --> 00:01:59,040
+In fact, the mainstreaming of AI has
+
+44
+00:01:57,040 --> 00:02:01,360
+shined a light, I like to say a black
+
+45
+00:01:59,040 --> 00:02:04,479
+light because it's uncovering or
+
+46
+00:02:01,360 --> 00:02:06,799
+surfacing all of these issues within
+
+47
+00:02:04,479 --> 00:02:09,759
+organizations, quality issues, and the
+
+48
+00:02:06,799 --> 00:02:11,840
+importance of structured semantic data.
+
+49
+00:02:09,759 --> 00:02:14,640
+Knowledge management practices are
+
+50
+00:02:11,840 --> 00:02:17,440
+missing, absent from most organizations
+
+51
+00:02:14,640 --> 00:02:20,879
+and as a result, LLMs cannot make sense
+
+52
+00:02:17,440 --> 00:02:22,959
+of unstructured business environments.
+
+53
+00:02:20,879 --> 00:02:25,360
+However, everyone wants a knowledge
+
+54
+00:02:22,959 --> 00:02:27,760
+graph because graphs have been proven to
+
+55
+00:02:25,360 --> 00:02:29,920
+be the answer for wayward AI
+
+56
+00:02:27,760 --> 00:02:33,760
+implementations.
+
+57
+00:02:29,920 --> 00:02:35,599
+Guess what? A knowledge graphs is a
+
+58
+00:02:33,760 --> 00:02:38,560
+knowledge management tool. So knowledge
+
+59
+00:02:35,599 --> 00:02:40,400
+graphs are knowledge management tools
+
+60
+00:02:38,560 --> 00:02:43,200
+that require knowledge management
+
+61
+00:02:40,400 --> 00:02:45,519
+practices to render semantic structured
+
+62
+00:02:43,200 --> 00:02:49,160
+data for machine and human information
+
+63
+00:02:45,519 --> 00:02:49,160
+retrieval tasks.
+
+64
+00:02:52,160 --> 00:02:55,760
+Collison Gnik in the Wall Street
+
+65
+00:02:53,920 --> 00:02:58,800
+Journal, she's a fabulous columnist,
+
+66
+00:02:55,760 --> 00:03:01,200
+opinion writer, characterizes Gen AI as
+
+67
+00:02:58,800 --> 00:03:05,120
+a cultural technology, which I really
+
+68
+00:03:01,200 --> 00:03:07,680
+like. It really uh lands at least in how
+
+69
+00:03:05,120 --> 00:03:09,840
+I perceive the AI landscape and it
+
+70
+00:03:07,680 --> 00:03:13,200
+perfectly positions how we should be
+
+71
+00:03:09,840 --> 00:03:15,200
+approaching AI from training data to rag
+
+72
+00:03:13,200 --> 00:03:18,319
+implementations to the classification of
+
+73
+00:03:15,200 --> 00:03:20,560
+output. Cultural technologies in her
+
+74
+00:03:18,319 --> 00:03:23,360
+terms provides ways of communicating
+
+75
+00:03:20,560 --> 00:03:25,200
+information between groups of people.
+
+76
+00:03:23,360 --> 00:03:27,519
+Examples she suggests are writing,
+
+77
+00:03:25,200 --> 00:03:30,080
+print, libraries, internet search
+
+78
+00:03:27,519 --> 00:03:32,239
+engines or even language itself. She
+
+79
+00:03:30,080 --> 00:03:34,480
+states that asking whether an LLM is
+
+80
+00:03:32,239 --> 00:03:36,319
+intelligent or knows about the world is
+
+81
+00:03:34,480 --> 00:03:38,959
+like asking the University of
+
+82
+00:03:36,319 --> 00:03:41,200
+California's library is intelligent or
+
+83
+00:03:38,959 --> 00:03:44,560
+whether a Google search knows the answer
+
+84
+00:03:41,200 --> 00:03:47,280
+to your questions. It is how you use the
+
+85
+00:03:44,560 --> 00:03:49,040
+technology that lends intelligence. She
+
+86
+00:03:47,280 --> 00:03:52,319
+reminds us that previous cultural
+
+87
+00:03:49,040 --> 00:03:54,879
+technologies also caused concerns. She
+
+88
+00:03:52,319 --> 00:03:56,879
+gives the example of Socrates thoughts
+
+89
+00:03:54,879 --> 00:03:58,560
+about the effects of writing on the
+
+90
+00:03:56,879 --> 00:04:02,840
+ability to remember. I'm not sure if
+
+91
+00:03:58,560 --> 00:04:02,840
+many of you are familiar with this.
+
+92
+00:04:02,959 --> 00:04:09,840
+Socrates believed that by codifying or
+
+93
+00:04:07,120 --> 00:04:11,920
+recording your thoughts in writing or
+
+94
+00:04:09,840 --> 00:04:14,480
+publishing that humans would in fact
+
+95
+00:04:11,920 --> 00:04:16,959
+lose memory, which is very similar to
+
+96
+00:04:14,480 --> 00:04:18,720
+what we're facing today with AI and some
+
+97
+00:04:16,959 --> 00:04:21,120
+of the fears around those
+
+98
+00:04:18,720 --> 00:04:22,960
+implementations.
+
+99
+00:04:21,120 --> 00:04:25,360
+So like the internet, we share concern
+
+100
+00:04:22,960 --> 00:04:26,880
+about the potential for people using LLM
+
+101
+00:04:25,360 --> 00:04:29,759
+to spread disinformation and
+
+102
+00:04:26,880 --> 00:04:32,880
+misinformation whether intentionally or
+
+103
+00:04:29,759 --> 00:04:36,560
+by accident. So you know we know that
+
+104
+00:04:32,880 --> 00:04:38,479
+humans or we can assume best intent.
+
+105
+00:04:36,560 --> 00:04:40,960
+She also notes that past cultural
+
+106
+00:04:38,479 --> 00:04:43,840
+technologies required new norms, new
+
+107
+00:04:40,960 --> 00:04:46,960
+rules, laws, and institutions to make
+
+108
+00:04:43,840 --> 00:04:50,160
+sure that the good outweighs the e ill.
+
+109
+00:04:46,960 --> 00:04:52,240
+From sharing sha by shaming liars and
+
+110
+00:04:50,160 --> 00:04:55,680
+honoring truth tellers to inventing
+
+111
+00:04:52,240 --> 00:04:59,240
+factcheckers, librarians, liel laws, and
+
+112
+00:04:55,680 --> 00:04:59,240
+privacy regulations.
+
+113
+00:04:59,840 --> 00:05:03,440
+Why are knowledge graphs at the center
+
+114
+00:05:01,360 --> 00:05:05,680
+of Gartner's impact raider for
+
+115
+00:05:03,440 --> 00:05:08,160
+generative AI?
+
+116
+00:05:05,680 --> 00:05:11,520
+because they are the critical helper
+
+117
+00:05:08,160 --> 00:05:14,160
+function for the LLM. A knowledge graph
+
+118
+00:05:11,520 --> 00:05:16,080
+represents the distilled organizational
+
+119
+00:05:14,160 --> 00:05:19,039
+business and do domain specific
+
+120
+00:05:16,080 --> 00:05:21,039
+knowledge of your company providing high
+
+121
+00:05:19,039 --> 00:05:23,440
+quality curated and structured
+
+122
+00:05:21,039 --> 00:05:26,000
+information to the LLM via
+
+123
+00:05:23,440 --> 00:05:28,240
+implementations like RAG.
+
+124
+00:05:26,000 --> 00:05:31,280
+that that's often the missing piece
+
+125
+00:05:28,240 --> 00:05:33,680
+which can change the output of the LLM
+
+126
+00:05:31,280 --> 00:05:36,720
+from a dangerous hallucination to a
+
+127
+00:05:33,680 --> 00:05:40,440
+helpful situation and a helpful solution
+
+128
+00:05:36,720 --> 00:05:40,440
+for business problems.
+
+129
+00:05:42,880 --> 00:05:48,800
+All cultural technologies if we consider
+
+130
+00:05:45,120 --> 00:05:50,800
+AI to be cultural technology relies upon
+
+131
+00:05:48,800 --> 00:05:52,400
+knowledge management.
+
+132
+00:05:50,800 --> 00:05:54,240
+What are examples of cultural
+
+133
+00:05:52,400 --> 00:05:56,160
+technologies? We see them and we live
+
+134
+00:05:54,240 --> 00:05:58,639
+them everywhere. So their libraries,
+
+135
+00:05:56,160 --> 00:06:00,880
+archives, museums, scholarly publication
+
+136
+00:05:58,639 --> 00:06:02,560
+channels, academia, and even search
+
+137
+00:06:00,880 --> 00:06:05,520
+engines such as Google and Microsoft
+
+138
+00:06:02,560 --> 00:06:07,680
+Bing. A knowledge graph is a tool for
+
+139
+00:06:05,520 --> 00:06:10,400
+knowledge management and therefore an
+
+140
+00:06:07,680 --> 00:06:12,479
+essential cultural practice focused upon
+
+141
+00:06:10,400 --> 00:06:14,720
+leveraging machines to support
+
+142
+00:06:12,479 --> 00:06:17,199
+information retrieval.
+
+143
+00:06:14,720 --> 00:06:19,360
+The ethos of knowledge management is
+
+144
+00:06:17,199 --> 00:06:21,520
+founded upon principles such as
+
+145
+00:06:19,360 --> 00:06:23,280
+accuracy truthfulness machine
+
+146
+00:06:21,520 --> 00:06:26,880
+readability, and interpret
+
+147
+00:06:23,280 --> 00:06:29,280
+interoperability with minimal bias. As a
+
+148
+00:06:26,880 --> 00:06:32,000
+cultural technology, the information we
+
+149
+00:06:29,280 --> 00:06:35,360
+model, consume, and share should
+
+150
+00:06:32,000 --> 00:06:39,440
+represent facts which manifest as real
+
+151
+00:06:35,360 --> 00:06:43,840
+ideas and real things in the real world,
+
+152
+00:06:39,440 --> 00:06:46,639
+all with accurate context.
+
+153
+00:06:43,840 --> 00:06:50,800
+One thing that cannot be automated is
+
+154
+00:06:46,639 --> 00:06:53,440
+deciding what the truth is. Humans must
+
+155
+00:06:50,800 --> 00:06:56,800
+design for the truth.
+
+156
+00:06:53,440 --> 00:06:59,680
+It is people that ultimately shape data
+
+157
+00:06:56,800 --> 00:07:02,080
+to become information. Relegating the
+
+158
+00:06:59,680 --> 00:07:05,680
+creation of knowledge graphs to the LLM
+
+159
+00:07:02,080 --> 00:07:09,840
+is like relegating the creation of eval
+
+160
+00:07:05,680 --> 00:07:11,599
+to the LLM without human insight.
+
+161
+00:07:09,840 --> 00:07:13,840
+Knowledge management as a cultural
+
+162
+00:07:11,599 --> 00:07:16,319
+practice is about grounding data with
+
+163
+00:07:13,840 --> 00:07:19,280
+facts to create information
+
+164
+00:07:16,319 --> 00:07:23,120
+informationrich landscapes built for
+
+165
+00:07:19,280 --> 00:07:26,960
+reliable information retrieval. In other
+
+166
+00:07:23,120 --> 00:07:29,039
+words, AI cannot exist without people.
+
+167
+00:07:26,960 --> 00:07:30,880
+People curating and structuring data to
+
+168
+00:07:29,039 --> 00:07:32,639
+become information which is then
+
+169
+00:07:30,880 --> 00:07:35,919
+presented as knowledge in a knowledge
+
+170
+00:07:32,639 --> 00:07:38,720
+graph. This fact setting establishes
+
+171
+00:07:35,919 --> 00:07:41,199
+ground truths to serve as LLM contextual
+
+172
+00:07:38,720 --> 00:07:44,880
+inputs throughout the life cycle of an
+
+173
+00:07:41,199 --> 00:07:47,680
+LLM. Knowledge management is the human
+
+174
+00:07:44,880 --> 00:07:52,440
+touch that legitimizes AI as a
+
+175
+00:07:47,680 --> 00:07:52,440
+trustworthy cultural technology.
+
+176
+00:07:54,560 --> 00:07:58,560
+So some of you may be familiar with this
+
+177
+00:07:56,720 --> 00:08:02,319
+type of construct and of course I use
+
+178
+00:07:58,560 --> 00:08:05,680
+Tim Verers Lee as the example here but
+
+179
+00:08:02,319 --> 00:08:07,520
+um you know for over three centuries
+
+180
+00:08:05,680 --> 00:08:09,199
+librarians have been managing knowledge
+
+181
+00:08:07,520 --> 00:08:10,800
+and evolving knowledge management
+
+182
+00:08:09,199 --> 00:08:12,960
+practices
+
+183
+00:08:10,800 --> 00:08:14,720
+with the digitization of bibliographic
+
+184
+00:08:12,960 --> 00:08:18,960
+records I mean that's how we found find
+
+185
+00:08:14,720 --> 00:08:20,720
+books or resources um in the 1960s and
+
+186
+00:08:18,960 --> 00:08:22,560
+the emergence of the worldwide web in
+
+187
+00:08:20,720 --> 00:08:24,479
+the 80s and early 90s
+
+188
+00:08:22,560 --> 00:08:26,319
+Librarians adopted consistent and
+
+189
+00:08:24,479 --> 00:08:28,960
+standardized methods for managing and
+
+190
+00:08:26,319 --> 00:08:31,440
+connecting distributed big data. So,
+
+191
+00:08:28,960 --> 00:08:33,599
+it's a knowledge management practice.
+
+192
+00:08:31,440 --> 00:08:35,919
+Authority records became critical to
+
+193
+00:08:33,599 --> 00:08:38,959
+building and connecting rich semantic
+
+194
+00:08:35,919 --> 00:08:41,839
+knowledge management systems. Link data
+
+195
+00:08:38,959 --> 00:08:43,519
+proved essential for entity resolution,
+
+196
+00:08:41,839 --> 00:08:46,080
+identity management, embedded
+
+197
+00:08:43,519 --> 00:08:48,959
+references, and citations.
+
+198
+00:08:46,080 --> 00:08:51,200
+This unlocked the linked the linking of
+
+199
+00:08:48,959 --> 00:08:53,760
+data points and records across vast
+
+200
+00:08:51,200 --> 00:08:56,320
+globally connected data systems and
+
+201
+00:08:53,760 --> 00:08:58,399
+linked data fit neatly into metadata
+
+202
+00:08:56,320 --> 00:09:00,720
+rich catalog records naturally
+
+203
+00:08:58,399 --> 00:09:02,800
+standardized and formatted using machine
+
+204
+00:09:00,720 --> 00:09:05,519
+readable languages and formats such as
+
+205
+00:09:02,800 --> 00:09:07,760
+XML and RDF.
+
+206
+00:09:05,519 --> 00:09:09,680
+So these same principles were
+
+207
+00:09:07,760 --> 00:09:11,839
+evangelized by one founder of the
+
+208
+00:09:09,680 --> 00:09:13,920
+worldwide web, Tim Berners Lee, who
+
+209
+00:09:11,839 --> 00:09:17,120
+espoused the virtues and critical
+
+210
+00:09:13,920 --> 00:09:19,920
+importance of linked data in his 2006
+
+211
+00:09:17,120 --> 00:09:22,000
+linked data note. I don't know if many
+
+212
+00:09:19,920 --> 00:09:23,920
+of you have seen the linked data note,
+
+213
+00:09:22,000 --> 00:09:26,399
+but it sort of resonates with what's
+
+214
+00:09:23,920 --> 00:09:28,560
+going on today. And as a side note, I
+
+215
+00:09:26,399 --> 00:09:32,800
+also suggest if you haven't seen his bag
+
+216
+00:09:28,560 --> 00:09:35,440
+of chips talk from 2009 2010, it would
+
+217
+00:09:32,800 --> 00:09:38,080
+also be great just to visit that. It's
+
+218
+00:09:35,440 --> 00:09:40,399
+easily discoverable on the web.
+
+219
+00:09:38,080 --> 00:09:43,519
+So uh these principles that Tim Berners
+
+220
+00:09:40,399 --> 00:09:45,600
+Lee evangelized uh were he espoused the
+
+221
+00:09:43,519 --> 00:09:48,560
+virtues and critical importance of link
+
+222
+00:09:45,600 --> 00:09:50,959
+data and
+
+223
+00:09:48,560 --> 00:09:53,920
+the interesting thing was that he had
+
+224
+00:09:50,959 --> 00:09:58,080
+five and it's the five star quality data
+
+225
+00:09:53,920 --> 00:10:00,560
+spectrum um which was HTTP
+
+226
+00:09:58,080 --> 00:10:04,399
+URI identifiers
+
+227
+00:10:00,560 --> 00:10:06,880
+um and really evangelized that HTTP URI
+
+228
+00:10:04,399 --> 00:10:08,399
+identifiers could help tremendously with
+
+229
+00:10:06,880 --> 00:10:13,200
+information retrieval, retrieval,
+
+230
+00:10:08,399 --> 00:10:16,399
+retrieving factual information and that
+
+231
+00:10:13,200 --> 00:10:19,279
+um RDF was necessary to structure data
+
+232
+00:10:16,399 --> 00:10:22,160
+as statements for semantic uh structured
+
+233
+00:10:19,279 --> 00:10:24,959
+data retrieval, sparkle for querying it
+
+234
+00:10:22,160 --> 00:10:28,000
+and the systematic linking of documents
+
+235
+00:10:24,959 --> 00:10:32,000
+across the web. If you hear today about
+
+236
+00:10:28,000 --> 00:10:34,160
+web 3.0 0 or the semantic web. This is
+
+237
+00:10:32,000 --> 00:10:35,920
+really not a new concept but a con
+
+238
+00:10:34,160 --> 00:10:39,600
+continuation of the founding principles
+
+239
+00:10:35,920 --> 00:10:41,360
+of the web. In the age of AI, everyone
+
+240
+00:10:39,600 --> 00:10:43,360
+using these technologies will benefit
+
+241
+00:10:41,360 --> 00:10:46,240
+from the first principles of authority
+
+242
+00:10:43,360 --> 00:10:49,680
+records, link data, and library sciences
+
+243
+00:10:46,240 --> 00:10:54,760
+as a practical method to minimize LLM
+
+244
+00:10:49,680 --> 00:10:54,760
+hallucinations. And this is not a reach.
+
+245
+00:10:56,240 --> 00:11:01,279
+So, this is a really interesting project
+
+246
+00:10:58,240 --> 00:11:04,000
+and I really encourage all of you to um
+
+247
+00:11:01,279 --> 00:11:06,560
+actually look or or research this
+
+248
+00:11:04,000 --> 00:11:08,959
+project. You know, OLC, I'm not sure how
+
+249
+00:11:06,560 --> 00:11:10,720
+many of you are familiar with OLC, but
+
+250
+00:11:08,959 --> 00:11:14,000
+it's the online computer library center.
+
+251
+00:11:10,720 --> 00:11:15,920
+It used to be the Ohio um li computer
+
+252
+00:11:14,000 --> 00:11:18,079
+library center because it's located in
+
+253
+00:11:15,920 --> 00:11:19,920
+Ohio or Dublin, Ohio, which is the same
+
+254
+00:11:18,079 --> 00:11:22,880
+town where Dublin Core comes from. So
+
+255
+00:11:19,920 --> 00:11:27,440
+that's a little rare Midwest hotbed for
+
+256
+00:11:22,880 --> 00:11:29,680
+a lot of semantic activity. Um but uh so
+
+257
+00:11:27,440 --> 00:11:32,160
+they are the owner and manager of
+
+258
+00:11:29,680 --> 00:11:34,720
+WorldCat and that's the worldwide
+
+259
+00:11:32,160 --> 00:11:36,959
+catalog. It is incredible. It's a
+
+260
+00:11:34,720 --> 00:11:40,320
+massiveworked knowledge graph that
+
+261
+00:11:36,959 --> 00:11:44,240
+connects um data through a very
+
+262
+00:11:40,320 --> 00:11:46,000
+interesting linked data system and it's
+
+263
+00:11:44,240 --> 00:11:49,120
+the world's largest interoperable
+
+264
+00:11:46,000 --> 00:11:51,680
+library catalog and it represents um you
+
+265
+00:11:49,120 --> 00:11:53,600
+know it it it includes uh
+
+266
+00:11:51,680 --> 00:11:55,760
+cooperativelyworked
+
+267
+00:11:53,600 --> 00:11:57,920
+environments with major knowledge graphs
+
+268
+00:11:55,760 --> 00:11:59,440
+such as wiki data, Amazon books, Google
+
+269
+00:11:57,920 --> 00:12:02,640
+books and academic scholarly
+
+270
+00:11:59,440 --> 00:12:05,279
+publications. uh it's a massive worked
+
+271
+00:12:02,640 --> 00:12:06,959
+knowledge management system and has been
+
+272
+00:12:05,279 --> 00:12:08,800
+the vehicle and orchestrator of
+
+273
+00:12:06,959 --> 00:12:11,279
+continued link data initiatives
+
+274
+00:12:08,800 --> 00:12:15,120
+throughout digital rep repositories of
+
+275
+00:12:11,279 --> 00:12:17,920
+knowledge. So beginning in 2009 each of
+
+276
+00:12:15,120 --> 00:12:20,399
+OLC's collaborative efforts have focused
+
+277
+00:12:17,920 --> 00:12:23,440
+upon launching large interoperable link
+
+278
+00:12:20,399 --> 00:12:25,279
+data semantic systems and it culminated
+
+279
+00:12:23,440 --> 00:12:28,079
+in the shared entity management
+
+280
+00:12:25,279 --> 00:12:30,560
+infrastructure in 2021.
+
+281
+00:12:28,079 --> 00:12:32,720
+So as data and information and knowledge
+
+282
+00:12:30,560 --> 00:12:34,480
+expands and contracts with the speed of
+
+283
+00:12:32,720 --> 00:12:36,079
+its creation and deletion which is
+
+284
+00:12:34,480 --> 00:12:39,120
+something we're all dealing with in the
+
+285
+00:12:36,079 --> 00:12:41,360
+knowledge graph space um linked data
+
+286
+00:12:39,120 --> 00:12:43,519
+provides this flexibility without
+
+287
+00:12:41,360 --> 00:12:46,399
+compromising the integrity of knowledge
+
+288
+00:12:43,519 --> 00:12:48,800
+management systems. The entire shared
+
+289
+00:12:46,399 --> 00:12:51,760
+link data infrastructure benefits all
+
+290
+00:12:48,800 --> 00:12:54,399
+users and systems through collaboration
+
+291
+00:12:51,760 --> 00:12:56,560
+and has established a global system for
+
+292
+00:12:54,399 --> 00:12:58,480
+distributed entity and identity
+
+293
+00:12:56,560 --> 00:13:01,360
+management. It is really impressive.
+
+294
+00:12:58,480 --> 00:13:04,720
+It's not perfect, but it's impressive.
+
+295
+00:13:01,360 --> 00:13:06,240
+Evolving library data into lip data
+
+296
+00:13:04,720 --> 00:13:08,079
+frees the knowledge in library
+
+297
+00:13:06,240 --> 00:13:10,800
+collections and connects it to the
+
+298
+00:13:08,079 --> 00:13:13,519
+knowledge streams that inform our
+
+299
+00:13:10,800 --> 00:13:15,680
+everyday lives on the web through smart
+
+300
+00:13:13,519 --> 00:13:19,240
+devices and using technologies like
+
+301
+00:13:15,680 --> 00:13:19,240
+artificial intelligence.
+
+302
+00:13:21,920 --> 00:13:26,160
+So why link data?
+
+303
+00:13:24,639 --> 00:13:29,600
+Descriptive metadata records and
+
+304
+00:13:26,160 --> 00:13:32,240
+ontologies can be heavy and verbose. So
+
+305
+00:13:29,600 --> 00:13:34,720
+we also know that how to deal with those
+
+306
+00:13:32,240 --> 00:13:36,720
+sorts of issues to a degree and it makes
+
+307
+00:13:34,720 --> 00:13:39,279
+it difficult to manage knowledge at
+
+308
+00:13:36,720 --> 00:13:41,360
+scale. Link data streamlines the
+
+309
+00:13:39,279 --> 00:13:44,399
+description process while enabling the
+
+310
+00:13:41,360 --> 00:13:46,880
+serendipitous discovery of new concepts
+
+311
+00:13:44,399 --> 00:13:50,560
+through relationships between link data
+
+312
+00:13:46,880 --> 00:13:53,920
+authority records. In the case of LLMs,
+
+313
+00:13:50,560 --> 00:13:57,680
+linked data provides structured machine
+
+314
+00:13:53,920 --> 00:14:00,160
+readable descriptive data and all the
+
+315
+00:13:57,680 --> 00:14:02,079
+same benefits are afforded to humans.
+
+316
+00:14:00,160 --> 00:14:05,040
+You get enhanced discoverability,
+
+317
+00:14:02,079 --> 00:14:08,040
+improved interoperability and contextual
+
+318
+00:14:05,040 --> 00:14:08,040
+understanding.
+
+319
+00:14:08,240 --> 00:14:13,920
+For the decade long or over a decade
+
+320
+00:14:10,240 --> 00:14:16,079
+long OLC data project, link data project
+
+321
+00:14:13,920 --> 00:14:19,279
+to be successful, communities had to
+
+322
+00:14:16,079 --> 00:14:21,760
+agree to the meaning of common shared
+
+323
+00:14:19,279 --> 00:14:23,199
+data. While each organization or
+
+324
+00:14:21,760 --> 00:14:26,320
+community can have their own unique
+
+325
+00:14:23,199 --> 00:14:28,480
+vocabularies and metadata linked data
+
+326
+00:14:26,320 --> 00:14:30,639
+connects unique terminology to the
+
+327
+00:14:28,480 --> 00:14:33,120
+commons and resolves the varied terms
+
+328
+00:14:30,639 --> 00:14:35,600
+via ontology rich meta records and
+
+329
+00:14:33,120 --> 00:14:38,480
+authority records.
+
+330
+00:14:35,600 --> 00:14:41,760
+It's truly is communitydriven from that
+
+331
+00:14:38,480 --> 00:14:44,000
+perspective. Now that OLC's link data
+
+332
+00:14:41,760 --> 00:14:46,720
+project has reached maturity, libraries
+
+333
+00:14:44,000 --> 00:14:50,000
+are shifting away from traditional
+
+334
+00:14:46,720 --> 00:14:51,839
+cataloging to entity and identity
+
+335
+00:14:50,000 --> 00:14:54,480
+management.
+
+336
+00:14:51,839 --> 00:14:57,040
+Identity management is entity and
+
+337
+00:14:54,480 --> 00:14:59,040
+identity management. So it actually and
+
+338
+00:14:57,040 --> 00:15:00,800
+relationship management, excuse me. So
+
+339
+00:14:59,040 --> 00:15:02,560
+when we talk about identity management
+
+340
+00:15:00,800 --> 00:15:05,279
+in the library and information science
+
+341
+00:15:02,560 --> 00:15:09,279
+space, it really encompasses all of
+
+342
+00:15:05,279 --> 00:15:11,360
+those practices with the benefit of
+
+343
+00:15:09,279 --> 00:15:14,000
+worked link data systems managing
+
+344
+00:15:11,360 --> 00:15:17,600
+entities at scale to optimize knowledge
+
+345
+00:15:14,000 --> 00:15:19,680
+discovery for humans and machines.
+
+346
+00:15:17,600 --> 00:15:22,079
+So I find it actually very interesting
+
+347
+00:15:19,680 --> 00:15:24,399
+that at this point or juncture that li
+
+348
+00:15:22,079 --> 00:15:26,160
+as a lot of enterprises are are
+
+349
+00:15:24,399 --> 00:15:27,920
+struggling with cataloges and moving
+
+350
+00:15:26,160 --> 00:15:29,839
+towards cataloges that in fact the
+
+351
+00:15:27,920 --> 00:15:31,920
+library and information science space is
+
+352
+00:15:29,839 --> 00:15:34,920
+evolving away from those traditional
+
+353
+00:15:31,920 --> 00:15:34,920
+methods.
+
+354
+00:15:35,199 --> 00:15:38,560
+One of the most valuable learnings from
+
+355
+00:15:36,720 --> 00:15:41,040
+the OLC linked data project is the
+
+356
+00:15:38,560 --> 00:15:44,000
+codification of iterative data
+
+357
+00:15:41,040 --> 00:15:45,760
+preparation and cleaning processes.
+
+358
+00:15:44,000 --> 00:15:47,519
+Without data quality and knowledge
+
+359
+00:15:45,760 --> 00:15:49,920
+management, linked data systems will
+
+360
+00:15:47,519 --> 00:15:53,199
+suffer or fail. This is at the heart of
+
+361
+00:15:49,920 --> 00:15:55,600
+intentional arrangement.
+
+362
+00:15:53,199 --> 00:15:57,920
+Thoughtful approaches to organizing
+
+363
+00:15:55,600 --> 00:16:01,040
+focused upon every step throughout the
+
+364
+00:15:57,920 --> 00:16:03,759
+process to optimize both the input and
+
+365
+00:16:01,040 --> 00:16:06,480
+the output. The intentional arrangement
+
+366
+00:16:03,759 --> 00:16:08,639
+approach creates space to focus on tasks
+
+367
+00:16:06,480 --> 00:16:11,600
+such as curation, entity resolution, and
+
+368
+00:16:08,639 --> 00:16:14,160
+data modeling. Often the demands for
+
+369
+00:16:11,600 --> 00:16:17,440
+speed and development cycles bypasses
+
+370
+00:16:14,160 --> 00:16:20,079
+critical pre and post-processing phases
+
+371
+00:16:17,440 --> 00:16:21,920
+resulting in diminishing returns. This
+
+372
+00:16:20,079 --> 00:16:24,880
+approach has been carried over into the
+
+373
+00:16:21,920 --> 00:16:27,519
+data preparation process for AI systems
+
+374
+00:16:24,880 --> 00:16:29,360
+with the OLC project. They actually and
+
+375
+00:16:27,519 --> 00:16:31,680
+with the OLC project they were
+
+376
+00:16:29,360 --> 00:16:36,720
+successfully implementing robust AI
+
+377
+00:16:31,680 --> 00:16:39,199
+systems between 2009 to 2019 and seeing
+
+378
+00:16:36,720 --> 00:16:42,199
+amazing returns from those that those
+
+379
+00:16:39,199 --> 00:16:42,199
+efforts
+
+380
+00:16:43,279 --> 00:16:47,040
+to understand link data at scale you can
+
+381
+00:16:45,199 --> 00:16:50,079
+visit wiki data and what's really nice
+
+382
+00:16:47,040 --> 00:16:52,320
+is you can use or or reach a QR code and
+
+383
+00:16:50,079 --> 00:16:55,199
+even um be able to land on the same page
+
+384
+00:16:52,320 --> 00:16:57,120
+we're looking at here as you can see
+
+385
+00:16:55,199 --> 00:17:00,079
+here with link data data. Each concept
+
+386
+00:16:57,120 --> 00:17:02,880
+is assigned an HTTP identifier that
+
+387
+00:17:00,079 --> 00:17:04,720
+provides its canonical definition, often
+
+388
+00:17:02,880 --> 00:17:07,039
+doing so with links to other authority
+
+389
+00:17:04,720 --> 00:17:08,880
+records and not necessarily constrained
+
+390
+00:17:07,039 --> 00:17:10,720
+to the wiki data environment. As you can
+
+391
+00:17:08,880 --> 00:17:13,839
+see on the left or sorry, the right
+
+392
+00:17:10,720 --> 00:17:16,880
+rail, modern LLM can directly leverage
+
+393
+00:17:13,839 --> 00:17:18,799
+these URIs, which is very useful for rag
+
+394
+00:17:16,880 --> 00:17:20,480
+implementations. It's a very neat and
+
+395
+00:17:18,799 --> 00:17:23,480
+tidy little package with a lot of
+
+396
+00:17:20,480 --> 00:17:23,480
+information.
+
+397
+00:17:24,400 --> 00:17:27,919
+Unfortunately, you can't see my
+
+398
+00:17:25,679 --> 00:17:30,400
+animation. The bike is animated because
+
+399
+00:17:27,919 --> 00:17:32,559
+I locked this down in a PDF. But the
+
+400
+00:17:30,400 --> 00:17:34,799
+idea is that, you know, link data
+
+401
+00:17:32,559 --> 00:17:36,960
+enables concept discovery by forging
+
+402
+00:17:34,799 --> 00:17:40,240
+connections between what is explicitly
+
+403
+00:17:36,960 --> 00:17:42,240
+modeled by humans. LLMs can leverage
+
+404
+00:17:40,240 --> 00:17:43,520
+link data via rag to enable the
+
+405
+00:17:42,240 --> 00:17:45,200
+discovery of new concepts and
+
+406
+00:17:43,520 --> 00:17:48,320
+relationships. And that's really
+
+407
+00:17:45,200 --> 00:17:50,559
+important. Link data acts as a reference
+
+408
+00:17:48,320 --> 00:17:54,840
+librarian for concepts defined and
+
+409
+00:17:50,559 --> 00:17:54,840
+managed in the worldwide web.
+
+410
+00:17:56,799 --> 00:18:01,280
+This is a link data ecosystem snapshot
+
+411
+00:17:59,039 --> 00:18:02,640
+just to show how everything is connected
+
+412
+00:18:01,280 --> 00:18:05,360
+and as you can see you have Google
+
+413
+00:18:02,640 --> 00:18:07,280
+books, OLC, Amazon books, Goodreads and
+
+414
+00:18:05,360 --> 00:18:09,120
+Wiki data. It's all connects through
+
+415
+00:18:07,280 --> 00:18:11,840
+OLC.
+
+416
+00:18:09,120 --> 00:18:14,400
+The thing is curation is key. Curated
+
+417
+00:18:11,840 --> 00:18:16,960
+link data means choosing HTTP URI
+
+418
+00:18:14,400 --> 00:18:19,039
+identifiers to link data ontologically
+
+419
+00:18:16,960 --> 00:18:21,840
+using well-designed or openly available
+
+420
+00:18:19,039 --> 00:18:23,520
+ontologies to support intentional data
+
+421
+00:18:21,840 --> 00:18:26,000
+modeling practices for knowledge
+
+422
+00:18:23,520 --> 00:18:27,919
+management systems.
+
+423
+00:18:26,000 --> 00:18:31,760
+Remember a link data ecosystem such as
+
+424
+00:18:27,919 --> 00:18:33,760
+the OLC linked data project consists of
+
+425
+00:18:31,760 --> 00:18:36,880
+knowledge graphs. That's something very
+
+426
+00:18:33,760 --> 00:18:39,440
+important to remember to be successful.
+
+427
+00:18:36,880 --> 00:18:42,000
+Aligning to a common core understanding
+
+428
+00:18:39,440 --> 00:18:45,000
+of entity and identity management is
+
+429
+00:18:42,000 --> 00:18:45,000
+key.
+
+430
+00:18:46,480 --> 00:18:50,080
+Let's look at the players in this
+
+431
+00:18:47,919 --> 00:18:51,760
+massive link data system. And this is
+
+432
+00:18:50,080 --> 00:18:54,000
+you have to understand there's more than
+
+433
+00:18:51,760 --> 00:18:57,440
+400 participants in this more than
+
+434
+00:18:54,000 --> 00:18:59,120
+decade long project.
+
+435
+00:18:57,440 --> 00:19:01,200
+We have traffic partners. So they're
+
+436
+00:18:59,120 --> 00:19:02,960
+organized into verticals. So traffic
+
+437
+00:19:01,200 --> 00:19:04,320
+partners and traffic partners span the
+
+438
+00:19:02,960 --> 00:19:06,080
+divide between libraries and the
+
+439
+00:19:04,320 --> 00:19:08,160
+worldwide web. You know they're
+
+440
+00:19:06,080 --> 00:19:10,080
+responsible for socializing linked data
+
+441
+00:19:08,160 --> 00:19:12,080
+objects to make them widely discoverable
+
+442
+00:19:10,080 --> 00:19:13,600
+for all consumers.
+
+443
+00:19:12,080 --> 00:19:15,280
+Publishing contributes to the greater
+
+444
+00:19:13,600 --> 00:19:16,720
+whole with scholarly publications and
+
+445
+00:19:15,280 --> 00:19:18,880
+research objects. You can think of
+
+446
+00:19:16,720 --> 00:19:21,200
+Google Scholars as like scholar is one
+
+447
+00:19:18,880 --> 00:19:24,400
+of the most widely recognized and
+
+448
+00:19:21,200 --> 00:19:28,160
+libraries represent curated uh knowledge
+
+449
+00:19:24,400 --> 00:19:31,200
+repositories. education and academia
+
+450
+00:19:28,160 --> 00:19:33,039
+represents modern uh models skills and
+
+451
+00:19:31,200 --> 00:19:34,559
+learning frameworks. So it's really
+
+452
+00:19:33,039 --> 00:19:36,960
+important because that touches how
+
+453
+00:19:34,559 --> 00:19:39,440
+people consume information and their
+
+454
+00:19:36,960 --> 00:19:41,440
+thirst for knowledge. Um it goes without
+
+455
+00:19:39,440 --> 00:19:43,520
+saying this project would not have been
+
+456
+00:19:41,440 --> 00:19:46,240
+possible without standards and funding.
+
+457
+00:19:43,520 --> 00:19:48,880
+That's the key key building block. So
+
+458
+00:19:46,240 --> 00:19:52,880
+Wiki data has emerged as the most common
+
+459
+00:19:48,880 --> 00:19:55,760
+universally visible product uh to emerge
+
+460
+00:19:52,880 --> 00:19:57,679
+from this widescale effort. Wiki data
+
+461
+00:19:55,760 --> 00:19:59,520
+taxonomies and ontologies are commonly
+
+462
+00:19:57,679 --> 00:20:02,320
+used to create knowledge graphs for rag
+
+463
+00:19:59,520 --> 00:20:05,360
+implementations as the barrier of entry
+
+464
+00:20:02,320 --> 00:20:07,679
+is very very low and you can download
+
+465
+00:20:05,360 --> 00:20:10,000
+readily download um any of their machine
+
+466
+00:20:07,679 --> 00:20:12,400
+readable formats and implement a pretty
+
+467
+00:20:10,000 --> 00:20:14,880
+nice okay okay knowledge graph. Many
+
+468
+00:20:12,400 --> 00:20:17,760
+fans do not realize that what makes wiki
+
+469
+00:20:14,880 --> 00:20:20,000
+data so robust and valuable is linked
+
+470
+00:20:17,760 --> 00:20:24,520
+data. That's in fact the underlying
+
+471
+00:20:20,000 --> 00:20:24,520
+principle of that entire system.
+
+472
+00:20:25,120 --> 00:20:28,960
+Speaking of rag, isn't it interesting
+
+473
+00:20:26,880 --> 00:20:30,799
+that rag and link data offer similar
+
+474
+00:20:28,960 --> 00:20:32,880
+benefits and returns? So I started
+
+475
+00:20:30,799 --> 00:20:37,679
+looking at the parallels before trying
+
+476
+00:20:32,880 --> 00:20:40,000
+it myself between link data and ragg. So
+
+477
+00:20:37,679 --> 00:20:42,799
+the benefits and returns being similar
+
+478
+00:20:40,000 --> 00:20:44,720
+mostly because rag relies upon quality
+
+479
+00:20:42,799 --> 00:20:46,559
+data connections and linked data's
+
+480
+00:20:44,720 --> 00:20:48,799
+entire job is to ensure the quality of
+
+481
+00:20:46,559 --> 00:20:51,200
+data connections.
+
+482
+00:20:48,799 --> 00:20:52,559
+Linked data requires that connections
+
+483
+00:20:51,200 --> 00:20:54,640
+are well- definfined and machine
+
+484
+00:20:52,559 --> 00:20:57,520
+readable and rag appreciates semantic
+
+485
+00:20:54,640 --> 00:20:59,520
+structure. In fact, linked data works
+
+486
+00:20:57,520 --> 00:21:02,159
+incredibly well with with rag
+
+487
+00:20:59,520 --> 00:21:06,760
+implementations because link data is
+
+488
+00:21:02,159 --> 00:21:06,760
+built for retrieval precision.
+
+489
+00:21:07,679 --> 00:21:11,840
+A link data approach streamlines
+
+490
+00:21:10,000 --> 00:21:15,120
+knowledge representation with a simple
+
+491
+00:21:11,840 --> 00:21:17,440
+HTTP URI identifier to enrich an LLM
+
+492
+00:21:15,120 --> 00:21:20,400
+with real world contextual
+
+493
+00:21:17,440 --> 00:21:21,600
+understanding.
+
+494
+00:21:20,400 --> 00:21:24,960
+So now we're going to get into the
+
+495
+00:21:21,600 --> 00:21:27,039
+really fun stuff. So um there's a new
+
+496
+00:21:24,960 --> 00:21:28,640
+emerging alternative to rag and I'm not
+
+497
+00:21:27,039 --> 00:21:31,200
+sure if many of you have heard about it.
+
+498
+00:21:28,640 --> 00:21:33,039
+It's called rag or retrieval interleved
+
+499
+00:21:31,200 --> 00:21:36,480
+generation.
+
+500
+00:21:33,039 --> 00:21:39,120
+Google published a paper September 2024
+
+501
+00:21:36,480 --> 00:21:41,200
+uh introducing rig alongside a new
+
+502
+00:21:39,120 --> 00:21:44,320
+offering product offering of course
+
+503
+00:21:41,200 --> 00:21:46,799
+called data Gemma. Data Gemma combines
+
+504
+00:21:44,320 --> 00:21:50,320
+Gemma and Google's link data repository
+
+505
+00:21:46,799 --> 00:21:53,440
+data commons similar to the OLC project
+
+506
+00:21:50,320 --> 00:21:55,360
+very similar uh but
+
+507
+00:21:53,440 --> 00:21:58,240
+it's it's a little bit different in in
+
+508
+00:21:55,360 --> 00:22:00,159
+its construct and its purpose uh rig
+
+509
+00:21:58,240 --> 00:22:02,480
+allows for multiple retrievals at
+
+510
+00:22:00,159 --> 00:22:05,120
+various stages of response generation
+
+511
+00:22:02,480 --> 00:22:08,080
+addressing all aspects of a complex
+
+512
+00:22:05,120 --> 00:22:11,600
+query these dynamic this dynamic
+
+513
+00:22:08,080 --> 00:22:13,600
+approach enables AI systems to recognize
+
+514
+00:22:11,600 --> 00:22:16,640
+knowledge gaps as a general generates a
+
+515
+00:22:13,600 --> 00:22:18,559
+response and fetches data from external
+
+516
+00:22:16,640 --> 00:22:20,400
+sources. That's the key, external
+
+517
+00:22:18,559 --> 00:22:21,919
+sources multiple times during the
+
+518
+00:22:20,400 --> 00:22:23,840
+process.
+
+519
+00:22:21,919 --> 00:22:26,799
+By continuously retrieving and
+
+520
+00:22:23,840 --> 00:22:29,200
+integrating information, rig reduces the
+
+521
+00:22:26,799 --> 00:22:30,799
+likelihood of inaccuracies in the final
+
+522
+00:22:29,200 --> 00:22:32,960
+output.
+
+523
+00:22:30,799 --> 00:22:35,440
+It is the reflection from the outside
+
+524
+00:22:32,960 --> 00:22:39,320
+world, external sources via link data
+
+525
+00:22:35,440 --> 00:22:39,320
+where rig shines.
+
+526
+00:22:40,799 --> 00:22:44,640
+Okay. So now this is data commons. I
+
+527
+00:22:42,880 --> 00:22:47,200
+don't know how many of you are familiar
+
+528
+00:22:44,640 --> 00:22:48,400
+with it, but uh Google's data commons is
+
+529
+00:22:47,200 --> 00:22:50,159
+a knowledge graph. They've been working
+
+530
+00:22:48,400 --> 00:22:52,159
+on it. It's open source. It's open to
+
+531
+00:22:50,159 --> 00:22:54,640
+the public. You can find it online. It's
+
+532
+00:22:52,159 --> 00:22:56,880
+a link data repository that organizes
+
+533
+00:22:54,640 --> 00:22:59,440
+the world's public data sets and makes
+
+534
+00:22:56,880 --> 00:23:00,880
+them universally accessible and useful.
+
+535
+00:22:59,440 --> 00:23:04,000
+The thing about data commons that's
+
+536
+00:23:00,880 --> 00:23:07,440
+interesting is it's mostly statistical
+
+537
+00:23:04,000 --> 00:23:10,640
+data. It's like census uh data, you
+
+538
+00:23:07,440 --> 00:23:12,640
+know, uh demographic data and and it's
+
+539
+00:23:10,640 --> 00:23:15,919
+mostly from public sources such as the
+
+540
+00:23:12,640 --> 00:23:18,240
+UN, national census bureaus, health
+
+541
+00:23:15,919 --> 00:23:21,919
+ministries, environmental agencies,
+
+542
+00:23:18,240 --> 00:23:24,000
+economic departments, NOS's. Um but it's
+
+543
+00:23:21,919 --> 00:23:27,120
+statistical data and that's something
+
+544
+00:23:24,000 --> 00:23:30,320
+that numbers is difficult for for LLMs
+
+545
+00:23:27,120 --> 00:23:34,440
+to deal with. But supported with linked
+
+546
+00:23:30,320 --> 00:23:34,440
+data, it somehow works.
+
+547
+00:23:35,039 --> 00:23:42,960
+Google's RIG paper
+
+548
+00:23:38,799 --> 00:23:45,280
+focuses on three main hypotheses,
+
+549
+00:23:42,960 --> 00:23:48,240
+all of which were realized and proven
+
+550
+00:23:45,280 --> 00:23:50,720
+true. We can see the parallels between
+
+551
+00:23:48,240 --> 00:23:54,080
+the benefits of rig for AI systems and
+
+552
+00:23:50,720 --> 00:23:57,200
+the value proposition of linked data. So
+
+553
+00:23:54,080 --> 00:23:59,520
+number one, external sourc sources
+
+554
+00:23:57,200 --> 00:24:03,360
+versus closed internal sources are
+
+555
+00:23:59,520 --> 00:24:06,799
+valuable for teaching LLMs when and what
+
+556
+00:24:03,360 --> 00:24:09,679
+to ask. Leak data is an elegant solution
+
+557
+00:24:06,799 --> 00:24:11,520
+for reaching into the external world of
+
+558
+00:24:09,679 --> 00:24:16,279
+knowledge for knowledge modeling to
+
+559
+00:24:11,520 --> 00:24:16,279
+support contextual understanding.
+
+560
+00:24:17,440 --> 00:24:22,640
+Two,
+
+561
+00:24:19,279 --> 00:24:26,240
+rig handles the complexity and weight of
+
+562
+00:24:22,640 --> 00:24:28,400
+vast amounts of data using linked data.
+
+563
+00:24:26,240 --> 00:24:30,720
+Linked data delivers large amounts of
+
+564
+00:24:28,400 --> 00:24:36,760
+contextual semantic data packaged in a
+
+565
+00:24:30,720 --> 00:24:36,760
+neat HTTP URI identifier.
+
+566
+00:24:38,080 --> 00:24:45,200
+Three, rig evangelizes the value of a
+
+567
+00:24:41,360 --> 00:24:48,880
+common point of entry to external data
+
+568
+00:24:45,200 --> 00:24:51,360
+sources via a universal API.
+
+569
+00:24:48,880 --> 00:24:53,760
+Link data provides a persistent
+
+570
+00:24:51,360 --> 00:24:56,480
+identifier linked to a common data layer
+
+571
+00:24:53,760 --> 00:24:59,679
+to streamline knowledge management and
+
+572
+00:24:56,480 --> 00:25:02,400
+sharing. We've already witnessed rig at
+
+573
+00:24:59,679 --> 00:25:05,520
+work whether we know it or not uh with
+
+574
+00:25:02,400 --> 00:25:07,840
+LLM retrievalss providing citations in
+
+575
+00:25:05,520 --> 00:25:11,120
+addition to citations to related
+
+576
+00:25:07,840 --> 00:25:14,320
+objects. RIG demonstrates a meaningful
+
+577
+00:25:11,120 --> 00:25:17,200
+shift towards intentional knowledge
+
+578
+00:25:14,320 --> 00:25:20,559
+management practices and the application
+
+579
+00:25:17,200 --> 00:25:23,360
+of link data like two halves of a whole.
+
+580
+00:25:20,559 --> 00:25:25,760
+Link data grounds humans and machines in
+
+581
+00:25:23,360 --> 00:25:30,200
+reality where all participants are
+
+582
+00:25:25,760 --> 00:25:30,200
+accountable to a common core.
+
+583
+00:25:32,880 --> 00:25:38,400
+Linked data architectures represent
+
+584
+00:25:36,240 --> 00:25:40,880
+intentional arrangements. There's so
+
+585
+00:25:38,400 --> 00:25:43,039
+many applications where our systems can
+
+586
+00:25:40,880 --> 00:25:45,840
+benefit, knowledge management systems
+
+587
+00:25:43,039 --> 00:25:47,919
+can benefit from linked data. In the age
+
+588
+00:25:45,840 --> 00:25:50,000
+of AI, building upon linked data as a
+
+589
+00:25:47,919 --> 00:25:52,240
+methodology for knowledge management
+
+590
+00:25:50,000 --> 00:25:54,400
+means a return to the first principles
+
+591
+00:25:52,240 --> 00:25:56,640
+established by the library sciences and
+
+592
+00:25:54,400 --> 00:25:58,880
+the worldwide web. The more
+
+593
+00:25:56,640 --> 00:26:01,600
+organizations in the data industry
+
+594
+00:25:58,880 --> 00:26:04,320
+reflect upon information and knowledge
+
+595
+00:26:01,600 --> 00:26:07,120
+management practices,
+
+596
+00:26:04,320 --> 00:26:10,080
+the more gaps in design decisions become
+
+597
+00:26:07,120 --> 00:26:12,720
+clear. Knowledge management is a
+
+598
+00:26:10,080 --> 00:26:15,440
+practice built upon thousands of years
+
+599
+00:26:12,720 --> 00:26:17,360
+of organizing resources.
+
+600
+00:26:15,440 --> 00:26:20,000
+If it weren't for well ststructured
+
+601
+00:26:17,360 --> 00:26:23,120
+linked data from OLC's project, Google
+
+602
+00:26:20,000 --> 00:26:24,880
+commons, wiki data, and dbpedia, LLMs
+
+603
+00:26:23,120 --> 00:26:28,080
+would not be as powerful as they are
+
+604
+00:26:24,880 --> 00:26:30,960
+today because linked data describes
+
+605
+00:26:28,080 --> 00:26:32,640
+resources. Use linked data. Experiment
+
+606
+00:26:30,960 --> 00:26:34,480
+with knowledge expansion, entity
+
+607
+00:26:32,640 --> 00:26:36,480
+resolution, and data preparation
+
+608
+00:26:34,480 --> 00:26:38,080
+workflows. I promise you'll be
+
+609
+00:26:36,480 --> 00:26:41,279
+surprised.
+
+610
+00:26:38,080 --> 00:26:43,279
+Try rag with ontologies and HTTP URI
+
+611
+00:26:41,279 --> 00:26:45,279
+identifiers linking concepts to the
+
+612
+00:26:43,279 --> 00:26:49,200
+outside world to define and ground
+
+613
+00:26:45,279 --> 00:26:51,520
+truth. So by prioritizing resource
+
+614
+00:26:49,200 --> 00:26:53,600
+description and resource description
+
+615
+00:26:51,520 --> 00:26:56,559
+workflows and we all know what RDF
+
+616
+00:26:53,600 --> 00:26:59,120
+stands for, we focus on building towards
+
+617
+00:26:56,559 --> 00:27:01,039
+a common core of knowledge to enrich
+
+618
+00:26:59,120 --> 00:27:03,840
+knowledge repositories for communities
+
+619
+00:27:01,039 --> 00:27:06,960
+of practice. Intentional arrangement is
+
+620
+00:27:03,840 --> 00:27:09,039
+about being invested in people who are
+
+621
+00:27:06,960 --> 00:27:12,159
+ultimately the beneficiaries and
+
+622
+00:27:09,039 --> 00:27:15,159
+curators of information and knowledge
+
+623
+00:27:12,159 --> 00:27:15,159
+retrieval.
+
+624
+00:27:15,600 --> 00:27:20,440
+Thanks. Do you have any questions?
+
+625
+00:27:24,720 --> 00:27:29,080
+We've got the mic. We can run here.
+
+626
+00:27:33,760 --> 00:27:38,880
+I've got one quick question to run. Um,
+
+627
+00:27:36,880 --> 00:27:42,080
+a discussion some of us were having at
+
+628
+00:27:38,880 --> 00:27:45,760
+lunch. There's been a lot of uh how how
+
+629
+00:27:42,080 --> 00:27:47,360
+we sh how shall we say turmoil in
+
+630
+00:27:45,760 --> 00:27:48,720
+enterprise orgs I've run across because
+
+631
+00:27:47,360 --> 00:27:50,320
+they have content management, they have
+
+632
+00:27:48,720 --> 00:27:52,159
+data management. They're trying to align
+
+633
+00:27:50,320 --> 00:27:54,080
+it now. Um,
+
+634
+00:27:52,159 --> 00:27:56,960
+>> would it be fair to say that li library
+
+635
+00:27:54,080 --> 00:27:57,440
+science has has crossed this chasm many
+
+636
+00:27:56,960 --> 00:27:58,240
+many
+
+637
+00:27:57,440 --> 00:28:00,480
+>> so many times?
+
+638
+00:27:58,240 --> 00:28:02,159
+>> Yeah. So many times I mean knowledge
+
+639
+00:28:00,480 --> 00:28:04,000
+management is a discipline and a
+
+640
+00:28:02,159 --> 00:28:05,520
+practice. So it's something and it's a
+
+641
+00:28:04,000 --> 00:28:08,480
+people process as well and I think
+
+642
+00:28:05,520 --> 00:28:10,480
+that's the missing piece. So the idea of
+
+643
+00:28:08,480 --> 00:28:13,360
+having common core or aligning with a
+
+644
+00:28:10,480 --> 00:28:15,200
+common core as I detailed with link data
+
+645
+00:28:13,360 --> 00:28:17,360
+the same thing can be true within an
+
+646
+00:28:15,200 --> 00:28:19,440
+organization. You can build a common
+
+647
+00:28:17,360 --> 00:28:21,919
+core within your own organization and
+
+648
+00:28:19,440 --> 00:28:24,320
+that's how libraries manage knowledge
+
+649
+00:28:21,919 --> 00:28:26,720
+descriptive records as well and that's
+
+650
+00:28:24,320 --> 00:28:28,399
+simply semantics. So that's what's
+
+651
+00:28:26,720 --> 00:28:30,399
+interesting. I think we over complicate
+
+652
+00:28:28,399 --> 00:28:33,279
+semantics. It's more than just letters
+
+653
+00:28:30,399 --> 00:28:35,760
+and words. Um, but it's descriptions.
+
+654
+00:28:33,279 --> 00:28:36,320
+It's caring about your resources.
+
+655
+00:28:35,760 --> 00:28:37,919
+>> Very good.
+
+656
+00:28:36,320 --> 00:28:40,640
+>> Yeah.
+
+657
+00:28:37,919 --> 00:28:41,919
+>> Other questions?
+
+658
+00:28:40,640 --> 00:28:44,159
+>> If not, I know we've got a lot of people
+
+659
+00:28:41,919 --> 00:28:46,159
+coming in right now for next session.
+
+660
+00:28:44,159 --> 00:28:49,679
+Um oh
+
+661
+00:28:46,159 --> 00:28:51,039
+>> can you
+
+662
+00:28:49,679 --> 00:28:52,399
+>> I wonder if you could elaborate just a
+
+663
+00:28:51,039 --> 00:28:55,440
+little bit on that little tidbit at the
+
+664
+00:28:52,399 --> 00:28:56,880
+end about the the ancient heritage, this
+
+665
+00:28:55,440 --> 00:28:57,360
+thousands of year old heritage.
+
+666
+00:28:56,880 --> 00:28:59,039
+>> Yes.
+
+667
+00:28:57,360 --> 00:29:00,880
+>> And how does it compare with other
+
+668
+00:28:59,039 --> 00:29:02,240
+heritages that are looking at this?
+
+669
+00:29:00,880 --> 00:29:04,000
+>> Interesting.
+
+670
+00:29:02,240 --> 00:29:06,720
+>> Yeah. I mean, like if we look at
+
+671
+00:29:04,000 --> 00:29:09,360
+cultural repositories and how they've
+
+672
+00:29:06,720 --> 00:29:12,000
+been curated and organized. Yeah. I
+
+673
+00:29:09,360 --> 00:29:16,000
+think 3rd century BC was the first
+
+674
+00:29:12,000 --> 00:29:18,640
+official library. Um and so I think
+
+675
+00:29:16,000 --> 00:29:20,320
+there has been a convergence of of
+
+676
+00:29:18,640 --> 00:29:22,960
+different practices and knowledge
+
+677
+00:29:20,320 --> 00:29:24,640
+management um because there's oral
+
+678
+00:29:22,960 --> 00:29:27,600
+traditions. I mean I don't want to get
+
+679
+00:29:24,640 --> 00:29:30,720
+too nerdy on this but if we look yeah
+
+680
+00:29:27,600 --> 00:29:34,080
+but we're here. Um so the knowledge
+
+681
+00:29:30,720 --> 00:29:36,000
+management space is is really about
+
+682
+00:29:34,080 --> 00:29:39,440
+integrating these different cultural
+
+683
+00:29:36,000 --> 00:29:41,200
+practices. Um, and I do believe that
+
+684
+00:29:39,440 --> 00:29:43,520
+like especially from the library science
+
+685
+00:29:41,200 --> 00:29:46,960
+space, they're very quick to adapt and
+
+686
+00:29:43,520 --> 00:29:48,720
+find ways to integrate other practices.
+
+687
+00:29:46,960 --> 00:29:50,240
+And that's where I think it's it's it's
+
+688
+00:29:48,720 --> 00:29:51,600
+a really exciting time. Believe it or
+
+689
+00:29:50,240 --> 00:29:53,440
+not, in the library and information
+
+690
+00:29:51,600 --> 00:29:55,200
+science space, they're starting to
+
+691
+00:29:53,440 --> 00:29:57,360
+bolster some of their data engineering
+
+692
+00:29:55,200 --> 00:30:00,240
+and data science practices and having
+
+693
+00:29:57,360 --> 00:30:02,159
+to. So from a cultural perspective it's
+
+694
+00:30:00,240 --> 00:30:03,679
+like this sort of if I can take or
+
+695
+00:30:02,159 --> 00:30:06,240
+borrow from rig you know the
+
+696
+00:30:03,679 --> 00:30:09,840
+presentation the idea of interle that's
+
+697
+00:30:06,240 --> 00:30:11,600
+truly what it takes to make you know I I
+
+698
+00:30:09,840 --> 00:30:13,200
+think to make a working system knowledge
+
+699
+00:30:11,600 --> 00:30:14,559
+management system.
+
+700
+00:30:13,200 --> 00:30:15,760
+>> Yeah
+
+701
+00:30:14,559 --> 00:30:19,080
+>> thank you very much Jessica.
+
+702
+00:30:15,760 --> 00:30:19,080
+>> Yeah thanks.
+

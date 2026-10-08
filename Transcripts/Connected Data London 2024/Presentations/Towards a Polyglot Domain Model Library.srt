@@ -1,0 +1,3176 @@
+1
+00:00:05,000 --> 00:00:11,360
+Veronica Hatterline Hattberg.
+
+2
+00:00:07,840 --> 00:00:13,760
+Um, Veronica is a senior researcher in
+
+3
+00:00:11,360 --> 00:00:15,680
+uh semantics and reasoning at uh Siemens
+
+4
+00:00:13,760 --> 00:00:18,400
+Foundational Technologies.
+
+5
+00:00:15,680 --> 00:00:20,560
+Um, she's been in the field of knowledge
+
+6
+00:00:18,400 --> 00:00:21,800
+modeling with uh many years of
+
+7
+00:00:20,560 --> 00:00:24,400
+experience
+
+8
+00:00:21,800 --> 00:00:26,680
+uh across a range of industries from
+
+9
+00:00:24,400 --> 00:00:27,960
+offshore, defense, public sector, and
+
+10
+00:00:26,680 --> 00:00:30,960
+manufacturing.
+
+11
+00:00:27,960 --> 00:00:33,880
+Um, given her in-depth insights into how
+
+12
+00:00:30,960 --> 00:00:35,280
+to bring the the best of different of
+
+13
+00:00:33,880 --> 00:00:36,480
+these different communities of practice
+
+14
+00:00:35,280 --> 00:00:37,200
+together.
+
+15
+00:00:36,480 --> 00:00:40,600
+Uh,
+
+16
+00:00:37,200 --> 00:00:43,200
+and and you could probably say that uh
+
+17
+00:00:40,600 --> 00:00:45,720
+in terms of her uh academic background,
+
+18
+00:00:43,200 --> 00:00:46,840
+she uh comes from a uh linguistics
+
+19
+00:00:45,720 --> 00:00:49,760
+background.
+
+20
+00:00:46,840 --> 00:00:53,040
+Um, currently in her work in Siemens uh
+
+21
+00:00:49,760 --> 00:00:54,640
+research and pre-development. Uh,
+
+22
+00:00:53,040 --> 00:00:56,320
+and over the years uh she's been
+
+23
+00:00:54,640 --> 00:00:58,800
+involved in in a variety of different
+
+24
+00:00:56,320 --> 00:01:01,520
+communities of practice uh both in
+
+25
+00:00:58,800 --> 00:01:04,199
+Norway and in Germany.
+
+26
+00:01:01,520 --> 00:01:06,640
+And uh
+
+27
+00:01:04,199 --> 00:01:09,040
+I'll I'll leave further to to you to
+
+28
+00:01:06,640 --> 00:01:12,000
+talk, but the the her talk today is a
+
+29
+00:01:09,040 --> 00:01:14,520
+polyglot domain model library, narrowing
+
+30
+00:01:12,000 --> 00:01:16,960
+the gap between semantic engineers,
+
+31
+00:01:14,520 --> 00:01:18,480
+domain and standardization experts, and
+
+32
+00:01:16,960 --> 00:01:20,560
+software developers.
+
+33
+00:01:18,480 --> 00:01:22,480
+Um, I look forward.
+
+34
+00:01:20,560 --> 00:01:23,840
+Please join me in welcoming Veronica.
+
+35
+00:01:22,480 --> 00:01:25,860
+Thank you. Thank
+
+36
+00:01:23,840 --> 00:01:25,860
+>> [applause]
+
+37
+00:01:26,040 --> 00:01:29,000
+>> Can you hear me okay? Oh, yeah,
+
+38
+00:01:28,080 --> 00:01:32,280
+wonderful.
+
+39
+00:01:29,000 --> 00:01:35,160
+Um, yeah, and um as Paco said, I'm a
+
+40
+00:01:32,280 --> 00:01:39,400
+linguist and in my day-to-day work
+
+41
+00:01:35,160 --> 00:01:40,880
+I um help um our business units um
+
+42
+00:01:39,400 --> 00:01:43,680
+mechanical engineers, electrical
+
+43
+00:01:40,880 --> 00:01:46,000
+engineers, process engineers model their
+
+44
+00:01:43,680 --> 00:01:47,840
+domain knowledge into our data structure
+
+45
+00:01:46,000 --> 00:01:48,880
+so that the software actually reflects
+
+46
+00:01:47,840 --> 00:01:51,240
+the
+
+47
+00:01:48,880 --> 00:01:53,160
+knowledge. So, this talk will be very
+
+48
+00:01:51,240 --> 00:01:55,200
+much a report from the ground how it is
+
+49
+00:01:53,160 --> 00:01:57,800
+to be semantic modeling in our
+
+50
+00:01:55,200 --> 00:01:59,560
+organization.
+
+51
+00:01:57,800 --> 00:02:02,040
+What will I be talking about? First, I
+
+52
+00:01:59,560 --> 00:02:03,880
+will very briefly introduce what Siemens
+
+53
+00:02:02,040 --> 00:02:05,720
+Siemens does and why we need semantics
+
+54
+00:02:03,880 --> 00:02:07,320
+because we don't produce washing
+
+55
+00:02:05,720 --> 00:02:09,640
+machines anymore,
+
+56
+00:02:07,320 --> 00:02:12,880
+which is what most people associate with
+
+57
+00:02:09,640 --> 00:02:15,560
+Siemens. Um and what we tried in a first
+
+58
+00:02:12,880 --> 00:02:18,400
+attempt in order to introduce semantics
+
+59
+00:02:15,560 --> 00:02:20,640
+um and where we struggled and what how
+
+60
+00:02:18,400 --> 00:02:22,640
+we now think that we need to proceed
+
+61
+00:02:20,640 --> 00:02:24,520
+from from this onwards to what something
+
+62
+00:02:22,640 --> 00:02:27,040
+we call the polyglot domain model
+
+63
+00:02:24,520 --> 00:02:27,040
+library.
+
+64
+00:02:27,400 --> 00:02:33,160
+Okay, so what do we do? Um very very
+
+65
+00:02:30,520 --> 00:02:34,560
+simply put, and my colleagues will
+
+66
+00:02:33,160 --> 00:02:35,640
+shake their heads now when they hear
+
+67
+00:02:34,560 --> 00:02:36,480
+this but
+
+68
+00:02:35,640 --> 00:02:38,440
+we
+
+69
+00:02:36,480 --> 00:02:41,680
+uh we produce hardware to steer other
+
+70
+00:02:38,440 --> 00:02:44,400
+hardware, right? We produce these small
+
+71
+00:02:41,680 --> 00:02:47,720
+or big computers which can steer robots,
+
+72
+00:02:44,400 --> 00:02:51,040
+mixers, milling machines, assembly
+
+73
+00:02:47,720 --> 00:02:52,760
+lines, entire factories, right? Um
+
+74
+00:02:51,040 --> 00:02:55,680
+we built um
+
+75
+00:02:52,760 --> 00:03:00,160
+control um devices for energy flow in
+
+76
+00:02:55,680 --> 00:03:03,160
+buildings, grid grid um management, etc.
+
+77
+00:03:00,160 --> 00:03:05,360
+But increasingly over the last 15 years,
+
+78
+00:03:03,160 --> 00:03:07,400
+we have turned into more of a software
+
+79
+00:03:05,360 --> 00:03:09,560
+house, so we build a lot of software and
+
+80
+00:03:07,400 --> 00:03:12,519
+digital twins in order to help our
+
+81
+00:03:09,560 --> 00:03:15,400
+customers to steer these devices even
+
+82
+00:03:12,519 --> 00:03:18,480
+better, to learn from the data um which
+
+83
+00:03:15,400 --> 00:03:19,760
+these devices produce, um
+
+84
+00:03:18,480 --> 00:03:22,400
+yeah, and to improve their own
+
+85
+00:03:19,760 --> 00:03:25,200
+processes.
+
+86
+00:03:22,400 --> 00:03:27,560
+Um so we like to say that we connect the
+
+87
+00:03:25,200 --> 00:03:30,560
+physical with the digital world.
+
+88
+00:03:27,560 --> 00:03:32,519
+That's somehow the baseline.
+
+89
+00:03:30,560 --> 00:03:36,360
+And that's where the beauty is, but also
+
+90
+00:03:32,519 --> 00:03:38,000
+the challenge as we just will see.
+
+91
+00:03:36,360 --> 00:03:39,840
+Since we are dealing with a domain or
+
+92
+00:03:38,000 --> 00:03:41,440
+several domains which have been formally
+
+93
+00:03:39,840 --> 00:03:44,680
+described for
+
+94
+00:03:41,440 --> 00:03:46,840
+decades, even if not even centuries, at
+
+95
+00:03:44,680 --> 00:03:48,560
+least many many years before we had
+
+96
+00:03:46,840 --> 00:03:52,200
+large-scale software development and
+
+97
+00:03:48,560 --> 00:03:53,640
+data integration, um we not only have to
+
+98
+00:03:52,200 --> 00:03:56,120
+deal with
+
+99
+00:03:53,640 --> 00:03:59,080
+heterogeneity on the consistency level,
+
+100
+00:03:56,120 --> 00:04:01,920
+we also have to live with a what we call
+
+101
+00:03:59,080 --> 00:04:04,640
+in German historically grown forest of
+
+102
+00:04:01,920 --> 00:04:07,040
+standards and norms and and um
+
+103
+00:04:04,640 --> 00:04:08,760
+ways of expressing um
+
+104
+00:04:07,040 --> 00:04:11,480
+domain knowledge.
+
+105
+00:04:08,760 --> 00:04:14,000
+We have a wide range of meta models to
+
+106
+00:04:11,480 --> 00:04:16,840
+handle exchange formats
+
+107
+00:04:14,000 --> 00:04:19,359
+domain descriptions, right? So,
+
+108
+00:04:16,840 --> 00:04:21,799
+it's really a mess up there.
+
+109
+00:04:19,359 --> 00:04:21,799
+Um
+
+110
+00:04:22,520 --> 00:04:27,919
+so when we talk about building knowledge
+
+111
+00:04:24,640 --> 00:04:30,520
+graphs, our actual challenge is not
+
+112
+00:04:27,919 --> 00:04:32,600
+the consistency level here.
+
+113
+00:04:30,520 --> 00:04:34,840
+It's the big question of how to get to
+
+114
+00:04:32,600 --> 00:04:36,680
+the shared knowledge layer.
+
+115
+00:04:34,840 --> 00:04:39,280
+And the entire talk will actually be
+
+116
+00:04:36,680 --> 00:04:41,960
+about how to get there, right? And what
+
+117
+00:04:39,280 --> 00:04:44,800
+we have tried and what we think we need
+
+118
+00:04:41,960 --> 00:04:44,800
+to do now.
+
+119
+00:04:46,640 --> 00:04:52,160
+Some four or five years ago,
+
+120
+00:04:49,280 --> 00:04:53,960
+we um built something and and open up
+
+121
+00:04:52,160 --> 00:04:56,080
+something which we call the Siemens
+
+122
+00:04:53,960 --> 00:04:57,800
+ontology library,
+
+123
+00:04:56,080 --> 00:05:00,120
+which is a a Siemens-wide or
+
+124
+00:04:57,800 --> 00:05:01,040
+organization-wide um portal where you
+
+125
+00:05:00,120 --> 00:05:02,600
+can
+
+126
+00:05:01,040 --> 00:05:04,919
+access um
+
+127
+00:05:02,600 --> 00:05:06,960
+highly curated ontologies which which we
+
+128
+00:05:04,919 --> 00:05:09,040
+built ourselves,
+
+129
+00:05:06,960 --> 00:05:11,000
+but also recommendations for for
+
+130
+00:05:09,040 --> 00:05:13,560
+external ontologies which we recommend
+
+131
+00:05:11,000 --> 00:05:16,120
+to reuse like the industrial data on
+
+132
+00:05:13,560 --> 00:05:18,320
+ontology or the QUDT
+
+133
+00:05:16,120 --> 00:05:19,960
+ontology.
+
+134
+00:05:18,320 --> 00:05:22,000
+Um
+
+135
+00:05:19,960 --> 00:05:24,440
+we equipped this portal with guidelines
+
+136
+00:05:22,000 --> 00:05:26,600
+and templates um for uploading or
+
+137
+00:05:24,440 --> 00:05:30,160
+creating your own ontology and uploading
+
+138
+00:05:26,600 --> 00:05:32,919
+it it. And we recommended our business
+
+139
+00:05:30,160 --> 00:05:34,960
+units to whenever they do data modeling,
+
+140
+00:05:32,919 --> 00:05:37,760
+they should look into the ontology
+
+141
+00:05:34,960 --> 00:05:41,040
+library and see if there's anything they
+
+142
+00:05:37,760 --> 00:05:41,040
+can reuse, right?
+
+143
+00:05:41,320 --> 00:05:45,720
+On the other side, we also recommended
+
+144
+00:05:42,960 --> 00:05:47,200
+very strongly to them that whenever they
+
+145
+00:05:45,720 --> 00:05:49,240
+are finished with their data modeling
+
+146
+00:05:47,200 --> 00:05:51,320
+project, they should publish the data
+
+147
+00:05:49,240 --> 00:05:54,400
+model as an ontology and submit it to
+
+148
+00:05:51,320 --> 00:05:57,760
+our portal so that other business units
+
+149
+00:05:54,400 --> 00:05:57,760
+can see it and reuse it.
+
+150
+00:05:59,200 --> 00:06:05,320
+What we also said without really wanting
+
+151
+00:06:02,120 --> 00:06:07,920
+to say this is that if your domain is
+
+152
+00:06:05,320 --> 00:06:10,240
+not described in our RDF, it does not
+
+153
+00:06:07,920 --> 00:06:13,280
+exist. It means it's not visible for the
+
+154
+00:06:10,240 --> 00:06:16,080
+rest of the organization, right?
+
+155
+00:06:13,280 --> 00:06:19,320
+And this is part of the problem we now
+
+156
+00:06:16,080 --> 00:06:21,080
+see we need to address.
+
+157
+00:06:19,320 --> 00:06:23,120
+Now I would like to take you a little
+
+158
+00:06:21,080 --> 00:06:24,680
+bit into my day-to-day life with my
+
+159
+00:06:23,120 --> 00:06:26,880
+colleagues. Um
+
+160
+00:06:24,680 --> 00:06:28,120
+this is from a project with my
+
+161
+00:06:26,880 --> 00:06:30,440
+colleagues from the mechanical
+
+162
+00:06:28,120 --> 00:06:32,680
+engineering department.
+
+163
+00:06:30,440 --> 00:06:36,320
+They were tasked with coming up with a
+
+164
+00:06:32,680 --> 00:06:38,040
+target schema for our data not our own
+
+165
+00:06:36,320 --> 00:06:40,520
+own data scientists, but even for our
+
+166
+00:06:38,040 --> 00:06:42,760
+customer data scientists for onboarding
+
+167
+00:06:40,520 --> 00:06:45,200
+so-called assembly tools. Those are
+
+168
+00:06:42,760 --> 00:06:47,680
+tools where you have a shaft and you can
+
+169
+00:06:45,200 --> 00:06:52,000
+switch whether it should hold a drill, a
+
+170
+00:06:47,680 --> 00:06:55,160
+cutter, um a screwdriver, right? Um
+
+171
+00:06:52,000 --> 00:06:59,080
+And these tools are standardized and
+
+172
+00:06:55,160 --> 00:07:01,200
+they are described in DIN or ISO or IEC
+
+173
+00:06:59,080 --> 00:07:03,760
+or not not IEC in this case, but in in
+
+174
+00:07:01,200 --> 00:07:08,000
+DIN and ISO norms.
+
+175
+00:07:03,760 --> 00:07:10,000
+And in this special special case, um
+
+176
+00:07:08,000 --> 00:07:12,520
+the knowledge of these two around these
+
+177
+00:07:10,000 --> 00:07:14,600
+two the properties in order to get them,
+
+178
+00:07:12,520 --> 00:07:16,520
+you need to go to at least two different
+
+179
+00:07:14,600 --> 00:07:19,520
+norms. And within these two norms, you
+
+180
+00:07:16,520 --> 00:07:20,960
+have to access uh four different places.
+
+181
+00:07:19,520 --> 00:07:23,720
+So first of all,
+
+182
+00:07:20,960 --> 00:07:25,880
+the tools um are classified by pictures.
+
+183
+00:07:23,720 --> 00:07:28,160
+So this is a picture of a milling cutter
+
+184
+00:07:25,880 --> 00:07:30,320
+with where you already can know you need
+
+185
+00:07:28,160 --> 00:07:32,120
+to describe it along um
+
+186
+00:07:30,320 --> 00:07:34,520
+its dimensions.
+
+187
+00:07:32,120 --> 00:07:37,360
+Um but then you need to go to another
+
+188
+00:07:34,520 --> 00:07:39,280
+place in the same norm to retrieve all
+
+189
+00:07:37,360 --> 00:07:41,240
+the properties which cannot be displayed
+
+190
+00:07:39,280 --> 00:07:43,480
+in a picture, but which you also have to
+
+191
+00:07:41,240 --> 00:07:44,960
+have in your data structure, right? Then
+
+192
+00:07:43,480 --> 00:07:46,640
+you need to go to another table where
+
+193
+00:07:44,960 --> 00:07:49,040
+you need to find out whether this
+
+194
+00:07:46,640 --> 00:07:50,000
+property is mandatory or optional, and
+
+195
+00:07:49,040 --> 00:07:51,880
+then
+
+196
+00:07:50,000 --> 00:07:54,480
+you yet another place where you get a
+
+197
+00:07:51,880 --> 00:07:56,520
+pattern for describing this one uh
+
+198
+00:07:54,480 --> 00:07:58,920
+property. In this case, it's balancing
+
+199
+00:07:56,520 --> 00:08:02,640
+quality, the way something rotates, if
+
+200
+00:07:58,920 --> 00:08:03,880
+it rotates. Okay.
+
+201
+00:08:02,640 --> 00:08:05,400
+So at
+
+202
+00:08:03,880 --> 00:08:07,840
+at this point, once you have this
+
+203
+00:08:05,400 --> 00:08:10,600
+everything uh in this um data structure,
+
+204
+00:08:07,840 --> 00:08:12,000
+which uh is just happens to be a data
+
+205
+00:08:10,600 --> 00:08:13,880
+structure in this case,
+
+206
+00:08:12,000 --> 00:08:16,160
+you are all sweat and tears, right? You
+
+207
+00:08:13,880 --> 00:08:19,240
+have Your team is really
+
+208
+00:08:16,160 --> 00:08:22,360
+done with it. So, creating an ontology
+
+209
+00:08:19,240 --> 00:08:24,600
+on top of this is just an OWL ontology
+
+210
+00:08:22,360 --> 00:08:28,000
+in in in language which is not familiar
+
+211
+00:08:24,600 --> 00:08:29,320
+to any engineer, right? It's just just
+
+212
+00:08:28,000 --> 00:08:32,240
+something you don't have on your
+
+213
+00:08:29,320 --> 00:08:34,200
+priority list.
+
+214
+00:08:32,240 --> 00:08:38,880
+Um
+
+215
+00:08:34,200 --> 00:08:41,479
+So, last year we sat down and and
+
+216
+00:08:38,880 --> 00:08:44,039
+really thought hard about our first um
+
+217
+00:08:41,479 --> 00:08:45,680
+attempt to to uh introduce semantics in
+
+218
+00:08:44,039 --> 00:08:48,480
+a more structured way.
+
+219
+00:08:45,680 --> 00:08:52,200
+And we needed to honestly admit that
+
+220
+00:08:48,480 --> 00:08:54,680
+the two main goals we had with this
+
+221
+00:08:52,200 --> 00:08:57,040
+weren't really achieved, right?
+
+222
+00:08:54,680 --> 00:08:59,400
+The creation and cu- curation of
+
+223
+00:08:57,040 --> 00:09:02,520
+ontologies didn't really happen except
+
+224
+00:08:59,400 --> 00:09:04,720
+outside a small group of ontology enthu-
+
+225
+00:09:02,520 --> 00:09:06,360
+enthusiasts, OWL enthusiasts, I need to
+
+226
+00:09:04,720 --> 00:09:07,960
+say.
+
+227
+00:09:06,360 --> 00:09:09,680
+Partly because the
+
+228
+00:09:07,960 --> 00:09:11,839
+the tooling is not intuitive for
+
+229
+00:09:09,680 --> 00:09:13,680
+engineers. They don't think in tabs for
+
+230
+00:09:11,839 --> 00:09:15,520
+classes, object properties, data
+
+231
+00:09:13,680 --> 00:09:17,839
+properties. They think in spatial
+
+232
+00:09:15,520 --> 00:09:20,680
+diagrams, right? They It's a totally
+
+233
+00:09:17,839 --> 00:09:21,996
+different way of thinking around things.
+
+234
+00:09:20,680 --> 00:09:23,720
+Um
+
+235
+00:09:21,996 --> 00:09:26,280
+>> [clears throat]
+
+236
+00:09:23,720 --> 00:09:29,320
+>> And also, when we, the ontologists, sit
+
+237
+00:09:26,280 --> 00:09:30,960
+down with our um domain experts and
+
+238
+00:09:29,320 --> 00:09:32,880
+model their knowledge, it doesn't simply
+
+239
+00:09:30,960 --> 00:09:35,120
+doesn't scale because it takes 5 years
+
+240
+00:09:32,880 --> 00:09:37,760
+to become an electrical engineer. How
+
+241
+00:09:35,120 --> 00:09:39,640
+can I, as an ontologist, grasp this
+
+242
+00:09:37,760 --> 00:09:42,040
+knowledge in in the course of 3 months,
+
+243
+00:09:39,640 --> 00:09:43,520
+right? So, it doesn't scale.
+
+244
+00:09:42,040 --> 00:09:45,840
+Um
+
+245
+00:09:43,520 --> 00:09:48,240
+and also we we simply ideally we would
+
+246
+00:09:45,840 --> 00:09:51,320
+like to have colleagues who can both a
+
+247
+00:09:48,240 --> 00:09:52,840
+domain in every depth and express it in
+
+248
+00:09:51,320 --> 00:09:54,920
+in all, but
+
+249
+00:09:52,840 --> 00:09:56,760
+those people are very rare to be found.
+
+250
+00:09:54,920 --> 00:09:59,520
+I actually have only two colleagues
+
+251
+00:09:56,760 --> 00:10:02,800
+among 30 in my group.
+
+252
+00:09:59,520 --> 00:10:04,760
+Um and on the other hand um the code the
+
+253
+00:10:02,800 --> 00:10:06,720
+software code which is produced is still
+
+254
+00:10:04,760 --> 00:10:09,320
+not really directly informed by the
+
+255
+00:10:06,720 --> 00:10:12,280
+ontologies we we have, right? Even
+
+256
+00:10:09,320 --> 00:10:14,800
+though we we really encourage everyone.
+
+257
+00:10:12,280 --> 00:10:16,800
+Um this is somehow a culture clash
+
+258
+00:10:14,800 --> 00:10:17,800
+because our software architects are very
+
+259
+00:10:16,800 --> 00:10:20,360
+into
+
+260
+00:10:17,800 --> 00:10:22,760
+microservices, domain driven design, and
+
+261
+00:10:20,360 --> 00:10:25,080
+they independency, right? They want to
+
+262
+00:10:22,760 --> 00:10:27,640
+the service to be to run independently.
+
+263
+00:10:25,080 --> 00:10:30,440
+They don't want to coordinate with every
+
+264
+00:10:27,640 --> 00:10:31,440
+anyone else, right?
+
+265
+00:10:30,440 --> 00:10:34,200
+Um
+
+266
+00:10:31,440 --> 00:10:36,160
+and also they find find it a cognitive
+
+267
+00:10:34,200 --> 00:10:37,920
+burden to go and and look through an
+
+268
+00:10:36,160 --> 00:10:40,080
+ontology right?
+
+269
+00:10:37,920 --> 00:10:42,760
+So, we end up with islands of
+
+270
+00:10:40,080 --> 00:10:44,960
+semantically annotated services, but
+
+271
+00:10:42,760 --> 00:10:47,080
+they are not not connected with each
+
+272
+00:10:44,960 --> 00:10:49,360
+other. So, each time we want to create
+
+273
+00:10:47,080 --> 00:10:51,360
+set up a new knowledge graph, we have
+
+274
+00:10:49,360 --> 00:10:53,960
+this really extensive need of semantic
+
+275
+00:10:51,360 --> 00:10:53,960
+mapping.
+
+276
+00:10:54,200 --> 00:10:59,560
+So, what we did then was we
+
+277
+00:10:56,560 --> 00:11:02,240
+said we need to go and ask them what
+
+278
+00:10:59,560 --> 00:11:04,120
+what do you need in order to make
+
+279
+00:11:02,240 --> 00:11:06,920
+semantic annotation of your data
+
+280
+00:11:04,120 --> 00:11:08,960
+structures happen, right? What How how
+
+281
+00:11:06,920 --> 00:11:10,080
+can we help you to make this easy for
+
+282
+00:11:08,960 --> 00:11:11,960
+you?
+
+283
+00:11:10,080 --> 00:11:14,040
+And
+
+284
+00:11:11,960 --> 00:11:15,400
+we gathered four learnings from these
+
+285
+00:11:14,040 --> 00:11:17,560
+interviews,
+
+286
+00:11:15,400 --> 00:11:20,000
+which then informed um
+
+287
+00:11:17,560 --> 00:11:22,360
+the requirements for our um
+
+288
+00:11:20,000 --> 00:11:23,560
+new approach.
+
+289
+00:11:22,360 --> 00:11:25,440
+Um
+
+290
+00:11:23,560 --> 00:11:28,520
+those are except that domain models come
+
+291
+00:11:25,440 --> 00:11:30,320
+in all shapes and sizes. Um we need to
+
+292
+00:11:28,520 --> 00:11:33,080
+accept that truth is both global,
+
+293
+00:11:30,320 --> 00:11:34,720
+meaning in an ontology, but also local
+
+294
+00:11:33,080 --> 00:11:37,000
+in the
+
+295
+00:11:34,720 --> 00:11:39,480
+individual service.
+
+296
+00:11:37,000 --> 00:11:41,360
+Um we need to focus on transparency
+
+297
+00:11:39,480 --> 00:11:42,920
+first before we even can think of
+
+298
+00:11:41,360 --> 00:11:44,840
+harmonizing
+
+299
+00:11:42,920 --> 00:11:48,040
+vocabularies right?
+
+300
+00:11:44,840 --> 00:11:49,360
+And then last but no perhaps most
+
+301
+00:11:48,040 --> 00:11:52,080
+importantly
+
+302
+00:11:49,360 --> 00:11:54,240
+understanding a domain model is
+
+303
+00:11:52,080 --> 00:11:56,120
+basically a hectic process. You can't
+
+304
+00:11:54,240 --> 00:11:58,440
+just throw a documentation of an
+
+305
+00:11:56,120 --> 00:12:01,160
+ontology over the fence and then expect
+
+306
+00:11:58,440 --> 00:12:02,560
+others to understand it even
+
+307
+00:12:01,160 --> 00:12:04,960
+especially if they're not into OWL,
+
+308
+00:12:02,560 --> 00:12:07,320
+right?
+
+309
+00:12:04,960 --> 00:12:08,760
+So what do we mean by this?
+
+310
+00:12:07,320 --> 00:12:11,040
+The first learning, accept that domain
+
+311
+00:12:08,760 --> 00:12:11,920
+models come in all shapes and sizes.
+
+312
+00:12:11,040 --> 00:12:13,800
+We as
+
+313
+00:12:11,920 --> 00:12:15,600
+my entire team, we are ontologists,
+
+314
+00:12:13,800 --> 00:12:17,920
+right? OWL fans.
+
+315
+00:12:15,600 --> 00:12:20,600
+And we live in this Protégé picture,
+
+316
+00:12:17,920 --> 00:12:24,880
+right? So for us the world consists of
+
+317
+00:12:20,600 --> 00:12:27,240
+Protégé. But the reality is that most of
+
+318
+00:12:24,880 --> 00:12:29,760
+the domain descriptions actually do not
+
+319
+00:12:27,240 --> 00:12:31,840
+exist in OWL, right? They exist in loads
+
+320
+00:12:29,760 --> 00:12:34,320
+and loads of norms and standards from
+
+321
+00:12:31,840 --> 00:12:36,480
+ISO IEC, um
+
+322
+00:12:34,320 --> 00:12:38,120
+you name it and
+
+323
+00:12:36,480 --> 00:12:40,480
+and that's in the in the application
+
+324
+00:12:38,120 --> 00:12:43,560
+independent um range and then the
+
+325
+00:12:40,480 --> 00:12:45,920
+application specific range we we find
+
+326
+00:12:43,560 --> 00:12:48,320
+domain descriptions in the payloads of
+
+327
+00:12:45,920 --> 00:12:50,839
+APIs. We find them in enterprise
+
+328
+00:12:48,320 --> 00:12:52,880
+architect projects. We even find them in
+
+329
+00:12:50,839 --> 00:12:54,280
+Python scripts, right? When we have data
+
+330
+00:12:52,880 --> 00:12:56,720
+scientists who
+
+331
+00:12:54,280 --> 00:13:00,120
+who don't have know how to model
+
+332
+00:12:56,720 --> 00:13:02,480
+uh any domain or write a vocabulary
+
+333
+00:13:00,120 --> 00:13:04,920
+um other than in in putting them into
+
+334
+00:13:02,480 --> 00:13:07,920
+their Python scripts.
+
+335
+00:13:04,920 --> 00:13:09,720
+So we needed to acknowledge that that
+
+336
+00:13:07,920 --> 00:13:11,240
+domain descriptions there's a whole
+
+337
+00:13:09,720 --> 00:13:13,000
+range of domain descriptions we have
+
+338
+00:13:11,240 --> 00:13:15,360
+ignored until now.
+
+339
+00:13:13,000 --> 00:13:17,920
+So our new attempt, the first
+
+340
+00:13:15,360 --> 00:13:20,000
+requirement for the new attempt is it
+
+341
+00:13:17,920 --> 00:13:22,600
+needs to be formalism agnostic. That
+
+342
+00:13:20,000 --> 00:13:25,280
+means it needs to be able to show and
+
+343
+00:13:22,600 --> 00:13:27,360
+make accessible data structures and
+
+344
+00:13:25,280 --> 00:13:30,080
+domain descriptions
+
+345
+00:13:27,360 --> 00:13:32,280
+which are other than our right.
+
+346
+00:13:30,080 --> 00:13:33,480
+That's the first one.
+
+347
+00:13:32,280 --> 00:13:35,880
+Um
+
+348
+00:13:33,480 --> 00:13:37,960
+Second learning, the truth is both
+
+349
+00:13:35,880 --> 00:13:39,920
+global and local.
+
+350
+00:13:37,960 --> 00:13:41,880
+That refers to the fact that we as
+
+351
+00:13:39,920 --> 00:13:43,680
+ontologist we we like to think that an
+
+352
+00:13:41,880 --> 00:13:46,280
+ontology covers
+
+353
+00:13:43,680 --> 00:13:49,040
+the entire this is the truth about the
+
+354
+00:13:46,280 --> 00:13:51,040
+domain, right? And everything else is
+
+355
+00:13:49,040 --> 00:13:52,600
+not just really not true because it's
+
+356
+00:13:51,040 --> 00:13:54,240
+just
+
+357
+00:13:52,600 --> 00:13:57,280
+not large enough.
+
+358
+00:13:54,240 --> 00:13:59,240
+But when you for instance this is an
+
+359
+00:13:57,280 --> 00:14:01,000
+excerpt for excerpt from a building
+
+360
+00:13:59,240 --> 00:14:01,800
+ontology brick.
+
+361
+00:14:01,000 --> 00:14:04,600
+Um
+
+362
+00:14:01,800 --> 00:14:05,600
+but if you um
+
+363
+00:14:04,600 --> 00:14:07,880
+if you have
+
+364
+00:14:05,600 --> 00:14:10,160
+an engineer factory engineer planning
+
+365
+00:14:07,880 --> 00:14:11,360
+engineer and plan your factory setup,
+
+366
+00:14:10,160 --> 00:14:13,840
+right? You have a factory with a
+
+367
+00:14:11,360 --> 00:14:16,440
+production area, assembly lines and
+
+368
+00:14:13,840 --> 00:14:19,240
+workstations. For you you for instance a
+
+369
+00:14:16,440 --> 00:14:21,360
+room is only interesting by way of its
+
+370
+00:14:19,240 --> 00:14:23,520
+identifier because it indicates for you
+
+371
+00:14:21,360 --> 00:14:27,480
+where the production area
+
+372
+00:14:23,520 --> 00:14:30,000
+how where it cross um stretches, right?
+
+373
+00:14:27,480 --> 00:14:31,839
+So this is a legitimate representation
+
+374
+00:14:30,000 --> 00:14:34,280
+of the truth about rooms that in this
+
+375
+00:14:31,839 --> 00:14:37,160
+context it's actually only interesting
+
+376
+00:14:34,280 --> 00:14:39,040
+in by way of its identifier.
+
+377
+00:14:37,160 --> 00:14:40,800
+When you're facility manager and want to
+
+378
+00:14:39,040 --> 00:14:42,640
+describe your your
+
+379
+00:14:40,800 --> 00:14:45,040
+your building in terms of what it can
+
+380
+00:14:42,640 --> 00:14:46,680
+offer as services, then of all of a
+
+381
+00:14:45,040 --> 00:14:48,520
+sudden it's important to know about the
+
+382
+00:14:46,680 --> 00:14:50,640
+room what kind kind of capabilities it
+
+383
+00:14:48,520 --> 00:14:52,200
+has whether you can use it as a wet
+
+384
+00:14:50,640 --> 00:14:55,200
+storage or
+
+385
+00:14:52,200 --> 00:14:57,080
+uh especially clean room or or all kinds
+
+386
+00:14:55,200 --> 00:14:59,760
+of capabilities, right? But you're not
+
+387
+00:14:57,080 --> 00:15:01,280
+so much interested in anything else or
+
+388
+00:14:59,760 --> 00:15:04,720
+about reasoning about this room, right?
+
+389
+00:15:01,280 --> 00:15:06,760
+You just want the this one um
+
+390
+00:15:04,720 --> 00:15:08,240
+part of it.
+
+391
+00:15:06,760 --> 00:15:10,360
+So we need to accept that these are
+
+392
+00:15:08,240 --> 00:15:12,040
+truths in their own right because that's
+
+393
+00:15:10,360 --> 00:15:14,920
+the only thing that's relevant in this
+
+394
+00:15:12,040 --> 00:15:18,480
+specific context.
+
+395
+00:15:14,920 --> 00:15:21,240
+Um so when we build this new um library,
+
+396
+00:15:18,480 --> 00:15:22,920
+we need to be able to support uh the
+
+397
+00:15:21,240 --> 00:15:24,960
+user
+
+398
+00:15:22,920 --> 00:15:28,640
+that he or she can look at the concept
+
+399
+00:15:24,960 --> 00:15:31,920
+of room and and and see all the
+
+400
+00:15:28,640 --> 00:15:34,840
+perspectives perspectives in which the
+
+401
+00:15:31,920 --> 00:15:37,480
+um it it's used, right? So, that you can
+
+402
+00:15:34,840 --> 00:15:40,520
+get a 360° um
+
+403
+00:15:37,480 --> 00:15:43,920
+view on on the use of use of room.
+
+404
+00:15:40,520 --> 00:15:46,400
+That's the second requirement.
+
+405
+00:15:43,920 --> 00:15:48,440
+Um
+
+406
+00:15:46,400 --> 00:15:50,640
+The third learning is that right now,
+
+407
+00:15:48,440 --> 00:15:52,760
+and this is a very pragmatic
+
+408
+00:15:50,640 --> 00:15:55,080
+learning, right now we simply have to
+
+409
+00:15:52,760 --> 00:15:56,920
+focus on transparency and not so much
+
+410
+00:15:55,080 --> 00:15:58,440
+about coordination and harmonization of
+
+411
+00:15:56,920 --> 00:16:00,560
+vocabularies
+
+412
+00:15:58,440 --> 00:16:02,520
+for the simple reason that we
+
+413
+00:16:00,560 --> 00:16:04,800
+you can't harmonize anything which you
+
+414
+00:16:02,520 --> 00:16:08,200
+cannot see, right? You need to make it
+
+415
+00:16:04,800 --> 00:16:08,200
+visible first. Um
+
+416
+00:16:08,240 --> 00:16:11,360
+So,
+
+417
+00:16:09,240 --> 00:16:14,160
+in this first iteration, we we will
+
+418
+00:16:11,360 --> 00:16:16,160
+focus on on on making these um domain
+
+419
+00:16:14,160 --> 00:16:18,160
+models, regardless of formalism,
+
+420
+00:16:16,160 --> 00:16:19,600
+findable and accessible.
+
+421
+00:16:18,160 --> 00:16:21,960
+And we also want them to make them
+
+422
+00:16:19,600 --> 00:16:24,120
+reusable in in terms of that we want to
+
+423
+00:16:21,960 --> 00:16:26,920
+make them translatable from one
+
+424
+00:16:24,120 --> 00:16:29,000
+formalism, like OPC UA, which is an
+
+425
+00:16:26,920 --> 00:16:30,920
+important formalism for us, to asset
+
+426
+00:16:29,000 --> 00:16:32,680
+administration shell, which is another
+
+427
+00:16:30,920 --> 00:16:34,960
+formalism right?
+
+428
+00:16:32,680 --> 00:16:37,520
+So, so that our service developers can
+
+429
+00:16:34,960 --> 00:16:39,520
+reuse the same um
+
+430
+00:16:37,520 --> 00:16:42,000
+domain description but in in a different
+
+431
+00:16:39,520 --> 00:16:43,240
+formalism, depending on the the use
+
+432
+00:16:42,000 --> 00:16:46,120
+case.
+
+433
+00:16:43,240 --> 00:16:48,040
+Um and only then can we think of uh
+
+434
+00:16:46,120 --> 00:16:49,960
+coordination and interoperability,
+
+435
+00:16:48,040 --> 00:16:52,320
+really true uh semantic
+
+436
+00:16:49,960 --> 00:16:55,560
+interoperability. And that's where OWL
+
+437
+00:16:52,320 --> 00:16:58,960
+again becomes important. We need to um
+
+438
+00:16:55,560 --> 00:16:59,640
+then take the step up to to OWL and and
+
+439
+00:16:58,960 --> 00:17:02,760
+um
+
+440
+00:16:59,640 --> 00:17:04,600
+start trying to harmonize. How we will
+
+441
+00:17:02,760 --> 00:17:06,480
+do this, and this is also about change
+
+442
+00:17:04,600 --> 00:17:09,400
+propagation down into the instance
+
+443
+00:17:06,480 --> 00:17:12,680
+level, is still very much unclear. This
+
+444
+00:17:09,400 --> 00:17:15,360
+is very fresh off uh off the press,
+
+445
+00:17:12,680 --> 00:17:17,760
+somehow. Um but we know that this is
+
+446
+00:17:15,360 --> 00:17:19,600
+somehow the direction or the sequence we
+
+447
+00:17:17,760 --> 00:17:21,400
+want to go into.
+
+448
+00:17:19,600 --> 00:17:24,040
+So, our third requirement for the new
+
+449
+00:17:21,400 --> 00:17:26,000
+approach is that we want to build a fair
+
+450
+00:17:24,040 --> 00:17:28,360
+domain model library with the eye for
+
+451
+00:17:26,000 --> 00:17:30,000
+the interoperability somehow in bracket
+
+452
+00:17:28,360 --> 00:17:31,640
+still because we
+
+453
+00:17:30,000 --> 00:17:33,840
+we can't
+
+454
+00:17:31,640 --> 00:17:36,480
+bite over everything at at the same
+
+455
+00:17:33,840 --> 00:17:39,560
+time right?
+
+456
+00:17:36,480 --> 00:17:41,560
+And then the fourth learning
+
+457
+00:17:39,560 --> 00:17:43,680
+understanding a domain model is a hectic
+
+458
+00:17:41,560 --> 00:17:46,560
+process. I often think when I think of
+
+459
+00:17:43,680 --> 00:17:49,000
+about this about my 13-year-old son, I
+
+460
+00:17:46,560 --> 00:17:51,480
+can create like the most beautiful
+
+461
+00:17:49,000 --> 00:17:53,440
+system for sorting his school books. He
+
+462
+00:17:51,480 --> 00:17:55,680
+will not understand and adopt it if he
+
+463
+00:17:53,440 --> 00:17:58,600
+doesn't really interact with it, right?
+
+464
+00:17:55,680 --> 00:18:00,640
+If I keep on doing it for him, it will
+
+465
+00:17:58,600 --> 00:18:03,480
+not become his system, right? So, you
+
+466
+00:18:00,640 --> 00:18:06,040
+need one needs to have an hectic
+
+467
+00:18:03,480 --> 00:18:09,000
+interaction with the with the
+
+468
+00:18:06,040 --> 00:18:11,520
+these domain models.
+
+469
+00:18:09,000 --> 00:18:14,480
+Very practical speaking, that means no
+
+470
+00:18:11,520 --> 00:18:17,440
+one ever from our domain experts or our
+
+471
+00:18:14,480 --> 00:18:19,280
+service developers approaches us and and
+
+472
+00:18:17,440 --> 00:18:21,080
+says, "Tell me something about about the
+
+473
+00:18:19,280 --> 00:18:22,840
+brick ontology, right? Or about the
+
+474
+00:18:21,080 --> 00:18:24,800
+sensor and ontology." Nobody reads
+
+475
+00:18:22,840 --> 00:18:25,440
+ontologies because it's fun.
+
+476
+00:18:24,800 --> 00:18:27,880
+Yeah,
+
+477
+00:18:25,440 --> 00:18:29,200
+except for perhaps our experts.
+
+478
+00:18:27,880 --> 00:18:31,000
+Um
+
+479
+00:18:29,200 --> 00:18:34,720
+So, they come to me with or to my
+
+480
+00:18:31,000 --> 00:18:36,840
+colleagues with a very um specific
+
+481
+00:18:34,720 --> 00:18:39,360
+question like, "I need to specify a REST
+
+482
+00:18:36,840 --> 00:18:40,840
+API for sensor health. And I've heard
+
+483
+00:18:39,360 --> 00:18:42,840
+that the sensor
+
+484
+00:18:40,840 --> 00:18:45,400
+ontology is really good for describing
+
+485
+00:18:42,840 --> 00:18:48,600
+sensors. How how can I build a payload
+
+486
+00:18:45,400 --> 00:18:50,400
+for this based on this um ontology?" And
+
+487
+00:18:48,600 --> 00:18:51,800
+until now we have left them to their own
+
+488
+00:18:50,400 --> 00:18:55,160
+devices and said, "Yeah, here is the
+
+489
+00:18:51,800 --> 00:18:57,080
+sensor ontology, go figure." Um and that
+
+490
+00:18:55,160 --> 00:18:59,320
+that doesn't suffice, right? They have a
+
+491
+00:18:57,080 --> 00:19:01,960
+lot of time pressure, so we need to
+
+492
+00:18:59,320 --> 00:19:03,560
+give them more actionable um
+
+493
+00:19:01,960 --> 00:19:05,520
+options for that.
+
+494
+00:19:03,560 --> 00:19:07,560
+So, our fourth requirement actually for
+
+495
+00:19:05,520 --> 00:19:08,920
+the solution we are trying to hand for
+
+496
+00:19:07,560 --> 00:19:10,200
+is
+
+497
+00:19:08,920 --> 00:19:12,240
+that domain models need to be
+
+498
+00:19:10,200 --> 00:19:14,120
+actionable. You need to be able to
+
+499
+00:19:12,240 --> 00:19:15,240
+download you you
+
+500
+00:19:14,120 --> 00:19:17,600
+at [clears throat] first suggestion for
+
+501
+00:19:15,240 --> 00:19:20,000
+an payload for your API from a bricks
+
+502
+00:19:17,600 --> 00:19:21,360
+ontology. You need to be able to have
+
+503
+00:19:20,000 --> 00:19:23,760
+your
+
+504
+00:19:21,360 --> 00:19:26,200
+data structures and
+
+505
+00:19:23,760 --> 00:19:28,920
+assembly tools translated in into an
+
+506
+00:19:26,200 --> 00:19:30,480
+asset administration shell format and
+
+507
+00:19:28,920 --> 00:19:31,960
+these kinds of things, right? That's
+
+508
+00:19:30,480 --> 00:19:34,440
+where our
+
+509
+00:19:31,960 --> 00:19:37,360
+service developers are, right? So, we
+
+510
+00:19:34,440 --> 00:19:39,120
+need to really meet them at the
+
+511
+00:19:37,360 --> 00:19:41,400
+everyday
+
+512
+00:19:39,120 --> 00:19:45,200
+work.
+
+513
+00:19:41,400 --> 00:19:47,440
+So, given all these four learnings, um
+
+514
+00:19:45,200 --> 00:19:48,880
+we have developed a very first target
+
+515
+00:19:47,440 --> 00:19:51,360
+picture.
+
+516
+00:19:48,880 --> 00:19:53,320
+Um I must admit that this is
+
+517
+00:19:51,360 --> 00:19:55,000
+the thought work of my colleague
+
+518
+00:19:53,320 --> 00:19:57,080
+colleague Thomas Hubauer who couldn't
+
+519
+00:19:55,000 --> 00:19:58,880
+join today. He's like the technical
+
+520
+00:19:57,080 --> 00:20:01,200
+mastermind and the
+
+521
+00:19:58,880 --> 00:20:03,200
+leading architect behind.
+
+522
+00:20:01,200 --> 00:20:05,520
+Um and you don't need to understand
+
+523
+00:20:03,200 --> 00:20:07,680
+every detail. I I just want to point out
+
+524
+00:20:05,520 --> 00:20:11,080
+three takeaways for you.
+
+525
+00:20:07,680 --> 00:20:14,400
+Um where we earlier only had this owl
+
+526
+00:20:11,080 --> 00:20:18,560
+cycle repository to show show domain
+
+527
+00:20:14,400 --> 00:20:21,000
+models, we now want to make visible um
+
+528
+00:20:18,560 --> 00:20:22,680
+domain models in in in many other
+
+529
+00:20:21,000 --> 00:20:24,360
+formalisms which are important to us. I
+
+530
+00:20:22,680 --> 00:20:26,840
+don't know if they are surely not
+
+531
+00:20:24,360 --> 00:20:29,680
+important to others, but for us OPC UA
+
+532
+00:20:26,840 --> 00:20:32,000
+and and AS for instance automation ML
+
+533
+00:20:29,680 --> 00:20:34,120
+are industry standards um
+
+534
+00:20:32,000 --> 00:20:36,920
+formalisms which we simply need to be
+
+535
+00:20:34,120 --> 00:20:39,680
+able to support, right? Um so, we want
+
+536
+00:20:36,920 --> 00:20:42,720
+to open up our um
+
+537
+00:20:39,680 --> 00:20:44,400
+repository of of domain models to cover
+
+538
+00:20:42,720 --> 00:20:46,120
+these um
+
+539
+00:20:44,400 --> 00:20:48,440
+formalisms.
+
+540
+00:20:46,120 --> 00:20:50,600
+The second takeaway is that we
+
+541
+00:20:48,440 --> 00:20:53,080
+for the data contract, we we make this
+
+542
+00:20:50,600 --> 00:20:55,280
+distinction between data contracts and
+
+543
+00:20:53,080 --> 00:20:57,360
+our ontologies in the in the term that
+
+544
+00:20:55,280 --> 00:20:58,800
+data contracts are application specific.
+
+545
+00:20:57,360 --> 00:21:01,080
+They are
+
+546
+00:20:58,800 --> 00:21:02,960
+closed world in a way. They they tell
+
+547
+00:21:01,080 --> 00:21:03,880
+you what you can expect when you when
+
+548
+00:21:02,960 --> 00:21:07,360
+you
+
+549
+00:21:03,880 --> 00:21:08,400
+request a certain um set of data.
+
+550
+00:21:07,360 --> 00:21:09,880
+Um
+
+551
+00:21:08,400 --> 00:21:13,080
+And for that, we have created an
+
+552
+00:21:09,880 --> 00:21:17,200
+internal neutral model from formalism
+
+553
+00:21:13,080 --> 00:21:20,880
+like it type um type um data type uh
+
+554
+00:21:17,200 --> 00:21:22,800
+formalism where we want to be able to um
+
+555
+00:21:20,880 --> 00:21:24,880
+you come with an OPC UA model and you
+
+556
+00:21:22,800 --> 00:21:28,840
+can um have it translated into this
+
+557
+00:21:24,880 --> 00:21:31,600
+neutral model as long as it it you you
+
+558
+00:21:28,840 --> 00:21:33,680
+speak OPC UA, we will always be able to
+
+559
+00:21:31,600 --> 00:21:35,840
+support you in expressing this in in
+
+560
+00:21:33,680 --> 00:21:38,760
+asset administration shell through by
+
+561
+00:21:35,840 --> 00:21:40,160
+means of this neutral um model model
+
+562
+00:21:38,760 --> 00:21:42,040
+layer.
+
+563
+00:21:40,160 --> 00:21:44,200
+Obviously, not everything can be
+
+564
+00:21:42,040 --> 00:21:46,880
+translated lossless. So, we also have
+
+565
+00:21:44,200 --> 00:21:49,360
+this auxiliary file store so that we
+
+566
+00:21:46,880 --> 00:21:51,800
+always can also roll back. So, when you
+
+567
+00:21:49,360 --> 00:21:54,320
+come from an open world uh
+
+568
+00:21:51,800 --> 00:21:56,400
+ontology our ontology where not not
+
+569
+00:21:54,320 --> 00:21:58,400
+everything um
+
+570
+00:21:56,400 --> 00:22:01,520
+is expressible on this on this type data
+
+571
+00:21:58,400 --> 00:22:02,520
+data contract level, uh we will store it
+
+572
+00:22:01,520 --> 00:22:05,000
+um
+
+573
+00:22:02,520 --> 00:22:07,280
+as metadata or uh um auxiliary
+
+574
+00:22:05,000 --> 00:22:09,560
+information and then we will be able to
+
+575
+00:22:07,280 --> 00:22:11,720
+roll it back.
+
+576
+00:22:09,560 --> 00:22:13,360
+And then thirdly, the most important
+
+577
+00:22:11,720 --> 00:22:15,840
+thing perhaps um
+
+578
+00:22:13,360 --> 00:22:18,320
+for our users, for the service designers
+
+579
+00:22:15,840 --> 00:22:20,120
+for instance, we will we are planning to
+
+580
+00:22:18,320 --> 00:22:23,240
+uh provide rich um
+
+581
+00:22:20,120 --> 00:22:25,440
+user and uh user interfaces for for um
+
+582
+00:22:23,240 --> 00:22:28,280
+software developers where they can come
+
+583
+00:22:25,440 --> 00:22:31,000
+and say um I need to create this um
+
+584
+00:22:28,280 --> 00:22:33,440
+sensor health API, right? And give me a
+
+585
+00:22:31,000 --> 00:22:35,000
+first payload draft for a payload for
+
+586
+00:22:33,440 --> 00:22:38,000
+for um
+
+587
+00:22:35,000 --> 00:22:40,040
+for uh sensor health based on bricks and
+
+588
+00:22:38,000 --> 00:22:40,840
+seas uh source array.
+
+589
+00:22:40,040 --> 00:22:42,560
+Um
+
+590
+00:22:40,840 --> 00:22:45,960
+so that in the end it's easier it
+
+591
+00:22:42,560 --> 00:22:48,200
+becomes easier to create uh such an API
+
+592
+00:22:45,960 --> 00:22:50,360
+which we then can expose to our
+
+593
+00:22:48,200 --> 00:22:51,960
+customers and they only they don't need
+
+594
+00:22:50,360 --> 00:22:54,680
+to deal with any
+
+595
+00:22:51,960 --> 00:22:58,080
+of these semantic nitty-gritty details.
+
+596
+00:22:54,680 --> 00:23:00,640
+They only build So, here you can use uh
+
+597
+00:22:58,080 --> 00:23:03,640
+any any software developer who can build
+
+598
+00:23:00,640 --> 00:23:05,960
+REST APIs can use these or use rest
+
+599
+00:23:03,640 --> 00:23:08,800
+APIs, can can
+
+600
+00:23:05,960 --> 00:23:11,600
+base um his work on these without having
+
+601
+00:23:08,800 --> 00:23:12,320
+to know whether it's OPC UA in the in
+
+602
+00:23:11,600 --> 00:23:15,480
+the
+
+603
+00:23:12,320 --> 00:23:17,920
+in the base or not, right? So, it's
+
+604
+00:23:15,480 --> 00:23:19,760
+it's somehow protecting people from the
+
+605
+00:23:17,920 --> 00:23:21,800
+level of details they don't need to
+
+606
+00:23:19,760 --> 00:23:25,680
+know, right? Or the the level of
+
+607
+00:23:21,800 --> 00:23:27,600
+verbosity that they don't need to know.
+
+608
+00:23:25,680 --> 00:23:29,280
+Yeah. So, this is the very first target
+
+609
+00:23:27,600 --> 00:23:32,360
+picture. We are
+
+610
+00:23:29,280 --> 00:23:32,920
+very at the infancy of this endeavor and
+
+611
+00:23:32,360 --> 00:23:34,920
+um
+
+612
+00:23:32,920 --> 00:23:36,880
+it's a very good opportunity for us also
+
+613
+00:23:34,920 --> 00:23:38,480
+to be able to present this here because
+
+614
+00:23:36,880 --> 00:23:40,080
+we are also open for suggestion for
+
+615
+00:23:38,480 --> 00:23:42,280
+solutions from
+
+616
+00:23:40,080 --> 00:23:43,720
+from the community.
+
+617
+00:23:42,280 --> 00:23:46,606
+Mhm.
+
+618
+00:23:43,720 --> 00:23:48,626
+That's all for my part.
+
+619
+00:23:46,606 --> 00:23:48,626
+>> [applause]
+
+620
+00:23:50,520 --> 00:23:54,680
+>> Thank you, Veronica. Are there any
+
+621
+00:23:52,120 --> 00:23:54,680
+questions?
+
+622
+00:23:56,560 --> 00:24:01,080
+Um
+
+623
+00:23:58,400 --> 00:24:04,040
+Oh, we have a mic. Um my name's Alister
+
+624
+00:24:01,080 --> 00:24:05,600
+Green. Um I spent too much of my life
+
+625
+00:24:04,040 --> 00:24:07,480
+trying to do this in a different
+
+626
+00:24:05,600 --> 00:24:08,800
+environment, which was investment
+
+627
+00:24:07,480 --> 00:24:11,400
+banking.
+
+628
+00:24:08,800 --> 00:24:13,000
+Um but very similar kinds of problems, I
+
+629
+00:24:11,400 --> 00:24:14,240
+think. I have a direct question and then
+
+630
+00:24:13,000 --> 00:24:15,240
+a comment.
+
+631
+00:24:14,240 --> 00:24:17,400
+Um
+
+632
+00:24:15,240 --> 00:24:20,680
+is the neutral model repository an
+
+633
+00:24:17,400 --> 00:24:23,280
+attempt to create a canonical data model
+
+634
+00:24:20,680 --> 00:24:25,480
+that hides all of the details of all
+
+635
+00:24:23,280 --> 00:24:27,280
+those underlying ones? No, it's a
+
+636
+00:24:25,480 --> 00:24:29,280
+canonical syntax, you can say.
+
+637
+00:24:27,280 --> 00:24:30,600
+>> Canonical syntax, that's all. Okay.
+
+638
+00:24:29,280 --> 00:24:32,200
+Nothing else. I I have I have a second
+
+639
+00:24:30,600 --> 00:24:34,080
+direct question, which is how much of
+
+640
+00:24:32,200 --> 00:24:36,480
+this is driven by
+
+641
+00:24:34,080 --> 00:24:38,920
+exchange of data or integration of data
+
+642
+00:24:36,480 --> 00:24:40,880
+and how much of it is driven by just the
+
+643
+00:24:38,920 --> 00:24:42,880
+desire to be able to understand the data
+
+644
+00:24:40,880 --> 00:24:45,120
+that you have? No, it's actually all
+
+645
+00:24:42,880 --> 00:24:45,560
+mostly driven by the need of exchanging
+
+646
+00:24:45,120 --> 00:24:47,200
+data.
+
+647
+00:24:45,560 --> 00:24:49,280
+>> Right. Okay.
+
+648
+00:24:47,200 --> 00:24:50,720
+So um
+
+649
+00:24:49,280 --> 00:24:52,120
+leaving aside all the organizational
+
+650
+00:24:50,720 --> 00:24:53,960
+issues, which I'm sure are many and
+
+651
+00:24:52,120 --> 00:24:56,280
+various um
+
+652
+00:24:53,960 --> 00:24:57,920
+our experience was and I worked on a
+
+653
+00:24:56,280 --> 00:25:00,640
+system where we ended up integrating
+
+654
+00:24:57,920 --> 00:25:03,400
+about 40 systems both intraday data
+
+655
+00:25:00,640 --> 00:25:05,960
+messaging and and you know uh
+
+656
+00:25:03,400 --> 00:25:07,840
+bulk data set exchanges. With two
+
+657
+00:25:05,960 --> 00:25:09,840
+things. First of all,
+
+658
+00:25:07,840 --> 00:25:12,320
+we could never get
+
+659
+00:25:09,840 --> 00:25:14,720
+anything to work unless we used central
+
+660
+00:25:12,320 --> 00:25:16,840
+experts to do the data modeling. You
+
+661
+00:25:14,720 --> 00:25:18,360
+could never federate the data modeling.
+
+662
+00:25:16,840 --> 00:25:19,400
+It just doesn't work.
+
+663
+00:25:18,360 --> 00:25:21,320
+>> Mhm.
+
+664
+00:25:19,400 --> 00:25:22,800
+And secondly, you need to put technology
+
+665
+00:25:21,320 --> 00:25:25,200
+in place so that people can actually
+
+666
+00:25:22,800 --> 00:25:26,440
+query out the data that they want
+
+667
+00:25:25,200 --> 00:25:27,840
+>> Mhm. from the data that's being
+
+668
+00:25:26,440 --> 00:25:30,760
+produced. I don't know whether those
+
+669
+00:25:27,840 --> 00:25:33,120
+match your experiences, but um those
+
+670
+00:25:30,760 --> 00:25:35,560
+would be two key things. Which this is
+
+671
+00:25:33,120 --> 00:25:37,240
+completely agnostic of
+
+672
+00:25:35,560 --> 00:25:39,040
+you know, the technology used for
+
+673
+00:25:37,240 --> 00:25:41,400
+understanding how to record models and
+
+674
+00:25:39,040 --> 00:25:44,880
+so forth. Anyway, some
+
+675
+00:25:41,400 --> 00:25:48,600
+comments. Mhm. Um if I just may reply,
+
+676
+00:25:44,880 --> 00:25:51,760
+um obviously here our domain experts are
+
+677
+00:25:48,600 --> 00:25:53,360
+uh heavily involved, right? No no no
+
+678
+00:25:51,760 --> 00:25:56,680
+none of these um
+
+679
+00:25:53,360 --> 00:25:59,280
+domain models are created without domain
+
+680
+00:25:56,680 --> 00:26:00,680
+expert, right? Um the whole point is to
+
+681
+00:25:59,280 --> 00:26:02,480
+make
+
+682
+00:26:00,680 --> 00:26:04,320
+once the
+
+683
+00:26:02,480 --> 00:26:06,880
+they do this and make it available
+
+684
+00:26:04,320 --> 00:26:10,040
+reusable to others. So that because this
+
+685
+00:26:06,880 --> 00:26:11,520
+is so costly to have domain experts sit
+
+686
+00:26:10,040 --> 00:26:14,360
+and and
+
+687
+00:26:11,520 --> 00:26:16,520
+be in this uh data structure with it's
+
+688
+00:26:14,360 --> 00:26:18,520
+it is not their own or the syntax which
+
+689
+00:26:16,520 --> 00:26:20,600
+is not their own, right? Um
+
+690
+00:26:18,520 --> 00:26:22,400
+so that we can reuse it for our service
+
+691
+00:26:20,600 --> 00:26:25,000
+designers without them having to go to
+
+692
+00:26:22,400 --> 00:26:26,760
+the domain expert again because they
+
+693
+00:26:25,000 --> 00:26:28,720
+what they don't really like is to have
+
+694
+00:26:26,760 --> 00:26:31,080
+to understand the domain, right? Our
+
+695
+00:26:28,720 --> 00:26:32,240
+software developers, they like
+
+696
+00:26:31,080 --> 00:26:34,200
+just
+
+697
+00:26:32,240 --> 00:26:37,600
+they like when decisions have been made,
+
+698
+00:26:34,200 --> 00:26:39,200
+right? So um this is the whole point.
+
+699
+00:26:37,600 --> 00:26:41,160
+Yes, I guess I should clarify. What I
+
+700
+00:26:39,200 --> 00:26:43,560
+meant was not that you can do this
+
+701
+00:26:41,160 --> 00:26:45,720
+without domain expertise, but that to
+
+702
+00:26:43,560 --> 00:26:47,480
+produce any kind of layer that will
+
+703
+00:26:45,720 --> 00:26:50,120
+allow production and consumption to be
+
+704
+00:26:47,480 --> 00:26:52,360
+shared, you need to get central people
+
+705
+00:26:50,120 --> 00:26:54,920
+involved a central team involved in
+
+706
+00:26:52,360 --> 00:26:56,640
+order to make it to glue it together, to
+
+707
+00:26:54,920 --> 00:26:58,040
+>> observe the interior to technical
+
+708
+00:26:56,640 --> 00:27:01,160
+standards that are involved in doing
+
+709
+00:26:58,040 --> 00:27:02,640
+this. And that way you can extract stuff
+
+710
+00:27:01,160 --> 00:27:04,960
+from the domain experts, but the domain
+
+711
+00:27:02,640 --> 00:27:08,320
+experts on their own will not do it.
+
+712
+00:27:04,960 --> 00:27:09,560
+They will not produce it. So.
+
+713
+00:27:08,320 --> 00:27:11,623
+There was a second comment, but I
+
+714
+00:27:09,560 --> 00:27:11,840
+forgotten what you said.
+
+715
+00:27:11,623 --> 00:27:14,080
+>> [laughter]
+
+716
+00:27:11,840 --> 00:27:14,520
+>> It was about the ability to
+
+717
+00:27:14,080 --> 00:27:16,600
+query
+
+718
+00:27:14,520 --> 00:27:18,600
+>> Yeah, uh-huh. the data that you actually
+
+719
+00:27:16,600 --> 00:27:20,280
+want if there is some kind of canonical
+
+720
+00:27:18,600 --> 00:27:22,080
+representation. This is not about
+
+721
+00:27:20,280 --> 00:27:24,400
+instant data, it's only about the the
+
+722
+00:27:22,080 --> 00:27:26,560
+schema as well. So, I don't I'm not sure
+
+723
+00:27:24,400 --> 00:27:29,000
+if you
+
+724
+00:27:26,560 --> 00:27:30,560
+if this is what you were thinking of.
+
+725
+00:27:29,000 --> 00:27:33,520
+>> so imagine that
+
+726
+00:27:30,560 --> 00:27:36,160
+imagine that you have a uh you know,
+
+727
+00:27:33,520 --> 00:27:37,680
+some some level of commonality of data
+
+728
+00:27:36,160 --> 00:27:39,840
+model and you can describe the
+
+729
+00:27:37,680 --> 00:27:41,640
+information. It's got some relationship,
+
+730
+00:27:39,840 --> 00:27:44,200
+as you said, to actually wanting to
+
+731
+00:27:41,640 --> 00:27:45,600
+build interfaces to exchange data. And
+
+732
+00:27:44,200 --> 00:27:47,640
+my point is
+
+733
+00:27:45,600 --> 00:27:49,240
+you can't produce data for everybody.
+
+734
+00:27:47,640 --> 00:27:52,200
+You need to be able to find a way of the
+
+735
+00:27:49,240 --> 00:27:54,800
+consumers being able to select out what
+
+736
+00:27:52,200 --> 00:27:56,480
+they want, and that will make it work,
+
+737
+00:27:54,800 --> 00:27:58,760
+right? You produce it once, and you
+
+738
+00:27:56,480 --> 00:28:01,440
+consume it in many different ways.
+
+739
+00:27:58,760 --> 00:28:01,440
+Exactly.
+
+740
+00:28:02,200 --> 00:28:04,920
+What's my other question?
+
+741
+00:28:08,080 --> 00:28:10,280
+I thought
+
+742
+00:28:10,680 --> 00:28:12,920
+Let's try.
+
+743
+00:28:17,000 --> 00:28:22,560
+Um it was kind of related to what
+
+744
+00:28:18,640 --> 00:28:24,400
+Alister said about a central team. Um
+
+745
+00:28:22,560 --> 00:28:26,960
+and I wanted to understand
+
+746
+00:28:24,400 --> 00:28:29,000
+if you went about doing that, and how
+
+747
+00:28:26,960 --> 00:28:30,480
+you went about doing that, because I
+
+748
+00:28:29,000 --> 00:28:33,040
+think there've been a few sessions where
+
+749
+00:28:30,480 --> 00:28:35,000
+I've heard people talking about buying
+
+750
+00:28:33,040 --> 00:28:38,000
+at the C-suite level.
+
+751
+00:28:35,000 --> 00:28:39,160
+But unless you actually get buy-in
+
+752
+00:28:38,000 --> 00:28:40,760
+not at the general level, but at the
+
+753
+00:28:39,160 --> 00:28:44,320
+soldiers level, you're not going to
+
+754
+00:28:40,760 --> 00:28:45,960
+succeed. So, I'm interested on comments
+
+755
+00:28:44,320 --> 00:28:48,080
+on how you did that, and indeed even
+
+756
+00:28:45,960 --> 00:28:49,520
+from Alister if he's had experience
+
+757
+00:28:48,080 --> 00:28:51,480
+there as well.
+
+758
+00:28:49,520 --> 00:28:53,240
+This is a pre-development project but
+
+759
+00:28:51,480 --> 00:28:55,120
+then the intention is that this is will
+
+760
+00:28:53,240 --> 00:28:58,960
+be taken over by our so-called
+
+761
+00:28:55,120 --> 00:29:02,440
+foundational services which do offer a
+
+762
+00:28:58,960 --> 00:29:04,920
+whole range of basic services to to our
+
+763
+00:29:02,440 --> 00:29:08,600
+business units when they develop
+
+764
+00:29:04,920 --> 00:29:11,120
+software. So there's an organization
+
+765
+00:29:08,600 --> 00:29:12,880
+happy home for it already but we we
+
+766
+00:29:11,120 --> 00:29:15,040
+don't have the
+
+767
+00:29:12,880 --> 00:29:17,640
+technical details and so we don't really
+
+768
+00:29:15,040 --> 00:29:21,200
+know how this team needs to be set up
+
+769
+00:29:17,640 --> 00:29:21,200
+which kind of skills we need.
+
+770
+00:29:23,480 --> 00:29:26,520
+Time for one more question?
+
+771
+00:29:27,320 --> 00:29:32,600
+I was curious you'd mentioned about data
+
+772
+00:29:29,920 --> 00:29:33,880
+contracts. Are you reusing is there any
+
+773
+00:29:32,600 --> 00:29:36,760
+kind of
+
+774
+00:29:33,880 --> 00:29:39,080
+open standards for the data contracts or
+
+775
+00:29:36,760 --> 00:29:40,640
+have you been prototyping this
+
+776
+00:29:39,080 --> 00:29:42,960
+within the company?
+
+777
+00:29:40,640 --> 00:29:46,040
+This neutral model repository this is
+
+778
+00:29:42,960 --> 00:29:49,040
+our own yeah. This is somehow slightly
+
+779
+00:29:46,040 --> 00:29:51,440
+related to UML it stands a little bit
+
+780
+00:29:49,040 --> 00:29:54,065
+between UML and asset administration so
+
+781
+00:29:51,440 --> 00:29:55,240
+very industry specific
+
+782
+00:29:54,065 --> 00:29:57,240
+>> [clears throat]
+
+783
+00:29:55,240 --> 00:30:00,200
+>> but the problem is we have
+
+784
+00:29:57,240 --> 00:30:04,280
+this forest of syntaxes right? We have
+
+785
+00:30:00,200 --> 00:30:06,760
+software developers who use link right?
+
+786
+00:30:04,280 --> 00:30:08,680
+Others are deeply into UML so we needed
+
+787
+00:30:06,760 --> 00:30:11,095
+to standardize on the on the syntax
+
+788
+00:30:08,680 --> 00:30:11,160
+level first
+
+789
+00:30:11,095 --> 00:30:13,080
+>> [clears throat]
+
+790
+00:30:11,160 --> 00:30:16,280
+>> but this is not an open standard it's
+
+791
+00:30:13,080 --> 00:30:16,280
+internal only.
+
+792
+00:30:16,560 --> 00:30:20,265
+All ready.
+
+793
+00:30:17,560 --> 00:30:22,285
+Thank you very much Veronica wonderful.
+
+794
+00:30:20,265 --> 00:30:22,285
+>> [applause]
+
