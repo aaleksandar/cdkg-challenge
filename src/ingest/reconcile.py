@@ -311,6 +311,27 @@ class TalkState:
         return self.live_status == "is_upcoming"
 
     @property
+    def before_heysummit(self) -> bool:
+        """A channel video from before the conference used HeySummit.
+
+        CDL 2016–2018 are on no programme the sync reads, so a talk from those
+        years has no record to link, and its empty HeySummit column is the
+        truth rather than a missed match. Judged by the upload year, or the
+        year of the event its title names, against the earliest allow-listed
+        event's — a 2024 re-upload of a 2017 talk is still a 2017 talk.
+        """
+        if not self.on_youtube or "heysummit" in self.sources:
+            return False
+        from .sources import heysummit, parser
+
+        first = heysummit.first_year()
+        years = [(self.published_at or "")[:4]]
+        event = parser.find_event(self.title)
+        if event:
+            years += re.findall(r"\b(20\d{2})\b", event)
+        return any(y.isdigit() and int(y) < first for y in years)
+
+    @property
     def is_junk(self) -> bool:
         """A transcript named after a bare YouTube ID — untitled, often duplicated."""
         return bool(self.stem and YOUTUBE_ID_FILENAME.match(self.stem))

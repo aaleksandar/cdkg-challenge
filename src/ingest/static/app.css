@@ -623,6 +623,8 @@ td.act .rowbtn:disabled { opacity: 1; }
 }
 .toggle:hover { color: var(--ink-soft); }
 .toggle input { accent-color: var(--accent); margin: 0; }
+.shown { margin-left: .9rem; font-size: .76rem; color: var(--ink-faint); white-space: nowrap; }
+.shown strong { color: var(--ink-soft); font-weight: 600; font-variant-numeric: tabular-nums; }
 
 /* ---- Advanced ----
    Lives in the drawer, so it inherits the shell, the animation and the close

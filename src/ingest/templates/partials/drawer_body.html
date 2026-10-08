@@ -357,6 +357,9 @@
     {% if s.web %}
     <dt>HeySummit</dt>
     <dd><a href="{{ s.web }}" target="_blank" rel="noopener">programme page ↗</a></dd>
+    {% elif s.before_heysummit %}
+    <dt>HeySummit</dt>
+    <dd class="none">{{ BEFORE_HEYSUMMIT }}</dd>
     {% endif %}
     {% if s.missing_curation %}
     <dt>Needs</dt>
