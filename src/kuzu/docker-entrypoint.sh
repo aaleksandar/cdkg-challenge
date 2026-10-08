@@ -3,7 +3,6 @@ set -e
 
 MODE="${MODE:-app}"
 DB_PATH="${DB_PATH:-/app/cdl_db.kuzu}"
-ENTITIES_HASH_FILE="${DB_PATH}.entities_hash"
 BAML_GENERATE_ON_START="${BAML_GENERATE_ON_START:-1}"
 
 echo "Starting CDKG in mode: $MODE"
@@ -26,7 +25,6 @@ build_db() {
     python 00_extract_transcripts.py
     python 02_domain_graph.py
     python 03_content_graph.py
-    md5sum /app/entities.json > "$ENTITIES_HASH_FILE"
     echo "Database built at $DB_PATH"
 }
 
@@ -81,12 +79,11 @@ case "$MODE" in
         exec uvicorn ingest.main:app --host 0.0.0.0 --port "${SERVICE_PORT:-8503}"
         ;;
     pipeline)
-        # Full pipeline: re-extract tags with LLM, then rebuild db
+        # Full pipeline: tag what is untagged with the LLM, then rebuild the db
         python 00_extract_transcripts.py
         python 01_extract_tag_keywords.py
         python 02_domain_graph.py
         python 03_content_graph.py
-        md5sum /app/entities.json > "$ENTITIES_HASH_FILE"
         ;;
     pipeline-no-llm)
         build_db

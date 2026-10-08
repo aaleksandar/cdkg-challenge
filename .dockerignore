@@ -8,7 +8,8 @@ __pycache__/
 *$py.class
 .venv/
 venv/
-.env
+# Every .env, not only the root one: src/kuzu/.env holds API keys.
+**/.env
 
 # BAML generated client (regenerated at build time)
 src/kuzu/baml_client/

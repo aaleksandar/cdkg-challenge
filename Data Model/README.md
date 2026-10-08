@@ -1,5 +1,8 @@
 # The Connected Data Knowledge Graph Metamodel
 
+> The design record the project started from (v0.1, December 2024). The graph as
+> built today is simpler: see [`cdl_db/README.md`](../cdl_db/README.md) for its schema.
+
 Date: December 11 2024  
 Version: 0.1
 

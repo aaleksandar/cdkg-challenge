@@ -1,563 +1,1743 @@
-a.title,b.keyword
-Graph Thinking,graph thinking
-Graph Thinking,Cynefin framework
-Graph Thinking,network medicine
-Graph Thinking,non negative matrix factorization
-Graph Thinking,adjacency matrix
-Graph Thinking,tensor
-Graph Thinking,graphBLAST
-Graph Thinking,KGLab
-Graph Thinking,Apache Arrow
-Graph Thinking,Apache Parquet
-Graph Thinking,pyvis
-Graph Thinking,Cairo
-Graph Thinking,Matplotlib
-Graph Thinking,Graphistry
-Graph Thinking,network x
-Graph Thinking,iGraph
-Graph Thinking,cuGraph
-Graph Thinking,PyTorch geometric
-Graph Thinking,statistical relational learning
-Graph Thinking,probabilistic graphs
-Graph Thinking,OWL
-Graph Thinking,RDFS
-Graph Thinking,deep learning graph neural networks
-Graph Thinking,shackle
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,defend
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,mitre corporation
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,mitre att and ck
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,knowledge graph
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,ontology
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,digital artifact ontology
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,patent corpus
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,defensive countermeasures
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,offensive techniques
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,cybersecurity
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,process code segment verification
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,user behavior analysis
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,process analysis
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,adaptive analytics
-"Knowledge Graphs as Hub for Data, Metadata and Content",naso kiriakov
-"Knowledge Graphs as Hub for Data, Metadata and Content",vasil momchev
-"Knowledge Graphs as Hub for Data, Metadata and Content",james
-"Knowledge Graphs as Hub for Data, Metadata and Content",vasil mamcheff
-Sales AI: Building and maintaining a knowledge graph,neo4j
-Sales AI: Building and maintaining a knowledge graph,kafka
-Sales AI: Building and maintaining a knowledge graph,cypher
-Sales AI: Building and maintaining a knowledge graph,mobileye
-Sales AI: Building and maintaining a knowledge graph,stream processing
-Sales AI: Building and maintaining a knowledge graph,microservice architecture
-Sales AI: Building and maintaining a knowledge graph,knowledge graph
-Sales AI: Building and maintaining a knowledge graph,message bus
-Sales AI: Building and maintaining a knowledge graph,transformers
-Sales AI: Building and maintaining a knowledge graph,extractors
-Sales AI: Building and maintaining a knowledge graph,graph builder
-Sales AI: Building and maintaining a knowledge graph,refreshers
-Sales AI: Building and maintaining a knowledge graph,sales assist
-Sales AI: Building and maintaining a knowledge graph,yaml
-Sales AI: Building and maintaining a knowledge graph,dsl
-Sales AI: Building and maintaining a knowledge graph,deep learning
-Sales AI: Building and maintaining a knowledge graph,machine learning
-One graph to bind them all! Linking data & apps for event-driven interoperability,graph
-One graph to bind them all! Linking data & apps for event-driven interoperability,no code platform
-One graph to bind them all! Linking data & apps for event-driven interoperability,enterprise web
-One graph to bind them all! Linking data & apps for event-driven interoperability,distributed systems
-One graph to bind them all! Linking data & apps for event-driven interoperability,cloud native
-One graph to bind them all! Linking data & apps for event-driven interoperability,middleware
-One graph to bind them all! Linking data & apps for event-driven interoperability,data fabric
-One graph to bind them all! Linking data & apps for event-driven interoperability,data mesh
-One graph to bind them all! Linking data & apps for event-driven interoperability,graph object in action language
-One graph to bind them all! Linking data & apps for event-driven interoperability,boal
-One graph to bind them all! Linking data & apps for event-driven interoperability,xml
-One graph to bind them all! Linking data & apps for event-driven interoperability,rdf
-One graph to bind them all! Linking data & apps for event-driven interoperability,json
-One graph to bind them all! Linking data & apps for event-driven interoperability,uml
-One graph to bind them all! Linking data & apps for event-driven interoperability,sap
-One graph to bind them all! Linking data & apps for event-driven interoperability,bpmn
-One graph to bind them all! Linking data & apps for event-driven interoperability,action logs
-One graph to bind them all! Linking data & apps for event-driven interoperability,reliable messaging
-One graph to bind them all! Linking data & apps for event-driven interoperability,transaction guarantees
-One graph to bind them all! Linking data & apps for event-driven interoperability,state management
-One graph to bind them all! Linking data & apps for event-driven interoperability,serverless patterns
-One graph to bind them all! Linking data & apps for event-driven interoperability,event driven processes
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,graphcore
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,ipu architecture
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,graph neural networks
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,message passing algorithm
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,GNN layers
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,message function
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,update function
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,node classification
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,link prediction
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,graph classification
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,heterogeneous graphs
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,dynamic graphs
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,deep learning
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,GC200
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,IPU M2000
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,FastIP Link
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,BSP programming model
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,mini batch training
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,shallow sampling
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,graph clustering
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,data parallelism
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,pipeline parallelism
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,low precision number formats
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,temporal graph networks
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,GRU
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,temporal graph attention network
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,temporal graph sum networks
-Protecting vital public health programs with AI and Knowledge Graphs,semantic technologies
-Protecting vital public health programs with AI and Knowledge Graphs,natural language processing
-Protecting vital public health programs with AI and Knowledge Graphs,learning technologies
-Protecting vital public health programs with AI and Knowledge Graphs,knowledge graphs
-Protecting vital public health programs with AI and Knowledge Graphs,AI
-Protecting vital public health programs with AI and Knowledge Graphs,deep learning
-Protecting vital public health programs with AI and Knowledge Graphs,ontologies
-Protecting vital public health programs with AI and Knowledge Graphs,NLP
-Protecting vital public health programs with AI and Knowledge Graphs,UMLS
-Protecting vital public health programs with AI and Knowledge Graphs,ICD ten
-Protecting vital public health programs with AI and Knowledge Graphs,MongoDB
-Protecting vital public health programs with AI and Knowledge Graphs,MetaMap
-Protecting vital public health programs with AI and Knowledge Graphs,PERT
-Legal Knowledge Graphs,knowledge graphs
-Legal Knowledge Graphs,data management
-Legal Knowledge Graphs,sparkle
-Legal Knowledge Graphs,rule based reasoning
-Legal Knowledge Graphs,contracts
-Legal Knowledge Graphs,legal documents
-Legal Knowledge Graphs,metrics
-Legal Knowledge Graphs,smart folders
-Legal Knowledge Graphs,visualization
-Legal Knowledge Graphs,insights
-Legal Knowledge Graphs,data extraction
-Humans and the Graph - Inspiring and empowering GraphQL adoption,graphql
-Humans and the Graph - Inspiring and empowering GraphQL adoption,apollo
-Humans and the Graph - Inspiring and empowering GraphQL adoption,sql
-Humans and the Graph - Inspiring and empowering GraphQL adoption,schema definition language
-Humans and the Graph - Inspiring and empowering GraphQL adoption,SDL
-Humans and the Graph - Inspiring and empowering GraphQL adoption,api gateway
-Humans and the Graph - Inspiring and empowering GraphQL adoption,containerization
-Humans and the Graph - Inspiring and empowering GraphQL adoption,reactive programming
-Humans and the Graph - Inspiring and empowering GraphQL adoption,unified graph
-Humans and the Graph - Inspiring and empowering GraphQL adoption,design system
-Humans and the Graph - Inspiring and empowering GraphQL adoption,component architecture
-Humans and the Graph - Inspiring and empowering GraphQL adoption,back end for front end
-Humans and the Graph - Inspiring and empowering GraphQL adoption,api first mindset
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,mihir
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,michel
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,vincent
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,verhoeff
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,van gogh
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,goulain
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,data lake
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,knowledge graphs
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,knowledge mesh
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,ETL pipeline
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,GraphQL
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,NLP algorithms
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,metadata
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,audiofox
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,rdfox
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,c plus plus
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,sparkle
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,datalog
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,owl
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,shackle
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,swell
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,nlp
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,docker
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,aws
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,google cloud platform
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,azure
-Implementing Informed Consent with Knowledge Graphs,anelioa kurteva
-Implementing Informed Consent with Knowledge Graphs,rosa finn
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",katana graph
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",cusp
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",galois graph computing engine
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",gluon communication engine
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",openCypher
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",gql
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",graph neural networks
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",graph transformer networks
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",rdkit
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,monte carlo
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,gainsight
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,snowflake
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,looker
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,pagerduty
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,splunk
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,new relic
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,datadog
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,oreilly
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,dbpedia
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,sparkle
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,shackle
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,fair
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,github
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,docker
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,maven
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,apt
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,npm
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,scala
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,spit
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,wiki data
-Systems that learn and reason,machine learning
-Systems that learn and reason,symbolic AI
-Systems that learn and reason,statistical AI
-Systems that learn and reason,neural networks
-Systems that learn and reason,knowledge bases
-Systems that learn and reason,knowledge graphs
-Systems that learn and reason,inductive logic programming
-Systems that learn and reason,semantic loss functions
-Systems that learn and reason,AnyBurl
-Systems that learn and reason,Nvidia
-Systems that learn and reason,AlphaGo
-Systems that learn and reason,DeepMind
-Systems that learn and reason,reinforcement learning
-Systems that learn and reason,ontological knowledge
-Secret Knowledge: Visualizing Complexity,data visualization
-Secret Knowledge: Visualizing Complexity,data art
-Secret Knowledge: Visualizing Complexity,graphs
-Secret Knowledge: Visualizing Complexity,slido
-Secret Knowledge: Visualizing Complexity,tableau
-Secret Knowledge: Visualizing Complexity,power bi
-Secret Knowledge: Visualizing Complexity,click
-Secret Knowledge: Visualizing Complexity,neural networks
-Secret Knowledge: Visualizing Complexity,Andy Kirk
-Secret Knowledge: Visualizing Complexity,Montreux Jazz Festival
-Secret Knowledge: Visualizing Complexity,ethnomusicology
-Secret Knowledge: Visualizing Complexity,AI
-Secret Knowledge: Visualizing Complexity,generative adversarial networks
-Secret Knowledge: Visualizing Complexity,NLP
-Secret Knowledge: Visualizing Complexity,Mandelbrot set
-Secret Knowledge: Visualizing Complexity,fractals
-Secret Knowledge: Visualizing Complexity,knowledge graph
-Graph Abstractions Matter,amazon neptune
-Graph Abstractions Matter,rdf
-Graph Abstractions Matter,semantic web
-Graph Abstractions Matter,erdos number
-Graph Abstractions Matter,sparql
-Graph Abstractions Matter,gremlin
-Graph Abstractions Matter,cypher
-Graph Abstractions Matter,owl
-Graph Abstractions Matter,shacl
-Graph Abstractions Matter,object graph mapping
-Graph Abstractions Matter,json ld
-Graph Abstractions Matter,ontology engines
-Graph Abstractions Matter,rdf star
-Graph Abstractions Matter,knowledge graphs
-The Business Case for Data Management,semantic data management
-The Business Case for Data Management,data management
-The Business Case for Data Management,ontologies
-The Business Case for Data Management,triples
-The Business Case for Data Management,executive business rules
-The Business Case for Data Management,data hygiene
-The Business Case for Data Management,resource identifier
-The Business Case for Data Management,resource locator
-The Business Case for Data Management,cloud
-The Business Case for Data Management,data inventory
-The Business Case for Data Management,data flow
-The Business Case for Data Management,data lineage
-The Business Case for Data Management,auditing
-The Business Case for Data Management,centralized repository
-The Business Case for Data Management,technical debt
-The Business Case for Data Management,proprietary data models
-The Business Case for Data Management,business processes
-The Business Case for Data Management,semantic standards
-The Business Case for Data Management,data governance
-The Business Case for Data Management,contextual data environments
-The Business Case for Data Management,data centric
-The Business Case for Data Management,automation
-The Business Case for Data Management,data quality
-The Business Case for Data Management,data privacy
-The Business Case for Data Management,data transformation
-The Business Case for Data Management,machine executable
-The Business Case for Data Management,data janitorial work
-Hybridization of Machine Learning and Operational Research is the future of AI ,ml
-Hybridization of Machine Learning and Operational Research is the future of AI ,or
-Hybridization of Machine Learning and Operational Research is the future of AI ,operations research
-Hybridization of Machine Learning and Operational Research is the future of AI ,machine learning
-Hybridization of Machine Learning and Operational Research is the future of AI ,graph theory
-Hybridization of Machine Learning and Operational Research is the future of AI ,big data
-Hybridization of Machine Learning and Operational Research is the future of AI ,data science
-Hybridization of Machine Learning and Operational Research is the future of AI ,prescriptive analysis
-Hybridization of Machine Learning and Operational Research is the future of AI ,descriptive analysis
-Hybridization of Machine Learning and Operational Research is the future of AI ,diagnostic analysis
-Hybridization of Machine Learning and Operational Research is the future of AI ,predictive analysis
-Hybridization of Machine Learning and Operational Research is the future of AI ,tsp
-Hybridization of Machine Learning and Operational Research is the future of AI ,reinforcement learning
-Hybridization of Machine Learning and Operational Research is the future of AI ,graph neural networks
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,knowledge graph
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,data analytics
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,ontologies
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,RDFox
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,ISO
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Fibo ontology
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Denodo
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,ODBC
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,SAP
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Oracle
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Redshift
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Excel
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,TRIPISSTORM
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,performance pricing
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Metafactory
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,sparkle
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,statistical analytics
-Graph Analytics vs Graph Machine Learning,graph analytics
-Graph Analytics vs Graph Machine Learning,GraphML
-Graph Analytics vs Graph Machine Learning,graph machine learning
-Graph Analytics vs Graph Machine Learning,GraphSAGE
-Graph Analytics vs Graph Machine Learning,graph neural networks
-Graph Analytics vs Graph Machine Learning,graph embeddings
-Graph Analytics vs Graph Machine Learning,deep neural networks
-Graph Analytics vs Graph Machine Learning,support vector machines
-Graph Analytics vs Graph Machine Learning,breadth first search
-Graph Analytics vs Graph Machine Learning,depth first search
-Graph Analytics vs Graph Machine Learning,centrality
-Graph Analytics vs Graph Machine Learning,degree centrality
-Graph Analytics vs Graph Machine Learning,closeness centrality
-Graph Analytics vs Graph Machine Learning,betweenness centrality
-Graph Analytics vs Graph Machine Learning,cycle detection
-Graph Analytics vs Graph Machine Learning,community detection
-Graph Analytics vs Graph Machine Learning,homophily
-Graph Analytics vs Graph Machine Learning,Uber
-Graph Analytics vs Graph Machine Learning,DeepMind
-Graph Analytics vs Graph Machine Learning,RankoDB
-Graph Analytics vs Graph Machine Learning,Gartner trends
-Graph Analytics vs Graph Machine Learning,fraud detection
-Graph Analytics vs Graph Machine Learning,recommendation systems
-Graph Analytics vs Graph Machine Learning,supply chain management
-Graph Analytics vs Graph Machine Learning,computational chemistry
-Graph Analytics vs Graph Machine Learning,health care
-Graph Analytics vs Graph Machine Learning,telecommunication networks
-Graph Analytics vs Graph Machine Learning,money laundering
-Graph Analytics vs Graph Machine Learning,Data AI Summit
-Graph Analytics vs Graph Machine Learning,Stanford
-Graph Analytics vs Graph Machine Learning,graph databases
-UBS Helix Knowledge Graph: The Power of Information,ubs knowledge graph
-UBS Helix Knowledge Graph: The Power of Information,federated architecture
-UBS Helix Knowledge Graph: The Power of Information,model driven layered architecture
-UBS Helix Knowledge Graph: The Power of Information,enterprise agreed model
-UBS Helix Knowledge Graph: The Power of Information,shackle models
-UBS Helix Knowledge Graph: The Power of Information,dublin core
-UBS Helix Knowledge Graph: The Power of Information,fibo
-UBS Helix Knowledge Graph: The Power of Information,prov
-UBS Helix Knowledge Graph: The Power of Information,dcat
-UBS Helix Knowledge Graph: The Power of Information,datacube
-UBS Helix Knowledge Graph: The Power of Information,sdmx
-UBS Helix Knowledge Graph: The Power of Information,http protocol
-UBS Helix Knowledge Graph: The Power of Information,uri
-UBS Helix Knowledge Graph: The Power of Information,sparkle
-UBS Helix Knowledge Graph: The Power of Information,elastic search
-UBS Helix Knowledge Graph: The Power of Information,dataset registry
-UBS Helix Knowledge Graph: The Power of Information,metadata repositories
-UBS Helix Knowledge Graph: The Power of Information,metadata registries
-UBS Helix Knowledge Graph: The Power of Information,dataset catalog
-UBS Helix Knowledge Graph: The Power of Information,data dictionaries
-The game plan for your Knowledge Graph-driven FAIR data platform,sebastian schmidt
-The game plan for your Knowledge Graph-driven FAIR data platform,george
-The game plan for your Knowledge Graph-driven FAIR data platform,peter hasso
-The Enterprise Knowledge Graph,knowledge graph
-The Enterprise Knowledge Graph,ontologies
-The Enterprise Knowledge Graph,graph databases
-The Enterprise Knowledge Graph,virtual graph databases
-The Enterprise Knowledge Graph,knowledge driven data catalogs
-The Enterprise Knowledge Graph,data fabrics
-The Enterprise Knowledge Graph,graph algorithms
-The Enterprise Knowledge Graph,graph neural networks
-The Enterprise Knowledge Graph,machine learning
-The Enterprise Knowledge Graph,deep learning
-The Enterprise Knowledge Graph,natural language processing
-The Enterprise Knowledge Graph,knowledge graph completion
-The Enterprise Knowledge Graph,RDFOWL
-The Enterprise Knowledge Graph,semantic web
-The Enterprise Knowledge Graph,SPARQL
-The Enterprise Knowledge Graph,GraphQL
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,darpa
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,yoshua bengio
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,kanban
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,t five
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,gpt three
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,atomic
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,ram
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,rag
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,infusion
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,decoder
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,nlp
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,visual comic leaderboard
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,interlapse
-Knowledge Graphs: Moving Beyond RDF,rdf
-Knowledge Graphs: Moving Beyond RDF,json ld
-Knowledge Graphs: Moving Beyond RDF,sparql
-Knowledge Graphs: Moving Beyond RDF,turtle
-Knowledge Graphs: Moving Beyond RDF,owl
-Knowledge Graphs: Moving Beyond RDF,xml
-Knowledge Graphs: Moving Beyond RDF,json
-Knowledge Graphs: Moving Beyond RDF,shackle
-Knowledge Graphs: Moving Beyond RDF,gremlin
-Knowledge Graphs: Moving Beyond RDF,opencypher
-Knowledge Graphs: Moving Beyond RDF,graphql
-Modelling regulation requirements using SHACL,shackle
-Modelling regulation requirements using SHACL,owl
-Modelling regulation requirements using SHACL,sparql
-Modelling regulation requirements using SHACL,rdf
-Modelling regulation requirements using SHACL,json
-Modelling regulation requirements using SHACL,java
-Modelling regulation requirements using SHACL,c
-Modelling regulation requirements using SHACL,python
-Modelling regulation requirements using SHACL,jena
-Modelling regulation requirements using SHACL,rdf4j
-Modelling regulation requirements using SHACL,nlp
-Modelling regulation requirements using SHACL,prolog
-Modelling regulation requirements using SHACL,shackle core
-Modelling regulation requirements using SHACL,shackle advanced features
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,neural algorithmic reasoning
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,classical algorithms
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,neural networks
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,dynamic programming
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,bellman ford
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,graph neural networks
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,trunk supervision
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,multiple task learning
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,value iteration
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,markov decision process
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,contrastive learning
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,neural execution of graph algorithms
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,excelvin
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,value prediction networks
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,pretrained executor
-Taxonomies: Connecting Data with Duct Tape,taxonomies
-Taxonomies: Connecting Data with Duct Tape,semantic technologies
-Taxonomies: Connecting Data with Duct Tape,artificial intelligence
-Taxonomies: Connecting Data with Duct Tape,knowledge graphs
-Taxonomies: Connecting Data with Duct Tape,cognitive computing
-Taxonomies: Connecting Data with Duct Tape,machine learning
-Taxonomies: Connecting Data with Duct Tape,deep learning
-Taxonomies: Connecting Data with Duct Tape,concept catalogs
-Taxonomies: Connecting Data with Duct Tape,feature spaces
-Taxonomies: Connecting Data with Duct Tape,epistemological assumptions
-Taxonomies: Connecting Data with Duct Tape,next generation knowledge graphs
-Taxonomies: Connecting Data with Duct Tape,hybrid intelligence
-Taxonomies: Connecting Data with Duct Tape,collaborative AI
-Taxonomies: Connecting Data with Duct Tape,explainable AI
-Taxonomies: Connecting Data with Duct Tape,reciprocal learning
-Taxonomies: Connecting Data with Duct Tape,adaptive machine translation
-"Deep Learning on Graphs: Past, Present, And Future",machine learning
-"Deep Learning on Graphs: Past, Present, And Future",pattern recognition
-"Deep Learning on Graphs: Past, Present, And Future",graph learning
-"Deep Learning on Graphs: Past, Present, And Future",deep learning
-"Deep Learning on Graphs: Past, Present, And Future",multilayer perceptrons
-"Deep Learning on Graphs: Past, Present, And Future",convolutional neural networks
-"Deep Learning on Graphs: Past, Present, And Future",CNNs
-"Deep Learning on Graphs: Past, Present, And Future",geometric deep learning
-"Deep Learning on Graphs: Past, Present, And Future",graph neural networks
-"Deep Learning on Graphs: Past, Present, And Future",message passing
-"Deep Learning on Graphs: Past, Present, And Future",temporal graph networks
-"Deep Learning on Graphs: Past, Present, And Future",graph substructure networks
-"Deep Learning on Graphs: Past, Present, And Future",open graph benchmark
-"Deep Learning on Graphs: Past, Present, And Future",DGL
-"Deep Learning on Graphs: Past, Present, And Future",PyTorch Geometric
-"Deep Learning on Graphs: Past, Present, And Future",dynamic graph CNNs
-"Deep Learning on Graphs: Past, Present, And Future",manifold learning
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),jozana diotis
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),juan sequeira
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),brian jacob
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),george
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),rubin
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),sally
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph edm
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph machine learning
-GraphEDM: A Unified Framework for Machine Learning on Graphs,neural networks
-GraphEDM: A Unified Framework for Machine Learning on Graphs,buffer presentation learning
-GraphEDM: A Unified Framework for Machine Learning on Graphs,supervised learning
-GraphEDM: A Unified Framework for Machine Learning on Graphs,unsupervised learning
-GraphEDM: A Unified Framework for Machine Learning on Graphs,link prediction
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph visualization
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph clustering
-GraphEDM: A Unified Framework for Machine Learning on Graphs,node classification
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph class classification
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph factorization
-GraphEDM: A Unified Framework for Machine Learning on Graphs,deepwalk
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph convolution model
-GraphEDM: A Unified Framework for Machine Learning on Graphs,shallow encoder
-GraphEDM: A Unified Framework for Machine Learning on Graphs,label propagation model
-GraphEDM: A Unified Framework for Machine Learning on Graphs,graph neural networks
-GraphEDM: A Unified Framework for Machine Learning on Graphs,node features
-GraphEDM: A Unified Framework for Machine Learning on Graphs,knowledge graphs
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",rdf
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",property graphs
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",graphdb
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",sparkle
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",rdf star
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",sparco
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",inference
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",semantic technology
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",knowledge graphs
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",link data benchmarking councils
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",social network benchmark
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",neo4j
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",ontotext
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",text analysis
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",data analysis
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",machine learning
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",metadata
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",vocabulary management
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",taxonomy management
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",graph traversal
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",enterprise knowledge
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",data integration
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph algorithms
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,knowledge graphs
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph data science
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph embeddings
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph neural networks
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,unsupervised machine learning
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,supervised learning
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,deep learning
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,neural networks
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,decision trees
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,reinforcement learning
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,entity resolution
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,similarity algorithms
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,cosine similarity
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,community detection algorithms
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,Louvain
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,page rank
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,LCC
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,diameter estimation
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph convolutional neural network
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,attention networks
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,recurrent networks
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,PyTorch
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,TensorFlow
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,DGL deep graph learning
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph embedding
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph database
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph algorithm library
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,graph query language
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,in database machine learning
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,linked data
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,semantic web standards
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,taxonomy development
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,data analytics
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Mendeley
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Scopus
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,ScienceDirect
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,HyAxis
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Sharepath
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Clinical Key
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Omnisciences
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,DBpedia
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,shackle
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,PROV
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,PAV
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,SCOS
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,SCOS Excel
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,web annotation data model
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Elsevier data model
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,triple store
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,RDF
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,SPARQL
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,pandas
+a.talk_id,b.keyword,r.source
+t-a674751f,graph thinking,transcript
+t-a674751f,relational database,transcript
+t-a674751f,graph algorithms,transcript
+t-a674751f,betweenness centrality,transcript
+t-a674751f,centrality,transcript
+t-a674751f,graph traversals,transcript
+t-a674751f,cynefin framework,transcript
+t-a674751f,decision trees,transcript
+t-a674751f,data warehouse,transcript
+t-a674751f,data lake,transcript
+t-a674751f,business intelligence,transcript
+t-a674751f,spreadsheets,transcript
+t-a674751f,sql,transcript
+t-a674751f,dependency graph,transcript
+t-a674751f,directed acyclic graph,transcript
+t-a674751f,erd,transcript
+t-a674751f,motif mining,transcript
+t-a674751f,network medicine,transcript
+t-a674751f,algebraic graph theory,transcript
+t-a674751f,vectorization,transcript
+t-a674751f,neural networks,transcript
+t-a674751f,non-negative matrix factorization,transcript
+t-a674751f,adjacency matrix,transcript
+t-a674751f,tensor,transcript
+t-a674751f,pagerank,transcript
+t-a674751f,graphblas,transcript
+t-a674751f,active learning,transcript
+t-a674751f,explainable ai,transcript
+t-a674751f,kglab,transcript
+t-a674751f,dask,transcript
+t-a674751f,ray,transcript
+t-a674751f,rapids,transcript
+t-a674751f,spark,transcript
+t-a674751f,w3c standards,transcript
+t-a674751f,rdf,transcript
+t-a674751f,rdflib,transcript
+t-a674751f,pathlib,transcript
+t-a674751f,fsspec,transcript
+t-a674751f,apache arrow,transcript
+t-a674751f,apache parquet,transcript
+t-a674751f,pyvis,transcript
+t-a674751f,cairo,transcript
+t-a674751f,matplotlib,transcript
+t-a674751f,graphistry,transcript
+t-a674751f,sparql,transcript
+t-a674751f,pandas,transcript
+t-a674751f,shacl,transcript
+t-a674751f,networkx,transcript
+t-a674751f,igraph,transcript
+t-a674751f,cugraph,transcript
+t-a674751f,graph-tool,transcript
+t-a674751f,graph neural networks,transcript
+t-a674751f,pytorch geometric,transcript
+t-a674751f,statistical relational learning,transcript
+t-a674751f,probabilistic soft logic,transcript
+t-a674751f,owl,transcript
+t-a674751f,rdfs,transcript
+t-a674751f,clustering,transcript
+t-d50a517e,knowledge graph,transcript
+t-d50a517e,fair data,transcript
+t-d50a517e,owl,transcript
+t-d50a517e,rdf,transcript
+t-d50a517e,sparql,transcript
+t-d50a517e,metafactory,transcript
+t-d50a517e,dcat,transcript
+t-d50a517e,prov-o,transcript
+t-d50a517e,shacl,transcript
+t-d50a517e,git,transcript
+t-d50a517e,skos,transcript
+t-d50a517e,w3c reconciliation service api,transcript
+t-d50a517e,wikidata,transcript
+t-d50a517e,mesh,transcript
+t-d50a517e,collibra,transcript
+t-d50a517e,artificial intelligence,transcript
+t-d50a517e,machine learning,transcript
+t-d50a517e,agile,transcript
+t-d50a517e,named graphs,transcript
+t-d50a517e,ldp containers,transcript
+t-5c4bcd15,graph analytics,transcript
+t-5c4bcd15,graphml,transcript
+t-5c4bcd15,graph machine learning,transcript
+t-5c4bcd15,rankodb,transcript
+t-5c4bcd15,graph databases,transcript
+t-5c4bcd15,graph queries,transcript
+t-5c4bcd15,unsupervised learning,transcript
+t-5c4bcd15,topological sort,transcript
+t-5c4bcd15,breadth first search,transcript
+t-5c4bcd15,depth first search,transcript
+t-5c4bcd15,pathfinding,transcript
+t-5c4bcd15,degree centrality,transcript
+t-5c4bcd15,closeness centrality,transcript
+t-5c4bcd15,betweenness centrality,transcript
+t-5c4bcd15,cycle detection,transcript
+t-5c4bcd15,deadlock detection,transcript
+t-5c4bcd15,community detection,transcript
+t-5c4bcd15,supervised machine learning,transcript
+t-5c4bcd15,support vector machines,transcript
+t-5c4bcd15,graph embeddings,transcript
+t-5c4bcd15,node embeddings,transcript
+t-5c4bcd15,deep neural networks,transcript
+t-5c4bcd15,graph neural networks,transcript
+t-5c4bcd15,node classification,transcript
+t-5c4bcd15,graph classification,transcript
+t-5c4bcd15,link prediction,transcript
+t-5c4bcd15,graphsage,transcript
+t-5c4bcd15,inductive learning,transcript
+t-5c4bcd15,gpus,transcript
+t-c757e47d,data modeling,transcript
+t-c757e47d,neo4j,transcript
+t-c757e47d,schema-optional,transcript
+t-c757e47d,constraints,transcript
+t-c757e47d,graph data modeling,transcript
+t-c757e47d,noun verb noun,transcript
+t-07b04e2c,null,transcript
+t-07b04e2c,pubmed,transcript
+t-07b04e2c,scopus,transcript
+t-07b04e2c,google scholar,transcript
+t-07b04e2c,microsoft academic,transcript
+t-07b04e2c,google maps,transcript
+t-07b04e2c,data visualization,transcript
+t-07b04e2c,faceted filters,transcript
+t-07b04e2c,nlp,transcript
+t-07b04e2c,entity recognition,transcript
+t-07b04e2c,metadata enrichments,transcript
+t-07b04e2c,machine learning,transcript
+t-07b04e2c,citation network graph,transcript
+t-07b04e2c,force directed layout,transcript
+t-07b04e2c,dimension reduction,transcript
+t-07b04e2c,umap,transcript
+t-07b04e2c,tsne,transcript
+t-07b04e2c,hdbscan,transcript
+t-07b04e2c,hierarchical clustering,transcript
+t-07b04e2c,k-means,transcript
+t-07b04e2c,density-based clustering,transcript
+t-07b04e2c,automatic classification,transcript
+t-561733aa,audiofox,transcript
+t-561733aa,rdfox,transcript
+t-561733aa,knowledge graph,transcript
+t-561733aa,semantic reasoning,transcript
+t-561733aa,c++,transcript
+t-561733aa,recursion,transcript
+t-561733aa,incremental reasoning,transcript
+t-561733aa,digital twins,transcript
+t-561733aa,ontologies,transcript
+t-561733aa,shackle,transcript
+t-561733aa,graph analytics,transcript
+t-561733aa,nlp,transcript
+t-561733aa,rdf,transcript
+t-561733aa,sparql,transcript
+t-561733aa,sql,transcript
+t-561733aa,solr,transcript
+t-561733aa,datalog,transcript
+t-561733aa,owl,transcript
+t-561733aa,swell,transcript
+t-561733aa,docker,transcript
+t-561733aa,aws,transcript
+t-561733aa,google cloud platform,transcript
+t-561733aa,azure,transcript
+t-138f9b4b,knowledge graph,transcript
+t-138f9b4b,spync,transcript
+t-138f9b4b,speeddesk,transcript
+t-138f9b4b,search design,transcript
+t-138f9b4b,art and architecture thesaurus,transcript
+t-138f9b4b,viaf,transcript
+t-138f9b4b,cidoc crm,transcript
+t-138f9b4b,linked art,transcript
+t-138f9b4b,schema.org,transcript
+t-138f9b4b,json-ld,transcript
+t-138f9b4b,solr,transcript
+t-138f9b4b,elasticsearch,transcript
+t-138f9b4b,bm25,transcript
+t-138f9b4b,stemming,transcript
+t-138f9b4b,probabilistic graph database,transcript
+t-138f9b4b,probabilistic relational algebra,transcript
+t-138f9b4b,visual programming,transcript
+t-138f9b4b,federated search,transcript
+t-06355617,wordlift,transcript
+t-06355617,google knowledge graph,transcript
+t-06355617,google discover,transcript
+t-06355617,big moments,transcript
+t-06355617,cameos,transcript
+t-06355617,floc,transcript
+t-06355617,dot product matrix factorization,transcript
+t-06355617,bert,transcript
+t-06355617,dense retrieval,transcript
+t-06355617,openai clip,transcript
+t-06355617,wordnet,transcript
+t-06355617,progressive web apps,transcript
+t-06355617,authoritas api,transcript
+t-06355617,se ranking,transcript
+t-06355617,semrush,transcript
+t-06355617,yoast,transcript
+t-06355617,navigable small world graphs,transcript
+t-06355617,structured data,transcript
+t-06355617,schema,transcript
+t-06355617,google indexing api,transcript
+t-06355617,serp datalyzer,transcript
+t-06355617,serpator,transcript
+t-06355617,orcas dataset,transcript
+t-06355617,ms marco,transcript
+t-06355617,natural questions,transcript
+t-06355617,google mum,transcript
+t-06355617,google pathways,transcript
+t-06355617,python,transcript
+t-06355617,transfer learning,transcript
+t-06355617,vector-based indexes,transcript
+t-06355617,inverted indexes,transcript
+t-06355617,nearest neighbor search,transcript
+t-06355617,entity disambiguation,transcript
+t-9d1de2e2,knowledge graph,transcript
+t-9d1de2e2,semantic web,transcript
+t-9d1de2e2,semantic graph virtualization,transcript
+t-9d1de2e2,relational databases,transcript
+t-9d1de2e2,grapho,transcript
+t-9d1de2e2,property graph schema,transcript
+t-9d1de2e2,ai,transcript
+t-9d1de2e2,machine learning,transcript
+t-9d1de2e2,data catalog,transcript
+t-9d1de2e2,data governance,transcript
+t-9d1de2e2,data virtualization,transcript
+t-9d1de2e2,data federation,transcript
+t-9d1de2e2,sql,transcript
+t-9d1de2e2,dcap,transcript
+t-9d1de2e2,dublin core,transcript
+t-9d1de2e2,provo,transcript
+t-9d1de2e2,scos,transcript
+t-9d1de2e2,tableau,transcript
+t-9d1de2e2,graph database,transcript
+t-9d1de2e2,sparkle,transcript
+t-9d1de2e2,data.world,transcript
+t-b44a5553,knowledge graphs,transcript
+t-b44a5553,rule-based reasoning,transcript
+t-b44a5553,sparql,transcript
+t-b44a5553,querying,transcript
+t-b44a5553,smart folders,transcript
+t-b44a5553,legislate,transcript
+t-6b4537d8,serval,transcript
+t-6b4537d8,python,transcript
+t-6b4537d8,semantic web,transcript
+t-6b4537d8,knowledge graphs,transcript
+t-6b4537d8,ontology building,transcript
+t-6b4537d8,artificial intelligence,transcript
+t-6b4537d8,description logic,transcript
+t-6b4537d8,owl,transcript
+t-6b4537d8,web ontology language,transcript
+t-6b4537d8,linked data,transcript
+t-6b4537d8,deep learning,transcript
+t-6b4537d8,machine learning,transcript
+t-6b4537d8,nlp,transcript
+t-6b4537d8,freebase,transcript
+t-6b4537d8,wikipedia,transcript
+t-6b4537d8,dbpedia,transcript
+t-6b4537d8,schema.org,transcript
+t-6b4537d8,symbolic reasoning,transcript
+t-6b4537d8,semantic networks,transcript
+t-6b4537d8,expert systems,transcript
+t-6b4537d8,shacl,transcript
+t-6b4537d8,rdf,transcript
+t-6b4537d8,labeled property graph,transcript
+t-6b4537d8,neo4j,transcript
+t-6b4537d8,rdfs,transcript
+t-77bc44f4,knowledge graphs,transcript
+t-77bc44f4,generative ai,transcript
+t-77bc44f4,graph rag,transcript
+t-77bc44f4,text to query,transcript
+t-77bc44f4,rdfox,transcript
+t-77bc44f4,graph neural networks,transcript
+t-77bc44f4,large language models,transcript
+t-77bc44f4,agentic systems,transcript
+t-77bc44f4,vector databases,transcript
+t-77bc44f4,logic inference,transcript
+t-77bc44f4,neuro-symbolic approach,transcript
+t-77bc44f4,ontologies,transcript
+t-77bc44f4,llm as judge,transcript
+t-77bc44f4,java,transcript
+t-77bc44f4,text to sql,transcript
+t-77bc44f4,text to sparql,transcript
+t-77bc44f4,link prediction,transcript
+t-77bc44f4,clustering,transcript
+t-77bc44f4,centrality analysis,transcript
+t-77bc44f4,graph foundational models,transcript
+t-77bc44f4,reinforcement learning,transcript
+t-77bc44f4,o1,transcript
+t-77bc44f4,bm25,transcript
+t-77bc44f4,vector search,transcript
+t-77bc44f4,agentless,transcript
+t-77bc44f4,graph databases,transcript
+t-77bc44f4,graph of thought,transcript
+t-77bc44f4,tree of thought,transcript
+t-77bc44f4,tree search,transcript
+t-77bc44f4,directed acyclic graphs,transcript
+t-77bc44f4,lazy graph rag,transcript
+t-77bc44f4,nlp,transcript
+t-77bc44f4,small language models,transcript
+t-77bc44f4,phi model,transcript
+t-77bc44f4,fine-tuning,transcript
+t-77bc44f4,model distillation,transcript
+t-77bc44f4,feature engineering,transcript
+t-77bc44f4,in-context learning,transcript
+t-77bc44f4,neural bellman-ford,transcript
+t-77bc44f4,talk to any graph,transcript
+t-77bc44f4,langchain,transcript
+t-77bc44f4,corrective rag,transcript
+t-77bc44f4,shacl validation,transcript
+t-77bc44f4,outlines,transcript
+t-77bc44f4,chunking,transcript
+t-8b65e4d2,machine learning,transcript
+t-8b65e4d2,artificial intelligence,transcript
+t-8b65e4d2,big data,transcript
+t-8b65e4d2,distributed architectures,transcript
+t-8b65e4d2,recommendation systems,transcript
+t-8b65e4d2,knowledge graph,transcript
+t-8b65e4d2,graph algorithms,transcript
+t-8b65e4d2,stream processing,transcript
+t-8b65e4d2,microservice architecture,transcript
+t-8b65e4d2,message bus,transcript
+t-8b65e4d2,sql,transcript
+t-8b65e4d2,csv,transcript
+t-8b65e4d2,json,transcript
+t-8b65e4d2,kafka streams,transcript
+t-8b65e4d2,kafka,transcript
+t-8b65e4d2,yaml,transcript
+t-8b65e4d2,dsl,transcript
+t-8b65e4d2,matching algorithms,transcript
+t-8b65e4d2,cypher,transcript
+t-8b65e4d2,neo4j,transcript
+t-8b65e4d2,deep learning,transcript
+t-8b65e4d2,link prediction,transcript
+t-8b65e4d2,entity resolution,transcript
+t-8b65e4d2,deduplication,transcript
+t-8b65e4d2,classification,transcript
+t-8b65e4d2,link based clustering,transcript
+t-8b65e4d2,customer segmentation,transcript
+t-8b65e4d2,lambda functions,transcript
+t-8b65e4d2,sqs,transcript
+t-214bb3b2,timber ai,transcript
+t-214bb3b2,sql,transcript
+t-214bb3b2,owl,transcript
+t-214bb3b2,networkx,transcript
+t-214bb3b2,rapids cugraph,transcript
+t-214bb3b2,apache spark,transcript
+t-214bb3b2,graphframes,transcript
+t-214bb3b2,graphx,transcript
+t-214bb3b2,azure synapse,transcript
+t-214bb3b2,louvain algorithm,transcript
+t-214bb3b2,jaccard similarity,transcript
+t-214bb3b2,pagerank,transcript
+t-214bb3b2,link prediction,transcript
+t-214bb3b2,knowledge graph,transcript
+t-214bb3b2,virtual knowledge graph,transcript
+t-214bb3b2,dbpedia,transcript
+t-214bb3b2,fibo ontology,transcript
+t-c45072b0,genai,transcript
+t-c45072b0,llm,transcript
+t-c45072b0,knowledge graphs,transcript
+t-c45072b0,text retrieval,transcript
+t-c45072b0,agentic ai,transcript
+t-c45072b0,ai agents,transcript
+t-c45072b0,chatgpt,transcript
+t-c45072b0,perplexity,transcript
+t-c45072b0,gpt-4,transcript
+t-c45072b0,graph rag,transcript
+t-c45072b0,retrieval augmented generation,transcript
+t-c45072b0,naive rag,transcript
+t-c45072b0,vector rag,transcript
+t-c45072b0,embeddings,transcript
+t-c45072b0,co-node,transcript
+t-c45072b0,neo4j,transcript
+t-c45072b0,directed acyclic graph,transcript
+t-c45072b0,data fusion,transcript
+t-c45072b0,kônode,transcript
+t-c45072b0,neo4j bloom,transcript
+t-c45072b0,no-code,transcript
+t-c45072b0,exploratory data analysis,transcript
+t-c45072b0,predictive modeling,transcript
+t-c45072b0,kolmogorov-smirnov test,transcript
+t-c45072b0,3d ray tracing,transcript
+t-c45072b0,entity resolution,transcript
+t-c45072b0,semantic resolution,transcript
+t-c45072b0,automated ontology inference,transcript
+t-c45072b0,deduplication,transcript
+t-abf490a8,agi,transcript
+t-abf490a8,alphafold,transcript
+t-abf490a8,bayesian statistics,transcript
+t-abf490a8,classical ai,transcript
+t-abf490a8,cyc,transcript
+t-abf490a8,deep learning,transcript
+t-abf490a8,deep reinforcement learning,transcript
+t-abf490a8,eliza,transcript
+t-abf490a8,genetic algorithms,transcript
+t-abf490a8,gofai,transcript
+t-abf490a8,gpt-2,transcript
+t-abf490a8,gpt-3,transcript
+t-abf490a8,graph neural networks,transcript
+t-abf490a8,hybrid models,transcript
+t-abf490a8,imagenet classifier,transcript
+t-abf490a8,inductive logic programming,transcript
+t-abf490a8,knowledge graphs,transcript
+t-abf490a8,knowledge representation,transcript
+t-abf490a8,lisp,transcript
+t-abf490a8,machine learning,transcript
+t-abf490a8,natural language processing,transcript
+t-abf490a8,neural networks,transcript
+t-abf490a8,planning,transcript
+t-abf490a8,probabilistic learning,transcript
+t-abf490a8,reasoning,transcript
+t-abf490a8,search,transcript
+t-abf490a8,symbol manipulation,transcript
+t-0c910090,artificial intelligence,transcript
+t-0c910090,knowledge graphs,transcript
+t-0c910090,llm,transcript
+t-0c910090,vector store,transcript
+t-0c910090,amazon s3,transcript
+t-0c910090,rag,transcript
+t-0c910090,graph rag,transcript
+t-0c910090,embeddings,transcript
+t-0c910090,cypher,transcript
+t-0c910090,neo4j,transcript
+t-0c910090,semantic layer,transcript
+t-0c910090,langchain,transcript
+t-0c910090,python,transcript
+t-0c910090,google maps,transcript
+t-a654aaef,machine learning,transcript
+t-a654aaef,operations research,transcript
+t-a654aaef,graph theory,transcript
+t-a654aaef,descriptive analysis,transcript
+t-a654aaef,diagnostic analysis,transcript
+t-a654aaef,predictive analysis,transcript
+t-a654aaef,prescriptive analysis,transcript
+t-a654aaef,deep learning,transcript
+t-a654aaef,graph neural networks,transcript
+t-a654aaef,recommender system,transcript
+t-a654aaef,computer vision,transcript
+t-a654aaef,reinforcement learning,transcript
+t-f226cc58,knowledge graphs,transcript
+t-f226cc58,semantic web,transcript
+t-f226cc58,ontologies,transcript
+t-f226cc58,semantic models,transcript
+t-f226cc58,reasoning,transcript
+t-f226cc58,linked data,transcript
+t-f226cc58,flutter,transcript
+t-f226cc58,d3 visualization library,transcript
+t-f226cc58,color blocking,transcript
+t-f226cc58,smashfit framework,transcript
+t-08022464,airflow,transcript
+t-08022464,amazon,transcript
+t-08022464,amundsen,transcript
+t-08022464,apache atlas,transcript
+t-08022464,apache superset,transcript
+t-08022464,elasticsearch,transcript
+t-08022464,github,transcript
+t-08022464,google dlp api,transcript
+t-08022464,ground,transcript
+t-08022464,hive,transcript
+t-08022464,jira,transcript
+t-08022464,kafka,transcript
+t-08022464,looker,transcript
+t-08022464,mode,transcript
+t-08022464,neo4j,transcript
+t-08022464,neptune,transcript
+t-08022464,oozie,transcript
+t-08022464,snowflake,transcript
+t-08022464,spark,transcript
+t-08022464,sql,transcript
+t-08022464,tableau,transcript
+t-c9b1eee4,amazon neptune,transcript
+t-c9b1eee4,rdf,transcript
+t-c9b1eee4,semantic web,transcript
+t-c9b1eee4,predicate logic,transcript
+t-c9b1eee4,owl,transcript
+t-c9b1eee4,xsd,transcript
+t-c9b1eee4,xml schema,transcript
+t-c9b1eee4,sparql,transcript
+t-c9b1eee4,gremlin,transcript
+t-c9b1eee4,cypher,transcript
+t-c9b1eee4,rdf/xml,transcript
+t-c9b1eee4,json-ld,transcript
+t-c9b1eee4,object graph mapping,transcript
+t-c9b1eee4,rdfs,transcript
+t-c9b1eee4,shacl,transcript
+t-c9b1eee4,symbolic reasoning,transcript
+t-c9b1eee4,machine learning,transcript
+t-c9b1eee4,node classification,transcript
+t-c9b1eee4,link prediction,transcript
+t-c9b1eee4,aws,transcript
+t-c9b1eee4,onegraph,transcript
+t-c9b1eee4,rdf star,transcript
+t-53009b49,rdf,transcript
+t-53009b49,property graphs,transcript
+t-53009b49,graphdb,transcript
+t-53009b49,text analysis,transcript
+t-53009b49,data analysis,transcript
+t-53009b49,machine learning,transcript
+t-53009b49,semantic database,transcript
+t-53009b49,search engine,transcript
+t-53009b49,rdf star,transcript
+t-53009b49,rdf 1.2,transcript
+t-53009b49,sparql,transcript
+t-53009b49,graph traversal,transcript
+t-53009b49,path search,transcript
+t-53009b49,n-ary relationships,transcript
+t-53009b49,singleton property,transcript
+t-53009b49,named graphs,transcript
+t-53009b49,graphite,transcript
+t-53009b49,access control lists,transcript
+t-53009b49,depth-first search,transcript
+t-53009b49,breadth-first search,transcript
+t-53009b49,property paths,transcript
+t-53009b49,shortest path,transcript
+t-53009b49,all paths search,transcript
+t-53009b49,bidirectional search,transcript
+t-53009b49,ldbc,transcript
+t-53009b49,social network benchmark,transcript
+t-53009b49,neo4j,transcript
+t-53009b49,inference,transcript
+t-53009b49,materialization,transcript
+t-53009b49,knowledge graphs,transcript
+t-53009b49,data fabric,transcript
+t-53009b49,gremlin,transcript
+t-8d162b91,stardog,transcript
+t-8d162b91,stardog cloud,transcript
+t-8d162b91,stardog studio,transcript
+t-8d162b91,knowledge graphs,transcript
+t-8d162b91,graph databases,transcript
+t-8d162b91,data virtualization,transcript
+t-8d162b91,virtual graphs,transcript
+t-8d162b91,kubernetes,transcript
+t-8d162b91,java,transcript
+t-8d162b91,active directory,transcript
+t-8d162b91,ldap,transcript
+t-8d162b91,text indexing,transcript
+t-8d162b91,geospatial indexing,transcript
+t-8d162b91,aws,transcript
+t-8d162b91,azure,transcript
+t-8d162b91,gcp,transcript
+t-8d162b91,oracle,transcript
+t-8d162b91,postgres,transcript
+t-8d162b91,mongodb,transcript
+t-8d162b91,hubspot,transcript
+t-8d162b91,salesforce,transcript
+t-8d162b91,eloqua,transcript
+t-8d162b91,sap,transcript
+t-8d162b91,sparql,transcript
+t-8d162b91,shacl,transcript
+t-8d162b91,rdf,transcript
+t-8d162b91,owl,transcript
+t-8d162b91,nlp,transcript
+t-8d162b91,hdfs,transcript
+t-8d162b91,s3,transcript
+t-8d162b91,lucene,transcript
+t-8d162b91,elasticsearch,transcript
+t-8d162b91,etl,transcript
+t-8d162b91,denodo,transcript
+t-8d162b91,integrity constraint validation,transcript
+t-8d162b91,uml,transcript
+t-8d162b91,rdf schema,transcript
+t-336f4f2e,rdf,transcript
+t-336f4f2e,resource description framework,transcript
+t-336f4f2e,html,transcript
+t-336f4f2e,semantic web,transcript
+t-336f4f2e,xml,transcript
+t-336f4f2e,web ontology language,transcript
+t-336f4f2e,owl,transcript
+t-336f4f2e,sparql,transcript
+t-336f4f2e,turtle,transcript
+t-336f4f2e,n3,transcript
+t-336f4f2e,protege,transcript
+t-336f4f2e,javascript,transcript
+t-336f4f2e,python,transcript
+t-336f4f2e,json,transcript
+t-336f4f2e,json-ld,transcript
+t-336f4f2e,sparql update facility,transcript
+t-336f4f2e,reification,transcript
+t-336f4f2e,labeled property graphs,transcript
+t-336f4f2e,lpgs,transcript
+t-336f4f2e,rdf star,transcript
+t-336f4f2e,sparql star,transcript
+t-336f4f2e,opencypher,transcript
+t-336f4f2e,gremlin,transcript
+t-336f4f2e,shacl,transcript
+t-336f4f2e,shape constraint language,transcript
+t-336f4f2e,graphql,transcript
+t-336f4f2e,mapreduce,transcript
+t-336f4f2e,machine learning,transcript
+t-336f4f2e,inferencing,transcript
+t-e739d8e4,knowledge graph,transcript
+t-e739d8e4,network science,transcript
+t-e739d8e4,relational database model,transcript
+t-e739d8e4,wikidata,transcript
+t-e739d8e4,neo4j,transcript
+t-e739d8e4,graph analytics,transcript
+t-e739d8e4,ontologies,transcript
+t-e739d8e4,rdf,transcript
+t-e739d8e4,natural language processing,transcript
+t-e739d8e4,deep learning,transcript
+t-e739d8e4,machine learning,transcript
+t-e739d8e4,word embeddings,transcript
+t-e739d8e4,alphago,transcript
+t-e739d8e4,common sense reasoning,transcript
+t-1ec2f46f,graph edm,transcript
+t-1ec2f46f,graph machine learning,transcript
+t-1ec2f46f,neural networks,transcript
+t-1ec2f46f,graph representation learning,transcript
+t-1ec2f46f,gradient descent,transcript
+t-1ec2f46f,shallow encoder,transcript
+t-1ec2f46f,graph factorization,transcript
+t-1ec2f46f,skip gram,transcript
+t-1ec2f46f,deepwalk,transcript
+t-1ec2f46f,random walks,transcript
+t-1ec2f46f,label propagation algorithm,transcript
+t-1ec2f46f,graph laplacian,transcript
+t-1ec2f46f,graph convolutional networks,transcript
+t-1ec2f46f,convolutional neural networks,transcript
+t-1ec2f46f,message passing framework,transcript
+t-1ec2f46f,non-euclidean representation learning,transcript
+t-a22e3e2b,slido,transcript
+t-a22e3e2b,data visualization,transcript
+t-a22e3e2b,graph visualization,transcript
+t-a22e3e2b,data art,transcript
+t-a22e3e2b,ai,transcript
+t-a22e3e2b,neural networks,transcript
+t-a22e3e2b,knowledge graph,transcript
+t-a22e3e2b,tableau,transcript
+t-a22e3e2b,power bi,transcript
+t-a22e3e2b,qlik,transcript
+t-a22e3e2b,stream graph,transcript
+t-a22e3e2b,nlp,transcript
+t-a22e3e2b,natural language processing,transcript
+t-a22e3e2b,generative adversarial networks,transcript
+t-a22e3e2b,gans,transcript
+t-a22e3e2b,deep learning,transcript
+t-a22e3e2b,fractal art,transcript
+t-a22e3e2b,3d fractal,transcript
+t-c339cef3,network coding,transcript
+t-c339cef3,generative ai,transcript
+t-c339cef3,graph structures,transcript
+t-c339cef3,graph neural networks,transcript
+t-c339cef3,gps,transcript
+t-c339cef3,operational technology,transcript
+t-c339cef3,enterprise ai,transcript
+t-c339cef3,industrial ai,transcript
+t-c339cef3,information organization framework,transcript
+t-c339cef3,lm,transcript
+t-c339cef3,gnn,transcript
+t-dfc67760,knowledge graph,transcript
+t-dfc67760,enterprise knowledge graph,transcript
+t-dfc67760,semantic technologies,transcript
+t-dfc67760,semantic standards,transcript
+t-dfc67760,shared ontologies,transcript
+t-dfc67760,ontology,transcript
+t-dfc67760,graph database,transcript
+t-dfc67760,gremlin,transcript
+t-dfc67760,graphql,transcript
+t-dfc67760,master data management,transcript
+t-dfc67760,data lakes,transcript
+t-dfc67760,data warehouses,transcript
+t-dfc67760,shackle,transcript
+t-dfc67760,excel,transcript
+t-ac27b722,graphql,transcript
+t-ac27b722,apollo graphql client,transcript
+t-ac27b722,cloud native computing,transcript
+t-ac27b722,containerization,transcript
+t-ac27b722,reactive programming,transcript
+t-ac27b722,sql,transcript
+t-ac27b722,schema definition language,transcript
+t-ac27b722,sdl,transcript
+t-ac27b722,service oriented architecture,transcript
+t-ac27b722,design system,transcript
+t-ac27b722,component architecture,transcript
+t-ac27b722,ios,transcript
+t-ac27b722,android,transcript
+t-ac27b722,api gateway,transcript
+t-ac27b722,back end for front end pattern,transcript
+t-ac27b722,apollo graph platform,transcript
+t-ac27b722,api first mindset,transcript
+t-7e1d1eab,computational modeling,transcript
+t-7e1d1eab,data analytics,transcript
+t-7e1d1eab,ai,transcript
+t-7e1d1eab,sports analytics,transcript
+t-7e1d1eab,video analytics,transcript
+t-7e1d1eab,python,transcript
+t-7e1d1eab,property graphs,transcript
+t-7e1d1eab,machine learning,transcript
+t-7e1d1eab,generative ai,transcript
+t-7e1d1eab,oracle database,transcript
+t-7e1d1eab,fraud analytics,transcript
+t-7e1d1eab,homography matrices,transcript
+t-7e1d1eab,statsbomb,transcript
+t-7e1d1eab,oracle oci,transcript
+t-7e1d1eab,oracle database 23c,transcript
+t-7e1d1eab,relational databases,transcript
+t-7e1d1eab,bi,transcript
+t-7e1d1eab,llm,transcript
+t-2b500145,oneshot action learning,transcript
+t-2b500145,graph machine learning,transcript
+t-2b500145,robot foundation models,transcript
+t-2b500145,machine learning,transcript
+t-ea0ad9de,graph analytics,transcript
+t-ea0ad9de,graph theory,transcript
+t-ea0ad9de,semantic web,transcript
+t-ea0ad9de,rdf,transcript
+t-ea0ad9de,graph databases,transcript
+t-ea0ad9de,knowledge graphs,transcript
+t-ea0ad9de,graph machine learning,transcript
+t-ea0ad9de,machine learning,transcript
+t-ea0ad9de,data warehouse,transcript
+t-ea0ad9de,dbms,transcript
+t-ea0ad9de,rdbms,transcript
+t-ea0ad9de,nlp,transcript
+t-ea0ad9de,neo4j,transcript
+t-ea0ad9de,clickhouse,transcript
+t-ea0ad9de,mongodb,transcript
+t-ea0ad9de,sql,transcript
+t-ea0ad9de,graphql,transcript
+t-ea0ad9de,sparql,transcript
+t-ea0ad9de,vector search,transcript
+t-ea0ad9de,fpga,transcript
+t-ea0ad9de,gpu,transcript
+t-ea0ad9de,tpu,transcript
+t-ea0ad9de,cpu,transcript
+t-ea0ad9de,sambanova,transcript
+t-ea0ad9de,graphcore,transcript
+t-ea0ad9de,quantum computing,transcript
+t-ea0ad9de,linked data,transcript
+t-ea0ad9de,terminusdb,transcript
+t-ea0ad9de,vaticle,transcript
+t-ea0ad9de,grakn,transcript
+t-ea0ad9de,phpmyadmin,transcript
+t-ea0ad9de,powerbi,transcript
+t-ea0ad9de,tableau,transcript
+t-ea0ad9de,grafana,transcript
+t-ea0ad9de,kafka,transcript
+t-ea0ad9de,weaviate,transcript
+t-ea0ad9de,pagerank,transcript
+t-ea0ad9de,rankbrain,transcript
+t-ea0ad9de,tigergraph,transcript
+t-ea0ad9de,dgraph,transcript
+t-ea0ad9de,aws neptune,transcript
+t-ea0ad9de,salesforce,transcript
+t-ea0ad9de,relateiq,transcript
+t-06361396,multilayer perceptrons,transcript
+t-06361396,convolutional neural networks,transcript
+t-06361396,graph neural networks,transcript
+t-06361396,geometric deep learning,transcript
+t-06361396,alexnet,transcript
+t-06361396,vgg architecture,transcript
+t-06361396,weisfeiler lemann graph isomorphism test,transcript
+t-06361396,message passing neural networks,transcript
+t-06361396,inception convolutional neural networks,transcript
+t-06361396,graph substructure networks,transcript
+t-06361396,pytorch,transcript
+t-06361396,tensorflow,transcript
+t-06361396,dgl,transcript
+t-06361396,pytorch geometric,transcript
+t-06361396,temporal graph networks,transcript
+t-06361396,topological data analysis,transcript
+t-06361396,persistent homologies,transcript
+t-06361396,dynamic graph cnns,transcript
+t-06361396,latent graph learning,transcript
+t-06361396,manifold learning,transcript
+t-06361396,nonlinear dimensionality reduction,transcript
+t-06361396,clustering,transcript
+t-06361396,dft,transcript
+t-2b33bd3a,pool party semantic suite,transcript
+t-2b33bd3a,data.world,transcript
+t-2b33bd3a,semantic data fabric,transcript
+t-2b33bd3a,semantic middleware,transcript
+t-2b33bd3a,enterprise knowledge graph,transcript
+t-2b33bd3a,knowledge graph,transcript
+t-2b33bd3a,data warehouse,transcript
+t-2b33bd3a,data lake,transcript
+t-2b33bd3a,data catalog,transcript
+t-2b33bd3a,linked data,transcript
+t-2b33bd3a,ontology,transcript
+t-2b33bd3a,taxonomy,transcript
+t-2b33bd3a,human in the loop,transcript
+t-2b33bd3a,natural language processing,transcript
+t-2b33bd3a,machine learning,transcript
+t-2b33bd3a,etl,transcript
+t-2b33bd3a,data virtualization,transcript
+t-2b33bd3a,artificial intelligence,transcript
+t-2b33bd3a,deep text analytics,transcript
+t-2b33bd3a,api,transcript
+t-2b33bd3a,webhooks,transcript
+t-2b33bd3a,slack,transcript
+t-2b33bd3a,wikipedia,transcript
+t-2b33bd3a,web protege,transcript
+t-2b33bd3a,linked data harvesting,transcript
+t-2b33bd3a,corpus analysis,transcript
+t-2b33bd3a,rdf,transcript
+t-5168886f,neo4j,transcript
+t-5168886f,graph data science,transcript
+t-5168886f,data visualization,transcript
+t-5168886f,agent-based model,transcript
+t-5168886f,knowledge graph builder,transcript
+t-5168886f,entity recognition,transcript
+t-5168886f,clustering,transcript
+t-5168886f,community detection,transcript
+t-5168886f,neural network,transcript
+t-5168886f,large language model,transcript
+t-5168886f,hopfield network,transcript
+t-5168886f,transformer,transcript
+t-5168886f,energy-based models,transcript
+t-5168886f,generative flow networks,transcript
+t-5168886f,reinforcement learning,transcript
+t-5168886f,exploratory data analysis,transcript
+t-5168886f,centrality algorithms,transcript
+t-5168886f,vector embeddings,transcript
+t-5168886f,link prediction,transcript
+t-5168886f,knowledge graph,transcript
+t-966508ee,knowledge graphs,transcript
+t-966508ee,graph ai,transcript
+t-966508ee,high performance graph computing,transcript
+t-966508ee,stampede cluster,transcript
+t-966508ee,relational databases,transcript
+t-966508ee,sql,transcript
+t-966508ee,hypergraphs,transcript
+t-966508ee,medical knowledge graphs,transcript
+t-966508ee,aws s3,transcript
+t-966508ee,google blob storage,transcript
+t-966508ee,aws,transcript
+t-966508ee,azure,transcript
+t-966508ee,google cloud,transcript
+t-966508ee,cusp,transcript
+t-966508ee,galois graph computing engine,transcript
+t-966508ee,gluon communication engine,transcript
+t-966508ee,bulk synchronous programming model,transcript
+t-966508ee,c++,transcript
+t-966508ee,python,transcript
+t-966508ee,opencypher,transcript
+t-966508ee,gql,transcript
+t-966508ee,path finding,transcript
+t-966508ee,community detection,transcript
+t-966508ee,betweenness centrality,transcript
+t-966508ee,graph pattern mining,transcript
+t-966508ee,click detection,transcript
+t-966508ee,frequent subgraph mining,transcript
+t-966508ee,gnns,transcript
+t-966508ee,gtns,transcript
+t-966508ee,cpus,transcript
+t-966508ee,gpus,transcript
+t-966508ee,fpgas,transcript
+t-966508ee,interaction graphs,transcript
+t-966508ee,louvain clustering,transcript
+t-966508ee,pagerank,transcript
+t-966508ee,tanimoto similarity,transcript
+t-966508ee,rdkit,transcript
+t-966508ee,katana life science module,transcript
+t-966508ee,graph transformer networks,transcript
+t-966508ee,graph neural networks,transcript
+t-966508ee,sampling,transcript
+t-966508ee,graph classification,transcript
+t-966508ee,descriptive analytics,transcript
+t-966508ee,diagnostic analytics,transcript
+t-966508ee,prescriptive analytics,transcript
+t-966508ee,predictive analytics,transcript
+t-43e59285,visual analytics,transcript
+t-43e59285,graph databases,transcript
+t-43e59285,rdf,transcript
+t-43e59285,labeled property graph,transcript
+t-43e59285,neo4j,transcript
+t-43e59285,neo4j browser,transcript
+t-43e59285,python,transcript
+t-43e59285,networkx,transcript
+t-43e59285,javascript,transcript
+t-43e59285,d3,transcript
+t-43e59285,powerbi,transcript
+t-43e59285,kuzu,transcript
+t-43e59285,tigergraph,transcript
+t-43e59285,neo4j bloom,transcript
+t-43e59285,graphxr,transcript
+t-43e59285,cypher,transcript
+t-43e59285,mapreduce,transcript
+t-43e59285,pagerank,transcript
+t-43e59285,betweenness centrality,transcript
+t-43e59285,closeness centrality,transcript
+t-43e59285,eigenvector centrality,transcript
+t-43e59285,visual catalyst,transcript
+t-43e59285,graph walk,transcript
+t-43e59285,virtual reality,transcript
+t-43e59285,flow cytometry,transcript
+t-43e59285,json,transcript
+t-43e59285,csv,transcript
+t-eb7fef0d,semantic technologies,transcript
+t-eb7fef0d,natural language processing,transcript
+t-eb7fef0d,deep learning,transcript
+t-eb7fef0d,knowledge graphs,transcript
+t-eb7fef0d,owl,transcript
+t-eb7fef0d,owl dl,transcript
+t-eb7fef0d,pos tagging,transcript
+t-eb7fef0d,ontology-based annotations,transcript
+t-eb7fef0d,semantic role labeling,transcript
+t-eb7fef0d,dependency trees,transcript
+t-eb7fef0d,bert,transcript
+t-eb7fef0d,semantic embeddings,transcript
+t-eb7fef0d,metamap,transcript
+t-eb7fef0d,google trends,transcript
+t-eb7fef0d,mongodb,transcript
+t-eb7fef0d,probabilistic reasoning,transcript
+t-eb7fef0d,icd-10,transcript
+t-eb7fef0d,umls,transcript
+t-eb7fef0d,mesh,transcript
+t-a88a459a,linked data,transcript
+t-a88a459a,shacl,transcript
+t-a88a459a,prov,transcript
+t-a88a459a,pav,transcript
+t-a88a459a,skos,transcript
+t-a88a459a,skos-xl,transcript
+t-a88a459a,web annotation data model,transcript
+t-a88a459a,elsevier data model,transcript
+t-a88a459a,dbpedia,transcript
+t-a88a459a,rdf,transcript
+t-a88a459a,sparql,transcript
+t-a88a459a,pandas,transcript
+t-a88a459a,trig,transcript
+t-a88a459a,triple store,transcript
+t-a88a459a,apis,transcript
+t-a88a459a,nlp,transcript
+t-a88a459a,mendeley,transcript
+t-a88a459a,scopus,transcript
+t-a88a459a,sciencedirect,transcript
+t-a88a459a,reaxys,transcript
+t-a88a459a,sharepath,transcript
+t-a88a459a,clinical key,transcript
+t-a88a459a,knowledge graphs,transcript
+t-a88a459a,data mining,transcript
+t-61497379,protege,transcript
+t-61497379,protege desktop,transcript
+t-61497379,web protege,transcript
+t-61497379,google docs,transcript
+t-61497379,slack,transcript
+t-61497379,owl,transcript
+t-61497379,web ontology language,transcript
+t-61497379,html,transcript
+t-61497379,css,transcript
+t-61497379,rdf,transcript
+t-61497379,nci thesaurus,transcript
+t-61497379,gene ontology,transcript
+t-61497379,kebi,transcript
+t-61497379,shacl core,transcript
+t-61497379,svg,transcript
+t-61497379,neo4j,transcript
+t-61497379,labeled property graphs,transcript
+t-61497379,keycloak,transcript
+t-61497379,skos,transcript
+t-61497379,github,transcript
+t-81bb281f,ontotext platform,transcript
+t-81bb281f,graphdb,transcript
+t-81bb281f,jdbc,transcript
+t-81bb281f,graphql,transcript
+t-81bb281f,bi tools,transcript
+t-81bb281f,semantic web,transcript
+t-81bb281f,linked open data,transcript
+t-81bb281f,knowledge graphs,transcript
+t-81bb281f,semantic metadata,transcript
+t-81bb281f,html,transcript
+t-81bb281f,http,transcript
+t-81bb281f,rdf,transcript
+t-81bb281f,sparql,transcript
+t-81bb281f,owl,transcript
+t-81bb281f,rdf4j,transcript
+t-81bb281f,data virtualization,transcript
+t-81bb281f,ontop framework,transcript
+t-81bb281f,obda,transcript
+t-81bb281f,postgres,transcript
+t-81bb281f,dremio,transcript
+t-81bb281f,oracle,transcript
+t-81bb281f,mysql,transcript
+t-81bb281f,microsoft sql server,transcript
+t-81bb281f,openrefine,transcript
+t-81bb281f,graphdb workbench,transcript
+t-81bb281f,json,transcript
+t-81bb281f,xml,transcript
+t-81bb281f,csv,transcript
+t-81bb281f,tableau,transcript
+t-81bb281f,microsoft power bi,transcript
+t-81bb281f,sql,transcript
+t-81bb281f,graphql federation,transcript
+t-81bb281f,poolparty,transcript
+t-81bb281f,wikidata,transcript
+t-81bb281f,geonames,transcript
+t-81bb281f,wikipedia,transcript
+t-81bb281f,natural language processing,transcript
+t-81bb281f,property graphs,transcript
+t-81bb281f,entity resolution,transcript
+t-18eae410,perl,transcript
+t-18eae410,taxonomies,transcript
+t-18eae410,set theory,transcript
+t-18eae410,formal logic,transcript
+t-18eae410,ontologies,transcript
+t-18eae410,knowledge graphs,transcript
+t-18eae410,deep learning,transcript
+t-18eae410,symbolic knowledge,transcript
+t-18eae410,neurosymbolic systems,transcript
+t-18eae410,adaptive machine translation,transcript
+t-18eae410,explainable ai,transcript
+t-18eae410,reciprocal learning,transcript
+t-18eae410,hybrid intelligence,transcript
+t-18eae410,collaborative ai,transcript
+t-18eae410,concept catalogs,transcript
+t-18eae410,identification keys,transcript
+t-18eae410,feature arrays,transcript
+t-18eae410,feature space,transcript
+t-18eae410,crowdsourcing,transcript
+t-18eae410,spreadsheets,transcript
+t-18eae410,machine learning,transcript
+t-a81054f0,mitre att and ck,transcript
+t-a81054f0,defend knowledge graph,transcript
+t-a81054f0,mitre defend,transcript
+t-a81054f0,digital artifact ontology,transcript
+t-a81054f0,owl two,transcript
+t-a81054f0,user behavior analysis,transcript
+t-a81054f0,process analysis,transcript
+t-a81054f0,process code segment verification,transcript
+t-a81054f0,dynamic analysis,transcript
+t-a81054f0,process hollowing,transcript
+t-a81054f0,credential api hooking,transcript
+t-a81054f0,firmware verification,transcript
+t-a81054f0,segment analysis,transcript
+t-a81054f0,file analysis,transcript
+t-a81054f0,supply chain compromise,transcript
+t-a81054f0,scheduled task job,transcript
+t-a81054f0,boot auto start execution script,transcript
+t-a81054f0,application hardening,transcript
+t-a81054f0,platform hardening,transcript
+t-a81054f0,operating system monitoring,transcript
+t-0f507d87,flurry,transcript
+t-0f507d87,git,transcript
+t-0f507d87,owl,transcript
+t-0f507d87,shacl,transcript
+t-0f507d87,verifiable credentials,transcript
+t-0f507d87,docker,transcript
+t-0f507d87,blockchain,transcript
+t-0f507d87,android,transcript
+t-0f507d87,ios,transcript
+t-0f507d87,decentralized identifiers,transcript
+t-0f507d87,json-ld,transcript
+t-0f507d87,rdf,transcript
+t-0f507d87,sparql,transcript
+t-0f507d87,schema.org,transcript
+t-0f507d87,ecdsa,transcript
+t-0f507d87,jwt,transcript
+t-0f507d87,ld proofs,transcript
+t-0f507d87,smart functions,transcript
+t-0f507d87,sql,transcript
+t-0f507d87,graphql,transcript
+t-0f507d87,merkle roots,transcript
+t-0f507d87,solid,transcript
+t-0f507d87,javascript,transcript
+t-21c6c2c4,graph databases,transcript
+t-21c6c2c4,virtual graph databases,transcript
+t-21c6c2c4,knowledge driven data catalogs,transcript
+t-21c6c2c4,data fabrics,transcript
+t-21c6c2c4,graph algorithms,transcript
+t-21c6c2c4,graph neural networks,transcript
+t-21c6c2c4,relational model,transcript
+t-21c6c2c4,relational databases,transcript
+t-21c6c2c4,knowledge representation and reasoning,transcript
+t-21c6c2c4,ontologies,transcript
+t-21c6c2c4,knowledge graph completion,transcript
+t-21c6c2c4,link prediction,transcript
+t-21c6c2c4,classification,transcript
+t-21c6c2c4,categorization,transcript
+t-21c6c2c4,machine learning,transcript
+t-21c6c2c4,deep learning,transcript
+t-21c6c2c4,natural language processing,transcript
+t-21c6c2c4,knowledge graph embeddings,transcript
+t-21c6c2c4,vector representation,transcript
+t-21c6c2c4,clustering,transcript
+t-21c6c2c4,rdfowl,transcript
+t-21c6c2c4,linked data,transcript
+t-21c6c2c4,restful apis,transcript
+t-21c6c2c4,sql,transcript
+t-21c6c2c4,sparql,transcript
+t-21c6c2c4,graphql,transcript
+t-21c6c2c4,vector based models,transcript
+t-21c6c2c4,neural network based models,transcript
+t-618d24a2,wikipedia,transcript
+t-618d24a2,dbpedia,transcript
+t-618d24a2,dbpedia data bus,transcript
+t-618d24a2,sparql,transcript
+t-618d24a2,linked data,transcript
+t-618d24a2,ibm watson,transcript
+t-618d24a2,wikidata,transcript
+t-618d24a2,shacl,transcript
+t-618d24a2,fair principles,transcript
+t-618d24a2,maven,transcript
+t-618d24a2,steam,transcript
+t-618d24a2,github,transcript
+t-618d24a2,apt package manager,transcript
+t-618d24a2,rdf,transcript
+t-618d24a2,xml,transcript
+t-618d24a2,json,transcript
+t-618d24a2,pdf,transcript
+t-618d24a2,dcat,transcript
+t-618d24a2,x.509 certificate,transcript
+t-618d24a2,docker,transcript
+t-618d24a2,npm,transcript
+t-618d24a2,debian package manager,transcript
+t-618d24a2,scala build tool,transcript
+t-618d24a2,sbt,transcript
+t-618d24a2,google knowledge graph,transcript
+t-618d24a2,dbpedia archival,transcript
+t-618d24a2,data bus client,transcript
+t-618d24a2,data bus mods,transcript
+t-618d24a2,void,transcript
+t-618d24a2,ai miner,transcript
+t-4677fc5a,salesforce,transcript
+t-4677fc5a,netsuite,transcript
+t-4677fc5a,aws,transcript
+t-4677fc5a,facebook,transcript
+t-4677fc5a,data lake,transcript
+t-4677fc5a,no code,transcript
+t-4677fc5a,knowledge graph,transcript
+t-4677fc5a,knowledge mesh,transcript
+t-4677fc5a,enterprise knowledge graph,transcript
+t-4677fc5a,semantic inference,transcript
+t-4677fc5a,machine learning on graphs,transcript
+t-4677fc5a,etl,transcript
+t-4677fc5a,graph database,transcript
+t-4677fc5a,sql extractors,transcript
+t-4677fc5a,scrapers,transcript
+t-4677fc5a,nlp algorithms,transcript
+t-4677fc5a,elt,transcript
+t-4677fc5a,data warehouse,transcript
+t-4677fc5a,data virtualization,transcript
+t-4677fc5a,graphql,transcript
+t-4677fc5a,low code,transcript
+t-4677fc5a,entity resolution,transcript
+t-4677fc5a,data fabric,transcript
+t-4677fc5a,fair principles,transcript
+t-501e3e9e,shape constraint language,transcript
+t-501e3e9e,shacl,transcript
+t-501e3e9e,web ontology language,transcript
+t-501e3e9e,owl,transcript
+t-501e3e9e,owl light,transcript
+t-501e3e9e,sparql,transcript
+t-501e3e9e,natural language processing,transcript
+t-501e3e9e,nlp,transcript
+t-501e3e9e,rdf,transcript
+t-501e3e9e,rdfs,transcript
+t-501e3e9e,protege,transcript
+t-501e3e9e,java,transcript
+t-501e3e9e,c,transcript
+t-501e3e9e,c sharp,transcript
+t-501e3e9e,python,transcript
+t-501e3e9e,rdf4j,transcript
+t-501e3e9e,apache jena,transcript
+t-501e3e9e,stardog,transcript
+t-501e3e9e,top quadrant,transcript
+t-501e3e9e,neo4j,transcript
+t-501e3e9e,aws neptune,transcript
+t-501e3e9e,json-ld,transcript
+t-501e3e9e,prolog,transcript
+t-55745cb8,semantic search,transcript
+t-55745cb8,knowledge graph,transcript
+t-55745cb8,responsible ai,transcript
+t-55745cb8,machine learning,transcript
+t-55745cb8,explainable ai,transcript
+t-55745cb8,unique ids,transcript
+t-55745cb8,personal knowledge graphs,transcript
+t-55745cb8,data integration,transcript
+t-55745cb8,semantic technologies,transcript
+t-55745cb8,api,transcript
+t-55745cb8,linked data,transcript
+t-55745cb8,semantic modeling,transcript
+t-55745cb8,inferencing,transcript
+t-55745cb8,wikidata,transcript
+t-55745cb8,bioportal,transcript
+t-55745cb8,controlled vocabulary,transcript
+t-55745cb8,taxonomies,transcript
+t-0415c386,graph neural networks,transcript
+t-0415c386,gnn,transcript
+t-0415c386,message passing algorithm,transcript
+t-0415c386,node classification,transcript
+t-0415c386,link prediction,transcript
+t-0415c386,graph classification,transcript
+t-0415c386,intelligent processing unit,transcript
+t-0415c386,ipu,transcript
+t-0415c386,multiple instruction multiple data parallelism,transcript
+t-0415c386,bulk synchronous parallel programming model,transcript
+t-0415c386,gc200,transcript
+t-0415c386,ipu m2000,transcript
+t-0415c386,fastip link,transcript
+t-0415c386,ipupod64,transcript
+t-0415c386,ipu fabric,transcript
+t-0415c386,mini batch training,transcript
+t-0415c386,shallow sampling,transcript
+t-0415c386,graph clustering,transcript
+t-0415c386,data parallelism,transcript
+t-0415c386,pipeline parallelism,transcript
+t-0415c386,temporal graph networks,transcript
+t-0415c386,gru,transcript
+t-0415c386,recurrent neural network,transcript
+t-0415c386,temporal graph attention network,transcript
+t-0415c386,temporal graph sum networks,transcript
+t-0415c386,phased execution,transcript
+t-0415c386,sram,transcript
+t-0415c386,dram,transcript
+t-49841368,semantic data management,transcript
+t-49841368,relational technology,transcript
+t-49841368,canonical model,transcript
+t-49841368,spreadsheet,transcript
+t-49841368,individualized resource identifier,transcript
+t-49841368,resource locator,transcript
+t-49841368,ontology,transcript
+t-49841368,triples,transcript
+t-49841368,sparql,transcript
+t-49841368,semantic language,transcript
+t-49841368,triple store,transcript
+t-49841368,knowledge graph,transcript
+t-69996db8,knowledge graph,transcript
+t-69996db8,uml,transcript
+t-69996db8,shackle,transcript
+t-69996db8,dublin core,transcript
+t-69996db8,fibo,transcript
+t-69996db8,prov,transcript
+t-69996db8,dcat,transcript
+t-69996db8,datacube,transcript
+t-69996db8,sdmx,transcript
+t-69996db8,microservices,transcript
+t-69996db8,http protocol,transcript
+t-69996db8,uri,transcript
+t-69996db8,rest api,transcript
+t-69996db8,sparql,transcript
+t-69996db8,guided search,transcript
+t-69996db8,elasticsearch,transcript
+t-69996db8,faceted search,transcript
+t-69996db8,free text search,transcript
+t-69996db8,dataset registry,transcript
+t-69996db8,metadata repositories,transcript
+t-69996db8,metadata registries,transcript
+t-69996db8,dataset catalog,transcript
+t-69996db8,data dictionaries,transcript
+t-69996db8,federated architecture,transcript
+t-69996db8,model driven layered architecture,transcript
+t-8998e62d,enterprise web,transcript
+t-8998e62d,ipass,transcript
+t-8998e62d,knowledge graph,transcript
+t-8998e62d,graph knowledge base,transcript
+t-8998e62d,message oriented middleware,transcript
+t-8998e62d,kaa,transcript
+t-8998e62d,amazon lambda,transcript
+t-8998e62d,kubernetes,transcript
+t-8998e62d,12 factor,transcript
+t-8998e62d,rdf,transcript
+t-8998e62d,uml,transcript
+t-8998e62d,json,transcript
+t-8998e62d,graphql,transcript
+t-8998e62d,digital twins,transcript
+t-8998e62d,upper ontology,transcript
+t-8998e62d,uda loops,transcript
+t-8998e62d,directed acyclic graphs,transcript
+t-8998e62d,dag,transcript
+t-8998e62d,rest interfaces,transcript
+t-8998e62d,rest api,transcript
+t-8998e62d,swagger,transcript
+t-8998e62d,xml,transcript
+t-8998e62d,serverless functions,transcript
+t-8998e62d,tolley's life cycle information model,transcript
+t-8998e62d,ml language,transcript
+t-8998e62d,abstract rewriting and transition theory,transcript
+t-16a135b2,knowledge graphs,transcript
+t-16a135b2,machine learning,transcript
+t-16a135b2,chatbots,transcript
+t-16a135b2,conversational agents,transcript
+t-16a135b2,digital assistants,transcript
+t-16a135b2,recommendation systems,transcript
+t-16a135b2,esri,transcript
+t-16a135b2,causal inference,transcript
+t-16a135b2,association analysis,transcript
+t-16a135b2,regression analysis,transcript
+t-16a135b2,semantic web technologies,transcript
+t-16a135b2,ontologies,transcript
+t-16a135b2,semantic inference,transcript
+t-16a135b2,google dialogflow,transcript
+t-16a135b2,google cloud platform,transcript
+t-16a135b2,neo4j,transcript
+t-16a135b2,rdfs,transcript
+t-16a135b2,owl,transcript
+t-16a135b2,bioportal,transcript
+t-16a135b2,ibm watson,transcript
+t-16a135b2,natural language processing,transcript
+t-16a135b2,intent detection,transcript
+t-16a135b2,slot filling,transcript
+t-16a135b2,google calendar api,transcript
+t-16a135b2,google places api,transcript
+t-16a135b2,google maps,transcript
+t-16a135b2,ontological reasoning,transcript
+t-4d120139,symbolic ai,transcript
+t-4d120139,statistical ai,transcript
+t-4d120139,neural networks,transcript
+t-4d120139,machine learning,transcript
+t-4d120139,knowledge bases,transcript
+t-4d120139,knowledge graphs,transcript
+t-4d120139,alphago,transcript
+t-4d120139,knowledge graph completion,transcript
+t-4d120139,inductive logic programming,transcript
+t-4d120139,rule mining systems,transcript
+t-4d120139,anyburl,transcript
+t-4d120139,semantic loss functions,transcript
+t-4d120139,symbolic loss functions,transcript
+t-4d120139,reinforcement learning,transcript
+t-4d120139,transfer learning,transcript
+t-4d120139,gradient descent,transcript
+t-aceeb502,tigergraph,transcript
+t-aceeb502,graph machine learning,transcript
+t-aceeb502,graph algorithms,transcript
+t-aceeb502,knowledge graphs,transcript
+t-aceeb502,graph data science,transcript
+t-aceeb502,graph embeddings,transcript
+t-aceeb502,graph neural networks,transcript
+t-aceeb502,unsupervised machine learning,transcript
+t-aceeb502,supervised learning,transcript
+t-aceeb502,deep learning,transcript
+t-aceeb502,neural networks,transcript
+t-aceeb502,decision trees,transcript
+t-aceeb502,reinforcement learning,transcript
+t-aceeb502,entity resolution,transcript
+t-aceeb502,cosine similarity,transcript
+t-aceeb502,louvain,transcript
+t-aceeb502,page rank,transcript
+t-aceeb502,lcc,transcript
+t-aceeb502,diameter estimation,transcript
+t-aceeb502,pattern matching,transcript
+t-aceeb502,graph convolutional neural network,transcript
+t-aceeb502,graph convolution,transcript
+t-aceeb502,attention networks,transcript
+t-aceeb502,recurrent networks,transcript
+t-aceeb502,pytorch,transcript
+t-aceeb502,tensorflow,transcript
+t-aceeb502,dgl,transcript
+t-aceeb502,python,transcript
+t-aceeb502,graph database,transcript
+t-aceeb502,graph query language,transcript
+t-3fadcae1,graph technology,transcript
+t-3fadcae1,complexity led strategic design,transcript
+t-3fadcae1,super linear scaling,transcript
+t-3fadcae1,dating apps,transcript
+t-3fadcae1,social matchmaking,transcript
+t-3fadcae1,social puzzles,transcript
+t-3fadcae1,cctv,transcript
+t-4bd0754d,graph representation learning,transcript
+t-4bd0754d,combinatorial optimization,transcript
+t-4bd0754d,symbolic ai,transcript
+t-4bd0754d,probabilistic modeling,transcript
+t-4bd0754d,pykeen,transcript
+t-4bd0754d,graph machine learning,transcript
+t-4bd0754d,recommender systems,transcript
+t-4bd0754d,reinforcement learning,transcript
+t-4bd0754d,geometric dl,transcript
+t-4bd0754d,biological expression language,transcript
+t-4bd0754d,rdf,transcript
+t-4bd0754d,kernel methods,transcript
+t-4bd0754d,knowledge graph embedding,transcript
+t-4bd0754d,graph neural networks,transcript
+t-4bd0754d,pytorch geometric,transcript
+t-4bd0754d,dgl,transcript
+t-4bd0754d,pagerank,transcript
+t-4bd0754d,owl,transcript
+t-4bd0754d,text mining,transcript
+t-4bd0754d,inductive learning,transcript
+t-4bd0754d,inductive link prediction,transcript
+t-4bd0754d,online learning,transcript
+t-4bd0754d,ab testing,transcript
+t-4bd0754d,transformers,transcript
+t-4bd0754d,rnn,transcript
+t-4bd0754d,matrix factorization,transcript
+t-4bd0754d,logistic regression,transcript
+t-4bd0754d,mlp,transcript
+t-4bd0754d,gradient boosted decision trees,transcript
+t-4bd0754d,xgboost,transcript
+t-4bd0754d,catboost,transcript
+t-4bd0754d,lightgbm,transcript
+t-4bd0754d,graphsage,transcript
+t-4bd0754d,svm,transcript
+t-4bd0754d,gpt-3,transcript
+t-4bd0754d,federated learning,transcript
+t-4bd0754d,marius,transcript
+t-4bd0754d,nodepiece,transcript
+t-4bd0754d,pytorch lightning,transcript
+t-4bd0754d,pytorch,transcript
+t-4bd0754d,variational autoencoders,transcript
+t-4bd0754d,rust,transcript
+t-4bd0754d,node2vec,transcript
+t-4bd0754d,causal inference,transcript
+t-4bd0754d,message passing,transcript
+t-1327d329,graph rag,transcript
+t-1327d329,vector rag,transcript
+t-1327d329,dom rag graph,transcript
+t-1327d329,knowledge graphs,transcript
+t-1327d329,content graph,transcript
+t-1327d329,semantic layer,transcript
+t-1327d329,semantic knowledge models,transcript
+t-1327d329,ontologies,transcript
+t-1327d329,taxonomies,transcript
+t-1327d329,prompt tuning,transcript
+t-1327d329,dita,transcript
+t-1327d329,llms,transcript
+t-1327d329,generative ai,transcript
+t-1327d329,chatgpt,transcript
+t-1327d329,text mining,transcript
+t-1327d329,iso 14000,transcript
+t-1327d329,graphwise,transcript
+t-1327d329,ontotext,transcript
+t-1327d329,avatax,transcript
+t-88d49b6d,ontology,transcript
+t-88d49b6d,data therapy,transcript
+t-88d49b6d,streaming graph,transcript
+t-88d49b6d,graph database,transcript
+t-88d49b6d,kougraph,transcript
+t-88d49b6d,knowledge graphs,transcript
+t-88d49b6d,graph engine,transcript
+t-88d49b6d,graph algorithms,transcript
+t-88d49b6d,graph visualization,transcript
+t-88d49b6d,data engineering,transcript
+t-88d49b6d,chat gpt,transcript
+t-88d49b6d,llms,transcript
+t-88d49b6d,bfo,transcript
+t-88d49b6d,basic formal ontology,transcript
+t-88d49b6d,nudge theory,transcript
+t-88d49b6d,time graph,transcript
+t-88d49b6d,rdf,transcript
+t-88d49b6d,labeled property graphs,transcript
+t-88d49b6d,mind mapping,transcript
+t-88d49b6d,vector space,transcript
+t-88d49b6d,symbolic ai,transcript
+t-88d49b6d,vector databases,transcript
+t-88d49b6d,vector graphs,transcript
+t-88d49b6d,hybrid ai systems,transcript
+t-88d49b6d,competency questions,transcript
+t-88d49b6d,regressions,transcript
+t-88d49b6d,agent-based modeling,transcript
+t-647fcf1a,knowledge graphs,transcript
+t-647fcf1a,llms,transcript
+t-647fcf1a,retrieval augmented generation,transcript
+t-647fcf1a,rag,transcript
+t-647fcf1a,graph rag,transcript
+t-647fcf1a,transformers,transcript
+t-647fcf1a,deep learning,transcript
+t-647fcf1a,fine-tuning,transcript
+t-647fcf1a,prompt engineering,transcript
+t-647fcf1a,sentiment analysis,transcript
+t-647fcf1a,text generation,transcript
+t-647fcf1a,text classification,transcript
+t-647fcf1a,entity extraction,transcript
+t-647fcf1a,relation extraction,transcript
+t-647fcf1a,xml,transcript
+t-647fcf1a,sql,transcript
+t-647fcf1a,cypher,transcript
+t-647fcf1a,sparql,transcript
+t-647fcf1a,neo4j,transcript
+t-647fcf1a,rdf,transcript
+t-647fcf1a,gpt,transcript
+t-647fcf1a,vector database,transcript
+t-647fcf1a,basic rag,transcript
+t-647fcf1a,esco,transcript
+t-647fcf1a,wikidata,transcript
+t-647fcf1a,freebase,transcript
+t-647fcf1a,dbpedia,transcript
+t-647fcf1a,skos,transcript
+t-647fcf1a,owl,transcript
+t-647fcf1a,rdfs,transcript
+t-647fcf1a,shacl,transcript
+t-647fcf1a,python,transcript
+t-647fcf1a,zero-shot learning,transcript
+t-647fcf1a,few-shot learning,transcript
+t-647fcf1a,llm as a judge,transcript
+t-647fcf1a,microsoft graphrag,transcript
+t-3de77131,enterprise web,transcript
+t-3de77131,data fabric,transcript
+t-3de77131,data mesh,transcript
+t-3de77131,data virtualization,transcript
+t-3de77131,graph object in action language,transcript
+t-3de77131,boal,transcript
+t-3de77131,goal,transcript
+t-3de77131,dsl,transcript
+t-3de77131,idl,transcript
+t-3de77131,cdl,transcript
+t-3de77131,wdl,transcript
+t-3de77131,xml,transcript
+t-3de77131,rdf,transcript
+t-3de77131,json,transcript
+t-3de77131,uml,transcript
+t-3de77131,algorithmic entity extraction,transcript
+t-3de77131,amazon cloud,transcript
+t-3de77131,google cloud,transcript
+t-3de77131,kafka,transcript
+t-3de77131,mariadb,transcript
+t-3de77131,sap,transcript
+t-3de77131,salesforce,transcript
+t-3de77131,oracle,transcript
+t-3de77131,sap graph api,transcript
+t-3de77131,bpmn,transcript
+t-15331856,neo4j,transcript
+t-15331856,neo4j sandbox,transcript
+t-15331856,neo4j browser,transcript
+t-15331856,neo4j graph data science,transcript
+t-15331856,graph data science,transcript
+t-15331856,property graph,transcript
+t-15331856,betweenness centrality,transcript
+t-15331856,community detection,transcript
+t-15331856,pathfinding,transcript
+t-15331856,machine learning,transcript
+t-15331856,supervised machine learning,transcript
+t-15331856,unsupervised machine learning,transcript
+t-15331856,clustering,transcript
+t-15331856,dimensionality reduction,transcript
+t-15331856,regression,transcript
+t-15331856,classification,transcript
+t-15331856,shortest path,transcript
+t-15331856,pagerank,transcript
+t-15331856,centrality algorithms,transcript
+t-15331856,generative ai,transcript
+t-15331856,similarity scoring,transcript
+t-15331856,node similarity,transcript
+t-15331856,link prediction,transcript
+t-15331856,graph embeddings,transcript
+t-15331856,path embeddings,transcript
+t-15331856,entity resolution,transcript
+t-15331856,fraud detection,transcript
+t-15331856,weakly connected components,transcript
+t-15331856,modularity,transcript
+t-15331856,louvain algorithm,transcript
+t-15331856,silhouette score,transcript
+t-15331856,label propagation,transcript
+t-15331856,pandas,transcript
+t-15331856,cypher,transcript
+t-15331856,sql,transcript
+t-15331856,networkx,transcript
+t-15331856,dijkstra algorithm,transcript
+t-15331856,closeness centrality,transcript
+t-15331856,exploratory data analysis,transcript
+t-15331856,contact tracing,transcript
+t-b35c1acd,causal graph identification,transcript
+t-b35c1acd,causal graph inference,transcript
+t-b35c1acd,causal inference,transcript
+t-b35c1acd,knowledge graphs,transcript
+t-b35c1acd,structured statistics,transcript
+t-b35c1acd,information theory,transcript
+t-b35c1acd,lasso,transcript
+t-b35c1acd,sparse approximation,transcript
+t-b35c1acd,dagma,transcript
+t-b35c1acd,neural networks,transcript
+t-b35c1acd,causal subgraph learning,transcript
+t-b35c1acd,multi-armed bandit,transcript
+t-b35c1acd,reinforcement learning,transcript
+t-b35c1acd,causal reinforcement learning,transcript
+t-b35c1acd,deep learning,transcript
+t-b35c1acd,louvain partitioning,transcript
+t-b35c1acd,anomaly detection,transcript
+t-a638ae6b,graphdb,transcript
+t-a638ae6b,semantic graph databases,transcript
+t-a638ae6b,text mining,transcript
+t-a638ae6b,knowledge graphs,transcript
+t-a638ae6b,poolparty,transcript
+t-a638ae6b,rdf,transcript
+t-a638ae6b,genai,transcript
+t-a638ae6b,llms,transcript
+t-a638ae6b,sparql,transcript
+t-a638ae6b,apis,transcript
+t-a638ae6b,data fabric,transcript
+t-a638ae6b,multimodal data fabric,transcript
+t-a638ae6b,semantic layers,transcript
+t-a638ae6b,graph rag,transcript
+t-a638ae6b,rag,transcript
+t-a638ae6b,chunking rag,transcript
+t-a638ae6b,vector database,transcript
+t-a638ae6b,faceted search,transcript
+t-a638ae6b,cypher,transcript
+t-a638ae6b,schema.org,transcript
+t-a638ae6b,skos,transcript
+t-a638ae6b,dcat,transcript
+t-a638ae6b,dita,transcript
+t-a638ae6b,dbpedia,transcript
+t-a638ae6b,chatgpt,transcript
+t-a638ae6b,llama,transcript
+t-a638ae6b,wikidata,transcript
+t-a638ae6b,snomed,transcript
+t-a638ae6b,entity linking,transcript
+t-a638ae6b,conversational ai,transcript
+t-a638ae6b,information extraction,transcript
+t-a638ae6b,taxonomy advisor,transcript
+t-a638ae6b,quadro,transcript
+t-a638ae6b,agent frameworks,transcript
+t-a638ae6b,graph embedding,transcript
+t-a638ae6b,full text search,transcript
+t-a638ae6b,similarity search,transcript
+t-a638ae6b,weaviate,transcript
+t-cb4d4ea2,knowledge graphs,transcript
+t-cb4d4ea2,relational database,transcript
+t-cb4d4ea2,graph database,transcript
+t-cb4d4ea2,similarity metrics,transcript
+t-cb4d4ea2,hyper node creation,transcript
+t-cb4d4ea2,path finding,transcript
+t-cb4d4ea2,clustering,transcript
+t-cb4d4ea2,graph cnns,transcript
+t-cb4d4ea2,deep walks,transcript
+t-cb4d4ea2,entity resolution,transcript
+t-cb4d4ea2,adaptive blocking,transcript
+t-cb4d4ea2,machine learning,transcript
+t-cb4d4ea2,ai,transcript
+t-cb4d4ea2,probabilistic models,transcript
+t-8c61bcc4,knowledge graph reasoning,transcript
+t-8c61bcc4,reinforcement learning,transcript
+t-8c61bcc4,knowledge graph embeddings,transcript
+t-8c61bcc4,sparql,transcript
+t-8c61bcc4,2d convolutional knowledge graph embedding,transcript
+t-8c61bcc4,convolutional neural networks,transcript
+t-8c61bcc4,negative sampling,transcript
+t-8c61bcc4,path ranking algorithms,transcript
+t-8c61bcc4,exhaustive search,transcript
+t-8c61bcc4,dynamic programming,transcript
+t-8c61bcc4,random walk,transcript
+t-8c61bcc4,deeppath,transcript
+t-8c61bcc4,policy gradient,transcript
+t-8c61bcc4,teacher forcing,transcript
+t-8c61bcc4,bidirectional beam search,transcript
+t-8c61bcc4,supervised learning,transcript
+t-8c61bcc4,minerva,transcript
+t-8c61bcc4,deep neural network,transcript
+t-8c61bcc4,lstm,transcript
+t-8c61bcc4,reward shaping,transcript
+t-8c61bcc4,action dropout,transcript
+t-8c61bcc4,epsilon exploration,transcript
+t-8c61bcc4,best-first search,transcript
+t-c3247612,monte carlo,transcript
+t-c3247612,etl,transcript
+t-c3247612,reverse etl,transcript
+t-c3247612,slack,transcript
+t-c3247612,snowflake,transcript
+t-c3247612,looker,transcript
+t-c3247612,pagerduty,transcript
+t-c3247612,splunk,transcript
+t-c3247612,new relic,transcript
+t-c3247612,datadog,transcript
+t-c3247612,monitoring,transcript
+t-c3247612,alerts,transcript
+t-c3247612,anomaly detection,transcript
+t-c3247612,root cause analysis,transcript
+t-c3247612,observability,transcript
+t-c3247612,data observability,transcript
+t-c3247612,machine learning,transcript
+t-c3247612,lineage,transcript
+t-aaf194fa,neural algorithmic reasoning,transcript
+t-aaf194fa,classical algorithms,transcript
+t-aaf194fa,neural networks,transcript
+t-aaf194fa,dynamic programming,transcript
+t-aaf194fa,bellman-ford algorithm,transcript
+t-aaf194fa,graph neural networks,transcript
+t-aaf194fa,strong supervision,transcript
+t-aaf194fa,trunk supervision,transcript
+t-aaf194fa,message passing,transcript
+t-aaf194fa,max aggregation,transcript
+t-aaf194fa,linear algorithmic alignment,transcript
+t-aaf194fa,multi-task learning,transcript
+t-aaf194fa,reinforcement learning,transcript
+t-aaf194fa,excelvin,transcript
+t-aaf194fa,self-supervised learning,transcript
+t-aaf194fa,reasoning modulated representations,transcript
+t-aaf194fa,markov decision process,transcript
+t-aaf194fa,alphago,transcript
+t-aaf194fa,value iteration,transcript
+t-aaf194fa,convolutional neural networks,transcript
+t-aaf194fa,value iteration networks,transcript
+t-aaf194fa,contrastive learning,transcript
+t-aaf194fa,pre qn,transcript
+t-aaf194fa,value prediction networks,transcript
+t-aaf194fa,implicit planners,transcript
+t-aaf194fa,ppo,transcript
+t-d7dbb358,deep learning,transcript
+t-d7dbb358,neural networks,transcript
+t-d7dbb358,symbolic representation,transcript
+t-d7dbb358,symbolic reasoning,transcript
+t-d7dbb358,language models,transcript
+t-d7dbb358,masking,transcript
+t-d7dbb358,t5,transcript
+t-d7dbb358,atomic,transcript
+t-d7dbb358,gpt-3,transcript
+t-d7dbb358,knowledge graphs,transcript
+t-d7dbb358,ram,transcript
+t-d7dbb358,rag,transcript
+t-d7dbb358,infusion and decoder,transcript
+t-d7dbb358,3k architecture,transcript
+t-d7dbb358,thrill k architecture,transcript
+t-d7dbb358,expert systems,transcript
+t-d7dbb358,semantic parsers,transcript
+t-d7dbb358,neuromorphic computing,transcript
+t-d7dbb358,language transformer,transcript
+t-15220989,allegrograph,transcript
+t-15220989,speech technology,transcript
+t-15220989,nlp,transcript
+t-15220989,knowledge graphs,transcript
+t-15220989,siri,transcript
+t-15220989,speech recognition,transcript
+t-15220989,text analytics,transcript
+t-15220989,google voice technology,transcript
+t-15220989,google assistant,transcript
+t-15220989,alexa,transcript
+t-15220989,cortana,transcript
+t-15220989,ibm watson,transcript
+t-15220989,speech-to-text,transcript
+t-15220989,apache tika,transcript
+t-15220989,xml,transcript
+t-15220989,smart logic,transcript
+t-15220989,pool party,transcript
+t-15220989,entity extraction,transcript
+t-15220989,sentiment analysis,transcript
+t-15220989,text classification,transcript
+t-15220989,semantic search,transcript
+t-15220989,semantic exploration,transcript
+t-15220989,wordnet,transcript
+t-15220989,wand,transcript
+t-15220989,graph,transcript
+t-75ec9bb5,knowledge graph,transcript
+t-75ec9bb5,data analytics,transcript
+t-75ec9bb5,performance pricing,transcript
+t-75ec9bb5,multivariate regression,transcript
+t-75ec9bb5,qedt,transcript
+t-75ec9bb5,sparql,transcript
+t-75ec9bb5,asset specification model,transcript
+t-75ec9bb5,iso 81346,transcript
+t-75ec9bb5,iso 15926-14,transcript
+t-75ec9bb5,fibo ontology,transcript
+t-75ec9bb5,owl,transcript
+t-75ec9bb5,datalog,transcript
+t-75ec9bb5,rdfox,transcript
+t-75ec9bb5,closed-world reasoning,transcript
+t-75ec9bb5,denodo,transcript
+t-75ec9bb5,odbc,transcript
+t-75ec9bb5,sap,transcript
+t-75ec9bb5,oracle database,transcript
+t-75ec9bb5,redshift,transcript
+t-75ec9bb5,excel,transcript
+t-75ec9bb5,sql,transcript
+t-75ec9bb5,r2rml,transcript
+t-75ec9bb5,rdf,transcript
+t-75ec9bb5,n-quads,transcript
+t-75ec9bb5,triplestore,transcript
+t-75ec9bb5,metafactory,transcript
+t-75ec9bb5,html,transcript
+t-75ec9bb5,tableau,transcript

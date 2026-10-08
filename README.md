@@ -49,19 +49,47 @@ To do that, we combine our greatest strengths: community, knowledge, and technol
 - [Background](https://github.com/Connected-Data/cdkg-challenge/tree/main#background)
 - [Vision](https://github.com/Connected-Data/cdkg-challenge/tree/main#vision)
 - [The Connected Data Knowledge Graph Challenge](https://github.com/Connected-Data/cdkg-challenge/tree/main#the-connected-data-knowledge-graph-challenge-1)
-- [Contributing](https://github.com/Connected-Data/cdkg-challenge/tree/main?tab=readme-ov-file#how-you-can-can-help)
+- [Contributing](https://github.com/Connected-Data/cdkg-challenge/tree/main?tab=readme-ov-file#how-you-can-help)
 
 ## The Connected Data Knowledge Graph
-This what is included in the first release of the Connected Data Knowledge Graph project:
 
-- [Domain Metamodel](https://github.com/Connected-Data/cdkg-challenge/blob/main/Data%20Model/README.md): Technology agnostic, simple graph of entities and relationships
-- [Raw data](https://github.com/Connected-Data/cdkg-challenge/tree/main/Transcripts): Session transcripts 
-- [Metadata](https://github.com/Connected-Data/cdkg-challenge/blob/main/Transcripts/Connected%20Data%20Knowledge%20Graph%20Challenge%20-%20Transcript%20Metadata.csv): Speakers and Sessions 
-- [Evaluation data](https://github.com/Connected-Data/cdkg-challenge/tree/main/QA): Baseline questions and answers on the data included in the CDKG, with an [automated evaluation script](https://github.com/Connected-Data/cdkg-challenge/blob/main/src/kuzu/evaluate.py) to benchmark RAG system performance
-- [Source code](https://github.com/Connected-Data/cdkg-challenge/tree/main/src/kuzu): Code used to construct and query the Knowledge Graph using Ladybug.
-- [Property Graph Schema](https://github.com/Connected-Data/cdkg-challenge/tree/main/cdl_db#property-graph-schema): Domain graph and Lexical graph
-- [Knowledge Graph](https://github.com/Connected-Data/cdkg-challenge/tree/main/cdl_db): Data on Categories, Events, Speakers, Talks, Tags and their relationships
+The knowledge graph holds every talk on the Connected Data conference programme
+(from HeySummit) and every recorded talk on the
+[@ConnectedData YouTube channel](https://www.youtube.com/@ConnectedData): speakers,
+events, dates and abstracts, plus tags extracted from each recorded talk's transcript.
+New talks reach it on their own: the programme is read as it is published, and a
+talk's transcript follows when its recording goes public.
 
+What is in this repository:
+
+- [Ask the graph](https://github.com/Connected-Data/cdkg-challenge/tree/main/src/kuzu#4-query-the-graph-and-run-graph-rag): a Q&A app that turns a question into a Cypher query, answers from what the graph returns, and lists the talks each answer came from
+- [The ingestion service](https://github.com/Connected-Data/cdkg-challenge/tree/main/src/ingest): an admin panel that reads the YouTube channel and the HeySummit programme, downloads captions, extracts tags and rebuilds the graph, then publishes each new talk back to this repository as a pull request
+- [Source code](https://github.com/Connected-Data/cdkg-challenge/tree/main/src/kuzu): the pipeline that builds the graph in [Ladybug](https://ladybugdb.com/), an embedded graph database
+- [Knowledge Graph](https://github.com/Connected-Data/cdkg-challenge/tree/main/cdl_db): the graph exported as CSV (categories, events, speakers, talks, tags and their relationships), with its [property graph schema](https://github.com/Connected-Data/cdkg-challenge/tree/main/cdl_db#property-graph-schema)
+- [Metadata](https://github.com/Connected-Data/cdkg-challenge/blob/main/Transcripts/Connected%20Data%20Knowledge%20Graph%20Challenge%20-%20Transcript%20Metadata.csv): one row per talk, the curated source of the graph
+- [Raw data](https://github.com/Connected-Data/cdkg-challenge/tree/main/Transcripts): talk transcripts, from YouTube captions
+- [Evaluation data](https://github.com/Connected-Data/cdkg-challenge/tree/main/QA): baseline questions and answers, with an [automated evaluation script](https://github.com/Connected-Data/cdkg-challenge/blob/main/src/kuzu/evaluate.py) that scores the Q&A against them
+- [Domain Metamodel](https://github.com/Connected-Data/cdkg-challenge/blob/main/Data%20Model/README.md): the technology-agnostic model of entities and relationships the project started from (2024)
+
+### Run it
+
+You need [uv](https://docs.astral.sh/uv/getting-started/installation/) and a Google Gemini API key.
+
+```bash
+uv sync
+uv run baml-cli generate --from src/kuzu/baml_src
+cp src/kuzu/.env.example src/kuzu/.env        # then set GOOGLE_API_KEY
+
+cd src/kuzu
+uv run 00_extract_transcripts.py              # transcripts -> text
+uv run 01_extract_tag_keywords.py             # tags, via the LLM (only for untagged talks)
+uv run 02_domain_graph.py                     # rebuilds the graph from the metadata CSV
+uv run 03_content_graph.py                    # attaches the tags
+uv run streamlit run streamlit_app.py         # ask the graph
+```
+
+[`src/kuzu/README.md`](src/kuzu/README.md) walks through each step, the evaluation and the
+ingestion panel.
 
 ## Problem statement
 
@@ -158,7 +186,7 @@ Here is what we are offering:
     4. Infrastructure setup
     5. Application development
     6. Open source project management
-    5. Exposure and awareness building
+    7. Exposure and awareness building
     
 
 Here is the process we are looking to initiate:
@@ -182,7 +210,7 @@ We will be looking for solutions that enable us to make the Knowledge Graph acce
 7. Offering a natural language interface for the Knowledge Graph
     
 
-## How you can can help
+## How you can help
 
   
 
@@ -198,7 +226,7 @@ Calling out Connected Data enthusiasts, seasoned professionals and solution prov
     
 - Work in progress will be organized via an [open source repository](https://github.com/Connected-Data/cdkg-challenge).
     
-- Outcomes will be made available as they are generated, and presented in a session in the upcoming [Connected Data London 2024 conference](https://www.connected-data.london/).
+- Outcomes are made available as they are generated, and presented at [Connected Data London](https://www.connected-data.london/).
     
 
 ### Connected Data enthusiasts: Volunteer
@@ -254,4 +282,4 @@ Are you able to offer easy to set up and configure, publicly accessible solution
 - Tooling to query the Knowledge Graph using natural language
     
 
-Then simply browse our [open source repository](https://github.com/Connected-Data/cdkg-challenge), or get in touch with George and Prashanth. Solution provider contributions for this role will be developed 
+Then simply browse our [open source repository](https://github.com/Connected-Data/cdkg-challenge), or get in touch with George and Prashanth.

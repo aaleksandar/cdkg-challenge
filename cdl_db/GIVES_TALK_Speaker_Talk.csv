@@ -1,42 +1,504 @@
-a.name,b.title,r.date
-Mike Atkin,The Business Case for Data Management,2021-12-03
-Peter Crocker,Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,2021-12-03
-Bryon Jacob,(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),2020-12-02
-Veronika Heimsbakk,Modelling regulation requirements using SHACL,2020-12-02
-Andreea Deac,Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,2021-12-03
-Veronique Moore,Applying Semantic Web Standards for Knowledge Representation at Elsevier,2021-12-03
-Gadi Singer,Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,2021-12-03
-Vanessa Lopez,Protecting vital public health programs with AI and Knowledge Graphs,2020-12-02
-Ines Chami,GraphEDM: A Unified Framework for Machine Learning on Graphs,2020-12-02
-Keshav Pingali,"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",2021-12-03
-Kurt Cagle,Knowledge Graphs: Moving Beyond RDF,2021-12-03
-Szymon Klarman,Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,2021-12-03
-Jörg Schad,Graph Analytics vs Graph Machine Learning,2021-12-03
-Peter Kaloroumakis,Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,2021-12-03
-Vaishali Raghvani,Legal Knowledge Graphs,2021-12-03
-Dave Duggal,One graph to bind them all! Linking data & apps for event-driven interoperability,2021-12-03
-Frank van Harmelen,Systems that learn and reason,2021-12-03
-Dan Boerner,Humans and the Graph - Inspiring and empowering GraphQL adoption,2021-12-03
-Mike Dillinger,Taxonomies: Connecting Data with Duct Tape,2021-12-03
-Omar Khan,The Enterprise Knowledge Graph,2021-12-03
-David Amzallag,Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,2021-12-03
-Sebastian Hellmann,DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,2020-12-02
-Anelia Kurteva,Implementing Informed Consent with Knowledge Graphs,2021-12-03
-Kirell Benzi,Secret Knowledge: Visualizing Complexity,2020-12-02
-Juan Sequeda,(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),2020-12-02
-Paco Nathan,Graph Thinking,2021-12-03
-Natasa Varytimou,UBS Helix Knowledge Graph: The Power of Information,2021-12-03
-Marcus Nölke,How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,2021-12-03
-Ora Lassila,Graph Abstractions Matter,2021-12-03
-Victor Lee,Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,2021-12-03
-Michael Bronstein,"Deep Learning on Graphs: Past, Present, And Future",2020-12-02
-Michiel Hildebrand,Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,2020-12-02
-Sebastian Schmidt,The game plan for your Knowledge Graph-driven FAIR data platform,2020-12-02
-Vassil Momtchev,"Knowledge Graphs as Hub for Data, Metadata and Content",2020-12-02
-Eran Avidan,Sales AI: Building and maintaining a knowledge graph,2020-12-02
-David Newman,The Enterprise Knowledge Graph,2021-12-03
-Barr Moses,Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,2021-12-03
-Atanas Kiryakov,"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",2021-12-03
-Atanas Kiryakov,"Knowledge Graphs as Hub for Data, Metadata and Content",2020-12-02
-Nikolaj van Omme,Hybridization of Machine Learning and Operational Research is the future of AI ,2021-12-03
-Carlo Luschi,Leveraging Graphcore’s IPU architecture for large scale GNN compute,2021-12-03
+a.name,b.talk_id,r.date
+Raghu Prabhakar,t-75954b6a,2021-12-18
+Raghu Prabhakar,t-9cc83d10,2021-12-01
+Gary Marcus,t-abf490a8,2020-12-02
+Kirell Benzi,t-77992ebe,2021-12-02
+Kirell Benzi,t-75954b6a,2021-12-18
+Kirell Benzi,t-a22e3e2b,2020-12-02
+Kirell Benzi,t-836da9a8,2021-12-02
+Joseph K Iype,t-54d3fa43,2024-12-12
+Panos Papadopoulos,t-75954b6a,2021-12-18
+Panos Papadopoulos,t-ea0ad9de,2021-12-01
+Adam Wangrat,t-3460054a,2024-12-12
+Adam Wangrat,t-0c910090,2024-04-25
+Abi Giles-Haigh,t-7e1d1eab,2024-12-12
+Ravinder Singh,t-facd3870,2025-11-21
+Haonan Qiu,t-75954b6a,2021-12-18
+Haonan Qiu,t-cc94ba9a,2021-12-01
+Andreas Blumauer,t-3e57f67e,2024-12-13
+Andreas Blumauer,t-1327d329,2024-12-12
+Semih Salihoğlu,t-a515d394,2024-12-11
+Heather Hedden,t-11935d63,2024-12-11
+Heather Hedden,t-40259be2,2024-12-05
+Heather Hedden,t-e59f2e11,2021-12-02
+Heather Hedden,t-75954b6a,2021-12-18
+Heather Hedden,t-837b1c30,2021-12-02
+Jesse Anderson,t-a6dbd935,2024-12-13
+Jesse Anderson,t-5d99da92,2024-12-12
+Dexter Lowe,t-3e57f67e,2024-12-13
+Dexter Lowe,t-558af3d3,2024-12-12
+Roy Reznik,t-4067147c,2025-11-21
+Thomas Cook,t-8b1d8d94,2019-10-04
+Florian Bauer,t-2b33bd3a,2020-12-02
+Clair Sullivan,t-75954b6a,2021-12-18
+Clair Sullivan,t-69ef7eb2,2021-12-01
+Maria Sorokina,t-b075a0ce,2025-11-21
+Gadi Singer,t-d7dbb358,2021-12-03
+Mike Atkin,t-75954b6a,2021-12-18
+Mike Atkin,t-792c8043,2021-12-01
+Mike Atkin,t-49841368,2021-12-03
+Alessandro Negro,t-7dbe0811,2025-11-20
+Alessandro Negro,t-3e57f67e,2024-12-13
+Alessandro Negro,t-3200bbe4,2024-12-12
+Sebastian Müller,t-a8b7c110,2019-10-04
+Ben Gardner,t-33420f7e,2025-11-20
+Ben Gardner,t-a6dbd935,2024-12-13
+Ben Gardner,t-d9c9fd9f,2024-12-13
+Ben Gardner,t-09db30c6,2024-12-12
+Bill Malyk,t-8998e62d,2020-12-02
+Beatrice Gamba,t-405d75ec,2024-12-12
+Tom Vout,t-4db75450,2024-12-11
+Tom Vout,t-9a4ba1a5,2025-11-20
+Michel Bauwens,t-512aada1,2021-12-03
+Kurt Cagle,t-336f4f2e,2021-12-03
+Mikhail Galkin,t-4bd0754d,2021-12-01
+Mikhail Galkin,t-75954b6a,2021-12-18
+Tony Seale,t-63c4da30,2025-11-21
+Tony Seale,t-fed5e684,2020-09-23
+Tony Seale,t-9ef2cac7,2024-12-12
+Tony Seale,t-40259be2,2024-12-05
+Tony Seale,t-4496eac1,2021-11-19
+Tony Seale,t-77bc44f4,2024-12-13
+Alok Prasad,t-8b1d8d94,2019-10-04
+Gulay Canbaloglu,t-02b217d0,2025-11-21
+Dawn Anderson,t-75954b6a,2021-12-18
+Dawn Anderson,t-a9da4e94,2020-11-30
+Dawn Anderson,t-06355617,2021-12-01
+Carlo Luschi,t-0415c386,2021-12-03
+Carlo Luschi,t-9cc83d10,2021-12-01
+Carlo Luschi,t-75954b6a,2021-12-18
+John Placek,t-facd3870,2025-11-21
+Yener Karaca,t-bf20d174,2024-12-12
+Jason Barnard,t-06355617,2021-12-01
+Jason Barnard,t-75954b6a,2021-12-18
+Jason Barnard,t-a9da4e94,2020-11-30
+Maureen Teyssier,t-cb4d4ea2,2020-12-02
+Sofus Macskassy,t-3e57f67e,2024-12-13
+Sofus Macskassy,t-a1bbe65b,2024-12-13
+Sofus Macskassy,t-d47072bb,2024-12-12
+Mara Inglezakis Owens,t-5ef78cf3,2025-11-21
+Abhishek Gupta,t-dadc4ebf,2021-12-01
+Abhishek Gupta,t-75954b6a,2021-12-18
+Felix Sasaki,t-4d14fb44,2025-11-21
+Tanya Beck,t-75954b6a,2021-12-18
+Tanya Beck,t-dadc4ebf,2021-12-01
+Andreea Deac,t-4bd0754d,2021-12-01
+Andreea Deac,t-aaf194fa,2021-12-03
+Andreea Deac,t-75954b6a,2021-12-18
+Mike Dillinger,t-18eae410,2021-12-03
+Ryan Wright,t-da804cc6,2024-12-11
+Giuseppe Futia,t-b70f68f8,2025-11-20
+Giuseppe Futia,t-ef6f784e,2020-11-30
+Giuseppe Futia,t-730b53be,2024-12-11
+Giuseppe Futia,t-40259be2,2024-12-05
+David Amerland,t-b9a30b4e,2019-10-04
+David Amerland,t-a9da4e94,2020-11-30
+Richard Song,t-8335a1b4,2024-12-11
+Alexandre Babeanu,t-d94392c0,2025-11-20
+Alexandre Babeanu,t-fd6e1e02,2025-11-21
+Aleksa Gordic,t-67544187,2021-04-15
+Aleksa Gordic,t-0c8afbc2,2021-04-15
+Petra Selmer,t-f3d22d85,2025-11-20
+Weidong Yang,t-43e59285,2024-12-11
+Andreas Kollegger,t-40259be2,2024-12-05
+Alan Morrison,t-75954b6a,2021-12-18
+Alan Morrison,t-99c3306b,2020-11-30
+Alan Morrison,t-231d37ed,2021-12-01
+Rafael Gonçalves,t-61497379,2020-12-02
+Victor Lee,t-23d38fa8,2019-10-03
+Victor Lee,t-aceeb502,2021-12-03
+Geoffrey Horrell,t-5939695d,2019-10-04
+Davide D'Amico,t-c0bece22,2024-12-11
+Xanthos Angelides,t-940502b1,2025-11-20
+Alison Cossette,t-15331856,2024-12-11
+Alison Cossette,t-5168886f,2024-12-13
+Larry Swanson,t-facd3870,2025-11-21
+Cedric Berger,t-1b431b3b,2025-11-20
+Mitra,t-b35c1acd,2024-12-12
+Vaishali Raghvani,t-b44a5553,2021-12-03
+Nick Form,t-f4674e3a,2024-04-25
+Peter Crocker,t-4db75450,2024-12-11
+Peter Crocker,t-cc94ba9a,2021-12-01
+Peter Crocker,t-561733aa,2021-12-03
+Peter Crocker,t-77bc44f4,2024-12-13
+Peter Crocker,t-75954b6a,2021-12-18
+Peter Crocker,t-bb191fc8,2025-11-21
+Alaa Alweish,t-8beefbda,2025-11-20
+Stijn Oude Elferink,t-9be89c29,2025-11-21
+Kunihiko Harada,t-c339cef3,2024-12-12
+Justin Fine,t-7846c490,2024-12-12
+Ricky Sun,t-6b889fb4,2024-12-12
+Fabian Yamaguchi,t-0371578d,2019-10-04
+Prerna Juhlin,t-45bc4cc6,2025-11-21
+Remy Boutonnet,t-c54b3f4f,2025-11-21
+Michael Atkin,t-dfc67760,2020-12-02
+Andreas Trulsson,t-1876b46c,2024-12-12
+Giovanni Tummarello,t-c8d768f7,2019-10-04
+Juan Sequeda,t-212ac11c,2025-11-21
+Juan Sequeda,t-9d1de2e2,2020-12-02
+Juan Sequeda,t-99c3306b,2020-11-30
+Hans Viehmann,t-3e57f67e,2024-12-13
+Hans Viehmann,t-b3831dd7,2024-12-12
+Yuta Yajima,t-c339cef3,2024-12-12
+Yuta Yajima,t-a6dbd935,2024-12-13
+Steven Xi,t-99c3306b,2020-11-30
+Veronique Moore,t-a88a459a,2021-12-03
+Peter Kaloroumakis,t-a81054f0,2021-12-03
+François Scharffe,t-33b09974,2020-12-02
+François Scharffe,t-175458f8,2020-12-02
+François Scharffe,t-68f6d9c2,2020-12-01
+Robert Stevens,t-4508f06d,2019-10-04
+Norbert Gergely,t-567a5549,2025-11-21
+Laëtitia Del Banio,t-e3e0f2b9,2024-12-11
+Jean Villedieu,t-fd6e1e02,2025-11-21
+Panos Alexopoulos,t-647fcf1a,2024-12-11
+Panos Alexopoulos,t-40259be2,2024-12-05
+Panos Alexopoulos,t-bb1926d0,2020-12-01
+Panos Alexopoulos,t-7a49610c,2020-12-01
+Panos Alexopoulos,t-b0e6fe76,2025-11-20
+Panos Alexopoulos,t-6b4537d8,2020-06-29
+Panos Alexopoulos,t-e87b193e,2021-11-18
+Panos Alexopoulos,t-6e47c4ed,2019-10-03
+Panos Alexopoulos,t-ffab5550,2021-12-02
+Panos Alexopoulos,t-711685df,2021-12-02
+Panos Alexopoulos,t-b9a30b4e,2019-10-04
+Panos Alexopoulos,t-75954b6a,2021-12-18
+Chence Shi,t-75954b6a,2021-12-18
+Chence Shi,t-f8734fe4,2021-12-02
+Natasa Varytimou,t-69996db8,2021-12-03
+William Lyon,t-6836feec,2025-11-20
+Paraskevi Zerva,t-75954b6a,2021-12-18
+Paraskevi Zerva,t-dadc4ebf,2021-12-01
+Mark Manley,t-940502b1,2025-11-20
+Michael Bronstein,t-06361396,2020-12-02
+Teresa Tung,t-dfc67760,2020-12-02
+Jörg Schad,t-68cbd256,2020-12-01
+Jörg Schad,t-f1523e6a,2021-12-02
+Jörg Schad,t-75954b6a,2021-12-18
+Jörg Schad,t-5c4bcd15,2021-12-03
+Tara Raafat,t-c0bece22,2024-12-11
+Tara Raafat,t-186465ae,2019-10-04
+Tara Raafat,t-75954b6a,2021-12-18
+Tara Raafat,t-8d6a15b7,2025-11-21
+Tara Raafat,t-0186c756,2024-12-13
+Tara Raafat,t-f3d22d85,2025-11-20
+Tara Raafat,t-cc94ba9a,2021-12-01
+Tara Raafat,t-e87b193e,2021-11-18
+Dan Boerner,t-ac27b722,2021-12-03
+Jérémy Ravenel,t-dda2c180,2024-12-12
+Jérémy Ravenel,t-88d49b6d,2024-12-13
+Jérémy Ravenel,t-0186c756,2024-12-13
+Benjamin Niedermann,t-59ef248f,2024-12-11
+Milan Dojchinovski,t-91e4ff4b,2021-12-02
+Milan Dojchinovski,t-75954b6a,2021-12-18
+Maaike Kusters,t-aea2e31f,2024-12-12
+Maya Natarajan,t-88d49b6d,2024-12-13
+Maya Natarajan,t-694de5cb,2025-11-20
+Maya Natarajan,t-abc86824,2024-12-12
+Fabio Petroni,t-ef6f784e,2020-11-30
+Tiffany Callahan,t-4bd0754d,2021-12-01
+Tiffany Callahan,t-75954b6a,2021-12-18
+George Anadiotis,t-b789cb43,2020-04-22
+George Anadiotis,t-ea77ef84,2020-12-02
+George Anadiotis,t-75954b6a,2021-12-18
+George Anadiotis,t-e878f8ef,2021-12-03
+George Anadiotis,t-fd6e1e02,2025-11-21
+George Anadiotis,t-40259be2,2024-12-05
+George Anadiotis,t-15f05b35,2020-06-29
+George Anadiotis,t-e1e9fc1a,2021-12-03
+George Anadiotis,t-8335a1b4,2024-12-11
+George Anadiotis,t-99c3306b,2020-11-30
+George Anadiotis,t-ea0ad9de,2021-12-01
+George Anadiotis,t-67544187,2021-04-15
+George Anadiotis,t-d9c9fd9f,2024-12-13
+George Anadiotis,t-33b09974,2020-12-02
+George Anadiotis,t-e87b193e,2021-11-18
+George Anadiotis,t-4496eac1,2021-11-19
+George Anadiotis,t-5939695d,2019-10-04
+George Anadiotis,t-a20fbaef,2025-11-21
+Nariman Ammar,t-16a135b2,2020-12-02
+Evan Sparks,t-9cc83d10,2021-12-01
+Evan Sparks,t-75954b6a,2021-12-18
+Katariina Kari,t-ef6f784e,2020-11-30
+Katariina Kari,t-e87b193e,2021-11-18
+Katariina Kari,t-792c8043,2021-12-01
+Katariina Kari,t-88d49b6d,2024-12-13
+Katariina Kari,t-40259be2,2024-12-05
+Katariina Kari,t-75954b6a,2021-12-18
+Katariina Kari,t-0186c756,2024-12-13
+Sergei Ivanov,t-75954b6a,2021-12-18
+Sergei Ivanov,t-4bd0754d,2021-12-01
+David Gorena,t-203ab05d,2019-10-04
+Jeff Tang,t-75954b6a,2021-12-18
+Jeff Tang,t-231d37ed,2021-12-01
+Andrea Volpini,t-a9da4e94,2020-11-30
+Andrea Volpini,t-c6f08642,2020-12-01
+Andrea Volpini,t-52362437,2020-12-01
+Andrea Volpini,t-06355617,2021-12-01
+Andrea Volpini,t-c6abfb51,2021-12-02
+Andrea Volpini,t-e87b193e,2021-11-18
+Andrea Volpini,t-e577c38d,2019-10-03
+Andrea Volpini,t-75954b6a,2021-12-18
+Andrea Volpini,t-b9a30b4e,2019-10-04
+Zuobai Zhang,t-f8734fe4,2021-12-02
+Zuobai Zhang,t-75954b6a,2021-12-18
+George Cushen,t-909705c3,2019-10-04
+George Cushen,t-a1921b82,2019-10-04
+Konstantin Vinogradov,t-75954b6a,2021-12-18
+Konstantin Vinogradov,t-ea0ad9de,2021-12-01
+Chess Stetson,t-c45072b0,2024-12-12
+Ivo Velitchkov,t-ba8a020a,2025-11-21
+Ivo Velitchkov,t-e87b193e,2021-11-18
+Ivo Velitchkov,t-75954b6a,2021-12-18
+Ivo Velitchkov,t-231d37ed,2021-12-01
+Christelle Maignan,t-1876b46c,2024-12-12
+Christelle Maignan,t-a6dbd935,2024-12-13
+Joe Fagan,t-f3660ad6,2019-10-04
+Barr Moses,t-c3247612,2021-12-03
+Yuan Gao,t-567a5549,2025-11-21
+Hamlet Batista,t-a9da4e94,2020-11-30
+Alex Heald,t-bb8e4eeb,2025-11-21
+James Phare,t-e87b193e,2021-11-18
+James Phare,t-e1e9fc1a,2021-12-03
+James Phare,t-e878f8ef,2021-12-03
+James Phare,t-a20fbaef,2025-11-21
+James Phare,t-ea77ef84,2020-12-02
+James Phare,t-40259be2,2024-12-05
+James Phare,t-dadc4ebf,2021-12-01
+James Phare,t-75954b6a,2021-12-18
+James Phare,t-4496eac1,2021-11-19
+James Phare,t-d6fbb7e0,2020-06-29
+James Phare,t-33b09974,2020-12-02
+James Phare,t-8335a1b4,2024-12-11
+Jesús Barrasa,t-59d474b7,2024-12-12
+Charles Ivie,t-3f14ba0d,2025-11-21
+Andre Franca,t-5168886f,2024-12-13
+Andre Franca,t-34e993bd,2024-12-11
+Sophia Paulett,t-54d3fa43,2024-12-12
+Bryon Jacob,t-9d1de2e2,2020-12-02
+Victoria Lin,t-8c61bcc4,2020-12-02
+Steve Sarsfield,t-99c3306b,2020-11-30
+Steve Sarsfield,t-5939695d,2019-10-04
+Michael Rauch,t-70fe8160,2025-11-20
+Gavin Mendel-Gleason,t-cd907d9e,2021-12-03
+Thomas Deely,t-33b09974,2020-12-02
+Veronika Haderlein-Høgberg,t-3e57f67e,2024-12-13
+Veronika Haderlein-Høgberg,t-757aaaf6,2024-12-12
+Ora Lassila,t-75954b6a,2021-12-18
+Ora Lassila,t-c9b1eee4,2021-12-03
+Ora Lassila,t-0af65240,2025-11-21
+Ora Lassila,t-cc94ba9a,2021-12-01
+Val G. Cook,t-9cc83d10,2021-12-01
+Val G. Cook,t-75954b6a,2021-12-18
+Steve Whitla,t-4d22576a,2025-11-21
+Tiernan Ray,t-9cc83d10,2021-12-01
+Tiernan Ray,t-75954b6a,2021-12-18
+Bogdan Arsintescu,t-3e57f67e,2024-12-13
+Bogdan Arsintescu,t-7846c490,2024-12-12
+Omar Khan,t-21c6c2c4,2021-12-03
+Jonathan Holtby,t-5d54e3d9,2019-10-04
+Brian Platz,t-0f507d87,2020-12-02
+Jerry Michalski,t-75954b6a,2021-12-18
+Jerry Michalski,t-231d37ed,2021-12-01
+Amy Hodler,t-34e993bd,2024-12-11
+Amy Hodler,t-5168886f,2024-12-13
+Amy Hodler,t-40259be2,2024-12-05
+Amy Hodler,t-a6dbd935,2024-12-13
+Amy Hodler,t-ef6f784e,2020-11-30
+Amy Hodler,t-c54b3f4f,2025-11-21
+Amy Hodler,t-17bb3957,2025-11-20
+Bob van Luijt,t-67544187,2021-04-15
+Bob van Luijt,t-75954b6a,2021-12-18
+Bob van Luijt,t-ea0ad9de,2021-12-01
+Bob van Luijt,t-2fc9e3cf,2021-04-15
+Achim Reiz,t-54642457,2024-12-11
+Achim Reiz,t-5b4e027e,2025-11-20
+Caroline Goulard,t-07b04e2c,2020-12-02
+Caroline Goulard,t-e2b27246,2024-12-12
+Aftab Iqbal,t-0a915f2b,2019-10-04
+Matt Adams,t-a6dbd935,2024-12-13
+Matt Adams,t-aae10ee3,2024-12-12
+Russell Jurney,t-92e5462d,2024-12-11
+Mark Grover,t-08022464,2020-12-02
+Benjamin Moreau,t-7ca861d9,2019-10-04
+Jono Alderson,t-851a2fe0,2019-10-04
+Jono Alderson,t-b9a30b4e,2019-10-04
+Isabelle Augenstein,t-ef6f784e,2020-11-30
+David Amzallag,t-4677fc5a,2021-12-03
+Bryn Cooke,t-a23f5059,2019-10-04
+Cen Xi Toh,t-f4674e3a,2024-04-25
+Michael Uschold,t-792c8043,2021-12-01
+Michael Uschold,t-75954b6a,2021-12-18
+Joe Eaton,t-238a2d86,2025-11-21
+Michiel Hildebrand,t-138f9b4b,2020-12-02
+Evangelos Simoudis,t-8625fbfc,2025-11-21
+Nikolaj van Omme,t-a654aaef,2021-12-03
+Mario Bastande,t-158ffb0b,2019-10-04
+Dave Duggal,t-3de77131,2021-12-03
+Dave Duggal,t-8998e62d,2020-12-02
+Timm Amstein,t-8ec22175,2025-11-21
+Timm Amstein,t-a6dbd935,2024-12-13
+Timm Amstein,t-fd6e1e02,2025-11-21
+Timm Amstein,t-aea2e31f,2024-12-12
+Timm Amstein,t-d9c9fd9f,2024-12-13
+Gergely Raccuja,t-4d22576a,2025-11-21
+Johannes Frey,t-75954b6a,2021-12-18
+Johannes Frey,t-91e4ff4b,2021-12-02
+Charles Hoyt,t-75954b6a,2021-12-18
+Charles Hoyt,t-4bd0754d,2021-12-01
+Friedrich Lindenberg,t-88d49b6d,2024-12-13
+Friedrich Lindenberg,t-a501a410,2024-12-12
+Clancy Childs,t-32fa4461,2019-10-04
+Tara Safavi,t-67544187,2021-04-15
+Tara Safavi,t-1a13a0c9,2021-04-15
+Andrea Gioia,t-a1bbe65b,2024-12-13
+Andrea Gioia,t-67380f46,2024-12-11
+Douglas Adams,t-bb8e4eeb,2025-11-21
+Marcus Nölke,t-75954b6a,2021-12-18
+Marcus Nölke,t-cc94ba9a,2021-12-01
+Marcus Nölke,t-75ec9bb5,2021-12-03
+Dan McCreary,t-112b0c00,2020-12-02
+Keshav Pingali,t-966508ee,2021-12-03
+Laurent Alquier,t-dfc67760,2020-12-02
+Anthony Alcaraz,t-3b1f9de4,2024-12-11
+Anthony Alcaraz,t-77bc44f4,2024-12-13
+Torsten Jedicke,t-de118983,2025-11-21
+Robin Osagie,t-de118983,2025-11-21
+Frank van Harmelen,t-4d120139,2021-12-03
+Shigenori Matumoto,t-c339cef3,2024-12-12
+Jan Forberg,t-91e4ff4b,2021-12-02
+Jan Forberg,t-75954b6a,2021-12-18
+Sebastian Hellmann,t-618d24a2,2020-12-02
+Sebastian Hellmann,t-5d54e3d9,2019-10-04
+Michael Watson,t-75954b6a,2021-12-18
+Michael Watson,t-7ac96a68,2021-12-01
+Christoph Jahn,t-2b500145,
+Alexandra Grebe de Barron,t-bda83413,2019-10-04
+Lily Wang,t-bb191fc8,2025-11-21
+Priyanka Dank,t-facd3870,2025-11-21
+Szymon Klarman,t-4677fc5a,2021-12-03
+Ines Chami,t-1ec2f46f,2020-12-02
+Bradley Rees,t-4a28b507,2024-12-12
+Bradley Rees,t-238a2d86,2025-11-21
+Bradley Rees,t-88d49b6d,2024-12-13
+Bradley Rees,t-c54b3f4f,2025-11-21
+Mark Needham,t-ec250553,2019-10-03
+Amit Weitzner,t-214bb3b2,2020-12-02
+Nathan Benaich,t-ef6f784e,2020-11-30
+Alena Vasilevich,t-67544187,2021-04-15
+Alena Vasilevich,t-373edc4f,2021-04-14
+Symeon Vasileiadis,t-4496eac1,2021-11-19
+Symeon Vasileiadis,t-59c13a2d,2020-09-23
+Vassil Momtchev,t-cb294727,2019-10-04
+Vassil Momtchev,t-81bb281f,2020-12-02
+Vassil Momtchev,t-8335a1b4,2024-12-11
+Cindy Krum,t-75954b6a,2021-12-18
+Cindy Krum,t-06355617,2021-12-01
+Urbashi Mitra,t-3e57f67e,2024-12-13
+Jane Lomax,t-b4837d9d,2024-12-12
+Jane Lomax,t-88d49b6d,2024-12-13
+Kevin Phillips,t-3f14ba0d,2025-11-21
+Ian Robinson,t-4067147c,2025-11-21
+Cruce Saunders,t-8beefbda,2025-11-20
+Alastair Green,t-83f0bd2b,2025-11-20
+LJ Rich,t-b9cc7afc,2024-12-12
+Mayank Kejriwal,t-e739d8e4,2020-12-02
+Ruben Verborgh,t-9d850db4,2019-10-04
+Ruben Verborgh,t-5d54e3d9,2019-10-04
+Sebastian Mueller,t-88d49b6d,2024-12-13
+Sebastian Mueller,t-0952cf2f,2024-12-12
+Leah Miller,t-a9d5f9c6,2024-12-12
+Leah Miller,t-77bc44f4,2024-12-13
+Leah Miller,t-88d49b6d,2024-12-13
+Joshua Shinavier,t-5939695d,2019-10-04
+Joshua Shinavier,t-a1e78f49,2019-10-04
+Bradley Bolliger,t-32f5efe3,2025-11-20
+Marko Budiselic,t-6ff71951,2025-11-21
+Jessica Talisman,t-3e57f67e,2024-12-13
+Jessica Talisman,t-3d449d12,2025-11-21
+Jessica Talisman,t-a1bbe65b,2024-12-13
+Jessica Talisman,t-a1d53d84,2024-12-12
+Brad Rees,t-da05eb0d,2019-10-04
+Brad Rees,t-a1921b82,2019-10-04
+Eran Avidan,t-8b65e4d2,2020-12-02
+Dan Selman,t-e8625385,2024-12-12
+Orit Gal,t-5168886f,2024-12-13
+Orit Gal,t-88d49b6d,2024-12-13
+Orit Gal,t-3fadcae1,2024-12-12
+Martin O'Hanlon,t-33c42698,2024-12-11
+Martin O'Hanlon,t-4793d8f0,2025-11-20
+Martin O'Hanlon,t-c757e47d,
+Prashanth Rao,t-8335a1b4,2024-12-11
+Prashanth Rao,t-a515d394,2024-12-11
+Prashanth Rao,t-4d7e513d,2025-11-20
+Colin van Lieshout,t-9be89c29,2025-11-21
+Veronika Heimsbakk,t-d2aff58a,2020-12-01
+Veronika Heimsbakk,t-4f45e3c1,2025-11-20
+Veronika Heimsbakk,t-501e3e9e,2020-12-02
+Veronika Heimsbakk,t-40259be2,2024-12-05
+Veronika Heimsbakk,t-0186c756,2024-12-13
+Veronika Heimsbakk,t-b8b8d13f,2024-12-11
+Atanas Kiryakov,t-a6dbd935,2024-12-13
+Atanas Kiryakov,t-a638ae6b,2024-12-12
+Atanas Kiryakov,t-53009b49,2021-12-03
+Atanas Kiryakov,t-81bb281f,2020-12-02
+Evmorfia Argyriou,t-59ef248f,2024-12-11
+Axel-Cyrille Ngonga Ngomo,t-a1921b82,2019-10-04
+Anelia Kurteva,t-f226cc58,2021-12-03
+Mike Grove,t-32fa4461,2019-10-04
+Ebru Cucen,t-75954b6a,2021-12-18
+Ebru Cucen,t-75d097c1,2021-12-02
+Jans Aasman,t-15220989,2020-12-02
+Jans Aasman,t-a2eee5b4,2020-09-23
+Jans Aasman,t-4496eac1,2021-11-19
+Sebastian Schmidt,t-d50a517e,2020-12-02
+Zhaocheng Zhu,t-f8734fe4,2021-12-02
+Zhaocheng Zhu,t-75954b6a,2021-12-18
+Afraz Jaffri,t-d9c9fd9f,2024-12-13
+David Newman,t-21c6c2c4,2021-12-03
+Kendall Clark,t-8d162b91,2020-12-02
+Vanessa Lopez,t-eb7fef0d,2020-12-02
+Ian Horrocks,t-75954b6a,2021-12-18
+Ian Horrocks,t-cc94ba9a,2021-12-01
+Yoan Sallami,t-e3e0f2b9,2024-12-11
+Dharmendra Rana,t-69ac2111,2025-11-21
+David Hughes,t-17bb3957,2025-11-20
+David Hughes,t-c54b3f4f,2025-11-21
+Andre Garzia,t-5d54e3d9,2019-10-04
+Zornitsa Manolova,t-bf20d174,2024-12-12
+Paramita Mirza,t-231d37ed,2021-12-01
+Paramita Mirza,t-75954b6a,2021-12-18
+Simon Jupp,t-b4837d9d,2024-12-12
+Simon Jupp,t-56974550,2019-10-04
+Simon Jupp,t-88d49b6d,2024-12-13
+Bo Wang,t-75954b6a,2021-12-18
+Bo Wang,t-c6abfb51,2021-12-02
+Charles Borderie,t-0186c756,2024-12-13
+Ashleigh Faith,t-77bc44f4,2024-12-13
+Ashleigh Faith,t-6dba3faa,2021-04-16
+Ashleigh Faith,t-e87b193e,2021-11-18
+Ashleigh Faith,t-75954b6a,2021-12-18
+Ashleigh Faith,t-67544187,2021-04-15
+Ashleigh Faith,t-55745cb8,2021-04-14
+Ashleigh Faith,t-792c8043,2021-12-01
+Ashleigh Faith,t-e878f8ef,2021-12-03
+Irina Adamchic,t-b17530c8,2025-11-21
+Nikolaos Karalis,t-520f1252,2025-11-20
+Alexandre Bertails,t-d8792664,2025-11-21
+Samiul Hasan,t-e76aa6da,2019-10-04
+Paco Nathan,t-a674751f,2021-12-03
+Paco Nathan,t-4d7e513d,2025-11-20
+Paco Nathan,t-75954b6a,2021-12-18
+Paco Nathan,t-6fa665b4,2019-10-04
+Paco Nathan,t-40259be2,2024-12-05
+Paco Nathan,t-ec0f5775,2021-12-01
+Paco Nathan,t-a1bbe65b,2024-12-13
+Paco Nathan,t-67544187,2021-04-15
+Paco Nathan,t-33b30235,2024-12-11
+Paco Nathan,t-4bb48550,2021-04-15
+Paco Nathan,t-e87b193e,2021-11-18
+Paco Nathan,t-a1921b82,2019-10-04
+Paco Nathan,t-68f6d9c2,2020-12-01
+Paco Nathan,t-ce60a978,2021-04-16
+Paco Nathan,t-3e57f67e,2024-12-13
+Paco Nathan,t-e878f8ef,2021-12-03

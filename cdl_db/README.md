@@ -1,26 +1,39 @@
-## View the graph in your platform of choice
+# The knowledge graph as CSV
 
-To make the Knowledge Graph more accessible to users working with their graph
-data platform of choice, we exported the nodes and relationships to CSV format.
-The CSV files are available in the [./cdl_db](./cdl_db) directory of this repository.
+To make the knowledge graph usable in any graph platform, its nodes and
+relationships are exported to CSV in this folder: one file per table, plus the
+Cypher that recreates the graph from them.
 
-### Property graph schema
+The export is generated, not hand-edited. It is a build of the repository's own
+data (the metadata CSV in `Transcripts/` and `src/kuzu/entities.json`), exported
+with Ladybug's `EXPORT DATABASE` through `snapshot.export_csv` in
+`src/ingest/pipeline/snapshot.py`. The ingestion panel's **Snapshot the graph**
+button produces the same files from the live graph.
 
-The data was initially created using the [Ladybug](https://ladybugdb.com/) graph database, so
-a property graph schema is used. The schema is as follows:
+## Load it into Ladybug
+
+From the repository root:
+
+```cypher
+IMPORT DATABASE 'cdl_db';
+```
+
+`schema.cypher` creates the tables, `copy.cypher` loads the CSVs, and
+`index.cypher` holds any indexes. For another database, use the files below
+with the schema.
+
+## Property graph schema
 
 ```
-(:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 (:Speaker) -[:GIVES_TALK]-> (:Talk)
 (:Talk) -[:IS_PART_OF]-> (:Event)
 (:Talk) -[:IS_CATEGORIZED_AS]-> (:Category)
+(:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)
 
-Node properties:
-  - Tag
-    - keyword: string
+Node properties (primary key first):
   - Talk
-    - talk_id: string
-    - title: string
+    - talk_id: string             # the talk's identity: "t-" plus eight hex, never reused
+    - title: string               # not unique: conferences reuse "Opening Keynote"
     - category: string
     - url: string                 # the talk's page on HeySummit (the conference programme)
     - description: string
@@ -37,36 +50,39 @@ Node properties:
     - url: string                 # the page the description was taken from, blank when none
   - Category
     - name: string
+  - Tag
+    - keyword: string
 
-Edge properties:
-- GIVES_TALK
+Relationship properties:
+  - GIVES_TALK
     - date: date
-- IS_DESCRIBED_BY
+  - IS_DESCRIBED_BY
     - source: string              # where the tag came from; only "transcript" (YouTube captions) today
 ```
 
-The four provenance properties on `Talk`, `Event.url` and `IS_DESCRIBED_BY.source`
-exist so that an answer from the knowledge graph can say where its knowledge came
-from: the talk's HeySummit description, its transcript's tags, or an event's page.
+The provenance properties on `Talk`, `Event.url` and `IS_DESCRIBED_BY.source`
+let an answer say where its knowledge came from: the talk's HeySummit
+description, its transcript's tags, or an event's page.
 
-### Node files
+## Files
 
-The following node files are available:
+Nodes:
 
-- `Category.csv`: Categories of talks
-- `Event.csv`: Event name and information
-- `Speaker.csv`: Names and metadata of speakers
-- `Tag.csv`: Tags (keywords) associated with the talk content
-- `Talk.csv`: Talks and their metadata
+- `Talk.csv`: talks and their metadata, keyed on `talk_id`
+- `Speaker.csv`: speakers
+- `Event.csv`: events, with a description and its source page
+- `Category.csv`: categories
+- `Tag.csv`: tags (keywords) extracted from transcripts
 
-### Relationship files
+Relationships, with headers naming the endpoints' primary keys and then the
+relationship's properties — `GIVES_TALK_Speaker_Talk.csv` is
+`a.name,b.talk_id,r.date`, a speaker's name and a talk's id:
 
-The following relationship files are available (the first column is the source node's property
-value, and the second column is the target node's property value):
+- `GIVES_TALK_Speaker_Talk.csv`: speaker → talk
+- `IS_PART_OF_Talk_Event.csv`: talk → event
+- `IS_CATEGORIZED_AS_Talk_Category.csv`: talk → category
+- `IS_DESCRIBED_BY_Talk_Tag.csv`: talk → tag
 
-- `GIVES_TALK.csv`: Relationships between speakers and talks
-- `IS_CATEGORIZED_AS.csv`: Relationships between talks and categories
-- `IS_DESCRIBED_BY.csv`: Relationships between talks and tags
-- `IS_PART_OF.csv`: Relationships between talks and events
-
-Using the relationship directions from the schema as shown above, you can import these CSV files into your graph database of choice.
+Most talks come from the conference programme and have no recording yet, so
+only some carry tags: a talk without a transcript has a `Talk` row and no
+`IS_DESCRIBED_BY` edges.

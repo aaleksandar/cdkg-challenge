@@ -123,6 +123,11 @@ celerybeat.pid
 
 # Environments
 .env
+# Atomic-write and yt-dlp scratch files, should a crash leave one behind
+.*.tmp
+*.csv.tmp
+.yt-tmp/
+.ruff_cache/
 .venv
 env/
 venv/

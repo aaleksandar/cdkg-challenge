@@ -1,38 +1,120 @@
-a.title,b.name
-Graph Thinking,Knowledge Graphs
-Introducing D3FEND: A Knowledge Graph of Cybersecurity Countermeasures,Knowledge Graphs
-"Knowledge Graphs as Hub for Data, Metadata and Content",Knowledge Graphs
-Sales AI: Building and maintaining a knowledge graph,Knowledge Graphs
-One graph to bind them all! Linking data & apps for event-driven interoperability,Knowledge Graphs
-Leveraging Graphcore’s IPU architecture for large scale GNN compute,Graph AI
-Protecting vital public health programs with AI and Knowledge Graphs,Knowledge Graphs
-Legal Knowledge Graphs,Knowledge Graphs
-Humans and the Graph - Inspiring and empowering GraphQL adoption,Knowledge Graphs
-Van Gogh Worldwide: Constructing and searching a knowledge graph of linked art,Knowledge Graphs
-Knowledge Mesh: From Data Silos to Data Fabric at Global 2000 Enterprises,Knowledge Graphs
-Reasoning for the Answer: Who is the Greatest Formula 1 Driver of all Time?,Semantic Technology
-Implementing Informed Consent with Knowledge Graphs,Knowledge Graphs
-"Knowledge Graphs, Graph AI, & the Need for High performance Graph Computing",Graph AI
-Data Observability: How to Eliminate Data Downtime and Start Trusting Your Data,Semantic Technology
-DBpedia Databus: A platform to evolve knowledge and AI from versioned web files,Knowledge Graphs
-Systems that learn and reason,Semantic Technology
-Secret Knowledge: Visualizing Complexity,Knowledge Graphs
-Graph Abstractions Matter,Semantic Technology
-The Business Case for Data Management,Semantic Technology
-Hybridization of Machine Learning and Operational Research is the future of AI ,Graph AI
-How a Knowledge Graph Can Support Advanced Price Analytics in Supply Chain Management,Knowledge Graphs
-Graph Analytics vs Graph Machine Learning,Graph AI
-UBS Helix Knowledge Graph: The Power of Information,Knowledge Graphs
-The game plan for your Knowledge Graph-driven FAIR data platform,Knowledge Graphs
-The Enterprise Knowledge Graph,Knowledge Graphs
-Thrill-K: Rethinking knowledge layering and construction for higher machine cognition,Knowledge Graphs
-Knowledge Graphs: Moving Beyond RDF,Knowledge Graphs
-Modelling regulation requirements using SHACL,Semantic Technology
-Neural Algorithmic Reasoning: Combining Classical Algorithms and Neural Networks,Graph AI
-Taxonomies: Connecting Data with Duct Tape,Semantic Technology
-"Deep Learning on Graphs: Past, Present, And Future",Graph AI
-(DataCatalog)_-[poweredBy]-_(KnowledgeGraph),Knowledge Graphs
-GraphEDM: A Unified Framework for Machine Learning on Graphs,Graph AI
-"RDF Leveled the Advantages of LPG and Keeps 3 Key Benefits: Standards, Semantics & Interoperability",Semantic Technology
-Graph Algorithms & Graph Machine Learning: Making Sense of Today's Choices,Graph AI
-Applying Semantic Web Standards for Knowledge Representation at Elsevier,Semantic Technology
+a.talk_id,b.name
+t-68f6d9c2,Knowledge Graphs
+t-138f9b4b,Knowledge Graphs
+t-f4674e3a,Knowledge Graphs
+t-b075a0ce,Knowledge Graphs
+t-a501a410,Knowledge Graphs
+t-54d3fa43,Knowledge Graphs
+t-d7dbb358,Knowledge Graphs
+t-cb294727,Knowledge Graphs
+t-a81054f0,Knowledge Graphs
+t-112b0c00,Knowledge Graphs
+t-a22e3e2b,Knowledge Graphs
+t-a1d53d84,Knowledge Graphs
+t-618d24a2,Knowledge Graphs
+t-909705c3,Knowledge Graphs
+t-75ec9bb5,Knowledge Graphs
+t-77bc44f4,Knowledge Graphs
+t-eb7fef0d,Knowledge Graphs
+t-8b65e4d2,Knowledge Graphs
+t-9d1de2e2,Knowledge Graphs
+t-b35c1acd,Knowledge Graphs
+t-8d162b91,Knowledge Graphs
+t-647fcf1a,Knowledge Graphs
+t-336f4f2e,Knowledge Graphs
+t-0c910090,Knowledge Graphs
+t-bb191fc8,Knowledge Graphs
+t-3200bbe4,Knowledge Graphs
+t-a9d5f9c6,Knowledge Graphs
+t-67380f46,Knowledge Graphs
+t-bb8e4eeb,Knowledge Graphs
+t-55745cb8,Knowledge Graphs
+t-6e47c4ed,Knowledge Graphs
+t-8998e62d,Knowledge Graphs
+t-f226cc58,Knowledge Graphs
+t-09db30c6,Knowledge Graphs
+t-d2aff58a,Knowledge Graphs
+t-a674751f,Knowledge Graphs
+t-dfc67760,Knowledge Graphs
+t-23d38fa8,Knowledge Graphs
+t-b8b8d13f,Knowledge Graphs
+t-32fa4461,Knowledge Graphs
+t-203ab05d,Knowledge Graphs
+t-d9c9fd9f,Knowledge Graphs
+t-b44a5553,Knowledge Graphs
+t-d50a517e,Knowledge Graphs
+t-3de77131,Knowledge Graphs
+t-4677fc5a,Knowledge Graphs
+t-15220989,Knowledge Graphs
+t-e739d8e4,Knowledge Graphs
+t-1876b46c,Knowledge Graphs
+t-21c6c2c4,Knowledge Graphs
+t-9be89c29,Knowledge Graphs
+t-ac27b722,Knowledge Graphs
+t-52362437,Knowledge Graphs
+t-0a915f2b,Knowledge Graphs
+t-69996db8,Knowledge Graphs
+t-aae10ee3,Knowledge Graphs
+t-c6f08642,Knowledge Graphs
+t-c8d768f7,Knowledge Graphs
+t-e577c38d,Knowledge Graphs
+t-9a4ba1a5,Knowledge Graphs
+t-a9da4e94,Knowledge Graphs
+t-cb4d4ea2,Knowledge Graphs
+t-bf20d174,Knowledge Graphs
+t-81bb281f,Knowledge Graphs
+t-8ec22175,Knowledge Graphs
+t-520f1252,Graph Databases
+t-8b1d8d94,Graph Databases
+t-ec250553,Graph Databases
+t-7846c490,Graph Databases
+t-0371578d,Graph Databases
+t-c45072b0,Graph Databases
+t-a23f5059,Graph Databases
+t-4793d8f0,Graph Databases
+t-da05eb0d,Graph Databases
+t-558af3d3,Graph Databases
+t-5939695d,Graph Databases
+t-83f0bd2b,Graph Databases
+t-f3660ad6,Graph Databases
+t-6fa665b4,Graph Databases
+t-a515d394,Graph Databases
+t-aea2e31f,Graph Databases
+t-4a28b507,Graph Databases
+t-c0bece22,Semantic Technology
+t-3fadcae1,Semantic Technology
+t-4db75450,Semantic Technology
+t-49841368,Semantic Technology
+t-c3247612,Semantic Technology
+t-501e3e9e,Semantic Technology
+t-4d120139,Semantic Technology
+t-561733aa,Semantic Technology
+t-61497379,Semantic Technology
+t-18eae410,Semantic Technology
+t-b4837d9d,Semantic Technology
+t-33420f7e,Semantic Technology
+t-c9b1eee4,Semantic Technology
+t-53009b49,Semantic Technology
+t-a88a459a,Semantic Technology
+t-5d99da92,Semantic Technology
+t-2b33bd3a,Semantic Technology
+t-f1523e6a,Graph AI
+t-966508ee,Graph AI
+t-06361396,Graph AI
+t-da804cc6,Graph AI
+t-aceeb502,Graph AI
+t-92e5462d,Graph AI
+t-1ec2f46f,Graph AI
+t-0415c386,Graph AI
+t-a654aaef,Graph AI
+t-75d097c1,Graph AI
+t-5c4bcd15,Graph AI
+t-34e993bd,Graph AI
+t-e2b27246,Graph AI
+t-238a2d86,Graph AI
+t-59ef248f,Graph AI
+t-9cc83d10,Graph AI
+t-43e59285,Graph AI
+t-aaf194fa,Graph AI
+t-b3831dd7,Graph AI
+t-15331856,Graph AI
