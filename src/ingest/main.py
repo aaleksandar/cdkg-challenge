@@ -6,7 +6,7 @@ import logging
 import secrets
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.staticfiles import StaticFiles
 
@@ -17,18 +17,28 @@ log = logging.getLogger("ingest.main")
 _basic = HTTPBasic(auto_error=False)
 
 
-def require_admin(credentials: HTTPBasicCredentials | None = Depends(_basic)) -> str:
-    """Gate the panel behind HTTP Basic.
+def require_admin(request: Request,
+                  credentials: HTTPBasicCredentials | None = Depends(_basic)) -> str:
+    """Gate the panel behind HTTP Basic, and refuse cross-site writes.
 
     The panel spends money on LLM calls and writes to GitHub, so it is never
-    served open. Auth is disabled only when no password is configured, which is
-    the local-development case.
+    served open by accident: with no password configured it refuses everything
+    unless ALLOW_ANONYMOUS_PANEL says this is local development.
     """
+    _refuse_cross_site(request)
     if not config.ADMIN_PASSWORD:
-        return "anonymous"
+        if config.ALLOW_ANONYMOUS_PANEL:
+            return "anonymous"
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="The panel has no ADMIN_PASSWORD configured. Set one, or "
+                   "ALLOW_ANONYMOUS_PANEL=true for local development.",
+        )
+    # Compared as bytes: compare_digest refuses non-ASCII str, which would turn
+    # a mistyped password into a 500 rather than a 401.
     if credentials is None or not (
-        secrets.compare_digest(credentials.username, config.ADMIN_USER)
-        and secrets.compare_digest(credentials.password, config.ADMIN_PASSWORD)
+        secrets.compare_digest(credentials.username.encode(), config.ADMIN_USER.encode())
+        & secrets.compare_digest(credentials.password.encode(), config.ADMIN_PASSWORD.encode())
     ):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -36,6 +46,21 @@ def require_admin(credentials: HTTPBasicCredentials | None = Depends(_basic)) ->
             headers={"WWW-Authenticate": "Basic"},
         )
     return credentials.username
+
+
+def _refuse_cross_site(request: Request) -> None:
+    """A browser re-sends Basic credentials with a form another site posts, so
+    every write must prove it came from the panel itself. Each one is made by
+    htmx, which sends HX-Request — a header a cross-site form cannot set — and
+    a modern browser also says where a request came from in Sec-Fetch-Site."""
+    if request.method in ("GET", "HEAD", "OPTIONS"):
+        return
+    if request.headers.get("hx-request"):
+        return
+    if request.headers.get("sec-fetch-site") == "same-origin":
+        return
+    raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                        detail="Cross-site request refused")
 
 
 @asynccontextmanager

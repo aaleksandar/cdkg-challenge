@@ -13,13 +13,16 @@ from fastapi.testclient import TestClient
 from ingest import config, db, reconcile as R
 from ingest.main import app
 
+# What htmx sends with every request; the panel refuses a write without it.
+HTMX = {"HX-Request": "true"}
+
 
 @pytest.fixture
 def client(monkeypatch, tmp_path):
     """A panel over one fabricated talk, so a status can be pinned exactly."""
     monkeypatch.setattr(config, "STATE_DB_PATH", tmp_path / "state.db")
     db.init_db()
-    return TestClient(app)
+    return TestClient(app, headers=HTMX)
 
 
 def _only(*states):

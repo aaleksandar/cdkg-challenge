@@ -12,6 +12,9 @@ from fastapi.testclient import TestClient
 
 from ingest import config, db, reconcile as R
 
+# What htmx sends with every request; the panel refuses a write without it.
+HTMX = {"HX-Request": "true"}
+
 
 @pytest.fixture
 def mounted(monkeypatch, tmp_path):
@@ -26,7 +29,7 @@ def mounted(monkeypatch, tmp_path):
 
     importlib.reload(ingest.web)
     importlib.reload(ingest.main)
-    yield TestClient(ingest.main.app)
+    yield TestClient(ingest.main.app, headers=HTMX)
     importlib.reload(ingest.web)
     importlib.reload(ingest.main)
 
@@ -81,7 +84,7 @@ def test_served_from_the_root_nothing_is_prefixed(monkeypatch, tmp_path):
     importlib.reload(ingest.main)
     try:
         monkeypatch.setattr(ingest.web.R, "reconcile", lambda: [TALK])
-        client = TestClient(ingest.main.app)
+        client = TestClient(ingest.main.app, headers=HTMX)
         html = client.get("/").text
         assert 'hx-get="/rows"' in html
         assert "/ingestion/" not in html

@@ -70,6 +70,28 @@ def test_git_errors_redact_the_token():
     assert "***" in str(excinfo.value) or "ls-remote" in str(excinfo.value)
 
 
+def test_the_token_is_never_on_gits_command_line(monkeypatch, tmp_path):
+    """A timeout's message, a process listing and a traceback all print argv;
+    the token travels in the environment instead."""
+    import subprocess
+
+    secret = "ghs_supersecrettokenvalue"
+    seen = {}
+
+    def fake_run(argv, **kwargs):
+        seen["argv"], seen["env"] = argv, kwargs["env"]
+        raise subprocess.TimeoutExpired(argv, 300)
+    monkeypatch.setattr(config, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(gitops.subprocess, "run", fake_run)
+
+    with pytest.raises(gitops.GitOpsError) as excinfo:
+        gitops.git("push", gitops._remote(), "ingest/auto", token=secret)
+
+    assert not any(secret in a for a in seen["argv"])
+    assert seen["env"]["GIT_CONFIG_KEY_0"] == "http.https://github.com/.extraheader"
+    assert secret not in str(excinfo.value) and "timed out" in str(excinfo.value)
+
+
 # --- Against a real repository ---------------------------------------------------
 
 CSV = "Transcripts/Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
@@ -118,7 +140,7 @@ def repos(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "GITHUB_INGEST_BRANCH", "ingest/auto")
     monkeypatch.setattr(config, "GITHUB_BASE_BRANCH", "main")
     monkeypatch.setattr(gitops, "installation_token", lambda: "tok")
-    monkeypatch.setattr(gitops, "_authenticated_remote", lambda token: str(origin))
+    monkeypatch.setattr(gitops, "_remote", lambda: str(origin))
     prs = []
     monkeypatch.setattr(gitops, "open_or_update_pr",
                         lambda token, body=gitops.PR_BODY: prs.append(body) or

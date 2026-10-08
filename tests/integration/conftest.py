@@ -26,6 +26,9 @@ from ingest.pipeline import graph, runner, stages
 from ingest.pipeline.stages import STAGE_ORDER
 from ingest.sources import speaker_llm, supadata, youtube
 
+# What htmx sends with every request; the panel refuses a write without it.
+HTMX = {"HX-Request": "true"}
+
 # Four real cues, well over the twenty words the extraction stage demands.
 SRT_TEXT = (
     "1\n00:00:01,000 --> 00:00:04,000\nKnowledge graphs connect the data an organisation already holds\n\n"
@@ -180,4 +183,4 @@ def sandbox(monkeypatch, tmp_path):
 
     db.init_db()
     return Sandbox(videos=videos, yt=yt, supadata=sd, baml=baml,
-                   client=TestClient(app), csv=config.METADATA_CSV)
+                   client=TestClient(app, headers=HTMX), csv=config.METADATA_CSV)

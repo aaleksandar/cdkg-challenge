@@ -75,10 +75,10 @@ servers:
         - GOOGLE_API_KEY
         - HEYSUMMIT_API_TOKEN
         # The panel spends money and rewrites the graph, so it is never served
-        # open: `require_admin` falls through to "anonymous" when ADMIN_PASSWORD
-        # is empty. Listing it here is what makes that impossible — Kamal refuses
-        # to deploy at all when the secret is missing, which is the behaviour we
-        # want, not something to work around by passing a blank value.
+        # open: with ADMIN_PASSWORD empty, `require_admin` refuses every request
+        # (anonymous access is ALLOW_ANONYMOUS_PANEL, for local development).
+        # Kamal refuses a missing secret but not an empty one, so the deploy
+        # workflow checks both are non-empty before it writes them.
         - ADMIN_USER
         - ADMIN_PASSWORD
         # The caption fallback for when YouTube refuses yt-dlp from this

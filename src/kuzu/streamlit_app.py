@@ -113,6 +113,9 @@ def render_sources(output: dict) -> None:
 question = st.text_input(
     "Ask a question to the CDL Knowledge Graph built on top of Ladybug, an embedded graph database:",
     placeholder="e.g., Can you tell me about Connected Data World 2021?",
+    # A question, not a document: the box is public and every character is
+    # sent to the model twice.
+    max_chars=500,
 )
 
 if question:

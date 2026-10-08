@@ -24,8 +24,41 @@ import config
 load_dotenv()
 os.environ["BAML_LOG"] = "WARN"
 
-# How many rows the caller gets back verbatim; the prompt sees them all.
+# How many rows the caller gets back verbatim.
 RESULTS_CAP = 200
+# How many rows a query may fetch at all, how much of them the answer prompt
+# reads, and how long it may run: the question comes from the public internet,
+# and a cross product would otherwise be a memory spike and a large bill.
+FETCH_CAP = 1000
+CONTEXT_CHAR_CAP = 40_000
+QUERY_TIMEOUT_MS = 10_000
+
+# The generated Cypher runs against a read-only database, but read-only still
+# reads: LOAD FROM returns any file the process can open, and CALL reaches
+# functions beyond the graph. A question is a read of the graph, so a query
+# may only match, filter and return. Words inside string literals are ignored.
+_ALLOWED_START = re.compile(r"^\s*(MATCH|OPTIONAL\s+MATCH|WITH|UNWIND|RETURN)\b", re.I)
+_FORBIDDEN = re.compile(
+    r"\b(LOAD|COPY|EXPORT|IMPORT|ATTACH|DETACH|INSTALL|CALL|CREATE|MERGE|SET|DELETE|"
+    r"REMOVE|DROP|ALTER|USE|BEGIN|COMMIT|ROLLBACK|CHECKPOINT|PROJECT)\b", re.I)
+_STRINGS = re.compile(r"'(?:[^'\\]|\\.)*'|\"(?:[^\"\\]|\\.)*\"|`[^`]*`")
+
+
+class RefusedQuery(ValueError):
+    """Generated Cypher that does more than read the graph."""
+
+
+def guard_cypher(query: str) -> str:
+    """The query, if it only reads the graph; RefusedQuery otherwise."""
+    code = _STRINGS.sub("''", query).strip().rstrip(";")
+    if ";" in code:
+        raise RefusedQuery("more than one statement")
+    if not _ALLOWED_START.match(code):
+        raise RefusedQuery("a query must start with MATCH, WITH, UNWIND or RETURN")
+    found = _FORBIDDEN.search(code)
+    if found:
+        raise RefusedQuery(f"{found.group(1).upper()} is not allowed in a question's query")
+    return query.strip().rstrip(";")
 # How many talks an answer may cite; a broader query is a listing, not an answer.
 SOURCES_CAP = 25
 DESCRIPTION_PREVIEW = 300
@@ -181,15 +214,20 @@ class GraphRAG:
         self.db_path = db_path or config.DB_PATH
         self.db = lb.Database(self.db_path, read_only=True)
         self.conn = lb.Connection(self.db)
+        self.conn.set_query_timeout(QUERY_TIMEOUT_MS)
         self.baml_schema = get_schema_baml(self.conn)
 
     def execute_query(self, cypher: str) -> tuple[list[str], list[list]]:
-        """Run the generated Cypher; the columns and the distinct rows."""
-        response = self.conn.execute(cypher)
+        """Run the generated Cypher; the columns and the distinct rows.
+
+        Only a query that reads the graph is run, and at most FETCH_CAP rows
+        are read from it.
+        """
+        response = self.conn.execute(guard_cypher(cypher))
         columns = list(response.get_column_names())  # type: ignore
         rows = []
         seen = set()
-        while response.has_next():  # type: ignore
+        while response.has_next() and len(rows) < FETCH_CAP:  # type: ignore
             item = list(response.get_next())  # type: ignore
             key = tuple(str(v) for v in item)
             if key not in seen:
@@ -342,7 +380,7 @@ class GraphRAG:
                          else "events" if sources else "general")
             result["grounding"] = grounding
 
-            context = self.build_context(sources, format_rows(columns, rows))
+            context = self.build_context(sources, format_rows(columns, rows))[:CONTEXT_CHAR_CAP]
             answer = b.RAGAnswerQuestion(question, context, grounding)
             result["response"] = answer.answer
             result["from_general_knowledge"] = bool(getattr(answer, "from_general_knowledge", False))

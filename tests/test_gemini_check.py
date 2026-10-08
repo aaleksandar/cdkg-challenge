@@ -5,6 +5,9 @@ import pytest
 
 from ingest.sources import gemini_check
 
+# What htmx sends with every request; the panel refuses a write without it.
+HTMX = {"HX-Request": "true"}
+
 
 def _client(*replies):
     """A client whose requests get these replies in turn: a status, or an exception."""
@@ -62,6 +65,6 @@ def test_the_panel_prints_the_verdict_and_each_attempt(monkeypatch):
         "model": "gemini-3.7-flash", "verdict": "unstable", "attempts": [
             {"kind": "overloaded", "status": 503, "ms": 812, "detail": "high demand"},
             {"kind": "ok", "status": 200, "ms": 1400, "detail": ""}]})
-    html = TestClient(app).post("/gemini/check").text
+    html = TestClient(app, headers=HTMX).post("/gemini/check").text
     assert "Gemini is unstable" in html and "gemini-3.7-flash" in html
     assert "503 — Google says the model is under high demand" in html and "1.4 s" in html

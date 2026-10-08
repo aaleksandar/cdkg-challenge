@@ -92,30 +92,46 @@ def installation_token() -> str:
         return response.json()["token"]
 
 
-def _authenticated_remote(token: str) -> str:
-    return f"https://x-access-token:{token}@github.com/{config.GITHUB_REPO}.git"
+def _remote() -> str:
+    """GitHub's URL for the repository. It carries no credentials: those go to
+    git through its environment (``_auth_env``), never on its command line,
+    where a timeout's message or a process listing would print them."""
+    return f"https://github.com/{config.GITHUB_REPO}.git"
+
+
+def _auth_env(token: str) -> dict:
+    """The installation token as an HTTP header, given to git as configuration
+    in the environment (GIT_CONFIG_COUNT), so no argument ever holds it."""
+    import base64
+
+    basic = base64.b64encode(f"x-access-token:{token}".encode()).decode()
+    return {"GIT_CONFIG_COUNT": "1",
+            "GIT_CONFIG_KEY_0": "http.https://github.com/.extraheader",
+            "GIT_CONFIG_VALUE_0": f"AUTHORIZATION: basic {basic}"}
 
 
 # --- Git ---------------------------------------------------------------------
 
 def git(*args: str, token: str | None = None) -> str:
     """Run git in the working copy, redacting the token from any error."""
-    result = subprocess.run(
-        ["git", *args],
-        cwd=str(config.REPO_ROOT),
-        capture_output=True,
-        text=True,
-        timeout=300,
-        env={
-            "GIT_TERMINAL_PROMPT": "0",   # never hang waiting for a password
-            "GIT_AUTHOR_NAME": "CDKG Ingest Bot",
-            "GIT_AUTHOR_EMAIL": "cdkg-ingest[bot]@users.noreply.github.com",
-            "GIT_COMMITTER_NAME": "CDKG Ingest Bot",
-            "GIT_COMMITTER_EMAIL": "cdkg-ingest[bot]@users.noreply.github.com",
-            "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
-            "HOME": str(Path.home()),
-        },
-    )
+    env = {
+        "GIT_TERMINAL_PROMPT": "0",   # never hang waiting for a password
+        "GIT_AUTHOR_NAME": "CDKG Ingest Bot",
+        "GIT_AUTHOR_EMAIL": "cdkg-ingest[bot]@users.noreply.github.com",
+        "GIT_COMMITTER_NAME": "CDKG Ingest Bot",
+        "GIT_COMMITTER_EMAIL": "cdkg-ingest[bot]@users.noreply.github.com",
+        "PATH": os.environ.get("PATH", "/usr/bin:/bin"),
+        "HOME": str(Path.home()),
+        **(_auth_env(token) if token else {}),
+    }
+    try:
+        result = subprocess.run(
+            ["git", *args], cwd=str(config.REPO_ROOT), capture_output=True,
+            text=True, timeout=300, env=env,
+        )
+    except subprocess.TimeoutExpired:
+        # Named by its verb only: the exception's own text is the command line.
+        raise GitOpsError(f"git {args[0]}: timed out after 300 s") from None
     if result.returncode != 0:
         message = (result.stderr or result.stdout).strip()
         if token:
@@ -141,7 +157,7 @@ def ensure_ingest_branch(token: str) -> None:
     commit. Called at boot as well as before each publish, because at boot the
     tree is clean and the adoption is free.
     """
-    remote = _authenticated_remote(token)
+    remote = _remote()
     git("fetch", remote, f"+refs/heads/{config.GITHUB_BASE_BRANCH}:"
         f"refs/remotes/origin/{config.GITHUB_BASE_BRANCH}", token=token)
     remote_ref = f"refs/remotes/origin/{config.GITHUB_INGEST_BRANCH}"
@@ -326,7 +342,7 @@ def commit_paths(paths: list[Path], message: str, token: str, body: str = "") ->
 def push_ingest_branch(token: str) -> None:
     """Push the branch as it is. Not forced: a rejection means someone else
     pushed to it, which is the one case a person should look at."""
-    git("push", _authenticated_remote(token),
+    git("push", _remote(),
         f"{config.GITHUB_INGEST_BRANCH}:{config.GITHUB_INGEST_BRANCH}", token=token)
 
 

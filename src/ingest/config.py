@@ -211,4 +211,8 @@ CACHED_INPUT_COST_PER_MTOK = os.getenv("INGEST_CACHED_INPUT_COST_PER_MTOK")
 
 # --- Panel auth --------------------------------------------------------------
 ADMIN_USER = os.getenv("ADMIN_USER", "admin")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD") or None  # None disables auth (local dev)
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD") or None
+# An open panel is opted into, never fallen into: a blank ADMIN_PASSWORD from a
+# missing deploy secret refuses every request instead of serving the panel to
+# the internet. Set this for local development only.
+ALLOW_ANONYMOUS_PANEL = _flag("ALLOW_ANONYMOUS_PANEL", "false")

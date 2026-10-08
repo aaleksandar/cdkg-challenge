@@ -82,6 +82,15 @@ jobs:
             esac
             printf "%s='%s'\n" "$1" "$2"
           }
+          # The panel refuses every request without a password, and Kamal only
+          # refuses a secret that is missing, not one that is empty. Stop here,
+          # where the cause is obvious, rather than deploy a locked panel.
+          for name in ADMIN_USER ADMIN_PASSWORD; do
+            if [ -z "$(printenv "$name")" ]; then
+              echo "::error::$name is empty; set it in the repository's Actions secrets" >&2
+              exit 1
+            fi
+          done
           {
             emit CDKG_DOMAIN "$CDKG_DOMAIN"
             emit SERVER_IP "$SERVER_IP"

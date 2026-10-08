@@ -937,7 +937,7 @@ def graph_add(request: Request):
 
     result = rebuild_graph()
     return HTMLResponse(
-        f'<span class="note{"" if result.ok else " err"}">{result.message}</span>'
+        f'<span class="note{"" if result.ok else " err"}">{escape(result.message)}</span>'
     )
 
 
@@ -971,7 +971,7 @@ def refresh(request: Request, background: BackgroundTasks):
         videos = youtube.enumerate_channel()
     except Exception as exc:  # yt-dlp raises a wide variety; all mean "no inventory"
         return HTMLResponse(
-            f'<span class="note err">Could not read the channel: {exc}</span>'
+            f'<span class="note err">Could not read the channel: {escape(str(exc))}</span>'
         )
 
     new, updated = db.upsert_videos(videos)
@@ -1086,7 +1086,7 @@ def rebuild(request: Request):
 
     result = rebuild_graph()
     css = "note" if result.ok else "note err"
-    return HTMLResponse(f'<span class="{css}">{result.message}</span>')
+    return HTMLResponse(f'<span class="{css}">{escape(result.message)}</span>')
 
 
 @router.post("/gemini/check", response_class=HTMLResponse)

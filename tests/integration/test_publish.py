@@ -51,7 +51,7 @@ def github(sandbox, tmp_path, monkeypatch):
     monkeypatch.setattr(config, "ENTITIES_JSON", repo / "src" / "kuzu" / "entities.json")
     monkeypatch.setattr(config, "GIT_PUSH_ENABLED", True)
     monkeypatch.setattr(gitops, "installation_token", lambda: "tok")
-    monkeypatch.setattr(gitops, "_authenticated_remote", lambda token: str(origin))
+    monkeypatch.setattr(gitops, "_remote", lambda: str(origin))
     prs = []
     monkeypatch.setattr(gitops, "open_or_update_pr",
                         lambda token, body=gitops.PR_BODY: prs.append(body) or
