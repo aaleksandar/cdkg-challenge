@@ -3,6 +3,13 @@ name: Deploy
 on:
   push:
     branches: [main]
+    # A merge that only adds data — the ingestion bot's PR — has nothing to
+    # deploy: the server wrote those files itself, and a deploy restarts the
+    # ingest container, interrupting whatever is queued. A push that touches
+    # anything else (code included) still deploys.
+    paths-ignore:
+      - "Transcripts/**"
+      - "src/kuzu/entities.json"
   workflow_dispatch:
 
 concurrency:
