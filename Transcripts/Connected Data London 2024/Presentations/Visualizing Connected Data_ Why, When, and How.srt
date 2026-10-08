@@ -1,0 +1,2960 @@
+1
+00:00:05,359 --> 00:00:11,840
+Yes. Now we introduce Sebastian Müller
+
+2
+00:00:09,120 --> 00:00:13,440
+to the stage. He's going to talk about
+
+3
+00:00:11,840 --> 00:00:15,839
+visualization.
+
+4
+00:00:13,440 --> 00:00:18,080
+And what's interesting is that Sebastian
+
+5
+00:00:15,839 --> 00:00:20,080
+told me that he's um worked for quite
+
+6
+00:00:18,080 --> 00:00:22,160
+some time or for two decades on
+
+7
+00:00:20,080 --> 00:00:25,760
+visualization and graph visualization.
+
+8
+00:00:22,160 --> 00:00:28,480
+And in the past three to four years um
+
+9
+00:00:25,760 --> 00:00:30,560
+he's seen the need to visualize
+
+10
+00:00:28,480 --> 00:00:33,760
+knowledge graphs or ontologies or any
+
+11
+00:00:30,560 --> 00:00:36,480
+kind of connected data um as a as a new
+
+12
+00:00:33,760 --> 00:00:39,600
+field or something that's um um gaining
+
+13
+00:00:36,480 --> 00:00:42,000
+a lot of popularity among his customers.
+
+14
+00:00:39,600 --> 00:00:44,719
+And this is really important for any
+
+15
+00:00:42,000 --> 00:00:46,480
+kind of uh stakeholder work or subject
+
+16
+00:00:44,719 --> 00:00:48,640
+matter expert work that you would want
+
+17
+00:00:46,480 --> 00:00:51,280
+to do when you uh work with your
+
+18
+00:00:48,640 --> 00:00:54,480
+knowledge graphs to to take it out from
+
+19
+00:00:51,280 --> 00:00:56,480
+from the abstract code and things that
+
+20
+00:00:54,480 --> 00:01:00,399
+um seem very unapproachable for
+
+21
+00:00:56,480 --> 00:01:02,960
+nontechnical people and um make sense
+
+22
+00:01:00,399 --> 00:01:05,280
+out of it. So I'm really excited and u
+
+23
+00:01:02,960 --> 00:01:07,680
+to hear what Sebastian has to tell us
+
+24
+00:01:05,280 --> 00:01:10,799
+about best practices for visualizing
+
+25
+00:01:07,680 --> 00:01:13,799
+graphs and um let's welcome him. Thank
+
+26
+00:01:10,799 --> 00:01:13,799
+you.
+
+27
+00:01:14,320 --> 00:01:18,799
+>> Thank you Katalina. Uh thank you for
+
+28
+00:01:16,640 --> 00:01:20,640
+this very nice introduction. So my talk
+
+29
+00:01:18,799 --> 00:01:23,119
+is about visualizing connected data.
+
+30
+00:01:20,640 --> 00:01:25,119
+It's not specifically targeted at at
+
+31
+00:01:23,119 --> 00:01:26,799
+knowledge graphs, but knowledge graphs
+
+32
+00:01:25,119 --> 00:01:29,360
+lend lend themselves very well for
+
+33
+00:01:26,799 --> 00:01:33,119
+visualization as you will hopefully see
+
+34
+00:01:29,360 --> 00:01:34,720
+after or during my presentation. So, um
+
+35
+00:01:33,119 --> 00:01:36,640
+we already got this very nice
+
+36
+00:01:34,720 --> 00:01:38,720
+introduction from her. So, here's here's
+
+37
+00:01:36,640 --> 00:01:42,000
+my social media contact data if you want
+
+38
+00:01:38,720 --> 00:01:43,920
+to contact us and um please feel free to
+
+39
+00:01:42,000 --> 00:01:46,159
+do so. And we also do have a booth
+
+40
+00:01:43,920 --> 00:01:48,240
+outside there. So if you want to know
+
+41
+00:01:46,159 --> 00:01:50,159
+more uh about how we might be able to
+
+42
+00:01:48,240 --> 00:01:52,799
+help you with your visualization
+
+43
+00:01:50,159 --> 00:01:54,640
+challenges, drop by our booth after this
+
+44
+00:01:52,799 --> 00:01:57,520
+talk.
+
+45
+00:01:54,640 --> 00:02:00,719
+So um this is going to be about how to
+
+46
+00:01:57,520 --> 00:02:03,759
+get um from the left hand side to the
+
+47
+00:02:00,719 --> 00:02:05,920
+right hand side to go from simple
+
+48
+00:02:03,759 --> 00:02:08,640
+textbased visualizations or
+
+49
+00:02:05,920 --> 00:02:10,959
+representations of knowledge or these
+
+50
+00:02:08,640 --> 00:02:13,360
+super complex graphs that you may know
+
+51
+00:02:10,959 --> 00:02:15,280
+to the ones that are more useful
+
+52
+00:02:13,360 --> 00:02:18,319
+actually. So how do you get from the
+
+53
+00:02:15,280 --> 00:02:20,000
+left hand side to the right hand side?
+
+54
+00:02:18,319 --> 00:02:23,360
+Uh let's start with the why. Why should
+
+55
+00:02:20,000 --> 00:02:26,080
+we visualize data at all? That's because
+
+56
+00:02:23,360 --> 00:02:28,560
+we as humans are inherently visual
+
+57
+00:02:26,080 --> 00:02:31,280
+creatures. It it has been said that we
+
+58
+00:02:28,560 --> 00:02:34,080
+can process visual information more than
+
+59
+00:02:31,280 --> 00:02:35,840
+60,000 times faster than text. I don't
+
+60
+00:02:34,080 --> 00:02:38,959
+think that you can like transfer this
+
+61
+00:02:35,840 --> 00:02:40,800
+factor from looking at a table to
+
+62
+00:02:38,959 --> 00:02:43,120
+looking at a diagram, but at least the
+
+63
+00:02:40,800 --> 00:02:46,000
+tendency is pretty clear. And I'll show
+
+64
+00:02:43,120 --> 00:02:48,319
+you an example. So here's here's some a
+
+65
+00:02:46,000 --> 00:02:51,840
+number of triples showing a data set
+
+66
+00:02:48,319 --> 00:02:54,480
+about a relationship in a royal family.
+
+67
+00:02:51,840 --> 00:02:57,200
+And here's a visualization of that or a
+
+68
+00:02:54,480 --> 00:02:59,519
+simil similar data set. And now let's
+
+69
+00:02:57,200 --> 00:03:01,599
+look at why this visualization might be
+
+70
+00:02:59,519 --> 00:03:03,360
+better or easier for you to understand
+
+71
+00:03:01,599 --> 00:03:07,120
+than the textual representation. So at
+
+72
+00:03:03,360 --> 00:03:09,920
+the top we have QE2 and we see there's
+
+73
+00:03:07,120 --> 00:03:12,560
+several layers and each of these layers
+
+74
+00:03:09,920 --> 00:03:15,040
+they represent a different um
+
+75
+00:03:12,560 --> 00:03:16,720
+generation. So there there's always the
+
+76
+00:03:15,040 --> 00:03:19,200
+children below that and then we have
+
+77
+00:03:16,720 --> 00:03:22,720
+color coding. So there's Prince Phillip
+
+78
+00:03:19,200 --> 00:03:24,560
+married to Queen QE2 and all the gens
+
+79
+00:03:22,720 --> 00:03:27,200
+are blue and the ladies are in pink and
+
+80
+00:03:24,560 --> 00:03:30,400
+the relationships are also co colorcoded
+
+81
+00:03:27,200 --> 00:03:32,480
+so it's easy to distinguish between them
+
+82
+00:03:30,400 --> 00:03:34,239
+and I'm sure by now some of you have
+
+83
+00:03:32,480 --> 00:03:36,560
+spotted that there's a mistake in there
+
+84
+00:03:34,239 --> 00:03:38,720
+and that was only or mostly because of
+
+85
+00:03:36,560 --> 00:03:40,879
+the visualization. If you look at the
+
+86
+00:03:38,720 --> 00:03:42,640
+text and had to find that same error in
+
+87
+00:03:40,879 --> 00:03:45,280
+the text, I'm sure you wouldn't have
+
+88
+00:03:42,640 --> 00:03:47,360
+been able to find that so quickly. So
+
+89
+00:03:45,280 --> 00:03:49,920
+obviously Megan Markle at the top right
+
+90
+00:03:47,360 --> 00:03:51,360
+is is not correct there. And you see
+
+91
+00:03:49,920 --> 00:03:54,080
+that because if she's in the wrong
+
+92
+00:03:51,360 --> 00:03:56,799
+layer, the color pattern doesn't match
+
+93
+00:03:54,080 --> 00:03:59,120
+up. And there's this awkwardly long edge
+
+94
+00:03:56,799 --> 00:04:01,680
+going all the way down up from Prince
+
+95
+00:03:59,120 --> 00:04:03,920
+Harry up to Meghan Markle.
+
+96
+00:04:01,680 --> 00:04:05,439
+And
+
+97
+00:04:03,920 --> 00:04:07,200
+the other way around, it would be even
+
+98
+00:04:05,439 --> 00:04:09,040
+more difficult. Consider that in the
+
+99
+00:04:07,200 --> 00:04:11,280
+textual visualization, there would be
+
+100
+00:04:09,040 --> 00:04:13,040
+one of these links missing. I bet you
+
+101
+00:04:11,280 --> 00:04:14,799
+would never be able to find them just by
+
+102
+00:04:13,040 --> 00:04:18,639
+reading the text. But by looking at the
+
+103
+00:04:14,799 --> 00:04:21,359
+visualization, it's super easy to find.
+
+104
+00:04:18,639 --> 00:04:24,160
+But visualization is not just about
+
+105
+00:04:21,359 --> 00:04:26,960
+speed. It's really about insight. So you
+
+106
+00:04:24,160 --> 00:04:30,639
+can make use of these factors to
+
+107
+00:04:26,960 --> 00:04:32,960
+increase the performance of your users
+
+108
+00:04:30,639 --> 00:04:34,800
+for understanding the data. So it's not
+
+109
+00:04:32,960 --> 00:04:36,639
+about quicker seeing the same
+
+110
+00:04:34,800 --> 00:04:41,320
+information but getting more of the
+
+111
+00:04:36,639 --> 00:04:41,320
+information out of it in the same time.
+
+112
+00:04:41,440 --> 00:04:46,000
+So these are some of the visual uh the
+
+113
+00:04:43,440 --> 00:04:48,400
+advantages of visualization. Obviously
+
+114
+00:04:46,000 --> 00:04:51,759
+visualizations really shine at revealing
+
+115
+00:04:48,400 --> 00:04:55,199
+patterns and relationships. So they help
+
+116
+00:04:51,759 --> 00:04:58,960
+you to reveal connections to show
+
+117
+00:04:55,199 --> 00:05:02,400
+clusters or to find outliers or see the
+
+118
+00:04:58,960 --> 00:05:04,080
+flows or follow the paths and understand
+
+119
+00:05:02,400 --> 00:05:07,520
+dependencies. Something that you can't
+
+120
+00:05:04,080 --> 00:05:09,919
+do with text. Text is basically a 1D
+
+121
+00:05:07,520 --> 00:05:12,080
+representation of the data and you
+
+122
+00:05:09,919 --> 00:05:14,720
+probably need to like read it from from
+
+123
+00:05:12,080 --> 00:05:16,560
+top to bottom. Whereas in a diagram, in
+
+124
+00:05:14,720 --> 00:05:18,160
+a visualization, it's inherently
+
+125
+00:05:16,560 --> 00:05:20,960
+multi-dimensional even if it's just
+
+126
+00:05:18,160 --> 00:05:23,520
+printed on a 2D uh visualization because
+
+127
+00:05:20,960 --> 00:05:26,720
+well, you can always uh branch off to
+
+128
+00:05:23,520 --> 00:05:28,639
+another dimension by edges and
+
+129
+00:05:26,720 --> 00:05:31,440
+relationships.
+
+130
+00:05:28,639 --> 00:05:33,840
+So with visualization you can really
+
+131
+00:05:31,440 --> 00:05:36,479
+simplify those complex structures and
+
+132
+00:05:33,840 --> 00:05:38,800
+you can represent many data points in a
+
+133
+00:05:36,479 --> 00:05:41,280
+diagram and make them easy to understand
+
+134
+00:05:38,800 --> 00:05:44,639
+for your users.
+
+135
+00:05:41,280 --> 00:05:48,320
+But there's more more than this. They
+
+136
+00:05:44,639 --> 00:05:50,000
+are much more intuitive to navigate. So
+
+137
+00:05:48,320 --> 00:05:52,639
+things like even with a static
+
+138
+00:05:50,000 --> 00:05:55,360
+visualization, things like exploring the
+
+139
+00:05:52,639 --> 00:05:58,320
+diagram are are easier to do and and
+
+140
+00:05:55,360 --> 00:06:00,479
+they the mapping from the from the
+
+141
+00:05:58,320 --> 00:06:03,120
+action of searching through the diagram
+
+142
+00:06:00,479 --> 00:06:05,120
+or zooming into into a spec specific
+
+143
+00:06:03,120 --> 00:06:07,120
+part of the diagram is much more natural
+
+144
+00:06:05,120 --> 00:06:09,039
+because well you can literally move
+
+145
+00:06:07,120 --> 00:06:11,600
+closer to the diagram and inspect a
+
+146
+00:06:09,039 --> 00:06:14,319
+certain part. And later on if you add
+
+147
+00:06:11,600 --> 00:06:16,720
+interactivity of course this maps a lot
+
+148
+00:06:14,319 --> 00:06:19,039
+better than with a static visualization
+
+149
+00:06:16,720 --> 00:06:21,280
+or static representation like a textual
+
+150
+00:06:19,039 --> 00:06:25,120
+representation.
+
+151
+00:06:21,280 --> 00:06:29,120
+So to sum it up um it's much more easy
+
+152
+00:06:25,120 --> 00:06:31,199
+to communicate insights to a pretty
+
+153
+00:06:29,120 --> 00:06:34,199
+diverse audience um using
+
+154
+00:06:31,199 --> 00:06:34,199
+visualizations.
+
+155
+00:06:34,720 --> 00:06:38,160
+So when should you be using
+
+156
+00:06:36,000 --> 00:06:40,400
+visualization? If it's mostly about
+
+157
+00:06:38,160 --> 00:06:42,319
+connected data. So if the the topics
+
+158
+00:06:40,400 --> 00:06:45,600
+that you're discussing is where the
+
+159
+00:06:42,319 --> 00:06:47,280
+connectivity is at its core. So if if
+
+160
+00:06:45,600 --> 00:06:48,479
+it's really the patterns that you're
+
+161
+00:06:47,280 --> 00:06:50,080
+interested in or that you need to
+
+162
+00:06:48,479 --> 00:06:52,560
+understand or that your users need to
+
+163
+00:06:50,080 --> 00:06:56,880
+understand then using visualization is a
+
+164
+00:06:52,560 --> 00:06:59,599
+really good um thing. Um take for
+
+165
+00:06:56,880 --> 00:07:01,360
+example knowledge graphs. So if there's
+
+166
+00:06:59,599 --> 00:07:03,039
+if you want to understand whether there
+
+167
+00:07:01,360 --> 00:07:04,800
+are two entities whether they are linked
+
+168
+00:07:03,039 --> 00:07:07,440
+and there's no direct link between those
+
+169
+00:07:04,800 --> 00:07:11,039
+two entities but there might be multiple
+
+170
+00:07:07,440 --> 00:07:13,360
+indirect relationships in between. So
+
+171
+00:07:11,039 --> 00:07:15,440
+why are multiple hops then with with
+
+172
+00:07:13,360 --> 00:07:19,360
+visualization you can much more easily
+
+173
+00:07:15,440 --> 00:07:21,039
+communicate this fact.
+
+174
+00:07:19,360 --> 00:07:23,120
+Of course you can still use other
+
+175
+00:07:21,039 --> 00:07:25,759
+visualizations and you should for from
+
+176
+00:07:23,120 --> 00:07:28,000
+other data other types of data. So you
+
+177
+00:07:25,759 --> 00:07:30,080
+should be using tables or bar charts or
+
+178
+00:07:28,000 --> 00:07:31,680
+lists and all those things that Excel
+
+179
+00:07:30,080 --> 00:07:34,560
+provides
+
+180
+00:07:31,680 --> 00:07:37,840
+in several situations. Of course for
+
+181
+00:07:34,560 --> 00:07:39,599
+simple or low volume data, but also if
+
+182
+00:07:37,840 --> 00:07:41,840
+the data that you're showing is mostly
+
+183
+00:07:39,599 --> 00:07:45,680
+numerical data, high volume numerical
+
+184
+00:07:41,840 --> 00:07:49,840
+data or even just single precise values.
+
+185
+00:07:45,680 --> 00:07:52,639
+But even if the answers that you want to
+
+186
+00:07:49,840 --> 00:07:55,919
+convey or want to show to your users are
+
+187
+00:07:52,639 --> 00:07:58,080
+in a way a simple graph structure like a
+
+188
+00:07:55,919 --> 00:08:01,360
+really trivial or always a really really
+
+189
+00:07:58,080 --> 00:08:02,879
+trivial structure like a chain or a star
+
+190
+00:08:01,360 --> 00:08:05,440
+where there's just one element in the
+
+191
+00:08:02,879 --> 00:08:06,800
+center and many items connected to it.
+
+192
+00:08:05,440 --> 00:08:08,879
+It's probably better to use a list
+
+193
+00:08:06,800 --> 00:08:10,400
+because in a way that's just a disguised
+
+194
+00:08:08,879 --> 00:08:12,400
+list.
+
+195
+00:08:10,400 --> 00:08:16,639
+Use visualization when the complex
+
+196
+00:08:12,400 --> 00:08:16,639
+relationships appear in your data.
+
+197
+00:08:17,520 --> 00:08:23,680
+So let's take a look at um how
+
+198
+00:08:19,680 --> 00:08:25,599
+visualizations work in practice. So um
+
+199
+00:08:23,680 --> 00:08:27,360
+many of us if we create manual
+
+200
+00:08:25,599 --> 00:08:30,879
+visualizations we use the whiteboard to
+
+201
+00:08:27,360 --> 00:08:32,560
+transfer the data to a diagrams. But of
+
+202
+00:08:30,879 --> 00:08:34,399
+course we have computers nowadays and we
+
+203
+00:08:32,560 --> 00:08:36,080
+can use computers for automatic
+
+204
+00:08:34,399 --> 00:08:38,479
+visualization.
+
+205
+00:08:36,080 --> 00:08:41,279
+But computers help us to work with
+
+206
+00:08:38,479 --> 00:08:44,000
+massive amounts of of visualizations of
+
+207
+00:08:41,279 --> 00:08:45,839
+of data to create huge visualizations.
+
+208
+00:08:44,000 --> 00:08:47,519
+But I consider these pretty basic
+
+209
+00:08:45,839 --> 00:08:49,360
+visualizations.
+
+210
+00:08:47,519 --> 00:08:52,080
+What are basic visualizations? They
+
+211
+00:08:49,360 --> 00:08:55,680
+mostly consist of just simple shapes
+
+212
+00:08:52,080 --> 00:08:58,000
+like circles or rectangles and are
+
+213
+00:08:55,680 --> 00:09:01,920
+connected by by lines and they they look
+
+214
+00:08:58,000 --> 00:09:03,519
+pretty pretty much very nice and and I
+
+215
+00:09:01,920 --> 00:09:05,360
+would probably put them behind my desk
+
+216
+00:09:03,519 --> 00:09:07,279
+on my back and watch them and say, "Oh,
+
+217
+00:09:05,360 --> 00:09:09,200
+that's a nice visualization."
+
+218
+00:09:07,279 --> 00:09:11,120
+But they are not really helpful, not
+
+219
+00:09:09,200 --> 00:09:13,600
+really useful.
+
+220
+00:09:11,120 --> 00:09:16,080
+Um, and that's because of different
+
+221
+00:09:13,600 --> 00:09:17,920
+aspects of it. They mostly have these
+
+222
+00:09:16,080 --> 00:09:21,200
+pretty arbitrary layouts that really
+
+223
+00:09:17,920 --> 00:09:23,120
+don't convey much information. They show
+
+224
+00:09:21,200 --> 00:09:26,480
+or they try to show closeness between
+
+225
+00:09:23,120 --> 00:09:28,880
+elements in the graph, but they can be
+
+226
+00:09:26,480 --> 00:09:31,680
+pretty wrong about this. Consider that I
+
+227
+00:09:28,880 --> 00:09:34,959
+could just rotate this image like by 30
+
+228
+00:09:31,680 --> 00:09:37,120
+degrees or mirror it horizontally or I
+
+229
+00:09:34,959 --> 00:09:39,279
+could even like remove 30% of the edges
+
+230
+00:09:37,120 --> 00:09:41,760
+in there or nodes and you wouldn't see a
+
+231
+00:09:39,279 --> 00:09:44,240
+difference. I mean, they mostly look the
+
+232
+00:09:41,760 --> 00:09:47,440
+same. No matter whether it's a social
+
+233
+00:09:44,240 --> 00:09:50,959
+network or a website network or a bra
+
+234
+00:09:47,440 --> 00:09:53,279
+neurological brain map, whatever, they
+
+235
+00:09:50,959 --> 00:09:55,680
+always always look the same. And
+
+236
+00:09:53,279 --> 00:09:58,880
+sometimes I argue that the information
+
+237
+00:09:55,680 --> 00:10:01,920
+like on the bottom right is probably the
+
+238
+00:09:58,880 --> 00:10:03,360
+better visualization. Just showing the
+
+239
+00:10:01,920 --> 00:10:05,360
+number of nodes and the edges is
+
+240
+00:10:03,360 --> 00:10:08,480
+probably a better visualization. And
+
+241
+00:10:05,360 --> 00:10:10,320
+even more so if it's a static display,
+
+242
+00:10:08,480 --> 00:10:13,519
+great for hanging on the wall, but not
+
+243
+00:10:10,320 --> 00:10:15,360
+so useful. Let's go to the more
+
+244
+00:10:13,519 --> 00:10:17,920
+sophisticated ones. So, how can we do
+
+245
+00:10:15,360 --> 00:10:20,079
+better? How can we uh change the
+
+246
+00:10:17,920 --> 00:10:21,680
+visualization to get to make it more
+
+247
+00:10:20,079 --> 00:10:24,160
+useful?
+
+248
+00:10:21,680 --> 00:10:26,079
+Um,
+
+249
+00:10:24,160 --> 00:10:29,120
+in order to create these, we really need
+
+250
+00:10:26,079 --> 00:10:30,720
+to first understand the needs of our
+
+251
+00:10:29,120 --> 00:10:32,399
+users. What what questions are they
+
+252
+00:10:30,720 --> 00:10:34,399
+asking? What's the use case they have
+
+253
+00:10:32,399 --> 00:10:36,480
+for looking at the data? Why are they
+
+254
+00:10:34,399 --> 00:10:40,000
+looking at the data? What what do they
+
+255
+00:10:36,480 --> 00:10:42,160
+want to know? And even more so um what
+
+256
+00:10:40,000 --> 00:10:45,120
+should the answers look like? How should
+
+257
+00:10:42,160 --> 00:10:48,000
+we present the information to them in
+
+258
+00:10:45,120 --> 00:10:50,640
+the best possible way?
+
+259
+00:10:48,000 --> 00:10:52,320
+So the first advice sounds pretty simple
+
+260
+00:10:50,640 --> 00:10:56,079
+but it's actually really hard to get
+
+261
+00:10:52,320 --> 00:10:58,800
+right and thing is um you should keep
+
+262
+00:10:56,079 --> 00:11:01,760
+the visualization nice and simple and
+
+263
+00:10:58,800 --> 00:11:04,880
+small. Um,
+
+264
+00:11:01,760 --> 00:11:07,360
+so you can use techniques like filtering
+
+265
+00:11:04,880 --> 00:11:10,920
+to focus on just the information that
+
+266
+00:11:07,360 --> 00:11:10,920
+the users want
+
+267
+00:11:11,120 --> 00:11:16,399
+for this. This takes a lot of time and
+
+268
+00:11:14,560 --> 00:11:18,720
+but gets you probably the most value out
+
+269
+00:11:16,399 --> 00:11:20,240
+of it. Focus on the answer. Keep it
+
+270
+00:11:18,720 --> 00:11:22,320
+small.
+
+271
+00:11:20,240 --> 00:11:24,800
+How can you do this? Because your
+
+272
+00:11:22,320 --> 00:11:28,800
+database contains thousands of elements.
+
+273
+00:11:24,800 --> 00:11:30,880
+So and sometimes those elements are they
+
+274
+00:11:28,800 --> 00:11:33,440
+are stored in a way that it suits the
+
+275
+00:11:30,880 --> 00:11:35,839
+database well or that you can optimize
+
+276
+00:11:33,440 --> 00:11:37,519
+the queries or that in the way it's just
+
+277
+00:11:35,839 --> 00:11:39,360
+for historical reasons the way the data
+
+278
+00:11:37,519 --> 00:11:41,519
+is stored in your database. But that's
+
+279
+00:11:39,360 --> 00:11:44,480
+not the way that you want to see the
+
+280
+00:11:41,519 --> 00:11:47,040
+data uh being represented to your users.
+
+281
+00:11:44,480 --> 00:11:49,279
+So here's here's some ideas for you to
+
+282
+00:11:47,040 --> 00:11:52,560
+project your data from your database
+
+283
+00:11:49,279 --> 00:11:56,000
+into a useful visualization.
+
+284
+00:11:52,560 --> 00:11:59,120
+First example is is hierarchies. So um
+
+285
+00:11:56,000 --> 00:12:02,560
+consider the right examp uh the left
+
+286
+00:11:59,120 --> 00:12:04,880
+example on the left um where there's a
+
+287
+00:12:02,560 --> 00:12:06,480
+hierarchy depicted by edges the way that
+
+288
+00:12:04,880 --> 00:12:08,800
+it's probably stored in a database like
+
+289
+00:12:06,480 --> 00:12:10,720
+in a parent off or child off
+
+290
+00:12:08,800 --> 00:12:13,120
+relationship.
+
+291
+00:12:10,720 --> 00:12:15,680
+Um it's maybe not the best way to
+
+292
+00:12:13,120 --> 00:12:17,680
+represent this in a in a visualization.
+
+293
+00:12:15,680 --> 00:12:20,079
+much much much more intuitive for most
+
+294
+00:12:17,680 --> 00:12:22,000
+users is to put these into recursively
+
+295
+00:12:20,079 --> 00:12:24,160
+nested boxes and later on with
+
+296
+00:12:22,000 --> 00:12:26,399
+interactivity you can actually
+
+297
+00:12:24,160 --> 00:12:28,560
+intuitively expand and collapse these
+
+298
+00:12:26,399 --> 00:12:30,959
+boxes to to drill down into the
+
+299
+00:12:28,560 --> 00:12:32,800
+information. So consider mapping the
+
+300
+00:12:30,959 --> 00:12:34,480
+information from the database to the
+
+301
+00:12:32,800 --> 00:12:35,839
+diagram. It's important to understand
+
+302
+00:12:34,480 --> 00:12:37,920
+that you don't need to change your data
+
+303
+00:12:35,839 --> 00:12:39,120
+in the in the database for this. You can
+
+304
+00:12:37,920 --> 00:12:44,079
+do this on the level of the
+
+305
+00:12:39,120 --> 00:12:47,200
+visualization only. Another idea is to
+
+306
+00:12:44,079 --> 00:12:49,040
+show transitive relationships. So if if
+
+307
+00:12:47,200 --> 00:12:51,920
+you the user is only really interested
+
+308
+00:12:49,040 --> 00:12:53,920
+in the two end points of a chain, but
+
+309
+00:12:51,920 --> 00:12:56,079
+there's no immediate connection between
+
+310
+00:12:53,920 --> 00:12:59,360
+those two end points in the data set,
+
+311
+00:12:56,079 --> 00:13:01,200
+you can still just show those end points
+
+312
+00:12:59,360 --> 00:13:03,200
+and the connection in between for the
+
+313
+00:13:01,200 --> 00:13:05,680
+purpose of visual visualizing them. So
+
+314
+00:13:03,200 --> 00:13:09,920
+you don't need to add that extra edge
+
+315
+00:13:05,680 --> 00:13:12,000
+redundantly into your graph database.
+
+316
+00:13:09,920 --> 00:13:14,079
+And this the same was true for other
+
+317
+00:13:12,000 --> 00:13:16,079
+patterns. If you if you're looking for
+
+318
+00:13:14,079 --> 00:13:18,320
+certain patterns, consider only showing
+
+319
+00:13:16,079 --> 00:13:20,079
+the relevant parts of the patterns in
+
+320
+00:13:18,320 --> 00:13:22,240
+the visualization and do this via
+
+321
+00:13:20,079 --> 00:13:25,240
+projections from the database to the
+
+322
+00:13:22,240 --> 00:13:25,240
+visualization.
+
+323
+00:13:25,440 --> 00:13:30,320
+Many of you are using RDF triples or
+
+324
+00:13:27,839 --> 00:13:32,160
+label property graphs or either or and
+
+325
+00:13:30,320 --> 00:13:34,880
+they they are stored in a quite
+
+326
+00:13:32,160 --> 00:13:37,600
+different way. For example, on the top
+
+327
+00:13:34,880 --> 00:13:39,200
+uh left again we have we have a way of
+
+328
+00:13:37,600 --> 00:13:41,120
+storing information that you will find
+
+329
+00:13:39,200 --> 00:13:43,360
+it in ref triple stores mostly. So
+
+330
+00:13:41,120 --> 00:13:45,920
+there's the orange ones are the actual
+
+331
+00:13:43,360 --> 00:13:48,079
+entities and the uh the colorful ones
+
+332
+00:13:45,920 --> 00:13:52,320
+are like property nodes. So you have
+
+333
+00:13:48,079 --> 00:13:55,040
+basically have is orange is pink is
+
+334
+00:13:52,320 --> 00:13:56,800
+brown is green and so on. You could
+
+335
+00:13:55,040 --> 00:13:59,199
+represent the visualization like this,
+
+336
+00:13:56,800 --> 00:14:01,120
+but it's probably better in this case to
+
+337
+00:13:59,199 --> 00:14:03,600
+pull in those information and show it as
+
+338
+00:14:01,120 --> 00:14:06,000
+a property on the node visualization
+
+339
+00:14:03,600 --> 00:14:07,519
+itself. But you can also do it the other
+
+340
+00:14:06,000 --> 00:14:09,839
+way around. So if you have a label
+
+341
+00:14:07,519 --> 00:14:12,320
+property graph and there's a certain
+
+342
+00:14:09,839 --> 00:14:15,279
+attribute in all your data and you want
+
+343
+00:14:12,320 --> 00:14:16,720
+to like show that these are somehow
+
+344
+00:14:15,279 --> 00:14:19,279
+related because they share the same
+
+345
+00:14:16,720 --> 00:14:21,199
+attribute, introduce an artificial node
+
+346
+00:14:19,279 --> 00:14:22,959
+for the visualization and connect all
+
+347
+00:14:21,199 --> 00:14:26,480
+the nodes that have the same attribute
+
+348
+00:14:22,959 --> 00:14:30,000
+to this. uh uh attribute representation
+
+349
+00:14:26,480 --> 00:14:32,079
+node. Um the same works for edges. So
+
+350
+00:14:30,000 --> 00:14:34,720
+sometimes you have like almost fully
+
+351
+00:14:32,079 --> 00:14:36,560
+connected or in this case a bipartite
+
+352
+00:14:34,720 --> 00:14:38,480
+graph where all of the above nodes are
+
+353
+00:14:36,560 --> 00:14:41,920
+connected to all of the below nodes and
+
+354
+00:14:38,480 --> 00:14:44,639
+this for even for free nodes means you
+
+355
+00:14:41,920 --> 00:14:47,680
+have a lot of edges in your diagram.
+
+356
+00:14:44,639 --> 00:14:49,279
+Um so if they are if you don't care
+
+357
+00:14:47,680 --> 00:14:51,839
+about the different instances of these
+
+358
+00:14:49,279 --> 00:14:53,920
+edges but it's only about showing that
+
+359
+00:14:51,839 --> 00:14:57,199
+they are all connected to each other
+
+360
+00:14:53,920 --> 00:14:59,600
+consider using bundling as a technique.
+
+361
+00:14:57,199 --> 00:15:02,320
+So basically introducing a center node
+
+362
+00:14:59,600 --> 00:15:05,920
+in between to bundle the edges and thus
+
+363
+00:15:02,320 --> 00:15:07,279
+greatly unclutter your visualizations.
+
+364
+00:15:05,920 --> 00:15:09,360
+And of course all of these techniques
+
+365
+00:15:07,279 --> 00:15:11,760
+that I just showed you can combine them
+
+366
+00:15:09,360 --> 00:15:16,839
+freely and well make the best use of
+
+367
+00:15:11,760 --> 00:15:16,839
+them for your specific use case. Moving
+
+368
+00:15:18,079 --> 00:15:22,800
+on, once you have the projection from
+
+369
+00:15:20,959 --> 00:15:26,399
+your data to the structural information
+
+370
+00:15:22,800 --> 00:15:28,639
+in your diagram, you can employ layouts.
+
+371
+00:15:26,399 --> 00:15:31,279
+Automatic layouts is the the process of
+
+372
+00:15:28,639 --> 00:15:33,440
+arranging elements on your canvas in a
+
+373
+00:15:31,279 --> 00:15:35,440
+meaningful way. Not just in a way that
+
+374
+00:15:33,440 --> 00:15:36,959
+they are there and don't are overlap
+
+375
+00:15:35,440 --> 00:15:40,560
+free. That's that's a good thing to
+
+376
+00:15:36,959 --> 00:15:42,160
+start with. But try to encode relative
+
+377
+00:15:40,560 --> 00:15:44,480
+relevant information right into the
+
+378
+00:15:42,160 --> 00:15:46,399
+placement of the elements.
+
+379
+00:15:44,480 --> 00:15:49,120
+This way you can highlight certain
+
+380
+00:15:46,399 --> 00:15:51,199
+aspects in your data. things like flows
+
+381
+00:15:49,120 --> 00:15:56,480
+typically going from top to bottom or
+
+382
+00:15:51,199 --> 00:16:00,560
+left to right um or showing different uh
+
+383
+00:15:56,480 --> 00:16:03,519
+uh things like clusterings
+
+384
+00:16:00,560 --> 00:16:07,040
+and um all kinds of different aspects
+
+385
+00:16:03,519 --> 00:16:09,040
+that can be mapped to to different uh
+
+386
+00:16:07,040 --> 00:16:10,959
+sorry
+
+387
+00:16:09,040 --> 00:16:13,279
+can map to different layouts. Let's
+
+388
+00:16:10,959 --> 00:16:18,079
+let's see some examples.
+
+389
+00:16:13,279 --> 00:16:21,040
+Um, but before we get to this, first
+
+390
+00:16:18,079 --> 00:16:22,880
+let's talk about richer node designs. Of
+
+391
+00:16:21,040 --> 00:16:24,800
+course, nodes don't have to be just like
+
+392
+00:16:22,880 --> 00:16:27,519
+these boring boxes that we just saw
+
+393
+00:16:24,800 --> 00:16:29,199
+there. We can add information right in
+
+394
+00:16:27,519 --> 00:16:31,360
+the visualization that the user needs.
+
+395
+00:16:29,199 --> 00:16:32,800
+So if there's properties in your graph
+
+396
+00:16:31,360 --> 00:16:35,440
+that you want to show that are important
+
+397
+00:16:32,800 --> 00:16:37,040
+for users to see right from from the
+
+398
+00:16:35,440 --> 00:16:39,360
+beginning without having to interact
+
+399
+00:16:37,040 --> 00:16:41,360
+with the item or look the values up in a
+
+400
+00:16:39,360 --> 00:16:44,959
+in a database. Show this information
+
+401
+00:16:41,360 --> 00:16:46,880
+right in the visualization.
+
+402
+00:16:44,959 --> 00:16:50,079
+But be sure not to overload the the
+
+403
+00:16:46,880 --> 00:16:52,079
+visual uh the information. Don't produce
+
+404
+00:16:50,079 --> 00:16:53,519
+information overload. You can use
+
+405
+00:16:52,079 --> 00:16:55,839
+techniques like level of detail
+
+406
+00:16:53,519 --> 00:16:58,000
+rendering. So when you zoom out only the
+
+407
+00:16:55,839 --> 00:17:00,000
+most important information is shown and
+
+408
+00:16:58,000 --> 00:17:01,759
+once you zoom in more information gets
+
+409
+00:17:00,000 --> 00:17:03,600
+visible.
+
+410
+00:17:01,759 --> 00:17:05,360
+You can even go so far and add
+
+411
+00:17:03,600 --> 00:17:07,839
+interactivity within your note
+
+412
+00:17:05,360 --> 00:17:10,160
+visualizations. Show things like gauges
+
+413
+00:17:07,839 --> 00:17:12,559
+or progress bars or even UI elements
+
+414
+00:17:10,160 --> 00:17:15,439
+like buttons or tables if that's helpful
+
+415
+00:17:12,559 --> 00:17:18,880
+to the user right in the interface on
+
+416
+00:17:15,439 --> 00:17:21,880
+right inside the nodes or on the edges
+
+417
+00:17:18,880 --> 00:17:21,880
+even.
+
+418
+00:17:22,319 --> 00:17:28,079
+But it doesn't stop there. So you don't
+
+419
+00:17:24,799 --> 00:17:29,679
+have to focus on the nodes alone and on
+
+420
+00:17:28,079 --> 00:17:32,799
+the edges, but there's also the
+
+421
+00:17:29,679 --> 00:17:34,400
+background. The graphs are rendered onto
+
+422
+00:17:32,799 --> 00:17:38,320
+a canvas and it doesn't have to stay
+
+423
+00:17:34,400 --> 00:17:40,799
+blank. So you can use the canvas to add
+
+424
+00:17:38,320 --> 00:17:43,200
+additional information. A few obvious
+
+425
+00:17:40,799 --> 00:17:45,760
+ones you will find in here like we have
+
+426
+00:17:43,200 --> 00:17:47,760
+these these swim lanes at the bottom. So
+
+427
+00:17:45,760 --> 00:17:50,080
+if your nodes belong to different
+
+428
+00:17:47,760 --> 00:17:52,559
+categor categories, you can highlight
+
+429
+00:17:50,080 --> 00:17:55,200
+these categories by drawing some boxes
+
+430
+00:17:52,559 --> 00:17:56,640
+in the background or um it doesn't have
+
+431
+00:17:55,200 --> 00:17:59,039
+to be boxes like in the center where
+
+432
+00:17:56,640 --> 00:18:02,000
+there's just like these blobby features
+
+433
+00:17:59,039 --> 00:18:04,559
+in there. Or if if your data contains
+
+434
+00:18:02,000 --> 00:18:07,760
+geospatial information, put them on a
+
+435
+00:18:04,559 --> 00:18:10,080
+map if that's helpful to your users.
+
+436
+00:18:07,760 --> 00:18:11,520
+And if there are scalar values in there
+
+437
+00:18:10,080 --> 00:18:13,200
+that are important to for the
+
+438
+00:18:11,520 --> 00:18:15,600
+understanding, you can use things like
+
+439
+00:18:13,200 --> 00:18:18,480
+heat maps like in the top right to show
+
+440
+00:18:15,600 --> 00:18:21,480
+this information in a super convenient
+
+441
+00:18:18,480 --> 00:18:21,480
+way.
+
+442
+00:18:21,840 --> 00:18:27,120
+And last but not least, um add
+
+443
+00:18:24,240 --> 00:18:31,039
+interactivity to your apps to make
+
+444
+00:18:27,120 --> 00:18:33,360
+exploring your your diagrams enjoyable
+
+445
+00:18:31,039 --> 00:18:35,760
+and more efficient.
+
+446
+00:18:33,360 --> 00:18:39,120
+You can do things like offer search for
+
+447
+00:18:35,760 --> 00:18:43,280
+the user or dynamically filter down um
+
+448
+00:18:39,120 --> 00:18:45,520
+the view uh aggregate elements um enable
+
+449
+00:18:43,280 --> 00:18:47,440
+drilling down to so that they can
+
+450
+00:18:45,520 --> 00:18:50,400
+incrementally explore the results that
+
+451
+00:18:47,440 --> 00:18:52,880
+they see. You can use animations to
+
+452
+00:18:50,400 --> 00:18:55,360
+switch between different different
+
+453
+00:18:52,880 --> 00:18:57,520
+representations of the data or to show
+
+454
+00:18:55,360 --> 00:19:00,320
+different states of the data. So if your
+
+455
+00:18:57,520 --> 00:19:02,480
+if your graphs are basically annotated
+
+456
+00:19:00,320 --> 00:19:05,360
+with time data or or different snapshots
+
+457
+00:19:02,480 --> 00:19:07,039
+of different time stamps, you can
+
+458
+00:19:05,360 --> 00:19:11,280
+animate between them and help the user
+
+459
+00:19:07,039 --> 00:19:14,080
+understand how the graphs change.
+
+460
+00:19:11,280 --> 00:19:16,480
+So if you change the layout on the and
+
+461
+00:19:14,080 --> 00:19:19,840
+the design of the items, it really helps
+
+462
+00:19:16,480 --> 00:19:22,880
+the user to focus on different aspects.
+
+463
+00:19:19,840 --> 00:19:25,679
+You can even go so far and integrate uh
+
+464
+00:19:22,880 --> 00:19:28,080
+third party or live data sources and
+
+465
+00:19:25,679 --> 00:19:30,720
+make the diagram change live while
+
+466
+00:19:28,080 --> 00:19:33,520
+you're you're viewing it if that is one
+
+467
+00:19:30,720 --> 00:19:35,520
+of your use cases of course and and you
+
+468
+00:19:33,520 --> 00:19:38,320
+can turn it all around and even allow
+
+469
+00:19:35,520 --> 00:19:41,120
+the user to edit the data. So they can
+
+470
+00:19:38,320 --> 00:19:42,640
+interactively use the diagram to upload
+
+471
+00:19:41,120 --> 00:19:44,320
+the data, change the data in the
+
+472
+00:19:42,640 --> 00:19:47,799
+database or even create the database
+
+473
+00:19:44,320 --> 00:19:47,799
+from from scratch.
+
+474
+00:19:48,480 --> 00:19:53,280
+So um if you put all of these together,
+
+475
+00:19:51,120 --> 00:19:55,120
+we saw that this really made a big
+
+476
+00:19:53,280 --> 00:19:57,919
+impact for our customers. And just to
+
+477
+00:19:55,120 --> 00:20:01,200
+give you some examples, probably pretty
+
+478
+00:19:57,919 --> 00:20:03,200
+obvious by now to you. Um um so these
+
+479
+00:20:01,200 --> 00:20:06,240
+many of these are basically domain
+
+480
+00:20:03,200 --> 00:20:09,120
+specific knowledge graphs. Um supply
+
+481
+00:20:06,240 --> 00:20:11,360
+chain is a is a great examples. So you
+
+482
+00:20:09,120 --> 00:20:14,320
+can use this to optimize and find
+
+483
+00:20:11,360 --> 00:20:16,000
+bottlenecks or to simulate failures in
+
+484
+00:20:14,320 --> 00:20:19,679
+your supply chain or to analyze your
+
+485
+00:20:16,000 --> 00:20:21,840
+supply chain. It's super easy to to um
+
+486
+00:20:19,679 --> 00:20:24,160
+see the flow of your goods in your
+
+487
+00:20:21,840 --> 00:20:26,960
+supply in in visualizations like these.
+
+488
+00:20:24,160 --> 00:20:30,400
+And if you can uh even if your if these
+
+489
+00:20:26,960 --> 00:20:32,559
+bombs are are huge in size and there's
+
+490
+00:20:30,400 --> 00:20:35,679
+thousands of element in it that you can
+
+491
+00:20:32,559 --> 00:20:38,000
+use filtering and drill down techniques
+
+492
+00:20:35,679 --> 00:20:39,760
+to to get down to the core of the
+
+493
+00:20:38,000 --> 00:20:41,919
+problem.
+
+494
+00:20:39,760 --> 00:20:43,840
+The same works for financial works,
+
+495
+00:20:41,919 --> 00:20:46,640
+financial networks. I'm sure you heard
+
+496
+00:20:43,840 --> 00:20:48,720
+of fraud rings. I mean it's in the word
+
+497
+00:20:46,640 --> 00:20:51,360
+already. It says rings is obviously
+
+498
+00:20:48,720 --> 00:20:53,600
+something visual. So display them as as
+
+499
+00:20:51,360 --> 00:20:55,919
+rings. So if you want to identify fraud
+
+500
+00:20:53,600 --> 00:20:57,919
+patterns, you probably need some nice
+
+501
+00:20:55,919 --> 00:21:02,240
+algorithms to to find them. But showing
+
+502
+00:20:57,919 --> 00:21:04,080
+them means understanding them.
+
+503
+00:21:02,240 --> 00:21:06,799
+And obviously last example social
+
+504
+00:21:04,080 --> 00:21:08,720
+networks they can help you um
+
+505
+00:21:06,799 --> 00:21:11,679
+visualization can help you understand
+
+506
+00:21:08,720 --> 00:21:13,520
+the influence of or or better see how
+
+507
+00:21:11,679 --> 00:21:16,240
+the information flows through the social
+
+508
+00:21:13,520 --> 00:21:19,240
+networks to detect communities and so
+
+509
+00:21:16,240 --> 00:21:19,240
+on.
+
+510
+00:21:20,080 --> 00:21:24,960
+So let's take a look at some examples
+
+511
+00:21:22,799 --> 00:21:26,960
+that we built in the past some real
+
+512
+00:21:24,960 --> 00:21:29,600
+world. Those are those aren't customer
+
+513
+00:21:26,960 --> 00:21:32,240
+examples but those are tools that you
+
+514
+00:21:29,600 --> 00:21:34,640
+can use too. So, so you find them on our
+
+515
+00:21:32,240 --> 00:21:36,240
+website and you can uh those those are
+
+516
+00:21:34,640 --> 00:21:40,159
+free tools so you can just play around
+
+517
+00:21:36,240 --> 00:21:41,919
+with them and they they build on some of
+
+518
+00:21:40,159 --> 00:21:44,159
+these principles.
+
+519
+00:21:41,919 --> 00:21:47,120
+So for example, this is our u Jupyter
+
+520
+00:21:44,159 --> 00:21:49,280
+notebook widget um which allows you to
+
+521
+00:21:47,120 --> 00:21:52,159
+uh query a graph database or basically
+
+522
+00:21:49,280 --> 00:21:55,039
+any data source that has connected data
+
+523
+00:21:52,159 --> 00:21:57,200
+and then you can uh visualize the graph
+
+524
+00:21:55,039 --> 00:21:59,039
+right in your Jupyter notebooks and you
+
+525
+00:21:57,200 --> 00:22:01,200
+can apply different layouts to highlight
+
+526
+00:21:59,039 --> 00:22:04,000
+this different aspects. You can use data
+
+527
+00:22:01,200 --> 00:22:06,400
+binding to color the nodes uh to your
+
+528
+00:22:04,000 --> 00:22:08,320
+liking and bound to the data that that
+
+529
+00:22:06,400 --> 00:22:10,320
+they represent. Change the labels,
+
+530
+00:22:08,320 --> 00:22:13,360
+change the colors and thicknesses and so
+
+531
+00:22:10,320 --> 00:22:16,000
+on. And there's interactivity so you can
+
+532
+00:22:13,360 --> 00:22:18,960
+uh inspect the neighborhood
+
+533
+00:22:16,000 --> 00:22:21,280
+uh search the graph and so on. And
+
+534
+00:22:18,960 --> 00:22:23,280
+there's even the option to transform
+
+535
+00:22:21,280 --> 00:22:25,919
+your data so that you can make simple
+
+536
+00:22:23,280 --> 00:22:28,799
+transforms like introducing group nodes
+
+537
+00:22:25,919 --> 00:22:31,520
+that we have over here. Um making it
+
+538
+00:22:28,799 --> 00:22:34,799
+easier to to see groups of elements and
+
+539
+00:22:31,520 --> 00:22:38,400
+folding them away, aggregating them and
+
+540
+00:22:34,799 --> 00:22:40,400
+uh better understanding the data. Yeah.
+
+541
+00:22:38,400 --> 00:22:42,960
+One last example that also works is that
+
+542
+00:22:40,400 --> 00:22:45,440
+you can add a heat map to the to your
+
+543
+00:22:42,960 --> 00:22:49,440
+visualization and even put your data
+
+544
+00:22:45,440 --> 00:22:52,240
+onto a map. This is the Marvel Heroes in
+
+545
+00:22:49,440 --> 00:22:54,480
+London. And with in this case, we're
+
+546
+00:22:52,240 --> 00:22:56,799
+using some some cipher magic because
+
+547
+00:22:54,480 --> 00:22:58,960
+this querying a Neo Forj graph database
+
+548
+00:22:56,799 --> 00:23:01,919
+doesn't have to be, but this is one one
+
+549
+00:22:58,960 --> 00:23:04,559
+such example. we are actually uh
+
+550
+00:23:01,919 --> 00:23:07,280
+transforming the data from one form to
+
+551
+00:23:04,559 --> 00:23:09,440
+another to show a different aspect of
+
+552
+00:23:07,280 --> 00:23:12,000
+the graph in in a way that it's not
+
+553
+00:23:09,440 --> 00:23:14,799
+stored in the database. I won't go into
+
+554
+00:23:12,000 --> 00:23:17,360
+detail for this one so far. Let's go to
+
+555
+00:23:14,799 --> 00:23:19,919
+another example. This is uh from the
+
+556
+00:23:17,360 --> 00:23:23,200
+healthcare and patients data set that I
+
+557
+00:23:19,919 --> 00:23:25,679
+got from my friends at Neo Forj and this
+
+558
+00:23:23,200 --> 00:23:27,919
+is an application that we also host on
+
+559
+00:23:25,679 --> 00:23:31,440
+our website that helps you navigate your
+
+560
+00:23:27,919 --> 00:23:35,600
+Neo Forj graph database. And um what it
+
+561
+00:23:31,440 --> 00:23:38,159
+does it allows you to uh interactively
+
+562
+00:23:35,600 --> 00:23:40,799
+design your your notes and you can use
+
+563
+00:23:38,159 --> 00:23:42,720
+even genai to help you with the design.
+
+564
+00:23:40,799 --> 00:23:44,480
+So it will come up with a nice
+
+565
+00:23:42,720 --> 00:23:46,000
+presentation of the information right on
+
+566
+00:23:44,480 --> 00:23:47,840
+your notes that you can see them and you
+
+567
+00:23:46,000 --> 00:23:49,600
+don't have to manually design those
+
+568
+00:23:47,840 --> 00:23:51,760
+items
+
+569
+00:23:49,600 --> 00:23:55,760
+and it will allow you to incrementally
+
+570
+00:23:51,760 --> 00:23:59,360
+explore your data in using different
+
+571
+00:23:55,760 --> 00:24:02,799
+layouts using map visualizations and it
+
+572
+00:23:59,360 --> 00:24:05,600
+has this nifty u interactive tool that
+
+573
+00:24:02,799 --> 00:24:08,240
+I'm going to show in a second here
+
+574
+00:24:05,600 --> 00:24:10,480
+um which helps you to unclutter your
+
+575
+00:24:08,240 --> 00:24:13,120
+graphs which because typically if you of
+
+576
+00:24:10,480 --> 00:24:15,200
+geo data. Well, obviously they they
+
+577
+00:24:13,120 --> 00:24:17,120
+haven't been placed in a clever way.
+
+578
+00:24:15,200 --> 00:24:20,000
+They they just have been placed on the
+
+579
+00:24:17,120 --> 00:24:23,520
+map to to reflect the real world
+
+580
+00:24:20,000 --> 00:24:25,520
+placement. Um, so we have this this nice
+
+581
+00:24:23,520 --> 00:24:29,360
+uh tool in there that helps you
+
+582
+00:24:25,520 --> 00:24:31,840
+unclutter this information and uh see
+
+583
+00:24:29,360 --> 00:24:34,840
+the the actual items without
+
+584
+00:24:31,840 --> 00:24:34,840
+overlapping.
+
+585
+00:24:35,039 --> 00:24:40,400
+And yeah,
+
+586
+00:24:38,080 --> 00:24:45,520
+I'm quick.
+
+587
+00:24:40,400 --> 00:24:47,039
+Last example is um the uh uh another
+
+588
+00:24:45,520 --> 00:24:49,520
+example that that is actually my
+
+589
+00:24:47,039 --> 00:24:52,000
+favorite one. It shows how to navigate
+
+590
+00:24:49,520 --> 00:24:55,279
+the Marvel cinematic universe. It helps
+
+591
+00:24:52,000 --> 00:24:58,159
+you understand the movies and uh the the
+
+592
+00:24:55,279 --> 00:25:01,200
+how the the different characters in what
+
+593
+00:24:58,159 --> 00:25:03,520
+order they appear in in uh history time
+
+594
+00:25:01,200 --> 00:25:05,039
+in the Marvel Cinematic Universe. And it
+
+595
+00:25:03,520 --> 00:25:07,120
+helps you understand in what order you
+
+596
+00:25:05,039 --> 00:25:10,240
+should be watching those movies in order
+
+597
+00:25:07,120 --> 00:25:13,039
+not to spoil uh
+
+598
+00:25:10,240 --> 00:25:15,600
+the uh not in order to not to get
+
+599
+00:25:13,039 --> 00:25:19,760
+spoiled by any
+
+600
+00:25:15,600 --> 00:25:21,520
+wrong uh order of watching the movies.
+
+601
+00:25:19,760 --> 00:25:23,679
+Yeah, just a quick resolution recap
+
+602
+00:25:21,520 --> 00:25:25,760
+recap what we saw um are these three
+
+603
+00:25:23,679 --> 00:25:27,840
+tools on on the right hand side. Um they
+
+604
+00:25:25,760 --> 00:25:29,679
+are all powered by by our software
+
+605
+00:25:27,840 --> 00:25:33,679
+library. If you want to learn more, go
+
+606
+00:25:29,679 --> 00:25:37,120
+out to to our uh booth. Um I I'll skip
+
+607
+00:25:33,679 --> 00:25:39,200
+these quickly. Um so what we've seen is
+
+608
+00:25:37,120 --> 00:25:42,240
+in my humble opinion you get the best
+
+609
+00:25:39,200 --> 00:25:45,120
+visualizations if you create tailored
+
+610
+00:25:42,240 --> 00:25:47,440
+really use case specific solutions
+
+611
+00:25:45,120 --> 00:25:49,520
+because with those powerful situ uh
+
+612
+00:25:47,440 --> 00:25:53,520
+visualizations you get a more more
+
+613
+00:25:49,520 --> 00:25:55,679
+focused view on your data and with with
+
+614
+00:25:53,520 --> 00:25:57,279
+tailored items designs you can show
+
+615
+00:25:55,679 --> 00:25:58,880
+exactly the information that your users
+
+616
+00:25:57,279 --> 00:26:01,600
+require.
+
+617
+00:25:58,880 --> 00:26:03,919
+You can use meaningful layouts to encode
+
+618
+00:26:01,600 --> 00:26:07,360
+more information into the diagram
+
+619
+00:26:03,919 --> 00:26:10,240
+without really cluttering it. And with
+
+620
+00:26:07,360 --> 00:26:13,440
+great interactivity, it makes makes it
+
+621
+00:26:10,240 --> 00:26:15,360
+actually enjoyable and and feasible to
+
+622
+00:26:13,440 --> 00:26:18,360
+understand even the most complex
+
+623
+00:26:15,360 --> 00:26:18,360
+networks.
+
+624
+00:26:19,120 --> 00:26:22,880
+So now I'm ready to take your questions.
+
+625
+00:26:22,000 --> 00:26:26,440
+Thank you.
+
+626
+00:26:22,880 --> 00:26:26,440
+>> Yes. Thank you.
+
+627
+00:26:27,120 --> 00:26:30,679
+Okay. Any questions?
+
+628
+00:26:33,279 --> 00:26:41,120
+>> Yeah. Good.
+
+629
+00:26:36,640 --> 00:26:44,880
+>> Um, hi. Uh, what about edges? So when
+
+630
+00:26:41,120 --> 00:26:49,200
+you want to show edges and the amount of
+
+631
+00:26:44,880 --> 00:26:51,200
+connections relations is large and many
+
+632
+00:26:49,200 --> 00:26:53,600
+of the graphs that you showed are Doug
+
+633
+00:26:51,200 --> 00:26:55,120
+right a director and cyclic but when
+
+634
+00:26:53,600 --> 00:26:58,880
+they're not
+
+635
+00:26:55,120 --> 00:27:01,840
+>> um there is a balance between you know
+
+636
+00:26:58,880 --> 00:27:03,200
+when you want to lay out stuff in a way
+
+637
+00:27:01,840 --> 00:27:06,480
+that makes sense
+
+638
+00:27:03,200 --> 00:27:09,360
+>> or in a way that edges don't overlap and
+
+639
+00:27:06,480 --> 00:27:12,080
+you can just have edges direct or or
+
+640
+00:27:09,360 --> 00:27:15,440
+like the way you showed the chip I think
+
+641
+00:27:12,080 --> 00:27:18,559
+was to draw them around. Can you say
+
+642
+00:27:15,440 --> 00:27:20,799
+about about how to deal with with
+
+643
+00:27:18,559 --> 00:27:22,880
+overlapping edges?
+
+644
+00:27:20,799 --> 00:27:25,039
+Well, we we try hard to make our
+
+645
+00:27:22,880 --> 00:27:29,520
+algorithms in a way that they always
+
+646
+00:27:25,039 --> 00:27:32,240
+avoid overlaps. But this tends to uh
+
+647
+00:27:29,520 --> 00:27:34,320
+leave lead to very very large graphs if
+
+648
+00:27:32,240 --> 00:27:36,159
+you have lots of lots of edges. So the
+
+649
+00:27:34,320 --> 00:27:39,600
+best advice I can give you is don't show
+
+650
+00:27:36,159 --> 00:27:42,559
+them. Um make it interactive. um maybe
+
+651
+00:27:39,600 --> 00:27:44,640
+show that show a single edge over there,
+
+652
+00:27:42,559 --> 00:27:47,679
+show a number indicating the number of
+
+653
+00:27:44,640 --> 00:27:49,520
+edge edges it represents and then maybe
+
+654
+00:27:47,679 --> 00:27:53,039
+interactively show these or even show it
+
+655
+00:27:49,520 --> 00:27:55,440
+in a separate view. So um there's no
+
+656
+00:27:53,039 --> 00:27:57,520
+general good advice here, but um if you
+
+657
+00:27:55,440 --> 00:28:01,120
+try to keep it small um you're probably
+
+658
+00:27:57,520 --> 00:28:04,520
+going to be more happy.
+
+659
+00:28:01,120 --> 00:28:04,520
+Does it help?
+
+660
+00:28:07,279 --> 00:28:12,159
+Well, I can I have a question. Um, I
+
+661
+00:28:09,919 --> 00:28:14,799
+found it really fascinating and maybe we
+
+662
+00:28:12,159 --> 00:28:17,200
+can expand on that in our uh track
+
+663
+00:28:14,799 --> 00:28:19,679
+discussion tomorrow uh together with
+
+664
+00:28:17,200 --> 00:28:21,279
+everyone else from this track. Um, but I
+
+665
+00:28:19,679 --> 00:28:24,320
+was I was kind of seeing that what
+
+666
+00:28:21,279 --> 00:28:25,840
+you're doing is very similar to what I
+
+667
+00:28:24,320 --> 00:28:28,720
+was doing for the benefit of my
+
+668
+00:28:25,840 --> 00:28:30,640
+developers. So while I had an ontology,
+
+669
+00:28:28,720 --> 00:28:33,200
+I would also created an inference layer
+
+670
+00:28:30,640 --> 00:28:36,240
+that would summarize it a little bit or
+
+671
+00:28:33,200 --> 00:28:39,120
+you know kind of go across multiple hops
+
+672
+00:28:36,240 --> 00:28:41,440
+just to create a smaller version because
+
+673
+00:28:39,120 --> 00:28:43,200
+they needed it for example to serve APIs
+
+674
+00:28:41,440 --> 00:28:45,520
+to maybe serve a visualization or
+
+675
+00:28:43,200 --> 00:28:48,320
+something like that. Have you worked
+
+676
+00:28:45,520 --> 00:28:50,320
+with that that idea of you know an
+
+677
+00:28:48,320 --> 00:28:52,159
+ontology is one point of view and by
+
+678
+00:28:50,320 --> 00:28:54,559
+changing the ontology and knowing how to
+
+679
+00:28:52,159 --> 00:28:57,679
+change from one ontology to another you
+
+680
+00:28:54,559 --> 00:28:59,919
+can also um shorten and and support your
+
+681
+00:28:57,679 --> 00:29:01,679
+visualizations because maybe it's the
+
+682
+00:28:59,919 --> 00:29:03,520
+ontologist in me but I was just seeing
+
+683
+00:29:01,679 --> 00:29:04,799
+oh that's just another ontology for the
+
+684
+00:29:03,520 --> 00:29:08,480
+same data.
+
+685
+00:29:04,799 --> 00:29:11,600
+>> Exactly. Yeah. Um um uh as I as I try to
+
+686
+00:29:08,480 --> 00:29:14,000
+explain that um your data probably has a
+
+687
+00:29:11,600 --> 00:29:16,880
+like a fixed topology but for viewing
+
+688
+00:29:14,000 --> 00:29:20,880
+the data you should like try to apply
+
+689
+00:29:16,880 --> 00:29:22,640
+different ontologies on top of it and um
+
+690
+00:29:20,880 --> 00:29:24,159
+coming up with the right ontology is
+
+691
+00:29:22,640 --> 00:29:26,159
+something that probably only domain
+
+692
+00:29:24,159 --> 00:29:29,039
+expert or or the users of that data can
+
+693
+00:29:26,159 --> 00:29:30,480
+do. So it's really talking to the users
+
+694
+00:29:29,039 --> 00:29:32,799
+those who who will work with the
+
+695
+00:29:30,480 --> 00:29:34,720
+visualizations and understanding what
+
+696
+00:29:32,799 --> 00:29:38,159
+information they require and what is
+
+697
+00:29:34,720 --> 00:29:40,880
+just super. So um and this will allow
+
+698
+00:29:38,159 --> 00:29:43,200
+you to well come down with a with the
+
+699
+00:29:40,880 --> 00:29:44,960
+gist of the the the ontology that they
+
+700
+00:29:43,200 --> 00:29:47,200
+are working with. So most of time it's
+
+701
+00:29:44,960 --> 00:29:49,360
+just a subset. So but but that's the
+
+702
+00:29:47,200 --> 00:29:52,159
+beauty of it. If you once you have these
+
+703
+00:29:49,360 --> 00:29:55,600
+the ability to do these transformations
+
+704
+00:29:52,159 --> 00:29:57,679
+u from from your data into different u
+
+705
+00:29:55,600 --> 00:29:59,440
+well views on the data to to get
+
+706
+00:29:57,679 --> 00:30:01,840
+different perspectives you gain more
+
+707
+00:29:59,440 --> 00:30:03,679
+insights and that's that's the beauty of
+
+708
+00:30:01,840 --> 00:30:06,240
+>> um another thing maybe for those more
+
+709
+00:30:03,679 --> 00:30:08,240
+from the semantic web is is just basic
+
+710
+00:30:06,240 --> 00:30:09,600
+construct queries. So you're taking your
+
+711
+00:30:08,240 --> 00:30:11,919
+data and then you're creating construct
+
+712
+00:30:09,600 --> 00:30:14,320
+query to create another presentation of
+
+713
+00:30:11,919 --> 00:30:15,919
+it and it's still in its connected form.
+
+714
+00:30:14,320 --> 00:30:18,799
+And the same applies in cypher. You can
+
+715
+00:30:15,919 --> 00:30:22,399
+also create those those kind of um
+
+716
+00:30:18,799 --> 00:30:25,279
+shortcuts and so on.
+
+717
+00:30:22,399 --> 00:30:27,200
+>> Yeah. And you you can do this live
+
+718
+00:30:25,279 --> 00:30:28,640
+during just for the purpose purpose of
+
+719
+00:30:27,200 --> 00:30:31,279
+visualization. So basically create
+
+720
+00:30:28,640 --> 00:30:33,600
+throwaway data just for visualizing it.
+
+721
+00:30:31,279 --> 00:30:35,120
+Don't modify your database just for the
+
+722
+00:30:33,600 --> 00:30:35,919
+purpose of visualizing it. That's that's
+
+723
+00:30:35,120 --> 00:30:37,520
+not a good idea.
+
+724
+00:30:35,919 --> 00:30:40,080
+>> Yeah. And we have learned in this track
+
+725
+00:30:37,520 --> 00:30:41,279
+that um Bradley is not here but we've
+
+726
+00:30:40,080 --> 00:30:43,919
+learned in this track that not
+
+727
+00:30:41,279 --> 00:30:45,440
+necessarily graph isn't graph database.
+
+728
+00:30:43,919 --> 00:30:47,919
+So it can also be something that's
+
+729
+00:30:45,440 --> 00:30:50,000
+happening in a UI in a graph engine that
+
+730
+00:30:47,919 --> 00:30:52,720
+you're now saying that
+
+731
+00:30:50,000 --> 00:30:55,840
+>> um like kind of just doing those that
+
+732
+00:30:52,720 --> 00:30:56,559
+visual analysis and summarization.
+
+733
+00:30:55,840 --> 00:30:59,520
+>> Yeah,
+
+734
+00:30:56,559 --> 00:31:01,440
+>> exactly. Yeah, correct.
+
+735
+00:30:59,520 --> 00:31:04,480
+>> Any other questions? Everyone's eager to
+
+736
+00:31:01,440 --> 00:31:06,720
+go for a coffee break. Yeah. So um
+
+737
+00:31:04,480 --> 00:31:10,640
+great. Let's go on our coffee break and
+
+738
+00:31:06,720 --> 00:31:15,200
+we'll meet for the final three talks at
+
+739
+00:31:10,640 --> 00:31:18,360
+10 4. So, see you in 30 minutes.
+
+740
+00:31:15,200 --> 00:31:18,360
+>> Thank you.
+
