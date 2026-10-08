@@ -151,7 +151,7 @@ def format_rows(columns: list[str], rows: list[list]) -> str:
     parts = []
     for row in rows:
         pairs = " | ".join(
-            f"{col}: {val}" for col, val in zip(columns, row) if val is not None
+            f"{col}: {val}" for col, val in zip(columns, row, strict=True) if val is not None
         )
         parts.append(pairs)
     return "\n".join(parts)
@@ -240,7 +240,7 @@ class GraphRAG:
         columns = list(response.get_column_names())  # type: ignore
         out = []
         while response.has_next():  # type: ignore
-            out.append(dict(zip(columns, response.get_next())))  # type: ignore
+            out.append(dict(zip(columns, response.get_next(), strict=True)))  # type: ignore
         return out
 
     def resolve_sources(self, columns: list[str], rows: list[list], cypher: str) -> list[dict]:
@@ -372,7 +372,7 @@ class GraphRAG:
             result["cypher"] = cypher.query
 
             columns, rows = self.execute_query(cypher.query)
-            result["results"] = [dict(zip(columns, _json_safe(row))) for row in rows[:RESULTS_CAP]]
+            result["results"] = [dict(zip(columns, _json_safe(row), strict=True)) for row in rows[:RESULTS_CAP]]
             result["row_count"] = len(rows)
 
             sources = self.resolve_sources(columns, rows, cypher.query)

@@ -10,7 +10,8 @@ import importlib
 import pytest
 from fastapi.testclient import TestClient
 
-from ingest import config, db, reconcile as R
+from ingest import config, db
+from ingest import reconcile as R
 
 # What htmx sends with every request; the panel refuses a write without it.
 HTMX = {"HX-Request": "true"}

@@ -59,7 +59,7 @@ def test_a_batch_rebuilds_the_graph_once(state, stub_stages, monkeypatch):
 
     # Drive the worker loop by hand: the queue is loaded, then drained the way
     # the background thread drains it, without starting a thread.
-    for run_id, video_id in zip(run_ids, ids):
+    for run_id, video_id in zip(run_ids, ids, strict=True):
         runner._queue.put((run_id, video_id))
     while not runner._queue.empty():
         item = runner._queue.get()
@@ -91,7 +91,7 @@ def test_a_rebuild_request_survives_the_batch_that_deferred_it(state, stub_stage
     at the same time can leave the graph a rebuild behind."""
     ids = ["aaaaaaaaaaa", "bbbbbbbbbbb"]
     run_ids = [db.start_run(v, STAGE_ORDER, status="queued") for v in ids]
-    for run_id, video_id in zip(run_ids, ids):
+    for run_id, video_id in zip(run_ids, ids, strict=True):
         runner._queue.put((run_id, video_id))
     # A curation save lands behind them.
     runner._queue.put(None)

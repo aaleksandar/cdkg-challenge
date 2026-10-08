@@ -25,9 +25,9 @@ os.environ["BAML_LOG"] = "WARN"
 from google import genai
 from google.genai import errors as genai_errors
 from google.genai import types as genai_types
+from rag import GraphRAG
 
 import config
-from rag import GraphRAG
 
 QA_CSV = config.QA_CSV
 

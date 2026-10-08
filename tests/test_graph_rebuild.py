@@ -1,6 +1,5 @@
 """The live graph must survive a failed rebuild."""
 
-import shutil
 
 import pytest
 
@@ -20,34 +19,40 @@ def test_counts_are_readable():
     assert counts["tagged_talks"] > 0
 
 
-@needs_graph
-def test_rebuild_is_idempotent():
-    before = graph.graph_counts(config.GRAPH_DB_PATH)
-    result = graph.rebuild_graph()
-    assert result.ok, result.message
-    assert graph.graph_counts(config.GRAPH_DB_PATH) == before
+@pytest.fixture
+def tmp_graph(monkeypatch, tmp_path):
+    """A live graph path of the test's own. Rebuilding the real one swapped the
+    developer's graph mid-run, and inside the container it would be the site's."""
+    path = tmp_path / "cdl_db.kuzu"
+    monkeypatch.setattr(config, "GRAPH_DB_PATH", path)
+    return path
 
 
-def test_a_failing_script_leaves_the_live_graph_untouched(monkeypatch):
+def test_rebuild_is_idempotent(tmp_graph):
+    """Two builds from the committed CSV and entities.json are the same graph."""
+    first = graph.rebuild_graph()
+    assert first.ok, first.message
+    before = graph.graph_counts(tmp_graph)
+    second = graph.rebuild_graph()
+    assert second.ok, second.message
+    assert graph.graph_counts(tmp_graph) == before
+
+
+def test_a_failing_script_leaves_the_live_graph_untouched(monkeypatch, tmp_graph):
     """A build that errors must not swap, and must not leave scratch behind."""
-    monkeypatch.setattr(graph, "_run_script", lambda name, db: (False, f"{name} exploded"))
-    before = (
-        graph.graph_counts(config.GRAPH_DB_PATH)
-        if config.GRAPH_DB_PATH.exists() and graph.is_readable(config.GRAPH_DB_PATH)
-        else None
-    )
+    tmp_graph.write_bytes(b"the live graph")
+    monkeypatch.setattr(graph, "_run_script", lambda name, db, *args: (False, f"{name} exploded"))
 
     result = graph.rebuild_graph()
 
     assert not result.ok and "exploded" in result.message
-    assert not config.GRAPH_DB_PATH.with_suffix(".build").exists()
-    if before is not None:
-        assert graph.graph_counts(config.GRAPH_DB_PATH) == before
+    assert not tmp_graph.with_suffix(".build").exists()
+    assert tmp_graph.read_bytes() == b"the live graph"
 
 
-def test_an_empty_build_is_refused(monkeypatch, tmp_path):
+def test_an_empty_build_is_refused(monkeypatch, tmp_graph):
     """Swapping in an empty graph would silently break every site query."""
-    monkeypatch.setattr(graph, "_run_script", lambda name, db: (True, ""))
+    monkeypatch.setattr(graph, "_run_script", lambda name, db, *args: (True, ""))
     monkeypatch.setattr(
         graph, "graph_counts",
         lambda db: {"Speaker": 0, "Talk": 0, "Event": 0, "Category": 0,

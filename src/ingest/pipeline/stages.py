@@ -17,9 +17,8 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .. import config
+from .. import config, spend
 from ..files import write_atomic
-from .. import spend
 from ..model import tag_model
 from ..sources import parser, speaker_llm, supadata, youtube
 

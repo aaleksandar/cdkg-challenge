@@ -8,7 +8,8 @@ build artefact.
 
 import pytest
 
-from ingest import config, db, reconcile as R
+from ingest import config, db
+from ingest import reconcile as R
 from ingest.pipeline import graph
 
 # read_graph reports a file this engine cannot open as empty, which would pass
@@ -172,10 +173,10 @@ def test_a_talk_without_a_description_still_becomes_a_node():
     Talk while its speaker and event relationships survived — the COPY then fails
     with "Unable to find primary key value". Ingested talks have no description,
     so this is the ordinary case rather than an edge case."""
-    import polars as pl
-
     # The script imports its sibling `config` module, so it has to be importable.
     import sys
+
+    import polars as pl
     if str(config.KUZU_DIR) not in sys.path:
         sys.path.insert(0, str(config.KUZU_DIR))
 
@@ -247,10 +248,11 @@ def test_two_talks_may_share_a_title():
     conn.execute("CREATE NODE TABLE Speaker (name STRING, PRIMARY KEY (name))")
     conn.execute("CREATE REL TABLE GIVES_TALK (FROM Speaker TO Talk)")
 
-    talks = pl.DataFrame([{"talk_id": "t-one", "title": "Opening Keynote"},
+    # Read by name: COPY Talk FROM talks finds the dataframe in this frame.
+    talks = pl.DataFrame([{"talk_id": "t-one", "title": "Opening Keynote"},  # noqa: F841
                           {"talk_id": "t-two", "title": "Opening Keynote"}])
-    speakers = pl.DataFrame([{"name": "Alice"}, {"name": "Bob"}])
-    edges = pl.DataFrame([{"from": "Alice", "to": "t-one"},
+    speakers = pl.DataFrame([{"name": "Alice"}, {"name": "Bob"}])  # noqa: F841
+    edges = pl.DataFrame([{"from": "Alice", "to": "t-one"},  # noqa: F841
                           {"from": "Bob", "to": "t-two"}])
     conn.execute("COPY Talk FROM talks")
     conn.execute("COPY Speaker FROM speakers")

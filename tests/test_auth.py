@@ -4,7 +4,8 @@ that a page on another site could make with the admin's cached credentials."""
 import pytest
 from fastapi.testclient import TestClient
 
-from ingest import config, db, reconcile as R
+from ingest import config, db
+from ingest import reconcile as R
 from ingest.main import app
 
 HTMX = {"HX-Request": "true"}

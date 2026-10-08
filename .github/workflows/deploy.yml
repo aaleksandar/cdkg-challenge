@@ -23,6 +23,7 @@ jobs:
           cache-dependency-glob: uv.lock
       - run: uv python install
       - run: uv sync --frozen
+      - run: uv run ruff check src tests
       - run: uv run pytest -q
 
   deploy:

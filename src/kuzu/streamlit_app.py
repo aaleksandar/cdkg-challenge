@@ -1,9 +1,9 @@
 from pathlib import Path
 
 import streamlit as st
+from rag import GraphRAG
 
 import config
-from rag import GraphRAG
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
 st.title("Graph RAG using Ladybug")

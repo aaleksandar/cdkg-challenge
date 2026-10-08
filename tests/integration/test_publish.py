@@ -10,8 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from ingest import config, db, gitops
-from ingest.pipeline import runner
+from ingest import config, gitops
 
 from .conftest import detail, stage
 

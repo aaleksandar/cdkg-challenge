@@ -24,7 +24,8 @@ def _quote(text: str, start: int, end: int) -> dict:
     """The matched span with a little of its surroundings, on one line."""
     lead = text[max(0, start - _CONTEXT):start]
     tail = text[end:end + _CONTEXT]
-    clean = lambda part: " ".join(part.split())
+    def clean(part):
+        return " ".join(part.split())
     return {
         "before": ("…" if start - _CONTEXT > 0 else "") + clean(lead),
         "match": clean(text[start:end]),

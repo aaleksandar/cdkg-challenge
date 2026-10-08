@@ -10,7 +10,8 @@ import html
 import pytest
 from fastapi.testclient import TestClient
 
-from ingest import config, db, reconcile as R
+from ingest import config, db
+from ingest import reconcile as R
 from ingest.main import app
 
 # What htmx sends with every request; the panel refuses a write without it.
@@ -1340,7 +1341,8 @@ def test_the_sheet_says_how_many_rows_it_is_showing(client, monkeypatch):
     """Updated by every rows response: the box, the search and the tabs."""
     short = R.TalkState(sources={"youtube": "bbbbbbbbbbb"}, title="Teaser", duration=42)
     monkeypatch.setattr(R, "reconcile", _only(READY, short))
-    shown = lambda url: " ".join(client.get(url).text.split())
+    def shown(url):
+        return " ".join(client.get(url).text.split())
     assert "Showing <strong>1</strong> of 2" in shown("/rows?lane=all")
     assert "Showing <strong>2</strong> of 2" in shown("/rows?lane=all&all=1")
     assert "Showing <strong>0</strong> of 2" in shown("/rows?lane=all&q=nothing+like+it")

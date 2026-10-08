@@ -9,11 +9,11 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from markupsafe import Markup, escape
 
-from . import config, db, reconcile as R
+from . import config, db, spend
+from . import reconcile as R
 from .files import write_atomic
-from . import spend
-from .sources import youtube
 from .model import api_key_hint, tag_model
+from .sources import youtube
 
 router = APIRouter()
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
@@ -692,7 +692,8 @@ async def upload_transcript(request: Request, video_id: str, captions: UploadFil
     """
     from .pipeline import stages
     from .pipeline.runner import queue_videos
-    from .sources import captions as caps, parser
+    from .sources import captions as caps
+    from .sources import parser
 
     def refuse(reason: str):
         # 200 with a retarget, not a 4xx: htmx does not swap error responses,
@@ -801,7 +802,6 @@ async def curate(request: Request, key: str):
     Title, the File path or the Video link that the joins depend on.
     """
     from .pipeline.csv_writer import update_row
-
     from .pipeline.runner import request_rebuild
 
     submitted = await request.form()
@@ -868,7 +868,6 @@ def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> d
     from . import gitops
     from .pipeline.runner import last_rebuild, queue_depth
     from .scheduler import is_polling
-
     from .sources import heysummit
 
     states = R.reconcile()

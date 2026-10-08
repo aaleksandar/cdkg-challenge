@@ -14,7 +14,6 @@ import pytest
 
 from ingest import config, gitops
 
-
 # --- Unit ---------------------------------------------------------------------
 
 def test_publishing_requires_credentials(monkeypatch):
@@ -284,7 +283,7 @@ def test_rows_appended_on_both_sides_are_merged_by_talk_id(repos):
 
 
 def test_a_row_edited_on_github_wins_over_the_server_s_copy(repos):
-    server, origin, curator = repos["server"], repos["origin"], repos["curator"]
+    server, curator = repos["server"], repos["curator"]
     # The curator fixes the speaker of the existing row on GitHub …
     (curator / CSV).write_text((curator / CSV).read_text().replace("Old talk,Ada", "Old talk,Ada Lovelace"))
     _run(curator, "add", "-A"); _run(curator, "commit", "-q", "-m", "Curate"); _run(curator, "push", "-q", "origin", "main")

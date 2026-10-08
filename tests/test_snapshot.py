@@ -102,7 +102,7 @@ def test_only_a_stamp_is_a_snapshot_name(name):
 
 def test_a_missing_graph_fails_cleanly_and_leaves_no_debris(monkeypatch, tmp_path):
     monkeypatch.setattr(config, "GRAPH_DB_PATH", tmp_path / "nowhere.kuzu")
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError):
         snapshot.create_snapshot()
     assert snapshot.list_snapshots() == []
     assert not any(p.is_dir() for p in config.SNAPSHOT_DIR.iterdir())

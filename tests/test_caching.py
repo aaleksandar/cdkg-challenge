@@ -7,7 +7,8 @@ import os
 import pytest
 from fastapi.testclient import TestClient
 
-from ingest import config, db, reconcile as R
+from ingest import config, db
+from ingest import reconcile as R
 from ingest.files import write_atomic
 from ingest.main import app
 

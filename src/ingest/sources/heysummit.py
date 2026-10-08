@@ -29,9 +29,8 @@ from datetime import datetime
 
 import httpx
 
-from .. import config
+from .. import config, reconcile
 from ..files import write_atomic
-from .. import reconcile
 from ..pipeline import csv_writer
 from . import evidence, matching, parser
 
@@ -448,7 +447,7 @@ def seed(csv_path=None) -> dict:
         new_rows.append(row)
 
     talk_ids = csv_writer.append_rows(new_rows, csv_path) if new_rows else []
-    seeded = {talk_id: row["HeySummit"] for talk_id, row in zip(talk_ids, new_rows)}
+    seeded = {talk_id: row["HeySummit"] for talk_id, row in zip(talk_ids, new_rows, strict=True)}
     return {**joined, "seeded": len(new_rows), "seeded_talks": seeded,
             "linked_videos": linked}
 

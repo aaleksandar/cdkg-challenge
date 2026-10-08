@@ -4,7 +4,6 @@ httpx is doubled at the transport: each test says what the API answers, and the
 module is checked for what it sent and what it made of the reply.
 """
 
-import json
 
 import httpx
 import pytest

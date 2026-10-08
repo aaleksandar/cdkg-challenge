@@ -54,8 +54,8 @@ def vtt_to_srt(text: str) -> str:
         for index, line in enumerate(lines[:2]):
             match = _CUE_LINE.match(line)
             if match:
-                payload = [_INLINE_TAG.sub("", l).strip() for l in lines[index + 1:]]
-                payload = [l for l in payload if l]
+                payload = [_INLINE_TAG.sub("", cue).strip() for cue in lines[index + 1:]]
+                payload = [cue for cue in payload if cue]
                 if payload:
                     cues.append((_srt_stamp(match.group(1)), _srt_stamp(match.group(2)), payload))
                 break

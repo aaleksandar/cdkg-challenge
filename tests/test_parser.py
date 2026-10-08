@@ -10,7 +10,6 @@ import pytest
 
 from ingest.sources import parser
 
-
 # --- Event recognition -------------------------------------------------------
 
 @pytest.mark.parametrize(

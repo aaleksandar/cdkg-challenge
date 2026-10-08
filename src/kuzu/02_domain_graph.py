@@ -5,7 +5,6 @@ import polars as pl
 
 import config
 
-
 OPTIONAL_COLS = ["Date", "Type", "Category"]
 
 
