@@ -1,0 +1,260 @@
+1
+00:00:01,680 --> 00:00:07,279
+Hello everyone, my name is Fangji. I am
+
+2
+00:00:04,480 --> 00:00:10,800
+a senior ngraph engineer working at the
+
+3
+00:00:07,279 --> 00:00:12,719
+campmini Germany and in the last five
+
+4
+00:00:10,800 --> 00:00:15,759
+over five years I have been working on
+
+5
+00:00:12,719 --> 00:00:18,640
+both research and industry applications
+
+6
+00:00:15,759 --> 00:00:20,720
+of semantic web technologies and
+
+7
+00:00:18,640 --> 00:00:24,640
+currently I'm working in the area of
+
+8
+00:00:20,720 --> 00:00:27,199
+clinical trial and life science.
+
+9
+00:00:24,640 --> 00:00:30,640
+So let's talk about the problem we are
+
+10
+00:00:27,199 --> 00:00:32,960
+facing now. um clinical trial protocol
+
+11
+00:00:30,640 --> 00:00:35,440
+contains most of the some of the most
+
+12
+00:00:32,960 --> 00:00:38,960
+important information in drug
+
+13
+00:00:35,440 --> 00:00:41,120
+development. For example, it defines um
+
+14
+00:00:38,960 --> 00:00:44,640
+we who can participate in a study for
+
+15
+00:00:41,120 --> 00:00:47,280
+example and um what is the schedule of
+
+16
+00:00:44,640 --> 00:00:50,559
+activities, what evidence are generated
+
+17
+00:00:47,280 --> 00:00:53,520
+in the end and through this process
+
+18
+00:00:50,559 --> 00:00:55,760
+different standards were applied and to
+
+19
+00:00:53,520 --> 00:00:58,960
+make information consistent and
+
+20
+00:00:55,760 --> 00:01:01,359
+reusable. Um however these uh standards
+
+21
+00:00:58,960 --> 00:01:04,879
+are often applied in different systems
+
+22
+00:01:01,359 --> 00:01:08,400
+at different stages and each of them
+
+23
+00:01:04,879 --> 00:01:10,560
+builds own view of the study design and
+
+24
+00:01:08,400 --> 00:01:14,799
+making everything connected together is
+
+25
+00:01:10,560 --> 00:01:18,080
+currently um the human work and this is
+
+26
+00:01:14,799 --> 00:01:20,880
+hard to be reused again. So how we solve
+
+27
+00:01:18,080 --> 00:01:23,040
+this problem with our ontology based and
+
+28
+00:01:20,880 --> 00:01:25,439
+large graph based approach. I will
+
+29
+00:01:23,040 --> 00:01:27,040
+handle this to my uh colleague Misha and
+
+30
+00:01:25,439 --> 00:01:30,320
+he will give a more detailed
+
+31
+00:01:27,040 --> 00:01:32,240
+introduction of our approach.
+
+32
+00:01:30,320 --> 00:01:35,200
+>> That question is exactly where we
+
+33
+00:01:32,240 --> 00:01:37,040
+started. Hi, I'm Michael and I'm a
+
+34
+00:01:35,200 --> 00:01:39,920
+senior knowledge graph engineer at
+
+35
+00:01:37,040 --> 00:01:41,680
+Capgeemini. Over the last five years,
+
+36
+00:01:39,920 --> 00:01:43,280
+I've been designing and building
+
+37
+00:01:41,680 --> 00:01:45,200
+enterprise knowledge graphs across
+
+38
+00:01:43,280 --> 00:01:46,960
+different industries. I also have a
+
+39
+00:01:45,200 --> 00:01:48,799
+strong research background and have
+
+40
+00:01:46,960 --> 00:01:52,720
+published at the leading semantic web
+
+41
+00:01:48,799 --> 00:01:54,240
+conferences such as ISWC, ESWC or
+
+42
+00:01:52,720 --> 00:01:56,799
+semantics.
+
+43
+00:01:54,240 --> 00:01:58,960
+My part in this solution here was to
+
+44
+00:01:56,799 --> 00:02:01,840
+make sure that the knowledge graph
+
+45
+00:01:58,960 --> 00:02:04,880
+answers real questions and is aligned
+
+46
+00:02:01,840 --> 00:02:07,280
+with real information needs. Here's an
+
+47
+00:02:04,880 --> 00:02:09,599
+example of such a question. How did
+
+48
+00:02:07,280 --> 00:02:11,760
+protocol amendments affect the schedule
+
+49
+00:02:09,599 --> 00:02:14,959
+of activities? We collected those
+
+50
+00:02:11,760 --> 00:02:17,200
+questions before modeling anything. The
+
+51
+00:02:14,959 --> 00:02:20,640
+talk follows a single question end to
+
+52
+00:02:17,200 --> 00:02:23,040
+end covering extraction, terminology
+
+53
+00:02:20,640 --> 00:02:25,200
+resolution, core standard alignment,
+
+54
+00:02:23,040 --> 00:02:27,920
+reconciliation, graph ingestion,
+
+55
+00:02:25,200 --> 00:02:29,840
+provenence and expert review. We
+
+56
+00:02:27,920 --> 00:02:32,239
+deployed our solution in an enterprise
+
+57
+00:02:29,840 --> 00:02:34,239
+pharmaceutical environment and evaluated
+
+58
+00:02:32,239 --> 00:02:36,959
+it on real protocol content and with
+
+59
+00:02:34,239 --> 00:02:40,239
+real users. People get answers they can
+
+60
+00:02:36,959 --> 00:02:43,440
+trace and agents get structure they can
+
+61
+00:02:40,239 --> 00:02:46,239
+traverse. Getting there was not
+
+62
+00:02:43,440 --> 00:02:48,400
+straightforward and we will be glad to
+
+63
+00:02:46,239 --> 00:02:50,480
+walk connected data London through both
+
+64
+00:02:48,400 --> 00:02:52,640
+half of that story. Thank you for
+
+65
+00:02:50,480 --> 00:02:52,640
+listening.
+

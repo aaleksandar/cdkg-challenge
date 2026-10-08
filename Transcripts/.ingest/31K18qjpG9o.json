@@ -1,0 +1,10 @@
+{
+  "id": "31K18qjpG9o",
+  "title": "When the LLM Wiki Meets Linked Data: Local Agent Memory That Scales",
+  "description": "Tony Seale’s starting point is the pattern Andrej Karpathy calls the \"LLM wiki\": a folder of markdown notes that an agent can read and write. AI builders love it for its simplicity, but it struggles at enterprise scale because notes capture what happened without capturing what it means, and the agent has to rebuild that meaning every time.\n\nTony's answer borrows from the way JSON-LD brought machine-readable meaning to the web. Treat the YAML front matter of each note as linked data against a shared context, and a folder of markdown becomes a knowledge graph that people can still read and edit as normal.\n\nIn this session, he will:\ndemonstrate the approach live on a single markdown note\nintroduce the open Vault-LD specification\nshare what a year of running an AI-native business this way has taught him, including why every class in an ontology has a cost\n\nA session for anyone building agents who have hit the limits of file-based memory, and for ontologists working out where their skills fit in agentic AI.\n\n🎤 Tony Seale, Founder, The Knowledge Graph Guys\n 📅 12 November 2026, 11:35 AM - 12:05 PM, Edges Track (Salisbury Suite)\n 📍 Leonardo Royal Hotel London Tower Bridge\n\n⭐ See the session and book your pass: https://sbee.link/8dkhjpaxvm \n\n#CDL26 #KnowledgeGraphs #AgentMemory #Ontology #LinkedData #JSONLD",
+  "duration": null,
+  "upload_date": "20261006",
+  "timestamp": null,
+  "url": "https://www.youtube.com/watch?v=31K18qjpG9o",
+  "channel": "Connected Data"
+}

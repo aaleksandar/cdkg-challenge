@@ -1,0 +1,252 @@
+1
+00:00:00,719 --> 00:00:06,080
+Welcome organizers of connected data
+
+2
+00:00:02,800 --> 00:00:07,759
+London. I'm Joe Hilar, COO and one of
+
+3
+00:00:06,080 --> 00:00:09,120
+the co-founders of Enterprise Knowledge
+
+4
+00:00:07,759 --> 00:00:12,240
+and with me is
+
+5
+00:00:09,120 --> 00:00:14,000
+>> Bonoan, director of growth at EK.
+
+6
+00:00:12,240 --> 00:00:16,560
+>> As part of the presentation we'd like to
+
+7
+00:00:14,000 --> 00:00:19,920
+do at your summit, we are going to
+
+8
+00:00:16,560 --> 00:00:22,640
+present on the semantic layer. Back in
+
+9
+00:00:19,920 --> 00:00:26,000
+March of 2026, Gardner announced that
+
+10
+00:00:22,640 --> 00:00:28,720
+semantic layer was critical table stakes
+
+11
+00:00:26,000 --> 00:00:31,039
+for implementing AI in an organization.
+
+12
+00:00:28,720 --> 00:00:32,800
+Two months later, we published one of
+
+13
+00:00:31,039 --> 00:00:36,000
+the definitive books on the semantic
+
+14
+00:00:32,800 --> 00:00:38,079
+layer, bridging knowledge, data, and AI
+
+15
+00:00:36,000 --> 00:00:40,079
+for the semantic layer. As part of this
+
+16
+00:00:38,079 --> 00:00:43,120
+presentation, we're going to actually
+
+17
+00:00:40,079 --> 00:00:45,840
+explain what the semantic layer is, why
+
+18
+00:00:43,120 --> 00:00:48,079
+it's so important and critical for
+
+19
+00:00:45,840 --> 00:00:51,120
+making AI work and actually connecting
+
+20
+00:00:48,079 --> 00:00:52,879
+data across the enterprise and then talk
+
+21
+00:00:51,120 --> 00:00:54,719
+about how it's done including some of
+
+22
+00:00:52,879 --> 00:00:56,640
+the key components. Right, Benoa?
+
+23
+00:00:54,719 --> 00:00:58,719
+>> Yes. uh what we've seen in the semantic
+
+24
+00:00:56,640 --> 00:01:00,399
+layer is everyone is talking about this.
+
+25
+00:00:58,719 --> 00:01:02,559
+Some even think that's a product. We
+
+26
+00:01:00,399 --> 00:01:04,720
+have a totally different approach at EK.
+
+27
+00:01:02,559 --> 00:01:06,240
+We think it's actually more a framework
+
+28
+00:01:04,720 --> 00:01:09,040
+with different components to it that
+
+29
+00:01:06,240 --> 00:01:11,119
+would help organization to manage their
+
+30
+00:01:09,040 --> 00:01:13,680
+knowledge but also connecting it to
+
+31
+00:01:11,119 --> 00:01:16,479
+systems but also to people. Some of the
+
+32
+00:01:13,680 --> 00:01:19,439
+components uh are business glossery,
+
+33
+00:01:16,479 --> 00:01:22,400
+taxonomy, ontology, knowledge assets
+
+34
+00:01:19,439 --> 00:01:24,560
+which is a new concept that just really
+
+35
+00:01:22,400 --> 00:01:26,799
+remove the boundaries between structured
+
+36
+00:01:24,560 --> 00:01:29,759
+unstructured data. Think about all the
+
+37
+00:01:26,799 --> 00:01:31,600
+information that an organization has. um
+
+38
+00:01:29,759 --> 00:01:33,680
+as well as obviously a knowledge graph
+
+39
+00:01:31,600 --> 00:01:35,439
+that is bringing all these components to
+
+40
+00:01:33,680 --> 00:01:38,479
+life and that would allow uh an
+
+41
+00:01:35,439 --> 00:01:40,400
+organization to really create a web of
+
+42
+00:01:38,479 --> 00:01:42,720
+knowledge and information that people
+
+43
+00:01:40,400 --> 00:01:45,280
+and system can use on the day-to-day
+
+44
+00:01:42,720 --> 00:01:47,600
+operations. And more than just talking
+
+45
+00:01:45,280 --> 00:01:50,000
+about this concept in a real theoretical
+
+46
+00:01:47,600 --> 00:01:52,799
+fashion, we're also going to come with
+
+47
+00:01:50,000 --> 00:01:55,520
+actual real world success stories in top
+
+48
+00:01:52,799 --> 00:01:57,520
+tier organization global service uh
+
+49
+00:01:55,520 --> 00:01:59,520
+global financial service firm. We're
+
+50
+00:01:57,520 --> 00:02:03,200
+going to come with a story about global
+
+51
+00:01:59,520 --> 00:02:05,520
+retailer or um also of um investment
+
+52
+00:02:03,200 --> 00:02:07,119
+funds that have used this framework to
+
+53
+00:02:05,520 --> 00:02:08,399
+really boost their operation on a daily
+
+54
+00:02:07,119 --> 00:02:11,120
+basis.
+
+55
+00:02:08,399 --> 00:02:12,640
+>> Great. And at the end of this,
+
+56
+00:02:11,120 --> 00:02:14,160
+the people attending the conference
+
+57
+00:02:12,640 --> 00:02:17,120
+should be able to understand what the
+
+58
+00:02:14,160 --> 00:02:20,239
+semantic layer is, why it's critically
+
+59
+00:02:17,120 --> 00:02:22,080
+important to get the job done, and how
+
+60
+00:02:20,239 --> 00:02:24,160
+it can be used in their environment so
+
+61
+00:02:22,080 --> 00:02:27,040
+that they are better equipped to help
+
+62
+00:02:24,160 --> 00:02:29,440
+connect data in their organization.
+
+63
+00:02:27,040 --> 00:02:29,440
+Thank you.
+

@@ -1,0 +1,244 @@
+1
+00:00:04,320 --> 00:00:08,760
+Let's talk about data modeling.
+
+2
+00:00:07,240 --> 00:00:11,520
+All right.
+
+3
+00:00:08,760 --> 00:00:11,520
+So um
+
+4
+00:00:11,680 --> 00:00:15,480
+we have started to explore this in the
+
+5
+00:00:14,000 --> 00:00:18,000
+conversations we've already had this
+
+6
+00:00:15,480 --> 00:00:18,600
+morning. Um which is
+
+7
+00:00:18,000 --> 00:00:21,160
+uh
+
+8
+00:00:18,600 --> 00:00:24,640
+there is no data model
+
+9
+00:00:21,160 --> 00:00:25,640
+within Neo4j until you create data in
+
+10
+00:00:24,640 --> 00:00:26,880
+it.
+
+11
+00:00:25,640 --> 00:00:29,680
+Yeah.
+
+12
+00:00:26,880 --> 00:00:32,360
+You don't have to create
+
+13
+00:00:29,680 --> 00:00:34,440
+a define a table structure
+
+14
+00:00:32,360 --> 00:00:36,600
+before you put a thing in it.
+
+15
+00:00:34,440 --> 00:00:38,840
+Yeah. You don't have to create a
+
+16
+00:00:36,600 --> 00:00:40,440
+structure of what a node looks like or a
+
+17
+00:00:38,840 --> 00:00:43,040
+structure of what a relationship looks
+
+18
+00:00:40,440 --> 00:00:45,640
+like before you create them. There is no
+
+19
+00:00:43,040 --> 00:00:47,440
+data model until you create the data in
+
+20
+00:00:45,640 --> 00:00:48,600
+the graph. Right?
+
+21
+00:00:47,440 --> 00:00:52,120
+So um
+
+22
+00:00:48,600 --> 00:00:53,440
+the the the term is schema-optional.
+
+23
+00:00:52,120 --> 00:00:54,200
+Yeah.
+
+24
+00:00:53,440 --> 00:00:56,160
+Um
+
+25
+00:00:54,200 --> 00:00:57,720
+you can create
+
+26
+00:00:56,160 --> 00:00:59,560
+any data
+
+27
+00:00:57,720 --> 00:01:02,720
+with any labels, with any properties,
+
+28
+00:00:59,560 --> 00:01:05,519
+with any relationships that you want.
+
+29
+00:01:02,720 --> 00:01:06,960
+And unless you constrain it,
+
+30
+00:01:05,519 --> 00:01:08,000
+you can do whatever.
+
+31
+00:01:06,960 --> 00:01:09,280
+Right?
+
+32
+00:01:08,000 --> 00:01:11,640
+Um
+
+33
+00:01:09,280 --> 00:01:14,480
+constraints are really useful,
+
+34
+00:01:11,640 --> 00:01:17,040
+particularly for things like IDs. So,
+
+35
+00:01:14,480 --> 00:01:20,240
+you know, if there is a node with the
+
+36
+00:01:17,040 --> 00:01:22,480
+label customer, it must have a customer
+
+37
+00:01:20,240 --> 00:01:24,760
+ID property, and that customer ID
+
+38
+00:01:22,480 --> 00:01:26,880
+property must be unique.
+
+39
+00:01:24,760 --> 00:01:28,280
+So, you can create constraints, but by
+
+40
+00:01:26,880 --> 00:01:31,160
+default,
+
+41
+00:01:28,280 --> 00:01:33,600
+anything goes. Right? And that's one of
+
+42
+00:01:31,160 --> 00:01:36,560
+the reasons we use graphs because it's a
+
+43
+00:01:33,600 --> 00:01:39,760
+highly flexible structure that allows us
+
+44
+00:01:36,560 --> 00:01:40,800
+to model particularly real-world things.
+
+45
+00:01:39,760 --> 00:01:41,840
+Right?
+
+46
+00:01:40,800 --> 00:01:43,320
+So,
+
+47
+00:01:41,840 --> 00:01:45,200
+might make us feel a little bit
+
+48
+00:01:43,320 --> 00:01:46,680
+uncomfortable,
+
+49
+00:01:45,200 --> 00:01:47,400
+but that's why we use them.
+
+50
+00:01:46,680 --> 00:01:50,080
+Right? [laughter]
+
+51
+00:01:47,400 --> 00:01:51,800
+Yeah. So, constraints are good, yeah,
+
+52
+00:01:50,080 --> 00:01:53,480
+but we use them where we need to use
+
+53
+00:01:51,800 --> 00:01:55,760
+them. Yeah.
+
+54
+00:01:53,480 --> 00:01:58,160
+Um okay. So, I want to talk about this
+
+55
+00:01:55,760 --> 00:02:00,000
+idea of like gold the golden rule. So,
+
+56
+00:01:58,160 --> 00:02:03,960
+the golden rule of graph data modeling
+
+57
+00:02:00,000 --> 00:02:06,440
+is noun verb noun.
+
+58
+00:02:03,960 --> 00:02:09,280
+Customer
+
+59
+00:02:06,440 --> 00:02:11,800
+uh lives at address.
+
+60
+00:02:09,280 --> 00:02:14,320
+Yeah, noun verb noun. Person acted in
+
+61
+00:02:11,800 --> 00:02:14,320
+movie.
+
