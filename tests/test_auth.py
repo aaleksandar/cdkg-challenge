@@ -4,10 +4,16 @@ that a page on another site could make with the admin's cached credentials."""
 import pytest
 from fastapi.testclient import TestClient
 
-from ingest import config, reconcile as R
+from ingest import config, db, reconcile as R
 from ingest.main import app
 
 HTMX = {"HX-Request": "true"}
+
+
+@pytest.fixture(autouse=True)
+def _state_in_tmp(monkeypatch, tmp_path):
+    monkeypatch.setattr(config, "STATE_DB_PATH", tmp_path / "state.db")
+    db.init_db()
 
 
 @pytest.fixture
