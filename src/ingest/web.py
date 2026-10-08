@@ -38,6 +38,20 @@ def _day(stamp: str | None) -> str:
         return "—"
 
 
+def _moment(stamp: str | None) -> str:
+    """A snapshot's UTC stamp, compact or ISO, as a short time: 18 Sep 06:34."""
+    if not stamp:
+        return "—"
+    from datetime import datetime
+
+    for fmt in ("%Y%m%dT%H%M%SZ", "%Y-%m-%dT%H:%M:%SZ"):
+        try:
+            return datetime.strptime(stamp, fmt).strftime("%-d %b %H:%M")
+        except ValueError:
+            pass
+    return stamp
+
+
 def _fromjson(raw: str | None) -> dict:
     """Stage detail is stored as JSON; a malformed blob must not break the page."""
     import json
@@ -65,6 +79,7 @@ def _asset_version() -> str:
 templates.env.filters["duration"] = _duration
 templates.env.filters["day"] = _day
 templates.env.filters["fromjson"] = _fromjson
+templates.env.filters["moment"] = _moment
 templates.env.globals["asset_version"] = _asset_version
 # Prepended to every absolute URL the templates emit. Empty when the panel is
 # served from the root, "/ingestion" when it is mounted under a path — the proxy

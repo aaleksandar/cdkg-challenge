@@ -322,6 +322,8 @@ thead th.r { text-align: right; }
   box-shadow: -18px 0 48px rgba(22,21,15,.09);
   overflow-y: auto; animation: slide .2s cubic-bezier(.22,.61,.36,1);
 }
+/* Advanced holds tables (snapshots) that a talk's drawer does not. */
+.drawer-wide { width: min(640px, 96vw); }
 @keyframes fade { from { opacity: 0 } }
 @keyframes slide { from { transform: translateX(18px); opacity: .4 } }
 
@@ -667,8 +669,9 @@ td.act .rowbtn:disabled { opacity: 1; }
 .gemini-check li { margin: .1rem 0; }
 .drain { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
 .snapshots-block { margin-top: 1rem; }
+#snapshots { overflow-x: auto; }
 .snapshots { width: 100%; border-collapse: collapse; font-size: .76rem; margin-top: .6rem; }
-.snapshots th, .snapshots td { padding: .3rem .45rem; border-bottom: 1px solid var(--rule); text-align: left; }
+.snapshots th, .snapshots td { padding: .3rem .45rem; border-bottom: 1px solid var(--rule); text-align: left; white-space: nowrap; }
 .snapshots th { color: var(--ink-faint); font-weight: 500; }
 .snapshots .r { text-align: right; }
 .snapshots .dl { color: var(--accent); text-decoration: none; }
