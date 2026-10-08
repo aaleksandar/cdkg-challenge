@@ -15,15 +15,19 @@
     document.querySelectorAll('[data-drawer-refresh="idle"]').forEach(el => {
       if (running.has(el.dataset.drawerVideo)) htmx.trigger(el, 'refresh');
     });
-    // A row rendered before its run was queued still says "Not ingested" and
-    // carries no poller: an ingestion started from the drawer, or by the
-    // scheduler, or on a sheet loaded a moment too early. Replace it once with
-    // its live version, which polls itself from then on.
+    // A row with work queued or running that is not yet showing it — drawn
+    // before its run was queued, or queued and now started — is replaced once
+    // with its live version. Only a started run's row polls itself; a queued
+    // row is shown as queued and waits for this signal.
     // By video, not by key: a talk's key is its TalkID once it has a row, and
     // a source key resolves to that talk server-side either way.
+    const started = new Set({{ active | selectattr('status', 'equalto', 'running') | map(attribute='video_id') | list | tojson }});
     running.forEach(id => {
       const row = document.querySelector('tr[data-video="' + id + '"]');
-      if (row && !row.classList.contains('is-live')) {
+      if (!row) return;
+      const stale = !row.classList.contains('is-live')
+                    || (started.has(id) && !row.hasAttribute('data-polling'));
+      if (stale) {
         htmx.ajax('GET', '{{ base }}/row/' + encodeURIComponent('youtube:' + id),
                   {target: row, swap: 'outerHTML'});
       }

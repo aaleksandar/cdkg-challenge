@@ -280,6 +280,19 @@ def active_run_count() -> int:
         ).fetchone()[0]
 
 
+def supadata_credits_this_month() -> int:
+    """Credits the caption fallback spent since the first of this month (UTC)."""
+    month = now()[:7]
+    with connect() as conn:
+        total = conn.execute(
+            """SELECT COALESCE(SUM(json_extract(detail, '$.caption_credits')), 0)
+                 FROM run_stages
+                WHERE stage = 'transcript_download' AND status = 'completed'
+                  AND substr(COALESCE(ended_at, started_at), 1, 7) = ?""",
+            (month,)).fetchone()[0]
+    return int(total or 0)
+
+
 def active_runs() -> list[dict]:
     """Runs queued or in flight, with the stage each one has reached."""
     with connect() as conn:

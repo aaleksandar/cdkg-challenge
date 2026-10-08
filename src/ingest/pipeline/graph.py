@@ -46,12 +46,12 @@ def _script_env(db_path: Path) -> dict:
     }
 
 
-def _run_script(name: str, db_path: Path) -> tuple[bool, str]:
+def _run_script(name: str, db_path: Path, *args: str) -> tuple[bool, str]:
     # cwd is where the *code* lives (the image, in production), not the data
     # working copy — see config.PIPELINE_SCRIPTS_DIR.
     try:
         result = subprocess.run(
-            [sys.executable, name],
+            [sys.executable, name, *args],
             cwd=str(config.PIPELINE_SCRIPTS_DIR),
             env=_script_env(db_path),
             capture_output=True,
@@ -154,8 +154,8 @@ def ensure_readable_graph() -> bool:
 def rebuild_graph(extract_tags: bool = False):
     """Rebuild from the metadata CSV and entities.json, then swap it in.
 
-    ``extract_tags`` re-runs LLM tag extraction over every transcript, which is
-    what a model change calls for. It is off by default: transcripts and their
+    ``extract_tags`` re-runs LLM tag extraction over every transcript a talk
+    points at (``--force``), which is what a model change calls for. It is off by default: transcripts and their
     extracted text are already on disk, so an ordinary rebuild contacts neither
     YouTube nor the LLM.
     """
@@ -166,10 +166,11 @@ def rebuild_graph(extract_tags: bool = False):
 
     steps = ["02_domain_graph.py", "03_content_graph.py"]
     if extract_tags:
-        steps.insert(0, "01_extract_tag_keywords.py")
+        steps.insert(0, ("01_extract_tag_keywords.py", "--force"))
 
-    for script in steps:
-        ok, error = _run_script(script, build_path)
+    for step in steps:
+        script, *args = (step,) if isinstance(step, str) else step
+        ok, error = _run_script(script, build_path, *args)
         if not ok:
             _clear(build_path)
             return StageResult(False, error)

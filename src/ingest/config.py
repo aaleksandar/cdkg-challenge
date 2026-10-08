@@ -126,6 +126,11 @@ SUPADATA_API_KEY = os.getenv("SUPADATA_API_KEY") or None
 # Talks over 20 minutes — all of them — come back as a job to poll; this bounds
 # the wait so a stuck job is a named failure rather than a hung run.
 SUPADATA_POLL_SECONDS = int(os.getenv("SUPADATA_POLL_SECONDS", "120"))
+# Credits this service may spend in a calendar month. Draining the backlog on
+# a server YouTube refuses would otherwise spend one per talk until Supadata
+# itself said no; past the budget, a refused download fails as rate-limited
+# and the upload remains. The free plan's allowance by default.
+SUPADATA_MONTHLY_CREDITS = int(os.getenv("SUPADATA_MONTHLY_CREDITS", "100"))
 
 # --- Feature gates -----------------------------------------------------------
 # The graph is written by default: an ingested talk that never reaches the graph

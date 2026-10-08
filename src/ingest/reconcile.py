@@ -513,18 +513,60 @@ def _iso_date(value: str | None) -> str | None:
 
 # --- Source readers ----------------------------------------------------------
 
+# The panel reconciles on every render and every two-second poll of a running
+# row, and re-reading a few megabytes of CSV and JSON, walking the transcript
+# tree and opening the graph each time cost a full CPU during a backlog drain.
+# Each reader is memoised on what it read: the files' modification time, size
+# and inode (a rename-over changes the inode), or every folder's in a tree.
+# Atomic writes replace the file, so a write is always a new key. What the
+# readers return is shared between calls and never modified by a caller.
+_memo: dict[str, tuple[object, object]] = {}
+
+
+def _stamp(*paths: Path) -> tuple:
+    out = []
+    for path in paths:
+        try:
+            st = path.stat()
+            out.append((str(path), st.st_mtime_ns, st.st_size, st.st_ino))
+        except OSError:
+            out.append((str(path), None))
+    return tuple(out)
+
+
+def _tree_stamp(root: Path) -> tuple:
+    """Every folder under ``root``: a file added, removed or renamed in one
+    changes that folder's modification time."""
+    if not root.exists():
+        return (str(root), None)
+    return _stamp(root, *sorted(p for p in root.rglob("*") if p.is_dir()))
+
+
+def _cached(name: str, key, compute):
+    hit = _memo.get(name)
+    if hit is not None and hit[0] == key:
+        return hit[1]
+    value = compute()
+    _memo[name] = (key, value)
+    return value
+
+
 def read_csv_rows() -> list[dict]:
     if not config.METADATA_CSV.exists():
         return []
-    with open(config.METADATA_CSV, newline="", encoding="utf-8") as f:
-        return [r for r in csv.DictReader(f) if (r.get("Title") or "").strip()]
+
+    def compute():
+        with open(config.METADATA_CSV, newline="", encoding="utf-8") as f:
+            return [r for r in csv.DictReader(f) if (r.get("Title") or "").strip()]
+    return _cached("csv", _stamp(config.METADATA_CSV), compute)
 
 
 def read_transcript_stems() -> dict[str, Path]:
     """Transcript filename stem -> path, for every .srt in the repo."""
     if not config.TRANSCRIPTS_DIR.exists():
         return {}
-    return {p.stem: p for p in config.TRANSCRIPTS_DIR.rglob("*.srt")}
+    return _cached("srt", _tree_stamp(config.TRANSCRIPTS_DIR),
+                   lambda: {p.stem: p for p in config.TRANSCRIPTS_DIR.rglob("*.srt")})
 
 
 def read_entities() -> dict[str, list[str]]:
@@ -537,27 +579,39 @@ def read_entities() -> dict[str, list[str]]:
     """
     if not config.ENTITIES_JSON.exists():
         return {}
+    key = _stamp(config.ENTITIES_JSON)
+    hit = _memo.get("entities")
+    if hit is not None and hit[0] == key:
+        return hit[1]
     try:
         entries = json.loads(config.ENTITIES_JSON.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError):
-        return {}
-    return {
+        return {}      # not cached: the next read may find the file whole
+    value = {
         Path(e["filename"]).stem: list(e.get("entities", {}).get("tag", []))
         for e in entries
         if e.get("filename")
     }
+    _memo["entities"] = (key, value)
+    return value
 
 
 def read_text_stems() -> set[str]:
     if not config.DATA_DIR.exists():
         return set()
-    return {p.stem for p in config.DATA_DIR.glob("*.txt")}
+    return _cached("txt", _stamp(config.DATA_DIR),
+                   lambda: {p.stem for p in config.DATA_DIR.glob("*.txt")})
 
 
 def read_graph() -> tuple[set[str], set[str]]:
     """(talk ids in the graph, talk ids carrying at least one tag)."""
     if not config.GRAPH_DB_PATH.exists():
         return set(), set()
+    # The swap renames a new file into place and rewrites .graph-version.
+    key = _stamp(config.GRAPH_DB_PATH, config.GRAPH_DB_PATH.parent / ".graph-version")
+    hit = _memo.get("graph")
+    if hit is not None and hit[0] == key:
+        return hit[1]
     try:
         import ladybug as lb
 
@@ -570,6 +624,7 @@ def read_graph() -> tuple[set[str], set[str]]:
             "MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(:Tag) RETURN DISTINCT t.talk_id")
         while result.has_next():
             tagged.add(result.get_next()[0])
+        _memo["graph"] = (key, (ids, tagged))    # a failed read is never cached
         return ids, tagged
     except Exception as exc:  # noqa: BLE001
         # A rebuild may be swapping the database underneath us; report nothing

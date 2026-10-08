@@ -13,6 +13,7 @@ import argparse
 import csv
 import json
 import os
+import time
 import traceback
 from pathlib import Path
 
@@ -22,6 +23,7 @@ load_dotenv()
 os.environ["BAML_LOG"] = "WARN"
 
 from google import genai
+from google.genai import errors as genai_errors
 from google.genai import types as genai_types
 
 import config
@@ -60,7 +62,7 @@ def get_judge_client() -> genai.Client:
     return _judge_client
 
 
-def judge_response(question: str, baseline: str, response: str) -> tuple[int, str]:
+def judge_response(question: str, baseline: str, response: str) -> tuple[int | None, str]:
     """Use an LLM to score the RAG response against the baseline. Returns (score 1-5, reasoning)."""
     prompt = f"""You are evaluating a RAG system's answer against a baseline (expected) answer.
 
@@ -79,22 +81,33 @@ SYSTEM ANSWER: {response}
 
 Respond with JSON only: {{"score": <1-5>, "reasoning": "<one sentence>"}}"""
 
-    result = get_judge_client().models.generate_content(
-        model="gemini-3.7-flash",
-        contents=prompt,
-        config=genai_types.GenerateContentConfig(
-            temperature=0,
-            response_mime_type="application/json",
-        ),
-    )
+    # Google's 503 "high demand" spikes are routine; one used to end the whole
+    # run. Three tries over about ten seconds, then the question is recorded as
+    # unjudged rather than scored — a judge outage is not a 1/5 answer.
+    for attempt in range(3):
+        try:
+            result = get_judge_client().models.generate_content(
+                model="gemini-3.7-flash",
+                contents=prompt,
+                config=genai_types.GenerateContentConfig(
+                    temperature=0,
+                    response_mime_type="application/json",
+                ),
+            )
+            break
+        except genai_errors.APIError as exc:
+            if attempt == 2:
+                return None, f"Judge unavailable: {exc}"
+            time.sleep(2 * 4 ** attempt)
+    text = result.text or ""
     try:
-        parsed = json.loads(result.text)
+        parsed = json.loads(text)
         return int(parsed["score"]), parsed.get("reasoning", "")
-    except (json.JSONDecodeError, KeyError, ValueError):
-        for ch in result.text:
+    except (json.JSONDecodeError, KeyError, ValueError, TypeError):
+        for ch in text:
             if ch.isdigit() and 1 <= int(ch) <= 5:
-                return int(ch), result.text
-        return 1, f"Could not parse judge response: {result.text}"
+                return int(ch), text
+        return 1, f"Could not parse judge response: {text}"
 
 
 def run_evaluation(output_path: str | None = None) -> list[dict]:
@@ -140,9 +153,9 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
         else:
             score, reasoning = judge_response(question, baseline, response)
 
-        label = SCORE_LABELS.get(score, "unknown")
+        label = SCORE_LABELS.get(score, "unjudged")
         short_q = question[:55] + "..." if len(question) > 55 else question
-        print(f"Q{qid:<3} {score}/5  {label:<12} {short_q}")
+        print(f"Q{qid:<3} {score if score is not None else '-'}/5  {label:<12} {short_q}")
         print(f"     Cypher:   {cypher or '(none)'}")
         print(f"     Answer:   {response or '(none)'}")
         print(f"     Baseline: {baseline}")
@@ -166,14 +179,17 @@ def run_evaluation(output_path: str | None = None) -> list[dict]:
             **anchoring,
         })
 
-    scores = [r["score"] for r in results]
+    scores = [r["score"] for r in results if r["score"] is not None]
     avg = sum(scores) / len(scores) if scores else 0
+    unjudged = len(results) - len(scores)
     label_counts = {label: 0 for label in SCORE_LABELS.values()}
     for r in results:
         label_counts[r["label"]] = label_counts.get(r["label"], 0) + 1
 
     print("=" * 80)
-    print(f"SUMMARY — {len(questions)} questions | avg score: {avg:.1f}/5")
+    print(f"SUMMARY — {len(questions)} questions | avg score: {avg:.1f}/5"
+          + (f" over {len(scores)} judged ({unjudged} unjudged: the judge was unavailable)"
+             if unjudged else ""))
     print("-" * 40)
     for score_val in sorted(SCORE_LABELS):
         label = SCORE_LABELS[score_val]

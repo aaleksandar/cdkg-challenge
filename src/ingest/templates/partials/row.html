@@ -6,18 +6,22 @@
    both once they have met. Files on disk that are neither are listed under
    Advanced, where the fix for each of them lives. #}
 {% set busy = s.status == 'in_progress' %}
+{# Only the run in flight polls. A queued row waits: draining a backlog queued
+   every row at once, and each polled every two seconds for a full reconcile.
+   The /live signal replaces a queued row once its run starts. #}
+{% set polling = busy and s.run and s.run.status == 'running' %}
 {# A talk being ingested is highlighted in place and its status cell names the
    stage. There is no banner above the sheet: the same talk in two places, with
    the row still saying "Not ingested", read as two different videos. #}
 <tr class="{{ 'is-quiet' if s.lane == 'excluded' }} {{ 'is-live' if busy }}"
-    id="talk-{{ s.key }}" data-video="{{ s.video_id or '' }}"
+    id="talk-{{ s.key }}" data-video="{{ s.video_id or '' }}"{% if polling %} data-polling="1"{% endif %}
     {% if oob %}hx-swap-oob="true"{% endif %}
     hx-get="{{ base }}/video/{{ s.key | urlencode }}" hx-target="#drawer" hx-swap="innerHTML">
   <td>
     {# The row's own click opens the drawer, so its refresh lives on a separate
        element that replaces the whole row. Polls only while the pipeline is
        running and stops on its own, because the replacement carries no trigger. #}
-    {% if busy %}
+    {% if polling %}
       <span hidden hx-get="{{ base }}/row/{{ s.key | urlencode }}"
             hx-trigger="every 2s" hx-target="closest tr" hx-swap="outerHTML"></span>
     {% endif %}

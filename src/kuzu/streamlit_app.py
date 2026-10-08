@@ -25,9 +25,10 @@ def graph_version() -> str:
         return ""
 
 
-# Keyed on the version token: a rebuild changes the key, so Streamlit discards
-# the old connection and opens the new database.
-@st.cache_resource
+# Keyed on the version token: a rebuild changes the key, and the new database
+# is opened. One entry only: without the cap Streamlit kept every earlier
+# GraphRAG, each holding a handle on a graph the swap had replaced.
+@st.cache_resource(max_entries=1)
 def init_rag(version: str):
     return GraphRAG(config.DB_PATH)
 

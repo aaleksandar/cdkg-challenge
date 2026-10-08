@@ -238,6 +238,17 @@ def stage_transcript_download(ctx: dict) -> StageResult:
                            {"failure_kind": first["kind"], "failure_detail": first["detail"],
                             "caption_attempts": attempts})
 
+    from .. import db
+
+    spent = db.supadata_credits_this_month()
+    if spent >= config.SUPADATA_MONTHLY_CREDITS:
+        detail = (f"{spent} of this month's {config.SUPADATA_MONTHLY_CREDITS} Supadata "
+                  f"credits are spent (SUPADATA_MONTHLY_CREDITS)")
+        attempts.append({"source": "supadata", "kind": "rate_limited", "detail": detail})
+        return StageResult(False, FAILURE_MESSAGES.get("rate_limited", FAILURE_DEFAULT),
+                           {"failure_kind": "rate_limited", "failure_detail": detail,
+                            "caption_attempts": attempts})
+
     try:
         fetched = supadata.download_transcript(video_id, destination)
     except youtube.TranscriptUnavailable as exc:

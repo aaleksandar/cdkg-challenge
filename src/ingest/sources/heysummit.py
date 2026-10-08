@@ -132,9 +132,13 @@ def refresh_catalog() -> int:
 
 
 def read_catalog() -> list[dict]:
+    """The committed catalogue, read once per change of the file (see
+    reconcile._cached): the panel asks for it several times per render."""
     if not config.HEYSUMMIT_CATALOG.exists():
         return []
-    return json.loads(config.HEYSUMMIT_CATALOG.read_text(encoding="utf-8"))
+    return reconcile._cached(
+        "catalog", reconcile._stamp(config.HEYSUMMIT_CATALOG),
+        lambda: json.loads(config.HEYSUMMIT_CATALOG.read_text(encoding="utf-8")))
 
 
 # --- Fields ------------------------------------------------------------------
@@ -481,7 +485,13 @@ def link_videos(csv_path=None, write: bool = True) -> dict:
               "speakers": [n for n in parser.SPEAKER_SPLIT.split(r.get("Speaker") or "") if n.strip()]}
              for r in rows if (r.get("TalkID") or "").strip() and not (r.get("Video") or "").strip()]
 
-    pairs, alike = matching.assign(talks, videos)
+    # The drawer asks this on every open, and judging every row against every
+    # video took seconds at production size; the answer only changes when the
+    # rows or the videos do.
+    key = (reconcile._stamp(csv_path),
+           hash(tuple((v["video_id"], v.get("title"), v.get("duration"))
+                      for v in videos)))
+    pairs, alike = reconcile._cached("assign", key, lambda: matching.assign(talks, videos))
     linked = {}
     for talk, video, _ in pairs:
         linked[talk["talk_id"]] = video["video_id"]

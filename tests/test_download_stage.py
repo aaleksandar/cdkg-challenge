@@ -7,7 +7,7 @@ about which one is asked, in what order, and what the stage records about it.
 import pytest
 import yt_dlp
 
-from ingest import config
+from ingest import config, db
 from ingest.pipeline import stages
 from ingest.sources import supadata, youtube
 from ingest.sources.parser import ParsedTalk
@@ -17,6 +17,9 @@ from ingest.sources.parser import ParsedTalk
 def ctx(monkeypatch, tmp_path):
     monkeypatch.setattr(config, "TRANSCRIPTS_DIR", tmp_path / "Transcripts")
     monkeypatch.setattr(config, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(config, "METADATA_CSV", tmp_path / "meta.csv")
+    monkeypatch.setattr(config, "STATE_DB_PATH", tmp_path / "state.db")
+    db.init_db()
     parsed = ParsedTalk(talk_title="A Talk", full_title="A Talk | Jane Doe | CDL24",
                         speaker="Jane Doe", event="CDL24")
     return {"video_id": "abcdefghijk", "parsed": parsed}
@@ -168,3 +171,26 @@ def test_an_unknown_kind_gets_the_default_sentence(ctx, monkeypatch):
 
     assert result.message == stages.FAILURE_DEFAULT
     assert result.data["failure_kind"] == "something_new"
+
+
+def test_supadata_is_not_asked_once_the_months_credits_are_spent(ctx, monkeypatch):
+    """A backlog drain on a refused server spends a credit per talk; past the
+    budget the run fails as rate-limited and the upload remains."""
+    _ytdlp(monkeypatch, _refuses("bot_check"))
+    asked = _supadata(monkeypatch, _writes_lang)
+    monkeypatch.setattr(config, "SUPADATA_MONTHLY_CREDITS", 2)
+    monkeypatch.setattr(db, "supadata_credits_this_month", lambda: 2)
+
+    result = stages.stage_transcript_download(ctx)
+
+    assert not result.ok and asked == []
+    assert result.data["failure_kind"] == "rate_limited"
+    assert "2 of this month's 2" in result.data["failure_detail"]
+
+
+def test_credits_spent_this_month_are_counted_from_the_run_history(ctx):
+    for credits in (1, 1):
+        run_id = db.start_run("abcdefghijk", ["transcript_download"], status="queued")
+        db.set_stage(run_id, "transcript_download", "completed", "via Supadata",
+                     {"caption_credits": credits})
+    assert db.supadata_credits_this_month() == 2
