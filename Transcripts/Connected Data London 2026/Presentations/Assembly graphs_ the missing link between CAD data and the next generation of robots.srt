@@ -1,0 +1,112 @@
+1
+00:00:00,240 --> 00:00:05,920
+Just recently, now in August, Skilled AI
+
+2
+00:00:03,439 --> 00:00:09,120
+published oneshot action learning for
+
+3
+00:00:05,920 --> 00:00:12,000
+robots. So, a robot learns a procedure
+
+4
+00:00:09,120 --> 00:00:15,040
+just from one video. What is really
+
+5
+00:00:12,000 --> 00:00:17,920
+amazing? But in the assembly context,
+
+6
+00:00:15,040 --> 00:00:21,520
+there's the question, what procedures
+
+7
+00:00:17,920 --> 00:00:24,080
+should a robot actually learn? Sure, you
+
+8
+00:00:21,520 --> 00:00:27,599
+can teach a robot every single step with
+
+9
+00:00:24,080 --> 00:00:29,840
+a video, but is that the right way for
+
+10
+00:00:27,599 --> 00:00:33,040
+manufacturing processes with a high
+
+11
+00:00:29,840 --> 00:00:35,520
+level of variability?
+
+12
+00:00:33,040 --> 00:00:38,480
+We think graph machine learning can play
+
+13
+00:00:35,520 --> 00:00:41,200
+a role here, predicting which components
+
+14
+00:00:38,480 --> 00:00:43,600
+of an assembly actually belong together
+
+15
+00:00:41,200 --> 00:00:45,120
+and in which sequence they need to be
+
+16
+00:00:43,600 --> 00:00:47,840
+mounted.
+
+17
+00:00:45,120 --> 00:00:49,360
+Even when wheels can one day do this
+
+18
+00:00:47,840 --> 00:00:52,399
+independently,
+
+19
+00:00:49,360 --> 00:00:54,640
+graphs can still support creating better
+
+20
+00:00:52,399 --> 00:00:57,600
+structured representations,
+
+21
+00:00:54,640 --> 00:01:00,320
+supporting change management, or helping
+
+22
+00:00:57,600 --> 00:01:03,039
+with quality checks.
+
+23
+00:01:00,320 --> 00:01:06,080
+So, graphs don't replace robot
+
+24
+00:01:03,039 --> 00:01:09,200
+foundation models, they support them. I
+
+25
+00:01:06,080 --> 00:01:12,000
+am Kristoff Yan. I work as an engineer
+
+26
+00:01:09,200 --> 00:01:13,840
+at Mercedes-Benz and I do research in
+
+27
+00:01:12,000 --> 00:01:16,479
+machine learning at the University of
+
+28
+00:01:13,840 --> 00:01:16,479
+Constance.
+
