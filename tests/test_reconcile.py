@@ -68,9 +68,13 @@ def test_orphans_are_detected(states):
     three left are two recordings of rows whose File already points at a CDL
     2024 transcript (the Event-disagreement pair) and one talk HeySummit does
     not list.
+
+    A ceiling, not a count: this runs on every pull request, the server's
+    ingestion PR included, and a sync that claims one of the three makes the
+    data better — it must not fail the check that guards the merge.
     """
     orphans = [s for s in states if s.status == "orphaned"]
-    assert len(orphans) == 3, [s.title for s in orphans]
+    assert len(orphans) <= 3, [s.title for s in orphans]
     assert all(s.has_tags and not s.in_csv for s in orphans)
     assert all(s.tag_count > 0 for s in orphans)
 
@@ -84,7 +88,7 @@ def test_orphans_all_belong_to_one_event(states):
         if s.stem
     ]
     events = {p.relative_to(config.TRANSCRIPTS_DIR).parts[0] for p in srts if p}
-    assert events == {"Knowledge Connexions 2020"}
+    assert events <= {"Knowledge Connexions 2020"}
 
 
 def test_unusable_files_are_quarantined(states):
