@@ -2589,5 +2589,81 @@
         "noun verb noun"
       ]
     }
+  },
+  {
+    "filename": "Leveraging Knowledge Graphs for Enhanced Regulatory Compliance in Finance by HSBC.txt",
+    "entities": {
+      "tag": [
+        "knowledge graphs",
+        "ai",
+        "rdbms",
+        "no sequel",
+        "semantic graph",
+        "ontology",
+        "rdf",
+        "owl",
+        "sparql",
+        "pythonic frameworks",
+        "altier graph studio",
+        "anzo",
+        "protege",
+        "yfiles"
+      ]
+    }
+  },
+  {
+    "filename": "Leveraging Knowledge Graphs for Disrupting Criminal Networks.txt",
+    "entities": {
+      "tag": [
+        "knowledge graphs",
+        "llms",
+        "generative ai",
+        "yum",
+        "entity resolution",
+        "nlp fine-tuning",
+        "cypher",
+        "machine learning",
+        "graph algorithms",
+        "louvain algorithm",
+        "community detection",
+        "link prediction",
+        "pagerank",
+        "betweenness centrality",
+        "claude ai",
+        "chatbots",
+        "facial fingerprinting"
+      ]
+    }
+  },
+  {
+    "filename": "The Ultimate Guide to Semantic Reasoning_ How to enrich your data for practical applications.txt",
+    "entities": {
+      "tag": [
+        "rdfox",
+        "vs code",
+        "protégé",
+        "chroma db",
+        "anzograph",
+        "allegrograph",
+        "chatgpt",
+        "owl",
+        "datalog",
+        "sparql",
+        "turtle",
+        "trig",
+        "swrl",
+        "shacl",
+        "sql",
+        "python",
+        "rag",
+        "semantic reasoning",
+        "incremental reasoning",
+        "pre-materialization",
+        "query rewriting",
+        "vector search",
+        "delta queries",
+        "neurosymbolic ai"
+      ]
+    }
   }
 ]
