@@ -1,0 +1,2284 @@
+1
+00:00:05,160 --> 00:00:10,960
+Uh so with without any further delay,
+
+2
+00:00:08,600 --> 00:00:14,600
+let's round out our day with Sophia
+
+3
+00:00:10,960 --> 00:00:16,960
+Polet and Joseph from HSBC.
+
+4
+00:00:14,600 --> 00:00:19,960
+Sophia is the product owner of graphs at
+
+5
+00:00:16,960 --> 00:00:21,560
+HSBC. I had a lovely chat right right
+
+6
+00:00:19,960 --> 00:00:23,440
+before we started.
+
+7
+00:00:21,560 --> 00:00:25,800
+She has over a decade of experience in
+
+8
+00:00:23,440 --> 00:00:29,360
+finance and banking data management.
+
+9
+00:00:25,800 --> 00:00:32,920
+Joseph is an analyst and a graph geeks
+
+10
+00:00:29,360 --> 00:00:35,160
+member. I will say. And with a focus on
+
+11
+00:00:32,920 --> 00:00:36,920
+leveraging knowledge graphs and AI to
+
+12
+00:00:35,160 --> 00:00:39,520
+develop innovative solutions in the
+
+13
+00:00:36,920 --> 00:00:43,120
+finance sector. Today they're going to
+
+14
+00:00:39,520 --> 00:00:45,440
+share how HSBC is using knowledge graphs
+
+15
+00:00:43,120 --> 00:00:47,760
+to streamline data governance and
+
+16
+00:00:45,440 --> 00:00:49,640
+enhance regulatory compliance. So let's
+
+17
+00:00:47,760 --> 00:00:52,400
+give a welcome to Sophia and Joseph.
+
+18
+00:00:49,640 --> 00:00:53,480
+Thank you for joining us.
+
+19
+00:00:52,400 --> 00:00:54,320
+>> [applause]
+
+20
+00:00:53,480 --> 00:00:57,240
+>> Right.
+
+21
+00:00:54,320 --> 00:00:59,040
+Thank you Amy and thank you
+
+22
+00:00:57,240 --> 00:01:01,800
+Connected Data London for having us
+
+23
+00:00:59,040 --> 00:01:04,000
+here. It's our first time here and I was
+
+24
+00:01:01,800 --> 00:01:06,480
+just talking with Amy. I just feel so
+
+25
+00:01:04,000 --> 00:01:09,440
+energized. It feels like you know it's a
+
+26
+00:01:06,480 --> 00:01:11,040
+place where we belong talking to all
+
+27
+00:01:09,440 --> 00:01:12,880
+graph
+
+28
+00:01:11,040 --> 00:01:15,320
+enthusiasts who share the same craziness
+
+29
+00:01:12,880 --> 00:01:17,800
+as us because it's not easy to find
+
+30
+00:01:15,320 --> 00:01:19,880
+people who get graph understand graph.
+
+31
+00:01:17,800 --> 00:01:21,920
+So it's really a uh
+
+32
+00:01:19,880 --> 00:01:24,000
+exciting experience to be here. Learned
+
+33
+00:01:21,920 --> 00:01:27,040
+a lot yesterday and we hope to spend
+
+34
+00:01:24,000 --> 00:01:28,920
+more time and come again. And with that
+
+35
+00:01:27,040 --> 00:01:33,280
+said, a little introduction about
+
+36
+00:01:28,920 --> 00:01:35,680
+myself. I'm Sophia. Um I've been with
+
+37
+00:01:33,280 --> 00:01:38,040
+the organization HSBC in specific for
+
+38
+00:01:35,680 --> 00:01:39,920
+over six years to seven years now.
+
+39
+00:01:38,040 --> 00:01:41,760
+Before that I was with another mutual
+
+40
+00:01:39,920 --> 00:01:43,400
+fund company.
+
+41
+00:01:41,760 --> 00:01:46,680
+All my experience I've been in the data
+
+42
+00:01:43,400 --> 00:01:50,720
+management space. But my introduction to
+
+43
+00:01:46,680 --> 00:01:53,360
+graph came in HSBC. And today we'll be
+
+44
+00:01:50,720 --> 00:01:54,840
+talking about what we've actually done
+
+45
+00:01:53,360 --> 00:01:56,720
+in HSBC.
+
+46
+00:01:54,840 --> 00:01:58,400
+One one the use case. It's not the only
+
+47
+00:01:56,720 --> 00:02:01,080
+use case in our bank. It's one of the
+
+48
+00:01:58,400 --> 00:02:04,320
+use case where we use graph. And
+
+49
+00:02:01,080 --> 00:02:06,560
+I'll let my colleague introduce himself.
+
+50
+00:02:04,320 --> 00:02:09,520
+>> Hi, good afternoon everyone. I'm Joseph.
+
+51
+00:02:06,560 --> 00:02:11,200
+I'm representing the HSBC bank.
+
+52
+00:02:09,520 --> 00:02:13,320
+I've been in this space for almost 2
+
+53
+00:02:11,200 --> 00:02:15,400
+years right now and very grateful to be
+
+54
+00:02:13,320 --> 00:02:18,000
+part of the graph data community. So,
+
+55
+00:02:15,400 --> 00:02:21,120
+today we're going to explain to you how
+
+56
+00:02:18,000 --> 00:02:22,959
+HSBC uses graphs to leverage
+
+57
+00:02:21,120 --> 00:02:25,440
+how HSBC leverage knowledge graph for
+
+58
+00:02:22,959 --> 00:02:28,520
+its regulatory compliance commitments.
+
+59
+00:02:25,440 --> 00:02:30,400
+So, let's see how it's done.
+
+60
+00:02:28,520 --> 00:02:32,280
+>> And before we get into the topic, a
+
+61
+00:02:30,400 --> 00:02:36,400
+little bit about what our organization
+
+62
+00:02:32,280 --> 00:02:37,840
+is. You might have seen HSBC around
+
+63
+00:02:36,400 --> 00:02:40,040
+while you were you know, you must be
+
+64
+00:02:37,840 --> 00:02:41,400
+commuting here in London.
+
+65
+00:02:40,040 --> 00:02:44,080
+And
+
+66
+00:02:41,400 --> 00:02:45,760
+the main big three services that
+
+67
+00:02:44,080 --> 00:02:48,080
+So, we are a bank. The three main
+
+68
+00:02:45,760 --> 00:02:50,160
+services that we offer is wealth and
+
+69
+00:02:48,080 --> 00:02:53,520
+private banking, commercial banking,
+
+70
+00:02:50,160 --> 00:02:55,520
+global banking and markets. And across
+
+71
+00:02:53,520 --> 00:02:58,080
+all these three services, we cover more
+
+72
+00:02:55,520 --> 00:03:00,760
+than 41 million customers across the
+
+73
+00:02:58,080 --> 00:03:03,320
+globe. And this is an offering that's
+
+74
+00:03:00,760 --> 00:03:04,519
+more than 60 markets. And this is
+
+75
+00:03:03,320 --> 00:03:06,600
+something
+
+76
+00:03:04,519 --> 00:03:07,720
+our bank has been doing for over 150
+
+77
+00:03:06,600 --> 00:03:10,519
+years.
+
+78
+00:03:07,720 --> 00:03:12,560
+So, you can imagine the scale of data
+
+79
+00:03:10,519 --> 00:03:15,840
+and the complexity of landscape across
+
+80
+00:03:12,560 --> 00:03:17,640
+different markets and the
+
+81
+00:03:15,840 --> 00:03:19,280
+scale of regulations as well. I think in
+
+82
+00:03:17,640 --> 00:03:20,840
+the morning one of in the one of the
+
+83
+00:03:19,280 --> 00:03:23,239
+presentation
+
+84
+00:03:20,840 --> 00:03:25,600
+the more global bank you are, the more
+
+85
+00:03:23,239 --> 00:03:27,680
+regulators regulations you're going to
+
+86
+00:03:25,600 --> 00:03:28,959
+be bound by. And that's the scenario
+
+87
+00:03:27,680 --> 00:03:31,680
+with us.
+
+88
+00:03:28,959 --> 00:03:33,440
+And our bank has um
+
+89
+00:03:31,680 --> 00:03:36,080
+devised some strategies that will
+
+90
+00:03:33,440 --> 00:03:37,680
+actually help us effectively manage our
+
+91
+00:03:36,080 --> 00:03:39,880
+data. So, there are four core
+
+92
+00:03:37,680 --> 00:03:41,920
+strategies, but one of the main core
+
+93
+00:03:39,880 --> 00:03:44,239
+strategies based on which we will
+
+94
+00:03:41,920 --> 00:03:46,360
+introduce the graph is what we call
+
+95
+00:03:44,239 --> 00:03:48,640
+digitize at scale.
+
+96
+00:03:46,360 --> 00:03:51,000
+Which I think most of the organizations
+
+97
+00:03:48,640 --> 00:03:53,680
+would have done in the past Uh, we were
+
+98
+00:03:51,000 --> 00:03:55,600
+years technology or databases were not
+
+99
+00:03:53,680 --> 00:03:57,880
+necessarily available then. So, our
+
+100
+00:03:55,600 --> 00:04:00,040
+journey started with moving our data
+
+101
+00:03:57,880 --> 00:04:02,640
+from our ledger books, record books into
+
+102
+00:04:00,040 --> 00:04:04,040
+our inventories. And at that point in
+
+103
+00:04:02,640 --> 00:04:06,000
+time,
+
+104
+00:04:04,040 --> 00:04:07,959
+all the data was, yes, put into
+
+105
+00:04:06,000 --> 00:04:10,160
+inventories, but everything was done in
+
+106
+00:04:07,959 --> 00:04:12,600
+silos. It was all done in all over the
+
+107
+00:04:10,160 --> 00:04:16,120
+place. Some into RDBMS base, some no
+
+108
+00:04:12,600 --> 00:04:17,480
+sequel, some all sorts of inventories
+
+109
+00:04:16,120 --> 00:04:18,480
+were used, and it was all over the
+
+110
+00:04:17,480 --> 00:04:20,480
+place.
+
+111
+00:04:18,480 --> 00:04:23,480
+And over a period of time, as and when
+
+112
+00:04:20,480 --> 00:04:25,800
+we started accumulating data,
+
+113
+00:04:23,480 --> 00:04:27,840
+it also started raising some problems
+
+114
+00:04:25,800 --> 00:04:31,160
+and challenges. Of course, one of the
+
+115
+00:04:27,840 --> 00:04:34,840
+biggest challenges is siloed.
+
+116
+00:04:31,160 --> 00:04:37,680
+And also, why that was a problem is we
+
+117
+00:04:34,840 --> 00:04:39,560
+being audited by multiple regulations.
+
+118
+00:04:37,680 --> 00:04:42,680
+Whenever a regulator asks for something
+
+119
+00:04:39,560 --> 00:04:44,280
+or evidence, some information,
+
+120
+00:04:42,680 --> 00:04:45,320
+we just need to scurry around to find
+
+121
+00:04:44,280 --> 00:04:46,400
+where's the right data, which is the
+
+122
+00:04:45,320 --> 00:04:48,640
+right source, because there are also
+
+123
+00:04:46,400 --> 00:04:50,800
+copies of data across the bank. Because
+
+124
+00:04:48,640 --> 00:04:52,640
+people just go to the nearest source and
+
+125
+00:04:50,800 --> 00:04:54,720
+get the information, not necessarily the
+
+126
+00:04:52,640 --> 00:04:56,520
+right place to do it. But people have
+
+127
+00:04:54,720 --> 00:04:58,919
+done that, and sometimes that's led to
+
+128
+00:04:56,520 --> 00:04:59,960
+incorrect representation reporting as
+
+129
+00:04:58,919 --> 00:05:01,000
+well.
+
+130
+00:04:59,960 --> 00:05:03,320
+And
+
+131
+00:05:01,000 --> 00:05:05,360
+you can see, using this kind of setup,
+
+132
+00:05:03,320 --> 00:05:07,160
+it's very difficult to travel the maze
+
+133
+00:05:05,360 --> 00:05:09,200
+of
+
+134
+00:05:07,160 --> 00:05:11,919
+looking at our reporting data, finance
+
+135
+00:05:09,200 --> 00:05:13,480
+data, or any compliance data that's
+
+136
+00:05:11,919 --> 00:05:16,400
+required. It's very difficult for us to
+
+137
+00:05:13,480 --> 00:05:19,480
+traverse across the organization.
+
+138
+00:05:16,400 --> 00:05:21,680
+And this is was the main challenge
+
+139
+00:05:19,480 --> 00:05:25,800
+point. And my colleague will talk about
+
+140
+00:05:21,680 --> 00:05:27,120
+how did we try to address it.
+
+141
+00:05:25,800 --> 00:05:28,360
+>> So, yeah, I'm going to tell you a story
+
+142
+00:05:27,120 --> 00:05:30,720
+about
+
+143
+00:05:28,360 --> 00:05:32,640
+losing an umbrella, basically. So,
+
+144
+00:05:30,720 --> 00:05:34,960
+imagine that it's a very rainy windy
+
+145
+00:05:32,640 --> 00:05:37,440
+day. You go to the railway station, and
+
+146
+00:05:34,960 --> 00:05:40,000
+then you go to the cafe, get a cup of
+
+147
+00:05:37,440 --> 00:05:43,120
+coffee, you met your colleagues, you
+
+148
+00:05:40,000 --> 00:05:44,520
+have a good chat with them, and you
+
+149
+00:05:43,120 --> 00:05:46,880
+spend, let's say, 10 minutes in the
+
+150
+00:05:44,520 --> 00:05:48,320
+station. And on the way, you have
+
+151
+00:05:46,880 --> 00:05:50,840
+misplaced your umbrella somewhere. So,
+
+152
+00:05:48,320 --> 00:05:53,240
+you What do you do? You go back to the
+
+153
+00:05:50,840 --> 00:05:55,600
+cafe and check with the staff. You check
+
+154
+00:05:53,240 --> 00:05:58,360
+with the staff at the railway station.
+
+155
+00:05:55,600 --> 00:05:59,680
+And there wasn't any cameras around. So,
+
+156
+00:05:58,360 --> 00:06:02,280
+no one kept a log of what the other
+
+157
+00:05:59,680 --> 00:06:04,800
+person was doing, but someone saw that
+
+158
+00:06:02,280 --> 00:06:07,120
+you misplaced your umbrella someplace,
+
+159
+00:06:04,800 --> 00:06:09,760
+but you didn't know who that person was.
+
+160
+00:06:07,120 --> 00:06:12,520
+So, that data was siloed in the person's
+
+161
+00:06:09,760 --> 00:06:14,240
+mind. And you never knew it.
+
+162
+00:06:12,520 --> 00:06:16,760
+The data wasn't linked. So, what do you
+
+163
+00:06:14,240 --> 00:06:18,680
+do? You end up buying a new umbrella.
+
+164
+00:06:16,760 --> 00:06:20,160
+Now, how does this relate to a finance
+
+165
+00:06:18,680 --> 00:06:21,280
+scenario?
+
+166
+00:06:20,160 --> 00:06:22,640
+So,
+
+167
+00:06:21,280 --> 00:06:24,720
+regulators come and ask for data
+
+168
+00:06:22,640 --> 00:06:27,120
+traceability, and different
+
+169
+00:06:24,720 --> 00:06:28,720
+organizations within the bank will
+
+170
+00:06:27,120 --> 00:06:31,000
+document data based on their own
+
+171
+00:06:28,720 --> 00:06:33,360
+understanding. For example, finance side
+
+172
+00:06:31,000 --> 00:06:35,640
+would document data based on their
+
+173
+00:06:33,360 --> 00:06:37,160
+understanding. The wealth management
+
+174
+00:06:35,640 --> 00:06:40,200
+part would do based on their
+
+175
+00:06:37,160 --> 00:06:42,000
+understanding. And all of these data
+
+176
+00:06:40,200 --> 00:06:45,200
+will be in different silos, different
+
+177
+00:06:42,000 --> 00:06:47,320
+repositories, different data lakes. And
+
+178
+00:06:45,200 --> 00:06:49,000
+regulator comes back and asks you, "How
+
+179
+00:06:47,320 --> 00:06:51,160
+does your wealth management data relate
+
+180
+00:06:49,000 --> 00:06:53,480
+to your retail customers?" Which is very
+
+181
+00:06:51,160 --> 00:06:55,200
+logical question. But, because you have
+
+182
+00:06:53,480 --> 00:06:56,480
+documented things in completely
+
+183
+00:06:55,200 --> 00:06:58,560
+different manner,
+
+184
+00:06:56,480 --> 00:07:01,840
+uh no one will be able to link these
+
+185
+00:06:58,560 --> 00:07:03,680
+data together. So, what is the solution?
+
+186
+00:07:01,840 --> 00:07:05,640
+Introducing knowledge graphs.
+
+187
+00:07:03,680 --> 00:07:06,800
+Knowledge graphs is an amalgamation of
+
+188
+00:07:05,640 --> 00:07:09,480
+four things.
+
+189
+00:07:06,800 --> 00:07:12,440
+First is knowledge. So, again I'll take
+
+190
+00:07:09,480 --> 00:07:15,120
+a finance example. So, a bank will have
+
+191
+00:07:12,440 --> 00:07:17,520
+retail customers, commercial customers,
+
+192
+00:07:15,120 --> 00:07:20,160
+and customers would own things like
+
+193
+00:07:17,520 --> 00:07:22,680
+stocks, bonds, mutual funds, etc. So,
+
+194
+00:07:20,160 --> 00:07:24,560
+these are known facts. So, this
+
+195
+00:07:22,680 --> 00:07:27,680
+constitutes knowledge.
+
+196
+00:07:24,560 --> 00:07:29,280
+And the second thing that uh builds up a
+
+197
+00:07:27,680 --> 00:07:32,240
+knowledge graph is basically semantic
+
+198
+00:07:29,280 --> 00:07:35,720
+graph. A semantic graph is basically uh
+
+199
+00:07:32,240 --> 00:07:37,720
+things and not strings. So, you can link
+
+200
+00:07:35,720 --> 00:07:40,040
+your customer to the stocks they own,
+
+201
+00:07:37,720 --> 00:07:42,960
+the mutual funds they own. These are And
+
+202
+00:07:40,040 --> 00:07:44,480
+this brings up a graph. Now, these These
+
+203
+00:07:42,960 --> 00:07:45,360
+are just data points linked to each
+
+204
+00:07:44,480 --> 00:07:48,600
+other.
+
+205
+00:07:45,360 --> 00:07:51,120
+Now, an ontology is like a map or or it
+
+206
+00:07:48,600 --> 00:07:53,800
+governs our semantic graph. So, an
+
+207
+00:07:51,120 --> 00:07:55,640
+ontology consists of broadly two things,
+
+208
+00:07:53,800 --> 00:07:58,480
+classes and properties.
+
+209
+00:07:55,640 --> 00:07:59,600
+So, as I said, we have
+
+210
+00:07:58,480 --> 00:08:01,240
+uh
+
+211
+00:07:59,600 --> 00:08:03,200
+customers that are commercial in nature
+
+212
+00:08:01,240 --> 00:08:05,840
+or retail in nature. These can be
+
+213
+00:08:03,200 --> 00:08:08,440
+grouped into a common instance called uh
+
+214
+00:08:05,840 --> 00:08:11,400
+clients or customers. And
+
+215
+00:08:08,440 --> 00:08:13,360
+products like not products, assets like
+
+216
+00:08:11,400 --> 00:08:15,919
+uh let's say stocks, bonds, etc. can be
+
+217
+00:08:13,360 --> 00:08:16,919
+grouped to to a class called assets.
+
+218
+00:08:15,919 --> 00:08:18,960
+And
+
+219
+00:08:16,919 --> 00:08:20,640
+having an ontology uh
+
+220
+00:08:18,960 --> 00:08:22,919
+on on top of a knowledge graph will give
+
+221
+00:08:20,640 --> 00:08:25,080
+us the power of reasoning. You can infer
+
+222
+00:08:22,919 --> 00:08:27,040
+new facts, which would uh
+
+223
+00:08:25,080 --> 00:08:30,200
+help us uh to
+
+224
+00:08:27,040 --> 00:08:34,080
+uh interpret logic defined by data rules
+
+225
+00:08:30,200 --> 00:08:37,280
+uh of structure to derive new knowledge.
+
+226
+00:08:34,080 --> 00:08:39,640
+And knowledge graph gives us standards.
+
+227
+00:08:37,280 --> 00:08:43,000
+So, here we are going to talk about
+
+228
+00:08:39,640 --> 00:08:45,280
+audio standards mainly. So, as you know,
+
+229
+00:08:43,000 --> 00:08:46,880
+the internet is uh
+
+230
+00:08:45,280 --> 00:08:48,960
+huge network of documents that are
+
+231
+00:08:46,880 --> 00:08:51,000
+linked to each other through URLs. And
+
+232
+00:08:48,960 --> 00:08:52,560
+what RDF says your data points should be
+
+233
+00:08:51,000 --> 00:08:53,880
+linked to each other through unique
+
+234
+00:08:52,560 --> 00:08:56,880
+identifier.
+
+235
+00:08:53,880 --> 00:08:59,360
+And OWL is the uh is called the web
+
+236
+00:08:56,880 --> 00:09:01,120
+ontology language, which uh basically
+
+237
+00:08:59,360 --> 00:09:03,880
+says says how your data should be
+
+238
+00:09:01,120 --> 00:09:05,800
+governed, how your data should be uh
+
+239
+00:09:03,880 --> 00:09:07,800
+classified, and how data should be
+
+240
+00:09:05,800 --> 00:09:09,960
+linked to each other. And SPARQL is a
+
+241
+00:09:07,800 --> 00:09:12,400
+language, as you all know,
+
+242
+00:09:09,960 --> 00:09:13,520
+which can be leveraged to uh query RDF
+
+243
+00:09:12,400 --> 00:09:15,800
+graphs.
+
+244
+00:09:13,520 --> 00:09:17,760
+And what are the key benefits of having
+
+245
+00:09:15,800 --> 00:09:19,839
+such standards? You can connect your
+
+246
+00:09:17,760 --> 00:09:21,120
+data from different sources very
+
+247
+00:09:19,839 --> 00:09:23,120
+seamlessly,
+
+248
+00:09:21,120 --> 00:09:25,360
+and which ensures that you have
+
+249
+00:09:23,120 --> 00:09:27,760
+consistency across your data, which
+
+250
+00:09:25,360 --> 00:09:29,080
+helps you to scale your data to
+
+251
+00:09:27,760 --> 00:09:31,320
+uh scale your data without any
+
+252
+00:09:29,080 --> 00:09:34,440
+redesigning, and gives you the power of
+
+253
+00:09:31,320 --> 00:09:34,440
+advanced analytics.
+
+254
+00:09:35,880 --> 00:09:38,520
+>> And uh
+
+255
+00:09:36,880 --> 00:09:41,360
+just before I get into the topic, just
+
+256
+00:09:38,520 --> 00:09:43,880
+to tell us tell uh how did our journey
+
+257
+00:09:41,360 --> 00:09:45,800
+start? And as I mentioned, it started in
+
+258
+00:09:43,880 --> 00:09:48,280
+the data management world. So, we
+
+259
+00:09:45,800 --> 00:09:50,160
+started back in 2018.
+
+260
+00:09:48,280 --> 00:09:52,320
+Um and back then, of course, graph
+
+261
+00:09:50,160 --> 00:09:54,880
+wasn't something that everybody
+
+262
+00:09:52,320 --> 00:09:57,320
+understood or understood the value of.
+
+263
+00:09:54,880 --> 00:09:59,000
+So, we started uh developing some
+
+264
+00:09:57,320 --> 00:10:00,200
+solution based on Pythonic uh
+
+265
+00:09:59,000 --> 00:10:02,840
+frameworks.
+
+266
+00:10:00,200 --> 00:10:05,200
+Uh we proved out some uh POCs saying,
+
+267
+00:10:02,840 --> 00:10:09,560
+"Yes, you get the value out of using uh
+
+268
+00:10:05,200 --> 00:10:11,680
+graphs." And in 2020, we uh scaled up to
+
+269
+00:10:09,560 --> 00:10:14,400
+try and use some open source. Again,
+
+270
+00:10:11,680 --> 00:10:16,800
+because whatever we had proved using our
+
+271
+00:10:14,400 --> 00:10:18,800
+POC was something that we had to scale.
+
+272
+00:10:16,800 --> 00:10:21,320
+And we were on the open source platform
+
+273
+00:10:18,800 --> 00:10:23,600
+for uh quite some time, for at least 3
+
+274
+00:10:21,320 --> 00:10:25,120
+years. And using this solution itself,
+
+275
+00:10:23,600 --> 00:10:27,400
+we were able to support quite a few
+
+276
+00:10:25,120 --> 00:10:29,600
+regulatory compliance requirements. And
+
+277
+00:10:27,400 --> 00:10:31,920
+beyond that, uh why because we were able
+
+278
+00:10:29,600 --> 00:10:34,640
+to prove that using this kind of uh
+
+279
+00:10:31,920 --> 00:10:37,440
+framework and technology helps us in
+
+280
+00:10:34,640 --> 00:10:39,040
+more faster, more proactive, and reduces
+
+281
+00:10:37,440 --> 00:10:41,040
+redundancies as well. We don't need to
+
+282
+00:10:39,040 --> 00:10:42,960
+reinvent the wheel all over again for
+
+283
+00:10:41,040 --> 00:10:43,560
+some other regulation again.
+
+284
+00:10:42,960 --> 00:10:44,960
+Um
+
+285
+00:10:43,560 --> 00:10:46,600
+There has also been an increase in
+
+286
+00:10:44,960 --> 00:10:48,640
+different kind of use case, even beyond
+
+287
+00:10:46,600 --> 00:10:51,920
+regulatory initiatives, which required
+
+288
+00:10:48,640 --> 00:10:53,920
+us to have more uh core strength. And uh
+
+289
+00:10:51,920 --> 00:10:55,560
+this year, we also further enhanced our
+
+290
+00:10:53,920 --> 00:10:57,720
+product to uh
+
+291
+00:10:55,560 --> 00:11:00,400
+enterprise solution, uh which I'll talk
+
+292
+00:10:57,720 --> 00:11:02,520
+about in a bit. And um as my colleague
+
+293
+00:11:00,400 --> 00:11:04,960
+mentioned, right? Ontology is the
+
+294
+00:11:02,520 --> 00:11:07,000
+important part and is what drives the
+
+295
+00:11:04,960 --> 00:11:09,600
+graph. So, um
+
+296
+00:11:07,000 --> 00:11:11,200
+as everyone said, we, you know, what is
+
+297
+00:11:09,600 --> 00:11:13,400
+it that gives uh
+
+298
+00:11:11,200 --> 00:11:15,160
+graph its knowledge? Uh
+
+299
+00:11:13,400 --> 00:11:17,160
+in our organization, so we know what an
+
+300
+00:11:15,160 --> 00:11:19,680
+ontology is and, you know, why it's
+
+301
+00:11:17,160 --> 00:11:23,280
+important. So, what was the take at HSBC
+
+302
+00:11:19,680 --> 00:11:25,720
+without saying the O word? Um HSBC has
+
+303
+00:11:23,280 --> 00:11:27,960
+something uh which we call it as the
+
+304
+00:11:25,720 --> 00:11:30,080
+enterprise meta model. Now, this is the
+
+305
+00:11:27,960 --> 00:11:32,520
+model that no matter which part of the
+
+306
+00:11:30,080 --> 00:11:34,640
+organization that you sit in, they need
+
+307
+00:11:32,520 --> 00:11:36,680
+to adhere to this as part of a data
+
+308
+00:11:34,640 --> 00:11:38,040
+management capabilities. So, we cannot
+
+309
+00:11:36,680 --> 00:11:39,680
+say one part of the business will say
+
+310
+00:11:38,040 --> 00:11:42,120
+when I manage my data, this is what I'm
+
+311
+00:11:39,680 --> 00:11:43,320
+going to call it. Or when I manage my
+
+312
+00:11:42,120 --> 00:11:45,200
+data in different part, this is
+
+313
+00:11:43,320 --> 00:11:46,880
+something else. So, across the
+
+314
+00:11:45,200 --> 00:11:49,320
+organization,
+
+315
+00:11:46,880 --> 00:11:52,080
+um all all the businesses are going to
+
+316
+00:11:49,320 --> 00:11:53,840
+leverage the same metamodel. Uh this
+
+317
+00:11:52,080 --> 00:11:56,240
+helps us in actually seamlessly
+
+318
+00:11:53,840 --> 00:11:58,360
+identifying how our data is mastered
+
+319
+00:11:56,240 --> 00:12:00,040
+across the organization, where it's
+
+320
+00:11:58,360 --> 00:12:02,360
+persisted, and what it's called without
+
+321
+00:12:00,040 --> 00:12:05,040
+losing the uh
+
+322
+00:12:02,360 --> 00:12:07,040
+terminology. And um just the visual
+
+323
+00:12:05,040 --> 00:12:08,840
+representation, the underlying core is
+
+324
+00:12:07,040 --> 00:12:12,000
+our data, which is governed by the
+
+325
+00:12:08,840 --> 00:12:13,920
+HSBC's enterprise metamodel. And using
+
+326
+00:12:12,000 --> 00:12:15,880
+that is what we actually model our
+
+327
+00:12:13,920 --> 00:12:17,280
+ontology. So, it's not just what we
+
+328
+00:12:15,880 --> 00:12:19,480
+think the ontology should be or what we
+
+329
+00:12:17,280 --> 00:12:21,560
+think our data should join up. Uh we are
+
+330
+00:12:19,480 --> 00:12:23,760
+guided by what the enterprise metamodel
+
+331
+00:12:21,560 --> 00:12:26,280
+says, and the combination of all of
+
+332
+00:12:23,760 --> 00:12:30,720
+these three things is what um
+
+333
+00:12:26,280 --> 00:12:30,720
+comes up uh as a final knowledge graph.
+
+334
+00:12:32,320 --> 00:12:37,120
+>> So, for our use case, we've made a very
+
+335
+00:12:34,360 --> 00:12:39,000
+sample ontology using our light formula.
+
+336
+00:12:37,120 --> 00:12:41,240
+So, the image that you see on the
+
+337
+00:12:39,000 --> 00:12:43,280
+right-hand side uh is basically the old
+
+338
+00:12:41,240 --> 00:12:45,640
+representation of the ontology that you
+
+339
+00:12:43,280 --> 00:12:48,520
+see um on the left-hand side.
+
+340
+00:12:45,640 --> 00:12:51,080
+So, uh here we have multiple classes.
+
+341
+00:12:48,520 --> 00:12:52,839
+So, the top class says uh regulation. A
+
+342
+00:12:51,080 --> 00:12:56,040
+regulation can mean any regulation that
+
+343
+00:12:52,839 --> 00:12:58,680
+we have in the world, GDPR, BCBS 239,
+
+344
+00:12:56,040 --> 00:13:00,800
+anything. And every regulation mandates
+
+345
+00:12:58,680 --> 00:13:04,040
+a certain compliance requirement. And
+
+346
+00:13:00,800 --> 00:13:04,680
+HSBC internally has a data policy like
+
+347
+00:13:04,040 --> 00:13:06,880
+uh
+
+348
+00:13:04,680 --> 00:13:08,680
+multiple banks across the world, which
+
+349
+00:13:06,880 --> 00:13:10,680
+addresses uh
+
+350
+00:13:08,680 --> 00:13:13,160
+different compliance requirements.
+
+351
+00:13:10,680 --> 00:13:16,280
+And the data and the applications that
+
+352
+00:13:13,160 --> 00:13:19,200
+the group uses is in scope of the HSBC
+
+353
+00:13:16,280 --> 00:13:21,839
+data policy. And we have used a common
+
+354
+00:13:19,200 --> 00:13:23,960
+class called country that would uh link
+
+355
+00:13:21,839 --> 00:13:25,880
+our application data and the regulation.
+
+356
+00:13:23,960 --> 00:13:28,480
+So, here we are highlighting that we can
+
+357
+00:13:25,880 --> 00:13:29,360
+reuse assets to
+
+358
+00:13:28,480 --> 00:13:31,720
+uh uh
+
+359
+00:13:29,360 --> 00:13:35,000
+we can reuse assets to uh like build a
+
+360
+00:13:31,720 --> 00:13:37,000
+knowledge graph through an ontology.
+
+361
+00:13:35,000 --> 00:13:39,440
+Now, let's look into how
+
+362
+00:13:37,000 --> 00:13:41,560
+uh we can Now, now let's look into a
+
+363
+00:13:39,440 --> 00:13:44,440
+broader description of the same through
+
+364
+00:13:41,560 --> 00:13:44,440
+a data example.
+
+365
+00:13:44,480 --> 00:13:46,960
+>> So, we've looked at the
+
+366
+00:13:46,000 --> 00:13:49,640
+What it says
+
+367
+00:13:46,960 --> 00:13:52,720
+a high-level ontology for a use case. Um
+
+368
+00:13:49,640 --> 00:13:56,280
+let's take regulation BCBS 239. And one
+
+369
+00:13:52,720 --> 00:13:58,000
+of uh its mandate is uh how is a bank uh
+
+370
+00:13:56,280 --> 00:14:00,120
+how is the data governance around a risk
+
+371
+00:13:58,000 --> 00:14:02,320
+aggregation capabilities? That's what
+
+372
+00:14:00,120 --> 00:14:04,400
+the policy mandates. And internally in
+
+373
+00:14:02,320 --> 00:14:06,520
+our organization, uh we have policy
+
+374
+00:14:04,400 --> 00:14:08,680
+which let's say is called data lineage.
+
+375
+00:14:06,520 --> 00:14:11,000
+And data lineage is one of the policy
+
+376
+00:14:08,680 --> 00:14:13,000
+that addresses the higher requirement of
+
+377
+00:14:11,000 --> 00:14:15,200
+governance. And when we say lineage,
+
+378
+00:14:13,000 --> 00:14:17,360
+it's usually documented for in scope of
+
+379
+00:14:15,200 --> 00:14:19,280
+data points. So,
+
+380
+00:14:17,360 --> 00:14:21,320
+assuming let's take for example customer
+
+381
+00:14:19,280 --> 00:14:24,280
+data is what is in scope for what BCBS
+
+382
+00:14:21,320 --> 00:14:26,400
+is asking for. And uh as part of
+
+383
+00:14:24,280 --> 00:14:29,120
+documenting a lineage, we start with
+
+384
+00:14:26,400 --> 00:14:30,880
+where is this data stored in? Uh just
+
+385
+00:14:29,120 --> 00:14:32,960
+take an example of customer onboarding
+
+386
+00:14:30,880 --> 00:14:35,280
+system. And uh
+
+387
+00:14:32,960 --> 00:14:36,920
+we also know that this is an application
+
+388
+00:14:35,280 --> 00:14:38,880
+that is hosted in UK. That means the
+
+389
+00:14:36,920 --> 00:14:41,839
+data center of this app is actually
+
+390
+00:14:38,880 --> 00:14:43,240
+hosted in UK. And uh also, when we talk
+
+391
+00:14:41,839 --> 00:14:46,280
+about lineage, it's about how is this
+
+392
+00:14:43,240 --> 00:14:48,400
+data flowing across the organization?
+
+393
+00:14:46,280 --> 00:14:51,120
+Uh which says it's This is the same data
+
+394
+00:14:48,400 --> 00:14:53,320
+that's uh flowing from uh customer
+
+395
+00:14:51,120 --> 00:14:57,000
+onboarding system to another risk
+
+396
+00:14:53,320 --> 00:14:59,560
+exposure engine. Um one interface. And
+
+397
+00:14:57,000 --> 00:15:01,800
+this is UK customer uh um
+
+398
+00:14:59,560 --> 00:15:04,720
+So, we can also infer that because the
+
+399
+00:15:01,800 --> 00:15:06,360
+data is uh flowing from an upstream
+
+400
+00:15:04,720 --> 00:15:08,520
+application to a downstream, it's also
+
+401
+00:15:06,360 --> 00:15:10,080
+stored in the consuming application. And
+
+402
+00:15:08,520 --> 00:15:13,200
+we also know that the app where it was
+
+403
+00:15:10,080 --> 00:15:15,120
+consumed is hosted in France. And uh
+
+404
+00:15:13,200 --> 00:15:16,600
+this data that was flowing uh was
+
+405
+00:15:15,120 --> 00:15:20,280
+related to UK.
+
+406
+00:15:16,600 --> 00:15:22,320
+Um and uh this also uh brings into scope
+
+407
+00:15:20,280 --> 00:15:24,240
+the application. So, in scope, I think
+
+408
+00:15:22,320 --> 00:15:26,200
+yesterday we were just talking when we
+
+409
+00:15:24,240 --> 00:15:28,400
+say regulation, it's a very generic
+
+410
+00:15:26,200 --> 00:15:30,720
+relationship. We just say apps are in
+
+411
+00:15:28,400 --> 00:15:32,520
+scope, your data is in scope, and you
+
+412
+00:15:30,720 --> 00:15:34,800
+know, this regulation
+
+413
+00:15:32,520 --> 00:15:36,400
+applies to some country. So, in this
+
+414
+00:15:34,800 --> 00:15:38,640
+example, we're just taking this
+
+415
+00:15:36,400 --> 00:15:41,160
+regulation applies to France.
+
+416
+00:15:38,640 --> 00:15:43,600
+Now, let's take another regulation,
+
+417
+00:15:41,160 --> 00:15:45,560
+GDPR, which again
+
+418
+00:15:43,600 --> 00:15:48,320
+mandates many things, but two examples
+
+419
+00:15:45,560 --> 00:15:50,880
+it is trying to look for how is the data
+
+420
+00:15:48,320 --> 00:15:53,280
+being transferred across geographies,
+
+421
+00:15:50,880 --> 00:15:55,640
+especially from a customer privacy
+
+422
+00:15:53,280 --> 00:15:57,440
+perspective, and what kind of customer
+
+423
+00:15:55,640 --> 00:15:59,720
+data we're actually storing. So, that's
+
+424
+00:15:57,440 --> 00:16:02,880
+the data retention ask. And for data
+
+425
+00:15:59,720 --> 00:16:04,720
+retention, our internal HSBC policy,
+
+426
+00:16:02,880 --> 00:16:07,960
+for for example's sake, is called data
+
+427
+00:16:04,720 --> 00:16:09,720
+privacy. And for data transfer, our
+
+428
+00:16:07,960 --> 00:16:13,800
+internal policy is lineage, which is the
+
+429
+00:16:09,720 --> 00:16:15,800
+same thing that addresses BCBS as well.
+
+430
+00:16:13,800 --> 00:16:18,680
+Now, because as part of BCBS, we've
+
+431
+00:16:15,800 --> 00:16:21,880
+already documented our information
+
+432
+00:16:18,680 --> 00:16:24,040
+for addressing GDPR ask of
+
+433
+00:16:21,880 --> 00:16:26,680
+there should not be any customer-related
+
+434
+00:16:24,040 --> 00:16:29,360
+information that is changing boundaries
+
+435
+00:16:26,680 --> 00:16:31,360
+or geographies. I can just look at the
+
+436
+00:16:29,360 --> 00:16:33,440
+data and analyze it. I don't need to go
+
+437
+00:16:31,360 --> 00:16:34,920
+around inventorying or documenting my
+
+438
+00:16:33,440 --> 00:16:37,600
+data all over again.
+
+439
+00:16:34,920 --> 00:16:40,440
+Because I know that customer data or UK
+
+440
+00:16:37,600 --> 00:16:42,720
+customer data is being sent from an app
+
+441
+00:16:40,440 --> 00:16:45,520
+which is hosted in UK to an app that's
+
+442
+00:16:42,720 --> 00:16:46,680
+hosted in France, I can easily identify
+
+443
+00:16:45,520 --> 00:16:48,200
+and
+
+444
+00:16:46,680 --> 00:16:50,360
+try to put the, you know, our required
+
+445
+00:16:48,200 --> 00:16:52,360
+controls or make a local instance of it
+
+446
+00:16:50,360 --> 00:16:55,880
+and do the necessary actions required.
+
+447
+00:16:52,360 --> 00:16:57,839
+But, this will immediately help GDPR to
+
+448
+00:16:55,880 --> 00:16:59,400
+understand what is our estate. We can
+
+449
+00:16:57,839 --> 00:17:01,720
+easily have an understanding of how our
+
+450
+00:16:59,400 --> 00:17:04,920
+estate is spanned. Similarly will be the
+
+451
+00:17:01,720 --> 00:17:06,560
+case for data privacy. Again, privacy or
+
+452
+00:17:04,920 --> 00:17:09,000
+or the higher ask is retention, which
+
+453
+00:17:06,560 --> 00:17:10,400
+says you need to know or we as a bank
+
+454
+00:17:09,000 --> 00:17:12,640
+need to tell
+
+455
+00:17:10,400 --> 00:17:14,800
+where are we storing customer data, how
+
+456
+00:17:12,640 --> 00:17:17,160
+long are we storing customer data, and
+
+457
+00:17:14,800 --> 00:17:18,880
+is it in the same geography or not.
+
+458
+00:17:17,160 --> 00:17:21,079
+So, similarly because
+
+459
+00:17:18,880 --> 00:17:23,600
+we know that what data is stored in
+
+460
+00:17:21,079 --> 00:17:26,040
+which applications, we can easily just
+
+461
+00:17:23,600 --> 00:17:27,600
+scan the material that's already there
+
+462
+00:17:26,040 --> 00:17:30,920
+and just
+
+463
+00:17:27,600 --> 00:17:32,560
+produce an output saying where actually
+
+464
+00:17:30,920 --> 00:17:34,000
+I'm not compliant or I need to do
+
+465
+00:17:32,560 --> 00:17:37,720
+something about
+
+466
+00:17:34,000 --> 00:17:40,240
+about my data. So, in this example, uh
+
+467
+00:17:37,720 --> 00:17:43,080
+what what we try to explain is even
+
+468
+00:17:40,240 --> 00:17:43,760
+though the two different regulations
+
+469
+00:17:43,080 --> 00:17:46,160
+uh
+
+470
+00:17:43,760 --> 00:17:48,960
+we were able to
+
+471
+00:17:46,160 --> 00:17:51,000
+we were able to reduce duplication of
+
+472
+00:17:48,960 --> 00:17:53,800
+efforts and we were able to leverage
+
+473
+00:17:51,000 --> 00:17:56,480
+what was already done to address BCBS
+
+474
+00:17:53,800 --> 00:17:58,480
+for our GDPR use case as well. And GDPR
+
+475
+00:17:56,480 --> 00:18:00,640
+is something again, you know, it for
+
+476
+00:17:58,480 --> 00:18:04,680
+example sake it applies to France and UK
+
+477
+00:18:00,640 --> 00:18:07,280
+both. Um so, this is how we were able to
+
+478
+00:18:04,680 --> 00:18:09,760
+leverage our graph
+
+479
+00:18:07,280 --> 00:18:12,200
+internally where when we're documenting
+
+480
+00:18:09,760 --> 00:18:14,040
+or inventing information, this are just
+
+481
+00:18:12,200 --> 00:18:15,600
+two examples of two regulations, but
+
+482
+00:18:14,040 --> 00:18:17,160
+there are a lot more regulations that we
+
+483
+00:18:15,600 --> 00:18:20,120
+were able to
+
+484
+00:18:17,160 --> 00:18:23,640
+just read the data and
+
+485
+00:18:20,120 --> 00:18:23,640
+provide outputs for it.
+
+486
+00:18:24,520 --> 00:18:28,800
+>> So, as you've seen in the previous
+
+487
+00:18:26,200 --> 00:18:30,360
+example, BCBS is a regulation that
+
+488
+00:18:28,800 --> 00:18:33,040
+basically asks for risk
+
+489
+00:18:30,360 --> 00:18:35,240
+aggregation capabilities of a bank and
+
+490
+00:18:33,040 --> 00:18:36,960
+GDPR is something that is completely
+
+491
+00:18:35,240 --> 00:18:39,400
+different that that talks about customer
+
+492
+00:18:36,960 --> 00:18:41,960
+privacy customer data privacy and how
+
+493
+00:18:39,400 --> 00:18:44,160
+data is transferred across geographies.
+
+494
+00:18:41,960 --> 00:18:45,760
+But at the core, these two
+
+495
+00:18:44,160 --> 00:18:47,720
+there are a lot of overlaps between
+
+496
+00:18:45,760 --> 00:18:50,160
+these two regulations that is having a
+
+497
+00:18:47,720 --> 00:18:52,120
+good governance framework and to have
+
+498
+00:18:50,160 --> 00:18:55,440
+good data lineage.
+
+499
+00:18:52,120 --> 00:18:57,120
+So, through a knowledge graph, we didn't
+
+500
+00:18:55,440 --> 00:18:59,320
+reinvent the wheel.
+
+501
+00:18:57,120 --> 00:19:01,480
+The work that was done for a particular
+
+502
+00:18:59,320 --> 00:19:04,520
+regulation could be reused
+
+503
+00:19:01,480 --> 00:19:04,520
+for the other regulation.
+
+504
+00:19:06,960 --> 00:19:09,280
+>> And
+
+505
+00:19:07,800 --> 00:19:10,920
+this was our tech stack. So, when I
+
+506
+00:19:09,280 --> 00:19:14,320
+mentioned this year we had to upscale to
+
+507
+00:19:10,920 --> 00:19:16,080
+enterprise solution. So, at the
+
+508
+00:19:14,320 --> 00:19:18,720
+core of our
+
+509
+00:19:16,080 --> 00:19:21,800
+at the core of our application,
+
+510
+00:19:18,720 --> 00:19:24,480
+we use an RDF based Altier Graph Studio,
+
+511
+00:19:21,800 --> 00:19:27,040
+which was formerly Anzo by Cambridge
+
+512
+00:19:24,480 --> 00:19:30,480
+Semantics. And we use Protege for our
+
+513
+00:19:27,040 --> 00:19:32,440
+ontology management and YFiles, which
+
+514
+00:19:30,480 --> 00:19:34,360
+you would have already seen here for our
+
+515
+00:19:32,440 --> 00:19:36,120
+visualization because, of course, our
+
+516
+00:19:34,360 --> 00:19:37,600
+use case is lineage, so it's very
+
+517
+00:19:36,120 --> 00:19:40,920
+important for users to actually
+
+518
+00:19:37,600 --> 00:19:45,000
+understand what data is uh flowing
+
+519
+00:19:40,920 --> 00:19:46,800
+across which boundaries. So, this is our
+
+520
+00:19:45,000 --> 00:19:49,680
+current tech stack that we're using for
+
+521
+00:19:46,800 --> 00:19:49,680
+our use case.
+
+522
+00:19:51,640 --> 00:19:56,160
+>> Yeah, so what is the future of knowledge
+
+523
+00:19:54,000 --> 00:19:58,680
+graph? We can reduce cost to a larger
+
+524
+00:19:56,160 --> 00:20:01,160
+scale by having a good ontology and
+
+525
+00:19:58,680 --> 00:20:03,480
+connecting data across silos. And that
+
+526
+00:20:01,160 --> 00:20:05,400
+would really improve the efficiency of
+
+527
+00:20:03,480 --> 00:20:09,560
+the different processes that your
+
+528
+00:20:05,400 --> 00:20:09,560
+organization or business handles.
+
+529
+00:20:09,640 --> 00:20:15,240
+>> Um and I think just in continuation,
+
+530
+00:20:12,800 --> 00:20:18,480
+also in conclusion,
+
+531
+00:20:15,240 --> 00:20:21,000
+um we as an organization, we very much
+
+532
+00:20:18,480 --> 00:20:22,920
+believe in trying to reuse and not
+
+533
+00:20:21,000 --> 00:20:24,000
+necessarily,
+
+534
+00:20:22,920 --> 00:20:26,560
+you know,
+
+535
+00:20:24,000 --> 00:20:28,520
+trying to get new tools into our bank.
+
+536
+00:20:26,560 --> 00:20:29,880
+As far as possible, we want to reduce
+
+537
+00:20:28,520 --> 00:20:32,720
+any redundancies, reuse what's
+
+538
+00:20:29,880 --> 00:20:34,760
+available. And by having this graph
+
+539
+00:20:32,720 --> 00:20:36,640
+platform, we're able to support a lot of
+
+540
+00:20:34,760 --> 00:20:39,320
+regulations in
+
+541
+00:20:36,640 --> 00:20:41,920
+without having to duplicate any efforts.
+
+542
+00:20:39,320 --> 00:20:44,480
+And it's also helping us uh scale across
+
+543
+00:20:41,920 --> 00:20:46,440
+different businesses across the bank,
+
+544
+00:20:44,480 --> 00:20:48,400
+not just in one area of the bank, but
+
+545
+00:20:46,440 --> 00:20:50,400
+across the bank we're able to do it. And
+
+546
+00:20:48,400 --> 00:20:53,560
+there's a lot more flexibility with the
+
+547
+00:20:50,400 --> 00:20:56,320
+data, which is allowing us to have
+
+548
+00:20:53,560 --> 00:20:59,160
+proactive compliance. Uh once all, you
+
+549
+00:20:56,320 --> 00:21:00,640
+know, it's already in organization where
+
+550
+00:20:59,160 --> 00:21:02,880
+across the bank, irrespective of what
+
+551
+00:21:00,640 --> 00:21:04,200
+the regulation is asking for,
+
+552
+00:21:02,880 --> 00:21:06,960
+all the business in the bank need to
+
+553
+00:21:04,200 --> 00:21:08,120
+adhere to the internal HSBC policies.
+
+554
+00:21:06,960 --> 00:21:10,360
+And one
+
+555
+00:21:08,120 --> 00:21:12,880
+once the data that is required for these
+
+556
+00:21:10,360 --> 00:21:15,760
+policies is inventoried, no matter what
+
+557
+00:21:12,880 --> 00:21:17,760
+a regulator is asking for from the data
+
+558
+00:21:15,760 --> 00:21:20,000
+perspective, we will always already have
+
+559
+00:21:17,760 --> 00:21:22,520
+it and it's just about pulling the data
+
+560
+00:21:20,000 --> 00:21:24,920
+and just responding to their queries.
+
+561
+00:21:22,520 --> 00:21:27,640
+So, having this kind of platform is
+
+562
+00:21:24,920 --> 00:21:29,600
+going to help us reduce cost. We don't
+
+563
+00:21:27,640 --> 00:21:31,200
+need to come up with
+
+564
+00:21:29,600 --> 00:21:32,840
+siloed inventories all over the place to
+
+565
+00:21:31,200 --> 00:21:36,560
+address one regulation and some other
+
+566
+00:21:32,840 --> 00:21:39,280
+regulation. Um overall, high efficiency,
+
+567
+00:21:36,560 --> 00:21:41,480
+scalability, and it gives us proactive
+
+568
+00:21:39,280 --> 00:21:42,760
+compliance.
+
+569
+00:21:41,480 --> 00:21:45,280
+And
+
+570
+00:21:42,760 --> 00:21:48,480
+that's it for me. Thank you.
+
+571
+00:21:45,280 --> 00:21:48,480
+>> Awesome. Thank you.
+
