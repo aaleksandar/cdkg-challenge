@@ -2904,5 +2904,127 @@
         "data modeling"
       ]
     }
+  },
+  {
+    "filename": "Mastering Graph Neural Networks_ From Fundamentals to Applications.txt",
+    "entities": {
+      "tag": [
+        "convolutional neural networks",
+        "cypher",
+        "degree centrality",
+        "eigenvector centrality",
+        "g-retriever",
+        "geometric deep learning",
+        "github",
+        "google colab",
+        "gpt-4",
+        "graph attention networks",
+        "graph convolutional networks",
+        "graph isomorphism network",
+        "graph neural networks",
+        "graph rag",
+        "graphsage",
+        "llama 2",
+        "link prediction",
+        "lstm",
+        "message passing neural networks",
+        "microsoft graphrag",
+        "multi-layer perceptron",
+        "node classification",
+        "numpy",
+        "pagerank",
+        "permutation equivariance",
+        "permutation invariance",
+        "pytorch geometric",
+        "recurrent neural networks",
+        "relu",
+        "sparql",
+        "ultra",
+        "word2vec"
+      ]
+    }
+  },
+  {
+    "filename": "Building Trust In AI_ Semantic Interoperability and Knowledge Graphs at the Rescue of LLMs.txt",
+    "entities": {
+      "tag": [
+        "knowledge graph",
+        "ontologies",
+        "bfo",
+        "excel",
+        "vba",
+        "powerpoint",
+        "large language model",
+        "langchain",
+        "palantir",
+        "prompt engineering",
+        "ontology engineering",
+        "chatgpt",
+        "fastapi",
+        "github",
+        "ci/cd",
+        "dprod",
+        "similarity search",
+        "turtle",
+        "yaml",
+        "sparql",
+        "graph database",
+        "neural network",
+        "data mining",
+        "data engineering",
+        "ontology mapping",
+        "openai api",
+        "rdf xml",
+        "claude"
+      ]
+    }
+  },
+  {
+    "filename": "The IKEA Knowledge Graph as a Service_ Scaling Enterprise-Wide Data Integration in Global Retail.txt",
+    "entities": {
+      "tag": [
+        "knowledge graph",
+        "powerpoint",
+        "machine learning",
+        "conversational ai",
+        "chatbots",
+        "ontology",
+        "taxonomy",
+        "generative ai",
+        "java",
+        "json",
+        "triples",
+        "python",
+        "api",
+        "graph db",
+        "reasoning rules",
+        "turtle"
+      ]
+    }
+  },
+  {
+    "filename": "Visualizing Connected Data_ Why, When, and How.txt",
+    "entities": {
+      "tag": [
+        "graph visualization",
+        "color coding",
+        "filtering",
+        "edge bundling",
+        "automatic layouts",
+        "level of detail rendering",
+        "swimlanes",
+        "heat maps",
+        "animations",
+        "excel",
+        "jupyter notebook",
+        "neo4j",
+        "cypher",
+        "rdf triple stores",
+        "labeled property graphs",
+        "genai",
+        "construct queries",
+        "data binding"
+      ]
+    }
   }
 ]
