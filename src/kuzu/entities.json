@@ -3026,5 +3026,72 @@
         "data binding"
       ]
     }
+  },
+  {
+    "filename": "The Missing Package Manager_ Making Ontologies Easier to Find, Install and Trust.txt",
+    "entities": {
+      "tag": [
+        "semantic web",
+        "lod cloud",
+        "npm",
+        "maven",
+        "obo foundry",
+        "fibo",
+        "knowledge graph",
+        "shacl",
+        "ontology"
+      ]
+    }
+  },
+  {
+    "filename": "Graph-Based Data Science Masterclass. Paco Nathan, Learning with the Machines.txt",
+    "entities": {
+      "tag": [
+        "python",
+        "kglab",
+        "pandas",
+        "matplotlib",
+        "numpy",
+        "jupyter",
+        "jupyter lab",
+        "git",
+        "pip",
+        "conda",
+        "networkx",
+        "psl",
+        "pyshckle",
+        "rdflib",
+        "pyvis",
+        "scikit-learn",
+        "parquet",
+        "spark",
+        "rapids",
+        "gpus",
+        "self-supervised learning",
+        "transfer learning",
+        "deep learning",
+        "owl",
+        "rdfs",
+        "skos",
+        "rdf",
+        "turtle",
+        "json-ld",
+        "xml",
+        "cudf",
+        "cuml",
+        "cugraph",
+        "sparql",
+        "shacl",
+        "spacy",
+        "pytextrank",
+        "bfs",
+        "breadth first search",
+        "triadic census",
+        "degree centrality",
+        "k-core",
+        "pagerank",
+        "jira"
+      ]
+    }
   }
 ]
