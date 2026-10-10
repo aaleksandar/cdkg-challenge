@@ -1,0 +1,256 @@
+1
+00:00:00,240 --> 00:00:07,359
+Hello connected data London folk. The
+
+2
+00:00:04,240 --> 00:00:09,519
+semantic web industry has delivered on a
+
+3
+00:00:07,359 --> 00:00:12,160
+great many things and we're very very
+
+4
+00:00:09,519 --> 00:00:14,480
+pleased with its success in a great
+
+5
+00:00:12,160 --> 00:00:16,720
+number of ways. Uh but there are a few
+
+6
+00:00:14,480 --> 00:00:18,000
+things that quite frankly haven't quite
+
+7
+00:00:16,720 --> 00:00:19,760
+delivered the way that people have
+
+8
+00:00:18,000 --> 00:00:22,240
+expected certainly not when they come to
+
+9
+00:00:19,760 --> 00:00:24,400
+the industry when they come to the
+
+10
+00:00:22,240 --> 00:00:26,080
+technology set.
+
+11
+00:00:24,400 --> 00:00:31,119
+And I'm going to try to address a few of
+
+12
+00:00:26,080 --> 00:00:34,800
+those fundamental often maligned
+
+13
+00:00:31,119 --> 00:00:37,280
+issues that people have come across.
+
+14
+00:00:34,800 --> 00:00:39,120
+Um the questions that I'm going to try
+
+15
+00:00:37,280 --> 00:00:42,480
+to answer are questions that people
+
+16
+00:00:39,120 --> 00:00:46,719
+often have such as number one, where do
+
+17
+00:00:42,480 --> 00:00:50,000
+I go to find an ontology?
+
+18
+00:00:46,719 --> 00:00:54,280
+Where can I go to pull an ontology?
+
+19
+00:00:50,000 --> 00:00:54,280
+Where is the repository of ontologies?
+
+20
+00:00:54,559 --> 00:00:58,960
+We've had service in services in the
+
+21
+00:00:56,480 --> 00:01:02,160
+past like the LOD cloud that which show
+
+22
+00:00:58,960 --> 00:01:04,960
+wonderful diagrams and through no fault
+
+23
+00:01:02,160 --> 00:01:08,320
+of their own have links to things which
+
+24
+00:01:04,960 --> 00:01:10,960
+supposedly are data sets and ontologies
+
+25
+00:01:08,320 --> 00:01:12,640
+but just after a few clicks
+
+26
+00:01:10,960 --> 00:01:15,200
+will expose the fact that maybe those
+
+27
+00:01:12,640 --> 00:01:16,560
+links are no longer exist. There isn't
+
+28
+00:01:15,200 --> 00:01:19,280
+really anything wrong with a LODC cloud.
+
+29
+00:01:16,560 --> 00:01:21,520
+I think it's a wonderful um service but
+
+30
+00:01:19,280 --> 00:01:23,439
+it is a symptom. It does expose a
+
+31
+00:01:21,520 --> 00:01:26,080
+symptom.
+
+32
+00:01:23,439 --> 00:01:28,720
+Um, and I think this is because there
+
+33
+00:01:26,080 --> 00:01:32,159
+isn't really there there never really
+
+34
+00:01:28,720 --> 00:01:34,640
+has been any sort of npm or maven
+
+35
+00:01:32,159 --> 00:01:37,520
+repository for ontologies. There are
+
+36
+00:01:34,640 --> 00:01:39,119
+certain things like the OBO foundry that
+
+37
+00:01:37,520 --> 00:01:40,799
+have done an attempt to do this for the
+
+38
+00:01:39,119 --> 00:01:44,159
+life sciences community and others for
+
+39
+00:01:40,799 --> 00:01:46,880
+other communities. FIBO uh the EDMA, the
+
+40
+00:01:44,159 --> 00:01:49,280
+EDM association certainly does this with
+
+41
+00:01:46,880 --> 00:01:51,680
+their particular uh favored ontologies
+
+42
+00:01:49,280 --> 00:01:53,759
+like FIBO. But there's no central
+
+43
+00:01:51,680 --> 00:01:55,600
+registry when a newcomer can go and find
+
+44
+00:01:53,759 --> 00:01:57,920
+what they're looking for and check it
+
+45
+00:01:55,600 --> 00:02:01,600
+out. And it's not versioned. It's not
+
+46
+00:01:57,920 --> 00:02:05,840
+pinned to a specific version. So what I
+
+47
+00:02:01,600 --> 00:02:07,840
+want to talk about is partly how
+
+48
+00:02:05,840 --> 00:02:11,599
+we can overcome
+
+49
+00:02:07,840 --> 00:02:13,680
+that particular issue and make
+
+50
+00:02:11,599 --> 00:02:16,080
+knowledge graph technologies truly more
+
+51
+00:02:13,680 --> 00:02:19,040
+accessible to people uh through their
+
+52
+00:02:16,080 --> 00:02:21,280
+ontologies and also
+
+53
+00:02:19,040 --> 00:02:24,080
+how not only that but we can pin it to a
+
+54
+00:02:21,280 --> 00:02:25,920
+version and
+
+55
+00:02:24,080 --> 00:02:27,520
+have some sort of validation that the
+
+56
+00:02:25,920 --> 00:02:29,040
+data you're going to process will
+
+57
+00:02:27,520 --> 00:02:30,560
+conform to those versions of those
+
+58
+00:02:29,040 --> 00:02:32,959
+ontologies. So there's also an element
+
+59
+00:02:30,560 --> 00:02:36,080
+of shackle here which I think you'll
+
+60
+00:02:32,959 --> 00:02:39,120
+find very interesting.
+
+61
+00:02:36,080 --> 00:02:41,599
+I think this is some of my finest work
+
+62
+00:02:39,120 --> 00:02:44,720
+and I would be delighted if I get the
+
+63
+00:02:41,599 --> 00:02:47,440
+opportunity to share it with you this
+
+64
+00:02:44,720 --> 00:02:47,440
+winter.
+
