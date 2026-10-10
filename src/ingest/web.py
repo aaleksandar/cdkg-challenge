@@ -895,7 +895,7 @@ def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> d
         # The caption fallback. The tail only, as for the Google key; None
         # means yt-dlp is the only automatic source and a refusal is upload-only.
         "supadata_key_hint": api_key_hint("SUPADATA_API_KEY"),
-        "backlog": [s for s in states if s.on_youtube and s.status == "not_ingested"],
+        "backlog": _backlog(states),
         "orphans": [s for s in offchannel if s.status == "orphaned"],
         "junk": [s for s in offchannel if s.status == "junk"],
         "stranded": [s for s in offchannel
@@ -1167,6 +1167,21 @@ def download_snapshot(name: str):
                         filename=f"cdkg-graph-{name}.zip")
 
 
+def _backlog(states) -> list[str]:
+    """The video ids the drain would queue, for the button's count and the drain.
+
+    A status says what has happened to a talk; whether a video may be ingested
+    at all is the scheduler's rule, and the drain asks it too. Without it a
+    premiere caught on air or just after (``is_live``/``post_live``, which the
+    status reads as an ordinary waiting video) was queued and could only fail.
+    """
+    from .scheduler import _ingestable
+
+    candidates = [s.video_id for s in states
+                  if s.on_youtube and s.status == "not_ingested" and s.video_id]
+    return [vid for vid, refused in _ingestable(candidates) if refused is None]
+
+
 @router.post("/backlog/ingest", response_class=HTMLResponse)
 def ingest_backlog(request: Request):
     """Drain the backlog: every video on the channel that has never been ingested.
@@ -1181,11 +1196,7 @@ def ingest_backlog(request: Request):
     from .pipeline.runner import queue_videos
 
     busy = db.videos_with_active_runs()
-    backlog = [
-        s.video_id for s in R.reconcile()
-        if s.on_youtube and s.status == "not_ingested"
-        and s.video_id and s.video_id not in busy
-    ]
+    backlog = [vid for vid in _backlog(R.reconcile()) if vid not in busy]
     if not backlog:
         return HTMLResponse('<span class="note">Nothing waiting — the backlog is empty.</span>')
 
