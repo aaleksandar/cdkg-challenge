@@ -214,6 +214,42 @@ def test_draining_the_backlog_queues_the_channel_not_the_page(client, monkeypatc
     assert "Queued 1 video" in response.text
 
 
+def test_the_backlog_drains_only_what_could_be_ingested(client, monkeypatch):
+    """The drain asks the scheduler's rule as well as the status. A premiere
+    caught on air or just after reads as an ordinary waiting video, and a run
+    against it can only fail. The button's count is the same list."""
+    def video(vid, **kw):
+        return R.TalkState(sources={"youtube": vid}, title=f"Talk {vid}",
+                           duration=kw.pop("duration", 2400), **kw)
+
+    states = [
+        video("eeeeeeeeeee"),                                  # waiting: queued
+        video("lllllllllll", live_status="is_live"),            # on air
+        video("ooooooooooo", live_status="post_live"),          # just aired
+        video("sssssssssss", duration=60),                      # a Short
+        video("uuuuuuuuuuu", live_status="is_upcoming"),        # not aired
+        video("bbbbbbbbbbb"),       # queued since this reconcile: counted, not re-queued
+        video("fffffffffff", run={"status": "failed"}),         # failed: by hand
+        R.TalkState(talk_id="t-linked01", sources={"youtube": "hhhhhhhhhhh",
+                    "heysummit": "7"}, in_csv=True, title="Linked talk",
+                    csv_title="Linked talk", duration=2400),    # seeded, linked: queued
+        R.TalkState(talk_id="t-waiting1", sources={"heysummit": "8"}, in_csv=True,
+                    title="No video yet", csv_title="No video yet"),
+    ]
+    monkeypatch.setattr(R, "reconcile", _only(*states))
+    db.upsert_videos([{"video_id": s.video_id, "title": s.title, "url": "u",
+                       "duration": s.duration, "live_status": s.live_status}
+                      for s in states if s.video_id])
+    db.start_run("bbbbbbbbbbb", ["metadata_parse"], status="queued")
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
+                        lambda ids: queued.extend(ids) or len(ids))
+
+    assert "Ingest the backlog (3)" in client.get("/advanced").text
+    client.post("/backlog/ingest")
+    assert sorted(queued) == ["eeeeeeeeeee", "hhhhhhhhhhh"]
+
+
 def test_the_sheet_is_newest_first_regardless_of_status(client, monkeypatch):
     """The channel is a timeline and the sheet reads in the order it publishes.
     Floating stuck rows to the top reordered the list under the admin every time
