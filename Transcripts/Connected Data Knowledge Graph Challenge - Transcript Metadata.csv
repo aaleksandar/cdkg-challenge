@@ -2347,7 +2347,7 @@ Beginner to Advanced
 Prerequisite Knowledge
 None
 You need an access pass to attend this session: Diversity Access Pass or Full Access Pass apply",t-231d37ed,261956
-Graph Data Science,Paco Nathan,,Connected Data World 2021,01/12/2021,Masterclass,,https://www.youtube.com/watch?v=4gQkJNzN6xA,,https://2021.connecteddataworld.com/talks/graph-data-science/,"Description
+Graph Data Science,Paco Nathan,/Transcripts/Connected Data World 2021/Presentations/Graph Data Science.srt,Connected Data World 2021,01/12/2021,Masterclass,,https://www.youtube.com/watch?v=4gQkJNzN6xA,,https://2021.connecteddataworld.com/talks/graph-data-science/,"Description
 Python has excellent libraries for working with graphs which provide: semantic technologies, graph queries, interactive visualizations, graph algorithms, probabilistic graph inference, as well as embedding and other integrations with deep learning.
 However, almost none of these have integration paths other than writing lots of custom code, and most do not share common file formats. Moreover, few of these libraries integrate effectively with popular data science tools (e.g., pandas, scikit-learn, PyTorch, spaCy, etc.) or with popular infrastructure for scale-out (Apache Spark, Ray, RAPIDS, Apache Parquet, fsspec, etc.) on cloud computing.
 This tutorial introduces kglab – an open source project that integrates RDFlib, OWL-RL, pySHACL, NetworkX, iGraph, pslpython, node2vec, PyVis, and more – to show how to use a wide range of graph-based approaches, blending smoothly into data science workflows, and working efficiently with popular data engineering practices.
