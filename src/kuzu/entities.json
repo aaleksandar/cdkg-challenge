@@ -3802,5 +3802,33 @@
         "hugging face"
       ]
     }
+  },
+  {
+    "filename": "In Search of the Universal Data Model. Joshua Shinavier.txt",
+    "entities": {
+      "tag": [
+        "algebraic property graphs",
+        "amazon neptune",
+        "apache tinkerpop",
+        "avro",
+        "gql",
+        "gremlin",
+        "haskell",
+        "hypergraphs",
+        "multi-model abstract data type",
+        "neo4j",
+        "nino",
+        "owl 2",
+        "property graphs",
+        "protobuf",
+        "rdf",
+        "rdf star",
+        "ripple",
+        "scala",
+        "simply typed lambda calculus",
+        "thrift",
+        "titan"
+      ]
+    }
   }
 ]
