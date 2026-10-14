@@ -5105,5 +5105,38 @@
         "neo4j"
       ]
     }
+  },
+  {
+    "filename": "Knowledge graphs, meet Deep Learning. Andy Jefferson. Connected Data London 2018.txt",
+    "entities": {
+      "tag": [
+        "deep learning",
+        "neural networks",
+        "deep neural networks",
+        "densely connected layers",
+        "alphago",
+        "mac net",
+        "mat graph",
+        "machine learning",
+        "opencv",
+        "linear regression",
+        "gradient descent",
+        "stochastic gradient descent",
+        "deepwalk",
+        "node2vec",
+        "graphsage",
+        "graph convolutional networks",
+        "random walks",
+        "recurrent neural networks",
+        "convolutional neural networks",
+        "graph networks",
+        "pagerank",
+        "dijkstra's algorithm",
+        "attention",
+        "message-passing",
+        "word2vec",
+        "siri"
+      ]
+    }
   }
 ]
