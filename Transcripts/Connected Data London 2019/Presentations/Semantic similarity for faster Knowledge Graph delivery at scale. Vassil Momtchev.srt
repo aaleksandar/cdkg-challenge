@@ -1,0 +1,4200 @@
+1
+00:00:05,040 --> 00:00:09,760
+Uh before uh we have the last break of
+
+2
+00:00:06,960 --> 00:00:12,840
+the day. So, we have with us uh Vasil
+
+3
+00:00:09,760 --> 00:00:15,240
+Momchev, who is the CTO of Ontotext.
+
+4
+00:00:12,840 --> 00:00:17,440
+And he's going to be talking about
+
+5
+00:00:15,240 --> 00:00:19,840
+semantic similarity. Well,
+
+6
+00:00:17,440 --> 00:00:21,120
+Vasil, thanks for joining and floor is
+
+7
+00:00:19,840 --> 00:00:22,680
+yours.
+
+8
+00:00:21,120 --> 00:00:25,040
+Thank you, George.
+
+9
+00:00:22,680 --> 00:00:28,360
+Uh it's a pleasure to have you all every
+
+10
+00:00:25,040 --> 00:00:31,000
+everyone. Uh I'm the CTO of Ontotext.
+
+11
+00:00:28,360 --> 00:00:33,120
+Basically, my responsibility is to
+
+12
+00:00:31,000 --> 00:00:34,800
+direct the general product development
+
+13
+00:00:33,120 --> 00:00:37,200
+in the company.
+
+14
+00:00:34,800 --> 00:00:38,800
+And in the today talk, which is the H
+
+15
+00:00:37,200 --> 00:00:40,000
+struct, I'll give you a really healthy
+
+16
+00:00:38,800 --> 00:00:42,120
+mix of
+
+17
+00:00:40,000 --> 00:00:44,000
+some scientific information, some use
+
+18
+00:00:42,120 --> 00:00:45,360
+cases, how to create knowledge graphs,
+
+19
+00:00:44,000 --> 00:00:47,320
+and obviously some software
+
+20
+00:00:45,360 --> 00:00:48,800
+architectures, how you can really
+
+21
+00:00:47,320 --> 00:00:50,240
+implement this.
+
+22
+00:00:48,800 --> 00:00:52,840
+Uh
+
+23
+00:00:50,240 --> 00:00:55,320
+but before to dig into the presentation,
+
+24
+00:00:52,840 --> 00:00:57,600
+I really want to ask a question. So, why
+
+25
+00:00:55,320 --> 00:00:59,640
+we have all these people here talking
+
+26
+00:00:57,600 --> 00:01:01,880
+about knowledge graph? We have really a
+
+27
+00:00:59,640 --> 00:01:04,640
+bunch of smart people who invested
+
+28
+00:01:01,880 --> 00:01:06,320
+probably a good portion of their time
+
+29
+00:01:04,640 --> 00:01:08,000
+uh
+
+30
+00:01:06,320 --> 00:01:09,600
+testing some different different
+
+31
+00:01:08,000 --> 00:01:11,520
+different scientific methods how to
+
+32
+00:01:09,600 --> 00:01:14,120
+implement this. And also, we know a lot
+
+33
+00:01:11,520 --> 00:01:16,360
+of business people who try to implement
+
+34
+00:01:14,120 --> 00:01:20,200
+this in their organizations.
+
+35
+00:01:16,360 --> 00:01:21,840
+Uh so, this is one of the questions. And
+
+36
+00:01:20,200 --> 00:01:23,920
+I'm really happy that somebody tried to
+
+37
+00:01:21,840 --> 00:01:25,760
+quantify this because we see this in the
+
+38
+00:01:23,920 --> 00:01:27,880
+last 15 year
+
+39
+00:01:25,760 --> 00:01:29,600
+that across industry research show that
+
+40
+00:01:27,880 --> 00:01:32,000
+the big organizations, they show
+
+41
+00:01:29,600 --> 00:01:34,200
+actively use only half of their
+
+42
+00:01:32,000 --> 00:01:36,720
+structured data. And if you go to the
+
+43
+00:01:34,200 --> 00:01:40,640
+unstructured data, this percentage is
+
+44
+00:01:36,720 --> 00:01:42,640
+really even lower. It goes as low as 1%.
+
+45
+00:01:40,640 --> 00:01:44,320
+We as Ontotext as a company, we
+
+46
+00:01:42,640 --> 00:01:46,080
+specialize in two
+
+47
+00:01:44,320 --> 00:01:48,800
+technologies. One is the text analytics,
+
+48
+00:01:46,080 --> 00:01:50,840
+and the other is knowledge graphs and
+
+49
+00:01:48,800 --> 00:01:52,480
+knowledge representation. Here today,
+
+50
+00:01:50,840 --> 00:01:53,760
+our talk will be more focused on the
+
+51
+00:01:52,480 --> 00:01:56,400
+knowledge graphs.
+
+52
+00:01:53,760 --> 00:01:58,720
+Uh so, we are basically serving one of
+
+53
+00:01:56,400 --> 00:02:01,880
+the most innovative organizations who
+
+54
+00:01:58,720 --> 00:02:04,240
+are trying to develop new intelligent
+
+55
+00:02:01,880 --> 00:02:06,200
+systems which better utilize the
+
+56
+00:02:04,240 --> 00:02:08,119
+enterprise knowledge. And by saying
+
+57
+00:02:06,200 --> 00:02:10,720
+enterprise knowledge,
+
+58
+00:02:08,119 --> 00:02:12,480
+this is no longer focused to a single
+
+59
+00:02:10,720 --> 00:02:14,480
+organization. You know, in the modern
+
+60
+00:02:12,480 --> 00:02:16,800
+world, there are evolving business
+
+61
+00:02:14,480 --> 00:02:19,560
+models which combine data from different
+
+62
+00:02:16,800 --> 00:02:20,720
+organizations. So, no longer you have to
+
+63
+00:02:19,560 --> 00:02:22,640
+work only with your internal
+
+64
+00:02:20,720 --> 00:02:25,120
+organization, you have to mix it also
+
+65
+00:02:22,640 --> 00:02:26,880
+with external reference data.
+
+66
+00:02:25,120 --> 00:02:28,480
+Uh and also in inside of these
+
+67
+00:02:26,880 --> 00:02:30,360
+organizations, you have obviously
+
+68
+00:02:28,480 --> 00:02:33,520
+securities, nobody has access to the
+
+69
+00:02:30,360 --> 00:02:33,520
+full information.
+
+70
+00:02:33,600 --> 00:02:38,440
+So, in this talk, I'll
+
+71
+00:02:36,520 --> 00:02:40,360
+explain three things. What is basically
+
+72
+00:02:38,440 --> 00:02:42,560
+the problem by giving you four very
+
+73
+00:02:40,360 --> 00:02:44,200
+concrete examples, what is the solution,
+
+74
+00:02:42,560 --> 00:02:46,880
+and what is the solution in practical
+
+75
+00:02:44,200 --> 00:02:49,200
+software terms to implement this.
+
+76
+00:02:46,880 --> 00:02:51,120
+Uh so, I'll step make a step back and
+
+77
+00:02:49,200 --> 00:02:52,760
+talk what is actually a knowledge graph.
+
+78
+00:02:51,120 --> 00:02:55,240
+And this is our understanding about
+
+79
+00:02:52,760 --> 00:02:57,280
+knowledge graphs. Uh the knowledge graph
+
+80
+00:02:55,240 --> 00:02:59,600
+is something which is populated from
+
+81
+00:02:57,280 --> 00:03:01,760
+unstructured information. As I said, we
+
+82
+00:02:59,600 --> 00:03:03,680
+do a lot of text analytics which helps
+
+83
+00:03:01,760 --> 00:03:05,440
+you from unstructured data to populate a
+
+84
+00:03:03,680 --> 00:03:08,400
+knowledge graph. But on the other hand,
+
+85
+00:03:05,440 --> 00:03:11,200
+we have also to deal with the master
+
+86
+00:03:08,400 --> 00:03:14,760
+data. Or this is the data which you need
+
+87
+00:03:11,200 --> 00:03:18,200
+to do any type of a text analytics. And
+
+88
+00:03:14,760 --> 00:03:20,360
+what what are really the four
+
+89
+00:03:18,200 --> 00:03:22,400
+fundamental pro or features of the
+
+90
+00:03:20,360 --> 00:03:24,560
+knowledge graph? First of all, it should
+
+91
+00:03:22,400 --> 00:03:26,959
+be graph. That means that naturally, it
+
+92
+00:03:24,560 --> 00:03:29,840
+should be a native graph model which
+
+93
+00:03:26,959 --> 00:03:32,120
+basically allows you to connect new data
+
+94
+00:03:29,840 --> 00:03:34,600
+and extend the model and to not be fixed
+
+95
+00:03:32,120 --> 00:03:36,880
+to any physical schema.
+
+96
+00:03:34,600 --> 00:03:38,800
+The second feature is semantics. Uh
+
+97
+00:03:36,880 --> 00:03:41,120
+semantics is really having a schema of
+
+98
+00:03:38,800 --> 00:03:42,480
+the information. And somebody when
+
+99
+00:03:41,120 --> 00:03:44,519
+connects to this knowledge graph, there
+
+100
+00:03:42,480 --> 00:03:48,120
+should be a way to understand what is
+
+101
+00:03:44,519 --> 00:03:49,959
+inside of this graph uh without reading
+
+102
+00:03:48,120 --> 00:03:52,480
+some complex manuals what is really
+
+103
+00:03:49,959 --> 00:03:53,360
+exactly the format. So, it's the schema
+
+104
+00:03:52,480 --> 00:03:54,880
+of the information should be
+
+105
+00:03:53,360 --> 00:03:56,480
+self-descriptive.
+
+106
+00:03:54,880 --> 00:03:58,480
+The smartness is something which is very
+
+107
+00:03:56,480 --> 00:04:00,040
+often overlooked. Once you design a
+
+108
+00:03:58,480 --> 00:04:02,720
+knowledge graph, you want to do some
+
+109
+00:04:00,040 --> 00:04:04,400
+smart analytics. And most of my talk
+
+110
+00:04:02,720 --> 00:04:06,200
+will be how you can implement these
+
+111
+00:04:04,400 --> 00:04:09,120
+smart analytics once you design a
+
+112
+00:04:06,200 --> 00:04:10,880
+knowledge graph. And last but not least,
+
+113
+00:04:09,120 --> 00:04:12,400
+the knowledge graphs are alive because
+
+114
+00:04:10,880 --> 00:04:14,640
+they combine data from different
+
+115
+00:04:12,400 --> 00:04:16,359
+sources. So, they they need to be
+
+116
+00:04:14,640 --> 00:04:18,400
+up-to-date
+
+117
+00:04:16,359 --> 00:04:20,040
+with all the changes and all the changes
+
+118
+00:04:18,400 --> 00:04:21,519
+should be uh the data should
+
+119
+00:04:20,040 --> 00:04:23,720
+be fresh.
+
+120
+00:04:21,519 --> 00:04:26,880
+In my experience, I have seen different
+
+121
+00:04:23,720 --> 00:04:29,919
+engineering teams which often focus on
+
+122
+00:04:26,880 --> 00:04:31,880
+over one or two of these aspects.
+
+123
+00:04:29,919 --> 00:04:34,120
+For instance, if they start if the team
+
+124
+00:04:31,880 --> 00:04:35,320
+starts focusing over on the graph and
+
+125
+00:04:34,120 --> 00:04:36,960
+semantics,
+
+126
+00:04:35,320 --> 00:04:39,040
+typically I have seen often these
+
+127
+00:04:36,960 --> 00:04:41,000
+projects end up in designing a very
+
+128
+00:04:39,040 --> 00:04:43,320
+complex model and nobody is really
+
+129
+00:04:41,000 --> 00:04:44,880
+thinking how to make to make track the
+
+130
+00:04:43,320 --> 00:04:46,840
+provenance of the information, how to
+
+131
+00:04:44,880 --> 00:04:49,200
+constantly update it. And some of these
+
+132
+00:04:46,840 --> 00:04:51,040
+projects becomes really problematic. On
+
+133
+00:04:49,200 --> 00:04:52,880
+the other hand,
+
+134
+00:04:51,040 --> 00:04:55,120
+the experience of the database people
+
+135
+00:04:52,880 --> 00:04:57,320
+the the typical database people, they
+
+136
+00:04:55,120 --> 00:04:59,000
+really are concerned mostly with the
+
+137
+00:04:57,320 --> 00:05:00,760
+freshness of the data and how to make
+
+138
+00:04:59,000 --> 00:05:03,320
+these data sets
+
+139
+00:05:00,760 --> 00:05:05,840
+updatable. And they focus over the alive
+
+140
+00:05:03,320 --> 00:05:08,120
+and often these projects end up in doing
+
+141
+00:05:05,840 --> 00:05:09,880
+yet another data warehouse where you
+
+142
+00:05:08,120 --> 00:05:12,320
+need all the questions in the beginning,
+
+143
+00:05:09,880 --> 00:05:14,240
+you design the model for a one year.
+
+144
+00:05:12,320 --> 00:05:16,520
+Obviously, you need you can update the
+
+145
+00:05:14,240 --> 00:05:18,440
+the schema, but this is a fragile system
+
+146
+00:05:16,520 --> 00:05:19,760
+which you cannot easily
+
+147
+00:05:18,440 --> 00:05:21,800
+uh extend.
+
+148
+00:05:19,760 --> 00:05:23,880
+So, in this talk and our understanding
+
+149
+00:05:21,800 --> 00:05:26,040
+is that the true knowledge graph needs
+
+150
+00:05:23,880 --> 00:05:27,800
+to own all these features in order to
+
+151
+00:05:26,040 --> 00:05:30,440
+say it's a knowledge graph.
+
+152
+00:05:27,800 --> 00:05:32,720
+Uh in this conference, I saw some
+
+153
+00:05:30,440 --> 00:05:35,440
+examples like somebody saying that,
+
+154
+00:05:32,720 --> 00:05:37,280
+"Okay, if I represent as a knowledge all
+
+155
+00:05:35,440 --> 00:05:40,120
+the telecom information, then I can
+
+156
+00:05:37,280 --> 00:05:42,240
+count every node with how many accounts
+
+157
+00:05:40,120 --> 00:05:44,840
+it was interacting." Okay, but this is
+
+158
+00:05:42,240 --> 00:05:47,360
+not really a knowledge graph a knowledge
+
+159
+00:05:44,840 --> 00:05:48,560
+even database problem. So, by just using
+
+160
+00:05:47,360 --> 00:05:50,240
+a
+
+161
+00:05:48,560 --> 00:05:52,640
+graph database, it doesn't make
+
+162
+00:05:50,240 --> 00:05:53,560
+automatically your application knowledge
+
+163
+00:05:52,640 --> 00:05:54,560
+graph.
+
+164
+00:05:53,560 --> 00:05:56,080
+And
+
+165
+00:05:54,560 --> 00:05:57,640
+for instance, this is not a bad thing
+
+166
+00:05:56,080 --> 00:05:59,760
+because designing through knowledge
+
+167
+00:05:57,640 --> 00:06:01,560
+graphs which have all these features, if
+
+168
+00:05:59,760 --> 00:06:02,720
+you are unlucky enough that you need to
+
+169
+00:06:01,560 --> 00:06:06,600
+face them,
+
+170
+00:06:02,720 --> 00:06:06,600
+this is a really challenging task.
+
+171
+00:06:07,360 --> 00:06:10,880
+Why this is a challenging task? Because
+
+172
+00:06:09,200 --> 00:06:12,480
+designing can
+
+173
+00:06:10,880 --> 00:06:16,600
+when you design a knowledge graph, you
+
+174
+00:06:12,480 --> 00:06:18,240
+have to face a multiple challenges which
+
+175
+00:06:16,600 --> 00:06:20,520
+are typical for the data management
+
+176
+00:06:18,240 --> 00:06:22,360
+systems. So, first of all, combining
+
+177
+00:06:20,520 --> 00:06:24,240
+data from different sources, you face
+
+178
+00:06:22,360 --> 00:06:26,480
+the master data management problem.
+
+179
+00:06:24,240 --> 00:06:28,400
+Whether this entity is exactly the same
+
+180
+00:06:26,480 --> 00:06:29,600
+as the other entity. How do you merge
+
+181
+00:06:28,400 --> 00:06:31,400
+them?
+
+182
+00:06:29,600 --> 00:06:33,960
+Which properties do you keep? Do you
+
+183
+00:06:31,400 --> 00:06:35,919
+keep multiple versions of the truth or
+
+184
+00:06:33,960 --> 00:06:37,919
+you try to make a model with a single
+
+185
+00:06:35,919 --> 00:06:40,000
+version of the truth? The other thing is
+
+186
+00:06:37,919 --> 00:06:41,919
+the subject matter expertise. You need
+
+187
+00:06:40,000 --> 00:06:43,760
+somebody who is really having these
+
+188
+00:06:41,919 --> 00:06:45,800
+models in order to model what are the
+
+189
+00:06:43,760 --> 00:06:47,960
+taxonomies and to know what are the
+
+190
+00:06:45,800 --> 00:06:49,120
+business terms you want to work. And
+
+191
+00:06:47,960 --> 00:06:50,880
+typically for the different
+
+192
+00:06:49,120 --> 00:06:52,160
+organization, they have a different
+
+193
+00:06:50,880 --> 00:06:54,680
+taxonomies.
+
+194
+00:06:52,160 --> 00:06:57,560
+Data warehousing as I as I said,
+
+195
+00:06:54,680 --> 00:06:59,840
+updating the data is a challenging and
+
+196
+00:06:57,560 --> 00:07:02,200
+keeping it's fresh is a
+
+197
+00:06:59,840 --> 00:07:03,440
+challenging task in itself. Combining it
+
+198
+00:07:02,200 --> 00:07:05,919
+with the other
+
+199
+00:07:03,440 --> 00:07:07,680
+capabilities, it's even more difficult.
+
+200
+00:07:05,919 --> 00:07:09,720
+The metadata management, like in the
+
+201
+00:07:07,680 --> 00:07:11,600
+other examples we see,
+
+202
+00:07:09,720 --> 00:07:14,080
+there are organizations with thousands
+
+203
+00:07:11,600 --> 00:07:16,280
+of tables which try to understand what
+
+204
+00:07:14,080 --> 00:07:18,280
+is this data, how it was represented,
+
+205
+00:07:16,280 --> 00:07:20,720
+how we should track it and govern it.
+
+206
+00:07:18,280 --> 00:07:22,560
+The digital asset management is mostly
+
+207
+00:07:20,720 --> 00:07:24,840
+who is really responsible and owner of
+
+208
+00:07:22,560 --> 00:07:26,720
+this data and how you update it and who
+
+209
+00:07:24,840 --> 00:07:29,400
+is the owner. And obviously, if you
+
+210
+00:07:26,720 --> 00:07:31,040
+really complete all these levels, at the
+
+211
+00:07:29,400 --> 00:07:32,760
+end somebody will say, "Okay, it's very
+
+212
+00:07:31,040 --> 00:07:35,240
+valuable resource, so I want to
+
+213
+00:07:32,760 --> 00:07:37,080
+interact. Give me a nice interface to do
+
+214
+00:07:35,240 --> 00:07:39,240
+an enterprise search on top of this
+
+215
+00:07:37,080 --> 00:07:40,640
+data."
+
+216
+00:07:39,240 --> 00:07:43,120
+Okay?
+
+217
+00:07:40,640 --> 00:07:45,160
+So, I make another step and wanted to
+
+218
+00:07:43,120 --> 00:07:47,400
+give you the perspective what is really
+
+219
+00:07:45,160 --> 00:07:50,240
+building a knowledge graph.
+
+220
+00:07:47,400 --> 00:07:52,960
+Uh and in this example I took something
+
+221
+00:07:50,240 --> 00:07:54,720
+which is public publicly available. So,
+
+222
+00:07:52,960 --> 00:07:56,880
+any everybody can reproduce these
+
+223
+00:07:54,720 --> 00:07:59,280
+results and it's easy to understand. I
+
+224
+00:07:56,880 --> 00:08:01,560
+mean there is no complex subject matter
+
+225
+00:07:59,280 --> 00:08:03,520
+expertise in order to understand these
+
+226
+00:08:01,560 --> 00:08:05,920
+examples. So, everybody knows what is
+
+227
+00:08:03,520 --> 00:08:08,200
+the Internet Movie Database. There are
+
+228
+00:08:05,920 --> 00:08:11,600
+movies inside. Everybody knows what is
+
+229
+00:08:08,200 --> 00:08:13,560
+Wikidata. Wikidata is really uh probably
+
+230
+00:08:11,600 --> 00:08:15,800
+the most visible source of structured
+
+231
+00:08:13,560 --> 00:08:18,440
+information. So, we imagine that you now
+
+232
+00:08:15,800 --> 00:08:20,240
+start work in a startup and your boss
+
+233
+00:08:18,440 --> 00:08:22,040
+tells you, "Okay, please make a
+
+234
+00:08:20,240 --> 00:08:24,400
+knowledge graph which combines data from
+
+235
+00:08:22,040 --> 00:08:26,760
+these two particular sources because we
+
+236
+00:08:24,400 --> 00:08:29,160
+want to do a like a better decision
+
+237
+00:08:26,760 --> 00:08:30,880
+making what will be the next trendy
+
+238
+00:08:29,160 --> 00:08:32,080
+movie, how we want to predict the
+
+239
+00:08:30,880 --> 00:08:34,520
+future."
+
+240
+00:08:32,080 --> 00:08:37,440
+Uh and let's take this journey in the
+
+241
+00:08:34,520 --> 00:08:40,360
+next minutes to see whether it's an easy
+
+242
+00:08:37,440 --> 00:08:42,919
+task. So, the very first thing once you
+
+243
+00:08:40,360 --> 00:08:45,400
+get these data sources is to be
+
+244
+00:08:42,919 --> 00:08:47,280
+challenged with the types of the data.
+
+245
+00:08:45,400 --> 00:08:50,320
+And you see that there are 4 million
+
+246
+00:08:47,280 --> 00:08:53,160
+episodes in Internet Movie Database and
+
+247
+00:08:50,320 --> 00:08:56,000
+Wikidata uses a very different type
+
+248
+00:08:53,160 --> 00:08:58,120
+system. What are the different movies?
+
+249
+00:08:56,000 --> 00:09:00,400
+We all know that these are all movies,
+
+250
+00:08:58,120 --> 00:09:02,120
+but you see that even on the type level
+
+251
+00:09:00,400 --> 00:09:04,280
+there is a big discrepancy. And the
+
+252
+00:09:02,120 --> 00:09:05,960
+other the other obvious thing is that
+
+253
+00:09:04,280 --> 00:09:08,280
+Internet Movie Database is the much
+
+254
+00:09:05,960 --> 00:09:11,839
+bigger and it looks like it's some sort
+
+255
+00:09:08,280 --> 00:09:13,640
+of a super set than Wikidata.
+
+256
+00:09:11,839 --> 00:09:16,520
+For the next experiments we are going to
+
+257
+00:09:13,640 --> 00:09:18,200
+use only a 5,000 data set of Internet
+
+258
+00:09:16,520 --> 00:09:20,040
+Movie Database. Obviously, all the
+
+259
+00:09:18,200 --> 00:09:21,560
+algorithms they are scalable and can
+
+260
+00:09:20,040 --> 00:09:24,640
+work with the full
+
+261
+00:09:21,560 --> 00:09:27,320
+5 million movies, but just for making
+
+262
+00:09:24,640 --> 00:09:29,400
+these results reproducible,
+
+263
+00:09:27,320 --> 00:09:31,400
+uh we got one of the Internet Movie
+
+264
+00:09:29,400 --> 00:09:33,320
+Database which is available in a Kaggle
+
+265
+00:09:31,400 --> 00:09:35,120
+as a dump.
+
+266
+00:09:33,320 --> 00:09:37,240
+So, I'm a
+
+267
+00:09:35,120 --> 00:09:40,240
+practical software engineer and my first
+
+268
+00:09:37,240 --> 00:09:42,040
+task is let's say let's move much the
+
+269
+00:09:40,240 --> 00:09:45,080
+movie titles
+
+270
+00:09:42,040 --> 00:09:47,400
+and see how this will work. So the first
+
+271
+00:09:45,080 --> 00:09:49,640
+thing what we can see is multiple level
+
+272
+00:09:47,400 --> 00:09:51,840
+of of inconsistencies. So one of the
+
+273
+00:09:49,640 --> 00:09:54,560
+sources talks about films and the other
+
+274
+00:09:51,840 --> 00:09:56,800
+talks about TV movies. The question is
+
+275
+00:09:54,560 --> 00:09:59,160
+whether these are exactly the same type
+
+276
+00:09:56,800 --> 00:10:01,200
+of informations.
+
+277
+00:09:59,160 --> 00:10:02,760
+We see a lot of inconsistent metadata
+
+278
+00:10:01,200 --> 00:10:05,200
+and you see why you have to manage the
+
+279
+00:10:02,760 --> 00:10:07,600
+metadata. One says science fiction and
+
+280
+00:10:05,200 --> 00:10:09,760
+the other is science sci-fi. Somebody
+
+281
+00:10:07,600 --> 00:10:11,720
+needs to manually go there and unify
+
+282
+00:10:09,760 --> 00:10:13,520
+this metadata in order to make
+
+283
+00:10:11,720 --> 00:10:15,640
+consistency. Obviously we have a
+
+284
+00:10:13,520 --> 00:10:17,520
+different hierarchy like military
+
+285
+00:10:15,640 --> 00:10:19,560
+science fiction and so on.
+
+286
+00:10:17,520 --> 00:10:21,880
+And obviously the reference data under
+
+287
+00:10:19,560 --> 00:10:24,320
+reference data we call data which is of
+
+288
+00:10:21,880 --> 00:10:26,840
+high quantities and is external for this
+
+289
+00:10:24,320 --> 00:10:28,120
+source like the geographical location.
+
+290
+00:10:26,840 --> 00:10:30,960
+We have also a very obvious
+
+291
+00:10:28,120 --> 00:10:33,200
+inconsistencies. One says you say US and
+
+292
+00:10:30,960 --> 00:10:35,040
+the other United States. For computer
+
+293
+00:10:33,200 --> 00:10:36,800
+without a background knowledge these
+
+294
+00:10:35,040 --> 00:10:38,240
+would be like two completely different
+
+295
+00:10:36,800 --> 00:10:40,839
+entities.
+
+296
+00:10:38,240 --> 00:10:42,200
+Hopefully in this source but this is a
+
+297
+00:10:40,839 --> 00:10:44,600
+book series which we don't get in the
+
+298
+00:10:42,200 --> 00:10:46,920
+enterprise system. We have
+
+299
+00:10:44,600 --> 00:10:49,520
+manually curated cross links which can
+
+300
+00:10:46,920 --> 00:10:52,440
+be used to evaluate the matchings and
+
+301
+00:10:49,520 --> 00:10:54,200
+everything. But in typical enterprise
+
+302
+00:10:52,440 --> 00:10:56,480
+knowledge graph you have to do this
+
+303
+00:10:54,200 --> 00:10:58,720
+completely blindly and to guess this
+
+304
+00:10:56,480 --> 00:11:03,120
+type of and to hit these problems one by
+
+305
+00:10:58,720 --> 00:11:04,200
+one without knowing they exist.
+
+306
+00:11:03,120 --> 00:11:05,960
+So
+
+307
+00:11:04,200 --> 00:11:08,080
+the classical approach which every
+
+308
+00:11:05,960 --> 00:11:10,400
+software developer starts. This is
+
+309
+00:11:08,080 --> 00:11:12,320
+probably not the naive but very
+
+310
+00:11:10,400 --> 00:11:14,800
+straightforward. I'm going to use the
+
+311
+00:11:12,320 --> 00:11:17,080
+titles and I'm going to say let me try
+
+312
+00:11:14,800 --> 00:11:19,520
+to match the identities between these
+
+313
+00:11:17,080 --> 00:11:21,640
+two different sources. So what we can
+
+314
+00:11:19,520 --> 00:11:24,280
+see immediately is that there is some
+
+315
+00:11:21,640 --> 00:11:26,960
+inconsistencies like the Harry Potter
+
+316
+00:11:24,280 --> 00:11:29,120
+there is a part two and part two
+
+317
+00:11:26,960 --> 00:11:31,040
+written with a number. Okay, probably
+
+318
+00:11:29,120 --> 00:11:33,520
+this is something which we can fix with
+
+319
+00:11:31,040 --> 00:11:35,800
+a very simple algorithm like Levenshtein
+
+320
+00:11:33,520 --> 00:11:38,600
+distance or something like this.
+
+321
+00:11:35,800 --> 00:11:40,120
+The next we see the perfume. I I really
+
+322
+00:11:38,600 --> 00:11:42,040
+hope that you have seen some of these
+
+323
+00:11:40,120 --> 00:11:43,920
+movies because they're really perfect
+
+324
+00:11:42,040 --> 00:11:45,880
+masterpieces like The Perfume: The Story
+
+325
+00:11:43,920 --> 00:11:48,040
+of a Murderer and the other source it's
+
+326
+00:11:45,880 --> 00:11:49,440
+really The Perfume. They decided to cut
+
+327
+00:11:48,040 --> 00:11:51,360
+the other part.
+
+328
+00:11:49,440 --> 00:11:53,200
+Obviously, the software engineer will
+
+329
+00:11:51,360 --> 00:11:55,800
+say, "Okay, I can match this is a
+
+330
+00:11:53,200 --> 00:11:57,320
+prefix, so I can really match this as
+
+331
+00:11:55,800 --> 00:11:59,560
+well."
+
+332
+00:11:57,320 --> 00:12:01,840
+The last The third example, however, is
+
+333
+00:11:59,560 --> 00:12:03,880
+really a nasty one. The Pirate Radio
+
+334
+00:12:01,840 --> 00:12:06,240
+versus The Boat That Rocked.
+
+335
+00:12:03,880 --> 00:12:08,560
+There is completely no correlation
+
+336
+00:12:06,240 --> 00:12:10,880
+between these two entities, but for some
+
+337
+00:12:08,560 --> 00:12:13,320
+reason Wikidata decided to use the
+
+338
+00:12:10,880 --> 00:12:15,360
+European version titles of the films and
+
+339
+00:12:13,320 --> 00:12:17,880
+Internet Movie Database as a US source
+
+340
+00:12:15,360 --> 00:12:20,160
+decided to use the US one. So, there is
+
+341
+00:12:17,880 --> 00:12:21,840
+really no correlation between these two
+
+342
+00:12:20,160 --> 00:12:23,720
+sources, but if you check the
+
+343
+00:12:21,840 --> 00:12:25,640
+identifiers, this is one and the same
+
+344
+00:12:23,720 --> 00:12:28,480
+movie. And obviously, this simple
+
+345
+00:12:25,640 --> 00:12:30,640
+example, Avatar. Okay, you just go and
+
+346
+00:12:28,480 --> 00:12:33,400
+find that there are actually these four
+
+347
+00:12:30,640 --> 00:12:34,760
+Avatar movies from the different years.
+
+348
+00:12:33,400 --> 00:12:36,400
+The natural instinct is that you're
+
+349
+00:12:34,760 --> 00:12:38,880
+going to say, "Okay, I have to include
+
+350
+00:12:36,400 --> 00:12:41,880
+additional metadata." And let's take the
+
+351
+00:12:38,880 --> 00:12:44,920
+last example with Avatar.
+
+352
+00:12:41,880 --> 00:12:47,120
+Okay, so we add the extra row, and what
+
+353
+00:12:44,920 --> 00:12:50,360
+out of a sudden happens is that we lose
+
+354
+00:12:47,120 --> 00:12:52,480
+10% of the matches. Why? Because once
+
+355
+00:12:50,360 --> 00:12:54,839
+again, these data sources create
+
+356
+00:12:52,480 --> 00:12:56,440
+inconsistent dates. One says what was
+
+357
+00:12:54,839 --> 00:12:58,960
+the release date in Europe, the other
+
+358
+00:12:56,440 --> 00:13:02,200
+what was in the US.
+
+359
+00:12:58,960 --> 00:13:04,720
+Even more disappointing, we see that the
+
+360
+00:13:02,200 --> 00:13:08,400
+ambiguity still remains even over
+
+361
+00:13:04,720 --> 00:13:11,120
+250,000 movies because only in '95 there
+
+362
+00:13:08,400 --> 00:13:14,080
+were three movies, Pocahontas,
+
+363
+00:13:11,120 --> 00:13:15,600
+with the same year, with the same name,
+
+364
+00:13:14,080 --> 00:13:17,000
+which are different. And we see that
+
+365
+00:13:15,600 --> 00:13:18,760
+these are different entities, they have
+
+366
+00:13:17,000 --> 00:13:21,200
+different durations. I don't know what
+
+367
+00:13:18,760 --> 00:13:23,440
+was the reason. But there were really
+
+368
+00:13:21,200 --> 00:13:25,360
+hundreds of such movies which are
+
+369
+00:13:23,440 --> 00:13:27,920
+absolutely ambiguous, and you you
+
+370
+00:13:25,360 --> 00:13:29,520
+differentiate in any way.
+
+371
+00:13:27,920 --> 00:13:31,200
+So,
+
+372
+00:13:29,520 --> 00:13:33,360
+I really I will share something
+
+373
+00:13:31,200 --> 00:13:35,080
+personal. I really hate on presentations
+
+374
+00:13:33,360 --> 00:13:37,640
+when somebody talks about only about
+
+375
+00:13:35,080 --> 00:13:39,400
+challenges and how difficult is a task.
+
+376
+00:13:37,640 --> 00:13:40,800
+So, the next part of the presentation I
+
+377
+00:13:39,400 --> 00:13:43,080
+will explain
+
+378
+00:13:40,800 --> 00:13:45,280
+some innovative ways how you can really
+
+379
+00:13:43,080 --> 00:13:46,560
+try to address this challenge and fix
+
+380
+00:13:45,280 --> 00:13:48,880
+this
+
+381
+00:13:46,560 --> 00:13:51,200
+identity matching problem.
+
+382
+00:13:48,880 --> 00:13:53,760
+So, have you ever heard about knowledge
+
+383
+00:13:51,200 --> 00:13:56,080
+graphs, text embeddings? Do you know the
+
+384
+00:13:53,760 --> 00:13:58,640
+term embeddings?
+
+385
+00:13:56,080 --> 00:14:01,080
+Okay, so this is a new scientific trend
+
+386
+00:13:58,640 --> 00:14:02,880
+and topic which started recent years and
+
+387
+00:14:01,080 --> 00:14:04,640
+I think it's really very relevant for
+
+388
+00:14:02,880 --> 00:14:07,040
+the knowledge graph because this gives
+
+389
+00:14:04,640 --> 00:14:09,480
+really dark smartners.
+
+390
+00:14:07,040 --> 00:14:10,800
+A feature which is over overlooked by
+
+391
+00:14:09,480 --> 00:14:11,800
+the different users of the knowledge
+
+392
+00:14:10,800 --> 00:14:13,880
+graphs.
+
+393
+00:14:11,800 --> 00:14:16,640
+So, what is the knowledge graph? This is
+
+394
+00:14:13,880 --> 00:14:19,320
+the idea, if you have a complex topology
+
+395
+00:14:16,640 --> 00:14:20,720
+of the graph, how you can compare and
+
+396
+00:14:19,320 --> 00:14:23,360
+predict
+
+397
+00:14:20,720 --> 00:14:25,040
+similar links in the graphs or similar
+
+398
+00:14:23,360 --> 00:14:27,720
+nodes in the graph based on their
+
+399
+00:14:25,040 --> 00:14:29,680
+connectivity. The same you can do also
+
+400
+00:14:27,720 --> 00:14:31,400
+for the links, so this can be used for
+
+401
+00:14:29,680 --> 00:14:33,640
+link prediction.
+
+402
+00:14:31,400 --> 00:14:36,120
+One of the big benefits is that it
+
+403
+00:14:33,640 --> 00:14:38,760
+requires no input training data like
+
+404
+00:14:36,120 --> 00:14:41,000
+most of the machine learning methods.
+
+405
+00:14:38,760 --> 00:14:43,000
+Obviously, this task with mapping quick
+
+406
+00:14:41,000 --> 00:14:44,640
+data with Internet Movie Database can be
+
+407
+00:14:43,000 --> 00:14:46,600
+easily fixed if you have a machine
+
+408
+00:14:44,640 --> 00:14:48,160
+learning because you have the training
+
+409
+00:14:46,600 --> 00:14:50,360
+examples, you are going to get the
+
+410
+00:14:48,160 --> 00:14:52,400
+features and this is done. But in the
+
+411
+00:14:50,360 --> 00:14:54,000
+classical scenario, you don't have this
+
+412
+00:14:52,400 --> 00:14:56,120
+and you have you are absolutely blind.
+
+413
+00:14:54,000 --> 00:14:59,040
+So, you cannot It's really I'm really
+
+414
+00:14:56,120 --> 00:15:00,760
+somehow surprised seeing so many people
+
+415
+00:14:59,040 --> 00:15:03,400
+talking about how they use machine
+
+416
+00:15:00,760 --> 00:15:05,839
+learning for mapping enterprise sources
+
+417
+00:15:03,400 --> 00:15:07,520
+because I have never really seen a
+
+418
+00:15:05,839 --> 00:15:10,440
+complex mappings between different
+
+419
+00:15:07,520 --> 00:15:12,320
+sources with no identifiers or big
+
+420
+00:15:10,440 --> 00:15:14,520
+enough gold standards in order to train
+
+421
+00:15:12,320 --> 00:15:17,240
+a machine learning model.
+
+422
+00:15:14,520 --> 00:15:20,480
+So, the basic model is the mathema- how
+
+423
+00:15:17,240 --> 00:15:22,560
+we represent the mathema- mathematically
+
+424
+00:15:20,480 --> 00:15:24,520
+these graph nodes. Uh this is a very
+
+425
+00:15:22,560 --> 00:15:26,840
+simple example. Let's imagine that we
+
+426
+00:15:24,520 --> 00:15:28,680
+have a two-dimensional space. One is
+
+427
+00:15:26,840 --> 00:15:31,200
+really the duration of the movies and
+
+428
+00:15:28,680 --> 00:15:33,280
+the other is the genre. Why?
+
+429
+00:15:31,200 --> 00:15:35,560
+And let's suppose that we're we're doing
+
+430
+00:15:33,280 --> 00:15:37,800
+a simple binary logic. We have a comedy
+
+431
+00:15:35,560 --> 00:15:39,360
+and a drama. For now, we ignore that
+
+432
+00:15:37,800 --> 00:15:41,480
+there are some movies which are comedy
+
+433
+00:15:39,360 --> 00:15:42,120
+and drama in the same way.
+
+434
+00:15:41,480 --> 00:15:44,000
+Uh
+
+435
+00:15:42,120 --> 00:15:46,960
+And we take two movies. One is The
+
+436
+00:15:44,000 --> 00:15:49,280
+Godfather, which is really a long drama,
+
+437
+00:15:46,960 --> 00:15:51,600
+3-hour movie. So, we're going to plot
+
+438
+00:15:49,280 --> 00:15:53,560
+this vector because it's a long movie.
+
+439
+00:15:51,600 --> 00:15:55,800
+It goes into the drama section. So, we
+
+440
+00:15:53,560 --> 00:15:57,560
+draw this vector. The other is really
+
+441
+00:15:55,800 --> 00:16:01,160
+American Pie, which is something very
+
+442
+00:15:57,560 --> 00:16:03,680
+different. Uh a short movie, a comedy.
+
+443
+00:16:01,160 --> 00:16:06,200
+So, the vector will go somewhere down in
+
+444
+00:16:03,680 --> 00:16:08,560
+the space. So, the idea of the knowledge
+
+445
+00:16:06,200 --> 00:16:10,160
+graph embeddings is that you represent
+
+446
+00:16:08,560 --> 00:16:13,160
+these graph nodes
+
+447
+00:16:10,160 --> 00:16:15,560
+as a vector space model and by combining
+
+448
+00:16:13,160 --> 00:16:17,280
+the difference, the cosine between these
+
+449
+00:16:15,560 --> 00:16:20,120
+vectors, you can predict what is the
+
+450
+00:16:17,280 --> 00:16:20,120
+similarity.
+
+451
+00:16:20,760 --> 00:16:25,640
+In reality, this is a slightly more
+
+452
+00:16:23,400 --> 00:16:28,400
+complex. And we let's go to in the
+
+453
+00:16:25,640 --> 00:16:30,000
+details. So, let's suppose that we want
+
+454
+00:16:28,400 --> 00:16:31,760
+to make these knowledge graph embeddings
+
+455
+00:16:30,000 --> 00:16:33,680
+for the movies and we're going to use
+
+456
+00:16:31,760 --> 00:16:35,600
+three features. One is the actor, the
+
+457
+00:16:33,680 --> 00:16:37,160
+other is the director, and the third is
+
+458
+00:16:35,600 --> 00:16:38,960
+the country of origin.
+
+459
+00:16:37,160 --> 00:16:41,360
+Uh you can see that some of these
+
+460
+00:16:38,960 --> 00:16:43,440
+algorithms, even the US and the United
+
+461
+00:16:41,360 --> 00:16:45,680
+States are not aligned. So, we're going
+
+462
+00:16:43,440 --> 00:16:47,400
+to get even some fuzziness to be
+
+463
+00:16:45,680 --> 00:16:50,000
+absolutely sure that we have
+
+464
+00:16:47,400 --> 00:16:52,200
+inconsistent metadata and it will be a
+
+465
+00:16:50,000 --> 00:16:54,320
+tough challenge for the algorithm. So,
+
+466
+00:16:52,200 --> 00:16:56,680
+for each movie,
+
+467
+00:16:54,320 --> 00:17:00,320
+we let's call this a document, we're
+
+468
+00:16:56,680 --> 00:17:03,280
+going to add every row in this table.
+
+469
+00:17:00,320 --> 00:17:05,800
+So, we add for every ID a a different
+
+470
+00:17:03,280 --> 00:17:07,839
+row. And as columns,
+
+471
+00:17:05,800 --> 00:17:10,640
+these are links. Whether the first movie
+
+472
+00:17:07,839 --> 00:17:13,360
+has a link to the Adam Lu-
+
+473
+00:17:10,640 --> 00:17:15,439
+Luc Fevre or whatever his name, whether
+
+474
+00:17:13,360 --> 00:17:18,880
+it's really a directed by Luc Besson and
+
+475
+00:17:15,439 --> 00:17:20,959
+so on. So, you can imagine one huge
+
+476
+00:17:18,880 --> 00:17:23,880
+matrix
+
+477
+00:17:20,959 --> 00:17:26,839
+which represents all the movies and all
+
+478
+00:17:23,880 --> 00:17:28,640
+the terms or entities which participate.
+
+479
+00:17:26,839 --> 00:17:30,920
+This huge matrix is actually a very
+
+480
+00:17:28,640 --> 00:17:32,200
+sparse one.
+
+481
+00:17:30,920 --> 00:17:35,320
+Because
+
+482
+00:17:32,200 --> 00:17:38,040
+even for some relatively small models,
+
+483
+00:17:35,320 --> 00:17:39,640
+this goes something like a millions to
+
+484
+00:17:38,040 --> 00:17:41,200
+millions. And one of the biggest
+
+485
+00:17:39,640 --> 00:17:43,120
+challenges is that if you have so
+
+486
+00:17:41,200 --> 00:17:45,040
+complex vectors,
+
+487
+00:17:43,120 --> 00:17:46,800
+it's a very slow process to match them.
+
+488
+00:17:45,040 --> 00:17:49,080
+Obviously, you can do this, but it will
+
+489
+00:17:46,800 --> 00:17:50,960
+be extremely slow to match vectors of so
+
+490
+00:17:49,080 --> 00:17:53,640
+big dimensionality.
+
+491
+00:17:50,960 --> 00:17:55,160
+In the past 15 years, there was a very
+
+492
+00:17:53,640 --> 00:17:57,560
+good
+
+493
+00:17:55,160 --> 00:17:59,560
+efforts how to mathematically solve this
+
+494
+00:17:57,560 --> 00:18:01,080
+problem, and we choose one of the
+
+495
+00:17:59,560 --> 00:18:03,600
+algorithms. There is a bunch of
+
+496
+00:18:01,080 --> 00:18:06,040
+algorithms, but we prefer to use this
+
+497
+00:18:03,600 --> 00:18:07,720
+random indexing algorithm. I
+
+498
+00:18:06,040 --> 00:18:09,000
+I promise this is the most technical
+
+499
+00:18:07,720 --> 00:18:11,600
+slide,
+
+500
+00:18:09,000 --> 00:18:14,440
+and I'll try to explain it in in simple
+
+501
+00:18:11,600 --> 00:18:17,560
+terms. So, the basic principle is that
+
+502
+00:18:14,440 --> 00:18:19,720
+you have a huge matrix which is 250,000
+
+503
+00:18:17,560 --> 00:18:21,880
+rows and 100
+
+504
+00:18:19,720 --> 00:18:23,920
+5 million columns.
+
+505
+00:18:21,880 --> 00:18:25,960
+And in order to make this faster, you
+
+506
+00:18:23,920 --> 00:18:28,600
+you need to shrink the dimensionality of
+
+507
+00:18:25,960 --> 00:18:31,800
+this matrix and to reduce it to 250
+
+508
+00:18:28,600 --> 00:18:34,320
+documents to something like 2,000 or 300
+
+509
+00:18:31,800 --> 00:18:36,920
+3,000. There are some scientifically
+
+510
+00:18:34,320 --> 00:18:38,600
+proven methods like LSA and so on, which
+
+511
+00:18:36,920 --> 00:18:40,520
+are for vector
+
+512
+00:18:38,600 --> 00:18:43,200
+for matrix decomposition, but they are
+
+513
+00:18:40,520 --> 00:18:45,480
+awfully slow and they don't scale. So,
+
+514
+00:18:43,200 --> 00:18:47,800
+in this scientific paper, a smart guy
+
+515
+00:18:45,480 --> 00:18:50,160
+decided, "Let's use some
+
+516
+00:18:47,800 --> 00:18:52,040
+random vectors, elemental vectors, and
+
+517
+00:18:50,160 --> 00:18:53,800
+you see them in the table." And we
+
+518
+00:18:52,040 --> 00:18:55,880
+choose them randomly, completely
+
+519
+00:18:53,800 --> 00:18:58,720
+randomly.
+
+520
+00:18:55,880 --> 00:19:00,680
+And for every movie,
+
+521
+00:18:58,720 --> 00:19:02,600
+we're going to get the vectors of their
+
+522
+00:19:00,680 --> 00:19:05,040
+elemental vectors of the terms which are
+
+523
+00:19:02,600 --> 00:19:06,160
+there. So, in the first row, which is
+
+524
+00:19:05,040 --> 00:19:07,800
+the
+
+525
+00:19:06,160 --> 00:19:10,320
+uh
+
+526
+00:19:07,800 --> 00:19:12,640
+I think this is the Avatar movie. You
+
+527
+00:19:10,320 --> 00:19:14,600
+take the three actors because they are
+
+528
+00:19:12,640 --> 00:19:16,360
+present and you assume their vectors.
+
+529
+00:19:14,600 --> 00:19:18,360
+You remember how you sum vectors? You
+
+530
+00:19:16,360 --> 00:19:20,560
+just connect them and then you're
+
+531
+00:19:18,360 --> 00:19:22,680
+connecting the resulting vector.
+
+532
+00:19:20,560 --> 00:19:25,040
+And in the in the second movie, you're
+
+533
+00:19:22,680 --> 00:19:27,720
+going to get also the other vectors. And
+
+534
+00:19:25,040 --> 00:19:29,800
+in this case, these random vectors are
+
+535
+00:19:27,720 --> 00:19:32,400
+slightly directed in the directions
+
+536
+00:19:29,800 --> 00:19:34,320
+where they mostly frequently co-occur.
+
+537
+00:19:32,400 --> 00:19:35,800
+And they have proven scientifically
+
+538
+00:19:34,320 --> 00:19:38,000
+actually scientifically and
+
+539
+00:19:35,800 --> 00:19:40,160
+experimentally that if you do this over
+
+540
+00:19:38,000 --> 00:19:42,280
+a large-scale ball collection, you get
+
+541
+00:19:40,160 --> 00:19:44,520
+something very close to the mathe-
+
+542
+00:19:42,280 --> 00:19:46,360
+mathematically complex model. So, the
+
+543
+00:19:44,520 --> 00:19:49,320
+time to compute this matrix because this
+
+544
+00:19:46,360 --> 00:19:51,640
+is a linear algebra is really less than
+
+545
+00:19:49,320 --> 00:19:53,160
+5 minutes and this is a feature which is
+
+546
+00:19:51,640 --> 00:19:54,960
+part of the database. And you need the
+
+547
+00:19:53,160 --> 00:19:57,000
+really sub-second searches later on to
+
+548
+00:19:54,960 --> 00:20:00,000
+find the similarity between the two for
+
+549
+00:19:57,000 --> 00:20:02,640
+different instances.
+
+550
+00:20:00,000 --> 00:20:04,960
+Okay, so now let's suppose that we did
+
+551
+00:20:02,640 --> 00:20:06,440
+this big matrix of the movies with all
+
+552
+00:20:04,960 --> 00:20:08,080
+the matrix and we shrink the
+
+553
+00:20:06,440 --> 00:20:12,080
+dimensionality.
+
+554
+00:20:08,080 --> 00:20:13,960
+What we What we get is features. You
+
+555
+00:20:12,080 --> 00:20:15,520
+You can start document-to-document type
+
+556
+00:20:13,960 --> 00:20:17,680
+of searches. Like the document, this is
+
+557
+00:20:15,520 --> 00:20:19,720
+the movie in this particular case and we
+
+558
+00:20:17,680 --> 00:20:22,120
+can say, "Tell me which are the similar
+
+559
+00:20:19,720 --> 00:20:25,640
+movies?" And the assumption here is that
+
+560
+00:20:22,120 --> 00:20:27,440
+if a movie is directed by one person and
+
+561
+00:20:25,640 --> 00:20:30,000
+it has a similar actors, you know,
+
+562
+00:20:27,440 --> 00:20:32,640
+similar genre, uh, similar similar
+
+563
+00:20:30,000 --> 00:20:34,920
+duration, this will match closely to the
+
+564
+00:20:32,640 --> 00:20:36,640
+other type of movies. So, this is really
+
+565
+00:20:34,920 --> 00:20:39,160
+the type of search we are going to use
+
+566
+00:20:36,640 --> 00:20:40,960
+in this particular example. The other
+
+567
+00:20:39,160 --> 00:20:43,080
+features you can do with this algorithm
+
+568
+00:20:40,960 --> 00:20:45,760
+is document to term which says for a
+
+569
+00:20:43,080 --> 00:20:47,840
+specific uh actor uh
+
+570
+00:20:45,760 --> 00:20:50,080
+uh, for a specific movie, "Give me what
+
+571
+00:20:47,840 --> 00:20:53,080
+is the most specific director or the
+
+572
+00:20:50,080 --> 00:20:54,800
+actor." So, you can get all sorts of,
+
+573
+00:20:53,080 --> 00:20:56,680
+uh, dimensions. Or the other is
+
+574
+00:20:54,800 --> 00:20:58,920
+term-to-term. "Tell me which are the
+
+575
+00:20:56,680 --> 00:21:01,120
+actors which are mostly similar." If you
+
+576
+00:20:58,920 --> 00:21:02,240
+populate enough data, you'll see whe-
+
+577
+00:21:01,120 --> 00:21:05,840
+whether they
+
+578
+00:21:02,240 --> 00:21:08,120
+frequently play, uh, in the same,
+
+579
+00:21:05,840 --> 00:21:10,000
+uh, type of movies.
+
+580
+00:21:08,120 --> 00:21:12,320
+So, what are really the features of
+
+581
+00:21:10,000 --> 00:21:13,800
+these algorithms? Is that this is it has
+
+582
+00:21:12,320 --> 00:21:15,880
+all the features of the vector space
+
+583
+00:21:13,800 --> 00:21:19,080
+models. What is really a vector space
+
+584
+00:21:15,880 --> 00:21:21,320
+model? It gives you really some partial
+
+585
+00:21:19,080 --> 00:21:23,960
+matching. So, it there is a fuzziness in
+
+586
+00:21:21,320 --> 00:21:26,120
+this. So, if you say how we similar are
+
+587
+00:21:23,960 --> 00:21:28,280
+two movies, you're going to get a really
+
+588
+00:21:26,120 --> 00:21:30,680
+a very nice score saying, "Okay, it's a
+
+589
+00:21:28,280 --> 00:21:32,840
+kind of similar, but not exactly." You
+
+590
+00:21:30,680 --> 00:21:36,120
+can do waiting. So, we can you can give
+
+591
+00:21:32,840 --> 00:21:38,120
+some weights better to some uh, of the
+
+592
+00:21:36,120 --> 00:21:41,000
+features. And obviously, it's very good
+
+593
+00:21:38,120 --> 00:21:42,480
+for ranking. And last but not least, it
+
+594
+00:21:41,000 --> 00:21:44,600
+has some contact
+
+595
+00:21:42,480 --> 00:21:47,000
+contact sensitivity uh, contact
+
+596
+00:21:44,600 --> 00:21:49,960
+sensitivity uh, matching, which means
+
+597
+00:21:47,000 --> 00:21:52,720
+that if because of this uh, vector
+
+598
+00:21:49,960 --> 00:21:56,560
+dimensionality, if actors play very
+
+599
+00:21:52,720 --> 00:21:59,080
+often together, uh, you find them
+
+600
+00:21:56,560 --> 00:22:01,280
+similar even if this particular actor is
+
+601
+00:21:59,080 --> 00:22:04,680
+not exactly there. So, the simple way is
+
+602
+00:22:01,280 --> 00:22:06,480
+if we apply the same algorithm on text,
+
+603
+00:22:04,680 --> 00:22:08,960
+because it can be applied for textual
+
+604
+00:22:06,480 --> 00:22:11,320
+terms as well, is to say, "Okay, what
+
+605
+00:22:08,960 --> 00:22:13,720
+are really the most typical
+
+606
+00:22:11,320 --> 00:22:15,600
+uh, words which are for Germany?" And if
+
+607
+00:22:13,720 --> 00:22:17,680
+we index political news, you'll find
+
+608
+00:22:15,600 --> 00:22:20,160
+Angela Merkel and so on, because these
+
+609
+00:22:17,680 --> 00:22:23,320
+are typically words which co-exist. So,
+
+610
+00:22:20,160 --> 00:22:24,200
+you can really truly find semantics in
+
+611
+00:22:23,320 --> 00:22:26,360
+in
+
+612
+00:22:24,200 --> 00:22:28,400
+uh, in the matrix.
+
+613
+00:22:26,360 --> 00:22:31,040
+Okay, the last but not least part is,
+
+614
+00:22:28,400 --> 00:22:33,320
+"Okay, you tell this guy is telling me
+
+615
+00:22:31,040 --> 00:22:35,560
+some fancy algorithms.
+
+616
+00:22:33,320 --> 00:22:37,040
+Uh, it gave me some challenging tasks.
+
+617
+00:22:35,560 --> 00:22:39,040
+But how
+
+618
+00:22:37,040 --> 00:22:41,200
+this change my situation? How I can
+
+619
+00:22:39,040 --> 00:22:43,800
+really develop a simple system which can
+
+620
+00:22:41,200 --> 00:22:45,960
+benefit from all these features?" And my
+
+621
+00:22:43,800 --> 00:22:48,000
+role as a CTO is to talk to senior
+
+622
+00:22:45,960 --> 00:22:50,080
+people and also to software engineers.
+
+623
+00:22:48,000 --> 00:22:52,360
+So, I have to speak the language of the
+
+624
+00:22:50,080 --> 00:22:54,640
+two worlds, and this is what we really
+
+625
+00:22:52,360 --> 00:22:57,320
+suggest as a reference architecture and
+
+626
+00:22:54,640 --> 00:22:58,920
+do in most of our knowledge uh, graph
+
+627
+00:22:57,320 --> 00:23:01,720
+solutions.
+
+628
+00:22:58,920 --> 00:23:03,640
+So, the knowledge graphs it has to do
+
+629
+00:23:01,720 --> 00:23:06,320
+several features. So, the first it
+
+630
+00:23:03,640 --> 00:23:07,360
+should have be easy to consume the data.
+
+631
+00:23:06,320 --> 00:23:09,600
+Uh and this is one of the big
+
+632
+00:23:07,360 --> 00:23:12,080
+challenges. I think it was several times
+
+633
+00:23:09,600 --> 00:23:14,600
+mentioned that RDF is really difficult
+
+634
+00:23:12,080 --> 00:23:17,040
+for many software engineers. So, there
+
+635
+00:23:14,600 --> 00:23:19,480
+should be an easy way how you serve the
+
+636
+00:23:17,040 --> 00:23:21,280
+data. But, at the same time in the back
+
+637
+00:23:19,480 --> 00:23:23,560
+end, you need some
+
+638
+00:23:21,280 --> 00:23:25,240
+either information architects or data
+
+639
+00:23:23,560 --> 00:23:27,480
+ninjas, it depends the size of your
+
+640
+00:23:25,240 --> 00:23:29,080
+organization, who really needs to know
+
+641
+00:23:27,480 --> 00:23:31,160
+all the bit and pieces, who should
+
+642
+00:23:29,080 --> 00:23:32,960
+really care about the metadata, whether
+
+643
+00:23:31,160 --> 00:23:35,240
+US is the same as United States, and
+
+644
+00:23:32,960 --> 00:23:37,040
+they should be digging into the data. At
+
+645
+00:23:35,240 --> 00:23:39,080
+least this is my type of experiences
+
+646
+00:23:37,040 --> 00:23:41,400
+that I have seen two types of software
+
+647
+00:23:39,080 --> 00:23:43,400
+engineers. One is really obsessed on
+
+648
+00:23:41,400 --> 00:23:45,200
+APIs and the programming, and the other
+
+649
+00:23:43,400 --> 00:23:47,360
+are really obsessed with the data. It's
+
+650
+00:23:45,200 --> 00:23:49,240
+very hard to find a person who is really
+
+651
+00:23:47,360 --> 00:23:50,520
+in the both worlds and is doing the same
+
+652
+00:23:49,240 --> 00:23:53,120
+thing.
+
+653
+00:23:50,520 --> 00:23:54,520
+The other thing is we In our platform,
+
+654
+00:23:53,120 --> 00:23:56,480
+there is no need for a back end
+
+655
+00:23:54,520 --> 00:23:58,320
+development. Once you configure your
+
+656
+00:23:56,480 --> 00:24:00,400
+model, you are going to get a
+
+657
+00:23:58,320 --> 00:24:02,720
+automatically a GraphQL endpoint, which
+
+658
+00:24:00,400 --> 00:24:06,360
+is going to consume allows your front
+
+659
+00:24:02,720 --> 00:24:06,360
+end developers to consume the data.
+
+660
+00:24:06,480 --> 00:24:11,000
+Also, as part of our products, we give a
+
+661
+00:24:08,800 --> 00:24:13,040
+flexible data processing tools. We are
+
+662
+00:24:11,000 --> 00:24:15,720
+going to demonstrate because you are not
+
+663
+00:24:13,040 --> 00:24:18,680
+going to avoid the the classical ETL
+
+664
+00:24:15,720 --> 00:24:21,200
+type of tasks. Getting a CSV file, it's
+
+665
+00:24:18,680 --> 00:24:23,360
+really tricky. You have all these nodes
+
+666
+00:24:21,200 --> 00:24:25,440
+to parse the dates, to fix the numbers,
+
+667
+00:24:23,360 --> 00:24:27,640
+and so on. And finally, we always
+
+668
+00:24:25,440 --> 00:24:29,560
+believe in the open interfaces. In order
+
+669
+00:24:27,640 --> 00:24:31,800
+to have open interfaces, you should be
+
+670
+00:24:29,560 --> 00:24:33,960
+able to federate your GraphQL endpoint
+
+671
+00:24:31,800 --> 00:24:36,600
+in other systems. Or even if you want,
+
+672
+00:24:33,960 --> 00:24:38,480
+you can interact on the SPARQL level,
+
+673
+00:24:36,600 --> 00:24:41,440
+which is offered by GraphDB, which is
+
+674
+00:24:38,480 --> 00:24:41,440
+our database.
+
+675
+00:24:42,640 --> 00:24:47,240
+Okay, so let's
+
+676
+00:24:44,960 --> 00:24:49,160
+the the whole story is how we can map
+
+677
+00:24:47,240 --> 00:24:51,040
+these two data sources, make a knowledge
+
+678
+00:24:49,160 --> 00:24:52,840
+graph, and offer it for a single day
+
+679
+00:24:51,040 --> 00:24:54,200
+development. This is really the task how
+
+680
+00:24:52,840 --> 00:24:56,400
+we can do this knowledge graph
+
+681
+00:24:54,200 --> 00:24:59,320
+development. So, GraphDB is one of the
+
+682
+00:24:56,400 --> 00:25:01,200
+most popular uh RDF databases. It has a
+
+683
+00:24:59,320 --> 00:25:02,840
+free version
+
+684
+00:25:01,200 --> 00:25:04,920
+uh and it's
+
+685
+00:25:02,840 --> 00:25:07,160
+it has integrated features for doing
+
+686
+00:25:04,920 --> 00:25:09,040
+ETL. Basically, I'm not sure if you are
+
+687
+00:25:07,160 --> 00:25:10,920
+familiar with the Open Refine. This is
+
+688
+00:25:09,040 --> 00:25:13,600
+the interface for parsing and detailing
+
+689
+00:25:10,920 --> 00:25:15,920
+the data. It's part of the database. So,
+
+690
+00:25:13,600 --> 00:25:18,000
+if you go one step back, Wikidata is
+
+691
+00:25:15,920 --> 00:25:19,720
+already distributed in RDF. So, you can
+
+692
+00:25:18,000 --> 00:25:21,320
+just take the data set and load it to
+
+693
+00:25:19,720 --> 00:25:23,320
+GraphDB. You don't need to do any
+
+694
+00:25:21,320 --> 00:25:25,280
+processing. All these structural,
+
+695
+00:25:23,320 --> 00:25:27,480
+semantic, and other formatting stuff are
+
+696
+00:25:25,280 --> 00:25:29,760
+all already saved. For Internet Movie
+
+697
+00:25:27,480 --> 00:25:32,560
+Database, however, the dumps are in CSV
+
+698
+00:25:29,760 --> 00:25:35,680
+format and you need to perform some
+
+699
+00:25:32,560 --> 00:25:38,840
+simple CTL tasks. When I start any with
+
+700
+00:25:35,680 --> 00:25:40,200
+with any CSV file, I know that there
+
+701
+00:25:38,840 --> 00:25:42,800
+probably there
+
+702
+00:25:40,200 --> 00:25:44,480
+spaces which are not trimmed and these
+
+703
+00:25:42,800 --> 00:25:46,360
+are common tasks which the tool gives
+
+704
+00:25:44,480 --> 00:25:48,640
+you in order to fit quickly fix the
+
+705
+00:25:46,360 --> 00:25:51,960
+data. You need to set, okay, this is a
+
+706
+00:25:48,640 --> 00:25:53,920
+number, this is a date. No two CSV
+
+707
+00:25:51,960 --> 00:25:55,520
+sources ever use the one formatting of
+
+708
+00:25:53,920 --> 00:25:57,080
+the dates. You need really to guess what
+
+709
+00:25:55,520 --> 00:25:59,520
+is it in order to parse it as a date
+
+710
+00:25:57,080 --> 00:26:01,360
+types. And also, the fortunately, in
+
+711
+00:25:59,520 --> 00:26:03,480
+this data set they give us the links to
+
+712
+00:26:01,360 --> 00:26:05,840
+I Internet Movie Database. We keep this
+
+713
+00:26:03,480 --> 00:26:07,920
+only for evaluation purposes. These are
+
+714
+00:26:05,840 --> 00:26:09,160
+not indexed and not unknown for the
+
+715
+00:26:07,920 --> 00:26:10,960
+model.
+
+716
+00:26:09,160 --> 00:26:13,320
+So, what you need to do is to do some
+
+717
+00:26:10,960 --> 00:26:16,000
+regex in order to extract them. Uh
+
+718
+00:26:13,320 --> 00:26:18,680
+typically, this is a standard job and
+
+719
+00:26:16,000 --> 00:26:20,680
+without doing this thing, uh the magic
+
+720
+00:26:18,680 --> 00:26:23,200
+will be much more expensive. So, for a
+
+721
+00:26:20,680 --> 00:26:25,400
+data engineer, this is a trivial job.
+
+722
+00:26:23,200 --> 00:26:27,760
+The other thing is we want to map the
+
+723
+00:26:25,400 --> 00:26:29,640
+CSV to RDF data. This getting more
+
+724
+00:26:27,760 --> 00:26:31,920
+complex, but the tool gives you an easy
+
+725
+00:26:29,640 --> 00:26:33,760
+interface. Once you load the data and
+
+726
+00:26:31,920 --> 00:26:36,000
+you parse it as a table, it gives you a
+
+727
+00:26:33,760 --> 00:26:38,400
+virtual a Sparkle endpoint which allows
+
+728
+00:26:36,000 --> 00:26:40,320
+you to query with Sparkle. So, in this
+
+729
+00:26:38,400 --> 00:26:42,080
+case, if you have parsed correctly the
+
+730
+00:26:40,320 --> 00:26:44,280
+numbers and the dates, also you are
+
+731
+00:26:42,080 --> 00:26:47,280
+going to get the right RDF types. What
+
+732
+00:26:44,280 --> 00:26:48,840
+is a literal, what is a URI. And also,
+
+733
+00:26:47,280 --> 00:26:51,840
+this gives you the Sparkle gives you a
+
+734
+00:26:48,840 --> 00:26:53,760
+way to split multi-valued fields like uh
+
+735
+00:26:51,840 --> 00:26:55,840
+somebody decided that they want to give
+
+736
+00:26:53,760 --> 00:26:57,960
+you the jobs in the single fields and
+
+737
+00:26:55,840 --> 00:27:00,400
+they said action
+
+738
+00:26:57,960 --> 00:27:02,480
+vertical bar three or and you want
+
+739
+00:27:00,400 --> 00:27:04,760
+basically to spark this in order to get
+
+740
+00:27:02,480 --> 00:27:06,800
+this as different values. And at this
+
+741
+00:27:04,760 --> 00:27:08,800
+stage we don't do any schema level
+
+742
+00:27:06,800 --> 00:27:10,880
+alignment. We just get the data source
+
+743
+00:27:08,800 --> 00:27:12,400
+the tool is going to read the column
+
+744
+00:27:10,880 --> 00:27:15,960
+names and it's going to suggest
+
+745
+00:27:12,400 --> 00:27:15,960
+predicate for every column.
+
+746
+00:27:16,160 --> 00:27:21,040
+The next thing is what the similarity
+
+747
+00:27:18,160 --> 00:27:23,480
+plugin expects and it
+
+748
+00:27:21,040 --> 00:27:26,920
+accept any type of of triples like call
+
+749
+00:27:23,480 --> 00:27:28,840
+it a subject predicate and object. Uh so
+
+750
+00:27:26,920 --> 00:27:30,680
+if we give and this is really the way
+
+751
+00:27:28,840 --> 00:27:32,480
+how to subset which part of the graph
+
+752
+00:27:30,680 --> 00:27:35,200
+you want to index and to apply the
+
+753
+00:27:32,480 --> 00:27:37,440
+schema level alignment. We see in in the
+
+754
+00:27:35,200 --> 00:27:39,000
+bottom that in the Wikidata
+
+755
+00:27:37,440 --> 00:27:41,520
+we have a completely different model
+
+756
+00:27:39,000 --> 00:27:44,040
+like we have entity for the movie then
+
+757
+00:27:41,520 --> 00:27:46,400
+we have entity for the actor and then we
+
+758
+00:27:44,040 --> 00:27:48,480
+have with RDF first label what is the
+
+759
+00:27:46,400 --> 00:27:50,360
+other the name. In the other database
+
+760
+00:27:48,480 --> 00:27:53,360
+because the in the other internet movie
+
+761
+00:27:50,360 --> 00:27:56,120
+database there are no IDs for the actors
+
+762
+00:27:53,360 --> 00:27:59,440
+so this is a simple field and we say
+
+763
+00:27:56,120 --> 00:28:01,960
+this is directly connected to the ID.
+
+764
+00:27:59,440 --> 00:28:04,560
+So basically what we need to do is to
+
+765
+00:28:01,960 --> 00:28:07,200
+use two query Sparkle queries which is
+
+766
+00:28:04,560 --> 00:28:10,160
+going to subset the graph and it's going
+
+767
+00:28:07,200 --> 00:28:12,120
+to index it. These two queries are very
+
+768
+00:28:10,160 --> 00:28:13,920
+trivial to be written and this is
+
+769
+00:28:12,120 --> 00:28:16,120
+probably one of one of the only
+
+770
+00:28:13,920 --> 00:28:17,960
+developments you have to do is basically
+
+771
+00:28:16,120 --> 00:28:20,520
+saying how to get the movies from the
+
+772
+00:28:17,960 --> 00:28:23,160
+Wikidata and we which are the features
+
+773
+00:28:20,520 --> 00:28:24,680
+what we want to feed. These predicates
+
+774
+00:28:23,160 --> 00:28:26,320
+P161
+
+775
+00:28:24,680 --> 00:28:28,720
+is really the director the country of
+
+776
+00:28:26,320 --> 00:28:30,760
+origin and the director and the other
+
+777
+00:28:28,720 --> 00:28:32,560
+data set which is actually queried over
+
+778
+00:28:30,760 --> 00:28:34,760
+the virtual endpoint we say we have
+
+779
+00:28:32,560 --> 00:28:36,440
+director name country
+
+780
+00:28:34,760 --> 00:28:38,680
+and for some odd reason they decided
+
+781
+00:28:36,440 --> 00:28:41,040
+actor number one actor number two and
+
+782
+00:28:38,680 --> 00:28:44,320
+actor number three. We are just going to
+
+783
+00:28:41,040 --> 00:28:46,200
+um merge this into a single
+
+784
+00:28:44,320 --> 00:28:48,880
+uh mapping table and we say okay these
+
+785
+00:28:46,200 --> 00:28:50,800
+are all actors so we put one values and
+
+786
+00:28:48,880 --> 00:28:53,480
+now we integrate also the schema which
+
+787
+00:28:50,800 --> 00:28:55,920
+is quite trivial and set a translational
+
+788
+00:28:53,480 --> 00:28:55,920
+table.
+
+789
+00:28:56,480 --> 00:29:01,360
+The whole indexing of these
+
+790
+00:28:59,120 --> 00:29:03,320
+millions of entities is actually few
+
+791
+00:29:01,360 --> 00:29:05,080
+minutes and the next thing is what we
+
+792
+00:29:03,320 --> 00:29:07,520
+are going to do is to say okay, let's
+
+793
+00:29:05,080 --> 00:29:10,360
+find similar RDF resources to the Pirate
+
+794
+00:29:07,520 --> 00:29:13,800
+Radio. This is was really this odd movie
+
+795
+00:29:10,360 --> 00:29:15,320
+which had a totally different
+
+796
+00:29:13,800 --> 00:29:17,360
+totally different name. And
+
+797
+00:29:15,320 --> 00:29:20,080
+surprisingly, we can see that the Pirate
+
+798
+00:29:17,360 --> 00:29:23,120
+Radio now modes the boat that rocked the
+
+799
+00:29:20,080 --> 00:29:25,360
+world. So, these are two completely
+
+800
+00:29:23,120 --> 00:29:27,440
+independent metrics how you decide that
+
+801
+00:29:25,360 --> 00:29:29,480
+this is one and the same movie based
+
+802
+00:29:27,440 --> 00:29:32,160
+only on the actors, the movie and the
+
+803
+00:29:29,480 --> 00:29:33,960
+director. And since we didn't apply all
+
+804
+00:29:32,160 --> 00:29:37,680
+the metadata filtering, you see that the
+
+805
+00:29:33,960 --> 00:29:39,720
+score is somewhere 46% but still this is
+
+806
+00:29:37,680 --> 00:29:43,720
+a much higher than all the other
+
+807
+00:29:39,720 --> 00:29:45,280
+suggested entities. Uh so, yes, what is
+
+808
+00:29:43,720 --> 00:29:48,000
+the lesson learned? That even with a
+
+809
+00:29:45,280 --> 00:29:50,880
+limited data set and metadata curation,
+
+810
+00:29:48,000 --> 00:29:52,320
+you can get a quite decent suggestions
+
+811
+00:29:50,880 --> 00:29:55,680
+which are saying okay, this is one of
+
+812
+00:29:52,320 --> 00:29:57,800
+the entities. Uh and obviously, this is
+
+813
+00:29:55,680 --> 00:30:00,320
+a alternative to the string matching.
+
+814
+00:29:57,800 --> 00:30:02,640
+And this is an alternative which uses
+
+815
+00:30:00,320 --> 00:30:05,000
+absolutely different mathematical model.
+
+816
+00:30:02,640 --> 00:30:07,160
+It does not It obviously it has some
+
+817
+00:30:05,000 --> 00:30:08,760
+errors because of the reduced the
+
+818
+00:30:07,160 --> 00:30:10,680
+dimensionality
+
+819
+00:30:08,760 --> 00:30:12,560
+uh but still it's like in the
+
+820
+00:30:10,680 --> 00:30:14,760
+programming combining two different hash
+
+821
+00:30:12,560 --> 00:30:16,640
+functions. And by combining two
+
+822
+00:30:14,760 --> 00:30:20,920
+different hash functions, the chance to
+
+823
+00:30:16,640 --> 00:30:20,920
+get collisions gets really minimal.
+
+824
+00:30:21,440 --> 00:30:26,240
+So, before to go to the wrap up,
+
+825
+00:30:24,480 --> 00:30:28,680
+I wanted to give
+
+826
+00:30:26,240 --> 00:30:30,520
+some important design considerations and
+
+827
+00:30:28,680 --> 00:30:33,160
+this is purely for the software
+
+828
+00:30:30,520 --> 00:30:35,840
+developers why we're doing this way. Why
+
+829
+00:30:33,160 --> 00:30:37,760
+we prefer RDF over property graphs.
+
+830
+00:30:35,840 --> 00:30:39,640
+There were a couple of discussions here.
+
+831
+00:30:37,760 --> 00:30:42,840
+I just want don't want to get into the
+
+832
+00:30:39,640 --> 00:30:45,080
+details, but I personally believe RDF is
+
+833
+00:30:42,840 --> 00:30:46,920
+currently a the much better alternative
+
+834
+00:30:45,080 --> 00:30:48,880
+because it gives you a schema and having
+
+835
+00:30:46,920 --> 00:30:51,520
+schema of these knowledge graphs is a
+
+836
+00:30:48,880 --> 00:30:53,080
+critical importance. I said that schema
+
+837
+00:30:51,520 --> 00:30:54,800
+and semantics is one of the main
+
+838
+00:30:53,080 --> 00:30:57,120
+features of the these knowledge graphs.
+
+839
+00:30:54,800 --> 00:30:58,960
+So, going with property graphs, you can
+
+840
+00:30:57,120 --> 00:31:01,200
+solve this problem, but you don't get it
+
+841
+00:30:58,960 --> 00:31:03,000
+out of the box. The other thing is in
+
+842
+00:31:01,200 --> 00:31:05,800
+RDF you have much more
+
+843
+00:31:03,000 --> 00:31:07,480
+data sets. So, Wikidata, DBpedia,
+
+844
+00:31:05,800 --> 00:31:09,840
+massive number of data sets are
+
+845
+00:31:07,480 --> 00:31:12,080
+distributed in RDF and you can just take
+
+846
+00:31:09,840 --> 00:31:14,160
+this data and do not do any conversion.
+
+847
+00:31:12,080 --> 00:31:16,720
+Obviously, you have reasonings and not
+
+848
+00:31:14,160 --> 00:31:19,520
+and last but not least, this is a model
+
+849
+00:31:16,720 --> 00:31:22,320
+which treats strings versus things. So,
+
+850
+00:31:19,520 --> 00:31:24,680
+if you have LexisNexis and you have like
+
+851
+00:31:22,320 --> 00:31:26,840
+okay, LexisNexis is a very unique name,
+
+852
+00:31:24,680 --> 00:31:28,640
+but if you have uh
+
+853
+00:31:26,840 --> 00:31:30,720
+Will Smith, one of these examples,
+
+854
+00:31:28,640 --> 00:31:31,880
+you'll get probably 50 different Will
+
+855
+00:31:30,720 --> 00:31:33,640
+Smiths. And
+
+856
+00:31:31,880 --> 00:31:35,800
+what ultimately you want to do is to
+
+857
+00:31:33,640 --> 00:31:38,080
+work with identifiers, but not labels
+
+858
+00:31:35,800 --> 00:31:39,200
+because they will give you collisions.
+
+859
+00:31:38,080 --> 00:31:41,560
+The next question is about
+
+860
+00:31:39,200 --> 00:31:43,800
+virtualization versus consolidation. I
+
+861
+00:31:41,560 --> 00:31:46,160
+know that many people talk about
+
+862
+00:31:43,800 --> 00:31:48,040
+virtualization. It's the perfect way. We
+
+863
+00:31:46,160 --> 00:31:49,640
+leave the data where is it. We don't do
+
+864
+00:31:48,040 --> 00:31:51,680
+anything. But in practice from a
+
+865
+00:31:49,640 --> 00:31:54,000
+database theory, the virtualization
+
+866
+00:31:51,680 --> 00:31:55,840
+works only for simple lookups.
+
+867
+00:31:54,000 --> 00:31:57,280
+You cannot really do
+
+868
+00:31:55,840 --> 00:31:59,120
+anything like these knowledge graph
+
+869
+00:31:57,280 --> 00:32:01,640
+embeddings with remote data which you
+
+870
+00:31:59,120 --> 00:32:03,760
+haven't seen. So, in order to really do
+
+871
+00:32:01,640 --> 00:32:05,680
+a heavy data integration, you need to
+
+872
+00:32:03,760 --> 00:32:07,600
+pump up the data, see it at least one
+
+873
+00:32:05,680 --> 00:32:10,320
+time, index it, and then you'll be able
+
+874
+00:32:07,600 --> 00:32:12,360
+to process it. Uh if you really want
+
+875
+00:32:10,320 --> 00:32:14,160
+virtualization, the way we design this
+
+876
+00:32:12,360 --> 00:32:16,600
+is to put it push it to the GraphQL
+
+877
+00:32:14,160 --> 00:32:18,600
+level, which is really the way how to
+
+878
+00:32:16,600 --> 00:32:20,640
+federate the data and it's really not a
+
+879
+00:32:18,600 --> 00:32:22,360
+data integration on the database model,
+
+880
+00:32:20,640 --> 00:32:23,560
+but it's more like merging different
+
+881
+00:32:22,360 --> 00:32:25,720
+APIs
+
+882
+00:32:23,560 --> 00:32:26,480
+uh on the API level.
+
+883
+00:32:25,720 --> 00:32:29,200
+Uh
+
+884
+00:32:26,480 --> 00:32:30,840
+the other decision we make is to push
+
+885
+00:32:29,200 --> 00:32:32,680
+the integrate to integrate the random
+
+886
+00:32:30,840 --> 00:32:35,160
+indexing in this in this similarity
+
+887
+00:32:32,680 --> 00:32:37,760
+plugin close to the database.
+
+888
+00:32:35,160 --> 00:32:39,600
+Many people will ask, "Why you are don't
+
+889
+00:32:37,760 --> 00:32:41,320
+pulling this data to Spark and then
+
+890
+00:32:39,600 --> 00:32:43,160
+pushing it back.
+
+891
+00:32:41,320 --> 00:32:45,480
+Imagine that you have a wide knowledge
+
+892
+00:32:43,160 --> 00:32:47,640
+graph and these computations needs to
+
+893
+00:32:45,480 --> 00:32:50,400
+happen every 1 minute. So, just pulling
+
+894
+00:32:47,640 --> 00:32:53,000
+the data and replicating to Spark will
+
+895
+00:32:50,400 --> 00:32:55,000
+take a massive amount of time and at the
+
+896
+00:32:53,000 --> 00:32:57,080
+end you have to implement a real
+
+897
+00:32:55,000 --> 00:32:59,240
+database in the Spark engine in order to
+
+898
+00:32:57,080 --> 00:33:02,040
+deal with this
+
+899
+00:32:59,240 --> 00:33:03,760
+data updates in a real time. So, we as
+
+900
+00:33:02,040 --> 00:33:06,160
+developers we always push the
+
+901
+00:33:03,760 --> 00:33:08,360
+computation as close as possible to the
+
+902
+00:33:06,160 --> 00:33:10,680
+database in order to avoid these
+
+903
+00:33:08,360 --> 00:33:12,520
+overheads. And why we choose GraphQL
+
+904
+00:33:10,680 --> 00:33:14,680
+over over SPARQL for the end user
+
+905
+00:33:12,520 --> 00:33:16,280
+developers? Okay, it's a very trivial.
+
+906
+00:33:14,680 --> 00:33:18,640
+They they really don't care about the
+
+907
+00:33:16,280 --> 00:33:21,200
+specifics, what really the information
+
+908
+00:33:18,640 --> 00:33:24,160
+architects want. They want a simple API,
+
+909
+00:33:21,200 --> 00:33:25,600
+use an area or angular application, sit
+
+910
+00:33:24,160 --> 00:33:27,680
+with the product owner and say, "Okay,
+
+911
+00:33:25,600 --> 00:33:29,400
+this is how I want to visualize and just
+
+912
+00:33:27,680 --> 00:33:32,080
+want to render it."
+
+913
+00:33:29,400 --> 00:33:34,400
+Okay, so thank you. This is our
+
+914
+00:33:32,080 --> 00:33:36,360
+knowledge graph production assembly line
+
+915
+00:33:34,400 --> 00:33:40,600
+and I'll be happy
+
+916
+00:33:36,360 --> 00:33:40,600
+to answer any of your questions.
+
+917
+00:33:43,880 --> 00:33:48,760
+Thank you, Dustin.
+
+918
+00:33:45,560 --> 00:33:48,760
+Any questions, anyone?
+
+919
+00:33:48,960 --> 00:33:51,320
+Okay.
+
+920
+00:33:54,040 --> 00:33:57,880
+No, it's better to get them on mic, so.
+
+921
+00:33:59,440 --> 00:34:04,640
+Uh wonderful presentation. Uh
+
+922
+00:34:01,720 --> 00:34:06,760
+in in biochemical space or life science
+
+923
+00:34:04,640 --> 00:34:10,679
+space, uh we also encounter this problem
+
+924
+00:34:06,760 --> 00:34:13,240
+of finding semantic similarity between
+
+925
+00:34:10,679 --> 00:34:14,679
+known So, we apply this to go terms and
+
+926
+00:34:13,240 --> 00:34:16,080
+then there is a scoring function that
+
+927
+00:34:14,679 --> 00:34:20,120
+allows you to
+
+928
+00:34:16,080 --> 00:34:22,639
+uh filter down from hundreds and or 500s
+
+929
+00:34:20,120 --> 00:34:24,879
+of go terms to maybe a 20 of them, which
+
+930
+00:34:22,639 --> 00:34:28,480
+are more relevant and give meaning to
+
+931
+00:34:24,879 --> 00:34:31,399
+your result. But you shown it that the
+
+932
+00:34:28,480 --> 00:34:34,320
+vector representation of your entities
+
+933
+00:34:31,399 --> 00:34:36,760
+is even more effective. So,
+
+934
+00:34:34,320 --> 00:34:39,800
+do you can you comment on if
+
+935
+00:34:36,760 --> 00:34:41,440
+this approach is better compared to
+
+936
+00:34:39,800 --> 00:34:42,280
+approaches that use utilize the scoring
+
+937
+00:34:41,440 --> 00:34:44,320
+function?
+
+938
+00:34:42,280 --> 00:34:45,919
+Okay so
+
+939
+00:34:44,320 --> 00:34:48,040
+so I'll give you some context because I
+
+940
+00:34:45,919 --> 00:34:50,639
+know the gene ontology I have spent a
+
+941
+00:34:48,040 --> 00:34:52,679
+quite long time of my life developing
+
+942
+00:34:50,639 --> 00:34:54,360
+for pharmaceutical companies. So, the
+
+943
+00:34:52,679 --> 00:34:56,840
+gene ontology is a
+
+944
+00:34:54,360 --> 00:34:59,960
+a relatively small taxonomy. Okay, it's
+
+945
+00:34:56,840 --> 00:35:02,600
+not trivial, but it's a relatively small
+
+946
+00:34:59,960 --> 00:35:05,640
+defining biological process, molecular
+
+947
+00:35:02,600 --> 00:35:08,280
+structures, and so on. I wouldn't say
+
+948
+00:35:05,640 --> 00:35:10,440
+that there is a single method which is
+
+949
+00:35:08,280 --> 00:35:12,480
+going to solve all your problems, and
+
+950
+00:35:10,440 --> 00:35:15,480
+that's why my focus is that you need to
+
+951
+00:35:12,480 --> 00:35:17,720
+use two different alternative approaches
+
+952
+00:35:15,480 --> 00:35:20,040
+like two different hash functions which
+
+953
+00:35:17,720 --> 00:35:21,280
+doesn't conflict. So, one we we will
+
+954
+00:35:20,040 --> 00:35:23,560
+base it on the knowledge graph
+
+955
+00:35:21,280 --> 00:35:25,640
+similarity and the other on base it on
+
+956
+00:35:23,560 --> 00:35:27,120
+the string similarity. By the way, this
+
+957
+00:35:25,640 --> 00:35:29,240
+algorithm has also the feature to
+
+958
+00:35:27,120 --> 00:35:31,120
+combine them in a single model. This is
+
+959
+00:35:29,240 --> 00:35:32,960
+something I haven't covered, but you can
+
+960
+00:35:31,120 --> 00:35:35,680
+do a combination between the string
+
+961
+00:35:32,960 --> 00:35:39,960
+similarity and the graph topology as
+
+962
+00:35:35,680 --> 00:35:42,160
+well. So, my my message will be that
+
+963
+00:35:39,960 --> 00:35:44,600
+doing these type of mappings is not a
+
+964
+00:35:42,160 --> 00:35:46,680
+trivial job. And typically, this will be
+
+965
+00:35:44,600 --> 00:35:49,000
+a decorative process which you say,
+
+966
+00:35:46,680 --> 00:35:51,000
+"Okay, I do a simple string matching. If
+
+967
+00:35:49,000 --> 00:35:53,080
+the If there is a single match, I'm
+
+968
+00:35:51,000 --> 00:35:55,120
+fine." Then, for the next level of
+
+969
+00:35:53,080 --> 00:35:56,960
+inconsistencies and the long tail of
+
+970
+00:35:55,120 --> 00:35:59,120
+entities, I'm going to use
+
+971
+00:35:56,960 --> 00:36:01,720
+the the vector space model combined it
+
+972
+00:35:59,120 --> 00:36:04,080
+with the string matching. So, best The
+
+973
+00:36:01,720 --> 00:36:05,920
+best results you get if you combine
+
+974
+00:36:04,080 --> 00:36:07,800
+multiple algorithms to work the same
+
+975
+00:36:05,920 --> 00:36:09,600
+because every of these algorithms gives
+
+976
+00:36:07,800 --> 00:36:12,200
+you a different error which you want to
+
+977
+00:36:09,600 --> 00:36:12,200
+eliminate.
+
+978
+00:36:15,200 --> 00:36:18,480
+Yeah, really interesting talk. Thank
+
+979
+00:36:17,600 --> 00:36:20,240
+you.
+
+980
+00:36:18,480 --> 00:36:22,520
+So, I have a question about the last
+
+981
+00:36:20,240 --> 00:36:25,440
+part of the talk. I think it was maybe
+
+982
+00:36:22,520 --> 00:36:28,040
+last slide.
+
+983
+00:36:25,440 --> 00:36:29,880
+The one where you talked about basically
+
+984
+00:36:28,040 --> 00:36:31,560
+and I I wanted to ask this question
+
+985
+00:36:29,880 --> 00:36:34,200
+where you say it's better you have to
+
+986
+00:36:31,560 --> 00:36:35,480
+have all the data in one place
+
+987
+00:36:34,200 --> 00:36:37,000
+in order to be able to do this and you
+
+988
+00:36:35,480 --> 00:36:39,080
+can't really kind of
+
+989
+00:36:37,000 --> 00:36:40,920
+federate out with this technique. Is
+
+990
+00:36:39,080 --> 00:36:42,840
+that because
+
+991
+00:36:40,920 --> 00:36:44,160
+fundamentally the technique
+
+992
+00:36:42,840 --> 00:36:44,760
+you need to assemble that matrix of
+
+993
+00:36:44,160 --> 00:36:45,160
+everything.
+
+994
+00:36:44,760 --> 00:36:46,360
+Yes.
+
+995
+00:36:45,160 --> 00:36:47,760
+Right. Okay, fine.
+
+996
+00:36:46,360 --> 00:36:50,240
+Basically you can query it also
+
+997
+00:36:47,760 --> 00:36:53,640
+virtually, but the algorithm needs to
+
+998
+00:36:50,240 --> 00:36:55,880
+see at least one time the data. So, in
+
+999
+00:36:53,640 --> 00:36:58,400
+the pure virtualization where there is a
+
+1000
+00:36:55,880 --> 00:37:00,680
+remote system, your engine or where your
+
+1001
+00:36:58,400 --> 00:37:02,560
+query processor has no clue what is the
+
+1002
+00:37:00,680 --> 00:37:05,880
+distribution of the data, what is in
+
+1003
+00:37:02,560 --> 00:37:08,040
+there, what is the dynamics. And uh
+
+1004
+00:37:05,880 --> 00:37:09,800
+I don't say virtualization is bad thing.
+
+1005
+00:37:08,040 --> 00:37:12,080
+Actually, if you can use virtualization
+
+1006
+00:37:09,800 --> 00:37:14,640
+with simple lookups, it's definitely the
+
+1007
+00:37:12,080 --> 00:37:16,840
+way to go there. But it really limits
+
+1008
+00:37:14,640 --> 00:37:18,600
+you. You can imagine I want to join this
+
+1009
+00:37:16,840 --> 00:37:20,080
+data source with another data source.
+
+1010
+00:37:18,600 --> 00:37:21,840
+Virtually, this would mean to download
+
+1011
+00:37:20,080 --> 00:37:23,760
+the two sources to join it in memory and
+
+1012
+00:37:21,840 --> 00:37:25,800
+to return the results, which is already
+
+1013
+00:37:23,760 --> 00:37:28,440
+you have consolidated and you have
+
+1014
+00:37:25,800 --> 00:37:29,880
+thrown away the results.
+
+1015
+00:37:28,440 --> 00:37:31,600
+Cuz I guess I'm coming from a position
+
+1016
+00:37:29,880 --> 00:37:34,040
+where
+
+1017
+00:37:31,600 --> 00:37:35,520
+semantic alignment particularly in
+
+1018
+00:37:34,040 --> 00:37:36,680
+schemas in order to build a knowledge
+
+1019
+00:37:35,520 --> 00:37:38,040
+graph is a really important thing to be
+
+1020
+00:37:36,680 --> 00:37:39,960
+able to do. So, we have to do that in
+
+1021
+00:37:38,040 --> 00:37:41,960
+the underlying data in order to get the
+
+1022
+00:37:39,960 --> 00:37:43,880
+alignment in the schemas sort of at a
+
+1023
+00:37:41,960 --> 00:37:45,960
+global level, but we're not really in a
+
+1024
+00:37:43,880 --> 00:37:47,640
+position where we can put all the data
+
+1025
+00:37:45,960 --> 00:37:47,880
+in one place.
+
+1026
+00:37:47,640 --> 00:37:49,760
+So.
+
+1027
+00:37:47,880 --> 00:37:51,600
+Yes, so I can imagine. So, this
+
+1028
+00:37:49,760 --> 00:37:53,760
+algorithm basically can
+
+1029
+00:37:51,600 --> 00:37:55,800
+work with any even remote data.
+
+1030
+00:37:53,760 --> 00:37:58,080
+Basically, you can
+
+1031
+00:37:55,800 --> 00:38:00,160
+but still for some reason in order to
+
+1032
+00:37:58,080 --> 00:38:02,800
+build this matrix of similarities, you
+
+1033
+00:38:00,160 --> 00:38:05,520
+need to see the data. Uh let's imagine
+
+1034
+00:38:02,800 --> 00:38:07,520
+that you have to do this on the fly.
+
+1035
+00:38:05,520 --> 00:38:10,400
+Uh to query two remote data sources and
+
+1036
+00:38:07,520 --> 00:38:13,040
+to say retrieve me something for this
+
+1037
+00:38:10,400 --> 00:38:14,880
+Avatar, even Avatar the simple movie.
+
+1038
+00:38:13,040 --> 00:38:16,560
+So, how you're going to approach this?
+
+1039
+00:38:14,880 --> 00:38:18,080
+You get the Avatar string, you send it
+
+1040
+00:38:16,560 --> 00:38:21,120
+to one source, you send it to the other
+
+1041
+00:38:18,080 --> 00:38:23,080
+source, you get a bunch of data and you
+
+1042
+00:38:21,120 --> 00:38:25,160
+probably miss many of the results which
+
+1043
+00:38:23,080 --> 00:38:28,120
+are the same movie but with a different
+
+1044
+00:38:25,160 --> 00:38:30,000
+title. So at the end you get to this
+
+1045
+00:38:28,120 --> 00:38:32,160
+practical problem that you're going to
+
+1046
+00:38:30,000 --> 00:38:35,400
+get incomplete results or not the same
+
+1047
+00:38:32,160 --> 00:38:35,400
+expressivity of the queries.
+
+1048
+00:38:37,720 --> 00:38:41,200
+Okay, thanks. Well, let's let's wrap up
+
+1049
+00:38:40,080 --> 00:38:43,480
+and go have a coffee.
+
+1050
+00:38:41,200 --> 00:38:43,480
+Thank you.
+
