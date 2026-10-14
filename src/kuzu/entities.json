@@ -4276,5 +4276,55 @@
         "fibo"
       ]
     }
+  },
+  {
+    "filename": "RAPIDS cuGraph – Accelerating all your Graph needs. Brad Rees.txt",
+    "entities": {
+      "tag": [
+        "apache arrow",
+        "bfs",
+        "community detection",
+        "connected components",
+        "cuda",
+        "cudf",
+        "cugraph",
+        "cugraphblas",
+        "cuhornet",
+        "cuio",
+        "cuml",
+        "cusignal",
+        "cuspatial",
+        "cython",
+        "etl",
+        "graphblas",
+        "graphistry",
+        "gunrock",
+        "gzip",
+        "highbench",
+        "hornet",
+        "jaccard",
+        "jupyter notebook",
+        "katz centrality",
+        "knowledge graph",
+        "lasso",
+        "louvain",
+        "networkx",
+        "nlp",
+        "orc",
+        "pagerank",
+        "pandas",
+        "parquet",
+        "principal component analysis",
+        "random forest",
+        "rapids",
+        "scikit-learn",
+        "single source shortest path",
+        "snappy",
+        "spark",
+        "spectral clustering",
+        "tensorflow",
+        "triangle counting"
+      ]
+    }
   }
 ]
