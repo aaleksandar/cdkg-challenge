@@ -1,0 +1,9288 @@
+1
+00:00:04,759 --> 00:00:09,519
+um as we're waiting let's just have a
+
+2
+00:00:07,520 --> 00:00:13,040
+look at the last question that I think
+
+3
+00:00:09,519 --> 00:00:15,000
+one minute before we left Zan made so in
+
+4
+00:00:13,040 --> 00:00:16,720
+a new project automated process named
+
+5
+00:00:15,000 --> 00:00:18,760
+stakeholder named stakeholders are not
+
+6
+00:00:16,720 --> 00:00:20,760
+known yet the first time they're defined
+
+7
+00:00:18,760 --> 00:00:23,199
+in a text is in a text document but this
+
+8
+00:00:20,760 --> 00:00:26,920
+information must be part of the
+
+9
+00:00:23,199 --> 00:00:28,560
+kg right so this is a typical case right
+
+10
+00:00:26,920 --> 00:00:31,119
+so you have name
+
+11
+00:00:28,560 --> 00:00:33,879
+stakeholders and they need to be put
+
+12
+00:00:31,119 --> 00:00:36,079
+into the the knowledge graph so the
+
+13
+00:00:33,879 --> 00:00:38,640
+question is how many are these
+
+14
+00:00:36,079 --> 00:00:43,280
+stakeholders if this if these
+
+15
+00:00:38,640 --> 00:00:44,879
+are um and also what kind of text are
+
+16
+00:00:43,280 --> 00:00:47,760
+they are they in in a text that it's
+
+17
+00:00:44,879 --> 00:00:53,120
+easy to extract them so for
+
+18
+00:00:47,760 --> 00:00:54,840
+instance they are I don't know in in um
+
+19
+00:00:53,120 --> 00:00:57,600
+one in each line or something like that
+
+20
+00:00:54,840 --> 00:01:00,600
+that's that's pretty easy if you have a
+
+21
+00:00:57,600 --> 00:01:04,760
+lot of stakeholders
+
+22
+00:01:00,600 --> 00:01:07,320
+uh name stakeholders that you need to
+
+23
+00:01:04,760 --> 00:01:11,439
+populate your graph with
+
+24
+00:01:07,320 --> 00:01:13,439
+then and the the structure is complex
+
+25
+00:01:11,439 --> 00:01:15,320
+and it's not easy for someone to go over
+
+26
+00:01:13,439 --> 00:01:16,479
+them then you need an air solution you
+
+27
+00:01:15,320 --> 00:01:20,119
+need to
+
+28
+00:01:16,479 --> 00:01:22,360
+build an entity solution to get them out
+
+29
+00:01:20,119 --> 00:01:22,360
+of
+
+30
+00:01:22,520 --> 00:01:28,119
+there okay
+
+31
+00:01:25,600 --> 00:01:31,720
+so to recup a
+
+32
+00:01:28,119 --> 00:01:35,200
+bit in the first
+
+33
+00:01:31,720 --> 00:01:36,560
+part of this master class we saw General
+
+34
+00:01:35,200 --> 00:01:39,880
+things about knowledge graphs
+
+35
+00:01:36,560 --> 00:01:43,200
+development and Mining and we dived in a
+
+36
+00:01:39,880 --> 00:01:45,640
+bit more deeply into the problem of uh
+
+37
+00:01:43,200 --> 00:01:47,240
+finding entities of discovering entities
+
+38
+00:01:45,640 --> 00:01:48,200
+so that then we can add them in the
+
+39
+00:01:47,240 --> 00:01:49,960
+knowledge
+
+40
+00:01:48,200 --> 00:01:54,159
+graph
+
+41
+00:01:49,960 --> 00:01:56,200
+now let's move to the problem of uh
+
+42
+00:01:54,159 --> 00:01:59,200
+relation extraction so let me share my
+
+43
+00:01:56,200 --> 00:01:59,200
+screen
+
+44
+00:02:03,600 --> 00:02:06,600
+okay
+
+45
+00:02:08,080 --> 00:02:13,800
+so a graph is not a graph if it doesn't
+
+46
+00:02:12,000 --> 00:02:16,360
+have relations
+
+47
+00:02:13,800 --> 00:02:18,599
+right
+
+48
+00:02:16,360 --> 00:02:22,040
+so the question that we're going to
+
+49
+00:02:18,599 --> 00:02:25,000
+tackle now is how can we identify in an
+
+50
+00:02:22,040 --> 00:02:27,480
+automatic way relations between the
+
+51
+00:02:25,000 --> 00:02:28,879
+terms and the enties that are in in that
+
+52
+00:02:27,480 --> 00:02:31,840
+we have discovered from the previous
+
+53
+00:02:28,879 --> 00:02:31,840
+step
+
+54
+00:02:31,959 --> 00:02:39,120
+so in again in the typical NP literature
+
+55
+00:02:35,879 --> 00:02:41,480
+the task is defined as locating and
+
+56
+00:02:39,120 --> 00:02:43,440
+classifying relations between entities
+
+57
+00:02:41,480 --> 00:02:45,800
+mentioned in our structured text into
+
+58
+00:02:43,440 --> 00:02:48,519
+predefined relation categories so for
+
+59
+00:02:45,800 --> 00:02:52,120
+example when we have the the text the
+
+60
+00:02:48,519 --> 00:02:54,920
+sentence basing forly romanized
+
+61
+00:02:52,120 --> 00:02:57,959
+Asing of the People's Republic of China
+
+62
+00:02:54,920 --> 00:03:00,159
+One relation that we may want to infer
+
+63
+00:02:57,959 --> 00:03:01,599
+from that from from there is that b is
+
+64
+00:03:00,159 --> 00:03:04,040
+the capital of
+
+65
+00:03:01,599 --> 00:03:07,720
+China another relation that is not
+
+66
+00:03:04,040 --> 00:03:10,519
+explicitly said is is not uh given this
+
+67
+00:03:07,720 --> 00:03:12,879
+example but it would probably be useful
+
+68
+00:03:10,519 --> 00:03:18,080
+is that Bing and
+
+69
+00:03:12,879 --> 00:03:20,000
+ping are synonyms or at least yeah they
+
+70
+00:03:18,080 --> 00:03:24,840
+can be considered a sy so Bing is
+
+71
+00:03:20,000 --> 00:03:26,480
+another way to refer to to
+
+72
+00:03:24,840 --> 00:03:30,799
+Bing
+
+73
+00:03:26,480 --> 00:03:33,840
+so in the context of NRA mining the task
+
+74
+00:03:30,799 --> 00:03:36,599
+changes a bit and becomes given a set of
+
+75
+00:03:33,840 --> 00:03:38,280
+entities and a set of relations get an
+
+76
+00:03:36,599 --> 00:03:40,159
+appropriate Corpus and find all the
+
+77
+00:03:38,280 --> 00:03:43,200
+distinct pairs of entities if the
+
+78
+00:03:40,159 --> 00:03:45,280
+relation is binary or more if it's if
+
+79
+00:03:43,200 --> 00:03:47,560
+it's cardinality is higher that are
+
+80
+00:03:45,280 --> 00:03:50,280
+related through this relation right so
+
+81
+00:03:47,560 --> 00:03:52,560
+imagine that we have from the previous
+
+82
+00:03:50,280 --> 00:03:54,360
+step from what we learned earlier we
+
+83
+00:03:52,560 --> 00:03:56,000
+have found all the entities that are
+
+84
+00:03:54,360 --> 00:03:58,239
+persons we have found all the entities
+
+85
+00:03:56,000 --> 00:03:59,840
+that are companies and now we want to
+
+86
+00:03:58,239 --> 00:04:02,120
+find
+
+87
+00:03:59,840 --> 00:04:03,560
+which which persons let's say work for
+
+88
+00:04:02,120 --> 00:04:07,120
+which companies let's say we want to
+
+89
+00:04:03,560 --> 00:04:11,040
+populate the relation works for right so
+
+90
+00:04:07,120 --> 00:04:16,120
+we want to find all the instances there
+
+91
+00:04:11,040 --> 00:04:18,799
+now again this can be done with the one
+
+92
+00:04:16,120 --> 00:04:21,040
+or more of the uh six approaches that we
+
+93
+00:04:18,799 --> 00:04:23,680
+mentioned right so we can Define hard
+
+94
+00:04:21,040 --> 00:04:26,199
+build pattern and rules for
+
+95
+00:04:23,680 --> 00:04:27,759
+extraction uh this is something that you
+
+96
+00:04:26,199 --> 00:04:31,560
+can do it also with spacy I'm not going
+
+97
+00:04:27,759 --> 00:04:33,759
+to cover it but uh uh it's easy to if
+
+98
+00:04:31,560 --> 00:04:36,080
+you go in the documentation there are
+
+99
+00:04:33,759 --> 00:04:38,160
+nice tutorials about how you can Define
+
+100
+00:04:36,080 --> 00:04:40,280
+basic relation extraction
+
+101
+00:04:38,160 --> 00:04:42,280
+patterns we can also use supervised
+
+102
+00:04:40,280 --> 00:04:44,840
+machine
+
+103
+00:04:42,280 --> 00:04:47,520
+learning where we take piece of pieces
+
+104
+00:04:44,840 --> 00:04:52,000
+of text we annotate the relations within
+
+105
+00:04:47,520 --> 00:04:54,520
+there and then we use some uh model to
+
+106
+00:04:52,000 --> 00:04:57,280
+and we train some model to be able to
+
+107
+00:04:54,520 --> 00:05:00,080
+find what we're going what I'm going to
+
+108
+00:04:57,280 --> 00:05:01,360
+show H today
+
+109
+00:05:00,080 --> 00:05:03,759
+is
+
+110
+00:05:01,360 --> 00:05:07,919
+um a
+
+111
+00:05:03,759 --> 00:05:10,240
+technique B which is called transfer
+
+112
+00:05:07,919 --> 00:05:13,440
+learning and in particular what we're
+
+113
+00:05:10,240 --> 00:05:15,720
+going to do is that we're going to take
+
+114
+00:05:13,440 --> 00:05:17,479
+a pre-trained language model that can
+
+115
+00:05:15,720 --> 00:05:19,560
+determine the semantic similarity
+
+116
+00:05:17,479 --> 00:05:21,400
+between terms and
+
+117
+00:05:19,560 --> 00:05:25,840
+phrases right
+
+118
+00:05:21,400 --> 00:05:31,560
+so H language models are generally ER
+
+119
+00:05:25,840 --> 00:05:35,319
+are models that are trained to predict
+
+120
+00:05:31,560 --> 00:05:37,960
+um then next word given a sequence it's
+
+121
+00:05:35,319 --> 00:05:40,039
+about sequence Mining and what they do
+
+122
+00:05:37,960 --> 00:05:45,240
+when they are trained in an unsupervised
+
+123
+00:05:40,039 --> 00:05:48,280
+way is that they map particular words
+
+124
+00:05:45,240 --> 00:05:50,520
+and sentences into H vectors into
+
+125
+00:05:48,280 --> 00:05:52,720
+embeddings as they are called into into
+
+126
+00:05:50,520 --> 00:05:55,039
+real numbers and when they have these
+
+127
+00:05:52,720 --> 00:05:58,560
+embeddings they can we can use them and
+
+128
+00:05:55,039 --> 00:06:00,919
+we can get their similarity that
+
+129
+00:05:58,560 --> 00:06:04,080
+hopefully denotes
+
+130
+00:06:00,919 --> 00:06:08,120
+and reflects a semantic similarity
+
+131
+00:06:04,080 --> 00:06:10,599
+between two words or two phrases or two
+
+132
+00:06:08,120 --> 00:06:14,919
+sentences
+
+133
+00:06:10,599 --> 00:06:17,680
+so language modeling is the basic task
+
+134
+00:06:14,919 --> 00:06:18,639
+on which these large language models are
+
+135
+00:06:17,680 --> 00:06:21,440
+are
+
+136
+00:06:18,639 --> 00:06:24,880
+trained what transfer learning does is
+
+137
+00:06:21,440 --> 00:06:30,000
+that takes these pre-rain models and
+
+138
+00:06:24,880 --> 00:06:31,360
+adapts them to a particular task and in
+
+139
+00:06:30,000 --> 00:06:33,440
+our case what we're going to do is that
+
+140
+00:06:31,360 --> 00:06:35,720
+we're going to fine tune an existing
+
+141
+00:06:33,440 --> 00:06:37,680
+language model so that it reflects a
+
+142
+00:06:35,720 --> 00:06:39,759
+particular relation not just semantic
+
+143
+00:06:37,680 --> 00:06:41,919
+similarity relation and how we're going
+
+144
+00:06:39,759 --> 00:06:45,680
+to do that by using positive and
+
+145
+00:06:41,919 --> 00:06:48,400
+negative examples of that uh relation in
+
+146
+00:06:45,680 --> 00:06:53,199
+slightly similar way that in the
+
+147
+00:06:48,400 --> 00:06:56,440
+previous hour we um gave additional
+
+148
+00:06:53,199 --> 00:06:59,960
+examples uh to the space in N system for
+
+149
+00:06:56,440 --> 00:07:03,639
+the entity type food right so we we
+
+150
+00:06:59,960 --> 00:07:06,639
+created a new uh
+
+151
+00:07:03,639 --> 00:07:09,520
+entity for that we're going to
+
+152
+00:07:06,639 --> 00:07:10,560
+use a library called sentence bir or
+
+153
+00:07:09,520 --> 00:07:13,639
+sentence
+
+154
+00:07:10,560 --> 00:07:16,199
+Transformers and um what this library
+
+155
+00:07:13,639 --> 00:07:17,759
+has done what the creators have done is
+
+156
+00:07:16,199 --> 00:07:20,879
+the following they have
+
+157
+00:07:17,759 --> 00:07:23,199
+taken um they have cre an architecture
+
+158
+00:07:20,879 --> 00:07:25,960
+where they
+
+159
+00:07:23,199 --> 00:07:27,160
+take pairs of sentences so sentence a
+
+160
+00:07:25,960 --> 00:07:30,160
+sentence
+
+161
+00:07:27,160 --> 00:07:31,280
+B they uh
+
+162
+00:07:30,160 --> 00:07:34,479
+pass them
+
+163
+00:07:31,280 --> 00:07:35,840
+through a bir Model A bir language model
+
+164
+00:07:34,479 --> 00:07:38,759
+trained
+
+165
+00:07:35,840 --> 00:07:41,000
+on H and take their bending so let's say
+
+166
+00:07:38,759 --> 00:07:43,240
+that the bending of sentence a is U and
+
+167
+00:07:41,000 --> 00:07:46,560
+the bending of sentence V is the of
+
+168
+00:07:43,240 --> 00:07:49,479
+sentence B is V then they consider their
+
+169
+00:07:46,560 --> 00:07:53,080
+distance and what they do is
+
+170
+00:07:49,479 --> 00:07:55,680
+that they use they
+
+171
+00:07:53,080 --> 00:08:00,599
+optimize uh they train these models in
+
+172
+00:07:55,680 --> 00:08:04,840
+order to ER for sentences that have
+
+173
+00:08:00,599 --> 00:08:08,039
+more Clos meaning uh have a greater
+
+174
+00:08:04,840 --> 00:08:10,000
+similarity uh whereas sentences that
+
+175
+00:08:08,039 --> 00:08:12,039
+have not so similar meaning according to
+
+176
+00:08:10,000 --> 00:08:18,280
+the definition that they are given from
+
+177
+00:08:12,039 --> 00:08:21,720
+the data have a greater distance so when
+
+178
+00:08:18,280 --> 00:08:24,080
+this has been trained then at inference
+
+179
+00:08:21,720 --> 00:08:26,120
+time we can give as input any two
+
+180
+00:08:24,080 --> 00:08:28,960
+sentences and through the cosign
+
+181
+00:08:26,120 --> 00:08:30,800
+similarity get a score that suggests if
+
+182
+00:08:28,960 --> 00:08:31,919
+they are simil
+
+183
+00:08:30,800 --> 00:08:37,039
+or
+
+184
+00:08:31,919 --> 00:08:40,640
+not so let me give you the link let
+
+185
+00:08:37,039 --> 00:08:44,320
+first of all and share my screen for
+
+186
+00:08:40,640 --> 00:08:47,920
+now and uh let me give you the link to
+
+187
+00:08:44,320 --> 00:08:47,920
+the second collab
+
+188
+00:09:07,440 --> 00:09:13,560
+okay
+
+189
+00:09:10,160 --> 00:09:16,440
+so H as opposed to Spacey uh the
+
+190
+00:09:13,560 --> 00:09:20,839
+sentence birth library is not by default
+
+191
+00:09:16,440 --> 00:09:23,880
+in the Google collab uh environment so
+
+192
+00:09:20,839 --> 00:09:26,440
+the first step that we need to do is H
+
+193
+00:09:23,880 --> 00:09:29,959
+install it so you can do that via the
+
+194
+00:09:26,440 --> 00:09:34,399
+command line or via collab by uh
+
+195
+00:09:29,959 --> 00:09:35,800
+executing uh this uh this command I have
+
+196
+00:09:34,399 --> 00:09:38,560
+already installed in my machine so I'm
+
+197
+00:09:35,800 --> 00:09:41,160
+not going to repeat that but if you want
+
+198
+00:09:38,560 --> 00:09:44,200
+just uh execute
+
+199
+00:09:41,160 --> 00:09:48,360
+this after you we've done that then what
+
+200
+00:09:44,200 --> 00:09:50,480
+we need to do is just import the sence
+
+201
+00:09:48,360 --> 00:09:54,839
+Transformer ER
+
+202
+00:09:50,480 --> 00:09:56,959
+module by having that we can then load a
+
+203
+00:09:54,839 --> 00:09:59,959
+pre-trained
+
+204
+00:09:56,959 --> 00:10:03,920
+model um
+
+205
+00:09:59,959 --> 00:10:07,200
+there are several ones uh to be honest I
+
+206
+00:10:03,920 --> 00:10:09,560
+don't know which one is better or worse
+
+207
+00:10:07,200 --> 00:10:12,120
+let say so there are in the on on the
+
+208
+00:10:09,560 --> 00:10:13,600
+website which by the way I can show the
+
+209
+00:10:12,120 --> 00:10:17,120
+website of the
+
+210
+00:10:13,600 --> 00:10:20,200
+library it's this one it's called as.net
+
+211
+00:10:17,120 --> 00:10:24,399
+so you can visit and have have a closer
+
+212
+00:10:20,200 --> 00:10:26,680
+look they mentioned um some differences
+
+213
+00:10:24,399 --> 00:10:28,720
+between the pre-train models in this
+
+214
+00:10:26,680 --> 00:10:30,920
+case what I know that is that this
+
+215
+00:10:28,720 --> 00:10:33,120
+particular pre-rain model has been
+
+216
+00:10:30,920 --> 00:10:35,600
+optimized for the task of natural
+
+217
+00:10:33,120 --> 00:10:36,880
+language inference what is natural
+
+218
+00:10:35,600 --> 00:10:39,240
+language inference natural language
+
+219
+00:10:36,880 --> 00:10:43,120
+inference inference is the task
+
+220
+00:10:39,240 --> 00:10:47,279
+of getting as input two sentences and
+
+221
+00:10:43,120 --> 00:10:51,120
+determining whether one sentence is has
+
+222
+00:10:47,279 --> 00:10:55,200
+equivalent meaning to the other or it is
+
+223
+00:10:51,120 --> 00:10:56,519
+its meaning is entailed by the other or
+
+224
+00:10:55,200 --> 00:11:00,279
+their
+
+225
+00:10:56,519 --> 00:11:04,560
+meanings are uh opposite have contradict
+
+226
+00:11:00,279 --> 00:11:06,360
+each other so if you have the sentence I
+
+227
+00:11:04,560 --> 00:11:08,800
+don't know
+
+228
+00:11:06,360 --> 00:11:11,320
+um Athens is the capital of Greece and
+
+229
+00:11:08,800 --> 00:11:13,720
+Athens is not the capital of Greece and
+
+230
+00:11:11,320 --> 00:11:15,560
+then in the natural language inference
+
+231
+00:11:13,720 --> 00:11:18,320
+task these two sentences should be
+
+232
+00:11:15,560 --> 00:11:23,920
+identified as
+
+233
+00:11:18,320 --> 00:11:23,920
+contradicting so by loading this model
+
+234
+00:11:29,360 --> 00:11:35,480
+sorry I think I need to to run it my my
+
+235
+00:11:32,320 --> 00:11:38,600
+my old machine has been reset by the way
+
+236
+00:11:35,480 --> 00:11:41,480
+when you when you install
+
+237
+00:11:38,600 --> 00:11:45,160
+this uh make sure that you restart the
+
+238
+00:11:41,480 --> 00:11:48,360
+run time because uh in order to take
+
+239
+00:11:45,160 --> 00:11:48,360
+the the
+
+240
+00:11:51,200 --> 00:11:55,399
+difference so let's wa a couple of
+
+241
+00:11:53,680 --> 00:11:59,279
+seconds
+
+242
+00:11:55,399 --> 00:12:02,399
+so this as I said installs the the
+
+243
+00:11:59,279 --> 00:12:02,399
+Library the
+
+244
+00:12:07,839 --> 00:12:10,839
+module
+
+245
+00:12:11,320 --> 00:12:18,120
+um by the way see we 27 people so I
+
+246
+00:12:14,000 --> 00:12:21,320
+think elas if you want uh we can switch
+
+247
+00:12:18,120 --> 00:12:22,880
+to to a chat view I think it may be more
+
+248
+00:12:21,320 --> 00:12:26,079
+interactive like
+
+249
+00:12:22,880 --> 00:12:27,959
+this H yes Panos in what exact form
+
+250
+00:12:26,079 --> 00:12:30,320
+would you like to do this in discussion
+
+251
+00:12:27,959 --> 00:12:35,079
+AUD only uh and
+
+252
+00:12:30,320 --> 00:12:37,959
+video H audio and video I think because
+
+253
+00:12:35,079 --> 00:12:40,079
+we will do a lot of Q&A here and okay
+
+254
+00:12:37,959 --> 00:12:44,480
+give me just a moment
+
+255
+00:12:40,079 --> 00:12:44,480
+please and i' like to see the faces of
+
+256
+00:12:46,639 --> 00:12:52,000
+people but we will need the screen right
+
+257
+00:12:50,760 --> 00:12:54,839
+I need to give you the screen first
+
+258
+00:12:52,000 --> 00:12:56,800
+right okay let's do it a bit no what's
+
+259
+00:12:54,839 --> 00:12:58,120
+what's prefer preferable for you will
+
+260
+00:12:56,800 --> 00:13:00,199
+you need to share screen in the
+
+261
+00:12:58,120 --> 00:13:04,040
+meanwhile
+
+262
+00:13:00,199 --> 00:13:08,079
+yeah okay let me just find a better way
+
+263
+00:13:04,040 --> 00:13:08,079
+to accommodate this
+
+264
+00:13:09,199 --> 00:13:14,399
+okay okay
+
+265
+00:13:11,240 --> 00:13:17,399
+so uh we have installed this I'm
+
+266
+00:13:14,399 --> 00:13:17,399
+restarting the r
+
+267
+00:13:17,560 --> 00:13:22,880
+time so I think everybody can
+
+268
+00:13:24,440 --> 00:13:31,120
+uh I will start giving everyone audio
+
+269
+00:13:27,920 --> 00:13:31,120
+and video access
+
+270
+00:13:31,279 --> 00:13:38,320
+okay okay so now we have managed to
+
+271
+00:13:35,320 --> 00:13:40,560
+import the settings Transformer and now
+
+272
+00:13:38,320 --> 00:13:44,320
+we are loading the model so it's a big
+
+273
+00:13:40,560 --> 00:13:44,320
+one so it takes takes a
+
+274
+00:13:50,839 --> 00:13:56,959
+while it's done now as soon as we have
+
+275
+00:13:54,160 --> 00:13:59,519
+the model we can define a basic function
+
+276
+00:13:56,959 --> 00:14:02,639
+a basic find similarity function that
+
+277
+00:13:59,519 --> 00:14:05,240
+takes as parameters the model and two
+
+278
+00:14:02,639 --> 00:14:07,320
+terms term one and term two and the way
+
+279
+00:14:05,240 --> 00:14:10,480
+to compute the similarity between the
+
+280
+00:14:07,320 --> 00:14:13,600
+two terms uh is just
+
+281
+00:14:10,480 --> 00:14:15,880
+by uh taking the embeddings of the first
+
+282
+00:14:13,600 --> 00:14:19,160
+term by encoding using the model to
+
+283
+00:14:15,880 --> 00:14:22,079
+encode the term with the parameter coal
+
+284
+00:14:19,160 --> 00:14:24,560
+equals true and the same for the
+
+285
+00:14:22,079 --> 00:14:26,639
+embeddings of the second term and then
+
+286
+00:14:24,560 --> 00:14:29,320
+just calculate the semantic the cosine
+
+287
+00:14:26,639 --> 00:14:31,199
+similarity between the two vectors
+
+288
+00:14:29,320 --> 00:14:34,240
+between the two embeddings and then
+
+289
+00:14:31,199 --> 00:14:38,680
+print the score so by doing
+
+290
+00:14:34,240 --> 00:14:42,639
+that we can just start playing with the
+
+291
+00:14:38,680 --> 00:14:46,320
+similarity between H terms so I have
+
+292
+00:14:42,639 --> 00:14:48,480
+here some examples from professions
+
+293
+00:14:46,320 --> 00:14:50,440
+which is something that we saw also in
+
+294
+00:14:48,480 --> 00:14:52,600
+Esco and we saw in in Tex channel it's
+
+295
+00:14:50,440 --> 00:14:55,880
+very common so we see for example that
+
+296
+00:14:52,600 --> 00:14:57,480
+according to this pre-rain model um
+
+297
+00:14:55,880 --> 00:15:01,600
+software developer software engineer
+
+298
+00:14:57,480 --> 00:15:03,959
+have a similarity of zero 85 so they are
+
+299
+00:15:01,600 --> 00:15:05,279
+quite near database designer data
+
+300
+00:15:03,959 --> 00:15:08,000
+architect
+
+301
+00:15:05,279 --> 00:15:12,560
+066 whereas welder and
+
+302
+00:15:08,000 --> 00:15:15,160
+soer just 042 although they are
+
+303
+00:15:12,560 --> 00:15:17,519
+[Music]
+
+304
+00:15:15,160 --> 00:15:21,199
+actually well actually they are they are
+
+305
+00:15:17,519 --> 00:15:24,040
+almost synonyms
+
+306
+00:15:21,199 --> 00:15:27,199
+now it is possible to work just with
+
+307
+00:15:24,040 --> 00:15:29,560
+that in some cases what do what do I
+
+308
+00:15:27,199 --> 00:15:31,920
+mean even if you
+
+309
+00:15:29,560 --> 00:15:34,120
+even if you don't depending on your
+
+310
+00:15:31,920 --> 00:15:37,319
+domain and on the type of entities and
+
+311
+00:15:34,120 --> 00:15:39,639
+the relations you have it is possible
+
+312
+00:15:37,319 --> 00:15:42,399
+that H many of the relations that that
+
+313
+00:15:39,639 --> 00:15:47,000
+you target are included under the
+
+314
+00:15:42,399 --> 00:15:49,240
+similarity one or vice versa if it may
+
+315
+00:15:47,000 --> 00:15:51,759
+happen that if two terms if two entities
+
+316
+00:15:49,240 --> 00:15:54,440
+are not related via the target relation
+
+317
+00:15:51,759 --> 00:15:58,759
+they're not even related through the
+
+318
+00:15:54,440 --> 00:15:59,800
+similarity so this can be a fast way to
+
+319
+00:15:58,759 --> 00:16:03,040
+uh
+
+320
+00:15:59,800 --> 00:16:06,040
+exclude entities that do not have any
+
+321
+00:16:03,040 --> 00:16:08,800
+relation whatsoever it doesn't work
+
+322
+00:16:06,040 --> 00:16:13,560
+always but if it does it can save you a
+
+323
+00:16:08,800 --> 00:16:17,800
+lot of time from uh that you would
+
+324
+00:16:13,560 --> 00:16:21,040
+spend H trying to create the optimal
+
+325
+00:16:17,800 --> 00:16:25,360
+relation uh extraction uh
+
+326
+00:16:21,040 --> 00:16:27,920
+Model H especially if two terms have a
+
+327
+00:16:25,360 --> 00:16:30,560
+really high similarity like more than
+
+328
+00:16:27,920 --> 00:16:33,079
+90% there there is a strong indication
+
+329
+00:16:30,560 --> 00:16:36,079
+that they're quite similar and it may be
+
+330
+00:16:33,079 --> 00:16:37,319
+that they are even uh synonyms but of
+
+331
+00:16:36,079 --> 00:16:41,920
+course this is
+
+332
+00:16:37,319 --> 00:16:45,160
+something that uh really needs to be um
+
+333
+00:16:41,920 --> 00:16:47,440
+you really need to evaluate um for for
+
+334
+00:16:45,160 --> 00:16:52,279
+your case
+
+335
+00:16:47,440 --> 00:16:55,279
+now the fight similarity finds just the
+
+336
+00:16:52,279 --> 00:16:57,839
+similarity between two terms now imagine
+
+337
+00:16:55,279 --> 00:17:04,199
+that we have
+
+338
+00:16:57,839 --> 00:17:05,600
+um I don't know 50,000 H entities in our
+
+339
+00:17:04,199 --> 00:17:07,640
+knowledge graph right and we want to
+
+340
+00:17:05,600 --> 00:17:11,360
+find all the potential relation between
+
+341
+00:17:07,640 --> 00:17:14,520
+them then we would need to do a pairwise
+
+342
+00:17:11,360 --> 00:17:16,240
+to to compute the similarity between all
+
+343
+00:17:14,520 --> 00:17:18,520
+possible pairs
+
+344
+00:17:16,240 --> 00:17:20,439
+which there can be a lot right actually
+
+345
+00:17:18,520 --> 00:17:23,280
+50,000
+
+346
+00:17:20,439 --> 00:17:26,959
+Square likely for us this particular
+
+347
+00:17:23,280 --> 00:17:29,640
+Library expert has a an implementation
+
+348
+00:17:26,959 --> 00:17:33,720
+which is called paraphrase mining
+
+349
+00:17:29,640 --> 00:17:37,320
+that um implements a bit a more
+
+350
+00:17:33,720 --> 00:17:43,080
+efficient algorithm with some heuristics
+
+351
+00:17:37,320 --> 00:17:47,880
+that allows for a given set of uh terms
+
+352
+00:17:43,080 --> 00:17:52,520
+to find the top similar pairs
+
+353
+00:17:47,880 --> 00:17:55,320
+so the way it works is uh that uh we get
+
+354
+00:17:52,520 --> 00:17:56,320
+a list of ter as input and we compute
+
+355
+00:17:55,320 --> 00:17:59,280
+the
+
+356
+00:17:56,320 --> 00:18:01,760
+paraphrase paraphrases by running from
+
+357
+00:17:59,280 --> 00:18:05,760
+the model the util do paraphrase
+
+358
+00:18:01,760 --> 00:18:08,919
+mining H and then we can get uh the main
+
+359
+00:18:05,760 --> 00:18:10,760
+score so if I run this I give it as
+
+360
+00:18:08,919 --> 00:18:13,280
+input data science that engineer welding
+
+361
+00:18:10,760 --> 00:18:18,240
+and soldering and you can see that it
+
+362
+00:18:13,280 --> 00:18:20,440
+gave me um the most typical pair so data
+
+363
+00:18:18,240 --> 00:18:22,760
+sense data engineer with a similarity of
+
+364
+00:18:20,440 --> 00:18:27,840
+057 welding and sold with similarity of
+
+365
+00:18:22,760 --> 00:18:30,240
+036 Etc so sem semantically from from a
+
+366
+00:18:27,840 --> 00:18:33,120
+functionality point of view from a score
+
+367
+00:18:30,240 --> 00:18:34,960
+point of view the paraphrase Mining and
+
+368
+00:18:33,120 --> 00:18:37,080
+the F similarity are not so different
+
+369
+00:18:34,960 --> 00:18:39,280
+right so they use exactly the same
+
+370
+00:18:37,080 --> 00:18:41,280
+information the only thing that changes
+
+371
+00:18:39,280 --> 00:18:45,000
+between the paraphrase minding and the F
+
+372
+00:18:41,280 --> 00:18:47,919
+similarity is what is the input and
+
+373
+00:18:45,000 --> 00:18:49,760
+what is the efficiency by which all the
+
+374
+00:18:47,919 --> 00:18:52,760
+pairs can
+
+375
+00:18:49,760 --> 00:18:52,760
+be
+
+376
+00:18:53,640 --> 00:19:00,440
+analyzed okay um any questions on this
+
+377
+00:19:04,120 --> 00:19:08,120
+actually we can also we can close the
+
+378
+00:19:06,159 --> 00:19:10,159
+poll I think I don't know if you can and
+
+379
+00:19:08,120 --> 00:19:11,919
+Pa I will end
+
+380
+00:19:10,159 --> 00:19:15,760
+it
+
+381
+00:19:11,919 --> 00:19:18,960
+okay so if someone has a question please
+
+382
+00:19:15,760 --> 00:19:22,039
+mute or I don't know if they Canute
+
+383
+00:19:18,960 --> 00:19:22,760
+themselves and show I have given audio
+
+384
+00:19:22,039 --> 00:19:25,760
+and
+
+385
+00:19:22,760 --> 00:19:29,799
+video access to everybody they can mute
+
+386
+00:19:25,760 --> 00:19:34,679
+or unmute and uh take the floor okay
+
+387
+00:19:29,799 --> 00:19:38,360
+um Panos what about if I want to find I
+
+388
+00:19:34,679 --> 00:19:41,120
+don't know the list of possible world uh
+
+389
+00:19:38,360 --> 00:19:43,440
+phrases uh is there any way that there's
+
+390
+00:19:41,120 --> 00:19:46,799
+a suggestion of phrases so if I have
+
+391
+00:19:43,440 --> 00:19:48,640
+just data engineer and I want to know
+
+392
+00:19:46,799 --> 00:19:53,799
+other possible
+
+393
+00:19:48,640 --> 00:19:57,320
+synonyms you mean if you have only
+
+394
+00:19:53,799 --> 00:20:02,159
+the if you have only the one entity but
+
+395
+00:19:57,320 --> 00:20:04,840
+not all but not the other right y okay H
+
+396
+00:20:02,159 --> 00:20:07,360
+in that case I mean in general you can
+
+397
+00:20:04,840 --> 00:20:10,000
+do it you can always Define an
+
+398
+00:20:07,360 --> 00:20:11,760
+extraction rule it's possible right not
+
+399
+00:20:10,000 --> 00:20:16,320
+not through this framework but through a
+
+400
+00:20:11,760 --> 00:20:19,120
+framework like Spacey for instance
+
+401
+00:20:16,320 --> 00:20:21,640
+um
+
+402
+00:20:19,120 --> 00:20:23,440
+and I don't think it would work with B
+
+403
+00:20:21,640 --> 00:20:25,760
+I'm not I'm not completely sure I know
+
+404
+00:20:23,440 --> 00:20:28,159
+with it could work with word embeddings
+
+405
+00:20:25,760 --> 00:20:32,280
+and with word vectors where for a given
+
+406
+00:20:28,159 --> 00:20:35,280
+word you can find its top similar from
+
+407
+00:20:32,280 --> 00:20:38,640
+whatever words it has learned I'm not
+
+408
+00:20:35,280 --> 00:20:41,640
+sure it is possible to do this via this
+
+409
+00:20:38,640 --> 00:20:43,159
+framework but I I will I make a note and
+
+410
+00:20:41,640 --> 00:20:45,050
+I will definitely research it for the
+
+411
+00:20:43,159 --> 00:20:49,329
+future perfect thank
+
+412
+00:20:45,050 --> 00:20:49,329
+[Music]
+
+413
+00:20:49,960 --> 00:20:53,440
+you any other
+
+414
+00:20:57,440 --> 00:21:00,799
+question h
+
+415
+00:20:59,640 --> 00:21:04,200
+how do you
+
+416
+00:21:00,799 --> 00:21:06,919
+validate that the similarity score
+
+417
+00:21:04,200 --> 00:21:11,360
+embeddings are
+
+418
+00:21:06,919 --> 00:21:14,360
+accurate right great question
+
+419
+00:21:11,360 --> 00:21:14,360
+so
+
+420
+00:21:14,880 --> 00:21:21,600
+um similari is quite subjective right so
+
+421
+00:21:19,480 --> 00:21:22,640
+there are there are in the literature
+
+422
+00:21:21,600 --> 00:21:25,240
+some
+
+423
+00:21:22,640 --> 00:21:27,679
+benchmarks that uh the researchers use
+
+424
+00:21:25,240 --> 00:21:29,240
+when they build these models But
+
+425
+00:21:27,679 --> 00:21:32,799
+ultimately
+
+426
+00:21:29,240 --> 00:21:37,799
+for it depends on your Cas and on your
+
+427
+00:21:32,799 --> 00:21:39,159
+relation right um if the similarity
+
+428
+00:21:37,799 --> 00:21:42,200
+reflects
+
+429
+00:21:39,159 --> 00:21:45,520
+the reflects the semantics that you have
+
+430
+00:21:42,200 --> 00:21:47,240
+in in your mind and I'm going to show in
+
+431
+00:21:45,520 --> 00:21:50,480
+the next hour in the methodological
+
+432
+00:21:47,240 --> 00:21:51,919
+question discussion examples where
+
+433
+00:21:50,480 --> 00:21:56,559
+semantic
+
+434
+00:21:51,919 --> 00:21:59,279
+similarity definition can be quite vague
+
+435
+00:21:56,559 --> 00:22:02,000
+and subjective and context depending
+
+436
+00:21:59,279 --> 00:22:04,880
+actually I have I have a whole a half
+
+437
+00:22:02,000 --> 00:22:06,960
+chapter in my book about why semantic
+
+438
+00:22:04,880 --> 00:22:08,840
+similarity is tricky that you know it's
+
+439
+00:22:06,960 --> 00:22:12,240
+quite easy to calculate there are all
+
+440
+00:22:08,840 --> 00:22:13,679
+types of there are many language models
+
+441
+00:22:12,240 --> 00:22:16,600
+and word and bendings that give you some
+
+442
+00:22:13,679 --> 00:22:19,440
+kind of similarity but whether that
+
+443
+00:22:16,600 --> 00:22:22,320
+similarity is the one you actually need
+
+444
+00:22:19,440 --> 00:22:25,159
+for your application or for your domain
+
+445
+00:22:22,320 --> 00:22:27,520
+remains to be validated the way to
+
+446
+00:22:25,159 --> 00:22:30,919
+validate it would be to have human
+
+447
+00:22:27,520 --> 00:22:32,640
+judges right right to to really see if
+
+448
+00:22:30,919 --> 00:22:36,039
+they agree on this or
+
+449
+00:22:32,640 --> 00:22:38,400
+not yeah I mean my domain is Healthcare
+
+450
+00:22:36,039 --> 00:22:40,799
+and of course the classic example would
+
+451
+00:22:38,400 --> 00:22:44,279
+be something like cell right you could
+
+452
+00:22:40,799 --> 00:22:46,400
+have a prison cell or a biological cell
+
+453
+00:22:44,279 --> 00:22:48,799
+or you could have a cold right you're
+
+454
+00:22:46,400 --> 00:22:51,799
+sick you have a virus so when we say
+
+455
+00:22:48,799 --> 00:22:53,799
+cold we mean virus but at the same time
+
+456
+00:22:51,799 --> 00:22:56,080
+you could be cold temperature- wise even
+
+457
+00:22:53,799 --> 00:22:59,400
+though the semantic I mean if I run cold
+
+458
+00:22:56,080 --> 00:23:01,799
+and cold of course I get a similari of
+
+459
+00:22:59,400 --> 00:23:04,279
+99999 because the words are exactly the
+
+460
+00:23:01,799 --> 00:23:07,360
+same but the context or the semantic
+
+461
+00:23:04,279 --> 00:23:10,679
+meaning is different so I I guess I'm
+
+462
+00:23:07,360 --> 00:23:13,760
+wondering how using this method you can
+
+463
+00:23:10,679 --> 00:23:16,200
+validate that the model is using the
+
+464
+00:23:13,760 --> 00:23:21,000
+semantics that you think it should be
+
+465
+00:23:16,200 --> 00:23:24,600
+using right I understand so the one way
+
+466
+00:23:21,000 --> 00:23:28,120
+to to predict that is I mean you the one
+
+467
+00:23:24,600 --> 00:23:30,880
+thing is that you don't know uh so let
+
+468
+00:23:28,120 --> 00:23:31,919
+me say differently these models language
+
+469
+00:23:30,880 --> 00:23:37,679
+model like
+
+470
+00:23:31,919 --> 00:23:39,279
+ber um utilize a lot uh the context so
+
+471
+00:23:37,679 --> 00:23:42,039
+if you just give it as
+
+472
+00:23:39,279 --> 00:23:44,240
+input cell and something else just the
+
+473
+00:23:42,039 --> 00:23:46,320
+word cell then it doesn't have any
+
+474
+00:23:44,240 --> 00:23:49,279
+context to decide what is the
+
+475
+00:23:46,320 --> 00:23:50,400
+meaning if you give it a a a more
+
+476
+00:23:49,279 --> 00:23:53,200
+complex
+
+477
+00:23:50,400 --> 00:23:57,360
+sentence right the cell of the
+
+478
+00:23:53,200 --> 00:23:59,840
+organization I don't know is uh found to
+
+479
+00:23:57,360 --> 00:24:03,240
+be I don't no Pro to this disease or
+
+480
+00:23:59,840 --> 00:24:05,960
+something just saying then what these
+
+481
+00:24:03,240 --> 00:24:08,000
+models promise is that the cell will be
+
+482
+00:24:05,960 --> 00:24:11,320
+there in that Contex will be interpreted
+
+483
+00:24:08,000 --> 00:24:15,640
+more correctly than if it was on its
+
+484
+00:24:11,320 --> 00:24:19,039
+own so usually the way to work with
+
+485
+00:24:15,640 --> 00:24:19,039
+ambiguities by giving more
+
+486
+00:24:20,200 --> 00:24:24,240
+context okay I understand thank
+
+487
+00:24:25,240 --> 00:24:30,200
+you
+
+488
+00:24:27,360 --> 00:24:32,960
+okay I've got a quick question if I may
+
+489
+00:24:30,200 --> 00:24:36,640
+so I'm B sh I'm um information architect
+
+490
+00:24:32,960 --> 00:24:39,360
+for um digital. nhs.uk so I'm in
+
+491
+00:24:36,640 --> 00:24:40,720
+healthcare um nice I'm wondering
+
+492
+00:24:39,360 --> 00:24:43,279
+actually
+
+493
+00:24:40,720 --> 00:24:47,399
+because my my perspective is training
+
+494
+00:24:43,279 --> 00:24:49,200
+off a website so it it's almost like yes
+
+495
+00:24:47,399 --> 00:24:52,600
+you want to train on wording beddings
+
+496
+00:24:49,200 --> 00:24:54,640
+but also you want to consider that one
+
+497
+00:24:52,600 --> 00:24:57,840
+section of our website is talking about
+
+498
+00:24:54,640 --> 00:25:00,200
+one similar topic and you want I'm
+
+499
+00:24:57,840 --> 00:25:02,440
+thinking how how do I bring that into
+
+500
+00:25:00,200 --> 00:25:06,640
+the training model so that when you're
+
+501
+00:25:02,440 --> 00:25:08,440
+talking about a specific term um if
+
+502
+00:25:06,640 --> 00:25:10,440
+those two terms are being used on
+
+503
+00:25:08,440 --> 00:25:12,919
+similar areas of the
+
+504
+00:25:10,440 --> 00:25:17,080
+website that they're they have a
+
+505
+00:25:12,919 --> 00:25:19,080
+stronger um you know
+
+506
+00:25:17,080 --> 00:25:20,559
+relationship if that makes sense it's
+
+507
+00:25:19,080 --> 00:25:23,000
+almost like how can I influence the
+
+508
+00:25:20,559 --> 00:25:25,600
+vectors to be closer because those words
+
+509
+00:25:23,000 --> 00:25:27,159
+are found on the same part of a website
+
+510
+00:25:25,600 --> 00:25:31,679
+on the same
+
+511
+00:25:27,159 --> 00:25:33,840
+section right right um I'm not right I
+
+512
+00:25:31,679 --> 00:25:36,919
+don't know very well
+
+513
+00:25:33,840 --> 00:25:38,159
+how it works but generally to influence
+
+514
+00:25:36,919 --> 00:25:40,600
+the vectors and this is something that
+
+515
+00:25:38,159 --> 00:25:43,440
+we're going to see I'm going to show an
+
+516
+00:25:40,600 --> 00:25:47,559
+example of this to influence the vectors
+
+517
+00:25:43,440 --> 00:25:50,399
+you need to actually okay when you
+
+518
+00:25:47,559 --> 00:25:53,159
+have a trained model either a language
+
+519
+00:25:50,399 --> 00:25:55,840
+model which is trained on a big Corpus
+
+520
+00:25:53,159 --> 00:25:58,480
+right word bendings or
+
+521
+00:25:55,840 --> 00:26:00,159
+language H it can be influenced into
+
+522
+00:25:58,480 --> 00:26:03,440
+ways one is
+
+523
+00:26:00,159 --> 00:26:05,919
+to train it again in your own Corpus
+
+524
+00:26:03,440 --> 00:26:08,840
+which will be more specific yes to your
+
+525
+00:26:05,919 --> 00:26:11,000
+domain right so instead of for example
+
+526
+00:26:08,840 --> 00:26:12,640
+training it in news articles that can be
+
+527
+00:26:11,000 --> 00:26:16,039
+about anything you train it on to
+
+528
+00:26:12,640 --> 00:26:17,799
+healthcare that uh yeah mention that's
+
+529
+00:26:16,039 --> 00:26:21,840
+that's one approach the other approach
+
+530
+00:26:17,799 --> 00:26:24,440
+would be to uh add some supervision and
+
+531
+00:26:21,840 --> 00:26:26,120
+to give explicit examples of things that
+
+532
+00:26:24,440 --> 00:26:29,480
+should be
+
+533
+00:26:26,120 --> 00:26:31,000
+close yes and things that should be a
+
+534
+00:26:29,480 --> 00:26:33,520
+far
+
+535
+00:26:31,000 --> 00:26:35,399
+and adapt it and find unit and this is
+
+536
+00:26:33,520 --> 00:26:39,559
+what I'm going to show right
+
+537
+00:26:35,399 --> 00:26:41,799
+now yeah so maybe we we train like
+
+538
+00:26:39,559 --> 00:26:44,440
+sections of the site together content
+
+539
+00:26:41,799 --> 00:26:47,799
+from a similar part of the site together
+
+540
+00:26:44,440 --> 00:26:51,159
+yeah so do it split it
+
+541
+00:26:47,799 --> 00:26:54,559
+up yeah I don't know what it section is
+
+542
+00:26:51,159 --> 00:26:56,360
+a piece of text probably yeah yeah if
+
+543
+00:26:54,559 --> 00:26:58,840
+you have individual terms and that in
+
+544
+00:26:56,360 --> 00:27:02,080
+your case should be closed
+
+545
+00:26:58,840 --> 00:27:04,880
+then you need to somehow tell that to to
+
+546
+00:27:02,080 --> 00:27:07,360
+the system take it in mind yeah it was
+
+547
+00:27:04,880 --> 00:27:11,399
+either that or think use the URL path
+
+548
+00:27:07,360 --> 00:27:12,960
+almost as a word ah yeah because the URL
+
+549
+00:27:11,399 --> 00:27:15,480
+path would be quite similar to another
+
+550
+00:27:12,960 --> 00:27:18,559
+URL path because they talk they're part
+
+551
+00:27:15,480 --> 00:27:22,200
+of the same structure so you know one of
+
+552
+00:27:18,559 --> 00:27:23,840
+our I haven't work with with yeah with
+
+553
+00:27:22,200 --> 00:27:25,279
+websites like this but I understand what
+
+554
+00:27:23,840 --> 00:27:26,600
+you're saying yeah this is the kind of
+
+555
+00:27:25,279 --> 00:27:29,240
+things I'm thinking of so I'm just
+
+556
+00:27:26,600 --> 00:27:33,080
+making it complicated
+
+557
+00:27:29,240 --> 00:27:36,000
+okay great so you're welcome okay so
+
+558
+00:27:33,080 --> 00:27:40,240
+let's see
+
+559
+00:27:36,000 --> 00:27:40,240
+um so let me share my screen
+
+560
+00:27:45,360 --> 00:27:52,720
+again so let's say
+
+561
+00:27:49,519 --> 00:27:54,679
+that as I as people mentioned we're not
+
+562
+00:27:52,720 --> 00:27:59,519
+happy with these results right we're not
+
+563
+00:27:54,679 --> 00:27:59,519
+happy with um
+
+564
+00:28:00,279 --> 00:28:06,159
+oh no before that let's say that we want
+
+565
+00:28:02,559 --> 00:28:10,080
+to validate as someone said how this
+
+566
+00:28:06,159 --> 00:28:13,039
+works for a particular case so let's say
+
+567
+00:28:10,080 --> 00:28:17,200
+that we want to apply this to
+
+568
+00:28:13,039 --> 00:28:21,200
+find a synonym terms synonym occupations
+
+569
+00:28:17,200 --> 00:28:23,880
+in this case like in escod do so um I
+
+570
+00:28:21,200 --> 00:28:27,880
+can already show you Esco Esco is this
+
+571
+00:28:23,880 --> 00:28:29,519
+one here and it has occupation so we can
+
+572
+00:28:27,880 --> 00:28:31,840
+find find for example the occupation
+
+573
+00:28:29,519 --> 00:28:31,840
+data
+
+574
+00:28:32,399 --> 00:28:36,120
+scientist
+
+575
+00:28:34,080 --> 00:28:38,000
+and it's what I mentioned in the
+
+576
+00:28:36,120 --> 00:28:39,880
+beginning this is the concept of data
+
+577
+00:28:38,000 --> 00:28:43,000
+scientist and these are its
+
+578
+00:28:39,880 --> 00:28:44,640
+lexicalization so all these terms data
+
+579
+00:28:43,000 --> 00:28:46,399
+scientist data engineer research data
+
+580
+00:28:44,640 --> 00:28:49,519
+science data expert data research
+
+581
+00:28:46,399 --> 00:28:52,399
+scientist are considered to be longing
+
+582
+00:28:49,519 --> 00:28:56,240
+under the same
+
+583
+00:28:52,399 --> 00:28:59,799
+group assumed by Esco experts to
+
+584
+00:28:56,240 --> 00:29:01,399
+be uh Iden to be to have the same
+
+585
+00:28:59,799 --> 00:29:04,000
+meaning
+
+586
+00:29:01,399 --> 00:29:05,679
+now let's not debate here if they are
+
+587
+00:29:04,000 --> 00:29:10,279
+actually the same meaning but let's
+
+588
+00:29:05,679 --> 00:29:12,919
+assume that we want to see how well the
+
+589
+00:29:10,279 --> 00:29:15,360
+esbert model
+
+590
+00:29:12,919 --> 00:29:19,000
+captures the thinking of the Esco
+
+591
+00:29:15,360 --> 00:29:21,399
+experts right so if we
+
+592
+00:29:19,000 --> 00:29:25,000
+run if we if we would
+
+593
+00:29:21,399 --> 00:29:27,279
+run esbert model to to group The
+
+594
+00:29:25,000 --> 00:29:29,640
+occupations of Esco would it come up
+
+595
+00:29:27,279 --> 00:29:32,840
+with the same
+
+596
+00:29:29,640 --> 00:29:34,120
+um with the same grouping with the same
+
+597
+00:29:32,840 --> 00:29:37,039
+synonym
+
+598
+00:29:34,120 --> 00:29:38,720
+detection so one way to do that what
+
+599
+00:29:37,039 --> 00:29:42,039
+what I did
+
+600
+00:29:38,720 --> 00:29:45,360
+actually this morning is that
+
+601
+00:29:42,039 --> 00:29:48,039
+I uh passed the Esco model Esco actually
+
+602
+00:29:45,360 --> 00:29:49,960
+is in rdf so I just use I just
+
+603
+00:29:48,039 --> 00:29:53,200
+downloaded the model and pass it and I
+
+604
+00:29:49,960 --> 00:29:55,960
+created a data set which you can see
+
+605
+00:29:53,200 --> 00:29:58,799
+here so it's a pretty simple data set it
+
+606
+00:29:55,960 --> 00:30:01,559
+has one term and another term ter and a
+
+607
+00:29:58,799 --> 00:30:05,399
+score of whether it's identical or not
+
+608
+00:30:01,559 --> 00:30:07,760
+so I took the terms that belong to the
+
+609
+00:30:05,399 --> 00:30:10,480
+same entity and I gave them a score of
+
+610
+00:30:07,760 --> 00:30:11,960
+one so that this should be identical and
+
+611
+00:30:10,480 --> 00:30:13,960
+terms that belonging to a different
+
+612
+00:30:11,960 --> 00:30:19,799
+entity have a score of
+
+613
+00:30:13,960 --> 00:30:22,000
+zero right so and in total I have I
+
+614
+00:30:19,799 --> 00:30:24,000
+think here some thousand of examples
+
+615
+00:30:22,000 --> 00:30:26,760
+2,000 uh
+
+616
+00:30:24,000 --> 00:30:29,679
+pairs
+
+617
+00:30:26,760 --> 00:30:33,360
+so how
+
+618
+00:30:29,679 --> 00:30:35,799
+that I wrote some code here to read this
+
+619
+00:30:33,360 --> 00:30:39,279
+file and split them as I would do in a
+
+620
+00:30:35,799 --> 00:30:41,720
+machine learning uh project into a train
+
+621
+00:30:39,279 --> 00:30:46,320
+set a validation set and a test set so I
+
+622
+00:30:41,720 --> 00:30:51,279
+just did a 60 60% 20% 20%
+
+623
+00:30:46,320 --> 00:30:51,279
+split um so when we do
+
+624
+00:30:52,240 --> 00:30:59,880
+this we can take the test
+
+625
+00:30:55,760 --> 00:31:03,559
+examples and evalu
+
+626
+00:30:59,880 --> 00:31:06,399
+the expert the the system with respect
+
+627
+00:31:03,559 --> 00:31:09,200
+to how well the similarities that it
+
+628
+00:31:06,399 --> 00:31:12,720
+gives correlate
+
+629
+00:31:09,200 --> 00:31:16,000
+with h what the Esco people were
+
+630
+00:31:12,720 --> 00:31:19,600
+thinking let's say that
+
+631
+00:31:16,000 --> 00:31:19,600
+so we run
+
+632
+00:31:25,519 --> 00:31:29,919
+this let's hope it runs
+
+633
+00:31:30,639 --> 00:31:37,639
+and it gives us a score of
+
+634
+00:31:34,000 --> 00:31:39,320
+075 so it's not the best correlation
+
+635
+00:31:37,639 --> 00:31:41,639
+it's not the worst it's more than random
+
+636
+00:31:39,320 --> 00:31:42,760
+correlation but it it is positive right
+
+637
+00:31:41,639 --> 00:31:48,279
+it shows
+
+638
+00:31:42,760 --> 00:31:52,639
+that um the sentence the pre-train model
+
+639
+00:31:48,279 --> 00:31:55,760
+captures some of the similarity of the
+
+640
+00:31:52,639 --> 00:31:57,600
+synonymy if you like that Esco people
+
+641
+00:31:55,760 --> 00:32:01,000
+had had in mind when they were creating
+
+642
+00:31:57,600 --> 00:32:03,159
+their their model now let's say that we
+
+643
+00:32:01,000 --> 00:32:05,960
+don't we're not happy with that and we
+
+644
+00:32:03,159 --> 00:32:08,840
+want to to further fine-tune the model
+
+645
+00:32:05,960 --> 00:32:11,399
+so that it reflects better this data set
+
+646
+00:32:08,840 --> 00:32:16,639
+here what we can do is that we can adapt
+
+647
+00:32:11,399 --> 00:32:16,639
+it by using this data as training
+
+648
+00:32:16,760 --> 00:32:25,679
+examples so the and the code to do that
+
+649
+00:32:20,840 --> 00:32:28,840
+is here so what we do is that we
+
+650
+00:32:25,679 --> 00:32:31,960
+um this is use this us a framework pytor
+
+651
+00:32:28,840 --> 00:32:33,639
+so we Define some training parameters we
+
+652
+00:32:31,960 --> 00:32:38,519
+load the
+
+653
+00:32:33,639 --> 00:32:41,120
+data and we fit we train it now I'm not
+
+654
+00:32:38,519 --> 00:32:43,720
+going to run it here because it takes so
+
+655
+00:32:41,120 --> 00:32:46,840
+with this amount of data it I think it
+
+656
+00:32:43,720 --> 00:32:49,880
+took me around half an hour to to do the
+
+657
+00:32:46,840 --> 00:32:52,000
+the training but after the training I
+
+658
+00:32:49,880 --> 00:32:54,240
+saved the model so when you also train
+
+659
+00:32:52,000 --> 00:32:58,240
+it the model will be saved so then I can
+
+660
+00:32:54,240 --> 00:33:02,440
+use it so when we create the adapted
+
+661
+00:32:58,240 --> 00:33:05,799
+model what we can do is find the new
+
+662
+00:33:02,440 --> 00:33:07,240
+similarities ah um I think I'm missing
+
+663
+00:33:05,799 --> 00:33:11,039
+something
+
+664
+00:33:07,240 --> 00:33:13,279
+wait ah yeah
+
+665
+00:33:11,039 --> 00:33:15,919
+sorry I
+
+666
+00:33:13,279 --> 00:33:18,760
+can I need to load the model from the
+
+667
+00:33:15,919 --> 00:33:22,760
+saved uh
+
+668
+00:33:18,760 --> 00:33:22,760
+place sorry
+
+669
+00:33:30,600 --> 00:33:33,320
+need to have
+
+670
+00:33:40,760 --> 00:33:46,760
+this ah sorry no my model has been reset
+
+671
+00:33:44,120 --> 00:33:47,919
+so I'm I'm not able to use it uh sorry
+
+672
+00:33:46,760 --> 00:33:50,519
+for
+
+673
+00:33:47,919 --> 00:33:53,039
+that but the thing is that after you
+
+674
+00:33:50,519 --> 00:33:55,720
+train it you can run the model and then
+
+675
+00:33:53,039 --> 00:33:58,519
+you can run the evaluator again
+
+676
+00:33:55,720 --> 00:34:03,639
+and when you manage to run it you will
+
+677
+00:33:58,519 --> 00:34:06,120
+see that there is H in this core a
+
+678
+00:34:03,639 --> 00:34:10,200
+slight Improvement So It Goes Around
+
+679
+00:34:06,120 --> 00:34:15,800
+from 075 it goes around 078 so
+
+680
+00:34:10,200 --> 00:34:19,040
+three three percentage uh increase now
+
+681
+00:34:15,800 --> 00:34:21,560
+it's not a lot but it actually indicates
+
+682
+00:34:19,040 --> 00:34:24,639
+again the Direction One Direction that
+
+683
+00:34:21,560 --> 00:34:28,079
+you could take in order to
+
+684
+00:34:24,639 --> 00:34:30,159
+optimize um the semantic similarity
+
+685
+00:34:28,079 --> 00:34:33,800
+towards the direction towards the
+
+686
+00:34:30,159 --> 00:34:36,720
+semantics of your target relation it
+
+687
+00:34:33,800 --> 00:34:40,800
+won't work always it might be
+
+688
+00:34:36,720 --> 00:34:44,079
+that no matter how many how much data
+
+689
+00:34:40,800 --> 00:34:47,800
+you give it h it's not going to improve
+
+690
+00:34:44,079 --> 00:34:49,560
+or even worse it might overfit so it may
+
+691
+00:34:47,800 --> 00:34:51,240
+depending on the quality of the data you
+
+692
+00:34:49,560 --> 00:34:53,560
+give it here it may
+
+693
+00:34:51,240 --> 00:34:56,040
+overfit and then it doesn't generalize
+
+694
+00:34:53,560 --> 00:34:58,960
+very well so in new examples it really
+
+695
+00:34:56,040 --> 00:35:04,119
+gives a bad
+
+696
+00:34:58,960 --> 00:35:06,240
+results but uh I invite you to to play
+
+697
+00:35:04,119 --> 00:35:07,240
+with this and if you are able to if you
+
+698
+00:35:06,240 --> 00:35:12,280
+have your own
+
+699
+00:35:07,240 --> 00:35:17,040
+data H try it and see what you
+
+700
+00:35:12,280 --> 00:35:19,280
+get um that's it for this part is there
+
+701
+00:35:17,040 --> 00:35:19,280
+any
+
+702
+00:35:22,520 --> 00:35:29,000
+question hey Panos got a question yes um
+
+703
+00:35:27,280 --> 00:35:32,560
+so first of all thank you so much for uh
+
+704
+00:35:29,000 --> 00:35:36,320
+for this very Lively um topic and quite
+
+705
+00:35:32,560 --> 00:35:39,040
+interesting um did learn a lot today
+
+706
+00:35:36,320 --> 00:35:41,599
+given that you know NP is conf I just
+
+707
+00:35:39,040 --> 00:35:44,359
+confing know it from a distance I'm not
+
+708
+00:35:41,599 --> 00:35:46,000
+even a beginner in that space uh but one
+
+709
+00:35:44,359 --> 00:35:47,920
+thing I would like to know or to
+
+710
+00:35:46,000 --> 00:35:50,960
+understand this is all good stuff but so
+
+711
+00:35:47,920 --> 00:35:52,720
+far what we have learned is what are
+
+712
+00:35:50,960 --> 00:35:54,240
+different packages of libraries or
+
+713
+00:35:52,720 --> 00:35:57,319
+different approaches that you can use to
+
+714
+00:35:54,240 --> 00:36:01,040
+actually extract information out from
+
+715
+00:35:57,319 --> 00:36:04,520
+the text but do you intend to spend some
+
+716
+00:36:01,040 --> 00:36:06,400
+time on how you actually imped this
+
+717
+00:36:04,520 --> 00:36:08,920
+knowledge in the construction of your
+
+718
+00:36:06,400 --> 00:36:11,359
+knowledge graph later on how to actually
+
+719
+00:36:08,920 --> 00:36:14,319
+use all that
+
+720
+00:36:11,359 --> 00:36:16,240
+information you mean h how how from from
+
+721
+00:36:14,319 --> 00:36:17,400
+the text yeah because we have seen so
+
+722
+00:36:16,240 --> 00:36:20,520
+many different examples that you know
+
+723
+00:36:17,400 --> 00:36:21,800
+you can extract certain entities out
+
+724
+00:36:20,520 --> 00:36:25,319
+from the text
+
+725
+00:36:21,800 --> 00:36:27,800
+but how you could use it while
+
+726
+00:36:25,319 --> 00:36:31,160
+constructing your knowledge graph or
+
+727
+00:36:27,800 --> 00:36:31,160
+where where you can use
+
+728
+00:36:32,040 --> 00:36:37,880
+it um so the idea I I don't have an
+
+729
+00:36:36,000 --> 00:36:40,800
+implementation of that currently as as
+
+730
+00:36:37,880 --> 00:36:43,040
+an example but I think your question is
+
+731
+00:36:40,800 --> 00:36:46,160
+the following so let's say
+
+732
+00:36:43,040 --> 00:36:49,040
+that my starting point for the scenario
+
+733
+00:36:46,160 --> 00:36:52,520
+that I have in mind is that I have I
+
+734
+00:36:49,040 --> 00:36:55,119
+start with a a very basic knowledge
+
+735
+00:36:52,520 --> 00:36:56,520
+graph or onology if you like that
+
+736
+00:36:55,119 --> 00:37:00,720
+defines
+
+737
+00:36:56,520 --> 00:37:04,440
+only basic entity types okay so if we
+
+738
+00:37:00,720 --> 00:37:06,720
+try to if we consider Esco we start with
+
+739
+00:37:04,440 --> 00:37:08,560
+uh we open I don't know I don't know if
+
+740
+00:37:06,720 --> 00:37:10,839
+you use any ontology to like Pro or
+
+741
+00:37:08,560 --> 00:37:13,599
+something but you know yeah right use
+
+742
+00:37:10,839 --> 00:37:16,400
+Pro okay so you start with Pro you and
+
+743
+00:37:13,599 --> 00:37:20,160
+you define a class called occupation a
+
+744
+00:37:16,400 --> 00:37:24,760
+class called um uh
+
+745
+00:37:20,160 --> 00:37:26,000
+skill uh and uh a relation between
+
+746
+00:37:24,760 --> 00:37:28,680
+professional skill let's say that's the
+
+747
+00:37:26,000 --> 00:37:32,680
+starting point right mhm
+
+748
+00:37:28,680 --> 00:37:35,359
+then you need to populate this so what
+
+749
+00:37:32,680 --> 00:37:38,319
+you would do is you would take a corpus
+
+750
+00:37:35,359 --> 00:37:41,800
+you would go and select a corpus that
+
+751
+00:37:38,319 --> 00:37:43,760
+hopefully contains the entities that you
+
+752
+00:37:41,800 --> 00:37:45,040
+want professions and skills so let's say
+
+753
+00:37:43,760 --> 00:37:48,520
+that you have
+
+754
+00:37:45,040 --> 00:37:49,520
+CVS and you would use one of these tools
+
+755
+00:37:48,520 --> 00:37:52,319
+that we
+
+756
+00:37:49,520 --> 00:37:54,720
+mentioned to build a system that will
+
+757
+00:37:52,319 --> 00:37:57,040
+give you the entities give you the Ts
+
+758
+00:37:54,720 --> 00:37:59,400
+that belong to this entity so if you see
+
+759
+00:37:57,040 --> 00:38:01,960
+it as a Black Box let's say you create a
+
+760
+00:37:59,400 --> 00:38:05,040
+skill classif a skill entity extractor
+
+761
+00:38:01,960 --> 00:38:07,839
+MH the system as a black box would would
+
+762
+00:38:05,040 --> 00:38:10,599
+get a corpus as input and a list of
+
+763
+00:38:07,839 --> 00:38:13,920
+terms that are skills as
+
+764
+00:38:10,599 --> 00:38:17,319
+output when you have this output what
+
+765
+00:38:13,920 --> 00:38:24,200
+you can do is that you can H
+
+766
+00:38:17,319 --> 00:38:26,319
+write um code to create instances in Pro
+
+767
+00:38:24,200 --> 00:38:28,200
+in all if you like or in rdf and say for
+
+768
+00:38:26,319 --> 00:38:29,920
+example that this term
+
+769
+00:38:28,200 --> 00:38:32,119
+I'm making it an individual and this
+
+770
+00:38:29,920 --> 00:38:36,520
+individual is rdf
+
+771
+00:38:32,119 --> 00:38:39,280
+type uh of the concept of the class
+
+772
+00:38:36,520 --> 00:38:42,680
+skill it's as simple as that as a first
+
+773
+00:38:39,280 --> 00:38:44,040
+step right got it so right and the same
+
+774
+00:38:42,680 --> 00:38:47,160
+for
+
+775
+00:38:44,040 --> 00:38:49,240
+professions then your next task would be
+
+776
+00:38:47,160 --> 00:38:51,560
+to find because you may have found
+
+777
+00:38:49,240 --> 00:38:53,200
+duplicate entities because of synonymy
+
+778
+00:38:51,560 --> 00:38:55,160
+so you may have for example an
+
+779
+00:38:53,200 --> 00:38:58,920
+abbreviation in its full version Astin
+
+780
+00:38:55,160 --> 00:39:01,319
+entities you would need a a synonym
+
+781
+00:38:58,920 --> 00:39:04,680
+extraction
+
+782
+00:39:01,319 --> 00:39:08,240
+system one way to do it again would be
+
+783
+00:39:04,680 --> 00:39:12,400
+to run what I just showed
+
+784
+00:39:08,240 --> 00:39:14,720
+asert and for example say that
+
+785
+00:39:12,400 --> 00:39:17,520
+okay assuming that you don't want to put
+
+786
+00:39:14,720 --> 00:39:19,000
+any human in checking that right if you
+
+787
+00:39:17,520 --> 00:39:21,720
+want to do fully
+
+788
+00:39:19,000 --> 00:39:23,560
+automatic what you can do is say okay if
+
+789
+00:39:21,720 --> 00:39:28,480
+the similarity is I don't know more than
+
+790
+00:39:23,560 --> 00:39:31,560
+95% consider it synonym and add it and
+
+791
+00:39:28,480 --> 00:39:33,520
+uh put this entities as
+
+792
+00:39:31,560 --> 00:39:37,160
+one that would
+
+793
+00:39:33,520 --> 00:39:41,640
+be uh one option another option would be
+
+794
+00:39:37,160 --> 00:39:44,480
+to use the extractor take the
+
+795
+00:39:41,640 --> 00:39:46,599
+most the the pairs the related pairs
+
+796
+00:39:44,480 --> 00:39:49,240
+with that you have the most the highest
+
+797
+00:39:46,599 --> 00:39:51,599
+confidence and have a human check them
+
+798
+00:39:49,240 --> 00:39:54,240
+and say if they're good or not and again
+
+799
+00:39:51,599 --> 00:39:58,400
+when they have annotated them add them
+
+800
+00:39:54,240 --> 00:40:01,319
+in your in your knowledge base so
+
+801
+00:39:58,400 --> 00:40:04,480
+practically you have your NLP systems on
+
+802
+00:40:01,319 --> 00:40:06,400
+the one hand and your uh implementation
+
+803
+00:40:04,480 --> 00:40:08,040
+of and representation of your knowledge
+
+804
+00:40:06,400 --> 00:40:12,640
+graph
+
+805
+00:40:08,040 --> 00:40:16,839
+here right um what you need to build is
+
+806
+00:40:12,640 --> 00:40:18,880
+a a link let's say between some script
+
+807
+00:40:16,839 --> 00:40:23,640
+some code that takes the output of the
+
+808
+00:40:18,880 --> 00:40:27,160
+NLP systems and adds them to the as
+
+809
+00:40:23,640 --> 00:40:29,560
+input to the knowledge graph uh database
+
+810
+00:40:27,160 --> 00:40:31,720
+at you have if that may be rdf it may be
+
+811
+00:40:29,560 --> 00:40:34,920
+neo4j maybe
+
+812
+00:40:31,720 --> 00:40:38,480
+whatever this is not so much algorithmic
+
+813
+00:40:34,920 --> 00:40:42,920
+it's more of of an engineering
+
+814
+00:40:38,480 --> 00:40:45,560
+problem got it okay so just one one last
+
+815
+00:40:42,920 --> 00:40:46,960
+question on that so that um I just want
+
+816
+00:40:45,560 --> 00:40:49,960
+to make sure that you I understood
+
+817
+00:40:46,960 --> 00:40:51,359
+correctly um so when you say let's say
+
+818
+00:40:49,960 --> 00:40:52,760
+let's talk about the r side of things
+
+819
+00:40:51,359 --> 00:40:54,280
+that you know you you define your basic
+
+820
+00:40:52,760 --> 00:40:56,319
+class that you you have a class called
+
+821
+00:40:54,280 --> 00:40:59,680
+skills and you have a class that you
+
+822
+00:40:56,319 --> 00:41:00,960
+define it as profession right MH so so
+
+823
+00:40:59,680 --> 00:41:02,400
+these are the two classes we talking
+
+824
+00:41:00,960 --> 00:41:04,440
+about right you're not talking about
+
+825
+00:41:02,400 --> 00:41:06,319
+instantiation of those two classes as
+
+826
+00:41:04,440 --> 00:41:09,200
+well where for example for the skills
+
+827
+00:41:06,319 --> 00:41:11,599
+that you know yeah I know python I know
+
+828
+00:41:09,200 --> 00:41:13,280
+Java I know all those things are you
+
+829
+00:41:11,599 --> 00:41:14,440
+when you say that you know you need to
+
+830
+00:41:13,280 --> 00:41:16,040
+define those classes are you also
+
+831
+00:41:14,440 --> 00:41:18,160
+talking about populating the instances
+
+832
+00:41:16,040 --> 00:41:21,800
+for those classes or you expect the
+
+833
+00:41:18,160 --> 00:41:23,119
+instantiation of those classes by an by
+
+834
+00:41:21,800 --> 00:41:27,319
+running those ANP approaches on the
+
+835
+00:41:23,119 --> 00:41:30,240
+Corpus of data so in um the class
+
+836
+00:41:27,319 --> 00:41:33,200
+profession its instances are individual
+
+837
+00:41:30,240 --> 00:41:35,839
+professions not professionals so data
+
+838
+00:41:33,200 --> 00:41:38,520
+scientist would be an instance of
+
+839
+00:41:35,839 --> 00:41:40,839
+profession yeah python would be an
+
+840
+00:41:38,520 --> 00:41:43,359
+instance of
+
+841
+00:41:40,839 --> 00:41:45,599
+skill right so in in that case the scen
+
+842
+00:41:43,359 --> 00:41:46,760
+would be an instantiation of the class
+
+843
+00:41:45,599 --> 00:41:49,359
+skill and
+
+844
+00:41:46,760 --> 00:41:51,720
+profession so it has to be there up
+
+845
+00:41:49,359 --> 00:41:54,839
+front no what you need to have there
+
+846
+00:41:51,720 --> 00:41:57,359
+before is the classes not the instances
+
+847
+00:41:54,839 --> 00:41:59,200
+all right just the classes like when you
+
+848
+00:41:57,359 --> 00:42:00,720
+if if you're talking about artology all
+
+849
+00:41:59,200 --> 00:42:02,280
+you need is just two classes and no
+
+850
+00:42:00,720 --> 00:42:03,800
+instance data and you're saying the
+
+851
+00:42:02,280 --> 00:42:08,160
+instance data will be populated through
+
+852
+00:42:03,800 --> 00:42:11,200
+those anal approaches now it can be
+
+853
+00:42:08,160 --> 00:42:14,319
+that in some you can consider also the
+
+854
+00:42:11,200 --> 00:42:17,319
+scenario where you don't even have the
+
+855
+00:42:14,319 --> 00:42:20,880
+classes yeah or you have some basic
+
+856
+00:42:17,319 --> 00:42:23,200
+classes but you need to also h define
+
+857
+00:42:20,880 --> 00:42:26,000
+and add Define discover in mind the sub
+
+858
+00:42:23,200 --> 00:42:30,280
+classes so it may be that you have a
+
+859
+00:42:26,000 --> 00:42:33,040
+class let's say you have a class skill
+
+860
+00:42:30,280 --> 00:42:35,960
+and then you in the text you find the
+
+861
+00:42:33,040 --> 00:42:40,960
+term soft skill So Soft skill would be a
+
+862
+00:42:35,960 --> 00:42:42,640
+subass of skill yeah this is a different
+
+863
+00:42:40,960 --> 00:42:44,760
+like is also an NLP task you can
+
+864
+00:42:42,640 --> 00:42:49,240
+consider where you want to find the
+
+865
+00:42:44,760 --> 00:42:51,400
+hypon of the class to make it a subass I
+
+866
+00:42:49,240 --> 00:42:53,160
+didn't I didn't explain it here that one
+
+867
+00:42:51,400 --> 00:42:55,680
+I don't have an example for that but
+
+868
+00:42:53,160 --> 00:42:58,319
+it's it's also another NLP task for that
+
+869
+00:42:55,680 --> 00:43:02,440
+it's also a type of relation
+
+870
+00:42:58,319 --> 00:43:04,760
+between uh two terms generally in in
+
+871
+00:43:02,440 --> 00:43:08,680
+knowledge mining we start from words and
+
+872
+00:43:04,760 --> 00:43:10,200
+terms and phrases and we map them to H
+
+873
+00:43:08,680 --> 00:43:13,079
+the conceptual space where we have
+
+874
+00:43:10,200 --> 00:43:16,000
+classes individuals relations that's the
+
+875
+00:43:13,079 --> 00:43:17,599
+challenge that we do right okay so this
+
+876
+00:43:16,000 --> 00:43:20,839
+is the piece I think I I would like to
+
+877
+00:43:17,599 --> 00:43:23,520
+understand so so you have the skills
+
+878
+00:43:20,839 --> 00:43:26,040
+class and just a just a class on its own
+
+879
+00:43:23,520 --> 00:43:28,599
+on the on the onology side of thing and
+
+880
+00:43:26,040 --> 00:43:30,839
+then you have a corpus how would or do
+
+881
+00:43:28,599 --> 00:43:32,760
+you think the spacy and those anal
+
+882
+00:43:30,839 --> 00:43:35,960
+things that we just learned today they
+
+883
+00:43:32,760 --> 00:43:37,400
+are smart enough to pick let's say if
+
+884
+00:43:35,960 --> 00:43:38,680
+there's a thing called software
+
+885
+00:43:37,400 --> 00:43:41,119
+programming that you know they will pick
+
+886
+00:43:38,680 --> 00:43:42,760
+it as a as a skill if there's a mention
+
+887
+00:43:41,119 --> 00:43:43,920
+of Java or if there's a mention of
+
+888
+00:43:42,760 --> 00:43:45,440
+python they will pick it up
+
+889
+00:43:43,920 --> 00:43:47,720
+automatically as a skill and all we have
+
+890
+00:43:45,440 --> 00:43:49,440
+to do just map them together or do we
+
+891
+00:43:47,720 --> 00:43:51,960
+need to do some sort of do we need to
+
+892
+00:43:49,440 --> 00:43:54,240
+provide some training data first uh
+
+893
+00:43:51,960 --> 00:43:56,280
+through Spa to space you those things to
+
+894
+00:43:54,240 --> 00:43:59,040
+see that you know if there's mention of
+
+895
+00:43:56,280 --> 00:44:02,079
+Java or python then pick those terms as
+
+896
+00:43:59,040 --> 00:44:05,000
+as your instances of class right so what
+
+897
+00:44:02,079 --> 00:44:07,920
+we saw here today is that
+
+898
+00:44:05,000 --> 00:44:11,520
+Spacey as it is now when you take it off
+
+899
+00:44:07,920 --> 00:44:13,319
+the box of the self supports only 10 10
+
+900
+00:44:11,520 --> 00:44:15,760
+entity types so it doesn't say it
+
+901
+00:44:13,319 --> 00:44:18,240
+doesn't support skill so if you just run
+
+902
+00:44:15,760 --> 00:44:21,440
+space on a corpus it it will not tell
+
+903
+00:44:18,240 --> 00:44:23,920
+you that Java is a skill yeah so on its
+
+904
+00:44:21,440 --> 00:44:25,920
+own it doesn't it only it only can tell
+
+905
+00:44:23,920 --> 00:44:27,559
+you about persons organizations and the
+
+906
+00:44:25,920 --> 00:44:30,040
+other things that we show
+
+907
+00:44:27,559 --> 00:44:32,920
+if you want to make it be able to find
+
+908
+00:44:30,040 --> 00:44:35,359
+skills you have various options one
+
+909
+00:44:32,920 --> 00:44:38,520
+option is to write your own extraction
+
+910
+00:44:35,359 --> 00:44:39,640
+rules which it's cumbersome it's manual
+
+911
+00:44:38,520 --> 00:44:42,599
+it's
+
+912
+00:44:39,640 --> 00:44:47,160
+expensive another way would be to give
+
+913
+00:44:42,599 --> 00:44:50,200
+it training data so to take sub
+
+914
+00:44:47,160 --> 00:44:54,400
+documents texts annotate them and feed
+
+915
+00:44:50,200 --> 00:44:56,880
+them as we saw on the collab yeah and
+
+916
+00:44:54,400 --> 00:45:01,480
+feed them and train the model hoping
+
+917
+00:44:56,880 --> 00:45:05,640
+that it will learn to to identify uh
+
+918
+00:45:01,480 --> 00:45:08,559
+skills or or whatever entity you
+
+919
+00:45:05,640 --> 00:45:10,359
+want got it right okay so there a bit of
+
+920
+00:45:08,559 --> 00:45:11,480
+a training that that that is required
+
+921
+00:45:10,359 --> 00:45:13,480
+that what we learned in the first
+
+922
+00:45:11,480 --> 00:45:15,920
+session through Spacey that you know you
+
+923
+00:45:13,480 --> 00:45:18,240
+can actually either add new rules or you
+
+924
+00:45:15,920 --> 00:45:20,480
+can know train it by conf giving a samp
+
+925
+00:45:18,240 --> 00:45:22,079
+data and then you have to run the your
+
+926
+00:45:20,480 --> 00:45:23,200
+model on the whole Corpus and it will
+
+927
+00:45:22,079 --> 00:45:25,920
+allow you
+
+928
+00:45:23,200 --> 00:45:28,000
+to to pck on the whole Corpus on
+
+929
+00:45:25,920 --> 00:45:30,160
+selected Corpus on sent but yeah usually
+
+930
+00:45:28,000 --> 00:45:33,079
+on the whole Corpus yeah to find things
+
+931
+00:45:30,160 --> 00:45:35,440
+that got it got it okay right okay that
+
+932
+00:45:33,079 --> 00:45:37,240
+makes sense now now actually I followed
+
+933
+00:45:35,440 --> 00:45:38,680
+the the whole journey how how we
+
+934
+00:45:37,240 --> 00:45:40,760
+actually bridge the gap between this NLP
+
+935
+00:45:38,680 --> 00:45:43,440
+what we learned today yeah yeah no it's
+
+936
+00:45:40,760 --> 00:45:45,280
+uh it's really important that uh it's
+
+937
+00:45:43,440 --> 00:45:46,720
+it's as clear as possible thank you for
+
+938
+00:45:45,280 --> 00:45:49,680
+your question yeah perfect no I
+
+939
+00:45:46,720 --> 00:45:49,680
+appreciate that thank you thank
+
+940
+00:45:49,800 --> 00:45:56,000
+you okay if there's no other question I
+
+941
+00:45:53,000 --> 00:45:56,000
+think
+
+942
+00:45:57,040 --> 00:46:00,700
+we will start it on 15 yes we have 10
+
+943
+00:45:58,599 --> 00:46:02,160
+minutes before but
+
+944
+00:46:00,700 --> 00:46:04,400
+[Music]
+
+945
+00:46:02,160 --> 00:46:06,559
+um if there's no other question then I
+
+946
+00:46:04,400 --> 00:46:11,359
+think we can have a five minute break
+
+947
+00:46:06,559 --> 00:46:14,319
+and uh move on to the to the last
+
+948
+00:46:11,359 --> 00:46:15,640
+uh to the last part the last session of
+
+949
+00:46:14,319 --> 00:46:18,960
+this master
+
+950
+00:46:15,640 --> 00:46:22,280
+class okay H I'm pausing for five
+
+951
+00:46:18,960 --> 00:46:22,280
+minutes okay thank
+
+952
+00:46:25,920 --> 00:46:28,920
+you
+
+953
+00:46:55,839 --> 00:46:58,839
+for
+
+954
+00:47:25,839 --> 00:47:28,839
+e
+
+955
+00:47:55,839 --> 00:47:58,839
+e
+
+956
+00:48:25,760 --> 00:48:28,760
+e
+
+957
+00:48:55,720 --> 00:48:58,720
+e
+
+958
+00:49:25,720 --> 00:49:28,720
+e
+
+959
+00:49:55,640 --> 00:49:58,640
+e
+
+960
+00:50:25,640 --> 00:50:28,640
+e
+
+961
+00:50:55,640 --> 00:50:58,640
+e
+
+962
+00:51:25,559 --> 00:51:29,559
+e e
+
+963
+00:52:10,559 --> 00:52:16,000
+okay
+
+964
+00:52:12,400 --> 00:52:19,000
+Panos yes hi johanes um thanks for the
+
+965
+00:52:16,000 --> 00:52:21,040
+great talk so far uh when discussing
+
+966
+00:52:19,000 --> 00:52:23,359
+with my two student assistants who are
+
+967
+00:52:21,040 --> 00:52:26,119
+listening in as well we were wondering
+
+968
+00:52:23,359 --> 00:52:28,760
+how many examples for training data you
+
+969
+00:52:26,119 --> 00:52:31,400
+would need need for a proper training
+
+970
+00:52:28,760 --> 00:52:33,960
+with reasonable accuracy and not too
+
+971
+00:52:31,400 --> 00:52:36,040
+many false positives and negatives
+
+972
+00:52:33,960 --> 00:52:38,359
+especially when when thinking about that
+
+973
+00:52:36,040 --> 00:52:42,119
+a Knowledge Graph
+
+974
+00:52:38,359 --> 00:52:44,799
+usually has like many different entities
+
+975
+00:52:42,119 --> 00:52:47,079
+many different types of relations so
+
+976
+00:52:44,799 --> 00:52:50,960
+yeah essentially you would need a
+
+977
+00:52:47,079 --> 00:52:54,280
+sufficient number of examples for each
+
+978
+00:52:50,960 --> 00:52:56,640
+type or class let's say group of
+
+979
+00:52:54,280 --> 00:53:00,480
+relations and even if that knowledge
+
+980
+00:52:56,640 --> 00:53:02,160
+graph is relatively small uh the number
+
+981
+00:53:00,480 --> 00:53:03,799
+the numbers are escalating pretty
+
+982
+00:53:02,160 --> 00:53:06,920
+quickly and I guess you have quite some
+
+983
+00:53:03,799 --> 00:53:09,119
+experience in like giving a rule of
+
+984
+00:53:06,920 --> 00:53:10,440
+thump estimate of how many examples we
+
+985
+00:53:09,119 --> 00:53:13,119
+would need
+
+986
+00:53:10,440 --> 00:53:16,319
+right well yes I know I mean the actual
+
+987
+00:53:13,119 --> 00:53:18,200
+number is something that I'm also trying
+
+988
+00:53:16,319 --> 00:53:21,520
+to the actual
+
+989
+00:53:18,200 --> 00:53:24,960
+number being able to find a bll park
+
+990
+00:53:21,520 --> 00:53:28,000
+about okay how much uh annotations you
+
+991
+00:53:24,960 --> 00:53:30,920
+need right I you mean how much uh
+
+992
+00:53:28,000 --> 00:53:35,400
+labeled data right yeah how the amount
+
+993
+00:53:30,920 --> 00:53:37,599
+of annotated data right yeah so I don't
+
+994
+00:53:35,400 --> 00:53:41,000
+have a good answer on that to be to be
+
+995
+00:53:37,599 --> 00:53:42,720
+perfectly honest but what I can say is
+
+996
+00:53:41,000 --> 00:53:44,960
+that
+
+997
+00:53:42,720 --> 00:53:48,240
+um it
+
+998
+00:53:44,960 --> 00:53:50,079
+doesn't it's you need less annotated
+
+999
+00:53:48,240 --> 00:53:51,960
+data and less data
+
+1000
+00:53:50,079 --> 00:53:56,079
+than
+
+1001
+00:53:51,960 --> 00:53:58,280
+um than if you cared about the NLP task
+
+1002
+00:53:56,079 --> 00:54:01,559
+itself what and it's related to what I
+
+1003
+00:53:58,280 --> 00:54:03,520
+said in one of my slides that the goal
+
+1004
+00:54:01,559 --> 00:54:06,480
+when you analyze text to populate a
+
+1005
+00:54:03,520 --> 00:54:08,119
+knowledge graph is not to find all the
+
+1006
+00:54:06,480 --> 00:54:11,760
+entities that are
+
+1007
+00:54:08,119 --> 00:54:14,240
+mentioned in the in the texts or or all
+
+1008
+00:54:11,760 --> 00:54:16,240
+the occurrences you just want to find
+
+1009
+00:54:14,240 --> 00:54:19,559
+all the
+
+1010
+00:54:16,240 --> 00:54:22,559
+um all the distinct entities so for
+
+1011
+00:54:19,559 --> 00:54:24,920
+instance if you have a particular entity
+
+1012
+00:54:22,559 --> 00:54:28,559
+entity type so let's say companies
+
+1013
+00:54:24,920 --> 00:54:31,079
+companies may be ER expressing text in
+
+1014
+00:54:28,559 --> 00:54:32,880
+various types of context and
+
+1015
+00:54:31,079 --> 00:54:36,000
+expressions
+
+1016
+00:54:32,880 --> 00:54:37,920
+so and a proper system that would be
+
+1017
+00:54:36,000 --> 00:54:40,599
+able to find all occurrences would need
+
+1018
+00:54:37,920 --> 00:54:44,400
+to have training data for all the types
+
+1019
+00:54:40,599 --> 00:54:46,599
+of context where this and disappear but
+
+1020
+00:54:44,400 --> 00:54:49,280
+exactly but for a Knowledge
+
+1021
+00:54:46,599 --> 00:54:53,119
+Graph if you are able to isolate the
+
+1022
+00:54:49,280 --> 00:54:55,000
+data that have some of the context and
+
+1023
+00:54:53,119 --> 00:54:58,119
+and you know focus on some particular
+
+1024
+00:54:55,000 --> 00:55:00,720
+cont that it learns well
+
+1025
+00:54:58,119 --> 00:55:03,160
+ER you're probably okay with that
+
+1026
+00:55:00,720 --> 00:55:05,160
+because you will still discover the
+
+1027
+00:55:03,160 --> 00:55:07,839
+entities and you'll be able to put them
+
+1028
+00:55:05,160 --> 00:55:09,839
+in the knowledge graph that's basically
+
+1029
+00:55:07,839 --> 00:55:11,359
+intuition I don't have concrete numbers
+
+1030
+00:55:09,839 --> 00:55:12,799
+to show that it's a nice research
+
+1031
+00:55:11,359 --> 00:55:15,720
+project
+
+1032
+00:55:12,799 --> 00:55:18,359
+actually we're just doing that or like
+
+1033
+00:55:15,720 --> 00:55:20,880
+in the process of doing that and and and
+
+1034
+00:55:18,359 --> 00:55:22,839
+it's also sorry to interrupt you um
+
+1035
+00:55:20,880 --> 00:55:25,039
+whenever I talk with machine learning
+
+1036
+00:55:22,839 --> 00:55:28,839
+people and I usually ask them okay is
+
+1037
+00:55:25,039 --> 00:55:30,559
+there a way you know to predict the
+
+1038
+00:55:28,839 --> 00:55:33,400
+number of annotations the number of
+
+1039
+00:55:30,559 --> 00:55:37,559
+label data that you will need for a
+
+1040
+00:55:33,400 --> 00:55:40,640
+given task they say no the only way to
+
+1041
+00:55:37,559 --> 00:55:42,920
+do it is you know start start
+
+1042
+00:55:40,640 --> 00:55:44,559
+small train a model and see where it
+
+1043
+00:55:42,920 --> 00:55:47,000
+gets you if you need more data so there
+
+1044
+00:55:44,559 --> 00:55:48,799
+are some techniques I think to to see if
+
+1045
+00:55:47,000 --> 00:55:51,440
+you can improve further your the
+
+1046
+00:55:48,799 --> 00:55:54,359
+accuracy of your model by adding more
+
+1047
+00:55:51,440 --> 00:55:57,359
+data but they cannot really tell you a
+
+1048
+00:55:54,359 --> 00:56:00,200
+prior just from the definition of the
+
+1049
+00:55:57,359 --> 00:56:03,599
+skill of the entity or of the
+
+1050
+00:56:00,200 --> 00:56:06,000
+relation yeah but usually you can I mean
+
+1051
+00:56:03,599 --> 00:56:08,240
+I'm I'm a economist with a
+
+1052
+00:56:06,000 --> 00:56:10,680
+specialization in statistics myself and
+
+1053
+00:56:08,240 --> 00:56:14,559
+usually when doing classical statistical
+
+1054
+00:56:10,680 --> 00:56:17,760
+models you do know the ballpark with
+
+1055
+00:56:14,559 --> 00:56:20,799
+around which you should aim to get a
+
+1056
+00:56:17,760 --> 00:56:22,359
+proper results so I I'm confident that
+
+1057
+00:56:20,799 --> 00:56:24,920
+we can get that but I just wanted to
+
+1058
+00:56:22,359 --> 00:56:27,920
+hear your opinion on that another thing
+
+1059
+00:56:24,920 --> 00:56:32,160
+would be the synonym detection because
+
+1060
+00:56:27,920 --> 00:56:34,440
+uh I haven't been doing this before and
+
+1061
+00:56:32,160 --> 00:56:37,680
+I thought you might weigh in your
+
+1062
+00:56:34,440 --> 00:56:40,799
+opinion on on this approach because I
+
+1063
+00:56:37,680 --> 00:56:44,640
+thought like a very naive approach might
+
+1064
+00:56:40,799 --> 00:56:48,480
+be to just take word embeddings cluster
+
+1065
+00:56:44,640 --> 00:56:53,480
+them like or getting distances between
+
+1066
+00:56:48,480 --> 00:56:54,559
+words and then uh identifying clusters
+
+1067
+00:56:53,480 --> 00:56:59,799
+and
+
+1068
+00:56:54,559 --> 00:57:03,799
+using or select in the most relevant in
+
+1069
+00:56:59,799 --> 00:57:06,559
+terms of tfidf or similar measures term
+
+1070
+00:57:03,799 --> 00:57:09,240
+from a cluster of very similar words and
+
+1071
+00:57:06,559 --> 00:57:13,520
+then like adding a few bells and
+
+1072
+00:57:09,240 --> 00:57:16,319
+whistles to then have a an acceptable
+
+1073
+00:57:13,520 --> 00:57:21,000
+first shot at
+
+1074
+00:57:16,319 --> 00:57:24,640
+um at yeah very similar words from a
+
+1075
+00:57:21,000 --> 00:57:27,559
+from a similar domain yeah so the
+
+1076
+00:57:24,640 --> 00:57:30,640
+difficulty Sy detection
+
+1077
+00:57:27,559 --> 00:57:34,480
+can you I can hear myself I don't know
+
+1078
+00:57:30,640 --> 00:57:37,599
+why I'm hearing it perectly well okay so
+
+1079
+00:57:34,480 --> 00:57:42,280
+the the issue with synonym detection is
+
+1080
+00:57:37,599 --> 00:57:43,799
+um the the let's say it's easy to find
+
+1081
+00:57:42,280 --> 00:57:47,480
+relatively easy to
+
+1082
+00:57:43,799 --> 00:57:49,640
+find irrelevant words and exclude them
+
+1083
+00:57:47,480 --> 00:57:52,319
+but when it comes to the
+
+1084
+00:57:49,640 --> 00:57:56,760
+details H to the subtleties then it
+
+1085
+00:57:52,319 --> 00:58:00,720
+becomes a problem so for instance um
+
+1086
+00:57:56,760 --> 00:58:03,280
+if you take let's say you have the term
+
+1087
+00:58:00,720 --> 00:58:06,359
+um um software
+
+1088
+00:58:03,280 --> 00:58:09,520
+developer profession and then you have
+
+1089
+00:58:06,359 --> 00:58:10,839
+Junior software developer the similarity
+
+1090
+00:58:09,520 --> 00:58:13,359
+is very
+
+1091
+00:58:10,839 --> 00:58:15,920
+high but are they
+
+1092
+00:58:13,359 --> 00:58:17,319
+synonyms for some context for some
+
+1093
+00:58:15,920 --> 00:58:19,000
+situations it's okay you don't really
+
+1094
+00:58:17,319 --> 00:58:21,160
+care about the distinction but if you
+
+1095
+00:58:19,000 --> 00:58:23,680
+care about really subtle distinctions in
+
+1096
+00:58:21,160 --> 00:58:28,240
+terms of synony you really strict on
+
+1097
+00:58:23,680 --> 00:58:31,720
+synonymy then uh this method will not
+
+1098
+00:58:28,240 --> 00:58:35,960
+give you the full ACC that you want yeah
+
+1099
+00:58:31,720 --> 00:58:38,920
+so this ties into another uh uh project
+
+1100
+00:58:35,960 --> 00:58:41,680
+of mine which I will try to pursue
+
+1101
+00:58:38,920 --> 00:58:46,200
+somewhere in the future which is uh
+
+1102
+00:58:41,680 --> 00:58:48,280
+trying rotating the embedding space of a
+
+1103
+00:58:46,200 --> 00:58:51,119
+like word Tove fast text or something
+
+1104
+00:58:48,280 --> 00:58:54,599
+similar to make the dimensions
+
+1105
+00:58:51,119 --> 00:58:56,640
+interpretable to like putting a label on
+
+1106
+00:58:54,599 --> 00:58:58,960
+embedding dimensions
+
+1107
+00:58:56,640 --> 00:59:02,359
+yeah which would help to kind of
+
+1108
+00:58:58,960 --> 00:59:07,200
+identify what type of subtlety those uh
+
+1109
+00:59:02,359 --> 00:59:10,200
+two topics are a different in what what
+
+1110
+00:59:07,200 --> 00:59:13,200
+and of course Wen
+
+1111
+00:59:10,200 --> 00:59:15,799
+Bings the typical BS and fast Tex
+
+1112
+00:59:13,200 --> 00:59:17,720
+usually do not support ambiguity so if
+
+1113
+00:59:15,799 --> 00:59:20,400
+you have it will take only one cense per
+
+1114
+00:59:17,720 --> 00:59:23,119
+word or at least it won't be they won't
+
+1115
+00:59:20,400 --> 00:59:25,160
+they not usually able to find if you
+
+1116
+00:59:23,119 --> 00:59:28,240
+have the World Bank you will not get
+
+1117
+00:59:25,160 --> 00:59:30,240
+distinct meanings we get one vector for
+
+1118
+00:59:28,240 --> 00:59:32,440
+that so that's something to to consider
+
+1119
+00:59:30,240 --> 00:59:35,160
+depending on your domain how ambig it is
+
+1120
+00:59:32,440 --> 00:59:37,000
+yeah that's a great Point actually thank
+
+1121
+00:59:35,160 --> 00:59:39,000
+you this is something
+
+1122
+00:59:37,000 --> 00:59:42,760
+that latest
+
+1123
+00:59:39,000 --> 00:59:46,440
+models El Elmo and Bert try to some
+
+1124
+00:59:42,760 --> 00:59:49,359
+extent to to tackle it try they're not
+
+1125
+00:59:46,440 --> 00:59:52,960
+always successful but that's why if you
+
+1126
+00:59:49,359 --> 00:59:56,760
+saw the when I show the B uh the
+
+1127
+00:59:52,960 --> 00:59:58,640
+sbert um architecture
+
+1128
+00:59:56,760 --> 01:00:00,440
+it has in the slides you will see that
+
+1129
+00:59:58,640 --> 01:00:02,359
+there is something that's called pulling
+
+1130
+01:00:00,440 --> 01:00:04,160
+and pulling is because for a given
+
+1131
+01:00:02,359 --> 01:00:05,640
+sentence birth doesn't give you one
+
+1132
+01:00:04,160 --> 01:00:07,680
+bending it gives you
+
+1133
+01:00:05,640 --> 01:00:10,039
+multiple based on the context that it
+
+1134
+01:00:07,680 --> 01:00:12,640
+has se and pulling actually averages
+
+1135
+01:00:10,039 --> 01:00:16,240
+everything into one that's what it
+
+1136
+01:00:12,640 --> 01:00:19,319
+does but it may be that uh the multiple
+
+1137
+01:00:16,240 --> 01:00:21,640
+ones can be useful for for what you do
+
+1138
+01:00:19,319 --> 01:00:24,440
+and yeah and Al said what the mains do
+
+1139
+01:00:21,640 --> 01:00:27,960
+not consider word order
+
+1140
+01:00:24,440 --> 01:00:27,960
+indeed okay
+
+1141
+01:00:29,640 --> 01:00:36,359
+okay good so let's uh let's move on I
+
+1142
+01:00:33,119 --> 01:00:40,559
+really like the discussion so far
+
+1143
+01:00:36,359 --> 01:00:40,559
+so let me share my
+
+1144
+01:00:44,799 --> 01:00:51,599
+screen okay so let's um continue with
+
+1145
+01:00:49,039 --> 01:00:53,319
+some high level methodological aspects
+
+1146
+01:00:51,599 --> 01:00:55,200
+and I think I will try to tie them up
+
+1147
+01:00:53,319 --> 01:00:57,920
+with all the questions that you have po
+
+1148
+01:00:55,200 --> 01:00:57,920
+so far
+
+1149
+01:01:00,640 --> 01:01:08,039
+so one I would like first my book is
+
+1150
+01:01:04,799 --> 01:01:10,119
+about pitfalls and dilemas and um some
+
+1151
+01:01:08,039 --> 01:01:13,000
+of the pitfalls that I mentioned in one
+
+1152
+01:01:10,119 --> 01:01:15,359
+of the chapters has to do about the way
+
+1153
+01:01:13,000 --> 01:01:17,359
+we go to acquire knowledge both manually
+
+1154
+01:01:15,359 --> 01:01:18,680
+and automatically but especially when we
+
+1155
+01:01:17,359 --> 01:01:22,000
+try to acquire knowledge to mind
+
+1156
+01:01:18,680 --> 01:01:24,720
+knowledge automatically we tend to do
+
+1157
+01:01:22,000 --> 01:01:26,480
+two errors let's say two mistakes one is
+
+1158
+01:01:24,720 --> 01:01:28,920
+looking at the wrong place and the other
+
+1159
+01:01:26,480 --> 01:01:33,680
+is using the wrong
+
+1160
+01:01:28,920 --> 01:01:37,640
+tools so I don't know if you know the
+
+1161
+01:01:33,680 --> 01:01:39,280
+the joke that says that um there is
+
+1162
+01:01:37,640 --> 01:01:44,760
+someone walks into the into the dark
+
+1163
+01:01:39,280 --> 01:01:49,440
+Street and sees uh someone looking U
+
+1164
+01:01:44,760 --> 01:01:51,000
+around a a lamp H he goes and asks him
+
+1165
+01:01:49,440 --> 01:01:54,400
+okay what are you looking for I'm asking
+
+1166
+01:01:51,000 --> 01:01:56,599
+my key I'm looking for my keys okay ER
+
+1167
+01:01:54,400 --> 01:01:59,520
+did you did you lose them here no but
+
+1168
+01:01:56,599 --> 01:02:01,200
+here there is more light so it's a
+
+1169
+01:01:59,520 --> 01:02:06,160
+similar situation
+
+1170
+01:02:01,200 --> 01:02:08,880
+with uh knowledge mining right so
+
+1171
+01:02:06,160 --> 01:02:12,000
+um when we talk about data science and
+
+1172
+01:02:08,880 --> 01:02:14,400
+data mining in general most of scenario
+
+1173
+01:02:12,000 --> 01:02:16,880
+start from the data we have some data
+
+1174
+01:02:14,400 --> 01:02:19,680
+and and we want to extract some
+
+1175
+01:02:16,880 --> 01:02:23,640
+knowledge out of
+
+1176
+01:02:19,680 --> 01:02:26,359
+them that's that's okay but when we talk
+
+1177
+01:02:23,640 --> 01:02:28,279
+about knowledge mining for know graph
+
+1178
+01:02:26,359 --> 01:02:30,599
+extraction it goes the other way around
+
+1179
+01:02:28,279 --> 01:02:33,400
+we start from what we want to extract
+
+1180
+01:02:30,599 --> 01:02:36,559
+and then we select the data not because
+
+1181
+01:02:33,400 --> 01:02:39,160
+and the data that we need need may not
+
+1182
+01:02:36,559 --> 01:02:42,200
+be the data we have so it's important
+
+1183
+01:02:39,160 --> 01:02:45,680
+that we use the right data so to give
+
+1184
+01:02:42,200 --> 01:02:48,039
+you an example from from my company er
+
+1185
+01:02:45,680 --> 01:02:50,319
+one of the mining tasks that we want to
+
+1186
+01:02:48,039 --> 01:02:52,680
+do is to be able to find which skills
+
+1187
+01:02:50,319 --> 01:02:58,000
+are more in demand for a given
+
+1188
+01:02:52,680 --> 01:03:00,799
+profession right so uh so recruit um
+
+1189
+01:02:58,000 --> 01:03:02,680
+candidates ask okay what skill do I need
+
+1190
+01:03:00,799 --> 01:03:04,480
+in order to find a job in that
+
+1191
+01:03:02,680 --> 01:03:08,400
+profession
+
+1192
+01:03:04,480 --> 01:03:10,119
+now if we if we analyze this knowledge
+
+1193
+01:03:08,400 --> 01:03:13,079
+from CV
+
+1194
+01:03:10,119 --> 01:03:17,039
+data the the relation that we will get
+
+1195
+01:03:13,079 --> 01:03:19,079
+will not be accurate why because CV CVS
+
+1196
+01:03:17,039 --> 01:03:22,000
+reflect the supply side of skills in the
+
+1197
+01:03:19,079 --> 01:03:23,960
+labor market right the skills that are
+
+1198
+01:03:22,000 --> 01:03:26,720
+contained in a CV in a data scientist CV
+
+1199
+01:03:23,960 --> 01:03:29,000
+for example indic what skills the
+
+1200
+01:03:26,720 --> 01:03:31,200
+particular data scientist has not what
+
+1201
+01:03:29,000 --> 01:03:34,920
+the industry wants what the industry
+
+1202
+01:03:31,200 --> 01:03:37,000
+wants right what the employers want H
+
+1203
+01:03:34,920 --> 01:03:40,880
+what skills they want are reflected
+
+1204
+01:03:37,000 --> 01:03:44,760
+better in the vacancies that
+
+1205
+01:03:40,880 --> 01:03:47,279
+they that they publish so the risk of
+
+1206
+01:03:44,760 --> 01:03:50,520
+using the wrong data is wasting time of
+
+1207
+01:03:47,279 --> 01:03:52,279
+course resources and finding trying to
+
+1208
+01:03:50,520 --> 01:03:55,160
+find something that does not exist but
+
+1209
+01:03:52,279 --> 01:03:57,720
+also adding inaccurate knowledge to your
+
+1210
+01:03:55,160 --> 01:03:57,720
+knowledge graph
+
+1211
+01:03:58,160 --> 01:04:02,400
+and the reason for that is that H we
+
+1212
+01:04:00,880 --> 01:04:05,039
+often don't specify and describe the
+
+1213
+01:04:02,400 --> 01:04:06,760
+target semantics accurately enough and
+
+1214
+01:04:05,039 --> 01:04:08,680
+my favorite examples here are sematic
+
+1215
+01:04:06,760 --> 01:04:10,880
+related synonym and this is related to
+
+1216
+01:04:08,680 --> 01:04:13,599
+the question that someone posed ear
+
+1217
+01:04:10,880 --> 01:04:17,240
+about how we validate semantic
+
+1218
+01:04:13,599 --> 01:04:19,000
+relatedness so you all many of you here
+
+1219
+01:04:17,240 --> 01:04:21,279
+are computer scientists right so if I
+
+1220
+01:04:19,000 --> 01:04:23,920
+ask you is prologue semantically related
+
+1221
+01:04:21,279 --> 01:04:26,960
+to python
+
+1222
+01:04:23,920 --> 01:04:28,640
+now some of you will say yes why because
+
+1223
+01:04:26,960 --> 01:04:31,760
+they are both for example programming
+
+1224
+01:04:28,640 --> 01:04:33,760
+languages indeed but if we think that in
+
+1225
+01:04:31,760 --> 01:04:37,039
+the context of hiring right in the
+
+1226
+01:04:33,760 --> 01:04:40,559
+context of in the course of hiring if
+
+1227
+01:04:37,039 --> 01:04:44,400
+someone is experienced in prologue and
+
+1228
+01:04:40,559 --> 01:04:46,160
+there is so in his CV he says that ah
+
+1229
+01:04:44,400 --> 01:04:49,240
+I'm expert in prol good and we have a
+
+1230
+01:04:46,160 --> 01:04:50,359
+job vacancy that has that requires a
+
+1231
+01:04:49,240 --> 01:04:53,680
+Python
+
+1232
+01:04:50,359 --> 01:04:56,920
+program would you hire that person just
+
+1233
+01:04:53,680 --> 01:04:59,760
+based on on that knowledge probably not
+
+1234
+01:04:56,920 --> 01:05:01,039
+why because prologue and python they are
+
+1235
+01:04:59,760 --> 01:05:03,680
+both programming language so they are
+
+1236
+01:05:01,039 --> 01:05:07,119
+similar with respect to that aspect but
+
+1237
+01:05:03,680 --> 01:05:09,000
+they are from from a from a Computing
+
+1238
+01:05:07,119 --> 01:05:11,480
+philosophy perspective are very
+
+1239
+01:05:09,000 --> 01:05:13,960
+different from programming Paradigm
+
+1240
+01:05:11,480 --> 01:05:16,119
+right and that's subtle knowledge that
+
+1241
+01:05:13,960 --> 01:05:20,240
+it may not be reflected in a
+
+1242
+01:05:16,119 --> 01:05:21,960
+typical H semantic similarity framework
+
+1243
+01:05:20,240 --> 01:05:23,880
+because sematic relatedness ultimately
+
+1244
+01:05:21,960 --> 01:05:25,240
+is vague and context dependent and the
+
+1245
+01:05:23,880 --> 01:05:27,640
+same applies for many other entity
+
+1246
+01:05:25,240 --> 01:05:27,640
+relation
+
+1247
+01:05:27,839 --> 01:05:33,160
+tyes synonym is another example and it's
+
+1248
+01:05:31,599 --> 01:05:36,880
+a really painful
+
+1249
+01:05:33,160 --> 01:05:38,760
+example in this table you see synonyms
+
+1250
+01:05:36,880 --> 01:05:41,880
+as they are expressed as they are
+
+1251
+01:05:38,760 --> 01:05:44,200
+defined in different ontologies and all
+
+1252
+01:05:41,880 --> 01:05:46,799
+graphs so in Esco that I mentioned
+
+1253
+01:05:44,200 --> 01:05:49,440
+earlier you have a synonym of Chief
+
+1254
+01:05:46,799 --> 01:05:52,240
+Executive Officer the terms senior
+
+1255
+01:05:49,440 --> 01:05:54,039
+executive officer chairman CEO managing
+
+1256
+01:05:52,240 --> 01:05:56,160
+director and even
+
+1257
+01:05:54,039 --> 01:05:58,480
+president uh and in
+
+1258
+01:05:56,160 --> 01:06:02,960
+wet you have
+
+1259
+01:05:58,480 --> 01:06:05,760
+as a synonym of Chief Executive Officer
+
+1260
+01:06:02,960 --> 01:06:09,920
+the term Chief Operating Officer and
+
+1261
+01:06:05,760 --> 01:06:12,480
+most of uh most of us that work in h in
+
+1262
+01:06:09,920 --> 01:06:13,480
+corporations and and companies we know
+
+1263
+01:06:12,480 --> 01:06:17,720
+that these
+
+1264
+01:06:13,480 --> 01:06:20,480
+two um these two professions are
+
+1265
+01:06:17,720 --> 01:06:22,440
+different right they do s similarities
+
+1266
+01:06:20,480 --> 01:06:23,880
+but they are they cannot really be
+
+1267
+01:06:22,440 --> 01:06:27,000
+considered the same
+
+1268
+01:06:23,880 --> 01:06:29,319
+job so
+
+1269
+01:06:27,000 --> 01:06:32,720
+why we Define bad synonyms why we say
+
+1270
+01:06:29,319 --> 01:06:34,559
+that these are syn but when they are not
+
+1271
+01:06:32,720 --> 01:06:36,480
+usually we forget or ignore that synonym
+
+1272
+01:06:34,559 --> 01:06:38,480
+is a vague and cod exed phenomenon so
+
+1273
+01:06:36,480 --> 01:06:42,680
+we're pretty sure that just because
+
+1274
+01:06:38,480 --> 01:06:44,920
+these two terms are seem to be used
+
+1275
+01:06:42,680 --> 01:06:46,359
+almost interchangeably in in our context
+
+1276
+01:06:44,920 --> 01:06:47,079
+in our scenario then yeah of course they
+
+1277
+01:06:46,359 --> 01:06:49,119
+are
+
+1278
+01:06:47,079 --> 01:06:51,000
+synonyms another thing is that we mix
+
+1279
+01:06:49,119 --> 01:06:53,599
+synonym with hypony and sematic
+
+1280
+01:06:51,000 --> 01:06:56,640
+relatedness so I've seen many examples
+
+1281
+01:06:53,599 --> 01:07:00,440
+where they just people will take two
+
+1282
+01:06:56,640 --> 01:07:03,559
+terms uh which have which have
+
+1283
+01:07:00,440 --> 01:07:05,559
+similarities and uh are related and they
+
+1284
+01:07:03,559 --> 01:07:08,039
+say yeah this consider them identical
+
+1285
+01:07:05,559 --> 01:07:10,039
+and put under the same
+
+1286
+01:07:08,039 --> 01:07:11,559
+concept it may also be that we are
+
+1287
+01:07:10,039 --> 01:07:13,000
+unaware of subtle but important
+
+1288
+01:07:11,559 --> 01:07:15,119
+differences in meaning for the
+
+1289
+01:07:13,000 --> 01:07:17,680
+particular domain or
+
+1290
+01:07:15,119 --> 01:07:19,160
+context and sometimes we also need the
+
+1291
+01:07:17,680 --> 01:07:23,400
+term but we don't want to create a new
+
+1292
+01:07:19,160 --> 01:07:24,839
+entity I've seen that happening so um I
+
+1293
+01:07:23,400 --> 01:07:26,640
+had actually a request from a client
+
+1294
+01:07:24,839 --> 01:07:30,480
+saying that I you know how my knowledge
+
+1295
+01:07:26,640 --> 01:07:33,279
+graph needs to have needs to have H not
+
+1296
+01:07:30,480 --> 01:07:36,559
+more than 5,000
+
+1297
+01:07:33,279 --> 01:07:39,000
+entities ER and I told them okay but
+
+1298
+01:07:36,559 --> 01:07:40,799
+your terms but you that your domain has
+
+1299
+01:07:39,000 --> 01:07:43,440
+many more yeah he said put them as
+
+1300
+01:07:40,799 --> 01:07:47,599
+synonyms of existing entities so we had
+
+1301
+01:07:43,440 --> 01:07:50,000
+to squeeze let's say terms that were not
+
+1302
+01:07:47,599 --> 01:07:54,440
+synonymous as labels and as
+
+1303
+01:07:50,000 --> 01:07:56,359
+legalizations of entities that were not
+
+1304
+01:07:54,440 --> 01:07:58,400
+synonymous and the final thing is that
+
+1305
+01:07:56,359 --> 01:07:59,880
+we don't document biases assumptions and
+
+1306
+01:07:58,400 --> 01:08:04,680
+choices
+
+1307
+01:07:59,880 --> 01:08:06,760
+so when I see this I'm sure that people
+
+1308
+01:08:04,680 --> 01:08:09,839
+from W the defined wet or the defined
+
+1309
+01:08:06,760 --> 01:08:14,039
+Esco had reasons some reasons at least
+
+1310
+01:08:09,839 --> 01:08:16,679
+to put these as synonymous and they may
+
+1311
+01:08:14,039 --> 01:08:20,600
+be perfectly fine reasons for
+
+1312
+01:08:16,679 --> 01:08:22,759
+whatever um goal they had in mind the
+
+1313
+01:08:20,600 --> 01:08:24,799
+thing is that if you go to ESCO right
+
+1314
+01:08:22,759 --> 01:08:27,319
+now and you check it documentation
+
+1315
+01:08:24,799 --> 01:08:30,319
+there's no where
+
+1316
+01:08:27,319 --> 01:08:30,319
+um
+
+1317
+01:08:31,080 --> 01:08:37,679
+specific describ what are what is the
+
+1318
+01:08:35,040 --> 01:08:40,600
+rationale behind this kind of definition
+
+1319
+01:08:37,679 --> 01:08:43,279
+it is assumed as as as a global truth
+
+1320
+01:08:40,600 --> 01:08:46,080
+that inde ER an economics analyst and
+
+1321
+01:08:43,279 --> 01:08:49,880
+interest analyst is the same
+
+1322
+01:08:46,080 --> 01:08:52,719
+thing so the lesson here is to pick the
+
+1323
+01:08:49,880 --> 01:08:57,359
+right data right and it's it comes a bit
+
+1324
+01:08:52,719 --> 01:08:57,359
+as opposite to you know the Big Data
+
+1325
+01:08:58,560 --> 01:09:03,640
+um the Big Data Obsession that we had
+
+1326
+01:09:01,640 --> 01:09:05,880
+the last years
+
+1327
+01:09:03,640 --> 01:09:07,239
+that we have big data we're going to get
+
+1328
+01:09:05,880 --> 01:09:09,520
+meaning out of them
+
+1329
+01:09:07,239 --> 01:09:11,799
+definitely at least for knowledge when
+
+1330
+01:09:09,520 --> 01:09:13,560
+we want to build knowledge graphs uh
+
+1331
+01:09:11,799 --> 01:09:16,480
+it's important to have the right data
+
+1332
+01:09:13,560 --> 01:09:19,679
+rather than big data so it's important
+
+1333
+01:09:16,480 --> 01:09:21,440
+to start with the data to mind after we
+
+1334
+01:09:19,679 --> 01:09:23,759
+have clearly defined the semantics of
+
+1335
+01:09:21,440 --> 01:09:26,080
+our Target elements not the other way
+
+1336
+01:09:23,759 --> 01:09:27,640
+around we don't start with the data and
+
+1337
+01:09:26,080 --> 01:09:30,080
+say let's see what's a manage we can get
+
+1338
+01:09:27,640 --> 01:09:32,920
+out of them I mean we can do that and we
+
+1339
+01:09:30,080 --> 01:09:35,359
+can apply things but most likely we will
+
+1340
+01:09:32,920 --> 01:09:38,080
+get a generic Knowledge Graph uh with
+
+1341
+01:09:35,359 --> 01:09:39,520
+quality problems that may or may may not
+
+1342
+01:09:38,080 --> 01:09:42,159
+be useful it really depends on the
+
+1343
+01:09:39,520 --> 01:09:43,719
+application so I'm not ex excluding it
+
+1344
+01:09:42,159 --> 01:09:45,920
+Al
+
+1345
+01:09:43,719 --> 01:09:48,400
+together
+
+1346
+01:09:45,920 --> 01:09:50,520
+um another thing is to push for semantic
+
+1347
+01:09:48,400 --> 01:09:51,319
+Clarity and identify Bas and assumptions
+
+1348
+01:09:50,520 --> 01:09:54,679
+right
+
+1349
+01:09:51,319 --> 01:09:56,880
+so let's say that you work for a you
+
+1350
+01:09:54,679 --> 01:10:01,199
+work in a team the team says okay your
+
+1351
+01:09:56,880 --> 01:10:02,600
+product one your your boss say we want
+
+1352
+01:10:01,199 --> 01:10:05,159
+to
+
+1353
+01:10:02,600 --> 01:10:09,560
+create a relation between professions
+
+1354
+01:10:05,159 --> 01:10:12,320
+skills H with that is where the skill is
+
+1355
+01:10:09,560 --> 01:10:13,960
+important for the profession you really
+
+1356
+01:10:12,320 --> 01:10:15,679
+have to push there why do you mean
+
+1357
+01:10:13,960 --> 01:10:18,000
+importance can you give me some criteria
+
+1358
+01:10:15,679 --> 01:10:19,880
+can we formalize this criteria if
+
+1359
+01:10:18,000 --> 01:10:22,199
+possible it may not be possible but at
+
+1360
+01:10:19,880 --> 01:10:23,800
+least you will have tried and definitely
+
+1361
+01:10:22,199 --> 01:10:26,400
+through this process you will have
+
+1362
+01:10:23,800 --> 01:10:29,520
+identified
+
+1363
+01:10:26,400 --> 01:10:31,679
+um fistic and
+
+1364
+01:10:29,520 --> 01:10:32,480
+additional criteria that will make your
+
+1365
+01:10:31,679 --> 01:10:36,920
+life
+
+1366
+01:10:32,480 --> 01:10:38,159
+easier and in case that for your project
+
+1367
+01:10:36,920 --> 01:10:40,960
+for the things that you want to put in
+
+1368
+01:10:38,159 --> 01:10:44,840
+your graph you utilize
+
+1369
+01:10:40,960 --> 01:10:46,840
+existing ER external data it's important
+
+1370
+01:10:44,840 --> 01:10:49,600
+that we that you scrutinize them no
+
+1371
+01:10:46,840 --> 01:10:52,000
+matter how compatible they seem to be go
+
+1372
+01:10:49,600 --> 01:10:54,719
+a bit back
+
+1373
+01:10:52,000 --> 01:10:58,120
+ER you saw that in during the relation
+
+1374
+01:10:54,719 --> 01:11:03,080
+extraction the relation mining um
+
+1375
+01:10:58,120 --> 01:11:05,880
+session right I used Esco to try to to
+
+1376
+01:11:03,080 --> 01:11:07,400
+train esbert to find
+
+1377
+01:11:05,880 --> 01:11:11,040
+synonyms
+
+1378
+01:11:07,400 --> 01:11:13,120
+however um the definition of es the
+
+1379
+01:11:11,040 --> 01:11:16,040
+definition that synony has for that Esco
+
+1380
+01:11:13,120 --> 01:11:17,640
+has for synonyms is not something that
+
+1381
+01:11:16,040 --> 01:11:20,400
+is not the same as the definition that
+
+1382
+01:11:17,640 --> 01:11:24,000
+we have a text for example for for c for
+
+1383
+01:11:20,400 --> 01:11:25,880
+professions so in that case even though
+
+1384
+01:11:24,000 --> 01:11:27,679
+esin
+
+1385
+01:11:25,880 --> 01:11:29,280
+the graph that we have at external seem
+
+1386
+01:11:27,679 --> 01:11:31,159
+very similar because they both have
+
+1387
+01:11:29,280 --> 01:11:31,920
+skills and they both have professions as
+
+1388
+01:11:31,159 --> 01:11:34,960
+as
+
+1389
+01:11:31,920 --> 01:11:38,800
+Concepts they have they have really
+
+1390
+01:11:34,960 --> 01:11:41,719
+different criteria for defining synonymy
+
+1391
+01:11:38,800 --> 01:11:44,920
+and therefore we cannot really reuse a
+
+1392
+01:11:41,719 --> 01:11:48,040
+Tex Chanel the Esco concept the Esco
+
+1393
+01:11:44,920 --> 01:11:52,040
+graph as is right we really need to pick
+
+1394
+01:11:48,040 --> 01:11:52,040
+what um we use from
+
+1395
+01:11:52,560 --> 01:11:59,840
+it the other pig is about thinking that
+
+1396
+01:11:55,679 --> 01:12:02,840
+everything is a nail I remember H
+
+1397
+01:11:59,840 --> 01:12:06,400
+interviewing uh people from my team some
+
+1398
+01:12:02,840 --> 01:12:08,600
+years ago and when the question when a
+
+1399
+01:12:06,400 --> 01:12:11,520
+question when the question of synonyms
+
+1400
+01:12:08,600 --> 01:12:13,360
+came like okay how would you design an
+
+1401
+01:12:11,520 --> 01:12:17,000
+NLP system to mind
+
+1402
+01:12:13,360 --> 01:12:21,159
+synonyms the immediate and automatic uh
+
+1403
+01:12:17,000 --> 01:12:25,639
+response was we just take word to V and
+
+1404
+01:12:21,159 --> 01:12:28,840
+and you're done I was like are you sure
+
+1405
+01:12:25,639 --> 01:12:29,560
+I mean as the discussion with johanes
+
+1406
+01:12:28,840 --> 01:12:32,040
+just
+
+1407
+01:12:29,560 --> 01:12:34,400
+showed this kind of embeddings and
+
+1408
+01:12:32,040 --> 01:12:36,560
+models Etc can be really really useful
+
+1409
+01:12:34,400 --> 01:12:39,000
+to start you with right but they are not
+
+1410
+01:12:36,560 --> 01:12:41,239
+enough it's not that just because it's
+
+1411
+01:12:39,000 --> 01:12:43,600
+there it always will solve your your
+
+1412
+01:12:41,239 --> 01:12:45,600
+problem it's a good thing to start yes
+
+1413
+01:12:43,600 --> 01:12:48,280
+but to expect that it will they will
+
+1414
+01:12:45,600 --> 01:12:52,520
+solve your problem magically
+
+1415
+01:12:48,280 --> 01:12:54,920
+it's the least it's it's at least naive
+
+1416
+01:12:52,520 --> 01:12:57,320
+right of course in some cases it's also
+
+1417
+01:12:54,920 --> 01:13:01,239
+the fault of the tools themselves many
+
+1418
+01:12:57,320 --> 01:13:03,040
+of the tools um Market themselves
+
+1419
+01:13:01,239 --> 01:13:06,400
+especially
+
+1420
+01:13:03,040 --> 01:13:07,679
+especially um commercial tools Market
+
+1421
+01:13:06,400 --> 01:13:10,320
+themselves
+
+1422
+01:13:07,679 --> 01:13:12,199
+as we can do everything or at least we
+
+1423
+01:13:10,320 --> 01:13:14,159
+can do we can do most of the things but
+
+1424
+01:13:12,199 --> 01:13:18,000
+this is obvious often not the case and I
+
+1425
+01:13:14,159 --> 01:13:21,480
+will show a concrete example uh in a few
+
+1426
+01:13:18,000 --> 01:13:24,120
+slides so something
+
+1427
+01:13:21,480 --> 01:13:26,679
+that apart from you know the the
+
+1428
+01:13:24,120 --> 01:13:29,639
+algorithms and the techniques that we
+
+1429
+01:13:26,679 --> 01:13:32,840
+discussed this master class some a
+
+1430
+01:13:29,639 --> 01:13:36,000
+takeaway that I want you to have
+
+1431
+01:13:32,840 --> 01:13:38,159
+is how it's like let's say a way of
+
+1432
+01:13:36,000 --> 01:13:40,239
+thinking and a methodology of
+
+1433
+01:13:38,159 --> 01:13:42,360
+scrutinizing knowledge mining tools
+
+1434
+01:13:40,239 --> 01:13:44,880
+before you buy them where by buy them I
+
+1435
+01:13:42,360 --> 01:13:48,400
+mean may need to pay money but you also
+
+1436
+01:13:44,880 --> 01:13:50,560
+may just want to adopt a particular free
+
+1437
+01:13:48,400 --> 01:13:52,199
+system you will you still pay it in the
+
+1438
+01:13:50,560 --> 01:13:54,239
+sense that you have to many cases to
+
+1439
+01:13:52,199 --> 01:13:55,600
+invest time on it right time and
+
+1440
+01:13:54,239 --> 01:13:58,960
+resources
+
+1441
+01:13:55,600 --> 01:14:00,760
+so the first question to ask is what
+
+1442
+01:13:58,960 --> 01:14:03,239
+extraction task and semantics does the
+
+1443
+01:14:00,760 --> 01:14:04,840
+tool support exactly and I say exactly
+
+1444
+01:14:03,239 --> 01:14:08,320
+because as we see the devil is in the
+
+1445
+01:14:04,840 --> 01:14:10,520
+details here the second is does the tool
+
+1446
+01:14:08,320 --> 01:14:13,600
+deliver the semantics and the quality it
+
+1447
+01:14:10,520 --> 01:14:16,360
+promises right we saw for instance with
+
+1448
+01:14:13,600 --> 01:14:18,800
+Spacey that okay it manages to find
+
+1449
+01:14:16,360 --> 01:14:22,760
+persons but when it comes to products it
+
+1450
+01:14:18,800 --> 01:14:26,520
+had a problem right it mistook many
+
+1451
+01:14:22,760 --> 01:14:29,360
+products for uh
+
+1452
+01:14:26,520 --> 01:14:32,440
+organizations so it doesn't
+
+1453
+01:14:29,360 --> 01:14:34,880
+have the the same quality across all all
+
+1454
+01:14:32,440 --> 01:14:37,280
+entity types right so even if you take
+
+1455
+01:14:34,880 --> 01:14:38,120
+an average it still doesn't give you the
+
+1456
+01:14:37,280 --> 01:14:41,199
+whole
+
+1457
+01:14:38,120 --> 01:14:43,520
+picture third does the tool have any
+
+1458
+01:14:41,199 --> 01:14:46,239
+systematic errors or
+
+1459
+01:14:43,520 --> 01:14:49,360
+biases it's okay if a tool makes errors
+
+1460
+01:14:46,239 --> 01:14:52,760
+the question is whether these errors
+
+1461
+01:14:49,360 --> 01:14:55,880
+are uh systematic and indicate some kind
+
+1462
+01:14:52,760 --> 01:14:58,960
+of uh flow or bi
+
+1463
+01:14:55,880 --> 01:15:00,320
+or yeah or or assumption that that they
+
+1464
+01:14:58,960 --> 01:15:02,480
+need
+
+1465
+01:15:00,320 --> 01:15:04,159
+right a fourth question is what
+
+1466
+01:15:02,480 --> 01:15:08,600
+Effectiveness range can I expect from
+
+1467
+01:15:04,159 --> 01:15:12,520
+the tool and under what conditions so in
+
+1468
+01:15:08,600 --> 01:15:13,760
+you know in Academia we we develop a
+
+1469
+01:15:12,520 --> 01:15:15,440
+method we
+
+1470
+01:15:13,760 --> 01:15:18,400
+write
+
+1471
+01:15:15,440 --> 01:15:20,239
+um we experiment in one or two
+
+1472
+01:15:18,400 --> 01:15:22,440
+evaluation data sets and we report some
+
+1473
+01:15:20,239 --> 01:15:25,719
+scores that's fine but really what's
+
+1474
+01:15:22,440 --> 01:15:28,960
+important for uh for an application in
+
+1475
+01:15:25,719 --> 01:15:30,760
+the industry is to know what can I
+
+1476
+01:15:28,960 --> 01:15:34,320
+expect from the tool so if you tell me
+
+1477
+01:15:30,760 --> 01:15:38,080
+that okay you have a tool that um will
+
+1478
+01:15:34,320 --> 01:15:42,920
+give me an entity extraction
+
+1479
+01:15:38,080 --> 01:15:46,400
+accuracy uh between I don't know 70 and
+
+1480
+01:15:42,920 --> 01:15:49,440
+90% only and that will happen if the
+
+1481
+01:15:46,400 --> 01:15:52,040
+type of text are for example news I'm
+
+1482
+01:15:49,440 --> 01:15:54,440
+fine with that but if you don't tell me
+
+1483
+01:15:52,040 --> 01:15:57,360
+that and just because you have tested in
+
+1484
+01:15:54,440 --> 01:15:59,280
+news when I try to test it in uh to run
+
+1485
+01:15:57,360 --> 01:16:01,280
+it in another domain or in another type
+
+1486
+01:15:59,280 --> 01:16:04,920
+of testt it fails miserably and I'm
+
+1487
+01:16:01,280 --> 01:16:07,120
+surprised by that I have a problem right
+
+1488
+01:16:04,920 --> 01:16:08,600
+obviously a fifth question is what are
+
+1489
+01:16:07,120 --> 01:16:10,880
+the ingredients and recipes I need in
+
+1490
+01:16:08,600 --> 01:16:14,080
+order to use the tool right we saw for
+
+1491
+01:16:10,880 --> 01:16:16,120
+example that with Spacey that okay there
+
+1492
+01:16:14,080 --> 01:16:19,960
+is the basic recipe just take the
+
+1493
+01:16:16,120 --> 01:16:22,520
+existing system and run it but it also H
+
+1494
+01:16:19,960 --> 01:16:25,679
+allows you to do more complex stuff
+
+1495
+01:16:22,520 --> 01:16:30,199
+writing customizing your
+
+1496
+01:16:25,679 --> 01:16:34,760
+um customizing your own uh extractors
+
+1497
+01:16:30,199 --> 01:16:37,840
+writing rules Etc so a tool that has a
+
+1498
+01:16:34,760 --> 01:16:40,480
+very good documentation of these things
+
+1499
+01:16:37,840 --> 01:16:43,320
+is really is really important even if
+
+1500
+01:16:40,480 --> 01:16:45,280
+it's not the best in some kind of
+
+1501
+01:16:43,320 --> 01:16:49,560
+benchmarking right as opposed to
+
+1502
+01:16:45,280 --> 01:16:51,520
+something that is less um predictable
+
+1503
+01:16:49,560 --> 01:16:53,480
+and finally how can we troubleshoot and
+
+1504
+01:16:51,520 --> 01:16:55,480
+optimize the tools performance right so
+
+1505
+01:16:53,480 --> 01:16:57,880
+we saw again with Spacey and also with
+
+1506
+01:16:55,480 --> 01:16:59,560
+sber that okay we can write the base
+
+1507
+01:16:57,880 --> 01:17:02,960
+Baseline version it doesn't work that
+
+1508
+01:16:59,560 --> 01:17:06,000
+well okay that's fine what can we do
+
+1509
+01:17:02,960 --> 01:17:10,480
+further right do we can should we add
+
+1510
+01:17:06,000 --> 01:17:14,600
+more data can we do that right should we
+
+1511
+01:17:10,480 --> 01:17:17,120
+um write rules should we maybe H tweak
+
+1512
+01:17:14,600 --> 01:17:19,480
+some parameters and how right this
+
+1513
+01:17:17,120 --> 01:17:21,840
+should be guided in a
+
+1514
+01:17:19,480 --> 01:17:25,639
+way and to give you an example about the
+
+1515
+01:17:21,840 --> 01:17:29,000
+exact semantics um I have
+
+1516
+01:17:25,639 --> 01:17:33,159
+I will describe um some evaluation that
+
+1517
+01:17:29,000 --> 01:17:38,239
+I did as part of my work some months
+
+1518
+01:17:33,159 --> 01:17:42,880
+ago where I had the opportunity to do an
+
+1519
+01:17:38,239 --> 01:17:46,320
+evaluation ER for for my company of
+
+1520
+01:17:42,880 --> 01:17:48,159
+diffbot natural language API so I don't
+
+1521
+01:17:46,320 --> 01:17:52,719
+know how many of you know diffbot
+
+1522
+01:17:48,159 --> 01:17:54,480
+diffbot is a it's a company that H has a
+
+1523
+01:17:52,719 --> 01:17:56,560
+Knowledge Graph develops a knowledge
+
+1524
+01:17:54,480 --> 01:17:59,880
+graph fully automatically by crawling
+
+1525
+01:17:56,560 --> 01:18:03,800
+the web and part of its offering is an
+
+1526
+01:17:59,880 --> 01:18:06,920
+NLP API natural language API that given
+
+1527
+01:18:03,800 --> 01:18:12,560
+a text Builds an nor graph right so you
+
+1528
+01:18:06,920 --> 01:18:12,560
+see here that it gives the
+
+1529
+01:18:12,679 --> 01:18:18,800
+um the biography of actually it's
+
+1530
+01:18:15,480 --> 01:18:22,239
+founder Mike tank right where he studied
+
+1531
+01:18:18,800 --> 01:18:25,080
+what his current role Etc and when you
+
+1532
+01:18:22,239 --> 01:18:27,080
+run this it gives you a knowledge Gra so
+
+1533
+01:18:25,080 --> 01:18:29,639
+it says for example that one of the
+
+1534
+01:18:27,080 --> 01:18:31,120
+position he has held is founder that he
+
+1535
+01:18:29,639 --> 01:18:33,440
+has worked in eBay and that he has
+
+1536
+01:18:31,120 --> 01:18:35,040
+studied at Berkeley which seems
+
+1537
+01:18:33,440 --> 01:18:37,520
+impressive right and it is
+
+1538
+01:18:35,040 --> 01:18:42,120
+impressive
+
+1539
+01:18:37,520 --> 01:18:43,480
+and um when I tried to do that I started
+
+1540
+01:18:42,120 --> 01:18:45,080
+playing with some examples and
+
+1541
+01:18:43,480 --> 01:18:46,159
+especially with Game of Thrones because
+
+1542
+01:18:45,080 --> 01:18:48,400
+they mentioned that they analyze the
+
+1543
+01:18:46,159 --> 01:18:50,960
+Game of Thrones Anthology and they
+
+1544
+01:18:48,400 --> 01:18:54,920
+built H and they build a Knowledge Graph
+
+1545
+01:18:50,960 --> 01:18:56,679
+out of it so what I found was one system
+
+1546
+01:18:54,920 --> 01:18:59,040
+atic problem that they found was that
+
+1547
+01:18:56,679 --> 01:19:02,760
+their natural language API was not able
+
+1548
+01:18:59,040 --> 01:19:06,800
+to find synonyms even in cases like this
+
+1549
+01:19:02,760 --> 01:19:09,400
+so I don't know if if you are um
+
+1550
+01:19:06,800 --> 01:19:12,040
+familiar with Game of Thrones but there
+
+1551
+01:19:09,400 --> 01:19:15,639
+is a a character called Peter bailees
+
+1552
+01:19:12,040 --> 01:19:19,159
+who is also known as little finger so
+
+1553
+01:19:15,639 --> 01:19:20,600
+when I gave this input Lord Peter B is
+
+1554
+01:19:19,159 --> 01:19:22,800
+also known as little finger was the
+
+1555
+01:19:20,600 --> 01:19:24,480
+master of coin on the small Council not
+
+1556
+01:19:22,800 --> 01:19:26,520
+only the system could not find that
+
+1557
+01:19:24,480 --> 01:19:30,239
+little finger and Peter B Peter baes
+
+1558
+01:19:26,520 --> 01:19:34,600
+were the same person but also it model
+
+1559
+01:19:30,239 --> 01:19:34,600
+the relation as sibling
+
+1560
+01:19:37,460 --> 01:19:40,510
+[Music]
+
+1561
+01:20:12,960 --> 01:20:17,360
+hello can you hear me did we lose
+
+1562
+01:20:18,679 --> 01:20:22,040
+Panos seems
+
+1563
+01:20:22,120 --> 01:20:27,719
+so looks like he dropped
+
+1564
+01:20:25,280 --> 01:20:27,719
+I think he
+
+1565
+01:20:31,520 --> 01:20:37,760
+dropped yeah let's give him a minute or
+
+1566
+01:20:34,920 --> 01:20:41,040
+two uh let's uh treat this as an
+
+1567
+01:20:37,760 --> 01:20:43,520
+informal break and I think he will be
+
+1568
+01:20:41,040 --> 01:20:43,520
+back with
+
+1569
+01:20:46,080 --> 01:20:51,800
+us sorry for that noise the uh that was
+
+1570
+01:20:49,480 --> 01:20:51,800
+my
+
+1571
+01:20:53,639 --> 01:20:57,600
+cuts e
+
+1572
+01:21:46,000 --> 01:21:51,440
+hello Panos from what I understand
+
+1573
+01:21:48,400 --> 01:21:51,440
+you're trying to
+
+1574
+01:21:51,719 --> 01:21:58,760
+reconnect hope this will go smoothly
+
+1575
+01:21:55,960 --> 01:21:58,760
+we're waiting for
+
+1576
+01:22:01,880 --> 01:22:10,440
+you
+
+1577
+01:22:04,080 --> 01:22:13,550
+okay great yeah okay
+
+1578
+01:22:10,440 --> 01:22:13,550
+[Music]
+
+1579
+01:22:22,639 --> 01:22:29,520
+so okay
+
+1580
+01:22:26,080 --> 01:22:33,400
+so the ISA would give you things like if
+
+1581
+01:22:29,520 --> 01:22:35,600
+you said let's say that imagine a text
+
+1582
+01:22:33,400 --> 01:22:37,199
+where you have an appraisal of of an
+
+1583
+01:22:35,600 --> 01:22:40,040
+employer saying John is a skilled
+
+1584
+01:22:37,199 --> 01:22:43,360
+communicator and achiever it would model
+
+1585
+01:22:40,040 --> 01:22:45,520
+achiever as professions as position held
+
+1586
+01:22:43,360 --> 01:22:46,880
+that John has been had a position held
+
+1587
+01:22:45,520 --> 01:22:51,320
+communicator and a position held
+
+1588
+01:22:46,880 --> 01:22:54,040
+achiever right H and yeah I can also
+
+1589
+01:22:51,320 --> 01:22:55,360
+talk about negation but yeah negation is
+
+1590
+01:22:54,040 --> 01:22:58,679
+generally big
+
+1591
+01:22:55,360 --> 01:23:00,719
+problem ER and it's okay if you if you
+
+1592
+01:22:58,679 --> 01:23:02,719
+are not able to detect it the thing is
+
+1593
+01:23:00,719 --> 01:23:04,960
+you don't want false positives out of
+
+1594
+01:23:02,719 --> 01:23:07,520
+this right
+
+1595
+01:23:04,960 --> 01:23:08,760
+so I have here the example here for
+
+1596
+01:23:07,520 --> 01:23:10,320
+example Einstein was not born in the
+
+1597
+01:23:08,760 --> 01:23:14,120
+United States and he has never lived in
+
+1598
+01:23:10,320 --> 01:23:18,920
+New York just an example and it gave me
+
+1599
+01:23:14,120 --> 01:23:22,400
+the exact opposite facts right
+
+1600
+01:23:18,920 --> 01:23:26,840
+um which means that in theory someone
+
+1601
+01:23:22,400 --> 01:23:29,719
+could in that way in would be able to
+
+1602
+01:23:26,840 --> 01:23:32,120
+infuse wrong knowledge into a Knowledge
+
+1603
+01:23:29,719 --> 01:23:34,520
+Graph so imagine that in the context of
+
+1604
+01:23:32,120 --> 01:23:35,960
+this information Etc it's not an easy
+
+1605
+01:23:34,520 --> 01:23:38,840
+task I'm not saying it's an easy task
+
+1606
+01:23:35,960 --> 01:23:41,239
+right but it's important that it's an
+
+1607
+01:23:38,840 --> 01:23:44,840
+important thing to consider especially
+
+1608
+01:23:41,239 --> 01:23:47,880
+for from safety perspective let's
+
+1609
+01:23:44,840 --> 01:23:51,080
+say and another nice example the
+
+1610
+01:23:47,880 --> 01:23:55,520
+sensitivity to model verbs so one of the
+
+1611
+01:23:51,080 --> 01:23:58,199
+relations that the API supports is
+
+1612
+01:23:55,520 --> 01:24:00,800
+H acquisition between companies right so
+
+1613
+01:23:58,199 --> 01:24:02,600
+you when when you monitor the news you
+
+1614
+01:24:00,800 --> 01:24:04,320
+want to know that a particular company
+
+1615
+01:24:02,600 --> 01:24:06,840
+acquired another
+
+1616
+01:24:04,320 --> 01:24:08,440
+so what I did there I played a bit with
+
+1617
+01:24:06,840 --> 01:24:10,719
+the modality of the verb so instead of
+
+1618
+01:24:08,440 --> 01:24:12,199
+saying for example PayPal acquired pay I
+
+1619
+01:24:10,719 --> 01:24:15,280
+said might acquire pidd or should
+
+1620
+01:24:12,199 --> 01:24:17,880
+acquire pidd which from a semantic P
+
+1621
+01:24:15,280 --> 01:24:20,400
+point of view means that the the
+
+1622
+01:24:17,880 --> 01:24:23,920
+relation acquired doesn't hold right so
+
+1623
+01:24:20,400 --> 01:24:26,400
+might acquire in the future it doesn't
+
+1624
+01:24:23,920 --> 01:24:29,800
+mean that already acquired so the result
+
+1625
+01:24:26,400 --> 01:24:34,280
+is wrong completely right so
+
+1626
+01:24:29,800 --> 01:24:36,800
+again um this seems to be a systematic
+
+1627
+01:24:34,280 --> 01:24:39,400
+issue again this is not about this is
+
+1628
+01:24:36,800 --> 01:24:44,040
+just an example right I can
+
+1629
+01:24:39,400 --> 01:24:46,320
+take and believe me if you consider many
+
+1630
+01:24:44,040 --> 01:24:48,560
+existing tools out there including text
+
+1631
+01:24:46,320 --> 01:24:51,440
+gen to some extent right you will see
+
+1632
+01:24:48,560 --> 01:24:54,080
+some systematic errors and our goal is
+
+1633
+01:24:51,440 --> 01:24:55,880
+of course to try to find them to try to
+
+1634
+01:24:54,080 --> 01:24:58,960
+Pro actively find them as much as
+
+1635
+01:24:55,880 --> 01:25:01,560
+possible right it's it's a hard task but
+
+1636
+01:24:58,960 --> 01:25:03,560
+it's important that we know as much as
+
+1637
+01:25:01,560 --> 01:25:06,360
+possible what our systems can and cannot
+
+1638
+01:25:03,560 --> 01:25:09,719
+do and under what circumstances we
+
+1639
+01:25:06,360 --> 01:25:12,719
+should be able to to deploy
+
+1640
+01:25:09,719 --> 01:25:17,199
+them okay wrapping
+
+1641
+01:25:12,719 --> 01:25:18,960
+up I think that um again what from a
+
+1642
+01:25:17,199 --> 01:25:21,679
+methodological perspective what I'd like
+
+1643
+01:25:18,960 --> 01:25:24,800
+you to keep in mind is that the steps to
+
+1644
+01:25:21,679 --> 01:25:27,159
+build an NLP solution for graph
+
+1645
+01:25:24,800 --> 01:25:29,760
+would start from first understanding the
+
+1646
+01:25:27,159 --> 01:25:31,960
+task and semantics task means are we
+
+1647
+01:25:29,760 --> 01:25:34,199
+this what is the task do we want to
+
+1648
+01:25:31,960 --> 01:25:36,800
+detect entities do we want to detect
+
+1649
+01:25:34,199 --> 01:25:38,320
+relations do we do we want to detect
+
+1650
+01:25:36,800 --> 01:25:41,400
+relations between unnown entities or
+
+1651
+01:25:38,320 --> 01:25:44,320
+known entities things like that and then
+
+1652
+01:25:41,400 --> 01:25:45,880
+semantics okay the relation is named is
+
+1653
+01:25:44,320 --> 01:25:49,520
+essential of between professionals and
+
+1654
+01:25:45,880 --> 01:25:52,719
+skills what exactly does it mean right
+
+1655
+01:25:49,520 --> 01:25:55,760
+um when it is true and when it is
+
+1656
+01:25:52,719 --> 01:25:57,400
+not then you can find the task and third
+
+1657
+01:25:55,760 --> 01:25:59,400
+we can create a ground truth based on
+
+1658
+01:25:57,400 --> 01:26:03,040
+the task semantics ground truth would
+
+1659
+01:25:59,400 --> 01:26:04,880
+mean that we need to have usually
+
+1660
+01:26:03,040 --> 01:26:06,719
+positive and negative examples of when
+
+1661
+01:26:04,880 --> 01:26:09,000
+something is true or false right
+
+1662
+01:26:06,719 --> 01:26:11,760
+something that currently knowledge
+
+1663
+01:26:09,000 --> 01:26:15,880
+graphs don't really support is H degrees
+
+1664
+01:26:11,760 --> 01:26:18,119
+of truth right any most of the knowledge
+
+1665
+01:26:15,880 --> 01:26:19,880
+graphs will say if something is true or
+
+1666
+01:26:18,119 --> 01:26:21,880
+it's not will not say it's true to some
+
+1667
+01:26:19,880 --> 01:26:24,360
+degree or they won't really say that
+
+1668
+01:26:21,880 --> 01:26:28,040
+something is true in in a context in one
+
+1669
+01:26:24,360 --> 01:26:30,360
+context and force in another context so
+
+1670
+01:26:28,040 --> 01:26:32,040
+it's important to take the exercise and
+
+1671
+01:26:30,360 --> 01:26:36,040
+try to create a ground truth take some
+
+1672
+01:26:32,040 --> 01:26:38,360
+examples of uh of facts and asss that
+
+1673
+01:26:36,040 --> 01:26:39,719
+you want to have in your knowledge graph
+
+1674
+01:26:38,360 --> 01:26:42,199
+and which should be true and which
+
+1675
+01:26:39,719 --> 01:26:44,440
+should not this exercise if you do it
+
+1676
+01:26:42,199 --> 01:26:47,280
+correctly will not
+
+1677
+01:26:44,440 --> 01:26:49,040
+only ER will will will show you
+
+1678
+01:26:47,280 --> 01:26:51,119
+limitations in your definition of the
+
+1679
+01:26:49,040 --> 01:26:53,440
+semantics of the of the elements that
+
+1680
+01:26:51,119 --> 01:26:57,040
+you want to mind right and if you do it
+
+1681
+01:26:53,440 --> 01:26:59,840
+correctly will also help you find H
+
+1682
+01:26:57,040 --> 01:27:02,600
+select go to the next step which is to
+
+1683
+01:26:59,840 --> 01:27:04,760
+pick the data that you that you need
+
+1684
+01:27:02,600 --> 01:27:06,880
+right so it's about the fourth step is
+
+1685
+01:27:04,760 --> 01:27:08,440
+about picking or building of course the
+
+1686
+01:27:06,880 --> 01:27:10,880
+data and methods that match the task and
+
+1687
+01:27:08,440 --> 01:27:13,320
+semantics right if you want more data
+
+1688
+01:27:10,880 --> 01:27:17,080
+and of course you need to evaluate and
+
+1689
+01:27:13,320 --> 01:27:19,840
+in evaluation for me it's not enough to
+
+1690
+01:27:17,080 --> 01:27:22,159
+just run and get a score like the one I
+
+1691
+01:27:19,840 --> 01:27:25,679
+showed earlier that for example the S
+
+1692
+01:27:22,159 --> 01:27:27,800
+bir would have a correlation of 075 that
+
+1693
+01:27:25,679 --> 01:27:29,880
+doesn't say much really you need to dive
+
+1694
+01:27:27,800 --> 01:27:33,280
+deeper and say okay this seems to be the
+
+1695
+01:27:29,880 --> 01:27:36,280
+accuracy nice this seems to be the
+
+1696
+01:27:33,280 --> 01:27:38,080
+recall nice but also this seems to be a
+
+1697
+01:27:36,280 --> 01:27:40,159
+systematic error and the systematic
+
+1698
+01:27:38,080 --> 01:27:43,000
+errors usually come from qualitative
+
+1699
+01:27:40,159 --> 01:27:45,199
+assessments like the one I sold and also
+
+1700
+01:27:43,000 --> 01:27:47,719
+the mindset should be to some extent
+
+1701
+01:27:45,199 --> 01:27:50,800
+adversarial so in a sense let's try to
+
+1702
+01:27:47,719 --> 01:27:54,480
+break the system no more very similar to
+
+1703
+01:27:50,800 --> 01:27:57,360
+how in in network security and
+
+1704
+01:27:54,480 --> 01:28:00,239
+information technology security H you
+
+1705
+01:27:57,360 --> 01:28:02,239
+have testing by trying to have
+
+1706
+01:28:00,239 --> 01:28:04,600
+penetration testing you try to invade
+
+1707
+01:28:02,239 --> 01:28:07,440
+the system to check that it's to ensure
+
+1708
+01:28:04,600 --> 01:28:12,159
+that its controls and its defenses
+
+1709
+01:28:07,440 --> 01:28:15,679
+are uh can can hold so imagine something
+
+1710
+01:28:12,159 --> 01:28:19,199
+a similar mindset for NLP systems if I
+
+1711
+01:28:15,679 --> 01:28:22,920
+try to attack the system let's say and
+
+1712
+01:28:19,199 --> 01:28:24,520
+make it give me bad information wrong
+
+1713
+01:28:22,920 --> 01:28:26,360
+information right that I can either
+
+1714
+01:28:24,520 --> 01:28:27,920
+weaponize or not doesn't really matter
+
+1715
+01:28:26,360 --> 01:28:29,679
+right can I achieve that if I can
+
+1716
+01:28:27,920 --> 01:28:33,600
+achieve that then my system is really
+
+1717
+01:28:29,679 --> 01:28:33,600
+fragile it's not robust at
+
+1718
+01:28:34,080 --> 01:28:38,920
+all so I'm not going to repeat these are
+
+1719
+01:28:37,159 --> 01:28:41,920
+the questions that so if you are on the
+
+1720
+01:28:38,920 --> 01:28:43,480
+user side and you are evaluating a
+
+1721
+01:28:41,920 --> 01:28:45,480
+knowledge mind tool please ask yourself
+
+1722
+01:28:43,480 --> 01:28:47,639
+these questions and if you're on the
+
+1723
+01:28:45,480 --> 01:28:49,600
+other side where you develop a tool for
+
+1724
+01:28:47,639 --> 01:28:51,800
+Knowledge Graph mining then ask the
+
+1725
+01:28:49,600 --> 01:28:53,480
+following yourselves does my tool
+
+1726
+01:28:51,800 --> 01:28:54,600
+support all the T required for buing
+
+1727
+01:28:53,480 --> 01:28:56,920
+Knowledge Graph
+
+1728
+01:28:54,600 --> 01:28:59,280
+it's okay if it doesn't but don't
+
+1729
+01:28:56,920 --> 01:29:00,880
+advertise it then then don't advertise
+
+1730
+01:28:59,280 --> 01:29:02,239
+it as a as a system that just will build
+
+1731
+01:29:00,880 --> 01:29:05,560
+your knowledge graph when you're done
+
+1732
+01:29:02,239 --> 01:29:07,440
+right you can say that okay it builds it
+
+1733
+01:29:05,560 --> 01:29:09,280
+supports this task and not the
+
+1734
+01:29:07,440 --> 01:29:12,280
+circumstances
+
+1735
+01:29:09,280 --> 01:29:14,239
+right so thank you very much for
+
+1736
+01:29:12,280 --> 01:29:18,960
+listening to me it's
+
+1737
+01:29:14,239 --> 01:29:24,239
+been almost four hours
+
+1738
+01:29:18,960 --> 01:29:26,480
+so uh yeah um you can see my mail my web
+
+1739
+01:29:24,239 --> 01:29:28,600
+can follow me Twitter LinkedIn I'm
+
+1740
+01:29:26,480 --> 01:29:30,239
+also
+
+1741
+01:29:28,600 --> 01:29:32,520
+um
+
+1742
+01:29:30,239 --> 01:29:34,760
+available uh if you get the chance to
+
+1743
+01:29:32,520 --> 01:29:36,960
+read my book and you have feedback
+
+1744
+01:29:34,760 --> 01:29:39,400
+positive or negative doesn't matter I
+
+1745
+01:29:36,960 --> 01:29:40,880
+would really enjoy listening to it right
+
+1746
+01:29:39,400 --> 01:29:45,360
+or learning about
+
+1747
+01:29:40,880 --> 01:29:47,840
+it ER and yeah as I said the material
+
+1748
+01:29:45,360 --> 01:29:50,880
+the slides I'm going to give them to
+
+1749
+01:29:47,840 --> 01:29:53,800
+elas and share it with you the links to
+
+1750
+01:29:50,880 --> 01:29:55,280
+the collab to the two collabs I think
+
+1751
+01:29:53,800 --> 01:29:59,280
+you already have them I will leave them
+
+1752
+01:29:55,280 --> 01:30:00,639
+there but please make sure that you cop
+
+1753
+01:29:59,280 --> 01:30:03,800
+you make your own
+
+1754
+01:30:00,639 --> 01:30:06,440
+copy today or tomorrow by the next days
+
+1755
+01:30:03,800 --> 01:30:10,960
+anyway it doesn't
+
+1756
+01:30:06,440 --> 01:30:13,560
+matter and yeah that's it we have a lot
+
+1757
+01:30:10,960 --> 01:30:13,560
+of time for
+
+1758
+01:30:15,960 --> 01:30:22,239
+question hey Panos um quick question
+
+1759
+01:30:19,280 --> 01:30:24,960
+here it's off up here
+
+1760
+01:30:22,239 --> 01:30:26,360
+again um so just con you know
+
+1761
+01:30:24,960 --> 01:30:27,960
+reiterating the question that I asked at
+
+1762
+01:30:26,360 --> 01:30:29,520
+the beginning of the session uh about
+
+1763
+01:30:27,960 --> 01:30:32,199
+you know we talked about antology with
+
+1764
+01:30:29,520 --> 01:30:35,840
+two simple classes um skills and
+
+1765
+01:30:32,199 --> 01:30:38,600
+profession um and what how we can use
+
+1766
+01:30:35,840 --> 01:30:40,159
+NLP to conf popul knowledge craft so I
+
+1767
+01:30:38,600 --> 01:30:42,199
+was actually pondering about that
+
+1768
+01:30:40,159 --> 01:30:43,760
+solution that we discussed for the last
+
+1769
+01:30:42,199 --> 01:30:46,880
+half an hour so it could be that you
+
+1770
+01:30:43,760 --> 01:30:48,639
+know because me at a very early stage of
+
+1771
+01:30:46,880 --> 01:30:50,320
+of this whole NLB stuff so that's when
+
+1772
+01:30:48,639 --> 01:30:52,280
+I'm maybe lost somewhere so that's why I
+
+1773
+01:30:50,320 --> 01:30:54,880
+need your help so I got two questions
+
+1774
+01:30:52,280 --> 01:30:58,159
+here and please do cor me if I'm wrong
+
+1775
+01:30:54,880 --> 01:31:01,719
+with my um assumptions or if I'm off
+
+1776
+01:30:58,159 --> 01:31:03,400
+track so let's say we Define the class
+
+1777
+01:31:01,719 --> 01:31:05,440
+that we just Define the class that there
+
+1778
+01:31:03,400 --> 01:31:08,679
+a skill class and there's a profession
+
+1779
+01:31:05,440 --> 01:31:11,800
+and then you have a Text corpus on the
+
+1780
+01:31:08,679 --> 01:31:13,199
+other side now obviously Spacey out of
+
+1781
+01:31:11,800 --> 01:31:15,000
+the book doesn't support doesn't know
+
+1782
+01:31:13,199 --> 01:31:16,360
+what skills of profession means which
+
+1783
+01:31:15,000 --> 01:31:18,400
+means you need to actually provide some
+
+1784
+01:31:16,360 --> 01:31:20,000
+train training data to it or you really
+
+1785
+01:31:18,400 --> 01:31:22,600
+need to write extraction rules right
+
+1786
+01:31:20,000 --> 01:31:24,400
+yeah so if if so that's my first
+
+1787
+01:31:22,600 --> 01:31:26,920
+question if we if we are to do that
+
+1788
+01:31:24,400 --> 01:31:29,600
+which means that I need to know what are
+
+1789
+01:31:26,920 --> 01:31:31,639
+the skills that I need to extract from a
+
+1790
+01:31:29,600 --> 01:31:33,560
+corpus of data for example you know that
+
+1791
+01:31:31,639 --> 01:31:37,239
+in the skills I need to have the Java
+
+1792
+01:31:33,560 --> 01:31:39,040
+the python uh C++ C Net all those things
+
+1793
+01:31:37,239 --> 01:31:40,920
+I need to know my domain knowledge up
+
+1794
+01:31:39,040 --> 01:31:43,760
+front and then I need to actually feed
+
+1795
+01:31:40,920 --> 01:31:50,040
+all that TR through some training data
+
+1796
+01:31:43,760 --> 01:31:51,920
+all that things into no no right okay so
+
+1797
+01:31:50,040 --> 01:31:53,360
+uh you don't that's the thing you don't
+
+1798
+01:31:51,920 --> 01:31:56,800
+need to know them beforeand what you
+
+1799
+01:31:53,360 --> 01:31:59,639
+would do is you would take sample of
+
+1800
+01:31:56,800 --> 01:32:02,440
+your Corpus MH I don't know let's say
+
+1801
+01:31:59,639 --> 01:32:06,400
+you take let's say you have CVS right
+
+1802
+01:32:02,440 --> 01:32:07,760
+you would take 100 CVS and you would
+
+1803
+01:32:06,400 --> 01:32:11,040
+have
+
+1804
+01:32:07,760 --> 01:32:14,080
+people annotators
+
+1805
+01:32:11,040 --> 01:32:17,159
+right annotate in the
+
+1806
+01:32:14,080 --> 01:32:20,159
+text the mentions of skills what you
+
+1807
+01:32:17,159 --> 01:32:21,880
+need to have is a definition of skill a
+
+1808
+01:32:20,159 --> 01:32:25,360
+good definition of skill what is a skill
+
+1809
+01:32:21,880 --> 01:32:28,239
+and what is not
+
+1810
+01:32:25,360 --> 01:32:30,520
+because uh you cannot have a already a
+
+1811
+01:32:28,239 --> 01:32:32,600
+list so you cannot say to the notator if
+
+1812
+01:32:30,520 --> 01:32:34,679
+you see Java it's yes if you see I don't
+
+1813
+01:32:32,600 --> 01:32:36,480
+know python it's not you have to tell
+
+1814
+01:32:34,679 --> 01:32:38,440
+them a definition a working definition
+
+1815
+01:32:36,480 --> 01:32:41,480
+of skill a skill is something for
+
+1816
+01:32:38,440 --> 01:32:45,280
+example that someone knows for a job
+
+1817
+01:32:41,480 --> 01:32:47,960
+just saying right and this is actually
+
+1818
+01:32:45,280 --> 01:32:50,159
+the job of the of the knowledge engineer
+
+1819
+01:32:47,960 --> 01:32:52,280
+and it's part if you like the it's part
+
+1820
+01:32:50,159 --> 01:32:54,960
+of the definition of
+
+1821
+01:32:52,280 --> 01:32:57,480
+the when
+
+1822
+01:32:54,960 --> 01:32:59,520
+any class in an anology it's very
+
+1823
+01:32:57,480 --> 01:33:02,520
+important that you define its
+
+1824
+01:32:59,520 --> 01:33:02,520
+members
+
+1825
+01:33:03,159 --> 01:33:06,159
+CR
+
+1826
+01:33:07,119 --> 01:33:12,320
+What entity what are
+
+1827
+01:33:22,600 --> 01:33:28,960
+Theos uh it's best that you disable your
+
+1828
+01:33:26,040 --> 01:33:32,679
+video because I think you have some
+
+1829
+01:33:28,960 --> 01:33:32,679
+problems with your connection
+
+1830
+01:34:06,960 --> 01:34:11,920
+let's just give Panos a moment to
+
+1831
+01:34:08,920 --> 01:34:11,920
+reconnect
+
+1832
+01:34:58,040 --> 01:35:03,880
+hi I'm back can you hear me yep welcome
+
+1833
+01:35:01,199 --> 01:35:05,199
+back Bros okay sorry Mis connection
+
+1834
+01:35:03,880 --> 01:35:07,800
+problem okay
+
+1835
+01:35:05,199 --> 01:35:09,920
+soos would you like to disable your
+
+1836
+01:35:07,800 --> 01:35:14,840
+video and continue
+
+1837
+01:35:09,920 --> 01:35:18,760
+audio okay okay so I was saying after
+
+1838
+01:35:14,840 --> 01:35:20,000
+that exactly the the difficulty and the
+
+1839
+01:35:18,760 --> 01:35:23,679
+challenge for from the knowledge
+
+1840
+01:35:20,000 --> 01:35:27,400
+engineering side right is semantic and
+
+1841
+01:35:23,679 --> 01:35:29,480
+conceptually to Define what the classes
+
+1842
+01:35:27,400 --> 01:35:31,000
+and the relations your schema so it's
+
+1843
+01:35:29,480 --> 01:35:34,159
+not enough to give it a name you really
+
+1844
+01:35:31,000 --> 01:35:34,159
+need to give the membership
+
+1845
+01:35:34,560 --> 01:35:41,199
+criteria and then this criteria will
+
+1846
+01:35:38,920 --> 01:35:43,000
+guide your annotators that will trade
+
+1847
+01:35:41,199 --> 01:35:45,400
+the data and the evaluators of of any
+
+1848
+01:35:43,000 --> 01:35:48,600
+model that gives you because otherwise
+
+1849
+01:35:45,400 --> 01:35:52,760
+you're blind you don't know if you get H
+
+1850
+01:35:48,600 --> 01:35:52,760
+accurate knowledge or not
+
+1851
+01:35:55,239 --> 01:36:00,600
+right so can you expand a little bit
+
+1852
+01:35:58,960 --> 01:36:02,400
+with one example how would you actually
+
+1853
+01:36:00,600 --> 01:36:04,719
+annotate your data so I'm just picking
+
+1854
+01:36:02,400 --> 01:36:07,199
+one of the sentence that you had in your
+
+1855
+01:36:04,719 --> 01:36:10,560
+um in one of your Jupiter notebooks so
+
+1856
+01:36:07,199 --> 01:36:12,760
+where it says Steve Jobs would would
+
+1857
+01:36:10,560 --> 01:36:14,280
+never drive a Mercedes so initially we
+
+1858
+01:36:12,760 --> 01:36:17,080
+saw that you know it comes up as the
+
+1859
+01:36:14,280 --> 01:36:19,600
+Mercedes came up as as an or and then we
+
+1860
+01:36:17,080 --> 01:36:23,840
+trained it that no Mercedes should be
+
+1861
+01:36:19,600 --> 01:36:26,199
+treated as a as a product right so and
+
+1862
+01:36:23,840 --> 01:36:28,639
+then when we we retrain this model and
+
+1863
+01:36:26,199 --> 01:36:31,000
+we rerun the sentence it know pick
+
+1864
+01:36:28,639 --> 01:36:33,280
+Mercedes as a as a product rather than
+
+1865
+01:36:31,000 --> 01:36:35,719
+organization yeah now now the question I
+
+1866
+01:36:33,280 --> 01:36:37,320
+have is let's say now how we have
+
+1867
+01:36:35,719 --> 01:36:39,400
+actually trained the model the Spacey
+
+1868
+01:36:37,320 --> 01:36:41,639
+model with Mercedes as an example can we
+
+1869
+01:36:39,400 --> 01:36:44,119
+just replace Mercedes with BMW and
+
+1870
+01:36:41,639 --> 01:36:46,000
+Spacey will pick BMW as a product
+
+1871
+01:36:44,119 --> 01:36:49,600
+instead of organization or do we have to
+
+1872
+01:36:46,000 --> 01:36:52,760
+do it the same thing again right so the
+
+1873
+01:36:49,600 --> 01:36:55,360
+the the idea of machine learning is that
+
+1874
+01:36:52,760 --> 01:36:57,280
+hopefully it doesn't when when you give
+
+1875
+01:36:55,360 --> 01:36:59,639
+it an example where Mercedes is a
+
+1876
+01:36:57,280 --> 01:37:01,679
+product it doesn't memorize the word
+
+1877
+01:36:59,639 --> 01:37:05,040
+Mercedes but it learns the context it
+
+1878
+01:37:01,679 --> 01:37:07,239
+learns other things to to the the extent
+
+1879
+01:37:05,040 --> 01:37:11,360
+to which it learns the
+
+1880
+01:37:07,239 --> 01:37:14,159
+patterns or memorizes is something to be
+
+1881
+01:37:11,360 --> 01:37:16,679
+evaluated and it has to do with the
+
+1882
+01:37:14,159 --> 01:37:18,719
+quality both of the data but mostly of
+
+1883
+01:37:16,679 --> 01:37:23,239
+the algorithm
+
+1884
+01:37:18,719 --> 01:37:25,239
+itself and there are and one example of
+
+1885
+01:37:23,239 --> 01:37:29,480
+things that indicate memorization to
+
+1886
+01:37:25,239 --> 01:37:31,800
+some extent is that um in some tools you
+
+1887
+01:37:29,480 --> 01:37:34,760
+give it a sentence as when you test it
+
+1888
+01:37:31,800 --> 01:37:37,199
+it's say for example John I don't know
+
+1889
+01:37:34,760 --> 01:37:39,760
+is an expert in ontologies it gives you
+
+1890
+01:37:37,199 --> 01:37:41,400
+perfectly the meaning and when you say
+
+1891
+01:37:39,760 --> 01:37:44,159
+know Panos is expert in
+
+1892
+01:37:41,400 --> 01:37:45,960
+ontologies it doesn't know what Panos is
+
+1893
+01:37:44,159 --> 01:37:47,639
+so even though that even though you have
+
+1894
+01:37:45,960 --> 01:37:50,239
+train it with that
+
+1895
+01:37:47,639 --> 01:37:52,480
+pattern it seems that it doesn't
+
+1896
+01:37:50,239 --> 01:37:54,000
+recognize this is the general problem
+
+1897
+01:37:52,480 --> 01:37:57,199
+also with the fact that machine learning
+
+1898
+01:37:54,000 --> 01:37:58,840
+systems are a bit opaque ER are not so
+
+1899
+01:37:57,199 --> 01:38:00,760
+transparent you don't know what's you
+
+1900
+01:37:58,840 --> 01:38:04,040
+don't have explicit
+
+1901
+01:38:00,760 --> 01:38:07,000
+rules so the rules that are learned are
+
+1902
+01:38:04,040 --> 01:38:09,639
+most of the times uh unknown there are
+
+1903
+01:38:07,000 --> 01:38:11,400
+techniques to try to identify what it
+
+1904
+01:38:09,639 --> 01:38:13,440
+has learned in some cases with deep
+
+1905
+01:38:11,400 --> 01:38:16,560
+learning it's even
+
+1906
+01:38:13,440 --> 01:38:19,040
+worse but you don't know you hope that
+
+1907
+01:38:16,560 --> 01:38:21,199
+by giving it enough examples with
+
+1908
+01:38:19,040 --> 01:38:22,000
+different it will try it will generalize
+
+1909
+01:38:21,199 --> 01:38:25,440
+to
+
+1910
+01:38:22,000 --> 01:38:25,440
+identify unnown
+
+1911
+01:38:25,719 --> 01:38:31,960
+once got it right it's mainly about like
+
+1912
+01:38:29,119 --> 01:38:33,520
+you know you you provide the same
+
+1913
+01:38:31,960 --> 01:38:35,639
+information but through different
+
+1914
+01:38:33,520 --> 01:38:38,520
+patterns and then somehow these models
+
+1915
+01:38:35,639 --> 01:38:40,280
+will actually pick it yeah when we the
+
+1916
+01:38:38,520 --> 01:38:44,960
+power the power of machine learning is
+
+1917
+01:38:40,280 --> 01:38:48,080
+supposed to be H the ability to
+
+1918
+01:38:44,960 --> 01:38:52,159
+generalize and to find the patterns that
+
+1919
+01:38:48,080 --> 01:38:55,599
+that can be hard for uh to Define in a
+
+1920
+01:38:52,159 --> 01:38:59,080
+human way right to Define it
+
+1921
+01:38:55,599 --> 01:39:02,280
+explicitly right right ACC
+
+1922
+01:38:59,080 --> 01:39:02,280
+it thank
+
+1923
+01:39:05,180 --> 01:39:10,880
+[Music]
+
+1924
+01:39:06,920 --> 01:39:13,000
+you do you have some tips with uh with
+
+1925
+01:39:10,880 --> 01:39:17,800
+handling this
+
+1926
+01:39:13,000 --> 01:39:20,599
+similarity score for synonyms because
+
+1927
+01:39:17,800 --> 01:39:23,599
+the score is not yet kind of a
+
+1928
+01:39:20,599 --> 01:39:23,599
+classification
+
+1929
+01:39:23,840 --> 01:39:30,599
+um so we need still a threshold to say
+
+1930
+01:39:26,880 --> 01:39:33,360
+okay this is is or not yeah
+
+1931
+01:39:30,599 --> 01:39:36,719
+yeah yeah the tip is don't try to put a
+
+1932
+01:39:33,360 --> 01:39:38,840
+threshold what one practice if let's
+
+1933
+01:39:36,719 --> 01:39:42,440
+let's assume that
+
+1934
+01:39:38,840 --> 01:39:45,199
+you yeah one practice that we do at
+
+1935
+01:39:42,440 --> 01:39:48,239
+least in my company is that we take we
+
+1936
+01:39:45,199 --> 01:39:50,280
+use a ranking approach so every time we
+
+1937
+01:39:48,239 --> 01:39:53,440
+have a new term and we want to find its
+
+1938
+01:39:50,280 --> 01:39:56,000
+synonyms in the onology because
+
+1939
+01:39:53,440 --> 01:39:58,239
+in an operational let's say in our
+
+1940
+01:39:56,000 --> 01:40:00,920
+everyday work right we have already a
+
+1941
+01:39:58,239 --> 01:40:03,239
+Knowledge Graph and we get new things to
+
+1942
+01:40:00,920 --> 01:40:05,599
+put in there and one task is to see
+
+1943
+01:40:03,239 --> 01:40:08,080
+where to position the new term is it
+
+1944
+01:40:05,599 --> 01:40:10,280
+already a synonym of an existing concept
+
+1945
+01:40:08,080 --> 01:40:12,480
+and therefore it should become a a label
+
+1946
+01:40:10,280 --> 01:40:16,159
+of that or it should become its own
+
+1947
+01:40:12,480 --> 01:40:18,080
+concept so what we do there because we
+
+1948
+01:40:16,159 --> 01:40:20,280
+it's really hard to find a single thres
+
+1949
+01:40:18,080 --> 01:40:24,599
+cold and to trust it automatically for
+
+1950
+01:40:20,280 --> 01:40:26,719
+this term we use and such a model we
+
+1951
+01:40:24,599 --> 01:40:27,760
+generate the top
+
+1952
+01:40:26,719 --> 01:40:29,440
+10
+
+1953
+01:40:27,760 --> 01:40:34,119
+[Music]
+
+1954
+01:40:29,440 --> 01:40:36,920
+um similar SL synonymous candidate
+
+1955
+01:40:34,119 --> 01:40:38,800
+synonymous uh skills or professions and
+
+1956
+01:40:36,920 --> 01:40:40,360
+then we have a
+
+1957
+01:40:38,800 --> 01:40:44,199
+human
+
+1958
+01:40:40,360 --> 01:40:48,239
+select uh the correct one
+
+1959
+01:40:44,199 --> 01:40:51,520
+so it's not fully automatic but it's
+
+1960
+01:40:48,239 --> 01:40:55,480
+better than if a human needed to for a
+
+1961
+01:40:51,520 --> 01:40:58,199
+given term to select out out of 20,000
+
+1962
+01:40:55,480 --> 01:41:00,719
+candidate entities so we we reduce the
+
+1963
+01:40:58,199 --> 01:41:04,560
+number of candidates from 20,000 to
+
+1964
+01:41:00,719 --> 01:41:09,960
+10 and I think in our case it works with
+
+1965
+01:41:04,560 --> 01:41:14,800
+around 80% accuracy so it saves
+
+1966
+01:41:09,960 --> 01:41:14,800
+time thank you very good tip
+
+1967
+01:41:25,800 --> 01:41:30,080
+Panos
+
+1968
+01:41:27,520 --> 01:41:32,119
+uh could you tell us a little bit about
+
+1969
+01:41:30,080 --> 01:41:34,480
+your work at text conel like what type
+
+1970
+01:41:32,119 --> 01:41:36,480
+of research you're doing what what's
+
+1971
+01:41:34,480 --> 01:41:38,679
+your technology stack up I'd really be
+
+1972
+01:41:36,480 --> 01:41:42,080
+interested in that like to get a view
+
+1973
+01:41:38,679 --> 01:41:44,400
+from a different company because I guess
+
+1974
+01:41:42,080 --> 01:41:46,880
+many of us at least me don't know
+
+1975
+01:41:44,400 --> 01:41:50,159
+anything but their own company and I I
+
+1976
+01:41:46,880 --> 01:41:53,000
+usually try to connect to researchers at
+
+1977
+01:41:50,159 --> 01:41:55,440
+University but that's always that's
+
+1978
+01:41:53,000 --> 01:41:58,800
+always is a a biased picture you get and
+
+1979
+01:41:55,440 --> 01:42:03,679
+i' I'd like to get some input
+
+1980
+01:41:58,800 --> 01:42:06,159
+to okay just challenge my own views yes
+
+1981
+01:42:03,679 --> 01:42:10,880
+so um we
+
+1982
+01:42:06,159 --> 01:42:12,480
+have um three main products which are
+
+1983
+01:42:10,880 --> 01:42:15,800
+interrelated to some
+
+1984
+01:42:12,480 --> 01:42:18,800
+extent one uh one product is called
+
+1985
+01:42:15,800 --> 01:42:21,320
+extractor and what we is H we get as
+
+1986
+01:42:18,800 --> 01:42:24,679
+input CVS or
+
+1987
+01:42:21,320 --> 01:42:26,599
+jobs H or vacancies I mean and we try to
+
+1988
+01:42:24,679 --> 01:42:27,880
+extract information from there so if I
+
+1989
+01:42:26,599 --> 01:42:30,760
+take your
+
+1990
+01:42:27,880 --> 01:42:32,440
+CV h i will identify your name the
+
+1991
+01:42:30,760 --> 01:42:35,119
+system will identify your
+
+1992
+01:42:32,440 --> 01:42:37,679
+name H it will identify where you were
+
+1993
+01:42:35,119 --> 01:42:40,440
+born if you have this information H
+
+1994
+01:42:37,679 --> 01:42:43,719
+which which positions have you
+
+1995
+01:42:40,440 --> 01:42:46,960
+held uh how many how how much time you
+
+1996
+01:42:43,719 --> 01:42:49,199
+spend in each position all these things
+
+1997
+01:42:46,960 --> 01:42:51,560
+and we will do the same for vacancies
+
+1998
+01:42:49,199 --> 01:42:53,719
+the same for vacancies we will find uh
+
+1999
+01:42:51,560 --> 01:42:57,360
+what is the profession that requires job
+
+2000
+01:42:53,719 --> 01:43:00,719
+the job title what is the maybe the
+
+2001
+01:42:57,360 --> 01:43:05,080
+location right the salary if it's there
+
+2002
+01:43:00,719 --> 01:43:08,040
+and the required skills now this kind of
+
+2003
+01:43:05,080 --> 01:43:11,159
+extraction happens in a hybrid way some
+
+2004
+01:43:08,040 --> 01:43:14,440
+information like for example your name
+
+2005
+01:43:11,159 --> 01:43:16,320
+it comes from a a machine learning model
+
+2006
+01:43:14,440 --> 01:43:17,080
+a custom entity recognition model that
+
+2007
+01:43:16,320 --> 01:43:19,360
+we have
+
+2008
+01:43:17,080 --> 01:43:21,520
+built because it's impossible to have
+
+2009
+01:43:19,360 --> 01:43:24,159
+all the list of names right the same
+
+2010
+01:43:21,520 --> 01:43:27,719
+apply applies for addresses and and
+
+2011
+01:43:24,159 --> 01:43:31,080
+locations other knowledge like um the
+
+2012
+01:43:27,719 --> 01:43:32,639
+skills or the the professions come from
+
+2013
+01:43:31,080 --> 01:43:35,119
+our knowledge graph so there's no
+
+2014
+01:43:32,639 --> 01:43:37,040
+machine learning there what we do is
+
+2015
+01:43:35,119 --> 01:43:38,679
+that we have knowledge in the knowledge
+
+2016
+01:43:37,040 --> 01:43:42,239
+graph and we look for this knowledge in
+
+2017
+01:43:38,679 --> 01:43:46,920
+your in your CV this allows us also to
+
+2018
+01:43:42,239 --> 01:43:48,520
+find um synonyms so if if for example in
+
+2019
+01:43:46,920 --> 01:43:50,080
+one position you you are saying you were
+
+2020
+01:43:48,520 --> 01:43:51,960
+Junior software engineer and in the
+
+2021
+01:43:50,080 --> 01:43:53,159
+other senior software engineer and we
+
+2022
+01:43:51,960 --> 01:43:56,159
+believe it's more or less the same
+
+2023
+01:43:53,159 --> 01:43:58,800
+position we would have it as a single
+
+2024
+01:43:56,159 --> 01:44:00,280
+profession two job positions but one
+
+2025
+01:43:58,800 --> 01:44:03,080
+profession
+
+2026
+01:44:00,280 --> 01:44:03,760
+right H and the same could could apply
+
+2027
+01:44:03,080 --> 01:44:07,520
+for
+
+2028
+01:44:03,760 --> 01:44:10,679
+skills so we use our knowledge graph for
+
+2029
+01:44:07,520 --> 01:44:12,639
+NLP and as I said my team is responsible
+
+2030
+01:44:10,679 --> 01:44:17,119
+for building the knowledge gra and
+
+2031
+01:44:12,639 --> 01:44:19,320
+maintaining it so what we do is that uh
+
+2032
+01:44:17,119 --> 01:44:24,320
+we store technology wise our knowledge
+
+2033
+01:44:19,320 --> 01:44:26,840
+graph is we don't use rdf we use neo4j
+
+2034
+01:44:24,320 --> 01:44:30,159
+uh and we
+
+2035
+01:44:26,840 --> 01:44:33,920
+presented by means of as a property
+
+2036
+01:44:30,159 --> 01:44:35,679
+graph we have built a an editor on top
+
+2037
+01:44:33,920 --> 01:44:38,320
+that allows us to quickly do changes
+
+2038
+01:44:35,679 --> 01:44:40,239
+without knowing uh you know because we
+
+2039
+01:44:38,320 --> 01:44:43,400
+have a dedicated data and quality team
+
+2040
+01:44:40,239 --> 01:44:47,840
+that maintains it so they can easily H
+
+2041
+01:44:43,400 --> 01:44:50,880
+create uh edit you know errors or add
+
+2042
+01:44:47,840 --> 01:44:53,719
+small pieces of knowledge and then we do
+
+2043
+01:44:50,880 --> 01:44:56,800
+a lot of uh mining Pro projects so
+
+2044
+01:44:53,719 --> 01:45:00,520
+enrichment projects depending
+
+2045
+01:44:56,800 --> 01:45:03,800
+on what we see as quality problems that
+
+2046
+01:45:00,520 --> 01:45:06,560
+we may have and we also have algorithms
+
+2047
+01:45:03,800 --> 01:45:09,080
+on top of the knowledge graph that try
+
+2048
+01:45:06,560 --> 01:45:12,159
+to predict to to do let's say proactive
+
+2049
+01:45:09,080 --> 01:45:14,560
+maintenance because we know that exactly
+
+2050
+01:45:12,159 --> 01:45:18,440
+because we do this in a sa automatic way
+
+2051
+01:45:14,560 --> 01:45:20,599
+we have flaws right we have low accuracy
+
+2052
+01:45:18,440 --> 01:45:23,000
+in some domains or in some languages by
+
+2053
+01:45:20,599 --> 01:45:24,280
+the way I forgot to mention our our
+
+2054
+01:45:23,000 --> 01:45:26,880
+Knowledge Graph
+
+2055
+01:45:24,280 --> 01:45:31,159
+supports
+
+2056
+01:45:26,880 --> 01:45:34,040
+um six languages and generally our
+
+2057
+01:45:31,159 --> 01:45:37,560
+parsing supports 17 languages so we're
+
+2058
+01:45:34,040 --> 01:45:40,239
+able to extract uh information from CVS
+
+2059
+01:45:37,560 --> 01:45:42,880
+and job vacancies in 17
+
+2060
+01:45:40,239 --> 01:45:46,560
+language yeah
+
+2061
+01:45:42,880 --> 01:45:49,000
+so um we do a lot of mining projects for
+
+2062
+01:45:46,560 --> 01:45:51,760
+uh for the knowledge graph and yeah we
+
+2063
+01:45:49,000 --> 01:45:53,920
+try to find as much as possible the best
+
+2064
+01:45:51,760 --> 01:45:57,080
+uh uh
+
+2065
+01:45:53,920 --> 01:45:59,280
+way to to accelerate things but so far
+
+2066
+01:45:57,080 --> 01:46:02,639
+what I can say is that it's impossible
+
+2067
+01:45:59,280 --> 01:46:05,880
+to to fully trust the automatic methods
+
+2068
+01:46:02,639 --> 01:46:08,080
+right yeah that's least at least for our
+
+2069
+01:46:05,880 --> 01:46:10,440
+cases that's what you always have to
+
+2070
+01:46:08,080 --> 01:46:12,760
+fear it's also and it's one reason for
+
+2071
+01:46:10,440 --> 01:46:15,199
+that is also because the recruitment the
+
+2072
+01:46:12,760 --> 01:46:18,320
+recruitment domain is something that
+
+2073
+01:46:15,199 --> 01:46:19,920
+requires transparency so imagine that
+
+2074
+01:46:18,320 --> 01:46:22,040
+because we also do I forgot to say that
+
+2075
+01:46:19,920 --> 01:46:24,320
+one of our product is about matchmaking
+
+2076
+01:46:22,040 --> 01:46:25,840
+right so
+
+2077
+01:46:24,320 --> 01:46:29,440
+we have a system that you can upload
+
+2078
+01:46:25,840 --> 01:46:31,400
+your CV and give you the most relevant
+
+2079
+01:46:29,440 --> 01:46:34,119
+vacancies and vice versa you can upload
+
+2080
+01:46:31,400 --> 01:46:36,719
+the V you give you the most relevant C
+
+2081
+01:46:34,119 --> 01:46:39,480
+now IM imagine these are things you can
+
+2082
+01:46:36,719 --> 01:46:42,880
+get sued right if if someone complains
+
+2083
+01:46:39,480 --> 01:46:45,599
+why their CV doesn't rank very well so
+
+2084
+01:46:42,880 --> 01:46:47,320
+you need to be transparent with respect
+
+2085
+01:46:45,599 --> 01:46:51,560
+to how your system
+
+2086
+01:46:47,320 --> 01:46:54,440
+works yeah absolutely um may I ask how
+
+2087
+01:46:51,560 --> 01:46:58,800
+many people are working in your core
+
+2088
+01:46:54,440 --> 01:47:01,000
+team like how how much Manpower or like
+
+2089
+01:46:58,800 --> 01:47:02,960
+working hours a year does it take to
+
+2090
+01:47:01,000 --> 01:47:05,480
+actually maintain such a thing because
+
+2091
+01:47:02,960 --> 01:47:09,599
+we are in a very small team and I mean
+
+2092
+01:47:05,480 --> 01:47:11,800
+the task is very exciting but I fear
+
+2093
+01:47:09,599 --> 01:47:14,360
+very much that we will we have been
+
+2094
+01:47:11,800 --> 01:47:16,599
+handed a task that we cannot accomplish
+
+2095
+01:47:14,360 --> 01:47:21,560
+with three to four
+
+2096
+01:47:16,599 --> 01:47:24,880
+people um yeah right so in maintenance
+
+2097
+01:47:21,560 --> 01:47:27,719
+mode so right we have we have a team of
+
+2098
+01:47:24,880 --> 01:47:30,679
+uh of five people five people that are
+
+2099
+01:47:27,719 --> 01:47:34,119
+dedicated to the quality of the data so
+
+2100
+01:47:30,679 --> 01:47:36,679
+they are they get support they get they
+
+2101
+01:47:34,119 --> 01:47:40,599
+work let's say as a support desk to some
+
+2102
+01:47:36,679 --> 01:47:44,360
+extent and then we for for mining we
+
+2103
+01:47:40,599 --> 01:47:46,639
+have a small projects and we try as much
+
+2104
+01:47:44,360 --> 01:47:48,960
+as possible all these years to build
+
+2105
+01:47:46,639 --> 01:47:52,320
+recuring processes and some kind of
+
+2106
+01:47:48,960 --> 01:47:55,599
+infrastructure that allows us to do uh
+
+2107
+01:47:52,320 --> 01:47:58,239
+efficient fast
+
+2108
+01:47:55,599 --> 01:48:00,800
+mining no
+
+2109
+01:47:58,239 --> 01:48:03,719
+that's we are lucky we are lucky that we
+
+2110
+01:48:00,800 --> 01:48:06,440
+have a lot of data because one of the
+
+2111
+01:48:03,719 --> 01:48:08,639
+things that we do not so much with CV is
+
+2112
+01:48:06,440 --> 01:48:11,159
+we crawl the web for vacancies it's one
+
+2113
+01:48:08,639 --> 01:48:12,880
+of our products called J Feed it's also
+
+2114
+01:48:11,159 --> 01:48:15,119
+about trying to find analytics about the
+
+2115
+01:48:12,880 --> 01:48:19,920
+labor market so we have literally
+
+2116
+01:48:15,119 --> 01:48:22,920
+millions of uh of V across uh across
+
+2117
+01:48:19,920 --> 01:48:26,239
+countries and across languages yeah we
+
+2118
+01:48:22,920 --> 01:48:28,159
+working with ratings so that's a like
+
+2119
+01:48:26,239 --> 01:48:31,599
+very different domain but we've got
+
+2120
+01:48:28,159 --> 01:48:36,040
+millions of dat data points so data is
+
+2121
+01:48:31,599 --> 01:48:38,400
+not our problem but like the doability
+
+2122
+01:48:36,040 --> 01:48:41,719
+and will be so thank you very much for
+
+2123
+01:48:38,400 --> 01:48:45,119
+those insights so you're welcome yeah P
+
+2124
+01:48:41,719 --> 01:48:48,159
+quick question um I I was really uh kind
+
+2125
+01:48:45,119 --> 01:48:51,159
+you know looking forward to that you
+
+2126
+01:48:48,159 --> 01:48:53,199
+know you will mention um the ontology or
+
+2127
+01:48:51,159 --> 01:48:56,000
+the AR side of things given that you
+
+2128
+01:48:53,199 --> 01:48:57,360
+know you're the head of onology at text
+
+2129
+01:48:56,000 --> 01:49:01,000
+colel
+
+2130
+01:48:57,360 --> 01:49:04,920
+so are you not using any sort of a
+
+2131
+01:49:01,000 --> 01:49:07,360
+ontology in in this whole piece or what
+
+2132
+01:49:04,920 --> 01:49:09,920
+is your what is your definition of
+
+2133
+01:49:07,360 --> 01:49:11,760
+ontology I I mean usually you know when
+
+2134
+01:49:09,920 --> 01:49:13,520
+you hit the terminology you you see okay
+
+2135
+01:49:11,760 --> 01:49:14,840
+there's some sort of semantics or R side
+
+2136
+01:49:13,520 --> 01:49:17,960
+of things is happening under the no
+
+2137
+01:49:14,840 --> 01:49:20,000
+there's no so that's the thing right def
+
+2138
+01:49:17,960 --> 01:49:23,520
+the on the definition of onology that I
+
+2139
+01:49:20,000 --> 01:49:26,000
+use is aert conceptualization so as long
+
+2140
+01:49:23,520 --> 01:49:27,520
+as I Define Concepts that are shared
+
+2141
+01:49:26,000 --> 01:49:29,480
+across the company and across its
+
+2142
+01:49:27,520 --> 01:49:32,159
+clients for me it's an ontology it
+
+2143
+01:49:29,480 --> 01:49:34,360
+doesn't it doesn't have for example rdf
+
+2144
+01:49:32,159 --> 01:49:35,880
+type but it has a relation instance of
+
+2145
+01:49:34,360 --> 01:49:37,960
+it has another name it doesn't have the
+
+2146
+01:49:35,880 --> 01:49:38,960
+standard rdf name but it still has it
+
+2147
+01:49:37,960 --> 01:49:41,560
+has
+
+2148
+01:49:38,960 --> 01:49:45,800
+semantics something to consider here is
+
+2149
+01:49:41,560 --> 01:49:47,639
+that we don't care and I'm not saying
+
+2150
+01:49:45,800 --> 01:49:51,360
+that in a dismissive way right but it's
+
+2151
+01:49:47,639 --> 01:49:54,960
+not our goal with our ontology to be
+
+2152
+01:49:51,360 --> 01:49:57,719
+interoperable with external systems we
+
+2153
+01:49:54,960 --> 01:50:02,679
+built our knowledge graph purely for the
+
+2154
+01:49:57,719 --> 01:50:06,480
+analysis of uh purely for the to to
+
+2155
+01:50:02,679 --> 01:50:07,960
+power our products and our services we
+
+2156
+01:50:06,480 --> 01:50:09,080
+are not trying to solve the problem of
+
+2157
+01:50:07,960 --> 01:50:12,040
+semantic
+
+2158
+01:50:09,080 --> 01:50:15,440
+interoperability across
+
+2159
+01:50:12,040 --> 01:50:19,159
+systems in that case if we had a let's
+
+2160
+01:50:15,440 --> 01:50:22,199
+say some if we were collaborating with
+
+2161
+01:50:19,159 --> 01:50:25,320
+industries that would work with rdf Etc
+
+2162
+01:50:22,199 --> 01:50:29,159
+we could um work with that I don't have
+
+2163
+01:50:25,320 --> 01:50:31,639
+anything against rdf and actually it's h
+
+2164
+01:50:29,159 --> 01:50:33,880
+how using property graphs it's something
+
+2165
+01:50:31,639 --> 01:50:38,480
+that I inherited when I joined the
+
+2166
+01:50:33,880 --> 01:50:40,159
+company right so I'm not I get that but
+
+2167
+01:50:38,480 --> 01:50:42,760
+but you don't necess need to you know
+
+2168
+01:50:40,159 --> 01:50:44,119
+collaborate across industry and only
+
+2169
+01:50:42,760 --> 01:50:46,239
+then you want to adopt the audio
+
+2170
+01:50:44,119 --> 01:50:48,800
+standards right you can still use or
+
+2171
+01:50:46,239 --> 01:50:50,320
+what are your views on that you know if
+
+2172
+01:50:48,800 --> 01:50:51,639
+for example in this case text kernel
+
+2173
+01:50:50,320 --> 01:50:53,199
+which is kind like you know an internal
+
+2174
+01:50:51,639 --> 01:50:55,639
+solution just for for that particular
+
+2175
+01:50:53,199 --> 01:50:57,800
+Enterprise you think a property graph
+
+2176
+01:50:55,639 --> 01:51:00,719
+with new 4J on its own is sufficient
+
+2177
+01:50:57,800 --> 01:51:03,320
+enough or you think just one could build
+
+2178
+01:51:00,719 --> 01:51:05,119
+something similar uh but harnessing the
+
+2179
+01:51:03,320 --> 01:51:07,520
+power of Rd of with reasoning and
+
+2180
+01:51:05,119 --> 01:51:09,480
+inferencing side of things given that
+
+2181
+01:51:07,520 --> 01:51:11,679
+you know you mentioned about Esco Esco
+
+2182
+01:51:09,480 --> 01:51:14,079
+as as a taxonomy as an onology
+
+2183
+01:51:11,679 --> 01:51:15,800
+where you know you spend a lot of money
+
+2184
+01:51:14,079 --> 01:51:18,320
+and I I'm hoping that you know you might
+
+2185
+01:51:15,800 --> 01:51:20,400
+be using certain concept from that
+
+2186
+01:51:18,320 --> 01:51:22,079
+particular domain as well right but may
+
+2187
+01:51:20,400 --> 01:51:23,119
+have converted into your own schema
+
+2188
+01:51:22,079 --> 01:51:25,440
+given that you
+
+2189
+01:51:23,119 --> 01:51:27,199
+we have mapping we have mappings to ESCO
+
+2190
+01:51:25,440 --> 01:51:30,280
+but let me also tell you that Esco
+
+2191
+01:51:27,199 --> 01:51:31,840
+doesn't doesn't do any reasoning and I I
+
+2192
+01:51:30,280 --> 01:51:34,159
+really had
+
+2193
+01:51:31,840 --> 01:51:38,239
+maybe I I understand the power of
+
+2194
+01:51:34,159 --> 01:51:40,400
+reasoning that you say um but also most
+
+2195
+01:51:38,239 --> 01:51:42,480
+of the reasoning that we need for
+
+2196
+01:51:40,400 --> 01:51:43,960
+especially for our search and mats is
+
+2197
+01:51:42,480 --> 01:51:46,800
+inductive reasoning rather than
+
+2198
+01:51:43,960 --> 01:51:49,199
+deductive one so yes in you can do
+
+2199
+01:51:46,800 --> 01:51:52,760
+reasoning with
+
+2200
+01:51:49,199 --> 01:51:55,480
+um you can do reasoning with uh the
+
+2201
+01:51:52,760 --> 01:51:58,239
+typical subass reasoning or actions but
+
+2202
+01:51:55,480 --> 01:52:02,159
+uh that would happen but I would say
+
+2203
+01:51:58,239 --> 01:52:06,880
+that our requirements for representation
+
+2204
+01:52:02,159 --> 01:52:09,199
+are are simpler maybe later we might
+
+2205
+01:52:06,880 --> 01:52:13,639
+want to RT to that you also have to
+
+2206
+01:52:09,199 --> 01:52:16,000
+consider the cost of of switching right
+
+2207
+01:52:13,639 --> 01:52:19,800
+because again I could make the case for
+
+2208
+01:52:16,000 --> 01:52:21,920
+reasoning as you say but if we want to
+
+2209
+01:52:19,800 --> 01:52:24,079
+if now we want to switch to rdf we need
+
+2210
+01:52:21,920 --> 01:52:27,280
+to uh to buy a new
+
+2211
+01:52:24,079 --> 01:52:30,840
+editor from some company whereas now we
+
+2212
+01:52:27,280 --> 01:52:35,000
+have our own internal right that cost us
+
+2213
+01:52:30,840 --> 01:52:36,880
+nothing and and the other Big Challenge
+
+2214
+01:52:35,000 --> 01:52:39,719
+in these cases is to try to convince
+
+2215
+01:52:36,880 --> 01:52:44,880
+your engineers
+
+2216
+01:52:39,719 --> 01:52:47,040
+to to switch to to rdf right because yes
+
+2217
+01:52:44,880 --> 01:52:49,199
+conceptionally and semantically what rdf
+
+2218
+01:52:47,040 --> 01:52:51,079
+gives you is some predefined semantics I
+
+2219
+01:52:49,199 --> 01:52:53,199
+agree on that that make a bit life
+
+2220
+01:52:51,079 --> 01:52:55,679
+easier a bit bit
+
+2221
+01:52:53,199 --> 01:52:59,280
+of uh you know your work as an
+
+2222
+01:52:55,679 --> 01:53:00,920
+ontologist but it this is for the
+
+2223
+01:52:59,280 --> 01:53:03,040
+conceptual level for the actual
+
+2224
+01:53:00,920 --> 01:53:05,480
+engineering level the data engineering
+
+2225
+01:53:03,040 --> 01:53:07,159
+level I I'm not an expert I think there
+
+2226
+01:53:05,480 --> 01:53:09,320
+are there are discussions in this
+
+2227
+01:53:07,159 --> 01:53:11,480
+conference about this about graph
+
+2228
+01:53:09,320 --> 01:53:14,400
+databases which is best which is
+
+2229
+01:53:11,480 --> 01:53:18,239
+most more scalable
+
+2230
+01:53:14,400 --> 01:53:20,960
+Etc I leave it up to them I don't have
+
+2231
+01:53:18,239 --> 01:53:23,159
+yeah no I understand I understand that
+
+2232
+01:53:20,960 --> 01:53:25,840
+yeah your sport on
+
+2233
+01:53:23,159 --> 01:53:28,960
+and but yeah something I don't like and
+
+2234
+01:53:25,840 --> 01:53:31,119
+it's not your fault or something is the
+
+2235
+01:53:28,960 --> 01:53:33,280
+hijacking of the term semantics and
+
+2236
+01:53:31,119 --> 01:53:35,760
+conceptual Etc from the semantic web
+
+2237
+01:53:33,280 --> 01:53:37,560
+Community before the semantic I mean
+
+2238
+01:53:35,760 --> 01:53:39,119
+right now and this is something that I
+
+2239
+01:53:37,560 --> 01:53:40,800
+tried as much as possible I don't I
+
+2240
+01:53:39,119 --> 01:53:43,760
+don't know if I have achieved it a lot
+
+2241
+01:53:40,800 --> 01:53:45,679
+something that I tried in my book is to
+
+2242
+01:53:43,760 --> 01:53:48,639
+reconcile the terminology that different
+
+2243
+01:53:45,679 --> 01:53:51,079
+communities use and you you will see in
+
+2244
+01:53:48,639 --> 01:53:53,599
+the very second chapter that I mention
+
+2245
+01:53:51,079 --> 01:53:55,920
+three communities at least the linguists
+
+2246
+01:53:53,599 --> 01:53:58,280
+so w for
+
+2247
+01:53:55,920 --> 01:54:01,199
+example what are sinets sinets are
+
+2248
+01:53:58,280 --> 01:54:04,119
+Concepts right in in in a
+
+2249
+01:54:01,199 --> 01:54:07,079
+sense but they use terminology they're
+
+2250
+01:54:04,119 --> 01:54:09,119
+called sinets and senses Etc then you
+
+2251
+01:54:07,079 --> 01:54:12,840
+have the traditional
+
+2252
+01:54:09,119 --> 01:54:15,360
+taxonomists with the some ISO standards
+
+2253
+01:54:12,840 --> 01:54:18,199
+yeah right where the broader narrow
+
+2254
+01:54:15,360 --> 01:54:19,639
+relationship hides in there the
+
+2255
+01:54:18,199 --> 01:54:23,480
+semantics
+
+2256
+01:54:19,639 --> 01:54:26,760
+of um the part of the instance of and
+
+2257
+01:54:23,480 --> 01:54:28,480
+the subass of and you have the sem
+
+2258
+01:54:26,760 --> 01:54:29,920
+people and you have the data models that
+
+2259
+01:54:28,480 --> 01:54:32,679
+come from the ER modeling and the
+
+2260
+01:54:29,920 --> 01:54:35,079
+relationship warehousing Etc actually
+
+2261
+01:54:32,679 --> 01:54:38,840
+last week I was talking to that to that
+
+2262
+01:54:35,079 --> 01:54:41,560
+conference right and this confusion with
+
+2263
+01:54:38,840 --> 01:54:46,199
+terminology leads to funny things like
+
+2264
+01:54:41,560 --> 01:54:48,480
+you see ontologies with thousands of
+
+2265
+01:54:46,199 --> 01:54:49,639
+classes but they're not really classes
+
+2266
+01:54:48,480 --> 01:54:53,199
+all of
+
+2267
+01:54:49,639 --> 01:54:55,800
+them just because they think that the
+
+2268
+01:54:53,199 --> 01:54:57,599
+hierarchy in in in an ontology or in a
+
+2269
+01:54:55,800 --> 01:55:00,000
+Knowledge Graph should only be in the
+
+2270
+01:54:57,599 --> 01:55:05,320
+form of classes something that I think
+
+2271
+01:55:00,000 --> 01:55:06,199
+pro has created for them yeah so yeah
+
+2272
+01:55:05,320 --> 01:55:09,000
+it's
+
+2273
+01:55:06,199 --> 01:55:11,560
+not yeah it's we need to live all
+
+2274
+01:55:09,000 --> 01:55:14,000
+together absolutely absolutely no I
+
+2275
+01:55:11,560 --> 01:55:15,960
+really appreciate your your insights on
+
+2276
+01:55:14,000 --> 01:55:18,159
+that I I know kind of like know you you
+
+2277
+01:55:15,960 --> 01:55:20,920
+come from I if I'm not
+
+2278
+01:55:18,159 --> 01:55:23,400
+mistaken what I know since the beginning
+
+2279
+01:55:20,920 --> 01:55:25,280
+I mean we have we know each other for
+
+2280
+01:55:23,400 --> 01:55:27,880
+quite some time that you come from from
+
+2281
+01:55:25,280 --> 01:55:30,560
+the semantic space right yeah come from
+
+2282
+01:55:27,880 --> 01:55:32,760
+Community yes yeah
+
+2283
+01:55:30,560 --> 01:55:35,239
+yeah that's that's what that's how I
+
+2284
+01:55:32,760 --> 01:55:37,040
+started yeah my first conference was the
+
+2285
+01:55:35,239 --> 01:55:40,199
+Web Conference
+
+2286
+01:55:37,040 --> 01:55:41,960
+actually good good no it's really H good
+
+2287
+01:55:40,199 --> 01:55:44,000
+to hear from you uh from your
+
+2288
+01:55:41,960 --> 01:55:45,760
+perspective what works and what doesn't
+
+2289
+01:55:44,000 --> 01:55:47,440
+work and obviously know your SP on that
+
+2290
+01:55:45,760 --> 01:55:50,520
+you it all depends on the use case of
+
+2291
+01:55:47,440 --> 01:55:54,480
+requirements at
+
+2292
+01:55:50,520 --> 01:55:57,079
+hand yeah and also my criticism my my
+
+2293
+01:55:54,480 --> 01:55:59,639
+criticism to the SE web Community is
+
+2294
+01:55:57,079 --> 01:56:02,000
+that they
+
+2295
+01:55:59,639 --> 01:56:03,239
+consider at least that's the feeling I
+
+2296
+01:56:02,000 --> 01:56:06,199
+get is that they
+
+2297
+01:56:03,239 --> 01:56:09,199
+consider the definition of rdf andol
+
+2298
+01:56:06,199 --> 01:56:09,199
+enough
+
+2299
+01:56:09,360 --> 01:56:16,920
+to let's say guarantee correct semantics
+
+2300
+01:56:13,880 --> 01:56:19,199
+the thing is that all the elements and
+
+2301
+01:56:16,920 --> 01:56:22,480
+the main examples I give in my book is
+
+2302
+01:56:19,199 --> 01:56:25,280
+how the formal semantics of rdf are is
+
+2303
+01:56:22,480 --> 01:56:29,079
+used yes you have the RTF subass but if
+
+2304
+01:56:25,280 --> 01:56:32,119
+you use it wrongly what's good about it
+
+2305
+01:56:29,079 --> 01:56:35,320
+you get actually it's there are examples
+
+2306
+01:56:32,119 --> 01:56:39,320
+where the inferences you make right the
+
+2307
+01:56:35,320 --> 01:56:44,000
+reasoning you make may make a small
+
+2308
+01:56:39,320 --> 01:56:49,239
+error so one direct assertion may result
+
+2309
+01:56:44,000 --> 01:56:51,000
+into thousands of wrong in direct
+
+2310
+01:56:49,239 --> 01:56:53,480
+assertion
+
+2311
+01:56:51,000 --> 01:56:56,679
+yeah in a similar way that machine
+
+2312
+01:56:53,480 --> 01:57:00,079
+learning can H propagate an error
+
+2313
+01:56:56,679 --> 01:57:03,880
+right that's true
+
+2314
+01:57:00,079 --> 01:57:03,880
+yeah it's not an easy
+
+2315
+01:57:04,320 --> 01:57:15,239
+problem that's why we here that's we're
+
+2316
+01:57:08,360 --> 01:57:15,239
+here and all of us okay any more
+
+2317
+01:57:16,480 --> 01:57:20,679
+questions okay I think then we can call
+
+2318
+01:57:18,960 --> 01:57:23,440
+it a day or a night depending on your
+
+2319
+01:57:20,679 --> 01:57:27,079
+time zone thank you very very much all
+
+2320
+01:57:23,440 --> 01:57:30,639
+of you I hope you learned things I
+
+2321
+01:57:27,079 --> 01:57:35,719
+learned things from you as well so I
+
+2322
+01:57:30,639 --> 01:57:35,719
+hope to see you somewhere in the future
+

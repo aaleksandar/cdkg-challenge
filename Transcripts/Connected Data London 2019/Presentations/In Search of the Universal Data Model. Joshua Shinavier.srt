@@ -1,0 +1,2784 @@
+1
+00:00:00,760 --> 00:00:07,939
+okay so welcome to the conference I'm
+
+2
+00:00:04,640 --> 00:00:09,589
+really honored to be the giving the
+
+3
+00:00:07,939 --> 00:00:11,690
+first talk of the day thank you very
+
+4
+00:00:09,589 --> 00:00:13,450
+much to Jorge and James and Sabbagh for
+
+5
+00:00:11,690 --> 00:00:15,860
+having me
+
+6
+00:00:13,450 --> 00:00:19,580
+it looks like a pretty well-rounded
+
+7
+00:00:15,860 --> 00:00:22,910
+agenda you'll be hearing talks about big
+
+8
+00:00:19,580 --> 00:00:27,950
+data about analytics about data modeling
+
+9
+00:00:22,910 --> 00:00:30,020
+ontology z' query languages and so on I
+
+10
+00:00:27,950 --> 00:00:34,149
+wanted to start with something a little
+
+11
+00:00:30,020 --> 00:00:37,280
+bit different maybe a little bit
+
+12
+00:00:34,149 --> 00:00:40,339
+thought-provoking so the the search for
+
+13
+00:00:37,280 --> 00:00:42,109
+the universal data model the format of
+
+14
+00:00:40,339 --> 00:00:45,710
+the talk will be a little bit different
+
+15
+00:00:42,109 --> 00:01:01,280
+as well there'll be very few words it'll
+
+16
+00:00:45,710 --> 00:01:03,499
+be mostly visual and I'll start okay
+
+17
+00:01:01,280 --> 00:01:06,170
+so will be will be building a graph I
+
+18
+00:01:03,499 --> 00:01:09,590
+said talk I'll start with myself so I'm
+
+19
+00:01:06,170 --> 00:01:11,600
+Josh like George said I co-founded
+
+20
+00:01:09,590 --> 00:01:15,710
+Apache tinker pop before it was Apache
+
+21
+00:01:11,600 --> 00:01:18,979
+back in 2009 and I'm gonna start drawing
+
+22
+00:01:15,710 --> 00:01:22,869
+some edges in this graph so I've had a
+
+23
+00:01:18,979 --> 00:01:25,579
+long-standing interest in and knowledge
+
+24
+00:01:22,869 --> 00:01:28,789
+representation in the way we structure
+
+25
+00:01:25,579 --> 00:01:31,840
+information both both in the outside
+
+26
+00:01:28,789 --> 00:01:34,460
+world and in our own minds and in
+
+27
+00:01:31,840 --> 00:01:36,619
+perception just a couple more notes
+
+28
+00:01:34,460 --> 00:01:39,170
+about me I like I like trees I like
+
+29
+00:01:36,619 --> 00:01:40,850
+airplanes more to the point I have a
+
+30
+00:01:39,170 --> 00:01:44,359
+background in the Semantic Web I did my
+
+31
+00:01:40,850 --> 00:01:47,570
+PhD on a Semantic Web topic that I'll
+
+32
+00:01:44,359 --> 00:01:51,350
+touch on at the very end of this talk in
+
+33
+00:01:47,570 --> 00:01:53,090
+circa 2006 2007 I was building the
+
+34
+00:01:51,350 --> 00:01:54,600
+strange little programming languages
+
+35
+00:01:53,090 --> 00:01:58,270
+around the idea
+
+36
+00:01:54,600 --> 00:01:59,979
+of mental models and associations trying
+
+37
+00:01:58,270 --> 00:02:02,319
+to make some of those things a little
+
+38
+00:01:59,979 --> 00:02:04,659
+bit more formal and turn them into
+
+39
+00:02:02,319 --> 00:02:06,250
+things that you can use for for
+
+40
+00:02:04,659 --> 00:02:07,659
+programming and for inference and then I
+
+41
+00:02:06,250 --> 00:02:11,290
+found out about the Semantic Web
+
+42
+00:02:07,659 --> 00:02:13,140
+I created a language called Ripple
+
+43
+00:02:11,290 --> 00:02:15,310
+and if you're familiar with gremlin
+
+44
+00:02:13,140 --> 00:02:18,129
+ripple will look kind of familiar that's
+
+45
+00:02:15,310 --> 00:02:21,670
+kind of where the the Turing completes
+
+46
+00:02:18,129 --> 00:02:23,290
+path language came from so I gave a talk
+
+47
+00:02:21,670 --> 00:02:26,650
+on Ripple and I got an email from a guy
+
+48
+00:02:23,290 --> 00:02:28,720
+named Marco he was also working on RDF
+
+49
+00:02:26,650 --> 00:02:31,329
+based computing he had a framework
+
+50
+00:02:28,720 --> 00:02:33,269
+called Nino then we got together and
+
+51
+00:02:31,329 --> 00:02:36,930
+worked on a start-up for a little while
+
+52
+00:02:33,269 --> 00:02:40,900
+and then we met these guys from Sweden
+
+53
+00:02:36,930 --> 00:02:44,110
+who were building what they call the
+
+54
+00:02:40,900 --> 00:02:46,480
+graph database that was near for J of
+
+55
+00:02:44,110 --> 00:02:48,700
+course and their data model I don't even
+
+56
+00:02:46,480 --> 00:02:51,340
+remember us calling it property graphs
+
+57
+00:02:48,700 --> 00:02:53,109
+at the time but it was a simplified
+
+58
+00:02:51,340 --> 00:02:56,019
+graph Tunnel data model that we really
+
+59
+00:02:53,109 --> 00:03:00,069
+liked we wrote an API to kind of
+
+60
+00:02:56,019 --> 00:03:02,530
+generalize it and that led to gremlin
+
+61
+00:03:00,069 --> 00:03:05,620
+so gremlin was based on property graphs
+
+62
+00:03:02,530 --> 00:03:07,450
+and it was kind of inspired by the other
+
+63
+00:03:05,620 --> 00:03:09,010
+things that we'd done so that's that's
+
+64
+00:03:07,450 --> 00:03:11,260
+tinker pop or at least the beginnings of
+
+65
+00:03:09,010 --> 00:03:14,859
+tinker pop for the last couple of years
+
+66
+00:03:11,260 --> 00:03:16,060
+have worked for uber I am in charge of a
+
+67
+00:03:14,859 --> 00:03:19,750
+project to do BRE called data
+
+68
+00:03:16,060 --> 00:03:21,760
+standardization if you've heard anything
+
+69
+00:03:19,750 --> 00:03:24,400
+from our CEO lately
+
+70
+00:03:21,760 --> 00:03:27,190
+darah uber would like to position itself
+
+71
+00:03:24,400 --> 00:03:30,940
+as kind of a an operating system for
+
+72
+00:03:27,190 --> 00:03:32,560
+daily life and I think one of the one of
+
+73
+00:03:30,940 --> 00:03:35,139
+the most important prerequisites for
+
+74
+00:03:32,560 --> 00:03:37,299
+that is for all of our systems to be
+
+75
+00:03:35,139 --> 00:03:40,419
+integrated at the schema level so data
+
+76
+00:03:37,299 --> 00:03:43,769
+standardized standardization develops
+
+77
+00:03:40,419 --> 00:03:45,849
+common common schemas common
+
+78
+00:03:43,769 --> 00:03:48,190
+vocabularies that can can be used
+
+79
+00:03:45,849 --> 00:03:51,970
+throughout all of our services and our
+
+80
+00:03:48,190 --> 00:03:54,700
+datasets and credit tries to tie all
+
+81
+00:03:51,970 --> 00:03:58,569
+those datasets and services together and
+
+82
+00:03:54,700 --> 00:04:01,450
+part of that is has to do with mappings
+
+83
+00:03:58,569 --> 00:04:04,380
+between data models so we use things
+
+84
+00:04:01,450 --> 00:04:07,060
+like Avro and thrift and protobuf
+
+85
+00:04:04,380 --> 00:04:09,189
+relational schemas and so on
+
+86
+00:04:07,060 --> 00:04:12,099
+I won't be talking about those very much
+
+87
+00:04:09,189 --> 00:04:13,389
+in this talk because I want to I want to
+
+88
+00:04:12,099 --> 00:04:17,320
+focus on something a little more unusual
+
+89
+00:04:13,389 --> 00:04:18,549
+which is mental representations but
+
+90
+00:04:17,320 --> 00:04:21,250
+that's that and we have some of those
+
+91
+00:04:18,549 --> 00:04:23,979
+datasets we have around 200,000 datasets
+
+92
+00:04:21,250 --> 00:04:25,720
+at uber they all have metadata about
+
+93
+00:04:23,979 --> 00:04:29,470
+them some of them flow into our
+
+94
+00:04:25,720 --> 00:04:32,650
+knowledge graph that happens to use
+
+95
+00:04:29,470 --> 00:04:34,630
+Tinka pop of course and we developed a
+
+96
+00:04:32,650 --> 00:04:37,710
+data model for data standardization
+
+97
+00:04:34,630 --> 00:04:40,389
+called algebraic property graphs I
+
+98
+00:04:37,710 --> 00:04:43,750
+published a a preprint of a paper a
+
+99
+00:04:40,389 --> 00:04:46,150
+couple of weeks ago about APG with my
+
+100
+00:04:43,750 --> 00:04:49,330
+co-author Ryan Messner ski Ryan's a
+
+101
+00:04:46,150 --> 00:04:53,110
+mathematician who specializes in
+
+102
+00:04:49,330 --> 00:04:54,699
+databases and category theory and that
+
+103
+00:04:53,110 --> 00:04:56,889
+just kind of gives us everything that we
+
+104
+00:04:54,699 --> 00:05:00,430
+really need in terms of a data model
+
+105
+00:04:56,889 --> 00:05:02,410
+that can you integrate everything we use
+
+106
+00:05:00,430 --> 00:05:03,849
+at uber and also plays well with
+
+107
+00:05:02,410 --> 00:05:07,780
+property graphs so it's a formalization
+
+108
+00:05:03,849 --> 00:05:10,090
+of property graphs that plays well with
+
+109
+00:05:07,780 --> 00:05:11,919
+the enterprise data at the same time
+
+110
+00:05:10,090 --> 00:05:14,680
+Marco is working on something called
+
+111
+00:05:11,919 --> 00:05:17,500
+the multi model abstract data type or mm
+
+112
+00:05:14,680 --> 00:05:21,280
+ADT that's not the MM ADT logo which is
+
+113
+00:05:17,500 --> 00:05:24,610
+something I made up for the slides but
+
+114
+00:05:21,280 --> 00:05:29,880
+the idea of that is is similar but more
+
+115
+00:05:24,610 --> 00:05:32,530
+on the compute side so Mme DT is the
+
+116
+00:05:29,880 --> 00:05:35,500
+kind of takes a common model for
+
+117
+00:05:32,530 --> 00:05:38,289
+computation and applies it to various
+
+118
+00:05:35,500 --> 00:05:41,500
+data models property graphs RDF key
+
+119
+00:05:38,289 --> 00:05:43,000
+value stores document databases and so
+
+120
+00:05:41,500 --> 00:05:46,300
+on and we're working to bring these two
+
+121
+00:05:43,000 --> 00:05:47,830
+things together for tinker pop 4 and
+
+122
+00:05:46,300 --> 00:05:49,270
+there are other efforts in the space
+
+123
+00:05:47,830 --> 00:05:52,740
+that I could mention that a particularly
+
+124
+00:05:49,270 --> 00:05:55,060
+arti of star that is aimed at
+
+125
+00:05:52,740 --> 00:05:59,650
+standardization and kind of reconciling
+
+126
+00:05:55,060 --> 00:06:02,440
+the two popular graph data models there
+
+127
+00:05:59,650 --> 00:06:04,479
+will be a community update for GQ Oh on
+
+128
+00:06:02,440 --> 00:06:07,449
+October 9th will you you'll get to hear
+
+129
+00:06:04,479 --> 00:06:11,620
+about those things as well as on mmm ADT
+
+130
+00:06:07,449 --> 00:06:12,969
+and APG there's an EP to ologist because
+
+131
+00:06:11,620 --> 00:06:16,599
+it's kind of cool and you'll see that
+
+132
+00:06:12,969 --> 00:06:18,159
+later in the slides so what is the
+
+133
+00:06:16,599 --> 00:06:19,900
+universal graph data model well it's
+
+134
+00:06:18,159 --> 00:06:21,700
+that's not
+
+135
+00:06:19,900 --> 00:06:23,260
+define it so much this just kind of
+
+136
+00:06:21,700 --> 00:06:25,990
+describe it what we want to put in here
+
+137
+00:06:23,260 --> 00:06:29,260
+so this is our our container for the
+
+138
+00:06:25,990 --> 00:06:32,890
+universal data model we want it to be
+
+139
+00:06:29,260 --> 00:06:35,050
+formal like RDF so you can think of that
+
+140
+00:06:32,890 --> 00:06:38,560
+as you know what a mathematician want to
+
+141
+00:06:35,050 --> 00:06:42,610
+work with this we want it to be kind of
+
+142
+00:06:38,560 --> 00:06:45,340
+developer friendly so like tinker pop or
+
+143
+00:06:42,610 --> 00:06:46,660
+gremlin or property graphs so is this
+
+144
+00:06:45,340 --> 00:06:48,880
+something a developer would want to work
+
+145
+00:06:46,660 --> 00:06:50,770
+with and then we also want it to be
+
+146
+00:06:48,880 --> 00:06:52,360
+intuitive and that's something that's a
+
+147
+00:06:50,770 --> 00:06:54,520
+little harder to talk about but that
+
+148
+00:06:52,360 --> 00:06:57,040
+I'll be trying to talk about in this
+
+149
+00:06:54,520 --> 00:06:58,420
+presentation so you want that to be
+
+150
+00:06:57,040 --> 00:07:01,750
+something that a kindergartner can work
+
+151
+00:06:58,420 --> 00:07:05,890
+with a graph data model that it's just
+
+152
+00:07:01,750 --> 00:07:08,380
+immediately understandable by anyone so
+
+153
+00:07:05,890 --> 00:07:10,540
+if you look in you know the domain of
+
+154
+00:07:08,380 --> 00:07:13,480
+user interfaces some of the most
+
+155
+00:07:10,540 --> 00:07:15,370
+effective technologies there have been
+
+156
+00:07:13,480 --> 00:07:17,919
+something that a small child might have
+
+157
+00:07:15,370 --> 00:07:20,650
+suggested like you know multi-touch can
+
+158
+00:07:17,919 --> 00:07:23,080
+I finger paint with this I did all these
+
+159
+00:07:20,650 --> 00:07:26,380
+slides on an iPad you know it's it's a
+
+160
+00:07:23,080 --> 00:07:28,180
+wonderful device there was multi-touch
+
+161
+00:07:26,380 --> 00:07:30,430
+way back in the 80s but it took decades
+
+162
+00:07:28,180 --> 00:07:31,690
+more to develop the technology to the
+
+163
+00:07:30,430 --> 00:07:34,480
+point where we have something like an
+
+164
+00:07:31,690 --> 00:07:36,400
+iPad but now that we have it it's
+
+165
+00:07:34,480 --> 00:07:38,530
+something that you know an engineer and
+
+166
+00:07:36,400 --> 00:07:41,410
+you know a preschooler can both
+
+167
+00:07:38,530 --> 00:07:43,479
+appreciate so we want our data models to
+
+168
+00:07:41,410 --> 00:07:45,390
+be like that too so let's start by just
+
+169
+00:07:43,479 --> 00:07:50,860
+kind of comparing property graphs and
+
+170
+00:07:45,390 --> 00:07:53,560
+RDF in terms of their intuitive Nosara
+
+171
+00:07:50,860 --> 00:07:56,169
+TF has a lot going for it like I say
+
+172
+00:07:53,560 --> 00:07:59,650
+it's it has a formal specification it it
+
+173
+00:07:56,169 --> 00:08:01,270
+uses this notion of identifiers as URI
+
+174
+00:07:59,650 --> 00:08:04,650
+so you can put everything into a
+
+175
+00:08:01,270 --> 00:08:09,190
+universal space you can create link data
+
+176
+00:08:04,650 --> 00:08:11,770
+you can think of a an RDF graph as a set
+
+177
+00:08:09,190 --> 00:08:13,900
+of statements you can you can find the
+
+178
+00:08:11,770 --> 00:08:15,400
+Union or the intersection or the you
+
+179
+00:08:13,900 --> 00:08:17,860
+know the complement of statements it's
+
+180
+00:08:15,400 --> 00:08:20,410
+very easy to compose datasets together
+
+181
+00:08:17,860 --> 00:08:22,060
+with RDF so there's absolutely nothing
+
+182
+00:08:20,410 --> 00:08:25,450
+wrong with RDF it's a wonderful data
+
+183
+00:08:22,060 --> 00:08:29,140
+model but so given them that's the case
+
+184
+00:08:25,450 --> 00:08:30,220
+why our property graphs so popular and I
+
+185
+00:08:29,140 --> 00:08:32,140
+think it has a lot to do with
+
+186
+00:08:30,220 --> 00:08:35,320
+intuitiveness
+
+187
+00:08:32,140 --> 00:08:37,910
+you know an anecdote from recently
+
+188
+00:08:35,320 --> 00:08:40,340
+someone from ubers advanced technology
+
+189
+00:08:37,910 --> 00:08:42,740
+division got in touch with me about a
+
+190
+00:08:40,340 --> 00:08:46,220
+project for which they were using Amazon
+
+191
+00:08:42,740 --> 00:08:47,450
+Neptune they showed me their their data
+
+192
+00:08:46,220 --> 00:08:49,070
+model they showed me what they were
+
+193
+00:08:47,450 --> 00:08:50,840
+doing and they said that their biggest
+
+194
+00:08:49,070 --> 00:08:53,960
+pain point was they didn't have a schema
+
+195
+00:08:50,840 --> 00:08:56,060
+language you know they they love gremlin
+
+196
+00:08:53,960 --> 00:08:58,550
+but they didn't have a schema language I
+
+197
+00:08:56,060 --> 00:09:00,560
+said well Neptune you know has an RDF
+
+198
+00:08:58,550 --> 00:09:02,780
+mode too you tried that out and they
+
+199
+00:09:00,560 --> 00:09:05,440
+said yes they'd studied up on RDF but
+
+200
+00:09:02,780 --> 00:09:07,850
+they really preferred property graphs
+
+201
+00:09:05,440 --> 00:09:09,980
+and these are not these are not dumb
+
+202
+00:09:07,850 --> 00:09:14,480
+people ATG is where we send some of our
+
+203
+00:09:09,980 --> 00:09:17,090
+our best and brightest so I thought I
+
+204
+00:09:14,480 --> 00:09:18,890
+would take a stab at trying to explain
+
+205
+00:09:17,090 --> 00:09:20,840
+what might be a little bit more
+
+206
+00:09:18,890 --> 00:09:23,300
+intuitive about property graphs and I'm
+
+207
+00:09:20,840 --> 00:09:27,860
+gonna make the claim that the way we
+
+208
+00:09:23,300 --> 00:09:30,080
+think about graphs is similar to the way
+
+209
+00:09:27,860 --> 00:09:35,150
+we visualize things so we like to use
+
+210
+00:09:30,080 --> 00:09:36,770
+our big visual faculties for for
+
+211
+00:09:35,150 --> 00:09:40,700
+thinking about graphs so let's look at
+
+212
+00:09:36,770 --> 00:09:42,110
+it from a visual point of view if you
+
+213
+00:09:40,700 --> 00:09:44,210
+know about property graphs and you know
+
+214
+00:09:42,110 --> 00:09:45,290
+about RDF you can assign labels to these
+
+215
+00:09:44,210 --> 00:09:47,630
+things I'm going to put in the screen
+
+216
+00:09:45,290 --> 00:09:49,490
+but otherwise you can just kind of
+
+217
+00:09:47,630 --> 00:09:51,020
+appreciate it visually in property
+
+218
+00:09:49,490 --> 00:09:53,480
+graphs you have two kinds of things that
+
+219
+00:09:51,020 --> 00:09:56,780
+you can connect you have vertices and
+
+220
+00:09:53,480 --> 00:09:59,840
+you have property values in RDF
+
+221
+00:09:56,780 --> 00:10:01,580
+similarly you you have literal values
+
+222
+00:09:59,840 --> 00:10:03,080
+and then you have two different kinds of
+
+223
+00:10:01,580 --> 00:10:05,420
+nodes you have your eyes which have a
+
+224
+00:10:03,080 --> 00:10:09,890
+name or an identifier and you have blank
+
+225
+00:10:05,420 --> 00:10:11,930
+notes that don't so in terms of edges or
+
+226
+00:10:09,890 --> 00:10:15,800
+in terms of arrows that you can use to
+
+227
+00:10:11,930 --> 00:10:17,810
+connect things you have these three you
+
+228
+00:10:15,800 --> 00:10:20,870
+have vertex properties you have edges
+
+229
+00:10:17,810 --> 00:10:22,270
+and you have edge properties you know do
+
+230
+00:10:20,870 --> 00:10:25,640
+you have you have these kinds of things
+
+231
+00:10:22,270 --> 00:10:28,100
+so you can connect your eyes basically
+
+232
+00:10:25,640 --> 00:10:30,260
+you can draw an edge or a statement from
+
+233
+00:10:28,100 --> 00:10:32,150
+anything that's a URI or a blank node
+
+234
+00:10:30,260 --> 00:10:35,810
+not a literal and these are the
+
+235
+00:10:32,150 --> 00:10:36,790
+combinations that you have so far so
+
+236
+00:10:35,810 --> 00:10:39,010
+good
+
+237
+00:10:36,790 --> 00:10:41,520
+in property graphs you have the notion
+
+238
+00:10:39,010 --> 00:10:44,260
+of an edge label every Edge has a label
+
+239
+00:10:41,520 --> 00:10:47,680
+here are two edges with different labels
+
+240
+00:10:44,260 --> 00:10:49,560
+connecting the same nodes in rdf it
+
+241
+00:10:47,680 --> 00:10:54,070
+starts to look a little more complicated
+
+242
+00:10:49,560 --> 00:10:55,030
+because statements don't have types they
+
+243
+00:10:54,070 --> 00:10:57,100
+do have predicates
+
+244
+00:10:55,030 --> 00:10:58,690
+where predicates are nodes within the
+
+245
+00:10:57,100 --> 00:11:00,730
+graph so much if I'm gonna draw them
+
+246
+00:10:58,690 --> 00:11:03,700
+like this I need to draw the predicates
+
+247
+00:11:00,730 --> 00:11:06,640
+as more nodes in the graph why because
+
+248
+00:11:03,700 --> 00:11:08,530
+we can make more statements we can use
+
+249
+00:11:06,640 --> 00:11:10,650
+that predicate as the object of a
+
+250
+00:11:08,530 --> 00:11:14,140
+statements as the subject of a statement
+
+251
+00:11:10,650 --> 00:11:16,150
+of course we can reuse the predicate for
+
+252
+00:11:14,140 --> 00:11:18,340
+other statements you can do the same
+
+253
+00:11:16,150 --> 00:11:20,890
+thing in property graphs but we need
+
+254
+00:11:18,340 --> 00:11:22,840
+don't need to draw them as nodes because
+
+255
+00:11:20,890 --> 00:11:24,190
+they're not part of the graph the labels
+
+256
+00:11:22,840 --> 00:11:30,040
+are not things that you can make
+
+257
+00:11:24,190 --> 00:11:34,510
+statements about so vertices are nodes
+
+258
+00:11:30,040 --> 00:11:35,950
+in the graph also have labels you can
+
+259
+00:11:34,510 --> 00:11:37,570
+think of that green node maybe that's
+
+260
+00:11:35,950 --> 00:11:42,130
+that's a person node
+
+261
+00:11:37,570 --> 00:11:44,710
+maybe those yellow nodes are our places
+
+262
+00:11:42,130 --> 00:11:47,950
+nodes or you know whatever you want want
+
+263
+00:11:44,710 --> 00:11:51,160
+them to be we have property values maybe
+
+264
+00:11:47,950 --> 00:11:54,610
+that's like a a long value up there and
+
+265
+00:11:51,160 --> 00:11:57,430
+the the rectangle is a string you get
+
+266
+00:11:54,610 --> 00:12:03,550
+the point in rdf again things start to
+
+267
+00:11:57,430 --> 00:12:05,290
+look a little more complicated the every
+
+268
+00:12:03,550 --> 00:12:06,760
+vertex doesn't necessarily have one type
+
+269
+00:12:05,290 --> 00:12:08,260
+it could have zero types they could have
+
+270
+00:12:06,760 --> 00:12:09,790
+one type we could have any number of
+
+271
+00:12:08,260 --> 00:12:12,570
+types and those types are expressed
+
+272
+00:12:09,790 --> 00:12:15,580
+using statements so if you want to
+
+273
+00:12:12,570 --> 00:12:18,280
+express that visually then you need to
+
+274
+00:12:15,580 --> 00:12:22,270
+draw like this so we have these two
+
+275
+00:12:18,280 --> 00:12:24,400
+blank nodes have a have a type of place
+
+276
+00:12:22,270 --> 00:12:27,040
+this blank node has a type of person and
+
+277
+00:12:24,400 --> 00:12:28,360
+that type you notice I had to use a
+
+278
+00:12:27,040 --> 00:12:35,680
+letter for it because it's really
+
+279
+00:12:28,360 --> 00:12:38,339
+special the RDF type URI there and of
+
+280
+00:12:35,680 --> 00:12:40,920
+course RDF type can be the
+
+281
+00:12:38,339 --> 00:12:45,029
+these subjects and the object of other
+
+282
+00:12:40,920 --> 00:12:46,589
+statements okay now we come to edge
+
+283
+00:12:45,029 --> 00:12:48,810
+properties and this is where we kind of
+
+284
+00:12:46,589 --> 00:12:51,149
+hit a wall with RDF because RDF just
+
+285
+00:12:48,810 --> 00:12:55,980
+doesn't have finished properties so you
+
+286
+00:12:51,149 --> 00:12:58,589
+can't draw an arrow from an arrow in RDF
+
+287
+00:12:55,980 --> 00:13:00,360
+it's a statement centric data model
+
+288
+00:12:58,589 --> 00:13:03,660
+where you can't make statements about
+
+289
+00:13:00,360 --> 00:13:07,319
+statements an RDF star addresses this
+
+290
+00:13:03,660 --> 00:13:09,379
+shortcoming but we're just talking about
+
+291
+00:13:07,319 --> 00:13:11,249
+RDF versus property graphs right now but
+
+292
+00:13:09,379 --> 00:13:14,309
+property graphs aren't perfect either
+
+293
+00:13:11,249 --> 00:13:17,160
+let's back up to this so we we have
+
+294
+00:13:14,309 --> 00:13:19,410
+these three kinds of arrows and why
+
+295
+00:13:17,160 --> 00:13:21,569
+these three kinds exactly if you were to
+
+296
+00:13:19,410 --> 00:13:23,879
+hand a marker to a kindergartner and say
+
+297
+00:13:21,569 --> 00:13:26,759
+draw me a graph they might do something
+
+298
+00:13:23,879 --> 00:13:28,759
+like this stayed they draw a node okay
+
+299
+00:13:26,759 --> 00:13:31,410
+give it a color very nice another node
+
+300
+00:13:28,759 --> 00:13:34,019
+and then draw an edge that's something
+
+301
+00:13:31,410 --> 00:13:36,059
+that anyone can understand and then
+
+302
+00:13:34,019 --> 00:13:38,910
+maybe a property value okay good that's
+
+303
+00:13:36,059 --> 00:13:41,220
+a vertex property and then you can draw
+
+304
+00:13:38,910 --> 00:13:44,879
+an arrow from from an arrow there that's
+
+305
+00:13:41,220 --> 00:13:46,790
+say an edge property moving on okay
+
+306
+00:13:44,879 --> 00:13:50,129
+here's another property value and then
+
+307
+00:13:46,790 --> 00:13:52,410
+hmm then that doesn't quite work right
+
+308
+00:13:50,129 --> 00:13:54,180
+that's that's a property on an edge
+
+309
+00:13:52,410 --> 00:13:56,970
+property that's what we would call an
+
+310
+00:13:54,180 --> 00:13:58,740
+edge meta property and there aren't
+
+311
+00:13:56,970 --> 00:14:00,750
+really any graph databases that support
+
+312
+00:13:58,740 --> 00:14:04,110
+that so
+
+313
+00:14:00,750 --> 00:14:06,269
+nice idea but but not really allowed our
+
+314
+00:14:04,110 --> 00:14:09,899
+kindergartner says okay and continues
+
+315
+00:14:06,269 --> 00:14:12,750
+drawing nodes and we get this thing okay
+
+316
+00:14:09,899 --> 00:14:14,189
+and arrow coming out of the literal well
+
+317
+00:14:12,750 --> 00:14:17,069
+that that just can't be that's not
+
+318
+00:14:14,189 --> 00:14:19,019
+something that's supported and then okay
+
+319
+00:14:17,069 --> 00:14:21,240
+well you told me I can draw arrows from
+
+320
+00:14:19,019 --> 00:14:23,339
+arrows right well here's an arrow from
+
+321
+00:14:21,240 --> 00:14:26,750
+from an arrow that would be something
+
+322
+00:14:23,339 --> 00:14:29,759
+like an edge out going from a property
+
+323
+00:14:26,750 --> 00:14:32,309
+okay Titan kind of supported those at
+
+324
+00:14:29,759 --> 00:14:35,730
+one point but that's it's not really
+
+325
+00:14:32,309 --> 00:14:39,179
+generally supported and then this okay
+
+326
+00:14:35,730 --> 00:14:41,009
+here's an edge to another edge okay
+
+327
+00:14:39,179 --> 00:14:42,900
+beautiful picture give Danny back
+
+328
+00:14:41,009 --> 00:14:45,790
+depends
+
+329
+00:14:42,900 --> 00:14:47,710
+we do just can't do that it's it's it's
+
+330
+00:14:45,790 --> 00:14:48,880
+pretty but it's not a graph well I'm
+
+331
+00:14:47,710 --> 00:14:50,440
+gonna make the argument it should be a
+
+332
+00:14:48,880 --> 00:14:51,550
+graph anything that you can think and
+
+333
+00:14:50,440 --> 00:14:53,410
+then anything that you can represent
+
+334
+00:14:51,550 --> 00:14:56,020
+visually like this where you're just
+
+335
+00:14:53,410 --> 00:14:59,650
+connecting things with arrows should be
+
+336
+00:14:56,020 --> 00:15:02,920
+allowed even crazy things like like a
+
+337
+00:14:59,650 --> 00:15:04,720
+figure eight edge an edge that points
+
+338
+00:15:02,920 --> 00:15:06,520
+from itself to itself I can't think of
+
+339
+00:15:04,720 --> 00:15:08,890
+any possible way this would be useful
+
+340
+00:15:06,520 --> 00:15:10,750
+but on a structural level you should be
+
+341
+00:15:08,890 --> 00:15:12,760
+able to support this APG supports this
+
+342
+00:15:10,750 --> 00:15:15,640
+it's that the schema level that you
+
+343
+00:15:12,760 --> 00:15:21,970
+define you know what's what's allowed
+
+344
+00:15:15,640 --> 00:15:23,590
+and what isn't allowed so I think with
+
+345
+00:15:21,970 --> 00:15:26,770
+property graphs though we're also moving
+
+346
+00:15:23,590 --> 00:15:30,120
+into hypergraph territory and I'd like
+
+347
+00:15:26,770 --> 00:15:34,120
+to illustrate that so here's an edge
+
+348
+00:15:30,120 --> 00:15:35,650
+here's an edge property and you can
+
+349
+00:15:34,120 --> 00:15:38,380
+either think of that as an arrow on an
+
+350
+00:15:35,650 --> 00:15:41,380
+arrow or you can think of it as a
+
+351
+00:15:38,380 --> 00:15:42,880
+relationship between three things let's
+
+352
+00:15:41,380 --> 00:15:45,040
+draw a little border around this to kind
+
+353
+00:15:42,880 --> 00:15:46,840
+of highlight the asymmetry of it once
+
+354
+00:15:45,040 --> 00:15:48,520
+we've done that we can take away the
+
+355
+00:15:46,840 --> 00:15:51,640
+arrows without loss of information we
+
+356
+00:15:48,520 --> 00:15:54,340
+know that this is say this is a this is
+
+357
+00:15:51,640 --> 00:15:58,090
+a person vertex this is a place vertex
+
+358
+00:15:54,340 --> 00:16:01,270
+and that's a time stamp maybe a date
+
+359
+00:15:58,090 --> 00:16:05,470
+which is kind of node like so josh was
+
+360
+00:16:01,270 --> 00:16:07,480
+in London on October 4 2019 and that
+
+361
+00:16:05,470 --> 00:16:09,580
+becomes a hyper relationship and we can
+
+362
+00:16:07,480 --> 00:16:12,660
+create other instances of that
+
+363
+00:16:09,580 --> 00:16:14,680
+relationship so and we can join them so
+
+364
+00:16:12,660 --> 00:16:18,940
+somebody else was in London at a
+
+365
+00:16:14,680 --> 00:16:21,780
+different time and then what else can
+
+366
+00:16:18,940 --> 00:16:24,400
+you do with hyper relationships you can
+
+367
+00:16:21,780 --> 00:16:28,270
+compose them they can be used as
+
+368
+00:16:24,400 --> 00:16:30,130
+vertices in further relationships so for
+
+369
+00:16:28,270 --> 00:16:33,400
+example you know Josh was in London on
+
+370
+00:16:30,130 --> 00:16:35,760
+October 2019 from my start time of
+
+371
+00:16:33,400 --> 00:16:38,770
+midnight to a start time that's midnight
+
+372
+00:16:35,760 --> 00:16:40,630
+and so on and so forth so it's a
+
+373
+00:16:38,770 --> 00:16:44,610
+relatively small step from property
+
+374
+00:16:40,630 --> 00:16:48,340
+graphs to hyper graphs and I'd like to
+
+375
+00:16:44,610 --> 00:16:50,290
+illustrate a hyper graph data model not
+
+376
+00:16:48,340 --> 00:16:51,620
+from an engineering point of view I
+
+377
+00:16:50,290 --> 00:16:53,270
+could go in too
+
+378
+00:16:51,620 --> 00:16:57,460
+our data models at uber and tell you
+
+379
+00:16:53,270 --> 00:17:00,529
+about the other ways in which we use
+
+380
+00:16:57,460 --> 00:17:02,300
+hyper relationships we don't really use
+
+381
+00:17:00,529 --> 00:17:05,120
+that term but we have types we have
+
+382
+00:17:02,300 --> 00:17:09,020
+records and they're they're basically
+
+383
+00:17:05,120 --> 00:17:11,329
+hyper relationships but from the point
+
+384
+00:17:09,020 --> 00:17:14,150
+of view of how we think let's create a
+
+385
+00:17:11,329 --> 00:17:17,720
+container we'll give it a shape and
+
+386
+00:17:14,150 --> 00:17:20,990
+let's say this is a relationship for
+
+387
+00:17:17,720 --> 00:17:24,069
+things that fly so let's make it kind of
+
+388
+00:17:20,990 --> 00:17:27,319
+visual a thing that flies needs to have
+
+389
+00:17:24,069 --> 00:17:29,330
+these that wings make it a little more
+
+390
+00:17:27,319 --> 00:17:31,730
+interesting and say it also needs some
+
+391
+00:17:29,330 --> 00:17:34,520
+landing gear so if you're gonna fly you
+
+392
+00:17:31,730 --> 00:17:38,120
+need to be able to land and we'll start
+
+393
+00:17:34,520 --> 00:17:42,679
+putting things into this box so a bird
+
+394
+00:17:38,120 --> 00:17:43,600
+obviously fits into this category it has
+
+395
+00:17:42,679 --> 00:17:47,420
+wings
+
+396
+00:17:43,600 --> 00:17:50,900
+it has landing gear let's try another
+
+397
+00:17:47,420 --> 00:17:53,300
+type of object an airplane has a little
+
+398
+00:17:50,900 --> 00:17:54,970
+bit of different kind of wings has
+
+399
+00:17:53,300 --> 00:17:57,710
+landing gear we can kind of generalize
+
+400
+00:17:54,970 --> 00:17:59,360
+and just for the sake of argument here's
+
+401
+00:17:57,710 --> 00:18:03,950
+a third thing you know even you tell
+
+402
+00:17:59,360 --> 00:18:07,330
+aircraft has landing gear the wings are
+
+403
+00:18:03,950 --> 00:18:10,040
+kind of different the the rotors are
+
+404
+00:18:07,330 --> 00:18:11,600
+like rotating wings so we again we kind
+
+405
+00:18:10,040 --> 00:18:13,490
+of have to generalize but we just make a
+
+406
+00:18:11,600 --> 00:18:17,000
+choice we're gonna put this thing in the
+
+407
+00:18:13,490 --> 00:18:19,130
+flying things category and here the land
+
+408
+00:18:17,000 --> 00:18:23,720
+gear here the wings use it basically
+
+409
+00:18:19,130 --> 00:18:26,900
+fields in a record type so backing up a
+
+410
+00:18:23,720 --> 00:18:30,110
+little bit I can't think of a better way
+
+411
+00:18:26,900 --> 00:18:32,809
+to illustrate how a kindergartener might
+
+412
+00:18:30,110 --> 00:18:36,440
+thinking than to give you an example
+
+413
+00:18:32,809 --> 00:18:37,910
+from from kindergarten so this is
+
+414
+00:18:36,440 --> 00:18:41,540
+something that blew my mind in
+
+415
+00:18:37,910 --> 00:18:44,150
+kindergarten is the felt apple on a felt
+
+416
+00:18:41,540 --> 00:18:46,850
+apple tree if you pick it up you put on
+
+417
+00:18:44,150 --> 00:18:49,190
+the floor you put a put an apple on it
+
+418
+00:18:46,850 --> 00:18:51,110
+that gets boring pretty quickly so maybe
+
+419
+00:18:49,190 --> 00:18:53,270
+you move it to the side that looks kind
+
+420
+00:18:51,110 --> 00:18:55,210
+of lopsided so you put another apple on
+
+421
+00:18:53,270 --> 00:18:58,030
+the other side to balance it out
+
+422
+00:18:55,210 --> 00:19:00,460
+do the same thing move them across
+
+423
+00:18:58,030 --> 00:19:03,620
+balance them out
+
+424
+00:19:00,460 --> 00:19:05,990
+Luther Macross balanced them out and
+
+425
+00:19:03,620 --> 00:19:07,940
+what was really amazing to me I mean
+
+426
+00:19:05,990 --> 00:19:11,659
+we're adults we know where this is going
+
+427
+00:19:07,940 --> 00:19:13,279
+but you know a kindergartner doesn't and
+
+428
+00:19:11,659 --> 00:19:16,360
+what really blew my mind is that you get
+
+429
+00:19:13,279 --> 00:19:19,460
+the same sequence of numbers every time
+
+430
+00:19:16,360 --> 00:19:21,440
+and then I talked to you know friends on
+
+431
+00:19:19,460 --> 00:19:23,299
+Facebook and they also could remember
+
+432
+00:19:21,440 --> 00:19:25,279
+similar aha moments where they realize
+
+433
+00:19:23,299 --> 00:19:27,610
+there are patterns in your head they can
+
+434
+00:19:25,279 --> 00:19:32,179
+be used to kind of predict your future
+
+435
+00:19:27,610 --> 00:19:35,240
+that the world is kind of rule-based and
+
+436
+00:19:32,179 --> 00:19:36,529
+you can discover these rules so what are
+
+437
+00:19:35,240 --> 00:19:39,139
+the patterns look like well maybe they
+
+438
+00:19:36,529 --> 00:19:42,139
+look something like this one times two
+
+439
+00:19:39,139 --> 00:19:44,510
+is two maybe you kind of arrange the one
+
+440
+00:19:42,139 --> 00:19:48,019
+on the left and the and the two on the
+
+441
+00:19:44,510 --> 00:19:51,409
+right which is something we do a lot of
+
+442
+00:19:48,019 --> 00:19:54,860
+kind of spacial izing concepts so 1
+
+443
+00:19:51,409 --> 00:19:57,500
+times 2 is 2 2 times 2 is 4 4 times 2 is
+
+444
+00:19:54,860 --> 00:19:59,389
+8 and if I remember correctly 8 times 2
+
+445
+00:19:57,500 --> 00:20:01,610
+is 16
+
+446
+00:19:59,389 --> 00:20:02,919
+so you basically have edges but then you
+
+447
+00:20:01,610 --> 00:20:04,850
+can put them together to create
+
+448
+00:20:02,919 --> 00:20:07,100
+recursive data types so you have a
+
+449
+00:20:04,850 --> 00:20:10,510
+sequence and those are kind of special
+
+450
+00:20:07,100 --> 00:20:13,760
+in you know human cognition and memory
+
+451
+00:20:10,510 --> 00:20:15,889
+memory for sequences you get 1 2 4 8 16
+
+452
+00:20:13,760 --> 00:20:20,299
+so that's something we might want in our
+
+453
+00:20:15,889 --> 00:20:24,169
+data model but back to hyper
+
+454
+00:20:20,299 --> 00:20:26,809
+relationships if you can remember the
+
+455
+00:20:24,169 --> 00:20:30,500
+first time you tried to think about why
+
+456
+00:20:26,809 --> 00:20:34,159
+you can't pick yourself up like I still
+
+457
+00:20:30,500 --> 00:20:35,600
+can't do it and I've stopped thinking
+
+458
+00:20:34,159 --> 00:20:37,250
+about why I can't do it but if you're a
+
+459
+00:20:35,600 --> 00:20:39,799
+small child you have to think about it
+
+460
+00:20:37,250 --> 00:20:42,080
+and you need an explanation so in our
+
+461
+00:20:39,799 --> 00:20:44,630
+minds I how do we do this ask an adult
+
+462
+00:20:42,080 --> 00:20:45,950
+and they'll probably tell you either
+
+463
+00:20:44,630 --> 00:20:48,139
+that it's a silly question
+
+464
+00:20:45,950 --> 00:20:50,539
+or they'll try to be clever and think
+
+465
+00:20:48,139 --> 00:20:52,340
+about Newton's laws but what you really
+
+466
+00:20:50,539 --> 00:20:54,919
+do is more has more to do with
+
+467
+00:20:52,340 --> 00:20:59,330
+visualization so imagine yourself
+
+468
+00:20:54,919 --> 00:21:00,649
+standing no on terra firma and then you
+
+469
+00:20:59,330 --> 00:21:03,169
+pick yourself up what does that look
+
+470
+00:21:00,649 --> 00:21:05,929
+like well it basically has to look like
+
+471
+00:21:03,169 --> 00:21:07,460
+this you pick yourself up and then
+
+472
+00:21:05,929 --> 00:21:10,340
+you're just kind of hovering above the
+
+473
+00:21:07,460 --> 00:21:12,860
+ground and that's kind of cool but is
+
+474
+00:21:10,340 --> 00:21:13,650
+that possible so you try to reconcile
+
+475
+00:21:12,860 --> 00:21:17,880
+this with other
+
+476
+00:21:13,650 --> 00:21:19,320
+no I mean you can do other things with
+
+477
+00:21:17,880 --> 00:21:22,590
+this visualization you can make yourself
+
+478
+00:21:19,320 --> 00:21:27,300
+small and far away you can flip yourself
+
+479
+00:21:22,590 --> 00:21:30,180
+upside down but what you really need to
+
+480
+00:21:27,300 --> 00:21:32,250
+do is try to put yourself in a category
+
+481
+00:21:30,180 --> 00:21:35,540
+so let's bring back that flying things
+
+482
+00:21:32,250 --> 00:21:39,180
+category and put yourself inside it so
+
+483
+00:21:35,540 --> 00:21:41,340
+you need wings you need landing gear and
+
+484
+00:21:39,180 --> 00:21:43,410
+you try to match these things up with
+
+485
+00:21:41,340 --> 00:21:46,980
+your own body and find that okay you
+
+486
+00:21:43,410 --> 00:21:48,750
+kind of have feet yeah but the rest of
+
+487
+00:21:46,980 --> 00:21:52,770
+it doesn't quite work so maybe let's
+
+488
+00:21:48,750 --> 00:21:54,990
+compare you know the floating kid with
+
+489
+00:21:52,770 --> 00:22:00,060
+the other types of flying thing that we
+
+490
+00:21:54,990 --> 00:22:02,850
+know this is kind of like if the the
+
+491
+00:22:00,060 --> 00:22:05,310
+flying things category is a product type
+
+492
+00:22:02,850 --> 00:22:09,300
+or a record type you know has a thing
+
+493
+00:22:05,310 --> 00:22:11,460
+that flies it has wings and it has feet
+
+494
+00:22:09,300 --> 00:22:13,860
+and this is kind of like a product oh
+
+495
+00:22:11,460 --> 00:22:15,960
+product type or a union type things that
+
+496
+00:22:13,860 --> 00:22:18,510
+fly they're either birds or they're
+
+497
+00:22:15,960 --> 00:22:22,380
+airplanes or they're Superman or in this
+
+498
+00:22:18,510 --> 00:22:27,120
+case they're an e veto so you do a
+
+499
+00:22:22,380 --> 00:22:30,240
+little pattern matching so do I have
+
+500
+00:22:27,120 --> 00:22:32,940
+wings like a bird's wings and feet like
+
+501
+00:22:30,240 --> 00:22:35,310
+a bird's feet well not really you know I
+
+502
+00:22:32,940 --> 00:22:40,920
+can flap my hands but they're not quite
+
+503
+00:22:35,310 --> 00:22:43,320
+wings so that doesn't quite work do I
+
+504
+00:22:40,920 --> 00:22:45,090
+have wings like in airplanes well I've
+
+505
+00:22:43,320 --> 00:22:47,130
+already tried this no matter how fast I
+
+506
+00:22:45,090 --> 00:22:49,140
+run it doesn't generate any lift so no
+
+507
+00:22:47,130 --> 00:22:53,010
+that doesn't work either I don't have
+
+508
+00:22:49,140 --> 00:22:55,560
+rotors so that doesn't work and you can
+
+509
+00:22:53,010 --> 00:22:58,230
+kind of think of this as you know a
+
+510
+00:22:55,560 --> 00:22:59,400
+gremlin search you're traversing to
+
+511
+00:22:58,230 --> 00:23:01,590
+these different possibilities and then
+
+512
+00:22:59,400 --> 00:23:03,840
+you're filtering or this is even more
+
+513
+00:23:01,590 --> 00:23:07,290
+similar to functional pattern matching
+
+514
+00:23:03,840 --> 00:23:09,990
+in a language like Haskell or Scala and
+
+515
+00:23:07,290 --> 00:23:13,170
+I really think that this is this is how
+
+516
+00:23:09,990 --> 00:23:14,400
+we think a lot of the time and there are
+
+517
+00:23:13,170 --> 00:23:16,710
+other the ways that we think and we
+
+518
+00:23:14,400 --> 00:23:18,950
+could really go into into depth there
+
+519
+00:23:16,710 --> 00:23:22,460
+but it's a it's a 25-minute talk so
+
+520
+00:23:18,950 --> 00:23:22,460
+let's keep moving
+
+521
+00:23:22,480 --> 00:23:30,710
+what can you do if you have a data model
+
+522
+00:23:25,370 --> 00:23:33,080
+that kind of spans between graph
+
+523
+00:23:30,710 --> 00:23:36,200
+database data models and mental
+
+524
+00:23:33,080 --> 00:23:38,059
+representations can you treat the brain
+
+525
+00:23:36,200 --> 00:23:41,450
+as a graph database can you write data
+
+526
+00:23:38,059 --> 00:23:43,160
+into it can you get data back out and to
+
+527
+00:23:41,450 --> 00:23:45,920
+this to a certain extent the answer is
+
+528
+00:23:43,160 --> 00:23:48,290
+yes but with some qualifications first
+
+529
+00:23:45,920 --> 00:23:50,000
+of all the topic of mental
+
+530
+00:23:48,290 --> 00:23:51,679
+representations is really contentious
+
+531
+00:23:50,000 --> 00:23:53,990
+there are a lot of theories there's
+
+532
+00:23:51,679 --> 00:23:56,660
+nothing that I could say up here that
+
+533
+00:23:53,990 --> 00:24:00,110
+someone wouldn't disagree with but I've
+
+534
+00:23:56,660 --> 00:24:01,640
+given you a little bit of my take on
+
+535
+00:24:00,110 --> 00:24:03,830
+mental representations and at least
+
+536
+00:24:01,640 --> 00:24:06,380
+visual representations and how they
+
+537
+00:24:03,830 --> 00:24:10,669
+represent how they correspond with
+
+538
+00:24:06,380 --> 00:24:14,090
+graphs and there are ways of writing
+
+539
+00:24:10,669 --> 00:24:17,410
+data into the mind as tuples and I'll
+
+540
+00:24:14,090 --> 00:24:17,410
+illustrate that
+
+541
+00:24:22,050 --> 00:24:33,850
+see if I can time this right okay let's
+
+542
+00:24:29,650 --> 00:24:37,000
+do it again all right
+
+543
+00:24:33,850 --> 00:24:39,850
+the timing wasn't perfect but you get
+
+544
+00:24:37,000 --> 00:24:41,680
+the point so you saw a red dot you heard
+
+545
+00:24:39,850 --> 00:24:44,080
+a noise and you saw me up here on stage
+
+546
+00:24:41,680 --> 00:24:46,660
+doing strange things so if you were to
+
+547
+00:24:44,080 --> 00:24:48,160
+hear or see any two of those stimuli at
+
+548
+00:24:46,660 --> 00:24:50,020
+the same time again you would
+
+549
+00:24:48,160 --> 00:24:51,910
+automatically think of the third you
+
+550
+00:24:50,020 --> 00:24:53,350
+know you hear the bell you see the dot
+
+551
+00:24:51,910 --> 00:24:55,150
+you're gonna look around for Josh
+
+552
+00:24:53,350 --> 00:24:57,160
+where's Josh you know doing these
+
+553
+00:24:55,150 --> 00:24:59,320
+strange things up here or you see me
+
+554
+00:24:57,160 --> 00:25:00,850
+ringing a bell and you hear the bell
+
+555
+00:24:59,320 --> 00:25:02,350
+you're gonna look for the dong so it's
+
+556
+00:25:00,850 --> 00:25:06,670
+the kind of inference that you do to
+
+557
+00:25:02,350 --> 00:25:10,030
+complete that pattern and you can train
+
+558
+00:25:06,670 --> 00:25:11,800
+the brain using that trick there's a
+
+559
+00:25:10,030 --> 00:25:13,390
+whole field called cross-modal
+
+560
+00:25:11,800 --> 00:25:15,340
+correspondences I had a nice
+
+561
+00:25:13,390 --> 00:25:18,280
+conversation a couple days ago with a
+
+562
+00:25:15,340 --> 00:25:19,900
+very prolific researcher at Oxford
+
+563
+00:25:18,280 --> 00:25:22,000
+professor charles spence
+
+564
+00:25:19,900 --> 00:25:25,150
+about correspondences and kind of ran
+
+565
+00:25:22,000 --> 00:25:28,900
+through some scenarios that i explored
+
+566
+00:25:25,150 --> 00:25:31,120
+in my PhD thesis i'll spend a minute
+
+567
+00:25:28,900 --> 00:25:34,140
+talking about talking about that those
+
+568
+00:25:31,120 --> 00:25:37,750
+this idea of creating feedback loops
+
+569
+00:25:34,140 --> 00:25:41,490
+between you know a person and a machine
+
+570
+00:25:37,750 --> 00:25:44,680
+where the person in the machine are both
+
+571
+00:25:41,490 --> 00:25:47,380
+perceiving the same event at the same
+
+572
+00:25:44,680 --> 00:25:49,030
+time they see the same thing but the
+
+573
+00:25:47,380 --> 00:25:51,970
+machine has access to information that
+
+574
+00:25:49,030 --> 00:25:57,460
+the the human doesn't have and the
+
+575
+00:25:51,970 --> 00:26:00,340
+machine adds to the the humans
+
+576
+00:25:57,460 --> 00:26:03,940
+perception of the event with certain
+
+577
+00:26:00,340 --> 00:26:05,260
+well-timed cues and again we could we
+
+578
+00:26:03,940 --> 00:26:09,180
+could spend another hour talking about
+
+579
+00:26:05,260 --> 00:26:12,310
+augmentation but the basic idea is that
+
+580
+00:26:09,180 --> 00:26:16,920
+if you just add the right information at
+
+581
+00:26:12,310 --> 00:26:20,650
+the right time you can augment the
+
+582
+00:26:16,920 --> 00:26:25,060
+humans perception of the event in a way
+
+583
+00:26:20,650 --> 00:26:27,670
+that bypasses the the bypass is
+
+584
+00:26:25,060 --> 00:26:30,010
+conscious awareness so you kind of trick
+
+585
+00:26:27,670 --> 00:26:31,810
+the brain into perceiving things that it
+
+586
+00:26:30,010 --> 00:26:34,140
+wouldn't ordinarily if you do it fast
+
+587
+00:26:31,810 --> 00:26:36,960
+enough if you do it
+
+588
+00:26:34,140 --> 00:26:38,640
+within other constraints so the the
+
+589
+00:26:36,960 --> 00:26:40,800
+brain is very particular about the
+
+590
+00:26:38,640 --> 00:26:44,100
+protocol that's used there they're very
+
+591
+00:26:40,800 --> 00:26:45,960
+specific time windows that you need to
+
+592
+00:26:44,100 --> 00:26:53,310
+hit so it's kind of like like building a
+
+593
+00:26:45,960 --> 00:26:56,640
+real-time system but anyway I'd be happy
+
+594
+00:26:53,310 --> 00:26:58,800
+to talk much more on that topic after
+
+595
+00:26:56,640 --> 00:27:01,460
+the talk but I think I'm probably just
+
+596
+00:26:58,800 --> 00:27:01,460
+about out of time
+
+597
+00:27:01,580 --> 00:27:06,210
+so with that I'll basically just stop
+
+598
+00:27:03,990 --> 00:27:09,320
+talking and let you think about the
+
+599
+00:27:06,210 --> 00:27:11,820
+graph that we've created again check out
+
+600
+00:27:09,320 --> 00:27:18,030
+algebraic property graphs check out and
+
+601
+00:27:11,820 --> 00:27:25,290
+the made et and that's not said again
+
+602
+00:27:18,030 --> 00:27:28,200
+thanks for having me and I think we do
+
+603
+00:27:25,290 --> 00:27:29,490
+have time for any questions yeah so this
+
+604
+00:27:28,200 --> 00:27:37,200
+is the part where you get to ask
+
+605
+00:27:29,490 --> 00:27:38,910
+questions so hi Josh I'm Ruben
+
+606
+00:27:37,200 --> 00:27:42,060
+thanks for a great talk I'm an already F
+
+607
+00:27:38,910 --> 00:27:44,550
+guy so I found your comparison and very
+
+608
+00:27:42,060 --> 00:27:46,950
+unlikely like property graphs RDF gonna
+
+609
+00:27:44,550 --> 00:27:49,200
+blew my mind however there's a reason
+
+610
+00:27:46,950 --> 00:27:52,020
+for the complexity of RDF or so we claim
+
+611
+00:27:49,200 --> 00:27:53,850
+namely that is our graphs have a global
+
+612
+00:27:52,020 --> 00:27:55,770
+and meaning their semantics to them
+
+613
+00:27:53,850 --> 00:27:58,890
+whereas it's not the same a property
+
+614
+00:27:55,770 --> 00:28:00,990
+grass so does that change the comparison
+
+615
+00:27:58,890 --> 00:28:02,490
+in any way like does it make sense to
+
+616
+00:28:00,990 --> 00:28:04,800
+have the complexity in order to have
+
+617
+00:28:02,490 --> 00:28:07,380
+this global meaning or still not
+
+618
+00:28:04,800 --> 00:28:11,000
+justified complexity wise absolutely and
+
+619
+00:28:07,380 --> 00:28:11,000
+I probably didn't make that point
+
+620
+00:28:11,090 --> 00:28:16,170
+strongly enough that yes there are
+
+621
+00:28:14,070 --> 00:28:18,840
+definitely things that we want from RDF
+
+622
+00:28:16,170 --> 00:28:20,910
+like I say RDF scores over property
+
+623
+00:28:18,840 --> 00:28:25,310
+graphs in in multiple ways one of the
+
+624
+00:28:20,910 --> 00:28:27,780
+ways is that very idea that there are
+
+625
+00:28:25,310 --> 00:28:29,340
+contexts independent identifiers for
+
+626
+00:28:27,780 --> 00:28:32,970
+things you have these URIs you can
+
+627
+00:28:29,340 --> 00:28:35,520
+automatically merge graphs and you you
+
+628
+00:28:32,970 --> 00:28:37,200
+then automatically have statements about
+
+629
+00:28:35,520 --> 00:28:40,050
+about the same thing
+
+630
+00:28:37,200 --> 00:28:41,940
+you have statement about a certain
+
+631
+00:28:40,050 --> 00:28:44,220
+resource in graph a you have statements
+
+632
+00:28:41,940 --> 00:28:45,640
+about the same resource in graph B when
+
+633
+00:28:44,220 --> 00:28:47,230
+you merge them you have
+
+634
+00:28:45,640 --> 00:28:49,510
+with two statements about the same
+
+635
+00:28:47,230 --> 00:28:52,300
+resource that's you know a terrific
+
+636
+00:28:49,510 --> 00:28:55,510
+property of of RDF that is not usually
+
+637
+00:28:52,300 --> 00:28:59,770
+shared by property graphs so you do want
+
+638
+00:28:55,510 --> 00:29:02,560
+that that global notion of identity and
+
+639
+00:28:59,770 --> 00:29:06,820
+we have that in in algebraic property
+
+640
+00:29:02,560 --> 00:29:10,840
+graphs you know I believe Marco has
+
+641
+00:29:06,820 --> 00:29:11,650
+something similar in MMA DT so yes
+
+642
+00:29:10,840 --> 00:29:13,090
+absolutely
+
+643
+00:29:11,650 --> 00:29:15,430
+that's kind of one of the things that we
+
+644
+00:29:13,090 --> 00:29:17,980
+want to put in that bag of you know the
+
+645
+00:29:15,430 --> 00:29:20,050
+the universal data model we wanted to
+
+646
+00:29:17,980 --> 00:29:22,420
+have a simple you know visual
+
+647
+00:29:20,050 --> 00:29:27,810
+representation like a Illustrated and
+
+648
+00:29:22,420 --> 00:29:27,810
+that is compatible actually with global
+
+649
+00:29:28,800 --> 00:29:37,540
+Thanks yeah sure maybe time for one more
+
+650
+00:29:34,150 --> 00:29:38,950
+question anyone well by the way there'll
+
+651
+00:29:37,540 --> 00:29:40,420
+be a there'll be a panel later today
+
+652
+00:29:38,950 --> 00:29:41,710
+we're gonna be talking about property
+
+653
+00:29:40,420 --> 00:29:43,930
+graph versus already have some more so
+
+654
+00:29:41,710 --> 00:29:46,360
+right so thank you very much it was
+
+655
+00:29:43,930 --> 00:29:49,900
+really is thought-provoking so I wanted
+
+656
+00:29:46,360 --> 00:29:51,820
+to ask now we have on top of RDF I mean
+
+657
+00:29:49,900 --> 00:29:53,740
+after RDF has been defined and there
+
+658
+00:29:51,820 --> 00:29:56,350
+have been languages they've been defined
+
+659
+00:29:53,740 --> 00:29:57,880
+like I'll to all the profiles because
+
+660
+00:29:56,350 --> 00:29:58,750
+they were time to tackle the problem of
+
+661
+00:29:57,880 --> 00:30:02,320
+decidability
+
+662
+00:29:58,750 --> 00:30:06,730
+so within this framework what happens or
+
+663
+00:30:02,320 --> 00:30:07,840
+do you care do you need to care oh yeah
+
+664
+00:30:06,730 --> 00:30:09,700
+I don't want to give you the impression
+
+665
+00:30:07,840 --> 00:30:11,770
+that I'm promoting one particular
+
+666
+00:30:09,700 --> 00:30:13,510
+framework and take about four for
+
+667
+00:30:11,770 --> 00:30:15,550
+example we're gonna be using algebraic
+
+668
+00:30:13,510 --> 00:30:17,500
+property are going to be using mmm ADT
+
+669
+00:30:15,550 --> 00:30:26,170
+we're gonna be trying to get the good
+
+670
+00:30:17,500 --> 00:30:28,120
+stuff out of RDF as well but I lost my
+
+671
+00:30:26,170 --> 00:30:32,530
+train of thought can you repeat the last
+
+672
+00:30:28,120 --> 00:30:36,130
+thing you said about decidability so do
+
+673
+00:30:32,530 --> 00:30:38,950
+we still need to do we care is there way
+
+674
+00:30:36,130 --> 00:30:40,900
+to care for a week like in charted
+
+675
+00:30:38,950 --> 00:30:43,630
+territory and we're probably trying to
+
+676
+00:30:40,900 --> 00:30:46,240
+shut ourselves in defeat yeah so I was
+
+677
+00:30:43,630 --> 00:30:48,790
+trying to say you know I'm not promoting
+
+678
+00:30:46,240 --> 00:30:50,350
+this over over these other things but in
+
+679
+00:30:48,790 --> 00:30:54,100
+terms of this in terms of algebraic
+
+680
+00:30:50,350 --> 00:30:55,600
+property graphs decidability is a strong
+
+681
+00:30:54,100 --> 00:30:56,540
+point because it's basically just a
+
+682
+00:30:55,600 --> 00:30:58,820
+system of algebra
+
+683
+00:30:56,540 --> 00:31:01,100
+data types that's the same sort of
+
+684
+00:30:58,820 --> 00:31:02,450
+system that you use in functional
+
+685
+00:31:01,100 --> 00:31:05,210
+programming languages there's a nice
+
+686
+00:31:02,450 --> 00:31:08,990
+bridge between algebraic data types and
+
+687
+00:31:05,210 --> 00:31:11,330
+the simply typed lambda calculus so at
+
+688
+00:31:08,990 --> 00:31:13,930
+the very least the decidability
+
+689
+00:31:11,330 --> 00:31:16,220
+properties here are very well understood
+
+690
+00:31:13,930 --> 00:31:19,310
+so that's definitely one thing that we
+
+691
+00:31:16,220 --> 00:31:24,290
+wanted that that bag of goodies for the
+
+692
+00:31:19,310 --> 00:31:28,340
+universal day tomorrow thank you thank
+
+693
+00:31:24,290 --> 00:31:30,920
+you just once again and yeah so with
+
+694
+00:31:28,340 --> 00:31:32,210
+that we're closing the first keynote and
+
+695
+00:31:30,920 --> 00:31:34,360
+we're going to move on to our next
+
+696
+00:31:32,210 --> 00:31:34,360
+speaker
+

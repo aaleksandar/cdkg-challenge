@@ -1,0 +1,2152 @@
+1
+00:00:03,920 --> 00:00:09,469
+[Music]
+
+2
+00:00:05,050 --> 00:00:11,660
+today me again Gucci the chief
+
+3
+00:00:09,469 --> 00:00:14,539
+scientist at shipment as a managing
+
+4
+00:00:11,660 --> 00:00:18,420
+director well and this case is talking
+
+5
+00:00:14,539 --> 00:00:24,370
+about elegant and scalable code query
+
+6
+00:00:18,420 --> 00:00:26,110
+yeah all right yeah first of all I'd
+
+7
+00:00:24,370 --> 00:00:29,880
+like to thank George for the invitation
+
+8
+00:00:26,110 --> 00:00:33,580
+to come here today I'm gonna talk about
+
+9
+00:00:29,880 --> 00:00:36,309
+application essentially of well what
+
+10
+00:00:33,580 --> 00:00:38,800
+used to be built entirely around graph
+
+11
+00:00:36,309 --> 00:00:41,770
+databases today it still has a lot to do
+
+12
+00:00:38,800 --> 00:00:43,300
+with graphs and but we ended up more or
+
+13
+00:00:41,770 --> 00:00:45,460
+less creating our own graph database
+
+14
+00:00:43,300 --> 00:00:48,160
+around this but overall I think it is a
+
+15
+00:00:45,460 --> 00:00:50,470
+topic that probably belongs here but
+
+16
+00:00:48,160 --> 00:00:51,460
+also brings in some things that might be
+
+17
+00:00:50,470 --> 00:00:54,309
+a bit unusual
+
+18
+00:00:51,460 --> 00:00:57,129
+so overall shift left is actually a
+
+19
+00:00:54,309 --> 00:00:59,800
+company that deals with the security so
+
+20
+00:00:57,129 --> 00:01:02,650
+what we try to do is we try to identify
+
+21
+00:00:59,800 --> 00:01:06,850
+our vulnerabilities and bugs in quote
+
+22
+00:01:02,650 --> 00:01:10,420
+automatically and this actually has a
+
+23
+00:01:06,850 --> 00:01:12,900
+lot to do with the work that I did
+
+24
+00:01:10,420 --> 00:01:16,900
+during my PhD which was all about
+
+25
+00:01:12,900 --> 00:01:18,670
+finding vulnerabilities using machine
+
+26
+00:01:16,900 --> 00:01:21,630
+learning techniques on graphs
+
+27
+00:01:18,670 --> 00:01:23,740
+eventually it became clear that only
+
+28
+00:01:21,630 --> 00:01:26,860
+unsupervised machine learning would make
+
+29
+00:01:23,740 --> 00:01:28,990
+sense in a practical setting so I
+
+30
+00:01:26,860 --> 00:01:30,790
+actually then ended up calling the
+
+31
+00:01:28,990 --> 00:01:32,410
+thesis pattern based vulnerability
+
+32
+00:01:30,790 --> 00:01:34,780
+discovery and it was a lot more about
+
+33
+00:01:32,410 --> 00:01:36,280
+how to find patterns and graphs and how
+
+34
+00:01:34,780 --> 00:01:38,080
+to describe them actually with query
+
+35
+00:01:36,280 --> 00:01:42,520
+languages and that's kind of my
+
+36
+00:01:38,080 --> 00:01:44,550
+connection to this community here all
+
+37
+00:01:42,520 --> 00:01:47,050
+right so I'm gonna talk about
+
+38
+00:01:44,550 --> 00:01:50,970
+essentially two programs here one is
+
+39
+00:01:47,050 --> 00:01:50,970
+called ocular and the other is urine and
+
+40
+00:01:51,180 --> 00:01:57,910
+what what you can you can think of these
+
+41
+00:01:53,950 --> 00:02:01,210
+as essentially extensible code analysis
+
+42
+00:01:57,910 --> 00:02:03,610
+machines we like to say and so yeah like
+
+43
+00:02:01,210 --> 00:02:05,350
+a virtual machine that understands a
+
+44
+00:02:03,610 --> 00:02:08,080
+query language and that can be scripted
+
+45
+00:02:05,350 --> 00:02:12,459
+with JVM based languages in particular
+
+46
+00:02:08,080 --> 00:02:16,209
+in Scala and you can use this to query
+
+47
+00:02:12,459 --> 00:02:17,620
+for patterns in your code so the goal
+
+48
+00:02:16,209 --> 00:02:20,680
+might be to identify box and
+
+49
+00:02:17,620 --> 00:02:23,110
+vulnerabilities or to simply get an
+
+50
+00:02:20,680 --> 00:02:24,879
+overview of a large code base so let's
+
+51
+00:02:23,110 --> 00:02:26,710
+say you have a program that you've never
+
+52
+00:02:24,879 --> 00:02:28,840
+seen before and at first you want to
+
+53
+00:02:26,710 --> 00:02:29,640
+know well what are the different routes
+
+54
+00:02:28,840 --> 00:02:31,650
+into this
+
+55
+00:02:29,640 --> 00:02:33,870
+how can I interact with this program how
+
+56
+00:02:31,650 --> 00:02:35,520
+does it interact with api's what are the
+
+57
+00:02:33,870 --> 00:02:37,110
+flows in the program what other kind of
+
+58
+00:02:35,520 --> 00:02:40,350
+information flows here these kinds of
+
+59
+00:02:37,110 --> 00:02:41,610
+things yeah that's that's all those are
+
+60
+00:02:40,350 --> 00:02:44,610
+all things that we want to be able to
+
+61
+00:02:41,610 --> 00:02:46,530
+express in queries
+
+62
+00:02:44,610 --> 00:02:48,330
+yeah we've written a lot of scripts and
+
+63
+00:02:46,530 --> 00:02:52,080
+language extensions on top of this
+
+64
+00:02:48,330 --> 00:02:55,410
+machine and luckily today there's also
+
+65
+00:02:52,080 --> 00:02:58,320
+an open-source version so you guys can
+
+66
+00:02:55,410 --> 00:03:00,709
+also try that out if you like so yarn is
+
+67
+00:02:58,320 --> 00:03:05,430
+actually the free-spirited open-source
+
+68
+00:03:00,709 --> 00:03:07,790
+brother you could say of ocular and this
+
+69
+00:03:05,430 --> 00:03:09,570
+talk is not about the products
+
+70
+00:03:07,790 --> 00:03:11,220
+specifically but more about the
+
+71
+00:03:09,570 --> 00:03:14,580
+underlying technology about the graphs
+
+72
+00:03:11,220 --> 00:03:15,900
+essentially all right so what does
+
+73
+00:03:14,580 --> 00:03:19,560
+program and I'll just have to do with
+
+74
+00:03:15,900 --> 00:03:21,570
+graphs at all well if you think about
+
+75
+00:03:19,560 --> 00:03:24,239
+the different kind of representations
+
+76
+00:03:21,570 --> 00:03:25,940
+you get inside compilers or even if
+
+77
+00:03:24,239 --> 00:03:29,550
+you're just programming and you want to
+
+78
+00:03:25,940 --> 00:03:31,650
+you want overviews of how the code is
+
+79
+00:03:29,550 --> 00:03:34,320
+connected then very often you end up
+
+80
+00:03:31,650 --> 00:03:36,480
+with grass so you see here is an
+
+81
+00:03:34,320 --> 00:03:38,730
+abstract syntax tree so that's what you
+
+82
+00:03:36,480 --> 00:03:41,459
+get when you pass the code and then the
+
+83
+00:03:38,730 --> 00:03:43,470
+quote is is represented as a
+
+84
+00:03:41,459 --> 00:03:46,170
+decomposition of its language constructs
+
+85
+00:03:43,470 --> 00:03:48,600
+or here this is what's called a control
+
+86
+00:03:46,170 --> 00:03:51,570
+flow graph where you can see how you can
+
+87
+00:03:48,600 --> 00:03:54,570
+get from one statement to the next or a
+
+88
+00:03:51,570 --> 00:03:56,220
+Dominator tree that will tell you if I
+
+89
+00:03:54,570 --> 00:03:57,840
+want to get to this statement is there
+
+90
+00:03:56,220 --> 00:04:00,120
+any statement that I need to pass
+
+91
+00:03:57,840 --> 00:04:01,410
+through so that's all on the compiler
+
+92
+00:04:00,120 --> 00:04:04,620
+level but then there are also things
+
+93
+00:04:01,410 --> 00:04:07,320
+like class hierarchies for example or
+
+94
+00:04:04,620 --> 00:04:10,860
+just package structures really all of
+
+95
+00:04:07,320 --> 00:04:12,780
+these are graphs and all of them provide
+
+96
+00:04:10,860 --> 00:04:14,730
+a different perspective on the code
+
+97
+00:04:12,780 --> 00:04:18,180
+which might be useful to ask particular
+
+98
+00:04:14,730 --> 00:04:22,109
+questions about it but only very limited
+
+99
+00:04:18,180 --> 00:04:25,380
+questions so that the main idea was what
+
+100
+00:04:22,109 --> 00:04:27,289
+if we merged these representations can
+
+101
+00:04:25,380 --> 00:04:31,650
+we then maybe describe a query language
+
+102
+00:04:27,289 --> 00:04:33,210
+that allows us not only to ask all of
+
+103
+00:04:31,650 --> 00:04:34,979
+these questions that we could with the
+
+104
+00:04:33,210 --> 00:04:37,140
+different perspectives but also to
+
+105
+00:04:34,979 --> 00:04:39,000
+transition from one perspective to the
+
+106
+00:04:37,140 --> 00:04:41,670
+next
+
+107
+00:04:39,000 --> 00:04:45,120
+yeah the property graph was actually a
+
+108
+00:04:41,670 --> 00:04:46,860
+good fit here because essentially what
+
+109
+00:04:45,120 --> 00:04:49,500
+we want to do is we want to describe
+
+110
+00:04:46,860 --> 00:04:52,230
+different kinds of relations within the
+
+111
+00:04:49,500 --> 00:04:54,030
+same graph so we need these edge labels
+
+112
+00:04:52,230 --> 00:04:58,650
+and then apart from that of course means
+
+113
+00:04:54,030 --> 00:05:00,660
+somehow stored data so the the prop the
+
+114
+00:04:58,650 --> 00:05:03,450
+key value pairs that we can store in the
+
+115
+00:05:00,660 --> 00:05:07,260
+nodes they can help us stare that store
+
+116
+00:05:03,450 --> 00:05:10,200
+that data and so that initial idea is
+
+117
+00:05:07,260 --> 00:05:12,270
+actually a bit older now already so we
+
+118
+00:05:10,200 --> 00:05:14,150
+published a paper actually at a security
+
+119
+00:05:12,270 --> 00:05:18,270
+conference called security and privacy
+
+120
+00:05:14,150 --> 00:05:20,670
+and that introduced this very basic
+
+121
+00:05:18,270 --> 00:05:22,320
+concept and only merged three
+
+122
+00:05:20,670 --> 00:05:26,160
+representations from compiler
+
+123
+00:05:22,320 --> 00:05:27,750
+construction this didn't really say a
+
+124
+00:05:26,160 --> 00:05:29,880
+lot about what that graph would look
+
+125
+00:05:27,750 --> 00:05:32,520
+like there was not even some sort of
+
+126
+00:05:29,880 --> 00:05:34,590
+schema it's just you know the very basic
+
+127
+00:05:32,520 --> 00:05:37,290
+idea of merging these and then seeing
+
+128
+00:05:34,590 --> 00:05:40,590
+whether we can formulate queries to
+
+129
+00:05:37,290 --> 00:05:42,720
+describe common vulnerability types and
+
+130
+00:05:40,590 --> 00:05:44,760
+we did that with gremlin actually today
+
+131
+00:05:42,720 --> 00:05:48,990
+we still use gremlin but you can hardly
+
+132
+00:05:44,760 --> 00:05:51,360
+see it at this point but it became clear
+
+133
+00:05:48,990 --> 00:05:53,910
+we need some sort of specification
+
+134
+00:05:51,360 --> 00:05:58,800
+something that people can actually write
+
+135
+00:05:53,910 --> 00:06:01,919
+against and the the main problem we had
+
+136
+00:05:58,800 --> 00:06:04,620
+was the original quote property graph
+
+137
+00:06:01,919 --> 00:06:06,120
+would only work for C C++ but now we
+
+138
+00:06:04,620 --> 00:06:08,970
+wanted something that works across
+
+139
+00:06:06,120 --> 00:06:10,620
+programming languages once you do that
+
+140
+00:06:08,970 --> 00:06:12,150
+you'll also realize you don't want to
+
+141
+00:06:10,620 --> 00:06:14,130
+re-implement this for every language
+
+142
+00:06:12,150 --> 00:06:15,740
+again and again so you're kind of asking
+
+143
+00:06:14,130 --> 00:06:18,060
+yourself what is the minimal
+
+144
+00:06:15,740 --> 00:06:19,890
+specification that I can give for
+
+145
+00:06:18,060 --> 00:06:22,560
+language front ends to implement and
+
+146
+00:06:19,890 --> 00:06:26,700
+what can I do later on language
+
+147
+00:06:22,560 --> 00:06:29,850
+independently in terms of analysis yeah
+
+148
+00:06:26,700 --> 00:06:31,320
+and we have an open source specification
+
+149
+00:06:29,850 --> 00:06:35,130
+today which you can find on github
+
+150
+00:06:31,320 --> 00:06:37,410
+github and this essentially shows the
+
+151
+00:06:35,130 --> 00:06:40,520
+the main picture of the specs is really
+
+152
+00:06:37,410 --> 00:06:44,729
+it didn't it didn't become that
+
+153
+00:06:40,520 --> 00:06:48,030
+complicated in the end we model types we
+
+154
+00:06:44,729 --> 00:06:48,830
+model calls we model methods and files
+
+155
+00:06:48,030 --> 00:06:51,710
+and
+
+156
+00:06:48,830 --> 00:06:55,460
+spaces it's a bit more we model lambdas
+
+157
+00:06:51,710 --> 00:06:57,860
+as well but yeah a lot of these things
+
+158
+00:06:55,460 --> 00:07:01,850
+are then achieved with extensions that
+
+159
+00:06:57,860 --> 00:07:04,010
+are implemented on a per language basis
+
+160
+00:07:01,850 --> 00:07:07,370
+so if the language does not have lambdas
+
+161
+00:07:04,010 --> 00:07:09,230
+then we don't even pull that in but the
+
+162
+00:07:07,370 --> 00:07:11,540
+main construct that we have here the
+
+163
+00:07:09,230 --> 00:07:14,690
+main idea of the representation is to
+
+164
+00:07:11,540 --> 00:07:17,630
+say let's create a container format for
+
+165
+00:07:14,690 --> 00:07:19,190
+any programming language and essentially
+
+166
+00:07:17,630 --> 00:07:22,520
+a programming language if you think of
+
+167
+00:07:19,190 --> 00:07:26,240
+it it's a it's a set of operations and
+
+168
+00:07:22,520 --> 00:07:27,860
+you can see each operation as a function
+
+169
+00:07:26,240 --> 00:07:32,150
+call that's what you really need to
+
+170
+00:07:27,860 --> 00:07:34,460
+model is function calls and you need to
+
+171
+00:07:32,150 --> 00:07:36,860
+supply semantics for these function
+
+172
+00:07:34,460 --> 00:07:41,480
+calls save so what happens how does the
+
+173
+00:07:36,860 --> 00:07:43,730
+dataflow for this method or whatever it
+
+174
+00:07:41,480 --> 00:07:44,660
+is that you want to model yeah and
+
+175
+00:07:43,730 --> 00:07:46,700
+that's that's essentially a
+
+176
+00:07:44,660 --> 00:07:50,090
+specification that we have and we've
+
+177
+00:07:46,700 --> 00:07:52,070
+been using this for about I'd say one
+
+178
+00:07:50,090 --> 00:07:54,230
+and a half years now to implement these
+
+179
+00:07:52,070 --> 00:07:57,400
+different language front ends so today
+
+180
+00:07:54,230 --> 00:08:01,100
+we have the ability to map Java bytecode
+
+181
+00:07:57,400 --> 00:08:03,770
+to our first level core property graph
+
+182
+00:08:01,100 --> 00:08:05,630
+we can do this with the C shop we can do
+
+183
+00:08:03,770 --> 00:08:07,340
+this with LLVM bit code we can do this
+
+184
+00:08:05,630 --> 00:08:09,950
+with Gollum and a bunch of other
+
+185
+00:08:07,340 --> 00:08:13,250
+languages including dynamic languages
+
+186
+00:08:09,950 --> 00:08:16,940
+such as Python and JavaScript so we have
+
+187
+00:08:13,250 --> 00:08:18,800
+that first level cpg and then the second
+
+188
+00:08:16,940 --> 00:08:21,860
+level cpg we essentially do some sort of
+
+189
+00:08:18,800 --> 00:08:23,540
+linking which is we ensure that when we
+
+190
+00:08:21,860 --> 00:08:25,700
+create the first level cpg you can more
+
+191
+00:08:23,540 --> 00:08:27,740
+or less stream out the graphs it's a
+
+192
+00:08:25,700 --> 00:08:29,840
+very local analysis that we get here and
+
+193
+00:08:27,740 --> 00:08:31,730
+then when you have different graphs for
+
+194
+00:08:29,840 --> 00:08:33,290
+all of the methods and types then you
+
+195
+00:08:31,730 --> 00:08:35,540
+start connecting them in the back end
+
+196
+00:08:33,290 --> 00:08:38,420
+when you have more control over your
+
+197
+00:08:35,540 --> 00:08:41,210
+memory because this thing here in in the
+
+198
+00:08:38,420 --> 00:08:42,680
+front that usually that usually runs on
+
+199
+00:08:41,210 --> 00:08:45,740
+the customer side and you really don't
+
+200
+00:08:42,680 --> 00:08:48,310
+know where you'll get in terms of memory
+
+201
+00:08:45,740 --> 00:08:51,069
+and performance characteristics
+
+202
+00:08:48,310 --> 00:08:52,810
+so this gives us the base layer of the
+
+203
+00:08:51,069 --> 00:08:54,370
+code property graph and you can think of
+
+204
+00:08:52,810 --> 00:08:57,459
+it as a production quality version of
+
+205
+00:08:54,370 --> 00:08:59,499
+what we already had in 2014 it's
+
+206
+00:08:57,459 --> 00:09:01,149
+language independent a language
+
+207
+00:08:59,499 --> 00:09:03,339
+independent intermediate representation
+
+208
+00:09:01,149 --> 00:09:06,089
+you can do control flow analysis over a
+
+209
+00:09:03,339 --> 00:09:08,709
+dataflow analysis and we build a
+
+210
+00:09:06,089 --> 00:09:11,470
+powerful dataflow tracker on top of it
+
+211
+00:09:08,709 --> 00:09:14,709
+which is interprocedural and a few other
+
+212
+00:09:11,470 --> 00:09:18,870
+attributes that are relevant to get
+
+213
+00:09:14,709 --> 00:09:21,910
+precise results and it's pretty fast
+
+214
+00:09:18,870 --> 00:09:24,069
+and so I just want to show you what you
+
+215
+00:09:21,910 --> 00:09:26,019
+can do with this because you know that's
+
+216
+00:09:24,069 --> 00:09:27,519
+that's all very abstract let me give you
+
+217
+00:09:26,019 --> 00:09:30,730
+some examples of concrete things that
+
+218
+00:09:27,519 --> 00:09:33,970
+you can find with this base layer so
+
+219
+00:09:30,730 --> 00:09:36,970
+this is a vulnerability type that's been
+
+220
+00:09:33,970 --> 00:09:40,029
+known for a very long time in 1991 it
+
+221
+00:09:36,970 --> 00:09:43,149
+was first presented and it was then
+
+222
+00:09:40,029 --> 00:09:45,720
+rediscovered in 2018 by a start-up which
+
+223
+00:09:43,149 --> 00:09:49,420
+gave it a fancy name called zip zip and
+
+224
+00:09:45,720 --> 00:09:51,970
+the idea of zip slit is that if you have
+
+225
+00:09:49,420 --> 00:09:55,420
+a zip archive and the file name in there
+
+226
+00:09:51,970 --> 00:09:56,829
+has a dot dot slash in it then you can
+
+227
+00:09:55,420 --> 00:09:58,240
+actually break out of the directory
+
+228
+00:09:56,829 --> 00:10:00,670
+structure and you can start overwriting
+
+229
+00:09:58,240 --> 00:10:02,019
+arbitrary files as you extract so that's
+
+230
+00:10:00,670 --> 00:10:03,250
+an obvious security vulnerability
+
+231
+00:10:02,019 --> 00:10:05,139
+because you might then be able to
+
+232
+00:10:03,250 --> 00:10:07,269
+overwrite some file that belongs to the
+
+233
+00:10:05,139 --> 00:10:09,100
+user maybe some file that's a script
+
+234
+00:10:07,269 --> 00:10:11,649
+let's execute it next time the user logs
+
+235
+00:10:09,100 --> 00:10:14,439
+in and boom you execute whatever code
+
+236
+00:10:11,649 --> 00:10:18,129
+you like now what would that look like
+
+237
+00:10:14,439 --> 00:10:20,139
+in Java I mean it can look very complex
+
+238
+00:10:18,129 --> 00:10:22,329
+but this is like the most simple form so
+
+239
+00:10:20,139 --> 00:10:24,100
+you have a zip entry and you say get
+
+240
+00:10:22,329 --> 00:10:26,800
+name on it and then you call a file
+
+241
+00:10:24,100 --> 00:10:28,920
+constructor so that means you're opening
+
+242
+00:10:26,800 --> 00:10:31,179
+that file and if there's no sort of
+
+243
+00:10:28,920 --> 00:10:32,620
+validation of this entry get name then
+
+244
+00:10:31,179 --> 00:10:34,839
+this could contain that dot dot slash
+
+245
+00:10:32,620 --> 00:10:35,940
+and then you should check the code to
+
+246
+00:10:34,839 --> 00:10:38,820
+see whether there is
+
+247
+00:10:35,940 --> 00:10:40,080
+not and its totally sufficient here to
+
+248
+00:10:38,820 --> 00:10:42,180
+model these things that I just said
+
+249
+00:10:40,080 --> 00:10:44,040
+control flow data flow method
+
+250
+00:10:42,180 --> 00:10:46,080
+invocations if you have that then you
+
+251
+00:10:44,040 --> 00:10:49,830
+can model that and this is what a query
+
+252
+00:10:46,080 --> 00:10:52,620
+would look like for that so we find
+
+253
+00:10:49,830 --> 00:10:55,740
+sources we say look at all the methods
+
+254
+00:10:52,620 --> 00:10:58,860
+where the full name matches java.util
+
+255
+00:10:55,740 --> 00:11:00,930
+zip get name and go to the method return
+
+256
+00:10:58,860 --> 00:11:04,200
+values so look at all the return values
+
+257
+00:11:00,930 --> 00:11:06,990
+of get name and then as a sink look at
+
+258
+00:11:04,200 --> 00:11:08,940
+all of the methods that are called file
+
+259
+00:11:06,990 --> 00:11:12,210
+in it so that's the constructor from
+
+260
+00:11:08,940 --> 00:11:15,060
+there go to the first parameter and then
+
+261
+00:11:12,210 --> 00:11:19,560
+give us all the sinks that are reachable
+
+262
+00:11:15,060 --> 00:11:21,600
+by these sources up the flaws and also
+
+263
+00:11:19,560 --> 00:11:24,360
+check that it does not pass by an escape
+
+264
+00:11:21,600 --> 00:11:27,180
+sanitize or contains as I should gremlin
+
+265
+00:11:24,360 --> 00:11:30,210
+under underneath so gremlin Scala
+
+266
+00:11:27,180 --> 00:11:33,870
+but ya might not even be so recognizable
+
+267
+00:11:30,210 --> 00:11:36,420
+anymore I'd say oh yeah and we used this
+
+268
+00:11:33,870 --> 00:11:39,210
+we found a bunch of previously unknown
+
+269
+00:11:36,420 --> 00:11:42,200
+vulnerabilities reported them so this
+
+270
+00:11:39,210 --> 00:11:45,360
+works I'll give you one more example
+
+271
+00:11:42,200 --> 00:11:47,340
+this is called an xx Eve owner ability
+
+272
+00:11:45,360 --> 00:11:49,770
+XML external entity processing
+
+273
+00:11:47,340 --> 00:11:51,990
+vulnerability and the idea here is that
+
+274
+00:11:49,770 --> 00:11:54,840
+if an attacker controls an XML document
+
+275
+00:11:51,990 --> 00:11:58,370
+that is processed by your application
+
+276
+00:11:54,840 --> 00:12:01,950
+and then there's this particular setting
+
+277
+00:11:58,370 --> 00:12:05,040
+that has not been that has not been made
+
+278
+00:12:01,950 --> 00:12:06,780
+which is disabling of external entities
+
+279
+00:12:05,040 --> 00:12:09,410
+then what the attacker can actually do
+
+280
+00:12:06,780 --> 00:12:12,690
+is they can load external entities and
+
+281
+00:12:09,410 --> 00:12:15,600
+via a few steps this also leads again to
+
+282
+00:12:12,690 --> 00:12:19,140
+code execution situation now we would
+
+283
+00:12:15,600 --> 00:12:23,400
+need to check are there these are there
+
+284
+00:12:19,140 --> 00:12:25,920
+these is XML pausing happening and is
+
+285
+00:12:23,400 --> 00:12:28,130
+nobody calling these set property
+
+286
+00:12:25,920 --> 00:12:30,720
+methods that would make that safe and
+
+287
+00:12:28,130 --> 00:12:33,300
+that would that's what the query would
+
+288
+00:12:30,720 --> 00:12:37,140
+look like so again we create a dataflow
+
+289
+00:12:33,300 --> 00:12:40,490
+query that says go to consider all the
+
+290
+00:12:37,140 --> 00:12:43,110
+XML stream reader next calls as syncs
+
+291
+00:12:40,490 --> 00:12:46,050
+actually the first the instance
+
+292
+00:12:43,110 --> 00:12:50,160
+parameter of that and then a sources
+
+293
+00:12:46,050 --> 00:12:51,899
+consider XML info factory create then do
+
+294
+00:12:50,160 --> 00:12:54,149
+a reachable by query to see if that
+
+295
+00:12:51,899 --> 00:12:57,839
+actually if there's a data flow there
+
+296
+00:12:54,149 --> 00:13:01,709
+and make sure that it's not the case
+
+297
+00:12:57,839 --> 00:13:03,959
+that somebody calls set property on one
+
+298
+00:13:01,709 --> 00:13:06,839
+of those xml functions and that there's
+
+299
+00:13:03,959 --> 00:13:10,379
+a call to that and that's it we also use
+
+300
+00:13:06,839 --> 00:13:12,629
+that and found a bunch of XX e
+
+301
+00:13:10,379 --> 00:13:16,829
+vulnerabilities also reported those so
+
+302
+00:13:12,629 --> 00:13:18,079
+it is this is quite powerful but it's
+
+303
+00:13:16,829 --> 00:13:21,360
+not powerful enough
+
+304
+00:13:18,079 --> 00:13:23,730
+so the problem really is this is
+
+305
+00:13:21,360 --> 00:13:27,299
+something that really just became clear
+
+306
+00:13:23,730 --> 00:13:31,079
+that shift left I guess the problem is
+
+307
+00:13:27,299 --> 00:13:32,879
+that users actually want to reason about
+
+308
+00:13:31,079 --> 00:13:35,459
+vulnerabilities on a much higher level
+
+309
+00:13:32,879 --> 00:13:37,739
+of abstraction you want to talk about
+
+310
+00:13:35,459 --> 00:13:40,019
+let's say you have a web application you
+
+311
+00:13:37,739 --> 00:13:41,790
+want to talk about forms you want to
+
+312
+00:13:40,019 --> 00:13:44,939
+talk about routes right you want to talk
+
+313
+00:13:41,790 --> 00:13:47,929
+about requests HTML attributes input
+
+314
+00:13:44,939 --> 00:13:50,100
+fields JSON responses information flows
+
+315
+00:13:47,929 --> 00:13:53,519
+databases files analyst these kind of
+
+316
+00:13:50,100 --> 00:13:56,069
+things all of that does not exist on the
+
+317
+00:13:53,519 --> 00:13:58,049
+level that you know typical compiler
+
+318
+00:13:56,069 --> 00:14:00,509
+optimization process work on that's not
+
+319
+00:13:58,049 --> 00:14:02,069
+in the control flow graph so what we
+
+320
+00:14:00,509 --> 00:14:04,049
+would need is we would need to take a
+
+321
+00:14:02,069 --> 00:14:05,879
+base layer and we have a query language
+
+322
+00:14:04,049 --> 00:14:07,649
+to find on that now we want to extract
+
+323
+00:14:05,879 --> 00:14:09,689
+some information and doing that we
+
+324
+00:14:07,649 --> 00:14:11,519
+create a new layer of the graph which
+
+325
+00:14:09,689 --> 00:14:13,889
+contains higher level abstractions and
+
+326
+00:14:11,519 --> 00:14:16,290
+for those higher level abstractions we
+
+327
+00:14:13,889 --> 00:14:18,209
+again want to be able to define a query
+
+328
+00:14:16,290 --> 00:14:21,360
+language so that we can talk about these
+
+329
+00:14:18,209 --> 00:14:23,220
+new abstractions as well and yeah that's
+
+330
+00:14:21,360 --> 00:14:24,839
+what we implemented and I'm just gonna
+
+331
+00:14:23,220 --> 00:14:26,699
+give you an example of one of those
+
+332
+00:14:24,839 --> 00:14:29,639
+higher level abstractions one thing you
+
+333
+00:14:26,699 --> 00:14:32,549
+need in web applications is handlers and
+
+334
+00:14:29,639 --> 00:14:34,589
+routes so this is the vertex framework a
+
+335
+00:14:32,549 --> 00:14:37,769
+typical example there where someone says
+
+336
+00:14:34,589 --> 00:14:39,689
+for the route greeting I want to specify
+
+337
+00:14:37,769 --> 00:14:42,389
+that this is the hander so you have a
+
+338
+00:14:39,689 --> 00:14:46,259
+lambda function here that will be called
+
+339
+00:14:42,389 --> 00:14:48,329
+when somebody browses to greeting so you
+
+340
+00:14:46,259 --> 00:14:50,009
+kind of you you have the control flow
+
+341
+00:14:48,329 --> 00:14:52,410
+graph you have the data flow you kind of
+
+342
+00:14:50,009 --> 00:14:54,990
+need to start querying this to then
+
+343
+00:14:52,410 --> 00:14:58,820
+create a route and a hand
+
+344
+00:14:54,990 --> 00:15:02,700
+and link them together and that actually
+
+345
+00:14:58,820 --> 00:15:04,170
+this code does that right so we're not
+
+346
+00:15:02,700 --> 00:15:05,850
+gonna go through the details here my
+
+347
+00:15:04,170 --> 00:15:09,120
+point is you know you're gonna you see
+
+348
+00:15:05,850 --> 00:15:11,130
+this reachable by here again it's it's
+
+349
+00:15:09,120 --> 00:15:13,020
+that level of abstraction where we talk
+
+350
+00:15:11,130 --> 00:15:14,880
+about data flows and control flows but
+
+351
+00:15:13,020 --> 00:15:16,920
+since we have that nice API to ask
+
+352
+00:15:14,880 --> 00:15:19,050
+questions about that code becomes very
+
+353
+00:15:16,920 --> 00:15:21,180
+short to create a new level that
+
+354
+00:15:19,050 --> 00:15:22,890
+contains other abstractions and then you
+
+355
+00:15:21,180 --> 00:15:26,210
+can work with those abstractions and so
+
+356
+00:15:22,890 --> 00:15:30,240
+you get this nice little you know like
+
+357
+00:15:26,210 --> 00:15:32,010
+Multi multi level graph representations
+
+358
+00:15:30,240 --> 00:15:36,120
+that goes higher and higher in terms of
+
+359
+00:15:32,010 --> 00:15:38,220
+abstractions here's a similar example
+
+360
+00:15:36,120 --> 00:15:42,300
+also just to show you that it fits on a
+
+361
+00:15:38,220 --> 00:15:46,530
+slide this is a pass that we wrote which
+
+362
+00:15:42,300 --> 00:15:48,060
+will essentially create a JSP Dom tree
+
+363
+00:15:46,530 --> 00:15:52,050
+so that you can start talking about
+
+364
+00:15:48,060 --> 00:15:54,090
+forms and and input fields and these
+
+365
+00:15:52,050 --> 00:15:58,700
+kinds of things which are also not part
+
+366
+00:15:54,090 --> 00:16:01,710
+of your standard compiler representation
+
+367
+00:15:58,700 --> 00:16:04,860
+and then we can say things like CBG form
+
+368
+00:16:01,710 --> 00:16:07,710
+and make sure that it's a method post
+
+369
+00:16:04,860 --> 00:16:09,240
+and go to all the input fields and let's
+
+370
+00:16:07,710 --> 00:16:13,110
+say we want to make sure there's no
+
+371
+00:16:09,240 --> 00:16:14,210
+attribute called HTML escaped to filter
+
+372
+00:16:13,110 --> 00:16:16,440
+for things that are actually not
+
+373
+00:16:14,210 --> 00:16:17,970
+cross-site scripting vulnerabilities in
+
+374
+00:16:16,440 --> 00:16:19,470
+other water bills you type and then
+
+375
+00:16:17,970 --> 00:16:22,230
+again we can work with this reachable by
+
+376
+00:16:19,470 --> 00:16:24,630
+but you see we can really we can
+
+377
+00:16:22,230 --> 00:16:27,900
+transition from one abstraction to the
+
+378
+00:16:24,630 --> 00:16:28,700
+other within the same query language all
+
+379
+00:16:27,900 --> 00:16:31,100
+right
+
+380
+00:16:28,700 --> 00:16:33,830
+and then there's actually a lot of
+
+381
+00:16:31,100 --> 00:16:35,870
+information are people typically call
+
+382
+00:16:33,830 --> 00:16:37,940
+business logic that's actually not
+
+383
+00:16:35,870 --> 00:16:41,240
+really in the code and you also need to
+
+384
+00:16:37,940 --> 00:16:43,520
+incorporate that because a lot of people
+
+385
+00:16:41,240 --> 00:16:46,130
+will complain when you talk to them
+
+386
+00:16:43,520 --> 00:16:49,130
+about static analyzers about programs
+
+387
+00:16:46,130 --> 00:16:51,760
+that try to find bugs in other programs
+
+388
+00:16:49,130 --> 00:16:54,770
+they will complain about false positives
+
+389
+00:16:51,760 --> 00:16:57,140
+and when you look into the academic
+
+390
+00:16:54,770 --> 00:16:58,820
+literature you'll see all sorts of
+
+391
+00:16:57,140 --> 00:17:01,610
+reasons for false positives that have
+
+392
+00:16:58,820 --> 00:17:03,410
+something to do with the core analysis
+
+393
+00:17:01,610 --> 00:17:05,209
+over tainting of collections
+
+394
+00:17:03,410 --> 00:17:07,820
+conservative carafes and all these kinds
+
+395
+00:17:05,209 --> 00:17:11,300
+of things but in practice it turns out
+
+396
+00:17:07,820 --> 00:17:13,640
+this is actually not the major the major
+
+397
+00:17:11,300 --> 00:17:17,150
+cause of false positives the major cause
+
+398
+00:17:13,640 --> 00:17:19,820
+is things that you simply cannot see in
+
+399
+00:17:17,150 --> 00:17:22,510
+the code for example this is an internal
+
+400
+00:17:19,820 --> 00:17:24,560
+service that only our admin users or
+
+401
+00:17:22,510 --> 00:17:26,300
+without first convincing the
+
+402
+00:17:24,560 --> 00:17:29,120
+authentication server this code would
+
+403
+00:17:26,300 --> 00:17:31,790
+never be executed or due to aliens this
+
+404
+00:17:29,120 --> 00:17:35,630
+integer is always 5 and thus cannot be
+
+405
+00:17:31,790 --> 00:17:37,490
+negative and so you need a nice way of
+
+406
+00:17:35,630 --> 00:17:39,170
+taking this business logic and getting
+
+407
+00:17:37,490 --> 00:17:41,600
+that into the graph as well and we also
+
+408
+00:17:39,170 --> 00:17:42,860
+do these do this with these CPG passes
+
+409
+00:17:41,600 --> 00:17:44,390
+where essentially we take that
+
+410
+00:17:42,860 --> 00:17:46,790
+information and we tag it into the graph
+
+411
+00:17:44,390 --> 00:17:50,150
+and then we can make use of these tags
+
+412
+00:17:46,790 --> 00:17:51,970
+as part of our course and so this is
+
+413
+00:17:50,150 --> 00:17:54,470
+what code property graphs look today
+
+414
+00:17:51,970 --> 00:17:57,490
+multi-layered structure you begin with
+
+415
+00:17:54,470 --> 00:18:00,400
+that base layer then you have a few
+
+416
+00:17:57,490 --> 00:18:03,680
+layers on top of that where you link
+
+417
+00:18:00,400 --> 00:18:06,170
+methods and types and then you start a
+
+418
+00:18:03,680 --> 00:18:08,510
+start off with domain-specific layers
+
+419
+00:18:06,170 --> 00:18:11,390
+like web application specific layers
+
+420
+00:18:08,510 --> 00:18:12,770
+system code specific layers maybe
+
+421
+00:18:11,390 --> 00:18:14,900
+something that brings in some business
+
+422
+00:18:12,770 --> 00:18:16,610
+logic and on top eventually you have the
+
+423
+00:18:14,900 --> 00:18:18,680
+vulnerabilities the findings that just
+
+424
+00:18:16,610 --> 00:18:20,690
+say that that allows someone to just say
+
+425
+00:18:18,680 --> 00:18:23,120
+okay so what did you find and now bring
+
+426
+00:18:20,690 --> 00:18:24,830
+me all the way down to the code that you
+
+427
+00:18:23,120 --> 00:18:26,930
+think is connected to that and all the
+
+428
+00:18:24,830 --> 00:18:28,700
+different attributes that led to this
+
+429
+00:18:26,930 --> 00:18:33,409
+discovery
+
+430
+00:18:28,700 --> 00:18:36,080
+now so yeah one more thing that's really
+
+431
+00:18:33,409 --> 00:18:37,580
+nice about this whole design is that it
+
+432
+00:18:36,080 --> 00:18:39,109
+actually scales pretty well and we have
+
+433
+00:18:37,580 --> 00:18:41,659
+scalable in the title and so I just want
+
+434
+00:18:39,109 --> 00:18:43,220
+to quickly talk about why so scaling
+
+435
+00:18:41,659 --> 00:18:46,369
+static analysis generally means
+
+436
+00:18:43,220 --> 00:18:48,889
+calculating summaries where you can kind
+
+437
+00:18:46,369 --> 00:18:49,759
+of like dynamic programming you always
+
+438
+00:18:48,889 --> 00:18:52,730
+want to make sure that you never
+
+439
+00:18:49,759 --> 00:18:57,889
+calculate anything twice now if you look
+
+440
+00:18:52,730 --> 00:18:59,629
+at these layers well creating summaries
+
+441
+00:18:57,889 --> 00:19:01,429
+about data flows saying well I've seen
+
+442
+00:18:59,629 --> 00:19:03,710
+this flow before you don't have to
+
+443
+00:19:01,429 --> 00:19:06,049
+analyzes again that's pretty normal but
+
+444
+00:19:03,710 --> 00:19:08,119
+we can actually we summarize all sorts
+
+445
+00:19:06,049 --> 00:19:11,049
+of things with these layers and so we
+
+446
+00:19:08,119 --> 00:19:13,429
+can always but when we look into a
+
+447
+00:19:11,049 --> 00:19:15,379
+second or third layer we actually have
+
+448
+00:19:13,429 --> 00:19:18,109
+cached information about what we've
+
+449
+00:19:15,379 --> 00:19:19,789
+calculated before now the second thing
+
+450
+00:19:18,109 --> 00:19:23,389
+that's nice about the this whole cpg
+
+451
+00:19:19,789 --> 00:19:25,220
+Pass API is parallelism so processors
+
+452
+00:19:23,389 --> 00:19:27,379
+aren't really getting much faster or we
+
+453
+00:19:25,220 --> 00:19:30,440
+know that but you can calculate lots of
+
+454
+00:19:27,379 --> 00:19:33,169
+things in in parallel today and the cpg
+
+455
+00:19:30,440 --> 00:19:35,090
+passes are kind of parallel by design so
+
+456
+00:19:33,169 --> 00:19:38,330
+the way this works is you have your base
+
+457
+00:19:35,090 --> 00:19:40,879
+layer and then you can execute all of
+
+458
+00:19:38,330 --> 00:19:42,379
+these passes in parallel each of them
+
+459
+00:19:40,879 --> 00:19:44,659
+creates an overlay and then there's kind
+
+460
+00:19:42,379 --> 00:19:47,269
+of like a reduction step and then so
+
+461
+00:19:44,659 --> 00:19:49,789
+when you get these CPGs with overlays so
+
+462
+00:19:47,269 --> 00:19:54,169
+we do a lot of parallel computation here
+
+463
+00:19:49,789 --> 00:19:58,249
+to make things scale better as well yeah
+
+464
+00:19:54,169 --> 00:20:00,460
+and with that I'm done and I'm happy to
+
+465
+00:19:58,249 --> 00:20:00,460
+take questions
+
+466
+00:20:05,520 --> 00:20:07,550
+Oh
+
+467
+00:20:14,270 --> 00:20:21,330
+so for Java we knew this on bytecode for
+
+468
+00:20:17,779 --> 00:20:23,640
+c-sharp we integrated this with the
+
+469
+00:20:21,330 --> 00:20:25,320
+Roslin compiler the thing is when you
+
+470
+00:20:23,640 --> 00:20:26,610
+integrate with a compiler you need to
+
+471
+00:20:25,320 --> 00:20:28,679
+make sure that this is a you know
+
+472
+00:20:26,610 --> 00:20:30,480
+everybody uses that compiler for c-sharp
+
+473
+00:20:28,679 --> 00:20:33,120
+you can kind of do that for C for
+
+474
+00:20:30,480 --> 00:20:34,230
+example you can't do that and for C we
+
+475
+00:20:33,120 --> 00:20:36,299
+chose another route
+
+476
+00:20:34,230 --> 00:20:43,350
+Fuzzy's pausing so we've tried all the
+
+477
+00:20:36,299 --> 00:20:44,190
+different routes and yeah I pretty does
+
+478
+00:20:43,350 --> 00:20:47,870
+it for c-sharp
+
+479
+00:20:44,190 --> 00:20:47,870
+we're working on more about something
+
+480
+00:20:48,860 --> 00:20:56,220
+right yeah no we currently analyze
+
+481
+00:20:51,450 --> 00:20:59,070
+Python via an ast we get from Python
+
+482
+00:20:56,220 --> 00:21:03,059
+library again you can choose multiple
+
+483
+00:20:59,070 --> 00:21:05,360
+routes there and yeah it's always a the
+
+484
+00:21:03,059 --> 00:21:10,970
+design discussion of which route to take
+
+485
+00:21:05,360 --> 00:21:14,059
+to cover most needs that's always a
+
+486
+00:21:10,970 --> 00:21:14,059
+difficult one
+
+487
+00:21:32,300 --> 00:21:49,340
+execute injection yes yeah I see I see
+
+488
+00:21:49,920 --> 00:22:03,690
+yes yes yeah yes well I guess I mean
+
+489
+00:22:02,070 --> 00:22:05,130
+this was all static I guess if you want
+
+490
+00:22:03,690 --> 00:22:06,030
+to do this kind of tracing you would
+
+491
+00:22:05,130 --> 00:22:08,280
+want to
+
+492
+00:22:06,030 --> 00:22:09,600
+additionally take some information from
+
+493
+00:22:08,280 --> 00:22:18,990
+actually running the program and
+
+494
+00:22:09,600 --> 00:22:21,840
+integrate that into the graph yes yes
+
+495
+00:22:18,990 --> 00:22:23,340
+yes yeah exactly
+
+496
+00:22:21,840 --> 00:22:24,540
+yeah that's kind of the the point I was
+
+497
+00:22:23,340 --> 00:22:26,070
+making when I said it's about
+
+498
+00:22:24,540 --> 00:22:27,690
+understanding code as well not just
+
+499
+00:22:26,070 --> 00:22:29,100
+pinpointing vulnerabilities just you
+
+500
+00:22:27,690 --> 00:22:31,320
+know how does this thing how is it even
+
+501
+00:22:29,100 --> 00:22:33,830
+exposed to the world and where does the
+
+502
+00:22:31,320 --> 00:22:33,830
+input come in
+
+503
+00:23:04,120 --> 00:23:07,360
+[Music]
+
+504
+00:23:10,770 --> 00:23:25,270
+right yeah yes yeah we have thought of
+
+505
+00:23:23,260 --> 00:23:27,460
+that we have tried ions and things
+
+506
+00:23:25,270 --> 00:23:28,990
+essentially we've written a lot of
+
+507
+00:23:27,460 --> 00:23:31,360
+different scripts to explore you know
+
+508
+00:23:28,990 --> 00:23:33,130
+what can you do to find out the overall
+
+509
+00:23:31,360 --> 00:23:34,780
+structure of the code and then they're
+
+510
+00:23:33,130 --> 00:23:37,870
+going to be like hotspots that you want
+
+511
+00:23:34,780 --> 00:23:40,240
+to identify what's actually also
+
+512
+00:23:37,870 --> 00:23:43,330
+interesting is if you stop getting in
+
+513
+00:23:40,240 --> 00:23:45,400
+the revision history because then you
+
+514
+00:23:43,330 --> 00:23:47,410
+can see which is actually the code
+
+515
+00:23:45,400 --> 00:23:49,780
+that's been like this for a very long
+
+516
+00:23:47,410 --> 00:23:51,670
+time and you know where's code that
+
+517
+00:23:49,780 --> 00:23:54,430
+changes a lot you know and should
+
+518
+00:23:51,670 --> 00:23:56,760
+therefore be analyzed again something
+
+519
+00:23:54,430 --> 00:23:56,760
+like that
+
+520
+00:24:00,340 --> 00:24:15,070
+there's a question yeah we have a
+
+521
+00:24:13,210 --> 00:24:17,740
+library of the vulnerability patterns
+
+522
+00:24:15,070 --> 00:24:19,360
+for the for the most common frameworks
+
+523
+00:24:17,740 --> 00:24:22,180
+that's how you need to think about it
+
+524
+00:24:19,360 --> 00:24:24,550
+like if somebody brings a spring based
+
+525
+00:24:22,180 --> 00:24:26,650
+web application what do you look for and
+
+526
+00:24:24,550 --> 00:24:28,690
+then you take out that library and you
+
+527
+00:24:26,650 --> 00:24:30,370
+run that automatically when you detect
+
+528
+00:24:28,690 --> 00:24:32,830
+spring and then you have that product
+
+529
+00:24:30,370 --> 00:24:34,390
+again that many people want which is
+
+530
+00:24:32,830 --> 00:24:36,520
+just something that spits out security
+
+531
+00:24:34,390 --> 00:24:38,260
+findings but the real power here is that
+
+532
+00:24:36,520 --> 00:24:39,700
+you can tune this right you can actually
+
+533
+00:24:38,260 --> 00:24:41,110
+look at this and say oh well these
+
+534
+00:24:39,700 --> 00:24:43,060
+things don't make sense to me I'm just
+
+535
+00:24:41,110 --> 00:24:44,370
+going to tune this a bit and then false
+
+536
+00:24:43,060 --> 00:24:47,370
+positives are gone
+
+537
+00:24:44,370 --> 00:24:47,370
+reduced
+
+538
+00:24:50,800 --> 00:24:53,950
+thank you
+

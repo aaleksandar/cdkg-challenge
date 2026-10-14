@@ -1,0 +1,10040 @@
+1
+00:00:03,360 --> 00:00:07,839
+yes Welcome to our talk on graph powered
+
+2
+00:00:05,799 --> 00:00:09,719
+or on our master class on graph powered
+
+3
+00:00:07,839 --> 00:00:13,440
+machine learning from graph analytics to
+
+4
+00:00:09,719 --> 00:00:16,359
+graph ml uh so we'll talk today about um
+
+5
+00:00:13,440 --> 00:00:19,520
+yeah different use cases different
+
+6
+00:00:16,359 --> 00:00:22,320
+techniques uh by which we can yeah merge
+
+7
+00:00:19,520 --> 00:00:25,080
+machine learning and graphs which is a
+
+8
+00:00:22,320 --> 00:00:27,640
+topic which is very dear to me because I
+
+9
+00:00:25,080 --> 00:00:30,039
+really see the value proposition also
+
+10
+00:00:27,640 --> 00:00:34,120
+the uptake recently but more more about
+
+11
+00:00:30,039 --> 00:00:36,040
+that in the coming slides um probably
+
+12
+00:00:34,120 --> 00:00:38,320
+most important piece of information of
+
+13
+00:00:36,040 --> 00:00:41,280
+this entire talk is here a bitly link
+
+14
+00:00:38,320 --> 00:00:44,239
+either in the chat or also here on the
+
+15
+00:00:41,280 --> 00:00:45,960
+um slide uh the front slide here because
+
+16
+00:00:44,239 --> 00:00:49,160
+that will give you access to the live
+
+17
+00:00:45,960 --> 00:00:52,280
+slide deck um so there's uh I suppose a
+
+18
+00:00:49,160 --> 00:00:54,039
+pdf version also available but often if
+
+19
+00:00:52,280 --> 00:00:56,120
+there are some questions during the talk
+
+20
+00:00:54,039 --> 00:00:58,519
+what I'll do I'll go in and actually
+
+21
+00:00:56,120 --> 00:01:01,280
+potentially even add some more slides uh
+
+22
+00:00:58,519 --> 00:01:03,559
+or other things Cho this live slide Tech
+
+23
+00:01:01,280 --> 00:01:05,360
+furthermore all the links to all the
+
+24
+00:01:03,559 --> 00:01:07,720
+exercises are also accessible from the
+
+25
+00:01:05,360 --> 00:01:09,439
+slide Tech so I would say uh this is
+
+26
+00:01:07,720 --> 00:01:13,680
+something worse copying and maybe just
+
+27
+00:01:09,439 --> 00:01:16,200
+open up uh that version in uh in your
+
+28
+00:01:13,680 --> 00:01:19,240
+browser okay having that said uh what
+
+29
+00:01:16,200 --> 00:01:21,320
+will we cover today so we'll start on a
+
+30
+00:01:19,240 --> 00:01:23,799
+quick refresher on graphs uh quick
+
+31
+00:01:21,320 --> 00:01:27,680
+refresher on different graph databases
+
+32
+00:01:23,799 --> 00:01:29,040
+or ways to store in query graphs uh but
+
+33
+00:01:27,680 --> 00:01:31,520
+then we'll dive into the real
+
+34
+00:01:29,040 --> 00:01:34,119
+interesting aspect starting with graph
+
+35
+00:01:31,520 --> 00:01:36,159
+analytics and then going a bit more into
+
+36
+00:01:34,119 --> 00:01:38,320
+the realm of really graph machine
+
+37
+00:01:36,159 --> 00:01:40,360
+learning where we talk about graph
+
+38
+00:01:38,320 --> 00:01:42,600
+embeddings uh where we then talk about
+
+39
+00:01:40,360 --> 00:01:45,759
+graph neural networks and of course all
+
+40
+00:01:42,600 --> 00:01:49,880
+of that is interlaced with use cases and
+
+41
+00:01:45,759 --> 00:01:52,600
+uh also uh exercises or kind of uh
+
+42
+00:01:49,880 --> 00:01:53,560
+Jupiter notebooks uh where we can try
+
+43
+00:01:52,600 --> 00:01:56,600
+that
+
+44
+00:01:53,560 --> 00:01:59,920
+Hands-On challenges uh this is
+
+45
+00:01:56,600 --> 00:02:02,799
+originally this used to be a onewe PhD
+
+46
+00:01:59,920 --> 00:02:05,560
+Workshop uh I taught last year in
+
+47
+00:02:02,799 --> 00:02:08,520
+Denmark of course it has been upgraded
+
+48
+00:02:05,560 --> 00:02:11,400
+uh and updated since then but as a basis
+
+49
+00:02:08,520 --> 00:02:14,959
+actually uh was like a weekl long course
+
+50
+00:02:11,400 --> 00:02:16,920
+and uh today we have two hours so if you
+
+51
+00:02:14,959 --> 00:02:18,280
+take a look at the live slide deck what
+
+52
+00:02:16,920 --> 00:02:20,480
+you'll also see there are a lot of
+
+53
+00:02:18,280 --> 00:02:21,280
+hidden slides uh which might give you
+
+54
+00:02:20,480 --> 00:02:24,360
+more
+
+55
+00:02:21,280 --> 00:02:26,000
+information uh but I think this is let
+
+56
+00:02:24,360 --> 00:02:28,200
+me actually just skip over to the next
+
+57
+00:02:26,000 --> 00:02:30,360
+slide um what makes it even more
+
+58
+00:02:28,200 --> 00:02:32,599
+important this Workshop it's really for
+
+59
+00:02:30,360 --> 00:02:34,599
+you so I think given this short time
+
+60
+00:02:32,599 --> 00:02:36,599
+frame we should actually work together
+
+61
+00:02:34,599 --> 00:02:39,159
+so at any point in time please feel free
+
+62
+00:02:36,599 --> 00:02:41,599
+to share your expectations any questions
+
+63
+00:02:39,159 --> 00:02:44,800
+or also feedback ask for breaks if
+
+64
+00:02:41,599 --> 00:02:46,599
+needed so um I think then we can
+
+65
+00:02:44,800 --> 00:02:49,120
+actually get the most value out of that
+
+66
+00:02:46,599 --> 00:02:51,640
+for all all of you
+
+67
+00:02:49,120 --> 00:02:54,959
+participating um then just briefly about
+
+68
+00:02:51,640 --> 00:02:57,879
+myself jurk I'm CTO at Rango DB it's a
+
+69
+00:02:54,959 --> 00:02:59,879
+graph and Beyond database so I actually
+
+70
+00:02:57,879 --> 00:03:01,840
+deal with those topics on a daily BAS
+
+71
+00:02:59,879 --> 00:03:04,440
+basis uh which is something very
+
+72
+00:03:01,840 --> 00:03:07,480
+exciting I I'm very happy that I have
+
+73
+00:03:04,440 --> 00:03:09,200
+this privilege to do so uh my career
+
+74
+00:03:07,480 --> 00:03:10,799
+before I've mostly been focused on
+
+75
+00:03:09,200 --> 00:03:14,080
+database systems and large scale
+
+76
+00:03:10,799 --> 00:03:16,319
+distributed systems uh so I also kind of
+
+77
+00:03:14,080 --> 00:03:18,680
+got in touch with some of the analytics
+
+78
+00:03:16,319 --> 00:03:23,120
+topics throughout my
+
+79
+00:03:18,680 --> 00:03:25,519
+career but um as mentioned this Workshop
+
+80
+00:03:23,120 --> 00:03:28,640
+it has a number of uh interactive
+
+81
+00:03:25,519 --> 00:03:31,080
+Jupiter notebooks attached um there's a
+
+82
+00:03:28,640 --> 00:03:33,360
+GitHub repo back those up you don't have
+
+83
+00:03:31,080 --> 00:03:35,560
+to copy that but if you have some ideas
+
+84
+00:03:33,360 --> 00:03:37,560
+or if you want to make poll request feel
+
+85
+00:03:35,560 --> 00:03:39,599
+free to go directly against this GitHub
+
+86
+00:03:37,560 --> 00:03:42,000
+repo or there are also more notebooks
+
+87
+00:03:39,599 --> 00:03:44,599
+and we'll use uh throughout this class
+
+88
+00:03:42,000 --> 00:03:46,319
+here uh so feel free to check out what
+
+89
+00:03:44,599 --> 00:03:48,439
+else is there feel free to share that
+
+90
+00:03:46,319 --> 00:03:51,920
+with colleagues this is all open source
+
+91
+00:03:48,439 --> 00:03:53,760
+uh anyone can use or contribute here but
+
+92
+00:03:51,920 --> 00:03:55,799
+for this Workshop itself you don't need
+
+93
+00:03:53,760 --> 00:03:57,879
+to remember this it's all linked from
+
+94
+00:03:55,799 --> 00:04:01,159
+the
+
+95
+00:03:57,879 --> 00:04:04,239
+slides with that let's get started why
+
+96
+00:04:01,159 --> 00:04:06,280
+should you care about uh graph analytics
+
+97
+00:04:04,239 --> 00:04:08,319
+and graph machine learning if we look
+
+98
+00:04:06,280 --> 00:04:10,879
+around um I think there's been this
+
+99
+00:04:08,319 --> 00:04:13,040
+trend towards graph databases or graphs
+
+100
+00:04:10,879 --> 00:04:15,560
+which U most of us have been following
+
+101
+00:04:13,040 --> 00:04:19,120
+at this conference for the past years uh
+
+102
+00:04:15,560 --> 00:04:21,600
+but I would say within that last three
+
+103
+00:04:19,120 --> 00:04:23,520
+to four years especially graph machine
+
+104
+00:04:21,600 --> 00:04:25,520
+learning techniques have been really
+
+105
+00:04:23,520 --> 00:04:28,280
+taking off in many different use cases
+
+106
+00:04:25,520 --> 00:04:30,160
+so for example Google is using uh graph
+
+107
+00:04:28,280 --> 00:04:32,960
+machine learning to improve the ETA
+
+108
+00:04:30,160 --> 00:04:35,280
+predictions on Google Maps Uber Eats is
+
+109
+00:04:32,960 --> 00:04:37,560
+using graph machine learning to improve
+
+110
+00:04:35,280 --> 00:04:39,440
+uh recommendations if you look at
+
+111
+00:04:37,560 --> 00:04:44,039
+computational chemistry they have been
+
+112
+00:04:39,440 --> 00:04:46,800
+using uh graph techniques for for uh
+
+113
+00:04:44,039 --> 00:04:51,240
+years uh and also if we look at recent
+
+114
+00:04:46,800 --> 00:04:54,560
+breakthroughs in um research also at
+
+115
+00:04:51,240 --> 00:04:56,840
+like nurbs or some other kind of a class
+
+116
+00:04:54,560 --> 00:05:00,199
+machine learning conferences we see a
+
+117
+00:04:56,840 --> 00:05:02,919
+lot lot of growth in papers concerning
+
+118
+00:05:00,199 --> 00:05:05,600
+graph or graph machine learning in
+
+119
+00:05:02,919 --> 00:05:08,440
+general what is kind of the why is it
+
+120
+00:05:05,600 --> 00:05:10,960
+taking off so I believe right now we are
+
+121
+00:05:08,440 --> 00:05:13,919
+in a place where we start to understand
+
+122
+00:05:10,960 --> 00:05:15,960
+that there is information in the
+
+123
+00:05:13,919 --> 00:05:18,840
+neighborhood or in the relations of
+
+124
+00:05:15,960 --> 00:05:21,240
+different individual data items um so
+
+125
+00:05:18,840 --> 00:05:23,840
+we'll also see that uh coming up on one
+
+126
+00:05:21,240 --> 00:05:25,400
+of the slides but uh the example I
+
+127
+00:05:23,840 --> 00:05:27,400
+always give imagine this here in the
+
+128
+00:05:25,400 --> 00:05:29,759
+middle is a social network and you're
+
+129
+00:05:27,400 --> 00:05:32,160
+trying to predict churn of people from
+
+130
+00:05:29,759 --> 00:05:34,440
+your network if you look at traditional
+
+131
+00:05:32,160 --> 00:05:37,199
+machine learning uh you would take each
+
+132
+00:05:34,440 --> 00:05:39,199
+individual user and then try to predict
+
+133
+00:05:37,199 --> 00:05:41,360
+oh uh based on certain features what is
+
+134
+00:05:39,199 --> 00:05:43,840
+the likelihood of that person trainning
+
+135
+00:05:41,360 --> 00:05:45,880
+but if we actually know that all your
+
+136
+00:05:43,840 --> 00:05:47,800
+friends all your direct connections have
+
+137
+00:05:45,880 --> 00:05:50,720
+just left the network this will make
+
+138
+00:05:47,800 --> 00:05:53,319
+your probability to churn pretty high
+
+139
+00:05:50,720 --> 00:05:55,240
+given two factors first of all your
+
+140
+00:05:53,319 --> 00:05:56,960
+friends have all just left that Network
+
+141
+00:05:55,240 --> 00:06:00,000
+so probably there's little value in you
+
+142
+00:05:56,960 --> 00:06:03,600
+for that but also uh very likely you'll
+
+143
+00:06:00,000 --> 00:06:05,560
+share some values or some reasons why
+
+144
+00:06:03,600 --> 00:06:08,039
+your friends uh direct connections have
+
+145
+00:06:05,560 --> 00:06:10,280
+left as well so also based on those
+
+146
+00:06:08,039 --> 00:06:13,280
+factors you're are more likely to churn
+
+147
+00:06:10,280 --> 00:06:14,919
+and this is something we can capture in
+
+148
+00:06:13,280 --> 00:06:17,039
+it's called like traditional machine
+
+149
+00:06:14,919 --> 00:06:19,080
+learning by creating features so for
+
+150
+00:06:17,039 --> 00:06:20,599
+example we might create a feature what
+
+151
+00:06:19,080 --> 00:06:22,840
+percentage of your friends have just
+
+152
+00:06:20,599 --> 00:06:25,360
+left that network but it's something we
+
+153
+00:06:22,840 --> 00:06:26,400
+would have to feature engineer and uh
+
+154
+00:06:25,360 --> 00:06:29,000
+create
+
+155
+00:06:26,400 --> 00:06:30,160
+explicitly and also update explicitly of
+
+156
+00:06:29,000 --> 00:06:33,319
+course as well
+
+157
+00:06:30,160 --> 00:06:34,880
+but if we just take a native approach to
+
+158
+00:06:33,319 --> 00:06:37,240
+graph analytics and graph machine
+
+159
+00:06:34,880 --> 00:06:39,039
+learning we can really utilize the
+
+160
+00:06:37,240 --> 00:06:42,160
+relationships and neighborhood
+
+161
+00:06:39,039 --> 00:06:46,560
+information uh directly without having
+
+162
+00:06:42,160 --> 00:06:50,199
+to create uh specific features for
+
+163
+00:06:46,560 --> 00:06:52,680
+that so uh let's get started with graphs
+
+164
+00:06:50,199 --> 00:06:55,080
+um so if we look around we actually
+
+165
+00:06:52,680 --> 00:06:57,599
+surrounded by graph so from social
+
+166
+00:06:55,080 --> 00:07:00,919
+networks from computational chemistry
+
+167
+00:06:57,599 --> 00:07:03,199
+from recommendation systems event graphs
+
+168
+00:07:00,919 --> 00:07:05,759
+uh internet of syns or interconnected
+
+169
+00:07:03,199 --> 00:07:09,560
+devices or even if you just look at like
+
+170
+00:07:05,759 --> 00:07:12,319
+3D uh Point clouds or even image images
+
+171
+00:07:09,560 --> 00:07:14,599
+uh often come down to uh graph
+
+172
+00:07:12,319 --> 00:07:17,599
+processing uh for example also natural
+
+173
+00:07:14,599 --> 00:07:21,560
+language processing if you dive deeper
+
+174
+00:07:17,599 --> 00:07:23,240
+Heavenly connected to graph processing
+
+175
+00:07:21,560 --> 00:07:25,759
+uh as I already mentioned also chemical
+
+176
+00:07:23,240 --> 00:07:30,039
+molecules um they're basically graphs
+
+177
+00:07:25,759 --> 00:07:33,160
+connecting atoms uh into molecules so a
+
+178
+00:07:30,039 --> 00:07:35,879
+graph um so and here also graph
+
+179
+00:07:33,160 --> 00:07:38,960
+techniques have been used for quite a
+
+180
+00:07:35,879 --> 00:07:43,560
+while so if we look at uh just to get
+
+181
+00:07:38,960 --> 00:07:45,120
+some of the uh like uh different uh same
+
+182
+00:07:43,560 --> 00:07:47,520
+same Concepts here same naming
+
+183
+00:07:45,120 --> 00:07:49,879
+conventions out of out of the game so I
+
+184
+00:07:47,520 --> 00:07:51,960
+think graphs are data structures where
+
+185
+00:07:49,879 --> 00:07:54,400
+we have connections are first class
+
+186
+00:07:51,960 --> 00:07:55,800
+citizens and this is also often I get
+
+187
+00:07:54,400 --> 00:07:57,759
+the question when would I use a
+
+188
+00:07:55,800 --> 00:08:00,720
+relational database when would I use a
+
+189
+00:07:57,759 --> 00:08:03,520
+graph database uh it's really if uh we
+
+190
+00:08:00,720 --> 00:08:07,039
+start to Value connections uh as an
+
+191
+00:08:03,520 --> 00:08:08,759
+important entity of information and that
+
+192
+00:08:07,039 --> 00:08:10,599
+it's not necessarily the connection
+
+193
+00:08:08,759 --> 00:08:12,919
+itself but can also be leveraging them
+
+194
+00:08:10,599 --> 00:08:15,240
+in a graph traval for example I would
+
+195
+00:08:12,919 --> 00:08:17,560
+say then it's uh I would also recommend
+
+196
+00:08:15,240 --> 00:08:19,800
+to go for a graph database instead of
+
+197
+00:08:17,560 --> 00:08:22,639
+trying to force a graph schema into
+
+198
+00:08:19,800 --> 00:08:25,240
+relational database um a graph consists
+
+199
+00:08:22,639 --> 00:08:27,800
+of vertices and edges so or notes and
+
+200
+00:08:25,240 --> 00:08:29,599
+Connections in between um then we have
+
+201
+00:08:27,800 --> 00:08:32,080
+the concept of neighborhood which which
+
+202
+00:08:29,599 --> 00:08:33,880
+is basically the directly connected uh
+
+203
+00:08:32,080 --> 00:08:36,279
+nodes so for example here the
+
+204
+00:08:33,880 --> 00:08:38,800
+neighborhood of our node zero is one and
+
+205
+00:08:36,279 --> 00:08:41,240
+two because they're directly
+
+206
+00:08:38,800 --> 00:08:44,399
+connected uh then furthermore we have
+
+207
+00:08:41,240 --> 00:08:47,040
+the um Notions of distance so for
+
+208
+00:08:44,399 --> 00:08:51,120
+example uh how many steps do I need to
+
+209
+00:08:47,040 --> 00:08:54,080
+take from getting from uh zero to four
+
+210
+00:08:51,120 --> 00:08:56,399
+that would be two uh diameter referring
+
+211
+00:08:54,080 --> 00:08:59,680
+to how large is our entire graph like
+
+212
+00:08:56,399 --> 00:09:03,880
+how far is it spread out or in other
+
+213
+00:08:59,680 --> 00:09:06,240
+terms what is the longest shortest path
+
+214
+00:09:03,880 --> 00:09:09,880
+between any two vertices in in that
+
+215
+00:09:06,240 --> 00:09:12,399
+cluster uh in in that graph and uh then
+
+216
+00:09:09,880 --> 00:09:15,200
+we also have the notion of degree so the
+
+217
+00:09:12,399 --> 00:09:18,200
+number of connections for each of the
+
+218
+00:09:15,200 --> 00:09:21,680
+vertices for each of the notes um if we
+
+219
+00:09:18,200 --> 00:09:24,160
+have a directed graph so if we actually
+
+220
+00:09:21,680 --> 00:09:26,519
+uh have here a little arrow meaning zero
+
+221
+00:09:24,160 --> 00:09:28,480
+is connected to two then we can also
+
+222
+00:09:26,519 --> 00:09:31,320
+further distinguish between an in and an
+
+223
+00:09:28,480 --> 00:09:34,519
+out degree
+
+224
+00:09:31,320 --> 00:09:37,079
+um here the example uh I typically give
+
+225
+00:09:34,519 --> 00:09:38,959
+for uh an undirected whether's a
+
+226
+00:09:37,079 --> 00:09:41,480
+directed graph if you stay in that realm
+
+227
+00:09:38,959 --> 00:09:43,800
+of like social media uh if you take a
+
+228
+00:09:41,480 --> 00:09:48,200
+look at Facebook at Facebook we have
+
+229
+00:09:43,800 --> 00:09:49,920
+friends uh and this is a um a reflexive
+
+230
+00:09:48,200 --> 00:09:52,240
+relationship so if I'm friends with
+
+231
+00:09:49,920 --> 00:09:55,240
+someone on Facebook that person is also
+
+232
+00:09:52,240 --> 00:09:56,800
+friends of me on Facebook if we on the
+
+233
+00:09:55,240 --> 00:10:00,040
+other hand look at Twitter there the
+
+234
+00:09:56,800 --> 00:10:01,680
+notion is follower and so I can follow a
+
+235
+00:10:00,040 --> 00:10:04,000
+person but that doesn't necessarily
+
+236
+00:10:01,680 --> 00:10:06,519
+apply imply that that person is
+
+237
+00:10:04,000 --> 00:10:08,839
+following me as well and so in that
+
+238
+00:10:06,519 --> 00:10:10,240
+realm facebbook is an undirected graph
+
+239
+00:10:08,839 --> 00:10:12,880
+because we don't have any direction of
+
+240
+00:10:10,240 --> 00:10:14,399
+the edges um whereas Twitter has a
+
+241
+00:10:12,880 --> 00:10:16,480
+direction and the direction would be
+
+242
+00:10:14,399 --> 00:10:19,040
+follows another
+
+243
+00:10:16,480 --> 00:10:22,120
+person furthermore we can have weighted
+
+244
+00:10:19,040 --> 00:10:25,200
+graphs uh so we can have a little weight
+
+245
+00:10:22,120 --> 00:10:27,279
+here on the uh on the edges connecting
+
+246
+00:10:25,200 --> 00:10:31,760
+different nodes and for example if you
+
+247
+00:10:27,279 --> 00:10:33,800
+look at a uh at a at a map there the
+
+248
+00:10:31,760 --> 00:10:36,200
+weights are pretty natural what is the
+
+249
+00:10:33,800 --> 00:10:39,120
+distance in between two points on that
+
+250
+00:10:36,200 --> 00:10:42,000
+map or if you look at a train Network
+
+251
+00:10:39,120 --> 00:10:43,519
+what is the time to travel from one uh
+
+252
+00:10:42,000 --> 00:10:45,560
+one city to
+
+253
+00:10:43,519 --> 00:10:48,000
+another uh but there are many other
+
+254
+00:10:45,560 --> 00:10:51,440
+examples for weights within
+
+255
+00:10:48,000 --> 00:10:54,160
+graphs uh graphs can be sparse or dense
+
+256
+00:10:51,440 --> 00:10:56,360
+um so this refers to like how well are
+
+257
+00:10:54,160 --> 00:10:58,320
+they connected so the most dense graph
+
+258
+00:10:56,360 --> 00:11:00,680
+would be a graph where every note is
+
+259
+00:10:58,320 --> 00:11:02,839
+connected with every other node so most
+
+260
+00:11:00,680 --> 00:11:04,320
+far graph would simply be a single node
+
+261
+00:11:02,839 --> 00:11:07,920
+out out in that
+
+262
+00:11:04,320 --> 00:11:09,560
+graph um so it typically uh this is
+
+263
+00:11:07,920 --> 00:11:11,519
+interesting to analyze because it will
+
+264
+00:11:09,560 --> 00:11:13,160
+give you some insight into the the
+
+265
+00:11:11,519 --> 00:11:16,240
+connection structure of your graph for
+
+266
+00:11:13,160 --> 00:11:17,880
+example and might also imply how you
+
+267
+00:11:16,240 --> 00:11:21,680
+might want to store your graph which
+
+268
+00:11:17,880 --> 00:11:24,079
+we'll get you next um another uh notion
+
+269
+00:11:21,680 --> 00:11:27,360
+you'll often hear with graphs is the
+
+270
+00:11:24,079 --> 00:11:29,360
+notion of cyclic or acyclic graphs and
+
+271
+00:11:27,360 --> 00:11:31,800
+so here for example we have a cycle so
+
+272
+00:11:29,360 --> 00:11:34,839
+we can basically go around and end up at
+
+273
+00:11:31,800 --> 00:11:37,480
+the same mode and uh acyclic graphs on
+
+274
+00:11:34,839 --> 00:11:40,639
+the other hand uh don't have uh any
+
+275
+00:11:37,480 --> 00:11:43,160
+Cycles within them and as if we now
+
+276
+00:11:40,639 --> 00:11:45,480
+combine what we have learned we there's
+
+277
+00:11:43,160 --> 00:11:48,200
+an important class of graphs and that
+
+278
+00:11:45,480 --> 00:11:50,760
+would be directed acyclic graphs and
+
+279
+00:11:48,200 --> 00:11:54,600
+that's for example if you have some
+
+280
+00:11:50,760 --> 00:11:56,959
+scheduling or if you in database systems
+
+281
+00:11:54,600 --> 00:11:58,639
+if we look at transactions we try to
+
+282
+00:11:56,959 --> 00:12:01,760
+represent the dependencies between
+
+283
+00:11:58,639 --> 00:12:06,959
+transactions dependency a is waiting for
+
+284
+00:12:01,760 --> 00:12:09,440
+um uh transaction B for example uh then
+
+285
+00:12:06,959 --> 00:12:11,639
+what we want to achieve is direct ayylic
+
+286
+00:12:09,440 --> 00:12:13,199
+graph because if we have Cycles in that
+
+287
+00:12:11,639 --> 00:12:17,199
+graph this means we would have a dead
+
+288
+00:12:13,199 --> 00:12:19,760
+log within our transaction system so uh
+
+289
+00:12:17,199 --> 00:12:23,720
+it's a pretty important class
+
+290
+00:12:19,760 --> 00:12:26,160
+furthermore and um this is also the
+
+291
+00:12:23,720 --> 00:12:27,920
+other Factor as mentioned when to decide
+
+292
+00:12:26,160 --> 00:12:30,079
+when to use a graph database or when to
+
+293
+00:12:27,920 --> 00:12:32,160
+use another database is to actually look
+
+294
+00:12:30,079 --> 00:12:36,240
+at the queries we want to answer from
+
+295
+00:12:32,160 --> 00:12:39,399
+this graph data set so um queries where
+
+296
+00:12:36,240 --> 00:12:41,720
+it's really centering on the connections
+
+297
+00:12:39,399 --> 00:12:44,480
+in between now for example traversals I
+
+298
+00:12:41,720 --> 00:12:47,720
+want to find all the notes in a Stree
+
+299
+00:12:44,480 --> 00:12:50,680
+hop neighborhood uh which follow a
+
+300
+00:12:47,720 --> 00:12:54,000
+certain criteria for example or we want
+
+301
+00:12:50,680 --> 00:12:56,480
+to search a particular Noe uh which has
+
+302
+00:12:54,000 --> 00:12:58,440
+connections to a neighborhood noes so we
+
+303
+00:12:56,480 --> 00:13:01,040
+want to search for a particular graph
+
+304
+00:12:58,440 --> 00:13:03,440
+pattern across our entire graph and
+
+305
+00:13:01,040 --> 00:13:06,839
+those are simply queries where graph
+
+306
+00:13:03,440 --> 00:13:10,639
+databases are really optimized for
+
+307
+00:13:06,839 --> 00:13:13,000
+answering graph representations so um
+
+308
+00:13:10,639 --> 00:13:16,160
+this comes down to the notion of how to
+
+309
+00:13:13,000 --> 00:13:18,480
+store graphs um interestingly like graph
+
+310
+00:13:16,160 --> 00:13:20,399
+representation is a slightly overloaded
+
+311
+00:13:18,480 --> 00:13:23,959
+term we'll see a different meaning later
+
+312
+00:13:20,399 --> 00:13:25,839
+on during this talk um but here uh it's
+
+313
+00:13:23,959 --> 00:13:28,399
+it's about how can we actually represent
+
+314
+00:13:25,839 --> 00:13:31,240
+a graph so how could we feed in a graph
+
+315
+00:13:28,399 --> 00:13:33,240
+into a computer compers like drawing it
+
+316
+00:13:31,240 --> 00:13:35,120
+uh might work with some interface but
+
+317
+00:13:33,240 --> 00:13:38,120
+there needs to be some representation
+
+318
+00:13:35,120 --> 00:13:40,120
+behind and the most common
+
+319
+00:13:38,120 --> 00:13:43,519
+representations uh we'll see on the next
+
+320
+00:13:40,120 --> 00:13:46,959
+slides adjacency Matrix uh incident
+
+321
+00:13:43,519 --> 00:13:49,079
+Matrix adjacency list uh or graph leasum
+
+322
+00:13:46,959 --> 00:13:53,399
+uh but let's go
+
+323
+00:13:49,079 --> 00:13:55,720
+through so adjacency Matrix is basically
+
+324
+00:13:53,399 --> 00:13:58,720
+uh if uh n is the number of nodes is an
+
+325
+00:13:55,720 --> 00:14:01,480
+N byn Matrix but we have a one if those
+
+326
+00:13:58,720 --> 00:14:05,920
+two notes are connected so for example
+
+327
+00:14:01,480 --> 00:14:11,639
+here n uh is N1 is connected to
+
+328
+00:14:05,920 --> 00:14:14,720
+N2 and uh N2 is connected to N1 um in
+
+329
+00:14:11,639 --> 00:14:18,600
+this representation if we dealing with
+
+330
+00:14:14,720 --> 00:14:20,600
+um undirected graphs uh interestingly or
+
+331
+00:14:18,600 --> 00:14:23,959
+as as you probably can see it will be
+
+332
+00:14:20,600 --> 00:14:27,360
+mirrored across uh this uh line here
+
+333
+00:14:23,959 --> 00:14:30,160
+going through um and so if we have an
+
+334
+00:14:27,360 --> 00:14:32,199
+undirected graph we can actually safe
+
+335
+00:14:30,160 --> 00:14:35,120
+storage from The adjacency Matrix by
+
+336
+00:14:32,199 --> 00:14:38,560
+either Pro usually just focusing on the
+
+337
+00:14:35,120 --> 00:14:41,480
+upper right half of that
+
+338
+00:14:38,560 --> 00:14:44,199
+Matrix next uh we can have an incidence
+
+339
+00:14:41,480 --> 00:14:47,199
+Matrix um and that incidence Matrix is
+
+340
+00:14:44,199 --> 00:14:50,720
+basically saying uh which of the nodes
+
+341
+00:14:47,199 --> 00:14:54,000
+are incident to any of the edges so for
+
+342
+00:14:50,720 --> 00:14:58,720
+example here our note N1 is incident to
+
+343
+00:14:54,000 --> 00:15:01,040
+the edges a uh and d uh similarly and2
+
+344
+00:14:58,720 --> 00:15:05,959
+is in incident to
+
+345
+00:15:01,040 --> 00:15:09,759
+a um as we as we can see here as
+
+346
+00:15:05,959 --> 00:15:12,040
+well uh next uh would be an adjacency
+
+347
+00:15:09,759 --> 00:15:14,480
+list and uh potentially I should
+
+348
+00:15:12,040 --> 00:15:17,600
+probably change that away from uh a
+
+349
+00:15:14,480 --> 00:15:19,880
+tabular format but it's basically a list
+
+350
+00:15:17,600 --> 00:15:23,399
+of the nodes adjacent to a particular
+
+351
+00:15:19,880 --> 00:15:27,600
+node so uh and one is adjacent uh to
+
+352
+00:15:23,399 --> 00:15:30,680
+noes N2 and N4 uh whereas N2 is adjacent
+
+353
+00:15:27,600 --> 00:15:34,360
+to N1 N3 and
+
+354
+00:15:30,680 --> 00:15:37,920
+four if we get uh later into a bit more
+
+355
+00:15:34,360 --> 00:15:40,319
+advanced topics uh such as a spectral um
+
+356
+00:15:37,920 --> 00:15:41,800
+graph machine learning uh we also deal
+
+357
+00:15:40,319 --> 00:15:43,759
+with slightly more advanced
+
+358
+00:15:41,800 --> 00:15:47,440
+representation such such as for example
+
+359
+00:15:43,759 --> 00:15:49,959
+the graph leaan which is um in short
+
+360
+00:15:47,440 --> 00:15:53,160
+just the degree Matrix uh minus the
+
+361
+00:15:49,959 --> 00:15:56,240
+adjacency Matrix so the degree Matrix is
+
+362
+00:15:53,160 --> 00:16:00,160
+basically what degree do I have on the
+
+363
+00:15:56,240 --> 00:16:03,800
+diagonal so uh and one has degree two so
+
+364
+00:16:00,160 --> 00:16:07,639
+we have two edges uh and two has three
+
+365
+00:16:03,800 --> 00:16:10,519
+etc etc and if we subtract the adjacency
+
+366
+00:16:07,639 --> 00:16:13,160
+Matrix from it we get the graph Lan if
+
+367
+00:16:10,519 --> 00:16:17,120
+we have time later we'll see why that is
+
+368
+00:16:13,160 --> 00:16:21,000
+a helpful property to have in short it
+
+369
+00:16:17,120 --> 00:16:23,639
+kind of represents the flow of energy um
+
+370
+00:16:21,000 --> 00:16:26,519
+in inside such graphs so if you would
+
+371
+00:16:23,639 --> 00:16:28,199
+imagine uh you had like potential
+
+372
+00:16:26,519 --> 00:16:31,680
+electrical potential on each of the
+
+373
+00:16:28,199 --> 00:16:33,360
+nodes uh the graph La Plum represents
+
+374
+00:16:31,680 --> 00:16:34,279
+how that energy would flow throughout
+
+375
+00:16:33,360 --> 00:16:38,160
+the
+
+376
+00:16:34,279 --> 00:16:40,720
+graph okay with that we can actually
+
+377
+00:16:38,160 --> 00:16:43,639
+just jump into the first uh Jupiter
+
+378
+00:16:40,720 --> 00:16:45,720
+notebook how many of you have dealt with
+
+379
+00:16:43,639 --> 00:16:48,319
+Jupiter notebooks in the
+
+380
+00:16:45,720 --> 00:16:50,440
+past or how many of you have not seen a
+
+381
+00:16:48,319 --> 00:16:54,000
+Jupiter
+
+382
+00:16:50,440 --> 00:16:54,000
+notebook open that
+
+383
+00:16:56,560 --> 00:17:03,120
+up so in short jup notebooks I feel they
+
+384
+00:17:00,160 --> 00:17:07,720
+are a really interesting way to combine
+
+385
+00:17:03,120 --> 00:17:11,319
+executable code uh plus uh documentation
+
+386
+00:17:07,720 --> 00:17:13,720
+here um we using a collab so this is uh
+
+387
+00:17:11,319 --> 00:17:15,640
+infrastructure sponsored by Google uh
+
+388
+00:17:13,720 --> 00:17:18,520
+for running those notebooks but you can
+
+389
+00:17:15,640 --> 00:17:21,000
+also run that in NB viewer or any of uh
+
+390
+00:17:18,520 --> 00:17:23,160
+any of your favorite systems out there
+
+391
+00:17:21,000 --> 00:17:25,720
+uh I just tend to choose collab because
+
+392
+00:17:23,160 --> 00:17:27,480
+it makes uh running it very easy for
+
+393
+00:17:25,720 --> 00:17:30,559
+everyone without having to set anything
+
+394
+00:17:27,480 --> 00:17:32,919
+up uh in some corporate networks uh
+
+395
+00:17:30,559 --> 00:17:35,640
+people had uh challenges in the past to
+
+396
+00:17:32,919 --> 00:17:38,679
+connect to it uh if that's the case for
+
+397
+00:17:35,640 --> 00:17:40,640
+you just uh please reach out in the chat
+
+398
+00:17:38,679 --> 00:17:42,559
+so what we can do is simply here hit
+
+399
+00:17:40,640 --> 00:17:45,039
+that little run button and then execute
+
+400
+00:17:42,559 --> 00:17:47,960
+the code so the first is just setting up
+
+401
+00:17:45,039 --> 00:17:50,200
+our environment but uh then here it it
+
+402
+00:17:47,960 --> 00:17:52,679
+actually gets interesting so uh we can
+
+403
+00:17:50,200 --> 00:17:55,480
+create uh our first graph and then we
+
+404
+00:17:52,679 --> 00:17:59,480
+can add our edges so here we basically
+
+405
+00:17:55,480 --> 00:18:02,559
+Define a graph by by The Edge list
+
+406
+00:17:59,480 --> 00:18:05,120
+and as then we can draw it um so here we
+
+407
+00:18:02,559 --> 00:18:08,159
+started drawing it and we can actually
+
+408
+00:18:05,120 --> 00:18:11,559
+also show uh different
+
+409
+00:18:08,159 --> 00:18:15,400
+um uh different information um or
+
+410
+00:18:11,559 --> 00:18:17,799
+different properties of that graph um
+
+411
+00:18:15,400 --> 00:18:19,679
+furthermore here we can also then create
+
+412
+00:18:17,799 --> 00:18:23,240
+a directed graph we can create a
+
+413
+00:18:19,679 --> 00:18:25,760
+weighted graph um and this tool Network
+
+414
+00:18:23,240 --> 00:18:28,919
+X we'll see a bit more about it uh later
+
+415
+00:18:25,760 --> 00:18:31,720
+on also gives us like nice generators so
+
+416
+00:18:28,919 --> 00:18:34,000
+for example here uh we can create a
+
+417
+00:18:31,720 --> 00:18:35,720
+complete graph complete graph is the
+
+418
+00:18:34,000 --> 00:18:38,720
+most dense graph there is because all
+
+419
+00:18:35,720 --> 00:18:41,480
+the nodes are directly connected and so
+
+420
+00:18:38,720 --> 00:18:43,720
+here there are a lot of generators which
+
+421
+00:18:41,480 --> 00:18:44,640
+which make it very easy to generate
+
+422
+00:18:43,720 --> 00:18:47,880
+certain
+
+423
+00:18:44,640 --> 00:18:49,919
+graphs I would now propose um you only
+
+424
+00:18:47,880 --> 00:18:53,000
+have to go till here but I would give
+
+425
+00:18:49,919 --> 00:18:55,000
+you like two to three minutes to open up
+
+426
+00:18:53,000 --> 00:18:57,480
+uh that notebook see whether it works
+
+427
+00:18:55,000 --> 00:18:59,919
+for you uh and ask questions feel free
+
+428
+00:18:57,480 --> 00:19:02,799
+to play around for example ex here we
+
+429
+00:18:59,919 --> 00:19:04,880
+can add another Edge so which one is
+
+430
+00:19:02,799 --> 00:19:06,240
+missing I think two to four is missing
+
+431
+00:19:04,880 --> 00:19:08,600
+if I see that
+
+432
+00:19:06,240 --> 00:19:10,799
+correctly um and just try to get a feel
+
+433
+00:19:08,600 --> 00:19:13,679
+for what it means to execute code in a
+
+434
+00:19:10,799 --> 00:19:15,799
+Jupiter notebook and maybe also what it
+
+435
+00:19:13,679 --> 00:19:18,720
+means in terms of creating cph and how
+
+436
+00:19:15,799 --> 00:19:20,200
+that will impact uh those uh properties
+
+437
+00:19:18,720 --> 00:19:22,760
+we see down
+
+438
+00:19:20,200 --> 00:19:26,840
+here and at any point please feel free
+
+439
+00:19:22,760 --> 00:19:26,840
+to ask questions in the chat
+
+440
+00:19:40,280 --> 00:19:44,280
+uh
+
+441
+00:19:41,280 --> 00:19:44,280
+traversal
+
+442
+00:19:46,200 --> 00:19:53,799
+uh oh yeah you're right thanks I'll I'll
+
+443
+00:19:50,880 --> 00:19:56,039
+fix that right away in the uh G up reper
+
+444
+00:19:53,799 --> 00:19:56,039
+in the
+
+445
+00:19:57,640 --> 00:20:00,640
+background
+
+446
+00:20:27,640 --> 00:20:31,640
+e for
+
+447
+00:21:11,600 --> 00:21:18,559
+okay so thanks for finding the typo I
+
+448
+00:21:15,559 --> 00:21:21,279
+already fixed it in the uh GitHub
+
+449
+00:21:18,559 --> 00:21:23,960
+repo okay uh with that are there any
+
+450
+00:21:21,279 --> 00:21:26,279
+other questions uh regarding Jupiter
+
+451
+00:21:23,960 --> 00:21:29,279
+notebooks or creating first graphs out
+
+452
+00:21:26,279 --> 00:21:29,279
+here
+
+453
+00:21:32,919 --> 00:21:38,039
+then I believe we can
+
+454
+00:21:35,559 --> 00:21:41,320
+continue and trust me we'll get more
+
+455
+00:21:38,039 --> 00:21:43,440
+interesting uh notebooks as well uh
+
+456
+00:21:41,320 --> 00:21:44,919
+graph databases or yeah how can I store
+
+457
+00:21:43,440 --> 00:21:47,200
+my graphs there are a bunch of graph
+
+458
+00:21:44,919 --> 00:21:49,600
+databases out there NE forj Neptune
+
+459
+00:21:47,200 --> 00:21:51,240
+tiger graph uh if you look through the
+
+460
+00:21:49,600 --> 00:21:54,760
+lineup of this conference you'll also
+
+461
+00:21:51,240 --> 00:21:57,200
+see Talks by I think all of those uh dat
+
+462
+00:21:54,760 --> 00:21:58,640
+about those different databases uh and I
+
+463
+00:21:57,200 --> 00:22:00,679
+also don't really want to get into
+
+464
+00:21:58,640 --> 00:22:05,039
+debate which one is best as I probably I
+
+465
+00:22:00,679 --> 00:22:06,799
+might be biased um but uh what I briefly
+
+466
+00:22:05,039 --> 00:22:09,760
+want to touch up on is the different
+
+467
+00:22:06,799 --> 00:22:12,200
+graph storage models so there I would
+
+468
+00:22:09,760 --> 00:22:14,640
+say there are two types of uh graph
+
+469
+00:22:12,200 --> 00:22:17,640
+storage models so the one is a graph
+
+470
+00:22:14,640 --> 00:22:20,000
+property model and this is followed by
+
+471
+00:22:17,640 --> 00:22:22,919
+basically all of the database systems on
+
+472
+00:22:20,000 --> 00:22:25,039
+the uh previous slide uh and then on the
+
+473
+00:22:22,919 --> 00:22:27,600
+other hand there's the rdf and triple
+
+474
+00:22:25,039 --> 00:22:29,720
+store so this is what we often see with
+
+475
+00:22:27,600 --> 00:22:32,120
+knowledge grafts this is for example if
+
+476
+00:22:29,720 --> 00:22:35,080
+you look at viky data uh or other
+
+477
+00:22:32,120 --> 00:22:37,360
+systems and the name comes from that we
+
+478
+00:22:35,080 --> 00:22:39,880
+represent all the information by triples
+
+479
+00:22:37,360 --> 00:22:45,320
+of information so subject predicate and
+
+480
+00:22:39,880 --> 00:22:48,000
+object um what I'm seeing um I I feel in
+
+481
+00:22:45,320 --> 00:22:52,240
+the past those two camps of people have
+
+482
+00:22:48,000 --> 00:22:54,760
+been quite divided often it was uh
+
+483
+00:22:52,240 --> 00:22:56,679
+people in industry or application
+
+484
+00:22:54,760 --> 00:22:58,520
+developers are favoring the property
+
+485
+00:22:56,679 --> 00:23:01,000
+graph model because it makes it really
+
+486
+00:22:58,520 --> 00:23:03,080
+easy to get started whereas uh people
+
+487
+00:23:01,000 --> 00:23:05,360
+really building large scale knowledge
+
+488
+00:23:03,080 --> 00:23:07,400
+graphs uh and trying to share data
+
+489
+00:23:05,360 --> 00:23:10,120
+across different organizations their
+
+490
+00:23:07,400 --> 00:23:11,880
+triple stores uh have an advantage as
+
+491
+00:23:10,120 --> 00:23:16,520
+everything as you can already see here
+
+492
+00:23:11,880 --> 00:23:21,000
+is uh indexed or referenced by often
+
+493
+00:23:16,520 --> 00:23:25,640
+Global uh Global U uh unique resource
+
+494
+00:23:21,000 --> 00:23:27,240
+identifiers um so luckily um there's U
+
+495
+00:23:25,640 --> 00:23:30,159
+the those two camps are getting closer
+
+496
+00:23:27,240 --> 00:23:32,200
+to each other so for example rdf star is
+
+497
+00:23:30,159 --> 00:23:35,520
+a recent proposal which makes it much
+
+498
+00:23:32,200 --> 00:23:39,120
+easier to combine the property graph and
+
+499
+00:23:35,520 --> 00:23:41,080
+the uh rdf world and so I'm kind of
+
+500
+00:23:39,120 --> 00:23:42,960
+hopeful that this
+
+501
+00:23:41,080 --> 00:23:45,520
+interoperability will become better
+
+502
+00:23:42,960 --> 00:23:48,279
+between two Both Worlds because I
+
+503
+00:23:45,520 --> 00:23:51,000
+believe both worlds have some unique uh
+
+504
+00:23:48,279 --> 00:23:53,840
+benefits to bring to the
+
+505
+00:23:51,000 --> 00:23:57,440
+table next uh let's briefly touch upon
+
+506
+00:23:53,840 --> 00:23:59,400
+machine learning um if you are not
+
+507
+00:23:57,440 --> 00:24:01,200
+familiar with machine machine learning
+
+508
+00:23:59,400 --> 00:24:03,440
+if you look out for most of the
+
+509
+00:24:01,200 --> 00:24:05,640
+tutorials out there I feel they are
+
+510
+00:24:03,440 --> 00:24:08,480
+really focused on uh deep neural
+
+511
+00:24:05,640 --> 00:24:11,960
+networks at the moment or
+
+512
+00:24:08,480 --> 00:24:14,200
+uh deep learning uh and we'll get into
+
+513
+00:24:11,960 --> 00:24:17,120
+that also in a sec uh what I always
+
+514
+00:24:14,200 --> 00:24:19,320
+recommend is try to get a broadened
+
+515
+00:24:17,120 --> 00:24:21,880
+understanding what else is out there in
+
+516
+00:24:19,320 --> 00:24:24,320
+machine learning because a lot of the
+
+517
+00:24:21,880 --> 00:24:27,640
+other techniques such asort back the
+
+518
+00:24:24,320 --> 00:24:29,120
+machine uh random forest or other tools
+
+519
+00:24:27,640 --> 00:24:31,399
+uh can give you
+
+520
+00:24:29,120 --> 00:24:34,480
+either better or also more interpretive
+
+521
+00:24:31,399 --> 00:24:37,240
+results in many many
+
+522
+00:24:34,480 --> 00:24:38,960
+cases why is machine learning taking off
+
+523
+00:24:37,240 --> 00:24:41,159
+or why are we turning this data
+
+524
+00:24:38,960 --> 00:24:43,559
+scientist sitting at his laptop being
+
+525
+00:24:41,159 --> 00:24:46,679
+able to use tens oflow into the super
+
+526
+00:24:43,559 --> 00:24:49,279
+hero who can do really cool tasks um
+
+527
+00:24:46,679 --> 00:24:51,600
+there's from my point of view three main
+
+528
+00:24:49,279 --> 00:24:53,880
+factors contributing here first of all
+
+529
+00:24:51,600 --> 00:24:56,799
+we simply have the data sizes available
+
+530
+00:24:53,880 --> 00:25:00,799
+so we have enough data available to take
+
+531
+00:24:56,799 --> 00:25:03,520
+to train a GPL stream model uh to train
+
+532
+00:25:00,799 --> 00:25:05,279
+really large models because we need a
+
+533
+00:25:03,520 --> 00:25:07,480
+lot of data for those we have the
+
+534
+00:25:05,279 --> 00:25:10,120
+compute resources available and
+
+535
+00:25:07,480 --> 00:25:12,640
+furthermore we also have the let's call
+
+536
+00:25:10,120 --> 00:25:14,120
+it like techniques or research available
+
+537
+00:25:12,640 --> 00:25:16,559
+the model techniques such as
+
+538
+00:25:14,120 --> 00:25:18,559
+convolutional networks or other things
+
+539
+00:25:16,559 --> 00:25:21,320
+which really allow us to leverage and
+
+540
+00:25:18,559 --> 00:25:24,200
+scale uh the computation to those data
+
+541
+00:25:21,320 --> 00:25:27,559
+sets across large
+
+542
+00:25:24,200 --> 00:25:30,480
+clusters as uh as mentioned uh kind of
+
+543
+00:25:27,559 --> 00:25:32,279
+the uh quick take on deep learning I
+
+544
+00:25:30,480 --> 00:25:34,240
+think deep learning is a great tool
+
+545
+00:25:32,279 --> 00:25:36,440
+which is helping us in many cases so
+
+546
+00:25:34,240 --> 00:25:39,120
+there have been breakthroughs in uh
+
+547
+00:25:36,440 --> 00:25:42,000
+image recognition in natural language
+
+548
+00:25:39,120 --> 00:25:44,880
+processing in translations so I think
+
+549
+00:25:42,000 --> 00:25:47,440
+it's it's a really great tool um I just
+
+550
+00:25:44,880 --> 00:25:49,320
+feel it gives for many people this
+
+551
+00:25:47,440 --> 00:25:51,440
+promise that it's just going to do
+
+552
+00:25:49,320 --> 00:25:55,159
+everything for you in terms of machine
+
+553
+00:25:51,440 --> 00:25:57,760
+learning so uh the kind of Promise uh
+
+554
+00:25:55,159 --> 00:25:59,720
+how people often interpret it is uh in
+
+555
+00:25:57,760 --> 00:26:01,720
+traditional machine learning the flow is
+
+556
+00:25:59,720 --> 00:26:03,799
+kind of like I have some input data then
+
+557
+00:26:01,720 --> 00:26:05,919
+I'm doing feature extraction or feature
+
+558
+00:26:03,799 --> 00:26:07,960
+generation then I can run my algorithm
+
+559
+00:26:05,919 --> 00:26:10,080
+and then get getting some output the
+
+560
+00:26:07,960 --> 00:26:12,960
+hope is uh that deep learning will
+
+561
+00:26:10,080 --> 00:26:15,919
+actually learn uh which features to use
+
+562
+00:26:12,960 --> 00:26:18,559
+explicitly uh which to some degree is
+
+563
+00:26:15,919 --> 00:26:21,039
+true but on the other hand uh keep in
+
+564
+00:26:18,559 --> 00:26:24,159
+mind the more you do up front to clean
+
+565
+00:26:21,039 --> 00:26:26,679
+your data to generate features uh the
+
+566
+00:26:24,159 --> 00:26:28,840
+higher quality your data is the better
+
+567
+00:26:26,679 --> 00:26:32,039
+the outcomes of deep learning will be as
+
+568
+00:26:28,840 --> 00:26:35,720
+well so I often feel this is a bit of an
+
+569
+00:26:32,039 --> 00:26:37,080
+overrated promise uh so just be aware be
+
+570
+00:26:35,720 --> 00:26:40,279
+aware of
+
+571
+00:26:37,080 --> 00:26:42,559
+that how does uh how does a process uh
+
+572
+00:26:40,279 --> 00:26:44,760
+work or in general also the machine
+
+573
+00:26:42,559 --> 00:26:47,120
+learning process it's typically it's
+
+574
+00:26:44,760 --> 00:26:49,080
+divided into two steps uh so on the one
+
+575
+00:26:47,120 --> 00:26:53,720
+hand we got the training where we train
+
+576
+00:26:49,080 --> 00:26:56,399
+a model um that can be um uh deep neural
+
+577
+00:26:53,720 --> 00:26:58,880
+network or it can be something else um
+
+578
+00:26:56,399 --> 00:27:02,120
+and once we have trained that and it's
+
+579
+00:26:58,880 --> 00:27:04,640
+often a really expensive process we can
+
+580
+00:27:02,120 --> 00:27:07,880
+then use our trained model to do
+
+581
+00:27:04,640 --> 00:27:10,080
+inference or basically to apply it to
+
+582
+00:27:07,880 --> 00:27:13,679
+new data sets and get production value
+
+583
+00:27:10,080 --> 00:27:16,159
+out of it and uh this is the case where
+
+584
+00:27:13,679 --> 00:27:17,880
+I can then actually use a model and get
+
+585
+00:27:16,159 --> 00:27:19,840
+value out of
+
+586
+00:27:17,880 --> 00:27:23,720
+it
+
+587
+00:27:19,840 --> 00:27:26,480
+um if you never uh touched up on deep uh
+
+588
+00:27:23,720 --> 00:27:28,799
+learn uh deep learning deep neural
+
+589
+00:27:26,480 --> 00:27:30,240
+networks I just want to give we're not
+
+590
+00:27:28,799 --> 00:27:32,760
+going to go through but just want to
+
+591
+00:27:30,240 --> 00:27:34,760
+give a quick detour to the tensorflow
+
+592
+00:27:32,760 --> 00:27:38,279
+documentation so tensorflow is one of
+
+593
+00:27:34,760 --> 00:27:41,919
+those um I would say together with
+
+594
+00:27:38,279 --> 00:27:44,880
+pytorch most frequently used uh toolkits
+
+595
+00:27:41,919 --> 00:27:47,880
+for machine learning and interestingly
+
+596
+00:27:44,880 --> 00:27:49,600
+their entire documentation or almost the
+
+597
+00:27:47,880 --> 00:27:51,880
+entire documentation is also based on
+
+598
+00:27:49,600 --> 00:27:54,600
+Jupiter notebooks so they basically turn
+
+599
+00:27:51,880 --> 00:27:57,440
+the documentation into executable uh
+
+600
+00:27:54,600 --> 00:27:59,480
+notebooks which I find quite useful and
+
+601
+00:27:57,440 --> 00:28:03,080
+interesting it makes it really easy to
+
+602
+00:27:59,480 --> 00:28:07,559
+get started and just play with those uh
+
+603
+00:28:03,080 --> 00:28:07,559
+things okay uh back to the
+
+604
+00:28:08,120 --> 00:28:14,760
+slides and let's finally get into uh
+
+605
+00:28:11,240 --> 00:28:17,000
+graph powered machine learning um so
+
+606
+00:28:14,760 --> 00:28:19,039
+basically combining uh graphs and
+
+607
+00:28:17,000 --> 00:28:22,039
+machine and machine learning and what
+
+608
+00:28:19,039 --> 00:28:25,000
+can we do with that we can identify
+
+609
+00:28:22,039 --> 00:28:27,720
+information uh about important or
+
+610
+00:28:25,000 --> 00:28:29,760
+influential entities within our graph so
+
+611
+00:28:27,720 --> 00:28:32,279
+again in The Social Network that might
+
+612
+00:28:29,760 --> 00:28:34,360
+be the question who is the influential
+
+613
+00:28:32,279 --> 00:28:36,360
+person or who is the important persons
+
+614
+00:28:34,360 --> 00:28:38,559
+within that graph in a routing
+
+615
+00:28:36,360 --> 00:28:43,240
+telecommunication networks it might be
+
+616
+00:28:38,559 --> 00:28:44,960
+where the uh single failure or the like
+
+617
+00:28:43,240 --> 00:28:50,399
+dangerous failure points within that
+
+618
+00:28:44,960 --> 00:28:52,320
+Network um or similar aspects um in
+
+619
+00:28:50,399 --> 00:28:54,960
+later slides I think in four or five
+
+620
+00:28:52,320 --> 00:28:57,159
+slides uh we'll see that the notion of
+
+621
+00:28:54,960 --> 00:28:58,679
+what is important can have very
+
+622
+00:28:57,159 --> 00:29:01,240
+different meanings depending on the
+
+623
+00:28:58,679 --> 00:29:04,760
+graph we talking about we can also use
+
+624
+00:29:01,240 --> 00:29:07,399
+it for scheduling or event connection
+
+625
+00:29:04,760 --> 00:29:10,480
+taking a look at supply chain networks
+
+626
+00:29:07,399 --> 00:29:13,720
+um if you look through the in the last
+
+627
+00:29:10,480 --> 00:29:15,559
+years Corona uh and other situations
+
+628
+00:29:13,720 --> 00:29:17,919
+they really made this entire Supply
+
+629
+00:29:15,559 --> 00:29:21,960
+Global Supply Chain management a lot
+
+630
+00:29:17,919 --> 00:29:26,279
+harder and uh it's there's more and more
+
+631
+00:29:21,960 --> 00:29:28,919
+U need for trying to predict um either
+
+632
+00:29:26,279 --> 00:29:31,360
+weaknesses within one Supply chain or
+
+633
+00:29:28,919 --> 00:29:34,039
+also just impact analysis if that if a
+
+634
+00:29:31,360 --> 00:29:36,480
+ship gets stuck in a in a Panama Canal
+
+635
+00:29:34,039 --> 00:29:39,360
+or a seers canal somewhere uh what is
+
+636
+00:29:36,480 --> 00:29:42,240
+the impact on my supply chain uh how can
+
+637
+00:29:39,360 --> 00:29:44,480
+I circumvent that so uh again if you
+
+638
+00:29:42,240 --> 00:29:47,000
+think about a supply chain this is also
+
+639
+00:29:44,480 --> 00:29:48,640
+in the end of graph and so we can apply
+
+640
+00:29:47,000 --> 00:29:51,440
+graph power at machine learning graph
+
+641
+00:29:48,640 --> 00:29:54,440
+analytics to analyze our supply
+
+642
+00:29:51,440 --> 00:29:57,880
+chain the question are two graphs the
+
+643
+00:29:54,440 --> 00:29:59,559
+same so a graph isomorphism is seems
+
+644
+00:29:57,880 --> 00:30:02,000
+like like to ask a pretty simple
+
+645
+00:29:59,559 --> 00:30:04,640
+question but uh it's a very crucial
+
+646
+00:30:02,000 --> 00:30:06,399
+question looking at uh computational
+
+647
+00:30:04,640 --> 00:30:08,919
+chemistry so if you're trying to predict
+
+648
+00:30:06,399 --> 00:30:11,760
+are those two molecules either the same
+
+649
+00:30:08,919 --> 00:30:15,000
+or are they similar it might not be as
+
+650
+00:30:11,760 --> 00:30:17,679
+easy as uh as in this example because uh
+
+651
+00:30:15,000 --> 00:30:20,760
+those can be pretty large graphs and so
+
+652
+00:30:17,679 --> 00:30:23,760
+here uh we are nowadays often also
+
+653
+00:30:20,760 --> 00:30:25,840
+deploying uh approximate techniques to
+
+654
+00:30:23,760 --> 00:30:28,840
+judge whether two graphs two large
+
+655
+00:30:25,840 --> 00:30:32,000
+graphs are the same or not furthermore
+
+656
+00:30:28,840 --> 00:30:35,200
+anomal detection or fraud detection um
+
+657
+00:30:32,000 --> 00:30:36,760
+where something in my uh login structure
+
+658
+00:30:35,200 --> 00:30:38,360
+in my user Network in my
+
+659
+00:30:36,760 --> 00:30:40,399
+telecommunication networks where is
+
+660
+00:30:38,360 --> 00:30:42,200
+something unusual either is someone
+
+661
+00:30:40,399 --> 00:30:43,600
+trying to break in or is something
+
+662
+00:30:42,200 --> 00:30:46,320
+broken right
+
+663
+00:30:43,600 --> 00:30:48,840
+now uh we can also leverage graph power
+
+664
+00:30:46,320 --> 00:30:50,960
+machine learning to infer knowledge or
+
+665
+00:30:48,840 --> 00:30:52,760
+uh maybe the last example to identify
+
+666
+00:30:50,960 --> 00:30:54,880
+certain subcommunities so if we have a
+
+667
+00:30:52,760 --> 00:30:58,080
+large graph usually there are some
+
+668
+00:30:54,880 --> 00:31:01,039
+subcommunities within that graph uh and
+
+669
+00:30:58,080 --> 00:31:02,200
+we want to identify yeah who is who's
+
+670
+00:31:01,039 --> 00:31:04,039
+belonging to which of those
+
+671
+00:31:02,200 --> 00:31:07,519
+subcommunities or where those
+
+672
+00:31:04,039 --> 00:31:10,840
+subcommunities uh
+
+673
+00:31:07,519 --> 00:31:14,159
+located the question the next question I
+
+674
+00:31:10,840 --> 00:31:15,760
+usually get asked is uh how does graph
+
+675
+00:31:14,159 --> 00:31:17,840
+machine learning differ from traditional
+
+676
+00:31:15,760 --> 00:31:20,120
+machine learning and I guess in the
+
+677
+00:31:17,840 --> 00:31:23,919
+beginning this example of trying to
+
+678
+00:31:20,120 --> 00:31:27,360
+predict uh churn uh within our social
+
+679
+00:31:23,919 --> 00:31:29,720
+network and um if we would formalize
+
+680
+00:31:27,360 --> 00:31:31,399
+that a bit uh it's that default machine
+
+681
+00:31:29,720 --> 00:31:35,200
+learning would take the assumption that
+
+682
+00:31:31,399 --> 00:31:37,320
+each of the persons each of the users uh
+
+683
+00:31:35,200 --> 00:31:40,120
+are independently and then typically
+
+684
+00:31:37,320 --> 00:31:42,320
+also identically distributed data so
+
+685
+00:31:40,120 --> 00:31:45,880
+this is one of the at least common
+
+686
+00:31:42,320 --> 00:31:49,159
+assumptions for machine learnning models
+
+687
+00:31:45,880 --> 00:31:51,679
+IID um and if you look at real world
+
+688
+00:31:49,159 --> 00:31:54,399
+data sets this is often not true so we
+
+689
+00:31:51,679 --> 00:31:56,480
+had that example of our social network
+
+690
+00:31:54,399 --> 00:31:58,559
+uh where if all my friends leave I'm
+
+691
+00:31:56,480 --> 00:32:00,240
+also likely to leave and that actually
+
+692
+00:31:58,559 --> 00:32:02,639
+comes down to a property called
+
+693
+00:32:00,240 --> 00:32:07,080
+homophile that neighboring nodes are
+
+694
+00:32:02,639 --> 00:32:09,159
+similar or have similar labels um other
+
+695
+00:32:07,080 --> 00:32:11,360
+uh invariance or other properties of
+
+696
+00:32:09,159 --> 00:32:14,039
+real world data set are that we often
+
+697
+00:32:11,360 --> 00:32:16,320
+have structural equivalent nodes so if
+
+698
+00:32:14,039 --> 00:32:18,720
+we for example look at routing networks
+
+699
+00:32:16,320 --> 00:32:21,159
+or again let's look at a social network
+
+700
+00:32:18,720 --> 00:32:23,720
+we have certain influencers which kind
+
+701
+00:32:21,159 --> 00:32:25,519
+of form if you look here like there are
+
+702
+00:32:23,720 --> 00:32:27,919
+certain structural nodes which kind of
+
+703
+00:32:25,519 --> 00:32:29,760
+form the center of of a certain sub
+
+704
+00:32:27,919 --> 00:32:32,799
+Community here so they are highly
+
+705
+00:32:29,760 --> 00:32:34,679
+connected nodes and uh often those
+
+706
+00:32:32,799 --> 00:32:37,519
+structural equivalent nodes they will
+
+707
+00:32:34,679 --> 00:32:39,159
+share certain properties and might have
+
+708
+00:32:37,519 --> 00:32:41,799
+different properties from for example
+
+709
+00:32:39,159 --> 00:32:45,200
+from the neighboring uh nodes
+
+710
+00:32:41,799 --> 00:32:47,840
+here then there's Al the opposite of the
+
+711
+00:32:45,200 --> 00:32:50,440
+first Assumption of homophile that uh
+
+712
+00:32:47,840 --> 00:32:54,240
+neighboring nodes are actually different
+
+713
+00:32:50,440 --> 00:32:56,799
+um and that might be be the case in Easy
+
+714
+00:32:54,240 --> 00:33:00,080
+example are just bipartite graphs uh
+
+715
+00:32:56,799 --> 00:33:02,559
+where I have two distinct U items so I
+
+716
+00:33:00,080 --> 00:33:05,159
+have users and then products which might
+
+717
+00:33:02,559 --> 00:33:07,679
+be bought by them uh then obviously
+
+718
+00:33:05,159 --> 00:33:10,760
+neighboring notes are different but even
+
+719
+00:33:07,679 --> 00:33:12,320
+in more homogeneous graphs often NE
+
+720
+00:33:10,760 --> 00:33:18,240
+there are scenarios where neighboring
+
+721
+00:33:12,320 --> 00:33:18,240
+nodes uh share different uh different
+
+722
+00:33:18,840 --> 00:33:25,840
+properties so uh how how does it fit
+
+723
+00:33:22,320 --> 00:33:28,000
+into this picture of graph databases so
+
+724
+00:33:25,840 --> 00:33:30,559
+I I kind of feel it's a continuum uh
+
+725
+00:33:28,000 --> 00:33:33,399
+with different steps out there so on the
+
+726
+00:33:30,559 --> 00:33:36,279
+one hand we have a simple graph queries
+
+727
+00:33:33,399 --> 00:33:38,360
+like identifying an explicit pattern
+
+728
+00:33:36,279 --> 00:33:41,480
+finding a common connection between two
+
+729
+00:33:38,360 --> 00:33:44,000
+nodes in a graph I would usually
+
+730
+00:33:41,480 --> 00:33:45,679
+describe those as graph queries uh and
+
+731
+00:33:44,000 --> 00:33:48,760
+this is what any graph database should
+
+732
+00:33:45,679 --> 00:33:50,360
+be good at we basically cry about um
+
+733
+00:33:48,760 --> 00:33:53,440
+that connection we mentioned in the
+
+734
+00:33:50,360 --> 00:33:56,360
+beginning next then there's graph anal
+
+735
+00:33:53,440 --> 00:33:59,760
+um graph algorithms and graph analytics
+
+736
+00:33:56,360 --> 00:34:02,799
+and this is when we look look at
+
+737
+00:33:59,760 --> 00:34:05,639
+um um certain additional properties so
+
+738
+00:34:02,799 --> 00:34:08,159
+for example shortest pass between two
+
+739
+00:34:05,639 --> 00:34:10,000
+notes Here we cannot just look at the
+
+740
+00:34:08,159 --> 00:34:12,079
+connections but we have to look through
+
+741
+00:34:10,000 --> 00:34:14,040
+all the different connections uh in the
+
+742
+00:34:12,079 --> 00:34:16,879
+graph uh between two notes which might
+
+743
+00:34:14,040 --> 00:34:19,040
+be possible and then keep in mind and
+
+744
+00:34:16,879 --> 00:34:21,000
+filter out which is the shortest one so
+
+745
+00:34:19,040 --> 00:34:23,240
+here's a quick jump over to graph
+
+746
+00:34:21,000 --> 00:34:26,440
+analytics and this refers to getting
+
+747
+00:34:23,240 --> 00:34:28,359
+overall insights from a graph so I would
+
+748
+00:34:26,440 --> 00:34:30,480
+say like on the one hand graph queries
+
+749
+00:34:28,359 --> 00:34:32,960
+they are often also like very local to a
+
+750
+00:34:30,480 --> 00:34:34,919
+graph whereas graph analytics we try to
+
+751
+00:34:32,960 --> 00:34:37,000
+extract some value from the overall
+
+752
+00:34:34,919 --> 00:34:39,159
+graph so for example where is the
+
+753
+00:34:37,000 --> 00:34:41,679
+important notes in my graph where are
+
+754
+00:34:39,159 --> 00:34:45,679
+certain subcommunities in My
+
+755
+00:34:41,679 --> 00:34:47,919
+Graph next uh level is uh then really
+
+756
+00:34:45,679 --> 00:34:50,560
+graph machine learning and here I would
+
+757
+00:34:47,919 --> 00:34:52,159
+distinguish between uh I would refer to
+
+758
+00:34:50,560 --> 00:34:55,679
+graph machine learning as typically when
+
+759
+00:34:52,159 --> 00:34:57,920
+we touch up on some statistical models
+
+760
+00:34:55,679 --> 00:35:00,560
+so graph analytics is really an analytic
+
+761
+00:34:57,920 --> 00:35:03,560
+model if I rerun that I'll get the same
+
+762
+00:35:00,560 --> 00:35:06,320
+results but if I'm taking a look at
+
+763
+00:35:03,560 --> 00:35:08,400
+graph machine learning uh I often work
+
+764
+00:35:06,320 --> 00:35:10,960
+with a statistic or usually work with a
+
+765
+00:35:08,400 --> 00:35:13,359
+statistical model uh can be a deep
+
+766
+00:35:10,960 --> 00:35:19,119
+neural network can be some other kind of
+
+767
+00:35:13,359 --> 00:35:22,000
+uh model um and then I leverage that to
+
+768
+00:35:19,119 --> 00:35:23,960
+generalize or again uh solve an
+
+769
+00:35:22,000 --> 00:35:26,359
+unsupervised or supervised machine
+
+770
+00:35:23,960 --> 00:35:28,839
+learning
+
+771
+00:35:26,359 --> 00:35:31,320
+task what what what does it actually
+
+772
+00:35:28,839 --> 00:35:34,400
+mean in uh in a concrete example so the
+
+773
+00:35:31,320 --> 00:35:36,680
+Kora citation network is a common data
+
+774
+00:35:34,400 --> 00:35:39,839
+set used in graph research and also for
+
+775
+00:35:36,680 --> 00:35:41,680
+Benchmark marking graph systems and it's
+
+776
+00:35:39,839 --> 00:35:43,839
+basically it's a connection of papers
+
+777
+00:35:41,680 --> 00:35:45,839
+like which paper is citing what other
+
+778
+00:35:43,839 --> 00:35:48,000
+papers in addition we have some
+
+779
+00:35:45,839 --> 00:35:50,960
+additional uh labels some additional
+
+780
+00:35:48,000 --> 00:35:53,240
+content so if we had a simple graph Tre
+
+781
+00:35:50,960 --> 00:35:55,119
+this would be who cited a certain Paper
+
+782
+00:35:53,240 --> 00:35:58,040
+so just give me all the other papers who
+
+783
+00:35:55,119 --> 00:36:00,319
+cided it uh Pretty Simple Theory then if
+
+784
+00:35:58,040 --> 00:36:03,040
+we take a look at what graph algorithms
+
+785
+00:36:00,319 --> 00:36:04,760
+or graph analytics can do for us it
+
+786
+00:36:03,040 --> 00:36:07,200
+would be the question which is the most
+
+787
+00:36:04,760 --> 00:36:09,480
+cided papers or where are subcommunities
+
+788
+00:36:07,200 --> 00:36:13,079
+which are ref which are referencing each
+
+789
+00:36:09,480 --> 00:36:15,400
+other uh so either fields or in real
+
+790
+00:36:13,079 --> 00:36:17,800
+science that unfortunately also happens
+
+791
+00:36:15,400 --> 00:36:20,319
+that certain research groups are citing
+
+792
+00:36:17,800 --> 00:36:22,319
+each other over and over so you can try
+
+793
+00:36:20,319 --> 00:36:24,760
+to identify those subcommunities or
+
+794
+00:36:22,319 --> 00:36:27,720
+Cycles in in the
+
+795
+00:36:24,760 --> 00:36:29,920
+graph then if we look at graph ml we
+
+796
+00:36:27,720 --> 00:36:32,520
+solve tasks such as trying to predict
+
+797
+00:36:29,920 --> 00:36:34,800
+Rivers trying to predict missing uh
+
+798
+00:36:32,520 --> 00:36:38,720
+citations trying to predict uh feature
+
+799
+00:36:34,800 --> 00:36:41,960
+labels or other things we've seen and uh
+
+800
+00:36:38,720 --> 00:36:44,520
+this then uh comes in we try to
+
+801
+00:36:41,960 --> 00:36:46,800
+generalize that knowledge we've seen and
+
+802
+00:36:44,520 --> 00:36:49,440
+try to apply it to previously unseen
+
+803
+00:36:46,800 --> 00:36:49,440
+papers for
+
+804
+00:36:50,240 --> 00:36:57,040
+example the hard part now comes that
+
+805
+00:36:54,240 --> 00:36:59,079
+often we even have uh different options
+
+806
+00:36:57,040 --> 00:37:02,160
+available so the tool set in graph
+
+807
+00:36:59,079 --> 00:37:05,119
+machine learning is rather large so uh
+
+808
+00:37:02,160 --> 00:37:07,640
+for example just that uh task of trying
+
+809
+00:37:05,119 --> 00:37:09,560
+to predict paper labels so here uh we
+
+810
+00:37:07,640 --> 00:37:11,680
+have certain labels what a paper is
+
+811
+00:37:09,560 --> 00:37:13,800
+about and uh what are different
+
+812
+00:37:11,680 --> 00:37:16,240
+techniques we can choose here to to
+
+813
+00:37:13,800 --> 00:37:18,880
+solve that we can use label propagation
+
+814
+00:37:16,240 --> 00:37:22,480
+so label propagation each paper is
+
+815
+00:37:18,880 --> 00:37:25,119
+basically sending its uh labels to the
+
+816
+00:37:22,480 --> 00:37:27,280
+to its neighborhood uh and we do that
+
+817
+00:37:25,119 --> 00:37:29,720
+over and over again and then we for
+
+818
+00:37:27,280 --> 00:37:33,079
+example example just pick the uh most
+
+819
+00:37:29,720 --> 00:37:34,800
+frequently seen labels for unseen ones
+
+820
+00:37:33,079 --> 00:37:38,359
+we might use a graph convolutional
+
+821
+00:37:34,800 --> 00:37:41,880
+network uh for this or we just uh might
+
+822
+00:37:38,359 --> 00:37:43,680
+uh get an graph embedding and uh deploy
+
+823
+00:37:41,880 --> 00:37:45,640
+more traditional machine learning
+
+824
+00:37:43,680 --> 00:37:47,760
+techniques such as support Vector
+
+825
+00:37:45,640 --> 00:37:50,040
+machine or other things for
+
+826
+00:37:47,760 --> 00:37:52,119
+classification if embeddings or graph
+
+827
+00:37:50,040 --> 00:37:54,359
+convolutional network uh doesn't uh
+
+828
+00:37:52,119 --> 00:37:56,319
+bring a bell right now don't worry we'll
+
+829
+00:37:54,359 --> 00:37:59,359
+get into those details when we touch up
+
+830
+00:37:56,319 --> 00:38:01,760
+on uh on machine learning but I think
+
+831
+00:37:59,359 --> 00:38:03,960
+the core method should be often you have
+
+832
+00:38:01,760 --> 00:38:07,839
+different tools available and and
+
+833
+00:38:03,960 --> 00:38:09,880
+different choices available this is what
+
+834
+00:38:07,839 --> 00:38:11,960
+there a talk of mine tomorrow will
+
+835
+00:38:09,880 --> 00:38:14,880
+actually touch up on graph analytics and
+
+836
+00:38:11,960 --> 00:38:16,560
+graph ml so where's the tradeoff between
+
+837
+00:38:14,880 --> 00:38:19,440
+different uh techniques where's the
+
+838
+00:38:16,560 --> 00:38:24,520
+tradeoff between different tools um just
+
+839
+00:38:19,440 --> 00:38:26,800
+as a teaser um kind of uh the questions
+
+840
+00:38:24,520 --> 00:38:29,040
+uh you would ask yourself when trying to
+
+841
+00:38:26,800 --> 00:38:31,319
+choose between graph analytics or graph
+
+842
+00:38:29,040 --> 00:38:34,000
+machine learning uh is for example is a
+
+843
+00:38:31,319 --> 00:38:36,599
+simple model sufficient so if I if it's
+
+844
+00:38:34,000 --> 00:38:39,359
+sufficient that I uh deploy a very
+
+845
+00:38:36,599 --> 00:38:41,560
+simple uh graph analytics algorithm and
+
+846
+00:38:39,359 --> 00:38:44,560
+that scales to my data set great the
+
+847
+00:38:41,560 --> 00:38:46,560
+simpler the model the better um of
+
+848
+00:38:44,560 --> 00:38:48,800
+course also the less data I'll need the
+
+849
+00:38:46,560 --> 00:38:50,560
+more interpretate will be so simpler
+
+850
+00:38:48,800 --> 00:38:53,280
+usually machine learning is a better
+
+851
+00:38:50,560 --> 00:38:55,960
+better choice next question would be is
+
+852
+00:38:53,280 --> 00:38:59,079
+there a need for an exact answer as
+
+853
+00:38:55,960 --> 00:39:02,520
+mentioned uh graph machine learning um
+
+854
+00:38:59,079 --> 00:39:05,680
+relies on statistical models so if we
+
+855
+00:39:02,520 --> 00:39:07,839
+really need an exact reproducible answer
+
+856
+00:39:05,680 --> 00:39:10,240
+probably uh we either have to see that
+
+857
+00:39:07,839 --> 00:39:12,839
+trade of how exact that answer has to be
+
+858
+00:39:10,240 --> 00:39:15,880
+or we have to resort to more analytical
+
+859
+00:39:12,839 --> 00:39:18,480
+techniques next uh next point would be
+
+860
+00:39:15,880 --> 00:39:22,400
+how big is a data set uh how Dynamic is
+
+861
+00:39:18,480 --> 00:39:24,400
+a data set so uh graph analytics um as
+
+862
+00:39:22,400 --> 00:39:26,880
+we need to touch upon the entire graph
+
+863
+00:39:24,400 --> 00:39:29,440
+can become really expensive when dealing
+
+864
+00:39:26,880 --> 00:39:32,200
+with large data sets out there uh
+
+865
+00:39:29,440 --> 00:39:34,480
+whereas on the other hand uh taking a
+
+866
+00:39:32,200 --> 00:39:37,880
+statistical model we can work with a
+
+867
+00:39:34,480 --> 00:39:39,960
+smaller smaller neighborhood so um
+
+868
+00:39:37,880 --> 00:39:42,640
+depending on how complex a model is if
+
+869
+00:39:39,960 --> 00:39:44,720
+we again have a simple model uh the
+
+870
+00:39:42,640 --> 00:39:47,720
+graph machine learning will scale to
+
+871
+00:39:44,720 --> 00:39:50,880
+larger data sets second part is how
+
+872
+00:39:47,720 --> 00:39:55,520
+Dynamic is our data set uh so how often
+
+873
+00:39:50,880 --> 00:39:57,839
+does it change so um imagine for example
+
+874
+00:39:55,520 --> 00:40:02,640
+um a lot of people
+
+875
+00:39:57,839 --> 00:40:06,440
+uh or fa Facebook LinkedIn uh graph of
+
+876
+00:40:02,640 --> 00:40:09,040
+users this of course is changing every
+
+877
+00:40:06,440 --> 00:40:12,520
+joining there are people
+
+878
+00:40:09,040 --> 00:40:12,520
+leaving was there a
+
+879
+00:40:14,440 --> 00:40:22,599
+question no okay um and so that graph
+
+880
+00:40:19,000 --> 00:40:24,520
+keeps updating over time and so here um
+
+881
+00:40:22,599 --> 00:40:26,920
+this is also referring to uh question
+
+882
+00:40:24,520 --> 00:40:28,400
+number five uh the question is whether
+
+883
+00:40:26,920 --> 00:40:30,760
+we need something like inductive
+
+884
+00:40:28,400 --> 00:40:33,720
+learning so graph analytics typically if
+
+885
+00:40:30,760 --> 00:40:35,839
+something changes uh I have to start
+
+886
+00:40:33,720 --> 00:40:38,040
+most the time I have to start over again
+
+887
+00:40:35,839 --> 00:40:40,119
+whereas I have modern graph machine
+
+888
+00:40:38,040 --> 00:40:42,520
+learning statistical models they can
+
+889
+00:40:40,119 --> 00:40:45,119
+actually uh serve for inductive learning
+
+890
+00:40:42,520 --> 00:40:46,560
+so also apply to previously unseen or
+
+891
+00:40:45,119 --> 00:40:49,200
+changed data
+
+892
+00:40:46,560 --> 00:40:51,720
+sets next question is then where are the
+
+893
+00:40:49,200 --> 00:40:53,520
+performance requirements uh if we take a
+
+894
+00:40:51,720 --> 00:40:55,839
+look at graph machine learning uh this
+
+895
+00:40:53,520 --> 00:40:57,520
+will actually be split in two phases we
+
+896
+00:40:55,839 --> 00:41:00,079
+have a training phase for training our
+
+897
+00:40:57,520 --> 00:41:04,160
+model and then the inference phase so in
+
+898
+00:41:00,079 --> 00:41:06,119
+many scenarios uh where we can actually
+
+899
+00:41:04,160 --> 00:41:07,560
+split those into two parts an offline
+
+900
+00:41:06,119 --> 00:41:09,960
+training part and then an online
+
+901
+00:41:07,560 --> 00:41:12,560
+inference part we can get pretty quick
+
+902
+00:41:09,960 --> 00:41:15,240
+results uh from graph machine learning
+
+903
+00:41:12,560 --> 00:41:17,400
+models last but not least is the point
+
+904
+00:41:15,240 --> 00:41:19,000
+of do we need explainable results so do
+
+905
+00:41:17,400 --> 00:41:21,760
+we need to understand for example in
+
+906
+00:41:19,000 --> 00:41:24,280
+health care Finance how did we arrive at
+
+907
+00:41:21,760 --> 00:41:26,960
+a certain conclusion uh then there of
+
+908
+00:41:24,280 --> 00:41:30,599
+course uh graph analytics is is a clear
+
+909
+00:41:26,960 --> 00:41:33,079
+advant c yeah it's analytic and we can
+
+910
+00:41:30,599 --> 00:41:35,119
+uh really dig deep and more or less
+
+911
+00:41:33,079 --> 00:41:37,400
+easily understand how a certain decision
+
+912
+00:41:35,119 --> 00:41:38,839
+has been made graph machine learning or
+
+913
+00:41:37,400 --> 00:41:41,400
+machine learning in general there's a
+
+914
+00:41:38,839 --> 00:41:45,079
+trend towards more explainable models uh
+
+915
+00:41:41,400 --> 00:41:48,119
+but I would say that's an area of active
+
+916
+00:41:45,079 --> 00:41:50,240
+research okay with that uh unless there
+
+917
+00:41:48,119 --> 00:41:54,640
+are any questions uh I would dive into
+
+918
+00:41:50,240 --> 00:41:54,640
+the area of graph analytics a bit
+
+919
+00:41:55,880 --> 00:42:01,599
+more stre 3 2
+
+920
+00:41:59,920 --> 00:42:06,200
+1
+
+921
+00:42:01,599 --> 00:42:09,960
+okay graph algorithms um so how can we
+
+922
+00:42:06,200 --> 00:42:12,520
+extract Knowledge from a graph so on on
+
+923
+00:42:09,960 --> 00:42:15,119
+the one hand we got uh search and
+
+924
+00:42:12,520 --> 00:42:17,319
+traversal uh algorithms so for example
+
+925
+00:42:15,119 --> 00:42:20,079
+we try to find a particular node or we
+
+926
+00:42:17,319 --> 00:42:24,240
+try to find a particular Edge uh for
+
+927
+00:42:20,079 --> 00:42:26,040
+example if we have a heterogeneous graph
+
+928
+00:42:24,240 --> 00:42:30,720
+with different not types we're trying to
+
+929
+00:42:26,040 --> 00:42:33,599
+find an um an edge uh connecting an a
+
+930
+00:42:30,720 --> 00:42:36,119
+movie node of type movie with a node of
+
+931
+00:42:33,599 --> 00:42:38,359
+type director because we interested in
+
+932
+00:42:36,119 --> 00:42:41,280
+the movie director pair uh that could be
+
+933
+00:42:38,359 --> 00:42:42,520
+a search uh or traversal problem we're
+
+934
+00:42:41,280 --> 00:42:47,040
+trying to
+
+935
+00:42:42,520 --> 00:42:49,720
+find next uh class of uh algorithms is
+
+936
+00:42:47,040 --> 00:42:52,559
+concerned with path finding so how can I
+
+937
+00:42:49,720 --> 00:42:54,920
+get from A to B and there might be
+
+938
+00:42:52,559 --> 00:42:56,680
+different uh different classes of that
+
+939
+00:42:54,920 --> 00:42:59,760
+what is the shortest pass what is a
+
+940
+00:42:56,680 --> 00:43:01,880
+redund paths you also might want to get
+
+941
+00:42:59,760 --> 00:43:03,839
+all the different paths to get from A to
+
+942
+00:43:01,880 --> 00:43:06,760
+B so there exist like a number of
+
+943
+00:43:03,839 --> 00:43:07,960
+variants of this how do I get from A to
+
+944
+00:43:06,760 --> 00:43:11,559
+B
+
+945
+00:43:07,960 --> 00:43:13,800
+problem next and uh I personally find
+
+946
+00:43:11,559 --> 00:43:16,880
+very interesting area of such graph
+
+947
+00:43:13,800 --> 00:43:19,559
+algorithms is the notion of centrality
+
+948
+00:43:16,880 --> 00:43:21,800
+uh we touched about that a bit early in
+
+949
+00:43:19,559 --> 00:43:24,720
+the introduction we want to say we want
+
+950
+00:43:21,800 --> 00:43:27,160
+to identify important notes in that
+
+951
+00:43:24,720 --> 00:43:29,839
+graph and see bit more technical notes
+
+952
+00:43:27,160 --> 00:43:33,359
+notion is we want to identify Central uh
+
+953
+00:43:29,839 --> 00:43:36,000
+notes in a graph and uh depending on
+
+954
+00:43:33,359 --> 00:43:37,760
+what that means uh what central what
+
+955
+00:43:36,000 --> 00:43:39,880
+important means for us we might have
+
+956
+00:43:37,760 --> 00:43:43,160
+different measures we'll see in a
+
+957
+00:43:39,880 --> 00:43:45,760
+second cycle detection we also briefly
+
+958
+00:43:43,160 --> 00:43:47,160
+touched upon that already in a database
+
+959
+00:43:45,760 --> 00:43:48,920
+system or somewhere where I try to
+
+960
+00:43:47,160 --> 00:43:50,720
+identify Cycles between different
+
+961
+00:43:48,920 --> 00:43:52,599
+transactions depending on each other for
+
+962
+00:43:50,720 --> 00:43:54,880
+deadlock detection also some more
+
+963
+00:43:52,599 --> 00:43:56,760
+General network analysis we might be
+
+964
+00:43:54,880 --> 00:43:58,960
+curious about whether there are Cycles
+
+965
+00:43:56,760 --> 00:44:01,760
+Within our Network or whether for
+
+966
+00:43:58,960 --> 00:44:03,800
+example we really have a d directed AC
+
+967
+00:44:01,760 --> 00:44:06,599
+click graph
+
+968
+00:44:03,800 --> 00:44:09,839
+available then we also have Community
+
+969
+00:44:06,599 --> 00:44:12,400
+detection where we try to identify
+
+970
+00:44:09,839 --> 00:44:16,880
+separate communities within uh that
+
+971
+00:44:12,400 --> 00:44:19,440
+larger uh subgraph so do we have any
+
+972
+00:44:16,880 --> 00:44:23,839
+concrete subgraphs out
+
+973
+00:44:19,440 --> 00:44:26,640
+there um so problems uh we we can deal
+
+974
+00:44:23,839 --> 00:44:29,240
+with graph algorithms so for example U
+
+975
+00:44:26,640 --> 00:44:32,119
+minimum spanning tree is one of them uh
+
+976
+00:44:29,240 --> 00:44:34,000
+if you dealt with programming challenges
+
+977
+00:44:32,119 --> 00:44:36,119
+for interviews or somewhere you might
+
+978
+00:44:34,000 --> 00:44:39,160
+have come across it uh the question is
+
+979
+00:44:36,119 --> 00:44:42,839
+what is kind of the subgraph the deck
+
+980
+00:44:39,160 --> 00:44:46,119
+the uh the uh subgraph without any
+
+981
+00:44:42,839 --> 00:44:49,400
+Cycles um that is minimal so where have
+
+982
+00:44:46,119 --> 00:44:52,680
+the minimal cost and this has a large
+
+983
+00:44:49,400 --> 00:44:55,160
+number of interesting uh uses so of
+
+984
+00:44:52,680 --> 00:44:57,640
+course for example for a network uh
+
+985
+00:44:55,160 --> 00:45:00,520
+Network protocols uh I think water
+
+986
+00:44:57,640 --> 00:45:03,559
+Gateway protocol depends on it but also
+
+987
+00:45:00,520 --> 00:45:05,920
+many others also for image segmentation
+
+988
+00:45:03,559 --> 00:45:09,359
+uh this can be used uh here's a link to
+
+989
+00:45:05,920 --> 00:45:12,079
+the Wikipedia article for that uh and uh
+
+990
+00:45:09,359 --> 00:45:14,680
+also in in general where I might just
+
+991
+00:45:12,079 --> 00:45:17,000
+want to consider a subgraph of the
+
+992
+00:45:14,680 --> 00:45:20,000
+entire graph also minimal spanning tree
+
+993
+00:45:17,000 --> 00:45:23,720
+might be a way of identifying the
+
+994
+00:45:20,000 --> 00:45:25,319
+subgraph shortest pass um I mean kind of
+
+995
+00:45:23,720 --> 00:45:28,240
+obvious how do what is the quickest way
+
+996
+00:45:25,319 --> 00:45:31,119
+from getting from A to B um still there
+
+997
+00:45:28,240 --> 00:45:33,440
+exist a number of algorithms for doing
+
+998
+00:45:31,119 --> 00:45:36,319
+so uh with different properties for
+
+999
+00:45:33,440 --> 00:45:37,599
+example considering negative Ed Edge Wes
+
+1000
+00:45:36,319 --> 00:45:40,440
+or other
+
+1001
+00:45:37,599 --> 00:45:42,200
+things um then um there are also
+
+1002
+00:45:40,440 --> 00:45:43,960
+different variates so for example I
+
+1003
+00:45:42,200 --> 00:45:46,520
+might be interested in the K shortest
+
+1004
+00:45:43,960 --> 00:45:50,240
+path so not just the one single shortest
+
+1005
+00:45:46,520 --> 00:45:52,520
+path but the N or k number of shortest
+
+1006
+00:45:50,240 --> 00:45:54,960
+paths uh so I have a backup if for
+
+1007
+00:45:52,520 --> 00:45:57,920
+example something fails single Source
+
+1008
+00:45:54,960 --> 00:46:00,720
+shortest path I might want to identify
+
+1009
+00:45:57,920 --> 00:46:04,000
+from node one the shortest path to all
+
+1010
+00:46:00,720 --> 00:46:05,800
+other algorithms or even the all pair
+
+1011
+00:46:04,000 --> 00:46:09,400
+shortest path so I want to see the
+
+1012
+00:46:05,800 --> 00:46:12,200
+shortest pass between all pairs of nodes
+
+1013
+00:46:09,400 --> 00:46:16,480
+and here obviously improved algorithms
+
+1014
+00:46:12,200 --> 00:46:18,960
+exist and Computing uh n times or n * n
+
+1015
+00:46:16,480 --> 00:46:21,680
+minus one the shortest pass between all
+
+1016
+00:46:18,960 --> 00:46:21,680
+nodes uh
+
+1017
+00:46:22,359 --> 00:46:28,599
+individually uh one second yeah um
+
+1018
+00:46:26,319 --> 00:46:31,880
+community detection so we try to
+
+1019
+00:46:28,599 --> 00:46:33,720
+identify uh certain sub uh components so
+
+1020
+00:46:31,880 --> 00:46:36,400
+often connected weakly or strongly
+
+1021
+00:46:33,720 --> 00:46:38,680
+connected components uh we might uh
+
+1022
+00:46:36,400 --> 00:46:41,880
+again also deploy label propagation for
+
+1023
+00:46:38,680 --> 00:46:44,760
+that so if nodes have certain labels um
+
+1024
+00:46:41,880 --> 00:46:47,680
+we might propagate them and try to find
+
+1025
+00:46:44,760 --> 00:46:50,520
+uh what's uh what's going on or where we
+
+1026
+00:46:47,680 --> 00:46:52,480
+accumulate the same labels uh in the end
+
+1027
+00:46:50,520 --> 00:46:56,480
+and interestingly I think this is
+
+1028
+00:46:52,480 --> 00:46:57,359
+already one of those scenarios uh where
+
+1029
+00:46:56,480 --> 00:47:01,280
+uh we
+
+1030
+00:46:57,359 --> 00:47:02,880
+see two different kinds of uh graph
+
+1031
+00:47:01,280 --> 00:47:05,720
+algorithms or two different kinds of
+
+1032
+00:47:02,880 --> 00:47:08,280
+information we are using so here on the
+
+1033
+00:47:05,720 --> 00:47:11,000
+upper side like we only use structural
+
+1034
+00:47:08,280 --> 00:47:13,400
+information how are nodes connected but
+
+1035
+00:47:11,000 --> 00:47:16,040
+if we dive into that area of a label
+
+1036
+00:47:13,400 --> 00:47:18,480
+propagation we might use actual labels
+
+1037
+00:47:16,040 --> 00:47:21,599
+of the noes so it might be again for
+
+1038
+00:47:18,480 --> 00:47:24,640
+example CH probabilities or some other
+
+1039
+00:47:21,599 --> 00:47:27,280
+um labels which we already have on those
+
+1040
+00:47:24,640 --> 00:47:29,520
+graph nodes and uh this will see later
+
+1041
+00:47:27,280 --> 00:47:31,760
+on as well with those graph toed machine
+
+1042
+00:47:29,520 --> 00:47:34,000
+learning uh or different machine
+
+1043
+00:47:31,760 --> 00:47:36,079
+learning models how much of information
+
+1044
+00:47:34,000 --> 00:47:38,160
+can they leverage do they only rely on
+
+1045
+00:47:36,079 --> 00:47:40,280
+structural information or do they
+
+1046
+00:47:38,160 --> 00:47:42,400
+actually distinguish between also
+
+1047
+00:47:40,280 --> 00:47:45,160
+property information or even Edge
+
+1048
+00:47:42,400 --> 00:47:50,440
+information uh out
+
+1049
+00:47:45,160 --> 00:47:52,640
+there then um last um and as uh I've
+
+1050
+00:47:50,440 --> 00:47:55,520
+promised earlier centrality and the
+
+1051
+00:47:52,640 --> 00:47:58,440
+different meanings of centrality I think
+
+1052
+00:47:55,520 --> 00:48:00,119
+if we want to identif ify uh in the
+
+1053
+00:47:58,440 --> 00:48:03,000
+graph here on the right what might be
+
+1054
+00:48:00,119 --> 00:48:05,680
+the most Central most important note an
+
+1055
+00:48:03,000 --> 00:48:08,119
+obvious measure is oh the most connected
+
+1056
+00:48:05,680 --> 00:48:10,200
+note and this is also referred to as
+
+1057
+00:48:08,119 --> 00:48:12,480
+degree centrality and that would be this
+
+1058
+00:48:10,200 --> 00:48:15,160
+blue note here in the middle uh because
+
+1059
+00:48:12,480 --> 00:48:16,079
+it's just connected to most other notes
+
+1060
+00:48:15,160 --> 00:48:19,200
+out
+
+1061
+00:48:16,079 --> 00:48:21,760
+there uh the next measure is the
+
+1062
+00:48:19,200 --> 00:48:24,440
+closeness centrality imagine for example
+
+1063
+00:48:21,760 --> 00:48:27,040
+we're trying to figure out where to
+
+1064
+00:48:24,440 --> 00:48:29,520
+build a certain Distribution Hub or or
+
+1065
+00:48:27,040 --> 00:48:31,559
+something like that uh then we are not
+
+1066
+00:48:29,520 --> 00:48:33,880
+just interested in like the direct
+
+1067
+00:48:31,559 --> 00:48:35,599
+connections to most nodes but we
+
+1068
+00:48:33,880 --> 00:48:37,800
+probably might be interested into like
+
+1069
+00:48:35,599 --> 00:48:40,880
+the average closeness to all nodes we
+
+1070
+00:48:37,800 --> 00:48:45,480
+want to be able to reach all nodes uh on
+
+1071
+00:48:40,880 --> 00:48:48,400
+like average uh um an optimized average
+
+1072
+00:48:45,480 --> 00:48:50,839
+cost and this is what the closeness
+
+1073
+00:48:48,400 --> 00:48:53,280
+centrality and here if you count what is
+
+1074
+00:48:50,839 --> 00:48:55,319
+the distance from all those green nodes
+
+1075
+00:48:53,280 --> 00:48:57,920
+to all other nodes you'll actually
+
+1076
+00:48:55,319 --> 00:49:00,839
+you'll see that they all have the same
+
+1077
+00:48:57,920 --> 00:49:04,240
+uh average cost of getting
+
+1078
+00:49:00,839 --> 00:49:06,760
+there uh next is the betweenness
+
+1079
+00:49:04,240 --> 00:49:09,440
+centrality and that refers to how
+
+1080
+00:49:06,760 --> 00:49:12,839
+important is certain notice in
+
+1081
+00:49:09,440 --> 00:49:16,760
+connecting other other components other
+
+1082
+00:49:12,839 --> 00:49:19,319
+subgraphs out here and uh so this is for
+
+1083
+00:49:16,760 --> 00:49:21,920
+example if you're analyzing routing
+
+1084
+00:49:19,319 --> 00:49:24,559
+networks or other networks uh this is a
+
+1085
+00:49:21,920 --> 00:49:26,839
+metric where hey if this node fails you
+
+1086
+00:49:24,559 --> 00:49:29,640
+can already see this will deteriorate
+
+1087
+00:49:26,839 --> 00:49:33,160
+into two subgraphs whereas if this node
+
+1088
+00:49:29,640 --> 00:49:35,720
+would fail uh see we we can still reach
+
+1089
+00:49:33,160 --> 00:49:40,359
+all nodes from all other nodes so what
+
+1090
+00:49:35,720 --> 00:49:42,680
+is kind of like the failure impact um of
+
+1091
+00:49:40,359 --> 00:49:43,599
+of a certain note if you if you want to
+
+1092
+00:49:42,680 --> 00:49:47,200
+view it as
+
+1093
+00:49:43,599 --> 00:49:49,680
+such and uh the notion of that is how
+
+1094
+00:49:47,200 --> 00:49:51,599
+often a node appears on the shortest
+
+1095
+00:49:49,680 --> 00:49:54,240
+path so if we compute all the pair
+
+1096
+00:49:51,599 --> 00:49:56,720
+shortest path so shortest between all
+
+1097
+00:49:54,240 --> 00:49:58,920
+nodes question is how often does a node
+
+1098
+00:49:56,720 --> 00:50:02,960
+here on the shortest
+
+1099
+00:49:58,920 --> 00:50:05,640
+path okay uh next uh comes to a
+
+1100
+00:50:02,960 --> 00:50:08,720
+particular algorithm or uh so-called
+
+1101
+00:50:05,640 --> 00:50:10,480
+transitive influence and that's page
+
+1102
+00:50:08,720 --> 00:50:14,200
+rank
+
+1103
+00:50:10,480 --> 00:50:15,960
+um uh but be four let's actually maybe
+
+1104
+00:50:14,200 --> 00:50:20,160
+briefly go through Page Rank and then go
+
+1105
+00:50:15,960 --> 00:50:23,079
+over to the exercise um so page rank uh
+
+1106
+00:50:20,160 --> 00:50:27,160
+I think for me page rank is this example
+
+1107
+00:50:23,079 --> 00:50:29,520
+uh where uh Google has turned uh has
+
+1108
+00:50:27,160 --> 00:50:32,119
+interpreted a particular problem as a
+
+1109
+00:50:29,520 --> 00:50:33,880
+graph problem and that made Google very
+
+1110
+00:50:32,119 --> 00:50:36,200
+successful in in the beginning by now
+
+1111
+00:50:33,880 --> 00:50:37,720
+they are not using patre anymore but in
+
+1112
+00:50:36,200 --> 00:50:39,920
+the beginning it was used to kind of
+
+1113
+00:50:37,720 --> 00:50:42,000
+rank the results which website should
+
+1114
+00:50:39,920 --> 00:50:44,280
+they show you first if you're looking
+
+1115
+00:50:42,000 --> 00:50:46,040
+for graphs on the Internet or for
+
+1116
+00:50:44,280 --> 00:50:50,880
+connected data World which result should
+
+1117
+00:50:46,040 --> 00:50:54,839
+they show first and the approach um page
+
+1118
+00:50:50,880 --> 00:50:56,599
+rank takes to that is um uh so-called
+
+1119
+00:50:54,839 --> 00:50:58,680
+transitive influence so basically
+
+1120
+00:50:56,599 --> 00:51:01,200
+basically the number of links and the
+
+1121
+00:50:58,680 --> 00:51:05,079
+quality of links determines how
+
+1122
+00:51:01,200 --> 00:51:07,079
+important I am so if I'm a website which
+
+1123
+00:51:05,079 --> 00:51:08,960
+receives a lot of incoming links from
+
+1124
+00:51:07,079 --> 00:51:11,559
+other websites so for example let's take
+
+1125
+00:51:08,960 --> 00:51:14,319
+here the yellow bubble here on the right
+
+1126
+00:51:11,559 --> 00:51:15,960
+uh it gets a lot of links from uh those
+
+1127
+00:51:14,319 --> 00:51:18,799
+green ones down here from the blue one
+
+1128
+00:51:15,960 --> 00:51:19,839
+and others the more transitive influence
+
+1129
+00:51:18,799 --> 00:51:24,880
+I'll
+
+1130
+00:51:19,839 --> 00:51:27,520
+get on the other hand um I can also be
+
+1131
+00:51:24,880 --> 00:51:31,040
+important or Central if I'm getting
+
+1132
+00:51:27,520 --> 00:51:33,200
+references from only few but very
+
+1133
+00:51:31,040 --> 00:51:35,960
+important sites so imagine for example
+
+1134
+00:51:33,200 --> 00:51:38,040
+Wikipedia is referencing use so here
+
+1135
+00:51:35,960 --> 00:51:40,960
+yellow is Wikipedia and we have that red
+
+1136
+00:51:38,040 --> 00:51:43,920
+side being uh referenced as the source
+
+1137
+00:51:40,960 --> 00:51:46,119
+of Tres the main reference for graphs
+
+1138
+00:51:43,920 --> 00:51:49,119
+then probably we are also pretty
+
+1139
+00:51:46,119 --> 00:51:51,280
+important and this is what's considered
+
+1140
+00:51:49,119 --> 00:51:54,640
+as transitive influences you can imagine
+
+1141
+00:51:51,280 --> 00:51:57,319
+the um the importance kind of flowing
+
+1142
+00:51:54,640 --> 00:51:59,319
+through that graph uh here until it
+
+1143
+00:51:57,319 --> 00:52:02,760
+becomes uh a stable
+
+1144
+00:51:59,319 --> 00:52:05,559
+graph and the other way in which you can
+
+1145
+00:52:02,760 --> 00:52:08,480
+interpret that problem is How likely is
+
+1146
+00:52:05,559 --> 00:52:10,720
+a random server uh ending up at our page
+
+1147
+00:52:08,480 --> 00:52:14,119
+so a random server he'll start on any of
+
+1148
+00:52:10,720 --> 00:52:16,400
+the pages he'll have um n n number of
+
+1149
+00:52:14,119 --> 00:52:18,720
+clicks uh and How likely will he end up
+
+1150
+00:52:16,400 --> 00:52:21,880
+on uh one of those notes and then you
+
+1151
+00:52:18,720 --> 00:52:23,920
+can already see uh if we are coming from
+
+1152
+00:52:21,880 --> 00:52:25,799
+U like those small noes which don't have
+
+1153
+00:52:23,920 --> 00:52:27,720
+any incoming ones it's very unlikely
+
+1154
+00:52:25,799 --> 00:52:29,520
+that someone will end end up there but
+
+1155
+00:52:27,720 --> 00:52:31,079
+on the other hand here as a lot of links
+
+1156
+00:52:29,520 --> 00:52:34,640
+are coming in so it's likely that
+
+1157
+00:52:31,079 --> 00:52:37,760
+someone will end up here and similar as
+
+1158
+00:52:34,640 --> 00:52:39,640
+someone is likely to end up here um as
+
+1159
+00:52:37,760 --> 00:52:41,440
+there's only like one L going from here
+
+1160
+00:52:39,640 --> 00:52:45,040
+there are also people very likely to end
+
+1161
+00:52:41,440 --> 00:52:46,440
+up here on the C Noe because yeah just a
+
+1162
+00:52:45,040 --> 00:52:48,599
+lot of people are likely to end up on
+
+1163
+00:52:46,440 --> 00:52:52,720
+the B Noe
+
+1164
+00:52:48,599 --> 00:52:56,040
+here um and we'll dive into how they can
+
+1165
+00:52:52,720 --> 00:52:58,960
+be computed in a second um with that I
+
+1166
+00:52:56,040 --> 00:53:02,520
+would add actually uh lead you over to
+
+1167
+00:52:58,960 --> 00:53:05,000
+the next uh part of the exercise and if
+
+1168
+00:53:02,520 --> 00:53:06,799
+you still have it open uh it's the same
+
+1169
+00:53:05,000 --> 00:53:09,160
+notebook as before but you can also use
+
+1170
+00:53:06,799 --> 00:53:11,119
+this uh link here and now we are
+
+1171
+00:53:09,160 --> 00:53:13,520
+concerned uh with the second part so
+
+1172
+00:53:11,119 --> 00:53:15,240
+here under graph algorithms if you still
+
+1173
+00:53:13,520 --> 00:53:17,680
+have the first version loaded just get
+
+1174
+00:53:15,240 --> 00:53:19,400
+rid of the NX here if you reloaded it
+
+1175
+00:53:17,680 --> 00:53:23,720
+should hopefully be
+
+1176
+00:53:19,400 --> 00:53:26,119
+gone and uh then we can go in uh draw
+
+1177
+00:53:23,720 --> 00:53:30,200
+our graphs do things like depths first
+
+1178
+00:53:26,119 --> 00:53:32,359
+bre sech uh search across it uh find
+
+1179
+00:53:30,200 --> 00:53:35,359
+shortest paths with different
+
+1180
+00:53:32,359 --> 00:53:37,880
+algorithms um so for example you can try
+
+1181
+00:53:35,359 --> 00:53:39,960
+to play with your graph uh and different
+
+1182
+00:53:37,880 --> 00:53:42,520
+algorithms check out what happens if it
+
+1183
+00:53:39,960 --> 00:53:45,079
+has uh negative weights we can do the
+
+1184
+00:53:42,520 --> 00:53:47,960
+minimal spanning tree we can do cycle
+
+1185
+00:53:45,079 --> 00:53:50,559
+detection um we can have different
+
+1186
+00:53:47,960 --> 00:53:52,480
+centrality algorithms and I think this
+
+1187
+00:53:50,559 --> 00:53:55,400
+is where I just want to give a short
+
+1188
+00:53:52,480 --> 00:53:57,400
+shout out to this network X tool it's I
+
+1189
+00:53:55,400 --> 00:54:01,440
+would always describe it is kind of the
+
+1190
+00:53:57,400 --> 00:54:04,440
+Swift army knife of network analysis or
+
+1191
+00:54:01,440 --> 00:54:08,040
+graph analysis in Python so if your
+
+1192
+00:54:04,440 --> 00:54:10,880
+graph is small enough to fit on single
+
+1193
+00:54:08,040 --> 00:54:12,799
+node on a small single node then this is
+
+1194
+00:54:10,880 --> 00:54:14,480
+a really great tool because it comes
+
+1195
+00:54:12,799 --> 00:54:17,319
+with a lot of different
+
+1196
+00:54:14,480 --> 00:54:19,680
+Notions and uh so just if you browse
+
+1197
+00:54:17,319 --> 00:54:22,680
+through here the different centrality
+
+1198
+00:54:19,680 --> 00:54:24,599
+measures you'll see uh how many how many
+
+1199
+00:54:22,680 --> 00:54:27,480
+options you have
+
+1200
+00:54:24,599 --> 00:54:30,119
+here so uh I would give you again like
+
+1201
+00:54:27,480 --> 00:54:32,280
+two to three minutes to go through and
+
+1202
+00:54:30,119 --> 00:54:35,839
+feel free to ask questions again in the
+
+1203
+00:54:32,280 --> 00:54:38,400
+meantime about algorithms about uh graph
+
+1204
+00:54:35,839 --> 00:54:40,839
+algorithms or any graph topic you're
+
+1205
+00:54:38,400 --> 00:54:40,839
+curious
+
+1206
+00:54:55,319 --> 00:54:59,359
+about e
+
+1207
+00:55:30,359 --> 00:55:35,359
+I suppose no one is having problems with
+
+1208
+00:55:32,680 --> 00:55:35,359
+collab so
+
+1209
+00:55:36,319 --> 00:55:41,599
+far otherwise if maybe just as a quick
+
+1210
+00:55:39,559 --> 00:55:44,359
+side note if you're interested to do
+
+1211
+00:55:41,599 --> 00:55:47,960
+something like that
+
+1212
+00:55:44,359 --> 00:55:47,960
+um NB
+
+1213
+00:55:49,039 --> 00:55:53,559
+viewer uh there there are other tools I
+
+1214
+00:55:51,680 --> 00:55:57,000
+think I've linked them on one of the
+
+1215
+00:55:53,559 --> 00:56:00,000
+slides uh available where you can build
+
+1216
+00:55:57,000 --> 00:56:02,640
+that same infrastructure internally uh
+
+1217
+00:56:00,000 --> 00:56:06,079
+so if you're interested in running tools
+
+1218
+00:56:02,640 --> 00:56:07,520
+like that um there's uh a lot of
+
+1219
+00:56:06,079 --> 00:56:09,160
+infrastructure out there that you can
+
+1220
+00:56:07,520 --> 00:56:10,640
+also host it internally and you don't
+
+1221
+00:56:09,160 --> 00:56:14,720
+have to leverage some Google
+
+1222
+00:56:10,640 --> 00:56:14,720
+infrastructure for it
+
+1223
+00:56:29,119 --> 00:56:34,119
+I would give one more minute and then
+
+1224
+00:56:31,119 --> 00:56:34,119
+continue
+
+1225
+00:57:15,640 --> 00:57:21,160
+okay um imagine now yeah again we are
+
+1226
+00:57:19,000 --> 00:57:23,480
+Google and we want to write run this
+
+1227
+00:57:21,160 --> 00:57:24,880
+page rank over the yeah pretty much
+
+1228
+00:57:23,480 --> 00:57:26,720
+entire internet because we need to
+
+1229
+00:57:24,880 --> 00:57:28,680
+analyze the link structure
+
+1230
+00:57:26,720 --> 00:57:31,280
+obviously a single machine will be way
+
+1231
+00:57:28,680 --> 00:57:34,720
+too small for that so Google actually
+
+1232
+00:57:31,280 --> 00:57:38,480
+had to come up with a way how to process
+
+1233
+00:57:34,720 --> 00:57:42,079
+that across large numbers large clusters
+
+1234
+00:57:38,480 --> 00:57:46,039
+of compute modes and here they developed
+
+1235
+00:57:42,079 --> 00:57:49,520
+a system called trial uh which is still
+
+1236
+00:57:46,039 --> 00:57:51,760
+used in some derivations uh also in
+
+1237
+00:57:49,520 --> 00:57:54,400
+other op Source systems so for example
+
+1238
+00:57:51,760 --> 00:57:56,640
+Apache giraff is also relying on the
+
+1239
+00:57:54,400 --> 00:57:59,520
+same model underneath which is called
+
+1240
+00:57:56,640 --> 00:58:02,880
+bulk synchronous processing and so the
+
+1241
+00:57:59,520 --> 00:58:06,280
+idea they had is they split the graph
+
+1242
+00:58:02,880 --> 00:58:08,559
+processing in two two disjoint steps so
+
+1243
+00:58:06,280 --> 00:58:11,559
+there's like a working step and then
+
+1244
+00:58:08,559 --> 00:58:14,839
+there is a communication step and those
+
+1245
+00:58:11,559 --> 00:58:16,960
+two form a so-called superstep here and
+
+1246
+00:58:14,839 --> 00:58:19,280
+at end of each superstep we can of a
+
+1247
+00:58:16,960 --> 00:58:21,319
+barrier where we want to synchronize all
+
+1248
+00:58:19,280 --> 00:58:24,160
+the different nodes or there are also
+
+1249
+00:58:21,319 --> 00:58:27,720
+other um implementations available which
+
+1250
+00:58:24,160 --> 00:58:31,520
+simply go on so we can basically imagine
+
+1251
+00:58:27,720 --> 00:58:34,079
+that system in uh in like each of the
+
+1252
+00:58:31,520 --> 00:58:35,760
+nodes is processing its information and
+
+1253
+00:58:34,079 --> 00:58:38,960
+then at the end it's sending an update
+
+1254
+00:58:35,760 --> 00:58:42,079
+to all its neighboring notes so if if
+
+1255
+00:58:38,960 --> 00:58:44,039
+you look here we would uh like each of
+
+1256
+00:58:42,079 --> 00:58:46,599
+the note would process all the incoming
+
+1257
+00:58:44,039 --> 00:58:48,680
+messages once it's done Computing its
+
+1258
+00:58:46,599 --> 00:58:50,240
+new average here so if you want to go
+
+1259
+00:58:48,680 --> 00:58:53,599
+you can also go through the formula here
+
+1260
+00:58:50,240 --> 00:58:55,720
+on the right uh we sent uh an update to
+
+1261
+00:58:53,599 --> 00:58:58,920
+all our neighbors uh across that link
+
+1262
+00:58:55,720 --> 00:59:01,400
+basically be saying hey this is a new uh
+
+1263
+00:58:58,920 --> 00:59:03,160
+value this is a new centrality value I
+
+1264
+00:59:01,400 --> 00:59:07,240
+computed for
+
+1265
+00:59:03,160 --> 00:59:09,200
+myself and this continues until we reach
+
+1266
+00:59:07,240 --> 00:59:11,920
+uh until not not too much changes
+
+1267
+00:59:09,200 --> 00:59:13,160
+anymore so basically uh until the graph
+
+1268
+00:59:11,920 --> 00:59:17,119
+becomes
+
+1269
+00:59:13,160 --> 00:59:19,640
+stable and this is this allows for a
+
+1270
+00:59:17,119 --> 00:59:21,880
+pretty large class of algorithms to be
+
+1271
+00:59:19,640 --> 00:59:24,799
+implemented not all of them so for
+
+1272
+00:59:21,880 --> 00:59:26,559
+example shortest pass is just you could
+
+1273
+00:59:24,799 --> 00:59:29,520
+implement it in trial but would be a
+
+1274
+00:59:26,559 --> 00:59:31,319
+pretty bad bad choice but on the other
+
+1275
+00:59:29,520 --> 00:59:33,359
+hand like all pair shortest pass or
+
+1276
+00:59:31,319 --> 00:59:35,880
+something like that it's again a better
+
+1277
+00:59:33,359 --> 00:59:39,200
+fit to be implemented in
+
+1278
+00:59:35,880 --> 00:59:41,640
+preo so um how does uh how does it work
+
+1279
+00:59:39,200 --> 00:59:45,160
+in a concrete example let's try to find
+
+1280
+00:59:41,640 --> 00:59:47,240
+the maximum number in in our graph here
+
+1281
+00:59:45,160 --> 00:59:49,440
+at the beginning all our notes are
+
+1282
+00:59:47,240 --> 00:59:52,200
+active and so what we do is sending our
+
+1283
+00:59:49,440 --> 00:59:55,760
+own value to all our neighboring notes
+
+1284
+00:59:52,200 --> 00:59:56,680
+so here six is sending six over here uh
+
+1285
+00:59:55,760 --> 00:59:59,000
+here
+
+1286
+00:59:56,680 --> 01:00:02,640
+um three sending three here and so on
+
+1287
+00:59:59,000 --> 01:00:05,799
+and so on next um what each node is
+
+1288
+01:00:02,640 --> 01:00:08,240
+doing it's looking at its inbox so what
+
+1289
+01:00:05,799 --> 01:00:11,920
+messages has received and we'll compute
+
+1290
+01:00:08,240 --> 01:00:14,559
+the maximum value of uh its own Value
+
+1291
+01:00:11,920 --> 01:00:17,880
+Plus the uh number of incoming or the
+
+1292
+01:00:14,559 --> 01:00:20,280
+incoming messages seen if that is higher
+
+1293
+01:00:17,880 --> 01:00:22,440
+we update and in that case we also stay
+
+1294
+01:00:20,280 --> 01:00:25,280
+active so for example six it has
+
+1295
+01:00:22,440 --> 01:00:27,000
+received three and two but as as it
+
+1296
+01:00:25,280 --> 01:00:30,160
+already has the largest value in that
+
+1297
+01:00:27,000 --> 01:00:32,240
+graph uh it won't update it and uh in
+
+1298
+01:00:30,160 --> 01:00:33,559
+that case it will actually become halted
+
+1299
+01:00:32,240 --> 01:00:35,599
+because what would happen if it would
+
+1300
+01:00:33,559 --> 01:00:38,319
+send its update again this would be
+
+1301
+01:00:35,599 --> 01:00:40,400
+unnecessary information in the cluster
+
+1302
+01:00:38,319 --> 01:00:43,880
+uh uh because we already sent six in the
+
+1303
+01:00:40,400 --> 01:00:45,160
+step before so we can stay uh calm and
+
+1304
+01:00:43,880 --> 01:00:47,880
+don't don't have to do
+
+1305
+01:00:45,160 --> 01:00:50,240
+anything but for example here uh the
+
+1306
+01:00:47,880 --> 01:00:52,480
+upper this note here on the upper left
+
+1307
+01:00:50,240 --> 01:00:54,480
+uh we actually have updated our value to
+
+1308
+01:00:52,480 --> 01:00:56,799
+six because we've received six as a
+
+1309
+01:00:54,480 --> 01:00:59,799
+message so we would again sent out a
+
+1310
+01:00:56,799 --> 01:01:02,400
+message to our neighboring notes and um
+
+1311
+01:00:59,799 --> 01:01:06,079
+so this continues until basically every
+
+1312
+01:01:02,400 --> 01:01:10,119
+every note is halted in that graph or uh
+
+1313
+01:01:06,079 --> 01:01:12,319
+of most real world life pral algorithms
+
+1314
+01:01:10,119 --> 01:01:14,599
+they also will have a maximum number of
+
+1315
+01:01:12,319 --> 01:01:17,520
+stats uh in case the graph doesn't
+
+1316
+01:01:14,599 --> 01:01:21,400
+converge uh after
+
+1317
+01:01:17,520 --> 01:01:25,960
+all uh we have an optional lab uh to
+
+1318
+01:01:21,400 --> 01:01:28,280
+pral I would probably skip it um just
+
+1319
+01:01:25,960 --> 01:01:30,119
+due to the amount of time we have left
+
+1320
+01:01:28,280 --> 01:01:32,359
+but if you're curious you can just jump
+
+1321
+01:01:30,119 --> 01:01:36,039
+jump into that
+
+1322
+01:01:32,359 --> 01:01:39,520
+later what I would like to go in
+
+1323
+01:01:36,039 --> 01:01:41,559
+instead um is different use cases or
+
+1324
+01:01:39,520 --> 01:01:42,799
+it's called like how to spot a graph
+
+1325
+01:01:41,559 --> 01:01:46,599
+problem out
+
+1326
+01:01:42,799 --> 01:01:49,720
+there and I suppose most of us have seen
+
+1327
+01:01:46,599 --> 01:01:52,440
+um either this ad on Amazon or this box
+
+1328
+01:01:49,720 --> 01:01:55,240
+on Amazon or something similar on other
+
+1329
+01:01:52,440 --> 01:01:58,240
+notes so basically customer who bought a
+
+1330
+01:01:55,240 --> 01:02:01,760
+particular item also bought something
+
+1331
+01:01:58,240 --> 01:02:05,480
+else or if you're uber eats uh you're
+
+1332
+01:02:01,760 --> 01:02:08,279
+trying to recommend uh new dishes you
+
+1333
+01:02:05,480 --> 01:02:10,119
+might recommend dishes uh who someone
+
+1334
+01:02:08,279 --> 01:02:13,119
+else has ordered who also ordered
+
+1335
+01:02:10,119 --> 01:02:15,400
+similar dishes as you so uh this process
+
+1336
+01:02:13,119 --> 01:02:17,520
+is called collaborative filtering so you
+
+1337
+01:02:15,400 --> 01:02:21,240
+try to use that collaborative knowledge
+
+1338
+01:02:17,520 --> 01:02:23,799
+in trying to uh filter new products for
+
+1339
+01:02:21,240 --> 01:02:27,359
+a particular
+
+1340
+01:02:23,799 --> 01:02:29,960
+person and uh yeah give in
+
+1341
+01:02:27,359 --> 01:02:32,279
+those those times we live in right now I
+
+1342
+01:02:29,960 --> 01:02:34,960
+think a question to ask could be like
+
+1343
+01:02:32,279 --> 01:02:38,440
+what films could we watch uh if in case
+
+1344
+01:02:34,960 --> 01:02:40,119
+we have to isolate so um there's
+
+1345
+01:02:38,440 --> 01:02:44,240
+fortunately there's a cool data set
+
+1346
+01:02:40,119 --> 01:02:46,359
+available from IM DB uh movie ratings
+
+1347
+01:02:44,240 --> 01:02:49,559
+and this is pretty much a bipartite
+
+1348
+01:02:46,359 --> 01:02:51,400
+graph uh bipartite graph means we have
+
+1349
+01:02:49,559 --> 01:02:54,760
+two distinct set of notes so we have
+
+1350
+01:02:51,400 --> 01:02:56,720
+user notes uh and they're rating movies
+
+1351
+01:02:54,760 --> 01:02:58,720
+so we also got movie notes and then
+
+1352
+01:02:56,720 --> 01:03:01,000
+there are edges going in between which
+
+1353
+01:02:58,720 --> 01:03:02,160
+pretty much means like user rated a
+
+1354
+01:03:01,000 --> 01:03:06,200
+particular
+
+1355
+01:03:02,160 --> 01:03:08,279
+movie how can we turn that into uh to uh
+
+1356
+01:03:06,200 --> 01:03:11,079
+helping us to find out movies I will
+
+1357
+01:03:08,279 --> 01:03:13,160
+like and again this is the collaborative
+
+1358
+01:03:11,079 --> 01:03:16,039
+filtering and if we had to put it in
+
+1359
+01:03:13,160 --> 01:03:19,640
+words it would read something like like
+
+1360
+01:03:16,039 --> 01:03:23,200
+this we want to find highly rated movies
+
+1361
+01:03:19,640 --> 01:03:26,319
+by people who also like movies iated
+
+1362
+01:03:23,200 --> 01:03:29,760
+highly so how how can we translates that
+
+1363
+01:03:26,319 --> 01:03:32,200
+into a graph problem so first here we're
+
+1364
+01:03:29,760 --> 01:03:36,079
+starting with our our little user here
+
+1365
+01:03:32,200 --> 01:03:38,880
+we want to find movies which we like so
+
+1366
+01:03:36,079 --> 01:03:41,200
+uh we need to kind of identify movies I
+
+1367
+01:03:38,880 --> 01:03:44,119
+rated highly so we go over here we
+
+1368
+01:03:41,200 --> 01:03:47,880
+filter on uh which movies I rated very
+
+1369
+01:03:44,119 --> 01:03:48,920
+highly and really cool uh we find a set
+
+1370
+01:03:47,880 --> 01:03:51,640
+of
+
+1371
+01:03:48,920 --> 01:03:54,760
+movies next we actually want to Traverse
+
+1372
+01:03:51,640 --> 01:03:57,200
+it back to the user side uh of the
+
+1373
+01:03:54,760 --> 01:03:59,440
+bipartite graph because we want to be
+
+1374
+01:03:57,200 --> 01:04:02,119
+able to identify users who are similar
+
+1375
+01:03:59,440 --> 01:04:05,440
+to us so we want to find users who also
+
+1376
+01:04:02,119 --> 01:04:08,720
+rated uh each the entire set or some of
+
+1377
+01:04:05,440 --> 01:04:11,039
+those movies as highly as we did so
+
+1378
+01:04:08,720 --> 01:04:14,319
+basically go back in this graph and
+
+1379
+01:04:11,039 --> 01:04:18,480
+identify users who are similar to
+
+1380
+01:04:14,319 --> 01:04:21,119
+us next uh then uh we will again step
+
+1381
+01:04:18,480 --> 01:04:24,079
+over here but now try to identify
+
+1382
+01:04:21,119 --> 01:04:26,359
+additional movies which have been Al by
+
+1383
+01:04:24,079 --> 01:04:28,839
+those users whom we ident IFI to be
+
+1384
+01:04:26,359 --> 01:04:30,960
+similar to us uh which they also rated
+
+1385
+01:04:28,839 --> 01:04:33,880
+very highly so basically we turn that
+
+1386
+01:04:30,960 --> 01:04:36,160
+into a graph pattern uh or graph tth
+
+1387
+01:04:33,880 --> 01:04:39,079
+where we go back and forth in this graph
+
+1388
+01:04:36,160 --> 01:04:42,319
+until we identify an additional set of
+
+1389
+01:04:39,079 --> 01:04:46,599
+movies uh which similar people like as
+
+1390
+01:04:42,319 --> 01:04:49,720
+well and so this would be um an example
+
+1391
+01:04:46,599 --> 01:04:52,760
+on how to interpret again a problem such
+
+1392
+01:04:49,720 --> 01:04:56,400
+as recommendation as a graph
+
+1393
+01:04:52,760 --> 01:04:58,760
+problem um we later see also how Uber
+
+1394
+01:04:56,400 --> 01:05:00,839
+Eats is kind of taking that to the next
+
+1395
+01:04:58,760 --> 01:05:05,680
+level by deploying graph machine
+
+1396
+01:05:00,839 --> 01:05:08,799
+learning for for similar recommendation
+
+1397
+01:05:05,680 --> 01:05:11,319
+task so if we
+
+1398
+01:05:08,799 --> 01:05:13,760
+want I'll just give you a brief walk
+
+1399
+01:05:11,319 --> 01:05:16,279
+through uh what What's Happening uh
+
+1400
+01:05:13,760 --> 01:05:19,359
+because it's the first notebook using a
+
+1401
+01:05:16,279 --> 01:05:21,039
+cloud instance uh in the background um
+
+1402
+01:05:19,359 --> 01:05:22,799
+it's pretty much the same and you pretty
+
+1403
+01:05:21,039 --> 01:05:27,039
+much are running through this example in
+
+1404
+01:05:22,799 --> 01:05:29,799
+a property graph database
+
+1405
+01:05:27,039 --> 01:05:33,240
+um and so kind of the special thing
+
+1406
+01:05:29,799 --> 01:05:35,440
+happening here is uh we get uh from the
+
+1407
+01:05:33,240 --> 01:05:37,640
+arangodb uh cloud service we get a
+
+1408
+01:05:35,440 --> 01:05:42,160
+temporary database so this will live for
+
+1409
+01:05:37,640 --> 01:05:45,039
+four hours uh once this is uh
+
+1410
+01:05:42,160 --> 01:05:46,839
+there uh we can leverage that for the
+
+1411
+01:05:45,039 --> 01:05:50,839
+next four hours so we could for example
+
+1412
+01:05:46,839 --> 01:05:53,279
+also log in and uh the only I just
+
+1413
+01:05:50,839 --> 01:05:55,400
+wanted to show that that you're aware of
+
+1414
+01:05:53,279 --> 01:05:57,240
+where this database is coming from and
+
+1415
+01:05:55,400 --> 01:05:59,640
+that you're aware that this is temporary
+
+1416
+01:05:57,240 --> 01:06:02,599
+so if you're playing with that uh you
+
+1417
+01:05:59,640 --> 01:06:06,720
+can hit it with any queries but just be
+
+1418
+01:06:02,599 --> 01:06:09,920
+aware it's it's temporary and then if
+
+1419
+01:06:06,720 --> 01:06:11,720
+you want um you can either take a few
+
+1420
+01:06:09,920 --> 01:06:15,359
+minutes right now yeah let's actually
+
+1421
+01:06:11,720 --> 01:06:18,240
+walk through uh it should be
+
+1422
+01:06:15,359 --> 01:06:22,440
+quick if it would
+
+1423
+01:06:18,240 --> 01:06:25,960
+display yeah here yeah so here is is our
+
+1424
+01:06:22,440 --> 01:06:28,960
+input data so often even for ground we
+
+1425
+01:06:25,960 --> 01:06:31,880
+often get our input data in CSV files so
+
+1426
+01:06:28,960 --> 01:06:33,799
+here the imgb data comes in three
+
+1427
+01:06:31,880 --> 01:06:35,200
+different uh types so there's a user
+
+1428
+01:06:33,799 --> 01:06:38,000
+data there's a movie data and then
+
+1429
+01:06:35,200 --> 01:06:39,880
+there's rating data so kind of looking
+
+1430
+01:06:38,000 --> 01:06:42,359
+as follows so here in user data we have
+
+1431
+01:06:39,880 --> 01:06:44,680
+some description of each user movie data
+
+1432
+01:06:42,359 --> 01:06:46,319
+we have some description of each movie
+
+1433
+01:06:44,680 --> 01:06:49,640
+and then we have the rating information
+
+1434
+01:06:46,319 --> 01:06:53,440
+linking the user ID to Item ID with some
+
+1435
+01:06:49,640 --> 01:06:56,319
+kind of rating and this is uh a format
+
+1436
+01:06:53,440 --> 01:06:58,680
+or related format by which we often get
+
+1437
+01:06:56,319 --> 01:07:00,640
+our graph data and often this is one of
+
+1438
+01:06:58,680 --> 01:07:05,359
+the most challenging steps in actually
+
+1439
+01:07:00,640 --> 01:07:08,359
+turning your uh your data into a graph
+
+1440
+01:07:05,359 --> 01:07:10,440
+and uh so here we do that by first
+
+1441
+01:07:08,359 --> 01:07:13,079
+creating our collections so we create a
+
+1442
+01:07:10,440 --> 01:07:16,079
+user movie and then uh a rating
+
+1443
+01:07:13,079 --> 01:07:18,319
+collection for the edges in between and
+
+1444
+01:07:16,079 --> 01:07:21,440
+uh I would often recommend if it's not a
+
+1445
+01:07:18,319 --> 01:07:23,960
+total trivial problem just write a small
+
+1446
+01:07:21,440 --> 01:07:27,480
+piece of code for actually generating
+
+1447
+01:07:23,960 --> 01:07:29,200
+that graph um rangu DB NE forj tiger
+
+1448
+01:07:27,480 --> 01:07:32,400
+graphs they all have tools for importing
+
+1449
+01:07:29,200 --> 01:07:34,319
+it uh if you're using those it will
+
+1450
+01:07:32,400 --> 01:07:37,880
+actually write this Logic for you in the
+
+1451
+01:07:34,319 --> 01:07:40,400
+background uh how to map things into a
+
+1452
+01:07:37,880 --> 01:07:42,960
+graph structure uh just keep in mind it
+
+1453
+01:07:40,400 --> 01:07:45,400
+should be reproducible so you might want
+
+1454
+01:07:42,960 --> 01:07:47,960
+to store that and run that on a nightly
+
+1455
+01:07:45,400 --> 01:07:51,440
+basis for importing new data
+
+1456
+01:07:47,960 --> 01:07:54,039
+sets and the rest is actually trivial so
+
+1457
+01:07:51,440 --> 01:07:56,400
+we do the exact same steps we mentioned
+
+1458
+01:07:54,039 --> 01:07:59,079
+before so first of all we try to find
+
+1459
+01:07:56,400 --> 01:08:02,920
+our own ratings which movies I rated
+
+1460
+01:07:59,079 --> 01:08:05,039
+here with rating five BR day uh Horseman
+
+1461
+01:08:02,920 --> 01:08:10,279
+on the roof uh
+
+1462
+01:08:05,039 --> 01:08:12,799
+Etc uh then we try to find aike users to
+
+1463
+01:08:10,279 --> 01:08:15,440
+users who are similar to us and then we
+
+1464
+01:08:12,799 --> 01:08:18,279
+want to find uh movies uh which those
+
+1465
+01:08:15,440 --> 01:08:21,359
+people also like uh let's see is there
+
+1466
+01:08:18,279 --> 01:08:25,239
+anything yeah radius of the Lost Arc is
+
+1467
+01:08:21,359 --> 01:08:27,960
+something uh interesting so yeah more
+
+1468
+01:08:25,239 --> 01:08:32,080
+more more or less Works uh and we'll see
+
+1469
+01:08:27,960 --> 01:08:35,920
+more uh elaborate tools coming
+
+1470
+01:08:32,080 --> 01:08:37,640
+up so I could give you now a few minutes
+
+1471
+01:08:35,920 --> 01:08:40,679
+to run through but I would say as as I
+
+1472
+01:08:37,640 --> 01:08:42,560
+steep through unless uh you want some
+
+1473
+01:08:40,679 --> 01:08:44,799
+time right now then please write in the
+
+1474
+01:08:42,560 --> 01:08:48,719
+chat I would continue uh in the
+
+1475
+01:08:44,799 --> 01:08:51,239
+presentation as we have 50 minutes
+
+1476
+01:08:48,719 --> 01:08:53,880
+left you can always run all the
+
+1477
+01:08:51,239 --> 01:08:57,880
+exercises after class as
+
+1478
+01:08:53,880 --> 01:09:00,319
+well so net uh Network X we've already
+
+1479
+01:08:57,880 --> 01:09:03,120
+seen that in the uh first notebooks it's
+
+1480
+01:09:00,319 --> 01:09:06,120
+kind of that graph toolbox or Swiss army
+
+1481
+01:09:03,120 --> 01:09:08,319
+knife for graph processing out there um
+
+1482
+01:09:06,120 --> 01:09:10,560
+what's really cool about it it has a lot
+
+1483
+01:09:08,319 --> 01:09:12,960
+of connectors for loading and storing
+
+1484
+01:09:10,560 --> 01:09:15,279
+graphs in various formats so if you're
+
+1485
+01:09:12,960 --> 01:09:17,359
+working with any kind of graph
+
+1486
+01:09:15,279 --> 01:09:20,480
+infrastructure most likely there will be
+
+1487
+01:09:17,359 --> 01:09:24,120
+a network X adapter to load or store
+
+1488
+01:09:20,480 --> 01:09:26,000
+your data um to it same for example
+
+1489
+01:09:24,120 --> 01:09:27,880
+holds for Rango DB
+
+1490
+01:09:26,000 --> 01:09:30,640
+also near for J has a network X
+
+1491
+01:09:27,880 --> 01:09:33,159
+integration and I think most others as
+
+1492
+01:09:30,640 --> 01:09:35,120
+well it's really great if you want to
+
+1493
+01:09:33,159 --> 01:09:38,719
+get a first look at your network and
+
+1494
+01:09:35,120 --> 01:09:40,600
+first want to uh analyze that um so
+
+1495
+01:09:38,719 --> 01:09:43,120
+often it's just kind of like this
+
+1496
+01:09:40,600 --> 01:09:46,120
+exploratory step of playing with a small
+
+1497
+01:09:43,120 --> 01:09:48,239
+graph it's not meant for really large
+
+1498
+01:09:46,120 --> 01:09:50,279
+scale distributed processing so as soon
+
+1499
+01:09:48,239 --> 01:09:52,040
+as your graph gets too large probably
+
+1500
+01:09:50,279 --> 01:09:55,440
+it's not the right tool but if you have
+
+1501
+01:09:52,040 --> 01:09:57,520
+a small sample from your graph it can
+
+1502
+01:09:55,440 --> 01:10:01,040
+it's it's a very useful
+
+1503
+01:09:57,520 --> 01:10:02,880
+tool other tools some of which are
+
+1504
+01:10:01,040 --> 01:10:05,280
+basically Network eggs for scale for
+
+1505
+01:10:02,880 --> 01:10:08,280
+example Network kit uh graft tool or
+
+1506
+01:10:05,280 --> 01:10:10,040
+snap they help you to scale out uh to
+
+1507
+01:10:08,280 --> 01:10:12,640
+larger data sets as
+
+1508
+01:10:10,040 --> 01:10:15,480
+well there's an interesting blog post
+
+1509
+01:10:12,640 --> 01:10:18,080
+comparing some of those uh packages uh
+
+1510
+01:10:15,480 --> 01:10:20,000
+if you're interested in using that at
+
+1511
+01:10:18,080 --> 01:10:22,920
+more
+
+1512
+01:10:20,000 --> 01:10:25,440
+scale okay with that we kind of can
+
+1513
+01:10:22,920 --> 01:10:27,800
+leave the realm of graph analytics and
+
+1514
+01:10:25,440 --> 01:10:29,960
+go more into the direction of graph
+
+1515
+01:10:27,800 --> 01:10:33,159
+machine learning starting with graph
+
+1516
+01:10:29,960 --> 01:10:36,920
+embedding or graph representation
+
+1517
+01:10:33,159 --> 01:10:40,120
+learning would be nice if the slide is
+
+1518
+01:10:36,920 --> 01:10:40,120
+showing up
+
+1519
+01:10:41,280 --> 01:10:47,199
+oh I actually skip over that empty slide
+
+1520
+01:10:45,239 --> 01:10:49,440
+and that leads to the question what are
+
+1521
+01:10:47,199 --> 01:10:53,199
+embeddings or what are embeddings used
+
+1522
+01:10:49,440 --> 01:10:55,800
+for in short embeddings are a way to
+
+1523
+01:10:53,199 --> 01:10:59,000
+embed or transform something
+
+1524
+01:10:55,800 --> 01:11:01,480
+unstructured into a structured space so
+
+1525
+01:10:59,000 --> 01:11:04,560
+typically it means I want to take uh in
+
+1526
+01:11:01,480 --> 01:11:08,320
+the case of graph uh graph and then turn
+
+1527
+01:11:04,560 --> 01:11:12,080
+it into uh ukian representation why do I
+
+1528
+01:11:08,320 --> 01:11:14,199
+want to do that simply because a it's it
+
+1529
+01:11:12,080 --> 01:11:19,120
+can be useful by itself because I can
+
+1530
+01:11:14,199 --> 01:11:22,320
+easily compare vectors um like um cosine
+
+1531
+01:11:19,120 --> 01:11:24,159
+similarity cosine distance in between uh
+
+1532
+01:11:22,320 --> 01:11:26,320
+but on the other hand uh machine
+
+1533
+01:11:24,159 --> 01:11:28,440
+learning tools they cannot deal with
+
+1534
+01:11:26,320 --> 01:11:30,880
+unstructured data so machine learning
+
+1535
+01:11:28,440 --> 01:11:32,760
+tools they need some kind of number
+
+1536
+01:11:30,880 --> 01:11:36,400
+representation they can actually deal
+
+1537
+01:11:32,760 --> 01:11:38,400
+with and uh here we'll see how
+
+1538
+01:11:36,400 --> 01:11:41,480
+embeddings can basically help us in
+
+1539
+01:11:38,400 --> 01:11:43,360
+turning U typically a node into some
+
+1540
+01:11:41,480 --> 01:11:46,000
+Vector
+
+1541
+01:11:43,360 --> 01:11:48,800
+representation the the most obvious
+
+1542
+01:11:46,000 --> 01:11:51,480
+approach would just be to uh take a note
+
+1543
+01:11:48,800 --> 01:11:53,960
+and turn it into a random uh random
+
+1544
+01:11:51,480 --> 01:11:56,040
+Vector but we would lose a lot of
+
+1545
+01:11:53,960 --> 01:11:58,400
+information through that to understand
+
+1546
+01:11:56,040 --> 01:12:01,639
+that let's briefly go over to that realm
+
+1547
+01:11:58,400 --> 01:12:03,400
+of word embeddings so a lot of the
+
+1548
+01:12:01,639 --> 01:12:05,480
+embedding techniques they originally
+
+1549
+01:12:03,400 --> 01:12:08,880
+come from natural language processing
+
+1550
+01:12:05,480 --> 01:12:11,520
+where we want to map words uh to vectors
+
+1551
+01:12:08,880 --> 01:12:11,520
+of real
+
+1552
+01:12:11,719 --> 01:12:18,080
+numbers and if we do that we want to
+
+1553
+01:12:14,960 --> 01:12:20,760
+keep certain similarities in mind
+
+1554
+01:12:18,080 --> 01:12:23,679
+between uh word so if we would just do
+
+1555
+01:12:20,760 --> 01:12:25,400
+that on a random level it would end up
+
+1556
+01:12:23,679 --> 01:12:28,040
+somewhere in this uh Drive
+
+1557
+01:12:25,400 --> 01:12:31,560
+threedimensional Vector space here but
+
+1558
+01:12:28,040 --> 01:12:33,480
+if we look at certain characteristics or
+
+1559
+01:12:31,560 --> 01:12:36,679
+correlations of data combinations of
+
+1560
+01:12:33,480 --> 01:12:39,320
+data so for example Spain Madrid Italy
+
+1561
+01:12:36,679 --> 01:12:41,920
+Rome they have a similar Connection in
+
+1562
+01:12:39,320 --> 01:12:44,239
+between so we would actually expect that
+
+1563
+01:12:41,920 --> 01:12:45,880
+the vector in between if we would
+
+1564
+01:12:44,239 --> 01:12:48,360
+connect them in the three dimensional
+
+1565
+01:12:45,880 --> 01:12:50,120
+embedding would somehow look similar or
+
+1566
+01:12:48,360 --> 01:12:52,679
+also that they are not like a two
+
+1567
+01:12:50,120 --> 01:12:55,280
+opposite end uh of of our embedding for
+
+1568
+01:12:52,679 --> 01:12:57,400
+example so we want to keep some kind of
+
+1569
+01:12:55,280 --> 01:12:59,920
+of context uh
+
+1570
+01:12:57,400 --> 01:13:01,600
+information uh around when creating
+
+1571
+01:12:59,920 --> 01:13:03,840
+those
+
+1572
+01:13:01,600 --> 01:13:09,840
+embeddings same holds through for graph
+
+1573
+01:13:03,840 --> 01:13:11,800
+embeddings so um here most also in the
+
+1574
+01:13:09,840 --> 01:13:15,120
+right now when we talk about gra graph
+
+1575
+01:13:11,800 --> 01:13:17,880
+embeddings we most often mean actually
+
+1576
+01:13:15,120 --> 01:13:20,320
+vertex embeddings so we take each note
+
+1577
+01:13:17,880 --> 01:13:22,920
+within our graph and turn that into a
+
+1578
+01:13:20,320 --> 01:13:24,880
+vector of numbers um and this is for
+
+1579
+01:13:22,920 --> 01:13:27,159
+example what note Tove which will study
+
+1580
+01:13:24,880 --> 01:13:29,480
+in the second is doing but of course
+
+1581
+01:13:27,159 --> 01:13:32,320
+there are also other uh embedding
+
+1582
+01:13:29,480 --> 01:13:35,000
+algorithms for Edge embeddings or entire
+
+1583
+01:13:32,320 --> 01:13:36,880
+graph embeddings so I can also have
+
+1584
+01:13:35,000 --> 01:13:39,639
+something which creates embeddings for
+
+1585
+01:13:36,880 --> 01:13:41,159
+all my edges or even entire graphs as
+
+1586
+01:13:39,639 --> 01:13:43,560
+mentioned earlier when we want to
+
+1587
+01:13:41,159 --> 01:13:44,280
+compare whether the two graphs are are
+
+1588
+01:13:43,560 --> 01:13:48,280
+the
+
+1589
+01:13:44,280 --> 01:13:50,520
+same when doing so uh again we want to
+
+1590
+01:13:48,280 --> 01:13:52,719
+have certain context information
+
+1591
+01:13:50,520 --> 01:13:55,120
+preserved uh so for example the
+
+1592
+01:13:52,719 --> 01:13:57,040
+homophile we saw earlier that
+
+1593
+01:13:55,120 --> 01:13:59,639
+interconnected nodes should be also
+
+1594
+01:13:57,040 --> 01:14:01,280
+embedded close to each other so it would
+
+1595
+01:13:59,639 --> 01:14:04,040
+be kind of weird if those two nodes
+
+1596
+01:14:01,280 --> 01:14:06,840
+would end up like totally somewhere else
+
+1597
+01:14:04,040 --> 01:14:09,600
+on different spaces in our embedding uh
+
+1598
+01:14:06,840 --> 01:14:13,679
+or also structural equivalent noes so
+
+1599
+01:14:09,600 --> 01:14:15,560
+here youu and S6 no they serve some
+
+1600
+01:14:13,679 --> 01:14:17,639
+similar purpose in uh each of those
+
+1601
+01:14:15,560 --> 01:14:20,080
+subgraphs so we would also expect the
+
+1602
+01:14:17,639 --> 01:14:21,880
+embeddings to uh represented and somehow
+
+1603
+01:14:20,080 --> 01:14:24,560
+be
+
+1604
+01:14:21,880 --> 01:14:26,600
+similar as a short detour another data
+
+1605
+01:14:24,560 --> 01:14:29,159
+set so already learned about the Kora
+
+1606
+01:14:26,600 --> 01:14:33,040
+data set the citation Network earlier
+
+1607
+01:14:29,159 --> 01:14:35,080
+the other very famous uh data set in
+
+1608
+01:14:33,040 --> 01:14:39,239
+graph machine learning graph analytics
+
+1609
+01:14:35,080 --> 01:14:41,719
+is the Sakari CA Club um so it's
+
+1610
+01:14:39,239 --> 01:14:45,080
+actually uh is based on some uh
+
+1611
+01:14:41,719 --> 01:14:47,280
+observations by a psychologist I believe
+
+1612
+01:14:45,080 --> 01:14:49,920
+who observed interactions of people
+
+1613
+01:14:47,280 --> 01:14:53,199
+inside a karate club and also outside of
+
+1614
+01:14:49,920 --> 01:14:55,560
+class so here the graph on the right is
+
+1615
+01:14:53,199 --> 01:14:57,639
+um a social graph
+
+1616
+01:14:55,560 --> 01:15:01,199
+depicting whether some of those members
+
+1617
+01:14:57,639 --> 01:15:04,440
+interacted outside of class so for
+
+1618
+01:15:01,199 --> 01:15:08,000
+example here this means this Edge means
+
+1619
+01:15:04,440 --> 01:15:10,080
+that 18 interacted with two outside of
+
+1620
+01:15:08,000 --> 01:15:13,400
+class maybe they went for a beer maybe
+
+1621
+01:15:10,080 --> 01:15:15,560
+they met up for run something like that
+
+1622
+01:15:13,400 --> 01:15:18,480
+what now happened uh at this karate club
+
+1623
+01:15:15,560 --> 01:15:20,159
+it actually split into two sub clubs so
+
+1624
+01:15:18,480 --> 01:15:22,560
+here the instructor and the
+
+1625
+01:15:20,159 --> 01:15:24,960
+administrator they each formed their own
+
+1626
+01:15:22,560 --> 01:15:26,920
+club and a common task in graph and
+
+1627
+01:15:24,960 --> 01:15:29,239
+analytics or graph machine learning is
+
+1628
+01:15:26,920 --> 01:15:31,480
+now to try to predict like where each of
+
+1629
+01:15:29,239 --> 01:15:33,800
+those other people as I want to continue
+
+1630
+01:15:31,480 --> 01:15:35,199
+doing karate in which of those clubs do
+
+1631
+01:15:33,800 --> 01:15:38,440
+they end
+
+1632
+01:15:35,199 --> 01:15:40,600
+up and this is where we uh can already
+
+1633
+01:15:38,440 --> 01:15:43,520
+see the value of embeddings we'll
+
+1634
+01:15:40,600 --> 01:15:46,840
+generate that ourselves in just a second
+
+1635
+01:15:43,520 --> 01:15:49,840
+um but in short here those are note
+
+1636
+01:15:46,840 --> 01:15:52,679
+embeddings for each of the notes um and
+
+1637
+01:15:49,840 --> 01:15:55,800
+we took the color color where they
+
+1638
+01:15:52,679 --> 01:15:58,159
+actually ended up so red uh I think then
+
+1639
+01:15:55,800 --> 01:15:59,880
+where they ended up in the one club and
+
+1640
+01:15:58,159 --> 01:16:03,280
+blue are the notes which all ended up in
+
+1641
+01:15:59,880 --> 01:16:05,560
+another club um just to depict uh where
+
+1642
+01:16:03,280 --> 01:16:08,920
+everyone ended up and so we just
+
+1643
+01:16:05,560 --> 01:16:11,080
+generated that embedding here and uh we
+
+1644
+01:16:08,920 --> 01:16:12,480
+can already see just on this two
+
+1645
+01:16:11,080 --> 01:16:14,280
+dimensional
+
+1646
+01:16:12,480 --> 01:16:16,360
+representation uh typically we would
+
+1647
+01:16:14,280 --> 01:16:18,760
+choose a higher dimensional embedding we
+
+1648
+01:16:16,360 --> 01:16:21,520
+can already distinguish and easily
+
+1649
+01:16:18,760 --> 01:16:23,000
+create a linear uh classifier in between
+
+1650
+01:16:21,520 --> 01:16:26,920
+those two
+
+1651
+01:16:23,000 --> 01:16:26,920
+classes um
+
+1652
+01:16:27,400 --> 01:16:31,080
+so uh let's actually see what's uh going
+
+1653
+01:16:29,840 --> 01:16:33,320
+on in the
+
+1654
+01:16:31,080 --> 01:16:36,400
+background
+
+1655
+01:16:33,320 --> 01:16:37,840
+um yeah let's let's let's start there I
+
+1656
+01:16:36,400 --> 01:16:40,199
+was considering whether I wanted to show
+
+1657
+01:16:37,840 --> 01:16:42,280
+you the um the notebook uh first and
+
+1658
+01:16:40,199 --> 01:16:45,440
+then switch back let's actually continue
+
+1659
+01:16:42,280 --> 01:16:48,520
+here so um again let's take a short
+
+1660
+01:16:45,440 --> 01:16:51,040
+detour back to virt back I said like a
+
+1661
+01:16:48,520 --> 01:16:53,280
+lot of this embedding techniques are uh
+
+1662
+01:16:51,040 --> 01:16:55,760
+were originally developed for word
+
+1663
+01:16:53,280 --> 01:16:58,800
+embeddings c we fa the same problem we
+
+1664
+01:16:55,760 --> 01:17:01,520
+have some unstructured data words uh
+
+1665
+01:16:58,800 --> 01:17:04,360
+which we want to uh represent to some
+
+1666
+01:17:01,520 --> 01:17:08,840
+machine learning framework in a vector
+
+1667
+01:17:04,360 --> 01:17:11,320
+format and so another way of uh creating
+
+1668
+01:17:08,840 --> 01:17:13,159
+um it's very simple embedding or a
+
+1669
+01:17:11,320 --> 01:17:15,360
+simple very very simple Vector
+
+1670
+01:17:13,159 --> 01:17:18,600
+representation is the so-called one hot
+
+1671
+01:17:15,360 --> 01:17:21,120
+encoding so uh we have a vector the size
+
+1672
+01:17:18,600 --> 01:17:23,280
+of our dictionary so here we have uh
+
+1673
+01:17:21,120 --> 01:17:25,719
+five words so our dictionary is of size
+
+1674
+01:17:23,280 --> 01:17:28,159
+five and then for the first word we
+
+1675
+01:17:25,719 --> 01:17:30,199
+switch the first bit on the second word
+
+1676
+01:17:28,159 --> 01:17:32,920
+second and so on and so on so this is
+
+1677
+01:17:30,199 --> 01:17:37,159
+also called one hot
+
+1678
+01:17:32,920 --> 01:17:41,880
+encoding and now um what what can we do
+
+1679
+01:17:37,159 --> 01:17:44,280
+we want to use uh and identify um create
+
+1680
+01:17:41,880 --> 01:17:46,679
+training samples based on which words
+
+1681
+01:17:44,280 --> 01:17:49,080
+are close to each other so which words
+
+1682
+01:17:46,679 --> 01:17:51,880
+are appearing in the same context this
+
+1683
+01:17:49,080 --> 01:17:54,400
+is one of the reasons why we have those
+
+1684
+01:17:51,880 --> 01:17:55,440
+huge language models right now and again
+
+1685
+01:17:54,400 --> 01:17:57,000
+this is one of of the reasons why
+
+1686
+01:17:55,440 --> 01:18:00,159
+machine learning is taking off right now
+
+1687
+01:17:57,000 --> 01:18:03,719
+because we have uh machine ready access
+
+1688
+01:18:00,159 --> 01:18:05,800
+to large data sets so uh the rationale
+
+1689
+01:18:03,719 --> 01:18:07,800
+behind this is if we have words
+
+1690
+01:18:05,800 --> 01:18:11,480
+appearing in the same context so for
+
+1691
+01:18:07,800 --> 01:18:14,000
+example king and queen they will often
+
+1692
+01:18:11,480 --> 01:18:18,880
+appear in the same context for example
+
+1693
+01:18:14,000 --> 01:18:20,560
+referencing Palace Crown Prince um so
+
+1694
+01:18:18,880 --> 01:18:23,080
+those words are much more likely to
+
+1695
+01:18:20,560 --> 01:18:26,320
+appear in the context uh or in the
+
+1696
+01:18:23,080 --> 01:18:27,520
+surrounding uh of king or queen than
+
+1697
+01:18:26,320 --> 01:18:31,800
+than in
+
+1698
+01:18:27,520 --> 01:18:35,560
+others then um what what we do with that
+
+1699
+01:18:31,800 --> 01:18:37,360
+so u in words in text natural language
+
+1700
+01:18:35,560 --> 01:18:39,679
+person we basically have those sentences
+
+1701
+01:18:37,360 --> 01:18:41,679
+and we create training examples so we
+
+1702
+01:18:39,679 --> 01:18:43,760
+try to create examples where we try to
+
+1703
+01:18:41,679 --> 01:18:46,320
+predict the context from a particular
+
+1704
+01:18:43,760 --> 01:18:48,360
+word so here for example from Z we want
+
+1705
+01:18:46,320 --> 01:18:50,760
+to predict quick and brown so we create
+
+1706
+01:18:48,360 --> 01:18:53,199
+two two training samples quick we want
+
+1707
+01:18:50,760 --> 01:18:57,080
+to predict Z brown fox three training
+
+1708
+01:18:53,199 --> 01:19:00,520
+samples Brown quick the fox jumps uh and
+
+1709
+01:18:57,080 --> 01:19:02,960
+then uh Fox Brown quick jumps over so
+
+1710
+01:19:00,520 --> 01:19:06,560
+you basically create those training
+
+1711
+01:19:02,960 --> 01:19:08,400
+samples and now we train a dummy network
+
+1712
+01:19:06,560 --> 01:19:11,320
+with that this is also called skip gram
+
+1713
+01:19:08,400 --> 01:19:13,360
+network U and it's a very simple neural
+
+1714
+01:19:11,320 --> 01:19:16,560
+network just having one
+
+1715
+01:19:13,360 --> 01:19:18,280
+layer the interesting or the kind of
+
+1716
+01:19:16,560 --> 01:19:20,239
+fascinating part about this and this is
+
+1717
+01:19:18,280 --> 01:19:22,320
+also why it's called dummy task we are
+
+1718
+01:19:20,239 --> 01:19:25,639
+not really interested in this network
+
+1719
+01:19:22,320 --> 01:19:28,080
+for uh by itself uh but we interested
+
+1720
+01:19:25,639 --> 01:19:30,600
+for it for kind of this hidden layer but
+
+1721
+01:19:28,080 --> 01:19:32,960
+let's first see how we train it so input
+
+1722
+01:19:30,600 --> 01:19:36,080
+layer is our one hot encoding so this
+
+1723
+01:19:32,960 --> 01:19:38,000
+might for example be the word uh King
+
+1724
+01:19:36,080 --> 01:19:40,800
+and in the output layer might be the
+
+1725
+01:19:38,000 --> 01:19:43,639
+word uh Palace and so we are trying to
+
+1726
+01:19:40,800 --> 01:19:46,040
+predict and optimize our Network for
+
+1727
+01:19:43,639 --> 01:19:49,000
+predicting having a high probability to
+
+1728
+01:19:46,040 --> 01:19:50,080
+predicting Palace uh for the input word
+
+1729
+01:19:49,000 --> 01:19:53,239
+uh
+
+1730
+01:19:50,080 --> 01:19:55,639
+King and if you're a little bit familiar
+
+1731
+01:19:53,239 --> 01:19:57,719
+with uh neural networks know this in the
+
+1732
+01:19:55,639 --> 01:20:00,520
+end again it's just a matrix
+
+1733
+01:19:57,719 --> 01:20:04,120
+representation so in here our hidden
+
+1734
+01:20:00,520 --> 01:20:07,400
+layer is is in the end a matrix and the
+
+1735
+01:20:04,120 --> 01:20:09,840
+the dimensions of this Matrix depends on
+
+1736
+01:20:07,400 --> 01:20:12,719
+um how many how many different neurons
+
+1737
+01:20:09,840 --> 01:20:16,360
+we want to choose here so um if we
+
+1738
+01:20:12,719 --> 01:20:18,280
+choose 300 it would be a 10,000 words so
+
+1739
+01:20:16,360 --> 01:20:23,760
+uh because our dictionary is of size
+
+1740
+01:20:18,280 --> 01:20:25,360
+10,000 and then 300 um neurons as uh in
+
+1741
+01:20:23,760 --> 01:20:29,920
+input layers
+
+1742
+01:20:25,360 --> 01:20:32,080
+um a hidden layer size so interestingly
+
+1743
+01:20:29,920 --> 01:20:34,199
+once we have trained that we can
+
+1744
+01:20:32,080 --> 01:20:37,920
+interpret that also as a Word Lookup
+
+1745
+01:20:34,199 --> 01:20:40,280
+Vector so here this Dimension is 10,000
+
+1746
+01:20:37,920 --> 01:20:42,920
+and so for each of those entries this
+
+1747
+01:20:40,280 --> 01:20:46,360
+actually represents to the one hot and
+
+1748
+01:20:42,920 --> 01:20:50,159
+co uh to to the one word so for example
+
+1749
+01:20:46,360 --> 01:20:52,840
+King uh is the third entry so king would
+
+1750
+01:20:50,159 --> 01:20:55,199
+be basically this row and this is now
+
+1751
+01:20:52,840 --> 01:20:57,199
+kind of the magic here that we just
+
+1752
+01:20:55,199 --> 01:20:59,840
+we don't care about the network for its
+
+1753
+01:20:57,199 --> 01:21:02,520
+a network classification performance but
+
+1754
+01:20:59,840 --> 01:21:04,880
+we take that hidden layer and interpret
+
+1755
+01:21:02,520 --> 01:21:06,679
+it as a lookup Vector so again this
+
+1756
+01:21:04,880 --> 01:21:08,880
+would be the embedding we want to look
+
+1757
+01:21:06,679 --> 01:21:10,880
+up for King for
+
+1758
+01:21:08,880 --> 01:21:12,880
+example and then uh with those
+
+1759
+01:21:10,880 --> 01:21:14,880
+embeddings we can uh calculate the
+
+1760
+01:21:12,880 --> 01:21:18,800
+probabilities of things uh occurring
+
+1761
+01:21:14,880 --> 01:21:22,040
+close to each other um and uh basically
+
+1762
+01:21:18,800 --> 01:21:24,360
+we we end up with our
+
+1763
+01:21:22,040 --> 01:21:26,760
+embeddings great uh we know how to do
+
+1764
+01:21:24,360 --> 01:21:30,400
+that from words now how can we do the
+
+1765
+01:21:26,760 --> 01:21:32,880
+same for graphs so words have the or
+
+1766
+01:21:30,400 --> 01:21:35,199
+text has the uh advantage that we have a
+
+1767
+01:21:32,880 --> 01:21:37,639
+linear structure or also called
+
+1768
+01:21:35,199 --> 01:21:40,800
+sentences so we can basically go through
+
+1769
+01:21:37,639 --> 01:21:42,840
+and we can sample the context around it
+
+1770
+01:21:40,800 --> 01:21:45,280
+so here we know oh those two words are
+
+1771
+01:21:42,840 --> 01:21:49,400
+close by if you do the same within a
+
+1772
+01:21:45,280 --> 01:21:52,520
+graph uh this is a bit harder because uh
+
+1773
+01:21:49,400 --> 01:21:54,920
+we might uh not all nodes have the same
+
+1774
+01:21:52,520 --> 01:21:58,120
+number of neighbors so it's kind of very
+
+1775
+01:21:54,920 --> 01:22:00,639
+hard to create uh
+
+1776
+01:21:58,120 --> 01:22:03,360
+representative sampling as as we would
+
+1777
+01:22:00,639 --> 01:22:08,159
+do simply by going through text but we
+
+1778
+01:22:03,360 --> 01:22:10,880
+can sample notes or runs uh from uh from
+
+1779
+01:22:08,159 --> 01:22:12,920
+a graph so basically we can go in and
+
+1780
+01:22:10,880 --> 01:22:15,120
+the most simple thing we can do we say
+
+1781
+01:22:12,920 --> 01:22:17,760
+we want to create sentences of length
+
+1782
+01:22:15,120 --> 01:22:20,480
+five from our graph so we just randomly
+
+1783
+01:22:17,760 --> 01:22:22,400
+go from starting node to this node
+
+1784
+01:22:20,480 --> 01:22:25,159
+randomly go here randomly go here
+
+1785
+01:22:22,400 --> 01:22:27,400
+randomly go here until we have a
+
+1786
+01:22:25,159 --> 01:22:32,199
+a sequence of five
+
+1787
+01:22:27,400 --> 01:22:35,520
+notes um we can also do that a bit more
+
+1788
+01:22:32,199 --> 01:22:37,960
+intelligently uh by going in and uh
+
+1789
+01:22:35,520 --> 01:22:40,600
+having certain transition probabilities
+
+1790
+01:22:37,960 --> 01:22:43,080
+so for example we have three different
+
+1791
+01:22:40,600 --> 01:22:45,400
+cases in a graph how we could transition
+
+1792
+01:22:43,080 --> 01:22:47,639
+so the first thing uh we just
+
+1793
+01:22:45,400 --> 01:22:49,600
+transitioned over from T to V so now
+
+1794
+01:22:47,639 --> 01:22:52,080
+we're here at this middle note and we
+
+1795
+01:22:49,600 --> 01:22:54,239
+are trying to decide where we want to go
+
+1796
+01:22:52,080 --> 01:22:56,679
+the first option would be to go back to
+
+1797
+01:22:54,239 --> 01:22:59,280
+the same note we came from so this is
+
+1798
+01:22:56,679 --> 01:23:01,199
+this first probability one over p and
+
+1799
+01:22:59,280 --> 01:23:03,639
+that would be the probability of yeah
+
+1800
+01:23:01,199 --> 01:23:06,440
+going back to the same node second
+
+1801
+01:23:03,639 --> 01:23:09,199
+option we are having is going here to X1
+
+1802
+01:23:06,440 --> 01:23:11,360
+X1 is also connected to T so we would
+
+1803
+01:23:09,199 --> 01:23:13,000
+stay within the same subgraph within the
+
+1804
+01:23:11,360 --> 01:23:16,040
+same
+
+1805
+01:23:13,000 --> 01:23:19,760
+triangle last uh option we have is
+
+1806
+01:23:16,040 --> 01:23:22,840
+basically none of those but explore
+
+1807
+01:23:19,760 --> 01:23:25,280
+that graph further so this is here
+
+1808
+01:23:22,840 --> 01:23:28,760
+either going to X2 or X3
+
+1809
+01:23:25,280 --> 01:23:30,679
+and um this is what's called not to back
+
+1810
+01:23:28,760 --> 01:23:33,520
+they basically allow you to play with
+
+1811
+01:23:30,679 --> 01:23:35,239
+those probabilities and hence control
+
+1812
+01:23:33,520 --> 01:23:37,400
+how you want to explore that graph do
+
+1813
+01:23:35,239 --> 01:23:40,120
+you really want to stay close by or do
+
+1814
+01:23:37,400 --> 01:23:42,320
+you want to have large runs over large
+
+1815
+01:23:40,120 --> 01:23:45,360
+parts of the
+
+1816
+01:23:42,320 --> 01:23:47,560
+graph so uh how does it how does this
+
+1817
+01:23:45,360 --> 01:23:50,560
+then look like so we have a random
+
+1818
+01:23:47,560 --> 01:23:53,280
+sampling uh we first create our
+
+1819
+01:23:50,560 --> 01:23:55,719
+sentences from our graph so here I
+
+1820
+01:23:53,280 --> 01:23:59,679
+created four sentences and then we can
+
+1821
+01:23:55,719 --> 01:24:03,679
+deploy the same structure we had for um
+
+1822
+01:23:59,679 --> 01:24:06,080
+for word to be create training examples
+
+1823
+01:24:03,679 --> 01:24:10,440
+we train our skippr Network and then we
+
+1824
+01:24:06,080 --> 01:24:10,440
+have our node embeddings available
+
+1825
+01:24:10,719 --> 01:24:17,080
+here having that said let's actually do
+
+1826
+01:24:13,639 --> 01:24:17,080
+that in uh in
+
+1827
+01:24:17,360 --> 01:24:21,040
+practice so next
+
+1828
+01:24:23,159 --> 01:24:30,440
+notebook and and we need a number of
+
+1829
+01:24:26,320 --> 01:24:30,440
+libraries to load this always takes a
+
+1830
+01:24:33,120 --> 01:24:38,159
+while a quick question in the meantime
+
+1831
+01:24:35,800 --> 01:24:40,920
+do you think you all understand the
+
+1832
+01:24:38,159 --> 01:24:44,520
+value of embeddings why do we want to
+
+1833
+01:24:40,920 --> 01:24:44,520
+generate them
+
+1834
+01:24:54,920 --> 01:25:01,119
+so we we want to uh mostly generate them
+
+1835
+01:24:58,920 --> 01:25:03,040
+a because they allow us to have a vector
+
+1836
+01:25:01,119 --> 01:25:05,600
+representation which which we then can
+
+1837
+01:25:03,040 --> 01:25:08,199
+use in support Vector machine or other
+
+1838
+01:25:05,600 --> 01:25:10,760
+shinks uh secondly we'll also see that
+
+1839
+01:25:08,199 --> 01:25:13,440
+just also comparing vectors by itself
+
+1840
+01:25:10,760 --> 01:25:16,560
+can can be already very helpful just for
+
+1841
+01:25:13,440 --> 01:25:19,920
+like our visual representation so uh
+
+1842
+01:25:16,560 --> 01:25:21,760
+let's get started u and feel free to uh
+
+1843
+01:25:19,920 --> 01:25:24,320
+I'll give will give you some time to do
+
+1844
+01:25:21,760 --> 01:25:27,880
+that as well in just a minute here
+
+1845
+01:25:24,320 --> 01:25:32,119
+here's by the way another typo I'll get
+
+1846
+01:25:27,880 --> 01:25:33,679
+rid of it here uh and I'll remove it uh
+
+1847
+01:25:32,119 --> 01:25:37,280
+as well
+
+1848
+01:25:33,679 --> 01:25:39,760
+so uh Network X has a nice generator for
+
+1849
+01:25:37,280 --> 01:25:42,880
+the uh karate club example it doesn't
+
+1850
+01:25:39,760 --> 01:25:46,600
+look as nice as the round figure we saw
+
+1851
+01:25:42,880 --> 01:25:49,320
+before um but still it's it's the same
+
+1852
+01:25:46,600 --> 01:25:52,360
+graph in the end doesn't matter how we
+
+1853
+01:25:49,320 --> 01:25:54,320
+represented what we furthermore have is
+
+1854
+01:25:52,360 --> 01:25:57,199
+we have some information where they
+
+1855
+01:25:54,320 --> 01:25:59,119
+ended up in the end so this is uh here
+
+1856
+01:25:57,199 --> 01:26:02,440
+that note feature and it's basically
+
+1857
+01:25:59,119 --> 01:26:05,520
+saying Club Mr high club officer so
+
+1858
+01:26:02,440 --> 01:26:08,440
+those are the two two uh two competing
+
+1859
+01:26:05,520 --> 01:26:11,719
+clubs they might end up in in the
+
+1860
+01:26:08,440 --> 01:26:14,159
+end the next do is we generate our
+
+1861
+01:26:11,719 --> 01:26:15,679
+random walks and then fit our skip gram
+
+1862
+01:26:14,159 --> 01:26:20,840
+a
+
+1863
+01:26:15,679 --> 01:26:23,400
+model um one interesting aspect of those
+
+1864
+01:26:20,840 --> 01:26:24,960
+random walks and those sentences and not
+
+1865
+01:26:23,400 --> 01:26:27,639
+to back in general
+
+1866
+01:26:24,960 --> 01:26:30,000
+you see it doesn't take care into uh it
+
+1867
+01:26:27,639 --> 01:26:33,040
+doesn't take into account any of those
+
+1868
+01:26:30,000 --> 01:26:35,360
+uh features here at all again uh recall
+
+1869
+01:26:33,040 --> 01:26:37,040
+what we talked about in the beginning it
+
+1870
+01:26:35,360 --> 01:26:39,239
+only considers the structural
+
+1871
+01:26:37,040 --> 01:26:40,800
+information which node is connected to
+
+1872
+01:26:39,239 --> 01:26:44,040
+which other
+
+1873
+01:26:40,800 --> 01:26:46,760
+node but okay we we have that done and
+
+1874
+01:26:44,040 --> 01:26:49,400
+now we can create the uh embeddings and
+
+1875
+01:26:46,760 --> 01:26:51,000
+actually display the embeddings um we
+
+1876
+01:26:49,400 --> 01:26:54,440
+can see here we have an X and
+
+1877
+01:26:51,000 --> 01:26:56,600
+y-coordinate and we still have um the
+
+1878
+01:26:54,440 --> 01:26:58,920
+same information as before about the
+
+1879
+01:26:56,600 --> 01:27:00,520
+club so this was not related to the
+
+1880
+01:26:58,920 --> 01:27:03,440
+embedding we just get it from the
+
+1881
+01:27:00,520 --> 01:27:05,760
+original noes as additional information
+
+1882
+01:27:03,440 --> 01:27:08,760
+and uh then just put it in here to
+
+1883
+01:27:05,760 --> 01:27:11,719
+display it and then we can actually uh
+
+1884
+01:27:08,760 --> 01:27:14,840
+display it ah this is not the nicest one
+
+1885
+01:27:11,719 --> 01:27:18,560
+let's rerun that I like statistical
+
+1886
+01:27:14,840 --> 01:27:21,360
+models because we can rerun them maybe
+
+1887
+01:27:18,560 --> 01:27:21,360
+f60
+
+1888
+01:27:22,000 --> 01:27:29,239
+iterations and show that
+
+1889
+01:27:25,639 --> 01:27:32,159
+again yes this is this is a much nicer
+
+1890
+01:27:29,239 --> 01:27:35,320
+one so we can already see here if we now
+
+1891
+01:27:32,159 --> 01:27:37,480
+would train a linear classifier or any
+
+1892
+01:27:35,320 --> 01:27:41,400
+kind of classifier we could easily
+
+1893
+01:27:37,480 --> 01:27:45,800
+separate uh those two classes uh between
+
+1894
+01:27:41,400 --> 01:27:47,520
+the Mr High Mr high or uh the officer
+
+1895
+01:27:45,800 --> 01:27:53,639
+people who joined the officer Club in
+
+1896
+01:27:47,520 --> 01:27:55,800
+the end and uh can can also uh try to
+
+1897
+01:27:53,639 --> 01:27:56,800
+predict that for notes where we don't
+
+1898
+01:27:55,800 --> 01:28:01,000
+know
+
+1899
+01:27:56,800 --> 01:28:03,440
+it so I would give you um two to three
+
+1900
+01:28:01,000 --> 01:28:05,199
+minutes to run through so I think what's
+
+1901
+01:28:03,440 --> 01:28:08,199
+interesting is to actually play a little
+
+1902
+01:28:05,199 --> 01:28:09,480
+bit with those components so the EPO uh
+
+1903
+01:28:08,199 --> 01:28:12,920
+this is how
+
+1904
+01:28:09,480 --> 01:28:14,920
+many how many steps we want to generate
+
+1905
+01:28:12,920 --> 01:28:18,600
+walk length is how long should each
+
+1906
+01:28:14,920 --> 01:28:20,639
+sentence be number of components is how
+
+1907
+01:28:18,600 --> 01:28:22,800
+many dimensions should our embedding
+
+1908
+01:28:20,639 --> 01:28:24,239
+have I would leave it for two to now
+
+1909
+01:28:22,800 --> 01:28:28,280
+because it's just much easier to to
+
+1910
+01:28:24,239 --> 01:28:31,320
+visualize obviously um and then you can
+
+1911
+01:28:28,280 --> 01:28:33,840
+play uh with those parameters but I I
+
+1912
+01:28:31,320 --> 01:28:36,119
+would not there right now but I think
+
+1913
+01:28:33,840 --> 01:28:38,000
+those those are the interesting ones uh
+
+1914
+01:28:36,119 --> 01:28:39,360
+in real world scenarios I would first
+
+1915
+01:28:38,000 --> 01:28:42,679
+start playing
+
+1916
+01:28:39,360 --> 01:28:44,960
+with and then this is a just kind of
+
+1917
+01:28:42,679 --> 01:28:48,440
+like an Outlook uh there's a second
+
+1918
+01:28:44,960 --> 01:28:51,719
+example here about uh FIFA so soccer uh
+
+1919
+01:28:48,440 --> 01:28:53,800
+Club where we can also leverage that to
+
+1920
+01:28:51,719 --> 01:28:56,840
+predict similarities between different
+
+1921
+01:28:53,800 --> 01:28:59,239
+soft players between different teams uh
+
+1922
+01:28:56,840 --> 01:29:01,480
+this is a bit longer but I think it's a
+
+1923
+01:28:59,239 --> 01:29:03,480
+very interesting thing to run if you're
+
+1924
+01:29:01,480 --> 01:29:06,679
+interested in graph eddings and have
+
+1925
+01:29:03,480 --> 01:29:09,040
+some time afterwards uh because it also
+
+1926
+01:29:06,679 --> 01:29:11,760
+captures you'll see like half of this
+
+1927
+01:29:09,040 --> 01:29:14,840
+code is actually uh preparing the data
+
+1928
+01:29:11,760 --> 01:29:16,560
+sets creating graphs for each team uh
+
+1929
+01:29:14,840 --> 01:29:19,040
+Etc and then here first we come to the
+
+1930
+01:29:16,560 --> 01:29:20,840
+note Tove algorithm but that corresponds
+
+1931
+01:29:19,040 --> 01:29:24,199
+to my experience with dealing with real
+
+1932
+01:29:20,840 --> 01:29:27,080
+world data sets because most often
+
+1933
+01:29:24,199 --> 01:29:29,719
+spending most time uh preparing the data
+
+1934
+01:29:27,080 --> 01:29:31,560
+than just running it so just try to go
+
+1935
+01:29:29,719 --> 01:29:34,600
+up till here play a little bit with not
+
+1936
+01:29:31,560 --> 01:29:37,280
+to back and we'll continue in yeah again
+
+1937
+01:29:34,600 --> 01:29:41,080
+like two to three minutes um you can
+
+1938
+01:29:37,280 --> 01:29:41,080
+also just ping in the chat once you're
+
+1939
+01:29:43,000 --> 01:29:48,560
+done and again as usual feel free to ask
+
+1940
+01:29:45,960 --> 01:29:48,560
+questions in the
+
+1941
+01:29:53,040 --> 01:29:57,000
+meantime for
+
+1942
+01:30:53,679 --> 01:30:56,880
+ref one one more
+
+1943
+01:31:00,199 --> 01:31:05,760
+minute you can already see this is this
+
+1944
+01:31:03,480 --> 01:31:08,520
+is a more statistical model in the end
+
+1945
+01:31:05,760 --> 01:31:10,719
+right because if you rerun the random
+
+1946
+01:31:08,520 --> 01:31:12,560
+block generation or fitting of the model
+
+1947
+01:31:10,719 --> 01:31:15,199
+because yeah there's a random component
+
+1948
+01:31:12,560 --> 01:31:17,800
+involved uh it will give you different
+
+1949
+01:31:15,199 --> 01:31:22,040
+results each time you run
+
+1950
+01:31:17,800 --> 01:31:23,960
+it um a question which I often get asked
+
+1951
+01:31:22,040 --> 01:31:29,520
+is what do those different dimensions
+
+1952
+01:31:23,960 --> 01:31:31,480
+refer to so X and Y um they don't mean
+
+1953
+01:31:29,520 --> 01:31:33,840
+they don't necessarily have an explicit
+
+1954
+01:31:31,480 --> 01:31:35,400
+meaning um if you're familiar for
+
+1955
+01:31:33,840 --> 01:31:39,880
+example with principal component
+
+1956
+01:31:35,400 --> 01:31:42,040
+analysis you can imagine it being an
+
+1957
+01:31:39,880 --> 01:31:44,760
+being some kind of Dimension which is
+
+1958
+01:31:42,040 --> 01:31:47,400
+good at separating those two two two
+
+1959
+01:31:44,760 --> 01:31:52,239
+data sets so uh it doesn't have a
+
+1960
+01:31:47,400 --> 01:31:56,239
+particular meaning um by itself so um
+
+1961
+01:31:52,239 --> 01:31:59,000
+it's just ref to uh the the vector
+
+1962
+01:31:56,239 --> 01:32:00,639
+length in the end like how much how much
+
+1963
+01:31:59,000 --> 01:32:04,199
+information do you want to give to your
+
+1964
+01:32:00,639 --> 01:32:06,679
+vector I mean this is maybe uh this is
+
+1965
+01:32:04,199 --> 01:32:09,199
+good to quickly jump back here to talk
+
+1966
+01:32:06,679 --> 01:32:11,920
+about Dimensions the other reason why we
+
+1967
+01:32:09,199 --> 01:32:14,320
+obviously want to have want to do that
+
+1968
+01:32:11,920 --> 01:32:16,880
+if we take a look at this very simple
+
+1969
+01:32:14,320 --> 01:32:20,159
+embedding where we either using one hot
+
+1970
+01:32:16,880 --> 01:32:24,000
+encoding or assign a random Vector for
+
+1971
+01:32:20,159 --> 01:32:26,159
+each of them um we don't have like
+
+1972
+01:32:24,000 --> 01:32:28,760
+control or in in the case of one hot
+
+1973
+01:32:26,159 --> 01:32:31,080
+encoding our Vector needs to be as large
+
+1974
+01:32:28,760 --> 01:32:33,920
+as our dictionary which you can already
+
+1975
+01:32:31,080 --> 01:32:36,520
+see for large uh dictionaries or even
+
+1976
+01:32:33,920 --> 01:32:39,880
+changing dictionaries uh won't really
+
+1977
+01:32:36,520 --> 01:32:42,239
+work so uh the word to V those EMB
+
+1978
+01:32:39,880 --> 01:32:46,199
+betting techniques they give us a way to
+
+1979
+01:32:42,239 --> 01:32:48,560
+control how much how much resources how
+
+1980
+01:32:46,199 --> 01:32:50,800
+much money do we want to spend on that
+
+1981
+01:32:48,560 --> 01:32:52,520
+representation so as I can choose the
+
+1982
+01:32:50,800 --> 01:32:54,520
+hidden layer here is the number of
+
+1983
+01:32:52,520 --> 01:32:57,040
+neurons or if we go go over to the
+
+1984
+01:32:54,520 --> 01:33:01,080
+notebook uh I can choose a number of
+
+1985
+01:32:57,040 --> 01:33:03,760
+Dimensions here or components um I I can
+
+1986
+01:33:01,080 --> 01:33:08,679
+control how large my representation
+
+1987
+01:33:03,760 --> 01:33:08,679
+should be so or how complex it it should
+
+1988
+01:33:11,040 --> 01:33:20,679
+be okay uh then with that let's briefly
+
+1989
+01:33:16,000 --> 01:33:24,760
+talk about uh what is bad about uh no to
+
+1990
+01:33:20,679 --> 01:33:28,000
+back do you have any any proposals why
+
+1991
+01:33:24,760 --> 01:33:31,920
+you would say not might not be the best
+
+1992
+01:33:28,000 --> 01:33:31,920
+tool uh out there to
+
+1993
+01:33:32,560 --> 01:33:39,600
+use let me maybe ask the first question
+
+1994
+01:33:36,840 --> 01:33:44,960
+uh what happens if if that
+
+1995
+01:33:39,600 --> 01:33:48,880
+graph I don't want to uh Josh
+
+1996
+01:33:44,960 --> 01:33:50,920
+no no context so if if I interpret that
+
+1997
+01:33:48,880 --> 01:33:52,840
+I think you mean uh we don't take any of
+
+1998
+01:33:50,920 --> 01:33:55,400
+the additional information on the notes
+
+1999
+01:33:52,840 --> 01:33:57,679
+into account it's really just structural
+
+2000
+01:33:55,400 --> 01:34:00,320
+if if if I would interpret that yes this
+
+2001
+01:33:57,679 --> 01:34:04,199
+is one of the big draw sites of uh note
+
+2002
+01:34:00,320 --> 01:34:07,719
+Toc the other one um we talked about
+
+2003
+01:34:04,199 --> 01:34:10,360
+inductive uh techniques before so what
+
+2004
+01:34:07,719 --> 01:34:13,199
+happens with no to backc and this uh
+
+2005
+01:34:10,360 --> 01:34:15,480
+embedding if my graph changes or if I'm
+
+2006
+01:34:13,199 --> 01:34:18,119
+adding another note here what would I
+
+2007
+01:34:15,480 --> 01:34:21,719
+have to do so I'm adding here a note G
+
+2008
+01:34:18,119 --> 01:34:21,719
+which is connected to X3 and
+
+2009
+01:34:22,119 --> 01:34:29,520
+X4 I I would have to go in and actually
+
+2010
+01:34:25,560 --> 01:34:32,159
+rerun this entire procedure um so this
+
+2011
+01:34:29,520 --> 01:34:34,880
+is what's typically called transductive
+
+2012
+01:34:32,159 --> 01:34:37,360
+method and this as you can imagine if
+
+2013
+01:34:34,880 --> 01:34:40,440
+you have Dynamic large graphs this
+
+2014
+01:34:37,360 --> 01:34:42,119
+probably won't really scale uh to your
+
+2015
+01:34:40,440 --> 01:34:45,159
+to your data
+
+2016
+01:34:42,119 --> 01:34:47,719
+site yes Stefan you're also completely
+
+2017
+01:34:45,159 --> 01:34:52,600
+right attributes of nodes and edges true
+
+2018
+01:34:47,719 --> 01:34:54,400
+Edge uh Edge metadata is also uh uh some
+
+2019
+01:34:52,600 --> 01:34:57,920
+something crucial to consider and we'll
+
+2020
+01:34:54,400 --> 01:35:01,760
+get to that in in just a second um so
+
+2021
+01:34:57,920 --> 01:35:04,159
+for example U um I I always would say
+
+2022
+01:35:01,760 --> 01:35:07,080
+like imagine those those are different
+
+2023
+01:35:04,159 --> 01:35:09,679
+not weights like this is a really strong
+
+2024
+01:35:07,080 --> 01:35:12,320
+connection imagine this represents I
+
+2025
+01:35:09,679 --> 01:35:13,960
+don't know in interactions of uh people
+
+2026
+01:35:12,320 --> 01:35:15,080
+people have with each other how often
+
+2027
+01:35:13,960 --> 01:35:17,639
+people
+
+2028
+01:35:15,080 --> 01:35:19,960
+met uh in in a social network and this
+
+2029
+01:35:17,639 --> 01:35:22,719
+is really just a very faint relationship
+
+2030
+01:35:19,960 --> 01:35:24,719
+you connected you just signed off this
+
+2031
+01:35:22,719 --> 01:35:27,320
+LinkedIn request because you were like
+
+2032
+01:35:24,719 --> 01:35:29,880
+oh yeah sure why not and this is someone
+
+2033
+01:35:27,320 --> 01:35:32,400
+on LinkedIn or favorite social network
+
+2034
+01:35:29,880 --> 01:35:34,840
+you're interacting with on a daily basis
+
+2035
+01:35:32,400 --> 01:35:37,440
+obviously this uh Edge attribut this
+
+2036
+01:35:34,840 --> 01:35:39,440
+Edge weight should make this uh
+
+2037
+01:35:37,440 --> 01:35:42,719
+connection more important uh than the
+
+2038
+01:35:39,440 --> 01:35:47,480
+other a very very good
+
+2039
+01:35:42,719 --> 01:35:51,159
+point let's talk about um graph no
+
+2040
+01:35:47,480 --> 01:35:53,280
+networks so graph neuron networks um
+
+2041
+01:35:51,159 --> 01:35:55,159
+they in the end they are also used for
+
+2042
+01:35:53,280 --> 01:35:58,280
+creating some kind of
+
+2043
+01:35:55,159 --> 01:36:01,040
+representation um the cool thing is uh
+
+2044
+01:35:58,280 --> 01:36:02,760
+we can treat them both in a supervised
+
+2045
+01:36:01,040 --> 01:36:04,719
+or unsupervised setting so in an
+
+2046
+01:36:02,760 --> 01:36:07,920
+unsupervised setting it would just
+
+2047
+01:36:04,719 --> 01:36:09,800
+generate our embeddings as such uh but
+
+2048
+01:36:07,920 --> 01:36:11,920
+we can also have that in a more
+
+2049
+01:36:09,800 --> 01:36:14,080
+supervised setting where we for example
+
+2050
+01:36:11,920 --> 01:36:16,920
+want to use the embeddings for note
+
+2051
+01:36:14,080 --> 01:36:19,159
+classifications and so we can kind of
+
+2052
+01:36:16,920 --> 01:36:21,040
+use our graph neural network to create
+
+2053
+01:36:19,159 --> 01:36:23,400
+embeddings which are good for note
+
+2054
+01:36:21,040 --> 01:36:27,080
+classification or link prediction trying
+
+2055
+01:36:23,400 --> 01:36:31,040
+to predict uh Missing uh missing links
+
+2056
+01:36:27,080 --> 01:36:33,920
+with within our uh graph so how you can
+
+2057
+01:36:31,040 --> 01:36:35,400
+view um graph neural networks it
+
+2058
+01:36:33,920 --> 01:36:39,400
+basically creates a latent
+
+2059
+01:36:35,400 --> 01:36:44,400
+representation of our graph um and that
+
+2060
+01:36:39,400 --> 01:36:46,520
+might have then certain um certain no um
+
+2061
+01:36:44,400 --> 01:36:47,800
+connections which are not there so it's
+
+2062
+01:36:46,520 --> 01:36:50,199
+basically it's a transformed
+
+2063
+01:36:47,800 --> 01:36:52,600
+representation of our graph potentially
+
+2064
+01:36:50,199 --> 01:36:55,520
+also with uh different uh weights with
+
+2065
+01:36:52,600 --> 01:36:59,000
+with different property we just try to
+
+2066
+01:36:55,520 --> 01:37:01,760
+predict one example of that uh would be
+
+2067
+01:36:59,000 --> 01:37:04,639
+uh Uber Eats they have a I find quite
+
+2068
+01:37:01,760 --> 01:37:06,560
+interesting block post how they take
+
+2069
+01:37:04,639 --> 01:37:10,600
+this recommendation example we saw
+
+2070
+01:37:06,560 --> 01:37:14,639
+earlier with movies to the next level
+
+2071
+01:37:10,600 --> 01:37:17,199
+so they pretty much want to predict uh
+
+2072
+01:37:14,639 --> 01:37:20,600
+uh like they want to give you examples
+
+2073
+01:37:17,199 --> 01:37:22,239
+of what you might want to order um or
+
+2074
+01:37:20,600 --> 01:37:25,119
+from which restaurant you might want to
+
+2075
+01:37:22,239 --> 01:37:28,159
+order so the ground for Uber Eats it's
+
+2076
+01:37:25,119 --> 01:37:30,880
+not just a bipartite graph of users and
+
+2077
+01:37:28,159 --> 01:37:34,480
+dishes or products we saw earlier with
+
+2078
+01:37:30,880 --> 01:37:37,239
+movies it actually uh is a tripartite
+
+2079
+01:37:34,480 --> 01:37:39,840
+graph where we have users restaurants
+
+2080
+01:37:37,239 --> 01:37:41,480
+and then dishes and this is what they
+
+2081
+01:37:39,840 --> 01:37:43,639
+want to predict like hey which
+
+2082
+01:37:41,480 --> 01:37:46,000
+restaurant might you want you might want
+
+2083
+01:37:43,639 --> 01:37:49,679
+to order from or which dish uh you might
+
+2084
+01:37:46,000 --> 01:37:52,920
+even want to order uh and so they train
+
+2085
+01:37:49,679 --> 01:37:55,560
+uh graph uh neural network for that and
+
+2086
+01:37:52,920 --> 01:37:58,280
+this is a graph stage model uh we'll see
+
+2087
+01:37:55,560 --> 01:38:00,880
+on uh just in the upcoming
+
+2088
+01:37:58,280 --> 01:38:04,800
+slide what are graph convolutional
+
+2089
+01:38:00,880 --> 01:38:07,280
+networks uh referring to so uh you might
+
+2090
+01:38:04,800 --> 01:38:09,719
+be familiar with uh image or
+
+2091
+01:38:07,280 --> 01:38:11,920
+convolutional networks in general so
+
+2092
+01:38:09,719 --> 01:38:15,159
+they are often used in uh image
+
+2093
+01:38:11,920 --> 01:38:18,520
+classification for example and here
+
+2094
+01:38:15,159 --> 01:38:21,000
+convolution refers to we moving a filter
+
+2095
+01:38:18,520 --> 01:38:22,760
+or also called kernel across the image
+
+2096
+01:38:21,000 --> 01:38:25,760
+and we are trying to compute this one
+
+2097
+01:38:22,760 --> 01:38:27,480
+image so uh this this one pixel value so
+
+2098
+01:38:25,760 --> 01:38:29,880
+here we would take all those pixel
+
+2099
+01:38:27,480 --> 01:38:32,480
+values and for example average that
+
+2100
+01:38:29,880 --> 01:38:35,360
+moves the filter to the next uh moves
+
+2101
+01:38:32,480 --> 01:38:37,880
+the filter one further uh calculat that
+
+2102
+01:38:35,360 --> 01:38:41,480
+Vector uh that value here and so on and
+
+2103
+01:38:37,880 --> 01:38:44,560
+so on so we trying to convolve multiple
+
+2104
+01:38:41,480 --> 01:38:45,800
+items uh multiple pieces of information
+
+2105
+01:38:44,560 --> 01:38:48,639
+into
+
+2106
+01:38:45,800 --> 01:38:51,639
+one um
+
+2107
+01:38:48,639 --> 01:38:53,480
+the if if we just uh try to view it from
+
+2108
+01:38:51,639 --> 01:38:55,040
+a very high level what we're trying to
+
+2109
+01:38:53,480 --> 01:38:58,239
+say that there are certain
+
+2110
+01:38:55,040 --> 01:39:00,840
+invariants um which hold true throughout
+
+2111
+01:38:58,239 --> 01:39:03,520
+the entire uh throughout the entire
+
+2112
+01:39:00,840 --> 01:39:05,800
+space so in the image for example we
+
+2113
+01:39:03,520 --> 01:39:09,480
+might have such kernel function or such
+
+2114
+01:39:05,800 --> 01:39:12,320
+filter function which detects uh pixels
+
+2115
+01:39:09,480 --> 01:39:14,440
+moving from dark to light or which tries
+
+2116
+01:39:12,320 --> 01:39:17,920
+to predict a circle or some something
+
+2117
+01:39:14,440 --> 01:39:20,920
+else and uh so this invariant this kind
+
+2118
+01:39:17,920 --> 01:39:22,800
+of function black and white uh holds
+
+2119
+01:39:20,920 --> 01:39:24,159
+across the entire picture so we can
+
+2120
+01:39:22,800 --> 01:39:27,920
+apply that
+
+2121
+01:39:24,159 --> 01:39:30,599
+um filter kernel across the entire uh
+
+2122
+01:39:27,920 --> 01:39:35,119
+image convolve it across the entire
+
+2123
+01:39:30,599 --> 01:39:37,080
+image if they want to do the same in uh
+
+2124
+01:39:35,119 --> 01:39:39,119
+in general graphs it becomes a bit
+
+2125
+01:39:37,080 --> 01:39:41,000
+harder because graphs don't have those
+
+2126
+01:39:39,119 --> 01:39:43,679
+regular structure so a pixel doesn't
+
+2127
+01:39:41,000 --> 01:39:47,400
+have a right pixel uh pixel doesn't have
+
+2128
+01:39:43,679 --> 01:39:49,000
+like a pixel below it or above it U we
+
+2129
+01:39:47,400 --> 01:39:52,599
+don't even have the same number of
+
+2130
+01:39:49,000 --> 01:39:54,480
+neighbors within our graph um so it
+
+2131
+01:39:52,599 --> 01:39:56,320
+becomes a bit hard but for example one
+
+2132
+01:39:54,480 --> 01:39:58,800
+notion which you might want to say like
+
+2133
+01:39:56,320 --> 01:40:01,840
+all the neighboring pixels all the
+
+2134
+01:39:58,800 --> 01:40:05,840
+neighboring noes of of a certain note
+
+2135
+01:40:01,840 --> 01:40:07,560
+might be in that uh filter out here of
+
+2136
+01:40:05,840 --> 01:40:09,119
+course since it's a variable size and
+
+2137
+01:40:07,560 --> 01:40:11,360
+we'll see the challenges with that also
+
+2138
+01:40:09,119 --> 01:40:13,320
+coming up but it's actually it's the
+
+2139
+01:40:11,360 --> 01:40:15,719
+same as if we would interpret it here
+
+2140
+01:40:13,320 --> 01:40:18,560
+because also here it's basically all the
+
+2141
+01:40:15,719 --> 01:40:20,320
+neighboring pixels taken into account
+
+2142
+01:40:18,560 --> 01:40:22,639
+just in the image case it's a much
+
+2143
+01:40:20,320 --> 01:40:23,880
+simpler definition uh because we have
+
+2144
+01:40:22,639 --> 01:40:26,159
+more structure
+
+2145
+01:40:23,880 --> 01:40:28,480
+whereas in general graphs we have to
+
+2146
+01:40:26,159 --> 01:40:30,920
+deal yeah with a bit more
+
+2147
+01:40:28,480 --> 01:40:33,880
+unstructuredness out
+
+2148
+01:40:30,920 --> 01:40:36,840
+there what can those graph no networks
+
+2149
+01:40:33,880 --> 01:40:39,760
+be uh be used for can be can for example
+
+2150
+01:40:36,840 --> 01:40:42,719
+be used for natural language processing
+
+2151
+01:40:39,760 --> 01:40:46,880
+again recommender systems
+
+2152
+01:40:42,719 --> 01:40:49,719
+uh uh as also the case uh with Uber Eats
+
+2153
+01:40:46,880 --> 01:40:53,599
+also seam graph uh decomposition when we
+
+2154
+01:40:49,719 --> 01:40:53,599
+want to do image analysis
+
+2155
+01:40:53,679 --> 01:41:00,320
+the first ones um um were proposed not
+
+2156
+01:40:58,560 --> 01:41:02,800
+the exact first one but one one of the
+
+2157
+01:41:00,320 --> 01:41:05,119
+first ones uh is this uh graph
+
+2158
+01:41:02,800 --> 01:41:08,000
+convolutional network based on message
+
+2159
+01:41:05,119 --> 01:41:11,960
+passing so interestingly if you recall
+
+2160
+01:41:08,000 --> 01:41:13,880
+what we talked about in uh with prao uh
+
+2161
+01:41:11,960 --> 01:41:16,560
+and those updates where we basically
+
+2162
+01:41:13,880 --> 01:41:18,560
+sending updates to all our neighbors
+
+2163
+01:41:16,560 --> 01:41:20,520
+this is a pretty similar idea as we're
+
+2164
+01:41:18,560 --> 01:41:23,520
+dealing here with the early graph
+
+2165
+01:41:20,520 --> 01:41:27,360
+convolutional networks so each of those
+
+2166
+01:41:23,520 --> 01:41:30,360
+noes can send an update to its neighbors
+
+2167
+01:41:27,360 --> 01:41:33,040
+and that can already include some some
+
+2168
+01:41:30,360 --> 01:41:34,440
+notion of a feature so this might be a
+
+2169
+01:41:33,040 --> 01:41:37,840
+particular feature and there we are
+
+2170
+01:41:34,440 --> 01:41:40,040
+coming to Josh and Stefan's point is uh
+
+2171
+01:41:37,840 --> 01:41:42,119
+that uh we now can take like some more
+
+2172
+01:41:40,040 --> 01:41:44,280
+context into account and then we are
+
+2173
+01:41:42,119 --> 01:41:47,360
+update updating like our latent
+
+2174
+01:41:44,280 --> 01:41:49,119
+representation here H1 new based on some
+
+2175
+01:41:47,360 --> 01:41:51,719
+aggregate function so it could just be a
+
+2176
+01:41:49,119 --> 01:41:54,000
+sum uh or something else uh but
+
+2177
+01:41:51,719 --> 01:41:56,960
+basically we want to aggregate all the
+
+2178
+01:41:54,000 --> 01:41:56,960
+messages we have
+
+2179
+01:41:57,119 --> 01:42:04,719
+received this is in the end also pretty
+
+2180
+01:42:00,560 --> 01:42:09,960
+simple to build um I will give a quick
+
+2181
+01:42:04,719 --> 01:42:12,639
+walk through let's see uh as we have 16
+
+2182
+01:42:09,960 --> 01:42:16,920
+minutes left so I'll just give a a brief
+
+2183
+01:42:12,639 --> 01:42:19,520
+overview of that so I think it depends
+
+2184
+01:42:16,920 --> 01:42:22,320
+on like uh what what is most useful for
+
+2185
+01:42:19,520 --> 01:42:25,679
+you so for me it's often it's very
+
+2186
+01:42:22,320 --> 01:42:28,560
+helpful come on uh to see what's
+
+2187
+01:42:25,679 --> 01:42:30,920
+happening on a mathematical level below
+
+2188
+01:42:28,560 --> 01:42:33,119
+so we can actually build such graph
+
+2189
+01:42:30,920 --> 01:42:35,800
+convolutional network from scratch just
+
+2190
+01:42:33,119 --> 01:42:35,800
+with matrix
+
+2191
+01:42:36,159 --> 01:42:41,520
+multiplication so for example here uh we
+
+2192
+01:42:39,520 --> 01:42:43,280
+now really come to the uh
+
+2193
+01:42:41,520 --> 01:42:45,719
+representations we talked about in the
+
+2194
+01:42:43,280 --> 01:42:48,960
+beginning uh we can represent a graph by
+
+2195
+01:42:45,719 --> 01:42:51,239
+this adjacency Matrix here and network X
+
+2196
+01:42:48,960 --> 01:42:53,480
+luckily also has a function to draw it
+
+2197
+01:42:51,239 --> 01:42:56,760
+from a numpy array so this this is
+
+2198
+01:42:53,480 --> 01:42:59,159
+pretty much the graph uh represented by
+
+2199
+01:42:56,760 --> 01:43:02,679
+this adjacency Matrix
+
+2200
+01:42:59,159 --> 01:43:08,159
+here now how can we we just going to add
+
+2201
+01:43:02,679 --> 01:43:10,560
+like some random uh features so if uh we
+
+2202
+01:43:08,159 --> 01:43:14,119
+we we we are cheating let's print that
+
+2203
+01:43:10,560 --> 01:43:16,400
+for once let's
+
+2204
+01:43:14,119 --> 01:43:19,280
+right on it
+
+2205
+01:43:16,400 --> 01:43:24,280
+again so we simply give each of the
+
+2206
+01:43:19,280 --> 01:43:26,520
+nodes so node Z is going to get Z Z node
+
+2207
+01:43:24,280 --> 01:43:29,360
+one is going to get the feature Vector 1
+
+2208
+01:43:26,520 --> 01:43:32,320
+minus one two is going to get 2 minus 2
+
+2209
+01:43:29,360 --> 01:43:34,440
+so it's it's a just very simple way of
+
+2210
+01:43:32,320 --> 01:43:35,679
+assigning like a random uh feature
+
+2211
+01:43:34,440 --> 01:43:39,440
+Vector
+
+2212
+01:43:35,679 --> 01:43:42,960
+there now as if we jump back to the
+
+2213
+01:43:39,440 --> 01:43:44,840
+slide of message passing one step in
+
+2214
+01:43:42,960 --> 01:43:48,119
+such graph convolutional Network
+
+2215
+01:43:44,840 --> 01:43:51,080
+basically means I want to pass my Vector
+
+2216
+01:43:48,119 --> 01:43:54,360
+of information to all my neighbors if we
+
+2217
+01:43:51,080 --> 01:43:57,360
+now look at the incidence Matrix and
+
+2218
+01:43:54,360 --> 01:44:00,599
+multiply it with our features uh this
+
+2219
+01:43:57,360 --> 01:44:03,719
+actually uh means by terms of Matrix
+
+2220
+01:44:00,599 --> 01:44:06,080
+multiplications that we um distribute
+
+2221
+01:44:03,719 --> 01:44:08,520
+and sum over all our neighbors so
+
+2222
+01:44:06,080 --> 01:44:10,520
+basically we take this inner part and
+
+2223
+01:44:08,520 --> 01:44:13,239
+sum over all the messages we are
+
+2224
+01:44:10,520 --> 01:44:16,280
+receiving so uh let's do that so for
+
+2225
+01:44:13,239 --> 01:44:18,440
+example node zero uh has received one
+
+2226
+01:44:16,280 --> 01:44:21,080
+and minus one is update let's look at
+
+2227
+01:44:18,440 --> 01:44:23,400
+that it received one update from node
+
+2228
+01:44:21,080 --> 01:44:28,599
+one and node one's feature vectors one -
+
+2229
+01:44:23,400 --> 01:44:31,679
+one great node one ends up at 5 - 5
+
+2230
+01:44:28,599 --> 01:44:35,360
+let's see how that gets along so here uh
+
+2231
+01:44:31,679 --> 01:44:39,000
+we receive updates from uh node three
+
+2232
+01:44:35,360 --> 01:44:41,679
+and node two and if we kind of add those
+
+2233
+01:44:39,000 --> 01:44:44,800
+uh two vectors up we receive five minus
+
+2234
+01:44:41,679 --> 01:44:48,400
+5 so we can actually implement this
+
+2235
+01:44:44,800 --> 01:44:51,599
+message passing by leveraging uh matrix
+
+2236
+01:44:48,400 --> 01:44:55,280
+multiplication uh using the adjacency
+
+2237
+01:44:51,599 --> 01:44:57,360
+Matrix um then uh just to keep that all
+
+2238
+01:44:55,280 --> 01:44:59,360
+in sync we do some more steps so for
+
+2239
+01:44:57,360 --> 01:45:01,800
+example we add self Loops because right
+
+2240
+01:44:59,360 --> 01:45:05,080
+now we would forget our own information
+
+2241
+01:45:01,800 --> 01:45:08,719
+but if we extend our Matrix uh let's
+
+2242
+01:45:05,080 --> 01:45:08,719
+also print a
+
+2243
+01:45:10,520 --> 01:45:14,960
+hat um just for
+
+2244
+01:45:18,560 --> 01:45:23,920
+previty print a
+
+2245
+01:45:21,080 --> 01:45:25,840
+heads so we can extend our Matrix here
+
+2246
+01:45:23,920 --> 01:45:28,400
+by adding a one on the diagonal meaning
+
+2247
+01:45:25,840 --> 01:45:30,840
+we also want are adjacent to ourself and
+
+2248
+01:45:28,400 --> 01:45:32,560
+we want to send ourself the update uh
+
+2249
+01:45:30,840 --> 01:45:35,760
+and then we can do uh things to
+
+2250
+01:45:32,560 --> 01:45:38,119
+normalize it um and then we can actually
+
+2251
+01:45:35,760 --> 01:45:40,920
+do things to learn and add also the
+
+2252
+01:45:38,119 --> 01:45:43,000
+nonlinear activation function so we can
+
+2253
+01:45:40,920 --> 01:45:45,599
+really build such a graph convolutional
+
+2254
+01:45:43,000 --> 01:45:48,000
+network from scratch ourselves in
+
+2255
+01:45:45,599 --> 01:45:51,480
+reality we would never do that but we
+
+2256
+01:45:48,000 --> 01:45:53,599
+would leverage um uh librar such as a
+
+2257
+01:45:51,480 --> 01:45:56,960
+deep graph Library out there which is
+
+2258
+01:45:53,599 --> 01:46:00,800
+implementing that for us so if we take a
+
+2259
+01:45:56,960 --> 01:46:02,880
+look here at the next uh
+
+2260
+01:46:00,800 --> 01:46:07,320
+notebook
+
+2261
+01:46:02,880 --> 01:46:09,719
+DGL uh we we have it much simpler to uh
+
+2262
+01:46:07,320 --> 01:46:13,639
+instantiate that and run it on the
+
+2263
+01:46:09,719 --> 01:46:18,960
+karate club network interestingly uh now
+
+2264
+01:46:13,639 --> 01:46:21,960
+they expect uh um uh directional Edge so
+
+2265
+01:46:18,960 --> 01:46:23,520
+they again expect another encoding so uh
+
+2266
+01:46:21,960 --> 01:46:26,159
+they basically hear this an encoding
+
+2267
+01:46:23,520 --> 01:46:28,639
+like one to Z uh with a source and
+
+2268
+01:46:26,159 --> 01:46:30,920
+destination so basically have that
+
+2269
+01:46:28,639 --> 01:46:34,040
+adjacency list spread out across two
+
+2270
+01:46:30,920 --> 01:46:34,040
+different uh
+
+2271
+01:46:34,560 --> 01:46:40,880
+arrays and but in the end uh we can just
+
+2272
+01:46:38,239 --> 01:46:43,840
+always move back and forth in
+
+2273
+01:46:40,880 --> 01:46:47,639
+between
+
+2274
+01:46:43,840 --> 01:46:49,119
+okay this again is our already familiar
+
+2275
+01:46:47,639 --> 01:46:52,560
+Network X
+
+2276
+01:46:49,119 --> 01:46:56,719
+graph uh we can create our embedding so
+
+2277
+01:46:52,560 --> 01:47:00,560
+we want 34 nodes our Dimension equal to
+
+2278
+01:46:56,719 --> 01:47:03,480
+five and then we can go
+
+2279
+01:47:00,560 --> 01:47:07,320
+through label our two
+
+2280
+01:47:03,480 --> 01:47:08,199
+nodes and then train train it out here
+
+2281
+01:47:07,320 --> 01:47:15,679
+run
+
+2282
+01:47:08,199 --> 01:47:17,880
+already that was fast and uh we can now
+
+2283
+01:47:15,679 --> 01:47:20,920
+actually visualize those embedding so
+
+2284
+01:47:17,880 --> 01:47:23,080
+here draw fives this means after which
+
+2285
+01:47:20,920 --> 01:47:25,840
+iteration do we want to show it let's go
+
+2286
+01:47:23,080 --> 01:47:27,360
+to iteration 10 and see how that
+
+2287
+01:47:25,840 --> 01:47:31,119
+hopefully is pulling
+
+2288
+01:47:27,360 --> 01:47:32,400
+apart uh here we can already separate it
+
+2289
+01:47:31,119 --> 01:47:37,599
+let's get to
+
+2290
+01:47:32,400 --> 01:47:37,599
+20 so iteration step 20 of
+
+2291
+01:47:38,480 --> 01:47:44,000
+learning
+
+2292
+01:47:40,719 --> 01:47:46,280
+30 it's not really changing too much
+
+2293
+01:47:44,000 --> 01:47:46,280
+right
+
+2294
+01:47:50,320 --> 01:47:54,320
+now it's
+
+2295
+01:47:58,639 --> 01:48:02,920
+yeah but here we can see with five
+
+2296
+01:48:00,119 --> 01:48:06,760
+they're already much closer uh to each
+
+2297
+01:48:02,920 --> 01:48:09,199
+other and how many did we choose in
+
+2298
+01:48:06,760 --> 01:48:11,880
+total yeah we see it's kind of like
+
+2299
+01:48:09,199 --> 01:48:14,480
+pulling more and more apart and here 33
+
+2300
+01:48:11,880 --> 01:48:16,080
+this is the one note of the
+
+2301
+01:48:14,480 --> 01:48:18,040
+administrator and this is the other one
+
+2302
+01:48:16,080 --> 01:48:21,199
+and we see them getting much further
+
+2303
+01:48:18,040 --> 01:48:23,560
+apart and so in reality we would use a
+
+2304
+01:48:21,199 --> 01:48:26,400
+tool such as DGL
+
+2305
+01:48:23,560 --> 01:48:28,840
+uh for training our graph newal networks
+
+2306
+01:48:26,400 --> 01:48:31,840
+and there are also there are other it's
+
+2307
+01:48:28,840 --> 01:48:35,440
+a quite powerful Library out
+
+2308
+01:48:31,840 --> 01:48:37,440
+there okay um in terms of spending the
+
+2309
+01:48:35,440 --> 01:48:40,239
+last 10 minutes let's give you a brief
+
+2310
+01:48:37,440 --> 01:48:42,239
+overview um what we are missing and what
+
+2311
+01:48:40,239 --> 01:48:45,480
+modern techniques are being used for so
+
+2312
+01:48:42,239 --> 01:48:48,520
+here's graph stage this is what uh the
+
+2313
+01:48:45,480 --> 01:48:52,280
+um model or graph neural network which
+
+2314
+01:48:48,520 --> 01:48:54,960
+was used uh by Uber Eats as well and it
+
+2315
+01:48:52,280 --> 01:48:56,480
+has certain properties so already the
+
+2316
+01:48:54,960 --> 01:48:58,440
+title of the paper inductive
+
+2317
+01:48:56,480 --> 01:49:00,840
+representation learning on large graphs
+
+2318
+01:48:58,440 --> 01:49:02,920
+it points out to two problems the
+
+2319
+01:49:00,840 --> 01:49:06,960
+inductive representation and then large
+
+2320
+01:49:02,920 --> 01:49:09,320
+graphs let's start with the first one so
+
+2321
+01:49:06,960 --> 01:49:11,800
+the one of the major problems uh with
+
+2322
+01:49:09,320 --> 01:49:14,960
+early gnns and we already picked them
+
+2323
+01:49:11,800 --> 01:49:17,719
+out earlier is it only worked with fixed
+
+2324
+01:49:14,960 --> 01:49:21,920
+graph so as soon as we change the graph
+
+2325
+01:49:17,719 --> 01:49:23,880
+um we would have to update it so uh how
+
+2326
+01:49:21,920 --> 01:49:26,480
+can we learn learn on like an unknown
+
+2327
+01:49:23,880 --> 01:49:28,159
+graph or a changing structure take again
+
+2328
+01:49:26,480 --> 01:49:31,599
+uh LinkedIn or someone where we get more
+
+2329
+01:49:28,159 --> 01:49:33,639
+and more notes added over time so uh
+
+2330
+01:49:31,599 --> 01:49:35,239
+secondly a second challenge is that
+
+2331
+01:49:33,639 --> 01:49:38,400
+those things they require the entire
+
+2332
+01:49:35,239 --> 01:49:41,199
+graph during training which severely
+
+2333
+01:49:38,400 --> 01:49:44,480
+limits the scalability to large graphs
+
+2334
+01:49:41,199 --> 01:49:46,280
+out there and um it's not like mini
+
+2335
+01:49:44,480 --> 01:49:48,800
+badges in normal neural networks where
+
+2336
+01:49:46,280 --> 01:49:50,880
+we can on distributed noes train in mini
+
+2337
+01:49:48,800 --> 01:49:53,480
+Badges and then upgrade and aggregate
+
+2338
+01:49:50,880 --> 01:49:55,800
+model and those are the two problems uh
+
+2339
+01:49:53,480 --> 01:49:58,280
+graph stage addressed so first of all
+
+2340
+01:49:55,800 --> 01:50:02,159
+they fixed uh they worked and made it
+
+2341
+01:49:58,280 --> 01:50:04,639
+into an inductive problem um so we can
+
+2342
+01:50:02,159 --> 01:50:07,119
+deal with changing or unknown graphs
+
+2343
+01:50:04,639 --> 01:50:10,080
+even and how do they do that so they
+
+2344
+01:50:07,119 --> 01:50:12,400
+basically uh just uh sample or create an
+
+2345
+01:50:10,080 --> 01:50:14,000
+embedding based on a sample of the
+
+2346
+01:50:12,400 --> 01:50:17,159
+neighborhood so if this here is our
+
+2347
+01:50:14,000 --> 01:50:20,280
+Target node uh we want to aggregate over
+
+2348
+01:50:17,159 --> 01:50:22,920
+the Aggregates of of our sample so this
+
+2349
+01:50:20,280 --> 01:50:25,760
+is kind of like a limited set and so if
+
+2350
+01:50:22,920 --> 01:50:27,679
+we want to predict a new node we need to
+
+2351
+01:50:25,760 --> 01:50:30,040
+sample this neighborhood and then apply
+
+2352
+01:50:27,679 --> 01:50:32,679
+our learned aggregation function so kind
+
+2353
+01:50:30,040 --> 01:50:35,440
+of the model which is learned by graph
+
+2354
+01:50:32,679 --> 01:50:37,119
+Sage is this aggregation function here
+
+2355
+01:50:35,440 --> 01:50:40,320
+uh and this can then be applied to
+
+2356
+01:50:37,119 --> 01:50:42,719
+unknown or changing scenarios without
+
+2357
+01:50:40,320 --> 01:50:45,520
+having to touch the entire graph so it
+
+2358
+01:50:42,719 --> 01:50:48,840
+works on a pretty local part of the
+
+2359
+01:50:45,520 --> 01:50:51,199
+graph second part is uh they also worked
+
+2360
+01:50:48,840 --> 01:50:56,280
+on those kind of equivalent of mini
+
+2361
+01:50:51,199 --> 01:50:58,159
+batches um in in uh uh in graph networks
+
+2362
+01:50:56,280 --> 01:51:01,079
+which helps us to really scale it out to
+
+2363
+01:50:58,159 --> 01:51:03,119
+large uh scenarios by sampling always a
+
+2364
+01:51:01,079 --> 01:51:07,280
+fixed siiz neighborhood so we can create
+
+2365
+01:51:03,119 --> 01:51:09,199
+fixed size samples again keep in mind uh
+
+2366
+01:51:07,280 --> 01:51:11,119
+those graphs have the disadvantage that
+
+2367
+01:51:09,199 --> 01:51:13,440
+we don't know how many neighbors a
+
+2368
+01:51:11,119 --> 01:51:15,480
+certain note has and for creating mini
+
+2369
+01:51:13,440 --> 01:51:18,040
+badges we would need have like fixed
+
+2370
+01:51:15,480 --> 01:51:21,880
+size mini Badges and so they created a
+
+2371
+01:51:18,040 --> 01:51:23,880
+sampling algorithm uh to to to deal with
+
+2372
+01:51:21,880 --> 01:51:26,239
+that so so they call it like
+
+2373
+01:51:23,880 --> 01:51:27,360
+neighborhood sampling combined with mini
+
+2374
+01:51:26,239 --> 01:51:29,920
+batch
+
+2375
+01:51:27,360 --> 01:51:31,440
+training there's also a notebook for
+
+2376
+01:51:29,920 --> 01:51:33,560
+that so this is an external one so this
+
+2377
+01:51:31,440 --> 01:51:37,079
+is one I didn't write myself I only
+
+2378
+01:51:33,560 --> 01:51:39,400
+moved it here uh because I had to do
+
+2379
+01:51:37,079 --> 01:51:42,480
+some changes to actually make it runable
+
+2380
+01:51:39,400 --> 01:51:45,360
+uh but there's a right uh attribution in
+
+2381
+01:51:42,480 --> 01:51:48,000
+there the next problem uh we talked
+
+2382
+01:51:45,360 --> 01:51:50,320
+about was we now what we have now we
+
+2383
+01:51:48,000 --> 01:51:54,199
+have now the inductiv and we can take
+
+2384
+01:51:50,320 --> 01:51:57,639
+care of uh note features because uh the
+
+2385
+01:51:54,199 --> 01:51:59,599
+messages uh also in graph s here uh we
+
+2386
+01:51:57,639 --> 01:52:02,320
+can aggregate over some note features
+
+2387
+01:51:59,599 --> 01:52:05,480
+out here what is then still missing is
+
+2388
+01:52:02,320 --> 01:52:06,960
+The Edge features or the edge importance
+
+2389
+01:52:05,480 --> 01:52:09,239
+and this is where graph attention
+
+2390
+01:52:06,960 --> 01:52:12,480
+networks are coming in uh where we can
+
+2391
+01:52:09,239 --> 01:52:14,520
+basically learn which of the neighboring
+
+2392
+01:52:12,480 --> 01:52:17,880
+edges are more important or less
+
+2393
+01:52:14,520 --> 01:52:21,599
+important and this might obviously U
+
+2394
+01:52:17,880 --> 01:52:25,199
+simple uh determinant for that might be
+
+2395
+01:52:21,599 --> 01:52:27,639
+the uh Edge weight we have here so how
+
+2396
+01:52:25,199 --> 01:52:29,760
+how important is this Edge in between H1
+
+2397
+01:52:27,639 --> 01:52:32,880
+and H2
+
+2398
+01:52:29,760 --> 01:52:35,599
+here um and so I think with those
+
+2399
+01:52:32,880 --> 01:52:37,520
+different tools uh there's also a lab
+
+2400
+01:52:35,599 --> 01:52:38,960
+for that but with those we basically
+
+2401
+01:52:37,520 --> 01:52:41,440
+have that evolution of graph
+
+2402
+01:52:38,960 --> 01:52:43,440
+representation learning the most simple
+
+2403
+01:52:41,440 --> 01:52:45,760
+method we saw is just having random
+
+2404
+01:52:43,440 --> 01:52:49,599
+walks across a graph generate those
+
+2405
+01:52:45,760 --> 01:52:53,159
+sentences apply uh the uh note to backc
+
+2406
+01:52:49,599 --> 01:52:55,840
+and we have our embeddings a bit more uh
+
+2407
+01:52:53,159 --> 01:52:57,760
+smart thing to do was to actually have a
+
+2408
+01:52:55,840 --> 01:52:59,840
+guided random blog so not just create
+
+2409
+01:52:57,760 --> 01:53:03,119
+random sentences but based on those
+
+2410
+01:52:59,840 --> 01:53:06,280
+different parameters uh we have here and
+
+2411
+01:53:03,119 --> 01:53:09,599
+those parameters allow us to take uh
+
+2412
+01:53:06,280 --> 01:53:13,440
+explicitly homophile or other uh
+
+2413
+01:53:09,599 --> 01:53:16,159
+properties of real world uh graphs into
+
+2414
+01:53:13,440 --> 01:53:18,400
+account next uh graph convolutional
+
+2415
+01:53:16,159 --> 01:53:21,119
+networks they allow us to take into
+
+2416
+01:53:18,400 --> 01:53:23,000
+account note features next graph stage
+
+2417
+01:53:21,119 --> 01:53:25,639
+is taking that next step allow o us to
+
+2418
+01:53:23,000 --> 01:53:27,760
+do inductive and distributive training
+
+2419
+01:53:25,639 --> 01:53:30,760
+and then graph attention networks give
+
+2420
+01:53:27,760 --> 01:53:33,800
+us the ability to reason over uh edes
+
+2421
+01:53:30,760 --> 01:53:36,440
+and Edge rats as well so not treat each
+
+2422
+01:53:33,800 --> 01:53:39,000
+neighbor the same but basically treat
+
+2423
+01:53:36,440 --> 01:53:42,119
+each neighbor depending on additional
+
+2424
+01:53:39,000 --> 01:53:45,360
+information uh with different priority
+
+2425
+01:53:42,119 --> 01:53:48,920
+if you want to say like that with that
+
+2426
+01:53:45,360 --> 01:53:50,679
+we actually uh are at the end or at the
+
+2427
+01:53:48,920 --> 01:53:53,360
+point for questions I wanted to reserve
+
+2428
+01:53:50,679 --> 01:53:55,360
+the last five minutes for questions
+
+2429
+01:53:53,360 --> 01:53:57,960
+uh but before that let's let me give you
+
+2430
+01:53:55,360 --> 01:53:59,800
+a brief overview where to go from here
+
+2431
+01:53:57,960 --> 01:54:01,800
+so I understand this was a lot of
+
+2432
+01:53:59,800 --> 01:54:05,560
+information we basically covered that
+
+2433
+01:54:01,800 --> 01:54:08,599
+entire space of uh graph learning uh
+
+2434
+01:54:05,560 --> 01:54:10,480
+graph analytics uh so there's a lot more
+
+2435
+01:54:08,599 --> 01:54:13,800
+in the slide deck also feel free to
+
+2436
+01:54:10,480 --> 01:54:16,320
+reach out via Twitter LinkedIn Etc to me
+
+2437
+01:54:13,800 --> 01:54:18,079
+at any point in time um otherwise
+
+2438
+01:54:16,320 --> 01:54:20,119
+there's a number of books so if you're
+
+2439
+01:54:18,079 --> 01:54:22,599
+interested in graph databases there's
+
+2440
+01:54:20,119 --> 01:54:25,159
+graph databases and action then there is
+
+2441
+01:54:22,599 --> 01:54:27,960
+the graph practition the practitioners
+
+2442
+01:54:25,159 --> 01:54:29,520
+gu to graph data I think what they solve
+
+2443
+01:54:27,960 --> 01:54:31,320
+well this is in particular the first
+
+2444
+01:54:29,520 --> 01:54:33,840
+part of that book uh is the graph
+
+2445
+01:54:31,320 --> 01:54:36,599
+modeling so how can you take a problem
+
+2446
+01:54:33,840 --> 01:54:39,199
+and turn it into a graph or view it as a
+
+2447
+01:54:36,599 --> 01:54:41,000
+graph problem then the different graph
+
+2448
+01:54:39,199 --> 01:54:43,199
+algorithms we talked about there's a
+
+2449
+01:54:41,000 --> 01:54:45,599
+book about them graph
+
+2450
+01:54:43,199 --> 01:54:47,719
+algorithms then there is uh the graph
+
+2451
+01:54:45,599 --> 01:54:52,639
+powered Machining machine learning book
+
+2452
+01:54:47,719 --> 01:54:53,960
+it's an combination of uh the graph anal
+
+2453
+01:54:52,639 --> 01:54:56,000
+topics we talked about and then the
+
+2454
+01:54:53,960 --> 01:54:58,040
+graph machine learning topics and then
+
+2455
+01:54:56,000 --> 01:55:00,079
+there is this is by the way a free ebook
+
+2456
+01:54:58,040 --> 01:55:02,960
+as well uh the graph representation
+
+2457
+01:55:00,079 --> 01:55:04,920
+learning uh which covers uh the
+
+2458
+01:55:02,960 --> 01:55:06,560
+representational techniques so the EM
+
+2459
+01:55:04,920 --> 01:55:08,800
+different embedding techniques we
+
+2460
+01:55:06,560 --> 01:55:10,440
+discussed in the last part of this
+
+2461
+01:55:08,800 --> 01:55:12,040
+furthermore there's also there's a
+
+2462
+01:55:10,440 --> 01:55:14,719
+Stanford course on machine learning with
+
+2463
+01:55:12,040 --> 01:55:16,880
+graphs including the videos uh Thomas
+
+2464
+01:55:14,719 --> 01:55:19,280
+Kip wrote one of those first papers has
+
+2465
+01:55:16,880 --> 01:55:21,119
+a really good blog post uh and then
+
+2466
+01:55:19,280 --> 01:55:23,040
+there are a number of other links out
+
+2467
+01:55:21,119 --> 01:55:25,800
+here uh which
+
+2468
+01:55:23,040 --> 01:55:29,639
+uh might help you to dive deeper into
+
+2469
+01:55:25,800 --> 01:55:33,159
+that topic uh with that um thank you so
+
+2470
+01:55:29,639 --> 01:55:35,159
+much for listening uh happy to answer uh
+
+2471
+01:55:33,159 --> 01:55:36,920
+now in stre minutes some some more
+
+2472
+01:55:35,159 --> 01:55:38,320
+questions or also take some more
+
+2473
+01:55:36,920 --> 01:55:40,320
+feedback are you saying like this was
+
+2474
+01:55:38,320 --> 01:55:41,960
+entirely too much where there some
+
+2475
+01:55:40,320 --> 01:55:45,800
+topics where you would like to know more
+
+2476
+01:55:41,960 --> 01:55:48,079
+about I said also happy to add slides uh
+
+2477
+01:55:45,800 --> 01:55:50,520
+later on as this this is the life slide
+
+2478
+01:55:48,079 --> 01:55:54,239
+deck which might keep evolving if you
+
+2479
+01:55:50,520 --> 01:55:54,239
+have particular questions
+
+2480
+01:55:58,599 --> 01:56:01,040
+people are
+
+2481
+01:56:09,920 --> 01:56:14,000
+typing Thanks James
+
+2482
+01:56:15,960 --> 01:56:20,679
+um also I said if you have any feedback
+
+2483
+01:56:18,800 --> 01:56:23,520
+afterwards uh always feel free to reach
+
+2484
+01:56:20,679 --> 01:56:26,760
+out or if you're also feel free to share
+
+2485
+01:56:23,520 --> 01:56:31,360
+that slide with your colleagues this is
+
+2486
+01:56:26,760 --> 01:56:35,480
+uh open source uh also contribute fix
+
+2487
+01:56:31,360 --> 01:56:36,840
+some typos uh in the exercises uh this
+
+2488
+01:56:35,480 --> 01:56:39,239
+was
+
+2489
+01:56:36,840 --> 01:56:40,960
+uh sometimes it's this late night work
+
+2490
+01:56:39,239 --> 01:56:42,880
+when you or wake up early and you have
+
+2491
+01:56:40,960 --> 01:56:45,880
+this idea I would love to add this one
+
+2492
+01:56:42,880 --> 01:56:49,040
+more exercise then just sometimes tyo
+
+2493
+01:56:45,880 --> 01:56:53,719
+sneak in apologies for
+
+2494
+01:56:49,040 --> 01:56:54,880
+that okay otherwise if if there are no
+
+2495
+01:56:53,719 --> 01:56:59,400
+further
+
+2496
+01:56:54,880 --> 01:57:00,560
+questions um connected data moderators
+
+2497
+01:56:59,400 --> 01:57:06,400
+uh do you have
+
+2498
+01:57:00,560 --> 01:57:08,960
+any follow up uh or can we otherwise uh
+
+2499
+01:57:06,400 --> 01:57:08,960
+close the
+
+2500
+01:57:18,480 --> 01:57:24,400
+session then I would just uh hit stop
+
+2501
+01:57:21,719 --> 01:57:26,639
+here um I said feel free to follow up
+
+2502
+01:57:24,400 --> 01:57:28,320
+there's the other talk tomorrow uh where
+
+2503
+01:57:26,639 --> 01:57:30,599
+we compare a bit more the graph
+
+2504
+01:57:28,320 --> 01:57:32,920
+analytics uh techniques with a trade of
+
+2505
+01:57:30,599 --> 01:57:35,760
+uh towards graph machine learning kind
+
+2506
+01:57:32,920 --> 01:57:37,280
+of spoiler is uh we saw some of the
+
+2507
+01:57:35,760 --> 01:57:39,679
+questions earlier it comes down to
+
+2508
+01:57:37,280 --> 01:57:42,440
+complexity where this performance in the
+
+2509
+01:57:39,679 --> 01:57:46,880
+end uh but uh feel free to tune in there
+
+2510
+01:57:42,440 --> 01:57:46,880
+as well thanks so much
+
