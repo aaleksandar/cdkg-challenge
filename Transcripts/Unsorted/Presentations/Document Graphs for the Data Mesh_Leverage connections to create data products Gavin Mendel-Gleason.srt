@@ -1,0 +1,1460 @@
+1
+00:00:05,200 --> 00:00:10,960
+hello i'm gavin mendel gleeson cto of
+
+2
+00:00:08,559 --> 00:00:13,440
+terminusdb
+
+3
+00:00:10,960 --> 00:00:16,240
+and today i'm going to talk to you about
+
+4
+00:00:13,440 --> 00:00:19,039
+document graphs for the data mesh how we
+
+5
+00:00:16,240 --> 00:00:21,520
+can leverage connections to create data
+
+6
+00:00:19,039 --> 00:00:21,520
+products
+
+7
+00:00:22,240 --> 00:00:26,720
+first
+
+8
+00:00:23,279 --> 00:00:28,800
+what is data mesh so data mesh is
+
+9
+00:00:26,720 --> 00:00:30,720
+currently a bit of a buzzword people
+
+10
+00:00:28,800 --> 00:00:32,800
+have been saying it various different
+
+11
+00:00:30,720 --> 00:00:34,480
+blogs and throwing it around
+
+12
+00:00:32,800 --> 00:00:36,800
+so what is it
+
+13
+00:00:34,480 --> 00:00:39,600
+data mesh is a methodology for
+
+14
+00:00:36,800 --> 00:00:42,719
+approaching enterprise data management
+
+15
+00:00:39,600 --> 00:00:44,800
+it's not a tool and it's not a stack
+
+16
+00:00:42,719 --> 00:00:46,079
+it's an approach it's essentially a
+
+17
+00:00:44,800 --> 00:00:49,280
+philosophy
+
+18
+00:00:46,079 --> 00:00:52,640
+of how to build large-scale data
+
+19
+00:00:49,280 --> 00:00:52,640
+integration projects
+
+20
+00:00:53,840 --> 00:01:00,320
+so what are the components of the data
+
+21
+00:00:56,640 --> 00:01:03,520
+mesh one of the major components is the
+
+22
+00:01:00,320 --> 00:01:07,200
+idea of a domain focus
+
+23
+00:01:03,520 --> 00:01:09,840
+data mesh has teams who understand the
+
+24
+00:01:07,200 --> 00:01:10,720
+data and how they should develop that
+
+25
+00:01:09,840 --> 00:01:13,360
+data
+
+26
+00:01:10,720 --> 00:01:16,479
+so data mesh is not just about
+
+27
+00:01:13,360 --> 00:01:20,080
+technologies it's also about people and
+
+28
+00:01:16,479 --> 00:01:23,119
+how you organize best to produce the
+
+29
+00:01:20,080 --> 00:01:26,159
+best kind of data you can
+
+30
+00:01:23,119 --> 00:01:28,880
+now the creation of domain teams helps
+
+31
+00:01:26,159 --> 00:01:30,960
+to overcome a real problem in enterprise
+
+32
+00:01:28,880 --> 00:01:32,880
+data management
+
+33
+00:01:30,960 --> 00:01:35,520
+the problem that we currently have with
+
+34
+00:01:32,880 --> 00:01:38,320
+a lot of data management problems is
+
+35
+00:01:35,520 --> 00:01:41,119
+over centralization so you have a big
+
+36
+00:01:38,320 --> 00:01:43,280
+data warehouse team this team has to
+
+37
+00:01:41,119 --> 00:01:44,560
+collect information from many different
+
+38
+00:01:43,280 --> 00:01:46,880
+sources
+
+39
+00:01:44,560 --> 00:01:49,840
+and it's information that they are not
+
+40
+00:01:46,880 --> 00:01:52,240
+the experts about they don't know that
+
+41
+00:01:49,840 --> 00:01:56,159
+much about any of these individual
+
+42
+00:01:52,240 --> 00:01:59,439
+subjects they're not domain experts
+
+43
+00:01:56,159 --> 00:02:01,280
+by contrast the data mesh approach is to
+
+44
+00:01:59,439 --> 00:02:02,399
+take the people who know the most about
+
+45
+00:02:01,280 --> 00:02:04,719
+the data
+
+46
+00:02:02,399 --> 00:02:07,520
+and marry them with the people who can
+
+47
+00:02:04,719 --> 00:02:09,360
+do some of the i t tasks and create a
+
+48
+00:02:07,520 --> 00:02:12,080
+cross-functional group
+
+49
+00:02:09,360 --> 00:02:14,480
+that can be a team to provide the kinds
+
+50
+00:02:12,080 --> 00:02:16,319
+of data that's needed
+
+51
+00:02:14,480 --> 00:02:19,680
+operationally
+
+52
+00:02:16,319 --> 00:02:22,160
+so for instance you might have a sales
+
+53
+00:02:19,680 --> 00:02:23,920
+data product and that sales data product
+
+54
+00:02:22,160 --> 00:02:26,400
+would be constructed
+
+55
+00:02:23,920 --> 00:02:28,560
+the combination of people who knew
+
+56
+00:02:26,400 --> 00:02:31,680
+about the domain of sales
+
+57
+00:02:28,560 --> 00:02:34,239
+and it staff that can support them in
+
+58
+00:02:31,680 --> 00:02:38,239
+producing these data products
+
+59
+00:02:34,239 --> 00:02:38,239
+and turning them into a product
+
+60
+00:02:38,959 --> 00:02:44,800
+but what is a data product
+
+61
+00:02:41,519 --> 00:02:47,519
+a data product is commodity data it's
+
+62
+00:02:44,800 --> 00:02:50,480
+data that is well structured it's well
+
+63
+00:02:47,519 --> 00:02:53,040
+described it's easily found
+
+64
+00:02:50,480 --> 00:02:55,599
+and it's easily consumable
+
+65
+00:02:53,040 --> 00:02:59,360
+so i have a picture of campbell's soup
+
+66
+00:02:55,599 --> 00:03:02,000
+which is somewhat famous commodity
+
+67
+00:02:59,360 --> 00:03:06,080
+and this has an example we have mushroom
+
+68
+00:03:02,000 --> 00:03:08,319
+champagne soup so this soup
+
+69
+00:03:06,080 --> 00:03:11,599
+is easily consumable
+
+70
+00:03:08,319 --> 00:03:14,239
+it's made into a single product
+
+71
+00:03:11,599 --> 00:03:15,680
+many things went into its construction
+
+72
+00:03:14,239 --> 00:03:18,239
+but you don't have to know anything
+
+73
+00:03:15,680 --> 00:03:21,360
+about that construction all of those
+
+74
+00:03:18,239 --> 00:03:24,560
+ingredients are already integrated in an
+
+75
+00:03:21,360 --> 00:03:27,360
+easily consumable fashion
+
+76
+00:03:24,560 --> 00:03:29,200
+a data product might have many different
+
+77
+00:03:27,360 --> 00:03:31,120
+parts in its construction it can have
+
+78
+00:03:29,200 --> 00:03:34,159
+all sorts of ingredients
+
+79
+00:03:31,120 --> 00:03:36,239
+it can have human curated information it
+
+80
+00:03:34,159 --> 00:03:37,280
+can have information from external
+
+81
+00:03:36,239 --> 00:03:39,920
+sources
+
+82
+00:03:37,280 --> 00:03:42,879
+it can even have artificial intelligence
+
+83
+00:03:39,920 --> 00:03:46,799
+which is used to enrich or to create
+
+84
+00:03:42,879 --> 00:03:49,599
+aspects or to give features to this data
+
+85
+00:03:46,799 --> 00:03:52,159
+the consumer of this data doesn't have
+
+86
+00:03:49,599 --> 00:03:54,879
+to know how the soup is made
+
+87
+00:03:52,159 --> 00:03:57,680
+it's now soup they just need to know how
+
+88
+00:03:54,879 --> 00:03:57,680
+to consume it
+
+89
+00:03:58,319 --> 00:04:02,959
+and that brings us to the next idea that
+
+90
+00:04:01,439 --> 00:04:04,560
+the data
+
+91
+00:04:02,959 --> 00:04:07,200
+in these data products
+
+92
+00:04:04,560 --> 00:04:09,040
+should be self-service data
+
+93
+00:04:07,200 --> 00:04:12,080
+that means that it should be easily
+
+94
+00:04:09,040 --> 00:04:14,480
+discoverable so keeping with an analogy
+
+95
+00:04:12,080 --> 00:04:18,079
+of a grocery store you can find the
+
+96
+00:04:14,480 --> 00:04:20,799
+aisle in which your data product resides
+
+97
+00:04:18,079 --> 00:04:23,840
+it means that your services tell you
+
+98
+00:04:20,799 --> 00:04:26,560
+where and what the products are
+
+99
+00:04:23,840 --> 00:04:26,560
+that you have
+
+100
+00:04:26,840 --> 00:04:32,240
+available here that you could have apis
+
+101
+00:04:30,320 --> 00:04:34,880
+for instance that will improve the
+
+102
+00:04:32,240 --> 00:04:37,120
+ability to obtain that information and
+
+103
+00:04:34,880 --> 00:04:39,199
+to get the information out as a
+
+104
+00:04:37,120 --> 00:04:40,000
+consumable product
+
+105
+00:04:39,199 --> 00:04:42,400
+so
+
+106
+00:04:40,000 --> 00:04:46,560
+and that brings us to the next concept
+
+107
+00:04:42,400 --> 00:04:46,560
+in data mesh which is governance
+
+108
+00:04:46,639 --> 00:04:51,120
+so not only do you have to have these
+
+109
+00:04:48,720 --> 00:04:53,840
+data products but you have to have ways
+
+110
+00:04:51,120 --> 00:04:56,560
+that they can be moved about and a clear
+
+111
+00:04:53,840 --> 00:04:58,639
+way of getting and obtaining them
+
+112
+00:04:56,560 --> 00:05:00,560
+so governance is essentially about
+
+113
+00:04:58,639 --> 00:05:03,120
+laying the foundations
+
+114
+00:05:00,560 --> 00:05:06,400
+for having a distributed
+
+115
+00:05:03,120 --> 00:05:08,880
+system of data management
+
+116
+00:05:06,400 --> 00:05:10,960
+the data warehouse overcame a very
+
+117
+00:05:08,880 --> 00:05:14,560
+serious problem which was that we had
+
+118
+00:05:10,960 --> 00:05:17,039
+data silos and data silos arose because
+
+119
+00:05:14,560 --> 00:05:18,160
+operational data was sometimes enriched
+
+120
+00:05:17,039 --> 00:05:19,919
+or clean
+
+121
+00:05:18,160 --> 00:05:21,840
+by a domain team
+
+122
+00:05:19,919 --> 00:05:23,520
+but it was never surfaced to the rest of
+
+123
+00:05:21,840 --> 00:05:27,440
+the organization
+
+124
+00:05:23,520 --> 00:05:29,039
+it was kept closed and undiscoverable
+
+125
+00:05:27,440 --> 00:05:32,479
+partially this was because of the
+
+126
+00:05:29,039 --> 00:05:34,400
+difficulty of producing the data in a
+
+127
+00:05:32,479 --> 00:05:36,880
+discoverable format
+
+128
+00:05:34,400 --> 00:05:38,880
+but partly it's because it was never
+
+129
+00:05:36,880 --> 00:05:41,199
+intended to do that in the first place
+
+130
+00:05:38,880 --> 00:05:43,759
+and it wasn't given as an operational
+
+131
+00:05:41,199 --> 00:05:46,639
+responsibility of individual teams
+
+132
+00:05:43,759 --> 00:05:48,400
+instead a large central data management
+
+133
+00:05:46,639 --> 00:05:50,720
+team was constructed
+
+134
+00:05:48,400 --> 00:05:52,479
+who was supposed to go out and hassle
+
+135
+00:05:50,720 --> 00:05:54,720
+the various different teams in the
+
+136
+00:05:52,479 --> 00:05:56,880
+organization to bring the information
+
+137
+00:05:54,720 --> 00:05:59,440
+centrally
+
+138
+00:05:56,880 --> 00:06:01,360
+so you might have hr information or
+
+139
+00:05:59,440 --> 00:06:03,520
+marketing information or finance
+
+140
+00:06:01,360 --> 00:06:07,120
+information and the central data team
+
+141
+00:06:03,520 --> 00:06:09,759
+would try to amass it all link across
+
+142
+00:06:07,120 --> 00:06:11,680
+between different aspects and provide it
+
+143
+00:06:09,759 --> 00:06:13,759
+in a consumable way
+
+144
+00:06:11,680 --> 00:06:17,120
+however this leads to serious over
+
+145
+00:06:13,759 --> 00:06:21,280
+centralization as i mentioned before
+
+146
+00:06:17,120 --> 00:06:24,319
+to overcome this to move beyond either
+
+147
+00:06:21,280 --> 00:06:26,800
+silos or over centralization
+
+148
+00:06:24,319 --> 00:06:30,400
+we need to be able to provide
+
+149
+00:06:26,800 --> 00:06:32,479
+the information in a distributed fashion
+
+150
+00:06:30,400 --> 00:06:35,440
+and that distributed fashion puts a
+
+151
+00:06:32,479 --> 00:06:37,520
+greater onus on understanding how to
+
+152
+00:06:35,440 --> 00:06:40,240
+share the information
+
+153
+00:06:37,520 --> 00:06:42,560
+so governance is both human and
+
+154
+00:06:40,240 --> 00:06:44,800
+technological in structure
+
+155
+00:06:42,560 --> 00:06:46,319
+some of the questions of discoverability
+
+156
+00:06:44,800 --> 00:06:47,680
+interoperability
+
+157
+00:06:46,319 --> 00:06:50,319
+and scaling
+
+158
+00:06:47,680 --> 00:06:53,120
+do require humans but some of it also
+
+159
+00:06:50,319 --> 00:06:55,520
+requires technology which can make it
+
+160
+00:06:53,120 --> 00:06:55,520
+easier
+
+161
+00:06:57,120 --> 00:07:01,759
+so
+
+162
+00:06:58,240 --> 00:07:03,039
+terminus db is a knowledge graph
+
+163
+00:07:01,759 --> 00:07:05,759
+at base
+
+164
+00:07:03,039 --> 00:07:08,080
+we interact with the system by
+
+165
+00:07:05,759 --> 00:07:10,560
+submitting documents
+
+166
+00:07:08,080 --> 00:07:12,880
+documents json documents
+
+167
+00:07:10,560 --> 00:07:15,280
+structured documents that are stored in
+
+168
+00:07:12,880 --> 00:07:17,280
+some dictionary-like format have become
+
+169
+00:07:15,280 --> 00:07:19,199
+pervasive and are widely used by
+
+170
+00:07:17,280 --> 00:07:21,759
+application developers
+
+171
+00:07:19,199 --> 00:07:24,400
+the reason for this is simplicity it's
+
+172
+00:07:21,759 --> 00:07:26,479
+an easy way to model your data and it's
+
+173
+00:07:24,400 --> 00:07:28,319
+interoperable you can send it across to
+
+174
+00:07:26,479 --> 00:07:29,919
+different languages you don't need to
+
+175
+00:07:28,319 --> 00:07:32,319
+know too much about the language that
+
+176
+00:07:29,919 --> 00:07:34,639
+you're communicating with it's fairly
+
+177
+00:07:32,319 --> 00:07:38,400
+human readable more readable even than
+
+178
+00:07:34,639 --> 00:07:40,479
+html or other xml other types of formats
+
+179
+00:07:38,400 --> 00:07:43,039
+that were intended to be at least
+
+180
+00:07:40,479 --> 00:07:46,400
+partially human readable and writable
+
+181
+00:07:43,039 --> 00:07:49,599
+so it's a nice succinct
+
+182
+00:07:46,400 --> 00:07:51,759
+mechanism and it's so widely used that
+
+183
+00:07:49,599 --> 00:07:54,000
+most languages have developed native
+
+184
+00:07:51,759 --> 00:07:56,639
+formats for dictionaries that make it
+
+185
+00:07:54,000 --> 00:08:00,160
+very convenient to manipulate data in
+
+186
+00:07:56,639 --> 00:08:02,879
+this fashion this has driven the
+
+187
+00:08:00,160 --> 00:08:07,120
+incredible popularity of language of
+
+188
+00:08:02,879 --> 00:08:07,120
+databases such as mongodb
+
+189
+00:08:08,400 --> 00:08:13,680
+so you want to make it easy to put data
+
+190
+00:08:11,039 --> 00:08:16,000
+in for application developers
+
+191
+00:08:13,680 --> 00:08:20,400
+so here you see that terminus we have a
+
+192
+00:08:16,000 --> 00:08:22,479
+way of entering in a schema into the
+
+193
+00:08:20,400 --> 00:08:25,520
+into our graphs and then ways of
+
+194
+00:08:22,479 --> 00:08:27,840
+entering in various data objects these
+
+195
+00:08:25,520 --> 00:08:28,720
+data objects are just json structured
+
+196
+00:08:27,840 --> 00:08:30,240
+data
+
+197
+00:08:28,720 --> 00:08:33,120
+where the meaning of the data is
+
+198
+00:08:30,240 --> 00:08:35,760
+described by the schema
+
+199
+00:08:33,120 --> 00:08:37,680
+this is schema first in the way that we
+
+200
+00:08:35,760 --> 00:08:40,240
+do it and that's really important when
+
+201
+00:08:37,680 --> 00:08:43,039
+you're building knowledge graphs if
+
+202
+00:08:40,240 --> 00:08:45,279
+you're just using documents then schema
+
+203
+00:08:43,039 --> 00:08:47,200
+is less important although i would say
+
+204
+00:08:45,279 --> 00:08:49,920
+in the longer term for total cost of
+
+205
+00:08:47,200 --> 00:08:52,959
+ownership schemas are really
+
+206
+00:08:49,920 --> 00:08:55,120
+necessary to keep your data
+
+207
+00:08:52,959 --> 00:08:57,760
+base from becoming a soup
+
+208
+00:08:55,120 --> 00:09:01,680
+however it's even more important with
+
+209
+00:08:57,760 --> 00:09:04,399
+both collaboration and graph
+
+210
+00:09:01,680 --> 00:09:06,240
+so if you want tools that allow you to
+
+211
+00:09:04,399 --> 00:09:08,560
+produce
+
+212
+00:09:06,240 --> 00:09:10,800
+links across things then you need some
+
+213
+00:09:08,560 --> 00:09:13,279
+way of checking those links
+
+214
+00:09:10,800 --> 00:09:15,839
+so terminus gives you some tools to work
+
+215
+00:09:13,279 --> 00:09:19,360
+with that including the generation of
+
+216
+00:09:15,839 --> 00:09:21,760
+unique identifiers by the use of keys
+
+217
+00:09:19,360 --> 00:09:24,959
+and these unique identifiers can be
+
+218
+00:09:21,760 --> 00:09:27,920
+referenced internal to a graph or across
+
+219
+00:09:24,959 --> 00:09:27,920
+the organization
+
+220
+00:09:29,920 --> 00:09:35,200
+our documents can have links so they're
+
+221
+00:09:32,480 --> 00:09:37,120
+not just tree structured information
+
+222
+00:09:35,200 --> 00:09:42,399
+they're actually graphs
+
+223
+00:09:37,120 --> 00:09:45,200
+when you refer to a node a named entity
+
+224
+00:09:42,399 --> 00:09:47,279
+something that has a unique identifier
+
+225
+00:09:45,200 --> 00:09:48,720
+the schema tells us that this is not
+
+226
+00:09:47,279 --> 00:09:51,440
+just a string
+
+227
+00:09:48,720 --> 00:09:53,680
+this is actually an identifier for some
+
+228
+00:09:51,440 --> 00:09:56,560
+other document and this allows us to
+
+229
+00:09:53,680 --> 00:09:59,200
+build arbitrary graphs from json
+
+230
+00:09:56,560 --> 00:09:59,200
+documents
+
+231
+00:10:00,000 --> 00:10:02,880
+this graph
+
+232
+00:10:02,000 --> 00:10:05,279
+here
+
+233
+00:10:02,880 --> 00:10:07,360
+shows you how you can have links between
+
+234
+00:10:05,279 --> 00:10:10,880
+documents and if you look closely you
+
+235
+00:10:07,360 --> 00:10:13,279
+can see that the person joe has a unique
+
+236
+00:10:10,880 --> 00:10:14,720
+identifier person joe
+
+237
+00:10:13,279 --> 00:10:17,680
+he has a friend
+
+238
+00:10:14,720 --> 00:10:21,600
+named person jill and person jill
+
+239
+00:10:17,680 --> 00:10:23,760
+likewise has a backlink to joe
+
+240
+00:10:21,600 --> 00:10:26,320
+so they're both friends of each other
+
+241
+00:10:23,760 --> 00:10:29,040
+it's uh required
+
+242
+00:10:26,320 --> 00:10:31,680
+you can also link to other uh sub
+
+243
+00:10:29,040 --> 00:10:33,600
+documents which means your json document
+
+244
+00:10:31,680 --> 00:10:34,959
+structure could be complex tree
+
+245
+00:10:33,600 --> 00:10:37,440
+internally
+
+246
+00:10:34,959 --> 00:10:40,560
+and each of those sub trees can then
+
+247
+00:10:37,440 --> 00:10:43,600
+link out to external documents for
+
+248
+00:10:40,560 --> 00:10:46,240
+instance they might refer to a country
+
+249
+00:10:43,600 --> 00:10:48,240
+from an address of document and that
+
+250
+00:10:46,240 --> 00:10:49,279
+country itself might have complex
+
+251
+00:10:48,240 --> 00:10:52,240
+structure
+
+252
+00:10:49,279 --> 00:10:54,720
+it might have a name it may have a
+
+253
+00:10:52,240 --> 00:10:59,000
+perimeter that describes
+
+254
+00:10:54,720 --> 00:10:59,000
+the region in which it resides
+
+255
+00:11:00,640 --> 00:11:05,600
+terminus also has a concept of static
+
+256
+00:11:03,760 --> 00:11:08,959
+and dynamic linking
+
+257
+00:11:05,600 --> 00:11:11,839
+and this allows us to connect
+
+258
+00:11:08,959 --> 00:11:14,399
+nodes inside of a single graph
+
+259
+00:11:11,839 --> 00:11:17,120
+but also to refer to elements that may
+
+260
+00:11:14,399 --> 00:11:18,640
+not be in our graph at all and this
+
+261
+00:11:17,120 --> 00:11:21,440
+facilitates
+
+262
+00:11:18,640 --> 00:11:22,560
+uh the connection of data between data
+
+263
+00:11:21,440 --> 00:11:24,240
+products
+
+264
+00:11:22,560 --> 00:11:26,399
+so that i might have
+
+265
+00:11:24,240 --> 00:11:28,240
+marketing data that refers to something
+
+266
+00:11:26,399 --> 00:11:30,640
+from finance and i can use the
+
+267
+00:11:28,240 --> 00:11:33,279
+identifier describe that it's an
+
+268
+00:11:30,640 --> 00:11:35,360
+external identifier in my schema
+
+269
+00:11:33,279 --> 00:11:36,399
+and we can have a late binding approach
+
+270
+00:11:35,360 --> 00:11:38,560
+that is
+
+271
+00:11:36,399 --> 00:11:40,320
+similar to dynamic linking in
+
+272
+00:11:38,560 --> 00:11:42,399
+programming languages
+
+273
+00:11:40,320 --> 00:11:44,959
+so this would
+
+274
+00:11:42,399 --> 00:11:46,959
+enable a late binding approach where you
+
+275
+00:11:44,959 --> 00:11:49,200
+follow the link after you've joined
+
+276
+00:11:46,959 --> 00:11:52,079
+against the data product that you mean
+
+277
+00:11:49,200 --> 00:11:52,079
+to follow it in
+
+278
+00:11:53,040 --> 00:11:58,639
+so we can build up
+
+279
+00:11:54,959 --> 00:12:01,440
+a huge mass of interlinked data products
+
+280
+00:11:58,639 --> 00:12:03,440
+a bit at a time where each of these is
+
+281
+00:12:01,440 --> 00:12:05,839
+self-contained can serve up the
+
+282
+00:12:03,440 --> 00:12:08,399
+information but you might bring home the
+
+283
+00:12:05,839 --> 00:12:10,800
+soup you might then bring home
+
+284
+00:12:08,399 --> 00:12:13,440
+some meat from somewhere else and you
+
+285
+00:12:10,800 --> 00:12:15,680
+mix them together to create some new
+
+286
+00:12:13,440 --> 00:12:16,959
+data product perhaps or just some
+
+287
+00:12:15,680 --> 00:12:18,959
+analytic
+
+288
+00:12:16,959 --> 00:12:22,480
+insights that you might want for some
+
+289
+00:12:18,959 --> 00:12:24,720
+other operational purpose
+
+290
+00:12:22,480 --> 00:12:27,279
+so we'll take information from various
+
+291
+00:12:24,720 --> 00:12:29,360
+sources move it into data products those
+
+292
+00:12:27,279 --> 00:12:31,519
+data products could be in terminus they
+
+293
+00:12:29,360 --> 00:12:33,680
+could also be in some other element and
+
+294
+00:12:31,519 --> 00:12:35,920
+we can mix and match them together we
+
+295
+00:12:33,680 --> 00:12:38,560
+can refer to elements outside of
+
+296
+00:12:35,920 --> 00:12:40,800
+terminus even using these
+
+297
+00:12:38,560 --> 00:12:43,760
+unique identifiers
+
+298
+00:12:40,800 --> 00:12:46,560
+and this idea which was shamelessly
+
+299
+00:12:43,760 --> 00:12:49,040
+stolen from the semantic web
+
+300
+00:12:46,560 --> 00:12:51,200
+is a very powerful idea that means that
+
+301
+00:12:49,040 --> 00:12:54,480
+we can have interoperability
+
+302
+00:12:51,200 --> 00:12:58,079
+between very disparate systems but
+
+303
+00:12:54,480 --> 00:13:00,240
+maintain a strong schema around the
+
+304
+00:12:58,079 --> 00:13:03,360
+kinds of information that we say or
+
+305
+00:13:00,240 --> 00:13:03,360
+purport to know about
+
+306
+00:13:04,399 --> 00:13:07,920
+so
+
+307
+00:13:05,760 --> 00:13:10,560
+terminus also
+
+308
+00:13:07,920 --> 00:13:13,760
+enables other aspects that are
+
+309
+00:13:10,560 --> 00:13:16,399
+recognized as important in the data mesh
+
+310
+00:13:13,760 --> 00:13:18,800
+and some of these are about data lineage
+
+311
+00:13:16,399 --> 00:13:22,160
+finding out what happened to data
+
+312
+00:13:18,800 --> 00:13:23,519
+who did it and querying information from
+
+313
+00:13:22,160 --> 00:13:24,240
+the past
+
+314
+00:13:23,519 --> 00:13:26,240
+so
+
+315
+00:13:24,240 --> 00:13:28,880
+terminus x has versions that allow you
+
+316
+00:13:26,240 --> 00:13:31,279
+to explore the database in the past it
+
+317
+00:13:28,880 --> 00:13:33,440
+allows you to find the cause of mistakes
+
+318
+00:13:31,279 --> 00:13:36,320
+it didn't allow you to find who made the
+
+319
+00:13:33,440 --> 00:13:41,040
+mistake it can allow you to do
+
+320
+00:13:36,320 --> 00:13:41,040
+various kinds of operations on these
+
+321
+00:13:41,120 --> 00:13:47,120
+one of them is branches so we can create
+
+322
+00:13:43,760 --> 00:13:49,519
+branches from any commit in our history
+
+323
+00:13:47,120 --> 00:13:52,240
+and this enables us to have a very
+
+324
+00:13:49,519 --> 00:13:54,160
+fearless approach to experimentation
+
+325
+00:13:52,240 --> 00:13:56,800
+this is widely recognized in the
+
+326
+00:13:54,160 --> 00:14:00,560
+programming world but has not yet become
+
+327
+00:13:56,800 --> 00:14:00,560
+very common in data
+
+328
+00:14:00,800 --> 00:14:04,480
+we can also time travel so we can move
+
+329
+00:14:03,040 --> 00:14:07,600
+to these commits
+
+330
+00:14:04,480 --> 00:14:09,760
+we can even branch from past commits we
+
+331
+00:14:07,600 --> 00:14:11,760
+could go back into the past we could
+
+332
+00:14:09,760 --> 00:14:13,120
+find the cause of a problem we could
+
+333
+00:14:11,760 --> 00:14:14,240
+branch from that
+
+334
+00:14:13,120 --> 00:14:16,320
+commit
+
+335
+00:14:14,240 --> 00:14:18,399
+from before the problem existed and we
+
+336
+00:14:16,320 --> 00:14:20,639
+could even rebase and move some
+
+337
+00:14:18,399 --> 00:14:24,160
+information from the current world
+
+338
+00:14:20,639 --> 00:14:24,160
+into this fixed universe
+
+339
+00:14:27,279 --> 00:14:32,800
+that brings us to rebase so rebase
+
+340
+00:14:29,600 --> 00:14:35,120
+allows us to move features or
+
+341
+00:14:32,800 --> 00:14:37,839
+changes to the data curation
+
+342
+00:14:35,120 --> 00:14:41,040
+automatically generated materials and
+
+343
+00:14:37,839 --> 00:14:43,040
+bring them back into some other branch
+
+344
+00:14:41,040 --> 00:14:45,519
+perhaps it's production after we have
+
+345
+00:14:43,040 --> 00:14:46,480
+test in some other element or some other
+
+346
+00:14:45,519 --> 00:14:48,880
+branch
+
+347
+00:14:46,480 --> 00:14:51,040
+or it could be some experimentation that
+
+348
+00:14:48,880 --> 00:14:55,279
+was done using machine learning that
+
+349
+00:14:51,040 --> 00:14:55,279
+only later turned out to be a good idea
+
+350
+00:14:57,600 --> 00:15:02,800
+so document graphs are really about
+
+351
+00:15:00,560 --> 00:15:05,040
+enabling the data mesh and the building
+
+352
+00:15:02,800 --> 00:15:07,440
+of data products within the data mesh
+
+353
+00:15:05,040 --> 00:15:08,399
+it's not of course the a data mesh in
+
+354
+00:15:07,440 --> 00:15:10,560
+itself
+
+355
+00:15:08,399 --> 00:15:13,360
+but it can help you to build a knowledge
+
+356
+00:15:10,560 --> 00:15:14,800
+graph or many knowledge graphs for
+
+357
+00:15:13,360 --> 00:15:17,360
+various different
+
+358
+00:15:14,800 --> 00:15:22,480
+domain specific data products that you
+
+359
+00:15:17,360 --> 00:15:22,480
+might want to have in your data mesh
+
+360
+00:15:23,040 --> 00:15:26,880
+thank you
+
+361
+00:15:24,399 --> 00:15:28,399
+and i hope you enjoyed that talk on
+
+362
+00:15:26,880 --> 00:15:30,320
+document grass
+
+363
+00:15:28,399 --> 00:15:32,000
+and the data mesh i'm gavin mendel
+
+364
+00:15:30,320 --> 00:15:35,639
+gleason
+
+365
+00:15:32,000 --> 00:15:35,639
+talk to you all later
+
