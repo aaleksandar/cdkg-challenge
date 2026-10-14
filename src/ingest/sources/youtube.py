@@ -163,8 +163,9 @@ def fetch_rss() -> list[dict]:
 def fetch_video_info(video_id: str) -> dict:
     """Full metadata for one video, including the description the parser needs.
 
-    A video behind YouTube's bot check still reports its title, description and
-    duration; only the media formats are withheld. Not treating that as an
+    A video behind YouTube's bot check still reports its title and description;
+    the media formats are withheld, and from the server so, at times, is the
+    duration (``resolve_videos`` reads that from the playlist instead). Not treating that as an
     error keeps metadata parsing working when the caption download would not —
     which is exactly when a curator needs the parsed title to upload captions
     by hand.
@@ -366,6 +367,11 @@ def _settled(live_status: str | None) -> bool:
     return bool(live_status) and live_status not in UNSETTLED
 
 
+# How far down the uploads playlist ``resolve_videos`` looks for a running time
+# the per-video lookup did not give. The feed lists the newest fifteen.
+RECENT_UPLOADS = 30
+
+
 def resolve_videos(video_ids: list[str]) -> dict:
     """Fill in duration, date and live status for specific videos, right now.
 
@@ -417,6 +423,22 @@ def resolve_videos(video_ids: list[str]) -> dict:
 
     if updates:
         db.upsert_videos(updates)
+
+    # A per-video lookup from the server can come back without a running time
+    # (four Shorts were ingested in October 2026 that way), while the uploads
+    # playlist still carries one. Ask it for whatever is still unknown: one
+    # flat read of the newest uploads, which is where a video the feed just
+    # turned up is.
+    unknown = {v["video_id"] for v in db.all_videos()
+               if v["video_id"] in video_ids and not v.get("duration")}
+    if unknown:
+        try:
+            recent = enumerate_channel(limit=RECENT_UPLOADS)
+        except Exception:
+            recent = []
+        timed = [v for v in recent if v["video_id"] in unknown and v["duration"]]
+        if timed:
+            db.upsert_videos(timed)
     return {"resolved": len(updates), "aired": aired}
 
 

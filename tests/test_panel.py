@@ -205,6 +205,8 @@ def test_draining_the_backlog_queues_the_channel_not_the_page(client, monkeypatc
     since been ingested."""
     fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting",)
     monkeypatch.setattr(R, "reconcile", _only(READY, fresh))
+    db.upsert_videos([{"video_id": "eeeeeeeeeee", "title": "Waiting", "url": "u",
+                       "duration": 2400}])
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
                         lambda ids: queued.extend(ids) or len(ids))
@@ -1281,6 +1283,8 @@ def test_the_panels_tab_lists_every_panel_with_its_reason(client, monkeypatch):
 def test_draining_the_backlog_leaves_panels_for_a_curator(client, monkeypatch):
     fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting")
     monkeypatch.setattr(R, "reconcile", _only(fresh, PANEL))
+    db.upsert_videos([{"video_id": "eeeeeeeeeee", "title": "Waiting", "url": "u",
+                       "duration": 2400}])
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
                         lambda ids: queued.extend(ids) or len(ids))

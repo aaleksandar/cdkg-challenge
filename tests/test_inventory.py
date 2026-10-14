@@ -116,6 +116,31 @@ def test_a_premiere_is_skipped_and_not_cached(state, monkeypatch):
     assert not (config.INGEST_CACHE_DIR / "soon.json").exists()
 
 
+def test_a_running_time_the_lookup_did_not_give_is_read_from_the_playlist(state, monkeypatch):
+    """From the server the per-video lookup came back with no duration, and four
+    Shorts were ingested as talks; the uploads playlist still had their length."""
+    db.upsert_videos([{"video_id": "dfSs8ZcFR0s", "title": "A trailer", "url": "u"}])
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "duration": None, "upload_date": "20261010"})
+    monkeypatch.setattr(youtube, "enumerate_channel", lambda limit=None: [
+        {"video_id": "dfSs8ZcFR0s", "title": "A trailer", "url": "u", "duration": 167}])
+
+    youtube.resolve_videos(["dfSs8ZcFR0s"])
+
+    assert db.all_videos()[0]["duration"] == 167
+
+
+def test_the_teaser_guard_asks_the_inventory_when_the_lookup_has_no_length(state, monkeypatch):
+    from ingest.pipeline import stages
+
+    db.upsert_videos([{"video_id": "dfSs8ZcFR0s", "title": "A trailer", "url": "u",
+                       "duration": 167}])
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "title": "A trailer", "duration": None})
+    with pytest.raises(stages.StageSkipped, match="Teaser: 167s"):
+        stages.stage_metadata_parse({"video_id": "dfSs8ZcFR0s"})
+
+
 def test_the_published_date_is_when_it_went_public_not_when_the_file_was_uploaded():
     """A premiere's ``upload_date`` is the day the file was uploaded, nine days
     early for one talk; ``release_timestamp`` is the moment it goes public and
