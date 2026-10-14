@@ -3026,5 +3026,143 @@
         "data binding"
       ]
     }
+  },
+  {
+    "filename": "The Missing Package Manager_ Making Ontologies Easier to Find, Install and Trust.txt",
+    "entities": {
+      "tag": [
+        "semantic web",
+        "lod cloud",
+        "npm",
+        "maven",
+        "obo foundry",
+        "fibo",
+        "knowledge graph",
+        "shacl",
+        "ontology"
+      ]
+    }
+  },
+  {
+    "filename": "Graph-Based Data Science Masterclass. Paco Nathan, Learning with the Machines.txt",
+    "entities": {
+      "tag": [
+        "python",
+        "kglab",
+        "pandas",
+        "matplotlib",
+        "numpy",
+        "jupyter",
+        "jupyter lab",
+        "git",
+        "pip",
+        "conda",
+        "networkx",
+        "psl",
+        "pyshckle",
+        "rdflib",
+        "pyvis",
+        "scikit-learn",
+        "parquet",
+        "spark",
+        "rapids",
+        "gpus",
+        "self-supervised learning",
+        "transfer learning",
+        "deep learning",
+        "owl",
+        "rdfs",
+        "skos",
+        "rdf",
+        "turtle",
+        "json-ld",
+        "xml",
+        "cudf",
+        "cuml",
+        "cugraph",
+        "sparql",
+        "shacl",
+        "spacy",
+        "pytextrank",
+        "bfs",
+        "breadth first search",
+        "triadic census",
+        "degree centrality",
+        "k-core",
+        "pagerank",
+        "jira"
+      ]
+    }
+  },
+  {
+    "filename": "Designing Flexible Data Infrastructure with Shared Semantics - NIEM, Ontologies & Knowledge Graphs.txt",
+    "entities": {
+      "tag": [
+        "entity resolve knowledge graphs",
+        "knowledge graphs",
+        "operational data store",
+        "process orchestration layer",
+        "semantic representation layer"
+      ]
+    }
+  },
+  {
+    "filename": "cuGraph_ When all you need is a GPU accelerated graph engine.txt",
+    "entities": {
+      "tag": [
+        "sql",
+        "object database",
+        "graph database",
+        "cugraph",
+        "sparql",
+        "tinkerpop",
+        "netflow",
+        "knowledge graph",
+        "s3",
+        "pagerank",
+        "rapids",
+        "data frames",
+        "cudf",
+        "pandas",
+        "cuml",
+        "scikit-learn",
+        "networkx",
+        "gnn",
+        "pyg",
+        "dgl",
+        "wholegraph",
+        "force atlas",
+        "louvain clustering",
+        "random walk",
+        "uniform neighborhood sampling",
+        "node2vec",
+        "betweenness centrality",
+        "all-pairs shortest path",
+        "graph 500",
+        "csr",
+        "cupy",
+        "scipy",
+        "tigergraph",
+        "arangodb",
+        "memgraph",
+        "amazon sagemaker",
+        "influence maximization",
+        "belief propagation",
+        "community detection",
+        "graph rag",
+        "llm",
+        "rdf",
+        "bfs",
+        "dask",
+        "slurm",
+        "mpi",
+        "reinforcement learning",
+        "cuspatial",
+        "cuvs",
+        "pregel",
+        "bsp",
+        "frontier-based approach"
+      ]
+    }
   }
 ]

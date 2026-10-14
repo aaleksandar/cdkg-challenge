@@ -1,0 +1,10 @@
+{
+  "id": "dfSs8ZcFR0s",
+  "title": "The Missing Package Manager: Making Ontologies Easier to Find, Install and Trust",
+  "description": "Finding an ontology is one thing. Installing the right version, resolving all its dependencies, and proving your data conforms to it? That’s a different challenge.\n\nDespite the maturity of RDF, OWL and SHACL, there’s still no straightforward way to publish, distribute and manage ontologies with the reliability developers expect from software package managers. Broken links, ambiguous identifiers and missing version control can make reuse difficult and validation hard to reproduce.\n\nIn this session, Charles Ivie will introduce a registry for versioned RDF ontologies and their SHACL counterparts, connected through dependency-aware manifests.\nCharles will demonstrate an approach that preserves ontology identifiers, surfaces naming conflicts and enables data validation locally, without sending instance data elsewhere. The goal is to make sharing and reusing semantic models as routine as installing a software package, helping teams build more reliable data contracts across organisational boundaries.\n\nA technical session for ontology authors, knowledge graph practitioners and data platform engineers looking to make semantic standards easier to adopt, manage and validate.\n\n🎤 Charles Ivie, Partner and Head of Data & AI Engineering, Ortecha\n📅 11 November 2026\n📍 Leonardo Royal Hotel London Tower Bridge\n\n⭐ Explore the session and book your pass: https://sbee.link/f74eqnkc6h?utm_sour... \n\n#CDL26 #KnowledgeGraphs #SemanticWeb #RDF #OWL #SHACL #DataGovernance #DataStandards",
+  "duration": null,
+  "upload_date": "20261010",
+  "timestamp": null,
+  "url": "https://www.youtube.com/watch?v=dfSs8ZcFR0s",
+  "channel": "Connected Data"
+}
