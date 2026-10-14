@@ -4547,5 +4547,55 @@
         "lidar"
       ]
     }
+  },
+  {
+    "filename": "Knowledge Graphs Created through Basic Machine Learning.txt",
+    "entities": {
+      "tag": [
+        "neo4j",
+        "machine learning",
+        "knowledge graphs",
+        "cypher",
+        "jupyter",
+        "google colab",
+        "neo4j sandbox",
+        "natural language processing",
+        "graph data science library",
+        "resource description framework",
+        "neosemantics",
+        "subject-verb-object triples",
+        "named entity recognition",
+        "spacy",
+        "bert",
+        "dependency parser",
+        "word2vec",
+        "google knowledge graph",
+        "pywikibot",
+        "apoc",
+        "entity disambiguation",
+        "skip-gram",
+        "graph embeddings",
+        "node2vec",
+        "breadth first search",
+        "depth first search",
+        "cosine similarity",
+        "t-sne",
+        "docker",
+        "py2neo",
+        "scikit-learn",
+        "support vector classifier",
+        "fastrp",
+        "fastrp extended",
+        "graphsage",
+        "graph neural networks",
+        "tensorflow",
+        "pytorch",
+        "convolutional neural networks",
+        "community detection",
+        "link prediction",
+        "k-nearest neighbors",
+        "pandas"
+      ]
+    }
   }
 ]
