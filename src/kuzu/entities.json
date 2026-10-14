@@ -5261,5 +5261,41 @@
         "a/b testing"
       ]
     }
+  },
+  {
+    "filename": "GraphQL and its schema as a universal layer for database access. Nikolas Burk, Connected Data London.txt",
+    "entities": {
+      "tag": [
+        "graphql",
+        "prisma",
+        "rest",
+        "rest api",
+        "swagger",
+        "open api",
+        "yaml",
+        "json",
+        "http",
+        "schema stitching",
+        "three-tier architecture",
+        "microservices",
+        "object relational mapper",
+        "orm",
+        "data loader pattern",
+        "graphqlgen",
+        "relay",
+        "apollo client",
+        "mysql",
+        "postgres",
+        "mongodb",
+        "aws aurora",
+        "elasticsearch",
+        "json-ld",
+        "sparql",
+        "docker",
+        "triple store",
+        "semantic web",
+        "graphql schema definition language"
+      ]
+    }
   }
 ]
