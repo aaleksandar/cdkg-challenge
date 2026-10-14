@@ -1,0 +1,4272 @@
+1
+00:00:01,820 --> 00:00:07,440
+hello and welcome to connected data
+
+2
+00:00:04,770 --> 00:00:09,870
+London online meter connected data
+
+3
+00:00:07,440 --> 00:00:12,480
+London is the living event for those who
+
+4
+00:00:09,870 --> 00:00:14,639
+use the relationships meaning new
+
+5
+00:00:12,480 --> 00:00:17,670
+context and data to achieve great things
+
+6
+00:00:14,639 --> 00:00:19,650
+my name is jordan otis and among other
+
+7
+00:00:17,670 --> 00:00:22,560
+things i am connected data london's
+
+8
+00:00:19,650 --> 00:00:25,289
+organizer and that will be your host for
+
+9
+00:00:22,560 --> 00:00:27,420
+this video today will have two dogs the
+
+10
+00:00:25,289 --> 00:00:30,660
+first one is a panel discussion on
+
+11
+00:00:27,420 --> 00:00:32,460
+facilitating of nineteen research using
+
+12
+00:00:30,660 --> 00:00:34,920
+graph analytics and knowledge graphs and
+
+13
+00:00:32,460 --> 00:00:37,770
+the second one is about connecting the
+
+14
+00:00:34,920 --> 00:00:40,170
+dots with three nodes we have been
+
+15
+00:00:37,770 --> 00:00:43,860
+collecting data people and ideas since
+
+16
+00:00:40,170 --> 00:00:46,110
+2016 our topics revolve around AI
+
+17
+00:00:43,860 --> 00:00:49,469
+machine learning knowledge graphs graph
+
+18
+00:00:46,110 --> 00:00:51,059
+databases and semantic technology we are
+
+19
+00:00:49,469 --> 00:00:53,100
+proud to have hosted the number of
+
+20
+00:00:51,059 --> 00:00:55,500
+thought leaders and innovators from the
+
+21
+00:00:53,100 --> 00:00:59,640
+lights prior to the seeds at more than
+
+22
+00:00:55,500 --> 00:01:01,940
+says NASA uber Zalando Facebook Google
+
+23
+00:00:59,640 --> 00:01:04,409
+and Microsoft to name just a few
+
+24
+00:01:01,940 --> 00:01:06,630
+normally we have our face-to-face
+
+25
+00:01:04,409 --> 00:01:07,409
+meetups in London and Berlin every
+
+26
+00:01:06,630 --> 00:01:11,070
+couple of months
+
+27
+00:01:07,409 --> 00:01:13,799
+this is April 20 2011 and the world is
+
+28
+00:01:11,070 --> 00:01:17,040
+locked down so unfortunately we're not
+
+29
+00:01:13,799 --> 00:01:19,110
+able to do this since however we like to
+
+30
+00:01:17,040 --> 00:01:21,330
+see problems as opportunities we have
+
+31
+00:01:19,110 --> 00:01:24,299
+taken this opportunity to open up our
+
+32
+00:01:21,330 --> 00:01:26,369
+meetups for everyone whether they are in
+
+33
+00:01:24,299 --> 00:01:28,380
+the same location or not and this
+
+34
+00:01:26,369 --> 00:01:31,290
+applies both to attendees and speakers
+
+35
+00:01:28,380 --> 00:01:33,689
+and today we have the pleasure and the
+
+36
+00:01:31,290 --> 00:01:36,990
+privilege of hosting some great speakers
+
+37
+00:01:33,689 --> 00:01:40,079
+so without further ado let me introduce
+
+38
+00:01:36,990 --> 00:01:41,549
+you to our first occurs we have with us
+
+39
+00:01:40,079 --> 00:01:44,130
+dr. Sharon our
+
+40
+00:01:41,549 --> 00:01:46,740
+the director of libeled information
+
+41
+00:01:44,130 --> 00:01:48,899
+center a head of the research group for
+
+42
+00:01:46,740 --> 00:01:51,930
+data science and with the libraries and
+
+43
+00:01:48,899 --> 00:01:54,600
+also the lead of the open research
+
+44
+00:01:51,930 --> 00:01:57,630
+knowledge blog project and we also have
+
+45
+00:01:54,600 --> 00:01:59,670
+dr. Alexander Harris who is the head of
+
+46
+00:01:57,630 --> 00:02:01,890
+data management and knowledge management
+
+47
+00:01:59,670 --> 00:02:04,710
+at the Chairman Center for diabetes
+
+48
+00:02:01,890 --> 00:02:08,550
+research and also a founding member of
+
+49
+00:02:04,710 --> 00:02:11,220
+the Kovac graph projects this is
+
+50
+00:02:08,550 --> 00:02:14,400
+fortunate timing fact as shows just a
+
+51
+00:02:11,220 --> 00:02:17,040
+few hours ago but we learned somewhere
+
+52
+00:02:14,400 --> 00:02:19,980
+Seren has been included in the top 5
+
+53
+00:02:17,040 --> 00:02:21,930
+list of the most influential scholars in
+
+54
+00:02:19,980 --> 00:02:24,959
+the field of knowledge net
+
+55
+00:02:21,930 --> 00:02:27,209
+gratulations aaron and let us start the
+
+56
+00:02:24,959 --> 00:02:30,480
+discussion with you let us talk about
+
+57
+00:02:27,209 --> 00:02:32,489
+scientific research at this time it's a
+
+58
+00:02:30,480 --> 00:02:35,580
+topic that attracts more attention than
+
+59
+00:02:32,489 --> 00:02:37,830
+usual from the wider audience the reason
+
+60
+00:02:35,580 --> 00:02:40,650
+is that the scientific community across
+
+61
+00:02:37,830 --> 00:02:44,160
+disciplines is focusing its efforts and
+
+62
+00:02:40,650 --> 00:02:46,290
+fighting the foreign oil underneath one
+
+63
+00:02:44,160 --> 00:02:49,860
+science is one of the pillars of modern
+
+64
+00:02:46,290 --> 00:02:52,769
+society it isn't without its own issues
+
+65
+00:02:49,860 --> 00:02:54,690
+what could you say are some key issues
+
+66
+00:02:52,769 --> 00:02:58,410
+that applied scientific research in
+
+67
+00:02:54,690 --> 00:03:02,360
+general and certainly those would apply
+
+68
+00:02:58,410 --> 00:03:02,360
+to research in the life sciences
+
+69
+00:03:02,890 --> 00:03:04,950
+you
+
+70
+00:03:05,230 --> 00:03:12,860
+the we used still the same methods and
+
+71
+00:03:09,460 --> 00:03:15,860
+artifacts like 500 years ago basically
+
+72
+00:03:12,860 --> 00:03:18,310
+static scientific articles and if you
+
+73
+00:03:15,860 --> 00:03:20,750
+look in other domains the world of
+
+74
+00:03:18,310 --> 00:03:24,380
+information sharing knowledge exchange
+
+75
+00:03:20,750 --> 00:03:26,270
+has completely changed imagine for
+
+76
+00:03:24,380 --> 00:03:29,690
+example you would have to use a street
+
+77
+00:03:26,270 --> 00:03:32,330
+map as a PDF document scanned and as a
+
+78
+00:03:29,690 --> 00:03:35,680
+PDF document in order to navigate from A
+
+79
+00:03:32,330 --> 00:03:39,560
+to B or you would have to use a scanned
+
+80
+00:03:35,680 --> 00:03:42,650
+mail-order catalog to order products
+
+81
+00:03:39,560 --> 00:03:47,390
+online by email that's how we work in
+
+82
+00:03:42,650 --> 00:03:50,570
+science we use scanned or PDF documents
+
+83
+00:03:47,390 --> 00:03:53,570
+which is basically a very shallow or
+
+84
+00:03:50,570 --> 00:03:58,040
+digital artifact of what we had before
+
+85
+00:03:53,570 --> 00:04:00,740
+the Internet and the digital wave and I
+
+86
+00:03:58,040 --> 00:04:02,959
+think we need to as other domains as we
+
+87
+00:04:00,740 --> 00:04:05,930
+have e-commerce websites navigation
+
+88
+00:04:02,959 --> 00:04:08,810
+systems map digital map applications
+
+89
+00:04:05,930 --> 00:04:11,739
+encyclopedias on the web we I think need
+
+90
+00:04:08,810 --> 00:04:15,320
+also to develop new means how to
+
+91
+00:04:11,739 --> 00:04:19,750
+organize knowledge scientific quality
+
+92
+00:04:15,320 --> 00:04:22,490
+knowledge on the web and on the Internet
+
+93
+00:04:19,750 --> 00:04:24,260
+yeah that's from my point of view one of
+
+94
+00:04:22,490 --> 00:04:27,290
+the biggest challenges because we also
+
+95
+00:04:24,260 --> 00:04:29,270
+have huge investments into research and
+
+96
+00:04:27,290 --> 00:04:35,810
+my impression is it doesn't work very
+
+97
+00:04:29,270 --> 00:04:38,540
+efficiently right now actually this is
+
+98
+00:04:35,810 --> 00:04:42,140
+this is a very valid point and I would
+
+99
+00:04:38,540 --> 00:04:43,580
+like to ask Alexander if he has anything
+
+100
+00:04:42,140 --> 00:04:45,500
+to add to that
+
+101
+00:04:43,580 --> 00:04:47,210
+more specifically applying it to
+
+102
+00:04:45,500 --> 00:04:50,000
+life-size and it's just life sciences
+
+103
+00:04:47,210 --> 00:04:52,820
+which is his own domain yeah I couldn't
+
+104
+00:04:50,000 --> 00:04:56,060
+agree more with with Suren so he's
+
+105
+00:04:52,820 --> 00:04:58,070
+extremely right so in research in
+
+106
+00:04:56,060 --> 00:04:59,350
+general and especially here in the
+
+107
+00:04:58,070 --> 00:05:02,930
+healthcare sector
+
+108
+00:04:59,350 --> 00:05:06,410
+yeah data is not only scattered it's
+
+109
+00:05:02,930 --> 00:05:08,960
+very heterogeneous and and in in terms
+
+110
+00:05:06,410 --> 00:05:11,330
+of the fare principles like findable
+
+111
+00:05:08,960 --> 00:05:15,200
+accessible interoperable and and
+
+112
+00:05:11,330 --> 00:05:17,750
+reusable we are very unfair I would say
+
+113
+00:05:15,200 --> 00:05:18,800
+and that has many reasons historical
+
+114
+00:05:17,750 --> 00:05:20,629
+reasons
+
+115
+00:05:18,800 --> 00:05:23,810
+and we definitely have to change that
+
+116
+00:05:20,629 --> 00:05:27,710
+because in other industries or in other
+
+117
+00:05:23,810 --> 00:05:29,539
+sectors and we have much more we have
+
+118
+00:05:27,710 --> 00:05:34,729
+much more advances because of
+
+119
+00:05:29,539 --> 00:05:37,099
+digitization in a little bit even more
+
+120
+00:05:34,729 --> 00:05:40,220
+specifics change this is the topic of
+
+121
+00:05:37,099 --> 00:05:44,300
+the days obviously and since scientists
+
+122
+00:05:40,220 --> 00:05:46,430
+from different domains are trying to to
+
+123
+00:05:44,300 --> 00:05:50,690
+cooperate and coordinate their efforts
+
+124
+00:05:46,430 --> 00:05:53,270
+into research into the bazzara the the
+
+125
+00:05:50,690 --> 00:05:55,659
+coronavirus and I know Alexander that
+
+126
+00:05:53,270 --> 00:05:58,460
+you have also been active in this field
+
+127
+00:05:55,659 --> 00:06:01,039
+would you like to tell us a little bit
+
+128
+00:05:58,460 --> 00:06:04,340
+about some specific issues that pertain
+
+129
+00:06:01,039 --> 00:06:06,620
+to this research yes exactly thank you
+
+130
+00:06:04,340 --> 00:06:11,259
+for mentioning that we have an
+
+131
+00:06:06,620 --> 00:06:14,930
+initiative called the cava graph and we
+
+132
+00:06:11,259 --> 00:06:19,190
+accepted a challenge by Cagle where they
+
+133
+00:06:14,930 --> 00:06:23,530
+gathered roughly 45,000 preprint
+
+134
+00:06:19,190 --> 00:06:26,870
+publications so scientific publications
+
+135
+00:06:23,530 --> 00:06:29,719
+from from coronavirus infection and
+
+136
+00:06:26,870 --> 00:06:33,800
+coronavirus research well the problem is
+
+137
+00:06:29,719 --> 00:06:36,319
+that that researchers first have no time
+
+138
+00:06:33,800 --> 00:06:39,710
+to read all of them second to understand
+
+139
+00:06:36,319 --> 00:06:42,580
+everything and third to connect that
+
+140
+00:06:39,710 --> 00:06:45,860
+today to the biomedical you know like
+
+141
+00:06:42,580 --> 00:06:48,620
+entities in biomedicine being genes or
+
+142
+00:06:45,860 --> 00:06:52,969
+phenotypes or diseases or symptoms or
+
+143
+00:06:48,620 --> 00:06:55,099
+even drugs so it's a problem that that
+
+144
+00:06:52,969 --> 00:06:56,930
+you have to cope with the literature you
+
+145
+00:06:55,099 --> 00:07:02,509
+have to cope with the databases and this
+
+146
+00:06:56,930 --> 00:07:04,370
+is what what makes the researchers slow
+
+147
+00:07:02,509 --> 00:07:07,400
+down because it's too much information
+
+148
+00:07:04,370 --> 00:07:12,050
+and you have to provide a data source or
+
+149
+00:07:07,400 --> 00:07:16,669
+like a like an acceleration for for for
+
+150
+00:07:12,050 --> 00:07:18,949
+analyzing this data and this is where we
+
+151
+00:07:16,669 --> 00:07:21,830
+where we try to support and try to
+
+152
+00:07:18,949 --> 00:07:25,520
+provide the research as a platform and
+
+153
+00:07:21,830 --> 00:07:28,639
+that has already some analyzed data and
+
+154
+00:07:25,520 --> 00:07:30,199
+connected data from different from from
+
+155
+00:07:28,639 --> 00:07:31,480
+different data bases in the medical
+
+156
+00:07:30,199 --> 00:07:36,110
+field
+
+157
+00:07:31,480 --> 00:07:38,840
+okay so it sounds like a typical I would
+
+158
+00:07:36,110 --> 00:07:43,430
+say case for what no let's management
+
+159
+00:07:38,840 --> 00:07:45,710
+comes help and since even though we are
+
+160
+00:07:43,430 --> 00:07:48,110
+all about and all Islam explained
+
+161
+00:07:45,710 --> 00:07:50,330
+connected data since you know we may
+
+162
+00:07:48,110 --> 00:07:53,240
+also have some fresh members of the
+
+163
+00:07:50,330 --> 00:07:55,610
+audience with us today you know what
+
+164
+00:07:53,240 --> 00:07:59,510
+what better way to give an introduction
+
+165
+00:07:55,610 --> 00:08:03,200
+to that then ask her one of the top top
+
+166
+00:07:59,510 --> 00:08:06,740
+minds in this Sharon I wonder if you'd
+
+167
+00:08:03,200 --> 00:08:08,450
+like to say a few words on well a little
+
+168
+00:08:06,740 --> 00:08:10,130
+bit of gently introduction let's say to
+
+169
+00:08:08,450 --> 00:08:14,630
+do to knowledge management and how we
+
+170
+00:08:10,130 --> 00:08:17,150
+can get from from data to what is
+
+171
+00:08:14,630 --> 00:08:20,030
+generally called AI today through the
+
+172
+00:08:17,150 --> 00:08:22,100
+different stages of analytics and by
+
+173
+00:08:20,030 --> 00:08:24,260
+doing that it's also very good
+
+174
+00:08:22,100 --> 00:08:26,600
+opportunity to highlight you're working
+
+175
+00:08:24,260 --> 00:08:27,530
+in this area which has been going on for
+
+176
+00:08:26,600 --> 00:08:32,539
+many years
+
+177
+00:08:27,530 --> 00:08:34,580
+yeah yeah I think the main problem is a
+
+178
+00:08:32,539 --> 00:08:36,770
+bit of that we have with media breaks
+
+179
+00:08:34,580 --> 00:08:39,950
+between knowledge information in this
+
+180
+00:08:36,770 --> 00:08:43,010
+area you have static publications which
+
+181
+00:08:39,950 --> 00:08:44,720
+are hardly machine processable we have
+
+182
+00:08:43,010 --> 00:08:46,310
+different data sets and different
+
+183
+00:08:44,720 --> 00:08:49,400
+formats we have a lot of heterogeneity
+
+184
+00:08:46,310 --> 00:08:52,610
+so we need to connect and integrate all
+
+185
+00:08:49,400 --> 00:08:54,710
+this and the typical answer of computer
+
+186
+00:08:52,610 --> 00:08:56,480
+scientists all let's develop some
+
+187
+00:08:54,710 --> 00:08:58,460
+information retrieval some knowledge
+
+188
+00:08:56,480 --> 00:09:01,370
+extraction some natural language
+
+189
+00:08:58,460 --> 00:09:04,720
+processing algorithms and that's what we
+
+190
+00:09:01,370 --> 00:09:07,730
+do for 30 years and we are in a way
+
+191
+00:09:04,720 --> 00:09:09,770
+successful but we don't reach the level
+
+192
+00:09:07,730 --> 00:09:11,720
+of precision and recall which i think is
+
+193
+00:09:09,770 --> 00:09:15,200
+required from your world practical
+
+194
+00:09:11,720 --> 00:09:17,930
+applications now and what we need to put
+
+195
+00:09:15,200 --> 00:09:21,830
+in the loop is the humans as well if you
+
+196
+00:09:17,930 --> 00:09:24,230
+look for example very famous platforms
+
+197
+00:09:21,830 --> 00:09:26,330
+like Wikipedia for example wiki data a
+
+198
+00:09:24,230 --> 00:09:28,750
+structured knowledge base or another
+
+199
+00:09:26,330 --> 00:09:31,730
+prime example of - usually
+
+200
+00:09:28,750 --> 00:09:34,130
+OpenStreetMaps and what you can see
+
+201
+00:09:31,730 --> 00:09:35,420
+there is that it's not purely automated
+
+202
+00:09:34,130 --> 00:09:38,120
+approaches but it's a lot of
+
+203
+00:09:35,420 --> 00:09:41,150
+crowdsourcing and then also automated
+
+204
+00:09:38,120 --> 00:09:43,430
+supported approaches supporting the
+
+205
+00:09:41,150 --> 00:09:45,030
+creation of this data and I think that's
+
+206
+00:09:43,430 --> 00:09:48,390
+what we have to put together
+
+207
+00:09:45,030 --> 00:09:51,120
+that automated techniques machine
+
+208
+00:09:48,390 --> 00:09:53,520
+learning AI but at the same time also
+
+209
+00:09:51,120 --> 00:09:55,560
+the human intelligence putting humans in
+
+210
+00:09:53,520 --> 00:09:57,720
+the loop for creating this information
+
+211
+00:09:55,560 --> 00:10:00,480
+for linking connecting and integrating
+
+212
+00:09:57,720 --> 00:10:02,100
+that and that's from my perspective the
+
+213
+00:10:00,480 --> 00:10:07,740
+only way how we can solve this
+
+214
+00:10:02,100 --> 00:10:09,180
+information problem by integrating
+
+215
+00:10:07,740 --> 00:10:11,460
+connecting information from different
+
+216
+00:10:09,180 --> 00:10:13,350
+sources and of course we need to use
+
+217
+00:10:11,460 --> 00:10:16,770
+semantic web standards which were
+
+218
+00:10:13,350 --> 00:10:20,400
+developed over the last two decades like
+
+219
+00:10:16,770 --> 00:10:23,550
+RDF rdf schema owl to represent
+
+220
+00:10:20,400 --> 00:10:28,020
+information to connect to have a unified
+
+221
+00:10:23,550 --> 00:10:30,140
+maybe paradigm for exchanging linking
+
+222
+00:10:28,020 --> 00:10:33,600
+integrating information in this space
+
+223
+00:10:30,140 --> 00:10:36,150
+and also what are DF and rdf schema and
+
+224
+00:10:33,600 --> 00:10:38,160
+all providers we can integrate different
+
+225
+00:10:36,150 --> 00:10:40,890
+levels of structure unstructured
+
+226
+00:10:38,160 --> 00:10:43,590
+information which is extracted or linked
+
+227
+00:10:40,890 --> 00:10:45,660
+from texts with very highly structured
+
+228
+00:10:43,590 --> 00:10:49,080
+ontology z' which we have and the last
+
+229
+00:10:45,660 --> 00:10:51,600
+time to over this edge medley and that's
+
+230
+00:10:49,080 --> 00:10:54,270
+a bit from my perspective the challenge
+
+231
+00:10:51,600 --> 00:10:56,820
+space we are facing here and I would
+
+232
+00:10:54,270 --> 00:10:58,860
+criticize my own field computer
+
+233
+00:10:56,820 --> 00:11:01,320
+scientist that the only that we focused
+
+234
+00:10:58,860 --> 00:11:03,540
+so much on this purely fully automated
+
+235
+00:11:01,320 --> 00:11:05,840
+approaches and we don't see this
+
+236
+00:11:03,540 --> 00:11:08,430
+holistic that we have to involve
+
+237
+00:11:05,840 --> 00:11:10,860
+crowdsourcing or expert sourcing and put
+
+238
+00:11:08,430 --> 00:11:13,470
+human and machine intelligence and
+
+239
+00:11:10,860 --> 00:11:17,400
+illusion that from my perspective one of
+
+240
+00:11:13,470 --> 00:11:20,010
+the biggest challenges to make research
+
+241
+00:11:17,400 --> 00:11:24,360
+and scholarly communication more
+
+242
+00:11:20,010 --> 00:11:26,820
+effective that's to and I think you know
+
+243
+00:11:24,360 --> 00:11:28,380
+as a kind of fun sir let's say to take
+
+244
+00:11:26,820 --> 00:11:30,900
+your criticism which is actually very
+
+245
+00:11:28,380 --> 00:11:34,260
+fair I think more and more researchers
+
+246
+00:11:30,900 --> 00:11:36,060
+and technologists are realizing this
+
+247
+00:11:34,260 --> 00:11:38,190
+this point these days and trying to
+
+248
+00:11:36,060 --> 00:11:42,320
+combine and make this kind of hybrid
+
+249
+00:11:38,190 --> 00:11:45,480
+let's say systems you also touched upon
+
+250
+00:11:42,320 --> 00:11:47,640
+structured versus unstructured data and
+
+251
+00:11:45,480 --> 00:11:51,360
+you specifically mentioned with pedia
+
+252
+00:11:47,640 --> 00:11:53,130
+and since I know that there is a
+
+253
+00:11:51,360 --> 00:11:55,290
+structure of the person of Wikipedia
+
+254
+00:11:53,130 --> 00:11:58,860
+would scold dbpedia and you have been
+
+255
+00:11:55,290 --> 00:12:01,380
+one of the of the four of the wiki data
+
+256
+00:11:58,860 --> 00:12:04,850
+courses of course writing that even
+
+257
+00:12:01,380 --> 00:12:07,110
+better with Wikipedia than dbpedia did I
+
+258
+00:12:04,850 --> 00:12:09,050
+wonder if you'd like to say just a few
+
+259
+00:12:07,110 --> 00:12:11,490
+words about that that's an example of
+
+260
+00:12:09,050 --> 00:12:13,530
+mixing the two uh products basically so
+
+261
+00:12:11,490 --> 00:12:15,800
+going from unstructured or semi
+
+262
+00:12:13,530 --> 00:12:18,120
+structured data which is action
+
+263
+00:12:15,800 --> 00:12:22,320
+wikipedia to structured data
+
+264
+00:12:18,120 --> 00:12:24,090
+yeah so the dbpedia we basically
+
+265
+00:12:22,320 --> 00:12:27,180
+extracted semi structured information
+
+266
+00:12:24,090 --> 00:12:29,900
+from Wikipedia and that was already an
+
+267
+00:12:27,180 --> 00:12:31,910
+advantage that other than traditional
+
+268
+00:12:29,900 --> 00:12:35,880
+encyclopedias which were basically
+
+269
+00:12:31,910 --> 00:12:39,180
+printed documents or PDF documents we
+
+270
+00:12:35,880 --> 00:12:42,390
+had already some kind of semi structured
+
+271
+00:12:39,180 --> 00:12:44,160
+information pieces in Wikipedia which
+
+272
+00:12:42,390 --> 00:12:47,520
+are these text boxes which is the
+
+273
+00:12:44,160 --> 00:12:49,710
+catagory system and in the few headers
+
+274
+00:12:47,520 --> 00:12:52,260
+and this could be extracted from the
+
+275
+00:12:49,710 --> 00:12:55,140
+source code of the wikipedia pages and
+
+276
+00:12:52,260 --> 00:12:57,660
+then represented as the knowledge graph
+
+277
+00:12:55,140 --> 00:13:01,260
+so we extracted this information mapped
+
+278
+00:12:57,660 --> 00:13:03,660
+into statements and facts and made this
+
+279
+00:13:01,260 --> 00:13:06,120
+available as a large knowledge graph
+
+280
+00:13:03,660 --> 00:13:10,050
+which then being can be queried and of
+
+281
+00:13:06,120 --> 00:13:13,380
+course the precision and the accuracy of
+
+282
+00:13:10,050 --> 00:13:15,450
+this knowledge graph was not perfect
+
+283
+00:13:13,380 --> 00:13:17,780
+because this extraction approaches from
+
+284
+00:13:15,450 --> 00:13:22,110
+the wikipedia papers had a lot of
+
+285
+00:13:17,780 --> 00:13:24,120
+smaller issues so there were some things
+
+286
+00:13:22,110 --> 00:13:27,780
+which were not correctly extract about
+
+287
+00:13:24,120 --> 00:13:29,550
+it already provided and showed a bit the
+
+288
+00:13:27,780 --> 00:13:33,330
+vision and I think that gave rise then
+
+289
+00:13:29,550 --> 00:13:36,120
+to a to the wiki data for example which
+
+290
+00:13:33,330 --> 00:13:38,880
+is an initiative to integrate that much
+
+291
+00:13:36,120 --> 00:13:41,190
+more tightly into Wikipedia and organize
+
+292
+00:13:38,880 --> 00:13:47,270
+the information in the more cleaner and
+
+293
+00:13:41,190 --> 00:13:50,610
+more precise fashion and yeah so that
+
+294
+00:13:47,270 --> 00:13:53,700
+allows them to run some structured
+
+295
+00:13:50,610 --> 00:13:55,940
+queries to ask questions to use question
+
+296
+00:13:53,700 --> 00:13:59,670
+answering which we are already used to
+
+297
+00:13:55,940 --> 00:14:02,900
+if you think of assistant services like
+
+298
+00:13:59,670 --> 00:14:06,120
+Amazon Alexa Google now or Apple Siri
+
+299
+00:14:02,900 --> 00:14:09,000
+and for for question answering we need
+
+300
+00:14:06,120 --> 00:14:10,800
+such structured knowledge and that's
+
+301
+00:14:09,000 --> 00:14:12,780
+what we can use with knowledge graphs
+
+302
+00:14:10,800 --> 00:14:14,220
+and I think we need the same force
+
+303
+00:14:12,780 --> 00:14:16,140
+fines and for scientific information
+
+304
+00:14:14,220 --> 00:14:18,870
+that we can ask what's the state of the
+
+305
+00:14:16,140 --> 00:14:21,720
+art in the field how does this approach
+
+306
+00:14:18,870 --> 00:14:24,380
+compared to that one and then get a real
+
+307
+00:14:21,720 --> 00:14:29,070
+machine assistance to answer our
+
+308
+00:14:24,380 --> 00:14:31,950
+information yeah it sounds perfectly
+
+309
+00:14:29,070 --> 00:14:35,010
+plausible and I know that you have been
+
+310
+00:14:31,950 --> 00:14:36,990
+working on that actually and I know
+
+311
+00:14:35,010 --> 00:14:40,290
+because we thought that he would like to
+
+312
+00:14:36,990 --> 00:14:43,020
+show a little bit of demo on on your
+
+313
+00:14:40,290 --> 00:14:46,170
+latest work why do you do that while you
+
+314
+00:14:43,020 --> 00:14:49,320
+get ready to share your screen and share
+
+315
+00:14:46,170 --> 00:14:53,580
+them with us I may as well return to you
+
+316
+00:14:49,320 --> 00:14:56,970
+Alexander to ask if there is any of
+
+317
+00:14:53,580 --> 00:15:00,450
+these principles applied to the Cova
+
+318
+00:14:56,970 --> 00:15:03,770
+graph effort I mean I'm sure that there
+
+319
+00:15:00,450 --> 00:15:07,500
+is a certain structure behind scientific
+
+320
+00:15:03,770 --> 00:15:11,400
+publications and I wonder if you use
+
+321
+00:15:07,500 --> 00:15:14,010
+that in your graph and in what way well
+
+322
+00:15:11,400 --> 00:15:17,730
+the structure of the literature data is
+
+323
+00:15:14,010 --> 00:15:20,340
+more like yeah bits and pieces bits and
+
+324
+00:15:17,730 --> 00:15:25,740
+pieces of identifiers of text blocks of
+
+325
+00:15:20,340 --> 00:15:28,920
+just lines of text words and so in the
+
+326
+00:15:25,740 --> 00:15:31,080
+beginning in the first two weeks we we
+
+327
+00:15:28,920 --> 00:15:32,640
+took a lot of effort to to structure
+
+328
+00:15:31,080 --> 00:15:35,550
+that data to bring that into a data
+
+329
+00:15:32,640 --> 00:15:37,770
+model that you can query afterwards and
+
+330
+00:15:35,550 --> 00:15:40,110
+then bring it to other let's say data
+
+331
+00:15:37,770 --> 00:15:42,420
+silos we connected not only if
+
+332
+00:15:40,110 --> 00:15:44,670
+scientific publications but also patents
+
+333
+00:15:42,420 --> 00:15:46,950
+that are that are in the in the field of
+
+334
+00:15:44,670 --> 00:15:49,290
+coronavirus in general and then we
+
+335
+00:15:46,950 --> 00:15:52,680
+connected this together with the
+
+336
+00:15:49,290 --> 00:15:55,830
+biomedical entities being a genes and
+
+337
+00:15:52,680 --> 00:15:58,290
+proteins and diseases and tissues so
+
+338
+00:15:55,830 --> 00:16:01,440
+there was a lot of effort and I agree
+
+339
+00:15:58,290 --> 00:16:06,930
+with Suren that this is an approach that
+
+340
+00:16:01,440 --> 00:16:08,400
+is not necessarily or specifically done
+
+341
+00:16:06,930 --> 00:16:11,520
+with with artificial intelligence or
+
+342
+00:16:08,400 --> 00:16:15,810
+whatever machine learning efforts you
+
+343
+00:16:11,520 --> 00:16:17,640
+have to have expertise in the domain you
+
+344
+00:16:15,810 --> 00:16:20,370
+have to have experts that are that are
+
+345
+00:16:17,640 --> 00:16:23,250
+looking over your data sets and making
+
+346
+00:16:20,370 --> 00:16:26,160
+sense out of it structured in a way that
+
+347
+00:16:23,250 --> 00:16:27,029
+a human can read it and in order to have
+
+348
+00:16:26,160 --> 00:16:30,360
+a
+
+349
+00:16:27,029 --> 00:16:33,570
+a very powerful data set and having a
+
+350
+00:16:30,360 --> 00:16:36,720
+structure that you can query yeah I
+
+351
+00:16:33,570 --> 00:16:39,000
+guess just by just by listening how you
+
+352
+00:16:36,720 --> 00:16:40,860
+describe some of the key entities I
+
+353
+00:16:39,000 --> 00:16:45,209
+guess that pertain in your domain such
+
+354
+00:16:40,860 --> 00:16:48,180
+as gene or a patent or molecule I guess
+
+355
+00:16:45,209 --> 00:16:51,149
+these are these are somehow modeled in
+
+356
+00:16:48,180 --> 00:16:53,880
+your in your graph and you use them as a
+
+357
+00:16:51,149 --> 00:16:56,970
+kind of as a kind of glass which you
+
+358
+00:16:53,880 --> 00:17:00,540
+populate with faint sensation away yes
+
+359
+00:16:56,970 --> 00:17:04,829
+so we have it as classes or entities in
+
+360
+00:17:00,540 --> 00:17:06,750
+our knowledge graph and we use the
+
+361
+00:17:04,829 --> 00:17:10,140
+expert knowledge from some of our
+
+362
+00:17:06,750 --> 00:17:15,500
+researchers to connect new types of data
+
+363
+00:17:10,140 --> 00:17:18,929
+or new data sources and also to to to
+
+364
+00:17:15,500 --> 00:17:21,630
+yet to have a to have a user interface
+
+365
+00:17:18,929 --> 00:17:23,910
+that especially non computer scientists
+
+366
+00:17:21,630 --> 00:17:25,350
+can use it because in the end most of
+
+367
+00:17:23,910 --> 00:17:27,720
+the scientists are non computer
+
+368
+00:17:25,350 --> 00:17:31,950
+scientists or not familiar with querying
+
+369
+00:17:27,720 --> 00:17:35,760
+or with managing a huge amount of data
+
+370
+00:17:31,950 --> 00:17:38,130
+and so we try to put that behind a
+
+371
+00:17:35,760 --> 00:17:40,800
+graphical user interface so that that
+
+372
+00:17:38,130 --> 00:17:45,300
+yeah and in our case medical researchers
+
+373
+00:17:40,800 --> 00:17:49,290
+or doctors can can use it hmm okay okay
+
+374
+00:17:45,300 --> 00:17:51,929
+I see so let's switch back to Sharon
+
+375
+00:17:49,290 --> 00:17:55,050
+because I think now we are ready for
+
+376
+00:17:51,929 --> 00:17:59,100
+ting to show us a little demo she had
+
+377
+00:17:55,050 --> 00:18:02,480
+prepared yes but it still says that you
+
+378
+00:17:59,100 --> 00:18:05,070
+are sharing your screen it's just paused
+
+379
+00:18:02,480 --> 00:18:07,940
+and I somehow don't find a button where
+
+380
+00:18:05,070 --> 00:18:07,940
+I can do that George
+
+381
+00:18:16,669 --> 00:18:21,389
+I'm so saying there was a little bit of
+
+382
+00:18:19,590 --> 00:18:25,049
+problem with my connection and lost your
+
+383
+00:18:21,389 --> 00:18:27,119
+last sentence would you repeat itself
+
+384
+00:18:25,049 --> 00:18:30,389
+that you are still sharing your screen I
+
+385
+00:18:27,119 --> 00:18:45,029
+have I have soaked now so I think you
+
+386
+00:18:30,389 --> 00:18:48,929
+should be able to do that ah great I
+
+387
+00:18:45,029 --> 00:18:54,059
+hope you can see it now
+
+388
+00:18:48,929 --> 00:18:58,259
+I hope you can see now the open research
+
+389
+00:18:54,059 --> 00:19:01,249
+George Graff website and what you see
+
+390
+00:18:58,259 --> 00:19:03,720
+here is a comparison so Alexander please
+
+391
+00:19:01,249 --> 00:19:08,580
+correct me if I say something wrong I've
+
+392
+00:19:03,720 --> 00:19:12,210
+of course only uh like how to say hoppy
+
+393
+00:19:08,580 --> 00:19:14,700
+now a viral artists or ever just as
+
+394
+00:19:12,210 --> 00:19:16,710
+almost all of us they are extracting it
+
+395
+00:19:14,700 --> 00:19:21,389
+everyone everyone is this - like an
+
+396
+00:19:16,710 --> 00:19:22,919
+armchair PD - yeah exactly and one
+
+397
+00:19:21,389 --> 00:19:25,139
+important question which is often
+
+398
+00:19:22,919 --> 00:19:28,859
+discussed in the media is this basic
+
+399
+00:19:25,139 --> 00:19:30,600
+reproductive number of the coronavirus
+
+400
+00:19:28,859 --> 00:19:32,369
+and there are a lot of papers we
+
+401
+00:19:30,600 --> 00:19:35,249
+actually found a survey there were 10
+
+402
+00:19:32,369 --> 00:19:37,980
+papers or 12 and this survey from China
+
+403
+00:19:35,249 --> 00:19:40,619
+and then the first papers appeared from
+
+404
+00:19:37,980 --> 00:19:43,230
+Italy which analyzed this basic
+
+405
+00:19:40,619 --> 00:19:46,489
+reproductive number the problem now is
+
+406
+00:19:43,230 --> 00:19:49,049
+if you are interested in how do these
+
+407
+00:19:46,489 --> 00:19:53,159
+assessments from different researchers
+
+408
+00:19:49,049 --> 00:19:55,109
+compare how did they what values did
+
+409
+00:19:53,159 --> 00:19:57,299
+they get - in what time frame did they
+
+410
+00:19:55,109 --> 00:20:00,359
+perform their analysis you have to read
+
+411
+00:19:57,299 --> 00:20:02,940
+all these papers and you might miss
+
+412
+00:20:00,359 --> 00:20:05,909
+something and if you find the surveyed
+
+413
+00:20:02,940 --> 00:20:12,239
+and maybe it is outdated because now
+
+414
+00:20:05,909 --> 00:20:15,029
+it's a very very active research area so
+
+415
+00:20:12,239 --> 00:20:17,609
+what what we did is we imported this
+
+416
+00:20:15,029 --> 00:20:19,859
+initial data from the survey into a
+
+417
+00:20:17,609 --> 00:20:22,919
+comparison basically into a description
+
+418
+00:20:19,859 --> 00:20:24,599
+at what you can see here is each column
+
+419
+00:20:22,919 --> 00:20:25,980
+in this table corresponds to one
+
+420
+00:20:24,599 --> 00:20:29,880
+publication and then we
+
+421
+00:20:25,980 --> 00:20:32,040
+added to the rose octae table basically
+
+422
+00:20:29,880 --> 00:20:34,980
+different characterizations of the
+
+423
+00:20:32,040 --> 00:20:37,020
+approaches or of their analysis and for
+
+424
+00:20:34,980 --> 00:20:39,590
+the basic reproductive number of kovat
+
+425
+00:20:37,020 --> 00:20:42,299
+19 which is basically the number
+
+426
+00:20:39,590 --> 00:20:45,929
+indicating how many people are infected
+
+427
+00:20:42,299 --> 00:20:49,080
+by one infected person so current
+
+428
+00:20:45,929 --> 00:20:53,090
+estimates go that it's around 2.5 to 3.5
+
+429
+00:20:49,080 --> 00:20:55,830
+if there are no measures applied and
+
+430
+00:20:53,090 --> 00:20:58,770
+here we see the studies which actually
+
+431
+00:20:55,830 --> 00:21:01,650
+came to this r0 estimate and you can see
+
+432
+00:20:58,770 --> 00:21:04,950
+that in the fourth row darzee or
+
+433
+00:21:01,650 --> 00:21:07,710
+estimate coming from a certain study you
+
+434
+00:21:04,950 --> 00:21:10,470
+then can also see the 95% confidence
+
+435
+00:21:07,710 --> 00:21:13,710
+interval for this first study they are
+
+436
+00:21:10,470 --> 00:21:15,990
+zero values 1.97 and the confidence
+
+437
+00:21:13,710 --> 00:21:19,110
+interval is between one point four five
+
+438
+00:21:15,990 --> 00:21:21,710
+and two point four eight and then we can
+
+439
+00:21:19,110 --> 00:21:26,250
+describe how the approach was for
+
+440
+00:21:21,710 --> 00:21:28,470
+assessing the this r0 number what
+
+441
+00:21:26,250 --> 00:21:32,190
+methods they used and we can then
+
+442
+00:21:28,470 --> 00:21:33,809
+compare different approaches and you see
+
+443
+00:21:32,190 --> 00:21:36,000
+here that meanwhile it's a relatively
+
+444
+00:21:33,809 --> 00:21:40,410
+large list of publications I think we
+
+445
+00:21:36,000 --> 00:21:42,870
+have around 30 now I can also switch to
+
+446
+00:21:40,410 --> 00:21:47,190
+full width mode where you can basically
+
+447
+00:21:42,870 --> 00:21:50,760
+compare the different or see have on our
+
+448
+00:21:47,190 --> 00:21:53,910
+bird's-eye view the different yeah
+
+449
+00:21:50,760 --> 00:21:56,220
+publications assessing this r0 value and
+
+450
+00:21:53,910 --> 00:21:59,070
+the table of course gives you already a
+
+451
+00:21:56,220 --> 00:22:01,500
+bit more compact information you can now
+
+452
+00:21:59,070 --> 00:22:04,590
+relatively quickly look who has studied
+
+453
+00:22:01,500 --> 00:22:06,780
+this value in what region in what time
+
+454
+00:22:04,590 --> 00:22:08,370
+frame but even better would be of course
+
+455
+00:22:06,780 --> 00:22:10,559
+if you have some visualizations and
+
+456
+00:22:08,370 --> 00:22:12,780
+since the information here is in a
+
+457
+00:22:10,559 --> 00:22:15,929
+knowledge graph in a kind of structured
+
+458
+00:22:12,780 --> 00:22:18,030
+database we can then also create create
+
+459
+00:22:15,929 --> 00:22:21,290
+visualizations and if you click for
+
+460
+00:22:18,030 --> 00:22:23,970
+example on the link below you will see
+
+461
+00:22:21,290 --> 00:22:27,450
+different types of visualizations for
+
+462
+00:22:23,970 --> 00:22:34,049
+example how the estimates were published
+
+463
+00:22:27,450 --> 00:22:38,650
+over time as a charge a first chart in
+
+464
+00:22:34,049 --> 00:22:41,440
+the second you have a bar chart the arsy
+
+465
+00:22:38,650 --> 00:22:43,300
+estimates and in the third charge here
+
+466
+00:22:41,440 --> 00:22:45,310
+we have also indicated the confidence
+
+467
+00:22:43,300 --> 00:22:51,010
+interval and there you can pretty much
+
+468
+00:22:45,310 --> 00:22:52,420
+see that it's below between 2.5 3.5 of
+
+469
+00:22:51,010 --> 00:22:54,400
+course this is a question which was
+
+470
+00:22:52,420 --> 00:22:56,050
+already in a way answered and there are
+
+471
+00:22:54,400 --> 00:22:58,540
+thousands of people looking at this
+
+472
+00:22:56,050 --> 00:23:00,400
+publications but the same method can be
+
+473
+00:22:58,540 --> 00:23:03,730
+applied in the open research knowledge
+
+474
+00:23:00,400 --> 00:23:05,860
+graph to all kinds of research so we
+
+475
+00:23:03,730 --> 00:23:08,550
+have a very flexible model what you see
+
+476
+00:23:05,860 --> 00:23:11,310
+here for example is how one particular
+
+477
+00:23:08,550 --> 00:23:14,350
+publication is represented in the graph
+
+478
+00:23:11,310 --> 00:23:17,650
+it contains two different contributions
+
+479
+00:23:14,350 --> 00:23:19,960
+and each contribution contains basically
+
+480
+00:23:17,650 --> 00:23:22,150
+facts and certain information about the
+
+481
+00:23:19,960 --> 00:23:25,780
+publication and that allows you then
+
+482
+00:23:22,150 --> 00:23:29,080
+also to look at it from a graph point of
+
+483
+00:23:25,780 --> 00:23:32,140
+view and you can expand different parts
+
+484
+00:23:29,080 --> 00:23:33,850
+of the graph and navigate through this
+
+485
+00:23:32,140 --> 00:23:35,650
+knowledge graph basically and it's
+
+486
+00:23:33,850 --> 00:23:38,400
+linked but other publications with
+
+487
+00:23:35,650 --> 00:23:40,930
+research problems and research fields
+
+488
+00:23:38,400 --> 00:23:43,630
+but of course at where currently
+
+489
+00:23:40,930 --> 00:23:45,730
+requires also manual interaction it's
+
+490
+00:23:43,630 --> 00:23:48,460
+not possible to fully automatically
+
+491
+00:23:45,730 --> 00:23:50,710
+create that but it needs to be created
+
+492
+00:23:48,460 --> 00:23:54,850
+by humans and of course we also apply
+
+493
+00:23:50,710 --> 00:23:58,690
+some support techniques to assist humans
+
+494
+00:23:54,850 --> 00:24:00,640
+using leveraging natural language
+
+495
+00:23:58,690 --> 00:24:04,240
+processing or change artificial
+
+496
+00:24:00,640 --> 00:24:07,840
+intelligence actually you just touched
+
+497
+00:24:04,240 --> 00:24:10,120
+upon the question that I I was preparing
+
+498
+00:24:07,840 --> 00:24:12,730
+to ask you throughout about half way
+
+499
+00:24:10,120 --> 00:24:15,700
+your presentation it's very impressive
+
+500
+00:24:12,730 --> 00:24:20,980
+it's great work I was just wondering how
+
+501
+00:24:15,700 --> 00:24:23,680
+much of that is manually curated and you
+
+502
+00:24:20,980 --> 00:24:31,630
+know coded versus how much of that is
+
+503
+00:24:23,680 --> 00:24:34,390
+extracted currently most of it as men is
+
+504
+00:24:31,630 --> 00:24:36,640
+manually curated but also what is
+
+505
+00:24:34,390 --> 00:24:38,590
+important is you don't need all the
+
+506
+00:24:36,640 --> 00:24:40,870
+information from a paper but for example
+
+507
+00:24:38,590 --> 00:24:43,300
+for this basic reproductive number you
+
+508
+00:24:40,870 --> 00:24:45,490
+are interested in to three values which
+
+509
+00:24:43,300 --> 00:24:49,330
+is basically the reproductive number
+
+510
+00:24:45,490 --> 00:24:51,400
+value Dame the IDI 95% confidence
+
+511
+00:24:49,330 --> 00:24:52,059
+interval the region where they did their
+
+512
+00:24:51,400 --> 00:24:54,639
+analysis
+
+513
+00:24:52,059 --> 00:24:56,649
+and maybe the time frame when they did
+
+514
+00:24:54,639 --> 00:24:59,169
+that so these are three four values
+
+515
+00:24:56,649 --> 00:25:01,869
+which are relevant and that's first
+
+516
+00:24:59,169 --> 00:25:03,879
+relatively easy to add to the knowledge
+
+517
+00:25:01,869 --> 00:25:05,799
+graph and the second is of course we
+
+518
+00:25:03,879 --> 00:25:08,320
+also now develop techniques to
+
+519
+00:25:05,799 --> 00:25:10,840
+automatically extract such information
+
+520
+00:25:08,320 --> 00:25:14,080
+from the papers but this is relatively
+
+521
+00:25:10,840 --> 00:25:17,590
+cumbersome and we reach maybe 70 80 in
+
+522
+00:25:14,080 --> 00:25:20,229
+the best case above 80 percent precision
+
+523
+00:25:17,590 --> 00:25:22,899
+and recall but it still means that 10 20
+
+524
+00:25:20,229 --> 00:25:26,049
+30 percent of the values are not correct
+
+525
+00:25:22,899 --> 00:25:28,570
+and that of course also annoys the users
+
+526
+00:25:26,049 --> 00:25:30,190
+a bit and that's why we are still
+
+527
+00:25:28,570 --> 00:25:33,159
+figuring out what's the right balance
+
+528
+00:25:30,190 --> 00:25:36,639
+between automatic extraction and manual
+
+529
+00:25:33,159 --> 00:25:40,149
+curation of course but even if you have
+
+530
+00:25:36,639 --> 00:25:42,519
+an inaccuracy about 70 or 80 percent
+
+531
+00:25:40,149 --> 00:25:45,399
+that's that's something because then you
+
+532
+00:25:42,519 --> 00:25:49,929
+can you can apply manual curation and
+
+533
+00:25:45,399 --> 00:25:53,589
+bring it up to a hundred percent okay
+
+534
+00:25:49,929 --> 00:25:56,969
+and Alexander to this particular I know
+
+535
+00:25:53,589 --> 00:26:00,700
+that he also wanted to share something
+
+536
+00:25:56,969 --> 00:26:02,009
+to source a little bit code graph and
+
+537
+00:26:00,700 --> 00:26:08,979
+how does it look
+
+538
+00:26:02,009 --> 00:26:11,409
+yes so what can I share my screen but in
+
+539
+00:26:08,979 --> 00:26:24,849
+the main in the main area of the screen
+
+540
+00:26:11,409 --> 00:26:29,349
+on it so so you should see my screen now
+
+541
+00:26:24,849 --> 00:26:31,479
+yes yes and so what the one thing that
+
+542
+00:26:29,349 --> 00:26:36,869
+we have is the knowledge graph itself
+
+543
+00:26:31,479 --> 00:26:40,690
+which has different visualization tools
+
+544
+00:26:36,869 --> 00:26:42,099
+because we we are collaborating with
+
+545
+00:26:40,690 --> 00:26:45,369
+different companies there that
+
+546
+00:26:42,099 --> 00:26:47,919
+contribute to this project and I will
+
+547
+00:26:45,369 --> 00:26:52,419
+show you one or two examples now what we
+
+548
+00:26:47,919 --> 00:26:55,419
+can do first one is maybe I give you
+
+549
+00:26:52,419 --> 00:26:59,259
+here a screen shot here we did an
+
+550
+00:26:55,419 --> 00:27:03,129
+analysis of genes that are mentioned in
+
+551
+00:26:59,259 --> 00:27:05,779
+in the publication's so we had a with a
+
+552
+00:27:03,129 --> 00:27:08,450
+natural language processing procedure
+
+553
+00:27:05,779 --> 00:27:11,059
+that recognizes genes in text
+
+554
+00:27:08,450 --> 00:27:12,559
+automatically and connects them here and
+
+555
+00:27:11,059 --> 00:27:15,469
+we have the genes now here in the
+
+556
+00:27:12,559 --> 00:27:17,090
+screenshot you see it in green you have
+
+557
+00:27:15,469 --> 00:27:19,940
+a gene that is mentioned in a specific
+
+558
+00:27:17,090 --> 00:27:21,889
+paper or here on the bottom there's a
+
+559
+00:27:19,940 --> 00:27:24,469
+paper that mentions different genes and
+
+560
+00:27:21,889 --> 00:27:27,349
+these publications are of course
+
+561
+00:27:24,469 --> 00:27:29,840
+connected to their authors and what we
+
+562
+00:27:27,349 --> 00:27:32,989
+did is a centrality algorithm that we
+
+563
+00:27:29,840 --> 00:27:35,899
+run over all the genes in the papers to
+
+564
+00:27:32,989 --> 00:27:38,929
+find out the gene or the genes that are
+
+565
+00:27:35,899 --> 00:27:41,239
+most relevant in the coronavirus field
+
+566
+00:27:38,929 --> 00:27:46,149
+let's say it like this and this was here
+
+567
+00:27:41,239 --> 00:27:48,889
+this guy the gene is called AC e2 and
+
+568
+00:27:46,149 --> 00:27:52,969
+you can see here that many many papers
+
+569
+00:27:48,889 --> 00:27:55,549
+are mentioning this gene and now we had
+
+570
+00:27:52,969 --> 00:27:59,349
+the first question why is that and this
+
+571
+00:27:55,549 --> 00:28:02,059
+is pretty obvious if you are if you're a
+
+572
+00:27:59,349 --> 00:28:05,210
+biochemist or a medical doctor because
+
+573
+00:28:02,059 --> 00:28:07,700
+AC e2 is the receptor that the virus
+
+574
+00:28:05,210 --> 00:28:10,570
+uses to intrude the cell so it makes
+
+575
+00:28:07,700 --> 00:28:13,039
+much sense that many publications are
+
+576
+00:28:10,570 --> 00:28:15,559
+mentioning this gene because they want
+
+577
+00:28:13,039 --> 00:28:19,609
+to study the strategy of the virus and
+
+578
+00:28:15,559 --> 00:28:22,489
+how to how to program how to protect
+
+579
+00:28:19,609 --> 00:28:24,619
+that maybe and this was like an analysis
+
+580
+00:28:22,489 --> 00:28:26,899
+they were stunned using algorithms on
+
+581
+00:28:24,619 --> 00:28:30,169
+top of our knowledge graph and then
+
+582
+00:28:26,899 --> 00:28:34,820
+point the researchers here to a more
+
+583
+00:28:30,169 --> 00:28:37,820
+focused set of publications so this is
+
+584
+00:28:34,820 --> 00:28:39,710
+one example where we use algorithms the
+
+585
+00:28:37,820 --> 00:28:44,599
+second example I can show you here life
+
+586
+00:28:39,710 --> 00:28:47,089
+on the database where we can where we
+
+587
+00:28:44,599 --> 00:28:49,969
+can put a query here in semi natural
+
+588
+00:28:47,089 --> 00:28:52,159
+language as we say so the user can can
+
+589
+00:28:49,969 --> 00:28:55,039
+write a query like give me give me the
+
+590
+00:28:52,159 --> 00:28:57,889
+genes that are mentioned in a paper with
+
+591
+00:28:55,039 --> 00:28:59,479
+diabetes and with diabetes is just one
+
+592
+00:28:57,889 --> 00:29:01,489
+example because I'm working for the
+
+593
+00:28:59,479 --> 00:29:04,639
+German Center for diabetes research and
+
+594
+00:29:01,489 --> 00:29:06,259
+when I click on that query people that
+
+595
+00:29:04,639 --> 00:29:08,690
+are non computer scientists as I say
+
+596
+00:29:06,259 --> 00:29:10,339
+they can enter queries and and get
+
+597
+00:29:08,690 --> 00:29:14,029
+examples back and I hope that this is
+
+598
+00:29:10,339 --> 00:29:19,980
+fast now here so it's a little bit slow
+
+599
+00:29:14,029 --> 00:29:22,080
+but you see already the papers there
+
+600
+00:29:19,980 --> 00:29:25,020
+that are actually written in terms of
+
+601
+00:29:22,080 --> 00:29:27,809
+coronavirus but they are genes that are
+
+602
+00:29:25,020 --> 00:29:32,669
+diabetes relevant so there is an overlap
+
+603
+00:29:27,809 --> 00:29:34,650
+between two severe diseases and there's
+
+604
+00:29:32,669 --> 00:29:36,480
+a fact that diabetic patients have a
+
+605
+00:29:34,650 --> 00:29:39,929
+higher risk to get infected and a higher
+
+606
+00:29:36,480 --> 00:29:42,150
+risk to die so there is evidence or
+
+607
+00:29:39,929 --> 00:29:46,260
+there is yeah there's a connection
+
+608
+00:29:42,150 --> 00:29:48,510
+between the two between the two diseases
+
+609
+00:29:46,260 --> 00:29:53,220
+and this is what what the researchers
+
+610
+00:29:48,510 --> 00:29:55,140
+here can see and we can we can manually
+
+611
+00:29:53,220 --> 00:29:57,630
+interact with this graph here and this
+
+612
+00:29:55,140 --> 00:30:00,659
+is what sir and also mentioned a
+
+613
+00:29:57,630 --> 00:30:05,100
+knowledge graph in my definition is not
+
+614
+00:30:00,659 --> 00:30:07,020
+a aesthetic result it is let's say the
+
+615
+00:30:05,100 --> 00:30:09,419
+result of this analysis II of this query
+
+616
+00:30:07,020 --> 00:30:11,730
+is just the beginning of the next query
+
+617
+00:30:09,419 --> 00:30:15,149
+or it's just the beginning of it of the
+
+618
+00:30:11,730 --> 00:30:17,370
+next investigation of something and yeah
+
+619
+00:30:15,149 --> 00:30:19,860
+as I can zoom here I can drag and drop
+
+620
+00:30:17,370 --> 00:30:25,710
+the papers the papers are here blue and
+
+621
+00:30:19,860 --> 00:30:28,440
+the genes are here in pink and you can
+
+622
+00:30:25,710 --> 00:30:30,630
+you can now cluster these genes cluster
+
+623
+00:30:28,440 --> 00:30:32,279
+them according to their gene function or
+
+624
+00:30:30,630 --> 00:30:34,770
+class of them in according to another
+
+625
+00:30:32,279 --> 00:30:38,190
+disease and this is what what what makes
+
+626
+00:30:34,770 --> 00:30:40,320
+the the interaction with the with the
+
+627
+00:30:38,190 --> 00:30:43,350
+knowledge graph pretty easy to have a
+
+628
+00:30:40,320 --> 00:30:45,149
+good visualization yeah so this is one
+
+629
+00:30:43,350 --> 00:30:51,000
+of the examples that I can show you here
+
+630
+00:30:45,149 --> 00:30:52,740
+so far there are many many other let's
+
+631
+00:30:51,000 --> 00:30:55,049
+say use cases that we already written
+
+632
+00:30:52,740 --> 00:30:57,840
+down and I'll github repository so there
+
+633
+00:30:55,049 --> 00:31:01,860
+are there are use cases from patent
+
+634
+00:30:57,840 --> 00:31:04,020
+lawyers there are use cases from from
+
+635
+00:31:01,860 --> 00:31:06,750
+medical doctors also from basic
+
+636
+00:31:04,020 --> 00:31:08,820
+researchers and we are trying to answer
+
+637
+00:31:06,750 --> 00:31:12,210
+these questions and try to support them
+
+638
+00:31:08,820 --> 00:31:15,960
+now with the common craft project yeah I
+
+639
+00:31:12,210 --> 00:31:18,270
+can see because I already was already
+
+640
+00:31:15,960 --> 00:31:21,539
+kind of familiar with your work because
+
+641
+00:31:18,270 --> 00:31:23,940
+we it's an article on that so I checked
+
+642
+00:31:21,539 --> 00:31:25,559
+it out a couple of weeks back and I can
+
+643
+00:31:23,940 --> 00:31:28,860
+see that you have already made some
+
+644
+00:31:25,559 --> 00:31:31,190
+progress compared to what you had then
+
+645
+00:31:28,860 --> 00:31:34,130
+yeah thank you very much
+
+646
+00:31:31,190 --> 00:31:36,560
+so this this example that you gave in a
+
+647
+00:31:34,130 --> 00:31:39,470
+kind of not exactly natural language
+
+648
+00:31:36,560 --> 00:31:41,870
+quitting but but closes yeah it already
+
+649
+00:31:39,470 --> 00:31:43,730
+makes things much much easier for users
+
+650
+00:31:41,870 --> 00:31:45,500
+who are not necessarily familiar with
+
+651
+00:31:43,730 --> 00:31:47,720
+the graph query language that he used
+
+652
+00:31:45,500 --> 00:31:49,880
+exactly and in many cases these
+
+653
+00:31:47,720 --> 00:31:51,410
+questions are very simple when when you
+
+654
+00:31:49,880 --> 00:31:54,140
+speak to other people they are pretty
+
+655
+00:31:51,410 --> 00:31:56,000
+simple but not so easy for a machine but
+
+656
+00:31:54,140 --> 00:31:58,970
+the point is that many of the research
+
+657
+00:31:56,000 --> 00:32:04,220
+has asked the same questions and so we
+
+658
+00:31:58,970 --> 00:32:06,230
+try to gather these and collect these
+
+659
+00:32:04,220 --> 00:32:08,720
+these use cases or these queries and
+
+660
+00:32:06,230 --> 00:32:12,430
+provide them in a natural language way
+
+661
+00:32:08,720 --> 00:32:15,950
+that people can enter a normal sentence
+
+662
+00:32:12,430 --> 00:32:18,680
+and then as you also pointed out this is
+
+663
+00:32:15,950 --> 00:32:20,600
+this is actually how this is a very good
+
+664
+00:32:18,680 --> 00:32:23,300
+way to actually do data exploration
+
+665
+00:32:20,600 --> 00:32:26,120
+using knowledge graph so we start with a
+
+666
+00:32:23,300 --> 00:32:29,240
+query something specific that maybe
+
+667
+00:32:26,120 --> 00:32:31,520
+you're you're interesting in that point
+
+668
+00:32:29,240 --> 00:32:34,610
+and then you should be able to explore
+
+669
+00:32:31,520 --> 00:32:36,800
+so if this visualization does this
+
+670
+00:32:34,610 --> 00:32:39,650
+visualization also serve this goal so
+
+671
+00:32:36,800 --> 00:32:42,410
+are you able to drill down let's say
+
+672
+00:32:39,650 --> 00:32:44,930
+mistress if ignored if you wish yes so I
+
+673
+00:32:42,410 --> 00:32:48,680
+can click here on let's say we take this
+
+674
+00:32:44,930 --> 00:32:50,480
+paper here it's a little bit slow today
+
+675
+00:32:48,680 --> 00:32:53,480
+because we are heavily working on the
+
+676
+00:32:50,480 --> 00:32:58,180
+database and then you can select this
+
+677
+00:32:53,480 --> 00:32:58,180
+paper and does it work
+
+678
+00:32:58,660 --> 00:33:07,070
+no it doesn't work let me show it on the
+
+679
+00:33:01,040 --> 00:33:08,510
+on the on the on the screenshot here so
+
+680
+00:33:07,070 --> 00:33:10,820
+here on the screenshot when you click on
+
+681
+00:33:08,510 --> 00:33:14,360
+one of the publications you will you
+
+682
+00:33:10,820 --> 00:33:16,990
+will easily get the authors the abstract
+
+683
+00:33:14,360 --> 00:33:19,460
+at the mentioned genes the mentioned
+
+684
+00:33:16,990 --> 00:33:21,260
+diseases sometimes there are two
+
+685
+00:33:19,460 --> 00:33:25,250
+diseases or sometimes there are some
+
+686
+00:33:21,260 --> 00:33:28,130
+some phenotypes or other keywords that
+
+687
+00:33:25,250 --> 00:33:30,860
+are mentioned there so you can easily
+
+688
+00:33:28,130 --> 00:33:35,330
+interact with them what you also can do
+
+689
+00:33:30,860 --> 00:33:37,070
+is we have let's say typical graph
+
+690
+00:33:35,330 --> 00:33:39,770
+algorithms already implemented like
+
+691
+00:33:37,070 --> 00:33:41,720
+shortest paths you can select two nodes
+
+692
+00:33:39,770 --> 00:33:44,090
+and can ask the question what is the
+
+693
+00:33:41,720 --> 00:33:49,539
+shortest path between the two
+
+694
+00:33:44,090 --> 00:33:52,130
+the two nodes and then having the result
+
+695
+00:33:49,539 --> 00:33:54,049
+going to a going to a research and ask
+
+696
+00:33:52,130 --> 00:33:56,390
+the question it does that make sense at
+
+697
+00:33:54,049 --> 00:34:00,260
+all and this is I guess this is what
+
+698
+00:33:56,390 --> 00:34:02,299
+Saren meant in many many cases just pure
+
+699
+00:34:00,260 --> 00:34:04,520
+data analysis or just pure machine
+
+700
+00:34:02,299 --> 00:34:06,980
+learning doesn't make any sense and so
+
+701
+00:34:04,520 --> 00:34:09,230
+you have to have specific information
+
+702
+00:34:06,980 --> 00:34:15,560
+coming from unit and from human
+
+703
+00:34:09,230 --> 00:34:18,260
+interactions yeah yeah yeah I think it's
+
+704
+00:34:15,560 --> 00:34:21,530
+very useful to see those two approaches
+
+705
+00:34:18,260 --> 00:34:24,710
+and implementation side by side and to
+
+706
+00:34:21,530 --> 00:34:26,659
+hear you both describe a little bit how
+
+707
+00:34:24,710 --> 00:34:28,909
+they work and what their arsenal is
+
+708
+00:34:26,659 --> 00:34:32,389
+behind them because I think it also
+
+709
+00:34:28,909 --> 00:34:34,940
+highlights you know strong points in two
+
+710
+00:34:32,389 --> 00:34:37,760
+different approaches basically again
+
+711
+00:34:34,940 --> 00:34:40,129
+this is a kind of common knowledge for
+
+712
+00:34:37,760 --> 00:34:43,399
+people who are into a graph modeling and
+
+713
+00:34:40,129 --> 00:34:46,750
+knowledge graphs but let's repeat for
+
+714
+00:34:43,399 --> 00:34:48,589
+the new members of the audience that
+
+715
+00:34:46,750 --> 00:34:52,550
+broadly speaking there are two
+
+716
+00:34:48,589 --> 00:34:54,980
+approaches in modeling graphs one is
+
+717
+00:34:52,550 --> 00:34:58,250
+called property graphs and the other is
+
+718
+00:34:54,980 --> 00:35:01,730
+called RDF for semantic modeling and
+
+719
+00:34:58,250 --> 00:35:04,700
+well it's you know going into the
+
+720
+00:35:01,730 --> 00:35:07,310
+details of how its approach does what
+
+721
+00:35:04,700 --> 00:35:09,770
+it's very very long and nuanced
+
+722
+00:35:07,310 --> 00:35:12,070
+discussion but the point that is
+
+723
+00:35:09,770 --> 00:35:15,920
+actually probably more important here is
+
+724
+00:35:12,070 --> 00:35:18,200
+basically how would we work if we wanted
+
+725
+00:35:15,920 --> 00:35:20,960
+to combine let's say those those two
+
+726
+00:35:18,200 --> 00:35:23,000
+efforts so we have here one knowledge
+
+727
+00:35:20,960 --> 00:35:25,640
+graph the open research knowledge graph
+
+728
+00:35:23,000 --> 00:35:28,070
+which is modeled using RDF and we also
+
+729
+00:35:25,640 --> 00:35:31,580
+have a Kovac graph which is modeled
+
+730
+00:35:28,070 --> 00:35:33,770
+using property graphs so I would like to
+
+731
+00:35:31,580 --> 00:35:37,280
+first address the question to discern
+
+732
+00:35:33,770 --> 00:35:39,920
+how would you go about combining these
+
+733
+00:35:37,280 --> 00:35:41,839
+two knowledge bases we actually did
+
+734
+00:35:39,920 --> 00:35:45,080
+already like the open research knowledge
+
+735
+00:35:41,839 --> 00:35:47,210
+graph is the property graph and RDF we
+
+736
+00:35:45,080 --> 00:35:50,240
+use neo4j as a basis for the
+
+737
+00:35:47,210 --> 00:35:53,599
+implementation so underneath it's a
+
+738
+00:35:50,240 --> 00:35:55,970
+property graph but of course we may be
+
+739
+00:35:53,599 --> 00:35:58,400
+integrated or or layered the RDF data
+
+740
+00:35:55,970 --> 00:36:00,109
+model on top why did we do that
+
+741
+00:35:58,400 --> 00:36:02,349
+because we wanted to have the
+
+742
+00:36:00,109 --> 00:36:05,599
+scalability of property graphs so they
+
+743
+00:36:02,349 --> 00:36:08,779
+scale horizontally which is a very nice
+
+744
+00:36:05,599 --> 00:36:10,940
+property and at the same time we wanted
+
+745
+00:36:08,779 --> 00:36:15,319
+to have two expressivity of rdf and
+
+746
+00:36:10,940 --> 00:36:17,359
+that's why we integrated both in a way
+
+747
+00:36:15,319 --> 00:36:20,000
+also property graphs are a bit more
+
+748
+00:36:17,359 --> 00:36:23,450
+flexible you can add easier meta
+
+749
+00:36:20,000 --> 00:36:29,779
+information to the properties to the
+
+750
+00:36:23,450 --> 00:36:33,650
+statements in in sparkle triple stores
+
+751
+00:36:29,779 --> 00:36:36,950
+and sparkle databases it's usually a bit
+
+752
+00:36:33,650 --> 00:36:39,260
+more challenging to add reification Zoar
+
+753
+00:36:36,950 --> 00:36:41,839
+information about meta information about
+
+754
+00:36:39,260 --> 00:36:43,700
+the statements and the troubles
+
+755
+00:36:41,839 --> 00:36:46,609
+on the other hand of course it's still
+
+756
+00:36:43,700 --> 00:36:48,710
+also a challenge so we don't have direct
+
+757
+00:36:46,609 --> 00:36:51,829
+Sparkle currying report we currently
+
+758
+00:36:48,710 --> 00:36:54,829
+load the data from the new 4j database
+
+759
+00:36:51,829 --> 00:36:59,089
+into another Sparkle endpoint in order
+
+760
+00:36:54,829 --> 00:37:02,240
+to provide a possibility to allow to
+
+761
+00:36:59,089 --> 00:37:03,829
+query it using sparkle and so there are
+
+762
+00:37:02,240 --> 00:37:05,690
+still a number of challenges to
+
+763
+00:37:03,829 --> 00:37:07,789
+integrate both but I think it's
+
+764
+00:37:05,690 --> 00:37:09,799
+definitely feasible and there are also
+
+765
+00:37:07,789 --> 00:37:12,559
+even commercial services like place
+
+766
+00:37:09,799 --> 00:37:14,750
+graph which got acquired by Amazon and
+
+767
+00:37:12,559 --> 00:37:19,839
+it's now Amazon Neptune where they have
+
+768
+00:37:14,750 --> 00:37:24,470
+something integrated property graph and
+
+769
+00:37:19,839 --> 00:37:28,490
+RDF functionality and in one technology
+
+770
+00:37:24,470 --> 00:37:31,670
+basically so you're saying if I go to
+
+771
+00:37:28,490 --> 00:37:34,190
+write that you are keeping against the
+
+772
+00:37:31,670 --> 00:37:36,589
+information in two different instances
+
+773
+00:37:34,190 --> 00:37:39,500
+right one as a property graph and the
+
+774
+00:37:36,589 --> 00:37:40,940
+other one as an RDF graph and you can if
+
+775
+00:37:39,500 --> 00:37:53,740
+you need to synchronize them but you can
+
+776
+00:37:40,940 --> 00:37:57,260
+query both I think certain I think use
+
+777
+00:37:53,740 --> 00:38:00,890
+the ground truth is in the property
+
+778
+00:37:57,260 --> 00:38:03,680
+graph so we use new for J as the central
+
+779
+00:38:00,890 --> 00:38:06,410
+point of truth there all the data is in
+
+780
+00:38:03,680 --> 00:38:08,510
+the u4j graph
+
+781
+00:38:06,410 --> 00:38:11,210
+but of course we organized that there in
+
+782
+00:38:08,510 --> 00:38:12,079
+a way that we have identifiers your eye
+
+783
+00:38:11,210 --> 00:38:14,150
+is for
+
+784
+00:38:12,079 --> 00:38:18,469
+the entities and for therefore the nodes
+
+785
+00:38:14,150 --> 00:38:22,299
+and edges and so that we can easily
+
+786
+00:38:18,469 --> 00:38:25,339
+export it as RDF and there are some
+
+787
+00:38:22,299 --> 00:38:27,289
+experimental additions to new UJ which
+
+788
+00:38:25,339 --> 00:38:29,900
+allow some kind of spark occurring but
+
+789
+00:38:27,289 --> 00:38:33,799
+they were not so mature yet so that was
+
+790
+00:38:29,900 --> 00:38:36,559
+the reason why we have another sparkle
+
+791
+00:38:33,799 --> 00:38:38,719
+and point triple store on this side but
+
+792
+00:38:36,559 --> 00:38:40,969
+of course in the future Albert will be
+
+793
+00:38:38,719 --> 00:38:43,459
+directly integrated also into property
+
+794
+00:38:40,969 --> 00:38:46,819
+graphs that you can query them using
+
+795
+00:38:43,459 --> 00:38:49,670
+Sparkle and use RDF and rdf schema and
+
+796
+00:38:46,819 --> 00:38:52,279
+anthologies out of the box i think the
+
+797
+00:38:49,670 --> 00:38:54,829
+main difference is that property graphs
+
+798
+00:38:52,279 --> 00:38:57,079
+don't have this unique identifiers now
+
+799
+00:38:54,829 --> 00:38:59,150
+this your highest which you can use and
+
+800
+00:38:57,079 --> 00:39:02,890
+then of course the number of interfaces
+
+801
+00:38:59,150 --> 00:39:06,140
+and api is like sparkle or link data
+
+802
+00:39:02,890 --> 00:39:09,079
+while triple stores have that built in
+
+803
+00:39:06,140 --> 00:39:13,789
+that would be great to have both
+
+804
+00:39:09,079 --> 00:39:17,630
+together of course how about you
+
+805
+00:39:13,789 --> 00:39:20,569
+alexander did you do you use any
+
+806
+00:39:17,630 --> 00:39:22,789
+elements of definitely all would you
+
+807
+00:39:20,569 --> 00:39:29,929
+like to actually such as your eyes that
+
+808
+00:39:22,789 --> 00:39:35,329
+sharon just mentioned well we we don't
+
+809
+00:39:29,929 --> 00:39:41,089
+have any rdf already in the graph i I
+
+810
+00:39:35,329 --> 00:39:43,339
+will or are also neo4j based is a
+
+811
+00:39:41,089 --> 00:39:45,529
+mixture of both so we have a property
+
+812
+00:39:43,339 --> 00:39:49,910
+graph typically from from the different
+
+813
+00:39:45,529 --> 00:39:52,039
+entities and well since we are heavily
+
+814
+00:39:49,910 --> 00:39:54,199
+working on the graph itself and try to
+
+815
+00:39:52,039 --> 00:39:58,309
+learn things and infer things and
+
+816
+00:39:54,199 --> 00:40:00,920
+predict connections I think it's turning
+
+817
+00:39:58,309 --> 00:40:04,849
+turning more and more to knowledge graph
+
+818
+00:40:00,920 --> 00:40:07,999
+itself yes from this from this
+
+819
+00:40:04,849 --> 00:40:09,920
+perspective I would say we have both but
+
+820
+00:40:07,999 --> 00:40:12,890
+of course it would be beneficial to have
+
+821
+00:40:09,920 --> 00:40:16,849
+the one or the other API where we can
+
+822
+00:40:12,890 --> 00:40:20,299
+jump from one to the other database okay
+
+823
+00:40:16,849 --> 00:40:22,619
+thank you so I think we've covered a lot
+
+824
+00:40:20,299 --> 00:40:24,930
+of ground and we're
+
+825
+00:40:22,619 --> 00:40:28,049
+kind of fast approaching to to wrapping
+
+826
+00:40:24,930 --> 00:40:30,210
+up and this is a point where we actually
+
+827
+00:40:28,049 --> 00:40:32,579
+take questions from the audience and I
+
+828
+00:40:30,210 --> 00:40:34,769
+see that we have a few so the first
+
+829
+00:40:32,579 --> 00:40:36,989
+question from Peter is whether the
+
+830
+00:40:34,769 --> 00:40:39,599
+system is live somewhere that we can
+
+831
+00:40:36,989 --> 00:40:43,979
+explore and I can answer this one for
+
+832
+00:40:39,599 --> 00:40:45,599
+you so yes both systems are live copied
+
+833
+00:40:43,979 --> 00:40:47,670
+graph you can actually just you know
+
+834
+00:40:45,599 --> 00:40:49,229
+type them in any search engine and I'm
+
+835
+00:40:47,670 --> 00:40:51,809
+pretty sure you will find them if you
+
+836
+00:40:49,229 --> 00:40:54,690
+search for a copied graph
+
+837
+00:40:51,809 --> 00:40:56,369
+I think the extension is copied grafted
+
+838
+00:40:54,690 --> 00:40:59,999
+in for God
+
+839
+00:40:56,369 --> 00:41:02,249
+the tork okay and the open research know
+
+840
+00:40:59,999 --> 00:41:04,739
+this graph it also has its own domain
+
+841
+00:41:02,249 --> 00:41:08,579
+which is ort if I'm not mistaken sure
+
+842
+00:41:04,739 --> 00:41:11,549
+right so yes
+
+843
+00:41:08,579 --> 00:41:16,650
+quick answer yes both systems are live
+
+844
+00:41:11,549 --> 00:41:19,140
+and you can test them and I've shared a
+
+845
+00:41:16,650 --> 00:41:21,329
+link over here and the trip yes yes
+
+846
+00:41:19,140 --> 00:41:23,910
+please please do so that the audience
+
+847
+00:41:21,329 --> 00:41:26,789
+can quickly check that so the next
+
+848
+00:41:23,910 --> 00:41:28,739
+question is from Tariq and the question
+
+849
+00:41:26,789 --> 00:41:31,559
+is what are your suggestions for graph
+
+850
+00:41:28,739 --> 00:41:34,279
+which are overly dense thus making
+
+851
+00:41:31,559 --> 00:41:37,890
+visualization and the rotation difficult
+
+852
+00:41:34,279 --> 00:41:39,869
+so sometimes the question goes on to add
+
+853
+00:41:37,890 --> 00:41:42,809
+filtering properties to reduce the data
+
+854
+00:41:39,869 --> 00:41:44,460
+in the view isn't an easy option and I
+
+855
+00:41:42,809 --> 00:41:46,229
+know this is something that both of you
+
+856
+00:41:44,460 --> 00:41:48,059
+will have an opinion on because the
+
+857
+00:41:46,229 --> 00:41:52,130
+datasets that you have to deal with are
+
+858
+00:41:48,059 --> 00:41:58,890
+really quite quite big and quite dense
+
+859
+00:41:52,130 --> 00:42:01,739
+let's start with you sir sorry I'm a
+
+860
+00:41:58,890 --> 00:42:05,249
+little bit busy typing the link again to
+
+861
+00:42:01,739 --> 00:42:08,039
+the chat so it was about both
+
+862
+00:42:05,249 --> 00:42:10,650
+visualization basically how to how to
+
+863
+00:42:08,039 --> 00:42:13,559
+work with very dense graphs that are
+
+864
+00:42:10,650 --> 00:42:15,229
+hard right dreads yeah that's that's a
+
+865
+00:42:13,559 --> 00:42:17,999
+good question and that's very important
+
+866
+00:42:15,229 --> 00:42:20,519
+visualization if you have a large graph
+
+867
+00:42:17,999 --> 00:42:23,069
+it gets cluttered and it's very
+
+868
+00:42:20,519 --> 00:42:26,859
+difficult to keep an overview of the
+
+869
+00:42:23,069 --> 00:42:30,619
+graph so I actually have a very
+
+870
+00:42:26,859 --> 00:42:33,050
+good PhD students eat Alice means who is
+
+871
+00:42:30,619 --> 00:42:35,210
+working particular on that topic and she
+
+872
+00:42:33,050 --> 00:42:37,220
+developed several approaches value for
+
+873
+00:42:35,210 --> 00:42:40,400
+example one is called semantic zooming
+
+874
+00:42:37,220 --> 00:42:44,420
+that you can zoom in and out in the
+
+875
+00:42:40,400 --> 00:42:46,970
+graph and it disables or clusters and
+
+876
+00:42:44,420 --> 00:42:49,010
+deactivate certain nodes and engines
+
+877
+00:42:46,970 --> 00:42:52,010
+depending on the zoom level the same way
+
+878
+00:42:49,010 --> 00:42:54,109
+as when you zoom into a map or out of a
+
+879
+00:42:52,010 --> 00:42:56,240
+map you see smaller roads or you don't
+
+880
+00:42:54,109 --> 00:42:58,700
+see smaller roads and buildings and so
+
+881
+00:42:56,240 --> 00:43:00,950
+on and the same way I think we need to
+
+882
+00:42:58,700 --> 00:43:03,800
+support this when we visualize graphs
+
+883
+00:43:00,950 --> 00:43:06,380
+another approach with harlots developed
+
+884
+00:43:03,800 --> 00:43:09,050
+is for styling the graph in a way that
+
+885
+00:43:06,380 --> 00:43:12,109
+you can add different types of colors
+
+886
+00:43:09,050 --> 00:43:14,090
+and icons that you maybe can also use
+
+887
+00:43:12,109 --> 00:43:16,940
+styles which people are familiar with
+
+888
+00:43:14,090 --> 00:43:18,950
+like UML visualizations for example or
+
+889
+00:43:16,940 --> 00:43:21,140
+there are other visualization types in
+
+890
+00:43:18,950 --> 00:43:24,530
+different communities and when we have
+
+891
+00:43:21,140 --> 00:43:26,690
+the styling option it also makes people
+
+892
+00:43:24,530 --> 00:43:28,130
+being a bit more familiar and there are
+
+893
+00:43:26,690 --> 00:43:30,140
+a number of these techniques but of
+
+894
+00:43:28,130 --> 00:43:33,050
+course it's still also a research issue
+
+895
+00:43:30,140 --> 00:43:35,359
+to make it really scalable also to
+
+896
+00:43:33,050 --> 00:43:38,030
+visualize for example we want to
+
+897
+00:43:35,359 --> 00:43:40,640
+visualize comparisons between different
+
+898
+00:43:38,030 --> 00:43:42,470
+graph representations of scientific
+
+899
+00:43:40,640 --> 00:43:44,570
+contributions and we are still
+
+900
+00:43:42,470 --> 00:43:46,369
+researching and writing papers about
+
+901
+00:43:44,570 --> 00:43:48,589
+that and at the same time then
+
+902
+00:43:46,369 --> 00:43:53,830
+integrating new functionality also into
+
+903
+00:43:48,589 --> 00:43:56,780
+the open research mode craft good and I
+
+904
+00:43:53,830 --> 00:43:59,000
+mean I saw that he also had some pretty
+
+905
+00:43:56,780 --> 00:44:01,970
+pretty dense visualizations yeah exactly
+
+906
+00:43:59,000 --> 00:44:04,970
+and these are exactly the problem so we
+
+907
+00:44:01,970 --> 00:44:07,250
+call them super nodes and so the one
+
+908
+00:44:04,970 --> 00:44:11,660
+thing that we use is the visualization
+
+909
+00:44:07,250 --> 00:44:14,660
+piling curious which is a company we're
+
+910
+00:44:11,660 --> 00:44:18,170
+doing a visualization on graphs and with
+
+911
+00:44:14,660 --> 00:44:20,750
+new hijae and with this you can define
+
+912
+00:44:18,170 --> 00:44:22,700
+different aggregate functions saying
+
+913
+00:44:20,750 --> 00:44:25,280
+that you can aggregate over you know
+
+914
+00:44:22,700 --> 00:44:27,589
+like all the relationships from one type
+
+915
+00:44:25,280 --> 00:44:30,770
+that are represented only by one
+
+916
+00:44:27,589 --> 00:44:33,619
+relationship and then according to the
+
+917
+00:44:30,770 --> 00:44:35,960
+according to the number of relationships
+
+918
+00:44:33,619 --> 00:44:38,950
+you have a thickness parameter that you
+
+919
+00:44:35,960 --> 00:44:45,220
+can give a specific relationship
+
+920
+00:44:38,950 --> 00:44:49,030
+another to me a new tool is called sin
+
+921
+00:44:45,220 --> 00:44:53,800
+SPECT I will put that link also into the
+
+922
+00:44:49,030 --> 00:44:57,099
+into the into the chat and they have a
+
+923
+00:44:53,800 --> 00:45:00,700
+very smart way of representing the graph
+
+924
+00:44:57,099 --> 00:45:08,920
+and I can show that here on my screen
+
+925
+00:45:00,700 --> 00:45:15,420
+let me share the screen again and this
+
+926
+00:45:08,920 --> 00:45:18,400
+is a very smart way of representing that
+
+927
+00:45:15,420 --> 00:45:20,410
+I don't know sir and if you if you heard
+
+928
+00:45:18,400 --> 00:45:24,070
+about this these are it's a German
+
+929
+00:45:20,410 --> 00:45:28,540
+company from all absolutely other do
+
+930
+00:45:24,070 --> 00:45:31,050
+good work let's say here there they have
+
+931
+00:45:28,540 --> 00:45:35,200
+a very nice video here on Vimeo and
+
+932
+00:45:31,050 --> 00:45:37,660
+there's a there's a super super set of
+
+933
+00:45:35,200 --> 00:45:40,630
+nodes here that is connected by the edge
+
+934
+00:45:37,660 --> 00:45:42,339
+has subject so an article has a subject
+
+935
+00:45:40,630 --> 00:45:44,530
+right and here are five thousand
+
+936
+00:45:42,339 --> 00:45:48,280
+articles here and there are a lot of
+
+937
+00:45:44,530 --> 00:45:51,700
+subjects and they are clustering these
+
+938
+00:45:48,280 --> 00:45:54,940
+these nodes and then you have a specific
+
+939
+00:45:51,700 --> 00:45:57,400
+d3 visualization on top of that that
+
+940
+00:45:54,940 --> 00:45:59,500
+that are summarized here in one of the
+
+941
+00:45:57,400 --> 00:46:03,700
+other edge and you can you can go
+
+942
+00:45:59,500 --> 00:46:09,750
+specific edges here as you can see here
+
+943
+00:46:03,700 --> 00:46:13,119
+and let me cause that so between the red
+
+944
+00:46:09,750 --> 00:46:14,829
+super node and the light blue here they
+
+945
+00:46:13,119 --> 00:46:18,940
+are actually 80 edges that are
+
+946
+00:46:14,829 --> 00:46:22,300
+summarized in just one very nice edge
+
+947
+00:46:18,940 --> 00:46:24,579
+here so this is what we what we try to
+
+948
+00:46:22,300 --> 00:46:29,410
+use to circumvent this problem of these
+
+949
+00:46:24,579 --> 00:46:32,609
+super nodes mm-hmm okay we I think we
+
+950
+00:46:29,410 --> 00:46:34,900
+only have time for one more question and
+
+951
+00:46:32,609 --> 00:46:36,940
+we have a lot which is a good thing
+
+952
+00:46:34,900 --> 00:46:39,670
+unfortunately we can not only choose
+
+953
+00:46:36,940 --> 00:46:42,190
+what restaurant so I will choose that
+
+954
+00:46:39,670 --> 00:46:45,970
+without its use something which again is
+
+955
+00:46:42,190 --> 00:46:48,520
+a kind of common recurring theme so how
+
+956
+00:46:45,970 --> 00:46:50,520
+do you deal with relationship extraction
+
+957
+00:46:48,520 --> 00:46:52,350
+because this is something
+
+958
+00:46:50,520 --> 00:46:54,840
+that's both of you have to do to
+
+959
+00:46:52,350 --> 00:47:00,360
+populate your graph and starting with
+
+960
+00:46:54,840 --> 00:47:03,030
+you Sharon yeah so I think this is the
+
+961
+00:47:00,360 --> 00:47:05,070
+most challenging problem and and
+
+962
+00:47:03,030 --> 00:47:07,710
+question and I think actually relation
+
+963
+00:47:05,070 --> 00:47:10,680
+open domain relation extraction from my
+
+964
+00:47:07,710 --> 00:47:13,200
+perspective doesn't work it works when
+
+965
+00:47:10,680 --> 00:47:15,510
+you are exactly know what you aren't
+
+966
+00:47:13,200 --> 00:47:18,480
+looking for for example for this are
+
+967
+00:47:15,510 --> 00:47:21,120
+zero values which I presented if you
+
+968
+00:47:18,480 --> 00:47:22,410
+know you look for a number and there
+
+969
+00:47:21,120 --> 00:47:24,710
+should be something like basic
+
+970
+00:47:22,410 --> 00:47:27,300
+reproductive number before or afterwards
+
+971
+00:47:24,710 --> 00:47:29,250
+then you can probably identify this
+
+972
+00:47:27,300 --> 00:47:33,750
+number and identify the relationship
+
+973
+00:47:29,250 --> 00:47:36,720
+that this is it's the basic reproductive
+
+974
+00:47:33,750 --> 00:47:39,780
+number but I think in many cases it's
+
+975
+00:47:36,720 --> 00:47:41,820
+relatively challenging to reach
+
+976
+00:47:39,780 --> 00:47:44,970
+sufficient precision and recall for
+
+977
+00:47:41,820 --> 00:47:46,830
+relationship extraction and that's from
+
+978
+00:47:44,970 --> 00:47:49,980
+my perspective the most challenging part
+
+979
+00:47:46,830 --> 00:47:53,220
+because what we can do relatively well
+
+980
+00:47:49,980 --> 00:47:55,260
+as identify entities named entities and
+
+981
+00:47:53,220 --> 00:47:57,450
+documents but connecting how the
+
+982
+00:47:55,260 --> 00:47:59,400
+relationship between them and that's
+
+983
+00:47:57,450 --> 00:48:01,290
+what makes the graph really interesting
+
+984
+00:47:59,400 --> 00:48:03,960
+you want to compare approach a with
+
+985
+00:48:01,290 --> 00:48:09,150
+kirbridge B and for that you need not
+
+986
+00:48:03,960 --> 00:48:11,910
+just to know what named entities are
+
+987
+00:48:09,150 --> 00:48:14,940
+occurring but you need to know how the
+
+988
+00:48:11,910 --> 00:48:17,310
+relationship between them is and that
+
+989
+00:48:14,940 --> 00:48:19,110
+prevents us currently from my point of
+
+990
+00:48:17,310 --> 00:48:20,970
+view of really making sense of the
+
+991
+00:48:19,110 --> 00:48:23,790
+scientific literature on a large scale
+
+992
+00:48:20,970 --> 00:48:26,130
+and I also think we will not be able to
+
+993
+00:48:23,790 --> 00:48:28,080
+do this fully automatically especially
+
+994
+00:48:26,130 --> 00:48:30,990
+since we scientists we write papers also
+
+995
+00:48:28,080 --> 00:48:33,420
+not always in a very clear manner we are
+
+996
+00:48:30,990 --> 00:48:35,730
+sometimes ambiguous we sometimes want to
+
+997
+00:48:33,420 --> 00:48:38,070
+even hide some information from the
+
+998
+00:48:35,730 --> 00:48:40,590
+papers in order to increase our chances
+
+999
+00:48:38,070 --> 00:48:42,750
+of getting accepted and it's already for
+
+1000
+00:48:40,590 --> 00:48:45,270
+us very difficult to figure out what's
+
+1001
+00:48:42,750 --> 00:48:48,900
+going on and in paper and for machine
+
+1002
+00:48:45,270 --> 00:48:50,880
+it's I would say almost impossible or we
+
+1003
+00:48:48,900 --> 00:48:55,110
+need really a lot of good training data
+
+1004
+00:48:50,880 --> 00:48:57,750
+for doing that and unless we have this I
+
+1005
+00:48:55,110 --> 00:49:01,830
+think we need to really involve humans
+
+1006
+00:48:57,750 --> 00:49:04,790
+in the loop and involve depth as human
+
+1007
+00:49:01,830 --> 00:49:04,790
+televisions there
+
+1008
+00:49:10,470 --> 00:49:16,920
+so as a
+
+1009
+00:49:12,040 --> 00:49:16,920
+answer did I shut everybody down
+
+1010
+00:49:17,640 --> 00:49:27,700
+George's looks like he's a bit offline
+
+1011
+00:49:21,220 --> 00:49:29,350
+Alexander do you have yeah I can only
+
+1012
+00:49:27,700 --> 00:49:32,740
+agree with you for the whole interview
+
+1013
+00:49:29,350 --> 00:49:37,840
+here I really think the same we
+
+1014
+00:49:32,740 --> 00:49:42,240
+definitely need human interaction with
+
+1015
+00:49:37,840 --> 00:49:44,320
+this we are trying to to infer different
+
+1016
+00:49:42,240 --> 00:49:49,570
+things in the knowledge graph and
+
+1017
+00:49:44,320 --> 00:49:52,930
+automatically create new edges after an
+
+1018
+00:49:49,570 --> 00:49:56,770
+analysis but this is only true for very
+
+1019
+00:49:52,930 --> 00:49:59,530
+very small type of data or our type of
+
+1020
+00:49:56,770 --> 00:50:01,450
+experiment on the large scale this is
+
+1021
+00:49:59,530 --> 00:50:05,650
+not because it's not possible and this
+
+1022
+00:50:01,450 --> 00:50:08,830
+is exactly because the variety of of
+
+1023
+00:50:05,650 --> 00:50:11,860
+literature and that the variety of ways
+
+1024
+00:50:08,830 --> 00:50:15,580
+how you can describe the same thing I
+
+1025
+00:50:11,860 --> 00:50:22,270
+guess we are far away from from covering
+
+1026
+00:50:15,580 --> 00:50:24,610
+all that yeah so George is typing in the
+
+1027
+00:50:22,270 --> 00:50:28,990
+chat that we need to wrap up and and
+
+1028
+00:50:24,610 --> 00:50:32,140
+close it was a great experience to
+
+1029
+00:50:28,990 --> 00:50:34,690
+participate in the webinar I hope I can
+
+1030
+00:50:32,140 --> 00:50:37,870
+participate at some point life also in
+
+1031
+00:50:34,690 --> 00:50:39,220
+Berlin or in London and if you want to
+
+1032
+00:50:37,870 --> 00:50:40,600
+get involved at least for the open
+
+1033
+00:50:39,220 --> 00:50:43,720
+research knowledge graph but I guess for
+
+1034
+00:50:40,600 --> 00:50:46,090
+Alexander it's it's the same our project
+
+1035
+00:50:43,720 --> 00:50:47,830
+is fully open source open knowledge and
+
+1036
+00:50:46,090 --> 00:50:49,540
+we are interested everybody can
+
+1037
+00:50:47,830 --> 00:50:52,090
+contribute to that and we are in
+
+1038
+00:50:49,540 --> 00:50:55,900
+particular interested in adding some
+
+1039
+00:50:52,090 --> 00:50:57,670
+corporate related research information
+
+1040
+00:50:55,900 --> 00:50:59,560
+to the to the graph so if you have some
+
+1041
+00:50:57,670 --> 00:51:01,720
+ideas please and there's an email and
+
+1042
+00:50:59,560 --> 00:51:05,800
+get in touch and even happy to
+
+1043
+00:51:01,720 --> 00:51:08,170
+collaborate yeah the same is here of
+
+1044
+00:51:05,800 --> 00:51:11,790
+course we are a limited number of
+
+1045
+00:51:08,170 --> 00:51:14,560
+developers and so help is always
+
+1046
+00:51:11,790 --> 00:51:17,740
+appreciated and also if you have a
+
+1047
+00:51:14,560 --> 00:51:19,630
+scientific question or if you have let's
+
+1048
+00:51:17,740 --> 00:51:22,450
+say a data set that makes sense to be
+
+1049
+00:51:19,630 --> 00:51:25,900
+integrated please yeah get in touch with
+
+1050
+00:51:22,450 --> 00:51:28,770
+us and yeah we can we can also help you
+
+1051
+00:51:25,900 --> 00:51:33,400
+with analyzing different different
+
+1052
+00:51:28,770 --> 00:51:35,039
+queries hello this is Ilias from
+
+1053
+00:51:33,400 --> 00:51:38,349
+civility
+
+1054
+00:51:35,039 --> 00:51:42,730
+hey George the connection just went down
+
+1055
+00:51:38,349 --> 00:51:44,319
+so I must step step in and make first of
+
+1056
+00:51:42,730 --> 00:51:47,049
+all say thank you to both of our
+
+1057
+00:51:44,319 --> 00:51:49,180
+speakers and I would like to thank I
+
+1058
+00:51:47,049 --> 00:51:52,270
+hope you buddy that attended and we have
+
+1059
+00:51:49,180 --> 00:51:54,700
+some very great feedback that they it
+
+1060
+00:51:52,270 --> 00:51:58,809
+meant something for them and that they
+
+1061
+00:51:54,700 --> 00:52:00,880
+learned something so let's think so
+
+1062
+00:51:58,809 --> 00:52:02,890
+thank you everyone for attending on the
+
+1063
+00:52:00,880 --> 00:52:05,500
+chat there is the link for a second a
+
+1064
+00:52:02,890 --> 00:52:07,470
+discussion will be start shortly thank
+
+1065
+00:52:05,500 --> 00:52:11,079
+you very much for presenting and
+
+1066
+00:52:07,470 --> 00:52:14,190
+explaining thank you thank you very much
+
+1067
+00:52:11,079 --> 00:52:14,190
+bye-bye bye-bye
+
+1068
+00:52:21,700 --> 00:52:23,760
+you
+
