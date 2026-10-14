@@ -3943,5 +3943,55 @@
         "data modeling"
       ]
     }
+  },
+  {
+    "filename": "Graph Database Use Cases_ Why and How Graph is being used for Data Harmonization and Analytics.txt",
+    "entities": {
+      "tag": [
+        "anzo",
+        "anzograph",
+        "redshift",
+        "netezza",
+        "paraccel",
+        "rdf",
+        "rdf-star",
+        "sparql",
+        "sparql-star",
+        "opencypher",
+        "gremlin",
+        "python",
+        "neo4j",
+        "neptune",
+        "blazegraph",
+        "kubernetes",
+        "helm",
+        "docker",
+        "zeppelin notebooks",
+        "hadoop",
+        "spark",
+        "spark sql",
+        "c++",
+        "java",
+        "scala",
+        "jvm",
+        "amazon web services",
+        "amazon s3",
+        "centos",
+        "red hat",
+        "tpc-h",
+        "lehigh university benchmark",
+        "graph 500",
+        "hl7",
+        "cdisc",
+        "fibo",
+        "knowledge graphs",
+        "labeled property graphs",
+        "natural language processing",
+        "machine learning",
+        "weakly connected components",
+        "inferencing",
+        "etl"
+      ]
+    }
   }
 ]
