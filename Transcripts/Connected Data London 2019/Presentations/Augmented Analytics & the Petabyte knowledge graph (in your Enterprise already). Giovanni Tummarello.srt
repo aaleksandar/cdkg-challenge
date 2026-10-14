@@ -1,0 +1,3092 @@
+1
+00:00:00,800 --> 00:00:06,240
+hello hello everybody my name is
+
+2
+00:00:03,870 --> 00:00:08,010
+Giovanni and thank you very much George
+
+3
+00:00:06,240 --> 00:00:09,809
+for the intro I don't think he's as
+
+4
+00:00:08,010 --> 00:00:11,429
+radical as it's putting it that you
+
+5
+00:00:09,809 --> 00:00:13,139
+don't need a graph - there is no way in
+
+6
+00:00:11,429 --> 00:00:16,139
+fact the reason why we wanted to sponsor
+
+7
+00:00:13,139 --> 00:00:20,760
+here is because after 2 3 years of doing
+
+8
+00:00:16,139 --> 00:00:22,380
+this on top of your existing backends so
+
+9
+00:00:20,760 --> 00:00:24,780
+most of what you're going to see here
+
+10
+00:00:22,380 --> 00:00:27,720
+works on top of Oracle works on top of
+
+11
+00:00:24,780 --> 00:00:31,050
+Bosphorus elasticsearch other backends
+
+12
+00:00:27,720 --> 00:00:33,000
+we connect this here we started to
+
+13
+00:00:31,050 --> 00:00:35,610
+invest considerably in graph databases
+
+14
+00:00:33,000 --> 00:00:38,160
+so we have launched the connector to
+
+15
+00:00:35,610 --> 00:00:39,960
+neo4j and you are gonna hear about
+
+16
+00:00:38,160 --> 00:00:42,360
+connectors directly to other graph
+
+17
+00:00:39,960 --> 00:00:44,700
+databases because only graph databases
+
+18
+00:00:42,360 --> 00:00:47,220
+can do certain things that a lot of use
+
+19
+00:00:44,700 --> 00:00:50,130
+cases need right so that's what we're
+
+20
+00:00:47,220 --> 00:00:52,350
+here however what we're claiming here
+
+21
+00:00:50,130 --> 00:00:54,750
+and you'll see now is that if you have a
+
+22
+00:00:52,350 --> 00:00:56,220
+petabyte of data in your enterprises and
+
+23
+00:00:54,750 --> 00:00:58,560
+i was talking yesterday with some friend
+
+24
+00:00:56,220 --> 00:01:01,890
+of mine works at MasterCard and he says
+
+25
+00:00:58,560 --> 00:01:03,480
+it's actually 15 petabytes and then
+
+26
+00:01:01,890 --> 00:01:05,970
+you're not gonna put them in graph
+
+27
+00:01:03,480 --> 00:01:08,220
+database as ever right maybe in 50 years
+
+28
+00:01:05,970 --> 00:01:09,510
+so but you still want to see it as a
+
+29
+00:01:08,220 --> 00:01:10,950
+knowledge graph you still want to
+
+30
+00:01:09,510 --> 00:01:13,140
+connect all the dots if you want to
+
+31
+00:01:10,950 --> 00:01:14,820
+catch the bad guys right so how do you
+
+32
+00:01:13,140 --> 00:01:16,799
+achieve that right
+
+33
+00:01:14,820 --> 00:01:18,810
+and and the answer is it's a polyglot
+
+34
+00:01:16,799 --> 00:01:20,370
+system is an analytic system that can
+
+35
+00:01:18,810 --> 00:01:22,920
+actually show you everything as a graph
+
+36
+00:01:20,370 --> 00:01:25,020
+without you necessarily immediately have
+
+37
+00:01:22,920 --> 00:01:26,310
+everything I graph database so that's
+
+38
+00:01:25,020 --> 00:01:28,830
+what we're discussing here
+
+39
+00:01:26,310 --> 00:01:30,479
+what is Augmented analytics and I hope
+
+40
+00:01:28,830 --> 00:01:32,190
+that some ideas are actually interesting
+
+41
+00:01:30,479 --> 00:01:35,010
+to you because this is a new terminology
+
+42
+00:01:32,190 --> 00:01:37,260
+so let me actually show you that and how
+
+43
+00:01:35,010 --> 00:01:41,310
+you get a petabyte knowledge graph in
+
+44
+00:01:37,260 --> 00:01:43,350
+your backends already so Who am I known
+
+45
+00:01:41,310 --> 00:01:46,549
+Joel for 15 years we've been working on
+
+46
+00:01:43,350 --> 00:01:49,380
+RDF and sparkle I was so excited about
+
+47
+00:01:46,549 --> 00:01:53,869
+2002 working on RDF and doing all sorts
+
+48
+00:01:49,380 --> 00:01:56,520
+of crazy things since a long time in
+
+49
+00:01:53,869 --> 00:01:58,310
+2015 we have taken some of the ideas
+
+50
+00:01:56,520 --> 00:02:01,320
+that were some of the most exciting
+
+51
+00:01:58,310 --> 00:02:03,030
+about how do you browse a knowledge
+
+52
+00:02:01,320 --> 00:02:04,740
+graph how do you actually interact with
+
+53
+00:02:03,030 --> 00:02:06,780
+it so say that you have a you know
+
+54
+00:02:04,740 --> 00:02:08,280
+billions of billions of edges you really
+
+55
+00:02:06,780 --> 00:02:10,229
+want to see it do you really want to see
+
+56
+00:02:08,280 --> 00:02:11,639
+everything as a click click click click
+
+57
+00:02:10,229 --> 00:02:13,560
+I want to expand the graph I want to
+
+58
+00:02:11,639 --> 00:02:14,200
+expand the node how many nodes can you
+
+59
+00:02:13,560 --> 00:02:16,000
+see is
+
+60
+00:02:14,200 --> 00:02:18,340
+that really how people want to see
+
+61
+00:02:16,000 --> 00:02:21,160
+information that was big big point for
+
+62
+00:02:18,340 --> 00:02:23,440
+us we devised prototypes together with
+
+63
+00:02:21,160 --> 00:02:25,300
+some people of a modern new way to
+
+64
+00:02:23,440 --> 00:02:27,879
+browse modern graphs which would
+
+65
+00:02:25,300 --> 00:02:29,140
+basically complement the link analysis
+
+66
+00:02:27,879 --> 00:02:31,720
+but in a different way
+
+67
+00:02:29,140 --> 00:02:33,489
+called relational navigation relational
+
+68
+00:02:31,720 --> 00:02:36,700
+set aside navigation and that's what
+
+69
+00:02:33,489 --> 00:02:38,680
+we're going to show you so in 2015 we
+
+70
+00:02:36,700 --> 00:02:40,599
+started building from scratch this new
+
+71
+00:02:38,680 --> 00:02:42,519
+concept we've got about 10 million of
+
+72
+00:02:40,599 --> 00:02:44,319
+funding from American and European
+
+73
+00:02:42,519 --> 00:02:47,260
+investors the main company at the moment
+
+74
+00:02:44,319 --> 00:02:49,569
+is 40 people with offices in Ireland in
+
+75
+00:02:47,260 --> 00:02:54,510
+go away in Dublin in France in Italy and
+
+76
+00:02:49,569 --> 00:02:58,569
+in the US so we serve knowledge graph
+
+77
+00:02:54,510 --> 00:03:00,250
+investigators so our users are not using
+
+78
+00:02:58,569 --> 00:03:02,829
+you know knowledge graph for like
+
+79
+00:03:00,250 --> 00:03:04,450
+information integration for you know
+
+80
+00:03:02,829 --> 00:03:06,040
+maybe applications or something I guess
+
+81
+00:03:04,450 --> 00:03:07,569
+typically they really want to
+
+82
+00:03:06,040 --> 00:03:10,180
+investigate the data they want to
+
+83
+00:03:07,569 --> 00:03:12,640
+understand who is the bad guy is there a
+
+84
+00:03:10,180 --> 00:03:14,950
+cybersecurity attack is there something
+
+85
+00:03:12,640 --> 00:03:16,780
+broken in my in my company so it's
+
+86
+00:03:14,950 --> 00:03:19,569
+really about serving an investigator
+
+87
+00:03:16,780 --> 00:03:21,069
+like how do we serve a user analyzing
+
+88
+00:03:19,569 --> 00:03:22,569
+this knowledge graph so it's IT
+
+89
+00:03:21,069 --> 00:03:25,120
+monitoring and discovering law
+
+90
+00:03:22,569 --> 00:03:27,519
+enforcement intelligence we work with a
+
+91
+00:03:25,120 --> 00:03:29,680
+lot with intelligence crime and Finance
+
+92
+00:03:27,519 --> 00:03:32,440
+here in London knowledge graph discovery
+
+93
+00:03:29,680 --> 00:03:36,190
+in life science and then with a lot of
+
+94
+00:03:32,440 --> 00:03:39,880
+partners and system integrators so what
+
+95
+00:03:36,190 --> 00:03:42,040
+is Augmented analytics this is a term by
+
+96
+00:03:39,880 --> 00:03:44,639
+Gartner like if you if you google it up
+
+97
+00:03:42,040 --> 00:03:46,750
+up meta-analytic as a gardener term now
+
+98
+00:03:44,639 --> 00:03:48,970
+Gartner if you read those definitions
+
+99
+00:03:46,750 --> 00:03:50,739
+it's a bit fluffy right says it's
+
+100
+00:03:48,970 --> 00:03:53,500
+analytics it's the modern analytics
+
+101
+00:03:50,739 --> 00:03:55,120
+which has a lot of AI right now let's
+
+102
+00:03:53,500 --> 00:03:57,790
+make it a little bit more concrete what
+
+103
+00:03:55,120 --> 00:03:59,349
+what can that means in practice and what
+
+104
+00:03:57,790 --> 00:04:01,359
+you're going to see today we think it
+
+105
+00:03:59,349 --> 00:04:04,359
+really fits in there because it's
+
+106
+00:04:01,359 --> 00:04:06,340
+basically if you think tableau as an
+
+107
+00:04:04,359 --> 00:04:08,530
+analytic software you get your pie chart
+
+108
+00:04:06,340 --> 00:04:10,269
+in your histograms then what is a modern
+
+109
+00:04:08,530 --> 00:04:12,489
+version of that what is the next step
+
+110
+00:04:10,269 --> 00:04:15,310
+well we're saying it's when you mix
+
+111
+00:04:12,489 --> 00:04:17,620
+knowledge graph and analytics imagine a
+
+112
+00:04:15,310 --> 00:04:19,450
+tableau that however is knowledge graph
+
+113
+00:04:17,620 --> 00:04:20,950
+aware and it allows you to browse and
+
+114
+00:04:19,450 --> 00:04:23,470
+see how things are connected so you have
+
+115
+00:04:20,950 --> 00:04:25,210
+link analysis analytics but you also
+
+116
+00:04:23,470 --> 00:04:26,670
+have search engines you also have the
+
+117
+00:04:25,210 --> 00:04:29,100
+unstructured data the techs
+
+118
+00:04:26,670 --> 00:04:31,770
+the messages the news but you also have
+
+119
+00:04:29,100 --> 00:04:34,920
+the machine learning telling you
+
+120
+00:04:31,770 --> 00:04:36,930
+anomalies on the fly telling you the two
+
+121
+00:04:34,920 --> 00:04:38,490
+records they should actually be the same
+
+122
+00:04:36,930 --> 00:04:40,410
+because they talk about the same person
+
+123
+00:04:38,490 --> 00:04:42,270
+so as you know everything should be
+
+124
+00:04:40,410 --> 00:04:44,280
+connected so that's not what typical
+
+125
+00:04:42,270 --> 00:04:46,710
+analytics does and that's what Augmented
+
+126
+00:04:44,280 --> 00:04:48,390
+analytic is doing so augmented by
+
+127
+00:04:46,710 --> 00:04:50,250
+knowledge graph or mented by search
+
+128
+00:04:48,390 --> 00:04:52,080
+engines how mented by machine learning
+
+129
+00:04:50,250 --> 00:04:53,970
+and other AI and there's many forms of
+
+130
+00:04:52,080 --> 00:04:55,890
+AI that can help analytics like I said
+
+131
+00:04:53,970 --> 00:04:59,060
+entity resolution matching records
+
+132
+00:04:55,890 --> 00:05:02,040
+anomaly detection etc and then imagine
+
+133
+00:04:59,060 --> 00:05:04,440
+operational Augmented analytics so that
+
+134
+00:05:02,040 --> 00:05:07,100
+on top of live data on top of your
+
+135
+00:05:04,440 --> 00:05:10,740
+streams your clicks your customers
+
+136
+00:05:07,100 --> 00:05:13,350
+that's what we are building so if you
+
+137
+00:05:10,740 --> 00:05:15,600
+think your tableau as your typical bi if
+
+138
+00:05:13,350 --> 00:05:17,850
+you think about your then people have
+
+139
+00:05:15,600 --> 00:05:18,390
+seen it very separated from system like
+
+140
+00:05:17,850 --> 00:05:20,250
+Splunk
+
+141
+00:05:18,390 --> 00:05:22,050
+or elasticsearch and they've seen it
+
+142
+00:05:20,250 --> 00:05:23,700
+very separated for system like link
+
+143
+00:05:22,050 --> 00:05:26,070
+analysis and knowledge graph so
+
+144
+00:05:23,700 --> 00:05:27,630
+knowledge graph and operational data has
+
+145
+00:05:26,070 --> 00:05:28,110
+been seen as completely two different
+
+146
+00:05:27,630 --> 00:05:29,610
+things
+
+147
+00:05:28,110 --> 00:05:31,260
+right but that's what we're trying to
+
+148
+00:05:29,610 --> 00:05:32,640
+break down and say no it's really the
+
+149
+00:05:31,260 --> 00:05:35,220
+same thing it's your enterprise
+
+150
+00:05:32,640 --> 00:05:37,140
+knowledge graph that you want to put
+
+151
+00:05:35,220 --> 00:05:39,420
+together so that's what we're proposing
+
+152
+00:05:37,140 --> 00:05:41,520
+ATS architecture that we built you
+
+153
+00:05:39,420 --> 00:05:43,410
+connect to your data where it is so I
+
+154
+00:05:41,520 --> 00:05:45,420
+put elasticsearch very big here and
+
+155
+00:05:43,410 --> 00:05:47,490
+maybe not maybe it's not very popular
+
+156
+00:05:45,420 --> 00:05:48,750
+here in this audience I don't know like
+
+157
+00:05:47,490 --> 00:05:50,310
+just just curios
+
+158
+00:05:48,750 --> 00:05:52,650
+you guys know elasticsearch whoever
+
+159
+00:05:50,310 --> 00:05:54,360
+heard of elasticsearch very good I mean
+
+160
+00:05:52,650 --> 00:05:56,280
+we have about 20-30 percent of people
+
+161
+00:05:54,360 --> 00:05:58,650
+which is because it's a very technical
+
+162
+00:05:56,280 --> 00:06:01,290
+system but what a lot of people use it
+
+163
+00:05:58,650 --> 00:06:02,970
+because you can store terabytes and
+
+164
+00:06:01,290 --> 00:06:05,310
+petabytes of information inside their
+
+165
+00:06:02,970 --> 00:06:07,230
+streams clicks logs messages everything
+
+166
+00:06:05,310 --> 00:06:08,880
+can go inside elasticsearch I have
+
+167
+00:06:07,230 --> 00:06:10,680
+customers that have a hundred and fifty
+
+168
+00:06:08,880 --> 00:06:13,080
+nodes cluster of a hundred and fifty
+
+169
+00:06:10,680 --> 00:06:15,120
+elasticsearch nodes full of stuff so
+
+170
+00:06:13,080 --> 00:06:17,070
+that's what people use for big big data
+
+171
+00:06:15,120 --> 00:06:19,470
+right but then they also use Park and a
+
+172
+00:06:17,070 --> 00:06:21,840
+dupe of course and then sequel like your
+
+173
+00:06:19,470 --> 00:06:26,850
+Postgres your your Oracle system but
+
+174
+00:06:21,840 --> 00:06:28,380
+also graph D B's neo4j connectors start
+
+175
+00:06:26,850 --> 00:06:30,840
+dog and others are coming now we're
+
+176
+00:06:28,380 --> 00:06:32,400
+working with people and your REST API so
+
+177
+00:06:30,840 --> 00:06:34,680
+you connect to all this system at the
+
+178
+00:06:32,400 --> 00:06:36,750
+same time you try to leave data there
+
+179
+00:06:34,680 --> 00:06:38,160
+you try not to move data from there so
+
+180
+00:06:36,750 --> 00:06:39,730
+you try to just talk to them but not
+
+181
+00:06:38,160 --> 00:06:42,370
+really copy somewhere else
+
+182
+00:06:39,730 --> 00:06:44,650
+you use a data model to describe how
+
+183
+00:06:42,370 --> 00:06:46,600
+your data is interconnected so maybe
+
+184
+00:06:44,650 --> 00:06:49,210
+there is a customer here which has a lot
+
+185
+00:06:46,600 --> 00:06:50,830
+of logs here and has a lot of emails in
+
+186
+00:06:49,210 --> 00:06:53,260
+the search engine but you basically they
+
+187
+00:06:50,830 --> 00:06:55,000
+have the same ID so you describe it in
+
+188
+00:06:53,260 --> 00:06:56,950
+your data model and then you drive the
+
+189
+00:06:55,000 --> 00:06:58,450
+entire analytic and investigative
+
+190
+00:06:56,950 --> 00:07:00,070
+experience you can go from the search
+
+191
+00:06:58,450 --> 00:07:02,200
+engine to the dashboard all the way to
+
+192
+00:07:00,070 --> 00:07:03,940
+the link analysis system sorry it's a
+
+193
+00:07:02,200 --> 00:07:06,310
+bit small from there but you will see it
+
+194
+00:07:03,940 --> 00:07:08,170
+soon so that's the concept connect to
+
+195
+00:07:06,310 --> 00:07:09,820
+data where it is and then give
+
+196
+00:07:08,170 --> 00:07:11,980
+investigators so elastic search for
+
+197
+00:07:09,820 --> 00:07:15,220
+whoever doesn't know it's clusters
+
+198
+00:07:11,980 --> 00:07:16,900
+scalable 500 billion documents terrible
+
+199
+00:07:15,220 --> 00:07:20,050
+petabytes of data and that's where the
+
+200
+00:07:16,900 --> 00:07:22,210
+petabyte knowledge graph comes it can
+
+201
+00:07:20,050 --> 00:07:24,370
+real-time say any structure which means
+
+202
+00:07:22,210 --> 00:07:26,440
+you know you can take text and different
+
+203
+00:07:24,370 --> 00:07:28,540
+structures it's very very fast for
+
+204
+00:07:26,440 --> 00:07:31,780
+search aggregates drill down it does
+
+205
+00:07:28,540 --> 00:07:33,940
+fuzzy searching so ranking so is it
+
+206
+00:07:31,780 --> 00:07:36,070
+perfect for knowledge discovery not
+
+207
+00:07:33,940 --> 00:07:38,440
+really but it's an awesome start and
+
+208
+00:07:36,070 --> 00:07:41,080
+that's our technology so when we say
+
+209
+00:07:38,440 --> 00:07:42,550
+elastic search we use it a lot it means
+
+210
+00:07:41,080 --> 00:07:45,100
+that you can use the one you already
+
+211
+00:07:42,550 --> 00:07:47,170
+have in your enterprise but you are you
+
+212
+00:07:45,100 --> 00:07:49,060
+add one plugin that we have developed
+
+213
+00:07:47,170 --> 00:07:51,220
+and this is a little bit of this secret
+
+214
+00:07:49,060 --> 00:07:53,200
+sauce because elastic search it's
+
+215
+00:07:51,220 --> 00:07:54,700
+typically just a search engine but our
+
+216
+00:07:53,200 --> 00:07:57,210
+plugin adds
+
+217
+00:07:54,700 --> 00:07:59,560
+join capabilities and joints are
+
+218
+00:07:57,210 --> 00:08:01,300
+absolutely crucial in knowledge graph
+
+219
+00:07:59,560 --> 00:08:03,820
+use cases because you want to join
+
+220
+00:08:01,300 --> 00:08:06,070
+effectively different records at scale
+
+221
+00:08:03,820 --> 00:08:08,350
+so it becomes it doesn't become
+
+222
+00:08:06,070 --> 00:08:10,300
+radiographed database but it can do a
+
+223
+00:08:08,350 --> 00:08:11,920
+lot and you will see later so what
+
+224
+00:08:10,300 --> 00:08:14,140
+you're going to see it's not really pure
+
+225
+00:08:11,920 --> 00:08:16,420
+elastic search but it's also elastic
+
+226
+00:08:14,140 --> 00:08:19,150
+search supercharged but we also connect
+
+227
+00:08:16,420 --> 00:08:21,430
+directly so no ETL to different backends
+
+228
+00:08:19,150 --> 00:08:25,570
+including graph databases and fire
+
+229
+00:08:21,430 --> 00:08:27,490
+queries over there so the mixed yeah I
+
+230
+00:08:25,570 --> 00:08:29,560
+call it the mix petabyte knowledge graph
+
+231
+00:08:27,490 --> 00:08:33,760
+let me explain a little bit what I mean
+
+232
+00:08:29,560 --> 00:08:36,490
+by this in your in your organization you
+
+233
+00:08:33,760 --> 00:08:39,430
+certainly have a lot of high volume big
+
+234
+00:08:36,490 --> 00:08:42,160
+data security logs application logs
+
+235
+00:08:39,430 --> 00:08:44,110
+Network event web traffic call center
+
+236
+00:08:42,160 --> 00:08:45,190
+and this is stuff that you don't like I
+
+237
+00:08:44,110 --> 00:08:47,230
+said you don't want to put in a
+
+238
+00:08:45,190 --> 00:08:49,240
+knowledge graph typically so you put it
+
+239
+00:08:47,230 --> 00:08:50,740
+in elasticsearch you put it in spark but
+
+240
+00:08:49,240 --> 00:08:52,329
+they're all connected right I mean they
+
+241
+00:08:50,740 --> 00:08:54,759
+form a knowledge graph here you
+
+242
+00:08:52,329 --> 00:08:56,410
+have an application a security event in
+
+243
+00:08:54,759 --> 00:08:57,999
+an application which is connected with
+
+244
+00:08:56,410 --> 00:09:00,129
+some traffic which is connected to a
+
+245
+00:08:57,999 --> 00:09:02,379
+visit by one of your users which then
+
+246
+00:09:00,129 --> 00:09:03,519
+call the call center so it is a
+
+247
+00:09:02,379 --> 00:09:05,829
+knowledge graph you want to see the
+
+248
+00:09:03,519 --> 00:09:07,809
+phone call the person the user but you
+
+249
+00:09:05,829 --> 00:09:10,660
+know it's too much data to put it in a
+
+250
+00:09:07,809 --> 00:09:12,549
+single store typically at the same time
+
+251
+00:09:10,660 --> 00:09:14,739
+you have business relevant data like
+
+252
+00:09:12,549 --> 00:09:17,709
+transactions accounts people sign up
+
+253
+00:09:14,739 --> 00:09:19,209
+multiple times etc and ultimately you
+
+254
+00:09:17,709 --> 00:09:21,069
+also have data outside of your
+
+255
+00:09:19,209 --> 00:09:22,839
+organization you cannot get this data
+
+256
+00:09:21,069 --> 00:09:25,480
+inside your organization you have to use
+
+257
+00:09:22,839 --> 00:09:27,519
+services you have to look up a reference
+
+258
+00:09:25,480 --> 00:09:29,230
+data so that is all part of the
+
+259
+00:09:27,519 --> 00:09:31,540
+knowledge graph right so very
+
+260
+00:09:29,230 --> 00:09:33,129
+operational data more business data and
+
+261
+00:09:31,540 --> 00:09:35,439
+data that it's referenced and you can
+
+262
+00:09:33,129 --> 00:09:37,029
+get so if you want to see it as a
+
+263
+00:09:35,439 --> 00:09:39,279
+knowledge graph I think two important
+
+264
+00:09:37,029 --> 00:09:42,850
+questions you might want to ask yourself
+
+265
+00:09:39,279 --> 00:09:44,889
+is what kind of edges do you have in
+
+266
+00:09:42,850 --> 00:09:48,519
+this knowledge graph and what kind of
+
+267
+00:09:44,889 --> 00:09:51,069
+use cases right so if you have a shared
+
+268
+00:09:48,519 --> 00:09:53,589
+identifier in this data like you have a
+
+269
+00:09:51,069 --> 00:09:56,259
+user ID and the same user ID is here in
+
+270
+00:09:53,589 --> 00:09:58,449
+serious ears here then that's nice it's
+
+271
+00:09:56,259 --> 00:10:00,040
+gold right because in a system like
+
+272
+00:09:58,449 --> 00:10:01,779
+siren you're just connected and say
+
+273
+00:10:00,040 --> 00:10:04,360
+that's the user ID in that table in
+
+274
+00:10:01,779 --> 00:10:06,819
+Oracle is the same user ID in this
+
+275
+00:10:04,360 --> 00:10:08,439
+elasticsearch log fantastic it will look
+
+276
+00:10:06,819 --> 00:10:11,019
+like a graph database you can click
+
+277
+00:10:08,439 --> 00:10:12,879
+great sometimes you don't have the
+
+278
+00:10:11,019 --> 00:10:14,709
+shared identifiers sometimes you have
+
+279
+00:10:12,879 --> 00:10:16,480
+Giovanni two Morello blah blah blah blah
+
+280
+00:10:14,709 --> 00:10:18,910
+and in another record you have Giovanni
+
+281
+00:10:16,480 --> 00:10:20,290
+two Morello which is a different address
+
+282
+00:10:18,910 --> 00:10:22,389
+and the phone number is written
+
+283
+00:10:20,290 --> 00:10:24,009
+differently but they're the same entity
+
+284
+00:10:22,389 --> 00:10:25,839
+right so in a knowledge graph you want
+
+285
+00:10:24,009 --> 00:10:27,369
+to see it as the same thing so let's
+
+286
+00:10:25,839 --> 00:10:29,350
+call entity resolution it's the
+
+287
+00:10:27,369 --> 00:10:31,869
+capability of recognizing the two things
+
+288
+00:10:29,350 --> 00:10:33,220
+in your knowledge graph are not the same
+
+289
+00:10:31,869 --> 00:10:35,169
+because they don't connect immediately
+
+290
+00:10:33,220 --> 00:10:36,939
+but they should be the same right so you
+
+291
+00:10:35,169 --> 00:10:38,739
+need that capability as well connect
+
+292
+00:10:36,939 --> 00:10:40,720
+things that are not connected with a DS
+
+293
+00:10:38,739 --> 00:10:42,879
+and sometimes you have text text text
+
+294
+00:10:40,720 --> 00:10:44,499
+and you need the ability to extract
+
+295
+00:10:42,879 --> 00:10:47,649
+those entities if you want to create a
+
+296
+00:10:44,499 --> 00:10:50,589
+knowledge graph so kind of edges kind of
+
+297
+00:10:47,649 --> 00:10:52,419
+use cases are very important I mean what
+
+298
+00:10:50,589 --> 00:10:55,239
+do you want to do with your knowledge
+
+299
+00:10:52,419 --> 00:10:57,369
+graph are you looking for fraud are you
+
+300
+00:10:55,239 --> 00:10:58,989
+looking for bad guys for which you might
+
+301
+00:10:57,369 --> 00:11:00,970
+want to just click and see what's
+
+302
+00:10:58,989 --> 00:11:02,379
+connected so even just putting a user
+
+303
+00:11:00,970 --> 00:11:05,019
+and seeing that it's connected with
+
+304
+00:11:02,379 --> 00:11:05,830
+these emails with these purchases across
+
+305
+00:11:05,019 --> 00:11:07,600
+differences
+
+306
+00:11:05,830 --> 00:11:10,420
+in your organization that could be gold
+
+307
+00:11:07,600 --> 00:11:12,730
+already right so for that no you don't
+
+308
+00:11:10,420 --> 00:11:15,850
+need a graph database but say that you
+
+309
+00:11:12,730 --> 00:11:18,220
+need to for example look for who tell me
+
+310
+00:11:15,850 --> 00:11:20,140
+or the user sort of made all the users
+
+311
+00:11:18,220 --> 00:11:23,020
+have made at least as many purchases
+
+312
+00:11:20,140 --> 00:11:25,030
+that of products which have been subject
+
+313
+00:11:23,020 --> 00:11:26,830
+to these problems it's kind of a path
+
+314
+00:11:25,030 --> 00:11:29,800
+traversal right in a knowledge graph
+
+315
+00:11:26,830 --> 00:11:32,470
+well it's a fixed path traversal it's
+
+316
+00:11:29,800 --> 00:11:34,600
+not a variable path traversal so it's a
+
+317
+00:11:32,470 --> 00:11:36,730
+bit technical but basically you can
+
+318
+00:11:34,600 --> 00:11:38,410
+write it as a sequel query so if you can
+
+319
+00:11:36,730 --> 00:11:39,910
+write it as a sequel query and all your
+
+320
+00:11:38,410 --> 00:11:41,830
+data it's already in a database just
+
+321
+00:11:39,910 --> 00:11:44,830
+fire a sequel query which is what siren
+
+322
+00:11:41,830 --> 00:11:47,230
+does so we can solve this big data fix
+
+323
+00:11:44,830 --> 00:11:48,610
+path problems without a graph databases
+
+324
+00:11:47,230 --> 00:11:51,010
+because the system will just write
+
+325
+00:11:48,610 --> 00:11:53,170
+sequel queries and they work right so
+
+326
+00:11:51,010 --> 00:11:55,060
+even for this kind of use cases
+
+327
+00:11:53,170 --> 00:11:57,430
+you're good with what you have but then
+
+328
+00:11:55,060 --> 00:11:59,050
+there are a lot of useful use cases like
+
+329
+00:11:57,430 --> 00:12:00,940
+for example you know in financial
+
+330
+00:11:59,050 --> 00:12:02,980
+finding me certain structure certain
+
+331
+00:12:00,940 --> 00:12:05,290
+graph patterns find me the centrality of
+
+332
+00:12:02,980 --> 00:12:07,210
+certain people for which there is no way
+
+333
+00:12:05,290 --> 00:12:10,480
+that you can do it without a graph
+
+334
+00:12:07,210 --> 00:12:12,370
+database so in that case so ask yourself
+
+335
+00:12:10,480 --> 00:12:15,160
+what is it that I need to do and then
+
+336
+00:12:12,370 --> 00:12:17,200
+decide which of all this data you need
+
+337
+00:12:15,160 --> 00:12:18,910
+to fit into a graph database and then
+
+338
+00:12:17,200 --> 00:12:20,800
+use a system that can actually connect
+
+339
+00:12:18,910 --> 00:12:22,930
+to all of them and then it'll leverage
+
+340
+00:12:20,800 --> 00:12:25,810
+the best in fact in the demos I will
+
+341
+00:12:22,930 --> 00:12:27,610
+show you how for certain use cases will
+
+342
+00:12:25,810 --> 00:12:30,970
+average near 4jf it's just an example
+
+343
+00:12:27,610 --> 00:12:33,040
+ask the shortest path ask for patterns
+
+344
+00:12:30,970 --> 00:12:34,660
+and then you visualize the logs in
+
+345
+00:12:33,040 --> 00:12:36,310
+elasticsearch you visualize the emails
+
+346
+00:12:34,660 --> 00:12:38,470
+in a search engine without really having
+
+347
+00:12:36,310 --> 00:12:40,690
+to load everything inside okay make
+
+348
+00:12:38,470 --> 00:12:43,030
+sense I hope it makes sense so far this
+
+349
+00:12:40,690 --> 00:12:45,430
+is entity resolution which is this thing
+
+350
+00:12:43,030 --> 00:12:47,500
+about connecting records which should be
+
+351
+00:12:45,430 --> 00:12:49,330
+connected but they're not so if this
+
+352
+00:12:47,500 --> 00:12:51,700
+capability is that you need to create a
+
+353
+00:12:49,330 --> 00:12:53,560
+knowledge graph it's very very
+
+354
+00:12:51,700 --> 00:12:55,330
+interesting use case I will not go into
+
+355
+00:12:53,560 --> 00:12:58,030
+details but if you look at these records
+
+356
+00:12:55,330 --> 00:12:59,980
+they have almost nothing in common they
+
+357
+00:12:58,030 --> 00:13:01,870
+basically want you to remain straight
+
+358
+00:12:59,980 --> 00:13:04,000
+this is 1 2 3 Main Street
+
+359
+00:13:01,870 --> 00:13:08,080
+this is Bob Smith but this is Bob Jones
+
+360
+00:13:04,000 --> 00:13:10,150
+this is Robert Smith and all of them but
+
+361
+00:13:08,080 --> 00:13:12,160
+there is a complex logic and there's a
+
+362
+00:13:10,150 --> 00:13:14,410
+beautiful video if you want to see that
+
+363
+00:13:12,160 --> 00:13:16,509
+if you do a lot of mathematics and
+
+364
+00:13:14,410 --> 00:13:18,220
+and reasonings you actually get those
+
+365
+00:13:16,509 --> 00:13:21,190
+all together in a very very
+
+366
+00:13:18,220 --> 00:13:23,920
+solid way and that's one of the features
+
+367
+00:13:21,190 --> 00:13:26,050
+that we have so when you connect to with
+
+368
+00:13:23,920 --> 00:13:27,639
+siren to your back ends you get this
+
+369
+00:13:26,050 --> 00:13:29,649
+thing and you combine them together it's
+
+370
+00:13:27,639 --> 00:13:31,750
+called entity resolution it is a real
+
+371
+00:13:29,649 --> 00:13:33,610
+machine learning capability for
+
+372
+00:13:31,750 --> 00:13:35,139
+knowledge graph and this is how it looks
+
+373
+00:13:33,610 --> 00:13:37,269
+and I will actually show you a demo on
+
+374
+00:13:35,139 --> 00:13:38,589
+the graph here you have a record this is
+
+375
+00:13:37,269 --> 00:13:40,839
+a hedge co-invest
+
+376
+00:13:38,589 --> 00:13:43,240
+and it says look has the same address we
+
+377
+00:13:40,839 --> 00:13:44,860
+have about 12 it knows more than 12 ways
+
+378
+00:13:43,240 --> 00:13:47,110
+of writing different addresses for
+
+379
+00:13:44,860 --> 00:13:48,759
+different nations you can do it let
+
+380
+00:13:47,110 --> 00:13:50,680
+alone the number of number of ways you
+
+381
+00:13:48,759 --> 00:13:53,310
+can write phone numbers and dates it
+
+382
+00:13:50,680 --> 00:13:56,019
+recognized how likely it is that certain
+
+383
+00:13:53,310 --> 00:13:58,269
+properties are written wrong or right
+
+384
+00:13:56,019 --> 00:14:00,519
+like for example if you have a Rob Smith
+
+385
+00:13:58,269 --> 00:14:02,379
+and you have another Rob's meet and
+
+386
+00:14:00,519 --> 00:14:04,269
+they're born on the same date the system
+
+387
+00:14:02,379 --> 00:14:05,829
+is Mart enough to tell you it's not
+
+388
+00:14:04,269 --> 00:14:07,660
+enough to actually tell that those
+
+389
+00:14:05,829 --> 00:14:09,879
+people are the same because every day in
+
+390
+00:14:07,660 --> 00:14:12,939
+the u.s. there is about 10 Robert Smith
+
+391
+00:14:09,879 --> 00:14:15,009
+that are born so in that case when you
+
+392
+00:14:12,939 --> 00:14:16,720
+use Robert Smith because it knows the
+
+393
+00:14:15,009 --> 00:14:19,060
+frequency of Robert and he knows the
+
+394
+00:14:16,720 --> 00:14:20,740
+frequency of Smith a system that smart
+
+395
+00:14:19,060 --> 00:14:22,269
+enough will tell you wait a second I'm
+
+396
+00:14:20,740 --> 00:14:24,160
+not sure you see what I mean
+
+397
+00:14:22,269 --> 00:14:25,689
+and here it's showing you on the graph
+
+398
+00:14:24,160 --> 00:14:27,399
+that these are actually quite likely
+
+399
+00:14:25,689 --> 00:14:29,829
+connected and he also shows you on a
+
+400
+00:14:27,399 --> 00:14:31,060
+scale 9 million or connections in my
+
+401
+00:14:29,829 --> 00:14:33,910
+knowledge graph this is telling me that
+
+402
+00:14:31,060 --> 00:14:36,759
+there is 9 million links that have been
+
+403
+00:14:33,910 --> 00:14:38,560
+extracted just because of similarity and
+
+404
+00:14:36,759 --> 00:14:40,120
+when you have text told you right you
+
+405
+00:14:38,560 --> 00:14:41,620
+have decks there's nothing you can do
+
+406
+00:14:40,120 --> 00:14:43,509
+you just have your emails and stuff like
+
+407
+00:14:41,620 --> 00:14:45,279
+that there's nothing but you still it's
+
+408
+00:14:43,509 --> 00:14:46,870
+still part of the knowledge graph you
+
+409
+00:14:45,279 --> 00:14:49,300
+have to have tools that can actually
+
+410
+00:14:46,870 --> 00:14:50,709
+analyze the text and the emails and tell
+
+411
+00:14:49,300 --> 00:14:52,089
+you you know what are the entities that
+
+412
+00:14:50,709 --> 00:14:54,670
+are extracted and what are the main
+
+413
+00:14:52,089 --> 00:14:57,610
+topics all integrated in the same UI so
+
+414
+00:14:54,670 --> 00:14:59,740
+sometimes you just have to go to that
+
+415
+00:14:57,610 --> 00:15:02,589
+element and go and analyze this is the
+
+416
+00:14:59,740 --> 00:15:04,990
+analyzer the automatic topic clustering
+
+417
+00:15:02,589 --> 00:15:07,509
+system that we put in the latest version
+
+418
+00:15:04,990 --> 00:15:10,059
+of silent important point 3 so
+
+419
+00:15:07,509 --> 00:15:11,500
+leveraging graph databases this is an
+
+420
+00:15:10,059 --> 00:15:13,600
+example and I'm sure it to you now
+
+421
+00:15:11,500 --> 00:15:15,730
+because you will see it in the demo in a
+
+422
+00:15:13,600 --> 00:15:17,199
+second is a connection of neo4j
+
+423
+00:15:15,730 --> 00:15:20,079
+which is this thing we just launched
+
+424
+00:15:17,199 --> 00:15:23,680
+where you basically write a very
+
+425
+00:15:20,079 --> 00:15:25,950
+complicated neo4j query to detect bad
+
+426
+00:15:23,680 --> 00:15:27,240
+guys in this case this
+
+427
+00:15:25,950 --> 00:15:29,070
+a use case that's coming from a
+
+428
+00:15:27,240 --> 00:15:32,640
+financial here in London and they wanted
+
+429
+00:15:29,070 --> 00:15:35,100
+to know do we have two people there are
+
+430
+00:15:32,640 --> 00:15:38,010
+both directors and there is two
+
+431
+00:15:35,100 --> 00:15:40,080
+companies but there's one person is
+
+432
+00:15:38,010 --> 00:15:42,270
+executive director in one company and
+
+433
+00:15:40,080 --> 00:15:44,820
+known executive director in Company B
+
+434
+00:15:42,270 --> 00:15:46,440
+the other person is the opposite is the
+
+435
+00:15:44,820 --> 00:15:48,420
+executive director of company a and
+
+436
+00:15:46,440 --> 00:15:50,070
+known executive of Company B I'm not an
+
+437
+00:15:48,420 --> 00:15:52,200
+expert but according to these people
+
+438
+00:15:50,070 --> 00:15:53,780
+that was a fishy situation you know a
+
+439
+00:15:52,200 --> 00:15:56,130
+situation as you want to investigate
+
+440
+00:15:53,780 --> 00:15:58,680
+perfect for graph databases only graph
+
+441
+00:15:56,130 --> 00:16:01,080
+databases can do things like that so you
+
+442
+00:15:58,680 --> 00:16:03,810
+basically write your big query put it in
+
+443
+00:16:01,080 --> 00:16:05,310
+siren put a connection to a neo4j neo4j
+
+444
+00:16:03,810 --> 00:16:06,840
+pops up things like that and they're
+
+445
+00:16:05,310 --> 00:16:08,490
+very sophisticated and that's actually
+
+446
+00:16:06,840 --> 00:16:10,230
+the circle you're looking for and then
+
+447
+00:16:08,490 --> 00:16:12,030
+you use all the tool the link analysis
+
+448
+00:16:10,230 --> 00:16:14,640
+to investigate exactly the situation
+
+449
+00:16:12,030 --> 00:16:18,600
+well I'll show it to you in a second and
+
+450
+00:16:14,640 --> 00:16:20,700
+so it is demo time you know what I don't
+
+451
+00:16:18,600 --> 00:16:21,000
+have the time look good ten fifteen
+
+452
+00:16:20,700 --> 00:16:24,720
+minutes
+
+453
+00:16:21,000 --> 00:16:28,380
+oh thank you so much all right so let me
+
+454
+00:16:24,720 --> 00:16:32,550
+show it to you this is what we call the
+
+455
+00:16:28,380 --> 00:16:37,020
+classic demo we put let me make it a bit
+
+456
+00:16:32,550 --> 00:16:40,890
+bigger you guys just hope it's
+
+457
+00:16:37,020 --> 00:16:43,170
+reasonable so we have four main tables
+
+458
+00:16:40,890 --> 00:16:45,180
+so you can connect to a database Oracle
+
+459
+00:16:43,170 --> 00:16:48,180
+post course wherever you have one is
+
+460
+00:16:45,180 --> 00:16:50,370
+about companies and there is a hundred
+
+461
+00:16:48,180 --> 00:16:52,140
+and sixty thousand companies then these
+
+462
+00:16:50,370 --> 00:16:55,560
+companies have received investments and
+
+463
+00:16:52,140 --> 00:16:57,000
+there is forty thousand investments and
+
+464
+00:16:55,560 --> 00:16:58,890
+then the investments are made by
+
+465
+00:16:57,000 --> 00:17:00,600
+investors we have fifteen thousand
+
+466
+00:16:58,890 --> 00:17:03,060
+investors the companies are also
+
+467
+00:17:00,600 --> 00:17:05,459
+mentioned in articles and we have
+
+468
+00:17:03,060 --> 00:17:09,839
+collected six hundred thousand articles
+
+469
+00:17:05,459 --> 00:17:11,610
+from the web just web blogs right so you
+
+470
+00:17:09,839 --> 00:17:13,560
+can say well this is not a knowledge
+
+471
+00:17:11,610 --> 00:17:15,030
+graph this is you know bi right you can
+
+472
+00:17:13,560 --> 00:17:17,459
+it's a dashboard you can just drill down
+
+473
+00:17:15,030 --> 00:17:20,579
+and I'll tell you wait a second look at
+
+474
+00:17:17,459 --> 00:17:23,310
+this this is new this a hundred and
+
+475
+00:17:20,579 --> 00:17:26,400
+sixty thousand companies are mentioned
+
+476
+00:17:23,310 --> 00:17:28,920
+in three hundred thousand articles and
+
+477
+00:17:26,400 --> 00:17:30,690
+they have secured forty thousand
+
+478
+00:17:28,920 --> 00:17:32,880
+investments that's the knowledge graph
+
+479
+00:17:30,690 --> 00:17:35,160
+for you in other words the system is
+
+480
+00:17:32,880 --> 00:17:36,900
+actually looking at entities they're not
+
+481
+00:17:35,160 --> 00:17:38,220
+seeing them as just a dashboard but it's
+
+482
+00:17:36,900 --> 00:17:39,220
+seeing them as entities and I show you
+
+483
+00:17:38,220 --> 00:17:41,350
+what's connect
+
+484
+00:17:39,220 --> 00:17:45,370
+to them how is this part and I can do
+
+485
+00:17:41,350 --> 00:17:47,970
+that like for example I think any any
+
+486
+00:17:45,370 --> 00:17:50,320
+company that contains they know the the
+
+487
+00:17:47,970 --> 00:17:52,210
+the world media for example just look
+
+488
+00:17:50,320 --> 00:17:54,490
+for media like a search engine right and
+
+489
+00:17:52,210 --> 00:17:56,830
+now as a drill down it says look is
+
+490
+00:17:54,490 --> 00:17:59,980
+12,000 companies and they have secured
+
+491
+00:17:56,830 --> 00:18:02,350
+4,000 investments and 50,000 articles so
+
+492
+00:17:59,980 --> 00:18:04,240
+as you drill down and you put filter and
+
+493
+00:18:02,350 --> 00:18:07,870
+say well I just want media companies
+
+494
+00:18:04,240 --> 00:18:11,800
+that are in this very specific region I
+
+495
+00:18:07,870 --> 00:18:14,140
+don't know if they you know you see the
+
+496
+00:18:11,800 --> 00:18:15,760
+numbers changing so 300 companies they
+
+497
+00:18:14,140 --> 00:18:18,520
+received a hundred and fifty investments
+
+498
+00:18:15,760 --> 00:18:21,280
+I can click and do this operation called
+
+499
+00:18:18,520 --> 00:18:24,490
+set to set navigation going from a set
+
+500
+00:18:21,280 --> 00:18:27,040
+of companies to the set of investments
+
+501
+00:18:24,490 --> 00:18:29,080
+that those companies have received right
+
+502
+00:18:27,040 --> 00:18:30,970
+so these are the 151 investments
+
+503
+00:18:29,080 --> 00:18:34,330
+received by companies in South of Europe
+
+504
+00:18:30,970 --> 00:18:36,430
+which mention the word media and then
+
+505
+00:18:34,330 --> 00:18:37,990
+from here you might say okay just show
+
+506
+00:18:36,430 --> 00:18:41,230
+me the investment in the past few years
+
+507
+00:18:37,990 --> 00:18:44,440
+for example put a filter and then there
+
+508
+00:18:41,230 --> 00:18:46,720
+is 60 investors connected so I can click
+
+509
+00:18:44,440 --> 00:18:48,520
+and I go and see the 60 investors and
+
+510
+00:18:46,720 --> 00:18:50,980
+every time I do this this navigation
+
+511
+00:18:48,520 --> 00:18:53,590
+relational navigation their relational
+
+512
+00:18:50,980 --> 00:18:55,630
+lineage so where do I come from its
+
+513
+00:18:53,590 --> 00:18:57,550
+preserved you can always go here in the
+
+514
+00:18:55,630 --> 00:18:59,050
+filter and says well these are the 60
+
+515
+00:18:57,550 --> 00:19:01,090
+investors that have made an investment
+
+516
+00:18:59,050 --> 00:19:03,820
+in the last three years in a company in
+
+517
+00:19:01,090 --> 00:19:05,860
+South of Europe which is mentioned in a
+
+518
+00:19:03,820 --> 00:19:08,830
+query media okay
+
+519
+00:19:05,860 --> 00:19:12,910
+so effectively what you're seeing is the
+
+520
+00:19:08,830 --> 00:19:14,380
+blending of knowledge graph with bi bi
+
+521
+00:19:12,910 --> 00:19:16,600
+is a single dashboard you drill down
+
+522
+00:19:14,380 --> 00:19:18,400
+like that knowledge graph is but this is
+
+523
+00:19:16,600 --> 00:19:20,800
+actually knowledge graph navigation at
+
+524
+00:19:18,400 --> 00:19:22,390
+scale you know those link analysis
+
+525
+00:19:20,800 --> 00:19:24,190
+system you do click click on a single
+
+526
+00:19:22,390 --> 00:19:25,540
+node for example a single company and
+
+527
+00:19:24,190 --> 00:19:27,970
+you can see all the investments from the
+
+528
+00:19:25,540 --> 00:19:29,620
+company right now this is at scale you
+
+529
+00:19:27,970 --> 00:19:32,050
+can drill down on a hundred and sixty
+
+530
+00:19:29,620 --> 00:19:33,940
+thousand companies and see the forty
+
+531
+00:19:32,050 --> 00:19:35,710
+thousand investments that they have so
+
+532
+00:19:33,940 --> 00:19:37,090
+you can say tell me all the companies
+
+533
+00:19:35,710 --> 00:19:38,950
+that Everest that you know talk about
+
+534
+00:19:37,090 --> 00:19:41,410
+this and that and at the same time
+
+535
+00:19:38,950 --> 00:19:42,910
+navigate to all their investments right
+
+536
+00:19:41,410 --> 00:19:45,430
+so it's knowledge graph navigational
+
+537
+00:19:42,910 --> 00:19:47,500
+scale now the thing is how is it
+
+538
+00:19:45,430 --> 00:19:49,900
+possible that the system knew where to
+
+539
+00:19:47,500 --> 00:19:52,250
+go left right etc and this is a very
+
+540
+00:19:49,900 --> 00:19:54,919
+cool part it's so easy to get
+
+541
+00:19:52,250 --> 00:19:56,360
+this from your existing database so say
+
+542
+00:19:54,919 --> 00:19:58,850
+that you have your stuff in Oracle all
+
+543
+00:19:56,360 --> 00:20:02,120
+you have to do really is to map your
+
+544
+00:19:58,850 --> 00:20:04,370
+tables companies investments investors
+
+545
+00:20:02,120 --> 00:20:06,860
+all you have to do is to map them into
+
+546
+00:20:04,370 --> 00:20:07,700
+this data model editor this is an idiot
+
+547
+00:20:06,860 --> 00:20:09,770
+model editor
+
+548
+00:20:07,700 --> 00:20:11,299
+these are reduces my company table and
+
+549
+00:20:09,770 --> 00:20:14,470
+so let's actually take a look at the
+
+550
+00:20:11,299 --> 00:20:18,980
+company table here I click on companies
+
+551
+00:20:14,470 --> 00:20:20,990
+and I can see the kannada film printable
+
+552
+00:20:18,980 --> 00:20:22,400
+is connected into a bad certain back and
+
+553
+00:20:20,990 --> 00:20:24,169
+this one is an elastic search but it
+
+554
+00:20:22,400 --> 00:20:26,720
+could be in Postgres or whatever you
+
+555
+00:20:24,169 --> 00:20:29,630
+want this is the icon these are the low
+
+556
+00:20:26,720 --> 00:20:30,350
+level fields so these are all the fields
+
+557
+00:20:29,630 --> 00:20:32,210
+in my table
+
+558
+00:20:30,350 --> 00:20:35,210
+you know city category code something
+
+559
+00:20:32,210 --> 00:20:39,080
+like this and then when you get to when
+
+560
+00:20:35,210 --> 00:20:41,510
+you get to to the other here ID you see
+
+561
+00:20:39,080 --> 00:20:43,370
+the company ID if there is this arrows
+
+562
+00:20:41,510 --> 00:20:45,440
+here that are saying this ID is
+
+563
+00:20:43,370 --> 00:20:48,080
+connected somewhere else okay
+
+564
+00:20:45,440 --> 00:20:50,360
+interesting how do i specify that in the
+
+565
+00:20:48,080 --> 00:20:52,549
+relations tab here in their relation
+
+566
+00:20:50,360 --> 00:20:55,250
+tabs you basically edit your connections
+
+567
+00:20:52,549 --> 00:20:57,289
+so say that that the companies for
+
+568
+00:20:55,250 --> 00:21:00,409
+example you want to add a new connection
+
+569
+00:20:57,289 --> 00:21:05,630
+say well i want to get the blog and the
+
+570
+00:21:00,409 --> 00:21:09,049
+blog URL and you know the articles they
+
+571
+00:21:05,630 --> 00:21:10,429
+also have a URL for example they're very
+
+572
+00:21:09,049 --> 00:21:15,770
+likely not going to have the same URL
+
+573
+00:21:10,429 --> 00:21:19,429
+but you know same blog you just edit it
+
+574
+00:21:15,770 --> 00:21:20,870
+here just same blog so this is the two
+
+575
+00:21:19,429 --> 00:21:22,780
+names this is basically editing the
+
+576
+00:21:20,870 --> 00:21:25,610
+ontology so what I'm doing is I'm saying
+
+577
+00:21:22,780 --> 00:21:27,830
+companies have the same blog as article
+
+578
+00:21:25,610 --> 00:21:30,169
+as the article URL so if those two
+
+579
+00:21:27,830 --> 00:21:33,620
+values match even across different back
+
+580
+00:21:30,169 --> 00:21:36,080
+ends then it's our relation that's how
+
+581
+00:21:33,620 --> 00:21:39,770
+you define it you save it now I go into
+
+582
+00:21:36,080 --> 00:21:42,080
+data model and I find a new relation
+
+583
+00:21:39,770 --> 00:21:44,260
+right the same blog relation is the one
+
+584
+00:21:42,080 --> 00:21:47,450
+I just created and the user interface
+
+585
+00:21:44,260 --> 00:21:51,530
+immediately updates so when I go in the
+
+586
+00:21:47,450 --> 00:21:55,760
+user interface and I go to for example
+
+587
+00:21:51,530 --> 00:21:57,230
+articles I know that I might find some
+
+588
+00:21:55,760 --> 00:22:01,130
+strange number because sometimes there's
+
+589
+00:21:57,230 --> 00:22:06,280
+nulls and so that so here no it's
+
+590
+00:22:01,130 --> 00:22:06,280
+actually sorry it's a big big
+
+591
+00:22:06,510 --> 00:22:10,570
+yeah it's basically you get zero which
+
+592
+00:22:08,860 --> 00:22:13,179
+is exactly what I was waiting for so
+
+593
+00:22:10,570 --> 00:22:15,400
+there's basically no company as you see
+
+594
+00:22:13,179 --> 00:22:18,010
+you basically get same blog same blog
+
+595
+00:22:15,400 --> 00:22:19,960
+zero articles so it's simply telling me
+
+596
+00:22:18,010 --> 00:22:21,820
+that there is no company that has a blog
+
+597
+00:22:19,960 --> 00:22:23,880
+which is the same as the URL of an
+
+598
+00:22:21,820 --> 00:22:26,470
+article of course I just made a silly
+
+599
+00:22:23,880 --> 00:22:27,880
+relationship but that's the concept you
+
+600
+00:22:26,470 --> 00:22:29,950
+basically edit that thing and
+
+601
+00:22:27,880 --> 00:22:31,510
+immediately get the connection to where
+
+602
+00:22:29,950 --> 00:22:34,750
+you want to go and you can then use that
+
+603
+00:22:31,510 --> 00:22:37,419
+drill down and ask deeper question but
+
+604
+00:22:34,750 --> 00:22:39,429
+there are questions that no dashboard
+
+605
+00:22:37,419 --> 00:22:40,929
+can answer like which of these investors
+
+606
+00:22:39,429 --> 00:22:42,549
+have invested together you know these
+
+607
+00:22:40,929 --> 00:22:44,950
+are the investor that invested in media
+
+608
+00:22:42,549 --> 00:22:46,570
+company in Europe right which of this
+
+609
+00:22:44,950 --> 00:22:48,580
+investor have invested together and
+
+610
+00:22:46,570 --> 00:22:50,919
+which of these investors have actually
+
+611
+00:22:48,580 --> 00:22:52,750
+you know invested in competitors so for
+
+612
+00:22:50,919 --> 00:22:55,929
+that you need link analysis and the
+
+613
+00:22:52,750 --> 00:22:58,480
+system allows you to just simply get you
+
+614
+00:22:55,929 --> 00:23:01,929
+know whatever subset in this case those
+
+615
+00:22:58,480 --> 00:23:03,669
+investors and just put them here you
+
+616
+00:23:01,929 --> 00:23:05,230
+know now I put the invest investments
+
+617
+00:23:03,669 --> 00:23:06,549
+these are they a hundred and two
+
+618
+00:23:05,230 --> 00:23:08,710
+investments they've made in the last
+
+619
+00:23:06,549 --> 00:23:12,630
+three years so I'm just really reusing
+
+620
+00:23:08,710 --> 00:23:17,740
+the filters that I have created before
+
+621
+00:23:12,630 --> 00:23:20,260
+to do link analysis at scale how
+
+622
+00:23:17,740 --> 00:23:22,390
+scalable enormously because this thing
+
+623
+00:23:20,260 --> 00:23:23,799
+works on the data where it is so if you
+
+624
+00:23:22,390 --> 00:23:26,470
+connect it to a petabyte data
+
+625
+00:23:23,799 --> 00:23:28,149
+elasticsearch or whatever Oracle you
+
+626
+00:23:26,470 --> 00:23:30,279
+have this will show all of it of course
+
+627
+00:23:28,149 --> 00:23:31,260
+not at the same time but first of all
+
+628
+00:23:30,279 --> 00:23:33,730
+you don't need it at the same time
+
+629
+00:23:31,260 --> 00:23:35,590
+second if you want to see all your data
+
+630
+00:23:33,730 --> 00:23:37,330
+you just go to the dashboards because
+
+631
+00:23:35,590 --> 00:23:38,950
+dashboards are made to show your billion
+
+632
+00:23:37,330 --> 00:23:41,080
+records they have no problem with that I
+
+633
+00:23:38,950 --> 00:23:42,580
+just send the aggregates is it's their
+
+634
+00:23:41,080 --> 00:23:44,649
+you know system analytics system are
+
+635
+00:23:42,580 --> 00:23:47,620
+made for that so it's the combination
+
+636
+00:23:44,649 --> 00:23:49,120
+between the two so I used here you have
+
+637
+00:23:47,620 --> 00:23:51,399
+a very interesting way to modify the
+
+638
+00:23:49,120 --> 00:23:56,200
+very interesting way to modify the graph
+
+639
+00:23:51,399 --> 00:23:59,500
+so now I've you know put those my
+
+640
+00:23:56,200 --> 00:24:02,890
+analysis here I reorganize my layout I
+
+641
+00:23:59,500 --> 00:24:04,480
+can see the big investments are here you
+
+642
+00:24:02,890 --> 00:24:07,120
+can modify the graph in many very
+
+643
+00:24:04,480 --> 00:24:09,450
+interesting ways I can do an expansion
+
+644
+00:24:07,120 --> 00:24:13,120
+for example let me select this guys and
+
+645
+00:24:09,450 --> 00:24:14,950
+select the expansion here you can see
+
+646
+00:24:13,120 --> 00:24:16,679
+for example all the relationships that
+
+647
+00:24:14,950 --> 00:24:18,509
+are defined in the data
+
+648
+00:24:16,679 --> 00:24:20,039
+so you can select which one you want to
+
+649
+00:24:18,509 --> 00:24:22,620
+expand us for example there is a
+
+650
+00:24:20,039 --> 00:24:26,039
+competitor so I select competitor I
+
+651
+00:24:22,620 --> 00:24:28,289
+expand and I if any of this has some
+
+652
+00:24:26,039 --> 00:24:31,139
+competitor yeah you see some of them are
+
+653
+00:24:28,289 --> 00:24:34,710
+popular popping up then you will see
+
+654
+00:24:31,139 --> 00:24:38,639
+them here if any of this have a
+
+655
+00:24:34,710 --> 00:24:43,139
+geographical representation so for
+
+656
+00:24:38,639 --> 00:24:45,120
+example they have they have a latitude
+
+657
+00:24:43,139 --> 00:24:49,320
+and longitude then you can see these
+
+658
+00:24:45,120 --> 00:24:52,110
+guys on a map see where they are with
+
+659
+00:24:49,320 --> 00:24:54,720
+the relationships on top if anything of
+
+660
+00:24:52,110 --> 00:24:56,759
+that has time and here you have time
+
+661
+00:24:54,720 --> 00:24:58,080
+because you know there is investments
+
+662
+00:24:56,759 --> 00:25:02,370
+and there is a lot of other things that
+
+663
+00:24:58,080 --> 00:25:06,600
+that there's articles as well so let me
+
+664
+00:25:02,370 --> 00:25:08,070
+expand and see if there is yeah I mean
+
+665
+00:25:06,600 --> 00:25:09,629
+and now I'm expanding I'm getting the
+
+666
+00:25:08,070 --> 00:25:10,740
+Articles that are connected so they'll
+
+667
+00:25:09,629 --> 00:25:12,629
+be yeah there will be a bunch of art
+
+668
+00:25:10,740 --> 00:25:15,899
+because they're coming out what articles
+
+669
+00:25:12,629 --> 00:25:18,179
+have time so it's useful to see this you
+
+670
+00:25:15,899 --> 00:25:21,000
+can actually see the evolution of the
+
+671
+00:25:18,179 --> 00:25:24,840
+knowledge graph in time so you can go
+
+672
+00:25:21,000 --> 00:25:30,389
+back in time and then press play and see
+
+673
+00:25:24,840 --> 00:25:33,149
+how this evolved over time so George I'm
+
+674
+00:25:30,389 --> 00:25:35,129
+wrapping app here just two things I want
+
+675
+00:25:33,149 --> 00:25:37,230
+to say I've showed you investment
+
+676
+00:25:35,129 --> 00:25:39,240
+investors but actually you can use it
+
+677
+00:25:37,230 --> 00:25:41,070
+for a lot of things in this demo we're
+
+678
+00:25:39,240 --> 00:25:42,870
+connected to ten different backends at
+
+679
+00:25:41,070 --> 00:25:45,870
+the same time including graph databases
+
+680
+00:25:42,870 --> 00:25:48,450
+Oracle etc in this one it's actually
+
+681
+00:25:45,870 --> 00:25:50,460
+this is fake faces but that's real later
+
+682
+00:25:48,450 --> 00:25:52,259
+about stolen vehicles or something like
+
+683
+00:25:50,460 --> 00:25:54,899
+that so you can do knowledge graph for
+
+684
+00:25:52,259 --> 00:25:58,740
+looking at in this case it's law
+
+685
+00:25:54,899 --> 00:26:01,470
+enforcement this is life science I have
+
+686
+00:25:58,740 --> 00:26:04,230
+connected with food and drug events here
+
+687
+00:26:01,470 --> 00:26:07,230
+you can see 26 million articles from
+
+688
+00:26:04,230 --> 00:26:09,389
+PubMed so all the information on PubMed
+
+689
+00:26:07,230 --> 00:26:11,639
+you you run it through natural language
+
+690
+00:26:09,389 --> 00:26:15,120
+processing and you can get genes
+
+691
+00:26:11,639 --> 00:26:17,100
+drugs diseases and you know you click on
+
+692
+00:26:15,120 --> 00:26:18,419
+a specific gene and you see which one
+
+693
+00:26:17,100 --> 00:26:20,730
+are the diseases which are more
+
+694
+00:26:18,419 --> 00:26:22,289
+connected to it and then you can click
+
+695
+00:26:20,730 --> 00:26:24,210
+and go and see which are the molecules
+
+696
+00:26:22,289 --> 00:26:26,279
+which are mentioned
+
+697
+00:26:24,210 --> 00:26:28,139
+so same concept of knowledge graph now
+
+698
+00:26:26,279 --> 00:26:29,100
+are navigating to the molecules which
+
+699
+00:26:28,139 --> 00:26:31,710
+then are connected
+
+700
+00:26:29,100 --> 00:26:34,500
+drugs and clinical trials and whatnot so
+
+701
+00:26:31,710 --> 00:26:36,390
+saying same concept across different
+
+702
+00:26:34,500 --> 00:26:38,970
+things this is you know Thomson Reuters
+
+703
+00:26:36,390 --> 00:26:41,580
+knowledge graph 5 million companies
+
+704
+00:26:38,970 --> 00:26:43,620
+being able to to navigate it
+
+705
+00:26:41,580 --> 00:26:46,039
+50 million transactions being able to
+
+706
+00:26:43,620 --> 00:26:47,250
+spot bad guys on operational
+
+707
+00:26:46,039 --> 00:26:49,500
+transactions
+
+708
+00:26:47,250 --> 00:26:51,090
+I don't won't have time to show you this
+
+709
+00:26:49,500 --> 00:26:53,340
+and if you are in intelligence service
+
+710
+00:26:51,090 --> 00:26:55,980
+and you want to see half a billion
+
+711
+00:26:53,340 --> 00:26:57,090
+simulated phone calls and actually see
+
+712
+00:26:55,980 --> 00:26:59,730
+who they called and what they are
+
+713
+00:26:57,090 --> 00:27:03,750
+connected to that is also something that
+
+714
+00:26:59,730 --> 00:27:06,870
+you can do so just turning back to my
+
+715
+00:27:03,750 --> 00:27:08,789
+last slide George if I can and this
+
+716
+00:27:06,870 --> 00:27:11,760
+thing I'm keeping you away from lunch I
+
+717
+00:27:08,789 --> 00:27:14,490
+understand right is that the point way
+
+718
+00:27:11,760 --> 00:27:18,690
+too early for lunch so that's good so I
+
+719
+00:27:14,490 --> 00:27:21,929
+just wrap it up right I introduced the
+
+720
+00:27:18,690 --> 00:27:23,970
+concept of Augmented analytics so
+
+721
+00:27:21,929 --> 00:27:26,400
+analytics is visual it's it's about
+
+722
+00:27:23,970 --> 00:27:28,200
+letting and investigate or understand
+
+723
+00:27:26,400 --> 00:27:30,360
+what's really happening there is a
+
+724
+00:27:28,200 --> 00:27:33,510
+really really interesting paper written
+
+725
+00:27:30,360 --> 00:27:36,330
+about 15 years ago that says this the
+
+726
+00:27:33,510 --> 00:27:37,799
+perfect search engine is not enough what
+
+727
+00:27:36,330 --> 00:27:39,480
+does it mean they actually did an
+
+728
+00:27:37,799 --> 00:27:41,250
+experiments people were looking for more
+
+729
+00:27:39,480 --> 00:27:42,780
+information and they actually gave him
+
+730
+00:27:41,250 --> 00:27:44,159
+an Oracle that would give them the best
+
+731
+00:27:42,780 --> 00:27:46,350
+information right away
+
+732
+00:27:44,159 --> 00:27:48,330
+they never choose that they always
+
+733
+00:27:46,350 --> 00:27:50,490
+wanted to investigate they always wanted
+
+734
+00:27:48,330 --> 00:27:53,820
+to drill down and understand how they
+
+735
+00:27:50,490 --> 00:27:56,039
+got to that met to that to that result
+
+736
+00:27:53,820 --> 00:27:57,570
+and that's why today in e-commerce you
+
+737
+00:27:56,039 --> 00:27:59,760
+always get a lot of choices you can
+
+738
+00:27:57,570 --> 00:28:01,380
+drill down by sides by color until you
+
+739
+00:27:59,760 --> 00:28:02,190
+get what you really want because people
+
+740
+00:28:01,380 --> 00:28:04,140
+aren't like that
+
+741
+00:28:02,190 --> 00:28:06,480
+analytics is about that it's about
+
+742
+00:28:04,140 --> 00:28:08,039
+understanding why you get that result
+
+743
+00:28:06,480 --> 00:28:11,250
+not just giving you the results right
+
+744
+00:28:08,039 --> 00:28:13,490
+away so Augmented analytics uses you
+
+745
+00:28:11,250 --> 00:28:15,720
+know combination of knowledge graph
+
+746
+00:28:13,490 --> 00:28:18,179
+machine learning for example entity
+
+747
+00:28:15,720 --> 00:28:21,900
+resolution knowledge representation to
+
+748
+00:28:18,179 --> 00:28:24,720
+advanced analytics and you can get this
+
+749
+00:28:21,900 --> 00:28:27,240
+on top of existing graph dbe's
+
+750
+00:28:24,720 --> 00:28:29,820
+for certain use cases but for others
+
+751
+00:28:27,240 --> 00:28:31,799
+crafty bees are absolutely unique so I'm
+
+752
+00:28:29,820 --> 00:28:33,600
+very very exciting now to be working on
+
+753
+00:28:31,799 --> 00:28:36,830
+this and I'll be pushing graph TVs as
+
+754
+00:28:33,600 --> 00:28:40,020
+much as as needed inside enterprises
+
+755
+00:28:36,830 --> 00:28:42,120
+last 14a I which is not something we
+
+756
+00:28:40,020 --> 00:28:42,390
+talked very much but yes augmented is
+
+757
+00:28:42,120 --> 00:28:44,760
+about
+
+758
+00:28:42,390 --> 00:28:45,960
+TI is going to be more more important
+
+759
+00:28:44,760 --> 00:28:48,540
+the next thing you're going to see in
+
+760
+00:28:45,960 --> 00:28:50,250
+siren is for example lighting up of
+
+761
+00:28:48,540 --> 00:28:52,590
+certain records in the dashboard
+
+762
+00:28:50,250 --> 00:28:54,360
+automatically because they are anomalous
+
+763
+00:28:52,590 --> 00:28:55,710
+they're different from 20 million of
+
+764
+00:28:54,360 --> 00:28:57,690
+other records you want to get that
+
+765
+00:28:55,710 --> 00:28:59,880
+information first it's very important
+
+766
+00:28:57,690 --> 00:29:01,620
+that analytics today doesn't just show
+
+767
+00:28:59,880 --> 00:29:03,570
+you the number but it also tells you if
+
+768
+00:29:01,620 --> 00:29:06,060
+that number is strange or not and that's
+
+769
+00:29:03,570 --> 00:29:07,680
+that's where we are gonna be working on
+
+770
+00:29:06,060 --> 00:29:11,340
+so beginning of next year you're gonna
+
+771
+00:29:07,680 --> 00:29:12,500
+see that released so that's me thank you
+
+772
+00:29:11,340 --> 00:29:21,499
+very much
+
+773
+00:29:12,500 --> 00:29:21,499
+[Applause]
+
