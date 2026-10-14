@@ -1,0 +1,2840 @@
+1
+00:00:01,390 --> 00:00:05,020
+one of them make questions that happen
+
+2
+00:00:02,949 --> 00:00:06,880
+when I'm talking about shackle is how is
+
+3
+00:00:05,020 --> 00:00:08,680
+it different from our restrictions why
+
+4
+00:00:06,880 --> 00:00:10,690
+do I have to use checker instead of owl
+
+5
+00:00:08,680 --> 00:00:12,820
+and which one is more powerful do I need
+
+6
+00:00:10,690 --> 00:00:14,740
+both of them do I cannot use either of
+
+7
+00:00:12,820 --> 00:00:17,349
+them that's why I really want to have a
+
+8
+00:00:14,740 --> 00:00:19,150
+quick recap on RDF an owl so for those
+
+9
+00:00:17,349 --> 00:00:22,689
+of you who know it this is going to be a
+
+10
+00:00:19,150 --> 00:00:24,970
+quick lemon tree Capulet boring but RDF
+
+11
+00:00:22,689 --> 00:00:26,679
+data model is nothing but a triple of
+
+12
+00:00:24,970 --> 00:00:30,939
+subject predicate object why is it
+
+13
+00:00:26,679 --> 00:00:32,619
+popular because it's super intuitive for
+
+14
+00:00:30,939 --> 00:00:34,269
+us it's really the way we talk right
+
+15
+00:00:32,619 --> 00:00:36,129
+it's just a sentence we're talking about
+
+16
+00:00:34,269 --> 00:00:38,050
+one thing being related to another thing
+
+17
+00:00:36,129 --> 00:00:39,370
+and we model it exactly the same for
+
+18
+00:00:38,050 --> 00:00:42,489
+example we're saying Hitchcock is a
+
+19
+00:00:39,370 --> 00:00:44,829
+director of the movie cycle so it's
+
+20
+00:00:42,489 --> 00:00:47,620
+really very simple triple of Hitchcock
+
+21
+00:00:44,829 --> 00:00:49,660
+director of cycle but what is the most
+
+22
+00:00:47,620 --> 00:00:52,030
+important thing about using RDF is that
+
+23
+00:00:49,660 --> 00:00:54,129
+everything has a unique identifier and
+
+24
+00:00:52,030 --> 00:00:56,050
+that is the core thing within rdf that
+
+25
+00:00:54,129 --> 00:00:58,870
+allows us to do data integration we
+
+26
+00:00:56,050 --> 00:01:00,789
+basically get to use to reuse the
+
+27
+00:00:58,870 --> 00:01:04,449
+identifiers to connect different things
+
+28
+00:01:00,789 --> 00:01:06,340
+together it has a very simple XML
+
+29
+00:01:04,449 --> 00:01:08,140
+serialization so it makes it very easy
+
+30
+00:01:06,340 --> 00:01:10,660
+for people who are familiar with XML to
+
+31
+00:01:08,140 --> 00:01:13,120
+work with it and there is a various
+
+32
+00:01:10,660 --> 00:01:16,090
+textual representations of it and
+
+33
+00:01:13,120 --> 00:01:17,770
+there's no schema next thing is the
+
+34
+00:01:16,090 --> 00:01:19,420
+ontology which I think most of you are
+
+35
+00:01:17,770 --> 00:01:21,340
+familiar with it's actually a knowledge
+
+36
+00:01:19,420 --> 00:01:24,100
+model that defines how different concept
+
+37
+00:01:21,340 --> 00:01:26,500
+within a excuse me within a domain are
+
+38
+00:01:24,100 --> 00:01:27,970
+connected to each other and it supports
+
+39
+00:01:26,500 --> 00:01:30,090
+automated reasoning it supports
+
+40
+00:01:27,970 --> 00:01:33,190
+inference and it's a way to actually
+
+41
+00:01:30,090 --> 00:01:35,650
+know model knowledge and reuse it and
+
+42
+00:01:33,190 --> 00:01:37,840
+the third thing is that we look at is
+
+43
+00:01:35,650 --> 00:01:40,120
+out which is the web ontology language
+
+44
+00:01:37,840 --> 00:01:40,810
+which is used to actually create
+
+45
+00:01:40,120 --> 00:01:43,050
+ontology
+
+46
+00:01:40,810 --> 00:01:45,490
+and this is right now a de facto
+
+47
+00:01:43,050 --> 00:01:47,920
+standard for ontology development and
+
+48
+00:01:45,490 --> 00:01:50,050
+the main concepts within and our
+
+49
+00:01:47,920 --> 00:01:52,900
+language are the classes which are going
+
+50
+00:01:50,050 --> 00:01:54,790
+to be the concepts the properties which
+
+51
+00:01:52,900 --> 00:01:58,120
+connect the concepts together or connect
+
+52
+00:01:54,790 --> 00:02:00,520
+one concept to a value which is called a
+
+53
+00:01:58,120 --> 00:02:01,690
+data property then we have instances of
+
+54
+00:02:00,520 --> 00:02:03,220
+the classes which we call them
+
+55
+00:02:01,690 --> 00:02:05,110
+individuals and then there are
+
+56
+00:02:03,220 --> 00:02:07,740
+restrictions restrictions which allow
+
+57
+00:02:05,110 --> 00:02:10,119
+you to define cardinalities existential
+
+58
+00:02:07,740 --> 00:02:12,850
+restrictions Universal restrictions and
+
+59
+00:02:10,119 --> 00:02:13,250
+this is what I actually use last time in
+
+60
+00:02:12,850 --> 00:02:16,040
+my
+
+61
+00:02:13,250 --> 00:02:18,110
+to say we can use this in order to do
+
+62
+00:02:16,040 --> 00:02:19,910
+some sort of validation on your data for
+
+63
+00:02:18,110 --> 00:02:23,150
+example if you say a person has a name
+
+64
+00:02:19,910 --> 00:02:24,770
+or has an age you can go back to it and
+
+65
+00:02:23,150 --> 00:02:26,660
+say okay when I'm at my data to that
+
+66
+00:02:24,770 --> 00:02:28,850
+ontology model I can make sure from the
+
+67
+00:02:26,660 --> 00:02:31,190
+owl restriction that it is going to have
+
+68
+00:02:28,850 --> 00:02:35,000
+a name and an age but honestly that is
+
+69
+00:02:31,190 --> 00:02:38,090
+not what out is created for so and this
+
+70
+00:02:35,000 --> 00:02:44,030
+is just a simple classes instances
+
+71
+00:02:38,090 --> 00:02:45,320
+properties and relations so what are the
+
+72
+00:02:44,030 --> 00:02:49,220
+strengths about and what are the
+
+73
+00:02:45,320 --> 00:02:55,430
+challenges right choice there are some
+
+74
+00:02:49,220 --> 00:02:57,650
+seats here back there so so the truth
+
+75
+00:02:55,430 --> 00:02:59,690
+without is that L is not really designed
+
+76
+00:02:57,650 --> 00:03:02,090
+for validation it is designed for
+
+77
+00:02:59,690 --> 00:03:04,850
+interference update that's the truth
+
+78
+00:03:02,090 --> 00:03:06,800
+about and that is exactly why it's
+
+79
+00:03:04,850 --> 00:03:08,930
+property oriented and what joy means why
+
+80
+00:03:06,800 --> 00:03:10,640
+it's property oriented so when you start
+
+81
+00:03:08,930 --> 00:03:13,760
+defining a class without and you say the
+
+82
+00:03:10,640 --> 00:03:16,340
+concept of person I can call it person
+
+83
+00:03:13,760 --> 00:03:18,170
+you can call it human you can even call
+
+84
+00:03:16,340 --> 00:03:20,360
+it I don't know to call them it doesn't
+
+85
+00:03:18,170 --> 00:03:23,030
+really matter what you call it what
+
+86
+00:03:20,360 --> 00:03:25,280
+matters is what does this concept mean
+
+87
+00:03:23,030 --> 00:03:27,650
+so the next question that you would ask
+
+88
+00:03:25,280 --> 00:03:29,180
+is who is a person or what is a person
+
+89
+00:03:27,650 --> 00:03:31,430
+what's the meaning of a person and
+
+90
+00:03:29,180 --> 00:03:34,070
+that's when you start defining the
+
+91
+00:03:31,430 --> 00:03:37,100
+properties for that class so we can all
+
+92
+00:03:34,070 --> 00:03:39,830
+agree here that if someone has a date of
+
+93
+00:03:37,100 --> 00:03:42,590
+birth if it has a name and it has a
+
+94
+00:03:39,830 --> 00:03:45,320
+surname then we can call them a person
+
+95
+00:03:42,590 --> 00:03:48,410
+so this is what we agree together and we
+
+96
+00:03:45,320 --> 00:03:50,480
+say that these properties are sufficient
+
+97
+00:03:48,410 --> 00:03:52,940
+and necessary for someone to be a person
+
+98
+00:03:50,480 --> 00:03:55,220
+so what happens is that if I get a data
+
+99
+00:03:52,940 --> 00:03:57,230
+like this saying I have a customer named
+
+100
+00:03:55,220 --> 00:04:00,290
+Chara story named Rafa and date of birth
+
+101
+00:03:57,230 --> 00:04:03,440
+something then my system will be able to
+
+102
+00:04:00,290 --> 00:04:07,160
+infer that Tara is a person so the core
+
+103
+00:04:03,440 --> 00:04:09,680
+value for using owl is to model the
+
+104
+00:04:07,160 --> 00:04:11,360
+knowledge and allow interference the
+
+105
+00:04:09,680 --> 00:04:13,940
+other thing would ala is that hours open
+
+106
+00:04:11,360 --> 00:04:17,959
+world so what do we mean by open world
+
+107
+00:04:13,940 --> 00:04:20,209
+it means that if I define a person with
+
+108
+00:04:17,959 --> 00:04:21,489
+a date of name and surname and tomorrow
+
+109
+00:04:20,209 --> 00:04:25,419
+and data comes in
+
+110
+00:04:21,489 --> 00:04:28,419
+has a name and a surname I cannot really
+
+111
+00:04:25,419 --> 00:04:30,880
+say that this data is not valid because
+
+112
+00:04:28,419 --> 00:04:32,949
+it doesn't have a date of birth why
+
+113
+00:04:30,880 --> 00:04:34,810
+because it's an open world assumption so
+
+114
+00:04:32,949 --> 00:04:36,789
+all I can say is that the date of birth
+
+115
+00:04:34,810 --> 00:04:39,430
+is missing but I cannot say it's not
+
+116
+00:04:36,789 --> 00:04:41,139
+valid so if you really want to use it
+
+117
+00:04:39,430 --> 00:04:43,060
+for validation you have to make a closed
+
+118
+00:04:41,139 --> 00:04:45,400
+world assumption to say like it's I'm
+
+119
+00:04:43,060 --> 00:04:47,259
+working in this specific domain this is
+
+120
+00:04:45,400 --> 00:04:49,840
+my closed world if something is missing
+
+121
+00:04:47,259 --> 00:04:52,630
+is invalid but otherwise if something is
+
+122
+00:04:49,840 --> 00:04:54,099
+not there it does not mean invalid
+
+123
+00:04:52,630 --> 00:04:56,770
+something is invalid it means something
+
+124
+00:04:54,099 --> 00:04:58,199
+is missing and last but not least it's
+
+125
+00:04:56,770 --> 00:05:01,630
+one of the most important things that
+
+126
+00:04:58,199 --> 00:05:03,190
+leads us to shackle is that and a lot of
+
+127
+00:05:01,630 --> 00:05:05,620
+enterprises you go and create this
+
+128
+00:05:03,190 --> 00:05:08,259
+amazing knowledge module knowledge graph
+
+129
+00:05:05,620 --> 00:05:10,509
+massive beautiful you bring your data
+
+130
+00:05:08,259 --> 00:05:13,180
+into RTF format map it to your ontology
+
+131
+00:05:10,509 --> 00:05:15,159
+perfect now how do I use it in my
+
+132
+00:05:13,180 --> 00:05:17,500
+different departments in my different
+
+133
+00:05:15,159 --> 00:05:19,180
+domains for each of those domains and
+
+134
+00:05:17,500 --> 00:05:21,310
+departments some properties are
+
+135
+00:05:19,180 --> 00:05:22,990
+important and some properties are not so
+
+136
+00:05:21,310 --> 00:05:25,719
+it's very important for me to be able to
+
+137
+00:05:22,990 --> 00:05:28,210
+have different views or what we can call
+
+138
+00:05:25,719 --> 00:05:30,880
+different shapes over the data so we can
+
+139
+00:05:28,210 --> 00:05:34,150
+actually reuse this enterprise knowledge
+
+140
+00:05:30,880 --> 00:05:37,060
+model so let's say I have a very simple
+
+141
+00:05:34,150 --> 00:05:38,949
+ontology of a person in an open world
+
+142
+00:05:37,060 --> 00:05:42,070
+who is a person will have all of these
+
+143
+00:05:38,949 --> 00:05:45,250
+properties of even a hideaway - I color
+
+144
+00:05:42,070 --> 00:05:47,020
+and then I go and create a subclass of
+
+145
+00:05:45,250 --> 00:05:49,000
+employee I go create a subclass of
+
+146
+00:05:47,020 --> 00:05:51,009
+customer which are all person and they
+
+147
+00:05:49,000 --> 00:05:53,440
+have their own properties but because
+
+148
+00:05:51,009 --> 00:05:55,449
+their subclasses of person they will
+
+149
+00:05:53,440 --> 00:05:57,580
+inherit all of the properties of the
+
+150
+00:05:55,449 --> 00:06:00,490
+person as well now tomorrow I want to
+
+151
+00:05:57,580 --> 00:06:02,139
+use this ontology in my bank does the
+
+152
+00:06:00,490 --> 00:06:04,930
+bank really care what's the eye color of
+
+153
+00:06:02,139 --> 00:06:07,120
+the person or what's their height no but
+
+154
+00:06:04,930 --> 00:06:09,159
+if I want to reuse the same ontology in
+
+155
+00:06:07,120 --> 00:06:11,289
+different parts of the bank I will go
+
+156
+00:06:09,159 --> 00:06:13,719
+and say ok for this department of the
+
+157
+00:06:11,289 --> 00:06:16,300
+bank these are the important properties
+
+158
+00:06:13,719 --> 00:06:18,669
+so if I want to make sure that I have a
+
+159
+00:06:16,300 --> 00:06:20,229
+customer details correctly I have to
+
+160
+00:06:18,669 --> 00:06:23,680
+make sure I have their name surname date
+
+161
+00:06:20,229 --> 00:06:25,479
+of birth ID probably SSN and that's it I
+
+162
+00:06:23,680 --> 00:06:27,340
+don't need the rest so that's when
+
+163
+00:06:25,479 --> 00:06:29,409
+you're actually defining a certain shape
+
+164
+00:06:27,340 --> 00:06:32,500
+for that department in terms of what you
+
+165
+00:06:29,409 --> 00:06:35,110
+want so that's where shackle
+
+166
+00:06:32,500 --> 00:06:37,870
+so chakra is not really a complicated
+
+167
+00:06:35,110 --> 00:06:40,300
+concept it became a de facto about two
+
+168
+00:06:37,870 --> 00:06:42,670
+and a half years ago and it's actually
+
+169
+00:06:40,300 --> 00:06:45,820
+very simple very simple to use
+
+170
+00:06:42,670 --> 00:06:48,520
+very amazing at the basic it's rdf based
+
+171
+00:06:45,820 --> 00:06:52,750
+it's closed world assumption so as
+
+172
+00:06:48,520 --> 00:06:54,520
+opposed to al which is for open world
+
+173
+00:06:52,750 --> 00:06:57,190
+it's actually closed word so you can use
+
+174
+00:06:54,520 --> 00:06:59,800
+it for validation it has the opposite
+
+175
+00:06:57,190 --> 00:07:01,540
+logic than al so so what al we said if
+
+176
+00:06:59,800 --> 00:07:03,730
+something has certain properties is
+
+177
+00:07:01,540 --> 00:07:05,470
+belong to a class which Shack will we
+
+178
+00:07:03,730 --> 00:07:07,060
+save something belongs to a class it has
+
+179
+00:07:05,470 --> 00:07:09,880
+to have these certain properties so
+
+180
+00:07:07,060 --> 00:07:11,920
+that's how we're validated the core
+
+181
+00:07:09,880 --> 00:07:13,750
+elements for shackle are these four
+
+182
+00:07:11,920 --> 00:07:15,670
+things that we're going to touch briefly
+
+183
+00:07:13,750 --> 00:07:18,640
+upon all of them so you just get an idea
+
+184
+00:07:15,670 --> 00:07:21,280
+of how you can define shapes so it's the
+
+185
+00:07:18,640 --> 00:07:23,620
+shape the target the filter and the
+
+186
+00:07:21,280 --> 00:07:26,620
+constraints so what we are really doing
+
+187
+00:07:23,620 --> 00:07:29,050
+what shackle is that you have a data
+
+188
+00:07:26,620 --> 00:07:31,810
+which you call it a data graph then you
+
+189
+00:07:29,050 --> 00:07:33,760
+define a shape which is also in a format
+
+190
+00:07:31,810 --> 00:07:35,890
+of a graph because it's RDF based and
+
+191
+00:07:33,760 --> 00:07:37,600
+you call it's a co graph there Shaco
+
+192
+00:07:35,890 --> 00:07:40,630
+processors out there there's a lot of
+
+193
+00:07:37,600 --> 00:07:42,880
+tools like talk great start up all of
+
+194
+00:07:40,630 --> 00:07:45,610
+that have their Shaco processors so you
+
+195
+00:07:42,880 --> 00:07:48,820
+send those two into the processor so
+
+196
+00:07:45,610 --> 00:07:50,470
+they are the data graph is validated
+
+197
+00:07:48,820 --> 00:07:52,570
+against the chakra graph and it gives
+
+198
+00:07:50,470 --> 00:07:55,240
+you a validation report so it tells you
+
+199
+00:07:52,570 --> 00:07:58,390
+if a property is missing or if it has a
+
+200
+00:07:55,240 --> 00:07:58,690
+wrong value or wrong format and all of
+
+201
+00:07:58,390 --> 00:08:03,160
+that
+
+202
+00:07:58,690 --> 00:08:04,900
+so let's look into the core elements so
+
+203
+00:08:03,160 --> 00:08:07,150
+the main element is a shape which is the
+
+204
+00:08:04,900 --> 00:08:09,160
+conjunction of all the constraints that
+
+205
+00:08:07,150 --> 00:08:12,220
+the target that you're looking at must
+
+206
+00:08:09,160 --> 00:08:14,050
+satisfy so basically everything is sort
+
+207
+00:08:12,220 --> 00:08:17,230
+of contained into what we call a shape
+
+208
+00:08:14,050 --> 00:08:19,960
+that we were using to validate our data
+
+209
+00:08:17,230 --> 00:08:22,180
+there are two type of shapes there's the
+
+210
+00:08:19,960 --> 00:08:24,100
+note shape there is the property shape
+
+211
+00:08:22,180 --> 00:08:26,650
+so the note shape is you're actually
+
+212
+00:08:24,100 --> 00:08:29,710
+saying constraint directly on a note so
+
+213
+00:08:26,650 --> 00:08:32,710
+if I have a customer it has to have it
+
+214
+00:08:29,710 --> 00:08:34,690
+has to look like an i or i or if i have
+
+215
+00:08:32,710 --> 00:08:36,820
+and when you're looking at properties
+
+216
+00:08:34,690 --> 00:08:37,310
+yes you can say if I have a customer and
+
+217
+00:08:36,820 --> 00:08:40,789
+it has an
+
+218
+00:08:37,310 --> 00:08:42,889
+it has to be of this specific format so
+
+219
+00:08:40,789 --> 00:08:46,189
+this is how it really looks like as a
+
+220
+00:08:42,889 --> 00:08:48,889
+shape so you say the customer shape is a
+
+221
+00:08:46,189 --> 00:08:51,350
+note shape what is your target class I'm
+
+222
+00:08:48,889 --> 00:08:54,709
+talking about my customer what should it
+
+223
+00:08:51,350 --> 00:08:57,230
+look like it should be an IRI so if I
+
+224
+00:08:54,709 --> 00:08:59,480
+give a data and I say taro is a customer
+
+225
+00:08:57,230 --> 00:09:02,199
+and then I give like Jon IRI as a
+
+226
+00:08:59,480 --> 00:09:05,360
+customer and then seven as a customer
+
+227
+00:09:02,199 --> 00:09:06,949
+then the first do we'll pass the last
+
+228
+00:09:05,360 --> 00:09:09,079
+one will not so the first you are
+
+229
+00:09:06,949 --> 00:09:10,670
+validated because thar is an instance I
+
+230
+00:09:09,079 --> 00:09:12,949
+specifically put that there that's an
+
+231
+00:09:10,670 --> 00:09:16,730
+instance not so not to mix it with a
+
+232
+00:09:12,949 --> 00:09:19,339
+string the second one is an IRI so it is
+
+233
+00:09:16,730 --> 00:09:22,160
+an IRI so we're okay the last one is
+
+234
+00:09:19,339 --> 00:09:24,819
+just a number integer so it's wrong
+
+235
+00:09:22,160 --> 00:09:28,999
+against our validator that says that our
+
+236
+00:09:24,819 --> 00:09:32,269
+note should be an RA IRI if you're doing
+
+237
+00:09:28,999 --> 00:09:34,759
+a property shape you can still say the
+
+238
+00:09:32,269 --> 00:09:37,189
+note shape you define your class your
+
+239
+00:09:34,759 --> 00:09:39,680
+classes customer you say the the
+
+240
+00:09:37,189 --> 00:09:42,439
+property that I want is customer ID and
+
+241
+00:09:39,680 --> 00:09:47,449
+the data tape data type should be string
+
+242
+00:09:42,439 --> 00:09:50,569
+and we should have one so if I say taro
+
+243
+00:09:47,449 --> 00:09:52,730
+is a customer and the customer ID is er
+
+244
+00:09:50,569 --> 00:09:55,399
+two one nine eight this will pass the
+
+245
+00:09:52,730 --> 00:09:58,459
+validation if I say Jon is a customer
+
+246
+00:09:55,399 --> 00:10:00,319
+and the customer ID is an IRI this will
+
+247
+00:09:58,459 --> 00:10:02,420
+not pass our validation because we have
+
+248
+00:10:00,319 --> 00:10:06,110
+said that the data type of the customer
+
+249
+00:10:02,420 --> 00:10:08,180
+ID should be a string right so the
+
+250
+00:10:06,110 --> 00:10:11,689
+property shapes are connected to our
+
+251
+00:10:08,180 --> 00:10:13,370
+nodes through what we call paths very
+
+252
+00:10:11,689 --> 00:10:16,399
+simple if you look at your knowledge
+
+253
+00:10:13,370 --> 00:10:18,139
+graph there are nodes their edges the
+
+254
+00:10:16,399 --> 00:10:19,910
+edges are really the paths for you to
+
+255
+00:10:18,139 --> 00:10:21,379
+get from one node to another there are
+
+256
+00:10:19,910 --> 00:10:24,019
+different types of paths that you can
+
+257
+00:10:21,379 --> 00:10:26,120
+define very simple one is just a
+
+258
+00:10:24,019 --> 00:10:28,610
+predicate path like you say customer and
+
+259
+00:10:26,120 --> 00:10:30,860
+customer has a name or employee has an
+
+260
+00:10:28,610 --> 00:10:34,160
+employee ID so it's just a pretty kid
+
+261
+00:10:30,860 --> 00:10:37,009
+and points to a value the other ones
+
+262
+00:10:34,160 --> 00:10:39,410
+could be a sequence path so you can say
+
+263
+00:10:37,009 --> 00:10:41,600
+a customer has a relationship manager
+
+264
+00:10:39,410 --> 00:10:43,670
+and the relationship manager has an
+
+265
+00:10:41,600 --> 00:10:46,040
+employee ID so from customer you're
+
+266
+00:10:43,670 --> 00:10:48,620
+getting to a string employee ID so
+
+267
+00:10:46,040 --> 00:10:50,660
+you're going through a sequence path you
+
+268
+00:10:48,620 --> 00:10:53,600
+can have inverse paths so you can say
+
+269
+00:10:50,660 --> 00:10:54,980
+inverse of has relationship manager
+
+270
+00:10:53,600 --> 00:10:57,860
+which actually means the managers
+
+271
+00:10:54,980 --> 00:10:59,780
+relationship or you can have like
+
+272
+00:10:57,860 --> 00:11:01,580
+alternative paths so for example if you
+
+273
+00:10:59,780 --> 00:11:03,050
+have a class parent and you want to go
+
+274
+00:11:01,580 --> 00:11:04,730
+to the parent you can either go through
+
+275
+00:11:03,050 --> 00:11:07,700
+mother or you can go through father
+
+276
+00:11:04,730 --> 00:11:09,560
+so that's alternative hats and the other
+
+277
+00:11:07,700 --> 00:11:12,530
+one is like it can have zero paths to
+
+278
+00:11:09,560 --> 00:11:14,450
+the concept or more than one path so
+
+279
+00:11:12,530 --> 00:11:17,420
+very very simple so when you want to
+
+280
+00:11:14,450 --> 00:11:19,760
+define the constraints on a certain
+
+281
+00:11:17,420 --> 00:11:21,950
+property all you need to do is to define
+
+282
+00:11:19,760 --> 00:11:23,270
+the path from that property to denote
+
+283
+00:11:21,950 --> 00:11:26,090
+that you're talking about and then
+
+284
+00:11:23,270 --> 00:11:28,220
+define the constraint on it now the most
+
+285
+00:11:26,090 --> 00:11:30,920
+important thing that a target so how do
+
+286
+00:11:28,220 --> 00:11:34,970
+we define the target of our shape so
+
+287
+00:11:30,920 --> 00:11:37,010
+what do we want to validate the first
+
+288
+00:11:34,970 --> 00:11:39,170
+thing is classes the simplest one so I
+
+289
+00:11:37,010 --> 00:11:41,060
+say I have a customer class so remember
+
+290
+00:11:39,170 --> 00:11:42,260
+the first tall simple ontology that I
+
+291
+00:11:41,060 --> 00:11:43,880
+showed you there's a class called
+
+292
+00:11:42,260 --> 00:11:47,540
+customer or there's a class called
+
+293
+00:11:43,880 --> 00:11:49,340
+employee and I say that my employee
+
+294
+00:11:47,540 --> 00:11:53,030
+should have a name and it should be a
+
+295
+00:11:49,340 --> 00:11:54,620
+string right sometimes in the ontology
+
+296
+00:11:53,030 --> 00:11:56,630
+is when you have a class that you're
+
+297
+00:11:54,620 --> 00:11:59,690
+going to keep reusing with the same
+
+298
+00:11:56,630 --> 00:12:01,700
+properties everywhere you can actually
+
+299
+00:11:59,690 --> 00:12:04,430
+define the shape and the class together
+
+300
+00:12:01,700 --> 00:12:07,160
+so I can just say customer shape is a
+
+301
+00:12:04,430 --> 00:12:08,540
+node shape and is a class together so I
+
+302
+00:12:07,160 --> 00:12:10,790
+don't have to defined ontology
+
+303
+00:12:08,540 --> 00:12:13,220
+separately the shape separately I can
+
+304
+00:12:10,790 --> 00:12:15,620
+define them together and then there's a
+
+305
+00:12:13,220 --> 00:12:17,930
+property customer name and a data type
+
+306
+00:12:15,620 --> 00:12:21,020
+is string the other thing is when you
+
+307
+00:12:17,930 --> 00:12:23,270
+want to define constraints for very
+
+308
+00:12:21,020 --> 00:12:25,520
+specific notes so you have defined
+
+309
+00:12:23,270 --> 00:12:29,270
+instances of your class you have the
+
+310
+00:12:25,520 --> 00:12:30,920
+class let's say customer and your there
+
+311
+00:12:29,270 --> 00:12:33,500
+are 10 different customers that you have
+
+312
+00:12:30,920 --> 00:12:35,600
+defined but for two specific customers
+
+313
+00:12:33,500 --> 00:12:38,630
+you want to make sure that they have
+
+314
+00:12:35,600 --> 00:12:41,240
+their names specified ok so if you want
+
+315
+00:12:38,630 --> 00:12:43,940
+to do that you just say that your target
+
+316
+00:12:41,240 --> 00:12:46,010
+is actually a note so this target node
+
+317
+00:12:43,940 --> 00:12:47,510
+and you give the specific node names and
+
+318
+00:12:46,010 --> 00:12:49,610
+they say it's an iri
+
+319
+00:12:47,510 --> 00:12:51,110
+and then you say what are you actually
+
+320
+00:12:49,610 --> 00:12:53,240
+validating for that note so for that
+
+321
+00:12:51,110 --> 00:12:54,380
+specific note you want to make sure that
+
+322
+00:12:53,240 --> 00:12:57,260
+there is one
+
+323
+00:12:54,380 --> 00:13:00,050
+we're named existing the other way of
+
+324
+00:12:57,260 --> 00:13:03,170
+doing thing is sometimes you actually
+
+325
+00:13:00,050 --> 00:13:06,380
+want to validate something as an object
+
+326
+00:13:03,170 --> 00:13:10,220
+of a property right so for example if
+
+327
+00:13:06,380 --> 00:13:11,690
+you want to know sorry it's actually a
+
+328
+00:13:10,220 --> 00:13:14,420
+mess up the one on the top is the
+
+329
+00:13:11,690 --> 00:13:17,330
+subject of the property so for example
+
+330
+00:13:14,420 --> 00:13:20,300
+you want to say whoever works in in a
+
+331
+00:13:17,330 --> 00:13:23,330
+company should have an employee ID so
+
+332
+00:13:20,300 --> 00:13:25,910
+what you're validating is the subject of
+
+333
+00:13:23,330 --> 00:13:27,650
+the predicate works in so you don't you
+
+334
+00:13:25,910 --> 00:13:29,120
+want to don't want to go and say a class
+
+335
+00:13:27,650 --> 00:13:31,540
+because it might be the class of
+
+336
+00:13:29,120 --> 00:13:33,950
+employee it might be a class of
+
+337
+00:13:31,540 --> 00:13:35,960
+customers who are working somewhere they
+
+338
+00:13:33,950 --> 00:13:37,640
+have an employment and a business so you
+
+339
+00:13:35,960 --> 00:13:39,260
+don't want to specify the class you just
+
+340
+00:13:37,640 --> 00:13:41,360
+want to say whoever worked somewhere
+
+341
+00:13:39,260 --> 00:13:43,370
+should have an employee ID that's when
+
+342
+00:13:41,360 --> 00:13:44,990
+you say that your target is the subject
+
+343
+00:13:43,370 --> 00:13:47,930
+of something and then you say the
+
+344
+00:13:44,990 --> 00:13:52,190
+employee ID min 1 max 1 it means it has
+
+345
+00:13:47,930 --> 00:13:55,700
+to have exactly 1 and last but not least
+
+346
+00:13:52,190 --> 00:14:00,290
+you can actually say the object of a
+
+347
+00:13:55,700 --> 00:14:03,530
+predicate so any class or anything any
+
+348
+00:14:00,290 --> 00:14:06,620
+instance which is connected to a certain
+
+349
+00:14:03,530 --> 00:14:09,370
+property as the object of it not the
+
+350
+00:14:06,620 --> 00:14:12,620
+subject will have to have these specific
+
+351
+00:14:09,370 --> 00:14:15,170
+properties to be validated so you say
+
+352
+00:14:12,620 --> 00:14:17,000
+for example whenever something is
+
+353
+00:14:15,170 --> 00:14:19,760
+connected to a node through has
+
+354
+00:14:17,000 --> 00:14:21,770
+relationship manager that manager should
+
+355
+00:14:19,760 --> 00:14:24,920
+have an employee ID that person who is
+
+356
+00:14:21,770 --> 00:14:28,670
+the object should have an employee ID so
+
+357
+00:14:24,920 --> 00:14:30,320
+this is how you define the targets there
+
+358
+00:14:28,670 --> 00:14:32,630
+are some things called filters which are
+
+359
+00:14:30,320 --> 00:14:34,190
+very simple things it's basically you
+
+360
+00:14:32,630 --> 00:14:35,720
+define your target but you want to
+
+361
+00:14:34,190 --> 00:14:37,580
+actually minimize that scope a little
+
+362
+00:14:35,720 --> 00:14:40,010
+bit more so you define some more filters
+
+363
+00:14:37,580 --> 00:14:42,470
+on it so you have the classes you have a
+
+364
+00:14:40,010 --> 00:14:45,010
+target you define a filter for example
+
+365
+00:14:42,470 --> 00:14:47,810
+you're looking at customers actually
+
+366
+00:14:45,010 --> 00:14:49,850
+let's give a real-world example so banks
+
+367
+00:14:47,810 --> 00:14:51,650
+have a lot of rules in terms of accounts
+
+368
+00:14:49,850 --> 00:14:53,780
+that they open for example they want to
+
+369
+00:14:51,650 --> 00:14:55,610
+say I'm opening an account for a person
+
+370
+00:14:53,780 --> 00:14:58,670
+I want to make sure that I'm opening the
+
+371
+00:14:55,610 --> 00:15:00,230
+right account type so they have for
+
+372
+00:14:58,670 --> 00:15:01,790
+example a senior account type so they
+
+373
+00:15:00,230 --> 00:15:04,370
+want to make sure if someone who is open
+
+374
+00:15:01,790 --> 00:15:06,140
+over 65 opens an account with them in
+
+375
+00:15:04,370 --> 00:15:06,440
+the bank the account that's given to
+
+376
+00:15:06,140 --> 00:15:08,780
+that
+
+377
+00:15:06,440 --> 00:15:09,920
+as a senior account so they say that if
+
+378
+00:15:08,780 --> 00:15:12,200
+I have a customer
+
+379
+00:15:09,920 --> 00:15:15,740
+they put a filter shape on it and said
+
+380
+00:15:12,200 --> 00:15:18,140
+if their age is 65 or more their account
+
+381
+00:15:15,740 --> 00:15:22,760
+type should be senior account right so
+
+382
+00:15:18,140 --> 00:15:23,660
+they say okay I have this people who are
+
+383
+00:15:22,760 --> 00:15:25,550
+my customers
+
+384
+00:15:23,660 --> 00:15:27,260
+Cara Jane and join are the customers for
+
+385
+00:15:25,550 --> 00:15:30,290
+example mark and Stacy are the employees
+
+386
+00:15:27,260 --> 00:15:32,660
+so from Terra Jane and John whoever has
+
+387
+00:15:30,290 --> 00:15:35,240
+the age of 65 so it's filtered down to
+
+388
+00:15:32,660 --> 00:15:37,250
+Jane should have if they have an account
+
+389
+00:15:35,240 --> 00:15:41,150
+what my bank they should have an account
+
+390
+00:15:37,250 --> 00:15:44,930
+of ID f-type senior account so if this
+
+391
+00:15:41,150 --> 00:15:48,620
+data comes in it's correct if it comes
+
+392
+00:15:44,930 --> 00:15:52,630
+in as a count RDF type check in normal
+
+393
+00:15:48,620 --> 00:15:52,630
+checking account there will be an error
+
+394
+00:15:53,440 --> 00:15:58,220
+then it's a constraint so it's basically
+
+395
+00:15:56,330 --> 00:16:00,350
+what your checking against what your
+
+396
+00:15:58,220 --> 00:16:02,090
+validating your target against so you
+
+397
+00:16:00,350 --> 00:16:04,400
+can put the constraint on the note
+
+398
+00:16:02,090 --> 00:16:05,900
+itself which is what we talked about at
+
+399
+00:16:04,400 --> 00:16:08,000
+the beginning we said if you have a
+
+400
+00:16:05,900 --> 00:16:10,640
+customer you want to make sure that it's
+
+401
+00:16:08,000 --> 00:16:11,930
+an IRI for the customer and the other
+
+402
+00:16:10,640 --> 00:16:13,910
+thing is the constraint you put on
+
+403
+00:16:11,930 --> 00:16:15,140
+properties very similar to restrictions
+
+404
+00:16:13,910 --> 00:16:17,180
+that you have in our if you've worked
+
+405
+00:16:15,140 --> 00:16:19,190
+without so you can have cardinality
+
+406
+00:16:17,180 --> 00:16:21,970
+constraints you can have class
+
+407
+00:16:19,190 --> 00:16:24,350
+constraints data type strings numeric
+
+408
+00:16:21,970 --> 00:16:26,690
+specific values so these are the
+
+409
+00:16:24,350 --> 00:16:28,430
+constraints that you define on the
+
+410
+00:16:26,690 --> 00:16:31,520
+property itself we've been seeing an
+
+411
+00:16:28,430 --> 00:16:37,160
+example of them we're just giving them a
+
+412
+00:16:31,520 --> 00:16:38,990
+certain name so what is so that was the
+
+413
+00:16:37,160 --> 00:16:42,200
+basic of Shaco basic it's it's simple
+
+414
+00:16:38,990 --> 00:16:44,990
+it's very easy to use it gives you the
+
+415
+00:16:42,200 --> 00:16:47,630
+opportunity to reuse a big ontology
+
+416
+00:16:44,990 --> 00:16:50,270
+within your enterprise to give different
+
+417
+00:16:47,630 --> 00:16:52,190
+views of it to satisfy all of the
+
+418
+00:16:50,270 --> 00:16:54,470
+clients all of the clients of your
+
+419
+00:16:52,190 --> 00:16:59,000
+ontology basing all of the users of your
+
+420
+00:16:54,470 --> 00:17:00,710
+ontology and I don't know like if you
+
+421
+00:16:59,000 --> 00:17:02,690
+guys dealt with really massive
+
+422
+00:17:00,710 --> 00:17:05,030
+enterprises the major problem that you
+
+423
+00:17:02,690 --> 00:17:06,170
+see when you go there is people as if
+
+424
+00:17:05,030 --> 00:17:08,540
+they're speaking different languages
+
+425
+00:17:06,170 --> 00:17:10,939
+they use the same word they mean
+
+426
+00:17:08,540 --> 00:17:12,740
+something else they mean something that
+
+427
+00:17:10,939 --> 00:17:14,810
+used different words for it so there's
+
+428
+00:17:12,740 --> 00:17:16,310
+always a struggle between the business
+
+429
+00:17:14,810 --> 00:17:17,870
+people between the technical people
+
+430
+00:17:16,310 --> 00:17:20,000
+between people who are work in different
+
+431
+00:17:17,870 --> 00:17:22,160
+departments so when you try to
+
+432
+00:17:20,000 --> 00:17:24,800
+create a knowledge graph which satisfies
+
+433
+00:17:22,160 --> 00:17:27,380
+everyone it's going to be very hard but
+
+434
+00:17:24,800 --> 00:17:29,120
+you can accumulate all of the properties
+
+435
+00:17:27,380 --> 00:17:32,360
+all of the definitions and create the
+
+436
+00:17:29,120 --> 00:17:34,700
+beautiful abstract layer and then give
+
+437
+00:17:32,360 --> 00:17:36,920
+each other each of those people their
+
+438
+00:17:34,700 --> 00:17:38,810
+own different views so they can validate
+
+439
+00:17:36,920 --> 00:17:43,310
+data according to what's required for
+
+440
+00:17:38,810 --> 00:17:45,560
+them so you can actually reuse shapes
+
+441
+00:17:43,310 --> 00:17:47,930
+and import them to reuse them if you
+
+442
+00:17:45,560 --> 00:17:50,740
+like you can deactivate them the
+
+443
+00:17:47,930 --> 00:17:53,990
+activation is useful when you are
+
+444
+00:17:50,740 --> 00:17:55,760
+importing like a group of shapes from
+
+445
+00:17:53,990 --> 00:17:58,670
+somewhere to reuse and some of them do
+
+446
+00:17:55,760 --> 00:17:59,990
+not match what you're looking for so you
+
+447
+00:17:58,670 --> 00:18:01,340
+say like you know what out of this ten
+
+448
+00:17:59,990 --> 00:18:04,010
+shapes that I've imported in this three
+
+449
+00:18:01,340 --> 00:18:07,100
+do not match what I need so I will just
+
+450
+00:18:04,010 --> 00:18:09,110
+deactivate them other things to do with
+
+451
+00:18:07,100 --> 00:18:11,270
+shackle you can actually apply business
+
+452
+00:18:09,110 --> 00:18:12,650
+tools like similar to what I was saying
+
+453
+00:18:11,270 --> 00:18:14,300
+about an account opening that's a
+
+454
+00:18:12,650 --> 00:18:17,030
+business rule for a bank and saying like
+
+455
+00:18:14,300 --> 00:18:21,650
+it should be of a certain type you can
+
+456
+00:18:17,030 --> 00:18:23,570
+build interfaces so a lot of the tools
+
+457
+00:18:21,650 --> 00:18:27,080
+for example talk rate itself allows you
+
+458
+00:18:23,570 --> 00:18:29,540
+to build very simple forms from the
+
+459
+00:18:27,080 --> 00:18:31,610
+shackle from the shape definitions so
+
+460
+00:18:29,540 --> 00:18:33,050
+you would say basically what it does it
+
+461
+00:18:31,610 --> 00:18:35,060
+just creates a simple form with
+
+462
+00:18:33,050 --> 00:18:36,680
+different text boxes that you're going
+
+463
+00:18:35,060 --> 00:18:38,960
+to fill in it gives you options to fill
+
+464
+00:18:36,680 --> 00:18:41,120
+in and it doesn't auto check on it to
+
+465
+00:18:38,960 --> 00:18:42,860
+make sure that if it's has to be there
+
+466
+00:18:41,120 --> 00:18:44,630
+it's there if it has to be a string you
+
+467
+00:18:42,860 --> 00:18:46,130
+make sure that you've put in a string so
+
+468
+00:18:44,630 --> 00:18:48,980
+it does the validation right there and
+
+469
+00:18:46,130 --> 00:18:50,930
+then you can communicate your data
+
+470
+00:18:48,980 --> 00:18:53,920
+structure so if you have a shape on your
+
+471
+00:18:50,930 --> 00:18:57,080
+ontology you can share it with other
+
+472
+00:18:53,920 --> 00:18:58,430
+let's say technology departments to say
+
+473
+00:18:57,080 --> 00:19:00,410
+hey this is the structure that I'm using
+
+474
+00:18:58,430 --> 00:19:02,600
+for my data this is basically the schema
+
+475
+00:19:00,410 --> 00:19:04,220
+that I'm using for my data and that's
+
+476
+00:19:02,600 --> 00:19:06,080
+the stuff that needs to be there for my
+
+477
+00:19:04,220 --> 00:19:07,640
+data to be validated there are tools
+
+478
+00:19:06,080 --> 00:19:12,050
+that allow you to generate code and
+
+479
+00:19:07,640 --> 00:19:16,090
+obviously data integration so just to do
+
+480
+00:19:12,050 --> 00:19:19,330
+a little recap on what we talked about
+
+481
+00:19:16,090 --> 00:19:22,310
+let's say we have a simple owl model
+
+482
+00:19:19,330 --> 00:19:24,320
+which for again I'm giving you real
+
+483
+00:19:22,310 --> 00:19:27,140
+examples from the bank's because I work
+
+484
+00:19:24,320 --> 00:19:28,880
+with them every day so if you have a
+
+485
+00:19:27,140 --> 00:19:30,679
+high net customer which is subclass of
+
+486
+00:19:28,880 --> 00:19:31,850
+customer they have different profiles
+
+487
+00:19:30,679 --> 00:19:34,460
+like a transaction
+
+488
+00:19:31,850 --> 00:19:37,130
+profile of business profile and then you
+
+489
+00:19:34,460 --> 00:19:41,059
+can define our restrictions which is an
+
+490
+00:19:37,130 --> 00:19:42,980
+account has amount of 1 million so this
+
+491
+00:19:41,059 --> 00:19:45,140
+is the owl restriction on a high net
+
+492
+00:19:42,980 --> 00:19:47,240
+customer so if someone if you have a
+
+493
+00:19:45,140 --> 00:19:49,460
+customer who has an account which the
+
+494
+00:19:47,240 --> 00:19:51,470
+value of $1,000,000 or more that
+
+495
+00:19:49,460 --> 00:19:54,470
+customer will be a high net customer for
+
+496
+00:19:51,470 --> 00:19:58,929
+you so you get this data into your
+
+497
+00:19:54,470 --> 00:20:02,299
+system you have taro who owns an account
+
+498
+00:19:58,929 --> 00:20:05,720
+with a value of 2 million which I don't
+
+499
+00:20:02,299 --> 00:20:09,409
+but I just put it there it's okay to
+
+500
+00:20:05,720 --> 00:20:11,570
+desire things then we have John and he
+
+501
+00:20:09,409 --> 00:20:13,190
+has another account which is and he has
+
+502
+00:20:11,570 --> 00:20:17,390
+a business which is type of retail
+
+503
+00:20:13,190 --> 00:20:19,940
+business and account amount is 13,000 so
+
+504
+00:20:17,390 --> 00:20:21,860
+as soon as I put this data into my
+
+505
+00:20:19,940 --> 00:20:24,409
+system so this has been mapped to our
+
+506
+00:20:21,860 --> 00:20:26,539
+diya this is RDF data and I run my
+
+507
+00:20:24,409 --> 00:20:29,270
+inference based on the restrictions that
+
+508
+00:20:26,539 --> 00:20:31,220
+I have defined within my owl I will in
+
+509
+00:20:29,270 --> 00:20:33,679
+fear the fact that Terra is a high net
+
+510
+00:20:31,220 --> 00:20:36,230
+customer so that is an implicit fact
+
+511
+00:20:33,679 --> 00:20:39,020
+it's not explicit in my data but that's
+
+512
+00:20:36,230 --> 00:20:42,350
+what L is there for its to materialize
+
+513
+00:20:39,020 --> 00:20:44,929
+your implicit facts in the data so and
+
+514
+00:20:42,350 --> 00:20:46,789
+make it explicit so we will infer Tatara
+
+515
+00:20:44,929 --> 00:20:50,679
+is a high net customer nothing will
+
+516
+00:20:46,789 --> 00:20:56,030
+happen for John so now I go and define
+
+517
+00:20:50,679 --> 00:20:58,669
+shape because I want to make sure that
+
+518
+00:20:56,030 --> 00:21:00,830
+if I have a high net customer when
+
+519
+00:20:58,669 --> 00:21:03,770
+they're being on boarded in my know your
+
+520
+00:21:00,830 --> 00:21:06,320
+customer service they have a transaction
+
+521
+00:21:03,770 --> 00:21:08,710
+profile defined for them why am I doing
+
+522
+00:21:06,320 --> 00:21:11,360
+this again I'm talking about a scenario
+
+523
+00:21:08,710 --> 00:21:13,850
+when you're doing customer onboarding
+
+524
+00:21:11,360 --> 00:21:15,500
+you have to make sure that based on the
+
+525
+00:21:13,850 --> 00:21:17,419
+account that your customer has opened
+
+526
+00:21:15,500 --> 00:21:20,960
+based on the transactions that they do
+
+527
+00:21:17,419 --> 00:21:23,600
+you set certain thresholds for the value
+
+528
+00:21:20,960 --> 00:21:25,429
+that they can actually transfer usually
+
+529
+00:21:23,600 --> 00:21:28,070
+your high net or customers transfer a
+
+530
+00:21:25,429 --> 00:21:30,530
+lot of money so if you go with the usual
+
+531
+00:21:28,070 --> 00:21:32,270
+rules for your money-laundering every
+
+532
+00:21:30,530 --> 00:21:34,669
+time they put $10,000 in the bank
+
+533
+00:21:32,270 --> 00:21:37,220
+there's going to be an alert you have to
+
+534
+00:21:34,669 --> 00:21:39,590
+go and investigate it it's gonna cost
+
+535
+00:21:37,220 --> 00:21:41,690
+you time it's gonna cost you money so
+
+536
+00:21:39,590 --> 00:21:43,429
+what do you do you make sure that when
+
+537
+00:21:41,690 --> 00:21:45,859
+your onboarding them you
+
+538
+00:21:43,429 --> 00:21:48,979
+transactional profile for them and set
+
+539
+00:21:45,859 --> 00:21:50,629
+the threshold in that profile so every
+
+540
+00:21:48,979 --> 00:21:52,369
+time that we were checking their
+
+541
+00:21:50,629 --> 00:21:53,929
+transaction you check it against that
+
+542
+00:21:52,369 --> 00:21:55,999
+profile so in that profile you would say
+
+543
+00:21:53,929 --> 00:21:57,919
+they're allowed to transact more than
+
+544
+00:21:55,999 --> 00:22:00,919
+fifty thousand more than two hundred
+
+545
+00:21:57,919 --> 00:22:04,039
+thousand so you wouldn't raise an alert
+
+546
+00:22:00,919 --> 00:22:05,629
+for it so you have to make sure that
+
+547
+00:22:04,039 --> 00:22:07,940
+they have a transaction profile and this
+
+548
+00:22:05,629 --> 00:22:10,309
+door shape here make sure you do that so
+
+549
+00:22:07,940 --> 00:22:12,229
+if you onboard a customer and put their
+
+550
+00:22:10,309 --> 00:22:14,239
+data in without defining their
+
+551
+00:22:12,229 --> 00:22:17,359
+transaction profile you will get it
+
+552
+00:22:14,239 --> 00:22:18,559
+alert for invalid data so you have to go
+
+553
+00:22:17,359 --> 00:22:22,190
+back and make sure you get the
+
+554
+00:22:18,559 --> 00:22:25,519
+transaction profile in another thing is
+
+555
+00:22:22,190 --> 00:22:27,950
+that if you are unboard a customer who's
+
+556
+00:22:25,519 --> 00:22:29,749
+actually a business you need to make
+
+557
+00:22:27,950 --> 00:22:31,909
+sure that they have a business profile
+
+558
+00:22:29,749 --> 00:22:34,190
+again I'm giving very simple examples
+
+559
+00:22:31,909 --> 00:22:35,839
+but if they own a business they have to
+
+560
+00:22:34,190 --> 00:22:39,349
+have a business profile so that's a
+
+561
+00:22:35,839 --> 00:22:41,509
+shape for that so anyone who is the
+
+562
+00:22:39,349 --> 00:22:43,639
+subject of so this is what I'm using as
+
+563
+00:22:41,509 --> 00:22:46,009
+my target note I'm not looking at anyone
+
+564
+00:22:43,639 --> 00:22:47,929
+specific here I looked at the class of
+
+565
+00:22:46,009 --> 00:22:50,659
+high network customers so the target was
+
+566
+00:22:47,929 --> 00:22:53,089
+class here I'm looking at anyone who has
+
+567
+00:22:50,659 --> 00:22:55,099
+a business so the target is target
+
+568
+00:22:53,089 --> 00:22:57,729
+subject up has business and I make sure
+
+569
+00:22:55,099 --> 00:23:03,019
+that they have a business profile
+
+570
+00:22:57,729 --> 00:23:05,299
+another thing to do is that if we're
+
+571
+00:23:03,019 --> 00:23:06,799
+saying a customer we're making sure that
+
+572
+00:23:05,299 --> 00:23:11,869
+the customer does not perform any
+
+573
+00:23:06,799 --> 00:23:14,509
+transaction over 10,000 right so we can
+
+574
+00:23:11,869 --> 00:23:17,059
+say that we have a note shape for the
+
+575
+00:23:14,509 --> 00:23:20,960
+target note specific person so let's say
+
+576
+00:23:17,059 --> 00:23:22,700
+I onboard John and I create a
+
+577
+00:23:20,960 --> 00:23:24,589
+transaction profile for John even though
+
+578
+00:23:22,700 --> 00:23:27,109
+he's not a high network customer high
+
+579
+00:23:24,589 --> 00:23:29,479
+net customer I look at his account and
+
+580
+00:23:27,109 --> 00:23:32,539
+his account has amount of 30,000 in it
+
+581
+00:23:29,479 --> 00:23:34,729
+so there and then I make sure to put a
+
+582
+00:23:32,539 --> 00:23:37,009
+rule and say that if John makes any
+
+583
+00:23:34,729 --> 00:23:39,200
+transactions it should not be more than
+
+584
+00:23:37,009 --> 00:23:40,549
+10,000 according to the money that I'm
+
+585
+00:23:39,200 --> 00:23:42,679
+seeing in his account I want to make
+
+586
+00:23:40,549 --> 00:23:45,139
+sure that he doesn't over drop it from
+
+587
+00:23:42,679 --> 00:23:48,580
+his account so what do I do I create a
+
+588
+00:23:45,139 --> 00:23:51,769
+rule in the form of a shape shackle and
+
+589
+00:23:48,580 --> 00:23:53,779
+I say for John so it's a target note
+
+590
+00:23:51,769 --> 00:23:56,310
+it's a specific person I'm talking about
+
+591
+00:23:53,779 --> 00:23:59,310
+if he performs trying to
+
+592
+00:23:56,310 --> 00:24:00,690
+the max value is gonna be ten so now if
+
+593
+00:23:59,310 --> 00:24:01,920
+John performs something at eleven
+
+594
+00:24:00,690 --> 00:24:05,070
+thousand there's gonna be alert the
+
+595
+00:24:01,920 --> 00:24:08,520
+transaction will not go through so very
+
+596
+00:24:05,070 --> 00:24:12,660
+simple shapes but really really helps in
+
+597
+00:24:08,520 --> 00:24:15,680
+real business so just to answer the
+
+598
+00:24:12,660 --> 00:24:18,900
+questions that we're on first slide
+
+599
+00:24:15,680 --> 00:24:21,750
+what is shackle why we need it it's an
+
+600
+00:24:18,900 --> 00:24:23,130
+arti of data validator you do need it to
+
+601
+00:24:21,750 --> 00:24:24,150
+really validate your data if you're
+
+602
+00:24:23,130 --> 00:24:26,730
+using ontology
+
+603
+00:24:24,150 --> 00:24:29,400
+if you're using RDF data to validate
+
+604
+00:24:26,730 --> 00:24:33,260
+make sure to use shackle as opposed to
+
+605
+00:24:29,400 --> 00:24:36,330
+our restrictions it gives you the
+
+606
+00:24:33,260 --> 00:24:39,240
+ability to create different views over
+
+607
+00:24:36,330 --> 00:24:42,360
+your data how is it different from owl
+
+608
+00:24:39,240 --> 00:24:43,740
+owl is for knowledge representation it's
+
+609
+00:24:42,360 --> 00:24:46,530
+for knowledge sharing and for
+
+610
+00:24:43,740 --> 00:24:48,990
+interference not for any validation you
+
+611
+00:24:46,530 --> 00:24:52,920
+can use it but it's not the best
+
+612
+00:24:48,990 --> 00:24:56,610
+solution so use shackle instead of that
+
+613
+00:24:52,920 --> 00:24:58,320
+and for data validation but use owl for
+
+614
+00:24:56,610 --> 00:25:01,890
+your data integration for your data
+
+615
+00:24:58,320 --> 00:25:05,100
+interoperation and how does it really
+
+616
+00:25:01,890 --> 00:25:08,970
+apply to the real world so this is how I
+
+617
+00:25:05,100 --> 00:25:10,890
+would define it very simple use owl to
+
+618
+00:25:08,970 --> 00:25:12,540
+represent your knowledge so you can
+
+619
+00:25:10,890 --> 00:25:15,710
+share the knowledge you can reuse the
+
+620
+00:25:12,540 --> 00:25:18,570
+knowledge use RDF to represent your data
+
+621
+00:25:15,710 --> 00:25:20,760
+map it to Dowell so your data will
+
+622
+00:25:18,570 --> 00:25:23,130
+become smart what becomes smart data it
+
+623
+00:25:20,760 --> 00:25:25,320
+becomes machine understandable so your
+
+624
+00:25:23,130 --> 00:25:27,120
+systems can actually do intelligent
+
+625
+00:25:25,320 --> 00:25:29,700
+stuff with your data they understand
+
+626
+00:25:27,120 --> 00:25:31,860
+what it is then use shackle based on the
+
+627
+00:25:29,700 --> 00:25:34,410
+ecosystem that you're working in to
+
+628
+00:25:31,860 --> 00:25:36,660
+define for this specific ecosystem what
+
+629
+00:25:34,410 --> 00:25:39,510
+is important and how do I validate that
+
+630
+00:25:36,660 --> 00:25:43,520
+data thank you
+
+631
+00:25:39,510 --> 00:25:43,520
+I think we've enough time for questions
+
+632
+00:25:49,330 --> 00:25:52,520
+[Music]
+
+633
+00:25:58,740 --> 00:26:01,990
+[Music]
+
+634
+00:26:07,160 --> 00:26:11,850
+so spin is actually actually shocked
+
+635
+00:26:10,110 --> 00:26:15,179
+when it's based on spin to be honest and
+
+636
+00:26:11,850 --> 00:26:17,040
+they've started building shackle box
+
+637
+00:26:15,179 --> 00:26:19,200
+spin spin was specifically for rules
+
+638
+00:26:17,040 --> 00:26:21,650
+right you can use rules you can even use
+
+639
+00:26:19,200 --> 00:26:24,179
+sparkle in order to validate your data
+
+640
+00:26:21,650 --> 00:26:26,549
+however it wasn't really meant for
+
+641
+00:26:24,179 --> 00:26:27,960
+validation in the first place it was to
+
+642
+00:26:26,549 --> 00:26:29,820
+define rules and to be honest it's a
+
+643
+00:26:27,960 --> 00:26:32,580
+little bit complicated especially when
+
+644
+00:26:29,820 --> 00:26:34,799
+you're using it in real scenarios and
+
+645
+00:26:32,580 --> 00:26:40,559
+like like I've done like stats we're
+
+646
+00:26:34,799 --> 00:26:42,540
+using spin it uses a lot of it needs it
+
+647
+00:26:40,559 --> 00:26:44,700
+needs very high processors it's very
+
+648
+00:26:42,540 --> 00:26:47,940
+slow in terms of running in the real
+
+649
+00:26:44,700 --> 00:26:50,610
+current production and it's meant for
+
+650
+00:26:47,940 --> 00:26:52,140
+rules but the basics of it is used for
+
+651
+00:26:50,610 --> 00:26:54,210
+shackle as well but mates it's
+
+652
+00:26:52,140 --> 00:26:55,830
+simplified to a great extent so I would
+
+653
+00:26:54,210 --> 00:26:59,150
+totally recommend using shackle for your
+
+654
+00:26:55,830 --> 00:26:59,150
+validation as opposed to spend
+
+655
+00:27:12,920 --> 00:27:15,920
+if
+
+656
+00:27:23,650 --> 00:27:29,120
+right so they that was like then it
+
+657
+00:27:28,130 --> 00:27:30,800
+should have started like they both
+
+658
+00:27:29,120 --> 00:27:33,410
+started together at some point they kind
+
+659
+00:27:30,800 --> 00:27:36,950
+of went different ways right I
+
+660
+00:27:33,410 --> 00:27:40,040
+personally find shackle to be more user
+
+661
+00:27:36,950 --> 00:27:42,110
+friendly and to a point I work with
+
+662
+00:27:40,040 --> 00:27:44,090
+chopped quadrants to top rate so shackle
+
+663
+00:27:42,110 --> 00:27:46,790
+is there and shackle has been defined as
+
+664
+00:27:44,090 --> 00:27:48,620
+a standard right now so shacks is not
+
+665
+00:27:46,790 --> 00:27:50,120
+really defined as standard for the RDF
+
+666
+00:27:48,620 --> 00:27:55,970
+validate it can be used but it's not a
+
+667
+00:27:50,120 --> 00:27:58,340
+standard like I don't okay I might have
+
+668
+00:27:55,970 --> 00:28:00,710
+been defined as a standard now but
+
+669
+00:27:58,340 --> 00:28:03,470
+generally speaking it's usually the
+
+670
+00:28:00,710 --> 00:28:05,780
+tools like I use star dog as well as the
+
+671
+00:28:03,470 --> 00:28:09,560
+triple store startup support shackle as
+
+672
+00:28:05,780 --> 00:28:12,730
+well not the other one so not a big
+
+673
+00:28:09,560 --> 00:28:12,730
+difference than otherwise
+
+674
+00:28:24,950 --> 00:28:29,980
+equations national and
+
+675
+00:28:34,470 --> 00:28:39,800
+we have used single
+
+676
+00:28:46,860 --> 00:28:51,320
+while charities parties
+
+677
+00:29:03,059 --> 00:29:07,859
+so the first question to answer the
+
+678
+00:29:05,070 --> 00:29:10,649
+first question yes I have you cycle on
+
+679
+00:29:07,859 --> 00:29:14,339
+large amounts of data and not I've not
+
+680
+00:29:10,649 --> 00:29:16,379
+really come across any specific problems
+
+681
+00:29:14,339 --> 00:29:19,999
+from the performance perspective so it's
+
+682
+00:29:16,379 --> 00:29:22,469
+it's been fine you tackle and star doc
+
+683
+00:29:19,999 --> 00:29:24,570
+so with top grade is usually in memory
+
+684
+00:29:22,469 --> 00:29:26,639
+but would start out we've actually
+
+685
+00:29:24,570 --> 00:29:29,539
+processed over a very large amounts of
+
+686
+00:29:26,639 --> 00:29:34,019
+data in terms of using schema.org
+
+687
+00:29:29,539 --> 00:29:38,369
+instead of RDF s or owl for for
+
+688
+00:29:34,019 --> 00:29:40,289
+inference most of the ontologies that I
+
+689
+00:29:38,369 --> 00:29:42,539
+work with and I define are way more
+
+690
+00:29:40,289 --> 00:29:45,659
+complicated than something that can be
+
+691
+00:29:42,539 --> 00:29:46,979
+modeled with just schema.org if I want
+
+692
+00:29:45,659 --> 00:29:49,589
+to just use the domain and range
+
+693
+00:29:46,979 --> 00:29:52,229
+inference it makes sense to use schema
+
+694
+00:29:49,589 --> 00:29:54,059
+but the ontology is that we model for
+
+695
+00:29:52,229 --> 00:29:56,159
+especially banking domains or insurance
+
+696
+00:29:54,059 --> 00:29:59,219
+domains they're way more complicated
+
+697
+00:29:56,159 --> 00:30:01,969
+than that there is so much more deeper
+
+698
+00:29:59,219 --> 00:30:04,259
+they have so much more different
+
+699
+00:30:01,969 --> 00:30:06,809
+properties that you have to look at and
+
+700
+00:30:04,259 --> 00:30:08,729
+there's way more inference that happens
+
+701
+00:30:06,809 --> 00:30:10,979
+especially when it comes to money
+
+702
+00:30:08,729 --> 00:30:12,269
+laundering or financial crime and stuff
+
+703
+00:30:10,979 --> 00:30:15,179
+that are being used that schema.org
+
+704
+00:30:12,269 --> 00:30:21,989
+really does not meet any of that to
+
+705
+00:30:15,179 --> 00:30:24,690
+become in its requirements we map at the
+
+706
+00:30:21,989 --> 00:30:26,820
+high level which with the FIFO ontology
+
+707
+00:30:24,690 --> 00:30:28,969
+but very high level because it's very
+
+708
+00:30:26,820 --> 00:30:28,969
+abstract
+
+709
+00:30:31,900 --> 00:30:35,140
+thank you
+
+710
+00:30:35,700 --> 00:30:38,299
+[Applause]
+
