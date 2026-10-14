@@ -4961,5 +4961,47 @@
         "zoom"
       ]
     }
+  },
+  {
+    "filename": "DBpedia Knowledge Graph Tutorial for Beginners.txt",
+    "entities": {
+      "tag": [
+        "auth0",
+        "bash",
+        "csv2rdf",
+        "curl",
+        "dataid",
+        "dbpedia",
+        "dbpedia archival",
+        "dbpedia databus",
+        "dbpedia extraction framework",
+        "dbpedia live",
+        "dbpedia lookup",
+        "dbpedia spotlight",
+        "docker",
+        "docker compose",
+        "entity annotation",
+        "entity classification",
+        "federated queries",
+        "git",
+        "gstore",
+        "json-ld",
+        "linked data",
+        "lucene",
+        "maven",
+        "n-quads",
+        "n-triples",
+        "oidc",
+        "rdf",
+        "semantic indexing",
+        "semantic search",
+        "shacl",
+        "sparql",
+        "sql",
+        "turtle",
+        "virtuoso",
+        "yasgui"
+      ]
+    }
   }
 ]
