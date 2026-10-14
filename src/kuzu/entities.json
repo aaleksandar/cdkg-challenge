@@ -4029,5 +4029,37 @@
         "neo4j"
       ]
     }
+  },
+  {
+    "filename": "Develop A Basic Recommendation System using Cypher. Joe Fagan.txt",
+    "entities": {
+      "tag": [
+        "recommendation engines",
+        "agensgraph",
+        "postgres",
+        "relational database",
+        "sql",
+        "graph query language",
+        "cypher",
+        "mvcc",
+        "postgis",
+        "excel",
+        "descriptive analytics",
+        "prescriptive analysis",
+        "predictive analytics",
+        "collaborative filtering",
+        "content-based filtering",
+        "knowledge graphs",
+        "graph database",
+        "cosine similarity",
+        "euclidean distance",
+        "dot product",
+        "pivot table",
+        "json",
+        "cosine centrality",
+        "ab filtering",
+        "gradient descent"
+      ]
+    }
   }
 ]
