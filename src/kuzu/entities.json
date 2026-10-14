@@ -4657,5 +4657,43 @@
         "coreference resolution"
       ]
     }
+  },
+  {
+    "filename": "Developing NLP Solutions for Automatic Knowledge Graph Construction, Part 2.txt",
+    "entities": {
+      "tag": [
+        "knowledge graphs",
+        "named entity recognition",
+        "relation extraction",
+        "spacy",
+        "supervised machine learning",
+        "transfer learning",
+        "language models",
+        "embeddings",
+        "fine-tuning",
+        "sentence-bert",
+        "sentence transformers",
+        "bert",
+        "cosine similarity",
+        "google collab",
+        "natural language inference",
+        "paraphrase mining",
+        "rdf",
+        "pytorch",
+        "protege",
+        "owl",
+        "neo4j",
+        "clustering",
+        "tf-idf",
+        "word2vec",
+        "fasttext",
+        "elmo",
+        "pooling",
+        "diffbot natural language api",
+        "property graphs",
+        "inductive reasoning",
+        "deductive reasoning"
+      ]
+    }
   }
 ]
