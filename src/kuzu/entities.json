@@ -4132,5 +4132,36 @@
         "spreadsheets"
       ]
     }
+  },
+  {
+    "filename": "Ontology Services for the Biomedical Sciences. Simon Jupp.txt",
+    "entities": {
+      "tag": [
+        "owl",
+        "rdf",
+        "sparql",
+        "neo4j",
+        "elasticsearch",
+        "solr",
+        "json",
+        "json-ld",
+        "rest",
+        "graphql",
+        "elk",
+        "schema.org",
+        "bioschemas",
+        "w3c open annotation model",
+        "skos",
+        "ontology lookup service",
+        "zoomer",
+        "oxxo",
+        "web ulysse",
+        "github",
+        "etl",
+        "query expansion",
+        "graph database",
+        "triple store"
+      ]
+    }
   }
 ]

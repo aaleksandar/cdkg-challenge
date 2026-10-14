@@ -1,0 +1,3036 @@
+1
+00:00:03,120 --> 00:00:08,740
+okay all right thank you very much yeah
+
+2
+00:00:06,520 --> 00:00:10,750
+so I want to give a kind of overview for
+
+3
+00:00:08,740 --> 00:00:13,449
+everyone probably about the culmination
+
+4
+00:00:10,750 --> 00:00:16,180
+of about 10 years worth of work at the
+
+5
+00:00:13,449 --> 00:00:21,610
+EBI on probably give you a good overview
+
+6
+00:00:16,180 --> 00:00:24,640
+on how we're using ontology semantics to
+
+7
+00:00:21,610 --> 00:00:26,560
+deal with the sort of large volumes and
+
+8
+00:00:24,640 --> 00:00:28,930
+complexity of biological data and
+
+9
+00:00:26,560 --> 00:00:32,789
+bothered her metadata that we managed
+
+10
+00:00:28,930 --> 00:00:32,789
+and served back to the community of EBI
+
+11
+00:00:32,880 --> 00:00:37,720
+click that's not working right so for
+
+12
+00:00:36,190 --> 00:00:41,110
+any of you that are not familiar with
+
+13
+00:00:37,720 --> 00:00:44,590
+who the V is so we have a home for
+
+14
+00:00:41,110 --> 00:00:48,070
+biological data services and research in
+
+15
+00:00:44,590 --> 00:00:50,649
+Europe we trusted provider of life
+
+16
+00:00:48,070 --> 00:00:55,050
+science data so we're really an archive
+
+17
+00:00:50,649 --> 00:00:57,040
+of public openly available genomics data
+
+18
+00:00:55,050 --> 00:00:58,510
+were part of the European molecular
+
+19
+00:00:57,040 --> 00:01:01,899
+biology laboratory which is a large
+
+20
+00:00:58,510 --> 00:01:04,629
+network of research labs around Europe
+
+21
+00:01:01,899 --> 00:01:05,439
+and we're based on the site just outside
+
+22
+00:01:04,629 --> 00:01:09,539
+Cambridge
+
+23
+00:01:05,439 --> 00:01:09,539
+there's about 650 staff members there
+
+24
+00:01:09,869 --> 00:01:14,499
+and really yeah the goal of the
+
+25
+00:01:13,149 --> 00:01:17,770
+Institute one of the goals is to make
+
+26
+00:01:14,499 --> 00:01:21,039
+this public data what we want to archive
+
+27
+00:01:17,770 --> 00:01:23,049
+it so for long-term storage and then
+
+28
+00:01:21,039 --> 00:01:27,999
+also then to add value to this data we
+
+29
+00:01:23,049 --> 00:01:30,520
+add value to the data through using our
+
+30
+00:01:27,999 --> 00:01:31,990
+views semantics so that we can make the
+
+31
+00:01:30,520 --> 00:01:34,420
+data more interoperable and then serve
+
+32
+00:01:31,990 --> 00:01:36,069
+it back to users and hopefully we get
+
+33
+00:01:34,420 --> 00:01:38,649
+from this kind of path from going from
+
+34
+00:01:36,069 --> 00:01:40,630
+the kind of the raw biological data in
+
+35
+00:01:38,649 --> 00:01:42,479
+the archives and we want to get this
+
+36
+00:01:40,630 --> 00:01:46,749
+through to kind of actionable knowledge
+
+37
+00:01:42,479 --> 00:01:49,090
+around genes proteins and ventually
+
+38
+00:01:46,749 --> 00:01:52,929
+thinking about drug targets and drug
+
+39
+00:01:49,090 --> 00:01:55,810
+discovery so we have a lot of databases
+
+40
+00:01:52,929 --> 00:01:58,630
+and this kind of gives you a kind of
+
+41
+00:01:55,810 --> 00:02:00,999
+overview that we have databases dealing
+
+42
+00:01:58,630 --> 00:02:03,279
+with the literature and then everything
+
+43
+00:02:00,999 --> 00:02:05,619
+down from the archival resources the
+
+44
+00:02:03,279 --> 00:02:07,599
+archive sequence data and then we kind
+
+45
+00:02:05,619 --> 00:02:09,399
+of build in layers of abstraction over
+
+46
+00:02:07,599 --> 00:02:10,399
+this so from the sequence data we build
+
+47
+00:02:09,399 --> 00:02:13,040
+up to the annotation
+
+48
+00:02:10,399 --> 00:02:15,290
+for the genes and the proteins and then
+
+49
+00:02:13,040 --> 00:02:17,440
+we look at the functional annotation of
+
+50
+00:02:15,290 --> 00:02:20,060
+the genes and the protein structural
+
+51
+00:02:17,440 --> 00:02:22,549
+annotation right through the chemistry
+
+52
+00:02:20,060 --> 00:02:25,760
+like i mentioned drugs and drug targets
+
+53
+00:02:22,549 --> 00:02:27,079
+right up to biological systems so we
+
+54
+00:02:25,760 --> 00:02:28,760
+have all these layers of abstraction
+
+55
+00:02:27,079 --> 00:02:31,010
+where we start with the raw data and
+
+56
+00:02:28,760 --> 00:02:33,159
+we're always adding these layers of
+
+57
+00:02:31,010 --> 00:02:35,409
+curation to turn this raw data into
+
+58
+00:02:33,159 --> 00:02:40,159
+knowledge and what we understand about
+
+59
+00:02:35,409 --> 00:02:41,690
+basic biology so unsurprisingly there's
+
+60
+00:02:40,159 --> 00:02:45,440
+a lot of metadata and there's a lot of
+
+61
+00:02:41,690 --> 00:02:47,840
+variety and metadata that we see and I
+
+62
+00:02:45,440 --> 00:02:50,090
+would think specifically in you know the
+
+63
+00:02:47,840 --> 00:02:53,150
+areas that we focus on and we were
+
+64
+00:02:50,090 --> 00:02:55,609
+looking at genomics we're interested in
+
+65
+00:02:53,150 --> 00:02:59,239
+okay well where are these genes where
+
+66
+00:02:55,609 --> 00:03:02,420
+they have in effect we have cell lines
+
+67
+00:02:59,239 --> 00:03:04,220
+and models for behaviors and we also
+
+68
+00:03:02,420 --> 00:03:05,989
+obviously interested in the study of
+
+69
+00:03:04,220 --> 00:03:08,239
+disease so I would say that these are
+
+70
+00:03:05,989 --> 00:03:09,950
+the key areas that we try and focus on
+
+71
+00:03:08,239 --> 00:03:13,670
+in terms of our standardization effort
+
+72
+00:03:09,950 --> 00:03:15,500
+in the metadata and when we actually
+
+73
+00:03:13,670 --> 00:03:19,099
+look at the data you can imagine that
+
+74
+00:03:15,500 --> 00:03:20,870
+it's fairly messy the data comes in in
+
+75
+00:03:19,099 --> 00:03:22,790
+all kind of varieties forms from the
+
+76
+00:03:20,870 --> 00:03:24,349
+from public users Tiffany comes in sort
+
+77
+00:03:22,790 --> 00:03:26,540
+of spreadsheet form so we get a lot of
+
+78
+00:03:24,349 --> 00:03:29,120
+this kind of key value data that is
+
+79
+00:03:26,540 --> 00:03:32,629
+trying to convey what was done in the
+
+80
+00:03:29,120 --> 00:03:34,669
+experiment and we have to try and use
+
+81
+00:03:32,629 --> 00:03:37,459
+this kind of somewhat messy data and get
+
+82
+00:03:34,669 --> 00:03:38,870
+some signal and some sense out of it so
+
+83
+00:03:37,459 --> 00:03:40,459
+this slide just kind of you know a
+
+84
+00:03:38,870 --> 00:03:42,349
+simple search if you just look in some
+
+85
+00:03:40,459 --> 00:03:44,569
+of our sample databases for a keyword
+
+86
+00:03:42,349 --> 00:03:47,359
+like female you see all the variety of
+
+87
+00:03:44,569 --> 00:03:49,639
+ways and some of people are trying to
+
+88
+00:03:47,359 --> 00:03:52,010
+describe some attributes of their sample
+
+89
+00:03:49,639 --> 00:03:53,959
+and there's a whole bunch of kind of
+
+90
+00:03:52,010 --> 00:03:57,379
+context going on in here that tells you
+
+91
+00:03:53,959 --> 00:03:59,859
+actually a bit more about whether you
+
+92
+00:03:57,379 --> 00:04:01,790
+know whether it's abnormal female and
+
+93
+00:03:59,859 --> 00:04:04,280
+sometimes you get these kind of funny
+
+94
+00:04:01,790 --> 00:04:05,750
+cases where they actually put in female
+
+95
+00:04:04,280 --> 00:04:07,549
+in the data but they actually went male
+
+96
+00:04:05,750 --> 00:04:10,040
+and there's all kinds of kind of horror
+
+97
+00:04:07,549 --> 00:04:11,660
+stories of what you end up when you
+
+98
+00:04:10,040 --> 00:04:15,410
+starts of analyzing and looking deep
+
+99
+00:04:11,660 --> 00:04:17,419
+into this data so there's obviously a
+
+100
+00:04:15,410 --> 00:04:19,010
+terminology challenge here that we want
+
+101
+00:04:17,419 --> 00:04:20,329
+to try and understand what people are
+
+102
+00:04:19,010 --> 00:04:22,759
+talking about so that we can into
+
+103
+00:04:20,329 --> 00:04:24,710
+these datasets and we need to be sure
+
+104
+00:04:22,759 --> 00:04:26,659
+that people are talking about the same
+
+105
+00:04:24,710 --> 00:04:29,689
+thing so you know we've got an example
+
+106
+00:04:26,659 --> 00:04:32,000
+here of it word like tibia well this has
+
+107
+00:04:29,689 --> 00:04:33,409
+a meaning in human bones that's a
+
+108
+00:04:32,000 --> 00:04:35,870
+slightly different as a meaning when
+
+109
+00:04:33,409 --> 00:04:37,370
+you're looking at fruit flies we have to
+
+110
+00:04:35,870 --> 00:04:41,210
+understand that there's a context around
+
+111
+00:04:37,370 --> 00:04:43,280
+this word and the life science community
+
+112
+00:04:41,210 --> 00:04:44,509
+it can recognize this challenge for a
+
+113
+00:04:43,280 --> 00:04:46,909
+long time we were talking earlier
+
+114
+00:04:44,509 --> 00:04:49,639
+thinking that really there's a good now
+
+115
+00:04:46,909 --> 00:04:52,129
+20 years worth of history in in
+
+116
+00:04:49,639 --> 00:04:53,930
+bioinformatics of building not just
+
+117
+00:04:52,129 --> 00:04:56,419
+standard for capillaries but really
+
+118
+00:04:53,930 --> 00:04:59,060
+full-blown owl ontology is to try and
+
+119
+00:04:56,419 --> 00:05:01,550
+deal with the terminology challenge that
+
+120
+00:04:59,060 --> 00:05:03,770
+we have in the life sciences so a lot of
+
+121
+00:05:01,550 --> 00:05:06,889
+this work to develop standards around
+
+122
+00:05:03,770 --> 00:05:09,080
+terminology is coordinated through the
+
+123
+00:05:06,889 --> 00:05:11,569
+open biological intelligence community
+
+124
+00:05:09,080 --> 00:05:13,610
+so this is a community of ontology
+
+125
+00:05:11,569 --> 00:05:17,090
+developers in the life sciences who are
+
+126
+00:05:13,610 --> 00:05:19,400
+agreeing sort of principles and guiding
+
+127
+00:05:17,090 --> 00:05:20,689
+principles for how we should develop our
+
+128
+00:05:19,400 --> 00:05:22,400
+ontology is to make sure that they're
+
+129
+00:05:20,689 --> 00:05:24,590
+interoperable so that not everyone is
+
+130
+00:05:22,400 --> 00:05:30,139
+just creating a massive terminologies
+
+131
+00:05:24,590 --> 00:05:31,370
+and they don't work together well and
+
+132
+00:05:30,139 --> 00:05:32,690
+like I say a lot of these anthologies
+
+133
+00:05:31,370 --> 00:05:35,270
+are developed in owl so they're
+
+134
+00:05:32,690 --> 00:05:36,650
+semantically rich and then there's a
+
+135
+00:05:35,270 --> 00:05:38,659
+whole bunch of other terminology
+
+136
+00:05:36,650 --> 00:05:41,089
+standards that kind of live somewhat
+
+137
+00:05:38,659 --> 00:05:42,139
+outside of the ogle community but
+
+138
+00:05:41,089 --> 00:05:43,219
+they're also standards that we're
+
+139
+00:05:42,139 --> 00:05:45,979
+interested in so there's a lot of
+
+140
+00:05:43,219 --> 00:05:48,860
+clinical terminology standards in use
+
+141
+00:05:45,979 --> 00:05:50,330
+and we have to try and through my team
+
+142
+00:05:48,860 --> 00:05:52,909
+kind of pull these standards together
+
+143
+00:05:50,330 --> 00:05:56,900
+and present them to the various
+
+144
+00:05:52,909 --> 00:06:00,250
+databases in some sort of uniform way so
+
+145
+00:05:56,900 --> 00:06:03,289
+I run the ontology steam at UVI and
+
+146
+00:06:00,250 --> 00:06:04,819
+really our goal is to build services and
+
+147
+00:06:03,289 --> 00:06:07,370
+all this kind of ontology and
+
+148
+00:06:04,819 --> 00:06:09,650
+terminology data accessible now
+
+149
+00:06:07,370 --> 00:06:11,509
+primarily focused accessible to humans
+
+150
+00:06:09,650 --> 00:06:12,860
+so the biological qhs so that they can
+
+151
+00:06:11,509 --> 00:06:14,960
+actually access all these ontology
+
+152
+00:06:12,860 --> 00:06:17,270
+because I mean they're all published all
+
+153
+00:06:14,960 --> 00:06:18,800
+around the web and also we want to make
+
+154
+00:06:17,270 --> 00:06:21,020
+them accessible to machines so that
+
+155
+00:06:18,800 --> 00:06:23,930
+people can build pipelines that utilize
+
+156
+00:06:21,020 --> 00:06:28,159
+anthologies or people can data as it
+
+157
+00:06:23,930 --> 00:06:30,139
+takes advantage of this rich data we
+
+158
+00:06:28,159 --> 00:06:31,639
+want to ensure that there's a consistent
+
+159
+00:06:30,139 --> 00:06:33,680
+set of anthologies that we're using
+
+160
+00:06:31,639 --> 00:06:35,509
+across the Institute so we have over 80
+
+161
+00:06:33,680 --> 00:06:37,789
+databases and we want to be sure that
+
+162
+00:06:35,509 --> 00:06:40,310
+all of our different databases are using
+
+163
+00:06:37,789 --> 00:06:42,709
+the same standards and also then the
+
+164
+00:06:40,310 --> 00:06:44,360
+kind of the other databases in the US
+
+165
+00:06:42,709 --> 00:06:45,229
+are using the same standards so we want
+
+166
+00:06:44,360 --> 00:06:47,270
+to try and make sure that we're
+
+167
+00:06:45,229 --> 00:06:49,370
+converging as a community around the
+
+168
+00:06:47,270 --> 00:06:51,500
+same standards to maximize the
+
+169
+00:06:49,370 --> 00:06:54,500
+interoperability of the data that we're
+
+170
+00:06:51,500 --> 00:06:56,149
+curating and then we obviously have to
+
+171
+00:06:54,500 --> 00:06:59,419
+find ways to kind of really scale this
+
+172
+00:06:56,149 --> 00:07:02,000
+up so the data is vast and we need
+
+173
+00:06:59,419 --> 00:07:04,940
+services and methods to be able to kind
+
+174
+00:07:02,000 --> 00:07:08,990
+of assign these ontology terms to the
+
+175
+00:07:04,940 --> 00:07:12,500
+metadata at scale and make sure that we
+
+176
+00:07:08,990 --> 00:07:13,819
+can prioritize a curation and then the
+
+177
+00:07:12,500 --> 00:07:15,649
+other interest of our group is then
+
+178
+00:07:13,819 --> 00:07:17,209
+working with the teams actually build
+
+179
+00:07:15,649 --> 00:07:18,680
+the individual resources to say okay
+
+180
+00:07:17,209 --> 00:07:21,169
+well now if you've got your dates are
+
+181
+00:07:18,680 --> 00:07:22,580
+aligned to some standards how do you how
+
+182
+00:07:21,169 --> 00:07:23,870
+do the developers learn about what they
+
+183
+00:07:22,580 --> 00:07:25,339
+can do with once they've got an album
+
+184
+00:07:23,870 --> 00:07:27,469
+ecology a lot of the developers aren't
+
+185
+00:07:25,339 --> 00:07:29,659
+familiar with some of these kind of
+
+186
+00:07:27,469 --> 00:07:31,430
+semantic technologies they're probably
+
+187
+00:07:29,659 --> 00:07:33,020
+using different types of storage
+
+188
+00:07:31,430 --> 00:07:35,330
+mechanisms some other traditional ones
+
+189
+00:07:33,020 --> 00:07:37,819
+that we might use one will be about RDF
+
+190
+00:07:35,330 --> 00:07:40,009
+data so how do we maximize and utilize
+
+191
+00:07:37,819 --> 00:07:42,259
+the ontology in software and I'll give
+
+192
+00:07:40,009 --> 00:07:45,110
+you kind of overview of now of the tools
+
+193
+00:07:42,259 --> 00:07:49,610
+and services that we've built to help do
+
+194
+00:07:45,110 --> 00:07:51,919
+this so before I get into that I think
+
+195
+00:07:49,610 --> 00:07:54,080
+the important thing is that there is an
+
+196
+00:07:51,919 --> 00:07:55,789
+end result for all this work and the end
+
+197
+00:07:54,080 --> 00:07:57,620
+result from the kind of user is that
+
+198
+00:07:55,789 --> 00:08:00,169
+they get to use these nice portals into
+
+199
+00:07:57,620 --> 00:08:01,550
+the data and when they're doing their
+
+200
+00:08:00,169 --> 00:08:03,709
+searching and browsing around these
+
+201
+00:08:01,550 --> 00:08:05,029
+portals all this kind of integration
+
+202
+00:08:03,709 --> 00:08:06,649
+that's happened in the background fit of
+
+203
+00:08:05,029 --> 00:08:08,599
+the ontology it's kind of transparent as
+
+204
+00:08:06,649 --> 00:08:11,089
+a user so we've got the gene expression
+
+205
+00:08:08,599 --> 00:08:12,800
+database a few examples here so this is
+
+206
+00:08:11,089 --> 00:08:14,000
+a place where you can come up search by
+
+207
+00:08:12,800 --> 00:08:15,560
+gene and see how the gene has been
+
+208
+00:08:14,000 --> 00:08:17,569
+expressed in different tissues and
+
+209
+00:08:15,560 --> 00:08:19,250
+different species and when you're doing
+
+210
+00:08:17,569 --> 00:08:20,719
+a query the yangtze ologies are in the
+
+211
+00:08:19,250 --> 00:08:23,120
+background they're doing query expansion
+
+212
+00:08:20,719 --> 00:08:25,729
+and they're aggregating data for the
+
+213
+00:08:23,120 --> 00:08:27,800
+user similarly in the G West catalogue
+
+214
+00:08:25,729 --> 00:08:29,269
+you can come as a search for
+
+215
+00:08:27,800 --> 00:08:31,729
+cardiovascular disease you can search
+
+216
+00:08:29,269 --> 00:08:32,899
+for general concepts and again the
+
+217
+00:08:31,729 --> 00:08:34,050
+ontology is in the background are
+
+218
+00:08:32,899 --> 00:08:35,910
+expanding this
+
+219
+00:08:34,050 --> 00:08:37,620
+bringing back relevant results and we
+
+220
+00:08:35,910 --> 00:08:39,060
+have another pop portal the open targets
+
+221
+00:08:37,620 --> 00:08:41,700
+portal so this is a drug discovery
+
+222
+00:08:39,060 --> 00:08:44,340
+portal and this integrates around 18
+
+223
+00:08:41,700 --> 00:08:46,950
+different databases all against the set
+
+224
+00:08:44,340 --> 00:08:48,330
+of common ontology and the nice thing
+
+225
+00:08:46,950 --> 00:08:50,340
+about what once we have a common set of
+
+226
+00:08:48,330 --> 00:08:52,050
+ontology is when we talk about you know
+
+227
+00:08:50,340 --> 00:08:54,030
+cardiovascular disorders in here we've
+
+228
+00:08:52,050 --> 00:08:55,590
+got the same codes in here and in this
+
+229
+00:08:54,030 --> 00:08:59,070
+database and in all the other databases
+
+230
+00:08:55,590 --> 00:09:03,390
+so we're sort of maximally interoperable
+
+231
+00:08:59,070 --> 00:09:07,560
+across our resources and yeah this is
+
+232
+00:09:03,390 --> 00:09:09,360
+just a page again showing on some sort
+
+233
+00:09:07,560 --> 00:09:10,770
+of ontology driven search on the open
+
+234
+00:09:09,360 --> 00:09:13,170
+targets platform so you can come and
+
+235
+00:09:10,770 --> 00:09:15,900
+find potential drug targets you can
+
+236
+00:09:13,170 --> 00:09:17,490
+search by disease and again ontology is
+
+237
+00:09:15,900 --> 00:09:20,930
+in the background there health driving
+
+238
+00:09:17,490 --> 00:09:23,670
+the search and the query expansion here
+
+239
+00:09:20,930 --> 00:09:25,260
+so that's the end result so I want to
+
+240
+00:09:23,670 --> 00:09:27,960
+talk you now through the kind of process
+
+241
+00:09:25,260 --> 00:09:29,550
+of how we get there scale so if we can
+
+242
+00:09:27,960 --> 00:09:31,650
+imagine the data typically coming in
+
+243
+00:09:29,550 --> 00:09:34,140
+like this this kind of key value it's
+
+244
+00:09:31,650 --> 00:09:35,640
+all strings and what we want to do is
+
+245
+00:09:34,140 --> 00:09:37,500
+take something like here we've got an
+
+246
+00:09:35,640 --> 00:09:39,810
+annotation that says ok the cell type in
+
+247
+00:09:37,500 --> 00:09:41,880
+this sample was a mast cell we want to
+
+248
+00:09:39,810 --> 00:09:44,130
+get this over to a concept like mast
+
+249
+00:09:41,880 --> 00:09:45,450
+cell in the cell type ontology and then
+
+250
+00:09:44,130 --> 00:09:47,400
+from the cell type ontology would get
+
+251
+00:09:45,450 --> 00:09:49,170
+all this added value so all this extra
+
+252
+00:09:47,400 --> 00:09:51,390
+relationship so we can also then
+
+253
+00:09:49,170 --> 00:09:53,700
+immediately start to make inferences
+
+254
+00:09:51,390 --> 00:09:56,430
+about this sample that these are this is
+
+255
+00:09:53,700 --> 00:09:58,800
+a secretory cell and all these other
+
+256
+00:09:56,430 --> 00:10:01,770
+types of functions of the cell so if we
+
+257
+00:09:58,800 --> 00:10:03,390
+can get this mapping done then we get to
+
+258
+00:10:01,770 --> 00:10:05,790
+a much richer pool of knowledge around
+
+259
+00:10:03,390 --> 00:10:08,070
+these samples but then the challenge
+
+260
+00:10:05,790 --> 00:10:10,170
+then for the curators is whether they
+
+261
+00:10:08,070 --> 00:10:13,560
+start so how do you start with all these
+
+262
+00:10:10,170 --> 00:10:16,800
+hundreds of oncologists and which or
+
+263
+00:10:13,560 --> 00:10:20,010
+should they be using so we can numerate
+
+264
+00:10:16,800 --> 00:10:21,570
+the questions so typically our users of
+
+265
+00:10:20,010 --> 00:10:23,400
+our services they want to milk it how do
+
+266
+00:10:21,570 --> 00:10:26,610
+I access ontology is in the first place
+
+267
+00:10:23,400 --> 00:10:28,530
+how do I find them how do i annotate my
+
+268
+00:10:26,610 --> 00:10:30,210
+data with ontology so I've got data in a
+
+269
+00:10:28,530 --> 00:10:32,460
+spreadsheet how do I get from that to
+
+270
+00:10:30,210 --> 00:10:34,860
+these kind of ontology is this semantic
+
+271
+00:10:32,460 --> 00:10:37,290
+markup and which one should I be using
+
+272
+00:10:34,860 --> 00:10:38,970
+there's hundreds of them and then what
+
+273
+00:10:37,290 --> 00:10:40,740
+happens when I've got data that doesn't
+
+274
+00:10:38,970 --> 00:10:43,610
+actually align to any of the existing
+
+275
+00:10:40,740 --> 00:10:46,190
+ontology is where do I go next
+
+276
+00:10:43,610 --> 00:10:47,840
+sometimes we have mapping problems so
+
+277
+00:10:46,190 --> 00:10:49,490
+sometimes data will come in and it's
+
+278
+00:10:47,840 --> 00:10:50,870
+already mapped to one standard but it's
+
+279
+00:10:49,490 --> 00:10:53,150
+not the standard that we're using it the
+
+280
+00:10:50,870 --> 00:10:56,450
+EBI so we need to then have ways to map
+
+281
+00:10:53,150 --> 00:10:58,160
+across ontology and then if people want
+
+282
+00:10:56,450 --> 00:10:59,660
+to contribute how can the curators
+
+283
+00:10:58,160 --> 00:11:01,250
+actually say ok I'm an expert in this
+
+284
+00:10:59,660 --> 00:11:02,780
+field I want to start extending this
+
+285
+00:11:01,250 --> 00:11:04,730
+portion of ontology because it's not
+
+286
+00:11:02,780 --> 00:11:07,130
+representing my data well enough and
+
+287
+00:11:04,730 --> 00:11:08,480
+then finally how do I build you know
+
+288
+00:11:07,130 --> 00:11:10,610
+once we've done all this how do we build
+
+289
+00:11:08,480 --> 00:11:13,490
+a smart application that can use it so
+
+290
+00:11:10,610 --> 00:11:16,040
+I'll cover it all of these so these are
+
+291
+00:11:13,490 --> 00:11:17,900
+our four core tools the platform our
+
+292
+00:11:16,040 --> 00:11:19,250
+kind of ontology toolkit so we have the
+
+293
+00:11:17,900 --> 00:11:20,900
+ontology lookup service which is a
+
+294
+00:11:19,250 --> 00:11:22,880
+search engine for anthologies we have
+
+295
+00:11:20,900 --> 00:11:25,070
+our Zoomer system which is the data
+
+296
+00:11:22,880 --> 00:11:27,320
+annotation we have oXXO which is an
+
+297
+00:11:25,070 --> 00:11:28,700
+ontology mapping service and we have web
+
+298
+00:11:27,320 --> 00:11:32,690
+Ulysse which is a tool for creating
+
+299
+00:11:28,700 --> 00:11:34,820
+apologies from spreadsheets so there's a
+
+300
+00:11:32,690 --> 00:11:36,530
+link here and get the slides it kind of
+
+301
+00:11:34,820 --> 00:11:39,410
+a portal into all our tools everything
+
+302
+00:11:36,530 --> 00:11:41,060
+is on github we're saying all this is
+
+303
+00:11:39,410 --> 00:11:43,580
+fully open source software so you can
+
+304
+00:11:41,060 --> 00:11:45,950
+get this and none of this software is
+
+305
+00:11:43,580 --> 00:11:47,360
+really tied to life science data so as
+
+306
+00:11:45,950 --> 00:11:51,320
+most of this is just designed to work
+
+307
+00:11:47,360 --> 00:11:53,120
+with our ontology and yeah we've kind of
+
+308
+00:11:51,320 --> 00:11:54,590
+been get delving into the world of cloud
+
+309
+00:11:53,120 --> 00:11:57,650
+so you can kind of run these services
+
+310
+00:11:54,590 --> 00:11:59,240
+and cloud environments now so I'll start
+
+311
+00:11:57,650 --> 00:12:01,340
+with the ontology lookup service so this
+
+312
+00:11:59,240 --> 00:12:03,800
+is a repository now of around 200
+
+313
+00:12:01,340 --> 00:12:05,240
+pre-selected ontology so we curate the
+
+314
+00:12:03,800 --> 00:12:07,010
+actual anthologies that are out there
+
+315
+00:12:05,240 --> 00:12:11,180
+and say ok these are the set that are
+
+316
+00:12:07,010 --> 00:12:14,210
+relevant for data or EBI there's around
+
+317
+00:12:11,180 --> 00:12:15,800
+5 million ontology terms in there like I
+
+318
+00:12:14,210 --> 00:12:18,170
+say it's primarily a search engine so
+
+319
+00:12:15,800 --> 00:12:20,120
+it's about just discovery of terms we do
+
+320
+00:12:18,170 --> 00:12:21,560
+ontology tracking so every night we're
+
+321
+00:12:20,120 --> 00:12:23,660
+polling all the ontology is looking for
+
+322
+00:12:21,560 --> 00:12:25,490
+changes so that you can see how ontology
+
+323
+00:12:23,660 --> 00:12:27,100
+is changing over time or if terms have
+
+324
+00:12:25,490 --> 00:12:29,450
+got deleted or if they've been replaced
+
+325
+00:12:27,100 --> 00:12:31,130
+systems can kind of automatically update
+
+326
+00:12:29,450 --> 00:12:33,080
+against that we have a number of
+
+327
+00:12:31,130 --> 00:12:35,270
+visualization tools which I'll show in
+
+328
+00:12:33,080 --> 00:12:38,450
+the next slide now we have an API for
+
+329
+00:12:35,270 --> 00:12:40,880
+programmatic access and really the goal
+
+330
+00:12:38,450 --> 00:12:42,980
+here is to say look you a list of these
+
+331
+00:12:40,880 --> 00:12:44,780
+200 ontology yes most of them are now
+
+332
+00:12:42,980 --> 00:12:46,850
+but sometimes they vary and how they
+
+333
+00:12:44,780 --> 00:12:49,120
+might represent definitions or synonyms
+
+334
+00:12:46,850 --> 00:12:51,260
+and no LS aims to provide a unified
+
+335
+00:12:49,120 --> 00:12:51,950
+interface so we make sure that all those
+
+336
+00:12:51,260 --> 00:12:54,560
+ontology
+
+337
+00:12:51,950 --> 00:12:56,410
+as line as best we can so you have a
+
+338
+00:12:54,560 --> 00:12:59,300
+single interface to all these ontologies
+
+339
+00:12:56,410 --> 00:13:03,410
+and we have around 6,000 sort of active
+
+340
+00:12:59,300 --> 00:13:05,000
+users a month and around 50 million hits
+
+341
+00:13:03,410 --> 00:13:06,770
+on the API but this can go up to about
+
+342
+00:13:05,000 --> 00:13:08,480
+150 million it depends it's one of the
+
+343
+00:13:06,770 --> 00:13:10,190
+big databases are doing the release so
+
+344
+00:13:08,480 --> 00:13:13,100
+they will just often just throw all
+
+345
+00:13:10,190 --> 00:13:14,720
+their data against the API and try and
+
+346
+00:13:13,100 --> 00:13:16,880
+do their best effort at matching to
+
+347
+00:13:14,720 --> 00:13:18,500
+ontology so we have some sort of typical
+
+348
+00:13:16,880 --> 00:13:20,780
+ontology visualizations we've got
+
+349
+00:13:18,500 --> 00:13:22,340
+autocomplete boxes but these are kind of
+
+350
+00:13:20,780 --> 00:13:24,590
+widgets that you can deploy that in
+
+351
+00:13:22,340 --> 00:13:26,840
+other curation systems we've got tree
+
+352
+00:13:24,590 --> 00:13:31,040
+based views we've got an graphical views
+
+353
+00:13:26,840 --> 00:13:32,810
+of the ontology but what we realize is
+
+354
+00:13:31,040 --> 00:13:34,610
+that this isn't enough okay so the
+
+355
+00:13:32,810 --> 00:13:35,690
+problem with an ontology lookup service
+
+356
+00:13:34,610 --> 00:13:37,850
+is if you don't know what you're looking
+
+357
+00:13:35,690 --> 00:13:40,760
+for you suddenly get lost so the simple
+
+358
+00:13:37,850 --> 00:13:43,310
+query for liver you'll actually get
+
+359
+00:13:40,760 --> 00:13:45,050
+about two pages of results in OLS
+
+360
+00:13:43,310 --> 00:13:46,670
+because there's multiple anthologies for
+
+361
+00:13:45,050 --> 00:13:48,920
+different species that talk about liver
+
+362
+00:13:46,670 --> 00:13:50,690
+so then it's okay well which one should
+
+363
+00:13:48,920 --> 00:13:52,970
+I be using which one is going to get me
+
+364
+00:13:50,690 --> 00:13:54,710
+maximum interoperability with the other
+
+365
+00:13:52,970 --> 00:13:56,780
+databases at the EBI so we thought about
+
+366
+00:13:54,710 --> 00:13:57,980
+this for a while and I thought well we
+
+367
+00:13:56,780 --> 00:14:00,110
+need to start collecting how these
+
+368
+00:13:57,980 --> 00:14:02,120
+ontology terms are used so that we can
+
+369
+00:14:00,110 --> 00:14:04,310
+then prioritize and actually give the
+
+370
+00:14:02,120 --> 00:14:06,620
+user an informed result and say actually
+
+371
+00:14:04,310 --> 00:14:08,420
+these five databases are using this
+
+372
+00:14:06,620 --> 00:14:11,270
+concept so if you use this one then
+
+373
+00:14:08,420 --> 00:14:12,800
+you're going to be aligned so this is
+
+374
+00:14:11,270 --> 00:14:15,920
+really what the Zoomer knowledgebase
+
+375
+00:14:12,800 --> 00:14:19,280
+does for us it's say we run it as an RDF
+
+376
+00:14:15,920 --> 00:14:21,410
+triple store using w3c open annotation
+
+377
+00:14:19,280 --> 00:14:23,510
+model to basically capture these
+
+378
+00:14:21,410 --> 00:14:26,720
+annotations and an annotation is
+
+379
+00:14:23,510 --> 00:14:28,910
+essentially a database have a concept
+
+380
+00:14:26,720 --> 00:14:31,130
+like heart or a string and they mapped
+
+381
+00:14:28,910 --> 00:14:32,600
+it to this suberin concept and then we
+
+382
+00:14:31,130 --> 00:14:34,070
+capture some of the provenance of when
+
+383
+00:14:32,600 --> 00:14:36,250
+this situation was done and each of the
+
+384
+00:14:34,070 --> 00:14:38,630
+databases where they use this content
+
+385
+00:14:36,250 --> 00:14:40,070
+now what this does then is it gives us
+
+386
+00:14:38,630 --> 00:14:42,140
+them the training set to be able to
+
+387
+00:14:40,070 --> 00:14:43,610
+predict when we see new types of string
+
+388
+00:14:42,140 --> 00:14:45,590
+we can have some kind of level of
+
+389
+00:14:43,610 --> 00:14:48,110
+confidence about which terms we should
+
+390
+00:14:45,590 --> 00:14:49,610
+be mapping to and then it leaves that we
+
+391
+00:14:48,110 --> 00:14:51,230
+don't have to keep redoing the same
+
+392
+00:14:49,610 --> 00:14:53,630
+creation so it's kind of the trivial
+
+393
+00:14:51,230 --> 00:14:55,580
+stuff when we see okay heart on its own
+
+394
+00:14:53,630 --> 00:14:56,640
+there's never really any question we
+
+395
+00:14:55,580 --> 00:14:58,650
+know that we should always
+
+396
+00:14:56,640 --> 00:15:02,130
+be nothing to this and that the
+
+397
+00:14:58,650 --> 00:15:03,960
+ambiguity is gone so Zoomer has a simple
+
+398
+00:15:02,130 --> 00:15:05,460
+kind of web interface so you can kind of
+
+399
+00:15:03,960 --> 00:15:07,020
+upload date certificate II that you
+
+400
+00:15:05,460 --> 00:15:09,510
+might get out of your spreadsheet put
+
+401
+00:15:07,020 --> 00:15:11,430
+all the terms in tells you where to go
+
+402
+00:15:09,510 --> 00:15:13,890
+and annotate and it'll read and give you
+
+403
+00:15:11,430 --> 00:15:15,360
+back a result so in some cases it comes
+
+404
+00:15:13,890 --> 00:15:16,740
+back with the kind of confidence level
+
+405
+00:15:15,360 --> 00:15:18,450
+so this essentially means okay yeah
+
+406
+00:15:16,740 --> 00:15:19,980
+we've seen this before in the database
+
+407
+00:15:18,450 --> 00:15:21,660
+and we can be pretty confident that you
+
+408
+00:15:19,980 --> 00:15:24,330
+can map this is the this is the term
+
+409
+00:15:21,660 --> 00:15:25,920
+that you should be mapping to but it
+
+410
+00:15:24,330 --> 00:15:28,290
+doesn't always work it's never that
+
+411
+00:15:25,920 --> 00:15:30,750
+clean so then you get this kind of
+
+412
+00:15:28,290 --> 00:15:32,460
+scenario where in some cases you know
+
+413
+00:15:30,750 --> 00:15:34,770
+zoom is not quite sure so there's a few
+
+414
+00:15:32,460 --> 00:15:35,970
+concepts that are quite similar and
+
+415
+00:15:34,770 --> 00:15:37,500
+these just come from different ontology
+
+416
+00:15:35,970 --> 00:15:38,180
+so it means we haven't really seen this
+
+417
+00:15:37,500 --> 00:15:40,590
+before
+
+418
+00:15:38,180 --> 00:15:43,110
+and in this scenario we want to get the
+
+419
+00:15:40,590 --> 00:15:44,400
+curators feedback so they can they have
+
+420
+00:15:43,110 --> 00:15:46,320
+a mechanism now where they can download
+
+421
+00:15:44,400 --> 00:15:47,490
+these data they can actually fix the
+
+422
+00:15:46,320 --> 00:15:49,350
+mappings and then they load them back
+
+423
+00:15:47,490 --> 00:15:51,960
+into Zoomers and we start to train the
+
+424
+00:15:49,350 --> 00:15:53,610
+system so that the next time we see type
+
+425
+00:15:51,960 --> 00:15:55,110
+2 diabetes mellitus they should come
+
+426
+00:15:53,610 --> 00:15:57,450
+back as high confidence because we've
+
+427
+00:15:55,110 --> 00:15:58,350
+seen it an annotated it before so that's
+
+428
+00:15:57,450 --> 00:16:03,990
+the general idea
+
+429
+00:15:58,350 --> 00:16:07,230
+with Zoomer so then zoom is going from
+
+430
+00:16:03,990 --> 00:16:08,730
+strings to concepts and then we've got
+
+431
+00:16:07,230 --> 00:16:10,530
+this kind of problem again that well
+
+432
+00:16:08,730 --> 00:16:12,150
+sometimes you can map to a particular
+
+433
+00:16:10,530 --> 00:16:14,220
+ontology but it's not the right one it's
+
+434
+00:16:12,150 --> 00:16:16,260
+not the one that you want so we have one
+
+435
+00:16:14,220 --> 00:16:18,390
+data source here and are using sno-med
+
+436
+00:16:16,260 --> 00:16:20,070
+as the clinical terminology we've got
+
+437
+00:16:18,390 --> 00:16:21,300
+another data source at the EBI that are
+
+438
+00:16:20,070 --> 00:16:24,270
+using conception human phenotype
+
+439
+00:16:21,300 --> 00:16:28,350
+ontology and we have to find ways to map
+
+440
+00:16:24,270 --> 00:16:30,870
+between these ontology so mapping is a
+
+441
+00:16:28,350 --> 00:16:32,640
+complicated there's a whole bunch of
+
+442
+00:16:30,870 --> 00:16:33,930
+tools for doing predicted mapping but
+
+443
+00:16:32,640 --> 00:16:35,580
+again we're focusing on the creation
+
+444
+00:16:33,930 --> 00:16:39,660
+aspect because there's a whole bunch of
+
+445
+00:16:35,580 --> 00:16:40,980
+curation going on on mappings so the
+
+446
+00:16:39,660 --> 00:16:42,900
+ontology mapping service is really a
+
+447
+00:16:40,980 --> 00:16:45,840
+repository it's a graph database that we
+
+448
+00:16:42,900 --> 00:16:47,460
+use to collect all known mappings and
+
+449
+00:16:45,840 --> 00:16:49,920
+cross references that we can either
+
+450
+00:16:47,460 --> 00:16:52,820
+extract from existing ontology Zoar
+
+451
+00:16:49,920 --> 00:16:55,380
+mappings that particular teams have done
+
+452
+00:16:52,820 --> 00:16:57,960
+the semantics are quite broad in here so
+
+453
+00:16:55,380 --> 00:16:59,520
+it's kind of scoffs like semantics but
+
+454
+00:16:57,960 --> 00:17:01,290
+we basically can start to build these
+
+455
+00:16:59,520 --> 00:17:02,730
+kind of clusters of concepts you see the
+
+456
+00:17:01,290 --> 00:17:05,140
+different colors indicate a different
+
+457
+00:17:02,730 --> 00:17:07,839
+vocabulary and these are all
+
+458
+00:17:05,140 --> 00:17:09,459
+concepts related to type-2 diabetes but
+
+459
+00:17:07,839 --> 00:17:11,140
+some of them come from mesh this is from
+
+460
+00:17:09,459 --> 00:17:14,620
+the human disease ontology this is from
+
+461
+00:17:11,140 --> 00:17:16,959
+the NCI t ontology and what we found is
+
+462
+00:17:14,620 --> 00:17:18,459
+that by putting sort of all the mappings
+
+463
+00:17:16,959 --> 00:17:20,079
+that we can find together into a big
+
+464
+00:17:18,459 --> 00:17:22,329
+graph then we can start to poke this
+
+465
+00:17:20,079 --> 00:17:25,450
+graph and start to produce kind of
+
+466
+00:17:22,329 --> 00:17:28,089
+confidences scores on how confident we
+
+467
+00:17:25,450 --> 00:17:29,770
+are a particular mapping is true whether
+
+468
+00:17:28,089 --> 00:17:31,330
+it's likely to be exact or whether these
+
+469
+00:17:29,770 --> 00:17:33,070
+are kind of broader mappings when you
+
+470
+00:17:31,330 --> 00:17:35,890
+start to see these big clusters around
+
+471
+00:17:33,070 --> 00:17:37,000
+here generic concepts like cancer then
+
+472
+00:17:35,890 --> 00:17:39,280
+you have lots of things potentially
+
+473
+00:17:37,000 --> 00:17:41,830
+mapping to that and that's probably some
+
+474
+00:17:39,280 --> 00:17:44,950
+indication that these are true exact
+
+475
+00:17:41,830 --> 00:17:46,720
+matches so really the octo service is
+
+476
+00:17:44,950 --> 00:17:50,380
+just about serving up those mappings to
+
+477
+00:17:46,720 --> 00:17:51,940
+users I'm going to just switch gears a
+
+478
+00:17:50,380 --> 00:17:53,500
+bit and go down into the riddle of the
+
+479
+00:17:51,940 --> 00:17:56,170
+underlying technology if people are
+
+480
+00:17:53,500 --> 00:17:59,170
+really interested in how we how our
+
+481
+00:17:56,170 --> 00:18:02,820
+lesson opted to run so we did six years
+
+482
+00:17:59,170 --> 00:18:05,050
+ago I think when we sort of first got
+
+483
+00:18:02,820 --> 00:18:07,060
+introduced to neo4j we thought well this
+
+484
+00:18:05,050 --> 00:18:08,710
+would be potentially a nice back-end
+
+485
+00:18:07,060 --> 00:18:10,290
+database to store all this ontology as
+
+486
+00:18:08,710 --> 00:18:12,900
+it seems like a natural representation
+
+487
+00:18:10,290 --> 00:18:16,000
+so at the time we built our own
+
+488
+00:18:12,900 --> 00:18:18,760
+importers for owl into neo4j these was
+
+489
+00:18:16,000 --> 00:18:21,490
+generic importers and we really focus
+
+490
+00:18:18,760 --> 00:18:23,620
+about collapsing the our representation
+
+491
+00:18:21,490 --> 00:18:25,990
+into a sort of simpler graph that's
+
+492
+00:18:23,620 --> 00:18:28,330
+optimized for most of the common queries
+
+493
+00:18:25,990 --> 00:18:29,770
+so you know getting all the ancestor
+
+494
+00:18:28,330 --> 00:18:32,140
+computing the kind of transits if
+
+495
+00:18:29,770 --> 00:18:33,760
+closures across these anthologies and
+
+496
+00:18:32,140 --> 00:18:36,430
+this has a list brought with their load
+
+497
+00:18:33,760 --> 00:18:39,670
+of benefits because I can hi developers
+
+498
+00:18:36,430 --> 00:18:41,050
+now who can actually work with neo4j as
+
+499
+00:18:39,670 --> 00:18:42,820
+opposed to in the past trying to find
+
+500
+00:18:41,050 --> 00:18:45,280
+people to work with so with our
+
+501
+00:18:42,820 --> 00:18:47,710
+representations in triple stores and
+
+502
+00:18:45,280 --> 00:18:49,480
+lemons right sparkle against the kind of
+
+503
+00:18:47,710 --> 00:18:51,550
+the RDF serialization of owl
+
+504
+00:18:49,480 --> 00:18:54,610
+if anyone's tried to do it it's not the
+
+505
+00:18:51,550 --> 00:18:57,340
+most friendly thing to do so we've had
+
+506
+00:18:54,610 --> 00:18:59,890
+quite good fun working with neo4j and
+
+507
+00:18:57,340 --> 00:19:02,410
+coming you know taking advantage of this
+
+508
+00:18:59,890 --> 00:19:04,150
+really nice syntax to be able to do you
+
+509
+00:19:02,410 --> 00:19:05,440
+know really common queries like okay I
+
+510
+00:19:04,150 --> 00:19:07,180
+want all the class but get me all the
+
+511
+00:19:05,440 --> 00:19:09,010
+classification for a concept like carp
+
+512
+00:19:07,180 --> 00:19:12,190
+and it's a very simple query in neo4j
+
+513
+00:19:09,010 --> 00:19:13,140
+and I can easily extract the extract the
+
+514
+00:19:12,190 --> 00:19:18,210
+structure of
+
+515
+00:19:13,140 --> 00:19:20,730
+from that and it's super fast so then
+
+516
+00:19:18,210 --> 00:19:23,220
+that's the kind of the back end for the
+
+517
+00:19:20,730 --> 00:19:25,560
+structure of the ontology z' we also do
+
+518
+00:19:23,220 --> 00:19:27,480
+a lot of work then because like I say
+
+519
+00:19:25,560 --> 00:19:28,560
+most of the databases at the EBI and
+
+520
+00:19:27,480 --> 00:19:30,740
+they're probably using some kind of
+
+521
+00:19:28,560 --> 00:19:32,910
+search technology like elastic or solar
+
+522
+00:19:30,740 --> 00:19:34,680
+so then we've been thinking about well
+
+523
+00:19:32,910 --> 00:19:36,150
+how do you when you've got this you've
+
+524
+00:19:34,680 --> 00:19:38,160
+got your data you've annotated its
+
+525
+00:19:36,150 --> 00:19:40,620
+ontology we've got this structure what's
+
+526
+00:19:38,160 --> 00:19:42,480
+the best way to shove that structure
+
+527
+00:19:40,620 --> 00:19:44,370
+into the document store so that we can
+
+528
+00:19:42,480 --> 00:19:46,200
+do this query expansion and we've
+
+529
+00:19:44,370 --> 00:19:48,300
+written plug-ins for elastic search and
+
+530
+00:19:46,200 --> 00:19:50,070
+solar so where you can essentially once
+
+531
+00:19:48,300 --> 00:19:51,450
+you've got your data loaded into your
+
+532
+00:19:50,070 --> 00:19:52,830
+document store and you've got one of
+
+533
+00:19:51,450 --> 00:19:55,500
+your fields that's got an ontology
+
+534
+00:19:52,830 --> 00:19:57,630
+concept these plugins will identify the
+
+535
+00:19:55,500 --> 00:19:58,950
+ontology concept it will go to the
+
+536
+00:19:57,630 --> 00:20:00,540
+ontology lookup service and then it will
+
+537
+00:19:58,950 --> 00:20:02,700
+start pull out all the labels the
+
+538
+00:20:00,540 --> 00:20:04,770
+synonyms and all the parent terms and
+
+539
+00:20:02,700 --> 00:20:06,390
+all the related terms and actually just
+
+540
+00:20:04,770 --> 00:20:08,160
+inject them directly into your search
+
+541
+00:20:06,390 --> 00:20:11,160
+index so then you've got this kind of
+
+542
+00:20:08,160 --> 00:20:13,380
+enriched index that you can do this kind
+
+543
+00:20:11,160 --> 00:20:14,880
+of querying on we're kind of seeing this
+
+544
+00:20:13,380 --> 00:20:16,740
+pattern all over on the different
+
+545
+00:20:14,880 --> 00:20:19,620
+databases that we're constantly kind of
+
+546
+00:20:16,740 --> 00:20:22,050
+having to move from pushing the graph
+
+547
+00:20:19,620 --> 00:20:25,590
+date of representation into some kind of
+
+548
+00:20:22,050 --> 00:20:27,090
+fast search indexing and I presume that
+
+549
+00:20:25,590 --> 00:20:29,640
+this is a kind of the common approach
+
+550
+00:20:27,090 --> 00:20:32,900
+that people employ and like I say we're
+
+551
+00:20:29,640 --> 00:20:35,400
+trying to build tooling around this and
+
+552
+00:20:32,900 --> 00:20:37,800
+yeah this is how you get this nice query
+
+553
+00:20:35,400 --> 00:20:39,630
+expansion so behind the scenes of the
+
+554
+00:20:37,800 --> 00:20:42,150
+Jewess catalog it's a so much solar
+
+555
+00:20:39,630 --> 00:20:43,800
+index and you do a text search on
+
+556
+00:20:42,150 --> 00:20:45,750
+cardiovascular disease and you pull back
+
+557
+00:20:43,800 --> 00:20:48,060
+variants associated to vascular
+
+558
+00:20:45,750 --> 00:20:50,790
+constriction so this is not a lexical
+
+559
+00:20:48,060 --> 00:20:55,800
+map this is an ontology driven search
+
+560
+00:20:50,790 --> 00:20:58,080
+result so in the final bit from what
+
+561
+00:20:55,800 --> 00:20:59,400
+time I've got left so that's really what
+
+562
+00:20:58,080 --> 00:21:01,110
+I wanted to say about our kind of
+
+563
+00:20:59,400 --> 00:21:03,570
+ontology stack and how we try and get
+
+564
+00:21:01,110 --> 00:21:05,310
+from this messy data to anthologies and
+
+565
+00:21:03,570 --> 00:21:07,260
+how we utilize that in applications and
+
+566
+00:21:05,310 --> 00:21:09,510
+then there's the final step which is
+
+567
+00:21:07,260 --> 00:21:11,310
+okay well how do you publish and expose
+
+568
+00:21:09,510 --> 00:21:14,330
+this data we've done all this effort to
+
+569
+00:21:11,310 --> 00:21:17,100
+do this nice semantic enrichment and
+
+570
+00:21:14,330 --> 00:21:20,450
+again about five years ago we started
+
+571
+00:21:17,100 --> 00:21:22,999
+work on EBI RDF platform
+
+572
+00:21:20,450 --> 00:21:25,879
+and then currently we focused on around
+
+573
+00:21:22,999 --> 00:21:30,409
+seven of the largest data sources at the
+
+574
+00:21:25,879 --> 00:21:31,909
+EBI and we built an RDF schema and put
+
+575
+00:21:30,409 --> 00:21:33,950
+them all into a bigger choice a triple
+
+576
+00:21:31,909 --> 00:21:37,669
+store and put the sparkle endpoint on
+
+577
+00:21:33,950 --> 00:21:39,739
+top and this is extremely powerful you
+
+578
+00:21:37,669 --> 00:21:42,109
+can do some queries on this platform
+
+579
+00:21:39,739 --> 00:21:45,649
+that you can't do with the other
+
+580
+00:21:42,109 --> 00:21:47,210
+services as they currently are but we're
+
+581
+00:21:45,649 --> 00:21:49,220
+also finding that this is a really hard
+
+582
+00:21:47,210 --> 00:21:51,259
+platform to maintain because it's really
+
+583
+00:21:49,220 --> 00:21:54,499
+the end of an ETL process this isn't the
+
+584
+00:21:51,259 --> 00:21:56,450
+source of truth for the data and anyone
+
+585
+00:21:54,499 --> 00:21:59,480
+will know that you know over the years
+
+586
+00:21:56,450 --> 00:22:01,369
+these ETL processes they get fragile
+
+587
+00:21:59,480 --> 00:22:03,109
+especially if people aren't kind of
+
+588
+00:22:01,369 --> 00:22:05,960
+familiar with technologies like RDF
+
+589
+00:22:03,109 --> 00:22:07,399
+they're a little bit specialized so it's
+
+590
+00:22:05,960 --> 00:22:10,009
+still running and it's still very
+
+591
+00:22:07,399 --> 00:22:13,330
+powerful but it generally has a kind of
+
+592
+00:22:10,009 --> 00:22:15,590
+niche communities that use this platform
+
+593
+00:22:13,330 --> 00:22:17,989
+this is just a little kind of schematic
+
+594
+00:22:15,590 --> 00:22:20,059
+of the underlying schema in the RDF
+
+595
+00:22:17,989 --> 00:22:21,559
+platform so you can imagine all the
+
+596
+00:22:20,059 --> 00:22:23,210
+obvious things we connect genes to
+
+597
+00:22:21,559 --> 00:22:25,480
+proteins we've got information about the
+
+598
+00:22:23,210 --> 00:22:28,220
+structures linking through to reactions
+
+599
+00:22:25,480 --> 00:22:31,389
+protein function drug targets and
+
+600
+00:22:28,220 --> 00:22:34,700
+disease so this is the underlying schema
+
+601
+00:22:31,389 --> 00:22:37,129
+so since kind of this investment in
+
+602
+00:22:34,700 --> 00:22:39,259
+exploration with RDF we've been thinking
+
+603
+00:22:37,129 --> 00:22:42,289
+about okay well how can we do this more
+
+604
+00:22:39,259 --> 00:22:43,580
+cheaply so well every services using
+
+605
+00:22:42,289 --> 00:22:46,190
+rests and every service is now
+
+606
+00:22:43,580 --> 00:22:48,440
+generating Jason and around the same
+
+607
+00:22:46,190 --> 00:22:50,419
+time Jason LV was becoming popular so
+
+608
+00:22:48,440 --> 00:22:52,669
+kind of a new approaches okay well can
+
+609
+00:22:50,419 --> 00:22:54,470
+we use this as a way of harvesting our
+
+610
+00:22:52,669 --> 00:22:56,119
+the effort of the individual resources
+
+611
+00:22:54,470 --> 00:22:59,090
+because then we're really getting the
+
+612
+00:22:56,119 --> 00:23:00,950
+data from the source of truth so this is
+
+613
+00:22:59,090 --> 00:23:02,690
+the ensembl api they have quite a nice
+
+614
+00:23:00,950 --> 00:23:05,239
+REST API you can get all kinds of
+
+615
+00:23:02,690 --> 00:23:07,820
+information about genes and here's
+
+616
+00:23:05,239 --> 00:23:09,409
+they're kind of plain JSON output and
+
+617
+00:23:07,820 --> 00:23:11,090
+then we did some work to then kind of
+
+618
+00:23:09,409 --> 00:23:13,429
+analyze this and say well could we align
+
+619
+00:23:11,090 --> 00:23:16,460
+this Jason to the schema that I showed
+
+620
+00:23:13,429 --> 00:23:19,009
+you before using json-ld and with a
+
+621
+00:23:16,460 --> 00:23:20,840
+little bit of fiddling it kind of works
+
+622
+00:23:19,009 --> 00:23:24,139
+so we can define a context for an
+
+623
+00:23:20,840 --> 00:23:26,539
+existing API that wasn't designed for
+
+624
+00:23:24,139 --> 00:23:28,519
+RDF but they had actually used some
+
+625
+00:23:26,539 --> 00:23:30,730
+ontology concepts so that we can kind of
+
+626
+00:23:28,519 --> 00:23:33,999
+map from there Jason
+
+627
+00:23:30,730 --> 00:23:37,029
+using json-ld and we get actually rdf
+
+628
+00:23:33,999 --> 00:23:39,129
+out from this api now that is mostly
+
+629
+00:23:37,029 --> 00:23:40,690
+aligned with the original rdf that we
+
+630
+00:23:39,129 --> 00:23:44,320
+were trying to generate as part of the
+
+631
+00:23:40,690 --> 00:23:47,830
+ETL process so this seems plausible and
+
+632
+00:23:44,320 --> 00:23:51,009
+possible that json-ld could be a good
+
+633
+00:23:47,830 --> 00:23:53,289
+way for us to generate this kind of RDF
+
+634
+00:23:51,009 --> 00:23:54,940
+data from the sources and at the same
+
+635
+00:23:53,289 --> 00:23:57,909
+time kind of in parallel we have another
+
+636
+00:23:54,940 --> 00:24:00,519
+initiative going on at EBI and in Europe
+
+637
+00:23:57,909 --> 00:24:02,200
+in general called bio schemas which is
+
+638
+00:24:00,519 --> 00:24:04,210
+really extension of schema.org so this
+
+639
+00:24:02,200 --> 00:24:05,649
+is a kind of alternate approach to say
+
+640
+00:24:04,210 --> 00:24:08,379
+okay well can we use the schema.org
+
+641
+00:24:05,649 --> 00:24:11,409
+approach and try and push some of this
+
+642
+00:24:08,379 --> 00:24:13,480
+markup that we've got into HTML so
+
+643
+00:24:11,409 --> 00:24:15,340
+there's a growing and kind of community
+
+644
+00:24:13,480 --> 00:24:17,409
+around this now we're pushing standards
+
+645
+00:24:15,340 --> 00:24:20,230
+for review for schema.org for all the
+
+646
+00:24:17,409 --> 00:24:22,210
+kind of core data types that we have and
+
+647
+00:24:20,230 --> 00:24:24,340
+there's lots of pages now EBI emerging
+
+648
+00:24:22,210 --> 00:24:26,289
+with this kind of schema.org bio schemas
+
+649
+00:24:24,340 --> 00:24:30,909
+marker again exposing the ontology
+
+650
+00:24:26,289 --> 00:24:32,769
+annotations through the webpages so this
+
+651
+00:24:30,909 --> 00:24:34,629
+is quite easy a lot of the databases are
+
+652
+00:24:32,769 --> 00:24:37,119
+able to implement this I think then
+
+653
+00:24:34,629 --> 00:24:38,710
+there's open questions for us about well
+
+654
+00:24:37,119 --> 00:24:39,999
+who's going to do the crawling and where
+
+655
+00:24:38,710 --> 00:24:41,830
+we're going to be able to get access to
+
+656
+00:24:39,999 --> 00:24:43,269
+this because at the moment these these
+
+657
+00:24:41,830 --> 00:24:45,669
+pages might be getting called but we're
+
+658
+00:24:43,269 --> 00:24:46,720
+not actually able to get access to the
+
+659
+00:24:45,669 --> 00:24:48,609
+stuff that's called them we're not
+
+660
+00:24:46,720 --> 00:24:50,350
+really in the business as building our
+
+661
+00:24:48,609 --> 00:24:54,369
+own crawlers so it's an interesting
+
+662
+00:24:50,350 --> 00:24:55,989
+project so I'm going to finish now on
+
+663
+00:24:54,369 --> 00:24:58,989
+this slide I think I'm close to running
+
+664
+00:24:55,989 --> 00:25:01,029
+out of time so I think it just tried to
+
+665
+00:24:58,989 --> 00:25:02,379
+come up with some things that we've
+
+666
+00:25:01,029 --> 00:25:04,690
+learned I've been doing this over the
+
+667
+00:25:02,379 --> 00:25:08,499
+last ten years that's obviously when we
+
+668
+00:25:04,690 --> 00:25:10,600
+started there was few ontology and it
+
+669
+00:25:08,499 --> 00:25:12,730
+was all a bit chaotic but actually this
+
+670
+00:25:10,600 --> 00:25:15,429
+is really matured now and there are a
+
+671
+00:25:12,730 --> 00:25:16,840
+core set of well-developed ontology
+
+672
+00:25:15,429 --> 00:25:19,149
+Zanda life sciences and there's
+
+673
+00:25:16,840 --> 00:25:20,379
+consensus growing between us
+
+674
+00:25:19,149 --> 00:25:24,190
+internationally on which ones we should
+
+675
+00:25:20,379 --> 00:25:26,440
+be using so this makes life a lot easier
+
+676
+00:25:24,190 --> 00:25:28,989
+I think our approaches to the
+
+677
+00:25:26,440 --> 00:25:30,460
+crowdsourcing with Zoomer and oXXO have
+
+678
+00:25:28,989 --> 00:25:32,350
+proved that this is how we can actually
+
+679
+00:25:30,460 --> 00:25:34,299
+scale up curation we can get the
+
+680
+00:25:32,350 --> 00:25:36,710
+curators to focus on the new data that
+
+681
+00:25:34,299 --> 00:25:38,810
+means curating and stop
+
+682
+00:25:36,710 --> 00:25:40,550
+sort of wasting time on datas that
+
+683
+00:25:38,810 --> 00:25:42,950
+another database has already seen and
+
+684
+00:25:40,550 --> 00:25:46,300
+curated so this is a good model for
+
+685
+00:25:42,950 --> 00:25:48,710
+scaling we are still ultimately
+
+686
+00:25:46,300 --> 00:25:50,600
+retrofitting semantics on the data here
+
+687
+00:25:48,710 --> 00:25:53,810
+the data is not still by and large
+
+688
+00:25:50,600 --> 00:25:55,700
+coming through still quite messy and
+
+689
+00:25:53,810 --> 00:25:57,500
+there's this still kind of and we do
+
+690
+00:25:55,700 --> 00:25:59,060
+quite well on the common concepts that
+
+691
+00:25:57,500 --> 00:26:00,620
+we see but there's this massive long
+
+692
+00:25:59,060 --> 00:26:02,510
+tail in the metadata when you do the
+
+693
+00:26:00,620 --> 00:26:04,700
+analysis of the stuff that either
+
+694
+00:26:02,510 --> 00:26:06,320
+business map to any existing ontology
+
+695
+00:26:04,700 --> 00:26:10,490
+and we don't really know what this
+
+696
+00:26:06,320 --> 00:26:13,490
+metadata is saying I think we pushed
+
+697
+00:26:10,490 --> 00:26:15,950
+quite hard with how far we can use owl
+
+698
+00:26:13,490 --> 00:26:17,120
+and our semantics and this is really
+
+699
+00:26:15,950 --> 00:26:18,560
+essential for how we build the
+
+700
+00:26:17,120 --> 00:26:20,570
+maintaining ontology so all the
+
+701
+00:26:18,560 --> 00:26:22,040
+anthologies that we develop a developed
+
+702
+00:26:20,570 --> 00:26:23,960
+without them we really rely on the
+
+703
+00:26:22,040 --> 00:26:26,480
+reasoner's and we hope that they
+
+704
+00:26:23,960 --> 00:26:27,950
+continue to be developed because they're
+
+705
+00:26:26,480 --> 00:26:30,730
+essential for building these anthologies
+
+706
+00:26:27,950 --> 00:26:33,260
+when we're 30 40 thousand concepts in
+
+707
+00:26:30,730 --> 00:26:35,240
+but then we've had to devise pretty much
+
+708
+00:26:33,260 --> 00:26:38,540
+our own custom ways then of taking that
+
+709
+00:26:35,240 --> 00:26:40,910
+rich semantics and putting it into
+
+710
+00:26:38,540 --> 00:26:42,440
+different storage solutions of putting
+
+711
+00:26:40,910 --> 00:26:44,000
+it how do you take that rich semantics
+
+712
+00:26:42,440 --> 00:26:46,160
+and put it into neo4j to build an
+
+713
+00:26:44,000 --> 00:26:49,970
+application or put it into elasticsearch
+
+714
+00:26:46,160 --> 00:26:51,530
+and and then this other one is also
+
+715
+00:26:49,970 --> 00:26:53,180
+important is how we interact with the
+
+716
+00:26:51,530 --> 00:26:55,820
+developers so we have you know hundreds
+
+717
+00:26:53,180 --> 00:26:57,920
+of software developers at the EBI most
+
+718
+00:26:55,820 --> 00:27:00,050
+of them don't know about our RDF that
+
+719
+00:26:57,920 --> 00:27:02,960
+slowly getting switched on to graft
+
+720
+00:27:00,050 --> 00:27:05,080
+databases and things like that now but
+
+721
+00:27:02,960 --> 00:27:07,100
+again they are using conventional
+
+722
+00:27:05,080 --> 00:27:08,990
+software they're using conventional
+
+723
+00:27:07,100 --> 00:27:11,240
+technologies rest and JSON so we're
+
+724
+00:27:08,990 --> 00:27:13,010
+constantly looking at how we can utilize
+
+725
+00:27:11,240 --> 00:27:17,240
+the semantics in these kind of
+
+726
+00:27:13,010 --> 00:27:20,060
+technologies that people are using ok
+
+727
+00:27:17,240 --> 00:27:21,890
+and the old knowledge a team and some of
+
+728
+00:27:20,060 --> 00:27:24,910
+our funding sources and hope they've got
+
+729
+00:27:21,890 --> 00:27:24,910
+some time for questions
+
+730
+00:27:41,780 --> 00:27:45,950
+that is certainly one of the things you
+
+731
+00:27:43,940 --> 00:27:48,680
+know on our kind of EBI TechRadar that's
+
+732
+00:27:45,950 --> 00:27:50,150
+now coming in in people they're starting
+
+733
+00:27:48,680 --> 00:27:51,470
+the pop that we personally haven't yet
+
+734
+00:27:50,150 --> 00:27:52,940
+for these tools but I think that that
+
+735
+00:27:51,470 --> 00:27:55,550
+would be possibly the next thing for us
+
+736
+00:27:52,940 --> 00:27:58,810
+to try is to put graph QL services on
+
+737
+00:27:55,550 --> 00:27:58,810
+top of our on these days
+
+738
+00:28:03,450 --> 00:28:07,150
+yeah
+
+739
+00:28:05,420 --> 00:28:11,150
+[Music]
+
+740
+00:28:07,150 --> 00:28:12,500
+so the outside it's something that we
+
+741
+00:28:11,150 --> 00:28:14,650
+definitely want to look into but we
+
+742
+00:28:12,500 --> 00:28:14,650
+haven't
+
+743
+00:28:18,600 --> 00:28:30,780
+what about ontologies come take some
+
+744
+00:28:22,110 --> 00:28:32,310
+rules I would say we don't see a lot of
+
+745
+00:28:30,780 --> 00:28:34,710
+that you know it of the corset of
+
+746
+00:28:32,310 --> 00:28:38,220
+ontology is that we're using we're not
+
+747
+00:28:34,710 --> 00:28:39,780
+seeing a lot of that usage so our tools
+
+748
+00:28:38,220 --> 00:28:42,540
+aren't really MIT taking any advantage
+
+749
+00:28:39,780 --> 00:28:44,760
+of those we will with mostly working in
+
+750
+00:28:42,540 --> 00:28:46,530
+a kind of small profile of owl within
+
+751
+00:28:44,760 --> 00:28:48,630
+the L and we because that can really
+
+752
+00:28:46,530 --> 00:28:51,090
+scale for the reasoning and we usually
+
+753
+00:28:48,630 --> 00:28:53,790
+use one reasoning reasoner in elk and
+
+754
+00:28:51,090 --> 00:28:55,830
+that that covers most of what you need
+
+755
+00:28:53,790 --> 00:29:02,910
+for the kinds of anthologies that we're
+
+756
+00:28:55,830 --> 00:29:06,960
+building I would say yeah it's certainly
+
+757
+00:29:02,910 --> 00:29:10,410
+concerned and that I how active the
+
+758
+00:29:06,960 --> 00:29:12,800
+reason developers are better hope they
+
+759
+00:29:10,410 --> 00:29:12,800
+don't go away
+
