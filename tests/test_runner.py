@@ -150,6 +150,10 @@ def test_a_first_poll_catalogues_but_does_not_auto_ingest(state, monkeypatch):
     assert ingested == []
 
     db.upsert_videos([{"video_id": "z", "title": "Known", "url": "u"}])
+    db.upsert_videos([{"video_id": v, "title": v, "url": "u", "duration": 2400}
+                      for v in ("a", "b")])
+    monkeypatch.setattr("ingest.sources.youtube.resolve_videos",
+                        lambda ids: {"resolved": 0, "aired": []})
     scheduler.poll_for_new_videos()          # baseline established
     assert ingested == ["a", "b"]
 
@@ -427,9 +431,12 @@ def test_what_is_not_yet_a_talk_is_skipped_with_a_reason(state, monkeypatch):
         {"video_id": "live", "title": "On air", "url": "u", "duration": 4000, "live_status": "is_live"},
         {"video_id": "after", "title": "Just over", "url": "u", "duration": 4000, "live_status": "post_live"},
         {"video_id": "talk", "title": "Talk", "url": "u", "duration": 4000, "live_status": "not_live"},
+        {"video_id": "unknown", "title": "No running time", "url": "u", "live_status": "not_live"},
     ])
-    verdicts = dict(scheduler._ingestable(["short", "live", "after", "talk"]))
+    verdicts = dict(scheduler._ingestable(["short", "live", "after", "talk", "unknown"]))
     assert "Short" in verdicts["short"]
+    # Unknown is not long enough: every Short that reached the graph came in so.
+    assert verdicts["unknown"] == "its running time is not known yet"
     assert "not finished airing" in verdicts["live"] and "not finished airing" in verdicts["after"]
     assert verdicts["talk"] is None
 

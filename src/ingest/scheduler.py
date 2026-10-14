@@ -165,7 +165,11 @@ def _ingestable(video_ids: list[str]) -> list[tuple[str, str | None]]:
     verdicts = []
     for video_id in video_ids:
         video = inventory.get(video_id, {})
-        if reconcile.is_short_duration(video.get("duration")):
+        if not video.get("duration"):
+            # Unknown is not "long enough": every Short that reached the graph
+            # arrived without a running time. A talk waits for a click instead.
+            verdicts.append((video_id, "its running time is not known yet"))
+        elif reconcile.is_short_duration(video["duration"]):
             verdicts.append((video_id, f"a Short or teaser ({video['duration']}s)"))
         elif video.get("live_status") in youtube.UNSETTLED:
             verdicts.append((video_id, "a premiere that has not finished airing"))

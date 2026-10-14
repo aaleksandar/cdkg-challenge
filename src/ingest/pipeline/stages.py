@@ -94,12 +94,23 @@ def load_info(video_id: str) -> tuple[dict, str]:
     return info, "youtube"
 
 
+def _inventory_duration(video_id: str) -> int | None:
+    from .. import db
+
+    for video in db.all_videos():
+        if video["video_id"] == video_id:
+            return video.get("duration")
+    return None
+
+
 def stage_metadata_parse(ctx: dict) -> StageResult:
     """Fetch the video's metadata and parse it. Nothing is guessed."""
     video_id = ctx["video_id"]
     info, source = load_info(video_id)
 
-    duration = info.get("duration")
+    # The cached lookup may lack the running time when the inventory, read from
+    # the uploads playlist, has it; a Short must not pass for want of asking.
+    duration = info.get("duration") or _inventory_duration(video_id)
     if duration and duration <= config.SHORT_VIDEO_MAX_SECONDS:
         raise StageSkipped(
             f"Teaser: {int(duration)}s is at or below the "
