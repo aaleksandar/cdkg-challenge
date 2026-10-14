@@ -1565,7 +1565,7 @@ In this talk, I will demonstrate a knowledge-driven, evidence-based recommendati
 Technologies used: Protege (RDFS/OWL for Ontology development), Neo4j (GraphDB), Neosemantics (RDFS to Property Graph converter), Google DialogFlow (Chatbot engine).
 This talk is based on a recent Journal article published in JMIR Medical Informatics
 👉 Book Your Ticket Now",t-16a135b2,180815
-Validating semantic knowledge graphs using SHACL,Veronika Heimsbakk,,Knowledge Connexions 2020,01/12/2020,Masterclass,Knowledge Graphs,https://www.youtube.com/watch?v=WIflwx2EC54,,https://knowledge-connexions-conference.heysummit.com/talks/validating-semantic-knowledge-graphs-using-shacl/,"Prior to the Shape Constraint Language (SHACL) we had no W3C standardization for validation our semantic knowledge graphs against a set of constraints.
+Validating semantic knowledge graphs using SHACL,Veronika Heimsbakk,/Transcripts/Knowledge Connexions 2020/Presentations/Validating semantic knowledge graphs using SHACL.srt,Knowledge Connexions 2020,01/12/2020,Masterclass,Knowledge Graphs,https://www.youtube.com/watch?v=WIflwx2EC54,,https://knowledge-connexions-conference.heysummit.com/talks/validating-semantic-knowledge-graphs-using-shacl/,"Prior to the Shape Constraint Language (SHACL) we had no W3C standardization for validation our semantic knowledge graphs against a set of constraints.
 By constraining RDF using SHACL we gain the possibility of exactly this—validating semantic knowledge graphs under a closed world assumption!
 This masterclass will introduce you to the SHACL Core constraints, demonstrate how to constrain your data and what happens if the data conforms false (or true for that matter!).
 👉 Book Your Ticket Now
