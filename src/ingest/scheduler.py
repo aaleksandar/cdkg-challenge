@@ -114,7 +114,9 @@ def _settle_due_premieres() -> None:
         return
     # Logged whatever the answer, so that a premiere stuck "soon" on a server
     # whose lookups YouTube refuses can be told apart from one nobody asked about.
-    log.info("Re-read %d due premiere(s) %s: aired %s", len(due), due, aired or "none")
+    # WARNING, not INFO: the service logs at WARNING, and at INFO this line
+    # never reached production's logs in the week a premiere sat stuck.
+    log.warning("Re-read %d due premiere(s) %s: aired %s", len(due), due, aired or "none")
     ingest_new(aired)
 
 

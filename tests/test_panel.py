@@ -1166,12 +1166,35 @@ def test_a_premiere_is_shown_by_default_and_labelled_by_its_date(client, monkeyp
 def test_the_ingest_button_refuses_a_premiere_that_has_not_aired(client, monkeypatch):
     monkeypatch.setattr(R, "reconcile", _only(PREMIERE))
     db.upsert_videos([{"video_id": "tAPqdlsuJYg", "title": "Combating Cyber Threats", "url": "u",
-                       "live_status": "is_upcoming"}])
+                       "live_status": "is_upcoming", "published_at": "2999-01-01T00:00:00Z"}])
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
+
+    def no_lookup(ids):
+        raise AssertionError("a premiere whose slot has not come needs no lookup")
+    monkeypatch.setattr("ingest.sources.youtube.resolve_videos", no_lookup)
+
+    assert client.post("/ingest/youtube:tAPqdlsuJYg").status_code == 200
+    assert queued == []
+
+
+def test_the_ingest_button_asks_again_about_a_premiere_whose_slot_has_passed(client, monkeypatch):
+    """Production, October 2026: a premiere aired, the inventory never noticed,
+    and the Ingest button did nothing for a week. A click re-reads it first."""
+    from ingest.sources import youtube
+
+    monkeypatch.setattr(R, "reconcile", _only(PREMIERE))
+    db.upsert_videos([{"video_id": "tAPqdlsuJYg", "title": "Combating Cyber Threats", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2026-09-24T14:00:00Z"}])
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {"id": vid, "title": "t"})
+    monkeypatch.setattr(youtube, "enumerate_channel", lambda limit=None: [
+        {"video_id": "tAPqdlsuJYg", "title": "t", "url": "u", "duration": 2016,
+         "live_status": None}])
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos", lambda ids: queued.extend(ids))
 
     assert client.post("/ingest/youtube:tAPqdlsuJYg").status_code == 200
-    assert queued == []
+    assert queued == ["tAPqdlsuJYg"]
 
 
 def test_the_drawer_says_a_premiere_will_be_ingested_when_it_airs(client, monkeypatch):

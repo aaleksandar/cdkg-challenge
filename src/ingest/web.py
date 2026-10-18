@@ -627,6 +627,16 @@ def row(request: Request, key: str):
     )
 
 
+def _premiere_due(video: dict | None) -> bool:
+    """The inventory calls it upcoming, but the moment it was to air has passed."""
+    from datetime import datetime, timezone
+
+    if not video or video.get("live_status") != "is_upcoming":
+        return False
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return not video.get("published_at") or video["published_at"] <= now
+
+
 @router.post("/ingest/{key}", response_class=HTMLResponse)
 def ingest_one(request: Request, key: str, view: str = "row"):
     """Ingest a single video — the common case, without select-then-confirm.
@@ -654,6 +664,12 @@ def ingest_one(request: Request, key: str, view: str = "row"):
     video_id = state.video_id if state else None
     if video_id:
         video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+        # A premiere whose slot has passed may have aired without the inventory
+        # noticing; ask again before refusing, or the click does nothing.
+        if _premiere_due(video):
+            from .sources import youtube
+            youtube.resolve_videos([video_id])
+            video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
         # A Short is never a talk; a premiere is not one yet. Neither gets a
         # run from a click — the scheduler already refuses both, and a run
         # against a premiere can only fail, which is how a premiere came to sit

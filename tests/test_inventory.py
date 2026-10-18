@@ -248,3 +248,88 @@ def test_the_backfill_reports_the_premieres_it_found_aired(state, monkeypatch):
     assert youtube.backfill_metadata()["aired"] == ["aired000000"]
     # Settled now, so the next pass has nothing to report: observed exactly once.
     assert youtube.backfill_metadata()["aired"] == []
+
+
+# --- From the server the lookup can be stripped; the playlist still knows ---
+
+def _stripped(monkeypatch, playlist):
+    """The per-video lookup as the bot check leaves it: title, no status, no
+    running time. The uploads playlist answers as it does from the server."""
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {
+        "id": vid, "title": "Premiere", "upload_date": "20261008"})
+    monkeypatch.setattr(youtube, "enumerate_channel", lambda limit=None: playlist)
+
+
+def test_a_premiere_the_lookup_cannot_see_is_settled_by_the_playlist(state, monkeypatch):
+    """Production, October 2026: a premiere aired on 8 October, every lookup
+    from the server came back with no live status, and the row stayed
+    "upcoming" for a week — refused by the Ingest button and by auto-ingest."""
+    _premiere("NRq0XewxMW0", published_at="2026-10-08T00:00:00Z")
+    _stripped(monkeypatch, [
+        {"video_id": "NRq0XewxMW0", "title": "Premiere", "url": "u", "duration": 2016,
+         "live_status": None}])
+
+    assert youtube.resolve_videos(["NRq0XewxMW0"])["aired"] == ["NRq0XewxMW0"]
+    video = db.all_videos()[0]
+    assert (video["live_status"], video["duration"]) == ("not_live", 2016)
+    # Settled now, so it is never reported as aired again.
+    assert youtube.resolve_videos(["NRq0XewxMW0"])["aired"] == []
+
+
+def test_a_premiere_the_playlist_still_flags_is_left_waiting(state, monkeypatch):
+    _premiere("lHqp45t2b6Q")
+    _stripped(monkeypatch, [
+        {"video_id": "lHqp45t2b6Q", "title": "Premiere", "url": "u", "duration": None,
+         "live_status": "is_upcoming"}])
+
+    assert youtube.resolve_videos(["lHqp45t2b6Q"])["aired"] == []
+    assert db.all_videos()[0]["live_status"] == "is_upcoming"
+
+
+def test_a_premiere_missing_from_the_playlist_is_left_waiting(state, monkeypatch):
+    """Absence is not evidence: a premiere too far down, or a playlist that
+    could not be read, says nothing about whether it aired."""
+    _premiere("lHqp45t2b6Q")
+    _stripped(monkeypatch, [])
+    assert youtube.resolve_videos(["lHqp45t2b6Q"])["aired"] == []
+
+    def unreadable(limit=None):
+        raise RuntimeError("blocked")
+    monkeypatch.setattr(youtube, "enumerate_channel", unreadable)
+    assert youtube.resolve_videos(["lHqp45t2b6Q"])["aired"] == []
+    assert db.all_videos()[0]["live_status"] == "is_upcoming"
+
+
+def test_a_premiere_without_a_running_time_in_the_playlist_has_not_aired(state, monkeypatch):
+    """A stream on air is listed with no running time; only a finished video has one."""
+    _premiere("lHqp45t2b6Q", "is_live")
+    _stripped(monkeypatch, [
+        {"video_id": "lHqp45t2b6Q", "title": "Premiere", "url": "u", "duration": None,
+         "live_status": None}])
+
+    assert youtube.resolve_videos(["lHqp45t2b6Q"])["aired"] == []
+    assert db.all_videos()[0]["live_status"] == "is_live"
+
+
+def test_a_failed_lookup_still_lets_the_playlist_settle_a_premiere(state, monkeypatch):
+    _premiere("NRq0XewxMW0")
+
+    def refused(vid):
+        raise RuntimeError("Sign in to confirm you're not a bot")
+    monkeypatch.setattr(youtube, "fetch_video_info", refused)
+    monkeypatch.setattr(youtube, "enumerate_channel", lambda limit=None: [
+        {"video_id": "NRq0XewxMW0", "title": "Premiere", "url": "u", "duration": 2016,
+         "live_status": None}])
+
+    assert youtube.resolve_videos(["NRq0XewxMW0"])["aired"] == ["NRq0XewxMW0"]
+
+
+def test_a_plain_upload_is_never_aired_by_the_playlist(state, monkeypatch):
+    """Only a row that was unsettled can air; a new upload resolved by the RSS
+    poll is listed the same way and must not be ingested twice."""
+    db.upsert_videos([{"video_id": "InnS42vsfbI", "title": "Talk", "url": "u"}])
+    _stripped(monkeypatch, [
+        {"video_id": "InnS42vsfbI", "title": "Talk", "url": "u", "duration": 1800,
+         "live_status": None}])
+
+    assert youtube.resolve_videos(["InnS42vsfbI"])["aired"] == []
