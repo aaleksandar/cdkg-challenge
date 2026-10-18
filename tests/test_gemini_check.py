@@ -59,9 +59,9 @@ def test_the_panel_prints_the_verdict_and_each_attempt(monkeypatch):
     from ingest.main import app
 
     monkeypatch.setattr(gemini_check, "check", lambda: {
-        "model": "gemini-3.7-flash", "verdict": "unstable", "attempts": [
+        "model": "gemini-3.8-flash", "verdict": "unstable", "attempts": [
             {"kind": "overloaded", "status": 503, "ms": 812, "detail": "high demand"},
             {"kind": "ok", "status": 200, "ms": 1400, "detail": ""}]})
     html = TestClient(app).post("/gemini/check").text
-    assert "Gemini is unstable" in html and "gemini-3.7-flash" in html
+    assert "Gemini is unstable" in html and "gemini-3.8-flash" in html
     assert "503 — Google says the model is under high demand" in html and "1.4 s" in html
