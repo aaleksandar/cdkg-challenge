@@ -9,3 +9,9 @@ from ingest import config
 def _snapshots_in_tmp(monkeypatch, tmp_path):
     """Snapshots default to a folder beside the real database; tests get their own."""
     monkeypatch.setattr(config, "SNAPSHOT_DIR", tmp_path / "snapshots")
+
+
+@pytest.fixture(autouse=True)
+def _skips_in_tmp(monkeypatch, tmp_path):
+    """A curator's skip list is committed; a test's skips go to its own copy."""
+    monkeypatch.setattr(config, "SKIPPED_TALKS", tmp_path / "skipped.json")

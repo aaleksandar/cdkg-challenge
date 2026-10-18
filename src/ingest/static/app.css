@@ -262,7 +262,7 @@ thead th.r { text-align: right; }
 .issues td { vertical-align: top; }
 .issues td a.muted { display: block; margin-top: .15rem; }
 .l-not_ingested  .dot { background: transparent; box-shadow: inset 0 0 0 1px var(--rule-strong); }
-.l-excluded      .dot { background: var(--rule-strong); }
+.l-excluded      .dot, .l-skipped .dot { background: var(--rule-strong); }
 .l-attention .label { color: var(--ink); font-weight: 500; }
 
 .badge {
@@ -570,12 +570,12 @@ td.act .rowbtn:disabled { opacity: 1; }
 .curate-form label span {
   font-size: .64rem; text-transform: uppercase; letter-spacing: .09em; color: var(--ink-faint);
 }
-.curate-form input {
+.curate-form input, .curate-form select {
   font: inherit; font-size: .82rem;
   padding: .34rem .55rem; border: 1px solid var(--rule-strong);
   border-radius: 4px; background: var(--paper-raised); width: 100%;
 }
-.curate-form input:focus { outline: none; border-color: var(--accent); }
+.curate-form input:focus, .curate-form select:focus { outline: none; border-color: var(--accent); }
 .curate-form button { flex: 0 0 auto; }
 .upload-head { display: flex; flex-direction: column; gap: .25rem; font-size: .82rem; }
 .upload-form input[type="file"] { font-size: .78rem; padding: .3rem 0; }
@@ -587,7 +587,9 @@ td.act .rowbtn:disabled { opacity: 1; }
    is broken, something is merely unfinished. */
 .blocker {
   margin: 0 0 1.1rem;
-  padding: .85rem 1rem .9rem;
+  /* The text sits on the drawer's gutter, like every section around it; the
+     2px is the border's. */
+  padding: .85rem var(--gutter) .9rem calc(var(--gutter) - 2px);
   background: color-mix(in srgb, var(--warn) 7%, var(--paper-raised));
   border-left: 2px solid var(--warn);
   border-radius: 0 4px 4px 0;
@@ -609,6 +611,8 @@ td.act .rowbtn:disabled { opacity: 1; }
   border-left-color: var(--rule-strong);
 }
 .blocker.session .blocker-head { color: var(--ink-soft); }
+/* An action inside a blocker sits under its text, at the same indent. */
+.blocker-actions { margin-top: .7rem; }
 
 /* "Panel" / "Workshop" beside a title, wherever the talk is. */
 .chip {

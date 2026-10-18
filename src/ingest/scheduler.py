@@ -114,7 +114,9 @@ def _settle_due_premieres() -> None:
         return
     # Logged whatever the answer, so that a premiere stuck "soon" on a server
     # whose lookups YouTube refuses can be told apart from one nobody asked about.
-    log.info("Re-read %d due premiere(s) %s: aired %s", len(due), due, aired or "none")
+    # WARNING, not INFO: the service logs at WARNING, and at INFO this line
+    # never reached production's logs in the week a premiere sat stuck.
+    log.warning("Re-read %d due premiere(s) %s: aired %s", len(due), due, aired or "none")
     ingest_new(aired)
 
 
@@ -155,17 +157,22 @@ def _ingestable(video_ids: list[str]) -> list[tuple[str, str | None]]:
     single speaker, so it waits for a curator. The title is asked, and so are
     the metadata CSV and HeySummit: a premiere whose row HeySummit seeded as a
     panel carries no "Panel" in its YouTube title.
+
+    A video a curator marked skipped is refused too: that was the whole point.
     """
-    from . import db, reconcile
+    from . import db, reconcile, skips
     from .sources import matching, youtube
 
     inventory = {v["video_id"]: v for v in db.all_videos()}
     known_sessions = reconcile.session_formats_by_video()
     repeats = matching.duplicate_uploads(inventory.values())
+    skipped = skips.skipped_videos()
     verdicts = []
     for video_id in video_ids:
         video = inventory.get(video_id, {})
-        if not video.get("duration"):
+        if video_id in skipped:
+            verdicts.append((video_id, "skipped by a curator"))
+        elif not video.get("duration"):
             # Unknown is not "long enough": every Short that reached the graph
             # arrived without a running time. A talk waits for a click instead.
             verdicts.append((video_id, "its running time is not known yet"))

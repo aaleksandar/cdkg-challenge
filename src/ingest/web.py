@@ -219,8 +219,10 @@ templates.env.globals["QUIET_STATUSES"] = R.QUIET_STATUSES
 # The sixth tab is not a lane a row can be in: it is what the sources say
 # about the same talk when they do not agree, listed for a curator.
 templates.env.globals["LANE_LABELS"] = {**R.LANE_LABELS, "panels": "Panels & workshops",
+                                        "skipped": "Skipped",
                                         "disagreements": "Disagreements"}
 templates.env.globals["ROW_SAYS_STATUS"] = R.ROW_SAYS_STATUS
+templates.env.globals["SKIPPABLE"] = R.SKIPPABLE
 templates.env.globals["BEFORE_HEYSUMMIT"] = (
     "Before HeySummit: Connected Data London 2016–2018 are on no programme the "
     "sync reads, so there is no record to link.")
@@ -239,6 +241,8 @@ templates.env.globals["LANES"] = [
     # says it is one. The waiting ones sit in the excluded lane; the ones
     # already in the graph stay "In graph" and carry a chip.
     ("panels", "Panels & workshops"),
+    # Not a lane: the talks a curator marked not to process, with the reason.
+    ("skipped", "Skipped"),
     ("disagreements", "Disagreements"),
 ]
 
@@ -272,6 +276,11 @@ LANE_NOTES = {
         "cannot be attributed to one of them. Never ingested automatically, "
         "and hidden from the sheet by default; open one to ingest it anyway. "
         "Those already in the graph stay there, labelled."
+    ),
+    "skipped": (
+        "Talks a curator marked not to process — a recording never released, a "
+        "video taken down. Never ingested automatically or by the backlog drain; "
+        "open one to see why, to undo it, or to ingest it anyway."
     ),
     "disagreements": (
         "Where the metadata CSV and HeySummit tell different stories about the "
@@ -330,6 +339,10 @@ STATUS_NOTES = {
     "upcoming": ("A premiere that has not aired, so it has no captions to ingest yet. "
                  "The date shown is when it premieres; it is ingested once it has."),
     "junk": "A transcript named after a bare YouTube ID. Untitled, and often duplicated.",
+    "skipped": (
+        "Marked by a curator not to be processed. Left out of automatic ingestion "
+        "and the backlog; open it to see why, or to undo it."
+    ),
 }
 templates.env.globals["STATUS_NOTES"] = STATUS_NOTES
 
@@ -408,12 +421,15 @@ def _view(lane: str | None, query: str | None, show_all: bool = False) -> dict:
     issues = heysummit.attach(write=False)["issues"] if heysummit.read_catalog() else []
     lane_counts["disagreements"] = len(issues)
     lane_counts["panels"] = sum(1 for s in talks if s.session)
+    lane_counts["skipped"] = sum(1 for s in talks if s.status == "skipped")
 
     visible = talks
     if lane == "disagreements":
         visible = []
     elif lane == "panels":
         visible = [s for s in visible if s.session]
+    elif lane == "skipped":
+        visible = [s for s in visible if s.status == "skipped"]
     elif lane and lane != "all":
         visible = [s for s in visible if s.lane == lane]
     elif not show_all:
@@ -627,6 +643,16 @@ def row(request: Request, key: str):
     )
 
 
+def _premiere_due(video: dict | None) -> bool:
+    """The inventory calls it upcoming, but the moment it was to air has passed."""
+    from datetime import datetime, timezone
+
+    if not video or video.get("live_status") != "is_upcoming":
+        return False
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return not video.get("published_at") or video["published_at"] <= now
+
+
 @router.post("/ingest/{key}", response_class=HTMLResponse)
 def ingest_one(request: Request, key: str, view: str = "row"):
     """Ingest a single video — the common case, without select-then-confirm.
@@ -654,6 +680,12 @@ def ingest_one(request: Request, key: str, view: str = "row"):
     video_id = state.video_id if state else None
     if video_id:
         video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
+        # A premiere whose slot has passed may have aired without the inventory
+        # noticing; ask again before refusing, or the click does nothing.
+        if _premiere_due(video):
+            from .sources import youtube
+            youtube.resolve_videos([video_id])
+            video = next((v for v in db.all_videos() if v["video_id"] == video_id), None)
         # A Short is never a talk; a premiere is not one yet. Neither gets a
         # run from a click — the scheduler already refuses both, and a run
         # against a premiere can only fail, which is how a premiere came to sit
@@ -665,6 +697,35 @@ def ingest_one(request: Request, key: str, view: str = "row"):
     if view == "drawer":
         return video_detail(request, key, body=1, with_row=True)
     return row(request, key)
+
+
+@router.post("/skip/{key}", response_class=HTMLResponse)
+def skip(request: Request, key: str, reason: str = Form(""), details: str = Form("")):
+    """Mark a talk not to be processed, with the curator's reason.
+
+    Written to the committed skip list, never to the CSV: a talk HeySummit
+    seeded stays a row and a Talk node, and only its processing stops.
+    """
+    from . import skips
+
+    state = _find(key)
+    if state is not None and (state.status in R.SKIPPABLE or state.status == "skipped"):
+        reason, details = reason.strip(), details.strip()
+        if details:
+            reason = details if reason in ("", "Other") else f"{reason}: {details}"
+        skips.add(state.key, state.talk_id, state.video_id, state.display_title, reason)
+    return video_detail(request, key, body=1, with_row=True)
+
+
+@router.post("/unskip/{key}", response_class=HTMLResponse)
+def unskip(request: Request, key: str):
+    """Undo a skip: the talk returns to whatever its sources say it is."""
+    from . import skips
+
+    state = _find(key)
+    if state is not None:
+        skips.remove(state.talk_id, state.video_id)
+    return video_detail(request, key, body=1, with_row=True)
 
 
 # Larger than any caption file for a conference talk; smaller than anything

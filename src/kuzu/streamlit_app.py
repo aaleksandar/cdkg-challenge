@@ -3,10 +3,12 @@ from pathlib import Path
 import streamlit as st
 
 import config
+import for_you
 from rag import GraphRAG
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
-st.title("Graph RAG using Ladybug")
+if not for_you.is_takeaway():
+    st.title("Graph RAG using Ladybug")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -109,43 +111,59 @@ def render_sources(output: dict) -> None:
         st.markdown(line)
         st.caption("  " + describe_evidence(source))
 
-# Create the input box
-question = st.text_input(
-    "Ask a question to the CDL Knowledge Graph built on top of Ladybug, an embedded graph database:",
-    placeholder="e.g., Can you tell me about Connected Data World 2021?",
+
+# A take-away link (`?for=owl,shacl`), opened on a visitor's phone from the QR
+# code on the "Talks for you" tab: their picks, rebuilt from the tags alone.
+if for_you.is_takeaway():
+    for_you.render_takeaway(rag, version)
+    st.stop()
+
+ask_tab, you_tab = st.tabs(
+    ["Ask the graph", "Talks for you"],
+    default="Talks for you" if st.query_params.get("tab") == "for-you" else "Ask the graph",
 )
 
-if question:
-    with st.spinner("Generating answer..."):
-        # Get the Cypher query
-        output = rag.run(question)
+with you_tab:
+    for_you.render_tab(rag, version)
 
-        # Show the Cypher query in an expander, and the rows it returned
-        with st.expander("View Cypher Query", expanded=True):
-            st.code(output["cypher"], language="sql")
-        if output.get("results"):
-            with st.expander(f"Retrieved rows ({output.get('row_count', len(output['results']))})"):
-                st.dataframe(output["results"])
+with ask_tab:
+    # Create the input box
+    question = st.text_input(
+        "Ask a question to the CDL Knowledge Graph built on top of Ladybug, an embedded graph database:",
+        placeholder="e.g., Can you tell me about Connected Data World 2021?",
+    )
 
-        # The Cypher is LLM-generated and may not run against the schema, and the
-        # answer generation can fail to parse — GraphRAG.run reports both here
-        if output.get("error"):
-            st.warning(f"Could not complete the query: {output['error']}")
+    if question:
+        with st.spinner("Generating answer..."):
+            # Get the Cypher query
+            output = rag.run(question)
 
-        # Get and show the response
-        st.write("### Answer")
-        st.write(output["response"])
-        render_sources(output)
-        # Append the question, the answer and where it came from to the history
-        st.session_state.messages.append({
-            "question": question, "answer": output["response"],
-            "sources": output.get("sources") or [],
-            "from_general_knowledge": output.get("from_general_knowledge", False),
-        })
+            # Show the Cypher query in an expander, and the rows it returned
+            with st.expander("View Cypher Query", expanded=True):
+                st.code(output["cypher"], language="sql")
+            if output.get("results"):
+                with st.expander(f"Retrieved rows ({output.get('row_count', len(output['results']))})"):
+                    st.dataframe(output["results"])
 
-# Display history
-for msg in reversed(st.session_state.messages):
-    with st.container(border=True):
-        st.write("**Q:** " + msg["question"])
-        st.write("**A:** " + msg["answer"])
-        render_sources(msg)
+            # The Cypher is LLM-generated and may not run against the schema, and the
+            # answer generation can fail to parse — GraphRAG.run reports both here
+            if output.get("error"):
+                st.warning(f"Could not complete the query: {output['error']}")
+
+            # Get and show the response
+            st.write("### Answer")
+            st.write(output["response"])
+            render_sources(output)
+            # Append the question, the answer and where it came from to the history
+            st.session_state.messages.append({
+                "question": question, "answer": output["response"],
+                "sources": output.get("sources") or [],
+                "from_general_knowledge": output.get("from_general_knowledge", False),
+            })
+
+    # Display history
+    for msg in reversed(st.session_state.messages):
+        with st.container(border=True):
+            st.write("**Q:** " + msg["question"])
+            st.write("**A:** " + msg["answer"])
+            render_sources(msg)
