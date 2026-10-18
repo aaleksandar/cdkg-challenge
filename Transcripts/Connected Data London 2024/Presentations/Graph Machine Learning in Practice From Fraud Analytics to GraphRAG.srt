@@ -1,0 +1,3468 @@
+1
+00:00:08,280 --> 00:00:11,840
+The talk is graph machine learning in
+
+2
+00:00:09,720 --> 00:00:14,040
+practice from fraud analysis to graph
+
+3
+00:00:11,840 --> 00:00:15,480
+rag. And actually a bit of overlap. I'm
+
+4
+00:00:14,040 --> 00:00:16,920
+really interested to hear we're talking
+
+5
+00:00:15,480 --> 00:00:17,600
+similar subjects.
+
+6
+00:00:16,920 --> 00:00:20,360
+Um
+
+7
+00:00:17,600 --> 00:00:22,280
+as background I should say that uh
+
+8
+00:00:20,360 --> 00:00:23,720
+Hans has a degree in physics from
+
+9
+00:00:22,280 --> 00:00:26,200
+Hamburg University.
+
+10
+00:00:23,720 --> 00:00:27,240
+Started out in research at Oracle 25
+
+11
+00:00:26,200 --> 00:00:30,440
+years ago.
+
+12
+00:00:27,240 --> 00:00:31,920
+And uh please join me in welcoming Hans.
+
+13
+00:00:30,440 --> 00:00:35,120
+Okay. Paco, thank you. Thank you very
+
+14
+00:00:31,920 --> 00:00:36,440
+much for the nice introduction. Um as
+
+15
+00:00:35,120 --> 00:00:37,680
+part of my physics degree, by the way, I
+
+16
+00:00:36,440 --> 00:00:40,320
+had the pleasure of living here in
+
+17
+00:00:37,680 --> 00:00:42,000
+London for a year, spending a time um my
+
+18
+00:00:40,320 --> 00:00:43,640
+time at Imperial College. So it still
+
+19
+00:00:42,000 --> 00:00:45,600
+feels feels a little bit like home to
+
+20
+00:00:43,640 --> 00:00:47,240
+me, which is great. Um thanks for having
+
+21
+00:00:45,600 --> 00:00:50,760
+me. Um
+
+22
+00:00:47,240 --> 00:00:52,320
+in case you were wondering why Oracle, I
+
+23
+00:00:50,760 --> 00:00:53,560
+mean, Oracle, you know, the database
+
+24
+00:00:52,320 --> 00:00:54,960
+company known for its relational
+
+25
+00:00:53,560 --> 00:00:56,440
+database, is actually present at the
+
+26
+00:00:54,960 --> 00:00:58,840
+events like this.
+
+27
+00:00:56,440 --> 00:01:00,720
+Um you may or may not be aware that
+
+28
+00:00:58,840 --> 00:01:01,880
+Oracle is not only a relational
+
+29
+00:01:00,720 --> 00:01:03,880
+database, but it is actually a
+
+30
+00:01:01,880 --> 00:01:05,840
+multi-model database. So we call that a
+
+31
+00:01:03,880 --> 00:01:08,040
+converged database.
+
+32
+00:01:05,840 --> 00:01:10,920
+Um and as part of that, we've been
+
+33
+00:01:08,040 --> 00:01:12,280
+offering graph technologies for ages. I
+
+34
+00:01:10,920 --> 00:01:14,160
+we started out with RDF graph
+
+35
+00:01:12,280 --> 00:01:16,480
+technologies about 20 years ago. We've
+
+36
+00:01:14,160 --> 00:01:19,040
+moved into property graphs uh in uh
+
+37
+00:01:16,480 --> 00:01:20,000
+2016. And the good news for anyone here
+
+38
+00:01:19,040 --> 00:01:21,720
+is
+
+39
+00:01:20,000 --> 00:01:23,920
+we're offering that free of charge
+
+40
+00:01:21,720 --> 00:01:25,480
+without additional license cost to
+
+41
+00:01:23,920 --> 00:01:26,480
+anybody who's got an Oracle database. So
+
+42
+00:01:25,480 --> 00:01:28,080
+if
+
+43
+00:01:26,480 --> 00:01:30,040
+you have an Oracle database, you have
+
+44
+00:01:28,080 --> 00:01:31,320
+the graph capabilities included. If you
+
+45
+00:01:30,040 --> 00:01:33,400
+have a client or you're working for a
+
+46
+00:01:31,320 --> 00:01:36,520
+client who's got an Oracle database,
+
+47
+00:01:33,400 --> 00:01:39,200
+you know, the client is um uh uh can use
+
+48
+00:01:36,520 --> 00:01:41,040
+that without any additional uh license
+
+49
+00:01:39,200 --> 00:01:42,520
+cost. And if you don't have an Oracle
+
+50
+00:01:41,040 --> 00:01:44,040
+database, at the end of the talk I'll
+
+51
+00:01:42,520 --> 00:01:45,280
+tell you where you can get a free Oracle
+
+52
+00:01:44,040 --> 00:01:47,640
+database if that's what you would
+
+53
+00:01:45,280 --> 00:01:49,240
+prefer. Now onto the topic. Uh that was
+
+54
+00:01:47,640 --> 00:01:50,880
+sort of my little plug on on Oracle
+
+55
+00:01:49,240 --> 00:01:52,280
+technologies. The the rest is going to
+
+56
+00:01:50,880 --> 00:01:53,560
+be pretty much
+
+57
+00:01:52,280 --> 00:01:56,600
+generic
+
+58
+00:01:53,560 --> 00:01:58,760
+graph machine learning. How do you use
+
+59
+00:01:56,600 --> 00:02:00,720
+or how can we use different techniques
+
+60
+00:01:58,760 --> 00:02:02,720
+that combine graphs and machine
+
+61
+00:02:00,720 --> 00:02:04,400
+learning? And I'm seeing this on three
+
+62
+00:02:02,720 --> 00:02:06,080
+different levels, right? The one
+
+63
+00:02:04,400 --> 00:02:09,320
+approach is like the most simple
+
+64
+00:02:06,080 --> 00:02:11,680
+approach actually is to just extract
+
+65
+00:02:09,320 --> 00:02:13,640
+features or use pattern matching
+
+66
+00:02:11,680 --> 00:02:16,240
+queries, use graph algorithms, and feed
+
+67
+00:02:13,640 --> 00:02:18,840
+the results into uh your favorite
+
+68
+00:02:16,240 --> 00:02:20,400
+machine learning framework.
+
+69
+00:02:18,840 --> 00:02:24,000
+The second level
+
+70
+00:02:20,400 --> 00:02:26,520
+um is to represent technology, uh sorry,
+
+71
+00:02:24,000 --> 00:02:28,400
+topology, not technology. To represent
+
+72
+00:02:26,520 --> 00:02:29,680
+topology of the topology of the graph as
+
+73
+00:02:28,400 --> 00:02:32,000
+a vector and feed that into your
+
+74
+00:02:29,680 --> 00:02:34,960
+favorite machine learning framework. Or
+
+75
+00:02:32,000 --> 00:02:37,480
+third level, uh you essentially combine
+
+76
+00:02:34,960 --> 00:02:39,400
+concepts of graph directly with with
+
+77
+00:02:37,480 --> 00:02:41,560
+neural networks. And I'll have uh one or
+
+78
+00:02:39,400 --> 00:02:43,440
+two examples,
+
+79
+00:02:41,560 --> 00:02:44,800
+customer
+
+80
+00:02:43,440 --> 00:02:45,600
+examples, to, you know, briefly
+
+81
+00:02:44,800 --> 00:02:48,360
+illustrate how these techniques um are
+
+82
+00:02:45,600 --> 00:02:49,680
+being used. And then at the end, because
+
+83
+00:02:48,360 --> 00:02:51,720
+here at the conference everyone wants to
+
+84
+00:02:49,680 --> 00:02:53,360
+talk about graph rag and uh retrieval
+
+85
+00:02:51,720 --> 00:02:54,480
+augmented generation workflows and so
+
+86
+00:02:53,360 --> 00:02:55,320
+on, I thought I'd give you a little bit
+
+87
+00:02:54,480 --> 00:02:57,440
+of an
+
+88
+00:02:55,320 --> 00:03:00,600
+uh example of how we're using these
+
+89
+00:02:57,440 --> 00:03:02,680
+techniques also uh for for graph rag.
+
+90
+00:03:00,600 --> 00:03:04,520
+And I hope you find that uh interesting
+
+91
+00:03:02,680 --> 00:03:06,000
+as well.
+
+92
+00:03:04,520 --> 00:03:07,760
+So,
+
+93
+00:03:06,000 --> 00:03:09,920
+first option,
+
+94
+00:03:07,760 --> 00:03:13,840
+first option is to compute different
+
+95
+00:03:09,920 --> 00:03:14,840
+metrics for each vector uh vertex in the
+
+96
+00:03:13,840 --> 00:03:16,200
+um
+
+97
+00:03:14,840 --> 00:03:17,080
+uh sort of um
+
+98
+00:03:16,200 --> 00:03:19,760
+uh
+
+99
+00:03:17,080 --> 00:03:22,880
+in the graph using either a pattern
+
+100
+00:03:19,760 --> 00:03:25,760
+matching query um or using a graph
+
+101
+00:03:22,880 --> 00:03:26,640
+algorithm. So you would essentially do
+
+102
+00:03:25,760 --> 00:03:27,880
+um
+
+103
+00:03:26,640 --> 00:03:30,480
+uh look at, you know, is there a
+
+104
+00:03:27,880 --> 00:03:32,760
+fraudulent account up to four hops away
+
+105
+00:03:30,480 --> 00:03:34,320
+from my destination account for a given
+
+106
+00:03:32,760 --> 00:03:36,840
+transaction or something? And then you
+
+107
+00:03:34,320 --> 00:03:40,680
+would feed that as an individual
+
+108
+00:03:36,840 --> 00:03:41,840
+variable into your um machine learning
+
+109
+00:03:40,680 --> 00:03:43,120
+platform. That's a relatively
+
+110
+00:03:41,840 --> 00:03:44,320
+straightforward thing. You could also do
+
+111
+00:03:43,120 --> 00:03:45,840
+the same thing with algorithms. You
+
+112
+00:03:44,320 --> 00:03:47,800
+compute whatever centrality or you
+
+113
+00:03:45,840 --> 00:03:51,000
+compute um
+
+114
+00:03:47,800 --> 00:03:53,760
+uh a community uh you you do a community
+
+115
+00:03:51,000 --> 00:03:57,040
+detection and then feed the result of
+
+116
+00:03:53,760 --> 00:03:58,280
+that as a variable uh into your machine
+
+117
+00:03:57,040 --> 00:04:00,840
+learning platform. That's essentially,
+
+118
+00:03:58,280 --> 00:04:02,680
+you know, just simple uh feature uh
+
+119
+00:04:00,840 --> 00:04:05,240
+engineering. Uh
+
+120
+00:04:02,680 --> 00:04:07,200
+I would say these days no rocket science
+
+121
+00:04:05,240 --> 00:04:09,640
+about this. And we have customers like
+
+122
+00:04:07,200 --> 00:04:12,040
+um in financial services I've been
+
+123
+00:04:09,640 --> 00:04:13,920
+working with uh a company from uh based
+
+124
+00:04:12,040 --> 00:04:16,440
+out of Bulgaria, Paysafe, who are doing
+
+125
+00:04:13,920 --> 00:04:19,680
+e-payments. They're using that approach
+
+126
+00:04:16,440 --> 00:04:22,320
+to uh figure out uh if there are
+
+127
+00:04:19,680 --> 00:04:24,600
+fraudulent activities uh happening in
+
+128
+00:04:22,320 --> 00:04:27,120
+their transactions graph. So what they
+
+129
+00:04:24,600 --> 00:04:29,280
+have is a conventional system which is
+
+130
+00:04:27,120 --> 00:04:32,240
+rule-based that takes every incoming
+
+131
+00:04:29,280 --> 00:04:34,960
+transaction into their system, uh
+
+132
+00:04:32,240 --> 00:04:36,960
+figures out if there is anything uh
+
+133
+00:04:34,960 --> 00:04:40,240
+uh that matches one of the rules, and
+
+134
+00:04:36,960 --> 00:04:42,720
+then based on that decision either um
+
+135
+00:04:40,240 --> 00:04:44,160
+automatically processes that transaction
+
+136
+00:04:42,720 --> 00:04:46,440
+or uh
+
+137
+00:04:44,160 --> 00:04:48,840
+um hands it off to to manual processing
+
+138
+00:04:46,440 --> 00:04:50,960
+or failure failure altogether. Um
+
+139
+00:04:48,840 --> 00:04:52,880
+they've complemented that rule-based
+
+140
+00:04:50,960 --> 00:04:55,080
+system with a graph database relatively
+
+141
+00:04:52,880 --> 00:04:59,400
+early on. We worked with them uh since
+
+142
+00:04:55,080 --> 00:05:01,840
+2016, 2017. Um where they were looking
+
+143
+00:04:59,400 --> 00:05:05,320
+at the the the typical scenario of is
+
+144
+00:05:01,840 --> 00:05:07,880
+there an account uh close to the
+
+145
+00:05:05,320 --> 00:05:09,640
+destination account of the transaction?
+
+146
+00:05:07,880 --> 00:05:10,960
+Um like is there three hops away, four
+
+147
+00:05:09,640 --> 00:05:12,880
+hops away? Is there someone who's been
+
+148
+00:05:10,960 --> 00:05:14,800
+involved in fraudulent activity in the
+
+149
+00:05:12,880 --> 00:05:16,880
+past? If that was the case, then this
+
+150
+00:05:14,800 --> 00:05:18,840
+thing would be handed off to manual
+
+151
+00:05:16,880 --> 00:05:22,000
+processing. And
+
+152
+00:05:18,840 --> 00:05:25,000
+as that was already a good basis, then
+
+153
+00:05:22,000 --> 00:05:27,400
+they started to um look for more
+
+154
+00:05:25,000 --> 00:05:29,640
+patterns, more sophisticated patterns,
+
+155
+00:05:27,400 --> 00:05:31,560
+and then uh introduced a machine
+
+156
+00:05:29,640 --> 00:05:34,560
+learning platform going along with it
+
+157
+00:05:31,560 --> 00:05:36,480
+that essentially took results from graph
+
+158
+00:05:34,560 --> 00:05:37,080
+queries like um
+
+159
+00:05:36,480 --> 00:05:40,480
+uh
+
+160
+00:05:37,080 --> 00:05:42,520
+do we have two accounts associated with
+
+161
+00:05:40,480 --> 00:05:45,000
+these um
+
+162
+00:05:42,520 --> 00:05:47,120
+with these customers that are linked by
+
+163
+00:05:45,000 --> 00:05:48,920
+the same password? Right? So if you ever
+
+164
+00:05:47,120 --> 00:05:51,240
+want to um
+
+165
+00:05:48,920 --> 00:05:53,560
+uh perform some fraudulent activity on
+
+166
+00:05:51,240 --> 00:05:55,080
+e-payment systems, right? Do note you
+
+167
+00:05:53,560 --> 00:05:56,440
+should not have one of the same password
+
+168
+00:05:55,080 --> 00:05:57,320
+on different accounts if you have if
+
+169
+00:05:56,440 --> 00:05:59,840
+you're operating with different
+
+170
+00:05:57,320 --> 00:06:01,320
+accounts, cuz that is a flag that's uh
+
+171
+00:05:59,840 --> 00:06:03,240
+that illustrates that it's mainly
+
+172
+00:06:01,320 --> 00:06:05,440
+fraudulent. And then based on that
+
+173
+00:06:03,240 --> 00:06:07,920
+result, uh they would look for different
+
+174
+00:06:05,440 --> 00:06:10,440
+patterns and try train a model that
+
+175
+00:06:07,920 --> 00:06:13,120
+would identify these uh
+
+176
+00:06:10,440 --> 00:06:15,240
+uh types of transactions as potentially
+
+177
+00:06:13,120 --> 00:06:17,320
+fraudulent. That is one of these
+
+178
+00:06:15,240 --> 00:06:19,600
+examples where you simply use signals
+
+179
+00:06:17,320 --> 00:06:20,800
+from uh the graph in some way, shape, or
+
+180
+00:06:19,600 --> 00:06:23,240
+form feed that into your machine
+
+181
+00:06:20,800 --> 00:06:25,400
+learning system as a variable.
+
+182
+00:06:23,240 --> 00:06:27,560
+Right? The
+
+183
+00:06:25,400 --> 00:06:30,240
+next level of uh oh, and by the way, you
+
+184
+00:06:27,560 --> 00:06:33,000
+can actually uh also uh feed that back
+
+185
+00:06:30,240 --> 00:06:34,560
+if oh, hang on. Feed that back uh into
+
+186
+00:06:33,000 --> 00:06:36,920
+your graph if you want to do further
+
+187
+00:06:34,560 --> 00:06:38,480
+graph analysis uh on on top of that just
+
+188
+00:06:36,920 --> 00:06:40,880
+for the sake of completeness.
+
+189
+00:06:38,480 --> 00:06:42,400
+Um the next level of kind of
+
+190
+00:06:40,880 --> 00:06:45,200
+sophistication
+
+191
+00:06:42,400 --> 00:06:47,840
+uh is uh rather than looking for
+
+192
+00:06:45,200 --> 00:06:50,160
+specific patterns, like find me
+
+193
+00:06:47,840 --> 00:06:51,520
+customers who are up to four hops away
+
+194
+00:06:50,160 --> 00:06:52,800
+uh from a fraudulent account or
+
+195
+00:06:51,520 --> 00:06:55,080
+something. Um
+
+196
+00:06:52,800 --> 00:06:56,680
+rather than look look then looking for
+
+197
+00:06:55,080 --> 00:07:01,080
+these types of specific patterns, you
+
+198
+00:06:56,680 --> 00:07:02,920
+can also try to find an encoding
+
+199
+00:07:01,080 --> 00:07:06,480
+that essentially represents the graph
+
+200
+00:07:02,920 --> 00:07:09,200
+structure around a given account or
+
+201
+00:07:06,480 --> 00:07:10,800
+around any type of vertex as a
+
+202
+00:07:09,200 --> 00:07:12,720
+multi-dimensional vector, right? So
+
+203
+00:07:10,800 --> 00:07:14,200
+essentially, you compute an embedding.
+
+204
+00:07:12,720 --> 00:07:16,800
+Why would you want to do this? Well,
+
+205
+00:07:14,200 --> 00:07:19,800
+this allows you to do two things.
+
+206
+00:07:16,800 --> 00:07:21,440
+One, you can uh perform vector
+
+207
+00:07:19,800 --> 00:07:24,720
+similarity search, right? You can look
+
+208
+00:07:21,440 --> 00:07:25,920
+for things which are similar but oh,
+
+209
+00:07:24,720 --> 00:07:28,400
+was that me?
+
+210
+00:07:25,920 --> 00:07:29,880
+Which are similar but not identical.
+
+211
+00:07:28,400 --> 00:07:31,560
+Should I move forward maybe a little bit
+
+212
+00:07:29,880 --> 00:07:32,560
+or back? Don't do let me know.
+
+213
+00:07:31,560 --> 00:07:33,280
+Whatever's
+
+214
+00:07:32,560 --> 00:07:35,400
+better.
+
+215
+00:07:33,280 --> 00:07:37,440
+Okay, thanks. Um
+
+216
+00:07:35,400 --> 00:07:40,880
+so that allows you to to do either this
+
+217
+00:07:37,440 --> 00:07:40,880
+uh similarity vector similarity search
+
+218
+00:07:42,400 --> 00:07:46,080
+Got it?
+
+219
+00:07:43,800 --> 00:07:48,320
+All right. Um so vector similarity
+
+220
+00:07:46,080 --> 00:07:50,400
+search or uh you can feed the whole
+
+221
+00:07:48,320 --> 00:07:52,240
+vector into your um machine learning
+
+222
+00:07:50,400 --> 00:07:53,960
+platform to essentially train train your
+
+223
+00:07:52,240 --> 00:07:56,840
+model. Uh but then of course you have
+
+224
+00:07:53,960 --> 00:07:58,160
+the challenge of how do you represent
+
+225
+00:07:56,840 --> 00:08:01,520
+the structure of your graph, so the
+
+226
+00:07:58,160 --> 00:08:03,120
+environment of every vertex um as a
+
+227
+00:08:01,520 --> 00:08:05,840
+vector. And there are different
+
+228
+00:08:03,120 --> 00:08:06,480
+techniques uh for that. Uh essentially,
+
+229
+00:08:05,840 --> 00:08:07,200
+um
+
+230
+00:08:06,480 --> 00:08:08,680
+uh
+
+231
+00:08:07,200 --> 00:08:12,800
+you uh
+
+232
+00:08:08,680 --> 00:08:15,880
+need to find a representation that uh
+
+233
+00:08:12,800 --> 00:08:19,800
+takes this um environment of every
+
+234
+00:08:15,880 --> 00:08:22,080
+vertex and maps it to a
+
+235
+00:08:19,800 --> 00:08:23,480
+uh multi-dimensional vectors. I I think
+
+236
+00:08:22,080 --> 00:08:25,640
+in the interest of of time I can't go
+
+237
+00:08:23,480 --> 00:08:27,160
+into the the topics of, you know, vector
+
+238
+00:08:25,640 --> 00:08:28,640
+similarity search and so on, but I I
+
+239
+00:08:27,160 --> 00:08:30,560
+know it's been discussed like in in
+
+240
+00:08:28,640 --> 00:08:32,960
+Paco's talk yesterday and elsewhere
+
+241
+00:08:30,560 --> 00:08:36,120
+already. Uh the idea, of course, being
+
+242
+00:08:32,960 --> 00:08:38,200
+making the predictions more accurate by
+
+243
+00:08:36,120 --> 00:08:39,760
+taking into account uh indirect
+
+244
+00:08:38,200 --> 00:08:41,760
+relationships. Like in product
+
+245
+00:08:39,760 --> 00:08:43,840
+recommendation, right? If you have a
+
+246
+00:08:41,760 --> 00:08:45,000
+conventional machine learning platform,
+
+247
+00:08:43,840 --> 00:08:47,640
+and you would be looking at the
+
+248
+00:08:45,000 --> 00:08:49,280
+properties of a customer, like the
+
+249
+00:08:47,640 --> 00:08:51,080
+whatever birth date or a channel on
+
+250
+00:08:49,280 --> 00:08:52,960
+which the customer typically uh
+
+251
+00:08:51,080 --> 00:08:55,800
+purchases products and whatever, and
+
+252
+00:08:52,960 --> 00:08:57,520
+then just look at the customer's
+
+253
+00:08:55,800 --> 00:08:59,960
+purchases, the products they they
+
+254
+00:08:57,520 --> 00:09:01,560
+actually are connected with
+
+255
+00:08:59,960 --> 00:09:03,320
+uh directly,
+
+256
+00:09:01,560 --> 00:09:05,280
+that'll give always give you a less
+
+257
+00:09:03,320 --> 00:09:07,120
+accurate result than what you would have
+
+258
+00:09:05,280 --> 00:09:08,840
+if you traverse the graph and take into
+
+259
+00:09:07,120 --> 00:09:11,960
+account the indirect relationships which
+
+260
+00:09:08,840 --> 00:09:13,720
+you get by connecting from customer to
+
+261
+00:09:11,960 --> 00:09:17,160
+product to customer to product and so
+
+262
+00:09:13,720 --> 00:09:19,560
+forth. Um and uh there are essentially
+
+263
+00:09:17,160 --> 00:09:21,480
+two ways to finally fundamentally
+
+264
+00:09:19,560 --> 00:09:24,680
+different approaches to encoding this
+
+265
+00:09:21,480 --> 00:09:26,880
+type of uh similarity, depending on your
+
+266
+00:09:24,680 --> 00:09:29,160
+use case, you would either want to look
+
+267
+00:09:26,880 --> 00:09:31,760
+at individual vertices,
+
+268
+00:09:29,160 --> 00:09:33,840
+um where you would look at the
+
+269
+00:09:31,760 --> 00:09:35,600
+environment of uh each and every
+
+270
+00:09:33,840 --> 00:09:38,280
+individual vertex,
+
+271
+00:09:35,600 --> 00:09:40,040
+or you would look at patterns like you
+
+272
+00:09:38,280 --> 00:09:42,880
+would look at um
+
+273
+00:09:40,040 --> 00:09:46,680
+little subgraphs or graphlets, um as as
+
+274
+00:09:42,880 --> 00:09:49,640
+we typically say, um to find
+
+275
+00:09:46,680 --> 00:09:52,760
+graphlets of similar structure. Uh and
+
+276
+00:09:49,640 --> 00:09:56,840
+I'll again I'll give you uh examples of
+
+277
+00:09:52,760 --> 00:09:59,040
+of both. Um for vertex embeddings, uh
+
+278
+00:09:56,840 --> 00:10:02,320
+there are techniques coming from natural
+
+279
+00:09:59,040 --> 00:10:05,720
+language processing which we have used
+
+280
+00:10:02,320 --> 00:10:08,640
+to come come from a vertex environment
+
+281
+00:10:05,720 --> 00:10:10,840
+to a vector representation which is
+
+282
+00:10:08,640 --> 00:10:14,680
+designed such that
+
+283
+00:10:10,840 --> 00:10:17,440
+two vertices with similar environments
+
+284
+00:10:14,680 --> 00:10:20,200
+similar but not identical will in vector
+
+285
+00:10:17,440 --> 00:10:22,040
+space be close to each other.
+
+286
+00:10:20,200 --> 00:10:24,520
+That's sort of the whole idea behind
+
+287
+00:10:22,040 --> 00:10:27,080
+this finding similarities but things
+
+288
+00:10:24,520 --> 00:10:28,920
+which are not identical. The way this
+
+289
+00:10:27,080 --> 00:10:31,200
+works is
+
+290
+00:10:28,920 --> 00:10:33,520
+you essentially take your little graph
+
+291
+00:10:31,200 --> 00:10:36,080
+like the demo graph I've got here.
+
+292
+00:10:33,520 --> 00:10:37,920
+You do random walks following just
+
+293
+00:10:36,080 --> 00:10:42,440
+traversing the graph like you have
+
+294
+00:10:37,920 --> 00:10:45,640
+vertex 1 2 4 8
+
+295
+00:10:42,440 --> 00:10:46,840
+and then 1 2 3 4 whatever. You
+
+296
+00:10:45,640 --> 00:10:47,920
+essentially do all of these random
+
+297
+00:10:46,840 --> 00:10:51,440
+walks.
+
+298
+00:10:47,920 --> 00:10:54,560
+When you consider every vertex as a
+
+299
+00:10:51,440 --> 00:10:57,800
+as a word in a sentence
+
+300
+00:10:54,560 --> 00:11:00,360
+and every path as a sentence then you
+
+301
+00:10:57,800 --> 00:11:03,839
+can use techniques from natural language
+
+302
+00:11:00,360 --> 00:11:06,080
+processing like word to vec
+
+303
+00:11:03,839 --> 00:11:08,760
+to convert that into a vector and then
+
+304
+00:11:06,080 --> 00:11:10,920
+you end up with a vector which is
+
+305
+00:11:08,760 --> 00:11:12,200
+representing your original graph in such
+
+306
+00:11:10,920 --> 00:11:14,800
+a way that
+
+307
+00:11:12,200 --> 00:11:17,040
+if there was a pattern which is kind of
+
+308
+00:11:14,800 --> 00:11:18,040
+similar to what you have around vertex 4
+
+309
+00:11:17,040 --> 00:11:20,640
+here
+
+310
+00:11:18,040 --> 00:11:22,160
+elsewhere in the graph these two things
+
+311
+00:11:20,640 --> 00:11:23,320
+these two vertices would have similar
+
+312
+00:11:22,160 --> 00:11:25,480
+vectors.
+
+313
+00:11:23,320 --> 00:11:27,880
+I said similar not but not the same. How
+
+314
+00:11:25,480 --> 00:11:29,200
+are our customers using this? I thought
+
+315
+00:11:27,880 --> 00:11:31,520
+because there's
+
+316
+00:11:29,200 --> 00:11:33,280
+fair amount of
+
+317
+00:11:31,520 --> 00:11:34,720
+attendees here in the audience also
+
+318
+00:11:33,280 --> 00:11:36,240
+coming from an RDF background I thought
+
+319
+00:11:34,720 --> 00:11:39,200
+I'd give you an example
+
+320
+00:11:36,240 --> 00:11:42,400
+where we are combining RDF knowledge
+
+321
+00:11:39,200 --> 00:11:44,560
+graphs with property graphs
+
+322
+00:11:42,400 --> 00:11:47,280
+because we can put a view on top of the
+
+323
+00:11:44,560 --> 00:11:49,160
+RDF graph to do graph traversals and
+
+324
+00:11:47,280 --> 00:11:51,720
+like graph machine learning and stuff.
+
+325
+00:11:49,160 --> 00:11:53,320
+We've been working with a
+
+326
+00:11:51,720 --> 00:11:56,880
+customer
+
+327
+00:11:53,320 --> 00:11:59,560
+in Asia in the area of
+
+328
+00:11:56,880 --> 00:12:02,360
+agricultural research. What they do is
+
+329
+00:11:59,560 --> 00:12:05,680
+they are trying to figure out
+
+330
+00:12:02,360 --> 00:12:09,280
+on the basis of the pedigree of a
+
+331
+00:12:05,680 --> 00:12:12,680
+plant in this case of a rice plant what
+
+332
+00:12:09,280 --> 00:12:14,160
+the properties of the next generation
+
+333
+00:12:12,680 --> 00:12:17,360
+will be because they are of course
+
+334
+00:12:14,160 --> 00:12:19,560
+looking for new variants which have you
+
+335
+00:12:17,360 --> 00:12:21,640
+better characteristics whether it be
+
+336
+00:12:19,560 --> 00:12:23,400
+higher yield or better disease
+
+337
+00:12:21,640 --> 00:12:26,760
+resistance and so forth. They have
+
+338
+00:12:23,400 --> 00:12:30,600
+represented all of their plants with
+
+339
+00:12:26,760 --> 00:12:33,000
+their pedigree and their properties as
+
+340
+00:12:30,600 --> 00:12:34,839
+an RDF based graph.
+
+341
+00:12:33,000 --> 00:12:38,600
+And then they created a view on top of
+
+342
+00:12:34,839 --> 00:12:40,560
+it and ran deep walk to compute a vertex
+
+343
+00:12:38,600 --> 00:12:43,160
+embedding for every plant in order to be
+
+344
+00:12:40,560 --> 00:12:46,880
+able to predict the next generation
+
+345
+00:12:43,160 --> 00:12:48,800
+of this specific variety. And they
+
+346
+00:12:46,880 --> 00:12:50,280
+actually got pretty
+
+347
+00:12:48,800 --> 00:12:53,080
+accurate results. So that was one
+
+348
+00:12:50,280 --> 00:12:55,960
+example of where we applied
+
+349
+00:12:53,080 --> 00:12:59,400
+deep walk. Another example sort of from
+
+350
+00:12:55,960 --> 00:13:01,440
+a different category if you want to not
+
+351
+00:12:59,400 --> 00:13:03,680
+do vertex embedding but you're looking
+
+352
+00:13:01,440 --> 00:13:06,360
+for similar graphlets
+
+353
+00:13:03,680 --> 00:13:10,000
+then we can essentially use a similar
+
+354
+00:13:06,360 --> 00:13:12,400
+technique where again there is
+
+355
+00:13:10,000 --> 00:13:14,280
+technology or an algorithm from natural
+
+356
+00:13:12,400 --> 00:13:16,320
+language processing called doc to vec
+
+357
+00:13:14,280 --> 00:13:18,880
+which essentially does the same random
+
+358
+00:13:16,320 --> 00:13:21,839
+walk type of thing but
+
+359
+00:13:18,880 --> 00:13:23,360
+essentially looks at paragraphs or sort
+
+360
+00:13:21,839 --> 00:13:26,400
+of little documents
+
+361
+00:13:23,360 --> 00:13:29,320
+and converts those into a graph that
+
+362
+00:13:26,400 --> 00:13:31,920
+represents essentially the structure of
+
+363
+00:13:29,320 --> 00:13:35,120
+this little graphlet in a vector form
+
+364
+00:13:31,920 --> 00:13:37,280
+such that if you have similar graphlets
+
+365
+00:13:35,120 --> 00:13:39,480
+they'll have a similar vector and then
+
+366
+00:13:37,280 --> 00:13:41,880
+you can do vector
+
+367
+00:13:39,480 --> 00:13:44,000
+similarity search on on top of that.
+
+368
+00:13:41,880 --> 00:13:46,320
+Essentially we're doing a random walk
+
+369
+00:13:44,000 --> 00:13:49,200
+like in the other case.
+
+370
+00:13:46,320 --> 00:13:51,800
+Each path is then like a paragraph and
+
+371
+00:13:49,200 --> 00:13:54,200
+rather than looking at the vertices for
+
+372
+00:13:51,800 --> 00:13:56,040
+the words we're using the the edges plus
+
+373
+00:13:54,200 --> 00:13:58,200
+we've added a couple of optimizations to
+
+374
+00:13:56,040 --> 00:14:00,560
+the original
+
+375
+00:13:58,200 --> 00:14:02,680
+sort of the naive algorithm that takes
+
+376
+00:14:00,560 --> 00:14:04,600
+into account multiple properties and
+
+377
+00:14:02,680 --> 00:14:06,440
+also the overall structure the overall
+
+378
+00:14:04,600 --> 00:14:09,680
+properties of the graph
+
+379
+00:14:06,440 --> 00:14:11,440
+and then you can start using that
+
+380
+00:14:09,680 --> 00:14:13,360
+on for example little knowledge graphs
+
+381
+00:14:11,440 --> 00:14:16,920
+and I'll come back to that example in
+
+382
+00:14:13,360 --> 00:14:19,560
+the graph rack section of my talk where
+
+383
+00:14:16,920 --> 00:14:21,480
+we have extracted a knowledge graph from
+
+384
+00:14:19,560 --> 00:14:23,040
+so-called suspicious activity reports in
+
+385
+00:14:21,480 --> 00:14:24,160
+financial services
+
+386
+00:14:23,040 --> 00:14:26,240
+where
+
+387
+00:14:24,160 --> 00:14:27,959
+we are extracting accounts and customers
+
+388
+00:14:26,240 --> 00:14:29,839
+and companies and transfers and
+
+389
+00:14:27,959 --> 00:14:32,040
+activities between them and so forth as
+
+390
+00:14:29,839 --> 00:14:33,480
+a little knowledge graph that has a
+
+391
+00:14:32,040 --> 00:14:34,640
+structure
+
+392
+00:14:33,480 --> 00:14:38,000
+and then you can do two things. You can
+
+393
+00:14:34,640 --> 00:14:39,800
+either look for cases which have a
+
+394
+00:14:38,000 --> 00:14:42,079
+similar
+
+395
+00:14:39,800 --> 00:14:44,400
+knowledge graph structure which look
+
+396
+00:14:42,079 --> 00:14:46,600
+kind of similar in terms of pattern
+
+397
+00:14:44,400 --> 00:14:48,079
+or you can use that for automated
+
+398
+00:14:46,600 --> 00:14:50,800
+classification right if you have a new
+
+399
+00:14:48,079 --> 00:14:53,120
+case coming in figuring out is that
+
+400
+00:14:50,800 --> 00:14:55,280
+dubious or is it not?
+
+401
+00:14:53,120 --> 00:14:56,200
+These are the two things which which you
+
+402
+00:14:55,280 --> 00:14:58,160
+can
+
+403
+00:14:56,200 --> 00:15:00,079
+do with this type of with this type of
+
+404
+00:14:58,160 --> 00:15:01,720
+thing. That's sort of the second level
+
+405
+00:15:00,079 --> 00:15:03,520
+right? So we've been talking about using
+
+406
+00:15:01,720 --> 00:15:04,880
+individual properties of the graph or
+
+407
+00:15:03,520 --> 00:15:07,079
+query
+
+408
+00:15:04,880 --> 00:15:08,839
+graph pattern matching query results as
+
+409
+00:15:07,079 --> 00:15:11,720
+input to machine learning. Second
+
+410
+00:15:08,839 --> 00:15:13,839
+approach was to generate embeddings per
+
+411
+00:15:11,720 --> 00:15:15,160
+vector or per graphlet feed that into a
+
+412
+00:15:13,839 --> 00:15:17,480
+machine learning model. The third thing
+
+413
+00:15:15,160 --> 00:15:19,720
+is actually to intertwine
+
+414
+00:15:17,480 --> 00:15:21,800
+the neural network with the graph
+
+415
+00:15:19,720 --> 00:15:23,800
+structure. There is
+
+416
+00:15:21,800 --> 00:15:26,120
+an algorithm in the literature called
+
+417
+00:15:23,800 --> 00:15:28,440
+graph sage which is very well known
+
+418
+00:15:26,120 --> 00:15:30,240
+which we've used as the basis for what
+
+419
+00:15:28,440 --> 00:15:32,640
+we've implemented and you can nicely use
+
+420
+00:15:30,240 --> 00:15:32,640
+that.
+
+421
+00:15:32,720 --> 00:15:36,240
+Actually
+
+422
+00:15:34,000 --> 00:15:38,800
+representation learning algorithm which
+
+423
+00:15:36,240 --> 00:15:40,560
+you can use for classification vertex
+
+424
+00:15:38,800 --> 00:15:42,560
+classification edge classification link
+
+425
+00:15:40,560 --> 00:15:43,720
+prediction. You can figure out anomaly
+
+426
+00:15:42,560 --> 00:15:45,640
+scores
+
+427
+00:15:43,720 --> 00:15:48,560
+compute embeddings and so forth. The
+
+428
+00:15:45,640 --> 00:15:51,640
+nice thing is unlike for example deep
+
+429
+00:15:48,560 --> 00:15:53,760
+walk which only works on
+
+430
+00:15:51,640 --> 00:15:56,920
+homogeneous graphs and only takes into
+
+431
+00:15:53,760 --> 00:15:59,400
+account the graph topology no properties
+
+432
+00:15:56,920 --> 00:16:01,640
+nothing plus it also has some challenges
+
+433
+00:15:59,400 --> 00:16:02,760
+if you if you have a rapidly evolving
+
+434
+00:16:01,640 --> 00:16:05,760
+graph because then you always need to
+
+435
+00:16:02,760 --> 00:16:08,160
+recompute it. Here this thing is is a
+
+436
+00:16:05,760 --> 00:16:10,320
+lot more robust in in that sense. There
+
+437
+00:16:08,160 --> 00:16:12,400
+are different variants for supervised or
+
+438
+00:16:10,320 --> 00:16:13,880
+unsupervised learning and what I like
+
+439
+00:16:12,400 --> 00:16:15,600
+about this
+
+440
+00:16:13,880 --> 00:16:17,560
+in particular is that we've combined it
+
+441
+00:16:15,600 --> 00:16:20,079
+with
+
+442
+00:16:17,560 --> 00:16:21,640
+a the GNN explainer algorithm again
+
+443
+00:16:20,079 --> 00:16:25,280
+something which you would find in the
+
+444
+00:16:21,640 --> 00:16:29,520
+literature that helps you to identify
+
+445
+00:16:25,280 --> 00:16:32,040
+which properties on each vertex or
+
+446
+00:16:29,520 --> 00:16:33,640
+which vertex in a in in the environment
+
+447
+00:16:32,040 --> 00:16:34,760
+of a given
+
+448
+00:16:33,640 --> 00:16:37,520
+vertex
+
+449
+00:16:34,760 --> 00:16:39,560
+has had a particularly high influence on
+
+450
+00:16:37,520 --> 00:16:42,120
+the result of for example the the
+
+451
+00:16:39,560 --> 00:16:43,120
+classification.
+
+452
+00:16:42,120 --> 00:16:45,680
+Right so
+
+453
+00:16:43,120 --> 00:16:48,200
+the idea is to combine the graph sorry
+
+454
+00:16:45,680 --> 00:16:49,440
+the the neural network with the graph. I
+
+455
+00:16:48,200 --> 00:16:52,040
+think in the interest of time I'm just
+
+456
+00:16:49,440 --> 00:16:54,040
+going to skip over this. Feel free to
+
+457
+00:16:52,040 --> 00:16:55,839
+talk to us over on the
+
+458
+00:16:54,040 --> 00:16:58,640
+at our booth afterwards if you're
+
+459
+00:16:55,839 --> 00:16:59,839
+interested in more more details on this
+
+460
+00:16:58,640 --> 00:17:01,640
+topic.
+
+461
+00:16:59,839 --> 00:17:04,120
+Where are we using that?
+
+462
+00:17:01,640 --> 00:17:07,040
+I was actually thinking about using an
+
+463
+00:17:04,120 --> 00:17:10,640
+example which we've been working on in
+
+464
+00:17:07,040 --> 00:17:11,640
+the area of online ad fraud
+
+465
+00:17:10,640 --> 00:17:12,360
+but
+
+466
+00:17:11,640 --> 00:17:14,120
+I
+
+467
+00:17:12,360 --> 00:17:15,679
+essentially ended up finding that
+
+468
+00:17:14,120 --> 00:17:17,520
+example a little bit too complicated to
+
+469
+00:17:15,679 --> 00:17:19,360
+explain so I'm using something which
+
+470
+00:17:17,520 --> 00:17:20,640
+probably all of you can relate to which
+
+471
+00:17:19,360 --> 00:17:23,400
+is
+
+472
+00:17:20,640 --> 00:17:27,000
+kind of using this type of technique for
+
+473
+00:17:23,400 --> 00:17:29,600
+cyber security. So anybody who's running
+
+474
+00:17:27,000 --> 00:17:32,840
+an IT infrastructure
+
+475
+00:17:29,600 --> 00:17:34,520
+particularly these days with the current
+
+476
+00:17:32,840 --> 00:17:36,880
+rate of
+
+477
+00:17:34,520 --> 00:17:39,880
+cyber criminality going on
+
+478
+00:17:36,880 --> 00:17:42,760
+will be interested in looking at
+
+479
+00:17:39,880 --> 00:17:45,440
+using log files to identify any kind of
+
+480
+00:17:42,760 --> 00:17:47,480
+suspicious activity from the logs. So if
+
+481
+00:17:45,440 --> 00:17:49,560
+you take into account the systems calls
+
+482
+00:17:47,480 --> 00:17:51,040
+and file accesses and network activities
+
+483
+00:17:49,560 --> 00:17:53,600
+and so on
+
+484
+00:17:51,040 --> 00:17:55,840
+finding out which patterns indicate that
+
+485
+00:17:53,600 --> 00:17:57,200
+there's something malicious going on.
+
+486
+00:17:55,840 --> 00:17:58,760
+That was sort of the idea. We're
+
+487
+00:17:57,200 --> 00:18:00,520
+actually using that ourselves. We as
+
+488
+00:17:58,760 --> 00:18:04,280
+Oracle I don't know if you know but we
+
+489
+00:18:00,520 --> 00:18:06,360
+we are a fairly sizeable
+
+490
+00:18:04,280 --> 00:18:08,160
+hyper scalar in the meantime
+
+491
+00:18:06,360 --> 00:18:09,200
+and we have
+
+492
+00:18:08,160 --> 00:18:10,880
+tons of
+
+493
+00:18:09,200 --> 00:18:12,960
+environments to to operate. We're using
+
+494
+00:18:10,880 --> 00:18:14,720
+this technique to find out if there's
+
+495
+00:18:12,960 --> 00:18:16,000
+anything suspicious
+
+496
+00:18:14,720 --> 00:18:17,440
+going on.
+
+497
+00:18:16,000 --> 00:18:20,480
+Basically
+
+498
+00:18:17,440 --> 00:18:23,000
+training the system on
+
+499
+00:18:20,480 --> 00:18:25,200
+typical attack patterns and historical
+
+500
+00:18:23,000 --> 00:18:28,440
+data that we have and then trying to
+
+501
+00:18:25,200 --> 00:18:31,280
+classify activity patterns as anomalous
+
+502
+00:18:28,440 --> 00:18:33,360
+as they come in. That is sort of the the
+
+503
+00:18:31,280 --> 00:18:35,520
+idea.
+
+504
+00:18:33,360 --> 00:18:39,040
+As you can imagine if if you have
+
+505
+00:18:35,520 --> 00:18:41,200
+log data at the scale as we have with
+
+506
+00:18:39,040 --> 00:18:43,480
+with these huge data centers
+
+507
+00:18:41,200 --> 00:18:44,840
+that is not the first line of defense
+
+508
+00:18:43,480 --> 00:18:46,200
+can't be the first line of defense
+
+509
+00:18:44,840 --> 00:18:48,040
+because there's just too much log data
+
+510
+00:18:46,200 --> 00:18:50,960
+coming in. So we have a sort of a first
+
+511
+00:18:48,040 --> 00:18:53,560
+step an LSTM based machine learning
+
+512
+00:18:50,960 --> 00:18:55,240
+model which we use to distinguish
+
+513
+00:18:53,560 --> 00:18:57,919
+between anything which is kind of just
+
+514
+00:18:55,240 --> 00:19:00,240
+noise to start with and then
+
+515
+00:18:57,919 --> 00:19:02,480
+only use that technique as the the
+
+516
+00:19:00,240 --> 00:19:04,760
+second layer. But still there is a blog
+
+517
+00:19:02,480 --> 00:19:06,919
+post on on this if anybody's interested
+
+518
+00:19:04,760 --> 00:19:09,080
+I'll be I'll be happy to point that out
+
+519
+00:19:06,919 --> 00:19:10,880
+to you. I thought I had it here on on
+
+520
+00:19:09,080 --> 00:19:13,240
+the list but
+
+521
+00:19:10,880 --> 00:19:14,280
+anyway so we're coming to pretty close
+
+522
+00:19:13,240 --> 00:19:17,320
+to
+
+523
+00:19:14,280 --> 00:19:19,280
+the end of of today's talk. In case you
+
+524
+00:19:17,320 --> 00:19:21,440
+find this interesting or useful or would
+
+525
+00:19:19,280 --> 00:19:24,159
+like to get your hands on it we have
+
+526
+00:19:21,440 --> 00:19:25,840
+end-to-end examples for example on
+
+527
+00:19:24,159 --> 00:19:27,960
+GitHub and I'll share the slide deck
+
+528
+00:19:25,840 --> 00:19:30,560
+here afterwards. Here we're just using a
+
+529
+00:19:27,960 --> 00:19:32,440
+citations network and showing how this
+
+530
+00:19:30,560 --> 00:19:34,840
+can be used
+
+531
+00:19:32,440 --> 00:19:36,000
+with classification based on supervised
+
+532
+00:19:34,840 --> 00:19:37,720
+learning
+
+533
+00:19:36,000 --> 00:19:39,440
+sort of nice end-to-end step-by-step
+
+534
+00:19:37,720 --> 00:19:40,600
+explanation
+
+535
+00:19:39,440 --> 00:19:43,679
+and
+
+536
+00:19:40,600 --> 00:19:46,080
+that brings us to the last example which
+
+537
+00:19:43,679 --> 00:19:48,679
+I which I wanted to go into with a
+
+538
+00:19:46,080 --> 00:19:50,840
+little more detail which is
+
+539
+00:19:48,679 --> 00:19:52,400
+as I called my talk so from fraud
+
+540
+00:19:50,840 --> 00:19:53,600
+analytics graph rack I wanted to talk
+
+541
+00:19:52,400 --> 00:19:56,840
+about
+
+542
+00:19:53,600 --> 00:19:59,400
+the graph rack part in the end. So, as I
+
+543
+00:19:56,840 --> 00:20:00,920
+alluded to earlier, we've been working
+
+544
+00:19:59,400 --> 00:20:04,240
+with customers in the financial services
+
+545
+00:20:00,920 --> 00:20:05,520
+industry on these suspicious activity
+
+546
+00:20:04,240 --> 00:20:06,640
+reports
+
+547
+00:20:05,520 --> 00:20:08,200
+which
+
+548
+00:20:06,640 --> 00:20:10,440
+they need to create whenever there's any
+
+549
+00:20:08,200 --> 00:20:12,840
+kind of dubious activity going on. And
+
+550
+00:20:10,440 --> 00:20:14,520
+our idea was like what has been
+
+551
+00:20:12,840 --> 00:20:16,560
+discussed in other talks as well to
+
+552
+00:20:14,520 --> 00:20:18,640
+extract a knowledge graph from these
+
+553
+00:20:16,560 --> 00:20:20,440
+suspicious activity reports. The good
+
+554
+00:20:18,640 --> 00:20:21,400
+thing about suspicious activity reports
+
+555
+00:20:20,440 --> 00:20:23,480
+is
+
+556
+00:20:21,400 --> 00:20:25,560
+they're a bit easier to deal with than
+
+557
+00:20:23,480 --> 00:20:27,880
+like any kind of other probes or what
+
+558
+00:20:25,560 --> 00:20:28,880
+you find on on Wikipedia or something
+
+559
+00:20:27,880 --> 00:20:31,240
+because
+
+560
+00:20:28,880 --> 00:20:33,640
+you have a relatively limited set of
+
+561
+00:20:31,240 --> 00:20:35,120
+entities and relationships which you you
+
+562
+00:20:33,640 --> 00:20:36,240
+need to extract, but you would you know
+
+563
+00:20:35,120 --> 00:20:38,040
+typically
+
+564
+00:20:36,240 --> 00:20:39,560
+try to find out who are the people
+
+565
+00:20:38,040 --> 00:20:41,240
+involved, what are the companies that
+
+566
+00:20:39,560 --> 00:20:43,720
+play a role, what are the relationships
+
+567
+00:20:41,240 --> 00:20:46,280
+between between them and so forth.
+
+568
+00:20:43,720 --> 00:20:48,560
+Basically, you need to
+
+569
+00:20:46,280 --> 00:20:50,360
+do named entity recognition. That's what
+
+570
+00:20:48,560 --> 00:20:51,840
+Paco was talking about
+
+571
+00:20:50,360 --> 00:20:53,960
+yesterday in the master class very
+
+572
+00:20:51,840 --> 00:20:55,120
+nicely. Right, and you have
+
+573
+00:20:53,960 --> 00:20:56,880
+all of these sort of individual
+
+574
+00:20:55,120 --> 00:20:59,120
+sentences. Adam Smith is the owner of
+
+575
+00:20:56,880 --> 00:21:01,440
+the account blah which opened on blah.
+
+576
+00:20:59,120 --> 00:21:05,440
+Account transactions include cash
+
+577
+00:21:01,440 --> 00:21:06,840
+deposits from Adam to company blah.
+
+578
+00:21:05,440 --> 00:21:08,480
+And then you need to figure out the
+
+579
+00:21:06,840 --> 00:21:10,120
+relationships. So, you do relationship
+
+580
+00:21:08,480 --> 00:21:11,600
+extraction.
+
+581
+00:21:10,120 --> 00:21:13,320
+And then you need to figure out that you
+
+582
+00:21:11,600 --> 00:21:14,760
+have co-references, right? Adam Smith in
+
+583
+00:21:13,320 --> 00:21:16,920
+the beginning is the Adam in the second
+
+584
+00:21:14,760 --> 00:21:19,160
+sentence and
+
+585
+00:21:16,920 --> 00:21:21,160
+things like that. So, that's
+
+586
+00:21:19,160 --> 00:21:23,760
+the the task. And from that you can
+
+587
+00:21:21,160 --> 00:21:26,200
+generate this little graph which is a
+
+588
+00:21:23,760 --> 00:21:28,360
+nice very compact representation of the
+
+589
+00:21:26,200 --> 00:21:30,640
+content of that suspicious
+
+590
+00:21:28,360 --> 00:21:32,080
+of these two sentences.
+
+591
+00:21:30,640 --> 00:21:34,480
+And then we created a pipeline. We
+
+592
+00:21:32,080 --> 00:21:36,800
+actually started working on this
+
+593
+00:21:34,480 --> 00:21:37,840
+pre
+
+594
+00:21:36,800 --> 00:21:39,640
+the
+
+595
+00:21:37,840 --> 00:21:42,920
+craze around
+
+596
+00:21:39,640 --> 00:21:44,680
+LLMs. So, we essentially did as I said,
+
+597
+00:21:42,920 --> 00:21:46,720
+entity recognition, relationship
+
+598
+00:21:44,680 --> 00:21:48,840
+extraction, co-reference resolution that
+
+599
+00:21:46,720 --> 00:21:50,400
+sort of combines that into the graph.
+
+600
+00:21:48,840 --> 00:21:52,000
+And we used
+
+601
+00:21:50,400 --> 00:21:53,080
+a pre-trained transformer model based on
+
+602
+00:21:52,000 --> 00:21:55,600
+BERT
+
+603
+00:21:53,080 --> 00:21:58,560
+to actually perform these three tasks in
+
+604
+00:21:55,600 --> 00:22:00,440
+three steps of one of the same pipeline.
+
+605
+00:21:58,560 --> 00:22:02,560
+With a little bit of
+
+606
+00:22:00,440 --> 00:22:04,920
+tuning, we got actually pretty good
+
+607
+00:22:02,560 --> 00:22:07,080
+results, but of course, that's a lot of
+
+608
+00:22:04,920 --> 00:22:08,480
+effort. Right? You What you need to do
+
+609
+00:22:07,080 --> 00:22:11,360
+in order to train or fine-tune that
+
+610
+00:22:08,480 --> 00:22:13,480
+pipeline, you need to take a certain set
+
+611
+00:22:11,360 --> 00:22:14,679
+of these suspicious suspicious activity
+
+612
+00:22:13,480 --> 00:22:16,480
+reports
+
+613
+00:22:14,679 --> 00:22:17,600
+and annotate them.
+
+614
+00:22:16,480 --> 00:22:19,679
+Figure out, okay, what is an entity,
+
+615
+00:22:17,600 --> 00:22:20,640
+what is an account, what is a customer?
+
+616
+00:22:19,679 --> 00:22:22,760
+How are these
+
+617
+00:22:20,640 --> 00:22:24,880
+related? And so you you we we've done a
+
+618
+00:22:22,760 --> 00:22:26,480
+fair amount of work. We we took like 100
+
+619
+00:22:24,880 --> 00:22:28,560
+something
+
+620
+00:22:26,480 --> 00:22:30,600
+of these SARs,
+
+621
+00:22:28,560 --> 00:22:31,880
+annotated them, used them to train the
+
+622
+00:22:30,600 --> 00:22:34,640
+model,
+
+623
+00:22:31,880 --> 00:22:36,760
+and then the results were actually
+
+624
+00:22:34,640 --> 00:22:39,720
+pretty good. And I only realized how
+
+625
+00:22:36,760 --> 00:22:42,520
+good they were when we started to redo
+
+626
+00:22:39,720 --> 00:22:44,240
+the same exercise with an LLM these days
+
+627
+00:22:42,520 --> 00:22:47,080
+cuz I mean obviously the immediate
+
+628
+00:22:44,240 --> 00:22:49,360
+reaction when when this whole LLM thing
+
+629
+00:22:47,080 --> 00:22:51,600
+came about was, okay, that should make
+
+630
+00:22:49,360 --> 00:22:53,960
+our lives a lot easier. We just you know
+
+631
+00:22:51,600 --> 00:22:55,880
+throw that at at the LLM, be a bit
+
+632
+00:22:53,960 --> 00:22:57,240
+creative about the prompt,
+
+633
+00:22:55,880 --> 00:22:58,679
+and then
+
+634
+00:22:57,240 --> 00:23:00,920
+have the LLM figure out what the
+
+635
+00:22:58,679 --> 00:23:02,360
+entities and relationships are and so
+
+636
+00:23:00,920 --> 00:23:04,240
+on.
+
+637
+00:23:02,360 --> 00:23:08,080
+A well-trained,
+
+638
+00:23:04,240 --> 00:23:10,360
+fine-tuned model these days, I think, is
+
+639
+00:23:08,080 --> 00:23:12,920
+still significantly
+
+640
+00:23:10,360 --> 00:23:15,920
+more accurate than any of the current
+
+641
+00:23:12,920 --> 00:23:18,080
+LLMs. I'm sure that'll change.
+
+642
+00:23:15,920 --> 00:23:20,480
+I'm sure that'll change over time. I I
+
+643
+00:23:18,080 --> 00:23:22,960
+mean I if I see the amount of
+
+644
+00:23:20,480 --> 00:23:25,480
+investment in LLMs,
+
+645
+00:23:22,960 --> 00:23:27,160
+it's actually quite mind-boggling. So, I
+
+646
+00:23:25,480 --> 00:23:28,560
+I see them catching up. I don't know
+
+647
+00:23:27,160 --> 00:23:29,920
+whether this is still
+
+648
+00:23:28,560 --> 00:23:30,920
+pretty good.
+
+649
+00:23:29,920 --> 00:23:33,400
+So,
+
+650
+00:23:30,920 --> 00:23:36,600
+just sort of my little take on that. And
+
+651
+00:23:33,400 --> 00:23:38,360
+just to wrap up, we can then use this
+
+652
+00:23:36,600 --> 00:23:40,920
+sort of end-to-end
+
+653
+00:23:38,360 --> 00:23:42,080
+very nicely in a retrieval augmented
+
+654
+00:23:40,920 --> 00:23:43,640
+generation workflow, [clears throat]
+
+655
+00:23:42,080 --> 00:23:45,640
+right? So, for example, if you have a
+
+656
+00:23:43,640 --> 00:23:47,160
+suspicious activity report, here's a new
+
+657
+00:23:45,640 --> 00:23:49,640
+SAR. You prompt the system, right?
+
+658
+00:23:47,160 --> 00:23:52,600
+Here's a new SAR. Decide
+
+659
+00:23:49,640 --> 00:23:55,000
+whether this is fraudulent or not and
+
+660
+00:23:52,600 --> 00:23:59,040
+explain your decision. Well, then what
+
+661
+00:23:55,000 --> 00:24:02,120
+you would want to do is as part of your
+
+662
+00:23:59,040 --> 00:24:03,280
+workflow, you would want to convert your
+
+663
+00:24:02,120 --> 00:24:06,120
+new
+
+664
+00:24:03,280 --> 00:24:07,440
+suspicious activity report into a little
+
+665
+00:24:06,120 --> 00:24:08,440
+knowledge graph. So, you do the graph
+
+666
+00:24:07,440 --> 00:24:10,480
+modeling.
+
+667
+00:24:08,440 --> 00:24:12,280
+You create the embedding.
+
+668
+00:24:10,480 --> 00:24:14,320
+Compare that against your
+
+669
+00:24:12,280 --> 00:24:17,240
+vector database. Look at vector
+
+670
+00:24:14,320 --> 00:24:18,800
+similarity. Find similar cases. Extract
+
+671
+00:24:17,240 --> 00:24:19,920
+those documents which are kind of
+
+672
+00:24:18,800 --> 00:24:22,160
+similar.
+
+673
+00:24:19,920 --> 00:24:24,280
+And then feed those into the prompt.
+
+674
+00:24:22,160 --> 00:24:26,520
+Then you have the the new one, maybe
+
+675
+00:24:24,280 --> 00:24:28,120
+three or five old ones which have been
+
+676
+00:24:26,520 --> 00:24:29,960
+classified in a certain way. And then
+
+677
+00:24:28,120 --> 00:24:31,240
+based on that, the LLM can take a
+
+678
+00:24:29,960 --> 00:24:32,920
+decision
+
+679
+00:24:31,240 --> 00:24:35,840
+as to whether this is fraudulent and
+
+680
+00:24:32,920 --> 00:24:38,040
+explain why this this case is maybe more
+
+681
+00:24:35,840 --> 00:24:39,880
+similar to one of those
+
+682
+00:24:38,040 --> 00:24:42,320
+rather than something else. Right? So,
+
+683
+00:24:39,880 --> 00:24:44,920
+that would be the end-to-end workflow.
+
+684
+00:24:42,320 --> 00:24:47,400
+Why would you do this maybe in an Oracle
+
+685
+00:24:44,920 --> 00:24:48,720
+database environment? Sorry for my one
+
+686
+00:24:47,400 --> 00:24:49,960
+little marketing slide which I had to
+
+687
+00:24:48,720 --> 00:24:50,800
+stick in here.
+
+688
+00:24:49,960 --> 00:24:52,040
+Um
+
+689
+00:24:50,800 --> 00:24:54,200
+The nice thing about the Oracle
+
+690
+00:24:52,040 --> 00:24:57,840
+environment in that context in these RAG
+
+691
+00:24:54,200 --> 00:24:59,840
+workflows is that not only do we support
+
+692
+00:24:57,840 --> 00:25:01,760
+the graph functionality, property graph
+
+693
+00:24:59,840 --> 00:25:03,679
+or RDF graph as I said,
+
+694
+00:25:01,760 --> 00:25:06,960
+and also the property graphs based on
+
+695
+00:25:03,679 --> 00:25:08,360
+the new SQL PGQ SQL 2023 standard which
+
+696
+00:25:06,960 --> 00:25:10,960
+interestingly has not been talked about
+
+697
+00:25:08,360 --> 00:25:13,360
+here very much. Folks always talk about
+
+698
+00:25:10,960 --> 00:25:16,280
+GQL as the This was 1 year earlier and
+
+699
+00:25:13,360 --> 00:25:19,480
+is also a joint effort by the Neo4j
+
+700
+00:25:16,280 --> 00:25:21,000
+colleagues, SAP, Microsoft, all of us
+
+701
+00:25:19,480 --> 00:25:22,200
+who come together and defined an
+
+702
+00:25:21,000 --> 00:25:24,240
+extension to
+
+703
+00:25:22,200 --> 00:25:25,640
+SQL to deal with
+
+704
+00:25:24,240 --> 00:25:28,480
+property graph
+
+705
+00:25:25,640 --> 00:25:29,960
+patching property graph pattern matching
+
+706
+00:25:28,480 --> 00:25:31,679
+queries.
+
+707
+00:25:29,960 --> 00:25:33,160
+So, that's implemented. We've got vector
+
+708
+00:25:31,679 --> 00:25:35,000
+search in the database. We've got
+
+709
+00:25:33,160 --> 00:25:36,960
+machine learning engine in the database.
+
+710
+00:25:35,000 --> 00:25:40,080
+You can use the database as a as a as a
+
+711
+00:25:36,960 --> 00:25:42,320
+document store. And then one thing which
+
+712
+00:25:40,080 --> 00:25:45,080
+just dawned on me when I was
+
+713
+00:25:42,320 --> 00:25:46,400
+listening to to Texas' talk earlier,
+
+714
+00:25:45,080 --> 00:25:48,679
+these relational technologies, they
+
+715
+00:25:46,400 --> 00:25:50,320
+actually have a couple of things just
+
+716
+00:25:48,679 --> 00:25:52,000
+built in which are just there and have
+
+717
+00:25:50,320 --> 00:25:55,640
+been for for decades which you can use
+
+718
+00:25:52,000 --> 00:25:57,960
+very nicely in a graph environment as
+
+719
+00:25:55,640 --> 00:25:59,840
+well if you have your graph defined as a
+
+720
+00:25:57,960 --> 00:26:02,360
+view on top of your relational data.
+
+721
+00:25:59,840 --> 00:26:03,640
+Like you can do
+
+722
+00:26:02,360 --> 00:26:07,640
+time travel.
+
+723
+00:26:03,640 --> 00:26:10,080
+You can say, "Give me the data as of
+
+724
+00:26:07,640 --> 00:26:12,200
+1st of May of 2024 or something."
+
+725
+00:26:10,080 --> 00:26:14,280
+And the database, just because it keeps
+
+726
+00:26:12,200 --> 00:26:17,320
+track of these changes and has always
+
+727
+00:26:14,280 --> 00:26:20,360
+done that, can go back in time
+
+728
+00:26:17,320 --> 00:26:22,760
+without you doing anything except
+
+729
+00:26:20,360 --> 00:26:25,360
+extending your query to say, "Oh, and by
+
+730
+00:26:22,760 --> 00:26:26,480
+the way, I want this graph as of
+
+731
+00:26:25,360 --> 00:26:28,679
+1st of May."
+
+732
+00:26:26,480 --> 00:26:30,640
+Anyway, so you get the database, you get
+
+733
+00:26:28,679 --> 00:26:32,679
+performance, scalability. Nice thing is
+
+734
+00:26:30,640 --> 00:26:35,160
+also you you have [snorts] a one of the
+
+735
+00:26:32,679 --> 00:26:36,760
+same sort of secure environment for your
+
+736
+00:26:35,160 --> 00:26:39,080
+graph, your relational data, your
+
+737
+00:26:36,760 --> 00:26:42,000
+documents, your vector store, all all in
+
+738
+00:26:39,080 --> 00:26:43,679
+one. And yes, we can do that on cloud
+
+739
+00:26:42,000 --> 00:26:45,240
+and on premises and so on. If you find
+
+740
+00:26:43,679 --> 00:26:46,440
+that interesting and you think Oracle,
+
+741
+00:26:45,240 --> 00:26:47,720
+that's always too
+
+742
+00:26:46,440 --> 00:26:49,880
+huge
+
+743
+00:26:47,720 --> 00:26:52,160
+investment, terribly expensive,
+
+744
+00:26:49,880 --> 00:26:54,440
+we actually do have a ton of free stuff
+
+745
+00:26:52,160 --> 00:26:56,320
+in the meantime. And that includes the
+
+746
+00:26:54,440 --> 00:27:00,280
+latest version of our database which you
+
+747
+00:26:56,320 --> 00:27:02,400
+can either run on premises or in a
+
+748
+00:27:00,280 --> 00:27:05,640
+containerized environment.
+
+749
+00:27:02,400 --> 00:27:07,360
+If you go to the GitHub repository,
+
+750
+00:27:05,640 --> 00:27:09,280
+that's actually a GitHub page which
+
+751
+00:27:07,360 --> 00:27:11,200
+points to all the free resources you you
+
+752
+00:27:09,280 --> 00:27:14,000
+get. You can go directly to
+
+753
+00:27:11,200 --> 00:27:15,360
+oracle.com/database/free,
+
+754
+00:27:14,000 --> 00:27:18,120
+which is where you can download the
+
+755
+00:27:15,360 --> 00:27:20,040
+latest version free of charge. Or if if
+
+756
+00:27:18,120 --> 00:27:22,640
+you want it even easier, you just use
+
+757
+00:27:20,040 --> 00:27:24,400
+the the hosted version,
+
+758
+00:27:22,640 --> 00:27:26,320
+the autonomous database on the Oracle
+
+759
+00:27:24,400 --> 00:27:27,880
+Cloud which we're also offering as a
+
+760
+00:27:26,320 --> 00:27:29,960
+always free offering.
+
+761
+00:27:27,880 --> 00:27:31,240
+Plus, if then you have it, of course
+
+762
+00:27:29,960 --> 00:27:32,600
+then you want to do something with it.
+
+763
+00:27:31,240 --> 00:27:34,880
+And in order to be able to do something
+
+764
+00:27:32,600 --> 00:27:36,600
+with it, you you probably need a little
+
+765
+00:27:34,880 --> 00:27:38,720
+bit of guidance. And for that, we have
+
+766
+00:27:36,600 --> 00:27:42,040
+what is called the live labs which are
+
+767
+00:27:38,720 --> 00:27:45,120
+end-to-end workflows, many of which also
+
+768
+00:27:42,040 --> 00:27:47,600
+have graph capabilities included or
+
+769
+00:27:45,120 --> 00:27:50,720
+vector search included or RAG workflows
+
+770
+00:27:47,600 --> 00:27:52,120
+as examples step-by-step well explained.
+
+771
+00:27:50,720 --> 00:27:54,960
+So, you just
+
+772
+00:27:52,120 --> 00:27:57,600
+spin up a sandbox system
+
+773
+00:27:54,960 --> 00:27:59,640
+and you can work with these kinds of
+
+774
+00:27:57,600 --> 00:28:01,800
+things. Right? And just for the sake of
+
+775
+00:27:59,640 --> 00:28:04,720
+completeness, I've added a few more
+
+776
+00:28:01,800 --> 00:28:08,000
+a few more links. And that gives us, I
+
+777
+00:28:04,720 --> 00:28:09,440
+believe, 2 minutes still for questions,
+
+778
+00:28:08,000 --> 00:28:11,520
+Paco. Do we still have 2 minutes for
+
+779
+00:28:09,440 --> 00:28:13,720
+questions? I think so, right?
+
+780
+00:28:11,520 --> 00:28:13,720
+Thank you.
+
+781
+00:28:13,849 --> 00:28:15,869
+>> [applause]
+
+782
+00:28:17,960 --> 00:28:21,360
+>> I have one immediate question. I was
+
+783
+00:28:19,200 --> 00:28:25,000
+curious about the suspicious activity
+
+784
+00:28:21,360 --> 00:28:27,960
+reports. Were you able to get any
+
+785
+00:28:25,000 --> 00:28:29,560
+form of anonymized maybe open data about
+
+786
+00:28:27,960 --> 00:28:29,840
+this or was this working specifically
+
+787
+00:28:29,560 --> 00:28:31,640
+with that?
+
+788
+00:28:29,840 --> 00:28:33,360
+>> That was actually work with specific
+
+789
+00:28:31,640 --> 00:28:34,480
+clients. We we
+
+790
+00:28:33,360 --> 00:28:36,480
+I don't know if you know, but as Oracle,
+
+791
+00:28:34,480 --> 00:28:38,400
+we also have an applications
+
+792
+00:28:36,480 --> 00:28:41,440
+business which
+
+793
+00:28:38,400 --> 00:28:42,880
+has our graph technologies embedded into
+
+794
+00:28:41,440 --> 00:28:45,120
+a um
+
+795
+00:28:42,880 --> 00:28:47,440
+crime financial crime and compliance
+
+796
+00:28:45,120 --> 00:28:50,000
+type of dashboard thing. And those teams
+
+797
+00:28:47,440 --> 00:28:52,000
+are working with the major banks.
+
+798
+00:28:50,000 --> 00:28:54,440
+And that's where they sort of got the
+
+799
+00:28:52,000 --> 00:28:56,800
+data from. So, that And for And for
+
+800
+00:28:54,440 --> 00:28:58,520
+Unfortunately, that is not public public
+
+801
+00:28:56,800 --> 00:28:59,560
+data cuz that would certainly be very
+
+802
+00:28:58,520 --> 00:29:00,640
+interesting.
+
+803
+00:28:59,560 --> 00:29:03,880
+Fantastic.
+
+804
+00:29:00,640 --> 00:29:03,880
+Anybody else? Other questions?
+
+805
+00:29:05,120 --> 00:29:07,560
+There's a microphone coming.
+
+806
+00:29:06,760 --> 00:29:08,480
+Thank you.
+
+807
+00:29:07,560 --> 00:29:10,679
+>> [clears throat]
+
+808
+00:29:08,480 --> 00:29:13,000
+>> Thanks, Hans. Wonderful talk and really
+
+809
+00:29:10,679 --> 00:29:15,280
+excited about this
+
+810
+00:29:13,000 --> 00:29:17,560
+First time find out that now there's a
+
+811
+00:29:15,280 --> 00:29:19,080
+graph extension to the SQL.
+
+812
+00:29:17,560 --> 00:29:21,080
+It's very exciting.
+
+813
+00:29:19,080 --> 00:29:22,679
+My question is actually
+
+814
+00:29:21,080 --> 00:29:25,600
+um it's related to what the last talk
+
+815
+00:29:22,679 --> 00:29:28,840
+too. Was talk about time. And when you
+
+816
+00:29:25,600 --> 00:29:31,440
+extract entity and relationship from the
+
+817
+00:29:28,840 --> 00:29:32,760
+the text, you use to fine-tune model.
+
+818
+00:29:31,440 --> 00:29:34,880
+There's a question I
+
+819
+00:29:32,760 --> 00:29:37,360
+couldn't figure out how to do it. It's
+
+820
+00:29:34,880 --> 00:29:41,120
+It's the context of the condition. Let's
+
+821
+00:29:37,360 --> 00:29:44,679
+say you have a sentence of uh Mary likes
+
+822
+00:29:41,120 --> 00:29:46,080
+certain tea because it's late in the
+
+823
+00:29:44,679 --> 00:29:49,960
+evening.
+
+824
+00:29:46,080 --> 00:29:53,360
+And there's a ring thunder ring ring
+
+825
+00:29:49,960 --> 00:29:56,600
+outside. So that kind of a complex
+
+826
+00:29:53,360 --> 00:29:59,120
+condition when we extract from the the
+
+827
+00:29:56,600 --> 00:30:01,680
+sentence
+
+828
+00:29:59,120 --> 00:30:03,800
+often being overly simplified, but that
+
+829
+00:30:01,680 --> 00:30:05,920
+context might actually become important.
+
+830
+00:30:03,800 --> 00:30:09,880
+I wonder if you have encountered such
+
+831
+00:30:05,920 --> 00:30:12,160
+problem. Okay. So that that's certainly
+
+832
+00:30:09,880 --> 00:30:13,280
+a very hard not to crack
+
+833
+00:30:12,160 --> 00:30:14,560
+and
+
+834
+00:30:13,280 --> 00:30:16,520
+there's
+
+835
+00:30:14,560 --> 00:30:17,960
+I think with any kind of machine
+
+836
+00:30:16,520 --> 00:30:22,800
+learning technique there's always the
+
+837
+00:30:17,960 --> 00:30:25,480
+risk of either oversimplifying things or
+
+838
+00:30:22,800 --> 00:30:28,360
+ambiguity. So that
+
+839
+00:30:25,480 --> 00:30:30,840
+just by looking at similarities, I think
+
+840
+00:30:28,360 --> 00:30:32,760
+you'll get most of the cases, but you'll
+
+841
+00:30:30,840 --> 00:30:35,560
+always be always at risk of
+
+842
+00:30:32,760 --> 00:30:37,880
+misinterpreting or sort of having false
+
+843
+00:30:35,560 --> 00:30:39,960
+positive or false negatives. Here we we
+
+844
+00:30:37,880 --> 00:30:42,160
+with the accuracy which we we did sort
+
+845
+00:30:39,960 --> 00:30:43,560
+of based on experiments which our
+
+846
+00:30:42,160 --> 00:30:44,600
+colleagues from the Oracle Labs did in
+
+847
+00:30:43,560 --> 00:30:46,800
+Zurich,
+
+848
+00:30:44,600 --> 00:30:50,040
+we reached an accuracy of sort of in the
+
+849
+00:30:46,800 --> 00:30:54,440
+mid-80s to upper 80s percent.
+
+850
+00:30:50,040 --> 00:30:57,160
+Which which is actually not bad, but if
+
+851
+00:30:54,440 --> 00:30:59,240
+that means you're missing out on
+
+852
+00:30:57,160 --> 00:31:02,120
+important fraudster, that's sort of one
+
+853
+00:30:59,240 --> 00:31:04,960
+too many. So I I agree. These
+
+854
+00:31:02,120 --> 00:31:06,880
+techniques are not perfect yet and
+
+855
+00:31:04,960 --> 00:31:08,960
+there's particularly with anything to do
+
+856
+00:31:06,880 --> 00:31:10,760
+with reason
+
+857
+00:31:08,960 --> 00:31:12,360
+reasoning,
+
+858
+00:31:10,760 --> 00:31:13,840
+I think there's still
+
+859
+00:31:12,360 --> 00:31:15,600
+work to do.
+
+860
+00:31:13,840 --> 00:31:16,920
+And I I'd say that I don't have a simple
+
+861
+00:31:15,600 --> 00:31:19,080
+answer on that one.
+
+862
+00:31:16,920 --> 00:31:19,080
+Thanks.
+
+863
+00:31:19,480 --> 00:31:22,760
+Anybody else? Other questions?
+
+864
+00:31:24,160 --> 00:31:28,520
+If not, we we can take into lunch, but
+
+865
+00:31:27,000 --> 00:31:29,696
+thank you very much Hans. Perfect. Thank
+
+866
+00:31:28,520 --> 00:31:31,716
+you. Thanks a lot.
+
+867
+00:31:29,696 --> 00:31:31,716
+>> [applause]
+

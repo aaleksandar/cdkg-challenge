@@ -1,0 +1,2624 @@
+1
+00:00:05,120 --> 00:00:12,160
+Uh we now uh have uh Christelle Magnol
+
+2
+00:00:09,679 --> 00:00:15,120
+senior consultant at the semantic
+
+3
+00:00:12,160 --> 00:00:18,720
+partner partners also lead ontologists
+
+4
+00:00:15,120 --> 00:00:21,279
+for the IKEA knowledge graph. So today
+
+5
+00:00:18,720 --> 00:00:23,039
+uh um Christelle is going to share the
+
+6
+00:00:21,279 --> 00:00:26,000
+journey of implementing the IKEA
+
+7
+00:00:23,039 --> 00:00:28,480
+knowledge graph across a decentralized
+
+8
+00:00:26,000 --> 00:00:31,039
+uh franchise system tackling challenges
+
+9
+00:00:28,480 --> 00:00:33,440
+like data governance and onboarding. Uh
+
+10
+00:00:31,039 --> 00:00:36,440
+so please join me in welcoming uh
+
+11
+00:00:33,440 --> 00:00:36,440
+Christella.
+
+12
+00:00:40,879 --> 00:00:44,320
+>> Thank you. Uh can you hear me? Is it is
+
+13
+00:00:43,440 --> 00:00:45,840
+the mic working?
+
+14
+00:00:44,320 --> 00:00:48,960
+>> Yes.
+
+15
+00:00:45,840 --> 00:00:51,200
+So um as Amy just mentioned I'm Christy.
+
+16
+00:00:48,960 --> 00:00:53,680
+I'm the lead on the IKEA knowledge
+
+17
+00:00:51,200 --> 00:00:56,320
+graph. I was going to present today with
+
+18
+00:00:53,680 --> 00:00:58,640
+my colleague Andreas Tolson but
+
+19
+00:00:56,320 --> 00:01:01,840
+unfortunately couldn't make it today. So
+
+20
+00:00:58,640 --> 00:01:04,320
+um it's just me. Um and I'm going to
+
+21
+00:01:01,840 --> 00:01:06,080
+talk to you about the IKEA knowledge as
+
+22
+00:01:04,320 --> 00:01:07,680
+a service.
+
+23
+00:01:06,080 --> 00:01:10,880
+Um,
+
+24
+00:01:07,680 --> 00:01:12,799
+I've got a small graph here to help you
+
+25
+00:01:10,880 --> 00:01:15,920
+uh understand where the team where our
+
+26
+00:01:12,799 --> 00:01:18,880
+team fits within uh the IKEA retail
+
+27
+00:01:15,920 --> 00:01:22,400
+business. Um, as you can see, so I'm I'm
+
+28
+00:01:18,880 --> 00:01:27,600
+I'm a I'm a consultant. I'm hired by um
+
+29
+00:01:22,400 --> 00:01:30,479
+Inter IKEA systems. Um, and there is the
+
+30
+00:01:27,600 --> 00:01:33,119
+digital product owner uh of the on the
+
+31
+00:01:30,479 --> 00:01:35,840
+IK on the IK team, the IKEA knowledge
+
+32
+00:01:33,119 --> 00:01:38,479
+graph team. um which is the team that is
+
+33
+00:01:35,840 --> 00:01:42,240
+developing uh our knowledge graph. It's
+
+34
+00:01:38,479 --> 00:01:45,280
+part of intera systems which is part of
+
+35
+00:01:42,240 --> 00:01:47,439
+inter I group and I'm going to talk to
+
+36
+00:01:45,280 --> 00:01:50,320
+you a little bit about intera group in a
+
+37
+00:01:47,439 --> 00:01:54,159
+moment and the uh holding company is
+
+38
+00:01:50,320 --> 00:01:57,119
+intera holding
+
+39
+00:01:54,159 --> 00:01:58,719
+and today I'm going to talk to you um
+
+40
+00:01:57,119 --> 00:02:01,439
+I'm going to give you some context
+
+41
+00:01:58,719 --> 00:02:04,399
+around the uh IKEA know and I'm going to
+
+42
+00:02:01,439 --> 00:02:07,119
+talk to you about intera group then I'm
+
+43
+00:02:04,399 --> 00:02:10,319
+going to tell you uh about the how how
+
+44
+00:02:07,119 --> 00:02:12,319
+the IKEA knowledge graph started and and
+
+45
+00:02:10,319 --> 00:02:15,440
+finally I'll tell you about our vision
+
+46
+00:02:12,319 --> 00:02:17,040
+for uh the future of our knowledge graph
+
+47
+00:02:15,440 --> 00:02:20,440
+and there will be time at the end for
+
+48
+00:02:17,040 --> 00:02:20,440
+for questions.
+
+49
+00:02:21,200 --> 00:02:32,800
+So the IKEA uh the intera group um what
+
+50
+00:02:26,959 --> 00:02:34,720
+is it? Um IKEA uh is a brand and uh at
+
+51
+00:02:32,800 --> 00:02:37,040
+IKEA they like to do things differently
+
+52
+00:02:34,720 --> 00:02:40,480
+because it keeps the brand uh fresh and
+
+53
+00:02:37,040 --> 00:02:43,360
+exciting and it's a brand that unites
+
+54
+00:02:40,480 --> 00:02:45,840
+thousands of co-workers and hundreds of
+
+55
+00:02:43,360 --> 00:02:48,239
+companies with different owners all
+
+56
+00:02:45,840 --> 00:02:50,160
+around the world. So, it's one brand,
+
+57
+00:02:48,239 --> 00:02:53,400
+but it's it's a lot of people and it's a
+
+58
+00:02:50,160 --> 00:02:53,400
+lot of companies.
+
+59
+00:02:57,519 --> 00:03:04,879
+And um in the 1980s the uh IKEA business
+
+60
+00:03:02,720 --> 00:03:07,599
+was growing was expanding and its
+
+61
+00:03:04,879 --> 00:03:10,560
+founder uh Ingvar Campred realized that
+
+62
+00:03:07,599 --> 00:03:13,360
+he needed to protect the IKEA concept
+
+63
+00:03:10,560 --> 00:03:16,480
+and he uh decided that the best way to
+
+64
+00:03:13,360 --> 00:03:18,879
+do so was to use a franchise system
+
+65
+00:03:16,480 --> 00:03:21,440
+because it would uh allow for
+
+66
+00:03:18,879 --> 00:03:24,480
+international expansion while protecting
+
+67
+00:03:21,440 --> 00:03:26,480
+the underlying concept and it would also
+
+68
+00:03:24,480 --> 00:03:30,319
+u allow for it would also promote
+
+69
+00:03:26,480 --> 00:03:33,360
+entrepreneurship. ship. So IKEA uh Inter
+
+70
+00:03:30,319 --> 00:03:35,599
+IKEA system uh systems that I mentioned
+
+71
+00:03:33,360 --> 00:03:38,959
+earlier, they're the franchiser. They're
+
+72
+00:03:35,599 --> 00:03:41,360
+the worldwide worldwide franchiser and
+
+73
+00:03:38,959 --> 00:03:44,560
+they um they own the concept. They
+
+74
+00:03:41,360 --> 00:03:47,200
+continuously uh develop the IKEA concept
+
+75
+00:03:44,560 --> 00:03:50,959
+and they make sure that it's uh it's
+
+76
+00:03:47,200 --> 00:03:53,920
+implemented across uh the franchise.
+
+77
+00:03:50,959 --> 00:03:56,720
+The IKEA franchises are companies that
+
+78
+00:03:53,920 --> 00:03:59,599
+pay a franchise fee and they're the ones
+
+79
+00:03:56,720 --> 00:04:02,879
+who um uh meet the customers. They're
+
+80
+00:03:59,599 --> 00:04:06,400
+the ones who sell to the customers
+
+81
+00:04:02,879 --> 00:04:08,159
+and they uh they are responsible for um
+
+82
+00:04:06,400 --> 00:04:11,840
+creating highquality customer
+
+83
+00:04:08,159 --> 00:04:14,319
+experiences for IKEA customers.
+
+84
+00:04:11,840 --> 00:04:17,199
+And this franchise system is uh people
+
+85
+00:04:14,319 --> 00:04:19,120
+oriented uh and it it encourages
+
+86
+00:04:17,199 --> 00:04:20,720
+everybody to to work together to
+
+87
+00:04:19,120 --> 00:04:23,919
+contribute
+
+88
+00:04:20,720 --> 00:04:25,840
+uh and uh there's a value at IKEA which
+
+89
+00:04:23,919 --> 00:04:28,479
+is togetherness. It's one of the key
+
+90
+00:04:25,840 --> 00:04:30,160
+values at IKEA. Uh this idea of all
+
+91
+00:04:28,479 --> 00:04:31,919
+everybody working together and everybody
+
+92
+00:04:30,160 --> 00:04:35,120
+contributing and that's something that
+
+93
+00:04:31,919 --> 00:04:37,040
+is reflected uh in in our how we manage
+
+94
+00:04:35,120 --> 00:04:39,040
+our knowledge graph in our vision for
+
+95
+00:04:37,040 --> 00:04:42,320
+the knowledge graph which I'm going to
+
+96
+00:04:39,040 --> 00:04:45,360
+um show you later.
+
+97
+00:04:42,320 --> 00:04:48,240
+This is a a simplified diagram of uh the
+
+98
+00:04:45,360 --> 00:04:51,520
+IKEA franchise system and value chain.
+
+99
+00:04:48,240 --> 00:04:55,759
+So you can see on the left here um the
+
+100
+00:04:51,520 --> 00:04:58,560
+inter IKEA group which is a group of um
+
+101
+00:04:55,759 --> 00:05:00,400
+companies it includes inter IKEA systems
+
+102
+00:04:58,560 --> 00:05:02,560
+the franchiser.
+
+103
+00:05:00,400 --> 00:05:06,000
+It also includes other companies like
+
+104
+00:05:02,560 --> 00:05:08,080
+IKEA of Sweden who are responsible for
+
+105
+00:05:06,000 --> 00:05:10,880
+designing and developing the product
+
+106
+00:05:08,080 --> 00:05:12,800
+range the the IKEA product range.
+
+107
+00:05:10,880 --> 00:05:14,800
+There's also IKEA marketing and
+
+108
+00:05:12,800 --> 00:05:17,120
+communications. It's again another
+
+109
+00:05:14,800 --> 00:05:18,639
+company a separate company obviously
+
+110
+00:05:17,120 --> 00:05:20,639
+responsible for marketing and
+
+111
+00:05:18,639 --> 00:05:23,919
+communications. Uh there's also
+
+112
+00:05:20,639 --> 00:05:26,880
+companies like uh um IKEA supply again a
+
+113
+00:05:23,919 --> 00:05:30,479
+separate company responsible for uh
+
+114
+00:05:26,880 --> 00:05:32,960
+managing purchasing and distribution.
+
+115
+00:05:30,479 --> 00:05:35,680
+And then we have the IKEA franchises.
+
+116
+00:05:32,960 --> 00:05:38,000
+Um, and at at the top here you can see
+
+117
+00:05:35,680 --> 00:05:39,600
+the Inca group. It's the largest
+
+118
+00:05:38,000 --> 00:05:42,160
+franchisee.
+
+119
+00:05:39,600 --> 00:05:45,280
+Uh, it operates on 31 markets and
+
+120
+00:05:42,160 --> 00:05:47,520
+there's a lot of other franchises across
+
+121
+00:05:45,280 --> 00:05:49,759
+the world. And through that franchise
+
+122
+00:05:47,520 --> 00:05:54,960
+system, uh, the IKEA retail business
+
+123
+00:05:49,759 --> 00:05:57,960
+operates on, uh, 62 markets.
+
+124
+00:05:54,960 --> 00:05:57,960
+Um
+
+125
+00:05:58,080 --> 00:06:04,960
+so I gave you u some context uh around
+
+126
+00:06:01,759 --> 00:06:08,639
+how um the context around the um the
+
+127
+00:06:04,960 --> 00:06:10,639
+IKEA knowledge graph. Um and so how why
+
+128
+00:06:08,639 --> 00:06:14,240
+did it start? Why why do we have an IKEA
+
+129
+00:06:10,639 --> 00:06:15,840
+knowledge graph? Uh the founder uh Adam
+
+130
+00:06:14,240 --> 00:06:18,800
+Kerv
+
+131
+00:06:15,840 --> 00:06:21,280
+um started as an interior designer in
+
+132
+00:06:18,800 --> 00:06:24,319
+one of the shops in Japan uh before
+
+133
+00:06:21,280 --> 00:06:26,639
+moving on to customer experience design.
+
+134
+00:06:24,319 --> 00:06:29,280
+And as a customer experience designer,
+
+135
+00:06:26,639 --> 00:06:32,080
+he was frustrated by his lack of access
+
+136
+00:06:29,280 --> 00:06:35,440
+to data to the data that he needed to
+
+137
+00:06:32,080 --> 00:06:37,759
+create uh new solutions for uh to
+
+138
+00:06:35,440 --> 00:06:40,319
+improve customer experience.
+
+139
+00:06:37,759 --> 00:06:43,759
+And the reason for that is that a lot of
+
+140
+00:06:40,319 --> 00:06:45,919
+that data was uh inaccessible because it
+
+141
+00:06:43,759 --> 00:06:48,240
+was uh uh siloed. It was very much
+
+142
+00:06:45,919 --> 00:06:50,880
+siloed due to the nature of the
+
+143
+00:06:48,240 --> 00:06:52,880
+franchise. As I mentioned earlier, lots
+
+144
+00:06:50,880 --> 00:06:54,639
+of companies with different owners. They
+
+145
+00:06:52,880 --> 00:06:56,479
+don't always communicate well together.
+
+146
+00:06:54,639 --> 00:06:58,400
+They don't necessarily share their data.
+
+147
+00:06:56,479 --> 00:07:00,240
+You would imagine they would, but but
+
+148
+00:06:58,400 --> 00:07:03,360
+they don't. They operate quite
+
+149
+00:07:00,240 --> 00:07:06,720
+independent independently.
+
+150
+00:07:03,360 --> 00:07:09,919
+Um so that's one of the barriers to uh
+
+151
+00:07:06,720 --> 00:07:12,639
+access to uh data. Another barrier is
+
+152
+00:07:09,919 --> 00:07:17,039
+that a lot of the uh IKEA expertise and
+
+153
+00:07:12,639 --> 00:07:20,080
+knowhow is actually stored documented in
+
+154
+00:07:17,039 --> 00:07:22,960
+uh um documents like PowerPoint slides
+
+155
+00:07:20,080 --> 00:07:24,960
+which are not easily retrievable not
+
+156
+00:07:22,960 --> 00:07:27,840
+easily accessible
+
+157
+00:07:24,960 --> 00:07:30,880
+uh or searchable
+
+158
+00:07:27,840 --> 00:07:34,160
+and even uh a lot of the knowhow a lot
+
+159
+00:07:30,880 --> 00:07:36,720
+of uh that unique IKEA knowhow is
+
+160
+00:07:34,160 --> 00:07:38,400
+actually in in the coworker's heads in
+
+161
+00:07:36,720 --> 00:07:40,880
+in the interior in the heads of the
+
+162
+00:07:38,400 --> 00:07:43,280
+interior designers and other co-workers
+
+163
+00:07:40,880 --> 00:07:46,400
+who uh develop their expertise over
+
+164
+00:07:43,280 --> 00:07:48,319
+years if not decades. Um but it's not
+
+165
+00:07:46,400 --> 00:07:50,800
+necessarily actually documented
+
+166
+00:07:48,319 --> 00:07:56,039
+anywhere. So that's why it's difficult
+
+167
+00:07:50,800 --> 00:07:56,039
+to access um the data digitally.
+
+168
+00:07:56,400 --> 00:08:02,720
+So um um actually going back uh Adam had
+
+169
+00:08:00,400 --> 00:08:06,800
+this idea of uh uh using a knowledge
+
+170
+00:08:02,720 --> 00:08:09,520
+graph to uh break the silos and to uh to
+
+171
+00:08:06,800 --> 00:08:14,560
+develop a common vocabulary across the
+
+172
+00:08:09,520 --> 00:08:17,360
+IKEA value chain uh to and to uh to
+
+173
+00:08:14,560 --> 00:08:20,000
+promote data sharing across the various
+
+174
+00:08:17,360 --> 00:08:21,759
+companies. He was later join joined by
+
+175
+00:08:20,000 --> 00:08:24,000
+Katarina Carrie who was the lead
+
+176
+00:08:21,759 --> 00:08:28,240
+ontologist on the IKG team who's was
+
+177
+00:08:24,000 --> 00:08:29,759
+here um uh at the conference. Um and she
+
+178
+00:08:28,240 --> 00:08:32,240
+was the lead ontologist until last
+
+179
+00:08:29,759 --> 00:08:35,599
+August and she led the team that was
+
+180
+00:08:32,240 --> 00:08:38,640
+responsible for translating uh the IKEA
+
+181
+00:08:35,599 --> 00:08:44,120
+expertise um uh decades of IKEA
+
+182
+00:08:38,640 --> 00:08:44,120
+expertise into uh a knowledge graph
+
+183
+00:08:44,640 --> 00:08:50,560
+and it started with really a proof of
+
+184
+00:08:46,959 --> 00:08:54,000
+concept um around online customer
+
+185
+00:08:50,560 --> 00:08:57,440
+recommendation. So um the aim of uh the
+
+186
+00:08:54,000 --> 00:08:59,360
+knowledge graph was both to um imp to
+
+187
+00:08:57,440 --> 00:09:01,279
+create solutions for customers like
+
+188
+00:08:59,360 --> 00:09:03,920
+product recommendations
+
+189
+00:09:01,279 --> 00:09:07,200
+uh high quality product recommendations
+
+190
+00:09:03,920 --> 00:09:10,320
+but also to uh automate and streamline
+
+191
+00:09:07,200 --> 00:09:12,800
+um existing processes internal uh
+
+192
+00:09:10,320 --> 00:09:15,120
+processes so for the co for the
+
+193
+00:09:12,800 --> 00:09:18,080
+co-workers but it's the proof of concept
+
+194
+00:09:15,120 --> 00:09:21,040
+was was customerf facing and was around
+
+195
+00:09:18,080 --> 00:09:24,320
+um customer recommendations on the site.
+
+196
+00:09:21,040 --> 00:09:28,080
+Um, in IKEA stores, interior designers
+
+197
+00:09:24,320 --> 00:09:30,480
+can display uh, for example, a sofa with
+
+198
+00:09:28,080 --> 00:09:33,200
+uh, throws and cushions and and other
+
+199
+00:09:30,480 --> 00:09:36,000
+articles to show to the customers how
+
+200
+00:09:33,200 --> 00:09:37,680
+they can uh, complement uh, the sofa if
+
+201
+00:09:36,000 --> 00:09:40,240
+if they're looking for a sofa. So, to
+
+202
+00:09:37,680 --> 00:09:42,959
+inspire customers to buy more articles
+
+203
+00:09:40,240 --> 00:09:44,959
+to complement their main purchase.
+
+204
+00:09:42,959 --> 00:09:48,800
+Um
+
+205
+00:09:44,959 --> 00:09:51,600
+and uh when IKEA tried to replicate that
+
+206
+00:09:48,800 --> 00:09:55,200
+on the website, uh it became complicated
+
+207
+00:09:51,600 --> 00:09:58,160
+because a lot of uh um connections
+
+208
+00:09:55,200 --> 00:10:00,160
+between products had to be had to be
+
+209
+00:09:58,160 --> 00:10:02,080
+created man manually had to be added
+
+210
+00:10:00,160 --> 00:10:04,560
+manually by co-workers which of course
+
+211
+00:10:02,080 --> 00:10:07,440
+was not scalable. They couldn't do it
+
+212
+00:10:04,560 --> 00:10:09,920
+fast enough and efficiently enough.
+
+213
+00:10:07,440 --> 00:10:12,959
+So the idea was to use a knowledge
+
+214
+00:10:09,920 --> 00:10:16,160
+graph, the IKEA knowledge graph and uh
+
+215
+00:10:12,959 --> 00:10:18,800
+its reasoning uh capability to scale
+
+216
+00:10:16,160 --> 00:10:21,920
+this and uh not only to scale this but
+
+217
+00:10:18,800 --> 00:10:24,399
+also to capture all that expertise um
+
+218
+00:10:21,920 --> 00:10:26,959
+that that was in in in the co-workers
+
+219
+00:10:24,399 --> 00:10:28,959
+heads in the interior designers heads in
+
+220
+00:10:26,959 --> 00:10:32,399
+their experience and to capture it
+
+221
+00:10:28,959 --> 00:10:35,760
+inside the knowledge graph and and and
+
+222
+00:10:32,399 --> 00:10:37,519
+use that to offer really high quality uh
+
+223
+00:10:35,760 --> 00:10:39,839
+product recommendation. on the website
+
+224
+00:10:37,519 --> 00:10:42,560
+which is something that machine learning
+
+225
+00:10:39,839 --> 00:10:44,720
+solutions are often not very very good
+
+226
+00:10:42,560 --> 00:10:49,040
+at actually.
+
+227
+00:10:44,720 --> 00:10:51,600
+So you can see here uh on the website uh
+
+228
+00:10:49,040 --> 00:10:54,880
+someone is interested in buying a
+
+229
+00:10:51,600 --> 00:10:58,720
+cushion cover and the website recommends
+
+230
+00:10:54,880 --> 00:11:01,200
+uh a cushion pad that has the correct
+
+231
+00:10:58,720 --> 00:11:05,680
+dimensions and that uh you will need to
+
+232
+00:11:01,200 --> 00:11:07,279
+to uh complete your purchase. Um so
+
+233
+00:11:05,680 --> 00:11:08,720
+there are two types of recommendations.
+
+234
+00:11:07,279 --> 00:11:10,959
+There were two types of recommendations
+
+235
+00:11:08,720 --> 00:11:13,839
+for that proof of concept. Uh products
+
+236
+00:11:10,959 --> 00:11:16,720
+that complete a purchase. So that's for
+
+237
+00:11:13,839 --> 00:11:18,320
+instance if you buy uh if you buy a lamp
+
+238
+00:11:16,720 --> 00:11:20,959
+the website will say you will need to
+
+239
+00:11:18,320 --> 00:11:22,720
+you will need some bulbs with that lamp
+
+240
+00:11:20,959 --> 00:11:24,560
+or if you buy a cushion cover you will
+
+241
+00:11:22,720 --> 00:11:26,800
+need a cushion pad. And there are also
+
+242
+00:11:24,560 --> 00:11:30,079
+products that uh complement your
+
+243
+00:11:26,800 --> 00:11:32,880
+purchase such as u a throw for example
+
+244
+00:11:30,079 --> 00:11:36,640
+on a sofa.
+
+245
+00:11:32,880 --> 00:11:39,680
+And uh with this use case of the cushion
+
+246
+00:11:36,640 --> 00:11:42,399
+covers um and and and cushion pads, I
+
+247
+00:11:39,680 --> 00:11:45,440
+here was able to measure a three-digit
+
+248
+00:11:42,399 --> 00:11:49,600
+increase percentage uh in online sales
+
+249
+00:11:45,440 --> 00:11:52,240
+for um for cushion pads for for cushion
+
+250
+00:11:49,600 --> 00:11:54,399
+pads and that we could link it to the uh
+
+251
+00:11:52,240 --> 00:11:56,800
+reasoning capability of of the knowledge
+
+252
+00:11:54,399 --> 00:12:00,880
+graph. So the proof of concept was uh
+
+253
+00:11:56,800 --> 00:12:03,200
+was successful and uh uh we could prove
+
+254
+00:12:00,880 --> 00:12:06,720
+the value of the knowledge graph in uh
+
+255
+00:12:03,200 --> 00:12:10,000
+increasing sales.
+
+256
+00:12:06,720 --> 00:12:12,720
+So now that uh we have demonstrated that
+
+257
+00:12:10,000 --> 00:12:16,800
+value, we have embarked on a a new
+
+258
+00:12:12,720 --> 00:12:19,760
+journey which is uh transitioning from
+
+259
+00:12:16,800 --> 00:12:22,399
+um the IKEA knowledge graph as a product
+
+260
+00:12:19,760 --> 00:12:27,279
+to uh the IKEA knowledge graph as a
+
+261
+00:12:22,399 --> 00:12:29,200
+platform and to uh in order to scale um
+
+262
+00:12:27,279 --> 00:12:31,839
+the knowledge graph across the whole of
+
+263
+00:12:29,200 --> 00:12:34,560
+the IKEA uh franchise system that I
+
+264
+00:12:31,839 --> 00:12:38,000
+described earlier. So what do I mean by
+
+265
+00:12:34,560 --> 00:12:39,920
+uh product versus platform? Until now uh
+
+266
+00:12:38,000 --> 00:12:43,600
+a core team, the team that worked on
+
+267
+00:12:39,920 --> 00:12:46,160
+this proof of concept uh was um a
+
+268
+00:12:43,600 --> 00:12:49,040
+relatively small team uh was building
+
+269
+00:12:46,160 --> 00:12:51,920
+the knowledge graph um on on their own
+
+270
+00:12:49,040 --> 00:12:54,880
+and now and other teams could use the
+
+271
+00:12:51,920 --> 00:12:57,440
+results uh from that that from that
+
+272
+00:12:54,880 --> 00:12:59,200
+knowledge graph. uh but now we want to
+
+273
+00:12:57,440 --> 00:13:01,839
+offer the knowledge truck as a platform
+
+274
+00:12:59,200 --> 00:13:04,320
+to uh decentralize teams and
+
+275
+00:13:01,839 --> 00:13:07,120
+organization across IKEA so that they
+
+276
+00:13:04,320 --> 00:13:09,360
+can themselves develop uh domain
+
+277
+00:13:07,120 --> 00:13:11,120
+ontologies and domain graphs and
+
+278
+00:13:09,360 --> 00:13:14,120
+contribute to the expansion of the
+
+279
+00:13:11,120 --> 00:13:14,120
+graph.
+
+280
+00:13:15,760 --> 00:13:21,440
+So transitioning uh from product to
+
+281
+00:13:18,720 --> 00:13:24,000
+platform uh means that we're opening up
+
+282
+00:13:21,440 --> 00:13:27,519
+the knowledge of capabilities to uh
+
+283
+00:13:24,000 --> 00:13:29,760
+diverse teams across um diverse teams
+
+284
+00:13:27,519 --> 00:13:32,399
+and organizations across uh the IKEA
+
+285
+00:13:29,760 --> 00:13:34,639
+franchise. Uh because we want to enable
+
+286
+00:13:32,399 --> 00:13:38,000
+them to really leverage this powerful
+
+287
+00:13:34,639 --> 00:13:40,959
+tool to uh to innovate in ways that we
+
+288
+00:13:38,000 --> 00:13:43,120
+may may even um may not have even
+
+289
+00:13:40,959 --> 00:13:45,600
+imagined yet.
+
+290
+00:13:43,120 --> 00:13:47,680
+uh and we want to go be beyond uh
+
+291
+00:13:45,600 --> 00:13:51,440
+customerf facing solutions like the one
+
+292
+00:13:47,680 --> 00:13:53,600
+I showed with the PC uh and and we want
+
+293
+00:13:51,440 --> 00:13:55,920
+those teams to also develop solutions
+
+294
+00:13:53,600 --> 00:13:57,519
+that will benefit co-workers IKEA
+
+295
+00:13:55,920 --> 00:13:59,680
+co-workers
+
+296
+00:13:57,519 --> 00:14:02,399
+um and in fact we've started on boarding
+
+297
+00:13:59,680 --> 00:14:04,720
+teams already who uh work in various
+
+298
+00:14:02,399 --> 00:14:08,240
+domains we we've onboarded decentralized
+
+299
+00:14:04,720 --> 00:14:11,680
+teams uh who are developing solutions
+
+300
+00:14:08,240 --> 00:14:14,560
+for instance uh in domains like um
+
+301
+00:14:11,680 --> 00:14:17,519
+content management, uh digital asset
+
+302
+00:14:14,560 --> 00:14:20,320
+management and even uh conversational uh
+
+303
+00:14:17,519 --> 00:14:23,040
+conversational AI um so chat bots for
+
+304
+00:14:20,320 --> 00:14:26,320
+for co-workers
+
+305
+00:14:23,040 --> 00:14:29,199
+and the uh the idea uh really the
+
+306
+00:14:26,320 --> 00:14:33,279
+ultimately the aim is to connect all the
+
+307
+00:14:29,199 --> 00:14:36,480
+data across the IKEA value chain um via
+
+308
+00:14:33,279 --> 00:14:39,440
+the knowledge graph from the initial
+
+309
+00:14:36,480 --> 00:14:42,959
+product design idea to uh manufacturing
+
+310
+00:14:39,440 --> 00:14:44,959
+the product to uh supply chain logistics
+
+311
+00:14:42,959 --> 00:14:47,279
+to the customer meeting points, the
+
+312
+00:14:44,959 --> 00:14:51,880
+points of sale like the website or the
+
+313
+00:14:47,279 --> 00:14:51,880
+stores or other digital channels.
+
+314
+00:14:53,839 --> 00:14:59,440
+Uh and by adopting a platform approach
+
+315
+00:14:57,040 --> 00:15:03,600
+really we're not we're not replacing
+
+316
+00:14:59,440 --> 00:15:06,880
+existing systems or processes. We are uh
+
+317
+00:15:03,600 --> 00:15:09,760
+providing this tool so that the teams uh
+
+318
+00:15:06,880 --> 00:15:12,160
+can uh enhance their current uh
+
+319
+00:15:09,760 --> 00:15:15,600
+operations.
+
+320
+00:15:12,160 --> 00:15:17,440
+And this approach uh is crucial crucial
+
+321
+00:15:15,600 --> 00:15:20,399
+for scaling uh the knowledge tra
+
+322
+00:15:17,440 --> 00:15:24,079
+capabilities across IKEA because the
+
+323
+00:15:20,399 --> 00:15:27,279
+reality is the the the original team is
+
+324
+00:15:24,079 --> 00:15:30,880
+too small to to cater for all uh use
+
+325
+00:15:27,279 --> 00:15:32,639
+cases. Um we couldn't we couldn't do it
+
+326
+00:15:30,880 --> 00:15:36,959
+all on our own. There are so many
+
+327
+00:15:32,639 --> 00:15:40,399
+domains within IKEA. Um so by empowering
+
+328
+00:15:36,959 --> 00:15:42,880
+individual teams decentralized teams we
+
+329
+00:15:40,399 --> 00:15:45,120
+are uh on the one on the one hand uh
+
+330
+00:15:42,880 --> 00:15:48,399
+really able to tap into their very
+
+331
+00:15:45,120 --> 00:15:51,839
+unique expertise uh their very specific
+
+332
+00:15:48,399 --> 00:15:54,320
+expertise domain expertise uh but we're
+
+333
+00:15:51,839 --> 00:15:57,360
+also enabling them to uh develop
+
+334
+00:15:54,320 --> 00:16:00,160
+solutions that will um that will meet
+
+335
+00:15:57,360 --> 00:16:02,399
+their their their specific needs. So
+
+336
+00:16:00,160 --> 00:16:04,560
+they're they're best placed really to to
+
+337
+00:16:02,399 --> 00:16:07,120
+decide how to use the knowledge and what
+
+338
+00:16:04,560 --> 00:16:10,560
+solutions to develop and what problems
+
+339
+00:16:07,120 --> 00:16:12,560
+to solve with it.
+
+340
+00:16:10,560 --> 00:16:15,440
+So through this distributed approach,
+
+341
+00:16:12,560 --> 00:16:18,639
+we're hoping to uh um improve data
+
+342
+00:16:15,440 --> 00:16:22,320
+connectivity across the franchise and uh
+
+343
+00:16:18,639 --> 00:16:25,440
+really um uh improve efficiency and and
+
+344
+00:16:22,320 --> 00:16:28,440
+improve um decision making at all
+
+345
+00:16:25,440 --> 00:16:28,440
+levels.
+
+346
+00:16:29,279 --> 00:16:34,720
+But of course there are challenges and
+
+347
+00:16:31,759 --> 00:16:39,040
+the first challenge is communication.
+
+348
+00:16:34,720 --> 00:16:41,600
+So as we expand the knowledge raft um
+
+349
+00:16:39,040 --> 00:16:44,079
+it's um we're having to talk to very
+
+350
+00:16:41,600 --> 00:16:46,880
+diverse teams as I mentioned uh with
+
+351
+00:16:44,079 --> 00:16:49,600
+very varied uh levels of expertise and
+
+352
+00:16:46,880 --> 00:16:52,079
+knowledge graphs are are very technical
+
+353
+00:16:49,600 --> 00:16:55,040
+systems um and we're talking to
+
+354
+00:16:52,079 --> 00:16:57,199
+stakeholders who may not have uh any
+
+355
+00:16:55,040 --> 00:16:59,600
+background in in technology and actually
+
+356
+00:16:57,199 --> 00:17:03,279
+don't know what a knowledge graph is um
+
+357
+00:16:59,600 --> 00:17:06,799
+let alone an ontology. So our first uh
+
+358
+00:17:03,279 --> 00:17:09,280
+task is to demystify knowledge graphs to
+
+359
+00:17:06,799 --> 00:17:12,079
+to make knowledge draft knowledge graphs
+
+360
+00:17:09,280 --> 00:17:14,880
+understand accessible and understandable
+
+361
+00:17:12,079 --> 00:17:17,199
+to to all of our stakeholders and that
+
+362
+00:17:14,880 --> 00:17:20,880
+requires uh clear communication
+
+363
+00:17:17,199 --> 00:17:23,839
+communication that is jargon free
+
+364
+00:17:20,880 --> 00:17:27,199
+and also a focus on practical benefits
+
+365
+00:17:23,839 --> 00:17:29,679
+and uh and practical applications of the
+
+366
+00:17:27,199 --> 00:17:32,320
+technology.
+
+367
+00:17:29,679 --> 00:17:35,919
+Uh what is very useful as well when when
+
+368
+00:17:32,320 --> 00:17:38,720
+we talk to stakeholders is to uh uh show
+
+369
+00:17:35,919 --> 00:17:40,720
+them examples of concrete real world
+
+370
+00:17:38,720 --> 00:17:44,240
+examples of knowledge tra knowledge
+
+371
+00:17:40,720 --> 00:17:47,120
+graphs and how they are being used uh in
+
+372
+00:17:44,240 --> 00:17:50,400
+various domains like uh medical research
+
+373
+00:17:47,120 --> 00:17:52,080
+or finance or even the job market. So
+
+374
+00:17:50,400 --> 00:17:53,840
+for example, I like to I like to tell
+
+375
+00:17:52,080 --> 00:17:56,240
+them about the uh LinkedIn knowledge
+
+376
+00:17:53,840 --> 00:17:59,440
+graph and I can how it can be used to
+
+377
+00:17:56,240 --> 00:18:02,400
+link people with their skills uh to
+
+378
+00:17:59,440 --> 00:18:04,400
+companies and job offerings uh job job
+
+379
+00:18:02,400 --> 00:18:05,600
+openings and and that's something that
+
+380
+00:18:04,400 --> 00:18:07,520
+people can understand if they don't know
+
+381
+00:18:05,600 --> 00:18:09,280
+what the knowledge graph is. It becomes
+
+382
+00:18:07,520 --> 00:18:12,480
+very concrete in their minds and they
+
+383
+00:18:09,280 --> 00:18:13,840
+can understand uh more clearly what you
+
+384
+00:18:12,480 --> 00:18:16,880
+can do with a knowledge graph. So so
+
+385
+00:18:13,840 --> 00:18:20,799
+very concrete examples is one a good way
+
+386
+00:18:16,880 --> 00:18:23,679
+to uh demystify knowledge graphs.
+
+387
+00:18:20,799 --> 00:18:25,840
+The second uh challenge is governance.
+
+388
+00:18:23,679 --> 00:18:27,679
+Uh and it's actually a major challenge.
+
+389
+00:18:25,840 --> 00:18:29,600
+It's it's a very very big challenge and
+
+390
+00:18:27,679 --> 00:18:31,440
+you can imagine in a franchise system
+
+391
+00:18:29,600 --> 00:18:34,240
+like the IKEA franchise system with all
+
+392
+00:18:31,440 --> 00:18:37,280
+its various companies uh you can imagine
+
+393
+00:18:34,240 --> 00:18:39,760
+um that it would be a big challenge.
+
+394
+00:18:37,280 --> 00:18:42,799
+So we want to have uh we want we need to
+
+395
+00:18:39,760 --> 00:18:45,520
+establish clear rules and guidelines uh
+
+396
+00:18:42,799 --> 00:18:49,520
+around data ownership, access rights and
+
+397
+00:18:45,520 --> 00:18:52,480
+quality control. And we must ensure um
+
+398
+00:18:49,520 --> 00:18:54,960
+um data integrity and compliance with
+
+399
+00:18:52,480 --> 00:18:56,720
+all the relevant uh data protection
+
+400
+00:18:54,960 --> 00:18:59,360
+requirements.
+
+401
+00:18:56,720 --> 00:19:03,440
+And it's a very delicate balance between
+
+402
+00:18:59,360 --> 00:19:05,679
+maintaining control um maintaining
+
+403
+00:19:03,440 --> 00:19:08,160
+centralized control. So the c the core
+
+404
+00:19:05,679 --> 00:19:09,760
+team having control over what's being
+
+405
+00:19:08,160 --> 00:19:11,520
+developed
+
+406
+00:19:09,760 --> 00:19:14,240
+uh for consistency reasons for
+
+407
+00:19:11,520 --> 00:19:15,760
+consistency and alignment between uh the
+
+408
+00:19:14,240 --> 00:19:17,760
+various domains the various teams
+
+409
+00:19:15,760 --> 00:19:20,720
+because of course we don't want them to
+
+410
+00:19:17,760 --> 00:19:22,720
+recreate silos uh just in a different
+
+411
+00:19:20,720 --> 00:19:24,320
+way in a different format. We want to
+
+412
+00:19:22,720 --> 00:19:26,720
+break those silos. So we need
+
+413
+00:19:24,320 --> 00:19:29,120
+consistency and we need a certain level
+
+414
+00:19:26,720 --> 00:19:31,760
+of centralized control but we also want
+
+415
+00:19:29,120 --> 00:19:33,679
+to balance that with freedom for those
+
+416
+00:19:31,760 --> 00:19:38,720
+teams to develop solutions that are
+
+417
+00:19:33,679 --> 00:19:41,039
+really uh meeting their needs. Um so all
+
+418
+00:19:38,720 --> 00:19:42,799
+those conversations must happen. They
+
+419
+00:19:41,039 --> 00:19:45,280
+take time
+
+420
+00:19:42,799 --> 00:19:48,559
+uh and but they are necessary if you
+
+421
+00:19:45,280 --> 00:19:51,799
+want to uh gain trust and buy in from
+
+422
+00:19:48,559 --> 00:19:51,799
+your stakeholders.
+
+423
+00:19:52,160 --> 00:19:59,840
+A third challenge is uh training.
+
+424
+00:19:55,840 --> 00:20:01,360
+Uh IKEA is not a tech company. So we we
+
+425
+00:19:59,840 --> 00:20:03,360
+we're operating in a non- techch
+
+426
+00:20:01,360 --> 00:20:05,360
+environment.
+
+427
+00:20:03,360 --> 00:20:07,440
+Uh so we want to make sure that our
+
+428
+00:20:05,360 --> 00:20:11,039
+knowledge graph platform is user
+
+429
+00:20:07,440 --> 00:20:14,320
+friendly. And uh to to to make that
+
+430
+00:20:11,039 --> 00:20:17,520
+happen, we develop uh we have developed
+
+431
+00:20:14,320 --> 00:20:21,919
+uh intuitive interfaces for co-workers
+
+432
+00:20:17,520 --> 00:20:24,960
+to use. We're also um democ
+
+433
+00:20:21,919 --> 00:20:27,919
+democratizing ontology and taxonomy
+
+434
+00:20:24,960 --> 00:20:30,640
+design and development through tooling
+
+435
+00:20:27,919 --> 00:20:33,760
+again with intuitive uh interfaces that
+
+436
+00:20:30,640 --> 00:20:36,960
+don't require coding.
+
+437
+00:20:33,760 --> 00:20:39,600
+Uh we also have developed uh uh
+
+438
+00:20:36,960 --> 00:20:42,720
+comprehensive yet accessible training
+
+439
+00:20:39,600 --> 00:20:45,600
+materials and we offer um ongoing
+
+440
+00:20:42,720 --> 00:20:49,840
+support and uh uh upskilling
+
+441
+00:20:45,600 --> 00:20:52,320
+opportunities for for IKEA co-workers.
+
+442
+00:20:49,840 --> 00:20:55,520
+We're also working on developing uh
+
+443
+00:20:52,320 --> 00:20:57,600
+knowledge champions. That's people uh
+
+444
+00:20:55,520 --> 00:20:59,600
+within IKEA who are interested in
+
+445
+00:20:57,600 --> 00:21:03,600
+learning about ontologies and knowledge
+
+446
+00:20:59,600 --> 00:21:06,159
+graphs and want to upskill and uh so we
+
+447
+00:21:03,600 --> 00:21:09,280
+we offer them support and these people
+
+448
+00:21:06,159 --> 00:21:11,919
+can then serve as local experts in the
+
+449
+00:21:09,280 --> 00:21:15,039
+decentralized teams and uh and they're
+
+450
+00:21:11,919 --> 00:21:17,360
+also our advocates.
+
+451
+00:21:15,039 --> 00:21:20,000
+But it's worth it's worth worth saying
+
+452
+00:21:17,360 --> 00:21:22,559
+here that uh we haven't figured it it
+
+453
+00:21:20,000 --> 00:21:24,559
+all out yet. Obviously, we're learning
+
+454
+00:21:22,559 --> 00:21:26,559
+as we go along and we're constantly
+
+455
+00:21:24,559 --> 00:21:30,480
+adapting our approaches and our our
+
+456
+00:21:26,559 --> 00:21:32,240
+methods and uh and so it's it's a big
+
+457
+00:21:30,480 --> 00:21:35,600
+learning curve and it's it's it's not
+
+458
+00:21:32,240 --> 00:21:38,080
+over yet. But uh something positive I
+
+459
+00:21:35,600 --> 00:21:40,960
+can share with you is that um the
+
+460
+00:21:38,080 --> 00:21:44,159
+original team started with included
+
+461
+00:21:40,960 --> 00:21:46,559
+three uh subject matter experts. So IKEA
+
+462
+00:21:44,159 --> 00:21:48,400
+co-workers
+
+463
+00:21:46,559 --> 00:21:49,840
+uh who had all that expertise that we
+
+464
+00:21:48,400 --> 00:21:52,480
+wanted to translate into a knowledge
+
+465
+00:21:49,840 --> 00:21:54,720
+graph. they upscale. They learned about
+
+466
+00:21:52,480 --> 00:21:57,280
+knowledge graphs and and and and
+
+467
+00:21:54,720 --> 00:22:00,799
+reasoning capabilities and ontologies
+
+468
+00:21:57,280 --> 00:22:03,600
+and taxonomies and they on boarded on uh
+
+469
+00:22:00,799 --> 00:22:05,280
+a tool that we're using uh that is
+
+470
+00:22:03,600 --> 00:22:07,280
+making it possible for them to work
+
+471
+00:22:05,280 --> 00:22:10,400
+alongside ontologists and knowledge
+
+472
+00:22:07,280 --> 00:22:13,120
+engineers to to build the graph. Uh we
+
+473
+00:22:10,400 --> 00:22:14,799
+now have four uh of these subject matter
+
+474
+00:22:13,120 --> 00:22:16,640
+experts. We call them knowledge
+
+475
+00:22:14,799 --> 00:22:19,440
+modelers.
+
+476
+00:22:16,640 --> 00:22:21,840
+uh and uh they play a key role in uh in
+
+477
+00:22:19,440 --> 00:22:23,760
+building this graph
+
+478
+00:22:21,840 --> 00:22:26,320
+and and the good news is that now they
+
+479
+00:22:23,760 --> 00:22:28,320
+are training subject matter experts on
+
+480
+00:22:26,320 --> 00:22:30,799
+the decentralized teams. So that's
+
+481
+00:22:28,320 --> 00:22:32,400
+that's proof that people can be trained,
+
+482
+00:22:30,799 --> 00:22:35,600
+they can learn and there are things that
+
+483
+00:22:32,400 --> 00:22:38,799
+you can democratize. Uh and so you can
+
+484
+00:22:35,600 --> 00:22:42,720
+ensure that your your um your knowledge
+
+485
+00:22:38,799 --> 00:22:45,039
+the the your unique knowledge is is um
+
+486
+00:22:42,720 --> 00:22:48,679
+really comes from within the company
+
+487
+00:22:45,039 --> 00:22:48,679
+from your own experts.
+
+488
+00:22:51,919 --> 00:22:58,080
+Uh fourth challenge that we've uh met is
+
+489
+00:22:55,840 --> 00:23:01,280
+the gap between knowledge graph theory
+
+490
+00:22:58,080 --> 00:23:05,679
+and knowledge craft uh value business
+
+491
+00:23:01,280 --> 00:23:09,760
+value. So when we talk to uh uh semantic
+
+492
+00:23:05,679 --> 00:23:12,640
+experts and vendors, often the
+
+493
+00:23:09,760 --> 00:23:15,200
+conversations will gravitate towards uh
+
+494
+00:23:12,640 --> 00:23:19,280
+technical the technical capabilities of
+
+495
+00:23:15,200 --> 00:23:24,480
+of uh knowledge graphs uh and abstract
+
+496
+00:23:19,280 --> 00:23:27,919
+or um uh theoretical concepts.
+
+497
+00:23:24,480 --> 00:23:31,039
+But at IKEA, we're really focusing on uh
+
+498
+00:23:27,919 --> 00:23:33,360
+actual business value
+
+499
+00:23:31,039 --> 00:23:36,159
+uh business applications. So, how can we
+
+500
+00:23:33,360 --> 00:23:38,720
+use a knowledge graph to create better
+
+501
+00:23:36,159 --> 00:23:41,919
+experiences for both co-workers and and
+
+502
+00:23:38,720 --> 00:23:45,039
+and customers? So, there's a gap between
+
+503
+00:23:41,919 --> 00:23:47,679
+the promises everything you hear online
+
+504
+00:23:45,039 --> 00:23:49,440
+um on place platforms like LinkedIn for
+
+505
+00:23:47,679 --> 00:23:50,799
+this. It's quite a bit of a hype about
+
+506
+00:23:49,440 --> 00:23:52,559
+knowledge traps at the moment,
+
+507
+00:23:50,799 --> 00:23:54,799
+especially in the context of generative
+
+508
+00:23:52,559 --> 00:23:57,120
+AI. uh and everybody's interested in
+
+509
+00:23:54,799 --> 00:23:59,360
+building a graph, but
+
+510
+00:23:57,120 --> 00:24:02,640
+you will need to you will need time and
+
+511
+00:23:59,360 --> 00:24:05,600
+effort to actually identify
+
+512
+00:24:02,640 --> 00:24:07,200
+the the the business value of uh a
+
+513
+00:24:05,600 --> 00:24:09,280
+knowledge graph within the company. What
+
+514
+00:24:07,200 --> 00:24:13,120
+are you going to use it for? Um what
+
+515
+00:24:09,280 --> 00:24:15,440
+what problems is it going to solve? Um
+
+516
+00:24:13,120 --> 00:24:19,840
+so when we meet stakeholders uh within
+
+517
+00:24:15,440 --> 00:24:22,080
+IKEA uh Andreas uh and I uh we make sure
+
+518
+00:24:19,840 --> 00:24:26,080
+that we speak their language. We really
+
+519
+00:24:22,080 --> 00:24:28,000
+focus on their needs. We avoid talking
+
+520
+00:24:26,080 --> 00:24:30,480
+in theory about knowledge trusts and
+
+521
+00:24:28,000 --> 00:24:33,279
+ontologies. We avoid any jargon. we
+
+522
+00:24:30,480 --> 00:24:34,480
+really focus on what what problems
+
+523
+00:24:33,279 --> 00:24:36,640
+they're they're meeting, what they're
+
+524
+00:24:34,480 --> 00:24:39,279
+trying to achieve and then we try to
+
+525
+00:24:36,640 --> 00:24:41,279
+identify how a knowledge graph can help
+
+526
+00:24:39,279 --> 00:24:43,120
+them with that and what the what the
+
+527
+00:24:41,279 --> 00:24:45,440
+value is, what the business value of
+
+528
+00:24:43,120 --> 00:24:47,440
+that project would be. So that's
+
+529
+00:24:45,440 --> 00:24:48,880
+something to to really bear in mind if
+
+530
+00:24:47,440 --> 00:24:51,279
+you're interested in implementing
+
+531
+00:24:48,880 --> 00:24:53,279
+another trunk within your business is
+
+532
+00:24:51,279 --> 00:24:54,960
+that you know it doesn't come all out of
+
+533
+00:24:53,279 --> 00:24:57,360
+the box. You really have to put some
+
+534
+00:24:54,960 --> 00:24:58,720
+effort into identifying really what
+
+535
+00:24:57,360 --> 00:25:02,240
+you're going what you're going to do
+
+536
+00:24:58,720 --> 00:25:04,880
+with it. Um
+
+537
+00:25:02,240 --> 00:25:06,640
+so um
+
+538
+00:25:04,880 --> 00:25:11,360
+really underpinning all of these
+
+539
+00:25:06,640 --> 00:25:13,279
+challenges is uh is effective uh is the
+
+540
+00:25:11,360 --> 00:25:16,159
+importance the crucial importance of
+
+541
+00:25:13,279 --> 00:25:20,320
+effective stakeholder communication.
+
+542
+00:25:16,159 --> 00:25:23,200
+Uh we're trying to build trust uh uh
+
+543
+00:25:20,320 --> 00:25:26,000
+with our sharehold um stakeholders
+
+544
+00:25:23,200 --> 00:25:29,600
+through uh transparency on our processes
+
+545
+00:25:26,000 --> 00:25:32,480
+and on on our uh decision making. So uh
+
+546
+00:25:29,600 --> 00:25:35,200
+uh transparency is very important for
+
+547
+00:25:32,480 --> 00:25:38,799
+each decentralized team. Uh we really
+
+548
+00:25:35,200 --> 00:25:41,039
+work on identifying the business value
+
+549
+00:25:38,799 --> 00:25:43,120
+uh and and concrete use cases of our
+
+550
+00:25:41,039 --> 00:25:46,080
+graph.
+
+551
+00:25:43,120 --> 00:25:48,240
+We also have regular updates and uh
+
+552
+00:25:46,080 --> 00:25:50,240
+feedback sessions with our stakeholders
+
+553
+00:25:48,240 --> 00:25:53,279
+because we want to make sure that we
+
+554
+00:25:50,240 --> 00:25:56,799
+address real needs uh and real questions
+
+555
+00:25:53,279 --> 00:25:59,760
+or real concerns that they have. And by
+
+556
+00:25:56,799 --> 00:26:02,640
+adopting uh a collaborative approach to
+
+557
+00:25:59,760 --> 00:26:04,559
+development and innovation,
+
+558
+00:26:02,640 --> 00:26:07,200
+we're really ensuring that this new
+
+559
+00:26:04,559 --> 00:26:09,760
+technology is not perceived as a threat
+
+560
+00:26:07,200 --> 00:26:12,720
+by all of those teams. So the knowledge
+
+561
+00:26:09,760 --> 00:26:16,000
+graph and the AI is not going to replace
+
+562
+00:26:12,720 --> 00:26:18,320
+them. Uh instead, it's a tool. It's a
+
+563
+00:26:16,000 --> 00:26:21,279
+powerful tool that they're going to use
+
+564
+00:26:18,320 --> 00:26:24,000
+to innovate themselves and to u uh
+
+565
+00:26:21,279 --> 00:26:27,600
+streamline their own processes. We're
+
+566
+00:26:24,000 --> 00:26:31,440
+really hoping to uh uh foster a culture
+
+567
+00:26:27,600 --> 00:26:33,600
+of datadriven innovation across the IKEA
+
+568
+00:26:31,440 --> 00:26:36,600
+franchise ac across the IKEA value
+
+569
+00:26:33,600 --> 00:26:36,600
+chain.
+
+570
+00:26:36,640 --> 00:26:41,360
+So uh thank you for attending this
+
+571
+00:26:40,000 --> 00:26:43,520
+session for listening to my
+
+572
+00:26:41,360 --> 00:26:45,200
+presentation. These are contact details
+
+573
+00:26:43,520 --> 00:26:47,440
+if you have uh if you want to contact us
+
+574
+00:26:45,200 --> 00:26:48,159
+have any questions but I think I have a
+
+575
+00:26:47,440 --> 00:26:50,720
+bit of time.
+
+576
+00:26:48,159 --> 00:26:53,039
+>> Yes. Uh we have about three minutes and
+
+577
+00:26:50,720 --> 00:26:54,720
+then uh lunch. So, if we have a couple
+
+578
+00:26:53,039 --> 00:26:55,919
+questions, uh, we have one over there.
+
+579
+00:26:54,720 --> 00:26:58,000
+We've got people running around with
+
+580
+00:26:55,919 --> 00:27:01,000
+mics and I can get ready for the next
+
+581
+00:26:58,000 --> 00:27:01,000
+person.
+
+582
+00:27:05,520 --> 00:27:10,720
+>> Thank you for your talk. Could you tell
+
+583
+00:27:07,840 --> 00:27:12,720
+us a bit more about the tech stack? How
+
+584
+00:27:10,720 --> 00:27:15,039
+much is built in house? How much what
+
+585
+00:27:12,720 --> 00:27:17,520
+are the
+
+586
+00:27:15,039 --> 00:27:20,480
+>> about can you tell us a bit more about
+
+587
+00:27:17,520 --> 00:27:22,640
+your the tech stack under your knowledge
+
+588
+00:27:20,480 --> 00:27:25,279
+graph as a service what have you built
+
+589
+00:27:22,640 --> 00:27:28,960
+in house how much you're using some
+
+590
+00:27:25,279 --> 00:27:30,880
+vendors some details
+
+591
+00:27:28,960 --> 00:27:34,240
+>> we've got we've got the technical expert
+
+592
+00:27:30,880 --> 00:27:35,840
+here Rakkesh are you are you okay reply
+
+593
+00:27:34,240 --> 00:27:39,840
+I'm sorry
+
+594
+00:27:35,840 --> 00:27:41,760
+>> his best place to answer this
+
+595
+00:27:39,840 --> 00:27:44,640
+>> yeah so
+
+596
+00:27:41,760 --> 00:27:47,120
+Uh so the modeling uh as uh Crystal
+
+597
+00:27:44,640 --> 00:27:49,039
+mentioned the onlogy and the modeling is
+
+598
+00:27:47,120 --> 00:27:52,240
+mainly built by the knowledge experts
+
+599
+00:27:49,039 --> 00:27:55,760
+and once the knowledge not entrlogies
+
+600
+00:27:52,240 --> 00:27:59,360
+and the taxonomies are built uh we have
+
+601
+00:27:55,760 --> 00:28:02,799
+developed our own uh data transformation
+
+602
+00:27:59,360 --> 00:28:05,039
+uh in it's basically basically on a Java
+
+603
+00:28:02,799 --> 00:28:07,279
+built on a Java and it uses the
+
+604
+00:28:05,039 --> 00:28:10,559
+knowledge graph and ontologies and it
+
+605
+00:28:07,279 --> 00:28:12,640
+uses the JSON data of whatever your
+
+606
+00:28:10,559 --> 00:28:14,159
+product is and it converts it into a
+
+607
+00:28:12,640 --> 00:28:17,360
+triples.
+
+608
+00:28:14,159 --> 00:28:18,960
+Uh we used to use a Python model or a
+
+609
+00:28:17,360 --> 00:28:20,960
+Python package which was available
+
+610
+00:28:18,960 --> 00:28:23,440
+already in the market like open source
+
+611
+00:28:20,960 --> 00:28:27,600
+but it had some restrictions where it
+
+612
+00:28:23,440 --> 00:28:30,240
+couldn't uh map the nested uh datas of a
+
+613
+00:28:27,600 --> 00:28:33,760
+JSON uh structures. So we had a trouble.
+
+614
+00:28:30,240 --> 00:28:36,399
+So we had built our own like insourcing
+
+615
+00:28:33,760 --> 00:28:38,799
+uh uh application and once the triples
+
+616
+00:28:36,399 --> 00:28:41,760
+is um you know generated we do validate
+
+617
+00:28:38,799 --> 00:28:44,320
+it and then we uh import that into a
+
+618
+00:28:41,760 --> 00:28:47,039
+database or a data store and then we
+
+619
+00:28:44,320 --> 00:28:49,039
+create an API on top of it. So
+
+620
+00:28:47,039 --> 00:28:52,080
+technically the the stack is like you
+
+621
+00:28:49,039 --> 00:28:54,240
+get the ontologies you have your own uh
+
+622
+00:28:52,080 --> 00:28:56,399
+transformation or ATL models or
+
+623
+00:28:54,240 --> 00:28:58,799
+pipelines and you convert them into a
+
+624
+00:28:56,399 --> 00:29:01,279
+triples you validate them and then you
+
+625
+00:28:58,799 --> 00:29:03,840
+push it to your graph DB and then you
+
+626
+00:29:01,279 --> 00:29:05,440
+outsource it as as you need.
+
+627
+00:29:03,840 --> 00:29:08,320
+>> Yeah.
+
+628
+00:29:05,440 --> 00:29:10,080
+and and we also have reasoning rules um
+
+629
+00:29:08,320 --> 00:29:13,679
+that are actually developed with the
+
+630
+00:29:10,080 --> 00:29:15,919
+help of the uh uhmemes the subject
+
+631
+00:29:13,679 --> 00:29:17,760
+matter experts we call them knowledge
+
+632
+00:29:15,919 --> 00:29:19,760
+moders so all their expertise which is
+
+633
+00:29:17,760 --> 00:29:22,640
+in their heads um they can be
+
+634
+00:29:19,760 --> 00:29:25,120
+transformed into uh reasoning rules um
+
+635
+00:29:22,640 --> 00:29:25,760
+and they they use some tooling to uh to
+
+636
+00:29:25,120 --> 00:29:28,240
+do that
+
+637
+00:29:25,760 --> 00:29:28,880
+>> I saw you've got a question thanks okay
+
+638
+00:29:28,240 --> 00:29:30,880
+one more
+
+639
+00:29:28,880 --> 00:29:33,279
+>> okay yeah I had a question you mentioned
+
+640
+00:29:30,880 --> 00:29:35,120
+a tool for the um subject matter experts
+
+641
+00:29:33,279 --> 00:29:36,640
+to develop ontologies What are they
+
+642
+00:29:35,120 --> 00:29:38,320
+using?
+
+643
+00:29:36,640 --> 00:29:40,240
+>> Yeah, I knew someone would ask me that,
+
+644
+00:29:38,320 --> 00:29:41,200
+but I've been told I'm not allowed to
+
+645
+00:29:40,240 --> 00:29:43,200
+mention vendors.
+
+646
+00:29:41,200 --> 00:29:45,360
+>> No worries. Okay, no worries.
+
+647
+00:29:43,200 --> 00:29:48,159
+>> But there are many tools that uh
+
+648
+00:29:45,360 --> 00:29:50,960
+basically it's visualization. They draw
+
+649
+00:29:48,159 --> 00:29:54,559
+nodes and edges and that is then
+
+650
+00:29:50,960 --> 00:29:57,039
+converted into uh you know turtle or
+
+651
+00:29:54,559 --> 00:29:58,159
+whatever.
+
+652
+00:29:57,039 --> 00:30:00,240
+>> All right, everybody. I think we'll
+
+653
+00:29:58,159 --> 00:30:02,799
+probably leave it um for here. Please
+
+654
+00:30:00,240 --> 00:30:04,880
+find uh Crystal and the uh rest of the
+
+655
+00:30:02,799 --> 00:30:09,960
+IKEA team uh during networking and go
+
+656
+00:30:04,880 --> 00:30:09,960
+have a great lunch and back here at two.
+

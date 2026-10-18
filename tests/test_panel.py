@@ -205,6 +205,8 @@ def test_draining_the_backlog_queues_the_channel_not_the_page(client, monkeypatc
     since been ingested."""
     fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting",)
     monkeypatch.setattr(R, "reconcile", _only(READY, fresh))
+    db.upsert_videos([{"video_id": "eeeeeeeeeee", "title": "Waiting", "url": "u",
+                       "duration": 2400}])
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
                         lambda ids: queued.extend(ids) or len(ids))
@@ -212,6 +214,42 @@ def test_draining_the_backlog_queues_the_channel_not_the_page(client, monkeypatc
     response = client.post("/backlog/ingest")
     assert queued == ["eeeeeeeeeee"]
     assert "Queued 1 video" in response.text
+
+
+def test_the_backlog_drains_only_what_could_be_ingested(client, monkeypatch):
+    """The drain asks the scheduler's rule as well as the status. A premiere
+    caught on air or just after reads as an ordinary waiting video, and a run
+    against it can only fail. The button's count is the same list."""
+    def video(vid, **kw):
+        return R.TalkState(sources={"youtube": vid}, title=f"Talk {vid}",
+                           duration=kw.pop("duration", 2400), **kw)
+
+    states = [
+        video("eeeeeeeeeee"),                                  # waiting: queued
+        video("lllllllllll", live_status="is_live"),            # on air
+        video("ooooooooooo", live_status="post_live"),          # just aired
+        video("sssssssssss", duration=60),                      # a Short
+        video("uuuuuuuuuuu", live_status="is_upcoming"),        # not aired
+        video("bbbbbbbbbbb"),       # queued since this reconcile: counted, not re-queued
+        video("fffffffffff", run={"status": "failed"}),         # failed: by hand
+        R.TalkState(talk_id="t-linked01", sources={"youtube": "hhhhhhhhhhh",
+                    "heysummit": "7"}, in_csv=True, title="Linked talk",
+                    csv_title="Linked talk", duration=2400),    # seeded, linked: queued
+        R.TalkState(talk_id="t-waiting1", sources={"heysummit": "8"}, in_csv=True,
+                    title="No video yet", csv_title="No video yet"),
+    ]
+    monkeypatch.setattr(R, "reconcile", _only(*states))
+    db.upsert_videos([{"video_id": s.video_id, "title": s.title, "url": "u",
+                       "duration": s.duration, "live_status": s.live_status}
+                      for s in states if s.video_id])
+    db.start_run("bbbbbbbbbbb", ["metadata_parse"], status="queued")
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
+                        lambda ids: queued.extend(ids) or len(ids))
+
+    assert "Ingest the backlog (3)" in client.get("/advanced").text
+    client.post("/backlog/ingest")
+    assert sorted(queued) == ["eeeeeeeeeee", "hhhhhhhhhhh"]
 
 
 def test_the_sheet_is_newest_first_regardless_of_status(client, monkeypatch):
@@ -393,7 +431,7 @@ def test_the_drawer_reports_what_a_run_spent(client, monkeypatch):
                  {"input_tokens": 1060, "output_tokens": 47})},
             {"stage": "tag_extraction", "status": "completed", "position": 4,
              "message": "", "detail": json.dumps(
-                 {"model": "gemini-3.7-flash", "input_tokens": 15501,
+                 {"model": "gemini-3.8-flash", "input_tokens": 15501,
                   "output_tokens": 400})},
         ],
     }
@@ -680,7 +718,7 @@ def test_an_unknown_file_type_is_refused(client, upload_env):
 def test_taking_a_snapshot_renders_it_in_the_list(client, monkeypatch):
     taken = []
     fake = {"name": "20260915T120000Z", "created_at": "2026-09-15T12:00:00Z",
-            "graph_version": {"built_at": "2026-09-02T10:39:50Z", "model": "gemini-3.7-flash"},
+            "graph_version": {"built_at": "2026-09-02T10:39:50Z", "model": "gemini-3.8-flash"},
             "counts": {"Talk": 45, "Tag": 738, "tagged_talks": 43}, "rows": {},
             "size_bytes": 40960}
     monkeypatch.setattr("ingest.pipeline.snapshot.create_snapshot", lambda: taken.append(1))
@@ -689,7 +727,7 @@ def test_taking_a_snapshot_renders_it_in_the_list(client, monkeypatch):
     listing = client.post("/snapshots").text
 
     assert taken == [1]
-    assert "20260915T120000Z" in listing and "gemini-3.7-flash" in listing
+    assert "20260915T120000Z" in listing and "gemini-3.8-flash" in listing
     assert 'href="/snapshots/20260915T120000Z.zip"' in listing
     assert "40 KB" in listing
 
@@ -1164,7 +1202,7 @@ def test_refreshing_the_channel_ingests_a_premiere_the_backfill_found_aired(clie
     monkeypatch.setattr(youtube, "backfill_metadata", lambda: {
         "resolved": 1, "fetched": 1, "remaining": 0, "aired": ["tAPqdlsuJYg"]})
     ingested = []
-    monkeypatch.setattr("ingest.pipeline.runner.run_pipeline", ingested.append)
+    monkeypatch.setattr("ingest.pipeline.runner.enqueue", ingested.append)
 
     assert client.post("/refresh").status_code == 200     # background tasks run before it returns
     assert ingested == ["tAPqdlsuJYg"]
@@ -1245,6 +1283,8 @@ def test_the_panels_tab_lists_every_panel_with_its_reason(client, monkeypatch):
 def test_draining_the_backlog_leaves_panels_for_a_curator(client, monkeypatch):
     fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting")
     monkeypatch.setattr(R, "reconcile", _only(fresh, PANEL))
+    db.upsert_videos([{"video_id": "eeeeeeeeeee", "title": "Waiting", "url": "u",
+                       "duration": 2400}])
     queued = []
     monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
                         lambda ids: queued.extend(ids) or len(ids))

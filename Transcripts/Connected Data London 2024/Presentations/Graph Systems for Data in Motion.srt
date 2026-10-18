@@ -1,0 +1,2924 @@
+1
+00:00:05,000 --> 00:00:09,600
+So, it's my pleasure to get to introduce
+
+2
+00:00:07,800 --> 00:00:10,880
+Bogdan
+
+3
+00:00:09,600 --> 00:00:13,120
+Arsinte Asco.
+
+4
+00:00:10,880 --> 00:00:14,800
+Uh, who is lead software architect at
+
+5
+00:00:13,120 --> 00:00:16,520
+Microsoft, uh, based out of New York
+
+6
+00:00:14,800 --> 00:00:18,280
+City now coming up.
+
+7
+00:00:16,520 --> 00:00:19,720
+And uh
+
+8
+00:00:18,280 --> 00:00:22,880
+Bogdan will be speaking about graph
+
+9
+00:00:19,720 --> 00:00:25,040
+systems for data in motion. I could give
+
+10
+00:00:22,880 --> 00:00:26,800
+I I highlighted sections out of this,
+
+11
+00:00:25,040 --> 00:00:28,280
+but I don't think I would do justice.
+
+12
+00:00:26,800 --> 00:00:30,600
+But, this is, uh, one of the talks I
+
+13
+00:00:28,280 --> 00:00:33,440
+really anticipated. So, I give you some
+
+14
+00:00:30,600 --> 00:00:34,680
+background though. Uh, Bogdan is a real
+
+15
+00:00:33,440 --> 00:00:37,840
+real-time systems architect at
+
+16
+00:00:34,680 --> 00:00:40,360
+Microsoft. He's led teams that build and
+
+17
+00:00:37,840 --> 00:00:42,440
+operated, uh, large-scale graphs, uh,
+
+18
+00:00:40,360 --> 00:00:44,800
+going back to 20
+
+19
+00:00:42,440 --> 00:00:46,640
+10, uh, working on Pregel, uh,
+
+20
+00:00:44,800 --> 00:00:47,800
+high-performance compute for, uh, Google
+
+21
+00:00:46,640 --> 00:00:49,880
+knowledge graph.
+
+22
+00:00:47,800 --> 00:00:52,320
+And, uh, also worked on scale-out for
+
+23
+00:00:49,880 --> 00:00:55,280
+operational systems at LinkedIn, uh,
+
+24
+00:00:52,320 --> 00:00:57,520
+graph analytics at Microsoft Fabric.
+
+25
+00:00:55,280 --> 00:00:59,560
+And, earlier he had designed and
+
+26
+00:00:57,520 --> 00:01:01,520
+implemented graph algorithms,
+
+27
+00:00:59,560 --> 00:01:05,360
+uh, to get the
+
+28
+00:01:01,520 --> 00:01:06,800
+20 km of wire into 4 square cm for
+
+29
+00:01:05,360 --> 00:01:08,440
+silicon design.
+
+30
+00:01:06,800 --> 00:01:10,200
+So, knows a thing or two about, uh,
+
+31
+00:01:08,440 --> 00:01:14,560
+working with graphs at scale, I would
+
+32
+00:01:10,200 --> 00:01:14,560
+say. Please join us in welcoming Bogdan.
+
+33
+00:01:16,360 --> 00:01:18,280
+>> Thank you. Is this thing on? Can you
+
+34
+00:01:17,840 --> 00:01:18,800
+hear me?
+
+35
+00:01:18,280 --> 00:01:19,760
+>> Yes.
+
+36
+00:01:18,800 --> 00:01:21,120
+>> Okay.
+
+37
+00:01:19,760 --> 00:01:22,800
+So uh
+
+38
+00:01:21,120 --> 00:01:24,960
+this is a continuation of a talk that
+
+39
+00:01:22,800 --> 00:01:27,120
+I've done
+
+40
+00:01:24,960 --> 00:01:29,280
+last year.
+
+41
+00:01:27,120 --> 00:01:31,320
+Where should I stay?
+
+42
+00:01:29,280 --> 00:01:32,240
+To avoid this. Here?
+
+43
+00:01:31,320 --> 00:01:35,440
+All right.
+
+44
+00:01:32,240 --> 00:01:38,240
+Um, where, you know, the the point being
+
+45
+00:01:35,440 --> 00:01:41,880
+that we collect a lot of data and, uh,
+
+46
+00:01:38,240 --> 00:01:44,160
+it's in lake, it's in, uh, warehouses.
+
+47
+00:01:41,880 --> 00:01:46,520
+We have to make sense of it. And, uh,
+
+48
+00:01:44,160 --> 00:01:50,880
+throughout the, uh, experience that I
+
+49
+00:01:46,520 --> 00:01:53,040
+collected is how do you do this without,
+
+50
+00:01:50,880 --> 00:01:55,600
+uh, requiring graphs of hundreds of
+
+51
+00:01:53,040 --> 00:01:57,560
+petabytes of, uh, of data because that's
+
+52
+00:01:55,600 --> 00:01:59,680
+nobody's going to want to pay for that.
+
+53
+00:01:57,560 --> 00:02:01,440
+Um although if you know somebody that
+
+54
+00:01:59,680 --> 00:02:02,760
+wants to pay for it, let them talk to me
+
+55
+00:02:01,440 --> 00:02:04,840
+because I work for Microsoft and we
+
+56
+00:02:02,760 --> 00:02:08,720
+would like those kind of clients.
+
+57
+00:02:04,840 --> 00:02:10,840
+Um data in motion. So, I have a very
+
+58
+00:02:08,720 --> 00:02:12,959
+broad systemic view of what data in
+
+59
+00:02:10,840 --> 00:02:14,560
+motion is. You know, it's experimental
+
+60
+00:02:12,959 --> 00:02:17,560
+or personal data, so there's a little
+
+61
+00:02:14,560 --> 00:02:18,840
+bit of data on top of um
+
+62
+00:02:17,560 --> 00:02:19,920
+you know, the warehouse that you see
+
+63
+00:02:18,840 --> 00:02:20,520
+there.
+
+64
+00:02:19,920 --> 00:02:22,440
+Uh
+
+65
+00:02:20,520 --> 00:02:24,240
+multiple data domains, how do you
+
+66
+00:02:22,440 --> 00:02:27,200
+control access to those domains, how do
+
+67
+00:02:24,240 --> 00:02:29,360
+you build graphs to uh to do that, and
+
+68
+00:02:27,200 --> 00:02:31,680
+you know, real-time graphs where data
+
+69
+00:02:29,360 --> 00:02:33,600
+keeps on coming, there's an infinite uh
+
+70
+00:02:31,680 --> 00:02:35,200
+amount of data that uh that keeps on
+
+71
+00:02:33,600 --> 00:02:36,440
+arriving.
+
+72
+00:02:35,200 --> 00:02:38,760
+So,
+
+73
+00:02:36,440 --> 00:02:41,000
+I'll split the presentation into cases.
+
+74
+00:02:38,760 --> 00:02:42,600
+I'll try to convince you that silos are
+
+75
+00:02:41,000 --> 00:02:44,680
+bad, and then I'll try to convince you
+
+76
+00:02:42,600 --> 00:02:48,360
+that silos are good.
+
+77
+00:02:44,680 --> 00:02:49,680
+Um and for the case against silos, you
+
+78
+00:02:48,360 --> 00:02:51,959
+know, I'm going to talk about how do we
+
+79
+00:02:49,680 --> 00:02:54,280
+overlay the data, how do we grow the
+
+80
+00:02:51,959 --> 00:02:56,160
+graphs, how do we build graphs that are
+
+81
+00:02:54,280 --> 00:02:58,320
+viable.
+
+82
+00:02:56,160 --> 00:03:00,560
+How do we do experimentation
+
+83
+00:02:58,320 --> 00:03:02,200
+in production with graphs?
+
+84
+00:03:00,560 --> 00:03:04,440
+And in the second part of the
+
+85
+00:03:02,200 --> 00:03:07,560
+presentation, I'll talk about domains
+
+86
+00:03:04,440 --> 00:03:08,959
+and how do you do uh role-related access
+
+87
+00:03:07,560 --> 00:03:10,880
+to graphs, and how do you partition the
+
+88
+00:03:08,959 --> 00:03:13,160
+graph such that only the right people
+
+89
+00:03:10,880 --> 00:03:17,400
+have access to the right kind of graphs
+
+90
+00:03:13,160 --> 00:03:17,400
+for economic reasons, for
+
+91
+00:03:17,560 --> 00:03:22,280
+you know, for cost reasons.
+
+92
+00:03:20,160 --> 00:03:23,680
+And then uh in the end, you know, what
+
+93
+00:03:22,280 --> 00:03:25,560
+do we do with streaming data? What do we
+
+94
+00:03:23,680 --> 00:03:27,840
+do with uh with data that keeps on
+
+95
+00:03:25,560 --> 00:03:29,280
+coming? So, it's not really about
+
+96
+00:03:27,840 --> 00:03:31,160
+streaming. So, when I'm talking about
+
+97
+00:03:29,280 --> 00:03:34,640
+real-time data or data in motion, I'm
+
+98
+00:03:31,160 --> 00:03:36,080
+talking about your data empire is
+
+99
+00:03:34,640 --> 00:03:38,920
+changing all the time because there are
+
+100
+00:03:36,080 --> 00:03:40,519
+no no sources of truth. There are new
+
+101
+00:03:38,920 --> 00:03:42,480
+insights that you want to gather. You
+
+102
+00:03:40,519 --> 00:03:44,600
+want to update the models that you have
+
+103
+00:03:42,480 --> 00:03:47,080
+over the data.
+
+104
+00:03:44,600 --> 00:03:49,840
+So, what's in a graph? Um I'll start
+
+105
+00:03:47,080 --> 00:03:51,520
+talking GQL because uh it's a you know,
+
+106
+00:03:49,840 --> 00:03:54,280
+good thing to to change the paradigm and
+
+107
+00:03:51,520 --> 00:03:57,400
+use the the new standard um um
+
+108
+00:03:54,280 --> 00:04:00,160
+terminology. Uh GQL talks about graph
+
+109
+00:03:57,400 --> 00:04:03,680
+type instead of talking about schema.
+
+110
+00:04:00,160 --> 00:04:06,120
+And a graph has a set of types of nodes
+
+111
+00:04:03,680 --> 00:04:08,640
+and a set of types of edges, and all
+
+112
+00:04:06,120 --> 00:04:11,480
+those create a graph type.
+
+113
+00:04:08,640 --> 00:04:13,120
+The way you bring the graph in from your
+
+114
+00:04:11,480 --> 00:04:14,959
+sources of truth is you create a graph
+
+115
+00:04:13,120 --> 00:04:17,359
+definition, which is what we called
+
+116
+00:04:14,959 --> 00:04:19,959
+modeling or transformation before.
+
+117
+00:04:17,359 --> 00:04:21,760
+Um and that graph definition tells how
+
+118
+00:04:19,959 --> 00:04:23,680
+do we index the data? How do we get the
+
+119
+00:04:21,760 --> 00:04:27,000
+data from the
+
+120
+00:04:23,680 --> 00:04:29,520
+source into the graph indices?
+
+121
+00:04:27,000 --> 00:04:31,680
+In everything that I talk and everything
+
+122
+00:04:29,520 --> 00:04:34,840
+that I've done in the last
+
+123
+00:04:31,680 --> 00:04:36,560
+13 years, there's never been a database.
+
+124
+00:04:34,840 --> 00:04:39,160
+There's never been a durable storage for
+
+125
+00:04:36,560 --> 00:04:43,080
+the graph because there was never a need
+
+126
+00:04:39,160 --> 00:04:45,200
+for it. And your CIO doesn't want to pay
+
+127
+00:04:43,080 --> 00:04:47,480
+for another database, and your engineers
+
+128
+00:04:45,200 --> 00:04:49,080
+don't want to maintain another ETL. So,
+
+129
+00:04:47,480 --> 00:04:51,280
+everything that I'm going to talk about
+
+130
+00:04:49,080 --> 00:04:53,919
+is an index. The data stays in the
+
+131
+00:04:51,280 --> 00:04:56,480
+source of truth. I have a model,
+
+132
+00:04:53,919 --> 00:04:59,200
+and I want to create the right model for
+
+133
+00:04:56,480 --> 00:05:00,560
+the right vicinity of the data in in the
+
+134
+00:04:59,200 --> 00:05:02,520
+graph.
+
+135
+00:05:00,560 --> 00:05:03,919
+So, you know, you have a graph type, you
+
+136
+00:05:02,520 --> 00:05:05,840
+have a graph definition, and you have
+
+137
+00:05:03,919 --> 00:05:07,120
+the graph the graph data, nodes and
+
+138
+00:05:05,840 --> 00:05:09,680
+edges.
+
+139
+00:05:07,120 --> 00:05:11,080
+A simple example, you know, and and this
+
+140
+00:05:09,680 --> 00:05:14,560
+is, you know, for all of you that have
+
+141
+00:05:11,080 --> 00:05:16,800
+tried um a, you know, the Neo4j
+
+142
+00:05:14,560 --> 00:05:19,840
+community edition,
+
+143
+00:05:16,800 --> 00:05:22,320
+you know, you have a table of
+
+144
+00:05:19,840 --> 00:05:24,120
+nodes and a table of edges.
+
+145
+00:05:22,320 --> 00:05:25,640
+You know, and in my table of edges, you
+
+146
+00:05:24,120 --> 00:05:27,720
+know, the second
+
+147
+00:05:25,640 --> 00:05:28,960
+the second table of nodes is implied. It
+
+148
+00:05:27,720 --> 00:05:30,520
+just has a string, and you're going to
+
+149
+00:05:28,960 --> 00:05:32,400
+index on that.
+
+150
+00:05:30,520 --> 00:05:34,440
+So, these are the two types, you know,
+
+151
+00:05:32,400 --> 00:05:37,040
+there's one node type, one edge type. My
+
+152
+00:05:34,440 --> 00:05:39,360
+node type says I have a person ID. It
+
+153
+00:05:37,040 --> 00:05:41,440
+has four properties, first name, last
+
+154
+00:05:39,360 --> 00:05:43,440
+name, gender, birthday. And you have a
+
+155
+00:05:41,440 --> 00:05:44,880
+table of edges that has the person ID,
+
+156
+00:05:43,440 --> 00:05:48,160
+and at the other end of the edge you
+
+157
+00:05:44,880 --> 00:05:52,880
+have the the languages that they speak.
+
+158
+00:05:48,160 --> 00:05:55,120
+That's my schema. That's my graph type.
+
+159
+00:05:52,880 --> 00:05:57,280
+This is the graph definition. The The
+
+160
+00:05:55,120 --> 00:05:59,240
+data is coming from somewhere in your
+
+161
+00:05:57,280 --> 00:06:01,200
+estate, from a table.
+
+162
+00:05:59,240 --> 00:06:02,840
+And you take that table and you map it
+
+163
+00:06:01,200 --> 00:06:05,000
+into a
+
+164
+00:06:02,840 --> 00:06:06,760
+um uh um
+
+165
+00:06:05,000 --> 00:06:08,440
+node table and you map it into an edge
+
+166
+00:06:06,760 --> 00:06:10,720
+table and you do the same thing for all
+
+167
+00:06:08,440 --> 00:06:12,640
+the data sets that that you want to to
+
+168
+00:06:10,720 --> 00:06:14,520
+bring in. You have a hundred data sets
+
+169
+00:06:12,640 --> 00:06:15,840
+that you want to bring in, you take this
+
+170
+00:06:14,520 --> 00:06:17,280
+thing and you replicate it a hundred
+
+171
+00:06:15,840 --> 00:06:19,680
+times with different definitions and
+
+172
+00:06:17,280 --> 00:06:21,840
+different wiring and that's all of it.
+
+173
+00:06:19,680 --> 00:06:24,360
+Why do I think that that is important to
+
+174
+00:06:21,840 --> 00:06:25,720
+talk about? Um and we'll get to it a
+
+175
+00:06:24,360 --> 00:06:28,160
+little bit later.
+
+176
+00:06:25,720 --> 00:06:31,000
+Now, everything that I talk about graph
+
+177
+00:06:28,160 --> 00:06:32,680
+definition is a view.
+
+178
+00:06:31,000 --> 00:06:36,080
+So, I'm going to use the concept of
+
+179
+00:06:32,680 --> 00:06:38,520
+graph data or of database views to talk
+
+180
+00:06:36,080 --> 00:06:40,400
+about how do I model the data. So, I'm
+
+181
+00:06:38,520 --> 00:06:42,000
+not bringing anybody into the graph
+
+182
+00:06:40,400 --> 00:06:44,560
+domain, I'm leaving everybody in their
+
+183
+00:06:42,000 --> 00:06:46,440
+relational um world where, you know,
+
+184
+00:06:44,560 --> 00:06:49,120
+most of the people are happier and I'm
+
+185
+00:06:46,440 --> 00:06:52,120
+saying, "Hey, what I need to create, I
+
+186
+00:06:49,120 --> 00:06:53,880
+need to create a type and the node
+
+187
+00:06:52,120 --> 00:06:55,680
+tables and the edge tables that I want
+
+188
+00:06:53,880 --> 00:06:59,000
+to bring in."
+
+189
+00:06:55,680 --> 00:07:01,680
+And does the data, right? So, types,
+
+190
+00:06:59,000 --> 00:07:03,240
+transformations or uh definition and
+
+191
+00:07:01,680 --> 00:07:04,440
+data. I have all the all those three in
+
+192
+00:07:03,240 --> 00:07:06,200
+the screen.
+
+193
+00:07:04,440 --> 00:07:07,720
+And this is you're going to see this
+
+194
+00:07:06,200 --> 00:07:09,080
+metaphor over and over in the
+
+195
+00:07:07,720 --> 00:07:11,640
+presentation.
+
+196
+00:07:09,080 --> 00:07:14,360
+I've added
+
+197
+00:07:11,640 --> 00:07:16,080
+the type to the graph. I added a node
+
+198
+00:07:14,360 --> 00:07:17,600
+table. I added the edge table. If
+
+199
+00:07:16,080 --> 00:07:18,840
+there's more than one edge table, you
+
+200
+00:07:17,600 --> 00:07:20,720
+know, do you see different blocks of
+
+201
+00:07:18,840 --> 00:07:22,680
+this?
+
+202
+00:07:20,720 --> 00:07:25,120
+Why is this important? What I'm showing
+
+203
+00:07:22,680 --> 00:07:27,400
+here is a sequence of things. Again, you
+
+204
+00:07:25,120 --> 00:07:29,160
+know, take you to to the database world,
+
+205
+00:07:27,400 --> 00:07:31,840
+I'm talking about serialization, I'm
+
+206
+00:07:29,160 --> 00:07:34,240
+talking about atomic uh addition to the
+
+207
+00:07:31,840 --> 00:07:36,720
+graph, I'm talking about a log, a ledger
+
+208
+00:07:34,240 --> 00:07:39,200
+for those that are uh inclined to to
+
+209
+00:07:36,720 --> 00:07:41,320
+think in uh in more modern technology.
+
+210
+00:07:39,200 --> 00:07:43,320
+It's a sequence of transactions it's to
+
+211
+00:07:41,320 --> 00:07:45,440
+a log. This is going to help me to
+
+212
+00:07:43,320 --> 00:07:48,440
+define a healthy graph and to be able to
+
+213
+00:07:45,440 --> 00:07:53,520
+grow it for any data in motion.
+
+214
+00:07:48,440 --> 00:07:55,160
+So, I've added one data set to my graph.
+
+215
+00:07:53,520 --> 00:07:57,880
+Another concept that I'm going to play
+
+216
+00:07:55,160 --> 00:07:59,720
+over and over is this uh
+
+217
+00:07:57,880 --> 00:08:02,120
+fluid metaphors on the right-hand side
+
+218
+00:07:59,720 --> 00:08:05,600
+of the of the numbered slides.
+
+219
+00:08:02,120 --> 00:08:07,520
+What I want to do is mix data together,
+
+220
+00:08:05,600 --> 00:08:10,360
+bring a couple of these different
+
+221
+00:08:07,520 --> 00:08:13,000
+colored uh fluids, put them together in
+
+222
+00:08:10,360 --> 00:08:15,200
+a graph, and have insights on that.
+
+223
+00:08:13,000 --> 00:08:17,800
+How do I do that?
+
+224
+00:08:15,200 --> 00:08:20,240
+I have a data catalog. All of you are
+
+225
+00:08:17,800 --> 00:08:21,760
+familiar with data catalogs. I take the
+
+226
+00:08:20,240 --> 00:08:23,600
+leaf data,
+
+227
+00:08:21,760 --> 00:08:25,480
+uh you know, the intermediate ones are
+
+228
+00:08:23,600 --> 00:08:27,840
+are unimportant. They're just uh
+
+229
+00:08:25,480 --> 00:08:29,760
+intermediate data sets that are, you
+
+230
+00:08:27,840 --> 00:08:32,080
+know, they don't make it into the graph
+
+231
+00:08:29,760 --> 00:08:34,039
+cuz they're not important enough to have
+
+232
+00:08:32,080 --> 00:08:35,919
+uh to be part of the model. And I want
+
+233
+00:08:34,039 --> 00:08:37,919
+to create um
+
+234
+00:08:35,919 --> 00:08:40,760
+a knowledge graph.
+
+235
+00:08:37,919 --> 00:08:41,560
+A graph without the ontology is just a
+
+236
+00:08:40,760 --> 00:08:43,360
+uh
+
+237
+00:08:41,560 --> 00:08:44,880
+knowledge base. If you have ontology and
+
+238
+00:08:43,360 --> 00:08:48,200
+reasoning, it's a knowledge uh graph.
+
+239
+00:08:44,880 --> 00:08:48,200
+So, this my terminology.
+
+240
+00:08:49,160 --> 00:08:54,760
+So, I take those data sets.
+
+241
+00:08:51,960 --> 00:08:56,960
+And just I like I told you before,
+
+242
+00:08:54,760 --> 00:08:58,920
+I keep on appending them
+
+243
+00:08:56,960 --> 00:09:00,600
+to a graph index. I haven't told you
+
+244
+00:08:58,920 --> 00:09:02,560
+anything about how I'm doing this index.
+
+245
+00:09:00,600 --> 00:09:04,680
+I'm just appending data sets one to the
+
+246
+00:09:02,560 --> 00:09:06,520
+other. The fact that they are disjoint
+
+247
+00:09:04,680 --> 00:09:09,680
+is helping me
+
+248
+00:09:06,520 --> 00:09:11,960
+uh in creating uh a healthy graph and
+
+249
+00:09:09,680 --> 00:09:14,680
+one that I can grow because if I bring
+
+250
+00:09:11,960 --> 00:09:16,880
+another one of those colorful tables, I
+
+251
+00:09:14,680 --> 00:09:19,000
+can just append it to this log. I can
+
+252
+00:09:16,880 --> 00:09:23,360
+create three more transactions, one for
+
+253
+00:09:19,000 --> 00:09:25,280
+the uh type, one for the uh node table,
+
+254
+00:09:23,360 --> 00:09:27,520
+one for the edge table, and I I grow my
+
+255
+00:09:25,280 --> 00:09:29,280
+graph.
+
+256
+00:09:27,520 --> 00:09:32,000
+Going back to the views, to the idea
+
+257
+00:09:29,280 --> 00:09:33,760
+that I'm just using views in the
+
+258
+00:09:32,000 --> 00:09:36,280
+relational database terminology, why is
+
+259
+00:09:33,760 --> 00:09:38,560
+this important?
+
+260
+00:09:36,280 --> 00:09:40,960
+All of you here have fought with
+
+261
+00:09:38,560 --> 00:09:42,840
+identity reconciliation and resolution.
+
+262
+00:09:40,960 --> 00:09:45,240
+What is identity? What is an identity
+
+263
+00:09:42,840 --> 00:09:49,240
+problem in graph? You have a node table
+
+264
+00:09:45,240 --> 00:09:51,480
+that has the same primary key twice.
+
+265
+00:09:49,240 --> 00:09:54,120
+And you don't know how to combine those
+
+266
+00:09:51,480 --> 00:09:56,080
+those rows because the properties that
+
+267
+00:09:54,120 --> 00:09:58,120
+are coming from those rows depend on the
+
+268
+00:09:56,080 --> 00:09:59,560
+order in which you read the table. If
+
+269
+00:09:58,120 --> 00:10:00,880
+you do updates, you don't know how to do
+
+270
+00:09:59,560 --> 00:10:02,960
+that. So,
+
+271
+00:10:00,880 --> 00:10:05,440
+the reason why this is important for the
+
+272
+00:10:02,960 --> 00:10:07,600
+view, you create a table with a uh
+
+273
+00:10:05,440 --> 00:10:09,760
+primary key that is not repeated, that
+
+274
+00:10:07,600 --> 00:10:11,560
+is unique, and therefore you don't have
+
+275
+00:10:09,760 --> 00:10:12,840
+the identity resolution problem. How do
+
+276
+00:10:11,560 --> 00:10:15,200
+you solve that?
+
+277
+00:10:12,840 --> 00:10:18,120
+Just figure figure it out in the view
+
+278
+00:10:15,200 --> 00:10:19,400
+level. In the relational part of the
+
+279
+00:10:18,120 --> 00:10:21,440
+problem.
+
+280
+00:10:19,400 --> 00:10:22,880
+You don't know how to do that, you're
+
+281
+00:10:21,440 --> 00:10:25,400
+going to have to have the problem of
+
+282
+00:10:22,880 --> 00:10:26,680
+identity resolution. It's easier, you
+
+283
+00:10:25,400 --> 00:10:28,480
+know, this this problems have been
+
+284
+00:10:26,680 --> 00:10:30,360
+resolved for many many years in the
+
+285
+00:10:28,480 --> 00:10:32,800
+relational space. You don't need to
+
+286
+00:10:30,360 --> 00:10:36,080
+reinvent the wheel. Just use the use the
+
+287
+00:10:32,800 --> 00:10:38,040
+the relational wheel that exists.
+
+288
+00:10:36,080 --> 00:10:41,280
+Um I'm also solving the problem of
+
+289
+00:10:38,040 --> 00:10:43,480
+composition. If the same column
+
+290
+00:10:41,280 --> 00:10:45,200
+has if the same column is coming from
+
+291
+00:10:43,480 --> 00:10:47,360
+two different tables, you're going to
+
+292
+00:10:45,200 --> 00:10:49,280
+have data collision happening because
+
+293
+00:10:47,360 --> 00:10:51,040
+the same values are going to be written
+
+294
+00:10:49,280 --> 00:10:53,040
+into the into your property graph from
+
+295
+00:10:51,040 --> 00:10:54,560
+two different sources. So, that's
+
+296
+00:10:53,040 --> 00:10:56,560
+another reason why you want the data to
+
+297
+00:10:54,560 --> 00:10:59,760
+be disjoint. How do you do that? You do
+
+298
+00:10:56,560 --> 00:11:02,000
+it at the view side of of the database
+
+299
+00:10:59,760 --> 00:11:04,080
+views at the table views
+
+300
+00:11:02,000 --> 00:11:05,480
+side, and if you if your data is
+
+301
+00:11:04,080 --> 00:11:07,800
+disjoint, then you don't have this
+
+302
+00:11:05,480 --> 00:11:10,040
+problem. So, all of a sudden everything
+
+303
+00:11:07,800 --> 00:11:12,560
+that's complex about the graph, I
+
+304
+00:11:10,040 --> 00:11:14,880
+externalize. I put it on the on the
+
+305
+00:11:12,560 --> 00:11:16,720
+definition side where I'm saying my data
+
+306
+00:11:14,880 --> 00:11:19,960
+is disjoint in the node table as a edge
+
+307
+00:11:16,720 --> 00:11:22,640
+table. I have primary keys for the node
+
+308
+00:11:19,960 --> 00:11:25,280
+tables, and my edge tables are creating
+
+309
+00:11:22,640 --> 00:11:26,520
+edges, multi-edges, you know, name name
+
+310
+00:11:25,280 --> 00:11:27,960
+your
+
+311
+00:11:26,520 --> 00:11:29,920
+your type of graph that you want to
+
+312
+00:11:27,960 --> 00:11:32,360
+build.
+
+313
+00:11:29,920 --> 00:11:34,840
+Another thing that's interesting for the
+
+314
+00:11:32,360 --> 00:11:37,520
+views, you all know in the relational
+
+315
+00:11:34,840 --> 00:11:39,560
+world you can update a view and it's
+
+316
+00:11:37,520 --> 00:11:41,960
+going to populate additional columns if
+
+317
+00:11:39,560 --> 00:11:44,440
+those changes are accretive. Everybody
+
+318
+00:11:41,960 --> 00:11:46,080
+knows how to do that. All your DBAs that
+
+319
+00:11:44,440 --> 00:11:48,600
+have been trained in the last 40 years
+
+320
+00:11:46,080 --> 00:11:50,760
+in SQL now how to do that. You don't
+
+321
+00:11:48,600 --> 00:11:53,240
+need to to teach them how to evolve
+
+322
+00:11:50,760 --> 00:11:55,120
+schema. They know it. Your graph is
+
+323
+00:11:53,240 --> 00:11:57,480
+going to grow automatically if you have
+
+324
+00:11:55,120 --> 00:12:00,160
+the methodology to create these joint
+
+325
+00:11:57,480 --> 00:12:02,440
+data sets with accretive schema changes
+
+326
+00:12:00,160 --> 00:12:05,160
+and with
+
+327
+00:12:02,440 --> 00:12:07,880
+additive data set. So,
+
+328
+00:12:05,160 --> 00:12:09,360
+I set up I set up how I built the first
+
+329
+00:12:07,880 --> 00:12:12,600
+graph.
+
+330
+00:12:09,360 --> 00:12:12,600
+Now I'm going to have to change it.
+
+331
+00:12:12,720 --> 00:12:17,120
+I need overlay graphs. So, you know, the
+
+332
+00:12:15,520 --> 00:12:19,600
+the metaphor the the visual metaphor
+
+333
+00:12:17,120 --> 00:12:21,600
+there is personalization. I need to
+
+334
+00:12:19,600 --> 00:12:24,280
+bring a little bit of my data and
+
+335
+00:12:21,600 --> 00:12:26,760
+overlay it on top of the of the big
+
+336
+00:12:24,280 --> 00:12:28,680
+graph. Think, you know,
+
+337
+00:12:26,760 --> 00:12:30,200
+your
+
+338
+00:12:28,680 --> 00:12:33,320
+um
+
+339
+00:12:30,200 --> 00:12:35,400
+personal uh your your personal portfolio
+
+340
+00:12:33,320 --> 00:12:37,000
+on top of financial data, right? So, the
+
+341
+00:12:35,400 --> 00:12:38,800
+financial data comes from a big graph,
+
+342
+00:12:37,000 --> 00:12:41,640
+you have your portfolio is overlayed
+
+343
+00:12:38,800 --> 00:12:44,160
+there. You you run you write a little
+
+344
+00:12:41,640 --> 00:12:47,440
+bit of a graph on top of uh the the big
+
+345
+00:12:44,160 --> 00:12:48,720
+graph. How do you do that?
+
+346
+00:12:47,440 --> 00:12:50,680
+Well,
+
+347
+00:12:48,720 --> 00:12:52,600
+I'm adding an an additional data set, a
+
+348
+00:12:50,680 --> 00:12:54,960
+small one,
+
+349
+00:12:52,600 --> 00:12:57,320
+to the big log.
+
+350
+00:12:54,960 --> 00:12:59,120
+How do we do that? All of us are coders.
+
+351
+00:12:57,320 --> 00:13:01,920
+Well, you do it in the same way that you
+
+352
+00:12:59,120 --> 00:13:04,040
+do it in code. You branch, you add
+
+353
+00:13:01,920 --> 00:13:05,640
+something in the branch, you read
+
+354
+00:13:04,040 --> 00:13:07,800
+through that branch, and when you're
+
+355
+00:13:05,640 --> 00:13:10,120
+done, you delete it. So, that's how you
+
+356
+00:13:07,800 --> 00:13:14,280
+do personalization with uh with
+
+357
+00:13:10,120 --> 00:13:16,560
+knowledge graphs at the systemic level.
+
+358
+00:13:14,280 --> 00:13:18,280
+You can do this for many overlay
+
+359
+00:13:16,560 --> 00:13:20,320
+patterns, right? So, experimentation is
+
+360
+00:13:18,280 --> 00:13:22,000
+one where, you know, somebody wants to
+
+361
+00:13:20,320 --> 00:13:24,480
+add a data set and see if they can add a
+
+362
+00:13:22,000 --> 00:13:26,960
+feature. You add a feature in a
+
+363
+00:13:24,480 --> 00:13:29,160
+uh private part of the schema, you run
+
+364
+00:13:26,960 --> 00:13:31,240
+your you add your data set in a in that
+
+365
+00:13:29,160 --> 00:13:33,240
+branch. You run your experiment. When
+
+366
+00:13:31,240 --> 00:13:34,520
+you're done, you release the data and
+
+367
+00:13:33,240 --> 00:13:36,640
+you decide whether you want to bring the
+
+368
+00:13:34,520 --> 00:13:38,920
+whole data set in or not.
+
+369
+00:13:36,640 --> 00:13:40,520
+Uh same thing for personalization, same
+
+370
+00:13:38,920 --> 00:13:43,440
+same thing for contextualization.
+
+371
+00:13:40,520 --> 00:13:47,160
+Contextualization is a
+
+372
+00:13:43,440 --> 00:13:50,440
+even more uh volatile uh form of uh
+
+373
+00:13:47,160 --> 00:13:52,040
+personalization. So, if I search now for
+
+374
+00:13:50,440 --> 00:13:53,960
+things in my Google Maps, it's going to
+
+375
+00:13:52,040 --> 00:13:55,680
+be contextualized to London because
+
+376
+00:13:53,960 --> 00:13:57,280
+that's my location. It's not. It's
+
+377
+00:13:55,680 --> 00:13:58,640
+personalized and contextual
+
+378
+00:13:57,280 --> 00:13:59,920
+contextualized.
+
+379
+00:13:58,640 --> 00:14:01,840
+And again,
+
+380
+00:13:59,920 --> 00:14:03,840
+same thing as a branch. You know, I
+
+381
+00:14:01,840 --> 00:14:06,560
+haven't invented anything for you. I
+
+382
+00:14:03,840 --> 00:14:08,880
+haven't invented database views. I
+
+383
+00:14:06,560 --> 00:14:11,200
+haven't invented branching. I'm using
+
+384
+00:14:08,880 --> 00:14:14,080
+systems and technologies that exist for
+
+385
+00:14:11,200 --> 00:14:14,080
+50 years.
+
+386
+00:14:15,160 --> 00:14:19,000
+I made a mistake when I submitted the
+
+387
+00:14:16,640 --> 00:14:20,800
+slides and uh I know all of you are
+
+388
+00:14:19,000 --> 00:14:22,840
+going to uh well, some of you are going
+
+389
+00:14:20,800 --> 00:14:24,120
+to look up ablation. This is the best
+
+390
+00:14:22,840 --> 00:14:26,080
+joke that I could come up with. That's
+
+391
+00:14:24,120 --> 00:14:28,520
+why I didn't fix it. Ablation is when
+
+392
+00:14:26,080 --> 00:14:32,839
+you take some data away. I forgot to put
+
+393
+00:14:28,520 --> 00:14:37,320
+the uh the data in the slides for this.
+
+394
+00:14:32,839 --> 00:14:40,240
+So, how do you do this in um uh in that
+
+395
+00:14:37,320 --> 00:14:42,120
+uh ledger uh model? You take some data
+
+396
+00:14:40,240 --> 00:14:44,880
+away. So, you delete some data from you
+
+397
+00:14:42,120 --> 00:14:46,440
+mask it. You you make it look like it's
+
+398
+00:14:44,880 --> 00:14:48,080
+uh is deleted. So, it's the same as
+
+399
+00:14:46,440 --> 00:14:49,839
+adding something for personalization
+
+400
+00:14:48,080 --> 00:14:52,040
+except you mask it. You mark it with a
+
+401
+00:14:49,839 --> 00:14:53,880
+tombstone.
+
+402
+00:14:52,040 --> 00:14:56,600
+Side-by-side graphs.
+
+403
+00:14:53,880 --> 00:14:58,400
+So, that's another uh model where, you
+
+404
+00:14:56,600 --> 00:15:01,000
+know, some people are doing Oh, is this
+
+405
+00:14:58,400 --> 00:15:02,800
+the model that will work better in my
+
+406
+00:15:01,000 --> 00:15:04,720
+application or is that the model? Is
+
+407
+00:15:02,800 --> 00:15:06,440
+the, you know, the red one or the blue
+
+408
+00:15:04,720 --> 00:15:08,240
+one or the green one the the one that's
+
+409
+00:15:06,440 --> 00:15:09,320
+going to be more useful? Which one is
+
+410
+00:15:08,240 --> 00:15:12,000
+going to
+
+411
+00:15:09,320 --> 00:15:13,960
+give me more profits? Which one is is uh
+
+412
+00:15:12,000 --> 00:15:16,680
+doing personalization better for for
+
+413
+00:15:13,960 --> 00:15:16,680
+your user?
+
+414
+00:15:16,720 --> 00:15:20,640
+Again,
+
+415
+00:15:17,800 --> 00:15:22,440
+just like in code. Oops.
+
+416
+00:15:20,640 --> 00:15:24,720
+Just like in code, you make two
+
+417
+00:15:22,440 --> 00:15:26,240
+branches, you make your application read
+
+418
+00:15:24,720 --> 00:15:27,760
+from the different two branches, and
+
+419
+00:15:26,240 --> 00:15:29,440
+you're doing AB comparison and AB
+
+420
+00:15:27,760 --> 00:15:31,200
+experimentation.
+
+421
+00:15:29,440 --> 00:15:33,240
+I haven't invented anything. I'm just
+
+422
+00:15:31,200 --> 00:15:34,760
+keeping you in the '70s. I hope this is
+
+423
+00:15:33,240 --> 00:15:36,680
+the most boring thing that you hear
+
+424
+00:15:34,760 --> 00:15:39,320
+about graph is that there's nothing new
+
+425
+00:15:36,680 --> 00:15:40,600
+under the sun.
+
+426
+00:15:39,320 --> 00:15:42,840
+Now,
+
+427
+00:15:40,600 --> 00:15:45,520
+let's go back to say, well, now I build
+
+428
+00:15:42,840 --> 00:15:47,800
+a graph, and I have a graph for my
+
+429
+00:15:45,520 --> 00:15:50,000
+entire data estate. If your data estate
+
+430
+00:15:47,800 --> 00:15:52,600
+is huge, and you have terabytes of
+
+431
+00:15:50,000 --> 00:15:54,200
+terabytes of of graph, it's going to get
+
+432
+00:15:52,600 --> 00:15:57,760
+expensive.
+
+433
+00:15:54,200 --> 00:15:59,840
+If you're having expensive data like
+
+434
+00:15:57,760 --> 00:16:01,680
+graph, which is over indexed, and it has
+
+435
+00:15:59,840 --> 00:16:03,080
+to be mostly in RAM, and you have to run
+
+436
+00:16:01,680 --> 00:16:04,200
+through it
+
+437
+00:16:03,080 --> 00:16:06,480
+a lot,
+
+438
+00:16:04,200 --> 00:16:09,040
+you need a high throughput to be able to
+
+439
+00:16:06,480 --> 00:16:11,000
+make it viable. That's why, you know,
+
+440
+00:16:09,040 --> 00:16:14,080
+people are asking me, "Hey, how is how
+
+441
+00:16:11,000 --> 00:16:15,760
+come that LinkedIn is paying
+
+442
+00:16:14,080 --> 00:16:18,200
+millions and millions of dollar to have
+
+443
+00:16:15,760 --> 00:16:20,160
+the graph in memory replicated 300
+
+444
+00:16:18,200 --> 00:16:22,960
+times?" The LinkedIn graph is 300
+
+445
+00:16:20,160 --> 00:16:25,680
+billion edges, 3 million QPS.
+
+446
+00:16:22,960 --> 00:16:28,680
+It's about 25 terabytes per replica.
+
+447
+00:16:25,680 --> 00:16:29,920
+There are about 150 replicas to do
+
+448
+00:16:28,680 --> 00:16:31,440
+global
+
+449
+00:16:29,920 --> 00:16:34,400
+serving.
+
+450
+00:16:31,440 --> 00:16:37,400
+How come it can afford that? Well, per
+
+451
+00:16:34,400 --> 00:16:40,880
+QPS, it's cheap.
+
+452
+00:16:37,400 --> 00:16:42,600
+Having it in this on disk, and paying
+
+453
+00:16:40,880 --> 00:16:44,040
+for the network cost is going to be
+
+454
+00:16:42,600 --> 00:16:45,600
+three times more expensive than having
+
+455
+00:16:44,040 --> 00:16:47,560
+it in RAM.
+
+456
+00:16:45,600 --> 00:16:49,040
+So, you just have to find the right
+
+457
+00:16:47,560 --> 00:16:51,280
+application for the right thing. So,
+
+458
+00:16:49,040 --> 00:16:52,720
+keeping all that LinkedIn graph in RAM
+
+459
+00:16:51,280 --> 00:16:54,160
+is actually the cheapest solution that
+
+460
+00:16:52,720 --> 00:16:57,120
+you can implement.
+
+461
+00:16:54,160 --> 00:17:00,200
+Any graph database that is creating a
+
+462
+00:16:57,120 --> 00:17:01,960
+copy of that and running it through
+
+463
+00:17:00,200 --> 00:17:03,600
+through network is going to be much more
+
+464
+00:17:01,960 --> 00:17:05,360
+expensive than that.
+
+465
+00:17:03,600 --> 00:17:07,920
+So, let's say that you have one of those
+
+466
+00:17:05,360 --> 00:17:10,199
+graphs, right? And that's the gold
+
+467
+00:17:07,920 --> 00:17:12,959
+colored
+
+468
+00:17:10,199 --> 00:17:15,480
+graph there. But, you also have some
+
+469
+00:17:12,959 --> 00:17:18,199
+slow data, some data that you only query
+
+470
+00:17:15,480 --> 00:17:20,040
+at three QPS and only Fridays, right?
+
+471
+00:17:18,199 --> 00:17:21,319
+You don't want to bring that data in RAM
+
+472
+00:17:20,040 --> 00:17:22,800
+because it's humongous. It's going to
+
+473
+00:17:21,319 --> 00:17:25,079
+add another
+
+474
+00:17:22,800 --> 00:17:26,560
+20 30 millions of dollars in cost to
+
+475
+00:17:25,079 --> 00:17:28,600
+keep it in RAM. So, for that one, you
+
+476
+00:17:26,560 --> 00:17:30,600
+make another graph, one that is stored
+
+477
+00:17:28,600 --> 00:17:33,440
+on disk. It has the same front end, the
+
+478
+00:17:30,600 --> 00:17:34,920
+same query language, the same way to
+
+479
+00:17:33,440 --> 00:17:36,040
+query it, but you put it in a different
+
+480
+00:17:34,920 --> 00:17:38,680
+place.
+
+481
+00:17:36,040 --> 00:17:39,960
+The third one is finance data. You don't
+
+482
+00:17:38,680 --> 00:17:41,960
+want to bring the finance data, you
+
+483
+00:17:39,960 --> 00:17:43,640
+know, the blue one is finance data. You
+
+484
+00:17:41,960 --> 00:17:45,320
+don't want to bring that one to
+
+485
+00:17:43,640 --> 00:17:47,200
+production because you're putting it in
+
+486
+00:17:45,320 --> 00:17:48,760
+the path of the user.
+
+487
+00:17:47,200 --> 00:17:51,880
+You're putting it You're putting your
+
+488
+00:17:48,760 --> 00:17:54,320
+company in the path of GDPR fines. So,
+
+489
+00:17:51,880 --> 00:17:56,600
+you want to be able to segment the data
+
+490
+00:17:54,320 --> 00:17:58,440
+such that you have the right domains,
+
+491
+00:17:56,600 --> 00:18:00,280
+and that's where the the the case for
+
+492
+00:17:58,440 --> 00:18:02,400
+silos is coming in.
+
+493
+00:18:00,280 --> 00:18:04,440
+You have your catalog,
+
+494
+00:18:02,400 --> 00:18:06,000
+but you want to have different domains
+
+495
+00:18:04,440 --> 00:18:07,360
+in the catalog that you're dealing with
+
+496
+00:18:06,000 --> 00:18:09,120
+differently for different reasons,
+
+497
+00:18:07,360 --> 00:18:10,640
+right? For cost reasons, for regulation
+
+498
+00:18:09,120 --> 00:18:13,640
+reasons.
+
+499
+00:18:10,640 --> 00:18:15,560
+And once you have these domains, you
+
+500
+00:18:13,640 --> 00:18:17,400
+know, you can create knowledge graphs
+
+501
+00:18:15,560 --> 00:18:18,960
+and ontologies on top of them. And once
+
+502
+00:18:17,400 --> 00:18:21,320
+you have the ontologies and they are
+
+503
+00:18:18,960 --> 00:18:23,120
+disjoint again, then you can figure out,
+
+504
+00:18:21,320 --> 00:18:24,640
+"Oh, I can query with this domain. I'm
+
+505
+00:18:23,120 --> 00:18:25,720
+going to query in that graph. With this
+
+506
+00:18:24,640 --> 00:18:28,000
+domain, I'm going to query in this
+
+507
+00:18:25,720 --> 00:18:31,040
+graph." You just have a router that is
+
+508
+00:18:28,000 --> 00:18:33,280
+intelligent enough to understand the
+
+509
+00:18:31,040 --> 00:18:37,160
+definition and the the types of each
+
+510
+00:18:33,280 --> 00:18:37,160
+graph and query them separately.
+
+511
+00:18:37,440 --> 00:18:43,320
+The same metaphor. How do I do this?
+
+512
+00:18:40,160 --> 00:18:45,880
+I do one log for graph one, one log for
+
+513
+00:18:43,320 --> 00:18:48,480
+graph two. And if I need to give access
+
+514
+00:18:45,880 --> 00:18:51,200
+to anybody to both of them, then you can
+
+515
+00:18:48,480 --> 00:18:53,000
+think of it as a log one plus log two,
+
+516
+00:18:51,200 --> 00:18:55,920
+and you give them access to the uh to
+
+517
+00:18:53,000 --> 00:18:55,920
+the combined one.
+
+518
+00:18:57,800 --> 00:19:01,680
+What kind of patterns do I have for data
+
+519
+00:18:59,920 --> 00:19:03,680
+domains, right? And And you're going to
+
+520
+00:19:01,680 --> 00:19:06,160
+recognize the business model of many of
+
+521
+00:19:03,680 --> 00:19:08,840
+the companies uh around here.
+
+522
+00:19:06,160 --> 00:19:11,840
+One of them is you have a core graph
+
+523
+00:19:08,840 --> 00:19:14,440
+that is uh you know, the the dark green
+
+524
+00:19:11,840 --> 00:19:17,000
+uh on top and you have variants that
+
+525
+00:19:14,440 --> 00:19:18,840
+people are are using on top of it. So,
+
+526
+00:19:17,000 --> 00:19:19,840
+where is this useful, right? So, you
+
+527
+00:19:18,840 --> 00:19:22,840
+have
+
+528
+00:19:19,840 --> 00:19:24,520
+a company that's building a graph for
+
+529
+00:19:22,840 --> 00:19:26,720
+pharmaceutical research, you know, it's
+
+530
+00:19:24,520 --> 00:19:30,800
+indexing all the the papers that existed
+
+531
+00:19:26,720 --> 00:19:31,520
+in the in the public domain. 5 minutes?
+
+532
+00:19:30,800 --> 00:19:33,880
+10?
+
+533
+00:19:31,520 --> 00:19:35,520
+Oh, I'm going to be done way sooner. Um
+
+534
+00:19:33,880 --> 00:19:38,640
+you have
+
+535
+00:19:35,520 --> 00:19:39,960
+the domain the the public domain and
+
+536
+00:19:38,640 --> 00:19:41,760
+then you
+
+537
+00:19:39,960 --> 00:19:43,880
+provide it to AstraZeneca and they bring
+
+538
+00:19:41,760 --> 00:19:45,640
+their data on top of it. You provide it
+
+539
+00:19:43,880 --> 00:19:49,440
+to Merck and they bring their data on
+
+540
+00:19:45,640 --> 00:19:52,080
+top of it. What is what is provided in
+
+541
+00:19:49,440 --> 00:19:55,080
+the core is public domain. What
+
+542
+00:19:52,080 --> 00:19:56,600
+everybody extends doesn't egress to to
+
+543
+00:19:55,080 --> 00:19:59,120
+the other company.
+
+544
+00:19:56,600 --> 00:20:00,960
+The second pattern is is the one that
+
+545
+00:19:59,120 --> 00:20:04,040
+all of you have
+
+546
+00:20:00,960 --> 00:20:06,760
+have seen in the big data domain.
+
+547
+00:20:04,040 --> 00:20:08,400
+You have a core gold data set that is
+
+548
+00:20:06,760 --> 00:20:11,280
+what your application uses in
+
+549
+00:20:08,400 --> 00:20:13,680
+production. You have the silver data set
+
+550
+00:20:11,280 --> 00:20:14,560
+that is the one that your
+
+551
+00:20:13,680 --> 00:20:17,720
+uh
+
+552
+00:20:14,560 --> 00:20:20,240
+uh your engineers, your developers are
+
+553
+00:20:17,720 --> 00:20:21,800
+experimenting with and and that they are
+
+554
+00:20:20,240 --> 00:20:23,400
+testing, they're measuring the quality,
+
+555
+00:20:21,800 --> 00:20:26,000
+they're improving. And you have the
+
+556
+00:20:23,400 --> 00:20:27,840
+bronze data set which is everything in
+
+557
+00:20:26,000 --> 00:20:30,640
+the world and
+
+558
+00:20:27,840 --> 00:20:32,920
+and everything that under the sun. Who
+
+559
+00:20:30,640 --> 00:20:34,040
+is using something like this?
+
+560
+00:20:32,920 --> 00:20:35,960
+Um
+
+561
+00:20:34,040 --> 00:20:39,320
+it's probably not a public knowledge.
+
+562
+00:20:35,960 --> 00:20:41,320
+Amazon catalog, the website works with a
+
+563
+00:20:39,320 --> 00:20:43,800
+model like this. Everything that you can
+
+564
+00:20:41,320 --> 00:20:46,520
+buy is in the gold data set. Everything
+
+565
+00:20:43,800 --> 00:20:48,680
+in silver is they're allowing listings
+
+566
+00:20:46,520 --> 00:20:50,920
+to be created, but they're not allowing
+
+567
+00:20:48,680 --> 00:20:52,960
+them to be sold to the public until they
+
+568
+00:20:50,920 --> 00:20:55,040
+understand that that data is high
+
+569
+00:20:52,960 --> 00:20:56,640
+quality and it can be used and they have
+
+570
+00:20:55,040 --> 00:20:58,080
+a business model on how they make money
+
+571
+00:20:56,640 --> 00:21:00,400
+and and so on and so forth. So, they run
+
+572
+00:20:58,080 --> 00:21:02,440
+simulations on that data. And then
+
+573
+00:21:00,400 --> 00:21:04,840
+everything else is kind of like the
+
+574
+00:21:02,440 --> 00:21:07,120
+open-ended
+
+575
+00:21:04,840 --> 00:21:08,760
+uh you know, eBay kind of model of
+
+576
+00:21:07,120 --> 00:21:10,560
+unstructured data.
+
+577
+00:21:08,760 --> 00:21:13,120
+And you have the the last pattern is a
+
+578
+00:21:10,560 --> 00:21:16,480
+tree organization where you have, you
+
+579
+00:21:13,120 --> 00:21:18,520
+know, finance and corp and prod and and
+
+580
+00:21:16,480 --> 00:21:20,480
+you have a a larger graph that combines
+
+581
+00:21:18,520 --> 00:21:22,120
+the three of them with, you know, some
+
+582
+00:21:20,480 --> 00:21:24,760
+observability and
+
+583
+00:21:22,120 --> 00:21:26,680
+so these are the the use cases for
+
+584
+00:21:24,760 --> 00:21:30,120
+multiple domains in a single data
+
+585
+00:21:26,680 --> 00:21:30,120
+catalog in a single estate.
+
+586
+00:21:30,320 --> 00:21:34,400
+And then last but not least, you have
+
+587
+00:21:31,840 --> 00:21:37,760
+streaming data.
+
+588
+00:21:34,400 --> 00:21:39,920
+And I told you my data sources I worked
+
+589
+00:21:37,760 --> 00:21:41,040
+really hard to make them disjoint. I
+
+590
+00:21:39,920 --> 00:21:42,840
+make them
+
+591
+00:21:41,040 --> 00:21:46,880
+I work really hard to make them
+
+592
+00:21:42,840 --> 00:21:48,840
+isolated. Now I can get different bits
+
+593
+00:21:46,880 --> 00:21:51,120
+of the and you have to look at the the
+
+594
+00:21:48,840 --> 00:21:54,280
+different colors, you know, I have
+
+595
+00:21:51,120 --> 00:21:56,760
+real-time data that arrives later. I can
+
+596
+00:21:54,280 --> 00:21:59,760
+process it as soon as I need. I append
+
+597
+00:21:56,760 --> 00:22:01,760
+it to the log. I keep a transaction log.
+
+598
+00:21:59,760 --> 00:22:04,080
+I make my data consistent with the with
+
+599
+00:22:01,760 --> 00:22:06,360
+those transactional guarantees and when
+
+600
+00:22:04,080 --> 00:22:07,960
+it's ready, I read it and my application
+
+601
+00:22:06,360 --> 00:22:10,000
+is going to work
+
+602
+00:22:07,960 --> 00:22:11,800
+if the application is designed well,
+
+603
+00:22:10,000 --> 00:22:14,080
+it's going to work
+
+604
+00:22:11,800 --> 00:22:15,920
+as expected. Where is it not going to
+
+605
+00:22:14,080 --> 00:22:18,200
+work, right? So you have digital
+
+606
+00:22:15,920 --> 00:22:20,360
+stability for algorithms. If you change
+
+607
+00:22:18,200 --> 00:22:21,480
+the graph while you're computing page
+
+608
+00:22:20,360 --> 00:22:23,960
+rank,
+
+609
+00:22:21,480 --> 00:22:25,640
+your algorithm is likely going to become
+
+610
+00:22:23,960 --> 00:22:28,160
+unstable. How do you deal with that?
+
+611
+00:22:25,640 --> 00:22:30,280
+Well, I told you, with a branch.
+
+612
+00:22:28,160 --> 00:22:33,320
+If you want to add fresh data to the
+
+613
+00:22:30,280 --> 00:22:35,320
+graph, you run the algorithm through a
+
+614
+00:22:33,320 --> 00:22:37,120
+branch that reads from a given point in
+
+615
+00:22:35,320 --> 00:22:39,120
+time and doesn't read past that time and
+
+616
+00:22:37,120 --> 00:22:41,280
+you keep updating the graph. And then if
+
+617
+00:22:39,120 --> 00:22:42,800
+you have a page rank that can do delta,
+
+618
+00:22:41,280 --> 00:22:44,760
+you take just the delta that you've
+
+619
+00:22:42,800 --> 00:22:46,000
+added and you compute the incremental
+
+620
+00:22:44,760 --> 00:22:46,920
+page rank on that and so on and so
+
+621
+00:22:46,000 --> 00:22:48,800
+forth.
+
+622
+00:22:46,920 --> 00:22:51,120
+So you have to understand the technology
+
+623
+00:22:48,800 --> 00:22:53,760
+that you're running such that you can
+
+624
+00:22:51,120 --> 00:22:55,160
+use the graph that you're creating. But,
+
+625
+00:22:53,760 --> 00:22:58,640
+you know, you want to add data to the
+
+626
+00:22:55,160 --> 00:23:02,120
+graph, you can add it. The LinkedIn
+
+627
+00:22:58,640 --> 00:23:04,440
+graph in production uses real-time data
+
+628
+00:23:02,120 --> 00:23:07,320
+in exactly this this fashion. It reads
+
+629
+00:23:04,440 --> 00:23:09,520
+data from Kafka feeds, it updates it. If
+
+630
+00:23:07,320 --> 00:23:11,440
+you don't want If you don't believe me,
+
+631
+00:23:09,520 --> 00:23:13,720
+connect with your neighbor, and then
+
+632
+00:23:11,440 --> 00:23:16,440
+figure out how long it takes for that
+
+633
+00:23:13,720 --> 00:23:20,080
+connection to show up in their app.
+
+634
+00:23:16,440 --> 00:23:22,200
+And that's the latency that the
+
+635
+00:23:20,080 --> 00:23:23,920
+uh the the LinkedIn uh graph database
+
+636
+00:23:22,200 --> 00:23:25,880
+has in production. It's about a second,
+
+637
+00:23:23,920 --> 00:23:28,560
+a second and a half. You can always
+
+638
+00:23:25,880 --> 00:23:31,320
+blame it on the uh on the mobile phone
+
+639
+00:23:28,560 --> 00:23:31,320
+and not on me.
+
+640
+00:23:31,920 --> 00:23:34,640
+In summary,
+
+641
+00:23:36,160 --> 00:23:41,000
+your data catalog allows you to define
+
+642
+00:23:38,280 --> 00:23:44,360
+domains, graph types, graph definitions
+
+643
+00:23:41,000 --> 00:23:46,560
+as views. Disjoint if you know, disjoint
+
+644
+00:23:44,360 --> 00:23:50,680
+is the goal such that you avoid the
+
+645
+00:23:46,560 --> 00:23:51,960
+problems of uh contention and uh
+
+646
+00:23:50,680 --> 00:23:53,760
+um
+
+647
+00:23:51,960 --> 00:23:55,920
+concurrency.
+
+648
+00:23:53,760 --> 00:23:57,600
+We accept change feeds if you can handle
+
+649
+00:23:55,920 --> 00:24:00,080
+it. If your application can handle the
+
+650
+00:23:57,600 --> 00:24:04,680
+change feed, you should have it. And
+
+651
+00:24:00,080 --> 00:24:06,960
+these are not systems that you have to
+
+652
+00:24:04,680 --> 00:24:08,440
+wait for. These are methodologies that
+
+653
+00:24:06,960 --> 00:24:10,160
+you can use today with whatever
+
+654
+00:24:08,440 --> 00:24:12,760
+technology you have.
+
+655
+00:24:10,160 --> 00:24:12,760
+That's the end of it.
+
+656
+00:24:13,461 --> 00:24:15,481
+>> [applause]
+
+657
+00:24:18,701 --> 00:24:22,400
+[applause]
+
+658
+00:24:20,040 --> 00:24:23,560
+>> Uh we've got time for questions.
+
+659
+00:24:22,400 --> 00:24:25,840
+And we have a mic in the back, too,
+
+660
+00:24:23,560 --> 00:24:25,840
+Aaron.
+
+661
+00:24:33,960 --> 00:24:36,760
+>> Wait. So, the
+
+662
+00:24:37,200 --> 00:24:41,400
+Do you have issues with scaling this
+
+663
+00:24:39,200 --> 00:24:43,240
+approach when you have a very, very
+
+664
+00:24:41,400 --> 00:24:45,040
+large log? So, if you're trying to do
+
+665
+00:24:43,240 --> 00:24:47,200
+everything in a log-based form and you
+
+666
+00:24:45,040 --> 00:24:48,640
+need to look back 10 years, 20 years,
+
+667
+00:24:47,200 --> 00:24:50,400
+you're then potentially playing forward
+
+668
+00:24:48,640 --> 00:24:52,800
+20 years worth of changes to the graph.
+
+669
+00:24:50,400 --> 00:24:54,880
+How does that hold up?
+
+670
+00:24:52,800 --> 00:24:57,160
+>> I mean, it it scales with the time if
+
+671
+00:24:54,880 --> 00:24:58,840
+you need to keep all of it in memory. If
+
+672
+00:24:57,160 --> 00:25:00,800
+you don't want to keep all of it in
+
+673
+00:24:58,840 --> 00:25:03,640
+memory, then you have to to read and
+
+674
+00:25:00,800 --> 00:25:06,160
+aggregate over time, or you need to read
+
+675
+00:25:03,640 --> 00:25:08,040
+the data for a certain interval of time.
+
+676
+00:25:06,160 --> 00:25:09,360
+So, that you don't always need uh the
+
+677
+00:25:08,040 --> 00:25:10,800
+entire data. So,
+
+678
+00:25:09,360 --> 00:25:12,440
+you have to design your algorithm in a
+
+679
+00:25:10,800 --> 00:25:14,920
+way that's uh that's workable, right?
+
+680
+00:25:12,440 --> 00:25:17,200
+So, it's a log. What I didn't talk about
+
+681
+00:25:14,920 --> 00:25:19,200
+is how do you compact this? How do you,
+
+682
+00:25:17,200 --> 00:25:21,160
+you know, keep the right window of it if
+
+683
+00:25:19,200 --> 00:25:22,960
+it grows? But, yeah, you know, that that
+
+684
+00:25:21,160 --> 00:25:24,000
+problem exists.
+
+685
+00:25:22,960 --> 00:25:27,480
+Uh
+
+686
+00:25:24,000 --> 00:25:29,280
+any data that you have in RAM and you
+
+687
+00:25:27,480 --> 00:25:31,240
+write a lot,
+
+688
+00:25:29,280 --> 00:25:32,280
+it becomes a problem in a log system.
+
+689
+00:25:31,240 --> 00:25:34,640
+So, you have to figure out how to
+
+690
+00:25:32,280 --> 00:25:36,560
+compact it or how to summarize it.
+
+691
+00:25:34,640 --> 00:25:38,600
+So, yeah, that's that's a pattern that
+
+692
+00:25:36,560 --> 00:25:40,560
+you have to deal with. Uh
+
+693
+00:25:38,600 --> 00:25:42,240
+you know, we we can talk about solutions
+
+694
+00:25:40,560 --> 00:25:44,640
+that we had, but compaction and
+
+695
+00:25:42,240 --> 00:25:48,120
+windowing is like in real-time systems
+
+696
+00:25:44,640 --> 00:25:48,120
+is uh is what we used.
+
+697
+00:25:51,520 --> 00:25:54,200
+>> Other questions?
+
+698
+00:25:52,200 --> 00:25:55,920
+>> Or a side key-value store, right? So,
+
+699
+00:25:54,200 --> 00:25:57,720
+you you you figure out which are
+
+700
+00:25:55,920 --> 00:25:59,280
+properties and then you write them and
+
+701
+00:25:57,720 --> 00:26:01,040
+you override them so that such that you
+
+702
+00:25:59,280 --> 00:26:02,640
+don't have to append them to the Yes,
+
+703
+00:26:01,040 --> 00:26:04,800
+Alister.
+
+704
+00:26:02,640 --> 00:26:07,760
+>> Hi Bogdan. Um
+
+705
+00:26:04,800 --> 00:26:11,400
+the views, are these views uh defined in
+
+706
+00:26:07,760 --> 00:26:13,040
+SQL um and updated in SQL, or is there
+
+707
+00:26:11,400 --> 00:26:15,880
+an attempt to actually provide a sort of
+
+708
+00:26:13,040 --> 00:26:18,320
+graph veneer like SQL PGQ?
+
+709
+00:26:15,880 --> 00:26:20,640
+>> All of the above, right? So, if if you
+
+710
+00:26:18,320 --> 00:26:22,880
+if if SQL is the language of choice, you
+
+711
+00:26:20,640 --> 00:26:24,840
+can define them in SQL, right?
+
+712
+00:26:22,880 --> 00:26:26,480
+Uh we I'm I'm not talking about any
+
+713
+00:26:24,840 --> 00:26:28,320
+system that I'm selling.
+
+714
+00:26:26,480 --> 00:26:30,960
+Right? I'm talking about methodologies
+
+715
+00:26:28,320 --> 00:26:34,320
+and systematic uses of uh of this. But,
+
+716
+00:26:30,960 --> 00:26:37,520
+yeah, defining these in in SQL or in KQL
+
+717
+00:26:34,320 --> 00:26:39,280
+if your database is um
+
+718
+00:26:37,520 --> 00:26:40,920
+uh a log-based system, you know, a time
+
+719
+00:26:39,280 --> 00:26:43,760
+series.
+
+720
+00:26:40,920 --> 00:26:46,000
+Any uh any language any database
+
+721
+00:26:43,760 --> 00:26:47,600
+language that has views provides you a
+
+722
+00:26:46,000 --> 00:26:50,040
+methodology to do it.
+
+723
+00:26:47,600 --> 00:26:51,640
+I'm agnostic on that, right?
+
+724
+00:26:50,040 --> 00:26:55,000
+When we're going to release a product,
+
+725
+00:26:51,640 --> 00:26:56,040
+we will create a, you know, a manual for
+
+726
+00:26:55,000 --> 00:26:58,520
+it and I suppose it's going to be a
+
+727
+00:26:56,040 --> 00:27:01,360
+sequel based.
+
+728
+00:26:58,520 --> 00:27:01,360
+>> Yeah, thanks.
+
+729
+00:27:03,720 --> 00:27:06,560
+>> Any questions?
+
+730
+00:27:05,400 --> 00:27:08,880
+Okay. Thank you very much for
+
+731
+00:27:06,560 --> 00:27:08,880
+>> Thank you.
+

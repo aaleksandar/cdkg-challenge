@@ -30,6 +30,33 @@ RESULTS_CAP = 200
 SOURCES_CAP = 25
 DESCRIPTION_PREVIEW = 300
 
+# The generated Cypher runs against a read-only database, but read-only still
+# reads: LOAD FROM returns any file the process can open, and CALL reaches
+# functions beyond the graph. A question is a read of the graph, so a query
+# may only match, filter and return. Words inside string literals are ignored.
+_ALLOWED_START = re.compile(r"^\s*(MATCH|OPTIONAL\s+MATCH|WITH|UNWIND|RETURN)\b", re.I)
+_FORBIDDEN = re.compile(
+    r"\b(LOAD|COPY|EXPORT|IMPORT|ATTACH|DETACH|INSTALL|CALL|CREATE|MERGE|SET|DELETE|"
+    r"REMOVE|DROP|ALTER|USE|BEGIN|COMMIT|ROLLBACK|CHECKPOINT|PROJECT)\b", re.I)
+_STRINGS = re.compile(r"'(?:[^'\\]|\\.)*'|\"(?:[^\"\\]|\\.)*\"|`[^`]*`")
+
+
+class RefusedQuery(ValueError):
+    """Generated Cypher that does more than read the graph."""
+
+
+def guard_cypher(query: str) -> str:
+    """The query, if it only reads the graph; RefusedQuery otherwise."""
+    code = _STRINGS.sub("''", query).strip().rstrip(";")
+    if ";" in code:
+        raise RefusedQuery("more than one statement")
+    if not _ALLOWED_START.match(code):
+        raise RefusedQuery("a query must start with MATCH, WITH, UNWIND or RETURN")
+    found = _FORBIDDEN.search(code)
+    if found:
+        raise RefusedQuery(f"{found.group(1).upper()} is not allowed in a question's query")
+    return query.strip().rstrip(";")
+
 
 def _client():
     """The generated BAML client, which lives beside this module and is gitignored.
@@ -184,8 +211,8 @@ class GraphRAG:
         self.baml_schema = get_schema_baml(self.conn)
 
     def execute_query(self, cypher: str) -> tuple[list[str], list[list]]:
-        """Run the generated Cypher; the columns and the distinct rows."""
-        response = self.conn.execute(cypher)
+        """Run the generated Cypher, if it only reads; the columns and the distinct rows."""
+        response = self.conn.execute(guard_cypher(cypher))
         columns = list(response.get_column_names())  # type: ignore
         rows = []
         seen = set()

@@ -131,16 +131,15 @@ def ingest_new(video_ids: list[str]) -> None:
             log.info("Not auto-ingesting %s: AUTO_INGEST_NEW is off", video_ids)
         return
 
-    from .pipeline.runner import run_pipeline
+    # Queued, not run here: the worker is the one thread that writes the CSV,
+    # entities.json and the graph, and a run on this thread could overlap it.
+    from .pipeline.runner import enqueue
 
     for video_id, reason in _ingestable(video_ids):
         if reason:
             log.info("Not auto-ingesting %s: %s", video_id, reason)
             continue
-        try:
-            run_pipeline(video_id)
-        except Exception:
-            log.exception("Auto-ingest failed for %s", video_id)
+        enqueue(video_id)
 
 
 def _ingestable(video_ids: list[str]) -> list[tuple[str, str | None]]:
@@ -166,7 +165,11 @@ def _ingestable(video_ids: list[str]) -> list[tuple[str, str | None]]:
     verdicts = []
     for video_id in video_ids:
         video = inventory.get(video_id, {})
-        if reconcile.is_short_duration(video.get("duration")):
+        if not video.get("duration"):
+            # Unknown is not "long enough": every Short that reached the graph
+            # arrived without a running time. A talk waits for a click instead.
+            verdicts.append((video_id, "its running time is not known yet"))
+        elif reconcile.is_short_duration(video["duration"]):
             verdicts.append((video_id, f"a Short or teaser ({video['duration']}s)"))
         elif video.get("live_status") in youtube.UNSETTLED:
             verdicts.append((video_id, "a premiere that has not finished airing"))
