@@ -1,0 +1,3416 @@
+1
+00:00:03,520 --> 00:00:09,120
+okay well welcome everyone uh we're
+
+2
+00:00:06,319 --> 00:00:12,000
+still at uh connected data London's
+
+3
+00:00:09,120 --> 00:00:14,639
+Meetup our first event for the year uh
+
+4
+00:00:12,000 --> 00:00:17,439
+dedicated to graph machine learning and
+
+5
+00:00:14,639 --> 00:00:19,560
+data science and it's the second uh talk
+
+6
+00:00:17,439 --> 00:00:21,960
+of the evening or morning depending on
+
+7
+00:00:19,560 --> 00:00:24,160
+where you are uh either way the one
+
+8
+00:00:21,960 --> 00:00:27,679
+thing in certain is that we have uh Bob
+
+9
+00:00:24,160 --> 00:00:30,400
+Fout with us tonight from Semite
+
+10
+00:00:27,679 --> 00:00:32,320
+Technologies uh founder uh Semite
+
+11
+00:00:30,400 --> 00:00:36,280
+Technologies and he's going to be
+
+12
+00:00:32,320 --> 00:00:39,879
+talking to us about W8 the vector search
+
+13
+00:00:36,280 --> 00:00:41,719
+engine uh uh promoted and created by
+
+14
+00:00:39,879 --> 00:00:44,480
+Semite Technologies I should also
+
+15
+00:00:41,719 --> 00:00:47,800
+mention here that uh Semite Technologies
+
+16
+00:00:44,480 --> 00:00:51,879
+is the sponsor for today's event so big
+
+17
+00:00:47,800 --> 00:00:54,280
+thanks and hope yeah hope you enjoy so
+
+18
+00:00:51,879 --> 00:00:57,440
+the floor is yours fantastic thank you
+
+19
+00:00:54,280 --> 00:01:01,039
+so much uh George I'm looking forward to
+
+20
+00:00:57,440 --> 00:01:02,920
+uh to presenting to everybody here so um
+
+21
+00:01:01,039 --> 00:01:05,720
+so first of all a quick introduction so
+
+22
+00:01:02,920 --> 00:01:07,880
+my name is uh Bob F I'm I'm based out of
+
+23
+00:01:05,720 --> 00:01:10,479
+Amsterdam and I'm one of the of the two
+
+24
+00:01:07,880 --> 00:01:13,280
+co-founders of of Semite Technologies
+
+25
+00:01:10,479 --> 00:01:17,200
+and we are indeed responsible for for
+
+26
+00:01:13,280 --> 00:01:20,200
+we8 for the we8 vector search engine um
+
+27
+00:01:17,200 --> 00:01:23,320
+what I'm going to do today is I'm gonna
+
+28
+00:01:20,200 --> 00:01:25,360
+tell a little bit about um uh the vector
+
+29
+00:01:23,320 --> 00:01:26,840
+search like what is it what what are
+
+30
+00:01:25,360 --> 00:01:29,759
+vectors how do you deal with these
+
+31
+00:01:26,840 --> 00:01:31,640
+things and what problems do they solve
+
+32
+00:01:29,759 --> 00:01:33,360
+then then I'll slowly move up in the
+
+33
+00:01:31,640 --> 00:01:36,600
+stack if you will to talk a little bit
+
+34
+00:01:33,360 --> 00:01:38,280
+more about the uh the problems that uh
+
+35
+00:01:36,600 --> 00:01:40,079
+that we can solve with with the vector
+
+36
+00:01:38,280 --> 00:01:42,680
+search engine and I'm going to talk a
+
+37
+00:01:40,079 --> 00:01:45,200
+little bit also about about use cases
+
+38
+00:01:42,680 --> 00:01:46,799
+and oh and of course I should not forget
+
+39
+00:01:45,200 --> 00:01:48,840
+to mention that I'm going to give you a
+
+40
+00:01:46,799 --> 00:01:52,719
+demo of course as well so that you can
+
+41
+00:01:48,840 --> 00:01:54,920
+see it in uh uh in action so that's my
+
+42
+00:01:52,719 --> 00:01:58,320
+that's my goal for today so we start low
+
+43
+00:01:54,920 --> 00:02:01,200
+level and then we slowly work our way up
+
+44
+00:01:58,320 --> 00:02:03,880
+um sometimes people want to you know
+
+45
+00:02:01,200 --> 00:02:05,200
+know even more you know deeper level
+
+46
+00:02:03,880 --> 00:02:06,719
+stuff and then I would like to also
+
+47
+00:02:05,200 --> 00:02:08,319
+invite you at the end to go to our
+
+48
+00:02:06,719 --> 00:02:10,759
+website and you can read all about it
+
+49
+00:02:08,319 --> 00:02:14,160
+you can go drill into the nitty-gritty
+
+50
+00:02:10,759 --> 00:02:16,080
+details or you can be more um um uh if
+
+51
+00:02:14,160 --> 00:02:18,800
+you want to be more concrete about how
+
+52
+00:02:16,080 --> 00:02:23,200
+how our companies use we it you can all
+
+53
+00:02:18,800 --> 00:02:24,680
+find that um also on our website so uh
+
+54
+00:02:23,200 --> 00:02:27,879
+now I just introduce what we're going to
+
+55
+00:02:24,680 --> 00:02:30,920
+talk about so first about uh weate so so
+
+56
+00:02:27,879 --> 00:02:33,200
+weate has a focus on uh uh on it's
+
+57
+00:02:30,920 --> 00:02:35,640
+called the AI based Vector search engine
+
+58
+00:02:33,200 --> 00:02:38,680
+and it has to do with that that machine
+
+59
+00:02:35,640 --> 00:02:42,040
+learning uh uh models they output uh
+
+60
+00:02:38,680 --> 00:02:43,560
+they output vectors and one of the cool
+
+61
+00:02:42,040 --> 00:02:45,159
+things that you can do with vectors or
+
+62
+00:02:43,560 --> 00:02:47,720
+actually actually one of the problems
+
+63
+00:02:45,159 --> 00:02:51,360
+that we have in in data sets is that if
+
+64
+00:02:47,720 --> 00:02:54,080
+we store data in in databases or in data
+
+65
+00:02:51,360 --> 00:02:56,159
+warehouses or wherever we store them um
+
+66
+00:02:54,080 --> 00:02:59,319
+then the way to retrieve them is that or
+
+67
+00:02:56,159 --> 00:03:01,319
+we need to know exactly where they are
+
+68
+00:02:59,319 --> 00:03:05,239
+um located so for example we need to
+
+69
+00:03:01,319 --> 00:03:07,959
+have a unique identifier or um uh uh we
+
+70
+00:03:05,239 --> 00:03:10,799
+need to have a um uh something else to
+
+71
+00:03:07,959 --> 00:03:12,440
+retrieve them on or um we need to have a
+
+72
+00:03:10,799 --> 00:03:15,720
+keyword that we search for and we need
+
+73
+00:03:12,440 --> 00:03:17,319
+to know the exact keyword so for example
+
+74
+00:03:15,720 --> 00:03:20,080
+uh I like to give the example that if
+
+75
+00:03:17,319 --> 00:03:22,840
+you have a a data object that says the
+
+76
+00:03:20,080 --> 00:03:24,840
+Eiffel Tower in Paris then if you store
+
+77
+00:03:22,840 --> 00:03:26,280
+that in a database or in a search engine
+
+78
+00:03:24,840 --> 00:03:30,200
+you you the only way that you really can
+
+79
+00:03:26,280 --> 00:03:33,360
+find it is by searching for um uh for
+
+80
+00:03:30,200 --> 00:03:35,840
+ifall for Tower or for Paris but thanks
+
+81
+00:03:33,360 --> 00:03:37,400
+to these machine learning models and a
+
+82
+00:03:35,840 --> 00:03:39,480
+effect search engine like weage you can
+
+83
+00:03:37,400 --> 00:03:42,959
+also retrieve these documents for
+
+84
+00:03:39,480 --> 00:03:44,920
+example by searching for um uh landmarks
+
+85
+00:03:42,959 --> 00:03:47,200
+in Paris and I'm going to talk a little
+
+86
+00:03:44,920 --> 00:03:48,959
+bit about how that works so if you go
+
+87
+00:03:47,200 --> 00:03:50,720
+like vectors I never heard of vectors I
+
+88
+00:03:48,959 --> 00:03:52,519
+never seen vectors I'm just going to
+
+89
+00:03:50,720 --> 00:03:54,599
+give you just a quick overview like what
+
+90
+00:03:52,519 --> 00:03:56,640
+they are and what they do and I will
+
+91
+00:03:54,599 --> 00:04:00,319
+also talk about why I believe that this
+
+92
+00:03:56,640 --> 00:04:04,040
+is the um the future of of search and
+
+93
+00:04:00,319 --> 00:04:06,360
+how we how we store our data so we
+
+94
+00:04:04,040 --> 00:04:10,680
+always like to internally take a the
+
+95
+00:04:06,360 --> 00:04:14,519
+example of wine um my colleague Lara um
+
+96
+00:04:10,680 --> 00:04:16,560
+wrote a very nice article um or or a
+
+97
+00:04:14,519 --> 00:04:19,120
+blog post about outlining how she's
+
+98
+00:04:16,560 --> 00:04:22,280
+actually working with a wine data set in
+
+99
+00:04:19,120 --> 00:04:24,240
+in wou and so let's say say that we have
+
+100
+00:04:22,280 --> 00:04:26,600
+a data object right that we see here and
+
+101
+00:04:24,240 --> 00:04:29,440
+this is the Json object but even if you
+
+102
+00:04:26,600 --> 00:04:31,000
+are um uh if you if you can't read the
+
+103
+00:04:29,440 --> 00:04:33,320
+Jason I think this speaks for itself
+
+104
+00:04:31,000 --> 00:04:36,000
+right so this is a data object and then
+
+105
+00:04:33,320 --> 00:04:37,560
+we see a wine which is a Chardon and
+
+106
+00:04:36,000 --> 00:04:40,160
+somewhere in the description it says
+
+107
+00:04:37,560 --> 00:04:41,960
+that it's good with fish so in a
+
+108
+00:04:40,160 --> 00:04:43,560
+traditional search engine if we want to
+
+109
+00:04:41,960 --> 00:04:46,360
+or in a traditional database if we want
+
+110
+00:04:43,560 --> 00:04:49,639
+to retrieve this and we search for wine
+
+111
+00:04:46,360 --> 00:04:52,039
+for seafood then no it will not find the
+
+112
+00:04:49,639 --> 00:04:54,160
+wine or it will not find any products or
+
+113
+00:04:52,039 --> 00:04:55,600
+for that matter any data objects uh
+
+114
+00:04:54,160 --> 00:04:58,039
+because as you can see that combination
+
+115
+00:04:55,600 --> 00:05:01,440
+wine for seafood or even the word
+
+116
+00:04:58,039 --> 00:05:03,880
+Seafood um uh or the word wine is not in
+
+117
+00:05:01,440 --> 00:05:05,479
+the data set so that's why you can't
+
+118
+00:05:03,880 --> 00:05:07,160
+find it so you need to somehow do
+
+119
+00:05:05,479 --> 00:05:11,240
+something to retrieve that document from
+
+120
+00:05:07,160 --> 00:05:13,080
+the database however if you look at we8
+
+121
+00:05:11,240 --> 00:05:15,280
+and you search with wine for seafood you
+
+122
+00:05:13,080 --> 00:05:18,199
+will actually find this data object
+
+123
+00:05:15,280 --> 00:05:22,759
+because um uh uh the we thanks to the
+
+124
+00:05:18,199 --> 00:05:24,880
+models weate knows that um uh uh shardon
+
+125
+00:05:22,759 --> 00:05:28,080
+is a form of wine and fish is a type of
+
+126
+00:05:24,880 --> 00:05:30,319
+SE so that's how you can find better
+
+127
+00:05:28,080 --> 00:05:33,680
+results and in your data set and it's
+
+128
+00:05:30,319 --> 00:05:36,440
+even estimated that um 80% of data that
+
+129
+00:05:33,680 --> 00:05:39,840
+we deal with on a day-to-day basis is
+
+130
+00:05:36,440 --> 00:05:41,600
+actually um unstructured data so this
+
+131
+00:05:39,840 --> 00:05:43,319
+and what we mean with unstructured data
+
+132
+00:05:41,600 --> 00:05:45,479
+is that there's not a clear structure
+
+133
+00:05:43,319 --> 00:05:47,639
+that the machine can work with so let's
+
+134
+00:05:45,479 --> 00:05:49,919
+say for example if you would work with a
+
+135
+00:05:47,639 --> 00:05:52,400
+bank transaction you could say the
+
+136
+00:05:49,919 --> 00:05:55,520
+amount of the transaction or the
+
+137
+00:05:52,400 --> 00:05:59,360
+timestamp of the transaction is very
+
+138
+00:05:55,520 --> 00:06:01,160
+structured but the description of the uh
+
+139
+00:05:59,360 --> 00:06:03,000
+uh the the transaction is a form of
+
+140
+00:06:01,160 --> 00:06:04,600
+unstructured data and often in
+
+141
+00:06:03,000 --> 00:06:07,400
+unstructured data we not only look at
+
+142
+00:06:04,600 --> 00:06:09,199
+text but we also look at images audio or
+
+143
+00:06:07,400 --> 00:06:12,479
+video and those kind of things something
+
+144
+00:06:09,199 --> 00:06:15,680
+we will say about we'll look at as well
+
+145
+00:06:12,479 --> 00:06:18,960
+so I uh or we I should say always like
+
+146
+00:06:15,680 --> 00:06:21,000
+to take um Google search as an example
+
+147
+00:06:18,960 --> 00:06:23,080
+because sometimes people you know they
+
+148
+00:06:21,000 --> 00:06:25,240
+they ask us they say like Okay sounds
+
+149
+00:06:23,080 --> 00:06:28,080
+very fancy these Vector search engines
+
+150
+00:06:25,240 --> 00:06:29,919
+but what is it who uses a vector search
+
+151
+00:06:28,080 --> 00:06:31,880
+engine now and the answer is very simple
+
+152
+00:06:29,919 --> 00:06:34,440
+the famous Vector search engine is
+
+153
+00:06:31,880 --> 00:06:37,360
+Google Search right so if you search on
+
+154
+00:06:34,440 --> 00:06:40,759
+Google like what color wine is shardon a
+
+155
+00:06:37,360 --> 00:06:44,240
+then the query is relatively abstract um
+
+156
+00:06:40,759 --> 00:06:48,599
+uh uh the question is like how did fi
+
+157
+00:06:44,240 --> 00:06:50,120
+how did we8 find this note in the um uh
+
+158
+00:06:48,599 --> 00:06:52,280
+in the knowledge graph we're going to
+
+159
+00:06:50,120 --> 00:06:55,759
+talk about graph part later but how did
+
+160
+00:06:52,280 --> 00:06:57,199
+they find this note um and then of
+
+161
+00:06:55,759 --> 00:06:59,680
+course the big question is how can you
+
+162
+00:06:57,199 --> 00:07:02,440
+do that with your own data and how can
+
+163
+00:06:59,680 --> 00:07:04,120
+you do it so fast and that was the core
+
+164
+00:07:02,440 --> 00:07:06,280
+those were the core two questions that
+
+165
+00:07:04,120 --> 00:07:07,919
+we wanted to uh solve with we and the
+
+166
+00:07:06,280 --> 00:07:09,680
+problems that we wanted to solve we
+
+167
+00:07:07,919 --> 00:07:13,440
+wanted to make similar technology
+
+168
+00:07:09,680 --> 00:07:14,680
+available for businesses or or or or any
+
+169
+00:07:13,440 --> 00:07:17,280
+other type of
+
+170
+00:07:14,680 --> 00:07:20,639
+user that they could create these kind
+
+171
+00:07:17,280 --> 00:07:23,960
+of solutions with their own data now of
+
+172
+00:07:20,639 --> 00:07:25,440
+course um um if we look at Google search
+
+173
+00:07:23,960 --> 00:07:27,360
+you have a search bar where you get
+
+174
+00:07:25,440 --> 00:07:29,720
+search results and with these kinds of
+
+175
+00:07:27,360 --> 00:07:31,039
+search engines of course we don't know
+
+176
+00:07:29,720 --> 00:07:33,039
+how people want to use them so what you
+
+177
+00:07:31,039 --> 00:07:34,479
+will see also with the use case you will
+
+178
+00:07:33,039 --> 00:07:37,080
+see that people use them in different
+
+179
+00:07:34,479 --> 00:07:39,919
+ways than only working with a search bar
+
+180
+00:07:37,080 --> 00:07:41,639
+so for that reason weate ends at the API
+
+181
+00:07:39,919 --> 00:07:44,520
+level the demo that I'm going to give
+
+182
+00:07:41,639 --> 00:07:46,159
+you is also on uh until the API level
+
+183
+00:07:44,520 --> 00:07:49,120
+but the big upside of that of course is
+
+184
+00:07:46,159 --> 00:07:52,400
+that you can integrate that API um into
+
+185
+00:07:49,120 --> 00:07:54,360
+any application that you have so again
+
+186
+00:07:52,400 --> 00:07:56,520
+so this is the question I ask how can we
+
+187
+00:07:54,360 --> 00:08:00,039
+do that in an easy fast secure and
+
+188
+00:07:56,520 --> 00:08:02,599
+scalable way and I addressed the the
+
+189
+00:08:00,039 --> 00:08:06,240
+The Fast and the scalable but for easy
+
+190
+00:08:02,599 --> 00:08:08,280
+and secure um uh when it comes to easy
+
+191
+00:08:06,240 --> 00:08:11,960
+so we believe we strongly believe also
+
+192
+00:08:08,280 --> 00:08:13,680
+in in in developer ux and and um so that
+
+193
+00:08:11,960 --> 00:08:15,120
+we want to make it easy for people to
+
+194
+00:08:13,680 --> 00:08:18,000
+use these kind of models so what you
+
+195
+00:08:15,120 --> 00:08:20,400
+will see Al in a bits how we hope at
+
+196
+00:08:18,000 --> 00:08:22,240
+least how simple it is to run with it
+
+197
+00:08:20,400 --> 00:08:23,680
+and work with these models even if
+
+198
+00:08:22,240 --> 00:08:25,440
+you're maybe not that knowledgeable
+
+199
+00:08:23,680 --> 00:08:27,560
+about machine learning and what we mean
+
+200
+00:08:25,440 --> 00:08:30,199
+with secure in this context is that we
+
+201
+00:08:27,560 --> 00:08:31,759
+runs everywhere so you can run it uh uh
+
+202
+00:08:30,199 --> 00:08:34,719
+we we have a s frame but you can also
+
+203
+00:08:31,759 --> 00:08:37,039
+run on your own
+
+204
+00:08:34,719 --> 00:08:38,760
+infrastructure so let's look a little
+
+205
+00:08:37,039 --> 00:08:41,360
+bit more at the at the at the at the
+
+206
+00:08:38,760 --> 00:08:43,200
+definition of weate so weate is cloud
+
+207
+00:08:41,360 --> 00:08:45,000
+native so what we mean with that it's
+
+208
+00:08:43,200 --> 00:08:47,480
+it's that with Cloud native we don't
+
+209
+00:08:45,000 --> 00:08:49,040
+mean that it is only SAS but we mean
+
+210
+00:08:47,480 --> 00:08:52,399
+it's ready for the cloud so you can run
+
+211
+00:08:49,040 --> 00:08:55,560
+it everywhere um uh uh on the on the on
+
+212
+00:08:52,399 --> 00:08:57,360
+the public Cloud but we even already see
+
+213
+00:08:55,560 --> 00:08:59,480
+users and customers using it on their
+
+214
+00:08:57,360 --> 00:09:01,560
+private clouds but that they use for for
+
+215
+00:08:59,480 --> 00:09:04,079
+example kubernetes and those kind of
+
+216
+00:09:01,560 --> 00:09:05,680
+things the fact that we this modular is
+
+217
+00:09:04,079 --> 00:09:07,959
+We Believe very important because
+
+218
+00:09:05,680 --> 00:09:09,399
+different use cases need different types
+
+219
+00:09:07,959 --> 00:09:11,959
+of factorizations sometimes you work
+
+220
+00:09:09,399 --> 00:09:13,399
+with text sometimes you work with images
+
+221
+00:09:11,959 --> 00:09:16,959
+sometimes you work with a combination of
+
+222
+00:09:13,399 --> 00:09:19,880
+those so therefore it's modular um uh
+
+223
+00:09:16,959 --> 00:09:22,920
+it's real time or there I say near real
+
+224
+00:09:19,880 --> 00:09:25,399
+time so we try to re um uh present the
+
+225
+00:09:22,920 --> 00:09:27,360
+results to you as fast as possible so
+
+226
+00:09:25,399 --> 00:09:28,800
+the demo that you will see in a bit
+
+227
+00:09:27,360 --> 00:09:31,079
+that's actually running in the US and
+
+228
+00:09:28,800 --> 00:09:33,519
+I'm talking to you from uh from
+
+229
+00:09:31,079 --> 00:09:35,320
+Amsterdam so it needs to travel to the S
+
+230
+00:09:33,519 --> 00:09:37,839
+do the calculations and send it back but
+
+231
+00:09:35,320 --> 00:09:39,920
+you will see that it's relatively fast
+
+232
+00:09:37,839 --> 00:09:42,720
+uh and it's a vector search engine so it
+
+233
+00:09:39,920 --> 00:09:44,640
+really focuses on storing these vectors
+
+234
+00:09:42,720 --> 00:09:46,519
+and searching through these vectors and
+
+235
+00:09:44,640 --> 00:09:48,720
+what's important to mention about we8 is
+
+236
+00:09:46,519 --> 00:09:52,720
+that it not only focuses on these
+
+237
+00:09:48,720 --> 00:09:56,760
+vectors but um uh uh we is a true uh
+
+238
+00:09:52,720 --> 00:09:59,640
+database with create um um uh uh write
+
+239
+00:09:56,760 --> 00:10:01,800
+update and delete uh uh uh fun
+
+240
+00:09:59,640 --> 00:10:03,880
+functionality um allowing you to also
+
+241
+00:10:01,800 --> 00:10:05,880
+store your data objects with your
+
+242
+00:10:03,880 --> 00:10:07,920
+vectors and what do you mean with
+
+243
+00:10:05,880 --> 00:10:09,959
+scaling your machine learning models is
+
+244
+00:10:07,920 --> 00:10:12,399
+the fact that um if you vectorize and
+
+245
+00:10:09,959 --> 00:10:15,480
+store data in V8 you can do that on
+
+246
+00:10:12,399 --> 00:10:17,360
+super large data sets so a little bit
+
+247
+00:10:15,480 --> 00:10:20,440
+about what vectors are for those who do
+
+248
+00:10:17,360 --> 00:10:22,800
+not know so the easiest way to think
+
+249
+00:10:20,440 --> 00:10:24,160
+about um uh vectors if you look at the
+
+250
+00:10:22,800 --> 00:10:27,480
+at the image on the right hand side if
+
+251
+00:10:24,160 --> 00:10:29,760
+you look for example at text uh vectors
+
+252
+00:10:27,480 --> 00:10:33,560
+is that it's it functions like a space
+
+253
+00:10:29,760 --> 00:10:36,000
+so a vector is a you could imagine it to
+
+254
+00:10:33,560 --> 00:10:39,600
+um uh um being coordinates to place
+
+255
+00:10:36,000 --> 00:10:41,839
+something into space often uh many more
+
+256
+00:10:39,600 --> 00:10:43,720
+coordinates than just three but for this
+
+257
+00:10:41,839 --> 00:10:46,240
+example we're just going to work with
+
+258
+00:10:43,720 --> 00:10:47,519
+well three-ish in this case but the
+
+259
+00:10:46,240 --> 00:10:49,320
+thing is what the machine learning model
+
+260
+00:10:47,519 --> 00:10:51,279
+does is that it tries to organize that
+
+261
+00:10:49,320 --> 00:10:53,360
+data closely to how it relates to each
+
+262
+00:10:51,279 --> 00:10:55,079
+other so for example if you see your
+
+263
+00:10:53,360 --> 00:10:56,959
+apple and banana they're somehow related
+
+264
+00:10:55,079 --> 00:10:58,279
+to each other and beer and wine are
+
+265
+00:10:56,959 --> 00:10:59,920
+somewhere related to each other but for
+
+266
+00:10:58,279 --> 00:11:02,959
+example Apple
+
+267
+00:10:59,920 --> 00:11:05,639
+and meat well then um uh they might not
+
+268
+00:11:02,959 --> 00:11:07,440
+be related to each other or or wine and
+
+269
+00:11:05,639 --> 00:11:09,200
+fish might be more closely related
+
+270
+00:11:07,440 --> 00:11:13,200
+however the model is trained that is how
+
+271
+00:11:09,200 --> 00:11:16,279
+the data is structured so
+
+272
+00:11:13,200 --> 00:11:18,519
+um what we can do so we have multiple
+
+273
+00:11:16,279 --> 00:11:20,839
+types of models weate but we have for
+
+274
+00:11:18,519 --> 00:11:22,880
+example one module that we mostly use
+
+275
+00:11:20,839 --> 00:11:25,079
+for classification that is trained with
+
+276
+00:11:22,880 --> 00:11:27,040
+something called uh F text which
+
+277
+00:11:25,079 --> 00:11:30,160
+organizes all these individual
+
+278
+00:11:27,040 --> 00:11:33,320
+words um and now what happens is that
+
+279
+00:11:30,160 --> 00:11:35,079
+the moment that you store a data object
+
+280
+00:11:33,320 --> 00:11:38,720
+as you see here for example the kov Run
+
+281
+00:11:35,079 --> 00:11:42,399
+2005 Shard um the model tries to
+
+282
+00:11:38,720 --> 00:11:44,279
+determine a new Vector position for this
+
+283
+00:11:42,399 --> 00:11:47,680
+uh data object and what you can see here
+
+284
+00:11:44,279 --> 00:11:49,959
+in green this is how it places it in the
+
+285
+00:11:47,680 --> 00:11:52,320
+in the vector space so now if we start
+
+286
+00:11:49,959 --> 00:11:54,160
+to search for this data object we don't
+
+287
+00:11:52,320 --> 00:11:56,959
+need to make an exact match but we look
+
+288
+00:11:54,160 --> 00:11:58,880
+for things that are in the vicinity so
+
+289
+00:11:56,959 --> 00:11:59,959
+as you see here that with this Orange
+
+290
+00:11:58,880 --> 00:12:03,079
+bul
+
+291
+00:11:59,959 --> 00:12:05,440
+and we search for wine that fits with
+
+292
+00:12:03,079 --> 00:12:07,440
+with a seafood dish it does not
+
+293
+00:12:05,440 --> 00:12:09,560
+literally have to find these words or
+
+294
+00:12:07,440 --> 00:12:12,079
+these Concepts it can just find it in
+
+295
+00:12:09,560 --> 00:12:15,519
+the uh vicinity of the or the
+
+296
+00:12:12,079 --> 00:12:18,560
+neighborhood and this is in a this is in
+
+297
+00:12:15,519 --> 00:12:20,720
+a nutshell how these um uh how these
+
+298
+00:12:18,560 --> 00:12:22,680
+models work so regardless if you talk
+
+299
+00:12:20,720 --> 00:12:24,600
+about images and there also of course
+
+300
+00:12:22,680 --> 00:12:27,360
+different types of modules and Under The
+
+301
+00:12:24,600 --> 00:12:30,040
+Hoot um uh they work differently and
+
+302
+00:12:27,360 --> 00:12:32,120
+they factorize differently but the point
+
+303
+00:12:30,040 --> 00:12:34,079
+uh that I find important to get across
+
+304
+00:12:32,120 --> 00:12:35,680
+is that you know that what these models
+
+305
+00:12:34,079 --> 00:12:38,399
+do different than traditional data
+
+306
+00:12:35,680 --> 00:12:42,160
+sources is that they try to organize the
+
+307
+00:12:38,399 --> 00:12:44,760
+data in a in a in a
+
+308
+00:12:42,160 --> 00:12:47,040
+space uh so what we do with rate is that
+
+309
+00:12:44,760 --> 00:12:48,440
+we say well we have the the pre-trained
+
+310
+00:12:47,040 --> 00:12:50,079
+machine learning models that you can
+
+311
+00:12:48,440 --> 00:12:54,040
+have for example
+
+312
+00:12:50,079 --> 00:12:56,760
+NLP you can add your own data which or
+
+313
+00:12:54,040 --> 00:12:59,519
+automatically gets uh factorized by a
+
+314
+00:12:56,760 --> 00:13:01,079
+module or if you're a data science and
+
+315
+00:12:59,519 --> 00:13:03,199
+you want to do your own vectorization
+
+316
+00:13:01,079 --> 00:13:05,560
+and Stor that's also possible you can
+
+317
+00:13:03,199 --> 00:13:08,680
+add your own data and now you can start
+
+318
+00:13:05,560 --> 00:13:11,079
+searching it and that um uh results in
+
+319
+00:13:08,680 --> 00:13:13,639
+in weit being the search engine that
+
+320
+00:13:11,079 --> 00:13:16,639
+we're talking about today
+
+321
+00:13:13,639 --> 00:13:20,000
+so we're now going one step higher so
+
+322
+00:13:16,639 --> 00:13:22,000
+now we know how a how a effective search
+
+323
+00:13:20,000 --> 00:13:24,360
+engine works but now of course the big
+
+324
+00:13:22,000 --> 00:13:26,000
+question is so what can you do with it
+
+325
+00:13:24,360 --> 00:13:28,480
+and what kind of functionalities that it
+
+326
+00:13:26,000 --> 00:13:30,680
+have now and what we see in use cases
+
+327
+00:13:28,480 --> 00:13:34,760
+with v is that the core two
+
+328
+00:13:30,680 --> 00:13:36,760
+functionalities are around search and
+
+329
+00:13:34,760 --> 00:13:39,519
+Discovery so that means that it becomes
+
+330
+00:13:36,760 --> 00:13:43,160
+easier to for example find products find
+
+331
+00:13:39,519 --> 00:13:45,920
+line items find emails find tickets you
+
+332
+00:13:43,160 --> 00:13:48,600
+name it anything that's a data object
+
+333
+00:13:45,920 --> 00:13:51,120
+but also classification that comes out
+
+334
+00:13:48,600 --> 00:13:53,199
+of the box with vv8 so what we the use
+
+335
+00:13:51,120 --> 00:13:55,680
+case we will look at at a bit has a bit
+
+336
+00:13:53,199 --> 00:13:57,120
+a little bit of combination of both and
+
+337
+00:13:55,680 --> 00:13:59,120
+what we mean with
+
+338
+00:13:57,120 --> 00:14:02,279
+classification is that the graph like
+
+339
+00:13:59,120 --> 00:14:05,320
+model that uh wef has you can also
+
+340
+00:14:02,279 --> 00:14:08,839
+automatically make relations in the uh
+
+341
+00:14:05,320 --> 00:14:11,560
+in the graph model um then uh about the
+
+342
+00:14:08,839 --> 00:14:13,800
+core features just as a Recaps solation
+
+343
+00:14:11,560 --> 00:14:15,720
+so those are the modules and we keep
+
+344
+00:14:13,800 --> 00:14:19,199
+just extending modules thrwing modules
+
+345
+00:14:15,720 --> 00:14:21,320
+out there these modules are for for uh
+
+346
+00:14:19,199 --> 00:14:23,759
+uh natural language processing cases
+
+347
+00:14:21,320 --> 00:14:26,920
+they are for for image recognition we're
+
+348
+00:14:23,759 --> 00:14:29,399
+even looking at modules related to uh uh
+
+349
+00:14:26,920 --> 00:14:31,120
+a gene vectorization everything that you
+
+350
+00:14:29,399 --> 00:14:34,320
+can do in VOR search engines we're we're
+
+351
+00:14:31,120 --> 00:14:37,800
+creating modules for this means that we
+
+352
+00:14:34,320 --> 00:14:39,160
+exports any media type so the the demo
+
+353
+00:14:37,800 --> 00:14:41,480
+I'm going to show you is really focusing
+
+354
+00:14:39,160 --> 00:14:45,480
+on text but this also could also be
+
+355
+00:14:41,480 --> 00:14:48,759
+images or um videos and what have you uh
+
+356
+00:14:45,480 --> 00:14:50,600
+weate has a graphik data model so what
+
+357
+00:14:48,759 --> 00:14:52,639
+we we believe that it's easier for the
+
+358
+00:14:50,600 --> 00:14:54,920
+ERS to actually be able to store that
+
+359
+00:14:52,639 --> 00:14:56,560
+data in a graph-like fashion and then
+
+360
+00:14:54,920 --> 00:14:57,880
+search through the notes in the graph
+
+361
+00:14:56,560 --> 00:15:00,279
+that's something that you also will see
+
+362
+00:14:57,880 --> 00:15:02,519
+from my demo
+
+363
+00:15:00,279 --> 00:15:05,880
+and we're focusing on speed and
+
+364
+00:15:02,519 --> 00:15:08,040
+scalability H so the um the the the the
+
+365
+00:15:05,880 --> 00:15:10,959
+one of the of the the goals that we have
+
+366
+00:15:08,040 --> 00:15:14,000
+is um uh as you always say internally is
+
+367
+00:15:10,959 --> 00:15:15,680
+like the inspiration came from from uh
+
+368
+00:15:14,000 --> 00:15:18,759
+from Google search so we want to be able
+
+369
+00:15:15,680 --> 00:15:20,199
+to grow to the sizes of uh uh Google
+
+370
+00:15:18,759 --> 00:15:23,519
+search and we want to be able to do that
+
+371
+00:15:20,199 --> 00:15:24,800
+for any uh data set that you have for
+
+372
+00:15:23,519 --> 00:15:28,560
+example in your
+
+373
+00:15:24,800 --> 00:15:30,920
+organization brings me to the demo so if
+
+374
+00:15:28,560 --> 00:15:32,560
+I go to the demo um I first want to
+
+375
+00:15:30,920 --> 00:15:34,240
+quickly show show you how you can try
+
+376
+00:15:32,560 --> 00:15:37,959
+this out yourself and then from there
+
+377
+00:15:34,240 --> 00:15:39,800
+out I'll I'll I'll um leave in the demo
+
+378
+00:15:37,959 --> 00:15:42,959
+so on our website we have developer
+
+379
+00:15:39,800 --> 00:15:45,240
+section so there you can click on weate
+
+380
+00:15:42,959 --> 00:15:47,040
+and then for the for the um the
+
+381
+00:15:45,240 --> 00:15:48,560
+technology minded people in the audience
+
+382
+00:15:47,040 --> 00:15:50,959
+you can see on the left hand side you
+
+383
+00:15:48,560 --> 00:15:53,560
+can see the whole documentation you can
+
+384
+00:15:50,959 --> 00:15:56,240
+see um tutorials and those kind of
+
+385
+00:15:53,560 --> 00:15:59,399
+things but what is interesting is that
+
+386
+00:15:56,240 --> 00:16:03,000
+um uh the way to query to your data set
+
+387
+00:15:59,399 --> 00:16:06,680
+we use uh graphql and
+
+388
+00:16:03,000 --> 00:16:08,519
+graphql um uh uh has originated with
+
+389
+00:16:06,680 --> 00:16:13,120
+with Facebook it's now part of the Linux
+
+390
+00:16:08,519 --> 00:16:16,040
+foundation and it's a um it's a uh a way
+
+391
+00:16:13,120 --> 00:16:18,720
+of writing graph queries um that's
+
+392
+00:16:16,040 --> 00:16:20,880
+currently being adopted by a lot of
+
+393
+00:16:18,720 --> 00:16:23,480
+people and one of the upsides that comes
+
+394
+00:16:20,880 --> 00:16:25,120
+with that is that it's um uh there are
+
+395
+00:16:23,480 --> 00:16:28,560
+many libraries available that you can
+
+396
+00:16:25,120 --> 00:16:30,120
+adopt also to use on top of we8 but not
+
+397
+00:16:28,560 --> 00:16:32,120
+uh in the the least important to mention
+
+398
+00:16:30,120 --> 00:16:34,079
+is that we did some research also with
+
+399
+00:16:32,120 --> 00:16:36,639
+developers and they said that they very
+
+400
+00:16:34,079 --> 00:16:39,120
+much like uh graphql because it's easy
+
+401
+00:16:36,639 --> 00:16:41,519
+to understand is easy to read so the
+
+402
+00:16:39,120 --> 00:16:44,000
+demo that I'm going to give you is uh in
+
+403
+00:16:41,519 --> 00:16:45,519
+in graphql but I'll promise you if you
+
+404
+00:16:44,000 --> 00:16:47,920
+don't know how to write it you will be
+
+405
+00:16:45,519 --> 00:16:50,839
+able to to read it and to and to
+
+406
+00:16:47,920 --> 00:16:52,639
+understand it so um what you're looking
+
+407
+00:16:50,839 --> 00:16:53,880
+at right now is something that we call
+
+408
+00:16:52,639 --> 00:16:57,720
+the uh the
+
+409
+00:16:53,880 --> 00:17:00,440
+console and uh the console within weate
+
+410
+00:16:57,720 --> 00:17:02,600
+is a way to if you have we you can s
+
+411
+00:17:00,440 --> 00:17:05,039
+easily search through um through your
+
+412
+00:17:02,600 --> 00:17:07,400
+data and one of the things that you can
+
+413
+00:17:05,039 --> 00:17:09,319
+do is that you can type in queries based
+
+414
+00:17:07,400 --> 00:17:11,280
+on your data set and the demo data set
+
+415
+00:17:09,319 --> 00:17:13,120
+that we have available which you can use
+
+416
+00:17:11,280 --> 00:17:15,280
+as well through the documentation
+
+417
+00:17:13,120 --> 00:17:17,360
+contains news articles and news
+
+418
+00:17:15,280 --> 00:17:20,640
+Publications so increase the size a
+
+419
+00:17:17,360 --> 00:17:22,000
+little bit um uh George please let me
+
+420
+00:17:20,640 --> 00:17:23,039
+know if it's too small then I'll
+
+421
+00:17:22,000 --> 00:17:25,319
+increase the
+
+422
+00:17:23,039 --> 00:17:30,400
+size
+
+423
+00:17:25,319 --> 00:17:33,760
+um the uh I think it's okay okay let me
+
+424
+00:17:30,400 --> 00:17:35,960
+get one more soor so the um uh so what
+
+425
+00:17:33,760 --> 00:17:38,080
+we say within we we can well we want to
+
+426
+00:17:35,960 --> 00:17:40,280
+get something out and now we'll look at
+
+427
+00:17:38,080 --> 00:17:42,280
+the class of the of the graph structure
+
+428
+00:17:40,280 --> 00:17:44,200
+that we want to uh get out so we say
+
+429
+00:17:42,280 --> 00:17:46,880
+like well for example we want to get the
+
+430
+00:17:44,200 --> 00:17:49,080
+Articles out and the Articles they have
+
+431
+00:17:46,880 --> 00:17:52,039
+properties so for example an article has
+
+432
+00:17:49,080 --> 00:17:55,120
+a title so this very simple query tells
+
+433
+00:17:52,039 --> 00:17:57,480
+we had okay uh show me all the Articles
+
+434
+00:17:55,120 --> 00:17:59,159
+and show me their titles now nothing
+
+435
+00:17:57,480 --> 00:18:00,840
+fancy is happening here right now we're
+
+436
+00:17:59,159 --> 00:18:03,799
+just retrieving the Articles and the
+
+437
+00:18:00,840 --> 00:18:07,000
+titles from the data set if we say also
+
+438
+00:18:03,799 --> 00:18:08,720
+show me the summary of that article then
+
+439
+00:18:07,000 --> 00:18:11,600
+we see these articles again but then
+
+440
+00:18:08,720 --> 00:18:14,039
+with the summaries included now where it
+
+441
+00:18:11,600 --> 00:18:16,200
+becomes interesting is we going to ask
+
+442
+00:18:14,039 --> 00:18:18,600
+the uh the machine learning model to uh
+
+443
+00:18:16,200 --> 00:18:20,080
+to show its magic if you will so one of
+
+444
+00:18:18,600 --> 00:18:21,039
+the things that we can do is that we can
+
+445
+00:18:20,080 --> 00:18:23,280
+say
+
+446
+00:18:21,039 --> 00:18:25,280
+well I want to have one of the features
+
+447
+00:18:23,280 --> 00:18:28,200
+that weate has is something that we call
+
+448
+00:18:25,280 --> 00:18:30,919
+near text and we can search for concept
+
+449
+00:18:28,200 --> 00:18:34,640
+so let's say that we say well let's look
+
+450
+00:18:30,919 --> 00:18:37,520
+for housing prices and show me the first
+
+451
+00:18:34,640 --> 00:18:40,159
+five results it's the same query but now
+
+452
+00:18:37,520 --> 00:18:43,640
+we will organize the data based on the
+
+453
+00:18:40,159 --> 00:18:45,640
+concepts of housing prices now if I run
+
+454
+00:18:43,640 --> 00:18:47,159
+this query you see that the titles that
+
+455
+00:18:45,640 --> 00:18:50,559
+it sends back fair enough here it says
+
+456
+00:18:47,159 --> 00:18:52,159
+house prices so very closely related but
+
+457
+00:18:50,559 --> 00:18:54,080
+the second one is about five of the
+
+458
+00:18:52,159 --> 00:18:55,960
+world's best sub Burman homes for sale
+
+459
+00:18:54,080 --> 00:18:57,559
+so you see that both the word housing
+
+460
+00:18:55,960 --> 00:18:59,440
+and prices is not in there but it's
+
+461
+00:18:57,559 --> 00:19:01,520
+definitely related to each other
+
+462
+00:18:59,440 --> 00:19:04,559
+and that comes because it does a uh it
+
+463
+00:19:01,520 --> 00:19:07,039
+searches for these uh vicinities in the
+
+464
+00:19:04,559 --> 00:19:08,640
+vicinity of these data objects and one
+
+465
+00:19:07,039 --> 00:19:11,200
+of the things that we can also say with
+
+466
+00:19:08,640 --> 00:19:14,520
+we8 is that we say well we8 tell me how
+
+467
+00:19:11,200 --> 00:19:17,440
+certain are you um of these results so
+
+468
+00:19:14,520 --> 00:19:19,480
+if I I run this query again you see the
+
+469
+00:19:17,440 --> 00:19:21,720
+certainty and and for the techies in the
+
+470
+00:19:19,480 --> 00:19:24,280
+audience the the certainty is related to
+
+471
+00:19:21,720 --> 00:19:26,760
+the distance from the query to the to
+
+472
+00:19:24,280 --> 00:19:28,840
+the data object and here you can see how
+
+473
+00:19:26,760 --> 00:19:30,000
+we had organized this so one of the
+
+474
+00:19:28,840 --> 00:19:32,360
+things that we could do is that we can
+
+475
+00:19:30,000 --> 00:19:35,080
+say well now let's take the limit away
+
+476
+00:19:32,360 --> 00:19:38,919
+but we say well I want you to be at
+
+477
+00:19:35,080 --> 00:19:40,640
+least 70% certain for this query so now
+
+478
+00:19:38,919 --> 00:19:43,720
+run this query again and you see that
+
+479
+00:19:40,640 --> 00:19:46,400
+these two are are returns we even can go
+
+480
+00:19:43,720 --> 00:19:48,880
+a step deeper so we could say like well
+
+481
+00:19:46,400 --> 00:19:53,320
+um uh for example we want to search for
+
+482
+00:19:48,880 --> 00:19:57,480
+housing prices in uh let's see
+
+483
+00:19:53,320 --> 00:19:59,600
+uh yeah so if if you say like um uh show
+
+484
+00:19:57,480 --> 00:20:00,840
+me the housing price in Scandinavia and
+
+485
+00:19:59,600 --> 00:20:03,760
+we we run this
+
+486
+00:20:00,840 --> 00:20:06,840
+query something interesting happens so
+
+487
+00:20:03,760 --> 00:20:09,440
+we see that it returns one result above
+
+488
+00:20:06,840 --> 00:20:11,400
+70% but as you can see in the title
+
+489
+00:20:09,440 --> 00:20:13,480
+there's nothing here related to
+
+490
+00:20:11,400 --> 00:20:15,760
+Scandinavia so let's dig it a little
+
+491
+00:20:13,480 --> 00:20:17,559
+deeper let's look at the summary of the
+
+492
+00:20:15,760 --> 00:20:19,320
+article and let's see what's in the
+
+493
+00:20:17,559 --> 00:20:22,000
+summary of the article so we see
+
+494
+00:20:19,320 --> 00:20:24,679
+research art quality monitoring etc etc
+
+495
+00:20:22,000 --> 00:20:27,280
+better realter organizations let's see
+
+496
+00:20:24,679 --> 00:20:29,520
+if we see something H and here we see
+
+497
+00:20:27,280 --> 00:20:31,919
+that it found a relation
+
+498
+00:20:29,520 --> 00:20:34,480
+with the finish here and that is why it
+
+499
+00:20:31,919 --> 00:20:36,400
+returned that result for housing pric in
+
+500
+00:20:34,480 --> 00:20:39,320
+Scandinavia but one of the things that
+
+501
+00:20:36,400 --> 00:20:41,799
+we can do with um uh with weate is that
+
+502
+00:20:39,320 --> 00:20:45,720
+we can go even a step deeper so we can
+
+503
+00:20:41,799 --> 00:20:48,440
+not only find these notes in the uh in
+
+504
+00:20:45,720 --> 00:20:51,960
+in the graph we can even search inside
+
+505
+00:20:48,440 --> 00:20:54,840
+the notes so let's do that as well let's
+
+506
+00:20:51,960 --> 00:20:57,840
+say uh I'm going to oh I'm going to
+
+507
+00:20:54,840 --> 00:20:58,799
+remove the summary and I'm going to say
+
+508
+00:20:57,840 --> 00:21:01,760
+well we want to do something some
+
+509
+00:20:58,799 --> 00:21:05,400
+question answering so i' say ask based
+
+510
+00:21:01,760 --> 00:21:08,000
+on my data set uh I have a
+
+511
+00:21:05,400 --> 00:21:10,799
+question and the question that I want to
+
+512
+00:21:08,000 --> 00:21:15,799
+ask is uh
+
+513
+00:21:10,799 --> 00:21:20,600
+what's Co effect uh
+
+514
+00:21:15,799 --> 00:21:23,880
+vacine is available so this of course we
+
+515
+00:21:20,600 --> 00:21:25,960
+have news articles um so this is this is
+
+516
+00:21:23,880 --> 00:21:28,159
+probably something about Co in here we
+
+517
+00:21:25,960 --> 00:21:31,440
+can say that we want to find the answer
+
+518
+00:21:28,159 --> 00:21:33,600
+in the summary of the article and then
+
+519
+00:21:31,440 --> 00:21:36,600
+last but not least we want to of course
+
+520
+00:21:33,600 --> 00:21:40,600
+oh see the result as well so that we
+
+521
+00:21:36,600 --> 00:21:43,840
+say uh answer of
+
+522
+00:21:40,600 --> 00:21:45,679
+course oh apologies
+
+523
+00:21:43,840 --> 00:21:47,640
+answer and then we want to see the
+
+524
+00:21:45,679 --> 00:21:49,960
+result so what this query does says like
+
+525
+00:21:47,640 --> 00:21:52,640
+it says like try to find the right note
+
+526
+00:21:49,960 --> 00:21:55,000
+in the graph that is about uh that's
+
+527
+00:21:52,640 --> 00:21:56,559
+should contain the answer what covid
+
+528
+00:21:55,000 --> 00:21:58,799
+vaccine is available and then try to
+
+529
+00:21:56,559 --> 00:22:00,919
+find in that note in the graph in the
+
+530
+00:21:58,799 --> 00:22:03,720
+summary that answer and then of course
+
+531
+00:22:00,919 --> 00:22:06,200
+we want to just see one result so now if
+
+532
+00:22:03,720 --> 00:22:07,760
+I fire off this question it's it's it's
+
+533
+00:22:06,200 --> 00:22:11,240
+searching through the graph and it says
+
+534
+00:22:07,760 --> 00:22:14,360
+well I find the the fiser covid-19 as a
+
+535
+00:22:11,240 --> 00:22:15,760
+result of the vaccine that's available
+
+536
+00:22:14,360 --> 00:22:17,400
+now what the cool thing is is that we
+
+537
+00:22:15,760 --> 00:22:21,159
+can now also introduce the graph
+
+538
+00:22:17,400 --> 00:22:23,880
+relations so we can ask we well uh in
+
+539
+00:22:21,159 --> 00:22:25,720
+which publication was this published so
+
+540
+00:22:23,880 --> 00:22:28,159
+we can say UNP
+
+541
+00:22:25,720 --> 00:22:30,440
+publication and we say show me the name
+
+542
+00:22:28,159 --> 00:22:33,600
+so the exact same query but now we say
+
+543
+00:22:30,440 --> 00:22:36,120
+in which publication was this uh um uh
+
+544
+00:22:33,600 --> 00:22:38,919
+answer found so now if we run that query
+
+545
+00:22:36,120 --> 00:22:41,799
+again it says we found that answer in
+
+546
+00:22:38,919 --> 00:22:43,679
+The Economist but we can even go a step
+
+547
+00:22:41,799 --> 00:22:45,360
+deeper and we can say like well what
+
+548
+00:22:43,679 --> 00:22:50,039
+covid vaccine is available and then we
+
+549
+00:22:45,360 --> 00:22:53,000
+save uh besides for example uh the
+
+550
+00:22:50,039 --> 00:22:55,520
+fizer um uh result so this exact same
+
+551
+00:22:53,000 --> 00:22:58,080
+query but we even narrowed that the
+
+552
+00:22:55,520 --> 00:23:00,240
+question down a little bit further so
+
+553
+00:22:58,080 --> 00:23:03,000
+now if you run this query again we see
+
+554
+00:23:00,240 --> 00:23:06,559
+that it returns Asen and that's also
+
+555
+00:23:03,000 --> 00:23:08,080
+coming from The Economist now this is a
+
+556
+00:23:06,559 --> 00:23:10,039
+combination how you can see how we can
+
+557
+00:23:08,080 --> 00:23:12,080
+search for the graph even go as far as
+
+558
+00:23:10,039 --> 00:23:14,159
+question answering find the notes in the
+
+559
+00:23:12,080 --> 00:23:17,640
+graph and also make relations like for
+
+560
+00:23:14,159 --> 00:23:21,240
+example at the Publications with the um
+
+561
+00:23:17,640 --> 00:23:23,039
+uh uh um uh Economist and this not even
+
+562
+00:23:21,240 --> 00:23:25,760
+goes for like these are like individual
+
+563
+00:23:23,039 --> 00:23:27,720
+words or uh uh smaller words but we can
+
+564
+00:23:25,760 --> 00:23:34,559
+even get like back longer results so we
+
+565
+00:23:27,720 --> 00:23:41,440
+can say for example um uh what to do you
+
+566
+00:23:34,559 --> 00:23:46,520
+have a holiday from the
+
+567
+00:23:41,440 --> 00:23:48,600
+uh let's see from the ro oh and I made a
+
+568
+00:23:46,520 --> 00:23:51,400
+type
+
+569
+00:23:48,600 --> 00:23:54,480
+holiday so what to do when you have a
+
+570
+00:23:51,400 --> 00:23:55,320
+holiday from the Royal blet so let me
+
+571
+00:23:54,480 --> 00:23:57,799
+run this
+
+572
+00:23:55,320 --> 00:24:00,559
+query and then the answer is like you
+
+573
+00:23:57,799 --> 00:24:02,520
+take on a guest appearance with uh other
+
+574
+00:24:00,559 --> 00:24:04,080
+companies and that was published in the
+
+575
+00:24:02,520 --> 00:24:06,679
+international New York Times and now
+
+576
+00:24:04,080 --> 00:24:09,640
+what we can even do one step deeper we
+
+577
+00:24:06,679 --> 00:24:11,840
+can say well show the summar the summary
+
+578
+00:24:09,640 --> 00:24:13,799
+where you found this answer but also
+
+579
+00:24:11,840 --> 00:24:15,880
+show me the start position and the end
+
+580
+00:24:13,799 --> 00:24:19,000
+position of this answer so now if I run
+
+581
+00:24:15,880 --> 00:24:21,640
+this query again um you can see that the
+
+582
+00:24:19,000 --> 00:24:25,600
+start position at is at 304 characters
+
+583
+00:24:21,640 --> 00:24:27,159
+in the summary of this article uh so why
+
+584
+00:24:25,600 --> 00:24:29,399
+did you want to go when you have a
+
+585
+00:24:27,159 --> 00:24:30,799
+holiday ah here you go so it starts this
+
+586
+00:24:29,399 --> 00:24:32,960
+is where it
+
+587
+00:24:30,799 --> 00:24:35,120
+starts so this is how you see how you
+
+588
+00:24:32,960 --> 00:24:36,520
+can make these combinations and um
+
+589
+00:24:35,120 --> 00:24:39,440
+there's one more feature that I want to
+
+590
+00:24:36,520 --> 00:24:40,960
+show you before I continue and um
+
+591
+00:24:39,440 --> 00:24:43,080
+because it's a graph we can also take
+
+592
+00:24:40,960 --> 00:24:44,480
+another perspective of looking at this
+
+593
+00:24:43,080 --> 00:24:46,520
+graph right so we now looked at the
+
+594
+00:24:44,480 --> 00:24:48,440
+articles but now let's look at the
+
+595
+00:24:46,520 --> 00:24:50,600
+Publications and say I want to see the
+
+596
+00:24:48,440 --> 00:24:53,399
+names of these Publications so run this
+
+597
+00:24:50,600 --> 00:24:55,559
+query and here you see the the names of
+
+598
+00:24:53,399 --> 00:24:58,039
+the Publications and that have articles
+
+599
+00:24:55,559 --> 00:24:59,720
+in this data set now there's something
+
+600
+00:24:58,039 --> 00:25:02,240
+that I want to highlight from this data
+
+601
+00:24:59,720 --> 00:25:04,080
+set as you can see and this is something
+
+602
+00:25:02,240 --> 00:25:06,520
+you see often also with data
+
+603
+00:25:04,080 --> 00:25:08,320
+harmonization and data management you
+
+604
+00:25:06,520 --> 00:25:09,919
+see here we have the New York Times
+
+605
+00:25:08,320 --> 00:25:12,480
+company but here we have the
+
+606
+00:25:09,919 --> 00:25:15,960
+international New York Times and what we
+
+607
+00:25:12,480 --> 00:25:18,720
+know is that these um uh newspapers they
+
+608
+00:25:15,960 --> 00:25:21,760
+stored as different data object but they
+
+609
+00:25:18,720 --> 00:25:23,679
+represent the same thing and even here
+
+610
+00:25:21,760 --> 00:25:28,159
+we can do something with we8 so we can
+
+611
+00:25:23,679 --> 00:25:28,919
+ask we8 to say well we want you to mer
+
+612
+00:25:28,159 --> 00:25:31,039
+oh
+
+613
+00:25:28,919 --> 00:25:33,200
+uh where are
+
+614
+00:25:31,039 --> 00:25:36,000
+you
+
+615
+00:25:33,200 --> 00:25:38,240
+uh let's see what that quer is again oh
+
+616
+00:25:36,000 --> 00:25:42,000
+yeah of course apologies we want you to
+
+617
+00:25:38,240 --> 00:25:43,360
+group um uh uh the data together the
+
+618
+00:25:42,000 --> 00:25:45,279
+type that we want to do is we want to
+
+619
+00:25:43,360 --> 00:25:48,200
+merge them together and now we need to
+
+620
+00:25:45,279 --> 00:25:50,000
+tell give them we've it a force to merge
+
+621
+00:25:48,200 --> 00:25:52,120
+that basically means you remember that
+
+622
+00:25:50,000 --> 00:25:54,000
+space so how big in that space when we
+
+623
+00:25:52,120 --> 00:25:56,520
+cluster everything together so we're
+
+624
+00:25:54,000 --> 00:25:58,840
+going to say well just 10% merge
+
+625
+00:25:56,520 --> 00:26:01,360
+together and now if I run this query
+
+626
+00:25:58,840 --> 00:26:03,480
+again what you will see is that here it
+
+627
+00:26:01,360 --> 00:26:05,039
+grouped the New York Times company the
+
+628
+00:26:03,480 --> 00:26:06,640
+New York Times and the international New
+
+629
+00:26:05,039 --> 00:26:09,799
+York Times together because it know it
+
+630
+00:26:06,640 --> 00:26:12,720
+knows it's the same thing uh we can also
+
+631
+00:26:09,799 --> 00:26:15,880
+say that instead of merge we have uh uh
+
+632
+00:26:12,720 --> 00:26:18,480
+the closest so then we ask we well just
+
+633
+00:26:15,880 --> 00:26:20,240
+combine them together but just show us
+
+634
+00:26:18,480 --> 00:26:22,840
+what you think is the best result for
+
+635
+00:26:20,240 --> 00:26:24,080
+this to represented data object and then
+
+636
+00:26:22,840 --> 00:26:26,240
+it says well I believe that's the New
+
+637
+00:26:24,080 --> 00:26:28,399
+York Times company and now the powerful
+
+638
+00:26:26,240 --> 00:26:31,080
+thing with we is that we can even say
+
+639
+00:26:28,399 --> 00:26:33,559
+like because it's a graph we can say has
+
+640
+00:26:31,080 --> 00:26:37,760
+articles we can say on
+
+641
+00:26:33,559 --> 00:26:40,640
+article uh oh and we say uh title of the
+
+642
+00:26:37,760 --> 00:26:42,679
+article and so weate still is able to
+
+643
+00:26:40,640 --> 00:26:44,039
+make these graph connections even if
+
+644
+00:26:42,679 --> 00:26:47,399
+we've asked the machine learning model
+
+645
+00:26:44,039 --> 00:26:49,240
+to group these um together so if I now
+
+646
+00:26:47,399 --> 00:26:51,159
+run this query this query will take a
+
+647
+00:26:49,240 --> 00:26:53,559
+little bit longer because oh wow faster
+
+648
+00:26:51,159 --> 00:26:55,159
+than I expected but it got out of all
+
+649
+00:26:53,559 --> 00:26:56,720
+the articles that it has stored and it
+
+650
+00:26:55,159 --> 00:26:59,240
+even now combined from all these
+
+651
+00:26:56,720 --> 00:27:02,960
+different New York Times um uh
+
+652
+00:26:59,240 --> 00:27:05,520
+Publications everything um uh together
+
+653
+00:27:02,960 --> 00:27:07,320
+we have way more functions but the time
+
+654
+00:27:05,520 --> 00:27:09,960
+doesn't allow for that so I I would like
+
+655
+00:27:07,320 --> 00:27:12,320
+to um uh to invite you to look at the
+
+656
+00:27:09,960 --> 00:27:15,480
+website as well do we have a few more
+
+657
+00:27:12,320 --> 00:27:18,960
+minutes uh uh George or um or do I need
+
+658
+00:27:15,480 --> 00:27:20,679
+to wrap up just a few so um basically
+
+659
+00:27:18,960 --> 00:27:22,399
+you have a choice do you want to
+
+660
+00:27:20,679 --> 00:27:24,120
+continue with the last part of the
+
+661
+00:27:22,399 --> 00:27:25,799
+presentation or do you want to take some
+
+662
+00:27:24,120 --> 00:27:27,840
+questions because there's already some
+
+663
+00:27:25,799 --> 00:27:31,080
+questions and I think we have something
+
+664
+00:27:27,840 --> 00:27:32,559
+like yeah seven minutes left then let
+
+665
+00:27:31,080 --> 00:27:34,600
+please allow me two more minutes to
+
+666
+00:27:32,559 --> 00:27:38,159
+quickly go over an example case and then
+
+667
+00:27:34,600 --> 00:27:39,960
+I would love to take questions yeah um
+
+668
+00:27:38,159 --> 00:27:41,840
+one of the example cases because we
+
+669
+00:27:39,960 --> 00:27:43,039
+didn't talk about how this is used right
+
+670
+00:27:41,840 --> 00:27:45,000
+so how do companies use this in
+
+671
+00:27:43,039 --> 00:27:48,080
+production and on our website you can
+
+672
+00:27:45,000 --> 00:27:51,120
+see a great video of um somebody from
+
+673
+00:27:48,080 --> 00:27:53,080
+Metro his name is Sebastian Hillshire so
+
+674
+00:27:51,120 --> 00:27:55,000
+you can find it on our website and he
+
+675
+00:27:53,080 --> 00:27:56,440
+talks about the case that they have and
+
+676
+00:27:55,000 --> 00:27:59,600
+the use case that they that they're
+
+677
+00:27:56,440 --> 00:28:03,240
+using weate for is is that they want to
+
+678
+00:27:59,600 --> 00:28:06,840
+find uh new uh bars restaurants and
+
+679
+00:28:03,240 --> 00:28:09,000
+hotels in Europe um uh and the uh but
+
+680
+00:28:06,840 --> 00:28:11,320
+the difficult that he had was that the
+
+681
+00:28:09,000 --> 00:28:13,640
+name of a bar Hotel restaurant might be
+
+682
+00:28:11,320 --> 00:28:15,840
+different from the way that they stored
+
+683
+00:28:13,640 --> 00:28:19,360
+these names in uh for example from
+
+684
+00:28:15,840 --> 00:28:20,760
+invoices in their uh internal system so
+
+685
+00:28:19,360 --> 00:28:22,360
+what they've done is that they created
+
+686
+00:28:20,760 --> 00:28:26,600
+their own
+
+687
+00:28:22,360 --> 00:28:29,360
+application um uh um a CRM application
+
+688
+00:28:26,600 --> 00:28:31,240
+and they have one we they load the we8
+
+689
+00:28:29,360 --> 00:28:34,000
+with data from the data warehouse and
+
+690
+00:28:31,240 --> 00:28:36,279
+they load the we8 with on a daily basis
+
+691
+00:28:34,000 --> 00:28:38,559
+with open street maps data and we it
+
+692
+00:28:36,279 --> 00:28:41,880
+automatically tries to make relations
+
+693
+00:28:38,559 --> 00:28:44,120
+just like I just showed you um uh uh
+
+694
+00:28:41,880 --> 00:28:46,279
+between uh um bars hotels and
+
+695
+00:28:44,120 --> 00:28:47,640
+restaurants that are in their data set
+
+696
+00:28:46,279 --> 00:28:49,960
+and that are coming from open street
+
+697
+00:28:47,640 --> 00:28:52,760
+maps and the pow in here insist in the
+
+698
+00:28:49,960 --> 00:28:55,480
+fact that if V can't make a relation
+
+699
+00:28:52,760 --> 00:28:58,519
+they know it's a new potential um uh
+
+700
+00:28:55,480 --> 00:29:00,440
+customer brings me to the last point if
+
+701
+00:28:58,519 --> 00:29:01,799
+you recognize these kinds of business
+
+702
+00:29:00,440 --> 00:29:04,120
+problems and you think that we could
+
+703
+00:29:01,799 --> 00:29:06,399
+help you then we often see that we can
+
+704
+00:29:04,120 --> 00:29:08,519
+help with data harmonization so if you
+
+705
+00:29:06,399 --> 00:29:10,960
+have different databases or data
+
+706
+00:29:08,519 --> 00:29:13,799
+warehouse or Erp systems and you want to
+
+707
+00:29:10,960 --> 00:29:16,559
+harmonize the data together weate is a
+
+708
+00:29:13,799 --> 00:29:19,399
+great um uh choice to solve that problem
+
+709
+00:29:16,559 --> 00:29:23,360
+you can use weate to predict data so for
+
+710
+00:29:19,399 --> 00:29:26,240
+example if you have use cases in uh um
+
+711
+00:29:23,360 --> 00:29:28,200
+where you want to know what kind of um
+
+712
+00:29:26,240 --> 00:29:31,519
+data objects you need to add related to
+
+713
+00:29:28,200 --> 00:29:33,600
+other data objects um so for example if
+
+714
+00:29:31,519 --> 00:29:36,240
+you have that document about the Eiffel
+
+715
+00:29:33,600 --> 00:29:38,279
+Tower in Paris then we8 could make a
+
+716
+00:29:36,240 --> 00:29:40,840
+relation that's a landmark and now you
+
+717
+00:29:38,279 --> 00:29:43,080
+can store the data as well and then of
+
+718
+00:29:40,840 --> 00:29:45,000
+course we have the classification cases
+
+719
+00:29:43,080 --> 00:29:47,240
+where you can say like or by searching
+
+720
+00:29:45,000 --> 00:29:49,880
+to the data set or but automatically
+
+721
+00:29:47,240 --> 00:29:52,919
+have we made the make these relations uh
+
+722
+00:29:49,880 --> 00:29:55,720
+to the classification functionality so
+
+723
+00:29:52,919 --> 00:29:58,600
+um uh well quickly we have all these
+
+724
+00:29:55,720 --> 00:30:00,760
+Integrations available we have s
+
+725
+00:29:58,600 --> 00:30:04,159
+solution available we have the console
+
+726
+00:30:00,760 --> 00:30:05,919
+available for as a as a goei um but last
+
+727
+00:30:04,159 --> 00:30:08,279
+but not least then please reach out to
+
+728
+00:30:05,919 --> 00:30:10,559
+me if you have any questions or if we
+
+729
+00:30:08,279 --> 00:30:13,039
+can help so thank you for listening and
+
+730
+00:30:10,559 --> 00:30:15,679
+I would love to take your um answer your
+
+731
+00:30:13,039 --> 00:30:18,159
+questions thank you okay so I got a
+
+732
+00:30:15,679 --> 00:30:20,360
+couple of easy ones one is uh there
+
+733
+00:30:18,159 --> 00:30:22,679
+somebody asking whether we8 is open
+
+734
+00:30:20,360 --> 00:30:24,440
+source I can make your life easier yes
+
+735
+00:30:22,679 --> 00:30:26,679
+it is it's on GitHub it's actually
+
+736
+00:30:24,440 --> 00:30:29,960
+trending on GitHub I saw these days so
+
+737
+00:30:26,679 --> 00:30:31,679
+yes it's open yeah another one uh
+
+738
+00:30:29,960 --> 00:30:33,519
+there's somebody asking whether the
+
+739
+00:30:31,679 --> 00:30:37,880
+slides are going to be available I
+
+740
+00:30:33,519 --> 00:30:40,480
+suppose yes sure yeah okay and then I
+
+741
+00:30:37,880 --> 00:30:42,960
+guess we have like time for one actually
+
+742
+00:30:40,480 --> 00:30:45,559
+really um meaningful in-depth question
+
+743
+00:30:42,960 --> 00:30:48,240
+so uh people are asking whether wv8 is
+
+744
+00:30:45,559 --> 00:30:53,960
+built with embeddings on a Knowledge
+
+745
+00:30:48,240 --> 00:30:57,240
+Graph so the um uh let if I understand
+
+746
+00:30:53,960 --> 00:31:00,399
+the the the the question correctly so we
+
+747
+00:30:57,240 --> 00:31:01,360
+it itself has a graph data model so so
+
+748
+00:31:00,399 --> 00:31:03,279
+so as you've seen you have these
+
+749
+00:31:01,360 --> 00:31:06,200
+individual notes in the graph with
+
+750
+00:31:03,279 --> 00:31:09,880
+traditional graph relations but every
+
+751
+00:31:06,200 --> 00:31:11,639
+note in the graph is um is vectorized so
+
+752
+00:31:09,880 --> 00:31:15,120
+that means that you can find these notes
+
+753
+00:31:11,639 --> 00:31:17,960
+in the graph by doing faly searches as I
+
+754
+00:31:15,120 --> 00:31:21,960
+demoed just you so you could argue that
+
+755
+00:31:17,960 --> 00:31:24,000
+that's a form of a um of a knowledge gra
+
+756
+00:31:21,960 --> 00:31:26,320
+don't know if this answers the question
+
+757
+00:31:24,000 --> 00:31:28,639
+um um but that's how how I would answer
+
+758
+00:31:26,320 --> 00:31:31,159
+it m okay
+
+759
+00:31:28,639 --> 00:31:33,559
+uh okay so we have time for another one
+
+760
+00:31:31,159 --> 00:31:35,760
+so parat is asking whether you can
+
+761
+00:31:33,559 --> 00:31:38,399
+adjust the strength of relationships
+
+762
+00:31:35,760 --> 00:31:41,000
+based on us user Behavior as well as
+
+763
+00:31:38,399 --> 00:31:44,000
+semantic uh
+
+764
+00:31:41,000 --> 00:31:46,919
+distance great question so the answer is
+
+765
+00:31:44,000 --> 00:31:51,320
+yes we even have use cases where people
+
+766
+00:31:46,919 --> 00:31:53,600
+have uh users in the graph so example
+
+767
+00:31:51,320 --> 00:31:55,399
+take think about an e-commerce example
+
+768
+00:31:53,600 --> 00:31:57,960
+so you have a bunch of products floating
+
+769
+00:31:55,399 --> 00:31:59,960
+around in the vector space connected in
+
+770
+00:31:57,960 --> 00:32:03,840
+in the graph like fashion now you can
+
+771
+00:31:59,960 --> 00:32:06,200
+add a user also as representation in the
+
+772
+00:32:03,840 --> 00:32:09,600
+graph and if somebody always searches
+
+773
+00:32:06,200 --> 00:32:11,399
+for like wine and cheese then you know
+
+774
+00:32:09,600 --> 00:32:13,639
+that this that this user will float
+
+775
+00:32:11,399 --> 00:32:15,519
+around somewhere around wine and cheese
+
+776
+00:32:13,639 --> 00:32:17,559
+if you push them in that direction so
+
+777
+00:32:15,519 --> 00:32:20,480
+that's definitely something that you can
+
+778
+00:32:17,559 --> 00:32:24,080
+do there's actually an add-on to that
+
+779
+00:32:20,480 --> 00:32:26,799
+question so from Samuel uh is a kind of
+
+780
+00:32:24,080 --> 00:32:29,399
+a comment he says he doesn't think uh it
+
+781
+00:32:26,799 --> 00:32:32,159
+would be uh to calculate semantic
+
+782
+00:32:29,399 --> 00:32:34,559
+distance without an ontology or taxonomy
+
+783
+00:32:32,159 --> 00:32:36,279
+controlling the words I but I think
+
+784
+00:32:34,559 --> 00:32:39,279
+you're not using one
+
+785
+00:32:36,279 --> 00:32:41,720
+actually that is correct so so and this
+
+786
+00:32:39,279 --> 00:32:44,679
+is actually a really good question so
+
+787
+00:32:41,720 --> 00:32:46,960
+what we of course saw from the um from
+
+788
+00:32:44,679 --> 00:32:49,840
+the the the semantic web and traditional
+
+789
+00:32:46,960 --> 00:32:53,120
+ontologies of uh which I'm of course
+
+790
+00:32:49,840 --> 00:32:54,799
+also a big fan needless to say I the
+
+791
+00:32:53,120 --> 00:32:56,960
+question was like how are we going to
+
+792
+00:32:54,799 --> 00:32:59,720
+solve this problem of things being
+
+793
+00:32:56,960 --> 00:33:02,039
+ambiguous what if We can't agree on the
+
+794
+00:32:59,720 --> 00:33:04,039
+ontologies and that was one of the core
+
+795
+00:33:02,039 --> 00:33:06,639
+ideas was saying like what if we just
+
+796
+00:33:04,039 --> 00:33:08,440
+don't have to agree on them what if we
+
+797
+00:33:06,639 --> 00:33:11,840
+can just say like we just create a
+
+798
+00:33:08,440 --> 00:33:13,639
+simple rdf like Class Property structure
+
+799
+00:33:11,840 --> 00:33:16,000
+and so you can also create a schema on W
+
+800
+00:33:13,639 --> 00:33:18,519
+that does that but if you want to search
+
+801
+00:33:16,000 --> 00:33:20,679
+and retrieve the data from we8 you can
+
+802
+00:33:18,519 --> 00:33:23,760
+you can use any terminology that you
+
+803
+00:33:20,679 --> 00:33:26,399
+want so if I have a graph note that has
+
+804
+00:33:23,760 --> 00:33:29,279
+the class business and the name uh I
+
+805
+00:33:26,399 --> 00:33:31,360
+don't know uh uh uh Semite Technologies
+
+806
+00:33:29,279 --> 00:33:34,519
+I can also find that note by searching
+
+807
+00:33:31,360 --> 00:33:36,679
+for a company with the identifier Semite
+
+808
+00:33:34,519 --> 00:33:38,320
+Technologies uh the semantics are
+
+809
+00:33:36,679 --> 00:33:40,919
+different but the machine learning model
+
+810
+00:33:38,320 --> 00:33:43,120
+knows that the you probably mean the
+
+811
+00:33:40,919 --> 00:33:45,880
+same note that you want to uh that you
+
+812
+00:33:43,120 --> 00:33:48,799
+want to capture so we try to solve this
+
+813
+00:33:45,880 --> 00:33:50,720
+problem uh uh by completely relying on
+
+814
+00:33:48,799 --> 00:33:53,919
+these machine learning models and I have
+
+815
+00:33:50,720 --> 00:33:55,559
+to say so far so good and I would highly
+
+816
+00:33:53,919 --> 00:33:59,880
+recommend that you give it a try because
+
+817
+00:33:55,559 --> 00:34:01,960
+maybe you like it as well M okay and
+
+818
+00:33:59,880 --> 00:34:04,639
+final one and let's wrap up with this
+
+819
+00:34:01,960 --> 00:34:07,679
+one uh there's a question of whether a
+
+820
+00:34:04,639 --> 00:34:11,399
+node is a word or a piece of text and
+
+821
+00:34:07,679 --> 00:34:15,720
+then what are the edges in the graph so
+
+822
+00:34:11,399 --> 00:34:18,760
+the um uh so not a great question so the
+
+823
+00:34:15,720 --> 00:34:20,839
+um uh you can manually set the edges
+
+824
+00:34:18,760 --> 00:34:24,159
+like in a traditional way so what you've
+
+825
+00:34:20,839 --> 00:34:26,440
+seen in my demo for example we knew that
+
+826
+00:34:24,159 --> 00:34:28,399
+an article was coming from a publication
+
+827
+00:34:26,440 --> 00:34:30,079
+so there's an actual graph relation
+
+828
+00:34:28,399 --> 00:34:32,079
+between for example New York Times and
+
+829
+00:34:30,079 --> 00:34:35,280
+the article so that was why we could
+
+830
+00:34:32,079 --> 00:34:37,280
+make that um direct relation but then
+
+831
+00:34:35,280 --> 00:34:40,520
+the only thing is we all we we use the
+
+832
+00:34:37,280 --> 00:34:44,560
+fuzzy matching or to find the article or
+
+833
+00:34:40,520 --> 00:34:46,679
+to find the um uh uh uh the publication
+
+834
+00:34:44,560 --> 00:34:48,960
+if you are knowledgeable about these rdf
+
+835
+00:34:46,679 --> 00:34:50,720
+like structures you will recognize that
+
+836
+00:34:48,960 --> 00:34:53,200
+immediately if you look at the schema in
+
+837
+00:34:50,720 --> 00:34:56,720
+we8 but the powerful thing that we hope
+
+838
+00:34:53,200 --> 00:34:58,640
+to add to that is that that note is not
+
+839
+00:34:56,720 --> 00:35:02,240
+just a
+
+840
+00:34:58,640 --> 00:35:04,800
+uh a dumb note just you know floating
+
+841
+00:35:02,240 --> 00:35:07,119
+around in in in in a in a dimensionless
+
+842
+00:35:04,800 --> 00:35:09,000
+space it actually the dimensions where
+
+843
+00:35:07,119 --> 00:35:11,240
+the notes are positions in the space
+
+844
+00:35:09,000 --> 00:35:15,800
+they have a function as
+
+845
+00:35:11,240 --> 00:35:18,000
+well okay great uh so uh great Bob you
+
+846
+00:35:15,800 --> 00:35:20,280
+actually got to answer all questions I
+
+847
+00:35:18,000 --> 00:35:22,000
+hope people will have additional ones
+
+848
+00:35:20,280 --> 00:35:25,760
+and they can join us in the community
+
+849
+00:35:22,000 --> 00:35:28,000
+hour for that for now uh thanks again uh
+
+850
+00:35:25,760 --> 00:35:30,079
+we're closing this room and moving quick
+
+851
+00:35:28,000 --> 00:35:32,359
+to the next presentation in about three
+
+852
+00:35:30,079 --> 00:35:34,280
+minutes so see you there thank you very
+
+853
+00:35:32,359 --> 00:35:37,280
+much bye bye thanks for listening cheers
+
+854
+00:35:34,280 --> 00:35:37,280
+byebye
+
