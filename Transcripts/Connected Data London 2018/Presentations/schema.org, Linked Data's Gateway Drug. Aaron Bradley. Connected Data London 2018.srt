@@ -1,0 +1,2396 @@
+1
+00:00:10,210 --> 00:00:14,890
+got a clicker here everybody hear me
+
+2
+00:00:12,220 --> 00:00:16,299
+okay thank you very much James I thank
+
+3
+00:00:14,890 --> 00:00:18,250
+you connected day to London for having
+
+4
+00:00:16,299 --> 00:00:23,890
+me here feel humbled to be in such a
+
+5
+00:00:18,250 --> 00:00:25,720
+distinguished company as Jane said work
+
+6
+00:00:23,890 --> 00:00:27,550
+for Electronic Arts you may have heard
+
+7
+00:00:25,720 --> 00:00:29,590
+of us we make video games video games so
+
+8
+00:00:27,550 --> 00:00:33,300
+meta we even have video game characters
+
+9
+00:00:29,590 --> 00:00:36,430
+playing video games within video games I
+
+10
+00:00:33,300 --> 00:00:39,100
+have a long-standing interest in linked
+
+11
+00:00:36,430 --> 00:00:41,680
+data dates back to the mid 2000s and
+
+12
+00:00:39,100 --> 00:00:43,510
+coming from a search background that was
+
+13
+00:00:41,680 --> 00:00:45,640
+largely predicated on structured data so
+
+14
+00:00:43,510 --> 00:00:48,190
+when schema.org came out I've been kind
+
+15
+00:00:45,640 --> 00:00:50,200
+of keeping an eagle eye on it since I
+
+16
+00:00:48,190 --> 00:00:52,090
+run the semantic search marketing
+
+17
+00:00:50,200 --> 00:00:53,830
+community on Google+ soon to migrate
+
+18
+00:00:52,090 --> 00:00:56,560
+with the platform but join us there
+
+19
+00:00:53,830 --> 00:00:58,390
+it'll continue to be a thing I keep this
+
+20
+00:00:56,560 --> 00:01:00,460
+incredibly attractive spreadsheet which
+
+21
+00:00:58,390 --> 00:01:02,110
+documents the search engine support for
+
+22
+00:01:00,460 --> 00:01:05,710
+structured data over the course of time
+
+23
+00:01:02,110 --> 00:01:07,750
+going back to 2009 and these days it's
+
+24
+00:01:05,710 --> 00:01:09,939
+kind of all schema.org all the time and
+
+25
+00:01:07,750 --> 00:01:11,680
+my big contribution to the capillary
+
+26
+00:01:09,939 --> 00:01:14,079
+development was that I suggested the
+
+27
+00:01:11,680 --> 00:01:16,359
+term website which wasn't in the initial
+
+28
+00:01:14,079 --> 00:01:18,130
+release and now used probably on
+
+29
+00:01:16,359 --> 00:01:22,659
+millions of sites due to a very specific
+
+30
+00:01:18,130 --> 00:01:25,509
+Google requirement so when schema.org
+
+31
+00:01:22,659 --> 00:01:27,189
+came out on June 2nd 2011 announced
+
+32
+00:01:25,509 --> 00:01:30,340
+jointly by the search engines I had my
+
+33
+00:01:27,189 --> 00:01:32,560
+hot take up and running on June 3rd and
+
+34
+00:01:30,340 --> 00:01:34,960
+it's interesting because I wondered
+
+35
+00:01:32,560 --> 00:01:36,969
+aloud in this post the question that
+
+36
+00:01:34,960 --> 00:01:39,039
+we're discussing today would the
+
+37
+00:01:36,969 --> 00:01:41,740
+introduction of schema or of schema.org
+
+38
+00:01:39,039 --> 00:01:44,200
+start to bring link data into the
+
+39
+00:01:41,740 --> 00:01:46,450
+mainstream would it start bringing us
+
+40
+00:01:44,200 --> 00:01:49,509
+more toward the promise of a web of
+
+41
+00:01:46,450 --> 00:01:52,719
+linked data and some seven years later I
+
+42
+00:01:49,509 --> 00:01:55,539
+think we can start to assess that a very
+
+43
+00:01:52,719 --> 00:01:58,270
+brief history of the vocabulary and by
+
+44
+00:01:55,539 --> 00:02:00,130
+the way as usual I have more slides than
+
+45
+00:01:58,270 --> 00:02:02,319
+time so I'll be whipping through some of
+
+46
+00:02:00,130 --> 00:02:05,590
+these but you can see any of the
+
+47
+00:02:02,319 --> 00:02:07,600
+exciting details online obviously not
+
+48
+00:02:05,590 --> 00:02:11,980
+the first structured data vocabulary on
+
+49
+00:02:07,600 --> 00:02:13,720
+the web of both 2000 developed by Libby
+
+50
+00:02:11,980 --> 00:02:15,880
+Miller and Dan Berkeley damn Berkeley
+
+51
+00:02:13,720 --> 00:02:18,040
+been going on to bone operations for
+
+52
+00:02:15,880 --> 00:02:20,650
+schema.org on behalf of Google DC mi
+
+53
+00:02:18,040 --> 00:02:22,880
+terms good relations all great
+
+54
+00:02:20,650 --> 00:02:24,590
+expressive vocabulary in there
+
+55
+00:02:22,880 --> 00:02:26,360
+various domains but they were never
+
+56
+00:02:24,590 --> 00:02:27,770
+actually accorded with official search
+
+57
+00:02:26,360 --> 00:02:29,900
+engine support you didn't get any
+
+58
+00:02:27,770 --> 00:02:34,070
+special benefit in search by using these
+
+59
+00:02:29,900 --> 00:02:35,420
+to a certain degree being embraced Open
+
+60
+00:02:34,070 --> 00:02:38,290
+Graph protocol which of course is
+
+61
+00:02:35,420 --> 00:02:41,600
+primarily used for Facebook and in 2009
+
+62
+00:02:38,290 --> 00:02:43,490
+Google without any fanfare I made up
+
+63
+00:02:41,600 --> 00:02:45,920
+that logo there is no logo for data
+
+64
+00:02:43,490 --> 00:02:47,690
+vocabulary org it just kind of
+
+65
+00:02:45,920 --> 00:02:49,760
+materialized but it was kind of the shot
+
+66
+00:02:47,690 --> 00:02:51,320
+across the bow in a lot of ways for this
+
+67
+00:02:49,760 --> 00:02:53,950
+type of structured data because it was
+
+68
+00:02:51,320 --> 00:02:58,510
+meant specifically to accommodate
+
+69
+00:02:53,950 --> 00:03:00,620
+microdata and rdfa so the only kind of
+
+70
+00:02:58,510 --> 00:03:04,300
+vocabulary or a system with
+
+71
+00:03:00,620 --> 00:03:06,680
+long-standing support microformats
+
+72
+00:03:04,300 --> 00:03:08,000
+various kind of degrees of support over
+
+73
+00:03:06,680 --> 00:03:10,340
+the years from the search engines on
+
+74
+00:03:08,000 --> 00:03:13,430
+always well-documented but kind of the
+
+75
+00:03:10,340 --> 00:03:17,150
+most stable thing we had until 2011 with
+
+76
+00:03:13,430 --> 00:03:19,370
+the introduction of schema.org hopefully
+
+77
+00:03:17,150 --> 00:03:22,940
+you have a passing familiarity with the
+
+78
+00:03:19,370 --> 00:03:26,150
+vocabulary it consists of collection of
+
+79
+00:03:22,940 --> 00:03:26,510
+schemas unsurprisingly organized into
+
+80
+00:03:26,150 --> 00:03:29,560
+types
+
+81
+00:03:26,510 --> 00:03:31,700
+classes for in a classical ontology
+
+82
+00:03:29,560 --> 00:03:33,710
+properties rather than attributes and
+
+83
+00:03:31,700 --> 00:03:37,370
+relations per se because properties can
+
+84
+00:03:33,710 --> 00:03:39,950
+often take either in schema.org either a
+
+85
+00:03:37,370 --> 00:03:43,130
+an attribute of an expected datatype or
+
+86
+00:03:39,950 --> 00:03:45,260
+a member of a named class and you also
+
+87
+00:03:43,130 --> 00:03:50,150
+have enumerations which are predefined
+
+88
+00:03:45,260 --> 00:03:51,740
+property values as I said this was
+
+89
+00:03:50,150 --> 00:03:54,170
+launched initially with the support of
+
+90
+00:03:51,740 --> 00:03:56,180
+Bain Google and Yahoo soon followed by Y
+
+91
+00:03:54,170 --> 00:03:58,940
+and X so with the exception that they do
+
+92
+00:03:56,180 --> 00:04:01,820
+really embrace by all the world's
+
+93
+00:03:58,940 --> 00:04:05,270
+leading search engines when it first
+
+94
+00:04:01,820 --> 00:04:07,820
+came out microdata rdfa was supported
+
+95
+00:04:05,270 --> 00:04:10,700
+Google at all heavily supporting
+
+96
+00:04:07,820 --> 00:04:11,240
+microdata caused some contentious back
+
+97
+00:04:10,700 --> 00:04:13,430
+and forth
+
+98
+00:04:11,240 --> 00:04:16,160
+eventually that settled down or DFA Lite
+
+99
+00:04:13,430 --> 00:04:19,160
+was supported and later on as it became
+
+100
+00:04:16,160 --> 00:04:23,420
+available json-ld of which all have much
+
+101
+00:04:19,160 --> 00:04:26,050
+to say later so how has adoption looked
+
+102
+00:04:23,420 --> 00:04:28,910
+what I'm using here is web data Commons
+
+103
+00:04:26,050 --> 00:04:31,340
+data from common crawl it's a structured
+
+104
+00:04:28,910 --> 00:04:34,130
+data extract of a sampling of websites
+
+105
+00:04:31,340 --> 00:04:35,570
+there's methodological issues with this
+
+106
+00:04:34,130 --> 00:04:36,670
+it's not an apples to apples comparison
+
+107
+00:04:35,570 --> 00:04:38,230
+over time
+
+108
+00:04:36,670 --> 00:04:40,090
+cuz they sample different websites but
+
+109
+00:04:38,230 --> 00:04:42,040
+each of the crawls contains between
+
+110
+00:04:40,090 --> 00:04:43,660
+twelve and forty million domains so I
+
+111
+00:04:42,040 --> 00:04:45,160
+think it's fairly representative I
+
+112
+00:04:43,660 --> 00:04:47,200
+haven't seen too much in the growth of
+
+113
+00:04:45,160 --> 00:04:50,380
+our DFA over time and that's mostly in
+
+114
+00:04:47,200 --> 00:04:53,710
+the form of Open Graph protocol but as
+
+115
+00:04:50,380 --> 00:04:56,800
+soon as schema.org came into being use
+
+116
+00:04:53,710 --> 00:04:58,780
+of microdata skyrocketed and as soon as
+
+117
+00:04:56,800 --> 00:05:01,300
+json-ld came on the scene they just
+
+118
+00:04:58,780 --> 00:05:03,610
+started tracking that in 2015 also a
+
+119
+00:05:01,300 --> 00:05:06,100
+very street steep trajectory it wouldn't
+
+120
+00:05:03,610 --> 00:05:10,450
+surprise me if json-ld surpasses
+
+121
+00:05:06,100 --> 00:05:12,810
+microdata sometime soon can we be sure
+
+122
+00:05:10,450 --> 00:05:16,090
+that this is actually a proxy for
+
+123
+00:05:12,810 --> 00:05:19,030
+schema.org use yes if you look at the
+
+124
+00:05:16,090 --> 00:05:21,100
+classes for microdata 19 out of the 20
+
+125
+00:05:19,030 --> 00:05:23,500
+top classes are schema.org data
+
+126
+00:05:21,100 --> 00:05:26,560
+vocabulary org breadcrumbs one of the
+
+127
+00:05:23,500 --> 00:05:29,980
+last data types to be migrated by Google
+
+128
+00:05:26,560 --> 00:05:32,260
+and for json-ld its schema.org all the
+
+129
+00:05:29,980 --> 00:05:34,960
+way down all top 20 classes from
+
+130
+00:05:32,260 --> 00:05:36,400
+schema.org so those formats are I think
+
+131
+00:05:34,960 --> 00:05:40,060
+very representative of use of the
+
+132
+00:05:36,400 --> 00:05:43,840
+vocabulary and for the first time we
+
+133
+00:05:40,060 --> 00:05:46,330
+finally see these formats with microdata
+
+134
+00:05:43,840 --> 00:05:49,120
+finally overtaking hcard
+
+135
+00:05:46,330 --> 00:05:50,680
+in terms of popularity was json-ld not
+
+136
+00:05:49,120 --> 00:05:54,790
+too far behind but even those raw
+
+137
+00:05:50,680 --> 00:05:56,740
+numbers Bulai the fact that microformats
+
+138
+00:05:54,790 --> 00:05:58,720
+aren't particularly expressive it's not
+
+139
+00:05:56,740 --> 00:06:01,060
+a very large vocabulary and hcard in
+
+140
+00:05:58,720 --> 00:06:02,740
+particular has been encoded in a lot of
+
+141
+00:06:01,060 --> 00:06:03,310
+popular blogging platforms like
+
+142
+00:06:02,740 --> 00:06:05,290
+WordPress
+
+143
+00:06:03,310 --> 00:06:07,090
+there's my own blog and that's most of
+
+144
+00:06:05,290 --> 00:06:10,840
+the breadth of the assertions that you
+
+145
+00:06:07,090 --> 00:06:12,850
+get there is an author URL a name so yes
+
+146
+00:06:10,840 --> 00:06:15,450
+widely used but not very expressive
+
+147
+00:06:12,850 --> 00:06:18,580
+which is not the case with schema.org
+
+148
+00:06:15,450 --> 00:06:21,160
+other numbers again methodologically
+
+149
+00:06:18,580 --> 00:06:25,570
+some of these are pretty opaque Marcus
+
+150
+00:06:21,160 --> 00:06:29,350
+earlier said 31% in aggregate let's say
+
+151
+00:06:25,570 --> 00:06:31,480
+between 1/4 and 30% of slicing the web
+
+152
+00:06:29,350 --> 00:06:35,140
+and citing Marcus's 2 billion websites
+
+153
+00:06:31,480 --> 00:06:38,050
+that equals 600 million domains that's
+
+154
+00:06:35,140 --> 00:06:40,840
+pretty big so I think provisionally we
+
+155
+00:06:38,050 --> 00:06:45,130
+can say that schema.org at least in the
+
+156
+00:06:40,840 --> 00:06:47,170
+aspect of getting annotated link data on
+
+157
+00:06:45,130 --> 00:06:48,700
+the web has been very successful indeed
+
+158
+00:06:47,170 --> 00:06:50,110
+I think there are other aspects of the
+
+159
+00:06:48,700 --> 00:06:52,870
+vocabulary that are also enter
+
+160
+00:06:50,110 --> 00:07:00,400
+you're successful but that seems to have
+
+161
+00:06:52,870 --> 00:07:02,320
+worked why is that the biggest reason I
+
+162
+00:07:00,400 --> 00:07:04,540
+think is that the search engines
+
+163
+00:07:02,320 --> 00:07:07,180
+provided a clear value proposition for
+
+164
+00:07:04,540 --> 00:07:09,070
+people to use the vocabulary in the form
+
+165
+00:07:07,180 --> 00:07:11,680
+of Rich Snippets what Google now calls
+
+166
+00:07:09,070 --> 00:07:13,780
+rich results so you take data directly
+
+167
+00:07:11,680 --> 00:07:15,820
+from the structured data markup and
+
+168
+00:07:13,780 --> 00:07:19,000
+populates search results with that and
+
+169
+00:07:15,820 --> 00:07:21,190
+that results in anything from a 15 to 75
+
+170
+00:07:19,000 --> 00:07:23,710
+percent lifting click-throughs for web
+
+171
+00:07:21,190 --> 00:07:25,300
+publishers so obviously a lot have been
+
+172
+00:07:23,710 --> 00:07:26,770
+scented there so you see product here
+
+173
+00:07:25,300 --> 00:07:29,260
+where you get things like the price and
+
+174
+00:07:26,770 --> 00:07:33,480
+the rating and what availability events
+
+175
+00:07:29,260 --> 00:07:36,220
+where you get the date and the venue
+
+176
+00:07:33,480 --> 00:07:37,500
+recipes where you have pretty explicit
+
+177
+00:07:36,220 --> 00:07:40,000
+data about all sorts of things
+
+178
+00:07:37,500 --> 00:07:41,800
+ingredients cooking time calories again
+
+179
+00:07:40,000 --> 00:07:44,620
+all powered by structured data markup
+
+180
+00:07:41,800 --> 00:07:46,450
+since schema.org was released that the
+
+181
+00:07:44,620 --> 00:07:49,300
+Cavaliers continued to develop and you
+
+182
+00:07:46,450 --> 00:07:52,150
+see continued use of that to populate
+
+183
+00:07:49,300 --> 00:07:54,100
+rich results Google now uses the
+
+184
+00:07:52,150 --> 00:07:56,740
+schema.org as a publisher you can
+
+185
+00:07:54,100 --> 00:07:59,170
+specify your logo or the social media
+
+186
+00:07:56,740 --> 00:08:01,270
+accounts that you use more recently job
+
+187
+00:07:59,170 --> 00:08:06,520
+postings pretty major initiative from
+
+188
+00:08:01,270 --> 00:08:08,680
+Google relies on the schema.org job
+
+189
+00:08:06,520 --> 00:08:10,540
+posting type and interestingly and you
+
+190
+00:08:08,680 --> 00:08:13,780
+see this more and more
+
+191
+00:08:10,540 --> 00:08:16,660
+a lot of schema.org development is use
+
+192
+00:08:13,780 --> 00:08:18,700
+case driven by the search engines so job
+
+193
+00:08:16,660 --> 00:08:19,510
+posting went live as an actual service
+
+194
+00:08:18,700 --> 00:08:23,050
+in Google
+
+195
+00:08:19,510 --> 00:08:26,950
+well the vocabulary was still impending
+
+196
+00:08:23,050 --> 00:08:30,750
+and more recently still fact claim
+
+197
+00:08:26,950 --> 00:08:33,250
+review which fuels act checks on the web
+
+198
+00:08:30,750 --> 00:08:34,960
+so it's a living vocabulary if you look
+
+199
+00:08:33,250 --> 00:08:36,310
+at these dates that's a year apart and I
+
+200
+00:08:34,960 --> 00:08:38,950
+think that that's another reason for
+
+201
+00:08:36,310 --> 00:08:40,600
+schema success is that it continues to
+
+202
+00:08:38,950 --> 00:08:42,790
+build expressiveness over the course of
+
+203
+00:08:40,600 --> 00:08:46,660
+time when it was launched we saw about
+
+204
+00:08:42,790 --> 00:08:49,060
+300 classes by November 2015 that had
+
+205
+00:08:46,660 --> 00:08:51,310
+grown to over 600 classes in schema.org
+
+206
+00:08:49,060 --> 00:08:53,110
+by the way very difficult to do it
+
+207
+00:08:51,310 --> 00:08:56,710
+apples to apples properties comparison
+
+208
+00:08:53,110 --> 00:09:00,100
+so let's get that and November of 2018
+
+209
+00:08:56,710 --> 00:09:01,660
+today just under around 600 and core you
+
+210
+00:09:00,100 --> 00:09:03,320
+see that deplete because since then
+
+211
+00:09:01,660 --> 00:09:05,660
+there's been an extension mechanism
+
+212
+00:09:03,320 --> 00:09:08,390
+many of the core terms that move to
+
+213
+00:09:05,660 --> 00:09:11,210
+extensions and then pending the kind of
+
+214
+00:09:08,390 --> 00:09:13,880
+queuing function of schema.org sees a
+
+215
+00:09:11,210 --> 00:09:18,110
+large number of classes so it's an
+
+216
+00:09:13,880 --> 00:09:20,900
+evolving vocabulary and that you can
+
+217
+00:09:18,110 --> 00:09:22,670
+start to 88 use cases that then
+
+218
+00:09:20,900 --> 00:09:25,220
+potentially can be taken up by the
+
+219
+00:09:22,670 --> 00:09:29,090
+vocabulary I think is pretty important
+
+220
+00:09:25,220 --> 00:09:31,070
+and certainly not typical of user
+
+221
+00:09:29,090 --> 00:09:33,470
+experiences prior to schema.org where
+
+222
+00:09:31,070 --> 00:09:36,200
+often you see a vocabulary minted and
+
+223
+00:09:33,470 --> 00:09:37,990
+done or if it was developed uh it was
+
+224
+00:09:36,200 --> 00:09:42,830
+pretty opaque the process by which new
+
+225
+00:09:37,990 --> 00:09:45,410
+additions or changes were made the
+
+226
+00:09:42,830 --> 00:09:48,740
+schema.org has a community development
+
+227
+00:09:45,410 --> 00:09:50,620
+process this originally the locus of
+
+228
+00:09:48,740 --> 00:09:53,570
+this was the schema.org mailing list
+
+229
+00:09:50,620 --> 00:09:57,140
+public the cab's now has got its own but
+
+230
+00:09:53,570 --> 00:09:58,490
+really the killer app in terms of the
+
+231
+00:09:57,140 --> 00:10:00,970
+capillary development has been the
+
+232
+00:09:58,490 --> 00:10:03,530
+integration of github into schema.org
+
+233
+00:10:00,970 --> 00:10:06,350
+many you know most developers the
+
+234
+00:10:03,530 --> 00:10:09,010
+familiar with the platform and rather
+
+235
+00:10:06,350 --> 00:10:11,350
+easier to work with than the circa 1995
+
+236
+00:10:09,010 --> 00:10:13,370
+w3c mailing list in terms of organizing
+
+237
+00:10:11,350 --> 00:10:15,470
+conversations and keeping the ball
+
+238
+00:10:13,370 --> 00:10:17,060
+rolling and then finally schema.org will
+
+239
+00:10:15,470 --> 00:10:19,070
+work directly with partners so
+
+240
+00:10:17,060 --> 00:10:21,620
+especially in developing specialist
+
+241
+00:10:19,070 --> 00:10:23,860
+vocabulary they integrated good
+
+242
+00:10:21,620 --> 00:10:25,940
+relations working with Martin have
+
+243
+00:10:23,860 --> 00:10:27,500
+working with the International Press
+
+244
+00:10:25,940 --> 00:10:31,630
+telecommunications council they
+
+245
+00:10:27,500 --> 00:10:33,740
+integrated our news early on they
+
+246
+00:10:31,630 --> 00:10:36,860
+partnered with a number of medical
+
+247
+00:10:33,740 --> 00:10:39,170
+organizations Harvard to build out the
+
+248
+00:10:36,860 --> 00:10:42,740
+health and life sciences vocabulary for
+
+249
+00:10:39,170 --> 00:10:45,080
+now in its own extension and very
+
+250
+00:10:42,740 --> 00:10:47,510
+recently they've been working schema.org
+
+251
+00:10:45,080 --> 00:10:49,970
+has been working closely with the trust
+
+252
+00:10:47,510 --> 00:10:51,530
+project in terms of supporting claim
+
+253
+00:10:49,970 --> 00:10:53,930
+review for fat Jack's on the web and
+
+254
+00:10:51,530 --> 00:10:59,330
+other trust indicators for news
+
+255
+00:10:53,930 --> 00:11:02,140
+organizations the extension utility of
+
+256
+00:10:59,330 --> 00:11:04,370
+schema.org initially was pretty fuzzy
+
+257
+00:11:02,140 --> 00:11:06,440
+they made kind of based basically
+
+258
+00:11:04,370 --> 00:11:08,420
+expected webmasters to try things out
+
+259
+00:11:06,440 --> 00:11:11,780
+and maybe it would be adopted and nobody
+
+260
+00:11:08,420 --> 00:11:13,940
+did so those completely revamped in 2.0
+
+261
+00:11:11,780 --> 00:11:16,160
+and there are two sorts of extensions
+
+262
+00:11:13,940 --> 00:11:18,650
+one hosted extensions to take a
+
+263
+00:11:16,160 --> 00:11:21,550
+bit of the schema.org namespace things
+
+264
+00:11:18,650 --> 00:11:24,140
+like big schema.org which is a
+
+265
+00:11:21,550 --> 00:11:26,150
+vocabulary for automobiles but it
+
+266
+00:11:24,140 --> 00:11:28,970
+essentially worked the same way as a
+
+267
+00:11:26,150 --> 00:11:31,330
+court terms because the canonical URL
+
+268
+00:11:28,970 --> 00:11:33,890
+for that is schema.org rather than the
+
+269
+00:11:31,330 --> 00:11:36,080
+sub domain but there's also now a
+
+270
+00:11:33,890 --> 00:11:37,930
+mechanism by which any individual
+
+271
+00:11:36,080 --> 00:11:40,610
+organization can extend the vocabulary
+
+272
+00:11:37,930 --> 00:11:42,500
+with their own extensions called an
+
+273
+00:11:40,610 --> 00:11:45,170
+external extension and the first big
+
+274
+00:11:42,500 --> 00:11:47,960
+example of this is gs1 they're the
+
+275
+00:11:45,170 --> 00:11:50,660
+organization that provides bar codes for
+
+276
+00:11:47,960 --> 00:11:54,290
+the world and they've developed a smart
+
+277
+00:11:50,660 --> 00:11:56,690
+search vocab a web the capillary cellar
+
+278
+00:11:54,290 --> 00:11:59,120
+standard that powers their smart search
+
+279
+00:11:56,690 --> 00:12:01,790
+product which allows them to be a lot
+
+280
+00:11:59,120 --> 00:12:04,100
+more expressive about products and
+
+281
+00:12:01,790 --> 00:12:05,660
+services that are important in the gs1
+
+282
+00:12:04,100 --> 00:12:07,480
+environment and you can see you know
+
+283
+00:12:05,660 --> 00:12:09,770
+with properties like cheese firmness
+
+284
+00:12:07,480 --> 00:12:12,380
+there are there are things that do not
+
+285
+00:12:09,770 --> 00:12:16,250
+belong in the core but it is important
+
+286
+00:12:12,380 --> 00:12:17,630
+to those who make cheese so it's you can
+
+287
+00:12:16,250 --> 00:12:19,310
+see the utility of that sort of
+
+288
+00:12:17,630 --> 00:12:22,580
+extension that's actually in place
+
+289
+00:12:19,310 --> 00:12:24,020
+Tesco uses a gs1 so this very plain
+
+290
+00:12:22,580 --> 00:12:27,950
+landing page for Scottish shortbread
+
+291
+00:12:24,020 --> 00:12:30,020
+fingers behind the scenes is marked up
+
+292
+00:12:27,950 --> 00:12:32,630
+with all sorts of information about the
+
+293
+00:12:30,020 --> 00:12:36,620
+product things like allergen alerts and
+
+294
+00:12:32,630 --> 00:12:38,750
+recipe ingredients going back there's
+
+295
+00:12:36,620 --> 00:12:40,520
+really not a lot to markup on that page
+
+296
+00:12:38,750 --> 00:12:41,840
+and the presentation layer so if you're
+
+297
+00:12:40,520 --> 00:12:44,390
+trying to do that in microdata rdfa
+
+298
+00:12:41,840 --> 00:12:47,300
+you'd be using a lot of meta decks meta
+
+299
+00:12:44,390 --> 00:12:49,040
+tags pointlessly so this is json-ld
+
+300
+00:12:47,300 --> 00:12:51,830
+and I think that that's been another
+
+301
+00:12:49,040 --> 00:12:55,550
+propelling force towards the adoption of
+
+302
+00:12:51,830 --> 00:12:57,650
+schema.org in 2014 i sat down to
+
+303
+00:12:55,550 --> 00:12:59,510
+interview Greg Kellogg about json-ld
+
+304
+00:12:57,650 --> 00:13:02,030
+phil archer joined us for that
+
+305
+00:12:59,510 --> 00:13:04,520
+conversation at that time w3c activity
+
+306
+00:13:02,030 --> 00:13:06,710
+lead now with gs1 and he pointed out
+
+307
+00:13:04,520 --> 00:13:08,810
+that the great thing about json-ld isn't
+
+308
+00:13:06,710 --> 00:13:11,270
+the LD part it's adjacent part right
+
+309
+00:13:08,810 --> 00:13:13,550
+that it's a format that developers were
+
+310
+00:13:11,270 --> 00:13:16,070
+intimately comfortable working with on a
+
+311
+00:13:13,550 --> 00:13:18,350
+day to day basis and to extend the drug
+
+312
+00:13:16,070 --> 00:13:19,760
+analogy whether or not they knew that
+
+313
+00:13:18,350 --> 00:13:22,130
+they were using linked data they were
+
+314
+00:13:19,760 --> 00:13:25,700
+actually injecting link data into the
+
+315
+00:13:22,130 --> 00:13:27,470
+ecosystem very directly so jason LD has
+
+316
+00:13:25,700 --> 00:13:29,840
+proved to be an enormous success in
+
+317
+00:13:27,470 --> 00:13:34,400
+terms of supporting syntax
+
+318
+00:13:29,840 --> 00:13:36,590
+for the vocabulary and just a brief
+
+319
+00:13:34,400 --> 00:13:38,300
+example of this pretty typical situation
+
+320
+00:13:36,590 --> 00:13:39,830
+you redesign an e-commerce site you have
+
+321
+00:13:38,300 --> 00:13:42,520
+to move all the elements around if
+
+322
+00:13:39,830 --> 00:13:44,960
+you're trying to retake that with
+
+323
+00:13:42,520 --> 00:13:47,660
+microdata rdfa you have to make sure all
+
+324
+00:13:44,960 --> 00:13:49,400
+your span and difficult eggs uh close
+
+325
+00:13:47,660 --> 00:13:51,560
+correctly it's just a mess and a
+
+326
+00:13:49,400 --> 00:13:56,060
+nightmare I remember uh Duane Forester
+
+327
+00:13:51,560 --> 00:14:00,740
+at that time webmaster trends analyst
+
+328
+00:13:56,060 --> 00:14:02,630
+thank you for Bing said that I can't
+
+329
+00:14:00,740 --> 00:14:05,200
+remember if it was the majority or a
+
+330
+00:14:02,630 --> 00:14:08,810
+large minority like 30 40 percent of
+
+331
+00:14:05,200 --> 00:14:11,060
+markup was invalid that thing was
+
+332
+00:14:08,810 --> 00:14:12,790
+ingesting so I think Jason LD goes a
+
+333
+00:14:11,060 --> 00:14:14,600
+long way correct in that any case
+
+334
+00:14:12,790 --> 00:14:16,640
+presentation layer doesn't matter
+
+335
+00:14:14,600 --> 00:14:18,800
+Jason LD is still the same behind the
+
+336
+00:14:16,640 --> 00:14:20,240
+code because it describes the entities
+
+337
+00:14:18,800 --> 00:14:22,850
+and their properties behind the scenes
+
+338
+00:14:20,240 --> 00:14:25,130
+so you can make presentation layer
+
+339
+00:14:22,850 --> 00:14:30,080
+changes without affecting the underlying
+
+340
+00:14:25,130 --> 00:14:31,670
+data all fine and well been a big
+
+341
+00:14:30,080 --> 00:14:34,400
+success in search we have those value
+
+342
+00:14:31,670 --> 00:14:36,920
+propositions but interestingly enough
+
+343
+00:14:34,400 --> 00:14:38,540
+schema.org has started to extend its
+
+344
+00:14:36,920 --> 00:14:40,370
+reach beyond search some of these
+
+345
+00:14:38,540 --> 00:14:43,790
+applications that I think this was
+
+346
+00:14:40,370 --> 00:14:48,440
+mentioned before by Marcus Pinterest for
+
+347
+00:14:43,790 --> 00:14:50,089
+example uses schema.org in a very search
+
+348
+00:14:48,440 --> 00:14:54,680
+engine fashion pulling you know the
+
+349
+00:14:50,089 --> 00:14:57,820
+title and the image and the price you
+
+350
+00:14:54,680 --> 00:15:01,310
+see they're pulled from schema.org data
+
+351
+00:14:57,820 --> 00:15:03,470
+but it's really when you have a
+
+352
+00:15:01,310 --> 00:15:05,210
+vocabulary that's been well vetted is
+
+353
+00:15:03,470 --> 00:15:08,330
+strikes the right balance between
+
+354
+00:15:05,210 --> 00:15:09,740
+expressivity and complexity it starts to
+
+355
+00:15:08,330 --> 00:15:11,360
+become useful when you need the
+
+356
+00:15:09,740 --> 00:15:13,970
+capillary for some other purpose so
+
+357
+00:15:11,360 --> 00:15:16,850
+Google assistant when they got into the
+
+358
+00:15:13,970 --> 00:15:19,010
+speaker business needed a way of marking
+
+359
+00:15:16,850 --> 00:15:22,220
+that you know of having a system for
+
+360
+00:15:19,010 --> 00:15:25,190
+voice communication and schema.org of
+
+361
+00:15:22,220 --> 00:15:26,690
+obviously was the likeliest candidate
+
+362
+00:15:25,190 --> 00:15:28,310
+for this so you can have your Google
+
+363
+00:15:26,690 --> 00:15:29,870
+home I'm not sure if you ever tried this
+
+364
+00:15:28,310 --> 00:15:32,060
+but read you step by step recipe
+
+365
+00:15:29,870 --> 00:15:35,360
+instructions and that's fueled entirely
+
+366
+00:15:32,060 --> 00:15:36,890
+by schema.org recipe markup and in fact
+
+367
+00:15:35,360 --> 00:15:38,900
+you don't need to do anything special as
+
+368
+00:15:36,890 --> 00:15:41,330
+a webmaster in order to have recipe
+
+369
+00:15:38,900 --> 00:15:43,520
+results eligible for abuse with a google
+
+370
+00:15:41,330 --> 00:15:46,970
+assistant just by encoding them
+
+371
+00:15:43,520 --> 00:15:50,150
+that fashion you get that benefit more
+
+372
+00:15:46,970 --> 00:15:53,300
+recently speakable specification allows
+
+373
+00:15:50,150 --> 00:15:55,130
+news publishers in particular to specify
+
+374
+00:15:53,300 --> 00:15:56,930
+which parts of an article should be read
+
+375
+00:15:55,130 --> 00:15:59,480
+out by a Google assistant when you asked
+
+376
+00:15:56,930 --> 00:16:03,200
+for a news query and by the way another
+
+377
+00:15:59,480 --> 00:16:05,000
+example of appending schema.org class
+
+378
+00:16:03,200 --> 00:16:08,350
+that Google has already started to
+
+379
+00:16:05,000 --> 00:16:13,850
+employ because of its use case but
+
+380
+00:16:08,350 --> 00:16:14,330
+Google not the only smart speaker in
+
+381
+00:16:13,850 --> 00:16:16,460
+town
+
+382
+00:16:14,330 --> 00:16:18,920
+you also have alexa and guess what when
+
+383
+00:16:16,460 --> 00:16:25,370
+they needed an ontology for their
+
+384
+00:16:18,920 --> 00:16:29,570
+speaker they used schema.org what does
+
+385
+00:16:25,370 --> 00:16:34,210
+that mean change okay thank you you see
+
+386
+00:16:29,570 --> 00:16:34,210
+yeah I was we're number one
+
+387
+00:16:34,630 --> 00:16:40,730
+just a couple of quick examples here
+
+388
+00:16:37,400 --> 00:16:43,960
+Southern Cross used schema.org to
+
+389
+00:16:40,730 --> 00:16:46,820
+bootstrap their ontology you have a
+
+390
+00:16:43,960 --> 00:16:49,730
+proof of concept knowledge graph for
+
+391
+00:16:46,820 --> 00:16:51,530
+biodiversity use schema.org for a space
+
+392
+00:16:49,730 --> 00:16:53,240
+ontology sure that's a little knowledge
+
+393
+00:16:51,530 --> 00:16:56,420
+graph what about big ones here's they do
+
+394
+00:16:53,240 --> 00:16:58,190
+the Chinese search engine if you look at
+
+395
+00:16:56,420 --> 00:17:00,830
+these classes you'll immediately
+
+396
+00:16:58,190 --> 00:17:05,300
+recognize schema.org and indeed they
+
+397
+00:17:00,830 --> 00:17:07,730
+said that was what it was based on and I
+
+398
+00:17:05,300 --> 00:17:10,510
+can attest to the fact that EA when we
+
+399
+00:17:07,730 --> 00:17:13,130
+needed a vocabulary to develop our
+
+400
+00:17:10,510 --> 00:17:15,200
+content ontology we turn to schema.org
+
+401
+00:17:13,130 --> 00:17:16,700
+because it had most of the things that
+
+402
+00:17:15,200 --> 00:17:20,300
+were important to us and that echoes
+
+403
+00:17:16,700 --> 00:17:23,030
+from video games websites media objects
+
+404
+00:17:20,300 --> 00:17:24,530
+like videos and images but a
+
+405
+00:17:23,030 --> 00:17:26,390
+counter-argument to that is that
+
+406
+00:17:24,530 --> 00:17:28,490
+schema.org actually isn't expressive
+
+407
+00:17:26,390 --> 00:17:34,340
+enough that because it was built by him
+
+408
+00:17:28,490 --> 00:17:35,690
+for the search engines it was too far in
+
+409
+00:17:34,340 --> 00:17:37,250
+the commercial domain it didn't cover
+
+410
+00:17:35,690 --> 00:17:39,350
+enough use cases I know we're low on
+
+411
+00:17:37,250 --> 00:17:42,980
+time but I started late so let me work
+
+412
+00:17:39,350 --> 00:17:44,690
+through this it's just true let's verify
+
+413
+00:17:42,980 --> 00:17:46,430
+this by playing 20 questions
+
+414
+00:17:44,690 --> 00:17:49,700
+what can you answer with schema.org
+
+415
+00:17:46,430 --> 00:17:51,380
+using these questions is it an animal no
+
+416
+00:17:49,700 --> 00:17:53,480
+you can just say it's a thing unless so
+
+417
+00:17:51,380 --> 00:17:55,550
+fluffy here is sold in a pet store or a
+
+418
+00:17:53,480 --> 00:17:57,440
+butcher shop is it a vegetable you can't
+
+419
+00:17:55,550 --> 00:17:59,480
+say really anything besides it's a thing
+
+420
+00:17:57,440 --> 00:18:01,009
+as it sold at Whole Foods is it a
+
+421
+00:17:59,480 --> 00:18:03,080
+mineral not unless you make a product
+
+422
+00:18:01,009 --> 00:18:05,389
+out of it so schema.org
+
+423
+00:18:03,080 --> 00:18:07,009
+isn't that expressive when it goes
+
+424
+00:18:05,389 --> 00:18:08,299
+beyond those commercial domains with one
+
+425
+00:18:07,009 --> 00:18:09,740
+of the changes that I've noticed over
+
+426
+00:18:08,299 --> 00:18:12,070
+the past couple of years with schema.org
+
+427
+00:18:09,740 --> 00:18:14,929
+is people are far more open to
+
+428
+00:18:12,070 --> 00:18:17,840
+developing the the vocabulary in broader
+
+429
+00:18:14,929 --> 00:18:20,149
+ways so this threat has been rekindled
+
+430
+00:18:17,840 --> 00:18:22,070
+of late add animal terminology and
+
+431
+00:18:20,149 --> 00:18:23,750
+actually plant terminology along with
+
+432
+00:18:22,070 --> 00:18:25,610
+this and if that ever comes to be we can
+
+433
+00:18:23,750 --> 00:18:31,940
+finally say that fluffy eat rabbit
+
+434
+00:18:25,610 --> 00:18:34,580
+fluffy eats carrots and just very
+
+435
+00:18:31,940 --> 00:18:37,279
+quickly we reinvent in order to simplify
+
+436
+00:18:34,580 --> 00:18:39,340
+so yes there are external vocabulary
+
+437
+00:18:37,279 --> 00:18:42,529
+that you could map these terms to but
+
+438
+00:18:39,340 --> 00:18:44,539
+the issue with that is that likely a lot
+
+439
+00:18:42,529 --> 00:18:46,549
+of webmasters wouldn't use them and also
+
+440
+00:18:44,539 --> 00:18:49,909
+it starts to degrade that value
+
+441
+00:18:46,549 --> 00:18:54,350
+proposition of deriving benefit from the
+
+442
+00:18:49,909 --> 00:18:56,240
+vocabulary very quickly your hails from
+
+443
+00:18:54,350 --> 00:18:59,210
+Google said I'd like to see a world
+
+444
+00:18:56,240 --> 00:19:01,059
+without structured data that the web
+
+445
+00:18:59,210 --> 00:19:03,620
+should be more populated by intelligent
+
+446
+00:19:01,059 --> 00:19:04,909
+you know AI processes that go and crawl
+
+447
+00:19:03,620 --> 00:19:06,470
+the web and figure these things out on
+
+448
+00:19:04,909 --> 00:19:08,720
+their own rather than the webmasters
+
+449
+00:19:06,470 --> 00:19:10,789
+marking them up but there are some cases
+
+450
+00:19:08,720 --> 00:19:12,799
+where the lack of semantics for some
+
+451
+00:19:10,789 --> 00:19:14,809
+objects makes schema.org a really good
+
+452
+00:19:12,799 --> 00:19:16,940
+choice data set search is a really good
+
+453
+00:19:14,809 --> 00:19:19,250
+example not sure what you can tell by
+
+454
+00:19:16,940 --> 00:19:22,039
+that table what it refers to is actually
+
+455
+00:19:19,250 --> 00:19:26,509
+about cats and that's provided by
+
+456
+00:19:22,039 --> 00:19:30,320
+schema.org markup Google is using
+
+457
+00:19:26,509 --> 00:19:32,929
+schema.org to specify how user media
+
+458
+00:19:30,320 --> 00:19:35,169
+events are initiated directly from the
+
+459
+00:19:32,929 --> 00:19:35,169
+search results
+
+460
+00:19:35,559 --> 00:19:40,850
+backchecked they've created a markup
+
+461
+00:19:38,539 --> 00:19:42,350
+tool where Naoko diems required where a
+
+462
+00:19:40,850 --> 00:19:44,059
+fact checker can go and enter that
+
+463
+00:19:42,350 --> 00:19:47,120
+information directly into the tool a
+
+464
+00:19:44,059 --> 00:19:49,639
+niche pushed into a repository on data
+
+465
+00:19:47,120 --> 00:19:51,919
+Commons or by the way the claim here is
+
+466
+00:19:49,639 --> 00:19:53,830
+paul mccartney's I play the trumpet this
+
+467
+00:19:51,919 --> 00:19:57,740
+race mostly false
+
+468
+00:19:53,830 --> 00:20:00,769
+and then finally almost done here
+
+469
+00:19:57,740 --> 00:20:02,809
+the last sort of a looming issue for
+
+470
+00:20:00,769 --> 00:20:05,360
+schema.org or questions of identity in
+
+471
+00:20:02,809 --> 00:20:09,529
+terms of dereferencing entity identifier
+
+472
+00:20:05,360 --> 00:20:10,460
+x' Steve Macbeth one of the steering
+
+473
+00:20:09,529 --> 00:20:13,639
+group members
+
+474
+00:20:10,460 --> 00:20:15,259
+being said that the time has come to
+
+475
+00:20:13,639 --> 00:20:17,950
+look at looking at ID so I was talking
+
+476
+00:20:15,259 --> 00:20:21,220
+to Dan Brickley the other day and
+
+477
+00:20:17,950 --> 00:20:23,450
+channeling do it he said that schema.org
+
+478
+00:20:21,220 --> 00:20:27,169
+unlike kind of traditional link data
+
+479
+00:20:23,450 --> 00:20:29,809
+where the insistence is upon consensus
+
+480
+00:20:27,169 --> 00:20:32,149
+upon and idea identifiers and allowing
+
+481
+00:20:29,809 --> 00:20:34,460
+for where-where's where it's chaotic
+
+482
+00:20:32,149 --> 00:20:36,289
+diversity in terms of terminology that
+
+483
+00:20:34,460 --> 00:20:38,419
+was schema.org it's the other way around
+
+484
+00:20:36,289 --> 00:20:39,889
+that it's meant to align people on
+
+485
+00:20:38,419 --> 00:20:42,289
+vocabulary and then allowing for a
+
+486
+00:20:39,889 --> 00:20:44,240
+certain diversity within identifiers if
+
+487
+00:20:42,289 --> 00:20:47,059
+those two were ever to merge I think
+
+488
+00:20:44,240 --> 00:20:51,009
+that it might even be more powerful than
+
+489
+00:20:47,059 --> 00:20:51,009
+we've seen it being thank you very much
+
+490
+00:20:54,940 --> 00:21:01,490
+big thanks to Erin and apologies for the
+
+491
+00:20:58,309 --> 00:21:05,149
+rush Erin there's no rush we've got the
+
+492
+00:21:01,490 --> 00:21:13,249
+five minutes we've got time for time for
+
+493
+00:21:05,149 --> 00:21:15,049
+questions questions thank you might as
+
+494
+00:21:13,249 --> 00:21:15,820
+well make a joke rabbits don't eat
+
+495
+00:21:15,049 --> 00:21:18,679
+carrots
+
+496
+00:21:15,820 --> 00:21:22,399
+the only believes only Bugs Bunny its
+
+497
+00:21:18,679 --> 00:21:24,289
+carrots see you can maybe one day you'll
+
+498
+00:21:22,399 --> 00:21:32,899
+be able to make that assertion using
+
+499
+00:21:24,289 --> 00:21:36,440
+structured data did I catch it correctly
+
+500
+00:21:32,899 --> 00:21:39,440
+that and at Electronic Arts you are kind
+
+501
+00:21:36,440 --> 00:21:41,840
+of having your own graph that you based
+
+502
+00:21:39,440 --> 00:21:45,350
+on schema.org but extended to your
+
+503
+00:21:41,840 --> 00:21:48,470
+domain exactly are you using it really
+
+504
+00:21:45,350 --> 00:21:52,090
+just for marketing and SEO or do you see
+
+505
+00:21:48,470 --> 00:21:54,649
+also being used that and using that in
+
+506
+00:21:52,090 --> 00:21:59,299
+driving games and adding intelligence
+
+507
+00:21:54,649 --> 00:21:59,869
+into actual video games to the time time
+
+508
+00:21:59,299 --> 00:22:02,149
+will tell
+
+509
+00:21:59,869 --> 00:22:04,340
+currently it's used primarily as a the
+
+510
+00:22:02,149 --> 00:22:05,749
+basis for a content graph so being able
+
+511
+00:22:04,340 --> 00:22:07,570
+to provide information to our players
+
+512
+00:22:05,749 --> 00:22:09,409
+and different environments and
+
+513
+00:22:07,570 --> 00:22:11,629
+increasingly in order to personalize
+
+514
+00:22:09,409 --> 00:22:12,799
+content by knowing what it's about and
+
+515
+00:22:11,629 --> 00:22:16,070
+being able to match it to players
+
+516
+00:22:12,799 --> 00:22:18,950
+interests but certainly the in terms of
+
+517
+00:22:16,070 --> 00:22:23,799
+integrating that into the games directly
+
+518
+00:22:18,950 --> 00:22:23,799
+time time will tell okay thanks
+
+519
+00:22:29,080 --> 00:22:33,260
+thanks very much we talk in terms of
+
+520
+00:22:31,730 --> 00:22:35,000
+extending the schema log as you guys
+
+521
+00:22:33,260 --> 00:22:37,400
+have done that's pretty interesting for
+
+522
+00:22:35,000 --> 00:22:39,860
+internal stuff we do the same at the BBC
+
+523
+00:22:37,400 --> 00:22:42,290
+we have our ontology that we learned a
+
+524
+00:22:39,860 --> 00:22:43,730
+lot at the BBC yeah exactly so my
+
+525
+00:22:42,290 --> 00:22:45,710
+questions what happens when it becomes
+
+526
+00:22:43,730 --> 00:22:47,840
+its turn from being an internal thing to
+
+527
+00:22:45,710 --> 00:22:49,820
+when it's time to open up this data and
+
+528
+00:22:47,840 --> 00:22:51,080
+it's a good thing that you have all
+
+529
+00:22:49,820 --> 00:22:54,440
+these different anthologies that look
+
+530
+00:22:51,080 --> 00:22:55,910
+alike but waiting initially extended
+
+531
+00:22:54,440 --> 00:22:57,410
+like you you've got creative works
+
+532
+00:22:55,910 --> 00:22:59,570
+you've got a few other things that we
+
+533
+00:22:57,410 --> 00:23:01,280
+have as well almost mean the same thing
+
+534
+00:22:59,570 --> 00:23:03,160
+just written by different companies and
+
+535
+00:23:01,280 --> 00:23:06,470
+when we expose ours and you expose yours
+
+536
+00:23:03,160 --> 00:23:08,660
+is that all that duplication is that a
+
+537
+00:23:06,470 --> 00:23:10,280
+problem or is that good thing no it's
+
+538
+00:23:08,660 --> 00:23:11,540
+not a good thing you know because these
+
+539
+00:23:10,280 --> 00:23:12,830
+terms should be if you're talking about
+
+540
+00:23:11,540 --> 00:23:14,780
+the same things you should use the same
+
+541
+00:23:12,830 --> 00:23:16,640
+terminology and that's why you know the
+
+542
+00:23:14,780 --> 00:23:19,910
+the extension mechanism now at
+
+543
+00:23:16,640 --> 00:23:21,860
+schema.org is better than it was and I
+
+544
+00:23:19,910 --> 00:23:24,410
+think the more in which you can make a
+
+545
+00:23:21,860 --> 00:23:25,790
+case for having a hosted versus an
+
+546
+00:23:24,410 --> 00:23:27,980
+external extension the better it is
+
+547
+00:23:25,790 --> 00:23:29,720
+because then that vocabulary becomes
+
+548
+00:23:27,980 --> 00:23:31,670
+shared other than that you know with
+
+549
+00:23:29,720 --> 00:23:33,410
+external extensions on the other hand at
+
+550
+00:23:31,670 --> 00:23:36,530
+least you can open that up you know so
+
+551
+00:23:33,410 --> 00:23:38,809
+GS ones smart search vocabulary is
+
+552
+00:23:36,530 --> 00:23:42,230
+available in the web yours is I'm trying
+
+553
+00:23:38,809 --> 00:23:44,140
+to get some some of ours up and in terms
+
+554
+00:23:42,230 --> 00:23:46,370
+of the cavalieri development I chair the
+
+555
+00:23:44,140 --> 00:23:49,340
+community interest group on video games
+
+556
+00:23:46,370 --> 00:23:52,580
+for extending video games and what's
+
+557
+00:23:49,340 --> 00:23:54,010
+obviously better than us at EA bumbling
+
+558
+00:23:52,580 --> 00:23:56,480
+through and coming up with our own
+
+559
+00:23:54,010 --> 00:23:58,760
+extensions is to work collaboratively
+
+560
+00:23:56,480 --> 00:24:01,900
+with others in the industry that's going
+
+561
+00:23:58,760 --> 00:24:01,900
+to make it much more robust
+
+562
+00:24:04,270 --> 00:24:11,440
+time for very clever I was gonna ask you
+
+563
+00:24:09,700 --> 00:24:13,030
+something about the Google structured
+
+564
+00:24:11,440 --> 00:24:15,190
+data tool mm-hm
+
+565
+00:24:13,030 --> 00:24:17,140
+which is at least you know for for me
+
+566
+00:24:15,190 --> 00:24:19,030
+people my team is the main way to check
+
+567
+00:24:17,140 --> 00:24:20,380
+whether a schema.org markup is good
+
+568
+00:24:19,030 --> 00:24:23,140
+enough to understand what Google does
+
+569
+00:24:20,380 --> 00:24:24,850
+with it and so the question is about the
+
+570
+00:24:23,140 --> 00:24:26,980
+extensions you have to make to do
+
+571
+00:24:24,850 --> 00:24:28,480
+schema.org maybe because you know it's
+
+572
+00:24:26,980 --> 00:24:31,600
+something very specific to your domain
+
+573
+00:24:28,480 --> 00:24:34,540
+and if you put that metadata into your
+
+574
+00:24:31,600 --> 00:24:36,340
+schema.org snippet and you pass it to
+
+575
+00:24:34,540 --> 00:24:39,340
+the Google structured data tool it
+
+576
+00:24:36,340 --> 00:24:41,650
+complains about it I'm sure well so the
+
+577
+00:24:39,340 --> 00:24:43,180
+we don't you know we don't really know
+
+578
+00:24:41,650 --> 00:24:45,100
+whether that's a good thing or a bad
+
+579
+00:24:43,180 --> 00:24:47,590
+thing whether we should strict out those
+
+580
+00:24:45,100 --> 00:24:49,570
+extra tags knowing that maybe other
+
+581
+00:24:47,590 --> 00:24:51,970
+people not Google or other people may
+
+582
+00:24:49,570 --> 00:24:54,040
+consume it and find it useful so is that
+
+583
+00:24:51,970 --> 00:24:56,980
+detrimental to the you know
+
+584
+00:24:54,040 --> 00:24:58,780
+discoverability aspect no simply because
+
+585
+00:24:56,980 --> 00:25:00,130
+you get the structured data testing tool
+
+586
+00:24:58,780 --> 00:25:02,080
+complaining doesn't mean that it's
+
+587
+00:25:00,130 --> 00:25:03,970
+neither embellish syntax nor that it's
+
+588
+00:25:02,080 --> 00:25:06,730
+not necessarily interesting in good
+
+589
+00:25:03,970 --> 00:25:08,520
+vocabulary right it just means that
+
+590
+00:25:06,730 --> 00:25:10,720
+Google doesn't understand it so
+
+591
+00:25:08,520 --> 00:25:14,290
+certainly I wouldn't worry you know and
+
+592
+00:25:10,720 --> 00:25:16,060
+I've seen schema.org and additional
+
+593
+00:25:14,290 --> 00:25:19,060
+structured data used in all sorts of
+
+594
+00:25:16,060 --> 00:25:21,400
+circumstances that caused the SD DD to
+
+595
+00:25:19,060 --> 00:25:23,970
+complain and don't worry about it yeah
+
+596
+00:25:21,400 --> 00:25:27,580
+good to know Thanks
+
+597
+00:25:23,970 --> 00:25:31,840
+okay and a big big thank you round of
+
+598
+00:25:27,580 --> 00:25:33,900
+applause for our great
+
+599
+00:25:31,840 --> 00:25:33,900
+you
+
