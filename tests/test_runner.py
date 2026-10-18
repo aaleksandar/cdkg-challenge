@@ -473,3 +473,25 @@ def test_a_second_upload_of_a_recording_is_never_auto_ingested(state):
     verdicts = dict(scheduler._ingestable(["old", "new"]))
     assert verdicts["old"] is None
     assert verdicts["new"] == "a second upload of old"
+
+
+def test_a_premiere_the_server_cannot_look_up_is_ingested_once_the_playlist_shows_it_aired(
+        state, monkeypatch):
+    """The production failure end to end: the bot check strips the lookup of
+    its live status, so only the uploads playlist can say the premiere aired."""
+    from ingest import scheduler
+    from ingest.sources import youtube
+
+    ingested = _auto(monkeypatch)
+    db.upsert_videos([{"video_id": "NRq0XewxMW0", "title": "Premiere", "url": "u",
+                       "live_status": "is_upcoming", "published_at": "2026-10-08T00:00:00Z"}])
+    monkeypatch.setattr(youtube, "fetch_video_info", lambda vid: {"id": vid, "title": "Premiere"})
+    monkeypatch.setattr(youtube, "enumerate_channel", lambda limit=None: [
+        {"video_id": "NRq0XewxMW0", "title": "Premiere", "url": "u", "duration": 2016,
+         "live_status": None}])
+
+    scheduler.poll_for_new_videos()
+    assert ingested == ["NRq0XewxMW0"] and _status("NRq0XewxMW0") == "not_live"
+
+    scheduler.poll_for_new_videos()
+    assert ingested == ["NRq0XewxMW0"]

@@ -1,0 +1,3332 @@
+1
+00:00:04,620 --> 00:00:10,059
+my name is Agustin kanashii I'm a
+
+2
+00:00:07,120 --> 00:00:11,860
+software engineer with the NEC and I'm
+
+3
+00:00:10,059 --> 00:00:14,320
+gonna talk today about some of the work
+
+4
+00:00:11,860 --> 00:00:17,290
+we've been doing proving the performance
+
+5
+00:00:14,320 --> 00:00:20,619
+and scalability of our content metadata
+
+6
+00:00:17,290 --> 00:00:22,090
+published in pipeline I'll give an
+
+7
+00:00:20,619 --> 00:00:24,010
+introduction about one of the use cases
+
+8
+00:00:22,090 --> 00:00:26,380
+in terms of publishing content metadata
+
+9
+00:00:24,010 --> 00:00:29,170
+I'm just repeating it and then I'll give
+
+10
+00:00:26,380 --> 00:00:30,880
+an overview of our main architecture and
+
+11
+00:00:29,170 --> 00:00:32,309
+what the issues are that we face in
+
+12
+00:00:30,880 --> 00:00:34,360
+terms of scalability and performance
+
+13
+00:00:32,309 --> 00:00:36,880
+then I'll talk about the work we've been
+
+14
+00:00:34,360 --> 00:00:38,890
+doing in building materialized views to
+
+15
+00:00:36,880 --> 00:00:40,840
+deal with that those issues and finally
+
+16
+00:00:38,890 --> 00:00:43,030
+a few things we have to consider are
+
+17
+00:00:40,840 --> 00:00:48,750
+things we have to deal with asparagus
+
+18
+00:00:43,030 --> 00:00:52,000
+water so the main use case is moving
+
+19
+00:00:48,750 --> 00:00:55,660
+metadata about the VC content from the
+
+20
+00:00:52,000 --> 00:00:57,520
+system staff that created many editorial
+
+21
+00:00:55,660 --> 00:01:00,100
+systems to the system that comes limited
+
+22
+00:00:57,520 --> 00:01:01,690
+mainly audience facing products so from
+
+23
+00:01:00,100 --> 00:01:07,180
+content management systems on one end
+
+24
+00:01:01,690 --> 00:01:09,100
+through the sports website I need to get
+
+25
+00:01:07,180 --> 00:01:11,770
+this metadata published and distributed
+
+26
+00:01:09,100 --> 00:01:14,530
+within the BBC so most of what I'll be
+
+27
+00:01:11,770 --> 00:01:19,619
+talking about is internals closed closed
+
+28
+00:01:14,530 --> 00:01:22,750
+system so the team that I work with is
+
+29
+00:01:19,619 --> 00:01:25,240
+involved in propagating some of these
+
+30
+00:01:22,750 --> 00:01:27,970
+metadata across and we've been having
+
+31
+00:01:25,240 --> 00:01:30,459
+used and linked data solution triples
+
+32
+00:01:27,970 --> 00:01:34,509
+falls over the last five to six years to
+
+33
+00:01:30,459 --> 00:01:36,130
+this the type of detail of particularly
+
+34
+00:01:34,509 --> 00:01:38,679
+interested in these gates are relating
+
+35
+00:01:36,130 --> 00:01:40,420
+to type DVC content so in this case you
+
+36
+00:01:38,679 --> 00:01:42,490
+have you have this node here which
+
+37
+00:01:40,420 --> 00:01:44,740
+represents some DBC content maybe an
+
+38
+00:01:42,490 --> 00:01:47,050
+article page maybe a story maybe a live
+
+39
+00:01:44,740 --> 00:01:50,020
+stream it you have things like the types
+
+40
+00:01:47,050 --> 00:01:51,310
+you this it was created look needs out
+
+41
+00:01:50,020 --> 00:01:53,319
+in the BBC where you can fetch the
+
+42
+00:01:51,310 --> 00:01:55,690
+actual content from houses about
+
+43
+00:01:53,319 --> 00:01:58,890
+properties linking it to other BBC
+
+44
+00:01:55,690 --> 00:02:00,670
+entities mainly people places
+
+45
+00:01:58,890 --> 00:02:02,709
+organisations
+
+46
+00:02:00,670 --> 00:02:06,009
+abstract concepts are of interest to
+
+47
+00:02:02,709 --> 00:02:07,509
+both us and our audiences and what
+
+48
+00:02:06,009 --> 00:02:09,220
+happens is these things could also have
+
+49
+00:02:07,509 --> 00:02:12,159
+properties on your own and links other
+
+50
+00:02:09,220 --> 00:02:15,760
+open source and open linkage solutions
+
+51
+00:02:12,159 --> 00:02:16,880
+like in the video section so is metadata
+
+52
+00:02:15,760 --> 00:02:19,910
+like this
+
+53
+00:02:16,880 --> 00:02:22,190
+created typically alongside the actual
+
+54
+00:02:19,910 --> 00:02:24,530
+content so when a journalist is actually
+
+55
+00:02:22,190 --> 00:02:27,260
+creates in the article typing up that's
+
+56
+00:02:24,530 --> 00:02:29,510
+when data like this is captured and need
+
+57
+00:02:27,260 --> 00:02:31,610
+to go to some system so the systems that
+
+58
+00:02:29,510 --> 00:02:33,830
+then have audience efficient products
+
+59
+00:02:31,610 --> 00:02:35,270
+can then query create that system and
+
+60
+00:02:33,830 --> 00:02:37,220
+get that metadata rather odd
+
+61
+00:02:35,270 --> 00:02:38,870
+it's a typical example is something like
+
+62
+00:02:37,220 --> 00:02:41,090
+this you can say give me all the top ten
+
+63
+00:02:38,870 --> 00:02:42,980
+articles about English football team
+
+64
+00:02:41,090 --> 00:02:45,440
+order by dates published and then damage
+
+65
+00:02:42,980 --> 00:02:47,780
+data can then be used in various ways to
+
+66
+00:02:45,440 --> 00:02:50,960
+in which M user experience this is just
+
+67
+00:02:47,780 --> 00:02:52,850
+one example they're put out here is what
+
+68
+00:02:50,960 --> 00:02:55,910
+gets in the data from the source to the
+
+69
+00:02:52,850 --> 00:03:00,230
+destination basically and its inner I
+
+70
+00:02:55,910 --> 00:03:02,270
+work with we maintain the central where
+
+71
+00:03:00,230 --> 00:03:04,490
+all these data lives and the API is
+
+72
+00:03:02,270 --> 00:03:06,500
+around that data so our clients
+
+73
+00:03:04,490 --> 00:03:08,540
+typically would be editorial systems
+
+74
+00:03:06,500 --> 00:03:13,250
+manned by journalists and distribution
+
+75
+00:03:08,540 --> 00:03:15,530
+systems used to use to basically
+
+76
+00:03:13,250 --> 00:03:18,200
+displayed it as users and we have this
+
+77
+00:03:15,530 --> 00:03:20,540
+central clusters triple star clusters at
+
+78
+00:03:18,200 --> 00:03:22,880
+the mediator has all this data we have
+
+79
+00:03:20,540 --> 00:03:25,220
+API is on both ends so to write the data
+
+80
+00:03:22,880 --> 00:03:28,010
+we have a write API the handles things
+
+81
+00:03:25,220 --> 00:03:29,540
+like access control and validation so
+
+82
+00:03:28,010 --> 00:03:30,950
+before that I gets into the system which
+
+83
+00:03:29,540 --> 00:03:32,630
+actor it means certain business rules
+
+84
+00:03:30,950 --> 00:03:35,030
+without the right form asset section and
+
+85
+00:03:32,630 --> 00:03:37,130
+then we we ingest our data and on the
+
+86
+00:03:35,030 --> 00:03:40,220
+read side most of our clients we have a
+
+87
+00:03:37,130 --> 00:03:42,710
+fairly rich flexible read API that would
+
+88
+00:03:40,220 --> 00:03:45,020
+expose this data so our internal clients
+
+89
+00:03:42,710 --> 00:03:47,720
+so there were query us using no more
+
+90
+00:03:45,020 --> 00:03:49,040
+HTTP with query parameters behind the
+
+91
+00:03:47,720 --> 00:03:51,560
+scenes with the end generates Markku and
+
+92
+00:03:49,040 --> 00:03:53,120
+send that reboost or some of our clients
+
+93
+00:03:51,560 --> 00:03:55,280
+have direct access to the free booster
+
+94
+00:03:53,120 --> 00:03:58,280
+and we have to keep a balance between
+
+95
+00:03:55,280 --> 00:04:00,560
+the two for us the balance is between
+
+96
+00:03:58,280 --> 00:04:02,270
+using custom API is in front of the
+
+97
+00:04:00,560 --> 00:04:04,600
+triple store and exposing the actual
+
+98
+00:04:02,270 --> 00:04:08,000
+sparkle endpoints centers around
+
+99
+00:04:04,600 --> 00:04:11,300
+performance and this our integrity
+
+100
+00:04:08,000 --> 00:04:13,370
+so if we have API is you could make
+
+101
+00:04:11,300 --> 00:04:15,800
+effective use of caching layers you
+
+102
+00:04:13,370 --> 00:04:17,299
+could write optimized sparkle queries
+
+103
+00:04:15,800 --> 00:04:20,480
+that work and apply them to all the
+
+104
+00:04:17,299 --> 00:04:21,739
+clients just once and in terms of data
+
+105
+00:04:20,480 --> 00:04:23,750
+integrity who's absolutely crucial
+
+106
+00:04:21,739 --> 00:04:25,970
+crucial because these use cases used to
+
+107
+00:04:23,750 --> 00:04:27,410
+drive audience within products we need a
+
+108
+00:04:25,970 --> 00:04:29,150
+lot of checks to make sure the data that
+
+109
+00:04:27,410 --> 00:04:30,710
+goes into the system is of high quality
+
+110
+00:04:29,150 --> 00:04:32,540
+otherwise you have some William
+
+111
+00:04:30,710 --> 00:04:33,920
+seeing things popping up on the front
+
+112
+00:04:32,540 --> 00:04:35,690
+page which has happened in the past I
+
+113
+00:04:33,920 --> 00:04:37,430
+wouldn't show you any screenshots or the
+
+114
+00:04:35,690 --> 00:04:39,170
+kind of things but you can imagine these
+
+115
+00:04:37,430 --> 00:04:40,880
+things are improperly tags you can have
+
+116
+00:04:39,170 --> 00:04:42,530
+adult content on children pages you
+
+117
+00:04:40,880 --> 00:04:44,180
+could have out of context things
+
+118
+00:04:42,530 --> 00:04:46,310
+happening so it's extremely important in
+
+119
+00:04:44,180 --> 00:04:48,260
+terms of data quality so Carol I protect
+
+120
+00:04:46,310 --> 00:04:50,120
+the data I would is api's I realize many
+
+121
+00:04:48,260 --> 00:04:52,670
+practitioners don't like this the idea
+
+122
+00:04:50,120 --> 00:04:54,740
+of exposing Sparkle endpoints and means
+
+123
+00:04:52,670 --> 00:04:57,410
+that clients are very flexible they can
+
+124
+00:04:54,740 --> 00:04:59,000
+innovate quickly for now they set the
+
+125
+00:04:57,410 --> 00:05:00,950
+transmission bottleneck if a client
+
+126
+00:04:59,000 --> 00:05:03,680
+wants to use the data in a new way of
+
+127
+00:05:00,950 --> 00:05:06,200
+format they have to come to us there is
+
+128
+00:05:03,680 --> 00:05:08,540
+a request for feature to identity API
+
+129
+00:05:06,200 --> 00:05:10,490
+and then we become kinda the bottleneck
+
+130
+00:05:08,540 --> 00:05:12,320
+and the hindrance for innovation so it's
+
+131
+00:05:10,490 --> 00:05:14,090
+getting the right balance that's the key
+
+132
+00:05:12,320 --> 00:05:16,160
+for us most of our clients are happy to
+
+133
+00:05:14,090 --> 00:05:18,530
+use our API and for special specific
+
+134
+00:05:16,160 --> 00:05:21,350
+cases where we have to expose parkland
+
+135
+00:05:18,530 --> 00:05:23,360
+points a select view of well trained
+
+136
+00:05:21,350 --> 00:05:25,190
+internal clients have access to a
+
+137
+00:05:23,360 --> 00:05:27,050
+Sparkle endpoint have read-only access
+
+138
+00:05:25,190 --> 00:05:28,490
+to a sparkle endpoint class the way it
+
+139
+00:05:27,050 --> 00:05:30,290
+works is been working over the past six
+
+140
+00:05:28,490 --> 00:05:32,090
+years they're empowering lots of
+
+141
+00:05:30,290 --> 00:05:34,430
+different use cases within the BBC and
+
+142
+00:05:32,090 --> 00:05:36,620
+we've been thinking about going the next
+
+143
+00:05:34,430 --> 00:05:37,970
+level and exposing this making this open
+
+144
+00:05:36,620 --> 00:05:39,950
+so people can actually hits the api's
+
+145
+00:05:37,970 --> 00:05:41,780
+from outside of the BBC that has always
+
+146
+00:05:39,950 --> 00:05:44,120
+been like the next the next step this is
+
+147
+00:05:41,780 --> 00:05:45,830
+working out good so about a year ago we
+
+148
+00:05:44,120 --> 00:05:48,350
+started looking at performance and
+
+149
+00:05:45,830 --> 00:05:49,640
+scalability which I seen the rate at
+
+150
+00:05:48,350 --> 00:05:51,590
+which were ingesting data because we
+
+151
+00:05:49,640 --> 00:05:53,120
+never true data we week a new concert
+
+152
+00:05:51,590 --> 00:05:56,030
+messages are being generated every day
+
+153
+00:05:53,120 --> 00:05:57,770
+and data keeps growing and as adoption
+
+154
+00:05:56,030 --> 00:05:59,720
+increases within the BBC I'm potential
+
+155
+00:05:57,770 --> 00:06:00,980
+in the general public how can we ensure
+
+156
+00:05:59,720 --> 00:06:04,490
+the things still scaleable
+
+157
+00:06:00,980 --> 00:06:07,570
+2017 is on some load forecasting test so
+
+158
+00:06:04,490 --> 00:06:10,160
+that the actual data we have double and
+
+159
+00:06:07,570 --> 00:06:12,170
+performance our SLS will also take it
+
+160
+00:06:10,160 --> 00:06:14,210
+take a hitting at the current rates
+
+161
+00:06:12,170 --> 00:06:16,760
+assuming things don't improve so that
+
+162
+00:06:14,210 --> 00:06:19,280
+scalability bottleneck for kind of 2018
+
+163
+00:06:16,760 --> 00:06:21,110
+2019 I was thinking about how can we
+
+164
+00:06:19,280 --> 00:06:23,840
+improve this how can we make this better
+
+165
+00:06:21,110 --> 00:06:25,190
+obviously we did quite a lot on the
+
+166
+00:06:23,840 --> 00:06:27,080
+triple story itself to improve the
+
+167
+00:06:25,190 --> 00:06:29,960
+performance and make it faster and the
+
+168
+00:06:27,080 --> 00:06:32,000
+husband all or good but fundamentally
+
+169
+00:06:29,960 --> 00:06:33,890
+think of how we stored it and how we
+
+170
+00:06:32,000 --> 00:06:35,180
+publish this data was needed and that's
+
+171
+00:06:33,890 --> 00:06:36,950
+kind of like kicked off this work has
+
+172
+00:06:35,180 --> 00:06:38,690
+been about a year since we've been
+
+173
+00:06:36,950 --> 00:06:41,000
+experiment in different ideas and
+
+174
+00:06:38,690 --> 00:06:42,830
+different ways and what I'm gonna show
+
+175
+00:06:41,000 --> 00:06:44,620
+you next is camera where we've gotten to
+
+176
+00:06:42,830 --> 00:06:46,759
+in that evolution
+
+177
+00:06:44,620 --> 00:06:48,949
+so what do we know about the requests
+
+178
+00:06:46,759 --> 00:06:50,449
+coming into our read API smart clients
+
+179
+00:06:48,949 --> 00:06:52,909
+but those are picky clients the ones
+
+180
+00:06:50,449 --> 00:06:54,319
+that have users like yourself relying on
+
+181
+00:06:52,909 --> 00:06:57,620
+these queries to be fast and scalable
+
+182
+00:06:54,319 --> 00:06:59,000
+and what can we say about those queries
+
+183
+00:06:57,620 --> 00:07:00,949
+well we can begin to group them into
+
+184
+00:06:59,000 --> 00:07:03,139
+what we call profiles so if you look at
+
+185
+00:07:00,949 --> 00:07:04,669
+query requests coming in we can look at
+
+186
+00:07:03,139 --> 00:07:06,349
+what type of sparkle queries that we
+
+187
+00:07:04,669 --> 00:07:08,750
+generates in for this API request and
+
+188
+00:07:06,349 --> 00:07:11,180
+can we group them together into certain
+
+189
+00:07:08,750 --> 00:07:12,710
+categories or query profiles and if we
+
+190
+00:07:11,180 --> 00:07:14,960
+can then what can we do with that
+
+191
+00:07:12,710 --> 00:07:17,029
+knowledge so you can have some queries
+
+192
+00:07:14,960 --> 00:07:18,979
+that look like this just a client gives
+
+193
+00:07:17,029 --> 00:07:21,469
+us an identifier and say get me the
+
+194
+00:07:18,979 --> 00:07:24,379
+document giving this identifier so it's
+
+195
+00:07:21,469 --> 00:07:25,279
+a fairly simple by identifying clearly
+
+196
+00:07:24,379 --> 00:07:27,409
+which is okay
+
+197
+00:07:25,279 --> 00:07:29,300
+you have some die require some search
+
+198
+00:07:27,409 --> 00:07:32,300
+and some filtering they gave me all the
+
+199
+00:07:29,300 --> 00:07:33,949
+documents subject to these these filters
+
+200
+00:07:32,300 --> 00:07:35,689
+these these requirements we have to do
+
+201
+00:07:33,949 --> 00:07:37,939
+some filtering in there to get data out
+
+202
+00:07:35,689 --> 00:07:40,099
+and you have something actually use the
+
+203
+00:07:37,939 --> 00:07:42,110
+graph want you to traverse the graph a
+
+204
+00:07:40,099 --> 00:07:43,340
+bit more of view hops from a certain
+
+205
+00:07:42,110 --> 00:07:44,930
+points get me all the documents about
+
+206
+00:07:43,340 --> 00:07:47,300
+this relationship to have that
+
+207
+00:07:44,930 --> 00:07:51,469
+relationship has that value as we has to
+
+208
+00:07:47,300 --> 00:07:54,770
+be more graph based based clearing and
+
+209
+00:07:51,469 --> 00:07:58,849
+we can also look at grouping our our
+
+210
+00:07:54,770 --> 00:08:00,770
+REST API clients by performance and
+
+211
+00:07:58,849 --> 00:08:04,069
+volume requirement so we can ask
+
+212
+00:08:00,770 --> 00:08:06,199
+ourselves how often these clients ketose
+
+213
+00:08:04,069 --> 00:08:08,210
+and or added appropriate performance
+
+214
+00:08:06,199 --> 00:08:10,370
+requirements and begin to group requests
+
+215
+00:08:08,210 --> 00:08:11,629
+based on that as well so this is kinda
+
+216
+00:08:10,370 --> 00:08:13,669
+it's not very strict as a blood
+
+217
+00:08:11,629 --> 00:08:15,560
+categorization but it works quite well
+
+218
+00:08:13,669 --> 00:08:17,330
+for us you have some clients a low
+
+219
+00:08:15,560 --> 00:08:20,270
+volume so that he does a few hundred
+
+220
+00:08:17,330 --> 00:08:21,620
+times an hour and loop performance
+
+221
+00:08:20,270 --> 00:08:24,259
+requirements as well so they don't
+
+222
+00:08:21,620 --> 00:08:26,870
+really mind if we take half a second or
+
+223
+00:08:24,259 --> 00:08:27,650
+maybe even a second to respond I kind of
+
+224
+00:08:26,870 --> 00:08:29,539
+happy with that
+
+225
+00:08:27,650 --> 00:08:33,140
+sometimes I hit us with a lot of
+
+226
+00:08:29,539 --> 00:08:34,820
+requests of you 100,000 an hour and
+
+227
+00:08:33,140 --> 00:08:36,289
+really really care that the request
+
+228
+00:08:34,820 --> 00:08:37,690
+comes in in less than hundred
+
+229
+00:08:36,289 --> 00:08:39,769
+milliseconds somewhere otherwise
+
+230
+00:08:37,690 --> 00:08:43,070
+audience facing products begin to see
+
+231
+00:08:39,769 --> 00:08:44,839
+see slowness it's generally divided
+
+232
+00:08:43,070 --> 00:08:47,120
+along the editorial and distribution
+
+233
+00:08:44,839 --> 00:08:48,829
+line so the editorial to send to be more
+
+234
+00:08:47,120 --> 00:08:50,990
+forgiving the true manned by a
+
+235
+00:08:48,829 --> 00:08:53,000
+journalist and see more forgiving that
+
+236
+00:08:50,990 --> 00:08:54,829
+can wait for half a second or a second
+
+237
+00:08:53,000 --> 00:08:57,020
+to get these things happen on the other
+
+238
+00:08:54,829 --> 00:08:58,220
+hand to to start systems that are for
+
+239
+00:08:57,020 --> 00:09:00,890
+audience visible
+
+240
+00:08:58,220 --> 00:09:02,270
+to be really fast there's also something
+
+241
+00:09:00,890 --> 00:09:04,100
+to say about the complexity of the
+
+242
+00:09:02,270 --> 00:09:06,320
+babies although this is a very clean cut
+
+243
+00:09:04,100 --> 00:09:08,300
+but it tends to be the editorial to have
+
+244
+00:09:06,320 --> 00:09:11,600
+slightly more complex queries than those
+
+245
+00:09:08,300 --> 00:09:13,250
+power in the distribution end so with
+
+246
+00:09:11,600 --> 00:09:15,590
+all these with all these groupings we
+
+247
+00:09:13,250 --> 00:09:18,290
+can begin to put clients together more
+
+248
+00:09:15,590 --> 00:09:20,660
+accurately put requests together into
+
+249
+00:09:18,290 --> 00:09:23,060
+requests profiles and this is this
+
+250
+00:09:20,660 --> 00:09:24,680
+becomes this is the controversial bit do
+
+251
+00:09:23,060 --> 00:09:26,540
+we need to send all these things through
+
+252
+00:09:24,680 --> 00:09:28,040
+to a trip boost or do we need to send
+
+253
+00:09:26,540 --> 00:09:30,290
+all this requests through to a graph
+
+254
+00:09:28,040 --> 00:09:33,230
+database our career is graph like yes
+
+255
+00:09:30,290 --> 00:09:35,450
+the data itself is best represented in a
+
+256
+00:09:33,230 --> 00:09:37,850
+graph but to all the queries actually
+
+257
+00:09:35,450 --> 00:09:40,580
+are they actually optimize for for graph
+
+258
+00:09:37,850 --> 00:09:42,290
+databases and the hypothesis is no so
+
+259
+00:09:40,580 --> 00:09:44,990
+what do we do to experiment this worker
+
+260
+00:09:42,290 --> 00:09:46,910
+begins remove some clients off off the
+
+261
+00:09:44,990 --> 00:09:48,770
+triple store and put them in audited or
+
+262
+00:09:46,910 --> 00:09:50,510
+the data sources and is it gonna be easy
+
+263
+00:09:48,770 --> 00:09:52,310
+and feasible to keep these data sources
+
+264
+00:09:50,510 --> 00:09:54,290
+in sync and that's kinda like where we
+
+265
+00:09:52,310 --> 00:09:55,730
+started from and all about evolutionary
+
+266
+00:09:54,290 --> 00:09:57,650
+architectures right you start with where
+
+267
+00:09:55,730 --> 00:10:00,020
+you are slightly involve your
+
+268
+00:09:57,650 --> 00:10:02,840
+architecture learn from what you've done
+
+269
+00:10:00,020 --> 00:10:04,100
+and potentially robach if you have to so
+
+270
+00:10:02,840 --> 00:10:06,500
+about a year ago we started tinkering
+
+271
+00:10:04,100 --> 00:10:08,360
+around the seams by the whole system and
+
+272
+00:10:06,500 --> 00:10:10,880
+seeing what works what doesn't work and
+
+273
+00:10:08,360 --> 00:10:13,520
+now we now know in a case where we have
+
+274
+00:10:10,880 --> 00:10:17,360
+about 70% of all the requests that used
+
+275
+00:10:13,520 --> 00:10:19,940
+to go through busto going elsewhere this
+
+276
+00:10:17,360 --> 00:10:21,560
+is the target architecture division this
+
+277
+00:10:19,940 --> 00:10:23,690
+is what we we started to achieve when we
+
+278
+00:10:21,560 --> 00:10:25,610
+started with we're here at the moment
+
+279
+00:10:23,690 --> 00:10:27,950
+for something similar so we still have
+
+280
+00:10:25,610 --> 00:10:29,900
+our API on both ends we have a write API
+
+281
+00:10:27,950 --> 00:10:31,850
+and RVD API so our clients don't know
+
+282
+00:10:29,900 --> 00:10:33,680
+anything's changed still interacting
+
+283
+00:10:31,850 --> 00:10:35,000
+with us the way they've always done when
+
+284
+00:10:33,680 --> 00:10:36,710
+the clients who aren't gonna benefit
+
+285
+00:10:35,000 --> 00:10:38,630
+from all these are the clients who hit
+
+286
+00:10:36,710 --> 00:10:40,190
+our sparklin point directly for reading
+
+287
+00:10:38,630 --> 00:10:41,800
+and they actually specialize in the
+
+288
+00:10:40,190 --> 00:10:44,660
+first place they do real hardcore
+
+289
+00:10:41,800 --> 00:10:46,190
+graph and base query so they're suited
+
+290
+00:10:44,660 --> 00:10:47,840
+for the triple store that's why they
+
+291
+00:10:46,190 --> 00:10:50,480
+have the need direct spotter access in
+
+292
+00:10:47,840 --> 00:10:51,710
+first place so the they kind of okay the
+
+293
+00:10:50,480 --> 00:10:53,300
+rest of our client just continues in the
+
+294
+00:10:51,710 --> 00:10:54,740
+system as as they've always done and
+
+295
+00:10:53,300 --> 00:10:57,050
+behind the scenes what we're now doing
+
+296
+00:10:54,740 --> 00:10:59,030
+is every request that comes right API
+
+297
+00:10:57,050 --> 00:11:01,160
+after it's gone through validation and
+
+298
+00:10:59,030 --> 00:11:03,170
+checks and and it's all good it comes in
+
+299
+00:11:01,160 --> 00:11:05,180
+as an event and I event to stay in an
+
+300
+00:11:03,170 --> 00:11:08,270
+event store and we have these publishing
+
+301
+00:11:05,180 --> 00:11:10,370
+pipelines for each event a comes in a
+
+302
+00:11:08,270 --> 00:11:12,050
+copy of that event gets ingested through
+
+303
+00:11:10,370 --> 00:11:13,519
+these publishing pipelines
+
+304
+00:11:12,050 --> 00:11:15,800
+and these pipelines didn't take that
+
+305
+00:11:13,519 --> 00:11:17,509
+data format is in a given way I'm
+
+306
+00:11:15,800 --> 00:11:19,790
+putting in a separate database
+
+307
+00:11:17,509 --> 00:11:22,309
+it might be an s3 bucket it might be a
+
+308
+00:11:19,790 --> 00:11:23,809
+dynamo table might be an RDS table or it
+
+309
+00:11:22,309 --> 00:11:25,399
+might just remain in the triple star
+
+310
+00:11:23,809 --> 00:11:27,829
+where it's always been so we have this
+
+311
+00:11:25,399 --> 00:11:29,869
+copies of the same data which always
+
+312
+00:11:27,829 --> 00:11:32,389
+makes people nervous but this copies of
+
+313
+00:11:29,869 --> 00:11:33,980
+the same data in these various views and
+
+314
+00:11:32,389 --> 00:11:37,220
+in our API is that you can then use to
+
+315
+00:11:33,980 --> 00:11:38,839
+serve serve that desire to clients the
+
+316
+00:11:37,220 --> 00:11:40,279
+idea of the vision is well request then
+
+317
+00:11:38,839 --> 00:11:43,249
+coming we can determine what profile
+
+318
+00:11:40,279 --> 00:11:51,259
+your based on and see what view is best
+
+319
+00:11:43,249 --> 00:11:53,209
+used to satisfy microservices coming
+
+320
+00:11:51,259 --> 00:11:54,529
+here very well because first of all you
+
+321
+00:11:53,209 --> 00:11:56,209
+won't be able to build something small
+
+322
+00:11:54,529 --> 00:11:58,429
+and throw it away if you don't need to
+
+323
+00:11:56,209 --> 00:11:59,929
+going to be able to scale certain bits
+
+324
+00:11:58,429 --> 00:12:02,029
+of the system independently of the rest
+
+325
+00:11:59,929 --> 00:12:04,819
+so previously we had to massively API
+
+326
+00:12:02,029 --> 00:12:06,589
+sitting in front on both sides of the
+
+327
+00:12:04,819 --> 00:12:07,939
+triple stories and right I want to be
+
+328
+00:12:06,589 --> 00:12:09,379
+able to build certain components that
+
+329
+00:12:07,939 --> 00:12:10,999
+need to scale and scale them
+
+330
+00:12:09,379 --> 00:12:12,769
+independently once we will to have
+
+331
+00:12:10,999 --> 00:12:14,420
+reusable components I can use in the
+
+332
+00:12:12,769 --> 00:12:16,100
+various ways especially given the fact
+
+333
+00:12:14,420 --> 00:12:18,079
+that these these publishing pipelines
+
+334
+00:12:16,100 --> 00:12:20,929
+are almost going to be identical in many
+
+335
+00:12:18,079 --> 00:12:24,679
+of the components they need so we start
+
+336
+00:12:20,929 --> 00:12:26,779
+splitting things up and much more so I
+
+337
+00:12:24,679 --> 00:12:28,279
+was assuming too that through an example
+
+338
+00:12:26,779 --> 00:12:30,230
+of what a typical one of these would
+
+339
+00:12:28,279 --> 00:12:32,259
+look like and what if one of the
+
+340
+00:12:30,230 --> 00:12:35,119
+distribution want to look like as well
+
+341
+00:12:32,259 --> 00:12:37,129
+so the publishing one is what mentioning
+
+342
+00:12:35,119 --> 00:12:38,990
+here that we didn't stop what we
+
+343
+00:12:37,129 --> 00:12:40,339
+currently do so why all this process is
+
+344
+00:12:38,990 --> 00:12:42,379
+going on we still have our central
+
+345
+00:12:40,339 --> 00:12:43,819
+triple store our source of truth we
+
+346
+00:12:42,379 --> 00:12:45,769
+still have our rights and really api's
+
+347
+00:12:43,819 --> 00:12:46,970
+that are feeding that so that isn't
+
+348
+00:12:45,769 --> 00:12:49,189
+changing we're just evolved in the
+
+349
+00:12:46,970 --> 00:12:51,049
+architecture adding extra bits on top of
+
+350
+00:12:49,189 --> 00:12:52,759
+that I remove an extra bit when we need
+
+351
+00:12:51,049 --> 00:12:54,559
+so that still happening clients are
+
+352
+00:12:52,759 --> 00:12:56,839
+still happy they still being served the
+
+353
+00:12:54,559 --> 00:12:59,209
+way they've always been served what what
+
+354
+00:12:56,839 --> 00:13:01,759
+we do as a fried effect for ingest is
+
+355
+00:12:59,209 --> 00:13:03,829
+for every operation that comes all right
+
+356
+00:13:01,759 --> 00:13:07,429
+API we create an event and put in a
+
+357
+00:13:03,829 --> 00:13:09,949
+queue that Q that Q then powers a lambda
+
+358
+00:13:07,429 --> 00:13:11,319
+once again you can see the scalability
+
+359
+00:13:09,949 --> 00:13:13,850
+benefits from using things like service
+
+360
+00:13:11,319 --> 00:13:16,549
+lambdas or small API so you can just
+
+361
+00:13:13,850 --> 00:13:18,919
+build up spin up and truly that lambda
+
+362
+00:13:16,549 --> 00:13:20,419
+will pretend to be a client quick the
+
+363
+00:13:18,919 --> 00:13:22,009
+data from the radiator like any other
+
+364
+00:13:20,419 --> 00:13:24,290
+clients we do it might do some
+
+365
+00:13:22,009 --> 00:13:26,240
+transformation depend on what it's meant
+
+366
+00:13:24,290 --> 00:13:29,060
+the pipeline's object ISA and is
+
+367
+00:13:26,240 --> 00:13:31,279
+inserted into some special custom
+
+368
+00:13:29,060 --> 00:13:33,050
+database whatever database we choose for
+
+369
+00:13:31,279 --> 00:13:35,570
+that particular pipeline so once that's
+
+370
+00:13:33,050 --> 00:13:37,190
+done there's an API a Dom API in front
+
+371
+00:13:35,570 --> 00:13:39,199
+of the that view that can just fetch
+
+372
+00:13:37,190 --> 00:13:41,329
+that data and return it to the clients
+
+373
+00:13:39,199 --> 00:13:42,740
+and I spend much how the publishing
+
+374
+00:13:41,329 --> 00:13:44,540
+pipeline works there are few things we
+
+375
+00:13:42,740 --> 00:13:46,519
+do if there's a failure in any of the
+
+376
+00:13:44,540 --> 00:13:48,860
+steps within the ingest we put that into
+
+377
+00:13:46,519 --> 00:13:50,750
+dlq there let's exclude that and then be
+
+378
+00:13:48,860 --> 00:13:53,980
+picked up automatically or manually
+
+379
+00:13:50,750 --> 00:13:55,940
+depend on what the error is and fixed
+
+380
+00:13:53,980 --> 00:13:57,560
+clients also like to know when we
+
+381
+00:13:55,940 --> 00:13:59,269
+ingested something especially the
+
+382
+00:13:57,560 --> 00:14:00,440
+editorial clients they like to know when
+
+383
+00:13:59,269 --> 00:14:02,540
+something has actually gone through our
+
+384
+00:14:00,440 --> 00:14:04,009
+systems and is available so have a lamp
+
+385
+00:14:02,540 --> 00:14:07,160
+at irises an SNS that it can then
+
+386
+00:14:04,009 --> 00:14:09,139
+respond to we also do some quality
+
+387
+00:14:07,160 --> 00:14:11,120
+checks at the end so after the ingest
+
+388
+00:14:09,139 --> 00:14:14,509
+route also simulates being a client
+
+389
+00:14:11,120 --> 00:14:17,269
+query both ends the new view API the old
+
+390
+00:14:14,509 --> 00:14:19,069
+API make sure they are consistent and it
+
+391
+00:14:17,269 --> 00:14:21,079
+looks the same there's any issue we
+
+392
+00:14:19,069 --> 00:14:23,060
+dumped in the tlq automatically
+
+393
+00:14:21,079 --> 00:14:26,300
+processing or manually process in depend
+
+394
+00:14:23,060 --> 00:14:27,709
+on what the actual error looks like so
+
+395
+00:14:26,300 --> 00:14:29,269
+that's pretty much it we have a few of
+
+396
+00:14:27,709 --> 00:14:30,620
+these pipelines or already running so
+
+397
+00:14:29,269 --> 00:14:32,389
+it's time somebody does a write it
+
+398
+00:14:30,620 --> 00:14:34,130
+triggers all these these things that
+
+399
+00:14:32,389 --> 00:14:35,860
+happen and then each of them go off and
+
+400
+00:14:34,130 --> 00:14:38,990
+use your own work
+
+401
+00:14:35,860 --> 00:14:40,639
+diffuse on the read side our clients
+
+402
+00:14:38,990 --> 00:14:42,319
+come in once again true already appear
+
+403
+00:14:40,639 --> 00:14:43,550
+like they've always done we now have a
+
+404
+00:14:42,319 --> 00:14:45,139
+Rooter component sitting behind
+
+405
+00:14:43,550 --> 00:14:47,240
+immediately I don't get that request
+
+406
+00:14:45,139 --> 00:14:48,829
+look at the request and route it to one
+
+407
+00:14:47,240 --> 00:14:50,360
+of the views if he doesn't find a
+
+408
+00:14:48,829 --> 00:14:51,949
+suitable view it just falls back to the
+
+409
+00:14:50,360 --> 00:14:53,569
+triple store and does what it's always
+
+410
+00:14:51,949 --> 00:14:55,490
+been doing and sends a request to the
+
+411
+00:14:53,569 --> 00:14:57,470
+trip booster so clients don't see any
+
+412
+00:14:55,490 --> 00:15:02,149
+change in terms of the performance or
+
+413
+00:14:57,470 --> 00:15:07,850
+the contract you have with them visiting
+
+414
+00:15:02,149 --> 00:15:09,829
+API so the typical rule would look like
+
+415
+00:15:07,850 --> 00:15:13,269
+this everything my own custom language
+
+416
+00:15:09,829 --> 00:15:15,500
+if requests much is this format and
+
+417
+00:15:13,269 --> 00:15:16,970
+query parameter looks like this the
+
+418
+00:15:15,500 --> 00:15:18,380
+other conditions you can put in there
+
+419
+00:15:16,970 --> 00:15:20,899
+their route the traffic to route 1
+
+420
+00:15:18,380 --> 00:15:24,079
+otherwise just fall back - fall back to
+
+421
+00:15:20,899 --> 00:15:26,389
+the default reduced or if things fail
+
+422
+00:15:24,079 --> 00:15:29,060
+see the view hasn't caught up because
+
+423
+00:15:26,389 --> 00:15:31,970
+it's an event-driven system the views
+
+424
+00:15:29,060 --> 00:15:33,139
+may lag behind the triple store because
+
+425
+00:15:31,970 --> 00:15:34,790
+might take a while imagine there's a
+
+426
+00:15:33,139 --> 00:15:37,320
+bulk ingest if you might struggle
+
+427
+00:15:34,790 --> 00:15:38,880
+although we have lambdas that scale up
+
+428
+00:15:37,320 --> 00:15:40,230
+but it is possible that the view hasn't
+
+429
+00:15:38,880 --> 00:15:42,300
+caught up and it doesn't have the data
+
+430
+00:15:40,230 --> 00:15:44,130
+you want you can just fall back and
+
+431
+00:15:42,300 --> 00:15:46,199
+retry boost or there's a genuine fault
+
+432
+00:15:44,130 --> 00:15:47,940
+and network fault because now we have
+
+433
+00:15:46,199 --> 00:15:50,100
+these small services you have to think
+
+434
+00:15:47,940 --> 00:15:52,170
+about network network issues that arise
+
+435
+00:15:50,100 --> 00:15:54,810
+from Genoa you can always fall back to
+
+436
+00:15:52,170 --> 00:15:56,940
+superstore when we're building these new
+
+437
+00:15:54,810 --> 00:15:58,170
+views we can also do Lord splits in
+
+438
+00:15:56,940 --> 00:16:00,060
+load-balancing which is also quite
+
+439
+00:15:58,170 --> 00:16:02,699
+important so when we try out something
+
+440
+00:16:00,060 --> 00:16:06,660
+you say we see we think that an SP
+
+441
+00:16:02,699 --> 00:16:09,000
+pocket a dynamo table is faster at 7:00
+
+442
+00:16:06,660 --> 00:16:10,709
+this particular query profile vanity
+
+443
+00:16:09,000 --> 00:16:12,329
+boosters a bold statement to make
+
+444
+00:16:10,709 --> 00:16:14,339
+we can then actually set this thing up
+
+445
+00:16:12,329 --> 00:16:16,740
+use all the components and start moving
+
+446
+00:16:14,339 --> 00:16:18,300
+traffic 10% of the traffic there and
+
+447
+00:16:16,740 --> 00:16:19,680
+observe the performance and if you're
+
+448
+00:16:18,300 --> 00:16:22,199
+happy you can then move all the traffic
+
+449
+00:16:19,680 --> 00:16:25,620
+for that particular request profile to
+
+450
+00:16:22,199 --> 00:16:27,029
+to that end so that works fine we've
+
+451
+00:16:25,620 --> 00:16:28,829
+done this we have a few of these things
+
+452
+00:16:27,029 --> 00:16:31,019
+or already running with the sides to
+
+453
+00:16:28,829 --> 00:16:32,970
+view see how it works and maybe do some
+
+454
+00:16:31,019 --> 00:16:34,649
+more if we need to debility about
+
+455
+00:16:32,970 --> 00:16:36,839
+evolving in this phase you can stop at
+
+456
+00:16:34,649 --> 00:16:39,120
+any time and say you're ok we never get
+
+457
+00:16:36,839 --> 00:16:40,500
+worse than where before you can only get
+
+458
+00:16:39,120 --> 00:16:42,600
+better because we still have the tree
+
+459
+00:16:40,500 --> 00:16:45,029
+booster as our single source of truth
+
+460
+00:16:42,600 --> 00:16:46,980
+and the API is the power in that so it's
+
+461
+00:16:45,029 --> 00:16:49,260
+done we have about 70 percent of the
+
+462
+00:16:46,980 --> 00:16:51,269
+traffic and I used to go to the booster
+
+463
+00:16:49,260 --> 00:16:54,389
+being served by all the data sources now
+
+464
+00:16:51,269 --> 00:16:56,010
+and more complicated graph based queries
+
+465
+00:16:54,389 --> 00:16:57,990
+are going to be produced oh and there's
+
+466
+00:16:56,010 --> 00:17:01,050
+overall performance everything's happy
+
+467
+00:16:57,990 --> 00:17:02,490
+it's been a wonderful success well they
+
+468
+00:17:01,050 --> 00:17:03,810
+are issues there are few issues we have
+
+469
+00:17:02,490 --> 00:17:06,449
+to consider the first one we made about
+
+470
+00:17:03,810 --> 00:17:07,799
+all those joints so typically this is
+
+471
+00:17:06,449 --> 00:17:11,220
+how the data looks like we have a
+
+472
+00:17:07,799 --> 00:17:12,659
+document on on some article has lots of
+
+473
+00:17:11,220 --> 00:17:16,470
+properties here haven't shown not them
+
+474
+00:17:12,659 --> 00:17:19,140
+all and have the about about M property
+
+475
+00:17:16,470 --> 00:17:21,929
+I have a few ideas for the various and
+
+476
+00:17:19,140 --> 00:17:25,020
+tags so that's all good and then for
+
+477
+00:17:21,929 --> 00:17:27,689
+each of these tags you have the label to
+
+478
+00:17:25,020 --> 00:17:29,720
+type famous and all the extra data see
+
+479
+00:17:27,689 --> 00:17:32,490
+are two entities the ontology is very
+
+480
+00:17:29,720 --> 00:17:34,470
+simple but is well details designed by
+
+481
+00:17:32,490 --> 00:17:36,540
+really smart people and it works well
+
+482
+00:17:34,470 --> 00:17:39,000
+the problem is clients normally wants a
+
+483
+00:17:36,540 --> 00:17:40,590
+hydrated data so when they ask cost and
+
+484
+00:17:39,000 --> 00:17:42,780
+the question they won't have to make
+
+485
+00:17:40,590 --> 00:17:44,970
+these hops the one I tweeted it want the
+
+486
+00:17:42,780 --> 00:17:48,150
+whole thing in one response so what we
+
+487
+00:17:44,970 --> 00:17:50,980
+used to do previously is on ingest we
+
+488
+00:17:48,150 --> 00:17:52,660
+send the data into the right API
+
+489
+00:17:50,980 --> 00:17:54,370
+gusto and when trying to make a request
+
+490
+00:17:52,660 --> 00:17:57,280
+we just use builders pack we create like
+
+491
+00:17:54,370 --> 00:18:00,429
+instructs the data they want to send you
+
+492
+00:17:57,280 --> 00:18:04,390
+out to them I works now we lose all that
+
+493
+00:18:00,429 --> 00:18:06,880
+because we have copies of the data in in
+
+494
+00:18:04,390 --> 00:18:09,730
+in various views how do we handle that
+
+495
+00:18:06,880 --> 00:18:11,950
+that merging as a big problem so the two
+
+496
+00:18:09,730 --> 00:18:16,030
+basic entities or three actually you can
+
+497
+00:18:11,950 --> 00:18:18,040
+join on rights so anytime there's a
+
+498
+00:18:16,030 --> 00:18:19,480
+change in an article either new tags are
+
+499
+00:18:18,040 --> 00:18:21,940
+added or all tags are removed you have
+
+500
+00:18:19,480 --> 00:18:24,600
+to go through all the copies or the art
+
+501
+00:18:21,940 --> 00:18:26,860
+using your view and make those changes a
+
+502
+00:18:24,600 --> 00:18:28,120
+bit scalable you don't have many views
+
+503
+00:18:26,860 --> 00:18:32,049
+if you have to revolve the use that's
+
+504
+00:18:28,120 --> 00:18:33,820
+okay anytime a tag changes so if you
+
+505
+00:18:32,049 --> 00:18:35,830
+change the level of attack then what you
+
+506
+00:18:33,820 --> 00:18:38,620
+do you have to go to all the places that
+
+507
+00:18:35,830 --> 00:18:40,350
+tags used in the views and the modify
+
+508
+00:18:38,620 --> 00:18:42,850
+those and that could be tricky for
+
+509
+00:18:40,350 --> 00:18:45,370
+popular tags we have tracks like
+
+510
+00:18:42,850 --> 00:18:48,940
+practice it don't know Trump there is me
+
+511
+00:18:45,370 --> 00:18:56,919
+by extremely popular so join in on
+
+512
+00:18:48,940 --> 00:18:58,540
+popular in terms of the number of so
+
+513
+00:18:56,919 --> 00:19:01,270
+joining all rights can be tricky it is
+
+514
+00:18:58,540 --> 00:19:02,860
+fine for some things and it's gonna take
+
+515
+00:19:01,270 --> 00:19:04,299
+a while for others that being said it
+
+516
+00:19:02,860 --> 00:19:06,520
+looks it looks terrible when I say it
+
+517
+00:19:04,299 --> 00:19:08,440
+but in practice we ingest all our data
+
+518
+00:19:06,520 --> 00:19:10,450
+in a very short period anyway so it is
+
+519
+00:19:08,440 --> 00:19:12,120
+doable practically just music view is
+
+520
+00:19:10,450 --> 00:19:14,919
+going to spend some time and
+
+521
+00:19:12,120 --> 00:19:16,809
+reprocessing before it gets back up to
+
+522
+00:19:14,919 --> 00:19:18,520
+serve traffic and these things hardly
+
+523
+00:19:16,809 --> 00:19:21,640
+change anyway so it is it can be done
+
+524
+00:19:18,520 --> 00:19:24,790
+but I just want option second will be to
+
+525
+00:19:21,640 --> 00:19:26,470
+join on read so we have different ingest
+
+526
+00:19:24,790 --> 00:19:28,150
+pipelines for the different entities so
+
+527
+00:19:26,470 --> 00:19:30,640
+for tags we have its own interest
+
+528
+00:19:28,150 --> 00:19:32,770
+pipeline for articles or content we have
+
+529
+00:19:30,640 --> 00:19:34,720
+yet its own interest pipeline we stir
+
+530
+00:19:32,770 --> 00:19:36,309
+them separately and when a client makes
+
+531
+00:19:34,720 --> 00:19:38,440
+the request we don't have the triple
+
+532
+00:19:36,309 --> 00:19:41,799
+start to the join in database we have to
+
+533
+00:19:38,440 --> 00:19:44,140
+do it ourselves through HTTP calls em
+
+534
+00:19:41,799 --> 00:19:45,910
+the disadvantage of this the advantage
+
+535
+00:19:44,140 --> 00:19:47,980
+of this is the dirty engine pipelines
+
+536
+00:19:45,910 --> 00:19:48,460
+are simple declare just simple as
+
+537
+00:19:47,980 --> 00:19:50,140
+they've always been
+
+538
+00:19:48,460 --> 00:19:52,030
+the advantage is you don't have to do
+
+539
+00:19:50,140 --> 00:19:53,320
+processing on read which kind of defeats
+
+540
+00:19:52,030 --> 00:19:55,030
+the purpose of the whole thing you don't
+
+541
+00:19:53,320 --> 00:19:57,730
+want to any process neurons they have
+
+542
+00:19:55,030 --> 00:19:59,710
+prepared document materialized views so
+
+543
+00:19:57,730 --> 00:20:01,840
+you have to strike the right balance an
+
+544
+00:19:59,710 --> 00:20:04,120
+optimal solution we feel will be to
+
+545
+00:20:01,840 --> 00:20:06,250
+joins on rights for something
+
+546
+00:20:04,120 --> 00:20:08,980
+and joins on weeds for the other test
+
+547
+00:20:06,250 --> 00:20:12,040
+actually what you want to do but didn't
+
+548
+00:20:08,980 --> 00:20:13,900
+do just devour joining some weeds is we
+
+549
+00:20:12,040 --> 00:20:16,300
+teach reduces the performance of the
+
+550
+00:20:13,900 --> 00:20:19,210
+overall system but it's still better
+
+551
+00:20:16,300 --> 00:20:22,090
+than it was when we serve these true
+
+552
+00:20:19,210 --> 00:20:23,860
+triple so it sounds weird crazy that you
+
+553
+00:20:22,090 --> 00:20:26,620
+make one request and then make a few
+
+554
+00:20:23,860 --> 00:20:29,110
+HTTP calls to merge a document and yet
+
+555
+00:20:26,620 --> 00:20:30,580
+and it still slightly better but we do
+
+556
+00:20:29,110 --> 00:20:32,440
+have the audition was split in there in
+
+557
+00:20:30,580 --> 00:20:34,690
+the feature and doing some some joins on
+
+558
+00:20:32,440 --> 00:20:37,090
+rights and some trends and read that can
+
+559
+00:20:34,690 --> 00:20:39,910
+be achieved so we've kind of fix the
+
+560
+00:20:37,090 --> 00:20:44,770
+joint problem for now and it works other
+
+561
+00:20:39,910 --> 00:20:46,000
+things to consider time one more thing
+
+562
+00:20:44,770 --> 00:20:48,850
+to consider I think I'll just do this
+
+563
+00:20:46,000 --> 00:20:51,630
+one and then that's it we have a fairly
+
+564
+00:20:48,850 --> 00:20:54,130
+fairly rich and detailed ontology and
+
+565
+00:20:51,630 --> 00:20:57,580
+builds quite a long time ago I was in I
+
+566
+00:20:54,130 --> 00:20:59,830
+wasn't individuated times 566 years ago
+
+567
+00:20:57,580 --> 00:21:02,170
+or more before the Olympics we have
+
+568
+00:20:59,830 --> 00:21:03,150
+modified it slightly since then but it's
+
+569
+00:21:02,170 --> 00:21:05,980
+basically the same thing
+
+570
+00:21:03,150 --> 00:21:07,810
+you still today and it's public I think
+
+571
+00:21:05,980 --> 00:21:10,330
+there's an oncologist website and I
+
+572
+00:21:07,810 --> 00:21:12,310
+think the Dutch who github repo is gonna
+
+573
+00:21:10,330 --> 00:21:15,430
+be made public soon as well so it's all
+
+574
+00:21:12,310 --> 00:21:17,590
+day and it's all good one of the things
+
+575
+00:21:15,430 --> 00:21:19,240
+did the triple star gives us this
+
+576
+00:21:17,590 --> 00:21:21,220
+inference so the oncologists have
+
+577
+00:21:19,240 --> 00:21:23,020
+described it it's our but also a base
+
+578
+00:21:21,220 --> 00:21:25,900
+for the inference engine the triple star
+
+579
+00:21:23,020 --> 00:21:27,130
+uses when you add an extra and updates
+
+580
+00:21:25,900 --> 00:21:28,960
+to the ontology you have to be very
+
+581
+00:21:27,130 --> 00:21:31,030
+careful what the implications of that
+
+582
+00:21:28,960 --> 00:21:32,710
+would be now we have we manage the
+
+583
+00:21:31,030 --> 00:21:34,510
+ontology updates which is also another
+
+584
+00:21:32,710 --> 00:21:36,040
+bottleneck but we manage it so any
+
+585
+00:21:34,510 --> 00:21:38,020
+change to the oncologist has to be made
+
+586
+00:21:36,040 --> 00:21:39,640
+through through our team and I have to
+
+587
+00:21:38,020 --> 00:21:41,860
+look at and say how much mod it has
+
+588
+00:21:39,640 --> 00:21:43,360
+gonna be generated so if you say this
+
+589
+00:21:41,860 --> 00:21:45,550
+company is a subclass of core
+
+590
+00:21:43,360 --> 00:21:47,290
+organization which you could say then
+
+591
+00:21:45,550 --> 00:21:49,150
+all the triples for this company get
+
+592
+00:21:47,290 --> 00:21:51,940
+this extra one added on to it which is
+
+593
+00:21:49,150 --> 00:21:53,170
+good I mean a huge chunk of our data and
+
+594
+00:21:51,940 --> 00:21:55,390
+it was very easy and physically
+
+595
+00:21:53,170 --> 00:21:57,820
+generated and the clients don't care
+
+596
+00:21:55,390 --> 00:21:59,890
+remember their query in an API they
+
+597
+00:21:57,820 --> 00:22:01,600
+getting data back no other business how
+
+598
+00:21:59,890 --> 00:22:03,730
+you generates in that data or higher
+
+599
+00:22:01,600 --> 00:22:05,110
+keeping it consistent and it's been fine
+
+600
+00:22:03,730 --> 00:22:06,490
+upon to not because it abuse what does
+
+601
+00:22:05,110 --> 00:22:08,770
+all that for you so if you make a change
+
+602
+00:22:06,490 --> 00:22:11,800
+like this triple store goes into its own
+
+603
+00:22:08,770 --> 00:22:13,180
+world generates all the extra data when
+
+604
+00:22:11,800 --> 00:22:16,590
+it's ready says yeah I'm ready I can
+
+605
+00:22:13,180 --> 00:22:18,629
+serve Christ our data now we have copies
+
+606
+00:22:16,590 --> 00:22:20,909
+or theater everywhere and all the rest
+
+607
+00:22:18,629 --> 00:22:22,950
+don't have inference engines except you
+
+608
+00:22:20,909 --> 00:22:25,080
+want to use third-party ones to put in
+
+609
+00:22:22,950 --> 00:22:27,659
+there to be very messy so this is kind
+
+610
+00:22:25,080 --> 00:22:29,580
+of a problem for us we've set this up
+
+611
+00:22:27,659 --> 00:22:30,840
+before about it's been running at in our
+
+612
+00:22:29,580 --> 00:22:33,360
+first view came up about eight nine
+
+613
+00:22:30,840 --> 00:22:35,100
+months ago we've had a few added two
+
+614
+00:22:33,360 --> 00:22:36,360
+more since then they've all been fine
+
+615
+00:22:35,100 --> 00:22:38,100
+with haven't we haven't had to do an
+
+616
+00:22:36,360 --> 00:22:40,679
+ontology change but we've had to do
+
+617
+00:22:38,100 --> 00:22:41,970
+completely ingests of our data so our
+
+618
+00:22:40,679 --> 00:22:43,620
+cheapest part is ticking like I've in
+
+619
+00:22:41,970 --> 00:22:44,580
+store for now it's still the single
+
+620
+00:22:43,620 --> 00:22:47,700
+source of truth where all the data
+
+621
+00:22:44,580 --> 00:22:49,169
+leaves so even if an ontology change I
+
+622
+00:22:47,700 --> 00:22:51,059
+requires an ingest happen would have to
+
+623
+00:22:49,169 --> 00:22:53,220
+ingest to the triple store and we'll
+
+624
+00:22:51,059 --> 00:22:55,350
+play our views and we've we have had to
+
+625
+00:22:53,220 --> 00:22:57,570
+replay our views in the past it takes a
+
+626
+00:22:55,350 --> 00:22:59,369
+while less than an hour
+
+627
+00:22:57,570 --> 00:23:01,769
+we get all our views back up and running
+
+628
+00:22:59,369 --> 00:23:04,799
+because we can scale the pipeline's can
+
+629
+00:23:01,769 --> 00:23:06,480
+scale you can have what was the means of
+
+630
+00:23:04,799 --> 00:23:08,129
+lambdas you can have running you can
+
+631
+00:23:06,480 --> 00:23:10,440
+have ten thousand numbers running at the
+
+632
+00:23:08,129 --> 00:23:13,619
+same time it just cost you a lot of
+
+633
+00:23:10,440 --> 00:23:16,259
+money but well well you can't do that do
+
+634
+00:23:13,619 --> 00:23:17,789
+we have how to actually do this and we
+
+635
+00:23:16,259 --> 00:23:19,379
+play lots of our views when things
+
+636
+00:23:17,789 --> 00:23:21,330
+happen so that the first time we have an
+
+637
+00:23:19,379 --> 00:23:23,490
+ontology change I requires considerable
+
+638
+00:23:21,330 --> 00:23:25,080
+change in our infancy and we would have
+
+639
+00:23:23,490 --> 00:23:26,730
+to do that and we'll see how that goes
+
+640
+00:23:25,080 --> 00:23:29,100
+that is one thing to keep an eye on with
+
+641
+00:23:26,730 --> 00:23:32,610
+the whole solution so I guess the main
+
+642
+00:23:29,100 --> 00:23:34,860
+thing the main summer is this and I was
+
+643
+00:23:32,610 --> 00:23:36,330
+worried saying is in a graph database
+
+644
+00:23:34,860 --> 00:23:40,169
+drop with all these people who love
+
+645
+00:23:36,330 --> 00:23:42,210
+crafted businesses is it is possible to
+
+646
+00:23:40,169 --> 00:23:43,950
+move some of your data or copies of your
+
+647
+00:23:42,210 --> 00:23:45,480
+data out of a craft database into more
+
+648
+00:23:43,950 --> 00:23:48,600
+other disabilities that are best suited
+
+649
+00:23:45,480 --> 00:23:51,210
+for those queries we use dynamodb most
+
+650
+00:23:48,600 --> 00:23:53,279
+of the time but we did try s3 with a
+
+651
+00:23:51,210 --> 00:23:54,809
+cache we try RDS we try various things
+
+652
+00:23:53,279 --> 00:23:56,610
+and it's allowed to that it's run if you
+
+653
+00:23:54,809 --> 00:23:58,860
+have this evolutionary
+
+654
+00:23:56,610 --> 00:24:00,809
+architecture mentality don't design the
+
+655
+00:23:58,860 --> 00:24:02,909
+whole system of what want and get some
+
+656
+00:24:00,809 --> 00:24:04,529
+architects it's in some room and build a
+
+657
+00:24:02,909 --> 00:24:06,570
+massive architecture diagram I handed
+
+658
+00:24:04,529 --> 00:24:08,789
+over to developers if you do things bit
+
+659
+00:24:06,570 --> 00:24:10,649
+by bit you can try things out and we
+
+660
+00:24:08,789 --> 00:24:12,749
+have found that it's feasible to have
+
+661
+00:24:10,649 --> 00:24:14,669
+these copies keep them and think in
+
+662
+00:24:12,749 --> 00:24:16,559
+reasonable time and improve the
+
+663
+00:24:14,669 --> 00:24:19,940
+performance of the overall system and
+
+664
+00:24:16,559 --> 00:24:19,940
+I've pretty much what we've done
+
+665
+00:24:21,970 --> 00:24:30,960
+[Applause]
+
+666
+00:24:27,260 --> 00:24:33,320
+thank 16 and any questions well I see
+
+667
+00:24:30,960 --> 00:24:33,320
+one already
+
+668
+00:24:33,740 --> 00:24:39,630
+overall in terms of triples they're not
+
+669
+00:24:36,960 --> 00:24:43,170
+not much about between a hundred and
+
+670
+00:24:39,630 --> 00:24:45,840
+fifty million triples in total so not
+
+671
+00:24:43,170 --> 00:24:47,700
+much at all I think it's a matter of the
+
+672
+00:24:45,840 --> 00:24:49,470
+requirement expectations for performance
+
+673
+00:24:47,700 --> 00:24:52,020
+especially from our audience facing
+
+674
+00:24:49,470 --> 00:24:55,620
+products so they wanted our really fast
+
+675
+00:24:52,020 --> 00:24:56,940
+calls to us just one call in the India
+
+676
+00:24:55,620 --> 00:24:58,350
+pipeline they have to get into from us
+
+677
+00:24:56,940 --> 00:25:00,660
+and then do something with that data to
+
+678
+00:24:58,350 --> 00:25:01,860
+display it on the front page so the neat
+
+679
+00:25:00,660 --> 00:25:03,540
+dates are really fast it's not like we
+
+680
+00:25:01,860 --> 00:25:05,700
+can't get them data we get them later
+
+681
+00:25:03,540 --> 00:25:09,360
+and 300 milliseconds but some of our
+
+682
+00:25:05,700 --> 00:25:12,750
+trends I just explore so so it's a it's
+
+683
+00:25:09,360 --> 00:25:21,740
+a matter of performance requirements as
+
+684
+00:25:12,750 --> 00:25:24,750
+opposed to you were talking about
+
+685
+00:25:21,740 --> 00:25:30,480
+serving views with this structure so I
+
+686
+00:25:24,750 --> 00:25:33,690
+understand it's web yes and but are you
+
+687
+00:25:30,480 --> 00:25:35,910
+also using the graph to do to work on
+
+688
+00:25:33,690 --> 00:25:38,760
+the navigation so moving from one view
+
+689
+00:25:35,910 --> 00:25:41,940
+to another to generate for example the
+
+690
+00:25:38,760 --> 00:25:44,130
+dynamic navigational elements I think
+
+691
+00:25:41,940 --> 00:25:47,550
+when I meant views actually mean just
+
+692
+00:25:44,130 --> 00:25:51,690
+API so this isn't actually web views
+
+693
+00:25:47,550 --> 00:25:55,380
+sorry it's just representations of the
+
+694
+00:25:51,690 --> 00:25:57,810
+data through different API start already
+
+695
+00:25:55,380 --> 00:26:00,120
+pre-built so basically has no process in
+
+696
+00:25:57,810 --> 00:26:03,030
+don't realize the cell we prepare the
+
+697
+00:26:00,120 --> 00:26:04,650
+data you know in a pre-baked form and
+
+698
+00:26:03,030 --> 00:26:06,750
+display that so various views of the
+
+699
+00:26:04,650 --> 00:26:09,090
+same data you can have the same data in
+
+700
+00:26:06,750 --> 00:26:10,980
+RDF can have it in json-ld in one view
+
+701
+00:26:09,090 --> 00:26:12,600
+you can have it in RDF XML in another
+
+702
+00:26:10,980 --> 00:26:14,850
+you can have the same data in two
+
+703
+00:26:12,600 --> 00:26:16,770
+different views of the same data in
+
+704
+00:26:14,850 --> 00:26:20,880
+various databases the clients and then
+
+705
+00:26:16,770 --> 00:26:22,350
+query so it still all api's yes okay so
+
+706
+00:26:20,880 --> 00:26:26,850
+I understand what you mean with views
+
+707
+00:26:22,350 --> 00:26:31,350
+now but the the clients using this that
+
+708
+00:26:26,850 --> 00:26:33,060
+would be maybe the home page sports page
+
+709
+00:26:31,350 --> 00:26:33,639
+I play or whatever use case they have
+
+710
+00:26:33,060 --> 00:26:36,820
+been
+
+711
+00:26:33,639 --> 00:26:39,729
+and then query us and get that data I'm
+
+712
+00:26:36,820 --> 00:26:40,299
+not to have too much details of all the
+
+713
+00:26:39,729 --> 00:26:42,369
+use cases
+
+714
+00:26:40,299 --> 00:26:44,440
+I know navigation is one of them but the
+
+715
+00:26:42,369 --> 00:26:45,969
+primary use case is aggregation I think
+
+716
+00:26:44,440 --> 00:26:47,259
+that's where tagging really comes with
+
+717
+00:26:45,969 --> 00:26:49,329
+let's talk about using more for
+
+718
+00:26:47,259 --> 00:26:51,129
+recommendations and things like that but
+
+719
+00:26:49,329 --> 00:26:52,479
+it's mainly aggregation get me all today
+
+720
+00:26:51,129 --> 00:26:54,489
+that I look alike Amy all stated of
+
+721
+00:26:52,479 --> 00:26:57,219
+intact with the same thing again related
+
+722
+00:26:54,489 --> 00:26:59,589
+data in this domain on this area that's
+
+723
+00:26:57,219 --> 00:27:01,570
+primarily what it's used for right to
+
+724
+00:26:59,589 --> 00:27:03,129
+kind of keep on keep on reading so
+
+725
+00:27:01,570 --> 00:27:06,339
+here's the no other article to talk
+
+726
+00:27:03,129 --> 00:27:08,169
+about is it are some of the clients also
+
+727
+00:27:06,339 --> 00:27:10,839
+working on personalization then they
+
+728
+00:27:08,169 --> 00:27:12,969
+actually learn which there's a big move
+
+729
+00:27:10,839 --> 00:27:14,950
+for that in the BBC I'm passed a few
+
+730
+00:27:12,969 --> 00:27:17,799
+years and it gets more and more clients
+
+731
+00:27:14,950 --> 00:27:19,599
+are looking into that area a lot of
+
+732
+00:27:17,799 --> 00:27:21,429
+these things is publication you may have
+
+733
+00:27:19,599 --> 00:27:22,779
+noticed I'm talking about publication
+
+734
+00:27:21,429 --> 00:27:24,789
+data but it's a lot of pre-publication
+
+735
+00:27:22,779 --> 00:27:26,529
+things that happen before you get the
+
+736
+00:27:24,789 --> 00:27:28,839
+data in front of you in your website and
+
+737
+00:27:26,529 --> 00:27:31,539
+those things we don't currently capture
+
+738
+00:27:28,839 --> 00:27:35,200
+in this in this format we're kind of
+
+739
+00:27:31,539 --> 00:27:37,119
+like a - for publishing content metadata
+
+740
+00:27:35,200 --> 00:27:38,829
+but all the publication steps don't
+
+741
+00:27:37,119 --> 00:27:40,509
+happen yet and that's really where
+
+742
+00:27:38,829 --> 00:27:42,489
+things like machine learning and
+
+743
+00:27:40,509 --> 00:27:44,529
+recommendations really can really take
+
+744
+00:27:42,489 --> 00:27:46,749
+take up so the idea is there is an
+
+745
+00:27:44,529 --> 00:27:48,309
+interest in the area my team is not just
+
+746
+00:27:46,749 --> 00:27:49,659
+responsible for the in there we just as
+
+747
+00:27:48,309 --> 00:27:51,729
+perfect keeping the lights on on this
+
+748
+00:27:49,659 --> 00:27:54,209
+thing I'm making sure that it's still
+
+749
+00:27:51,729 --> 00:27:54,209
+ticking over
+
+750
+00:28:02,910 --> 00:28:07,390
+you mentioned that the triple store is a
+
+751
+00:28:05,770 --> 00:28:09,540
+single source of truth is that because
+
+752
+00:28:07,390 --> 00:28:12,010
+the event store is a recent development
+
+753
+00:28:09,540 --> 00:28:13,450
+yes so when we started this you had this
+
+754
+00:28:12,010 --> 00:28:15,010
+target architecture where we have an
+
+755
+00:28:13,450 --> 00:28:17,500
+event store as a single source of truth
+
+756
+00:28:15,010 --> 00:28:19,060
+that does everything and one of the
+
+757
+00:28:17,500 --> 00:28:20,560
+first mistakes we did is we actually
+
+758
+00:28:19,060 --> 00:28:22,420
+build Steven so we looked at different
+
+759
+00:28:20,560 --> 00:28:24,580
+options took choose one now he wanted
+
+760
+00:28:22,420 --> 00:28:26,080
+and deployed it and we started seven of
+
+761
+00:28:24,580 --> 00:28:27,310
+event store and then we realized the
+
+762
+00:28:26,080 --> 00:28:28,810
+chief rooster actually the chief would
+
+763
+00:28:27,310 --> 00:28:31,480
+store in collaboration with an input
+
+764
+00:28:28,810 --> 00:28:33,850
+queue does what even stole is meant to
+
+765
+00:28:31,480 --> 00:28:35,350
+do for us for now so we didn't have to
+
+766
+00:28:33,850 --> 00:28:36,580
+have something else that as a single
+
+767
+00:28:35,350 --> 00:28:38,890
+source of truth as friend of the triple
+
+768
+00:28:36,580 --> 00:28:40,420
+store has the most recent value of all
+
+769
+00:28:38,890 --> 00:28:43,000
+the entities the current state of
+
+770
+00:28:40,420 --> 00:28:44,770
+affairs we can always replay that fairly
+
+771
+00:28:43,000 --> 00:28:47,740
+quickly and get the effects we would
+
+772
+00:28:44,770 --> 00:28:49,630
+have had from an event store so we one
+
+773
+00:28:47,740 --> 00:28:51,670
+of the row backs the first robots didn't
+
+774
+00:28:49,630 --> 00:28:53,320
+that team was to ditch that and then
+
+775
+00:28:51,670 --> 00:28:55,210
+just use the true stores a single source
+
+776
+00:28:53,320 --> 00:28:56,680
+of truth they are use case in the future
+
+777
+00:28:55,210 --> 00:28:58,240
+when we might need an event store and we
+
+778
+00:28:56,680 --> 00:29:00,640
+do know how to build one or use one off
+
+779
+00:28:58,240 --> 00:29:03,900
+the shelf but that the architecture I
+
+780
+00:29:00,640 --> 00:29:03,900
+showed you was more of a conceptual
+
+781
+00:29:08,280 --> 00:29:12,880
+thank you for the talk I wanted to ask
+
+782
+00:29:10,720 --> 00:29:14,590
+what's the most complex query profile
+
+783
+00:29:12,880 --> 00:29:16,930
+that you're dealing with one of the
+
+784
+00:29:14,590 --> 00:29:19,810
+cases I used to remember was queries of
+
+785
+00:29:16,930 --> 00:29:23,500
+the type I want articles of politicians
+
+786
+00:29:19,810 --> 00:29:25,870
+of the Tory Party born in do you have
+
+787
+00:29:23,500 --> 00:29:28,000
+this case all this new architecture we
+
+788
+00:29:25,870 --> 00:29:29,560
+have basically those are filter queries
+
+789
+00:29:28,000 --> 00:29:31,960
+it gave me all the quick get me all the
+
+790
+00:29:29,560 --> 00:29:34,150
+other content about blah blah blah where
+
+791
+00:29:31,960 --> 00:29:36,340
+all these restrictions apply those are
+
+792
+00:29:34,150 --> 00:29:38,400
+filter queries a burden but to have
+
+793
+00:29:36,340 --> 00:29:40,960
+those coming from clients all the time
+
+794
+00:29:38,400 --> 00:29:42,580
+the more complex ones don't go through
+
+795
+00:29:40,960 --> 00:29:44,550
+our systems and more converse one tend
+
+796
+00:29:42,580 --> 00:29:46,690
+to be within the BBC done by the
+
+797
+00:29:44,550 --> 00:29:48,970
+learning BBC learning people because I
+
+798
+00:29:46,690 --> 00:29:51,100
+have this elaborate vocabulary around
+
+799
+00:29:48,970 --> 00:29:53,110
+curriculum BBC curriculum I think is
+
+800
+00:29:51,100 --> 00:29:56,290
+also open source that one about gives
+
+801
+00:29:53,110 --> 00:29:58,360
+curriculum what's what what subjects on
+
+802
+00:29:56,290 --> 00:29:59,980
+the what category and and their queen
+
+803
+00:29:58,360 --> 00:30:01,750
+stands be really complicated and really
+
+804
+00:29:59,980 --> 00:30:04,150
+traverse the graph more than one or two
+
+805
+00:30:01,750 --> 00:30:06,280
+hops and they create a post or directly
+
+806
+00:30:04,150 --> 00:30:08,800
+to get that information so we can't keep
+
+807
+00:30:06,280 --> 00:30:10,840
+up with building those functionality
+
+808
+00:30:08,800 --> 00:30:13,210
+into an API for them in terms of what I
+
+809
+00:30:10,840 --> 00:30:15,850
+a period does is mainly what you said
+
+810
+00:30:13,210 --> 00:30:16,480
+stuff BIID gets tough subject to this
+
+811
+00:30:15,850 --> 00:30:17,950
+field huh
+
+812
+00:30:16,480 --> 00:30:20,289
+I don't have one query that has to do
+
+813
+00:30:17,950 --> 00:30:22,480
+with co-occurrence to get me to to
+
+814
+00:30:20,289 --> 00:30:24,370
+contents that have there are most
+
+815
+00:30:22,480 --> 00:30:27,159
+similar together I haven't shared the
+
+816
+00:30:24,370 --> 00:30:28,390
+most amount of tags in a given domain so
+
+817
+00:30:27,159 --> 00:30:30,850
+that's kinda like how most complex
+
+818
+00:30:28,390 --> 00:30:34,240
+creator we have to actually do two hops
+
+819
+00:30:30,850 --> 00:30:35,620
+to it serve that result so from the
+
+820
+00:30:34,240 --> 00:30:38,169
+api's perspective is fairly simple
+
+821
+00:30:35,620 --> 00:30:39,789
+that's why we could move 70% off so most
+
+822
+00:30:38,169 --> 00:30:41,950
+of the credit repositories area now have
+
+823
+00:30:39,789 --> 00:30:44,740
+the things it was designed to do really
+
+824
+00:30:41,950 --> 00:30:46,299
+difficult spot cookies and it has
+
+825
+00:30:44,740 --> 00:30:48,220
+improved the performance of the Chaput
+
+826
+00:30:46,299 --> 00:30:49,899
+store it has improved the performance of
+
+827
+00:30:48,220 --> 00:30:53,110
+all the other query profiles because
+
+828
+00:30:49,899 --> 00:30:55,690
+DynamoDB is really fast at seven things
+
+829
+00:30:53,110 --> 00:30:57,340
+by ID if you give a document I need an
+
+830
+00:30:55,690 --> 00:31:02,100
+ID to serve it to you before you can
+
+831
+00:30:57,340 --> 00:31:02,100
+blink and so so that works for us
+
+832
+00:31:06,070 --> 00:31:10,419
+yeah afterwards
+
+833
+00:31:11,530 --> 00:31:17,049
+[Applause]
+

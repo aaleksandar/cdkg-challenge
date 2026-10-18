@@ -1,0 +1,7292 @@
+1
+00:00:03,560 --> 00:00:09,440
+so uh I'm Jan Drew so today together
+
+2
+00:00:06,279 --> 00:00:12,320
+with my collaborator chush and Zu uh we
+
+3
+00:00:09,440 --> 00:00:14,799
+will give a master class on our recently
+
+4
+00:00:12,320 --> 00:00:16,600
+released machine learning platform for
+
+5
+00:00:14,799 --> 00:00:19,279
+developing drug Discovery so the
+
+6
+00:00:16,600 --> 00:00:21,680
+platform is called to Dr and also thanks
+
+7
+00:00:19,279 --> 00:00:24,680
+connected data world for giving us this
+
+8
+00:00:21,680 --> 00:00:28,720
+opportunity to give a master class uh
+
+9
+00:00:24,680 --> 00:00:30,960
+for for all of you to enjoy the this
+
+10
+00:00:28,720 --> 00:00:33,800
+wonderful platform
+
+11
+00:00:30,960 --> 00:00:35,440
+so here is a brief outline of today's
+
+12
+00:00:33,800 --> 00:00:37,640
+talk so I will first give a brief
+
+13
+00:00:35,440 --> 00:00:41,160
+introduction of the whole platform and
+
+14
+00:00:37,640 --> 00:00:43,039
+there I will uh teach you how how to
+
+15
+00:00:41,160 --> 00:00:45,440
+manipulate the data structures as well
+
+16
+00:00:43,039 --> 00:00:49,520
+as use the graph operations building our
+
+17
+00:00:45,440 --> 00:00:52,600
+library and later uh and they will give
+
+18
+00:00:49,520 --> 00:00:55,600
+you more uh concrete implementation
+
+19
+00:00:52,600 --> 00:00:58,640
+about different drug covery tasks like
+
+20
+00:00:55,600 --> 00:01:02,440
+preing and fine tuning as well as mular
+
+21
+00:00:58,640 --> 00:01:05,159
+generation so let's get started from the
+
+22
+00:01:02,440 --> 00:01:08,119
+introduction why we are motivated to
+
+23
+00:01:05,159 --> 00:01:10,759
+develop such kind of platform for drug
+
+24
+00:01:08,119 --> 00:01:12,200
+Discovery so as you may know that uh
+
+25
+00:01:10,759 --> 00:01:14,439
+machine learning especially graph
+
+26
+00:01:12,200 --> 00:01:16,680
+machine learning uh for drug Discovery
+
+27
+00:01:14,439 --> 00:01:20,079
+is a really emerging feeld in recent
+
+28
+00:01:16,680 --> 00:01:22,320
+years especially in last year and this
+
+29
+00:01:20,079 --> 00:01:25,600
+year due to the pandemic of
+
+30
+00:01:22,320 --> 00:01:28,040
+covid-19 however for us like uh
+
+31
+00:01:25,600 --> 00:01:30,920
+researchers in graph machine Learning
+
+32
+00:01:28,040 --> 00:01:33,360
+Community uh it it's seems to us that we
+
+33
+00:01:30,920 --> 00:01:37,040
+need much Dom knowledge to implement the
+
+34
+00:01:33,360 --> 00:01:39,320
+models in this field and what makes this
+
+35
+00:01:37,040 --> 00:01:40,960
+even worse is that if you compare
+
+36
+00:01:39,320 --> 00:01:43,000
+different projects that's already
+
+37
+00:01:40,960 --> 00:01:45,040
+implemented in this field that almost
+
+38
+00:01:43,000 --> 00:01:48,200
+every project is implemented from
+
+39
+00:01:45,040 --> 00:01:50,640
+scratch and that means that it's hard to
+
+40
+00:01:48,200 --> 00:01:53,560
+compare across different data uh code
+
+41
+00:01:50,640 --> 00:01:56,560
+base how to reproduce the result and way
+
+42
+00:01:53,560 --> 00:01:59,240
+you try to develop some kind of big
+
+43
+00:01:56,560 --> 00:02:02,039
+pipelines so it's hard to integrate the
+
+44
+00:01:59,240 --> 00:02:04,560
+projects scale up the existing
+
+45
+00:02:02,039 --> 00:02:07,240
+implementations so we wonder if we can
+
+46
+00:02:04,560 --> 00:02:09,360
+somehow Elevate this kind of issue by
+
+47
+00:02:07,240 --> 00:02:11,480
+building a new infrastructure to
+
+48
+00:02:09,360 --> 00:02:13,560
+accelerate research and development in
+
+49
+00:02:11,480 --> 00:02:17,879
+this field and that's to
+
+50
+00:02:13,560 --> 00:02:20,280
+drug so to give you an intr uh what
+
+51
+00:02:17,879 --> 00:02:23,040
+things look like before the presence of
+
+52
+00:02:20,280 --> 00:02:26,400
+to drug so when you try to implement a
+
+53
+00:02:23,040 --> 00:02:29,400
+popular model say PR graph networks on
+
+54
+00:02:26,400 --> 00:02:32,920
+molecules you first need to Lear the
+
+55
+00:02:29,400 --> 00:02:35,720
+Artic GE Tre and then Le some CH
+
+56
+00:02:32,920 --> 00:02:37,519
+chemical uh knowledge and then you need
+
+57
+00:02:35,720 --> 00:02:39,760
+to implement conversion functions
+
+58
+00:02:37,519 --> 00:02:42,599
+between different formats like a kit
+
+59
+00:02:39,760 --> 00:02:45,159
+Network X and py torch simply because
+
+60
+00:02:42,599 --> 00:02:46,959
+that uh you need to use a kit to process
+
+61
+00:02:45,159 --> 00:02:50,120
+your chemical properties and you need to
+
+62
+00:02:46,959 --> 00:02:52,519
+use Network X to process your graph uh
+
+63
+00:02:50,120 --> 00:02:54,840
+features like shortest pass distance
+
+64
+00:02:52,519 --> 00:02:57,680
+like connected components and finally
+
+65
+00:02:54,840 --> 00:03:00,519
+you convert everything to pyto to Fed it
+
+66
+00:02:57,680 --> 00:03:02,159
+into your pyto models so so every
+
+67
+00:03:00,519 --> 00:03:04,200
+conversion function May looks like
+
+68
+00:03:02,159 --> 00:03:06,560
+something like this this is a conversion
+
+69
+00:03:04,200 --> 00:03:09,920
+function from Adit to Python and you
+
+70
+00:03:06,560 --> 00:03:12,920
+need to write uh 3 by two which is six
+
+71
+00:03:09,920 --> 00:03:15,200
+conversion functions all together and uh
+
+72
+00:03:12,920 --> 00:03:18,120
+plus some other processing code it
+
+73
+00:03:15,200 --> 00:03:20,040
+typically takes around 1,000 lines just
+
+74
+00:03:18,120 --> 00:03:22,640
+to process the data set before you
+
+75
+00:03:20,040 --> 00:03:25,920
+building any machinary models and it's
+
+76
+00:03:22,640 --> 00:03:28,400
+hard to debug and uh it also can't be
+
+77
+00:03:25,920 --> 00:03:31,040
+accelerated by GPU because Network X and
+
+78
+00:03:28,400 --> 00:03:34,040
+ID they are purely CP libraries and in
+
+79
+00:03:31,040 --> 00:03:36,439
+some cases your machine learning model
+
+80
+00:03:34,040 --> 00:03:40,159
+will be bounded by the implementation of
+
+81
+00:03:36,439 --> 00:03:42,360
+AD kid and network X and that's not what
+
+82
+00:03:40,159 --> 00:03:44,760
+we want for efficient training and
+
+83
+00:03:42,360 --> 00:03:48,840
+inference
+
+84
+00:03:44,760 --> 00:03:51,599
+pipeline so to to see the uh challenge
+
+85
+00:03:48,840 --> 00:03:53,959
+of uh implementing this kind of
+
+86
+00:03:51,599 --> 00:03:57,200
+molecular stuff so one challenge is that
+
+87
+00:03:53,959 --> 00:04:00,599
+a molecu is uh a kind of non-rd
+
+88
+00:03:57,200 --> 00:04:02,400
+structure because there are graphs and
+
+89
+00:04:00,599 --> 00:04:04,480
+uh they have different number of nodes
+
+90
+00:04:02,400 --> 00:04:07,280
+different number of AG this is quite
+
+91
+00:04:04,480 --> 00:04:09,560
+different from uh other domains like
+
+92
+00:04:07,280 --> 00:04:13,000
+image like natural language processing
+
+93
+00:04:09,560 --> 00:04:15,200
+where for imager you can always crop it
+
+94
+00:04:13,000 --> 00:04:17,799
+into the same shape and for natural
+
+95
+00:04:15,200 --> 00:04:20,919
+language you can always use padding and
+
+96
+00:04:17,799 --> 00:04:24,360
+cropping to get it to the same lens but
+
+97
+00:04:20,919 --> 00:04:26,280
+for graphs like the three graph here we
+
+98
+00:04:24,360 --> 00:04:29,160
+see that okay they have different number
+
+99
+00:04:26,280 --> 00:04:31,240
+of node different number of AG so how
+
+100
+00:04:29,160 --> 00:04:34,440
+can we efficiently process them together
+
+101
+00:04:31,240 --> 00:04:37,520
+as a a single tens on GPU and that's a
+
+102
+00:04:34,440 --> 00:04:40,520
+very challenging thing when we implement
+
+103
+00:04:37,520 --> 00:04:45,240
+it and the last motivation comes from
+
+104
+00:04:40,520 --> 00:04:48,039
+the uh development uh of software we we
+
+105
+00:04:45,240 --> 00:04:49,360
+we notice that in software development
+
+106
+00:04:48,039 --> 00:04:51,960
+uh we don't want to write everything
+
+107
+00:04:49,360 --> 00:04:54,600
+from scratch and we want to use existing
+
+108
+00:04:51,960 --> 00:04:57,440
+implementation as much as possible and
+
+109
+00:04:54,600 --> 00:04:59,680
+also from the perspective of research uh
+
+110
+00:04:57,440 --> 00:05:01,800
+we need some kind of consistent in
+
+111
+00:04:59,680 --> 00:05:04,039
+interace for similar components so that
+
+112
+00:05:01,800 --> 00:05:07,400
+we can easily conduct appalation study
+
+113
+00:05:04,039 --> 00:05:09,720
+or maybe do some contr vared experiments
+
+114
+00:05:07,400 --> 00:05:12,120
+so this covers uh things like data
+
+115
+00:05:09,720 --> 00:05:14,039
+containers data set layers models as
+
+116
+00:05:12,120 --> 00:05:16,199
+well as distributed the training and
+
+117
+00:05:14,039 --> 00:05:20,000
+inference you don't want to re invent
+
+118
+00:05:16,199 --> 00:05:22,479
+the wheels and neither do us so uh this
+
+119
+00:05:20,000 --> 00:05:24,919
+motivates us to develop the torch drug
+
+120
+00:05:22,479 --> 00:05:28,360
+platform uh for this
+
+121
+00:05:24,919 --> 00:05:31,120
+purpose and our platform draw um much
+
+122
+00:05:28,360 --> 00:05:33,080
+Inspirations from po Frameworks like pyo
+
+123
+00:05:31,120 --> 00:05:36,639
+and pyto geometrics we borrow the
+
+124
+00:05:33,080 --> 00:05:39,479
+imperative design of pyo and we borrowed
+
+125
+00:05:36,639 --> 00:05:41,600
+uh efficient miniat uh implementation of
+
+126
+00:05:39,479 --> 00:05:44,600
+graphs from pyo geometric but we
+
+127
+00:05:41,600 --> 00:05:46,880
+extended more to uh graph machine
+
+128
+00:05:44,600 --> 00:05:51,560
+learning on drug
+
+129
+00:05:46,880 --> 00:05:55,319
+discover and here is a overview of the
+
+130
+00:05:51,560 --> 00:05:58,319
+whole structure of to drug so the
+
+131
+00:05:55,319 --> 00:06:00,560
+library is divided into a uh several
+
+132
+00:05:58,319 --> 00:06:02,199
+heretical levels
+
+133
+00:06:00,560 --> 00:06:04,600
+on the low level we have the data
+
+134
+00:06:02,199 --> 00:06:07,880
+structures and the operations covering
+
+135
+00:06:04,600 --> 00:06:10,639
+structures like graphs and a specific
+
+136
+00:06:07,880 --> 00:06:12,960
+specific instance of graph is molecu and
+
+137
+00:06:10,639 --> 00:06:16,039
+we also have the data set and on top of
+
+138
+00:06:12,960 --> 00:06:19,360
+that uh we have everything just like
+
+139
+00:06:16,039 --> 00:06:22,120
+other deing libraries from layers models
+
+140
+00:06:19,360 --> 00:06:24,240
+to standard tasks So currently we have
+
+141
+00:06:22,120 --> 00:06:26,360
+five tasks from property prediction
+
+142
+00:06:24,240 --> 00:06:29,800
+preining molecular generation R
+
+143
+00:06:26,360 --> 00:06:31,720
+synthesis and N graph reasoning and more
+
+144
+00:06:29,800 --> 00:06:34,160
+cast will become in in the future
+
+145
+00:06:31,720 --> 00:06:36,440
+including some tasks maybe on protein
+
+146
+00:06:34,160 --> 00:06:39,240
+representation learning and on top of
+
+147
+00:06:36,440 --> 00:06:40,520
+that we have the engine that manipulate
+
+148
+00:06:39,240 --> 00:06:44,080
+the training
+
+149
+00:06:40,520 --> 00:06:48,000
+evaluation uh across either single CPU
+
+150
+00:06:44,080 --> 00:06:50,440
+single GPU or even distributed training
+
+151
+00:06:48,000 --> 00:06:53,319
+settings so this is all about the
+
+152
+00:06:50,440 --> 00:06:55,800
+introduction and uh for the rest part of
+
+153
+00:06:53,319 --> 00:06:58,360
+the master class we will give you a
+
+154
+00:06:55,800 --> 00:07:01,000
+handson tutorial uh from the data
+
+155
+00:06:58,360 --> 00:07:03,400
+structures and then move on to the tasks
+
+156
+00:07:01,000 --> 00:07:06,639
+like pring and the mon
+
+157
+00:07:03,400 --> 00:07:09,599
+generation so let's take a look at the
+
+158
+00:07:06,639 --> 00:07:12,440
+data structure exercises
+
+159
+00:07:09,599 --> 00:07:15,240
+so I think um my collaborators has
+
+160
+00:07:12,440 --> 00:07:18,160
+already sent the link in the chat so
+
+161
+00:07:15,240 --> 00:07:21,080
+that you can also open it locally in
+
+162
+00:07:18,160 --> 00:07:23,160
+your browser and then you can run it but
+
+163
+00:07:21,080 --> 00:07:26,240
+you can also just view the shareed
+
+164
+00:07:23,160 --> 00:07:29,240
+screen and see our
+
+165
+00:07:26,240 --> 00:07:30,800
+demonstration so here comes the data
+
+166
+00:07:29,240 --> 00:07:32,639
+structure structures and the graph
+
+167
+00:07:30,800 --> 00:07:35,039
+operations of toy drag these are the
+
+168
+00:07:32,639 --> 00:07:37,720
+very basic and also fundamental building
+
+169
+00:07:35,039 --> 00:07:39,280
+blocks in toy drag so first let's
+
+170
+00:07:37,720 --> 00:07:44,599
+installed
+
+171
+00:07:39,280 --> 00:07:47,560
+the uh so first uh let's install uh Toy
+
+172
+00:07:44,599 --> 00:07:50,199
+Dr on cab uh so this typically takes
+
+173
+00:07:47,560 --> 00:07:53,199
+around 30 seconds if you already have py
+
+174
+00:07:50,199 --> 00:07:57,800
+to installed so just use P install torch
+
+175
+00:07:53,199 --> 00:07:57,800
+scatter and zp install to drag
+
+176
+00:08:08,080 --> 00:08:15,080
+yeah I think it's almost done yeah okay
+
+177
+00:08:10,639 --> 00:08:16,759
+it's done and uh at the very fundamental
+
+178
+00:08:15,080 --> 00:08:19,520
+part of toy Dr is the graph data
+
+179
+00:08:16,759 --> 00:08:22,240
+structure so graph are the just the
+
+180
+00:08:19,520 --> 00:08:26,000
+first class citizen in toy Dr and we
+
+181
+00:08:22,240 --> 00:08:28,919
+first uh import the data module of the
+
+182
+00:08:26,000 --> 00:08:31,840
+toy Dr and then we can define a graph
+
+183
+00:08:28,919 --> 00:08:34,080
+using different formats so here we just
+
+184
+00:08:31,840 --> 00:08:36,959
+demonstrated with the format of AG list
+
+185
+00:08:34,080 --> 00:08:39,360
+where in h list every age is represented
+
+186
+00:08:36,959 --> 00:08:41,159
+as the this is the source node of the
+
+187
+00:08:39,360 --> 00:08:44,159
+age and this is the target node of the
+
+188
+00:08:41,159 --> 00:08:47,440
+age so it may take a while if you import
+
+189
+00:08:44,159 --> 00:08:51,160
+toy Dr for the first time it takes a
+
+190
+00:08:47,440 --> 00:08:53,519
+while okay and and here comes the result
+
+191
+00:08:51,160 --> 00:08:55,560
+as you can see that we can visualize the
+
+192
+00:08:53,519 --> 00:08:58,279
+graph like this so there's a link
+
+193
+00:08:55,560 --> 00:09:01,240
+between from the zero node to the first
+
+194
+00:08:58,279 --> 00:09:04,040
+node just as the defined in the age list
+
+195
+00:09:01,240 --> 00:09:07,079
+and we can also print the graph. adeny
+
+196
+00:09:04,040 --> 00:09:09,600
+so here for better visualization we just
+
+197
+00:09:07,079 --> 00:09:12,160
+print the dance version of the adjacent
+
+198
+00:09:09,600 --> 00:09:14,320
+Matrix while you can also print The Spar
+
+199
+00:09:12,160 --> 00:09:17,640
+version of The adjan Matrix which is the
+
+200
+00:09:14,320 --> 00:09:19,839
+default uh graph. edgen here so that the
+
+201
+00:09:17,640 --> 00:09:22,240
+SP version is less readable looks like
+
+202
+00:09:19,839 --> 00:09:24,440
+this but it's actually equivalent to the
+
+203
+00:09:22,240 --> 00:09:28,160
+dance version and you can pass this kind
+
+204
+00:09:24,440 --> 00:09:31,000
+of adjusted Matrix to your any favorite
+
+205
+00:09:28,160 --> 00:09:33,600
+message passing graph n n
+
+206
+00:09:31,000 --> 00:09:35,920
+works and by default the graph is
+
+207
+00:09:33,600 --> 00:09:38,120
+defined as a directed structure and you
+
+208
+00:09:35,920 --> 00:09:40,399
+can also convert it into a undirected
+
+209
+00:09:38,120 --> 00:09:43,440
+structure you just call graph.
+
+210
+00:09:40,399 --> 00:09:48,240
+undirected so this is quite analogous to
+
+211
+00:09:43,440 --> 00:09:50,320
+the uh kind of um operation over py
+
+212
+00:09:48,240 --> 00:09:52,800
+tensor you just imagine that the whole
+
+213
+00:09:50,320 --> 00:09:55,320
+graph is a pyto tensor and you can call
+
+214
+00:09:52,800 --> 00:09:57,200
+it some function to manipulate it and
+
+215
+00:09:55,320 --> 00:10:00,560
+there you get an undirected graph with
+
+216
+00:09:57,200 --> 00:10:03,399
+adjac Matrix be a symmetric mat
+
+217
+00:10:00,560 --> 00:10:06,480
+here so in some cases we may also want
+
+218
+00:10:03,399 --> 00:10:09,560
+to represent graphs with age relation
+
+219
+00:10:06,480 --> 00:10:12,079
+types so this can be easily implemented
+
+220
+00:10:09,560 --> 00:10:15,000
+by extending the edge list with another
+
+221
+00:10:12,079 --> 00:10:18,320
+attribute so this attribute indicates
+
+222
+00:10:15,000 --> 00:10:21,720
+what's the age type for each link so
+
+223
+00:10:18,320 --> 00:10:24,160
+here is means that uh the link of from S
+
+224
+00:10:21,720 --> 00:10:26,640
+node zero to node one has a relation
+
+225
+00:10:24,160 --> 00:10:29,040
+type zero and then we have a relation
+
+226
+00:10:26,640 --> 00:10:32,760
+type one here and we can build the graph
+
+227
+00:10:29,040 --> 00:10:32,760
+Cor spondingly and then we got this
+
+228
+00:10:33,160 --> 00:10:38,800
+graph and a specific instance of graphs
+
+229
+00:10:36,200 --> 00:10:41,079
+is molecules which is very very commonly
+
+230
+00:10:38,800 --> 00:10:44,760
+used in all kinds of drug Discovery
+
+231
+00:10:41,079 --> 00:10:47,680
+tasks so uh Toy drug provide native
+
+232
+00:10:44,760 --> 00:10:49,959
+support of a molecular data structure so
+
+233
+00:10:47,680 --> 00:10:52,720
+we can build a molecule from a smile
+
+234
+00:10:49,959 --> 00:10:55,000
+string so a smile string just is a
+
+235
+00:10:52,720 --> 00:10:57,600
+notation defined by computational
+
+236
+00:10:55,000 --> 00:11:01,720
+chemists and they they use this to
+
+237
+00:10:57,600 --> 00:11:04,519
+describe any kind of uh organic compound
+
+238
+00:11:01,720 --> 00:11:06,519
+structure so we build it into a molecule
+
+239
+00:11:04,519 --> 00:11:08,880
+and we can specify the not features we
+
+240
+00:11:06,519 --> 00:11:11,360
+want for ma any models we specify the
+
+241
+00:11:08,880 --> 00:11:14,120
+not features to be the position of each
+
+242
+00:11:11,360 --> 00:11:16,000
+atom in the compound and we specify the
+
+243
+00:11:14,120 --> 00:11:18,200
+age feature to be the length of each
+
+244
+00:11:16,000 --> 00:11:20,519
+compound well in some cases other cases
+
+245
+00:11:18,200 --> 00:11:23,440
+you may use more advanced features and
+
+246
+00:11:20,519 --> 00:11:26,360
+just check out out our list of features
+
+247
+00:11:23,440 --> 00:11:30,000
+provided in our library and we can
+
+248
+00:11:26,360 --> 00:11:32,959
+visualize the molecule we defined here
+
+249
+00:11:30,000 --> 00:11:35,680
+and we can also print the more do not
+
+250
+00:11:32,959 --> 00:11:39,000
+features so that we can obtain a not
+
+251
+00:11:35,680 --> 00:11:41,920
+feature we can also take a look at like
+
+252
+00:11:39,000 --> 00:11:44,240
+the not feature here so here the not
+
+253
+00:11:41,920 --> 00:11:47,600
+feature is the 3D coordinates of every
+
+254
+00:11:44,240 --> 00:11:50,079
+atom so by default uh because there is
+
+255
+00:11:47,600 --> 00:11:53,519
+no confirmation information confirmation
+
+256
+00:11:50,079 --> 00:11:58,440
+information embed in the uh in the
+
+257
+00:11:53,519 --> 00:12:00,480
+compound so when you generate the 3D
+
+258
+00:11:58,440 --> 00:12:03,240
+structure of the
+
+259
+00:12:00,480 --> 00:12:06,560
+the compound is actually projected onto
+
+260
+00:12:03,240 --> 00:12:09,360
+a 2d plane with the Z axis to be zero
+
+261
+00:12:06,560 --> 00:12:11,680
+across all the atoms so this kind of
+
+262
+00:12:09,360 --> 00:12:15,240
+stuff can be used as just input features
+
+263
+00:12:11,680 --> 00:12:15,240
+to your say graph
+
+264
+00:12:15,320 --> 00:12:21,839
+networks and uh the molecular is also a
+
+265
+00:12:18,720 --> 00:12:24,199
+container that uh consist of a lot of
+
+266
+00:12:21,839 --> 00:12:26,399
+important chemical properties for
+
+267
+00:12:24,199 --> 00:12:29,519
+example one important property is the
+
+268
+00:12:26,399 --> 00:12:32,000
+formal charge of each atom that is when
+
+269
+00:12:29,519 --> 00:12:33,639
+atom is positively charged or negatively
+
+270
+00:12:32,000 --> 00:12:37,920
+charged
+
+271
+00:12:33,639 --> 00:12:41,519
+here so uh we can visualize it like say
+
+272
+00:12:37,920 --> 00:12:44,720
+okay we have the atom C so this might be
+
+273
+00:12:41,519 --> 00:12:48,600
+some carbon atom on the Benzene ring and
+
+274
+00:12:44,720 --> 00:12:50,279
+it is the electronic neutralized and for
+
+275
+00:12:48,600 --> 00:12:52,600
+the nutren atoms they are positive
+
+276
+00:12:50,279 --> 00:12:54,040
+charge and for the oxygen atoms some
+
+277
+00:12:52,600 --> 00:12:57,600
+oxygen atoms
+
+278
+00:12:54,040 --> 00:12:59,399
+are neutralized and some oxygen atoms
+
+279
+00:12:57,600 --> 00:13:01,519
+are negatively charged as you can see in
+
+280
+00:12:59,399 --> 00:13:01,519
+the
+
+281
+00:13:02,639 --> 00:13:09,920
+figure and another kind of graph is the
+
+282
+00:13:06,519 --> 00:13:12,120
+knowledge graph so this can be used to
+
+283
+00:13:09,920 --> 00:13:17,320
+represent biometrical knowledge
+
+284
+00:13:12,120 --> 00:13:19,959
+extracted from say papet paper Text data
+
+285
+00:13:17,320 --> 00:13:22,800
+and you can use this kind of fact to do
+
+286
+00:13:19,959 --> 00:13:25,800
+some reasoning task over the not graphs
+
+287
+00:13:22,800 --> 00:13:28,720
+to do things like drug rep proposing or
+
+288
+00:13:25,800 --> 00:13:30,160
+maybe try to identify the target for new
+
+289
+00:13:28,720 --> 00:13:32,760
+disease
+
+290
+00:13:30,160 --> 00:13:36,839
+so here we show how to manipulate know
+
+291
+00:13:32,760 --> 00:13:39,279
+graph structures in toag so we
+
+292
+00:13:36,839 --> 00:13:41,600
+demonstrate this with a standard data
+
+293
+00:13:39,279 --> 00:13:44,720
+set called hashing net so first we
+
+294
+00:13:41,600 --> 00:13:46,480
+import data sets from toyra and then we
+
+295
+00:13:44,720 --> 00:13:49,600
+download the data set so it will be
+
+296
+00:13:46,480 --> 00:13:52,800
+automatically downloaded from the uh
+
+297
+00:13:49,600 --> 00:13:56,839
+official website and there it it will
+
+298
+00:13:52,800 --> 00:14:00,040
+loaded and return the data set
+
+299
+00:13:56,839 --> 00:14:03,320
+structure so here we we have the HH net
+
+300
+00:14:00,040 --> 00:14:06,279
+loaded and it contains more than 45,000
+
+301
+00:14:03,320 --> 00:14:07,399
+entities 24 relations and more than 2
+
+302
+00:14:06,279 --> 00:14:10,680
+million
+
+303
+00:14:07,399 --> 00:14:13,560
+triplets so we can have an idea what the
+
+304
+00:14:10,680 --> 00:14:16,120
+knowledge graph contains by uh taking
+
+305
+00:14:13,560 --> 00:14:18,560
+some ages of the N graph so here we just
+
+306
+00:14:16,120 --> 00:14:20,839
+take the the very first age of the
+
+307
+00:14:18,560 --> 00:14:25,320
+knowledge graph just extract the AG list
+
+308
+00:14:20,839 --> 00:14:27,360
+zero and get HTR here and we send the
+
+309
+00:14:25,320 --> 00:14:30,759
+head entity into the entity will cap to
+
+310
+00:14:27,360 --> 00:14:32,360
+get a human readable stream of that and
+
+311
+00:14:30,759 --> 00:14:35,639
+we also get a human readable string of
+
+312
+00:14:32,360 --> 00:14:39,120
+the relation as well as the the T entity
+
+313
+00:14:35,639 --> 00:14:42,360
+and uh as the output shows that uh this
+
+314
+00:14:39,120 --> 00:14:47,360
+age contains the uh Gene regulation
+
+315
+00:14:42,360 --> 00:14:50,759
+relation between Gene 11344 and G
+
+316
+00:14:47,360 --> 00:14:52,639
+7485 so this means that this G interacts
+
+317
+00:14:50,759 --> 00:14:56,560
+with this
+
+318
+00:14:52,639 --> 00:14:59,079
+G and uh our data structures not only
+
+319
+00:14:56,560 --> 00:15:00,880
+serve as a container for a lot of domino
+
+320
+00:14:59,079 --> 00:15:04,000
+knowledge stuff but you can also
+
+321
+00:15:00,880 --> 00:15:07,120
+manipulate the data structure with some
+
+322
+00:15:04,000 --> 00:15:10,279
+uh builtin graph operations so this is
+
+323
+00:15:07,120 --> 00:15:13,480
+quite analogous to the manipulation of
+
+324
+00:15:10,279 --> 00:15:15,360
+py tensors you can do say tensor sum say
+
+325
+00:15:13,480 --> 00:15:17,160
+say you try to sort the elements in our
+
+326
+00:15:15,360 --> 00:15:20,440
+tens and we can also do the same thing
+
+327
+00:15:17,160 --> 00:15:22,000
+into a drug just applying it on graphs
+
+328
+00:15:20,440 --> 00:15:25,440
+or on
+
+329
+00:15:22,000 --> 00:15:28,720
+molecules so before that we we first
+
+330
+00:15:25,440 --> 00:15:31,680
+introduce uh how can we create a batch
+
+331
+00:15:28,720 --> 00:15:34,000
+of molecules in toy drug because uh to
+
+332
+00:15:31,680 --> 00:15:36,240
+every every operation in toy drug can
+
+333
+00:15:34,000 --> 00:15:38,639
+benefit from GP acceleration and it's
+
+334
+00:15:36,240 --> 00:15:41,079
+better to process them as a huge badge
+
+335
+00:15:38,639 --> 00:15:42,759
+so that you can benefit more from the
+
+336
+00:15:41,079 --> 00:15:45,519
+GPU
+
+337
+00:15:42,759 --> 00:15:49,920
+parallelity so here we create a batch of
+
+338
+00:15:45,519 --> 00:15:51,680
+molecules from a SM list and this SM
+
+339
+00:15:49,920 --> 00:15:53,600
+list contain four molecules and then we
+
+340
+00:15:51,680 --> 00:15:55,759
+create the packed molecule and we
+
+341
+00:15:53,600 --> 00:16:00,000
+visualize it as you can see that here we
+
+342
+00:15:55,759 --> 00:16:00,000
+have a batch of four molecules
+
+343
+00:16:00,279 --> 00:16:07,120
+and uh we we can uh send it to GPU
+
+344
+00:16:04,120 --> 00:16:10,000
+device and then we can uh Pro process
+
+345
+00:16:07,120 --> 00:16:14,240
+the the molecules on
+
+346
+00:16:10,000 --> 00:16:16,920
+GPU so it takes a while if you pass the
+
+347
+00:16:14,240 --> 00:16:18,839
+molecules to the GPU for the first time
+
+348
+00:16:16,920 --> 00:16:22,079
+and now we have the Pack molecule and
+
+349
+00:16:18,839 --> 00:16:25,759
+it's on device CA
+
+350
+00:16:22,079 --> 00:16:28,959
+zero uh just like original py t us we
+
+351
+00:16:25,759 --> 00:16:32,440
+can do indexing like molecules. repeat
+
+352
+00:16:28,959 --> 00:16:34,839
+so this is very very similar to the tens
+
+353
+00:16:32,440 --> 00:16:36,880
+dot repeat you just repeated the tensas
+
+354
+00:16:34,839 --> 00:16:39,839
+but for molecules now we have okay we
+
+355
+00:16:36,880 --> 00:16:42,120
+have double number of uh molecules in
+
+356
+00:16:39,839 --> 00:16:44,880
+this batch and the first molecule is the
+
+357
+00:16:42,120 --> 00:16:47,720
+same as the Zer molecule this is exactly
+
+358
+00:16:44,880 --> 00:16:50,759
+the same as cancer.
+
+359
+00:16:47,720 --> 00:16:54,600
+repeat and we can also do indexing like
+
+360
+00:16:50,759 --> 00:16:56,759
+we just pick the zeros and the second
+
+361
+00:16:54,600 --> 00:17:00,519
+second molecule just to pick these two
+
+362
+00:16:56,759 --> 00:17:03,120
+molecule from the batch
+
+363
+00:17:00,519 --> 00:17:05,760
+and besides doing graph level operations
+
+364
+00:17:03,120 --> 00:17:08,480
+we can also do some masking over the
+
+365
+00:17:05,760 --> 00:17:12,480
+node or maybe over the Ed in the graph
+
+366
+00:17:08,480 --> 00:17:15,240
+and this can creates different kind of
+
+367
+00:17:12,480 --> 00:17:18,720
+molecules so here we Show an example of
+
+368
+00:17:15,240 --> 00:17:22,439
+masking out uh bonds that that contain
+
+369
+00:17:18,720 --> 00:17:24,640
+no carbon atoms so uh we create such
+
+370
+00:17:22,439 --> 00:17:27,559
+kind of hge mask by first extract The
+
+371
+00:17:24,640 --> 00:17:30,080
+Edge list to get the source node the
+
+372
+00:17:27,559 --> 00:17:32,480
+target node and the bound type and then
+
+373
+00:17:30,080 --> 00:17:35,280
+we create an H mask based on if the
+
+374
+00:17:32,480 --> 00:17:36,559
+source node is a carbon or if the target
+
+375
+00:17:35,280 --> 00:17:40,960
+node is a
+
+376
+00:17:36,559 --> 00:17:43,760
+carbon so if both node nodes of the bond
+
+377
+00:17:40,960 --> 00:17:46,520
+is not carbon atom then we just drop the
+
+378
+00:17:43,760 --> 00:17:49,280
+Bond as you can see that this this kind
+
+379
+00:17:46,520 --> 00:17:52,600
+of mask drops the bound between the
+
+380
+00:17:49,280 --> 00:17:54,960
+surfur and the phosphorus uh so that we
+
+381
+00:17:52,600 --> 00:17:57,120
+break the first molecule into several
+
+382
+00:17:54,960 --> 00:17:59,520
+fragments and we we also break the
+
+383
+00:17:57,120 --> 00:18:01,600
+second molecule the the
+
+384
+00:17:59,520 --> 00:18:05,400
+this molecule into two fragments because
+
+385
+00:18:01,600 --> 00:18:05,400
+there is a bond between two nitrogen
+
+386
+00:18:05,640 --> 00:18:11,280
+atoms so we can further extract a single
+
+387
+00:18:09,200 --> 00:18:13,960
+connected component as a separate
+
+388
+00:18:11,280 --> 00:18:16,960
+molecule and this simply by calling m.
+
+389
+00:18:13,960 --> 00:18:19,039
+connected components so this is quite
+
+390
+00:18:16,960 --> 00:18:22,120
+similar to the connected component
+
+391
+00:18:19,039 --> 00:18:24,559
+functions in network X but it is purely
+
+392
+00:18:22,120 --> 00:18:27,159
+implemented on GPU so that you can
+
+393
+00:18:24,559 --> 00:18:29,480
+benefit from the GPU acceleration and it
+
+394
+00:18:27,159 --> 00:18:31,679
+also provides end to end differentiation
+
+395
+00:18:29,480 --> 00:18:34,120
+so that if we build some models that
+
+396
+00:18:31,679 --> 00:18:38,000
+depends on the graph data structure then
+
+397
+00:18:34,120 --> 00:18:41,440
+it can be end to end propagate the
+
+398
+00:18:38,000 --> 00:18:43,600
+gradients so we we obtain the following
+
+399
+00:18:41,440 --> 00:18:45,919
+connected components so the first
+
+400
+00:18:43,600 --> 00:18:47,720
+molecule is divided into five components
+
+401
+00:18:45,919 --> 00:18:50,640
+and the second one is divided into two
+
+402
+00:18:47,720 --> 00:18:52,880
+components and there's also a return
+
+403
+00:18:50,640 --> 00:18:55,320
+value called number connected components
+
+404
+00:18:52,880 --> 00:18:58,280
+and it shows that the first one is split
+
+405
+00:18:55,320 --> 00:19:00,480
+into five components and the second one
+
+406
+00:18:58,280 --> 00:19:03,720
+is spit deleted into two
+
+407
+00:19:00,480 --> 00:19:07,559
+components so we may uh we may further
+
+408
+00:19:03,720 --> 00:19:10,000
+store the smiles of molecules so that
+
+409
+00:19:07,559 --> 00:19:13,679
+you can create the fragments from this
+
+410
+00:19:10,000 --> 00:19:17,039
+mouse for next time so this kind of
+
+411
+00:19:13,679 --> 00:19:19,280
+operations is quite commonly used in
+
+412
+00:19:17,039 --> 00:19:23,039
+fragment based drug Discovery when you
+
+413
+00:19:19,280 --> 00:19:25,000
+try to generate molecules by uh
+
+414
+00:19:23,039 --> 00:19:26,799
+combining different fragments into a
+
+415
+00:19:25,000 --> 00:19:30,400
+huge
+
+416
+00:19:26,799 --> 00:19:33,600
+molecule another kind of operation uh
+
+417
+00:19:30,400 --> 00:19:37,440
+commonly used in toy Dr is to retrieve
+
+418
+00:19:33,600 --> 00:19:40,320
+some specific ages from a graph so this
+
+419
+00:19:37,440 --> 00:19:42,799
+kind of uh usage is a typical usage for
+
+420
+00:19:40,320 --> 00:19:45,320
+this kind of operation is on LGE graphs
+
+421
+00:19:42,799 --> 00:19:48,520
+when you try to answer querries like
+
+422
+00:19:45,320 --> 00:19:51,720
+what are the symptoms that the asthma
+
+423
+00:19:48,520 --> 00:19:54,880
+presents so to answer this question uh
+
+424
+00:19:51,720 --> 00:19:57,280
+so we can create kind of search pattern
+
+425
+00:19:54,880 --> 00:19:59,799
+asthma present and in something and then
+
+426
+00:19:57,280 --> 00:20:01,520
+we search what is the something here
+
+427
+00:19:59,799 --> 00:20:05,919
+that Asma presents
+
+428
+00:20:01,520 --> 00:20:09,240
+in so we obtain the entity of Asma Ju
+
+429
+00:20:05,919 --> 00:20:11,240
+Just by taking the uh its disease ID and
+
+430
+00:20:09,240 --> 00:20:13,520
+obtain the corresponding entity in
+
+431
+00:20:11,240 --> 00:20:16,600
+hashing net and we also obtain the
+
+432
+00:20:13,520 --> 00:20:19,919
+relation for presents and in order to
+
+433
+00:20:16,600 --> 00:20:22,799
+denote the the the any which is the
+
+434
+00:20:19,919 --> 00:20:25,679
+question mark here so this this is a
+
+435
+00:20:22,799 --> 00:20:28,720
+kind of wild card in the match and we
+
+436
+00:20:25,679 --> 00:20:31,720
+use minus one to denote any wild card
+
+437
+00:20:28,720 --> 00:20:34,600
+card or denote matching of
+
+438
+00:20:31,720 --> 00:20:36,840
+anything and then we create a pattern
+
+439
+00:20:34,600 --> 00:20:40,679
+based on this three elements we create
+
+440
+00:20:36,840 --> 00:20:44,000
+asthma anding present so not in to track
+
+441
+00:20:40,679 --> 00:20:47,280
+every relation happens in at the third
+
+442
+00:20:44,000 --> 00:20:50,400
+element of a triplet so Asma any
+
+443
+00:20:47,280 --> 00:20:53,720
+presents and then we create the pattern
+
+444
+00:20:50,400 --> 00:20:56,240
+and because uh our cage do match
+
+445
+00:20:53,720 --> 00:20:59,360
+supports batch of patterns so that you
+
+446
+00:20:56,240 --> 00:21:02,600
+can simultaneously match a lot of
+
+447
+00:20:59,360 --> 00:21:05,360
+patterns so here we although here we
+
+448
+00:21:02,600 --> 00:21:08,880
+only have one single pattern we can show
+
+449
+00:21:05,360 --> 00:21:11,360
+that the we create the pattern into a
+
+450
+00:21:08,880 --> 00:21:14,000
+patch because the you see that the
+
+451
+00:21:11,360 --> 00:21:16,279
+pattern has a shape of one by three
+
+452
+00:21:14,000 --> 00:21:18,720
+where this one is the batch size and
+
+453
+00:21:16,279 --> 00:21:21,440
+three is just the this
+
+454
+00:21:18,720 --> 00:21:23,559
+three and then we use cage. match the
+
+455
+00:21:21,440 --> 00:21:26,159
+patterns to extract the corresponding
+
+456
+00:21:23,559 --> 00:21:28,720
+ages that can be retrieved by patterns
+
+457
+00:21:26,159 --> 00:21:30,760
+and and we we retrieve the age index as
+
+458
+00:21:28,720 --> 00:21:34,080
+well as the number match for each
+
+459
+00:21:30,760 --> 00:21:37,120
+pattern and then we send the age index
+
+460
+00:21:34,080 --> 00:21:39,480
+uh into the age list to get the
+
+461
+00:21:37,120 --> 00:21:42,200
+corresponding symptoms that uh present
+
+462
+00:21:39,480 --> 00:21:45,440
+in the age so this can be visited simply
+
+463
+00:21:42,200 --> 00:21:49,240
+by uh kg AG list age index
+
+464
+00:21:45,440 --> 00:21:51,640
+and access the first element of the H
+
+465
+00:21:49,240 --> 00:21:55,440
+list which is the symptoms corresponding
+
+466
+00:21:51,640 --> 00:21:57,400
+to this aning here and then finally uh
+
+467
+00:21:55,440 --> 00:21:59,919
+we translate the symptoms using the
+
+468
+00:21:57,400 --> 00:22:03,039
+entity vocab uh provided by the hashing
+
+469
+00:21:59,919 --> 00:22:05,600
+net so we have this kind of symptoms so
+
+470
+00:22:03,039 --> 00:22:09,080
+all these symptoms are directly uh
+
+471
+00:22:05,600 --> 00:22:09,080
+related to The Asthma
+
+472
+00:22:09,159 --> 00:22:15,600
+disease and although we provide a lot of
+
+473
+00:22:12,840 --> 00:22:18,720
+domain knowledge uh directly
+
+474
+00:22:15,600 --> 00:22:20,640
+encapsulates by the our data structure
+
+475
+00:22:18,720 --> 00:22:23,440
+in some cases you may also want to
+
+476
+00:22:20,640 --> 00:22:25,919
+register your own attributes especially
+
+477
+00:22:23,440 --> 00:22:28,320
+uh you you compute something based on
+
+478
+00:22:25,919 --> 00:22:30,080
+some basic attributes and then compute
+
+479
+00:22:28,320 --> 00:22:33,600
+some fancy
+
+480
+00:22:30,080 --> 00:22:36,000
+attributes so this can be uh achieved by
+
+481
+00:22:33,600 --> 00:22:38,559
+the registration mechanism in our
+
+482
+00:22:36,000 --> 00:22:41,200
+library so we can register something
+
+483
+00:22:38,559 --> 00:22:43,279
+like a not attribute for example uh here
+
+484
+00:22:41,200 --> 00:22:45,960
+we Define a not attribute called
+
+485
+00:22:43,279 --> 00:22:49,159
+attached to C so attached to c means
+
+486
+00:22:45,960 --> 00:22:52,960
+that whether an atom has at least one
+
+487
+00:22:49,159 --> 00:22:55,600
+carbon n atom as its nebor so this can
+
+488
+00:22:52,960 --> 00:22:59,120
+be computed by this three lines of code
+
+489
+00:22:55,600 --> 00:23:02,320
+two lines of code and then uh we
+
+490
+00:22:59,120 --> 00:23:05,320
+assigned attached to C to as an
+
+491
+00:23:02,320 --> 00:23:09,240
+attribute of the molecule wrapped by a
+
+492
+00:23:05,320 --> 00:23:12,480
+context manager with more. node so this
+
+493
+00:23:09,240 --> 00:23:15,919
+line the context manager means that we
+
+494
+00:23:12,480 --> 00:23:19,200
+are trying to assigning something to to
+
+495
+00:23:15,919 --> 00:23:21,640
+this molecule as a not attribute and
+
+496
+00:23:19,200 --> 00:23:23,679
+then it will REM okay the molecule now
+
+497
+00:23:21,640 --> 00:23:25,559
+have an additional not attribute called
+
+498
+00:23:23,679 --> 00:23:27,600
+attached to C and it will be
+
+499
+00:23:25,559 --> 00:23:30,000
+automatically maintained during all
+
+500
+00:23:27,600 --> 00:23:32,640
+kinds of graph operations or maybe age
+
+501
+00:23:30,000 --> 00:23:35,760
+operations not masking
+
+502
+00:23:32,640 --> 00:23:39,200
+operations so as you can see uh we still
+
+503
+00:23:35,760 --> 00:23:41,720
+give us the example of TNT compound here
+
+504
+00:23:39,200 --> 00:23:44,679
+and the attached to C results is like
+
+505
+00:23:41,720 --> 00:23:47,400
+the carbons are attached to other
+
+506
+00:23:44,679 --> 00:23:49,559
+carbons and the nitrogens are attached
+
+507
+00:23:47,400 --> 00:23:52,600
+to one carbon but the oxygens are not
+
+508
+00:23:49,559 --> 00:23:56,159
+attached to any carbon
+
+509
+00:23:52,600 --> 00:23:59,200
+at so if we apply some kind of graph
+
+510
+00:23:56,159 --> 00:24:01,919
+operations like more do subgraph
+
+511
+00:23:59,200 --> 00:24:04,480
+uh and then then we can take look at the
+
+512
+00:24:01,919 --> 00:24:08,120
+result as you can see that the attached
+
+513
+00:24:04,480 --> 00:24:10,440
+to C attributes is maintained uh just
+
+514
+00:24:08,120 --> 00:24:10,440
+like
+
+515
+00:24:11,679 --> 00:24:17,559
+before so you can also Define attributes
+
+516
+00:24:14,760 --> 00:24:21,000
+for AG level stuff or for graph
+
+517
+00:24:17,559 --> 00:24:21,000
+attributes in the same
+
+518
+00:24:22,080 --> 00:24:27,840
+way and besides the data structures uh
+
+519
+00:24:25,159 --> 00:24:30,039
+to also provides some vartic functions
+
+520
+00:24:27,840 --> 00:24:33,559
+which could be very useful when you try
+
+521
+00:24:30,039 --> 00:24:35,520
+to compute some uh say computer graph
+
+522
+00:24:33,559 --> 00:24:37,760
+graph level stuff based on Note level
+
+523
+00:24:35,520 --> 00:24:39,520
+stuff or compute AG level stuff based on
+
+524
+00:24:37,760 --> 00:24:42,919
+not not level
+
+525
+00:24:39,520 --> 00:24:46,520
+stuff so here we showed the usage of
+
+526
+00:24:42,919 --> 00:24:48,679
+varic functions uh based on a node
+
+527
+00:24:46,520 --> 00:24:51,320
+selection problem so the goal of node
+
+528
+00:24:48,679 --> 00:24:55,640
+selection problem is try to pick a
+
+529
+00:24:51,320 --> 00:24:57,919
+single node for each graph well asum you
+
+530
+00:24:55,640 --> 00:25:00,559
+already noticed that different graphs
+
+531
+00:24:57,919 --> 00:25:02,799
+have different number of noes so this is
+
+532
+00:25:00,559 --> 00:25:06,799
+actually a classification problem with
+
+533
+00:25:02,799 --> 00:25:08,120
+vartic lens across different examples so
+
+534
+00:25:06,799 --> 00:25:10,440
+different example have a different
+
+535
+00:25:08,120 --> 00:25:13,279
+number of nodes and different uh
+
+536
+00:25:10,440 --> 00:25:15,960
+classification categories so how can we
+
+537
+00:25:13,279 --> 00:25:19,200
+implement it actually in to we don't
+
+538
+00:25:15,960 --> 00:25:21,000
+need any kind of uh padding or any kind
+
+539
+00:25:19,200 --> 00:25:24,440
+of truncation operations we just
+
+540
+00:25:21,000 --> 00:25:27,840
+implement it as is and and everything
+
+541
+00:25:24,440 --> 00:25:30,039
+can work efficiently so to implement
+
+542
+00:25:27,840 --> 00:25:33,840
+this we just import the functional
+
+543
+00:25:30,039 --> 00:25:37,399
+module of to drag layers and we first
+
+544
+00:25:33,840 --> 00:25:40,440
+create some fake prediction say just a
+
+545
+00:25:37,399 --> 00:25:42,960
+random prediction of the each no is
+
+546
+00:25:40,440 --> 00:25:46,200
+logit and then we can print the
+
+547
+00:25:42,960 --> 00:25:47,520
+log so the Lo contains the prediction
+
+548
+00:25:46,200 --> 00:25:50,559
+for two
+
+549
+00:25:47,520 --> 00:25:52,760
+molecules uh what the first molecule
+
+550
+00:25:50,559 --> 00:25:57,120
+contain 12 nodes and the second molecule
+
+551
+00:25:52,760 --> 00:25:59,640
+contain six nodes and uh we can split
+
+552
+00:25:57,120 --> 00:26:03,279
+the prediction in for different graph
+
+553
+00:25:59,640 --> 00:26:05,399
+just use logit do split most uh number
+
+554
+00:26:03,279 --> 00:26:08,520
+noes and then we obtain the the
+
+555
+00:26:05,399 --> 00:26:10,760
+prediction for the the zeros graph and
+
+556
+00:26:08,520 --> 00:26:13,960
+the prediction for the first
+
+557
+00:26:10,760 --> 00:26:17,000
+graph and in order to compute loss for
+
+558
+00:26:13,960 --> 00:26:20,720
+this kind of uh classification this
+
+559
+00:26:17,000 --> 00:26:23,039
+varic categories so we first Define the
+
+560
+00:26:20,720 --> 00:26:26,720
+labels so here we just create some fake
+
+561
+00:26:23,039 --> 00:26:30,279
+labels just assume that the the desired
+
+562
+00:26:26,720 --> 00:26:34,240
+prediction is on the last node of every
+
+563
+00:26:30,279 --> 00:26:37,039
+graph and then we we compute a Vari
+
+564
+00:26:34,240 --> 00:26:40,440
+cross entropy between the logit and the
+
+565
+00:26:37,039 --> 00:26:43,080
+label and we also tell the function that
+
+566
+00:26:40,440 --> 00:26:45,559
+we try to partition the logit with m.
+
+567
+00:26:43,080 --> 00:26:47,520
+number noes that means uh the logit
+
+568
+00:26:45,559 --> 00:26:51,159
+looks like this and the logit is
+
+569
+00:26:47,520 --> 00:26:53,480
+partitioned into uh the log the part for
+
+570
+00:26:51,159 --> 00:26:54,760
+graph zero and the graph the part for
+
+571
+00:26:53,480 --> 00:26:58,000
+graph
+
+572
+00:26:54,760 --> 00:27:01,240
+one and then it will comput the Vari
+
+573
+00:26:58,000 --> 00:27:04,240
+cross entropy across all the graphs uh
+
+574
+00:27:01,240 --> 00:27:07,240
+without looping over the each example it
+
+575
+00:27:04,240 --> 00:27:09,840
+just simultaneously computed very
+
+576
+00:27:07,240 --> 00:27:12,440
+efficiently and we obtain the loss for
+
+577
+00:27:09,840 --> 00:27:15,600
+for the graph and and as you can see
+
+578
+00:27:12,440 --> 00:27:19,480
+here okay so the loose may depend on the
+
+579
+00:27:15,600 --> 00:27:22,039
+random variable and here the Lo loss is
+
+580
+00:27:19,480 --> 00:27:25,159
+2.3 and during inference time we can
+
+581
+00:27:22,039 --> 00:27:28,399
+also use some vartic function to extract
+
+582
+00:27:25,159 --> 00:27:31,039
+the top K nodes for each graph uh so so
+
+583
+00:27:28,399 --> 00:27:33,640
+we first convert the logit into a
+
+584
+00:27:31,039 --> 00:27:35,960
+probability using a varic soft marks
+
+585
+00:27:33,640 --> 00:27:39,240
+because we are still trying to dealing
+
+586
+00:27:35,960 --> 00:27:40,640
+with something that covers a varic
+
+587
+00:27:39,240 --> 00:27:43,559
+number of
+
+588
+00:27:40,640 --> 00:27:46,480
+categories and then we extract the top
+
+589
+00:27:43,559 --> 00:27:49,480
+cave for from each graph's node
+
+590
+00:27:46,480 --> 00:27:52,000
+probabilities we extracted the top three
+
+591
+00:27:49,480 --> 00:27:56,080
+probabilities for each graph and as you
+
+592
+00:27:52,000 --> 00:27:59,799
+can see the results here so we have the
+
+593
+00:27:56,080 --> 00:28:02,480
+uh the first graph top predictions to be
+
+594
+00:27:59,799 --> 00:28:05,240
+the no number three no number zero and
+
+595
+00:28:02,480 --> 00:28:08,000
+no number nine and their probability are
+
+596
+00:28:05,240 --> 00:28:11,039
+12% 12% and
+
+597
+00:28:08,000 --> 00:28:14,039
+10.5% and this is for the SEC the second
+
+598
+00:28:11,039 --> 00:28:16,039
+graph and this is the the node index in
+
+599
+00:28:14,039 --> 00:28:20,080
+the second
+
+600
+00:28:16,039 --> 00:28:21,960
+graph so this is all for the tutorial
+
+601
+00:28:20,080 --> 00:28:26,159
+part of data structures and graph
+
+602
+00:28:21,960 --> 00:28:29,320
+operations next I will uh give you some
+
+603
+00:28:26,159 --> 00:28:32,679
+small exercise about this and to see if
+
+604
+00:28:29,320 --> 00:28:35,880
+we understand how to use toy Dr to deal
+
+605
+00:28:32,679 --> 00:28:35,880
+with some fancy
+
+606
+00:28:39,880 --> 00:28:49,760
+stuff so let's see the exercise here
+
+607
+00:28:45,399 --> 00:28:52,600
+yeah so in exercise part we just try to
+
+608
+00:28:49,760 --> 00:28:54,679
+uh use what we just learned in in the
+
+609
+00:28:52,600 --> 00:28:57,640
+previous uh tutorial and try to
+
+610
+00:28:54,679 --> 00:28:59,039
+implement some graph operations and also
+
+611
+00:28:57,640 --> 00:29:02,240
+vartic
+
+612
+00:28:59,039 --> 00:29:06,120
+functions so here the first exercise is
+
+613
+00:29:02,240 --> 00:29:09,279
+about how to extract a k cor graph for
+
+614
+00:29:06,120 --> 00:29:11,399
+molecu so a k graph is the maximum
+
+615
+00:29:09,279 --> 00:29:15,600
+connected subgraph where all nodes have
+
+616
+00:29:11,399 --> 00:29:19,200
+a degree at least K so the K graph uh
+
+617
+00:29:15,600 --> 00:29:21,799
+computationally can be uh obtained by
+
+618
+00:29:19,200 --> 00:29:25,080
+iteratively uh removing nodes that have
+
+619
+00:29:21,799 --> 00:29:27,039
+degree smaller than K so once if you
+
+620
+00:29:25,080 --> 00:29:29,440
+intuitively do this steps and if you
+
+621
+00:29:27,039 --> 00:29:31,960
+count remove any more nodes then you
+
+622
+00:29:29,440 --> 00:29:35,279
+obtain the kod graph so here we
+
+623
+00:29:31,960 --> 00:29:38,000
+implemented the code uh to extract a two
+
+624
+00:29:35,279 --> 00:29:41,039
+Cod graph for a bch of molecules so here
+
+625
+00:29:38,000 --> 00:29:44,200
+we have the molecules and we want to
+
+626
+00:29:41,039 --> 00:29:46,039
+extract the two cor graph which which is
+
+627
+00:29:44,200 --> 00:29:50,360
+already show here so this is this should
+
+628
+00:29:46,039 --> 00:29:53,320
+be the result of twood graph and the uh
+
+629
+00:29:50,360 --> 00:29:55,919
+your job is to implement the code here
+
+630
+00:29:53,320 --> 00:29:58,679
+to fill the code and try try to obtain
+
+631
+00:29:55,919 --> 00:30:02,679
+the correct results like this
+
+632
+00:29:58,679 --> 00:30:05,240
+so so it drops the side trains like the
+
+633
+00:30:02,679 --> 00:30:09,240
+the uh the F here and the oxygen here
+
+634
+00:30:05,240 --> 00:30:11,799
+the nitrogen here just uh only keep the
+
+635
+00:30:09,240 --> 00:30:11,799
+the Benzene
+
+636
+00:30:14,480 --> 00:30:19,960
+rings so uh I I will go through all the
+
+637
+00:30:18,039 --> 00:30:22,279
+questions and after all the questions I
+
+638
+00:30:19,960 --> 00:30:25,360
+will give you some time uh to think
+
+639
+00:30:22,279 --> 00:30:28,600
+about it and also to uh Implement your
+
+640
+00:30:25,360 --> 00:30:31,600
+own code to test it so the second
+
+641
+00:30:28,600 --> 00:30:34,919
+question is about how to do a more
+
+642
+00:30:31,600 --> 00:30:38,799
+complicated uh search or retrieval on
+
+643
+00:30:34,919 --> 00:30:41,600
+LGE graphs with the the match function
+
+644
+00:30:38,799 --> 00:30:43,640
+so here our job is to answer the query
+
+645
+00:30:41,600 --> 00:30:48,080
+what are the diseases that can be
+
+646
+00:30:43,640 --> 00:30:51,399
+treated by both pism and O
+
+647
+00:30:48,080 --> 00:30:55,240
+paroline So this try to search the the
+
+648
+00:30:51,399 --> 00:30:59,039
+common labels of predin and O pronol uh
+
+649
+00:30:55,240 --> 00:31:02,960
+indicated by the relation treat
+
+650
+00:30:59,039 --> 00:31:05,960
+so uh to search this uh you may you uh
+
+651
+00:31:02,960 --> 00:31:08,120
+use use a kind of fact that instead of
+
+652
+00:31:05,960 --> 00:31:11,200
+computing two Al set and intersecting
+
+653
+00:31:08,120 --> 00:31:14,240
+them uh we can compute the disease that
+
+654
+00:31:11,200 --> 00:31:17,519
+can be treated by Pino and they verify
+
+655
+00:31:14,240 --> 00:31:21,240
+if this kind of disease can be also
+
+656
+00:31:17,519 --> 00:31:24,720
+treated by opron and finally filter of
+
+657
+00:31:21,240 --> 00:31:28,080
+the diseases that cannot be treated by o
+
+658
+00:31:24,720 --> 00:31:30,600
+Proline so your job is to implement code
+
+659
+00:31:28,080 --> 00:31:33,039
+here and to return the diseases
+
+660
+00:31:30,600 --> 00:31:34,240
+variables and then our model will
+
+661
+00:31:33,039 --> 00:31:37,279
+printed the
+
+662
+00:31:34,240 --> 00:31:40,600
+diseases uh so the correct Al is has be
+
+663
+00:31:37,279 --> 00:31:43,120
+sh here but you need to implement the
+
+664
+00:31:40,600 --> 00:31:46,519
+code for
+
+665
+00:31:43,120 --> 00:31:49,760
+that and for the last exercise uh we
+
+666
+00:31:46,519 --> 00:31:53,880
+will take a look at the vartic functions
+
+667
+00:31:49,760 --> 00:31:57,639
+so uh so we will consider a exercise
+
+668
+00:31:53,880 --> 00:32:01,000
+that try to drop out exactly 50% of noes
+
+669
+00:31:57,639 --> 00:32:03,399
+for each graph in a batch so this is a
+
+670
+00:32:01,000 --> 00:32:06,960
+more rigorous version of the jop out
+
+671
+00:32:03,399 --> 00:32:09,639
+applied to graph then using that native
+
+672
+00:32:06,960 --> 00:32:12,399
+python drop out so when you apply native
+
+673
+00:32:09,639 --> 00:32:15,320
+python drop out to a bch of graphs you
+
+674
+00:32:12,399 --> 00:32:17,600
+randomly drop everything with 50% but
+
+675
+00:32:15,320 --> 00:32:20,120
+you are not guaranteed that every graph
+
+676
+00:32:17,600 --> 00:32:23,639
+have exactly half of the stuff dropped
+
+677
+00:32:20,120 --> 00:32:26,360
+so here we want that every graph has
+
+678
+00:32:23,639 --> 00:32:28,360
+exactly half of the nodes dropped in the
+
+679
+00:32:26,360 --> 00:32:30,240
+drop out
+
+680
+00:32:28,360 --> 00:32:32,159
+but every graph have a different number
+
+681
+00:32:30,240 --> 00:32:35,519
+of nodes so you need to deal with the
+
+682
+00:32:32,159 --> 00:32:38,320
+varic lass of nodes in this case so the
+
+683
+00:32:35,519 --> 00:32:40,720
+hint is that randomly selecting half of
+
+684
+00:32:38,320 --> 00:32:43,279
+the nodes is equivalent to selecting the
+
+685
+00:32:40,720 --> 00:32:47,000
+smaller half of a random permutation
+
+686
+00:32:43,279 --> 00:32:50,159
+over nodes so let's see how can you
+
+687
+00:32:47,000 --> 00:32:52,760
+implement it uh using this kind of hint
+
+688
+00:32:50,159 --> 00:32:55,880
+so if you implement correctly and then
+
+689
+00:32:52,760 --> 00:32:58,760
+you obtain the mask called is dropped
+
+690
+00:32:55,880 --> 00:33:01,679
+and then our code will apply drop out to
+
+691
+00:32:58,760 --> 00:33:03,840
+the attribute and also it will check if
+
+692
+00:33:01,679 --> 00:33:05,639
+your your drop out is correctly
+
+693
+00:33:03,840 --> 00:33:07,200
+implemented if it's correctly
+
+694
+00:33:05,639 --> 00:33:10,480
+implemented you should get something
+
+695
+00:33:07,200 --> 00:33:12,760
+like this you have 15 notes of 30 notes
+
+696
+00:33:10,480 --> 00:33:15,120
+dropped and you have 14 notes of 28
+
+697
+00:33:12,760 --> 00:33:19,039
+notes dropped in the second
+
+698
+00:33:15,120 --> 00:33:22,279
+graph so I think I can give you sometime
+
+699
+00:33:19,039 --> 00:33:24,000
+maybe five to 10 minutes to uh to try
+
+700
+00:33:22,279 --> 00:33:26,760
+the exercise and if you have any
+
+701
+00:33:24,000 --> 00:33:30,760
+questions feel free to ask
+
+702
+00:33:26,760 --> 00:33:30,760
+me for
+
+703
+00:34:12,560 --> 00:34:20,720
+so any volunteers for the
+
+704
+00:34:15,879 --> 00:34:24,399
+exercise or anyone have any kind of sort
+
+705
+00:34:20,720 --> 00:34:29,720
+for the exercise even if it's it's not
+
+706
+00:34:24,399 --> 00:34:29,720
+perfect you can just uh try to answer it
+
+707
+00:34:35,280 --> 00:34:38,280
+okay
+
+708
+00:35:04,000 --> 00:35:10,160
+so here I can show you the answer to the
+
+709
+00:35:06,880 --> 00:35:12,520
+first exercise so this this requires you
+
+710
+00:35:10,160 --> 00:35:17,079
+write a while loop you just write
+
+711
+00:35:12,520 --> 00:35:21,160
+something like while m. degree in uh
+
+712
+00:35:17,079 --> 00:35:26,119
+greater equal than two. all and then you
+
+713
+00:35:21,160 --> 00:35:28,599
+write uh Moss equal to Moss subgraph uh
+
+714
+00:35:26,119 --> 00:35:31,640
+M degree in
+
+715
+00:35:28,599 --> 00:35:32,839
+larger equal than two just as the
+
+716
+00:35:31,640 --> 00:35:35,560
+command
+
+717
+00:35:32,839 --> 00:35:39,119
+indicates you can try try this things
+
+718
+00:35:35,560 --> 00:35:41,280
+out so we first try this one then try
+
+719
+00:35:39,119 --> 00:35:41,280
+this
+
+720
+00:35:42,839 --> 00:35:49,280
+one oh
+
+721
+00:35:44,640 --> 00:35:49,280
+okay it's dropped the connection
+
+722
+00:36:08,720 --> 00:36:13,560
+yeah everything works fine and the the
+
+723
+00:36:11,359 --> 00:36:18,359
+correct result we
+
+724
+00:36:13,560 --> 00:36:21,520
+got and uh for the second one so I think
+
+725
+00:36:18,359 --> 00:36:23,240
+I can we can try to write it so we we
+
+726
+00:36:21,520 --> 00:36:28,480
+first create
+
+727
+00:36:23,240 --> 00:36:30,359
+patterns uh that try to uh match the
+
+728
+00:36:28,480 --> 00:36:36,599
+say
+
+729
+00:36:30,359 --> 00:36:41,359
+predin uh so predin treats treat
+
+730
+00:36:36,599 --> 00:36:47,040
+something so we add nals to minus one
+
+731
+00:36:41,359 --> 00:36:52,640
+here and uh Pinon treats any disease and
+
+732
+00:36:47,040 --> 00:36:52,640
+then then we uh got the
+
+733
+00:36:54,520 --> 00:37:03,680
+match and we can obtain the diseases by
+
+734
+00:36:58,160 --> 00:37:08,720
+torch so okay here we we forgot bracket
+
+735
+00:37:03,680 --> 00:37:11,599
+and we we can get it by kg. AG list H
+
+736
+00:37:08,720 --> 00:37:15,079
+index and the first one this these are
+
+737
+00:37:11,599 --> 00:37:16,599
+the compounds that P can
+
+738
+00:37:15,079 --> 00:37:20,920
+treat
+
+739
+00:37:16,599 --> 00:37:23,839
+and and we we we can here we create a
+
+740
+00:37:20,920 --> 00:37:26,520
+auxiliar variable
+
+741
+00:37:23,839 --> 00:37:30,040
+once once like
+
+742
+00:37:26,520 --> 00:37:34,760
+this and uh we create another search
+
+743
+00:37:30,040 --> 00:37:41,400
+that tch. uh stack so so this time we
+
+744
+00:37:34,760 --> 00:37:45,480
+try to answer uh whether o pronol line o
+
+745
+00:37:41,400 --> 00:37:49,000
+pronol lines can treat this
+
+746
+00:37:45,480 --> 00:37:53,119
+disease so we just expand the treats
+
+747
+00:37:49,000 --> 00:37:57,280
+with the ones and O expand with the
+
+748
+00:37:53,119 --> 00:38:01,319
+ones and with Ste equals to minus one
+
+749
+00:37:57,280 --> 00:38:01,319
+and we can do a mat
+
+750
+00:38:06,520 --> 00:38:13,040
+again and uh this time uh we only need
+
+751
+00:38:09,920 --> 00:38:16,800
+to filter out the disease that doesn't
+
+752
+00:38:13,040 --> 00:38:19,720
+match so we just fill out disase that
+
+753
+00:38:16,800 --> 00:38:21,760
+has a number match of zero and we print
+
+754
+00:38:19,720 --> 00:38:23,160
+the answer so let's check if it's
+
+755
+00:38:21,760 --> 00:38:28,960
+correct
+
+756
+00:38:23,160 --> 00:38:28,960
+oops uh okay they are missing one
+
+757
+00:38:29,280 --> 00:38:35,839
+uh so we need to load the data set first
+
+758
+00:38:32,960 --> 00:38:35,839
+and then write
+
+759
+00:38:45,960 --> 00:38:50,800
+it okay spaning Mystic
+
+760
+00:39:06,640 --> 00:39:11,880
+okay it's now and it obtained the
+
+761
+00:39:09,240 --> 00:39:15,640
+correct disease that can be treated by
+
+762
+00:39:11,880 --> 00:39:20,079
+both uh PR and o pronol
+
+763
+00:39:15,640 --> 00:39:22,640
+line and for the vartic functions so we
+
+764
+00:39:20,079 --> 00:39:26,560
+first need to Generate vartic random
+
+765
+00:39:22,640 --> 00:39:28,480
+permutation so let's see we just uh got
+
+766
+00:39:26,560 --> 00:39:33,079
+some random per ation equals to
+
+767
+00:39:28,480 --> 00:39:35,880
+functional do varic random permutation
+
+768
+00:39:33,079 --> 00:39:38,520
+and uh because we we want to do a random
+
+769
+00:39:35,880 --> 00:39:41,440
+permutation for every node in the badge
+
+770
+00:39:38,520 --> 00:39:43,280
+so we use m. number node and this create
+
+771
+00:39:41,440 --> 00:39:47,040
+a random
+
+772
+00:39:43,280 --> 00:39:49,560
+permutation and and then we drop the
+
+773
+00:39:47,040 --> 00:39:52,520
+nodes that has smaller value in the
+
+774
+00:39:49,560 --> 00:39:56,640
+random permutation so we just check is
+
+775
+00:39:52,520 --> 00:40:01,040
+job equals to permutation smaller than
+
+776
+00:39:56,640 --> 00:40:04,280
+m. number noes uh times
+
+777
+00:40:01,040 --> 00:40:07,960
+0.5 so we can check if it's
+
+778
+00:40:04,280 --> 00:40:11,160
+correct uh okay it's not not correct we
+
+779
+00:40:07,960 --> 00:40:11,160
+need to broadcast
+
+780
+00:40:11,400 --> 00:40:18,680
+this and there we obtained that uh 28
+
+781
+00:40:14,960 --> 00:40:21,560
+noes of 56 noes dropped and 31 noes of
+
+782
+00:40:18,680 --> 00:40:21,560
+62 noes
+
+783
+00:40:22,720 --> 00:40:30,319
+dropped so this is all about the the
+
+784
+00:40:26,440 --> 00:40:30,319
+exercise of this part so any
+
+785
+00:40:39,280 --> 00:40:46,079
+question so if there is no question
+
+786
+00:40:42,359 --> 00:40:48,920
+maybe uh we can let Z to introduce the
+
+787
+00:40:46,079 --> 00:40:54,400
+second part on preining and fine
+
+788
+00:40:48,920 --> 00:40:54,400
+tuning okay so let
+
+789
+00:40:57,440 --> 00:41:03,079
+this
+
+790
+00:40:59,520 --> 00:41:06,880
+one okay so can I use my screen
+
+791
+00:41:03,079 --> 00:41:09,680
+yes okay thank you so thanks for J's
+
+792
+00:41:06,880 --> 00:41:13,440
+introduction to the basic usage of our
+
+793
+00:41:09,680 --> 00:41:16,079
+to library and now I'm going to show you
+
+794
+00:41:13,440 --> 00:41:19,720
+how to build your own drug Discovery
+
+795
+00:41:16,079 --> 00:41:22,520
+Pelon with our library specifically in
+
+796
+00:41:19,720 --> 00:41:25,040
+this tutorial I will first demonstrate
+
+797
+00:41:22,520 --> 00:41:27,480
+how to cre a graph neur Network on
+
+798
+00:41:25,040 --> 00:41:29,720
+molecules and then I will show how how
+
+799
+00:41:27,480 --> 00:41:32,800
+to fune these molecules on some
+
+800
+00:41:29,720 --> 00:41:34,920
+Downstream property prediction tasks so
+
+801
+00:41:32,800 --> 00:41:38,680
+as we all know in man drug Discovery
+
+802
+00:41:34,920 --> 00:41:42,040
+tasks is costly in both time and money
+
+803
+00:41:38,680 --> 00:41:44,800
+to collect label data so typically we
+
+804
+00:41:42,040 --> 00:41:48,520
+will use selfs supervis PR tring to
+
+805
+00:41:44,800 --> 00:41:51,400
+leverage the massive unlabeled data so
+
+806
+00:41:48,520 --> 00:41:54,280
+in this tutorial I will show you how to
+
+807
+00:41:51,400 --> 00:41:56,440
+do the pre-training with our library
+
+808
+00:41:54,280 --> 00:41:58,800
+okay so the first step is still to
+
+809
+00:41:56,440 --> 00:42:01,119
+install our la by
+
+810
+00:41:58,800 --> 00:42:04,839
+Peep and
+
+811
+00:42:01,119 --> 00:42:07,960
+then here I will I'm going to introduce
+
+812
+00:42:04,839 --> 00:42:10,680
+two kinds of different selfis strategies
+
+813
+00:42:07,960 --> 00:42:13,520
+to you and these methods typically
+
+814
+00:42:10,680 --> 00:42:16,160
+construct some unsurprised L functions
+
+815
+00:42:13,520 --> 00:42:19,359
+based on structural information in
+
+816
+00:42:16,160 --> 00:42:21,480
+molecules and note that for illustrative
+
+817
+00:42:19,359 --> 00:42:24,640
+purpose we only use the king Talk data
+
+818
+00:42:21,480 --> 00:42:27,880
+sets here which is much smaller than the
+
+819
+00:42:24,640 --> 00:42:31,119
+standard preining data sets and for real
+
+820
+00:42:27,880 --> 00:42:33,119
+applications we stress to use larger
+
+821
+00:42:31,119 --> 00:42:37,079
+data set sting
+
+822
+00:42:33,119 --> 00:42:39,880
+2m okay so the first method I want to
+
+823
+00:42:37,079 --> 00:42:42,559
+introduce is called infograph so
+
+824
+00:42:39,880 --> 00:42:45,040
+infograph aims to maximize the mutual
+
+825
+00:42:42,559 --> 00:42:46,839
+information between the graph level and
+
+826
+00:42:45,040 --> 00:42:49,599
+node level
+
+827
+00:42:46,839 --> 00:42:51,040
+representation so here is a question how
+
+828
+00:42:49,599 --> 00:42:53,200
+can we approximate the mutual
+
+829
+00:42:51,040 --> 00:42:54,800
+information between these two different
+
+830
+00:42:53,200 --> 00:42:57,200
+level
+
+831
+00:42:54,800 --> 00:43:00,280
+representations okay so here is the
+
+832
+00:42:57,200 --> 00:43:03,319
+solution for example given two different
+
+833
+00:43:00,280 --> 00:43:05,880
+molecular graphs showing the picture we
+
+834
+00:43:03,319 --> 00:43:08,680
+can first apply a graph neural network
+
+835
+00:43:05,880 --> 00:43:11,440
+on them and then we can get the node
+
+836
+00:43:08,680 --> 00:43:14,640
+representations for all the five nodes
+
+837
+00:43:11,440 --> 00:43:18,079
+in the two graphs and after that we can
+
+838
+00:43:14,640 --> 00:43:20,359
+apply a Ral function to get the
+
+839
+00:43:18,079 --> 00:43:22,640
+representation for the two graphs
+
+840
+00:43:20,359 --> 00:43:25,440
+sometimes the Ral function will be a
+
+841
+00:43:22,640 --> 00:43:27,800
+mean function or some function Su
+
+842
+00:43:25,440 --> 00:43:30,280
+function so
+
+843
+00:43:27,800 --> 00:43:33,760
+to approximate the mut information we
+
+844
+00:43:30,280 --> 00:43:36,720
+need to construct a contrastive loss
+
+845
+00:43:33,760 --> 00:43:39,640
+that is we need to construct some
+
+846
+00:43:36,720 --> 00:43:42,960
+positive pair positive node graph Pairs
+
+847
+00:43:39,640 --> 00:43:45,319
+and negative node graph pairs so let's
+
+848
+00:43:42,960 --> 00:43:48,480
+see for example in this
+
+849
+00:43:45,319 --> 00:43:52,599
+picture this blue node and this blue
+
+850
+00:43:48,480 --> 00:43:55,559
+graph here will form a positive pair
+
+851
+00:43:52,599 --> 00:43:58,200
+because they are from the same graph and
+
+852
+00:43:55,559 --> 00:44:01,160
+this blue node representation and this
+
+853
+00:43:58,200 --> 00:44:04,119
+red and black graph representation will
+
+854
+00:44:01,160 --> 00:44:08,480
+form a negative pair because they are
+
+855
+00:44:04,119 --> 00:44:11,680
+from different graphs and our task is to
+
+856
+00:44:08,480 --> 00:44:13,880
+predict whether a node graph pair come
+
+857
+00:44:11,680 --> 00:44:16,680
+from a single graph of two different C
+
+858
+00:44:13,880 --> 00:44:19,760
+graphs so this is essentially a binary
+
+859
+00:44:16,680 --> 00:44:23,079
+classification task and by minimizing
+
+860
+00:44:19,760 --> 00:44:25,359
+the binary cross entropy we can maximize
+
+861
+00:44:23,079 --> 00:44:27,599
+the mut information between the two
+
+862
+00:44:25,359 --> 00:44:30,960
+level representations
+
+863
+00:44:27,599 --> 00:44:34,200
+so this is the hell idea of
+
+864
+00:44:30,960 --> 00:44:39,079
+infograph and now I will show you how to
+
+865
+00:44:34,200 --> 00:44:43,800
+implement this method in F L with our T
+
+866
+00:44:39,079 --> 00:44:47,000
+Library so the first step is to load our
+
+867
+00:44:43,800 --> 00:44:50,720
+pruning data set which is Cle tox here
+
+868
+00:44:47,000 --> 00:44:54,319
+so we just call the clean tox class from
+
+869
+00:44:50,720 --> 00:44:57,240
+data set modu and we pass the data pass
+
+870
+00:44:54,319 --> 00:44:59,640
+the data set into this class and and
+
+871
+00:44:57,240 --> 00:45:03,040
+then we can set the node feature and add
+
+872
+00:44:59,640 --> 00:45:05,920
+feature as pre-re so here why should we
+
+873
+00:45:03,040 --> 00:45:09,119
+set the node feature as pre-re because
+
+874
+00:45:05,920 --> 00:45:12,160
+we need to keep the node feature
+
+875
+00:45:09,119 --> 00:45:14,760
+consistent between the pruning stage and
+
+876
+00:45:12,160 --> 00:45:17,880
+F tuning stage so we can just set
+
+877
+00:45:14,760 --> 00:45:20,160
+another feature as some predefined pre-
+
+878
+00:45:17,880 --> 00:45:24,400
+feature okay after that we are
+
+879
+00:45:20,160 --> 00:45:28,079
+successfully Define our data set and
+
+880
+00:45:24,400 --> 00:45:31,880
+then we can Define our graph new Network
+
+881
+00:45:28,079 --> 00:45:35,319
+and here we will use G and we Define a
+
+882
+00:45:31,880 --> 00:45:38,480
+five layers GM then we can pass the node
+
+883
+00:45:35,319 --> 00:45:41,920
+feature D and add feature D into this
+
+884
+00:45:38,480 --> 00:45:45,880
+model and then we can turn on The Bob
+
+885
+00:45:41,920 --> 00:45:50,319
+option and set the readout function as
+
+886
+00:45:45,880 --> 00:45:54,960
+mean and after that we can Define our
+
+887
+00:45:50,319 --> 00:45:57,240
+infograph model by passing our gene into
+
+888
+00:45:54,960 --> 00:46:00,480
+this model
+
+889
+00:45:57,240 --> 00:46:04,440
+and in this way we have our self surise
+
+890
+00:46:00,480 --> 00:46:08,440
+model and then uh to wrap this model we
+
+891
+00:46:04,440 --> 00:46:10,920
+need to build a unsurprised task because
+
+892
+00:46:08,440 --> 00:46:14,079
+we will use unlabel data and we will
+
+893
+00:46:10,920 --> 00:46:16,280
+construct some unsurprised laws so the
+
+894
+00:46:14,079 --> 00:46:19,520
+last function will be defined in the
+
+895
+00:46:16,280 --> 00:46:22,040
+model and after that we can Define our
+
+896
+00:46:19,520 --> 00:46:24,359
+op Optimizer and we can pass the
+
+897
+00:46:22,040 --> 00:46:29,319
+parameters in the task to this Optimizer
+
+898
+00:46:24,359 --> 00:46:32,880
+and set the learning rate as one e minus
+
+899
+00:46:29,319 --> 00:46:36,200
+3 and after that we can Define our
+
+900
+00:46:32,880 --> 00:46:39,480
+server and here we will wrap all the
+
+901
+00:46:36,200 --> 00:46:42,200
+stuff into this server we just pass the
+
+902
+00:46:39,480 --> 00:46:44,640
+task into server pass our data set into
+
+903
+00:46:42,200 --> 00:46:47,000
+this server and pass our Optimizer into
+
+904
+00:46:44,640 --> 00:46:49,760
+the server and one thing to note here is
+
+905
+00:46:47,000 --> 00:46:53,640
+that we only pass the data set as a
+
+906
+00:46:49,760 --> 00:46:56,359
+training set and leave the validation
+
+907
+00:46:53,640 --> 00:46:58,920
+set and test set as nor because here we
+
+908
+00:46:56,359 --> 00:47:00,559
+are doing training so we do not have any
+
+909
+00:46:58,920 --> 00:47:04,880
+validation and test
+
+910
+00:47:00,559 --> 00:47:08,119
+set and then we can set the GPU as zero
+
+911
+00:47:04,880 --> 00:47:11,040
+in this case we will train the model on
+
+912
+00:47:08,119 --> 00:47:14,480
+number zero in GPU and we can set the
+
+913
+00:47:11,040 --> 00:47:17,839
+batch set as 200
+
+914
+00:47:14,480 --> 00:47:21,359
+56 in this way we can Define our server
+
+915
+00:47:17,839 --> 00:47:25,599
+and after that we can train our model
+
+916
+00:47:21,359 --> 00:47:29,200
+for 10 AO and after finish training we
+
+917
+00:47:25,599 --> 00:47:31,559
+can save our model as a track one so as
+
+918
+00:47:29,200 --> 00:47:34,200
+you can see here is the log of the
+
+919
+00:47:31,559 --> 00:47:36,960
+training procedure and you can see the
+
+920
+00:47:34,200 --> 00:47:39,559
+mutual information is
+
+921
+00:47:36,960 --> 00:47:43,440
+increasing which suest our training
+
+922
+00:47:39,559 --> 00:47:45,599
+exess is successful and after we finish
+
+923
+00:47:43,440 --> 00:47:49,319
+the training we can save the checkpoint
+
+924
+00:47:45,599 --> 00:47:51,760
+to this pa okay so that's all for the
+
+925
+00:47:49,319 --> 00:47:55,920
+infograph
+
+926
+00:47:51,760 --> 00:47:59,880
+part and next the second strategy I want
+
+927
+00:47:55,920 --> 00:48:02,800
+to introduce is called attribute
+
+928
+00:47:59,880 --> 00:48:04,359
+masking so the the aim of attribute
+
+929
+00:48:02,800 --> 00:48:07,800
+masking is to capture the domain
+
+930
+00:48:04,359 --> 00:48:10,599
+knowledge by predicting atom times in
+
+931
+00:48:07,800 --> 00:48:14,200
+molecular graphs from randomly masked
+
+932
+00:48:10,599 --> 00:48:18,400
+node features for example in this
+
+933
+00:48:14,200 --> 00:48:21,359
+picture we are given a molecular graph
+
+934
+00:48:18,400 --> 00:48:24,599
+and we will randomly select a note and
+
+935
+00:48:21,359 --> 00:48:27,400
+mask it features so it will be marked as
+
+936
+00:48:24,599 --> 00:48:31,520
+G and then we can apply graph new
+
+937
+00:48:27,400 --> 00:48:33,400
+network on this graph and get the
+
+938
+00:48:31,520 --> 00:48:37,280
+representations for the fall notes in
+
+939
+00:48:33,400 --> 00:48:39,400
+the graph and after that we will use the
+
+940
+00:48:37,280 --> 00:48:43,160
+representation for the green note to
+
+941
+00:48:39,400 --> 00:48:46,960
+predict its atom types so now so here
+
+942
+00:48:43,160 --> 00:48:49,240
+the the atom time is just the
+
+943
+00:48:46,960 --> 00:48:51,640
+oxygen okay so that's the high level
+
+944
+00:48:49,240 --> 00:48:54,359
+idea of act
+
+945
+00:48:51,640 --> 00:48:58,079
+musk and I will show you how to build a
+
+946
+00:48:54,359 --> 00:49:01,760
+pth line actually musing so essentially
+
+947
+00:48:58,079 --> 00:49:03,839
+it is very similar to the infograph so
+
+948
+00:49:01,760 --> 00:49:07,359
+we still need to Define our data set
+
+949
+00:49:03,839 --> 00:49:11,960
+first and after that we can still Define
+
+950
+00:49:07,359 --> 00:49:13,640
+our five ler G model and the only
+
+951
+00:49:11,960 --> 00:49:16,040
+difference here is that we need to
+
+952
+00:49:13,640 --> 00:49:19,400
+define attribute masking
+
+953
+00:49:16,040 --> 00:49:21,720
+task instead of unsupervised loss
+
+954
+00:49:19,400 --> 00:49:24,640
+unsupervised task because here we need
+
+955
+00:49:21,720 --> 00:49:27,920
+to Define our loss function in the
+
+956
+00:49:24,640 --> 00:49:30,839
+attribute musk task and also we set the
+
+957
+00:49:27,920 --> 00:49:33,680
+musk rate at
+
+958
+00:49:30,839 --> 00:49:36,359
+0.15 and after that we can similarly
+
+959
+00:49:33,680 --> 00:49:39,880
+Define our Optimizer and solver for this
+
+960
+00:49:36,359 --> 00:49:43,720
+task and then we can TR the model for 10
+
+961
+00:49:39,880 --> 00:49:46,599
+aook and save the model as a
+
+962
+00:49:43,720 --> 00:49:50,400
+checkpoint so as you can see the cross
+
+963
+00:49:46,599 --> 00:49:54,240
+enthropy is decreasing and the average
+
+964
+00:49:50,400 --> 00:49:56,839
+accuracy is increasing which justest the
+
+965
+00:49:54,240 --> 00:49:59,319
+model is trained correctly
+
+966
+00:49:56,839 --> 00:50:02,520
+and after all of this stuffff we can
+
+967
+00:49:59,319 --> 00:50:06,319
+save the track F into this
+
+968
+00:50:02,520 --> 00:50:08,000
+pass okay so that's all for the
+
+969
+00:50:06,319 --> 00:50:11,520
+preaching
+
+970
+00:50:08,000 --> 00:50:15,119
+stage now we will are going to the fing
+
+971
+00:50:11,520 --> 00:50:18,040
+stage so when the graph neur Network pin
+
+972
+00:50:15,119 --> 00:50:20,319
+is finished we can fune the prun model
+
+973
+00:50:18,040 --> 00:50:23,880
+on some Downstream property prediction
+
+974
+00:50:20,319 --> 00:50:27,359
+task and here we will use base data set
+
+975
+00:50:23,880 --> 00:50:30,960
+for illustration which contains over
+
+976
+00:50:27,359 --> 00:50:33,000
+1,500 molecules and the label is just
+
+977
+00:50:30,960 --> 00:50:36,440
+the B Affinity
+
+978
+00:50:33,000 --> 00:50:39,880
+results and first we can download the
+
+979
+00:50:36,440 --> 00:50:42,559
+base data set and split it into training
+
+980
+00:50:39,880 --> 00:50:45,880
+validation and test set according to
+
+981
+00:50:42,559 --> 00:50:48,480
+scaold so we just split the data set
+
+982
+00:50:45,880 --> 00:50:49,799
+according to scar to make it more
+
+983
+00:50:48,480 --> 00:50:52,720
+difficult more
+
+984
+00:50:49,799 --> 00:50:54,880
+challenging and know that we need to set
+
+985
+00:50:52,720 --> 00:50:59,839
+the node and Edge feature in the data
+
+986
+00:50:54,880 --> 00:51:01,559
+set as PR in order to keep it compatible
+
+987
+00:50:59,839 --> 00:51:04,400
+with the prein
+
+988
+00:51:01,559 --> 00:51:07,520
+model okay so after that we will get our
+
+989
+00:51:04,400 --> 00:51:11,480
+training set validation set and test set
+
+990
+00:51:07,520 --> 00:51:15,040
+then we must Define the same model at
+
+991
+00:51:11,480 --> 00:51:19,640
+the preing state so here we just Define
+
+992
+00:51:15,040 --> 00:51:22,480
+five layer G model and we can set up our
+
+993
+00:51:19,640 --> 00:51:25,119
+Optimizer and one thing to note here is
+
+994
+00:51:22,480 --> 00:51:28,000
+that we need to Define our supervisor
+
+995
+00:51:25,119 --> 00:51:30,640
+task and here is a property prediction
+
+996
+00:51:28,000 --> 00:51:34,280
+we need to pass the model into this task
+
+997
+00:51:30,640 --> 00:51:38,799
+and we will set the criteria and binary
+
+998
+00:51:34,280 --> 00:51:41,240
+cost iny and set magic as aop andc
+
+999
+00:51:38,799 --> 00:51:42,960
+because this task is a binary
+
+1000
+00:51:41,240 --> 00:51:46,319
+classification
+
+1001
+00:51:42,960 --> 00:51:48,960
+task and then we can pass the task
+
+1002
+00:51:46,319 --> 00:51:52,200
+module the training set vation set and
+
+1003
+00:51:48,960 --> 00:51:54,319
+test set into our engine so here because
+
+1004
+00:51:52,200 --> 00:51:56,799
+this is a supervision supervised
+
+1005
+00:51:54,319 --> 00:51:58,799
+learning so we need to pass the
+
+1006
+00:51:56,799 --> 00:52:02,920
+validation set and test set into our
+
+1007
+00:51:58,799 --> 00:52:06,160
+engine so similarly we can set uh the
+
+1008
+00:52:02,920 --> 00:52:06,160
+batch set as
+
+1009
+00:52:06,520 --> 00:52:13,799
+20056 and now we can load our PR model
+
+1010
+00:52:10,480 --> 00:52:16,960
+from the checkpoint and fune it on some
+
+1011
+00:52:13,799 --> 00:52:19,839
+down data set so one thing to note here
+
+1012
+00:52:16,960 --> 00:52:22,400
+is is that we need to define a task
+
+1013
+00:52:19,839 --> 00:52:26,599
+specific prediction head for each down
+
+1014
+00:52:22,400 --> 00:52:30,920
+stre task so we only load the graph neur
+
+1015
+00:52:26,599 --> 00:52:34,640
+Network to our is Downstream task
+
+1016
+00:52:30,920 --> 00:52:36,720
+Downstream task so the the graph Network
+
+1017
+00:52:34,640 --> 00:52:40,440
+between graph network will be stored in
+
+1018
+00:52:36,720 --> 00:52:42,799
+the model of checkpoint and then we can
+
+1019
+00:52:40,440 --> 00:52:46,880
+load the corresponding part into our
+
+1020
+00:52:42,799 --> 00:52:49,119
+task and after that we can train our pre
+
+1021
+00:52:46,880 --> 00:52:52,760
+fun our pre model on the downstream task
+
+1022
+00:52:49,119 --> 00:52:56,040
+for 100 appos and then we can evaluate
+
+1023
+00:52:52,760 --> 00:52:57,640
+on some validation set so as you can see
+
+1024
+00:52:56,040 --> 00:53:02,040
+here is the training
+
+1025
+00:52:57,640 --> 00:53:04,200
+procedure so the cross entropy is decre
+
+1026
+00:53:02,040 --> 00:53:08,839
+is
+
+1027
+00:53:04,200 --> 00:53:11,240
+decreasing and finally we can get some
+
+1028
+00:53:08,839 --> 00:53:16,880
+performance on validation
+
+1029
+00:53:11,240 --> 00:53:21,200
+set okay so that's all for this
+
+1030
+00:53:16,880 --> 00:53:21,200
+tutorial and any questions
+
+1031
+00:53:24,040 --> 00:53:31,480
+here uh so if no questions maybe we can
+
+1032
+00:53:29,240 --> 00:53:36,920
+move to the next
+
+1033
+00:53:31,480 --> 00:53:41,400
+part and okay
+
+1034
+00:53:36,920 --> 00:53:46,040
+so terminate the GP and connect this
+
+1035
+00:53:41,400 --> 00:53:48,680
+exercise okay so I have leave some I
+
+1036
+00:53:46,040 --> 00:53:50,799
+will leave some exercise for you and in
+
+1037
+00:53:48,680 --> 00:53:54,400
+this exercise we will implement the
+
+1038
+00:53:50,799 --> 00:53:57,880
+context prediction task which is also a
+
+1039
+00:53:54,400 --> 00:54:00,119
+selfis learning task and the
+
+1040
+00:53:57,880 --> 00:54:02,760
+implementation will be based on the
+
+1041
+00:54:00,119 --> 00:54:05,160
+operations provided in the graph data
+
+1042
+00:54:02,760 --> 00:54:06,960
+structure and then we can test it on
+
+1043
+00:54:05,160 --> 00:54:10,680
+some Downstream data
+
+1044
+00:54:06,960 --> 00:54:12,880
+set okay so I will introduce I will
+
+1045
+00:54:10,680 --> 00:54:14,960
+first introduce the task to you and the
+
+1046
+00:54:12,880 --> 00:54:17,000
+first step is still to install our
+
+1047
+00:54:14,960 --> 00:54:20,520
+library VI
+
+1048
+00:54:17,000 --> 00:54:21,799
+pip okay so what's the definition of
+
+1049
+00:54:20,520 --> 00:54:24,799
+context
+
+1050
+00:54:21,799 --> 00:54:27,559
+prediction this task was proposed in the
+
+1051
+00:54:24,799 --> 00:54:30,720
+paper strategies for pring graph new
+
+1052
+00:54:27,559 --> 00:54:33,160
+networks and it aims to use the subs
+
+1053
+00:54:30,720 --> 00:54:35,640
+graph representation to predict their
+
+1054
+00:54:33,160 --> 00:54:39,640
+surrounding graph structures which we
+
+1055
+00:54:35,640 --> 00:54:42,960
+will refer as context graph
+
+1056
+00:54:39,640 --> 00:54:46,040
+here so the question is how can we
+
+1057
+00:54:42,960 --> 00:54:48,880
+Define the subgraph and context graph
+
+1058
+00:54:46,040 --> 00:54:52,400
+let's see for given Center note which is
+
+1059
+00:54:48,880 --> 00:54:54,720
+marked as right here the subgraph is
+
+1060
+00:54:52,400 --> 00:54:57,599
+defined as a keyop neighborhood around
+
+1061
+00:54:54,720 --> 00:55:01,799
+in the select node so let's see for
+
+1062
+00:54:57,599 --> 00:55:05,960
+example in this picture K is set to
+
+1063
+00:55:01,799 --> 00:55:08,160
+two and the in subg graph it's just the
+
+1064
+00:55:05,960 --> 00:55:12,240
+two half neighborhood around the red
+
+1065
+00:55:08,160 --> 00:55:15,520
+node so it's just the five nodes in the
+
+1066
+00:55:12,240 --> 00:55:18,839
+purple Square including one red node and
+
+1067
+00:55:15,520 --> 00:55:22,880
+four blue nodes so that that's the subg
+
+1068
+00:55:18,839 --> 00:55:24,640
+graph and the def the context graph is
+
+1069
+00:55:22,880 --> 00:55:27,960
+defined as the surrounding graph
+
+1070
+00:55:24,640 --> 00:55:31,119
+structure between R1 and the R2 H from
+
+1071
+00:55:27,960 --> 00:55:33,839
+the center node so for example here we
+
+1072
+00:55:31,119 --> 00:55:38,359
+set R1 equal to one and R2 equal to
+
+1073
+00:55:33,839 --> 00:55:41,760
+three so the contest graph will be the
+
+1074
+00:55:38,359 --> 00:55:45,440
+subgraph between two orange squares so
+
+1075
+00:55:41,760 --> 00:55:48,920
+it contains eight noes including four
+
+1076
+00:55:45,440 --> 00:55:52,480
+blue noes and four green noes so that's
+
+1077
+00:55:48,920 --> 00:55:56,359
+the definition of contest graph and also
+
+1078
+00:55:52,480 --> 00:56:01,359
+we need to define the anchor nodes nodes
+
+1079
+00:55:56,359 --> 00:56:04,599
+t k and R1 H are picked as anchor noes
+
+1080
+00:56:01,359 --> 00:56:06,359
+so here the four blue notes are just the
+
+1081
+00:56:04,599 --> 00:56:08,359
+anchor noes and these anchor noes will
+
+1082
+00:56:06,359 --> 00:56:10,960
+be used to extract the context
+
+1083
+00:56:08,359 --> 00:56:14,599
+prediction uh context
+
+1084
+00:56:10,960 --> 00:56:18,280
+representation and so after defining the
+
+1085
+00:56:14,599 --> 00:56:21,359
+subgraph and context graph we will first
+
+1086
+00:56:18,280 --> 00:56:24,240
+apply the context graph your network to
+
+1087
+00:56:21,359 --> 00:56:26,440
+obtain the node rings in the Contex
+
+1088
+00:56:24,240 --> 00:56:28,839
+graph and then we need to get
+
+1089
+00:56:26,440 --> 00:56:31,599
+representation for the context graph so
+
+1090
+00:56:28,839 --> 00:56:34,720
+we just take the average edding of the
+
+1091
+00:56:31,599 --> 00:56:36,760
+context anchor noes to obtain the
+
+1092
+00:56:34,720 --> 00:56:39,079
+context representation and for the
+
+1093
+00:56:36,760 --> 00:56:41,559
+subgraph we can get the representation
+
+1094
+00:56:39,079 --> 00:56:43,119
+by apply a graph neuron Network on it
+
+1095
+00:56:41,559 --> 00:56:44,039
+and take the representation of the
+
+1096
+00:56:43,119 --> 00:56:48,319
+center
+
+1097
+00:56:44,039 --> 00:56:51,480
+note and the learning objective here is
+
+1098
+00:56:48,319 --> 00:56:54,280
+to predict whether a particular
+
+1099
+00:56:51,480 --> 00:56:56,480
+neighborhood a particular subgraph and a
+
+1100
+00:56:54,280 --> 00:56:58,480
+particular context gra belong to to the
+
+1101
+00:56:56,480 --> 00:57:00,200
+Sim node so it's just a binary
+
+1102
+00:56:58,480 --> 00:57:05,039
+classification task we need to Define
+
+1103
+00:57:00,200 --> 00:57:09,920
+some uh binary classification loss
+
+1104
+00:57:05,039 --> 00:57:13,559
+function okay and so now I have already
+
+1105
+00:57:09,920 --> 00:57:17,920
+implemented the framework of this task
+
+1106
+00:57:13,559 --> 00:57:22,680
+and I will need you to implement five
+
+1107
+00:57:17,920 --> 00:57:25,079
+sentences in this uh function and uh
+
+1108
+00:57:22,680 --> 00:57:26,839
+first I we can just go through this
+
+1109
+00:57:25,079 --> 00:57:30,039
+function
+
+1110
+00:57:26,839 --> 00:57:35,799
+and in this task we so this modu this
+
+1111
+00:57:30,039 --> 00:57:39,000
+class is just a subass of n. module in
+
+1112
+00:57:35,799 --> 00:57:40,720
+Python so it will have a init function
+
+1113
+00:57:39,000 --> 00:57:43,799
+and a for
+
+1114
+00:57:40,720 --> 00:57:46,880
+function so in the init function we will
+
+1115
+00:57:43,799 --> 00:57:50,640
+Define our model so first I will
+
+1116
+00:57:46,880 --> 00:57:54,960
+Implement explain the meaning of
+
+1117
+00:57:50,640 --> 00:57:58,280
+parameters here so here we need to first
+
+1118
+00:57:54,960 --> 00:57:59,960
+pass the model into this class which is
+
+1119
+00:57:58,280 --> 00:58:03,599
+the graph neural networks we want to
+
+1120
+00:57:59,960 --> 00:58:07,240
+print and we also need a context model
+
+1121
+00:58:03,599 --> 00:58:10,680
+to extract the representations for
+
+1122
+00:58:07,240 --> 00:58:11,760
+context graph and by default we will use
+
+1123
+00:58:10,680 --> 00:58:14,960
+the same
+
+1124
+00:58:11,760 --> 00:58:16,280
+architecture as model without time share
+
+1125
+00:58:14,960 --> 00:58:20,359
+parameter
+
+1126
+00:58:16,280 --> 00:58:23,760
+sharing oh sorry and then we need to set
+
+1127
+00:58:20,359 --> 00:58:23,760
+the K R1 at
+
+1128
+00:58:23,839 --> 00:58:29,160
+R2 in order to define the sub graphs and
+
+1129
+00:58:26,720 --> 00:58:31,520
+content graph and also we need to Define
+
+1130
+00:58:29,160 --> 00:58:34,079
+our read out functions for gra graph
+
+1131
+00:58:31,520 --> 00:58:37,720
+neural network and we need to define the
+
+1132
+00:58:34,079 --> 00:58:41,720
+number of active examples so that's the
+
+1133
+00:58:37,720 --> 00:58:41,720
+definition for our context prediction
+
+1134
+00:58:41,960 --> 00:58:51,200
+module and let's take a look at the F
+
+1135
+00:58:47,440 --> 00:58:54,440
+function so in the follow function it is
+
+1136
+00:58:51,200 --> 00:58:58,280
+typically called called in the training
+
+1137
+00:58:54,440 --> 00:59:00,480
+procedure and here we are taking a batch
+
+1138
+00:58:58,280 --> 00:59:02,559
+at the input and we will call the
+
+1139
+00:59:00,480 --> 00:59:05,280
+predict and Target function to get the
+
+1140
+00:59:02,559 --> 00:59:08,359
+prediction and Target and then we can
+
+1141
+00:59:05,280 --> 00:59:11,680
+call the evaluate function to calculate
+
+1142
+00:59:08,359 --> 00:59:13,880
+some Metric for example here because
+
+1143
+00:59:11,680 --> 00:59:16,359
+this is just binary classification task
+
+1144
+00:59:13,880 --> 00:59:18,319
+we can calculate the
+
+1145
+00:59:16,359 --> 00:59:21,079
+accuracy of our
+
+1146
+00:59:18,319 --> 00:59:23,680
+prediction and then we need to Define
+
+1147
+00:59:21,079 --> 00:59:26,079
+some loss function so here we need to
+
+1148
+00:59:23,680 --> 00:59:28,240
+define the B cross interface between
+
+1149
+00:59:26,079 --> 00:59:30,079
+between the prediction and our Target
+
+1150
+00:59:28,240 --> 00:59:33,200
+and then we can return the loss function
+
+1151
+00:59:30,079 --> 00:59:35,400
+and matric so as you can see the most
+
+1152
+00:59:33,200 --> 00:59:36,960
+important function here is the predict
+
+1153
+00:59:35,400 --> 00:59:41,079
+and
+
+1154
+00:59:36,960 --> 00:59:45,240
+Target and so in this function we will
+
+1155
+00:59:41,079 --> 00:59:48,039
+take the batch as input and also we will
+
+1156
+00:59:45,240 --> 00:59:51,240
+take the all loss and Metric as input so
+
+1157
+00:59:48,039 --> 00:59:53,960
+why should we pass the all loss as a
+
+1158
+00:59:51,240 --> 00:59:56,119
+parameter because sometimes we want to
+
+1159
+00:59:53,960 --> 00:59:58,480
+use some want to Define some L function
+
+1160
+00:59:56,119 --> 01:00:02,079
+in the model for example if you want to
+
+1161
+00:59:58,480 --> 01:00:05,680
+use L1 regularization you can Define the
+
+1162
+01:00:02,079 --> 01:00:06,799
+loss function as the L1 NM of all your
+
+1163
+01:00:05,680 --> 01:00:09,839
+model
+
+1164
+01:00:06,799 --> 01:00:11,200
+parameters also similar that's similar
+
+1165
+01:00:09,839 --> 01:00:14,319
+for
+
+1166
+01:00:11,200 --> 01:00:17,079
+metric and in this predict and Target
+
+1167
+01:00:14,319 --> 01:00:19,480
+function we can first extract our graph
+
+1168
+01:00:17,079 --> 01:00:21,720
+from the batch and then we can call the
+
+1169
+01:00:19,480 --> 01:00:24,760
+substructure and context function to
+
+1170
+01:00:21,720 --> 01:00:27,079
+together the sub graph and context graph
+
+1171
+01:00:24,760 --> 01:00:28,400
+and then we can take the anchor nodes by
+
+1172
+01:00:27,079 --> 01:00:31,119
+use node
+
+1173
+01:00:28,400 --> 01:00:33,480
+indexing and after that we can apply our
+
+1174
+01:00:31,119 --> 01:00:37,200
+graph new network to get subgraph
+
+1175
+01:00:33,480 --> 01:00:40,039
+features and apply the context model to
+
+1176
+01:00:37,200 --> 01:00:42,640
+to get the context features and then we
+
+1177
+01:00:40,039 --> 01:00:44,960
+can Define our positive and negative
+
+1178
+01:00:42,640 --> 01:00:46,960
+examples and by calculating the
+
+1179
+01:00:44,960 --> 01:00:48,799
+similarity between subgraph
+
+1180
+01:00:46,960 --> 01:00:51,520
+representation and context graph
+
+1181
+01:00:48,799 --> 01:00:53,400
+representation we can get our prediction
+
+1182
+01:00:51,520 --> 01:00:56,079
+and we will return our prediction and
+
+1183
+01:00:53,400 --> 01:00:58,720
+task Target
+
+1184
+01:00:56,079 --> 01:01:01,079
+and in the function of substructure and
+
+1185
+01:00:58,720 --> 01:01:05,480
+context we need to
+
+1186
+01:01:01,079 --> 01:01:08,880
+extract uh the subgraph and cont graph
+
+1187
+01:01:05,480 --> 01:01:11,720
+around some randomly select centers so
+
+1188
+01:01:08,880 --> 01:01:14,240
+here we just first uh select some random
+
+1189
+01:01:11,720 --> 01:01:16,480
+centers and then we will calculate the
+
+1190
+01:01:14,240 --> 01:01:19,839
+distance between all the other notes to
+
+1191
+01:01:16,480 --> 01:01:22,680
+the centers so that we can extract the
+
+1192
+01:01:19,839 --> 01:01:25,200
+neighborhood and after that so the the
+
+1193
+01:01:22,680 --> 01:01:28,720
+first access is to calculate the
+
+1194
+01:01:25,200 --> 01:01:32,640
+shortest pass distance and this excise
+
+1195
+01:01:28,720 --> 01:01:34,920
+uh in this excise I will need you to
+
+1196
+01:01:32,640 --> 01:01:38,400
+implement one iteration in the BFS
+
+1197
+01:01:34,920 --> 01:01:40,920
+process to calculate the shortage path
+
+1198
+01:01:38,400 --> 01:01:43,400
+and one note here is that this exercise
+
+1199
+01:01:40,920 --> 01:01:47,039
+will be more difficult than the other
+
+1200
+01:01:43,400 --> 01:01:49,000
+four and for the second exercise after
+
+1201
+01:01:47,039 --> 01:01:50,720
+we getting the shortest path distance
+
+1202
+01:01:49,000 --> 01:01:53,119
+from the center node to all the other
+
+1203
+01:01:50,720 --> 01:01:56,960
+nodes we need to Define our substructure
+
+1204
+01:01:53,119 --> 01:01:58,839
+and context using the distance
+
+1205
+01:01:56,960 --> 01:02:01,839
+so we can just follow the definition of
+
+1206
+01:01:58,839 --> 01:02:05,920
+substructure and Contex graph and then
+
+1207
+01:02:01,839 --> 01:02:09,559
+we can extract our uh Center node and AC
+
+1208
+01:02:05,920 --> 01:02:11,880
+node and then we can set this as the as
+
+1209
+01:02:09,559 --> 01:02:15,520
+a node attribute to the subgraph and
+
+1210
+01:02:11,880 --> 01:02:19,000
+context graph and finally we should
+
+1211
+01:02:15,520 --> 01:02:20,799
+filter all the invalid context graph
+
+1212
+01:02:19,000 --> 01:02:25,039
+which contains new
+
+1213
+01:02:20,799 --> 01:02:27,720
+nodes so here we need to define a b mask
+
+1214
+01:02:25,039 --> 01:02:31,400
+uh by using in this condition and then
+
+1215
+01:02:27,720 --> 01:02:35,400
+we can perform graph index and after
+
+1216
+01:02:31,400 --> 01:02:35,400
+that we will return our substructure and
+
+1217
+01:02:35,440 --> 01:02:43,559
+context so um that's all the details for
+
+1218
+01:02:40,559 --> 01:02:47,839
+our exercise and maybe now I can leave
+
+1219
+01:02:43,559 --> 01:02:49,680
+you five to 10 minutes to finish this
+
+1220
+01:02:47,839 --> 01:02:52,359
+exercise and if you have any questions
+
+1221
+01:02:49,680 --> 01:02:52,359
+you can ask
+
+1222
+01:02:54,839 --> 01:02:57,839
+now
+
+1223
+01:03:24,760 --> 01:03:28,760
+for for
+
+1224
+01:04:24,720 --> 01:04:28,680
+h for
+
+1225
+01:05:05,760 --> 01:05:13,839
+okay maybe I can share the answer
+
+1226
+01:05:09,440 --> 01:05:17,119
+now okay so for the first exercise we
+
+1227
+01:05:13,839 --> 01:05:22,039
+need to implement one iteration in the
+
+1228
+01:05:17,119 --> 01:05:26,559
+Bas process and here uh for each Edge
+
+1229
+01:05:22,039 --> 01:05:29,920
+from X to Y we can set the distance
+
+1230
+01:05:26,559 --> 01:05:34,520
+distance X as a message and we can pass
+
+1231
+01:05:29,920 --> 01:05:37,520
+the message from X to Y then we can do a
+
+1232
+01:05:34,520 --> 01:05:40,920
+minimum aggregation on the Node
+
+1233
+01:05:37,520 --> 01:05:44,000
+Y and note that we need to add an
+
+1234
+01:05:40,920 --> 01:05:47,920
+additional one here because passing this
+
+1235
+01:05:44,000 --> 01:05:50,359
+message will take one step so that's all
+
+1236
+01:05:47,920 --> 01:05:53,520
+for the first
+
+1237
+01:05:50,359 --> 01:05:56,160
+exercise and for the exercise two we
+
+1238
+01:05:53,520 --> 01:05:58,559
+need to Define our subgraph and context
+
+1239
+01:05:56,160 --> 01:06:02,000
+graph based on the is
+
+1240
+01:05:58,559 --> 01:06:05,839
+definition so because we have already
+
+1241
+01:06:02,000 --> 01:06:10,319
+got the distance area we can
+
+1242
+01:06:05,839 --> 01:06:13,799
+just Define the B mask by comparing the
+
+1243
+01:06:10,319 --> 01:06:17,079
+distance with the K and comparing the
+
+1244
+01:06:13,799 --> 01:06:20,400
+distance with R1 and
+
+1245
+01:06:17,079 --> 01:06:24,359
+R2 so in this way we can Define the BL
+
+1246
+01:06:20,400 --> 01:06:27,200
+mask for subgraph and context graphs and
+
+1247
+01:06:24,359 --> 01:06:30,559
+for the set third exercise we need to
+
+1248
+01:06:27,200 --> 01:06:34,480
+remove all invalid context graph that
+
+1249
+01:06:30,559 --> 01:06:37,520
+contain no nodes so here we can just
+
+1250
+01:06:34,480 --> 01:06:41,760
+check whether this graph the number of
+
+1251
+01:06:37,520 --> 01:06:44,920
+nodes of this graph is positive so in
+
+1252
+01:06:41,760 --> 01:06:48,359
+this way we can define a b mask over all
+
+1253
+01:06:44,920 --> 01:06:51,680
+the graphs and after that we can take
+
+1254
+01:06:48,359 --> 01:06:51,680
+the valid graph from the
+
+1255
+01:06:52,279 --> 01:06:59,440
+B so that's the answer for the Third x
+
+1256
+01:06:56,359 --> 01:07:01,200
+exercise and for the next exercise we
+
+1257
+01:06:59,440 --> 01:07:03,760
+need to take the anchor noes from the
+
+1258
+01:07:01,200 --> 01:07:07,000
+return con conus
+
+1259
+01:07:03,760 --> 01:07:09,839
+graph and uh remember that we have
+
+1260
+01:07:07,000 --> 01:07:12,319
+already defined bu mask for interal so
+
+1261
+01:07:09,839 --> 01:07:15,839
+here we can just take the subgraph use
+
+1262
+01:07:12,319 --> 01:07:19,799
+the subgraph method defining our graph
+
+1263
+01:07:15,839 --> 01:07:22,680
+structure you can take the anchor note
+
+1264
+01:07:19,799 --> 01:07:26,920
+here so in this way we can take the an
+
+1265
+01:07:22,680 --> 01:07:29,839
+note from the context graph and for the
+
+1266
+01:07:26,920 --> 01:07:32,279
+last exercise we need to call our
+
+1267
+01:07:29,839 --> 01:07:36,279
+context model to calculate the features
+
+1268
+01:07:32,279 --> 01:07:40,319
+extracted from Context gra and then take
+
+1269
+01:07:36,279 --> 01:07:45,760
+the context feature by apply without
+
+1270
+01:07:40,319 --> 01:07:49,480
+function okay so here we can do this
+
+1271
+01:07:45,760 --> 01:07:51,559
+similarly as what we did for subscri
+
+1272
+01:07:49,480 --> 01:07:54,559
+structures so we can just copy this line
+
+1273
+01:07:51,559 --> 01:07:57,920
+here and replace the model with context
+
+1274
+01:07:54,559 --> 01:08:04,200
+model replace the subg graph as contact
+
+1275
+01:07:57,920 --> 01:08:08,079
+graph and similarly we can take the node
+
+1276
+01:08:04,200 --> 01:08:11,799
+features for the anchor noes so that's
+
+1277
+01:08:08,079 --> 01:08:15,760
+the answer for exercise five and now we
+
+1278
+01:08:11,799 --> 01:08:20,040
+can run our model and then try to test
+
+1279
+01:08:15,760 --> 01:08:20,040
+our task on some Downstream
+
+1280
+01:08:23,400 --> 01:08:31,199
+task maybe it takes some time times oh
+
+1281
+01:08:27,880 --> 01:08:31,199
+as you can see the training is
+
+1282
+01:08:41,640 --> 01:08:47,839
+starting
+
+1283
+01:08:43,279 --> 01:08:50,400
+oops maybe it will take some time and
+
+1284
+01:08:47,839 --> 01:08:53,040
+yeah okay so as we can see the training
+
+1285
+01:08:50,400 --> 01:08:55,560
+is starting and the cross entropy is
+
+1286
+01:08:53,040 --> 01:08:56,719
+decreasing which shows our implement
+
+1287
+01:08:55,560 --> 01:09:00,279
+ation is
+
+1288
+01:08:56,719 --> 01:09:03,359
+correct okay so that's all for this
+
+1289
+01:09:00,279 --> 01:09:08,679
+exercise and next I
+
+1290
+01:09:03,359 --> 01:09:12,440
+will stop sharing and leave the maybe CH
+
+1291
+01:09:08,679 --> 01:09:14,359
+we introduce something about
+
+1292
+01:09:12,440 --> 01:09:19,880
+generation okay
+
+1293
+01:09:14,359 --> 01:09:19,880
+okay so now let me first share my
+
+1294
+01:09:22,920 --> 01:09:26,920
+screen okay
+
+1295
+01:09:31,799 --> 01:09:39,040
+we can't see your screen so far yeah um
+
+1296
+01:09:36,400 --> 01:09:41,470
+okay I will I will just share my entire
+
+1297
+01:09:39,040 --> 01:09:43,960
+screen wait a
+
+1298
+01:09:41,470 --> 01:09:49,319
+[Music]
+
+1299
+01:09:43,960 --> 01:09:49,319
+second yes so now we can see that
+
+1300
+01:09:51,719 --> 01:09:59,239
+okay so now can you see the screen
+
+1301
+01:09:56,040 --> 01:10:02,360
+okay yes yeah thank you J andai for the
+
+1302
+01:09:59,239 --> 01:10:04,960
+great talk and next let's move on to the
+
+1303
+01:10:02,360 --> 01:10:06,120
+third part which is a tutorial about
+
+1304
+01:10:04,960 --> 01:10:09,840
+molecule
+
+1305
+01:10:06,120 --> 01:10:12,440
+generation and as a convention we just
+
+1306
+01:10:09,840 --> 01:10:15,440
+uh first install the Tor do with uh
+
+1307
+01:10:12,440 --> 01:10:17,600
+several lines of code and I have I have
+
+1308
+01:10:15,440 --> 01:10:20,640
+already executed this
+
+1309
+01:10:17,600 --> 01:10:23,480
+cell yeah and the this task called is
+
+1310
+01:10:20,640 --> 01:10:26,560
+called molecule generation and this is a
+
+1311
+01:10:23,480 --> 01:10:30,000
+very fundamental problem in the field of
+
+1312
+01:10:26,560 --> 01:10:33,320
+J Discovery and the goal of this task is
+
+1313
+01:10:30,000 --> 01:10:36,199
+to uh design generative model to
+
+1314
+01:10:33,320 --> 01:10:39,520
+generate novel molecules which has
+
+1315
+01:10:36,199 --> 01:10:43,159
+designed properties and of course the
+
+1316
+01:10:39,520 --> 01:10:46,040
+molecules should obey the rule rules of
+
+1317
+01:10:43,159 --> 01:10:48,280
+chemicals and in this tutorial we will
+
+1318
+01:10:46,040 --> 01:10:53,040
+Implement two graph generating models
+
+1319
+01:10:48,280 --> 01:10:57,520
+called gcp and and graph AF and we will
+
+1320
+01:10:53,040 --> 01:11:01,040
+uh show show to you guys how to pain the
+
+1321
+01:10:57,520 --> 01:11:03,880
+these two models with the zinc data set
+
+1322
+01:11:01,040 --> 01:11:06,280
+and also we will show how to F through
+
+1323
+01:11:03,880 --> 01:11:09,199
+these models with reinforcement learning
+
+1324
+01:11:06,280 --> 01:11:12,719
+to optimize two specific properties
+
+1325
+01:11:09,199 --> 01:11:15,960
+called QED and pany the log P score and
+
+1326
+01:11:12,719 --> 01:11:19,400
+these scores are two wildly used score
+
+1327
+01:11:15,960 --> 01:11:22,120
+in the computational biology and
+
+1328
+01:11:19,400 --> 01:11:24,040
+also uh I also provide an additional
+
+1329
+01:11:22,120 --> 01:11:26,719
+reading list which contains a lot of
+
+1330
+01:11:24,040 --> 01:11:29,199
+papers related to molecule generation
+
+1331
+01:11:26,719 --> 01:11:33,800
+and if you guys are interesting to in
+
+1332
+01:11:29,199 --> 01:11:37,280
+this uh topic you can go to this list
+
+1333
+01:11:33,800 --> 01:11:39,600
+okay so the very first step of building
+
+1334
+01:11:37,280 --> 01:11:43,120
+a machine learning model for J Discovery
+
+1335
+01:11:39,600 --> 01:11:47,040
+is is definitely preparing the right
+
+1336
+01:11:43,120 --> 01:11:50,400
+data set and also this step is probably
+
+1337
+01:11:47,040 --> 01:11:53,440
+the most annoying step uh if a new
+
+1338
+01:11:50,400 --> 01:11:56,560
+beginner want to dive into this field
+
+1339
+01:11:53,440 --> 01:11:59,679
+and actually our Tor TR has provide a
+
+1340
+01:11:56,560 --> 01:12:01,560
+very nice modu called data sets and it
+
+1341
+01:11:59,679 --> 01:12:04,679
+contains a lot of common machine
+
+1342
+01:12:01,560 --> 01:12:08,159
+learning ready data sets for a lot of Ja
+
+1343
+01:12:04,679 --> 01:12:12,120
+Discovery tasks and for this uh molecu
+
+1344
+01:12:08,159 --> 01:12:15,960
+generation task we just uh use the
+
+1345
+01:12:12,120 --> 01:12:19,719
+predefined zinc data set called zinc
+
+1346
+01:12:15,960 --> 01:12:23,800
+250,000 and it contains uh
+
+1347
+01:12:19,719 --> 01:12:27,120
+250,000 J like molecules and you can
+
+1348
+01:12:23,800 --> 01:12:30,400
+just load the whole data set with a
+
+1349
+01:12:27,120 --> 01:12:34,480
+single line called data sets you can
+
+1350
+01:12:30,400 --> 01:12:38,560
+just call function data sets do sync
+
+1351
+01:12:34,480 --> 01:12:40,560
+250,000 and you can pass the director
+
+1352
+01:12:38,560 --> 01:12:43,000
+directory that you want to store data
+
+1353
+01:12:40,560 --> 01:12:45,719
+set and also you can specify other
+
+1354
+01:12:43,000 --> 01:12:48,040
+arguments like whether you want to caliz
+
+1355
+01:12:45,719 --> 01:12:50,960
+the molecule and what's the no what's
+
+1356
+01:12:48,040 --> 01:12:54,360
+the node feature uh of the whole
+
+1357
+01:12:50,960 --> 01:12:57,239
+Pipeline and here we just use uh the the
+
+1358
+01:12:54,360 --> 01:13:00,880
+simp simplest a visure callede symbol
+
+1359
+01:12:57,239 --> 01:13:04,400
+and it it is the Aton type of each Aton
+
+1360
+01:13:00,880 --> 01:13:08,040
+in the molecule and this Cale will takes
+
+1361
+01:13:04,400 --> 01:13:11,360
+around um 8 minutes and in order to save
+
+1362
+01:13:08,040 --> 01:13:14,239
+the time I have uh preloaded the data
+
+1363
+01:13:11,360 --> 01:13:16,280
+set okay so once the data set is
+
+1364
+01:13:14,239 --> 01:13:21,440
+provided we can start building our
+
+1365
+01:13:16,280 --> 01:13:21,440
+models and the first model is gcpnation
+
+1366
+01:13:25,239 --> 01:13:31,800
+field and official code of this model is
+
+1367
+01:13:28,320 --> 01:13:35,360
+actually uh open source but uh the code
+
+1368
+01:13:31,800 --> 01:13:37,880
+is very uh hard to use for for new
+
+1369
+01:13:35,360 --> 01:13:40,760
+beginners and it contains more than one
+
+1370
+01:13:37,880 --> 01:13:43,159
+s lines but in this tutorial we will
+
+1371
+01:13:40,760 --> 01:13:46,159
+show you how to construct the whole
+
+1372
+01:13:43,159 --> 01:13:46,159
+gcpnation
+
+1373
+01:13:55,520 --> 01:14:00,480
+a graph representation model and a graph
+
+1374
+01:13:57,960 --> 01:14:03,239
+generative model for graph
+
+1375
+01:14:00,480 --> 01:14:05,560
+representation model we here use a
+
+1376
+01:14:03,239 --> 01:14:09,120
+relational graph convolution
+
+1377
+01:14:05,560 --> 01:14:12,239
+Network um and you you can see from the
+
+1378
+01:14:09,120 --> 01:14:15,679
+mathematical expression that uh it is
+
+1379
+01:14:12,239 --> 01:14:18,120
+basically a graph neur Network that uh
+
+1380
+01:14:15,679 --> 01:14:21,480
+iteratively updates the noing meddings
+
+1381
+01:14:18,120 --> 01:14:25,719
+XI by aggregating all the node features
+
+1382
+01:14:21,480 --> 01:14:28,400
+from its neighborhoods denoted by XJ
+
+1383
+01:14:25,719 --> 01:14:31,840
+and here the r is the the set of
+
+1384
+01:14:28,400 --> 01:14:36,480
+relations such as different Edge types
+
+1385
+01:14:31,840 --> 01:14:39,080
+and how to so how to how can we uh build
+
+1386
+01:14:36,480 --> 01:14:42,880
+a such a graph convolution Network in
+
+1387
+01:14:39,080 --> 01:14:45,679
+our to platform actually it's very
+
+1388
+01:14:42,880 --> 01:14:51,159
+easier we can just call the function
+
+1389
+01:14:45,679 --> 01:14:53,480
+models. rgcn and you can pass the input
+
+1390
+01:14:51,159 --> 01:14:55,760
+Dimension and the number of relation to
+
+1391
+01:14:53,480 --> 01:14:58,199
+this function and don't don't and also
+
+1392
+01:14:55,760 --> 01:15:01,159
+don't forget to specify the number of
+
+1393
+01:14:58,199 --> 01:15:04,040
+graph uh convolution layers in the
+
+1394
+01:15:01,159 --> 01:15:09,920
+function and here we just use a four
+
+1395
+01:15:04,040 --> 01:15:13,480
+layer rgcn in in this cell and for the
+
+1396
+01:15:09,920 --> 01:15:17,440
+graph generating model we use the we use
+
+1397
+01:15:13,480 --> 01:15:22,159
+the tasks. gcp and generation to define
+
+1398
+01:15:17,440 --> 01:15:24,400
+the model and here we just plug in the
+
+1399
+01:15:22,159 --> 01:15:27,719
+uh defined the graph representation
+
+1400
+01:15:24,400 --> 01:15:32,040
+model called model and then we we should
+
+1401
+01:15:27,719 --> 01:15:35,120
+specify the uh all possible atom types
+
+1402
+01:15:32,040 --> 01:15:38,480
+involved in the generation and we should
+
+1403
+01:15:35,120 --> 01:15:41,280
+also specify the maximum number of
+
+1404
+01:15:38,480 --> 01:15:44,639
+connections we should consider between
+
+1405
+01:15:41,280 --> 01:15:47,000
+the current node and the previous nodes
+
+1406
+01:15:44,639 --> 01:15:49,679
+and we also specify the maximum number
+
+1407
+01:15:47,000 --> 01:15:53,120
+of node in the generated
+
+1408
+01:15:49,679 --> 01:15:56,800
+molecules and also the changing criteria
+
+1409
+01:15:53,120 --> 01:16:00,280
+and here it is the next L likelihood
+
+1410
+01:15:56,800 --> 01:16:00,280
+okay so let's execute this
+
+1411
+01:16:00,719 --> 01:16:08,560
+cell yes and then uh we have actually
+
+1412
+01:16:05,600 --> 01:16:13,520
+prepare all the stuffs we need to change
+
+1413
+01:16:08,560 --> 01:16:17,440
+the model and we can define a uh a
+
+1414
+01:16:13,520 --> 01:16:20,920
+solver by calling the core. engine and
+
+1415
+01:16:17,440 --> 01:16:24,320
+we can wrap all the things together by
+
+1416
+01:16:20,920 --> 01:16:27,480
+uh byp passing the tasks data sets and
+
+1417
+01:16:24,320 --> 01:16:32,199
+also the op optimizers into this solver
+
+1418
+01:16:27,480 --> 01:16:35,679
+and also we specify the id id of the GPU
+
+1419
+01:16:32,199 --> 01:16:38,960
+we will use the number of batch size and
+
+1420
+01:16:35,679 --> 01:16:41,760
+also the log interval to the solware and
+
+1421
+01:16:38,960 --> 01:16:45,719
+then we can call the solware do train to
+
+1422
+01:16:41,760 --> 01:16:48,880
+train the whole GN model and once the
+
+1423
+01:16:45,719 --> 01:16:53,440
+model is trained we can also um save the
+
+1424
+01:16:48,880 --> 01:16:57,000
+pain model to a uh directory specifi the
+
+1425
+01:16:53,440 --> 01:17:00,480
+specified by this pass and here I will
+
+1426
+01:16:57,000 --> 01:17:05,000
+just execute this sale for illustration
+
+1427
+01:17:00,480 --> 01:17:07,000
+perp uh purpose and yeah it you can see
+
+1428
+01:17:05,000 --> 01:17:09,920
+the training is
+
+1429
+01:17:07,000 --> 01:17:12,920
+started and it take it will takes around
+
+1430
+01:17:09,920 --> 01:17:16,560
+10 minutes to chain a single app on the
+
+1431
+01:17:12,920 --> 01:17:18,280
+on this collab and here I will just uh
+
+1432
+01:17:16,560 --> 01:17:22,719
+cut the chaining
+
+1433
+01:17:18,280 --> 01:17:26,360
+procedure uh and to save the time okay
+
+1434
+01:17:22,719 --> 01:17:30,800
+so you can see the chain is start
+
+1435
+01:17:26,360 --> 01:17:34,320
+and in each time uh in each log interval
+
+1436
+01:17:30,800 --> 01:17:36,560
+it will output the accuracy and loss and
+
+1437
+01:17:34,320 --> 01:17:40,480
+also a lot of other informations you can
+
+1438
+01:17:36,560 --> 01:17:43,560
+refer to refer to okay and I will start
+
+1439
+01:17:40,480 --> 01:17:43,560
+uh stop the training
+
+1440
+01:17:44,639 --> 01:17:52,639
+now okay so once the training is
+
+1441
+01:17:48,960 --> 01:17:55,199
+finished uh we can load the pain model
+
+1442
+01:17:52,639 --> 01:17:58,960
+into uh into the current model here we
+
+1443
+01:17:55,199 --> 01:18:01,520
+just uh download a pain checkpoint from
+
+1444
+01:17:58,960 --> 01:18:05,960
+a Google drive folder and then called
+
+1445
+01:18:01,520 --> 01:18:09,000
+the sol. load to load the pain model to
+
+1446
+01:18:05,960 --> 01:18:09,000
+our uh
+
+1447
+01:18:19,719 --> 01:18:26,719
+gcpnation from this uh pain model and
+
+1448
+01:18:23,880 --> 01:18:29,600
+here we can call task dot generate to
+
+1449
+01:18:26,719 --> 01:18:32,280
+generate the noral molecules and we can
+
+1450
+01:18:29,600 --> 01:18:35,560
+specify the number of samples we want to
+
+1451
+01:18:32,280 --> 01:18:38,639
+get and the maximum number of resample
+
+1452
+01:18:35,560 --> 01:18:41,920
+uh in each steps and also you can
+
+1453
+01:18:38,639 --> 01:18:44,280
+specify the arguments for
+
+1454
+01:18:41,920 --> 01:18:47,199
+visualization such as the number of
+
+1455
+01:18:44,280 --> 01:18:50,120
+molecules a number of rows to show in a
+
+1456
+01:18:47,199 --> 01:18:52,840
+figure and also the title of the
+
+1457
+01:18:50,120 --> 01:18:57,120
+molecule yes here you can see we
+
+1458
+01:18:52,840 --> 01:18:59,280
+generate around the 2 molecules and they
+
+1459
+01:18:57,120 --> 01:19:04,360
+are showed in a single
+
+1460
+01:18:59,280 --> 01:19:08,760
+figure so this is quite fancy right and
+
+1461
+01:19:04,360 --> 01:19:12,199
+so this is all about the P training and
+
+1462
+01:19:08,760 --> 01:19:14,520
+in in the real world uh the noj design
+
+1463
+01:19:12,199 --> 01:19:17,760
+actually we want to generate molecules
+
+1464
+01:19:14,520 --> 01:19:20,679
+with desired properties and so we
+
+1465
+01:19:17,760 --> 01:19:23,199
+usually need to find to the pain model
+
+1466
+01:19:20,679 --> 01:19:27,760
+using some algorithms like reinforcement
+
+1467
+01:19:23,199 --> 01:19:31,159
+learning p or or other uh evidence and
+
+1468
+01:19:27,760 --> 01:19:34,639
+in this tutorial we simply choose to use
+
+1469
+01:19:31,159 --> 01:19:37,040
+the proximal policy optimization to fun
+
+1470
+01:19:34,639 --> 01:19:37,040
+you the
+
+1471
+01:19:42,360 --> 01:19:47,920
+gcpnation
+
+1472
+01:19:43,880 --> 01:19:50,480
+the parameters into the this model and
+
+1473
+01:19:47,920 --> 01:19:54,199
+here U note that
+
+1474
+01:19:50,480 --> 01:19:58,360
+we as the whale is very similar to
+
+1475
+01:19:54,199 --> 01:20:01,760
+previous sales but we uh here we set the
+
+1476
+01:19:58,360 --> 01:20:05,199
+tasks and the criterias and we set the
+
+1477
+01:20:01,760 --> 01:20:08,000
+task to uh to the desired properties we
+
+1478
+01:20:05,199 --> 01:20:11,920
+want to optimize and here we use pany
+
+1479
+01:20:08,000 --> 01:20:15,320
+the log p and the criteria is changed
+
+1480
+01:20:11,920 --> 01:20:19,440
+from NE negative log likelihood to
+
+1481
+01:20:15,320 --> 01:20:22,280
+poo okay so then we can just call the
+
+1482
+01:20:19,440 --> 01:20:25,880
+sol. chain to find you the whole model
+
+1483
+01:20:22,280 --> 01:20:25,880
+use using po
+
+1484
+01:20:26,280 --> 01:20:35,600
+yes and the fun is started and you can
+
+1485
+01:20:30,760 --> 01:20:39,440
+see uh the model comes with a very low
+
+1486
+01:20:35,600 --> 01:20:42,440
+panelized log P at the beginning and as
+
+1487
+01:20:39,440 --> 01:20:46,960
+the training goes uh you can see the
+
+1488
+01:20:42,440 --> 01:20:49,719
+maximum penalized log pie score will
+
+1489
+01:20:46,960 --> 01:20:52,360
+increasing yes and also in this tutorial
+
+1490
+01:20:49,719 --> 01:20:55,960
+we have another model called graph AF
+
+1491
+01:20:52,360 --> 01:20:58,679
+which is a a flow based the autor
+
+1492
+01:20:55,960 --> 01:21:03,159
+progressive model for graph generation
+
+1493
+01:20:58,679 --> 01:21:05,280
+developed by our group and the whole uh
+
+1494
+01:21:03,159 --> 01:21:07,080
+procedure for defining the model PR
+
+1495
+01:21:05,280 --> 01:21:11,639
+training and fine tuning is quite
+
+1496
+01:21:07,080 --> 01:21:11,639
+similar to that of gcpnation
+
+1497
+01:21:25,280 --> 01:21:32,440
+you can see let's move to the fun here
+
+1498
+01:21:29,040 --> 01:21:36,239
+and you can see the maximum pany log p
+
+1499
+01:21:32,440 --> 01:21:39,880
+is uh increasing and after around 5 to
+
+1500
+01:21:36,239 --> 01:21:43,360
+10 minutes you will got uh some
+
+1501
+01:21:39,880 --> 01:21:46,880
+preliminary results and it can match the
+
+1502
+01:21:43,360 --> 01:21:49,199
+reported performance in original paper
+
+1503
+01:21:46,880 --> 01:21:56,080
+Okay so for this tutorial I will just
+
+1504
+01:21:49,199 --> 01:22:00,280
+stop here and I will move to uh another
+
+1505
+01:21:56,080 --> 01:22:05,440
+exercise okay so let's
+
+1506
+01:22:00,280 --> 01:22:05,440
+first disconnect it from this
+
+1507
+01:22:08,960 --> 01:22:16,360
+coland okay so this is
+
+1508
+01:22:11,880 --> 01:22:19,520
+terminated and then and here I have
+
+1509
+01:22:16,360 --> 01:22:22,600
+a collab for
+
+1510
+01:22:19,520 --> 01:22:27,080
+exercise uh about graph generation and
+
+1511
+01:22:22,600 --> 01:22:31,000
+let's connect it to this C lab and first
+
+1512
+01:22:27,080 --> 01:22:36,400
+let's let's uh install the toor
+
+1513
+01:22:31,000 --> 01:22:36,400
+shock so it's really it's really
+
+1514
+01:22:38,760 --> 01:22:45,040
+simple okay so this excise is still
+
+1515
+01:22:41,880 --> 01:22:48,639
+about graph generation
+
+1516
+01:22:45,040 --> 01:22:51,199
+and and this is about the customiz
+
+1517
+01:22:48,639 --> 01:22:55,800
+customized graph generation and in this
+
+1518
+01:22:51,199 --> 01:22:58,639
+exercise we will not uh do any any
+
+1519
+01:22:55,800 --> 01:23:01,840
+training and also any learning so we do
+
+1520
+01:22:58,639 --> 01:23:05,320
+not need the uh data set and to save the
+
+1521
+01:23:01,840 --> 01:23:07,800
+time we will just use a dami data set
+
+1522
+01:23:05,320 --> 01:23:11,199
+and the dami data set will provide some
+
+1523
+01:23:07,800 --> 01:23:13,760
+very important information uh when you
+
+1524
+01:23:11,199 --> 01:23:19,280
+constructing your models such as node
+
+1525
+01:23:13,760 --> 01:23:19,280
+Dimension Aton type or or some other
+
+1526
+01:23:19,840 --> 01:23:26,679
+features yes and we will first download
+
+1527
+01:23:23,000 --> 01:23:30,960
+the pain gcp and model from the Google
+
+1528
+01:23:26,679 --> 01:23:36,400
+Drive and we will also Define a pain gcp
+
+1529
+01:23:30,960 --> 01:23:36,400
+and model and load the pain um
+
+1530
+01:23:37,320 --> 01:23:43,719
+parameters okay so now let me first
+
+1531
+01:23:40,480 --> 01:23:47,560
+introduce the this exercise
+
+1532
+01:23:43,719 --> 01:23:50,960
+and yes now we have a pained the gcn
+
+1533
+01:23:47,560 --> 01:23:54,840
+model right and we can see what we can
+
+1534
+01:23:50,960 --> 01:23:58,120
+get from the chain model by call calling
+
+1535
+01:23:54,840 --> 01:24:00,480
+Tusk do generate and we will generate
+
+1536
+01:23:58,120 --> 01:24:00,480
+eight
+
+1537
+01:24:01,920 --> 01:24:08,159
+molecules and by default the model will
+
+1538
+01:24:05,000 --> 01:24:10,560
+generate molecules from a single carbon
+
+1539
+01:24:08,159 --> 01:24:15,520
+which is the most common element in
+
+1540
+01:24:10,560 --> 01:24:18,639
+organic molecules and so this represents
+
+1541
+01:24:15,520 --> 01:24:18,639
+the most common
+
+1542
+01:24:20,320 --> 01:24:26,480
+situation
+
+1543
+01:24:22,360 --> 01:24:30,800
+yes the the result is coming soon yes we
+
+1544
+01:24:26,480 --> 01:24:33,840
+got uh six successful Mo uh samples from
+
+1545
+01:24:30,800 --> 01:24:35,760
+the prain model and you can see all
+
+1546
+01:24:33,840 --> 01:24:38,639
+these molecules are indeed generated
+
+1547
+01:24:35,760 --> 01:24:42,280
+from the single carbon and these
+
+1548
+01:24:38,639 --> 01:24:45,320
+molecules do not contain any rings and
+
+1549
+01:24:42,280 --> 01:24:48,840
+any bines but in some real world
+
+1550
+01:24:45,320 --> 01:24:51,560
+scenarios the researchers or uh CH
+
+1551
+01:24:48,840 --> 01:24:55,600
+chemists may want to generate molecules
+
+1552
+01:24:51,560 --> 01:24:59,480
+based on a given substructure or want to
+
+1553
+01:24:55,600 --> 01:25:02,719
+uh optimize uh existing substructures or
+
+1554
+01:24:59,480 --> 01:25:05,920
+uh generating molecules from uh specific
+
+1555
+01:25:02,719 --> 01:25:07,679
+uh functional groups and he he may not
+
+1556
+01:25:05,920 --> 01:25:10,760
+want to generate the molecules from a
+
+1557
+01:25:07,679 --> 01:25:14,440
+single carbon and how can we uh
+
+1558
+01:25:10,760 --> 01:25:17,119
+customize the such a generation function
+
+1559
+01:25:14,440 --> 01:25:20,920
+to achieve this goal and this is what we
+
+1560
+01:25:17,119 --> 01:25:23,480
+will solve in this ex size and here we
+
+1561
+01:25:20,920 --> 01:25:24,920
+uh Define a customize the generation
+
+1562
+01:25:23,480 --> 01:25:29,159
+function called
+
+1563
+01:25:24,920 --> 01:25:32,760
+my generate and it will uh takes it will
+
+1564
+01:25:29,159 --> 01:25:34,719
+takes a pchain model called task and you
+
+1565
+01:25:32,760 --> 01:25:36,719
+can specify the number of samples you
+
+1566
+01:25:34,719 --> 01:25:40,280
+want to generate and the number of
+
+1567
+01:25:36,719 --> 01:25:43,000
+Maximum resample you will use and the
+
+1568
+01:25:40,280 --> 01:25:46,480
+most important argument of this function
+
+1569
+01:25:43,000 --> 01:25:49,600
+is the initial smiles and this this
+
+1570
+01:25:46,480 --> 01:25:52,880
+smilees string specify the initial subst
+
+1571
+01:25:49,600 --> 01:25:55,960
+structures you will use based on which
+
+1572
+01:25:52,880 --> 01:25:59,719
+the gcp and will will sequential add
+
+1573
+01:25:55,960 --> 01:26:02,520
+nodes and Edge to these structures so if
+
+1574
+01:25:59,719 --> 01:26:05,400
+you set the initial smell to a benine
+
+1575
+01:26:02,520 --> 01:26:08,320
+ring such as this string all the
+
+1576
+01:26:05,400 --> 01:26:09,800
+generated molecules will be based on
+
+1577
+01:26:08,320 --> 01:26:12,880
+these initial
+
+1578
+01:26:09,800 --> 01:26:15,760
+structures so this is what we will
+
+1579
+01:26:12,880 --> 01:26:18,000
+complete and I will first introduce the
+
+1580
+01:26:15,760 --> 01:26:20,840
+whole um
+
+1581
+01:26:18,000 --> 01:26:25,239
+function and you can see the function
+
+1582
+01:26:20,840 --> 01:26:28,800
+will uh first initialize uh
+
+1583
+01:26:25,239 --> 01:26:32,600
+very initial structures called graph and
+
+1584
+01:26:28,800 --> 01:26:35,920
+you should initialize the graph from
+
+1585
+01:26:32,600 --> 01:26:39,199
+from the given initial smile strings and
+
+1586
+01:26:35,920 --> 01:26:42,360
+this is the first exercise you should
+
+1587
+01:26:39,199 --> 01:26:45,440
+complete and once the single structure
+
+1588
+01:26:42,360 --> 01:26:49,400
+is initialized you will call the repeat
+
+1589
+01:26:45,440 --> 01:26:53,480
+function by graph. repeat to repeat the
+
+1590
+01:26:49,400 --> 01:26:58,040
+single graph uh several times so that we
+
+1591
+01:26:53,480 --> 01:27:02,840
+can gener at a lot of graphs uh for one
+
+1592
+01:26:58,040 --> 01:27:04,960
+function call for several uh samples and
+
+1593
+01:27:02,840 --> 01:27:08,880
+then you should move the graph structure
+
+1594
+01:27:04,960 --> 01:27:12,320
+to a coda device and then uh we will
+
+1595
+01:27:08,880 --> 01:27:14,840
+start the uh autoregressive generation
+
+1596
+01:27:12,320 --> 01:27:18,159
+procedure and the following Loop the
+
+1597
+01:27:14,840 --> 01:27:22,360
+following Loop will be executed by
+
+1598
+01:27:18,159 --> 01:27:24,560
+several times and in each ex execution
+
+1599
+01:27:22,360 --> 01:27:26,960
+uh uh
+
+1600
+01:27:24,560 --> 01:27:29,159
+uh this function will determine the
+
+1601
+01:27:26,960 --> 01:27:31,679
+action that should be applied to the
+
+1602
+01:27:29,159 --> 01:27:35,760
+current graph and it will return a new
+
+1603
+01:27:31,679 --> 01:27:38,560
+graph and this is already handled and
+
+1604
+01:27:35,760 --> 01:27:43,119
+what you need to do is to determine the
+
+1605
+01:27:38,560 --> 01:27:45,719
+this new graphs if this is the last step
+
+1606
+01:27:43,119 --> 01:27:49,239
+you may want to collect all graphs whose
+
+1607
+01:27:45,719 --> 01:27:52,719
+number of nodes are no than maximum node
+
+1608
+01:27:49,239 --> 01:27:55,600
+and you should append this uh valid
+
+1609
+01:27:52,719 --> 01:27:59,159
+graphs to the results and if this is a
+
+1610
+01:27:55,600 --> 01:28:02,480
+intermediate step you should determine
+
+1611
+01:27:59,159 --> 01:28:05,760
+the current new graph should be kept for
+
+1612
+01:28:02,480 --> 01:28:08,920
+next uh execution or or it should be
+
+1613
+01:28:05,760 --> 01:28:13,199
+collected to the results and if the if
+
+1614
+01:28:08,920 --> 01:28:15,560
+the graph is stopped or it is uh reach
+
+1615
+01:28:13,199 --> 01:28:19,080
+reach the maximum number of node then
+
+1616
+01:28:15,560 --> 01:28:21,880
+the graph should be uh up appended to
+
+1617
+01:28:19,080 --> 01:28:25,280
+the results if the graph uh does not
+
+1618
+01:28:21,880 --> 01:28:28,280
+meet these criterias it may be masked as
+
+1619
+01:28:25,280 --> 01:28:32,199
+continue and this graphs will be fed
+
+1620
+01:28:28,280 --> 01:28:35,199
+into the next step for Generation okay
+
+1621
+01:28:32,199 --> 01:28:38,639
+so uh here are three exercise you needed
+
+1622
+01:28:35,199 --> 01:28:41,480
+to F and once you finish this function
+
+1623
+01:28:38,639 --> 01:28:44,360
+you can call the my generate function
+
+1624
+01:28:41,480 --> 01:28:48,199
+and specify initial structures initial
+
+1625
+01:28:44,360 --> 01:28:49,320
+smiles to see what will happen to the uh
+
+1626
+01:28:48,199 --> 01:28:52,360
+this
+
+1627
+01:28:49,320 --> 01:28:55,679
+generation uh model and now I will leave
+
+1628
+01:28:52,360 --> 01:28:59,679
+you around five uh five minutes to
+
+1629
+01:28:55,679 --> 01:29:04,560
+finish this um function
+
+1630
+01:28:59,679 --> 01:29:06,840
+and yes so you if you have any questions
+
+1631
+01:29:04,560 --> 01:29:11,600
+or have any ideas you
+
+1632
+01:29:06,840 --> 01:29:11,600
+can uh tap in the chat
+
+1633
+01:29:23,040 --> 01:29:27,080
+box e
+
+1634
+01:29:59,960 --> 01:30:05,679
+okay so since nobody is interacting with
+
+1635
+01:30:02,639 --> 01:30:09,639
+me maybe I can just show you the right
+
+1636
+01:30:05,679 --> 01:30:13,080
+answers and actually the first uh
+
+1637
+01:30:09,639 --> 01:30:16,280
+exercise is uh quite easy and it is
+
+1638
+01:30:13,080 --> 01:30:22,280
+already covered in the basic usage
+
+1639
+01:30:16,280 --> 01:30:25,440
+tutorials by Jon and as uh as com uh as
+
+1640
+01:30:22,280 --> 01:30:28,639
+uh indicated by this coms you should
+
+1641
+01:30:25,440 --> 01:30:31,480
+construct a graph structure uh using the
+
+1642
+01:30:28,639 --> 01:30:37,560
+initial Mouse and you can simply call
+
+1643
+01:30:31,480 --> 01:30:39,639
+the data dot molecule do FR Mouse and
+
+1644
+01:30:37,560 --> 01:30:43,280
+you can s uh
+
+1645
+01:30:39,639 --> 01:30:47,679
+simply feed in this
+
+1646
+01:30:43,280 --> 01:30:51,760
+mouse and don't forget to specify the on
+
+1647
+01:30:47,679 --> 01:30:54,080
+other arguments you used uh during the
+
+1648
+01:30:51,760 --> 01:30:56,600
+data preparation and you should keep
+
+1649
+01:30:54,080 --> 01:30:59,480
+this argument
+
+1650
+01:30:56,600 --> 01:31:03,600
+consistent yes and here we just set the
+
+1651
+01:30:59,480 --> 01:31:06,719
+ciz to two and to set the not feature to
+
+1652
+01:31:03,600 --> 01:31:09,639
+symbol and for the second exercise as
+
+1653
+01:31:06,719 --> 01:31:11,920
+indicated by the comments you should
+
+1654
+01:31:09,639 --> 01:31:14,440
+keep all graphs whose number of nodes
+
+1655
+01:31:11,920 --> 01:31:17,440
+are no more than maximum number of not
+
+1656
+01:31:14,440 --> 01:31:21,320
+and here us should use the feature of
+
+1657
+01:31:17,440 --> 01:31:25,480
+batch indexing of P graph and you
+
+1658
+01:31:21,320 --> 01:31:30,159
+can you can pick all the
+
+1659
+01:31:25,480 --> 01:31:32,119
+graphs that meet the criteria and here
+
+1660
+01:31:30,159 --> 01:31:36,400
+the criteria
+
+1661
+01:31:32,119 --> 01:31:36,400
+is the number of nodes
+
+1662
+01:31:36,719 --> 01:31:41,560
+is less equal than maximum number of
+
+1663
+01:31:43,360 --> 01:31:51,560
+no okay so for the third exercise uh us
+
+1664
+01:31:47,800 --> 01:31:54,920
+should the setting up a buling mask and
+
+1665
+01:31:51,560 --> 01:31:58,679
+a mask and our graph is uh considered as
+
+1666
+01:31:54,920 --> 01:32:02,960
+continue If he if if the graph meets two
+
+1667
+01:31:58,679 --> 01:32:04,679
+criterias the first criteria is that it
+
+1668
+01:32:02,960 --> 01:32:09,440
+should not be
+
+1669
+01:32:04,679 --> 01:32:11,560
+stopped so the new graph should not be
+
+1670
+01:32:09,440 --> 01:32:15,480
+stopped is it should be
+
+1671
+01:32:11,560 --> 01:32:18,239
+Non-Stop and the second criteria is
+
+1672
+01:32:15,480 --> 01:32:20,760
+that uh the number of nodes in the graph
+
+1673
+01:32:18,239 --> 01:32:23,760
+should not reach the maximum number of
+
+1674
+01:32:20,760 --> 01:32:23,760
+node
+
+1675
+01:32:24,840 --> 01:32:32,639
+so we just uh simply copy the code and
+
+1676
+01:32:29,040 --> 01:32:32,639
+change the S uh
+
+1677
+01:32:33,199 --> 01:32:41,159
+operation yes so I think this is the
+
+1678
+01:32:36,560 --> 01:32:41,159
+correct answer and let's see what we can
+
+1679
+01:32:50,280 --> 01:32:58,320
+get yes so here we just uh f finish the
+
+1680
+01:32:54,679 --> 01:33:00,679
+all three exercise and we generate 32
+
+1681
+01:32:58,320 --> 01:33:03,960
+molecules using our customized mind
+
+1682
+01:33:00,679 --> 01:33:07,119
+generate function you can see that all
+
+1683
+01:33:03,960 --> 01:33:08,440
+generated molecules contains at least
+
+1684
+01:33:07,119 --> 01:33:11,920
+one Bening
+
+1685
+01:33:08,440 --> 01:33:16,800
+rings and you can also play with these
+
+1686
+01:33:11,920 --> 01:33:20,400
+functions by uh by using other initial
+
+1687
+01:33:16,800 --> 01:33:24,800
+smells for example you can
+
+1688
+01:33:20,400 --> 01:33:29,080
+maybe use a very
+
+1689
+01:33:24,800 --> 01:33:29,080
+um complicated this mouse
+
+1690
+01:33:31,239 --> 01:33:35,639
+strings and let's see what we can
+
+1691
+01:33:44,159 --> 01:33:48,080
+get yes you can
+
+1692
+01:33:51,040 --> 01:33:58,560
+see you can see that all the uh
+
+1693
+01:33:54,080 --> 01:33:58,560
+structures contain oh
+
+1694
+01:34:04,560 --> 01:34:12,880
+oops um some results may be invalid yeah
+
+1695
+01:34:09,119 --> 01:34:16,520
+but anyway you can try this results um
+
+1696
+01:34:12,880 --> 01:34:17,719
+by yourself okay so that's all about my
+
+1697
+01:34:16,520 --> 01:34:21,480
+part
+
+1698
+01:34:17,719 --> 01:34:24,400
+and uh so maybe I think we have finished
+
+1699
+01:34:21,480 --> 01:34:27,800
+our Mass class right
+
+1700
+01:34:24,400 --> 01:34:30,320
+and I'm I'm wondering whether anybody
+
+1701
+01:34:27,800 --> 01:34:33,960
+has some questions and we
+
+1702
+01:34:30,320 --> 01:34:38,920
+can have a discussion period and we
+
+1703
+01:34:33,960 --> 01:34:38,920
+still have uh around 20 minutes
+
+1704
+01:34:40,199 --> 01:34:47,080
+remaining yeah so any questions just to
+
+1705
+01:34:43,560 --> 01:34:51,080
+you can either raise your hand or maybe
+
+1706
+01:34:47,080 --> 01:34:51,080
+send in the chat box
+
+1707
+01:34:56,080 --> 01:35:03,520
+oh uh I actually has has found
+
+1708
+01:34:59,520 --> 01:35:05,440
+the box actually here you should not uh
+
+1709
+01:35:03,520 --> 01:35:06,600
+using this string you should use the
+
+1710
+01:35:05,440 --> 01:35:08,679
+initial
+
+1711
+01:35:06,600 --> 01:35:12,760
+Smouse
+
+1712
+01:35:08,679 --> 01:35:12,760
+and let's retry this
+
+1713
+01:35:21,560 --> 01:35:28,239
+function yes now all the
+
+1714
+01:35:24,400 --> 01:35:32,119
+all generated molecules contains these
+
+1715
+01:35:28,239 --> 01:35:32,119
+substructures okay that's
+
+1716
+01:35:39,960 --> 01:35:46,199
+perfect so any
+
+1717
+01:35:42,920 --> 01:35:46,199
+question from
+
+1718
+01:35:52,639 --> 01:35:56,600
+anyone for
+
+1719
+01:36:29,719 --> 01:36:36,880
+oh if there's no question maybe we can
+
+1720
+01:36:32,679 --> 01:36:36,880
+somehow end here oh I I I see
+
+1721
+01:36:38,480 --> 01:36:44,400
+the yeah oh you can raise your hand to
+
+1722
+01:36:41,400 --> 01:36:47,400
+just give a uh direct
+
+1723
+01:36:44,400 --> 01:36:47,400
+chat
+
+1724
+01:36:47,679 --> 01:36:54,440
+yeah if you want you can speak and also
+
+1725
+01:36:51,199 --> 01:36:58,639
+you can type so what do you mean
+
+1726
+01:36:54,440 --> 01:37:01,199
+by uh future development go uh
+
+1727
+01:36:58,639 --> 01:37:05,080
+development yeah do do you guys where do
+
+1728
+01:37:01,199 --> 01:37:09,040
+you what what do you think this this uh
+
+1729
+01:37:05,080 --> 01:37:10,800
+okay toor drug is is maybe lacking right
+
+1730
+01:37:09,040 --> 01:37:13,840
+now or things you want to improve with
+
+1731
+01:37:10,800 --> 01:37:16,000
+it or where where do you think uh you
+
+1732
+01:37:13,840 --> 01:37:20,600
+know in in six months or a year or two
+
+1733
+01:37:16,000 --> 01:37:26,159
+years you know toward functionality may
+
+1734
+01:37:20,600 --> 01:37:30,239
+have uh so obvious way to improve TR
+
+1735
+01:37:26,159 --> 01:37:32,280
+development is to add support for more
+
+1736
+01:37:30,239 --> 01:37:34,920
+models and more
+
+1737
+01:37:32,280 --> 01:37:37,159
+tasks So currently as you can see that
+
+1738
+01:37:34,920 --> 01:37:39,880
+we only have tasks for five popular
+
+1739
+01:37:37,159 --> 01:37:41,840
+tasks but there are several other task
+
+1740
+01:37:39,880 --> 01:37:44,719
+beyond that for example tasks on
+
+1741
+01:37:41,840 --> 01:37:46,679
+proteins or maybe more task on
+
+1742
+01:37:44,719 --> 01:37:49,320
+biomedical knowledge grph like more
+
+1743
+01:37:46,679 --> 01:37:51,960
+specifically like Target identification
+
+1744
+01:37:49,320 --> 01:37:54,199
+so this kind of stuff and we can also
+
+1745
+01:37:51,960 --> 01:37:58,520
+include more models
+
+1746
+01:37:54,199 --> 01:37:59,800
+and from another perspective that uh we
+
+1747
+01:37:58,520 --> 01:38:03,840
+may
+
+1748
+01:37:59,800 --> 01:38:06,040
+also add more uh Library features for
+
+1749
+01:38:03,840 --> 01:38:09,040
+example to be compatible with other
+
+1750
+01:38:06,040 --> 01:38:12,880
+libraries saying that uh being
+
+1751
+01:38:09,040 --> 01:38:16,119
+compatible with pyo geometric or maybe
+
+1752
+01:38:12,880 --> 01:38:19,440
+try to uh include more standard metrics
+
+1753
+01:38:16,119 --> 01:38:21,400
+so this kind of stuff and also the
+
+1754
+01:38:19,440 --> 01:38:24,000
+internal design could be somehow
+
+1755
+01:38:21,400 --> 01:38:26,199
+improved to uh further improve the
+
+1756
+01:38:24,000 --> 01:38:28,679
+efficiency of toy drug although it's
+
+1757
+01:38:26,199 --> 01:38:32,080
+already very efficient
+
+1758
+01:38:28,679 --> 01:38:34,800
+currently so yeah we we plan uh to
+
+1759
+01:38:32,080 --> 01:38:39,000
+maintain it for a long time at least one
+
+1760
+01:38:34,800 --> 01:38:39,000
+or two years or maybe somehow more than
+
+1761
+01:38:39,920 --> 01:38:46,360
+ITC yeah yeah I think uh incorporate
+
+1762
+01:38:43,599 --> 01:38:49,080
+incorporating the spot for proteins is
+
+1763
+01:38:46,360 --> 01:38:52,880
+definitely the one of the most important
+
+1764
+01:38:49,080 --> 01:38:54,760
+Direction due to the pandemic I think
+
+1765
+01:38:52,880 --> 01:38:58,199
+the protein modeling and protein
+
+1766
+01:38:54,760 --> 01:39:04,760
+engineering is actually very popular now
+
+1767
+01:38:58,199 --> 01:39:04,760
+and this is what we plan to do next yes
+
+1768
+01:39:23,960 --> 01:39:26,280
+other
+
+1769
+01:39:45,800 --> 01:39:48,999
+[Music]
+
+1770
+01:39:50,480 --> 01:39:55,760
+questions yeah by the way I would like
+
+1771
+01:39:52,520 --> 01:39:57,639
+to mention that uh C to Dr is a open
+
+1772
+01:39:55,760 --> 01:40:00,880
+source project rather than a closed
+
+1773
+01:39:57,639 --> 01:40:03,880
+source so we would like to rather get a
+
+1774
+01:40:00,880 --> 01:40:06,920
+community efforts from the users and if
+
+1775
+01:40:03,880 --> 01:40:10,400
+you feel interested uh in contributing
+
+1776
+01:40:06,920 --> 01:40:12,719
+anything into toy Dr or you find the box
+
+1777
+01:40:10,400 --> 01:40:16,159
+or you want to just propose new features
+
+1778
+01:40:12,719 --> 01:40:19,719
+for to Dr just you can give a pro
+
+1779
+01:40:16,159 --> 01:40:22,560
+request or res issue just in
+
+1780
+01:40:19,719 --> 01:40:25,920
+GitHub and uh we already received some
+
+1781
+01:40:22,560 --> 01:40:31,199
+of that and the some of the features are
+
+1782
+01:40:25,920 --> 01:40:31,199
+considered as future work for us
+
+1783
+01:41:03,360 --> 01:41:09,280
+so this uh the whole master class is
+
+1784
+01:41:05,920 --> 01:41:12,920
+recorded right and maybe uh it will be
+
+1785
+01:41:09,280 --> 01:41:15,239
+broadcast to other audience maybe yes
+
+1786
+01:41:12,920 --> 01:41:15,239
+I'm not
+
+1787
+01:41:15,639 --> 01:41:22,880
+sure yes it is
+
+1788
+01:41:17,760 --> 01:41:27,239
+recorded okay so uh I hope that more
+
+1789
+01:41:22,880 --> 01:41:27,239
+people can see this yes
+
+1790
+01:41:43,080 --> 01:41:47,239
+sure so do you want to add
+
+1791
+01:41:47,360 --> 01:41:55,560
+something uh um yeah we can share some
+
+1792
+01:41:51,639 --> 01:41:59,360
+maybe we can share some more links J
+
+1793
+01:41:55,560 --> 01:42:02,880
+yeah such as uh the homepage of the
+
+1794
+01:41:59,360 --> 01:42:05,320
+project yes and also there are some more
+
+1795
+01:42:02,880 --> 01:42:10,440
+tutorials on collab so that you can play
+
+1796
+01:42:05,320 --> 01:42:12,960
+with that okay it is possible maybe you
+
+1797
+01:42:10,440 --> 01:42:14,719
+can share this information with
+
+1798
+01:42:12,960 --> 01:42:19,320
+other
+
+1799
+01:42:14,719 --> 01:42:19,320
+audience and uh
+
+1800
+01:42:26,719 --> 01:42:31,880
+there are more C tutorials in this link
+
+1801
+01:42:28,560 --> 01:42:34,760
+you can find tutorials for other tasks
+
+1802
+01:42:31,880 --> 01:42:38,520
+like R synthesis and not graph reasoning
+
+1803
+01:42:34,760 --> 01:42:38,520
+just in this link
+
+1804
+01:43:09,960 --> 01:43:17,280
+yes and also we have a very nice post
+
+1805
+01:43:14,920 --> 01:43:24,199
+on published in
+
+1806
+01:43:17,280 --> 01:43:24,199
+medium and it is I think it is on
+
+1807
+01:43:24,280 --> 01:43:33,280
+authorized by pyto yes and uh it's it it
+
+1808
+01:43:30,239 --> 01:43:37,040
+talks about toy Dr you a more
+
+1809
+01:43:33,280 --> 01:43:37,040
+interesting way just like a blog
+
+1810
+01:43:43,239 --> 01:43:50,159
+post find the medium link yes I have
+
+1811
+01:43:47,159 --> 01:43:50,159
+already
+
+1812
+01:43:52,040 --> 01:43:56,080
+link for
+
+1813
+01:44:47,159 --> 01:44:55,320
+okay so I think maybe we can end it now
+
+1814
+01:44:51,920 --> 01:44:57,330
+yeah maybe so much for today's
+
+1815
+01:44:55,320 --> 01:44:58,920
+discussion
+
+1816
+01:44:57,330 --> 01:45:02,840
+[Music]
+
+1817
+01:44:58,920 --> 01:45:05,360
+and okay thank you all I'm going to do
+
+1818
+01:45:02,840 --> 01:45:06,880
+you want to add something I can stop the
+
+1819
+01:45:05,360 --> 01:45:11,719
+recording on the
+
+1820
+01:45:06,880 --> 01:45:15,280
+session yeah uh I think you can stop the
+
+1821
+01:45:11,719 --> 01:45:17,880
+and the session okay thank you by thank
+
+1822
+01:45:15,280 --> 01:45:21,480
+you for efforts thank you bye thank you
+
+1823
+01:45:17,880 --> 01:45:21,480
+do bye
+

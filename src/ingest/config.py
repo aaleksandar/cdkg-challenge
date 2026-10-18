@@ -56,6 +56,11 @@ SNAPSHOT_KEEP = int(os.getenv("SNAPSHOT_KEEP", "20"))
 # without re-downloading from YouTube, and so a server move loses nothing.
 INGEST_CACHE_DIR = Path(os.getenv("INGEST_CACHE_DIR", TRANSCRIPTS_DIR / ".ingest"))
 
+# Talks a curator marked not to process — a recording that was never released,
+# a video taken down. Committed, so the decision survives a server rebuild and
+# is visible in the ingestion PR. See ingest/skips.py.
+SKIPPED_TALKS = Path(os.getenv("SKIPPED_TALKS", TRANSCRIPTS_DIR / ".curation" / "skipped.json"))
+
 # Where transcripts land when the event could not be resolved from the video.
 UNSORTED_EVENT_DIR = "Unsorted"
 

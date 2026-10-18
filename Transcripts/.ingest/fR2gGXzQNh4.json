@@ -1,0 +1,10 @@
+{
+  "id": "fR2gGXzQNh4",
+  "title": "CoDEx: A Comprehensive Knowledge Graph Completion Benchmark | Tara Safavi | Learning w the Machines",
+  "description": "CoDEx is a set of knowledge graph COmpletion Datasets EXtracted from Wikidata and Wikipedia that improve upon existing knowledge graph completion benchmarks in scope and level of difficulty.\n\nIn terms of scope, CoDEx comprises three knowledge graphs varying in size and structure, multilingual descriptions of entities and relations, and tens of thousands of hard negative triples that are plausible but verified to be false.\n\nCoDEx is characterized by thorough empirical analyses and benchmarking experiments.\n\nFirst, each CoDEx dataset is analyzed in terms of logical relation patterns. \n\nNext, baseline link prediction and triple classification results are reported on CoDEx for five extensively tuned embedding models.\n\nFinally, CoDEx differentiates from the popular FB15K-237 knowledge graph completion dataset by showing that CoDEx covers more diverse and interpretable content, and is a more difficult link prediction benchmark.\n\nData, code, and pretrained models are available at https://bit.ly/2EPbrJs\n\n--\n\nTara Safavi. Researcher, University of Michigan\n\nTara is a PhD candidate in computer science at the University of Michigan working with Danai Koutra. Her research, which is at the intersection of graph-based machine learning and natural language processing, focuses on relational knowledge representation and reasoning in machines.\n\n--\n\nWelcome to Connected Data London's #ThrowbackThursday\n\nEvery Thursday at 3pm GMT, we are releasing gems from our vault on #YouTube\n\nTune in and learn from leaders and innovators; subscribe to our channel and watch premieres as they are released! \n\n#KnowledgeGraph #Reaearch #OpenSource #Wikidata #Wikipedia #AI",
+  "duration": null,
+  "upload_date": "20250424",
+  "timestamp": null,
+  "url": "https://www.youtube.com/watch?v=fR2gGXzQNh4",
+  "channel": "Connected Data"
+}

@@ -1,0 +1,2064 @@
+1
+00:00:00,060 --> 00:00:05,879
+hello everyone thank you for coming
+
+2
+00:00:03,179 --> 00:00:09,179
+thank you to the organization for
+
+3
+00:00:05,879 --> 00:00:12,389
+inviting us to explain our work and also
+
+4
+00:00:09,179 --> 00:00:14,490
+specific to this graph theory Pro yet
+
+5
+00:00:12,389 --> 00:00:18,180
+my name is Mariama Stanley as you can
+
+6
+00:00:14,490 --> 00:00:20,490
+see here I'm in charge of data in action
+
+7
+00:00:18,180 --> 00:00:23,130
+against hunger and also the chasm
+
+8
+00:00:20,490 --> 00:00:26,760
+voucher pro yet we'll explain that later
+
+9
+00:00:23,130 --> 00:00:30,240
+how this works and we'll be talking
+
+10
+00:00:26,760 --> 00:00:34,559
+about graphs for good in general and how
+
+11
+00:00:30,240 --> 00:00:38,879
+we applied it in in our work so this is
+
+12
+00:00:34,559 --> 00:00:41,670
+the agenda we'll be talking about what
+
+13
+00:00:38,879 --> 00:00:44,969
+we're doing in this organization also
+
+14
+00:00:41,670 --> 00:00:50,280
+what kind of approach we have in terms
+
+15
+00:00:44,969 --> 00:00:54,059
+of graphs well all this pilot road with
+
+16
+00:00:50,280 --> 00:00:55,800
+gas and our production project that is
+
+17
+00:00:54,059 --> 00:00:58,949
+more focused on the financial part
+
+18
+00:00:55,800 --> 00:01:02,219
+financial execution and then like good
+
+19
+00:00:58,949 --> 00:01:03,840
+practices if you want to do the same the
+
+20
+00:01:02,219 --> 00:01:08,040
+same process and the same kind of
+
+21
+00:01:03,840 --> 00:01:11,840
+projects this is the countries where we
+
+22
+00:01:08,040 --> 00:01:15,030
+are working right now we have five h qs
+
+23
+00:01:11,840 --> 00:01:17,909
+distributed all around the world and we
+
+24
+00:01:15,030 --> 00:01:20,670
+reach all these all these countries in
+
+25
+00:01:17,909 --> 00:01:23,159
+the world that depends on mail if there
+
+26
+00:01:20,670 --> 00:01:26,820
+are crises there that could be natural
+
+27
+00:01:23,159 --> 00:01:31,490
+disasters or or main
+
+28
+00:01:26,820 --> 00:01:33,960
+or some other crisis made by men and
+
+29
+00:01:31,490 --> 00:01:37,140
+well we are all around the world and we
+
+30
+00:01:33,960 --> 00:01:40,200
+have a knowledge about context every
+
+31
+00:01:37,140 --> 00:01:42,750
+word this is the kind of projects we we
+
+32
+00:01:40,200 --> 00:01:45,870
+do in the next cell against Hangul Spain
+
+33
+00:01:42,750 --> 00:01:49,980
+we have different kind of projects but
+
+34
+00:01:45,870 --> 00:01:53,970
+mainly nutrition livelihoods water and
+
+35
+00:01:49,980 --> 00:01:57,180
+sanitation but we also give support in
+
+36
+00:01:53,970 --> 00:02:03,690
+terms of shelter and protection access
+
+37
+00:01:57,180 --> 00:02:05,760
+and different kind of of issues I'm
+
+38
+00:02:03,690 --> 00:02:11,070
+gonna explain a little bit how our team
+
+39
+00:02:05,760 --> 00:02:14,610
+works in terms of data in the HQ we have
+
+40
+00:02:11,070 --> 00:02:16,380
+data managers and scientists we all work
+
+41
+00:02:14,610 --> 00:02:18,540
+together with the MIL department that is
+
+42
+00:02:16,380 --> 00:02:22,800
+monitoring evaluation accountability and
+
+43
+00:02:18,540 --> 00:02:28,440
+learning business analytics and ICT ICT
+
+44
+00:02:22,800 --> 00:02:31,530
+team so we are like the more focusing on
+
+45
+00:02:28,440 --> 00:02:34,110
+data then we have that an analyst they
+
+46
+00:02:31,530 --> 00:02:37,080
+are in the basis in the countries and we
+
+47
+00:02:34,110 --> 00:02:39,390
+give them support and we all work
+
+48
+00:02:37,080 --> 00:02:42,030
+together for the end-users for the
+
+49
+00:02:39,390 --> 00:02:46,709
+application application users that are
+
+50
+00:02:42,030 --> 00:02:50,070
+our audience in terms of products as we
+
+51
+00:02:46,709 --> 00:02:53,790
+are an NGO some of you may come from the
+
+52
+00:02:50,070 --> 00:02:56,519
+private sector and is quite of like
+
+53
+00:02:53,790 --> 00:02:58,650
+similar in some ways but especially in
+
+54
+00:02:56,519 --> 00:03:03,150
+the NGOs is quite difficult to work with
+
+55
+00:02:58,650 --> 00:03:06,290
+data so that's why our history is always
+
+56
+00:03:03,150 --> 00:03:10,220
+trying to take us to the
+
+57
+00:03:06,290 --> 00:03:13,530
+to the difficult point of going to data
+
+58
+00:03:10,220 --> 00:03:16,379
+because of funding because of vision
+
+59
+00:03:13,530 --> 00:03:18,540
+we'll talk about it later but this is
+
+60
+00:03:16,379 --> 00:03:21,739
+the situation we are now trying to get
+
+61
+00:03:18,540 --> 00:03:26,519
+into the data analysis and that approach
+
+62
+00:03:21,739 --> 00:03:28,739
+so why we go for graph theory well I
+
+63
+00:03:26,519 --> 00:03:31,319
+have some background working with graph
+
+64
+00:03:28,739 --> 00:03:35,239
+databases I was working in a previous
+
+65
+00:03:31,319 --> 00:03:37,650
+organization all huge dogs working with
+
+66
+00:03:35,239 --> 00:03:40,799
+documentation Human Rights call
+
+67
+00:03:37,650 --> 00:03:42,560
+documentation somehow connected we can
+
+68
+00:03:40,799 --> 00:03:46,440
+talk about this later
+
+69
+00:03:42,560 --> 00:03:49,340
+once once within is a presentation but
+
+70
+00:03:46,440 --> 00:03:52,170
+this is an example of graph we have in
+
+71
+00:03:49,340 --> 00:03:54,780
+organization we have the country the
+
+72
+00:03:52,170 --> 00:03:57,540
+palestinian territory also some bases
+
+73
+00:03:54,780 --> 00:04:00,629
+and offices we have there like gaza and
+
+74
+00:03:57,540 --> 00:04:04,260
+this is an example of our contract we
+
+75
+00:04:00,629 --> 00:04:07,440
+have this is a very simple example but
+
+76
+00:04:04,260 --> 00:04:10,459
+this is the kind of graph theory we want
+
+77
+00:04:07,440 --> 00:04:14,810
+to apply depending on the knowledge
+
+78
+00:04:10,459 --> 00:04:17,910
+based of course in the expertise we have
+
+79
+00:04:14,810 --> 00:04:19,829
+really good context of the data and we
+
+80
+00:04:17,910 --> 00:04:22,650
+know what is happening with this data
+
+81
+00:04:19,829 --> 00:04:25,410
+but we just need to represent this in a
+
+82
+00:04:22,650 --> 00:04:30,660
+way to prove and to be a constant in
+
+83
+00:04:25,410 --> 00:04:33,419
+terms of what we are going to do we have
+
+84
+00:04:30,660 --> 00:04:35,910
+also many factors involved in our issues
+
+85
+00:04:33,419 --> 00:04:41,820
+so we want to mix different sources to
+
+86
+00:04:35,910 --> 00:04:44,160
+mix different data bases we have this
+
+87
+00:04:41,820 --> 00:04:46,740
+context we have this qualitative
+
+88
+00:04:44,160 --> 00:04:49,020
+analysis as well that is not only the
+
+89
+00:04:46,740 --> 00:04:50,820
+data we put in the graphs but is some
+
+90
+00:04:49,020 --> 00:04:52,650
+knowledge that we have in our mind but
+
+91
+00:04:50,820 --> 00:04:54,600
+we are not able to represent it in a
+
+92
+00:04:52,650 --> 00:04:58,290
+graphic
+
+93
+00:04:54,600 --> 00:05:01,570
+always in the decision-making focus and
+
+94
+00:04:58,290 --> 00:05:04,840
+what I wanted to get with this project
+
+95
+00:05:01,570 --> 00:05:07,210
+was to give the user the freedom to
+
+96
+00:05:04,840 --> 00:05:08,890
+explore the graph themself because we
+
+97
+00:05:07,210 --> 00:05:11,050
+don't have time to be answering their
+
+98
+00:05:08,890 --> 00:05:13,750
+questions every time so we want them to
+
+99
+00:05:11,050 --> 00:05:17,280
+be able to do it themselves so this is
+
+100
+00:05:13,750 --> 00:05:22,480
+the main reason I wanted to use graphs
+
+101
+00:05:17,280 --> 00:05:25,990
+how we made all of this it was easier in
+
+102
+00:05:22,480 --> 00:05:28,690
+terms of we have some data sources that
+
+103
+00:05:25,990 --> 00:05:30,760
+mainly coming from Excel files but we
+
+104
+00:05:28,690 --> 00:05:33,730
+also have some informations in general
+
+105
+00:05:30,760 --> 00:05:37,180
+information systems but is very basic so
+
+106
+00:05:33,730 --> 00:05:43,120
+we convert it to a data model and we
+
+107
+00:05:37,180 --> 00:05:45,280
+went to the graph okay in this case we
+
+108
+00:05:43,120 --> 00:05:48,280
+have the context of the data model so we
+
+109
+00:05:45,280 --> 00:05:50,490
+know how they are related is not
+
+110
+00:05:48,280 --> 00:05:55,540
+complicated and we have this knowledge
+
+111
+00:05:50,490 --> 00:05:58,900
+beforehand so different sources from
+
+112
+00:05:55,540 --> 00:06:02,470
+operations finance log logistics
+
+113
+00:05:58,900 --> 00:06:05,110
+security all of them we mix them by
+
+114
+00:06:02,470 --> 00:06:08,170
+using some ideas like transformation
+
+115
+00:06:05,110 --> 00:06:10,720
+processes to get this this kind of
+
+116
+00:06:08,170 --> 00:06:15,250
+graphs and other tools in visualization
+
+117
+00:06:10,720 --> 00:06:15,880
+okay the learning curve was hard as you
+
+118
+00:06:15,250 --> 00:06:19,660
+imagine
+
+119
+00:06:15,880 --> 00:06:22,000
+we don't have expertise on this we were
+
+120
+00:06:19,660 --> 00:06:24,880
+only two people working on that so it
+
+121
+00:06:22,000 --> 00:06:27,910
+was quite hard to to get into the into
+
+122
+00:06:24,880 --> 00:06:32,200
+the project but we finally got it for a
+
+123
+00:06:27,910 --> 00:06:36,040
+pilot use case as I told you and in
+
+124
+00:06:32,200 --> 00:06:40,270
+terms of this distributions project
+
+125
+00:06:36,040 --> 00:06:44,220
+Katzie is is the kid for autonomous
+
+126
+00:06:40,270 --> 00:06:47,800
+custody solutions and we mainly build
+
+127
+00:06:44,220 --> 00:06:49,750
+small banks in remote areas where no
+
+128
+00:06:47,800 --> 00:06:53,350
+tracks and transactions are possible
+
+129
+00:06:49,750 --> 00:06:56,000
+so they don't they don't have
+
+130
+00:06:53,350 --> 00:06:58,910
+they don't have access to to the money
+
+131
+00:06:56,000 --> 00:07:00,770
+they don't have access to to cast so we
+
+132
+00:06:58,910 --> 00:07:03,350
+go there because now it's like a new
+
+133
+00:07:00,770 --> 00:07:05,630
+training in a humanitarian action that
+
+134
+00:07:03,350 --> 00:07:08,570
+you don't go to someplace with rice or
+
+135
+00:07:05,630 --> 00:07:11,180
+with shelter and you give it to them you
+
+136
+00:07:08,570 --> 00:07:13,190
+try to empower these people not only the
+
+137
+00:07:11,180 --> 00:07:15,680
+affected people but also the market
+
+138
+00:07:13,190 --> 00:07:18,350
+system itself and you try to empower
+
+139
+00:07:15,680 --> 00:07:20,870
+them by giving them cash or by hiding
+
+140
+00:07:18,350 --> 00:07:22,850
+them as a vendor for example okay so
+
+141
+00:07:20,870 --> 00:07:27,230
+this is a new training humanitarian
+
+142
+00:07:22,850 --> 00:07:29,530
+action this is well structured database
+
+143
+00:07:27,230 --> 00:07:31,790
+so that's why I start I start doing that
+
+144
+00:07:29,530 --> 00:07:36,500
+because I didn't want it to fail
+
+145
+00:07:31,790 --> 00:07:39,920
+actually and we have mainly relations
+
+146
+00:07:36,500 --> 00:07:42,380
+among people and among transactions so
+
+147
+00:07:39,920 --> 00:07:44,390
+how people is like a bank okay so how
+
+148
+00:07:42,380 --> 00:07:47,330
+people buy things and how people say
+
+149
+00:07:44,390 --> 00:07:50,300
+things we'll see the data model now this
+
+150
+00:07:47,330 --> 00:07:52,600
+is data especially for Lebanon for
+
+151
+00:07:50,300 --> 00:07:56,750
+Lebanon but we did it for Mali as well
+
+152
+00:07:52,600 --> 00:07:59,780
+so this is the model in our minds as
+
+153
+00:07:56,750 --> 00:08:02,810
+main points we have the people like
+
+154
+00:07:59,780 --> 00:08:06,100
+affect affected people and the ones we
+
+155
+00:08:02,810 --> 00:08:10,070
+hired as a vendors so they will have
+
+156
+00:08:06,100 --> 00:08:14,230
+they are like street shops or regular
+
+157
+00:08:10,070 --> 00:08:17,960
+shops different kind of vendors of
+
+158
+00:08:14,230 --> 00:08:19,850
+course the the people so transactions
+
+159
+00:08:17,960 --> 00:08:23,630
+are also important in this model and
+
+160
+00:08:19,850 --> 00:08:26,890
+then we have some other factors this is
+
+161
+00:08:23,630 --> 00:08:29,180
+how it looks in a graph database a
+
+162
+00:08:26,890 --> 00:08:31,460
+little bit more complex because we
+
+163
+00:08:29,180 --> 00:08:35,540
+wanted to have everything related that
+
+164
+00:08:31,460 --> 00:08:38,780
+is all about relationships is exactly
+
+165
+00:08:35,540 --> 00:08:41,060
+the same thing we will show before so we
+
+166
+00:08:38,780 --> 00:08:44,120
+started to make some questions to this
+
+167
+00:08:41,060 --> 00:08:47,540
+database and we get this kind of results
+
+168
+00:08:44,120 --> 00:08:50,270
+for example how people in general like
+
+169
+00:08:47,540 --> 00:08:53,300
+benders or people effective move that's
+
+170
+00:08:50,270 --> 00:08:56,090
+very important for us in terms of some
+
+171
+00:08:53,300 --> 00:08:58,310
+security issue happens in one place so
+
+172
+00:08:56,090 --> 00:09:01,780
+why they move do you have to anticipate
+
+173
+00:08:58,310 --> 00:09:03,730
+that why people
+
+174
+00:09:01,780 --> 00:09:06,760
+not only benders but the affected people
+
+175
+00:09:03,730 --> 00:09:10,210
+how they move because of some reason so
+
+176
+00:09:06,760 --> 00:09:12,270
+you you catch this and you go to to get
+
+177
+00:09:10,210 --> 00:09:17,760
+the the reason what is happening
+
+178
+00:09:12,270 --> 00:09:21,670
+for example we also have this kind of
+
+179
+00:09:17,760 --> 00:09:23,950
+result that is taking the vendors the
+
+180
+00:09:21,670 --> 00:09:27,400
+people and where they are doing
+
+181
+00:09:23,950 --> 00:09:30,490
+different transactions so this is giving
+
+182
+00:09:27,400 --> 00:09:35,410
+us information about where they buy
+
+183
+00:09:30,490 --> 00:09:37,870
+things and why and also was very
+
+184
+00:09:35,410 --> 00:09:40,510
+important for I for us the fraud because
+
+185
+00:09:37,870 --> 00:09:42,580
+they normally spend all the money at the
+
+186
+00:09:40,510 --> 00:09:44,440
+beginning like we give the we put the
+
+187
+00:09:42,580 --> 00:09:47,140
+money in the in the card in the credit
+
+188
+00:09:44,440 --> 00:09:50,140
+card and they spend this money in the
+
+189
+00:09:47,140 --> 00:09:52,240
+first few days and we wanted to
+
+190
+00:09:50,140 --> 00:09:53,800
+understand why we wanted to understand
+
+191
+00:09:52,240 --> 00:09:56,080
+if it was fraud if they were getting
+
+192
+00:09:53,800 --> 00:10:00,220
+just cash out to the money instead of
+
+193
+00:09:56,080 --> 00:10:02,320
+buying the the items so this was also
+
+194
+00:10:00,220 --> 00:10:06,490
+interesting
+
+195
+00:10:02,320 --> 00:10:09,280
+what didn't the people get if they have
+
+196
+00:10:06,490 --> 00:10:12,010
+access to this to the commodities to
+
+197
+00:10:09,280 --> 00:10:13,750
+datums they want to have access will see
+
+198
+00:10:12,010 --> 00:10:17,380
+how how to get to the some
+
+199
+00:10:13,750 --> 00:10:19,750
+recommendations later but all like
+
+200
+00:10:17,380 --> 00:10:21,610
+mainly interested in the profiles of
+
+201
+00:10:19,750 --> 00:10:24,430
+these people like depending on the
+
+202
+00:10:21,610 --> 00:10:26,560
+gender how they buy things depending on
+
+203
+00:10:24,430 --> 00:10:31,030
+the gender depending on the nationality
+
+204
+00:10:26,560 --> 00:10:33,700
+and you will given group people some
+
+205
+00:10:31,030 --> 00:10:35,950
+people groups of people and understand
+
+206
+00:10:33,700 --> 00:10:39,150
+why they go together to buy for example
+
+207
+00:10:35,950 --> 00:10:42,970
+okay so you get closer to the to the
+
+208
+00:10:39,150 --> 00:10:46,180
+affected people thanks to the surface
+
+209
+00:10:42,970 --> 00:10:49,089
+path algorithm we were able to recommend
+
+210
+00:10:46,180 --> 00:10:51,250
+some people to go to different places to
+
+211
+00:10:49,089 --> 00:10:55,480
+buy items that they don't have in their
+
+212
+00:10:51,250 --> 00:10:59,110
+area so this was really really useful so
+
+213
+00:10:55,480 --> 00:11:02,800
+it's a very simple algorithm that you
+
+214
+00:10:59,110 --> 00:11:04,930
+apply automatically well it's also
+
+215
+00:11:02,800 --> 00:11:07,540
+talking about the availability of this
+
+216
+00:11:04,930 --> 00:11:08,480
+of different items if it you can
+
+217
+00:11:07,540 --> 00:11:13,339
+recommend and the
+
+218
+00:11:08,480 --> 00:11:16,850
+to buy new items new commodities but we
+
+219
+00:11:13,339 --> 00:11:19,370
+got some recomendation system not like
+
+220
+00:11:16,850 --> 00:11:23,389
+the ones we are used to with Google and
+
+221
+00:11:19,370 --> 00:11:25,790
+so on but something similar and of
+
+222
+00:11:23,389 --> 00:11:28,100
+course how people relate these groups we
+
+223
+00:11:25,790 --> 00:11:34,760
+make with people how people relate each
+
+224
+00:11:28,100 --> 00:11:36,860
+other we got to notice these issues or
+
+225
+00:11:34,760 --> 00:11:40,639
+if they have some problems some security
+
+226
+00:11:36,860 --> 00:11:43,940
+problems to go to the vendors why these
+
+227
+00:11:40,639 --> 00:11:46,250
+questions and of course in in terms of
+
+228
+00:11:43,940 --> 00:11:49,790
+data quality we realized we had some
+
+229
+00:11:46,250 --> 00:11:53,570
+problems we have a lot of problems in
+
+230
+00:11:49,790 --> 00:11:57,320
+the part of quality that we were we were
+
+231
+00:11:53,570 --> 00:11:59,779
+solving later on so this is the part of
+
+232
+00:11:57,320 --> 00:12:02,360
+cash this is this was the pilot project
+
+233
+00:11:59,779 --> 00:12:05,089
+but then we said ok this is working we
+
+234
+00:12:02,360 --> 00:12:09,190
+can answer some questions so why not go
+
+235
+00:12:05,089 --> 00:12:11,810
+into some more specific question that
+
+236
+00:12:09,190 --> 00:12:13,699
+was musing more important for us and we
+
+237
+00:12:11,810 --> 00:12:15,529
+went to the financial execution
+
+238
+00:12:13,699 --> 00:12:19,250
+financial execution was a problem for us
+
+239
+00:12:15,529 --> 00:12:25,810
+and we try to to put it in a in a craft
+
+240
+00:12:19,250 --> 00:12:28,220
+in a model and yes to try to solve it so
+
+241
+00:12:25,810 --> 00:12:32,839
+what's going on with the rest of data
+
+242
+00:12:28,220 --> 00:12:35,600
+and organization was we try to mix all
+
+243
+00:12:32,839 --> 00:12:40,389
+of them different sources coming from
+
+244
+00:12:35,600 --> 00:12:45,019
+different data bases and we got we got
+
+245
+00:12:40,389 --> 00:12:48,800
+some results about it this is the model
+
+246
+00:12:45,019 --> 00:12:50,569
+we thought was going to be used a very
+
+247
+00:12:48,800 --> 00:12:53,709
+simple model I don't want to go into
+
+248
+00:12:50,569 --> 00:12:56,680
+into details but is you have here
+
+249
+00:12:53,709 --> 00:12:59,000
+information about corporations financial
+
+250
+00:12:56,680 --> 00:13:02,269
+logistics because there are different
+
+251
+00:12:59,000 --> 00:13:04,370
+reasons for this financial execution to
+
+252
+00:13:02,269 --> 00:13:07,069
+not be done in a proper way
+
+253
+00:13:04,370 --> 00:13:09,589
+so we already identified that it was
+
+254
+00:13:07,069 --> 00:13:12,050
+easier for the data model we identified
+
+255
+00:13:09,589 --> 00:13:14,750
+where the problems were coming from so
+
+256
+00:13:12,050 --> 00:13:20,180
+we decided to go for this data model
+
+257
+00:13:14,750 --> 00:13:23,450
+that later on was a little bit more calm
+
+258
+00:13:20,180 --> 00:13:26,120
+and we realized we couldn't get some
+
+259
+00:13:23,450 --> 00:13:29,030
+data from activities like different
+
+260
+00:13:26,120 --> 00:13:31,040
+stuff so it's not always the idea you
+
+261
+00:13:29,030 --> 00:13:34,010
+have in your mind then when you go to
+
+262
+00:13:31,040 --> 00:13:37,340
+practice of course you find different
+
+263
+00:13:34,010 --> 00:13:43,640
+different issues so what are some of the
+
+264
+00:13:37,340 --> 00:13:46,490
+results about this this pro yet already
+
+265
+00:13:43,640 --> 00:13:50,840
+in production and already used by
+
+266
+00:13:46,490 --> 00:13:56,000
+different end users so for example we
+
+267
+00:13:50,840 --> 00:14:00,500
+were able to identify the and contracts
+
+268
+00:13:56,000 --> 00:14:02,450
+that were not going in a good way at the
+
+269
+00:14:00,500 --> 00:14:04,730
+end of the contract which is like the
+
+270
+00:14:02,450 --> 00:14:06,860
+main point if we are finishing some
+
+271
+00:14:04,730 --> 00:14:10,070
+contract so we need to go to that
+
+272
+00:14:06,860 --> 00:14:15,290
+concert and and take take attention on
+
+273
+00:14:10,070 --> 00:14:18,140
+that and we found out where and why and
+
+274
+00:14:15,290 --> 00:14:20,350
+all these reasons and factors I was
+
+275
+00:14:18,140 --> 00:14:23,330
+telling before like depending on
+
+276
+00:14:20,350 --> 00:14:26,270
+different factors are very identified by
+
+277
+00:14:23,330 --> 00:14:28,130
+the users by the team we were able to
+
+278
+00:14:26,270 --> 00:14:31,220
+answer this these questions for example
+
+279
+00:14:28,130 --> 00:14:35,410
+the donors delay in the signature of
+
+280
+00:14:31,220 --> 00:14:39,470
+this this contract was something we knew
+
+281
+00:14:35,410 --> 00:14:42,470
+that is a reason a factor to be late and
+
+282
+00:14:39,470 --> 00:14:45,070
+to not go for the financial execution in
+
+283
+00:14:42,470 --> 00:14:51,590
+a proper way so we were able to identify
+
+284
+00:14:45,070 --> 00:14:56,720
+by this by this factor what are the main
+
+285
+00:14:51,590 --> 00:14:59,510
+donors creating this this delay and we
+
+286
+00:14:56,720 --> 00:15:01,730
+proved this way not only in the minds of
+
+287
+00:14:59,510 --> 00:15:05,500
+the team but in a way that is
+
+288
+00:15:01,730 --> 00:15:09,200
+represented at an exploring mcgrath so
+
+289
+00:15:05,500 --> 00:15:12,980
+we had some other conclusions that were
+
+290
+00:15:09,200 --> 00:15:15,800
+not we had the hypothesis that the
+
+291
+00:15:12,980 --> 00:15:19,790
+partnership who is going to be another
+
+292
+00:15:15,800 --> 00:15:23,120
+factor that can explain this financial
+
+293
+00:15:19,790 --> 00:15:25,699
+execution but we get that is not a
+
+294
+00:15:23,120 --> 00:15:29,059
+reason for for this program for
+
+295
+00:15:25,699 --> 00:15:32,600
+so not always you can prove what they
+
+296
+00:15:29,059 --> 00:15:35,809
+didn't know but you can always you can
+
+297
+00:15:32,600 --> 00:15:38,600
+some like remove cancels and hypothesis
+
+298
+00:15:35,809 --> 00:15:44,359
+that they made it beforehand okay
+
+299
+00:15:38,600 --> 00:15:47,029
+and we finally solve the financial
+
+300
+00:15:44,359 --> 00:15:50,629
+execution and this is a production
+
+301
+00:15:47,029 --> 00:15:53,869
+product then users have available and
+
+302
+00:15:50,629 --> 00:15:58,129
+they explore all these data thanks to to
+
+303
+00:15:53,869 --> 00:16:01,369
+the - to the project so what are the
+
+304
+00:15:58,129 --> 00:16:04,189
+next steps in terms of how you continue
+
+305
+00:16:01,369 --> 00:16:06,790
+with this this project so of course
+
+306
+00:16:04,189 --> 00:16:11,419
+automatisation of these details this
+
+307
+00:16:06,790 --> 00:16:13,629
+this transformation of data was really
+
+308
+00:16:11,419 --> 00:16:16,309
+interesting for us waiting the
+
+309
+00:16:13,629 --> 00:16:19,129
+relationships because not all all of
+
+310
+00:16:16,309 --> 00:16:23,529
+them are so important for for the team
+
+311
+00:16:19,129 --> 00:16:26,329
+so then we can have some like optimizing
+
+312
+00:16:23,529 --> 00:16:30,910
+optimization algorithms that you can
+
+313
+00:16:26,329 --> 00:16:34,100
+maximize or minimize the impact of
+
+314
+00:16:30,910 --> 00:16:36,379
+course some other systems like for this
+
+315
+00:16:34,100 --> 00:16:38,989
+contrast we we saw before so something
+
+316
+00:16:36,379 --> 00:16:42,589
+is going wrong so get get an email about
+
+317
+00:16:38,989 --> 00:16:47,470
+it this is something easy thanks to a
+
+318
+00:16:42,589 --> 00:16:50,539
+lot of visualization systems we get a
+
+319
+00:16:47,470 --> 00:16:53,449
+team really collaborating on this tool
+
+320
+00:16:50,539 --> 00:16:57,589
+and getting insights about it which was
+
+321
+00:16:53,449 --> 00:16:59,839
+my main objective but it of course comes
+
+322
+00:16:57,589 --> 00:17:01,489
+with a lot of training with a lot of
+
+323
+00:16:59,839 --> 00:17:02,809
+time like spending time with them
+
+324
+00:17:01,489 --> 00:17:06,260
+because they don't have the technical
+
+325
+00:17:02,809 --> 00:17:09,289
+knowledge we would like to get some
+
+326
+00:17:06,260 --> 00:17:11,179
+predictions we are not at that point we
+
+327
+00:17:09,289 --> 00:17:13,549
+are already improving data quality
+
+328
+00:17:11,179 --> 00:17:18,019
+thanks to go for graph
+
+329
+00:17:13,549 --> 00:17:20,240
+technology and well we'll go to to some
+
+330
+00:17:18,019 --> 00:17:20,809
+other problems that are not the
+
+331
+00:17:20,240 --> 00:17:29,299
+financial
+
+332
+00:17:20,809 --> 00:17:31,850
+solution okay the conclusion yeah okay
+
+333
+00:17:29,299 --> 00:17:36,320
+some conclusions that we went only for
+
+334
+00:17:31,850 --> 00:17:38,779
+the result focused we went to go to to
+
+335
+00:17:36,320 --> 00:17:41,649
+answer some question that's it
+
+336
+00:17:38,779 --> 00:17:45,019
+of course we improve decision-making and
+
+337
+00:17:41,649 --> 00:17:48,169
+for me the democratization of data was
+
+338
+00:17:45,019 --> 00:17:51,559
+the most important point but of course
+
+339
+00:17:48,169 --> 00:17:55,340
+you have this funding and time and lack
+
+340
+00:17:51,559 --> 00:17:58,249
+of vision to in long term from the like
+
+341
+00:17:55,340 --> 00:17:59,929
+is super typical in the in the NGO so so
+
+342
+00:17:58,249 --> 00:18:02,840
+in the private sector but especially
+
+343
+00:17:59,929 --> 00:18:05,330
+with us in our sector so these are the
+
+344
+00:18:02,840 --> 00:18:08,600
+two main problems you can find when you
+
+345
+00:18:05,330 --> 00:18:10,159
+go for these kind of projects so thank
+
+346
+00:18:08,600 --> 00:18:15,940
+you I don't know if we have time for
+
+347
+00:18:10,159 --> 00:18:15,940
+questions yeah okay perfect
+
+348
+00:18:16,840 --> 00:18:20,040
+[Applause]
+
+349
+00:18:22,389 --> 00:18:25,629
+yeah question
+
+350
+00:18:26,820 --> 00:18:29,820
+so
+
+351
+00:18:36,110 --> 00:18:39,110
+Easter
+
+352
+00:18:40,360 --> 00:18:54,130
+how to define what I meant right so
+
+353
+00:18:50,890 --> 00:18:56,710
+that's me because of regulatory
+
+354
+00:18:54,130 --> 00:18:59,830
+environments such as parties
+
+355
+00:18:56,710 --> 00:19:03,419
+most of our functional parameters within
+
+356
+00:18:59,830 --> 00:19:06,419
+a household these are linear sites
+
+357
+00:19:03,419 --> 00:19:06,419
+resolved
+
+358
+00:19:09,820 --> 00:19:16,930
+so that we can innovate by the targeted
+
+359
+00:19:13,970 --> 00:19:20,460
+models and
+
+360
+00:19:16,930 --> 00:19:20,460
+the amount of cash
+
+361
+00:20:01,950 --> 00:20:08,230
+yeah okay for the first one there are
+
+362
+00:20:05,020 --> 00:20:11,350
+different things over there like that
+
+363
+00:20:08,230 --> 00:20:14,830
+equality is the first we cannot rely on
+
+364
+00:20:11,350 --> 00:20:17,740
+the information system we have like and
+
+365
+00:20:14,830 --> 00:20:21,490
+it also happens in all the organizations
+
+366
+00:20:17,740 --> 00:20:24,700
+like you have no data or you have data
+
+367
+00:20:21,490 --> 00:20:26,620
+that this cannot prove anything so this
+
+368
+00:20:24,700 --> 00:20:29,559
+is the first one the second one is the
+
+369
+00:20:26,620 --> 00:20:31,929
+record of all this data so if we cannot
+
+370
+00:20:29,559 --> 00:20:36,070
+go for predictions if we don't have data
+
+371
+00:20:31,929 --> 00:20:39,429
+from few years before so that's the
+
+372
+00:20:36,070 --> 00:20:43,440
+second thing also related with the
+
+373
+00:20:39,429 --> 00:20:49,120
+second question like this lack of vision
+
+374
+00:20:43,440 --> 00:20:51,760
+at long-term so this is it's impossible
+
+375
+00:20:49,120 --> 00:20:54,790
+to have a team of two people doing that
+
+376
+00:20:51,760 --> 00:20:59,260
+one technical and one with more with
+
+377
+00:20:54,790 --> 00:21:01,059
+activity approach to be doing developing
+
+378
+00:20:59,260 --> 00:21:03,970
+this kind of projects without the
+
+379
+00:21:01,059 --> 00:21:05,910
+support from the directions without
+
+380
+00:21:03,970 --> 00:21:08,190
+funding without
+
+381
+00:21:05,910 --> 00:21:10,620
+all this time and the second question
+
+382
+00:21:08,190 --> 00:21:17,310
+was yeah okay
+
+383
+00:21:10,620 --> 00:21:20,220
+so for that was really struggling to so
+
+384
+00:21:17,310 --> 00:21:23,520
+to train this team that was working with
+
+385
+00:21:20,220 --> 00:21:25,860
+this this application and you will find
+
+386
+00:21:23,520 --> 00:21:28,820
+this you will face this kind of this
+
+387
+00:21:25,860 --> 00:21:31,790
+kind of religion in the country offices
+
+388
+00:21:28,820 --> 00:21:35,250
+but is something that will be done
+
+389
+00:21:31,790 --> 00:21:38,510
+first you need training units of course
+
+390
+00:21:35,250 --> 00:21:42,450
+this second factor I said like the
+
+391
+00:21:38,510 --> 00:21:45,060
+long-term vision so it they don't have
+
+392
+00:21:42,450 --> 00:21:48,240
+time they don't have time so if nobody
+
+393
+00:21:45,060 --> 00:21:50,300
+pushed them to get this they will not
+
+394
+00:21:48,240 --> 00:21:53,600
+care about it because they have enough
+
+395
+00:21:50,300 --> 00:22:02,570
+and have problems and have work and
+
+396
+00:21:53,600 --> 00:22:02,570
+that's also as you know yeah
+
+397
+00:22:41,660 --> 00:22:49,620
+yeah yes we only use one one graph
+
+398
+00:22:47,160 --> 00:22:52,500
+database and then we use because they
+
+399
+00:22:49,620 --> 00:22:55,770
+have like I use for that some diagrams
+
+400
+00:22:52,500 --> 00:22:58,230
+open source tools also grab databases
+
+401
+00:22:55,770 --> 00:23:02,220
+and Biswell Asia visualization systems
+
+402
+00:22:58,230 --> 00:23:06,930
+so this this is why they have different
+
+403
+00:23:02,220 --> 00:23:11,390
+design but no we only had one graph
+
+404
+00:23:06,930 --> 00:23:14,580
+database that was in the top of sequel
+
+405
+00:23:11,390 --> 00:23:18,210
+system database is normal relation and
+
+406
+00:23:14,580 --> 00:23:20,580
+once and yeah that was it but we though
+
+407
+00:23:18,210 --> 00:23:24,210
+we don't have different graphs and we
+
+408
+00:23:20,580 --> 00:23:26,730
+actually have this discus pro yet graph
+
+409
+00:23:24,210 --> 00:23:29,880
+in what place and then the financial
+
+410
+00:23:26,730 --> 00:23:32,430
+execution in another okay so the next
+
+411
+00:23:29,880 --> 00:23:34,530
+steps are how to mix them and for
+
+412
+00:23:32,430 --> 00:23:36,960
+example understanding not only because
+
+413
+00:23:34,530 --> 00:23:40,800
+of the donors delay or some other
+
+414
+00:23:36,960 --> 00:23:41,910
+reasons but if security incident happens
+
+415
+00:23:40,800 --> 00:23:44,549
+in a
+
+416
+00:23:41,910 --> 00:23:48,150
+in Lebanon in the place where where the
+
+417
+00:23:44,549 --> 00:23:49,940
+Castros are running how to connect this
+
+418
+00:23:48,150 --> 00:23:52,380
+with the financial execution and
+
+419
+00:23:49,940 --> 00:23:55,440
+understanding why this contract is the
+
+420
+00:23:52,380 --> 00:23:57,210
+lay for example okay or why don't we
+
+421
+00:23:55,440 --> 00:24:03,740
+don't get to the financial execution for
+
+422
+00:23:57,210 --> 00:24:03,740
+that concrete contract yeah
+
+423
+00:24:12,000 --> 00:24:18,580
+well yeah good question so this is
+
+424
+00:24:16,690 --> 00:24:20,950
+something that always you tell to your
+
+425
+00:24:18,580 --> 00:24:24,340
+team to your organization they really
+
+426
+00:24:20,950 --> 00:24:26,470
+love it like I want to do this thing I
+
+427
+00:24:24,340 --> 00:24:28,480
+want to be to do the another that is
+
+428
+00:24:26,470 --> 00:24:31,330
+really difficult to reach somebody that
+
+429
+00:24:28,480 --> 00:24:37,960
+is totally able to do that in terms of
+
+430
+00:24:31,330 --> 00:24:39,909
+time available so they are not take me
+
+431
+00:24:37,960 --> 00:24:42,970
+at all they know nothing about
+
+432
+00:24:39,909 --> 00:24:46,799
+technology you have to go with them step
+
+433
+00:24:42,970 --> 00:24:50,039
+by step and really really really slow
+
+434
+00:24:46,799 --> 00:24:52,720
+also because everyone I mean everyone
+
+435
+00:24:50,039 --> 00:24:55,600
+you and me were used to relational
+
+436
+00:24:52,720 --> 00:24:58,030
+databases we are used to have tables and
+
+437
+00:24:55,600 --> 00:25:00,909
+that's it so when you come to this you
+
+438
+00:24:58,030 --> 00:25:04,270
+don't understand what is a graph but
+
+439
+00:25:00,909 --> 00:25:06,280
+then when they start and they get used
+
+440
+00:25:04,270 --> 00:25:08,860
+to that it's easier for them because
+
+441
+00:25:06,280 --> 00:25:11,710
+it's a more graphic way to do to do and
+
+442
+00:25:08,860 --> 00:25:15,400
+to see the things okay so they are
+
+443
+00:25:11,710 --> 00:25:18,580
+mainly working they have a lot of field
+
+444
+00:25:15,400 --> 00:25:21,250
+experience so that's why was really like
+
+445
+00:25:18,580 --> 00:25:24,130
+fine seeing them storing the graph
+
+446
+00:25:21,250 --> 00:25:25,840
+because they know what is next so they
+
+447
+00:25:24,130 --> 00:25:27,730
+already have this knowledge in their
+
+448
+00:25:25,840 --> 00:25:30,490
+minds and
+
+449
+00:25:27,730 --> 00:25:33,100
+this is our tool only to show them the
+
+450
+00:25:30,490 --> 00:25:36,790
+result of that and to prove in a
+
+451
+00:25:33,100 --> 00:25:38,770
+discreet way that all they were thinking
+
+452
+00:25:36,790 --> 00:25:41,490
+about is true okay
+
+453
+00:25:38,770 --> 00:25:41,490
+did I answer
+
+454
+00:25:51,789 --> 00:25:59,990
+okay so there we have the graph database
+
+455
+00:25:55,549 --> 00:26:03,110
+but for that you need a lot of coding
+
+456
+00:25:59,990 --> 00:26:05,630
+knowledge so we were we started to do
+
+457
+00:26:03,110 --> 00:26:09,799
+these questions with this code in banded
+
+458
+00:26:05,630 --> 00:26:13,640
+then we we send it to a visualization
+
+459
+00:26:09,799 --> 00:26:16,130
+system that is more like you can ask you
+
+460
+00:26:13,640 --> 00:26:21,500
+can make some queries without knowing
+
+461
+00:26:16,130 --> 00:26:24,289
+any code yeah exactly
+
+462
+00:26:21,500 --> 00:26:27,080
+exactly you saw them how to get the
+
+463
+00:26:24,289 --> 00:26:29,480
+first question the the global one that
+
+464
+00:26:27,080 --> 00:26:31,789
+you get one or two nodes and then they
+
+465
+00:26:29,480 --> 00:26:35,390
+go to Splore the different reasons
+
+466
+00:26:31,789 --> 00:26:38,419
+because these these donors delay this
+
+467
+00:26:35,390 --> 00:26:41,900
+partnership reason to be late in the
+
+468
+00:26:38,419 --> 00:26:44,409
+execution were different notes okay so
+
+469
+00:26:41,900 --> 00:26:47,539
+where they were nodes connected to the
+
+470
+00:26:44,409 --> 00:26:49,940
+contract and to the places so if you go
+
+471
+00:26:47,539 --> 00:26:52,549
+straight to that node and expand it you
+
+472
+00:26:49,940 --> 00:26:54,820
+are ready know what is what is the
+
+473
+00:26:52,549 --> 00:26:54,820
+problem
+
+474
+00:26:57,850 --> 00:27:01,379
+I was about
+
+475
+00:27:31,000 --> 00:27:42,429
+some of the database engines
+
+476
+00:27:52,760 --> 00:27:58,560
+okay so I knew this this question was
+
+477
+00:27:56,160 --> 00:28:02,820
+going to pop up so I'm gonna say the
+
+478
+00:27:58,560 --> 00:28:06,230
+stacked like we use cql then for the
+
+479
+00:28:02,820 --> 00:28:10,050
+transformation this ETL was up in Tahoe
+
+480
+00:28:06,230 --> 00:28:13,230
+this transformation to all of them are
+
+481
+00:28:10,050 --> 00:28:16,440
+open-source I mean not sequel but then
+
+482
+00:28:13,230 --> 00:28:18,660
+we use new Fourier and li kuis okay so
+
+483
+00:28:16,440 --> 00:28:21,390
+this process I already did this process
+
+484
+00:28:18,660 --> 00:28:23,550
+before internal organization this human
+
+485
+00:28:21,390 --> 00:28:26,520
+rights organization I told you so was
+
+486
+00:28:23,550 --> 00:28:28,680
+not so difficult but in this case we had
+
+487
+00:28:26,520 --> 00:28:31,800
+a lot of data and we are not talking
+
+488
+00:28:28,680 --> 00:28:34,140
+about big data to be honest but it
+
+489
+00:28:31,800 --> 00:28:36,510
+really takes a lot of time and we will
+
+490
+00:28:34,140 --> 00:28:39,630
+we spend a lot of time in coding in
+
+491
+00:28:36,510 --> 00:28:42,540
+Pentaho how to get this fast because we
+
+492
+00:28:39,630 --> 00:28:45,510
+need it to have it like in everyday
+
+493
+00:28:42,540 --> 00:28:50,130
+basis or or something like that so it
+
+494
+00:28:45,510 --> 00:28:52,980
+was hard because we had to learn how to
+
+495
+00:28:50,130 --> 00:28:56,550
+use Pentaho in that case I didn't have
+
+496
+00:28:52,980 --> 00:28:59,040
+experience on that and but well once you
+
+497
+00:28:56,550 --> 00:29:03,330
+get used and the code is clear it was
+
+498
+00:28:59,040 --> 00:29:05,610
+like two years ago so at that point
+
+499
+00:29:03,330 --> 00:29:07,850
+there was no a lot of documentation
+
+500
+00:29:05,610 --> 00:29:10,890
+about how to do this integration this
+
+501
+00:29:07,850 --> 00:29:13,320
+transformation of data and nowadays
+
+502
+00:29:10,890 --> 00:29:15,860
+there are a lot of tools to that some
+
+503
+00:29:13,320 --> 00:29:19,110
+tools open source that you take your
+
+504
+00:29:15,860 --> 00:29:22,560
+your data model in a relational database
+
+505
+00:29:19,110 --> 00:29:25,530
+and it transform automatically so in
+
+506
+00:29:22,560 --> 00:29:28,080
+that case we really needed to to see
+
+507
+00:29:25,530 --> 00:29:32,690
+where we put the properties where we put
+
+508
+00:29:28,080 --> 00:29:40,120
+the labels and it was like more handmade
+
+509
+00:29:32,690 --> 00:29:44,270
+work but is that enough you get it
+
+510
+00:29:40,120 --> 00:29:46,370
+yeah but it did do a CC like there were
+
+511
+00:29:44,270 --> 00:29:48,980
+some tool to transform this this data
+
+512
+00:29:46,370 --> 00:29:51,700
+and once in the graph this visualization
+
+513
+00:29:48,980 --> 00:29:55,250
+tool is automatically likely to bet
+
+514
+00:29:51,700 --> 00:29:59,080
+everything and you do have it in two
+
+515
+00:29:55,250 --> 00:29:59,080
+places at the same time very pretty
+
+516
+00:30:10,970 --> 00:30:14,059
+[Applause]
+

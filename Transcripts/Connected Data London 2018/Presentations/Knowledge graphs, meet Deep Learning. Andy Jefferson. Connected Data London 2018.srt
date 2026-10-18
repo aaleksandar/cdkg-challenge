@@ -1,0 +1,2776 @@
+1
+00:00:10,980 --> 00:00:13,849
+yeah
+
+2
+00:01:38,479 --> 00:01:47,240
+they have multiple relationships which
+
+3
+00:01:41,909 --> 00:02:07,489
+we note they properties their
+
+4
+00:01:47,240 --> 00:02:10,410
+relationships that's why me anyway
+
+5
+00:02:07,489 --> 00:02:13,790
+raise your hand if you know this problem
+
+6
+00:02:10,410 --> 00:02:13,790
+is or who this guy is
+
+7
+00:02:48,440 --> 00:03:26,520
+we trained neural network I've got used
+
+8
+00:03:23,040 --> 00:03:29,880
+to my and I can't answer this question
+
+9
+00:03:26,520 --> 00:03:30,990
+I'd be earning more money if I could but
+
+10
+00:03:29,880 --> 00:03:32,520
+I'm going to talk a bit about what deep
+
+11
+00:03:30,990 --> 00:03:37,410
+learning is and how we can do it on
+
+12
+00:03:32,520 --> 00:03:43,020
+grass so who recognizes this or a seen
+
+13
+00:03:37,410 --> 00:03:46,620
+this one before ok pretty good this is
+
+14
+00:03:43,020 --> 00:03:48,810
+our deep neural network and these are
+
+15
+00:03:46,620 --> 00:03:50,880
+densely connected layers so densely
+
+16
+00:03:48,810 --> 00:03:52,410
+connected because every node the
+
+17
+00:03:50,880 --> 00:03:54,420
+previous layer has some effect on the
+
+18
+00:03:52,410 --> 00:03:56,910
+node in the next layer that's the basic
+
+19
+00:03:54,420 --> 00:04:00,810
+building block of neural networks that
+
+20
+00:03:56,910 --> 00:04:02,520
+are used in deep learning and we call it
+
+21
+00:04:00,810 --> 00:04:05,370
+deep because we have multiple layers and
+
+22
+00:04:02,520 --> 00:04:06,330
+the depth is width in this picture but
+
+23
+00:04:05,370 --> 00:04:08,430
+it's that distance there we've got
+
+24
+00:04:06,330 --> 00:04:11,220
+multiple of these densely connected
+
+25
+00:04:08,430 --> 00:04:14,220
+layers right
+
+26
+00:04:11,220 --> 00:04:16,110
+who knows who this guy is
+
+27
+00:04:14,220 --> 00:04:23,850
+so I want to shout out what's happening
+
+28
+00:04:16,110 --> 00:04:25,980
+here yes he's losing yeah so this is one
+
+29
+00:04:23,850 --> 00:04:28,470
+of the best go players in the world
+
+30
+00:04:25,980 --> 00:04:32,670
+being beaten at the game of go by
+
+31
+00:04:28,470 --> 00:04:36,390
+alphago which is a neural network
+
+32
+00:04:32,670 --> 00:04:37,950
+basically trained by deep mind and it's
+
+33
+00:04:36,390 --> 00:04:40,920
+able to play go better than the best
+
+34
+00:04:37,950 --> 00:04:42,270
+humans in the world so we want to bring
+
+35
+00:04:40,920 --> 00:04:45,260
+some of this superhuman a
+
+36
+00:04:42,270 --> 00:04:47,340
+high-performance to the world of grass
+
+37
+00:04:45,260 --> 00:04:50,310
+here's some more examples of the stuff
+
+38
+00:04:47,340 --> 00:04:52,080
+that we can do where deep learning deep
+
+39
+00:04:50,310 --> 00:04:54,420
+neural networks is able to outperform
+
+40
+00:04:52,080 --> 00:04:57,750
+people on pretty complicated seeming
+
+41
+00:04:54,420 --> 00:05:00,060
+tasks so we've got multiple in
+
+42
+00:04:57,750 --> 00:05:01,860
+classification within an image and we
+
+43
+00:05:00,060 --> 00:05:04,320
+can get ninety pen accuracy on these
+
+44
+00:05:01,860 --> 00:05:06,120
+kind of tasks this one I like quite a
+
+45
+00:05:04,320 --> 00:05:08,280
+lot this is predicting where that car is
+
+46
+00:05:06,120 --> 00:05:11,850
+going to go path prediction just from a
+
+47
+00:05:08,280 --> 00:05:13,230
+single still image and you can see there
+
+48
+00:05:11,850 --> 00:05:15,990
+the interfaces here are pretty
+
+49
+00:05:13,230 --> 00:05:17,910
+sophisticated as well so not just what
+
+50
+00:05:15,990 --> 00:05:19,770
+it's predicting but the way that the
+
+51
+00:05:17,910 --> 00:05:21,390
+output from the prediction can be
+
+52
+00:05:19,770 --> 00:05:22,950
+something that's pretty useful and
+
+53
+00:05:21,390 --> 00:05:26,220
+pretty intelligible to humans we're not
+
+54
+00:05:22,950 --> 00:05:27,630
+outputting and mate tricks and then data
+
+55
+00:05:26,220 --> 00:05:29,580
+scientist comes and tells me oh we've
+
+56
+00:05:27,630 --> 00:05:32,240
+got 90 percent accuracy I take an image
+
+57
+00:05:29,580 --> 00:05:37,470
+and I get out a block of 150 numbers
+
+58
+00:05:32,240 --> 00:05:41,130
+this is a usable human output and this
+
+59
+00:05:37,470 --> 00:05:44,430
+is something called mat graph so if mac
+
+60
+00:05:41,130 --> 00:05:47,250
+net my graph is ours this is doing
+
+61
+00:05:44,430 --> 00:05:50,310
+reasoning okay reasoning on images from
+
+62
+00:05:47,250 --> 00:05:52,590
+text so the input question is what color
+
+63
+00:05:50,310 --> 00:05:54,870
+is the map thing to the right of the
+
+64
+00:05:52,590 --> 00:05:57,270
+sphere in front of the tiny blue block
+
+65
+00:05:54,870 --> 00:06:01,020
+so you give the network this question
+
+66
+00:05:57,270 --> 00:06:03,270
+and this image and multiple steps
+
+67
+00:06:01,020 --> 00:06:04,919
+it works out how to answer the question
+
+68
+00:06:03,270 --> 00:06:08,070
+and we can see in this visualization
+
+69
+00:06:04,919 --> 00:06:10,650
+what the network is observing or looking
+
+70
+00:06:08,070 --> 00:06:14,100
+at if you want to anthropomorphize it in
+
+71
+00:06:10,650 --> 00:06:17,130
+each step so it finds the first step the
+
+72
+00:06:14,100 --> 00:06:19,560
+tiny blue block here and the second step
+
+73
+00:06:17,130 --> 00:06:22,470
+it finds the sphere in the third step
+
+74
+00:06:19,560 --> 00:06:25,950
+finds the map thing that is in front of
+
+75
+00:06:22,470 --> 00:06:27,449
+it and the output then is to tell you
+
+76
+00:06:25,950 --> 00:06:29,759
+what color visits
+
+77
+00:06:27,449 --> 00:06:33,120
+okay so this is multi-step reasoning
+
+78
+00:06:29,759 --> 00:06:35,639
+using neural networks it's able to
+
+79
+00:06:33,120 --> 00:06:37,080
+outperform humans on these kind of tasks
+
+80
+00:06:35,639 --> 00:06:39,870
+ninety eight point nine percent accuracy
+
+81
+00:06:37,080 --> 00:06:42,749
+I think some extent outperforming humans
+
+82
+00:06:39,870 --> 00:06:44,419
+is because the humans get bored you make
+
+83
+00:06:42,749 --> 00:06:49,439
+them do this task hundreds of times and
+
+84
+00:06:44,419 --> 00:06:50,699
+but it's still pretty fun enough so
+
+85
+00:06:49,439 --> 00:06:52,830
+where does how do we do all of this
+
+86
+00:06:50,699 --> 00:06:54,900
+where does it come from it comes from
+
+87
+00:06:52,830 --> 00:06:57,509
+machine learning and machine learning
+
+88
+00:06:54,900 --> 00:07:01,409
+has a pretty simple algorithm at the top
+
+89
+00:06:57,509 --> 00:07:03,569
+level we have some training we have a
+
+90
+00:07:01,409 --> 00:07:05,370
+model which is our concept to the world
+
+91
+00:07:03,569 --> 00:07:07,499
+okay these are the neural networks that
+
+92
+00:07:05,370 --> 00:07:10,949
+we're talking about in this case and
+
+93
+00:07:07,499 --> 00:07:13,529
+then we have a load of data and to start
+
+94
+00:07:10,949 --> 00:07:15,810
+off with the model has no priors and we
+
+95
+00:07:13,529 --> 00:07:17,460
+don't we don't program the model to have
+
+96
+00:07:15,810 --> 00:07:20,339
+an understanding of grammar if we're
+
+97
+00:07:17,460 --> 00:07:23,399
+dead working with text we don't program
+
+98
+00:07:20,339 --> 00:07:25,469
+the model to have like open CV style
+
+99
+00:07:23,399 --> 00:07:27,409
+concepts of edges and spheres and things
+
+100
+00:07:25,469 --> 00:07:30,899
+like we're dealing with images this is
+
+101
+00:07:27,409 --> 00:07:32,370
+pretty much a kind of tabula rasa model
+
+102
+00:07:30,899 --> 00:07:36,419
+and we're going to learn the way to that
+
+103
+00:07:32,370 --> 00:07:38,249
+model by training with beta the outputs
+
+104
+00:07:36,419 --> 00:07:40,229
+per model are twofold
+
+105
+00:07:38,249 --> 00:07:41,520
+there are learned weights so we learn
+
+106
+00:07:40,229 --> 00:07:44,189
+all those parameters that go into the
+
+107
+00:07:41,520 --> 00:07:46,889
+model and a thing that can do
+
+108
+00:07:44,189 --> 00:07:48,899
+predictions so sometimes we just use the
+
+109
+00:07:46,889 --> 00:07:52,399
+weights sometimes we just use the
+
+110
+00:07:48,899 --> 00:07:53,610
+predictive power sometimes you use both
+
+111
+00:07:52,399 --> 00:07:54,870
+okay
+
+112
+00:07:53,610 --> 00:07:59,550
+let's try and make that a bit more
+
+113
+00:07:54,870 --> 00:08:01,560
+concrete rather than abstract this
+
+114
+00:07:59,550 --> 00:08:04,069
+linear regression we can put into this
+
+115
+00:08:01,560 --> 00:08:05,969
+concept just make it a bit clearer so
+
+116
+00:08:04,069 --> 00:08:08,339
+hopefully most people are familiar with
+
+117
+00:08:05,969 --> 00:08:11,459
+why it was MX plus C linear regression
+
+118
+00:08:08,339 --> 00:08:13,740
+and in this pattern the parameters that
+
+119
+00:08:11,459 --> 00:08:14,879
+we learn at M and C okay so it start off
+
+120
+00:08:13,740 --> 00:08:18,270
+with we're just saying we think the
+
+121
+00:08:14,879 --> 00:08:20,219
+world works like this and we learn from
+
+122
+00:08:18,270 --> 00:08:22,009
+data these values and that might be
+
+123
+00:08:20,219 --> 00:08:24,120
+useful okay in physics
+
+124
+00:08:22,009 --> 00:08:25,620
+figuring out what M is from a load of
+
+125
+00:08:24,120 --> 00:08:26,729
+data is pretty important that's how we
+
+126
+00:08:25,620 --> 00:08:30,270
+figure out things like the speed of
+
+127
+00:08:26,729 --> 00:08:33,630
+light and our training data looks like
+
+128
+00:08:30,270 --> 00:08:35,250
+that in the neural network world we
+
+129
+00:08:33,630 --> 00:08:37,669
+pretty much have we have classifiers
+
+130
+00:08:35,250 --> 00:08:39,930
+embedded and we also have regression and
+
+131
+00:08:37,669 --> 00:08:43,920
+they look like this
+
+132
+00:08:39,930 --> 00:08:46,650
+so deep learning for the purposes of
+
+133
+00:08:43,920 --> 00:08:49,050
+this talk is machine learning using deep
+
+134
+00:08:46,650 --> 00:08:51,090
+neural networks trained typically with
+
+135
+00:08:49,050 --> 00:08:52,950
+gradient descent okay so I'm planting my
+
+136
+00:08:51,090 --> 00:08:55,530
+flag this is the camp that I'm in this
+
+137
+00:08:52,950 --> 00:08:59,610
+is what I know how to do and symbolic
+
+138
+00:08:55,530 --> 00:09:02,750
+logic I don't have to do that so how are
+
+139
+00:08:59,610 --> 00:09:05,040
+we going to take this and do it on grass
+
+140
+00:09:02,750 --> 00:09:10,500
+okay this is probably the most painful
+
+141
+00:09:05,040 --> 00:09:13,710
+slide to look at can we just imagine
+
+142
+00:09:10,500 --> 00:09:15,750
+conceptually a world where we can do
+
+143
+00:09:13,710 --> 00:09:16,260
+this stuff on graphs what would it look
+
+144
+00:09:15,750 --> 00:09:17,880
+like
+
+145
+00:09:16,260 --> 00:09:20,910
+alright we've got our linear regression
+
+146
+00:09:17,880 --> 00:09:22,860
+works MX plus C we have classifiers and
+
+147
+00:09:20,910 --> 00:09:25,080
+we have embeddings and we have
+
+148
+00:09:22,860 --> 00:09:27,510
+regression models in your networks and
+
+149
+00:09:25,080 --> 00:09:30,780
+they all perform super well how wide it
+
+150
+00:09:27,510 --> 00:09:33,270
+look if we're dealing with graphs so one
+
+151
+00:09:30,780 --> 00:09:35,520
+popular graph approach is to do in your
+
+152
+00:09:33,270 --> 00:09:37,380
+own network embedding and you might have
+
+153
+00:09:35,520 --> 00:09:40,890
+heard of things like deep walk node
+
+154
+00:09:37,380 --> 00:09:42,090
+Tyvek graph sage graph convolutional
+
+155
+00:09:40,890 --> 00:09:44,910
+networks there's a collection of things
+
+156
+00:09:42,090 --> 00:09:47,160
+a chunk of those not not the combination
+
+157
+00:09:44,910 --> 00:09:51,330
+networks but graph sage deep walk no
+
+158
+00:09:47,160 --> 00:09:52,830
+Tibet do walks within the graph so take
+
+159
+00:09:51,330 --> 00:09:54,540
+the graph they do lots of random walks
+
+160
+00:09:52,830 --> 00:09:56,010
+typically on the graph and then they
+
+161
+00:09:54,540 --> 00:09:59,130
+take those walks and use them as
+
+162
+00:09:56,010 --> 00:10:01,350
+sequences to put into a recurrent neural
+
+163
+00:09:59,130 --> 00:10:03,240
+network they turn the graph into a into
+
+164
+00:10:01,350 --> 00:10:04,620
+a load of sequences and then sequences
+
+165
+00:10:03,240 --> 00:10:07,800
+are something about we can work with
+
+166
+00:10:04,620 --> 00:10:10,080
+with recurrent neural networks but my
+
+167
+00:10:07,800 --> 00:10:12,210
+contention is this isn't graph native
+
+168
+00:10:10,080 --> 00:10:13,410
+okay every time we take around and walk
+
+169
+00:10:12,210 --> 00:10:16,980
+in the graph we lose a load of
+
+170
+00:10:13,410 --> 00:10:18,150
+information what we want to do is have
+
+171
+00:10:16,980 --> 00:10:20,130
+something like a regression where we say
+
+172
+00:10:18,150 --> 00:10:22,710
+let's figure out a model that can
+
+173
+00:10:20,130 --> 00:10:25,200
+convert a graph or a sub graph into a
+
+174
+00:10:22,710 --> 00:10:27,030
+prediction of some property on some node
+
+175
+00:10:25,200 --> 00:10:30,390
+that's what I want to do that's the
+
+176
+00:10:27,030 --> 00:10:32,250
+input pass and I want to have and I'm
+
+177
+00:10:30,390 --> 00:10:33,600
+gonna learn some weights on this and
+
+178
+00:10:32,250 --> 00:10:35,880
+then I'm going to train that either with
+
+179
+00:10:33,600 --> 00:10:39,420
+a graph or with a load of small graphs
+
+180
+00:10:35,880 --> 00:10:42,110
+or a node of sub graphs and and then we
+
+181
+00:10:39,420 --> 00:10:45,240
+can extend that concept that vision to
+
+182
+00:10:42,110 --> 00:10:47,280
+classifiers and embedded and and the
+
+183
+00:10:45,240 --> 00:10:48,660
+main difference is with embedding we're
+
+184
+00:10:47,280 --> 00:10:50,730
+gonna expect to have some fixed graph
+
+185
+00:10:48,660 --> 00:10:53,310
+where I learn an embedding of every node
+
+186
+00:10:50,730 --> 00:10:55,710
+and every edge with these two
+
+187
+00:10:53,310 --> 00:10:57,390
+I'm not pinned to a fixed pre-existing
+
+188
+00:10:55,710 --> 00:11:00,360
+graph I'm just learning to interpret
+
+189
+00:10:57,390 --> 00:11:02,760
+individual graphs or sub graphs okay and
+
+190
+00:11:00,360 --> 00:11:04,560
+so I might be able to apply these I want
+
+191
+00:11:02,760 --> 00:11:07,440
+to apply these two graphs I haven't seen
+
+192
+00:11:04,560 --> 00:11:12,080
+before I want to learn how to process a
+
+193
+00:11:07,440 --> 00:11:12,080
+graph that the model hasn't seen before
+
+194
+00:11:12,410 --> 00:11:17,880
+so obviously we aren't the only people
+
+195
+00:11:16,290 --> 00:11:20,790
+who are trying to do this it's a
+
+196
+00:11:17,880 --> 00:11:23,160
+reasonably obvious idea so what's the
+
+197
+00:11:20,790 --> 00:11:28,020
+state of the world at the moment with
+
+198
+00:11:23,160 --> 00:11:29,310
+deep neural networks on grass there's a
+
+199
+00:11:28,020 --> 00:11:31,110
+lot of people doing this research in
+
+200
+00:11:29,310 --> 00:11:33,180
+chemistry and that's interesting I think
+
+201
+00:11:31,110 --> 00:11:35,250
+to this community because in chemistry
+
+202
+00:11:33,180 --> 00:11:38,220
+land we have loads and loads of very
+
+203
+00:11:35,250 --> 00:11:39,720
+small graphs and we try and learn from
+
+204
+00:11:38,220 --> 00:11:41,630
+lots and lots of small graphs to predict
+
+205
+00:11:39,720 --> 00:11:44,640
+things like what reactions will happen
+
+206
+00:11:41,630 --> 00:11:47,070
+and there's a lot of research on very
+
+207
+00:11:44,640 --> 00:11:48,150
+big graphs this is protein protein
+
+208
+00:11:47,070 --> 00:11:51,150
+interaction data
+
+209
+00:11:48,150 --> 00:11:54,890
+this is citation data from scientific
+
+210
+00:11:51,150 --> 00:11:58,800
+papers and journals and this is reddit
+
+211
+00:11:54,890 --> 00:12:02,250
+so these are the kind of performances
+
+212
+00:11:58,800 --> 00:12:05,280
+that are state of the art this is a node
+
+213
+00:12:02,250 --> 00:12:08,280
+categorization task and this is a
+
+214
+00:12:05,280 --> 00:12:09,660
+predicting chemical reaction task this
+
+215
+00:12:08,280 --> 00:12:11,910
+is its ability to predict the correct
+
+216
+00:12:09,660 --> 00:12:13,140
+answer the first time that is its
+
+217
+00:12:11,910 --> 00:12:15,390
+ability to get the correct answer
+
+218
+00:12:13,140 --> 00:12:18,750
+somewhere in the top five predictions
+
+219
+00:12:15,390 --> 00:12:22,860
+that it made so these 70 percents these
+
+220
+00:12:18,750 --> 00:12:25,230
+60% 50% 80% they're not the same level
+
+221
+00:12:22,860 --> 00:12:26,880
+of superhuman accuracy that we see with
+
+222
+00:12:25,230 --> 00:12:31,770
+image classification or natural language
+
+223
+00:12:26,880 --> 00:12:35,790
+and so we can't just take what people
+
+224
+00:12:31,770 --> 00:12:36,990
+are doing already and turn the cog put
+
+225
+00:12:35,790 --> 00:12:40,080
+different data in it and expect to get
+
+226
+00:12:36,990 --> 00:12:42,209
+good performance so one of the
+
+227
+00:12:40,080 --> 00:12:44,400
+challenges is this dimensionality
+
+228
+00:12:42,209 --> 00:12:46,200
+challenge how do we take our variable
+
+229
+00:12:44,400 --> 00:12:48,450
+graph structures and turn them into a
+
+230
+00:12:46,200 --> 00:12:50,459
+matrix because in deep learning with
+
+231
+00:12:48,450 --> 00:12:52,170
+neural networks everything is a matrix
+
+232
+00:12:50,459 --> 00:12:54,779
+so somehow we've got to take our graph
+
+233
+00:12:52,170 --> 00:12:56,550
+and shove it into our matrix form or we
+
+234
+00:12:54,779 --> 00:12:58,790
+do the kind of cheats like taking random
+
+235
+00:12:56,550 --> 00:12:58,790
+walks
+
+236
+00:12:59,400 --> 00:13:04,810
+safe people say or I hear people saying
+
+237
+00:13:03,460 --> 00:13:06,850
+that deep learning is good for
+
+238
+00:13:04,810 --> 00:13:09,220
+unstructured data so images that are
+
+239
+00:13:06,850 --> 00:13:10,870
+unstructured text is unstructured we can
+
+240
+00:13:09,220 --> 00:13:12,610
+use deep learning to like extract
+
+241
+00:13:10,870 --> 00:13:14,920
+information and structure that data and
+
+242
+00:13:12,610 --> 00:13:17,230
+if it's bad it's structured data I've
+
+243
+00:13:14,920 --> 00:13:20,290
+paid some date scientists to try and
+
+244
+00:13:17,230 --> 00:13:21,700
+turn my big tables of data into some
+
+245
+00:13:20,290 --> 00:13:24,480
+kind of useful predictor it doesn't work
+
+246
+00:13:21,700 --> 00:13:26,890
+very well and it cost a lot of money and
+
+247
+00:13:24,480 --> 00:13:29,710
+I contend that that's not true
+
+248
+00:13:26,890 --> 00:13:32,110
+actually deep learning is good at some
+
+249
+00:13:29,710 --> 00:13:35,110
+very specific structured data problems
+
+250
+00:13:32,110 --> 00:13:36,760
+it's good at sequences which we use
+
+251
+00:13:35,110 --> 00:13:38,590
+residual they're actually recurrent
+
+252
+00:13:36,760 --> 00:13:40,120
+neural networks for and it's good at
+
+253
+00:13:38,590 --> 00:13:41,830
+dealing with images which we use
+
+254
+00:13:40,120 --> 00:13:44,710
+convolutional your networks for and
+
+255
+00:13:41,830 --> 00:13:47,110
+these have very specific structures in
+
+256
+00:13:44,710 --> 00:13:50,320
+image I know that this node is more
+
+257
+00:13:47,110 --> 00:13:52,510
+relevant to that node than this one so
+
+258
+00:13:50,320 --> 00:13:55,840
+we know that the proximity in the grid
+
+259
+00:13:52,510 --> 00:13:57,400
+of pixels is more relevant okay and
+
+260
+00:13:55,840 --> 00:14:00,700
+nearby pixel is more relevant to a given
+
+261
+00:13:57,400 --> 00:14:03,880
+pixel than a pixel far away in sequences
+
+262
+00:14:00,700 --> 00:14:05,590
+we say that this node is more important
+
+263
+00:14:03,880 --> 00:14:07,360
+to this node and that one over there
+
+264
+00:14:05,590 --> 00:14:10,690
+okay sorry take adjacency in the
+
+265
+00:14:07,360 --> 00:14:12,880
+sequence and we walk the sequence moving
+
+266
+00:14:10,690 --> 00:14:14,710
+along updating some states sometimes we
+
+267
+00:14:12,880 --> 00:14:16,270
+walk it from two directions but we
+
+268
+00:14:14,710 --> 00:14:18,580
+always have that prior knowledge that
+
+269
+00:14:16,270 --> 00:14:19,810
+something that is next to us adjacent in
+
+270
+00:14:18,580 --> 00:14:22,380
+the sequence is more important than
+
+271
+00:14:19,810 --> 00:14:22,380
+something that's far away
+
+272
+00:14:23,070 --> 00:14:28,150
+okay what about go so it goes even
+
+273
+00:14:25,900 --> 00:14:30,280
+simpler in one way more complex in
+
+274
+00:14:28,150 --> 00:14:32,020
+another and go every position on the
+
+275
+00:14:30,280 --> 00:14:35,290
+board is equally relevant to every other
+
+276
+00:14:32,020 --> 00:14:38,200
+position on the board so this dense
+
+277
+00:14:35,290 --> 00:14:40,180
+model works really well for go because a
+
+278
+00:14:38,200 --> 00:14:42,730
+move that you make here might have some
+
+279
+00:14:40,180 --> 00:14:44,890
+effect on this square over here and so
+
+280
+00:14:42,730 --> 00:14:46,270
+saying that this position and this
+
+281
+00:14:44,890 --> 00:14:50,380
+position might have the same wasting on
+
+282
+00:14:46,270 --> 00:14:52,030
+our intermediate state is ideal with
+
+283
+00:14:50,380 --> 00:14:53,950
+images and sequences the
+
+284
+00:14:52,030 --> 00:14:56,980
+state-of-the-art solutions don't use
+
+285
+00:14:53,950 --> 00:14:58,990
+plain dense networks okay we imagine
+
+286
+00:14:56,980 --> 00:15:00,850
+this sequence in that pattern that'll be
+
+287
+00:14:58,990 --> 00:15:02,680
+like saying we take each of these nodes
+
+288
+00:15:00,850 --> 00:15:05,200
+I put the meat in the input layer and
+
+289
+00:15:02,680 --> 00:15:06,970
+the first hidden layer is some function
+
+290
+00:15:05,200 --> 00:15:08,790
+of all of them we don't actually do that
+
+291
+00:15:06,970 --> 00:15:10,750
+we have something that walks along the
+
+292
+00:15:08,790 --> 00:15:13,240
+graph
+
+293
+00:15:10,750 --> 00:15:15,250
+for images we use convolutional neural
+
+294
+00:15:13,240 --> 00:15:17,649
+networks so we don't connect every
+
+295
+00:15:15,250 --> 00:15:20,500
+single pixel in the input layer together
+
+296
+00:15:17,649 --> 00:15:22,600
+in one dense net we use a convolution
+
+297
+00:15:20,500 --> 00:15:24,910
+kernel so here we just say let's just
+
+298
+00:15:22,600 --> 00:15:25,620
+take the pixels that are adjacent to a
+
+299
+00:15:24,910 --> 00:15:27,550
+given pixel
+
+300
+00:15:25,620 --> 00:15:29,170
+convolve them with some learned weights
+
+301
+00:15:27,550 --> 00:15:33,550
+and I'll put something into the
+
+302
+00:15:29,170 --> 00:15:35,980
+intermediate layer so we talk about this
+
+303
+00:15:33,550 --> 00:15:38,350
+concept as being structural priors in
+
+304
+00:15:35,980 --> 00:15:41,560
+our network so earlier I said we don't
+
+305
+00:15:38,350 --> 00:15:44,350
+pre pre program rules of grammar into a
+
+306
+00:15:41,560 --> 00:15:47,079
+language model but actually we pre
+
+307
+00:15:44,350 --> 00:15:48,399
+program some kind of concept of how
+
+308
+00:15:47,079 --> 00:15:52,199
+information is related to other
+
+309
+00:15:48,399 --> 00:15:56,290
+information into the models that we use
+
+310
+00:15:52,199 --> 00:15:58,089
+so the graph deep learning problem is
+
+311
+00:15:56,290 --> 00:16:00,699
+more than just figuring out how to stick
+
+312
+00:15:58,089 --> 00:16:03,129
+a graph into a matrix and then use all
+
+313
+00:16:00,699 --> 00:16:05,290
+the techniques we already have okay we
+
+314
+00:16:03,129 --> 00:16:07,089
+need to figure out how to retain the
+
+315
+00:16:05,290 --> 00:16:10,509
+relational information that's present in
+
+316
+00:16:07,089 --> 00:16:14,949
+our graphs when we use it in a matrix in
+
+317
+00:16:10,509 --> 00:16:17,079
+a neural network this pattern doesn't
+
+318
+00:16:14,949 --> 00:16:18,519
+make sense for this graph okay all of
+
+319
+00:16:17,079 --> 00:16:21,009
+these are not equally important to each
+
+320
+00:16:18,519 --> 00:16:23,019
+other this product is more important to
+
+321
+00:16:21,009 --> 00:16:25,089
+this company than like this node over
+
+322
+00:16:23,019 --> 00:16:26,769
+here so we want to keep these relational
+
+323
+00:16:25,089 --> 00:16:29,199
+information if I just stick it in this
+
+324
+00:16:26,769 --> 00:16:30,819
+or that information is lost and the
+
+325
+00:16:29,199 --> 00:16:33,040
+first thing the model has to do is
+
+326
+00:16:30,819 --> 00:16:36,670
+somehow relearn all of that stuff that
+
+327
+00:16:33,040 --> 00:16:38,680
+we forgot this applies whether we're
+
+328
+00:16:36,670 --> 00:16:40,360
+dealing with transport networks where
+
+329
+00:16:38,680 --> 00:16:42,069
+they were doing semantic graphs the same
+
+330
+00:16:40,360 --> 00:16:47,110
+problem applies we want to keep the
+
+331
+00:16:42,069 --> 00:16:48,519
+information in the graph so the
+
+332
+00:16:47,110 --> 00:16:50,259
+challenge is not the black
+
+333
+00:16:48,519 --> 00:16:53,170
+dimensionality the challenge is about
+
+334
+00:16:50,259 --> 00:16:55,269
+inductive biases okay how can we
+
+335
+00:16:53,170 --> 00:16:57,189
+structure the neural network to work
+
+336
+00:16:55,269 --> 00:16:59,230
+well on graphs in the same way that we
+
+337
+00:16:57,189 --> 00:17:01,180
+have neural networks that are structured
+
+338
+00:16:59,230 --> 00:17:02,800
+well to work on images and ones that are
+
+339
+00:17:01,180 --> 00:17:08,199
+structured to work well on text or
+
+340
+00:17:02,800 --> 00:17:09,339
+sequences and it turns out there are
+
+341
+00:17:08,199 --> 00:17:12,370
+some people who are cleverer than me who
+
+342
+00:17:09,339 --> 00:17:14,319
+work on this so you work on anything in
+
+343
+00:17:12,370 --> 00:17:16,390
+this field for a while and you get used
+
+344
+00:17:14,319 --> 00:17:18,659
+to Google typically occasionally
+
+345
+00:17:16,390 --> 00:17:21,939
+Facebook and publishing something that
+
+346
+00:17:18,659 --> 00:17:24,039
+overtakes you in one bound so I'm going
+
+347
+00:17:21,939 --> 00:17:26,040
+to talk a lot about things that come
+
+348
+00:17:24,039 --> 00:17:28,390
+from this
+
+349
+00:17:26,040 --> 00:17:31,480
+relational inductive biases right and
+
+350
+00:17:28,390 --> 00:17:34,360
+graph networks so should be pretty
+
+351
+00:17:31,480 --> 00:17:35,860
+interesting that all of us unfortunate
+
+352
+00:17:34,360 --> 00:17:39,880
+this is how it looks if you read the
+
+353
+00:17:35,860 --> 00:17:42,970
+paper these are the only equations in
+
+354
+00:17:39,880 --> 00:17:45,250
+this presentation and that is very much
+
+355
+00:17:42,970 --> 00:17:49,120
+not the norm for anyone talking about
+
+356
+00:17:45,250 --> 00:17:51,670
+deep learning but this paper presents
+
+357
+00:17:49,120 --> 00:17:53,590
+this concept called graph networks and
+
+358
+00:17:51,670 --> 00:17:56,950
+they present this algorithm which they
+
+359
+00:17:53,590 --> 00:18:00,250
+say is a generalization of many many
+
+360
+00:17:56,950 --> 00:18:02,559
+different graph algorithms so this is a
+
+361
+00:18:00,250 --> 00:18:03,880
+generalization that includes things that
+
+362
+00:18:02,559 --> 00:18:05,710
+are nothing to you in your networks so
+
+363
+00:18:03,880 --> 00:18:08,110
+you can fit PageRank within this
+
+364
+00:18:05,710 --> 00:18:09,460
+algorithm they present and but they
+
+365
+00:18:08,110 --> 00:18:10,300
+propose as being useful for training
+
+366
+00:18:09,460 --> 00:18:15,070
+graph networks
+
+367
+00:18:10,300 --> 00:18:17,260
+so the algorithm they propose is first
+
+368
+00:18:15,070 --> 00:18:18,940
+of all you take every edge and you look
+
+369
+00:18:17,260 --> 00:18:21,700
+at the nodes it's connected to and you
+
+370
+00:18:18,940 --> 00:18:24,160
+update the properties of the edge then
+
+371
+00:18:21,700 --> 00:18:25,630
+you take every node and you look at all
+
+372
+00:18:24,160 --> 00:18:27,270
+of the edges connected to that node and
+
+373
+00:18:25,630 --> 00:18:30,820
+you update the properties of the node
+
+374
+00:18:27,270 --> 00:18:32,980
+then you have some global state you look
+
+375
+00:18:30,820 --> 00:18:34,870
+at the whole system all the edges and
+
+376
+00:18:32,980 --> 00:18:37,900
+all the nodes and you update the global
+
+377
+00:18:34,870 --> 00:18:40,720
+state and for each of these update steps
+
+378
+00:18:37,900 --> 00:18:42,640
+you have two equations which and you
+
+379
+00:18:40,720 --> 00:18:45,760
+have two functions one is an aggregator
+
+380
+00:18:42,640 --> 00:18:47,200
+and one is a transform and with these
+
+381
+00:18:45,760 --> 00:18:48,850
+six functions you can plug neural
+
+382
+00:18:47,200 --> 00:18:50,770
+networks in for each of them and you can
+
+383
+00:18:48,850 --> 00:18:52,030
+train it with gradient descent so the
+
+384
+00:18:50,770 --> 00:18:55,150
+thing that we think is useful about all
+
+385
+00:18:52,030 --> 00:18:57,520
+of this is we've retained the properties
+
+386
+00:18:55,150 --> 00:18:59,980
+of our graph and the relations in our
+
+387
+00:18:57,520 --> 00:19:01,720
+graph and at the same time we figured
+
+388
+00:18:59,980 --> 00:19:04,870
+out a way that we can do stochastic
+
+389
+00:19:01,720 --> 00:19:06,910
+gradient descent so instead of trying to
+
+390
+00:19:04,870 --> 00:19:08,500
+stick the graph into a neural network
+
+391
+00:19:06,910 --> 00:19:11,830
+what we're doing is putting your own
+
+392
+00:19:08,500 --> 00:19:15,160
+networks inside the graph and training
+
+393
+00:19:11,830 --> 00:19:16,929
+Wiscasset gradient descent ok this is a
+
+394
+00:19:15,160 --> 00:19:20,559
+slightly simpler representation of that
+
+395
+00:19:16,929 --> 00:19:22,540
+and in case it was too much so what we
+
+396
+00:19:20,559 --> 00:19:24,880
+do is we have a graph we load it into
+
+397
+00:19:22,540 --> 00:19:27,929
+memory and then we do many iterations of
+
+398
+00:19:24,880 --> 00:19:31,420
+this function where we update the graph
+
+399
+00:19:27,929 --> 00:19:32,679
+based on the algorithm using a load of
+
+400
+00:19:31,420 --> 00:19:34,809
+weights in some controller that we've
+
+401
+00:19:32,679 --> 00:19:36,690
+trained with a neural network as in your
+
+402
+00:19:34,809 --> 00:19:38,410
+own attic and eventually after we've
+
+403
+00:19:36,690 --> 00:19:40,330
+done this cycle
+
+404
+00:19:38,410 --> 00:19:42,310
+dating the graph in memory reading out
+
+405
+00:19:40,330 --> 00:19:46,660
+updating it we get some output and
+
+406
+00:19:42,310 --> 00:19:48,190
+hopefully it's the answer so that's how
+
+407
+00:19:46,660 --> 00:19:51,820
+I think we want to do deep learning on
+
+408
+00:19:48,190 --> 00:19:54,520
+grass does it work and these are some of
+
+409
+00:19:51,820 --> 00:19:55,990
+the results of our experiments what we
+
+410
+00:19:54,520 --> 00:19:58,540
+did first is we created a data set
+
+411
+00:19:55,990 --> 00:19:59,950
+that's pretty typical data science we
+
+412
+00:19:58,540 --> 00:20:02,650
+created a data set so now we've got a
+
+413
+00:19:59,950 --> 00:20:05,440
+benchmark to work with and we made a
+
+414
+00:20:02,650 --> 00:20:07,150
+synthetic data set so that we knew that
+
+415
+00:20:05,440 --> 00:20:09,340
+our models work if we get to 110
+
+416
+00:20:07,150 --> 00:20:11,320
+accuracy with real-world data sets you
+
+417
+00:20:09,340 --> 00:20:13,060
+might get to 95 10 accuracy and that
+
+418
+00:20:11,320 --> 00:20:14,320
+might be the best possible but it's
+
+419
+00:20:13,060 --> 00:20:15,130
+pretty hard to figure out if that's
+
+420
+00:20:14,320 --> 00:20:17,170
+what's going on or not
+
+421
+00:20:15,130 --> 00:20:20,710
+so he made a synthetic data set and
+
+422
+00:20:17,170 --> 00:20:22,780
+modeled on transport networks and our
+
+423
+00:20:20,710 --> 00:20:25,720
+synthetic data set consists of data
+
+424
+00:20:22,780 --> 00:20:27,910
+points of a graph a question and an
+
+425
+00:20:25,720 --> 00:20:31,390
+answer and each of these graphs is
+
+426
+00:20:27,910 --> 00:20:33,280
+unique so we train our network not on a
+
+427
+00:20:31,390 --> 00:20:34,840
+single graph but on different graphs so
+
+428
+00:20:33,280 --> 00:20:38,860
+it has to learn to use the information
+
+429
+00:20:34,840 --> 00:20:40,330
+in the graph in a single shot and so
+
+430
+00:20:38,860 --> 00:20:42,790
+there's some stats for our dataset we
+
+431
+00:20:40,330 --> 00:20:44,800
+created our dataset looks like this so
+
+432
+00:20:42,790 --> 00:20:47,230
+we create for every single one of those
+
+433
+00:20:44,800 --> 00:20:49,420
+10,000 points a unique transport graph
+
+434
+00:20:47,230 --> 00:20:52,060
+and that has a few simple heuristic
+
+435
+00:20:49,420 --> 00:20:54,070
+properties and we choose questions like
+
+436
+00:20:52,060 --> 00:20:56,410
+these this is a small set there are
+
+437
+00:20:54,070 --> 00:20:59,410
+something like there are 21 questions
+
+438
+00:20:56,410 --> 00:21:02,380
+this is a subset of those 21 and these
+
+439
+00:20:59,410 --> 00:21:05,620
+questions require the neural network to
+
+440
+00:21:02,380 --> 00:21:06,820
+do different things over the graph okay
+
+441
+00:21:05,620 --> 00:21:08,950
+it's got to have skills like counting
+
+442
+00:21:06,820 --> 00:21:10,600
+nodes and counting edges as it walks the
+
+443
+00:21:08,950 --> 00:21:12,580
+graph it needs to be able to pull
+
+444
+00:21:10,600 --> 00:21:14,770
+properties off of nodes and actually
+
+445
+00:21:12,580 --> 00:21:16,690
+properties of edges and it has to do
+
+446
+00:21:14,770 --> 00:21:18,670
+some questions that require multi-step
+
+447
+00:21:16,690 --> 00:21:20,410
+reasoning it can't just read one value
+
+448
+00:21:18,670 --> 00:21:24,970
+out it has to traverse the graph in some
+
+449
+00:21:20,410 --> 00:21:26,860
+way to answer the question and so to get
+
+450
+00:21:24,970 --> 00:21:28,420
+a hundred percent on this we need to
+
+451
+00:21:26,860 --> 00:21:30,490
+have a neural network that's trained and
+
+452
+00:21:28,420 --> 00:21:34,630
+can perform all these skills on a graph
+
+453
+00:21:30,490 --> 00:21:38,410
+that it hasn't seen before this is where
+
+454
+00:21:34,630 --> 00:21:41,230
+we are at the moment we're working our
+
+455
+00:21:38,410 --> 00:21:44,230
+way down this list and so far we get 98
+
+456
+00:21:41,230 --> 00:21:47,290
+99 percent accuracy on these kinds of
+
+457
+00:21:44,230 --> 00:21:49,450
+questions and at the moment we haven't
+
+458
+00:21:47,290 --> 00:21:52,420
+yet tested these but in here we've got
+
+459
+00:21:49,450 --> 00:21:54,790
+some which we're pretty proud of so
+
+460
+00:21:52,420 --> 00:21:56,080
+we've got things like is there a station
+
+461
+00:21:54,790 --> 00:21:58,450
+with this name is there a node with this
+
+462
+00:21:56,080 --> 00:22:00,610
+name does this node exist that is
+
+463
+00:21:58,450 --> 00:22:02,350
+surprisingly hard to do with neural
+
+464
+00:22:00,610 --> 00:22:04,780
+networks because they're often trained
+
+465
+00:22:02,350 --> 00:22:07,300
+on to pick the right answer on there
+
+466
+00:22:04,780 --> 00:22:08,650
+something that a right answer exists and
+
+467
+00:22:07,300 --> 00:22:10,440
+training it there's no right answer it's
+
+468
+00:22:08,650 --> 00:22:12,850
+quite hard
+
+469
+00:22:10,440 --> 00:22:15,370
+how many stations are between station
+
+470
+00:22:12,850 --> 00:22:17,410
+and station to answer that it's also
+
+471
+00:22:15,370 --> 00:22:18,730
+found the shortest path you have to find
+
+472
+00:22:17,410 --> 00:22:21,310
+the shortest path between two stations
+
+473
+00:22:18,730 --> 00:22:24,130
+and that's Dijkstra's algorithm and our
+
+474
+00:22:21,310 --> 00:22:25,780
+network has learned how to do Dijkstra's
+
+475
+00:22:24,130 --> 00:22:28,030
+algorithm and it has learned when to
+
+476
+00:22:25,780 --> 00:22:29,590
+apply it because we give all of these
+
+477
+00:22:28,030 --> 00:22:32,080
+questions to network so it has to know
+
+478
+00:22:29,590 --> 00:22:33,640
+that question requires me to do this
+
+479
+00:22:32,080 --> 00:22:36,910
+however rhythm to get the answer and
+
+480
+00:22:33,640 --> 00:22:38,110
+then do the algorithm and they're pretty
+
+481
+00:22:36,910 --> 00:22:39,520
+proud of that as well because it's
+
+482
+00:22:38,110 --> 00:22:42,010
+learned that without any prior from us
+
+483
+00:22:39,520 --> 00:22:45,160
+we haven't given it any hints that would
+
+484
+00:22:42,010 --> 00:22:50,100
+particularly help with that so we think
+
+485
+00:22:45,160 --> 00:22:50,100
+this works and deepmind think this works
+
+486
+00:22:51,640 --> 00:22:55,240
+I left that with question marks because
+
+487
+00:22:53,440 --> 00:22:56,410
+we haven't solved all the problems I
+
+488
+00:22:55,240 --> 00:22:58,560
+want to solve for sure there's still
+
+489
+00:22:56,410 --> 00:23:00,850
+unanswered questions that period slide
+
+490
+00:22:58,560 --> 00:23:03,190
+but I'm going to talk a bit about how it
+
+491
+00:23:00,850 --> 00:23:08,350
+works so we got five minutes this is
+
+492
+00:23:03,190 --> 00:23:10,090
+gonna get intense we've got questions
+
+493
+00:23:08,350 --> 00:23:14,080
+like this and we've got these data
+
+494
+00:23:10,090 --> 00:23:15,640
+points and deepmind gave us an algorithm
+
+495
+00:23:14,080 --> 00:23:17,200
+for processing a graph but we've got
+
+496
+00:23:15,640 --> 00:23:19,750
+this problem where we've got to get from
+
+497
+00:23:17,200 --> 00:23:21,250
+this question and we've got to get the
+
+498
+00:23:19,750 --> 00:23:24,220
+predicate to this question into the
+
+499
+00:23:21,250 --> 00:23:25,630
+graph so we need to prime the graph to
+
+500
+00:23:24,220 --> 00:23:26,860
+answer our query and then we can crank
+
+501
+00:23:25,630 --> 00:23:28,750
+the handle a lot on that deepmind
+
+502
+00:23:26,860 --> 00:23:30,040
+algorithm and iterate and then at the
+
+503
+00:23:28,750 --> 00:23:31,690
+end of that we have to figure out how to
+
+504
+00:23:30,040 --> 00:23:36,460
+pull the answer out and turn it into
+
+505
+00:23:31,690 --> 00:23:37,930
+some useful answer text so now we've
+
+506
+00:23:36,460 --> 00:23:40,240
+solved this inductive bias challenge
+
+507
+00:23:37,930 --> 00:23:42,070
+with deepmind's algorithm now we have
+
+508
+00:23:40,240 --> 00:23:43,600
+this starting condition challenge how do
+
+509
+00:23:42,070 --> 00:23:46,930
+we take a specific question and prime
+
+510
+00:23:43,600 --> 00:23:50,590
+the graph to answer that question okay
+
+511
+00:23:46,930 --> 00:23:54,070
+attention is all you need these guys
+
+512
+00:23:50,590 --> 00:23:56,110
+know a day so attention is a new
+
+513
+00:23:54,070 --> 00:23:57,310
+building block for a relatively new
+
+514
+00:23:56,110 --> 00:23:58,510
+building block for neural networks
+
+515
+00:23:57,310 --> 00:24:00,310
+that's different from our density
+
+516
+00:23:58,510 --> 00:24:03,820
+connected layers so we've got rid of
+
+517
+00:24:00,310 --> 00:24:05,770
+this and we have this what this
+
+518
+00:24:03,820 --> 00:24:07,990
+attention lets us do is it lets us pick
+
+519
+00:24:05,770 --> 00:24:12,160
+over a variable length list of entities
+
+520
+00:24:07,990 --> 00:24:13,600
+and using some query we figure out which
+
+521
+00:24:12,160 --> 00:24:15,220
+of these entities are most interesting
+
+522
+00:24:13,600 --> 00:24:16,810
+to us so that's the idea of attention
+
+523
+00:24:15,220 --> 00:24:19,450
+and then we aggregate them in some way
+
+524
+00:24:16,810 --> 00:24:20,920
+and output a fixed size signal so it
+
+525
+00:24:19,450 --> 00:24:23,380
+lets us go from a variable length list
+
+526
+00:24:20,920 --> 00:24:26,950
+to a fixed size signal predicated on
+
+527
+00:24:23,380 --> 00:24:28,000
+some query and it's differentiable so we
+
+528
+00:24:26,950 --> 00:24:31,210
+can train it was to cast a gradient
+
+529
+00:24:28,000 --> 00:24:32,980
+descent so this is how we apply
+
+530
+00:24:31,210 --> 00:24:34,810
+attention to solve that initial problem
+
+531
+00:24:32,980 --> 00:24:36,820
+we want to prime the graph and we take
+
+532
+00:24:34,810 --> 00:24:39,760
+our query and we figure out how to
+
+533
+00:24:36,820 --> 00:24:43,480
+combine our query with this attention
+
+534
+00:24:39,760 --> 00:24:45,640
+cell to update the graph and based on
+
+535
+00:24:43,480 --> 00:24:47,860
+how much the attention cell cares about
+
+536
+00:24:45,640 --> 00:24:49,750
+each of these nodes we have an input
+
+537
+00:24:47,860 --> 00:24:52,360
+signal they gets written with different
+
+538
+00:24:49,750 --> 00:24:54,700
+strengths so typically will pick one
+
+539
+00:24:52,360 --> 00:24:56,650
+node that matches very well with the
+
+540
+00:24:54,700 --> 00:24:58,660
+query and we'll write a strong signal on
+
+541
+00:24:56,650 --> 00:25:00,460
+that node and so that way we prime our
+
+542
+00:24:58,660 --> 00:25:01,690
+graph so it has all the initial
+
+543
+00:25:00,460 --> 00:25:03,790
+properties in it like the name of the
+
+544
+00:25:01,690 --> 00:25:05,020
+station how clean the station is the
+
+545
+00:25:03,790 --> 00:25:08,080
+name of the line it's connected to
+
+546
+00:25:05,020 --> 00:25:09,790
+but then we add an in-memory value which
+
+547
+00:25:08,080 --> 00:25:14,560
+is the input signal which is predicated
+
+548
+00:25:09,790 --> 00:25:16,180
+on the question then at the end okay we
+
+549
+00:25:14,560 --> 00:25:17,890
+can crank our handle and we think that
+
+550
+00:25:16,180 --> 00:25:21,610
+the algorithm has figured out the answer
+
+551
+00:25:17,890 --> 00:25:23,860
+we somehow to read out the answer so now
+
+552
+00:25:21,610 --> 00:25:25,330
+we do an attention based read and we
+
+553
+00:25:23,860 --> 00:25:27,940
+have this list which is all of the nodes
+
+554
+00:25:25,330 --> 00:25:29,920
+or all of the edges going into our
+
+555
+00:25:27,940 --> 00:25:33,190
+attention we have the original query
+
+556
+00:25:29,920 --> 00:25:34,810
+again and we say which of these nodes
+
+557
+00:25:33,190 --> 00:25:38,760
+looks most like the answer to the
+
+558
+00:25:34,810 --> 00:25:41,470
+question and we pull it out and so
+
+559
+00:25:38,760 --> 00:25:43,450
+combining these we've got our attention
+
+560
+00:25:41,470 --> 00:25:46,480
+right and our attention read and this
+
+561
+00:25:43,450 --> 00:25:49,350
+whole thing is end to end differentiable
+
+562
+00:25:46,480 --> 00:25:52,290
+so we can train on our simple triples
+
+563
+00:25:49,350 --> 00:25:54,400
+wherever we were these things
+
+564
+00:25:52,290 --> 00:25:57,010
+differentiate to end to end and learn
+
+565
+00:25:54,400 --> 00:26:00,250
+how to answer the question and whatever
+
+566
+00:25:57,010 --> 00:26:02,440
+algorithm is going on in here the system
+
+567
+00:26:00,250 --> 00:26:04,230
+figures it out ok so that's pretty
+
+568
+00:26:02,440 --> 00:26:06,250
+awesome
+
+569
+00:26:04,230 --> 00:26:07,660
+so what are we found we've got a deep
+
+570
+00:26:06,250 --> 00:26:09,610
+learning model that can learn how to
+
+571
+00:26:07,660 --> 00:26:12,130
+navigate graph schema it can learn to do
+
+572
+00:26:09,610 --> 00:26:14,290
+multi-step graph algorithms we can do
+
+573
+00:26:12,130 --> 00:26:16,000
+end-to-end training on it ok so we don't
+
+574
+00:26:14,290 --> 00:26:17,890
+have to teach it about what kinds of
+
+575
+00:26:16,000 --> 00:26:20,080
+relationships we have or anything like
+
+576
+00:26:17,890 --> 00:26:22,540
+that it can figure out how it wants to
+
+577
+00:26:20,080 --> 00:26:24,700
+use the relationships and we can use a
+
+578
+00:26:22,540 --> 00:26:26,860
+single model to solve multiple questions
+
+579
+00:26:24,700 --> 00:26:28,060
+so a single model can learn multiple
+
+580
+00:26:26,860 --> 00:26:30,630
+algorithms and it can learn which
+
+581
+00:26:28,060 --> 00:26:33,040
+algorithm to use in a given situation
+
+582
+00:26:30,630 --> 00:26:35,260
+and we think that this has the potential
+
+583
+00:26:33,040 --> 00:26:38,440
+to be used from all kinds of situations
+
+584
+00:26:35,260 --> 00:26:40,570
+right there assistants like Siri for
+
+585
+00:26:38,440 --> 00:26:43,330
+legal cases like understanding legal
+
+586
+00:26:40,570 --> 00:26:44,710
+documents and answering questions pretty
+
+587
+00:26:43,330 --> 00:26:49,170
+much any graph problem you think of
+
+588
+00:26:44,710 --> 00:26:49,170
+needs these primitives to solve it
+
+589
+00:26:50,610 --> 00:26:55,160
+[Applause]
+
+590
+00:26:55,960 --> 00:27:00,820
+so I see a question there already
+
+591
+00:27:15,200 --> 00:27:27,300
+so these this message-passing process
+
+592
+00:27:23,160 --> 00:27:29,490
+here is somewhat explainable and so we
+
+593
+00:27:27,300 --> 00:27:37,860
+can introspect in the same way we all
+
+594
+00:27:29,490 --> 00:27:39,660
+the way back to this and in the same way
+
+595
+00:27:37,860 --> 00:27:41,460
+that this is explainable in that I can
+
+596
+00:27:39,660 --> 00:27:44,880
+look at the intermediate states of the
+
+597
+00:27:41,460 --> 00:27:46,140
+system and then I can infer what what it
+
+598
+00:27:44,880 --> 00:27:48,150
+was doing so I can say in the
+
+599
+00:27:46,140 --> 00:27:50,760
+intermediate state that attention cell
+
+600
+00:27:48,150 --> 00:27:52,170
+we're talking about we can see what
+
+601
+00:27:50,760 --> 00:27:53,220
+parts of this image it's interested in
+
+602
+00:27:52,170 --> 00:27:55,290
+we tell its interest in that part
+
+603
+00:27:53,220 --> 00:27:56,580
+interested in that part and we can see
+
+604
+00:27:55,290 --> 00:27:59,490
+what part of the question it's
+
+605
+00:27:56,580 --> 00:28:00,570
+interested in at each step so we can we
+
+606
+00:27:59,490 --> 00:28:02,430
+can break it down and we can kind of
+
+607
+00:28:00,570 --> 00:28:06,240
+look inside and then we can say well
+
+608
+00:28:02,430 --> 00:28:07,920
+this is what it was doing and that's not
+
+609
+00:28:06,240 --> 00:28:09,510
+perfect and that's dependent on every
+
+610
+00:28:07,920 --> 00:28:11,520
+instance so we can't say that it always
+
+611
+00:28:09,510 --> 00:28:13,800
+uses this method to answer this question
+
+612
+00:28:11,520 --> 00:28:15,300
+but for a given situation we can look
+
+613
+00:28:13,800 --> 00:28:19,730
+inside it and say well this appears to
+
+614
+00:28:15,300 --> 00:28:19,730
+be the process that it's undergoing
+
+615
+00:28:34,070 --> 00:28:37,070
+yeah
+
+616
+00:28:44,310 --> 00:28:51,090
+and there I'm sure there are people who
+
+617
+00:28:46,590 --> 00:28:53,930
+are looking at it and like our training
+
+618
+00:28:51,090 --> 00:28:55,890
+methods our schema specific but
+
+619
+00:28:53,930 --> 00:28:58,800
+unfortunately it's not like you save the
+
+620
+00:28:55,890 --> 00:29:00,960
+graph and you know a cat is a mammal and
+
+621
+00:28:58,800 --> 00:29:02,610
+then the graph knows instead you have
+
+622
+00:29:00,960 --> 00:29:03,900
+this brute-force process where you would
+
+623
+00:29:02,610 --> 00:29:05,340
+like to show it that a cat has a mammal
+
+624
+00:29:03,900 --> 00:29:08,100
+a billion times and then it's like okay
+
+625
+00:29:05,340 --> 00:29:09,540
+I figured out it would be awesome to do
+
+626
+00:29:08,100 --> 00:29:12,990
+the kind thing you're describing where
+
+627
+00:29:09,540 --> 00:29:14,970
+it has Avenue show the ability to look
+
+628
+00:29:12,990 --> 00:29:16,440
+to know from a graph rather than
+
+629
+00:29:14,970 --> 00:29:17,990
+learning from lots of grass abilities
+
+630
+00:29:16,440 --> 00:29:20,520
+just be like well that makes sense
+
+631
+00:29:17,990 --> 00:29:24,290
+but I'm not aware of anything that that
+
+632
+00:29:20,520 --> 00:29:24,290
+does that with your networks
+
+633
+00:29:46,029 --> 00:29:54,169
+yeah these are us symbol grass there
+
+634
+00:29:51,350 --> 00:29:57,620
+list of nodes list of edges and an
+
+635
+00:29:54,169 --> 00:30:01,940
+adjacency matrix that's that's all and
+
+636
+00:29:57,620 --> 00:30:06,140
+the the properties are tokenized and the
+
+637
+00:30:01,940 --> 00:30:07,700
+question is string so we if we have a
+
+638
+00:30:06,140 --> 00:30:09,500
+list of nodes and the nodes have an
+
+639
+00:30:07,700 --> 00:30:10,789
+array of properties on them and those
+
+640
+00:30:09,500 --> 00:30:12,770
+properties are just properties that node
+
+641
+00:30:10,789 --> 00:30:14,809
+we don't encode any other statistics we
+
+642
+00:30:12,770 --> 00:30:17,240
+don't have a value for like number of
+
+643
+00:30:14,809 --> 00:30:19,090
+connections or neighborhood or anything
+
+644
+00:30:17,240 --> 00:30:23,029
+else it is just what you'd expect to see
+
+645
+00:30:19,090 --> 00:30:24,440
+if you were writing that as a to me is
+
+646
+00:30:23,029 --> 00:30:26,179
+like an EF decorate it just has the
+
+647
+00:30:24,440 --> 00:30:35,720
+properties on the node and an adjacency
+
+648
+00:30:26,179 --> 00:30:36,919
+matrix now we just have this station is
+
+649
+00:30:35,720 --> 00:30:41,570
+attached to this edge where the edge is
+
+650
+00:30:36,919 --> 00:30:44,059
+the edge that you'd expect so there's no
+
+651
+00:30:41,570 --> 00:30:45,620
+relationships other than this
+
+652
+00:30:44,059 --> 00:30:47,630
+connectivity from the transport graph
+
+653
+00:30:45,620 --> 00:30:49,669
+and I don't want people to get to your
+
+654
+00:30:47,630 --> 00:30:51,289
+house on transport graphs because this
+
+655
+00:30:49,669 --> 00:30:54,100
+is generally applicable yeah in this
+
+656
+00:30:51,289 --> 00:30:54,100
+case that's the only edge
+
+657
+00:31:00,440 --> 00:31:05,520
+yes so it does tell it does have the
+
+658
+00:31:03,419 --> 00:31:08,010
+line so we'd be like this is the Circle
+
+659
+00:31:05,520 --> 00:31:10,110
+Line this is a district line and some of
+
+660
+00:31:08,010 --> 00:31:13,200
+the questions require it to traverse
+
+661
+00:31:10,110 --> 00:31:15,000
+specific lines so it is aware of the
+
+662
+00:31:13,200 --> 00:31:16,230
+different types of edges and it learns
+
+663
+00:31:15,000 --> 00:31:18,299
+that it has to take the edges into
+
+664
+00:31:16,230 --> 00:31:20,179
+account and but this is simple we look
+
+665
+00:31:18,299 --> 00:31:22,440
+we'd like to build ourselves a dataset
+
+666
+00:31:20,179 --> 00:31:24,210
+once we finish this one where those kind
+
+667
+00:31:22,440 --> 00:31:26,880
+of relationships and something more
+
+668
+00:31:24,210 --> 00:31:28,169
+semantic logic is involved so we can
+
+669
+00:31:26,880 --> 00:31:30,450
+really prove that it's able to learn
+
+670
+00:31:28,169 --> 00:31:33,440
+like a semantic logic of which edges it
+
+671
+00:31:30,450 --> 00:31:33,440
+can traverse in order
+
+672
+00:31:51,270 --> 00:31:58,179
+I'd expect to be able to because the way
+
+673
+00:31:55,600 --> 00:32:00,340
+that that you know it's a very good at
+
+674
+00:31:58,179 --> 00:32:02,320
+handling probabilities in general that's
+
+675
+00:32:00,340 --> 00:32:04,240
+often the way they're trained so things
+
+676
+00:32:02,320 --> 00:32:06,910
+like word Tyvek is trained to predict a
+
+677
+00:32:04,240 --> 00:32:08,320
+probability distribution but I've got no
+
+678
+00:32:06,910 --> 00:32:10,770
+evidence that we can do it in this
+
+679
+00:32:08,320 --> 00:32:10,770
+example
+
+680
+00:32:19,580 --> 00:32:22,580
+yeah
+
+681
+00:32:29,920 --> 00:32:37,940
+so yeah in my experience the innovation
+
+682
+00:32:34,940 --> 00:32:40,670
+is is oriented around companies not
+
+683
+00:32:37,940 --> 00:32:42,590
+universities but here the lines are
+
+684
+00:32:40,670 --> 00:32:44,840
+incredibly blurred so there are plenty
+
+685
+00:32:42,590 --> 00:32:46,250
+of people who hold positions you know a
+
+686
+00:32:44,840 --> 00:32:49,160
+senior position in an organization like
+
+687
+00:32:46,250 --> 00:32:50,690
+Google or Facebook and also hold a
+
+688
+00:32:49,160 --> 00:32:51,680
+senior position in the university like
+
+689
+00:32:50,690 --> 00:32:55,160
+the University of Montreal the
+
+690
+00:32:51,680 --> 00:32:57,890
+University of Edinburgh and things that
+
+691
+00:32:55,160 --> 00:32:59,540
+come out tend to be like that so you've
+
+692
+00:32:57,890 --> 00:33:04,870
+got people from the University of here
+
+693
+00:32:59,540 --> 00:33:04,870
+and people from this organization yes
+
+694
+00:33:08,260 --> 00:33:14,539
+[Applause]
+

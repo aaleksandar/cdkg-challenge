@@ -1,0 +1,2276 @@
+1
+00:00:08,700 --> 00:00:13,980
+thank you for the introduction and
+
+2
+00:00:11,280 --> 00:00:16,770
+correctly pronouncing my last name which
+
+3
+00:00:13,980 --> 00:00:18,660
+usually doesn't happen kudos
+
+4
+00:00:16,770 --> 00:00:20,910
+so yeah I'm Dominic I'm the co-founder
+
+5
+00:00:18,660 --> 00:00:26,869
+of mimeograph and today I want to give
+
+6
+00:00:20,910 --> 00:00:29,730
+you an intro to how mem Graf is enabling
+
+7
+00:00:26,869 --> 00:00:32,750
+next generation of applications
+
+8
+00:00:29,730 --> 00:00:35,489
+leveraging complex graph analytics
+
+9
+00:00:32,750 --> 00:00:39,180
+together with your graph storage and
+
+10
+00:00:35,489 --> 00:00:41,309
+transactional graph use cases so before
+
+11
+00:00:39,180 --> 00:00:44,370
+we actually start speaking about that I
+
+12
+00:00:41,309 --> 00:00:47,370
+just wanted to give everyone a little
+
+13
+00:00:44,370 --> 00:00:50,699
+bit more each owned on the company so
+
+14
+00:00:47,370 --> 00:00:54,870
+basically we were going for about three
+
+15
+00:00:50,699 --> 00:00:58,190
+years now we're a team of 20 and what's
+
+16
+00:00:54,870 --> 00:01:01,320
+interesting about us that I come from
+
+17
+00:00:58,190 --> 00:01:04,409
+competitive programming background so I
+
+18
+00:01:01,320 --> 00:01:09,000
+managed to pull together stellar team
+
+19
+00:01:04,409 --> 00:01:11,010
+who was working on graphs and big data
+
+20
+00:01:09,000 --> 00:01:13,530
+applications and Facebook Google
+
+21
+00:01:11,010 --> 00:01:15,899
+companies like that and we wanted to
+
+22
+00:01:13,530 --> 00:01:19,320
+enable what those companies have been
+
+23
+00:01:15,899 --> 00:01:22,229
+doing for a number of years for every
+
+24
+00:01:19,320 --> 00:01:25,649
+fortune 500 enterprise and beyond of
+
+25
+00:01:22,229 --> 00:01:28,350
+course so we have people from the
+
+26
+00:01:25,649 --> 00:01:31,500
+informatics Olympiad code for stuff like
+
+27
+00:01:28,350 --> 00:01:35,490
+that right now we're mostly engineering
+
+28
+00:01:31,500 --> 00:01:39,179
+more than 75% and were based in two
+
+29
+00:01:35,490 --> 00:01:43,590
+places London and Zagreb Croatia were
+
+30
+00:01:39,179 --> 00:01:46,020
+venture-backed and yeah that's more
+
+31
+00:01:43,590 --> 00:01:48,749
+about us so when I say the next
+
+32
+00:01:46,020 --> 00:01:51,060
+generation of intelligent applications
+
+33
+00:01:48,749 --> 00:01:55,409
+so what do I mean so I wanted to go
+
+34
+00:01:51,060 --> 00:02:00,659
+through more of a history on databases
+
+35
+00:01:55,409 --> 00:02:03,450
+real quick so big data going from single
+
+36
+00:02:00,659 --> 00:02:07,319
+machine sequel to no sequel how no
+
+37
+00:02:03,450 --> 00:02:09,810
+sequel was born to scale when sequel
+
+38
+00:02:07,319 --> 00:02:11,280
+databases were dying under pressure and
+
+39
+00:02:09,810 --> 00:02:15,790
+that innovations current was later
+
+40
+00:02:11,280 --> 00:02:19,280
+brought back to sequel then we with the
+
+41
+00:02:15,790 --> 00:02:23,959
+occurrence of in-memory computing and
+
+42
+00:02:19,280 --> 00:02:26,900
+the GPUs and stuff like that we got the
+
+43
+00:02:23,959 --> 00:02:29,870
+real-time aspect of graph database of
+
+44
+00:02:26,900 --> 00:02:33,230
+databases in general we got key value
+
+45
+00:02:29,870 --> 00:02:36,680
+stores we got hybrid transactional
+
+46
+00:02:33,230 --> 00:02:39,319
+processing and it's about time that we
+
+47
+00:02:36,680 --> 00:02:43,340
+start leveraging more complex data
+
+48
+00:02:39,319 --> 00:02:46,909
+models which can better model all the
+
+49
+00:02:43,340 --> 00:02:49,900
+things happening today in the world and
+
+50
+00:02:46,909 --> 00:02:52,879
+bring the two pillars from before so
+
+51
+00:02:49,900 --> 00:02:56,599
+performance at scale and bringing real
+
+52
+00:02:52,879 --> 00:02:59,840
+time at scale to complex data models as
+
+53
+00:02:56,599 --> 00:03:04,190
+graph and like one of the interesting
+
+54
+00:02:59,840 --> 00:03:06,290
+things for me at least personally the
+
+55
+00:03:04,190 --> 00:03:08,959
+chief scientists I know that you
+
+56
+00:03:06,290 --> 00:03:10,909
+scientists of in Sage who basically does
+
+57
+00:03:08,959 --> 00:03:13,459
+their graph stuff and I've been
+
+58
+00:03:10,909 --> 00:03:15,230
+following their research and their their
+
+59
+00:03:13,459 --> 00:03:19,040
+random walk graph convolutional network
+
+60
+00:03:15,230 --> 00:03:21,590
+is really state of the art research of
+
+61
+00:03:19,040 --> 00:03:23,989
+what you can do with graphs how you can
+
+62
+00:03:21,590 --> 00:03:27,440
+leverage graphs to amplify machine
+
+63
+00:03:23,989 --> 00:03:32,780
+learning a lot so that's where we are
+
+64
+00:03:27,440 --> 00:03:37,250
+currently going towards so the first
+
+65
+00:03:32,780 --> 00:03:40,519
+generation of graph databases were great
+
+66
+00:03:37,250 --> 00:03:43,250
+for complex data and simplicity but have
+
+67
+00:03:40,519 --> 00:03:45,319
+not deliver on the things that I
+
+68
+00:03:43,250 --> 00:03:48,680
+mentioned basically if you wanted to do
+
+69
+00:03:45,319 --> 00:03:50,419
+complex parallel analytics more than
+
+70
+00:03:48,680 --> 00:03:54,650
+three plus hops you would either weight
+
+71
+00:03:50,419 --> 00:03:57,709
+a lot of time some queries would time
+
+72
+00:03:54,650 --> 00:03:59,959
+out on you so they were really not built
+
+73
+00:03:57,709 --> 00:04:01,459
+especially if you are running a lot of
+
+74
+00:03:59,959 --> 00:04:06,639
+throughput a lot of putting a lot of
+
+75
+00:04:01,459 --> 00:04:08,840
+pressure on your databases concurrency
+
+76
+00:04:06,639 --> 00:04:12,590
+because of the inefficient locking and
+
+77
+00:04:08,840 --> 00:04:14,870
+stuff like that definitely most graph
+
+78
+00:04:12,590 --> 00:04:18,229
+databases either claim to scale and
+
+79
+00:04:14,870 --> 00:04:20,930
+doesn't or it just doesn't scale in the
+
+80
+00:04:18,229 --> 00:04:24,740
+right way like big platforms like
+
+81
+00:04:20,930 --> 00:04:28,330
+Facebook social graph so that's a big
+
+82
+00:04:24,740 --> 00:04:34,349
+thing stopping really big data in
+
+83
+00:04:28,330 --> 00:04:37,000
+graph applications and the thing is some
+
+84
+00:04:34,349 --> 00:04:39,340
+make trade-offs to be good and one
+
+85
+00:04:37,000 --> 00:04:41,979
+things really good at one things but
+
+86
+00:04:39,340 --> 00:04:44,800
+completely not able to do some other
+
+87
+00:04:41,979 --> 00:04:48,159
+things some other things so these are
+
+88
+00:04:44,800 --> 00:04:51,610
+kind of the things that we want to
+
+89
+00:04:48,159 --> 00:04:54,220
+address and for large scale machine
+
+90
+00:04:51,610 --> 00:04:57,789
+learning and analytics and graph powered
+
+91
+00:04:54,220 --> 00:05:00,509
+we're gonna need all of those things to
+
+92
+00:04:57,789 --> 00:05:04,180
+be very efficient on the database level
+
+93
+00:05:00,509 --> 00:05:06,219
+ok key design drivers when we first
+
+94
+00:05:04,180 --> 00:05:08,280
+started thinking about mem graph which
+
+95
+00:05:06,219 --> 00:05:12,430
+we the principles that we hold onto is
+
+96
+00:05:08,280 --> 00:05:15,879
+speed so it says in memory storage
+
+97
+00:05:12,430 --> 00:05:18,819
+engine but it's not really in memory
+
+98
+00:05:15,879 --> 00:05:21,009
+only so it's kind of a combination where
+
+99
+00:05:18,819 --> 00:05:23,259
+we take the in memory first approach so
+
+100
+00:05:21,009 --> 00:05:26,940
+bringing all the computations leveraging
+
+101
+00:05:23,259 --> 00:05:30,129
+lock free data structures leveraging
+
+102
+00:05:26,940 --> 00:05:32,469
+complex in the excess with lock free
+
+103
+00:05:30,129 --> 00:05:34,870
+skip lists and things that you can do
+
+104
+00:05:32,469 --> 00:05:36,870
+with modern Intel processors with the
+
+105
+00:05:34,870 --> 00:05:42,729
+same deep processing and stuff like that
+
+106
+00:05:36,870 --> 00:05:44,800
+and having basically a back-end for for
+
+107
+00:05:42,729 --> 00:05:48,430
+example like your ability and for colder
+
+108
+00:05:44,800 --> 00:05:51,190
+storage have disk-based storage but
+
+109
+00:05:48,430 --> 00:05:54,699
+support read and write heavy use cases
+
+110
+00:05:51,190 --> 00:05:58,139
+so low latency high throughput that's
+
+111
+00:05:54,699 --> 00:06:01,090
+the goal and do all that at scale so we
+
+112
+00:05:58,139 --> 00:06:03,419
+build that using our distributed storage
+
+113
+00:06:01,090 --> 00:06:07,509
+engine which is completely fully sharded
+
+114
+00:06:03,419 --> 00:06:11,919
+reads both reads and writes and the
+
+115
+00:06:07,509 --> 00:06:14,860
+trick is how do you shard the graph
+
+116
+00:06:11,919 --> 00:06:16,810
+the problem with graph is is it's a is
+
+117
+00:06:14,860 --> 00:06:19,330
+that it's a very complex structure so
+
+118
+00:06:16,810 --> 00:06:22,629
+it's very difficult to get an optimal
+
+119
+00:06:19,330 --> 00:06:24,219
+layout of graph across the machines so
+
+120
+00:06:22,629 --> 00:06:27,580
+what people usually do is just do random
+
+121
+00:06:24,219 --> 00:06:32,199
+hashing or they just use another data
+
+122
+00:06:27,580 --> 00:06:34,150
+store like Sandra like post grass like
+
+123
+00:06:32,199 --> 00:06:36,099
+other data stores which are not made to
+
+124
+00:06:34,150 --> 00:06:37,779
+be charted in a graph way and they try
+
+125
+00:06:36,099 --> 00:06:40,389
+to do graph things and build things on
+
+126
+00:06:37,779 --> 00:06:41,950
+top which usually works up to a certain
+
+127
+00:06:40,389 --> 00:06:45,190
+point then after that it come
+
+128
+00:06:41,950 --> 00:06:47,470
+lately doesn't work so the thing that we
+
+129
+00:06:45,190 --> 00:06:51,550
+do is basically built everything from
+
+130
+00:06:47,470 --> 00:06:54,190
+the glove round up in C++ which helps
+
+131
+00:06:51,550 --> 00:06:56,080
+with performance of course but the
+
+132
+00:06:54,190 --> 00:06:57,940
+things that makes our graph scale is our
+
+133
+00:06:56,080 --> 00:07:00,640
+dynamic graph partitioning algorithm
+
+134
+00:06:57,940 --> 00:07:01,840
+which very closely resembles what big
+
+135
+00:07:00,640 --> 00:07:03,940
+tech companies have been doing for a
+
+136
+00:07:01,840 --> 00:07:05,470
+while with the exception that big tech
+
+137
+00:07:03,940 --> 00:07:07,480
+companies usually have predictable
+
+138
+00:07:05,470 --> 00:07:11,320
+workloads like Facebook has their social
+
+139
+00:07:07,480 --> 00:07:13,780
+graph so we ended up doing is massively
+
+140
+00:07:11,320 --> 00:07:16,690
+extending that functionality of dynamic
+
+141
+00:07:13,780 --> 00:07:18,700
+graph partitioning which is at us node
+
+142
+00:07:16,690 --> 00:07:21,940
+level so for each node we can decide
+
+143
+00:07:18,700 --> 00:07:23,920
+which machine the node lives on we can
+
+144
+00:07:21,940 --> 00:07:28,000
+have multiple caches depending on if
+
+145
+00:07:23,920 --> 00:07:29,590
+your workload is more read heavy versus
+
+146
+00:07:28,000 --> 00:07:31,960
+write heavy because there's cache
+
+147
+00:07:29,590 --> 00:07:35,800
+invalidation in write heavy workloads
+
+148
+00:07:31,960 --> 00:07:37,240
+but you can also more efficiently
+
+149
+00:07:35,800 --> 00:07:39,700
+position the data if you know the
+
+150
+00:07:37,240 --> 00:07:42,340
+statistics how it's going to be used so
+
+151
+00:07:39,700 --> 00:07:44,890
+we track all of the hotspots whenever we
+
+152
+00:07:42,340 --> 00:07:47,350
+need to across machines to getting data
+
+153
+00:07:44,890 --> 00:07:50,230
+we basically track what's happening and
+
+154
+00:07:47,350 --> 00:07:53,650
+our algorithm is using a combination of
+
+155
+00:07:50,230 --> 00:07:58,120
+strategies to overtime minimize the
+
+156
+00:07:53,650 --> 00:07:59,410
+latency of of the graph one simplest
+
+157
+00:07:58,120 --> 00:08:01,450
+thing that you can do that's very easy
+
+158
+00:07:59,410 --> 00:08:02,800
+to explain about graph then in graph
+
+159
+00:08:01,450 --> 00:08:05,230
+partitioning is basically if you have
+
+160
+00:08:02,800 --> 00:08:06,940
+two machines have one node which is on
+
+161
+00:08:05,230 --> 00:08:08,590
+one machine and has one relationship on
+
+162
+00:08:06,940 --> 00:08:11,320
+the same machine and five relationships
+
+163
+00:08:08,590 --> 00:08:13,030
+spanning to the other machine in most
+
+164
+00:08:11,320 --> 00:08:15,130
+cases it makes sense to move that node
+
+165
+00:08:13,030 --> 00:08:17,800
+to another machine because it's more
+
+166
+00:08:15,130 --> 00:08:20,580
+probably going to be hit by those five
+
+167
+00:08:17,800 --> 00:08:22,810
+other relationships then have this one
+
+168
+00:08:20,580 --> 00:08:25,540
+being on the same machine so you're
+
+169
+00:08:22,810 --> 00:08:27,280
+basically from having five relations to
+
+170
+00:08:25,540 --> 00:08:30,460
+the go to another machine you have
+
+171
+00:08:27,280 --> 00:08:32,229
+reduced by four so you have only one
+
+172
+00:08:30,460 --> 00:08:35,320
+relationship going back if you move the
+
+173
+00:08:32,229 --> 00:08:37,630
+node and if you do that efficient like
+
+174
+00:08:35,320 --> 00:08:40,110
+enough times there are certain
+
+175
+00:08:37,630 --> 00:08:42,400
+algorithms that help with that as well
+
+176
+00:08:40,110 --> 00:08:45,910
+in general it's an np-hard and
+
+177
+00:08:42,400 --> 00:08:50,230
+np-complete problem which which is uh
+
+178
+00:08:45,910 --> 00:08:51,910
+difficult to solve deterministically but
+
+179
+00:08:50,230 --> 00:08:54,130
+you can always make a pretty good
+
+180
+00:08:51,910 --> 00:08:54,630
+approximation in a very low amount of
+
+181
+00:08:54,130 --> 00:08:57,630
+time
+
+182
+00:08:54,630 --> 00:08:59,940
+so depending on how much background time
+
+183
+00:08:57,630 --> 00:09:03,029
+you have mem graph will basically
+
+184
+00:08:59,940 --> 00:09:06,300
+compute the optimal layout and the more
+
+185
+00:09:03,029 --> 00:09:08,399
+the less load is there in the database
+
+186
+00:09:06,300 --> 00:09:10,589
+in the times when you have less load
+
+187
+00:09:08,399 --> 00:09:13,170
+remember F will just start computing and
+
+188
+00:09:10,589 --> 00:09:15,420
+figuring stuff so that your next batch
+
+189
+00:09:13,170 --> 00:09:21,089
+of very high load on the database is
+
+190
+00:09:15,420 --> 00:09:22,699
+much faster and the third key design
+
+191
+00:09:21,089 --> 00:09:25,680
+driver I spoke too much about scale
+
+192
+00:09:22,699 --> 00:09:29,690
+third biggest design driver simplicity
+
+193
+00:09:25,680 --> 00:09:32,089
+so basically we want to be able to
+
+194
+00:09:29,690 --> 00:09:35,100
+connect with industry standard
+
+195
+00:09:32,089 --> 00:09:37,230
+integrations so right now we support the
+
+196
+00:09:35,100 --> 00:09:40,350
+open cipher and bolt protocol which
+
+197
+00:09:37,230 --> 00:09:43,740
+makes us compatible with every database
+
+198
+00:09:40,350 --> 00:09:45,360
+that use a cipher right now and it's
+
+199
+00:09:43,740 --> 00:09:46,709
+been a growing standard for us that's
+
+200
+00:09:45,360 --> 00:09:50,839
+pretty good because open cipher is
+
+201
+00:09:46,709 --> 00:09:53,970
+declarative so we can leverage our own
+
+202
+00:09:50,839 --> 00:09:56,250
+algorithms below because you you tell it
+
+203
+00:09:53,970 --> 00:09:58,050
+what you want to get and we paralyze the
+
+204
+00:09:56,250 --> 00:10:00,569
+entire execution so user doesn't have to
+
+205
+00:09:58,050 --> 00:10:03,959
+do deal with any of the parallelism or
+
+206
+00:10:00,569 --> 00:10:06,660
+any of the inherent stuff behind very
+
+207
+00:10:03,959 --> 00:10:08,579
+promising now gremlin is working on
+
+208
+00:10:06,660 --> 00:10:10,860
+their gremlin byte code so we will be
+
+209
+00:10:08,579 --> 00:10:12,630
+able to build a virtual machine to
+
+210
+00:10:10,860 --> 00:10:15,810
+support that as well in the future so
+
+211
+00:10:12,630 --> 00:10:17,759
+we're kind of happy about that but like
+
+212
+00:10:15,810 --> 00:10:19,620
+previously it was very difficult to
+
+213
+00:10:17,759 --> 00:10:24,540
+connect tinker pup which is very java
+
+214
+00:10:19,620 --> 00:10:26,279
+based with our c++ interface so it's you
+
+215
+00:10:24,540 --> 00:10:28,139
+lose a lot of performance and you don't
+
+216
+00:10:26,279 --> 00:10:30,870
+see a lot of the gains that you might
+
+217
+00:10:28,139 --> 00:10:34,740
+see from using high-performance graph
+
+218
+00:10:30,870 --> 00:10:38,339
+database i wanted to walk you through
+
+219
+00:10:34,740 --> 00:10:42,269
+the architecture of of time graph one
+
+220
+00:10:38,339 --> 00:10:44,160
+interesting thing is that we very often
+
+221
+00:10:42,269 --> 00:10:46,949
+need to plug in into enterprise existing
+
+222
+00:10:44,160 --> 00:10:48,540
+enterprise architectures so we have
+
+223
+00:10:46,949 --> 00:10:51,500
+built this concept of called graph
+
+224
+00:10:48,540 --> 00:10:55,339
+streams which is a custom ETL concept
+
+225
+00:10:51,500 --> 00:10:58,620
+where you can pick your extract you can
+
+226
+00:10:55,339 --> 00:11:01,589
+use Kafka use import from the file
+
+227
+00:10:58,620 --> 00:11:04,110
+system from s3 HDFS we're building more
+
+228
+00:11:01,589 --> 00:11:06,850
+and more connectors every day and then
+
+229
+00:11:04,110 --> 00:11:08,470
+what you need to supply is for every
+
+230
+00:11:06,850 --> 00:11:11,529
+that comes in for example through Kafka
+
+231
+00:11:08,470 --> 00:11:14,019
+if you choose Kafka your Python script
+
+232
+00:11:11,529 --> 00:11:16,720
+basically takes the message it comes in
+
+233
+00:11:14,019 --> 00:11:19,329
+and parses the message and figures out
+
+234
+00:11:16,720 --> 00:11:22,120
+what query should be executed at the
+
+235
+00:11:19,329 --> 00:11:23,889
+database level so I don't know a
+
+236
+00:11:22,120 --> 00:11:25,930
+transaction comes in you're a bank you
+
+237
+00:11:23,889 --> 00:11:28,870
+want to map the transaction between two
+
+238
+00:11:25,930 --> 00:11:30,610
+bank accounts what you will do is read
+
+239
+00:11:28,870 --> 00:11:32,860
+the properties of this transaction from
+
+240
+00:11:30,610 --> 00:11:34,930
+this to this and you will create a query
+
+241
+00:11:32,860 --> 00:11:37,509
+that basically creates a relationship
+
+242
+00:11:34,930 --> 00:11:39,639
+between two accounts with all of the
+
+243
+00:11:37,509 --> 00:11:42,910
+transaction details or something similar
+
+244
+00:11:39,639 --> 00:11:44,709
+so the thing is you take raw data and
+
+245
+00:11:42,910 --> 00:11:46,839
+output queries and what members gonna
+
+246
+00:11:44,709 --> 00:11:49,149
+take care of is efficient loading so a
+
+247
+00:11:46,839 --> 00:11:54,220
+member of is gonna figure out how our
+
+248
+00:11:49,149 --> 00:11:57,490
+data is gonna be batched into executing
+
+249
+00:11:54,220 --> 00:12:00,519
+into a graph you can always configure a
+
+250
+00:11:57,490 --> 00:12:02,470
+lot of stuff with that but the thing is
+
+251
+00:12:00,519 --> 00:12:04,540
+members going to sample memory ones
+
+252
+00:12:02,470 --> 00:12:07,290
+figure out the optimal layout and do
+
+253
+00:12:04,540 --> 00:12:09,519
+whatever it can to give you a reasonable
+
+254
+00:12:07,290 --> 00:12:11,829
+default and give you good performance
+
+255
+00:12:09,519 --> 00:12:13,480
+right now that's somewhere around if
+
+256
+00:12:11,829 --> 00:12:16,509
+you're just creating a note just doing
+
+257
+00:12:13,480 --> 00:12:20,980
+simple stuff it's around 70,000 queries
+
+258
+00:12:16,509 --> 00:12:23,139
+per second per thread on each machine so
+
+259
+00:12:20,980 --> 00:12:25,329
+it's quite a capable system floating
+
+260
+00:12:23,139 --> 00:12:28,180
+data just make sure you have enough RAM
+
+261
+00:12:25,329 --> 00:12:31,930
+to fit all of those in and it's very
+
+262
+00:12:28,180 --> 00:12:34,000
+easy to use so that query could have
+
+263
+00:12:31,930 --> 00:12:36,540
+been formatted a little better but you
+
+264
+00:12:34,000 --> 00:12:39,850
+get the point you just create a stream
+
+265
+00:12:36,540 --> 00:12:43,630
+from some topic and then you use a
+
+266
+00:12:39,850 --> 00:12:46,540
+transformation to do that I've talked
+
+267
+00:12:43,630 --> 00:12:49,449
+about no level dynamic partitioning so
+
+268
+00:12:46,540 --> 00:12:51,720
+I'm gonna skip that here but basically
+
+269
+00:12:49,449 --> 00:12:54,160
+our in-memory first
+
+270
+00:12:51,720 --> 00:12:56,769
+architecture enables us to leverage
+
+271
+00:12:54,160 --> 00:12:58,660
+atomic instructions from Intel
+
+272
+00:12:56,769 --> 00:13:01,810
+processors and a lot of the sim D
+
+273
+00:12:58,660 --> 00:13:04,269
+parallelism so we were able to more
+
+274
+00:13:01,810 --> 00:13:06,819
+efficiently pack things for faster
+
+275
+00:13:04,269 --> 00:13:08,500
+execution with the trade-off of using
+
+276
+00:13:06,819 --> 00:13:11,800
+more memory of course you get memory
+
+277
+00:13:08,500 --> 00:13:15,550
+overhead but that's something that we're
+
+278
+00:13:11,800 --> 00:13:18,279
+always working on to improve we a lot of
+
+279
+00:13:15,550 --> 00:13:19,330
+people ask us does that mean you lose
+
+280
+00:13:18,279 --> 00:13:22,149
+data when you
+
+281
+00:13:19,330 --> 00:13:24,029
+turn off the system no you don't we have
+
+282
+00:13:22,149 --> 00:13:26,589
+fooled your ability disks so we do
+
+283
+00:13:24,029 --> 00:13:28,750
+snapshots periodic so you can you can
+
+284
+00:13:26,589 --> 00:13:31,209
+specify the period but there's a
+
+285
+00:13:28,750 --> 00:13:32,769
+reasonable default specified already and
+
+286
+00:13:31,209 --> 00:13:34,180
+between snapshots we do write ahead
+
+287
+00:13:32,769 --> 00:13:37,149
+logging so anything that happened
+
+288
+00:13:34,180 --> 00:13:40,240
+between the two snapshots basically gets
+
+289
+00:13:37,149 --> 00:13:42,370
+recorded as well so if something breaks
+
+290
+00:13:40,240 --> 00:13:43,839
+the latest snapshot will below that
+
+291
+00:13:42,370 --> 00:13:45,579
+really fast and then it's gonna apply
+
+292
+00:13:43,839 --> 00:13:47,920
+every transaction that has happened
+
+293
+00:13:45,579 --> 00:13:52,470
+since that snapshot that's pretty common
+
+294
+00:13:47,920 --> 00:13:54,220
+database stuff what we can leverage is
+
+295
+00:13:52,470 --> 00:13:57,310
+because of the distributed architecture
+
+296
+00:13:54,220 --> 00:14:00,640
+is the massively parallel scale out so
+
+297
+00:13:57,310 --> 00:14:02,620
+for example if you do a massive expand
+
+298
+00:14:00,640 --> 00:14:04,990
+query from hundreds of thousands of
+
+299
+00:14:02,620 --> 00:14:06,940
+nodes we can do all of that in parallel
+
+300
+00:14:04,990 --> 00:14:10,360
+so in parallel across the machines and
+
+301
+00:14:06,940 --> 00:14:13,480
+on every machine across different coarse
+
+302
+00:14:10,360 --> 00:14:18,220
+threads whatever the things you use so
+
+303
+00:14:13,480 --> 00:14:20,350
+you can you can if your analytics is
+
+304
+00:14:18,220 --> 00:14:22,329
+basically if you have a lot of data and
+
+305
+00:14:20,350 --> 00:14:25,000
+your analytics is very parallelizable
+
+306
+00:14:22,329 --> 00:14:28,450
+that's gonna give you great benefits
+
+307
+00:14:25,000 --> 00:14:30,940
+compared to other systems that don't
+
+308
+00:14:28,450 --> 00:14:33,100
+support that and of course you can query
+
+309
+00:14:30,940 --> 00:14:36,640
+each of these instances instances
+
+310
+00:14:33,100 --> 00:14:39,339
+separately so it's kind of a multi multi
+
+311
+00:14:36,640 --> 00:14:41,560
+master architecture from the outside so
+
+312
+00:14:39,339 --> 00:14:47,140
+you don't know anything you just you
+
+313
+00:14:41,560 --> 00:14:50,320
+just ask an instance to basically finish
+
+314
+00:14:47,140 --> 00:14:51,760
+some query for you and internally they
+
+315
+00:14:50,320 --> 00:14:53,920
+are gonna choose a master between
+
+316
+00:14:51,760 --> 00:14:55,930
+themselves for the purposes of
+
+317
+00:14:53,920 --> 00:14:57,550
+transaction engine so every transaction
+
+318
+00:14:55,930 --> 00:15:00,970
+is gonna have there's gonna be one
+
+319
+00:14:57,550 --> 00:15:03,250
+single store so while you do get right
+
+320
+00:15:00,970 --> 00:15:05,620
+scalability your parallel writing to
+
+321
+00:15:03,250 --> 00:15:08,220
+multiple machines there's a small simple
+
+322
+00:15:05,620 --> 00:15:11,079
+step that you need to do like one
+
+323
+00:15:08,220 --> 00:15:13,870
+network transfer for it to actually
+
+324
+00:15:11,079 --> 00:15:18,480
+commit into the joint state and then
+
+325
+00:15:13,870 --> 00:15:21,220
+your transaction is fully committed and
+
+326
+00:15:18,480 --> 00:15:29,649
+that's where the asset transactions come
+
+327
+00:15:21,220 --> 00:15:32,030
+in we're asked compliant so we do we do
+
+328
+00:15:29,649 --> 00:15:35,390
+snapshot level isolation which is much
+
+329
+00:15:32,030 --> 00:15:39,410
+better than most of the graph databases
+
+330
+00:15:35,390 --> 00:15:43,820
+out there and we still do it at scale so
+
+331
+00:15:39,410 --> 00:15:45,710
+that's basically achieve as I mentioned
+
+332
+00:15:43,820 --> 00:15:47,510
+open cipher query language so far and
+
+333
+00:15:45,710 --> 00:15:51,530
+we've been pretty well at optimizing
+
+334
+00:15:47,510 --> 00:15:54,860
+that for distributed our developers do
+
+335
+00:15:51,530 --> 00:15:58,460
+love craft beer so that was the first
+
+336
+00:15:54,860 --> 00:15:59,900
+example that came to my mind all queries
+
+337
+00:15:58,460 --> 00:16:03,650
+are executed in a distributed fashion
+
+338
+00:15:59,900 --> 00:16:05,300
+and if you call the explain or profile
+
+339
+00:16:03,650 --> 00:16:07,520
+comments of each query you're going to
+
+340
+00:16:05,300 --> 00:16:09,320
+basically see which parts are executed
+
+341
+00:16:07,520 --> 00:16:10,850
+tributed which parts require
+
+342
+00:16:09,320 --> 00:16:14,090
+communication and stuff like that so you
+
+343
+00:16:10,850 --> 00:16:16,130
+can really explore how the planner is
+
+344
+00:16:14,090 --> 00:16:18,140
+basically planning the query it's a
+
+345
+00:16:16,130 --> 00:16:21,260
+cost-based planner that takes a lot of
+
+346
+00:16:18,140 --> 00:16:23,710
+statistics into consideration but we're
+
+347
+00:16:21,260 --> 00:16:26,990
+working on also you being able to
+
+348
+00:16:23,710 --> 00:16:29,660
+override some things and make it to do
+
+349
+00:16:26,990 --> 00:16:32,900
+some something else if you know that you
+
+350
+00:16:29,660 --> 00:16:34,580
+have some special case but so far it's
+
+351
+00:16:32,900 --> 00:16:37,670
+been it gives you a reasonable default
+
+352
+00:16:34,580 --> 00:16:41,170
+out of the box and I just put here this
+
+353
+00:16:37,670 --> 00:16:43,360
+here so that you can see that we have
+
+354
+00:16:41,170 --> 00:16:46,250
+over because we're over the bolt
+
+355
+00:16:43,360 --> 00:16:50,560
+protocol for you that doesn't don't know
+
+356
+00:16:46,250 --> 00:16:54,220
+that but you can use all of the existing
+
+357
+00:16:50,560 --> 00:16:57,740
+tools and integrations
+
+358
+00:16:54,220 --> 00:16:59,480
+on the market most of them open source
+
+359
+00:16:57,740 --> 00:17:04,040
+there's bindings for like 20 languages
+
+360
+00:16:59,480 --> 00:17:06,020
+there's also our bindings which need a
+
+361
+00:17:04,040 --> 00:17:09,650
+little bit more work to set up because
+
+362
+00:17:06,020 --> 00:17:12,530
+they're inherently C++ built with a
+
+363
+00:17:09,650 --> 00:17:15,890
+non-blocking network for very high
+
+364
+00:17:12,530 --> 00:17:18,950
+performance and then there's Python and
+
+365
+00:17:15,890 --> 00:17:21,410
+other programming languages interfaces
+
+366
+00:17:18,950 --> 00:17:23,210
+on top so you can use those as well to
+
+367
+00:17:21,410 --> 00:17:27,350
+get even more performance out of your
+
+368
+00:17:23,210 --> 00:17:29,690
+database and one of the new things that
+
+369
+00:17:27,350 --> 00:17:30,410
+we're working on is as I mentioned is
+
+370
+00:17:29,690 --> 00:17:34,490
+machine learning
+
+371
+00:17:30,410 --> 00:17:36,950
+integration with tensorflow for
+
+372
+00:17:34,490 --> 00:17:38,960
+generating the features for example
+
+373
+00:17:36,950 --> 00:17:41,510
+inside the database so you're inside the
+
+374
+00:17:38,960 --> 00:17:43,730
+database you match a subgraph massively
+
+375
+00:17:41,510 --> 00:17:45,650
+parallel processing matcher subgraph
+
+376
+00:17:43,730 --> 00:17:47,390
+compute the features
+
+377
+00:17:45,650 --> 00:17:50,060
+push into your tensor flow during
+
+378
+00:17:47,390 --> 00:17:51,830
+learning and then during production you
+
+379
+00:17:50,060 --> 00:17:54,040
+can set up database triggers for example
+
+380
+00:17:51,830 --> 00:17:57,170
+whenever a certain type of node comes in
+
+381
+00:17:54,040 --> 00:17:59,990
+you push it to tensor flow times flow
+
+382
+00:17:57,170 --> 00:18:02,150
+computes whatever properties he was
+
+383
+00:17:59,990 --> 00:18:05,030
+trying to compute and it pushes those
+
+384
+00:18:02,150 --> 00:18:08,390
+back into the database you can basically
+
+385
+00:18:05,030 --> 00:18:11,330
+store those on the node and it basically
+
+386
+00:18:08,390 --> 00:18:12,650
+gives you a more elegant framework for
+
+387
+00:18:11,330 --> 00:18:14,180
+dealing with graph machine learning
+
+388
+00:18:12,650 --> 00:18:16,700
+otherwise you would have to export all
+
+389
+00:18:14,180 --> 00:18:19,250
+of your graft and train and then do some
+
+390
+00:18:16,700 --> 00:18:21,650
+custom application logic in order to
+
+391
+00:18:19,250 --> 00:18:26,030
+wire all those things up well here they
+
+392
+00:18:21,650 --> 00:18:28,460
+can do out-of-the-box complex traversals
+
+393
+00:18:26,030 --> 00:18:30,740
+right now we also support in in addition
+
+394
+00:18:28,460 --> 00:18:32,900
+to open cipher we extended it to provide
+
+395
+00:18:30,740 --> 00:18:34,970
+breadth-first search instead of the
+
+396
+00:18:32,900 --> 00:18:37,400
+default depth-first search as well so
+
+397
+00:18:34,970 --> 00:18:39,800
+you can choose one of both and we're
+
+398
+00:18:37,400 --> 00:18:41,330
+gonna also shortest path weighted
+
+399
+00:18:39,800 --> 00:18:44,060
+shortest path and a bunch of other
+
+400
+00:18:41,330 --> 00:18:47,900
+algorithms available we're gonna build
+
+401
+00:18:44,060 --> 00:18:49,490
+more and more algorithms right now where
+
+402
+00:18:47,900 --> 00:18:52,040
+we've been focused on graph search but
+
+403
+00:18:49,490 --> 00:18:55,760
+we're gonna expand to graph processing
+
+404
+00:18:52,040 --> 00:18:57,890
+and graph analytics as our platform is
+
+405
+00:18:55,760 --> 00:19:02,390
+more more mature we can do more things
+
+406
+00:18:57,890 --> 00:19:04,430
+with it and also enable custom Python to
+
+407
+00:19:02,390 --> 00:19:06,500
+be run directly on the graph so that's
+
+408
+00:19:04,430 --> 00:19:08,600
+gonna be also exciting for a lot of data
+
+409
+00:19:06,500 --> 00:19:13,310
+scientists who use Python in their
+
+410
+00:19:08,600 --> 00:19:17,000
+day-to-day work we're based in London we
+
+411
+00:19:13,310 --> 00:19:19,700
+work with a lot of banks so this is kind
+
+412
+00:19:17,000 --> 00:19:21,860
+of mandatory it's not cool
+
+413
+00:19:19,700 --> 00:19:24,290
+like all of the other features that's
+
+414
+00:19:21,860 --> 00:19:26,810
+it's not exciting but this is something
+
+415
+00:19:24,290 --> 00:19:29,180
+that gives you confidence into your data
+
+416
+00:19:26,810 --> 00:19:31,360
+security with all of your basic
+
+417
+00:19:29,180 --> 00:19:33,890
+authentication Enterprise LDAP Kerberos
+
+418
+00:19:31,360 --> 00:19:36,620
+fine grace schema based and that
+
+419
+00:19:33,890 --> 00:19:40,520
+database access control encryption
+
+420
+00:19:36,620 --> 00:19:42,740
+reduction for clients and festivities
+
+421
+00:19:40,520 --> 00:19:45,580
+auditing if you need that that's
+
+422
+00:19:42,740 --> 00:19:49,220
+available in our enterprise platform
+
+423
+00:19:45,580 --> 00:19:54,470
+deploy on anything
+
+424
+00:19:49,220 --> 00:19:56,810
+we're linux based on docker so you can
+
+425
+00:19:54,470 --> 00:19:57,580
+you can run it inside kubernetes some of
+
+426
+00:19:56,810 --> 00:19:59,409
+our customers one
+
+427
+00:19:57,580 --> 00:20:03,070
+the open shifts we have that there as
+
+428
+00:19:59,409 --> 00:20:06,549
+well and we need commodity instances so
+
+429
+00:20:03,070 --> 00:20:08,409
+into commodity hardware so standard
+
+430
+00:20:06,549 --> 00:20:12,369
+architecture that you can found find in
+
+431
+00:20:08,409 --> 00:20:14,950
+all of the cloud providers you just
+
+432
+00:20:12,369 --> 00:20:17,200
+wanted to quickly touch point with some
+
+433
+00:20:14,950 --> 00:20:20,169
+of the tools that we're working on so
+
+434
+00:20:17,200 --> 00:20:22,239
+this is gonna come in a week or two to
+
+435
+00:20:20,169 --> 00:20:25,960
+be publicly available we have a private
+
+436
+00:20:22,239 --> 00:20:27,789
+private alpha for that basically in a
+
+437
+00:20:25,960 --> 00:20:29,889
+developer tool which enables you to
+
+438
+00:20:27,789 --> 00:20:31,929
+import data model your graph schema
+
+439
+00:20:29,889 --> 00:20:34,269
+visualize the graph explore the graph
+
+440
+00:20:31,929 --> 00:20:37,529
+and what's really good is that we've
+
+441
+00:20:34,269 --> 00:20:40,299
+integrated all of these things to be
+
+442
+00:20:37,529 --> 00:20:42,129
+really helpful for the developer you can
+
+443
+00:20:40,299 --> 00:20:44,289
+also get your query performance you can
+
+444
+00:20:42,129 --> 00:20:48,220
+analyze your planning of the queries you
+
+445
+00:20:44,289 --> 00:20:49,389
+can tune how things look like we have to
+
+446
+00:20:48,220 --> 00:20:51,009
+build something other than a command
+
+447
+00:20:49,389 --> 00:20:53,259
+line because it's difficult to visualize
+
+448
+00:20:51,009 --> 00:20:55,239
+this and explore this in a command line
+
+449
+00:20:53,259 --> 00:20:59,309
+even though most server developers like
+
+450
+00:20:55,239 --> 00:21:03,100
+them and like Emacs and stuff like that
+
+451
+00:20:59,309 --> 00:21:05,320
+and of course the enterprise platform
+
+452
+00:21:03,100 --> 00:21:09,629
+has the ops management software which
+
+453
+00:21:05,320 --> 00:21:13,720
+basically is used to monitor performance
+
+454
+00:21:09,629 --> 00:21:19,210
+your basic database management logging
+
+455
+00:21:13,720 --> 00:21:24,429
+alerting that I'm great quickly on the
+
+456
+00:21:19,210 --> 00:21:26,139
+use cases Bank Bank bank scallops real
+
+457
+00:21:24,429 --> 00:21:28,269
+time fraud real time risk analytics
+
+458
+00:21:26,139 --> 00:21:30,639
+trading high performance and trading to
+
+459
+00:21:28,269 --> 00:21:32,769
+go together well so that's what we are
+
+460
+00:21:30,639 --> 00:21:35,889
+proud about anti money laundering
+
+461
+00:21:32,769 --> 00:21:38,320
+really deep large-scale graft reversals
+
+462
+00:21:35,889 --> 00:21:41,830
+the detecting cycles a lot of
+
+463
+00:21:38,320 --> 00:21:44,889
+interesting stuff customer 360 a bunch
+
+464
+00:21:41,830 --> 00:21:46,899
+of data that need to be gained instantly
+
+465
+00:21:44,889 --> 00:21:49,720
+when you need to deliver some other
+
+466
+00:21:46,899 --> 00:21:51,929
+product services or some other api's are
+
+467
+00:21:49,720 --> 00:21:56,009
+accessing the data about a certain user
+
+468
+00:21:51,929 --> 00:21:58,690
+so pretty good use cases for mem graph
+
+469
+00:21:56,009 --> 00:22:02,019
+we're doing a lot of integration
+
+470
+00:21:58,690 --> 00:22:05,230
+customer partnerships we like working
+
+471
+00:22:02,019 --> 00:22:07,119
+with folks that grow fillion which is
+
+472
+00:22:05,230 --> 00:22:10,450
+tom sitting here in the audience so you
+
+473
+00:22:07,119 --> 00:22:12,460
+can speak to Tom about running
+
+474
+00:22:10,450 --> 00:22:17,440
+really fast proof of concepts for graph
+
+475
+00:22:12,460 --> 00:22:19,950
+databases and thank you for hearing my
+
+476
+00:22:17,440 --> 00:22:22,780
+talk feel free to ask some questions
+
+477
+00:22:19,950 --> 00:22:24,280
+member of core is free you can go to
+
+478
+00:22:22,780 --> 00:22:26,680
+member that come search download it's a
+
+479
+00:22:24,280 --> 00:22:28,870
+single machine Edition right now we'll
+
+480
+00:22:26,680 --> 00:22:30,100
+see about later on what we can bring to
+
+481
+00:22:28,870 --> 00:22:32,260
+the community that you can download you
+
+482
+00:22:30,100 --> 00:22:33,460
+can play with it you'll get basically a
+
+483
+00:22:32,260 --> 00:22:34,960
+lot of performance and Throop without a
+
+484
+00:22:33,460 --> 00:22:37,480
+single machine so you can get to feel
+
+485
+00:22:34,960 --> 00:22:41,680
+about the distributed performance as
+
+486
+00:22:37,480 --> 00:22:44,350
+well how it's going to scale and join
+
+487
+00:22:41,680 --> 00:22:45,880
+our select channel to ask us all of the
+
+488
+00:22:44,350 --> 00:22:48,850
+questions we have the entire engineering
+
+489
+00:22:45,880 --> 00:22:55,770
+team there whatever you need our here we
+
+490
+00:22:48,850 --> 00:23:01,060
+do tweet we really do want to tweet more
+
+491
+00:22:55,770 --> 00:23:02,680
+and our blog has some interesting posts
+
+492
+00:23:01,060 --> 00:23:04,120
+about members architecture and members
+
+493
+00:23:02,680 --> 00:23:06,130
+vision and we're gonna add more
+
+494
+00:23:04,120 --> 00:23:09,910
+developer focused content there so
+
+495
+00:23:06,130 --> 00:23:12,700
+follow us on our blog I'm Dominic once
+
+496
+00:23:09,910 --> 00:23:15,190
+again I do also have Twitter and you can
+
+497
+00:23:12,700 --> 00:23:17,890
+send me an email if you want to know
+
+498
+00:23:15,190 --> 00:23:19,150
+anything else and that's it and if we
+
+499
+00:23:17,890 --> 00:23:32,220
+feel free to ask questions now yeah
+
+500
+00:23:19,150 --> 00:23:32,220
+thank you one question
+
+501
+00:23:46,480 --> 00:23:51,340
+well it depends also for the two things
+
+502
+00:23:48,670 --> 00:23:54,400
+one is for snapshot we have a very
+
+503
+00:23:51,340 --> 00:23:56,380
+custom format which enables us to
+
+504
+00:23:54,400 --> 00:23:57,610
+quickly load and store it's basically as
+
+505
+00:23:56,380 --> 00:24:01,480
+efficiently as possible
+
+506
+00:23:57,610 --> 00:24:04,120
+and for other this base stuff we
+
+507
+00:24:01,480 --> 00:24:07,240
+actually interface with rocks DB at the
+
+508
+00:24:04,120 --> 00:24:10,000
+moment so rocks DB is basically storing
+
+509
+00:24:07,240 --> 00:24:13,090
+a bunch of the things that we need to
+
+510
+00:24:10,000 --> 00:24:14,770
+store in disk right now mostly its key
+
+511
+00:24:13,090 --> 00:24:17,140
+value property so if you want to offload
+
+512
+00:24:14,770 --> 00:24:20,560
+key value properties from a property
+
+513
+00:24:17,140 --> 00:24:22,150
+graph there are on each node to disk you
+
+514
+00:24:20,560 --> 00:24:23,530
+can do that so you can free up more
+
+515
+00:24:22,150 --> 00:24:26,030
+space
+
+516
+00:24:23,530 --> 00:24:29,030
+relationships and to get more efficient
+
+517
+00:24:26,030 --> 00:24:31,040
+traversals because traversals is what we
+
+518
+00:24:29,030 --> 00:24:32,600
+are about and it's all back to what
+
+519
+00:24:31,040 --> 00:24:35,960
+everything that's gets stored in disk
+
+520
+00:24:32,600 --> 00:24:37,850
+it's backed by high-performance cash in
+
+521
+00:24:35,960 --> 00:24:39,230
+memory which we consume we have some
+
+522
+00:24:37,850 --> 00:24:42,080
+cache predictions and what you're gonna
+
+523
+00:24:39,230 --> 00:24:44,930
+touch what you're gonna do so we have an
+
+524
+00:24:42,080 --> 00:24:47,530
+algorithm for affecting things from the
+
+525
+00:24:44,930 --> 00:24:50,240
+cache and loading things into cache so
+
+526
+00:24:47,530 --> 00:24:53,780
+the division is to get 90% of the
+
+527
+00:24:50,240 --> 00:25:31,130
+performance of in memory but save 80% of
+
+528
+00:24:53,780 --> 00:25:33,260
+the disk depending on what the pending
+
+529
+00:25:31,130 --> 00:25:35,240
+on what you need to do right if you're
+
+530
+00:25:33,260 --> 00:25:39,680
+if you're looking for full-text search
+
+531
+00:25:35,240 --> 00:25:41,390
+no we don't have it yet there's in the
+
+532
+00:25:39,680 --> 00:25:42,850
+future maybe yeah that's some of the
+
+533
+00:25:41,390 --> 00:25:46,070
+things that we're considering as well
+
+534
+00:25:42,850 --> 00:25:47,690
+but right now no you can if you want to
+
+535
+00:25:46,070 --> 00:25:50,540
+do fast searching on a certain data type
+
+536
+00:25:47,690 --> 00:25:53,570
+or you can create an index right now
+
+537
+00:25:50,540 --> 00:25:56,900
+indexes are very fast lock free skip
+
+538
+00:25:53,570 --> 00:26:00,830
+lists fast inserts fast deletes first
+
+539
+00:25:56,900 --> 00:26:02,720
+lookups in logarithmic time and what's
+
+540
+00:26:00,830 --> 00:26:04,160
+good about skip lists as a data
+
+541
+00:26:02,720 --> 00:26:05,870
+structure they don't need rebalancing
+
+542
+00:26:04,160 --> 00:26:07,760
+they're automatically balanced because
+
+543
+00:26:05,870 --> 00:26:10,130
+they're probabilistic or graph for
+
+544
+00:26:07,760 --> 00:26:11,870
+ballistic whole data structure so the
+
+545
+00:26:10,130 --> 00:26:14,150
+more data you have the better the
+
+546
+00:26:11,870 --> 00:26:16,460
+distribution is because probability in
+
+547
+00:26:14,150 --> 00:26:20,360
+infinity of some distribution gives you
+
+548
+00:26:16,460 --> 00:26:21,620
+an exact logarithmic scale so that's one
+
+549
+00:26:20,360 --> 00:26:23,330
+of the good things that you can do it
+
+550
+00:26:21,620 --> 00:26:25,730
+with member of so you can but it also
+
+551
+00:26:23,330 --> 00:26:28,460
+costs more memory of course if you want
+
+552
+00:26:25,730 --> 00:26:31,250
+to index all of your data so depending
+
+553
+00:26:28,460 --> 00:26:32,990
+on what you need to do but if you
+
+554
+00:26:31,250 --> 00:26:35,060
+haven't had if you don't have something
+
+555
+00:26:32,990 --> 00:26:36,470
+indexed if you want to do if you need to
+
+556
+00:26:35,060 --> 00:26:38,120
+do a full tables
+
+557
+00:26:36,470 --> 00:26:40,130
+well sequel calls it's full table scan
+
+558
+00:26:38,120 --> 00:26:42,740
+we gonna call it full graph scan if you
+
+559
+00:26:40,130 --> 00:26:44,810
+need to do a full graph scan the good
+
+560
+00:26:42,740 --> 00:26:46,820
+thing is even it's not if it's not
+
+561
+00:26:44,810 --> 00:26:49,760
+indexing it can leverage our massively
+
+562
+00:26:46,820 --> 00:26:52,280
+parallel processing architecture so you
+
+563
+00:26:49,760 --> 00:26:54,140
+can divide and conquer basically across
+
+564
+00:26:52,280 --> 00:26:56,450
+whatever the computational power you
+
+565
+00:26:54,140 --> 00:26:57,860
+have and it's gonna crunch it's kind of
+
+566
+00:26:56,450 --> 00:27:00,670
+merge and it's gonna return you the
+
+567
+00:26:57,860 --> 00:27:00,670
+results that you need
+
+568
+00:27:04,840 --> 00:27:11,279
+okay thank you for coming listening
+
+569
+00:27:07,760 --> 00:27:11,279
+[Applause]
+

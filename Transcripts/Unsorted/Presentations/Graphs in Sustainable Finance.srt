@@ -1,0 +1,3992 @@
+1
+00:00:00,160 --> 00:00:03,919
+welcome everyone um thanks for joining
+
+2
+00:00:03,280 --> 00:00:06,240
+the last
+
+3
+00:00:03,919 --> 00:00:07,279
+um talk of the day appreciate it's um
+
+4
+00:00:06,240 --> 00:00:09,599
+late in uh
+
+5
+00:00:07,279 --> 00:00:10,320
+mainland europe so thanks for uh hanging
+
+6
+00:00:09,599 --> 00:00:14,320
+on
+
+7
+00:00:10,320 --> 00:00:17,520
+um yeah i'm i'm james fair on
+
+8
+00:00:14,320 --> 00:00:20,640
+uh the co-founder of connected data
+
+9
+00:00:17,520 --> 00:00:24,480
+i co-founded the conference back in
+
+10
+00:00:20,640 --> 00:00:27,599
+2016 and it's been an immense
+
+11
+00:00:24,480 --> 00:00:28,320
+privilege to kind of work within the
+
+12
+00:00:27,599 --> 00:00:31,199
+community
+
+13
+00:00:28,320 --> 00:00:33,600
+and you know help contribute to you know
+
+14
+00:00:31,199 --> 00:00:36,160
+thriving community over the years and
+
+15
+00:00:33,600 --> 00:00:38,239
+hear many different kind of use cases on
+
+16
+00:00:36,160 --> 00:00:41,600
+how people are using graphs and
+
+17
+00:00:38,239 --> 00:00:42,640
+connected data so um so yeah myself and
+
+18
+00:00:41,600 --> 00:00:44,640
+george
+
+19
+00:00:42,640 --> 00:00:46,239
+were discussing around and perhaps
+
+20
+00:00:44,640 --> 00:00:48,640
+sharing a little bit around
+
+21
+00:00:46,239 --> 00:00:50,320
+what what we get up to as part of our
+
+22
+00:00:48,640 --> 00:00:51,840
+day jobs when we're when we're not
+
+23
+00:00:50,320 --> 00:00:55,199
+trying to um
+
+24
+00:00:51,840 --> 00:00:57,520
+organize um events so um so yeah
+
+25
+00:00:55,199 --> 00:00:58,320
+i thought i would share some information
+
+26
+00:00:57,520 --> 00:01:01,440
+about
+
+27
+00:00:58,320 --> 00:01:04,640
+um what what i get get up to with my um
+
+28
+00:01:01,440 --> 00:01:07,760
+consulting business uh neural alpha so
+
+29
+00:01:04,640 --> 00:01:09,200
+um so yeah here we're we're here to talk
+
+30
+00:01:07,760 --> 00:01:13,600
+about graphs
+
+31
+00:01:09,200 --> 00:01:15,920
+in uh sustainable finance so
+
+32
+00:01:13,600 --> 00:01:18,400
+maybe kick off with a bit of an
+
+33
+00:01:15,920 --> 00:01:21,840
+introduction
+
+34
+00:01:18,400 --> 00:01:26,080
+so um james fair
+
+35
+00:01:21,840 --> 00:01:28,720
+who am i it's a good question um uh
+
+36
+00:01:26,080 --> 00:01:30,479
+i've um i guess spent my career working
+
+37
+00:01:28,720 --> 00:01:33,920
+at kind of the intersection of
+
+38
+00:01:30,479 --> 00:01:37,439
+um data and finance so um spent
+
+39
+00:01:33,920 --> 00:01:40,079
+kind of 15 or 16 years uh working
+
+40
+00:01:37,439 --> 00:01:41,280
+uh both within the buy side of financial
+
+41
+00:01:40,079 --> 00:01:43,680
+services working
+
+42
+00:01:41,280 --> 00:01:44,640
+for um mutual fund managers and hedge
+
+43
+00:01:43,680 --> 00:01:46,799
+funds
+
+44
+00:01:44,640 --> 00:01:48,079
+um but also on the sell side so i'm
+
+45
+00:01:46,799 --> 00:01:50,320
+having worked for um
+
+46
+00:01:48,079 --> 00:01:54,320
+many of the world's largest kind of
+
+47
+00:01:50,320 --> 00:01:56,640
+retail banks and investment banks
+
+48
+00:01:54,320 --> 00:01:58,799
+started my career at a company called
+
+49
+00:01:56,640 --> 00:02:00,079
+reuters he then became thompson reuters
+
+50
+00:01:58,799 --> 00:02:03,119
+who then became
+
+51
+00:02:00,079 --> 00:02:04,560
+uh refinitive and then um spent quite a
+
+52
+00:02:03,119 --> 00:02:07,759
+long time
+
+53
+00:02:04,560 --> 00:02:08,879
+at man group where i was head of head of
+
+54
+00:02:07,759 --> 00:02:12,319
+data
+
+55
+00:02:08,879 --> 00:02:15,599
+um i guess how how did i get into
+
+56
+00:02:12,319 --> 00:02:18,879
+connected data it was probably around um
+
+57
+00:02:15,599 --> 00:02:21,040
+kind of 2010 i guess um
+
+58
+00:02:18,879 --> 00:02:22,000
+i probably took i guess a reasonably
+
+59
+00:02:21,040 --> 00:02:25,760
+conventional
+
+60
+00:02:22,000 --> 00:02:27,200
+route into this space um started kind of
+
+61
+00:02:25,760 --> 00:02:29,360
+getting getting interested in the
+
+62
+00:02:27,200 --> 00:02:32,400
+semantic web and um
+
+63
+00:02:29,360 --> 00:02:36,080
+got some exposure to fibo the
+
+64
+00:02:32,400 --> 00:02:38,480
+financial industry business ontology um
+
+65
+00:02:36,080 --> 00:02:39,280
+got really excited downloaded the
+
+66
+00:02:38,480 --> 00:02:41,760
+ontology
+
+67
+00:02:39,280 --> 00:02:42,640
+tried to load it into protege blew my
+
+68
+00:02:41,760 --> 00:02:44,800
+laptop up
+
+69
+00:02:42,640 --> 00:02:46,080
+and um that was probably what kind of
+
+70
+00:02:44,800 --> 00:02:50,959
+started
+
+71
+00:02:46,080 --> 00:02:54,400
+in a multi-year adventure for me um
+
+72
+00:02:50,959 --> 00:02:58,080
+so yeah so in terms of um neural alpha
+
+73
+00:02:54,400 --> 00:03:01,360
+uh we're a consulting business we're
+
+74
+00:02:58,080 --> 00:03:04,959
+around three years old now um
+
+75
+00:03:01,360 --> 00:03:07,280
+we have 14 staff including myself
+
+76
+00:03:04,959 --> 00:03:08,239
+uh under normal circumstances were based
+
+77
+00:03:07,280 --> 00:03:11,360
+in kennington
+
+78
+00:03:08,239 --> 00:03:13,040
+in in london um and we're um
+
+79
+00:03:11,360 --> 00:03:14,959
+you know i guess a kind of reasonably
+
+80
+00:03:13,040 --> 00:03:18,560
+diverse team of
+
+81
+00:03:14,959 --> 00:03:21,120
+data scientists data engineers
+
+82
+00:03:18,560 --> 00:03:24,159
+back-end developers front-end developers
+
+83
+00:03:21,120 --> 00:03:27,120
+data visualization developers
+
+84
+00:03:24,159 --> 00:03:28,560
+and what we specialize in is building
+
+85
+00:03:27,120 --> 00:03:30,840
+software
+
+86
+00:03:28,560 --> 00:03:32,000
+particularly software that leverages
+
+87
+00:03:30,840 --> 00:03:34,879
+graphs
+
+88
+00:03:32,000 --> 00:03:36,560
+and kind of network visualization
+
+89
+00:03:34,879 --> 00:03:38,640
+technologies
+
+90
+00:03:36,560 --> 00:03:39,920
+for the financial sector and
+
+91
+00:03:38,640 --> 00:03:42,400
+particularly the
+
+92
+00:03:39,920 --> 00:03:44,319
+sustainable investment side of the
+
+93
+00:03:42,400 --> 00:03:47,360
+financial sector
+
+94
+00:03:44,319 --> 00:03:50,080
+so we we do a lot of projects for um
+
+95
+00:03:47,360 --> 00:03:50,400
+both the financial industry um but also
+
+96
+00:03:50,080 --> 00:03:53,040
+for
+
+97
+00:03:50,400 --> 00:03:53,680
+um in the non-profit sectors we do a lot
+
+98
+00:03:53,040 --> 00:03:57,200
+of work
+
+99
+00:03:53,680 --> 00:03:59,200
+on um for ngos on projects such as
+
+100
+00:03:57,200 --> 00:04:01,040
+trace.earth which um
+
+101
+00:03:59,200 --> 00:04:02,640
+some of you may have heard me speak
+
+102
+00:04:01,040 --> 00:04:04,959
+about in the past
+
+103
+00:04:02,640 --> 00:04:06,159
+but also some other projects which i'll
+
+104
+00:04:04,959 --> 00:04:10,720
+touch on
+
+105
+00:04:06,159 --> 00:04:13,760
+a bit later in terms of our tech stack
+
+106
+00:04:10,720 --> 00:04:14,480
+we use all types of graphs so we do a
+
+107
+00:04:13,760 --> 00:04:17,040
+lot of work
+
+108
+00:04:14,480 --> 00:04:18,320
+both on the rdf side and the label
+
+109
+00:04:17,040 --> 00:04:20,320
+property graph
+
+110
+00:04:18,320 --> 00:04:21,919
+which i think george and others were
+
+111
+00:04:20,320 --> 00:04:24,080
+touching on earlier
+
+112
+00:04:21,919 --> 00:04:25,919
+but we also work with a lot of other
+
+113
+00:04:24,080 --> 00:04:26,960
+database technologies so we do a lot of
+
+114
+00:04:25,919 --> 00:04:30,320
+work with
+
+115
+00:04:26,960 --> 00:04:32,400
+nosql databases we
+
+116
+00:04:30,320 --> 00:04:34,880
+generally build all of our applications
+
+117
+00:04:32,400 --> 00:04:38,560
+in aws so we did a lot of work with
+
+118
+00:04:34,880 --> 00:04:41,840
+things like dynamodb for instance
+
+119
+00:04:38,560 --> 00:04:42,720
+most of our api development work is is
+
+120
+00:04:41,840 --> 00:04:46,400
+done using
+
+121
+00:04:42,720 --> 00:04:48,800
+uh using graphql um and we even
+
+122
+00:04:46,400 --> 00:04:49,919
+do some work with uh with relational
+
+123
+00:04:48,800 --> 00:04:52,720
+databases
+
+124
+00:04:49,919 --> 00:04:52,720
+um as well
+
+125
+00:04:53,600 --> 00:05:00,160
+okay so um i guess my
+
+126
+00:04:56,960 --> 00:05:01,039
+my talk being the final talk um with the
+
+127
+00:05:00,160 --> 00:05:03,759
+the last two
+
+128
+00:05:01,039 --> 00:05:04,479
+talks having been um i guess reasonably
+
+129
+00:05:03,759 --> 00:05:06,720
+technical
+
+130
+00:05:04,479 --> 00:05:08,320
+um i'll probably pitch this at a
+
+131
+00:05:06,720 --> 00:05:11,039
+reasonably high
+
+132
+00:05:08,320 --> 00:05:12,240
+um level um so i'm not going to be
+
+133
+00:05:11,039 --> 00:05:13,600
+getting into
+
+134
+00:05:12,240 --> 00:05:15,680
+too much of the details around the
+
+135
+00:05:13,600 --> 00:05:18,800
+differences between on ontologies and
+
+136
+00:05:15,680 --> 00:05:21,680
+uh knowledge graphs but um
+
+137
+00:05:18,800 --> 00:05:22,400
+this interpretation and often means many
+
+138
+00:05:21,680 --> 00:05:25,759
+things to
+
+139
+00:05:22,400 --> 00:05:27,759
+to many different people um so
+
+140
+00:05:25,759 --> 00:05:29,840
+yeah sustainable investing if you if you
+
+141
+00:05:27,759 --> 00:05:33,120
+google it you'll often end up with um
+
+142
+00:05:29,840 --> 00:05:36,320
+you know quite kind of um you know
+
+143
+00:05:33,120 --> 00:05:37,280
+rose tinted um images like this on on
+
+144
+00:05:36,320 --> 00:05:40,080
+google
+
+145
+00:05:37,280 --> 00:05:41,600
+um people have kind of notions of trees
+
+146
+00:05:40,080 --> 00:05:45,520
+growing out of money
+
+147
+00:05:41,600 --> 00:05:45,520
+which i guess there is some truth there
+
+148
+00:05:45,600 --> 00:05:49,199
+um so is it a new thing sustainable
+
+149
+00:05:48,479 --> 00:05:52,880
+investing
+
+150
+00:05:49,199 --> 00:05:55,360
+um not strictly speaking so um
+
+151
+00:05:52,880 --> 00:05:57,520
+it has its origins back in um actually
+
+152
+00:05:55,360 --> 00:06:00,160
+the 1750s with
+
+153
+00:05:57,520 --> 00:06:00,880
+things like the quaker movement um
+
+154
+00:06:00,160 --> 00:06:03,280
+shunning
+
+155
+00:06:00,880 --> 00:06:04,080
+um earning investment returns from
+
+156
+00:06:03,280 --> 00:06:07,440
+things like
+
+157
+00:06:04,080 --> 00:06:10,479
+um slavery um in in
+
+158
+00:06:07,440 --> 00:06:12,319
+more modern periods um we've
+
+159
+00:06:10,479 --> 00:06:14,319
+seen kind of different terms used to
+
+160
+00:06:12,319 --> 00:06:17,600
+describe sustainable investing
+
+161
+00:06:14,319 --> 00:06:18,800
+um sri investing was one term that kind
+
+162
+00:06:17,600 --> 00:06:21,600
+of came about
+
+163
+00:06:18,800 --> 00:06:23,680
+became very popular in the 90s um
+
+164
+00:06:21,600 --> 00:06:26,800
+socially responsible investing
+
+165
+00:06:23,680 --> 00:06:28,400
+that stands for which tended to be the
+
+166
+00:06:26,800 --> 00:06:30,560
+kind of start of
+
+167
+00:06:28,400 --> 00:06:32,880
+portfolio managers screening out of
+
+168
+00:06:30,560 --> 00:06:35,440
+their um investment universe
+
+169
+00:06:32,880 --> 00:06:36,880
+investments like tobacco and fossil
+
+170
+00:06:35,440 --> 00:06:40,000
+fuels
+
+171
+00:06:36,880 --> 00:06:40,800
+are also i guess you know investment
+
+172
+00:06:40,000 --> 00:06:42,560
+strategies
+
+173
+00:06:40,800 --> 00:06:44,800
+would be considered sustainable which
+
+174
+00:06:42,560 --> 00:06:47,120
+are very focused around
+
+175
+00:06:44,800 --> 00:06:48,080
+particularly the social end of
+
+176
+00:06:47,120 --> 00:06:50,960
+sustainability
+
+177
+00:06:48,080 --> 00:06:52,400
+so things like micro finance and impact
+
+178
+00:06:50,960 --> 00:06:54,639
+investing
+
+179
+00:06:52,400 --> 00:06:58,240
+where it's very focused on kind of
+
+180
+00:06:54,639 --> 00:07:01,680
+measuring outcomes positive outcomes
+
+181
+00:06:58,240 --> 00:07:04,080
+but probably sustainable investing is
+
+182
+00:07:01,680 --> 00:07:05,280
+the term it's most equated with at the
+
+183
+00:07:04,080 --> 00:07:10,160
+moment is
+
+184
+00:07:05,280 --> 00:07:13,280
+esg investing um so environmental
+
+185
+00:07:10,160 --> 00:07:15,440
+and governance investing
+
+186
+00:07:13,280 --> 00:07:16,960
+and this has really taken off a lot
+
+187
+00:07:15,440 --> 00:07:21,599
+within the last
+
+188
+00:07:16,960 --> 00:07:23,759
+kind of 10 to 15 years so currently esg
+
+189
+00:07:21,599 --> 00:07:25,039
+as a segment within the fund management
+
+190
+00:07:23,759 --> 00:07:27,520
+industry
+
+191
+00:07:25,039 --> 00:07:30,160
+is actually the fastest growing segment
+
+192
+00:07:27,520 --> 00:07:34,319
+of all segments so it's
+
+193
+00:07:30,160 --> 00:07:37,919
+grown um by uh the number of funds
+
+194
+00:07:34,319 --> 00:07:42,319
+um by 80 um since
+
+195
+00:07:37,919 --> 00:07:45,199
+2012 to over 1.8 trillion dollars
+
+196
+00:07:42,319 --> 00:07:46,639
+in assets um and a lot of that's been
+
+197
+00:07:45,199 --> 00:07:49,919
+driven by
+
+198
+00:07:46,639 --> 00:07:52,879
+a few trends um i guess one of them is
+
+199
+00:07:49,919 --> 00:07:53,919
+demographics so we're seeing a lot of
+
+200
+00:07:52,879 --> 00:07:56,319
+new millennial
+
+201
+00:07:53,919 --> 00:07:57,520
+investors um starting to save for the
+
+202
+00:07:56,319 --> 00:08:00,080
+first time
+
+203
+00:07:57,520 --> 00:08:00,560
+um they tend to have um kind of stronger
+
+204
+00:08:00,080 --> 00:08:02,560
+views
+
+205
+00:08:00,560 --> 00:08:03,680
+i guess as we see um you know on social
+
+206
+00:08:02,560 --> 00:08:07,280
+media and
+
+207
+00:08:03,680 --> 00:08:09,599
+in the news on um on ethical issues
+
+208
+00:08:07,280 --> 00:08:10,319
+um i guess another trend that's um
+
+209
+00:08:09,599 --> 00:08:13,759
+driven it
+
+210
+00:08:10,319 --> 00:08:15,919
+is the kind of view of systemic risk and
+
+211
+00:08:13,759 --> 00:08:17,039
+you know the risks that climate change
+
+212
+00:08:15,919 --> 00:08:20,160
+poses
+
+213
+00:08:17,039 --> 00:08:22,080
+um to the investment world um so we're
+
+214
+00:08:20,160 --> 00:08:23,840
+hearing a lot of
+
+215
+00:08:22,080 --> 00:08:26,400
+investors starting to talk about
+
+216
+00:08:23,840 --> 00:08:28,960
+concepts like stranded assets so
+
+217
+00:08:26,400 --> 00:08:31,120
+you know these assets such as coal mines
+
+218
+00:08:28,960 --> 00:08:32,959
+and other fossil fuel investments which
+
+219
+00:08:31,120 --> 00:08:35,200
+um you know will essentially become
+
+220
+00:08:32,959 --> 00:08:37,680
+worthless in the future because they
+
+221
+00:08:35,200 --> 00:08:38,839
+um they can't be can't be monetized
+
+222
+00:08:37,680 --> 00:08:42,080
+under any kind of
+
+223
+00:08:38,839 --> 00:08:44,880
+warming scenario
+
+224
+00:08:42,080 --> 00:08:47,040
+we've also seen things like
+
+225
+00:08:44,880 --> 00:08:50,160
+institutional investors begin to
+
+226
+00:08:47,040 --> 00:08:51,519
+stress test portfolios for um you know
+
+227
+00:08:50,160 --> 00:08:53,279
+how they'll perform under different
+
+228
+00:08:51,519 --> 00:08:55,600
+warming scenarios
+
+229
+00:08:53,279 --> 00:08:56,560
+and finding that you know often they
+
+230
+00:08:55,600 --> 00:08:59,519
+don't perform
+
+231
+00:08:56,560 --> 00:09:00,320
+um so yeah so these these are some of
+
+232
+00:08:59,519 --> 00:09:03,440
+the trends
+
+233
+00:09:00,320 --> 00:09:06,880
+which have really driven um
+
+234
+00:09:03,440 --> 00:09:10,560
+esg investing in recent years
+
+235
+00:09:06,880 --> 00:09:12,800
+i guess drilling into um some examples
+
+236
+00:09:10,560 --> 00:09:14,959
+of the the three kind of pillars of
+
+237
+00:09:12,800 --> 00:09:19,120
+sustainable investing um
+
+238
+00:09:14,959 --> 00:09:22,160
+uh kind of social uh side of esg
+
+239
+00:09:19,120 --> 00:09:23,760
+um tends to focus on issues such as for
+
+240
+00:09:22,160 --> 00:09:26,880
+instance the relationship between the
+
+241
+00:09:23,760 --> 00:09:30,480
+workforce and society
+
+242
+00:09:26,880 --> 00:09:34,959
+working conditions labour rights
+
+243
+00:09:30,480 --> 00:09:37,920
+diversity community relations
+
+244
+00:09:34,959 --> 00:09:39,440
+tends to be a very important one
+
+245
+00:09:37,920 --> 00:09:42,160
+governance
+
+246
+00:09:39,440 --> 00:09:44,160
+to the g tends to focus very much on
+
+247
+00:09:42,160 --> 00:09:46,399
+things like corporate governance
+
+248
+00:09:44,160 --> 00:09:48,800
+things like executive pay how companies
+
+249
+00:09:46,399 --> 00:09:51,920
+are legally structured
+
+250
+00:09:48,800 --> 00:09:53,200
+how transparent they are how much tax
+
+251
+00:09:51,920 --> 00:09:56,399
+they pay
+
+252
+00:09:53,200 --> 00:09:59,120
+and so on um i guess in this talk
+
+253
+00:09:56,399 --> 00:10:00,240
+i'll mainly focus more on the e um
+
+254
+00:09:59,120 --> 00:10:03,040
+mainly because that
+
+255
+00:10:00,240 --> 00:10:04,000
+has tended to be the area of sustainable
+
+256
+00:10:03,040 --> 00:10:07,279
+investing where we've
+
+257
+00:10:04,000 --> 00:10:10,560
+we've worked more um in applying graphs
+
+258
+00:10:07,279 --> 00:10:13,760
+um yeah
+
+259
+00:10:10,560 --> 00:10:16,079
+so um in terms of um
+
+260
+00:10:13,760 --> 00:10:16,959
+so i guess starting with you know
+
+261
+00:10:16,079 --> 00:10:20,240
+sustainable
+
+262
+00:10:16,959 --> 00:10:20,800
+investing um is partly about adding good
+
+263
+00:10:20,240 --> 00:10:23,680
+things
+
+264
+00:10:20,800 --> 00:10:26,000
+into portfolios so adding um you know
+
+265
+00:10:23,680 --> 00:10:27,760
+things like decarbonizing investments
+
+266
+00:10:26,000 --> 00:10:29,360
+into you know things like renewable
+
+267
+00:10:27,760 --> 00:10:32,560
+energy into
+
+268
+00:10:29,360 --> 00:10:34,880
+into portfolios it's also about
+
+269
+00:10:32,560 --> 00:10:36,560
+screening out bad things we talked about
+
+270
+00:10:34,880 --> 00:10:37,760
+positive screening you also have
+
+271
+00:10:36,560 --> 00:10:41,200
+negative
+
+272
+00:10:37,760 --> 00:10:44,160
+screenings so it's actually
+
+273
+00:10:41,200 --> 00:10:45,839
+harder than most people would think for
+
+274
+00:10:44,160 --> 00:10:47,440
+the financial community to be able to
+
+275
+00:10:45,839 --> 00:10:49,440
+try and exclude
+
+276
+00:10:47,440 --> 00:10:51,040
+um things from their investment
+
+277
+00:10:49,440 --> 00:10:54,240
+universes that they can
+
+278
+00:10:51,040 --> 00:10:55,760
+can look at so
+
+279
+00:10:54,240 --> 00:10:58,160
+you know a lot of the focus has gone
+
+280
+00:10:55,760 --> 00:11:00,800
+into trying to exclude
+
+281
+00:10:58,160 --> 00:11:02,000
+carbon intensive industries over the
+
+282
+00:11:00,800 --> 00:11:04,320
+years
+
+283
+00:11:02,000 --> 00:11:07,360
+how that's tended to play out is through
+
+284
+00:11:04,320 --> 00:11:10,160
+a kind of variety of ways
+
+285
+00:11:07,360 --> 00:11:11,920
+investment managers tend to develop
+
+286
+00:11:10,160 --> 00:11:14,320
+things called exclusion lists
+
+287
+00:11:11,920 --> 00:11:15,120
+so if you go and look at for instance
+
+288
+00:11:14,320 --> 00:11:17,600
+the norwegian
+
+289
+00:11:15,120 --> 00:11:19,680
+sovereign wealth fund they have an
+
+290
+00:11:17,600 --> 00:11:20,399
+exclusion less so a list of companies
+
+291
+00:11:19,680 --> 00:11:23,440
+that they
+
+292
+00:11:20,399 --> 00:11:24,000
+deem as you know um unethical to invest
+
+293
+00:11:23,440 --> 00:11:26,079
+in
+
+294
+00:11:24,000 --> 00:11:27,040
+and this spans things from you know
+
+295
+00:11:26,079 --> 00:11:30,320
+fossil fuels
+
+296
+00:11:27,040 --> 00:11:33,360
+to nuclear weapons to
+
+297
+00:11:30,320 --> 00:11:35,680
+land mines and cluster munitions um all
+
+298
+00:11:33,360 --> 00:11:37,279
+sorts of areas
+
+299
+00:11:35,680 --> 00:11:38,640
+i guess when when you're getting to the
+
+300
+00:11:37,279 --> 00:11:40,640
+point where an investment's been
+
+301
+00:11:38,640 --> 00:11:42,399
+excluded
+
+302
+00:11:40,640 --> 00:11:43,680
+there's usually been a few kind of
+
+303
+00:11:42,399 --> 00:11:45,680
+levers that managers
+
+304
+00:11:43,680 --> 00:11:46,959
+have tried to pull before they've got to
+
+305
+00:11:45,680 --> 00:11:50,639
+that point so
+
+306
+00:11:46,959 --> 00:11:51,839
+um engagement tends to be the first one
+
+307
+00:11:50,639 --> 00:11:54,959
+where
+
+308
+00:11:51,839 --> 00:11:55,200
+managers will look to engage companies
+
+309
+00:11:54,959 --> 00:11:57,360
+on
+
+310
+00:11:55,200 --> 00:11:59,680
+on particular issues they'll look at
+
+311
+00:11:57,360 --> 00:12:01,440
+whether companies have very strong
+
+312
+00:11:59,680 --> 00:12:04,320
+policies
+
+313
+00:12:01,440 --> 00:12:05,440
+on issues they're trying to work with
+
+314
+00:12:04,320 --> 00:12:08,480
+those companies
+
+315
+00:12:05,440 --> 00:12:10,639
+i guess the next stage tends to be
+
+316
+00:12:08,480 --> 00:12:11,839
+voting behaviour so they may choose to
+
+317
+00:12:10,639 --> 00:12:14,240
+vote against the
+
+318
+00:12:11,839 --> 00:12:15,680
+um the board or the company on
+
+319
+00:12:14,240 --> 00:12:17,360
+particular issues
+
+320
+00:12:15,680 --> 00:12:18,880
+um and then eventually if they find that
+
+321
+00:12:17,360 --> 00:12:21,279
+they're not um being
+
+322
+00:12:18,880 --> 00:12:21,920
+cooperative then many asset managers
+
+323
+00:12:21,279 --> 00:12:25,839
+will then
+
+324
+00:12:21,920 --> 00:12:27,680
+look to exclude these these companies
+
+325
+00:12:25,839 --> 00:12:29,120
+and as i said traditionally that's
+
+326
+00:12:27,680 --> 00:12:30,399
+tended to happen in things like the
+
+327
+00:12:29,120 --> 00:12:34,160
+nuclear weapons
+
+328
+00:12:30,399 --> 00:12:35,600
+space but it's increasingly moving on to
+
+329
+00:12:34,160 --> 00:12:38,560
+um to agriculture
+
+330
+00:12:35,600 --> 00:12:39,920
+and particularly deforestation which is
+
+331
+00:12:38,560 --> 00:12:42,720
+um
+
+332
+00:12:39,920 --> 00:12:44,160
+or deforestation associated with food
+
+333
+00:12:42,720 --> 00:12:46,959
+supply
+
+334
+00:12:44,160 --> 00:12:47,839
+chains which is one of the areas where
+
+335
+00:12:46,959 --> 00:12:51,440
+we
+
+336
+00:12:47,839 --> 00:12:56,240
+focus on a great deal
+
+337
+00:12:51,440 --> 00:12:56,240
+um so the deforestation
+
+338
+00:12:56,800 --> 00:13:02,320
+um traditionally
+
+339
+00:13:00,480 --> 00:13:05,040
+when people think of deforestation they
+
+340
+00:13:02,320 --> 00:13:08,079
+tend to think about
+
+341
+00:13:05,040 --> 00:13:09,279
+industries kind of directly using um you
+
+342
+00:13:08,079 --> 00:13:14,320
+know timber
+
+343
+00:13:09,279 --> 00:13:15,600
+um things like pulp and paper and
+
+344
+00:13:14,320 --> 00:13:18,959
+[Music]
+
+345
+00:13:15,600 --> 00:13:21,600
+timber lumber uh producing companies
+
+346
+00:13:18,959 --> 00:13:23,279
+um actually a lot of a lot of modern
+
+347
+00:13:21,600 --> 00:13:26,720
+deforestation is driven
+
+348
+00:13:23,279 --> 00:13:30,720
+by our um our eating habits um
+
+349
+00:13:26,720 --> 00:13:31,839
+effectively um so driven um mainly by uh
+
+350
+00:13:30,720 --> 00:13:35,200
+soft commodities
+
+351
+00:13:31,839 --> 00:13:37,519
+um so particularly things like beef
+
+352
+00:13:35,200 --> 00:13:39,279
+particularly in latin america in brazil
+
+353
+00:13:37,519 --> 00:13:41,160
+columbia and places is
+
+354
+00:13:39,279 --> 00:13:42,959
+actually the number one driver of
+
+355
+00:13:41,160 --> 00:13:46,079
+deforestation
+
+356
+00:13:42,959 --> 00:13:49,279
+um swiftly followed by soy
+
+357
+00:13:46,079 --> 00:13:50,160
+which is you know high protein um animal
+
+358
+00:13:49,279 --> 00:13:53,199
+feed
+
+359
+00:13:50,160 --> 00:13:54,959
+um and then there's a whole host of um
+
+360
+00:13:53,199 --> 00:13:56,880
+other commodities obviously palm oil
+
+361
+00:13:54,959 --> 00:13:59,360
+tends to be one that gets
+
+362
+00:13:56,880 --> 00:14:01,360
+a lot of press uh particularly in in
+
+363
+00:13:59,360 --> 00:14:04,160
+indonesia and also malaysia and other
+
+364
+00:14:01,360 --> 00:14:06,560
+parts of southeast asia but there's a
+
+365
+00:14:04,160 --> 00:14:09,120
+whole host of other commodities
+
+366
+00:14:06,560 --> 00:14:09,839
+which also drive deforestation so you
+
+367
+00:14:09,120 --> 00:14:13,760
+have um
+
+368
+00:14:09,839 --> 00:14:16,240
+you know even things like cobalt um and
+
+369
+00:14:13,760 --> 00:14:17,279
+mangrove deforestation for shrimp
+
+370
+00:14:16,240 --> 00:14:20,480
+farming
+
+371
+00:14:17,279 --> 00:14:23,680
+is quite quite prevalent um and the
+
+372
+00:14:20,480 --> 00:14:26,639
+the statistics are pretty shocking so
+
+373
+00:14:23,680 --> 00:14:27,600
+um in the amazon alone there's a
+
+374
+00:14:26,639 --> 00:14:30,959
+football pitch
+
+375
+00:14:27,600 --> 00:14:34,160
+cleared um every minute um and in
+
+376
+00:14:30,959 --> 00:14:37,279
+2018 that that equated worldwide to
+
+377
+00:14:34,160 --> 00:14:38,399
+um forest loss equivalent to the the
+
+378
+00:14:37,279 --> 00:14:41,680
+size of belgium
+
+379
+00:14:38,399 --> 00:14:45,120
+so it's um so yeah it's so it's a pretty
+
+380
+00:14:41,680 --> 00:14:46,880
+huge issue um just to kind of i guess
+
+381
+00:14:45,120 --> 00:14:49,440
+add some some additional color
+
+382
+00:14:46,880 --> 00:14:50,480
+to that um i thought i'd share a
+
+383
+00:14:49,440 --> 00:14:52,320
+screenshot of
+
+384
+00:14:50,480 --> 00:14:55,120
+um one of the platforms that's quite
+
+385
+00:14:52,320 --> 00:14:58,880
+widely used in this space the uh the c4
+
+386
+00:14:55,120 --> 00:15:02,160
+atlas so this is um a part of borneo
+
+387
+00:14:58,880 --> 00:15:04,000
+um calamantan where we can see
+
+388
+00:15:02,160 --> 00:15:05,920
+kind of some of the palm oil um
+
+389
+00:15:04,000 --> 00:15:06,880
+concessions and then the red dots of
+
+390
+00:15:05,920 --> 00:15:10,000
+palm oil
+
+391
+00:15:06,880 --> 00:15:13,920
+mills um and then the the kind of red
+
+392
+00:15:10,000 --> 00:15:17,440
+areas of fires just in 2019
+
+393
+00:15:13,920 --> 00:15:20,639
+um alone so this is kind of one
+
+394
+00:15:17,440 --> 00:15:21,120
+relatively small area but yeah it's
+
+395
+00:15:20,639 --> 00:15:24,720
+pretty
+
+396
+00:15:21,120 --> 00:15:27,839
+quick to see um kind of what what the
+
+397
+00:15:24,720 --> 00:15:30,720
+what the impact can be
+
+398
+00:15:27,839 --> 00:15:32,880
+um so yeah so essentially what what are
+
+399
+00:15:30,720 --> 00:15:35,440
+we trying to do in a lot of our work
+
+400
+00:15:32,880 --> 00:15:36,560
+um well what we're trying to do is link
+
+401
+00:15:35,440 --> 00:15:40,800
+investors
+
+402
+00:15:36,560 --> 00:15:43,680
+to deforestation on the ground so we're
+
+403
+00:15:40,800 --> 00:15:44,480
+linking investors um so both you know
+
+404
+00:15:43,680 --> 00:15:46,399
+big name
+
+405
+00:15:44,480 --> 00:15:47,600
+uh pension funds and banks that we all
+
+406
+00:15:46,399 --> 00:15:49,279
+work with
+
+407
+00:15:47,600 --> 00:15:51,600
+with um you know things like the red
+
+408
+00:15:49,279 --> 00:15:55,920
+dots um on the screen that we
+
+409
+00:15:51,600 --> 00:15:58,320
+we see um this is this is actually
+
+410
+00:15:55,920 --> 00:15:59,839
+a surprisingly difficult thing to do so
+
+411
+00:15:58,320 --> 00:16:01,120
+in the age of kind of real-time
+
+412
+00:15:59,839 --> 00:16:03,920
+monitoring
+
+413
+00:16:01,120 --> 00:16:05,839
+um use of satellite feeds we can see
+
+414
+00:16:03,920 --> 00:16:08,160
+where this deforestation is happening
+
+415
+00:16:05,839 --> 00:16:11,040
+you know almost in real time and we know
+
+416
+00:16:08,160 --> 00:16:12,880
+a lot about the companies that own these
+
+417
+00:16:11,040 --> 00:16:16,000
+different concessions so these black
+
+418
+00:16:12,880 --> 00:16:17,920
+boundaries um around here um but it's
+
+419
+00:16:16,000 --> 00:16:19,120
+often quite a difficult question to
+
+420
+00:16:17,920 --> 00:16:21,759
+answer
+
+421
+00:16:19,120 --> 00:16:22,240
+you know who finances them and you know
+
+422
+00:16:21,759 --> 00:16:26,320
+how we
+
+423
+00:16:22,240 --> 00:16:28,720
+how we contribute to that um
+
+424
+00:16:26,320 --> 00:16:29,759
+so often find that this this diagram is
+
+425
+00:16:28,720 --> 00:16:32,160
+quite a useful
+
+426
+00:16:29,759 --> 00:16:33,360
+diagram for explaining i guess why it's
+
+427
+00:16:32,160 --> 00:16:35,440
+hard and
+
+428
+00:16:33,360 --> 00:16:37,279
+you know the use case behind graphs
+
+429
+00:16:35,440 --> 00:16:40,959
+really you know the power of graphs
+
+430
+00:16:37,279 --> 00:16:44,160
+in this in this space so we think about
+
+431
+00:16:40,959 --> 00:16:45,279
+you know the links between the food that
+
+432
+00:16:44,160 --> 00:16:47,440
+we consume
+
+433
+00:16:45,279 --> 00:16:48,880
+and the deforestation on the ground at
+
+434
+00:16:47,440 --> 00:16:51,440
+the top of this
+
+435
+00:16:48,880 --> 00:16:53,440
+funnel they have many many small scale
+
+436
+00:16:51,440 --> 00:16:55,759
+farmers often in these commodities or
+
+437
+00:16:53,440 --> 00:16:59,360
+many desperate companies
+
+438
+00:16:55,759 --> 00:17:02,480
+that then flows through a process
+
+439
+00:16:59,360 --> 00:17:05,120
+down to a relatively small number of
+
+440
+00:17:02,480 --> 00:17:05,679
+commodity trading companies and then and
+
+441
+00:17:05,120 --> 00:17:08,480
+then back
+
+442
+00:17:05,679 --> 00:17:09,839
+out to a very large number of food and
+
+443
+00:17:08,480 --> 00:17:13,600
+consumer goods
+
+444
+00:17:09,839 --> 00:17:16,400
+uh companies so um so i guess it's a
+
+445
+00:17:13,600 --> 00:17:18,480
+it's a relatively straightforward
+
+446
+00:17:16,400 --> 00:17:20,480
+process at each of those levels to
+
+447
+00:17:18,480 --> 00:17:23,679
+identify you know who owns these
+
+448
+00:17:20,480 --> 00:17:25,760
+these assets who owns these concessions
+
+449
+00:17:23,679 --> 00:17:27,919
+um you know who their parent companies
+
+450
+00:17:25,760 --> 00:17:30,640
+are and that kind of stuff
+
+451
+00:17:27,919 --> 00:17:33,520
+but then when you start to add in
+
+452
+00:17:30,640 --> 00:17:34,880
+financing as a as a dimension it pretty
+
+453
+00:17:33,520 --> 00:17:37,440
+quickly blows out the
+
+454
+00:17:34,880 --> 00:17:38,640
+uh the complexity so you can see then
+
+455
+00:17:37,440 --> 00:17:41,039
+you know just from an ownership
+
+456
+00:17:38,640 --> 00:17:43,919
+perspective you could have many levels
+
+457
+00:17:41,039 --> 00:17:45,360
+at each of these levels and then at each
+
+458
+00:17:43,919 --> 00:17:47,360
+of those levels have
+
+459
+00:17:45,360 --> 00:17:48,880
+you know many many different connections
+
+460
+00:17:47,360 --> 00:17:51,200
+and levels with
+
+461
+00:17:48,880 --> 00:17:52,640
+different types of financing um coming
+
+462
+00:17:51,200 --> 00:17:55,919
+into these structures so
+
+463
+00:17:52,640 --> 00:17:58,840
+um you know things like loan financing
+
+464
+00:17:55,919 --> 00:18:00,240
+revolving credit facilities bond
+
+465
+00:17:58,840 --> 00:18:03,840
+issuances
+
+466
+00:18:00,240 --> 00:18:04,240
+um also equity um financing which will
+
+467
+00:18:03,840 --> 00:18:06,240
+be
+
+468
+00:18:04,240 --> 00:18:07,600
+you know the route through which um i
+
+469
+00:18:06,240 --> 00:18:10,480
+guess most of our
+
+470
+00:18:07,600 --> 00:18:12,240
+our kind of pension fund money and ices
+
+471
+00:18:10,480 --> 00:18:12,640
+and that kind of stuff will flow into
+
+472
+00:18:12,240 --> 00:18:14,720
+these
+
+473
+00:18:12,640 --> 00:18:15,919
+these areas and contribute to
+
+474
+00:18:14,720 --> 00:18:18,960
+deforestation
+
+475
+00:18:15,919 --> 00:18:21,039
+um so through you know the um
+
+476
+00:18:18,960 --> 00:18:22,960
+passive and active funds that we hold
+
+477
+00:18:21,039 --> 00:18:24,720
+with um people like the
+
+478
+00:18:22,960 --> 00:18:26,480
+the black rocks and the vanguards and
+
+479
+00:18:24,720 --> 00:18:29,600
+many other household names
+
+480
+00:18:26,480 --> 00:18:31,919
+in the world um
+
+481
+00:18:29,600 --> 00:18:32,960
+so what i thought i'd do is kind of give
+
+482
+00:18:31,919 --> 00:18:36,160
+it a quick
+
+483
+00:18:32,960 --> 00:18:37,039
+um skim through a few examples of how we
+
+484
+00:18:36,160 --> 00:18:40,799
+try and
+
+485
+00:18:37,039 --> 00:18:44,240
+um break this problem down um
+
+486
+00:18:40,799 --> 00:18:46,320
+so on um many of our our projects we
+
+487
+00:18:44,240 --> 00:18:49,760
+build up these very very large
+
+488
+00:18:46,320 --> 00:18:51,760
+um networks of links um between these
+
+489
+00:18:49,760 --> 00:18:54,880
+companies
+
+490
+00:18:51,760 --> 00:18:57,360
+and what we're trying to do is um
+
+491
+00:18:54,880 --> 00:18:58,960
+see if we can distill these connections
+
+492
+00:18:57,360 --> 00:19:02,400
+and this complexity
+
+493
+00:18:58,960 --> 00:19:03,919
+down to usable tools
+
+494
+00:19:02,400 --> 00:19:06,799
+for i guess different segments of
+
+495
+00:19:03,919 --> 00:19:09,760
+societies the tools that we build
+
+496
+00:19:06,799 --> 00:19:11,120
+tools such as trace.finance which i'll
+
+497
+00:19:09,760 --> 00:19:13,360
+touch on a bit later
+
+498
+00:19:11,120 --> 00:19:15,280
+um and also other projects like lucida
+
+499
+00:19:13,360 --> 00:19:18,720
+and orbitas
+
+500
+00:19:15,280 --> 00:19:21,360
+dot finance we work on um we build
+
+501
+00:19:18,720 --> 00:19:23,360
+different screens different widgets
+
+502
+00:19:21,360 --> 00:19:24,960
+different different functionality for
+
+503
+00:19:23,360 --> 00:19:27,200
+different users
+
+504
+00:19:24,960 --> 00:19:29,280
+so some of those users may be people
+
+505
+00:19:27,200 --> 00:19:32,799
+like campaign organizations that are
+
+506
+00:19:29,280 --> 00:19:35,840
+doing research into these companies
+
+507
+00:19:32,799 --> 00:19:38,240
+other users are for instance the
+
+508
+00:19:35,840 --> 00:19:39,440
+loans departments of banks that are
+
+509
+00:19:38,240 --> 00:19:41,600
+assessing the risk
+
+510
+00:19:39,440 --> 00:19:43,120
+profile of companies that are looking to
+
+511
+00:19:41,600 --> 00:19:45,520
+take out credit
+
+512
+00:19:43,120 --> 00:19:46,160
+um we also do a lot of work building
+
+513
+00:19:45,520 --> 00:19:49,679
+tools
+
+514
+00:19:46,160 --> 00:19:52,320
+for things like um portfolio managers
+
+515
+00:19:49,679 --> 00:19:53,360
+and people on on the asset management
+
+516
+00:19:52,320 --> 00:19:55,360
+side
+
+517
+00:19:53,360 --> 00:19:57,280
+of the spectrum who are you know looking
+
+518
+00:19:55,360 --> 00:19:59,600
+for candidate investments
+
+519
+00:19:57,280 --> 00:20:01,039
+um and want to understand you know what
+
+520
+00:19:59,600 --> 00:20:04,799
+kind of deforestation
+
+521
+00:20:01,039 --> 00:20:06,159
+risk they own um so in this case this is
+
+522
+00:20:04,799 --> 00:20:08,080
+an example of how we
+
+523
+00:20:06,159 --> 00:20:09,200
+it's a relatively simple network for how
+
+524
+00:20:08,080 --> 00:20:12,799
+we
+
+525
+00:20:09,200 --> 00:20:14,880
+present the indirect deforestation risk
+
+526
+00:20:12,799 --> 00:20:17,919
+that companies can have
+
+527
+00:20:14,880 --> 00:20:18,960
+in this case we have an indonesian
+
+528
+00:20:17,919 --> 00:20:21,919
+biofuel
+
+529
+00:20:18,960 --> 00:20:24,000
+company which doesn't actually have any
+
+530
+00:20:21,919 --> 00:20:25,520
+any deforestation risk that we've been
+
+531
+00:20:24,000 --> 00:20:28,640
+able to identify
+
+532
+00:20:25,520 --> 00:20:31,039
+um itself but it has directors
+
+533
+00:20:28,640 --> 00:20:32,799
+of those companies who sit on the boards
+
+534
+00:20:31,039 --> 00:20:35,120
+of other companies
+
+535
+00:20:32,799 --> 00:20:36,720
+who do have deforestation risk
+
+536
+00:20:35,120 --> 00:20:40,320
+associated with them
+
+537
+00:20:36,720 --> 00:20:42,159
+um this is actually or has been today
+
+538
+00:20:40,320 --> 00:20:45,039
+um it's quite a simple example but it
+
+539
+00:20:42,159 --> 00:20:46,880
+has been quite difficult for many
+
+540
+00:20:45,039 --> 00:20:49,120
+investment managers to do this to do
+
+541
+00:20:46,880 --> 00:20:53,120
+this kind of analysis
+
+542
+00:20:49,120 --> 00:20:55,919
+um i guess where where we find
+
+543
+00:20:53,120 --> 00:20:56,720
+um a lot of interesting patterns i guess
+
+544
+00:20:55,919 --> 00:20:59,200
+where we
+
+545
+00:20:56,720 --> 00:21:00,720
+where we repeat that type of analysis on
+
+546
+00:20:59,200 --> 00:21:03,600
+a slightly bigger scale is
+
+547
+00:21:00,720 --> 00:21:03,919
+is looking at you know entire sectors so
+
+548
+00:21:03,600 --> 00:21:06,880
+um
+
+549
+00:21:03,919 --> 00:21:08,559
+particularly areas like the indonesian
+
+550
+00:21:06,880 --> 00:21:11,200
+uh palm oil sector
+
+551
+00:21:08,559 --> 00:21:12,240
+um often have very elaborate ownership
+
+552
+00:21:11,200 --> 00:21:14,400
+structures
+
+553
+00:21:12,240 --> 00:21:16,080
+um they have a mix of kind of onshore
+
+554
+00:21:14,400 --> 00:21:18,720
+and offshore companies
+
+555
+00:21:16,080 --> 00:21:19,840
+um many different directors typically
+
+556
+00:21:18,720 --> 00:21:22,080
+involved
+
+557
+00:21:19,840 --> 00:21:23,520
+um i think this is this is a great
+
+558
+00:21:22,080 --> 00:21:24,960
+report actually
+
+559
+00:21:23,520 --> 00:21:26,640
+that kind of summarizes some of that
+
+560
+00:21:24,960 --> 00:21:28,960
+stuff well um
+
+561
+00:21:26,640 --> 00:21:30,000
+uh by greenpeace where they've done a
+
+562
+00:21:28,960 --> 00:21:32,400
+bit of a
+
+563
+00:21:30,000 --> 00:21:33,679
+report on wilmar the world's largest
+
+564
+00:21:32,400 --> 00:21:36,799
+palm oil trader
+
+565
+00:21:33,679 --> 00:21:40,159
+and some of their connections to um
+
+566
+00:21:36,799 --> 00:21:41,039
+a more controversial group of companies
+
+567
+00:21:40,159 --> 00:21:43,919
+called gamma
+
+568
+00:21:41,039 --> 00:21:45,360
+gamma plantation or kpn plantation as
+
+569
+00:21:43,919 --> 00:21:48,000
+they're known now
+
+570
+00:21:45,360 --> 00:21:48,880
+um we start to see these connections
+
+571
+00:21:48,000 --> 00:21:49,840
+whereby
+
+572
+00:21:48,880 --> 00:21:52,320
+you know there are there are not
+
+573
+00:21:49,840 --> 00:21:53,280
+necessarily formal legal relationships
+
+574
+00:21:52,320 --> 00:21:55,440
+between
+
+575
+00:21:53,280 --> 00:21:58,080
+wilmar and gamma but we see many of
+
+576
+00:21:55,440 --> 00:22:01,360
+these indirect relationships through
+
+577
+00:21:58,080 --> 00:22:03,440
+family relations and connections to
+
+578
+00:22:01,360 --> 00:22:05,520
+politically exposed people and this kind
+
+579
+00:22:03,440 --> 00:22:08,559
+of stuff
+
+580
+00:22:05,520 --> 00:22:10,720
+so this is this is another example which
+
+581
+00:22:08,559 --> 00:22:13,440
+i pulled out where um
+
+582
+00:22:10,720 --> 00:22:14,240
+we use graphs to traverse ownership
+
+583
+00:22:13,440 --> 00:22:17,600
+structures
+
+584
+00:22:14,240 --> 00:22:18,400
+so um typically typically ownership
+
+585
+00:22:17,600 --> 00:22:21,440
+structures
+
+586
+00:22:18,400 --> 00:22:23,200
+um often tend to be quite simple we
+
+587
+00:22:21,440 --> 00:22:26,400
+typically use
+
+588
+00:22:23,200 --> 00:22:29,360
+a lot of i guess relatively simple
+
+589
+00:22:26,400 --> 00:22:29,760
+um hierarchy visualizations such as this
+
+590
+00:22:29,360 --> 00:22:33,360
+um
+
+591
+00:22:29,760 --> 00:22:35,120
+visualization here to try and show
+
+592
+00:22:33,360 --> 00:22:36,720
+you know ultimately who who is in
+
+593
+00:22:35,120 --> 00:22:38,960
+control of these
+
+594
+00:22:36,720 --> 00:22:40,400
+companies that are responsible for
+
+595
+00:22:38,960 --> 00:22:43,679
+deforestation risk
+
+596
+00:22:40,400 --> 00:22:47,039
+um this is this is actually um
+
+597
+00:22:43,679 --> 00:22:50,640
+uh the the legal structure of um
+
+598
+00:22:47,039 --> 00:22:53,360
+chinese state-owned companies so um
+
+599
+00:22:50,640 --> 00:22:54,480
+we have um a particular commodity trader
+
+600
+00:22:53,360 --> 00:22:56,240
+kofko
+
+601
+00:22:54,480 --> 00:22:59,760
+which sits within this structure who
+
+602
+00:22:56,240 --> 00:23:02,559
+have a subsidiary kofko brazil
+
+603
+00:22:59,760 --> 00:23:04,159
+who have soy deforestation risk
+
+604
+00:23:02,559 --> 00:23:06,880
+associated with them
+
+605
+00:23:04,159 --> 00:23:08,159
+um so i think it's quite a good summary
+
+606
+00:23:06,880 --> 00:23:10,240
+of where
+
+607
+00:23:08,159 --> 00:23:12,640
+you know the power of graphs comes in so
+
+608
+00:23:10,240 --> 00:23:15,120
+this is just asking one question
+
+609
+00:23:12,640 --> 00:23:16,320
+um so who who ultimately owns and
+
+610
+00:23:15,120 --> 00:23:19,440
+controls
+
+611
+00:23:16,320 --> 00:23:21,039
+um and um you know is ultimately i guess
+
+612
+00:23:19,440 --> 00:23:23,440
+responsible for
+
+613
+00:23:21,039 --> 00:23:24,960
+any deforestation risk that this this
+
+614
+00:23:23,440 --> 00:23:26,799
+company generates
+
+615
+00:23:24,960 --> 00:23:28,480
+um and you can see it you know it's not
+
+616
+00:23:26,799 --> 00:23:30,720
+not it's not a simple question
+
+617
+00:23:28,480 --> 00:23:31,760
+and particularly when you look at you
+
+618
+00:23:30,720 --> 00:23:34,559
+know the risk
+
+619
+00:23:31,760 --> 00:23:36,480
+that that may emanate from uh from
+
+620
+00:23:34,559 --> 00:23:38,720
+sister and brother um
+
+621
+00:23:36,480 --> 00:23:40,720
+companies you know if you're um for
+
+622
+00:23:38,720 --> 00:23:43,679
+instance a
+
+623
+00:23:40,720 --> 00:23:44,559
+loan application reviewer in a bank um
+
+624
+00:23:43,679 --> 00:23:47,440
+you know it can
+
+625
+00:23:44,559 --> 00:23:49,120
+can pretty quickly um become become very
+
+626
+00:23:47,440 --> 00:23:51,360
+complex
+
+627
+00:23:49,120 --> 00:23:52,559
+um so thankfully we use we use some
+
+628
+00:23:51,360 --> 00:23:55,840
+tools within the
+
+629
+00:23:52,559 --> 00:23:59,120
+network visualization space we um
+
+630
+00:23:55,840 --> 00:24:01,440
+use a lot of uh simplification methods
+
+631
+00:23:59,120 --> 00:24:04,720
+um so this is one visualization that
+
+632
+00:24:01,440 --> 00:24:07,360
+we've we've built to try and show
+
+633
+00:24:04,720 --> 00:24:09,679
+the deforestation risk that particular
+
+634
+00:24:07,360 --> 00:24:12,960
+subsidiaries within a group
+
+635
+00:24:09,679 --> 00:24:14,480
+bear so we can see the subsidiaries the
+
+636
+00:24:12,960 --> 00:24:17,440
+high risk subsidiaries
+
+637
+00:24:14,480 --> 00:24:18,640
+highlighted in red flowing up to the the
+
+638
+00:24:17,440 --> 00:24:22,000
+ultimate parent
+
+639
+00:24:18,640 --> 00:24:24,159
+um entity in this case bungie
+
+640
+00:24:22,000 --> 00:24:25,679
+um bungie is actually an interesting
+
+641
+00:24:24,159 --> 00:24:28,080
+example i guess it's kind of like a
+
+642
+00:24:25,679 --> 00:24:31,360
+mid-sized company in terms of um
+
+643
+00:24:28,080 --> 00:24:34,000
+legal structures they have over 300
+
+644
+00:24:31,360 --> 00:24:35,120
+subsidiaries and what we typically tend
+
+645
+00:24:34,000 --> 00:24:38,480
+to use is
+
+646
+00:24:35,120 --> 00:24:41,039
+to simplify those visualizations is
+
+647
+00:24:38,480 --> 00:24:43,440
+things like um kind of grouping
+
+648
+00:24:41,039 --> 00:24:46,559
+techniques you can see the nodes
+
+649
+00:24:43,440 --> 00:24:47,919
+counted up for instance to um to try and
+
+650
+00:24:46,559 --> 00:24:51,039
+simplify this um
+
+651
+00:24:47,919 --> 00:24:51,039
+this visualization
+
+652
+00:24:51,279 --> 00:24:54,480
+um so what do we what have we touched on
+
+653
+00:24:53,360 --> 00:24:56,480
+i guess we've touched on
+
+654
+00:24:54,480 --> 00:24:58,960
+kind of connections board connections
+
+655
+00:24:56,480 --> 00:25:01,760
+between companies between people and
+
+656
+00:24:58,960 --> 00:25:04,480
+companies i guess we touched on the
+
+657
+00:25:01,760 --> 00:25:08,320
+previous slide the connection between
+
+658
+00:25:04,480 --> 00:25:12,240
+assets and companies and people
+
+659
+00:25:08,320 --> 00:25:13,919
+we've touched on legal structures
+
+660
+00:25:12,240 --> 00:25:15,440
+so these are obviously all different
+
+661
+00:25:13,919 --> 00:25:18,559
+types of connections of
+
+662
+00:25:15,440 --> 00:25:21,039
+um of different lengths um where we
+
+663
+00:25:18,559 --> 00:25:22,240
+where we where we start to really add um
+
+664
+00:25:21,039 --> 00:25:24,960
+a lot of power
+
+665
+00:25:22,240 --> 00:25:25,919
+um both for civil society with the tools
+
+666
+00:25:24,960 --> 00:25:28,080
+that we build
+
+667
+00:25:25,919 --> 00:25:29,120
+and um also the investment community is
+
+668
+00:25:28,080 --> 00:25:33,039
+when we
+
+669
+00:25:29,120 --> 00:25:36,559
+when we start to combine this um
+
+670
+00:25:33,039 --> 00:25:39,200
+so i thought what i do here is show um
+
+671
+00:25:36,559 --> 00:25:40,080
+a relatively a relatively simple example
+
+672
+00:25:39,200 --> 00:25:42,080
+of where
+
+673
+00:25:40,080 --> 00:25:44,080
+we're combining those different types of
+
+674
+00:25:42,080 --> 00:25:47,120
+traversals and there's different
+
+675
+00:25:44,080 --> 00:25:49,600
+data inputs and i guess that's
+
+676
+00:25:47,120 --> 00:25:51,120
+that's perhaps one thing that's worth
+
+677
+00:25:49,600 --> 00:25:53,520
+touching on is
+
+678
+00:25:51,120 --> 00:25:54,400
+where we source this this data from
+
+679
+00:25:53,520 --> 00:25:57,840
+typically for
+
+680
+00:25:54,400 --> 00:25:59,600
+for projects and in the moment um
+
+681
+00:25:57,840 --> 00:26:01,520
+so what we can see here i guess starting
+
+682
+00:25:59,600 --> 00:26:02,720
+from right to left what what we were
+
+683
+00:26:01,520 --> 00:26:05,919
+asking with this
+
+684
+00:26:02,720 --> 00:26:08,000
+question was okay for the sahardo which
+
+685
+00:26:05,919 --> 00:26:12,240
+is a frontier region of brazil
+
+686
+00:26:08,000 --> 00:26:14,640
+surrounding the amazon um
+
+687
+00:26:12,240 --> 00:26:15,360
+which uh is is a place where a lot of
+
+688
+00:26:14,640 --> 00:26:18,400
+soy
+
+689
+00:26:15,360 --> 00:26:19,760
+and beef deforestation is um emanating
+
+690
+00:26:18,400 --> 00:26:23,279
+from
+
+691
+00:26:19,760 --> 00:26:26,240
+um how are blackrock connected
+
+692
+00:26:23,279 --> 00:26:26,960
+give me um a simple path through which
+
+693
+00:26:26,240 --> 00:26:29,200
+black croc
+
+694
+00:26:26,960 --> 00:26:30,000
+connected to deforestation which is
+
+695
+00:26:29,200 --> 00:26:32,080
+occurring
+
+696
+00:26:30,000 --> 00:26:34,000
+in this area so what we can see kind of
+
+697
+00:26:32,080 --> 00:26:34,559
+following it from right to left is we
+
+698
+00:26:34,000 --> 00:26:36,480
+have
+
+699
+00:26:34,559 --> 00:26:38,480
+um you know a number of different black
+
+700
+00:26:36,480 --> 00:26:41,600
+rock subsidiaries
+
+701
+00:26:38,480 --> 00:26:46,000
+who hold shares in bnp parabar
+
+702
+00:26:41,600 --> 00:26:49,919
+the bank bmp parabar
+
+703
+00:26:46,000 --> 00:26:53,440
+lend money to a company
+
+704
+00:26:49,919 --> 00:26:56,720
+called maribeni and
+
+705
+00:26:53,440 --> 00:27:01,120
+maribeni have a subsidiary called
+
+706
+00:26:56,720 --> 00:27:04,720
+ganvalon which are a commodity trader
+
+707
+00:27:01,120 --> 00:27:07,760
+operating in that in that region who
+
+708
+00:27:04,720 --> 00:27:10,080
+acquired this deforestation risk um
+
+709
+00:27:07,760 --> 00:27:11,039
+through the relationships that they they
+
+710
+00:27:10,080 --> 00:27:13,279
+cultivate
+
+711
+00:27:11,039 --> 00:27:14,960
+um within that within their supply chain
+
+712
+00:27:13,279 --> 00:27:16,960
+so that the regions that they source
+
+713
+00:27:14,960 --> 00:27:21,039
+from and the companies that they um
+
+714
+00:27:16,960 --> 00:27:23,600
+they deal with so it's um a relatively
+
+715
+00:27:21,039 --> 00:27:25,360
+a relatively simple example but but
+
+716
+00:27:23,600 --> 00:27:27,840
+quite a powerful one really for
+
+717
+00:27:25,360 --> 00:27:28,960
+you know connecting um the types of
+
+718
+00:27:27,840 --> 00:27:31,919
+investments that
+
+719
+00:27:28,960 --> 00:27:32,480
+um lots of us lots of us have um here in
+
+720
+00:27:31,919 --> 00:27:34,640
+the west
+
+721
+00:27:32,480 --> 00:27:35,760
+with um you know deforestation that's
+
+722
+00:27:34,640 --> 00:27:40,799
+happening on the ground
+
+723
+00:27:35,760 --> 00:27:40,799
+in um in latin america um
+
+724
+00:27:40,880 --> 00:27:47,279
+quickly i'm conscious of time we've
+
+725
+00:27:44,159 --> 00:27:48,000
+got a bit of time for questions might be
+
+726
+00:27:47,279 --> 00:27:51,360
+worth touching
+
+727
+00:27:48,000 --> 00:27:52,960
+on i guess why why we use graphs um
+
+728
+00:27:51,360 --> 00:27:55,200
+given the types of data that we work
+
+729
+00:27:52,960 --> 00:27:57,840
+with so a lot of this
+
+730
+00:27:55,200 --> 00:27:59,120
+a lot of our projects tend to be very
+
+731
+00:27:57,840 --> 00:28:02,399
+data integration
+
+732
+00:27:59,120 --> 00:28:04,240
+centric so we integrate predominantly a
+
+733
+00:28:02,399 --> 00:28:06,480
+lot of a lot of structured data
+
+734
+00:28:04,240 --> 00:28:08,080
+from things like companies house
+
+735
+00:28:06,480 --> 00:28:13,440
+registries
+
+736
+00:28:08,080 --> 00:28:16,880
+tax offices legal entity sources of data
+
+737
+00:28:13,440 --> 00:28:20,080
+import export and documentation
+
+738
+00:28:16,880 --> 00:28:23,440
+we also we also do some um extraction of
+
+739
+00:28:20,080 --> 00:28:25,440
+um of um content from um from
+
+740
+00:28:23,440 --> 00:28:27,440
+unstructured data so using
+
+741
+00:28:25,440 --> 00:28:30,159
+things like natural language processing
+
+742
+00:28:27,440 --> 00:28:31,600
+and those types of techniques
+
+743
+00:28:30,159 --> 00:28:33,520
+and graphs are really you know an
+
+744
+00:28:31,600 --> 00:28:36,159
+incredibly flexible
+
+745
+00:28:33,520 --> 00:28:37,679
+data model for for managing that
+
+746
+00:28:36,159 --> 00:28:39,520
+complexity around
+
+747
+00:28:37,679 --> 00:28:40,960
+data policies when you as soon as you're
+
+748
+00:28:39,520 --> 00:28:44,480
+dealing with you know
+
+749
+00:28:40,960 --> 00:28:45,679
+10 10 plus sources global sources with
+
+750
+00:28:44,480 --> 00:28:48,480
+different standards
+
+751
+00:28:45,679 --> 00:28:49,520
+you know curated by humans you you're
+
+752
+00:28:48,480 --> 00:28:52,720
+going to find
+
+753
+00:28:49,520 --> 00:28:55,360
+um discrepancies and disagreements
+
+754
+00:28:52,720 --> 00:28:57,440
+so graphs are a very good way of you
+
+755
+00:28:55,360 --> 00:29:00,799
+know integrating different sources
+
+756
+00:28:57,440 --> 00:29:02,159
+um retaining provenance and i guess
+
+757
+00:29:00,799 --> 00:29:04,000
+you know achieving some kind of
+
+758
+00:29:02,159 --> 00:29:06,080
+consensus at the end to
+
+759
+00:29:04,000 --> 00:29:08,559
+um to be able to achieve you know these
+
+760
+00:29:06,080 --> 00:29:12,960
+types of um
+
+761
+00:29:08,559 --> 00:29:16,399
+of insights um
+
+762
+00:29:12,960 --> 00:29:18,880
+yeah and then that's um
+
+763
+00:29:16,399 --> 00:29:19,760
+pretty much the end of the talk it's
+
+764
+00:29:18,880 --> 00:29:23,039
+very uh
+
+765
+00:29:19,760 --> 00:29:26,720
+fast kind of whistle stop tour um
+
+766
+00:29:23,039 --> 00:29:27,840
+perhaps before i get on to a bit of
+
+767
+00:29:26,720 --> 00:29:31,120
+information about
+
+768
+00:29:27,840 --> 00:29:31,679
+um or the the standard kind of we're
+
+769
+00:29:31,120 --> 00:29:35,039
+hiring
+
+770
+00:29:31,679 --> 00:29:36,640
+message so i briefly touched on three
+
+771
+00:29:35,039 --> 00:29:38,159
+projects that we're working on this
+
+772
+00:29:36,640 --> 00:29:40,399
+space
+
+773
+00:29:38,159 --> 00:29:41,919
+so we have trace.finance which is a
+
+774
+00:29:40,399 --> 00:29:44,960
+platform that we're building
+
+775
+00:29:41,919 --> 00:29:49,039
+um which is launching in in september
+
+776
+00:29:44,960 --> 00:29:51,039
+um we're also a partner on the um lucida
+
+777
+00:29:49,039 --> 00:29:52,240
+project which is a project focused
+
+778
+00:29:51,039 --> 00:29:53,919
+around
+
+779
+00:29:52,240 --> 00:29:55,760
+understanding the the ownership
+
+780
+00:29:53,919 --> 00:29:59,200
+structures and the financing of
+
+781
+00:29:55,760 --> 00:30:01,520
+um commodity producers
+
+782
+00:29:59,200 --> 00:30:03,760
+trace finance um is more focused around
+
+783
+00:30:01,520 --> 00:30:06,240
+commodity traders so the kind of middle
+
+784
+00:30:03,760 --> 00:30:07,279
+of that hourglass um and then another
+
+785
+00:30:06,240 --> 00:30:09,200
+project that
+
+786
+00:30:07,279 --> 00:30:10,559
+we're involved in is a project called
+
+787
+00:30:09,200 --> 00:30:14,320
+orbitas
+
+788
+00:30:10,559 --> 00:30:17,760
+dot finance which is very focused around
+
+789
+00:30:14,320 --> 00:30:21,200
+the response of the financial industry
+
+790
+00:30:17,760 --> 00:30:24,080
+to climate risk from food production
+
+791
+00:30:21,200 --> 00:30:25,679
+systems so particularly looking at
+
+792
+00:30:24,080 --> 00:30:29,039
+stranded asset risk
+
+793
+00:30:25,679 --> 00:30:32,240
+um for sectors like palm oil and um
+
+794
+00:30:29,039 --> 00:30:34,000
+and beef and so on so um yeah
+
+795
+00:30:32,240 --> 00:30:36,240
+i guess we have the the customary we're
+
+796
+00:30:34,000 --> 00:30:39,520
+hiring um
+
+797
+00:30:36,240 --> 00:30:41,919
+statements are always looking for smart
+
+798
+00:30:39,520 --> 00:30:43,760
+data engineers and other people who have
+
+799
+00:30:41,919 --> 00:30:46,320
+an interest in this space and
+
+800
+00:30:43,760 --> 00:30:47,600
+a kind of graph fluent or preferably
+
+801
+00:30:46,320 --> 00:30:50,240
+graph and
+
+802
+00:30:47,600 --> 00:30:50,799
+finance if not sustainable finance um
+
+803
+00:30:50,240 --> 00:30:53,919
+fluent
+
+804
+00:30:50,799 --> 00:30:56,960
+as well um yeah and that's
+
+805
+00:30:53,919 --> 00:30:59,840
+um that's pretty much the end so um
+
+806
+00:30:56,960 --> 00:31:01,519
+i'll switch to um q a i think we've got
+
+807
+00:30:59,840 --> 00:31:07,360
+five minutes for uh
+
+808
+00:31:01,519 --> 00:31:07,360
+for questions if any have come through
+
+809
+00:31:11,760 --> 00:31:19,840
+just i'll move back up to the top
+
+810
+00:31:20,399 --> 00:31:24,559
+james there are a few questions if you
+
+811
+00:31:22,080 --> 00:31:28,480
+just look at the chat
+
+812
+00:31:24,559 --> 00:31:31,600
+oh yeah yeah put them right
+
+813
+00:31:28,480 --> 00:31:31,600
+you can start from there
+
+814
+00:31:31,679 --> 00:31:35,200
+what was the name of the platform
+
+815
+00:31:33,039 --> 00:31:38,640
+showing the map um
+
+816
+00:31:35,200 --> 00:31:42,960
+c4 so c-i-f-o-r
+
+817
+00:31:38,640 --> 00:31:42,960
+um so if you type in c4 atlas
+
+818
+00:31:43,039 --> 00:31:48,720
+just lost the questions um if you type
+
+819
+00:31:46,080 --> 00:31:50,080
+in c4 atlas you'll be able to find that
+
+820
+00:31:48,720 --> 00:31:52,559
+and there are some other similar
+
+821
+00:31:50,080 --> 00:31:54,720
+platforms so um global forest watch
+
+822
+00:31:52,559 --> 00:31:56,480
+um is another very good platform in that
+
+823
+00:31:54,720 --> 00:32:00,240
+space where you can look at
+
+824
+00:31:56,480 --> 00:32:03,840
+you know real time deforestation
+
+825
+00:32:00,240 --> 00:32:03,840
+from satellite imagery
+
+826
+00:32:04,960 --> 00:32:11,519
+um how is graph technology
+
+827
+00:32:08,799 --> 00:32:13,039
+helping capital markets and portfolio
+
+828
+00:32:11,519 --> 00:32:16,640
+management
+
+829
+00:32:13,039 --> 00:32:18,480
+um yeah so i guess it's it's still a
+
+830
+00:32:16,640 --> 00:32:20,559
+relatively emerging area so i guess if
+
+831
+00:32:18,480 --> 00:32:21,039
+you look at finance as an industry as a
+
+832
+00:32:20,559 --> 00:32:24,399
+whole
+
+833
+00:32:21,039 --> 00:32:26,480
+um graphs have typically been employed
+
+834
+00:32:24,399 --> 00:32:28,399
+for things like recommendation engines
+
+835
+00:32:26,480 --> 00:32:30,960
+for financial crime
+
+836
+00:32:28,399 --> 00:32:32,720
+anti-money laundering um that kind of
+
+837
+00:32:30,960 --> 00:32:34,880
+stuff
+
+838
+00:32:32,720 --> 00:32:36,320
+i guess the type of sustainable finance
+
+839
+00:32:34,880 --> 00:32:39,360
+work that we do
+
+840
+00:32:36,320 --> 00:32:41,039
+has some synergies with that that type
+
+841
+00:32:39,360 --> 00:32:43,600
+of work
+
+842
+00:32:41,039 --> 00:32:44,720
+but it's yeah i guess it's still still a
+
+843
+00:32:43,600 --> 00:32:48,720
+relatively um
+
+844
+00:32:44,720 --> 00:32:51,919
+emerging area um relatively nascent
+
+845
+00:32:48,720 --> 00:32:55,760
+um there was the next next question was
+
+846
+00:32:51,919 --> 00:32:56,960
+is there a graph is there a link of the
+
+847
+00:32:55,760 --> 00:33:00,720
+graph you're showing
+
+848
+00:32:56,960 --> 00:33:02,640
+can anyone invest with you um if you
+
+849
+00:33:00,720 --> 00:33:04,559
+uh send me a personal message i'll be
+
+850
+00:33:02,640 --> 00:33:07,840
+able to um to
+
+851
+00:33:04,559 --> 00:33:10,720
+to talk a bit more about that um if you
+
+852
+00:33:07,840 --> 00:33:11,519
+go to uh so some of the visualizations i
+
+853
+00:33:10,720 --> 00:33:13,679
+was showing
+
+854
+00:33:11,519 --> 00:33:16,320
+were kind of sneak peeks of some of the
+
+855
+00:33:13,679 --> 00:33:21,760
+work that we're doing on trace.finance
+
+856
+00:33:16,320 --> 00:33:24,640
+um if you go to www.trace.finance
+
+857
+00:33:21,760 --> 00:33:26,480
+you'll be able to um to find that
+
+858
+00:33:24,640 --> 00:33:29,120
+project and there's a there's a mailing
+
+859
+00:33:26,480 --> 00:33:31,120
+list actually that you can subscribe to
+
+860
+00:33:29,120 --> 00:33:32,640
+um to get access to that when we launch
+
+861
+00:33:31,120 --> 00:33:34,559
+in in september
+
+862
+00:33:32,640 --> 00:33:35,760
+um all of our projects that we're
+
+863
+00:33:34,559 --> 00:33:38,960
+involved in we have
+
+864
+00:33:35,760 --> 00:33:42,799
+links on the neural alpha.com website
+
+865
+00:33:38,960 --> 00:33:47,279
+as well if um if anyone loses any
+
+866
+00:33:42,799 --> 00:33:50,080
+um after the
+
+867
+00:33:47,279 --> 00:33:51,679
+a little bit about tooling with data
+
+868
+00:33:50,080 --> 00:33:54,799
+formats
+
+869
+00:33:51,679 --> 00:33:56,880
+usual tools um yeah sure
+
+870
+00:33:54,799 --> 00:33:59,039
+yeah i'm happy to have a have a chat
+
+871
+00:33:56,880 --> 00:34:01,679
+about about tooling
+
+872
+00:33:59,039 --> 00:34:02,480
+um i guess generally i can't comment on
+
+873
+00:34:01,679 --> 00:34:04,960
+tooling
+
+874
+00:34:02,480 --> 00:34:06,000
+um i mean for a lot of these particular
+
+875
+00:34:04,960 --> 00:34:07,679
+projects we
+
+876
+00:34:06,000 --> 00:34:10,000
+tend to use a lot of label property
+
+877
+00:34:07,679 --> 00:34:10,000
+graph
+
+878
+00:34:10,320 --> 00:34:13,839
+mainly because we find it a bit easier
+
+879
+00:34:12,639 --> 00:34:15,760
+to work with
+
+880
+00:34:13,839 --> 00:34:17,520
+we can make i guess some semantic
+
+881
+00:34:15,760 --> 00:34:18,639
+compromises with the data that we're
+
+882
+00:34:17,520 --> 00:34:22,960
+modeling
+
+883
+00:34:18,639 --> 00:34:25,839
+to get um for instance benefits around
+
+884
+00:34:22,960 --> 00:34:26,560
+uh performance for uh traversals and
+
+885
+00:34:25,839 --> 00:34:28,879
+those um
+
+886
+00:34:26,560 --> 00:34:30,800
+those types of queries where we have um
+
+887
+00:34:28,879 --> 00:34:33,280
+you know particularly long paths
+
+888
+00:34:30,800 --> 00:34:34,879
+um but as i said generally we use we use
+
+889
+00:34:33,280 --> 00:34:37,119
+a mix of different
+
+890
+00:34:34,879 --> 00:34:38,720
+graph technologies for for different
+
+891
+00:34:37,119 --> 00:34:43,119
+different requirements
+
+892
+00:34:38,720 --> 00:34:43,119
+so yeah happy to to talk more about that
+
+893
+00:34:43,919 --> 00:34:48,320
+hard to imagine use cases and sell those
+
+894
+00:34:46,720 --> 00:34:51,520
+to paying customers
+
+895
+00:34:48,320 --> 00:34:55,760
+um i guess the the
+
+896
+00:34:51,520 --> 00:34:59,040
+the use cases are growing in interest um
+
+897
+00:34:55,760 --> 00:35:03,440
+uh so um i guess as the
+
+898
+00:34:59,040 --> 00:35:06,160
+um you know as awareness has increased
+
+899
+00:35:03,440 --> 00:35:08,079
+around the different warming scenarios
+
+900
+00:35:06,160 --> 00:35:10,480
+and the consequences of those
+
+901
+00:35:08,079 --> 00:35:12,000
+and what's required to start hitting
+
+902
+00:35:10,480 --> 00:35:15,359
+those scenarios
+
+903
+00:35:12,000 --> 00:35:18,480
+um particularly we've seen a lot of
+
+904
+00:35:15,359 --> 00:35:20,400
+interest in non-kind of fossil fuel
+
+905
+00:35:18,480 --> 00:35:22,480
+applications for this for this type of
+
+906
+00:35:20,400 --> 00:35:23,680
+technology so we're starting to look a
+
+907
+00:35:22,480 --> 00:35:26,000
+lot more at
+
+908
+00:35:23,680 --> 00:35:28,000
+areas like um i mean i've touched a lot
+
+909
+00:35:26,000 --> 00:35:30,720
+on agriculture here but also
+
+910
+00:35:28,000 --> 00:35:33,040
+things like plastic waste investors are
+
+911
+00:35:30,720 --> 00:35:36,079
+becoming very interested in
+
+912
+00:35:33,040 --> 00:35:39,359
+also geospatial applications around
+
+913
+00:35:36,079 --> 00:35:40,880
+things like bio diversity loss impacts
+
+914
+00:35:39,359 --> 00:35:42,160
+on biodiversity
+
+915
+00:35:40,880 --> 00:35:44,800
+for these particular types of
+
+916
+00:35:42,160 --> 00:35:47,359
+investments there's a
+
+917
+00:35:44,800 --> 00:35:48,320
+lot of interest there that's developing
+
+918
+00:35:47,359 --> 00:35:51,920
+as well and some
+
+919
+00:35:48,320 --> 00:35:51,920
+some projects that we're involved in
+
+920
+00:35:53,599 --> 00:35:58,800
+how do we bring real-time news feeds to
+
+921
+00:35:56,320 --> 00:36:02,640
+ontology in order to derive
+
+922
+00:35:58,800 --> 00:36:04,880
+knowledge insights um
+
+923
+00:36:02,640 --> 00:36:05,680
+yeah it's it's it's a good it's a good
+
+924
+00:36:04,880 --> 00:36:09,280
+question
+
+925
+00:36:05,680 --> 00:36:13,119
+um and not not an easy one to answer
+
+926
+00:36:09,280 --> 00:36:15,680
+to sinclair if i'm honest um so we
+
+927
+00:36:13,119 --> 00:36:16,560
+this tends to be an area where we we
+
+928
+00:36:15,680 --> 00:36:20,000
+tend to use
+
+929
+00:36:16,560 --> 00:36:21,839
+more um kind of
+
+930
+00:36:20,000 --> 00:36:23,760
+technologies at the semantic web end of
+
+931
+00:36:21,839 --> 00:36:26,400
+the spectrum so we do a lot of
+
+932
+00:36:23,760 --> 00:36:27,520
+things like scoss taxonomy development
+
+933
+00:36:26,400 --> 00:36:31,119
+and and use that
+
+934
+00:36:27,520 --> 00:36:34,240
+for um doing kind of custom um
+
+935
+00:36:31,119 --> 00:36:36,000
+tagging of news stories and other other
+
+936
+00:36:34,240 --> 00:36:38,880
+unstructured sources
+
+937
+00:36:36,000 --> 00:36:40,800
+um using terms that are specific to the
+
+938
+00:36:38,880 --> 00:36:43,040
+to the types of deforestation for
+
+939
+00:36:40,800 --> 00:36:46,320
+instance that we're interested in
+
+940
+00:36:43,040 --> 00:36:50,160
+um i'd say it really depends on
+
+941
+00:36:46,320 --> 00:36:52,320
+on budget really and
+
+942
+00:36:50,160 --> 00:36:54,720
+i'm often surprised at how good the
+
+943
+00:36:52,320 --> 00:36:57,920
+results can be even through using
+
+944
+00:36:54,720 --> 00:36:58,960
+you know basic um taxonomies and and not
+
+945
+00:36:57,920 --> 00:37:01,280
+particularly
+
+946
+00:36:58,960 --> 00:37:03,839
+you know sophisticated kind of machine
+
+947
+00:37:01,280 --> 00:37:06,560
+learning techniques with with nlp
+
+948
+00:37:03,839 --> 00:37:09,440
+um but but generally yes to to try and
+
+949
+00:37:06,560 --> 00:37:11,280
+scale and do things in real time
+
+950
+00:37:09,440 --> 00:37:14,320
+then you need to start really using
+
+951
+00:37:11,280 --> 00:37:17,440
+those kind of more sophisticated
+
+952
+00:37:14,320 --> 00:37:20,000
+um nlp packages and
+
+953
+00:37:17,440 --> 00:37:20,000
+techniques
+
+954
+00:37:21,280 --> 00:37:25,599
+um then there was a question on on solar
+
+955
+00:37:24,640 --> 00:37:28,640
+projects so
+
+956
+00:37:25,599 --> 00:37:30,160
+um yeah we haven't really done much work
+
+957
+00:37:28,640 --> 00:37:33,040
+in um solar projects
+
+958
+00:37:30,160 --> 00:37:34,240
+um is one of the one of the first
+
+959
+00:37:33,040 --> 00:37:36,320
+sustainable investment
+
+960
+00:37:34,240 --> 00:37:38,000
+projects i actually did was um working
+
+961
+00:37:36,320 --> 00:37:40,560
+for a hedge fund
+
+962
+00:37:38,000 --> 00:37:42,640
+one of the largest renewable energy
+
+963
+00:37:40,560 --> 00:37:44,079
+investors in in europe so we did a lot
+
+964
+00:37:42,640 --> 00:37:47,119
+of solar
+
+965
+00:37:44,079 --> 00:37:48,960
+and wind kind of analytics there but um
+
+966
+00:37:47,119 --> 00:37:50,320
+but yeah it wasn't quite the same use
+
+967
+00:37:48,960 --> 00:37:52,480
+case so we we
+
+968
+00:37:50,320 --> 00:37:54,400
+weren't using graphs i was um yeah doing
+
+969
+00:37:52,480 --> 00:37:54,880
+a lot of work with relational databases
+
+970
+00:37:54,400 --> 00:37:58,079
+actually
+
+971
+00:37:54,880 --> 00:38:00,079
+on that particular project so uh
+
+972
+00:37:58,079 --> 00:38:02,240
+yeah lots of lots of different horses
+
+973
+00:38:00,079 --> 00:38:05,200
+for courses i guess
+
+974
+00:38:02,240 --> 00:38:06,800
+um yeah and i think that's i think
+
+975
+00:38:05,200 --> 00:38:09,200
+that's the end of the
+
+976
+00:38:06,800 --> 00:38:10,800
+the questions so yeah conscious we're
+
+977
+00:38:09,200 --> 00:38:14,720
+we're slightly over
+
+978
+00:38:10,800 --> 00:38:16,640
+on time but um if um if anyone's
+
+979
+00:38:14,720 --> 00:38:18,160
+interested in in talking further about
+
+980
+00:38:16,640 --> 00:38:20,160
+any of this then um
+
+981
+00:38:18,160 --> 00:38:21,920
+yeah please do ping me on the uh the
+
+982
+00:38:20,160 --> 00:38:24,000
+neural alpha website or
+
+983
+00:38:21,920 --> 00:38:25,359
+i think we'll be sharing our uh our
+
+984
+00:38:24,000 --> 00:38:28,000
+contact details
+
+985
+00:38:25,359 --> 00:38:30,160
+afterwards and um yeah and please do
+
+986
+00:38:28,000 --> 00:38:30,960
+have a look at neuralalpha.com if you're
+
+987
+00:38:30,160 --> 00:38:33,119
+interested in
+
+988
+00:38:30,960 --> 00:38:34,960
+any more information about what we do in
+
+989
+00:38:33,119 --> 00:38:37,599
+the uh the projects that we're
+
+990
+00:38:34,960 --> 00:38:38,560
+we're involved in and um yeah huge
+
+991
+00:38:37,599 --> 00:38:41,359
+thanks for
+
+992
+00:38:38,560 --> 00:38:42,079
+for listening and um yeah big thanks to
+
+993
+00:38:41,359 --> 00:38:44,880
+um
+
+994
+00:38:42,079 --> 00:38:45,359
+i guess to end to our sponsors uh prim
+
+995
+00:38:44,880 --> 00:38:49,680
+hill
+
+996
+00:38:45,359 --> 00:38:52,240
+computers and their servo tool
+
+997
+00:38:49,680 --> 00:38:55,920
+big big thanks to them for um for
+
+998
+00:38:52,240 --> 00:38:55,920
+supporting this event so um
+

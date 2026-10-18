@@ -1,0 +1,10384 @@
+1
+00:00:04,560 --> 00:00:10,960
+and uh welcome to this uh session so
+
+2
+00:00:08,360 --> 00:00:13,080
+because we're such a small uh group I
+
+3
+00:00:10,960 --> 00:00:14,960
+think it's going to be very uh
+
+4
+00:00:13,080 --> 00:00:17,560
+interesting for you because we can
+
+5
+00:00:14,960 --> 00:00:20,119
+really maybe talk about our experiences
+
+6
+00:00:17,560 --> 00:00:23,359
+and really help you debug stuff so that
+
+7
+00:00:20,119 --> 00:00:25,640
+we we take some time to go over uh you
+
+8
+00:00:23,359 --> 00:00:27,720
+know everyone if each of you if you have
+
+9
+00:00:25,640 --> 00:00:29,560
+an issue or something usually when I do
+
+10
+00:00:27,720 --> 00:00:31,480
+big webinars then you really have to go
+
+11
+00:00:29,560 --> 00:00:34,760
+too fast but here I think we can really
+
+12
+00:00:31,480 --> 00:00:37,800
+have the time to um to uh to work this
+
+13
+00:00:34,760 --> 00:00:40,000
+through so um I'm sharing my screen so
+
+14
+00:00:37,800 --> 00:00:41,920
+in in theory you should U uh you should
+
+15
+00:00:40,000 --> 00:00:45,079
+see everything I'm just going to present
+
+16
+00:00:41,920 --> 00:00:49,600
+myself very quickly uh so for those who
+
+17
+00:00:45,079 --> 00:00:51,760
+don't knowe me um I'm um I work at epfl
+
+18
+00:00:49,600 --> 00:00:54,160
+so at the Swiss Federal Institute of
+
+19
+00:00:51,760 --> 00:00:56,800
+Technology I work as a senior applied
+
+20
+00:00:54,160 --> 00:00:58,760
+scientist and my background is in data
+
+21
+00:00:56,800 --> 00:01:00,359
+science but in mostly Network science so
+
+22
+00:00:58,760 --> 00:01:04,320
+graphs
+
+23
+00:01:00,359 --> 00:01:07,720
+and uh I also uh half of my job is also
+
+24
+00:01:04,320 --> 00:01:10,280
+um related to the the topic of today
+
+25
+00:01:07,720 --> 00:01:12,520
+which is uh data art so we're going to
+
+26
+00:01:10,280 --> 00:01:14,159
+see together uh you know what is the
+
+27
+00:01:12,520 --> 00:01:18,159
+difference between data visualization
+
+28
+00:01:14,159 --> 00:01:21,439
+and data art art uh how does you know AI
+
+29
+00:01:18,159 --> 00:01:23,200
+art also fit fit in this pattern and
+
+30
+00:01:21,439 --> 00:01:25,960
+hopefully also work on the practical
+
+31
+00:01:23,200 --> 00:01:28,840
+skills so so that we can you know get
+
+32
+00:01:25,960 --> 00:01:30,119
+you get get you started I'm not I'm not
+
+33
+00:01:28,840 --> 00:01:31,920
+offering or promising that we're going
+
+34
+00:01:30,119 --> 00:01:34,399
+to make a beautiful art piece it's not
+
+35
+00:01:31,920 --> 00:01:36,439
+the case but I think I will at the end
+
+36
+00:01:34,399 --> 00:01:39,079
+of this Workshop uh give you the tools
+
+37
+00:01:36,439 --> 00:01:43,600
+you need to really go further further
+
+38
+00:01:39,079 --> 00:01:46,880
+and and explore it on your own so um um
+
+39
+00:01:43,600 --> 00:01:49,640
+let's just start by you know just
+
+40
+00:01:46,880 --> 00:01:51,320
+recapping what is the visualization so
+
+41
+00:01:49,640 --> 00:01:54,079
+this is typically what you would see
+
+42
+00:01:51,320 --> 00:01:57,880
+right you have bar charts line charts uh
+
+43
+00:01:54,079 --> 00:01:59,439
+and maps and so forth and if you take a
+
+44
+00:01:57,880 --> 00:02:01,399
+step back and think of what did a
+
+45
+00:01:59,439 --> 00:02:04,680
+visualization is you could say well we
+
+46
+00:02:01,399 --> 00:02:07,159
+can extract three goals right First
+
+47
+00:02:04,680 --> 00:02:10,360
+Communication you want to basically have
+
+48
+00:02:07,159 --> 00:02:13,239
+the most efficient way of communicating
+
+49
+00:02:10,360 --> 00:02:15,000
+to your audience with data so it has to
+
+50
+00:02:13,239 --> 00:02:16,840
+it has to be painless that the
+
+51
+00:02:15,000 --> 00:02:20,000
+interpretation of data should be very
+
+52
+00:02:16,840 --> 00:02:23,040
+crystal clear right if if you have a
+
+53
+00:02:20,000 --> 00:02:24,640
+hard time Deering uh the the visuals
+
+54
+00:02:23,040 --> 00:02:27,480
+then it's not maybe you're not doing a
+
+55
+00:02:24,640 --> 00:02:29,560
+good job as a data visualization uh
+
+56
+00:02:27,480 --> 00:02:33,120
+designer right so the first goal is
+
+57
+00:02:29,560 --> 00:02:34,160
+communic a now the second part is about
+
+58
+00:02:33,120 --> 00:02:37,280
+uh
+
+59
+00:02:34,160 --> 00:02:39,959
+exploration so maybe if you work and
+
+60
+00:02:37,280 --> 00:02:41,640
+after probably do because we yeah still
+
+61
+00:02:39,959 --> 00:02:43,519
+a very few number we can really make a
+
+62
+00:02:41,640 --> 00:02:47,920
+round table and maybe each of you can
+
+63
+00:02:43,519 --> 00:02:50,519
+can present uh herself or himself uh but
+
+64
+00:02:47,920 --> 00:02:52,000
+just for exploration um if you work with
+
+65
+00:02:50,519 --> 00:02:53,680
+data maybe you're data analyst dat
+
+66
+00:02:52,000 --> 00:02:55,760
+scientist machine learning engineer and
+
+67
+00:02:53,680 --> 00:02:57,360
+so forth you work with data and
+
+68
+00:02:55,760 --> 00:02:59,239
+sometimes you need to create charts to
+
+69
+00:02:57,360 --> 00:03:00,959
+be able to understand what's in the data
+
+70
+00:02:59,239 --> 00:03:03,319
+set May it's a very big data set so you
+
+71
+00:03:00,959 --> 00:03:05,400
+need to also do data visualization to
+
+72
+00:03:03,319 --> 00:03:07,640
+give you a better understanding of the
+
+73
+00:03:05,400 --> 00:03:10,239
+data so we can say that all in all it's
+
+74
+00:03:07,640 --> 00:03:12,760
+really about developing one's cognition
+
+75
+00:03:10,239 --> 00:03:15,120
+about the data set either for
+
+76
+00:03:12,760 --> 00:03:19,519
+communication or for your own
+
+77
+00:03:15,120 --> 00:03:22,640
+exploration um does it make sense so
+
+78
+00:03:19,519 --> 00:03:25,599
+far do you do you guys
+
+79
+00:03:22,640 --> 00:03:27,840
+agree
+
+80
+00:03:25,599 --> 00:03:30,200
+what so what I've been saying so far
+
+81
+00:03:27,840 --> 00:03:32,640
+doesn't make sense is it close to the
+
+82
+00:03:30,200 --> 00:03:32,640
+experience
+
+83
+00:03:35,080 --> 00:03:39,920
+or yes
+
+84
+00:03:36,920 --> 00:03:42,159
+no sounds good to me okay it's very
+
+85
+00:03:39,920 --> 00:03:45,400
+interactive right we try we just a very
+
+86
+00:03:42,159 --> 00:03:48,080
+small group so maybe before we uh go
+
+87
+00:03:45,400 --> 00:03:50,120
+further do do you maybe we can we just
+
+88
+00:03:48,080 --> 00:03:52,319
+uh introduce our Ser like you know very
+
+89
+00:03:50,120 --> 00:03:54,439
+quickly just so we know maybe a bit
+
+90
+00:03:52,319 --> 00:03:56,680
+about um just your background so it
+
+91
+00:03:54,439 --> 00:03:59,519
+would definitely help me try to frame uh
+
+92
+00:03:56,680 --> 00:04:01,959
+the explanations for later so uh I don't
+
+93
+00:03:59,519 --> 00:04:04,200
+know maybe uh Julia can go first and
+
+94
+00:04:01,959 --> 00:04:05,920
+then you can name uh someone else so and
+
+95
+00:04:04,200 --> 00:04:08,840
+we can just make this we're just a five
+
+96
+00:04:05,920 --> 00:04:10,920
+or six people so it's going to be very
+
+97
+00:04:08,840 --> 00:04:14,400
+quick
+
+98
+00:04:10,920 --> 00:04:17,320
+okay hello everyone my name is Julia I'm
+
+99
+00:04:14,400 --> 00:04:20,120
+from Russia and my background is
+
+100
+00:04:17,320 --> 00:04:24,759
+management consulting and I just started
+
+101
+00:04:20,120 --> 00:04:28,120
+a journey into Data data analytics and
+
+102
+00:04:24,759 --> 00:04:30,240
+also data visualization and programming
+
+103
+00:04:28,120 --> 00:04:33,960
+so for me it's very new
+
+104
+00:04:30,240 --> 00:04:36,320
+uh uh new industry and new topic and I I
+
+105
+00:04:33,960 --> 00:04:40,680
+think it's very interesting so I'm
+
+106
+00:04:36,320 --> 00:04:43,560
+really beginner but uh I would like to
+
+107
+00:04:40,680 --> 00:04:45,880
+explore this field and to decide if if I
+
+108
+00:04:43,560 --> 00:04:48,880
+would like to use it for business
+
+109
+00:04:45,880 --> 00:04:53,080
+purposes like you show on your on your
+
+110
+00:04:48,880 --> 00:04:53,080
+slide or I would like to become an
+
+111
+00:04:55,160 --> 00:05:01,639
+artist can you can you can you name
+
+112
+00:04:58,360 --> 00:05:01,639
+someone else so that they they
+
+113
+00:05:02,280 --> 00:05:07,160
+presents I mean or anyone wants to go
+
+114
+00:05:05,000 --> 00:05:09,479
+it's okay uh
+
+115
+00:05:07,160 --> 00:05:11,400
+sorry can you name someone else in the
+
+116
+00:05:09,479 --> 00:05:13,840
+room so that you know you do kind of
+
+117
+00:05:11,400 --> 00:05:16,680
+ping pong you name someone else and then
+
+118
+00:05:13,840 --> 00:05:19,440
+this person has to present I I don't see
+
+119
+00:05:16,680 --> 00:05:22,000
+unfortunately I don't see the names ah
+
+120
+00:05:19,440 --> 00:05:24,199
+okay sorry so I'll do I see only that we
+
+121
+00:05:22,000 --> 00:05:26,960
+we now have four or five participants
+
+122
+00:05:24,199 --> 00:05:30,560
+but I unfortunately I don't see the
+
+123
+00:05:26,960 --> 00:05:34,280
+names so please please C yourself
+
+124
+00:05:30,560 --> 00:05:36,039
+okay so I Brian Brian can you oh yes can
+
+125
+00:05:34,280 --> 00:05:39,880
+you hear me
+
+126
+00:05:36,039 --> 00:05:41,919
+yeah um yeah I'm a been background in
+
+127
+00:05:39,880 --> 00:05:45,680
+business intelligence and database
+
+128
+00:05:41,919 --> 00:05:47,280
+management for about 40 years and U uh
+
+129
+00:05:45,680 --> 00:05:49,960
+one of the things we do is business
+
+130
+00:05:47,280 --> 00:05:54,199
+business intelligence is tell stories
+
+131
+00:05:49,960 --> 00:05:56,319
+and um you know to with data with with
+
+132
+00:05:54,199 --> 00:05:59,880
+information so you know I thought this
+
+133
+00:05:56,319 --> 00:06:01,960
+was an interesting topic because the way
+
+134
+00:05:59,880 --> 00:06:03,319
+a lot of a lot of visualization that
+
+135
+00:06:01,960 --> 00:06:06,319
+goes on with data especially as you get
+
+136
+00:06:03,319 --> 00:06:08,960
+into graph databases and and the more
+
+137
+00:06:06,319 --> 00:06:11,440
+visually stimulating you can make them
+
+138
+00:06:08,960 --> 00:06:13,919
+the easier it is to to engage people and
+
+139
+00:06:11,440 --> 00:06:17,479
+tell stories with
+
+140
+00:06:13,919 --> 00:06:20,360
+data great uh yeah I'll show some of the
+
+141
+00:06:17,479 --> 00:06:22,520
+my work is very close to uh because I
+
+142
+00:06:20,360 --> 00:06:24,880
+have own my background Network so I'll
+
+143
+00:06:22,520 --> 00:06:26,680
+show you some of my data artworks that
+
+144
+00:06:24,880 --> 00:06:30,080
+are made out of networks so that will
+
+145
+00:06:26,680 --> 00:06:33,680
+probably fit the graph database part uh
+
+146
+00:06:30,080 --> 00:06:38,280
+very cool okay uh Caroline or Caroline I
+
+147
+00:06:33,680 --> 00:06:42,440
+don't know sorry if I it's Caroline so
+
+148
+00:06:38,280 --> 00:06:45,840
+um yeah I'm a product owner for um
+
+149
+00:06:42,440 --> 00:06:48,039
+software so for we what we do is we
+
+150
+00:06:45,840 --> 00:06:50,960
+generate converters to convert
+
+151
+00:06:48,039 --> 00:06:52,960
+scientific data into um a standardized a
+
+152
+00:06:50,960 --> 00:06:55,520
+standardized format the animal format I
+
+153
+00:06:52,960 --> 00:06:59,280
+don't know if you heard about that it's
+
+154
+00:06:55,520 --> 00:07:02,560
+quite um no it's it's not new but but
+
+155
+00:06:59,280 --> 00:07:05,400
+it's for chromatographic methods and for
+
+156
+00:07:02,560 --> 00:07:07,479
+um UV Vis methods and what I'm
+
+157
+00:07:05,400 --> 00:07:09,599
+interesting in interested in is how to
+
+158
+00:07:07,479 --> 00:07:10,440
+visualize these data and how to connect
+
+159
+00:07:09,599 --> 00:07:14,080
+the
+
+160
+00:07:10,440 --> 00:07:17,199
+data okay uh cool so this session is
+
+161
+00:07:14,080 --> 00:07:19,599
+really about data art so go skim over
+
+162
+00:07:17,199 --> 00:07:21,800
+quickly on data visualization but you
+
+163
+00:07:19,599 --> 00:07:23,759
+will see the tool that we that I present
+
+164
+00:07:21,800 --> 00:07:26,680
+that you guys going to really work on
+
+165
+00:07:23,759 --> 00:07:28,440
+can do you see very easily data
+
+166
+00:07:26,680 --> 00:07:30,560
+visualization that's why I'm I think
+
+167
+00:07:28,440 --> 00:07:32,400
+it's the the best tool for the job I'm
+
+168
+00:07:30,560 --> 00:07:35,000
+overselling it a bit but you'll see you
+
+169
+00:07:32,400 --> 00:07:40,120
+let me know at the end of the workshop
+
+170
+00:07:35,000 --> 00:07:42,520
+um we have a PL I don't know yeah yeah
+
+171
+00:07:40,120 --> 00:07:44,720
+it's my last time actually my first name
+
+172
+00:07:42,520 --> 00:07:47,360
+is Patrick
+
+173
+00:07:44,720 --> 00:07:50,440
+yes yeah I'm French actually I'm located
+
+174
+00:07:47,360 --> 00:07:53,240
+in Geneva so very close to you Carol I
+
+175
+00:07:50,440 --> 00:07:55,599
+guess you're at loan uh I'm in in Paris
+
+176
+00:07:53,240 --> 00:07:57,159
+between in Paris and Lan okay okay so
+
+177
+00:07:55,599 --> 00:08:00,039
+I'm located in Geneva I'm a software
+
+178
+00:07:57,159 --> 00:08:02,240
+engineer with a strong background in
+
+179
+00:08:00,039 --> 00:08:06,520
+business intelligence as well as Brian I
+
+180
+00:08:02,240 --> 00:08:09,319
+guess and I'm working now on the IOS app
+
+181
+00:08:06,520 --> 00:08:13,560
+that is intended to provide knowledge
+
+182
+00:08:09,319 --> 00:08:17,360
+graphs uh on the go on a mobile device
+
+183
+00:08:13,560 --> 00:08:19,879
+so I'm in involved in graphs and uh
+
+184
+00:08:17,360 --> 00:08:23,159
+visualization as well great you know
+
+185
+00:08:19,879 --> 00:08:24,919
+graph is really my first love so I'm
+
+186
+00:08:23,159 --> 00:08:26,479
+great I like I really love this
+
+187
+00:08:24,919 --> 00:08:28,400
+conference because it's only about I
+
+188
+00:08:26,479 --> 00:08:30,080
+mean mostly about you know AI but you
+
+189
+00:08:28,400 --> 00:08:32,360
+know data science and graph in general
+
+190
+00:08:30,080 --> 00:08:34,399
+and I think it's very peculiar
+
+191
+00:08:32,360 --> 00:08:36,240
+conference in the very broad landscape
+
+192
+00:08:34,399 --> 00:08:39,240
+of Thea science so I'm quite happy to
+
+193
+00:08:36,240 --> 00:08:41,080
+find other graph afficionados and and we
+
+194
+00:08:39,240 --> 00:08:42,800
+call it graph right when you talk about
+
+195
+00:08:41,080 --> 00:08:45,240
+people in data visualization when they
+
+196
+00:08:42,800 --> 00:08:46,839
+see a graph they think of a bar chart
+
+197
+00:08:45,240 --> 00:08:48,720
+but for us when we talk about the graph
+
+198
+00:08:46,839 --> 00:08:49,720
+then we really mean the network right so
+
+199
+00:08:48,720 --> 00:08:52,160
+it's a
+
+200
+00:08:49,720 --> 00:08:55,040
+small but great okay Patrick nice to see
+
+201
+00:08:52,160 --> 00:08:57,040
+you maybe you can rename yourself on the
+
+202
+00:08:55,040 --> 00:09:00,240
+on the tool I I just don't know how to
+
+203
+00:08:57,040 --> 00:09:03,240
+do that okay I tried
+
+204
+00:09:00,240 --> 00:09:07,160
+uh yeah okay I I cannot rename you but
+
+205
+00:09:03,240 --> 00:09:09,040
+it's okay Patrick so we have T I think
+
+206
+00:09:07,160 --> 00:09:12,320
+and sorry if I'm mispronouncing your
+
+207
+00:09:09,040 --> 00:09:15,839
+name and then we have someone
+
+208
+00:09:12,320 --> 00:09:15,839
+else can you hear
+
+209
+00:09:17,920 --> 00:09:25,560
+us okay um and actually I don't see
+
+210
+00:09:21,320 --> 00:09:28,360
+Sonia in the in the T with a t t oh yeah
+
+211
+00:09:25,560 --> 00:09:30,279
+you don't okay maybe was
+
+212
+00:09:28,360 --> 00:09:32,880
+disconnected I don't
+
+213
+00:09:30,279 --> 00:09:34,640
+know okay so that maybe I don't know
+
+214
+00:09:32,880 --> 00:09:37,839
+something went wrong so I think we let's
+
+215
+00:09:34,640 --> 00:09:40,680
+let's continue right so
+
+216
+00:09:37,839 --> 00:09:44,480
+um okay so data visualization we saw
+
+217
+00:09:40,680 --> 00:09:47,320
+everything nice um now the difference
+
+218
+00:09:44,480 --> 00:09:50,240
+between data visualization and data art
+
+219
+00:09:47,320 --> 00:09:52,760
+so data art it's my definition but I
+
+220
+00:09:50,240 --> 00:09:56,480
+think it's quite accepted with the data
+
+221
+00:09:52,760 --> 00:09:58,920
+artist it's really about um putting the
+
+222
+00:09:56,480 --> 00:10:00,880
+emotions first so of course it's made
+
+223
+00:09:58,920 --> 00:10:04,880
+out of data because it's data art and
+
+224
+00:10:00,880 --> 00:10:08,440
+not abstract art but um the goal here is
+
+225
+00:10:04,880 --> 00:10:11,279
+not to be necessarily the most um you
+
+226
+00:10:08,440 --> 00:10:12,519
+know precise or the most it's really
+
+227
+00:10:11,279 --> 00:10:14,360
+like different from data visualization
+
+228
+00:10:12,519 --> 00:10:17,079
+or you want to convey information very
+
+229
+00:10:14,360 --> 00:10:19,680
+efficiently here first we try to put the
+
+230
+00:10:17,079 --> 00:10:21,240
+emotions but because it's an art piece
+
+231
+00:10:19,680 --> 00:10:23,760
+of course it has to have a message
+
+232
+00:10:21,240 --> 00:10:26,160
+otherwise it's not really art is it and
+
+233
+00:10:23,760 --> 00:10:29,120
+this message can have different form but
+
+234
+00:10:26,160 --> 00:10:31,680
+in this example here um you see below we
+
+235
+00:10:29,120 --> 00:10:34,720
+have this uh this explanations and
+
+236
+00:10:31,680 --> 00:10:36,360
+because it's made out of data then I
+
+237
+00:10:34,720 --> 00:10:39,720
+think it's really interesting because
+
+238
+00:10:36,360 --> 00:10:42,560
+the um the value of the work does is not
+
+239
+00:10:39,720 --> 00:10:44,360
+only in the subjective artist view right
+
+240
+00:10:42,560 --> 00:10:46,639
+so I'm an artist I'm giving you my
+
+241
+00:10:44,360 --> 00:10:48,800
+interpretation of whatever but here
+
+242
+00:10:46,639 --> 00:10:51,160
+because it's based on data there is a
+
+243
+00:10:48,800 --> 00:10:53,279
+more objective truth of course it's
+
+244
+00:10:51,160 --> 00:10:55,600
+still the biased because the data all
+
+245
+00:10:53,279 --> 00:10:58,560
+data is biased but still it's based on
+
+246
+00:10:55,600 --> 00:11:01,839
+the data set so it has to have a story
+
+247
+00:10:58,560 --> 00:11:04,120
+that is conve by the data set itself and
+
+248
+00:11:01,839 --> 00:11:07,800
+for instance here what you see is um
+
+249
+00:11:04,120 --> 00:11:09,920
+Network visualization of um Twitter
+
+250
+00:11:07,800 --> 00:11:12,160
+spread so it's about the rumor spreading
+
+251
+00:11:09,920 --> 00:11:14,959
+on Twitter it's a it's a paper that that
+
+252
+00:11:12,160 --> 00:11:17,160
+we did few years back and then we can
+
+253
+00:11:14,959 --> 00:11:19,720
+really start to analyze the the content
+
+254
+00:11:17,160 --> 00:11:21,399
+of the of the graph of the but the
+
+255
+00:11:19,720 --> 00:11:22,959
+message here I'm giving you my
+
+256
+00:11:21,399 --> 00:11:24,880
+interpretation but it still comes from a
+
+257
+00:11:22,959 --> 00:11:26,720
+data set that you can source and I
+
+258
+00:11:24,880 --> 00:11:28,680
+cannot say oh this is just abstract art
+
+259
+00:11:26,720 --> 00:11:30,279
+and find whatever meaning it's about
+
+260
+00:11:28,680 --> 00:11:33,360
+it's on Twitter right so it has to have
+
+261
+00:11:30,279 --> 00:11:35,600
+a meaning and data related meaning so I
+
+262
+00:11:33,360 --> 00:11:37,200
+hope this this is pretty clear and all
+
+263
+00:11:35,600 --> 00:11:39,519
+all in all it also helps you you know
+
+264
+00:11:37,200 --> 00:11:41,560
+develop us develop cognition about the
+
+265
+00:11:39,519 --> 00:11:44,680
+data set but in another manner here it's
+
+266
+00:11:41,560 --> 00:11:47,200
+about uh if you make a good heart piece
+
+267
+00:11:44,680 --> 00:11:49,440
+maybe people like it so they uh they
+
+268
+00:11:47,200 --> 00:11:50,880
+they reflect they like the the visual or
+
+269
+00:11:49,440 --> 00:11:53,639
+they like the the message that is
+
+270
+00:11:50,880 --> 00:11:56,680
+underneath actually run a study on on
+
+271
+00:11:53,639 --> 00:11:59,880
+300 people so it's a small study and try
+
+272
+00:11:56,680 --> 00:12:02,160
+to see how impactful that data art was
+
+273
+00:11:59,880 --> 00:12:04,440
+compared to other types of art and
+
+274
+00:12:02,160 --> 00:12:07,040
+especially to convey scientific or
+
+275
+00:12:04,440 --> 00:12:10,320
+technological you know meaning and
+
+276
+00:12:07,040 --> 00:12:12,639
+people 81% think I think thought that
+
+277
+00:12:10,320 --> 00:12:14,920
+this was a good way to talk about
+
+278
+00:12:12,639 --> 00:12:17,120
+complexity scientific issues or you know
+
+279
+00:12:14,920 --> 00:12:18,800
+or technological issues because and
+
+280
+00:12:17,120 --> 00:12:21,560
+without without the description you you
+
+281
+00:12:18,800 --> 00:12:23,199
+would like them like it or not but
+
+282
+00:12:21,560 --> 00:12:25,320
+having this description and
+
+283
+00:12:23,199 --> 00:12:28,880
+understanding that is about data really
+
+284
+00:12:25,320 --> 00:12:31,079
+change your perception I think 53% of
+
+285
+00:12:28,880 --> 00:12:33,480
+people actually change so they I asked
+
+286
+00:12:31,079 --> 00:12:36,320
+them to Grade B give me a rating do you
+
+287
+00:12:33,480 --> 00:12:38,040
+like this piece why and now I give you
+
+288
+00:12:36,320 --> 00:12:39,320
+the piece and the description and now
+
+289
+00:12:38,040 --> 00:12:41,440
+that you read the
+
+290
+00:12:39,320 --> 00:12:43,920
+description I mean did your perception
+
+291
+00:12:41,440 --> 00:12:46,000
+change about the piece right and how so
+
+292
+00:12:43,920 --> 00:12:49,360
+this is basically what I tried to uh to
+
+293
+00:12:46,000 --> 00:12:52,160
+do as a as a the small study and this to
+
+294
+00:12:49,360 --> 00:12:54,760
+me was really really interesting to uh
+
+295
+00:12:52,160 --> 00:12:57,120
+uh to understand how we could uh use
+
+296
+00:12:54,760 --> 00:12:59,880
+data art as a way to convey information
+
+297
+00:12:57,120 --> 00:13:02,760
+and also influence uh uh people
+
+298
+00:12:59,880 --> 00:13:04,399
+so I hope uh this is the to me this is
+
+299
+00:13:02,760 --> 00:13:08,480
+the like the core differences between
+
+300
+00:13:04,399 --> 00:13:12,440
+data art and um and data
+
+301
+00:13:08,480 --> 00:13:15,880
+visualization so now there is this great
+
+302
+00:13:12,440 --> 00:13:17,920
+compromise because if you want to follow
+
+303
+00:13:15,880 --> 00:13:20,560
+the data visualization principles that
+
+304
+00:13:17,920 --> 00:13:22,320
+that we can talk about and learn it's a
+
+305
+00:13:20,560 --> 00:13:25,160
+field of research right it's there's
+
+306
+00:13:22,320 --> 00:13:27,440
+rules we cannot do anything you want so
+
+307
+00:13:25,160 --> 00:13:28,760
+if you really strictly follow this then
+
+308
+00:13:27,440 --> 00:13:30,240
+you have less space for artistic
+
+309
+00:13:28,760 --> 00:13:32,760
+interpret rotation because you have to
+
+310
+00:13:30,240 --> 00:13:35,760
+you know follow the rules but in if it's
+
+311
+00:13:32,760 --> 00:13:38,240
+an art piece what we should even I mean
+
+312
+00:13:35,760 --> 00:13:41,639
+why we should even care about database
+
+313
+00:13:38,240 --> 00:13:44,440
+design because it's an art piece so data
+
+314
+00:13:41,639 --> 00:13:46,199
+art is in between right so it's really
+
+315
+00:13:44,440 --> 00:13:48,720
+and it's this is what makes it
+
+316
+00:13:46,199 --> 00:13:50,720
+interesting but also makes it difficult
+
+317
+00:13:48,720 --> 00:13:54,480
+because you are sometimes it's too
+
+318
+00:13:50,720 --> 00:13:58,160
+artistic and sometimes it's too data
+
+319
+00:13:54,480 --> 00:13:59,680
+visualization is if you see what I mean
+
+320
+00:13:58,160 --> 00:14:02,959
+so it's always
+
+321
+00:13:59,680 --> 00:14:06,399
+um in between the
+
+322
+00:14:02,959 --> 00:14:09,800
+two so now let's talk about the the
+
+323
+00:14:06,399 --> 00:14:12,399
+design process so um most of you here
+
+324
+00:14:09,800 --> 00:14:14,680
+really have some background of knowing
+
+325
+00:14:12,399 --> 00:14:16,000
+Thea visualization using it analytics
+
+326
+00:14:14,680 --> 00:14:18,120
+you know software engineering so you
+
+327
+00:14:16,000 --> 00:14:19,920
+know this um I'm not sure if you're
+
+328
+00:14:18,120 --> 00:14:21,920
+familiar with the design process it's
+
+329
+00:14:19,920 --> 00:14:23,800
+very similar to even software
+
+330
+00:14:21,920 --> 00:14:27,480
+engineering process right it's like old
+
+331
+00:14:23,800 --> 00:14:29,199
+product is you don't have the the ID uh
+
+332
+00:14:27,480 --> 00:14:32,160
+straight away right it's something
+
+333
+00:14:29,199 --> 00:14:34,880
+interactive you go over it uh you change
+
+334
+00:14:32,160 --> 00:14:37,839
+it and sometimes it's crazy
+
+335
+00:14:34,880 --> 00:14:40,399
+because I can site many examples and
+
+336
+00:14:37,839 --> 00:14:42,920
+I'll show you after um or you know you
+
+337
+00:14:40,399 --> 00:14:45,079
+make something in I don't know two days
+
+338
+00:14:42,920 --> 00:14:46,600
+and but you you know you you said you
+
+339
+00:14:45,079 --> 00:14:48,399
+you know that you want to spend 15 days
+
+340
+00:14:46,600 --> 00:14:50,720
+on it because you know you you need to
+
+341
+00:14:48,399 --> 00:14:53,199
+reflect and make it you know beautiful
+
+342
+00:14:50,720 --> 00:14:54,519
+and then you you try different ideas and
+
+343
+00:14:53,199 --> 00:14:55,800
+then you try to show it to people and
+
+344
+00:14:54,519 --> 00:14:58,160
+they prefer the thing that you did in
+
+345
+00:14:55,800 --> 00:14:59,920
+two days so it's not linear at all
+
+346
+00:14:58,160 --> 00:15:01,480
+sometimes you have the Great inspiration
+
+347
+00:14:59,920 --> 00:15:03,519
+and it's much better than what you do
+
+348
+00:15:01,480 --> 00:15:06,440
+when you try to know refine and this is
+
+349
+00:15:03,519 --> 00:15:09,880
+where the design uh part of the you know
+
+350
+00:15:06,440 --> 00:15:11,880
+data visualization design is sometimes
+
+351
+00:15:09,880 --> 00:15:13,959
+you know conflicting with the just your
+
+352
+00:15:11,880 --> 00:15:15,279
+artistic sensibility right I would say
+
+353
+00:15:13,959 --> 00:15:17,720
+so sometime they Collide and you want to
+
+354
+00:15:15,279 --> 00:15:20,519
+do something more design oriented but it
+
+355
+00:15:17,720 --> 00:15:23,240
+loses um emotions or the other way
+
+356
+00:15:20,519 --> 00:15:25,000
+around right so it's um it's not like I
+
+357
+00:15:23,240 --> 00:15:28,040
+don't have a recipe to really make a
+
+358
+00:15:25,000 --> 00:15:30,639
+good data artwork but you can ask
+
+359
+00:15:28,040 --> 00:15:32,160
+yourself okay what is concept what why
+
+360
+00:15:30,639 --> 00:15:34,560
+are you going to talk so a data set for
+
+361
+00:15:32,160 --> 00:15:37,079
+sure but what what do you want to convey
+
+362
+00:15:34,560 --> 00:15:39,440
+as a message with this so first to start
+
+363
+00:15:37,079 --> 00:15:41,040
+with the concept then you find the data
+
+364
+00:15:39,440 --> 00:15:42,560
+or maybe you have the data and then you
+
+365
+00:15:41,040 --> 00:15:44,720
+have to find the concept that's not
+
+366
+00:15:42,560 --> 00:15:48,040
+conflicting with the data because we as
+
+367
+00:15:44,720 --> 00:15:49,920
+you know scientist or we try to uh also
+
+368
+00:15:48,040 --> 00:15:52,240
+be true to the data so I'm not going to
+
+369
+00:15:49,920 --> 00:15:54,519
+cherry pick stuff from my data set just
+
+370
+00:15:52,240 --> 00:15:56,720
+to make my point right I want to also
+
+371
+00:15:54,519 --> 00:15:59,600
+convey something that is actually in the
+
+372
+00:15:56,720 --> 00:16:01,199
+data set but of of course you have to
+
+373
+00:15:59,600 --> 00:16:02,839
+select some of the dimensions you cannot
+
+374
+00:16:01,199 --> 00:16:05,959
+show everything so you have to make this
+
+375
+00:16:02,839 --> 00:16:07,560
+effort of knowing what dimensions are
+
+376
+00:16:05,959 --> 00:16:09,839
+useful how you going to play with the
+
+377
+00:16:07,560 --> 00:16:12,000
+different shapes and you know the the
+
+378
+00:16:09,839 --> 00:16:13,360
+balance between something very ordered
+
+379
+00:16:12,000 --> 00:16:15,560
+like like a de visualization or
+
+380
+00:16:13,360 --> 00:16:17,600
+something completely CH chaotic so you
+
+381
+00:16:15,560 --> 00:16:21,000
+also have to play with those elements
+
+382
+00:16:17,600 --> 00:16:23,079
+here colors of course in my case I try
+
+383
+00:16:21,000 --> 00:16:24,519
+to use the colors as a way to convey
+
+384
+00:16:23,079 --> 00:16:26,480
+information as you would in data
+
+385
+00:16:24,519 --> 00:16:28,600
+visualization so for networks for
+
+386
+00:16:26,480 --> 00:16:30,720
+instance we can color the communities
+
+387
+00:16:28,600 --> 00:16:32,759
+right so so a community or network is
+
+388
+00:16:30,720 --> 00:16:34,519
+defined as you have more connection with
+
+389
+00:16:32,759 --> 00:16:36,600
+the people in your community than the
+
+390
+00:16:34,519 --> 00:16:38,680
+outside so if you form communities then
+
+391
+00:16:36,600 --> 00:16:40,079
+you have the same color then it means
+
+392
+00:16:38,680 --> 00:16:43,040
+that you know if you have the same color
+
+393
+00:16:40,079 --> 00:16:45,720
+you belong to the same Community but if
+
+394
+00:16:43,040 --> 00:16:47,480
+you know a bit about data visualization
+
+395
+00:16:45,720 --> 00:16:50,360
+um you know that we cannot display more
+
+396
+00:16:47,480 --> 00:16:52,480
+than eight colors then your brains
+
+397
+00:16:50,360 --> 00:16:55,519
+everyone's brain start to you know melt
+
+398
+00:16:52,480 --> 00:16:57,759
+and you canot really see more than eight
+
+399
+00:16:55,519 --> 00:17:01,480
+up to 10 different use right different
+
+400
+00:16:57,759 --> 00:17:03,759
+like brand green blue purple yellow and
+
+401
+00:17:01,480 --> 00:17:06,079
+after 10 you really have to make a
+
+402
+00:17:03,759 --> 00:17:08,280
+compromise so this is where you this is
+
+403
+00:17:06,079 --> 00:17:11,240
+why we get away from the data
+
+404
+00:17:08,280 --> 00:17:13,880
+visualization rules and try to put more
+
+405
+00:17:11,240 --> 00:17:15,480
+artist art and you know reuse some
+
+406
+00:17:13,880 --> 00:17:16,280
+colors that's fine right it's it's an
+
+407
+00:17:15,480 --> 00:17:18,720
+arm
+
+408
+00:17:16,280 --> 00:17:21,799
+piece is it is it clear so far do do you
+
+409
+00:17:18,720 --> 00:17:21,799
+have any questions or or
+
+410
+00:17:22,600 --> 00:17:29,559
+comments no not for
+
+411
+00:17:24,720 --> 00:17:32,520
+me okay um
+
+412
+00:17:29,559 --> 00:17:34,679
+so I'll give you some uh links so this
+
+413
+00:17:32,520 --> 00:17:36,080
+is um and you notice that I'm showing
+
+414
+00:17:34,679 --> 00:17:38,360
+you here things that are actually not
+
+415
+00:17:36,080 --> 00:17:40,400
+data art they are AI art but I just want
+
+416
+00:17:38,360 --> 00:17:42,640
+to show you I mean I do different stuff
+
+417
+00:17:40,400 --> 00:17:45,320
+so I'll try to show a bit of the range
+
+418
+00:17:42,640 --> 00:17:47,600
+of what I do I like AI art you know so
+
+419
+00:17:45,320 --> 00:17:49,840
+art made with neural networks it's not
+
+420
+00:17:47,600 --> 00:17:51,640
+really far from data so it's not a
+
+421
+00:17:49,840 --> 00:17:53,799
+visualization of data but you need data
+
+422
+00:17:51,640 --> 00:17:57,280
+to train the network it's a network
+
+423
+00:17:53,799 --> 00:17:59,520
+itself so it's still data structure and
+
+424
+00:17:57,280 --> 00:18:02,480
+um yeah you can convey different type of
+
+425
+00:17:59,520 --> 00:18:04,880
+emotion so it's more about closer to
+
+426
+00:18:02,480 --> 00:18:07,640
+really art I would characterize a
+
+427
+00:18:04,880 --> 00:18:10,159
+general art than data visualization but
+
+428
+00:18:07,640 --> 00:18:12,559
+it's I know I like I think it's nice to
+
+429
+00:18:10,159 --> 00:18:14,720
+have uh different pets of possibility
+
+430
+00:18:12,559 --> 00:18:16,200
+right so I also do some fractal art the
+
+431
+00:18:14,720 --> 00:18:17,280
+thing what I show you before here is
+
+432
+00:18:16,200 --> 00:18:20,440
+actually your
+
+433
+00:18:17,280 --> 00:18:22,360
+fractal and if you remember your fractal
+
+434
+00:18:20,440 --> 00:18:25,080
+usually it's a math function that you
+
+435
+00:18:22,360 --> 00:18:27,640
+know it's being repeated somehow and
+
+436
+00:18:25,080 --> 00:18:29,200
+everyone thinks of fractal as in the 90s
+
+437
+00:18:27,640 --> 00:18:31,520
+right something that you the mental
+
+438
+00:18:29,200 --> 00:18:33,600
+broads set maybe you heard about this
+
+439
+00:18:31,520 --> 00:18:37,240
+but you can really make crazy shapes
+
+440
+00:18:33,600 --> 00:18:39,159
+with very organic and U and uh I think
+
+441
+00:18:37,240 --> 00:18:41,200
+is something that not very well known so
+
+442
+00:18:39,159 --> 00:18:43,360
+just showing you this around you can the
+
+443
+00:18:41,200 --> 00:18:45,120
+software is to do this uh for sure it's
+
+444
+00:18:43,360 --> 00:18:46,640
+not this Workshop but just to show you
+
+445
+00:18:45,120 --> 00:18:48,960
+the range if you need to express your
+
+446
+00:18:46,640 --> 00:18:51,000
+artistic sensibility with technology
+
+447
+00:18:48,960 --> 00:18:53,080
+there's T without having to paint
+
+448
+00:18:51,000 --> 00:18:54,159
+there's tons of way of doing there
+
+449
+00:18:53,080 --> 00:18:56,000
+that's
+
+450
+00:18:54,159 --> 00:18:59,760
+always
+
+451
+00:18:56,000 --> 00:19:00,880
+so and here do you so does this ring a
+
+452
+00:18:59,760 --> 00:19:03,320
+bell for people who do data
+
+453
+00:19:00,880 --> 00:19:05,919
+visualization a bit this uh this kind of
+
+454
+00:19:03,320 --> 00:19:09,159
+color scheme so let me try to open
+
+455
+00:19:05,919 --> 00:19:11,000
+this um does it ring a be right when you
+
+456
+00:19:09,159 --> 00:19:13,360
+want to create some visuals you usually
+
+457
+00:19:11,000 --> 00:19:16,360
+use one of these color
+
+458
+00:19:13,360 --> 00:19:16,360
+Maps
+
+459
+00:19:16,400 --> 00:19:22,159
+yes not
+
+460
+00:19:18,960 --> 00:19:25,640
+really yes it sense to me just a
+
+461
+00:19:22,159 --> 00:19:29,200
+question K are you um reading the
+
+462
+00:19:25,640 --> 00:19:32,000
+conversation panel as well or are just
+
+463
+00:19:29,200 --> 00:19:35,480
+are you just expecting us to feedback to
+
+464
+00:19:32,000 --> 00:19:37,720
+give feedback uh in audio yes uh because
+
+465
+00:19:35,480 --> 00:19:39,640
+it's a it's a very small Workshop so and
+
+466
+00:19:37,720 --> 00:19:42,640
+we are few people so don't really don't
+
+467
+00:19:39,640 --> 00:19:44,320
+to shine it's I like when small groups
+
+468
+00:19:42,640 --> 00:19:45,919
+because you can really interact and it's
+
+469
+00:19:44,320 --> 00:19:46,880
+I think it's it's a better experience
+
+470
+00:19:45,919 --> 00:19:49,120
+because otherwise I'm going to talk for
+
+471
+00:19:46,880 --> 00:19:51,360
+four hours and it's going to be boring
+
+472
+00:19:49,120 --> 00:19:57,000
+okay so really don't hesitate to share
+
+473
+00:19:51,360 --> 00:19:57,000
+your experience uh and and talk
+
+474
+00:19:58,880 --> 00:20:05,039
+so okay so going back to the color
+
+475
+00:20:02,480 --> 00:20:07,720
+schemes uh this is very standard right
+
+476
+00:20:05,039 --> 00:20:10,799
+you have this in Old dat vistion
+
+477
+00:20:07,720 --> 00:20:13,039
+packages uh good ones at least so this
+
+478
+00:20:10,799 --> 00:20:14,919
+is something you can you can use and we
+
+479
+00:20:13,039 --> 00:20:17,880
+can really talk if you want after more
+
+480
+00:20:14,919 --> 00:20:19,799
+about the the theory behind why those
+
+481
+00:20:17,880 --> 00:20:22,280
+color maps are like this and how to make
+
+482
+00:20:19,799 --> 00:20:25,679
+a good color map here I'm just showing
+
+483
+00:20:22,280 --> 00:20:28,960
+you um website that you can uh use to
+
+484
+00:20:25,679 --> 00:20:30,919
+make your own colors so this website is
+
+485
+00:20:28,960 --> 00:20:33,360
+very very useful because it allows you
+
+486
+00:20:30,919 --> 00:20:36,280
+to to check when you create colors that
+
+487
+00:20:33,360 --> 00:20:39,720
+they are you know smooth to the eyes
+
+488
+00:20:36,280 --> 00:20:42,200
+right so how do we do that usually if
+
+489
+00:20:39,720 --> 00:20:43,640
+you type any type of color you what you
+
+490
+00:20:42,200 --> 00:20:45,320
+if you want to make a good color map you
+
+491
+00:20:43,640 --> 00:20:47,400
+have to make sure that the lightness is
+
+492
+00:20:45,320 --> 00:20:49,280
+going you know increasing in in One
+
+493
+00:20:47,400 --> 00:20:50,520
+Direction on the other and you use the
+
+494
+00:20:49,280 --> 00:20:52,480
+same you should not have something that
+
+495
+00:20:50,520 --> 00:20:55,679
+is like makes waves otherwise it's going
+
+496
+00:20:52,480 --> 00:21:00,760
+to be very difficult to uh interpret the
+
+497
+00:20:55,679 --> 00:21:03,360
+data and um the the best example of the
+
+498
+00:21:00,760 --> 00:21:05,880
+worst color app ever created is the one
+
+499
+00:21:03,360 --> 00:21:09,600
+that everyone uses in science from mat
+
+500
+00:21:05,880 --> 00:21:11,919
+lab which is called the jet color map
+
+501
+00:21:09,600 --> 00:21:15,440
+that maybe you know this one is the
+
+502
+00:21:11,919 --> 00:21:18,400
+worst color map ever created by far and
+
+503
+00:21:15,440 --> 00:21:20,799
+I can show you just why can you see this
+
+504
+00:21:18,400 --> 00:21:24,039
+image here on the
+
+505
+00:21:20,799 --> 00:21:29,120
+right yes yeah
+
+506
+00:21:24,039 --> 00:21:31,120
+so can you see that this s this this
+
+507
+00:21:29,120 --> 00:21:33,840
+seems that to be have two lines that
+
+508
+00:21:31,120 --> 00:21:36,320
+even three lines like one here one in
+
+509
+00:21:33,840 --> 00:21:39,679
+the S and one in the yellow that is
+
+510
+00:21:36,320 --> 00:21:44,720
+brighter than the rest can you see that
+
+511
+00:21:39,679 --> 00:21:46,480
+yes yes so this creates an artifact when
+
+512
+00:21:44,720 --> 00:21:48,440
+you trying to interpret the data it's
+
+513
+00:21:46,480 --> 00:21:50,960
+wrong because this is just a color why
+
+514
+00:21:48,440 --> 00:21:53,360
+should we have you know lighter colors
+
+515
+00:21:50,960 --> 00:21:54,840
+at the middle and this creates tons of
+
+516
+00:21:53,360 --> 00:21:57,360
+you know issues when you try to
+
+517
+00:21:54,840 --> 00:21:59,320
+interpret the data so this is and this
+
+518
+00:21:57,360 --> 00:22:02,799
+col app is used every you can see it
+
+519
+00:21:59,320 --> 00:22:05,039
+here how worse like this bright and here
+
+520
+00:22:02,799 --> 00:22:07,919
+it's too dark and it it doesn't make any
+
+521
+00:22:05,039 --> 00:22:10,039
+sense to use this one this is why people
+
+522
+00:22:07,919 --> 00:22:12,840
+have been you know now that I it was
+
+523
+00:22:10,039 --> 00:22:14,840
+used for 20 years and now people are um
+
+524
+00:22:12,840 --> 00:22:17,760
+you know switched to something that is
+
+525
+00:22:14,840 --> 00:22:20,400
+more um perceptually linear so that you
+
+526
+00:22:17,760 --> 00:22:22,240
+make sure that the lightness is smooth
+
+527
+00:22:20,400 --> 00:22:25,520
+saturation you and you can check here in
+
+528
+00:22:22,240 --> 00:22:27,600
+this uh um in this website C you have
+
+529
+00:22:25,520 --> 00:22:29,600
+you can put any colors and then you can
+
+530
+00:22:27,600 --> 00:22:32,240
+correct lightness so they change this so
+
+531
+00:22:29,600 --> 00:22:34,840
+that it works and you can also uh check
+
+532
+00:22:32,240 --> 00:22:36,360
+for column blindness and see if people
+
+533
+00:22:34,840 --> 00:22:37,960
+with different color blindness could
+
+534
+00:22:36,360 --> 00:22:40,080
+actually perceive the different colors
+
+535
+00:22:37,960 --> 00:22:43,400
+that you that you do this is very very
+
+536
+00:22:40,080 --> 00:22:45,400
+handy as a as a tool and you can do that
+
+537
+00:22:43,400 --> 00:22:48,320
+with either like sequential column apps
+
+538
+00:22:45,400 --> 00:22:52,080
+or if you want to do the diverging
+
+539
+00:22:48,320 --> 00:22:53,559
+column apps so this is just a small uh
+
+540
+00:22:52,080 --> 00:22:56,559
+parentheses I'm giving you tips more
+
+541
+00:22:53,559 --> 00:22:59,279
+from the database analytics side and we
+
+542
+00:22:56,559 --> 00:23:02,640
+go back to the data art just after
+
+543
+00:22:59,279 --> 00:23:06,200
+uh yeah this one as well like Adobe
+
+544
+00:23:02,640 --> 00:23:09,320
+color um or you can you know find any
+
+545
+00:23:06,200 --> 00:23:12,000
+you know colors and you want you
+
+546
+00:23:09,320 --> 00:23:13,480
+can check and automatically extract a
+
+547
+00:23:12,000 --> 00:23:16,279
+color M this could be useful when you
+
+548
+00:23:13,480 --> 00:23:18,679
+want to stylize your your visualizations
+
+549
+00:23:16,279 --> 00:23:22,080
+or art piece right what I do usually is
+
+550
+00:23:18,679 --> 00:23:24,600
+I try to take a smooth um so to use this
+
+551
+00:23:22,080 --> 00:23:26,960
+tool to create to make sure that my
+
+552
+00:23:24,600 --> 00:23:29,240
+colors are are really relevant and that
+
+553
+00:23:26,960 --> 00:23:31,480
+they're not too bright and the like we
+
+554
+00:23:29,240 --> 00:23:34,039
+spots that you know that that stands out
+
+555
+00:23:31,480 --> 00:23:36,480
+and for no reason and then of course I
+
+556
+00:23:34,039 --> 00:23:38,440
+do some post-processing color grading
+
+557
+00:23:36,480 --> 00:23:41,840
+but I'm using these kinds of tools
+
+558
+00:23:38,440 --> 00:23:43,400
+myself to for the art piece so this is
+
+559
+00:23:41,840 --> 00:23:46,000
+why they should be quite smooth when you
+
+560
+00:23:43,400 --> 00:23:47,640
+look at them um so for instance this is
+
+561
+00:23:46,000 --> 00:23:50,279
+a network
+
+562
+00:23:47,640 --> 00:23:53,200
+visualization so because it's a Network
+
+563
+00:23:50,279 --> 00:23:56,159
+Conference um about the montra jazz
+
+564
+00:23:53,200 --> 00:23:58,679
+festival so maybe you know about this
+
+565
+00:23:56,159 --> 00:24:01,039
+music festival um it's one of the most
+
+566
+00:23:58,679 --> 00:24:04,440
+famous one and what you see here each
+
+567
+00:24:01,039 --> 00:24:07,080
+node is an artist that participated in
+
+568
+00:24:04,440 --> 00:24:09,520
+this Mt jazz festival it has been going
+
+569
+00:24:07,080 --> 00:24:11,600
+on for more than 50 years and they are
+
+570
+00:24:09,520 --> 00:24:15,279
+connected together if they played on
+
+571
+00:24:11,600 --> 00:24:18,000
+stage so over time you have this lead uh
+
+572
+00:24:15,279 --> 00:24:20,159
+you know singer guitarist and they come
+
+573
+00:24:18,000 --> 00:24:22,200
+with their band and but the band can
+
+574
+00:24:20,159 --> 00:24:23,840
+change over time right 10 years later
+
+575
+00:24:22,200 --> 00:24:25,880
+but the lead singer is always there so
+
+576
+00:24:23,840 --> 00:24:27,760
+that it connects people over time and
+
+577
+00:24:25,880 --> 00:24:29,559
+then you have this very interesting
+
+578
+00:24:27,760 --> 00:24:31,960
+visualization because you have this very
+
+579
+00:24:29,559 --> 00:24:35,440
+dense connected Center all the stars of
+
+580
+00:24:31,960 --> 00:24:37,440
+the festival such as bigy king Santana
+
+581
+00:24:35,440 --> 00:24:38,960
+George Juke you know all the people that
+
+582
+00:24:37,440 --> 00:24:40,640
+you would expect in jazz and blues but
+
+583
+00:24:38,960 --> 00:24:44,799
+it's not only about jazz this this
+
+584
+00:24:40,640 --> 00:24:46,840
+Festival is you have a hip-hop R&B metal
+
+585
+00:24:44,799 --> 00:24:49,760
+you know punk rock tons of different
+
+586
+00:24:46,840 --> 00:24:54,679
+music here when you are on the outskirts
+
+587
+00:24:49,760 --> 00:24:56,240
+you can be very popular as um as a group
+
+588
+00:24:54,679 --> 00:24:57,919
+but it doesn't mean that you actually
+
+589
+00:24:56,240 --> 00:24:59,679
+connected with other people so you can
+
+590
+00:24:57,919 --> 00:25:01,640
+be popular but you're still in your own
+
+591
+00:24:59,679 --> 00:25:04,039
+small little uh
+
+592
+00:25:01,640 --> 00:25:08,880
+cluster
+
+593
+00:25:04,039 --> 00:25:14,320
+right um okay does it make
+
+594
+00:25:08,880 --> 00:25:18,799
+sense yes in this case car uh is it a 3D
+
+595
+00:25:14,320 --> 00:25:22,000
+um no it's a static static 2D image but
+
+596
+00:25:18,799 --> 00:25:25,640
+it okay but it looks like it's it's a 3D
+
+597
+00:25:22,000 --> 00:25:27,320
+or okay but it's just 2D okay it's 2D uh
+
+598
+00:25:25,640 --> 00:25:30,960
+so 3D
+
+599
+00:25:27,320 --> 00:25:34,000
+Network layouts are very very expensive
+
+600
+00:25:30,960 --> 00:25:36,120
+and uh not very good actually so it's
+
+601
+00:25:34,000 --> 00:25:38,799
+difficult I can not sure if I can show
+
+602
+00:25:36,120 --> 00:25:40,880
+you I have one example but they made me
+
+603
+00:25:38,799 --> 00:25:43,159
+sign 17 Page of contract so I cannot
+
+604
+00:25:40,880 --> 00:25:45,520
+show this trying to find another 3D
+
+605
+00:25:43,159 --> 00:25:47,360
+layout Network layout but you'll see
+
+606
+00:25:45,520 --> 00:25:48,840
+with the tool when we go to the next
+
+607
+00:25:47,360 --> 00:25:50,919
+part when you really start to practice
+
+608
+00:25:48,840 --> 00:25:53,279
+how we can everything is going to be 3D
+
+609
+00:25:50,919 --> 00:25:55,600
+by default okay maybe one question what
+
+610
+00:25:53,279 --> 00:25:59,000
+was the site the website you used for
+
+611
+00:25:55,600 --> 00:26:01,000
+that uh visualization for net or
+
+612
+00:25:59,000 --> 00:26:05,600
+you know the one that shows the color
+
+613
+00:26:01,000 --> 00:26:07,640
+and where yeah yeah I can um so let me
+
+614
+00:26:05,600 --> 00:26:10,520
+I'm not sure I can if I put things in
+
+615
+00:26:07,640 --> 00:26:12,159
+the chat I think you can the slides also
+
+616
+00:26:10,520 --> 00:26:14,480
+would be shared then the session is
+
+617
+00:26:12,159 --> 00:26:17,039
+recorded but I'm just going going to
+
+618
+00:26:14,480 --> 00:26:18,039
+send this as we go along here right yeah
+
+619
+00:26:17,039 --> 00:26:21,039
+this
+
+620
+00:26:18,039 --> 00:26:23,720
+one I can send in the chat can you see
+
+621
+00:26:21,039 --> 00:26:28,640
+that okay yeah perfect thank
+
+622
+00:26:23,720 --> 00:26:32,960
+you um so
+
+623
+00:26:28,640 --> 00:26:36,480
+so so the modes on that graph are bands
+
+624
+00:26:32,960 --> 00:26:38,640
+or individual people right artists
+
+625
+00:26:36,480 --> 00:26:41,360
+artists musicians right any you know if
+
+626
+00:26:38,640 --> 00:26:45,679
+you if you go on stage you'll
+
+627
+00:26:41,360 --> 00:26:48,600
+here and and the edges are there um
+
+628
+00:26:45,679 --> 00:26:50,480
+contacts with other artists on stage
+
+629
+00:26:48,600 --> 00:26:53,399
+right if you are connected only if you
+
+630
+00:26:50,480 --> 00:26:56,919
+play on you know one particular concert
+
+631
+00:26:53,399 --> 00:26:58,919
+on stage oh so it's only you know live
+
+632
+00:26:56,919 --> 00:27:02,000
+it's only for this Festival it's only
+
+633
+00:26:58,919 --> 00:27:05,320
+they interacted together during this mon
+
+634
+00:27:02,000 --> 00:27:08,440
+jazz festival I
+
+635
+00:27:05,320 --> 00:27:10,440
+see okay that's really cool yeah I'll
+
+636
+00:27:08,440 --> 00:27:11,640
+show you I can show you actually this
+
+637
+00:27:10,440 --> 00:27:15,120
+example
+
+638
+00:27:11,640 --> 00:27:17,000
+maybe uh no this is not okay let me show
+
+639
+00:27:15,120 --> 00:27:19,480
+you another example related to deontra
+
+640
+00:27:17,000 --> 00:27:21,480
+so this is a static uh I'll show you
+
+641
+00:27:19,480 --> 00:27:24,559
+some other type of work but let me show
+
+642
+00:27:21,480 --> 00:27:27,520
+you what we did so the montra Jazz uh is
+
+643
+00:27:24,559 --> 00:27:29,480
+a big deal at tpfl University because
+
+644
+00:27:27,520 --> 00:27:32,840
+they are in charge of digitizing all the
+
+645
+00:27:29,480 --> 00:27:35,039
+concert and it's 2.7 petabyte of data
+
+646
+00:27:32,840 --> 00:27:37,200
+right so it's it's really really big and
+
+647
+00:27:35,039 --> 00:27:41,000
+I can show you in another um
+
+648
+00:27:37,200 --> 00:27:44,360
+presentation but um it's and we we
+
+649
+00:27:41,000 --> 00:27:48,360
+basically try to um create an experience
+
+650
+00:27:44,360 --> 00:27:50,360
+around this and uh so that we were let
+
+651
+00:27:48,360 --> 00:27:53,559
+people actually browse and Inter
+
+652
+00:27:50,360 --> 00:27:56,000
+interact with the with the the the
+
+653
+00:27:53,559 --> 00:27:58,440
+visualization so let me just show you
+
+654
+00:27:56,000 --> 00:27:59,919
+this one quickly if you have more so it
+
+655
+00:27:58,440 --> 00:28:02,679
+started with the thing that you saw
+
+656
+00:27:59,919 --> 00:28:04,559
+right but
+
+657
+00:28:02,679 --> 00:28:07,159
+um
+
+658
+00:28:04,559 --> 00:28:11,480
+yes so this is basically to give you an
+
+659
+00:28:07,159 --> 00:28:14,440
+idea of the data set 11,000 hours of of
+
+660
+00:28:11,480 --> 00:28:16,760
+video so it's it's it's huge right it's
+
+661
+00:28:14,440 --> 00:28:18,600
+2.7 petabyte of data because you have
+
+662
+00:28:16,760 --> 00:28:20,440
+different cameras right and even in
+
+663
+00:28:18,600 --> 00:28:21,799
+audio we try to have each instrument I
+
+664
+00:28:20,440 --> 00:28:25,000
+mean at the beginning of course it was
+
+665
+00:28:21,799 --> 00:28:28,159
+just bad in the 50s 60s was not really
+
+666
+00:28:25,000 --> 00:28:29,600
+good but now it's 8K uh it's really
+
+667
+00:28:28,159 --> 00:28:32,080
+tried to stay stateof the art in terms
+
+668
+00:28:29,600 --> 00:28:35,519
+of um for the technology to digitize the
+
+669
+00:28:32,080 --> 00:28:37,600
+concert and so basically we tried I I
+
+670
+00:28:35,519 --> 00:28:40,559
+tried to create the kind of map here and
+
+671
+00:28:37,600 --> 00:28:42,080
+I hopefully you see it and it's not uh
+
+672
+00:28:40,559 --> 00:28:43,960
+it's a bit smooth I don't know because
+
+673
+00:28:42,080 --> 00:28:47,399
+it doesn't seem very smooth on my end
+
+674
+00:28:43,960 --> 00:28:49,120
+but hopefully it's not too too laggy and
+
+675
+00:28:47,399 --> 00:28:51,320
+you see this kind of map or you can
+
+676
+00:28:49,120 --> 00:28:54,240
+click on the artist and they are
+
+677
+00:28:51,320 --> 00:28:55,320
+connected and uh this all the points
+
+678
+00:28:54,240 --> 00:28:57,120
+that you see are artists that
+
+679
+00:28:55,320 --> 00:28:59,640
+participated in this monre Jaz festival
+
+680
+00:28:57,120 --> 00:29:01,600
+and you can see that it's it comes from
+
+681
+00:28:59,640 --> 00:29:03,080
+uh they come from all over the world and
+
+682
+00:29:01,600 --> 00:29:06,279
+when you click on an artist you have
+
+683
+00:29:03,080 --> 00:29:08,279
+this link that is defined as the musical
+
+684
+00:29:06,279 --> 00:29:10,399
+similarity between
+
+685
+00:29:08,279 --> 00:29:13,559
+artists and then you can wonder how do
+
+686
+00:29:10,399 --> 00:29:15,919
+you compute this musical similarity so
+
+687
+00:29:13,559 --> 00:29:18,840
+we go on each song and with machine
+
+688
+00:29:15,919 --> 00:29:21,440
+learning we try to extract the Rhythm
+
+689
+00:29:18,840 --> 00:29:23,399
+the notes the melody the harmony all the
+
+690
+00:29:21,440 --> 00:29:25,960
+audio features that we can think of and
+
+691
+00:29:23,399 --> 00:29:28,760
+we can basically try to extract then you
+
+692
+00:29:25,960 --> 00:29:31,320
+start to compare songs together and you
+
+693
+00:29:28,760 --> 00:29:32,960
+group them so that you can start to now
+
+694
+00:29:31,320 --> 00:29:35,279
+group songs by artists and then you can
+
+695
+00:29:32,960 --> 00:29:38,080
+basically have a link a measure of
+
+696
+00:29:35,279 --> 00:29:40,279
+musical seminar between artists and this
+
+697
+00:29:38,080 --> 00:29:42,360
+is what you see here this green all the
+
+698
+00:29:40,279 --> 00:29:45,240
+green arrows and the the width of the
+
+699
+00:29:42,360 --> 00:29:46,640
+link is proportional to the to the of
+
+700
+00:29:45,240 --> 00:29:47,840
+something like the musical similarity
+
+701
+00:29:46,640 --> 00:29:50,840
+between
+
+702
+00:29:47,840 --> 00:29:53,919
+artists so this is was quite helpful as
+
+703
+00:29:50,840 --> 00:29:56,840
+a tool to for ethn musicologist so
+
+704
+00:29:53,919 --> 00:29:58,760
+people who study the origin of Music uh
+
+705
+00:29:56,840 --> 00:30:00,600
+to see how you know like BB King
+
+706
+00:29:58,760 --> 00:30:02,919
+influenced the blues world right so you
+
+707
+00:30:00,600 --> 00:30:06,159
+see BB King has arrows to tons of
+
+708
+00:30:02,919 --> 00:30:08,760
+different artists and so this is another
+
+709
+00:30:06,159 --> 00:30:12,080
+way of using um a network creating a
+
+710
+00:30:08,760 --> 00:30:14,559
+special camera Network just for this
+
+711
+00:30:12,080 --> 00:30:18,519
+data exploration was it a color of the
+
+712
+00:30:14,559 --> 00:30:20,039
+point in this case the color is um is um
+
+713
+00:30:18,519 --> 00:30:21,360
+according to the number of connection
+
+714
+00:30:20,039 --> 00:30:25,880
+that you have so the more connected you
+
+715
+00:30:21,360 --> 00:30:27,720
+are the the darker right okay right um
+
+716
+00:30:25,880 --> 00:30:29,640
+and then we also try to this Festival
+
+717
+00:30:27,720 --> 00:30:33,440
+also start to study the evolution of
+
+718
+00:30:29,640 --> 00:30:34,919
+music genres over time and you see at
+
+719
+00:30:33,440 --> 00:30:37,080
+the beginning of the festival here so
+
+720
+00:30:34,919 --> 00:30:39,000
+this you should read that with time so
+
+721
+00:30:37,080 --> 00:30:41,840
+this is time this is at the beginning
+
+722
+00:30:39,000 --> 00:30:43,399
+this is now and the width of the of the
+
+723
+00:30:41,840 --> 00:30:46,799
+line here is proportional to the number
+
+724
+00:30:43,399 --> 00:30:48,480
+of song in that particular music genre
+
+725
+00:30:46,799 --> 00:30:50,720
+right so you see that the jazz is more
+
+726
+00:30:48,480 --> 00:30:52,519
+less constant over time but we have more
+
+727
+00:30:50,720 --> 00:30:55,799
+and more songs because at the beginning
+
+728
+00:30:52,519 --> 00:30:58,440
+was only one evening two concerts now we
+
+729
+00:30:55,799 --> 00:30:59,720
+have three stages 15 days
+
+730
+00:30:58,440 --> 00:31:01,399
+of concert so of course you have more
+
+731
+00:30:59,720 --> 00:31:03,880
+songs now than at the beginning and you
+
+732
+00:31:01,399 --> 00:31:05,880
+can see even here all the bumps when
+
+733
+00:31:03,880 --> 00:31:07,799
+they open the new stage or when they had
+
+734
+00:31:05,880 --> 00:31:10,799
+more artist to the
+
+735
+00:31:07,799 --> 00:31:12,600
+lineup so you see that how we shifted
+
+736
+00:31:10,799 --> 00:31:15,159
+from the visualization part to something
+
+737
+00:31:12,600 --> 00:31:17,360
+a bit more it's still visualization but
+
+738
+00:31:15,159 --> 00:31:20,080
+a bit more artistic a bit more difficult
+
+739
+00:31:17,360 --> 00:31:21,720
+to interpret and then basically yeah
+
+740
+00:31:20,080 --> 00:31:23,200
+creating this this network that I
+
+741
+00:31:21,720 --> 00:31:26,320
+mentioned like
+
+742
+00:31:23,200 --> 00:31:27,519
+this and uh now this is another version
+
+743
+00:31:26,320 --> 00:31:28,559
+so the one that I show you was the
+
+744
+00:31:27,519 --> 00:31:31,840
+original
+
+745
+00:31:28,559 --> 00:31:33,760
+uh ID that that I had and now we tried
+
+746
+00:31:31,840 --> 00:31:35,840
+to create an experience that was
+
+747
+00:31:33,760 --> 00:31:38,600
+interactive so we used exactly the same
+
+748
+00:31:35,840 --> 00:31:41,799
+technique and now we we had this kind of
+
+749
+00:31:38,600 --> 00:31:43,480
+in 3D and we could have now you see this
+
+750
+00:31:41,799 --> 00:31:46,240
+the CL the center here we have still BB
+
+751
+00:31:43,480 --> 00:31:49,720
+King Santana George like all the the
+
+752
+00:31:46,240 --> 00:31:53,039
+main artist and we we put this
+
+753
+00:31:49,720 --> 00:31:56,440
+experience into a museum actually and so
+
+754
+00:31:53,039 --> 00:31:59,159
+it looks like this you go you enter this
+
+755
+00:31:56,440 --> 00:32:01,600
+half hemisphere right like a planetarium
+
+756
+00:31:59,159 --> 00:32:04,120
+right you lie down you look up to the
+
+757
+00:32:01,600 --> 00:32:06,559
+sky and you have this controller that we
+
+758
+00:32:04,120 --> 00:32:08,480
+the Prototype version that we read it
+
+759
+00:32:06,559 --> 00:32:10,240
+where you move it around and depending
+
+760
+00:32:08,480 --> 00:32:12,679
+on where you point basically you you
+
+761
+00:32:10,240 --> 00:32:15,760
+could see and you could select an artist
+
+762
+00:32:12,679 --> 00:32:17,919
+and now also read um I mean watch the
+
+763
+00:32:15,760 --> 00:32:19,120
+concerts and then the different
+
+764
+00:32:17,919 --> 00:32:22,679
+different concerts and then on each
+
+765
+00:32:19,120 --> 00:32:24,360
+concert the different tracks so this is
+
+766
+00:32:22,679 --> 00:32:27,000
+what it would look
+
+767
+00:32:24,360 --> 00:32:28,600
+like you have people inside I cannot
+
+768
+00:32:27,000 --> 00:32:31,159
+really show everything because of the
+
+769
+00:32:28,600 --> 00:32:33,519
+copyright issues but you have this 3D
+
+770
+00:32:31,159 --> 00:32:36,320
+Network right and people can play this
+
+771
+00:32:33,519 --> 00:32:37,840
+is how they move around the the sphere
+
+772
+00:32:36,320 --> 00:32:39,840
+and then at some point it's there's no
+
+773
+00:32:37,840 --> 00:32:41,519
+name the idea is to be completely lost
+
+774
+00:32:39,840 --> 00:32:43,639
+in the festival and really have people
+
+775
+00:32:41,519 --> 00:32:45,519
+play around and then when you click on
+
+776
+00:32:43,639 --> 00:32:47,720
+an artist you load all the different
+
+777
+00:32:45,519 --> 00:32:51,240
+concerts so people have headphones and
+
+778
+00:32:47,720 --> 00:32:54,399
+they can stay uh yeah we try it's more
+
+779
+00:32:51,240 --> 00:32:56,440
+than 100 days so without sleeping the
+
+780
+00:32:54,399 --> 00:32:59,360
+content is huge
+
+781
+00:32:56,440 --> 00:33:03,039
+40,000 uh song songs so you can really
+
+782
+00:32:59,360 --> 00:33:05,720
+spend the days uh in it and explore the
+
+783
+00:33:03,039 --> 00:33:09,919
+concept do you have a version available
+
+784
+00:33:05,720 --> 00:33:11,799
+uh for the year no right it's only tons
+
+785
+00:33:09,919 --> 00:33:13,639
+of copyright issues right so you cannot
+
+786
+00:33:11,799 --> 00:33:16,200
+display anything unless you at the pfl
+
+787
+00:33:13,639 --> 00:33:18,039
+or the mon because they didn't think
+
+788
+00:33:16,200 --> 00:33:20,039
+this through when they started it so
+
+789
+00:33:18,039 --> 00:33:21,519
+people didn't really sign any contracts
+
+790
+00:33:20,039 --> 00:33:24,279
+and not that they're dead because most
+
+791
+00:33:21,519 --> 00:33:26,639
+of the artists you know are old then
+
+792
+00:33:24,279 --> 00:33:29,760
+it's a legal nightmare so it's difficult
+
+793
+00:33:26,639 --> 00:33:29,760
+to actually show stuff
+
+794
+00:33:31,440 --> 00:33:35,399
+sorry so yeah this is the the
+
+795
+00:33:33,639 --> 00:33:37,799
+visualization uh
+
+796
+00:33:35,399 --> 00:33:40,159
+here so I hope it was a bit clear like
+
+797
+00:33:37,799 --> 00:33:43,120
+the the path right to create this uh
+
+798
+00:33:40,159 --> 00:33:44,840
+this idea and the story that goes behind
+
+799
+00:33:43,120 --> 00:33:46,519
+so I'm here to tell it to you but
+
+800
+00:33:44,840 --> 00:33:48,080
+usually you also have it in the
+
+801
+00:33:46,519 --> 00:33:51,679
+description or you can have it as a
+
+802
+00:33:48,080 --> 00:33:56,440
+video that that is next to the the piece
+
+803
+00:33:51,679 --> 00:34:00,320
+right um right the how how do they
+
+804
+00:33:56,440 --> 00:34:02,240
+select the music so they they move
+
+805
+00:34:00,320 --> 00:34:04,679
+around this this spherical controller
+
+806
+00:34:02,240 --> 00:34:07,639
+right can can you see me so I have this
+
+807
+00:34:04,679 --> 00:34:09,280
+this is my my trusty pig that I use
+
+808
+00:34:07,639 --> 00:34:12,079
+right so imagine this is this you move
+
+809
+00:34:09,280 --> 00:34:13,679
+it around and we know where you are on
+
+810
+00:34:12,079 --> 00:34:16,200
+the scene and we use the it's a phone we
+
+811
+00:34:13,679 --> 00:34:18,560
+use the accelerer inside to also you
+
+812
+00:34:16,200 --> 00:34:20,599
+know find the direction of where you
+
+813
+00:34:18,560 --> 00:34:23,800
+point like
+
+814
+00:34:20,599 --> 00:34:26,440
+this around so that's a dome of
+
+815
+00:34:23,800 --> 00:34:29,359
+projected light and the the thing that
+
+816
+00:34:26,440 --> 00:34:32,119
+you hold yes four two projector 4K
+
+817
+00:34:29,359 --> 00:34:34,560
+projector that are actually sync and
+
+818
+00:34:32,119 --> 00:34:37,639
+stitched and you see that isly as a
+
+819
+00:34:34,560 --> 00:34:39,879
+planetarium right you you look but Plum
+
+820
+00:34:37,639 --> 00:34:42,079
+is usually it's at the center here it's
+
+821
+00:34:39,879 --> 00:34:44,760
+hidden right but it's stitched so it's
+
+822
+00:34:42,079 --> 00:34:46,839
+two 4K projectors you have to calibrate
+
+823
+00:34:44,760 --> 00:34:48,919
+them it's I mean just to move this
+
+824
+00:34:46,839 --> 00:34:51,919
+installation around it cost around
+
+825
+00:34:48,919 --> 00:34:54,839
+30,000 bucks and the installation itself
+
+826
+00:34:51,919 --> 00:34:57,680
+is around 300,000 bucks so it's quite
+
+827
+00:34:54,839 --> 00:34:59,359
+expensive but I'm just the techn the
+
+828
+00:34:57,680 --> 00:35:01,200
+technology behind the selector is
+
+829
+00:34:59,359 --> 00:35:03,320
+interesting that you're holding how does
+
+830
+00:35:01,200 --> 00:35:06,960
+it know what it's pointing
+
+831
+00:35:03,320 --> 00:35:08,760
+at because you so we have the the
+
+832
+00:35:06,960 --> 00:35:10,760
+basically it's calibrated at the
+
+833
+00:35:08,760 --> 00:35:13,560
+beginning it knows this is at the center
+
+834
+00:35:10,760 --> 00:35:16,800
+of the of the scene like this right and
+
+835
+00:35:13,560 --> 00:35:19,800
+then from now we know how far you went
+
+836
+00:35:16,800 --> 00:35:21,560
+from the from the center and we also
+
+837
+00:35:19,800 --> 00:35:22,839
+know the orientation so that we know
+
+838
+00:35:21,560 --> 00:35:25,200
+that you here and that you're pointing
+
+839
+00:35:22,839 --> 00:35:28,160
+to this direction so that you we know
+
+840
+00:35:25,200 --> 00:35:30,079
+which node you want to select but there
+
+841
+00:35:28,160 --> 00:35:33,480
+thousands presumably tens of thousands
+
+842
+00:35:30,079 --> 00:35:35,720
+or more nodes so it's can select a very
+
+843
+00:35:33,480 --> 00:35:38,599
+small node in the middle of that graph
+
+844
+00:35:35,720 --> 00:35:41,599
+this is why if you let me go back here
+
+845
+00:35:38,599 --> 00:35:43,960
+uh this is why if you have this fishey
+
+846
+00:35:41,599 --> 00:35:45,839
+effect check it out you play with this
+
+847
+00:35:43,960 --> 00:35:48,839
+and then you have this
+
+848
+00:35:45,839 --> 00:35:51,280
+uh this sphere that comes in do you see
+
+849
+00:35:48,839 --> 00:35:53,319
+right yes so this is why we use that so
+
+850
+00:35:51,280 --> 00:35:54,760
+that you can basically zoom in because
+
+851
+00:35:53,319 --> 00:35:56,839
+as you can see there are thousands of
+
+852
+00:35:54,760 --> 00:35:58,480
+not and they're very small and then it
+
+853
+00:35:56,839 --> 00:36:00,480
+really allows you to you know find one
+
+854
+00:35:58,480 --> 00:36:01,720
+node and then we try to put it in front
+
+855
+00:36:00,480 --> 00:36:03,560
+of you and then you just need to click
+
+856
+00:36:01,720 --> 00:36:05,680
+to select it I see so it kind of
+
+857
+00:36:03,560 --> 00:36:07,240
+enlarges it so that you can be more
+
+858
+00:36:05,680 --> 00:36:09,040
+definitive with respect to your
+
+859
+00:36:07,240 --> 00:36:11,359
+selection because that's a very powerful
+
+860
+00:36:09,040 --> 00:36:14,240
+kind of an interface if it was effective
+
+861
+00:36:11,359 --> 00:36:17,680
+exactly I mean it's used in in networks
+
+862
+00:36:14,240 --> 00:36:19,200
+and even in 2D right but it's more
+
+863
+00:36:17,680 --> 00:36:20,520
+impressive and actually more useful when
+
+864
+00:36:19,200 --> 00:36:22,160
+you have this kind of setup or you don't
+
+865
+00:36:20,520 --> 00:36:23,640
+want anyone to be in front of the
+
+866
+00:36:22,160 --> 00:36:26,200
+keyboard right you want to have
+
+867
+00:36:23,640 --> 00:36:29,160
+something fun to pass around was preo by
+
+868
+00:36:26,200 --> 00:36:31,240
+the way people are not no M yeah but
+
+869
+00:36:29,160 --> 00:36:34,200
+that two years ago just before like one
+
+870
+00:36:31,240 --> 00:36:37,280
+year before Co actually and years ago
+
+871
+00:36:34,200 --> 00:36:39,960
+now I mean conceivably this is something
+
+872
+00:36:37,280 --> 00:36:42,319
+that someone could have in their home
+
+873
+00:36:39,960 --> 00:36:43,560
+yes for sure for sure actually I made
+
+874
+00:36:42,319 --> 00:36:46,359
+I'll show you later but I made a
+
+875
+00:36:43,560 --> 00:36:48,640
+tutorial on the cables the the platform
+
+876
+00:36:46,359 --> 00:36:50,760
+you're going to use how to control your
+
+877
+00:36:48,640 --> 00:36:52,400
+visualization from your phone so it's
+
+878
+00:36:50,760 --> 00:36:53,920
+not exactly the same but it's not far
+
+879
+00:36:52,400 --> 00:36:55,520
+right you use your phone like this and
+
+880
+00:36:53,920 --> 00:36:59,560
+you move it around and you see it moving
+
+881
+00:36:55,520 --> 00:37:01,319
+on on screen so graphs are notoriously
+
+882
+00:36:59,560 --> 00:37:04,160
+difficult to navigate in two Dimensions
+
+883
+00:37:01,319 --> 00:37:07,240
+so this is a very interesting way to get
+
+884
+00:37:04,160 --> 00:37:08,200
+more immersive and if it's effective it
+
+885
+00:37:07,240 --> 00:37:10,319
+could be something you could
+
+886
+00:37:08,200 --> 00:37:13,760
+theoretically project maybe even on a
+
+887
+00:37:10,319 --> 00:37:16,480
+ceiling yes so it's not I mean it's
+
+888
+00:37:13,760 --> 00:37:18,599
+effective but let's not it's not a mouse
+
+889
+00:37:16,480 --> 00:37:20,760
+right so it's going to be but I think it
+
+890
+00:37:18,599 --> 00:37:22,280
+it worked quite well because you move it
+
+891
+00:37:20,760 --> 00:37:23,640
+around and you don't really care where
+
+892
+00:37:22,280 --> 00:37:25,520
+you click because you don't even
+
+893
+00:37:23,640 --> 00:37:27,520
+understand the name so the idea is to be
+
+894
+00:37:25,520 --> 00:37:30,240
+bit lost in the network so that you
+
+895
+00:37:27,520 --> 00:37:31,560
+explore tons of different stuff but but
+
+896
+00:37:30,240 --> 00:37:33,920
+then you pass it around so it's quite
+
+897
+00:37:31,560 --> 00:37:35,480
+fun you would see kids pass so we
+
+898
+00:37:33,920 --> 00:37:38,280
+actually quite scared about you know
+
+899
+00:37:35,480 --> 00:37:41,000
+kids uh you know using it as a as a
+
+900
+00:37:38,280 --> 00:37:42,599
+basketball but it was fine that's why we
+
+901
+00:37:41,000 --> 00:37:45,000
+the final version was actually made of
+
+902
+00:37:42,599 --> 00:37:47,000
+out of metal so that was quite sturdy
+
+903
+00:37:45,000 --> 00:37:49,480
+but um yeah people were passing it
+
+904
+00:37:47,000 --> 00:37:52,200
+around and it was quite fun to see even
+
+905
+00:37:49,480 --> 00:37:53,359
+like you don't have to be tech savvy to
+
+906
+00:37:52,200 --> 00:37:55,319
+understand I mean it's just one button
+
+907
+00:37:53,359 --> 00:37:58,359
+you move and you see right so and
+
+908
+00:37:55,319 --> 00:37:59,839
+actually another quick interesting fact
+
+909
+00:37:58,359 --> 00:38:02,680
+you see that we have everything as
+
+910
+00:37:59,839 --> 00:38:04,160
+rounds like as circles half circles
+
+911
+00:38:02,680 --> 00:38:06,560
+because it's quite difficult all the
+
+912
+00:38:04,160 --> 00:38:09,599
+videos are square right or rectangular
+
+913
+00:38:06,560 --> 00:38:12,440
+format but when you are in the in a dome
+
+914
+00:38:09,599 --> 00:38:14,000
+like this you can basically watch on all
+
+915
+00:38:12,440 --> 00:38:16,160
+directions because you know I can rotate
+
+916
+00:38:14,000 --> 00:38:18,960
+and still look up so it was quite
+
+917
+00:38:16,160 --> 00:38:21,599
+difficult to you cannot there's no right
+
+918
+00:38:18,960 --> 00:38:23,480
+way of looking at the sky right so this
+
+919
+00:38:21,599 --> 00:38:25,359
+is why we had different uh circles with
+
+920
+00:38:23,480 --> 00:38:28,160
+different orientation so that everyone
+
+921
+00:38:25,359 --> 00:38:31,000
+could see uh in their own I can even
+
+922
+00:38:28,160 --> 00:38:34,040
+show you this actually it's on YouTube
+
+923
+00:38:31,000 --> 00:38:38,440
+um uh you know show this
+
+924
+00:38:34,040 --> 00:38:42,240
+um a video wherever they were right so
+
+925
+00:38:38,440 --> 00:38:44,800
+so this is a it's not really unlisted
+
+926
+00:38:42,240 --> 00:38:47,119
+but you can see this is just um a dump
+
+927
+00:38:44,800 --> 00:38:49,319
+of the or what you would see in the in
+
+928
+00:38:47,119 --> 00:38:53,160
+the dome right can you see
+
+929
+00:38:49,319 --> 00:38:56,079
+that um sorry for the poor quality but
+
+930
+00:38:53,160 --> 00:38:57,480
+um so yeah this is the so it's a four
+
+931
+00:38:56,079 --> 00:39:00,240
+squared image but then you have this
+
+932
+00:38:57,480 --> 00:39:02,000
+this uh and then the the music would
+
+933
+00:39:00,240 --> 00:39:04,000
+would be playing right on Hover
+
+934
+00:39:02,000 --> 00:39:05,680
+basically then you can load stuff I
+
+935
+00:39:04,000 --> 00:39:07,720
+don't know they chose the the craziest
+
+936
+00:39:05,680 --> 00:39:09,760
+example of free jazz which I hate by the
+
+937
+00:39:07,720 --> 00:39:13,040
+way but you see what I meant by the the
+
+938
+00:39:09,760 --> 00:39:15,200
+videos are you know randomly not rotated
+
+939
+00:39:13,040 --> 00:39:16,760
+so that wherever you are you can still
+
+940
+00:39:15,200 --> 00:39:19,599
+see in the right orientation you don't
+
+941
+00:39:16,760 --> 00:39:21,839
+have to move the neck around too much
+
+942
+00:39:19,599 --> 00:39:23,000
+right and then when you click this is
+
+943
+00:39:21,839 --> 00:39:25,760
+different concert and then when you
+
+944
+00:39:23,000 --> 00:39:27,160
+click you would have you would open this
+
+945
+00:39:25,760 --> 00:39:28,960
+as well right so you could see tons of
+
+946
+00:39:27,160 --> 00:39:30,920
+different small so we tried this how we
+
+947
+00:39:28,960 --> 00:39:32,640
+would just R rectangular and you see
+
+948
+00:39:30,920 --> 00:39:35,000
+everything is moving but it was actually
+
+949
+00:39:32,640 --> 00:39:38,359
+quite um quite fun and then they would
+
+950
+00:39:35,000 --> 00:39:40,720
+you know go back and uh you can choose
+
+951
+00:39:38,359 --> 00:39:42,599
+something else right so I don't know it
+
+952
+00:39:40,720 --> 00:39:45,880
+really it really looks like a gra
+
+953
+00:39:42,599 --> 00:39:48,480
+gravitational L yeah it's exactly right
+
+954
+00:39:45,880 --> 00:39:52,280
+it's a this is a BB King concert
+
+955
+00:39:48,480 --> 00:39:54,680
+[Music]
+
+956
+00:39:52,280 --> 00:39:57,440
+right so you can play around so yeah I
+
+957
+00:39:54,680 --> 00:39:59,000
+think you have a an idea of of the
+
+958
+00:39:57,440 --> 00:40:02,200
+experience like this and you have the
+
+959
+00:39:59,000 --> 00:40:04,280
+name also so this this idea being in an
+
+960
+00:40:02,200 --> 00:40:05,880
+hemisphere like was actually quite
+
+961
+00:40:04,280 --> 00:40:07,800
+difficult because you know we have to
+
+962
+00:40:05,880 --> 00:40:09,760
+figure out now that you see it seems
+
+963
+00:40:07,800 --> 00:40:11,640
+simple but it was not not all clear if
+
+964
+00:40:09,760 --> 00:40:13,359
+you have a rectangular video you have to
+
+965
+00:40:11,640 --> 00:40:15,800
+crop them and everything and it's as I
+
+966
+00:40:13,359 --> 00:40:19,110
+mentioned is 2.7 petabyte of data right
+
+967
+00:40:15,800 --> 00:40:21,480
+so it's not it's not that
+
+968
+00:40:19,110 --> 00:40:24,359
+[Music]
+
+969
+00:40:21,480 --> 00:40:26,880
+easy any more questions is there a link
+
+970
+00:40:24,359 --> 00:40:28,960
+to that video or um it's unlisted I'm
+
+971
+00:40:26,880 --> 00:40:31,560
+not sure I I can show you the link but
+
+972
+00:40:28,960 --> 00:40:34,319
+it I don't know I can show you the link
+
+973
+00:40:31,560 --> 00:40:36,480
+it's okay long as you don't advertise it
+
+974
+00:40:34,319 --> 00:40:36,480
+too
+
+975
+00:40:36,599 --> 00:40:41,599
+much but the music I have to warn you
+
+976
+00:40:39,319 --> 00:40:43,599
+they made a very weird selection I think
+
+977
+00:40:41,599 --> 00:40:46,800
+it's on purpose the beginning is some
+
+978
+00:40:43,599 --> 00:40:49,040
+free jazz it's horrible to hear just to
+
+979
+00:40:46,800 --> 00:40:51,200
+warn you I don't know I don't like this
+
+980
+00:40:49,040 --> 00:40:53,319
+free jazz I think no one likes this but
+
+981
+00:40:51,200 --> 00:40:55,480
+then it's B King at the end so maybe for
+
+982
+00:40:53,319 --> 00:40:58,040
+people not to spend too much time within
+
+983
+00:40:55,480 --> 00:41:00,160
+the the Dome no no I think they they
+
+984
+00:40:58,040 --> 00:41:02,599
+chose it on purpose here so that for
+
+985
+00:41:00,160 --> 00:41:04,440
+this particular ex you know exerpt you
+
+986
+00:41:02,599 --> 00:41:07,520
+don't uh you don't steal it I don't know
+
+987
+00:41:04,440 --> 00:41:14,280
+why it's crazy this this artist I don't
+
+988
+00:41:07,520 --> 00:41:14,280
+know but um yeah so let me go back
+
+989
+00:41:15,160 --> 00:41:19,520
+um any any more
+
+990
+00:41:17,480 --> 00:41:22,640
+questions this demonstration is
+
+991
+00:41:19,520 --> 00:41:25,000
+available at M I never saw that I've
+
+992
+00:41:22,640 --> 00:41:28,040
+been there quite no yes so there was for
+
+993
+00:41:25,000 --> 00:41:30,880
+the 50th Anniversary at tfl and now with
+
+994
+00:41:28,040 --> 00:41:32,400
+covid they know they took it down and
+
+995
+00:41:30,880 --> 00:41:34,800
+they're supposed to be now back up
+
+996
+00:41:32,400 --> 00:41:36,920
+whenever it goes back but it's actually
+
+997
+00:41:34,800 --> 00:41:39,359
+in China now so it's on the same dome
+
+998
+00:41:36,920 --> 00:41:41,599
+but there the same installation in I
+
+999
+00:41:39,359 --> 00:41:43,839
+don't even know where so I wanted to go
+
+1000
+00:41:41,599 --> 00:41:44,920
+but you know you had to do 15 15 days of
+
+1001
+00:41:43,839 --> 00:41:48,240
+quarantine
+
+1002
+00:41:44,920 --> 00:41:52,079
+just on on entering the country so I
+
+1003
+00:41:48,240 --> 00:41:53,920
+said no but yeah it's touring okay car
+
+1004
+00:41:52,079 --> 00:41:56,400
+just a question have you ever heard
+
+1005
+00:41:53,920 --> 00:41:59,440
+about the team lab in Japan yes of
+
+1006
+00:41:56,400 --> 00:42:02,800
+course okay uh have you been there no
+
+1007
+00:41:59,440 --> 00:42:05,359
+okay uh I think you should investigate
+
+1008
+00:42:02,800 --> 00:42:08,160
+and maybe be be in contact with them
+
+1009
+00:42:05,359 --> 00:42:10,520
+because uh there is some overlap or some
+
+1010
+00:42:08,160 --> 00:42:12,680
+connection from what you do and what
+
+1011
+00:42:10,520 --> 00:42:15,280
+they they do as well yes yeah yeah so I
+
+1012
+00:42:12,680 --> 00:42:18,160
+now at starting in next month I will be
+
+1013
+00:42:15,280 --> 00:42:20,240
+working at the this lab atfl that
+
+1014
+00:42:18,160 --> 00:42:21,960
+construct this installations and they
+
+1015
+00:42:20,240 --> 00:42:24,960
+are in connections and so we have tons
+
+1016
+00:42:21,960 --> 00:42:27,800
+of new exhibition being planned about
+
+1017
+00:42:24,960 --> 00:42:29,520
+astrophysics you know always science you
+
+1018
+00:42:27,800 --> 00:42:32,800
+know art and science related but they
+
+1019
+00:42:29,520 --> 00:42:37,359
+have very cool installation we have some
+
+1020
+00:42:32,800 --> 00:42:39,359
+360° screen 12 meters in diameter so
+
+1021
+00:42:37,359 --> 00:42:42,680
+it's like how many I don't know
+
+1022
+00:42:39,359 --> 00:42:44,559
+18 but I don't know eight projectors uh
+
+1023
+00:42:42,680 --> 00:42:47,359
+you know stitch together and it's it's
+
+1024
+00:42:44,559 --> 00:42:49,880
+like a you know 360 screen and but now
+
+1025
+00:42:47,359 --> 00:42:51,359
+we have to design and produce content
+
+1026
+00:42:49,880 --> 00:42:53,400
+and it's actually very difficult because
+
+1027
+00:42:51,359 --> 00:42:56,400
+it's very very high resolution imagine
+
+1028
+00:42:53,400 --> 00:42:57,800
+you have a you know eight 4K screen
+
+1029
+00:42:56,400 --> 00:43:00,240
+stitched next to each other and then you
+
+1030
+00:42:57,800 --> 00:43:02,960
+have to produce a live visual that is at
+
+1031
+00:43:00,240 --> 00:43:05,160
+60 frame per second it's uh it's quite
+
+1032
+00:43:02,960 --> 00:43:06,800
+quite challenging but um I'm quite eager
+
+1033
+00:43:05,160 --> 00:43:08,599
+to make some connection and they know
+
+1034
+00:43:06,800 --> 00:43:10,440
+and they worked a bit with team laap so
+
+1035
+00:43:08,599 --> 00:43:12,079
+probably also work with them in a few
+
+1036
+00:43:10,440 --> 00:43:16,040
+month
+
+1037
+00:43:12,079 --> 00:43:17,960
+okay um so yeah I just wanted to I don't
+
+1038
+00:43:16,040 --> 00:43:20,319
+know not here just to show my work then
+
+1039
+00:43:17,960 --> 00:43:23,240
+we're going to start the the practice
+
+1040
+00:43:20,319 --> 00:43:26,760
+part but um I can show you other data
+
+1041
+00:43:23,240 --> 00:43:29,920
+driven thing just for inspiration um
+
+1042
+00:43:26,760 --> 00:43:32,760
+this is this is a a fractal I'm just
+
+1043
+00:43:29,920 --> 00:43:35,440
+slow and the animation here so the
+
+1044
+00:43:32,760 --> 00:43:37,599
+fractal itself is about the increase of
+
+1045
+00:43:35,440 --> 00:43:40,319
+sea level from you know the glaciers all
+
+1046
+00:43:37,599 --> 00:43:43,400
+melting and as they melt you see that
+
+1047
+00:43:40,319 --> 00:43:46,200
+this Central shape
+
+1048
+00:43:43,400 --> 00:43:49,720
+grows and the camera itself is also
+
+1049
+00:43:46,200 --> 00:43:50,440
+driven by the tide in bordo so it's City
+
+1050
+00:43:49,720 --> 00:43:54,520
+in
+
+1051
+00:43:50,440 --> 00:43:56,440
+France and so I trying to have the data
+
+1052
+00:43:54,520 --> 00:43:59,599
+baked into the animation itself so that
+
+1053
+00:43:56,440 --> 00:44:00,880
+the is abstract but it's if you look at
+
+1054
+00:43:59,599 --> 00:44:03,319
+the animation and you know the story
+
+1055
+00:44:00,880 --> 00:44:04,680
+then it starts to make sense and then at
+
+1056
+00:44:03,319 --> 00:44:07,920
+some point it's receding because
+
+1057
+00:44:04,680 --> 00:44:10,359
+hopefully we do some stuff to make it
+
+1058
+00:44:07,920 --> 00:44:13,079
+you know stop and then it goes back to
+
+1059
+00:44:10,359 --> 00:44:15,359
+normal in the future hopefully so this
+
+1060
+00:44:13,079 --> 00:44:17,000
+this was the IDE around around this and
+
+1061
+00:44:15,359 --> 00:44:18,880
+just another way of expressing and still
+
+1062
+00:44:17,000 --> 00:44:21,400
+being in data art because you are still
+
+1063
+00:44:18,880 --> 00:44:23,240
+using data to drive the animation so it
+
+1064
+00:44:21,400 --> 00:44:25,680
+doesn't have to be necessarily an
+
+1065
+00:44:23,240 --> 00:44:28,680
+artistic data visualization to be data
+
+1066
+00:44:25,680 --> 00:44:28,680
+art
+
+1067
+00:44:28,880 --> 00:44:35,559
+right it's a small animation it took me
+
+1068
+00:44:31,440 --> 00:44:38,720
+120 hours to render back in the day but
+
+1069
+00:44:35,559 --> 00:44:40,559
+uh now let's now I actually run it in 4k
+
+1070
+00:44:38,720 --> 00:44:42,680
+and it took me a few days but I have a
+
+1071
+00:44:40,559 --> 00:44:44,200
+much better computer so it's quite slow
+
+1072
+00:44:42,680 --> 00:44:46,200
+to render fractals especially when they
+
+1073
+00:44:44,200 --> 00:44:47,400
+are not GPU driven so you have to lot of
+
+1074
+00:44:46,200 --> 00:44:51,160
+CPU
+
+1075
+00:44:47,400 --> 00:44:51,160
+run any questions on
+
+1076
+00:44:52,440 --> 00:45:00,160
+this no okay and lastly
+
+1077
+00:44:57,680 --> 00:45:01,559
+I'll show you this one so this is um an
+
+1078
+00:45:00,160 --> 00:45:04,319
+AI driven
+
+1079
+00:45:01,559 --> 00:45:06,280
+piece so it's close to data art but it's
+
+1080
+00:45:04,319 --> 00:45:08,720
+not exactly data art and as you can see
+
+1081
+00:45:06,280 --> 00:45:11,960
+this is the in Paris next to the in
+
+1082
+00:45:08,720 --> 00:45:14,559
+front of the the library the big Library
+
+1083
+00:45:11,960 --> 00:45:17,160
+so it's quite big so once again having
+
+1084
+00:45:14,559 --> 00:45:19,680
+doing data art and look at at looking at
+
+1085
+00:45:17,160 --> 00:45:21,640
+it on Instagram is completely different
+
+1086
+00:45:19,680 --> 00:45:23,240
+as an experience than you know experim
+
+1087
+00:45:21,640 --> 00:45:25,559
+you know having something very big as I
+
+1088
+00:45:23,240 --> 00:45:27,119
+show or the Dome or and it really
+
+1089
+00:45:25,559 --> 00:45:29,440
+changes the dimension doesn't really
+
+1090
+00:45:27,119 --> 00:45:31,480
+change the artistic complexity or
+
+1091
+00:45:29,440 --> 00:45:33,839
+message but still having this kind of
+
+1092
+00:45:31,480 --> 00:45:37,160
+immersive environment really helps push
+
+1093
+00:45:33,839 --> 00:45:39,400
+the uh you know from just a nice visual
+
+1094
+00:45:37,160 --> 00:45:41,960
+to something more artistic I would say
+
+1095
+00:45:39,400 --> 00:45:43,920
+so if you have any connections or um any
+
+1096
+00:45:41,960 --> 00:45:45,720
+companies or know big screens of the
+
+1097
+00:45:43,920 --> 00:45:47,760
+ability to project I would definitely
+
+1098
+00:45:45,720 --> 00:45:51,520
+encourage you to do so so that it makes
+
+1099
+00:45:47,760 --> 00:45:55,319
+it more Vivid and more immersive so but
+
+1100
+00:45:51,520 --> 00:45:57,440
+in this case what where are data so here
+
+1101
+00:45:55,319 --> 00:45:59,520
+it's AI art right this is another okay
+
+1102
+00:45:57,440 --> 00:46:01,359
+okay so it's it's you can set the data
+
+1103
+00:45:59,520 --> 00:46:03,720
+is when you train the network and
+
+1104
+00:46:01,359 --> 00:46:06,280
+everything but the visuals are are not
+
+1105
+00:46:03,720 --> 00:46:08,400
+um it's not data driven I mean it is
+
+1106
+00:46:06,280 --> 00:46:10,680
+Data driven right because you still use
+
+1107
+00:46:08,400 --> 00:46:12,559
+uh you make it basically you have this
+
+1108
+00:46:10,680 --> 00:46:14,559
+network that is trained and then you you
+
+1109
+00:46:12,559 --> 00:46:16,160
+make some queries or you make it explore
+
+1110
+00:46:14,559 --> 00:46:18,760
+different paths so you send it data but
+
+1111
+00:46:16,160 --> 00:46:20,680
+it's not a data visualization right okay
+
+1112
+00:46:18,760 --> 00:46:24,200
+but still you signed
+
+1113
+00:46:20,680 --> 00:46:27,640
+it you you s sorry what you signed it
+
+1114
+00:46:24,200 --> 00:46:30,079
+there is your name on the yeah okay
+
+1115
+00:46:27,640 --> 00:46:31,960
+because it's not it's like saying uh I'm
+
+1116
+00:46:30,079 --> 00:46:33,680
+using Photoshop so it's I should put
+
+1117
+00:46:31,960 --> 00:46:35,760
+Photoshop right if you train the network
+
+1118
+00:46:33,680 --> 00:46:37,839
+and you put some queries and you and you
+
+1119
+00:46:35,760 --> 00:46:39,720
+basically even select so if you you know
+
+1120
+00:46:37,839 --> 00:46:42,160
+create a video then you have your
+
+1121
+00:46:39,720 --> 00:46:45,319
+artistic input your sensibility and your
+
+1122
+00:46:42,160 --> 00:46:48,800
+skill right is comes into it
+
+1123
+00:46:45,319 --> 00:46:52,200
+obviously and in this situation uh what
+
+1124
+00:46:48,800 --> 00:46:55,599
+data did you train AI with what were
+
+1125
+00:46:52,200 --> 00:46:58,079
+those images or images of what it's
+
+1126
+00:46:55,599 --> 00:47:01,280
+image net so it's the very common and
+
+1127
+00:46:58,079 --> 00:47:03,520
+famous data set um I can show it to you
+
+1128
+00:47:01,280 --> 00:47:03,520
+so
+
+1129
+00:47:04,359 --> 00:47:10,040
+it's and it's a very standard
+
+1130
+00:47:07,960 --> 00:47:13,559
+state-of-the-art data set and they have
+
+1131
+00:47:10,040 --> 00:47:16,960
+yeah 14 million images basically with
+
+1132
+00:47:13,559 --> 00:47:20,559
+different categories like cats dogs pigs
+
+1133
+00:47:16,960 --> 00:47:22,079
+cars you know objects usually and then
+
+1134
+00:47:20,559 --> 00:47:24,440
+you can train so you can use another
+
+1135
+00:47:22,079 --> 00:47:26,480
+network of of um with images of
+
+1136
+00:47:24,440 --> 00:47:28,680
+Landscapes you know so in this
+
+1137
+00:47:26,480 --> 00:47:30,720
+particular case it's a this actually
+
+1138
+00:47:28,680 --> 00:47:32,520
+it's a combination of different videos
+
+1139
+00:47:30,720 --> 00:47:35,720
+this is one landscape but before this
+
+1140
+00:47:32,520 --> 00:47:39,000
+abstract shape are more about
+
+1141
+00:47:35,720 --> 00:47:41,599
+the I like abstract art so it's very
+
+1142
+00:47:39,000 --> 00:47:44,040
+funny I can also show you this um these
+
+1143
+00:47:41,599 --> 00:47:46,599
+are not flowers and you see that they
+
+1144
+00:47:44,040 --> 00:47:48,079
+really look like flowers I think but
+
+1145
+00:47:46,599 --> 00:47:50,920
+these are the different ingredients that
+
+1146
+00:47:48,079 --> 00:47:52,920
+were used to create the visuals and you
+
+1147
+00:47:50,920 --> 00:47:54,240
+have the custom made music also that
+
+1148
+00:47:52,920 --> 00:47:56,200
+that works so it really looks like
+
+1149
+00:47:54,240 --> 00:47:57,720
+flowers but check the ingredient traffic
+
+1150
+00:47:56,200 --> 00:47:59,720
+light
+
+1151
+00:47:57,720 --> 00:48:02,040
+C you know butterflies it's an insect
+
+1152
+00:47:59,720 --> 00:48:04,720
+comic book strawberry guinea pig and
+
+1153
+00:48:02,040 --> 00:48:07,720
+more so it's I think I like it because
+
+1154
+00:48:04,720 --> 00:48:10,200
+it it it gives us um information about
+
+1155
+00:48:07,720 --> 00:48:13,119
+how we perceive things and that actually
+
+1156
+00:48:10,200 --> 00:48:15,160
+for a network it doesn't make it's no
+
+1157
+00:48:13,119 --> 00:48:18,359
+problem to mix different ingredients and
+
+1158
+00:48:15,160 --> 00:48:21,800
+we still so that it's like decomposing a
+
+1159
+00:48:18,359 --> 00:48:23,920
+shape yeah an object into very Atomic
+
+1160
+00:48:21,800 --> 00:48:25,480
+different shapes that you recombine and
+
+1161
+00:48:23,920 --> 00:48:28,720
+you can recreate something that looks
+
+1162
+00:48:25,480 --> 00:48:32,119
+familiar to me this was interesting to
+
+1163
+00:48:28,720 --> 00:48:33,520
+uh to play with yeah it's different so I
+
+1164
+00:48:32,119 --> 00:48:37,200
+mean I'm not going to show over all my
+
+1165
+00:48:33,520 --> 00:48:39,680
+stuff but this does it answer your
+
+1166
+00:48:37,200 --> 00:48:44,359
+question yes thank
+
+1167
+00:48:39,680 --> 00:48:46,800
+you uh okay so now it's uh almost 8 so
+
+1168
+00:48:44,359 --> 00:48:49,680
+it's good we work we start working with
+
+1169
+00:48:46,800 --> 00:48:50,839
+um you know the technical part so I'm
+
+1170
+00:48:49,680 --> 00:48:53,599
+I'm going to talk but you going to
+
+1171
+00:48:50,839 --> 00:48:57,040
+practice we're going to do this together
+
+1172
+00:48:53,599 --> 00:48:58,880
+so um just so yeah this is I mean work
+
+1173
+00:48:57,040 --> 00:49:02,760
+in data so it's fine just to make sure
+
+1174
+00:48:58,880 --> 00:49:06,119
+that we are on the same page um this
+
+1175
+00:49:02,760 --> 00:49:09,599
+metadata and items so you know you have
+
+1176
+00:49:06,119 --> 00:49:11,160
+data as a type and and so datum I see
+
+1177
+00:49:09,599 --> 00:49:14,359
+data with an S but data is already
+
+1178
+00:49:11,160 --> 00:49:17,559
+plural right so datum from Latin as a
+
+1179
+00:49:14,359 --> 00:49:19,640
+type and usually um this is what you get
+
+1180
+00:49:17,559 --> 00:49:22,960
+from when you work with data art you get
+
+1181
+00:49:19,640 --> 00:49:24,680
+you have either a database or mostly uh
+
+1182
+00:49:22,960 --> 00:49:26,520
+tabular format you can use a graph
+
+1183
+00:49:24,680 --> 00:49:27,319
+database so it's not exactly like this
+
+1184
+00:49:26,520 --> 00:49:29,799
+but
+
+1185
+00:49:27,319 --> 00:49:31,319
+um you have um this this would be the
+
+1186
+00:49:29,799 --> 00:49:34,839
+properties of your nodes and then you
+
+1187
+00:49:31,319 --> 00:49:37,240
+have another table or a way to link
+
+1188
+00:49:34,839 --> 00:49:39,720
+different items together so an item
+
+1189
+00:49:37,240 --> 00:49:41,799
+would be here in our case a row right
+
+1190
+00:49:39,720 --> 00:49:44,880
+and our goal here is to transform this
+
+1191
+00:49:41,799 --> 00:49:48,599
+into visual objects that hopefully are
+
+1192
+00:49:44,880 --> 00:49:52,720
+beautiful and make sense
+
+1193
+00:49:48,599 --> 00:49:54,240
+so I just for you know to be nice with
+
+1194
+00:49:52,720 --> 00:49:56,480
+the definition an item would be this
+
+1195
+00:49:54,240 --> 00:49:58,119
+this is another way of if I show this is
+
+1196
+00:49:56,480 --> 00:50:00,559
+it does it ring a B for everyone this
+
+1197
+00:49:58,119 --> 00:50:02,720
+Json representation so I can skip over
+
+1198
+00:50:00,559 --> 00:50:03,599
+quickly or is it new for you and I spent
+
+1199
+00:50:02,720 --> 00:50:06,200
+more
+
+1200
+00:50:03,599 --> 00:50:11,040
+time I guess it's okay for some of us
+
+1201
+00:50:06,200 --> 00:50:13,400
+but maybe not all of us for me I would I
+
+1202
+00:50:11,040 --> 00:50:17,559
+would appreciate a bit of explanation
+
+1203
+00:50:13,400 --> 00:50:20,440
+please okay so but very brief no but you
+
+1204
+00:50:17,559 --> 00:50:22,799
+see that right this this is standard CSV
+
+1205
+00:50:20,440 --> 00:50:25,400
+representation like Excel spreadsheet
+
+1206
+00:50:22,799 --> 00:50:28,640
+right yeah now you can say that each
+
+1207
+00:50:25,400 --> 00:50:31,760
+item here can be also you know that this
+
+1208
+00:50:28,640 --> 00:50:33,359
+line belongs to the same item or object
+
+1209
+00:50:31,760 --> 00:50:35,040
+right it's the same these are different
+
+1210
+00:50:33,359 --> 00:50:37,839
+properties or attributes of the same
+
+1211
+00:50:35,040 --> 00:50:40,400
+person or item now usually when you work
+
+1212
+00:50:37,839 --> 00:50:42,760
+with data especially on the web you
+
+1213
+00:50:40,400 --> 00:50:45,960
+don't use this columnar table
+
+1214
+00:50:42,760 --> 00:50:47,960
+representation you group objects by item
+
+1215
+00:50:45,960 --> 00:50:49,559
+so you use this what we call this uh
+
+1216
+00:50:47,960 --> 00:50:52,359
+Json representation which stands for
+
+1217
+00:50:49,559 --> 00:50:54,200
+JavaScript object notation and you know
+
+1218
+00:50:52,359 --> 00:50:56,119
+that when we work on the web and this is
+
+1219
+00:50:54,200 --> 00:50:57,839
+what we're going to do the language of
+
+1220
+00:50:56,119 --> 00:50:59,760
+choice is is Javascript so there the
+
+1221
+00:50:57,839 --> 00:51:01,760
+language that we all have in our phones
+
+1222
+00:50:59,760 --> 00:51:03,839
+even on our watch every everywhere the
+
+1223
+00:51:01,760 --> 00:51:06,040
+most popular programming language not
+
+1224
+00:51:03,839 --> 00:51:10,160
+the best one but unfortunately but the
+
+1225
+00:51:06,040 --> 00:51:12,760
+the most popular and we group uh items
+
+1226
+00:51:10,160 --> 00:51:15,000
+together right so this is the um the the
+
+1227
+00:51:12,760 --> 00:51:16,799
+presentation so it's quite easy to read
+
+1228
+00:51:15,000 --> 00:51:18,640
+but you have to enclose each object with
+
+1229
+00:51:16,799 --> 00:51:20,839
+this curly braces and then you have to
+
+1230
+00:51:18,640 --> 00:51:23,040
+put your key in quotes or double quotes
+
+1231
+00:51:20,839 --> 00:51:24,839
+like okay this is my ID right and this
+
+1232
+00:51:23,040 --> 00:51:27,040
+is basically how you send data and we're
+
+1233
+00:51:24,839 --> 00:51:29,079
+going to work with this send receive
+
+1234
+00:51:27,040 --> 00:51:32,280
+data this is also how you import them
+
+1235
+00:51:29,079 --> 00:51:34,319
+into the tool that we're going to use so
+
+1236
+00:51:32,280 --> 00:51:38,559
+all the tools that you have can convert
+
+1237
+00:51:34,319 --> 00:51:41,280
+export their data to Json format and
+
+1238
+00:51:38,559 --> 00:51:43,160
+right and even a graph is also usually
+
+1239
+00:51:41,280 --> 00:51:44,760
+you have a list of nodes like this and
+
+1240
+00:51:43,160 --> 00:51:47,400
+also a list of edges which are just
+
+1241
+00:51:44,760 --> 00:51:50,559
+giving you one is connected to two two
+
+1242
+00:51:47,400 --> 00:51:55,480
+to three with optional attributes okay
+
+1243
+00:51:50,559 --> 00:51:57,799
+yeah okay um so as I mentioned now our
+
+1244
+00:51:55,480 --> 00:52:00,520
+goal here is to trans form these objects
+
+1245
+00:51:57,799 --> 00:52:02,799
+into Elementary visual elements right
+
+1246
+00:52:00,520 --> 00:52:04,680
+what we call technically marks visual
+
+1247
+00:52:02,799 --> 00:52:07,920
+marks which could be I don't know a
+
+1248
+00:52:04,680 --> 00:52:10,520
+square a rectangle a triangle and then
+
+1249
+00:52:07,920 --> 00:52:13,520
+we map some of the other attributes so
+
+1250
+00:52:10,520 --> 00:52:15,599
+those guys here to visual properties
+
+1251
+00:52:13,520 --> 00:52:18,119
+that we call channels so if you look for
+
+1252
+00:52:15,599 --> 00:52:20,280
+the data visualization language they
+
+1253
+00:52:18,119 --> 00:52:22,599
+really use marks and channels so
+
+1254
+00:52:20,280 --> 00:52:25,599
+channels would be a visual attribute so
+
+1255
+00:52:22,599 --> 00:52:29,040
+you say I'm mapping the shirt size now
+
+1256
+00:52:25,599 --> 00:52:30,720
+to the size size of my uh Square makes
+
+1257
+00:52:29,040 --> 00:52:33,799
+sense right so you have to there's whole
+
+1258
+00:52:30,720 --> 00:52:36,839
+theory about this but all what you see
+
+1259
+00:52:33,799 --> 00:52:39,200
+here are visual attributes so position
+
+1260
+00:52:36,839 --> 00:52:43,640
+scale orientation are really the
+
+1261
+00:52:39,200 --> 00:52:45,079
+fundamental blocks in 3D right uh color
+
+1262
+00:52:43,640 --> 00:52:46,920
+of course we're going to use colors if
+
+1263
+00:52:45,079 --> 00:52:48,960
+you have you know here and you already
+
+1264
+00:52:46,920 --> 00:52:50,960
+have colors but sometimes you could say
+
+1265
+00:52:48,960 --> 00:52:52,480
+I'm mapping the shirt size to a color
+
+1266
+00:52:50,960 --> 00:52:55,440
+it's it's fine if you have like four or
+
+1267
+00:52:52,480 --> 00:52:57,960
+five shirt sizes then it could also be
+
+1268
+00:52:55,440 --> 00:53:00,079
+represented as colors so this is all
+
+1269
+00:52:57,960 --> 00:53:02,480
+your sensibility and and Technical judge
+
+1270
+00:53:00,079 --> 00:53:04,240
+to know which attribute to use this is
+
+1271
+00:53:02,480 --> 00:53:09,640
+no general rules but you know with
+
+1272
+00:53:04,240 --> 00:53:11,720
+practice it comes okay so marks and
+
+1273
+00:53:09,640 --> 00:53:13,240
+channels and now you can ask me what
+
+1274
+00:53:11,720 --> 00:53:16,599
+about unstructured data because it's
+
+1275
+00:53:13,240 --> 00:53:19,000
+fine but not everything is uh table or
+
+1276
+00:53:16,599 --> 00:53:21,040
+you know nicely formatted data for
+
+1277
+00:53:19,000 --> 00:53:23,160
+instance what happens when you have text
+
+1278
+00:53:21,040 --> 00:53:25,640
+or if I give you audio as I mentioned
+
+1279
+00:53:23,160 --> 00:53:27,799
+before we basically have to transform
+
+1280
+00:53:25,640 --> 00:53:30,680
+into structured data so we use
+
+1281
+00:53:27,799 --> 00:53:32,880
+some what we call AI now but before it
+
+1282
+00:53:30,680 --> 00:53:36,040
+was just uh you know machine learning or
+
+1283
+00:53:32,880 --> 00:53:38,119
+statistics but try to find uh to extract
+
+1284
+00:53:36,040 --> 00:53:40,079
+some features for instance you can
+
+1285
+00:53:38,119 --> 00:53:42,799
+automatically find the subjects in the
+
+1286
+00:53:40,079 --> 00:53:45,119
+in the sentence uh the objects describe
+
+1287
+00:53:42,799 --> 00:53:46,599
+them if you work with the uh structured
+
+1288
+00:53:45,119 --> 00:53:48,920
+data Knowledge Graph right trying to
+
+1289
+00:53:46,599 --> 00:53:51,079
+describe ontologies how how things
+
+1290
+00:53:48,920 --> 00:53:53,280
+relate to one another what do they mean
+
+1291
+00:53:51,079 --> 00:53:55,359
+in different across languages for
+
+1292
+00:53:53,280 --> 00:53:57,920
+instance I call it a dog but in French
+
+1293
+00:53:55,359 --> 00:54:00,359
+it would be sh but this represents in
+
+1294
+00:53:57,920 --> 00:54:01,640
+your mind is the same object irrelevant
+
+1295
+00:54:00,359 --> 00:54:05,680
+of the language so this would be an
+
+1296
+00:54:01,640 --> 00:54:08,119
+anology for instance and so there's no
+
+1297
+00:54:05,680 --> 00:54:10,200
+once again ground uh you know rule you
+
+1298
+00:54:08,119 --> 00:54:12,880
+have to really depends on your data set
+
+1299
+00:54:10,200 --> 00:54:15,119
+that's the where all the jobs are and
+
+1300
+00:54:12,880 --> 00:54:17,680
+all the difficulty is right how do you
+
+1301
+00:54:15,119 --> 00:54:20,400
+create the models to map your
+
+1302
+00:54:17,680 --> 00:54:25,240
+data right so you extract meaningful
+
+1303
+00:54:20,400 --> 00:54:25,240
+features then we can start to visualize
+
+1304
+00:54:26,920 --> 00:54:32,400
+so okay you can ask me okay I'm really
+
+1305
+00:54:29,720 --> 00:54:34,040
+now okay I like this I want to do I want
+
+1306
+00:54:32,400 --> 00:54:38,040
+to be data artist but I don't have any
+
+1307
+00:54:34,040 --> 00:54:40,240
+data set so I'll just give you two uh
+
+1308
+00:54:38,040 --> 00:54:41,960
+cool uh reference so if you want to
+
+1309
+00:54:40,240 --> 00:54:44,119
+browse and and you know find data set
+
+1310
+00:54:41,960 --> 00:54:46,720
+that would be of interest can actually
+
+1311
+00:54:44,119 --> 00:54:49,400
+give you three one would be this GitHub
+
+1312
+00:54:46,720 --> 00:54:52,240
+um repository as you can see it's quite
+
+1313
+00:54:49,400 --> 00:54:54,640
+popular and people are trying to
+
+1314
+00:54:52,240 --> 00:54:57,280
+organize data set according to you know
+
+1315
+00:54:54,640 --> 00:55:00,280
+brow uh content right so
+
+1316
+00:54:57,280 --> 00:55:03,680
+Finance uh GEOS special information
+
+1317
+00:55:00,280 --> 00:55:07,640
+Healthcare and so for museums right and
+
+1318
+00:55:03,680 --> 00:55:11,200
+so I'm going to uh keep this
+
+1319
+00:55:07,640 --> 00:55:13,040
+here um and also another uh very cool
+
+1320
+00:55:11,200 --> 00:55:15,720
+source of information would be the kle
+
+1321
+00:55:13,040 --> 00:55:18,319
+data set that you are okay who here
+
+1322
+00:55:15,720 --> 00:55:23,079
+knows this kle
+
+1323
+00:55:18,319 --> 00:55:23,079
+stuff does it does or is it is it
+
+1324
+00:55:23,920 --> 00:55:29,280
+new yeah so it's new so this has been
+
+1325
+00:55:27,280 --> 00:55:32,000
+bought by Google this was like the still
+
+1326
+00:55:29,280 --> 00:55:33,920
+the home of all the data science
+
+1327
+00:55:32,000 --> 00:55:35,720
+competitions people try to exercise
+
+1328
+00:55:33,920 --> 00:55:38,400
+their skills and basically you have
+
+1329
+00:55:35,720 --> 00:55:40,760
+challenges companies pay also people say
+
+1330
+00:55:38,400 --> 00:55:43,920
+oh we have this problem do your best and
+
+1331
+00:55:40,760 --> 00:55:46,359
+if you win you g some money or anything
+
+1332
+00:55:43,920 --> 00:55:47,640
+so people really work hard to try to as
+
+1333
+00:55:46,359 --> 00:55:50,440
+you can
+
+1334
+00:55:47,640 --> 00:55:52,119
+see uh so teams work right you don't
+
+1335
+00:55:50,440 --> 00:55:54,319
+this is not one individual usually there
+
+1336
+00:55:52,119 --> 00:55:57,119
+are teams people sometimes do this for a
+
+1337
+00:55:54,319 --> 00:55:59,079
+living they only apply uh two challenges
+
+1338
+00:55:57,119 --> 00:56:02,000
+try to win and find the the all the
+
+1339
+00:55:59,079 --> 00:56:03,680
+tricks to to to to win the competition
+
+1340
+00:56:02,000 --> 00:56:06,079
+but the very interesting part is also
+
+1341
+00:56:03,680 --> 00:56:08,359
+this data set so as you as you saw
+
+1342
+00:56:06,079 --> 00:56:10,440
+there's like 100,000 different data set
+
+1343
+00:56:08,359 --> 00:56:13,079
+here and then you can restart for
+
+1344
+00:56:10,440 --> 00:56:14,520
+instance the co data set was quite nice
+
+1345
+00:56:13,079 --> 00:56:16,520
+uh you had like all the paper so it's
+
+1346
+00:56:14,520 --> 00:56:18,240
+pretty big some some data set are really
+
+1347
+00:56:16,520 --> 00:56:20,960
+small some are really really
+
+1348
+00:56:18,240 --> 00:56:22,760
+big so this could be very also inspiring
+
+1349
+00:56:20,960 --> 00:56:24,559
+to you if you have some uh you know I
+
+1350
+00:56:22,760 --> 00:56:27,920
+don't know want to take
+
+1351
+00:56:24,559 --> 00:56:30,599
+music so
+
+1352
+00:56:27,920 --> 00:56:33,680
+and then try to find uh yeah features
+
+1353
+00:56:30,599 --> 00:56:35,839
+music net uh this is a very old data set
+
+1354
+00:56:33,680 --> 00:56:37,440
+we make our own actually data set if you
+
+1355
+00:56:35,839 --> 00:56:40,880
+are interested in music let me know I
+
+1356
+00:56:37,440 --> 00:56:42,880
+have tons of experience in this and uh
+
+1357
+00:56:40,880 --> 00:56:45,640
+right and I okay I like this data set
+
+1358
+00:56:42,880 --> 00:56:47,480
+the top 50 Spotify songs and some people
+
+1359
+00:56:45,640 --> 00:56:49,640
+can give you a CSV file then you can
+
+1360
+00:56:47,480 --> 00:56:51,400
+download so it's a very very small data
+
+1361
+00:56:49,640 --> 00:56:54,760
+set in this case and then we try to
+
+1362
+00:56:51,400 --> 00:56:57,760
+transform this into visual elements
+
+1363
+00:56:54,760 --> 00:56:57,760
+right
+
+1364
+00:56:59,160 --> 00:57:03,359
+okay uh but probably you also have data
+
+1365
+00:57:01,520 --> 00:57:05,520
+in your own company so of course the
+
+1366
+00:57:03,359 --> 00:57:08,000
+goal would be to apply this to your own
+
+1367
+00:57:05,520 --> 00:57:09,680
+data set which make more sense but if
+
+1368
+00:57:08,000 --> 00:57:11,280
+you want to exercise and you can you
+
+1369
+00:57:09,680 --> 00:57:15,599
+don't have the rights or anything you
+
+1370
+00:57:11,280 --> 00:57:15,599
+can you can use those to uh
+
+1371
+00:57:15,960 --> 00:57:22,280
+sources and just as an as an ID you can
+
+1372
+00:57:20,319 --> 00:57:23,640
+also create your own data set so for
+
+1373
+00:57:22,280 --> 00:57:26,680
+instance and this is what we're going to
+
+1374
+00:57:23,640 --> 00:57:28,880
+use here today um I'm sure if you know
+
+1375
+00:57:26,680 --> 00:57:30,680
+this website you guys know this last FM
+
+1376
+00:57:28,880 --> 00:57:35,960
+does it ring a
+
+1377
+00:57:30,680 --> 00:57:38,039
+bell yes no okay so we have one yes so
+
+1378
+00:57:35,960 --> 00:57:41,119
+Last FM is just a it's a website that
+
+1379
+00:57:38,039 --> 00:57:43,119
+tracks your listening habits so you can
+
+1380
+00:57:41,119 --> 00:57:46,160
+create an account and and basically
+
+1381
+00:57:43,119 --> 00:57:48,960
+connect it to your Spotify youube
+
+1382
+00:57:46,160 --> 00:57:51,880
+slapple dieser whatever platform you use
+
+1383
+00:57:48,960 --> 00:57:53,839
+and it would track how many songs you
+
+1384
+00:57:51,880 --> 00:57:55,520
+listen to which songs and and so give
+
+1385
+00:57:53,839 --> 00:57:57,200
+you a bit the statistics of your
+
+1386
+00:57:55,520 --> 00:57:59,520
+listening habit I think it's pretty nice
+
+1387
+00:57:57,200 --> 00:58:02,880
+website it's free you can pay for more
+
+1388
+00:57:59,520 --> 00:58:04,400
+detail analytics but you can export it
+
+1389
+00:58:02,880 --> 00:58:06,839
+so one could be this right this is
+
+1390
+00:58:04,400 --> 00:58:08,880
+something that you can create yourself
+
+1391
+00:58:06,839 --> 00:58:10,760
+you could also export your WhatsApp
+
+1392
+00:58:08,880 --> 00:58:12,160
+messages and try to analyze the
+
+1393
+00:58:10,760 --> 00:58:14,079
+connections and how you know how you
+
+1394
+00:58:12,160 --> 00:58:16,520
+reply so there's sort of data that we
+
+1395
+00:58:14,079 --> 00:58:18,440
+create every day that is more or less
+
+1396
+00:58:16,520 --> 00:58:21,000
+hidden but if you think it through you
+
+1397
+00:58:18,440 --> 00:58:22,920
+can really extract them quite easily
+
+1398
+00:58:21,000 --> 00:58:25,480
+there's an app that I like it called Arc
+
+1399
+00:58:22,920 --> 00:58:27,599
+that tracks every move you make with
+
+1400
+00:58:25,480 --> 00:58:29,640
+your phone but it's store it's not on
+
+1401
+00:58:27,599 --> 00:58:32,000
+the server it's on local to your phone
+
+1402
+00:58:29,640 --> 00:58:34,000
+then you can export it and use this as a
+
+1403
+00:58:32,000 --> 00:58:36,240
+as a file to see you know let's say you
+
+1404
+00:58:34,000 --> 00:58:37,680
+go another country and you visit a city
+
+1405
+00:58:36,240 --> 00:58:39,520
+and you would like at the end of your
+
+1406
+00:58:37,680 --> 00:58:41,400
+trip to see where you went and how you
+
+1407
+00:58:39,520 --> 00:58:46,640
+know you could use that as a data set
+
+1408
+00:58:41,400 --> 00:58:48,400
+also to work with Okay so uh yeah this
+
+1409
+00:58:46,640 --> 00:58:49,760
+is what it would look like and this this
+
+1410
+00:58:48,400 --> 00:58:52,000
+website is pretty cool I'm going to give
+
+1411
+00:58:49,760 --> 00:58:53,599
+it to you because it's not uh
+
+1412
+00:58:52,000 --> 00:58:57,319
+necessarily well known it's just a way
+
+1413
+00:58:53,599 --> 00:59:00,799
+to export all the the last M data that
+
+1414
+00:58:57,319 --> 00:59:03,640
+you have when you are logged in right so
+
+1415
+00:59:00,799 --> 00:59:05,440
+you can say oh so if you start now of
+
+1416
+00:59:03,640 --> 00:59:07,440
+course you going have you need to wait a
+
+1417
+00:59:05,440 --> 00:59:10,039
+few months to have a sufficiently big
+
+1418
+00:59:07,440 --> 00:59:11,359
+database but uh you know over time you
+
+1419
+00:59:10,039 --> 00:59:15,599
+have a tons of different artists and
+
+1420
+00:59:11,359 --> 00:59:19,119
+tracks and everything you can listen to
+
+1421
+00:59:15,599 --> 00:59:19,119
+okay question so
+
+1422
+00:59:20,359 --> 00:59:24,359
+far good
+
+1423
+00:59:26,920 --> 00:59:31,960
+so I'll share with you this this data
+
+1424
+00:59:29,200 --> 00:59:35,200
+set I can I can actually put it here in
+
+1425
+00:59:31,960 --> 00:59:40,280
+the chat so that we can try to
+
+1426
+00:59:35,200 --> 00:59:40,280
+um uh to work with it when I'm
+
+1427
+00:59:40,799 --> 00:59:45,880
+after okay
+
+1428
+00:59:43,720 --> 00:59:47,920
+so um this is what we're going to do now
+
+1429
+00:59:45,880 --> 00:59:50,680
+we're going to work with this uh this
+
+1430
+00:59:47,920 --> 00:59:53,559
+tool cables and I'm I'm sure you never
+
+1431
+00:59:50,680 --> 00:59:55,559
+heard of it before because it's it's not
+
+1432
+00:59:53,559 --> 00:59:57,599
+new it's been on for like a few years
+
+1433
+00:59:55,559 --> 01:00:01,039
+but it's they really start
+
+1434
+00:59:57,599 --> 01:00:02,319
+to to um to make it so awesome that
+
+1435
+01:00:01,039 --> 01:00:04,920
+people are start to join in but it's
+
+1436
+01:00:02,319 --> 01:00:06,319
+still not as known as D3 for instance
+
+1437
+01:00:04,920 --> 01:00:08,359
+and other libraries that you may know
+
+1438
+01:00:06,319 --> 01:00:12,280
+for data visualization so what is this
+
+1439
+01:00:08,359 --> 01:00:14,240
+cables GM this is a plat it's not just
+
+1440
+01:00:12,280 --> 01:00:17,319
+one tool or framework or Library it's
+
+1441
+01:00:14,240 --> 01:00:19,039
+really a platform so let me go on cables
+
+1442
+01:00:17,319 --> 01:00:20,400
+and I will invite you to actually create
+
+1443
+01:00:19,039 --> 01:00:23,599
+an account because this is where we're
+
+1444
+01:00:20,400 --> 01:00:26,039
+going to play uh today so if you go to
+
+1445
+01:00:23,599 --> 01:00:28,400
+cables. on the right you would have this
+
+1446
+01:00:26,039 --> 01:00:31,319
+register and login and you can now go
+
+1447
+01:00:28,400 --> 01:00:33,079
+and register put your email wait for the
+
+1448
+01:00:31,319 --> 01:00:38,200
+confirmation email check your spam
+
+1449
+01:00:33,079 --> 01:00:40,559
+folder and and go here so um I give you
+
+1450
+01:00:38,200 --> 01:00:45,000
+guys two two minutes so that we can do
+
+1451
+01:00:40,559 --> 01:00:46,520
+this and uh and and you let me know uh
+
+1452
+01:00:45,000 --> 01:00:49,200
+when when you're here so when you create
+
+1453
+01:00:46,520 --> 01:00:52,400
+an account then you will reach this page
+
+1454
+01:00:49,200 --> 01:00:54,960
+basically okay so go on cables GL go on
+
+1455
+01:00:52,400 --> 01:00:57,119
+the top right register and then you can
+
+1456
+01:00:54,960 --> 01:01:01,280
+come so what is this tool while you do
+
+1457
+01:00:57,119 --> 01:01:03,079
+this this is a node based uh visual tool
+
+1458
+01:01:01,280 --> 01:01:05,559
+so you don't have to code anything you
+
+1459
+01:01:03,079 --> 01:01:07,599
+can code if you want to so this is the
+
+1460
+01:01:05,559 --> 01:01:11,680
+page right you would see register on the
+
+1461
+01:01:07,599 --> 01:01:14,400
+right um and it's a basically it's a
+
+1462
+01:01:11,680 --> 01:01:16,839
+node based visual framework on the web
+
+1463
+01:01:14,400 --> 01:01:20,039
+to create Motion Graphics data
+
+1464
+01:01:16,839 --> 01:01:22,280
+visualization data art AI art anything
+
+1465
+01:01:20,039 --> 01:01:25,000
+you think you can think of and as I
+
+1466
+01:01:22,280 --> 01:01:28,079
+mentioned it's a no code tool so you can
+
+1467
+01:01:25,000 --> 01:01:30,039
+use this without having uh experience in
+
+1468
+01:01:28,079 --> 01:01:31,960
+programming but if you know how to you
+
+1469
+01:01:30,039 --> 01:01:34,559
+can create your own blocks it's like
+
+1470
+01:01:31,960 --> 01:01:36,559
+Lego blocks that you plug basically and
+
+1471
+01:01:34,559 --> 01:01:39,359
+if you know how to then you can start to
+
+1472
+01:01:36,559 --> 01:01:41,599
+program with this and extend the library
+
+1473
+01:01:39,359 --> 01:01:44,280
+it's free very important it's a free
+
+1474
+01:01:41,599 --> 01:01:45,920
+tool all the the the work that you
+
+1475
+01:01:44,280 --> 01:01:48,359
+create the projects which are called
+
+1476
+01:01:45,920 --> 01:01:50,760
+patches uh are free and your own so you
+
+1477
+01:01:48,359 --> 01:01:54,440
+can download the data exported to a
+
+1478
+01:01:50,760 --> 01:01:57,079
+website and so forth so it's really
+
+1479
+01:01:54,440 --> 01:01:59,160
+underrated and off awesome Library I've
+
+1480
+01:01:57,079 --> 01:02:01,880
+been involved with this community for in
+
+1481
+01:01:59,160 --> 01:02:04,039
+this community for the last two years
+
+1482
+01:02:01,880 --> 01:02:05,720
+and I now all my work and all my
+
+1483
+01:02:04,039 --> 01:02:07,039
+workshops I I do with cables I think
+
+1484
+01:02:05,720 --> 01:02:09,400
+it's the best tool for the job
+
+1485
+01:02:07,039 --> 01:02:12,359
+especially in this kind of setup of
+
+1486
+01:02:09,400 --> 01:02:16,520
+while we do workshops and
+
+1487
+01:02:12,359 --> 01:02:19,000
+everything so are you guys here did you
+
+1488
+01:02:16,520 --> 01:02:19,000
+create an
+
+1489
+01:02:24,480 --> 01:02:29,720
+account S
+
+1490
+01:02:26,960 --> 01:02:34,119
+register yeah then you if you put your
+
+1491
+01:02:29,720 --> 01:02:36,839
+email you you can check them and see if
+
+1492
+01:02:34,119 --> 01:02:39,400
+you uh if you received it to to
+
+1493
+01:02:36,839 --> 01:02:42,839
+basically enter
+
+1494
+01:02:39,400 --> 01:02:42,839
+the the the
+
+1495
+01:02:46,279 --> 01:02:52,200
+thing and you're quite lucky because
+
+1496
+01:02:49,440 --> 01:02:54,279
+like two days ago was yeah two was the a
+
+1497
+01:02:52,200 --> 01:02:56,440
+very big new release so they had tons of
+
+1498
+01:02:54,279 --> 01:02:57,680
+new stuff and it was quite uh
+
+1499
+01:02:56,440 --> 01:03:00,279
+quite impressive they also have a
+
+1500
+01:02:57,680 --> 01:03:04,319
+YouTube channel or they show all the
+
+1501
+01:03:00,279 --> 01:03:05,520
+kind of um tutorials and I also have my
+
+1502
+01:03:04,319 --> 01:03:07,279
+own YouTube channel where I show
+
+1503
+01:03:05,520 --> 01:03:09,839
+tutorials on how to use this tool so you
+
+1504
+01:03:07,279 --> 01:03:12,960
+can really find lot of information but I
+
+1505
+01:03:09,839 --> 01:03:15,760
+just wait till you guys are here and
+
+1506
+01:03:12,960 --> 01:03:19,279
+maybe we can do a quick break if you
+
+1507
+01:03:15,760 --> 01:03:21,960
+want once you are registered so that
+
+1508
+01:03:19,279 --> 01:03:23,799
+we I don't know maybe we take
+
+1509
+01:03:21,960 --> 01:03:27,599
+five five
+
+1510
+01:03:23,799 --> 01:03:30,559
+minutes uh would be good five minutes
+
+1511
+01:03:27,599 --> 01:03:32,559
+would be good five six minutes and so
+
+1512
+01:03:30,559 --> 01:03:34,760
+just so that you you hear and then we
+
+1513
+01:03:32,559 --> 01:03:37,240
+can restart to work on them the patch
+
+1514
+01:03:34,760 --> 01:03:40,200
+okay and do we do I have one more
+
+1515
+01:03:37,240 --> 01:03:42,559
+question about CVS file because I'm
+
+1516
+01:03:40,200 --> 01:03:46,119
+really new to this do I need to convert
+
+1517
+01:03:42,559 --> 01:03:48,039
+it to something or just download it no
+
+1518
+01:03:46,119 --> 01:03:50,039
+no download it for now and I'll show you
+
+1519
+01:03:48,039 --> 01:03:52,680
+just download it and then I'll show you
+
+1520
+01:03:50,039 --> 01:03:54,920
+everything don't worry okay thank you
+
+1521
+01:03:52,680 --> 01:03:56,839
+okay so it's 11 let's do five six
+
+1522
+01:03:54,920 --> 01:03:58,279
+minutes and and we come back so you guys
+
+1523
+01:03:56,839 --> 01:04:00,440
+have time to to create an account and
+
+1524
+01:03:58,279 --> 01:04:04,559
+and be here
+
+1525
+01:04:00,440 --> 01:04:04,559
+okay all right see you in 5
+
+1526
+01:04:24,720 --> 01:04:27,720
+minutes
+
+1527
+01:04:54,640 --> 01:04:57,640
+e
+
+1528
+01:05:24,640 --> 01:05:27,640
+e
+
+1529
+01:05:54,640 --> 01:05:57,640
+e
+
+1530
+01:06:24,559 --> 01:06:27,559
+e
+
+1531
+01:06:54,520 --> 01:06:57,520
+e
+
+1532
+01:07:24,520 --> 01:07:27,520
+e
+
+1533
+01:07:54,440 --> 01:07:57,440
+e
+
+1534
+01:08:24,440 --> 01:08:27,440
+e
+
+1535
+01:08:54,440 --> 01:08:58,400
+e e
+
+1536
+01:09:39,960 --> 01:09:45,679
+welcome
+
+1537
+01:09:41,759 --> 01:09:47,359
+back I hope that you had the time to um
+
+1538
+01:09:45,679 --> 01:09:49,640
+grab a
+
+1539
+01:09:47,359 --> 01:09:53,759
+drink uh please let me know when you
+
+1540
+01:09:49,640 --> 01:09:53,759
+back so we can move forward
+
+1541
+01:09:58,480 --> 01:10:00,920
+I am
+
+1542
+01:10:03,400 --> 01:10:09,159
+back great
+
+1543
+01:10:06,800 --> 01:10:10,840
+um yeah it's a bit late so I'm not sure
+
+1544
+01:10:09,159 --> 01:10:12,960
+if people come from Europe is it's start
+
+1545
+01:10:10,840 --> 01:10:14,920
+to get late from and maybe you need to
+
+1546
+01:10:12,960 --> 01:10:18,239
+eat or anything if you're from the US
+
+1547
+01:10:14,920 --> 01:10:22,360
+then it's morning or afternoon right in
+
+1548
+01:10:18,239 --> 01:10:24,520
+Russia it's 10 10 p.m. know I asked the
+
+1549
+01:10:22,360 --> 01:10:27,960
+organizer but they really wanted to push
+
+1550
+01:10:24,520 --> 01:10:31,560
+the the the hour I mean to put it later
+
+1551
+01:10:27,960 --> 01:10:34,920
+I was like okay but um I probably would
+
+1552
+01:10:31,560 --> 01:10:38,560
+have been um easier a bit earlier
+
+1553
+01:10:34,920 --> 01:10:42,880
+especially for you but uh we have to
+
+1554
+01:10:38,560 --> 01:10:45,199
+make the best of the situation um on the
+
+1555
+01:10:42,880 --> 01:10:48,679
+other are
+
+1556
+01:10:45,199 --> 01:10:48,679
+here and gu
+
+1557
+01:10:50,040 --> 01:10:54,320
+back not yet
+
+1558
+01:10:55,800 --> 01:11:00,199
+um let's wait one or two more
+
+1559
+01:11:02,280 --> 01:11:10,880
+minutes but back and ready on okay Terry
+
+1560
+01:11:08,120 --> 01:11:13,719
+nice
+
+1561
+01:11:10,880 --> 01:11:15,960
+um okay so if you are back can you put
+
+1562
+01:11:13,719 --> 01:11:20,480
+in the chat if you cannot
+
+1563
+01:11:15,960 --> 01:11:20,480
+talk also as well
+
+1564
+01:11:28,080 --> 01:11:33,000
+okay okay
+
+1565
+01:11:29,719 --> 01:11:38,520
+okay two more people
+
+1566
+01:11:33,000 --> 01:11:38,520
+uh Patrick are you are you there
+
+1567
+01:11:41,080 --> 01:11:49,400
+Brian so um what they come so this is
+
+1568
+01:11:45,600 --> 01:11:51,639
+the interface right you come here and um
+
+1569
+01:11:49,400 --> 01:11:54,600
+so what can we do first first important
+
+1570
+01:11:51,639 --> 01:11:56,440
+the top bar we have this learn uh tab
+
+1571
+01:11:54,600 --> 01:11:59,560
+right so you have old all the examples
+
+1572
+01:11:56,440 --> 01:12:02,520
+documentation some videos and this
+
+1573
+01:11:59,560 --> 01:12:04,239
+community it could be also very handy so
+
+1574
+01:12:02,520 --> 01:12:06,159
+most people are connected on Discord and
+
+1575
+01:12:04,239 --> 01:12:08,360
+this is where we exchange and when you
+
+1576
+01:12:06,159 --> 01:12:10,880
+get help it's very friendly
+
+1577
+01:12:08,360 --> 01:12:13,440
+Community uh every Wednesday There's a
+
+1578
+01:12:10,880 --> 01:12:16,920
+Meetup at 7:30
+
+1579
+01:12:13,440 --> 01:12:18,880
+C at night and uh people can come with
+
+1580
+01:12:16,920 --> 01:12:22,040
+their questions we talk about the latest
+
+1581
+01:12:18,880 --> 01:12:23,920
+visuals just to show you an example if
+
+1582
+01:12:22,040 --> 01:12:26,360
+you go and explore browse all the
+
+1583
+01:12:23,920 --> 01:12:29,480
+patches then you like the latest project
+
+1584
+01:12:26,360 --> 01:12:31,639
+that have been made by with this uh
+
+1585
+01:12:29,480 --> 01:12:35,040
+framework and you have really cool
+
+1586
+01:12:31,639 --> 01:12:37,120
+examples um complet completely unrelated
+
+1587
+01:12:35,040 --> 01:12:39,400
+sometimes is about complet showing an
+
+1588
+01:12:37,120 --> 01:12:41,719
+new example sometimes about Motion
+
+1589
+01:12:39,400 --> 01:12:44,280
+Graphics such as this one and then you
+
+1590
+01:12:41,719 --> 01:12:45,800
+notice that this runs in your browser
+
+1591
+01:12:44,280 --> 01:12:48,600
+right so this is live visual you can
+
+1592
+01:12:45,800 --> 01:12:50,800
+have this work on your phone as well and
+
+1593
+01:12:48,600 --> 01:12:52,520
+if you give this URL to anyone then you
+
+1594
+01:12:50,800 --> 01:12:55,360
+will basically have a link to your
+
+1595
+01:12:52,520 --> 01:12:59,000
+interactive visuals or or you data
+
+1596
+01:12:55,360 --> 01:13:01,600
+visualization or your data art piece so
+
+1597
+01:12:59,000 --> 01:13:03,679
+uh just a simple example um something
+
+1598
+01:13:01,600 --> 01:13:07,080
+that I did recently was just about
+
+1599
+01:13:03,679 --> 01:13:09,920
+creating this U AI image but I wanted to
+
+1600
+01:13:07,080 --> 01:13:12,960
+have it uh a bit like immersive right so
+
+1601
+01:13:09,920 --> 01:13:14,880
+I just ma this into a sphere and uh
+
+1602
+01:13:12,960 --> 01:13:17,360
+hopefully you can
+
+1603
+01:13:14,880 --> 01:13:19,920
+see uh how how it
+
+1604
+01:13:17,360 --> 01:13:21,880
+works so some some people say they have
+
+1605
+01:13:19,920 --> 01:13:27,000
+no mic anymore
+
+1606
+01:13:21,880 --> 01:13:27,000
+so can I do anything for this
+
+1607
+01:13:27,760 --> 01:13:31,480
+uh yeah I don't know I'm not sure about
+
+1608
+01:13:29,880 --> 01:13:36,120
+this platform I'm going to open all your
+
+1609
+01:13:31,480 --> 01:13:39,000
+mics maybe I don't know can I open you
+
+1610
+01:13:36,120 --> 01:13:42,239
+Patrick
+
+1611
+01:13:39,000 --> 01:13:47,800
+wait stop stream I don't know what this
+
+1612
+01:13:42,239 --> 01:13:47,800
+is are you streaming I don't know okay
+
+1613
+01:13:48,880 --> 01:13:53,480
+mute okay I'm unmuting you maybe I don't
+
+1614
+01:13:51,840 --> 01:13:55,840
+know
+
+1615
+01:13:53,480 --> 01:13:58,040
+um so yeah this is just an example as
+
+1616
+01:13:55,840 --> 01:13:59,800
+you can see this is just also a link
+
+1617
+01:13:58,040 --> 01:14:02,239
+that you can send to anyone you can put
+
+1618
+01:13:59,800 --> 01:14:04,960
+it on social media and it works so it
+
+1619
+01:14:02,239 --> 01:14:07,960
+also act acts as a platform to host your
+
+1620
+01:14:04,960 --> 01:14:10,120
+content of course if you want to host it
+
+1621
+01:14:07,960 --> 01:14:12,480
+yourself you can do that but it's what I
+
+1622
+01:14:10,120 --> 01:14:14,520
+like about this tool is that you know it
+
+1623
+01:14:12,480 --> 01:14:17,280
+don't have any hassle you just you make
+
+1624
+01:14:14,520 --> 01:14:18,920
+your visual you can have it private or
+
+1625
+01:14:17,280 --> 01:14:21,000
+but when you make it public and it goes
+
+1626
+01:14:18,920 --> 01:14:24,480
+here and you can share an URL you can
+
+1627
+01:14:21,000 --> 01:14:27,120
+also share a private uh URL uh for
+
+1628
+01:14:24,480 --> 01:14:29,520
+people for clients for you know internal
+
+1629
+01:14:27,120 --> 01:14:31,920
+to the company and just uh let let me
+
+1630
+01:14:29,520 --> 01:14:34,880
+show you some of the coolest patches
+
+1631
+01:14:31,920 --> 01:14:36,440
+right so for instance this this was
+
+1632
+01:14:34,880 --> 01:14:39,760
+quite it was you know made four years
+
+1633
+01:14:36,440 --> 01:14:41,719
+ago but it's uh I'm not sure if you see
+
+1634
+01:14:39,760 --> 01:14:44,480
+when I put full
+
+1635
+01:14:41,719 --> 01:14:46,880
+screen uh right I'm not sure if it's
+
+1636
+01:14:44,480 --> 01:14:49,320
+smooth to you on your on your end but
+
+1637
+01:14:46,880 --> 01:14:51,000
+you know this would be quite difficult
+
+1638
+01:14:49,320 --> 01:14:53,360
+to code if you don't really know how to
+
+1639
+01:14:51,000 --> 01:14:56,000
+do this but you will see with cables
+
+1640
+01:14:53,360 --> 01:14:58,920
+this is a just a matter of few blocks
+
+1641
+01:14:56,000 --> 01:15:05,400
+actually so it's uh it's pretty pretty
+
+1642
+01:14:58,920 --> 01:15:08,440
+neat so um if everyone is is back um so
+
+1643
+01:15:05,400 --> 01:15:11,639
+what you this is the main page and we're
+
+1644
+01:15:08,440 --> 01:15:15,040
+gonna start with this create so on the
+
+1645
+01:15:11,639 --> 01:15:19,040
+top create empty
+
+1646
+01:15:15,040 --> 01:15:22,320
+project right and if you do that this is
+
+1647
+01:15:19,040 --> 01:15:26,880
+where we'll be we will be in this empty
+
+1648
+01:15:22,320 --> 01:15:29,520
+uh P page here so uh can you see that
+
+1649
+01:15:26,880 --> 01:15:29,520
+this empty
+
+1650
+01:15:34,000 --> 01:15:39,199
+page I mean do we have any mic's issue
+
+1651
+01:15:37,480 --> 01:15:41,440
+because if if no one can talk it's going
+
+1652
+01:15:39,199 --> 01:15:41,440
+to be
+
+1653
+01:15:41,520 --> 01:15:46,560
+tedious
+
+1654
+01:15:43,199 --> 01:15:46,560
+um I'm
+
+1655
+01:15:46,719 --> 01:15:52,639
+there
+
+1656
+01:15:48,719 --> 01:15:55,560
+okay uh so I can
+
+1657
+01:15:52,639 --> 01:15:58,000
+yeah I try to open the mic for everyone
+
+1658
+01:15:55,560 --> 01:16:00,280
+yeah okay nice so you here
+
+1659
+01:15:58,000 --> 01:16:05,520
+right and
+
+1660
+01:16:00,280 --> 01:16:09,120
+um I have my mic off but I get audio
+
+1661
+01:16:05,520 --> 01:16:10,960
+cool yeah so you can mute yourself after
+
+1662
+01:16:09,120 --> 01:16:14,159
+try to unmute everyone just to make sure
+
+1663
+01:16:10,960 --> 01:16:17,719
+that didn't have any bug or anything but
+
+1664
+01:16:14,159 --> 01:16:19,679
+okay so we're here and it's it could
+
+1665
+01:16:17,719 --> 01:16:21,480
+look a bit daunting right so you go here
+
+1666
+01:16:19,679 --> 01:16:23,280
+and say okay what what do I do what
+
+1667
+01:16:21,480 --> 01:16:26,800
+happens here especially if you don't
+
+1668
+01:16:23,280 --> 01:16:28,360
+know how to uh how to program
+
+1669
+01:16:26,800 --> 01:16:32,199
+right
+
+1670
+01:16:28,360 --> 01:16:36,040
+um so what we could do now is to I'm
+
+1671
+01:16:32,199 --> 01:16:36,040
+still here mik who
+
+1672
+01:16:39,880 --> 01:16:45,280
+is I'm trying to mute people so please
+
+1673
+01:16:43,080 --> 01:16:46,520
+mute yourself on and unmute yourself
+
+1674
+01:16:45,280 --> 01:16:50,800
+only when
+
+1675
+01:16:46,520 --> 01:16:53,960
+you when you want to talk yes thanks so
+
+1676
+01:16:50,800 --> 01:16:55,639
+we're here right uh the shortcut that
+
+1677
+01:16:53,960 --> 01:17:00,639
+we're going to use all the time is going
+
+1678
+01:16:55,639 --> 01:17:05,280
+to be the tab keyy so the tab key is
+
+1679
+01:17:00,639 --> 01:17:05,280
+the can you hear I hear some Echo
+
+1680
+01:17:05,440 --> 01:17:09,800
+somewhere H so I'm going to mute
+
+1681
+01:17:07,280 --> 01:17:14,040
+everyone okay oh just open your mic if
+
+1682
+01:17:09,800 --> 01:17:16,480
+you can uh so when you're here the tab
+
+1683
+01:17:14,040 --> 01:17:18,600
+key will open this this basically this
+
+1684
+01:17:16,480 --> 01:17:20,960
+uh window so the tab key is next to the
+
+1685
+01:17:18,600 --> 01:17:22,360
+que or you know on the top left of your
+
+1686
+01:17:20,960 --> 01:17:25,080
+on the left of your keyboard right the
+
+1687
+01:17:22,360 --> 01:17:27,800
+left hand you have this tab key you can
+
+1688
+01:17:25,080 --> 01:17:31,480
+also press Escape which will open the
+
+1689
+01:17:27,800 --> 01:17:33,159
+this uh menu as well so how does it work
+
+1690
+01:17:31,480 --> 01:17:36,480
+basically this is where we're going to
+
+1691
+01:17:33,159 --> 01:17:39,719
+put the Lego blocks that we need that we
+
+1692
+01:17:36,480 --> 01:17:42,760
+they call op for operators here on the
+
+1693
+01:17:39,719 --> 01:17:47,679
+right this is the where we see the the
+
+1694
+01:17:42,760 --> 01:17:50,719
+live visuals and here below we have the
+
+1695
+01:17:47,679 --> 01:17:53,320
+basically the options of the each block
+
+1696
+01:17:50,719 --> 01:17:55,239
+okay when you go here you also have some
+
+1697
+01:17:53,320 --> 01:17:59,000
+more options like patch setting and we
+
+1698
+01:17:55,239 --> 01:18:02,440
+can call this um data
+
+1699
+01:17:59,000 --> 01:18:06,360
+no in data art initiation whatever you
+
+1700
+01:18:02,440 --> 01:18:08,000
+want initiation and you press save and
+
+1701
+01:18:06,360 --> 01:18:10,239
+don't forget to save this is something
+
+1702
+01:18:08,000 --> 01:18:12,600
+that is a bit weird but if something
+
+1703
+01:18:10,239 --> 01:18:13,719
+happens and need to reload the page and
+
+1704
+01:18:12,600 --> 01:18:17,040
+then you didn't save you're going to
+
+1705
+01:18:13,719 --> 01:18:19,159
+lose stuff so to save don't contrl S
+
+1706
+01:18:17,040 --> 01:18:21,199
+command S as you would do on any
+
+1707
+01:18:19,159 --> 01:18:24,600
+software right to save the patch of
+
+1708
+01:18:21,199 --> 01:18:28,639
+course for now it's empty so uh nothing
+
+1709
+01:18:24,600 --> 01:18:31,040
+can happen so um the first thing we're
+
+1710
+01:18:28,639 --> 01:18:34,639
+going to do is we're going to put the
+
+1711
+01:18:31,040 --> 01:18:36,840
+main block that basically sets the the
+
+1712
+01:18:34,639 --> 01:18:39,679
+the loop the so that we can draw things
+
+1713
+01:18:36,840 --> 01:18:42,760
+on the screen and because it's a loop
+
+1714
+01:18:39,679 --> 01:18:44,960
+and it's the main object is called main
+
+1715
+01:18:42,760 --> 01:18:47,120
+Loop so you see I'm typing in my
+
+1716
+01:18:44,960 --> 01:18:49,520
+keyboard main Loop and it's autocomplete
+
+1717
+01:18:47,120 --> 01:18:52,080
+stuff and then I can add by clicking or
+
+1718
+01:18:49,520 --> 01:18:54,920
+I just use the keyboard enter and
+
+1719
+01:18:52,080 --> 01:18:57,239
+putting this node here so now notice
+
+1720
+01:18:54,920 --> 01:18:59,360
+that with my scroll my mouse I can
+
+1721
+01:18:57,239 --> 01:19:00,360
+scroll and it's infinite right the the
+
+1722
+01:18:59,360 --> 01:19:03,239
+the
+
+1723
+01:19:00,360 --> 01:19:06,600
+canvas when I click on this I have more
+
+1724
+01:19:03,239 --> 01:19:06,600
+options that appears on the
+
+1725
+01:19:06,760 --> 01:19:11,800
+right
+
+1726
+01:19:08,560 --> 01:19:17,159
+um so is it is it okay
+
+1727
+01:19:11,800 --> 01:19:17,159
+for trying to open the mics again uh
+
+1728
+01:19:17,520 --> 01:19:24,159
+Patrick can you can you talk if
+
+1729
+01:19:21,840 --> 01:19:27,000
+you yeah I'm not sure if it's it's not
+
+1730
+01:19:24,159 --> 01:19:27,000
+working very
+
+1731
+01:19:27,480 --> 01:19:34,800
+well so can anyone talk because I don't
+
+1732
+01:19:30,719 --> 01:19:37,719
+hear any feedback so sorry where I can
+
+1733
+01:19:34,800 --> 01:19:40,360
+where should type main Loop so you press
+
+1734
+01:19:37,719 --> 01:19:42,760
+Tab and then you just type main Loop and
+
+1735
+01:19:40,360 --> 01:19:45,560
+notice so and then you can you can add
+
+1736
+01:19:42,760 --> 01:19:47,960
+it and if you go back here these are all
+
+1737
+01:19:45,560 --> 01:19:50,360
+the possible operators these are the
+
+1738
+01:19:47,960 --> 01:19:51,679
+broad categories that we have and
+
+1739
+01:19:50,360 --> 01:19:54,159
+there's about
+
+1740
+01:19:51,679 --> 01:19:55,679
+2,000 blocks so of course it's going to
+
+1741
+01:19:54,159 --> 01:19:58,159
+take some time
+
+1742
+01:19:55,679 --> 01:20:00,199
+to know everything but it's there's a
+
+1743
+01:19:58,159 --> 01:20:02,080
+logic behind it so it's not that long
+
+1744
+01:20:00,199 --> 01:20:04,120
+actually it's really by big categories
+
+1745
+01:20:02,080 --> 01:20:07,360
+and and we can cover this so most of
+
+1746
+01:20:04,120 --> 01:20:10,000
+them are in one big category and we go
+
+1747
+01:20:07,360 --> 01:20:13,040
+through this so we have the main Loop
+
+1748
+01:20:10,000 --> 01:20:16,199
+and when you click on it so thing you
+
+1749
+01:20:13,040 --> 01:20:17,840
+notice two things with we have inputs
+
+1750
+01:20:16,199 --> 01:20:20,719
+here green
+
+1751
+01:20:17,840 --> 01:20:23,120
+inputs and outputs the inputs that you
+
+1752
+01:20:20,719 --> 01:20:25,120
+see here are the same as what you see
+
+1753
+01:20:23,120 --> 01:20:29,360
+here in the table in the menu on the
+
+1754
+01:20:25,120 --> 01:20:32,239
+right okay it's exactly the same and the
+
+1755
+01:20:29,360 --> 01:20:33,639
+idea of cables is to connect stuff so
+
+1756
+01:20:32,239 --> 01:20:35,360
+that you instead of configuring
+
+1757
+01:20:33,639 --> 01:20:38,120
+everything here you basically connect
+
+1758
+01:20:35,360 --> 01:20:41,440
+blocks to blocks and you basically set
+
+1759
+01:20:38,120 --> 01:20:42,880
+the the input of the next block by
+
+1760
+01:20:41,440 --> 01:20:44,719
+taking the output of this one for
+
+1761
+01:20:42,880 --> 01:20:47,560
+instance so the first thing we're going
+
+1762
+01:20:44,719 --> 01:20:50,800
+to do don't don't worry if you have tons
+
+1763
+01:20:47,560 --> 01:20:53,560
+of different options the green um inputs
+
+1764
+01:20:50,800 --> 01:20:55,920
+means that they are either numbers or
+
+1765
+01:20:53,560 --> 01:20:58,880
+you know true or false value check
+
+1766
+01:20:55,920 --> 01:21:03,239
+boxes and we have the special kind of
+
+1767
+01:20:58,880 --> 01:21:05,679
+yellow output and this yellow color
+
+1768
+01:21:03,239 --> 01:21:08,920
+means that this is basically the way to
+
+1769
+01:21:05,679 --> 01:21:11,560
+trigger operations to to to send to say
+
+1770
+01:21:08,920 --> 01:21:13,760
+this is what happened next so this Loop
+
+1771
+01:21:11,560 --> 01:21:16,400
+here is being triggered it's written
+
+1772
+01:21:13,760 --> 01:21:18,679
+here trigger every other Ops once every
+
+1773
+01:21:16,400 --> 01:21:19,560
+frame to create smooth animation this is
+
+1774
+01:21:18,679 --> 01:21:23,120
+the main
+
+1775
+01:21:19,560 --> 01:21:25,679
+renderer on your computer um the minimum
+
+1776
+01:21:23,120 --> 01:21:27,880
+frame rate on is on the web at 60 frames
+
+1777
+01:21:25,679 --> 01:21:30,679
+per second so this guy here is going to
+
+1778
+01:21:27,880 --> 01:21:33,600
+execute stuff 60 times per second in the
+
+1779
+01:21:30,679 --> 01:21:35,760
+best case scenario if you have a higher
+
+1780
+01:21:33,600 --> 01:21:41,480
+uh graphics card or and Screen you can
+
+1781
+01:21:35,760 --> 01:21:43,679
+go 120 HZ 240 times per second so 16 60
+
+1782
+01:21:41,480 --> 01:21:46,120
+times per second leaves us with 16
+
+1783
+01:21:43,679 --> 01:21:48,280
+milliseconds to do everything we want on
+
+1784
+01:21:46,120 --> 01:21:50,800
+the screen if we take more time then
+
+1785
+01:21:48,280 --> 01:21:52,520
+it's going to start to be to reduce the
+
+1786
+01:21:50,800 --> 01:21:55,800
+frame rate and at some point if it's
+
+1787
+01:21:52,520 --> 01:21:59,360
+below 30 FPS is going to look sluggish
+
+1788
+01:21:55,800 --> 01:22:01,520
+and and laggy and bad so the goal here
+
+1789
+01:21:59,360 --> 01:22:04,600
+is to always strive to have interactive
+
+1790
+01:22:01,520 --> 01:22:07,920
+frame rates so the closest to 60 FPS
+
+1791
+01:22:04,600 --> 01:22:10,880
+that we can right it's a bit theoretical
+
+1792
+01:22:07,920 --> 01:22:13,600
+I know but I'll show you an example so I
+
+1793
+01:22:10,880 --> 01:22:15,400
+have this main Loop here and the first
+
+1794
+01:22:13,600 --> 01:22:17,159
+thing we're going to try is to change
+
+1795
+01:22:15,400 --> 01:22:19,800
+the color of the background because it's
+
+1796
+01:22:17,159 --> 01:22:21,800
+black by default right so how do you do
+
+1797
+01:22:19,800 --> 01:22:23,520
+this well you put another node right
+
+1798
+01:22:21,800 --> 01:22:26,080
+it's because it's about putting Lego
+
+1799
+01:22:23,520 --> 01:22:28,480
+blocks and the note to change the color
+
+1800
+01:22:26,080 --> 01:22:30,239
+is called clear color and you say why
+
+1801
+01:22:28,480 --> 01:22:32,280
+ises it why is it called clear color and
+
+1802
+01:22:30,239 --> 01:22:35,520
+not change background because clear
+
+1803
+01:22:32,280 --> 01:22:38,440
+color is really the name that is used on
+
+1804
+01:22:35,520 --> 01:22:40,760
+the underlying Graphics API that we use
+
+1805
+01:22:38,440 --> 01:22:43,520
+which is webg which is also inspired by
+
+1806
+01:22:40,760 --> 01:22:46,080
+openg G which has been on for created
+
+1807
+01:22:43,520 --> 01:22:48,880
+like more than 20 years ago and this is
+
+1808
+01:22:46,080 --> 01:22:50,679
+the the line of code you use to change
+
+1809
+01:22:48,880 --> 01:22:54,719
+the color so it's called clear color for
+
+1810
+01:22:50,679 --> 01:22:56,679
+that particular reason right so is it
+
+1811
+01:22:54,719 --> 01:22:59,000
+you put a clear color here on the patch
+
+1812
+01:22:56,679 --> 01:23:01,400
+and notice that I can press my left
+
+1813
+01:22:59,000 --> 01:23:04,400
+Mouse and put it everywhere
+
+1814
+01:23:01,400 --> 01:23:04,400
+but
+
+1815
+01:23:06,480 --> 01:23:12,040
+yes I think
+
+1816
+01:23:08,800 --> 01:23:15,120
+it's else
+
+1817
+01:23:12,040 --> 01:23:17,600
+um so when you have this clear
+
+1818
+01:23:15,120 --> 01:23:20,000
+color notice that here you have some
+
+1819
+01:23:17,600 --> 01:23:21,560
+options and I can move with my mouse the
+
+1820
+01:23:20,000 --> 01:23:23,800
+different
+
+1821
+01:23:21,560 --> 01:23:25,520
+sliders or I can click on the color and
+
+1822
+01:23:23,800 --> 01:23:29,040
+you know change it
+
+1823
+01:23:25,520 --> 01:23:31,280
+but I promised that this node was about
+
+1824
+01:23:29,040 --> 01:23:35,040
+changing the background and nothing
+
+1825
+01:23:31,280 --> 01:23:36,560
+happens so why is that because the way
+
+1826
+01:23:35,040 --> 01:23:38,679
+it works is you need to basically
+
+1827
+01:23:36,560 --> 01:23:40,280
+activate you need to connect this clear
+
+1828
+01:23:38,679 --> 01:23:42,960
+color to the main this is why you need
+
+1829
+01:23:40,280 --> 01:23:45,480
+this trigger say hey what every time
+
+1830
+01:23:42,960 --> 01:23:48,639
+every frame for now I do nothing but not
+
+1831
+01:23:45,480 --> 01:23:50,080
+every frame I'm gonna first now go and
+
+1832
+01:23:48,639 --> 01:23:53,040
+clear the
+
+1833
+01:23:50,080 --> 01:23:55,960
+color so now that it's connected now
+
+1834
+01:23:53,040 --> 01:23:57,159
+it's very reactive because it changes as
+
+1835
+01:23:55,960 --> 01:24:00,480
+fast as we
+
+1836
+01:23:57,159 --> 01:24:03,120
+can so you see you need this yellow
+
+1837
+01:24:00,480 --> 01:24:05,320
+trigger to say and you can even press
+
+1838
+01:24:03,120 --> 01:24:08,199
+give you a bit of shortcut here if you
+
+1839
+01:24:05,320 --> 01:24:10,000
+press the F key on your keyboard you
+
+1840
+01:24:08,199 --> 01:24:13,080
+would see this kind of flow it's called
+
+1841
+01:24:10,000 --> 01:24:14,920
+f for flow mode and then you see that
+
+1842
+01:24:13,080 --> 01:24:16,400
+okay there is a movement it goes from
+
+1843
+01:24:14,920 --> 01:24:19,679
+here and then it connects to the clicker
+
+1844
+01:24:16,400 --> 01:24:22,560
+and and runs this this function on this
+
+1845
+01:24:19,679 --> 01:24:27,000
+operation this block as fast as it can
+
+1846
+01:24:22,560 --> 01:24:29,239
+right so 69 per second is it uh okay for
+
+1847
+01:24:27,000 --> 01:24:29,239
+for
+
+1848
+01:24:31,199 --> 01:24:37,440
+everyone I cannot hear anyone not sure
+
+1849
+01:24:34,760 --> 01:24:39,480
+about this I'm going to ask the I've
+
+1850
+01:24:37,440 --> 01:24:40,560
+I've connected the things but I can't
+
+1851
+01:24:39,480 --> 01:24:43,159
+change the
+
+1852
+01:24:40,560 --> 01:24:45,199
+color okay when you go here you're
+
+1853
+01:24:43,159 --> 01:24:48,119
+connected like this you you have this
+
+1854
+01:24:45,199 --> 01:24:51,080
+here right this this uh no I don't let
+
+1855
+01:24:48,119 --> 01:24:54,040
+me click click on the Node here select
+
+1856
+01:24:51,080 --> 01:24:56,520
+this node oh yes yes now I see right and
+
+1857
+01:24:54,040 --> 01:24:58,360
+this is Alpha for opacity but you can
+
+1858
+01:24:56,520 --> 01:25:02,280
+move the slider like this or you can
+
+1859
+01:24:58,360 --> 01:25:02,280
+click on the color box and you know play
+
+1860
+01:25:05,520 --> 01:25:08,520
+around
+
+1861
+01:25:10,199 --> 01:25:16,560
+okay so
+
+1862
+01:25:13,440 --> 01:25:18,600
+next next thing so notice that when we
+
+1863
+01:25:16,560 --> 01:25:20,159
+start we created our first cable so how
+
+1864
+01:25:18,600 --> 01:25:22,600
+how can now you create a cable how can
+
+1865
+01:25:20,159 --> 01:25:24,760
+you remove it so when you go over a
+
+1866
+01:25:22,600 --> 01:25:28,040
+cable you have this note here and if you
+
+1867
+01:25:24,760 --> 01:25:30,480
+right click on it it disconnects the
+
+1868
+01:25:28,040 --> 01:25:33,760
+cable so when you disconnect it then you
+
+1869
+01:25:30,480 --> 01:25:35,480
+know it goes back to uh uh the the black
+
+1870
+01:25:33,760 --> 01:25:37,920
+screen right that you reconnect it you
+
+1871
+01:25:35,480 --> 01:25:40,639
+drag the cable and you can you can do
+
+1872
+01:25:37,920 --> 01:25:42,440
+this and it reconnects okay it's very
+
+1873
+01:25:40,639 --> 01:25:47,000
+simple always start small
+
+1874
+01:25:42,440 --> 01:25:49,880
+right now imagine that you were to
+
+1875
+01:25:47,000 --> 01:25:53,400
+create um an a moving background how
+
+1876
+01:25:49,880 --> 01:25:57,000
+would you go about changing the color of
+
+1877
+01:25:53,400 --> 01:25:59,560
+the background automatically of
+
+1878
+01:25:57,000 --> 01:26:01,800
+course what would you use what are
+
+1879
+01:25:59,560 --> 01:26:05,320
+different idas you can explore to have
+
+1880
+01:26:01,800 --> 01:26:05,320
+this background change you
+
+1881
+01:26:14,679 --> 01:26:18,760
+automatically you guys need to talk it's
+
+1882
+01:26:17,040 --> 01:26:22,600
+not going to be Ral question it's a
+
+1883
+01:26:18,760 --> 01:26:26,159
+workshop so if if you can talk or put in
+
+1884
+01:26:22,600 --> 01:26:26,159
+the chat but
+
+1885
+01:26:27,199 --> 01:26:33,159
+so I'm here right I can play with the
+
+1886
+01:26:29,199 --> 01:26:35,960
+different sliders how can I do this
+
+1887
+01:26:33,159 --> 01:26:40,320
+automatically what what can you think of
+
+1888
+01:26:35,960 --> 01:26:40,320
+of an mean of of interaction
+
+1889
+01:26:43,520 --> 01:26:49,280
+right are you talking or are you just uh
+
+1890
+01:26:47,080 --> 01:26:52,560
+thinking because this is difficult
+
+1891
+01:26:49,280 --> 01:26:52,560
+without feedback
+
+1892
+01:26:55,960 --> 01:27:02,119
+so trying to talk but it doesn't work so
+
+1893
+01:26:58,840 --> 01:27:06,639
+maybe the the staff here can help with
+
+1894
+01:27:02,119 --> 01:27:06,639
+this if if you guys are trying to to
+
+1895
+01:27:06,760 --> 01:27:11,880
+talk uh Terry for instance can can you
+
+1896
+01:27:09,679 --> 01:27:11,880
+hear
+
+1897
+01:27:13,360 --> 01:27:21,199
+us I can advise H Patrick if I am right
+
+1898
+01:27:17,440 --> 01:27:26,119
+to use the URL I send him to relo in in
+
+1899
+01:27:21,199 --> 01:27:26,119
+the session so that his Mi is fixed
+
+1900
+01:27:26,400 --> 01:27:32,000
+okay so yeah if you have an issue with
+
+1901
+01:27:28,560 --> 01:27:33,199
+your mic maybe try to relog because it's
+
+1902
+01:27:32,000 --> 01:27:36,199
+would be
+
+1903
+01:27:33,199 --> 01:27:38,960
+better um so the question is how can I
+
+1904
+01:27:36,199 --> 01:27:42,560
+make the color change right so now I'm
+
+1905
+01:27:38,960 --> 01:27:46,880
+using my mouse but how can I make this
+
+1906
+01:27:42,560 --> 01:27:46,880
+change automatically in some some
+
+1907
+01:27:50,880 --> 01:27:58,880
+way okay no answer so should I reveal
+
+1908
+01:27:55,119 --> 01:27:58,880
+the big secret
+
+1909
+01:27:59,600 --> 01:28:04,360
+well so one thing we can think of is to
+
+1910
+01:28:03,400 --> 01:28:06,880
+use
+
+1911
+01:28:04,360 --> 01:28:09,159
+time right a timer something that counts
+
+1912
+01:28:06,880 --> 01:28:13,840
+it's just a number of seconds and this
+
+1913
+01:28:09,159 --> 01:28:17,920
+counts so it changes over time right so
+
+1914
+01:28:13,840 --> 01:28:20,040
+let me try this let me try to put a
+
+1915
+01:28:17,920 --> 01:28:22,360
+timer and it tells you right when you
+
+1916
+01:28:20,040 --> 01:28:25,159
+put it and you click a timer that can be
+
+1917
+01:28:22,360 --> 01:28:27,520
+start posed and reset by
+
+1918
+01:28:25,159 --> 01:28:30,080
+triggering and you notice when I click
+
+1919
+01:28:27,520 --> 01:28:32,199
+on it I I have the number of seconds
+
+1920
+01:28:30,080 --> 01:28:34,639
+that have been elapsed since we put this
+
+1921
+01:28:32,199 --> 01:28:37,480
+but if I reset it goes back to to zero
+
+1922
+01:28:34,639 --> 01:28:39,360
+it's always counting right it's time so
+
+1923
+01:28:37,480 --> 01:28:42,360
+don't forget
+
+1924
+01:28:39,360 --> 01:28:45,960
+to S
+
+1925
+01:28:42,360 --> 01:28:47,719
+your and yeah mute your mic if you don't
+
+1926
+01:28:45,960 --> 01:28:49,840
+talk
+
+1927
+01:28:47,719 --> 01:28:52,239
+um you have this timer here that it's
+
+1928
+01:28:49,840 --> 01:28:54,320
+always counting n once again this seems
+
+1929
+01:28:52,239 --> 01:28:56,280
+to work you know irrelevant of the main
+
+1930
+01:28:54,320 --> 01:28:59,040
+loop it's another block that counts and
+
+1931
+01:28:56,280 --> 01:29:01,679
+do his own thing
+
+1932
+01:28:59,040 --> 01:29:04,600
+right so now that I have this
+
+1933
+01:29:01,679 --> 01:29:06,920
+timer this counts but you notice that
+
+1934
+01:29:04,600 --> 01:29:10,080
+when you play with colors especially on
+
+1935
+01:29:06,920 --> 01:29:11,520
+the web um you the web in general you
+
+1936
+01:29:10,080 --> 01:29:15,480
+try to normalize them so you know the
+
+1937
+01:29:11,520 --> 01:29:17,600
+red value can be from zero to one right
+
+1938
+01:29:15,480 --> 01:29:21,840
+for here it's zero red and then I put
+
+1939
+01:29:17,600 --> 01:29:25,440
+100% red so 255 values because it's a
+
+1940
+01:29:21,840 --> 01:29:28,960
+8bit color right so red is between zero
+
+1941
+01:29:25,440 --> 01:29:30,400
+and one but this timer here is counting
+
+1942
+01:29:28,960 --> 01:29:33,679
+it's still 50 it's counting the number
+
+1943
+01:29:30,400 --> 01:29:35,880
+of seconds so if I put my timer here
+
+1944
+01:29:33,679 --> 01:29:39,080
+it's going to overshoot the maximum
+
+1945
+01:29:35,880 --> 01:29:40,679
+because this value can only be between
+
+1946
+01:29:39,080 --> 01:29:42,560
+zero and one
+
+1947
+01:29:40,679 --> 01:29:45,400
+right
+
+1948
+01:29:42,560 --> 01:29:48,840
+so can you think of any idea how to make
+
+1949
+01:29:45,400 --> 01:29:51,400
+this timer you know or to basically map
+
+1950
+01:29:48,840 --> 01:29:54,920
+or bound the value between zero and one
+
+1951
+01:29:51,400 --> 01:29:58,360
+you have to modul or yes can you explain
+
+1952
+01:29:54,920 --> 01:30:00,360
+what what what the modulo is okay
+
+1953
+01:29:58,360 --> 01:30:02,760
+actually I didn't get the the start of
+
+1954
+01:30:00,360 --> 01:30:04,800
+your of your question but uh I guess
+
+1955
+01:30:02,760 --> 01:30:09,480
+because because the the timer is going
+
+1956
+01:30:04,800 --> 01:30:15,600
+until 100 no it goes forever oh it goes
+
+1957
+01:30:09,480 --> 01:30:18,880
+forever uh so maybe just dividing the I
+
+1958
+01:30:15,600 --> 01:30:21,440
+mean taking the Modio of the the timer
+
+1959
+01:30:18,880 --> 01:30:24,719
+by can you explain what the modulo is
+
+1960
+01:30:21,440 --> 01:30:30,679
+for the oh it's the rest of the division
+
+1961
+01:30:24,719 --> 01:30:33,520
+so you so so you divide the the timer by
+
+1962
+01:30:30,679 --> 01:30:37,080
+256 and then you take the rest and the
+
+1963
+01:30:33,520 --> 01:30:39,719
+rest is never great greater than
+
+1964
+01:30:37,080 --> 01:30:41,119
+256 for instance right so modulo is just
+
+1965
+01:30:39,719 --> 01:30:43,520
+a rem remainer of the division so let's
+
+1966
+01:30:41,119 --> 01:30:47,199
+say you have I have 10 and I divide by
+
+1967
+01:30:43,520 --> 01:30:49,239
+two so 5 * 2 is 10 the rest of the
+
+1968
+01:30:47,199 --> 01:30:52,119
+division is zero because it's exactly a
+
+1969
+01:30:49,239 --> 01:30:54,679
+multiple of 10 right but now if I say 9
+
+1970
+01:30:52,119 --> 01:30:57,520
+by two then is not going to B five is
+
+1971
+01:30:54,679 --> 01:31:00,400
+going to be four plus something right
+
+1972
+01:30:57,520 --> 01:31:02,639
+because 2 * 4 is 8 it's going to be one
+
+1973
+01:31:00,400 --> 01:31:04,920
+the rest of the division is one so my
+
+1974
+01:31:02,639 --> 01:31:08,080
+modulo will count so basically if you
+
+1975
+01:31:04,920 --> 01:31:09,440
+put this uh I mean this is one way
+
+1976
+01:31:08,080 --> 01:31:12,920
+because you said it we have to use it
+
+1977
+01:31:09,440 --> 01:31:16,520
+now but I show another technique but so
+
+1978
+01:31:12,920 --> 01:31:19,000
+basically if we put this timer here and
+
+1979
+01:31:16,520 --> 01:31:21,840
+we notice that this modul is just a math
+
+1980
+01:31:19,000 --> 01:31:23,679
+operation and it needs two number right
+
+1981
+01:31:21,840 --> 01:31:27,040
+the reminder of the division of one
+
+1982
+01:31:23,679 --> 01:31:29,119
+number number by another this is a how
+
+1983
+01:31:27,040 --> 01:31:31,440
+far we're going to go so here we're
+
+1984
+01:31:29,119 --> 01:31:33,080
+going to divide you the number can never
+
+1985
+01:31:31,440 --> 01:31:35,920
+go above
+
+1986
+01:31:33,080 --> 01:31:38,880
+one right and we connect now I'm going
+
+1987
+01:31:35,920 --> 01:31:40,560
+to take the input and put it here so I'm
+
+1988
+01:31:38,880 --> 01:31:42,800
+connecting the output of my timer that
+
+1989
+01:31:40,560 --> 01:31:44,679
+is always counting notice when I click
+
+1990
+01:31:42,800 --> 01:31:47,880
+here this is an output right so it's
+
+1991
+01:31:44,679 --> 01:31:50,480
+always here and I'm connecting it to my
+
+1992
+01:31:47,880 --> 01:31:53,400
+module my block and it if I put one I'm
+
+1993
+01:31:50,480 --> 01:31:55,119
+basically taking only the remainder of
+
+1994
+01:31:53,400 --> 01:31:57,360
+the division so it's always counting
+
+1995
+01:31:55,119 --> 01:31:59,199
+between zero and one and you see what it
+
+1996
+01:31:57,360 --> 01:32:03,320
+does when it reaches
+
+1997
+01:31:59,199 --> 01:32:04,840
+0.99999 up it goes back to to zero right
+
+1998
+01:32:03,320 --> 01:32:10,280
+and it counts like this it creates this
+
+1999
+01:32:04,840 --> 01:32:12,040
+kind of Soto pattern actually right uh
+
+2000
+01:32:10,280 --> 01:32:14,000
+so just to to show that I'm going to
+
+2001
+01:32:12,040 --> 01:32:14,920
+taking this output here and putting in
+
+2002
+01:32:14,000 --> 01:32:17,880
+the red
+
+2003
+01:32:14,920 --> 01:32:21,440
+value and now you see how we transform
+
+2004
+01:32:17,880 --> 01:32:25,080
+this curve here this animation that we
+
+2005
+01:32:21,440 --> 01:32:28,440
+created from the timer and we map this
+
+2006
+01:32:25,080 --> 01:32:31,000
+uh to the color now if it's too fast you
+
+2007
+01:32:28,440 --> 01:32:33,119
+can also go on the timer here and slow
+
+2008
+01:32:31,000 --> 01:32:37,480
+the speed right I can go I can even go
+
+2009
+01:32:33,119 --> 01:32:39,520
+backwards now it's counting slowly but
+
+2010
+01:32:37,480 --> 01:32:42,520
+everything is still connected as a as a
+
+2011
+01:32:39,520 --> 01:32:45,000
+chain of operation so this modulo still
+
+2012
+01:32:42,520 --> 01:32:47,000
+counts just a bit slower and when it's
+
+2013
+01:32:45,000 --> 01:32:49,920
+going to reach one it's going to goes
+
+2014
+01:32:47,000 --> 01:32:52,040
+back to to zero and I'm using that that
+
+2015
+01:32:49,920 --> 01:32:54,760
+to drive the input so now you notice
+
+2016
+01:32:52,040 --> 01:32:57,080
+that I cannot play with the the sliders
+
+2017
+01:32:54,760 --> 01:32:59,639
+anymore for the red value because it is
+
+2018
+01:32:57,080 --> 01:33:01,920
+connected by this cable so it's either I
+
+2019
+01:32:59,639 --> 01:33:06,239
+play with my mouse here or I have it
+
+2020
+01:33:01,920 --> 01:33:09,800
+connected by a keyboard hence the name
+
+2021
+01:33:06,239 --> 01:33:09,800
+cables does it make
+
+2022
+01:33:12,600 --> 01:33:17,920
+sense yeah I'm not sure it's working on
+
+2023
+01:33:14,679 --> 01:33:21,280
+my side K because uh I think the the the
+
+2024
+01:33:17,920 --> 01:33:25,000
+clear color is using a a float value
+
+2025
+01:33:21,280 --> 01:33:28,639
+from zero to one and not that's the case
+
+2026
+01:33:25,000 --> 01:33:30,960
+yes oh okay so what value what is the
+
+2027
+01:33:28,639 --> 01:33:33,320
+liit mod one modul one because oh modul
+
+2028
+01:33:30,960 --> 01:33:35,719
+one okay okay makes sense then okay yeah
+
+2029
+01:33:33,320 --> 01:33:38,840
+yeah it's all the the colors are always
+
+2030
+01:33:35,719 --> 01:33:41,560
+normalized okay I thought it was two
+
+2031
+01:33:38,840 --> 01:33:44,080
+256 okay so why is it for the other why
+
+2032
+01:33:41,560 --> 01:33:47,199
+is it 256 because usually colors on the
+
+2033
+01:33:44,080 --> 01:33:49,679
+screen are8 bits so they can go only you
+
+2034
+01:33:47,199 --> 01:33:52,080
+can only have 256 different value for
+
+2035
+01:33:49,679 --> 01:33:54,960
+red 256 different value for green and
+
+2036
+01:33:52,080 --> 01:33:57,199
+256 value for blue and this is how you
+
+2037
+01:33:54,960 --> 01:33:59,800
+compose them and you get 16 million
+
+2038
+01:33:57,199 --> 01:34:01,480
+colors of course the eye can see much
+
+2039
+01:33:59,800 --> 01:34:04,159
+more than this this is what the colors
+
+2040
+01:34:01,480 --> 01:34:07,600
+on the screen are always less impressive
+
+2041
+01:34:04,159 --> 01:34:10,080
+than real life right but uh usually yeah
+
+2042
+01:34:07,600 --> 01:34:13,000
+it's here all the values are normalized
+
+2043
+01:34:10,080 --> 01:34:14,440
+between zero and one for the others that
+
+2044
+01:34:13,000 --> 01:34:17,000
+does it
+
+2045
+01:34:14,440 --> 01:34:19,440
+uh yeah thinking it should work but does
+
+2046
+01:34:17,000 --> 01:34:21,000
+it make sense like the
+
+2047
+01:34:19,440 --> 01:34:25,360
+explanations
+
+2048
+01:34:21,000 --> 01:34:27,880
+so another way to to play with the using
+
+2049
+01:34:25,360 --> 01:34:30,440
+still to change so now we we drove the
+
+2050
+01:34:27,880 --> 01:34:32,560
+right the red value fine let's let's
+
+2051
+01:34:30,440 --> 01:34:34,239
+work with the green one so notice that I
+
+2052
+01:34:32,560 --> 01:34:36,080
+can use the same output and I can
+
+2053
+01:34:34,239 --> 01:34:37,360
+connect it to different outputs it
+
+2054
+01:34:36,080 --> 01:34:39,239
+doesn't you know it doesn't have to be
+
+2055
+01:34:37,360 --> 01:34:42,560
+only one cable I can connect as many
+
+2056
+01:34:39,239 --> 01:34:44,960
+cables as I want if I drag it onto the
+
+2057
+01:34:42,560 --> 01:34:47,800
+node I can even show the available
+
+2058
+01:34:44,960 --> 01:34:50,360
+remaining input so I can so now I'm
+
+2059
+01:34:47,800 --> 01:34:51,679
+moving three colors at once and they all
+
+2060
+01:34:50,360 --> 01:34:53,440
+going to be gray right if they all
+
+2061
+01:34:51,679 --> 01:34:56,600
+change at the same time it's only being
+
+2062
+01:34:53,440 --> 01:34:58,360
+Gray scale gray values now if I want to
+
+2063
+01:34:56,600 --> 01:35:01,320
+disconnect the cable as I mentioned you
+
+2064
+01:34:58,360 --> 01:35:03,800
+just right click on the on cable and you
+
+2065
+01:35:01,320 --> 01:35:08,840
+disconnect
+
+2066
+01:35:03,800 --> 01:35:11,600
+it um okay does it make sense so another
+
+2067
+01:35:08,840 --> 01:35:15,400
+way simply toh change the
+
+2068
+01:35:11,600 --> 01:35:17,840
+color would be to uh put this timer into
+
+2069
+01:35:15,400 --> 01:35:19,560
+a sine wave I'm sure it's very far for
+
+2070
+01:35:17,840 --> 01:35:21,679
+everyone the sine wave but remember the
+
+2071
+01:35:19,560 --> 01:35:24,639
+sine wave is you know the wave that goes
+
+2072
+01:35:21,679 --> 01:35:27,639
+up and down between one and one it
+
+2073
+01:35:24,639 --> 01:35:30,800
+basically tells you how how many
+
+2074
+01:35:27,639 --> 01:35:32,760
+rotations you do around the circle it's
+
+2075
+01:35:30,800 --> 01:35:34,920
+not exactly true but you get my point is
+
+2076
+01:35:32,760 --> 01:35:37,800
+basically you go in a loop around Circle
+
+2077
+01:35:34,920 --> 01:35:40,440
+so you can take any angle as input 1
+
+2078
+01:35:37,800 --> 01:35:42,280
+million 10 million whatever input is
+
+2079
+01:35:40,440 --> 01:35:44,440
+always going to be around the circle and
+
+2080
+01:35:42,280 --> 01:35:47,360
+the value is always going to be between
+
+2081
+01:35:44,440 --> 01:35:48,480
+minus one and one so if we do this let's
+
+2082
+01:35:47,360 --> 01:35:50,560
+try
+
+2083
+01:35:48,480 --> 01:35:54,320
+this it's going to be
+
+2084
+01:35:50,560 --> 01:35:56,600
+s s or cosine it's the same basically
+
+2085
+01:35:54,320 --> 01:35:58,760
+now I'm going to connect this here and
+
+2086
+01:35:56,600 --> 01:36:00,760
+check the output now so you see it start
+
+2087
+01:35:58,760 --> 01:36:03,239
+that and it's let's put the timer a bit
+
+2088
+01:36:00,760 --> 01:36:06,080
+faster so you you disconnect this guy
+
+2089
+01:36:03,239 --> 01:36:07,880
+here you see check my my the bottom of
+
+2090
+01:36:06,080 --> 01:36:09,639
+my screen you see that you have a curve
+
+2091
+01:36:07,880 --> 01:36:13,880
+that is going up and down right so it's
+
+2092
+01:36:09,639 --> 01:36:16,320
+is just a sine wave now the sine wave
+
+2093
+01:36:13,880 --> 01:36:18,159
+goes between by default between minus
+
+2094
+01:36:16,320 --> 01:36:21,360
+one and
+
+2095
+01:36:18,159 --> 01:36:24,239
+one but we know that our numbers need to
+
+2096
+01:36:21,360 --> 01:36:25,639
+be between zero and one so
+
+2097
+01:36:24,239 --> 01:36:28,600
+not minus one because it doesn't make
+
+2098
+01:36:25,639 --> 01:36:30,159
+sense to have a minus value for a color
+
+2099
+01:36:28,600 --> 01:36:32,360
+remember that the color when you say we
+
+2100
+01:36:30,159 --> 01:36:36,199
+put one zero and one it actually
+
+2101
+01:36:32,360 --> 01:36:38,520
+converts to the amount of electricity
+
+2102
+01:36:36,199 --> 01:36:40,040
+that power that you put into the LED of
+
+2103
+01:36:38,520 --> 01:36:42,840
+your screen right so it has to be a
+
+2104
+01:36:40,040 --> 01:36:45,239
+value between stuff a a positive value
+
+2105
+01:36:42,840 --> 01:36:47,400
+it's current or no current right and
+
+2106
+01:36:45,239 --> 01:36:50,560
+cannot be minus doesn't make any
+
+2107
+01:36:47,400 --> 01:36:53,119
+sense so how would you go about
+
+2108
+01:36:50,560 --> 01:36:55,280
+converting this thing between minus one
+
+2109
+01:36:53,119 --> 01:36:57,679
+and one into something that is between
+
+2110
+01:36:55,280 --> 01:36:57,679
+zero and
+
+2111
+01:36:59,360 --> 01:37:06,920
+one by taking the absolute
+
+2112
+01:37:02,520 --> 01:37:09,719
+value okay so this is one uh one
+
+2113
+01:37:06,920 --> 01:37:12,040
+solution this so the absolute value
+
+2114
+01:37:09,719 --> 01:37:15,199
+would means that everything that goes
+
+2115
+01:37:12,040 --> 01:37:17,679
+below zero is basically put upwards so
+
+2116
+01:37:15,199 --> 01:37:17,679
+let me show
+
+2117
+01:37:20,440 --> 01:37:26,800
+you absolute value I'm connecting here
+
+2118
+01:37:24,400 --> 01:37:29,920
+and now just by putting my mouse check
+
+2119
+01:37:26,800 --> 01:37:31,520
+the curve now it seems that it bounces
+
+2120
+01:37:29,920 --> 01:37:33,560
+right when it start to reach zero
+
+2121
+01:37:31,520 --> 01:37:35,320
+instead of going to minus one we
+
+2122
+01:37:33,560 --> 01:37:37,080
+basically take the value and we put them
+
+2123
+01:37:35,320 --> 01:37:40,440
+positive again so we multiply actually
+
+2124
+01:37:37,080 --> 01:37:42,239
+by minus one so it's not a sign anymore
+
+2125
+01:37:40,440 --> 01:37:43,800
+anymore right because we we put this
+
+2126
+01:37:42,239 --> 01:37:45,520
+into the absolute value and now we can
+
+2127
+01:37:43,800 --> 01:37:49,000
+connect this to the green
+
+2128
+01:37:45,520 --> 01:37:51,480
+value and notice that here we started by
+
+2129
+01:37:49,000 --> 01:37:52,880
+creating another curve this curve here
+
+2130
+01:37:51,480 --> 01:37:55,440
+is different from the one that we
+
+2131
+01:37:52,880 --> 01:37:57,599
+created by the modulo right the modulo
+
+2132
+01:37:55,440 --> 01:38:00,599
+was you know like a more like a sawoo
+
+2133
+01:37:57,599 --> 01:38:01,800
+wave let me put this a bit slower so we
+
+2134
+01:38:00,599 --> 01:38:04,599
+don't get
+
+2135
+01:38:01,800 --> 01:38:08,400
+crazy but here we create another type of
+
+2136
+01:38:04,599 --> 01:38:10,440
+Animation right a very SM smoother one
+
+2137
+01:38:08,400 --> 01:38:13,280
+but still when it reaches zero it
+
+2138
+01:38:10,440 --> 01:38:16,199
+bounces how do you do to show the wave
+
+2139
+01:38:13,280 --> 01:38:18,800
+you just put your mouse over the
+
+2140
+01:38:16,199 --> 01:38:20,679
+number here but there's another way you
+
+2141
+01:38:18,800 --> 01:38:23,199
+can with your new operator that we just
+
+2142
+01:38:20,679 --> 01:38:25,800
+released two days ago you can use also
+
+2143
+01:38:23,199 --> 01:38:27,800
+one which just called
+
+2144
+01:38:25,800 --> 01:38:31,679
+VI
+
+2145
+01:38:27,800 --> 01:38:33,920
+sorry number or V graph so if you put
+
+2146
+01:38:31,679 --> 01:38:35,159
+this here instead of showing it here you
+
+2147
+01:38:33,920 --> 01:38:37,960
+can just
+
+2148
+01:38:35,159 --> 01:38:42,440
+connect this guy
+
+2149
+01:38:37,960 --> 01:38:44,280
+here or here right and then you can you
+
+2150
+01:38:42,440 --> 01:38:45,920
+can you can see it here so it's the pre
+
+2151
+01:38:44,280 --> 01:38:48,280
+little previewer and you can use that
+
+2152
+01:38:45,920 --> 01:38:49,920
+for instance now the Modo next to it
+
+2153
+01:38:48,280 --> 01:38:52,080
+right so we see the
+
+2154
+01:38:49,920 --> 01:38:54,080
+difference between the curve and you see
+
+2155
+01:38:52,080 --> 01:38:56,400
+what happens when they reach one one go
+
+2156
+01:38:54,080 --> 01:38:59,080
+straight to zero the other is more or
+
+2157
+01:38:56,400 --> 01:39:02,119
+less continues smoothly and then go goes
+
+2158
+01:38:59,080 --> 01:39:03,800
+back slow right so and you you notice
+
+2159
+01:39:02,119 --> 01:39:05,239
+that we start to have cables a bit
+
+2160
+01:39:03,800 --> 01:39:09,159
+everywhere that's the whole point right
+
+2161
+01:39:05,239 --> 01:39:09,159
+so we try to organize stuff
+
+2162
+01:39:09,239 --> 01:39:16,679
+around um okay make sense for for the
+
+2163
+01:39:13,560 --> 01:39:16,679
+for the rest of the of the
+
+2164
+01:39:19,000 --> 01:39:25,360
+group Julia maybe in the chat or uh
+
+2165
+01:39:25,760 --> 01:39:30,639
+Terry
+
+2166
+01:39:27,400 --> 01:39:34,199
+cyber burer
+
+2167
+01:39:30,639 --> 01:39:37,199
+Brian okay so I have one yes it's clear
+
+2168
+01:39:34,199 --> 01:39:38,639
+fine so now the last the last uh so we
+
+2169
+01:39:37,199 --> 01:39:40,080
+have two colors now the last color we
+
+2170
+01:39:38,639 --> 01:39:41,840
+could use the same technique and I want
+
+2171
+01:39:40,080 --> 01:39:44,280
+to show you from the sine wave itself so
+
+2172
+01:39:41,840 --> 01:39:48,960
+as I mentioned it goes between minus one
+
+2173
+01:39:44,280 --> 01:39:51,000
+and one so adding one exactly by two
+
+2174
+01:39:48,960 --> 01:39:52,159
+yeah you can do this as well right it's
+
+2175
+01:39:51,000 --> 01:39:54,320
+going to and it's going to create
+
+2176
+01:39:52,159 --> 01:39:56,320
+another type of curve if I add one so
+
+2177
+01:39:54,320 --> 01:39:58,000
+it's going to be between zero and two
+
+2178
+01:39:56,320 --> 01:39:59,599
+right I'm minus one and one I add one I
+
+2179
+01:39:58,000 --> 01:40:01,800
+shift everything to the right so how do
+
+2180
+01:39:59,599 --> 01:40:04,800
+I add one or
+
+2181
+01:40:01,800 --> 01:40:07,119
+some sum the what goes here so between
+
+2182
+01:40:04,800 --> 01:40:09,679
+minus one and one I add one by default
+
+2183
+01:40:07,119 --> 01:40:12,560
+it's one so it goes here so now the
+
+2184
+01:40:09,679 --> 01:40:15,119
+value that I get is between zero and two
+
+2185
+01:40:12,560 --> 01:40:19,280
+now if I divide this guy by
+
+2186
+01:40:15,119 --> 01:40:19,280
+two by default is by two
+
+2187
+01:40:19,360 --> 01:40:26,040
+again then I get another number here we
+
+2188
+01:40:22,040 --> 01:40:26,040
+can plot this number
+
+2189
+01:40:27,000 --> 01:40:31,119
+here and this this number here is going
+
+2190
+01:40:29,360 --> 01:40:32,560
+to be between zero and one but now the
+
+2191
+01:40:31,119 --> 01:40:34,880
+curve is going to be very smooth
+
+2192
+01:40:32,560 --> 01:40:38,840
+actually or something is wrong here it's
+
+2193
+01:40:34,880 --> 01:40:41,119
+just slow um so now the curve itself is
+
+2194
+01:40:38,840 --> 01:40:44,199
+going to be let me put my timer back to
+
+2195
+01:40:41,119 --> 01:40:46,960
+one so you get a better view now it's
+
+2196
+01:40:44,199 --> 01:40:50,639
+really going to look like a sine wave
+
+2197
+01:40:46,960 --> 01:40:52,080
+right uh but uh and we have three
+
+2198
+01:40:50,639 --> 01:40:54,440
+different animation curve that we
+
+2199
+01:40:52,080 --> 01:40:56,840
+created one goes back to zero one
+
+2200
+01:40:54,440 --> 01:40:59,239
+bounces and one is very smooth and goes
+
+2201
+01:40:56,840 --> 01:41:02,599
+up and down right we can really see that
+
+2202
+01:40:59,239 --> 01:41:05,840
+on the here on the VIS gra stuff and you
+
+2203
+01:41:02,599 --> 01:41:08,199
+have the max you see minan Zero Max one
+
+2204
+01:41:05,840 --> 01:41:11,639
+so we know that it's always you know the
+
+2205
+01:41:08,199 --> 01:41:14,520
+the cool range for this clear color so
+
+2206
+01:41:11,639 --> 01:41:16,360
+we know just by doing this and you can
+
+2207
+01:41:14,520 --> 01:41:19,119
+you know stop right they can play and
+
+2208
+01:41:16,360 --> 01:41:21,040
+stop everything just by you know
+
+2209
+01:41:19,119 --> 01:41:24,360
+changing the color we already introduced
+
+2210
+01:41:21,040 --> 01:41:26,560
+very powerful Concepts here first this
+
+2211
+01:41:24,360 --> 01:41:29,040
+idea of basically having changing values
+
+2212
+01:41:26,560 --> 01:41:30,400
+over time that we can use to drive any
+
+2213
+01:41:29,040 --> 01:41:32,960
+kinde of Animation here we're just
+
+2214
+01:41:30,400 --> 01:41:35,560
+changing the color but it could be about
+
+2215
+01:41:32,960 --> 01:41:38,560
+changing the position of our points in
+
+2216
+01:41:35,560 --> 01:41:41,000
+space it could be about anything we also
+
+2217
+01:41:38,560 --> 01:41:43,159
+demonstrate the versatility of the tool
+
+2218
+01:41:41,000 --> 01:41:45,560
+right or you can have different threads
+
+2219
+01:41:43,159 --> 01:41:47,080
+different cables that works in parallel
+
+2220
+01:41:45,560 --> 01:41:49,040
+and it's if you come from a programming
+
+2221
+01:41:47,080 --> 01:41:50,599
+background this is very weird because
+
+2222
+01:41:49,040 --> 01:41:52,480
+usually programming you write code and
+
+2223
+01:41:50,599 --> 01:41:54,119
+it executes here it doesn't really
+
+2224
+01:41:52,480 --> 01:41:55,560
+matter you can have as many cables as
+
+2225
+01:41:54,119 --> 01:41:57,440
+you want then everything is going to be
+
+2226
+01:41:55,560 --> 01:42:00,080
+triggered and executed and changed in
+
+2227
+01:41:57,440 --> 01:42:02,560
+real time and you notice with just a
+
+2228
+01:42:00,080 --> 01:42:05,360
+simple math operation with sine wave
+
+2229
+01:42:02,560 --> 01:42:08,040
+absolute value sum and divide we created
+
+2230
+01:42:05,360 --> 01:42:11,280
+this very cool animations
+
+2231
+01:42:08,040 --> 01:42:12,880
+already okay and I'm saving control s
+
+2232
+01:42:11,280 --> 01:42:16,440
+don't forget command or control s to
+
+2233
+01:42:12,880 --> 01:42:20,000
+save your patch really important um does
+
+2234
+01:42:16,440 --> 01:42:22,440
+it make sense so yeah it feels weird
+
+2235
+01:42:20,000 --> 01:42:24,440
+right so now let's say that I want to
+
+2236
+01:42:22,440 --> 01:42:27,360
+drive this animation so something that
+
+2237
+01:42:24,440 --> 01:42:29,639
+we could do here um first of all if you
+
+2238
+01:42:27,360 --> 01:42:31,400
+want to see as a preview you can click
+
+2239
+01:42:29,639 --> 01:42:33,840
+and notice that this bar here is
+
+2240
+01:42:31,400 --> 01:42:35,719
+happening is appearing you can change
+
+2241
+01:42:33,840 --> 01:42:37,679
+the size you can also use this button to
+
+2242
+01:42:35,719 --> 01:42:39,159
+maximize maximize the canvas so you have
+
+2243
+01:42:37,679 --> 01:42:42,960
+it full
+
+2244
+01:42:39,159 --> 01:42:45,840
+screen and you can also press uh escape
+
+2245
+01:42:42,960 --> 01:42:49,520
+to go back to the to the previewer like
+
+2246
+01:42:45,840 --> 01:42:51,320
+this now let's say I want to um change
+
+2247
+01:42:49,520 --> 01:42:53,800
+the speed here I'm changing it in the
+
+2248
+01:42:51,320 --> 01:42:55,560
+editor but the user has no control over
+
+2249
+01:42:53,800 --> 01:42:58,280
+this this is what the on what the user
+
+2250
+01:42:55,560 --> 01:42:59,960
+is going to see so it would be nice to
+
+2251
+01:42:58,280 --> 01:43:01,639
+create some kind of controls that you
+
+2252
+01:42:59,960 --> 01:43:05,320
+know people can play with inside of the
+
+2253
+01:43:01,639 --> 01:43:09,320
+patch and not here in the editor view so
+
+2254
+01:43:05,320 --> 01:43:13,360
+to do this we have predefined um sidebar
+
+2255
+01:43:09,320 --> 01:43:16,119
+so if you can click here and I just type
+
+2256
+01:43:13,360 --> 01:43:19,400
+sidebar by default it creates an HTML
+
+2257
+01:43:16,119 --> 01:43:21,800
+element off top of our canvas and you
+
+2258
+01:43:19,400 --> 01:43:24,960
+can rename it let's call this I don't
+
+2259
+01:43:21,800 --> 01:43:26,960
+know option
+
+2260
+01:43:24,960 --> 01:43:29,239
+and then you can basically put children
+
+2261
+01:43:26,960 --> 01:43:30,960
+objects so the one that I want here is
+
+2262
+01:43:29,239 --> 01:43:33,119
+going to be a
+
+2263
+01:43:30,960 --> 01:43:36,920
+slider because I want to be able to
+
+2264
+01:43:33,119 --> 01:43:39,080
+change the speed of my timer so notice
+
+2265
+01:43:36,920 --> 01:43:41,840
+that this is this guy is not connected
+
+2266
+01:43:39,080 --> 01:43:43,599
+nothing happens now I need to connect to
+
+2267
+01:43:41,840 --> 01:43:46,199
+my
+
+2268
+01:43:43,599 --> 01:43:49,400
+sidebar and by default I have the slider
+
+2269
+01:43:46,199 --> 01:43:49,400
+we're going to call it you know
+
+2270
+01:43:49,920 --> 01:43:55,560
+speed and it says us okay the speed is
+
+2271
+01:43:52,320 --> 01:43:57,480
+between two values anything we want so
+
+2272
+01:43:55,560 --> 01:43:59,159
+maybe between zero
+
+2273
+01:43:57,480 --> 01:44:02,639
+and
+
+2274
+01:43:59,159 --> 01:44:06,599
+10 the step is going to is is very small
+
+2275
+01:44:02,639 --> 01:44:08,679
+and our default input is going to be one
+
+2276
+01:44:06,599 --> 01:44:10,800
+and I'm set click here to set this as
+
+2277
+01:44:08,679 --> 01:44:13,480
+default so by default is going to be
+
+2278
+01:44:10,800 --> 01:44:16,119
+one and I have I have a slider here that
+
+2279
+01:44:13,480 --> 01:44:17,840
+I can use now I need to connect our
+
+2280
+01:44:16,119 --> 01:44:19,960
+slider here it's not connected to
+
+2281
+01:44:17,840 --> 01:44:23,480
+anything so it moves but it doesn't
+
+2282
+01:44:19,960 --> 01:44:26,760
+drive any visual but if I connect my the
+
+2283
+01:44:23,480 --> 01:44:27,679
+result here the output of my slider to
+
+2284
+01:44:26,760 --> 01:44:31,760
+my
+
+2285
+01:44:27,679 --> 01:44:35,560
+timer into the speed button then by just
+
+2286
+01:44:31,760 --> 01:44:38,280
+moving my slider I'm basically you know
+
+2287
+01:44:35,560 --> 01:44:39,679
+driving all my visuals and now this this
+
+2288
+01:44:38,280 --> 01:44:42,159
+this thing
+
+2289
+01:44:39,679 --> 01:44:43,599
+here and if it's too big could maybe
+
+2290
+01:44:42,159 --> 01:44:46,840
+between 20 and 10 it's too big so let's
+
+2291
+01:44:43,599 --> 01:44:49,520
+say between zero and and two so now we
+
+2292
+01:44:46,840 --> 01:44:53,040
+can have more control right it's going
+
+2293
+01:44:49,520 --> 01:44:54,920
+to be tighter range now when I open this
+
+2294
+01:44:53,040 --> 01:44:57,880
+in full screen I still have the control
+
+2295
+01:44:54,920 --> 01:45:00,360
+right so now I let a basically user
+
+2296
+01:44:57,880 --> 01:45:03,599
+interact with my patch using this this
+
+2297
+01:45:00,360 --> 01:45:06,040
+sidebar here how cool is that this is
+
+2298
+01:45:03,599 --> 01:45:08,040
+not I mean takes some time to code this
+
+2299
+01:45:06,040 --> 01:45:10,400
+in JavaScript right to make the canvas
+
+2300
+01:45:08,040 --> 01:45:12,520
+make the colors create the HTML elements
+
+2301
+01:45:10,400 --> 01:45:15,920
+to be able to drive them here it's just
+
+2302
+01:45:12,520 --> 01:45:18,199
+a literally two blocks
+
+2303
+01:45:15,920 --> 01:45:21,679
+right right that does it make sense for
+
+2304
+01:45:18,199 --> 01:45:21,679
+everyone here
+
+2305
+01:45:25,280 --> 01:45:30,520
+yeah that's very cool and very and there
+
+2306
+01:45:27,840 --> 01:45:32,400
+is a connection with the with the graph
+
+2307
+01:45:30,520 --> 01:45:36,000
+I mean
+
+2308
+01:45:32,400 --> 01:45:37,679
+Ian exactly it's it's a I mean it's and
+
+2309
+01:45:36,000 --> 01:45:39,719
+it I like about this tool because it's I
+
+2310
+01:45:37,679 --> 01:45:41,440
+mean this is why when I discovered this
+
+2311
+01:45:39,719 --> 01:45:44,440
+really resonated with me because it's
+
+2312
+01:45:41,440 --> 01:45:46,199
+really you think as a graph more than
+
+2313
+01:45:44,440 --> 01:45:47,440
+you know because when you program you
+
+2314
+01:45:46,199 --> 01:45:49,560
+have the graph basically but it's in
+
+2315
+01:45:47,440 --> 01:45:51,880
+your head you have to follow where the
+
+2316
+01:45:49,560 --> 01:45:54,440
+all the the blocks are executed and just
+
+2317
+01:45:51,880 --> 01:45:56,239
+to show you what I meant so it's really
+
+2318
+01:45:54,440 --> 01:45:58,159
+open and you can customize anything you
+
+2319
+01:45:56,239 --> 01:46:02,000
+want so on any node you can click here
+
+2320
+01:45:58,159 --> 01:46:04,480
+in this small dotted menu here and to
+
+2321
+01:46:02,000 --> 01:46:07,440
+view up code so you can see actually
+
+2322
+01:46:04,480 --> 01:46:10,360
+here the code that is this is the our
+
+2323
+01:46:07,440 --> 01:46:12,560
+main Loop so by just putting some blocks
+
+2324
+01:46:10,360 --> 01:46:14,119
+you can actually very quickly create
+
+2325
+01:46:12,560 --> 01:46:17,199
+thousands of line of
+
+2326
+01:46:14,119 --> 01:46:18,800
+JavaScript um code to create so because
+
+2327
+01:46:17,199 --> 01:46:20,960
+they are made for you you can get you
+
+2328
+01:46:18,800 --> 01:46:23,280
+can fix some bugs you can you know um
+
+2329
+01:46:20,960 --> 01:46:26,480
+copy create your own op so in my case
+
+2330
+01:46:23,280 --> 01:46:30,159
+you know if I go here and type my can
+
+2331
+01:46:26,480 --> 01:46:32,320
+you change the code yes you cannot so
+
+2332
+01:46:30,159 --> 01:46:34,599
+you need to clone it you cannot change
+
+2333
+01:46:32,320 --> 01:46:35,960
+this okay okay okay because obviously
+
+2334
+01:46:34,599 --> 01:46:39,280
+the the graphical representation
+
+2335
+01:46:35,960 --> 01:46:42,239
+wouldn't match anymore so yeah so you
+
+2336
+01:46:39,280 --> 01:46:46,280
+need to check I this is all my Ops right
+
+2337
+01:46:42,239 --> 01:46:48,880
+so 144 right Ops that I created but you
+
+2338
+01:46:46,280 --> 01:46:52,320
+can copy and basically you know clone
+
+2339
+01:46:48,880 --> 01:46:54,639
+this is why on the button you have clone
+
+2340
+01:46:52,320 --> 01:46:56,599
+you type the name and then you can edit
+
+2341
+01:46:54,639 --> 01:47:00,679
+it's your own up right so you can clone
+
+2342
+01:46:56,599 --> 01:47:03,679
+anything basically okay um for those who
+
+2343
+01:47:00,679 --> 01:47:08,119
+know how to how to program so uh we have
+
+2344
+01:47:03,679 --> 01:47:10,159
+this right and um so okay now we we
+
+2345
+01:47:08,119 --> 01:47:11,440
+worked one hour just to change the
+
+2346
+01:47:10,159 --> 01:47:13,760
+colors we're going to go quickly around
+
+2347
+01:47:11,440 --> 01:47:16,920
+but it's just it's about showing you how
+
+2348
+01:47:13,760 --> 01:47:19,760
+to basically reason in this weird graph
+
+2349
+01:47:16,920 --> 01:47:22,280
+uh presentation right which is very well
+
+2350
+01:47:19,760 --> 01:47:25,320
+suited to the conference so okay we have
+
+2351
+01:47:22,280 --> 01:47:27,520
+this um now it would be cool if we we we
+
+2352
+01:47:25,320 --> 01:47:30,080
+be able to display stuff right now we're
+
+2353
+01:47:27,520 --> 01:47:32,080
+just changing the background but maybe
+
+2354
+01:47:30,080 --> 01:47:33,880
+we can also uh you know put some shape
+
+2355
+01:47:32,080 --> 01:47:36,800
+so usually when you create a first thing
+
+2356
+01:47:33,880 --> 01:47:39,960
+you do when any program is write a hello
+
+2357
+01:47:36,800 --> 01:47:41,920
+word or uh put some basic shape so here
+
+2358
+01:47:39,960 --> 01:47:43,599
+because it's a visual program we're
+
+2359
+01:47:41,920 --> 01:47:46,239
+going to type
+
+2360
+01:47:43,599 --> 01:47:48,239
+Cube and we're going to try and not try
+
+2361
+01:47:46,239 --> 01:47:50,960
+to connect the cube so you know that to
+
+2362
+01:47:48,239 --> 01:47:52,520
+be able to render you need a trigger so
+
+2363
+01:47:50,960 --> 01:47:53,840
+now what our main Loop does it's
+
+2364
+01:47:52,520 --> 01:47:56,560
+basically
+
+2365
+01:47:53,840 --> 01:47:59,639
+ref clearing the screen with the color
+
+2366
+01:47:56,560 --> 01:48:02,280
+and then now draw the
+
+2367
+01:47:59,639 --> 01:48:04,599
+cube okay if I want to minimize this I
+
+2368
+01:48:02,280 --> 01:48:07,320
+can just click on the on the name here
+
+2369
+01:48:04,599 --> 01:48:10,920
+and it goes like
+
+2370
+01:48:07,320 --> 01:48:14,920
+this so now we have our
+
+2371
+01:48:10,920 --> 01:48:16,960
+Cube and um now you notice two things
+
+2372
+01:48:14,920 --> 01:48:19,520
+first that the cube uh doesn't really
+
+2373
+01:48:16,960 --> 01:48:23,639
+look like a cube more like a
+
+2374
+01:48:19,520 --> 01:48:26,000
+rectangle and uh can you can you can you
+
+2375
+01:48:23,639 --> 01:48:26,000
+guess
+
+2376
+01:48:26,920 --> 01:48:32,080
+why why is it a rectangle another
+
+2377
+01:48:32,920 --> 01:48:40,520
+Cube think of this as
+
+2378
+01:48:35,400 --> 01:48:43,199
+a as a scene in 3D what what happens
+
+2379
+01:48:40,520 --> 01:48:44,800
+here it's not a rectangle it's a square
+
+2380
+01:48:43,199 --> 01:48:47,239
+on your screen yeah yeah sorry it's a
+
+2381
+01:48:44,800 --> 01:48:49,280
+square but why is it a square and not
+
+2382
+01:48:47,239 --> 01:48:54,119
+it's seen from the top for instance or
+
+2383
+01:48:49,280 --> 01:48:55,840
+from one side yes so basically if if I
+
+2384
+01:48:54,119 --> 01:48:58,960
+you know do
+
+2385
+01:48:55,840 --> 01:49:01,760
+this this is the default view and this
+
+2386
+01:48:58,960 --> 01:49:04,159
+is our Cube so we are really aligned so
+
+2387
+01:49:01,760 --> 01:49:05,920
+the camera think of this as a as a as a
+
+2388
+01:49:04,159 --> 01:49:07,960
+scene right the camera here is looking
+
+2389
+01:49:05,920 --> 01:49:10,280
+in fac of the cube so there's two thing
+
+2390
+01:49:07,960 --> 01:49:13,400
+if this is a 3D work there's two things
+
+2391
+01:49:10,280 --> 01:49:15,760
+we can do we can either move the cube or
+
+2392
+01:49:13,400 --> 01:49:18,239
+move the camera or do both right there
+
+2393
+01:49:15,760 --> 01:49:20,159
+are two different three is exactly like
+
+2394
+01:49:18,239 --> 01:49:21,400
+shooting from uh with your phone right
+
+2395
+01:49:20,159 --> 01:49:23,440
+the scene is moving the action is
+
+2396
+01:49:21,400 --> 01:49:26,920
+happening and you move your phone around
+
+2397
+01:49:23,440 --> 01:49:29,560
+right so uh and if you look at the cube
+
+2398
+01:49:26,920 --> 01:49:31,760
+itself you can play with the some of the
+
+2399
+01:49:29,560 --> 01:49:33,599
+parameters withd High length and you
+
+2400
+01:49:31,760 --> 01:49:36,199
+this length is really looks like the
+
+2401
+01:49:33,599 --> 01:49:38,480
+cube is coming towards you because it's
+
+2402
+01:49:36,199 --> 01:49:40,360
+bigger in One Direction or you can play
+
+2403
+01:49:38,480 --> 01:49:41,199
+with the height but you cannot really
+
+2404
+01:49:40,360 --> 01:49:44,760
+move
+
+2405
+01:49:41,199 --> 01:49:47,719
+anything because moving stuff in 3D is a
+
+2406
+01:49:44,760 --> 01:49:50,040
+is is another uh block another operation
+
+2407
+01:49:47,719 --> 01:49:51,679
+so it would be what we call transform so
+
+2408
+01:49:50,040 --> 01:49:54,719
+you basically need to set the
+
+2409
+01:49:51,679 --> 01:49:56,800
+transformation and then draw the shape
+
+2410
+01:49:54,719 --> 01:50:00,280
+so if you put check what I do here I put
+
+2411
+01:49:56,800 --> 01:50:02,280
+transform and I'm dragging the node and
+
+2412
+01:50:00,280 --> 01:50:05,320
+that dropping on the on the cable if
+
+2413
+01:50:02,280 --> 01:50:06,840
+it's one entry cable is smart enough to
+
+2414
+01:50:05,320 --> 01:50:09,119
+understand that it needs to be in
+
+2415
+01:50:06,840 --> 01:50:11,599
+between the two so now when I have this
+
+2416
+01:50:09,119 --> 01:50:14,760
+transform node I can
+
+2417
+01:50:11,599 --> 01:50:18,040
+move the cube the position of my Cube so
+
+2418
+01:50:14,760 --> 01:50:20,920
+I'm basically saying go to this space I
+
+2419
+01:50:18,040 --> 01:50:23,000
+mean go to this position in space now
+
+2420
+01:50:20,920 --> 01:50:24,599
+draw the cube and then come back to the
+
+2421
+01:50:23,000 --> 01:50:26,440
+default position this is exactly what
+
+2422
+01:50:24,599 --> 01:50:29,560
+happens this is why you need to put this
+
+2423
+01:50:26,440 --> 01:50:31,960
+before um uh the shape so you need to
+
+2424
+01:50:29,560 --> 01:50:34,679
+say go to this position draw the cube
+
+2425
+01:50:31,960 --> 01:50:36,960
+and go come back to the beginning now
+
+2426
+01:50:34,679 --> 01:50:39,880
+this is why we see it like
+
+2427
+01:50:36,960 --> 01:50:41,800
+this but so we start to see something
+
+2428
+01:50:39,880 --> 01:50:45,360
+but there's also
+
+2429
+01:50:41,800 --> 01:50:49,480
+um something missing right
+
+2430
+01:50:45,360 --> 01:50:52,800
+um we don't see any you know you know
+
+2431
+01:50:49,480 --> 01:50:56,719
+angles or anything so what what is is
+
+2432
+01:50:52,800 --> 01:50:59,119
+missing here text the texture a texture
+
+2433
+01:50:56,719 --> 01:51:00,840
+yes but not exactly it's shading right
+
+2434
+01:50:59,119 --> 01:51:02,760
+it's we don't see Shadows so we don't
+
+2435
+01:51:00,840 --> 01:51:04,679
+see what is front and what is back right
+
+2436
+01:51:02,760 --> 01:51:08,199
+so this could be in front of the texture
+
+2437
+01:51:04,679 --> 01:51:10,159
+but it's really about how to um what
+
+2438
+01:51:08,199 --> 01:51:12,440
+what is this cube made of so that the
+
+2439
+01:51:10,159 --> 01:51:15,239
+light can re can be reflected
+
+2440
+01:51:12,440 --> 01:51:18,360
+differently so this is what we call a
+
+2441
+01:51:15,239 --> 01:51:21,000
+material because it's s the analogy with
+
+2442
+01:51:18,360 --> 01:51:23,920
+the physical world right is it made of
+
+2443
+01:51:21,000 --> 01:51:25,800
+plastic out of you know ceramic out of
+
+2444
+01:51:23,920 --> 01:51:28,960
+what is the material of the of this
+
+2445
+01:51:25,800 --> 01:51:31,159
+shape so by default we're going to use
+
+2446
+01:51:28,960 --> 01:51:34,560
+what we call the Lambert material which
+
+2447
+01:51:31,159 --> 01:51:36,400
+is just a simple material and it doesn't
+
+2448
+01:51:34,560 --> 01:51:40,599
+really matter where you put this node as
+
+2449
+01:51:36,400 --> 01:51:42,280
+long as is as it's before the actual
+
+2450
+01:51:40,599 --> 01:51:44,400
+geometry right so you first need to set
+
+2451
+01:51:42,280 --> 01:51:46,800
+it's a bit weird the 3D usually you set
+
+2452
+01:51:44,400 --> 01:51:48,400
+the position then you set the how it's
+
+2453
+01:51:46,800 --> 01:51:50,400
+going to what is the material and
+
+2454
+01:51:48,400 --> 01:51:52,960
+finally you draw
+
+2455
+01:51:50,400 --> 01:51:55,280
+stuff and by default now I can play with
+
+2456
+01:51:52,960 --> 01:51:57,119
+the color of my material and you notice
+
+2457
+01:51:55,280 --> 01:51:58,920
+that you know by default it's it's
+
+2458
+01:51:57,119 --> 01:52:01,119
+shaded so I can start to see some of the
+
+2459
+01:51:58,920 --> 01:52:05,119
+edges of my Cube so now when I move it
+
+2460
+01:52:01,119 --> 01:52:07,560
+around it really looks like a cube in 3D
+
+2461
+01:52:05,119 --> 01:52:11,079
+right and if I go in my transform I can
+
+2462
+01:52:07,560 --> 01:52:11,079
+you know move it
+
+2463
+01:52:11,960 --> 01:52:16,119
+around does it make sense for for
+
+2464
+01:52:19,280 --> 01:52:24,560
+everyone saving I don't see the same
+
+2465
+01:52:22,040 --> 01:52:26,000
+thing as you do because you change the
+
+2466
+01:52:24,560 --> 01:52:28,239
+color of the material right it's by
+
+2467
+01:52:26,000 --> 01:52:33,239
+default it's just random
+
+2468
+01:52:28,239 --> 01:52:33,239
+color no but um actually I don't
+
+2469
+01:52:34,920 --> 01:52:39,400
+see there's no shading on my side did
+
+2470
+01:52:38,119 --> 01:52:42,320
+you put the Lambert material did you
+
+2471
+01:52:39,400 --> 01:52:44,159
+connect it yes I did are you sure it's
+
+2472
+01:52:42,320 --> 01:52:46,639
+not on just on top of the cable really
+
+2473
+01:52:44,159 --> 01:52:48,320
+connected like this yeah yeah yeah
+
+2474
+01:52:46,639 --> 01:52:50,760
+transform is connected to Lumber of
+
+2475
+01:52:48,320 --> 01:52:54,760
+material which is connected to
+
+2476
+01:52:50,760 --> 01:53:00,800
+cube okay save the patch and reload with
+
+2477
+01:52:54,760 --> 01:53:03,560
+uh here maybe it's really weird but
+
+2478
+01:53:00,800 --> 01:53:07,440
+uh yeah mine is just showing a
+
+2479
+01:53:03,560 --> 01:53:09,520
+regular square yeah I have a square also
+
+2480
+01:53:07,440 --> 01:53:11,760
+the square is because you yes I also
+
+2481
+01:53:09,520 --> 01:53:14,199
+have only regular
+
+2482
+01:53:11,760 --> 01:53:16,599
+square you have this right because your
+
+2483
+01:53:14,199 --> 01:53:21,280
+the Transformer that you have is is
+
+2484
+01:53:16,599 --> 01:53:24,079
+this right so look what I do I'm moving
+
+2485
+01:53:21,280 --> 01:53:27,320
+my cube a bit on the side MH so you can
+
+2486
+01:53:24,079 --> 01:53:29,040
+start to see some of the on on the you
+
+2487
+01:53:27,320 --> 01:53:33,560
+know the the shape on
+
+2488
+01:53:29,040 --> 01:53:35,800
+the the basically depth okay okay it's
+
+2489
+01:53:33,560 --> 01:53:37,760
+right it's what I said before otherwise
+
+2490
+01:53:35,800 --> 01:53:39,760
+we we can apply any material if you're
+
+2491
+01:53:37,760 --> 01:53:41,280
+still in the camera look at my on my
+
+2492
+01:53:39,760 --> 01:53:44,119
+camera right if we're just in front of
+
+2493
+01:53:41,280 --> 01:53:47,159
+this and you see one face so you need to
+
+2494
+01:53:44,119 --> 01:53:48,840
+move either the shape or the cameras to
+
+2495
+01:53:47,159 --> 01:53:50,199
+start to see some of the edges of your
+
+2496
+01:53:48,840 --> 01:53:53,119
+cube
+
+2497
+01:53:50,199 --> 01:53:55,119
+right so by moving the trans transform
+
+2498
+01:53:53,119 --> 01:53:58,040
+and by maybe reducing the size of our
+
+2499
+01:53:55,119 --> 01:54:00,199
+Cube you start to see things so the
+
+2500
+01:53:58,040 --> 01:54:03,000
+transform has position but has also
+
+2501
+01:54:00,199 --> 01:54:05,480
+rotation so check it out remember that
+
+2502
+01:54:03,000 --> 01:54:07,599
+we use the color the animation to move
+
+2503
+01:54:05,480 --> 01:54:10,719
+the color of our of our background but
+
+2504
+01:54:07,599 --> 01:54:13,960
+we can reuse this animation now to uh
+
+2505
+01:54:10,719 --> 01:54:16,599
+transform and to rotate our Cube so I'm
+
+2506
+01:54:13,960 --> 01:54:19,079
+connecting this to rotate Z for instance
+
+2507
+01:54:16,599 --> 01:54:20,040
+so it's very small because our timer is
+
+2508
+01:54:19,079 --> 01:54:22,719
+very
+
+2509
+01:54:20,040 --> 01:54:24,840
+slow but let's say that I want to multip
+
+2510
+01:54:22,719 --> 01:54:27,360
+this value so the thing that that comes
+
+2511
+01:54:24,840 --> 01:54:32,000
+from my between Z and one I'm
+
+2512
+01:54:27,360 --> 01:54:36,159
+multiplying this value by
+
+2513
+01:54:32,000 --> 01:54:38,159
+20 and uh it's still very small so 200
+
+2514
+01:54:36,159 --> 01:54:41,239
+maybe I don't
+
+2515
+01:54:38,159 --> 01:54:43,000
+know and you see that it starts to 2,000
+
+2516
+01:54:41,239 --> 01:54:45,719
+right because it's very
+
+2517
+01:54:43,000 --> 01:54:48,320
+small I'm just multiplying the result
+
+2518
+01:54:45,719 --> 01:54:50,599
+here and I'm using into transform Z you
+
+2519
+01:54:48,320 --> 01:54:53,280
+see it's the last of the transform
+
+2520
+01:54:50,599 --> 01:54:54,639
+operation so now I'm wrot ating the cube
+
+2521
+01:54:53,280 --> 01:54:56,480
+here but it's still in front of the
+
+2522
+01:54:54,639 --> 01:54:59,199
+camera so I can just maybe rotate in
+
+2523
+01:54:56,480 --> 01:55:02,920
+another axis like
+
+2524
+01:54:59,199 --> 01:55:04,960
+here I'm rotating around this y AIS you
+
+2525
+01:55:02,920 --> 01:55:08,119
+see this is the Green Arrow and my shape
+
+2526
+01:55:04,960 --> 01:55:10,800
+is rotating around this axis here now
+
+2527
+01:55:08,119 --> 01:55:13,480
+you start to see I think the the shapes
+
+2528
+01:55:10,800 --> 01:55:16,599
+right yeah that's very
+
+2529
+01:55:13,480 --> 01:55:18,440
+powerful so yeah it's it's it's awesome
+
+2530
+01:55:16,599 --> 01:55:20,639
+so this is just the beginning this is
+
+2531
+01:55:18,440 --> 01:55:24,159
+the beginning you'll see uh what we can
+
+2532
+01:55:20,639 --> 01:55:26,840
+do after but now I just want to so that
+
+2533
+01:55:24,159 --> 01:55:28,639
+it's very clear for everyone we are
+
+2534
+01:55:26,840 --> 01:55:31,960
+transforming their shape so we say hey
+
+2535
+01:55:28,639 --> 01:55:34,320
+draw each frame draw a this position
+
+2536
+01:55:31,960 --> 01:55:37,079
+color our rectangle draw it now next
+
+2537
+01:55:34,320 --> 01:55:38,960
+frame we change a bit the position the
+
+2538
+01:55:37,079 --> 01:55:40,760
+color is the same but we could actually
+
+2539
+01:55:38,960 --> 01:55:43,840
+also use this to change the color right
+
+2540
+01:55:40,760 --> 01:55:46,199
+we could do this and have the shape of
+
+2541
+01:55:43,840 --> 01:55:48,400
+the the cube itself would change the
+
+2542
+01:55:46,199 --> 01:55:51,159
+value exactly as we had before right so
+
+2543
+01:55:48,400 --> 01:55:53,880
+it's going to be more or less um uh you
+
+2544
+01:55:51,159 --> 01:55:56,199
+know green if I do this
+
+2545
+01:55:53,880 --> 01:55:59,280
+right so it's going to change color over
+
+2546
+01:55:56,199 --> 01:56:01,320
+time exactly as as the
+
+2547
+01:55:59,280 --> 01:56:04,280
+background does it make
+
+2548
+01:56:01,320 --> 01:56:06,040
+sense and uh but it's not very good to
+
+2549
+01:56:04,280 --> 01:56:08,119
+do this by the way it's not very cool to
+
+2550
+01:56:06,040 --> 01:56:10,119
+change the the material it's going to be
+
+2551
+01:56:08,119 --> 01:56:11,480
+a bit slow if you do this it's going to
+
+2552
+01:56:10,119 --> 01:56:13,199
+slow the computer because it's not
+
+2553
+01:56:11,480 --> 01:56:15,800
+usually the way we do this but just to
+
+2554
+01:56:13,199 --> 01:56:18,480
+show you that we can basically map uh
+
+2555
+01:56:15,800 --> 01:56:21,280
+all the values what are the mean and Max
+
+2556
+01:56:18,480 --> 01:56:24,560
+values of the transformation for the
+
+2557
+01:56:21,280 --> 01:56:26,440
+rotation so it's a very good point so
+
+2558
+01:56:24,560 --> 01:56:30,040
+when you are in a scene usually we are
+
+2559
+01:56:26,440 --> 01:56:32,400
+in meters but it's an infinite space so
+
+2560
+01:56:30,040 --> 01:56:34,639
+this is like one meter here one meter
+
+2561
+01:56:32,400 --> 01:56:37,719
+but it could be anything now if it's too
+
+2562
+01:56:34,639 --> 01:56:39,079
+far then you're gonna it's gonna the web
+
+2563
+01:56:37,719 --> 01:56:41,440
+G is going to say it's too far so I
+
+2564
+01:56:39,079 --> 01:56:43,639
+don't draw it I'm going to clip yeah but
+
+2565
+01:56:41,440 --> 01:56:46,520
+what about the rotation rotation is an
+
+2566
+01:56:43,639 --> 01:56:48,840
+angle yes but it it's always going to be
+
+2567
+01:56:46,520 --> 01:56:51,599
+multiple of 360 degrees so it's going to
+
+2568
+01:56:48,840 --> 01:56:53,960
+go back okay so that's it that's degrees
+
+2569
+01:56:51,599 --> 01:56:56,800
+uh yes here it's degrees right so like
+
+2570
+01:56:53,960 --> 01:56:59,280
+we are 1,000 what degrees right okay
+
+2571
+01:56:56,800 --> 01:57:01,079
+okay right now something that I
+
+2572
+01:56:59,280 --> 01:57:04,400
+mentioned so we talked about moving the
+
+2573
+01:57:01,079 --> 01:57:06,719
+shape here but we can also move the
+
+2574
+01:57:04,400 --> 01:57:08,719
+camera as I mentioned so the usual
+
+2575
+01:57:06,719 --> 01:57:11,400
+camera that we want to use is what we
+
+2576
+01:57:08,719 --> 01:57:13,480
+call orbit controls and we need to so
+
+2577
+01:57:11,400 --> 01:57:15,119
+basically it's It Centers the camera
+
+2578
+01:57:13,480 --> 01:57:18,239
+around the middle the center of the
+
+2579
+01:57:15,119 --> 01:57:20,920
+scene and let's us move around it you
+
+2580
+01:57:18,239 --> 01:57:24,119
+need to put the camera
+
+2581
+01:57:20,920 --> 01:57:26,239
+before the transform but doesn't matter
+
+2582
+01:57:24,119 --> 01:57:28,079
+if it's after the clear color or before
+
+2583
+01:57:26,239 --> 01:57:30,320
+just before the once again the last
+
+2584
+01:57:28,079 --> 01:57:32,320
+thing you need to draw is the shape
+
+2585
+01:57:30,320 --> 01:57:34,040
+basically so I can I can put this here
+
+2586
+01:57:32,320 --> 01:57:36,360
+but you can put it anywhere as long as
+
+2587
+01:57:34,040 --> 01:57:39,400
+it's before the trans I mean before the
+
+2588
+01:57:36,360 --> 01:57:41,639
+cube usually we put it on on the top or
+
+2589
+01:57:39,400 --> 01:57:44,079
+just after the clear color so if I want
+
+2590
+01:57:41,639 --> 01:57:47,000
+to move it somewhere else I can take the
+
+2591
+01:57:44,079 --> 01:57:49,119
+shape shake it then it starts to
+
+2592
+01:57:47,000 --> 01:57:50,480
+disconnect and then I can you know
+
+2593
+01:57:49,119 --> 01:57:52,760
+connect it
+
+2594
+01:57:50,480 --> 01:57:54,320
+below but I think it was bit clear up
+
+2595
+01:57:52,760 --> 01:57:58,119
+with all the cables that we had so
+
+2596
+01:57:54,320 --> 01:57:58,119
+that's why I put it here
+
