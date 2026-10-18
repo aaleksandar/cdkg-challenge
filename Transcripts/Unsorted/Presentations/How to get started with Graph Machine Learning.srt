@@ -1,0 +1,3408 @@
+1
+00:00:03,120 --> 00:00:08,080
+Okay.
+
+2
+00:00:04,680 --> 00:00:10,080
+So, welcome everyone to today's uh
+
+3
+00:00:08,080 --> 00:00:12,880
+meetup. Uh this is the first event of
+
+4
+00:00:10,080 --> 00:00:15,360
+the year for connected data London. And
+
+5
+00:00:12,880 --> 00:00:18,640
+uh we're happy to welcome our first
+
+6
+00:00:15,360 --> 00:00:21,520
+speaker, Alex Agorich from Microsoft and
+
+7
+00:00:18,640 --> 00:00:23,840
+AI Epiphany, who will be talking about
+
+8
+00:00:21,520 --> 00:00:26,480
+uh his journey in the magic world of
+
+9
+00:00:23,840 --> 00:00:29,599
+graph machine learning. Awesome. Thank
+
+10
+00:00:26,480 --> 00:00:31,439
+you, George. So first of all uh over the
+
+11
+00:00:29,599 --> 00:00:32,960
+last year and like three four months
+
+12
+00:00:31,439 --> 00:00:35,200
+I've been intensively going through
+
+13
+00:00:32,960 --> 00:00:37,760
+different uh like sub fields of of
+
+14
+00:00:35,200 --> 00:00:39,600
+machine learning and one of those was
+
+15
+00:00:37,760 --> 00:00:42,399
+GraphML and the reason I'm talking about
+
+16
+00:00:39,600 --> 00:00:44,399
+GraphML today is because uh it's so
+
+17
+00:00:42,399 --> 00:00:45,680
+exciting uh there is a lot of hype in
+
+18
+00:00:44,399 --> 00:00:47,840
+the community you're probably already
+
+19
+00:00:45,680 --> 00:00:49,760
+aware about it like uh just looking at
+
+20
+00:00:47,840 --> 00:00:52,559
+the metrics like the number of published
+
+21
+00:00:49,760 --> 00:00:54,399
+papers in graphML this year uh is uh
+
+22
+00:00:52,559 --> 00:00:56,079
+even higher I think than GANs I may be
+
+23
+00:00:54,399 --> 00:00:58,800
+wrong on this one but it's there is a
+
+24
+00:00:56,079 --> 00:01:00,480
+lot of hype and It's not without reason.
+
+25
+00:00:58,800 --> 00:01:02,239
+Basically, there is a lot of exciting
+
+26
+00:01:00,480 --> 00:01:05,519
+applications happening in GraphML
+
+27
+00:01:02,239 --> 00:01:08,080
+currently. So today, I'll try to kind of
+
+28
+00:01:05,519 --> 00:01:11,680
+convey my experience with this area and
+
+29
+00:01:08,080 --> 00:01:13,280
+I had the the luck to collaborate and
+
+30
+00:01:11,680 --> 00:01:15,280
+communicate with the best researchers
+
+31
+00:01:13,280 --> 00:01:17,439
+from this field. So by no means I'm I'm
+
+32
+00:01:15,280 --> 00:01:19,840
+I'm an expert in this field in a sense
+
+33
+00:01:17,439 --> 00:01:21,920
+that certain people devote all of their
+
+34
+00:01:19,840 --> 00:01:24,560
+time doing just graph ML. So they spend
+
+35
+00:01:21,920 --> 00:01:27,119
+like four or five plus years doing it.
+
+36
+00:01:24,560 --> 00:01:29,520
+I'm still a novice. I did do and learn a
+
+37
+00:01:27,119 --> 00:01:31,280
+lot. I open sourced maybe you even saw
+
+38
+00:01:29,520 --> 00:01:33,040
+the one the graph attention network
+
+39
+00:01:31,280 --> 00:01:35,759
+project from scratch. So I did learn a
+
+40
+00:01:33,040 --> 00:01:37,880
+lot but I'm still uh not an as an expert
+
+41
+00:01:35,759 --> 00:01:41,040
+as some people are. So just a
+
+42
+00:01:37,880 --> 00:01:43,920
+disclaimer. U without that further uh
+
+43
+00:01:41,040 --> 00:01:46,000
+let's just continue and um because this
+
+44
+00:01:43,920 --> 00:01:48,799
+is GraphML let's let's start with with
+
+45
+00:01:46,000 --> 00:01:52,159
+graphs. So basically GraphML deals with
+
+46
+00:01:48,799 --> 00:01:53,680
+uh graphical with graph type of data and
+
+47
+00:01:52,159 --> 00:01:55,600
+you probably already know this but let
+
+48
+00:01:53,680 --> 00:01:57,600
+me just recap. Basically, it's a it's a
+
+49
+00:01:55,600 --> 00:02:00,000
+mathematical abstraction where you
+
+50
+00:01:57,600 --> 00:02:02,240
+basically have a set of notes and a set
+
+51
+00:02:00,000 --> 00:02:03,680
+of edges. And this can be pretty much
+
+52
+00:02:02,240 --> 00:02:05,920
+anything. And on the screen here, you
+
+53
+00:02:03,680 --> 00:02:08,080
+just see a specific regular graph, a
+
+54
+00:02:05,920 --> 00:02:10,399
+fully connected graph, which pretty much
+
+55
+00:02:08,080 --> 00:02:12,959
+doesn't mean anything before you give it
+
+56
+00:02:10,399 --> 00:02:15,200
+some meaning. So, graphs can be as I
+
+57
+00:02:12,959 --> 00:02:18,400
+said anything and they're you'll you'll
+
+58
+00:02:15,200 --> 00:02:20,239
+often find like graphs in nature. And
+
+59
+00:02:18,400 --> 00:02:22,720
+so, here on the screen in the like in
+
+60
+00:02:20,239 --> 00:02:25,120
+the top left, you can see one example
+
+61
+00:02:22,720 --> 00:02:27,440
+are molecules. You can naturally model
+
+62
+00:02:25,120 --> 00:02:29,120
+them as graphs because if you if you
+
+63
+00:02:27,440 --> 00:02:30,959
+think about it like the the the the
+
+64
+00:02:29,120 --> 00:02:33,280
+atoms the individual atoms in these
+
+65
+00:02:30,959 --> 00:02:34,959
+molecules are basically notes. Then you
+
+66
+00:02:33,280 --> 00:02:37,120
+have bonds which can be like a single
+
+67
+00:02:34,959 --> 00:02:39,599
+bond uh it can be double bond it can be
+
+68
+00:02:37,120 --> 00:02:43,280
+aromatic bond and so and so forth. Uh
+
+69
+00:02:39,599 --> 00:02:45,440
+then we have like these uh traffic u
+
+70
+00:02:43,280 --> 00:02:48,400
+basically uh traffic networks which can
+
+71
+00:02:45,440 --> 00:02:50,879
+also be modeled as as graphs. You have
+
+72
+00:02:48,400 --> 00:02:52,800
+uh the inter intersections are nodes. uh
+
+73
+00:02:50,879 --> 00:02:55,519
+you have the roads which are connecting
+
+74
+00:02:52,800 --> 00:02:58,000
+those intersections which are basically
+
+75
+00:02:55,519 --> 00:03:00,720
+uh edges in in the graph. Hopefully
+
+76
+00:02:58,000 --> 00:03:03,120
+that's uh that's makes sense. Uh in the
+
+77
+00:03:00,720 --> 00:03:06,319
+uh bottom left you can see uh basically
+
+78
+00:03:03,120 --> 00:03:08,560
+social social network and again it's
+
+79
+00:03:06,319 --> 00:03:11,519
+very natural to model uh social networks
+
+80
+00:03:08,560 --> 00:03:13,599
+via graphs because uh every single user
+
+81
+00:03:11,519 --> 00:03:15,440
+uh on this network is basically a node
+
+82
+00:03:13,599 --> 00:03:18,640
+and then you have connections which are
+
+83
+00:03:15,440 --> 00:03:20,800
+like uh edges. Uh finally you have uh in
+
+84
+00:03:18,640 --> 00:03:24,239
+the bottom bottom right you have uh
+
+85
+00:03:20,800 --> 00:03:26,400
+brain which is also you can think of it
+
+86
+00:03:24,239 --> 00:03:28,720
+as as a graph right you have neurons you
+
+87
+00:03:26,400 --> 00:03:31,599
+have uh connections between the neurons.
+
+88
+00:03:28,720 --> 00:03:34,080
+So again it's pretty natural to model uh
+
+89
+00:03:31,599 --> 00:03:37,280
+this thing as a graph. So as you can see
+
+90
+00:03:34,080 --> 00:03:39,760
+anything can be uh can be pretty much uh
+
+91
+00:03:37,280 --> 00:03:42,959
+thought about like a graph and we'll see
+
+92
+00:03:39,760 --> 00:03:45,040
+uh some examples a bit later. uh but
+
+93
+00:03:42,959 --> 00:03:46,640
+that's the that's the first thing I want
+
+94
+00:03:45,040 --> 00:03:50,080
+you to understand if you don't already
+
+95
+00:03:46,640 --> 00:03:52,400
+understand this. So uh having said that
+
+96
+00:03:50,080 --> 00:03:54,720
+basically uh there are as you can see 50
+
+97
+00:03:52,400 --> 00:03:57,519
+shades of graphs. So basically uh there
+
+98
+00:03:54,720 --> 00:03:58,799
+is a whole like field of mathematics
+
+99
+00:03:57,519 --> 00:04:01,360
+dealing with graphs and it's called
+
+100
+00:03:58,799 --> 00:04:02,879
+graph theory and there is so much you
+
+101
+00:04:01,360 --> 00:04:04,720
+can learn before even starting to do
+
+102
+00:04:02,879 --> 00:04:06,080
+graph ML you can learn so much about
+
+103
+00:04:04,720 --> 00:04:08,640
+graphs themselves. So they are
+
+104
+00:04:06,080 --> 00:04:11,360
+interesting mathematical objects in and
+
+105
+00:04:08,640 --> 00:04:13,040
+off themselves. uh but uh for the
+
+106
+00:04:11,360 --> 00:04:15,200
+purpose of this talk it's it's more
+
+107
+00:04:13,040 --> 00:04:17,280
+important that you just that you're just
+
+108
+00:04:15,200 --> 00:04:19,120
+aware that they exist out there. So here
+
+109
+00:04:17,280 --> 00:04:21,280
+in on this in the bottom left you can
+
+110
+00:04:19,120 --> 00:04:24,160
+see a multigraph where you basically
+
+111
+00:04:21,280 --> 00:04:26,560
+have multiple edges connecting uh every
+
+112
+00:04:24,160 --> 00:04:29,360
+single node and then you have uh
+
+113
+00:04:26,560 --> 00:04:31,919
+directed graphs uh as the example on the
+
+114
+00:04:29,360 --> 00:04:34,479
+on the right of the screen and a points
+
+115
+00:04:31,919 --> 00:04:36,479
+to b. So this is again super abstract.
+
+116
+00:04:34,479 --> 00:04:38,639
+Let me give you something more specific.
+
+117
+00:04:36,479 --> 00:04:41,199
+So if you have Twitter and assume you
+
+118
+00:04:38,639 --> 00:04:42,880
+most of you have uh basically uh if you
+
+119
+00:04:41,199 --> 00:04:44,240
+follow somebody like you follow Elon
+
+120
+00:04:42,880 --> 00:04:47,360
+Musk but Elon Musk doesn't follow you
+
+121
+00:04:44,240 --> 00:04:49,199
+back obviously or probably uh then uh
+
+122
+00:04:47,360 --> 00:04:51,600
+that's that's an example of a of a
+
+123
+00:04:49,199 --> 00:04:53,520
+directed graph but on the other hand if
+
+124
+00:04:51,600 --> 00:04:55,440
+you maybe if you if you have Facebook
+
+125
+00:04:53,520 --> 00:04:57,759
+and if you're friend with somebody uh
+
+126
+00:04:55,440 --> 00:04:59,680
+the friend relationship is birectional
+
+127
+00:04:57,759 --> 00:05:01,680
+by by default so you can't be friend
+
+128
+00:04:59,680 --> 00:05:03,840
+with somebody without that person being
+
+129
+00:05:01,680 --> 00:05:06,560
+a friend of yours at the same time on
+
+130
+00:05:03,840 --> 00:05:10,199
+Facebook. So that's in our example and
+
+131
+00:05:06,560 --> 00:05:13,360
+then we have uh like um concept of self
+
+132
+00:05:10,199 --> 00:05:15,360
+edges. Uh so that's that's what I wanted
+
+133
+00:05:13,360 --> 00:05:17,440
+to tell you there and basically I want
+
+134
+00:05:15,360 --> 00:05:20,160
+you to understand that u if you start
+
+135
+00:05:17,440 --> 00:05:21,520
+reading uh research papers in graphML
+
+136
+00:05:20,160 --> 00:05:23,919
+there is a lot of simplifying
+
+137
+00:05:21,520 --> 00:05:25,840
+assumptions and I noticed people asking
+
+138
+00:05:23,919 --> 00:05:27,520
+questions like how to apply this to
+
+139
+00:05:25,840 --> 00:05:29,759
+directed graphs how to apply this here
+
+140
+00:05:27,520 --> 00:05:32,400
+and there. Usually people just take the
+
+141
+00:05:29,759 --> 00:05:34,600
+simplest case and assume uh that graphs
+
+142
+00:05:32,400 --> 00:05:37,280
+are undirected and that they have self
+
+143
+00:05:34,600 --> 00:05:38,720
+edges. And we'll be using that same
+
+144
+00:05:37,280 --> 00:05:40,479
+assumption throughout this video.
+
+145
+00:05:38,720 --> 00:05:43,759
+Although you I won't be getting into any
+
+146
+00:05:40,479 --> 00:05:46,560
+heavy maths. So that's totally fine. Um
+
+147
+00:05:43,759 --> 00:05:48,720
+so that's all nice uh notes and edges.
+
+148
+00:05:46,560 --> 00:05:50,880
+But in order to actually apply GraphML
+
+149
+00:05:48,720 --> 00:05:52,800
+to any interesting problem, you
+
+150
+00:05:50,880 --> 00:05:56,160
+basically want to add features. And we
+
+151
+00:05:52,800 --> 00:05:58,080
+we associate uh node features and uh we
+
+152
+00:05:56,160 --> 00:06:00,639
+associate features so feature vectors to
+
+153
+00:05:58,080 --> 00:06:03,840
+both the nodes and the edges uh of the
+
+154
+00:06:00,639 --> 00:06:06,400
+graph. And that's again very abstract.
+
+155
+00:06:03,840 --> 00:06:09,120
+Let me make it a bit less abstract. U so
+
+156
+00:06:06,400 --> 00:06:12,160
+there is this uh famous benchmark uh
+
+157
+00:06:09,120 --> 00:06:14,560
+data set in graphML called Kora. And uh
+
+158
+00:06:12,160 --> 00:06:16,639
+like the semantics of it, it's just a
+
+159
+00:06:14,560 --> 00:06:18,880
+it's just a citation network meaning uh
+
+160
+00:06:16,639 --> 00:06:22,080
+every single node is a research paper
+
+161
+00:06:18,880 --> 00:06:24,639
+and edge uh in that graph means uh that
+
+162
+00:06:22,080 --> 00:06:26,880
+that paper cited some other paper. So
+
+163
+00:06:24,639 --> 00:06:29,120
+that's the semantics. So uh what kind of
+
+164
+00:06:26,880 --> 00:06:31,840
+features uh does Kora have? And the
+
+165
+00:06:29,120 --> 00:06:34,319
+answer would be so some people just took
+
+166
+00:06:31,840 --> 00:06:36,800
+the all of those papers uh did some word
+
+167
+00:06:34,319 --> 00:06:38,880
+counting uh and basically found the the
+
+168
+00:06:36,800 --> 00:06:40,560
+the words with the highest frequencies
+
+169
+00:06:38,880 --> 00:06:43,120
+and then you just sort the words by
+
+170
+00:06:40,560 --> 00:06:45,280
+frequencies you you you you cut the list
+
+171
+00:06:43,120 --> 00:06:47,360
+somewhere and they ended up with like
+
+172
+00:06:45,280 --> 00:06:49,919
+depending on the like the the threshold
+
+173
+00:06:47,360 --> 00:06:52,759
+was was maybe like the lowest number uh
+
+174
+00:06:49,919 --> 00:06:56,000
+the the lowest count and you end up
+
+175
+00:06:52,759 --> 00:06:58,560
+with,433 words. And so what you do now
+
+176
+00:06:56,000 --> 00:07:01,520
+is the following. Uh if you want to uh
+
+177
+00:06:58,560 --> 00:07:03,199
+associate a certain um uh feature vector
+
+178
+00:07:01,520 --> 00:07:05,039
+with a certain node, you ask the
+
+179
+00:07:03,199 --> 00:07:07,680
+following question. Is this particular
+
+180
+00:07:05,039 --> 00:07:09,599
+word present in this particular paper?
+
+181
+00:07:07,680 --> 00:07:12,080
+And if it is, you just put one. So for
+
+182
+00:07:09,599 --> 00:07:13,680
+example, kernel may be a popular word
+
+183
+00:07:12,080 --> 00:07:16,000
+and then you just ask the question, does
+
+184
+00:07:13,680 --> 00:07:18,000
+this paper have a kernel as a word
+
+185
+00:07:16,000 --> 00:07:19,840
+inside of it? If it does, you just put
+
+186
+00:07:18,000 --> 00:07:21,599
+one there. And you basically get a huge
+
+187
+00:07:19,840 --> 00:07:23,639
+binary vector in that score. And the
+
+188
+00:07:21,599 --> 00:07:26,639
+expectation is uh having that
+
+189
+00:07:23,639 --> 00:07:30,000
+information you can basically use it to
+
+190
+00:07:26,639 --> 00:07:32,800
+uh basically uh deduce certain or induce
+
+191
+00:07:30,000 --> 00:07:35,120
+certain um information about the graph
+
+192
+00:07:32,800 --> 00:07:37,440
+uh in cor in particular. You can uh you
+
+193
+00:07:35,120 --> 00:07:39,680
+can ask answer questions like uh is this
+
+194
+00:07:37,440 --> 00:07:42,479
+paper published in the reinforcement
+
+195
+00:07:39,680 --> 00:07:44,560
+learning field etc. Okay. So that's one
+
+196
+00:07:42,479 --> 00:07:46,479
+example. Another example and I think I
+
+197
+00:07:44,560 --> 00:07:48,880
+mentioned this one already is molecules.
+
+198
+00:07:46,479 --> 00:07:51,120
+So you can have like uh maybe the edges
+
+199
+00:07:48,880 --> 00:07:53,520
+can be uh like a single bond, double
+
+200
+00:07:51,120 --> 00:07:55,360
+bond or you can have aromatic bonds etc.
+
+201
+00:07:53,520 --> 00:07:58,319
+So you can again imagine maybe having a
+
+202
+00:07:55,360 --> 00:08:00,560
+one hot vector as a one trivial example
+
+203
+00:07:58,319 --> 00:08:02,879
+of how you could featurize uh these
+
+204
+00:08:00,560 --> 00:08:05,360
+edges. Basically if you have a single
+
+205
+00:08:02,879 --> 00:08:07,440
+bond you just put maybe number one in
+
+206
+00:08:05,360 --> 00:08:09,120
+the in the zero slot. If you have double
+
+207
+00:08:07,440 --> 00:08:13,199
+bond you put zero in the in the second
+
+208
+00:08:09,120 --> 00:08:15,280
+slot etc. So hopefully uh you already
+
+209
+00:08:13,199 --> 00:08:19,120
+knew this. If you didn't, I'm glad I I
+
+210
+00:08:15,280 --> 00:08:21,759
+had this short introduction. And uh I'll
+
+211
+00:08:19,120 --> 00:08:23,360
+just mention this this this one slide
+
+212
+00:08:21,759 --> 00:08:25,680
+and then I'll I'll make a short break.
+
+213
+00:08:23,360 --> 00:08:28,000
+You can ask questions already. Uh so
+
+214
+00:08:25,680 --> 00:08:30,560
+graph neural networks uh for now uh I'm
+
+215
+00:08:28,000 --> 00:08:32,320
+just uh assuming this is a black box for
+
+216
+00:08:30,560 --> 00:08:35,200
+now. I'll later go into a bit more
+
+217
+00:08:32,320 --> 00:08:37,200
+depth. So basically um you you you have
+
+218
+00:08:35,200 --> 00:08:40,519
+you have your graph you have some you
+
+219
+00:08:37,200 --> 00:08:42,880
+can just think of GNN's as basically uh
+
+220
+00:08:40,519 --> 00:08:45,040
+differentiable computing blobs and
+
+221
+00:08:42,880 --> 00:08:46,480
+that's that's all like they they somehow
+
+222
+00:08:45,040 --> 00:08:47,920
+process so you can maybe have some fully
+
+223
+00:08:46,480 --> 00:08:50,040
+connected layers you somehow transform
+
+224
+00:08:47,920 --> 00:08:52,320
+those graphs you apply some
+
+225
+00:08:50,040 --> 00:08:54,080
+nonlinearities as in other uh deep
+
+226
+00:08:52,320 --> 00:08:56,080
+learning subfields and you end up with
+
+227
+00:08:54,080 --> 00:08:57,920
+some certain representations and then
+
+228
+00:08:56,080 --> 00:09:00,959
+once you have so that's the outputs part
+
+229
+00:08:57,920 --> 00:09:02,320
+of this uh chart and uh then you can do
+
+230
+00:09:00,959 --> 00:09:04,040
+a bunch of stuff again it's super
+
+231
+00:09:02,320 --> 00:09:06,480
+abstract. You can do graph
+
+232
+00:09:04,040 --> 00:09:08,720
+classification, graph regression, you
+
+233
+00:09:06,480 --> 00:09:10,160
+can do do uh note and edge
+
+234
+00:09:08,720 --> 00:09:12,080
+classification and regression and they
+
+235
+00:09:10,160 --> 00:09:15,120
+can be anything and I'll give you
+
+236
+00:09:12,080 --> 00:09:16,360
+specific examples of um what those mean
+
+237
+00:09:15,120 --> 00:09:19,680
+uh in a
+
+238
+00:09:16,360 --> 00:09:23,040
+second. So yeah, that's pretty much box
+
+239
+00:09:19,680 --> 00:09:24,600
+for for now and I'll and I want to just
+
+240
+00:09:23,040 --> 00:09:26,640
+tell you about some exciting
+
+241
+00:09:24,600 --> 00:09:29,600
+applications. But before I start doing
+
+242
+00:09:26,640 --> 00:09:31,680
+that, do you have any questions so far?
+
+243
+00:09:29,600 --> 00:09:35,120
+Uh the thing is I don't see anybody.
+
+244
+00:09:31,680 --> 00:09:37,920
+It's weird to just be able to ask. Yeah,
+
+245
+00:09:35,120 --> 00:09:40,320
+it's fine. I'll I'll relay. Actually, we
+
+246
+00:09:37,920 --> 00:09:43,920
+just had not exactly a question but a
+
+247
+00:09:40,320 --> 00:09:46,560
+comment. So, uh from Naimid who says
+
+248
+00:09:43,920 --> 00:09:51,440
+that everybody talks only about the Kora
+
+249
+00:09:46,560 --> 00:09:54,320
+data set and how to apply uh GML to ECG
+
+250
+00:09:51,440 --> 00:09:57,279
+signal data sets or say that audio
+
+251
+00:09:54,320 --> 00:09:59,360
+waveforms or table data sets and perform
+
+252
+00:09:57,279 --> 00:10:00,640
+node classification. So not really a
+
+253
+00:09:59,360 --> 00:10:02,880
+question there but I guess or a
+
+254
+00:10:00,640 --> 00:10:04,800
+statement there's a kind of a lurking
+
+255
+00:10:02,880 --> 00:10:07,040
+question is there another data set I
+
+256
+00:10:04,800 --> 00:10:10,000
+guess sure there there is another data
+
+257
+00:10:07,040 --> 00:10:13,279
+set uh people and that's a really legit
+
+258
+00:10:10,000 --> 00:10:16,160
+question um for for many years uh people
+
+259
+00:10:13,279 --> 00:10:18,560
+used to to just test their algorithms on
+
+260
+00:10:16,160 --> 00:10:21,040
+on kora on PPI that's protein protein
+
+261
+00:10:18,560 --> 00:10:23,360
+interaction data set sites seer also
+
+262
+00:10:21,040 --> 00:10:25,200
+simple data set and the thing is you
+
+263
+00:10:23,360 --> 00:10:28,079
+couldn't uh differentiate between
+
+264
+00:10:25,200 --> 00:10:31,040
+powerful GNN architectures using those
+
+265
+00:10:28,079 --> 00:10:33,120
+let's say simple data sets and there are
+
+266
+00:10:31,040 --> 00:10:36,640
+initiatives I think it's called open
+
+267
+00:10:33,120 --> 00:10:38,560
+graph data benchmark I may be wrong here
+
+268
+00:10:36,640 --> 00:10:40,959
+but uh yeah people are working on this
+
+269
+00:10:38,560 --> 00:10:42,959
+and it's uh graph ML in general is still
+
+270
+00:10:40,959 --> 00:10:46,079
+a young relatively young compared to
+
+271
+00:10:42,959 --> 00:10:49,760
+other uh research areas a young field so
+
+272
+00:10:46,079 --> 00:10:51,920
+yeah people are going to to assume u
+
+273
+00:10:49,760 --> 00:10:54,560
+introduce something similar to imageet
+
+274
+00:10:51,920 --> 00:10:57,680
+uh that what imageet was to computer
+
+275
+00:10:54,560 --> 00:10:59,920
+vision back in 2012 Mhm. There's another
+
+276
+00:10:57,680 --> 00:11:02,880
+one on data sets. This one specifically
+
+277
+00:10:59,920 --> 00:11:05,920
+on Kora and from Zena who's asking what
+
+278
+00:11:02,880 --> 00:11:07,760
+do the edges represent in Kora.
+
+279
+00:11:05,920 --> 00:11:10,480
+Uh so I think I mentioned so it's a
+
+280
+00:11:07,760 --> 00:11:13,200
+citation uh network. So basically the
+
+281
+00:11:10,480 --> 00:11:16,320
+the the node is a research paper and the
+
+282
+00:11:13,200 --> 00:11:19,360
+edge means uh that research paper cites
+
+283
+00:11:16,320 --> 00:11:20,720
+uh some other research paper. So it has
+
+284
+00:11:19,360 --> 00:11:22,320
+that other research paper as a
+
+285
+00:11:20,720 --> 00:11:24,480
+reference.
+
+286
+00:11:22,320 --> 00:11:26,560
+All right. Carlos is asking, "Is machine
+
+287
+00:11:24,480 --> 00:11:28,880
+learning always piled to an existing
+
+288
+00:11:26,560 --> 00:11:31,680
+graph or can the network be constructed
+
+289
+00:11:28,880 --> 00:11:33,760
+using GNN techniques?"
+
+290
+00:11:31,680 --> 00:11:36,320
+I'm not sure I understood this question.
+
+291
+00:11:33,760 --> 00:11:40,160
+Could you repeat or Yeah, sure. Uh, so
+
+292
+00:11:36,320 --> 00:11:43,200
+he's asking whether um it's piled is the
+
+293
+00:11:40,160 --> 00:11:45,680
+word he uses. I guess maybe I would say
+
+294
+00:11:43,200 --> 00:11:48,480
+attached or applied to an existing graph
+
+295
+00:11:45,680 --> 00:11:52,399
+or can the network be constructed using
+
+296
+00:11:48,480 --> 00:11:54,079
+GN? Okay. Well, you usually do have uh
+
+297
+00:11:52,399 --> 00:11:55,760
+graph data data and that's an
+
+298
+00:11:54,079 --> 00:11:58,720
+interesting question because uh there is
+
+299
+00:11:55,760 --> 00:12:00,720
+not an equivalent of a camera for graph
+
+300
+00:11:58,720 --> 00:12:02,320
+ML. So you can't you don't have a camera
+
+301
+00:12:00,720 --> 00:12:04,240
+where you can like capture images in
+
+302
+00:12:02,320 --> 00:12:08,160
+that case. Here you can't just capture
+
+303
+00:12:04,240 --> 00:12:09,839
+graphs. Uh it's it's a bit more u people
+
+304
+00:12:08,160 --> 00:12:11,279
+usually collect graphs and there are
+
+305
+00:12:09,839 --> 00:12:13,040
+some natural applications like social
+
+306
+00:12:11,279 --> 00:12:15,120
+media where you're naturally building up
+
+307
+00:12:13,040 --> 00:12:17,040
+those graphs. Uh but yeah, I'm not sure
+
+308
+00:12:15,120 --> 00:12:19,440
+if I understood your question well.
+
+309
+00:12:17,040 --> 00:12:22,399
+Maybe we can we can uh answer it a bit
+
+310
+00:12:19,440 --> 00:12:24,000
+later. Okay. Um, so applications uh
+
+311
+00:12:22,399 --> 00:12:26,320
+first application I want to mention is
+
+312
+00:12:24,000 --> 00:12:28,320
+this uh Uber Eats application and you
+
+313
+00:12:26,320 --> 00:12:30,000
+can see here uh it can be really nicely
+
+314
+00:12:28,320 --> 00:12:31,920
+modeled as a graph. So you have users
+
+315
+00:12:30,000 --> 00:12:34,240
+which are again notes in this graph. You
+
+316
+00:12:31,920 --> 00:12:36,959
+have food in this example which are
+
+317
+00:12:34,240 --> 00:12:38,959
+again notes and it's a multimodal graph
+
+318
+00:12:36,959 --> 00:12:40,959
+because you have uh different entities
+
+319
+00:12:38,959 --> 00:12:44,000
+here. You have users profiles and you
+
+320
+00:12:40,959 --> 00:12:45,839
+have food. Uh Uber uh in particular they
+
+321
+00:12:44,000 --> 00:12:48,320
+had a separate graph for restaurants and
+
+322
+00:12:45,839 --> 00:12:49,680
+users. So if you have a question uh why
+
+323
+00:12:48,320 --> 00:12:51,360
+didn't don't they mix everything
+
+324
+00:12:49,680 --> 00:12:53,600
+together because it was easier to
+
+325
+00:12:51,360 --> 00:12:55,760
+decouple it like this I assume and that
+
+326
+00:12:53,600 --> 00:12:57,839
+was back in a couple of years ago so
+
+327
+00:12:55,760 --> 00:13:00,560
+maybe they imp they improved it in the
+
+328
+00:12:57,839 --> 00:13:03,760
+meanwhile uh but basically um what you
+
+329
+00:13:00,560 --> 00:13:06,000
+do here is so here we have a particular
+
+330
+00:13:03,760 --> 00:13:08,720
+case where we have we are doing edge
+
+331
+00:13:06,000 --> 00:13:11,200
+regression uh why edge regression well
+
+332
+00:13:08,720 --> 00:13:12,959
+what they do doing here is you basically
+
+333
+00:13:11,200 --> 00:13:16,160
+want to answer the question how likely
+
+334
+00:13:12,959 --> 00:13:18,320
+is a user to order certain um food item
+
+335
+00:13:16,160 --> 00:13:20,880
+So basically let's take that hamburger
+
+336
+00:13:18,320 --> 00:13:23,200
+and if the edge has a value of one that
+
+337
+00:13:20,880 --> 00:13:26,880
+means this user is 100% sure to to take
+
+338
+00:13:23,200 --> 00:13:30,240
+hamburger. If the pizza is maybe 50% uh
+
+339
+00:13:26,880 --> 00:13:32,320
+or 0.5 uh so the user has 50% to order
+
+340
+00:13:30,240 --> 00:13:34,639
+it and then you can just imagine how you
+
+341
+00:13:32,320 --> 00:13:36,880
+can just sort the edges according to
+
+342
+00:13:34,639 --> 00:13:39,279
+those uh probabilities according to the
+
+343
+00:13:36,880 --> 00:13:41,120
+those numbers and you can uh kind of
+
+344
+00:13:39,279 --> 00:13:43,279
+recommend the the food items to that
+
+345
+00:13:41,120 --> 00:13:45,639
+particular user. So that's an example of
+
+346
+00:13:43,279 --> 00:13:48,639
+how you could do u edge
+
+347
+00:13:45,639 --> 00:13:51,600
+regression. Okay. Second example is this
+
+348
+00:13:48,639 --> 00:13:54,959
+uh very famous example in graphML. It's
+
+349
+00:13:51,600 --> 00:13:56,880
+called pinsage. Uh and basically uh what
+
+350
+00:13:54,959 --> 00:13:58,320
+they did here is there is this platform.
+
+351
+00:13:56,880 --> 00:14:00,480
+You're probably familiar with it or
+
+352
+00:13:58,320 --> 00:14:02,240
+heard of it. Uh Pinterest where you
+
+353
+00:14:00,480 --> 00:14:04,720
+collect these pins. They are visual.
+
+354
+00:14:02,240 --> 00:14:07,279
+They are textual. Uh you're basically
+
+355
+00:14:04,720 --> 00:14:10,160
+collecting some interesting pins in in
+
+356
+00:14:07,279 --> 00:14:12,480
+boards etc. And what they did is they uh
+
+357
+00:14:10,160 --> 00:14:14,720
+leveraged graph uh graph neural network
+
+358
+00:14:12,480 --> 00:14:16,320
+pins called pinsage to create much
+
+359
+00:14:14,720 --> 00:14:18,920
+better recommendation engine. And that's
+
+360
+00:14:16,320 --> 00:14:21,279
+a big deal like uh out of all of AI
+
+361
+00:14:18,920 --> 00:14:22,560
+applications today deployed currently in
+
+362
+00:14:21,279 --> 00:14:25,680
+the world like we're talking about
+
+363
+00:14:22,560 --> 00:14:27,519
+selfdriving cars etc. But basically in
+
+364
+00:14:25,680 --> 00:14:29,199
+my opinion uh and I think many people
+
+365
+00:14:27,519 --> 00:14:31,279
+share that opinion uh like
+
+366
+00:14:29,199 --> 00:14:34,240
+recommendation engines are influencing
+
+367
+00:14:31,279 --> 00:14:36,639
+our lives big time and the very fact
+
+368
+00:14:34,240 --> 00:14:39,120
+that graph neural networks are already
+
+369
+00:14:36,639 --> 00:14:41,680
+deployed there is very exciting and as
+
+370
+00:14:39,120 --> 00:14:45,279
+you can see here like uh this this image
+
+371
+00:14:41,680 --> 00:14:46,959
+of uh of people lodging this tree and uh
+
+372
+00:14:45,279 --> 00:14:48,720
+if you take a look like if you just use
+
+373
+00:14:46,959 --> 00:14:50,160
+the visual baseline where you find
+
+374
+00:14:48,720 --> 00:14:52,639
+content where you recommend content
+
+375
+00:14:50,160 --> 00:14:54,480
+based on how visually similar it is you
+
+376
+00:14:52,639 --> 00:14:57,360
+can see there are semantic errors So you
+
+377
+00:14:54,480 --> 00:14:58,880
+can see uh like soldiers are running and
+
+378
+00:14:57,360 --> 00:15:00,800
+that doesn't have anything to do with
+
+379
+00:14:58,880 --> 00:15:02,399
+this input image. Uh it's just that it's
+
+380
+00:15:00,800 --> 00:15:04,160
+grayscale so it's similar in appearance
+
+381
+00:15:02,399 --> 00:15:06,079
+but totally they they like kind of
+
+382
+00:15:04,160 --> 00:15:07,920
+missed it. Uh then we have annotations
+
+383
+00:15:06,079 --> 00:15:10,000
+which are a bit better but uh you can
+
+384
+00:15:07,920 --> 00:15:12,320
+see the the the trees but it's not
+
+385
+00:15:10,000 --> 00:15:14,399
+grayscale so it's not that um it's not
+
+386
+00:15:12,320 --> 00:15:16,720
+that similar visually. And finally, so
+
+387
+00:15:14,399 --> 00:15:19,920
+Pixie some stronger baseline they had.
+
+388
+00:15:16,720 --> 00:15:22,000
+And finally uh they have uh pins which
+
+389
+00:15:19,920 --> 00:15:24,000
+combines both the visual information
+
+390
+00:15:22,000 --> 00:15:25,279
+with the textual information and
+
+391
+00:15:24,000 --> 00:15:27,839
+basically combines it with the
+
+392
+00:15:25,279 --> 00:15:30,120
+structural u information in the graph in
+
+393
+00:15:27,839 --> 00:15:32,959
+order to to give much better
+
+394
+00:15:30,120 --> 00:15:35,360
+recommendations. Okay. And the third
+
+395
+00:15:32,959 --> 00:15:37,600
+example here is a Twitter uh network.
+
+396
+00:15:35,360 --> 00:15:41,040
+Basically what they did here is uh node
+
+397
+00:15:37,600 --> 00:15:43,760
+regression whereby uh they associate a
+
+398
+00:15:41,040 --> 00:15:46,240
+certain probability that a user in this
+
+399
+00:15:43,760 --> 00:15:48,720
+uh Twitter network is likely to to
+
+400
+00:15:46,240 --> 00:15:50,800
+spread fake news. So the red ones are
+
+401
+00:15:48,720 --> 00:15:52,800
+are users which are prone to spreading
+
+402
+00:15:50,800 --> 00:15:54,880
+fake news. The blue ones don't sp spread
+
+403
+00:15:52,800 --> 00:15:56,639
+fake news. And the interesting fact
+
+404
+00:15:54,880 --> 00:15:57,920
+about uh fake news is that the
+
+405
+00:15:56,639 --> 00:16:00,160
+propagation pattern is really
+
+406
+00:15:57,920 --> 00:16:02,480
+interesting and it can be detected by
+
+407
+00:16:00,160 --> 00:16:05,199
+looking how it evolves over time. And
+
+408
+00:16:02,480 --> 00:16:07,920
+using that uh uh they they they deployed
+
+409
+00:16:05,199 --> 00:16:10,320
+a a graph neural network here to to to
+
+410
+00:16:07,920 --> 00:16:12,880
+kind of uh solve let's say solve not
+
+411
+00:16:10,320 --> 00:16:15,360
+solve but uh to to tackle this this
+
+412
+00:16:12,880 --> 00:16:17,360
+task. Uh that's another exciting
+
+413
+00:16:15,360 --> 00:16:20,320
+application. Uh and all of these graphs
+
+414
+00:16:17,360 --> 00:16:23,279
+are huge like social networks like Uber
+
+415
+00:16:20,320 --> 00:16:25,600
+like uh Pinterest and finally Twitter.
+
+416
+00:16:23,279 --> 00:16:27,680
+Now uh let me show you some more like
+
+417
+00:16:25,600 --> 00:16:30,880
+fundamental ones. Uh so going into
+
+418
+00:16:27,680 --> 00:16:32,160
+science uh and uh th this one you
+
+419
+00:16:30,880 --> 00:16:33,199
+probably haven't heard unless you've
+
+420
+00:16:32,160 --> 00:16:35,600
+been following me on LinkedIn or
+
+421
+00:16:33,199 --> 00:16:38,880
+somewhere. Uh basically this is Ice Cube
+
+422
+00:16:35,600 --> 00:16:40,880
+and that's a huge laboratory u uh in
+
+423
+00:16:38,880 --> 00:16:43,279
+Antarctica and you can see like the
+
+424
+00:16:40,880 --> 00:16:45,600
+Eiffel Tower uh in the in the in the
+
+425
+00:16:43,279 --> 00:16:47,680
+bottom left and you can see the the city
+
+426
+00:16:45,600 --> 00:16:50,399
+on the right picture uh which just
+
+427
+00:16:47,680 --> 00:16:52,320
+represents how huge this thing is. And
+
+428
+00:16:50,399 --> 00:16:55,440
+what they do is they basically have a
+
+429
+00:16:52,320 --> 00:16:57,360
+grid-like structure of light sensors. Uh
+
+430
+00:16:55,440 --> 00:16:59,120
+and what happens is they're trying to
+
+431
+00:16:57,360 --> 00:17:02,160
+capture nutrinos. So high energy
+
+432
+00:16:59,120 --> 00:17:04,000
+particles coming from some uh like high
+
+433
+00:17:02,160 --> 00:17:05,919
+energy vents like like supernova
+
+434
+00:17:04,000 --> 00:17:08,160
+explosions. And what happens is that
+
+435
+00:17:05,919 --> 00:17:09,760
+nutrino comes in uh it interacts with
+
+436
+00:17:08,160 --> 00:17:11,919
+the molecules of the ice because this
+
+437
+00:17:09,760 --> 00:17:14,640
+thing is kind of digged into ice and
+
+438
+00:17:11,919 --> 00:17:16,240
+what happens is that uh well the nutrina
+
+439
+00:17:14,640 --> 00:17:18,240
+is going through the ice. It interacts
+
+440
+00:17:16,240 --> 00:17:20,160
+with molecules and there is this effect
+
+441
+00:17:18,240 --> 00:17:22,240
+called trank of light which uh gets
+
+442
+00:17:20,160 --> 00:17:23,839
+emitted and then this light sensors can
+
+443
+00:17:22,240 --> 00:17:26,400
+kind of capture it and then you can see
+
+444
+00:17:23,839 --> 00:17:30,000
+these uh red blobs uh the size of the
+
+445
+00:17:26,400 --> 00:17:32,320
+blob uh kind of depicts how much uh
+
+446
+00:17:30,000 --> 00:17:33,760
+light how much energy has that sensor
+
+447
+00:17:32,320 --> 00:17:36,080
+received. So the bigger the blob the
+
+448
+00:17:33,760 --> 00:17:39,600
+more energy and again you can see uh
+
+449
+00:17:36,080 --> 00:17:41,840
+that the graph pattern uh forms here
+
+450
+00:17:39,600 --> 00:17:43,280
+again deploying GNN here they they they
+
+451
+00:17:41,840 --> 00:17:45,200
+got really nice results on the
+
+452
+00:17:43,280 --> 00:17:48,320
+classification task much better than
+
+453
+00:17:45,200 --> 00:17:50,840
+previous uh classical uh like uh
+
+454
+00:17:48,320 --> 00:17:54,480
+techniques they they
+
+455
+00:17:50,840 --> 00:17:55,760
+used one more example with cancer uh
+
+456
+00:17:54,480 --> 00:17:57,440
+that's all interesting I'll have to
+
+457
+00:17:55,760 --> 00:17:59,360
+speed up I don't think I'll have time to
+
+458
+00:17:57,440 --> 00:18:00,480
+tell you about everything but uh there's
+
+459
+00:17:59,360 --> 00:18:01,840
+this this one is really interesting
+
+460
+00:18:00,480 --> 00:18:03,280
+because they're doing a multi-
+
+461
+00:18:01,840 --> 00:18:04,960
+relational
+
+462
+00:18:03,280 --> 00:18:06,799
+regression. So basically you have
+
+463
+00:18:04,960 --> 00:18:08,480
+proteins, you have drugs. So the
+
+464
+00:18:06,799 --> 00:18:11,120
+triangles are drugs, the proteins are
+
+465
+00:18:08,480 --> 00:18:12,559
+yellow circles. And applying a graph
+
+466
+00:18:11,120 --> 00:18:14,880
+neural network, you can you can answer
+
+467
+00:18:12,559 --> 00:18:17,440
+the question whether are two drugs. So
+
+468
+00:18:14,880 --> 00:18:19,120
+take C and triangle S. You can ask the
+
+469
+00:18:17,440 --> 00:18:21,520
+question whether a certain side effect
+
+470
+00:18:19,120 --> 00:18:23,360
+is present or not present. Again, you
+
+471
+00:18:21,520 --> 00:18:25,440
+have a number between zero and one. the
+
+472
+00:18:23,360 --> 00:18:27,919
+neural network can regress those numbers
+
+473
+00:18:25,440 --> 00:18:29,360
+and uh you can answer a really important
+
+474
+00:18:27,919 --> 00:18:31,120
+question and that's whether there is a
+
+475
+00:18:29,360 --> 00:18:33,280
+side effect if you combine two drugs and
+
+476
+00:18:31,120 --> 00:18:36,640
+that's called a poly pharmacy side
+
+477
+00:18:33,280 --> 00:18:38,880
+effect and many people are um u kind of
+
+478
+00:18:36,640 --> 00:18:41,120
+impacted by this fact especially our
+
+479
+00:18:38,880 --> 00:18:42,559
+like grandparents and so you can imagine
+
+480
+00:18:41,120 --> 00:18:44,320
+it's really important to solve this
+
+481
+00:18:42,559 --> 00:18:47,520
+automatically because as you can imagine
+
+482
+00:18:44,320 --> 00:18:48,880
+it's really hard to to manually screen
+
+483
+00:18:47,520 --> 00:18:51,120
+all of the possible like the
+
+484
+00:18:48,880 --> 00:18:53,280
+commentorial space is too huge we need
+
+485
+00:18:51,120 --> 00:18:56,559
+computational methods to solve this kind
+
+486
+00:18:53,280 --> 00:18:58,400
+of tasks. So those are some interesting.
+
+487
+00:18:56,559 --> 00:19:02,000
+Yeah. Here one one more. This is super
+
+488
+00:18:58,400 --> 00:19:05,039
+super famous. uh they they they uh again
+
+489
+00:19:02,000 --> 00:19:08,160
+they had a data set of u like molecules
+
+490
+00:19:05,039 --> 00:19:10,160
+uh which inhibit coli and by training it
+
+491
+00:19:08,160 --> 00:19:12,720
+on that data set and then deploying it
+
+492
+00:19:10,160 --> 00:19:15,600
+on some unknown molecules they were able
+
+493
+00:19:12,720 --> 00:19:18,720
+to sort out uh some molecules which
+
+494
+00:19:15,600 --> 00:19:21,120
+showed uh high potency against the shria
+
+495
+00:19:18,720 --> 00:19:23,360
+coli and previously unknown molecule
+
+496
+00:19:21,120 --> 00:19:25,440
+called now dubbed helisonin as you can
+
+497
+00:19:23,360 --> 00:19:28,480
+see on the picture was discovered and it
+
+498
+00:19:25,440 --> 00:19:30,360
+was previously just uh like they they
+
+499
+00:19:28,480 --> 00:19:32,880
+just used it in the context of uh
+
+500
+00:19:30,360 --> 00:19:34,559
+diabetes. So this was a novel
+
+501
+00:19:32,880 --> 00:19:37,120
+application. Nobody thought of it and
+
+502
+00:19:34,559 --> 00:19:39,679
+it's really potent. So you can just
+
+503
+00:19:37,120 --> 00:19:41,760
+imagine how this can be a really
+
+504
+00:19:39,679 --> 00:19:44,480
+valuable tool in a toolkit of every
+
+505
+00:19:41,760 --> 00:19:48,000
+single chemist uh like uh and uh
+
+506
+00:19:44,480 --> 00:19:52,240
+biologist etc. So hopefully uh I hyped
+
+507
+00:19:48,000 --> 00:19:54,880
+you enough u and um now what I wanted to
+
+508
+00:19:52,240 --> 00:19:57,760
+do is u kind of contrast graph ML. So
+
+509
+00:19:54,880 --> 00:20:01,280
+that was all nice and um but I want you
+
+510
+00:19:57,760 --> 00:20:04,400
+to kind of make a link between graphML
+
+511
+00:20:01,280 --> 00:20:07,520
+computer vision NLP and RL. So first of
+
+512
+00:20:04,400 --> 00:20:10,400
+all um if you think about it images are
+
+513
+00:20:07,520 --> 00:20:13,120
+basically graphs and you can see here on
+
+514
+00:20:10,400 --> 00:20:16,080
+the screen like a simple regular graph
+
+515
+00:20:13,120 --> 00:20:18,240
+also called grid and if you kind of
+
+516
+00:20:16,080 --> 00:20:20,080
+assign values to every single node you
+
+517
+00:20:18,240 --> 00:20:22,240
+you basically have a grayscale image or
+
+518
+00:20:20,080 --> 00:20:24,799
+if you assign vectors you have like
+
+519
+00:20:22,240 --> 00:20:27,360
+three three numbers like RGB you can
+
+520
+00:20:24,799 --> 00:20:30,480
+have like a fully colored image. Uh
+
+521
+00:20:27,360 --> 00:20:33,679
+again videos are just 3D grids. uh so
+
+522
+00:20:30,480 --> 00:20:35,840
+yeah but just uh the pure fact that it's
+
+523
+00:20:33,679 --> 00:20:38,320
+a graph doesn't mean you should use I'm
+
+524
+00:20:35,840 --> 00:20:40,480
+not saying you should use uh uh GNN's
+
+525
+00:20:38,320 --> 00:20:42,320
+just because it's a graph and the reason
+
+526
+00:20:40,480 --> 00:20:44,080
+is uh like neural networks such as
+
+527
+00:20:42,320 --> 00:20:46,159
+convolutional neural networks networks
+
+528
+00:20:44,080 --> 00:20:48,240
+have a really good biases ingrained into
+
+529
+00:20:46,159 --> 00:20:50,159
+them so you should use them if they are
+
+530
+00:20:48,240 --> 00:20:51,919
+giving better results but people are
+
+531
+00:20:50,159 --> 00:20:55,039
+already starting to explore uh using
+
+532
+00:20:51,919 --> 00:20:57,840
+GNN's u on these on images and computer
+
+533
+00:20:55,039 --> 00:20:59,440
+vision in general uh yeah just keep that
+
+534
+00:20:57,840 --> 00:21:01,919
+in
+
+535
+00:20:59,440 --> 00:21:04,400
+Uh the second thing is um if you think
+
+536
+00:21:01,919 --> 00:21:07,120
+about it uh transformers are a special
+
+537
+00:21:04,400 --> 00:21:09,200
+case of uh graph attention network and
+
+538
+00:21:07,120 --> 00:21:11,520
+this may be hard to to understand
+
+539
+00:21:09,200 --> 00:21:13,360
+initially but if you treat a sentence as
+
+540
+00:21:11,520 --> 00:21:15,760
+a fully connected graph. So if you
+
+541
+00:21:13,360 --> 00:21:18,400
+connect implicitly uh every word with
+
+542
+00:21:15,760 --> 00:21:20,799
+every other single word. Uh basically uh
+
+543
+00:21:18,400 --> 00:21:22,960
+what transformer does uh is the same
+
+544
+00:21:20,799 --> 00:21:24,480
+thing as what graph attention network
+
+545
+00:21:22,960 --> 00:21:26,640
+does and I implemented both from
+
+546
+00:21:24,480 --> 00:21:29,039
+scratch. So I do understand this a bit
+
+547
+00:21:26,640 --> 00:21:30,559
+better. I do I do appreciate that you if
+
+548
+00:21:29,039 --> 00:21:32,480
+you're novel to this field this will be
+
+549
+00:21:30,559 --> 00:21:35,120
+confusing but just keep that connection
+
+550
+00:21:32,480 --> 00:21:36,880
+summary in mind like uh basically a
+
+551
+00:21:35,120 --> 00:21:39,440
+graph attention network is a is a is a
+
+552
+00:21:36,880 --> 00:21:41,360
+generalization of of transformers and it
+
+553
+00:21:39,440 --> 00:21:44,400
+can be applied to any other type of
+
+554
+00:21:41,360 --> 00:21:46,880
+graph not just fully connected graph uh
+
+555
+00:21:44,400 --> 00:21:48,799
+and finally reinforcement learning now
+
+556
+00:21:46,880 --> 00:21:51,520
+this may be strange for some of you why
+
+557
+00:21:48,799 --> 00:21:53,760
+I'm mentioning RL here uh basically the
+
+558
+00:21:51,520 --> 00:21:56,240
+reason is um so basically RL can
+
+559
+00:21:53,760 --> 00:21:58,240
+leverage any one of these advancements
+
+560
+00:21:56,240 --> 00:21:59,679
+it leverage advancements in computer
+
+561
+00:21:58,240 --> 00:22:02,000
+vision. It can leverage advancements in
+
+562
+00:21:59,679 --> 00:22:05,679
+LP. Uh the reason I'm mentioning it
+
+563
+00:22:02,000 --> 00:22:08,320
+because basically um the scope of uh
+
+564
+00:22:05,679 --> 00:22:11,520
+applications for RL currently is pretty
+
+565
+00:22:08,320 --> 00:22:13,840
+narrow. Uh and I've been I've been doing
+
+566
+00:22:11,520 --> 00:22:16,480
+lots lots of RL over the last period and
+
+567
+00:22:13,840 --> 00:22:18,480
+implementing DQN but um they are only
+
+568
+00:22:16,480 --> 00:22:20,159
+applicable to pretty much to games
+
+569
+00:22:18,480 --> 00:22:21,840
+because there's a lot of data and to
+
+570
+00:22:20,159 --> 00:22:26,159
+robotics.
+
+571
+00:22:21,840 --> 00:22:28,880
+So compare that and CV as well and NLP
+
+572
+00:22:26,159 --> 00:22:30,640
+uh with GraphML and you can see how
+
+573
+00:22:28,880 --> 00:22:32,960
+homogeneous they actually are compared
+
+574
+00:22:30,640 --> 00:22:35,120
+to GraphML because you already saw some
+
+575
+00:22:32,960 --> 00:22:37,559
+of the applications and that's not the
+
+576
+00:22:35,120 --> 00:22:41,600
+like the the the whole
+
+577
+00:22:37,559 --> 00:22:44,400
+list. Okay, if you have any questions
+
+578
+00:22:41,600 --> 00:22:44,400
+I'll stop here
+
+579
+00:22:45,559 --> 00:22:50,640
+again. I'll jump right in here. So
+
+580
+00:22:48,720 --> 00:22:52,400
+actually there's a few uh questions from
+
+581
+00:22:50,640 --> 00:22:55,440
+the previous break that we didn't have
+
+582
+00:22:52,400 --> 00:22:57,919
+time to cover so I may pass them on. So
+
+583
+00:22:55,440 --> 00:23:02,000
+Nikil is asking are GNN's being
+
+584
+00:22:57,919 --> 00:23:04,080
+implemented in spiking neural networks?
+
+585
+00:23:02,000 --> 00:23:06,159
+Uh in what what was the question? Are
+
+586
+00:23:04,080 --> 00:23:09,280
+GNN's being implemented in spiking
+
+587
+00:23:06,159 --> 00:23:11,200
+neural networks?
+
+588
+00:23:09,280 --> 00:23:12,960
+I'm not sure I understand that. I I I
+
+589
+00:23:11,200 --> 00:23:14,640
+can assume you you're maybe asking
+
+590
+00:23:12,960 --> 00:23:17,679
+whether there is a connection whether
+
+591
+00:23:14,640 --> 00:23:19,120
+people are uh using neuroscience as
+
+592
+00:23:17,679 --> 00:23:21,360
+inspiration and integrating some of
+
+593
+00:23:19,120 --> 00:23:24,799
+those ideas into GNS if that was the
+
+594
+00:23:21,360 --> 00:23:26,640
+question uh I haven't seen uh any paper
+
+595
+00:23:24,799 --> 00:23:28,400
+that deals with that having said that
+
+596
+00:23:26,640 --> 00:23:31,520
+that doesn't mean it doesn't exist I'm
+
+597
+00:23:28,400 --> 00:23:34,320
+not aware of anybody using those spiking
+
+598
+00:23:31,520 --> 00:23:36,960
+mechanisms and ingraining them into GNN
+
+599
+00:23:34,320 --> 00:23:39,520
+if that was a question I'm not sure
+
+600
+00:23:36,960 --> 00:23:41,440
+either but I hope that answers it um
+
+601
+00:23:39,520 --> 00:23:43,360
+there's a couple of people asking for a
+
+602
+00:23:41,440 --> 00:23:45,520
+reference for the Twitter fake news
+
+603
+00:23:43,360 --> 00:23:47,919
+example, but I guess you know you can
+
+604
+00:23:45,520 --> 00:23:50,159
+give that one offline probably. Sure.
+
+605
+00:23:47,919 --> 00:23:52,320
+Uh, by the way, I do have I wrote a
+
+606
+00:23:50,159 --> 00:23:54,799
+blog, I wrote uh I made a lot of videos,
+
+607
+00:23:52,320 --> 00:23:56,960
+have a project. So I I'll share some of
+
+608
+00:23:54,799 --> 00:23:59,520
+those u like some of the best people in
+
+609
+00:23:56,960 --> 00:24:02,080
+the in the in the graph ML field uh told
+
+610
+00:23:59,520 --> 00:24:04,640
+that that's a good way to start. So I do
+
+611
+00:24:02,080 --> 00:24:07,919
+believe them.
+
+612
+00:24:04,640 --> 00:24:09,600
+Okay, that's cool. And then I guess you
+
+613
+00:24:07,919 --> 00:24:12,240
+also have a final part of the
+
+614
+00:24:09,600 --> 00:24:14,880
+presentation. So I'll just keep pass one
+
+615
+00:24:12,240 --> 00:24:18,320
+last question for now because we have in
+
+616
+00:24:14,880 --> 00:24:20,159
+total 7 minutes left I think. Okay. In
+
+617
+00:24:18,320 --> 00:24:22,720
+the training process, how would you take
+
+618
+00:24:20,159 --> 00:24:26,000
+a subsample of the graph for training
+
+619
+00:24:22,720 --> 00:24:28,640
+and test sets and how would that change
+
+620
+00:24:26,000 --> 00:24:31,440
+for the Kora data set or the protein
+
+621
+00:24:28,640 --> 00:24:35,120
+interaction graphs and then again for
+
+622
+00:24:31,440 --> 00:24:37,520
+node edge and graph classification? Mhm.
+
+623
+00:24:35,120 --> 00:24:40,240
+Well, in Kora the the the thing is you
+
+624
+00:24:37,520 --> 00:24:42,240
+have this you have two types of two
+
+625
+00:24:40,240 --> 00:24:44,320
+modes of training in in when you're
+
+626
+00:24:42,240 --> 00:24:45,600
+training GNS. You can have transductive
+
+627
+00:24:44,320 --> 00:24:47,440
+approach, you can have inductive
+
+628
+00:24:45,600 --> 00:24:50,000
+approach. Transductive approach means
+
+629
+00:24:47,440 --> 00:24:52,559
+you have a single graph. And the the
+
+630
+00:24:50,000 --> 00:24:54,320
+thing is some of the nodes have labels,
+
+631
+00:24:52,559 --> 00:24:55,840
+most of them do not have labels. And
+
+632
+00:24:54,320 --> 00:24:58,640
+then what you're doing there is you're
+
+633
+00:24:55,840 --> 00:25:01,279
+you're training the like GNN's on those
+
+634
+00:24:58,640 --> 00:25:03,360
+labeled nodes. And then you once the the
+
+635
+00:25:01,279 --> 00:25:05,679
+training is done you can ask questions
+
+636
+00:25:03,360 --> 00:25:06,960
+like u some of the other nodes which
+
+637
+00:25:05,679 --> 00:25:09,440
+doesn't have label you can ask which
+
+638
+00:25:06,960 --> 00:25:11,279
+label does it have and that's the
+
+639
+00:25:09,440 --> 00:25:13,600
+transductive approach. The inductive
+
+640
+00:25:11,279 --> 00:25:16,159
+approach uh and basically you you're
+
+641
+00:25:13,600 --> 00:25:19,440
+given those labels you can't it's not
+
+642
+00:25:16,159 --> 00:25:21,440
+like you decide you it's it's like u you
+
+643
+00:25:19,440 --> 00:25:22,559
+only have labels for those nodes and you
+
+644
+00:25:21,440 --> 00:25:24,000
+don't have the labels for the other
+
+645
+00:25:22,559 --> 00:25:25,760
+nodes. So that's the transductive
+
+646
+00:25:24,000 --> 00:25:28,320
+approach. the the inductive approach
+
+647
+00:25:25,760 --> 00:25:30,400
+like PPI again basically somebody made a
+
+648
+00:25:28,320 --> 00:25:32,240
+split between the training and and and
+
+649
+00:25:30,400 --> 00:25:35,200
+testing data sets. You train on the you
+
+650
+00:25:32,240 --> 00:25:36,880
+train on the uh on the training uh
+
+651
+00:25:35,200 --> 00:25:38,799
+graphs. So you have multiple graphs
+
+652
+00:25:36,880 --> 00:25:41,440
+there not a single one as the in the
+
+653
+00:25:38,799 --> 00:25:44,880
+transductive case and then you kind of
+
+654
+00:25:41,440 --> 00:25:47,360
+uh do inference on the test set pretty
+
+655
+00:25:44,880 --> 00:25:49,200
+much the similar similar like pipeline
+
+656
+00:25:47,360 --> 00:25:51,039
+as in any other sub field of machine
+
+657
+00:25:49,200 --> 00:25:55,279
+learning.
+
+658
+00:25:51,039 --> 00:25:57,600
+Okay. uh short overview uh of the field
+
+659
+00:25:55,279 --> 00:26:00,000
+as much as I can do in seven minutes. Uh
+
+660
+00:25:57,600 --> 00:26:01,919
+so basically uh all everything started
+
+661
+00:26:00,000 --> 00:26:03,440
+with this graph embedding methods and if
+
+662
+00:26:01,919 --> 00:26:05,600
+you're familiar with natural language
+
+663
+00:26:03,440 --> 00:26:07,919
+processing NLP uh you know about
+
+664
+00:26:05,600 --> 00:26:09,679
+wordtovec method uh the the main idea
+
+665
+00:26:07,919 --> 00:26:12,080
+there was you do the following you
+
+666
+00:26:09,679 --> 00:26:13,919
+basically sample sentences and you have
+
+667
+00:26:12,080 --> 00:26:15,679
+some some table of vectors which is
+
+668
+00:26:13,919 --> 00:26:17,760
+which are your embedding vectors and
+
+669
+00:26:15,679 --> 00:26:20,799
+what you do is the following. So if if
+
+670
+00:26:17,760 --> 00:26:22,640
+the words tend to appear close together,
+
+671
+00:26:20,799 --> 00:26:24,480
+you want to make sure that their vectors
+
+672
+00:26:22,640 --> 00:26:27,120
+are really similar. So you achieve that
+
+673
+00:26:24,480 --> 00:26:29,279
+by by just uh doing a dotproduct and you
+
+674
+00:26:27,120 --> 00:26:32,080
+want to max maximize that dot product.
+
+675
+00:26:29,279 --> 00:26:33,679
+Uh if they so if they appear together
+
+676
+00:26:32,080 --> 00:26:35,279
+their the vectors should be similar. If
+
+677
+00:26:33,679 --> 00:26:37,440
+they don't appear together the vectors
+
+678
+00:26:35,279 --> 00:26:39,760
+shouldn't be similar. As easy as that.
+
+679
+00:26:37,440 --> 00:26:42,240
+And what happens is that this uh
+
+680
+00:26:39,760 --> 00:26:44,000
+beautiful uh thing emerges and that's
+
+681
+00:26:42,240 --> 00:26:46,320
+the structure in the latent space in
+
+682
+00:26:44,000 --> 00:26:48,480
+that embedding vector space. And you can
+
+683
+00:26:46,320 --> 00:26:50,880
+see here uh the example where you have
+
+684
+00:26:48,480 --> 00:26:52,799
+man like that's one embedding vector you
+
+685
+00:26:50,880 --> 00:26:54,880
+just kind kind of down project it you do
+
+686
+00:26:52,799 --> 00:26:57,360
+some dimensionality reduction method so
+
+687
+00:26:54,880 --> 00:26:59,360
+that we can visualize it in 3D and now
+
+688
+00:26:57,360 --> 00:27:01,919
+we can see the the man vector we can see
+
+689
+00:26:59,360 --> 00:27:04,400
+the woman vector and in parallel you can
+
+690
+00:27:01,919 --> 00:27:06,480
+see the the blue dot and for some reason
+
+691
+00:27:04,400 --> 00:27:09,440
+you can't see it but yeah it should be
+
+692
+00:27:06,480 --> 00:27:10,799
+kink and you can see queen down there
+
+693
+00:27:09,440 --> 00:27:13,120
+and you can see that the analogies
+
+694
+00:27:10,799 --> 00:27:15,200
+they're almost parallel to each other
+
+695
+00:27:13,120 --> 00:27:18,320
+and um that's a that's an awesome
+
+696
+00:27:15,200 --> 00:27:20,320
+property that many other subfields later
+
+697
+00:27:18,320 --> 00:27:22,080
+uh try to to exploit and you can see
+
+698
+00:27:20,320 --> 00:27:24,480
+here an example of my implementation of
+
+699
+00:27:22,080 --> 00:27:26,080
+this again where you can do a similar
+
+700
+00:27:24,480 --> 00:27:28,320
+thing you have like the embedding
+
+701
+00:27:26,080 --> 00:27:29,840
+vectors of happy women once you decode
+
+702
+00:27:28,320 --> 00:27:31,840
+that you get these images it's low
+
+703
+00:27:29,840 --> 00:27:33,440
+quality because it's an old older method
+
+704
+00:27:31,840 --> 00:27:35,039
+but you average those vectors and you
+
+705
+00:27:33,440 --> 00:27:36,559
+get the on the right you can see happy
+
+706
+00:27:35,039 --> 00:27:38,159
+woman average then you have neutral
+
+707
+00:27:36,559 --> 00:27:40,080
+woman average you have neutral man
+
+708
+00:27:38,159 --> 00:27:41,840
+average and what you do is the following
+
+709
+00:27:40,080 --> 00:27:43,760
+you subtract the neutral woman vector
+
+710
+00:27:41,840 --> 00:27:45,279
+from the happy woman vector and you get
+
+711
+00:27:43,760 --> 00:27:47,600
+a notion of happiness
+
+712
+00:27:45,279 --> 00:27:49,360
+like a vector that encodes happiness and
+
+713
+00:27:47,600 --> 00:27:50,960
+then you just add that vector to the
+
+714
+00:27:49,360 --> 00:27:53,760
+neutral man and you end up with the
+
+715
+00:27:50,960 --> 00:27:55,399
+happy man face down on on the bottom and
+
+716
+00:27:53,760 --> 00:27:58,080
+that's pretty exciting.
+
+717
+00:27:55,399 --> 00:28:00,559
+Uh similar thing happens in in in
+
+718
+00:27:58,080 --> 00:28:03,440
+GraphML. So people were inspired by by
+
+719
+00:28:00,559 --> 00:28:06,320
+this uh paper by Mikolof in 2013 the
+
+720
+00:28:03,440 --> 00:28:08,640
+Verteek and um they they started doing
+
+721
+00:28:06,320 --> 00:28:10,880
+the same things in GraphML. Uh so
+
+722
+00:28:08,640 --> 00:28:14,480
+methods like deep walk and notovec and
+
+723
+00:28:10,880 --> 00:28:16,799
+you can basically u kind of um uh treat
+
+724
+00:28:14,480 --> 00:28:19,600
+this as the following. So you have a
+
+725
+00:28:16,799 --> 00:28:21,440
+graph and if you do random walks uh ac
+
+726
+00:28:19,600 --> 00:28:23,520
+across that graph and if you treat the
+
+727
+00:28:21,440 --> 00:28:25,520
+nodes as words you're basically doing
+
+728
+00:28:23,520 --> 00:28:27,760
+the exact same thing as wordtovec.
+
+729
+00:28:25,520 --> 00:28:29,840
+You're basically sampling sentences and
+
+730
+00:28:27,760 --> 00:28:31,440
+which are nodes in this example and you
+
+731
+00:28:29,840 --> 00:28:33,600
+want to make sure that the nodes which
+
+732
+00:28:31,440 --> 00:28:35,679
+appear together in those random walks
+
+733
+00:28:33,600 --> 00:28:38,080
+have similar embeddings.
+
+734
+00:28:35,679 --> 00:28:40,480
+Once you train the the the the embedding
+
+735
+00:28:38,080 --> 00:28:43,279
+method like that you can see on the
+
+736
+00:28:40,480 --> 00:28:45,279
+right uh and again you just uh project
+
+737
+00:28:43,279 --> 00:28:47,679
+it into 2D you can see there is some
+
+738
+00:28:45,279 --> 00:28:49,679
+nice properties uh similarly labeled
+
+739
+00:28:47,679 --> 00:28:52,880
+nodes appear clustered together in the
+
+740
+00:28:49,679 --> 00:28:54,880
+2D space okay um I won't have enough
+
+741
+00:28:52,880 --> 00:28:58,000
+time I just want to motivate some of the
+
+742
+00:28:54,880 --> 00:29:00,240
+GNN's here so first of all uh you know
+
+743
+00:28:58,000 --> 00:29:03,120
+about imageet and that convolutional
+
+744
+00:29:00,240 --> 00:29:06,320
+neural networks did u like uh miracles
+
+745
+00:29:03,120 --> 00:29:08,320
+for CV community so we we somehow want
+
+746
+00:29:06,320 --> 00:29:11,120
+to generalize the notion of convolution
+
+747
+00:29:08,320 --> 00:29:12,720
+to graph ML. So that's the the the the
+
+748
+00:29:11,120 --> 00:29:15,679
+first trick that people the researchers
+
+749
+00:29:12,720 --> 00:29:18,159
+had to to solve and um the second thing
+
+750
+00:29:15,679 --> 00:29:20,960
+is just background. Uh so here you can
+
+751
+00:29:18,159 --> 00:29:23,919
+see uh degree matrix basically you take
+
+752
+00:29:20,960 --> 00:29:26,320
+one node like maybe node one um but so
+
+753
+00:29:23,919 --> 00:29:27,919
+you have this node one and you can see
+
+754
+00:29:26,320 --> 00:29:29,440
+it's connected to node two and node
+
+755
+00:29:27,919 --> 00:29:31,440
+five. If you take a look at the degree
+
+756
+00:29:29,440 --> 00:29:33,679
+matrix, you can see that the first row
+
+757
+00:29:31,440 --> 00:29:35,200
+has number two there because that's the
+
+758
+00:29:33,679 --> 00:29:36,960
+degree of that node. Then we have
+
+759
+00:29:35,200 --> 00:29:39,039
+adjacency. So that's the degree matrix.
+
+760
+00:29:36,960 --> 00:29:40,880
+Hopefully that's that makes sense. So if
+
+761
+00:29:39,039 --> 00:29:43,520
+you take a look at the node six, it only
+
+762
+00:29:40,880 --> 00:29:45,919
+has one edge. And hence in the last row,
+
+763
+00:29:43,520 --> 00:29:48,159
+row number six, you have only one uh the
+
+764
+00:29:45,919 --> 00:29:49,600
+adjacency matrix kind of uh just
+
+765
+00:29:48,159 --> 00:29:51,600
+represents the connectivity of this
+
+766
+00:29:49,600 --> 00:29:53,600
+graph. Once you subtract the adjacency
+
+767
+00:29:51,600 --> 00:29:55,600
+matrix from the degree matrix, you get
+
+768
+00:29:53,600 --> 00:29:57,520
+something called llia matrix. And that's
+
+769
+00:29:55,600 --> 00:30:00,240
+the main object mathematical object
+
+770
+00:29:57,520 --> 00:30:02,159
+that's being used in the in these first
+
+771
+00:30:00,240 --> 00:30:04,320
+uh GNN's which I'll explain on the next
+
+772
+00:30:02,159 --> 00:30:06,720
+slide. Uh the the second important
+
+773
+00:30:04,320 --> 00:30:08,159
+concept is a signal on the graph and
+
+774
+00:30:06,720 --> 00:30:10,559
+what a signal on the graph is the
+
+775
+00:30:08,159 --> 00:30:12,720
+following. So basically to every single
+
+776
+00:30:10,559 --> 00:30:14,399
+node you just associate a certain number
+
+777
+00:30:12,720 --> 00:30:17,039
+or a certain vector and you can
+
+778
+00:30:14,399 --> 00:30:19,760
+visualize those uh via these vertical
+
+779
+00:30:17,039 --> 00:30:22,720
+lines. You can see if the number is high
+
+780
+00:30:19,760 --> 00:30:25,120
+there is this large red line. If the
+
+781
+00:30:22,720 --> 00:30:27,200
+number is low below zero uh you have
+
+782
+00:30:25,120 --> 00:30:29,600
+these uh vertical lines that go below.
+
+783
+00:30:27,200 --> 00:30:33,600
+So that's just a visualization of what a
+
+784
+00:30:29,600 --> 00:30:37,200
+signal on the graph is. And um having
+
+785
+00:30:33,600 --> 00:30:39,360
+that theory uh checked let me now just
+
+786
+00:30:37,200 --> 00:30:42,080
+tell you about spectral methods quickly.
+
+787
+00:30:39,360 --> 00:30:44,760
+U they rigorously transfer the
+
+788
+00:30:42,080 --> 00:30:47,760
+mathematical notion of convolution to uh
+
+789
+00:30:44,760 --> 00:30:50,480
+graphML. Uh the the bad things are that
+
+790
+00:30:47,760 --> 00:30:52,320
+it's super expensive to to use them. uh
+
+791
+00:30:50,480 --> 00:30:54,240
+they are inherently transductive. So
+
+792
+00:30:52,320 --> 00:30:56,720
+that means because they're they are
+
+793
+00:30:54,240 --> 00:30:59,120
+basically using a specific lelation uh
+
+794
+00:30:56,720 --> 00:31:01,279
+matrix and that lelation matrix
+
+795
+00:30:59,120 --> 00:31:03,840
+corresponds to one and only one graph
+
+796
+00:31:01,279 --> 00:31:06,399
+that means once you train a GNN on this
+
+797
+00:31:03,840 --> 00:31:07,760
+uh graph you can't uh apply to some
+
+798
+00:31:06,399 --> 00:31:09,760
+other graph that has some other
+
+799
+00:31:07,760 --> 00:31:12,480
+structure. So that's the the bad thing
+
+800
+00:31:09,760 --> 00:31:15,360
+with with these methods. Um there are
+
+801
+00:31:12,480 --> 00:31:17,600
+some other u things but I won't get into
+
+802
+00:31:15,360 --> 00:31:19,200
+those details. Just let me uh tell you
+
+803
+00:31:17,600 --> 00:31:21,279
+about some other important things like
+
+804
+00:31:19,200 --> 00:31:23,440
+spatial genens and these are the name of
+
+805
+00:31:21,279 --> 00:31:25,120
+the game they are scalable they are the
+
+806
+00:31:23,440 --> 00:31:27,919
+ones being deployed currently in all of
+
+807
+00:31:25,120 --> 00:31:30,240
+those exciting applications and you have
+
+808
+00:31:27,919 --> 00:31:32,000
+the first one is the GCN that's the the
+
+809
+00:31:30,240 --> 00:31:34,399
+one you can see here so the graph
+
+810
+00:31:32,000 --> 00:31:36,880
+convolutional network the first truly
+
+811
+00:31:34,399 --> 00:31:38,399
+scalable network loosely inspired by
+
+812
+00:31:36,880 --> 00:31:41,360
+spectral method but basically it's
+
+813
+00:31:38,399 --> 00:31:44,960
+better to treat it as a as a as a
+
+814
+00:31:41,360 --> 00:31:47,440
+spatial method um and then um you have
+
+815
+00:31:44,960 --> 00:31:51,840
+graph attention network. Here you have
+
+816
+00:31:47,440 --> 00:31:54,000
+uh graph sage which uh did a further uh
+
+817
+00:31:51,840 --> 00:31:57,279
+step which improved the scalability by
+
+818
+00:31:54,000 --> 00:32:00,080
+just subsampling a set of nodes and only
+
+819
+00:31:57,279 --> 00:32:01,720
+doing these aggregations on top of of
+
+820
+00:32:00,080 --> 00:32:03,480
+those nodes.
+
+821
+00:32:01,720 --> 00:32:07,440
+Um
+
+822
+00:32:03,480 --> 00:32:09,840
+yeah maybe a quick um explanation here.
+
+823
+00:32:07,440 --> 00:32:12,159
+Um the the thing you do with spatial
+
+824
+00:32:09,840 --> 00:32:14,320
+genance so how it works is is really
+
+825
+00:32:12,159 --> 00:32:16,480
+easy to explain conceptually. You have a
+
+826
+00:32:14,320 --> 00:32:18,240
+certain node and you just take a look at
+
+827
+00:32:16,480 --> 00:32:20,640
+the neighbors of that node and all of
+
+828
+00:32:18,240 --> 00:32:22,960
+them have feature vectors, right? What
+
+829
+00:32:20,640 --> 00:32:25,760
+you do is you somehow combine them.
+
+830
+00:32:22,960 --> 00:32:28,159
+Maybe some mean average, maybe you weigh
+
+831
+00:32:25,760 --> 00:32:30,080
+them by the attention coefficients. You
+
+832
+00:32:28,159 --> 00:32:33,039
+combine them, you pass them through a
+
+833
+00:32:30,080 --> 00:32:35,360
+nonlinearity and you get the uh the the
+
+834
+00:32:33,039 --> 00:32:36,799
+the feature vector on the next level of
+
+835
+00:32:35,360 --> 00:32:38,399
+the graph neural network. And that's how
+
+836
+00:32:36,799 --> 00:32:40,480
+they do. You basically have bunch of
+
+837
+00:32:38,399 --> 00:32:43,440
+nodes. you process them by looking at
+
+838
+00:32:40,480 --> 00:32:45,840
+their neighbors and you you do that that
+
+839
+00:32:43,440 --> 00:32:48,480
+aggregation you do that an nonlinearity
+
+840
+00:32:45,840 --> 00:32:50,240
+and you are on the second level and gen
+
+841
+00:32:48,480 --> 00:32:53,200
+are usually shallow so you you'll see
+
+842
+00:32:50,240 --> 00:32:55,200
+two to three layers top uh compared to
+
+843
+00:32:53,200 --> 00:32:57,039
+CNN's which are usually deep and that's
+
+844
+00:32:55,200 --> 00:32:59,600
+a separate topic in and of itself you
+
+845
+00:32:57,039 --> 00:33:02,399
+can I'll I can link some uh really cool
+
+846
+00:32:59,600 --> 00:33:03,919
+blogs u and you can check that out for
+
+847
+00:33:02,399 --> 00:33:06,799
+yourself
+
+848
+00:33:03,919 --> 00:33:09,039
+okay I'll have to to jump in here and
+
+849
+00:33:06,799 --> 00:33:11,120
+hope you are happy with having that wrap
+
+850
+00:33:09,039 --> 00:33:12,640
+up your talk because we have to uh we
+
+851
+00:33:11,120 --> 00:33:16,600
+have to close unfortunately. Thanks
+
+852
+00:33:12,640 --> 00:33:16,600
+Alexa. Thank you.
+

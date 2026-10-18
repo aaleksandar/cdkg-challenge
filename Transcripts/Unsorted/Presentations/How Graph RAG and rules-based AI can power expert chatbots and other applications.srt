@@ -1,0 +1,2836 @@
+1
+00:00:02,639 --> 00:00:05,680
+hello right thanks very much for the
+
+2
+00:00:04,520 --> 00:00:09,559
+introduction
+
+3
+00:00:05,680 --> 00:00:12,400
+James uh so we're Nick Forman Cheno from
+
+4
+00:00:09,559 --> 00:00:14,599
+uh Oxford tantic Technologies and we're
+
+5
+00:00:12,400 --> 00:00:17,640
+very excited to give you um what's going
+
+6
+00:00:14,599 --> 00:00:20,320
+to be a live demo of uh our graph rag
+
+7
+00:00:17,640 --> 00:00:23,039
+with rdf Fox example
+
+8
+00:00:20,320 --> 00:00:24,359
+application so uh just a little
+
+9
+00:00:23,039 --> 00:00:26,400
+introduction on Oxford semantic
+
+10
+00:00:24,359 --> 00:00:28,720
+Technologies we were an AI Tech spun out
+
+11
+00:00:26,400 --> 00:00:33,000
+of the University of Oxford in
+
+12
+00:00:28,720 --> 00:00:34,960
+2016 with mission to uh commercialize
+
+13
+00:00:33,000 --> 00:00:36,920
+some leading research in the area field
+
+14
+00:00:34,960 --> 00:00:39,280
+of knowledge representation and
+
+15
+00:00:36,920 --> 00:00:42,920
+reasoning we did that with our Market
+
+16
+00:00:39,280 --> 00:00:44,719
+leading Reasoner ardia Fox we have
+
+17
+00:00:42,920 --> 00:00:48,480
+investment from Samsung V venture
+
+18
+00:00:44,719 --> 00:00:52,359
+capital and several 4100 and 14e 500
+
+19
+00:00:48,480 --> 00:00:54,680
+clients in our uh uh client group and
+
+20
+00:00:52,359 --> 00:00:57,199
+our mission is to help
+
+21
+00:00:54,680 --> 00:00:58,840
+organizations find answers to questions
+
+22
+00:00:57,199 --> 00:01:01,480
+that are both accurate and and to do it
+
+23
+00:00:58,840 --> 00:01:04,720
+quickly and we we do this by a com using
+
+24
+00:01:01,480 --> 00:01:07,880
+a combination of human knowledge data
+
+25
+00:01:04,720 --> 00:01:10,680
+and rules-based artificial intelligence
+
+26
+00:01:07,880 --> 00:01:12,600
+so I'm going to go explain in detail uh
+
+27
+00:01:10,680 --> 00:01:14,400
+what I mean by rules-based artificial
+
+28
+00:01:12,600 --> 00:01:16,640
+intelligence um but first of all we're
+
+29
+00:01:14,400 --> 00:01:18,000
+going to see the demo that uses it so at
+
+30
+00:01:16,640 --> 00:01:19,880
+this stage I'm going to hand over to
+
+31
+00:01:18,000 --> 00:01:25,320
+cheny and she's going to give us the
+
+32
+00:01:19,880 --> 00:01:25,320
+demo of the graph rag backed by
+
+33
+00:01:28,079 --> 00:01:33,640
+reasoning thank you Nick hi hi
+
+34
+00:01:30,640 --> 00:01:33,640
+everyone
+
+35
+00:01:33,720 --> 00:01:40,000
+um okay so this is the chatboard that we
+
+36
+00:01:36,840 --> 00:01:43,079
+created using llm with um also knowledge
+
+37
+00:01:40,000 --> 00:01:47,439
+graft so let's start by having the
+
+38
+00:01:43,079 --> 00:01:47,439
+chatboard introduce itself like what it
+
+39
+00:01:50,840 --> 00:01:57,719
+does okay so we asked the chatbot what
+
+40
+00:01:53,880 --> 00:01:59,079
+do it do because obviously we have that
+
+41
+00:01:57,719 --> 00:02:02,240
+in the headline saying that this is a
+
+42
+00:01:59,079 --> 00:02:04,039
+recipe chat box but I think it would be
+
+43
+00:02:02,240 --> 00:02:06,200
+uh useful if we know what kind of
+
+44
+00:02:04,039 --> 00:02:07,880
+question we can ask so here we go we
+
+45
+00:02:06,200 --> 00:02:10,119
+have an answer from the chat boot saying
+
+46
+00:02:07,880 --> 00:02:12,239
+that I'm here to help you find recipes
+
+47
+00:02:10,119 --> 00:02:13,959
+based on your preferences whether you're
+
+48
+00:02:12,239 --> 00:02:16,120
+looking for meals with specific
+
+49
+00:02:13,959 --> 00:02:17,360
+ingredients that Tre requirements or
+
+50
+00:02:16,120 --> 00:02:19,360
+cooking time I can provide
+
+51
+00:02:17,360 --> 00:02:21,480
+recommendations or even count how many
+
+52
+00:02:19,360 --> 00:02:23,440
+recipes meet your criteria if you
+
+53
+00:02:21,480 --> 00:02:25,200
+already have a recipe in mind I can give
+
+54
+00:02:23,440 --> 00:02:28,440
+you the cooking instruction for it how
+
+55
+00:02:25,200 --> 00:02:30,720
+can I assist you today okay so let's
+
+56
+00:02:28,440 --> 00:02:34,360
+move on to our second question let's ask
+
+57
+00:02:30,720 --> 00:02:34,360
+how many recipes it
+
+58
+00:02:38,159 --> 00:02:43,519
+has so we are having we are using
+
+59
+00:02:41,200 --> 00:02:45,720
+recipes as the database sits behind it
+
+60
+00:02:43,519 --> 00:02:48,680
+so this question will return the number
+
+61
+00:02:45,720 --> 00:02:50,760
+of recipe we have in our database so we
+
+62
+00:02:48,680 --> 00:02:54,360
+have the total of
+
+63
+00:02:50,760 --> 00:02:56,239
+5,445 recipe in the database and now
+
+64
+00:02:54,360 --> 00:02:59,319
+let's move on to something more
+
+65
+00:02:56,239 --> 00:03:02,360
+interesting we ask uh let's ask for a
+
+66
+00:02:59,319 --> 00:03:02,360
+recipe B based on some
+
+67
+00:03:10,720 --> 00:03:15,239
+ingredients so let's say today I feel
+
+68
+00:03:13,080 --> 00:03:17,280
+like having something that has fish and
+
+69
+00:03:15,239 --> 00:03:19,760
+lemon so I ask the chatboard this
+
+70
+00:03:17,280 --> 00:03:21,680
+question and after I send this question
+
+71
+00:03:19,760 --> 00:03:23,640
+there will be a series of action running
+
+72
+00:03:21,680 --> 00:03:25,599
+behind the scene for example calling the
+
+73
+00:03:23,640 --> 00:03:30,280
+large language model calling the vector
+
+74
+00:03:25,599 --> 00:03:33,799
+database or um using our um R forx to
+
+75
+00:03:30,280 --> 00:03:36,439
+return a result for us so here we go um
+
+76
+00:03:33,799 --> 00:03:38,560
+the chat Bo says that he it has found a
+
+77
+00:03:36,439 --> 00:03:40,959
+great recipe for us that uses both fish
+
+78
+00:03:38,560 --> 00:03:43,400
+and lemon it is called trout with Cris
+
+79
+00:03:40,959 --> 00:03:47,360
+bacon crust and then some description
+
+80
+00:03:43,400 --> 00:03:50,040
+for the um recipe so as you can see we
+
+81
+00:03:47,360 --> 00:03:53,200
+are asking for fish recipe and then the
+
+82
+00:03:50,040 --> 00:03:56,480
+chatboard return um a recipe with trout
+
+83
+00:03:53,200 --> 00:03:57,959
+so so when we say that we use um LM to
+
+84
+00:03:56,480 --> 00:03:59,840
+create this chatboard naturally you
+
+85
+00:03:57,959 --> 00:04:02,840
+would think that okay it it is not
+
+86
+00:03:59,840 --> 00:04:05,680
+surprising that LM no trouts is a kind
+
+87
+00:04:02,840 --> 00:04:08,920
+of fish but in our case it is not we are
+
+88
+00:04:05,680 --> 00:04:10,879
+using an ontology behind the scene to um
+
+89
+00:04:08,920 --> 00:04:13,200
+support Aria Fox to do some kind of
+
+90
+00:04:10,879 --> 00:04:15,680
+reasoning and and then we get this
+
+91
+00:04:13,200 --> 00:04:18,720
+result but the details we will explain
+
+92
+00:04:15,680 --> 00:04:21,239
+it later and now let's move on to
+
+93
+00:04:18,720 --> 00:04:23,759
+another question maybe um I don't quite
+
+94
+00:04:21,239 --> 00:04:25,520
+like this recipe so I want to know is
+
+95
+00:04:23,759 --> 00:04:27,639
+there any other recipe that uses fish
+
+96
+00:04:25,520 --> 00:04:30,880
+and lemon so I can ask another question
+
+97
+00:04:27,639 --> 00:04:30,880
+like this
+
+98
+00:04:35,680 --> 00:04:40,199
+yeah so um we just ask can you recommend
+
+99
+00:04:38,440 --> 00:04:42,440
+another one so this time we don't have
+
+100
+00:04:40,199 --> 00:04:44,919
+to tell the chat Bo again which recipes
+
+101
+00:04:42,440 --> 00:04:47,880
+we are looking for and hopefully it will
+
+102
+00:04:44,919 --> 00:04:49,320
+still know what kind of recipes we are
+
+103
+00:04:47,880 --> 00:04:51,240
+what kind of recipe and what kind of
+
+104
+00:04:49,320 --> 00:04:55,000
+ingredients we are looking for and here
+
+105
+00:04:51,240 --> 00:05:00,039
+we go we have this um new recipe it is
+
+106
+00:04:55,000 --> 00:05:01,600
+called Salad Nas Nas Nas okay and yeah
+
+107
+00:05:00,039 --> 00:05:05,199
+and then followed by some description
+
+108
+00:05:01,600 --> 00:05:07,400
+for the recipe and okay that's great and
+
+109
+00:05:05,199 --> 00:05:09,720
+so now maybe I really like this recipe
+
+110
+00:05:07,400 --> 00:05:12,880
+by the look of the description um using
+
+111
+00:05:09,720 --> 00:05:16,000
+tuna and lemon so okay now I want to
+
+112
+00:05:12,880 --> 00:05:18,800
+know the instruction and I can also ask
+
+113
+00:05:16,000 --> 00:05:18,800
+the chat B like
+
+114
+00:05:23,360 --> 00:05:28,479
+this and again we don't have to tell the
+
+115
+00:05:26,199 --> 00:05:30,360
+chat board which um recipes we are
+
+116
+00:05:28,479 --> 00:05:32,840
+looking for because we have thought the
+
+117
+00:05:30,360 --> 00:05:36,720
+chat history behind the scen so now it
+
+118
+00:05:32,840 --> 00:05:39,759
+finds the um cooking recipe for us oops
+
+119
+00:05:36,720 --> 00:05:39,759
+there's something wrong with
+
+120
+00:05:41,280 --> 00:05:47,400
+this so this is one of the time when LM
+
+121
+00:05:45,319 --> 00:05:51,120
+get hallucinated because it is supposed
+
+122
+00:05:47,400 --> 00:05:54,360
+to return the um cooking instruction for
+
+123
+00:05:51,120 --> 00:05:56,240
+the salad Nas but somehow it just
+
+124
+00:05:54,360 --> 00:05:59,639
+returned something else this time let's
+
+125
+00:05:56,240 --> 00:05:59,639
+try it again
+
+126
+00:06:10,280 --> 00:06:13,880
+hopefully this time it will get it
+
+127
+00:06:14,000 --> 00:06:19,680
+right ah no it didn't get it right so
+
+128
+00:06:17,199 --> 00:06:20,720
+yeah so this is one of the time when llm
+
+129
+00:06:19,680 --> 00:06:22,919
+get
+
+130
+00:06:20,720 --> 00:06:25,960
+hallucinated actually it is supposed to
+
+131
+00:06:22,919 --> 00:06:29,000
+return the um cooking recipe for this
+
+132
+00:06:25,960 --> 00:06:32,039
+salad but it didn't so uh that's not
+
+133
+00:06:29,000 --> 00:06:33,840
+great but okay now let's move on to the
+
+134
+00:06:32,039 --> 00:06:35,440
+next question we add a little bit of
+
+135
+00:06:33,840 --> 00:06:37,560
+challenge for the chat Bo let's see what
+
+136
+00:06:35,440 --> 00:06:40,039
+it does so we are asking for the
+
+137
+00:06:37,560 --> 00:06:42,120
+quickest recipe um that it has that
+
+138
+00:06:40,039 --> 00:06:44,720
+contain the the ingredient that we want
+
+139
+00:06:42,120 --> 00:06:47,720
+fish and lemon and also we want it to be
+
+140
+00:06:44,720 --> 00:06:47,720
+dafree
+
+141
+00:06:59,720 --> 00:07:04,560
+okay so now on top of our original
+
+142
+00:07:02,240 --> 00:07:07,120
+request for a recipe that contain fish
+
+143
+00:07:04,560 --> 00:07:09,520
+and lemon we add another two condition
+
+144
+00:07:07,120 --> 00:07:12,440
+the quickest recipe and also dairyfree
+
+145
+00:07:09,520 --> 00:07:15,680
+recipe and in order for this to happen
+
+146
+00:07:12,440 --> 00:07:17,360
+it requires reasoning from AA Fox and
+
+147
+00:07:15,680 --> 00:07:20,720
+this will be explained later in the
+
+148
+00:07:17,360 --> 00:07:22,639
+slides and here we go we have um an
+
+149
+00:07:20,720 --> 00:07:24,080
+answer from the chatboard saying that
+
+150
+00:07:22,639 --> 00:07:26,039
+based on your preferences I would
+
+151
+00:07:24,080 --> 00:07:29,080
+recommend the lemon and pepper fish with
+
+152
+00:07:26,039 --> 00:07:31,599
+roasted vetch recipe and then follow by
+
+153
+00:07:29,080 --> 00:07:33,960
+the description for the recipe and plus
+
+154
+00:07:31,599 --> 00:07:36,360
+it only takes 2 minutes to cook making
+
+155
+00:07:33,960 --> 00:07:39,440
+it the quickest recipe so now let's have
+
+156
+00:07:36,360 --> 00:07:41,520
+a look at the actual um web page of this
+
+157
+00:07:39,440 --> 00:07:44,479
+recipe so this is the lemon and pepper
+
+158
+00:07:41,520 --> 00:07:47,800
+fish with roasted veg and then for cook
+
+159
+00:07:44,479 --> 00:07:50,479
+time it only takes 2 minutes and let's
+
+160
+00:07:47,800 --> 00:07:54,479
+look at the ingredient we have pepper
+
+161
+00:07:50,479 --> 00:07:57,039
+onion coat garlic oregano um Olive
+
+162
+00:07:54,479 --> 00:08:00,039
+vegetable oil breadcrumb lemon
+
+163
+00:07:57,039 --> 00:08:02,639
+peppercorn fish filet plain flour medium
+
+164
+00:08:00,039 --> 00:08:05,720
+egg egg is actually not a daily product
+
+165
+00:08:02,639 --> 00:08:07,520
+so this is actually looking good it fits
+
+166
+00:08:05,720 --> 00:08:09,000
+all our requirement and we also have
+
+167
+00:08:07,520 --> 00:08:13,159
+instruction here if you really want to
+
+168
+00:08:09,000 --> 00:08:14,879
+make it and yeah so let's move uh back
+
+169
+00:08:13,159 --> 00:08:18,280
+to our chat
+
+170
+00:08:14,879 --> 00:08:22,639
+board and so now let's try our last
+
+171
+00:08:18,280 --> 00:08:24,919
+question which is to ask um the llm or
+
+172
+00:08:22,639 --> 00:08:26,840
+the chat board to count the re the
+
+173
+00:08:24,919 --> 00:08:28,720
+number of recipes that fulfill our
+
+174
+00:08:26,840 --> 00:08:32,640
+requirement if you remember in the
+
+175
+00:08:28,720 --> 00:08:34,800
+beginning of the the um chat we asked
+
+176
+00:08:32,640 --> 00:08:36,680
+the chat B how many recipe it has in
+
+177
+00:08:34,800 --> 00:08:39,399
+total so now we are kind of narrowing
+
+178
+00:08:36,680 --> 00:08:41,640
+down um the range let's see what it
+
+179
+00:08:39,399 --> 00:08:41,640
+gives
+
+180
+00:08:50,920 --> 00:08:57,080
+us okay so hopefully it will find um a
+
+181
+00:08:54,959 --> 00:08:59,440
+recip uh the number of recipes that are
+
+182
+00:08:57,080 --> 00:09:02,200
+daily free and also contain fish and Le
+
+183
+00:08:59,440 --> 00:09:05,000
+lemon Forest so it says that the system
+
+184
+00:09:02,200 --> 00:09:08,519
+has 82 recipes that m match your
+
+185
+00:09:05,000 --> 00:09:10,720
+specific condition so I've had the query
+
+186
+00:09:08,519 --> 00:09:14,440
+uh open up in the r forx console here
+
+187
+00:09:10,720 --> 00:09:17,360
+that I'm showing you so this is the
+
+188
+00:09:14,440 --> 00:09:19,880
+um this is a sparkle query and we have
+
+189
+00:09:17,360 --> 00:09:23,560
+dairyfree recipe here and then we have
+
+190
+00:09:19,880 --> 00:09:26,839
+the II for fish and also II for lemon
+
+191
+00:09:23,560 --> 00:09:31,720
+and when we run it the number if is 82
+
+192
+00:09:26,839 --> 00:09:34,560
+so it gets our um required and right and
+
+193
+00:09:31,720 --> 00:09:37,040
+yeah so this is the end of my chatboard
+
+194
+00:09:34,560 --> 00:09:40,320
+demonstration I will hand this back to
+
+195
+00:09:37,040 --> 00:09:44,079
+Nick thanks teny and well done for being
+
+196
+00:09:40,320 --> 00:09:44,079
+brave enough to run with an llm in your
+
+197
+00:09:47,920 --> 00:09:53,640
+demo so what did we see there we saw um
+
+198
+00:09:51,600 --> 00:09:57,720
+there's a convenient um conversational
+
+199
+00:09:53,640 --> 00:09:59,839
+based chatbot um user interface um so we
+
+200
+00:09:57,720 --> 00:10:02,440
+were able to ask question questions and
+
+201
+00:09:59,839 --> 00:10:04,360
+then ask follow-up questions not perfect
+
+202
+00:10:02,440 --> 00:10:06,120
+success and this is you know well
+
+203
+00:10:04,360 --> 00:10:09,560
+established feature of llms that you'll
+
+204
+00:10:06,120 --> 00:10:10,560
+all know well by now uh also you
+
+205
+00:10:09,560 --> 00:10:13,320
+probably picked up the fact that we
+
+206
+00:10:10,560 --> 00:10:15,399
+weren't just um the llm wasn't answering
+
+207
+00:10:13,320 --> 00:10:17,399
+the recipes from its training data it
+
+208
+00:10:15,399 --> 00:10:19,720
+was actually you know interrogating a
+
+209
+00:10:17,399 --> 00:10:22,600
+specific Knowledge Graph in this case it
+
+210
+00:10:19,720 --> 00:10:26,079
+was the BBC good food uh Knowledge Graph
+
+211
+00:10:22,600 --> 00:10:28,000
+so we imported um the recipes the
+
+212
+00:10:26,079 --> 00:10:30,839
+ingredients they have the cooking
+
+213
+00:10:28,000 --> 00:10:33,079
+instructions from that that data set and
+
+214
+00:10:30,839 --> 00:10:34,920
+presented that for the uh and the
+
+215
+00:10:33,079 --> 00:10:37,600
+chatbot is to to use that as a data
+
+216
+00:10:34,920 --> 00:10:39,000
+source so that we're using a rag
+
+217
+00:10:37,600 --> 00:10:41,839
+approach for that which we've seen
+
+218
+00:10:39,000 --> 00:10:44,480
+earlier tonight so this is um you know
+
+219
+00:10:41,839 --> 00:10:45,920
+llms and rag so far but there's some
+
+220
+00:10:44,480 --> 00:10:48,120
+extra ingredients here which weren't
+
+221
+00:10:45,920 --> 00:10:49,959
+quite so obvious which cheny made
+
+222
+00:10:48,120 --> 00:10:53,200
+reference to so first of all there was
+
+223
+00:10:49,959 --> 00:10:55,680
+some flexibility over the terminology so
+
+224
+00:10:53,200 --> 00:10:58,480
+um using taxonomical information so we
+
+225
+00:10:55,680 --> 00:11:01,040
+were able to ask for uh fish as an
+
+226
+00:10:58,480 --> 00:11:02,800
+ingredient and we got back results with
+
+227
+00:11:01,040 --> 00:11:04,120
+salmon I think there was one with trout
+
+228
+00:11:02,800 --> 00:11:06,480
+various times when we've run this we've
+
+229
+00:11:04,120 --> 00:11:08,000
+had mackerel so there's an understanding
+
+230
+00:11:06,480 --> 00:11:09,720
+there that you know of the taxonomy of
+
+231
+00:11:08,000 --> 00:11:12,360
+foods and we can be more or less
+
+232
+00:11:09,720 --> 00:11:14,160
+specific in what we ask for and that's
+
+233
+00:11:12,360 --> 00:11:15,880
+actually back backed by Ria Fox's
+
+234
+00:11:14,160 --> 00:11:19,040
+reasoning and we'll going into it in a
+
+235
+00:11:15,880 --> 00:11:21,440
+bit more detail shortly so well yeah
+
+236
+00:11:19,040 --> 00:11:23,639
+let's have a a look on this uh we've got
+
+237
+00:11:21,440 --> 00:11:28,279
+the slides first I think so we go back
+
+238
+00:11:23,639 --> 00:11:31,800
+to those um we um then we also saw that
+
+239
+00:11:28,279 --> 00:11:33,200
+there was these very free uh and
+
+240
+00:11:31,800 --> 00:11:36,160
+vegetarian things like that we can add
+
+241
+00:11:33,200 --> 00:11:38,399
+also with reasoning so to go back a bit
+
+242
+00:11:36,160 --> 00:11:41,399
+in history before we had this chatbot
+
+243
+00:11:38,399 --> 00:11:44,200
+based ver version of this we had a
+
+244
+00:11:41,399 --> 00:11:46,839
+semantic search demo that that used the
+
+245
+00:11:44,200 --> 00:11:48,880
+same uh data set where the requirement
+
+246
+00:11:46,839 --> 00:11:52,200
+was again to find recipes by ingredients
+
+247
+00:11:48,880 --> 00:11:54,360
+to included and excluded and culinary
+
+248
+00:11:52,200 --> 00:11:57,000
+preferences um and we exposed that with
+
+249
+00:11:54,360 --> 00:11:59,720
+a faceted search so the user had to you
+
+250
+00:11:57,000 --> 00:12:01,160
+know click and choose and see find the
+
+251
+00:11:59,720 --> 00:12:03,040
+uh attributes the facets that were
+
+252
+00:12:01,160 --> 00:12:06,360
+important to them over there and that
+
+253
+00:12:03,040 --> 00:12:09,360
+was based on taking the knowledge graph
+
+254
+00:12:06,360 --> 00:12:13,199
+loading into Aria Fox using a public
+
+255
+00:12:09,360 --> 00:12:15,199
+taxonomy um for the description of food
+
+256
+00:12:13,199 --> 00:12:17,120
+so that was a representing the domain
+
+257
+00:12:15,199 --> 00:12:19,320
+knowledge about food which ingredients
+
+258
+00:12:17,120 --> 00:12:21,199
+or in which categories and so on uh and
+
+259
+00:12:19,320 --> 00:12:25,120
+we tagged up the ingredients that were
+
+260
+00:12:21,199 --> 00:12:26,600
+in the uh recipes data with with respect
+
+261
+00:12:25,120 --> 00:12:28,839
+to the terms from that
+
+262
+00:12:26,600 --> 00:12:30,680
+taxonomy and then we def defined some
+
+263
+00:12:28,839 --> 00:12:34,959
+addition or Advanced reasoning for
+
+264
+00:12:30,680 --> 00:12:38,040
+defining high level culinary Concepts um
+
+265
+00:12:34,959 --> 00:12:41,880
+so yeah here's a little picture of the
+
+266
+00:12:38,040 --> 00:12:44,320
+taxonomy so you know we've got what
+
+267
+00:12:41,880 --> 00:12:47,720
+we've imported encodes the knowledge
+
+268
+00:12:44,320 --> 00:12:49,399
+that for example salmon is a type of
+
+269
+00:12:47,720 --> 00:12:50,839
+fresh fish which is a type of fish and
+
+270
+00:12:49,399 --> 00:12:54,199
+we TR Trace that back up to fish and
+
+271
+00:12:50,839 --> 00:12:56,079
+seafood so when this is how uh we are
+
+272
+00:12:54,199 --> 00:12:58,480
+able to ask questions you know at
+
+273
+00:12:56,079 --> 00:13:00,160
+different levels of the taxonomy the
+
+274
+00:12:58,480 --> 00:13:01,680
+actual reason
+
+275
+00:13:00,160 --> 00:13:05,600
+make sure that all of these ingredients
+
+276
+00:13:01,680 --> 00:13:07,680
+are included so let's go over to the
+
+277
+00:13:05,600 --> 00:13:10,560
+idea Fox console so here's an
+
+278
+00:13:07,680 --> 00:13:13,000
+example so this is our Explorer you can
+
+279
+00:13:10,560 --> 00:13:15,959
+see the nodes in represented as these
+
+280
+00:13:13,000 --> 00:13:18,639
+rectangles and the edges by the arrows
+
+281
+00:13:15,959 --> 00:13:22,320
+um but not we've got the recipe here
+
+282
+00:13:18,639 --> 00:13:25,000
+which is a Cass recipe and it has cbass
+
+283
+00:13:22,320 --> 00:13:27,480
+as an ingredient um but not all of these
+
+284
+00:13:25,000 --> 00:13:30,040
+edges are equal so some of them come
+
+285
+00:13:27,480 --> 00:13:31,920
+from the original data set the the BBC
+
+286
+00:13:30,040 --> 00:13:34,040
+good food some of them come from
+
+287
+00:13:31,920 --> 00:13:36,000
+reasoning and if I turn the Highlight
+
+288
+00:13:34,040 --> 00:13:38,240
+reasoning feature on the ones that were
+
+289
+00:13:36,000 --> 00:13:39,480
+there originally Fade to the background
+
+290
+00:13:38,240 --> 00:13:42,880
+and the ones that have been added
+
+291
+00:13:39,480 --> 00:13:46,079
+through uh reasoning uh are highlighted
+
+292
+00:13:42,880 --> 00:13:49,240
+and so we can see now what how when we
+
+293
+00:13:46,079 --> 00:13:53,000
+interrogate this the llm is able to find
+
+294
+00:13:49,240 --> 00:13:53,000
+this recipe as a fish
+
+295
+00:13:53,440 --> 00:13:59,320
+recipe so that's not the only place
+
+296
+00:13:56,199 --> 00:14:01,360
+we've used reasoning we have also use
+
+297
+00:13:59,320 --> 00:14:03,399
+these rule-based enrichments to Define
+
+298
+00:14:01,360 --> 00:14:07,279
+Concepts like a vegetarian meal or
+
+299
+00:14:03,399 --> 00:14:09,120
+dairyfree meal so vegetarian is a recip
+
+300
+00:14:07,279 --> 00:14:12,600
+is vegetarian if it contains no meat or
+
+301
+00:14:09,120 --> 00:14:14,759
+fish so this is using uh negation in
+
+302
+00:14:12,600 --> 00:14:18,639
+ideia Fox which is you know one of our
+
+303
+00:14:14,759 --> 00:14:21,880
+unique uh Powers the uh absence of
+
+304
+00:14:18,639 --> 00:14:24,759
+information is used to to conclude extra
+
+305
+00:14:21,880 --> 00:14:28,279
+information so let's have a look at that
+
+306
+00:14:24,759 --> 00:14:30,800
+so I think if I skip along to this tab
+
+307
+00:14:28,279 --> 00:14:33,079
+so here we see the recipe that um was
+
+308
+00:14:30,800 --> 00:14:35,720
+the fastest that we ended up with uh
+
+309
+00:14:33,079 --> 00:14:38,800
+with it surrounded by its ingredients um
+
+310
+00:14:35,720 --> 00:14:41,279
+and we've got this we additional tag on
+
+311
+00:14:38,800 --> 00:14:44,199
+here saying that it's a dairyfree recipe
+
+312
+00:14:41,279 --> 00:14:47,480
+once more we can highlight that that's
+
+313
+00:14:44,199 --> 00:14:49,959
+uh that that dairyfree categorization of
+
+314
+00:14:47,480 --> 00:14:51,959
+this recipe has been added by reasoning
+
+315
+00:14:49,959 --> 00:14:53,680
+and because these are reasoned Edge we
+
+316
+00:14:51,959 --> 00:14:57,000
+can actually ask a fox for an
+
+317
+00:14:53,680 --> 00:14:58,839
+explanation of that um so if I ask for
+
+318
+00:14:57,000 --> 00:15:01,000
+that what's the explanation of that edge
+
+319
+00:14:58,839 --> 00:15:05,120
+so so this is the explain interface in
+
+320
+00:15:01,000 --> 00:15:07,000
+ARF Fox so at the top of the screen is
+
+321
+00:15:05,120 --> 00:15:08,959
+an expression of the fact that we want
+
+322
+00:15:07,000 --> 00:15:12,120
+to have explained the fact that the
+
+323
+00:15:08,959 --> 00:15:14,639
+lemon pepper fish roasted veg recipe is
+
+324
+00:15:12,120 --> 00:15:17,240
+a dairyfree recipe you know tell us Aria
+
+325
+00:15:14,639 --> 00:15:19,959
+Fox why you think that um and what idea
+
+326
+00:15:17,240 --> 00:15:22,279
+Fox gives us is uh this view a proof
+
+327
+00:15:19,959 --> 00:15:24,759
+tree uh which has all the supporting
+
+328
+00:15:22,279 --> 00:15:26,880
+information to went went into this and
+
+329
+00:15:24,759 --> 00:15:30,079
+down here we can see the actual rule in
+
+330
+00:15:26,880 --> 00:15:32,639
+detail um so you can read these rules
+
+331
+00:15:30,079 --> 00:15:35,839
+it's um first of always comes the
+
+332
+00:15:32,639 --> 00:15:39,480
+conclusions this is called the head um
+
+333
+00:15:35,839 --> 00:15:43,519
+so with a recipe is a dairyfree recipe
+
+334
+00:15:39,480 --> 00:15:45,120
+if the following things uh hold so first
+
+335
+00:15:43,519 --> 00:15:47,560
+of all it has to be a recipe that's a
+
+336
+00:15:45,120 --> 00:15:49,880
+no-brainer but here's the negation part
+
+337
+00:15:47,560 --> 00:15:52,120
+so we have we look for all of the
+
+338
+00:15:49,880 --> 00:15:55,600
+ingredients of that recipe using the has
+
+339
+00:15:52,120 --> 00:15:58,240
+ingredient match uh predicate and we
+
+340
+00:15:55,600 --> 00:16:00,480
+check that none of those ingredients is
+
+341
+00:15:58,240 --> 00:16:02,839
+a non Dair free
+
+342
+00:16:00,480 --> 00:16:05,240
+ingredient and if that if that's the
+
+343
+00:16:02,839 --> 00:16:07,680
+case so we can't find any uh non-dairy
+
+344
+00:16:05,240 --> 00:16:09,959
+free ingredients then we can conclude
+
+345
+00:16:07,680 --> 00:16:12,959
+that the recipe is dairy free so this is
+
+346
+00:16:09,959 --> 00:16:14,759
+like very useful we can get um not only
+
+347
+00:16:12,959 --> 00:16:16,880
+are we getting the rag approach telling
+
+348
+00:16:14,759 --> 00:16:18,360
+us allowing us to look back into the
+
+349
+00:16:16,880 --> 00:16:19,959
+graph so we can go and corroborate the
+
+350
+00:16:18,360 --> 00:16:22,079
+information but we can come into the
+
+351
+00:16:19,959 --> 00:16:24,000
+knowledge graph and see what's the
+
+352
+00:16:22,079 --> 00:16:26,319
+reasoning that's supporting any of these
+
+353
+00:16:24,000 --> 00:16:30,639
+uh derived
+
+354
+00:16:26,319 --> 00:16:32,680
+conclusions so how do we
+
+355
+00:16:30,639 --> 00:16:35,399
+so yeah the the the extra step was to
+
+356
+00:16:32,680 --> 00:16:37,720
+get to the gra graph uh rag approach so
+
+357
+00:16:35,399 --> 00:16:40,120
+we took the recipe chatbot which you saw
+
+358
+00:16:37,720 --> 00:16:42,360
+a vector database um so that we could
+
+359
+00:16:40,120 --> 00:16:44,959
+transform the users um search term you
+
+360
+00:16:42,360 --> 00:16:49,000
+know term key terms in the sentences
+
+361
+00:16:44,959 --> 00:16:50,759
+into Iris uh llm obviously to do entity
+
+362
+00:16:49,000 --> 00:16:53,240
+extraction function calling and question
+
+363
+00:16:50,759 --> 00:16:54,959
+answering and then finally Aria Fox
+
+364
+00:16:53,240 --> 00:16:59,000
+which is bringing the reasoning and the
+
+365
+00:16:54,959 --> 00:17:00,920
+sparkle API the sparkle query evaluation
+
+366
+00:16:59,000 --> 00:17:03,440
+have we look we could look at just one
+
+367
+00:17:00,920 --> 00:17:04,919
+flow through this uh Journey how how we
+
+368
+00:17:03,440 --> 00:17:07,400
+produce the answers so the user has
+
+369
+00:17:04,919 --> 00:17:09,720
+asked can you recommend a recipe that
+
+370
+00:17:07,400 --> 00:17:13,079
+uses fish and Lemons with fish that uses
+
+371
+00:17:09,720 --> 00:17:15,280
+lemons um before any of this is
+
+372
+00:17:13,079 --> 00:17:18,799
+happening ahead of time we load up idea
+
+373
+00:17:15,280 --> 00:17:20,959
+Fox with uh the all the facts and the
+
+374
+00:17:18,799 --> 00:17:23,199
+rules that we want it to apply to those
+
+375
+00:17:20,959 --> 00:17:25,439
+facts and the reasoning takes place as
+
+376
+00:17:23,199 --> 00:17:27,120
+soon as we load that data so as soon as
+
+377
+00:17:25,439 --> 00:17:29,520
+we've got the the D the data and the
+
+378
+00:17:27,120 --> 00:17:30,960
+rules together inside idea Fox it
+
+379
+00:17:29,520 --> 00:17:33,320
+calculates all of the logical
+
+380
+00:17:30,960 --> 00:17:35,400
+implications of that rule set applied to
+
+381
+00:17:33,320 --> 00:17:37,919
+that D those data so that the next time
+
+382
+00:17:35,400 --> 00:17:41,559
+we speak to it we ask any queries we
+
+383
+00:17:37,919 --> 00:17:45,640
+query the fully expanded
+
+384
+00:17:41,559 --> 00:17:47,559
+set so yeah when we actually come to the
+
+385
+00:17:45,640 --> 00:17:49,880
+user running the query though the first
+
+386
+00:17:47,559 --> 00:17:51,919
+step is entity extraction um we send
+
+387
+00:17:49,880 --> 00:17:54,440
+that to the llm it identifies fish and
+
+388
+00:17:51,919 --> 00:17:56,679
+lemon as being key terms in the user's
+
+389
+00:17:54,440 --> 00:17:58,679
+questions we then send those to a vector
+
+390
+00:17:56,679 --> 00:18:01,480
+database to turn them into Iris so that
+
+391
+00:17:58,679 --> 00:18:03,159
+we can speak to rdf Fox about those
+
+392
+00:18:01,480 --> 00:18:05,520
+things directly because it knows Iris
+
+393
+00:18:03,159 --> 00:18:07,919
+and rdf and then we come to function
+
+394
+00:18:05,520 --> 00:18:10,120
+calling so we did originally when we
+
+395
+00:18:07,919 --> 00:18:11,760
+were playing around with this think well
+
+396
+00:18:10,120 --> 00:18:15,159
+you know llms are pretty good at
+
+397
+00:18:11,760 --> 00:18:17,520
+translation we could just get the llm to
+
+398
+00:18:15,159 --> 00:18:19,799
+basically translate the user's query
+
+399
+00:18:17,520 --> 00:18:23,080
+intent into Sparkle for us and that did
+
+400
+00:18:19,799 --> 00:18:26,000
+actually work so gp4 I think was able to
+
+401
+00:18:23,080 --> 00:18:27,679
+give pretty good reliably good uh
+
+402
+00:18:26,000 --> 00:18:30,480
+Sparkle queries matching the user's
+
+403
+00:18:27,679 --> 00:18:32,280
+intent it just took a long time it took
+
+404
+00:18:30,480 --> 00:18:33,880
+like 40 seconds just for that step and
+
+405
+00:18:32,280 --> 00:18:36,080
+that's only one step so this is not this
+
+406
+00:18:33,880 --> 00:18:38,960
+is longer than a user would want to wait
+
+407
+00:18:36,080 --> 00:18:40,919
+if we downgraded to three 3.5 it was
+
+408
+00:18:38,960 --> 00:18:43,480
+quick enough but the this query wasn't
+
+409
+00:18:40,919 --> 00:18:44,760
+good enough so instead we followed the
+
+410
+00:18:43,480 --> 00:18:46,760
+you know the approach of function
+
+411
+00:18:44,760 --> 00:18:49,480
+calling which we saw in Adam's talk as
+
+412
+00:18:46,760 --> 00:18:51,760
+well um so projecting down the knowledge
+
+413
+00:18:49,480 --> 00:18:54,120
+in uh the knowledge graph into a set of
+
+414
+00:18:51,760 --> 00:18:57,480
+functions and presenting them to the llm
+
+415
+00:18:54,120 --> 00:18:59,799
+so that it could tool select um so to
+
+416
+00:18:57,480 --> 00:19:02,559
+answer this particular query
+
+417
+00:18:59,799 --> 00:19:05,080
+um the the llm would select a rule which
+
+418
+00:19:02,559 --> 00:19:08,039
+expands to this sparkle query so we can
+
+419
+00:19:05,080 --> 00:19:11,840
+see here that we've got um it's a it's a
+
+420
+00:19:08,039 --> 00:19:14,320
+recipe we've got um the iris for fish
+
+421
+00:19:11,840 --> 00:19:15,960
+and lemon that we were extracted earlier
+
+422
+00:19:14,320 --> 00:19:18,240
+and we limit it to one to get back one
+
+423
+00:19:15,960 --> 00:19:21,039
+suggestion we get the in this in this
+
+424
+00:19:18,240 --> 00:19:23,120
+example we get um the trout crisp Bon
+
+425
+00:19:21,039 --> 00:19:26,039
+bacon crust recipe and then we finally
+
+426
+00:19:23,120 --> 00:19:29,440
+send that back to the llm to compose
+
+427
+00:19:26,039 --> 00:19:31,520
+that into a nice piece of Pros for the
+
+428
+00:19:29,440 --> 00:19:33,679
+user and we do that and the chat
+
+429
+00:19:31,520 --> 00:19:37,400
+continues the next time round in this
+
+430
+00:19:33,679 --> 00:19:39,200
+chat the we the llm selects the function
+
+431
+00:19:37,400 --> 00:19:42,400
+for getting the instructions for a
+
+432
+00:19:39,200 --> 00:19:46,400
+specific recipe so that's the uh graph
+
+433
+00:19:42,400 --> 00:19:49,120
+rag with idea Fox demo um in conclusion
+
+434
+00:19:46,400 --> 00:19:51,440
+the the the reasoning is we find is a
+
+435
+00:19:49,120 --> 00:19:53,679
+powerful force multiplier for graph rag
+
+436
+00:19:51,440 --> 00:19:55,960
+system it gives greater control of a
+
+437
+00:19:53,679 --> 00:19:57,880
+factual content because you can expand
+
+438
+00:19:55,960 --> 00:20:00,000
+not only can control the knowledge graph
+
+439
+00:19:57,880 --> 00:20:02,240
+but then you can put your human
+
+440
+00:20:00,000 --> 00:20:04,480
+expertise expressed as rules into the
+
+441
+00:20:02,240 --> 00:20:07,280
+system and have all that that enrich
+
+442
+00:20:04,480 --> 00:20:11,600
+data available and then thereby
+
+443
+00:20:07,280 --> 00:20:13,880
+leveraging expert human knowledge um so
+
+444
+00:20:11,600 --> 00:20:16,720
+uh thanks very much for listening I be
+
+445
+00:20:13,880 --> 00:20:18,360
+happy to answer any questions so CH C
+
+446
+00:20:16,720 --> 00:20:20,840
+and while we're doing that if anyone
+
+447
+00:20:18,360 --> 00:20:23,000
+wants to download aox for free or sign
+
+448
+00:20:20,840 --> 00:20:25,720
+up for our free reasoning Workshop um
+
+449
+00:20:23,000 --> 00:20:27,760
+then grab the QR codes off the screen
+
+450
+00:20:25,720 --> 00:20:30,640
+while we're going through the questions
+
+451
+00:20:27,760 --> 00:20:30,640
+thanks
+
+452
+00:20:35,880 --> 00:20:40,600
+hello there I've got um three questions
+
+453
+00:20:39,039 --> 00:20:42,240
+two of which are a direct result of it
+
+454
+00:20:40,600 --> 00:20:45,159
+being live and one of them an actual
+
+455
+00:20:42,240 --> 00:20:48,559
+question the first one um I was counting
+
+456
+00:20:45,159 --> 00:20:50,559
+off screen so 6 seconds to return hello
+
+457
+00:20:48,559 --> 00:20:51,640
+generally about 12 to 16 seconds to
+
+458
+00:20:50,559 --> 00:20:53,720
+return and answer to your other the
+
+459
+00:20:51,640 --> 00:20:56,080
+questions so you've chosen not to use a
+
+460
+00:20:53,720 --> 00:20:57,880
+Wally Watcher what's the longest time
+
+461
+00:20:56,080 --> 00:20:59,480
+that I would expect to return an answer
+
+462
+00:20:57,880 --> 00:21:01,880
+as it's querying and going down its
+
+463
+00:20:59,480 --> 00:21:04,440
+Cascade of um you know understanding
+
+464
+00:21:01,880 --> 00:21:07,799
+entity extraction formulating SQL query
+
+465
+00:21:04,440 --> 00:21:09,679
+and then backward on um well I think the
+
+466
+00:21:07,799 --> 00:21:11,480
+the the times we saw today are kind of
+
+467
+00:21:09,679 --> 00:21:14,640
+Representative of what we've been seeing
+
+468
+00:21:11,480 --> 00:21:16,320
+I think sometimes the V the uh open AI
+
+469
+00:21:14,640 --> 00:21:19,039
+which we're using here is under more or
+
+470
+00:21:16,320 --> 00:21:20,760
+less load and gets back to us faster um
+
+471
+00:21:19,039 --> 00:21:23,480
+I don't know cheny if you have any
+
+472
+00:21:20,760 --> 00:21:26,919
+specific worst case figures that you've
+
+473
+00:21:23,480 --> 00:21:29,039
+seen so for current process that we're
+
+474
+00:21:26,919 --> 00:21:31,799
+using the maximum that have t
+
+475
+00:21:29,039 --> 00:21:33,799
+mostly is around like 20 seconds maximum
+
+476
+00:21:31,799 --> 00:21:36,279
+so that I would say is quite a good
+
+477
+00:21:33,799 --> 00:21:38,480
+amount of time for yeah returning an
+
+478
+00:21:36,279 --> 00:21:40,679
+answer because you has to go through
+
+479
+00:21:38,480 --> 00:21:42,880
+like many processes like llm and then go
+
+480
+00:21:40,679 --> 00:21:46,440
+to Vector database and then Sparkle
+
+481
+00:21:42,880 --> 00:21:49,600
+endpoint and then go to LM again yeah so
+
+482
+00:21:46,440 --> 00:21:53,320
+20 second is around 20 second I would
+
+483
+00:21:49,600 --> 00:21:54,760
+say yeah thank you um the second one so
+
+484
+00:21:53,320 --> 00:21:58,600
+when it didn't quite do what it was
+
+485
+00:21:54,760 --> 00:22:00,200
+supposed to do on your live demo um you
+
+486
+00:21:58,600 --> 00:22:01,919
+basically asked it the same question
+
+487
+00:22:00,200 --> 00:22:04,520
+again how does it respond to prompt
+
+488
+00:22:01,919 --> 00:22:07,760
+engineering within the chat so we have
+
+489
+00:22:04,520 --> 00:22:09,480
+stored a chat history um in a background
+
+490
+00:22:07,760 --> 00:22:11,960
+so every time when there is a
+
+491
+00:22:09,480 --> 00:22:13,760
+conversation and some um and a provide
+
+492
+00:22:11,960 --> 00:22:16,640
+for an answer and then we have Lang
+
+493
+00:22:13,760 --> 00:22:19,000
+chain using the utility utility call
+
+494
+00:22:16,640 --> 00:22:21,200
+memory and then store and summarize the
+
+495
+00:22:19,000 --> 00:22:23,120
+chat history and then every time we ask
+
+496
+00:22:21,200 --> 00:22:27,400
+a new question we will also send the
+
+497
+00:22:23,120 --> 00:22:29,000
+chat history to um the llm so if I ask
+
+498
+00:22:27,400 --> 00:22:30,480
+repeat the question again he reads
+
+499
+00:22:29,000 --> 00:22:32,240
+through the chat history sometime it
+
+500
+00:22:30,480 --> 00:22:34,600
+will get it right and then it will um
+
+501
+00:22:32,240 --> 00:22:36,240
+return like a new like the answer that
+
+502
+00:22:34,600 --> 00:22:38,600
+we are expecting to see but sometime it
+
+503
+00:22:36,240 --> 00:22:41,120
+doesn't like like what we just saw in
+
+504
+00:22:38,600 --> 00:22:42,520
+the um live demo that's my point why
+
+505
+00:22:41,120 --> 00:22:43,720
+didn't you re-engineer the prompt that
+
+506
+00:22:42,520 --> 00:22:45,360
+you were saying if you didn't get this
+
+507
+00:22:43,720 --> 00:22:47,799
+right the first time please tell me how
+
+508
+00:22:45,360 --> 00:22:49,840
+to explain lemon and trout yeah because
+
+509
+00:22:47,799 --> 00:22:52,400
+the purpose of the demo is to show that
+
+510
+00:22:49,840 --> 00:22:55,559
+uh we don't really have to keep our un
+
+511
+00:22:52,400 --> 00:22:57,360
+our question uh like very detailed like
+
+512
+00:22:55,559 --> 00:22:59,120
+I don't have to tell it again what is
+
+513
+00:22:57,360 --> 00:23:02,039
+the instruction for the particular
+
+514
+00:22:59,120 --> 00:23:05,400
+recipe I wanted to know what was um the
+
+515
+00:23:02,039 --> 00:23:08,880
+question that I asked and then um find
+
+516
+00:23:05,400 --> 00:23:11,120
+an answer to for us I could do that that
+
+517
+00:23:08,880 --> 00:23:12,960
+it it would definitely return like a
+
+518
+00:23:11,120 --> 00:23:15,400
+right answer but I don't think that's
+
+519
+00:23:12,960 --> 00:23:17,039
+the whole point of this demo so yeah I
+
+520
+00:23:15,400 --> 00:23:20,200
+would disagree that that is kind of the
+
+521
+00:23:17,039 --> 00:23:22,120
+point of the demo but that aside um so
+
+522
+00:23:20,200 --> 00:23:24,919
+the third question is it has the chat
+
+523
+00:23:22,120 --> 00:23:26,919
+history um in there you asked it what
+
+524
+00:23:24,919 --> 00:23:28,840
+were the conditions of your dish your
+
+525
+00:23:26,919 --> 00:23:31,000
+dish ultimately you said were fish and
+
+526
+00:23:28,840 --> 00:23:32,440
+lemon it return trout and lemon
+
+527
+00:23:31,000 --> 00:23:34,840
+additionally on top of that you
+
+528
+00:23:32,440 --> 00:23:38,440
+restructure the conditions to include
+
+529
+00:23:34,840 --> 00:23:41,080
+dairy free and yet it returned um as we
+
+530
+00:23:38,440 --> 00:23:43,440
+saw kind of trout and lemon um at which
+
+531
+00:23:41,080 --> 00:23:46,159
+point in that chain does it make the
+
+532
+00:23:43,440 --> 00:23:48,240
+decision that these were the conditions
+
+533
+00:23:46,159 --> 00:23:49,559
+basically it came back as a human of yes
+
+534
+00:23:48,240 --> 00:23:51,200
+that we were talking about trout and
+
+535
+00:23:49,559 --> 00:23:52,960
+lemon but if we're being factually
+
+536
+00:23:51,200 --> 00:23:54,320
+accurate you were talking about fish and
+
+537
+00:23:52,960 --> 00:23:56,960
+lemon and ultimately you put an
+
+538
+00:23:54,320 --> 00:23:59,400
+additional condition of dairy
+
+539
+00:23:56,960 --> 00:24:02,480
+free I think I think in the end the
+
+540
+00:23:59,400 --> 00:24:05,080
+query that we um ran that cheny showed
+
+541
+00:24:02,480 --> 00:24:07,279
+that had 82 answers that was based on
+
+542
+00:24:05,080 --> 00:24:09,600
+fish and lemon not trout and lemon right
+
+543
+00:24:07,279 --> 00:24:11,679
+with dairy free as the was an as an
+
+544
+00:24:09,600 --> 00:24:13,159
+extra condition so and then we were we
+
+545
+00:24:11,679 --> 00:24:14,480
+were showed that that was the the same
+
+546
+00:24:13,159 --> 00:24:15,799
+answer that we got so we could show the
+
+547
+00:24:14,480 --> 00:24:18,640
+spark while we did show the sparkle
+
+548
+00:24:15,799 --> 00:24:20,600
+query that had those conditions so I
+
+549
+00:24:18,640 --> 00:24:21,960
+think at that point it had remembered
+
+550
+00:24:20,600 --> 00:24:24,440
+the conversation that we'd been having
+
+551
+00:24:21,960 --> 00:24:26,120
+it had woken up from its stuper and got
+
+552
+00:24:24,440 --> 00:24:29,720
+you know we picked up what we what we
+
+553
+00:24:26,120 --> 00:24:29,720
+were getting at so
+
+554
+00:24:32,640 --> 00:24:37,559
+any more questions hopefully not on the
+
+555
+00:24:34,919 --> 00:24:37,559
+other side of the
+
+556
+00:24:39,320 --> 00:24:45,480
+room there's always one isn't there to
+
+557
+00:24:42,320 --> 00:24:45,480
+do the trip hazards
+
+558
+00:24:46,760 --> 00:24:52,520
+now thanks very much um I was interested
+
+559
+00:24:50,159 --> 00:24:54,080
+in where the rules come from and I think
+
+560
+00:24:52,520 --> 00:24:56,640
+I've picked up at the end that there
+
+561
+00:24:54,080 --> 00:24:58,840
+that's where your human expertise gets
+
+562
+00:24:56,640 --> 00:25:02,159
+added into the the system
+
+563
+00:24:58,840 --> 00:25:04,080
+um is there any uh kind of scope for
+
+564
+00:25:02,159 --> 00:25:07,080
+automatically generating those rules
+
+565
+00:25:04,080 --> 00:25:08,679
+somehow so maybe I'm not sure exactly
+
+566
+00:25:07,080 --> 00:25:11,399
+how it works do you have to Define them
+
+567
+00:25:08,679 --> 00:25:12,679
+as Sparkle queries first so um the
+
+568
+00:25:11,399 --> 00:25:14,240
+language that I was showing in the
+
+569
+00:25:12,679 --> 00:25:15,919
+explain interface so there was an
+
+570
+00:25:14,240 --> 00:25:18,320
+encoding there that won't doesn't look
+
+571
+00:25:15,919 --> 00:25:21,000
+like sparkle it uses had Iris in it
+
+572
+00:25:18,320 --> 00:25:24,720
+that's data log it's with with some
+
+573
+00:25:21,000 --> 00:25:26,960
+syntactical um shortcuts um so but
+
+574
+00:25:24,720 --> 00:25:29,159
+somebody that's um you know capable of
+
+575
+00:25:26,960 --> 00:25:31,720
+writing Sparkle would would be able to
+
+576
+00:25:29,159 --> 00:25:34,840
+adapt to the syntax of data log uh quite
+
+577
+00:25:31,720 --> 00:25:36,760
+readily um so to answer the question yes
+
+578
+00:25:34,840 --> 00:25:38,039
+these are human this is human knowledge
+
+579
+00:25:36,760 --> 00:25:41,279
+that we're trying to put in and human
+
+580
+00:25:38,039 --> 00:25:43,200
+expertise um it's possible to generate
+
+581
+00:25:41,279 --> 00:25:45,360
+um results but then they have the same
+
+582
+00:25:43,200 --> 00:25:47,760
+you know it would be possible to
+
+583
+00:25:45,360 --> 00:25:50,480
+generate um data log but they have the
+
+584
+00:25:47,760 --> 00:25:51,640
+same vulnerability to hallucinations and
+
+585
+00:25:50,480 --> 00:25:54,360
+what we're trying to do is protect
+
+586
+00:25:51,640 --> 00:25:57,840
+ourselves against that with the rag um
+
+587
+00:25:54,360 --> 00:26:00,039
+so here we we really can take out the
+
+588
+00:25:57,840 --> 00:26:02,799
+the human expertise and and encode that
+
+589
+00:26:00,039 --> 00:26:05,240
+very closely um and a couple of you know
+
+590
+00:26:02,799 --> 00:26:07,600
+cases um that you know so here we did
+
+591
+00:26:05,240 --> 00:26:09,360
+what was our expertise so vegetarian
+
+592
+00:26:07,600 --> 00:26:12,559
+meals don't have meat or fish so that's
+
+593
+00:26:09,360 --> 00:26:14,159
+not a particularly um you know narrow or
+
+594
+00:26:12,559 --> 00:26:15,919
+Niche piece of knowledge right we all
+
+595
+00:26:14,159 --> 00:26:19,360
+know that but we could see this
+
+596
+00:26:15,919 --> 00:26:21,720
+transferred into in Industry um the ways
+
+597
+00:26:19,360 --> 00:26:24,840
+that a certain items from my product
+
+598
+00:26:21,720 --> 00:26:26,600
+catalog can be correctly uh combined can
+
+599
+00:26:24,840 --> 00:26:28,559
+be configured which is compatible with
+
+600
+00:26:26,600 --> 00:26:31,200
+which that's a that's a piece of human
+
+601
+00:26:28,559 --> 00:26:33,520
+knowledge that you know we we you know
+
+602
+00:26:31,200 --> 00:26:35,279
+people in the organization maybe have
+
+603
+00:26:33,520 --> 00:26:37,919
+and we can encode it very specifically
+
+604
+00:26:35,279 --> 00:26:40,159
+and we get a a truth preserving kind of
+
+605
+00:26:37,919 --> 00:26:43,080
+chain of operations so we don't lose
+
+606
+00:26:40,159 --> 00:26:44,919
+that with the explainability so which
+
+607
+00:26:43,080 --> 00:26:47,279
+you know we do sometimes lack with uh
+
+608
+00:26:44,919 --> 00:26:51,039
+llms and machine learning in general
+
+609
+00:26:47,279 --> 00:26:54,159
+okay thank you no problem thanks for the
+
+610
+00:26:51,039 --> 00:26:56,640
+question um this is a slightly technical
+
+611
+00:26:54,159 --> 00:26:58,360
+question I think can you comment on the
+
+612
+00:26:56,640 --> 00:26:59,919
+interplay between the llm and the the
+
+613
+00:26:58,360 --> 00:27:01,960
+Reasoner because they both use
+
+614
+00:26:59,919 --> 00:27:05,440
+completely different kind of approaches
+
+615
+00:27:01,960 --> 00:27:08,240
+to thinking or reasoning I should say
+
+616
+00:27:05,440 --> 00:27:10,760
+yeah I so the way I see it is we're just
+
+617
+00:27:08,240 --> 00:27:12,320
+we we've got high quality data that we
+
+618
+00:27:10,760 --> 00:27:14,559
+trust it's very trustworthy in the
+
+619
+00:27:12,320 --> 00:27:15,960
+knowledge graph uh we spent time to make
+
+620
+00:27:14,559 --> 00:27:18,600
+sure that it's high quality wherever it
+
+621
+00:27:15,960 --> 00:27:21,279
+came from it might come from uh document
+
+622
+00:27:18,600 --> 00:27:22,960
+instraction uh something like that um we
+
+623
+00:27:21,279 --> 00:27:25,760
+trust the rules that we put in because
+
+624
+00:27:22,960 --> 00:27:28,720
+they've been um absolutely cooperated
+
+625
+00:27:25,760 --> 00:27:31,640
+with experts um and you know we don't
+
+626
+00:27:28,720 --> 00:27:34,320
+want the llm going off making things up
+
+627
+00:27:31,640 --> 00:27:36,000
+and and subjecting us to hallucinations
+
+628
+00:27:34,320 --> 00:27:38,320
+um and so we're trying to use the the
+
+629
+00:27:36,000 --> 00:27:41,840
+rag approach to keep it on kind of guard
+
+630
+00:27:38,320 --> 00:27:44,519
+rail guide rails so we love it for its
+
+631
+00:27:41,840 --> 00:27:46,480
+fluency the flexibility the user gets in
+
+632
+00:27:44,519 --> 00:27:48,840
+the way that they phrase their question
+
+633
+00:27:46,480 --> 00:27:51,399
+and not having to learn our you know
+
+634
+00:27:48,840 --> 00:27:53,480
+specific layout of buttons and
+
+635
+00:27:51,399 --> 00:27:56,320
+checkboxes to be able to get the data
+
+636
+00:27:53,480 --> 00:27:58,360
+that they want um but yeah in the end
+
+637
+00:27:56,320 --> 00:28:00,360
+it's turned out to be quite simple know
+
+638
+00:27:58,360 --> 00:28:02,840
+if you accept rag as an approach
+
+639
+00:28:00,360 --> 00:28:04,440
+reasoning really just does kind of
+
+640
+00:28:02,840 --> 00:28:05,799
+improve the situation because we can
+
+641
+00:28:04,440 --> 00:28:09,000
+just put that reasoning knowledge into
+
+642
+00:28:05,799 --> 00:28:11,799
+our knowledge graph it gets better it
+
+643
+00:28:09,000 --> 00:28:13,519
+gets enriched with that human knowledge
+
+644
+00:28:11,799 --> 00:28:16,320
+um and you know we can then use the
+
+645
+00:28:13,519 --> 00:28:18,679
+knowledge graph directly um or as we saw
+
+646
+00:28:16,320 --> 00:28:21,000
+we you know the the L we can use the llm
+
+647
+00:28:18,679 --> 00:28:23,240
+to access that so so yeah it's not a
+
+648
+00:28:21,000 --> 00:28:24,840
+really tight uh combination of the two
+
+649
+00:28:23,240 --> 00:28:27,320
+models but I think actually quite an
+
+650
+00:28:24,840 --> 00:28:29,519
+effective one in the end a simple simple
+
+651
+00:28:27,320 --> 00:28:31,480
+to build and you know I shouldn't be my
+
+652
+00:28:29,519 --> 00:28:33,399
+colleague here an injustice by saying
+
+653
+00:28:31,480 --> 00:28:35,159
+it's simple to build but you know
+
+654
+00:28:33,399 --> 00:28:36,480
+relatively simple to put the two things
+
+655
+00:28:35,159 --> 00:28:39,240
+together and get something is greater
+
+656
+00:28:36,480 --> 00:28:43,240
+than some other parts so thanks for the
+
+657
+00:28:39,240 --> 00:28:43,240
+question hi
+
+658
+00:29:11,360 --> 00:29:16,480
+yes so this this is not available as a
+
+659
+00:29:14,480 --> 00:29:19,440
+product all together to today but we
+
+660
+00:29:16,480 --> 00:29:21,720
+sell AA Fox as a product um so yeah we
+
+661
+00:29:19,440 --> 00:29:23,679
+and uh you can you try it out here it's
+
+662
+00:29:21,720 --> 00:29:25,840
+very easy to use so you would bring the
+
+663
+00:29:23,679 --> 00:29:27,519
+data and you bring the expertise which
+
+664
+00:29:25,840 --> 00:29:28,679
+might come from public sources so the
+
+665
+00:29:27,519 --> 00:29:31,039
+taxonomy
+
+666
+00:29:28,679 --> 00:29:32,559
+that we we brought in about food
+
+667
+00:29:31,039 --> 00:29:34,480
+knowledge that's a public data set
+
+668
+00:29:32,559 --> 00:29:36,080
+anyone could use that and um you know
+
+669
+00:29:34,480 --> 00:29:38,000
+you can because these are rdf data
+
+670
+00:29:36,080 --> 00:29:40,919
+sources they're very readily imported
+
+671
+00:29:38,000 --> 00:29:43,039
+into into RF Fox and then we can
+
+672
+00:29:40,919 --> 00:29:45,559
+directly use them to do reasoning in a
+
+673
+00:29:43,039 --> 00:29:47,960
+lot of cases so um but yeah you would
+
+674
+00:29:45,559 --> 00:29:50,039
+basically download IDE Fox set it up on
+
+675
+00:29:47,960 --> 00:29:51,760
+your machine import your data onto it
+
+676
+00:29:50,039 --> 00:29:55,440
+and and build we could show you how to
+
+677
+00:29:51,760 --> 00:29:55,440
+build something very similar
+
+678
+00:30:09,960 --> 00:30:14,679
+so it's it's the rules that encode the
+
+679
+00:30:12,360 --> 00:30:18,240
+human expertise so we do need those to
+
+680
+00:30:14,679 --> 00:30:20,039
+be written Yeah by by a human so but you
+
+681
+00:30:18,240 --> 00:30:22,240
+the benefit of that is you get full
+
+682
+00:30:20,039 --> 00:30:24,880
+control over what you know conclusions
+
+683
+00:30:22,240 --> 00:30:27,480
+are going to be arrived at in the system
+
+684
+00:30:24,880 --> 00:30:28,640
+and you get explainability so um were
+
+685
+00:30:27,480 --> 00:30:30,919
+you looking for something that would
+
+686
+00:30:28,640 --> 00:30:31,880
+again look you'd be able to generate the
+
+687
+00:30:30,919 --> 00:30:34,880
+rules
+
+688
+00:30:31,880 --> 00:30:34,880
+automatically
+
+689
+00:30:42,640 --> 00:30:47,919
+yeah yeah so the chatbot is not not
+
+690
+00:30:45,039 --> 00:30:52,240
+integrated it's it's built on top but uh
+
+691
+00:30:47,919 --> 00:30:53,799
+yeah I think the again we say the if you
+
+692
+00:30:52,240 --> 00:30:55,919
+allow a machine to generate the rules
+
+693
+00:30:53,799 --> 00:30:58,000
+then you're kind of giving Over Control
+
+694
+00:30:55,919 --> 00:31:00,159
+somehow and you're exposing yourself to
+
+695
+00:30:58,000 --> 00:31:02,360
+ucin hallucinations or errors in those
+
+696
+00:31:00,159 --> 00:31:04,519
+rules and of course humans are going to
+
+697
+00:31:02,360 --> 00:31:06,519
+get errors in the rules but over time we
+
+698
+00:31:04,519 --> 00:31:08,080
+can correct those and using the explain
+
+699
+00:31:06,519 --> 00:31:09,960
+feature actually is a really good way to
+
+700
+00:31:08,080 --> 00:31:12,000
+look for conclusions that we didn't
+
+701
+00:31:09,960 --> 00:31:13,519
+expect and trace it back to errors in
+
+702
+00:31:12,000 --> 00:31:17,399
+the rules and over time improve the
+
+703
+00:31:13,519 --> 00:31:19,519
+quality so thanks for the question great
+
+704
+00:31:17,399 --> 00:31:21,399
+I think that's all we've got time for I
+
+705
+00:31:19,519 --> 00:31:23,440
+think the hint of the cleaners kind of
+
+706
+00:31:21,399 --> 00:31:25,679
+working around the referee of the room
+
+707
+00:31:23,440 --> 00:31:29,279
+perhaps is uh giving it away but big
+
+708
+00:31:25,679 --> 00:31:32,279
+thanks to Nick and Chun really fantastic
+
+709
+00:31:29,279 --> 00:31:32,279
+presentation
+

@@ -1,0 +1,10 @@
+{
+  "id": "rLas8LZUPsQ",
+  "title": "Building materialised views for linked data systems using microservices. Augustine Kwanashie.",
+  "description": "In the BBC’s Content Distribution Services division, we build and maintain systems that provide content metadata to a wide range of audience-facing products. \n\nOur current architecture for distributing tagging metadata consists mainly of two RDF-based read and write APIs feeding off a central triplestore. This single storage setup for all operations imposes restrictions on performance and scalability. \n\nI will talk about our work done to create an event-driven distribution pipeline that generates materialised views of tagging metadata. \n\nThe new microservices architecture comprises of small, single-purpose services, lambda functions, event stores, queues, streams etc. The views are built on data stores that are optimised to serve specific query profiles thus improving the overall performance and scalability of the system. \n\nAbout the speaker: Augustine works as a Senior Software Engineer in the BBC’s Content Distribution Services division. He helps build and maintain APIs (and supporting infrastructure) that store and serve metadata for BBC content in the Linked Data space. Previously he was a PhD researcher at the University of Glasgow working on designing efficient algorithms for matching problems. ---\nConnected Data London 2024 has been announced!\n\nDecember 11-13, etc Venues St. Paul’s, City of London\n\nIf you liked this video, check #CDL24 for more Presentations, Keynotes, Masterclasses, and Workshops on cutting-edge topics from industry leaders and innovators:\n\nhttps://connected-data.london",
+  "duration": null,
+  "upload_date": "20181129",
+  "timestamp": null,
+  "url": "https://www.youtube.com/watch?v=rLas8LZUPsQ",
+  "channel": "Connected Data"
+}

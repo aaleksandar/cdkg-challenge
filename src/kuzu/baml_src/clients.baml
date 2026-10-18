@@ -4,12 +4,13 @@
 // Pinned to a specific model, not an alias like "gemini-flash-latest", so the
 // model cannot shift underneath the prompts. gemini-2.0-flash was used here
 // previously and was retired by Google — it now returns 404 on every call.
+// gemini-3.7-flash was deprecated in October 2026 and routed to 3.8.
 // evaluate.py's LLM judge is set to the same model; update both together.
 client<llm> GeminiFlash {
   provider google-ai
   retry_policy Exponential
   options {
-    model "gemini-3.7-flash"
+    model "gemini-3.8-flash"
     api_key env.GOOGLE_API_KEY
     generationConfig {
       temperature 0

@@ -1,0 +1,9184 @@
+1
+00:00:03,120 --> 00:00:09,240
+um welcome to the um semantic modeling
+
+2
+00:00:06,560 --> 00:00:12,000
+Master Class Flawless semantic modeling
+
+3
+00:00:09,240 --> 00:00:15,160
+with a good old friend of connected data
+
+4
+00:00:12,000 --> 00:00:18,400
+London Panos ex
+
+5
+00:00:15,160 --> 00:00:21,760
+alexos if I pronounce that correctly you
+
+6
+00:00:18,400 --> 00:00:23,680
+can beat me later for that um yeah
+
+7
+00:00:21,760 --> 00:00:25,720
+really really excited about this session
+
+8
+00:00:23,680 --> 00:00:28,640
+and um and and also you know another
+
+9
+00:00:25,720 --> 00:00:31,599
+exciting day of uh knowledge
+
+10
+00:00:28,640 --> 00:00:34,920
+connections to bring together such a a
+
+11
+00:00:31,599 --> 00:00:37,320
+vibrant team and um and also touch on um
+
+12
+00:00:34,920 --> 00:00:41,200
+yeah such a a fundamental Topic in our
+
+13
+00:00:37,320 --> 00:00:44,680
+in our space um semantic modeling so um
+
+14
+00:00:41,200 --> 00:00:47,520
+with that I'll um I'll hand over to um
+
+15
+00:00:44,680 --> 00:00:50,360
+Panos I'll be moderating the session so
+
+16
+00:00:47,520 --> 00:00:52,600
+if you have any any questions or need
+
+17
+00:00:50,360 --> 00:00:55,039
+any assistance with anything then just
+
+18
+00:00:52,600 --> 00:00:56,840
+let me know um and other than that I'm
+
+19
+00:00:55,039 --> 00:00:59,160
+I'm really excited to be um lurking in
+
+20
+00:00:56,840 --> 00:01:00,719
+the background on this over to over to
+
+21
+00:00:59,160 --> 00:01:03,399
+you Panos
+
+22
+00:01:00,719 --> 00:01:05,040
+thank you very much James uh good
+
+23
+00:01:03,399 --> 00:01:06,680
+afternoon everybody or good morning
+
+24
+00:01:05,040 --> 00:01:08,439
+depending on your time zone guess
+
+25
+00:01:06,680 --> 00:01:12,040
+because we're really International these
+
+26
+00:01:08,439 --> 00:01:14,200
+days so thank you very much all for
+
+27
+00:01:12,040 --> 00:01:16,960
+registering for this uh for this master
+
+28
+00:01:14,200 --> 00:01:20,840
+class so let me share my screen and
+
+29
+00:01:16,960 --> 00:01:20,840
+let's uh start
+
+30
+00:01:24,640 --> 00:01:30,400
+so
+
+31
+00:01:26,880 --> 00:01:32,399
+okay can you see on my screen yeah can
+
+32
+00:01:30,400 --> 00:01:37,200
+you James can you see my
+
+33
+00:01:32,399 --> 00:01:40,840
+screen okay so uh right so this master
+
+34
+00:01:37,200 --> 00:01:44,280
+class is about H semantic modeling in in
+
+35
+00:01:40,840 --> 00:01:47,159
+no and SC H my name is P alexopulos I
+
+36
+00:01:44,280 --> 00:01:49,439
+work for Tex canel a company in the
+
+37
+00:01:47,159 --> 00:01:53,439
+Netherlands that specializes in semantic
+
+38
+00:01:49,439 --> 00:01:57,159
+software for the recruitment domain and
+
+39
+00:01:53,439 --> 00:01:58,680
+um where I my role there is practically
+
+40
+00:01:57,159 --> 00:02:00,439
+the let's call them the chief onology or
+
+41
+00:01:58,680 --> 00:02:04,079
+the head of onology so I'm really
+
+42
+00:02:00,439 --> 00:02:07,719
+bugging people about how to to do what I
+
+43
+00:02:04,079 --> 00:02:09,160
+I believe are proper semantics so H in
+
+44
+00:02:07,719 --> 00:02:12,400
+this master class we're going to see
+
+45
+00:02:09,160 --> 00:02:17,160
+some basic principles of semantic
+
+46
+00:02:12,400 --> 00:02:19,319
+modeling that uh whose goal is to uh
+
+47
+00:02:17,160 --> 00:02:22,239
+create representation of of meaning and
+
+48
+00:02:19,319 --> 00:02:25,000
+data that are explicit and
+
+49
+00:02:22,239 --> 00:02:27,519
+sharable so what is master class is
+
+50
+00:02:25,000 --> 00:02:30,080
+about this master class is about the
+
+51
+00:02:27,519 --> 00:02:32,680
+broader topic of semantic data modeling
+
+52
+00:02:30,080 --> 00:02:34,400
+by semata modeling we mean the task of
+
+53
+00:02:32,680 --> 00:02:36,879
+developing descriptions and
+
+54
+00:02:34,400 --> 00:02:39,200
+representations of data that convey the
+
+55
+00:02:36,879 --> 00:02:41,599
+data's meaning in an accurate explicit
+
+56
+00:02:39,200 --> 00:02:42,720
+and common and accepted way amongst
+
+57
+00:02:41,599 --> 00:02:45,400
+humans and
+
+58
+00:02:42,720 --> 00:02:47,360
+systems this is a broad definition that
+
+59
+00:02:45,400 --> 00:02:50,879
+enom many things the compass is things
+
+60
+00:02:47,360 --> 00:02:53,080
+art many kind of artifacts sorry things
+
+61
+00:02:50,879 --> 00:02:55,599
+like ontologies taxonomies sometimes
+
+62
+00:02:53,080 --> 00:02:56,920
+theor or larger knowledge graphs link
+
+63
+00:02:55,599 --> 00:02:59,319
+data if you come from the SE web
+
+64
+00:02:56,920 --> 00:03:01,599
+Community free base Yago the LinkedIn
+
+65
+00:02:59,319 --> 00:03:03,640
+Knowledge Graph and other types of
+
+66
+00:03:01,599 --> 00:03:07,680
+artifacts the thing that I have in
+
+67
+00:03:03,640 --> 00:03:09,440
+common are that they try to uh capture
+
+68
+00:03:07,680 --> 00:03:11,599
+uh human knowledge capture domain
+
+69
+00:03:09,440 --> 00:03:13,599
+knowledge in a top down fashion as
+
+70
+00:03:11,599 --> 00:03:16,280
+opposed to machine learning that tries
+
+71
+00:03:13,599 --> 00:03:19,959
+to do that in a bottom um in a bottom up
+
+72
+00:03:16,280 --> 00:03:23,319
+fashion right and the ultimate goal is
+
+73
+00:03:19,959 --> 00:03:25,840
+to have H for these artifacts to be
+
+74
+00:03:23,319 --> 00:03:29,519
+sharable what it means to be
+
+75
+00:03:25,840 --> 00:03:31,439
+shable my premise my strong belief is
+
+76
+00:03:29,519 --> 00:03:34,920
+that every time we create a semantic
+
+77
+00:03:31,439 --> 00:03:37,239
+model that even whe independently of
+
+78
+00:03:34,920 --> 00:03:39,319
+whether that is a taxonomy and ontology
+
+79
+00:03:37,239 --> 00:03:42,159
+and knowledge graph we have three main
+
+80
+00:03:39,319 --> 00:03:44,360
+goals the first goal is to uh represent
+
+81
+00:03:42,159 --> 00:03:46,280
+meaning in an accurate way that is that
+
+82
+00:03:44,360 --> 00:03:49,519
+whatever statement we make whatever
+
+83
+00:03:46,280 --> 00:03:52,159
+assertion we make is uh is true or at
+
+84
+00:03:49,519 --> 00:03:54,680
+least is accepted to be true H for all
+
+85
+00:03:52,159 --> 00:03:56,400
+people and systems that use the model
+
+86
+00:03:54,680 --> 00:03:59,000
+the second thing the second goal is to
+
+87
+00:03:56,400 --> 00:04:02,200
+have this meaning in explicit explicit
+
+88
+00:03:59,000 --> 00:04:05,280
+means that by looking at the model me as
+
+89
+00:04:02,200 --> 00:04:08,319
+a human or me as a system I'm able to
+
+90
+00:04:05,280 --> 00:04:10,439
+understand uh what this uh model is
+
+91
+00:04:08,319 --> 00:04:12,560
+about and to understand what what's the
+
+92
+00:04:10,439 --> 00:04:15,239
+meaning of each of its elements without
+
+93
+00:04:12,560 --> 00:04:16,680
+having to resort to external resources
+
+94
+00:04:15,239 --> 00:04:18,479
+right that means that when I see for
+
+95
+00:04:16,680 --> 00:04:19,959
+example an entity with a given name if I
+
+96
+00:04:18,479 --> 00:04:22,960
+see for example an entity Panos
+
+97
+00:04:19,959 --> 00:04:24,880
+alexopulos I need to know who who who
+
+98
+00:04:22,960 --> 00:04:27,160
+that Panos alexopulos is and need to be
+
+99
+00:04:24,880 --> 00:04:29,199
+able to to easily derive that this is
+
+100
+00:04:27,160 --> 00:04:31,880
+paral exop who works at X kernel and he
+
+101
+00:04:29,199 --> 00:04:34,360
+works with olist as opposed to a
+
+102
+00:04:31,880 --> 00:04:35,639
+namesake of mind that is a doctor for
+
+103
+00:04:34,360 --> 00:04:38,039
+instance a medical
+
+104
+00:04:35,639 --> 00:04:39,800
+doctor and the third dimension a very
+
+105
+00:04:38,039 --> 00:04:43,600
+important Dimension is meaning
+
+106
+00:04:39,800 --> 00:04:46,479
+agreement H so it's not enough to uh
+
+107
+00:04:43,600 --> 00:04:49,680
+have uh meaning explicit and accurate it
+
+108
+00:04:46,479 --> 00:04:53,360
+has to also be agreed by all parties
+
+109
+00:04:49,680 --> 00:04:55,320
+that is indeed H acceptable right and
+
+110
+00:04:53,360 --> 00:04:58,280
+this is harder than it looks and I'm not
+
+111
+00:04:55,320 --> 00:05:00,440
+talking about um how to say false versus
+
+112
+00:04:58,280 --> 00:05:03,759
+true or fake news versus
+
+113
+00:05:00,440 --> 00:05:07,520
+True News I'm talking about cases where
+
+114
+00:05:03,759 --> 00:05:09,440
+H agreement is uh not given because of
+
+115
+00:05:07,520 --> 00:05:11,240
+things like ambiguity or vagueness and
+
+116
+00:05:09,440 --> 00:05:14,400
+other phenomena that we will cover in
+
+117
+00:05:11,240 --> 00:05:14,400
+this uh in this master
+
+118
+00:05:14,960 --> 00:05:19,560
+class the ultimate goal is to bridge the
+
+119
+00:05:17,960 --> 00:05:21,120
+semantic Gap the semantic Gap that
+
+120
+00:05:19,560 --> 00:05:23,199
+exists in the communication between
+
+121
+00:05:21,120 --> 00:05:26,120
+humans between systems and between human
+
+122
+00:05:23,199 --> 00:05:28,960
+human and between human and
+
+123
+00:05:26,120 --> 00:05:30,160
+systems and in order to achieve that Gap
+
+124
+00:05:28,960 --> 00:05:32,000
+we have enemies
+
+125
+00:05:30,160 --> 00:05:33,759
+right there are enemies of these three
+
+126
+00:05:32,000 --> 00:05:36,759
+goals that I just mentioned accuracy
+
+127
+00:05:33,759 --> 00:05:39,280
+explic and agreement one big enemy is
+
+128
+00:05:36,759 --> 00:05:41,039
+ambiguity right in our everyday talk in
+
+129
+00:05:39,280 --> 00:05:44,520
+everyday communication in the data that
+
+130
+00:05:41,039 --> 00:05:46,120
+we produce we we tend to be ambiguous
+
+131
+00:05:44,520 --> 00:05:47,960
+and that's fine that's a feature that we
+
+132
+00:05:46,120 --> 00:05:50,800
+have as humans we are able to quickly
+
+133
+00:05:47,960 --> 00:05:54,240
+disambiguate ambiguous references of
+
+134
+00:05:50,800 --> 00:05:56,400
+terms of knowledge in general however
+
+135
+00:05:54,240 --> 00:05:58,080
+for a system to do that for sematic
+
+136
+00:05:56,400 --> 00:05:59,680
+model to do that that's a challenge and
+
+137
+00:05:58,080 --> 00:06:02,639
+that's a challenge that we have to deal
+
+138
+00:05:59,680 --> 00:06:04,840
+deal with and we have to tackle when we
+
+139
+00:06:02,639 --> 00:06:07,759
+build ontologies and sematic models in
+
+140
+00:06:04,840 --> 00:06:09,560
+general a second problem is vagueness
+
+141
+00:06:07,759 --> 00:06:11,800
+vagueness as I will explain later in
+
+142
+00:06:09,560 --> 00:06:15,199
+more detail is the problem is the
+
+143
+00:06:11,800 --> 00:06:17,280
+phenomenon where we have H predicates
+
+144
+00:06:15,199 --> 00:06:20,280
+where we have things that are are not
+
+145
+00:06:17,280 --> 00:06:22,199
+necessarily always true or always false
+
+146
+00:06:20,280 --> 00:06:25,360
+practically when we have gray areas so
+
+147
+00:06:22,199 --> 00:06:29,160
+for instance if I if I ask if I ask all
+
+148
+00:06:25,360 --> 00:06:34,960
+you participants here uh whether uh I
+
+149
+00:06:29,160 --> 00:06:37,160
+don't know 100 17 1 M 75 cm of height
+
+150
+00:06:34,960 --> 00:06:40,039
+classifies a person as a tall or not
+
+151
+00:06:37,160 --> 00:06:42,479
+tall I I will bet that we will not get
+
+152
+00:06:40,039 --> 00:06:45,199
+that I will not get a consensus not
+
+153
+00:06:42,479 --> 00:06:47,680
+because um you don't have enough
+
+154
+00:06:45,199 --> 00:06:51,199
+information but it's because the concept
+
+155
+00:06:47,680 --> 00:06:54,479
+of toll is vague and is il defined in a
+
+156
+00:06:51,199 --> 00:06:56,440
+sense another big challenge for building
+
+157
+00:06:54,479 --> 00:06:59,120
+good semantic models is diverse in
+
+158
+00:06:56,440 --> 00:07:00,240
+variety right it's not only that we
+
+159
+00:06:59,120 --> 00:07:03,160
+speak
+
+160
+00:07:00,240 --> 00:07:06,039
+uh that people humans communicate H in
+
+161
+00:07:03,160 --> 00:07:07,680
+in ambiguous and vague ways we also use
+
+162
+00:07:06,039 --> 00:07:09,440
+multiple different ways to say the same
+
+163
+00:07:07,680 --> 00:07:13,319
+thing right
+
+164
+00:07:09,440 --> 00:07:16,039
+or um we we we we assign different
+
+165
+00:07:13,319 --> 00:07:18,639
+meanings to to the same uh to seemingly
+
+166
+00:07:16,039 --> 00:07:20,400
+the same uh elements the same uh the
+
+167
+00:07:18,639 --> 00:07:23,840
+same Concepts and that's something that
+
+168
+00:07:20,400 --> 00:07:25,599
+we need to to tackle and finally as if
+
+169
+00:07:23,840 --> 00:07:27,080
+all the previous ones were not enough we
+
+170
+00:07:25,599 --> 00:07:29,560
+have the the phenomenon of semantic
+
+171
+00:07:27,080 --> 00:07:32,479
+change semantic change means that
+
+172
+00:07:29,560 --> 00:07:35,639
+meaning drifts right the meaning the
+
+173
+00:07:32,479 --> 00:07:38,800
+interpretation of a concept ER now it
+
+174
+00:07:35,639 --> 00:07:41,879
+may be May in 20 years not have the same
+
+175
+00:07:38,800 --> 00:07:44,280
+meaning right many words and terms have
+
+176
+00:07:41,879 --> 00:07:45,960
+happen that and depending on on on the
+
+177
+00:07:44,280 --> 00:07:48,879
+domain you can have more or less
+
+178
+00:07:45,960 --> 00:07:50,879
+semantic change which means that a
+
+179
+00:07:48,879 --> 00:07:53,479
+semantic model that be a knowledge graph
+
+180
+00:07:50,879 --> 00:07:55,680
+or ontology is almost never static or
+
+181
+00:07:53,479 --> 00:07:58,400
+it's very hard to be
+
+182
+00:07:55,680 --> 00:08:00,120
+study apart from these four things that
+
+183
+00:07:58,400 --> 00:08:02,960
+we cannot really control
+
+184
+00:08:00,120 --> 00:08:05,240
+we also have a fifth uh enemy and the
+
+185
+00:08:02,960 --> 00:08:07,080
+fifth enemy is ourselves ourselves I
+
+186
+00:08:05,240 --> 00:08:08,840
+mean the semantic model is the people
+
+187
+00:08:07,080 --> 00:08:12,280
+the humans the engineers who build
+
+188
+00:08:08,840 --> 00:08:15,120
+semantic models and the pro and what we
+
+189
+00:08:12,280 --> 00:08:17,159
+do is that many cases we follow as I
+
+190
+00:08:15,120 --> 00:08:20,120
+call them in my book also bad modeling
+
+191
+00:08:17,159 --> 00:08:23,759
+practices right not bad in the sense of
+
+192
+00:08:20,120 --> 00:08:25,400
+malice right but bad in the sense of um
+
+193
+00:08:23,759 --> 00:08:29,919
+we're not realizing that we are doing
+
+194
+00:08:25,400 --> 00:08:31,479
+something wrong that may H that may job
+
+195
+00:08:29,919 --> 00:08:34,200
+the semantic interoperability and the
+
+196
+00:08:31,479 --> 00:08:35,880
+quality of our of the models we we built
+
+197
+00:08:34,200 --> 00:08:39,080
+so this master class and also the
+
+198
+00:08:35,880 --> 00:08:41,479
+following one which H will be more
+
+199
+00:08:39,080 --> 00:08:43,479
+practical will focus on this latter
+
+200
+00:08:41,479 --> 00:08:44,880
+aspect a lot on on on bad modeling so
+
+201
+00:08:43,479 --> 00:08:48,080
+I'm going to present
+
+202
+00:08:44,880 --> 00:08:51,200
+some very basic pitfalls that uh we all
+
+203
+00:08:48,080 --> 00:08:54,279
+fall into right and we have fallen into
+
+204
+00:08:51,200 --> 00:08:57,760
+and how to avoid
+
+205
+00:08:54,279 --> 00:09:00,600
+these and as the title suggest uh I'm
+
+206
+00:08:57,760 --> 00:09:03,920
+going to give a lot of examples from owl
+
+207
+00:09:00,600 --> 00:09:07,680
+and scor so um I don't know how many of
+
+208
+00:09:03,920 --> 00:09:10,880
+you are um don't know are not aware of
+
+209
+00:09:07,680 --> 00:09:13,839
+SC and all there are two uh popular
+
+210
+00:09:10,880 --> 00:09:15,040
+semantic modeling Frameworks that are U
+
+211
+00:09:13,839 --> 00:09:19,560
+more or less standardized by the
+
+212
+00:09:15,040 --> 00:09:21,360
+worldwide worldwide Web Consortium and
+
+213
+00:09:19,560 --> 00:09:23,279
+what they have is that they have been
+
+214
+00:09:21,360 --> 00:09:25,680
+developed in the context of the semantic
+
+215
+00:09:23,279 --> 00:09:28,720
+we Vision if you like in the SE we
+
+216
+00:09:25,680 --> 00:09:30,079
+community and one important
+
+217
+00:09:28,720 --> 00:09:31,480
+characteristic that they have is that
+
+218
+00:09:30,079 --> 00:09:35,399
+they they focus on seman
+
+219
+00:09:31,480 --> 00:09:39,959
+interoperability so they are designed in
+
+220
+00:09:35,399 --> 00:09:42,519
+a way that uh facilitates better sematic
+
+221
+00:09:39,959 --> 00:09:43,800
+interoperability now they are not the
+
+222
+00:09:42,519 --> 00:09:45,920
+only or the best means to develop
+
+223
+00:09:43,800 --> 00:09:47,160
+sematic data models a tech scanner for
+
+224
+00:09:45,920 --> 00:09:49,000
+example where I've been working for the
+
+225
+00:09:47,160 --> 00:09:51,200
+last four years we haven't really used
+
+226
+00:09:49,000 --> 00:09:55,480
+this we've been using property graphs
+
+227
+00:09:51,200 --> 00:09:56,920
+and new forj H that is to say that there
+
+228
+00:09:55,480 --> 00:09:59,600
+that I'm not
+
+229
+00:09:56,920 --> 00:10:02,200
+necessarily A proponent of all that
+
+230
+00:09:59,600 --> 00:10:04,920
+always uh scos and all are the only
+
+231
+00:10:02,200 --> 00:10:07,959
+means to develop semantic models right H
+
+232
+00:10:04,920 --> 00:10:10,640
+every framework has its pros and cons uh
+
+233
+00:10:07,959 --> 00:10:12,959
+but of course to to do a comprehensive
+
+234
+00:10:10,640 --> 00:10:14,560
+uh review and discussion on all types of
+
+235
+00:10:12,959 --> 00:10:16,800
+semantic modeling Frameworks would take
+
+236
+00:10:14,560 --> 00:10:19,959
+us not two hours of this master class
+
+237
+00:10:16,800 --> 00:10:23,360
+but uh I don't know a whole month so I
+
+238
+00:10:19,959 --> 00:10:25,800
+decided to focus today on these
+
+239
+00:10:23,360 --> 00:10:28,920
+two uh
+
+240
+00:10:25,800 --> 00:10:29,839
+Frameworks uh plus plus uh these two
+
+241
+00:10:28,920 --> 00:10:32,200
+Frameworks
+
+242
+00:10:29,839 --> 00:10:34,120
+uh have a lot of several public models
+
+243
+00:10:32,200 --> 00:10:36,200
+that have been developed with them and
+
+244
+00:10:34,120 --> 00:10:39,200
+these models as I will show exemplify
+
+245
+00:10:36,200 --> 00:10:40,560
+both good and bad modeling practices so
+
+246
+00:10:39,200 --> 00:10:44,600
+H the examples we're going to see are
+
+247
+00:10:40,560 --> 00:10:46,760
+from scos and all and we can see how um
+
+248
+00:10:44,600 --> 00:10:49,040
+even though these tools are quite
+
+249
+00:10:46,760 --> 00:10:50,760
+powerful and quite nice many times they
+
+250
+00:10:49,040 --> 00:10:54,040
+are misused and when they are misused
+
+251
+00:10:50,760 --> 00:10:57,560
+the saning models that we create er do
+
+252
+00:10:54,040 --> 00:10:57,560
+not do not have high
+
+253
+00:10:57,639 --> 00:11:03,040
+quality so in terms of uh I I need to
+
+254
+00:11:01,000 --> 00:11:05,000
+put a slide here about schedule but just
+
+255
+00:11:03,040 --> 00:11:07,560
+to let you know
+
+256
+00:11:05,000 --> 00:11:09,959
+so this master class is going to go as
+
+257
+00:11:07,560 --> 00:11:11,440
+follows in the as a first part I'm going
+
+258
+00:11:09,959 --> 00:11:13,120
+to talk about some basic semantic
+
+259
+00:11:11,440 --> 00:11:15,560
+modeling elements I'm going to introduce
+
+260
+00:11:13,120 --> 00:11:17,880
+them first in a framework agnostic way
+
+261
+00:11:15,560 --> 00:11:22,279
+as much as possible and then discuss how
+
+262
+00:11:17,880 --> 00:11:24,560
+they are uh supported H within uh SC and
+
+263
+00:11:22,279 --> 00:11:27,680
+all right and I will be using as
+
+264
+00:11:24,560 --> 00:11:29,079
+examples uh the financial uh industry
+
+265
+00:11:27,680 --> 00:11:31,880
+business ontology I don't know if you
+
+266
+00:11:29,079 --> 00:11:33,480
+heard I've heard of it's called fibo Uh
+
+267
+00:11:31,880 --> 00:11:35,880
+and I'm going to I have loaded this
+
+268
+00:11:33,480 --> 00:11:38,760
+already in Pro onology editor and I'm
+
+269
+00:11:35,880 --> 00:11:41,519
+going to show you a examples of of
+
+270
+00:11:38,760 --> 00:11:43,200
+elements based on that then we will talk
+
+271
+00:11:41,519 --> 00:11:44,920
+about some sematic phenomena in more
+
+272
+00:11:43,200 --> 00:11:46,079
+detail like ambiguity and vagueness in
+
+273
+00:11:44,920 --> 00:11:48,160
+order to understand what is the
+
+274
+00:11:46,079 --> 00:11:49,920
+difference and how this affect uh the
+
+275
+00:11:48,160 --> 00:11:52,680
+sematic models that we
+
+276
+00:11:49,920 --> 00:11:54,399
+buil um we will do a short break of
+
+277
+00:11:52,680 --> 00:11:55,880
+around five minutes and then the second
+
+278
+00:11:54,399 --> 00:11:59,000
+part in the second hour of the tutorial
+
+279
+00:11:55,880 --> 00:12:02,720
+we're going to focus on practices on on
+
+280
+00:11:59,000 --> 00:12:06,480
+B on bad if you like H not optimal
+
+281
+00:12:02,720 --> 00:12:09,120
+practices that we follow when we H use
+
+282
+00:12:06,480 --> 00:12:13,839
+scos and all when we develop sanding
+
+283
+00:12:09,120 --> 00:12:18,240
+models and how what we can do to
+
+284
+00:12:13,839 --> 00:12:21,800
+um to avoid these uh this pitfalls uh in
+
+285
+00:12:18,240 --> 00:12:25,399
+the end uh wrapping up uh we're going
+
+286
+00:12:21,800 --> 00:12:27,760
+also as um as promised we're going to
+
+287
+00:12:25,399 --> 00:12:30,079
+give do a giveaway of 10 books of 10
+
+288
+00:12:27,760 --> 00:12:33,519
+electronic books of my seman modeling
+
+289
+00:12:30,079 --> 00:12:38,480
+for data or book which a kind offer of
+
+290
+00:12:33,519 --> 00:12:40,360
+of my publisher um yeah and in terms of
+
+291
+00:12:38,480 --> 00:12:44,480
+questions and answering uh we're going
+
+292
+00:12:40,360 --> 00:12:45,800
+to hold several Q&A sessions between the
+
+293
+00:12:44,480 --> 00:12:49,320
+different parts of
+
+294
+00:12:45,800 --> 00:12:51,240
+the of the presentation so practically
+
+295
+00:12:49,320 --> 00:12:54,120
+every every 15 to 20 minutes there will
+
+296
+00:12:51,240 --> 00:12:58,399
+be a Q&A session so you don't need to
+
+297
+00:12:54,120 --> 00:13:00,360
+wait um for uh for the end to do all
+
+298
+00:12:58,399 --> 00:13:01,880
+your questions of of course if during my
+
+299
+00:13:00,360 --> 00:13:04,680
+presentation you have questions you can
+
+300
+00:13:01,880 --> 00:13:05,959
+actually uh type them down and uh James
+
+301
+00:13:04,680 --> 00:13:08,079
+will pick them up and we'll have them
+
+302
+00:13:05,959 --> 00:13:12,399
+ready for when we start the Q&A
+
+303
+00:13:08,079 --> 00:13:15,279
+session okay so let's
+
+304
+00:13:12,399 --> 00:13:17,000
+start the core element of any semantic
+
+305
+00:13:15,279 --> 00:13:19,720
+model of any ont and knowledge graphs
+
+306
+00:13:17,000 --> 00:13:22,240
+are entities and Concepts now we can
+
+307
+00:13:19,720 --> 00:13:25,120
+always uh get into a debate on what is a
+
+308
+00:13:22,240 --> 00:13:27,040
+concept and what is an entity but uh
+
+309
+00:13:25,120 --> 00:13:28,680
+without being too philosophical an
+
+310
+00:13:27,040 --> 00:13:30,240
+entity is something that may exist
+
+311
+00:13:28,680 --> 00:13:32,839
+concrete completely or abstractly
+
+312
+00:13:30,240 --> 00:13:34,800
+outside or within our mind so entities
+
+313
+00:13:32,839 --> 00:13:37,959
+can be considered things in the world
+
+314
+00:13:34,800 --> 00:13:41,360
+right things in our world in our mind
+
+315
+00:13:37,959 --> 00:13:43,040
+and a useful uh distinction is between
+
+316
+00:13:41,360 --> 00:13:45,360
+concrete and Abstract entities so
+
+317
+00:13:43,040 --> 00:13:48,360
+concrete entities are entities that we
+
+318
+00:13:45,360 --> 00:13:50,480
+can actually that manifest in in a
+
+319
+00:13:48,360 --> 00:13:53,199
+physical or relative physical way that
+
+320
+00:13:50,480 --> 00:13:57,000
+we can actually sense right so things
+
+321
+00:13:53,199 --> 00:14:00,560
+like uh people MC Jager n Manel or
+
+322
+00:13:57,000 --> 00:14:02,680
+events like the 2018 final game or the
+
+323
+00:14:00,560 --> 00:14:04,720
+Empire or buildings and things like that
+
+324
+00:14:02,680 --> 00:14:06,120
+are concrete are Concrete in the sense
+
+325
+00:14:04,720 --> 00:14:08,199
+that we can see them we can see them we
+
+326
+00:14:06,120 --> 00:14:11,199
+can feel them we can actually more or
+
+327
+00:14:08,199 --> 00:14:12,680
+less Define them what they are on the
+
+328
+00:14:11,199 --> 00:14:15,880
+other hand we have a lot of abstract
+
+329
+00:14:12,680 --> 00:14:17,519
+Concepts things like soccer Justice
+
+330
+00:14:15,880 --> 00:14:21,920
+politician architecture architecture in
+
+331
+00:14:17,519 --> 00:14:24,199
+the broader sense um sorry rock music
+
+332
+00:14:21,920 --> 00:14:26,839
+right object oriented programming these
+
+333
+00:14:24,199 --> 00:14:28,120
+are abstract entities in the sense that
+
+334
+00:14:26,839 --> 00:14:30,959
+there are there are entities and
+
+335
+00:14:28,120 --> 00:14:33,480
+Concepts that we as humans invented it
+
+336
+00:14:30,959 --> 00:14:36,040
+sometimes we decided uh to to assign
+
+337
+00:14:33,480 --> 00:14:38,440
+meaning to these entities right and then
+
+338
+00:14:36,040 --> 00:14:40,920
+we started using them in our everyday
+
+339
+00:14:38,440 --> 00:14:43,399
+Communication in general abstract
+
+340
+00:14:40,920 --> 00:14:45,480
+entities are typic are more difficult to
+
+341
+00:14:43,399 --> 00:14:49,680
+model than concrete ones and this is
+
+342
+00:14:45,480 --> 00:14:52,000
+something that H I believe in the world
+
+343
+00:14:49,680 --> 00:14:54,079
+of Knowledge Graph hasn't been stressed
+
+344
+00:14:52,000 --> 00:14:56,839
+enough so many knowledge graphs many
+
+345
+00:14:54,079 --> 00:14:59,880
+ontologies usually talk about named
+
+346
+00:14:56,839 --> 00:15:03,240
+entities right you can see like dedia
+
+347
+00:14:59,880 --> 00:15:05,360
+for instance H or go or Google Knowledge
+
+348
+00:15:03,240 --> 00:15:07,120
+Graph has information about concrete
+
+349
+00:15:05,360 --> 00:15:09,079
+entities so if you if you type in Google
+
+350
+00:15:07,120 --> 00:15:11,120
+Barack Obama you will see all facts
+
+351
+00:15:09,079 --> 00:15:15,320
+about Barack Obama as a as a person
+
+352
+00:15:11,120 --> 00:15:20,000
+right or about Albert Einstein ER and
+
+353
+00:15:15,320 --> 00:15:22,120
+but uh to find good good ontologies and
+
+354
+00:15:20,000 --> 00:15:24,120
+good semantic models about abstract
+
+355
+00:15:22,120 --> 00:15:26,759
+entities good in the sense that you
+
+356
+00:15:24,120 --> 00:15:29,800
+actually agree with
+
+357
+00:15:26,759 --> 00:15:31,560
+the with the conceptualizations that uh
+
+358
+00:15:29,800 --> 00:15:34,240
+their creators have done is actually
+
+359
+00:15:31,560 --> 00:15:36,480
+pretty tough It's actually tougher than
+
+360
+00:15:34,240 --> 00:15:38,839
+dealing with concrete entities but it's
+
+361
+00:15:36,480 --> 00:15:43,560
+important to to have this distinction in
+
+362
+00:15:38,839 --> 00:15:46,399
+mind now if you have worked with
+
+363
+00:15:43,560 --> 00:15:49,639
+all H you may have
+
+364
+00:15:46,399 --> 00:15:51,959
+known the distinction between of to
+
+365
+00:15:49,639 --> 00:15:54,680
+classes and individuals so what are
+
+366
+00:15:51,959 --> 00:15:57,639
+classes classes are practically abstract
+
+367
+00:15:54,680 --> 00:15:59,639
+entities that represent kind of things
+
+368
+00:15:57,639 --> 00:16:01,800
+in the world and they may serve as
+
+369
+00:15:59,639 --> 00:16:04,040
+semantic tapes of other entities which
+
+370
+00:16:01,800 --> 00:16:06,079
+can also be concrete or abstract so in a
+
+371
+00:16:04,040 --> 00:16:08,399
+sense we can say that for instance we
+
+372
+00:16:06,079 --> 00:16:09,920
+have the abstract entity building and
+
+373
+00:16:08,399 --> 00:16:12,240
+then we have Empire State which is a
+
+374
+00:16:09,920 --> 00:16:14,079
+concrete instantiation of building the
+
+375
+00:16:12,240 --> 00:16:15,880
+latter is called an instance or
+
+376
+00:16:14,079 --> 00:16:18,880
+individual of the class the same would
+
+377
+00:16:15,880 --> 00:16:21,440
+apply for dog H being a class and lass
+
+378
+00:16:18,880 --> 00:16:23,480
+being an instance of of a dog and
+
+379
+00:16:21,440 --> 00:16:27,600
+computer or an instance of
+
+380
+00:16:23,480 --> 00:16:28,920
+computer um so in all entities in rdf
+
+381
+00:16:27,600 --> 00:16:31,360
+and all usually entities are organized
+
+382
+00:16:28,920 --> 00:16:34,279
+to class individuals while in
+
+383
+00:16:31,360 --> 00:16:38,480
+SC H all entities are instances of the
+
+384
+00:16:34,279 --> 00:16:42,079
+class scon concept so let's see that in
+
+385
+00:16:38,480 --> 00:16:43,759
+action uh here I have loaded in Pro as I
+
+386
+00:16:42,079 --> 00:16:47,800
+said the FIB onology the financial
+
+387
+00:16:43,759 --> 00:16:50,639
+business industry ontology so uh there
+
+388
+00:16:47,800 --> 00:16:52,440
+is a dedicated tab called classes that
+
+389
+00:16:50,639 --> 00:16:54,959
+has H
+
+390
+00:16:52,440 --> 00:16:57,680
+defines H classes that this group of
+
+391
+00:16:54,959 --> 00:16:59,519
+things so for instance there is a class
+
+392
+00:16:57,680 --> 00:17:01,839
+called arrangement
+
+393
+00:16:59,519 --> 00:17:03,639
+which has a meaning called the structure
+
+394
+00:17:01,839 --> 00:17:05,880
+of means of organizing information blah
+
+395
+00:17:03,639 --> 00:17:09,240
+blah blah right so all these that you
+
+396
+00:17:05,880 --> 00:17:12,559
+see in Pro here in in yellow are classes
+
+397
+00:17:09,240 --> 00:17:16,000
+are things that H serve as semantic
+
+398
+00:17:12,559 --> 00:17:19,480
+types of of other entities on the other
+
+399
+00:17:16,000 --> 00:17:20,480
+hand on this tab we have individuals so
+
+400
+00:17:19,480 --> 00:17:23,799
+these
+
+401
+00:17:20,480 --> 00:17:26,919
+individuals um are entities or Concept
+
+402
+00:17:23,799 --> 00:17:30,880
+in some cases that belong to some class
+
+403
+00:17:26,919 --> 00:17:33,760
+so for instance uh um let's say let's
+
+404
+00:17:30,880 --> 00:17:36,600
+take for instance 360t which I have no
+
+405
+00:17:33,760 --> 00:17:38,559
+idea what it is is an instance of
+
+406
+00:17:36,600 --> 00:17:42,039
+financial service provider or of
+
+407
+00:17:38,559 --> 00:17:44,679
+operating level uh
+
+408
+00:17:42,039 --> 00:17:49,160
+Market uh on the other hand if we go to
+
+409
+00:17:44,679 --> 00:17:51,960
+SC so this here in this in this um Pro
+
+410
+00:17:49,160 --> 00:17:56,120
+window I have loaded a vocabulary
+
+411
+00:17:51,960 --> 00:17:59,960
+version of fibo which consists only of H
+
+412
+00:17:56,120 --> 00:18:02,679
+of SC Concepts we can see that as
+
+413
+00:17:59,960 --> 00:18:04,720
+classes we only have a few practically
+
+414
+00:18:02,679 --> 00:18:07,360
+we have the class concept SC concept
+
+415
+00:18:04,720 --> 00:18:10,559
+which is a fundamental class of concept
+
+416
+00:18:07,360 --> 00:18:14,919
+and then everything else if we go to
+
+417
+00:18:10,559 --> 00:18:16,000
+individuals are as you can see instances
+
+418
+00:18:14,919 --> 00:18:20,600
+of
+
+419
+00:18:16,000 --> 00:18:24,720
+concept so in a sense SC is um less
+
+420
+00:18:20,600 --> 00:18:29,799
+formal than owl right SC focuses treats
+
+421
+00:18:24,720 --> 00:18:31,840
+all entities or most entities as h as as
+
+422
+00:18:29,799 --> 00:18:35,440
+individual as Concepts doesn't care
+
+423
+00:18:31,840 --> 00:18:40,600
+about the semantic type of things right
+
+424
+00:18:35,440 --> 00:18:43,280
+h on the other hand um all rdf and all U
+
+425
+00:18:40,600 --> 00:18:46,880
+focus more on the distinction sorry of
+
+426
+00:18:43,280 --> 00:18:46,880
+class individuals is really really
+
+427
+00:18:46,919 --> 00:18:51,320
+important
+
+428
+00:18:48,960 --> 00:18:54,320
+okay
+
+429
+00:18:51,320 --> 00:18:57,240
+now there is uh something that I have
+
+430
+00:18:54,320 --> 00:19:00,280
+noticed throughout the years in uh in
+
+431
+00:18:57,240 --> 00:19:03,679
+the bibliography about semantic about o
+
+432
+00:19:00,280 --> 00:19:07,840
+rdf andol is that in many papers we
+
+433
+00:19:03,679 --> 00:19:10,919
+have um we have definitions that suggest
+
+434
+00:19:07,840 --> 00:19:14,360
+that a concept is a class this is what I
+
+435
+00:19:10,919 --> 00:19:15,679
+call the concept equals class fallacy so
+
+436
+00:19:14,360 --> 00:19:19,559
+if you see for example there is this
+
+437
+00:19:15,679 --> 00:19:23,280
+famous Pro tutorial from almost 20 years
+
+438
+00:19:19,559 --> 00:19:25,520
+ago that suggests that every every every
+
+439
+00:19:23,280 --> 00:19:28,080
+concept is a class that's not that's
+
+440
+00:19:25,520 --> 00:19:31,120
+partially correct so a concept is a unit
+
+441
+00:19:28,080 --> 00:19:32,600
+of meaning and it can be uh it can serve
+
+442
+00:19:31,120 --> 00:19:35,600
+as a class it can have the role of a
+
+443
+00:19:32,600 --> 00:19:37,039
+class but only if its definition implies
+
+444
+00:19:35,600 --> 00:19:39,039
+a set of enties that
+
+445
+00:19:37,039 --> 00:19:42,080
+instantiate but this is not always the
+
+446
+00:19:39,039 --> 00:19:44,480
+case so for instance you can see here
+
+447
+00:19:42,080 --> 00:19:46,559
+you can see in the table that we have
+
+448
+00:19:44,480 --> 00:19:48,919
+the class song okay what is the instance
+
+449
+00:19:46,559 --> 00:19:51,120
+of a class song a concrete song I don't
+
+450
+00:19:48,919 --> 00:19:53,520
+know Stairway to Heaven of of Le japany
+
+451
+00:19:51,120 --> 00:19:55,919
+for instance right soccer game an
+
+452
+00:19:53,520 --> 00:19:58,480
+instance the game that I saw yesterday
+
+453
+00:19:55,919 --> 00:20:01,200
+between team a and Team B politicians
+
+454
+00:19:58,480 --> 00:20:02,919
+with can have many politicians when we
+
+455
+00:20:01,200 --> 00:20:07,559
+go to more abstract entities like
+
+456
+00:20:02,919 --> 00:20:10,919
+justice music soer communism right what
+
+457
+00:20:07,559 --> 00:20:13,480
+would be H if we decide that this is a
+
+458
+00:20:10,919 --> 00:20:15,400
+class what would be its instances
+
+459
+00:20:13,480 --> 00:20:18,919
+anything related for example to
+
+460
+00:20:15,400 --> 00:20:20,559
+music um have also in mind that in many
+
+461
+00:20:18,919 --> 00:20:22,480
+cases these are also instances of other
+
+462
+00:20:20,559 --> 00:20:25,840
+classes so communism would be an
+
+463
+00:20:22,480 --> 00:20:27,400
+instance of a political system right
+
+464
+00:20:25,840 --> 00:20:31,280
+advertising could be an instance of
+
+465
+00:20:27,400 --> 00:20:33,400
+activity so so the the the entities and
+
+466
+00:20:31,280 --> 00:20:37,039
+the concepts that you see in the in the
+
+467
+00:20:33,400 --> 00:20:38,720
+right column are actually things that uh
+
+468
+00:20:37,039 --> 00:20:41,039
+actually abstract Concepts they're not
+
+469
+00:20:38,720 --> 00:20:43,679
+concrete entities which however you may
+
+470
+00:20:41,039 --> 00:20:46,679
+find in an onology both as a class and
+
+471
+00:20:43,679 --> 00:20:48,559
+as a as an individual right so the only
+
+472
+00:20:46,679 --> 00:20:50,640
+Criterion that matters when determining
+
+473
+00:20:48,559 --> 00:20:51,960
+if an abstract entity can be a class is
+
+474
+00:20:50,640 --> 00:20:54,440
+whether there are other entities that
+
+475
+00:20:51,960 --> 00:20:58,159
+can be instances of it we will see in
+
+476
+00:20:54,440 --> 00:21:00,000
+the second part of this um of this class
+
+477
+00:20:58,159 --> 00:21:05,240
+uh
+
+478
+00:21:00,000 --> 00:21:07,600
+how this fallacy results into um getting
+
+479
+00:21:05,240 --> 00:21:09,840
+wrong bad reasoning but reasoning in
+
+480
+00:21:07,600 --> 00:21:10,679
+ontologies but so but keep that in mind
+
+481
+00:21:09,840 --> 00:21:14,960
+for
+
+482
+00:21:10,679 --> 00:21:18,360
+now now the second main aspect of uh the
+
+483
+00:21:14,960 --> 00:21:20,679
+second main element of a an onology of a
+
+484
+00:21:18,360 --> 00:21:22,080
+semantic model are relations right so
+
+485
+00:21:20,679 --> 00:21:24,000
+it's quite straightforward the relation
+
+486
+00:21:22,080 --> 00:21:26,320
+expresses a particular way that two or
+
+487
+00:21:24,000 --> 00:21:29,679
+more ends can be relate to one another
+
+488
+00:21:26,320 --> 00:21:32,760
+in SE web jargon usually in rdf no these
+
+489
+00:21:29,679 --> 00:21:36,400
+are called object properties so if we go
+
+490
+00:21:32,760 --> 00:21:38,000
+again to the FIB onology we can see that
+
+491
+00:21:36,400 --> 00:21:41,520
+there is a tab called object properties
+
+492
+00:21:38,000 --> 00:21:43,919
+and you can see various um relations
+
+493
+00:21:41,520 --> 00:21:45,760
+usually expressed in a verb form right
+
+494
+00:21:43,919 --> 00:21:49,840
+so you can see here for instance there
+
+495
+00:21:45,760 --> 00:21:53,760
+is this relation Bu from right and uh
+
+496
+00:21:49,840 --> 00:21:58,200
+these are used to to link individuals to
+
+497
+00:21:53,760 --> 00:22:00,720
+each other so for instance if we go um
+
+498
+00:21:58,200 --> 00:22:02,640
+yeah if if we take this uh I don't know
+
+499
+00:22:00,720 --> 00:22:04,039
+what entity is this you can see that it
+
+500
+00:22:02,640 --> 00:22:07,400
+has an object property assession that
+
+501
+00:22:04,039 --> 00:22:09,840
+says that this uh number identifies the
+
+502
+00:22:07,400 --> 00:22:10,919
+Proctor and gble Company common stock
+
+503
+00:22:09,840 --> 00:22:15,880
+right
+
+504
+00:22:10,919 --> 00:22:20,320
+so uh this is what a relation is and
+
+505
+00:22:15,880 --> 00:22:23,039
+um go right and the diagram you see here
+
+506
+00:22:20,320 --> 00:22:26,159
+comes from Esco Esco is is an onology
+
+507
+00:22:23,039 --> 00:22:27,240
+for uh the labor market domain and it
+
+508
+00:22:26,159 --> 00:22:30,000
+mainly
+
+509
+00:22:27,240 --> 00:22:32,080
+concerns uh m models occupations and
+
+510
+00:22:30,000 --> 00:22:34,640
+skills and you can see here that we have
+
+511
+00:22:32,080 --> 00:22:36,159
+a relation between skill and occupation
+
+512
+00:22:34,640 --> 00:22:38,880
+we have actually two relation one says
+
+513
+00:22:36,159 --> 00:22:40,559
+that H when a skill is optional for an
+
+514
+00:22:38,880 --> 00:22:42,679
+occupation when a skill is essential for
+
+515
+00:22:40,559 --> 00:22:42,679
+an
+
+516
+00:22:43,559 --> 00:22:48,440
+occupation apart from relation we also
+
+517
+00:22:45,559 --> 00:22:50,559
+have attributes attributes are also
+
+518
+00:22:48,440 --> 00:22:52,039
+represent characteristics of entities
+
+519
+00:22:50,559 --> 00:22:53,360
+that we cannot or choose not to
+
+520
+00:22:52,039 --> 00:22:55,880
+represent as a relation with another
+
+521
+00:22:53,360 --> 00:22:57,120
+entity and instead we use literal values
+
+522
+00:22:55,880 --> 00:22:59,559
+so the difference is that the
+
+523
+00:22:57,120 --> 00:23:01,440
+characteristic of of the entity of the
+
+524
+00:22:59,559 --> 00:23:03,520
+concept that we want to model is not
+
+525
+00:23:01,440 --> 00:23:06,679
+modeled as another entity or concept but
+
+526
+00:23:03,520 --> 00:23:11,520
+rather as a string a number or generally
+
+527
+00:23:06,679 --> 00:23:14,240
+a literal value right so H you can see
+
+528
+00:23:11,520 --> 00:23:16,760
+in the in the diagram that for instance
+
+529
+00:23:14,240 --> 00:23:18,679
+we have a person this person his name is
+
+530
+00:23:16,760 --> 00:23:20,840
+John so name here is an attribute and
+
+531
+00:23:18,679 --> 00:23:25,520
+his age is 27 years old which is also an
+
+532
+00:23:20,840 --> 00:23:27,320
+attribute right and um there is also an
+
+533
+00:23:25,520 --> 00:23:29,480
+entity book and the book has titled
+
+534
+00:23:27,320 --> 00:23:31,600
+graph databases and Author Jim ver and
+
+535
+00:23:29,480 --> 00:23:34,880
+Robinson and this is where I said that
+
+536
+00:23:31,600 --> 00:23:36,720
+it may it may be that the the conceptual
+
+537
+00:23:34,880 --> 00:23:39,320
+distinction between an attribute and a
+
+538
+00:23:36,720 --> 00:23:40,799
+relation can be tricky so for instance
+
+539
+00:23:39,320 --> 00:23:43,679
+the both the book authors in this
+
+540
+00:23:40,799 --> 00:23:45,480
+example are represented as attributes
+
+541
+00:23:43,679 --> 00:23:47,960
+right we just have strings mentioning
+
+542
+00:23:45,480 --> 00:23:51,440
+their names right we don't know what the
+
+543
+00:23:47,960 --> 00:23:54,679
+entity Jim Weber is or Ian Robinson is
+
+544
+00:23:51,440 --> 00:23:56,720
+right uh so in many cases this is a
+
+545
+00:23:54,679 --> 00:23:58,679
+matter of representation choice so just
+
+546
+00:23:56,720 --> 00:24:00,799
+because you see in an ontology in a
+
+547
+00:23:58,679 --> 00:24:03,640
+given ontology something being modeled
+
+548
+00:24:00,799 --> 00:24:05,120
+as a attribute or relation it doesn't
+
+549
+00:24:03,640 --> 00:24:08,200
+mean that in another
+
+550
+00:24:05,120 --> 00:24:10,279
+ontology H the same entity the same
+
+551
+00:24:08,200 --> 00:24:12,520
+sorry the same relation will also be a
+
+552
+00:24:10,279 --> 00:24:14,720
+relation or the same or or an
+
+553
+00:24:12,520 --> 00:24:17,919
+attribute the other thing to notice here
+
+554
+00:24:14,720 --> 00:24:21,440
+is that we also can have Rel attributes
+
+555
+00:24:17,919 --> 00:24:23,080
+between uh for a relation right so the
+
+556
+00:24:21,440 --> 00:24:26,880
+Friendship relation for instance which
+
+557
+00:24:23,080 --> 00:24:31,120
+says that John is friends with Sally
+
+558
+00:24:26,880 --> 00:24:32,520
+since November since September 1st 2013
+
+559
+00:24:31,120 --> 00:24:33,910
+indicates
+
+560
+00:24:32,520 --> 00:24:35,159
+that
+
+561
+00:24:33,910 --> 00:24:40,399
+[Music]
+
+562
+00:24:35,159 --> 00:24:42,559
+um uh sorry the date of uh of friendship
+
+563
+00:24:40,399 --> 00:24:45,600
+is not an attribute neither of of of
+
+564
+00:24:42,559 --> 00:24:48,840
+Jones nor of sis so it's an attribute of
+
+565
+00:24:45,600 --> 00:24:53,520
+the relation right H so relations can
+
+566
+00:24:48,840 --> 00:24:55,240
+have attributes now in all and in rdf h
+
+567
+00:24:53,520 --> 00:24:57,159
+generally relation attributes are not
+
+568
+00:24:55,240 --> 00:25:00,279
+allowed so if you wanted to model this
+
+569
+00:24:57,159 --> 00:25:04,480
+particular diagram in
+
+570
+00:25:00,279 --> 00:25:09,320
+owl uh you would need to to find a
+
+571
+00:25:04,480 --> 00:25:11,360
+different way to to represent that that
+
+572
+00:25:09,320 --> 00:25:12,799
+information H there are some patterns
+
+573
+00:25:11,360 --> 00:25:15,520
+for that which I'm not going to cover
+
+574
+00:25:12,799 --> 00:25:17,679
+right now H it's actually called an Nary
+
+575
+00:25:15,520 --> 00:25:19,720
+relation pattern but what I want you to
+
+576
+00:25:17,679 --> 00:25:23,159
+keep is this now there is some effort in
+
+577
+00:25:19,720 --> 00:25:26,120
+the last in the last year or so uh with
+
+578
+00:25:23,159 --> 00:25:28,559
+a version called rdf rdf plus I think
+
+579
+00:25:26,120 --> 00:25:30,919
+which tries to to tackle this phenomenon
+
+580
+00:25:28,559 --> 00:25:34,240
+but in general in standard all so in Pro
+
+581
+00:25:30,919 --> 00:25:38,840
+that I just showed you H you cannot
+
+582
+00:25:34,240 --> 00:25:42,840
+Define a data type property for uh for a
+
+583
+00:25:38,840 --> 00:25:45,399
+relation now um also in terms of
+
+584
+00:25:42,840 --> 00:25:48,480
+terminology while relations are called
+
+585
+00:25:45,399 --> 00:25:51,720
+object properties H attributes are
+
+586
+00:25:48,480 --> 00:25:54,039
+called data type properties so again if
+
+587
+00:25:51,720 --> 00:25:57,240
+we go here there
+
+588
+00:25:54,039 --> 00:26:00,640
+is um
+
+589
+00:25:57,240 --> 00:26:02,600
+sorry we have all these properties that
+
+590
+00:26:00,640 --> 00:26:04,360
+uh are called Data properties and their
+
+591
+00:26:02,600 --> 00:26:06,919
+characteristic is that the values they
+
+592
+00:26:04,360 --> 00:26:10,360
+take are not other entities are not
+
+593
+00:26:06,919 --> 00:26:13,120
+other individuals but are literal uh
+
+594
+00:26:10,360 --> 00:26:15,799
+literal values so again if we go here to
+
+595
+00:26:13,120 --> 00:26:17,880
+that entity which identifies SP gab we
+
+596
+00:26:15,799 --> 00:26:19,840
+can see that it has a tag and the tag is
+
+597
+00:26:17,880 --> 00:26:24,039
+a string right it's just a string with
+
+598
+00:26:19,840 --> 00:26:24,039
+no further ER
+
+599
+00:26:25,799 --> 00:26:30,240
+meaning now
+
+600
+00:26:28,720 --> 00:26:32,440
+depending on the language in general we
+
+601
+00:26:30,240 --> 00:26:37,440
+can also have comp more complex axom and
+
+602
+00:26:32,440 --> 00:26:39,440
+rules and uh all actually is has quite
+
+603
+00:26:37,440 --> 00:26:42,000
+many axioms
+
+604
+00:26:39,440 --> 00:26:43,399
+to uh that you can use that we can use
+
+605
+00:26:42,000 --> 00:26:45,240
+in order to Define more complex
+
+606
+00:26:43,399 --> 00:26:49,320
+semantics right more elaborate semantics
+
+607
+00:26:45,240 --> 00:26:51,919
+and even enable ER reasoning so an an
+
+608
+00:26:49,320 --> 00:26:55,200
+example would be H to Define for
+
+609
+00:26:51,919 --> 00:26:57,360
+instance the relation has ankle and
+
+610
+00:26:55,200 --> 00:27:00,720
+instead of and Define an action that
+
+611
+00:26:57,360 --> 00:27:03,799
+says that if an entity has someone as
+
+612
+00:27:00,720 --> 00:27:06,080
+parent and this parent and this and and
+
+613
+00:27:03,799 --> 00:27:08,520
+this parent has someone as brother then
+
+614
+00:27:06,080 --> 00:27:12,039
+this brother is the uncle of the first
+
+615
+00:27:08,520 --> 00:27:14,880
+entity right so these kind of actions
+
+616
+00:27:12,039 --> 00:27:20,799
+allow for inference allow
+
+617
+00:27:14,880 --> 00:27:23,919
+for instead of H instead of er asserting
+
+618
+00:27:20,799 --> 00:27:28,240
+all facts to also have infer in iner
+
+619
+00:27:23,919 --> 00:27:30,919
+facts ER again if we go to uh to the f
+
+620
+00:27:28,240 --> 00:27:32,640
+onology can see SE several such examples
+
+621
+00:27:30,919 --> 00:27:36,399
+so if we go to classes for instance we
+
+622
+00:27:32,640 --> 00:27:39,440
+can see that some classes are defined as
+
+623
+00:27:36,399 --> 00:27:40,640
+combinations of other classes so for
+
+624
+00:27:39,440 --> 00:27:45,399
+instance we have
+
+625
+00:27:40,640 --> 00:27:48,080
+household so household if we go here we
+
+626
+00:27:45,399 --> 00:27:51,960
+can see that it's a subass of an
+
+627
+00:27:48,080 --> 00:27:54,080
+Institutional unit that has members some
+
+628
+00:27:51,960 --> 00:27:56,080
+person which means that a household in
+
+629
+00:27:54,080 --> 00:27:58,360
+order to be defined as a household it
+
+630
+00:27:56,080 --> 00:27:59,880
+needs to have someone as a member some
+
+631
+00:27:58,360 --> 00:28:03,559
+as a member otherwise it's not a
+
+632
+00:27:59,880 --> 00:28:06,320
+household and it's located to maximum
+
+633
+00:28:03,559 --> 00:28:08,279
+one housing unit so these are
+
+634
+00:28:06,320 --> 00:28:12,640
+practically axioms if you like or
+
+635
+00:28:08,279 --> 00:28:14,240
+inference rules that uh allow us to
+
+636
+00:28:12,640 --> 00:28:17,159
+instead of saying that something is a
+
+637
+00:28:14,240 --> 00:28:19,399
+household we we allow the system to
+
+638
+00:28:17,159 --> 00:28:24,600
+reason that ah something is a household
+
+639
+00:28:19,399 --> 00:28:28,360
+if all this H if all these premises
+
+640
+00:28:24,600 --> 00:28:32,679
+hold now um in today's Master Class I'm
+
+641
+00:28:28,360 --> 00:28:35,120
+not going to cover axium so much uh it's
+
+642
+00:28:32,679 --> 00:28:39,320
+it will be a topic perhaps of of a
+
+643
+00:28:35,120 --> 00:28:44,720
+future uh ER master class but keep in
+
+644
+00:28:39,320 --> 00:28:48,760
+mind that axioms ER are as good as the
+
+645
+00:28:44,720 --> 00:28:51,240
+basic assertions right so if we Define
+
+646
+00:28:48,760 --> 00:28:54,760
+here this these are just logic based
+
+647
+00:28:51,240 --> 00:28:57,000
+inferences so if for instance I Define
+
+648
+00:28:54,760 --> 00:29:00,399
+that uh some entity which is not a
+
+649
+00:28:57,000 --> 00:29:02,080
+person and I Define it as a person then
+
+650
+00:29:00,399 --> 00:29:06,880
+the the reasoning will still be be be
+
+651
+00:29:02,080 --> 00:29:09,679
+held right H in general owl uh does not
+
+652
+00:29:06,880 --> 00:29:12,399
+be behaves with what we call open world
+
+653
+00:29:09,679 --> 00:29:14,720
+assumption so all these ations are not
+
+654
+00:29:12,399 --> 00:29:16,640
+really constraints they are they're
+
+655
+00:29:14,720 --> 00:29:19,200
+actually inference rules right and
+
+656
+00:29:16,640 --> 00:29:23,559
+that's something important to to keep in
+
+657
+00:29:19,200 --> 00:29:25,000
+mind when h building a a model in owl
+
+658
+00:29:23,559 --> 00:29:26,880
+and actually for this reason I don't
+
+659
+00:29:25,000 --> 00:29:30,519
+know if you how many of you have heard
+
+660
+00:29:26,880 --> 00:29:34,200
+suckle uh um C is a is a constraint
+
+661
+00:29:30,519 --> 00:29:37,159
+language that was developed for rdf
+
+662
+00:29:34,200 --> 00:29:41,039
+andol exactly for the purpose of
+
+663
+00:29:37,159 --> 00:29:46,919
+enabling to uh build constraints on top
+
+664
+00:29:41,039 --> 00:29:46,919
+of uh of um of of of all
+
+665
+00:29:47,200 --> 00:29:53,840
+models okay moving
+
+666
+00:29:50,600 --> 00:29:57,159
+on now I would say that these are the
+
+667
+00:29:53,840 --> 00:30:00,840
+general elements right so now let's see
+
+668
+00:29:57,159 --> 00:30:05,279
+some more spef specific elements uh that
+
+669
+00:30:00,840 --> 00:30:06,120
+are spec particularly found in in in o w
+
+670
+00:30:05,279 --> 00:30:08,200
+and
+
+671
+00:30:06,120 --> 00:30:10,640
+scores one important element is
+
+672
+00:30:08,200 --> 00:30:12,919
+lexicalization elements or if you like
+
+673
+00:30:10,640 --> 00:30:15,000
+labels right so lexicalization in
+
+674
+00:30:12,919 --> 00:30:17,240
+general links a model element that can
+
+675
+00:30:15,000 --> 00:30:19,519
+be an entity relation an attribute to
+
+676
+00:30:17,240 --> 00:30:23,159
+one or more terms that can be used to
+
+677
+00:30:19,519 --> 00:30:26,039
+express it in natural language right
+
+678
+00:30:23,159 --> 00:30:28,640
+so for instance we have the concept
+
+679
+00:30:26,039 --> 00:30:31,039
+shrubs The Entity shrubs and we have its
+
+680
+00:30:28,640 --> 00:30:33,120
+labels how is it expressed in different
+
+681
+00:30:31,039 --> 00:30:36,159
+languages you see that we have two
+
+682
+00:30:33,120 --> 00:30:40,399
+English words shrubs and bushes H and
+
+683
+00:30:36,159 --> 00:30:42,320
+Arbus and Buon in French now all these
+
+684
+00:30:40,399 --> 00:30:44,480
+terms are practically synonyms to each
+
+685
+00:30:42,320 --> 00:30:47,840
+other they mean the same thing and
+
+686
+00:30:44,480 --> 00:30:49,640
+actually that's the gist let's say of
+
+687
+00:30:47,840 --> 00:30:53,440
+semantic modeling semantic modeling is
+
+688
+00:30:49,640 --> 00:30:55,919
+about grouping words into into units of
+
+689
+00:30:53,440 --> 00:30:57,519
+meanings into into Concepts right it
+
+690
+00:30:55,919 --> 00:31:00,559
+doesn't make sense in the semantic model
+
+691
+00:30:57,519 --> 00:31:03,080
+to have shrubs and bushes as a different
+
+692
+00:31:00,559 --> 00:31:04,880
+entity when they mean the same thing
+
+693
+00:31:03,080 --> 00:31:08,360
+because that beats the purpose of a
+
+694
+00:31:04,880 --> 00:31:10,960
+semantic model right now in O WL
+
+695
+00:31:08,360 --> 00:31:13,120
+calization is known as as labeling so we
+
+696
+00:31:10,960 --> 00:31:14,639
+can see the labels we can see for
+
+697
+00:31:13,120 --> 00:31:17,519
+instance that for every class here we
+
+698
+00:31:14,639 --> 00:31:18,880
+can see it has a label right and in
+
+699
+00:31:17,519 --> 00:31:22,880
+theory you can have as many labels as
+
+700
+00:31:18,880 --> 00:31:28,240
+you want for for for as many languages H
+
+701
+00:31:22,880 --> 00:31:31,399
+as you want and labels serve uh two
+
+702
+00:31:28,240 --> 00:31:33,039
+purposes one purpose is to explain the
+
+703
+00:31:31,399 --> 00:31:36,960
+concept better right so you may have a
+
+704
+00:31:33,039 --> 00:31:38,840
+name of the concept of the entity and H
+
+705
+00:31:36,960 --> 00:31:41,000
+but it's not clear or it's not clear to
+
+706
+00:31:38,840 --> 00:31:44,480
+to everyone so you add a you add
+
+707
+00:31:41,000 --> 00:31:47,039
+additional labels to to make it h more
+
+708
+00:31:44,480 --> 00:31:48,760
+understandable but it's also an element
+
+709
+00:31:47,039 --> 00:31:51,559
+that is used heavily for natural
+
+710
+00:31:48,760 --> 00:31:53,360
+language processing applications so if
+
+711
+00:31:51,559 --> 00:31:54,880
+you have an ontology and you want to use
+
+712
+00:31:53,360 --> 00:31:58,360
+it Knowledge Graph and you want to use
+
+713
+00:31:54,880 --> 00:32:01,279
+it to detect entities Within news
+
+714
+00:31:58,360 --> 00:32:03,559
+articles for instance right exactly
+
+715
+00:32:01,279 --> 00:32:05,880
+because a concept or an entity can be
+
+716
+00:32:03,559 --> 00:32:07,519
+expressed in multiple different ways you
+
+717
+00:32:05,880 --> 00:32:11,960
+need to know these different ways in
+
+718
+00:32:07,519 --> 00:32:14,480
+order to map mentions of H of entities
+
+719
+00:32:11,960 --> 00:32:17,159
+into text to the actual entities in the
+
+720
+00:32:14,480 --> 00:32:17,159
+in the semantic
+
+721
+00:32:17,200 --> 00:32:23,000
+model another big ER part of semantic
+
+722
+00:32:21,720 --> 00:32:26,080
+models is the meaning inclusion
+
+723
+00:32:23,000 --> 00:32:31,279
+relations right so as humans we're uh
+
+724
+00:32:26,080 --> 00:32:34,000
+pretty Ed and Keen to uh organize things
+
+725
+00:32:31,279 --> 00:32:36,360
+in a hierarchical way where the things
+
+726
+00:32:34,000 --> 00:32:40,679
+in the lower lowest part of hierarchies
+
+727
+00:32:36,360 --> 00:32:42,600
+are H specializations of the the things
+
+728
+00:32:40,679 --> 00:32:45,960
+in the upper parts of the hierarchy
+
+729
+00:32:42,600 --> 00:32:47,720
+right so meaning inclusion in general h
+
+730
+00:32:45,960 --> 00:32:50,120
+means that two modeling elements this
+
+731
+00:32:47,720 --> 00:32:52,799
+can be relations or classes or
+
+732
+00:32:50,120 --> 00:32:55,279
+individuals
+
+733
+00:32:52,799 --> 00:32:57,840
+ER the meaning of the one is included in
+
+734
+00:32:55,279 --> 00:33:00,519
+the meaning of the other right so you
+
+735
+00:32:57,840 --> 00:33:03,440
+you can see here that an eagle is a bird
+
+736
+00:33:00,519 --> 00:33:06,399
+H penguins are birds uh and reptiles
+
+737
+00:33:03,440 --> 00:33:08,200
+birds and mammals are sorry uh
+
+738
+00:33:06,399 --> 00:33:11,039
+vertebrates
+
+739
+00:33:08,200 --> 00:33:14,080
+right when it comes to classes and
+
+740
+00:33:11,039 --> 00:33:16,159
+relations then we have what we call a
+
+741
+00:33:14,080 --> 00:33:17,880
+subsumption so when meaning inclusion is
+
+742
+00:33:16,159 --> 00:33:20,440
+applied to a class it is called class
+
+743
+00:33:17,880 --> 00:33:21,519
+subsumption or subclassing if you like
+
+744
+00:33:20,440 --> 00:33:23,120
+and has the following logical
+
+745
+00:33:21,519 --> 00:33:25,919
+implication which is very important to
+
+746
+00:33:23,120 --> 00:33:27,880
+keep in mind if Class A is a subass of
+
+747
+00:33:25,919 --> 00:33:31,519
+Class B then all entities that
+
+748
+00:33:27,880 --> 00:33:34,279
+instantiate a are also instances of B
+
+749
+00:33:31,519 --> 00:33:36,480
+right so if you can see here we have
+
+750
+00:33:34,279 --> 00:33:38,679
+spicy pizza and hot and spicy Pizza this
+
+751
+00:33:36,480 --> 00:33:43,519
+is an axum practically that says that
+
+752
+00:33:38,679 --> 00:33:46,600
+all pizzas or individual pizzas that ER
+
+753
+00:33:43,519 --> 00:33:50,720
+are instances of hot and spicy Pizza are
+
+754
+00:33:46,600 --> 00:33:52,760
+also um uh instances of spicy Pizza
+
+755
+00:33:50,720 --> 00:33:56,799
+therefore if we apply a Reasoner to that
+
+756
+00:33:52,760 --> 00:33:58,559
+it will infer that it will infer that uh
+
+757
+00:33:56,799 --> 00:34:02,320
+that fact and the same applies for
+
+758
+00:33:58,559 --> 00:34:04,639
+relation so for instance if we have uh
+
+759
+00:34:02,320 --> 00:34:07,880
+the the relation has ingredient for
+
+760
+00:34:04,639 --> 00:34:10,760
+pizzas H and it's specialized by has Bas
+
+761
+00:34:07,880 --> 00:34:13,919
+and has topping then if we know that
+
+762
+00:34:10,760 --> 00:34:17,639
+some pizza has individual Pizza has has
+
+763
+00:34:13,919 --> 00:34:20,520
+base some type of crust then can also
+
+764
+00:34:17,639 --> 00:34:23,359
+infer that it has it as as an ingredient
+
+765
+00:34:20,520 --> 00:34:24,839
+right and I can already tell you we'll
+
+766
+00:34:23,359 --> 00:34:27,320
+see that again that in the second part
+
+767
+00:34:24,839 --> 00:34:30,520
+of this presentation that this is also a
+
+768
+00:34:27,320 --> 00:34:33,440
+big source of problems right the the
+
+769
+00:34:30,520 --> 00:34:36,599
+misuse of subclassing it's a whole in
+
+770
+00:34:33,440 --> 00:34:39,839
+the book I dedicate a whole half chapter
+
+771
+00:34:36,599 --> 00:34:42,320
+about this this thing so you will see it
+
+772
+00:34:39,839 --> 00:34:44,800
+in a while what what can be the problems
+
+773
+00:34:42,320 --> 00:34:48,879
+there
+
+774
+00:34:44,800 --> 00:34:50,800
+now if you come from the taxonomy world
+
+775
+00:34:48,879 --> 00:34:52,879
+where you have used to build lighter
+
+776
+00:34:50,800 --> 00:34:55,320
+taxonomies not necessarily class
+
+777
+00:34:52,879 --> 00:34:56,919
+hierarchies you may be aware about the
+
+778
+00:34:55,320 --> 00:34:59,240
+broader narrow relation and this is a
+
+779
+00:34:56,919 --> 00:35:03,400
+relation that is typically found in in
+
+780
+00:34:59,240 --> 00:35:05,520
+in SC right so if I go to the vocabulary
+
+781
+00:35:03,400 --> 00:35:07,839
+here the SC vocabulary of fibo you can
+
+782
+00:35:05,520 --> 00:35:09,280
+see that for every concept I actually
+
+783
+00:35:07,839 --> 00:35:12,800
+have an assertion
+
+784
+00:35:09,280 --> 00:35:15,440
+about a broader aspect so for instance
+
+785
+00:35:12,800 --> 00:35:19,880
+address a broader Sor concept address
+
+786
+00:35:15,440 --> 00:35:22,480
+component has broader aspect agreement
+
+787
+00:35:19,880 --> 00:35:25,320
+has H it doesn't have actually any
+
+788
+00:35:22,480 --> 00:35:27,000
+broader here but yeah so American St
+
+789
+00:35:25,320 --> 00:35:29,000
+statistics publisher has broader
+
+790
+00:35:27,000 --> 00:35:31,400
+statistical information information
+
+791
+00:35:29,000 --> 00:35:34,880
+publisher What's Happening Here is that
+
+792
+00:35:31,400 --> 00:35:37,680
+a broaden Nar relation is indicates that
+
+793
+00:35:34,880 --> 00:35:40,760
+one element is more
+
+794
+00:35:37,680 --> 00:35:44,040
+General broader or than the other which
+
+795
+00:35:40,760 --> 00:35:46,320
+is the narrower one the thing is that
+
+796
+00:35:44,040 --> 00:35:49,880
+this H the semantics of this relation
+
+797
+00:35:46,320 --> 00:35:52,319
+are more relaxed than the subass ones so
+
+798
+00:35:49,880 --> 00:35:53,920
+it actually covers three relation types
+
+799
+00:35:52,319 --> 00:35:56,480
+the first thing is
+
+800
+00:35:53,920 --> 00:35:58,240
+instantiation so you can find in a
+
+801
+00:35:56,480 --> 00:36:02,240
+broader Nar relation things like you
+
+802
+00:35:58,240 --> 00:36:07,280
+have a concept country and then H Greece
+
+803
+00:36:02,240 --> 00:36:10,520
+that is allowed in a scos um in a SC
+
+804
+00:36:07,280 --> 00:36:13,880
+hierarchy in a broader Nar hierarchy
+
+805
+00:36:10,520 --> 00:36:16,119
+right H also in broader narrow relations
+
+806
+00:36:13,880 --> 00:36:17,760
+you can find parts part whole relations
+
+807
+00:36:16,119 --> 00:36:20,440
+so you can you can have for instance the
+
+808
+00:36:17,760 --> 00:36:23,839
+concept uh car and then the concept
+
+809
+00:36:20,440 --> 00:36:26,839
+wheel and the wheel being narrower than
+
+810
+00:36:23,839 --> 00:36:29,920
+than car that doesn't happen or at least
+
+811
+00:36:26,839 --> 00:36:32,240
+shouldn't happen in sub classes and uh
+
+812
+00:36:29,920 --> 00:36:36,359
+it's easy to understand why because for
+
+813
+00:36:32,240 --> 00:36:39,960
+example if you say that H Africa sorry
+
+814
+00:36:36,359 --> 00:36:42,760
+if you say that Greece is a subclass of
+
+815
+00:36:39,960 --> 00:36:45,240
+country right what are the instances of
+
+816
+00:36:42,760 --> 00:36:46,720
+Greece that doesn't have any instances
+
+817
+00:36:45,240 --> 00:36:48,800
+we will see more examples of that later
+
+818
+00:36:46,720 --> 00:36:50,920
+but in general keep in mind that a
+
+819
+00:36:48,800 --> 00:36:53,760
+subclass hierarchy is not equivalent to
+
+820
+00:36:50,920 --> 00:36:56,040
+a broader Nar hierarchy which means that
+
+821
+00:36:53,760 --> 00:36:58,119
+if you have a SC model and you want to
+
+822
+00:36:56,040 --> 00:37:00,560
+translate it
+
+823
+00:36:58,119 --> 00:37:03,599
+into H
+
+824
+00:37:00,560 --> 00:37:05,640
+all you actually need to take each
+
+825
+00:37:03,599 --> 00:37:07,599
+Concepts and decide which of these are
+
+826
+00:37:05,640 --> 00:37:10,480
+going to be individuals and which of
+
+827
+00:37:07,599 --> 00:37:12,440
+these are going to be classes and for
+
+828
+00:37:10,480 --> 00:37:16,359
+the subass relationship only the meaning
+
+829
+00:37:12,440 --> 00:37:19,480
+inclusion between classes right and
+
+830
+00:37:16,359 --> 00:37:22,040
+many ER models out there that I I found
+
+831
+00:37:19,480 --> 00:37:23,760
+doing while researching my book actually
+
+832
+00:37:22,040 --> 00:37:25,920
+just take a SC
+
+833
+00:37:23,760 --> 00:37:28,520
+hierarchy translate everything to
+
+834
+00:37:25,920 --> 00:37:31,800
+concept to every concept to a class and
+
+835
+00:37:28,520 --> 00:37:33,920
+give it away that that doesn't work
+
+836
+00:37:31,800 --> 00:37:36,880
+that's that's wrong and we will see
+
+837
+00:37:33,920 --> 00:37:39,960
+later on also
+
+838
+00:37:36,880 --> 00:37:42,680
+why um
+
+839
+00:37:39,960 --> 00:37:45,960
+yeah another types of elements that we
+
+840
+00:37:42,680 --> 00:37:46,800
+find in uh SC is what we call mapping
+
+841
+00:37:45,960 --> 00:37:49,079
+and
+
+842
+00:37:46,800 --> 00:37:52,760
+interlinking relations so these are
+
+843
+00:37:49,079 --> 00:37:55,119
+relations that allow to connect ER
+
+844
+00:37:52,760 --> 00:37:58,160
+entities entities and Concepts between
+
+845
+00:37:55,119 --> 00:37:59,680
+different models right so between uh a
+
+846
+00:37:58,160 --> 00:38:01,359
+model that has been created for example
+
+847
+00:37:59,680 --> 00:38:04,079
+by organization a and another by
+
+848
+00:38:01,359 --> 00:38:07,800
+organization B and it's exactly this
+
+849
+00:38:04,079 --> 00:38:09,599
+feature that allows for what for having
+
+850
+00:38:07,800 --> 00:38:13,280
+uh what we call link data for having
+
+851
+00:38:09,599 --> 00:38:15,119
+erogenous resources erogenous data being
+
+852
+00:38:13,280 --> 00:38:18,200
+linked to each other right so for
+
+853
+00:38:15,119 --> 00:38:19,560
+instance in O WL we have the old same as
+
+854
+00:38:18,200 --> 00:38:21,319
+relation which denotes that two
+
+855
+00:38:19,560 --> 00:38:22,920
+individual entities between different
+
+856
+00:38:21,319 --> 00:38:25,599
+mods have the same
+
+857
+00:38:22,920 --> 00:38:28,880
+meaning H while SC
+
+858
+00:38:25,599 --> 00:38:31,040
+uses a finer of relations like exact
+
+859
+00:38:28,880 --> 00:38:33,920
+mats close mats broad mats narrow mats
+
+860
+00:38:31,040 --> 00:38:36,839
+Etc so you can see for instance that H
+
+861
+00:38:33,920 --> 00:38:38,920
+in the music onology stands for music
+
+862
+00:38:36,839 --> 00:38:43,160
+onology music
+
+863
+00:38:38,920 --> 00:38:46,680
+artist H is an exact match of the entity
+
+864
+00:38:43,160 --> 00:38:50,880
+in dedia ontology musical artist so that
+
+865
+00:38:46,680 --> 00:38:54,440
+means that that means or that H these
+
+866
+00:38:50,880 --> 00:38:57,920
+two classes in this case are totally the
+
+867
+00:38:54,440 --> 00:39:00,560
+same have totally the same meaning right
+
+868
+00:38:57,920 --> 00:39:02,319
+ER and this is also something that is
+
+869
+00:39:00,560 --> 00:39:04,240
+typically abused for for for many
+
+870
+00:39:02,319 --> 00:39:06,720
+reasons but keep in mind that the
+
+871
+00:39:04,240 --> 00:39:10,960
+meaning of all same as is
+
+872
+00:39:06,720 --> 00:39:14,319
+this finally we have a set of elements
+
+873
+00:39:10,960 --> 00:39:17,359
+ER that aim at human understandability
+
+874
+00:39:14,319 --> 00:39:18,760
+of uh of the of uh of them like natural
+
+875
+00:39:17,359 --> 00:39:21,960
+language definitions Provence
+
+876
+00:39:18,760 --> 00:39:23,280
+information or scope nodes so again if
+
+877
+00:39:21,960 --> 00:39:25,560
+we go to
+
+878
+00:39:23,280 --> 00:39:27,880
+fibo H you can see that for every
+
+879
+00:39:25,560 --> 00:39:30,200
+concept we have a definition a textual
+
+880
+00:39:27,880 --> 00:39:33,160
+definition now this textual
+
+881
+00:39:30,200 --> 00:39:34,839
+definition cannot really be used by by a
+
+882
+00:39:33,160 --> 00:39:37,880
+machine to to do reasoning right it's
+
+883
+00:39:34,839 --> 00:39:40,160
+not formal it's just it's just text
+
+884
+00:39:37,880 --> 00:39:42,680
+right of course you can use it
+
+885
+00:39:40,160 --> 00:39:44,760
+to to extract things from that but it's
+
+886
+00:39:42,680 --> 00:39:48,440
+not it's not meant for that purpose this
+
+887
+00:39:44,760 --> 00:39:52,319
+purpose is to uh explain what the
+
+888
+00:39:48,440 --> 00:39:55,720
+concept is about to to humans to a human
+
+889
+00:39:52,319 --> 00:39:57,560
+H consumer right and there are also
+
+890
+00:39:55,720 --> 00:40:00,560
+other types of annotations so I can ask
+
+891
+00:39:57,560 --> 00:40:02,720
+add them here if I want which you can
+
+892
+00:40:00,560 --> 00:40:05,720
+see for example explanation note H we
+
+893
+00:40:02,720 --> 00:40:07,160
+have things like version info it can be
+
+894
+00:40:05,720 --> 00:40:10,319
+that we have different versions for
+
+895
+00:40:07,160 --> 00:40:15,000
+entities and other or C also and other
+
+896
+00:40:10,319 --> 00:40:18,200
+things that aim as I said at human
+
+897
+00:40:15,000 --> 00:40:21,480
+understandability um
+
+898
+00:40:18,200 --> 00:40:25,079
+yeah okay uh thank you I think we're
+
+899
+00:40:21,480 --> 00:40:28,520
+ready for our first Q&A session so I
+
+900
+00:40:25,079 --> 00:40:28,520
+will stop sharing
+
+901
+00:40:38,760 --> 00:40:43,000
+sorry yeah
+
+902
+00:40:43,200 --> 00:40:47,960
+so um questions
+
+903
+00:40:57,800 --> 00:41:00,480
+James can you hear
+
+904
+00:41:06,280 --> 00:41:11,839
+me okay let's
+
+905
+00:41:09,319 --> 00:41:18,000
+see so there is a question about what
+
+906
+00:41:11,839 --> 00:41:21,960
+are the attributes in uh in scor right H
+
+907
+00:41:18,000 --> 00:41:21,960
+yeah that's a great
+
+908
+00:41:25,520 --> 00:41:31,319
+question okay let's see about the first
+
+909
+00:41:28,119 --> 00:41:33,839
+question so in SC in general attributes
+
+910
+00:41:31,319 --> 00:41:37,040
+are not uh
+
+911
+00:41:33,839 --> 00:41:42,560
+really are not are not are not
+
+912
+00:41:37,040 --> 00:41:45,280
+really used so uh if you if you see the
+
+913
+00:41:42,560 --> 00:41:48,800
+model here H the fibo that I showed does
+
+914
+00:41:45,280 --> 00:41:52,119
+not really have h a lot of a lot of
+
+915
+00:41:48,800 --> 00:41:54,000
+attributes right H you can Define
+
+916
+00:41:52,119 --> 00:41:56,560
+attributes for the class concept but you
+
+917
+00:41:54,000 --> 00:42:00,000
+don't define specific attributes for the
+
+918
+00:41:56,560 --> 00:42:04,079
+different type of cont right so it's not
+
+919
+00:42:00,000 --> 00:42:06,440
+H SC is not optimized for H talking
+
+920
+00:42:04,079 --> 00:42:08,839
+about characteristics of different types
+
+921
+00:42:06,440 --> 00:42:11,359
+of con right so if you want to talk
+
+922
+00:42:08,839 --> 00:42:13,760
+about that a person has a name and age
+
+923
+00:42:11,359 --> 00:42:15,680
+and things like that while an
+
+924
+00:42:13,760 --> 00:42:18,760
+organization has I don't know a vat
+
+925
+00:42:15,680 --> 00:42:22,839
+number and other things you need classes
+
+926
+00:42:18,760 --> 00:42:27,880
+right it's not course it's goal is not
+
+927
+00:42:22,839 --> 00:42:30,800
+that um so this
+
+928
+00:42:27,880 --> 00:42:32,720
+hierarch yeah indeed it's it's it's more
+
+929
+00:42:30,800 --> 00:42:34,800
+like that and you can have a hierarchy
+
+930
+00:42:32,720 --> 00:42:38,200
+that you can actually combine SC with
+
+931
+00:42:34,800 --> 00:42:40,960
+all right but it's it's most about this
+
+932
+00:42:38,200 --> 00:42:44,079
+is how it has been
+
+933
+00:42:40,960 --> 00:42:45,760
+organized yeah they can be so sorry Zan
+
+934
+00:42:44,079 --> 00:42:48,240
+yes course and all can coexist in the
+
+935
+00:42:45,760 --> 00:42:49,520
+same mod right but you have to be
+
+936
+00:42:48,240 --> 00:42:52,880
+careful
+
+937
+00:42:49,520 --> 00:42:56,800
+about H for instance the two fibo models
+
+938
+00:42:52,880 --> 00:42:58,599
+that I showed some entities in h for
+
+939
+00:42:56,800 --> 00:43:00,440
+example agreement agreement in in the
+
+940
+00:42:58,599 --> 00:43:03,200
+scor vocabulary is a concept so it's an
+
+941
+00:43:00,440 --> 00:43:08,520
+individual whereas in O
+
+942
+00:43:03,200 --> 00:43:09,920
+WL is a class so combine them then you
+
+943
+00:43:08,520 --> 00:43:13,160
+have something that is both a class and
+
+944
+00:43:09,920 --> 00:43:15,520
+an individual and that can be means that
+
+945
+00:43:13,160 --> 00:43:19,319
+model is all full or you need to
+
+946
+00:43:15,520 --> 00:43:20,559
+use which is a feature of all h s
+
+947
+00:43:19,319 --> 00:43:22,760
+question the distinction between
+
+948
+00:43:20,559 --> 00:43:25,839
+concrete is the gradient indeed indeed
+
+949
+00:43:22,760 --> 00:43:27,520
+so it's not not a clear distinction
+
+950
+00:43:25,839 --> 00:43:29,839
+right you can have things that are more
+
+951
+00:43:27,520 --> 00:43:31,800
+abstract than than other the distinction
+
+952
+00:43:29,839 --> 00:43:35,839
+between class is much
+
+953
+00:43:31,800 --> 00:43:39,559
+clearer also the case but it's also we
+
+954
+00:43:35,839 --> 00:43:42,200
+also get a lot of H errors in that I I
+
+955
+00:43:39,559 --> 00:43:44,760
+do believe that class can easily be
+
+956
+00:43:42,200 --> 00:43:47,800
+distinguished from an individual right
+
+957
+00:43:44,760 --> 00:43:50,640
+but only if you have have in your mind
+
+958
+00:43:47,800 --> 00:43:52,440
+that okay this is going to be we need to
+
+959
+00:43:50,640 --> 00:43:54,440
+to know it instances we need to be able
+
+960
+00:43:52,440 --> 00:43:55,440
+to identify instances because in many
+
+961
+00:43:54,440 --> 00:43:59,079
+cases
+
+962
+00:43:55,440 --> 00:44:00,680
+some as I call a non instance like way
+
+963
+00:43:59,079 --> 00:44:02,680
+in a way that it doesn't say what
+
+964
+00:44:00,680 --> 00:44:05,920
+instances to put in that class and if
+
+965
+00:44:02,680 --> 00:44:08,599
+you don't know what to put there right
+
+966
+00:44:05,920 --> 00:44:10,920
+you're probably going to put some some
+
+967
+00:44:08,599 --> 00:44:13,440
+something um just a quick comment that
+
+968
+00:44:10,920 --> 00:44:16,040
+if people would prefer to ask questions
+
+969
+00:44:13,440 --> 00:44:18,000
+via audio and or camera um you can just
+
+970
+00:44:16,040 --> 00:44:20,800
+hit the green button um with the
+
+971
+00:44:18,000 --> 00:44:22,680
+microphone icon or the camera icon but
+
+972
+00:44:20,800 --> 00:44:24,720
+I'll be um moderating and approving
+
+973
+00:44:22,680 --> 00:44:28,119
+questions in the
+
+974
+00:44:24,720 --> 00:44:32,680
+meantime in the chat box
+
+975
+00:44:28,119 --> 00:44:35,839
+yeah ER about lexicalization right
+
+976
+00:44:32,680 --> 00:44:36,880
+um I I know in the SE web Community is
+
+977
+00:44:35,839 --> 00:44:40,000
+not
+
+978
+00:44:36,880 --> 00:44:42,040
+so spread around and indeed in
+
+979
+00:44:40,000 --> 00:44:44,000
+linguistics has a different meaning I
+
+980
+00:44:42,040 --> 00:44:48,680
+prefer to use the term legalization
+
+981
+00:44:44,000 --> 00:44:50,640
+because it it suggests that sorry it
+
+982
+00:44:48,680 --> 00:44:54,079
+makes the link that just putting labels
+
+983
+00:44:50,640 --> 00:44:56,559
+in some you're put many these labels or
+
+984
+00:44:54,079 --> 00:45:00,079
+us natural language process that makes
+
+985
+00:44:56,559 --> 00:45:02,680
+it a more
+
+986
+00:45:00,079 --> 00:45:04,599
+um that makes you a bit more aware where
+
+987
+00:45:02,680 --> 00:45:07,359
+these label are going to be used because
+
+988
+00:45:04,599 --> 00:45:09,240
+the the label itself can indicate that
+
+989
+00:45:07,359 --> 00:45:11,839
+this is something going to see in I
+
+990
+00:45:09,240 --> 00:45:13,839
+don't know in in a navigation hierarchy
+
+991
+00:45:11,839 --> 00:45:16,240
+which is fine but the thing is that when
+
+992
+00:45:13,839 --> 00:45:20,720
+the same labels are used to detect
+
+993
+00:45:16,240 --> 00:45:23,520
+mentions of any text then this need to
+
+994
+00:45:20,720 --> 00:45:29,040
+have a additional
+
+995
+00:45:23,520 --> 00:45:29,839
+criteria um okay um let's go continue um
+
+996
+00:45:29,040 --> 00:45:34,079
+for
+
+997
+00:45:29,839 --> 00:45:36,839
+another 10 minutes for the first part
+
+998
+00:45:34,079 --> 00:45:39,559
+keep your question we'll try later and
+
+999
+00:45:36,839 --> 00:45:43,599
+whatever questions you may have
+
+1000
+00:45:39,559 --> 00:45:45,720
+that this master class please H contact
+
+1001
+00:45:43,599 --> 00:45:47,440
+me later we can keep them and I I can
+
+1002
+00:45:45,720 --> 00:45:50,520
+send you answers on that or can discuss
+
+1003
+00:45:47,440 --> 00:45:54,520
+them further okay thank you let's
+
+1004
+00:45:50,520 --> 00:45:54,520
+continue so
+
+1005
+00:46:01,000 --> 00:46:05,160
+now now that we know some of the basic
+
+1006
+00:46:04,240 --> 00:46:09,400
+elements
+
+1007
+00:46:05,160 --> 00:46:12,359
+let's sorry let's try to clarify some of
+
+1008
+00:46:09,400 --> 00:46:16,760
+two basic phenomena that as I
+
+1009
+00:46:12,359 --> 00:46:20,319
+said H affect the the quality of our
+
+1010
+00:46:16,760 --> 00:46:22,720
+models so the first phenomenon is
+
+1011
+00:46:20,319 --> 00:46:25,680
+ambiguity so is the situation that
+
+1012
+00:46:22,720 --> 00:46:28,079
+arises when information can
+
+1013
+00:46:25,680 --> 00:46:29,839
+beable ways
+
+1014
+00:46:28,079 --> 00:46:32,720
+for instance if we have the text they
+
+1015
+00:46:29,839 --> 00:46:35,160
+perform Kashmir written by PA plant and
+
+1016
+00:46:32,720 --> 00:46:37,240
+paig play their user call on his Gibson
+
+1017
+00:46:35,160 --> 00:46:39,680
+all these terms Kashmir page plan and
+
+1018
+00:46:37,240 --> 00:46:41,760
+Gibson have
+
+1019
+00:46:39,680 --> 00:46:44,000
+actually I mean if you see them in
+
+1020
+00:46:41,760 --> 00:46:45,760
+isolation not all together and not in
+
+1021
+00:46:44,000 --> 00:46:48,160
+this context they can mean several
+
+1022
+00:46:45,760 --> 00:46:50,599
+things so Kashmir can be the song or the
+
+1023
+00:46:48,160 --> 00:46:52,839
+region H paage can be Larry Page Jimmy
+
+1024
+00:46:50,599 --> 00:46:57,119
+Page or even a location in Arizona and
+
+1025
+00:46:52,839 --> 00:46:59,599
+Gibson can be also a location or a
+
+1026
+00:46:57,119 --> 00:47:02,960
+Les Paul who's uh who actually created
+
+1027
+00:46:59,599 --> 00:47:04,800
+the has bu buing guitars right and as
+
+1028
+00:47:02,960 --> 00:47:07,200
+humans we're able to understand what the
+
+1029
+00:47:04,800 --> 00:47:09,000
+meaning of these terms has because we
+
+1030
+00:47:07,200 --> 00:47:10,800
+have context we can see from the context
+
+1031
+00:47:09,000 --> 00:47:14,800
+that okay probably Kashmir is the song
+
+1032
+00:47:10,800 --> 00:47:17,680
+pig is Jimmy Page of Le Jaelin etc etc
+
+1033
+00:47:14,800 --> 00:47:22,240
+now why should we care about ambiguity
+
+1034
+00:47:17,680 --> 00:47:22,240
+why ambiguity makes our life
+
+1035
+00:47:23,079 --> 00:47:28,280
+difficult so ambigu sematic models are
+
+1036
+00:47:26,160 --> 00:47:31,000
+usually mentioned in two situations one
+
+1037
+00:47:28,280 --> 00:47:32,319
+is when we develop a sematic model from
+
+1038
+00:47:31,000 --> 00:47:33,240
+information and data sources that
+
+1039
+00:47:32,319 --> 00:47:35,440
+contain
+
+1040
+00:47:33,240 --> 00:47:37,440
+ambiguity right and the second is when
+
+1041
+00:47:35,440 --> 00:47:39,800
+we use a semantic model usually as part
+
+1042
+00:47:37,440 --> 00:47:43,440
+of a larger system to resolve ambigu in
+
+1043
+00:47:39,800 --> 00:47:45,839
+data can you hear me Panos yes um can
+
+1044
+00:47:43,440 --> 00:47:47,680
+you have a go at res sharing your screen
+
+1045
+00:47:45,839 --> 00:47:52,000
+um we're getting a spinning wheel screen
+
+1046
+00:47:47,680 --> 00:47:53,720
+loading error oh
+
+1047
+00:47:52,000 --> 00:47:57,720
+okay
+
+1048
+00:47:53,720 --> 00:47:57,720
+ah okay
+
+1049
+00:47:58,040 --> 00:48:03,680
+now can you see it that's better um if
+
+1050
+00:48:01,880 --> 00:48:06,520
+people can confirm whether they can see
+
+1051
+00:48:03,680 --> 00:48:09,400
+that that would be very helpful great
+
+1052
+00:48:06,520 --> 00:48:11,280
+yeah people can see that perfect okay
+
+1053
+00:48:09,400 --> 00:48:14,400
+yeah so I was giving the example of
+
+1054
+00:48:11,280 --> 00:48:16,720
+ambiguity with uh this text here right
+
+1055
+00:48:14,400 --> 00:48:18,760
+that and I said that the problemu is
+
+1056
+00:48:16,720 --> 00:48:20,559
+when we have entities we have terms s
+
+1057
+00:48:18,760 --> 00:48:24,240
+that can have multiple meanings right
+
+1058
+00:48:20,559 --> 00:48:26,000
+and these or relation and um usually as
+
+1059
+00:48:24,240 --> 00:48:29,319
+humans were're able to easily or
+
+1060
+00:48:26,000 --> 00:48:32,520
+relatively easy disambiguate but for for
+
+1061
+00:48:29,319 --> 00:48:35,160
+a system this is challenging so
+
+1062
+00:48:32,520 --> 00:48:37,559
+ambiguity semantic models have are
+
+1063
+00:48:35,160 --> 00:48:40,240
+related I would say in two ways one is
+
+1064
+00:48:37,559 --> 00:48:42,920
+when we use a semantic when we sorry we
+
+1065
+00:48:40,240 --> 00:48:44,839
+develop a semantic model from ambiguous
+
+1066
+00:48:42,920 --> 00:48:46,079
+information from ambigous information
+
+1067
+00:48:44,839 --> 00:48:49,280
+sources and by ambigous information
+
+1068
+00:48:46,079 --> 00:48:52,680
+sources I mean both data text corporate
+
+1069
+00:48:49,280 --> 00:48:54,960
+Etc but also humans in many cases right
+
+1070
+00:48:52,680 --> 00:48:56,799
+H and the second usage is when we use a
+
+1071
+00:48:54,960 --> 00:48:58,799
+semantic model as part of a larger
+
+1072
+00:48:56,799 --> 00:49:01,040
+system to resolve ambiguity in data so
+
+1073
+00:48:58,799 --> 00:49:04,440
+for example if we have an entity
+
+1074
+00:49:01,040 --> 00:49:08,160
+detection system right H it needs to
+
+1075
+00:49:04,440 --> 00:49:10,640
+identify things in an ambiguous way so
+
+1076
+00:49:08,160 --> 00:49:13,000
+for instance if we if someone give if we
+
+1077
+00:49:10,640 --> 00:49:15,400
+if we see the sentence the sentence Floy
+
+1078
+00:49:13,000 --> 00:49:18,400
+re revolutionized rock with a wall and
+
+1079
+00:49:15,400 --> 00:49:19,920
+we want to represent that sentence in
+
+1080
+00:49:18,400 --> 00:49:23,400
+our
+
+1081
+00:49:19,920 --> 00:49:25,400
+ontology then we won't just take Floyd
+
+1082
+00:49:23,400 --> 00:49:28,040
+and rock and wall and create entities
+
+1083
+00:49:25,400 --> 00:49:29,720
+with these names because wall can have
+
+1084
+00:49:28,040 --> 00:49:32,559
+so many meanings so we want to say that
+
+1085
+00:49:29,720 --> 00:49:35,440
+okay look this is the wall the album
+
+1086
+00:49:32,559 --> 00:49:38,920
+rock is means the rock music and Floyd
+
+1087
+00:49:35,440 --> 00:49:43,640
+means Pink Floyd The Entity which is h a
+
+1088
+00:49:38,920 --> 00:49:47,799
+band right yeah a music band right
+
+1089
+00:49:43,640 --> 00:49:50,160
+so H whenever we create a model from any
+
+1090
+00:49:47,799 --> 00:49:52,160
+kind of resource of source we need to
+
+1091
+00:49:50,160 --> 00:49:53,319
+ensure that every element we Define has
+
+1092
+00:49:52,160 --> 00:49:55,480
+the correct meaning that is actually
+
+1093
+00:49:53,319 --> 00:49:58,559
+expressing the input source right so you
+
+1094
+00:49:55,480 --> 00:50:01,040
+don't want based on this text to to
+
+1095
+00:49:58,559 --> 00:50:03,760
+create an an an entity that is not Pink
+
+1096
+00:50:01,040 --> 00:50:05,079
+Floyd but is another one and also that
+
+1097
+00:50:03,760 --> 00:50:06,559
+the meaning is represented in the model
+
+1098
+00:50:05,079 --> 00:50:08,359
+in an ambiguous way at least with
+
+1099
+00:50:06,559 --> 00:50:09,880
+respect to the Target domain and context
+
+1100
+00:50:08,359 --> 00:50:12,160
+right you need to ensure that someone
+
+1101
+00:50:09,880 --> 00:50:15,960
+who sees Rock within the model can
+
+1102
+00:50:12,160 --> 00:50:20,000
+understand that it means rock music not
+
+1103
+00:50:15,960 --> 00:50:22,240
+um not uh I know rocks and Pebbles for
+
+1104
+00:50:20,000 --> 00:50:23,839
+instance in the second situation our
+
+1105
+00:50:22,240 --> 00:50:25,760
+primary concern is to make sure that the
+
+1106
+00:50:23,839 --> 00:50:28,440
+model actually helps the system rather
+
+1107
+00:50:25,760 --> 00:50:31,440
+than being a hindrance
+
+1108
+00:50:28,440 --> 00:50:33,720
+ER what I mean is
+
+1109
+00:50:31,440 --> 00:50:36,040
+that let's say that we have a system
+
+1110
+00:50:33,720 --> 00:50:40,119
+that has the an ontology that has Pink
+
+1111
+00:50:36,040 --> 00:50:43,400
+Floyd as entities rock music the wall H
+
+1112
+00:50:40,119 --> 00:50:46,640
+and we want to detect entities there is
+
+1113
+00:50:43,400 --> 00:50:48,280
+a lot of U there are a lot of systems
+
+1114
+00:50:46,640 --> 00:50:51,680
+that utilize knowledge graphs and
+
+1115
+00:50:48,280 --> 00:50:54,559
+ontologies for helping with this amation
+
+1116
+00:50:51,680 --> 00:50:56,960
+so practically here by comparing context
+
+1117
+00:50:54,559 --> 00:51:00,040
+so if we know that Pink Floyd is a band
+
+1118
+00:50:56,960 --> 00:51:02,480
+of of rock music then a system can
+
+1119
+00:51:00,040 --> 00:51:04,760
+probably infer in an inductive way that
+
+1120
+00:51:02,480 --> 00:51:07,160
+the mention of Floyd here along with the
+
+1121
+00:51:04,760 --> 00:51:09,480
+rock is more likely to refer to the to
+
+1122
+00:51:07,160 --> 00:51:11,319
+the band and the music gen respectively
+
+1123
+00:51:09,480 --> 00:51:14,200
+rather than something else but in
+
+1124
+00:51:11,319 --> 00:51:16,119
+general this is a topic for a whole
+
+1125
+00:51:14,200 --> 00:51:18,040
+different Master Class if you're
+
+1126
+00:51:16,119 --> 00:51:21,359
+particularly interested for that
+
+1127
+00:51:18,040 --> 00:51:24,359
+aspect h i I will refer you to chapter
+
+1128
+00:51:21,359 --> 00:51:27,240
+10 of my book but also other resources
+
+1129
+00:51:24,359 --> 00:51:29,680
+like the video Spotlight uh and other
+
+1130
+00:51:27,240 --> 00:51:32,480
+resources I can I can probably give you
+
+1131
+00:51:29,680 --> 00:51:34,839
+if you if you like but yeah this is a
+
+1132
+00:51:32,480 --> 00:51:37,760
+top for a whole different master class
+
+1133
+00:51:34,839 --> 00:51:39,200
+now let's go to vagueness my favorite
+
+1134
+00:51:37,760 --> 00:51:41,880
+and it's my favorite because I did my
+
+1135
+00:51:39,200 --> 00:51:43,720
+PhD on vagueness so vagueness is the
+
+1136
+00:51:41,880 --> 00:51:46,160
+sematic phenomenon where predicates
+
+1137
+00:51:43,720 --> 00:51:47,760
+admit borderline cases namely cases
+
+1138
+00:51:46,160 --> 00:51:52,079
+where it's not determinately true that
+
+1139
+00:51:47,760 --> 00:51:55,520
+the predicate applies or not right
+
+1140
+00:51:52,079 --> 00:51:58,000
+um so we have in everyday language we
+
+1141
+00:51:55,520 --> 00:52:01,200
+have terms like Parts average critical
+
+1142
+00:51:58,000 --> 00:52:04,240
+strategic Rich hip young Etc and for all
+
+1143
+00:52:01,200 --> 00:52:06,119
+this if you notice we don't really have
+
+1144
+00:52:04,240 --> 00:52:08,440
+a crisp definition a crisp definition
+
+1145
+00:52:06,119 --> 00:52:10,359
+that would allow us to take any instance
+
+1146
+00:52:08,440 --> 00:52:16,119
+of of these predicates and actually
+
+1147
+00:52:10,359 --> 00:52:19,760
+classify it as true or false right so um
+
+1148
+00:52:16,119 --> 00:52:24,920
+again if I ask all of you here ER how
+
+1149
+00:52:19,760 --> 00:52:28,119
+much money you you get er per
+
+1150
+00:52:24,920 --> 00:52:29,520
+uh per year and then ask you okay who
+
+1151
+00:52:28,119 --> 00:52:32,680
+who do you consider to be rich and who
+
+1152
+00:52:29,520 --> 00:52:35,119
+not we're going to to fight right
+
+1153
+00:52:32,680 --> 00:52:38,119
+because you will say yeah there are all
+
+1154
+00:52:35,119 --> 00:52:40,839
+this there are all these uh things that
+
+1155
+00:52:38,119 --> 00:52:43,760
+you need to take in consideration and
+
+1156
+00:52:40,839 --> 00:52:46,839
+again there won't be much
+
+1157
+00:52:43,760 --> 00:52:49,760
+agreement now it's important not to to
+
+1158
+00:52:46,839 --> 00:52:51,400
+mix vagueness with other phenomena so
+
+1159
+00:52:49,760 --> 00:52:53,079
+vagueness first of all is not ambiguity
+
+1160
+00:52:51,400 --> 00:52:56,799
+even though many many
+
+1161
+00:52:53,079 --> 00:52:59,680
+people H use them as equivalent so if I
+
+1162
+00:52:56,799 --> 00:53:01,599
+say that last week I visited
+
+1163
+00:52:59,680 --> 00:53:02,640
+Tripoli and you don't let's say you
+
+1164
+00:53:01,599 --> 00:53:06,079
+don't know I'm
+
+1165
+00:53:02,640 --> 00:53:08,000
+Greek H Tripoli can mean the Tripoli in
+
+1166
+00:53:06,079 --> 00:53:09,599
+Libya can mean Tripoli in Lebanon and
+
+1167
+00:53:08,000 --> 00:53:12,799
+can mean Tripoli in Greece there is
+
+1168
+00:53:09,599 --> 00:53:14,720
+actually City Tripoli in Greece right so
+
+1169
+00:53:12,799 --> 00:53:16,240
+the mention of tripol here is ambiguous
+
+1170
+00:53:14,720 --> 00:53:18,680
+it has multiple meanings and we don't
+
+1171
+00:53:16,240 --> 00:53:22,000
+know which that's
+
+1172
+00:53:18,680 --> 00:53:24,400
+ambiguity if I say my height is between
+
+1173
+00:53:22,000 --> 00:53:27,520
+165 and 175
+
+1174
+00:53:24,400 --> 00:53:30,880
+CM I'm also not being exact I'm not
+
+1175
+00:53:27,520 --> 00:53:33,480
+telling you uh the exact information
+
+1176
+00:53:30,880 --> 00:53:37,960
+however I'm not being vague because the
+
+1177
+00:53:33,480 --> 00:53:41,119
+borders of the predicate between 165 and
+
+1178
+00:53:37,960 --> 00:53:45,000
+175 are crisp you can take any height
+
+1179
+00:53:41,119 --> 00:53:47,359
+and put it you can say that this H I can
+
+1180
+00:53:45,000 --> 00:53:52,079
+take your height and then you can say if
+
+1181
+00:53:47,359 --> 00:53:55,040
+this um assertion is true or false and
+
+1182
+00:53:52,079 --> 00:53:56,599
+finally uh vagueness is not H what we
+
+1183
+00:53:55,040 --> 00:53:58,799
+call probabilistic uncertainty the
+
+1184
+00:53:56,599 --> 00:54:00,760
+epistemic uncertainty so if I tell you
+
+1185
+00:53:58,799 --> 00:54:02,240
+that the temperature in AB right now
+
+1186
+00:54:00,760 --> 00:54:04,720
+might be 15
+
+1187
+00:54:02,240 --> 00:54:06,760
+degrees right I because I don't know I
+
+1188
+00:54:04,720 --> 00:54:09,119
+haven't measured it so I say it might be
+
+1189
+00:54:06,760 --> 00:54:10,760
+15 degrees based on I don't know the
+
+1190
+00:54:09,119 --> 00:54:12,760
+time of the year I believe that that's a
+
+1191
+00:54:10,760 --> 00:54:14,960
+good guess that's a guess I have some
+
+1192
+00:54:12,760 --> 00:54:17,799
+uned in that right this is actually
+
+1193
+00:54:14,960 --> 00:54:18,839
+comes from from m h but if I know for
+
+1194
+00:54:17,799 --> 00:54:22,079
+instance
+
+1195
+00:54:18,839 --> 00:54:24,880
+that that is indeed 15 degrees but then
+
+1196
+00:54:22,079 --> 00:54:27,240
+I want to classify it as cold or not so
+
+1197
+00:54:24,880 --> 00:54:28,880
+cold right then we can have different
+
+1198
+00:54:27,240 --> 00:54:31,040
+interpretations of that for some people
+
+1199
+00:54:28,880 --> 00:54:33,599
+15 degrees will be cold for some others
+
+1200
+00:54:31,040 --> 00:54:36,720
+will not be cold will not be so cold
+
+1201
+00:54:33,599 --> 00:54:38,440
+right so un and vagueness are also
+
+1202
+00:54:36,720 --> 00:54:40,680
+different what's the issue with
+
+1203
+00:54:38,440 --> 00:54:42,920
+vagueness when we have vagueness in a
+
+1204
+00:54:40,680 --> 00:54:45,040
+model right we we can have
+
+1205
+00:54:42,920 --> 00:54:47,119
+miscommunication in general so for
+
+1206
+00:54:45,040 --> 00:54:48,520
+instance imagine making a search and
+
+1207
+00:54:47,119 --> 00:54:50,480
+someone says I would like an inexpensive
+
+1208
+00:54:48,520 --> 00:54:52,280
+modern restaurant near the city center
+
+1209
+00:54:50,480 --> 00:54:53,680
+and you have a system that has an exact
+
+1210
+00:54:52,280 --> 00:54:57,160
+value for this so there is rest three
+
+1211
+00:54:53,680 --> 00:55:00,040
+kilm away is that near or not right so
+
+1212
+00:54:57,160 --> 00:55:02,880
+the system needs to have a a
+
+1213
+00:55:00,040 --> 00:55:04,799
+classification for this term right for
+
+1214
+00:55:02,880 --> 00:55:07,040
+near a definition of near and what may
+
+1215
+00:55:04,799 --> 00:55:09,720
+happen is that the definition of near
+
+1216
+00:55:07,040 --> 00:55:13,079
+for the user in this case might not be
+
+1217
+00:55:09,720 --> 00:55:16,799
+the same as what the system has and the
+
+1218
+00:55:13,079 --> 00:55:19,079
+same applies also between humans right
+
+1219
+00:55:16,799 --> 00:55:20,480
+so you can have two Consultants one
+
+1220
+00:55:19,079 --> 00:55:22,920
+believing that this is a strategic
+
+1221
+00:55:20,480 --> 00:55:24,079
+client with large budget projects but
+
+1222
+00:55:22,920 --> 00:55:26,039
+the other consultant says come on
+
+1223
+00:55:24,079 --> 00:55:27,720
+300,000 in two years is hardly a large
+
+1224
+00:55:26,039 --> 00:55:31,760
+budget
+
+1225
+00:55:27,720 --> 00:55:34,599
+right so when we have vague elements in
+
+1226
+00:55:31,760 --> 00:55:37,359
+a in a semantic model this Agreements
+
+1227
+00:55:34,599 --> 00:55:41,400
+are very very
+
+1228
+00:55:37,359 --> 00:55:44,680
+likely okay uh that concludes uh the
+
+1229
+00:55:41,400 --> 00:55:49,760
+first part so let's have a small Q&A as
+
+1230
+00:55:44,680 --> 00:55:49,760
+well now uh and then we can have a
+
+1231
+00:55:51,440 --> 00:55:56,559
+break so just a reminder to paste
+
+1232
+00:56:18,680 --> 00:56:23,640
+are there any questions on this l
+
+1233
+00:56:36,390 --> 00:56:43,200
+[Music]
+
+1234
+00:56:38,480 --> 00:56:44,880
+that I'm just proving these yeah IAS I
+
+1235
+00:56:43,200 --> 00:56:48,920
+don't know if you can hear me but if you
+
+1236
+00:56:44,880 --> 00:56:48,920
+can you can mute that would be very
+
+1237
+00:56:50,079 --> 00:56:56,039
+helpful perfect
+
+1238
+00:56:53,119 --> 00:56:57,920
+thanks yeah okay two questions I can see
+
+1239
+00:56:56,039 --> 00:56:59,520
+from previous one SC pertains more to
+
+1240
+00:56:57,920 --> 00:57:03,839
+taxonomies and all to
+
+1241
+00:56:59,520 --> 00:57:06,839
+ontologies yes indeed so uh you can say
+
+1242
+00:57:03,839 --> 00:57:10,440
+that typically SC is about H taking
+
+1243
+00:57:06,839 --> 00:57:12,119
+Concepts and organ organize them into
+
+1244
+00:57:10,440 --> 00:57:13,280
+loser semantics taxonomies where you
+
+1245
+00:57:12,119 --> 00:57:16,599
+don't have just meaning inclusion you
+
+1246
+00:57:13,280 --> 00:57:20,319
+have as I said part hole ER meaning
+
+1247
+00:57:16,599 --> 00:57:24,640
+inclusion and instantiation right H all
+
+1248
+00:57:20,319 --> 00:57:26,000
+is for more complex uh reasoning uh for
+
+1249
+00:57:24,640 --> 00:57:29,440
+more complex information you have class
+
+1250
+00:57:26,000 --> 00:57:33,000
+in individuals and you have all these
+
+1251
+00:57:29,440 --> 00:57:34,520
+um axioms that you can use so it's for
+
+1252
+00:57:33,000 --> 00:57:37,839
+more heavy
+
+1253
+00:57:34,520 --> 00:57:39,839
+lifting if you like what both have in
+
+1254
+00:57:37,839 --> 00:57:42,440
+common and I think that's important to
+
+1255
+00:57:39,839 --> 00:57:44,119
+say is that in both cases reasoning is
+
+1256
+00:57:42,440 --> 00:57:46,000
+deductive right so we're always talking
+
+1257
+00:57:44,119 --> 00:57:49,839
+about deductive reasoning not inductive
+
+1258
+00:57:46,000 --> 00:57:51,960
+right so you can say deductive means
+
+1259
+00:57:49,839 --> 00:57:53,640
+that you start that you start from
+
+1260
+00:57:51,960 --> 00:57:55,720
+something that is true and you infer
+
+1261
+00:57:53,640 --> 00:57:57,400
+something through a rule that is always
+
+1262
+00:57:55,720 --> 00:57:58,920
+true right
+
+1263
+00:57:57,400 --> 00:58:01,359
+um amigu is
+
+1264
+00:57:58,920 --> 00:58:03,319
+essentially due to homon vness to
+
+1265
+00:58:01,359 --> 00:58:05,640
+prototypical rather than aristotlean
+
+1266
+00:58:03,319 --> 00:58:07,559
+categories indeed yes the the the
+
+1267
+00:58:05,640 --> 00:58:11,160
+problem is what do we Define
+
+1268
+00:58:07,559 --> 00:58:15,079
+as prototypical yeah what is the proper
+
+1269
+00:58:11,160 --> 00:58:19,880
+way to work with both in terms of uh
+
+1270
+00:58:15,079 --> 00:58:22,400
+tools so h i will talk about vagueness
+
+1271
+00:58:19,880 --> 00:58:24,839
+uh in the second part but with ambiguity
+
+1272
+00:58:22,400 --> 00:58:28,559
+can already tell you that
+
+1273
+00:58:24,839 --> 00:58:31,760
+um for actually there's a lot of uh of
+
+1274
+00:58:28,559 --> 00:58:33,319
+work from the NLP Community the
+
+1275
+00:58:31,760 --> 00:58:35,799
+information extraction community that
+
+1276
+00:58:33,319 --> 00:58:38,880
+deals with
+
+1277
+00:58:35,799 --> 00:58:42,640
+h when we extract from text information
+
+1278
+00:58:38,880 --> 00:58:44,440
+to try to disambiguate it right so the
+
+1279
+00:58:42,640 --> 00:58:47,920
+typical way we deal with ambiguity is
+
+1280
+00:58:44,440 --> 00:58:52,559
+through contexts right um so the example
+
+1281
+00:58:47,920 --> 00:58:54,680
+I gave earlier uh that the best way to
+
+1282
+00:58:52,559 --> 00:58:57,240
+um to create a model that can handle
+
+1283
+00:58:54,680 --> 00:59:01,359
+ambiguity is to have a as many as
+
+1284
+00:58:57,240 --> 00:59:04,440
+possible um disambiguation related uh
+
+1285
+00:59:01,359 --> 00:59:05,839
+relations and between between entities
+
+1286
+00:59:04,440 --> 00:59:09,079
+right so if you have Pink Floyd as an
+
+1287
+00:59:05,839 --> 00:59:12,680
+entity on its own it's not so good it's
+
+1288
+00:59:09,079 --> 00:59:16,119
+not so easy to disambiguate if you if
+
+1289
+00:59:12,680 --> 00:59:20,480
+you start adding relations like uh it's
+
+1290
+00:59:16,119 --> 00:59:23,720
+a rock band right its members are
+
+1291
+00:59:20,480 --> 00:59:25,720
+um Robert Clan Jimmy pige Etc they have
+
+1292
+00:59:23,720 --> 00:59:27,200
+written these songs Oh by adding this
+
+1293
+00:59:25,720 --> 00:59:30,000
+information this information can be
+
+1294
+00:59:27,200 --> 00:59:33,200
+really useful to this igation system for
+
+1295
+00:59:30,000 --> 00:59:37,400
+that for vagueness uh I'm going to cover
+
+1296
+00:59:33,200 --> 00:59:39,960
+it in the in the second uh
+
+1297
+00:59:37,400 --> 00:59:43,160
+part but hierarchy of classes describing
+
+1298
+00:59:39,960 --> 00:59:45,319
+all is also a taxonomy indeed what needs
+
+1299
+00:59:43,160 --> 00:59:47,039
+to be consider what you need to be
+
+1300
+00:59:45,319 --> 00:59:50,480
+careful with is that it's a special kind
+
+1301
+00:59:47,039 --> 00:59:52,119
+of taxonomy right it is a taxonomy
+
+1302
+00:59:50,480 --> 00:59:54,680
+because the meaning of a subass is
+
+1303
+00:59:52,119 --> 00:59:57,880
+included in the in in in in the in in
+
+1304
+00:59:54,680 --> 01:00:00,520
+the super class right right but it also
+
+1305
+00:59:57,880 --> 01:00:02,200
+needs to have this logical implication
+
+1306
+01:00:00,520 --> 01:00:06,640
+if it doesn't have
+
+1307
+01:00:02,200 --> 01:00:09,599
+it it's going to be wrong that's the
+
+1308
+01:00:06,640 --> 01:00:11,680
+problem H is there a way to have without
+
+1309
+01:00:09,599 --> 01:00:13,520
+converting a SC Concept in all class for
+
+1310
+01:00:11,680 --> 01:00:14,880
+concept is it acceptable to build out a
+
+1311
+01:00:13,520 --> 01:00:17,640
+class hierarchy along with the classes
+
+1312
+01:00:14,880 --> 01:00:21,119
+that come from SC SC doesn't have
+
+1313
+01:00:17,640 --> 01:00:23,760
+classes right as I said it's yeah we we
+
+1314
+01:00:21,119 --> 01:00:26,640
+have seen this I'm I'm answering to
+
+1315
+01:00:23,760 --> 01:00:29,640
+Nick's question now the problem is that
+
+1316
+01:00:26,640 --> 01:00:33,079
+um it need we need to be careful on that
+
+1317
+01:00:29,640 --> 01:00:35,400
+right in general in an old in a model
+
+1318
+01:00:33,079 --> 01:00:38,400
+this can coexist and in many cases I
+
+1319
+01:00:35,400 --> 01:00:40,599
+said all allows nowadays all to allows
+
+1320
+01:00:38,400 --> 01:00:42,599
+for punning so what happens is that if
+
+1321
+01:00:40,599 --> 01:00:45,520
+you have a if you have an entity let's
+
+1322
+01:00:42,599 --> 01:00:47,960
+say data scientist and it's both a class
+
+1323
+01:00:45,520 --> 01:00:51,640
+and an individual all two will not
+
+1324
+01:00:47,960 --> 01:00:54,799
+complain it will not be considered as a
+
+1325
+01:00:51,640 --> 01:00:56,480
+it will not be considered as a how to
+
+1326
+01:00:54,799 --> 01:00:58,720
+say as false or as
+
+1327
+01:00:56,480 --> 01:01:00,200
+inconsistent however and what will
+
+1328
+01:00:58,720 --> 01:01:02,559
+happen through a mechanism called
+
+1329
+01:01:00,200 --> 01:01:05,920
+punning is that it will try during
+
+1330
+01:01:02,559 --> 01:01:10,480
+runtime to infer if it's if it's used as
+
+1331
+01:01:05,920 --> 01:01:14,480
+individual or as um yeah if it's used as
+
+1332
+01:01:10,480 --> 01:01:18,400
+individual or as a or as a class so I
+
+1333
+01:01:14,480 --> 01:01:20,200
+wouldn't say that you should the problem
+
+1334
+01:01:18,400 --> 01:01:22,319
+is not that you should always decide if
+
+1335
+01:01:20,200 --> 01:01:24,559
+something is a class or individual the
+
+1336
+01:01:22,319 --> 01:01:26,280
+problem we will see is when you create
+
+1337
+01:01:24,559 --> 01:01:28,880
+any something that you want to behave as
+
+1338
+01:01:26,280 --> 01:01:31,920
+individual or is always an individual as
+
+1339
+01:01:28,880 --> 01:01:35,359
+a class I have seen for example paron of
+
+1340
+01:01:31,920 --> 01:01:35,359
+Greece right
+
+1341
+01:01:35,510 --> 01:01:40,079
+[Music]
+
+1342
+01:01:36,760 --> 01:01:43,079
+being Parton of Greece being a class and
+
+1343
+01:01:40,079 --> 01:01:44,760
+that's wrong right or Greece as a
+
+1344
+01:01:43,079 --> 01:01:47,640
+country being a class that's wrong this
+
+1345
+01:01:44,760 --> 01:01:50,760
+is what we want to avoid yeah indeed
+
+1346
+01:01:47,640 --> 01:01:52,119
+panning needs to needs to be careful it
+
+1347
+01:01:50,760 --> 01:01:55,119
+can can break certain logical
+
+1348
+01:01:52,119 --> 01:01:55,119
+possibilities
+
+1349
+01:01:58,180 --> 01:02:01,480
+[Music]
+
+1350
+01:02:01,520 --> 01:02:08,559
+um right so if you have a if you have a
+
+1351
+01:02:05,279 --> 01:02:11,880
+loose hierarchy right if your semantics
+
+1352
+01:02:08,559 --> 01:02:13,480
+are not between subass ones right you
+
+1353
+01:02:11,880 --> 01:02:14,920
+shouldn't use the subass feature you
+
+1354
+01:02:13,480 --> 01:02:16,640
+shouldn't model this as class you need
+
+1355
+01:02:14,920 --> 01:02:19,200
+to model this as concept and use
+
+1356
+01:02:16,640 --> 01:02:21,839
+narrower broader right formally narrow
+
+1357
+01:02:19,200 --> 01:02:24,839
+broader is H will give you the loose
+
+1358
+01:02:21,839 --> 01:02:24,839
+semantics
+
+1359
+01:02:27,520 --> 01:02:37,240
+um okay um the time is uh
+
+1360
+01:02:33,200 --> 01:02:39,559
+three uh 10 p 3 uh let's have a five
+
+1361
+01:02:37,240 --> 01:02:42,839
+minutes break and then we can uh let's
+
+1362
+01:02:39,559 --> 01:02:42,839
+start at 3:15 if that's
+
+1363
+01:02:43,359 --> 01:02:47,119
+okay drink some water
+
+1364
+01:02:49,319 --> 01:02:55,440
+maybe uh I can answer also that old sub
+
+1365
+01:02:52,000 --> 01:02:57,880
+classes uh if they don't have to be
+
+1366
+01:02:55,440 --> 01:03:00,520
+disjointed but if they're if they're
+
+1367
+01:02:57,880 --> 01:03:04,240
+disjoined H they should be mentioned as
+
+1368
+01:03:00,520 --> 01:03:07,359
+such right no you can always
+
+1369
+01:03:04,240 --> 01:03:09,160
+uh ah the difference between ontology
+
+1370
+01:03:07,359 --> 01:03:11,240
+taxonomy
+
+1371
+01:03:09,160 --> 01:03:13,240
+yeah I would
+
+1372
+01:03:11,240 --> 01:03:15,960
+say that the main difference is the
+
+1373
+01:03:13,240 --> 01:03:19,480
+taxonomy doesn't have a named
+
+1374
+01:03:15,960 --> 01:03:21,440
+associative relations so H in a taxonomy
+
+1375
+01:03:19,480 --> 01:03:23,640
+you won't find for in let's say you have
+
+1376
+01:03:21,440 --> 01:03:26,160
+a taxonomy of of
+
+1377
+01:03:23,640 --> 01:03:27,640
+professions H you won't find the Rel
+
+1378
+01:03:26,160 --> 01:03:29,880
+between professions and other entities
+
+1379
+01:03:27,640 --> 01:03:31,520
+in a taxonomy because it's just only the
+
+1380
+01:03:29,880 --> 01:03:33,480
+hierarchical relation in some cases in
+
+1381
+01:03:31,520 --> 01:03:34,799
+taxonomy you may have the related
+
+1382
+01:03:33,480 --> 01:03:36,559
+relation that something is related to
+
+1383
+01:03:34,799 --> 01:03:38,640
+something else only that you don't have
+
+1384
+01:03:36,559 --> 01:03:41,200
+specializations of relations typically
+
+1385
+01:03:38,640 --> 01:03:43,599
+not that it's not allowed but usually if
+
+1386
+01:03:41,200 --> 01:03:45,319
+you start adding associative relations
+
+1387
+01:03:43,599 --> 01:03:47,720
+specific associative relations in a
+
+1388
+01:03:45,319 --> 01:03:50,279
+taxonomy ER then you practically you
+
+1389
+01:03:47,720 --> 01:03:50,279
+start building an
+
+1390
+01:03:52,000 --> 01:03:57,760
+ontology and yes scor broader Nar are
+
+1391
+01:03:54,599 --> 01:03:59,799
+actually should be have the same should
+
+1392
+01:03:57,760 --> 01:04:03,000
+have the same sem as the an it's quite
+
+1393
+01:03:59,799 --> 01:04:04,400
+yeah actually they come from there SC is
+
+1394
+01:04:03,000 --> 01:04:07,160
+more or less something that has been
+
+1395
+01:04:04,400 --> 01:04:08,960
+based on
+
+1396
+01:04:07,160 --> 01:04:12,480
+uh on
+
+1397
+01:04:08,960 --> 01:04:13,799
+ano so yeah if you if you that's what I
+
+1398
+01:04:12,480 --> 01:04:15,079
+said if you come from the taxonomy world
+
+1399
+01:04:13,799 --> 01:04:18,760
+where you have been used to work with
+
+1400
+01:04:15,079 --> 01:04:21,599
+ano then uh SC is pretty straightforward
+
+1401
+01:04:18,760 --> 01:04:23,240
+but when you move from this to all and
+
+1402
+01:04:21,599 --> 01:04:26,240
+you have sub classes you need to be
+
+1403
+01:04:23,240 --> 01:04:26,240
+careful
+
+1404
+01:04:28,480 --> 01:04:34,880
+okay so let's have a break and uh see
+
+1405
+01:04:32,400 --> 01:04:34,880
+you in five
+
+1406
+01:04:39,240 --> 01:04:46,730
+[Music]
+
+1407
+01:04:54,640 --> 01:04:58,680
+minutes for
+
+1408
+01:05:07,320 --> 01:05:12,830
+[Laughter]
+
+1409
+01:05:33,510 --> 01:05:36,599
+[Music]
+
+1410
+01:05:54,640 --> 01:05:57,640
+sh
+
+1411
+01:06:24,559 --> 01:06:27,559
+e
+
+1412
+01:06:54,520 --> 01:06:57,520
+e
+
+1413
+01:07:24,520 --> 01:07:27,520
+e
+
+1414
+01:07:54,440 --> 01:07:57,440
+e
+
+1415
+01:08:24,440 --> 01:08:27,440
+e
+
+1416
+01:08:54,440 --> 01:08:58,440
+e e
+
+1417
+01:09:57,760 --> 01:10:00,760
+good
+
+1418
+01:10:26,440 --> 01:10:29,440
+Leo
+
+1419
+01:12:10,639 --> 01:12:13,520
+hello can you hear
+
+1420
+01:12:14,000 --> 01:12:19,880
+me okay
+
+1421
+01:12:16,600 --> 01:12:22,320
+um let's start now with the second uh
+
+1422
+01:12:19,880 --> 01:12:23,760
+part let me share my screen again uh
+
+1423
+01:12:22,320 --> 01:12:26,040
+just before you get into it Panos there
+
+1424
+01:12:23,760 --> 01:12:29,520
+were a couple of questions came in just
+
+1425
+01:12:26,040 --> 01:12:31,239
+before we broke for the break mhm how do
+
+1426
+01:12:29,520 --> 01:12:34,520
+you handle restrictions and constraints
+
+1427
+01:12:31,239 --> 01:12:36,280
+in scos was the last one and to be
+
+1428
+01:12:34,520 --> 01:12:38,199
+honest I don't know I think they they
+
+1429
+01:12:36,280 --> 01:12:40,800
+should be it should be able to do that
+
+1430
+01:12:38,199 --> 01:12:45,120
+but I cannot tell you from now I haven't
+
+1431
+01:12:40,800 --> 01:12:45,120
+used H SC and CLE for a
+
+1432
+01:12:45,480 --> 01:12:51,800
+while cool um there are a couple is it
+
+1433
+01:12:48,800 --> 01:12:53,960
+better to reuse rather than reinvent how
+
+1434
+01:12:51,800 --> 01:12:57,600
+to identify better ontologies from
+
+1435
+01:12:53,960 --> 01:13:01,000
+lesser ontologies that's a also a whole
+
+1436
+01:12:57,600 --> 01:13:03,520
+Master Class discussion a new one in
+
+1437
+01:13:01,000 --> 01:13:05,600
+general the truth is in the middle right
+
+1438
+01:13:03,520 --> 01:13:08,639
+so it it starts with what you want to
+
+1439
+01:13:05,600 --> 01:13:11,040
+model because yeah in theory it is
+
+1440
+01:13:08,639 --> 01:13:13,400
+better to use as long as the model that
+
+1441
+01:13:11,040 --> 01:13:14,600
+you reuse comes from a source good
+
+1442
+01:13:13,400 --> 01:13:17,360
+source and that you are able to
+
+1443
+01:13:14,600 --> 01:13:18,600
+scrutinize it for compatibility the
+
+1444
+01:13:17,360 --> 01:13:21,520
+problem is that usually sematic
+
+1445
+01:13:18,600 --> 01:13:23,719
+compatibility is not what it looks right
+
+1446
+01:13:21,520 --> 01:13:26,440
+not because of a set of Mal because of
+
+1447
+01:13:23,719 --> 01:13:27,960
+the many assumptions and things that
+
+1448
+01:13:26,440 --> 01:13:29,840
+other modelers have in their mind when
+
+1449
+01:13:27,960 --> 01:13:32,199
+they create the models and typically
+
+1450
+01:13:29,840 --> 01:13:34,280
+because of really bad documentation or
+
+1451
+01:13:32,199 --> 01:13:39,400
+incomplete documentation of
+
+1452
+01:13:34,280 --> 01:13:40,960
+things so yeah the the optimal how not
+
+1453
+01:13:39,400 --> 01:13:43,800
+the optimal
+
+1454
+01:13:40,960 --> 01:13:46,800
+the in an Ideal World We would like to
+
+1455
+01:13:43,800 --> 01:13:49,560
+be able to reuse right in practice it's
+
+1456
+01:13:46,800 --> 01:13:52,600
+not so straightforward so you need to
+
+1457
+01:13:49,560 --> 01:13:54,679
+scrutinize your data sources in the book
+
+1458
+01:13:52,600 --> 01:13:57,600
+I have a whole also I have a section
+
+1459
+01:13:54,679 --> 01:14:00,400
+about exactly this not how
+
+1460
+01:13:57,600 --> 01:14:02,880
+to scrutinize your data your knowledge
+
+1461
+01:14:00,400 --> 01:14:05,880
+sources that be knowledge sources can be
+
+1462
+01:14:02,880 --> 01:14:10,600
+Road data can be humans experts non
+
+1463
+01:14:05,880 --> 01:14:13,719
+experts crowd Etc but also other
+
+1464
+01:14:10,600 --> 01:14:17,639
+models okay there are a few few more
+
+1465
+01:14:13,719 --> 01:14:20,679
+questions that came in um coming from a
+
+1466
+01:14:17,639 --> 01:14:24,800
+uml and relational model background what
+
+1467
+01:14:20,679 --> 01:14:28,000
+mistakes should we avoid watch out for
+
+1468
+01:14:24,800 --> 01:14:29,920
+uh I'm not sure I'm not sure exactly but
+
+1469
+01:14:28,000 --> 01:14:31,840
+let's uh now we're going to see some of
+
+1470
+01:14:29,920 --> 01:14:33,920
+the mistakes right so let's see if these
+
+1471
+01:14:31,840 --> 01:14:36,960
+apply also from coming from
+
+1472
+01:14:33,920 --> 01:14:38,400
+uml right I don't know to be honest and
+
+1473
+01:14:36,960 --> 01:14:41,560
+then there are a couple couple of last
+
+1474
+01:14:38,400 --> 01:14:43,760
+questions um how do you find what models
+
+1475
+01:14:41,560 --> 01:14:46,239
+are available publicly so I guess this
+
+1476
+01:14:43,760 --> 01:14:49,719
+is kind of Link open data Cloud ter yeah
+
+1477
+01:14:46,239 --> 01:14:51,840
+so there are exactly there are some yeah
+
+1478
+01:14:49,719 --> 01:14:53,639
+there are some there is one resource
+
+1479
+01:14:51,840 --> 01:14:56,639
+called linked open vocabularies where
+
+1480
+01:14:53,639 --> 01:14:59,080
+you can see many schemas and models and
+
+1481
+01:14:56,639 --> 01:15:00,760
+then there is yeah linked open data but
+
+1482
+01:14:59,080 --> 01:15:04,840
+I don't think that that there is a
+
+1483
+01:15:00,760 --> 01:15:07,239
+single uh directory of data sets you
+
+1484
+01:15:04,840 --> 01:15:08,960
+have to to try to find them so for
+
+1485
+01:15:07,239 --> 01:15:12,159
+instance for for biomedical ontology
+
+1486
+01:15:08,960 --> 01:15:15,080
+there is bioportal which has so it
+
+1487
+01:15:12,159 --> 01:15:17,520
+really has to do with with the domain
+
+1488
+01:15:15,080 --> 01:15:20,159
+you have to check right I'm not aware of
+
+1489
+01:15:17,520 --> 01:15:24,440
+any single public maintain
+
+1490
+01:15:20,159 --> 01:15:27,060
+list sounds good right back to you start
+
+1491
+01:15:24,440 --> 01:15:30,199
+yes thank you
+
+1492
+01:15:27,060 --> 01:15:30,199
+[Music]
+
+1493
+01:15:33,520 --> 01:15:38,639
+okay okay
+
+1494
+01:15:36,159 --> 01:15:40,159
+so yeah that was the break and let's go
+
+1495
+01:15:38,639 --> 01:15:43,080
+to the
+
+1496
+01:15:40,159 --> 01:15:45,880
+pit and I will start with what I like to
+
+1497
+01:15:43,080 --> 01:15:48,280
+call bad names right or if you like
+
+1498
+01:15:45,880 --> 01:15:48,280
+wrong
+
+1499
+01:15:49,080 --> 01:15:54,679
+names
+
+1500
+01:15:50,800 --> 01:15:56,760
+so let's assume that someone tells you
+
+1501
+01:15:54,679 --> 01:15:58,000
+that
+
+1502
+01:15:56,760 --> 01:16:00,120
+you take as a requirement that your
+
+1503
+01:15:58,000 --> 01:16:03,199
+model needs to be able to distinguish
+
+1504
+01:16:00,120 --> 01:16:07,120
+between two different types of customers
+
+1505
+01:16:03,199 --> 01:16:08,679
+individual customers which are uh not
+
+1506
+01:16:07,120 --> 01:16:12,080
+individual customers which are humans
+
+1507
+01:16:08,679 --> 01:16:15,239
+people and persons and uh organizational
+
+1508
+01:16:12,080 --> 01:16:16,960
+customers right companies and legal
+
+1509
+01:16:15,239 --> 01:16:19,960
+legal entities in
+
+1510
+01:16:16,960 --> 01:16:21,120
+general which of these two models is
+
+1511
+01:16:19,960 --> 01:16:23,679
+actually
+
+1512
+01:16:21,120 --> 01:16:25,360
+correct the left or the right I don't
+
+1513
+01:16:23,679 --> 01:16:29,600
+know if we can actually make make a poll
+
+1514
+01:16:25,360 --> 01:16:29,600
+on that IAH is it easy to make a quick
+
+1515
+01:16:30,159 --> 01:16:37,239
+poll hi just give me a few seconds can
+
+1516
+01:16:33,400 --> 01:16:40,480
+you reframe the frame the question yes
+
+1517
+01:16:37,239 --> 01:16:43,199
+uh which of the two models that you see
+
+1518
+01:16:40,480 --> 01:16:47,560
+ER is correct in representing the fact
+
+1519
+01:16:43,199 --> 01:16:49,920
+that H customers of a company can be of
+
+1520
+01:16:47,560 --> 01:16:53,600
+two kinds individual customers and
+
+1521
+01:16:49,920 --> 01:16:53,600
+organizational customers
+
+1522
+01:17:20,520 --> 01:17:25,159
+and tell me the results because I don't
+
+1523
+01:17:21,960 --> 01:17:25,159
+see them
+
+1524
+01:17:26,840 --> 01:17:32,719
+H the question was rather a Leng one so
+
+1525
+01:17:30,440 --> 01:17:34,360
+I I just created the first part which of
+
+1526
+01:17:32,719 --> 01:17:37,360
+the two models you can repeat it right
+
+1527
+01:17:34,360 --> 01:17:38,960
+now and I think the participants can uh
+
+1528
+01:17:37,360 --> 01:17:41,040
+can listen to the question instead of
+
+1529
+01:17:38,960 --> 01:17:43,600
+writing so yeah yeah we want to model
+
+1530
+01:17:41,040 --> 01:17:45,239
+the situation that a customers of the
+
+1531
+01:17:43,600 --> 01:17:48,520
+customers of a company can be of two
+
+1532
+01:17:45,239 --> 01:17:51,400
+types of two kinds persons and
+
+1533
+01:17:48,520 --> 01:17:52,679
+organizations right so the question is
+
+1534
+01:17:51,400 --> 01:17:56,400
+which of these two
+
+1535
+01:17:52,679 --> 01:17:59,360
+models um better represents this kind of
+
+1536
+01:17:56,400 --> 01:18:03,719
+semantic knowledge if you
+
+1537
+01:17:59,360 --> 01:18:06,480
+like the left or the right A or
+
+1538
+01:18:03,719 --> 01:18:09,000
+B at the footer at the footer of the
+
+1539
+01:18:06,480 --> 01:18:12,679
+screen I think you also can see the
+
+1540
+01:18:09,000 --> 01:18:19,120
+ongoing uh voting I cannot it's like
+
+1541
+01:18:12,679 --> 01:18:22,639
+before to the tab but uh yeah 11 votes
+
+1542
+01:18:19,120 --> 01:18:25,480
+James can jump in and uh if you can see
+
+1543
+01:18:22,639 --> 01:18:28,360
+11 votes are for H the
+
+1544
+01:18:25,480 --> 01:18:30,639
+and four words are to the right until
+
+1545
+01:18:28,360 --> 01:18:34,679
+now yeah that's
+
+1546
+01:18:30,639 --> 01:18:34,679
+correct okay good
+
+1547
+01:18:34,760 --> 01:18:42,639
+so the answer is none sorry for my three
+
+1548
+01:18:38,440 --> 01:18:45,239
+questions but let me let me explain so
+
+1549
+01:18:42,639 --> 01:18:48,560
+the issue with the left uh the right
+
+1550
+01:18:45,239 --> 01:18:50,280
+model is that as it is right without any
+
+1551
+01:18:48,560 --> 01:18:52,840
+additional knowledge it practically
+
+1552
+01:18:50,280 --> 01:18:55,600
+suggests that a customer is both a
+
+1553
+01:18:52,840 --> 01:18:57,840
+person and organization so you can if if
+
+1554
+01:18:55,600 --> 01:18:59,840
+I if I assign if I Make an instance of
+
+1555
+01:18:57,840 --> 01:19:01,880
+the class customers then the the
+
+1556
+01:18:59,840 --> 01:19:03,880
+inference engines the inference engine
+
+1557
+01:19:01,880 --> 01:19:06,159
+will say that this customer is both a
+
+1558
+01:19:03,880 --> 01:19:09,000
+personal organization at the same time
+
+1559
+01:19:06,159 --> 01:19:11,480
+and this this cannot happen right H
+
+1560
+01:19:09,000 --> 01:19:14,199
+because even individual uh person
+
+1561
+01:19:11,480 --> 01:19:18,400
+companies that have even entrepreneurs
+
+1562
+01:19:14,199 --> 01:19:20,920
+are considered to be I think uh
+
+1563
+01:19:18,400 --> 01:19:23,159
+single customers single sorry sing
+
+1564
+01:19:20,920 --> 01:19:24,840
+Single entities so the right the left
+
+1565
+01:19:23,159 --> 01:19:28,000
+model has exactly the right model has
+
+1566
+01:19:24,840 --> 01:19:30,000
+exactly this uh this problem now the
+
+1567
+01:19:28,000 --> 01:19:31,880
+interesting thing is what's happening in
+
+1568
+01:19:30,000 --> 01:19:34,360
+the in the right model in the in the
+
+1569
+01:19:31,880 --> 01:19:36,840
+left model sorry which looks correct
+
+1570
+01:19:34,360 --> 01:19:39,239
+right customer can be a personal
+
+1571
+01:19:36,840 --> 01:19:40,080
+organization the problem here is with
+
+1572
+01:19:39,239 --> 01:19:43,960
+the
+
+1573
+01:19:40,080 --> 01:19:48,760
+naming so the the left model practically
+
+1574
+01:19:43,960 --> 01:19:52,000
+suggests that all persons are
+
+1575
+01:19:48,760 --> 01:19:54,280
+customers and all organizations are
+
+1576
+01:19:52,000 --> 01:19:55,360
+customers which means that in in the
+
+1577
+01:19:54,280 --> 01:19:57,560
+model
+
+1578
+01:19:55,360 --> 01:20:00,440
+you cannot have an organization that is
+
+1579
+01:19:57,560 --> 01:20:02,679
+not a customer or a person that is not a
+
+1580
+01:20:00,440 --> 01:20:05,360
+customer in other
+
+1581
+01:20:02,679 --> 01:20:07,719
+words the name person and the name
+
+1582
+01:20:05,360 --> 01:20:09,760
+Organization for customer is misleading
+
+1583
+01:20:07,719 --> 01:20:12,400
+because if you have this model and you
+
+1584
+01:20:09,760 --> 01:20:14,040
+give it to someone to populate it and
+
+1585
+01:20:12,400 --> 01:20:15,520
+they and tell them okay can you fill in
+
+1586
+01:20:14,040 --> 01:20:16,719
+the person table they will just start
+
+1587
+01:20:15,520 --> 01:20:20,360
+adding
+
+1588
+01:20:16,719 --> 01:20:22,320
+persons the correct model would be this
+
+1589
+01:20:20,360 --> 01:20:23,800
+you what we really have is you have
+
+1590
+01:20:22,320 --> 01:20:25,280
+persons you have customers you have
+
+1591
+01:20:23,800 --> 01:20:27,760
+organization
+
+1592
+01:20:25,280 --> 01:20:29,600
+and then you have private customers and
+
+1593
+01:20:27,760 --> 01:20:31,800
+corporate customers and a private
+
+1594
+01:20:29,600 --> 01:20:33,760
+customer is a customer that is a
+
+1595
+01:20:31,800 --> 01:20:35,600
+subclass of person and and subass of
+
+1596
+01:20:33,760 --> 01:20:40,159
+customer and you can also make if you
+
+1597
+01:20:35,600 --> 01:20:42,120
+like you can make an axium right but the
+
+1598
+01:20:40,159 --> 01:20:45,080
+thing is that and the same applies for
+
+1599
+01:20:42,120 --> 01:20:45,880
+corporate customer so the problem here
+
+1600
+01:20:45,080 --> 01:20:49,639
+is the
+
+1601
+01:20:45,880 --> 01:20:51,080
+name when we try to develop we're
+
+1602
+01:20:49,639 --> 01:20:53,719
+developing the
+
+1603
+01:20:51,080 --> 01:20:56,800
+model whereas in our brains in our minds
+
+1604
+01:20:53,719 --> 01:21:00,280
+we want we wanted to say indivi person
+
+1605
+01:20:56,800 --> 01:21:03,679
+customer we wrote person as a name and
+
+1606
+01:21:00,280 --> 01:21:07,320
+this happens a lot this happens a lot we
+
+1607
+01:21:03,679 --> 01:21:10,639
+use either ambiguous names or incorrect
+
+1608
+01:21:07,320 --> 01:21:11,960
+names why the first reason is that we
+
+1609
+01:21:10,639 --> 01:21:13,159
+don't know any other interpretations
+
+1610
+01:21:11,960 --> 01:21:16,120
+this is usually the problem with
+
+1611
+01:21:13,159 --> 01:21:18,440
+ambiguity right so if you have someone
+
+1612
+01:21:16,120 --> 01:21:21,480
+who has no Affinity with information
+
+1613
+01:21:18,440 --> 01:21:23,120
+technology and uh they built a model and
+
+1614
+01:21:21,480 --> 01:21:24,880
+they have the entity python for instance
+
+1615
+01:21:23,120 --> 01:21:26,360
+they wouldn't know that python can be a
+
+1616
+01:21:24,880 --> 01:21:28,800
+programming language so they would know
+
+1617
+01:21:26,360 --> 01:21:30,600
+the snake so they would just Define an
+
+1618
+01:21:28,800 --> 01:21:32,719
+empty Python and that's
+
+1619
+01:21:30,600 --> 01:21:34,560
+it we also assume that other
+
+1620
+01:21:32,719 --> 01:21:37,480
+interpretations are irrelevant and that
+
+1621
+01:21:34,560 --> 01:21:40,159
+people will know what we mean and this
+
+1622
+01:21:37,480 --> 01:21:44,080
+is partially correct so if we go
+
+1623
+01:21:40,159 --> 01:21:46,800
+here indeed uh if you if we see this
+
+1624
+01:21:44,080 --> 01:21:49,120
+picture a human will definitely
+
+1625
+01:21:46,800 --> 01:21:51,560
+understand that a person here means the
+
+1626
+01:21:49,120 --> 01:21:54,280
+type of customer but if you see it in
+
+1627
+01:21:51,560 --> 01:21:55,960
+isolation and this is quite likely to
+
+1628
+01:21:54,280 --> 01:21:59,040
+happen
+
+1629
+01:21:55,960 --> 01:22:02,719
+H this won't be
+
+1630
+01:21:59,040 --> 01:22:05,840
+as how to say this won't be as
+
+1631
+01:22:02,719 --> 01:22:07,000
+obvious the third reason is exactly this
+
+1632
+01:22:05,840 --> 01:22:08,679
+we assume that the correct meaning will
+
+1633
+01:22:07,000 --> 01:22:10,800
+be inferred by the
+
+1634
+01:22:08,679 --> 01:22:14,679
+context the thing is that you cannot
+
+1635
+01:22:10,800 --> 01:22:16,199
+always uh rely on that and finally we
+
+1636
+01:22:14,679 --> 01:22:17,639
+are used as humans to expressing
+
+1637
+01:22:16,199 --> 01:22:18,960
+ourselves in natural language and
+
+1638
+01:22:17,639 --> 01:22:23,040
+managing to understand each other
+
+1639
+01:22:18,960 --> 01:22:25,639
+despite obvious inaccuracies right so
+
+1640
+01:22:23,040 --> 01:22:27,920
+the problem starts with how we speak
+
+1641
+01:22:25,639 --> 01:22:30,679
+right and I have another example for
+
+1642
+01:22:27,920 --> 01:22:34,480
+that if I if I ask you right now what
+
+1643
+01:22:30,679 --> 01:22:36,920
+car do you have which car do you have
+
+1644
+01:22:34,480 --> 01:22:38,560
+right you're not going to give me your
+
+1645
+01:22:36,920 --> 01:22:41,760
+license plate you're not going to tell
+
+1646
+01:22:38,560 --> 01:22:44,560
+me I have a car with license plate X
+
+1647
+01:22:41,760 --> 01:22:48,760
+ABC you're most likely going to tell me
+
+1648
+01:22:44,560 --> 01:22:50,960
+I have a BMW or I have a BM a Mercedes a
+
+1649
+01:22:48,760 --> 01:22:54,880
+class so you're going to give me the
+
+1650
+01:22:50,960 --> 01:22:56,880
+brand or the model but I ask you the car
+
+1651
+01:22:54,880 --> 01:23:00,360
+of course you you said that it's not
+
+1652
+01:22:56,880 --> 01:23:02,360
+rational that I would mean h that I want
+
+1653
+01:23:00,360 --> 01:23:05,120
+to know your license plate otherwise it
+
+1654
+01:23:02,360 --> 01:23:07,120
+would be more specific but imagine that
+
+1655
+01:23:05,120 --> 01:23:10,159
+if you want to represent the branch of a
+
+1656
+01:23:07,120 --> 01:23:14,840
+car right BMW or the Constructor of a
+
+1657
+01:23:10,159 --> 01:23:16,960
+car and you uh named the class car that
+
+1658
+01:23:14,840 --> 01:23:19,320
+would be wrong right the the name of the
+
+1659
+01:23:16,960 --> 01:23:20,840
+class would be car brand or car model to
+
+1660
+01:23:19,320 --> 01:23:24,840
+be more
+
+1661
+01:23:20,840 --> 01:23:27,320
+specific so
+
+1662
+01:23:24,840 --> 01:23:29,280
+I know this can sound pantic in some
+
+1663
+01:23:27,320 --> 01:23:33,440
+cases right now that I'm trying to split
+
+1664
+01:23:29,280 --> 01:23:34,960
+hair hair here but imagine that your the
+
+1665
+01:23:33,440 --> 01:23:38,040
+semantic model that you are you are
+
+1666
+01:23:34,960 --> 01:23:39,920
+building is going to when you build is
+
+1667
+01:23:38,040 --> 01:23:41,880
+going to be used in the Wild by people
+
+1668
+01:23:39,920 --> 01:23:44,520
+who who are not in your heads when you
+
+1669
+01:23:41,880 --> 01:23:47,000
+were building it right there will be
+
+1670
+01:23:44,520 --> 01:23:49,880
+other models that will try to reuse that
+
+1671
+01:23:47,000 --> 01:23:53,040
+model to reuse your model or we'll try
+
+1672
+01:23:49,880 --> 01:23:54,960
+to do to map to it do ontology alignment
+
+1673
+01:23:53,040 --> 01:23:57,199
+and I don't know if you know that that
+
+1674
+01:23:54,960 --> 01:23:59,760
+in many cases most ontology matching and
+
+1675
+01:23:57,199 --> 01:24:02,480
+ontology alignment tools rely on string
+
+1676
+01:23:59,760 --> 01:24:04,760
+similarity right so and usually what
+
+1677
+01:24:02,480 --> 01:24:07,440
+they do is that if two entities have the
+
+1678
+01:24:04,760 --> 01:24:12,120
+same name they are assumed to be the
+
+1679
+01:24:07,440 --> 01:24:13,880
+same right so if the model that I showed
+
+1680
+01:24:12,120 --> 01:24:16,960
+you the the left model that I showed you
+
+1681
+01:24:13,880 --> 01:24:18,679
+two slides earlier you try to match it
+
+1682
+01:24:16,960 --> 01:24:20,520
+with another model where the person
+
+1683
+01:24:18,679 --> 01:24:24,040
+class is not just the customers but
+
+1684
+01:24:20,520 --> 01:24:27,840
+other types of uh also other other
+
+1685
+01:24:24,040 --> 01:24:29,400
+person all types of persons right a mat
+
+1686
+01:24:27,840 --> 01:24:32,080
+that would consider these two as
+
+1687
+01:24:29,400 --> 01:24:34,159
+equivalent would commit a semantic
+
+1688
+01:24:32,080 --> 01:24:38,280
+mistake an interlinking
+
+1689
+01:24:34,159 --> 01:24:40,600
+mistake right so how to give good
+
+1690
+01:24:38,280 --> 01:24:42,600
+names try to contemplate an element's
+
+1691
+01:24:40,600 --> 01:24:44,400
+name in relative isolation and try to
+
+1692
+01:24:42,600 --> 01:24:46,760
+think all the possible and legitimate
+
+1693
+01:24:44,400 --> 01:24:47,800
+ways this can be interpreted by a human
+
+1694
+01:24:46,760 --> 01:24:49,600
+if a name has more than one
+
+1695
+01:24:47,800 --> 01:24:51,800
+interpretation so if it's ambiguous make
+
+1696
+01:24:49,600 --> 01:24:53,719
+it more specific usually by means of
+
+1697
+01:24:51,800 --> 01:24:55,320
+qualified you can put in a parenthesis
+
+1698
+01:24:53,719 --> 01:24:57,199
+some name Etc even if the other
+
+1699
+01:24:55,320 --> 01:24:59,440
+interpretations are not within the
+
+1700
+01:24:57,199 --> 01:25:02,760
+domain or not very likely to Ure of
+
+1701
+01:24:59,440 --> 01:25:06,320
+course it doesn't make sense to try and
+
+1702
+01:25:02,760 --> 01:25:09,880
+if a term has aund meanings to try and
+
+1703
+01:25:06,320 --> 01:25:10,960
+uh model all meanings but at least for
+
+1704
+01:25:09,880 --> 01:25:15,800
+the
+
+1705
+01:25:10,960 --> 01:25:20,239
+most ER likely wrong interpretations you
+
+1706
+01:25:15,800 --> 01:25:24,840
+should ensure that um the name of the of
+
+1707
+01:25:20,239 --> 01:25:27,880
+the element relation or uh or entity
+
+1708
+01:25:24,840 --> 01:25:30,760
+is relatively unambiguous and something
+
+1709
+01:25:27,880 --> 01:25:32,960
+that I found very practical while in my
+
+1710
+01:25:30,760 --> 01:25:35,520
+in my working experience my my everyday
+
+1711
+01:25:32,960 --> 01:25:37,119
+work observe how the name is used in
+
+1712
+01:25:35,520 --> 01:25:39,040
+practice by your modelers annotators
+
+1713
+01:25:37,119 --> 01:25:40,880
+developers and users so you may think
+
+1714
+01:25:39,040 --> 01:25:44,280
+that you have defined the name
+
+1715
+01:25:40,880 --> 01:25:47,560
+perfectly ER and then you realize that
+
+1716
+01:25:44,280 --> 01:25:49,719
+when you have I don't know your users um
+
+1717
+01:25:47,560 --> 01:25:51,159
+or you domain experts try to populate
+
+1718
+01:25:49,719 --> 01:25:54,840
+for instance in relation they do it
+
+1719
+01:25:51,159 --> 01:25:57,159
+wrongly that means that probably the
+
+1720
+01:25:54,840 --> 01:25:59,159
+definition of the of the name is not
+
+1721
+01:25:57,159 --> 01:26:01,719
+correct right or at least it doesn't
+
+1722
+01:25:59,159 --> 01:26:04,000
+convey it doesn't manage to achieve what
+
+1723
+01:26:01,719 --> 01:26:06,280
+we call human understandability of the
+
+1724
+01:26:04,000 --> 01:26:06,280
+of the
+
+1725
+01:26:06,719 --> 01:26:13,080
+element so this is an example let's say
+
+1726
+01:26:10,400 --> 01:26:15,199
+that someone you have an expression
+
+1727
+01:26:13,080 --> 01:26:16,719
+called we have the following Expressions
+
+1728
+01:26:15,199 --> 01:26:17,560
+the first is United States of America is
+
+1729
+01:26:16,719 --> 01:26:20,920
+a
+
+1730
+01:26:17,560 --> 01:26:22,520
+democracy how would you model this one
+
+1731
+01:26:20,920 --> 01:26:23,960
+way would would be to create a class
+
+1732
+01:26:22,520 --> 01:26:25,440
+democracy in making the an United States
+
+1733
+01:26:23,960 --> 01:26:27,679
+and is of it so we have a class
+
+1734
+01:26:25,440 --> 01:26:30,480
+democracy and United
+
+1735
+01:26:27,679 --> 01:26:32,679
+States but a better A Better Way would
+
+1736
+01:26:30,480 --> 01:26:34,199
+be to create a class Democratic country
+
+1737
+01:26:32,679 --> 01:26:36,480
+and make the entity United States an
+
+1738
+01:26:34,199 --> 01:26:40,400
+instance of it why because Democratic
+
+1739
+01:26:36,480 --> 01:26:43,360
+country as a name indicates that this is
+
+1740
+01:26:40,400 --> 01:26:45,920
+a class whose instances are countries
+
+1741
+01:26:43,360 --> 01:26:50,199
+which has democracy as their political
+
+1742
+01:26:45,920 --> 01:26:52,480
+system right H and that means that if we
+
+1743
+01:26:50,199 --> 01:26:54,719
+have in another model in a SC taxonomy
+
+1744
+01:26:52,480 --> 01:26:58,000
+the the class democracy the entity
+
+1745
+01:26:54,719 --> 01:27:00,639
+democracy as an abstract entity right as
+
+1746
+01:26:58,000 --> 01:27:04,880
+the type of political system where uh
+
+1747
+01:27:00,639 --> 01:27:05,840
+decisions are um taken by by the people
+
+1748
+01:27:04,880 --> 01:27:08,639
+etc
+
+1749
+01:27:05,840 --> 01:27:10,920
+etc there won't be the risk of mixing
+
+1750
+01:27:08,639 --> 01:27:14,280
+these two right because the intended
+
+1751
+01:27:10,920 --> 01:27:17,800
+usage of democracy in in this expression
+
+1752
+01:27:14,280 --> 01:27:20,400
+is democratic country not not democracy
+
+1753
+01:27:17,800 --> 01:27:22,760
+as a political system another example
+
+1754
+01:27:20,400 --> 01:27:25,480
+would be James C high or got if you like
+
+1755
+01:27:22,760 --> 01:27:28,000
+in deep learning deep learning here is
+
+1756
+01:27:25,480 --> 01:27:29,400
+not the the discipline of deep learning
+
+1757
+01:27:28,000 --> 01:27:33,280
+it's not the technique of deep learning
+
+1758
+01:27:29,400 --> 01:27:35,080
+it's a course so have it naming the
+
+1759
+01:27:33,280 --> 01:27:37,080
+course deep learning it's not a good
+
+1760
+01:27:35,080 --> 01:27:39,280
+name you should name it deep learning
+
+1761
+01:27:37,080 --> 01:27:40,639
+course and then of course you can put as
+
+1762
+01:27:39,280 --> 01:27:43,360
+many labels as you like as many
+
+1763
+01:27:40,639 --> 01:27:45,080
+lexicalizations if you like right H if
+
+1764
+01:27:43,360 --> 01:27:47,400
+you wanted for example to show it in a
+
+1765
+01:27:45,080 --> 01:27:51,239
+navigation
+
+1766
+01:27:47,400 --> 01:27:53,560
+uh in a navigation structure or use in
+
+1767
+01:27:51,239 --> 01:27:56,400
+NLP another example could be Barcelona
+
+1768
+01:27:53,560 --> 01:27:58,880
+visit S bernabel here we have a typical
+
+1769
+01:27:56,400 --> 01:28:00,760
+case of ambiguity Barcelona can be the
+
+1770
+01:27:58,880 --> 01:28:03,360
+city but here it's it's the team San
+
+1771
+01:28:00,760 --> 01:28:05,239
+Diego bernabel was actually a person and
+
+1772
+01:28:03,360 --> 01:28:06,679
+but here it refers to the stadium so the
+
+1773
+01:28:05,239 --> 01:28:10,880
+name should be something like Barcelona
+
+1774
+01:28:06,679 --> 01:28:16,199
+football club and Sano Babel Stadium
+
+1775
+01:28:10,880 --> 01:28:19,040
+right okay moving on let's go to my
+
+1776
+01:28:16,199 --> 01:28:20,800
+second favorite issue
+
+1777
+01:28:19,040 --> 01:28:24,520
+synonyms
+
+1778
+01:28:20,800 --> 01:28:26,920
+now in this table you can see
+
+1779
+01:28:24,520 --> 01:28:30,000
+labels or lexicalizations if you like
+
+1780
+01:28:26,920 --> 01:28:32,960
+from three different semantic models the
+
+1781
+01:28:30,000 --> 01:28:34,800
+first is kbia
+
+1782
+01:28:32,960 --> 01:28:38,320
+kedia
+
+1783
+01:28:34,800 --> 01:28:40,159
+H yeah kedia is an automatic I think
+
+1784
+01:28:38,320 --> 01:28:41,520
+automatically created Knowledge Graph
+
+1785
+01:28:40,159 --> 01:28:44,840
+out of VAR
+
+1786
+01:28:41,520 --> 01:28:47,239
+sources uh and it has a class called
+
+1787
+01:28:44,840 --> 01:28:50,480
+profession and its
+
+1788
+01:28:47,239 --> 01:28:53,719
+labels are occupation vocation work and
+
+1789
+01:28:50,480 --> 01:28:55,719
+living so living so profession and
+
+1790
+01:28:53,719 --> 01:28:58,800
+living here are assumed to be to mean
+
+1791
+01:28:55,719 --> 01:29:01,199
+the same thing then we have wet which
+
+1792
+01:28:58,800 --> 01:29:03,000
+has for instance suggest that a chief
+
+1793
+01:29:01,199 --> 01:29:05,760
+executive officer is synonymous to the
+
+1794
+01:29:03,000 --> 01:29:08,600
+chief operation sorry to a chief
+
+1795
+01:29:05,760 --> 01:29:10,159
+operating officer and then we have Esco
+
+1796
+01:29:08,600 --> 01:29:13,080
+which does all types of things and says
+
+1797
+01:29:10,159 --> 01:29:15,360
+for example that a macro analyst is an e
+
+1798
+01:29:13,080 --> 01:29:17,560
+is the same as an economist a that and
+
+1799
+01:29:15,360 --> 01:29:20,400
+even worse a data engineer is the same
+
+1800
+01:29:17,560 --> 01:29:22,960
+as a data scientist which if any of you
+
+1801
+01:29:20,400 --> 01:29:24,719
+are data scientist know know very well
+
+1802
+01:29:22,960 --> 01:29:29,520
+the difference
+
+1803
+01:29:24,719 --> 01:29:31,119
+so we can I'm not debating here why
+
+1804
+01:29:29,520 --> 01:29:34,040
+these are here but what I want you to
+
+1805
+01:29:31,119 --> 01:29:35,760
+see is that the definition of synonym
+
+1806
+01:29:34,040 --> 01:29:38,040
+right the understanding of synonym is
+
+1807
+01:29:35,760 --> 01:29:39,480
+problematic right we don't all agree but
+
+1808
+01:29:38,040 --> 01:29:42,320
+the thing is
+
+1809
+01:29:39,480 --> 01:29:45,040
+that H so some some things of these are
+
+1810
+01:29:42,320 --> 01:29:47,639
+not are clearly not synonyms some others
+
+1811
+01:29:45,040 --> 01:29:50,080
+maybe consider synonyms under particular
+
+1812
+01:29:47,639 --> 01:29:53,800
+context so for instance chief executive
+
+1813
+01:29:50,080 --> 01:29:55,199
+officer and president for instance right
+
+1814
+01:29:53,800 --> 01:29:58,440
+so
+
+1815
+01:29:55,199 --> 01:30:00,520
+so why we Define bad synonyms the thing
+
+1816
+01:29:58,440 --> 01:30:02,239
+is that the first thing is we forget or
+
+1817
+01:30:00,520 --> 01:30:05,239
+ignore that synonym is vague and context
+
+1818
+01:30:02,239 --> 01:30:07,040
+dependent right so in many cases when we
+
+1819
+01:30:05,239 --> 01:30:08,920
+build a model without any particular
+
+1820
+01:30:07,040 --> 01:30:12,600
+goal in mind we just add things that we
+
+1821
+01:30:08,920 --> 01:30:14,480
+believe are are the same in many cases
+
+1822
+01:30:12,600 --> 01:30:16,679
+we mix synonymy with other phenomena
+
+1823
+01:30:14,480 --> 01:30:21,119
+like hypony and sematic relatedness
+
+1824
+01:30:16,679 --> 01:30:24,000
+right so for instance here a a micro
+
+1825
+01:30:21,119 --> 01:30:26,080
+analyst is actually an ner concept than
+
+1826
+01:30:24,000 --> 01:30:28,639
+Economist so he's an economist if you
+
+1827
+01:30:26,080 --> 01:30:30,280
+like that works that focuses on
+
+1828
+01:30:28,639 --> 01:30:33,400
+macroeconomics so he's a
+
+1829
+01:30:30,280 --> 01:30:36,800
+specialization right
+
+1830
+01:30:33,400 --> 01:30:39,320
+um yeah also a senior yeah also I don't
+
+1831
+01:30:36,800 --> 01:30:41,000
+know yeah data expert or data scientist
+
+1832
+01:30:39,320 --> 01:30:42,840
+and data expert the same thing they're
+
+1833
+01:30:41,000 --> 01:30:44,880
+highly related but you can be a data
+
+1834
+01:30:42,840 --> 01:30:46,119
+expert without being a data scientist a
+
+1835
+01:30:44,880 --> 01:30:47,760
+data scientist is related to that
+
+1836
+01:30:46,119 --> 01:30:49,679
+engineer there is some overlap in the
+
+1837
+01:30:47,760 --> 01:30:52,159
+things that they do perhaps but they are
+
+1838
+01:30:49,679 --> 01:30:55,239
+not uh the same
+
+1839
+01:30:52,159 --> 01:30:56,520
+thing now we are of subtle but important
+
+1840
+01:30:55,239 --> 01:30:59,400
+differences in meaning for our
+
+1841
+01:30:56,520 --> 01:31:01,639
+particular domain or context right so it
+
+1842
+01:30:59,400 --> 01:31:03,119
+may be that the person who in wet
+
+1843
+01:31:01,639 --> 01:31:04,520
+defined that the Chief Operating Officer
+
+1844
+01:31:03,119 --> 01:31:06,639
+and chief executive officer are the same
+
+1845
+01:31:04,520 --> 01:31:08,800
+thing has no idea what these two things
+
+1846
+01:31:06,639 --> 01:31:11,719
+mean or it may be that in specific
+
+1847
+01:31:08,800 --> 01:31:14,679
+context this are indeed the same thing
+
+1848
+01:31:11,719 --> 01:31:16,239
+that's fine right but it needs we need
+
+1849
+01:31:14,679 --> 01:31:20,320
+to be careful on
+
+1850
+01:31:16,239 --> 01:31:22,119
+that in also some cases we this is rarer
+
+1851
+01:31:20,320 --> 01:31:24,840
+but it happens we need the term but we
+
+1852
+01:31:22,119 --> 01:31:26,639
+don't want to create a new entity so
+
+1853
+01:31:24,840 --> 01:31:29,480
+this is a real something that has
+
+1854
+01:31:26,639 --> 01:31:32,000
+happened in my work in a project I was
+
+1855
+01:31:29,480 --> 01:31:34,119
+building a taxonomy of of Concepts and I
+
+1856
+01:31:32,000 --> 01:31:35,480
+got an explicit request that the number
+
+1857
+01:31:34,119 --> 01:31:38,719
+of Concepts should be between five and
+
+1858
+01:31:35,480 --> 01:31:40,639
+6,000 not more so I was saying okay but
+
+1859
+01:31:38,719 --> 01:31:42,159
+if two things have to be distinguished
+
+1860
+01:31:40,639 --> 01:31:46,159
+what do I do and they said put them
+
+1861
+01:31:42,159 --> 01:31:48,360
+under the same concept so I had to my
+
+1862
+01:31:46,159 --> 01:31:52,119
+granularity was limited so I had to take
+
+1863
+01:31:48,360 --> 01:31:54,639
+decisions and we said okay let's agree
+
+1864
+01:31:52,119 --> 01:31:56,080
+for this I don't know two terms that
+
+1865
+01:31:54,639 --> 01:31:57,960
+let's put them under the same concept
+
+1866
+01:31:56,080 --> 01:31:59,199
+even though they are not exactly the
+
+1867
+01:31:57,960 --> 01:32:03,000
+same
+
+1868
+01:31:59,199 --> 01:32:05,760
+thing and that's let's
+
+1869
+01:32:03,000 --> 01:32:08,920
+say very likely to happen and that's
+
+1870
+01:32:05,760 --> 01:32:10,119
+okay if we are aware of it but the
+
+1871
+01:32:08,920 --> 01:32:12,440
+problem usually is that we don't
+
+1872
+01:32:10,119 --> 01:32:14,159
+document that we don't document the
+
+1873
+01:32:12,440 --> 01:32:17,520
+assumptions that we make and the choices
+
+1874
+01:32:14,159 --> 01:32:19,320
+that we make so my problem with Esco and
+
+1875
+01:32:17,520 --> 01:32:24,320
+I think and let me answer this question
+
+1876
+01:32:19,320 --> 01:32:26,679
+about reusing so Esco as I said is um
+
+1877
+01:32:24,320 --> 01:32:28,520
+is a recruitment ontology an HR ontology
+
+1878
+01:32:26,679 --> 01:32:31,080
+about professional s skills and a tech
+
+1879
+01:32:28,520 --> 01:32:33,360
+we also do this so when I try to reuse
+
+1880
+01:32:31,080 --> 01:32:36,560
+Esco for my purposes instead of
+
+1881
+01:32:33,360 --> 01:32:38,360
+redefining things Reinventing things I
+
+1882
+01:32:36,560 --> 01:32:41,400
+came across this and I was like give me
+
+1883
+01:32:38,360 --> 01:32:43,239
+a break I it won't work for me because
+
+1884
+01:32:41,400 --> 01:32:46,239
+for my cases data science doesn't
+
+1885
+01:32:43,239 --> 01:32:47,639
+General done the same thing so it's fine
+
+1886
+01:32:46,239 --> 01:32:50,199
+but the problem was that Esco never
+
+1887
+01:32:47,639 --> 01:32:52,280
+wored me about this they didn't say that
+
+1888
+01:32:50,199 --> 01:32:53,840
+look the synonyms that you see here are
+
+1889
+01:32:52,280 --> 01:32:57,480
+not really synonyms they can have also
+
+1890
+01:32:53,840 --> 01:32:59,239
+so hypon they can have related terms we
+
+1891
+01:32:57,480 --> 01:33:01,560
+have made these assumptions Etc there
+
+1892
+01:32:59,239 --> 01:33:04,600
+was no such documentation and that's the
+
+1893
+01:33:01,560 --> 01:33:07,960
+problem not so much the problem that uh
+
+1894
+01:33:04,600 --> 01:33:11,400
+they are not strict synonyms
+
+1895
+01:33:07,960 --> 01:33:12,679
+so how would how to define good synonyms
+
+1896
+01:33:11,400 --> 01:33:15,000
+I think it makes sense to insist on
+
+1897
+01:33:12,679 --> 01:33:17,440
+meaning equivalence over me relatedness
+
+1898
+01:33:15,000 --> 01:33:19,800
+right so start with that try to tell
+
+1899
+01:33:17,440 --> 01:33:21,960
+your annotators or your modelers try to
+
+1900
+01:33:19,800 --> 01:33:24,119
+achieve equivalence if not okay but
+
+1901
+01:33:21,960 --> 01:33:25,960
+start with that don't tell them it's
+
+1902
+01:33:24,119 --> 01:33:28,520
+okay to be lose because if it's okay to
+
+1903
+01:33:25,960 --> 01:33:31,600
+be lose then they can put anything and
+
+1904
+01:33:28,520 --> 01:33:34,840
+that can cause a problems get multiple
+
+1905
+01:33:31,600 --> 01:33:36,920
+opinions vague relations right vague
+
+1906
+01:33:34,840 --> 01:33:39,000
+information means you need to get input
+
+1907
+01:33:36,920 --> 01:33:41,199
+from multiple peoples and and if
+
+1908
+01:33:39,000 --> 01:33:42,320
+possible from data and if you cannot be
+
+1909
+01:33:41,199 --> 01:33:44,719
+sure that your synonyms are inde
+
+1910
+01:33:42,320 --> 01:33:47,280
+synonyms don't call them like that right
+
+1911
+01:33:44,719 --> 01:33:51,320
+don't call them like that use another
+
+1912
+01:33:47,280 --> 01:33:54,080
+name it's it's safer for for usability
+
+1913
+01:33:51,320 --> 01:33:57,159
+purposes right and always don't the
+
+1914
+01:33:54,080 --> 01:34:01,440
+criterian and assumption in bias of your
+
+1915
+01:33:57,159 --> 01:34:06,360
+synonym okay and let's go to to B sub
+
+1916
+01:34:01,440 --> 01:34:09,880
+classes these two ER these two pictures
+
+1917
+01:34:06,360 --> 01:34:12,920
+show a case or show show a snippet of
+
+1918
+01:34:09,880 --> 01:34:15,679
+the snowed class
+
+1919
+01:34:12,920 --> 01:34:17,880
+hierarchy and you can immediately see to
+
+1920
+01:34:15,679 --> 01:34:20,639
+I will point you to two problems so the
+
+1921
+01:34:17,880 --> 01:34:24,280
+left sorry the right uh taxonomy you can
+
+1922
+01:34:20,639 --> 01:34:28,320
+see that specific countries like Gabon
+
+1923
+01:34:24,280 --> 01:34:31,719
+Rwanda Etc are subclasses of country of
+
+1924
+01:34:28,320 --> 01:34:34,760
+Central African country right this is
+
+1925
+01:34:31,719 --> 01:34:37,480
+wrong definitely wrong right Rwanda
+
+1926
+01:34:34,760 --> 01:34:40,800
+Somalia are individual countries they
+
+1927
+01:34:37,480 --> 01:34:43,159
+should never be model as classes that's
+
+1928
+01:34:40,800 --> 01:34:46,000
+one thing if we go to the left model
+
+1929
+01:34:43,159 --> 01:34:48,360
+there is something interesting we have
+
+1930
+01:34:46,000 --> 01:34:49,480
+secretary as a class which makes sense
+
+1931
+01:34:48,360 --> 01:34:51,600
+because it's a profession and then you
+
+1932
+01:34:49,480 --> 01:34:53,880
+can have as instances individuals that
+
+1933
+01:34:51,600 --> 01:34:56,080
+have these professions but then what
+
+1934
+01:34:53,880 --> 01:34:59,080
+happens is that secretary is also a
+
+1935
+01:34:56,080 --> 01:35:02,040
+subass of of occupation which if you sit
+
+1936
+01:34:59,080 --> 01:35:03,480
+in isolation makes some sense right uh
+
+1937
+01:35:02,040 --> 01:35:07,159
+or at least it looks like it makes some
+
+1938
+01:35:03,480 --> 01:35:08,760
+sense but the problem is that if you
+
+1939
+01:35:07,159 --> 01:35:14,280
+instantiate secretary and you say for
+
+1940
+01:35:08,760 --> 01:35:16,679
+example that uh Anna is a secretary then
+
+1941
+01:35:14,280 --> 01:35:21,119
+through inference of the subass then
+
+1942
+01:35:16,679 --> 01:35:23,760
+Anna is also an occupation which is
+
+1943
+01:35:21,119 --> 01:35:25,800
+ludicrous right it's ridiculous a person
+
+1944
+01:35:23,760 --> 01:35:29,679
+notot be an occupation a person is still
+
+1945
+01:35:25,800 --> 01:35:32,119
+a person so what we have here is that a
+
+1946
+01:35:29,679 --> 01:35:34,960
+secretary should actually be an instance
+
+1947
+01:35:32,119 --> 01:35:37,280
+of occupation not a class and we we have
+
+1948
+01:35:34,960 --> 01:35:41,159
+what we call the meta class problem
+
+1949
+01:35:37,280 --> 01:35:44,960
+right so in all we we get sometimes the
+
+1950
+01:35:41,159 --> 01:35:47,560
+idea that uh the world can be split all
+
+1951
+01:35:44,960 --> 01:35:49,639
+the end can be split into either classes
+
+1952
+01:35:47,560 --> 01:35:51,960
+or individuals but you can actually have
+
+1953
+01:35:49,639 --> 01:35:53,840
+a class of a class these are called meta
+
+1954
+01:35:51,960 --> 01:35:57,600
+classes right an occupation is a meta
+
+1955
+01:35:53,840 --> 01:36:00,159
+class for secretary and this typically
+
+1956
+01:35:57,600 --> 01:36:02,239
+in all description Lal DL is not allowed
+
+1957
+01:36:00,159 --> 01:36:07,040
+or it's not easy to to model that in in
+
+1958
+01:36:02,239 --> 01:36:09,880
+Pro for yeah so based on that there have
+
+1959
+01:36:07,040 --> 01:36:12,239
+been many errors in public models in
+
+1960
+01:36:09,880 --> 01:36:15,600
+doing that so you really need to be
+
+1961
+01:36:12,239 --> 01:36:17,440
+careful about this right so why we
+
+1962
+01:36:15,600 --> 01:36:19,239
+Define B sub classes one reason is the
+
+1963
+01:36:17,440 --> 01:36:23,960
+ambiguity of e the
+
+1964
+01:36:19,239 --> 01:36:25,920
+expression right uh we can say I don't
+
+1965
+01:36:23,960 --> 01:36:29,040
+know Anna is a secretary secretary is an
+
+1966
+01:36:25,920 --> 01:36:31,280
+occupation the problem with e is that
+
+1967
+01:36:29,040 --> 01:36:34,080
+it's overloaded it can mean it's kind of
+
+1968
+01:36:31,280 --> 01:36:35,000
+things is a kind of something or is an
+
+1969
+01:36:34,080 --> 01:36:39,760
+instance
+
+1970
+01:36:35,000 --> 01:36:41,159
+of um and the thing what I said earlier
+
+1971
+01:36:39,760 --> 01:36:42,719
+many times we assume that subass
+
+1972
+01:36:41,159 --> 01:36:45,520
+hierarchies are the same as narrow broad
+
+1973
+01:36:42,719 --> 01:36:47,719
+hierarchies and this is not the case so
+
+1974
+01:36:45,520 --> 01:36:49,320
+how to define good subclasses the
+
+1975
+01:36:47,719 --> 01:36:50,880
+ultimate Criterion is to check whether
+
+1976
+01:36:49,320 --> 01:36:52,960
+the instances of your sub classes are
+
+1977
+01:36:50,880 --> 01:36:54,800
+also instances of the sub super classes
+
+1978
+01:36:52,960 --> 01:36:57,239
+do this test
+
+1979
+01:36:54,800 --> 01:37:00,239
+does it work if not something is wrong
+
+1980
+01:36:57,239 --> 01:37:01,960
+in the names or in the subass try and
+
+1981
+01:37:00,239 --> 01:37:04,000
+express the subass relation with the is
+
+1982
+01:37:01,960 --> 01:37:06,400
+kind of pattern instead of the is and
+
+1983
+01:37:04,000 --> 01:37:09,560
+see if it makes sense check if the two
+
+1984
+01:37:06,400 --> 01:37:11,320
+classes sh identity criteria right and
+
+1985
+01:37:09,560 --> 01:37:12,719
+occupation and a person do not have the
+
+1986
+01:37:11,320 --> 01:37:16,320
+same identity criteria they're not the
+
+1987
+01:37:12,719 --> 01:37:20,080
+same things right so you cannot have um
+
+1988
+01:37:16,320 --> 01:37:20,080
+the one being a subass of of the
+
+1989
+01:37:20,280 --> 01:37:27,639
+other um okay because I don't have much
+
+1990
+01:37:23,560 --> 01:37:29,080
+time I will skip this H Q&A and I will
+
+1991
+01:37:27,639 --> 01:37:31,560
+move to vagueness for another five
+
+1992
+01:37:29,080 --> 01:37:34,199
+minutes and then we can do an overall
+
+1993
+01:37:31,560 --> 01:37:36,880
+Q&A
+
+1994
+01:37:34,199 --> 01:37:39,239
+okay last thing is about vagueness and
+
+1995
+01:37:36,880 --> 01:37:42,440
+actually ignoring about vagueness
+
+1996
+01:37:39,239 --> 01:37:45,800
+so this is an this is an indication of
+
+1997
+01:37:42,440 --> 01:37:48,800
+this is some content from Esco so Esco
+
+1998
+01:37:45,800 --> 01:37:51,400
+as I said as I show earlier has
+
+1999
+01:37:48,800 --> 01:37:54,199
+occupations and has relates occupations
+
+2000
+01:37:51,400 --> 01:37:56,239
+to essential skills now this is some of
+
+2001
+01:37:54,199 --> 01:37:57,719
+the information some instances of of
+
+2002
+01:37:56,239 --> 01:38:00,199
+that
+
+2003
+01:37:57,719 --> 01:38:02,480
+and I'm asking here what is missing for
+
+2004
+01:38:00,199 --> 01:38:05,320
+me when I saw that I said okay what I'm
+
+2005
+01:38:02,480 --> 01:38:09,320
+missing is who decided this who
+
+2006
+01:38:05,320 --> 01:38:12,400
+suggested that for a data scientist to
+
+2007
+01:38:09,320 --> 01:38:14,199
+uh an essential skill is rdf resource
+
+2008
+01:38:12,400 --> 01:38:17,040
+description framework query language
+
+2009
+01:38:14,199 --> 01:38:19,560
+actually I'm not saying it isn't but I
+
+2010
+01:38:17,040 --> 01:38:21,840
+need a proof of that I need some kind of
+
+2011
+01:38:19,560 --> 01:38:24,800
+evidence for that and this is typically
+
+2012
+01:38:21,840 --> 01:38:27,599
+the case for vag essentiality here is
+
+2013
+01:38:24,800 --> 01:38:30,520
+vague unless you give me Cris criteria
+
+2014
+01:38:27,599 --> 01:38:33,000
+when a skill is essential or not right
+
+2015
+01:38:30,520 --> 01:38:35,040
+like for example you need it because the
+
+2016
+01:38:33,000 --> 01:38:36,800
+law suggest that to become a data
+
+2017
+01:38:35,040 --> 01:38:41,360
+scientist you need to know Data
+
+2018
+01:38:36,800 --> 01:38:44,480
+Mining and if there such criteria do not
+
+2019
+01:38:41,360 --> 01:38:47,800
+exist then I have a problem I have a
+
+2020
+01:38:44,480 --> 01:38:51,199
+problem reusing that right so we need to
+
+2021
+01:38:47,800 --> 01:38:53,719
+do something about that so ignoring V is
+
+2022
+01:38:51,199 --> 01:38:55,599
+risky when we instantiate very class is
+
+2023
+01:38:53,719 --> 01:38:57,800
+when we use vague fact in applications
+
+2024
+01:38:55,599 --> 01:39:00,400
+when we integrate vaguely described data
+
+2025
+01:38:57,800 --> 01:39:03,280
+and when mainly when we reuse right
+
+2026
+01:39:00,400 --> 01:39:06,000
+imagine someone who wants to create a
+
+2027
+01:39:03,280 --> 01:39:07,760
+classifier for skills and occupations
+
+2028
+01:39:06,000 --> 01:39:09,760
+using this as trading data and machine
+
+2029
+01:39:07,760 --> 01:39:14,800
+learning
+
+2030
+01:39:09,760 --> 01:39:16,880
+right the if the criteria are not shared
+
+2031
+01:39:14,800 --> 01:39:18,080
+the the model that will be trained the
+
+2032
+01:39:16,880 --> 01:39:20,599
+machine learning model that will be
+
+2033
+01:39:18,080 --> 01:39:22,360
+training will do something totally
+
+2034
+01:39:20,599 --> 01:39:24,440
+different
+
+2035
+01:39:22,360 --> 01:39:26,119
+so when you have a model when you
+
+2036
+01:39:24,440 --> 01:39:28,760
+develop a model or or usually when you
+
+2037
+01:39:26,119 --> 01:39:31,599
+scrutinize one look for
+
+2038
+01:39:28,760 --> 01:39:33,760
+vagueness right and see what's happening
+
+2039
+01:39:31,599 --> 01:39:35,360
+how to detect vagueness first of all
+
+2040
+01:39:33,760 --> 01:39:38,599
+start with
+
+2041
+01:39:35,360 --> 01:39:41,400
+classes like and check if in the name or
+
+2042
+01:39:38,599 --> 01:39:44,400
+the definitions of the classes the the
+
+2043
+01:39:41,400 --> 01:39:47,000
+criteria for uh membership in the class
+
+2044
+01:39:44,400 --> 01:39:50,080
+are crisp are clear if they are not if
+
+2045
+01:39:47,000 --> 01:39:51,400
+you don't know completely how to
+
+2046
+01:39:50,080 --> 01:39:52,800
+classify something as being an instance
+
+2047
+01:39:51,400 --> 01:39:54,560
+of that class or no like to person
+
+2048
+01:39:52,800 --> 01:39:56,480
+strategic customer then you are up
+
+2049
+01:39:54,560 --> 01:39:59,800
+against vagueness and the same applies
+
+2050
+01:39:56,480 --> 01:40:02,360
+for relations right and when it comes to
+
+2051
+01:39:59,800 --> 01:40:04,199
+attributes check if usually the value is
+
+2052
+01:40:02,360 --> 01:40:07,360
+expressed in a V way so you have for
+
+2053
+01:40:04,199 --> 01:40:09,400
+example the the attribute price and
+
+2054
+01:40:07,360 --> 01:40:12,159
+instead of having an exact number you
+
+2055
+01:40:09,400 --> 01:40:15,480
+have something like cheap moderate
+
+2056
+01:40:12,159 --> 01:40:18,440
+expansion right um and then look for
+
+2057
+01:40:15,480 --> 01:40:21,480
+disagreements if you see that your users
+
+2058
+01:40:18,440 --> 01:40:26,080
+your annotators your modelers disagree
+
+2059
+01:40:21,480 --> 01:40:28,880
+on the truth of certain relations and uh
+
+2060
+01:40:26,080 --> 01:40:31,440
+facts then most likely is not the reason
+
+2061
+01:40:28,880 --> 01:40:33,199
+is not that they are wrong right that
+
+2062
+01:40:31,440 --> 01:40:37,199
+they they don't know the domain most
+
+2063
+01:40:33,199 --> 01:40:40,360
+likely the reason is that
+
+2064
+01:40:37,199 --> 01:40:42,760
+uh the relation or the class members the
+
+2065
+01:40:40,360 --> 01:40:45,599
+class is defined in a vague way and you
+
+2066
+01:40:42,760 --> 01:40:47,920
+either need to make it uh to eliminate
+
+2067
+01:40:45,599 --> 01:40:50,679
+vagueness if possible or somehow to
+
+2068
+01:40:47,920 --> 01:40:52,040
+handle it right and I'm not going over
+
+2069
+01:40:50,679 --> 01:40:54,760
+this now I have some examples that you
+
+2070
+01:40:52,040 --> 01:40:57,159
+can see from word net or even from
+
+2071
+01:40:54,760 --> 01:40:59,119
+citation ontology right I can already
+
+2072
+01:40:57,159 --> 01:41:01,280
+tell you that for example PL arises
+
+2073
+01:40:59,119 --> 01:41:03,480
+unless you give me concrete criteria
+
+2074
+01:41:01,280 --> 01:41:06,599
+when it's PL AR and when not then it's
+
+2075
+01:41:03,480 --> 01:41:09,599
+vague right as as simple as
+
+2076
+01:41:06,599 --> 01:41:12,480
+that now H there was a question about
+
+2077
+01:41:09,599 --> 01:41:14,360
+how to tackle vagueness h in principle
+
+2078
+01:41:12,480 --> 01:41:17,679
+there are three complimentary
+
+2079
+01:41:14,360 --> 01:41:20,119
+techniques one is what I call vagueness
+
+2080
+01:41:17,679 --> 01:41:21,719
+awareness it's not a solution but it's
+
+2081
+01:41:20,119 --> 01:41:24,040
+something that contributes towards
+
+2082
+01:41:21,719 --> 01:41:26,719
+tackling vess which means warn your
+
+2083
+01:41:24,040 --> 01:41:29,000
+users Warn and say okay I Define this
+
+2084
+01:41:26,719 --> 01:41:33,000
+it's it's vague
+
+2085
+01:41:29,000 --> 01:41:35,159
+right but we cannot we don't know we
+
+2086
+01:41:33,000 --> 01:41:37,800
+cannot do anything more than that but be
+
+2087
+01:41:35,159 --> 01:41:40,239
+careful on that or maybe it's vague but
+
+2088
+01:41:37,800 --> 01:41:42,840
+we do have some criteria add the
+
+2089
+01:41:40,239 --> 01:41:43,960
+criteria on the second technique is
+
+2090
+01:41:42,840 --> 01:41:46,080
+truth
+
+2091
+01:41:43,960 --> 01:41:51,080
+contextualization in in some cases you
+
+2092
+01:41:46,080 --> 01:41:54,760
+won't have agreement even if uh you try
+
+2093
+01:41:51,080 --> 01:41:57,480
+so uh if you want to define the concept
+
+2094
+01:41:54,760 --> 01:41:59,280
+tall person H and you want Define it for
+
+2095
+01:41:57,480 --> 01:42:00,840
+the whole population and you want to
+
+2096
+01:41:59,280 --> 01:42:02,119
+also use it I don't know for uh for
+
+2097
+01:42:00,840 --> 01:42:05,000
+basketball players you will have a
+
+2098
+01:42:02,119 --> 01:42:07,840
+problem so then you may consider okay
+
+2099
+01:42:05,000 --> 01:42:12,400
+you can say that this statement is
+
+2100
+01:42:07,840 --> 01:42:14,880
+true ER at a given sorry for in a given
+
+2101
+01:42:12,400 --> 01:42:16,599
+context and the third uh technique is
+
+2102
+01:42:14,880 --> 01:42:20,159
+called Truth falsification which is the
+
+2103
+01:42:16,599 --> 01:42:23,320
+application of fuzzy logic um where
+
+2104
+01:42:20,159 --> 01:42:24,960
+instead of having um
+
+2105
+01:42:23,320 --> 01:42:26,440
+statements that are either true or false
+
+2106
+01:42:24,960 --> 01:42:30,440
+you have statements that have degrees of
+
+2107
+01:42:26,440 --> 01:42:33,440
+truth so you can say for example that um
+
+2108
+01:42:30,440 --> 01:42:36,320
+you can say for example that um I don't
+
+2109
+01:42:33,440 --> 01:42:39,679
+know Panos is expert in ontologies to a
+
+2110
+01:42:36,320 --> 01:42:41,920
+degree 02 for instance right so between
+
+2111
+01:42:39,679 --> 01:42:44,400
+a degree of zero and one it's not an
+
+2112
+01:42:41,920 --> 01:42:47,000
+easy technique to handle it has also its
+
+2113
+01:42:44,400 --> 01:42:50,199
+pros and cons uh but this is also
+
+2114
+01:42:47,000 --> 01:42:54,920
+something that H is worth a completely
+
+2115
+01:42:50,199 --> 01:42:57,840
+new master class to to tackle
+
+2116
+01:42:54,920 --> 01:43:00,000
+so yeah uh I will leave you because
+
+2117
+01:42:57,840 --> 01:43:01,520
+we're almost out of time H you can see
+
+2118
+01:43:00,000 --> 01:43:05,239
+the slides further and you can
+
+2119
+01:43:01,520 --> 01:43:09,520
+definitely see things in h in the book
+
+2120
+01:43:05,239 --> 01:43:11,480
+so yeah let me wrap up and uh we can
+
+2121
+01:43:09,520 --> 01:43:15,080
+have a five minutes QA before we do the
+
+2122
+01:43:11,480 --> 01:43:17,840
+raffle so what I want you to take as as
+
+2123
+01:43:15,080 --> 01:43:20,679
+take away from this master class are
+
+2124
+01:43:17,840 --> 01:43:23,599
+three things the first is
+
+2125
+01:43:20,679 --> 01:43:26,000
+that a very important dimension of
+
+2126
+01:43:23,599 --> 01:43:28,280
+semantic modeling is what it says
+
+2127
+01:43:26,000 --> 01:43:30,360
+semantics it's shed meaning meaning
+
+2128
+01:43:28,280 --> 01:43:33,199
+accuracy meaning explicit meaning
+
+2129
+01:43:30,360 --> 01:43:35,520
+agreement just because someone builds a
+
+2130
+01:43:33,199 --> 01:43:37,760
+model in SC in know or using a sem
+
+2131
+01:43:35,520 --> 01:43:39,199
+another semantic modeling framework
+
+2132
+01:43:37,760 --> 01:43:41,119
+doesn't mean that they are doing
+
+2133
+01:43:39,199 --> 01:43:44,360
+semantics right that that the model is
+
+2134
+01:43:41,119 --> 01:43:45,840
+indeed is semantic right it's also what
+
+2135
+01:43:44,360 --> 01:43:47,440
+happens in machine learning garbage in
+
+2136
+01:43:45,840 --> 01:43:50,760
+garbage out right
+
+2137
+01:43:47,440 --> 01:43:52,880
+so uh it's very important when we check
+
+2138
+01:43:50,760 --> 01:43:55,920
+uh the quality of semantic model to have
+
+2139
+01:43:52,880 --> 01:43:58,080
+this dimensions in mind and I think it
+
+2140
+01:43:55,920 --> 01:44:02,639
+was metion was a question about when
+
+2141
+01:43:58,080 --> 01:44:06,040
+when it's a lesser or not less on better
+
+2142
+01:44:02,639 --> 01:44:09,159
+ontology or not so good ontology check
+
+2143
+01:44:06,040 --> 01:44:11,960
+this criteria try to see if you know you
+
+2144
+01:44:09,159 --> 01:44:13,960
+scrutinize in ontology how each one
+
+2145
+01:44:11,960 --> 01:44:16,000
+treats its Concepts right how accurate
+
+2146
+01:44:13,960 --> 01:44:17,719
+is the meaning how explicit it is and
+
+2147
+01:44:16,000 --> 01:44:20,080
+whether you you agree on that or where
+
+2148
+01:44:17,719 --> 01:44:22,000
+you can achieve agreement there are
+
+2149
+01:44:20,080 --> 01:44:25,760
+several challenges on that ambiguity
+
+2150
+01:44:22,000 --> 01:44:28,040
+variety vagueness ET ET and what we can
+
+2151
+01:44:25,760 --> 01:44:29,560
+do is start facing this by some as I
+
+2152
+01:44:28,040 --> 01:44:32,679
+said simple action they're not simple
+
+2153
+01:44:29,560 --> 01:44:34,760
+but it's about Beware of the semantic
+
+2154
+01:44:32,679 --> 01:44:36,679
+Gap right beware that a semantic
+
+2155
+01:44:34,760 --> 01:44:39,440
+modelers we have only partial view of
+
+2156
+01:44:36,679 --> 01:44:43,560
+the world we have biases ourselves as
+
+2157
+01:44:39,440 --> 01:44:45,400
+well and we need to be as much aware of
+
+2158
+01:44:43,560 --> 01:44:47,880
+this as possible understand basic
+
+2159
+01:44:45,400 --> 01:44:49,840
+semantic elements and phenomena right so
+
+2160
+01:44:47,880 --> 01:44:51,599
+understand the tools we are using
+
+2161
+01:44:49,840 --> 01:44:54,239
+understand what it means to to define a
+
+2162
+01:44:51,599 --> 01:44:57,800
+subass in all and when we shouldn't do
+
+2163
+01:44:54,239 --> 01:44:59,440
+that and yeah and some you already saw
+
+2164
+01:44:57,800 --> 01:45:03,960
+some of the pits there are many more and
+
+2165
+01:44:59,440 --> 01:45:08,320
+we can discuss them at some other time
+
+2166
+01:45:03,960 --> 01:45:10,840
+um okay so let's um let's start with a
+
+2167
+01:45:08,320 --> 01:45:13,320
+Q&A while I'm preparing the the raffle
+
+2168
+01:45:10,840 --> 01:45:13,320
+let me stop
+
+2169
+01:45:17,400 --> 01:45:26,360
+sharing okay I've sent you the list of
+
+2170
+01:45:21,480 --> 01:45:28,639
+um attendees penos Vice like thank you
+
+2171
+01:45:26,360 --> 01:45:30,800
+yeah
+
+2172
+01:45:28,639 --> 01:45:32,199
+um okay so do you have any thoughts on
+
+2173
+01:45:30,800 --> 01:45:34,280
+the distinction between types and roles
+
+2174
+01:45:32,199 --> 01:45:37,000
+is mik s a composer or merely a person
+
+2175
+01:45:34,280 --> 01:45:38,920
+who composer of right indeed
+
+2176
+01:45:37,000 --> 01:45:40,719
+so I would
+
+2177
+01:45:38,920 --> 01:45:44,520
+say
+
+2178
+01:45:40,719 --> 01:45:48,679
+um I would say that there are some uh
+
+2179
+01:45:44,520 --> 01:45:52,400
+types that are more uh I say types
+
+2180
+01:45:48,679 --> 01:45:54,840
+person I would and I I I I usually want
+
+2181
+01:45:52,400 --> 01:45:56,239
+the want I think an onology needs to
+
+2182
+01:45:54,840 --> 01:45:57,840
+have strong typing like this right you
+
+2183
+01:45:56,239 --> 01:45:59,520
+need to start from this type of entities
+
+2184
+01:45:57,840 --> 01:46:01,400
+that you know what they are right
+
+2185
+01:45:59,520 --> 01:46:03,840
+they're not roles they are not things
+
+2186
+01:46:01,400 --> 01:46:06,080
+that change when something stops
+
+2187
+01:46:03,840 --> 01:46:08,199
+existing and composer is a role in
+
+2188
+01:46:06,080 --> 01:46:11,119
+theory the can stop big and composer
+
+2189
+01:46:08,199 --> 01:46:14,360
+sometimes right and if you are aware of
+
+2190
+01:46:11,119 --> 01:46:17,360
+onto clean there is the notion of uh
+
+2191
+01:46:14,360 --> 01:46:21,520
+rigidity rigidity is so a class is rigit
+
+2192
+01:46:17,360 --> 01:46:23,639
+when its members ER
+
+2193
+01:46:21,520 --> 01:46:26,040
+cannot uh stop stop being a member of
+
+2194
+01:46:23,639 --> 01:46:28,280
+that class if if they stop existing
+
+2195
+01:46:26,040 --> 01:46:29,800
+right unless they stop existing right a
+
+2196
+01:46:28,280 --> 01:46:33,960
+person is always a person never stops
+
+2197
+01:46:29,800 --> 01:46:35,520
+being a person unless ER it dies right
+
+2198
+01:46:33,960 --> 01:46:39,480
+whereas
+
+2199
+01:46:35,520 --> 01:46:42,599
+roles as you said are more
+
+2200
+01:46:39,480 --> 01:46:45,280
+volatile H and usually roles indeed can
+
+2201
+01:46:42,599 --> 01:46:48,480
+be modeled both as classes and subass
+
+2202
+01:46:45,280 --> 01:46:51,040
+it's very common uh and as relations
+
+2203
+01:46:48,480 --> 01:46:53,239
+like composer of and this is
+
+2204
+01:46:51,040 --> 01:46:54,920
+actually we cannot say that we should
+
+2205
+01:46:53,239 --> 01:46:57,080
+always do the one while the latter
+
+2206
+01:46:54,920 --> 01:46:58,360
+because there are tradeoffs right by
+
+2207
+01:46:57,080 --> 01:47:01,599
+using subass relations you can do
+
+2208
+01:46:58,360 --> 01:47:03,239
+inferences that it's not easy to do with
+
+2209
+01:47:01,599 --> 01:47:06,000
+with relations this is actually a
+
+2210
+01:47:03,239 --> 01:47:08,880
+dilemma that I also cover in the book
+
+2211
+01:47:06,000 --> 01:47:10,880
+it's and it's about H whether to
+
+2212
+01:47:08,880 --> 01:47:15,119
+specialized meaning through another
+
+2213
+01:47:10,880 --> 01:47:15,119
+relation or through through a
+
+2214
+01:47:17,880 --> 01:47:23,000
+subass how do you evaluate validate
+
+2215
+01:47:20,679 --> 01:47:25,119
+semantic data models
+
+2216
+01:47:23,000 --> 01:47:27,080
+I mean right so the quality of data
+
+2217
+01:47:25,119 --> 01:47:28,480
+models is also a big topic there are
+
+2218
+01:47:27,080 --> 01:47:30,360
+many dimensions and there are several
+
+2219
+01:47:28,480 --> 01:47:33,239
+metrics right so there is there's not
+
+2220
+01:47:30,360 --> 01:47:35,119
+one single way there are uh you can
+
+2221
+01:47:33,239 --> 01:47:37,320
+always run consistency checks if you
+
+2222
+01:47:35,119 --> 01:47:40,199
+have through some
+
+2223
+01:47:37,320 --> 01:47:42,520
+um uh through some Reasoner but the
+
+2224
+01:47:40,199 --> 01:47:44,880
+really important thing is uh the
+
+2225
+01:47:42,520 --> 01:47:46,960
+semantic aspects and that can
+
+2226
+01:47:44,880 --> 01:47:49,000
+be
+
+2227
+01:47:46,960 --> 01:47:51,840
+tricky could you tell us more about this
+
+2228
+01:47:49,000 --> 01:47:54,800
+onoc yeah onoc is is a methodology that
+
+2229
+01:47:51,840 --> 01:47:59,480
+was created by
+
+2230
+01:47:54,800 --> 01:48:04,000
+um Chris Welty and his name and Nicola
+
+2231
+01:47:59,480 --> 01:48:07,000
+guino in tento um it's a bit it's a bit
+
+2232
+01:48:04,000 --> 01:48:12,239
+philosophical but it contains
+
+2233
+01:48:07,000 --> 01:48:15,840
+some good um ideas about some to avoid
+
+2234
+01:48:12,239 --> 01:48:18,719
+some B basic errors right ER Google then
+
+2235
+01:48:15,840 --> 01:48:21,360
+you'll find it if you get my my book I
+
+2236
+01:48:18,719 --> 01:48:24,599
+mention in the chapter of phenomena I
+
+2237
+01:48:21,360 --> 01:48:26,360
+Define the Notions of rigidity identity
+
+2238
+01:48:24,599 --> 01:48:30,960
+dependency and these like we don't have
+
+2239
+01:48:26,360 --> 01:48:30,960
+much time now to to focus on
+
+2240
+01:48:31,520 --> 01:48:34,520
+that
+
+2241
+01:48:35,880 --> 01:48:42,000
+okay okay so let's um while have
+
+2242
+01:48:39,480 --> 01:48:43,280
+questions let's do the ruffle of of 10
+
+2243
+01:48:42,000 --> 01:48:45,280
+books
+
+2244
+01:48:43,280 --> 01:48:50,639
+so let
+
+2245
+01:48:45,280 --> 01:48:53,239
+me H sh my screen again so as I said um
+
+2246
+01:48:50,639 --> 01:48:56,199
+10 of you are going to receive uh an
+
+2247
+01:48:53,239 --> 01:49:00,719
+electronic uh book electronic version of
+
+2248
+01:48:56,199 --> 01:49:00,719
+of my book so let me share my
+
+2249
+01:49:02,280 --> 01:49:08,880
+screen so let's do
+
+2250
+01:49:04,679 --> 01:49:11,800
+it yeah and I decided to use it like
+
+2251
+01:49:08,880 --> 01:49:15,000
+this um
+
+2252
+01:49:11,800 --> 01:49:19,119
+yeah so let's start uh James if you
+
+2253
+01:49:15,000 --> 01:49:22,920
+please as I I'm going to to draw 10 uh
+
+2254
+01:49:19,119 --> 01:49:25,239
+10 winners please note the names
+
+2255
+01:49:22,920 --> 01:49:27,000
+and then uh after the the end we will
+
+2256
+01:49:25,239 --> 01:49:29,199
+send you we will send you an email I
+
+2257
+01:49:27,000 --> 01:49:31,400
+will send actually or will send you an
+
+2258
+01:49:29,199 --> 01:49:35,280
+email with the with the link to the
+
+2259
+01:49:31,400 --> 01:49:35,280
+today book okay so let's
+
+2260
+01:49:42,719 --> 01:49:50,760
+start okay first one
+
+2261
+01:49:47,520 --> 01:49:54,199
+Zin I don't know their name
+
+2262
+01:49:50,760 --> 01:49:57,199
+okay congratulations that's
+
+2263
+01:49:54,199 --> 01:49:57,199
+one
+
+2264
+01:50:05,119 --> 01:50:09,920
+next
+
+2265
+01:50:06,920 --> 01:50:09,920
+J
+
+2266
+01:50:11,719 --> 01:50:16,040
+congratulations that's do
+
+2267
+01:50:26,560 --> 01:50:30,400
+Dan Daniel a
+
+2268
+01:50:44,599 --> 01:50:48,599
+congrats VJ
+
+2269
+01:50:55,599 --> 01:51:00,920
+um yeah elas how many have I done so far
+
+2270
+01:51:03,199 --> 01:51:09,599
+sorry I think this is the fifth this is
+
+2271
+01:51:06,840 --> 01:51:11,159
+the fifth now that I'm doing right yeah
+
+2272
+01:51:09,599 --> 01:51:13,360
+the image is kind of soothing I'm not
+
+2273
+01:51:11,159 --> 01:51:19,199
+exactly sure yeah I think it's
+
+2274
+01:51:13,360 --> 01:51:19,199
+five okay so Steve p is the fifth
+
+2275
+01:51:20,440 --> 01:51:25,360
+right okay so let's get it
+
+2276
+01:51:35,360 --> 01:51:40,119
+out Lon is the sixth
+
+2277
+01:51:52,760 --> 01:51:55,440
+Abdul is the
+
+2278
+01:52:07,280 --> 01:52:11,199
+7th really great to have some game show
+
+2279
+01:52:09,760 --> 01:52:13,360
+music right
+
+2280
+01:52:11,199 --> 01:52:17,800
+now
+
+2281
+01:52:13,360 --> 01:52:17,800
+oent is the eighth
+
+2282
+01:52:25,719 --> 01:52:28,440
+Douglas the
+
+2283
+01:52:33,040 --> 01:52:36,679
+n9th and the last
+
+2284
+01:52:41,920 --> 01:52:48,920
+one Steve
+
+2285
+01:52:45,199 --> 01:52:53,400
+G okay congratulations to all the
+
+2286
+01:52:48,920 --> 01:52:55,119
+winners H those of you that haven't uh
+
+2287
+01:52:53,400 --> 01:52:57,560
+one here but you are participating in
+
+2288
+01:52:55,119 --> 01:52:59,119
+the upcoming master class in uh the
+
+2289
+01:52:57,560 --> 01:53:03,040
+practice one there will also be another
+
+2290
+01:52:59,119 --> 01:53:08,040
+drawing there so we still have another
+
+2291
+01:53:03,040 --> 01:53:10,599
+chance and uh yeah thank you very much I
+
+2292
+01:53:08,040 --> 01:53:13,639
+think we're out of time if you have any
+
+2293
+01:53:10,599 --> 01:53:16,159
+further questions please feel free
+
+2294
+01:53:13,639 --> 01:53:17,880
+to to contact
+
+2295
+01:53:16,159 --> 01:53:22,440
+me
+
+2296
+01:53:17,880 --> 01:53:22,440
+okay thank you very much
+

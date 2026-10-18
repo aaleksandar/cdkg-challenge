@@ -1,0 +1,2052 @@
+1
+00:00:09,480 --> 00:00:12,579
+[Music]
+
+2
+00:00:13,559 --> 00:00:26,609
+do anything like that so by realizing on
+
+3
+00:00:22,619 --> 00:00:42,120
+top of GPUs this field is standard by
+
+4
+00:00:26,609 --> 00:00:45,450
+his same body thank you thank you George
+
+5
+00:00:42,120 --> 00:00:47,719
+so you notice that Nvidia name really
+
+6
+00:00:45,450 --> 00:00:48,960
+isn't up here Rapids is an open-source
+
+7
+00:00:47,719 --> 00:00:51,120
+project
+
+8
+00:00:48,960 --> 00:00:54,030
+so everything is free it's all out there
+
+9
+00:00:51,120 --> 00:00:56,329
+and github Nvidia is kind of the main
+
+10
+00:00:54,030 --> 00:00:59,579
+driver and incubator we have a lot of
+
+11
+00:00:56,329 --> 00:01:01,230
+developers applying to it but people are
+
+12
+00:00:59,579 --> 00:01:03,660
+free to jump in and add their own code
+
+13
+00:01:01,230 --> 00:01:09,330
+use it download it do whatever you want
+
+14
+00:01:03,660 --> 00:01:11,430
+with it so a little bit about me so I
+
+15
+00:01:09,330 --> 00:01:14,520
+work at Nvidia I'm a senior manager and
+
+16
+00:01:11,430 --> 00:01:16,229
+also manage the COO graph team I'm sure
+
+17
+00:01:14,520 --> 00:01:17,970
+when there is that you know in
+
+18
+00:01:16,229 --> 00:01:19,590
+industries when they give you promotions
+
+19
+00:01:17,970 --> 00:01:21,930
+they never take away your old job you
+
+20
+00:01:19,590 --> 00:01:25,439
+just get more stuff so I manage people
+
+21
+00:01:21,930 --> 00:01:27,030
+and then I also do technical work so
+
+22
+00:01:25,439 --> 00:01:29,220
+background PhD in computer science
+
+23
+00:01:27,030 --> 00:01:31,680
+actually my dissertation was on
+
+24
+00:01:29,220 --> 00:01:33,710
+community detection and graphs so I've
+
+25
+00:01:31,680 --> 00:01:37,170
+been doing grass for many many years
+
+26
+00:01:33,710 --> 00:01:40,049
+actually first effort was probably 20
+
+27
+00:01:37,170 --> 00:01:42,329
+years ago was doing financial crimes
+
+28
+00:01:40,049 --> 00:01:44,280
+back then so started building a
+
+29
+00:01:42,329 --> 00:01:47,340
+knowledge graph kind of looking like
+
+30
+00:01:44,280 --> 00:01:49,920
+this what we did is something that I
+
+31
+00:01:47,340 --> 00:01:51,780
+hope no one ever does again is we
+
+32
+00:01:49,920 --> 00:01:55,439
+allowed analysts to enter their own
+
+33
+00:01:51,780 --> 00:01:57,509
+relationship types it was terrible
+
+34
+00:01:55,439 --> 00:01:59,490
+one they could never spell things the
+
+35
+00:01:57,509 --> 00:02:01,680
+same and then they would enter
+
+36
+00:01:59,490 --> 00:02:04,290
+relationships where there was no really
+
+37
+00:02:01,680 --> 00:02:07,770
+inverse relationship to it so the
+
+38
+00:02:04,290 --> 00:02:10,979
+inverse just seemed funny and they could
+
+39
+00:02:07,770 --> 00:02:12,840
+never like say you know brother of they
+
+40
+00:02:10,979 --> 00:02:13,440
+could say my brother or this person's
+
+41
+00:02:12,840 --> 00:02:15,810
+brother
+
+42
+00:02:13,440 --> 00:02:18,030
+so you had so many variations and it
+
+43
+00:02:15,810 --> 00:02:19,650
+just bogged down the database that we
+
+44
+00:02:18,030 --> 00:02:23,280
+just deleted all that stuff and started
+
+45
+00:02:19,650 --> 00:02:26,190
+over but yet been building knowledge
+
+46
+00:02:23,280 --> 00:02:28,290
+graph everything grabbed for 20-some
+
+47
+00:02:26,190 --> 00:02:31,890
+years now mostly within the social
+
+48
+00:02:28,290 --> 00:02:35,250
+networking arena and like I said
+
+49
+00:02:31,890 --> 00:02:38,580
+recently rapid is kind of our ecosystem
+
+50
+00:02:35,250 --> 00:02:41,220
+that I'll be talking about and of course
+
+51
+00:02:38,580 --> 00:02:42,630
+I care about the graph piece so when I
+
+52
+00:02:41,220 --> 00:02:45,360
+thought about this conference I second
+
+53
+00:02:42,630 --> 00:02:47,880
+you know we all are connected but we've
+
+54
+00:02:45,360 --> 00:02:50,670
+always been connected and that leads me
+
+55
+00:02:47,880 --> 00:02:52,800
+to you know the seven or six degrees of
+
+56
+00:02:50,670 --> 00:02:54,090
+Kevin Bacon problem we used to sit
+
+57
+00:02:52,800 --> 00:02:55,470
+around and play this all the time at
+
+58
+00:02:54,090 --> 00:02:57,030
+work where somebody would put a name up
+
+59
+00:02:55,470 --> 00:02:59,610
+and we would try to figure out how we
+
+60
+00:02:57,030 --> 00:03:05,790
+relate it to them I'm sure everyone
+
+61
+00:02:59,610 --> 00:03:08,210
+knows this problem right it's fun there
+
+62
+00:03:05,790 --> 00:03:10,080
+was work by a Duncan Watts showing that
+
+63
+00:03:08,210 --> 00:03:12,450
+mathematically you only need a few
+
+64
+00:03:10,080 --> 00:03:14,850
+connections between your group and other
+
+65
+00:03:12,450 --> 00:03:18,870
+groups for this six or seven degrees to
+
+66
+00:03:14,850 --> 00:03:20,790
+take place so you just have to find well
+
+67
+00:03:18,870 --> 00:03:22,860
+actually there was also work to said if
+
+68
+00:03:20,790 --> 00:03:25,290
+you just contact the person in your
+
+69
+00:03:22,860 --> 00:03:27,360
+group with the largest degree so the
+
+70
+00:03:25,290 --> 00:03:29,190
+most popular person there's a chance
+
+71
+00:03:27,360 --> 00:03:31,170
+that they know more popular people and
+
+72
+00:03:29,190 --> 00:03:33,600
+you know eventually it will get to
+
+73
+00:03:31,170 --> 00:03:35,580
+something there's also a paper that says
+
+74
+00:03:33,600 --> 00:03:38,250
+you know your friends are more popular
+
+75
+00:03:35,580 --> 00:03:40,080
+than you and your friends friends are
+
+76
+00:03:38,250 --> 00:03:42,239
+more popular than you even if you know
+
+77
+00:03:40,080 --> 00:03:44,100
+the same people which is kind of odd
+
+78
+00:03:42,239 --> 00:03:49,709
+because it's all playing around with
+
+79
+00:03:44,100 --> 00:03:52,440
+math um but even before Duncan Watts
+
+80
+00:03:49,709 --> 00:03:54,959
+really you know Milgram's experiment of
+
+81
+00:03:52,440 --> 00:03:57,270
+let's go out and prove the small world
+
+82
+00:03:54,959 --> 00:03:59,250
+theory you know they had to send letters
+
+83
+00:03:57,270 --> 00:04:01,340
+to they pick scientists they said send a
+
+84
+00:03:59,250 --> 00:04:03,420
+letter to the scientists but only
+
+85
+00:04:01,340 --> 00:04:05,790
+through people that you knew on a
+
+86
+00:04:03,420 --> 00:04:08,820
+first-name basis
+
+87
+00:04:05,790 --> 00:04:10,560
+back in the sixties first-name basis
+
+88
+00:04:08,820 --> 00:04:11,850
+meant that you were a strong friend of
+
+89
+00:04:10,560 --> 00:04:13,380
+them because you never referred to
+
+90
+00:04:11,850 --> 00:04:19,169
+anybody by their first name unless you
+
+91
+00:04:13,380 --> 00:04:22,049
+truly knew them it was less well we more
+
+92
+00:04:19,169 --> 00:04:25,200
+formal back then not as casual it is now
+
+93
+00:04:22,049 --> 00:04:27,120
+I worked with a guy who you know worked
+
+94
+00:04:25,200 --> 00:04:29,160
+back in the 60s and he said it was great
+
+95
+00:04:27,120 --> 00:04:30,180
+knowing the office talk it was quiet you
+
+96
+00:04:29,160 --> 00:04:35,310
+could just sit there and get your work
+
+97
+00:04:30,180 --> 00:04:38,250
+done but I mean if we go back even
+
+98
+00:04:35,310 --> 00:04:41,280
+further there was a short story called
+
+99
+00:04:38,250 --> 00:04:46,050
+chained back in 1929 anyone read this
+
+100
+00:04:41,280 --> 00:04:48,510
+story so it's about a group of people
+
+101
+00:04:46,050 --> 00:04:53,580
+that sit around and play the Kevin Bacon
+
+102
+00:04:48,510 --> 00:04:55,740
+game so Kevin Bacon is now absolutely a
+
+103
+00:04:53,580 --> 00:04:57,090
+time traveler he was back then but they
+
+104
+00:04:55,740 --> 00:05:00,030
+would pick people and they would say how
+
+105
+00:04:57,090 --> 00:05:02,610
+can I get from A to B through you know
+
+106
+00:05:00,030 --> 00:05:04,830
+associations so I mean people knew about
+
+107
+00:05:02,610 --> 00:05:07,260
+the small world for a long long time and
+
+108
+00:05:04,830 --> 00:05:10,350
+you take all of that and we start saying
+
+109
+00:05:07,260 --> 00:05:14,790
+let's model this as a graph and of
+
+110
+00:05:10,350 --> 00:05:17,240
+course then we just start creating I
+
+111
+00:05:14,790 --> 00:05:19,680
+mean we have cyber graphs
+
+112
+00:05:17,240 --> 00:05:23,389
+social-networking grass bipartite graphs
+
+113
+00:05:19,680 --> 00:05:26,580
+hyper graphs multigraphs property graphs
+
+114
+00:05:23,389 --> 00:05:29,340
+any type of graphs anything you want we
+
+115
+00:05:26,580 --> 00:05:31,700
+throw in to a graph model since I love
+
+116
+00:05:29,340 --> 00:05:36,000
+graphs I'm totally fine with all of that
+
+117
+00:05:31,700 --> 00:05:37,740
+how you analyze them is different if you
+
+118
+00:05:36,000 --> 00:05:39,000
+have a bipartite graph there's a lot of
+
+119
+00:05:37,740 --> 00:05:41,850
+things you definitely don't want to do
+
+120
+00:05:39,000 --> 00:05:43,830
+on it people want to do triangle
+
+121
+00:05:41,850 --> 00:05:45,690
+counting on property or on bipartite
+
+122
+00:05:43,830 --> 00:05:49,260
+graphs and they're always confused when
+
+123
+00:05:45,690 --> 00:05:50,820
+the answer comes back is zero and then
+
+124
+00:05:49,260 --> 00:05:52,710
+they've had customers that have taken
+
+125
+00:05:50,820 --> 00:05:55,200
+bipartite graphs and added more stuff to
+
+126
+00:05:52,710 --> 00:05:59,729
+it so then it becomes a broken graph
+
+127
+00:05:55,200 --> 00:06:01,620
+that becomes unusable so in order to
+
+128
+00:05:59,729 --> 00:06:03,660
+process all of this we now start
+
+129
+00:06:01,620 --> 00:06:05,880
+building things like you know graph
+
+130
+00:06:03,660 --> 00:06:08,070
+databases there's a lot more than this
+
+131
+00:06:05,880 --> 00:06:10,680
+out there I just got tired of typing
+
+132
+00:06:08,070 --> 00:06:13,200
+names in so these are some of the big
+
+133
+00:06:10,680 --> 00:06:15,840
+popular ones and to support all the
+
+134
+00:06:13,200 --> 00:06:19,910
+graph databases we come up with lots and
+
+135
+00:06:15,840 --> 00:06:22,620
+lots of graph processing frameworks and
+
+136
+00:06:19,910 --> 00:06:25,320
+I'm here to talk about yet another one
+
+137
+00:06:22,620 --> 00:06:31,620
+called cou graph so y'all are thinking
+
+138
+00:06:25,320 --> 00:06:33,240
+oh my god not another framework so the
+
+139
+00:06:31,620 --> 00:06:37,169
+question is you know why could graph and
+
+140
+00:06:33,240 --> 00:06:39,030
+more generally why rapid rapid actually
+
+141
+00:06:37,169 --> 00:06:40,660
+started that we wanted to solve a
+
+142
+00:06:39,030 --> 00:06:43,780
+particular graph problem
+
+143
+00:06:40,660 --> 00:06:45,820
+but we realized in order to do that we
+
+144
+00:06:43,780 --> 00:06:47,050
+need it to build other pieces and then
+
+145
+00:06:45,820 --> 00:06:48,730
+get those other pieces to work we need
+
+146
+00:06:47,050 --> 00:06:50,980
+to realize we need to build more stuff
+
+147
+00:06:48,730 --> 00:06:53,890
+and after a while we said let's just
+
+148
+00:06:50,980 --> 00:06:56,140
+build the entire ecosystem he'll make it
+
+149
+00:06:53,890 --> 00:06:57,670
+simple make it easier for people so they
+
+150
+00:06:56,140 --> 00:07:02,620
+don't have the balance between different
+
+151
+00:06:57,670 --> 00:07:06,160
+frameworks so why ku grass well grass is
+
+152
+00:07:02,620 --> 00:07:08,260
+not an isolated function I'm sure people
+
+153
+00:07:06,160 --> 00:07:10,330
+in here from you know the database
+
+154
+00:07:08,260 --> 00:07:12,280
+community will know you need to load the
+
+155
+00:07:10,330 --> 00:07:14,290
+database you need to keep track of
+
+156
+00:07:12,280 --> 00:07:19,440
+everything there are so much stuff that
+
+157
+00:07:14,290 --> 00:07:19,440
+goes on besides just the graph piece
+
+158
+00:07:19,470 --> 00:07:24,220
+kind of a recent survey said that you
+
+159
+00:07:22,240 --> 00:07:27,150
+know 80 percent of the data scientist
+
+160
+00:07:24,220 --> 00:07:30,010
+time is spent on doing things other than
+
+161
+00:07:27,150 --> 00:07:35,020
+analysis you have to prepare your data
+
+162
+00:07:30,010 --> 00:07:35,620
+cleanse your data just everything that
+
+163
+00:07:35,020 --> 00:07:38,890
+goes on
+
+164
+00:07:35,620 --> 00:07:42,490
+besides the cool stuff and within data
+
+165
+00:07:38,890 --> 00:07:45,790
+scientists or science I'm gonna borrow a
+
+166
+00:07:42,490 --> 00:07:50,340
+slide the way to win at data science is
+
+167
+00:07:45,790 --> 00:07:53,410
+speed user experience and iterations so
+
+168
+00:07:50,340 --> 00:07:55,350
+the more things I can try to prove out
+
+169
+00:07:53,410 --> 00:07:59,020
+my concept what I'm trying to get across
+
+170
+00:07:55,350 --> 00:08:00,460
+the better my analytic is sometimes you
+
+171
+00:07:59,020 --> 00:08:01,960
+just don't want to take the first answer
+
+172
+00:08:00,460 --> 00:08:04,090
+that you come up with because there
+
+173
+00:08:01,960 --> 00:08:08,730
+could be something better or you could
+
+174
+00:08:04,090 --> 00:08:11,950
+have just gotten lucky I worked with a
+
+175
+00:08:08,730 --> 00:08:13,690
+defense company that took an analytic
+
+176
+00:08:11,950 --> 00:08:15,340
+rein it got a great answer and we're
+
+177
+00:08:13,690 --> 00:08:16,660
+like but that answer is wrong and
+
+178
+00:08:15,340 --> 00:08:19,420
+they're like yes but it answers another
+
+179
+00:08:16,660 --> 00:08:20,530
+question right no it's still wrong it's
+
+180
+00:08:19,420 --> 00:08:23,860
+never going to work again
+
+181
+00:08:20,530 --> 00:08:26,170
+you got lucky also worked with the
+
+182
+00:08:23,860 --> 00:08:29,050
+customer that it would take them a week
+
+183
+00:08:26,170 --> 00:08:31,380
+to analyze their data so every answer
+
+184
+00:08:29,050 --> 00:08:33,729
+popped out at the end they would go with
+
+185
+00:08:31,380 --> 00:08:34,870
+no matter if it was right or wrong they
+
+186
+00:08:33,729 --> 00:08:37,330
+had to go with it because they didn't
+
+187
+00:08:34,870 --> 00:08:40,719
+have any other time but if you can do
+
+188
+00:08:37,330 --> 00:08:42,940
+things faster try out more things kind
+
+189
+00:08:40,719 --> 00:08:45,370
+of at the speed of thought the better
+
+190
+00:08:42,940 --> 00:08:49,810
+your analytics will be and you know the
+
+191
+00:08:45,370 --> 00:08:54,250
+better you'll win at data science yay so
+
+192
+00:08:49,810 --> 00:08:57,220
+enter rapid and n GPU
+
+193
+00:08:54,250 --> 00:09:00,639
+data science we are in vidya so
+
+194
+00:08:57,220 --> 00:09:03,160
+everything has to be on GPUs the goal is
+
+195
+00:09:00,639 --> 00:09:05,889
+to get all your data onto the GPU and
+
+196
+00:09:03,160 --> 00:09:08,379
+never have it leave so everything you
+
+197
+00:09:05,889 --> 00:09:09,399
+need to do is in there we leverage
+
+198
+00:09:08,379 --> 00:09:11,439
+Apache Aero
+
+199
+00:09:09,399 --> 00:09:15,209
+this is West McKenzie its new project
+
+200
+00:09:11,439 --> 00:09:17,860
+basically it defines column or stores so
+
+201
+00:09:15,209 --> 00:09:19,899
+every analytic everyone we interact with
+
+202
+00:09:17,860 --> 00:09:21,519
+has agreed to the standard so now it's a
+
+203
+00:09:19,899 --> 00:09:23,829
+zero copy I just give you a pointer to
+
+204
+00:09:21,519 --> 00:09:25,750
+the data you know how its organized you
+
+205
+00:09:23,829 --> 00:09:27,629
+know what's in there you can just run
+
+206
+00:09:25,750 --> 00:09:32,589
+with it
+
+207
+00:09:27,629 --> 00:09:35,379
+so we have qu d fq io for ETL machine
+
+208
+00:09:32,589 --> 00:09:38,949
+learning graph we actually have a spark
+
+209
+00:09:35,379 --> 00:09:41,430
+team we have KU spatial for spatial
+
+210
+00:09:38,949 --> 00:09:43,750
+stuff cout signal for signal processing
+
+211
+00:09:41,430 --> 00:09:46,240
+the list is growing of kind of
+
+212
+00:09:43,750 --> 00:09:49,000
+additional library so everything you
+
+213
+00:09:46,240 --> 00:09:52,480
+need to do for data science is now in
+
+214
+00:09:49,000 --> 00:09:55,689
+this one ecosystem we don't do the
+
+215
+00:09:52,480 --> 00:09:57,610
+database piece so we expect you to have
+
+216
+00:09:55,689 --> 00:09:59,319
+data somewhere and either hand it off to
+
+217
+00:09:57,610 --> 00:10:01,480
+us or write connectors where you can
+
+218
+00:09:59,319 --> 00:10:04,660
+pull it out of the database we're really
+
+219
+00:10:01,480 --> 00:10:07,389
+focused on the entire analytic side of
+
+220
+00:10:04,660 --> 00:10:11,350
+the problem rather than being acid
+
+221
+00:10:07,389 --> 00:10:12,839
+complain and all that so ETL this is
+
+222
+00:10:11,350 --> 00:10:17,079
+kind of the backbone of data science
+
+223
+00:10:12,839 --> 00:10:19,389
+basically you load your data you can do
+
+224
+00:10:17,079 --> 00:10:22,120
+all your data transformation all your
+
+225
+00:10:19,389 --> 00:10:27,180
+basic statistics stuff any element wise
+
+226
+00:10:22,120 --> 00:10:31,180
+operation there Python developers here
+
+227
+00:10:27,180 --> 00:10:33,910
+you familiar with pandas we tried to
+
+228
+00:10:31,180 --> 00:10:36,100
+adhere to the pandas API so we said well
+
+229
+00:10:33,910 --> 00:10:40,660
+this is the API pan issues will use that
+
+230
+00:10:36,100 --> 00:10:42,939
+exact API we're about 90% accurate so
+
+231
+00:10:40,660 --> 00:10:46,629
+most of your code you just change your
+
+232
+00:10:42,939 --> 00:10:51,819
+import and it will just run run like
+
+233
+00:10:46,629 --> 00:10:55,089
+100x faster basically everything looks
+
+234
+00:10:51,819 --> 00:10:59,110
+like like it would in pandas same
+
+235
+00:10:55,089 --> 00:11:02,259
+operations I want to do things like
+
+236
+00:10:59,110 --> 00:11:05,240
+merges joins sorts
+
+237
+00:11:02,259 --> 00:11:07,610
+we're also have a full string package so
+
+238
+00:11:05,240 --> 00:11:09,350
+if you want to do upper/lower eventually
+
+239
+00:11:07,610 --> 00:11:13,040
+we'll have full and LP capability out
+
+240
+00:11:09,350 --> 00:11:15,319
+there depends on the amount of data
+
+241
+00:11:13,040 --> 00:11:19,220
+would GP use the more data you have the
+
+242
+00:11:15,319 --> 00:11:24,920
+faster it gets so anywhere from 180 X
+
+243
+00:11:19,220 --> 00:11:29,470
+faster down to a low like 28 X so even
+
+244
+00:11:24,920 --> 00:11:29,470
+28 X is a noticeable difference in time
+
+245
+00:11:30,519 --> 00:11:36,769
+along with that we have IO we have to
+
+246
+00:11:33,350 --> 00:11:39,439
+get data into the GPU so we created an
+
+247
+00:11:36,769 --> 00:11:41,199
+entire io package basically addressing
+
+248
+00:11:39,439 --> 00:11:43,610
+all the major readers that are out there
+
+249
+00:11:41,199 --> 00:11:46,459
+yet there's things that you want to see
+
+250
+00:11:43,610 --> 00:11:49,459
+in there we can always add them but the
+
+251
+00:11:46,459 --> 00:11:52,249
+CSV reader some customers have said just
+
+252
+00:11:49,459 --> 00:11:55,009
+reading CSV 10x faster gives them enough
+
+253
+00:11:52,249 --> 00:11:59,059
+time to do everything else I think the
+
+254
+00:11:55,009 --> 00:12:02,839
+example here is it's like 1.9 gigabytes
+
+255
+00:11:59,059 --> 00:12:04,490
+of data you know roughly 2 seconds it
+
+256
+00:12:02,839 --> 00:12:06,679
+basically does everything a pandas does
+
+257
+00:12:04,490 --> 00:12:08,720
+so it can automatically determine the
+
+258
+00:12:06,679 --> 00:12:11,929
+number of columns the data types and all
+
+259
+00:12:08,720 --> 00:12:13,249
+the columns if you specify the number of
+
+260
+00:12:11,929 --> 00:12:15,110
+columns and data types it's actually
+
+261
+00:12:13,249 --> 00:12:17,329
+faster because then it doesn't have to
+
+262
+00:12:15,110 --> 00:12:22,519
+do a lot of you know determining if this
+
+263
+00:12:17,329 --> 00:12:25,129
+is a 64 and 32 or hits that you give it
+
+264
+00:12:22,519 --> 00:12:28,850
+do make things faster we also have
+
+265
+00:12:25,129 --> 00:12:31,549
+decompression so Parque or can all store
+
+266
+00:12:28,850 --> 00:12:35,360
+things in LRU format and you all that's
+
+267
+00:12:31,549 --> 00:12:38,899
+in there so it will decode that all the
+
+268
+00:12:35,360 --> 00:12:43,189
+basic gzip snappy all those compressions
+
+269
+00:12:38,899 --> 00:12:46,790
+are in there also machine learning I
+
+270
+00:12:43,189 --> 00:12:49,429
+mean graph is interesting but a lot of
+
+271
+00:12:46,790 --> 00:12:50,809
+times you want to run you know
+
+272
+00:12:49,429 --> 00:12:53,230
+traditional machine learning things
+
+273
+00:12:50,809 --> 00:12:55,429
+there's a question between you know
+
+274
+00:12:53,230 --> 00:12:58,970
+what's the graph analytic purses a
+
+275
+00:12:55,429 --> 00:13:00,319
+machine learning algorithm and some of
+
+276
+00:12:58,970 --> 00:13:01,939
+the stuff in machine learning is
+
+277
+00:13:00,319 --> 00:13:07,850
+actually based on graph stuff some some
+
+278
+00:13:01,939 --> 00:13:10,220
+of the well random well Reina forest
+
+279
+00:13:07,850 --> 00:13:14,079
+where you build trees and all some of
+
+280
+00:13:10,220 --> 00:13:16,490
+the spatial stuff spectral stuff
+
+281
+00:13:14,079 --> 00:13:18,560
+basically eventually this will have
+
+282
+00:13:16,490 --> 00:13:21,709
+everything that's available in sidekick
+
+283
+00:13:18,560 --> 00:13:25,630
+learned so for the Python folks you
+
+284
+00:13:21,709 --> 00:13:29,149
+psychic learn so we actually worked with
+
+285
+00:13:25,630 --> 00:13:32,230
+inria so they make sure that we do
+
+286
+00:13:29,149 --> 00:13:37,730
+everything that adheres to what they did
+
+287
+00:13:32,230 --> 00:13:42,019
+and as you can predict there everything
+
+288
+00:13:37,730 --> 00:13:46,209
+is faster so you know principal
+
+289
+00:13:42,019 --> 00:13:49,430
+component analysis about 120 X faster
+
+290
+00:13:46,209 --> 00:13:52,579
+then you work your way down to you know
+
+291
+00:13:49,430 --> 00:13:56,990
+lasso some of these other models thanks
+
+292
+00:13:52,579 --> 00:14:00,410
+it's still fast but we're really here to
+
+293
+00:13:56,990 --> 00:14:05,420
+talk about graph you know and how we're
+
+294
+00:14:00,410 --> 00:14:07,160
+making graph analytics fast we want to
+
+295
+00:14:05,420 --> 00:14:09,380
+be able to take whatever graphing
+
+296
+00:14:07,160 --> 00:14:11,570
+analytic you run make it so that it
+
+297
+00:14:09,380 --> 00:14:14,120
+returns before you lose your train of
+
+298
+00:14:11,570 --> 00:14:16,490
+thought I did a lot of stuff in spark
+
+299
+00:14:14,120 --> 00:14:18,649
+where I would start writing an analytic
+
+300
+00:14:16,490 --> 00:14:20,420
+I'd hit go and then I would get bored
+
+301
+00:14:18,649 --> 00:14:22,160
+waiting so I would start tweaking in and
+
+302
+00:14:20,420 --> 00:14:23,750
+making it better and then it wouldn't
+
+303
+00:14:22,160 --> 00:14:28,300
+return I couldn't remember which version
+
+304
+00:14:23,750 --> 00:14:31,940
+I ran so it's like ah I just start over
+
+305
+00:14:28,300 --> 00:14:34,699
+so the benefits of crew graph seamless
+
+306
+00:14:31,940 --> 00:14:38,050
+integration with ku DF and ku ml so
+
+307
+00:14:34,699 --> 00:14:42,260
+since everything is in arrow format
+
+308
+00:14:38,050 --> 00:14:44,569
+basically I can define tables so once I
+
+309
+00:14:42,260 --> 00:14:46,310
+can define a data frame table I can put
+
+310
+00:14:44,569 --> 00:14:49,220
+in a property graph into it I can put
+
+311
+00:14:46,310 --> 00:14:51,709
+RTF into it I can you know have as many
+
+312
+00:14:49,220 --> 00:14:54,139
+tables as I want the great part about
+
+313
+00:14:51,709 --> 00:14:57,199
+property graphs and RDF is once it's out
+
+314
+00:14:54,139 --> 00:15:00,319
+there I can extract multiple views of a
+
+315
+00:14:57,199 --> 00:15:02,720
+graph into it so I can say you know take
+
+316
+00:15:00,319 --> 00:15:05,209
+all the people that have this property
+
+317
+00:15:02,720 --> 00:15:06,440
+give me that graph then twist the
+
+318
+00:15:05,209 --> 00:15:08,569
+property I'm looking at pull out another
+
+319
+00:15:06,440 --> 00:15:13,220
+graph run analytics and didn't do
+
+320
+00:15:08,569 --> 00:15:17,750
+comparisons against them I can also run
+
+321
+00:15:13,220 --> 00:15:20,899
+all of my data through we've seemed I've
+
+322
+00:15:17,750 --> 00:15:23,240
+lost video there so I can run all my
+
+323
+00:15:20,899 --> 00:15:25,610
+data through graph processing generate a
+
+324
+00:15:23,240 --> 00:15:27,500
+new set of properties add that back to
+
+325
+00:15:25,610 --> 00:15:29,570
+my master database take
+
+326
+00:15:27,500 --> 00:15:31,220
+all of that now is a tensor throw it
+
+327
+00:15:29,570 --> 00:15:35,360
+into machine learning come up with a
+
+328
+00:15:31,220 --> 00:15:37,910
+predictive answer everything is
+
+329
+00:15:35,360 --> 00:15:40,610
+basically we try to hear somewhat to the
+
+330
+00:15:37,910 --> 00:15:43,640
+network X API but we have a lot of other
+
+331
+00:15:40,610 --> 00:15:46,310
+API is extending from it there's also a
+
+332
+00:15:43,640 --> 00:15:49,460
+full C++ API for people that want to
+
+333
+00:15:46,310 --> 00:15:52,220
+write their own analytics so here's a
+
+334
+00:15:49,460 --> 00:15:54,890
+big toolbox you know do with what you
+
+335
+00:15:52,220 --> 00:15:58,460
+want or come through the Python API in a
+
+336
+00:15:54,890 --> 00:16:01,490
+Jupiter notebook if you look at our
+
+337
+00:15:58,460 --> 00:16:04,700
+stack Python is at the top Python is a
+
+338
+00:16:01,490 --> 00:16:06,170
+very flat layer we just actually take
+
+339
+00:16:04,700 --> 00:16:10,670
+everything you type in Python and push
+
+340
+00:16:06,170 --> 00:16:12,770
+it down to C++ Python is kind of the
+
+341
+00:16:10,670 --> 00:16:16,250
+interface between the two we have our
+
+342
+00:16:12,770 --> 00:16:17,720
+C++ API is underneath that we have a set
+
+343
+00:16:16,250 --> 00:16:20,030
+of primitives for people that want to
+
+344
+00:16:17,720 --> 00:16:22,070
+build new graph algorithms so you can do
+
+345
+00:16:20,030 --> 00:16:25,130
+frontier base where you can say for
+
+346
+00:16:22,070 --> 00:16:28,190
+every node go out X hops there's a full
+
+347
+00:16:25,130 --> 00:16:30,760
+graph blahs library actually that's
+
+348
+00:16:28,190 --> 00:16:33,080
+coming we're still working on that with
+
+349
+00:16:30,760 --> 00:16:35,570
+that's actually at Texas A&M we're
+
+350
+00:16:33,080 --> 00:16:37,850
+taking their stuff so it'll be fast if
+
+351
+00:16:35,570 --> 00:16:40,970
+you like doing things in semi rings all
+
+352
+00:16:37,850 --> 00:16:43,100
+that will be there or NIT I have a slide
+
+353
+00:16:40,970 --> 00:16:46,210
+come up on that and all of that is built
+
+354
+00:16:43,100 --> 00:16:49,400
+in on top of CUDA our goal is so that
+
+355
+00:16:46,210 --> 00:16:52,700
+developers scientists do not have to
+
+356
+00:16:49,400 --> 00:16:55,190
+know anything about GPUs at all at the
+
+357
+00:16:52,700 --> 00:16:57,800
+Python layer you're just interacting
+
+358
+00:16:55,190 --> 00:16:59,720
+with it like it's pandas you do not know
+
+359
+00:16:57,800 --> 00:17:01,850
+what's running under the covers you
+
+360
+00:16:59,720 --> 00:17:04,670
+don't have to know about how we do
+
+361
+00:17:01,850 --> 00:17:09,680
+threading and you know syncing things it
+
+362
+00:17:04,670 --> 00:17:11,750
+just runs fast we're not quite building
+
+363
+00:17:09,680 --> 00:17:15,170
+this alone we got together with a bunch
+
+364
+00:17:11,750 --> 00:17:18,290
+of leading academic researchers so UC
+
+365
+00:17:15,170 --> 00:17:20,689
+Davis has gunrock that's their graph
+
+366
+00:17:18,290 --> 00:17:23,600
+analytic package we're integrating their
+
+367
+00:17:20,689 --> 00:17:25,339
+library Georgia Tech actually gave us
+
+368
+00:17:23,600 --> 00:17:28,339
+Hornet so we have our own version of
+
+369
+00:17:25,339 --> 00:17:31,850
+Hornet called ku Hornet we have to put
+
+370
+00:17:28,339 --> 00:17:34,520
+ku in front of every name for CUDA and
+
+371
+00:17:31,850 --> 00:17:38,120
+then out of Texas A&M we took the graph
+
+372
+00:17:34,520 --> 00:17:40,370
+blahs library let's go ku graft laws
+
+373
+00:17:38,120 --> 00:17:41,420
+that's going to be out there and we
+
+374
+00:17:40,370 --> 00:17:44,150
+continue working with these
+
+375
+00:17:41,420 --> 00:17:45,680
+academic Institute's they can go off do
+
+376
+00:17:44,150 --> 00:17:48,170
+research and building new algorithms
+
+377
+00:17:45,680 --> 00:17:51,740
+once it works then we'll productize it
+
+378
+00:17:48,170 --> 00:17:53,750
+and put it out to everybody and also we
+
+379
+00:17:51,740 --> 00:17:59,690
+get kind of student developed code and
+
+380
+00:17:53,750 --> 00:18:02,690
+we make it kind of production quality so
+
+381
+00:17:59,690 --> 00:18:05,090
+in the current release we have a growing
+
+382
+00:18:02,690 --> 00:18:06,560
+list of stuff so community detection
+
+383
+00:18:05,090 --> 00:18:09,710
+vein
+
+384
+00:18:06,560 --> 00:18:11,650
+spectral clustering of course you have
+
+385
+00:18:09,710 --> 00:18:15,620
+to have strong and weak component Laura
+
+386
+00:18:11,650 --> 00:18:18,830
+yeah connected components link analysis
+
+387
+00:18:15,620 --> 00:18:21,020
+PageRank we have a Pringle version of
+
+388
+00:18:18,830 --> 00:18:23,990
+PageRank cat centrality jacquard
+
+389
+00:18:21,020 --> 00:18:26,800
+weighted jacquard overlap of course
+
+390
+00:18:23,990 --> 00:18:29,060
+single source shortest path BFS
+
+391
+00:18:26,800 --> 00:18:31,790
+we actually have a spreadsheet probably
+
+392
+00:18:29,060 --> 00:18:34,970
+of 50 or 100 analytics that we want to
+
+393
+00:18:31,790 --> 00:18:36,440
+get out there it's always interesting to
+
+394
+00:18:34,970 --> 00:18:39,200
+see what the community is most
+
+395
+00:18:36,440 --> 00:18:42,520
+interested in usually it boils down to
+
+396
+00:18:39,200 --> 00:18:48,040
+just a handful of traversal algorithms
+
+397
+00:18:42,520 --> 00:18:51,520
+so how fast is it well so if I compare
+
+398
+00:18:48,040 --> 00:18:54,380
+ku graph versus Network X so Network X
+
+399
+00:18:51,520 --> 00:18:56,600
+has some basic limitations on that the
+
+400
+00:18:54,380 --> 00:19:01,630
+fact that it is almost single threaded a
+
+401
+00:18:56,600 --> 00:19:04,310
+lot of times the siphon is a lot faster
+
+402
+00:19:01,630 --> 00:19:09,440
+but still depends on the size of the
+
+403
+00:19:04,310 --> 00:19:13,730
+graph we are up to what is that 3000 X
+
+404
+00:19:09,440 --> 00:19:18,410
+faster so things that will take a couple
+
+405
+00:19:13,730 --> 00:19:21,790
+minutes in Python are really seconds in
+
+406
+00:19:18,410 --> 00:19:21,790
+qu graph or sub seconds
+
+407
+00:19:23,250 --> 00:19:29,510
+or so this is just a random set of
+
+408
+00:19:26,429 --> 00:19:33,090
+sample data comes off the snap database
+
+409
+00:19:29,510 --> 00:19:36,860
+a lot of people say you know my graph is
+
+410
+00:19:33,090 --> 00:19:39,480
+a billion edges or so so we do have a
+
+411
+00:19:36,860 --> 00:19:41,760
+multi-gpu version of it we were using
+
+412
+00:19:39,480 --> 00:19:44,130
+the high bench prototype or high bench
+
+413
+00:19:41,760 --> 00:19:46,070
+benchmarks so we're just look at the big
+
+414
+00:19:44,130 --> 00:19:49,919
+one here four hundred million vertices
+
+415
+00:19:46,070 --> 00:19:52,650
+16 billion edges
+
+416
+00:19:49,919 --> 00:19:56,940
+well PageRank algorithm itself takes
+
+417
+00:19:52,650 --> 00:20:00,210
+about 42 seconds over all three minutes
+
+418
+00:19:56,940 --> 00:20:03,179
+which is kind of slow basically this is
+
+419
+00:20:00,210 --> 00:20:06,200
+reading the data converting the CSV data
+
+420
+00:20:03,179 --> 00:20:10,400
+into columns figuring out the data types
+
+421
+00:20:06,200 --> 00:20:12,690
+converting from a data frame into CSR
+
+422
+00:20:10,400 --> 00:20:15,120
+prepping it running the algorithm
+
+423
+00:20:12,690 --> 00:20:19,380
+getting the answer converting the answer
+
+424
+00:20:15,120 --> 00:20:22,860
+back to Python and returning it we did
+
+425
+00:20:19,380 --> 00:20:27,240
+the same thing in SPARC it actually
+
+426
+00:20:22,860 --> 00:20:32,640
+takes several hours to run and that is
+
+427
+00:20:27,240 --> 00:20:37,200
+just the PageRank piece here loading 300
+
+428
+00:20:32,640 --> 00:20:39,360
+gigabytes of data 50 some seconds 58
+
+429
+00:20:37,200 --> 00:20:44,820
+seconds we think we can cut that in half
+
+430
+00:20:39,360 --> 00:20:47,190
+in the next release so it's 300
+
+431
+00:20:44,820 --> 00:20:55,340
+gigabytes kind of what most people use
+
+432
+00:20:47,190 --> 00:20:57,570
+is input data bigger smaller about that
+
+433
+00:20:55,340 --> 00:20:59,610
+we were playing some tricks with getting
+
+434
+00:20:57,570 --> 00:21:02,309
+300 gigabytes of data it loaded in there
+
+435
+00:20:59,610 --> 00:21:06,299
+because we only have 512 gigabytes of
+
+436
+00:21:02,309 --> 00:21:09,150
+memory and with CSV sometimes you need
+
+437
+00:21:06,299 --> 00:21:12,720
+twice as much memory as data so you can
+
+438
+00:21:09,150 --> 00:21:14,490
+do your kind of parsing so we have two
+
+439
+00:21:12,720 --> 00:21:16,740
+loaded in smaller and smaller chunks so
+
+440
+00:21:14,490 --> 00:21:21,320
+that it's always has enough room and
+
+441
+00:21:16,740 --> 00:21:21,320
+then merge them all together so
+
+442
+00:21:22,260 --> 00:21:29,640
+so this is a Volta so v100 with 32 gigs
+
+443
+00:21:26,270 --> 00:21:34,770
+this was running on a DG x2 which is our
+
+444
+00:21:29,640 --> 00:21:36,170
+small little supercomputer we are going
+
+445
+00:21:34,770 --> 00:21:40,880
+to have some numbers coming out soon
+
+446
+00:21:36,170 --> 00:21:40,880
+with numbers running in the Google cloud
+
+447
+00:21:40,970 --> 00:21:46,490
+some real-world numbers this is actually
+
+448
+00:21:43,680 --> 00:21:49,130
+going through a mortgage data set so
+
+449
+00:21:46,490 --> 00:21:52,410
+basically 14 years of mortgage data
+
+450
+00:21:49,130 --> 00:21:54,600
+showing that compared to spark we can
+
+451
+00:21:52,410 --> 00:21:56,220
+load it and prep it even though it comes
+
+452
+00:21:54,600 --> 00:21:58,350
+out of a database no one used the same
+
+453
+00:21:56,220 --> 00:22:00,540
+bank names so we had to go through and
+
+454
+00:21:58,350 --> 00:22:02,640
+clean up all the names we then trained
+
+455
+00:22:00,540 --> 00:22:05,550
+it and then say predict whether or not a
+
+456
+00:22:02,640 --> 00:22:10,530
+mortgage will fail so our run times are
+
+457
+00:22:05,550 --> 00:22:13,770
+down to 213 seconds versus even 100 note
+
+458
+00:22:10,530 --> 00:22:16,680
+smart cluster at 3000 seconds so you can
+
+459
+00:22:13,770 --> 00:22:19,080
+now load your data train a model do a
+
+460
+00:22:16,680 --> 00:22:20,940
+prediction get your answer before you
+
+461
+00:22:19,080 --> 00:22:22,920
+can you know enough time to get up get a
+
+462
+00:22:20,940 --> 00:22:26,700
+cup of coffee and come back and boom the
+
+463
+00:22:22,920 --> 00:22:29,040
+answers done so we're not building this
+
+464
+00:22:26,700 --> 00:22:32,820
+on our own we have lots of partners out
+
+465
+00:22:29,040 --> 00:22:34,050
+there a lot of adaptors it's also
+
+466
+00:22:32,820 --> 00:22:37,590
+available everywhere
+
+467
+00:22:34,050 --> 00:22:40,230
+so Google Cloud you know as you do a lot
+
+468
+00:22:37,590 --> 00:22:42,570
+of stuff with Microsoft Baidu
+
+469
+00:22:40,230 --> 00:22:44,940
+whatever your favorite cloud is you can
+
+470
+00:22:42,570 --> 00:22:46,620
+just go out and get an instance Google
+
+471
+00:22:44,940 --> 00:22:50,250
+currently has free instances out there
+
+472
+00:22:46,620 --> 00:22:52,260
+for just a couple hours so you can get
+
+473
+00:22:50,250 --> 00:22:56,430
+it you know get a free instance try it
+
+474
+00:22:52,260 --> 00:22:58,590
+out we also work with graph this tree we
+
+475
+00:22:56,430 --> 00:23:00,810
+use them to visualize our large large
+
+476
+00:22:58,590 --> 00:23:02,760
+graphs they can do a couple hundred
+
+477
+00:23:00,810 --> 00:23:07,560
+million items on the screen and
+
+478
+00:23:02,760 --> 00:23:09,110
+manipulate it in real time lots of
+
+479
+00:23:07,560 --> 00:23:15,510
+wonderful articles written out there
+
+480
+00:23:09,110 --> 00:23:20,820
+including the one from George so let me
+
+481
+00:23:15,510 --> 00:23:25,290
+wrap up real fast so visit us I know
+
+482
+00:23:20,820 --> 00:23:27,900
+rapid day is our website please go out
+
+483
+00:23:25,290 --> 00:23:30,330
+to to github give us some stars more
+
+484
+00:23:27,900 --> 00:23:33,480
+stars I get for graph means you know my
+
+485
+00:23:30,330 --> 00:23:35,400
+manager realizes that graph is important
+
+486
+00:23:33,480 --> 00:23:39,360
+they don't always realize that I have to
+
+487
+00:23:35,400 --> 00:23:51,480
+keep reminding them so with that any
+
+488
+00:23:39,360 --> 00:23:53,450
+questions hi thank you for the first
+
+489
+00:23:51,480 --> 00:23:57,059
+presentation I have a quick question
+
+490
+00:23:53,450 --> 00:23:58,830
+then an engineer starts playing around
+
+491
+00:23:57,059 --> 00:24:00,630
+to something new you usually don't have
+
+492
+00:23:58,830 --> 00:24:03,240
+a Tesla GPU or something under our desk
+
+493
+00:24:00,630 --> 00:24:06,690
+so it's the way to use this without it
+
+494
+00:24:03,240 --> 00:24:08,549
+the CUDA back-end so like tensorflow for
+
+495
+00:24:06,690 --> 00:24:11,370
+instance you can switch between the
+
+496
+00:24:08,549 --> 00:24:14,010
+backends as possible or you can write
+
+497
+00:24:11,370 --> 00:24:16,919
+everything in pandas okay and paint as a
+
+498
+00:24:14,010 --> 00:24:18,960
+network X and then you just change you
+
+499
+00:24:16,919 --> 00:24:22,350
+to imports so instead of saying import
+
+500
+00:24:18,960 --> 00:24:25,280
+pandas is PD say import Koo ml or coo
+
+501
+00:24:22,350 --> 00:24:30,510
+DFS PD everything we just rent
+
+502
+00:24:25,280 --> 00:24:30,870
+Thanks later on I mean I have it up and
+
+503
+00:24:30,510 --> 00:24:33,750
+running
+
+504
+00:24:30,870 --> 00:24:35,790
+actually L in a server somewhere else so
+
+505
+00:24:33,750 --> 00:24:36,690
+if you want to see real examples and see
+
+506
+00:24:35,790 --> 00:24:38,760
+how fast it is
+
+507
+00:24:36,690 --> 00:24:41,010
+you know just meet me up sometimes
+
+508
+00:24:38,760 --> 00:24:44,010
+during lunch or so and we can always run
+
+509
+00:24:41,010 --> 00:24:46,260
+different things okay we'll have to rush
+
+510
+00:24:44,010 --> 00:24:48,809
+you to the other room because well Brad
+
+511
+00:24:46,260 --> 00:24:51,780
+is also a panelist in the AI panel it's
+
+512
+00:24:48,809 --> 00:24:55,340
+about starters so you can follow up with
+
+513
+00:24:51,780 --> 00:24:55,340
+him later on thank you
+

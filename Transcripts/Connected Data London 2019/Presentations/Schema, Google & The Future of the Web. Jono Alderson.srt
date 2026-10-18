@@ -1,0 +1,3344 @@
+1
+00:00:04,460 --> 00:00:11,700
+okay so that was a bit rust but well we
+
+2
+00:00:07,680 --> 00:00:16,049
+made it and and you just managed to get
+
+3
+00:00:11,700 --> 00:00:18,390
+here on time okay so it's all good so
+
+4
+00:00:16,049 --> 00:00:21,119
+thanks we have Jono Alderson with us
+
+5
+00:00:18,390 --> 00:00:22,949
+who's like one of the SEO gurus and
+
+6
+00:00:21,119 --> 00:00:24,840
+Symantec SEO for that matter and that's
+
+7
+00:00:22,949 --> 00:00:26,970
+why you're here to talk about you know
+
+8
+00:00:24,840 --> 00:00:28,859
+he's worked basically on a very
+
+9
+00:00:26,970 --> 00:00:31,430
+interesting thing which is a kind of
+
+10
+00:00:28,859 --> 00:00:34,980
+specification on how you can use json-ld
+
+11
+00:00:31,430 --> 00:00:37,470
+to to boost your your SEO basically so
+
+12
+00:00:34,980 --> 00:00:39,420
+you know already running late so I'll
+
+13
+00:00:37,470 --> 00:00:41,969
+keep it very very short and it's up to
+
+14
+00:00:39,420 --> 00:00:44,370
+you thank you very much cool okay yeah
+
+15
+00:00:41,969 --> 00:00:45,570
+let's run through this so um my name's
+
+16
+00:00:44,370 --> 00:00:46,920
+Ronnie I work for a company called Yoast
+
+17
+00:00:45,570 --> 00:00:48,750
+hopefully many of you familiar with that
+
+18
+00:00:46,920 --> 00:00:51,360
+and if you're not we are an open-source
+
+19
+00:00:48,750 --> 00:00:53,430
+software provider and very deeply baked
+
+20
+00:00:51,360 --> 00:00:54,989
+into the WordPress ecosystem and we have
+
+21
+00:00:53,430 --> 00:00:56,129
+software that runs on circa 10 million
+
+22
+00:00:54,989 --> 00:00:59,520
+or so websites that helps people
+
+23
+00:00:56,129 --> 00:01:03,600
+optimize their SEO yada yada yada and my
+
+24
+00:00:59,520 --> 00:01:05,759
+job is mostly R&D I'm looking at where
+
+25
+00:01:03,600 --> 00:01:07,920
+the future of Google is going what
+
+26
+00:01:05,759 --> 00:01:09,060
+companies like Facebook and Amazon are
+
+27
+00:01:07,920 --> 00:01:10,859
+doing and how that shapes the
+
+28
+00:01:09,060 --> 00:01:12,899
+fundamentals of the web and over the
+
+29
+00:01:10,859 --> 00:01:14,549
+last 18 months or so I've been having
+
+30
+00:01:12,899 --> 00:01:16,139
+lots of conversations with people from
+
+31
+00:01:14,549 --> 00:01:17,340
+Google and other companies trying to get
+
+32
+00:01:16,139 --> 00:01:19,409
+a feel for what are their priorities
+
+33
+00:01:17,340 --> 00:01:21,689
+what are they trying to achieve and
+
+34
+00:01:19,409 --> 00:01:23,219
+where their main areas of focus so that
+
+35
+00:01:21,689 --> 00:01:25,469
+I can make sure that our roadmap is
+
+36
+00:01:23,219 --> 00:01:26,819
+building for that future the theme I see
+
+37
+00:01:25,469 --> 00:01:28,109
+consistently throughout all of those
+
+38
+00:01:26,819 --> 00:01:29,849
+conversations with the biggest
+
+39
+00:01:28,109 --> 00:01:32,219
+influencers on the web is the importance
+
+40
+00:01:29,849 --> 00:01:34,919
+of structured data I can tell you that
+
+41
+00:01:32,219 --> 00:01:36,569
+Google Amazon Facebook Wikipedia eBay
+
+42
+00:01:34,919 --> 00:01:40,139
+many of the companies you work for are
+
+43
+00:01:36,569 --> 00:01:42,270
+all in an arms race to create to curate
+
+44
+00:01:40,139 --> 00:01:44,429
+to take advantage of structured data at
+
+45
+00:01:42,270 --> 00:01:45,689
+scale on the web and their existing
+
+46
+00:01:44,429 --> 00:01:47,189
+adoption into these areas and the
+
+47
+00:01:45,689 --> 00:01:48,899
+existing they're already doing today is
+
+48
+00:01:47,189 --> 00:01:50,849
+radically changing the web and what it
+
+49
+00:01:48,899 --> 00:01:52,950
+means to build websites to compete
+
+50
+00:01:50,849 --> 00:01:54,840
+online to build new services all of
+
+51
+00:01:52,950 --> 00:01:57,359
+these things are all readily radically
+
+52
+00:01:54,840 --> 00:01:58,889
+evolving so I want to tell you without
+
+53
+00:01:57,359 --> 00:02:00,659
+plugging yes too much because that's
+
+54
+00:01:58,889 --> 00:02:02,399
+incredibly tedious and what I've been up
+
+55
+00:02:00,659 --> 00:02:04,259
+to over the last 12 months or so I think
+
+56
+00:02:02,399 --> 00:02:05,520
+we've had an interesting breakthrough
+
+57
+00:02:04,259 --> 00:02:08,220
+and some new stuff and I'd like to share
+
+58
+00:02:05,520 --> 00:02:09,840
+some of that story and first of all tiny
+
+59
+00:02:08,220 --> 00:02:10,920
+bit of a history lesson in no more than
+
+60
+00:02:09,840 --> 00:02:12,180
+one minute I want to talk to you about
+
+61
+00:02:10,920 --> 00:02:13,530
+how Google used to
+
+62
+00:02:12,180 --> 00:02:15,360
+because that really sets the foundations
+
+63
+00:02:13,530 --> 00:02:16,349
+and the principle as I'm sure many of
+
+64
+00:02:15,360 --> 00:02:18,810
+you are aware this is really really
+
+65
+00:02:16,349 --> 00:02:20,610
+basic is they essentially just call the
+
+66
+00:02:18,810 --> 00:02:22,379
+web they do that an incredible scale
+
+67
+00:02:20,610 --> 00:02:23,790
+with incredible sophistication but all
+
+68
+00:02:22,379 --> 00:02:25,769
+they're doing is going out collecting
+
+69
+00:02:23,790 --> 00:02:27,599
+data following links and trying to parse
+
+70
+00:02:25,769 --> 00:02:29,400
+it and understand the context and the
+
+71
+00:02:27,599 --> 00:02:32,099
+content within that information from
+
+72
+00:02:29,400 --> 00:02:34,019
+that content its understands topics and
+
+73
+00:02:32,099 --> 00:02:35,849
+concepts and relationships and tries to
+
+74
+00:02:34,019 --> 00:02:37,650
+build some kind of model of relevance
+
+75
+00:02:35,849 --> 00:02:39,120
+and authority and there's a huge amount
+
+76
+00:02:37,650 --> 00:02:40,379
+of nuance to how that works and how it's
+
+77
+00:02:39,120 --> 00:02:42,420
+changed over time but essentially that
+
+78
+00:02:40,379 --> 00:02:43,890
+has been the bedrock of what SEO and
+
+79
+00:02:42,420 --> 00:02:48,599
+digital marketing has been for the last
+
+80
+00:02:43,890 --> 00:02:50,370
+20 or so years the thing is Google's
+
+81
+00:02:48,599 --> 00:02:51,870
+vision was never to provide you with a
+
+82
+00:02:50,370 --> 00:02:53,190
+list of Link's many of your experience
+
+83
+00:02:51,870 --> 00:02:55,200
+searching for things on Google will be
+
+84
+00:02:53,190 --> 00:02:57,090
+here is a subset of results here are ten
+
+85
+00:02:55,200 --> 00:02:58,470
+things you can pick from here are ten
+
+86
+00:02:57,090 --> 00:03:00,209
+blue links and some pictures and it's up
+
+87
+00:02:58,470 --> 00:03:01,200
+to you as the user to choose which one
+
+88
+00:03:00,209 --> 00:03:03,359
+you think is best
+
+89
+00:03:01,200 --> 00:03:05,370
+that was never their endgame and in fact
+
+90
+00:03:03,359 --> 00:03:06,810
+any scenario where you as a user search
+
+91
+00:03:05,370 --> 00:03:08,939
+and then have to use your brain to
+
+92
+00:03:06,810 --> 00:03:10,319
+select the best answer is a failure on
+
+93
+00:03:08,939 --> 00:03:12,120
+their part and they talk about this very
+
+94
+00:03:10,319 --> 00:03:14,400
+openly their mission has always to be
+
+95
+00:03:12,120 --> 00:03:15,900
+has always been to become the Star Trek
+
+96
+00:03:14,400 --> 00:03:17,760
+computer that just solves problems
+
+97
+00:03:15,900 --> 00:03:20,310
+rather than some kind of facilitator
+
+98
+00:03:17,760 --> 00:03:22,980
+that makes you choose in the last few
+
+99
+00:03:20,310 --> 00:03:24,449
+years I think we're starting to see more
+
+100
+00:03:22,980 --> 00:03:27,359
+recently than that we're starting to see
+
+101
+00:03:24,449 --> 00:03:28,769
+the evidence of this new evolution what
+
+102
+00:03:27,359 --> 00:03:31,470
+we're seeing increasingly is things like
+
+103
+00:03:28,769 --> 00:03:33,030
+this this is a set of search results for
+
+104
+00:03:31,470 --> 00:03:34,470
+a whole such a whole bunch of different
+
+105
+00:03:33,030 --> 00:03:36,840
+searches but none of them look like a
+
+106
+00:03:34,470 --> 00:03:39,000
+conventional set of links they are rich
+
+107
+00:03:36,840 --> 00:03:41,069
+experiences and cards where I can buy
+
+108
+00:03:39,000 --> 00:03:42,780
+the thing I can watch the movie I can
+
+109
+00:03:41,069 --> 00:03:44,639
+cook the thing I can book the table
+
+110
+00:03:42,780 --> 00:03:46,919
+reservation I can go and undergo really
+
+111
+00:03:44,639 --> 00:03:48,569
+complex processes like minutely
+
+112
+00:03:46,919 --> 00:03:50,099
+analyzing and comparing the difference
+
+113
+00:03:48,569 --> 00:03:51,810
+of attributes of certain sets of
+
+114
+00:03:50,099 --> 00:03:54,690
+vehicles and cars and comparing
+
+115
+00:03:51,810 --> 00:03:56,069
+different sets of information to do this
+
+116
+00:03:54,690 --> 00:03:57,329
+and to achieve this and to do it at
+
+117
+00:03:56,069 --> 00:03:59,489
+scale across different industries and
+
+118
+00:03:57,329 --> 00:04:01,620
+different types of concepts the web as
+
+119
+00:03:59,489 --> 00:04:03,000
+it stands is not enough the content they
+
+120
+00:04:01,620 --> 00:04:05,609
+have access to and scrape and crawl and
+
+121
+00:04:03,000 --> 00:04:06,989
+consume isn't structured enough in order
+
+122
+00:04:05,609 --> 00:04:08,669
+to achieve this level of interactivity
+
+123
+00:04:06,989 --> 00:04:10,739
+in this level of rich experience they
+
+124
+00:04:08,669 --> 00:04:12,510
+need a better source of input and
+
+125
+00:04:10,739 --> 00:04:14,099
+increasingly this isn't an isolated
+
+126
+00:04:12,510 --> 00:04:16,109
+scenario this is a piece of research
+
+127
+00:04:14,099 --> 00:04:17,729
+from a guy called Rand Fishkin who's
+
+128
+00:04:16,109 --> 00:04:19,889
+very well known in the SEO space and a
+
+129
+00:04:17,729 --> 00:04:21,630
+company called jump shot who harvest isp
+
+130
+00:04:19,889 --> 00:04:24,090
+data and resell it they're saying that
+
+131
+00:04:21,630 --> 00:04:25,560
+now over 50% of all searches done on
+
+132
+00:04:24,090 --> 00:04:27,360
+Google don't result in
+
+133
+00:04:25,560 --> 00:04:29,160
+click check remember to consider that
+
+134
+00:04:27,360 --> 00:04:31,200
+that's not at half of people who search
+
+135
+00:04:29,160 --> 00:04:32,550
+aren't not finding what they want to
+
+136
+00:04:31,200 --> 00:04:34,680
+aren't going away not finding what they
+
+137
+00:04:32,550 --> 00:04:36,600
+need their needs are being met directly
+
+138
+00:04:34,680 --> 00:04:37,889
+in the search results they're undergoing
+
+139
+00:04:36,600 --> 00:04:40,320
+actions they're booking tables they're
+
+140
+00:04:37,889 --> 00:04:41,700
+completing their tasks in City this is
+
+141
+00:04:40,320 --> 00:04:44,520
+really what Google want to achieve
+
+142
+00:04:41,700 --> 00:04:46,380
+however the systems they're using to
+
+143
+00:04:44,520 --> 00:04:47,730
+drive this revolution in ecosystem are
+
+144
+00:04:46,380 --> 00:04:49,710
+still based on crawling the web
+
+145
+00:04:47,730 --> 00:04:51,480
+extracting content and trying to work
+
+146
+00:04:49,710 --> 00:04:52,560
+out what the hell it's about and I think
+
+147
+00:04:51,480 --> 00:04:55,380
+they've got about as far as they can
+
+148
+00:04:52,560 --> 00:04:57,060
+with that approach this is an arbitrary
+
+149
+00:04:55,380 --> 00:04:59,940
+recipe from the internet I found it the
+
+150
+00:04:57,060 --> 00:05:03,210
+other day and how long does this take to
+
+151
+00:04:59,940 --> 00:05:04,380
+cook it's ambiguous it's conflicting the
+
+152
+00:05:03,210 --> 00:05:05,669
+information doesn't quite add up the
+
+153
+00:05:04,380 --> 00:05:07,710
+maths isn't right and there are many
+
+154
+00:05:05,669 --> 00:05:09,120
+many many millions of pages like this
+
+155
+00:05:07,710 --> 00:05:11,130
+containing content like this across the
+
+156
+00:05:09,120 --> 00:05:13,169
+web where it's very easy for Google to
+
+157
+00:05:11,130 --> 00:05:14,940
+understand this is a recipe these are
+
+158
+00:05:13,169 --> 00:05:16,560
+the things it's about it's very very
+
+159
+00:05:14,940 --> 00:05:18,000
+hard for them to structure and expose
+
+160
+00:05:16,560 --> 00:05:19,620
+that in a way that people can take
+
+161
+00:05:18,000 --> 00:05:21,210
+action on it directly in the search
+
+162
+00:05:19,620 --> 00:05:24,180
+results on their Google homes on their
+
+163
+00:05:21,210 --> 00:05:26,250
+phones the content isn't good it's not
+
+164
+00:05:24,180 --> 00:05:27,600
+structured enough Google can extract it
+
+165
+00:05:26,250 --> 00:05:29,910
+but they can't understand it and they
+
+166
+00:05:27,600 --> 00:05:31,340
+know that this is a problem all of that
+
+167
+00:05:29,910 --> 00:05:33,810
+current approach is based on large-scale
+
+168
+00:05:31,340 --> 00:05:36,000
+extraction and the inputs they're using
+
+169
+00:05:33,810 --> 00:05:37,470
+aren't good enough you can't throw more
+
+170
+00:05:36,000 --> 00:05:39,000
+machine learning processes at this and
+
+171
+00:05:37,470 --> 00:05:43,110
+get it right it's a problem of precision
+
+172
+00:05:39,000 --> 00:05:44,220
+not of scale that's why when you talk to
+
+173
+00:05:43,110 --> 00:05:45,690
+these companies and they're all the
+
+174
+00:05:44,220 --> 00:05:47,460
+people involved in addressing this
+
+175
+00:05:45,690 --> 00:05:49,710
+challenge they very openly talk about
+
+176
+00:05:47,460 --> 00:05:51,810
+how structured data is for them the next
+
+177
+00:05:49,710 --> 00:05:53,520
+war they're investing huge amounts of
+
+178
+00:05:51,810 --> 00:05:55,350
+resources and people and time and
+
+179
+00:05:53,520 --> 00:05:56,630
+attention in trying to solve this
+
+180
+00:05:55,350 --> 00:05:59,789
+problem and there's a reason for that
+
+181
+00:05:56,630 --> 00:06:01,139
+it's because the next decade or so and
+
+182
+00:05:59,789 --> 00:06:02,789
+the next sets of billions and billions
+
+183
+00:06:01,139 --> 00:06:04,440
+of dollars of revenue for Google for
+
+184
+00:06:02,789 --> 00:06:06,120
+Amazon for the other big players come
+
+185
+00:06:04,440 --> 00:06:07,620
+from personal assistance from your
+
+186
+00:06:06,120 --> 00:06:09,120
+Google home device from your mobile
+
+187
+00:06:07,620 --> 00:06:10,860
+phone from your armours and Alexa from
+
+188
+00:06:09,120 --> 00:06:12,360
+your Xbox from your phone from your and
+
+189
+00:06:10,860 --> 00:06:14,250
+thing that you run in your kitchen that
+
+190
+00:06:12,360 --> 00:06:16,229
+tells you recipes this is their future
+
+191
+00:06:14,250 --> 00:06:17,700
+source of revenue and Google knows that
+
+192
+00:06:16,229 --> 00:06:19,500
+at the moment Amazon is winning
+
+193
+00:06:17,700 --> 00:06:20,729
+Google's approaches to extract and
+
+194
+00:06:19,500 --> 00:06:22,440
+structure the culture and work out the
+
+195
+00:06:20,729 --> 00:06:23,910
+contents about Amazon's approaches to
+
+196
+00:06:22,440 --> 00:06:26,010
+pay developers huge amounts of money to
+
+197
+00:06:23,910 --> 00:06:27,450
+solve the problems heuristic aliy they
+
+198
+00:06:26,010 --> 00:06:30,660
+can't win based on their current
+
+199
+00:06:27,450 --> 00:06:32,250
+approach which is why in 2011 as many of
+
+200
+00:06:30,660 --> 00:06:33,889
+you know they got together with Yahoo
+
+201
+00:06:32,250 --> 00:06:36,409
+and Bing
+
+202
+00:06:33,889 --> 00:06:38,990
+Yandex Baidu one of the others he'll now
+
+203
+00:06:36,409 --> 00:06:40,159
+index and and created schema.org many of
+
+204
+00:06:38,990 --> 00:06:42,499
+you be very very familiar with it and
+
+205
+00:06:40,159 --> 00:06:43,580
+this is their answer to how do we solve
+
+206
+00:06:42,499 --> 00:06:45,889
+structured data on the web
+
+207
+00:06:43,580 --> 00:06:47,659
+imagine a product it's suddenly
+
+208
+00:06:45,889 --> 00:06:49,430
+represented by a structured graph it has
+
+209
+00:06:47,659 --> 00:06:50,960
+a price and a manufacturer and that
+
+210
+00:06:49,430 --> 00:06:52,460
+manufacturer is an organization has
+
+211
+00:06:50,960 --> 00:06:54,169
+employees that wrote this webpage that's
+
+212
+00:06:52,460 --> 00:06:56,240
+on this website that's connected to this
+
+213
+00:06:54,169 --> 00:06:57,800
+organization if we can start to
+
+214
+00:06:56,240 --> 00:06:59,569
+structure and write our content using
+
+215
+00:06:57,800 --> 00:07:01,219
+this kind of language and markup Google
+
+216
+00:06:59,569 --> 00:07:03,080
+can very easily understand and extract
+
+217
+00:07:01,219 --> 00:07:04,520
+that and start to build and fuel its own
+
+218
+00:07:03,080 --> 00:07:06,199
+knowledge Gus which you can then use in
+
+219
+00:07:04,520 --> 00:07:08,419
+turn to power the kinds of solutions
+
+220
+00:07:06,199 --> 00:07:09,860
+they need to offer rich experiences to
+
+221
+00:07:08,419 --> 00:07:13,370
+show you recipes and search results to
+
+222
+00:07:09,860 --> 00:07:15,979
+allow you to book the table 2011 was a
+
+223
+00:07:13,370 --> 00:07:17,449
+long time ago and markup methods and the
+
+224
+00:07:15,979 --> 00:07:18,860
+approaches they tried to try and get
+
+225
+00:07:17,449 --> 00:07:20,779
+people to do this and sort of try and
+
+226
+00:07:18,860 --> 00:07:23,449
+implement it failed probably and
+
+227
+00:07:20,779 --> 00:07:24,949
+microformats failed rdfa failed for
+
+228
+00:07:23,449 --> 00:07:26,060
+whole bunch of reasons mainly because
+
+229
+00:07:24,949 --> 00:07:27,520
+Google's marketing of it was
+
+230
+00:07:26,060 --> 00:07:30,589
+particularly terrible but also because
+
+231
+00:07:27,520 --> 00:07:32,360
+market methods that are tied to its data
+
+232
+00:07:30,589 --> 00:07:35,810
+methods which are tied to your markup
+
+233
+00:07:32,360 --> 00:07:38,029
+like microdata and rdfa are very very
+
+234
+00:07:35,810 --> 00:07:39,379
+brittle and break very easily and if our
+
+235
+00:07:38,029 --> 00:07:40,969
+problem like with the recipe is that
+
+236
+00:07:39,379 --> 00:07:42,620
+people can't be trusted to accurately
+
+237
+00:07:40,969 --> 00:07:44,089
+describe their content when you give
+
+238
+00:07:42,620 --> 00:07:46,039
+them incredibly brittle and inflexible
+
+239
+00:07:44,089 --> 00:07:47,330
+tools to do that that where the content
+
+240
+00:07:46,039 --> 00:07:49,099
+changes over time and they have to be
+
+241
+00:07:47,330 --> 00:07:50,629
+expected to understand the intercept
+
+242
+00:07:49,099 --> 00:07:51,800
+between their code and their markup it
+
+243
+00:07:50,629 --> 00:07:55,550
+just doesn't work at scale it's an
+
+244
+00:07:51,800 --> 00:07:57,500
+incredibly fragile system json-ld has
+
+245
+00:07:55,550 --> 00:07:58,939
+solved a huge amount a huge part of that
+
+246
+00:07:57,500 --> 00:08:00,199
+obviously there are many formats that
+
+247
+00:07:58,939 --> 00:08:01,219
+you can write this kind of stuff in you
+
+248
+00:08:00,199 --> 00:08:03,259
+can define all of your properties
+
+249
+00:08:01,219 --> 00:08:04,639
+json-ld is increasingly the only format
+
+250
+00:08:03,259 --> 00:08:06,349
+that Google will really want you to use
+
+251
+00:08:04,639 --> 00:08:08,569
+as we move forward this is the future of
+
+252
+00:08:06,349 --> 00:08:11,120
+how they want to consume structured data
+
+253
+00:08:08,569 --> 00:08:12,710
+on the web so suddenly Google are
+
+254
+00:08:11,120 --> 00:08:14,870
+producing reams and reams of
+
+255
+00:08:12,710 --> 00:08:16,370
+documentation and support and tools an
+
+256
+00:08:14,870 --> 00:08:18,409
+incentive for adoption it's an
+
+257
+00:08:16,370 --> 00:08:20,360
+incredible commercial impetus for them
+
+258
+00:08:18,409 --> 00:08:22,520
+to get people to adopt this quickly
+
+259
+00:08:20,360 --> 00:08:25,460
+before Amazon wins and gets a clear land
+
+260
+00:08:22,520 --> 00:08:27,469
+grab in the in the connected devices and
+
+261
+00:08:25,460 --> 00:08:30,229
+personal assistance base this is full of
+
+262
+00:08:27,469 --> 00:08:33,529
+nuance and complexity and conflict which
+
+263
+00:08:30,229 --> 00:08:34,760
+will come on Tim um so in response to
+
+264
+00:08:33,529 --> 00:08:36,320
+this a lot of the content management
+
+265
+00:08:34,760 --> 00:08:38,360
+systems and publishing tools on the web
+
+266
+00:08:36,320 --> 00:08:40,099
+have baked in and added support for I
+
+267
+00:08:38,360 --> 00:08:42,169
+want to describe my content in
+
+268
+00:08:40,099 --> 00:08:44,000
+structured data and they typically make
+
+269
+00:08:42,169 --> 00:08:46,130
+provisions to allow authors to define
+
+270
+00:08:44,000 --> 00:08:47,660
+what their pages are about this is a
+
+271
+00:08:46,130 --> 00:08:49,250
+screenshot from a Yost competitor
+
+272
+00:08:47,660 --> 00:08:52,759
+so I don't seem too biased called rank
+
+273
+00:08:49,250 --> 00:08:54,649
+bath and they allow you to say what is
+
+274
+00:08:52,759 --> 00:08:56,449
+this page about I'm an author writing a
+
+275
+00:08:54,649 --> 00:08:58,790
+page or a blogger writing a post or
+
+276
+00:08:56,449 --> 00:09:01,250
+content manager describing a product I
+
+277
+00:08:58,790 --> 00:09:02,779
+can say this is an article and an
+
+278
+00:09:01,250 --> 00:09:04,759
+article has properties like an author
+
+279
+00:09:02,779 --> 00:09:07,009
+that I can connect to a published date a
+
+280
+00:09:04,759 --> 00:09:10,730
+featured image a description I can
+
+281
+00:09:07,009 --> 00:09:13,610
+define these things I can say this page
+
+282
+00:09:10,730 --> 00:09:14,810
+contains an article but when we look at
+
+283
+00:09:13,610 --> 00:09:16,160
+what Google is trying to achieve and
+
+284
+00:09:14,810 --> 00:09:17,600
+what they need to achieve in order to
+
+285
+00:09:16,160 --> 00:09:19,790
+deploy this kind of rich structured data
+
+286
+00:09:17,600 --> 00:09:22,639
+it's not enough to say this page has an
+
+287
+00:09:19,790 --> 00:09:24,620
+article I need to say this article is
+
+288
+00:09:22,639 --> 00:09:25,939
+part of a page which was authored by
+
+289
+00:09:24,620 --> 00:09:27,649
+this person who works for the
+
+290
+00:09:25,939 --> 00:09:29,089
+organization who runs the website which
+
+291
+00:09:27,649 --> 00:09:31,310
+incidentally is described over here
+
+292
+00:09:29,089 --> 00:09:32,569
+which is a parent of this page that has
+
+293
+00:09:31,310 --> 00:09:34,759
+these relationships to these other
+
+294
+00:09:32,569 --> 00:09:36,230
+things it's not enough to say there is
+
+295
+00:09:34,759 --> 00:09:37,850
+an article I need to describe the
+
+296
+00:09:36,230 --> 00:09:39,769
+relationship between the article the
+
+297
+00:09:37,850 --> 00:09:42,500
+page it's on the website it's in and the
+
+298
+00:09:39,769 --> 00:09:44,750
+organization who publishes that we see
+
+299
+00:09:42,500 --> 00:09:45,980
+the web is more than just pages and all
+
+300
+00:09:44,750 --> 00:09:47,209
+of the current solutions out there that
+
+301
+00:09:45,980 --> 00:09:48,649
+allow you to play with this kind of
+
+302
+00:09:47,209 --> 00:09:50,750
+stuff work on the assumption that it's
+
+303
+00:09:48,649 --> 00:09:52,370
+enough just to describe your page you
+
+304
+00:09:50,750 --> 00:09:54,589
+can say this page contains an
+
+305
+00:09:52,370 --> 00:09:56,509
+organization and an article it's harder
+
+306
+00:09:54,589 --> 00:09:57,800
+to say this arted was written by John
+
+307
+00:09:56,509 --> 00:09:59,389
+Smith who is an employee of the
+
+308
+00:09:57,800 --> 00:10:01,519
+organization who published the website
+
+309
+00:09:59,389 --> 00:10:02,959
+that this article is in that's the level
+
+310
+00:10:01,519 --> 00:10:04,610
+of detail and description we need to get
+
+311
+00:10:02,959 --> 00:10:06,769
+to in order to fuel this future that's a
+
+312
+00:10:04,610 --> 00:10:08,569
+graph truly linked data and most
+
+313
+00:10:06,769 --> 00:10:10,399
+solutions don't go this deep this is
+
+314
+00:10:08,569 --> 00:10:13,220
+another example from the same tool I can
+
+315
+00:10:10,399 --> 00:10:14,420
+say this page is about a book it has an
+
+316
+00:10:13,220 --> 00:10:16,130
+author and I can describe it what
+
+317
+00:10:14,420 --> 00:10:19,399
+happens if the book is also a product
+
+318
+00:10:16,130 --> 00:10:20,990
+and what happens if the organization who
+
+319
+00:10:19,399 --> 00:10:22,189
+manufacture and retell the book is
+
+320
+00:10:20,990 --> 00:10:23,630
+different from the organization who
+
+321
+00:10:22,189 --> 00:10:25,970
+published the website I'm selling it on
+
+322
+00:10:23,630 --> 00:10:28,220
+it's incredibly hard to describe these
+
+323
+00:10:25,970 --> 00:10:30,920
+complex relationships using text fields
+
+324
+00:10:28,220 --> 00:10:32,870
+in an editor this isn't how you author
+
+325
+00:10:30,920 --> 00:10:34,370
+and maintain large complex interrelated
+
+326
+00:10:32,870 --> 00:10:35,839
+graphs at scale yet this is the only
+
+327
+00:10:34,370 --> 00:10:38,889
+solution out there on the web at the
+
+328
+00:10:35,839 --> 00:10:41,269
+moment this is Jason without the linking
+
+329
+00:10:38,889 --> 00:10:42,920
+the approach of picking what a page is
+
+330
+00:10:41,269 --> 00:10:45,500
+about and filling in the fields manually
+
+331
+00:10:42,920 --> 00:10:46,850
+it doesn't scale and manually authoring
+
+332
+00:10:45,500 --> 00:10:49,639
+and maintaining graphs in that way just
+
+333
+00:10:46,850 --> 00:10:51,379
+isn't feasible this bothered me greatly
+
+334
+00:10:49,639 --> 00:10:52,699
+if rewind back to November I think last
+
+335
+00:10:51,379 --> 00:10:54,410
+year and this was keeping me awake at
+
+336
+00:10:52,699 --> 00:10:56,389
+night you've essentially got a problem
+
+337
+00:10:54,410 --> 00:10:58,339
+where technology isn't smart enough to
+
+338
+00:10:56,389 --> 00:11:00,139
+understand what stuff is about users
+
+339
+00:10:58,339 --> 00:11:00,950
+can't be trusted enough to manage and
+
+340
+00:11:00,139 --> 00:11:02,810
+author what their stuff
+
+341
+00:11:00,950 --> 00:11:04,340
+about and businesses and software can't
+
+342
+00:11:02,810 --> 00:11:06,140
+conceptualize how they would even go
+
+343
+00:11:04,340 --> 00:11:08,900
+about doing this so I set myself a
+
+344
+00:11:06,140 --> 00:11:10,520
+challenge I said how can we enable
+
+345
+00:11:08,900 --> 00:11:11,870
+everybody to have rich graphs which
+
+346
+00:11:10,520 --> 00:11:14,450
+represent their content business in
+
+347
+00:11:11,870 --> 00:11:16,400
+product everybody how can we do all of
+
+348
+00:11:14,450 --> 00:11:18,740
+that automatically invisibly perfectly
+
+349
+00:11:16,400 --> 00:11:20,930
+at scale based just on the content that
+
+350
+00:11:18,740 --> 00:11:22,550
+people write and manage and how can we
+
+351
+00:11:20,930 --> 00:11:24,500
+make all of that conceptually and
+
+352
+00:11:22,550 --> 00:11:26,570
+technically scalable and interoperable
+
+353
+00:11:24,500 --> 00:11:28,100
+beyond our little Yoast ecosystem beyond
+
+354
+00:11:26,570 --> 00:11:30,170
+our bigger WordPress ecosystem beyond
+
+355
+00:11:28,100 --> 00:11:33,650
+PHP into the whole web and everything
+
+356
+00:11:30,170 --> 00:11:35,420
+that anyone builds ever TLDR I think
+
+357
+00:11:33,650 --> 00:11:36,560
+we've done it and I want to tell you
+
+358
+00:11:35,420 --> 00:11:37,760
+about some of the challenges that we
+
+359
+00:11:36,560 --> 00:11:39,560
+went through along the way and then show
+
+360
+00:11:37,760 --> 00:11:41,540
+you some of the stuff and hopefully get
+
+361
+00:11:39,560 --> 00:11:44,090
+you guys involved and excited on where
+
+362
+00:11:41,540 --> 00:11:45,770
+we go from here so this was obviously an
+
+363
+00:11:44,090 --> 00:11:47,240
+absolutely insane thing to commit to and
+
+364
+00:11:45,770 --> 00:11:48,980
+I spent the last year of my life deeply
+
+365
+00:11:47,240 --> 00:11:49,940
+ensconced in it and I walk you through
+
+366
+00:11:48,980 --> 00:11:51,410
+some examples of whether were
+
+367
+00:11:49,940 --> 00:11:52,760
+particularly interesting challenges and
+
+368
+00:11:51,410 --> 00:11:55,220
+that you might stumble across if you're
+
+369
+00:11:52,760 --> 00:11:58,730
+trying to do similar stuff and isn't
+
+370
+00:11:55,220 --> 00:12:00,740
+schema to augur pain and it's really
+
+371
+00:11:58,730 --> 00:12:03,080
+phenomenally good at describing the
+
+372
+00:12:00,740 --> 00:12:06,200
+properties of things a house has an
+
+373
+00:12:03,080 --> 00:12:08,800
+address a business has a name nowhere
+
+374
+00:12:06,200 --> 00:12:11,300
+does any of this documentation tackle
+
+375
+00:12:08,800 --> 00:12:13,850
+context or the real world or the
+
+376
+00:12:11,300 --> 00:12:16,970
+relationship between things if I have an
+
+377
+00:12:13,850 --> 00:12:19,130
+article written by an author who works
+
+378
+00:12:16,970 --> 00:12:20,570
+for a company that's represented by a
+
+379
+00:12:19,130 --> 00:12:22,640
+different site but the author wants to
+
+380
+00:12:20,570 --> 00:12:24,590
+remain anonymous there is no
+
+381
+00:12:22,640 --> 00:12:26,450
+documentation there was no mental model
+
+382
+00:12:24,590 --> 00:12:28,250
+there is no description there is no word
+
+383
+00:12:26,450 --> 00:12:30,680
+of content on the entire web about how
+
+384
+00:12:28,250 --> 00:12:32,330
+you go about doing that all this does is
+
+385
+00:12:30,680 --> 00:12:35,180
+it describes the properties things can
+
+386
+00:12:32,330 --> 00:12:36,380
+have there is no support for and what
+
+387
+00:12:35,180 --> 00:12:38,900
+are the walls what are the context what
+
+388
+00:12:36,380 --> 00:12:40,700
+are the awkward edge cases that's a pain
+
+389
+00:12:38,900 --> 00:12:43,190
+couple that with the fact that Google's
+
+390
+00:12:40,700 --> 00:12:47,180
+rules are incredibly finicky and an
+
+391
+00:12:43,190 --> 00:12:49,370
+article must have an author and a
+
+392
+00:12:47,180 --> 00:12:52,400
+publisher but in Google's world a
+
+393
+00:12:49,370 --> 00:12:54,290
+publisher cannot be a person that's odd
+
+394
+00:12:52,400 --> 00:12:56,210
+I wrote a blog post yesterday I am the
+
+395
+00:12:54,290 --> 00:12:57,560
+publisher of that if you feed that to
+
+396
+00:12:56,210 --> 00:12:59,570
+Google they flag it as an error you are
+
+397
+00:12:57,560 --> 00:13:01,730
+not eligible for Google's interpretation
+
+398
+00:12:59,570 --> 00:13:04,280
+of your structured data if your article
+
+399
+00:13:01,730 --> 00:13:05,930
+was altered by a person that's an
+
+400
+00:13:04,280 --> 00:13:07,250
+arbitrary business decision by then
+
+401
+00:13:05,930 --> 00:13:08,780
+based on their priorities and their
+
+402
+00:13:07,250 --> 00:13:12,140
+interpretations of schemas fairly
+
+403
+00:13:08,780 --> 00:13:14,339
+ill-defined rules and context a logo of
+
+404
+00:13:12,140 --> 00:13:16,199
+a news article has different
+
+405
+00:13:14,339 --> 00:13:18,389
+quirements than one for an organization
+
+406
+00:13:16,199 --> 00:13:20,029
+but you have to have both and if I'm
+
+407
+00:13:18,389 --> 00:13:22,620
+running on something like amp or a
+
+408
+00:13:20,029 --> 00:13:24,870
+mobile-first display my logo has to be a
+
+409
+00:13:22,620 --> 00:13:27,839
+different size but my organization can
+
+410
+00:13:24,870 --> 00:13:31,259
+only have one logo and I'm serving a
+
+411
+00:13:27,839 --> 00:13:32,639
+responsive page there is no solution to
+
+412
+00:13:31,259 --> 00:13:34,170
+these kinds of challenges you have to
+
+413
+00:13:32,639 --> 00:13:34,589
+make a best guess and hope that they get
+
+414
+00:13:34,170 --> 00:13:36,089
+it right
+
+415
+00:13:34,589 --> 00:13:37,589
+huge amounts of trial and error and
+
+416
+00:13:36,089 --> 00:13:38,910
+faffing and there was no documentation
+
+417
+00:13:37,589 --> 00:13:41,910
+or standardization of how this should
+
+418
+00:13:38,910 --> 00:13:42,990
+work in the real world I'm increasing
+
+419
+00:13:41,910 --> 00:13:44,279
+this is getting silly as well as Google
+
+420
+00:13:42,990 --> 00:13:46,620
+so I'll talk more about this in a minute
+
+421
+00:13:44,279 --> 00:13:48,360
+but and a article must have a main
+
+422
+00:13:46,620 --> 00:13:52,379
+entity of page property an article has
+
+423
+00:13:48,360 --> 00:13:55,079
+to be related to a page but an FAQ block
+
+424
+00:13:52,379 --> 00:13:56,939
+has to be the main entity of a page
+
+425
+00:13:55,079 --> 00:13:59,279
+which is a directionally opposite
+
+426
+00:13:56,939 --> 00:14:00,959
+relationship bit different bits of
+
+427
+00:13:59,279 --> 00:14:03,089
+Google have designed their graphs in
+
+428
+00:14:00,959 --> 00:14:05,370
+different ways and I now can't have an
+
+429
+00:14:03,089 --> 00:14:07,199
+article which contains an FAQ about a
+
+430
+00:14:05,370 --> 00:14:08,730
+product because there's no way to
+
+431
+00:14:07,199 --> 00:14:11,910
+reconcile the directionality of the
+
+432
+00:14:08,730 --> 00:14:13,259
+graph now schema.org defines the
+
+433
+00:14:11,910 --> 00:14:14,730
+properties these can have Google defines
+
+434
+00:14:13,259 --> 00:14:16,829
+an entirely different set of logic and
+
+435
+00:14:14,730 --> 00:14:20,370
+somewhere in between is all the mess
+
+436
+00:14:16,829 --> 00:14:21,629
+that we have increasingly Google's tools
+
+437
+00:14:20,370 --> 00:14:22,709
+are also an optical it's just a huge
+
+438
+00:14:21,629 --> 00:14:23,910
+rant against Google but it's worth
+
+439
+00:14:22,709 --> 00:14:25,019
+understanding just how messy this is
+
+440
+00:14:23,910 --> 00:14:26,879
+because I'm going to employ you all to
+
+441
+00:14:25,019 --> 00:14:28,350
+get involved in try and fix it and this
+
+442
+00:14:26,879 --> 00:14:29,670
+is somebody complaining on one of our
+
+443
+00:14:28,350 --> 00:14:31,350
+blog posts that our schema
+
+444
+00:14:29,670 --> 00:14:33,509
+implementation shows errors in Google's
+
+445
+00:14:31,350 --> 00:14:35,850
+search console and testing tools and
+
+446
+00:14:33,509 --> 00:14:39,509
+because they're how-to guides doesn't
+
+447
+00:14:35,850 --> 00:14:41,579
+have a tool or a supply if I write a
+
+448
+00:14:39,509 --> 00:14:43,589
+how-to guide of how to turn this laptop
+
+449
+00:14:41,579 --> 00:14:45,600
+on do I really need to list that it
+
+450
+00:14:43,589 --> 00:14:47,249
+needs to supply a laptop and a finger
+
+451
+00:14:45,600 --> 00:14:49,800
+and if I don't Google complains and
+
+452
+00:14:47,249 --> 00:14:51,629
+treats it as an error furthermore um
+
+453
+00:14:49,800 --> 00:14:54,360
+this is a screenshot of a search result
+
+454
+00:14:51,629 --> 00:14:58,019
+and with some FAQ content and the data
+
+455
+00:14:54,360 --> 00:14:59,970
+type for an FAQ answer is text textures
+
+456
+00:14:58,019 --> 00:15:02,160
+are very well defined thing text cannot
+
+457
+00:14:59,970 --> 00:15:04,019
+and should not contain HTML markup but
+
+458
+00:15:02,160 --> 00:15:06,209
+that's an affiliate link from that
+
+459
+00:15:04,019 --> 00:15:08,189
+website to an Amazon product served in
+
+460
+00:15:06,209 --> 00:15:09,689
+Google search results because their
+
+461
+00:15:08,189 --> 00:15:12,029
+specification allows you to put some
+
+462
+00:15:09,689 --> 00:15:13,050
+HTML in that's me it's not me but that's
+
+463
+00:15:12,029 --> 00:15:14,579
+somebody essentially hacking and
+
+464
+00:15:13,050 --> 00:15:16,379
+hijacking onto Google via their own
+
+465
+00:15:14,579 --> 00:15:17,910
+schema in order to make money off their
+
+466
+00:15:16,379 --> 00:15:20,639
+platform this is really poorly and
+
+467
+00:15:17,910 --> 00:15:21,779
+inconsistently designed and then
+
+468
+00:15:20,639 --> 00:15:23,339
+furthermore their tools are inconsistent
+
+469
+00:15:21,779 --> 00:15:25,259
+these are two reports for the same page
+
+470
+00:15:23,339 --> 00:15:25,830
+on your Escom one of them says that this
+
+471
+00:15:25,259 --> 00:15:27,180
+is not other
+
+472
+00:15:25,830 --> 00:15:28,680
+and there were errors the other shows
+
+473
+00:15:27,180 --> 00:15:29,660
+exactly the same data and says that it's
+
+474
+00:15:28,680 --> 00:15:31,980
+fine
+
+475
+00:15:29,660 --> 00:15:34,110
+within Google and their interpretation
+
+476
+00:15:31,980 --> 00:15:36,900
+of schema.org they can't agree on what
+
+477
+00:15:34,110 --> 00:15:37,950
+right looks like I think this is
+
+478
+00:15:36,900 --> 00:15:39,800
+particularly interesting and something
+
+479
+00:15:37,950 --> 00:15:42,240
+for all of you to think about is
+
+480
+00:15:39,800 --> 00:15:45,300
+Google's mental model for the web
+
+481
+00:15:42,240 --> 00:15:47,400
+requires that a page be about a topic
+
+482
+00:15:45,300 --> 00:15:49,200
+and that's born of the way that they
+
+483
+00:15:47,400 --> 00:15:50,220
+approach and think about SEO and paid
+
+484
+00:15:49,200 --> 00:15:51,960
+search and a whole bunch of other things
+
+485
+00:15:50,220 --> 00:15:54,930
+but I'm not necessarily sure that it's a
+
+486
+00:15:51,960 --> 00:15:56,520
+strict requirement for the web why can't
+
+487
+00:15:54,930 --> 00:15:57,630
+a page be about six different things why
+
+488
+00:15:56,520 --> 00:15:59,760
+do we have to have this strict
+
+489
+00:15:57,630 --> 00:16:01,800
+relationship between a URL and a topic
+
+490
+00:15:59,760 --> 00:16:02,940
+and a concept technology's certainly
+
+491
+00:16:01,800 --> 00:16:04,770
+more flexible than that our mental
+
+492
+00:16:02,940 --> 00:16:06,660
+models can be but they enforce this and
+
+493
+00:16:04,770 --> 00:16:07,980
+as they progress with rolling out schema
+
+494
+00:16:06,660 --> 00:16:09,450
+this is going to become more and more
+
+495
+00:16:07,980 --> 00:16:10,860
+fixed in the very nature that web it's
+
+496
+00:16:09,450 --> 00:16:12,300
+something we ought to certainly think
+
+497
+00:16:10,860 --> 00:16:13,710
+about and decide whether or not we're
+
+498
+00:16:12,300 --> 00:16:15,540
+happy about it the kinds of graphs we
+
+499
+00:16:13,710 --> 00:16:17,430
+construct suddenly end up being anchored
+
+500
+00:16:15,540 --> 00:16:19,890
+to this mental model I don't know if
+
+501
+00:16:17,430 --> 00:16:22,020
+that's good and then of course all of
+
+502
+00:16:19,890 --> 00:16:23,280
+this there is no context there is no set
+
+503
+00:16:22,020 --> 00:16:25,710
+of instructions there are no guidelines
+
+504
+00:16:23,280 --> 00:16:27,920
+if an organization has a logo that is
+
+505
+00:16:25,710 --> 00:16:30,720
+this big but the article has no author
+
+506
+00:16:27,920 --> 00:16:32,310
+what should my graph contain which bits
+
+507
+00:16:30,720 --> 00:16:34,440
+do I show which bits don't I show how do
+
+508
+00:16:32,310 --> 00:16:37,380
+the relationship shift none of this is
+
+509
+00:16:34,440 --> 00:16:38,910
+defined anywhere and then on top of all
+
+510
+00:16:37,380 --> 00:16:41,160
+of this nobody has a simple website
+
+511
+00:16:38,910 --> 00:16:42,840
+right you're running a CMS and also a
+
+512
+00:16:41,160 --> 00:16:44,880
+tag management solution and some
+
+513
+00:16:42,840 --> 00:16:46,200
+third-party extensions all of which have
+
+514
+00:16:44,880 --> 00:16:48,980
+properties which really ought to be
+
+515
+00:16:46,200 --> 00:16:51,360
+represented in a graph if I'm running
+
+516
+00:16:48,980 --> 00:16:53,430
+something like WordPress and I've got an
+
+517
+00:16:51,360 --> 00:16:56,100
+article and an e-commerce plug-in that
+
+518
+00:16:53,430 --> 00:16:57,540
+references a product and a recipe system
+
+519
+00:16:56,100 --> 00:16:59,760
+all of these things should talk to each
+
+520
+00:16:57,540 --> 00:17:02,730
+other but there is no defined way that
+
+521
+00:16:59,760 --> 00:17:04,470
+describes how they can which makes it
+
+522
+00:17:02,730 --> 00:17:06,600
+particularly difficult because there is
+
+523
+00:17:04,470 --> 00:17:08,670
+no defined structure for our DS Heidi
+
+524
+00:17:06,600 --> 00:17:11,339
+should work on the web every property in
+
+525
+00:17:08,670 --> 00:17:13,170
+schema.org can have an ID and when you
+
+526
+00:17:11,339 --> 00:17:14,310
+start to build complex graphs IDs are
+
+527
+00:17:13,170 --> 00:17:15,630
+how you Crawford cross-reference
+
+528
+00:17:14,310 --> 00:17:17,400
+entities and link them together but
+
+529
+00:17:15,630 --> 00:17:20,130
+there is no standardized model Fortin ID
+
+530
+00:17:17,400 --> 00:17:23,040
+should be it's an arbitrary string so if
+
+531
+00:17:20,130 --> 00:17:25,050
+I is tool provider a use approach X for
+
+532
+00:17:23,040 --> 00:17:26,250
+my strings and tor provided B uses an
+
+533
+00:17:25,050 --> 00:17:27,000
+entirely different approach to writing
+
+534
+00:17:26,250 --> 00:17:28,620
+the IDs
+
+535
+00:17:27,000 --> 00:17:31,080
+there is no way that our solutions can
+
+536
+00:17:28,620 --> 00:17:33,900
+interoperate no no this is defined
+
+537
+00:17:31,080 --> 00:17:35,850
+anywhere and then to top it all off
+
+538
+00:17:33,900 --> 00:17:37,710
+Google don't actually pass the graph
+
+539
+00:17:35,850 --> 00:17:39,690
+this is pretty terrifying when I find
+
+540
+00:17:37,710 --> 00:17:41,639
+out about it talking to their teams and
+
+541
+00:17:39,690 --> 00:17:43,500
+they look for just string matches in the
+
+542
+00:17:41,639 --> 00:17:45,629
+content of your json-ld and extract the
+
+543
+00:17:43,500 --> 00:17:47,460
+relevant topics and content nobody at
+
+544
+00:17:45,629 --> 00:17:49,440
+Google is actually passing the graphs
+
+545
+00:17:47,460 --> 00:17:50,580
+that we're producing which makes it
+
+546
+00:17:49,440 --> 00:17:52,139
+pretty scary because they're just using
+
+547
+00:17:50,580 --> 00:17:53,549
+arbitrary logic to say if it contains
+
+548
+00:17:52,139 --> 00:17:56,370
+this bit then extractive and they're
+
+549
+00:17:53,549 --> 00:17:58,259
+also saying for example and will only
+
+550
+00:17:56,370 --> 00:18:00,480
+extract this bit and use it if it's a
+
+551
+00:17:58,259 --> 00:18:03,389
+leading edge in a relationship they will
+
+552
+00:18:00,480 --> 00:18:05,159
+only show your logo if it's attached to
+
+553
+00:18:03,389 --> 00:18:07,679
+an organization where the organization's
+
+554
+00:18:05,159 --> 00:18:09,029
+on a leading edge but organization is
+
+555
+00:18:07,679 --> 00:18:10,350
+quite frequently not on the leading edge
+
+556
+00:18:09,029 --> 00:18:11,970
+because it's two or three steps back
+
+557
+00:18:10,350 --> 00:18:13,830
+from the webpage and the thing on the
+
+558
+00:18:11,970 --> 00:18:17,759
+webpage you want to represent all of
+
+559
+00:18:13,830 --> 00:18:19,080
+this is a mess and lastly I think Google
+
+560
+00:18:17,759 --> 00:18:19,980
+don't support there's a lot of anti
+
+561
+00:18:19,080 --> 00:18:21,450
+Google here but it's worth understanding
+
+562
+00:18:19,980 --> 00:18:22,590
+that they are really pushing this but
+
+563
+00:18:21,450 --> 00:18:23,820
+they're not doing a good job because it
+
+564
+00:18:22,590 --> 00:18:28,320
+impacts all of us they don't support
+
+565
+00:18:23,820 --> 00:18:30,509
+cross page IDs so if I have an article
+
+566
+00:18:28,320 --> 00:18:32,009
+written by an author and a product sold
+
+567
+00:18:30,509 --> 00:18:33,149
+by a company and I want to say these are
+
+568
+00:18:32,009 --> 00:18:35,370
+on the same these have shared
+
+569
+00:18:33,149 --> 00:18:37,230
+relationships and they're both run by
+
+570
+00:18:35,370 --> 00:18:39,029
+the same organization it's not enough to
+
+571
+00:18:37,230 --> 00:18:41,100
+say this article was written by an
+
+572
+00:18:39,029 --> 00:18:43,320
+author who is represented by this page
+
+573
+00:18:41,100 --> 00:18:45,509
+over here I have to build that entire
+
+574
+00:18:43,320 --> 00:18:47,159
+graph on every page I have to say here
+
+575
+00:18:45,509 --> 00:18:48,929
+is an author who works for a company who
+
+576
+00:18:47,159 --> 00:18:50,549
+authors a webpage which is part of a
+
+577
+00:18:48,929 --> 00:18:51,990
+website which is run by an organization
+
+578
+00:18:50,549 --> 00:18:53,250
+which sells a product which has these
+
+579
+00:18:51,990 --> 00:18:55,470
+details which is written about by the
+
+580
+00:18:53,250 --> 00:18:56,970
+same author I have to build and
+
+581
+00:18:55,470 --> 00:19:00,389
+construct and manage that entire graph
+
+582
+00:18:56,970 --> 00:19:01,769
+in every single instance and then
+
+583
+00:19:00,389 --> 00:19:03,720
+content within the graph changes the
+
+584
+00:19:01,769 --> 00:19:05,309
+graph recursively as the graph is
+
+585
+00:19:03,720 --> 00:19:06,570
+constructed it needs to know about what
+
+586
+00:19:05,309 --> 00:19:08,879
+else is in the graph otherwise it all
+
+587
+00:19:06,570 --> 00:19:12,419
+goes horribly wrong if my article
+
+588
+00:19:08,879 --> 00:19:14,820
+contains FAQ content the webpage becomes
+
+589
+00:19:12,419 --> 00:19:16,259
+an FAQ page so as I'm traversing through
+
+590
+00:19:14,820 --> 00:19:17,789
+and managing and passing all of this I
+
+591
+00:19:16,259 --> 00:19:19,470
+need to be traveling in multiple
+
+592
+00:19:17,789 --> 00:19:24,029
+directions to refactor what the thing
+
+593
+00:19:19,470 --> 00:19:27,509
+thinks it is thankfully WordPress solved
+
+594
+00:19:24,029 --> 00:19:29,730
+a big chunk of this um in January issue
+
+595
+00:19:27,509 --> 00:19:30,929
+WordPress launched a new editor called
+
+596
+00:19:29,730 --> 00:19:32,399
+Guttenberg which some of you might be
+
+597
+00:19:30,929 --> 00:19:33,990
+familiar with and the principle was that
+
+598
+00:19:32,399 --> 00:19:37,080
+as you author your content everything is
+
+599
+00:19:33,990 --> 00:19:39,629
+a block a paragraph is a block a recipe
+
+600
+00:19:37,080 --> 00:19:41,340
+is a block that contains blocks and FAQ
+
+601
+00:19:39,629 --> 00:19:43,289
+list is a block of questions and answer
+
+602
+00:19:41,340 --> 00:19:45,899
+blocks and as you start to author
+
+603
+00:19:43,289 --> 00:19:48,299
+content in blocks they are inherently
+
+604
+00:19:45,899 --> 00:19:49,350
+structured what we have now is something
+
+605
+00:19:48,299 --> 00:19:51,960
+actually much closer to the original
+
+606
+00:19:49,350 --> 00:19:52,540
+microformats specification and rdfa when
+
+607
+00:19:51,960 --> 00:19:55,060
+my content
+
+608
+00:19:52,540 --> 00:19:56,440
+is tied to my structured data and you
+
+609
+00:19:55,060 --> 00:19:58,300
+obfuscate all of that away from the user
+
+610
+00:19:56,440 --> 00:20:01,210
+and they just write things and now the
+
+611
+00:19:58,300 --> 00:20:03,220
+back pops the schema content all this is
+
+612
+00:20:01,210 --> 00:20:06,190
+our Yoast how to block I'm writing
+
+613
+00:20:03,220 --> 00:20:07,570
+instantly but writing a how do I do X
+
+614
+00:20:06,190 --> 00:20:08,980
+and you fill in the steps and the
+
+615
+00:20:07,570 --> 00:20:11,830
+answers and in the background it just
+
+616
+00:20:08,980 --> 00:20:13,780
+spits out what's more is that well as
+
+617
+00:20:11,830 --> 00:20:16,150
+well as just tying the content to the
+
+618
+00:20:13,780 --> 00:20:18,160
+schema but everything because it's in
+
+619
+00:20:16,150 --> 00:20:20,620
+the content format is also addressable
+
+620
+00:20:18,160 --> 00:20:22,060
+via all the WordPress is API is their
+
+621
+00:20:20,620 --> 00:20:24,400
+back-end systems and you can start to do
+
+622
+00:20:22,060 --> 00:20:25,810
+some schema stuff that doesn't rely on
+
+623
+00:20:24,400 --> 00:20:27,520
+passing webpages and front-end
+
+624
+00:20:25,810 --> 00:20:28,960
+experiences I can build systems that
+
+625
+00:20:27,520 --> 00:20:30,670
+just query the data without having to
+
+626
+00:20:28,960 --> 00:20:32,290
+worry about the website and that's not
+
+627
+00:20:30,670 --> 00:20:34,300
+only and this actually isn't WordPress
+
+628
+00:20:32,290 --> 00:20:36,640
+at all this is Drupal this is Gutenberg
+
+629
+00:20:34,300 --> 00:20:38,710
+editor in Drupal running a whole bunch
+
+630
+00:20:36,640 --> 00:20:39,970
+of REO schema code this is increasingly
+
+631
+00:20:38,710 --> 00:20:42,160
+becoming the way that people were all
+
+632
+00:20:39,970 --> 00:20:43,720
+for content on the open web and it makes
+
+633
+00:20:42,160 --> 00:20:47,880
+it really really easy to start trying in
+
+634
+00:20:43,720 --> 00:20:50,380
+schema like stuff so fast forward until
+
+635
+00:20:47,880 --> 00:20:51,970
+summer ish I think we got to the point
+
+636
+00:20:50,380 --> 00:20:53,020
+where we launched this and I would love
+
+637
+00:20:51,970 --> 00:20:55,360
+you to go read it and feedback on it
+
+638
+00:20:53,020 --> 00:20:57,130
+it's on developer gos calm and but I
+
+639
+00:20:55,360 --> 00:20:58,480
+think this has solved all of the
+
+640
+00:20:57,130 --> 00:21:00,450
+problems that I've identified and built
+
+641
+00:20:58,480 --> 00:21:03,430
+a framework that all of you can build on
+
+642
+00:21:00,450 --> 00:21:05,440
+essentially as of reasonably recently
+
+643
+00:21:03,430 --> 00:21:07,690
+everybody running either Yoast SEO or
+
+644
+00:21:05,440 --> 00:21:09,880
+yes I see in any of our various flavors
+
+645
+00:21:07,690 --> 00:21:11,200
+gets a complete graph that gets built on
+
+646
+00:21:09,880 --> 00:21:13,360
+every single page just built on that
+
+647
+00:21:11,200 --> 00:21:14,440
+content to do that they only have to
+
+648
+00:21:13,360 --> 00:21:15,910
+configure initially whether they're a
+
+649
+00:21:14,440 --> 00:21:17,440
+person or an organization everything
+
+650
+00:21:15,910 --> 00:21:18,880
+else happens in the background and then
+
+651
+00:21:17,440 --> 00:21:20,290
+all the stuff that it does is documented
+
+652
+00:21:18,880 --> 00:21:22,180
+here and it's extensible why is that
+
+653
+00:21:20,290 --> 00:21:24,370
+interesting and because it's all open
+
+654
+00:21:22,180 --> 00:21:25,720
+sourced as well as Yoast itself being
+
+655
+00:21:24,370 --> 00:21:26,680
+open source and Gutenberg being open
+
+656
+00:21:25,720 --> 00:21:29,620
+source we're open sourcing all the
+
+657
+00:21:26,680 --> 00:21:30,700
+documentation this is their heavy work
+
+658
+00:21:29,620 --> 00:21:32,260
+and their heavy lifting that I've done
+
+659
+00:21:30,700 --> 00:21:33,640
+the answers to all of those awkward
+
+660
+00:21:32,260 --> 00:21:37,390
+problems I've just described
+
+661
+00:21:33,640 --> 00:21:39,460
+if a how-to piece only has an image in
+
+662
+00:21:37,390 --> 00:21:41,890
+an answer and doesn't have an author how
+
+663
+00:21:39,460 --> 00:21:44,050
+should the graph be built all of those
+
+664
+00:21:41,890 --> 00:21:46,210
+awful awkward educators that have nobles
+
+665
+00:21:44,050 --> 00:21:48,070
+now have rules standardized ID
+
+666
+00:21:46,210 --> 00:21:50,140
+structures and scenarios you can
+
+667
+00:21:48,070 --> 00:21:51,490
+anticipate ways that describe which bits
+
+668
+00:21:50,140 --> 00:21:53,260
+of the graph should stitch and unstitch
+
+669
+00:21:51,490 --> 00:21:55,000
+to build something for you Civ other
+
+670
+00:21:53,260 --> 00:21:56,860
+software vendors are the programmers or
+
+671
+00:21:55,000 --> 00:21:58,810
+the solutions can take this build on it
+
+672
+00:21:56,860 --> 00:22:00,550
+extend it we have a solution to making
+
+673
+00:21:58,810 --> 00:22:02,280
+schema interoperable beyond just
+
+674
+00:22:00,550 --> 00:22:04,570
+WordPress beyond Yoast beyond everything
+
+675
+00:22:02,280 --> 00:22:06,490
+and and if that's not enough there's
+
+676
+00:22:04,570 --> 00:22:08,380
+also an API which itself is open saw
+
+677
+00:22:06,490 --> 00:22:09,460
+and extensible which allows you to say I
+
+678
+00:22:08,380 --> 00:22:11,170
+want to build something on top of this
+
+679
+00:22:09,460 --> 00:22:12,730
+and we're already seeing people building
+
+680
+00:22:11,170 --> 00:22:14,320
+other wordpress plugins other solutions
+
+681
+00:22:12,730 --> 00:22:15,910
+where they go I want to take your graph
+
+682
+00:22:14,320 --> 00:22:18,340
+and I want to inject a new node into it
+
+683
+00:22:15,910 --> 00:22:20,350
+I want to extend it and change it the
+
+684
+00:22:18,340 --> 00:22:22,540
+output is something like this this is a
+
+685
+00:22:20,350 --> 00:22:23,620
+huge amount of raw schema in the
+
+686
+00:22:22,540 --> 00:22:26,200
+background I think a shot actually
+
+687
+00:22:23,620 --> 00:22:28,929
+somewhere um yeah you can get a feel for
+
+688
+00:22:26,200 --> 00:22:32,020
+it as its calls just how nuanced and
+
+689
+00:22:28,929 --> 00:22:33,670
+intertwined this is um far beyond the
+
+690
+00:22:32,020 --> 00:22:35,440
+degree that you could creates manually
+
+691
+00:22:33,670 --> 00:22:37,059
+certainly there is no way that you could
+
+692
+00:22:35,440 --> 00:22:40,690
+alter this once as a developer and have
+
+693
+00:22:37,059 --> 00:22:42,340
+it remain cohesive and interoperable
+
+694
+00:22:40,690 --> 00:22:44,110
+when things change there's no way you
+
+695
+00:22:42,340 --> 00:22:45,220
+can rely on users to do this all of this
+
+696
+00:22:44,110 --> 00:22:46,840
+happens automatically in the background
+
+697
+00:22:45,220 --> 00:22:48,190
+when I publish an article is derived
+
+698
+00:22:46,840 --> 00:22:49,330
+from we know the author we know the
+
+699
+00:22:48,190 --> 00:22:52,690
+content we know the structure we know
+
+700
+00:22:49,330 --> 00:22:53,860
+the blocks the core principle if you're
+
+701
+00:22:52,690 --> 00:22:56,350
+interested in go read about this on
+
+702
+00:22:53,860 --> 00:22:57,730
+developer dos comm is we've created and
+
+703
+00:22:56,350 --> 00:22:59,800
+we're going to do one smart thing in
+
+704
+00:22:57,730 --> 00:23:02,080
+this whole thing which is use a graph
+
+705
+00:22:59,800 --> 00:23:03,850
+wrapper which means that rather than
+
+706
+00:23:02,080 --> 00:23:05,110
+just authoring conventional json-ld for
+
+707
+00:23:03,850 --> 00:23:07,450
+google we put it in a structure which
+
+708
+00:23:05,110 --> 00:23:09,760
+means we can define an array of objects
+
+709
+00:23:07,450 --> 00:23:11,590
+and we can cross relate them by ID we
+
+710
+00:23:09,760 --> 00:23:13,330
+can say I don't need to replicate and
+
+711
+00:23:11,590 --> 00:23:14,890
+repeat myself every time on a reference
+
+712
+00:23:13,330 --> 00:23:16,660
+an organization I can just highlight in
+
+713
+00:23:14,890 --> 00:23:19,090
+reference an existing one by ID and the
+
+714
+00:23:16,660 --> 00:23:20,320
+whole thing ties together and which
+
+715
+00:23:19,090 --> 00:23:23,040
+means that when people write stuff like
+
+716
+00:23:20,320 --> 00:23:25,240
+this in Google you get stuff like that
+
+717
+00:23:23,040 --> 00:23:27,130
+well our whole content and our how-to
+
+718
+00:23:25,240 --> 00:23:28,540
+guide is put in situations hopefully I
+
+719
+00:23:27,130 --> 00:23:31,090
+don't have to visit the website it's all
+
+720
+00:23:28,540 --> 00:23:34,059
+there it's nice it's easy that's really
+
+721
+00:23:31,090 --> 00:23:35,350
+cool I think and what's next so people
+
+722
+00:23:34,059 --> 00:23:36,730
+are building on the stuff we've done I
+
+723
+00:23:35,350 --> 00:23:38,650
+would love to talk to you if you want to
+
+724
+00:23:36,730 --> 00:23:40,150
+build on it as well and I have an
+
+725
+00:23:38,650 --> 00:23:41,950
+enormous road map that I will get told
+
+726
+00:23:40,150 --> 00:23:43,780
+off if you get seen for a thing never
+
+727
+00:23:41,950 --> 00:23:45,820
+mind of all the stuff I want to build on
+
+728
+00:23:43,780 --> 00:23:47,470
+it and expand into and new types of
+
+729
+00:23:45,820 --> 00:23:50,020
+schema and refining some of the
+
+730
+00:23:47,470 --> 00:23:50,980
+documentation that's quite cool one of
+
+731
+00:23:50,020 --> 00:23:52,750
+the things that I would like to leave
+
+732
+00:23:50,980 --> 00:23:55,090
+you with is thinking about if we all
+
+733
+00:23:52,750 --> 00:23:57,880
+start standardizing on some of these ID
+
+734
+00:23:55,090 --> 00:23:59,679
+structures and logic um it enables a
+
+735
+00:23:57,880 --> 00:24:01,390
+world where maybe Google aren't as
+
+736
+00:23:59,679 --> 00:24:02,320
+dominant as the offline I love the guys
+
+737
+00:24:01,390 --> 00:24:04,059
+from Google I work with them really
+
+738
+00:24:02,320 --> 00:24:08,590
+closely we've cooperated on a load of
+
+739
+00:24:04,059 --> 00:24:11,650
+this but this enables new types of
+
+740
+00:24:08,590 --> 00:24:12,850
+things if everybody's stroke schema is
+
+741
+00:24:11,650 --> 00:24:15,070
+structured and consistent and
+
+742
+00:24:12,850 --> 00:24:17,169
+interoperable it would take me an hour
+
+743
+00:24:15,070 --> 00:24:19,179
+to build a search engine that finds all
+
+744
+00:24:17,169 --> 00:24:20,230
+of the opening times of every restaurant
+
+745
+00:24:19,179 --> 00:24:21,700
+in Seattle
+
+746
+00:24:20,230 --> 00:24:22,960
+and I wouldn't need Google's budget or
+
+747
+00:24:21,700 --> 00:24:24,250
+they're calling abilities or their data
+
+748
+00:24:22,960 --> 00:24:26,260
+processing of storage because it's
+
+749
+00:24:24,250 --> 00:24:27,610
+consistent and it's predictable and it's
+
+750
+00:24:26,260 --> 00:24:28,570
+hard to envision the kinds of services
+
+751
+00:24:27,610 --> 00:24:30,820
+we could build with that kind of
+
+752
+00:24:28,570 --> 00:24:32,830
+infrastructure but potentially
+
+753
+00:24:30,820 --> 00:24:35,740
+particularly interesting and it also
+
+754
+00:24:32,830 --> 00:24:36,789
+skip skip that's all I had and thank you
+
+755
+00:24:35,740 --> 00:24:38,019
+very much I would love to talk to you
+
+756
+00:24:36,789 --> 00:24:39,820
+about some of this and this is not a
+
+757
+00:24:38,019 --> 00:24:41,289
+pitch for Yost this as a pitch fer I
+
+758
+00:24:39,820 --> 00:24:42,610
+think we've solved this together
+
+759
+00:24:41,289 --> 00:24:44,110
+and it'd be nice to extend on there and
+
+760
+00:24:42,610 --> 00:24:52,059
+to build more and to change the world
+
+761
+00:24:44,110 --> 00:25:04,299
+together thank you very much thank you
+
+762
+00:24:52,059 --> 00:25:08,740
+very much questions anyone I thank you
+
+763
+00:25:04,299 --> 00:25:19,750
+very much I'm Simon just how closely
+
+764
+00:25:08,740 --> 00:25:21,940
+tied is the infamous the approach to at
+
+765
+00:25:19,750 --> 00:25:23,649
+the moment pretty closely but the old
+
+766
+00:25:21,940 --> 00:25:28,510
+conceptual stuff is decoupled so if I
+
+767
+00:25:23,649 --> 00:25:31,570
+skip back a bit to yeah no no this is
+
+768
+00:25:28,510 --> 00:25:32,799
+WordPress II this is it's it's scenario
+
+769
+00:25:31,570 --> 00:25:34,480
+based and it does matter what the
+
+770
+00:25:32,799 --> 00:25:35,230
+backend is so if the author wants to
+
+771
+00:25:34,480 --> 00:25:37,720
+remain anonymous
+
+772
+00:25:35,230 --> 00:25:38,950
+you should remove their email address
+
+773
+00:25:37,720 --> 00:25:40,330
+which means they're no longer valid
+
+774
+00:25:38,950 --> 00:25:41,590
+author which means that it's no longer
+
+775
+00:25:40,330 --> 00:25:43,630
+valid article which means you should
+
+776
+00:25:41,590 --> 00:25:46,649
+fall back to web page you could do that
+
+777
+00:25:43,630 --> 00:25:49,769
+on any system thank you
+
+778
+00:25:46,649 --> 00:25:49,769
+anyone else
+
+779
+00:25:54,039 --> 00:25:59,179
+thanks for the talk Ken so how does your
+
+780
+00:25:56,659 --> 00:26:01,460
+approach to identify us differ from that
+
+781
+00:25:59,179 --> 00:26:03,770
+of schema door certainly you can define
+
+782
+00:26:01,460 --> 00:26:06,620
+cross page identifiers using schema.org
+
+783
+00:26:03,770 --> 00:26:09,649
+rdfa or json-ld yep you can even make it
+
+784
+00:26:06,620 --> 00:26:12,470
+into link data if you want to so it is
+
+785
+00:26:09,649 --> 00:26:13,970
+your dizziest approach different more in
+
+786
+00:26:12,470 --> 00:26:16,220
+terms of best practices or is it
+
+787
+00:26:13,970 --> 00:26:17,600
+actually the tooling that so we've been
+
+788
+00:26:16,220 --> 00:26:22,279
+into Google on this because Google
+
+789
+00:26:17,600 --> 00:26:23,659
+explicitly can't stroke won't builds not
+
+790
+00:26:22,279 --> 00:26:25,490
+the back wear but understands networks
+
+791
+00:26:23,659 --> 00:26:27,710
+that span multiple pages they will only
+
+792
+00:26:25,490 --> 00:26:29,720
+consume the structured data on a URL
+
+793
+00:26:27,710 --> 00:26:31,760
+about the things on that page so you
+
+794
+00:26:29,720 --> 00:26:33,470
+can't what was technically you can say
+
+795
+00:26:31,760 --> 00:26:35,029
+actually the see over here for this this
+
+796
+00:26:33,470 --> 00:26:36,649
+node you can't do that in a way the
+
+797
+00:26:35,029 --> 00:26:38,690
+Google supports so our approach relies
+
+798
+00:26:36,649 --> 00:26:41,149
+on essentially constructing the complete
+
+799
+00:26:38,690 --> 00:26:43,309
+connected graph for a page on each page
+
+800
+00:26:41,149 --> 00:26:45,140
+so every single page on the website will
+
+801
+00:26:43,309 --> 00:26:47,450
+define the organization the website
+
+802
+00:26:45,140 --> 00:26:48,860
+itself some peripheral stuff like the
+
+803
+00:26:47,450 --> 00:26:50,600
+breadcrumb structure the search
+
+804
+00:26:48,860 --> 00:26:51,799
+functionality and then the stuff that's
+
+805
+00:26:50,600 --> 00:26:53,450
+specific to that page and tie it all
+
+806
+00:26:51,799 --> 00:26:54,919
+together into one graph yeah it would be
+
+807
+00:26:53,450 --> 00:26:56,960
+really really nice to be able to do that
+
+808
+00:26:54,919 --> 00:26:58,250
+and just distribute it and spread it but
+
+809
+00:26:56,960 --> 00:27:00,950
+there's no way we can do it with the way
+
+810
+00:26:58,250 --> 00:27:02,149
+that Google works and they I don't think
+
+811
+00:27:00,950 --> 00:27:04,340
+they have a clear mental model for this
+
+812
+00:27:02,149 --> 00:27:07,340
+either which is really bizarre so I
+
+813
+00:27:04,340 --> 00:27:09,820
+think we're stuck with this approach but
+
+814
+00:27:07,340 --> 00:27:09,820
+you can do both
+
+815
+00:27:22,310 --> 00:27:26,270
+now and I think strategically and so
+
+816
+00:27:25,020 --> 00:27:29,100
+some insight into the way their work
+
+817
+00:27:26,270 --> 00:27:30,450
+they have a structured data team but
+
+818
+00:27:29,100 --> 00:27:32,250
+it's just a wrapper what they the way
+
+819
+00:27:30,450 --> 00:27:34,470
+they work operationally internally is
+
+820
+00:27:32,250 --> 00:27:36,030
+they have small teams which are focused
+
+821
+00:27:34,470 --> 00:27:37,620
+on the individual types of schema they
+
+822
+00:27:36,030 --> 00:27:40,740
+want to support they have an FAQ team a
+
+823
+00:27:37,620 --> 00:27:42,000
+rich snippet as how to team they don't
+
+824
+00:27:40,740 --> 00:27:43,650
+talk to each other they use differing
+
+825
+00:27:42,000 --> 00:27:45,810
+standards and there's no overarching
+
+826
+00:27:43,650 --> 00:27:47,520
+ideology so they're only interested in
+
+827
+00:27:45,810 --> 00:27:48,990
+how do we get people to describe this
+
+828
+00:27:47,520 --> 00:27:54,450
+page and nobody's really talking about
+
+829
+00:27:48,990 --> 00:27:55,800
+that the web thinks we'll have to wrap
+
+830
+00:27:54,450 --> 00:27:57,930
+it up because we're running a bit late
+
+831
+00:27:55,800 --> 00:28:00,600
+but well feel free to that's you know
+
+832
+00:27:57,930 --> 00:28:02,310
+and she's also panelists in one of her
+
+833
+00:28:00,600 --> 00:28:02,850
+balance coming up there will be more
+
+834
+00:28:02,310 --> 00:28:05,610
+don't worry
+
+835
+00:28:02,850 --> 00:28:09,270
+thank you very much
+
+836
+00:28:05,610 --> 00:28:09,270
+[Applause]
+

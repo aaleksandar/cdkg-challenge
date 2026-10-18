@@ -1,0 +1,2192 @@
+1
+00:00:03,240 --> 00:00:15,380
+[Applause]
+
+2
+00:00:07,120 --> 00:00:19,070
+okay okay actually work colleague here
+
+3
+00:00:15,380 --> 00:00:20,930
+degree Sam okay so starting on we we are
+
+4
+00:00:19,070 --> 00:00:22,280
+a digging unification platform and you
+
+5
+00:00:20,930 --> 00:00:26,000
+do that through the use of knowledge
+
+6
+00:00:22,280 --> 00:00:27,529
+facts we spun ahead of the universe
+
+7
+00:00:26,000 --> 00:00:29,930
+around let's say a computational
+
+8
+00:00:27,529 --> 00:00:32,180
+Sciences lab before we're gonna carry
+
+9
+00:00:29,930 --> 00:00:34,730
+the myth and we're basing the DC area or
+
+10
+00:00:32,180 --> 00:00:38,500
+small venture funding started out trying
+
+11
+00:00:34,730 --> 00:00:38,500
+to tackle the world's theater primers
+
+12
+00:00:39,940 --> 00:00:44,960
+[Music]
+
+13
+00:00:42,520 --> 00:00:47,510
+there's a great quote from MIT Sloan
+
+14
+00:00:44,960 --> 00:00:49,160
+Review article and it just never related
+
+15
+00:00:47,510 --> 00:00:51,350
+the senator that I think we hear a lot a
+
+16
+00:00:49,160 --> 00:00:53,870
+I am ll save the world will change our
+
+17
+00:00:51,350 --> 00:00:55,700
+creative but you know kind of hid under
+
+18
+00:00:53,870 --> 00:00:58,579
+the covers there's I think the key point
+
+19
+00:00:55,700 --> 00:01:01,010
+of this goes really do all all the
+
+20
+00:00:58,579 --> 00:01:03,260
+outcomes that we could get out of using
+
+21
+00:01:01,010 --> 00:01:06,350
+those technologies will you driven by
+
+22
+00:01:03,260 --> 00:01:08,720
+the data or so we've got lots of data
+
+23
+00:01:06,350 --> 00:01:10,940
+and we're creating working every day so
+
+24
+00:01:08,720 --> 00:01:13,520
+everybody recently then we're creating
+
+25
+00:01:10,940 --> 00:01:15,650
+to negative that excuse me two megabytes
+
+26
+00:01:13,520 --> 00:01:17,240
+of data per person per second every day
+
+27
+00:01:15,650 --> 00:01:22,310
+so that's awesome
+
+28
+00:01:17,240 --> 00:01:23,900
+today race the problem is that it's
+
+29
+00:01:22,310 --> 00:01:26,270
+stored like this is stored all over the
+
+30
+00:01:23,900 --> 00:01:29,090
+place and every technology in every
+
+31
+00:01:26,270 --> 00:01:32,210
+format moving in every velocity so this
+
+32
+00:01:29,090 --> 00:01:34,040
+is forgotten the big data variety so the
+
+33
+00:01:32,210 --> 00:01:36,110
+challenge here is how do we leverage
+
+34
+00:01:34,040 --> 00:01:37,700
+that data how do we find all the
+
+35
+00:01:36,110 --> 00:01:40,220
+different pieces of the puzzle to build
+
+36
+00:01:37,700 --> 00:01:42,770
+the data and analytics application the
+
+37
+00:01:40,220 --> 00:01:45,110
+customer 360 the 360s hidden in here
+
+38
+00:01:42,770 --> 00:01:47,299
+somewhere so putting that together
+
+39
+00:01:45,110 --> 00:01:50,600
+create that 360 degree review about this
+
+40
+00:01:47,299 --> 00:01:52,340
+is harder we're requires you to and you
+
+41
+00:01:50,600 --> 00:01:53,780
+change the title of the talk this is
+
+42
+00:01:52,340 --> 00:01:55,970
+where I was going to say is originally
+
+43
+00:01:53,780 --> 00:01:58,369
+happy imagine if you're reimagined what
+
+44
+00:01:55,970 --> 00:01:59,990
+your infrastructure looks like so we
+
+45
+00:01:58,369 --> 00:02:01,080
+think it's built around three principles
+
+46
+00:01:59,990 --> 00:02:03,730
+flexibility
+
+47
+00:02:01,080 --> 00:02:05,410
+appendix the flexibility to handle that
+
+48
+00:02:03,730 --> 00:02:07,740
+landscape they had all the different
+
+49
+00:02:05,410 --> 00:02:10,990
+places in organizations core data
+
+50
+00:02:07,740 --> 00:02:14,140
+reusability and stopped making copies of
+
+51
+00:02:10,990 --> 00:02:16,390
+data don't proliferate that scenario be
+
+52
+00:02:14,140 --> 00:02:18,190
+able to build on near the first three
+
+53
+00:02:16,390 --> 00:02:19,660
+states to help you kind of bootstrap to
+
+54
+00:02:18,190 --> 00:02:21,970
+second on the third and fourth and
+
+55
+00:02:19,660 --> 00:02:23,320
+continue to move forward don't reinvent
+
+56
+00:02:21,970 --> 00:02:25,630
+the wheel every time don't make new
+
+57
+00:02:23,320 --> 00:02:27,760
+copies of data to new systems and kind
+
+58
+00:02:25,630 --> 00:02:29,860
+of exacerbate the problem and then
+
+59
+00:02:27,760 --> 00:02:32,830
+independence build it you know we think
+
+60
+00:02:29,860 --> 00:02:35,530
+on top of the graph is good place power
+
+61
+00:02:32,830 --> 00:02:37,720
+to grasp but use kinds of flexibility
+
+62
+00:02:35,530 --> 00:02:40,690
+that's provided by graph but uses an
+
+63
+00:02:37,720 --> 00:02:42,790
+abstraction graph isn't necessarily the
+
+64
+00:02:40,690 --> 00:02:44,830
+point it's kind of how to make all of
+
+65
+00:02:42,790 --> 00:02:46,330
+this work we want to attract away from
+
+66
+00:02:44,830 --> 00:02:47,350
+all those different technology decisions
+
+67
+00:02:46,330 --> 00:02:49,750
+because some of them are the great
+
+68
+00:02:47,350 --> 00:02:52,630
+cities those are some of the very system
+
+69
+00:02:49,750 --> 00:02:54,220
+for very specific use cases go ahead and
+
+70
+00:02:52,630 --> 00:02:56,110
+use them to free yourself make yourself
+
+71
+00:02:54,220 --> 00:02:58,270
+independent from those choices so you
+
+72
+00:02:56,110 --> 00:03:00,500
+can bubble up that information to the
+
+73
+00:02:58,270 --> 00:03:01,650
+people who need it most
+
+74
+00:03:00,500 --> 00:03:04,030
+[Music]
+
+75
+00:03:01,650 --> 00:03:06,480
+you know you're safe to hear about town
+
+76
+00:03:04,030 --> 00:03:09,640
+you know how we do this is started off
+
+77
+00:03:06,480 --> 00:03:12,519
+you know the graph is here this is what
+
+78
+00:03:09,640 --> 00:03:14,830
+the world of the enterprise sees beyond
+
+79
+00:03:12,519 --> 00:03:16,930
+applications your application developers
+
+80
+00:03:14,830 --> 00:03:19,420
+your data scientists they see a next
+
+81
+00:03:16,930 --> 00:03:22,239
+coherent picture of the world nice clean
+
+82
+00:03:19,420 --> 00:03:24,940
+graph there's comprised of data from all
+
+83
+00:03:22,239 --> 00:03:27,010
+over the organization none of this
+
+84
+00:03:24,940 --> 00:03:28,360
+actually matters how it's stored what it
+
+85
+00:03:27,010 --> 00:03:30,040
+looks like how fast it's moving it
+
+86
+00:03:28,360 --> 00:03:31,900
+doesn't matter to the data scientists
+
+87
+00:03:30,040 --> 00:03:33,820
+and the analysts were just trying to
+
+88
+00:03:31,900 --> 00:03:35,200
+answer the business question business
+
+89
+00:03:33,820 --> 00:03:37,989
+questions don't care about that mess
+
+90
+00:03:35,200 --> 00:03:39,250
+they just need an answer so we think the
+
+91
+00:03:37,989 --> 00:03:41,110
+way we have approached building
+
+92
+00:03:39,250 --> 00:03:43,060
+knowledge graphs to do data unification
+
+93
+00:03:41,110 --> 00:03:46,000
+of the enterprise to really enable those
+
+94
+00:03:43,060 --> 00:03:47,560
+AI and all applications analytics really
+
+95
+00:03:46,000 --> 00:03:49,810
+push forward or modern danger of an
+
+96
+00:03:47,560 --> 00:03:53,410
+organization's this is the right way how
+
+97
+00:03:49,810 --> 00:03:54,700
+it's done and with that turnover clients
+
+98
+00:03:53,410 --> 00:03:55,300
+are talking about how they've been using
+
+99
+00:03:54,700 --> 00:03:58,390
+this tech
+
+100
+00:03:55,300 --> 00:04:05,950
+get down - reunites the news we still
+
+101
+00:03:58,390 --> 00:04:08,260
+say that gravity so I'll start by kind
+
+102
+00:04:05,950 --> 00:04:09,700
+of say that kind of suffering up here is
+
+103
+00:04:08,260 --> 00:04:12,280
+a bit of like a fairly good movement
+
+104
+00:04:09,700 --> 00:04:13,750
+posture syndrome to an almost fit for
+
+105
+00:04:12,280 --> 00:04:16,360
+joint in the sense that I know a lot of
+
+106
+00:04:13,750 --> 00:04:17,500
+you know a lot more about you from this
+
+107
+00:04:16,360 --> 00:04:19,270
+room right has forgotten more about
+
+108
+00:04:17,500 --> 00:04:23,170
+knowledge graphs and I've bothered even
+
+109
+00:04:19,270 --> 00:04:24,820
+learned so far and that's because at Dow
+
+110
+00:04:23,170 --> 00:04:27,100
+Jones when I started working on some of
+
+111
+00:04:24,820 --> 00:04:29,170
+the stuff that I'll go through our goal
+
+112
+00:04:27,100 --> 00:04:31,030
+is never to create a knowledge graph was
+
+113
+00:04:29,170 --> 00:04:33,190
+actually to solve some very important
+
+114
+00:04:31,030 --> 00:04:36,220
+problems and challenges for our
+
+115
+00:04:33,190 --> 00:04:38,860
+customers and probably no surprise to
+
+116
+00:04:36,220 --> 00:04:40,240
+you all on the screen a lot of those
+
+117
+00:04:38,860 --> 00:04:42,430
+problems a lot of the server
+
+118
+00:04:40,240 --> 00:04:47,440
+opportunities we saw can certainly be
+
+119
+00:04:42,430 --> 00:04:49,600
+enabled by reimagining our news and our
+
+120
+00:04:47,440 --> 00:04:54,070
+data in much more of a graph and
+
+121
+00:04:49,600 --> 00:04:58,030
+connected way so a brief overview of Dow
+
+122
+00:04:54,070 --> 00:04:59,590
+Jones Dow Jones yes most people what is
+
+123
+00:04:58,030 --> 00:05:01,000
+Dow Jones they mentioned the Dow Jones
+
+124
+00:04:59,590 --> 00:05:02,230
+Industrial Average we have absolutely
+
+125
+00:05:01,000 --> 00:05:04,720
+nothing to do with attachments
+
+126
+00:05:02,230 --> 00:05:08,950
+Industrial Average we actually sold that
+
+127
+00:05:04,720 --> 00:05:11,530
+business several years ago but our core
+
+128
+00:05:08,950 --> 00:05:12,880
+business is actually a vertical wall
+
+129
+00:05:11,530 --> 00:05:15,160
+street journal' we are the publishers of
+
+130
+00:05:12,880 --> 00:05:18,400
+the Wall Street Journal Dow Jones has
+
+131
+00:05:15,160 --> 00:05:20,350
+been around for about 230 years before
+
+132
+00:05:18,400 --> 00:05:22,720
+the Wall Street Journal we actually were
+
+133
+00:05:20,350 --> 00:05:23,680
+working in Dow Jones Newswires so this
+
+134
+00:05:22,720 --> 00:05:27,580
+is when we were actually delivering
+
+135
+00:05:23,680 --> 00:05:29,650
+ticker tapes to on Wall Street to the
+
+136
+00:05:27,580 --> 00:05:33,940
+banks and the traders of what news was
+
+137
+00:05:29,650 --> 00:05:37,569
+happening at that moment we also have
+
+138
+00:05:33,940 --> 00:05:40,509
+other publications Barron's here in
+
+139
+00:05:37,569 --> 00:05:43,839
+financial news market watchers that
+
+140
+00:05:40,509 --> 00:05:46,990
+believe the largest trafficked financial
+
+141
+00:05:43,839 --> 00:05:49,119
+news website in the world right is one
+
+142
+00:05:46,990 --> 00:05:52,689
+of our properties and then we also have
+
+143
+00:05:49,119 --> 00:05:55,089
+a very very successful data business
+
+144
+00:05:52,689 --> 00:06:00,719
+structured data business so one of those
+
+145
+00:05:55,089 --> 00:06:03,849
+products is Factiva does anybody use so
+
+146
+00:06:00,719 --> 00:06:06,580
+Factiva is a who's archive where it's up
+
+147
+00:06:03,849 --> 00:06:09,490
+to 50 years worth of unstructured news
+
+148
+00:06:06,580 --> 00:06:12,339
+text from about 30,000 different premium
+
+149
+00:06:09,490 --> 00:06:15,069
+news sources so all the news that is
+
+150
+00:06:12,339 --> 00:06:17,860
+generally behind paywalls ores and
+
+151
+00:06:15,069 --> 00:06:19,990
+imported publications we have that in
+
+152
+00:06:17,860 --> 00:06:22,629
+fact ebook database we also make that
+
+153
+00:06:19,990 --> 00:06:25,419
+available via the Factiva search engine
+
+154
+00:06:22,629 --> 00:06:28,509
+but also through a platform we call DNA
+
+155
+00:06:25,419 --> 00:06:30,639
+data names and analytics is so the same
+
+156
+00:06:28,509 --> 00:06:32,889
+news the same content but made available
+
+157
+00:06:30,639 --> 00:06:34,659
+in a way that works better for data
+
+158
+00:06:32,889 --> 00:06:36,789
+scientists people who want to work with
+
+159
+00:06:34,659 --> 00:06:40,089
+certain large archive extractions and
+
+160
+00:06:36,789 --> 00:06:41,559
+streams of all this content the outside
+
+161
+00:06:40,089 --> 00:06:42,879
+some of our structured news brought it
+
+162
+00:06:41,559 --> 00:06:45,449
+how to structure data products like our
+
+163
+00:06:42,879 --> 00:06:48,550
+risk and compliance product basically
+
+164
+00:06:45,449 --> 00:06:54,849
+tables and people you probably shouldn't
+
+165
+00:06:48,550 --> 00:06:56,229
+be doing business with so one of the
+
+166
+00:06:54,849 --> 00:06:59,439
+things that I think this is probably a
+
+167
+00:06:56,229 --> 00:07:01,419
+common thread that many of you have
+
+168
+00:06:59,439 --> 00:07:04,449
+dealt with either yourselves personally
+
+169
+00:07:01,419 --> 00:07:06,249
+or through your clients is that we have
+
+170
+00:07:04,449 --> 00:07:09,430
+all these products but traditionally
+
+171
+00:07:06,249 --> 00:07:11,680
+they do live in silos we have a lot of
+
+172
+00:07:09,430 --> 00:07:14,110
+great knowledge but a certain packed
+
+173
+00:07:11,680 --> 00:07:18,879
+away in these different products and
+
+174
+00:07:14,110 --> 00:07:21,159
+academy different data sets so we had a
+
+175
+00:07:18,879 --> 00:07:23,469
+little bit of a look attics or whatever
+
+176
+00:07:21,159 --> 00:07:25,329
+the modern challenges that we have to
+
+177
+00:07:23,469 --> 00:07:28,659
+consider what are the things that are
+
+178
+00:07:25,329 --> 00:07:30,519
+our customers are really trying to do
+
+179
+00:07:28,659 --> 00:07:32,409
+with the knowledge that we provide and
+
+180
+00:07:30,519 --> 00:07:34,329
+one of those as I mentioned is that all
+
+181
+00:07:32,409 --> 00:07:36,300
+of this information is very valuable is
+
+182
+00:07:34,329 --> 00:07:38,789
+dispersed among these multiple
+
+183
+00:07:36,300 --> 00:07:41,280
+products so we will have for instance a
+
+184
+00:07:38,789 --> 00:07:43,800
+and a article in The Wall Street Journal
+
+185
+00:07:41,280 --> 00:07:48,270
+talking about let's say we work and then
+
+186
+00:07:43,800 --> 00:07:50,159
+we also will have a record about we work
+
+187
+00:07:48,270 --> 00:07:51,750
+in one of our other data sets then we
+
+188
+00:07:50,159 --> 00:07:53,940
+will probably have another article in
+
+189
+00:07:51,750 --> 00:07:56,129
+another publication or in fact Eva about
+
+190
+00:07:53,940 --> 00:07:58,530
+work if you want to get the whole view
+
+191
+00:07:56,129 --> 00:08:00,990
+of what Dow Jones knows collectively
+
+192
+00:07:58,530 --> 00:08:02,669
+about that enemy we actually would have
+
+193
+00:08:00,990 --> 00:08:04,669
+to jump in and out of these multiple
+
+194
+00:08:02,669 --> 00:08:07,409
+products so I think it's a very common
+
+195
+00:08:04,669 --> 00:08:11,610
+problem that many companies are dealing
+
+196
+00:08:07,409 --> 00:08:14,099
+with we also have a very changing set of
+
+197
+00:08:11,610 --> 00:08:16,319
+expectations from our customers both the
+
+198
+00:08:14,099 --> 00:08:18,569
+consumers who read our publications and
+
+199
+00:08:16,319 --> 00:08:22,199
+the professionals and businesses who
+
+200
+00:08:18,569 --> 00:08:25,860
+consume our news content our data and
+
+201
+00:08:22,199 --> 00:08:29,610
+that's so one of the primary challenges
+
+202
+00:08:25,860 --> 00:08:32,010
+that there's this expectation of news
+
+203
+00:08:29,610 --> 00:08:34,200
+being more context relevant that people
+
+204
+00:08:32,010 --> 00:08:35,669
+don't really these days expect to go and
+
+205
+00:08:34,200 --> 00:08:38,399
+read the entire Wall Street Journal
+
+206
+00:08:35,669 --> 00:08:39,599
+cover to cover and get figured out what
+
+207
+00:08:38,399 --> 00:08:40,589
+they can actually do with that
+
+208
+00:08:39,599 --> 00:08:42,750
+information in there
+
+209
+00:08:40,589 --> 00:08:46,260
+we're generally creating more more
+
+210
+00:08:42,750 --> 00:08:48,899
+content as Mike mentioned across the
+
+211
+00:08:46,260 --> 00:08:51,570
+board but the ability to consume that
+
+212
+00:08:48,899 --> 00:08:55,770
+content is not increasing in any means
+
+213
+00:08:51,570 --> 00:08:57,510
+and so customers are recently saying how
+
+214
+00:08:55,770 --> 00:08:59,910
+do I actually get more of a personalized
+
+215
+00:08:57,510 --> 00:09:03,270
+view of what actually matters to me in
+
+216
+00:08:59,910 --> 00:09:06,930
+this massive flow of information
+
+217
+00:09:03,270 --> 00:09:08,550
+knowledge and then increasingly this is
+
+218
+00:09:06,930 --> 00:09:12,630
+definitely finding us present anybody
+
+219
+00:09:08,550 --> 00:09:15,829
+this room our news is not just being
+
+220
+00:09:12,630 --> 00:09:19,350
+consumed directly by humans but also
+
+221
+00:09:15,829 --> 00:09:21,690
+increasingly by machines by by the
+
+222
+00:09:19,350 --> 00:09:24,120
+algorithms that are taking either some
+
+223
+00:09:21,690 --> 00:09:26,910
+sort of action on them or helping the
+
+224
+00:09:24,120 --> 00:09:29,190
+human at the end of that that chain to
+
+225
+00:09:26,910 --> 00:09:30,870
+actually make better decisions so making
+
+226
+00:09:29,190 --> 00:09:32,970
+sure that our news and
+
+227
+00:09:30,870 --> 00:09:35,070
+10 is better able to work for both the
+
+228
+00:09:32,970 --> 00:09:37,200
+humans who rely on as well as certain
+
+229
+00:09:35,070 --> 00:09:39,690
+that workflow systems and the tools is
+
+230
+00:09:37,200 --> 00:09:41,220
+incredibly important so when we are
+
+231
+00:09:39,690 --> 00:09:42,660
+looking at some of these challenges and
+
+232
+00:09:41,220 --> 00:09:44,910
+these are the search three of the many
+
+233
+00:09:42,660 --> 00:09:50,339
+that we've identified that we were
+
+234
+00:09:44,910 --> 00:09:51,720
+focusing on in different respects we we
+
+235
+00:09:50,339 --> 00:09:53,430
+started working through like what is
+
+236
+00:09:51,720 --> 00:09:55,470
+actually some of the ways we need to
+
+237
+00:09:53,430 --> 00:10:02,070
+structure and deliver the news of the
+
+238
+00:09:55,470 --> 00:10:04,320
+future for our customers so in a so I'm
+
+239
+00:10:02,070 --> 00:10:06,630
+going to like one specific pain point we
+
+240
+00:10:04,320 --> 00:10:08,940
+have to survive a bunch of these but in
+
+241
+00:10:06,630 --> 00:10:11,930
+this case it's this pain point that
+
+242
+00:10:08,940 --> 00:10:15,150
+we've heard over and over again is
+
+243
+00:10:11,930 --> 00:10:16,830
+particularly unique but it's tell me
+
+244
+00:10:15,150 --> 00:10:19,260
+what I need to know so that I can take
+
+245
+00:10:16,830 --> 00:10:21,630
+appropriate action and here are some
+
+246
+00:10:19,260 --> 00:10:23,900
+examples of some customers actual
+
+247
+00:10:21,630 --> 00:10:26,400
+customer and cases that we've worked on
+
+248
+00:10:23,900 --> 00:10:29,760
+there's an energy company that wants to
+
+249
+00:10:26,400 --> 00:10:32,850
+know what regulations that are servicing
+
+250
+00:10:29,760 --> 00:10:34,260
+in the news might effects specific
+
+251
+00:10:32,850 --> 00:10:36,630
+customers so that they can actually
+
+252
+00:10:34,260 --> 00:10:38,040
+perform some sort of outreach to them to
+
+253
+00:10:36,630 --> 00:10:41,250
+say hey this particular energy
+
+254
+00:10:38,040 --> 00:10:43,550
+regulation may require you to take some
+
+255
+00:10:41,250 --> 00:10:45,630
+sort of action that may involve a
+
+256
+00:10:43,550 --> 00:10:48,570
+renegotiation of their energy contract
+
+257
+00:10:45,630 --> 00:10:49,740
+for instance or a sales team and this is
+
+258
+00:10:48,570 --> 00:10:51,779
+the case I'm going to go a little bit
+
+259
+00:10:49,740 --> 00:10:54,150
+deeper into they want to know for
+
+260
+00:10:51,779 --> 00:10:56,640
+instance which of their customers are
+
+261
+00:10:54,150 --> 00:10:59,040
+planning a specific product launch so
+
+262
+00:10:56,640 --> 00:11:01,200
+that they can actually get ready to work
+
+263
+00:10:59,040 --> 00:11:04,740
+with them on schedule and immediate life
+
+264
+00:11:01,200 --> 00:11:06,450
+and one project that we are working on
+
+265
+00:11:04,740 --> 00:11:09,060
+it as well as lancers bankruptcy can
+
+266
+00:11:06,450 --> 00:11:12,120
+restructure so when we when a company's
+
+267
+00:11:09,060 --> 00:11:13,620
+in distress bankruptcy professionals who
+
+268
+00:11:12,120 --> 00:11:16,140
+want to know who the relevant parties
+
+269
+00:11:13,620 --> 00:11:17,240
+are in that bankruptcy so that they can
+
+270
+00:11:16,140 --> 00:11:21,300
+identify
+
+271
+00:11:17,240 --> 00:11:22,559
+as well but so these are generally that
+
+272
+00:11:21,300 --> 00:11:24,569
+the points that we hear from customers
+
+273
+00:11:22,559 --> 00:11:26,069
+over and over again does I need to
+
+274
+00:11:24,569 --> 00:11:28,199
+figure out what I'm supposed to take
+
+275
+00:11:26,069 --> 00:11:29,910
+action on but traditionally a company
+
+276
+00:11:28,199 --> 00:11:33,899
+like Dow Jones which comes from a very
+
+277
+00:11:29,910 --> 00:11:36,959
+long history of journalism our answer is
+
+278
+00:11:33,899 --> 00:11:39,209
+well let's create more unstructured text
+
+279
+00:11:36,959 --> 00:11:40,920
+let's create more articles and that's
+
+280
+00:11:39,209 --> 00:11:44,759
+where we run into a bit of a problem
+
+281
+00:11:40,920 --> 00:11:47,879
+because we're big customers say I don't
+
+282
+00:11:44,759 --> 00:11:49,829
+want to read more articles actually this
+
+283
+00:11:47,879 --> 00:11:52,350
+is a quote from a customer we were
+
+284
+00:11:49,829 --> 00:11:55,379
+originally at one point pitching a
+
+285
+00:11:52,350 --> 00:11:57,839
+customer about a newsletter feature we
+
+286
+00:11:55,379 --> 00:11:59,579
+have we said well we can take every time
+
+287
+00:11:57,839 --> 00:12:01,709
+one of your customers shows up in the
+
+288
+00:11:59,579 --> 00:12:03,779
+news we can deliver that to you in the
+
+289
+00:12:01,709 --> 00:12:06,149
+newsletter we do some digesting we can
+
+290
+00:12:03,779 --> 00:12:08,459
+do some human curation and it's in
+
+291
+00:12:06,149 --> 00:12:10,170
+please don't do that our our competitors
+
+292
+00:12:08,459 --> 00:12:13,980
+they're not illiterate they just don't
+
+293
+00:12:10,170 --> 00:12:17,730
+want to read more news it's just not
+
+294
+00:12:13,980 --> 00:12:20,639
+it's not part of what any what anybody
+
+295
+00:12:17,730 --> 00:12:22,529
+is expecting from us these days so the
+
+296
+00:12:20,639 --> 00:12:26,429
+challenge that we've been tapping into
+
+297
+00:12:22,529 --> 00:12:29,519
+is around this idea of how can we
+
+298
+00:12:26,429 --> 00:12:31,829
+actually share relevant knowledge with
+
+299
+00:12:29,519 --> 00:12:35,279
+our customers without actually just
+
+300
+00:12:31,829 --> 00:12:37,079
+producing more news and that's where as
+
+301
+00:12:35,279 --> 00:12:39,629
+we've been investigating a lot of these
+
+302
+00:12:37,079 --> 00:12:45,410
+ideas the developments that we've been
+
+303
+00:12:39,629 --> 00:12:48,420
+doing with the start and building so
+
+304
+00:12:45,410 --> 00:12:50,939
+I'll go into a little bit and I'm not
+
+305
+00:12:48,420 --> 00:12:53,179
+going to go as deeply with some of the
+
+306
+00:12:50,939 --> 00:12:56,339
+NLP stuff that we are working on it but
+
+307
+00:12:53,179 --> 00:12:58,170
+it is kind of obvious that every news
+
+308
+00:12:56,339 --> 00:13:00,839
+story so this is this was a little bit
+
+309
+00:12:58,170 --> 00:13:02,939
+out of date but the Trump administration
+
+310
+00:13:00,839 --> 00:13:04,790
+loving sanctions Friday blah blah blah
+
+311
+00:13:02,939 --> 00:13:07,829
+there's all this information going on
+
+312
+00:13:04,790 --> 00:13:09,870
+kind of actually harder to parse even
+
+313
+00:13:07,829 --> 00:13:11,800
+though it's not that long flood of tax
+
+314
+00:13:09,870 --> 00:13:14,140
+that explains is really
+
+315
+00:13:11,800 --> 00:13:15,880
+she fasted about holy Derick on set and
+
+316
+00:13:14,140 --> 00:13:18,250
+about these sanctions that are happening
+
+317
+00:13:15,880 --> 00:13:20,529
+now this is our traditional way of
+
+318
+00:13:18,250 --> 00:13:23,800
+delivering knowledge or breaking nickels
+
+319
+00:13:20,529 --> 00:13:26,800
+it is as these blobs of tax but really
+
+320
+00:13:23,800 --> 00:13:28,690
+for the serve the oncologists in the
+
+321
+00:13:26,800 --> 00:13:30,190
+room there's a way that we can take all
+
+322
+00:13:28,690 --> 00:13:33,550
+of this information and actually
+
+323
+00:13:30,190 --> 00:13:35,709
+structure it as a graph and wonder the
+
+324
+00:13:33,550 --> 00:13:38,709
+move you could sort of see here and this
+
+325
+00:13:35,709 --> 00:13:41,290
+is this is a mock-up does this have from
+
+326
+00:13:38,709 --> 00:13:43,839
+our actual graph but we have the idea
+
+327
+00:13:41,290 --> 00:13:46,540
+playbook there's a news event and that
+
+328
+00:13:43,839 --> 00:13:49,240
+news event actually then involves
+
+329
+00:13:46,540 --> 00:13:51,640
+certain people it has certain things
+
+330
+00:13:49,240 --> 00:13:53,709
+like time stamps there's also not shown
+
+331
+00:13:51,640 --> 00:13:55,600
+here we actually have articles that
+
+332
+00:13:53,709 --> 00:13:58,240
+referred to that news events so this is
+
+333
+00:13:55,600 --> 00:14:00,940
+a big paradigm shift for us of moving
+
+334
+00:13:58,240 --> 00:14:03,399
+away from just doing general metadata
+
+335
+00:14:00,940 --> 00:14:06,850
+tagging on documents actually saying
+
+336
+00:14:03,399 --> 00:14:08,560
+this document is about this news event
+
+337
+00:14:06,850 --> 00:14:12,149
+that's occurred and here's all the
+
+338
+00:14:08,560 --> 00:14:14,649
+structured information about this so
+
+339
+00:14:12,149 --> 00:14:15,459
+everything that was in that article that
+
+340
+00:14:14,649 --> 00:14:19,740
+we just looked at
+
+341
+00:14:15,459 --> 00:14:24,459
+candy graph and tied to this specific
+
+342
+00:14:19,740 --> 00:14:27,970
+was a US sanctions event on specific
+
+343
+00:14:24,459 --> 00:14:30,880
+allies as part of their cookie now what
+
+344
+00:14:27,970 --> 00:14:36,070
+once we have this data when we put this
+
+345
+00:14:30,880 --> 00:14:37,839
+data into survey a graft ontology of the
+
+346
+00:14:36,070 --> 00:14:40,480
+event there's some really useful things
+
+347
+00:14:37,839 --> 00:14:43,029
+we can then do for our customers so for
+
+348
+00:14:40,480 --> 00:14:46,149
+instance if you care
+
+349
+00:14:43,029 --> 00:14:49,600
+let's say about this Ian Plus group
+
+350
+00:14:46,149 --> 00:14:51,220
+whether they are a supplier of yours or
+
+351
+00:14:49,600 --> 00:14:52,480
+whether they're our customer of yours or
+
+352
+00:14:51,220 --> 00:14:55,930
+whether there's somehow in your
+
+353
+00:14:52,480 --> 00:14:58,839
+portfolio or you have some sort of stake
+
+354
+00:14:55,930 --> 00:15:02,560
+in en+ for 30 you care about that
+
+355
+00:14:58,839 --> 00:15:06,670
+company well this particular news event
+
+356
+00:15:02,560 --> 00:15:11,260
+unless you read that article and solve
+
+357
+00:15:06,670 --> 00:15:12,720
+the en+ group mentioned it you may not
+
+358
+00:15:11,260 --> 00:15:15,180
+actually know that this
+
+359
+00:15:12,720 --> 00:15:16,440
+event somehow made happy and actually
+
+360
+00:15:15,180 --> 00:15:18,360
+it's just sort of lucky that that
+
+361
+00:15:16,440 --> 00:15:20,460
+article even mentions the en+ group
+
+362
+00:15:18,360 --> 00:15:22,530
+because in fact many times there's
+
+363
+00:15:20,460 --> 00:15:24,720
+editorial decisions made in the
+
+364
+00:15:22,530 --> 00:15:27,480
+journalism process and in the news
+
+365
+00:15:24,720 --> 00:15:30,180
+process where certain facts just don't
+
+366
+00:15:27,480 --> 00:15:33,210
+make it into the article at all but
+
+367
+00:15:30,180 --> 00:15:35,880
+actually that news event is important to
+
+368
+00:15:33,210 --> 00:15:39,000
+you so if you have that news event
+
+369
+00:15:35,880 --> 00:15:43,890
+actually graphing this way what we're
+
+370
+00:15:39,000 --> 00:15:46,260
+able to do is actually infer that if you
+
+371
+00:15:43,890 --> 00:15:48,750
+care about Ian's Plus group that this
+
+372
+00:15:46,260 --> 00:15:52,890
+news event affects Oleg Deripaska only
+
+373
+00:15:48,750 --> 00:15:55,350
+their Tosca is actually part owner of en
+
+374
+00:15:52,890 --> 00:15:57,380
+plus so this is allows us to start doing
+
+375
+00:15:55,350 --> 00:16:01,110
+some really interesting things around
+
+376
+00:15:57,380 --> 00:16:02,940
+inferring the impact of news on our
+
+377
+00:16:01,110 --> 00:16:05,130
+customers and actually providing the
+
+378
+00:16:02,940 --> 00:16:07,320
+seducer layer of personalization
+
+379
+00:16:05,130 --> 00:16:09,240
+effectively for free that otherwise
+
+380
+00:16:07,320 --> 00:16:12,570
+might not be possible if you don't have
+
+381
+00:16:09,240 --> 00:16:14,760
+this service structure to the news it
+
+382
+00:16:12,570 --> 00:16:17,160
+also allows us to do things like taking
+
+383
+00:16:14,760 --> 00:16:19,640
+from that previous articles discovery
+
+384
+00:16:17,160 --> 00:16:23,190
+new facts that might not have otherwise
+
+385
+00:16:19,640 --> 00:16:26,400
+pay them to us in this case it mentions
+
+386
+00:16:23,190 --> 00:16:29,700
+that en plus group has a stake in Russo
+
+387
+00:16:26,400 --> 00:16:33,180
+now that persisting that fact on our
+
+388
+00:16:29,700 --> 00:16:35,520
+graph is valuable for later research
+
+389
+00:16:33,180 --> 00:16:37,680
+among our research teams of Americans
+
+390
+00:16:35,520 --> 00:16:38,910
+but also for our customers so there's
+
+391
+00:16:37,680 --> 00:16:41,250
+sort of two angles that we're
+
+392
+00:16:38,910 --> 00:16:43,440
+approaching here which is determining
+
+393
+00:16:41,250 --> 00:16:46,080
+the impact of the news event and how it
+
+394
+00:16:43,440 --> 00:16:48,900
+affects customers but also extracting
+
+395
+00:16:46,080 --> 00:16:53,910
+facts or later persisting them or making
+
+396
+00:16:48,900 --> 00:16:57,870
+them available so we're doing this right
+
+397
+00:16:53,910 --> 00:17:00,420
+now we've kicked off this this this very
+
+398
+00:16:57,870 --> 00:17:02,970
+big project we were focusing on specific
+
+399
+00:17:00,420 --> 00:17:05,210
+use cases as we build out on the events
+
+400
+00:17:02,970 --> 00:17:10,370
+that were modeling
+
+401
+00:17:05,210 --> 00:17:10,760
+and I quickly sort explain what we're
+
+402
+00:17:10,370 --> 00:17:14,060
+doing
+
+403
+00:17:10,760 --> 00:17:16,670
+so I previously was the chief technology
+
+404
+00:17:14,060 --> 00:17:19,990
+and product officer for our professional
+
+405
+00:17:16,670 --> 00:17:22,730
+information as the business that
+
+406
+00:17:19,990 --> 00:17:24,530
+overseen its back team of news wires all
+
+407
+00:17:22,730 --> 00:17:27,230
+of our structured data are not consumer
+
+408
+00:17:24,530 --> 00:17:29,510
+publications effectively now I'm working
+
+409
+00:17:27,230 --> 00:17:37,760
+on this eternal project leaders we refer
+
+410
+00:17:29,510 --> 00:17:39,920
+to it as pulsar we and the idea is that
+
+411
+00:17:37,760 --> 00:17:42,560
+we have built a knowledge graph platform
+
+412
+00:17:39,920 --> 00:17:45,410
+based on startup it allows us to do
+
+413
+00:17:42,560 --> 00:17:48,220
+ingestion of facts from all the news
+
+414
+00:17:45,410 --> 00:17:51,080
+that we have access to as well as
+
+415
+00:17:48,220 --> 00:17:53,660
+connecting it to information that our
+
+416
+00:17:51,080 --> 00:17:55,490
+customers are able to provide us so in a
+
+417
+00:17:53,660 --> 00:17:57,350
+sort of a virtual graph environment
+
+418
+00:17:55,490 --> 00:18:00,200
+where a customer can provide us
+
+419
+00:17:57,350 --> 00:18:03,050
+information like details of their CRM
+
+420
+00:18:00,200 --> 00:18:06,520
+details their PRP details of their
+
+421
+00:18:03,050 --> 00:18:09,500
+portfolios content contracts of contacts
+
+422
+00:18:06,520 --> 00:18:11,720
+and make it so that we can identify
+
+423
+00:18:09,500 --> 00:18:14,240
+those items on our graph and then
+
+424
+00:18:11,720 --> 00:18:17,270
+identify what news defense made directly
+
+425
+00:18:14,240 --> 00:18:19,370
+or indirectly affect them those features
+
+426
+00:18:17,270 --> 00:18:22,040
+are all what we're going to be servicing
+
+427
+00:18:19,370 --> 00:18:30,650
+in their community service in certain
+
+428
+00:18:22,040 --> 00:18:32,810
+products that we have so this is an
+
+429
+00:18:30,650 --> 00:18:37,940
+example of something that we're actively
+
+430
+00:18:32,810 --> 00:18:39,530
+doing which is having our new signals of
+
+431
+00:18:37,940 --> 00:18:42,410
+the services I think we'll get a little
+
+432
+00:18:39,530 --> 00:18:47,000
+bit more context to how these work so I
+
+433
+00:18:42,410 --> 00:18:48,350
+am a customer using Salesforce we're
+
+434
+00:18:47,000 --> 00:18:54,500
+using a marketing
+
+435
+00:18:48,350 --> 00:18:56,660
+Meishan tool like Marketo part what
+
+436
+00:18:54,500 --> 00:18:58,669
+favor says well we have all these
+
+437
+00:18:56,660 --> 00:19:00,919
+companies that we kind of care about out
+
+438
+00:18:58,669 --> 00:19:02,570
+there they're an energy company they
+
+439
+00:19:00,919 --> 00:19:05,059
+want to know if any of these companies
+
+440
+00:19:02,570 --> 00:19:08,270
+are doing things that may impact their
+
+441
+00:19:05,059 --> 00:19:11,240
+interest in acquiring a new energy
+
+442
+00:19:08,270 --> 00:19:13,730
+contract for instance so they've given
+
+443
+00:19:11,240 --> 00:19:15,919
+us a whole bunch of details about their
+
+444
+00:19:13,730 --> 00:19:18,380
+CRM they basically said here's here's
+
+445
+00:19:15,919 --> 00:19:21,289
+either leaves or existing customers and
+
+446
+00:19:18,380 --> 00:19:23,750
+here's our CRM identifiers and we've
+
+447
+00:19:21,289 --> 00:19:26,450
+ingested that into our company mapping
+
+448
+00:19:23,750 --> 00:19:29,299
+API we take that information and we
+
+449
+00:19:26,450 --> 00:19:32,419
+basically map it and say ok there's a
+
+450
+00:19:29,299 --> 00:19:35,480
+company called Blackrock there's some
+
+451
+00:19:32,419 --> 00:19:38,150
+addresses we wish everybody used done
+
+452
+00:19:35,480 --> 00:19:40,190
+zor-el the eyes or identifiers that we
+
+453
+00:19:38,150 --> 00:19:42,080
+have to sort of design for the case of
+
+454
+00:19:40,190 --> 00:19:44,659
+Pearson names and for the format of
+
+455
+00:19:42,080 --> 00:19:47,390
+addresses identify those companies on
+
+456
+00:19:44,659 --> 00:19:50,150
+our graph and then we basically are able
+
+457
+00:19:47,390 --> 00:19:53,740
+to connect the customers CRM identifiers
+
+458
+00:19:50,150 --> 00:19:55,909
+so this is a major change for us because
+
+459
+00:19:53,740 --> 00:19:58,400
+traditionally we've sort of had to have
+
+460
+00:19:55,909 --> 00:20:01,730
+our customers we put the onus on our
+
+461
+00:19:58,400 --> 00:20:04,700
+customers to map their companies and
+
+462
+00:20:01,730 --> 00:20:06,980
+their data to our iPad fires whereas now
+
+463
+00:20:04,700 --> 00:20:09,020
+it's we're able to say actually that
+
+464
+00:20:06,980 --> 00:20:11,539
+should be our job let us talk on the
+
+465
+00:20:09,020 --> 00:20:15,409
+same symbology that you use to identify
+
+466
+00:20:11,539 --> 00:20:16,850
+your customers and then as we take these
+
+467
+00:20:15,409 --> 00:20:21,470
+news events as they actually get
+
+468
+00:20:16,850 --> 00:20:24,440
+ingested we have a halogen for each type
+
+469
+00:20:21,470 --> 00:20:26,780
+of event that our customers have asked
+
+470
+00:20:24,440 --> 00:20:29,240
+us and designed and built with us and
+
+471
+00:20:26,780 --> 00:20:32,000
+this is an example of like a article
+
+472
+00:20:29,240 --> 00:20:32,920
+that we see it comes through back to you
+
+473
+00:20:32,000 --> 00:20:35,110
+but it comes
+
+474
+00:20:32,920 --> 00:20:36,730
+and it mentions that Black Rock has
+
+475
+00:20:35,110 --> 00:20:38,980
+played a new Innovation Center in
+
+476
+00:20:36,730 --> 00:20:41,140
+Atlanta we've loved it through a whole
+
+477
+00:20:38,980 --> 00:20:45,850
+bunch of unhealthy tools that I barely
+
+478
+00:20:41,140 --> 00:20:47,679
+understand okay and it generates this
+
+479
+00:20:45,850 --> 00:20:49,240
+event and populate that event on the
+
+480
+00:20:47,679 --> 00:20:52,600
+ground so we know that this is a meta
+
+481
+00:20:49,240 --> 00:20:56,760
+type of facility opening there's a city
+
+482
+00:20:52,600 --> 00:20:59,679
+this is tied into a geographic graph
+
+483
+00:20:56,760 --> 00:21:01,450
+there's this concept of Atlanta is in
+
+484
+00:20:59,679 --> 00:21:04,480
+Georgia which is in the southeastern
+
+485
+00:21:01,450 --> 00:21:06,640
+United States all that and then we also
+
+486
+00:21:04,480 --> 00:21:08,620
+know that it's affecting this company
+
+487
+00:21:06,640 --> 00:21:11,020
+and this company is a company that we
+
+488
+00:21:08,620 --> 00:21:13,780
+have named we have Duns numbers we have
+
+489
+00:21:11,020 --> 00:21:15,490
+ticker symbols who Mabel the data that
+
+490
+00:21:13,780 --> 00:21:18,040
+Dow Jones traditional has around our
+
+491
+00:21:15,490 --> 00:21:20,860
+customer but we also now know in this
+
+492
+00:21:18,040 --> 00:21:24,640
+virtual graph that one of our customers
+
+493
+00:21:20,860 --> 00:21:27,370
+refers to this entity by this CRM
+
+494
+00:21:24,640 --> 00:21:33,220
+identifier we know that it's a week as a
+
+495
+00:21:27,370 --> 00:21:35,460
+company interest to that customer so it
+
+496
+00:21:33,220 --> 00:21:40,870
+becomes very easy for us to take this
+
+497
+00:21:35,460 --> 00:21:42,400
+fact format we put it on through in some
+
+498
+00:21:40,870 --> 00:21:44,460
+cases we just delivered as a spreadsheet
+
+499
+00:21:42,400 --> 00:21:47,679
+but we can format a visit
+
+500
+00:21:44,460 --> 00:21:50,110
+and push it into our customers data link
+
+501
+00:21:47,679 --> 00:21:51,429
+they ingest this information they're
+
+502
+00:21:50,110 --> 00:21:53,620
+able to do things with very little
+
+503
+00:21:51,429 --> 00:21:56,230
+crystal plugged into things like Marketo
+
+504
+00:21:53,620 --> 00:21:57,370
+or hard on their lead scoring systems
+
+505
+00:21:56,230 --> 00:21:59,620
+that our marketing automation tools
+
+506
+00:21:57,370 --> 00:22:02,230
+they're able to say well wait a second
+
+507
+00:21:59,620 --> 00:22:04,299
+we know this first party data about this
+
+508
+00:22:02,230 --> 00:22:05,980
+lead but now we know that this fact of
+
+509
+00:22:04,299 --> 00:22:07,809
+the news is something that might be of
+
+510
+00:22:05,980 --> 00:22:10,450
+interest because if they're opening a
+
+511
+00:22:07,809 --> 00:22:11,950
+new facility in one of our regions that
+
+512
+00:22:10,450 --> 00:22:13,929
+means that actually our marketing
+
+513
+00:22:11,950 --> 00:22:14,320
+qualified lead score should go up we
+
+514
+00:22:13,929 --> 00:22:16,690
+should
+
+515
+00:22:14,320 --> 00:22:19,690
+salesperson to actually take action on
+
+516
+00:22:16,690 --> 00:22:22,330
+this music we also do this for the
+
+517
+00:22:19,690 --> 00:22:26,460
+mountain for some customers on things
+
+518
+00:22:22,330 --> 00:22:29,470
+like preventing customer churn that
+
+519
+00:22:26,460 --> 00:22:31,480
+identifying potential opportunities for
+
+520
+00:22:29,470 --> 00:22:35,200
+upsells so a lot of times for instance
+
+521
+00:22:31,480 --> 00:22:38,409
+energy companies if you are moving or
+
+522
+00:22:35,200 --> 00:22:39,759
+have a your company is launching a new
+
+523
+00:22:38,409 --> 00:22:42,669
+product especially if they're being
+
+524
+00:22:39,759 --> 00:22:45,399
+industrial that's a reason for them to
+
+525
+00:22:42,669 --> 00:22:47,860
+pick up the phone and renegotiate some
+
+526
+00:22:45,399 --> 00:22:49,419
+of your energy contracts so if we get
+
+527
+00:22:47,860 --> 00:22:52,740
+this stuff out it actually means that
+
+528
+00:22:49,419 --> 00:22:55,779
+our customers are then able to say okay
+
+529
+00:22:52,740 --> 00:22:57,730
+this isn't actually we can take push it
+
+530
+00:22:55,779 --> 00:23:00,279
+into that it means that all this stuff
+
+531
+00:22:57,730 --> 00:23:01,870
+is actually within these workflows it is
+
+532
+00:23:00,279 --> 00:23:04,509
+we'll move this whole step that
+
+533
+00:23:01,870 --> 00:23:07,269
+previously occurred which was having
+
+534
+00:23:04,509 --> 00:23:09,039
+them expected to read all of the news
+
+535
+00:23:07,269 --> 00:23:10,929
+identifying these events that are
+
+536
+00:23:09,039 --> 00:23:12,129
+important to them figuring out how
+
+537
+00:23:10,929 --> 00:23:12,789
+they're important to them and what
+
+538
+00:23:12,129 --> 00:23:15,759
+action to take
+
+539
+00:23:12,789 --> 00:23:17,590
+we basically reduce a large part of that
+
+540
+00:23:15,759 --> 00:23:19,450
+process so that their sales people can
+
+541
+00:23:17,590 --> 00:23:22,299
+focus on the important task which is
+
+542
+00:23:19,450 --> 00:23:24,190
+taking action so that's basically a
+
+543
+00:23:22,299 --> 00:23:26,860
+brief overview of some of the work that
+
+544
+00:23:24,190 --> 00:23:29,379
+we're doing thanks to the technology
+
+545
+00:23:26,860 --> 00:23:30,570
+provided by start-up and some of the
+
+546
+00:23:29,379 --> 00:23:33,570
+work that we're doing across the
+
+547
+00:23:30,570 --> 00:23:33,570
+Liberals
+
+548
+00:23:38,440 --> 00:23:41,339
+[Applause]
+

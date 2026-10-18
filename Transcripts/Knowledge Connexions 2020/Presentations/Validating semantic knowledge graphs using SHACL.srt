@@ -1,0 +1,5680 @@
+1
+00:00:04,720 --> 00:00:09,200
+okay uh good evening everyone and
+
+2
+00:00:07,480 --> 00:00:13,200
+welcome to this master class on
+
+3
+00:00:09,200 --> 00:00:17,480
+validating rdf with the shape constraint
+
+4
+00:00:13,200 --> 00:00:19,560
+language um my name is Veronica heimbach
+
+5
+00:00:17,480 --> 00:00:23,000
+and I'm a senior consultant at Cap
+
+6
+00:00:19,560 --> 00:00:26,519
+Gemini Norway I live right outside of
+
+7
+00:00:23,000 --> 00:00:29,359
+Oslo with my fiance and our two children
+
+8
+00:00:26,519 --> 00:00:31,480
+three year three-year-old Edward and
+
+9
+00:00:29,359 --> 00:00:34,520
+one-year-old
+
+10
+00:00:31,480 --> 00:00:37,160
+UDA I got my degree from the University
+
+11
+00:00:34,520 --> 00:00:38,440
+of Oslo with a specialization in logic
+
+12
+00:00:37,160 --> 00:00:41,360
+and
+
+13
+00:00:38,440 --> 00:00:43,719
+semantics and of work experience I've
+
+14
+00:00:41,360 --> 00:00:46,199
+been touching into stuff like writing
+
+15
+00:00:43,719 --> 00:00:49,960
+kernel modules in C to semantic
+
+16
+00:00:46,199 --> 00:00:52,640
+Technologies applications in Java so I
+
+17
+00:00:49,960 --> 00:00:54,800
+started off as a developer um but when I
+
+18
+00:00:52,640 --> 00:00:58,199
+joined capni in
+
+19
+00:00:54,800 --> 00:01:02,039
+2019 I have been working as a semantics
+
+20
+00:00:58,199 --> 00:01:04,880
+nde information architect and
+
+21
+00:01:02,039 --> 00:01:09,200
+advisor I worked in several different
+
+22
+00:01:04,880 --> 00:01:12,960
+Industries like uh oil life sciences
+
+23
+00:01:09,200 --> 00:01:16,880
+public data library and
+
+24
+00:01:12,960 --> 00:01:22,520
+media I started working with shackel in
+
+25
+00:01:16,880 --> 00:01:25,880
+2016 and yes that is before it became a
+
+26
+00:01:22,520 --> 00:01:30,119
+standard and uh as all nerds I have way
+
+27
+00:01:25,880 --> 00:01:33,240
+too many hobbies uh I enjoy making stuff
+
+28
+00:01:30,119 --> 00:01:36,159
+hunting board games and teaching kids to
+
+29
+00:01:33,240 --> 00:01:36,159
+code to name a
+
+30
+00:01:37,600 --> 00:01:44,880
+few so the agenda for this evening is to
+
+31
+00:01:42,000 --> 00:01:48,159
+start off with a traditional lecture
+
+32
+00:01:44,880 --> 00:01:49,920
+including basic terminology and concepts
+
+33
+00:01:48,159 --> 00:01:52,320
+of semantic
+
+34
+00:01:49,920 --> 00:01:55,200
+Technologies this might be repetition
+
+35
+00:01:52,320 --> 00:01:57,960
+for many of you uh however I find it
+
+36
+00:01:55,200 --> 00:02:01,840
+important enough to be repeated as I'll
+
+37
+00:01:57,960 --> 00:02:01,840
+use these terms in my lecture
+
+38
+00:02:02,240 --> 00:02:07,680
+I'll also compare the more familiar web
+
+39
+00:02:04,759 --> 00:02:10,080
+onology language with shakle in order to
+
+40
+00:02:07,680 --> 00:02:12,760
+clarify the similarities and differences
+
+41
+00:02:10,080 --> 00:02:15,680
+between these two
+
+42
+00:02:12,760 --> 00:02:17,519
+technologies and you will also see the
+
+43
+00:02:15,680 --> 00:02:20,680
+complete checkle core constraint
+
+44
+00:02:17,519 --> 00:02:23,560
+vocabulary including some examples this
+
+45
+00:02:20,680 --> 00:02:27,080
+is the vocabulary we're going to use for
+
+46
+00:02:23,560 --> 00:02:29,959
+our later Hands-On tasks after the
+
+47
+00:02:27,080 --> 00:02:31,680
+lecture um yes and after the lecture
+
+48
+00:02:29,959 --> 00:02:35,160
+we're going to look at some data
+
+49
+00:02:31,680 --> 00:02:37,920
+examples both uh instance data and shape
+
+50
+00:02:35,160 --> 00:02:40,599
+scraps and then we'll get some hands-on
+
+51
+00:02:37,920 --> 00:02:43,959
+experience by working with the
+
+52
+00:02:40,599 --> 00:02:46,800
+tasks and at the end we'll summarize and
+
+53
+00:02:43,959 --> 00:02:50,800
+I'll go through uh all answers to the
+
+54
+00:02:46,800 --> 00:02:53,440
+tasks and uh if one of you would like to
+
+55
+00:02:50,800 --> 00:02:55,840
+volunteer to show your Solutions of the
+
+56
+00:02:53,440 --> 00:02:58,800
+task that will be
+
+57
+00:02:55,840 --> 00:03:01,800
+great and as mentioned if you have any
+
+58
+00:02:58,800 --> 00:03:06,239
+questions during please type them in in
+
+59
+00:03:01,800 --> 00:03:09,080
+the chat here or at slack preferably at
+
+60
+00:03:06,239 --> 00:03:10,599
+slack for the moderators to pick up and
+
+61
+00:03:09,080 --> 00:03:13,080
+we'll go through them at the end of the
+
+62
+00:03:10,599 --> 00:03:16,879
+lecture before we attack the exercises
+
+63
+00:03:13,080 --> 00:03:20,680
+if there are any questions at that
+
+64
+00:03:16,879 --> 00:03:23,840
+point okay
+
+65
+00:03:20,680 --> 00:03:26,000
+so once upon a time there was the
+
+66
+00:03:23,840 --> 00:03:27,439
+creation of the worldwide web and with
+
+67
+00:03:26,000 --> 00:03:30,599
+it came some
+
+68
+00:03:27,439 --> 00:03:33,319
+standards and as you know odf wasn't
+
+69
+00:03:30,599 --> 00:03:35,159
+created yesterday and we've been through
+
+70
+00:03:33,319 --> 00:03:37,760
+quite a few graph implementations
+
+71
+00:03:35,159 --> 00:03:40,200
+throughout the years the web has
+
+72
+00:03:37,760 --> 00:03:42,640
+existed however semantic graph
+
+73
+00:03:40,200 --> 00:03:44,640
+Technologies are rapidly expanding in
+
+74
+00:03:42,640 --> 00:03:47,159
+popularity as we can see at this
+
+75
+00:03:44,640 --> 00:03:49,239
+conference as
+
+76
+00:03:47,159 --> 00:03:52,799
+well in
+
+77
+00:03:49,239 --> 00:03:54,799
+2014 an rdf data shape working group was
+
+78
+00:03:52,799 --> 00:03:57,000
+established and their result was the
+
+79
+00:03:54,799 --> 00:04:02,079
+shape constraint language standardized
+
+80
+00:03:57,000 --> 00:04:02,079
+as a w3c recommendation in July of
+
+81
+00:04:02,280 --> 00:04:07,959
+2017 so let's start off with the
+
+82
+00:04:05,840 --> 00:04:11,360
+terminology needed for talking about
+
+83
+00:04:07,959 --> 00:04:13,560
+semantic data and its
+
+84
+00:04:11,360 --> 00:04:15,519
+languages the domain and range
+
+85
+00:04:13,560 --> 00:04:18,400
+properties are found under the rdf
+
+86
+00:04:15,519 --> 00:04:20,600
+schema vocabulary even though I hope
+
+87
+00:04:18,400 --> 00:04:23,880
+this information is familiar to you all
+
+88
+00:04:20,600 --> 00:04:23,880
+I'll quickly go through their
+
+89
+00:04:25,800 --> 00:04:30,120
+definitions the domain of a predicate
+
+90
+00:04:28,120 --> 00:04:32,039
+tells us something about the subject
+
+91
+00:04:30,120 --> 00:04:35,919
+position of a triple where that
+
+92
+00:04:32,039 --> 00:04:39,039
+predicate is present in this case author
+
+93
+00:04:35,919 --> 00:04:40,960
+has a domain to book that means for
+
+94
+00:04:39,039 --> 00:04:43,160
+every triple where author is the
+
+95
+00:04:40,960 --> 00:04:46,000
+predicate the subject shall be an
+
+96
+00:04:43,160 --> 00:04:46,000
+instance of
+
+97
+00:04:48,520 --> 00:04:54,039
+book the range of a predicate tells us
+
+98
+00:04:51,840 --> 00:04:56,320
+something about the object position of a
+
+99
+00:04:54,039 --> 00:04:59,320
+triple where that predicate is
+
+100
+00:04:56,320 --> 00:05:02,520
+present here we say that author's range
+
+101
+00:04:59,320 --> 00:05:06,080
+shall be an instance of person so every
+
+102
+00:05:02,520 --> 00:05:10,440
+triple where author is the predicate the
+
+103
+00:05:06,080 --> 00:05:10,440
+object value shall be an instance of
+
+104
+00:05:11,639 --> 00:05:17,919
+person and now let's talk about t-boxes
+
+105
+00:05:15,240 --> 00:05:19,560
+and a bookses they are after all the
+
+106
+00:05:17,919 --> 00:05:20,919
+building blocks of the semantic
+
+107
+00:05:19,560 --> 00:05:24,240
+Knowledge
+
+108
+00:05:20,919 --> 00:05:26,880
+Graph and first the tbook is a term
+
+109
+00:05:24,240 --> 00:05:29,720
+component that describe abstract
+
+110
+00:05:26,880 --> 00:05:31,639
+Concepts and these abstract concepts are
+
+111
+00:05:29,720 --> 00:05:33,960
+sets of
+
+112
+00:05:31,639 --> 00:05:37,319
+individuals in this example we have a
+
+113
+00:05:33,960 --> 00:05:40,319
+triple that St States book as a subass
+
+114
+00:05:37,319 --> 00:05:43,720
+of work and this statement is a term
+
+115
+00:05:40,319 --> 00:05:43,720
+component a tbox
+
+116
+00:05:46,680 --> 00:05:53,440
+statement on the other hand we have aook
+
+117
+00:05:50,600 --> 00:05:56,560
+statements and assertion
+
+118
+00:05:53,440 --> 00:05:59,400
+component and the a AO statements
+
+119
+00:05:56,560 --> 00:06:00,360
+describe individuals or elements of a
+
+120
+00:05:59,400 --> 00:06:02,759
+set
+
+121
+00:06:00,360 --> 00:06:05,280
+they are instances of abstract
+
+122
+00:06:02,759 --> 00:06:07,800
+Concepts in this example we have the
+
+123
+00:06:05,280 --> 00:06:10,639
+resource The Hobbit as an instance of
+
+124
+00:06:07,800 --> 00:06:13,160
+the concept book we can think of The
+
+125
+00:06:10,639 --> 00:06:16,039
+Hobbit as an element in the set of all
+
+126
+00:06:13,160 --> 00:06:18,560
+books and this is an aook
+
+127
+00:06:16,039 --> 00:06:22,440
+statement
+
+128
+00:06:18,560 --> 00:06:25,280
+so tbox and aox statements combined is
+
+129
+00:06:22,440 --> 00:06:28,440
+what we think of as a semantic Knowledge
+
+130
+00:06:25,280 --> 00:06:32,120
+Graph the resources on the top here were
+
+131
+00:06:28,440 --> 00:06:35,520
+book and movie is both subclasses of the
+
+132
+00:06:32,120 --> 00:06:38,479
+class work are all tbox statements
+
+133
+00:06:35,520 --> 00:06:40,919
+combined with the instances of both
+
+134
+00:06:38,479 --> 00:06:44,000
+movie and book and their
+
+135
+00:06:40,919 --> 00:06:47,479
+relationships the a boxes make this a
+
+136
+00:06:44,000 --> 00:06:47,479
+pretty little semantic knowledge
+
+137
+00:06:49,000 --> 00:06:53,599
+grph next up the world
+
+138
+00:06:55,520 --> 00:07:00,440
+assumptions first I want to talk about
+
+139
+00:06:57,919 --> 00:07:03,400
+the open world assumption
+
+140
+00:07:00,440 --> 00:07:06,199
+this world assumption admits that it has
+
+141
+00:07:03,400 --> 00:07:08,879
+incomplete knowledge the web onology
+
+142
+00:07:06,199 --> 00:07:11,599
+language operates under this world
+
+143
+00:07:08,879 --> 00:07:13,759
+assumption and it is the assumption that
+
+144
+00:07:11,599 --> 00:07:16,319
+the truth value of a statement may be
+
+145
+00:07:13,759 --> 00:07:18,960
+true irrespective of whether or not is
+
+146
+00:07:16,319 --> 00:07:21,400
+it is known to be true let me talk you
+
+147
+00:07:18,960 --> 00:07:21,400
+through an
+
+148
+00:07:23,919 --> 00:07:30,280
+example let us assume that everything
+
+149
+00:07:27,280 --> 00:07:32,840
+you know in the entire world is the
+
+150
+00:07:30,280 --> 00:07:36,319
+statement in a hole in the ground they
+
+151
+00:07:32,840 --> 00:07:39,520
+lived a Hobbit you don't know anything
+
+152
+00:07:36,319 --> 00:07:43,160
+else about the entire
+
+153
+00:07:39,520 --> 00:07:45,759
+world and someone asks you do Gandalf
+
+154
+00:07:43,160 --> 00:07:48,400
+live in a hole in the
+
+155
+00:07:45,759 --> 00:07:51,080
+ground based on your knowledge of the
+
+156
+00:07:48,400 --> 00:07:54,120
+world in an open world assumption your
+
+157
+00:07:51,080 --> 00:07:56,879
+answer would be unknown because you do
+
+158
+00:07:54,120 --> 00:07:59,520
+not have any sufficient knowledge to say
+
+159
+00:07:56,879 --> 00:08:02,319
+whether Gandolf is a hobbit or if he
+
+160
+00:07:59,520 --> 00:08:02,319
+lives in a hole in the
+
+161
+00:08:06,199 --> 00:08:11,199
+ground on the other hand we have the
+
+162
+00:08:08,919 --> 00:08:13,639
+closed World assumption the shape
+
+163
+00:08:11,199 --> 00:08:15,400
+constraint language operates under this
+
+164
+00:08:13,639 --> 00:08:17,879
+world
+
+165
+00:08:15,400 --> 00:08:20,520
+assumption the close 12 World assumption
+
+166
+00:08:17,879 --> 00:08:22,800
+says that any statement that is true is
+
+167
+00:08:20,520 --> 00:08:26,479
+known to be true what is not currently
+
+168
+00:08:22,800 --> 00:08:30,560
+known to be true is false so let us
+
+169
+00:08:26,479 --> 00:08:30,560
+revisit our example
+
+170
+00:08:31,800 --> 00:08:37,320
+again let us assume that everything you
+
+171
+00:08:35,159 --> 00:08:39,880
+know in the entire world is the
+
+172
+00:08:37,320 --> 00:08:44,159
+statement in a hole in the ground there
+
+173
+00:08:39,880 --> 00:08:46,640
+lived a Hobbit and someone asks you do
+
+174
+00:08:44,159 --> 00:08:49,279
+gandal live in a hole in the
+
+175
+00:08:46,640 --> 00:08:51,600
+ground based on your knowledge of the
+
+176
+00:08:49,279 --> 00:08:53,519
+world in a closed World assumption your
+
+177
+00:08:51,600 --> 00:08:56,320
+answer will be
+
+178
+00:08:53,519 --> 00:08:57,880
+no if you do not have sufficient
+
+179
+00:08:56,320 --> 00:09:01,959
+information in a close to World
+
+180
+00:08:57,880 --> 00:09:05,480
+assumption the result will always be
+
+181
+00:09:01,959 --> 00:09:09,240
+Falls so now we can talk about the shape
+
+182
+00:09:05,480 --> 00:09:13,640
+constraint language and I'll start off
+
+183
+00:09:09,240 --> 00:09:17,399
+with some history because prior to
+
+184
+00:09:13,640 --> 00:09:21,160
+Shackle closed World validation of rdf
+
+185
+00:09:17,399 --> 00:09:24,880
+was performed using Sparkle
+
+186
+00:09:21,160 --> 00:09:27,920
+queries and um as most of us know
+
+187
+00:09:24,880 --> 00:09:32,240
+complex and large Sparkle queries can be
+
+188
+00:09:27,920 --> 00:09:32,240
+quite messy and readable and time
+
+189
+00:09:32,320 --> 00:09:38,680
+consuming uh it is not for nothing that
+
+190
+00:09:35,440 --> 00:09:42,399
+the s in Sparkle stands for
+
+191
+00:09:38,680 --> 00:09:44,600
+Sparkle So we needed something else and
+
+192
+00:09:42,399 --> 00:09:49,160
+uh if the solution were to be
+
+193
+00:09:44,600 --> 00:09:52,480
+recommended by the w3c even
+
+194
+00:09:49,160 --> 00:09:55,200
+better so with the sparkle inference
+
+195
+00:09:52,480 --> 00:09:58,600
+inferencing notation and IBM resource
+
+196
+00:09:55,200 --> 00:10:00,640
+shapes as inspiration the rdf data shape
+
+197
+00:09:58,600 --> 00:10:03,440
+working groups started developing a
+
+198
+00:10:00,640 --> 00:10:06,040
+language for schema based validation of
+
+199
+00:10:03,440 --> 00:10:09,320
+rdf data back in
+
+200
+00:10:06,040 --> 00:10:12,880
+2014 and that seems like yesterday don't
+
+201
+00:10:09,320 --> 00:10:15,920
+it anyway it led to the shape constraint
+
+202
+00:10:12,880 --> 00:10:18,079
+language that got recommended by the w3c
+
+203
+00:10:15,920 --> 00:10:18,079
+in
+
+204
+00:10:19,959 --> 00:10:25,839
+2017 and uh I'll I will start by showing
+
+205
+00:10:23,399 --> 00:10:28,079
+you an example of a workflow with
+
+206
+00:10:25,839 --> 00:10:31,720
+checkle in coexistence with
+
+207
+00:10:28,079 --> 00:10:33,880
+Al this approach has been adapted at two
+
+208
+00:10:31,720 --> 00:10:36,920
+of my previous projects when working
+
+209
+00:10:33,880 --> 00:10:40,320
+with chle and I want to mention the
+
+210
+00:10:36,920 --> 00:10:43,200
+first one that was a project for the
+
+211
+00:10:40,320 --> 00:10:46,880
+Norwegian digitalization
+
+212
+00:10:43,200 --> 00:10:49,600
+agency and as a input we received all
+
+213
+00:10:46,880 --> 00:10:53,320
+documents produced by public agencies in
+
+214
+00:10:49,600 --> 00:10:56,560
+Norway in some funny Norwegian archive
+
+215
+00:10:53,320 --> 00:10:59,959
+formats uh we transformed this to
+
+216
+00:10:56,560 --> 00:11:02,399
+rdf applies ow reasoning
+
+217
+00:10:59,959 --> 00:11:06,279
+before validating the
+
+218
+00:11:02,399 --> 00:11:08,600
+checko and if the graph confirmed true
+
+219
+00:11:06,279 --> 00:11:10,959
+it was stored in a graph database and
+
+220
+00:11:08,600 --> 00:11:14,279
+indexed to elastic
+
+221
+00:11:10,959 --> 00:11:17,240
+search the end user could then ask for
+
+222
+00:11:14,279 --> 00:11:20,399
+insight in any document stored in the
+
+223
+00:11:17,240 --> 00:11:23,519
+database and because of the shackle
+
+224
+00:11:20,399 --> 00:11:26,800
+validation we could assure for correct
+
+225
+00:11:23,519 --> 00:11:29,440
+data with high integrity and after all
+
+226
+00:11:26,800 --> 00:11:33,000
+all the data in this service was to be
+
+227
+00:11:29,440 --> 00:11:38,160
+delivered to the National Archives as
+
+228
+00:11:33,000 --> 00:11:41,880
+well anyways uh rdf is the share based
+
+229
+00:11:38,160 --> 00:11:45,800
+technology of both owl and Cho which let
+
+230
+00:11:41,880 --> 00:11:49,079
+lets you add statements about rdf your
+
+231
+00:11:45,800 --> 00:11:52,959
+rise some statements are interpreted by
+
+232
+00:11:49,079 --> 00:11:52,959
+our engins and some by Shack
+
+233
+00:11:53,240 --> 00:11:57,920
+Lins any U can carry various triples for
+
+234
+00:11:56,880 --> 00:12:00,839
+different
+
+235
+00:11:57,920 --> 00:12:03,560
+purposes a book for example may carry
+
+236
+00:12:00,839 --> 00:12:06,639
+both ow aoms and checkle
+
+237
+00:12:03,560 --> 00:12:09,240
+constraints however best practice would
+
+238
+00:12:06,639 --> 00:12:11,200
+be to store aoms and constraints in
+
+239
+00:12:09,240 --> 00:12:13,519
+different files in order to keep your
+
+240
+00:12:11,200 --> 00:12:13,519
+data
+
+241
+00:12:13,920 --> 00:12:17,959
+organized
+
+242
+00:12:15,440 --> 00:12:20,880
+applications May then decide whatever
+
+243
+00:12:17,959 --> 00:12:23,800
+features it needs whether it's the ow
+
+244
+00:12:20,880 --> 00:12:26,040
+xums for inferencing or shle constraints
+
+245
+00:12:23,800 --> 00:12:26,040
+for
+
+246
+00:12:26,320 --> 00:12:30,959
+validation this approach can come in
+
+247
+00:12:28,519 --> 00:12:34,279
+handy as our XMS will cover different
+
+248
+00:12:30,959 --> 00:12:36,519
+things than uh the shackle constraints
+
+249
+00:12:34,279 --> 00:12:39,360
+as long as they use the same Uris for
+
+250
+00:12:36,519 --> 00:12:42,440
+t-box data your aox data can be used in
+
+251
+00:12:39,360 --> 00:12:42,440
+any context
+
+252
+00:12:43,199 --> 00:12:49,800
+context so before we grasp onto the
+
+253
+00:12:47,320 --> 00:12:51,680
+shackle core constraints I want to
+
+254
+00:12:49,800 --> 00:12:55,040
+Enlighten you a bit more about the
+
+255
+00:12:51,680 --> 00:12:58,320
+differences between owl and
+
+256
+00:12:55,040 --> 00:13:00,399
+shackle and uh first of all the design
+
+257
+00:12:58,320 --> 00:13:04,480
+purpose behind both
+
+258
+00:13:00,399 --> 00:13:07,440
+languages as I already mentioned owl is
+
+259
+00:13:04,480 --> 00:13:08,519
+designed for inferencing in an open
+
+260
+00:13:07,440 --> 00:13:11,279
+world
+
+261
+00:13:08,519 --> 00:13:14,320
+assumption all restrictions describe
+
+262
+00:13:11,279 --> 00:13:16,120
+inference inferences to be applied they
+
+263
+00:13:14,320 --> 00:13:18,279
+are not data
+
+264
+00:13:16,120 --> 00:13:21,920
+constraints let me talk you through an
+
+265
+00:13:18,279 --> 00:13:26,839
+example of that so let's say we
+
+266
+00:13:21,920 --> 00:13:30,399
+have uh old Max cardinality one on a
+
+267
+00:13:26,839 --> 00:13:33,760
+person's nationality
+
+268
+00:13:30,399 --> 00:13:36,680
+and there is one person in your aox data
+
+269
+00:13:33,760 --> 00:13:40,120
+that have two
+
+270
+00:13:36,680 --> 00:13:43,120
+nationalities if this was a shackle
+
+271
+00:13:40,120 --> 00:13:46,240
+constraint on Max count one on a
+
+272
+00:13:43,120 --> 00:13:48,800
+person's nationality and there was a
+
+273
+00:13:46,240 --> 00:13:50,720
+person instance in the data that had two
+
+274
+00:13:48,800 --> 00:13:54,240
+nationalities you would get that
+
+275
+00:13:50,720 --> 00:13:57,560
+validation error on it and a validation
+
+276
+00:13:54,240 --> 00:14:00,680
+result that described what kind of
+
+277
+00:13:57,560 --> 00:14:04,160
+violation occurred
+
+278
+00:14:00,680 --> 00:14:07,079
+uh an L Reasoner on the other hand will
+
+279
+00:14:04,160 --> 00:14:10,519
+assume that these two values represent
+
+280
+00:14:07,079 --> 00:14:14,320
+the same real world place even though
+
+281
+00:14:10,519 --> 00:14:17,360
+the uis for the nationalities are
+
+282
+00:14:14,320 --> 00:14:21,440
+different and uh this is also an example
+
+283
+00:14:17,360 --> 00:14:21,440
+of our lack of unique name
+
+284
+00:14:22,079 --> 00:14:28,079
+assumption so and if you don't find the
+
+285
+00:14:26,120 --> 00:14:29,839
+constraints you need in the existing
+
+286
+00:14:28,079 --> 00:14:32,399
+shackle vocabulary
+
+287
+00:14:29,839 --> 00:14:34,560
+you can always add your own constraints
+
+288
+00:14:32,399 --> 00:14:38,240
+and push them to the web for anyone to
+
+289
+00:14:34,560 --> 00:14:42,000
+reuse if you like owl is however limited
+
+290
+00:14:38,240 --> 00:14:45,079
+to the features described by the owl
+
+291
+00:14:42,000 --> 00:14:48,800
+committee and you cannot match instances
+
+292
+00:14:45,079 --> 00:14:50,839
+to a given schema with owl or rdfs you
+
+293
+00:14:48,800 --> 00:14:53,279
+will only get logical
+
+294
+00:14:50,839 --> 00:14:55,639
+contradictions and uh this is however
+
+295
+00:14:53,279 --> 00:14:59,320
+the Gap that shle fills in the semantic
+
+296
+00:14:55,639 --> 00:14:59,320
+technology stack
+
+297
+00:15:02,560 --> 00:15:08,920
+so we saw an example of owl in
+
+298
+00:15:05,519 --> 00:15:11,480
+combination with Chaka a few slides ago
+
+299
+00:15:08,920 --> 00:15:15,360
+and here are some more possibilities on
+
+300
+00:15:11,480 --> 00:15:18,000
+how and when to use the different
+
+301
+00:15:15,360 --> 00:15:21,000
+languages concept
+
+302
+00:15:18,000 --> 00:15:24,680
+modeling when you are to describe an
+
+303
+00:15:21,000 --> 00:15:29,759
+ontology of abstract Concepts you could
+
+304
+00:15:24,680 --> 00:15:32,160
+use ow or a shekele or you can use both
+
+305
+00:15:29,759 --> 00:15:35,959
+in my current project at the norian
+
+306
+00:15:32,160 --> 00:15:38,519
+marim authorities we use both in
+
+307
+00:15:35,959 --> 00:15:41,000
+combination one of the main reasons for
+
+308
+00:15:38,519 --> 00:15:44,600
+that is that the nma
+
+309
+00:15:41,000 --> 00:15:47,000
+had uh all light ontologies written for
+
+310
+00:15:44,600 --> 00:15:50,160
+their domain before I joined the
+
+311
+00:15:47,000 --> 00:15:52,560
+project uh I introduced them to Shackle
+
+312
+00:15:50,160 --> 00:15:54,519
+and the modeling possibilities it
+
+313
+00:15:52,560 --> 00:15:56,759
+provides and we're going to see examples
+
+314
+00:15:54,519 --> 00:16:00,040
+of the modeling possibilities a bit
+
+315
+00:15:56,759 --> 00:16:00,040
+later on
+
+316
+00:16:02,720 --> 00:16:08,680
+uh now we only use owl for keeping track
+
+317
+00:16:06,360 --> 00:16:13,079
+of the class hierarchy of Concepts and
+
+318
+00:16:08,680 --> 00:16:13,079
+their labels so it's like a
+
+319
+00:16:13,880 --> 00:16:18,880
+tonomy yes it's supposed to be on slide
+
+320
+00:16:26,720 --> 00:16:34,360
+21 okay shle is used for detailed
+
+321
+00:16:31,199 --> 00:16:37,399
+modeling at the anma including data type
+
+322
+00:16:34,360 --> 00:16:40,920
+constraints modeling of Alternatives in
+
+323
+00:16:37,399 --> 00:16:40,920
+regulation requirements and
+
+324
+00:16:41,600 --> 00:16:46,880
+more if you have a lot of instance
+
+325
+00:16:48,240 --> 00:16:51,240
+data
+
+326
+00:16:53,680 --> 00:17:00,839
+um yes sorry I just lost myself a bit
+
+327
+00:17:01,000 --> 00:17:06,880
+if you have a lot of instance data
+
+328
+00:17:03,680 --> 00:17:09,720
+shackle would be of great help in order
+
+329
+00:17:06,880 --> 00:17:13,439
+to create a schema around this
+
+330
+00:17:09,720 --> 00:17:15,439
+data in a previous project I worked with
+
+331
+00:17:13,439 --> 00:17:18,600
+the library collection of the Oslo
+
+332
+00:17:15,439 --> 00:17:22,280
+Public Library this contained a lot of
+
+333
+00:17:18,600 --> 00:17:24,280
+instance data books movies persons music
+
+334
+00:17:22,280 --> 00:17:27,640
+events you name
+
+335
+00:17:24,280 --> 00:17:30,160
+it much of this information was manly
+
+336
+00:17:27,640 --> 00:17:32,600
+typed into a catalog system by
+
+337
+00:17:30,160 --> 00:17:35,840
+Librarians in order to make sure they
+
+338
+00:17:32,600 --> 00:17:38,200
+didn't provide us with types or some
+
+339
+00:17:35,840 --> 00:17:41,000
+really weird information we created
+
+340
+00:17:38,200 --> 00:17:43,520
+shackle shapes that would check this so
+
+341
+00:17:41,000 --> 00:17:46,440
+no data in the collection database would
+
+342
+00:17:43,520 --> 00:17:46,440
+contain any wrong
+
+343
+00:17:47,200 --> 00:17:54,320
+information and if you need inferencing
+
+344
+00:17:49,840 --> 00:17:56,840
+on your data you could go for uh ow um
+
+345
+00:17:54,320 --> 00:18:00,039
+but you could also go for
+
+346
+00:17:56,840 --> 00:18:01,840
+checkle because uh shackle actually
+
+347
+00:18:00,039 --> 00:18:04,200
+provides you with the possibility of
+
+348
+00:18:01,840 --> 00:18:06,400
+creating inferencing rules through the
+
+349
+00:18:04,200 --> 00:18:09,159
+shackle Advanced
+
+350
+00:18:06,400 --> 00:18:11,880
+features sadly there is no open source
+
+351
+00:18:09,159 --> 00:18:15,000
+engine or framework that supports these
+
+352
+00:18:11,880 --> 00:18:20,400
+features yet as the advanced features
+
+353
+00:18:15,000 --> 00:18:20,400
+are described in a w3c draft and not yet
+
+354
+00:18:20,799 --> 00:18:26,080
+standardized and one fancy opportunity
+
+355
+00:18:23,400 --> 00:18:29,120
+you get with inferencing in both sh and
+
+356
+00:18:26,080 --> 00:18:31,799
+a is an inference Loop so so
+
+357
+00:18:29,120 --> 00:18:34,000
+theoretically you could give the shack
+
+358
+00:18:31,799 --> 00:18:36,559
+engine the result from the ow engine and
+
+359
+00:18:34,000 --> 00:18:40,280
+vice versa until there are no more
+
+360
+00:18:36,559 --> 00:18:40,280
+triples added to the result
+
+361
+00:18:41,240 --> 00:18:47,159
+graph and if you have a Wonder Knowledge
+
+362
+00:18:44,440 --> 00:18:49,320
+Graph with a lot of amazing tbox models
+
+363
+00:18:47,159 --> 00:18:51,840
+and a lot of interesting aox data you
+
+364
+00:18:49,320 --> 00:18:56,440
+could use both as we did for the project
+
+365
+00:18:51,840 --> 00:18:56,440
+I mentioned at the noran digitalization
+
+366
+00:18:57,200 --> 00:19:04,320
+agency Okay so so now let's talk about
+
+367
+00:19:00,440 --> 00:19:07,360
+the details of the shackle
+
+368
+00:19:04,320 --> 00:19:08,000
+core the building blocks of shackle is
+
+369
+00:19:07,360 --> 00:19:11,000
+the
+
+370
+00:19:08,000 --> 00:19:13,200
+shapes and a shackle shape is a
+
+371
+00:19:11,000 --> 00:19:14,840
+collection of constraints for a given
+
+372
+00:19:13,200 --> 00:19:17,880
+rdf
+
+373
+00:19:14,840 --> 00:19:20,120
+resource you have node shapes describing
+
+374
+00:19:17,880 --> 00:19:21,760
+constraints on classes and property
+
+375
+00:19:20,120 --> 00:19:24,320
+shapes describing constraints on
+
+376
+00:19:21,760 --> 00:19:26,960
+predicates and their object
+
+377
+00:19:24,320 --> 00:19:29,120
+values we're going to work with books
+
+378
+00:19:26,960 --> 00:19:31,559
+movies and persons as examp examples
+
+379
+00:19:29,120 --> 00:19:34,720
+today I know you were promised checkon
+
+380
+00:19:31,559 --> 00:19:36,280
+regulation models from no cons PR but
+
+381
+00:19:34,720 --> 00:19:40,039
+I'm going to cover this in my talk
+
+382
+00:19:36,280 --> 00:19:41,840
+tomorrow at 12:40 Central European Time
+
+383
+00:19:40,039 --> 00:19:44,360
+but I'll sleep in a sneak peek at the
+
+384
+00:19:41,840 --> 00:19:44,360
+end of this
+
+385
+00:19:48,440 --> 00:19:54,799
+lecture the definition of a node shape
+
+386
+00:19:51,840 --> 00:19:57,240
+is that it is a shape that is not the
+
+387
+00:19:54,799 --> 00:19:59,159
+subject of a triple where path is the
+
+388
+00:19:57,240 --> 00:20:01,640
+predicate
+
+389
+00:19:59,159 --> 00:20:04,240
+in this example we see a node shape with
+
+390
+00:20:01,640 --> 00:20:06,360
+one constraint on target class which
+
+391
+00:20:04,240 --> 00:20:10,480
+means that constraints to follow in This
+
+392
+00:20:06,360 --> 00:20:10,480
+shape has to do with the class
+
+393
+00:20:12,440 --> 00:20:18,799
+book the definition of a property shape
+
+394
+00:20:15,880 --> 00:20:23,799
+is that it is a shape that is the
+
+395
+00:20:18,799 --> 00:20:26,799
+subject of a triple that has path as its
+
+396
+00:20:23,799 --> 00:20:30,039
+predicate in this example we see a
+
+397
+00:20:26,799 --> 00:20:33,400
+property shape containing a path on
+
+398
+00:20:30,039 --> 00:20:35,760
+author every other constraint in this
+
+399
+00:20:33,400 --> 00:20:39,360
+shape will be a constraint on this
+
+400
+00:20:35,760 --> 00:20:39,360
+predicate and its object
+
+401
+00:20:44,080 --> 00:20:50,200
+values good practice is to name your
+
+402
+00:20:47,039 --> 00:20:52,320
+property shapes you will see examples of
+
+403
+00:20:50,200 --> 00:20:55,760
+property shapes described as blank Notes
+
+404
+00:20:52,320 --> 00:21:00,400
+too however these cannot be reused other
+
+405
+00:20:55,760 --> 00:21:04,360
+places in your rdf file as they not
+
+406
+00:21:00,400 --> 00:21:07,760
+named property shape does not need to be
+
+407
+00:21:04,360 --> 00:21:11,080
+explicitly typed as property shape since
+
+408
+00:21:07,760 --> 00:21:15,520
+as long as it contains a sh path
+
+409
+00:21:11,080 --> 00:21:15,520
+constraint it is a property shape per
+
+410
+00:21:16,080 --> 00:21:21,360
+definition here we see an example of
+
+411
+00:21:18,720 --> 00:21:24,600
+node shape and property shape combined
+
+412
+00:21:21,360 --> 00:21:28,320
+we use the sh property resource to add
+
+413
+00:21:24,600 --> 00:21:30,400
+property shapes onto a node shape so if
+
+414
+00:21:28,320 --> 00:21:33,039
+an instance of the class book has a
+
+415
+00:21:30,400 --> 00:21:35,159
+predicate author it's the constraints in
+
+416
+00:21:33,039 --> 00:21:37,480
+the author shape that applies to that
+
+417
+00:21:35,159 --> 00:21:39,840
+relationship and the object values of
+
+418
+00:21:37,480 --> 00:21:39,840
+that
+
+419
+00:21:41,240 --> 00:21:47,320
+relationship so now let's walk through
+
+420
+00:21:44,400 --> 00:21:49,919
+the constraints available in the shackle
+
+421
+00:21:47,320 --> 00:21:53,200
+core constraint vocabulary before we
+
+422
+00:21:49,919 --> 00:21:53,200
+start on our
+
+423
+00:21:53,240 --> 00:21:59,960
+tasks so I'm going to walk you through
+
+424
+00:21:55,760 --> 00:22:02,480
+each category uh and there will be
+
+425
+00:21:59,960 --> 00:22:07,080
+examples on each slide as
+
+426
+00:22:02,480 --> 00:22:10,400
+well so first out is the value type
+
+427
+00:22:07,080 --> 00:22:13,360
+constraints that let us constrain which
+
+428
+00:22:10,400 --> 00:22:15,679
+classes data types and node kinds we are
+
+429
+00:22:13,360 --> 00:22:19,320
+expecting to see in our
+
+430
+00:22:15,679 --> 00:22:20,840
+data node kinds can be U blank nodes
+
+431
+00:22:19,320 --> 00:22:24,240
+Iris and
+
+432
+00:22:20,840 --> 00:22:26,039
+literals and this example we see here uh
+
+433
+00:22:24,240 --> 00:22:29,520
+we have a node shape that targets the
+
+434
+00:22:26,039 --> 00:22:33,640
+class book so all con straints to follow
+
+435
+00:22:29,520 --> 00:22:36,159
+are regarding instances of the class
+
+436
+00:22:33,640 --> 00:22:39,760
+book we have one property shape
+
+437
+00:22:36,159 --> 00:22:43,120
+connected to our book shape it says that
+
+438
+00:22:39,760 --> 00:22:45,679
+instances of class book may have a
+
+439
+00:22:43,120 --> 00:22:48,240
+relationship author to some instance of
+
+440
+00:22:45,679 --> 00:22:48,240
+the class
+
+441
+00:22:49,279 --> 00:22:55,679
+person if we instead would like to have
+
+442
+00:22:53,039 --> 00:22:58,520
+uh the author relationship pointing to a
+
+443
+00:22:55,679 --> 00:23:01,279
+string we could change the class
+
+444
+00:22:58,520 --> 00:23:05,400
+constraint on person to be a data type
+
+445
+00:23:01,279 --> 00:23:05,400
+constraint pointing to string
+
+446
+00:23:12,159 --> 00:23:17,559
+instead next we have constraints on
+
+447
+00:23:15,520 --> 00:23:20,440
+cardinality and value
+
+448
+00:23:17,559 --> 00:23:23,039
+ranges cardinality constraints tells us
+
+449
+00:23:20,440 --> 00:23:26,760
+how many occurrences of a certain triple
+
+450
+00:23:23,039 --> 00:23:29,600
+we expect if the author constraint from
+
+451
+00:23:26,760 --> 00:23:32,400
+our previous example had a constraint on
+
+452
+00:23:29,600 --> 00:23:34,720
+Max count one and mean count one that
+
+453
+00:23:32,400 --> 00:23:38,919
+would mean that the auto relationship on
+
+454
+00:23:34,720 --> 00:23:42,039
+I book is to appear once and only
+
+455
+00:23:38,919 --> 00:23:44,919
+once in addition to cardinality we have
+
+456
+00:23:42,039 --> 00:23:46,679
+mean and Max inclusive and exclusive
+
+457
+00:23:44,919 --> 00:23:49,960
+which gives us the possibility of
+
+458
+00:23:46,679 --> 00:23:55,080
+defining ranges for
+
+459
+00:23:49,960 --> 00:23:58,440
+values in the example we see here uh we
+
+460
+00:23:55,080 --> 00:24:02,480
+have a constraint on the predicate page
+
+461
+00:23:58,440 --> 00:24:05,880
+PES for a book on Max inclusive
+
+462
+00:24:02,480 --> 00:24:09,640
+10 this means that every book with a
+
+463
+00:24:05,880 --> 00:24:15,240
+relationship Pages uh pages to some
+
+464
+00:24:09,640 --> 00:24:15,240
+number that number must be 10 or
+
+465
+00:24:15,760 --> 00:24:21,799
+larger at my current project we use this
+
+466
+00:24:18,720 --> 00:24:25,039
+value range constraints extensively as
+
+467
+00:24:21,799 --> 00:24:28,960
+we need to describe scopes of boats
+
+468
+00:24:25,039 --> 00:24:32,000
+larger than 8 m between 10 and 15 m M
+
+469
+00:24:28,960 --> 00:24:34,600
+smaller than 9 M and so on there's a lot
+
+470
+00:24:32,000 --> 00:24:34,600
+of different
+
+471
+00:24:35,679 --> 00:24:41,480
+combinations okay so we also have some
+
+472
+00:24:39,000 --> 00:24:44,919
+string based constraints and I like
+
+473
+00:24:41,480 --> 00:24:48,159
+fooling around with strings a lot and in
+
+474
+00:24:44,919 --> 00:24:51,360
+shackle core they consist of Min and max
+
+475
+00:24:48,159 --> 00:24:53,880
+length of a string regular
+
+476
+00:24:51,360 --> 00:24:58,120
+Expressions checking for a specific
+
+477
+00:24:53,880 --> 00:25:00,919
+language tag or a constraint that there
+
+478
+00:24:58,120 --> 00:25:03,799
+must must be one unique tag per language
+
+479
+00:25:00,919 --> 00:25:03,799
+for that string
+
+480
+00:25:03,960 --> 00:25:09,880
+value and in this example we see a
+
+481
+00:25:06,919 --> 00:25:11,120
+constraint on ISBN numbers using the
+
+482
+00:25:09,880 --> 00:25:13,880
+pattern
+
+483
+00:25:11,120 --> 00:25:15,399
+constraint this regular expression is
+
+484
+00:25:13,880 --> 00:25:19,240
+supposed to
+
+485
+00:25:15,399 --> 00:25:21,720
+identify ispn numbers as both ispn 10
+
+486
+00:25:19,240 --> 00:25:25,399
+and ispn 13 which is the two different
+
+487
+00:25:21,720 --> 00:25:29,760
+ispn standards and be my guest on
+
+488
+00:25:25,399 --> 00:25:29,760
+checking it out if you like
+
+489
+00:25:32,440 --> 00:25:39,080
+next up we have the property pair
+
+490
+00:25:36,000 --> 00:25:41,600
+constraints um it gives us the
+
+491
+00:25:39,080 --> 00:25:43,320
+possibility of checking the object value
+
+492
+00:25:41,600 --> 00:25:47,080
+of two different
+
+493
+00:25:43,320 --> 00:25:49,080
+resources we can check for
+
+494
+00:25:47,080 --> 00:25:52,600
+equality
+
+495
+00:25:49,080 --> 00:25:55,279
+disjointness if a value is less than or
+
+496
+00:25:52,600 --> 00:25:58,880
+less than or equals to the
+
+497
+00:25:55,279 --> 00:26:02,720
+other let's look at this example
+
+498
+00:25:58,880 --> 00:26:06,480
+here we say that a person's death date
+
+499
+00:26:02,720 --> 00:26:10,159
+must be less than or equals to the birth
+
+500
+00:26:06,480 --> 00:26:12,520
+date this means that no instances of
+
+501
+00:26:10,159 --> 00:26:15,600
+person can have a death date that is
+
+502
+00:26:12,520 --> 00:26:17,880
+before the birth date so no persons can
+
+503
+00:26:15,600 --> 00:26:22,320
+die before they're
+
+504
+00:26:17,880 --> 00:26:25,679
+born uh we actually got quite a few
+
+505
+00:26:22,320 --> 00:26:29,840
+violations on this at the Oslo public
+
+506
+00:26:25,679 --> 00:26:33,279
+library because of old typos from the
+
+507
+00:26:29,840 --> 00:26:36,880
+cataloging cards that uh was to be typed
+
+508
+00:26:33,279 --> 00:26:36,880
+into our cataloging
+
+509
+00:26:39,919 --> 00:26:45,799
+system and apart from the string based
+
+510
+00:26:43,159 --> 00:26:49,120
+constraints logical constraints might be
+
+511
+00:26:45,799 --> 00:26:51,399
+my absolute favorite and these are much
+
+512
+00:26:49,120 --> 00:26:54,559
+of the reason we chose chuckle for my
+
+513
+00:26:51,399 --> 00:26:57,840
+current project at the noran marim
+
+514
+00:26:54,559 --> 00:26:59,640
+authority and I'll show you an example
+
+515
+00:26:57,840 --> 00:27:04,919
+from that project at the end of the
+
+516
+00:26:59,640 --> 00:27:04,919
+lecture of our use of these logical
+
+517
+00:27:05,279 --> 00:27:10,200
+constraints and The Logical constraints
+
+518
+00:27:07,960 --> 00:27:14,399
+are list taking constraints that gives
+
+519
+00:27:10,200 --> 00:27:17,159
+us the possibility to state things as um
+
+520
+00:27:14,399 --> 00:27:18,520
+negation that something cannot form to a
+
+521
+00:27:17,159 --> 00:27:22,720
+given
+
+522
+00:27:18,520 --> 00:27:25,679
+shape and and constraints where all
+
+523
+00:27:22,720 --> 00:27:27,760
+values of the list must be fulfilled in
+
+524
+00:27:25,679 --> 00:27:30,159
+order for the whole expression to be
+
+525
+00:27:27,760 --> 00:27:30,159
+valid
+
+526
+00:27:30,279 --> 00:27:35,600
+and uh or constraints where at least one
+
+527
+00:27:33,520 --> 00:27:37,559
+of the values in the list must be
+
+528
+00:27:35,600 --> 00:27:40,360
+fulfilled in order for the whole
+
+529
+00:27:37,559 --> 00:27:40,360
+expression to be
+
+530
+00:27:40,559 --> 00:27:46,840
+valid at last we have the X1 constraint
+
+531
+00:27:44,360 --> 00:27:49,000
+where exactly one of the values in the
+
+532
+00:27:46,840 --> 00:27:51,360
+list must be fulfilled in order for the
+
+533
+00:27:49,000 --> 00:27:54,120
+whole expression to be
+
+534
+00:27:51,360 --> 00:27:57,320
+valid an example with logical
+
+535
+00:27:54,120 --> 00:27:59,840
+constraints is shown here it says that
+
+536
+00:27:57,320 --> 00:28:03,200
+any instance of person shall have at
+
+537
+00:27:59,840 --> 00:28:08,000
+least one first name or at least one
+
+538
+00:28:03,200 --> 00:28:11,000
+last name both is also fine but at least
+
+539
+00:28:08,000 --> 00:28:11,000
+one of them is
+
+540
+00:28:14,640 --> 00:28:21,640
+required another example of or
+
+541
+00:28:17,679 --> 00:28:24,600
+constraints and uh this is a funny one I
+
+542
+00:28:21,640 --> 00:28:26,960
+know that this might might give some owl
+
+543
+00:28:24,600 --> 00:28:30,159
+ontologists a hard time sleeping at
+
+544
+00:28:26,960 --> 00:28:34,600
+night but um it is possible to state
+
+545
+00:28:30,159 --> 00:28:38,640
+that a predicate range might be both an
+
+546
+00:28:34,600 --> 00:28:41,640
+object value or a data type
+
+547
+00:28:38,640 --> 00:28:44,480
+value object properties and data
+
+548
+00:28:41,640 --> 00:28:47,039
+properties are disjoint classes in now
+
+549
+00:28:44,480 --> 00:28:47,039
+but not in
+
+550
+00:28:50,880 --> 00:28:56,039
+SHO and at last we have some shape based
+
+551
+00:28:54,320 --> 00:28:59,399
+constraint
+
+552
+00:28:56,039 --> 00:29:01,960
+components we have already seen property
+
+553
+00:28:59,399 --> 00:29:05,080
+constraints around listing property
+
+554
+00:29:01,960 --> 00:29:08,679
+shapes onto a node shape the node
+
+555
+00:29:05,080 --> 00:29:11,559
+constraint used for conforming to a node
+
+556
+00:29:08,679 --> 00:29:14,760
+shape for example a node shape for
+
+557
+00:29:11,559 --> 00:29:17,760
+authors might have a node constraint to
+
+558
+00:29:14,760 --> 00:29:21,279
+a node shape describing persons since
+
+559
+00:29:17,760 --> 00:29:21,279
+authors are also
+
+560
+00:29:22,440 --> 00:29:27,720
+persons the group of other constraints
+
+561
+00:29:25,600 --> 00:29:28,720
+that doesn't fit into any of the other
+
+562
+00:29:27,720 --> 00:29:33,760
+categor
+
+563
+00:29:28,720 --> 00:29:35,440
+consists of um closed constraint stating
+
+564
+00:29:33,760 --> 00:29:39,000
+that the shape is
+
+565
+00:29:35,440 --> 00:29:42,399
+complete ignore the properties that is a
+
+566
+00:29:39,000 --> 00:29:45,960
+list of properties to
+
+567
+00:29:42,399 --> 00:29:48,360
+ignore has value which points to a
+
+568
+00:29:45,960 --> 00:29:51,440
+specific object
+
+569
+00:29:48,360 --> 00:29:53,679
+value and the in constraint that states
+
+570
+00:29:51,440 --> 00:29:55,880
+that the object value shall be a member
+
+571
+00:29:53,679 --> 00:29:59,240
+of the given
+
+572
+00:29:55,880 --> 00:30:03,080
+list and here we see an example of both
+
+573
+00:29:59,240 --> 00:30:06,840
+closed and ignored
+
+574
+00:30:03,080 --> 00:30:09,880
+properties if we close a shape uh a
+
+575
+00:30:06,840 --> 00:30:12,440
+shackle engine will expect all
+
+576
+00:30:09,880 --> 00:30:13,440
+predicates for that given data shape to
+
+577
+00:30:12,440 --> 00:30:17,279
+be
+
+578
+00:30:13,440 --> 00:30:19,640
+constrained uh for this example book
+
+579
+00:30:17,279 --> 00:30:22,480
+every predicate connected to some
+
+580
+00:30:19,640 --> 00:30:23,880
+instance of book has to be constrained
+
+581
+00:30:22,480 --> 00:30:26,720
+even rdf
+
+582
+00:30:23,880 --> 00:30:28,519
+type we can ignore some of these
+
+583
+00:30:26,720 --> 00:30:31,480
+properties by using
+
+584
+00:30:28,519 --> 00:30:35,360
+the constraints ignore properties on the
+
+585
+00:30:31,480 --> 00:30:38,640
+predicates we want to ignore by the shck
+
+586
+00:30:35,360 --> 00:30:42,320
+engine like rdf type for example it's no
+
+587
+00:30:38,640 --> 00:30:42,320
+point in constraining that is
+
+588
+00:30:42,720 --> 00:30:45,720
+it
+
+589
+00:30:47,799 --> 00:30:53,200
+so a shackle engine will take in two
+
+590
+00:30:51,600 --> 00:30:56,600
+graphs as
+
+591
+00:30:53,200 --> 00:30:58,440
+input the shapes graph and the data
+
+592
+00:30:56,600 --> 00:31:01,200
+graph the
+
+593
+00:30:58,440 --> 00:31:04,679
+will check if the data graph conforms to
+
+594
+00:31:01,200 --> 00:31:07,200
+the shapes graph and if it confirms true
+
+595
+00:31:04,679 --> 00:31:09,440
+everything is Splendid and we can go on
+
+596
+00:31:07,200 --> 00:31:10,279
+with whatever we're doing further with
+
+597
+00:31:09,440 --> 00:31:13,960
+the
+
+598
+00:31:10,279 --> 00:31:17,120
+data if the engine confirms false a
+
+599
+00:31:13,960 --> 00:31:17,120
+validation report is
+
+600
+00:31:19,880 --> 00:31:27,080
+produced and each instance of a
+
+601
+00:31:23,440 --> 00:31:29,279
+validation report has exactly one value
+
+602
+00:31:27,080 --> 00:31:33,559
+of s
+
+603
+00:31:29,279 --> 00:31:36,200
+confirms as confirms is true if and only
+
+604
+00:31:33,559 --> 00:31:40,519
+if the shackle engine did not produce
+
+605
+00:31:36,200 --> 00:31:43,960
+any validation results and false
+
+606
+00:31:40,519 --> 00:31:46,480
+otherwise if validation confirms false a
+
+607
+00:31:43,960 --> 00:31:50,960
+report will be produced containing an
+
+608
+00:31:46,480 --> 00:31:50,960
+instance of sh validation
+
+609
+00:31:52,039 --> 00:31:59,919
+results and the validation result can be
+
+610
+00:31:56,279 --> 00:32:02,159
+described using the validation result
+
+611
+00:31:59,919 --> 00:32:03,399
+vocabulary here we can retrieve
+
+612
+00:32:02,159 --> 00:32:06,360
+information
+
+613
+00:32:03,399 --> 00:32:10,480
+about the node that caused the
+
+614
+00:32:06,360 --> 00:32:14,159
+result value of the path and value node
+
+615
+00:32:10,480 --> 00:32:15,799
+of the violated constraint and that is
+
+616
+00:32:14,159 --> 00:32:18,840
+the
+
+617
+00:32:15,799 --> 00:32:21,279
+triple we'll get uh information about
+
+618
+00:32:18,840 --> 00:32:23,799
+the shape where the violation
+
+619
+00:32:21,279 --> 00:32:28,320
+occurred and information about the
+
+620
+00:32:23,799 --> 00:32:30,039
+constraint components that cause results
+
+621
+00:32:28,320 --> 00:32:32,960
+you could have even more details
+
+622
+00:32:30,039 --> 00:32:36,159
+described in some parent validation
+
+623
+00:32:32,960 --> 00:32:38,320
+result and we also have some annotation
+
+624
+00:32:36,159 --> 00:32:41,639
+property uh that we could give some
+
+625
+00:32:38,320 --> 00:32:44,039
+message for the user or
+
+626
+00:32:41,639 --> 00:32:46,399
+developer and at last we have the
+
+627
+00:32:44,039 --> 00:32:49,760
+severity level of the
+
+628
+00:32:46,399 --> 00:32:53,279
+violation default level is violation if
+
+629
+00:32:49,760 --> 00:32:55,799
+nothing else is stated which is also the
+
+630
+00:32:53,279 --> 00:32:58,279
+strictest the other severity levels
+
+631
+00:32:55,799 --> 00:33:02,720
+provided with checkle are info and
+
+632
+00:32:58,279 --> 00:33:02,720
+warning where info is the least
+
+633
+00:33:08,000 --> 00:33:13,519
+strict other nice to know features in
+
+634
+00:33:10,679 --> 00:33:15,799
+shackle which are not necessarily
+
+635
+00:33:13,519 --> 00:33:19,039
+validating
+
+636
+00:33:15,799 --> 00:33:21,480
+constraints if you are to reuse shapes
+
+637
+00:33:19,039 --> 00:33:23,480
+it might be so that you don't need all
+
+638
+00:33:21,480 --> 00:33:26,240
+shapes provided from The
+
+639
+00:33:23,480 --> 00:33:28,360
+Source then you have the possibility of
+
+640
+00:33:26,240 --> 00:33:30,480
+deactivating shapes so so the shack
+
+641
+00:33:28,360 --> 00:33:33,399
+lenson will ignore the deactivated
+
+642
+00:33:30,480 --> 00:33:33,399
+shapes and its
+
+643
+00:33:33,600 --> 00:33:37,760
+constraints annotation properties like
+
+644
+00:33:36,240 --> 00:33:41,799
+name and
+
+645
+00:33:37,760 --> 00:33:44,720
+description helps on making your shapes
+
+646
+00:33:41,799 --> 00:33:47,760
+readable and
+
+647
+00:33:44,720 --> 00:33:51,320
+organized order can be used to arrange
+
+648
+00:33:47,760 --> 00:33:53,960
+shapes in a given order for any purpose
+
+649
+00:33:51,320 --> 00:33:56,399
+this information can for example be used
+
+650
+00:33:53,960 --> 00:34:00,080
+by an application in order to say
+
+651
+00:33:56,399 --> 00:34:02,600
+something about the order all output
+
+652
+00:34:00,080 --> 00:34:05,559
+information at the Norwegian maritim
+
+653
+00:34:02,600 --> 00:34:07,880
+Authority we use order to differentiate
+
+654
+00:34:05,559 --> 00:34:10,079
+the different Alternatives described in
+
+655
+00:34:07,880 --> 00:34:10,079
+a
+
+656
+00:34:11,440 --> 00:34:17,000
+requirement you also have the option of
+
+657
+00:34:14,000 --> 00:34:21,119
+setting a default value for your
+
+658
+00:34:17,000 --> 00:34:22,919
+shape and H you also have possibility of
+
+659
+00:34:21,119 --> 00:34:25,440
+checking whether your shapes are well
+
+660
+00:34:22,919 --> 00:34:27,399
+firmed or not according to the shackle
+
+661
+00:34:25,440 --> 00:34:29,159
+syntax rules and retrieve this
+
+662
+00:34:27,399 --> 00:34:31,720
+information information as a part of the
+
+663
+00:34:29,159 --> 00:34:31,720
+validation
+
+664
+00:34:40,720 --> 00:34:46,879
+results in this lecture you have only
+
+665
+00:34:43,440 --> 00:34:49,000
+seen one path option in property shapes
+
+666
+00:34:46,879 --> 00:34:52,119
+I'm not going to demonstrate the other
+
+667
+00:34:49,000 --> 00:34:55,879
+options but it is good to know that
+
+668
+00:34:52,119 --> 00:34:57,720
+there exist more options for this so you
+
+669
+00:34:55,879 --> 00:35:00,760
+have the possibility of stating in
+
+670
+00:34:57,720 --> 00:35:05,440
+inverse Parts sequence Parts alternative
+
+671
+00:35:00,760 --> 00:35:05,440
+parts and zero or more
+
+672
+00:35:10,040 --> 00:35:15,240
+parts and Beyond chle core I want to
+
+673
+00:35:13,760 --> 00:35:18,440
+mention some
+
+674
+00:35:15,240 --> 00:35:21,320
+features we have shackle
+
+675
+00:35:18,440 --> 00:35:23,640
+Sparkle that is a Sparkle based
+
+676
+00:35:21,320 --> 00:35:25,920
+constraints that can be stated using the
+
+677
+00:35:23,640 --> 00:35:28,800
+constraint sh
+
+678
+00:35:25,920 --> 00:35:31,040
+Sparkle this lets you create rules with
+
+679
+00:35:28,800 --> 00:35:31,960
+writing Sparkle queries directly into
+
+680
+00:35:31,040 --> 00:35:34,880
+the
+
+681
+00:35:31,960 --> 00:35:38,359
+graph um this is actually a part of the
+
+682
+00:35:34,880 --> 00:35:44,079
+w3c recommendation of shakle as it is
+
+683
+00:35:38,359 --> 00:35:47,280
+now so uh this might be implemented uh
+
+684
+00:35:44,079 --> 00:35:50,560
+in some solutions of
+
+685
+00:35:47,280 --> 00:35:53,319
+shako we also have the dash data shape
+
+686
+00:35:50,560 --> 00:35:56,760
+vocabulary which is an unofficial draft
+
+687
+00:35:53,319 --> 00:36:00,160
+from June of 2020 which contains a
+
+688
+00:35:56,760 --> 00:36:02,760
+collection of usable extensions to
+
+689
+00:36:00,160 --> 00:36:04,960
+shekele and At Last I have already
+
+690
+00:36:02,760 --> 00:36:07,880
+mentioned the shekele advanced features
+
+691
+00:36:04,960 --> 00:36:08,720
+which includes inferencing rules among
+
+692
+00:36:07,880 --> 00:36:11,960
+other
+
+693
+00:36:08,720 --> 00:36:14,599
+things and the shackle Advanced features
+
+694
+00:36:11,960 --> 00:36:17,599
+are not yet part of the standard and
+
+695
+00:36:14,599 --> 00:36:21,240
+that is why there isn't any open source
+
+696
+00:36:17,599 --> 00:36:21,240
+implementations available
+
+697
+00:36:22,800 --> 00:36:32,160
+yet okay and now we have gone through
+
+698
+00:36:28,920 --> 00:36:37,079
+the Sho core constraint vocabulary so I
+
+699
+00:36:32,160 --> 00:36:41,319
+think we'll uh go over to demonstration
+
+700
+00:36:37,079 --> 00:36:43,920
+and handsome so we can look at some code
+
+701
+00:36:41,319 --> 00:36:47,280
+um but I see there is a couple of
+
+702
+00:36:43,920 --> 00:36:51,160
+questions so I will stop sharing my
+
+703
+00:36:47,280 --> 00:36:54,480
+screen now so I can prepare the um the
+
+704
+00:36:51,160 --> 00:36:56,440
+demonstration so I think we can take two
+
+705
+00:36:54,480 --> 00:36:58,480
+minute break before we start on the
+
+706
+00:36:56,440 --> 00:37:00,720
+demonstration if that that's okay and I
+
+707
+00:36:58,480 --> 00:37:03,520
+can also have a look at the questions
+
+708
+00:37:00,720 --> 00:37:03,520
+during those two
+
+709
+00:37:26,520 --> 00:37:29,520
+minutes
+
+710
+00:37:56,440 --> 00:38:00,480
+for for
+
+711
+00:38:35,480 --> 00:38:38,480
+for
+
+712
+00:39:05,760 --> 00:39:13,319
+okay so I I think the two minutes has
+
+713
+00:39:09,960 --> 00:39:15,280
+passed can just quickly have a look at
+
+714
+00:39:13,319 --> 00:39:18,280
+the slack
+
+715
+00:39:15,280 --> 00:39:18,280
+Channel
+
+716
+00:39:20,880 --> 00:39:26,040
+um why is rdf type always shown as an
+
+717
+00:39:24,720 --> 00:39:29,359
+ignored
+
+718
+00:39:26,040 --> 00:39:29,359
+property uh
+
+719
+00:39:33,880 --> 00:39:45,040
+because rdf type is
+
+720
+00:39:38,240 --> 00:39:48,119
+um call it is it's well um defined so
+
+721
+00:39:45,040 --> 00:39:50,319
+everyone knows what rdf type is
+
+722
+00:39:48,119 --> 00:39:56,119
+expecting to point to it's expecting to
+
+723
+00:39:50,319 --> 00:39:59,920
+point to anything that is a um resource
+
+724
+00:39:56,119 --> 00:40:03,359
+or not a resource but a
+
+725
+00:39:59,920 --> 00:40:05,520
+class uh and we don't bother to
+
+726
+00:40:03,359 --> 00:40:09,119
+constrain it because of that therefore
+
+727
+00:40:05,520 --> 00:40:12,319
+we put it into ignore the properties uh
+
+728
+00:40:09,119 --> 00:40:12,319
+if we close a
+
+729
+00:40:14,280 --> 00:40:19,680
+shape when using shackle closed is it
+
+730
+00:40:17,319 --> 00:40:22,040
+possible to reuse the node from a
+
+731
+00:40:19,680 --> 00:40:24,599
+another class actually I don't know I
+
+732
+00:40:22,040 --> 00:40:30,000
+haven't tried it but um maybe you want
+
+733
+00:40:24,599 --> 00:40:30,000
+to try it out when we go on on to the
+
+734
+00:40:30,680 --> 00:40:38,480
+tasks and what are the dash data shapes
+
+735
+00:40:34,760 --> 00:40:41,160
+vocabulary used for well the dash uh
+
+736
+00:40:38,480 --> 00:40:44,880
+data shapes vocabulary is a collection
+
+737
+00:40:41,160 --> 00:40:48,839
+of shapes provided by uh top quadrant
+
+738
+00:40:44,880 --> 00:40:50,760
+really and U one of the employees at top
+
+739
+00:40:48,839 --> 00:40:54,640
+quadrant is also one of the lead
+
+740
+00:40:50,760 --> 00:40:57,720
+developers of uh the Sho uh
+
+741
+00:40:54,640 --> 00:41:00,960
+standard so they have a lot of of
+
+742
+00:40:57,720 --> 00:41:06,200
+information and resources on shackle
+
+743
+00:41:00,960 --> 00:41:09,880
+that they want to share with anyone for
+
+744
+00:41:06,200 --> 00:41:12,240
+reusing I haven't had any use for the
+
+745
+00:41:09,880 --> 00:41:14,440
+dash data shapes vocabulary yet so I'm
+
+746
+00:41:12,240 --> 00:41:16,920
+not that familiar with it with its
+
+747
+00:41:14,440 --> 00:41:21,880
+content I just know that it
+
+748
+00:41:16,920 --> 00:41:24,560
+exists uh but uh I have some links for
+
+749
+00:41:21,880 --> 00:41:27,000
+the dash vocabulary at the end of my
+
+750
+00:41:24,560 --> 00:41:31,000
+slide deck so we can have a look at that
+
+751
+00:41:27,000 --> 00:41:34,240
+when we do uh the summarizing after the
+
+752
+00:41:31,000 --> 00:41:36,280
+tasks yes thank you
+
+753
+00:41:34,240 --> 00:41:39,640
+Fran
+
+754
+00:41:36,280 --> 00:41:41,640
+um yes this the same reason for shackle
+
+755
+00:41:39,640 --> 00:41:44,440
+Advanced features and shackle Advanced
+
+756
+00:41:41,640 --> 00:41:46,480
+features um I'm going to start working
+
+757
+00:41:44,440 --> 00:41:49,520
+with next year actually so I'm really
+
+758
+00:41:46,480 --> 00:41:52,680
+looking forward to that and
+
+759
+00:41:49,520 --> 00:41:54,640
+um a quick overview of the advanced
+
+760
+00:41:52,680 --> 00:41:57,400
+features I think we can save that for
+
+761
+00:41:54,640 --> 00:42:02,839
+after the tasks as well um because I
+
+762
+00:41:57,400 --> 00:42:02,839
+want I want to eat uh time away from the
+
+763
+00:42:02,920 --> 00:42:05,920
+tasks
+
+764
+00:42:08,599 --> 00:42:14,319
+um sub
+
+765
+00:42:11,319 --> 00:42:14,319
+classes
+
+766
+00:42:14,599 --> 00:42:23,079
+um yes and if I have a target class of
+
+767
+00:42:19,960 --> 00:42:25,520
+event how do I include the inferred sub
+
+768
+00:42:23,079 --> 00:42:28,520
+classes like music event and theater
+
+769
+00:42:25,520 --> 00:42:28,520
+event
+
+770
+00:42:28,800 --> 00:42:37,040
+um that depends on the implementation of
+
+771
+00:42:33,079 --> 00:42:40,400
+a shackle actually uh in the standard it
+
+772
+00:42:37,040 --> 00:42:43,520
+will do these kind of class
+
+773
+00:42:40,400 --> 00:42:48,559
+inferencing um automatically during the
+
+774
+00:42:43,520 --> 00:42:52,359
+validation so it will Discover it but it
+
+775
+00:42:48,559 --> 00:42:54,079
+isn't um the case that every existing
+
+776
+00:42:52,359 --> 00:42:57,680
+shackle implementation actually does
+
+777
+00:42:54,079 --> 00:43:01,160
+that but if you use the reference engine
+
+778
+00:42:57,680 --> 00:43:03,720
+uh which is located on GitHub I suppose
+
+779
+00:43:01,160 --> 00:43:06,079
+I haven't been on that GitHub in a long
+
+780
+00:43:03,720 --> 00:43:09,559
+time so I don't know how it looks like
+
+781
+00:43:06,079 --> 00:43:13,160
+now um but I can find the the reference
+
+782
+00:43:09,559 --> 00:43:16,040
+engine for you um and also like the The
+
+783
+00:43:13,160 --> 00:43:21,240
+Shack Lin that uh are supported by
+
+784
+00:43:16,040 --> 00:43:24,559
+stardog or any of the Frameworks like um
+
+785
+00:43:21,240 --> 00:43:26,760
+uh rdf for for python or rdf for C or
+
+786
+00:43:24,559 --> 00:43:29,440
+rdf for Java they will have some
+
+787
+00:43:26,760 --> 00:43:33,480
+document ation connected to it uh
+
+788
+00:43:29,440 --> 00:43:33,480
+describing what it supports and doesn't
+
+789
+00:43:34,960 --> 00:43:44,720
+support but uh in theory uh you won't
+
+790
+00:43:40,200 --> 00:43:44,720
+have to think about these kinds of
+
+791
+00:43:49,559 --> 00:43:57,559
+infuencing okay so let's go on to the
+
+792
+00:43:54,359 --> 00:44:01,800
+demonstration I hope the text this
+
+793
+00:43:57,559 --> 00:44:07,079
+visible shall I uh
+
+794
+00:44:01,800 --> 00:44:07,079
+um enlarge the text further or is it
+
+795
+00:44:10,599 --> 00:44:15,920
+okay there's nothing going on in the
+
+796
+00:44:12,880 --> 00:44:18,920
+chat so I think it's good okay thank you
+
+797
+00:44:15,920 --> 00:44:18,920
+Gregory
+
+798
+00:44:19,319 --> 00:44:26,839
+yes so I have prepared some tasks for
+
+799
+00:44:23,079 --> 00:44:29,599
+you and you could choose if you would
+
+800
+00:44:26,839 --> 00:44:32,599
+like to do this in Java or if you would
+
+801
+00:44:29,599 --> 00:44:35,319
+like to do this in the cheal playground
+
+802
+00:44:32,599 --> 00:44:38,280
+that is a browser based uh validation
+
+803
+00:44:35,319 --> 00:44:40,280
+engine for Jackal uh because I know
+
+804
+00:44:38,280 --> 00:44:44,040
+there are plenty of people allergic to
+
+805
+00:44:40,280 --> 00:44:46,839
+Java but this is my main language so I
+
+806
+00:44:44,040 --> 00:44:52,079
+chose to do a demonstration in Java as
+
+807
+00:44:46,839 --> 00:44:54,520
+well and I'm going to use the rdf for J
+
+808
+00:44:52,079 --> 00:44:56,040
+validation engine that a good friend of
+
+809
+00:44:54,520 --> 00:44:59,000
+mine has
+
+810
+00:44:56,040 --> 00:45:01,240
+written and let's have a look at how
+
+811
+00:44:59,000 --> 00:45:01,240
+that
+
+812
+00:45:02,920 --> 00:45:08,880
+works so first we have to initialize a
+
+813
+00:45:06,760 --> 00:45:14,440
+shackle
+
+814
+00:45:08,880 --> 00:45:18,440
+repository and um here I initialize the
+
+815
+00:45:14,440 --> 00:45:22,640
+validation report and the model is uh
+
+816
+00:45:18,440 --> 00:45:26,040
+the structure of a graph in the rdf forj
+
+817
+00:45:22,640 --> 00:45:31,040
+and also in Jenna which is the other
+
+818
+00:45:26,040 --> 00:45:31,040
+well-known rdf framework for
+
+819
+00:45:31,480 --> 00:45:38,160
+Java and then we start the connection
+
+820
+00:45:34,680 --> 00:45:41,079
+and we add our shackle rules so we have
+
+821
+00:45:38,160 --> 00:45:43,400
+a reader here which reads a file of the
+
+822
+00:45:41,079 --> 00:45:46,319
+shackle shapes that I have over here
+
+823
+00:45:43,400 --> 00:45:49,280
+we're going to have a look at that uh
+
+824
+00:45:46,319 --> 00:45:53,240
+quite soon and we begin the connection
+
+825
+00:45:49,280 --> 00:45:54,599
+and add our rules and commit them and
+
+826
+00:45:53,240 --> 00:45:58,880
+then
+
+827
+00:45:54,599 --> 00:46:02,640
+we add the data shape onto our
+
+828
+00:45:58,880 --> 00:46:04,480
+repository connection and commit them
+
+829
+00:46:02,640 --> 00:46:09,280
+and when we commit the
+
+830
+00:46:04,480 --> 00:46:14,559
+data we could uh possibly get a
+
+831
+00:46:09,280 --> 00:46:17,720
+repository exception as um uh in return
+
+832
+00:46:14,559 --> 00:46:21,079
+and if this repository exception is an
+
+833
+00:46:17,720 --> 00:46:23,839
+instance of this sale uh shackle sale
+
+834
+00:46:21,079 --> 00:46:27,200
+validation exception you will get the
+
+835
+00:46:23,839 --> 00:46:31,400
+validation report from that exception as
+
+836
+00:46:27,200 --> 00:46:33,480
+well as the cause of the exception so we
+
+837
+00:46:31,400 --> 00:46:37,040
+can return the validation report as a
+
+838
+00:46:33,480 --> 00:46:39,800
+model and store it in the model we
+
+839
+00:46:37,040 --> 00:46:43,280
+initialized at the beginning of this
+
+840
+00:46:39,800 --> 00:46:46,800
+method and I chose to write it to file
+
+841
+00:46:43,280 --> 00:46:48,319
+so we can have a look on the file uh as
+
+842
+00:46:46,800 --> 00:46:51,520
+we
+
+843
+00:46:48,319 --> 00:46:55,440
+go and this implementation of uh the
+
+844
+00:46:51,520 --> 00:46:57,400
+shackle engine and doesn't return a
+
+845
+00:46:55,440 --> 00:46:59,800
+validation Report with
+
+846
+00:46:57,400 --> 00:47:01,680
+the statement confirms
+
+847
+00:46:59,800 --> 00:47:05,119
+true
+
+848
+00:47:01,680 --> 00:47:07,520
+so I need to add that myself if I want
+
+849
+00:47:05,119 --> 00:47:11,079
+it but that's fine so I do that at the
+
+850
+00:47:07,520 --> 00:47:16,280
+end of this method so if no exception
+
+851
+00:47:11,079 --> 00:47:16,280
+was thrown we will get um confirms
+
+852
+00:47:17,440 --> 00:47:24,319
+true so let's oh no I completely forgot
+
+853
+00:47:21,480 --> 00:47:27,920
+to show you the example from uh from the
+
+854
+00:47:24,319 --> 00:47:30,440
+Norwegian marim authorities um
+
+855
+00:47:27,920 --> 00:47:33,079
+yes since I haven't started on the data
+
+856
+00:47:30,440 --> 00:47:37,119
+here yet I think I can slip in that now
+
+857
+00:47:33,079 --> 00:47:42,280
+between the engine and the data examples
+
+858
+00:47:37,119 --> 00:47:45,640
+um I'm so sorry about that okay so here
+
+859
+00:47:42,280 --> 00:47:48,400
+is a lot of stuff going on at once but
+
+860
+00:47:45,640 --> 00:47:53,760
+I'll try to talk you through through
+
+861
+00:47:48,400 --> 00:47:55,640
+it so here is our subject of this shape
+
+862
+00:47:53,760 --> 00:47:59,200
+and
+
+863
+00:47:55,640 --> 00:48:04,800
+nsd1 it's it's just our ID for a node
+
+864
+00:47:59,200 --> 00:48:07,400
+shape for d10 and d10 is the
+
+865
+00:48:04,800 --> 00:48:10,920
+certificate uh you need in order to
+
+866
+00:48:07,400 --> 00:48:14,440
+become a c captain in our
+
+867
+00:48:10,920 --> 00:48:18,319
+way so in order to become a sea captain
+
+868
+00:48:14,440 --> 00:48:21,400
+in Norway you must be at least 20 years
+
+869
+00:48:18,319 --> 00:48:24,400
+old which this property shapes uh shape
+
+870
+00:48:21,400 --> 00:48:28,200
+is constraining and you need this
+
+871
+00:48:24,400 --> 00:48:29,160
+education with the code VD two I'm not
+
+872
+00:48:28,200 --> 00:48:32,520
+bothering
+
+873
+00:48:29,160 --> 00:48:35,160
+to dip further into this property shapes
+
+874
+00:48:32,520 --> 00:48:38,680
+right now if that's okay uh we will have
+
+875
+00:48:35,160 --> 00:48:44,079
+a look at that tomorrow during my talk
+
+876
+00:48:38,680 --> 00:48:47,960
+and uh you will also need a medical
+
+877
+00:48:44,079 --> 00:48:50,040
+course and then we have this uh logical
+
+878
+00:48:47,960 --> 00:48:53,160
+or
+
+879
+00:48:50,040 --> 00:48:56,920
+constraint that says that you need at
+
+880
+00:48:53,160 --> 00:49:00,200
+least one of these courses in order to
+
+881
+00:48:56,920 --> 00:49:05,280
+fulfill all requirements for this
+
+882
+00:49:00,200 --> 00:49:08,240
+certificate and then we have uh an and
+
+883
+00:49:05,280 --> 00:49:11,520
+constraint saying that you need the
+
+884
+00:49:08,240 --> 00:49:15,240
+radio certificate and health certificate
+
+885
+00:49:11,520 --> 00:49:18,359
+as a part of these
+
+886
+00:49:15,240 --> 00:49:22,599
+requirements and then we have the funny
+
+887
+00:49:18,359 --> 00:49:27,200
+part uh this or constraints
+
+888
+00:49:22,599 --> 00:49:29,960
+here which describe the alternatives
+
+889
+00:49:27,200 --> 00:49:33,960
+uh for this type of certificate because
+
+890
+00:49:29,960 --> 00:49:37,280
+you can either have a cgo
+
+891
+00:49:33,960 --> 00:49:39,480
+service with some parameters or another
+
+892
+00:49:37,280 --> 00:49:41,839
+seagoing service with some parameters in
+
+893
+00:49:39,480 --> 00:49:44,799
+order to achieve this
+
+894
+00:49:41,839 --> 00:49:48,040
+certificate so the first alternative is
+
+895
+00:49:44,799 --> 00:49:51,720
+described as this and constraint
+
+896
+00:49:48,040 --> 00:49:54,720
+containing a list of certificates where
+
+897
+00:49:51,720 --> 00:49:57,440
+one of these must be fulfilled in order
+
+898
+00:49:54,720 --> 00:50:01,760
+to uh
+
+899
+00:49:57,440 --> 00:50:04,799
+receive the C certificate and we also
+
+900
+00:50:01,760 --> 00:50:07,480
+have some kind of cooing service and
+
+901
+00:50:04,799 --> 00:50:11,799
+here is the order one to state that this
+
+902
+00:50:07,480 --> 00:50:11,799
+is the first um
+
+903
+00:50:12,440 --> 00:50:21,119
+alternative the second alternative also
+
+904
+00:50:15,920 --> 00:50:22,960
+contains some kind of uh or a list of
+
+905
+00:50:21,119 --> 00:50:26,839
+certificates where one of these
+
+906
+00:50:22,960 --> 00:50:29,960
+certificates must be um achieved in
+
+907
+00:50:26,839 --> 00:50:34,359
+order to become a c captain and here we
+
+908
+00:50:29,960 --> 00:50:36,400
+have two SEO Services as
+
+909
+00:50:34,359 --> 00:50:40,520
+well so you
+
+910
+00:50:36,400 --> 00:50:45,119
+need both this seing service and this
+
+911
+00:50:40,520 --> 00:50:48,960
+seing service and this seing service is
+
+912
+00:50:45,119 --> 00:50:53,480
+constrained even further in another node
+
+913
+00:50:48,960 --> 00:50:54,960
+shape um that is placed somewhere else
+
+914
+00:50:53,480 --> 00:50:57,960
+that we're going to have a look on
+
+915
+00:50:54,960 --> 00:50:57,960
+tomorrow
+
+916
+00:50:58,000 --> 00:51:04,480
+yep
+
+917
+00:50:59,799 --> 00:51:08,160
+so because of the regulation texts uh in
+
+918
+00:51:04,480 --> 00:51:09,720
+the noran law text for maritim
+
+919
+00:51:08,160 --> 00:51:13,520
+authorities
+
+920
+00:51:09,720 --> 00:51:16,319
+um we needed this logical constraints
+
+921
+00:51:13,520 --> 00:51:18,640
+and the combination of logical
+
+922
+00:51:16,319 --> 00:51:21,559
+constraints because the text contains of
+
+923
+00:51:18,640 --> 00:51:24,240
+a lot of different Alternatives in order
+
+924
+00:51:21,559 --> 00:51:27,720
+to achieve different
+
+925
+00:51:24,240 --> 00:51:30,880
+certificates okay so that was the sneak
+
+926
+00:51:27,720 --> 00:51:34,480
+peek of the regulation requirements I'm
+
+927
+00:51:30,880 --> 00:51:37,000
+sorry I forgot it before I started on um
+
+928
+00:51:34,480 --> 00:51:37,000
+um this
+
+929
+00:51:38,640 --> 00:51:44,960
+demonstration yes so we have um some
+
+930
+00:51:42,240 --> 00:51:49,680
+data here that we're going to work with
+
+931
+00:51:44,960 --> 00:51:51,680
+I have added some taxonomy on the top uh
+
+932
+00:51:49,680 --> 00:51:53,440
+just because uh I want to make the
+
+933
+00:51:51,680 --> 00:51:57,400
+shackle playground
+
+934
+00:51:53,440 --> 00:52:02,240
+happy and um we also
+
+935
+00:51:57,400 --> 00:52:05,240
+have three no four and
+
+936
+00:52:02,240 --> 00:52:05,240
+data
+
+937
+00:52:05,440 --> 00:52:11,559
+um the words are disappearing I'm so
+
+938
+00:52:08,720 --> 00:52:15,040
+sorry but we have four different
+
+939
+00:52:11,559 --> 00:52:18,760
+instances of these classes here the
+
+940
+00:52:15,040 --> 00:52:23,359
+first is The Hobbit as a book with some
+
+941
+00:52:18,760 --> 00:52:28,520
+title in English a release stage um
+
+942
+00:52:23,359 --> 00:52:31,119
+pages and uh an author and the author
+
+943
+00:52:28,520 --> 00:52:35,359
+Tolkien is an
+
+944
+00:52:31,119 --> 00:52:38,319
+author and he has some name he's born on
+
+945
+00:52:35,359 --> 00:52:41,240
+a certain date and he died on a certain
+
+946
+00:52:38,319 --> 00:52:43,720
+date and we also have the movie an
+
+947
+00:52:41,240 --> 00:52:46,040
+Unexpected Journey which is based on the
+
+948
+00:52:43,720 --> 00:52:48,400
+Hobbit which uh with some title in
+
+949
+00:52:46,040 --> 00:52:51,359
+English release date running time in
+
+950
+00:52:48,400 --> 00:52:54,400
+minutes and a director Peter
+
+951
+00:52:51,359 --> 00:52:56,839
+Jackson and Peter Jackson is a director
+
+952
+00:52:54,400 --> 00:52:59,359
+with with some name and he's born on a
+
+953
+00:52:56,839 --> 00:52:59,359
+specific
+
+954
+00:53:02,920 --> 00:53:13,559
+date and the shape graph for this data
+
+955
+00:53:07,640 --> 00:53:17,200
+looks like this and it's um kind of um
+
+956
+00:53:13,559 --> 00:53:19,119
+stly as we say in Norway but U yeah it's
+
+957
+00:53:17,200 --> 00:53:20,640
+it's tiny and that is because you're
+
+958
+00:53:19,119 --> 00:53:25,280
+going to complete
+
+959
+00:53:20,640 --> 00:53:28,000
+it uh and um I found myself creating
+
+960
+00:53:25,280 --> 00:53:30,440
+shackle shapes B based on existing data
+
+961
+00:53:28,000 --> 00:53:34,480
+in almost every project I have worked
+
+962
+00:53:30,440 --> 00:53:37,359
+with shackle on and that has been now
+
+963
+00:53:34,480 --> 00:53:40,520
+for five projects so there is always
+
+964
+00:53:37,359 --> 00:53:43,960
+some data available in the beginning
+
+965
+00:53:40,520 --> 00:53:47,000
+that we want to uh use as a template for
+
+966
+00:53:43,960 --> 00:53:50,280
+creating our checkle shapes and along
+
+967
+00:53:47,000 --> 00:53:52,119
+the way there might be changes in the
+
+968
+00:53:50,280 --> 00:53:54,680
+data and there might be changes in the
+
+969
+00:53:52,119 --> 00:54:00,480
+checkle shapes but the ultimate goal is
+
+970
+00:53:54,680 --> 00:54:03,720
+to get uh a a complete and sound schema
+
+971
+00:54:00,480 --> 00:54:06,000
+for the data that uses the old data as a
+
+972
+00:54:03,720 --> 00:54:09,520
+template and for every new data that
+
+973
+00:54:06,000 --> 00:54:13,839
+will arrive into the system we have a uh
+
+974
+00:54:09,520 --> 00:54:13,839
+sound schema to validate those data
+
+975
+00:54:14,160 --> 00:54:23,119
+on so I have created a
+
+976
+00:54:19,079 --> 00:54:25,680
+um public git repository for this master
+
+977
+00:54:23,119 --> 00:54:28,760
+class uh here you can find the the
+
+978
+00:54:25,680 --> 00:54:32,119
+slides and you can also find the Java
+
+979
+00:54:28,760 --> 00:54:36,839
+demonstration here I shall probably show
+
+980
+00:54:32,119 --> 00:54:40,760
+you how to run it in Main and Java you
+
+981
+00:54:36,839 --> 00:54:40,760
+just run this
+
+982
+00:54:41,319 --> 00:54:48,880
+validation uh and we don't have any
+
+983
+00:54:44,119 --> 00:54:50,599
+errors now so that should go
+
+984
+00:54:48,880 --> 00:54:52,200
+fine
+
+985
+00:54:50,599 --> 00:54:57,160
+yep
+
+986
+00:54:52,200 --> 00:55:01,040
+and uh please extend the data TTL and
+
+987
+00:54:57,160 --> 00:55:04,119
+shapes. TTL file and only use those two
+
+988
+00:55:01,040 --> 00:55:06,480
+files when working with the tasks and
+
+989
+00:55:04,119 --> 00:55:09,960
+these are pre-programmed into the
+
+990
+00:55:06,480 --> 00:55:12,720
+validation code and U the shackle
+
+991
+00:55:09,960 --> 00:55:15,559
+playground that I will show you shortly
+
+992
+00:55:12,720 --> 00:55:19,839
+also only accepts one file of
+
+993
+00:55:15,559 --> 00:55:23,440
+each uh and this ain't a large example
+
+994
+00:55:19,839 --> 00:55:27,680
+either so using one file is
+
+995
+00:55:23,440 --> 00:55:30,799
+fine so if I remove the title from the
+
+996
+00:55:27,680 --> 00:55:32,119
+book since we said that title shall be
+
+997
+00:55:30,799 --> 00:55:36,280
+unique and
+
+998
+00:55:32,119 --> 00:55:42,480
+mandatory and run the validation
+
+999
+00:55:36,280 --> 00:55:42,480
+again we should have uh a validation
+
+1000
+00:55:43,400 --> 00:55:49,160
+report yes we got the
+
+1001
+00:55:46,960 --> 00:55:53,400
+exception and if you have a look at the
+
+1002
+00:55:49,160 --> 00:55:56,480
+report now we see that it confirms
+
+1003
+00:55:53,400 --> 00:55:59,799
+false and the validation result is
+
+1004
+00:55:56,480 --> 00:56:01,960
+considering the node The Hobbit and The
+
+1005
+00:55:59,799 --> 00:56:04,359
+constraint component is a mean count
+
+1006
+00:56:01,960 --> 00:56:07,960
+constraint component since we removed
+
+1007
+00:56:04,359 --> 00:56:10,520
+title and it expected at least one title
+
+1008
+00:56:07,960 --> 00:56:12,960
+The Source shape is title shape and the
+
+1009
+00:56:10,520 --> 00:56:16,920
+result path is
+
+1010
+00:56:12,960 --> 00:56:21,760
+title so we can look at the shape that
+
+1011
+00:56:16,920 --> 00:56:24,680
+says title should have a mean count to
+
+1012
+00:56:21,760 --> 00:56:28,240
+one and we look at the data and see that
+
+1013
+00:56:24,680 --> 00:56:28,240
+The Hobbit is missing on title
+
+1014
+00:56:28,720 --> 00:56:33,839
+so it should be
+
+1015
+00:56:30,440 --> 00:56:36,039
+there and that is how it looks like in
+
+1016
+00:56:33,839 --> 00:56:40,039
+um in the Java
+
+1017
+00:56:36,039 --> 00:56:44,720
+application and if I bring this with me
+
+1018
+00:56:40,039 --> 00:56:44,720
+to the Shak
+
+1019
+00:56:44,880 --> 00:56:53,720
+playground and that looks like this if
+
+1020
+00:56:49,319 --> 00:56:53,720
+this okay the screen is um
+
+1021
+00:56:54,839 --> 00:57:01,960
+updated so before you start um doing
+
+1022
+00:56:59,280 --> 00:57:04,559
+things on the shackle playground you
+
+1023
+00:57:01,960 --> 00:57:06,520
+probably want to switch over to Turtle
+
+1024
+00:57:04,559 --> 00:57:10,559
+format
+
+1025
+00:57:06,520 --> 00:57:14,319
+here and we copied the data first so I'm
+
+1026
+00:57:10,559 --> 00:57:20,039
+going to paste that in
+
+1027
+00:57:14,319 --> 00:57:20,039
+here and then I'm going to take the
+
+1028
+00:57:21,680 --> 00:57:28,160
+shapes and paste that in the shape graph
+
+1029
+00:57:28,359 --> 00:57:36,119
+new and I'll run that and we didn't get
+
+1030
+00:57:32,280 --> 00:57:39,599
+any report back because everything is
+
+1031
+00:57:36,119 --> 00:57:42,799
+fine but if I then again remove the
+
+1032
+00:57:39,599 --> 00:57:45,839
+title that had a inan count to one and
+
+1033
+00:57:42,799 --> 00:57:49,559
+update that we will get a validation
+
+1034
+00:57:45,839 --> 00:57:52,520
+report that looks somewhat the same as
+
+1035
+00:57:49,559 --> 00:57:55,520
+the one in the Java application uh the
+
+1036
+00:57:52,520 --> 00:57:58,119
+difference is that we here also get the
+
+1037
+00:57:55,520 --> 00:57:58,119
+result message
+
+1038
+00:58:03,160 --> 00:58:10,480
+yes so the exercises you can find on
+
+1039
+00:58:07,319 --> 00:58:14,520
+this slack
+
+1040
+00:58:10,480 --> 00:58:17,599
+um uh slack GitHub repository it's late
+
+1041
+00:58:14,520 --> 00:58:21,359
+in the evening for me I'm so sorry U
+
+1042
+00:58:17,599 --> 00:58:23,599
+GitHub repository um my user which is
+
+1043
+00:58:21,359 --> 00:58:28,079
+called Vala
+
+1044
+00:58:23,599 --> 00:58:28,079
+SL shle masterclass
+
+1045
+00:58:28,480 --> 00:58:35,760
+so here are the slides and here are the
+
+1046
+00:58:32,880 --> 00:58:37,520
+demo the Java project I showed you so
+
+1047
+00:58:35,760 --> 00:58:40,720
+you could choose if you want to use the
+
+1048
+00:58:37,520 --> 00:58:45,119
+Java application or in the shle
+
+1049
+00:58:40,720 --> 00:58:47,000
+playground whatever you want and the
+
+1050
+00:58:45,119 --> 00:58:49,720
+data folder
+
+1051
+00:58:47,000 --> 00:58:52,039
+contains the data file that I just
+
+1052
+00:58:49,720 --> 00:58:55,680
+showed you and the shapes file I just
+
+1053
+00:58:52,039 --> 00:58:57,000
+shown you and the exercises so if you go
+
+1054
+00:58:55,680 --> 00:58:59,039
+here
+
+1055
+00:58:57,000 --> 00:59:02,720
+you find the
+
+1056
+00:58:59,039 --> 00:59:05,319
+tasks so first of all you could try
+
+1057
+00:59:02,720 --> 00:59:09,559
+complete the shapes
+
+1058
+00:59:05,319 --> 00:59:14,880
+um uh that is already present and then I
+
+1059
+00:59:09,559 --> 00:59:16,559
+have prepared uh some more data examples
+
+1060
+00:59:14,880 --> 00:59:19,640
+aox
+
+1061
+00:59:16,559 --> 00:59:22,960
+statements for music games myth and
+
+1062
+00:59:19,640 --> 00:59:26,880
+Opera so you can extend the data file
+
+1063
+00:59:22,960 --> 00:59:30,599
+with this data if you like and create
+
+1064
+00:59:26,880 --> 00:59:33,599
+um uh shackle constraints for that so I
+
+1065
+00:59:30,599 --> 00:59:35,400
+put in some tips here and there uh in
+
+1066
+00:59:33,599 --> 00:59:41,240
+case you get
+
+1067
+00:59:35,400 --> 00:59:47,960
+stuck um yeah and um we probably won't
+
+1068
+00:59:41,240 --> 00:59:52,319
+have time for the two last uh tasks
+
+1069
+00:59:47,960 --> 00:59:55,799
+um but uh
+
+1070
+00:59:52,319 --> 00:59:57,079
+yeah feel free to play around and I'll
+
+1071
+00:59:55,799 --> 01:00:00,039
+keep
+
+1072
+00:59:57,079 --> 01:00:03,480
+the link open of course if there is any
+
+1073
+01:00:00,039 --> 01:00:07,440
+questions and feel free to contact on on
+
+1074
+01:00:03,480 --> 01:00:09,960
+slack and I'll answer along the way but
+
+1075
+01:00:07,440 --> 01:00:14,240
+I think I won't be talking for the next
+
+1076
+01:00:09,960 --> 01:00:18,720
+40 minutes so we can get some uh piece
+
+1077
+01:00:14,240 --> 01:00:21,960
+while working um but please open a this
+
+1078
+01:00:18,720 --> 01:00:26,119
+discussion on the on the tasks on on
+
+1079
+01:00:21,960 --> 01:00:29,240
+slack or um if you want me to talk more
+
+1080
+01:00:26,119 --> 01:00:32,119
+about some subjects uh please notify me
+
+1081
+01:00:29,240 --> 01:00:36,319
+on that as well uh I'm going to go grab
+
+1082
+01:00:32,119 --> 01:00:39,640
+a coffee uh and we'll have a 10 minute
+
+1083
+01:00:36,319 --> 01:00:43,799
+break before we start on the tasks uh
+
+1084
+01:00:39,640 --> 01:00:43,799
+and I think we will set off
+
+1085
+01:00:44,440 --> 01:00:54,319
+um yeah let's let's gather again at um a
+
+1086
+01:00:49,520 --> 01:00:57,920
+quarter to 9 in my time so that is in um
+
+1087
+01:00:54,319 --> 01:00:57,920
+uh 4 minutes
+
+1088
+01:00:59,680 --> 01:01:05,400
+great thank you Veronica and uh see you
+
+1089
+01:01:02,359 --> 01:01:05,400
+all in a little
+
+1090
+01:01:07,799 --> 01:01:13,240
+while Veronica sorry can can you repeat
+
+1091
+01:01:10,119 --> 01:01:15,920
+the time uh you want to start back or
+
+1092
+01:01:13,240 --> 01:01:18,319
+write it in the in the chat in case
+
+1093
+01:01:15,920 --> 01:01:19,799
+people have not yeah of course I can
+
+1094
+01:01:18,319 --> 01:01:23,599
+write
+
+1095
+01:01:19,799 --> 01:01:26,599
+it and also send a link to the gift
+
+1096
+01:01:23,599 --> 01:01:26,599
+Repository
+
+1097
+01:01:26,760 --> 01:01:31,039
+oh yeah and if you could post that both
+
+1098
+01:01:28,599 --> 01:01:32,920
+in slack and in the chat so that people
+
+1099
+01:01:31,039 --> 01:01:36,319
+who don't have access to to slack can
+
+1100
+01:01:32,920 --> 01:01:36,319
+still access it oh thank
+
+1101
+01:01:37,240 --> 01:01:41,440
+you thank you
+
+1102
+01:02:00,290 --> 01:02:03,449
+[Applause]
+
+1103
+01:02:03,839 --> 01:02:08,770
+that
+
+1104
+01:02:05,580 --> 01:02:08,770
+[Applause]
+
+1105
+01:02:54,839 --> 01:02:57,839
+for
+
+1106
+01:03:24,760 --> 01:03:27,760
+for
+
+1107
+01:03:54,720 --> 01:03:57,720
+e
+
+1108
+01:04:24,720 --> 01:04:27,720
+e
+
+1109
+01:04:54,640 --> 01:04:58,680
+e e
+
+1110
+01:05:14,090 --> 01:05:17,280
+[Music]
+
+1111
+01:06:24,559 --> 01:06:27,559
+for
+
+1112
+01:06:54,520 --> 01:06:58,559
+for for
+
+1113
+01:08:38,250 --> 01:08:41,329
+[Applause]
+
+1114
+01:09:24,359 --> 01:09:28,359
+for for
+
+1115
+01:10:40,100 --> 01:10:43,129
+[Music]
+
+1116
+01:11:24,239 --> 01:11:27,239
+for
+
+1117
+01:11:41,480 --> 01:11:44,570
+[Music]
+
+1118
+01:11:54,239 --> 01:11:58,239
+for for
+
+1119
+01:13:02,080 --> 01:13:05,149
+[Music]
+
+1120
+01:13:54,040 --> 01:13:57,040
+for
+
+1121
+01:14:24,040 --> 01:14:28,040
+for for
+
+1122
+01:15:54,960 --> 01:15:57,960
+for
+
+1123
+01:17:54,800 --> 01:17:57,800
+for
+
+1124
+01:19:53,639 --> 01:19:56,639
+for
+
+1125
+01:20:23,639 --> 01:20:27,679
+for for
+
+1126
+01:21:53,520 --> 01:21:56,520
+for
+
+1127
+01:22:23,520 --> 01:22:27,520
+for for
+
+1128
+01:23:53,440 --> 01:23:56,440
+right
+
+1129
+01:24:11,770 --> 01:24:14,899
+[Applause]
+
+1130
+01:24:23,320 --> 01:24:27,360
+for for
+
+1131
+01:25:53,239 --> 01:25:57,280
+sh for
+
+1132
+01:26:50,620 --> 01:26:53,859
+[Applause]
+
+1133
+01:26:54,159 --> 01:26:57,159
+for
+
+1134
+01:27:46,760 --> 01:27:49,839
+[Music]
+
+1135
+01:27:53,119 --> 01:27:56,119
+for
+
+1136
+01:28:23,119 --> 01:28:26,119
+for
+
+1137
+01:28:53,040 --> 01:28:57,080
+e e
+
+1138
+01:29:53,040 --> 01:29:56,040
+for
+
+1139
+01:30:22,960 --> 01:30:25,960
+for
+
+1140
+01:30:52,920 --> 01:30:55,920
+for
+
+1141
+01:31:22,920 --> 01:31:26,920
+e for
+
+1142
+01:32:52,840 --> 01:32:55,840
+for
+
+1143
+01:33:22,760 --> 01:33:25,760
+for
+
+1144
+01:33:52,719 --> 01:33:56,760
+for e
+
+1145
+01:34:53,679 --> 01:34:56,679
+for
+
+1146
+01:35:30,679 --> 01:35:37,639
+I just want to check in and say that um
+
+1147
+01:35:33,679 --> 01:35:40,400
+it's 5 minutes left of uh working with
+
+1148
+01:35:37,639 --> 01:35:43,840
+tasks and if any of you want to
+
+1149
+01:35:40,400 --> 01:35:46,239
+volunteer to show your Solutions uh
+
+1150
+01:35:43,840 --> 01:35:49,360
+please let me know in the chat so we can
+
+1151
+01:35:46,239 --> 01:35:53,080
+give you the opp uh possibility of
+
+1152
+01:35:49,360 --> 01:35:53,080
+sharing your screen
+
+1153
+01:36:53,560 --> 01:36:56,560
+for
+
+1154
+01:38:22,000 --> 01:38:25,000
+what
+
+1155
+01:39:22,360 --> 01:39:26,360
+for for
+
+1156
+01:40:04,440 --> 01:40:10,320
+okay I I think we can um do the
+
+1157
+01:40:08,800 --> 01:40:13,719
+summarization
+
+1158
+01:40:10,320 --> 01:40:17,639
+now I hope everyone enjoyed the tasks
+
+1159
+01:40:13,719 --> 01:40:17,639
+and I hope it wasn't too
+
+1160
+01:40:18,360 --> 01:40:26,280
+easy
+
+1161
+01:40:21,199 --> 01:40:29,080
+so uh I haven't gotten any volum here uh
+
+1162
+01:40:26,280 --> 01:40:33,480
+for showing their results so I'll just
+
+1163
+01:40:29,080 --> 01:40:37,800
+show my answers for the tasks instead
+
+1164
+01:40:33,480 --> 01:40:40,360
+that's okay um yeah let's have a look
+
+1165
+01:40:37,800 --> 01:40:42,080
+something like this I
+
+1166
+01:40:40,360 --> 01:40:46,440
+suppose
+
+1167
+01:40:42,080 --> 01:40:48,560
+um there's a lot of data here uh not not
+
+1168
+01:40:46,440 --> 01:40:52,880
+that much but it's a lot of different
+
+1169
+01:40:48,560 --> 01:40:58,199
+kinds of classes with some few instances
+
+1170
+01:40:52,880 --> 01:41:02,800
+so I've tried to cover um every bit of
+
+1171
+01:40:58,199 --> 01:41:07,480
+the aox examples I provided you
+
+1172
+01:41:02,800 --> 01:41:08,400
+um and you will rather look at the code
+
+1173
+01:41:07,480 --> 01:41:11,400
+I
+
+1174
+01:41:08,400 --> 01:41:11,400
+suppose
+
+1175
+01:41:13,040 --> 01:41:18,599
+so
+
+1176
+01:41:14,560 --> 01:41:22,760
+here uh we have all the data in one
+
+1177
+01:41:18,599 --> 01:41:24,400
+large file so I just copy pasted in uh
+
+1178
+01:41:22,760 --> 01:41:28,080
+all the
+
+1179
+01:41:24,400 --> 01:41:32,280
+small Snippets from the exercise folder
+
+1180
+01:41:28,080 --> 01:41:32,280
+into this data
+
+1181
+01:41:32,520 --> 01:41:41,080
+file and let's have a look at the shapes
+
+1182
+01:41:36,520 --> 01:41:45,800
+so first of all I have chosen to split
+
+1183
+01:41:41,080 --> 01:41:50,239
+up the shapes um in in order to get my
+
+1184
+01:41:45,800 --> 01:41:54,360
+data more organized so for example for
+
+1185
+01:41:50,239 --> 01:41:58,719
+the the book and title shape that we
+
+1186
+01:41:54,360 --> 01:42:01,280
+had um as a start we had the book shape
+
+1187
+01:41:58,719 --> 01:42:05,000
+that targeted the class book with some
+
+1188
+01:42:01,280 --> 01:42:08,280
+tightly shape but when you look at all
+
+1189
+01:42:05,000 --> 01:42:10,440
+the aox examples you see that everything
+
+1190
+01:42:08,280 --> 01:42:16,119
+that is
+
+1191
+01:42:10,440 --> 01:42:20,199
+um a subass of work in some sort has the
+
+1192
+01:42:16,119 --> 01:42:25,400
+predicate title um connected to it so I
+
+1193
+01:42:20,199 --> 01:42:29,920
+chose to move title Shape Up to the work
+
+1194
+01:42:25,400 --> 01:42:33,480
+shape and that is also the same for the
+
+1195
+01:42:29,920 --> 01:42:33,480
+relationship on release
+
+1196
+01:42:35,960 --> 01:42:42,719
+State and uh in some of the uh aox
+
+1197
+01:42:40,440 --> 01:42:47,719
+examples we have title in several
+
+1198
+01:42:42,719 --> 01:42:54,520
+different languages for example the um
+
+1199
+01:42:47,719 --> 01:42:58,679
+uh let me find it for the myth of Eda
+
+1200
+01:42:54,520 --> 01:43:01,599
+you have Pros Eda in English and then
+
+1201
+01:42:58,679 --> 01:43:01,599
+Eda in
+
+1202
+01:43:01,679 --> 01:43:10,199
+Norwegian so I chose to put in a unique
+
+1203
+01:43:05,239 --> 01:43:13,119
+Lang um constraint on true so that we
+
+1204
+01:43:10,199 --> 01:43:15,239
+could have uh different kinds of
+
+1205
+01:43:13,119 --> 01:43:19,400
+languages uh in the
+
+1206
+01:43:15,239 --> 01:43:23,679
+title and I removed the max count to one
+
+1207
+01:43:19,400 --> 01:43:28,280
+and just kept the minan count to one
+
+1208
+01:43:23,679 --> 01:43:31,679
+the release shape um here we did stumble
+
+1209
+01:43:28,280 --> 01:43:37,360
+across uh several kinds of
+
+1210
+01:43:31,679 --> 01:43:43,119
+um um of data types for example uh for
+
+1211
+01:43:37,360 --> 01:43:45,159
+the book we have um a release date as
+
+1212
+01:43:43,119 --> 01:43:49,280
+xsd
+
+1213
+01:43:45,159 --> 01:43:52,679
+date and for the
+
+1214
+01:43:49,280 --> 01:43:54,040
+game we only have the year and not the
+
+1215
+01:43:52,679 --> 01:43:57,360
+date
+
+1216
+01:43:54,040 --> 01:43:58,560
+itself so then I chose to put in uh an
+
+1217
+01:43:57,360 --> 01:44:01,719
+or
+
+1218
+01:43:58,560 --> 01:44:06,119
+constraint that allows both exsd year
+
+1219
+01:44:01,719 --> 01:44:08,880
+and xsd date to be valid data types for
+
+1220
+01:44:06,119 --> 01:44:08,880
+the release
+
+1221
+01:44:12,639 --> 01:44:20,920
+predicate the book shape then contains
+
+1222
+01:44:15,880 --> 01:44:23,920
+only properties on pages and author
+
+1223
+01:44:20,920 --> 01:44:27,840
+because that is unique for instances of
+
+1224
+01:44:23,920 --> 01:44:31,360
+book in the aox examples provided and I
+
+1225
+01:44:27,840 --> 01:44:35,000
+also put in this node to work shape so
+
+1226
+01:44:31,360 --> 01:44:38,239
+it inherit and uh inherits all property
+
+1227
+01:44:35,000 --> 01:44:41,639
+shapes described in work shape as
+
+1228
+01:44:38,239 --> 01:44:43,560
+well the page shape is quite easy uh or
+
+1229
+01:44:41,639 --> 01:44:45,520
+simple it's only I mean a Max count to
+
+1230
+01:44:43,560 --> 01:44:48,159
+one on the data type
+
+1231
+01:44:45,520 --> 01:44:50,159
+integer the same for author it's only a
+
+1232
+01:44:48,159 --> 01:44:53,480
+class constraint and I'm mean count of
+
+1233
+01:44:50,159 --> 01:44:57,119
+one because I know uh even though it it
+
+1234
+01:44:53,480 --> 01:44:59,239
+isn't stated in these aox examples uh I
+
+1235
+01:44:57,119 --> 01:45:03,920
+know that a book can have more than one
+
+1236
+01:44:59,239 --> 01:45:08,320
+author so I chose to remove uh or do not
+
+1237
+01:45:03,920 --> 01:45:08,320
+include a Max count of one in this
+
+1238
+01:45:10,520 --> 01:45:14,360
+case um for
+
+1239
+01:45:12,639 --> 01:45:19,119
+persons
+
+1240
+01:45:14,360 --> 01:45:23,520
+uh we have name born and died
+
+1241
+01:45:19,119 --> 01:45:28,599
+shapes and author director poet
+
+1242
+01:45:23,520 --> 01:45:33,040
+composer are all different kinds of
+
+1243
+01:45:28,599 --> 01:45:38,000
+persons so here I have a
+
+1244
+01:45:33,040 --> 01:45:43,719
+typo so here I uh chose to put in a node
+
+1245
+01:45:38,000 --> 01:45:43,719
+to person in every subshape
+
+1246
+01:45:43,760 --> 01:45:49,199
+and the author director poet and
+
+1247
+01:45:46,599 --> 01:45:51,840
+composer shape doesn't include any more
+
+1248
+01:45:49,199 --> 01:45:53,639
+property shapes because our AO examples
+
+1249
+01:45:51,840 --> 01:45:57,760
+were quite
+
+1250
+01:45:53,639 --> 01:46:01,080
+simple um but they could include
+
+1251
+01:45:57,760 --> 01:46:04,960
+um things that are unique for very
+
+1252
+01:46:01,080 --> 01:46:07,000
+specific class so I want to divide them
+
+1253
+01:46:04,960 --> 01:46:12,159
+uh because of
+
+1254
+01:46:07,000 --> 01:46:13,960
+that the name shape is a standard unique
+
+1255
+01:46:12,159 --> 01:46:18,000
+mandatory
+
+1256
+01:46:13,960 --> 01:46:20,480
+string the born shape is much like uh
+
+1257
+01:46:18,000 --> 01:46:23,560
+the release shape because we encounter
+
+1258
+01:46:20,480 --> 01:46:27,639
+both year and date in our EX
+
+1259
+01:46:23,560 --> 01:46:31,800
+examples like for the myth here with SN
+
+1260
+01:46:27,639 --> 01:46:34,280
+stason he is born in 1179 but we don't
+
+1261
+01:46:31,800 --> 01:46:38,320
+know when in that
+
+1262
+01:46:34,280 --> 01:46:43,119
+year and uh the death date is uh a
+
+1263
+01:46:38,320 --> 01:46:43,119
+complete date uh for this example
+
+1264
+01:46:44,840 --> 01:46:50,280
+for
+
+1265
+01:46:46,520 --> 01:46:54,679
+and a birth date uh would be unique and
+
+1266
+01:46:50,280 --> 01:46:58,360
+mandatory for every person uh in this
+
+1267
+01:46:54,679 --> 01:47:02,239
+example and I also commented out here
+
+1268
+01:46:58,360 --> 01:47:06,599
+less than or equals to died
+
+1269
+01:47:02,239 --> 01:47:11,040
+um because the rdf forj engine doesn't
+
+1270
+01:47:06,599 --> 01:47:13,239
+support property pair constraints um but
+
+1271
+01:47:11,040 --> 01:47:17,199
+uh the shackle playground the Brower
+
+1272
+01:47:13,239 --> 01:47:20,800
+based validation engine does that so we
+
+1273
+01:47:17,199 --> 01:47:23,679
+could remove the comment and run it in
+
+1274
+01:47:20,800 --> 01:47:27,119
+um shackle playground if like I'm going
+
+1275
+01:47:23,679 --> 01:47:28,800
+to push this uh answers to to GitHub so
+
+1276
+01:47:27,119 --> 01:47:29,840
+you can have a look at it afterwards if
+
+1277
+01:47:28,800 --> 01:47:34,840
+you
+
+1278
+01:47:29,840 --> 01:47:37,719
+like the diet shape is uh much like the
+
+1279
+01:47:34,840 --> 01:47:40,119
+born shape except from uh it doesn't
+
+1280
+01:47:37,719 --> 01:47:44,320
+include a mean count one because we want
+
+1281
+01:47:40,119 --> 01:47:46,560
+to describe persons who are alive so it
+
+1282
+01:47:44,320 --> 01:47:48,000
+would be a Pity if everyone has to die
+
+1283
+01:47:46,560 --> 01:47:49,639
+before they are
+
+1284
+01:47:48,000 --> 01:47:53,920
+described
+
+1285
+01:47:49,639 --> 01:47:58,199
+um like Peter Jackson uh he is here
+
+1286
+01:47:53,920 --> 01:48:01,280
+somewhere he is uh still alive and uh
+
+1287
+01:47:58,199 --> 01:48:05,080
+therefore we want to only have the
+
+1288
+01:48:01,280 --> 01:48:07,880
+mean no the the max count I mean on one
+
+1289
+01:48:05,080 --> 01:48:07,880
+for a died
+
+1290
+01:48:08,480 --> 01:48:14,560
+ship yes the rest of the shapes are
+
+1291
+01:48:13,520 --> 01:48:17,000
+pretty
+
+1292
+01:48:14,560 --> 01:48:20,920
+straightforward um much on the same
+
+1293
+01:48:17,000 --> 01:48:24,719
+format that I have already
+
+1294
+01:48:20,920 --> 01:48:28,880
+described um
+
+1295
+01:48:24,719 --> 01:48:33,199
+let's see if I have something more fancy
+
+1296
+01:48:28,880 --> 01:48:37,040
+here yes develop by
+
+1297
+01:48:33,199 --> 01:48:37,040
+shape uh for the
+
+1298
+01:48:37,679 --> 01:48:44,280
+game the game says it's developed by
+
+1299
+01:48:41,560 --> 01:48:49,199
+beam software but we don't have any more
+
+1300
+01:48:44,280 --> 01:48:53,520
+information about what beam software is
+
+1301
+01:48:49,199 --> 01:48:58,080
+so I chose to put on a node kind
+
+1302
+01:48:53,520 --> 01:49:01,679
+as an iri for this predicate so it only
+
+1303
+01:48:58,080 --> 01:49:05,400
+points to other kinds of objects object
+
+1304
+01:49:01,679 --> 01:49:05,400
+Val use that are not
+
+1305
+01:49:05,840 --> 01:49:13,639
+literals but I don't know what kind of
+
+1306
+01:49:08,360 --> 01:49:16,480
+class beam software is um my um
+
+1307
+01:49:13,639 --> 01:49:19,320
+experience would uh tell me that beam
+
+1308
+01:49:16,480 --> 01:49:22,719
+software is a company but uh it isn't
+
+1309
+01:49:19,320 --> 01:49:25,360
+stated here so I won't um make that a
+
+1310
+01:49:22,719 --> 01:49:25,360
+fion in the
+
+1311
+01:49:27,280 --> 01:49:36,679
+shape um the same for album by in um the
+
+1312
+01:49:33,360 --> 01:49:39,080
+aook statements about albums it says
+
+1313
+01:49:36,679 --> 01:49:42,920
+here that uh Nightfall in Middle Earth
+
+1314
+01:49:39,080 --> 01:49:47,880
+is an album by Blind Guardian uh which I
+
+1315
+01:49:42,920 --> 01:49:51,119
+know is a band um or a music group uh
+
+1316
+01:49:47,880 --> 01:49:54,639
+but I haven't stated it or it isn't
+
+1317
+01:49:51,119 --> 01:49:54,639
+stated in uh
+
+1318
+01:49:55,400 --> 01:50:00,679
+in the aook data I won't make an
+
+1319
+01:49:57,719 --> 01:50:00,679
+assumption on that
+
+1320
+01:50:00,880 --> 01:50:10,400
+either yes and that's it for for the uh
+
+1321
+01:50:06,599 --> 01:50:11,920
+exercises or at least the exercise
+
+1322
+01:50:10,400 --> 01:50:14,239
+number
+
+1323
+01:50:11,920 --> 01:50:18,440
+two which I
+
+1324
+01:50:14,239 --> 01:50:23,440
+suppose um most of you ended with if I'm
+
+1325
+01:50:18,440 --> 01:50:27,760
+not uh wrong if anyone managed to
+
+1326
+01:50:23,440 --> 01:50:31,760
+complete everything well done
+
+1327
+01:50:27,760 --> 01:50:34,280
+um and I hope uh again I hope it wasn't
+
+1328
+01:50:31,760 --> 01:50:38,400
+too too
+
+1329
+01:50:34,280 --> 01:50:41,639
+easy but anyways uh if you would play
+
+1330
+01:50:38,400 --> 01:50:43,960
+more with this data you could try look
+
+1331
+01:50:41,639 --> 01:50:48,639
+for um
+
+1332
+01:50:43,960 --> 01:50:51,719
+a common relationship between all these
+
+1333
+01:50:48,639 --> 01:50:55,560
+entities and classes because I chose
+
+1334
+01:50:51,719 --> 01:51:00,040
+these data for a reason and everything
+
+1335
+01:50:55,560 --> 01:51:03,079
+is surrounded by Middle Earth really
+
+1336
+01:51:00,040 --> 01:51:07,360
+except from the Opera but it's the Opera
+
+1337
+01:51:03,079 --> 01:51:10,199
+is inspired by the same source as um
+
+1338
+01:51:07,360 --> 01:51:12,760
+what inspired Tolan to create Middle
+
+1339
+01:51:10,199 --> 01:51:14,560
+Earth which is the noris poem collection
+
+1340
+01:51:12,760 --> 01:51:17,400
+of
+
+1341
+01:51:14,560 --> 01:51:19,239
+Eda um so if you have some spare time
+
+1342
+01:51:17,400 --> 01:51:23,679
+one evening and want to play around with
+
+1343
+01:51:19,239 --> 01:51:27,760
+it please try to create a concept of of
+
+1344
+01:51:23,679 --> 01:51:30,119
+influence and um work that influence
+
+1345
+01:51:27,760 --> 01:51:32,040
+each other and Concepts that influence
+
+1346
+01:51:30,119 --> 01:51:34,920
+each other and try to create shle shapes
+
+1347
+01:51:32,040 --> 01:51:35,960
+for that that would be really cool to
+
+1348
+01:51:34,920 --> 01:51:42,400
+cool to
+
+1349
+01:51:35,960 --> 01:51:42,400
+see uh some s suggestions on how to do
+
+1350
+01:51:42,960 --> 01:51:50,440
+that okay
+
+1351
+01:51:45,880 --> 01:51:54,400
+um that was everything I was planning to
+
+1352
+01:51:50,440 --> 01:51:56,239
+show you today here are some um
+
+1353
+01:51:54,400 --> 01:52:00,119
+resources and
+
+1354
+01:51:56,239 --> 01:52:03,840
+references and um I also um promised you
+
+1355
+01:52:00,119 --> 01:52:06,840
+to to say some few words about the dash
+
+1356
+01:52:03,840 --> 01:52:09,079
+data shap vocabulary and uh the che
+
+1357
+01:52:06,840 --> 01:52:11,040
+Advanced features so I can do that in
+
+1358
+01:52:09,079 --> 01:52:14,199
+the last four
+
+1359
+01:52:11,040 --> 01:52:19,360
+minutes um and before I do that I want
+
+1360
+01:52:14,199 --> 01:52:22,800
+to go back to the shapes I just show you
+
+1361
+01:52:19,360 --> 01:52:26,599
+and uh let's have a look at this or or
+
+1362
+01:52:22,800 --> 01:52:29,880
+constraint that says that um the
+
+1363
+01:52:26,599 --> 01:52:32,040
+predicate born can point to either a
+
+1364
+01:52:29,880 --> 01:52:36,159
+year or a
+
+1365
+01:52:32,040 --> 01:52:40,440
+date um these issues uh or similar
+
+1366
+01:52:36,159 --> 01:52:42,719
+issues to this uh can be done by using
+
+1367
+01:52:40,440 --> 01:52:44,119
+uh the dash data shapes vocabulary
+
+1368
+01:52:42,719 --> 01:52:47,760
+because it
+
+1369
+01:52:44,119 --> 01:52:51,079
+includes a collection of shapes that can
+
+1370
+01:52:47,760 --> 01:52:53,960
+let you do similar things like this not
+
+1371
+01:52:51,079 --> 01:52:58,360
+not exactly for a year or dates but they
+
+1372
+01:52:53,960 --> 01:53:03,440
+have uh an option for days or date time
+
+1373
+01:52:58,360 --> 01:53:07,360
+so this is things containing uh in
+
+1374
+01:53:03,440 --> 01:53:13,599
+dash it's pre-written shapes that you
+
+1375
+01:53:07,360 --> 01:53:13,599
+can reuse to um extend your own
+
+1376
+01:53:16,960 --> 01:53:26,400
+shapes so here we have uh an or on a
+
+1377
+01:53:22,560 --> 01:53:30,119
+Dash shape that is date or date time so
+
+1378
+01:53:26,400 --> 01:53:33,079
+they have a similar approach uh to the
+
+1379
+01:53:30,119 --> 01:53:36,560
+one I had in my solution only for date
+
+1380
+01:53:33,079 --> 01:53:39,320
+or date time and shorten down when we
+
+1381
+01:53:36,560 --> 01:53:43,079
+can reference it like
+
+1382
+01:53:39,320 --> 01:53:46,119
+this so the the dash is uh can be
+
+1383
+01:53:43,079 --> 01:53:52,119
+imported by uh ourl import at the
+
+1384
+01:53:46,119 --> 01:53:52,119
+beginning of um of your shapes Gra
+
+1385
+01:53:53,079 --> 01:53:59,360
+and Das
+
+1386
+01:53:55,199 --> 01:54:00,880
+includes uh yeah string or length string
+
+1387
+01:53:59,360 --> 01:54:06,440
+and
+
+1388
+01:54:00,880 --> 01:54:06,440
+uh some other uh collections as
+
+1389
+01:54:07,239 --> 01:54:13,760
+well and for the advanced
+
+1390
+01:54:11,400 --> 01:54:18,560
+features the advanced
+
+1391
+01:54:13,760 --> 01:54:23,760
+features um mainly contains so uh things
+
+1392
+01:54:18,560 --> 01:54:28,360
+that are familiar uh from Sparkle
+
+1393
+01:54:23,760 --> 01:54:31,159
+like we have exists and we have filter
+
+1394
+01:54:28,360 --> 01:54:34,840
+shape uh which can be seen as as a
+
+1395
+01:54:31,159 --> 01:54:38,119
+sparkle filter intersection Union and
+
+1396
+01:54:34,840 --> 01:54:42,560
+minus are all familiar in in Sparkle
+
+1397
+01:54:38,119 --> 01:54:44,000
+also distinct and count and the count uh
+
+1398
+01:54:42,560 --> 01:54:48,400
+is
+
+1399
+01:54:44,000 --> 01:54:50,400
+um a bit exciting to me at least uh
+
+1400
+01:54:48,400 --> 01:54:53,760
+because in the regulation requirements
+
+1401
+01:54:50,400 --> 01:54:57,440
+I'm working on uh we have requirements
+
+1402
+01:54:53,760 --> 01:54:59,719
+that there shall exist at least one life
+
+1403
+01:54:57,440 --> 01:55:04,199
+West for each person on
+
+1404
+01:54:59,719 --> 01:55:06,679
+board so I can actually use the count to
+
+1405
+01:55:04,199 --> 01:55:08,920
+count the number of occurrences of a
+
+1406
+01:55:06,679 --> 01:55:10,360
+specific predicate in order to enrich
+
+1407
+01:55:08,920 --> 01:55:13,840
+another
+
+1408
+01:55:10,360 --> 01:55:16,639
+predicate so I'm pretty excited to get
+
+1409
+01:55:13,840 --> 01:55:20,560
+to work with this uh Advanced features
+
+1410
+01:55:16,639 --> 01:55:24,320
+next year to see if I can uh model my
+
+1411
+01:55:20,560 --> 01:55:28,360
+requirements even more Det
+
+1412
+01:55:24,320 --> 01:55:32,599
+detailed um yep we also have ask and
+
+1413
+01:55:28,360 --> 01:55:36,280
+select of set limit order by the typical
+
+1414
+01:55:32,599 --> 01:55:39,760
+Sparkle stuff and now I see we have
+
+1415
+01:55:36,280 --> 01:55:42,320
+reach reached our limit uh if you want
+
+1416
+01:55:39,760 --> 01:55:46,320
+to take the discussion further I will be
+
+1417
+01:55:42,320 --> 01:55:49,079
+available on slack for some more minutes
+
+1418
+01:55:46,320 --> 01:55:51,960
+before I go to bed otherwise thank you
+
+1419
+01:55:49,079 --> 01:55:56,679
+for listening in it was a great pleasure
+
+1420
+01:55:51,960 --> 01:55:56,679
+to to talk to you thank you
+

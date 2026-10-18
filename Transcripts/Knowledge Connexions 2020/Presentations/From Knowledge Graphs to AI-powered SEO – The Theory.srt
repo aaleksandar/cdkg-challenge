@@ -1,0 +1,11260 @@
+1
+00:00:02,480 --> 00:00:08,120
+Thanks for the introduction. I am
+
+2
+00:00:05,200 --> 00:00:13,760
+Andrea. I created with some friends a
+
+3
+00:00:08,120 --> 00:00:14,720
+tool called WordLift for automating SEO.
+
+4
+00:00:13,760 --> 00:00:16,520
+And
+
+5
+00:00:14,720 --> 00:00:19,600
+and we do this
+
+6
+00:00:16,520 --> 00:00:22,080
+using artificial intelligence and more
+
+7
+00:00:19,600 --> 00:00:24,560
+specifically natural language processing
+
+8
+00:00:22,080 --> 00:00:28,120
+and and knowledge graph. So what we're
+
+9
+00:00:24,560 --> 00:00:30,040
+going to see today it's really you know
+
+10
+00:00:28,120 --> 00:00:32,400
+kind of something new that we've been
+
+11
+00:00:30,040 --> 00:00:34,480
+working on. It's an experiment that it's
+
+12
+00:00:32,400 --> 00:00:37,800
+you know we're starting to test on on on
+
+13
+00:00:34,480 --> 00:00:41,800
+some clients and but it's also a way for
+
+14
+00:00:37,800 --> 00:00:42,760
+for us to learn about long tail SEO and
+
+15
+00:00:41,800 --> 00:00:45,840
+and
+
+16
+00:00:42,760 --> 00:00:48,360
+SEO automation. So I hope that you find
+
+17
+00:00:45,840 --> 00:00:50,160
+it useful and there are some good ideas
+
+18
+00:00:48,360 --> 00:00:51,200
+that you can take home and and play
+
+19
+00:00:50,160 --> 00:00:52,600
+with.
+
+20
+00:00:51,200 --> 00:00:55,080
+Something happened and the marketing
+
+21
+00:00:52,600 --> 00:00:57,560
+team dropped this slide into it and also
+
+22
+00:00:55,080 --> 00:00:59,440
+I made a a huge discount on our tool. So
+
+23
+00:00:57,560 --> 00:01:01,240
+if you if you're not using WordLift
+
+24
+00:00:59,440 --> 00:01:03,320
+already that's that's the time. Cyber
+
+25
+00:01:01,240 --> 00:01:05,920
+Week is is going.
+
+26
+00:01:03,320 --> 00:01:07,720
+And then I will I will stop any any self
+
+27
+00:01:05,920 --> 00:01:10,760
+promotion with this slide and then we
+
+28
+00:01:07,720 --> 00:01:13,840
+can dive into dive into the content.
+
+29
+00:01:10,760 --> 00:01:16,120
+So wordlift.io/cyberweek
+
+30
+00:01:13,840 --> 00:01:18,440
+it's a good tool use it.
+
+31
+00:01:16,120 --> 00:01:20,000
+All right. So
+
+32
+00:01:18,440 --> 00:01:22,800
+we have two sessions. So the first
+
+33
+00:01:20,000 --> 00:01:26,040
+session is going to be more
+
+34
+00:01:22,800 --> 00:01:28,440
+about understanding the concepts of of
+
+35
+00:01:26,040 --> 00:01:30,400
+long tail SEO whether you know in the
+
+36
+00:01:28,440 --> 00:01:32,600
+second session I will be focusing more
+
+37
+00:01:30,400 --> 00:01:34,800
+on looking at the code so that you know
+
+38
+00:01:32,600 --> 00:01:36,120
+you have something that you can
+
+39
+00:01:34,800 --> 00:01:39,360
+use
+
+40
+00:01:36,120 --> 00:01:42,160
+on on your own website or or use case.
+
+41
+00:01:39,360 --> 00:01:44,640
+I like to keep these as interactive as
+
+42
+00:01:42,160 --> 00:01:46,760
+possible. So as as as George say I mean
+
+43
+00:01:44,640 --> 00:01:49,120
+if if there are questions so raise them
+
+44
+00:01:46,760 --> 00:01:51,120
+up and then and then George will let me
+
+45
+00:01:49,120 --> 00:01:54,440
+know.
+
+46
+00:01:51,120 --> 00:01:55,120
+So the plan for the day is to to look at
+
+47
+00:01:54,440 --> 00:01:57,320
+uh
+
+48
+00:01:55,120 --> 00:01:59,640
+modern SEO. Try to understand what does
+
+49
+00:01:57,320 --> 00:02:01,480
+it mean modern SEO.
+
+50
+00:01:59,640 --> 00:02:03,479
+And then and then try to understand the
+
+51
+00:02:01,480 --> 00:02:06,280
+importance of knowledge graph in in
+
+52
+00:02:03,479 --> 00:02:09,399
+automating some of the SEO task that
+
+53
+00:02:06,280 --> 00:02:12,040
+that can help us grow organic traffic.
+
+54
+00:02:09,399 --> 00:02:15,200
+But our our end goal for today is to
+
+55
+00:02:12,040 --> 00:02:17,240
+build a long-tail sales strategy. So
+
+56
+00:02:15,200 --> 00:02:20,560
+something that will
+
+57
+00:02:17,240 --> 00:02:23,520
+enable us to capture intents that are
+
+58
+00:02:20,560 --> 00:02:26,240
+defined as long-tail. So with with a
+
+59
+00:02:23,520 --> 00:02:28,440
+lower volume but you know
+
+60
+00:02:26,240 --> 00:02:31,240
+high very specific
+
+61
+00:02:28,440 --> 00:02:33,440
+type of search intent. And and so
+
+62
+00:02:31,240 --> 00:02:35,959
+potentially they are very interesting on
+
+63
+00:02:33,440 --> 00:02:39,320
+different type of websites. Um
+
+64
+00:02:35,959 --> 00:02:42,240
+in our case we will look at a news
+
+65
+00:02:39,320 --> 00:02:44,720
+website but you know similar approach
+
+66
+00:02:42,240 --> 00:02:47,800
+would apply to e-commerce and and could
+
+67
+00:02:44,720 --> 00:02:50,920
+apply to other type of sites.
+
+68
+00:02:47,800 --> 00:02:52,640
+Um and and we will use natural language
+
+69
+00:02:50,920 --> 00:02:55,360
+processing and and and the knowledge
+
+70
+00:02:52,640 --> 00:02:58,680
+graph that we will build together on a
+
+71
+00:02:55,360 --> 00:03:00,400
+test website in order to find the best
+
+72
+00:02:58,680 --> 00:03:03,519
+opportunities.
+
+73
+00:03:00,400 --> 00:03:06,480
+Um the code that I'm going to use in in
+
+74
+00:03:03,519 --> 00:03:08,920
+in this in this masterclass it's it's
+
+75
+00:03:06,480 --> 00:03:11,320
+written in Python and and it will be
+
+76
+00:03:08,920 --> 00:03:14,400
+accessible to you over Google Colab.
+
+77
+00:03:11,320 --> 00:03:15,800
+Google Colab is an environment where you
+
+78
+00:03:14,400 --> 00:03:19,120
+know you can play with the code and you
+
+79
+00:03:15,800 --> 00:03:21,560
+can copy my code and make changes and so
+
+80
+00:03:19,120 --> 00:03:24,160
+it's it it's an opportunity to learn
+
+81
+00:03:21,560 --> 00:03:27,280
+also a little bit more about you know
+
+82
+00:03:24,160 --> 00:03:28,480
+Python when applied to the context of of
+
+83
+00:03:27,280 --> 00:03:31,760
+SEO.
+
+84
+00:03:28,480 --> 00:03:33,720
+We will then analyze the the results
+
+85
+00:03:31,760 --> 00:03:35,080
+out of specific queries that we will
+
+86
+00:03:33,720 --> 00:03:37,800
+target
+
+87
+00:03:35,080 --> 00:03:39,280
+from Google and we will try to dissect
+
+88
+00:03:37,800 --> 00:03:41,000
+these results
+
+89
+00:03:39,280 --> 00:03:42,360
+using natural language processing to
+
+90
+00:03:41,000 --> 00:03:44,760
+understand you know if there are
+
+91
+00:03:42,360 --> 00:03:46,720
+tendencies if there are things that we
+
+92
+00:03:44,760 --> 00:03:50,280
+can learn from these results.
+
+93
+00:03:46,720 --> 00:03:52,800
+And then we will also explore
+
+94
+00:03:50,280 --> 00:03:55,440
+you know the different ways in which we
+
+95
+00:03:52,800 --> 00:03:58,200
+can generate content uh
+
+96
+00:03:55,440 --> 00:04:00,720
+using transformer models which are you
+
+97
+00:03:58,200 --> 00:04:03,480
+know, it's a technology that allows us
+
+98
+00:04:00,720 --> 00:04:04,960
+to to to to do many different things and
+
+99
+00:04:03,480 --> 00:04:07,000
+among these many different things we
+
+100
+00:04:04,960 --> 00:04:09,000
+will explore the the natural language
+
+101
+00:04:07,000 --> 00:04:10,720
+generation part.
+
+102
+00:04:09,000 --> 00:04:12,160
+And then we will look at the layout of
+
+103
+00:04:10,720 --> 00:04:14,040
+the page and
+
+104
+00:04:12,160 --> 00:04:15,640
+we will see the page in in in the way in
+
+105
+00:04:14,040 --> 00:04:18,400
+which you know, we can create. So our
+
+106
+00:04:15,640 --> 00:04:20,880
+goal is to you know, at the end of it to
+
+107
+00:04:18,400 --> 00:04:23,360
+be able to create pages that can go
+
+108
+00:04:20,880 --> 00:04:26,000
+after long tail
+
+109
+00:04:23,360 --> 00:04:28,480
+queries.
+
+110
+00:04:26,000 --> 00:04:30,240
+So yeah, that's the first poll for you
+
+111
+00:04:28,480 --> 00:04:32,080
+so that we can kind of set the
+
+112
+00:04:30,240 --> 00:04:33,960
+expectation and
+
+113
+00:04:32,080 --> 00:04:35,120
+and also know each other a little bit
+
+114
+00:04:33,960 --> 00:04:37,000
+more.
+
+115
+00:04:35,120 --> 00:04:41,720
+So I will let
+
+116
+00:04:37,000 --> 00:04:41,720
+I will let you run the the poll.
+
+117
+00:04:42,000 --> 00:04:46,240
+I don't know Jane, are you sending the
+
+118
+00:04:43,840 --> 00:04:48,320
+the poll? Yes, I will be sharing the
+
+119
+00:04:46,240 --> 00:04:50,200
+slides. I will be sharing the code so
+
+120
+00:04:48,320 --> 00:04:53,840
+don't worry about it.
+
+121
+00:04:50,200 --> 00:04:55,680
+So let's take let's take a moment for
+
+122
+00:04:53,840 --> 00:04:57,640
+answering the
+
+123
+00:04:55,680 --> 00:05:00,080
+the question and uh
+
+124
+00:04:57,640 --> 00:05:01,280
+and try to set you know, the expectation
+
+125
+00:05:00,080 --> 00:05:02,919
+but also to know each other and
+
+126
+00:05:01,280 --> 00:05:04,720
+understand you know, if
+
+127
+00:05:02,919 --> 00:05:06,680
+if when I talk about long tail you say
+
+128
+00:05:04,720 --> 00:05:08,120
+hey, what what are you talking about
+
+129
+00:05:06,680 --> 00:05:10,120
+Andrea?
+
+130
+00:05:08,120 --> 00:05:11,680
+Or if you know, that's pretty much
+
+131
+00:05:10,120 --> 00:05:13,600
+granted.
+
+132
+00:05:11,680 --> 00:05:16,120
+Okay.
+
+133
+00:05:13,600 --> 00:05:16,120
+All right.
+
+134
+00:05:16,480 --> 00:05:19,960
+It's it would
+
+135
+00:05:17,640 --> 00:05:22,000
+this also helps me kind of understand a
+
+136
+00:05:19,960 --> 00:05:23,960
+little bit about uh
+
+137
+00:05:22,000 --> 00:05:25,560
+you know, how how we should proceed with
+
+138
+00:05:23,960 --> 00:05:29,400
+these.
+
+139
+00:05:25,560 --> 00:05:29,400
+Okay, looks like we have a
+
+140
+00:05:30,560 --> 00:05:34,480
+We have a good bit breakdown already.
+
+141
+00:05:35,320 --> 00:05:40,320
+80 20
+
+142
+00:05:37,640 --> 00:05:42,880
+and and half of the room has answered
+
+143
+00:05:40,320 --> 00:05:42,880
+already.
+
+144
+00:05:50,600 --> 00:05:55,040
+Okay, I think we can
+
+145
+00:05:52,360 --> 00:05:57,400
+share the result.
+
+146
+00:05:55,040 --> 00:05:59,840
+And um
+
+147
+00:05:57,400 --> 00:06:01,880
+and I can get back on. I think it's
+
+148
+00:05:59,840 --> 00:06:03,440
+clear that uh yeah, I mean, we know what
+
+149
+00:06:01,880 --> 00:06:05,240
+we're talking about.
+
+150
+00:06:03,440 --> 00:06:07,280
+But uh I shouldn't get too technical.
+
+151
+00:06:05,240 --> 00:06:09,520
+And if I get too technical, uh you just
+
+152
+00:06:07,280 --> 00:06:11,520
+uh you stop me. And then and then you
+
+153
+00:06:09,520 --> 00:06:15,120
+ask me for more
+
+154
+00:06:11,520 --> 00:06:17,320
+uh information or explanation.
+
+155
+00:06:15,120 --> 00:06:19,800
+So, as we do this journey,
+
+156
+00:06:17,320 --> 00:06:21,640
+we will uh tap into different
+
+157
+00:06:19,800 --> 00:06:25,080
+technologies
+
+158
+00:06:21,640 --> 00:06:26,960
+uh that that are currently used uh
+
+159
+00:06:25,080 --> 00:06:29,560
+within, you know, the context of modern
+
+160
+00:06:26,960 --> 00:06:32,000
+SEO and and what I like to call the
+
+161
+00:06:29,560 --> 00:06:33,560
+AI-powered SEO.
+
+162
+00:06:32,000 --> 00:06:37,000
+So,
+
+163
+00:06:33,560 --> 00:06:38,560
+as as we said, we will uh use um um
+
+164
+00:06:37,000 --> 00:06:40,840
+the transformer
+
+165
+00:06:38,560 --> 00:06:42,640
+in order to generate content. And more
+
+166
+00:06:40,840 --> 00:06:45,680
+specifically, we will use the
+
+167
+00:06:42,640 --> 00:06:48,040
+transformer and uh and um and a language
+
+168
+00:06:45,680 --> 00:06:50,919
+model that it's called the Google T5
+
+169
+00:06:48,040 --> 00:06:54,160
+that it that's been worked on by Google
+
+170
+00:06:50,919 --> 00:06:57,120
+and uh and created from a very large um
+
+171
+00:06:54,160 --> 00:06:59,200
+corpus of text uh that comes from from
+
+172
+00:06:57,120 --> 00:07:02,800
+the Common Crawl data set.
+
+173
+00:06:59,200 --> 00:07:05,160
+So, we will use T5 in order to generate
+
+174
+00:07:02,800 --> 00:07:07,880
+uh an abstract summary of, you know,
+
+175
+00:07:05,160 --> 00:07:10,320
+that that we will use as part of the the
+
+176
+00:07:07,880 --> 00:07:11,520
+content of the page that uh we we we're
+
+177
+00:07:10,320 --> 00:07:13,440
+creating.
+
+178
+00:07:11,520 --> 00:07:15,080
+Um we will build the knowledge graph.
+
+179
+00:07:13,440 --> 00:07:17,160
+So, the knowledge graph is pretty much
+
+180
+00:07:15,080 --> 00:07:19,360
+built already, but uh I will, you know,
+
+181
+00:07:17,160 --> 00:07:21,640
+give you a quick uh overview of where I
+
+182
+00:07:19,360 --> 00:07:23,480
+left and the way in which, you know, we
+
+183
+00:07:21,640 --> 00:07:26,120
+are building the knowledge graph that
+
+184
+00:07:23,480 --> 00:07:27,880
+we're going to use in this session.
+
+185
+00:07:26,120 --> 00:07:28,840
+And then we will uh
+
+186
+00:07:27,880 --> 00:07:31,600
+um
+
+187
+00:07:28,840 --> 00:07:33,800
+learn about uh embeddings and more
+
+188
+00:07:31,600 --> 00:07:35,160
+specifically about uh knowledge graph
+
+189
+00:07:33,800 --> 00:07:38,280
+embeddings.
+
+190
+00:07:35,160 --> 00:07:41,320
+This is really a silver bullet for uh
+
+191
+00:07:38,280 --> 00:07:42,640
+you know, any any SEO working with data
+
+192
+00:07:41,320 --> 00:07:45,560
+because it's a
+
+193
+00:07:42,640 --> 00:07:47,240
+it's a fast way of, you know, accessing
+
+194
+00:07:45,560 --> 00:07:48,200
+to the to the data inside a knowledge
+
+195
+00:07:47,240 --> 00:07:51,280
+graph
+
+196
+00:07:48,200 --> 00:07:53,560
+to make very quick decision. And and and
+
+197
+00:07:51,280 --> 00:07:55,040
+taking quick decision is super important
+
+198
+00:07:53,560 --> 00:07:57,040
+when when you do SEO. You know,
+
+199
+00:07:55,040 --> 00:07:58,760
+sometimes it's it's like a consumer that
+
+200
+00:07:57,040 --> 00:08:02,160
+has jumped on a page and then you need
+
+201
+00:07:58,760 --> 00:08:04,360
+to bring it to to the funnel or or or
+
+202
+00:08:02,160 --> 00:08:06,600
+maybe you just want to have him read
+
+203
+00:08:04,360 --> 00:08:09,680
+something more interesting about it. So,
+
+204
+00:08:06,600 --> 00:08:12,600
+taking fast decision is is crucial and
+
+205
+00:08:09,680 --> 00:08:14,880
+and uh knowledge graph embeddings are a
+
+206
+00:08:12,600 --> 00:08:17,160
+fantastic tool to do these. So, we will
+
+207
+00:08:14,880 --> 00:08:19,280
+try to see a little bit about what they
+
+208
+00:08:17,160 --> 00:08:21,320
+are, how they work, and then we will
+
+209
+00:08:19,280 --> 00:08:22,600
+play together with the with the
+
+210
+00:08:21,320 --> 00:08:25,720
+embeddings.
+
+211
+00:08:22,600 --> 00:08:29,560
+Um and then we will move into uh looking
+
+212
+00:08:25,720 --> 00:08:31,919
+at um at at Google search results. And
+
+213
+00:08:29,560 --> 00:08:34,680
+um and and we will try to set, you know,
+
+214
+00:08:31,919 --> 00:08:38,000
+the methodology that we want to use for
+
+215
+00:08:34,680 --> 00:08:40,000
+analyzing Google results.
+
+216
+00:08:38,000 --> 00:08:41,719
+And uh and we will do this using uh
+
+217
+00:08:40,000 --> 00:08:44,240
+named entity recognition and the
+
+218
+00:08:41,719 --> 00:08:47,640
+knowledge graph that we have built from
+
+219
+00:08:44,240 --> 00:08:51,080
+from from the website uh that uh we will
+
+220
+00:08:47,640 --> 00:08:53,720
+use during during this demonstration.
+
+221
+00:08:51,080 --> 00:08:57,720
+And uh and this will lead us to intent
+
+222
+00:08:53,720 --> 00:09:02,040
+discovery. So, so a way in which we can
+
+223
+00:08:57,720 --> 00:09:03,280
+uh try to provide some seeds, some
+
+224
+00:09:02,040 --> 00:09:05,640
+ideas,
+
+225
+00:09:03,280 --> 00:09:09,320
+and uh and and look into, you know,
+
+226
+00:09:05,640 --> 00:09:11,640
+potential uh um search intents that come
+
+227
+00:09:09,320 --> 00:09:13,920
+out of these ideas. This is very
+
+228
+00:09:11,640 --> 00:09:16,520
+powerful because, of course, uh
+
+229
+00:09:13,920 --> 00:09:18,960
+when we want to do a long-tail strategy,
+
+230
+00:09:16,520 --> 00:09:20,320
+we need to understand exactly what needs
+
+231
+00:09:18,960 --> 00:09:22,760
+to be cover.
+
+232
+00:09:20,320 --> 00:09:24,839
+What is um you know, what type of intent
+
+233
+00:09:22,760 --> 00:09:27,120
+should we cover that our site is not
+
+234
+00:09:24,839 --> 00:09:29,280
+already covering?
+
+235
+00:09:27,120 --> 00:09:31,320
+And that at the same time I have enough
+
+236
+00:09:29,280 --> 00:09:33,480
+content to cover cuz that's that's
+
+237
+00:09:31,320 --> 00:09:37,520
+another big challenge. Cuz I want to
+
+238
+00:09:33,480 --> 00:09:40,400
+create uh new content that uh that will
+
+239
+00:09:37,520 --> 00:09:42,480
+will you know, tap new on tap new
+
+240
+00:09:40,400 --> 00:09:45,320
+opportunities, but of course
+
+241
+00:09:42,480 --> 00:09:46,480
+I have to be meaningful to the end user.
+
+242
+00:09:45,320 --> 00:09:48,920
+And
+
+243
+00:09:46,480 --> 00:09:51,000
+so I have to have content about it and
+
+244
+00:09:48,920 --> 00:09:53,040
+and and and possibly I shouldn't you
+
+245
+00:09:51,000 --> 00:09:55,160
+know, cover something that I am already
+
+246
+00:09:53,040 --> 00:09:57,280
+covering with the with the content that
+
+247
+00:09:55,160 --> 00:09:59,080
+I have on on my site.
+
+248
+00:09:57,280 --> 00:10:04,360
+And then we will use
+
+249
+00:09:59,080 --> 00:10:07,400
+again Google T5 for another
+
+250
+00:10:04,360 --> 00:10:09,280
+approach to to text generation, which is
+
+251
+00:10:07,400 --> 00:10:10,760
+based on the question and answer
+
+252
+00:10:09,280 --> 00:10:12,600
+generation.
+
+253
+00:10:10,760 --> 00:10:14,040
+So we will generate the question. We
+
+254
+00:10:12,600 --> 00:10:16,320
+will try to see, you know, what are the
+
+255
+00:10:14,040 --> 00:10:18,720
+most frequent questions and and we will
+
+256
+00:10:16,320 --> 00:10:20,720
+see two ways of doing this cuz cuz there
+
+257
+00:10:18,720 --> 00:10:22,200
+are two ways and then we will try to
+
+258
+00:10:20,720 --> 00:10:23,600
+understand, you know, what is the best
+
+259
+00:10:22,200 --> 00:10:24,960
+way and then
+
+260
+00:10:23,600 --> 00:10:26,680
+you know, at the end of this of this
+
+261
+00:10:24,960 --> 00:10:29,160
+journey then hopefully we will, you
+
+262
+00:10:26,680 --> 00:10:31,280
+know, unlock the treasure and and get
+
+263
+00:10:29,160 --> 00:10:33,400
+traffic.
+
+264
+00:10:31,280 --> 00:10:35,000
+So
+
+265
+00:10:33,400 --> 00:10:37,240
+what are the problems that we want to
+
+266
+00:10:35,000 --> 00:10:40,880
+solve in the end? I mean, what what type
+
+267
+00:10:37,240 --> 00:10:43,600
+of what type of issues do do we face
+
+268
+00:10:40,880 --> 00:10:45,160
+when when building a long-tail sales
+
+269
+00:10:43,600 --> 00:10:48,200
+strategy?
+
+270
+00:10:45,160 --> 00:10:50,920
+So the first problem is that we want to
+
+271
+00:10:48,200 --> 00:10:52,960
+identify new areas of search demand. So
+
+272
+00:10:50,920 --> 00:10:55,440
+understanding something that we are not
+
+273
+00:10:52,960 --> 00:11:00,120
+currently covering or that we could
+
+274
+00:10:55,440 --> 00:11:02,960
+cover in a much more effective way.
+
+275
+00:11:00,120 --> 00:11:05,839
+And then this already entices the fact
+
+276
+00:11:02,960 --> 00:11:08,720
+that we need to analyze the content that
+
+277
+00:11:05,839 --> 00:11:10,040
+we have already on our website. And and
+
+278
+00:11:08,720 --> 00:11:12,240
+to these
+
+279
+00:11:10,040 --> 00:11:15,000
+there is another small problem connected
+
+280
+00:11:12,240 --> 00:11:17,839
+to it, which is analyzing, you know, the
+
+281
+00:11:15,000 --> 00:11:20,280
+the intents that we are already covering
+
+282
+00:11:17,839 --> 00:11:24,600
+within the context of our website. We
+
+283
+00:11:20,280 --> 00:11:26,400
+will not indulge into into these
+
+284
+00:11:24,600 --> 00:11:28,240
+further refinement, but it's it's
+
+285
+00:11:26,400 --> 00:11:31,360
+important for you to know that of course
+
+286
+00:11:28,240 --> 00:11:32,680
+you don't want to cannibalize existing
+
+287
+00:11:31,360 --> 00:11:35,200
+traffic
+
+288
+00:11:32,680 --> 00:11:37,080
+um with with with with a long tail
+
+289
+00:11:35,200 --> 00:11:38,280
+strategy. You know, that would that
+
+290
+00:11:37,080 --> 00:11:41,440
+would uh
+
+291
+00:11:38,280 --> 00:11:45,240
+be pretty pretty uh bad for for for your
+
+292
+00:11:41,440 --> 00:11:47,360
+overall organic presence.
+
+293
+00:11:45,240 --> 00:11:50,560
+So, in the end we want to find the best
+
+294
+00:11:47,360 --> 00:11:52,560
+match between what Google expects. So,
+
+295
+00:11:50,560 --> 00:11:55,280
+that the interpretation that Google has
+
+296
+00:11:52,560 --> 00:11:57,080
+of that intent and uh and uh and the
+
+297
+00:11:55,280 --> 00:11:59,680
+content that we have. So, these are the
+
+298
+00:11:57,080 --> 00:12:01,840
+you know, three key areas of uh of the
+
+299
+00:11:59,680 --> 00:12:05,280
+you know, the two classes that
+
+300
+00:12:01,840 --> 00:12:07,760
+uh that we're going through today.
+
+301
+00:12:05,280 --> 00:12:09,760
+Um
+
+302
+00:12:07,760 --> 00:12:11,680
+So, let's start with uh with the first
+
+303
+00:12:09,760 --> 00:12:13,560
+question. And here I start to play a
+
+304
+00:12:11,680 --> 00:12:15,200
+little bit with the natural language
+
+305
+00:12:13,560 --> 00:12:16,960
+generation.
+
+306
+00:12:15,200 --> 00:12:19,560
+Uh Andrea, excuse me for the
+
+307
+00:12:16,960 --> 00:12:21,200
+interruption. But in switching the the
+
+308
+00:12:19,560 --> 00:12:23,080
+screen to the polls, we missed your
+
+309
+00:12:21,200 --> 00:12:24,120
+slide. So, can you reshare your screen,
+
+310
+00:12:23,080 --> 00:12:25,280
+please?
+
+311
+00:12:24,120 --> 00:12:27,680
+Sure.
+
+312
+00:12:25,280 --> 00:12:27,680
+Thank you.
+
+313
+00:12:30,960 --> 00:12:36,160
+Hi Julian, I see you're here.
+
+314
+00:12:33,360 --> 00:12:40,000
+Okay, so um how do I do it? Um
+
+315
+00:12:36,160 --> 00:12:42,880
+So, I'm stop this and I'm going to
+
+316
+00:12:40,000 --> 00:12:42,880
+share it again.
+
+317
+00:12:46,320 --> 00:12:49,600
+Do you see my screen now?
+
+318
+00:12:52,800 --> 00:12:55,080
+Yes.
+
+319
+00:12:53,720 --> 00:12:56,720
+Yeah.
+
+320
+00:12:55,080 --> 00:12:58,960
+You do, okay. So, you didn't see the
+
+321
+00:12:56,720 --> 00:13:00,040
+treasure map.
+
+322
+00:12:58,960 --> 00:13:03,760
+No.
+
+323
+00:13:00,040 --> 00:13:03,760
+That was one of my best slides.
+
+324
+00:13:04,520 --> 00:13:09,400
+Okay, so uh briefly, content
+
+325
+00:13:06,560 --> 00:13:11,640
+summarization uh is going to be one of
+
+326
+00:13:09,400 --> 00:13:14,200
+the technology uh approaches that we're
+
+327
+00:13:11,640 --> 00:13:16,839
+going to use. Knowledge graph creation
+
+328
+00:13:14,200 --> 00:13:18,640
+and then of course, we will see uh how
+
+329
+00:13:16,839 --> 00:13:20,040
+to create this knowledge graph using
+
+330
+00:13:18,640 --> 00:13:22,240
+WordLift.
+
+331
+00:13:20,040 --> 00:13:24,640
+Knowledge graph embeddings, as we say
+
+332
+00:13:22,240 --> 00:13:26,920
+the silver bullet for a lot of decision
+
+333
+00:13:24,640 --> 00:13:28,440
+that you you to take uh in order to
+
+334
+00:13:26,920 --> 00:13:31,320
+understand uh
+
+335
+00:13:28,440 --> 00:13:33,200
+how related concepts are and then
+
+336
+00:13:31,320 --> 00:13:36,800
+natural language
+
+337
+00:13:33,200 --> 00:13:38,760
+processing for analyzing the the results
+
+338
+00:13:36,800 --> 00:13:41,520
+coming out of Google
+
+339
+00:13:38,760 --> 00:13:44,640
+in order to discover
+
+340
+00:13:41,520 --> 00:13:48,280
+new untapped opportunities and then
+
+341
+00:13:44,640 --> 00:13:49,960
+we will have one more digression on
+
+342
+00:13:48,280 --> 00:13:52,280
+another natural language generation
+
+343
+00:13:49,960 --> 00:13:55,080
+technique which which is
+
+344
+00:13:52,280 --> 00:13:59,000
+which is also using
+
+345
+00:13:55,080 --> 00:14:01,840
+Google T5 but in this case
+
+346
+00:13:59,000 --> 00:14:04,160
+T5 is trained for
+
+347
+00:14:01,840 --> 00:14:06,400
+generating questions and then we will
+
+348
+00:14:04,160 --> 00:14:10,600
+see that we can also train it for
+
+349
+00:14:06,400 --> 00:14:10,600
+providing the answer to these questions.
+
+350
+00:14:11,440 --> 00:14:14,800
+So
+
+351
+00:14:12,560 --> 00:14:16,240
+problems that we want to solve just
+
+352
+00:14:14,800 --> 00:14:19,400
+quickly
+
+353
+00:14:16,240 --> 00:14:21,080
+getting new areas of search demand
+
+354
+00:14:19,400 --> 00:14:24,360
+analyzing the content that we have
+
+355
+00:14:21,080 --> 00:14:26,720
+already on a website and then find the
+
+356
+00:14:24,360 --> 00:14:29,600
+best matches you know the best match
+
+357
+00:14:26,720 --> 00:14:32,360
+between the content that Google expects
+
+358
+00:14:29,600 --> 00:14:34,200
+and the content that that we have on on
+
+359
+00:14:32,360 --> 00:14:36,080
+our website so these are you know the
+
+360
+00:14:34,200 --> 00:14:38,040
+three challenges that
+
+361
+00:14:36,080 --> 00:14:40,440
+that we are going to face there is you
+
+362
+00:14:38,040 --> 00:14:42,520
+know one hidden challenge that you will
+
+363
+00:14:40,440 --> 00:14:45,200
+also need to face if you start to
+
+364
+00:14:42,520 --> 00:14:49,280
+implement your you know semi-automated
+
+365
+00:14:45,200 --> 00:14:52,240
+long tail strategy that is of course
+
+366
+00:14:49,280 --> 00:14:54,280
+what what is required to to create
+
+367
+00:14:52,240 --> 00:14:56,920
+content that doesn't cannibalize
+
+368
+00:14:54,280 --> 00:14:59,800
+existing content that you may have
+
+369
+00:14:56,920 --> 00:15:02,360
+but we will not look into these but of
+
+370
+00:14:59,800 --> 00:15:05,240
+course you know I have different ideas
+
+371
+00:15:02,360 --> 00:15:08,839
+and ways in which can be addressed but
+
+372
+00:15:05,240 --> 00:15:11,680
+we will focus on on these three main
+
+373
+00:15:08,839 --> 00:15:13,040
+main aspects.
+
+374
+00:15:11,680 --> 00:15:15,240
+So
+
+375
+00:15:13,040 --> 00:15:18,520
+here I'm starting to play with with the
+
+376
+00:15:15,240 --> 00:15:21,760
+transformers so that you can familiarize
+
+377
+00:15:18,520 --> 00:15:23,760
+with with the type of content that we
+
+378
+00:15:21,760 --> 00:15:25,960
+can generate
+
+379
+00:15:23,760 --> 00:15:28,320
+and um um
+
+380
+00:15:25,960 --> 00:15:31,000
+the way it works and and and the limits.
+
+381
+00:15:28,320 --> 00:15:34,400
+So, on the upper side of the screen you
+
+382
+00:15:31,000 --> 00:15:36,120
+see the the question that that I have um
+
+383
+00:15:34,400 --> 00:15:38,400
+provided here
+
+384
+00:15:36,120 --> 00:15:43,120
+to the model. And then on the output you
+
+385
+00:15:38,400 --> 00:15:44,560
+see the answer that I get out of these.
+
+386
+00:15:43,120 --> 00:15:47,040
+And I always start, you know,
+
+387
+00:15:44,560 --> 00:15:49,280
+questioning if if if SEO is dead,
+
+388
+00:15:47,040 --> 00:15:51,440
+especially at the end of the year.
+
+389
+00:15:49,280 --> 00:15:53,600
+That's one of the, you know, things that
+
+390
+00:15:51,440 --> 00:15:55,760
+uh um you know, usually
+
+391
+00:15:53,600 --> 00:15:58,760
+um gets debated at the end of every
+
+392
+00:15:55,760 --> 00:16:01,920
+year. Like, is SEO still relevant? Or is
+
+393
+00:15:58,760 --> 00:16:03,680
+SEO going to be, you know, a thing in in
+
+394
+00:16:01,920 --> 00:16:05,520
+2021?
+
+395
+00:16:03,680 --> 00:16:08,560
+And uh and the answer that I get it's
+
+396
+00:16:05,520 --> 00:16:10,680
+it's it's it's quite good one because he
+
+397
+00:16:08,560 --> 00:16:12,600
+he says that, you know, SEO is still a
+
+398
+00:16:10,680 --> 00:16:14,600
+driver of traffic
+
+399
+00:16:12,600 --> 00:16:16,640
+and leads to your website whether you
+
+400
+00:16:14,600 --> 00:16:18,800
+invested in SEO early or you're just
+
+401
+00:16:16,640 --> 00:16:21,320
+getting started.
+
+402
+00:16:18,800 --> 00:16:23,440
+And um and what is interesting is that
+
+403
+00:16:21,320 --> 00:16:25,080
+uh I process these answers with
+
+404
+00:16:23,440 --> 00:16:28,440
+Grammarly
+
+405
+00:16:25,080 --> 00:16:30,560
+in order to see if this content appears
+
+406
+00:16:28,440 --> 00:16:32,720
+to be plagiarized.
+
+407
+00:16:30,560 --> 00:16:36,440
+And in this case, Grammarly tells me
+
+408
+00:16:32,720 --> 00:16:38,160
+that only 9% of of this text matches
+
+409
+00:16:36,440 --> 00:16:40,920
+another sources,
+
+410
+00:16:38,160 --> 00:16:42,920
+which which is okay. I mean, of course
+
+411
+00:16:40,920 --> 00:16:46,120
+it's it's a small sentences, as you can
+
+412
+00:16:42,920 --> 00:16:48,200
+see, but 9% it means that,
+
+413
+00:16:46,120 --> 00:16:50,760
+you know, it's quite genuine. And and I
+
+414
+00:16:48,200 --> 00:16:52,640
+like the answer after all, so
+
+415
+00:16:50,760 --> 00:16:54,320
+I made a slide out of it. So, you can
+
+416
+00:16:52,640 --> 00:16:57,520
+see that I'm starting to make the
+
+417
+00:16:54,320 --> 00:16:58,680
+presentation with a computer.
+
+418
+00:16:57,520 --> 00:17:02,920
+So,
+
+419
+00:16:58,680 --> 00:17:04,880
+now what is modern SEO? Or or
+
+420
+00:17:02,920 --> 00:17:07,600
+what what does it what does the machine
+
+421
+00:17:04,880 --> 00:17:09,520
+think of modern SEO?
+
+422
+00:17:07,600 --> 00:17:10,800
+And here I'm going to read the answer.
+
+423
+00:17:09,520 --> 00:17:13,319
+The answer is a search engine
+
+424
+00:17:10,800 --> 00:17:16,120
+optimization specialist can be described
+
+425
+00:17:13,319 --> 00:17:18,439
+as someone who helps users find what
+
+426
+00:17:16,120 --> 00:17:21,520
+they're searching for while using search
+
+427
+00:17:18,439 --> 00:17:24,240
+engines like Google and Bing. However, a
+
+428
+00:17:21,520 --> 00:17:27,560
+modern SEO specialist must be able to
+
+429
+00:17:24,240 --> 00:17:29,200
+make decisions quickly and effectively.
+
+430
+00:17:27,560 --> 00:17:30,840
+Now, as you can see here, you know, the
+
+431
+00:17:29,200 --> 00:17:32,960
+text is a little bit more plagiarized
+
+432
+00:17:30,840 --> 00:17:35,080
+than the previous one, but but I really
+
+433
+00:17:32,960 --> 00:17:37,840
+like it a lot because it kind of makes
+
+434
+00:17:35,080 --> 00:17:39,880
+you know, long sentence for introducing
+
+435
+00:17:37,840 --> 00:17:41,680
+search engine optimization and then it
+
+436
+00:17:39,880 --> 00:17:44,200
+you know, it kind of kicks in with the
+
+437
+00:17:41,680 --> 00:17:45,920
+definition of modern SEO, which is
+
+438
+00:17:44,200 --> 00:17:48,960
+specifically
+
+439
+00:17:45,920 --> 00:17:52,040
+defined as as as as a skill that
+
+440
+00:17:48,960 --> 00:17:53,640
+that a marketer has when he can makes,
+
+441
+00:17:52,040 --> 00:17:54,880
+you know, decision quickly and
+
+442
+00:17:53,640 --> 00:17:56,920
+effectively.
+
+443
+00:17:54,880 --> 00:18:00,240
+And that's that's the vision that I have
+
+444
+00:17:56,920 --> 00:18:02,920
+about SEO and and and artificial
+
+445
+00:18:00,240 --> 00:18:04,560
+intelligence. An AI-driven SEO
+
+446
+00:18:02,920 --> 00:18:06,840
+specialist is someone that takes
+
+447
+00:18:04,560 --> 00:18:09,000
+decision quickly and effectively.
+
+448
+00:18:06,840 --> 00:18:11,880
+And while as as as the people that know
+
+449
+00:18:09,000 --> 00:18:14,080
+me, I have no plans in in in removing,
+
+450
+00:18:11,880 --> 00:18:16,120
+you know, marketers and SEOs, I do
+
+451
+00:18:14,080 --> 00:18:18,280
+believe that we can get
+
+452
+00:18:16,120 --> 00:18:20,880
+a lot of powers if we start to use on
+
+453
+00:18:18,280 --> 00:18:23,440
+our daily marketing job these
+
+454
+00:18:20,880 --> 00:18:27,400
+technologies in order to scale up the
+
+455
+00:18:23,440 --> 00:18:28,520
+traffic that that we create.
+
+456
+00:18:27,400 --> 00:18:30,040
+So I
+
+457
+00:18:28,520 --> 00:18:32,000
+as I was, you know, getting good
+
+458
+00:18:30,040 --> 00:18:34,280
+results, then I started to, you know,
+
+459
+00:18:32,000 --> 00:18:36,280
+people were asking questions and and I
+
+460
+00:18:34,280 --> 00:18:38,800
+end up in in asking,
+
+461
+00:18:36,280 --> 00:18:39,760
+you know, what is modern SEO in 2020
+
+462
+00:18:38,800 --> 00:18:40,520
+then?
+
+463
+00:18:39,760 --> 00:18:42,560
+Um
+
+464
+00:18:40,520 --> 00:18:44,520
+and then I got another answer, which
+
+465
+00:18:42,560 --> 00:18:47,240
+which is also interesting. So, senior
+
+466
+00:18:44,520 --> 00:18:50,320
+SEO scientist Britney Muller that you
+
+467
+00:18:47,240 --> 00:18:53,120
+might know, Britney is a brilliant SEO,
+
+468
+00:18:50,320 --> 00:18:55,640
+probably one of the one of the best and
+
+469
+00:18:53,120 --> 00:18:57,800
+and early earliest
+
+470
+00:18:55,640 --> 00:19:00,400
+SEO that has been working in in the
+
+471
+00:18:57,800 --> 00:19:02,320
+context of machine learning.
+
+472
+00:19:00,400 --> 00:19:05,080
+And so, Britney Muller, The Machine
+
+473
+00:19:02,320 --> 00:19:06,440
+Continues, offers a list of 17 things
+
+474
+00:19:05,080 --> 00:19:09,200
+that you should keep in mind for
+
+475
+00:19:06,440 --> 00:19:10,920
+effective SEO in 2020.
+
+476
+00:19:09,200 --> 00:19:13,800
+This include title tags, meta
+
+477
+00:19:10,920 --> 00:19:17,400
+description, alt text, site speed,
+
+478
+00:19:13,800 --> 00:19:20,560
+robots.txt, site maps, UX, conversion
+
+479
+00:19:17,400 --> 00:19:23,480
+rate optimization, analytics, etc.
+
+480
+00:19:20,560 --> 00:19:25,720
+Schema markup, FAQ, breadcrumbs, news,
+
+481
+00:19:23,480 --> 00:19:28,080
+business info, etc.
+
+482
+00:19:25,720 --> 00:19:30,560
+I think we will see these types of
+
+483
+00:19:28,080 --> 00:19:31,200
+markup types
+
+484
+00:19:30,560 --> 00:19:34,800
+uh
+
+485
+00:19:31,200 --> 00:19:37,040
+continue to grow. Now, this one doesn't
+
+486
+00:19:34,800 --> 00:19:40,280
+look, you know, as good as the others,
+
+487
+00:19:37,040 --> 00:19:42,480
+but it's interesting because um because
+
+488
+00:19:40,280 --> 00:19:45,640
+the model is is is bringing up, you
+
+489
+00:19:42,480 --> 00:19:47,800
+know, a specialist, a person,
+
+490
+00:19:45,640 --> 00:19:50,280
+uh very well-known figure in the SEO
+
+491
+00:19:47,800 --> 00:19:53,000
+world, in order to, you know, kind of
+
+492
+00:19:50,280 --> 00:19:56,640
+bring some some something that that, you
+
+493
+00:19:53,000 --> 00:19:58,680
+know, some relevancy into the answer.
+
+494
+00:19:56,640 --> 00:20:01,080
+And um
+
+495
+00:19:58,680 --> 00:20:03,360
+did you notice something something odd
+
+496
+00:20:01,080 --> 00:20:05,080
+in these? I mean, besides a little bit
+
+497
+00:20:03,360 --> 00:20:06,800
+of uh
+
+498
+00:20:05,080 --> 00:20:08,880
+grammatical mistakes. I mean, is there
+
+499
+00:20:06,800 --> 00:20:11,200
+something that, you know, that doesn't
+
+500
+00:20:08,880 --> 00:20:12,600
+sound right?
+
+501
+00:20:11,200 --> 00:20:13,800
+So,
+
+502
+00:20:12,600 --> 00:20:16,680
+yes.
+
+503
+00:20:13,800 --> 00:20:18,520
+So, one one thing besides, you know, the
+
+504
+00:20:16,680 --> 00:20:20,040
+the grammatical form that could be
+
+505
+00:20:18,520 --> 00:20:22,840
+optimized, but definitely it's not the
+
+506
+00:20:20,040 --> 00:20:24,600
+worst thing. One thing that um we can
+
+507
+00:20:22,840 --> 00:20:27,440
+notice is that um
+
+508
+00:20:24,600 --> 00:20:30,160
+the the text that has been used for uh
+
+509
+00:20:27,440 --> 00:20:32,800
+describing, you know, modern SEO is is,
+
+510
+00:20:30,160 --> 00:20:35,080
+you know, originally composed of 17
+
+511
+00:20:32,800 --> 00:20:37,520
+things, but that if we if we go out and
+
+512
+00:20:35,080 --> 00:20:39,800
+count the different factors
+
+513
+00:20:37,520 --> 00:20:43,560
+that are listed, you know, we we get a
+
+514
+00:20:39,800 --> 00:20:45,400
+couple of etc., and then we get 13
+
+515
+00:20:43,560 --> 00:20:48,320
+things.
+
+516
+00:20:45,400 --> 00:20:49,280
+And so, one one of the aspects that that
+
+517
+00:20:48,320 --> 00:20:51,800
+um
+
+518
+00:20:49,280 --> 00:20:53,760
+that we see here is that uh in reality,
+
+519
+00:20:51,800 --> 00:20:56,160
+a language model doesn't really
+
+520
+00:20:53,760 --> 00:20:57,760
+understand. At least, it cannot count,
+
+521
+00:20:56,160 --> 00:21:00,680
+you know, for the very least, it's it's
+
+522
+00:20:57,760 --> 00:21:03,280
+not able to count properly.
+
+523
+00:21:00,680 --> 00:21:05,280
+And um and so,
+
+524
+00:21:03,280 --> 00:21:08,240
+that's that's that's one one first
+
+525
+00:21:05,280 --> 00:21:11,240
+important point of this session is that
+
+526
+00:21:08,240 --> 00:21:14,600
+the transformer which are you know this
+
+527
+00:21:11,240 --> 00:21:14,600
+new architecture
+
+528
+00:21:14,920 --> 00:21:19,920
+in the in the deep learning world that
+
+529
+00:21:16,640 --> 00:21:23,280
+has so much and greatly advanced natural
+
+530
+00:21:19,920 --> 00:21:25,240
+language processing among other areas of
+
+531
+00:21:23,280 --> 00:21:26,640
+of of deep learning
+
+532
+00:21:25,240 --> 00:21:29,600
+indeed
+
+533
+00:21:26,640 --> 00:21:32,880
+unlock a lot of new opportunities in the
+
+534
+00:21:29,600 --> 00:21:34,520
+SEO space. So I can make slides you know
+
+535
+00:21:32,880 --> 00:21:36,080
+last year
+
+536
+00:21:34,520 --> 00:21:37,960
+when I was at
+
+537
+00:21:36,080 --> 00:21:40,000
+you know at the connected data event I
+
+538
+00:21:37,960 --> 00:21:41,760
+wasn't able to do something like this. I
+
+539
+00:21:40,000 --> 00:21:43,080
+wouldn't have be able to create these
+
+540
+00:21:41,760 --> 00:21:45,800
+slides.
+
+541
+00:21:43,080 --> 00:21:48,160
+So these are you know new new SEO
+
+542
+00:21:45,800 --> 00:21:51,400
+opportunities but but at the same time
+
+543
+00:21:48,160 --> 00:21:53,960
+these language models are still limited
+
+544
+00:21:51,400 --> 00:21:55,920
+and we need to understand the limitation
+
+545
+00:21:53,960 --> 00:21:58,840
+in order to use them
+
+546
+00:21:55,920 --> 00:22:01,880
+in an effective way.
+
+547
+00:21:58,840 --> 00:22:04,040
+So Gary Marcus that is also attending
+
+548
+00:22:01,880 --> 00:22:05,720
+this event and it's it's it's a
+
+549
+00:22:04,040 --> 00:22:09,440
+brilliant
+
+550
+00:22:05,720 --> 00:22:11,280
+researcher and and an inventor and and
+
+551
+00:22:09,440 --> 00:22:13,480
+and startupper.
+
+552
+00:22:11,280 --> 00:22:15,520
+So a lot of um
+
+553
+00:22:13,480 --> 00:22:16,680
+you will read a lot about him.
+
+554
+00:22:15,520 --> 00:22:19,160
+Um
+
+555
+00:22:16,680 --> 00:22:21,040
+say that language model don't know what
+
+556
+00:22:19,160 --> 00:22:23,400
+they're talking about and that's that's
+
+557
+00:22:21,040 --> 00:22:25,800
+precisely the problem. So
+
+558
+00:22:23,400 --> 00:22:27,920
+there is a you know language model are a
+
+559
+00:22:25,800 --> 00:22:31,240
+good approximation of of an
+
+560
+00:22:27,920 --> 00:22:34,080
+understanding of what language is used
+
+561
+00:22:31,240 --> 00:22:36,000
+but they are very far from understanding
+
+562
+00:22:34,080 --> 00:22:37,760
+language itself.
+
+563
+00:22:36,000 --> 00:22:40,680
+And that's that's a slight difference
+
+564
+00:22:37,760 --> 00:22:43,120
+but it make it make you know
+
+565
+00:22:40,680 --> 00:22:45,440
+it will impact a lot in in the work that
+
+566
+00:22:43,120 --> 00:22:47,440
+that we're going
+
+567
+00:22:45,440 --> 00:22:49,800
+we're going to do today and in the work
+
+568
+00:22:47,440 --> 00:22:52,320
+that we can do in in SEO at this
+
+569
+00:22:49,800 --> 00:22:55,200
+specific point in time with with natural
+
+570
+00:22:52,320 --> 00:22:58,680
+language generation.
+
+571
+00:22:55,200 --> 00:22:58,680
+So we have a new
+
+572
+00:22:59,520 --> 00:23:04,520
+Yeah. So
+
+573
+00:23:01,080 --> 00:23:06,280
+So so we've seen a progress of of
+
+574
+00:23:04,520 --> 00:23:09,200
+of you know
+
+575
+00:23:06,280 --> 00:23:12,520
+language models that have uh
+
+576
+00:23:09,200 --> 00:23:15,120
+a super high number of parameters. And
+
+577
+00:23:12,520 --> 00:23:18,120
+inside inside a language model, the
+
+578
+00:23:15,120 --> 00:23:20,760
+parameters identifies the complexity.
+
+579
+00:23:18,120 --> 00:23:22,440
+And and it it's also
+
+580
+00:23:20,760 --> 00:23:23,400
+representative
+
+581
+00:23:22,440 --> 00:23:26,240
+of the
+
+582
+00:23:23,400 --> 00:23:29,200
+enormous amount of data that it's used
+
+583
+00:23:26,240 --> 00:23:32,440
+for creating these these models.
+
+584
+00:23:29,200 --> 00:23:35,480
+As we said, uh we are going to use T5,
+
+585
+00:23:32,440 --> 00:23:37,240
+um which has been produced in in Google.
+
+586
+00:23:35,480 --> 00:23:40,000
+Um you know, just
+
+587
+00:23:37,240 --> 00:23:42,320
+the beginning of yeah, the end of the
+
+588
+00:23:40,000 --> 00:23:44,240
+It was It was presented at the end of
+
+589
+00:23:42,320 --> 00:23:46,400
+uh of of last year.
+
+590
+00:23:44,240 --> 00:23:48,560
+And and and it's been trained on on
+
+591
+00:23:46,400 --> 00:23:49,800
+Common Crawl, which is you know, one of
+
+592
+00:23:48,560 --> 00:23:52,680
+the biggest
+
+593
+00:23:49,800 --> 00:23:54,360
+data set of the web, of the you know,
+
+594
+00:23:52,680 --> 00:23:55,480
+the web that can be crawled that is
+
+595
+00:23:54,360 --> 00:23:57,080
+available
+
+596
+00:23:55,480 --> 00:24:02,840
+to date.
+
+597
+00:23:57,080 --> 00:24:04,560
+So So these are these are um billion um
+
+598
+00:24:02,840 --> 00:24:07,840
+um
+
+599
+00:24:04,560 --> 00:24:09,240
+billion parameters language models.
+
+600
+00:24:07,840 --> 00:24:12,600
+Kind of uh
+
+601
+00:24:09,240 --> 00:24:14,520
+are capable of of of predicting, you
+
+602
+00:24:12,600 --> 00:24:16,160
+know, the next sentence or predicting
+
+603
+00:24:14,520 --> 00:24:18,920
+the next word.
+
+604
+00:24:16,160 --> 00:24:22,000
+And and are trained on on a lot of
+
+605
+00:24:18,920 --> 00:24:24,120
+machinery that that is still cost a lot
+
+606
+00:24:22,000 --> 00:24:26,080
+of money and it cost a lot of, you know,
+
+607
+00:24:24,120 --> 00:24:28,360
+natural resources.
+
+608
+00:24:26,080 --> 00:24:31,480
+So the training of GPT-3, which is
+
+609
+00:24:28,360 --> 00:24:34,160
+probably, you know, the most uh um
+
+610
+00:24:31,480 --> 00:24:36,600
+well-known language model to date for
+
+611
+00:24:34,160 --> 00:24:39,320
+content generation has required
+
+612
+00:24:36,600 --> 00:24:40,680
+something like 4.6 million dollars for
+
+613
+00:24:39,320 --> 00:24:43,720
+training.
+
+614
+00:24:40,680 --> 00:24:46,200
+Now, this also means that when we are
+
+615
+00:24:43,720 --> 00:24:49,080
+going to touch these models, you know,
+
+616
+00:24:46,200 --> 00:24:50,200
+there is a high degrees of complexity
+
+617
+00:24:49,080 --> 00:24:52,280
+and
+
+618
+00:24:50,200 --> 00:24:55,760
+whether the libraries that we use are
+
+619
+00:24:52,280 --> 00:24:57,880
+making super accessible these uh, these
+
+620
+00:24:55,760 --> 00:24:59,160
+technologies, we have to keep in mind
+
+621
+00:24:57,880 --> 00:25:02,000
+that
+
+622
+00:24:59,160 --> 00:25:04,520
+as we as we try to personalize or to
+
+623
+00:25:02,000 --> 00:25:06,320
+fine-tune these models, we will need a
+
+624
+00:25:04,520 --> 00:25:09,600
+lot of resources. And so, we will need
+
+625
+00:25:06,320 --> 00:25:11,560
+to make sure that that um
+
+626
+00:25:09,600 --> 00:25:12,640
+that that's that's what we need and that
+
+627
+00:25:11,560 --> 00:25:15,640
+you know, that
+
+628
+00:25:12,640 --> 00:25:17,880
+that that these are this is exactly what
+
+629
+00:25:15,640 --> 00:25:19,600
+what will what will create a success in
+
+630
+00:25:17,880 --> 00:25:21,760
+our SEO strategy.
+
+631
+00:25:19,600 --> 00:25:23,760
+So, there's been a great evolution of
+
+632
+00:25:21,760 --> 00:25:26,920
+language model. Uh, they're super
+
+633
+00:25:23,760 --> 00:25:29,520
+complex. They take a lot of, you know,
+
+634
+00:25:26,920 --> 00:25:31,040
+energy and resources to be created in
+
+635
+00:25:29,520 --> 00:25:33,400
+the first place and they will also
+
+636
+00:25:31,040 --> 00:25:35,600
+require a lot of time for you to
+
+637
+00:25:33,400 --> 00:25:37,400
+fine-tune them and train them to your
+
+638
+00:25:35,600 --> 00:25:39,400
+specific goals.
+
+639
+00:25:37,400 --> 00:25:42,120
+And um and this means that there are
+
+640
+00:25:39,400 --> 00:25:44,240
+still a lot of barriers regardless of
+
+641
+00:25:42,120 --> 00:25:46,440
+the fact that yes, there are, you know,
+
+642
+00:25:44,240 --> 00:25:48,800
+super accessible
+
+643
+00:25:46,440 --> 00:25:50,800
+software libraries that allows you to do
+
+644
+00:25:48,800 --> 00:25:53,000
+great things with these with these
+
+645
+00:25:50,800 --> 00:25:55,480
+language models. Like you can start, you
+
+646
+00:25:53,000 --> 00:25:56,680
+know, using GP3 for for writing a
+
+647
+00:25:55,480 --> 00:25:58,640
+program
+
+648
+00:25:56,680 --> 00:26:01,640
+uh, in Python or in
+
+649
+00:25:58,640 --> 00:26:04,120
+or or to create your next HTML page. You
+
+650
+00:26:01,640 --> 00:26:06,000
+can you can, you know, fine-tune and and
+
+651
+00:26:04,120 --> 00:26:08,840
+and provide inputs to to to a language
+
+652
+00:26:06,000 --> 00:26:11,440
+model and you can obtain that result.
+
+653
+00:26:08,840 --> 00:26:12,720
+But, there are still great barriers that
+
+654
+00:26:11,440 --> 00:26:14,680
+that we need to that we need to
+
+655
+00:26:12,720 --> 00:26:17,160
+consider.
+
+656
+00:26:14,680 --> 00:26:20,200
+So, there is a new poll that I will ask
+
+657
+00:26:17,160 --> 00:26:23,000
+you to answer and and then we can take a
+
+658
+00:26:20,200 --> 00:26:24,840
+short break of a couple of minutes so
+
+659
+00:26:23,000 --> 00:26:27,840
+that
+
+660
+00:26:24,840 --> 00:26:31,360
+we can kind of, you know, relax, look
+
+661
+00:26:27,840 --> 00:26:33,040
+look outside and stretch and do whatever
+
+662
+00:26:31,360 --> 00:26:35,280
+whatever we need
+
+663
+00:26:33,040 --> 00:26:39,640
+to get started again. So, let's run the
+
+664
+00:26:35,280 --> 00:26:39,640
+poll while we while we do this.
+
+665
+00:26:46,080 --> 00:26:49,960
+And I can also read a little bit about
+
+666
+00:26:47,800 --> 00:26:52,720
+the question. A, so I
+
+667
+00:26:49,960 --> 00:26:54,400
+I have seen GPT-3 in use, but I haven't
+
+668
+00:26:52,720 --> 00:26:57,120
+used it myself.
+
+669
+00:26:54,400 --> 00:26:59,480
+So, I haven't I've read a lot about it.
+
+670
+00:26:57,120 --> 00:27:02,080
+I've read a lot about uh
+
+671
+00:26:59,480 --> 00:27:05,280
+um different use cases, but I haven't I
+
+672
+00:27:02,080 --> 00:27:05,280
+haven't used it myself.
+
+673
+00:27:45,480 --> 00:27:48,840
+All right. Good.
+
+674
+00:27:53,720 --> 00:27:59,920
+So, I see that um that um
+
+675
+00:27:56,440 --> 00:27:59,920
+everyone is still following.
+
+676
+00:28:01,720 --> 00:28:05,760
+So, I can share a little bit of the
+
+677
+00:28:02,920 --> 00:28:07,760
+results that we get.
+
+678
+00:28:05,760 --> 00:28:09,000
+And uh and then we can start again the
+
+679
+00:28:07,760 --> 00:28:11,320
+session.
+
+680
+00:28:09,000 --> 00:28:13,560
+So, what are the limits of um today's
+
+681
+00:28:11,320 --> 00:28:15,680
+language models? They are good at
+
+682
+00:28:13,560 --> 00:28:18,160
+predicting the next word, but have
+
+683
+00:28:15,680 --> 00:28:19,600
+trouble in encoding knowledge because
+
+684
+00:28:18,160 --> 00:28:21,280
+they don't understand really what we're
+
+685
+00:28:19,600 --> 00:28:24,360
+talking about.
+
+686
+00:28:21,280 --> 00:28:25,520
+So, yeah. So, that's um that's a little
+
+687
+00:28:24,360 --> 00:28:28,720
+bit uh
+
+688
+00:28:25,520 --> 00:28:31,280
+the lesson learned so far about um
+
+689
+00:28:28,720 --> 00:28:33,920
+generating content with uh with um
+
+690
+00:28:31,280 --> 00:28:36,240
+with language models.
+
+691
+00:28:33,920 --> 00:28:40,840
+All right. So, um
+
+692
+00:28:36,240 --> 00:28:40,840
+I will uh resume the presentation.
+
+693
+00:28:42,720 --> 00:28:46,000
+Do you see my screen?
+
+694
+00:28:51,000 --> 00:28:54,760
+Not Not yet.
+
+695
+00:28:52,840 --> 00:28:58,040
+Okay, so let me let me stop and then
+
+696
+00:28:54,760 --> 00:28:59,960
+start again. So, I have to do this.
+
+697
+00:28:58,040 --> 00:29:03,240
+Okay.
+
+698
+00:28:59,960 --> 00:29:04,520
+All right, so you should see now.
+
+699
+00:29:03,240 --> 00:29:08,280
+Yeah. Yeah, it's fine now.
+
+700
+00:29:04,520 --> 00:29:08,280
+Okay, good. All right.
+
+701
+00:29:09,040 --> 00:29:14,520
+So, let's let's wrap it up.
+
+702
+00:29:12,360 --> 00:29:16,400
+Pre-trained language models
+
+703
+00:29:14,520 --> 00:29:19,480
+BERT-like
+
+704
+00:29:16,400 --> 00:29:22,520
+that have come after BERT that has been,
+
+705
+00:29:19,480 --> 00:29:24,560
+you know, probably the most
+
+706
+00:29:22,520 --> 00:29:26,600
+well-known
+
+707
+00:29:24,560 --> 00:29:29,800
+language model in the context of SEO
+
+708
+00:29:26,600 --> 00:29:33,640
+because both Google and Bing announced
+
+709
+00:29:29,800 --> 00:29:35,960
+already last year that they were using
+
+710
+00:29:33,640 --> 00:29:38,040
+BERT within within their their
+
+711
+00:29:35,960 --> 00:29:40,320
+technology stack.
+
+712
+00:29:38,040 --> 00:29:42,560
+But pre-trained language models like
+
+713
+00:29:40,320 --> 00:29:44,440
+BERT and and and, you know, whatever
+
+714
+00:29:42,560 --> 00:29:46,320
+came after
+
+715
+00:29:44,440 --> 00:29:49,880
+until recently
+
+716
+00:29:46,320 --> 00:29:51,520
+can only handle a limited input text.
+
+717
+00:29:49,880 --> 00:29:53,720
+So, that's that's kind of an an
+
+718
+00:29:51,520 --> 00:29:55,240
+important aspect.
+
+719
+00:29:53,720 --> 00:29:57,960
+The way in which the language model
+
+720
+00:29:55,240 --> 00:30:00,440
+focus the attention on what what is
+
+721
+00:29:57,960 --> 00:30:03,080
+important of the of the text that we are
+
+722
+00:30:00,440 --> 00:30:04,280
+providing is somehow limited by the fact
+
+723
+00:30:03,080 --> 00:30:07,280
+that uh
+
+724
+00:30:04,280 --> 00:30:09,680
+this mechanism called attention is
+
+725
+00:30:07,280 --> 00:30:13,040
+quadratic to the sequence length. So, it
+
+726
+00:30:09,680 --> 00:30:15,120
+just goes up immediately as we provide
+
+727
+00:30:13,040 --> 00:30:18,040
+more text, okay?
+
+728
+00:30:15,120 --> 00:30:20,600
+So, this fundamentally creates a limit
+
+729
+00:30:18,040 --> 00:30:23,000
+to the maximum length of the of the
+
+730
+00:30:20,600 --> 00:30:24,200
+input sequence that you can provide to
+
+731
+00:30:23,000 --> 00:30:28,440
+the model.
+
+732
+00:30:24,200 --> 00:30:30,760
+And these can be, you know, 512 or 1,024
+
+733
+00:30:28,440 --> 00:30:33,640
+tokens. And a token is,
+
+734
+00:30:30,760 --> 00:30:36,480
+a token is, you know, pretty much
+
+735
+00:30:33,640 --> 00:30:38,440
+can be seen as a word, okay? So, so the
+
+736
+00:30:36,480 --> 00:30:41,040
+first limit that we have when we use
+
+737
+00:30:38,440 --> 00:30:43,880
+language model is that until, you know,
+
+738
+00:30:41,040 --> 00:30:46,240
+the recently
+
+739
+00:30:43,880 --> 00:30:47,600
+announced models like
+
+740
+00:30:46,240 --> 00:30:50,640
+Bird
+
+741
+00:30:47,600 --> 00:30:53,720
+and and other um
+
+742
+00:30:50,640 --> 00:30:55,800
+And I think a Microsoft has its own kind
+
+743
+00:30:53,720 --> 00:31:00,720
+of Bird-like
+
+744
+00:30:55,800 --> 00:31:03,600
+model that use a a sparse mechanism.
+
+745
+00:31:00,720 --> 00:31:05,560
+When you you you look at a model that is
+
+746
+00:31:03,600 --> 00:31:07,440
+using the attention mechanism that
+
+747
+00:31:05,560 --> 00:31:12,240
+prevailed
+
+748
+00:31:07,440 --> 00:31:15,840
+among among other techniques used for
+
+749
+00:31:12,240 --> 00:31:18,640
+generating content, then you are dealing
+
+750
+00:31:15,840 --> 00:31:23,640
+with a machine that can only take every
+
+751
+00:31:18,640 --> 00:31:25,680
+step a maximum of of 512 tokens. Now,
+
+752
+00:31:23,640 --> 00:31:27,840
+this might not be a big issue because of
+
+753
+00:31:25,680 --> 00:31:30,000
+course you can split the content into
+
+754
+00:31:27,840 --> 00:31:31,720
+multiple parts and then, you know, send
+
+755
+00:31:30,000 --> 00:31:33,440
+it to the model in parallel. So, there
+
+756
+00:31:31,720 --> 00:31:36,600
+are there there ways of coming out of
+
+757
+00:31:33,440 --> 00:31:38,520
+this problem, but of course it's a limit
+
+758
+00:31:36,600 --> 00:31:41,520
+that it also impacts, you know, the use
+
+759
+00:31:38,520 --> 00:31:42,680
+cases that we can
+
+760
+00:31:41,520 --> 00:31:44,960
+you know,
+
+761
+00:31:42,680 --> 00:31:46,720
+implement with with these language
+
+762
+00:31:44,960 --> 00:31:48,080
+models.
+
+763
+00:31:46,720 --> 00:31:50,120
+They are super good at predicting the
+
+764
+00:31:48,080 --> 00:31:53,760
+next word because they have read, you
+
+765
+00:31:50,120 --> 00:31:56,560
+know, a universe made of content. They
+
+766
+00:31:53,760 --> 00:31:58,880
+have read the entire web. Not only
+
+767
+00:31:56,560 --> 00:32:01,040
+Wikipedia as it was, you know, for for
+
+768
+00:31:58,880 --> 00:32:03,040
+the first one like like Bird and
+
+769
+00:32:01,040 --> 00:32:06,200
+whatever came after, but you know, if
+
+770
+00:32:03,040 --> 00:32:09,520
+you look at T5, T5 has been trained on
+
+771
+00:32:06,200 --> 00:32:11,400
+on a corpus of text that basically it's
+
+772
+00:32:09,520 --> 00:32:13,480
+resembles pretty much the entire World
+
+773
+00:32:11,400 --> 00:32:15,440
+Wide Web. So, they are super good at
+
+774
+00:32:13,480 --> 00:32:17,680
+predicting what's coming next and and
+
+775
+00:32:15,440 --> 00:32:20,680
+we're using it already inside, you know,
+
+776
+00:32:17,680 --> 00:32:23,800
+a Gmail or or you know, favorite text
+
+777
+00:32:20,680 --> 00:32:25,240
+editor um on our phone. So, they're
+
+778
+00:32:23,800 --> 00:32:27,240
+super good at, you know, predicting
+
+779
+00:32:25,240 --> 00:32:28,920
+what's coming next, but they don't
+
+780
+00:32:27,240 --> 00:32:30,480
+understand exactly what what we're
+
+781
+00:32:28,920 --> 00:32:31,640
+talking about. They cannot encode
+
+782
+00:32:30,480 --> 00:32:34,480
+knowledge.
+
+783
+00:32:31,640 --> 00:32:37,160
+And and one one example was that, you
+
+784
+00:32:34,480 --> 00:32:39,520
+know, as as we saw, they cannot count,
+
+785
+00:32:37,160 --> 00:32:41,400
+right? So, they're limited in in in the
+
+786
+00:32:39,520 --> 00:32:44,040
+number of operation that they can that
+
+787
+00:32:41,400 --> 00:32:47,440
+they can can do.
+
+788
+00:32:44,040 --> 00:32:49,080
+Um they are also limited in in in terms
+
+789
+00:32:47,440 --> 00:32:51,680
+of uh
+
+790
+00:32:49,080 --> 00:32:53,440
+general- generalizability.
+
+791
+00:32:51,680 --> 00:32:55,720
+What does it mean? I mean that it's it's
+
+792
+00:32:53,440 --> 00:32:59,280
+very hard to generalize
+
+793
+00:32:55,720 --> 00:33:02,280
+a language model. So, so if we want to
+
+794
+00:32:59,280 --> 00:33:03,640
+get a good result for a specific
+
+795
+00:33:02,280 --> 00:33:07,520
+content,
+
+796
+00:33:03,640 --> 00:33:09,160
+we might need to train them or to to to
+
+797
+00:33:07,520 --> 00:33:12,320
+fine-tune it.
+
+798
+00:33:09,160 --> 00:33:13,560
+Now, fine-tuning means that I I can
+
+799
+00:33:12,320 --> 00:33:15,560
+use
+
+800
+00:33:13,560 --> 00:33:17,480
+whatever language model has been has
+
+801
+00:33:15,560 --> 00:33:19,960
+been pre-trained,
+
+802
+00:33:17,480 --> 00:33:22,560
+but but I will I will have to make it,
+
+803
+00:33:19,960 --> 00:33:24,800
+you know, more special for my for my
+
+804
+00:33:22,560 --> 00:33:27,360
+specific knowledge domain.
+
+805
+00:33:24,800 --> 00:33:29,160
+Because they are not good at um
+
+806
+00:33:27,360 --> 00:33:31,720
+working across different different
+
+807
+00:33:29,160 --> 00:33:35,320
+domains. And uh and so if I if I train
+
+808
+00:33:31,720 --> 00:33:35,320
+something on, let's say
+
+809
+00:33:36,600 --> 00:33:41,840
+a website of
+
+810
+00:33:38,600 --> 00:33:44,240
+of um you know, soccer games, then I
+
+811
+00:33:41,840 --> 00:33:45,520
+will not be able to reuse the same model
+
+812
+00:33:44,240 --> 00:33:46,080
+for
+
+813
+00:33:45,520 --> 00:33:49,520
+um
+
+814
+00:33:46,080 --> 00:33:53,480
+let's say a website uh on on
+
+815
+00:33:49,520 --> 00:33:56,400
+on medical terms. So, so they they lack
+
+816
+00:33:53,480 --> 00:33:58,440
+this this ability to generalize that uh
+
+817
+00:33:56,400 --> 00:34:00,200
+that that of course
+
+818
+00:33:58,440 --> 00:34:01,800
+it makes it, you know, more complicated
+
+819
+00:34:00,200 --> 00:34:03,600
+to to implement it because I have to
+
+820
+00:34:01,800 --> 00:34:06,160
+create something that is specific for
+
+821
+00:34:03,600 --> 00:34:07,640
+for that for that content and for that
+
+822
+00:34:06,160 --> 00:34:09,360
+website.
+
+823
+00:34:07,640 --> 00:34:11,440
+Fine-tuning is becoming at the same time
+
+824
+00:34:09,360 --> 00:34:13,440
+very simple to make because I mean
+
+825
+00:34:11,440 --> 00:34:15,840
+libraries like you know, the libraries
+
+826
+00:34:13,440 --> 00:34:19,000
+that we're going to use are very
+
+827
+00:34:15,840 --> 00:34:20,679
+practical, um super easy to use, and so
+
+828
+00:34:19,000 --> 00:34:22,960
+it's becoming kind of a you know, a new
+
+829
+00:34:20,679 --> 00:34:24,879
+way of forking. Like when you when you
+
+830
+00:34:22,960 --> 00:34:26,560
+go get the code and then you you you
+
+831
+00:34:24,879 --> 00:34:28,360
+kind of play with the code yourself and
+
+832
+00:34:26,560 --> 00:34:29,760
+you create something new. So, you can
+
+833
+00:34:28,360 --> 00:34:31,919
+you know, fine-tune this this this
+
+834
+00:34:29,760 --> 00:34:33,879
+language models, but at the same time it
+
+835
+00:34:31,919 --> 00:34:35,960
+does require a lot of efforts. I mean,
+
+836
+00:34:33,879 --> 00:34:39,200
+creating a you know, personalizing your
+
+837
+00:34:35,960 --> 00:34:40,000
+language model, it can take you know,
+
+838
+00:34:39,200 --> 00:34:41,679
+well,
+
+839
+00:34:40,000 --> 00:34:43,360
+it takes a lot of trial and errors to
+
+840
+00:34:41,679 --> 00:34:45,240
+get it right in the first place, but it
+
+841
+00:34:43,360 --> 00:34:46,800
+also takes a lot of
+
+842
+00:34:45,240 --> 00:34:48,919
+a lot of resources from the
+
+843
+00:34:46,800 --> 00:34:50,520
+computational point of view. And just to
+
+844
+00:34:48,919 --> 00:34:54,360
+give you an idea,
+
+845
+00:34:50,520 --> 00:34:58,040
+we trained internally a summarizer
+
+846
+00:34:54,360 --> 00:34:59,400
+using T5 for for the German language.
+
+847
+00:34:58,040 --> 00:35:01,400
+And
+
+848
+00:34:59,400 --> 00:35:03,520
+and in order to to to do like a very
+
+849
+00:35:01,400 --> 00:35:06,240
+basic
+
+850
+00:35:03,520 --> 00:35:08,280
+retraining, it takes something like
+
+851
+00:35:06,240 --> 00:35:09,680
+between 4 and 5 hours.
+
+852
+00:35:08,280 --> 00:35:11,920
+And and you need to have a lot of
+
+853
+00:35:09,680 --> 00:35:14,800
+memory, and most importantly, you need
+
+854
+00:35:11,920 --> 00:35:17,040
+to have a lot of training data. So, yes,
+
+855
+00:35:14,800 --> 00:35:19,760
+you can personalize this language model
+
+856
+00:35:17,040 --> 00:35:21,800
+to achieve whatever you're you're you're
+
+857
+00:35:19,760 --> 00:35:24,200
+trying to achieve, but you need
+
+858
+00:35:21,800 --> 00:35:27,040
+resources, and above all, you need a lot
+
+859
+00:35:24,200 --> 00:35:27,040
+of training data.
+
+860
+00:35:27,080 --> 00:35:29,720
+So,
+
+861
+00:35:30,800 --> 00:35:36,640
+So, yeah, that's that's for for all of
+
+862
+00:35:33,400 --> 00:35:37,920
+my client, I created a video using these
+
+863
+00:35:36,640 --> 00:35:40,480
+AI.
+
+864
+00:35:37,920 --> 00:35:43,000
+And the video goes on and says
+
+865
+00:35:40,480 --> 00:35:43,000
+let me see.
+
+866
+00:35:49,360 --> 00:35:52,320
+All right, so that's that's just you
+
+867
+00:35:51,040 --> 00:35:55,640
+know, kind of
+
+868
+00:35:52,320 --> 00:35:57,320
+a thing to remember that that you know,
+
+869
+00:35:55,640 --> 00:35:59,560
+this language model will not replace
+
+870
+00:35:57,320 --> 00:36:01,280
+your editor. So, stop asking me about
+
+871
+00:35:59,560 --> 00:36:03,120
+removing your editorial team. It's not
+
+872
+00:36:01,280 --> 00:36:04,600
+going to happen.
+
+873
+00:36:03,120 --> 00:36:06,720
+And
+
+874
+00:36:04,600 --> 00:36:09,840
+Yeah, so I mean
+
+875
+00:36:06,720 --> 00:36:11,400
+things that we want to point out is that
+
+876
+00:36:09,840 --> 00:36:14,400
+you know, we need to create technologies
+
+877
+00:36:11,400 --> 00:36:16,120
+that can augment what we do on our
+
+878
+00:36:14,400 --> 00:36:18,560
+content.
+
+879
+00:36:16,120 --> 00:36:20,640
+There's no there's no way for us to you
+
+880
+00:36:18,560 --> 00:36:23,200
+know, at this point to
+
+881
+00:36:20,640 --> 00:36:24,000
+to totally replace
+
+882
+00:36:23,200 --> 00:36:26,200
+the
+
+883
+00:36:24,000 --> 00:36:29,080
+the human being.
+
+884
+00:36:26,200 --> 00:36:31,440
+Though, we might achieve in in kind of
+
+885
+00:36:29,080 --> 00:36:34,480
+complementing what the human is writing
+
+886
+00:36:31,440 --> 00:36:36,200
+with you know some small paragraphs or
+
+887
+00:36:34,480 --> 00:36:38,080
+you know some some more
+
+888
+00:36:36,200 --> 00:36:39,840
+questions. So, we will see some
+
+889
+00:36:38,080 --> 00:36:42,720
+practical examples
+
+890
+00:36:39,840 --> 00:36:44,880
+coming up of the things that we can do
+
+891
+00:36:42,720 --> 00:36:47,680
+realistically with these with this new
+
+892
+00:36:44,880 --> 00:36:47,680
+language model.
+
+893
+00:36:48,160 --> 00:36:50,560
+Um
+
+894
+00:36:50,760 --> 00:36:55,680
+So, we'll now move into
+
+895
+00:36:53,680 --> 00:36:57,440
+kind of a quick overview of of the
+
+896
+00:36:55,680 --> 00:37:00,000
+knowledge graph that I built for for
+
+897
+00:36:57,440 --> 00:37:01,400
+this workshop.
+
+898
+00:37:00,000 --> 00:37:04,120
+But first of all, of course, we need to
+
+899
+00:37:01,400 --> 00:37:06,560
+introduce what is a knowledge graph.
+
+900
+00:37:04,120 --> 00:37:09,440
+And and I like to go with you know with
+
+901
+00:37:06,560 --> 00:37:12,080
+a very simple
+
+902
+00:37:09,440 --> 00:37:14,520
+justified true belief theory that it's
+
+903
+00:37:12,080 --> 00:37:16,520
+attributed to Plato.
+
+904
+00:37:14,520 --> 00:37:18,720
+Whether it's true or not, I will also
+
+905
+00:37:16,520 --> 00:37:21,600
+use the justified true belief.
+
+906
+00:37:18,720 --> 00:37:24,560
+So, so that means that basically
+
+907
+00:37:21,600 --> 00:37:26,080
+if a person has a belief, you know, and
+
+908
+00:37:24,560 --> 00:37:28,600
+and
+
+909
+00:37:26,080 --> 00:37:31,200
+if the belief is is is true,
+
+910
+00:37:28,600 --> 00:37:33,000
+then then the person is justifying in in
+
+911
+00:37:31,200 --> 00:37:35,640
+believing, you know, whatever it's
+
+912
+00:37:33,000 --> 00:37:37,600
+believing and and this will produce
+
+913
+00:37:35,640 --> 00:37:39,440
+knowledge. So, the
+
+914
+00:37:37,600 --> 00:37:41,240
+simple explanation of what a knowledge
+
+915
+00:37:39,440 --> 00:37:43,840
+graph is is that
+
+916
+00:37:41,240 --> 00:37:46,160
+everything that that you believe to be
+
+917
+00:37:43,840 --> 00:37:48,800
+true or or or someone believes to be
+
+918
+00:37:46,160 --> 00:37:51,640
+true, it becomes, you know,
+
+919
+00:37:48,800 --> 00:37:53,320
+knowledgeable. It can It becomes a fact.
+
+920
+00:37:51,640 --> 00:37:55,200
+And that's exactly what we see
+
+921
+00:37:53,320 --> 00:37:57,480
+especially when we look at you know,
+
+922
+00:37:55,200 --> 00:37:58,880
+these very large graphs like the Google
+
+923
+00:37:57,480 --> 00:38:02,880
+knowledge graph. I mean, whatever is
+
+924
+00:37:58,880 --> 00:38:05,360
+said there, people accept it to be to be
+
+925
+00:38:02,880 --> 00:38:07,960
+the truth and and and therefore it
+
+926
+00:38:05,360 --> 00:38:10,760
+produce knowledge. So, so a knowledge
+
+927
+00:38:07,960 --> 00:38:14,120
+graph it's a way of representing in in a
+
+928
+00:38:10,760 --> 00:38:15,480
+data structure a justified true belief.
+
+929
+00:38:14,120 --> 00:38:17,120
+And uh
+
+930
+00:38:15,480 --> 00:38:19,840
+and of course, now we will not get into
+
+931
+00:38:17,120 --> 00:38:22,120
+the debate of if this is right or or
+
+932
+00:38:19,840 --> 00:38:24,720
+wrong, but but just so you know, a
+
+933
+00:38:22,120 --> 00:38:28,720
+knowledge graph is a data structure that
+
+934
+00:38:24,720 --> 00:38:30,600
+uh uh that describes facts, okay?
+
+935
+00:38:28,720 --> 00:38:32,880
+And that's that that is a list of
+
+936
+00:38:30,600 --> 00:38:35,080
+definition that we will use
+
+937
+00:38:32,880 --> 00:38:40,560
+um during these uh these uh these
+
+938
+00:38:35,080 --> 00:38:42,600
+workshop for um for for knowledge graph.
+
+939
+00:38:40,560 --> 00:38:45,560
+Now, how do we build a knowledge graph
+
+940
+00:38:42,600 --> 00:38:48,280
+because there are so many different ways
+
+941
+00:38:45,560 --> 00:38:50,200
+in which we can uh
+
+942
+00:38:48,280 --> 00:38:54,600
+tell facts, right?
+
+943
+00:38:50,200 --> 00:38:56,160
+Um but uh in uh in this uh specific uh
+
+944
+00:38:54,600 --> 00:38:59,480
+context,
+
+945
+00:38:56,160 --> 00:39:02,080
+uh we we start from from your website.
+
+946
+00:38:59,480 --> 00:39:03,880
+We start from from web content. And here
+
+947
+00:39:02,080 --> 00:39:06,800
+I have taken uh
+
+948
+00:39:03,880 --> 00:39:09,760
+kind of an inspiration from from a slide
+
+949
+00:39:06,800 --> 00:39:12,680
+uh by Teodora Petkova and uh and and she
+
+950
+00:39:09,760 --> 00:39:15,320
+took an inspiration from our uh website,
+
+951
+00:39:12,680 --> 00:39:16,840
+the WorldLift.io website. And here we
+
+952
+00:39:15,320 --> 00:39:17,800
+see uh
+
+953
+00:39:16,840 --> 00:39:19,680
+um
+
+954
+00:39:17,800 --> 00:39:21,120
+you know, that that the web content that
+
+955
+00:39:19,680 --> 00:39:24,520
+we published
+
+956
+00:39:21,120 --> 00:39:27,120
+uh becomes linked data. And so, this is
+
+957
+00:39:24,520 --> 00:39:29,360
+a characteristic of what WorldLift does,
+
+958
+00:39:27,120 --> 00:39:32,520
+but it's also kind of part of the
+
+959
+00:39:29,360 --> 00:39:35,120
+evolution of modern uh search where we
+
+960
+00:39:32,520 --> 00:39:37,040
+start to use a structured data to
+
+961
+00:39:35,120 --> 00:39:40,760
+describe the content that we published
+
+962
+00:39:37,040 --> 00:39:44,120
+on our website. And this is creating a
+
+963
+00:39:40,760 --> 00:39:46,880
+graph, okay? So, here we have a blog
+
+964
+00:39:44,120 --> 00:39:50,240
+post, which is The Apology of Socrates,
+
+965
+00:39:46,880 --> 00:39:52,280
+that references, you know, uh Plato and
+
+966
+00:39:50,240 --> 00:39:54,120
+it references Socrates, and it
+
+967
+00:39:52,280 --> 00:39:56,000
+references uh
+
+968
+00:39:54,120 --> 00:39:58,560
+you know, the Socratic dialogue, and
+
+969
+00:39:56,000 --> 00:40:00,480
+it's been authored by in this case uh
+
+970
+00:39:58,560 --> 00:40:03,040
+Gennaro, who's I'm not sure if he's
+
+971
+00:40:00,480 --> 00:40:05,720
+attending today, but uh it's it's it's
+
+972
+00:40:03,040 --> 00:40:08,520
+part of the of the WorldLift team.
+
+973
+00:40:05,720 --> 00:40:12,200
+So, so the web content is for us the
+
+974
+00:40:08,520 --> 00:40:16,080
+source of truth that we are going to use
+
+975
+00:40:12,200 --> 00:40:19,120
+to to build a knowledge graph, okay?
+
+976
+00:40:16,080 --> 00:40:21,880
+And uh and we do these um
+
+977
+00:40:19,120 --> 00:40:25,280
+using uh uh a linked data vocabulary
+
+978
+00:40:21,880 --> 00:40:28,280
+that is called schema.org um as as uh
+
+979
+00:40:25,280 --> 00:40:31,160
+you might know, linked data allows us to
+
+980
+00:40:28,280 --> 00:40:34,240
+to freely use any type of uh any type of
+
+981
+00:40:31,160 --> 00:40:36,720
+vocabulary, but we focus on schema
+
+982
+00:40:34,240 --> 00:40:38,760
+because schema is the vocabulary that uh
+
+983
+00:40:36,720 --> 00:40:40,920
+that has been created by the search
+
+984
+00:40:38,760 --> 00:40:42,120
+engine for understanding the content on
+
+985
+00:40:40,920 --> 00:40:44,240
+the web.
+
+986
+00:40:42,120 --> 00:40:46,320
+So, it's been developed by and for the
+
+987
+00:40:44,240 --> 00:40:49,840
+search engine. It's it's a super
+
+988
+00:40:46,320 --> 00:40:52,160
+extensible and it's continuously growing
+
+989
+00:40:49,840 --> 00:40:54,320
+and it's become, you know, de facto the
+
+990
+00:40:52,160 --> 00:40:57,000
+standard for linked data.
+
+991
+00:40:54,320 --> 00:40:58,720
+So, there is a lot of um
+
+992
+00:40:57,000 --> 00:41:00,160
+you know, there's a an open community.
+
+993
+00:40:58,720 --> 00:41:02,320
+There is a of course also a lot of
+
+994
+00:41:00,160 --> 00:41:04,760
+debates on you know, the the role of
+
+995
+00:41:02,320 --> 00:41:06,360
+Google inside this community. Maybe it's
+
+996
+00:41:04,760 --> 00:41:07,680
+the strong, maybe it's the weak, but
+
+997
+00:41:06,360 --> 00:41:08,440
+there is a lot of
+
+998
+00:41:07,680 --> 00:41:10,320
+uh
+
+999
+00:41:08,440 --> 00:41:13,000
+in in practice, there is a lot of
+
+1000
+00:41:10,320 --> 00:41:14,600
+opportunities for you to to get into the
+
+1001
+00:41:13,000 --> 00:41:16,360
+arena and
+
+1002
+00:41:14,600 --> 00:41:20,640
+and uh sustain the growth of the
+
+1003
+00:41:16,360 --> 00:41:22,480
+vocabulary that today consists of um
+
+1004
+00:41:20,640 --> 00:41:26,160
+841
+
+1005
+00:41:22,480 --> 00:41:28,520
+types and um so, different classes. So,
+
+1006
+00:41:26,160 --> 00:41:30,760
+there are 841
+
+1007
+00:41:28,520 --> 00:41:34,880
+different type of things that uh that we
+
+1008
+00:41:30,760 --> 00:41:37,640
+can structure using today um schema.org
+
+1009
+00:41:34,880 --> 00:41:41,000
+uh vocabulary.
+
+1010
+00:41:37,640 --> 00:41:42,760
+So, that's that's super powerful um
+
+1011
+00:41:41,000 --> 00:41:45,160
+and that's the language that we use for
+
+1012
+00:41:42,760 --> 00:41:48,400
+creating the facts inside the knowledge
+
+1013
+00:41:45,160 --> 00:41:50,120
+graph starting from a website, okay?
+
+1014
+00:41:48,400 --> 00:41:52,440
+And I hope that you're still following
+
+1015
+00:41:50,120 --> 00:41:54,240
+me, but um
+
+1016
+00:41:52,440 --> 00:41:55,480
+to make it super simple,
+
+1017
+00:41:54,240 --> 00:41:57,960
+uh
+
+1018
+00:41:55,480 --> 00:41:59,320
+we we create information in the form of
+
+1019
+00:41:57,960 --> 00:42:01,560
+triples
+
+1020
+00:41:59,320 --> 00:42:04,120
+by combining subject, predicate, and
+
+1021
+00:42:01,560 --> 00:42:08,280
+object okay?
+
+1022
+00:42:04,120 --> 00:42:11,200
+And uh and and we do these using the the
+
+1023
+00:42:08,280 --> 00:42:14,720
+the schema vocabulary.
+
+1024
+00:42:11,200 --> 00:42:17,920
+And so, on unstructured text like Jason
+
+1025
+00:42:14,720 --> 00:42:20,040
+Barnard knows Andrev Pini
+
+1026
+00:42:17,920 --> 00:42:21,760
+will eventually become inside the
+
+1027
+00:42:20,040 --> 00:42:25,400
+knowledge graph uh
+
+1028
+00:42:21,760 --> 00:42:29,080
+a triple. So, subject Jason Barnard,
+
+1029
+00:42:25,400 --> 00:42:31,600
+predicate knows, object Andrev Pini. So,
+
+1030
+00:42:29,080 --> 00:42:34,560
+the text become become triples and then
+
+1031
+00:42:31,600 --> 00:42:37,640
+the triples get expressed in the form of
+
+1032
+00:42:34,560 --> 00:42:39,840
+structured data. So, we use, you know,
+
+1033
+00:42:37,640 --> 00:42:42,680
+the schema.org vocabulary for for
+
+1034
+00:42:39,840 --> 00:42:44,120
+creating these these for representing
+
+1035
+00:42:42,680 --> 00:42:47,080
+these triples.
+
+1036
+00:42:44,120 --> 00:42:49,280
+But then, um in the context of WordLift
+
+1037
+00:42:47,080 --> 00:42:51,200
+and and other tools like WordLift, then
+
+1038
+00:42:49,280 --> 00:42:54,240
+we convert the structured data into
+
+1039
+00:42:51,200 --> 00:42:57,600
+structured linked data, where everything
+
+1040
+00:42:54,240 --> 00:42:59,840
+has a unique identifiers. And that's um
+
+1041
+00:42:57,600 --> 00:43:02,200
+that's becoming more important, even
+
+1042
+00:42:59,840 --> 00:43:05,240
+though Google doesn't acknowledge that
+
+1043
+00:43:02,200 --> 00:43:08,000
+it's using these unique identifiers.
+
+1044
+00:43:05,240 --> 00:43:10,440
+We have seen now across these uh
+
+1045
+00:43:08,000 --> 00:43:12,480
+4 years that we've been uh in the
+
+1046
+00:43:10,440 --> 00:43:14,480
+business with WordLift, that uh that
+
+1047
+00:43:12,480 --> 00:43:16,600
+Google is is somehow using these unique
+
+1048
+00:43:14,480 --> 00:43:19,200
+identifiers. These are particularly
+
+1049
+00:43:16,600 --> 00:43:23,240
+interesting because uh because they they
+
+1050
+00:43:19,200 --> 00:43:26,240
+start to represent uh your own sitemap.
+
+1051
+00:43:23,240 --> 00:43:29,160
+Because if you if you if you provide
+
+1052
+00:43:26,240 --> 00:43:32,080
+an ID for every concept that you deal
+
+1053
+00:43:29,160 --> 00:43:35,120
+with, and you start reusing this ID
+
+1054
+00:43:32,080 --> 00:43:37,000
+across multiple pages, it makes it very
+
+1055
+00:43:35,120 --> 00:43:40,040
+simple to the search for the search
+
+1056
+00:43:37,000 --> 00:43:41,640
+engine to index and to understand your
+
+1057
+00:43:40,040 --> 00:43:43,640
+content.
+
+1058
+00:43:41,640 --> 00:43:45,440
+So, so we start from, you know, the
+
+1059
+00:43:43,640 --> 00:43:48,000
+triples.
+
+1060
+00:43:45,440 --> 00:43:50,280
+And uh and and and we transform the
+
+1061
+00:43:48,000 --> 00:43:53,520
+natural language into these triples, and
+
+1062
+00:43:50,280 --> 00:43:56,160
+then we publish this triple using using
+
+1063
+00:43:53,520 --> 00:43:59,520
+linked data.
+
+1064
+00:43:56,160 --> 00:44:00,960
+And uh and and and as we do these, we
+
+1065
+00:43:59,520 --> 00:44:04,240
+provide
+
+1066
+00:44:00,960 --> 00:44:08,720
+a home to each entity
+
+1067
+00:44:04,240 --> 00:44:10,080
+by publishing the the link data,
+
+1068
+00:44:08,720 --> 00:44:13,000
+URI.
+
+1069
+00:44:10,080 --> 00:44:15,920
+So, in this case, we can see the entity
+
+1070
+00:44:13,000 --> 00:44:18,200
+for for Jason Barnard, who was with me
+
+1071
+00:44:15,920 --> 00:44:20,760
+yesterday in the panel.
+
+1072
+00:44:18,200 --> 00:44:24,040
+And and that it's been published using
+
+1073
+00:44:20,760 --> 00:44:25,800
+WordLift and that can be linked from
+
+1074
+00:44:24,040 --> 00:44:28,120
+Wikidata.
+
+1075
+00:44:25,800 --> 00:44:29,360
+Because it's it's accessible and it's
+
+1076
+00:44:28,120 --> 00:44:31,760
+it's it's
+
+1077
+00:44:29,360 --> 00:44:34,600
+in the published as as link data. And
+
+1078
+00:44:31,760 --> 00:44:36,040
+so, then we can query, you know, this
+
+1079
+00:44:34,600 --> 00:44:39,000
+this entity
+
+1080
+00:44:36,040 --> 00:44:40,960
+also from from from the Wikidata sparkle
+
+1081
+00:44:39,000 --> 00:44:43,560
+endpoint. So, we can start combining
+
+1082
+00:44:40,960 --> 00:44:45,240
+data, you know, our data with with with
+
+1083
+00:44:43,560 --> 00:44:48,160
+the public available data and then we
+
+1084
+00:44:45,240 --> 00:44:50,480
+can create this, you know,
+
+1085
+00:44:48,160 --> 00:44:52,440
+large graphs that we can use for
+
+1086
+00:44:50,480 --> 00:44:54,560
+different things.
+
+1087
+00:44:52,440 --> 00:44:55,720
+And and and and and
+
+1088
+00:44:54,560 --> 00:44:58,440
+and that's exactly what we're going to
+
+1089
+00:44:55,720 --> 00:45:01,120
+do in order to create the long-tail
+
+1090
+00:44:58,440 --> 00:45:02,040
+pages that we want to build for, you
+
+1091
+00:45:01,120 --> 00:45:06,040
+know,
+
+1092
+00:45:02,040 --> 00:45:08,760
+capturing new new new intents.
+
+1093
+00:45:06,040 --> 00:45:08,760
+So um
+
+1094
+00:45:09,720 --> 00:45:15,200
+it's now time to meet a little bit
+
+1095
+00:45:11,960 --> 00:45:16,680
+George, who is with us and and has made
+
+1096
+00:45:15,200 --> 00:45:19,000
+the introduction.
+
+1097
+00:45:16,680 --> 00:45:22,760
+Because because in order to to build
+
+1098
+00:45:19,000 --> 00:45:23,520
+this this demonstration today, I I have
+
+1099
+00:45:22,760 --> 00:45:26,480
+um
+
+1100
+00:45:23,520 --> 00:45:28,000
+asked permission to George, who is also
+
+1101
+00:45:26,480 --> 00:45:29,880
+not only the organizer among the
+
+1102
+00:45:28,000 --> 00:45:35,520
+organizers of this conference, but is
+
+1103
+00:45:29,880 --> 00:45:37,640
+also a brilliant journalist for ZDNet.
+
+1104
+00:45:35,520 --> 00:45:39,920
+And I asked this permission in order to
+
+1105
+00:45:37,640 --> 00:45:41,360
+use his content for creating a demo
+
+1106
+00:45:39,920 --> 00:45:44,600
+website.
+
+1107
+00:45:41,360 --> 00:45:47,280
+Um and and to build a knowledge graph
+
+1108
+00:45:44,600 --> 00:45:49,040
+out of his out of his content and and
+
+1109
+00:45:47,280 --> 00:45:51,080
+then to start using this knowledge graph
+
+1110
+00:45:49,040 --> 00:45:55,360
+to create, you know, the long-tail
+
+1111
+00:45:51,080 --> 00:45:55,360
+strategy that that I have in mind.
+
+1112
+00:45:56,120 --> 00:45:59,800
+So,
+
+1113
+00:45:57,960 --> 00:46:02,800
+let's let's start to WordLift a little
+
+1114
+00:45:59,800 --> 00:46:04,600
+bit of George's content. so I will
+
+1115
+00:46:02,800 --> 00:46:06,200
+quickly
+
+1116
+00:46:04,600 --> 00:46:08,640
+move from the presentation into
+
+1117
+00:46:06,200 --> 00:46:11,680
+WordPress.
+
+1118
+00:46:08,640 --> 00:46:14,720
+Um, let me see if if there are
+
+1119
+00:46:11,680 --> 00:46:18,000
+if there are um
+
+1120
+00:46:14,720 --> 00:46:20,160
+some question here. What visualization
+
+1121
+00:46:18,000 --> 00:46:23,280
+What visualizer is this? A colleague is
+
+1122
+00:46:20,160 --> 00:46:25,920
+asking. I don't know.
+
+1123
+00:46:23,280 --> 00:46:28,200
+Try to explain me what what slides you
+
+1124
+00:46:25,920 --> 00:46:29,680
+were referring to and and I will try to
+
+1125
+00:46:28,200 --> 00:46:30,800
+answer.
+
+1126
+00:46:29,680 --> 00:46:33,800
+Um
+
+1127
+00:46:30,800 --> 00:46:36,120
+Yeah, let me see if colleague respond
+
+1128
+00:46:33,800 --> 00:46:38,320
+and and uh
+
+1129
+00:46:36,120 --> 00:46:40,480
+Ah, so you mean this one? This this
+
+1130
+00:46:38,320 --> 00:46:43,160
+stuff here?
+
+1131
+00:46:40,480 --> 00:46:45,640
+If if it's this one this one I'm
+
+1132
+00:46:43,160 --> 00:46:47,640
+visualizing data using
+
+1133
+00:46:45,640 --> 00:46:50,840
+Wiki data
+
+1134
+00:46:47,640 --> 00:46:52,000
+tools. So this is a tool that is a part
+
+1135
+00:46:50,840 --> 00:46:55,400
+of the
+
+1136
+00:46:52,000 --> 00:46:57,960
+Wiki data sparkle endpoint.
+
+1137
+00:46:55,400 --> 00:46:59,040
+Yeah, so if that is what you're looking
+
+1138
+00:46:57,960 --> 00:47:00,560
+for.
+
+1139
+00:46:59,040 --> 00:47:05,840
+All right, so I will
+
+1140
+00:47:00,560 --> 00:47:08,920
+quickly jump on on on WordPress.
+
+1141
+00:47:05,840 --> 00:47:11,120
+Um, I'm confident that you're still
+
+1142
+00:47:08,920 --> 00:47:13,840
+seeing my screen.
+
+1143
+00:47:11,120 --> 00:47:15,040
+And here you can see I have a 74 blog
+
+1144
+00:47:13,840 --> 00:47:16,720
+post
+
+1145
+00:47:15,040 --> 00:47:19,840
+that have been
+
+1146
+00:47:16,720 --> 00:47:23,480
+copied from from from ZDNet and they're
+
+1147
+00:47:19,840 --> 00:47:25,320
+all written by George.
+
+1148
+00:47:23,480 --> 00:47:27,120
+And so that's that's an example of a
+
+1149
+00:47:25,320 --> 00:47:29,200
+post and
+
+1150
+00:47:27,120 --> 00:47:30,520
+and and you can see that the text has
+
+1151
+00:47:29,200 --> 00:47:32,720
+these uh
+
+1152
+00:47:30,520 --> 00:47:34,520
+highlighting and these are the
+
+1153
+00:47:32,720 --> 00:47:37,440
+annotation that
+
+1154
+00:47:34,520 --> 00:47:40,000
+have been added using WordLift.
+
+1155
+00:47:37,440 --> 00:47:42,560
+And that it's now here
+
+1156
+00:47:40,000 --> 00:47:44,480
+encapsulated inside
+
+1157
+00:47:42,560 --> 00:47:46,520
+WordPress. So that's the CMS that we're
+
+1158
+00:47:44,480 --> 00:47:47,600
+using. It's called WordPress.
+
+1159
+00:47:46,520 --> 00:47:50,720
+Um,
+
+1160
+00:47:47,600 --> 00:47:54,200
+and and and here we have you know the
+
+1161
+00:47:50,720 --> 00:47:57,920
+the list of entities that are organized
+
+1162
+00:47:54,200 --> 00:48:01,080
+into into different groups. And uh and
+
+1163
+00:47:57,920 --> 00:48:01,680
+for each entity then uh the editor can
+
+1164
+00:48:01,080 --> 00:48:03,320
+uh
+
+1165
+00:48:01,680 --> 00:48:06,160
+you know, kind of
+
+1166
+00:48:03,320 --> 00:48:08,240
+edit the content that it's represented
+
+1167
+00:48:06,160 --> 00:48:09,640
+for for that concept.
+
+1168
+00:48:08,240 --> 00:48:12,680
+Um
+
+1169
+00:48:09,640 --> 00:48:15,000
+and uh and and and and it can also add
+
+1170
+00:48:12,680 --> 00:48:17,520
+um place eventually a link
+
+1171
+00:48:15,000 --> 00:48:20,440
+to these um you know, concept pages to
+
+1172
+00:48:17,520 --> 00:48:22,680
+these kind of Imagine it as a as a as a
+
+1173
+00:48:20,440 --> 00:48:25,680
+glossary of terms.
+
+1174
+00:48:22,680 --> 00:48:27,960
+Um and then and then as as editor kind
+
+1175
+00:48:25,680 --> 00:48:30,680
+of uh checks these uh these entities
+
+1176
+00:48:27,960 --> 00:48:32,800
+that to to to highlight the one that are
+
+1177
+00:48:30,680 --> 00:48:35,640
+that are relevant is is is building the
+
+1178
+00:48:32,800 --> 00:48:37,200
+knowledge graph, okay? So, we have the
+
+1179
+00:48:35,640 --> 00:48:39,480
+the blog post and then we have the
+
+1180
+00:48:37,200 --> 00:48:42,040
+entities that um that are used for the
+
+1181
+00:48:39,480 --> 00:48:44,000
+annotation that provide the context for
+
+1182
+00:48:42,040 --> 00:48:46,080
+for the blog post. And then you can see
+
+1183
+00:48:44,000 --> 00:48:48,160
+that automatically the tool is kind of
+
+1184
+00:48:46,080 --> 00:48:50,400
+um you know, getting some images from
+
+1185
+00:48:48,160 --> 00:48:51,920
+from you know, the the the other content
+
+1186
+00:48:50,400 --> 00:48:53,760
+that has been published inside this
+
+1187
+00:48:51,920 --> 00:48:57,120
+knowledge graph and then it's also
+
+1188
+00:48:53,760 --> 00:48:59,120
+providing a kind of a list of uh related
+
+1189
+00:48:57,120 --> 00:49:02,720
+articles that um
+
+1190
+00:48:59,120 --> 00:49:05,040
+that uh can be used. Um
+
+1191
+00:49:02,720 --> 00:49:07,080
+so so we have these um entity annotation
+
+1192
+00:49:05,040 --> 00:49:09,240
+process that uh it's it's really
+
+1193
+00:49:07,080 --> 00:49:10,720
+creating an impact in the SEO because
+
+1194
+00:49:09,240 --> 00:49:13,360
+it's publishing
+
+1195
+00:49:10,720 --> 00:49:15,160
+uh data as as we saw in the form of uh
+
+1196
+00:49:13,360 --> 00:49:18,240
+structured linked data.
+
+1197
+00:49:15,160 --> 00:49:20,360
+But we can also tap into um
+
+1198
+00:49:18,240 --> 00:49:23,040
+you know, the user experience by by
+
+1199
+00:49:20,360 --> 00:49:27,240
+adding some some widgets.
+
+1200
+00:49:23,040 --> 00:49:30,320
+So, so if I if I use these uh shortcode
+
+1201
+00:49:27,240 --> 00:49:32,520
+um and I I add these
+
+1202
+00:49:30,320 --> 00:49:35,240
+then uh then we can have um a quick look
+
+1203
+00:49:32,520 --> 00:49:36,960
+at uh you know, how the front end
+
+1204
+00:49:35,240 --> 00:49:38,840
+changes.
+
+1205
+00:49:36,960 --> 00:49:40,880
+Um
+
+1206
+00:49:38,840 --> 00:49:43,360
+And so here
+
+1207
+00:49:40,880 --> 00:49:46,200
+we have the links that uh have been
+
+1208
+00:49:43,360 --> 00:49:48,480
+created by WordLift that have um you
+
+1209
+00:49:46,200 --> 00:49:52,160
+know, this we call it context card,
+
+1210
+00:49:48,480 --> 00:49:54,720
+which is um sort of a an explainer text
+
+1211
+00:49:52,160 --> 00:49:56,960
+for for a concept that I might not be
+
+1212
+00:49:54,720 --> 00:49:59,000
+aware of like you know deep learning of
+
+1213
+00:49:56,960 --> 00:50:00,960
+machine learning or or simply you know
+
+1214
+00:49:59,000 --> 00:50:03,040
+in my case I'm I'm I'm
+
+1215
+00:50:00,960 --> 00:50:06,000
+I'm I want to understand you know how
+
+1216
+00:50:03,040 --> 00:50:07,280
+how how George defines you know machine
+
+1217
+00:50:06,000 --> 00:50:10,360
+learnings.
+
+1218
+00:50:07,280 --> 00:50:11,640
+As we we might agree or might not but
+
+1219
+00:50:10,360 --> 00:50:13,800
+I think we do.
+
+1220
+00:50:11,640 --> 00:50:16,840
+Okay, so and here I have you know I have
+
+1221
+00:50:13,800 --> 00:50:19,800
+placed a widget that that as you can see
+
+1222
+00:50:16,840 --> 00:50:23,240
+is a list of you know related articles.
+
+1223
+00:50:19,800 --> 00:50:25,480
+But I can organize these using these
+
+1224
+00:50:23,240 --> 00:50:26,800
+network of entities that that now I have
+
+1225
+00:50:25,480 --> 00:50:29,760
+created.
+
+1226
+00:50:26,800 --> 00:50:31,600
+Um so that I can have a look at you know
+
+1227
+00:50:29,760 --> 00:50:34,320
+things that are for instance related to
+
+1228
+00:50:31,600 --> 00:50:36,120
+machine learning and and COVID-19. So
+
+1229
+00:50:34,320 --> 00:50:37,840
+I'm I'm using the entities
+
+1230
+00:50:36,120 --> 00:50:40,920
+of the knowledge graph already in the
+
+1231
+00:50:37,840 --> 00:50:42,760
+front end to to create you know an
+
+1232
+00:50:40,920 --> 00:50:44,480
+interaction with the user and to let the
+
+1233
+00:50:42,760 --> 00:50:46,960
+user explore
+
+1234
+00:50:44,480 --> 00:50:51,240
+new content.
+
+1235
+00:50:46,960 --> 00:50:53,080
+So what is important out of this is that
+
+1236
+00:50:51,240 --> 00:50:56,560
+you know we see that the knowledge graph
+
+1237
+00:50:53,080 --> 00:50:59,800
+has been built by choosing you know the
+
+1238
+00:50:56,560 --> 00:51:02,560
+the the entities that among the entities
+
+1239
+00:50:59,800 --> 00:51:04,320
+suggested by by the tool that we think
+
+1240
+00:51:02,560 --> 00:51:06,960
+are relevant. Okay, and that's that's
+
+1241
+00:51:04,320 --> 00:51:10,000
+the SEO work. The SEO work is really
+
+1242
+00:51:06,960 --> 00:51:12,960
+becoming more and more about curating
+
+1243
+00:51:10,000 --> 00:51:14,640
+the the content.
+
+1244
+00:51:12,960 --> 00:51:17,160
+So
+
+1245
+00:51:14,640 --> 00:51:19,720
+there was a probably a quick demo of the
+
+1246
+00:51:17,160 --> 00:51:23,160
+tool but but it it it's it's what is
+
+1247
+00:51:19,720 --> 00:51:25,120
+necessary to understand more about um
+
+1248
+00:51:23,160 --> 00:51:27,440
+you know how we're building the the the
+
+1249
+00:51:25,120 --> 00:51:31,760
+knowledge graph.
+
+1250
+00:51:27,440 --> 00:51:32,720
+Okay, any plans to offer a version of
+
+1251
+00:51:31,760 --> 00:51:34,160
+okay,
+
+1252
+00:51:32,720 --> 00:51:36,240
+so far so good. The slide the show
+
+1253
+00:51:34,160 --> 00:51:38,480
+Plato's connections. Okay, yes. So
+
+1254
+00:51:36,240 --> 00:51:40,040
+that's the the slide I used the show
+
+1255
+00:51:38,480 --> 00:51:42,840
+Plato's connection
+
+1256
+00:51:40,040 --> 00:51:46,160
+to answer to a question coming from from
+
+1257
+00:51:42,840 --> 00:51:47,600
+from colleagues. It's it's a tool called
+
+1258
+00:51:46,160 --> 00:51:50,160
+Lod Live.
+
+1259
+00:51:47,600 --> 00:51:52,840
+Um it's it's a terrific tool, but
+
+1260
+00:51:50,160 --> 00:51:56,280
+unfortunately the developer, who is also
+
+1261
+00:51:52,840 --> 00:51:58,720
+a friend of ours, is um has started to
+
+1262
+00:51:56,280 --> 00:52:02,040
+work in fintech. So, the semantic web
+
+1263
+00:51:58,720 --> 00:52:04,560
+community has lost his contribution and
+
+1264
+00:52:02,040 --> 00:52:07,240
+and the tool is is currently no longer
+
+1265
+00:52:04,560 --> 00:52:10,240
+maintained. So, we we used to have it
+
+1266
+00:52:07,240 --> 00:52:12,440
+directly linked in in WordLift, but but
+
+1267
+00:52:10,240 --> 00:52:13,560
+uh um it's it's no longer available
+
+1268
+00:52:12,440 --> 00:52:15,200
+because
+
+1269
+00:52:13,560 --> 00:52:16,320
+because the guy that developed it it's
+
+1270
+00:52:15,200 --> 00:52:18,600
+it's uh
+
+1271
+00:52:16,320 --> 00:52:20,240
+it's focusing on on other stuff.
+
+1272
+00:52:18,600 --> 00:52:23,160
+Uh any plans to offer a version of
+
+1273
+00:52:20,240 --> 00:52:25,680
+WordLift for Jamstack? Yes, I mean
+
+1274
+00:52:23,160 --> 00:52:28,280
+WordLift is not only available to to to
+
+1275
+00:52:25,680 --> 00:52:29,560
+WordPress. I mean it used to be, but we
+
+1276
+00:52:28,280 --> 00:52:31,520
+currently have
+
+1277
+00:52:29,560 --> 00:52:34,960
+you know a JavaScript library that can
+
+1278
+00:52:31,520 --> 00:52:38,520
+help you improve the content outside of
+
+1279
+00:52:34,960 --> 00:52:40,720
+uh outside of of WordPress. And so, so
+
+1280
+00:52:38,520 --> 00:52:42,560
+yeah, no worries about it.
+
+1281
+00:52:40,720 --> 00:52:45,400
+Uh but back to ask cuz I think it's
+
+1282
+00:52:42,560 --> 00:52:48,200
+important that we get the concept
+
+1283
+00:52:45,400 --> 00:52:54,040
+um more than more than the tool.
+
+1284
+00:52:48,200 --> 00:52:57,560
+So, we we we we we have taken 74 73 uh
+
+1285
+00:52:54,040 --> 00:52:58,920
+articles from from George latest
+
+1286
+00:52:57,560 --> 00:53:02,960
+um
+
+1287
+00:52:58,920 --> 00:53:05,160
+uh stories on on ZDNet and and we have
+
+1288
+00:53:02,960 --> 00:53:06,720
+created this knowledge graph
+
+1289
+00:53:05,160 --> 00:53:10,400
+uh that
+
+1290
+00:53:06,720 --> 00:53:14,680
+that it's it's it's made of um
+
+1291
+00:53:10,400 --> 00:53:16,720
+triples and and so so the the simplest
+
+1292
+00:53:14,680 --> 00:53:19,000
+form of the knowledge graph that
+
+1293
+00:53:16,720 --> 00:53:21,720
+WordLift creates is the one that we are
+
+1294
+00:53:19,000 --> 00:53:24,040
+dealing with today. So, the subject and
+
+1295
+00:53:21,720 --> 00:53:28,120
+predicate and the object it's always an
+
+1296
+00:53:24,040 --> 00:53:29,840
+article that contains a reference to a
+
+1297
+00:53:28,120 --> 00:53:32,160
+concept okay?
+
+1298
+00:53:29,840 --> 00:53:33,960
+So, that's the that's the structure of
+
+1299
+00:53:32,160 --> 00:53:37,120
+of the knowledge graph that we have
+
+1300
+00:53:33,960 --> 00:53:39,640
+created with the content
+
+1301
+00:53:37,120 --> 00:53:42,520
+written by George.
+
+1302
+00:53:39,640 --> 00:53:45,560
+So, as an example, um
+
+1303
+00:53:42,520 --> 00:53:46,920
+we have you know, an article
+
+1304
+00:53:45,560 --> 00:53:49,880
+which is
+
+1305
+00:53:46,920 --> 00:53:51,960
+as it's own unique ID
+
+1306
+00:53:49,880 --> 00:53:54,480
+in the link data world
+
+1307
+00:53:51,960 --> 00:53:57,680
+which is this one and that mentions
+
+1308
+00:53:54,480 --> 00:54:00,920
+among other concept the entity for deep
+
+1309
+00:53:57,680 --> 00:54:04,760
+learning that within this graph as as
+
+1310
+00:54:00,920 --> 00:54:07,080
+it's own unique ID, okay? So, that's how
+
+1311
+00:54:04,760 --> 00:54:10,200
+we have created the knowledge graph
+
+1312
+00:54:07,080 --> 00:54:12,280
+starting from the content that uh that
+
+1313
+00:54:10,200 --> 00:54:15,480
+George has written.
+
+1314
+00:54:12,280 --> 00:54:17,320
+We could be way more structured than
+
+1315
+00:54:15,480 --> 00:54:19,200
+these but
+
+1316
+00:54:17,320 --> 00:54:21,720
+but of course this is kind of out of the
+
+1317
+00:54:19,200 --> 00:54:24,120
+scope of today's
+
+1318
+00:54:21,720 --> 00:54:26,640
+goal of of creating a long tail
+
+1319
+00:54:24,120 --> 00:54:28,080
+strategy. But um
+
+1320
+00:54:26,640 --> 00:54:30,840
+just so you know,
+
+1321
+00:54:28,080 --> 00:54:33,000
+you can build a
+
+1322
+00:54:30,840 --> 00:54:35,560
+richer
+
+1323
+00:54:33,000 --> 00:54:38,120
+knowledge graph by creating a more
+
+1324
+00:54:35,560 --> 00:54:40,000
+structured content model for your
+
+1325
+00:54:38,120 --> 00:54:41,840
+content and so you might have for
+
+1326
+00:54:40,000 --> 00:54:43,360
+instance
+
+1327
+00:54:41,840 --> 00:54:45,680
+you know, a
+
+1328
+00:54:43,360 --> 00:54:48,520
+an object that can be a webinar that has
+
+1329
+00:54:45,680 --> 00:54:50,920
+its own author and so there is a type
+
+1330
+00:54:48,520 --> 00:54:53,120
+relationship within the the author of
+
+1331
+00:54:50,920 --> 00:54:55,320
+the webinar and the webinar itself is a
+
+1332
+00:54:53,120 --> 00:54:58,400
+creative work and so you can really kind
+
+1333
+00:54:55,320 --> 00:55:00,640
+of expand deeply into the realms of
+
+1334
+00:54:58,400 --> 00:55:03,680
+content modeling and create a you know,
+
+1335
+00:55:00,640 --> 00:55:06,360
+a fantastic over structure
+
+1336
+00:55:03,680 --> 00:55:08,800
+knowledge graph. But here we have a very
+
+1337
+00:55:06,360 --> 00:55:11,680
+simple version that has articles and
+
+1338
+00:55:08,800 --> 00:55:16,240
+then concepts linked together through
+
+1339
+00:55:11,680 --> 00:55:16,240
+schema property called mentions.
+
+1340
+00:55:16,840 --> 00:55:23,120
+So, here we start to kind of
+
+1341
+00:55:20,480 --> 00:55:25,720
+dig into the code.
+
+1342
+00:55:23,120 --> 00:55:27,520
+And and I'm going to actually
+
+1343
+00:55:25,720 --> 00:55:29,120
+run the code.
+
+1344
+00:55:27,520 --> 00:55:33,160
+So, we will
+
+1345
+00:55:29,120 --> 00:55:34,400
+take another minute break and and I will
+
+1346
+00:55:33,160 --> 00:55:36,880
+start
+
+1347
+00:55:34,400 --> 00:55:40,240
+running the code here so that
+
+1348
+00:55:36,880 --> 00:55:42,440
+we can try to see how we are getting to
+
+1349
+00:55:40,240 --> 00:55:45,200
+to to to this you know, kind of
+
+1350
+00:55:42,440 --> 00:55:48,640
+breakdown of the main concept that
+
+1351
+00:55:45,200 --> 00:55:51,720
+George has talked about in the latest
+
+1352
+00:55:48,640 --> 00:55:55,680
+articles he has written for for ZDNet.
+
+1353
+00:55:51,720 --> 00:55:59,280
+And yeah, one one minute break.
+
+1354
+00:55:55,680 --> 00:55:59,280
+And we will get back here.
+
+1355
+00:57:29,080 --> 00:57:34,760
+All right, I'm back.
+
+1356
+00:57:31,720 --> 00:57:37,040
+I hope you're still following me.
+
+1357
+00:57:34,760 --> 00:57:39,840
+And so we will
+
+1358
+00:57:37,040 --> 00:57:41,800
+start to look at at the code. We will we
+
+1359
+00:57:39,840 --> 00:57:45,040
+will have um
+
+1360
+00:57:41,800 --> 00:57:47,480
+the upcoming session on kind of
+
+1361
+00:57:45,040 --> 00:57:50,960
+the way in which this this theme has
+
+1362
+00:57:47,480 --> 00:57:54,760
+been constructed. So
+
+1363
+00:57:50,960 --> 00:57:57,560
+I will just show you a little bit of um
+
+1364
+00:57:54,760 --> 00:58:00,320
+of the way in which in which the code is
+
+1365
+00:57:57,560 --> 00:58:01,960
+is organized.
+
+1366
+00:58:00,320 --> 00:58:03,880
+So here we have
+
+1367
+00:58:01,960 --> 00:58:06,680
+what we what I call the inspector for
+
+1368
+00:58:03,880 --> 00:58:09,640
+the intent. So the tool that
+
+1369
+00:58:06,680 --> 00:58:12,960
+we're building in order to
+
+1370
+00:58:09,640 --> 00:58:16,080
+seed the different um
+
+1371
+00:58:12,960 --> 00:58:19,120
+areas of search demand that that we want
+
+1372
+00:58:16,080 --> 00:58:22,320
+to create using based on on on the
+
+1373
+00:58:19,120 --> 00:58:25,080
+content that George has written.
+
+1374
+00:58:22,320 --> 00:58:28,160
+Um and um
+
+1375
+00:58:25,080 --> 00:58:30,760
+here we we are actually choosing, you
+
+1376
+00:58:28,160 --> 00:58:32,040
+know, some of the ideas that that we
+
+1377
+00:58:30,760 --> 00:58:35,160
+want to
+
+1378
+00:58:32,040 --> 00:58:37,840
+analyze in order to find things that we
+
+1379
+00:58:35,160 --> 00:58:40,080
+could write about with our you know with
+
+1380
+00:58:37,840 --> 00:58:42,480
+this new tool that that we are about to
+
+1381
+00:58:40,080 --> 00:58:44,600
+build. So
+
+1382
+00:58:42,480 --> 00:58:45,680
+as you can see here I've added machine
+
+1383
+00:58:44,600 --> 00:58:47,560
+learning
+
+1384
+00:58:45,680 --> 00:58:50,400
+artificial intelligence and and
+
+1385
+00:58:47,560 --> 00:58:52,960
+knowledge graph.
+
+1386
+00:58:50,400 --> 00:58:55,680
+But but
+
+1387
+00:58:52,960 --> 00:59:00,360
+And so here you know we will see in the
+
+1388
+00:58:55,680 --> 00:59:03,080
+next session we we we tap into um
+
+1389
+00:59:00,360 --> 00:59:06,880
+specific country
+
+1390
+00:59:03,080 --> 00:59:10,400
+which in this case is US and and we use
+
+1391
+00:59:06,880 --> 00:59:13,480
+a specific language and then we use this
+
+1392
+00:59:10,400 --> 00:59:16,840
+snippet of code this function in order
+
+1393
+00:59:13,480 --> 00:59:19,160
+to explore the suggestion coming from
+
+1394
+00:59:16,840 --> 00:59:20,360
+from Google auto complete.
+
+1395
+00:59:19,160 --> 00:59:22,360
+So
+
+1396
+00:59:20,360 --> 00:59:25,080
+but but
+
+1397
+00:59:22,360 --> 00:59:26,920
+but but at this point
+
+1398
+00:59:25,080 --> 00:59:30,400
+um
+
+1399
+00:59:26,920 --> 00:59:32,480
+as we've seen, we we have analyzed the
+
+1400
+00:59:30,400 --> 00:59:35,960
+sitemap of the
+
+1401
+00:59:32,480 --> 00:59:38,800
+of the website that that we have built
+
+1402
+00:59:35,960 --> 00:59:42,520
+with with the content from George.
+
+1403
+00:59:38,800 --> 00:59:46,240
+And and we are running a named entity
+
+1404
+00:59:42,520 --> 00:59:48,240
+recognition on the sitemap to get you
+
+1405
+00:59:46,240 --> 00:59:49,240
+know, the top entities
+
+1406
+00:59:48,240 --> 00:59:52,440
+um
+
+1407
+00:59:49,240 --> 00:59:54,880
+from from this website. And so here is
+
+1408
+00:59:52,440 --> 00:59:59,200
+where I read the sitemap.
+
+1409
+00:59:54,880 --> 01:00:02,600
+And then this is where I start counting
+
+1410
+00:59:59,200 --> 01:00:04,680
+for each article the top five entities
+
+1411
+01:00:02,600 --> 01:00:06,200
+and then I group them all together and I
+
+1412
+01:00:04,680 --> 01:00:08,800
+try to understand, you know, what are
+
+1413
+01:00:06,200 --> 01:00:10,880
+the things that that that George is is
+
+1414
+01:00:08,800 --> 01:00:12,960
+talking about the most.
+
+1415
+01:00:10,880 --> 01:00:14,000
+Okay, so that's the process that I use
+
+1416
+01:00:12,960 --> 01:00:16,720
+for
+
+1417
+01:00:14,000 --> 01:00:18,760
+um getting these these this list of
+
+1418
+01:00:16,720 --> 01:00:23,200
+entities in the slide that kind of
+
+1419
+01:00:18,760 --> 01:00:25,560
+provides us with with some ideas about
+
+1420
+01:00:23,200 --> 01:00:28,160
+the content that that we have on our
+
+1421
+01:00:25,560 --> 01:00:30,280
+website okay?
+
+1422
+01:00:28,160 --> 01:00:32,160
+So um
+
+1423
+01:00:30,280 --> 01:00:33,920
+you can ask me then questions about you
+
+1424
+01:00:32,160 --> 01:00:36,200
+know, this process and how to apply to
+
+1425
+01:00:33,920 --> 01:00:38,960
+your own website. It's quite interesting
+
+1426
+01:00:36,200 --> 01:00:41,240
+because it allows you to analyze also
+
+1427
+01:00:38,960 --> 01:00:43,040
+the site of a competitor using the
+
+1428
+01:00:41,240 --> 01:00:46,720
+entities that you have inside your own
+
+1429
+01:00:43,040 --> 01:00:49,960
+knowledge graph or entities that uh um
+
+1430
+01:00:46,720 --> 01:00:53,720
+might be available in open graphs like
+
+1431
+01:00:49,960 --> 01:00:56,520
+DBpedia or Wikidata or you know, any any
+
+1432
+01:00:53,720 --> 01:00:59,280
+type of linked linked data graph that
+
+1433
+01:00:56,520 --> 01:01:01,320
+you might have access to.
+
+1434
+01:00:59,280 --> 01:01:03,520
+So a lot of the concepts that George
+
+1435
+01:01:01,320 --> 01:01:06,200
+uses is you know, kind of revolves
+
+1436
+01:01:03,520 --> 01:01:08,480
+around of course data,
+
+1437
+01:01:06,200 --> 01:01:10,400
+knowledge knowledge graph
+
+1438
+01:01:08,480 --> 01:01:14,400
+and then and then you know, the various
+
+1439
+01:01:10,400 --> 01:01:16,400
+technologies and frameworks um
+
+1440
+01:01:14,400 --> 01:01:18,120
+of um
+
+1441
+01:01:16,400 --> 01:01:21,280
+you know, related to to knowledge
+
+1442
+01:01:18,120 --> 01:01:23,280
+management decision making and and
+
+1443
+01:01:21,280 --> 01:01:26,320
+artificial intelligence.
+
+1444
+01:01:23,280 --> 01:01:28,800
+And I needed to see these in order to to
+
+1445
+01:01:26,320 --> 01:01:32,000
+be able to to
+
+1446
+01:01:28,800 --> 01:01:33,280
+provide the original ideas to the system
+
+1447
+01:01:32,000 --> 01:01:35,720
+that will
+
+1448
+01:01:33,280 --> 01:01:37,760
+provide me with the list of long-tail
+
+1449
+01:01:35,720 --> 01:01:41,000
+intents. Okay, so I need to know that
+
+1450
+01:01:37,760 --> 01:01:44,280
+I'm covering, let's say, cryptocurrency
+
+1451
+01:01:41,000 --> 01:01:48,080
+uh or uh or or doctors or
+
+1452
+01:01:44,280 --> 01:01:50,080
+or sneakers or sunglasses. So, I need to
+
+1453
+01:01:48,080 --> 01:01:53,480
+have kind of an idea of, you know, what
+
+1454
+01:01:50,080 --> 01:01:55,520
+content I can explore when I look for a
+
+1455
+01:01:53,480 --> 01:01:57,680
+long-tail intent.
+
+1456
+01:01:55,520 --> 01:02:00,560
+And so, these are, you know, kind of the
+
+1457
+01:01:57,680 --> 01:02:02,880
+the top entities in terms of occurrences
+
+1458
+01:02:00,560 --> 01:02:06,000
+from the content that we have on our
+
+1459
+01:02:02,880 --> 01:02:06,000
+demo website.
+
+1460
+01:02:06,560 --> 01:02:11,960
+And here we start to to to look at um
+
+1461
+01:02:09,760 --> 01:02:14,480
+graph embeddings, and that's the really
+
+1462
+01:02:11,960 --> 01:02:17,880
+kind of a 101 introduction. Don't don't
+
+1463
+01:02:14,480 --> 01:02:19,880
+expect anything too deep, but uh but
+
+1464
+01:02:17,880 --> 01:02:21,920
+should be good enough to understand what
+
+1465
+01:02:19,880 --> 01:02:23,880
+are embeddings and how we can use
+
+1466
+01:02:21,920 --> 01:02:25,560
+embeddings once we have built a
+
+1467
+01:02:23,880 --> 01:02:28,280
+knowledge graph like the one that we
+
+1468
+01:02:25,560 --> 01:02:31,160
+have created from from the WordPress
+
+1469
+01:02:28,280 --> 01:02:33,400
+website using WordLift that connects
+
+1470
+01:02:31,160 --> 01:02:36,120
+every article with its, you know, top
+
+1471
+01:02:33,400 --> 01:02:36,120
+concepts.
+
+1472
+01:02:36,280 --> 01:02:39,840
+So here
+
+1473
+01:02:37,840 --> 01:02:42,320
+we have notorious uh we'll try not to
+
+1474
+01:02:39,840 --> 01:02:44,720
+push it too much cuz otherwise uh
+
+1475
+01:02:42,320 --> 01:02:44,720
+a song
+
+1476
+01:02:46,440 --> 01:02:52,440
+So, so the reason I I I choose um you
+
+1477
+01:02:49,720 --> 01:02:53,600
+know, this this song from from from
+
+1478
+01:02:52,440 --> 01:02:55,200
+a
+
+1479
+01:02:53,600 --> 01:02:57,200
+well-known rapper
+
+1480
+01:02:55,200 --> 01:02:58,760
+is that um
+
+1481
+01:02:57,200 --> 01:03:01,680
+yeah, I mean, it's it's one of the the
+
+1482
+01:02:58,760 --> 01:03:02,640
+biggest rapper of all times and uh but
+
+1483
+01:03:01,680 --> 01:03:05,040
+um
+
+1484
+01:03:02,640 --> 01:03:08,040
+this song is called What's Beef?
+
+1485
+01:03:05,040 --> 01:03:09,640
+And um and and here
+
+1486
+01:03:08,040 --> 01:03:13,480
+there is a there is a very, you know,
+
+1487
+01:03:09,640 --> 01:03:16,520
+interesting uh play of um
+
+1488
+01:03:13,480 --> 01:03:19,160
+homophones because uh as you can see,
+
+1489
+01:03:16,520 --> 01:03:23,840
+you know, he writes, "Beef is what I see
+
+1490
+01:03:19,160 --> 01:03:25,960
+you, but uh, guaranteed to be in ICU."
+
+1491
+01:03:23,840 --> 01:03:27,600
+And uh, and now it's uh, of course it's
+
+1492
+01:03:25,960 --> 01:03:30,440
+uh, you know, given the pandemic, we
+
+1493
+01:03:27,600 --> 01:03:32,000
+everyone knows what uh, what an ICU is,
+
+1494
+01:03:30,440 --> 01:03:35,040
+unfortunately.
+
+1495
+01:03:32,000 --> 01:03:37,880
+And um, so the acronym for an intensive
+
+1496
+01:03:35,040 --> 01:03:40,560
+care unit, but it's it's it sounds the
+
+1497
+01:03:37,880 --> 01:03:44,680
+same, but it it has completely different
+
+1498
+01:03:40,560 --> 01:03:47,040
+different meanings. So, ICU can be I see
+
+1499
+01:03:44,680 --> 01:03:50,120
+you, but uh, it can be also um,
+
+1500
+01:03:47,040 --> 01:03:53,760
+intensive care unit. So, so again, um,
+
+1501
+01:03:50,120 --> 01:03:56,440
+yes, I I I like uh, hardcore hip hop and
+
+1502
+01:03:53,760 --> 01:03:57,760
+rap, but the reason I I chosen this song
+
+1503
+01:03:56,440 --> 01:03:59,720
+is that uh,
+
+1504
+01:03:57,760 --> 01:04:02,480
+there is a there is a very uh, a great
+
+1505
+01:03:59,720 --> 01:04:04,520
+deal of of ambiguity.
+
+1506
+01:04:02,480 --> 01:04:06,440
+Not only in in in in in the in the
+
+1507
+01:04:04,520 --> 01:04:09,640
+terms, but also I mean, the way that uh,
+
+1508
+01:04:06,440 --> 01:04:12,720
+that each word sound can be ambiguous
+
+1509
+01:04:09,640 --> 01:04:15,040
+and and hard to to interpret.
+
+1510
+01:04:12,720 --> 01:04:18,600
+So,
+
+1511
+01:04:15,040 --> 01:04:19,200
+so in order to to understand
+
+1512
+01:04:18,600 --> 01:04:21,560
+um,
+
+1513
+01:04:19,200 --> 01:04:23,440
+you know, the the the concepts behind a
+
+1514
+01:04:21,560 --> 01:04:27,040
+song like that,
+
+1515
+01:04:23,440 --> 01:04:28,320
+um, we can use um,
+
+1516
+01:04:27,040 --> 01:04:29,920
+something called distributional
+
+1517
+01:04:28,320 --> 01:04:32,760
+semantics.
+
+1518
+01:04:29,920 --> 01:04:35,640
+And uh, and here we have uh, John Rupert
+
+1519
+01:04:32,760 --> 01:04:38,480
+Firth who is a kind of um,
+
+1520
+01:04:35,640 --> 01:04:40,760
+an important leading figure
+
+1521
+01:04:38,480 --> 01:04:42,040
+uh, in the British linguistics from the
+
+1522
+01:04:40,760 --> 01:04:45,440
+'50s.
+
+1523
+01:04:42,040 --> 01:04:48,160
+Um, and uh, has been foundational for a
+
+1524
+01:04:45,440 --> 01:04:50,840
+lot of the work that uh, it's done today
+
+1525
+01:04:48,160 --> 01:04:52,640
+in the context of NLP.
+
+1526
+01:04:50,840 --> 01:04:54,960
+And uh, and this distributional
+
+1527
+01:04:52,640 --> 01:04:58,520
+semantics is uh, is uh, is the science
+
+1528
+01:04:54,960 --> 01:05:01,480
+that uh, understand and studies uh, ways
+
+1529
+01:04:58,520 --> 01:05:04,840
+in which we can quantize and categorize
+
+1530
+01:05:01,480 --> 01:05:06,960
+semantic similarities um, between uh,
+
+1531
+01:05:04,840 --> 01:05:10,480
+linguistic terms
+
+1532
+01:05:06,960 --> 01:05:13,040
+uh, by looking at their distribution.
+
+1533
+01:05:10,480 --> 01:05:16,000
+And uh, and uh, you know, their
+
+1534
+01:05:13,040 --> 01:05:18,800
+distribution within a large
+
+1535
+01:05:16,000 --> 01:05:20,400
+um corpus of text allow us to understand
+
+1536
+01:05:18,800 --> 01:05:22,800
+their meanings. That's that's the you
+
+1537
+01:05:20,400 --> 01:05:25,440
+know, the explanation of distributional
+
+1538
+01:05:22,800 --> 01:05:27,880
+semantics. So so this is a famous quote
+
+1539
+01:05:25,440 --> 01:05:30,560
+by by John Firth that says you shall
+
+1540
+01:05:27,880 --> 01:05:33,160
+know a word by the company keeps, okay?
+
+1541
+01:05:30,560 --> 01:05:36,560
+So by analyzing, you know, the way in
+
+1542
+01:05:33,160 --> 01:05:38,960
+which the the word is is is placed and
+
+1543
+01:05:36,560 --> 01:05:41,840
+the word around
+
+1544
+01:05:38,960 --> 01:05:44,840
+the so-called context window, we can
+
+1545
+01:05:41,840 --> 01:05:47,640
+understand its meaning.
+
+1546
+01:05:44,840 --> 01:05:50,000
+But as we move into uh from from word
+
+1547
+01:05:47,640 --> 01:05:53,920
+embedding into graph embeddings, then we
+
+1548
+01:05:50,000 --> 01:05:55,880
+can simply replace uh word with entity.
+
+1549
+01:05:53,920 --> 01:05:58,120
+Because uh with graph embeddings, we're
+
+1550
+01:05:55,880 --> 01:06:00,680
+doing exactly the same process of
+
+1551
+01:05:58,120 --> 01:06:02,400
+converting uh uh
+
+1552
+01:06:00,680 --> 01:06:04,800
+you know,
+
+1553
+01:06:02,400 --> 01:06:07,600
+an entity. I mean, we in in word
+
+1554
+01:06:04,800 --> 01:06:09,600
+embeddings, we convert a word into
+
+1555
+01:06:07,600 --> 01:06:11,680
+numbers and uh and with graph
+
+1556
+01:06:09,600 --> 01:06:14,280
+embeddings, we convert entities into
+
+1557
+01:06:11,680 --> 01:06:16,560
+numbers by looking at what? By looking
+
+1558
+01:06:14,280 --> 01:06:19,840
+at, you know, what entities are around
+
+1559
+01:06:16,560 --> 01:06:22,560
+that entity. So if uh in distributional
+
+1560
+01:06:19,840 --> 01:06:24,560
+semantics, we look at the words that
+
+1561
+01:06:22,560 --> 01:06:26,720
+will, you know, accompany
+
+1562
+01:06:24,560 --> 01:06:28,760
+other words and we try to look at the
+
+1563
+01:06:26,720 --> 01:06:30,480
+context window as, you know, the the
+
+1564
+01:06:28,760 --> 01:06:33,000
+words around
+
+1565
+01:06:30,480 --> 01:06:35,800
+um that same word that we're looking at,
+
+1566
+01:06:33,000 --> 01:06:37,200
+uh in in uh graph embeddings, we we look
+
+1567
+01:06:35,800 --> 01:06:39,160
+at entities
+
+1568
+01:06:37,200 --> 01:06:40,920
+and edges around these entities that
+
+1569
+01:06:39,160 --> 01:06:42,280
+create, you know, kind of the closest
+
+1570
+01:06:40,920 --> 01:06:45,320
+network.
+
+1571
+01:06:42,280 --> 01:06:48,160
+Because because again, our goal is to is
+
+1572
+01:06:45,320 --> 01:06:50,280
+to be able to find the semantic
+
+1573
+01:06:48,160 --> 01:06:51,840
+similarities. That's what embeddings are
+
+1574
+01:06:50,280 --> 01:06:53,520
+good for.
+
+1575
+01:06:51,840 --> 01:06:56,000
+So what's beef?
+
+1576
+01:06:53,520 --> 01:06:57,760
+So and and you can see here that uh you
+
+1577
+01:06:56,000 --> 01:06:58,760
+know, we have a similar structure,
+
+1578
+01:06:57,760 --> 01:07:00,920
+right?
+
+1579
+01:06:58,760 --> 01:07:03,080
+But uh but then there are so many
+
+1580
+01:07:00,920 --> 01:07:05,360
+different, you know, interpretation of
+
+1581
+01:07:03,080 --> 01:07:07,600
+of of the same concept. So beef is when
+
+1582
+01:07:05,360 --> 01:07:09,400
+you make your enemy start your Jeep, But
+
+1583
+01:07:07,600 --> 01:07:11,640
+beef is when you roll no less than 30
+
+1584
+01:07:09,400 --> 01:07:14,720
+deep. Beef Beef is when I see you
+
+1585
+01:07:11,640 --> 01:07:18,880
+guaranteed to be in ICU. So, the same
+
+1586
+01:07:14,720 --> 01:07:21,640
+the same construct is you know is
+
+1587
+01:07:18,880 --> 01:07:24,560
+different different
+
+1588
+01:07:21,640 --> 01:07:27,600
+different distribution and and they have
+
+1589
+01:07:24,560 --> 01:07:29,720
+a similar meanings or very different
+
+1590
+01:07:27,600 --> 01:07:31,720
+meanings in in some cases. So, so the
+
+1591
+01:07:29,720 --> 01:07:34,480
+goal of distributional semantics is to
+
+1592
+01:07:31,720 --> 01:07:37,200
+to to to understand within the context
+
+1593
+01:07:34,480 --> 01:07:39,760
+window what are the co-occurrences and
+
+1594
+01:07:37,200 --> 01:07:42,560
+therefore, you know, take out the
+
+1595
+01:07:39,760 --> 01:07:44,600
+meanings. And with Craft Embeddings, we
+
+1596
+01:07:42,560 --> 01:07:48,200
+we do the same.
+
+1597
+01:07:44,600 --> 01:07:51,040
+But we don't use words, we use entities.
+
+1598
+01:07:48,200 --> 01:07:51,040
+And so um
+
+1599
+01:07:51,400 --> 01:07:56,080
+So, we convert these entities and their
+
+1600
+01:07:53,160 --> 01:07:59,160
+relationships into vectors.
+
+1601
+01:07:56,080 --> 01:08:01,840
+And these vectors are meant to help us
+
+1602
+01:07:59,160 --> 01:08:03,880
+understand the distance, okay?
+
+1603
+01:08:01,840 --> 01:08:05,920
+And imagine the distance between point A
+
+1604
+01:08:03,880 --> 01:08:08,680
+and point B can be measured, you know,
+
+1605
+01:08:05,920 --> 01:08:10,520
+with a very simple function.
+
+1606
+01:08:08,680 --> 01:08:12,320
+But we could do the same in a
+
+1607
+01:08:10,520 --> 01:08:15,040
+three-dimensional space. We just have
+
+1608
+01:08:12,320 --> 01:08:15,640
+to, you know, kind of calculate uh
+
+1609
+01:08:15,040 --> 01:08:18,440
+uh
+
+1610
+01:08:15,640 --> 01:08:20,440
+you know, how how the distance you know,
+
+1611
+01:08:18,440 --> 01:08:23,880
+would would uh
+
+1612
+01:08:20,440 --> 01:08:27,160
+would change on on another axis.
+
+1613
+01:08:23,880 --> 01:08:29,720
+And imagine that in Craft Embeddings
+
+1614
+01:08:27,160 --> 01:08:31,920
+we have you know, multiple dimensions.
+
+1615
+01:08:29,720 --> 01:08:35,359
+So, we we can calculate this distance
+
+1616
+01:08:31,920 --> 01:08:38,080
+across, let's say, 412 dimensions.
+
+1617
+01:08:35,359 --> 01:08:42,200
+And these allow us to quickly understand
+
+1618
+01:08:38,080 --> 01:08:44,520
+what's close to what within our graph.
+
+1619
+01:08:42,200 --> 01:08:47,920
+And and and it allows us to take the
+
+1620
+01:08:44,520 --> 01:08:51,600
+fast decision that we need to take as
+
+1621
+01:08:47,920 --> 01:08:54,319
+automated SEO in order to build our our
+
+1622
+01:08:51,600 --> 01:08:57,759
+long-tail strategy.
+
+1623
+01:08:54,319 --> 01:09:01,040
+So, let's have a quick look at uh at um
+
+1624
+01:08:57,759 --> 01:09:01,759
+at the embeddings that I have created uh
+
+1625
+01:09:01,040 --> 01:09:05,880
+um
+
+1626
+01:09:01,759 --> 01:09:08,640
+from from Georgia knowledge graph. So So
+
+1627
+01:09:05,880 --> 01:09:11,759
+here, you know, we can kind of point
+
+1628
+01:09:08,640 --> 01:09:14,440
+um concept that can be, you know, for
+
+1629
+01:09:11,759 --> 01:09:15,839
+instance, artificial intelligence uh in
+
+1630
+01:09:14,440 --> 01:09:18,040
+this case.
+
+1631
+01:09:15,839 --> 01:09:20,319
+And it's at the center of uh you know,
+
+1632
+01:09:18,040 --> 01:09:22,200
+other stuff that uh other concept that
+
+1633
+01:09:20,319 --> 01:09:24,319
+are kind of related and close. And you
+
+1634
+01:09:22,200 --> 01:09:28,000
+can see here, for instance, uh you know,
+
+1635
+01:09:24,319 --> 01:09:29,480
+um TensorFlow and um
+
+1636
+01:09:28,000 --> 01:09:32,160
+um
+
+1637
+01:09:29,480 --> 01:09:32,160
+let's see here.
+
+1638
+01:09:32,839 --> 01:09:37,160
+Here we see computer hardware knowledge,
+
+1639
+01:09:35,120 --> 01:09:38,520
+uh machine learning, neural networks,
+
+1640
+01:09:37,160 --> 01:09:40,240
+deep learning.
+
+1641
+01:09:38,520 --> 01:09:42,799
+Uh and that's that's very interesting
+
+1642
+01:09:40,240 --> 01:09:44,040
+because uh you know, here you see that
+
+1643
+01:09:42,799 --> 01:09:47,080
+um I'm I'm
+
+1644
+01:09:44,040 --> 01:09:50,240
+we're kind of visualizing these uh these
+
+1645
+01:09:47,080 --> 01:09:51,759
+uh these um these embeddings. And uh and
+
+1646
+01:09:50,240 --> 01:09:53,960
+we see here, for instance, there is a
+
+1647
+01:09:51,759 --> 01:09:55,960
+kind of a uniform group. So these are
+
+1648
+01:09:53,960 --> 01:09:57,760
+the blog post.
+
+1649
+01:09:55,960 --> 01:10:00,880
+These are the blog post that George has
+
+1650
+01:09:57,760 --> 01:10:02,600
+written, right? Whether these are, you
+
+1651
+01:10:00,880 --> 01:10:05,960
+know, the network of entities that we
+
+1652
+01:10:02,600 --> 01:10:08,200
+are using for classifying this post.
+
+1653
+01:10:05,960 --> 01:10:11,160
+Okay. So what is interesting is that I
+
+1654
+01:10:08,200 --> 01:10:13,640
+can quickly operate uh a similarity
+
+1655
+01:10:11,160 --> 01:10:16,440
+function to understand what is closer to
+
+1656
+01:10:13,640 --> 01:10:18,560
+what, okay? So I can look at uh deep
+
+1657
+01:10:16,440 --> 01:10:19,640
+learning and I can see that uh it's, you
+
+1658
+01:10:18,560 --> 01:10:22,440
+know,
+
+1659
+01:10:19,640 --> 01:10:25,720
+very closely related or somehow closely
+
+1660
+01:10:22,440 --> 01:10:27,160
+related with with cloud computing.
+
+1661
+01:10:25,720 --> 01:10:29,360
+And and of course, with the with the
+
+1662
+01:10:27,160 --> 01:10:31,440
+concept of knowledge and and with the
+
+1663
+01:10:29,360 --> 01:10:34,200
+you know, the broad the concept of of
+
+1664
+01:10:31,440 --> 01:10:36,600
+artificial intelligence. And uh and and
+
+1665
+01:10:34,200 --> 01:10:39,200
+we can do this also, let's say, with uh
+
+1666
+01:10:36,600 --> 01:10:40,760
+with Gary Marcus that um that you know,
+
+1667
+01:10:39,200 --> 01:10:42,960
+we we saw before in the in the
+
+1668
+01:10:40,760 --> 01:10:44,320
+presentation. And uh and we can see that
+
+1669
+01:10:42,960 --> 01:10:47,360
+uh you know, it's it's, you know,
+
+1670
+01:10:44,320 --> 01:10:49,880
+somehow closest to hybrid system, to the
+
+1671
+01:10:47,360 --> 01:10:51,240
+statistic and analysis that uh
+
+1672
+01:10:49,880 --> 01:10:54,560
+um
+
+1673
+01:10:51,240 --> 01:10:57,080
+that uh he discussed. And uh and uh
+
+1674
+01:10:54,560 --> 01:10:58,960
+And then, of course, decision making.
+
+1675
+01:10:57,080 --> 01:11:01,480
+And and And so we we can kind of you
+
+1676
+01:10:58,960 --> 01:11:03,000
+know start to take decisions with these
+
+1677
+01:11:01,480 --> 01:11:04,600
+with these embeddings because we can
+
+1678
+01:11:03,000 --> 01:11:06,760
+quickly see
+
+1679
+01:11:04,600 --> 01:11:08,640
+what is the closest concept that we have
+
+1680
+01:11:06,760 --> 01:11:10,760
+within the context of our knowledge
+
+1681
+01:11:08,640 --> 01:11:13,040
+graph.
+
+1682
+01:11:10,760 --> 01:11:13,040
+Um
+
+1683
+01:11:13,400 --> 01:11:18,080
+So how do we use it practically?
+
+1684
+01:11:16,000 --> 01:11:21,160
+Okay, so there is a way to create these
+
+1685
+01:11:18,080 --> 01:11:24,040
+embeddings. So out of a knowledge graph
+
+1686
+01:11:21,160 --> 01:11:27,240
+I look at all the triples and then I use
+
+1687
+01:11:24,040 --> 01:11:29,680
+a library and an algorithm for building
+
+1688
+01:11:27,240 --> 01:11:31,080
+these embeddings and then I can act on
+
+1689
+01:11:29,680 --> 01:11:34,480
+these embeddings.
+
+1690
+01:11:31,080 --> 01:11:36,920
+Um and I can for instance look at what
+
+1691
+01:11:34,480 --> 01:11:39,000
+is the closely related concept to the
+
+1692
+01:11:36,920 --> 01:11:41,760
+concept that I have already.
+
+1693
+01:11:39,000 --> 01:11:44,360
+Um or what is the shortest path from
+
+1694
+01:11:41,760 --> 01:11:46,520
+from one concept to another.
+
+1695
+01:11:44,360 --> 01:11:48,720
+But I can also use it for
+
+1696
+01:11:46,520 --> 01:11:51,600
+adding additional property or additional
+
+1697
+01:11:48,720 --> 01:11:53,920
+annotation that I might have missed
+
+1698
+01:11:51,600 --> 01:11:55,120
+inside my graph.
+
+1699
+01:11:53,920 --> 01:11:57,400
+So
+
+1700
+01:11:55,120 --> 01:11:59,840
+we can also use it for unbiasing George
+
+1701
+01:11:57,400 --> 01:12:01,600
+because because George writes
+
+1702
+01:11:59,840 --> 01:12:04,680
+a lot about of course artificial
+
+1703
+01:12:01,600 --> 01:12:07,160
+intelligence and here as you can see I
+
+1704
+01:12:04,680 --> 01:12:09,120
+have kind of placed on the right side
+
+1705
+01:12:07,160 --> 01:12:10,720
+everything related to Microsoft and on
+
+1706
+01:12:09,120 --> 01:12:12,840
+the on the left side everything that is
+
+1707
+01:12:10,720 --> 01:12:14,840
+related to Google and then on the top
+
+1708
+01:12:12,840 --> 01:12:16,520
+side on the top everything that is
+
+1709
+01:12:14,840 --> 01:12:18,080
+related to machine learning and on the
+
+1710
+01:12:16,520 --> 01:12:21,120
+bottom everything related to deep
+
+1711
+01:12:18,080 --> 01:12:22,960
+learning. And we can see clearly that
+
+1712
+01:12:21,120 --> 01:12:25,520
+George is a little bit biased towards
+
+1713
+01:12:22,960 --> 01:12:26,680
+Google rather than Microsoft.
+
+1714
+01:12:25,520 --> 01:12:30,080
+George, I don't know if you agree with
+
+1715
+01:12:26,680 --> 01:12:32,400
+this but but that's that's the way that
+
+1716
+01:12:30,080 --> 01:12:35,360
+we saw it.
+
+1717
+01:12:32,400 --> 01:12:35,360
+from the embeddings.
+
+1718
+01:12:37,200 --> 01:12:39,800
+All right.
+
+1719
+01:12:40,760 --> 01:12:43,440
+All right, so
+
+1720
+01:12:43,800 --> 01:12:47,960
+So why are we using embeddings? We're
+
+1721
+01:12:46,040 --> 01:12:50,800
+using embeddings because we want to find
+
+1722
+01:12:47,960 --> 01:12:53,920
+a way in which we can interpret the
+
+1723
+01:12:50,800 --> 01:12:56,240
+content that we have on our website and
+
+1724
+01:12:53,920 --> 01:12:59,720
+and then now it's the time to start
+
+1725
+01:12:56,240 --> 01:13:03,120
+looking at at the content that we we get
+
+1726
+01:12:59,720 --> 01:13:05,120
+behind a specific intent, okay?
+
+1727
+01:13:03,120 --> 01:13:07,760
+Um quickly
+
+1728
+01:13:05,120 --> 01:13:11,000
+next session we will kind of get more
+
+1729
+01:13:07,760 --> 01:13:12,840
+into the code but this is
+
+1730
+01:13:11,000 --> 01:13:16,280
+a library that I use which is called
+
+1731
+01:13:12,840 --> 01:13:18,680
+Ampligraph that I use for setting these
+
+1732
+01:13:16,280 --> 01:13:20,960
+creating these embeddings. So
+
+1733
+01:13:18,680 --> 01:13:22,960
+basically it's again it's it's it's
+
+1734
+01:13:20,960 --> 01:13:26,280
+machine learning so you provide all the
+
+1735
+01:13:22,960 --> 01:13:28,400
+triples from your graph and then
+
+1736
+01:13:26,280 --> 01:13:31,320
+a model gets trained
+
+1737
+01:13:28,400 --> 01:13:34,760
+and then and then you you will start
+
+1738
+01:13:31,320 --> 01:13:38,000
+running inferencing on over these over
+
+1739
+01:13:34,760 --> 01:13:40,160
+these over this model and for instance
+
+1740
+01:13:38,000 --> 01:13:42,360
+you can predict new links which is not
+
+1741
+01:13:40,160 --> 01:13:44,160
+what I did in this case.
+
+1742
+01:13:42,360 --> 01:13:46,800
+You can visualize the embeddings which
+
+1743
+01:13:44,160 --> 01:13:48,600
+is what I I just show you but you can
+
+1744
+01:13:46,800 --> 01:13:50,400
+also use it for
+
+1745
+01:13:48,600 --> 01:13:53,040
+for instance uh
+
+1746
+01:13:50,400 --> 01:13:55,680
+discovering facts that you don't have
+
+1747
+01:13:53,040 --> 01:13:57,040
+and here for instance you can see that
+
+1748
+01:13:55,680 --> 01:13:59,680
+there is a
+
+1749
+01:13:57,040 --> 01:14:01,640
+there is an article about
+
+1750
+01:13:59,680 --> 01:14:04,000
+IBM Watson
+
+1751
+01:14:01,640 --> 01:14:06,680
+that has to do with
+
+1752
+01:14:04,000 --> 01:14:09,160
+cognitive systems for population health
+
+1753
+01:14:06,680 --> 01:14:12,080
+and and the embeddings is helping me
+
+1754
+01:14:09,160 --> 01:14:14,600
+recommending to annotate these with
+
+1755
+01:14:12,080 --> 01:14:16,720
+health care, okay? So I can kind of use
+
+1756
+01:14:14,600 --> 01:14:18,800
+the embeddings also once I've done the
+
+1757
+01:14:16,720 --> 01:14:21,240
+first annotation to suggest to the
+
+1758
+01:14:18,800 --> 01:14:23,240
+editors, you know, annotation that might
+
+1759
+01:14:21,240 --> 01:14:25,680
+be added
+
+1760
+01:14:23,240 --> 01:14:27,600
+to to to that specific to that specific
+
+1761
+01:14:25,680 --> 01:14:28,720
+article and you can see the same is done
+
+1762
+01:14:27,600 --> 01:14:30,560
+for
+
+1763
+01:14:28,720 --> 01:14:33,040
+these other article that it's about
+
+1764
+01:14:30,560 --> 01:14:35,120
+COVID-19 where, you know, the embeddings
+
+1765
+01:14:33,040 --> 01:14:37,960
+are suggesting me that maybe I should
+
+1766
+01:14:35,120 --> 01:14:40,800
+tag also, you know, I I should use also
+
+1767
+01:14:37,960 --> 01:14:41,840
+the entity health care for for
+
+1768
+01:14:40,800 --> 01:14:43,600
+for
+
+1769
+01:14:41,840 --> 01:14:47,720
+for this article here. So we can use
+
+1770
+01:14:43,600 --> 01:14:47,720
+embeddings for predicting um,
+
+1771
+01:14:48,520 --> 01:14:54,200
+All right. Uh, computer says no.
+
+1772
+01:14:52,040 --> 01:14:56,240
+Interesting. Let me see because George
+
+1773
+01:14:54,200 --> 01:14:58,000
+is actually responding. If there is a
+
+1774
+01:14:56,240 --> 01:14:59,560
+topic expansion applied here, don't
+
+1775
+01:14:58,000 --> 01:15:02,000
+recall anything here
+
+1776
+01:14:59,560 --> 01:15:03,720
+about lockdown, for example.
+
+1777
+01:15:02,000 --> 01:15:05,880
+I don't know what we copied, George.
+
+1778
+01:15:03,720 --> 01:15:07,960
+That's the problem. I mean, I
+
+1779
+01:15:05,880 --> 01:15:10,480
+I don't know. I mean, we we we I have to
+
+1780
+01:15:07,960 --> 01:15:12,680
+be honest, we we scraped
+
+1781
+01:15:10,480 --> 01:15:15,880
+um, starting from the list of article on
+
+1782
+01:15:12,680 --> 01:15:17,520
+ZDNet. But, uh, we might have got also
+
+1783
+01:15:15,880 --> 01:15:18,680
+some articles that are not coming from
+
+1784
+01:15:17,520 --> 01:15:19,840
+you. That's
+
+1785
+01:15:18,680 --> 01:15:21,840
+That could be the case.
+
+1786
+01:15:19,840 --> 01:15:23,480
+Okay. Okay, that that explains because
+
+1787
+01:15:21,840 --> 01:15:25,720
+I'm like, "Okay, when did I write this
+
+1788
+01:15:23,480 --> 01:15:27,960
+stuff?"
+
+1789
+01:15:25,720 --> 01:15:29,920
+It could be. It could be. Um,
+
+1790
+01:15:27,960 --> 01:15:32,400
+I don't know if um, yeah. Yeah, so we we
+
+1791
+01:15:29,920 --> 01:15:35,560
+cropped some articles, which we thought
+
+1792
+01:15:32,400 --> 01:15:36,840
+it was were from you, but um, yeah.
+
+1793
+01:15:35,560 --> 01:15:38,440
+Okay.
+
+1794
+01:15:36,840 --> 01:15:40,160
+So, sometimes, you know, we get uh,
+
+1795
+01:15:38,440 --> 01:15:41,760
+smarter than than we think with
+
+1796
+01:15:40,160 --> 01:15:44,520
+machines, you know. Sometimes, we just
+
+1797
+01:15:41,760 --> 01:15:47,520
+copy someone else's content.
+
+1798
+01:15:44,520 --> 01:15:51,120
+All right. So, um,
+
+1799
+01:15:47,520 --> 01:15:51,120
+So, back to us. Um,
+
+1800
+01:15:51,280 --> 01:15:55,480
+So, now we we are kind of, um, looking
+
+1801
+01:15:53,280 --> 01:15:59,240
+at Google, all right? So, so we have
+
+1802
+01:15:55,480 --> 01:16:00,760
+seen that we can uh, get the content in
+
+1803
+01:15:59,240 --> 01:16:03,160
+and create a knowledge graph from the
+
+1804
+01:16:00,760 --> 01:16:05,040
+content within the web within the
+
+1805
+01:16:03,160 --> 01:16:07,320
+website. And then we can see that we we
+
+1806
+01:16:05,040 --> 01:16:09,600
+have this super powerful tool called
+
+1807
+01:16:07,320 --> 01:16:11,800
+graph embeddings that allow us to find
+
+1808
+01:16:09,600 --> 01:16:12,960
+the shortest path or to find matches,
+
+1809
+01:16:11,800 --> 01:16:14,240
+let's say,
+
+1810
+01:16:12,960 --> 01:16:16,640
+um,
+
+1811
+01:16:14,240 --> 01:16:18,960
+even if they are not close matches,
+
+1812
+01:16:16,640 --> 01:16:21,960
+right?
+
+1813
+01:16:18,960 --> 01:16:24,520
+And now I want to start looking at, um,
+
+1814
+01:16:21,960 --> 01:16:27,400
+at the results over Google for for the
+
+1815
+01:16:24,520 --> 01:16:29,400
+potential query that we could target.
+
+1816
+01:16:27,400 --> 01:16:33,080
+But um
+
+1817
+01:16:29,400 --> 01:16:36,440
+to do this, uh, um, I first want to want
+
+1818
+01:16:33,080 --> 01:16:39,280
+to, you know, kind of define the the the
+
+1819
+01:16:36,440 --> 01:16:42,120
+methodology that we we going to use
+
+1820
+01:16:39,280 --> 01:16:45,480
+because I've seen a lot of, um,
+
+1821
+01:16:42,120 --> 01:16:47,840
+SEOs, you know, looking at um, um
+
+1822
+01:16:45,480 --> 01:16:50,920
+correlation studies or creating
+
+1823
+01:16:47,840 --> 01:16:53,440
+correlation studies and analyzing a lot
+
+1824
+01:16:50,920 --> 01:16:56,120
+of queries and uh I mean, a lot of the
+
+1825
+01:16:53,440 --> 01:16:58,200
+tools that we use from SEMrush to, you
+
+1826
+01:16:56,120 --> 01:17:01,880
+know, Ahrefs and uh
+
+1827
+01:16:58,200 --> 01:17:04,920
+and Alexa or, you know, Moz, you name
+
+1828
+01:17:01,880 --> 01:17:09,280
+it. They have, you know, a lot of data
+
+1829
+01:17:04,920 --> 01:17:10,960
+about uh the search engine result pages.
+
+1830
+01:17:09,280 --> 01:17:13,720
+Now, the problem is the way in which you
+
+1831
+01:17:10,960 --> 01:17:15,360
+you you pretend to understand these
+
+1832
+01:17:13,720 --> 01:17:17,760
+these results.
+
+1833
+01:17:15,360 --> 01:17:18,720
+And so and so I thought that um
+
+1834
+01:17:17,760 --> 01:17:20,600
+it
+
+1835
+01:17:18,720 --> 01:17:23,800
+you know, I found it extremely important
+
+1836
+01:17:20,600 --> 01:17:25,800
+to to to define the the methodology that
+
+1837
+01:17:23,800 --> 01:17:29,680
+you're going to use.
+
+1838
+01:17:25,800 --> 01:17:33,720
+And um and in reality, a lot of the SEO
+
+1839
+01:17:29,680 --> 01:17:36,000
+it's it's kind of built on positivism.
+
+1840
+01:17:33,720 --> 01:17:39,200
+And uh and positivism
+
+1841
+01:17:36,000 --> 01:17:43,200
+it kind of finds and looks for universal
+
+1842
+01:17:39,200 --> 01:17:45,920
+laws. But in reality, in SEO, there are
+
+1843
+01:17:43,200 --> 01:17:51,040
+no universal laws that you can apply.
+
+1844
+01:17:45,920 --> 01:17:53,640
+And uh the only way that uh that I found
+
+1845
+01:17:51,040 --> 01:17:56,880
+uh effective is to look for
+
+1846
+01:17:53,640 --> 01:17:59,200
+the casual mechanism that uh that can
+
+1847
+01:17:56,880 --> 01:18:02,880
+act as tendency.
+
+1848
+01:17:59,200 --> 01:18:05,800
+So, we can uh not look for correlations
+
+1849
+01:18:02,880 --> 01:18:07,640
+between, you know, if these, then that,
+
+1850
+01:18:05,800 --> 01:18:09,480
+that type of stuff because it just
+
+1851
+01:18:07,640 --> 01:18:12,040
+doesn't apply.
+
+1852
+01:18:09,480 --> 01:18:14,720
+But we can look for tendencies. We can
+
+1853
+01:18:12,040 --> 01:18:16,160
+look for things that uh might be like
+
+1854
+01:18:14,720 --> 01:18:18,560
+that
+
+1855
+01:18:16,160 --> 01:18:20,640
+within our own context. So, there is no
+
+1856
+01:18:18,560 --> 01:18:22,480
+way that you can generalize, you know,
+
+1857
+01:18:20,640 --> 01:18:24,320
+the the analysis of the results of
+
+1858
+01:18:22,480 --> 01:18:26,880
+Google and say, "Hey, I know that if you
+
+1859
+01:18:24,320 --> 01:18:28,560
+do these, then that." No, there's no way
+
+1860
+01:18:26,880 --> 01:18:30,920
+because because in the end, on the other
+
+1861
+01:18:28,560 --> 01:18:33,080
+side, you have you know, you have a
+
+1862
+01:18:30,920 --> 01:18:35,720
+a lot of different uh machine learning
+
+1863
+01:18:33,080 --> 01:18:37,840
+algorithms that are processing the data
+
+1864
+01:18:35,720 --> 01:18:39,240
+and that are getting, you know, the you
+
+1865
+01:18:37,840 --> 01:18:41,240
+know the
+
+1866
+01:18:39,240 --> 01:18:43,400
+inside their feedback loop, whatever
+
+1867
+01:18:41,240 --> 01:18:45,160
+interaction the user makes with the with
+
+1868
+01:18:43,400 --> 01:18:47,640
+these results.
+
+1869
+01:18:45,160 --> 01:18:49,400
+And so, it's very hard to to kind of
+
+1870
+01:18:47,640 --> 01:18:52,840
+come up and say, "Hey, you should do an
+
+1871
+01:18:49,400 --> 01:18:55,520
+H2 like these or or you should write
+
+1872
+01:18:52,840 --> 01:18:58,240
+meta description like that."
+
+1873
+01:18:55,520 --> 01:19:00,880
+All of these things all of these factors
+
+1874
+01:18:58,240 --> 01:19:02,960
+are somehow helpful, but you have to
+
+1875
+01:19:00,880 --> 01:19:05,040
+realize that um
+
+1876
+01:19:02,960 --> 01:19:06,440
+well, you cannot be theory dependent.
+
+1877
+01:19:05,040 --> 01:19:07,920
+So, there are people that say, "Yeah, if
+
+1878
+01:19:06,440 --> 01:19:09,800
+you do meta description, then you get
+
+1879
+01:19:07,920 --> 01:19:11,880
+more clicks." That's true, but that's
+
+1880
+01:19:09,800 --> 01:19:13,400
+also theory that can be proven wrong in
+
+1881
+01:19:11,880 --> 01:19:17,320
+a lot of cases.
+
+1882
+01:19:13,400 --> 01:19:20,240
+Um and you cannot do like um
+
+1883
+01:19:17,320 --> 01:19:23,280
+if you do the H1 that matches the query,
+
+1884
+01:19:20,240 --> 01:19:25,840
+then then you're going to rank first.
+
+1885
+01:19:23,280 --> 01:19:28,480
+Cuz there's no universal law that says
+
+1886
+01:19:25,840 --> 01:19:31,520
+that you know, a match on match with the
+
+1887
+01:19:28,480 --> 01:19:34,400
+H1 or the title will will will give you
+
+1888
+01:19:31,520 --> 01:19:36,040
+better ranking to a page.
+
+1889
+01:19:34,400 --> 01:19:38,000
+So, how do you do it? Because of course,
+
+1890
+01:19:36,040 --> 01:19:40,160
+you cannot go after, you know, case by
+
+1891
+01:19:38,000 --> 01:19:43,240
+case and query by query
+
+1892
+01:19:40,160 --> 01:19:45,800
+when like in this case we're analyzing,
+
+1893
+01:19:43,240 --> 01:19:47,240
+you know, hundreds of potential queries
+
+1894
+01:19:45,800 --> 01:19:49,360
+to rank for.
+
+1895
+01:19:47,240 --> 01:19:51,960
+So so
+
+1896
+01:19:49,360 --> 01:19:55,280
+my approach is is is to kind of be a
+
+1897
+01:19:51,960 --> 01:19:58,920
+critical realist, which means that you
+
+1898
+01:19:55,280 --> 01:20:01,080
+you can only look for tendencies.
+
+1899
+01:19:58,920 --> 01:20:02,560
+And and then you can act upon these
+
+1900
+01:20:01,080 --> 01:20:05,280
+tendencies
+
+1901
+01:20:02,560 --> 01:20:07,080
+knowing that of course
+
+1902
+01:20:05,280 --> 01:20:09,600
+you know, you can generalize within your
+
+1903
+01:20:07,080 --> 01:20:11,760
+context, within your domain, but there's
+
+1904
+01:20:09,600 --> 01:20:14,440
+no really way to kind of make it
+
+1905
+01:20:11,760 --> 01:20:17,000
+universal. I cannot build a
+
+1906
+01:20:14,440 --> 01:20:18,600
+you know, a tool. I cannot say come to
+
+1907
+01:20:17,000 --> 01:20:20,560
+you and say, "Hey, WordLift will make
+
+1908
+01:20:18,600 --> 01:20:23,080
+you rank number one."
+
+1909
+01:20:20,560 --> 01:20:24,920
+Um because because I can only look at
+
+1910
+01:20:23,080 --> 01:20:28,040
+the tendency and I can say, "Hey, with
+
+1911
+01:20:24,920 --> 01:20:31,520
+these type of you know, um
+
+1912
+01:20:28,040 --> 01:20:32,600
+parameters, you you might you know, have
+
+1913
+01:20:31,520 --> 01:20:35,680
+more
+
+1914
+01:20:32,600 --> 01:20:37,720
+options to rank. And so,
+
+1915
+01:20:35,680 --> 01:20:39,640
+these uh these approaches means that we
+
+1916
+01:20:37,720 --> 01:20:42,040
+kind of start to look from from the
+
+1917
+01:20:39,640 --> 01:20:44,600
+results and then we try to decode the
+
+1918
+01:20:42,040 --> 01:20:46,720
+results and understand the way in which
+
+1919
+01:20:44,600 --> 01:20:49,760
+we can build the page that we want for
+
+1920
+01:20:46,720 --> 01:20:53,160
+ranking on that specific query.
+
+1921
+01:20:49,760 --> 01:20:56,600
+And and again, I use the I to
+
+1922
+01:20:53,160 --> 01:20:58,720
+to provide an answer to a very complex
+
+1923
+01:20:56,600 --> 01:21:02,080
+question, which is how does, you know,
+
+1924
+01:20:58,720 --> 01:21:05,720
+search engine um index
+
+1925
+01:21:02,080 --> 01:21:08,000
+how does a search engine index the web?
+
+1926
+01:21:05,720 --> 01:21:10,000
+And and and, you know, it's important
+
+1927
+01:21:08,000 --> 01:21:11,680
+that we get out these out of the picture
+
+1928
+01:21:10,000 --> 01:21:13,000
+because, of course, it's it's a crucial
+
+1929
+01:21:11,680 --> 01:21:16,880
+part, but it's not what we're going to
+
+1930
+01:21:13,000 --> 01:21:19,920
+cover. So, a search engine when when
+
+1931
+01:21:16,880 --> 01:21:22,480
+when when a user enters a query,
+
+1932
+01:21:19,920 --> 01:21:23,400
+it will it will
+
+1933
+01:21:22,480 --> 01:21:25,760
+it will
+
+1934
+01:21:23,400 --> 01:21:27,320
+present results that that are coming out
+
+1935
+01:21:25,760 --> 01:21:29,800
+of an index
+
+1936
+01:21:27,320 --> 01:21:32,560
+that that has already hierarchically
+
+1937
+01:21:29,800 --> 01:21:33,760
+organized the pages into into set of
+
+1938
+01:21:32,560 --> 01:21:35,800
+results.
+
+1939
+01:21:33,760 --> 01:21:38,400
+And then these these these ranking
+
+1940
+01:21:35,800 --> 01:21:40,200
+algorithm will will present, you know,
+
+1941
+01:21:38,400 --> 01:21:43,840
+the the results to the user and then the
+
+1942
+01:21:40,200 --> 01:21:46,280
+user will select um an option from from
+
+1943
+01:21:43,840 --> 01:21:48,800
+this list of results and this action of
+
+1944
+01:21:46,280 --> 01:21:51,360
+the user along with subsequent
+
+1945
+01:21:48,800 --> 01:21:53,320
+activities like how much time you spend
+
+1946
+01:21:51,360 --> 01:21:56,120
+the user spends on the page and so on
+
+1947
+01:21:53,320 --> 01:21:58,680
+and so forth are fed back into, you
+
+1948
+01:21:56,120 --> 01:22:01,320
+know, the machine for future learning,
+
+1949
+01:21:58,680 --> 01:22:04,680
+which might affect the results the next
+
+1950
+01:22:01,320 --> 01:22:08,560
+time, okay? So, so the the way in which
+
+1951
+01:22:04,680 --> 01:22:10,840
+the the search engine gets the the
+
+1952
+01:22:08,560 --> 01:22:12,760
+the the results in the first place is by
+
+1953
+01:22:10,840 --> 01:22:14,840
+by looking at
+
+1954
+01:22:12,760 --> 01:22:19,160
+you know, pages that are
+
+1955
+01:22:14,840 --> 01:22:21,320
+more relevant for the user intent, which
+
+1956
+01:22:19,160 --> 01:22:23,280
+might or might not correspond with a
+
+1957
+01:22:21,320 --> 01:22:27,560
+query because the user intent might
+
+1958
+01:22:23,280 --> 01:22:27,560
+group, indeed, multiple queries.
+
+1959
+01:22:27,680 --> 01:22:30,320
+And so
+
+1960
+01:22:30,680 --> 01:22:36,760
+So
+
+1961
+01:22:33,080 --> 01:22:38,600
+the the entities that we can detect from
+
+1962
+01:22:36,760 --> 01:22:42,280
+the list of results
+
+1963
+01:22:38,600 --> 01:22:45,840
+gives us the power to kind of interpret
+
+1964
+01:22:42,280 --> 01:22:48,520
+these these results. And And so one of
+
+1965
+01:22:45,840 --> 01:22:51,440
+the tendency that that that I focus on
+
+1966
+01:22:48,520 --> 01:22:52,720
+when when looking at at Google result is
+
+1967
+01:22:51,440 --> 01:22:55,320
+to see
+
+1968
+01:22:52,720 --> 01:22:58,680
+these these entities as um
+
+1969
+01:22:55,320 --> 01:23:01,640
+as a way to to explain the results that
+
+1970
+01:22:58,680 --> 01:23:02,720
+we get for that specific query.
+
+1971
+01:23:01,640 --> 01:23:04,480
+And
+
+1972
+01:23:02,720 --> 01:23:06,280
+And of course, you know, the graph the
+
+1973
+01:23:04,480 --> 01:23:07,320
+Google has that contains all the
+
+1974
+01:23:06,280 --> 01:23:08,600
+entities
+
+1975
+01:23:07,320 --> 01:23:11,360
+is
+
+1976
+01:23:08,600 --> 01:23:13,760
+on its on its own it it it's
+
+1977
+01:23:11,360 --> 01:23:15,640
+as its own ontological feature.
+
+1978
+01:23:13,760 --> 01:23:17,840
+And so the more we understand about the
+
+1979
+01:23:15,640 --> 01:23:20,440
+knowledge graph of Google, the more we
+
+1980
+01:23:17,840 --> 01:23:23,880
+understand of the way in which Google
+
+1981
+01:23:20,440 --> 01:23:26,520
+might organize the the the results and
+
+1982
+01:23:23,880 --> 01:23:28,840
+might use the entities to match the user
+
+1983
+01:23:26,520 --> 01:23:30,120
+intent with the content.
+
+1984
+01:23:28,840 --> 01:23:33,000
+So
+
+1985
+01:23:30,120 --> 01:23:35,800
+So the theory here is that um
+
+1986
+01:23:33,000 --> 01:23:38,400
+we could use probably or possibly this
+
+1987
+01:23:35,800 --> 01:23:40,520
+network of entities to extract that we
+
+1988
+01:23:38,400 --> 01:23:43,680
+extract from the corpus of results
+
+1989
+01:23:40,520 --> 01:23:46,480
+provided by Google new insights. And And
+
+1990
+01:23:43,680 --> 01:23:50,080
+these entities might also kind of use
+
+1991
+01:23:46,480 --> 01:23:52,560
+for understanding more um the the pages
+
+1992
+01:23:50,080 --> 01:23:56,040
+that rank to the top from the pages that
+
+1993
+01:23:52,560 --> 01:23:58,920
+rank to the bottom of of the same um
+
+1994
+01:23:56,040 --> 01:24:01,360
+search results.
+
+1995
+01:23:58,920 --> 01:24:03,400
+So here I have um you know, two examples
+
+1996
+01:24:01,360 --> 01:24:05,960
+of how we can read the web through
+
+1997
+01:24:03,400 --> 01:24:08,280
+Google's eyes. And um so machine
+
+1998
+01:24:05,960 --> 01:24:10,080
+learning on the left
+
+1999
+01:24:08,280 --> 01:24:13,720
+and then knowledge graph on the right.
+
+2000
+01:24:10,080 --> 01:24:15,760
+So these are two potentially intent that
+
+2001
+01:24:13,720 --> 01:24:18,200
+that we could rank for considering you
+
+2002
+01:24:15,760 --> 01:24:21,920
+know, the type of of of content that we
+
+2003
+01:24:18,200 --> 01:24:21,920
+have on on our test site.
+
+2004
+01:24:24,720 --> 01:24:27,280
+And here
+
+2005
+01:24:26,160 --> 01:24:28,920
+um
+
+2006
+01:24:27,280 --> 01:24:30,640
+I have um
+
+2007
+01:24:28,920 --> 01:24:33,800
+built this small tool and a
+
+2008
+01:24:30,640 --> 01:24:36,960
+visualization that um
+
+2009
+01:24:33,800 --> 01:24:39,680
+that uh you will also have linked and to
+
+2010
+01:24:36,960 --> 01:24:41,800
+this presentation and that we will also
+
+2011
+01:24:39,680 --> 01:24:44,760
+kind of play with in the next session on
+
+2012
+01:24:41,800 --> 01:24:48,800
+on over Google Colab.
+
+2013
+01:24:44,760 --> 01:24:50,800
+That um that groups uh the the the most
+
+2014
+01:24:48,800 --> 01:24:53,920
+relevant entities for these two
+
+2015
+01:24:50,800 --> 01:24:57,240
+different queries. So here on the bottom
+
+2016
+01:24:53,920 --> 01:24:59,400
+right you see all the entities that that
+
+2017
+01:24:57,240 --> 01:25:01,800
+uh have to do with the query knowledge
+
+2018
+01:24:59,400 --> 01:25:04,760
+graph. So these are entities extracted
+
+2019
+01:25:01,800 --> 01:25:06,760
+from the result that we get from Google
+
+2020
+01:25:04,760 --> 01:25:09,320
+when we trigger the query knowledge
+
+2021
+01:25:06,760 --> 01:25:10,440
+graph in this case in the United States,
+
+2022
+01:25:09,320 --> 01:25:12,720
+okay?
+
+2023
+01:25:10,440 --> 01:25:14,000
+And here you have all the entities that
+
+2024
+01:25:12,720 --> 01:25:16,760
+you get
+
+2025
+01:25:14,000 --> 01:25:18,400
+by analyzing the results of Google when
+
+2026
+01:25:16,760 --> 01:25:20,720
+you type the query
+
+2027
+01:25:18,400 --> 01:25:24,280
+machine learning.
+
+2028
+01:25:20,720 --> 01:25:26,920
+And um so some some entities are kind of
+
+2029
+01:25:24,280 --> 01:25:29,240
+characteristics of the two.
+
+2030
+01:25:26,920 --> 01:25:31,560
+And uh one of the sponsor of the
+
+2031
+01:25:29,240 --> 01:25:34,920
+of this conference will be happy to know
+
+2032
+01:25:31,560 --> 01:25:36,720
+that um that Ontotext is actually one of
+
+2033
+01:25:34,920 --> 01:25:38,680
+these you know kind of characteristic
+
+2034
+01:25:36,720 --> 01:25:41,520
+entities that uh kind of
+
+2035
+01:25:38,680 --> 01:25:43,880
+pops up, you know, when we when we try
+
+2036
+01:25:41,520 --> 01:25:45,840
+to analyze the corpus of text of these
+
+2037
+01:25:43,880 --> 01:25:47,560
+two queries, okay?
+
+2038
+01:25:45,840 --> 01:25:50,800
+So these are kind of the things that
+
+2039
+01:25:47,560 --> 01:25:52,800
+characterize the corpus, okay? And these
+
+2040
+01:25:50,800 --> 01:25:55,200
+are the concepts that are you know
+
+2041
+01:25:52,800 --> 01:25:57,040
+related to machine learning and these
+
+2042
+01:25:55,200 --> 01:26:00,280
+are you know the concepts that are
+
+2043
+01:25:57,040 --> 01:26:02,560
+related to knowledge graph, okay?
+
+2044
+01:26:00,280 --> 01:26:05,040
+Um and um
+
+2045
+01:26:02,560 --> 01:26:08,960
+let me quickly show you a little bit of
+
+2046
+01:26:05,040 --> 01:26:11,240
+this uh visualization that um we have uh
+
+2047
+01:26:08,960 --> 01:26:13,640
+created here.
+
+2048
+01:26:11,240 --> 01:26:15,400
+Um because then then then what is
+
+2049
+01:26:13,640 --> 01:26:19,160
+interesting is of course where do they
+
+2050
+01:26:15,400 --> 01:26:20,840
+meet, right? So what is the overlap? And
+
+2051
+01:26:19,160 --> 01:26:23,120
+um interesting enough, you know, the
+
+2052
+01:26:20,840 --> 01:26:25,320
+overlap, so the kind of the the top of
+
+2053
+01:26:23,120 --> 01:26:26,640
+the pyramid, it's it's the entity
+
+2054
+01:26:25,320 --> 01:26:28,680
+Google.
+
+2055
+01:26:26,640 --> 01:26:30,720
+You know, that that has a lot to do with
+
+2056
+01:26:28,680 --> 01:26:32,520
+machine learning through and a lot to do
+
+2057
+01:26:30,720 --> 01:26:35,040
+with knowledge graph through.
+
+2058
+01:26:32,520 --> 01:26:37,800
+So, so we can start to see kind of you
+
+2059
+01:26:35,040 --> 01:26:41,400
+know, the way in which a single term
+
+2060
+01:26:37,800 --> 01:26:43,320
+um it's it's kind of um present in the
+
+2061
+01:26:41,400 --> 01:26:44,600
+search results from the first query and
+
+2062
+01:26:43,320 --> 01:26:45,920
+the search results from the second
+
+2063
+01:26:44,600 --> 01:26:48,520
+query.
+
+2064
+01:26:45,920 --> 01:26:50,880
+Okay? And here we can you know, use this
+
+2065
+01:26:48,520 --> 01:26:53,600
+library which is called scatter text in
+
+2066
+01:26:50,880 --> 01:26:56,080
+order to kind of run through uh the
+
+2067
+01:26:53,600 --> 01:27:00,800
+analysis of the pages behind the these
+
+2068
+01:26:56,080 --> 01:27:00,800
+results that the Google is is is using.
+
+2069
+01:27:01,240 --> 01:27:03,880
+Um
+
+2070
+01:27:04,200 --> 01:27:09,880
+So, yeah. So, we see some tendency, but
+
+2071
+01:27:07,440 --> 01:27:12,720
+what about you know, if we take kind of
+
+2072
+01:27:09,880 --> 01:27:15,600
+a query like like machine learning
+
+2073
+01:27:12,720 --> 01:27:17,680
+and we split the page into two. So, we
+
+2074
+01:27:15,600 --> 01:27:18,600
+get um you know, all the entities from
+
+2075
+01:27:17,680 --> 01:27:22,400
+the
+
+2076
+01:27:18,600 --> 01:27:24,320
+corpus of the first three results
+
+2077
+01:27:22,400 --> 01:27:25,920
+and then we take all the entities from
+
+2078
+01:27:24,320 --> 01:27:28,400
+the corpus of
+
+2079
+01:27:25,920 --> 01:27:30,760
+all the other results in the first page.
+
+2080
+01:27:28,400 --> 01:27:32,720
+So, from from from number four to number
+
+2081
+01:27:30,760 --> 01:27:37,320
+10.
+
+2082
+01:27:32,720 --> 01:27:37,320
+Um we can see that um
+
+2083
+01:27:37,880 --> 01:27:44,040
+Google it's it's an entity that
+
+2084
+01:27:41,680 --> 01:27:46,600
+it's not present
+
+2085
+01:27:44,040 --> 01:27:49,840
+in the in in in the results from number
+
+2086
+01:27:46,600 --> 01:27:52,000
+four to number 10, but is indeed very
+
+2087
+01:27:49,840 --> 01:27:55,600
+present in its you know, multiple
+
+2088
+01:27:52,000 --> 01:27:58,720
+occurrences here in the in the results
+
+2089
+01:27:55,600 --> 01:28:02,120
+from the top three results. Okay?
+
+2090
+01:27:58,720 --> 01:28:06,120
+So, we can observe that there is a
+
+2091
+01:28:02,120 --> 01:28:10,480
+tendency to use Google as an entity
+
+2092
+01:28:06,120 --> 01:28:13,440
+for for the top results that we get out
+
+2093
+01:28:10,480 --> 01:28:16,200
+of the machine learning when we type
+
+2094
+01:28:13,440 --> 01:28:17,600
+machine learning inside inside Google in
+
+2095
+01:28:16,200 --> 01:28:20,240
+the US.
+
+2096
+01:28:17,600 --> 01:28:21,320
+And so on. So, we can start look at, you
+
+2097
+01:28:20,240 --> 01:28:23,840
+know,
+
+2098
+01:28:21,320 --> 01:28:26,680
+entities that are specific
+
+2099
+01:28:23,840 --> 01:28:30,160
+for this page. So, everything that is
+
+2100
+01:28:26,680 --> 01:28:32,320
+characteristic for this this query.
+
+2101
+01:28:30,160 --> 01:28:35,560
+And everything that in a way it's
+
+2102
+01:28:32,320 --> 01:28:37,320
+specific for the top three results.
+
+2103
+01:28:35,560 --> 01:28:38,720
+And everything that it's not specific
+
+2104
+01:28:37,320 --> 01:28:40,400
+for for the rest of results. For
+
+2105
+01:28:38,720 --> 01:28:42,600
+instance, you can see that, you know,
+
+2106
+01:28:40,400 --> 01:28:44,280
+whether here, you know, machine learning
+
+2107
+01:28:42,600 --> 01:28:46,480
+is a super broad term, right? It's a
+
+2108
+01:28:44,280 --> 01:28:48,640
+it's a broad query. So, people expect
+
+2109
+01:28:46,480 --> 01:28:51,520
+probably Google expects and interprets
+
+2110
+01:28:48,640 --> 01:28:53,480
+this query as a kind of a a generic
+
+2111
+01:28:51,520 --> 01:28:55,720
+intent. And so, it's providing
+
+2112
+01:28:53,480 --> 01:28:58,800
+information that it's descriptive.
+
+2113
+01:28:55,720 --> 01:29:01,000
+Whether, you know, more specific content
+
+2114
+01:28:58,800 --> 01:29:04,080
+that that might have to do with, you
+
+2115
+01:29:01,000 --> 01:29:06,360
+know, regression and Python and, you
+
+2116
+01:29:04,080 --> 01:29:09,600
+know, various techniques like clustering
+
+2117
+01:29:06,360 --> 01:29:11,840
+which are more kind of specific don't
+
+2118
+01:29:09,600 --> 01:29:13,440
+make it to the top because because at
+
+2119
+01:29:11,840 --> 01:29:16,200
+the top Google is interpreting that the
+
+2120
+01:29:13,440 --> 01:29:17,680
+intent it's generic and therefore we
+
+2121
+01:29:16,200 --> 01:29:20,240
+have to provide something that it's
+
+2122
+01:29:17,680 --> 01:29:23,520
+descriptive enough but not too
+
+2123
+01:29:20,240 --> 01:29:24,600
+specific, not too technical.
+
+2124
+01:29:23,520 --> 01:29:27,840
+So,
+
+2125
+01:29:24,600 --> 01:29:29,360
+this is the approach that that
+
+2126
+01:29:27,840 --> 01:29:33,160
+I am using
+
+2127
+01:29:29,360 --> 01:29:36,440
+in order to to kind of understand
+
+2128
+01:29:33,160 --> 01:29:39,520
+the results from from from Google.
+
+2129
+01:29:36,440 --> 01:29:40,880
+And and now I have
+
+2130
+01:29:39,520 --> 01:29:43,600
+one more
+
+2131
+01:29:40,880 --> 01:29:45,440
+and that's going to be the last poll for
+
+2132
+01:29:43,600 --> 01:29:47,200
+for today's session
+
+2133
+01:29:45,440 --> 01:29:50,200
+that
+
+2134
+01:29:47,200 --> 01:29:50,200
+that we can launch.
+
+2135
+01:29:56,800 --> 01:30:02,160
+All right. So, how is Google using
+
+2136
+01:29:59,400 --> 01:30:04,080
+entities? And and let's see who has been
+
+2137
+01:30:02,160 --> 01:30:06,360
+following so far.
+
+2138
+01:30:04,080 --> 01:30:08,440
+And and let's see if we get, uh know,
+
+2139
+01:30:06,360 --> 01:30:11,160
+the right answer here.
+
+2140
+01:30:08,440 --> 01:30:14,000
+Which is not as immediate
+
+2141
+01:30:11,160 --> 01:30:14,000
+as it might seem.
+
+2142
+01:30:18,320 --> 01:30:22,040
+So, we'll uh
+
+2143
+01:30:20,920 --> 01:30:24,640
+we'll take a
+
+2144
+01:30:22,040 --> 01:30:26,920
+a minute break
+
+2145
+01:30:24,640 --> 01:30:29,200
+to go through these. And of course, uh
+
+2146
+01:30:26,920 --> 01:30:34,480
+take this time also to to ask any
+
+2147
+01:30:29,200 --> 01:30:34,480
+questions if things are unclear. Um
+
+2148
+01:30:37,840 --> 01:30:40,200
+or
+
+2149
+01:30:54,800 --> 01:31:00,200
+I think there is a tendency here
+
+2150
+01:30:57,160 --> 01:31:02,040
+to answer to the last option, which is
+
+2151
+01:31:00,200 --> 01:31:05,000
+the
+
+2152
+01:31:02,040 --> 01:31:05,000
+which is the correct one.
+
+2153
+01:31:13,760 --> 01:31:20,680
+And I know here there are among you a
+
+2154
+01:31:15,920 --> 01:31:22,920
+lot of um actually super expert of SEO.
+
+2155
+01:31:20,680 --> 01:31:25,520
+So, I'm curious to understand if um all
+
+2156
+01:31:22,920 --> 01:31:27,480
+of this makes sense so far
+
+2157
+01:31:25,520 --> 01:31:29,120
+or um
+
+2158
+01:31:27,480 --> 01:31:31,040
+or not.
+
+2159
+01:31:29,120 --> 01:31:32,880
+If uh if it doesn't make sense, please
+
+2160
+01:31:31,040 --> 01:31:36,360
+write in the chat say, "Andy, this
+
+2161
+01:31:32,880 --> 01:31:36,360
+doesn't make sense. Sorry."
+
+2162
+01:31:37,440 --> 01:31:42,240
+All right. So, we can um
+
+2163
+01:31:39,520 --> 01:31:42,240
+um I think um
+
+2164
+01:31:42,280 --> 01:31:46,960
+I think we can uh start sharing the
+
+2165
+01:31:44,040 --> 01:31:48,920
+result. Yep.
+
+2166
+01:31:46,960 --> 01:31:51,480
+And yes, the result is that uh is that
+
+2167
+01:31:48,920 --> 01:31:53,760
+Google is being using entities for
+
+2168
+01:31:51,480 --> 01:31:56,400
+understanding the user query, for
+
+2169
+01:31:53,760 --> 01:31:58,680
+expanding the query to to improve um the
+
+2170
+01:31:56,400 --> 01:32:02,040
+quality of of the results.
+
+2171
+01:31:58,680 --> 01:32:04,880
+Um and um and for establishing the
+
+2172
+01:32:02,040 --> 01:32:08,000
+relatedness between different entities
+
+2173
+01:32:04,880 --> 01:32:11,680
+using co-occurrences as we've seen we've
+
+2174
+01:32:08,000 --> 01:32:14,160
+done ourselves with with embeddings and
+
+2175
+01:32:11,680 --> 01:32:16,840
+and also for categorizing the content
+
+2176
+01:32:14,160 --> 01:32:19,040
+using this topic layer
+
+2177
+01:32:16,840 --> 01:32:21,640
+that has been defined as a way for
+
+2178
+01:32:19,040 --> 01:32:26,760
+grouping entities inside Google.
+
+2179
+01:32:21,640 --> 01:32:26,760
+Within kind of large clusters.
+
+2180
+01:32:27,000 --> 01:32:32,720
+And in reality I mean all of the above
+
+2181
+01:32:29,560 --> 01:32:34,760
+are actually um
+
+2182
+01:32:32,720 --> 01:32:38,160
+ways in which in which Google is is
+
+2183
+01:32:34,760 --> 01:32:39,920
+using is using entities.
+
+2184
+01:32:38,160 --> 01:32:42,960
+All right, so I will um
+
+2185
+01:32:39,920 --> 01:32:45,520
+resume the presentation
+
+2186
+01:32:42,960 --> 01:32:48,640
+because we're also getting to the
+
+2187
+01:32:45,520 --> 01:32:51,600
+end of the first slot.
+
+2188
+01:32:48,640 --> 01:32:55,240
+And probably
+
+2189
+01:32:51,600 --> 01:32:56,560
+I'll need to run a little faster
+
+2190
+01:32:55,240 --> 01:32:59,040
+in this um
+
+2191
+01:32:56,560 --> 01:33:00,080
+last part.
+
+2192
+01:32:59,040 --> 01:33:02,040
+So
+
+2193
+01:33:00,080 --> 01:33:04,520
+So the first goal of our long tail
+
+2194
+01:33:02,040 --> 01:33:07,440
+strategy is to to discover the intense
+
+2195
+01:33:04,520 --> 01:33:09,640
+to to find these you know unpopular
+
+2196
+01:33:07,440 --> 01:33:10,800
+query highly focused
+
+2197
+01:33:09,640 --> 01:33:13,280
+that
+
+2198
+01:33:10,800 --> 01:33:15,440
+that we can rank for with the content
+
+2199
+01:33:13,280 --> 01:33:19,000
+that we have on our website.
+
+2200
+01:33:15,440 --> 01:33:20,840
+Um we might need to model the content
+
+2201
+01:33:19,000 --> 01:33:23,240
+or we might not. I mean in our case the
+
+2202
+01:33:20,840 --> 01:33:26,400
+content model is as basic as you know
+
+2203
+01:33:23,240 --> 01:33:28,560
+news article and and concepts that
+
+2204
+01:33:26,400 --> 01:33:31,800
+annotate these news article.
+
+2205
+01:33:28,560 --> 01:33:33,520
+Um we have seen that we can analyze the
+
+2206
+01:33:31,800 --> 01:33:35,440
+results out of Google from these
+
+2207
+01:33:33,520 --> 01:33:37,680
+queries. So once we have detected an
+
+2208
+01:33:35,440 --> 01:33:40,320
+intent that we can rank for
+
+2209
+01:33:37,680 --> 01:33:43,600
+we can use entities in order to analyze
+
+2210
+01:33:40,320 --> 01:33:47,560
+the results and to find the the entities
+
+2211
+01:33:43,600 --> 01:33:50,680
+that kind of are most representative of
+
+2212
+01:33:47,560 --> 01:33:50,680
+of the top results.
+
+2213
+01:33:50,720 --> 01:33:55,880
+And as you can probably imagine we can
+
+2214
+01:33:53,320 --> 01:33:57,600
+use these entities to to to of select
+
+2215
+01:33:55,880 --> 01:34:01,000
+the content that we have inside the
+
+2216
+01:33:57,600 --> 01:34:04,040
+website and and and and create this
+
+2217
+01:34:01,000 --> 01:34:06,360
+fully integrated landing page with some
+
+2218
+01:34:04,040 --> 01:34:10,640
+AI-generated content and some, you know,
+
+2219
+01:34:06,360 --> 01:34:13,760
+recommended content from from George and
+
+2220
+01:34:10,640 --> 01:34:14,680
+and and his and his colleague journalist
+
+2221
+01:34:13,760 --> 01:34:17,000
+writings.
+
+2222
+01:34:14,680 --> 01:34:18,240
+Excuse me, could you please reshare your
+
+2223
+01:34:17,000 --> 01:34:19,000
+slides?
+
+2224
+01:34:18,240 --> 01:34:19,600
+Oh sorry.
+
+2225
+01:34:19,000 --> 01:34:20,840
+Thank you.
+
+2226
+01:34:19,600 --> 01:34:21,760
+Sorry, my fault.
+
+2227
+01:34:20,840 --> 01:34:23,920
+Thank you.
+
+2228
+01:34:21,760 --> 01:34:26,720
+Um yeah.
+
+2229
+01:34:23,920 --> 01:34:26,720
+So
+
+2230
+01:34:28,480 --> 01:34:31,680
+Okay so
+
+2231
+01:34:34,840 --> 01:34:39,920
+Yeah sorry guys.
+
+2232
+01:34:37,240 --> 01:34:42,960
+Apologies for this.
+
+2233
+01:34:39,920 --> 01:34:42,960
+All right, so
+
+2234
+01:34:47,560 --> 01:34:51,480
+So
+
+2235
+01:34:49,000 --> 01:34:53,960
+getting the intent, um modeling the
+
+2236
+01:34:51,480 --> 01:34:56,040
+content if needed, and then analyzing
+
+2237
+01:34:53,960 --> 01:34:58,200
+the results of Google for that specific
+
+2238
+01:34:56,040 --> 01:35:00,080
+query, and then based on the entities
+
+2239
+01:34:58,200 --> 01:35:01,640
+that we get out of the results, build
+
+2240
+01:35:00,080 --> 01:35:04,720
+the page.
+
+2241
+01:35:01,640 --> 01:35:07,080
+That's that's that's the goal of of of
+
+2242
+01:35:04,720 --> 01:35:08,240
+this session.
+
+2243
+01:35:07,080 --> 01:35:10,480
+And
+
+2244
+01:35:08,240 --> 01:35:14,120
+let's start with with the way in which,
+
+2245
+01:35:10,480 --> 01:35:17,160
+you know, we can seed the intent, okay?
+
+2246
+01:35:14,120 --> 01:35:19,840
+So the old way is that an editor
+
+2247
+01:35:17,160 --> 01:35:23,360
+would go over Google and will start to
+
+2248
+01:35:19,840 --> 01:35:26,120
+kind of compose um a potential query to
+
+2249
+01:35:23,360 --> 01:35:28,520
+rank for and and try to look for
+
+2250
+01:35:26,120 --> 01:35:30,240
+suggestion coming out of the the Google
+
+2251
+01:35:28,520 --> 01:35:32,800
+auto complete.
+
+2252
+01:35:30,240 --> 01:35:34,680
+Um and that's a way that we can use to
+
+2253
+01:35:32,800 --> 01:35:36,560
+to find, you know, potential
+
+2254
+01:35:34,680 --> 01:35:38,640
+opportunities, but uh it's kind of the
+
+2255
+01:35:36,560 --> 01:35:40,600
+waste it's a waste of time because of
+
+2256
+01:35:38,640 --> 01:35:42,160
+course you
+
+2257
+01:35:40,600 --> 01:35:45,400
+you have to iterate through different
+
+2258
+01:35:42,160 --> 01:35:46,480
+concepts and and and try to go to, you
+
+2259
+01:35:45,400 --> 01:35:48,280
+know,
+
+2260
+01:35:46,480 --> 01:35:50,040
+through these these these suggestion and
+
+2261
+01:35:48,280 --> 01:35:52,000
+and find something that that you can,
+
+2262
+01:35:50,040 --> 01:35:54,680
+you know, write about.
+
+2263
+01:35:52,000 --> 01:35:56,440
+And uh and a lot of us do do these and
+
+2264
+01:35:54,680 --> 01:35:58,360
+so that's that's the reason why I build
+
+2265
+01:35:56,440 --> 01:36:00,440
+these uh these these course and and
+
+2266
+01:35:58,360 --> 01:36:02,800
+these presentation cuz I start to
+
+2267
+01:36:00,440 --> 01:36:05,160
+envision a tool where you you actually
+
+2268
+01:36:02,800 --> 01:36:06,840
+provide some ideas like uh you know,
+
+2269
+01:36:05,160 --> 01:36:08,920
+we've seen before artificial
+
+2270
+01:36:06,840 --> 01:36:10,760
+intelligence, machine learning, and
+
+2271
+01:36:08,920 --> 01:36:13,960
+knowledge graph are kind of some
+
+2272
+01:36:10,760 --> 01:36:18,000
+potential ideas that we could use for
+
+2273
+01:36:13,960 --> 01:36:18,000
+finding, you know, an intent.
+
+2274
+01:36:18,200 --> 01:36:24,320
+And so um
+
+2275
+01:36:20,600 --> 01:36:27,800
+so here I have created these tool that
+
+2276
+01:36:24,320 --> 01:36:30,280
+uh that um as you've seen before um
+
+2277
+01:36:27,800 --> 01:36:33,680
+in the in the collab and we will see in
+
+2278
+01:36:30,280 --> 01:36:35,320
+the next session in more in details.
+
+2279
+01:36:33,680 --> 01:36:37,400
+Now, given a
+
+2280
+01:36:35,320 --> 01:36:37,400
+um
+
+2281
+01:36:37,800 --> 01:36:42,720
+given a list of ideas like machine
+
+2282
+01:36:40,520 --> 01:36:44,520
+learning, artificial intelligence, and
+
+2283
+01:36:42,720 --> 01:36:47,640
+knowledge graph,
+
+2284
+01:36:44,520 --> 01:36:49,640
+um it's capable of uh extracting
+
+2285
+01:36:47,640 --> 01:36:53,320
+queries okay?
+
+2286
+01:36:49,640 --> 01:36:55,880
+And uh and it's it's it's also uh going
+
+2287
+01:36:53,320 --> 01:36:58,480
+through these queries with the entities
+
+2288
+01:36:55,880 --> 01:37:02,440
+in our knowledge graph, okay?
+
+2289
+01:36:58,480 --> 01:37:06,360
+Because by doing these uh we are able um
+
+2290
+01:37:02,440 --> 01:37:07,760
+to to kind of get an overview
+
+2291
+01:37:06,360 --> 01:37:11,280
+of um
+
+2292
+01:37:07,760 --> 01:37:14,160
+of of the intents that we can rank for
+
+2293
+01:37:11,280 --> 01:37:17,560
+using the concept that we have inside
+
+2294
+01:37:14,160 --> 01:37:20,760
+our own knowledge graph, okay? So, here
+
+2295
+01:37:17,560 --> 01:37:22,280
+I am grouping the entities and I'm using
+
+2296
+01:37:20,760 --> 01:37:24,240
+the entities of the knowledge graph like
+
+2297
+01:37:22,280 --> 01:37:28,880
+artificial intelligence
+
+2298
+01:37:24,240 --> 01:37:32,840
+to to group the intents that uh that I
+
+2299
+01:37:28,880 --> 01:37:35,960
+have uh um extracted by iterating
+
+2300
+01:37:32,840 --> 01:37:38,680
+through the Google auto complete, okay?
+
+2301
+01:37:35,960 --> 01:37:40,480
+So, here I'm saying that, you know, all
+
+2302
+01:37:38,680 --> 01:37:41,920
+the intents that I could rank for that
+
+2303
+01:37:40,480 --> 01:37:45,040
+have to do with the artificial
+
+2304
+01:37:41,920 --> 01:37:46,840
+intelligence are contained here, right?
+
+2305
+01:37:45,040 --> 01:37:49,600
+So, artificial intelligence definition
+
+2306
+01:37:46,840 --> 01:37:52,240
+for IBM. That's a good uh that's a good
+
+2307
+01:37:49,600 --> 01:37:53,800
+uh potential article to write about.
+
+2308
+01:37:52,240 --> 01:37:55,560
+Now, the problem when doing these, I
+
+2309
+01:37:53,800 --> 01:37:58,600
+mean, there are already tools that do
+
+2310
+01:37:55,560 --> 01:38:02,080
+these that you might use that kind of
+
+2311
+01:37:58,600 --> 01:38:05,720
+suggest you suggest you different ideas
+
+2312
+01:38:02,080 --> 01:38:07,600
+for writings. The problem is that um
+
+2313
+01:38:05,720 --> 01:38:10,600
+first, I want to group them using the
+
+2314
+01:38:07,600 --> 01:38:12,960
+content that I have in my site. So, here
+
+2315
+01:38:10,600 --> 01:38:15,320
+I know that these entities are the
+
+2316
+01:38:12,960 --> 01:38:17,200
+entities that I have content for because
+
+2317
+01:38:15,320 --> 01:38:19,400
+they have been extracted from the
+
+2318
+01:38:17,200 --> 01:38:21,800
+content that I I write.
+
+2319
+01:38:19,400 --> 01:38:25,240
+But then second, I need to to plug in
+
+2320
+01:38:21,800 --> 01:38:27,040
+the search data because I need to filter
+
+2321
+01:38:25,240 --> 01:38:28,520
+out everything that doesn't have search
+
+2322
+01:38:27,040 --> 01:38:31,120
+volume.
+
+2323
+01:38:28,520 --> 01:38:33,000
+And so here, I'm kind of, you know, kind
+
+2324
+01:38:31,120 --> 01:38:37,120
+of drill down
+
+2325
+01:38:33,000 --> 01:38:38,840
+the original, I think it's 1,300
+
+2326
+01:38:37,120 --> 01:38:41,440
+search intents.
+
+2327
+01:38:38,840 --> 01:38:42,840
+I'm clustering them using the entities
+
+2328
+01:38:41,440 --> 01:38:45,800
+in my knowledge graph, and then I'm
+
+2329
+01:38:42,840 --> 01:38:47,520
+getting the data from, you know, the
+
+2330
+01:38:45,800 --> 01:38:49,840
+APIs.
+
+2331
+01:38:47,520 --> 01:38:52,720
+In this case, I'm using WordLift APIs
+
+2332
+01:38:49,840 --> 01:38:55,200
+for the search volume. So, I know
+
+2333
+01:38:52,720 --> 01:38:57,640
+that you know, there is enough people
+
+2334
+01:38:55,200 --> 01:39:00,120
+making these searches, and I can filter
+
+2335
+01:38:57,640 --> 01:39:02,120
+out everything else, right? And I can
+
+2336
+01:39:00,120 --> 01:39:04,800
+kind of see, yeah, I've I've written
+
+2337
+01:39:02,120 --> 01:39:07,080
+something about elder care, right?
+
+2338
+01:39:04,800 --> 01:39:10,000
+And and there is volume here. There is
+
+2339
+01:39:07,080 --> 01:39:12,120
+some volume at least. Okay, so there's
+
+2340
+01:39:10,000 --> 01:39:14,080
+whether here I have a visualization that
+
+2341
+01:39:12,120 --> 01:39:16,960
+doesn't tells me if there is volume or
+
+2342
+01:39:14,080 --> 01:39:19,040
+not. It only groups the intents.
+
+2343
+01:39:16,960 --> 01:39:22,200
+Here, I'm I'm I'm looking at, you know,
+
+2344
+01:39:19,040 --> 01:39:24,840
+the fact that here there is volume. So,
+
+2345
+01:39:22,200 --> 01:39:26,720
+there are people making these searches.
+
+2346
+01:39:24,840 --> 01:39:29,200
+Um
+
+2347
+01:39:26,720 --> 01:39:31,320
+and and I do have content within the
+
+2348
+01:39:29,200 --> 01:39:34,280
+context of of elder care.
+
+2349
+01:39:31,320 --> 01:39:35,800
+Um and and then I can choose,
+
+2350
+01:39:34,280 --> 01:39:37,800
+you know, for instance, health care
+
+2351
+01:39:35,800 --> 01:39:40,520
+where, you know, there is you know, less
+
+2352
+01:39:37,800 --> 01:39:43,160
+competition. So, there is some volume.
+
+2353
+01:39:40,520 --> 01:39:46,680
+Um I have written about because I do
+
+2354
+01:39:43,160 --> 01:39:49,040
+have entities related to health care and
+
+2355
+01:39:46,680 --> 01:39:50,800
+um and and and and there is a you know,
+
+2356
+01:39:49,040 --> 01:39:53,000
+a limited amount of competition because
+
+2357
+01:39:50,800 --> 01:39:55,640
+of course I'm I'm planning to create a
+
+2358
+01:39:53,000 --> 01:39:58,680
+long-tail page that goes after a
+
+2359
+01:39:55,640 --> 01:40:00,800
+specific intent but um you know, I know
+
+2360
+01:39:58,680 --> 01:40:02,880
+that I'm going to reuse some of the
+
+2361
+01:40:00,800 --> 01:40:05,680
+content that I have. So I'm not writing
+
+2362
+01:40:02,880 --> 01:40:09,480
+the entire piece, okay?
+
+2363
+01:40:05,680 --> 01:40:11,360
+So so this is this is how we can
+
+2364
+01:40:09,480 --> 01:40:12,680
+kind of detect
+
+2365
+01:40:11,360 --> 01:40:16,600
+um
+
+2366
+01:40:12,680 --> 01:40:18,800
+the intent that we can write about.
+
+2367
+01:40:16,600 --> 01:40:22,000
+And as you've seen here, uh I have
+
+2368
+01:40:18,800 --> 01:40:24,000
+chosen um you know, an area
+
+2369
+01:40:22,000 --> 01:40:26,240
+by looking at the entities in in my
+
+2370
+01:40:24,000 --> 01:40:28,280
+knowledge graph and by looking at uh the
+
+2371
+01:40:26,240 --> 01:40:30,760
+volume of searches
+
+2372
+01:40:28,280 --> 01:40:33,640
+and uh and by by by looking at the the
+
+2373
+01:40:30,760 --> 01:40:38,360
+level of competition that I have within
+
+2374
+01:40:33,640 --> 01:40:39,840
+this specific uh long-tail, okay?
+
+2375
+01:40:38,360 --> 01:40:42,160
+There are no tools like these and this
+
+2376
+01:40:39,840 --> 01:40:45,000
+is why I built it. I don't like to do
+
+2377
+01:40:42,160 --> 01:40:47,480
+things that uh already exist. I not like
+
+2378
+01:40:45,000 --> 01:40:50,320
+to build new things and uh and you know,
+
+2379
+01:40:47,480 --> 01:40:53,280
+this probably will be made available um
+
+2380
+01:40:50,320 --> 01:40:55,880
+for free on our website at some point.
+
+2381
+01:40:53,280 --> 01:40:59,240
+Uh but but for now
+
+2382
+01:40:55,880 --> 01:41:01,240
+we we we kind of have to um
+
+2383
+01:40:59,240 --> 01:41:03,840
+get to the end of the session and and
+
+2384
+01:41:01,240 --> 01:41:06,800
+see how we can uh now use this insight
+
+2385
+01:41:03,840 --> 01:41:09,080
+to build a page. So the existing SEO
+
+2386
+01:41:06,800 --> 01:41:11,440
+traffic that uh that George get George
+
+2387
+01:41:09,080 --> 01:41:14,240
+gets it's it's kind of you know,
+
+2388
+01:41:11,440 --> 01:41:17,280
+an example can be the article on on the
+
+2389
+01:41:14,240 --> 01:41:19,680
+interview to Gary Marcus. So where you
+
+2390
+01:41:17,280 --> 01:41:22,720
+know, he he he gets you know, traffic
+
+2391
+01:41:19,680 --> 01:41:24,760
+for Gary Marcus for robust AI which is
+
+2392
+01:41:22,720 --> 01:41:28,360
+one of the concept that that Gary
+
+2393
+01:41:24,760 --> 01:41:30,960
+introduced. Um robust intelligence. So
+
+2394
+01:41:28,360 --> 01:41:33,040
+these are you know, this is a a
+
+2395
+01:41:30,960 --> 01:41:34,520
+human written article that it's it's
+
+2396
+01:41:33,040 --> 01:41:37,880
+getting you know,
+
+2397
+01:41:34,520 --> 01:41:39,080
+a large amount of traffic uh with with a
+
+2398
+01:41:37,880 --> 01:41:41,400
+you know
+
+2399
+01:41:39,080 --> 01:41:43,600
+a series of of queries that are you know
+
+2400
+01:41:41,400 --> 01:41:44,920
+quite specific to the to the content
+
+2401
+01:41:43,600 --> 01:41:47,440
+being written.
+
+2402
+01:41:44,920 --> 01:41:49,840
+Here using
+
+2403
+01:41:47,440 --> 01:41:52,640
+the the the methodology that I have
+
+2404
+01:41:49,840 --> 01:41:55,600
+explained I am you know looking at
+
+2405
+01:41:52,640 --> 01:41:57,640
+things like AI in health care or
+
+2406
+01:41:55,600 --> 01:41:59,480
+knowledge graph embeddings or knowledge
+
+2407
+01:41:57,640 --> 01:42:02,680
+graph open source
+
+2408
+01:41:59,480 --> 01:42:05,120
+or machine learning versus deep learning
+
+2409
+01:42:02,680 --> 01:42:07,720
+or knowledge graph research
+
+2410
+01:42:05,120 --> 01:42:10,200
+where I don't expect to get an eye
+
+2411
+01:42:07,720 --> 01:42:12,560
+volume of queries, right?
+
+2412
+01:42:10,200 --> 01:42:15,160
+But but of course you know I can build a
+
+2413
+01:42:12,560 --> 01:42:17,160
+lot of these pages that can group a
+
+2414
+01:42:15,160 --> 01:42:19,280
+significant amount of you know different
+
+2415
+01:42:17,160 --> 01:42:20,720
+queries and therefore I can increase the
+
+2416
+01:42:19,280 --> 01:42:22,960
+traffic
+
+2417
+01:42:20,720 --> 01:42:25,120
+and and go after you know intense that
+
+2418
+01:42:22,960 --> 01:42:28,800
+I'm not covering with my with my you
+
+2419
+01:42:25,120 --> 01:42:28,800
+know premium content.
+
+2420
+01:42:29,000 --> 01:42:34,560
+So how do we build a page? So we are
+
+2421
+01:42:32,400 --> 01:42:37,560
+going to use of course automatic text
+
+2422
+01:42:34,560 --> 01:42:37,560
+summarization.
+
+2423
+01:42:37,800 --> 01:42:41,560
+And in particular
+
+2424
+01:42:39,560 --> 01:42:43,600
+we are going to use
+
+2425
+01:42:41,560 --> 01:42:46,360
+Google T5.
+
+2426
+01:42:43,600 --> 01:42:49,440
+Now one of the elements
+
+2427
+01:42:46,360 --> 01:42:50,880
+exciting part of T5 is T5 is a is a
+
+2428
+01:42:49,440 --> 01:42:53,920
+text-to-text
+
+2429
+01:42:50,880 --> 01:42:55,840
+language agnostic transformer. So so
+
+2430
+01:42:53,920 --> 01:42:59,920
+it's it's a language model that we can
+
+2431
+01:42:55,840 --> 01:43:03,680
+use by providing a structure in text.
+
+2432
+01:42:59,920 --> 01:43:06,240
+And we can use it for multiple NLP task.
+
+2433
+01:43:03,680 --> 01:43:09,360
+So as you can see here I can use it for
+
+2434
+01:43:06,240 --> 01:43:11,440
+train a translator that translate you
+
+2435
+01:43:09,360 --> 01:43:13,720
+know English to German. So I have to
+
+2436
+01:43:11,440 --> 01:43:16,120
+provide training data in this form with
+
+2437
+01:43:13,720 --> 01:43:18,360
+the text in the input and a text as
+
+2438
+01:43:16,120 --> 01:43:21,320
+expected output. And I can create a
+
+2439
+01:43:18,360 --> 01:43:24,360
+model that does translation for me.
+
+2440
+01:43:21,320 --> 01:43:27,600
+Okay? Or I can use
+
+2441
+01:43:24,360 --> 01:43:29,320
+T5 for for instance
+
+2442
+01:43:27,600 --> 01:43:31,280
+creating
+
+2443
+01:43:29,320 --> 01:43:34,680
+a summarization.
+
+2444
+01:43:31,280 --> 01:43:37,160
+So I can provide a list of text and the
+
+2445
+01:43:34,680 --> 01:43:39,360
+summarization for this text and I can
+
+2446
+01:43:37,160 --> 01:43:42,440
+train my model for creating
+
+2447
+01:43:39,360 --> 01:43:45,000
+summarization. And that's exactly what
+
+2448
+01:43:42,440 --> 01:43:47,080
+uh we're going to see in action. This is
+
+2449
+01:43:45,000 --> 01:43:49,680
+exactly what I have used through the
+
+2450
+01:43:47,080 --> 01:43:52,360
+course of this presentation when I have
+
+2451
+01:43:49,680 --> 01:43:55,800
+generated the text. I have summarized
+
+2452
+01:43:52,360 --> 01:43:57,120
+content that I I scraped from Google
+
+2453
+01:43:55,800 --> 01:43:59,840
+results
+
+2454
+01:43:57,120 --> 01:44:01,720
+and I have compressed it using T5 to
+
+2455
+01:43:59,840 --> 01:44:04,640
+generate the text that you've seen
+
+2456
+01:44:01,720 --> 01:44:05,520
+through the course of summarization.
+
+2457
+01:44:04,640 --> 01:44:08,880
+Through through the course of this
+
+2458
+01:44:05,520 --> 01:44:10,000
+presentation. Um
+
+2459
+01:44:08,880 --> 01:44:12,960
+So,
+
+2460
+01:44:10,000 --> 01:44:16,120
+uh here we we we have the two approaches
+
+2461
+01:44:12,960 --> 01:44:18,360
+of summarization and we are using the
+
+2462
+01:44:16,120 --> 01:44:21,680
+abstractive summarization
+
+2463
+01:44:18,360 --> 01:44:24,040
+um for generating the the content, but
+
+2464
+01:44:21,680 --> 01:44:26,080
+in some other um cases where they've
+
+2465
+01:44:24,040 --> 01:44:28,640
+used abstractive summarization and there
+
+2466
+01:44:26,080 --> 01:44:31,000
+are, of course, pros and cons of the two
+
+2467
+01:44:28,640 --> 01:44:32,480
+approaches.
+
+2468
+01:44:31,000 --> 01:44:35,240
+But um
+
+2469
+01:44:32,480 --> 01:44:37,600
+where are we getting the question? So,
+
+2470
+01:44:35,240 --> 01:44:40,960
+we can um So, we've seen that we can
+
+2471
+01:44:37,600 --> 01:44:43,280
+generate text uh using T5 by compressing
+
+2472
+01:44:40,960 --> 01:44:45,800
+Google results, okay?
+
+2473
+01:44:43,280 --> 01:44:48,000
+And um
+
+2474
+01:44:45,800 --> 01:44:50,480
+and uh we will see uh in the coming
+
+2475
+01:44:48,000 --> 01:44:51,880
+session that uh for instance, uh you
+
+2476
+01:44:50,480 --> 01:44:55,000
+know, if I write something like
+
+2477
+01:44:51,880 --> 01:44:58,640
+artificial intelligence in health care
+
+2478
+01:44:55,000 --> 01:45:00,960
+um using this tool
+
+2479
+01:44:58,640 --> 01:45:03,680
+I can uh I can um
+
+2480
+01:45:00,960 --> 01:45:04,880
+scrape the results from Google for this
+
+2481
+01:45:03,680 --> 01:45:06,680
+query
+
+2482
+01:45:04,880 --> 01:45:08,840
+get all the text
+
+2483
+01:45:06,680 --> 01:45:10,960
+and then use T5
+
+2484
+01:45:08,840 --> 01:45:12,600
+to generate um
+
+2485
+01:45:10,960 --> 01:45:14,720
+the answer. So,
+
+2486
+01:45:12,600 --> 01:45:16,480
+that's the example that I have prepared
+
+2487
+01:45:14,720 --> 01:45:18,640
+here, which is the best application of
+
+2488
+01:45:16,480 --> 01:45:21,000
+AI in health care.
+
+2489
+01:45:18,640 --> 01:45:24,200
+And here we have, you know, the extract
+
+2490
+01:45:21,000 --> 01:45:27,080
+the the the the generated text that I
+
+2491
+01:45:24,200 --> 01:45:30,240
+have derived from
+
+2492
+01:45:27,080 --> 01:45:33,400
+the the scraping of the results from
+
+2493
+01:45:30,240 --> 01:45:34,840
+Google for that query using a language
+
+2494
+01:45:33,400 --> 01:45:38,480
+model.
+
+2495
+01:45:34,840 --> 01:45:40,440
+And as you can see, it's it's it's okay.
+
+2496
+01:45:38,480 --> 01:45:42,440
+I mean, it's not too bad.
+
+2497
+01:45:40,440 --> 01:45:44,920
+So, this is an intro text, but but we
+
+2498
+01:45:42,440 --> 01:45:46,760
+want to create a page
+
+2499
+01:45:44,920 --> 01:45:48,560
+that also have some some questions and
+
+2500
+01:45:46,760 --> 01:45:49,720
+answer okay?
+
+2501
+01:45:48,560 --> 01:45:52,120
+So,
+
+2502
+01:45:49,720 --> 01:45:54,880
+we we we want to create a page that
+
+2503
+01:45:52,120 --> 01:45:56,920
+contains an intro text for the topic
+
+2504
+01:45:54,880 --> 01:45:59,760
+that we're targeting, contains a
+
+2505
+01:45:56,920 --> 01:46:02,200
+selection of articles, but also contains
+
+2506
+01:45:59,760 --> 01:46:03,360
+a Q&A, okay?
+
+2507
+01:46:02,200 --> 01:46:05,240
+And
+
+2508
+01:46:03,360 --> 01:46:07,600
+so, that's a little bit of the structure
+
+2509
+01:46:05,240 --> 01:46:09,400
+of the page that that we're planning to
+
+2510
+01:46:07,600 --> 01:46:10,840
+build.
+
+2511
+01:46:09,400 --> 01:46:13,600
+So,
+
+2512
+01:46:10,840 --> 01:46:16,760
+so we have a we have the title of the
+
+2513
+01:46:13,600 --> 01:46:17,880
+page. We have an intro text for that
+
+2514
+01:46:16,760 --> 01:46:19,960
+query.
+
+2515
+01:46:17,880 --> 01:46:22,160
+And then we have a listical. It can be a
+
+2516
+01:46:19,960 --> 01:46:25,400
+list of your products. It can be a list
+
+2517
+01:46:22,160 --> 01:46:28,280
+of, you know, your article that match
+
+2518
+01:46:25,400 --> 01:46:30,880
+whatever we see on Google.
+
+2519
+01:46:28,280 --> 01:46:34,200
+And then we have a recommendation tool,
+
+2520
+01:46:30,880 --> 01:46:37,360
+so kind of a widget that can increase
+
+2521
+01:46:34,200 --> 01:46:39,480
+the the the engagement of the user. And
+
+2522
+01:46:37,360 --> 01:46:41,760
+then we have some, you know, frequently
+
+2523
+01:46:39,480 --> 01:46:44,720
+asked questions about that topic that
+
+2524
+01:46:41,760 --> 01:46:45,880
+can also expand the content of the page.
+
+2525
+01:46:44,720 --> 01:46:46,920
+Okay?
+
+2526
+01:46:45,880 --> 01:46:49,480
+So, that's a little bit of the
+
+2527
+01:46:46,920 --> 01:46:52,960
+structure, but where do we get the
+
+2528
+01:46:49,480 --> 01:46:55,040
+questions? So, how can I get, provided
+
+2529
+01:46:52,960 --> 01:46:58,120
+that I am
+
+2530
+01:46:55,040 --> 01:47:00,520
+I have decided to develop a page for
+
+2531
+01:46:58,120 --> 01:47:03,480
+artificial intelligence in health care,
+
+2532
+01:47:00,520 --> 01:47:06,440
+where do I get the questions?
+
+2533
+01:47:03,480 --> 01:47:08,880
+So, here we can use two methodologies.
+
+2534
+01:47:06,440 --> 01:47:11,600
+So, the first methodology that a lot of
+
+2535
+01:47:08,880 --> 01:47:14,160
+SEOs are using these days is to scrape
+
+2536
+01:47:11,600 --> 01:47:16,560
+Google's or Bing
+
+2537
+01:47:14,160 --> 01:47:19,480
+frequently asked question or people also
+
+2538
+01:47:16,560 --> 01:47:21,320
+ask blocks in order to get these
+
+2539
+01:47:19,480 --> 01:47:24,560
+questions.
+
+2540
+01:47:21,320 --> 01:47:25,920
+And so, in in our examples in in the
+
+2541
+01:47:24,560 --> 01:47:28,720
+code
+
+2542
+01:47:25,920 --> 01:47:31,600
+that that I've written,
+
+2543
+01:47:28,720 --> 01:47:33,440
+that's exactly what we do. So, so before
+
+2544
+01:47:31,600 --> 01:47:36,640
+generating the answer,
+
+2545
+01:47:33,440 --> 01:47:42,080
+I go out and I seek for, you know, the
+
+2546
+01:47:36,640 --> 01:47:42,080
+the mostly frequently asked questions um
+
+2547
+01:47:42,560 --> 01:47:46,480
+about a specific query. So, I'm
+
+2548
+01:47:44,560 --> 01:47:48,600
+generating the question by by looking at
+
+2549
+01:47:46,480 --> 01:47:49,640
+what Google is is is presenting to the
+
+2550
+01:47:48,600 --> 01:47:52,920
+user.
+
+2551
+01:47:49,640 --> 01:47:55,080
+And then I'm using the the summarizer to
+
+2552
+01:47:52,920 --> 01:47:57,560
+to answer to each one of these question
+
+2553
+01:47:55,080 --> 01:47:59,600
+by scraping the Google results and and
+
+2554
+01:47:57,560 --> 01:48:02,040
+summarizing the the the pages that I
+
+2555
+01:47:59,600 --> 01:48:02,040
+get.
+
+2556
+01:48:04,840 --> 01:48:08,400
+But um
+
+2557
+01:48:05,960 --> 01:48:10,920
+in some queries,
+
+2558
+01:48:08,400 --> 01:48:12,000
+I might not be able to to find these uh
+
+2559
+01:48:10,920 --> 01:48:14,960
+these um
+
+2560
+01:48:12,000 --> 01:48:17,800
+you know, frequently asked questions.
+
+2561
+01:48:14,960 --> 01:48:19,880
+And so, in these cases,
+
+2562
+01:48:17,800 --> 01:48:19,880
+um
+
+2563
+01:48:20,280 --> 01:48:23,800
+what do we do?
+
+2564
+01:48:22,560 --> 01:48:26,800
+So,
+
+2565
+01:48:23,800 --> 01:48:29,880
+again, we can use uh
+
+2566
+01:48:26,800 --> 01:48:31,600
+T5 in this example and uh we will use it
+
+2567
+01:48:29,880 --> 01:48:33,240
+in the next session
+
+2568
+01:48:31,600 --> 01:48:35,320
+to
+
+2569
+01:48:33,240 --> 01:48:36,960
+get the context from the article that we
+
+2570
+01:48:35,320 --> 01:48:40,200
+have written. So, in this case, the
+
+2571
+01:48:36,960 --> 01:48:42,560
+context being 42 is the answer to life,
+
+2572
+01:48:40,200 --> 01:48:44,440
+universe, and everything. And of course,
+
+2573
+01:48:42,560 --> 01:48:46,920
+all the nerds will know what it
+
+2574
+01:48:44,440 --> 01:48:48,600
+what this is. And and you see that the
+
+2575
+01:48:46,920 --> 01:48:49,920
+output
+
+2576
+01:48:48,600 --> 01:48:52,560
+is um
+
+2577
+01:48:49,920 --> 01:48:53,760
+is a combination of the answer and the
+
+2578
+01:48:52,560 --> 01:48:56,840
+question.
+
+2579
+01:48:53,760 --> 01:48:59,560
+So, here we are generating uh the
+
+2580
+01:48:56,840 --> 01:49:01,640
+question along with the with the answer
+
+2581
+01:48:59,560 --> 01:49:03,920
+from our text.
+
+2582
+01:49:01,640 --> 01:49:06,320
+And so, if we get that to to to the
+
+2583
+01:49:03,920 --> 01:49:07,960
+code,
+
+2584
+01:49:06,320 --> 01:49:10,280
+um
+
+2585
+01:49:07,960 --> 01:49:12,080
+we are generating now the the answer
+
+2586
+01:49:10,280 --> 01:49:15,760
+from the question that we get from the
+
+2587
+01:49:12,080 --> 01:49:18,400
+people also ask, but uh I'm also um
+
+2588
+01:49:15,760 --> 01:49:21,160
+generating question from from from this
+
+2589
+01:49:18,400 --> 01:49:23,360
+text here that it's coming from from the
+
+2590
+01:49:21,160 --> 01:49:26,040
+article that George has written. So,
+
+2591
+01:49:23,360 --> 01:49:27,920
+Marcus come to AI from a perspective of
+
+2592
+01:49:26,040 --> 01:49:30,480
+trying to understand the human mind. As
+
+2593
+01:49:27,920 --> 01:49:32,440
+a child and teenager, Marcus programmed
+
+2594
+01:49:30,480 --> 01:49:34,840
+computers but quickly became
+
+2595
+01:49:32,440 --> 01:49:36,440
+dissatisfied with the state of the art
+
+2596
+01:49:34,840 --> 01:49:37,600
+in 1980s.
+
+2597
+01:49:36,440 --> 01:49:39,480
+So,
+
+2598
+01:49:37,600 --> 01:49:43,360
+out of this text,
+
+2599
+01:49:39,480 --> 01:49:47,800
+now using a pre-trained model that has
+
+2600
+01:49:43,360 --> 01:49:49,840
+been fine-tuned for Q&A generation, I am
+
+2601
+01:49:47,800 --> 01:49:52,400
+obtaining,
+
+2602
+01:49:49,840 --> 01:49:54,320
+you know, these these questions. Like,
+
+2603
+01:49:52,400 --> 01:49:56,440
+"Where did Marcus become dissatisfied
+
+2604
+01:49:54,320 --> 01:49:58,200
+When did Marcus become dissatisfied with
+
+2605
+01:49:56,440 --> 01:49:59,760
+the state of computers?"
+
+2606
+01:49:58,200 --> 01:50:01,920
+1980s.
+
+2607
+01:49:59,760 --> 01:50:04,120
+And then, yet one more.
+
+2608
+01:50:01,920 --> 01:50:06,480
+Uh, "From what perspective does Marcus
+
+2609
+01:50:04,120 --> 01:50:08,440
+come to AI?" Trying to understand the
+
+2610
+01:50:06,480 --> 01:50:10,480
+human mind. So, as you see, these
+
+2611
+01:50:08,440 --> 01:50:12,440
+probably I mean, George would would work
+
+2612
+01:50:10,480 --> 01:50:14,080
+a little bit before going live with
+
+2613
+01:50:12,440 --> 01:50:15,560
+something like this, but uh, it's it's
+
+2614
+01:50:14,080 --> 01:50:18,480
+already a good starting point to
+
+2615
+01:50:15,560 --> 01:50:21,240
+structure a page where George is simply
+
+2616
+01:50:18,480 --> 01:50:24,960
+kind of revising, you know, whatever the
+
+2617
+01:50:21,240 --> 01:50:27,760
+machine has has has produced.
+
+2618
+01:50:24,960 --> 01:50:30,560
+And um
+
+2619
+01:50:27,760 --> 01:50:34,240
+so, we can generate these content
+
+2620
+01:50:30,560 --> 01:50:36,720
+uh, using, you know, the
+
+2621
+01:50:34,240 --> 01:50:39,400
+either the people also ask panel in
+
+2622
+01:50:36,720 --> 01:50:41,720
+Google or a language model that can
+
+2623
+01:50:39,400 --> 01:50:43,920
+extract questions from the content that
+
+2624
+01:50:41,720 --> 01:50:45,480
+we write.
+
+2625
+01:50:43,920 --> 01:50:48,320
+Okay?
+
+2626
+01:50:45,480 --> 01:50:50,280
+So, let's wrap it up.
+
+2627
+01:50:48,320 --> 01:50:52,680
+We look at the opportunities. In our
+
+2628
+01:50:50,280 --> 01:50:55,040
+case, we look at an opportunities and we
+
+2629
+01:50:52,680 --> 01:50:56,320
+look at, um, artificial intelligence in
+
+2630
+01:50:55,040 --> 01:50:59,120
+health care.
+
+2631
+01:50:56,320 --> 01:51:01,320
+Uh, we we start mapping the content, so
+
+2632
+01:50:59,120 --> 01:51:03,280
+we make sure that we have, you know,
+
+2633
+01:51:01,320 --> 01:51:05,800
+something like articles, for instance,
+
+2634
+01:51:03,280 --> 01:51:08,120
+as a main content type that we can use
+
+2635
+01:51:05,800 --> 01:51:10,800
+for creating these pages.
+
+2636
+01:51:08,120 --> 01:51:12,840
+And then, we analyze the results out of
+
+2637
+01:51:10,800 --> 01:51:16,560
+Google to see what are the most
+
+2638
+01:51:12,840 --> 01:51:17,200
+important entities that Google uh
+
+2639
+01:51:16,560 --> 01:51:20,560
+uh
+
+2640
+01:51:17,200 --> 01:51:24,000
+detects in the top three results, and
+
+2641
+01:51:20,560 --> 01:51:26,080
+then we can start creating the the page.
+
+2642
+01:51:24,000 --> 01:51:28,280
+And the page, as we say, it has as this
+
+2643
+01:51:26,080 --> 01:51:32,600
+this structure over here.
+
+2644
+01:51:28,280 --> 01:51:36,320
+And uh most interesting, we can uh
+
+2645
+01:51:32,600 --> 01:51:38,120
+go directly on on on WordPress. Uh where
+
+2646
+01:51:36,320 --> 01:51:40,320
+did I put it?
+
+2647
+01:51:38,120 --> 01:51:44,080
+And and we can see the page that uh that
+
+2648
+01:51:40,320 --> 01:51:46,280
+now WordLift has created using all these
+
+2649
+01:51:44,080 --> 01:51:48,000
+pieces that we've seen across this
+
+2650
+01:51:46,280 --> 01:51:50,760
+presentation.
+
+2651
+01:51:48,000 --> 01:51:53,320
+So, there is a title that matches the
+
+2652
+01:51:50,760 --> 01:51:55,360
+intent that we have detected as a
+
+2653
+01:51:53,320 --> 01:51:57,280
+potential long tail.
+
+2654
+01:51:55,360 --> 01:52:00,160
+There is an intro text that has been
+
+2655
+01:51:57,280 --> 01:52:03,600
+generated in this case from whatever
+
+2656
+01:52:00,160 --> 01:52:06,560
+content we got from the web,
+
+2657
+01:52:03,600 --> 01:52:08,840
+which is well, decent enough. I mean,
+
+2658
+01:52:06,560 --> 01:52:09,840
+could be better, but it's it's decent
+
+2659
+01:52:08,840 --> 01:52:11,920
+enough.
+
+2660
+01:52:09,840 --> 01:52:15,000
+There is a nice widget that uh that
+
+2661
+01:52:11,920 --> 01:52:17,960
+people can use for kind of uh drilling
+
+2662
+01:52:15,000 --> 01:52:19,120
+through content that is related.
+
+2663
+01:52:17,960 --> 01:52:22,400
+Uh and then there's a you know, a
+
+2664
+01:52:19,120 --> 01:52:26,280
+listical of kind of related article like
+
+2665
+01:52:22,400 --> 01:52:27,960
+IBM Watson for health care and uh
+
+2666
+01:52:26,280 --> 01:52:30,160
+artificial intelligence in the real
+
+2667
+01:52:27,960 --> 01:52:32,800
+world, what can it do, which presumably
+
+2668
+01:52:30,160 --> 01:52:34,560
+talks a little bit about health care.
+
+2669
+01:52:32,800 --> 01:52:36,960
+And then and then there are there are
+
+2670
+01:52:34,560 --> 01:52:38,800
+some questions like how does AI help
+
+2671
+01:52:36,960 --> 01:52:39,800
+health care? Now, these questions have
+
+2672
+01:52:38,800 --> 01:52:42,760
+been uh
+
+2673
+01:52:39,800 --> 01:52:44,920
+you know, created by looking at the
+
+2674
+01:52:42,760 --> 01:52:46,440
+people also ask question for that
+
+2675
+01:52:44,920 --> 01:52:50,000
+specific query.
+
+2676
+01:52:46,440 --> 01:52:52,840
+And that's the the the generated text
+
+2677
+01:52:50,000 --> 01:52:54,320
+that again, I consider a first draft.
+
+2678
+01:52:52,840 --> 01:52:57,360
+So, it's not something that I could go
+
+2679
+01:52:54,320 --> 01:52:58,920
+live with, but uh but quite quickly, you
+
+2680
+01:52:57,360 --> 01:53:02,320
+know, an editor
+
+2681
+01:52:58,920 --> 01:53:06,080
+uh would revise it, optimize it, and
+
+2682
+01:53:02,320 --> 01:53:08,440
+then and then hit the publish button.
+
+2683
+01:53:06,080 --> 01:53:11,040
+And also, which is the best application
+
+2684
+01:53:08,440 --> 01:53:13,120
+of AI in the health care? And in here we
+
+2685
+01:53:11,040 --> 01:53:16,600
+can see, you know, whatever other answer
+
+2686
+01:53:13,120 --> 01:53:18,720
+we we have generated using these these
+
+2687
+01:53:16,600 --> 01:53:19,840
+method.
+
+2688
+01:53:18,720 --> 01:53:22,080
+And
+
+2689
+01:53:19,840 --> 01:53:23,840
+that's that's all I have for this first
+
+2690
+01:53:22,080 --> 01:53:25,760
+session.
+
+2691
+01:53:23,840 --> 01:53:29,880
+And then the next session will be of
+
+2692
+01:53:25,760 --> 01:53:31,360
+course more about Q&A and and we will go
+
+2693
+01:53:29,880 --> 01:53:32,400
+through through through through the
+
+2694
+01:53:31,360 --> 01:53:34,480
+code.
+
+2695
+01:53:32,400 --> 01:53:36,040
+And that's again a quick reminder of the
+
+2696
+01:53:34,480 --> 01:53:36,800
+sponsor.
+
+2697
+01:53:36,040 --> 01:53:38,560
+Uh
+
+2698
+01:53:36,800 --> 01:53:41,720
+so if you if you want to start playing
+
+2699
+01:53:38,560 --> 01:53:43,440
+with WordLift, you can grab the deal by
+
+2700
+01:53:41,720 --> 01:53:46,360
+going to a website
+
+2701
+01:53:43,440 --> 01:53:47,280
+wordlift.io/cyberweek.
+
+2702
+01:53:46,360 --> 01:53:50,840
+And I think we still have a few
+
+2703
+01:53:47,280 --> 01:53:52,720
+questions a few minutes for for Q&A.
+
+2704
+01:53:50,840 --> 01:53:54,880
+Great. Thanks thanks very much, Andrea.
+
+2705
+01:53:52,720 --> 01:53:57,200
+That was really interesting. I even
+
+2706
+01:53:54,880 --> 01:53:58,600
+managed to to watch properly this this
+
+2707
+01:53:57,200 --> 01:54:00,240
+time.
+
+2708
+01:53:58,600 --> 01:54:02,320
+Good. Good.
+
+2709
+01:54:00,240 --> 01:54:03,320
+So so are you are you starting to use
+
+2710
+01:54:02,320 --> 01:54:04,520
+this?
+
+2711
+01:54:03,320 --> 01:54:05,880
+You're going to you're going to use the
+
+2712
+01:54:04,520 --> 01:54:06,760
+long tail or
+
+2713
+01:54:05,880 --> 01:54:08,840
+Uh
+
+2714
+01:54:06,760 --> 01:54:12,240
+not the long tail so much, but I wanted
+
+2715
+01:54:08,840 --> 01:54:14,680
+to actually start using some
+
+2716
+01:54:12,240 --> 01:54:17,120
+language models to to be able to to
+
+2717
+01:54:14,680 --> 01:54:18,040
+produce kind of like skeleton articles
+
+2718
+01:54:17,120 --> 01:54:20,000
+like like
+
+2719
+01:54:18,040 --> 01:54:21,920
+that, but yeah, it's like one of these
+
+2720
+01:54:20,000 --> 01:54:23,960
+trade-off things, you know, so the time
+
+2721
+01:54:21,920 --> 01:54:26,760
+I will invest to actually get that to
+
+2722
+01:54:23,960 --> 01:54:29,080
+work for me currently outweighs the time
+
+2723
+01:54:26,760 --> 01:54:30,480
+it takes me to to write it on my own. I
+
+2724
+01:54:29,080 --> 01:54:32,320
+can't do it.
+
+2725
+01:54:30,480 --> 01:54:33,680
+That's true. That's totally true. I'm
+
+2726
+01:54:32,320 --> 01:54:35,840
+going to share the link to the
+
+2727
+01:54:33,680 --> 01:54:38,480
+presentation so that
+
+2728
+01:54:35,840 --> 01:54:40,240
+you can guys have a look at it and get
+
+2729
+01:54:38,480 --> 01:54:42,640
+it from here and then of course you are
+
+2730
+01:54:40,240 --> 01:54:45,760
+invited in the next session where
+
+2731
+01:54:42,640 --> 01:54:47,160
+we can do more more Q&A and and go
+
+2732
+01:54:45,760 --> 01:54:49,240
+through the code.
+
+2733
+01:54:47,160 --> 01:54:51,880
+And for those of you that are interested
+
+2734
+01:54:49,240 --> 01:54:55,320
+in understanding you know, the
+
+2735
+01:54:51,880 --> 01:54:56,880
+the behind scene type of work. Yeah.
+
+2736
+01:54:55,320 --> 01:54:58,920
+Yeah, of course I mean, we are kind of
+
+2737
+01:54:56,880 --> 01:55:01,080
+automating these process, George, so
+
+2738
+01:54:58,920 --> 01:55:03,080
+that they doesn't take a lot of your
+
+2739
+01:55:01,080 --> 01:55:05,000
+time cuz we know that your time is
+
+2740
+01:55:03,080 --> 01:55:08,000
+precious and we want the time to be
+
+2741
+01:55:05,000 --> 01:55:09,800
+focused on content not on machinery
+
+2742
+01:55:08,000 --> 01:55:12,040
+because otherwise that's I mean we will
+
+2743
+01:55:09,800 --> 01:55:13,760
+fail our mission.
+
+2744
+01:55:12,040 --> 01:55:15,760
+Yeah, yeah, you know, it's it's very
+
+2745
+01:55:13,760 --> 01:55:17,600
+interesting it's very interesting thing
+
+2746
+01:55:15,760 --> 01:55:19,960
+to even explore though as a kind of
+
+2747
+01:55:17,600 --> 01:55:22,200
+hobby and in that respect because you
+
+2748
+01:55:19,960 --> 01:55:23,480
+know, I also write code by the way don't
+
+2749
+01:55:22,200 --> 01:55:24,840
+just write uh uh
+
+2750
+01:55:23,480 --> 01:55:26,040
+Of course.
+
+2751
+01:55:24,840 --> 01:55:28,480
+So in that respect yeah, this is
+
+2752
+01:55:26,040 --> 01:55:31,560
+something I've been meaning to do like
+
+2753
+01:55:28,480 --> 01:55:34,280
+trying to imitate myself with like feed
+
+2754
+01:55:31,560 --> 01:55:37,560
+a lot of articles that I've written and
+
+2755
+01:55:34,280 --> 01:55:39,240
+see if I can train a model that can
+
+2756
+01:55:37,560 --> 01:55:40,880
+start to write a little bit like me like
+
+2757
+01:55:39,240 --> 01:55:42,160
+me.
+
+2758
+01:55:40,880 --> 01:55:44,480
+Absolutely. Yeah, I mean that's that's
+
+2759
+01:55:42,160 --> 01:55:47,440
+the most interesting part I think when
+
+2760
+01:55:44,480 --> 01:55:49,280
+when we start even you know, in in
+
+2761
+01:55:47,440 --> 01:55:52,480
+WordLift we have the the extractive
+
+2762
+01:55:49,280 --> 01:55:53,720
+summarization and then that reuses you
+
+2763
+01:55:52,480 --> 01:55:55,440
+know, the content that you have written
+
+2764
+01:55:53,720 --> 01:55:57,320
+in the article. So it's it's actually
+
+2765
+01:55:55,440 --> 01:56:00,080
+your word. It's not something that it's
+
+2766
+01:55:57,320 --> 01:56:02,320
+coming out of something else. It's your
+
+2767
+01:56:00,080 --> 01:56:04,760
+word but it's just you know, synthesized
+
+2768
+01:56:02,320 --> 01:56:06,960
+by an algorithm and and it's pretty it's
+
+2769
+01:56:04,760 --> 01:56:08,240
+pretty effective I would say.
+
+2770
+01:56:06,960 --> 01:56:10,600
+Yeah yeah.
+
+2771
+01:56:08,240 --> 01:56:12,560
+Yeah, one day when you know, event this
+
+2772
+01:56:10,600 --> 01:56:15,640
+event organization is behind us I may
+
+2773
+01:56:12,560 --> 01:56:17,200
+find the time to actually do that.
+
+2774
+01:56:15,640 --> 01:56:19,200
+Let me let me share
+
+2775
+01:56:17,200 --> 01:56:21,920
+the screen the screen quickly to show
+
+2776
+01:56:19,200 --> 01:56:23,880
+you your synthesis.
+
+2777
+01:56:21,920 --> 01:56:26,680
+Um
+
+2778
+01:56:23,880 --> 01:56:26,680
+So
+
+2779
+01:56:27,120 --> 01:56:33,600
+So if you if you look at uh
+
+2780
+01:56:29,680 --> 01:56:33,600
+assuming that you have written these
+
+2781
+01:56:34,200 --> 01:56:37,680
+Did Did you Did you wrote these?
+
+2782
+01:56:36,040 --> 01:56:41,080
+This one yeah, around here. I guess.
+
+2783
+01:56:37,680 --> 01:56:43,160
+Okay, good. So here basically
+
+2784
+01:56:41,080 --> 01:56:44,440
+um we have this uh this functionality
+
+2785
+01:56:43,160 --> 01:56:46,880
+that uh
+
+2786
+01:56:44,440 --> 01:56:48,880
+that would would use
+
+2787
+01:56:46,880 --> 01:56:50,320
+um in this case a model called
+
+2788
+01:56:48,880 --> 01:56:50,600
+DistilBERT
+
+2789
+01:56:50,320 --> 01:56:53,120
+Mhm.
+
+2790
+01:56:50,600 --> 01:56:55,080
+that would would create
+
+2791
+01:56:53,120 --> 01:56:57,720
+um you know, a quick summary that then
+
+2792
+01:56:55,080 --> 01:56:58,200
+you can use for the meta description or
+
+2793
+01:56:57,720 --> 01:56:59,960
+uh
+
+2794
+01:56:58,200 --> 01:57:02,600
+Right.
+
+2795
+01:56:59,960 --> 01:57:04,480
+And uh and and we use these in some way
+
+2796
+01:57:02,600 --> 01:57:06,840
+on some website for creating uh for
+
+2797
+01:57:04,480 --> 01:57:09,000
+instance the the story lines at the
+
+2798
+01:57:06,840 --> 01:57:11,200
+beginning with the bullet points.
+
+2799
+01:57:09,000 --> 01:57:11,200
+Mhm.
+
+2800
+01:57:11,560 --> 01:57:16,880
+Yeah, that's that's super interesting.
+
+2801
+01:57:14,160 --> 01:57:19,160
+Um I don't see any questions from from
+
+2802
+01:57:16,880 --> 01:57:21,200
+people so far, so I guess maybe we can
+
+2803
+01:57:19,160 --> 01:57:22,760
+wrap up this session and just to give
+
+2804
+01:57:21,200 --> 01:57:24,640
+enough time to the operators and
+
+2805
+01:57:22,760 --> 01:57:26,480
+yourself and all of the people who are
+
+2806
+01:57:24,640 --> 01:57:27,360
+attending the next session to to move to
+
+2807
+01:57:26,480 --> 01:57:29,720
+that one.
+
+2808
+01:57:27,360 --> 01:57:29,720
+Yep.
+
+2809
+01:57:30,400 --> 01:57:35,720
+Okay, well, thanks everyone. Uh let's
+
+2810
+01:57:32,960 --> 01:57:37,240
+let's wrap up and we'll reconvene in
+
+2811
+01:57:35,720 --> 01:57:38,000
+like 10 to 15 minutes.
+
+2812
+01:57:37,240 --> 01:57:39,200
+Yep.
+
+2813
+01:57:38,000 --> 01:57:40,560
+All right. Bye-bye.
+
+2814
+01:57:39,200 --> 01:57:43,200
+Thank you. Bye for now.
+
+2815
+01:57:40,560 --> 01:57:43,200
+Thank you.
+

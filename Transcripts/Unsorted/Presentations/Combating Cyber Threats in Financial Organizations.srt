@@ -1,0 +1,2620 @@
+1
+00:00:05,600 --> 00:00:10,559
+Thank you.
+
+2
+00:00:08,559 --> 00:00:13,120
+>> Thank you very much uh Katarina for that
+
+3
+00:00:10,559 --> 00:00:15,280
+introduction. Um just to add on a little
+
+4
+00:00:13,120 --> 00:00:18,560
+bit to that uh you know my name is Maya
+
+5
+00:00:15,280 --> 00:00:20,320
+Atrajan and I am uh currently the VP of
+
+6
+00:00:18,560 --> 00:00:23,519
+product marketing at that dot a
+
+7
+00:00:20,320 --> 00:00:26,400
+streaming graph company uh that focuses
+
+8
+00:00:23,519 --> 00:00:28,560
+specifically on cyber security and I'm
+
+9
+00:00:26,400 --> 00:00:30,320
+also the founder of node to node u
+
+10
+00:00:28,560 --> 00:00:31,920
+consulting firm that helps graph
+
+11
+00:00:30,320 --> 00:00:34,800
+companies take their technology or
+
+12
+00:00:31,920 --> 00:00:36,480
+product to market okay so with that uh
+
+13
+00:00:34,800 --> 00:00:38,320
+introduction the title of my talk is
+
+14
+00:00:36,480 --> 00:00:41,680
+combating cyber threats in financial
+
+15
+00:00:38,320 --> 00:00:41,680
+organizations using graph
+
+16
+00:00:42,320 --> 00:00:45,520
+All right. You know what I'm going to do
+
+17
+00:00:44,239 --> 00:00:47,600
+right now is I'm going to begin by
+
+18
+00:00:45,520 --> 00:00:50,239
+telling you how uh financial
+
+19
+00:00:47,600 --> 00:00:55,600
+organizations make money and how they
+
+20
+00:00:50,239 --> 00:00:57,920
+lose money. Okay. At banks uh the main g
+
+21
+00:00:55,600 --> 00:01:00,719
+revenue g uh generator is customer
+
+22
+00:00:57,920 --> 00:01:02,879
+acquisition whereas banks lose money due
+
+23
+00:01:00,719 --> 00:01:06,159
+to cyber crime, financial crime and
+
+24
+00:01:02,879 --> 00:01:12,240
+non-compliance fines and uh penalties.
+
+25
+00:01:06,159 --> 00:01:15,760
+Now um you know the um in a recent 2023
+
+26
+00:01:12,240 --> 00:01:21,600
+study by IMF um this study suggests that
+
+27
+00:01:15,760 --> 00:01:25,200
+banks um uh or cyber attacks uh c cost
+
+28
+00:01:21,600 --> 00:01:28,320
+banks approximately 9% of their global
+
+29
+00:01:25,200 --> 00:01:31,600
+net income. Okay. Whereas financial
+
+30
+00:01:28,320 --> 00:01:34,640
+crimes and non-compliance uh uh you know
+
+31
+00:01:31,600 --> 00:01:36,799
+uh account for about 5 to 10% each.
+
+32
+00:01:34,640 --> 00:01:40,000
+Given this, it makes sense for banks to
+
+33
+00:01:36,799 --> 00:01:42,799
+uh focus as much on preventing financial
+
+34
+00:01:40,000 --> 00:01:46,079
+crime, cyber crime and non-compliance as
+
+35
+00:01:42,799 --> 00:01:48,720
+they do uh with you know customer um as
+
+36
+00:01:46,079 --> 00:01:50,479
+they do with customer acquisition. Okay.
+
+37
+00:01:48,720 --> 00:01:51,920
+So that is going to be the focus of my
+
+38
+00:01:50,479 --> 00:01:55,520
+talks today. And I'm I'm going to talk
+
+39
+00:01:51,920 --> 00:01:59,439
+about how graphs help banks prevent uh
+
+40
+00:01:55,520 --> 00:02:01,200
+revenue loss. And um and uh since I'm
+
+41
+00:01:59,439 --> 00:02:04,640
+working at that dot now, I'm focusing
+
+42
+00:02:01,200 --> 00:02:07,840
+specifically on um uh cyber crimes in
+
+43
+00:02:04,640 --> 00:02:09,440
+this area. Okay. So what I'm going to do
+
+44
+00:02:07,840 --> 00:02:11,920
+is I'm going to start off with something
+
+45
+00:02:09,440 --> 00:02:15,920
+fun. Um statistics. Let me let me share
+
+46
+00:02:11,920 --> 00:02:19,280
+some statistics with you. Now in 2023
+
+47
+00:02:15,920 --> 00:02:22,160
+um finance was the most breached of all
+
+48
+00:02:19,280 --> 00:02:25,920
+industries accounting for 27% of all
+
+49
+00:02:22,160 --> 00:02:27,840
+breaches. Okay. Uh 75% of the uh of
+
+50
+00:02:25,920 --> 00:02:29,440
+financial industry breaches involved a
+
+51
+00:02:27,840 --> 00:02:32,080
+human element meaning that there was
+
+52
+00:02:29,440 --> 00:02:37,120
+some sort of human uh action whether it
+
+53
+00:02:32,080 --> 00:02:40,000
+was um uh in inadvertent human errors um
+
+54
+00:02:37,120 --> 00:02:44,560
+privilege misuse or even using uh stolen
+
+55
+00:02:40,000 --> 00:02:46,640
+uh user credentials. Okay. Now 20% of
+
+56
+00:02:44,560 --> 00:02:49,760
+financial breaches originate from the
+
+57
+00:02:46,640 --> 00:02:51,200
+inside. So just imagine one in five of
+
+58
+00:02:49,760 --> 00:02:54,480
+uh you know one in five financial
+
+59
+00:02:51,200 --> 00:02:56,720
+breaches actually are insider threats.
+
+60
+00:02:54,480 --> 00:03:00,480
+And then the next statistic is that it
+
+61
+00:02:56,720 --> 00:03:02,560
+takes about twothirds of a year um to uh
+
+62
+00:03:00,480 --> 00:03:05,200
+identify and contain a financial breach.
+
+63
+00:03:02,560 --> 00:03:08,640
+Now banks can be happy that they
+
+64
+00:03:05,200 --> 00:03:11,280
+identify and contain uh uh breaches much
+
+65
+00:03:08,640 --> 00:03:15,360
+much quicker than any other uh any other
+
+66
+00:03:11,280 --> 00:03:17,760
+in uh industry but still 216 days.
+
+67
+00:03:15,360 --> 00:03:20,560
+That's a lot of uh that's a lot of time.
+
+68
+00:03:17,760 --> 00:03:22,640
+And then the last statistic is the most
+
+69
+00:03:20,560 --> 00:03:25,120
+staggering. The average cost of a
+
+70
+00:03:22,640 --> 00:03:28,879
+financial breach of about 50 million
+
+71
+00:03:25,120 --> 00:03:31,840
+records is a whopping $375 million.
+
+72
+00:03:28,879 --> 00:03:33,760
+Okay. Compare that with a breach in any
+
+73
+00:03:31,840 --> 00:03:37,440
+other industry except the healthcare
+
+74
+00:03:33,760 --> 00:03:41,760
+industry and you'll see that it costs uh
+
+75
+00:03:37,440 --> 00:03:45,120
+banks uh a factor of hundred more right
+
+76
+00:03:41,760 --> 00:03:46,799
+it's so much costlier okay so um you
+
+77
+00:03:45,120 --> 00:03:49,519
+know it's no wonder then that banks are
+
+78
+00:03:46,799 --> 00:03:52,319
+the favorite playground of hackers and
+
+79
+00:03:49,519 --> 00:03:54,480
+it also makes uh you know it it's the
+
+80
+00:03:52,319 --> 00:03:57,040
+important point here is that banks need
+
+81
+00:03:54,480 --> 00:03:59,360
+to have a very good uh very strong cyber
+
+82
+00:03:57,040 --> 00:04:02,799
+security uh posture
+
+83
+00:03:59,360 --> 00:04:05,040
+All right. So the question is what keeps
+
+84
+00:04:02,799 --> 00:04:07,599
+CISOs which is uh chief security
+
+85
+00:04:05,040 --> 00:04:09,840
+officers in banks awake at night. There
+
+86
+00:04:07,599 --> 00:04:12,640
+are three main uh cyber security
+
+87
+00:04:09,840 --> 00:04:15,360
+challenges. The first is IT complexity
+
+88
+00:04:12,640 --> 00:04:17,840
+of a single system in a bank. Second is
+
+89
+00:04:15,360 --> 00:04:20,320
+weak identity and access management. And
+
+90
+00:04:17,840 --> 00:04:21,840
+the third is a huge volume of security
+
+91
+00:04:20,320 --> 00:04:23,919
+signals. So I'm going to double click
+
+92
+00:04:21,840 --> 00:04:26,720
+into each one of these challenges.
+
+93
+00:04:23,919 --> 00:04:29,120
+First, the IT complex complexity of a of
+
+94
+00:04:26,720 --> 00:04:33,360
+a single system in a bank. Now, banks
+
+95
+00:04:29,120 --> 00:04:35,600
+have over thousands of pro of systems um
+
+96
+00:04:33,360 --> 00:04:38,240
+that serve various functions such as
+
+97
+00:04:35,600 --> 00:04:40,800
+checking accounts, um savings accounts,
+
+98
+00:04:38,240 --> 00:04:44,000
+mortgages, loans, and much much more.
+
+99
+00:04:40,800 --> 00:04:50,639
+Now the uh the image you see u depicted
+
+100
+00:04:44,000 --> 00:04:53,759
+here um it shows you all the uh um all
+
+101
+00:04:50,639 --> 00:04:56,320
+the uh individual processing components
+
+102
+00:04:53,759 --> 00:04:59,040
+and their dependencies of a single
+
+103
+00:04:56,320 --> 00:05:01,440
+mortgage system in a ret in a large
+
+104
+00:04:59,040 --> 00:05:02,880
+retail bank. Okay. So now there are two
+
+105
+00:05:01,440 --> 00:05:05,840
+things I want to point out here point
+
+106
+00:05:02,880 --> 00:05:08,800
+out here. The first is that this image
+
+107
+00:05:05,840 --> 00:05:11,520
+was taken from an article in 2015. Okay.
+
+108
+00:05:08,800 --> 00:05:14,720
+see how complex it was at that point in
+
+109
+00:05:11,520 --> 00:05:17,199
+time. Today we're in 2024 and I can tell
+
+110
+00:05:14,720 --> 00:05:19,759
+you it's just it's probably a lot more
+
+111
+00:05:17,199 --> 00:05:21,919
+complex than it uh than this image looks
+
+112
+00:05:19,759 --> 00:05:24,960
+like. The second point I want to make is
+
+113
+00:05:21,919 --> 00:05:28,160
+that I start off by saying banks have
+
+114
+00:05:24,960 --> 00:05:30,479
+over a thousand systems. Okay, this is
+
+115
+00:05:28,160 --> 00:05:32,639
+an image of just one system that
+
+116
+00:05:30,479 --> 00:05:35,680
+mortgage system. So imagine if you had a
+
+117
+00:05:32,639 --> 00:05:37,440
+thousand of these. No wonder sees don't
+
+118
+00:05:35,680 --> 00:05:40,639
+sleep at night. I mean if you can
+
+119
+00:05:37,440 --> 00:05:43,199
+imagine how complex the uh IT system is
+
+120
+00:05:40,639 --> 00:05:45,039
+um in a bank. All right. The second
+
+121
+00:05:43,199 --> 00:05:47,759
+challenge that they face is a weak
+
+122
+00:05:45,039 --> 00:05:50,160
+identity and access management system.
+
+123
+00:05:47,759 --> 00:05:53,759
+Identity and access management is all
+
+124
+00:05:50,160 --> 00:05:57,919
+about who has access to what. Okay. So
+
+125
+00:05:53,759 --> 00:06:01,680
+uh because of the uh because of the um
+
+126
+00:05:57,919 --> 00:06:03,919
+you know uh because of the uh complexity
+
+127
+00:06:01,680 --> 00:06:07,280
+of identity and access management uh
+
+128
+00:06:03,919 --> 00:06:10,560
+systems admins find it very difficult to
+
+129
+00:06:07,280 --> 00:06:13,360
+actually determine um who has what
+
+130
+00:06:10,560 --> 00:06:16,000
+permissions. Okay. So for example, there
+
+131
+00:06:13,360 --> 00:06:19,680
+may be uh uh a user group that gets
+
+132
+00:06:16,000 --> 00:06:22,000
+access to uh a certain asset that they
+
+133
+00:06:19,680 --> 00:06:24,080
+don't really need, but because they're
+
+134
+00:06:22,000 --> 00:06:26,639
+part of a larger group that uh where
+
+135
+00:06:24,080 --> 00:06:28,639
+some members require access, it's easier
+
+136
+00:06:26,639 --> 00:06:32,479
+to just provide access to everybody in
+
+137
+00:06:28,639 --> 00:06:35,520
+that group. Okay. And uh this is this
+
+138
+00:06:32,479 --> 00:06:37,199
+you know um this idea of giving access
+
+139
+00:06:35,520 --> 00:06:41,360
+to everybody is known as permission
+
+140
+00:06:37,199 --> 00:06:43,680
+creep. And it's what um it and what
+
+141
+00:06:41,360 --> 00:06:49,120
+results from that is increased risk of
+
+142
+00:06:43,680 --> 00:06:51,199
+uh of um uh of a data breach. Okay. And
+
+143
+00:06:49,120 --> 00:06:54,400
+then we have the third challenge and
+
+144
+00:06:51,199 --> 00:06:57,199
+that's a huge volume of signals. Now
+
+145
+00:06:54,400 --> 00:07:00,160
+large banks see about 20 trillion
+
+146
+00:06:57,199 --> 00:07:03,120
+signals security signals uh per day.
+
+147
+00:07:00,160 --> 00:07:04,960
+Okay. And these are you know these these
+
+148
+00:07:03,120 --> 00:07:07,280
+signals come from all the tools that are
+
+149
+00:07:04,960 --> 00:07:09,919
+used to track uh to track them.
+
+150
+00:07:07,280 --> 00:07:13,199
+Everything from in intrusion alerts and
+
+151
+00:07:09,919 --> 00:07:15,440
+uh uh malware viruses which you know
+
+152
+00:07:13,199 --> 00:07:19,599
+need to where immediate action needs to
+
+153
+00:07:15,440 --> 00:07:21,680
+be taken to benign um signals such as uh
+
+154
+00:07:19,599 --> 00:07:24,479
+login and uh let's see what else
+
+155
+00:07:21,680 --> 00:07:26,639
+fileshare accesses for example. Okay.
+
+156
+00:07:24,479 --> 00:07:29,280
+Now sifting through each and every one
+
+157
+00:07:26,639 --> 00:07:31,120
+of these 20 trillion signals and
+
+158
+00:07:29,280 --> 00:07:34,000
+determining which one is real and which
+
+159
+00:07:31,120 --> 00:07:36,240
+one isn't is no trivial task. In fact I
+
+160
+00:07:34,000 --> 00:07:39,599
+want to say it's almost impossible.
+
+161
+00:07:36,240 --> 00:07:41,840
+Okay. And so, uh, guess what's come to
+
+162
+00:07:39,599 --> 00:07:43,680
+the rescue?
+
+163
+00:07:41,840 --> 00:07:46,319
+Graphs. [laughter]
+
+164
+00:07:43,680 --> 00:07:48,400
+The power of graphs, right? Uh, now John
+
+165
+00:07:46,319 --> 00:07:49,919
+Lambert, VP and security fellow at
+
+166
+00:07:48,400 --> 00:07:52,560
+Microsoft, said it best when he said,
+
+167
+00:07:49,919 --> 00:07:54,720
+"Defenders think in lists, attackers
+
+168
+00:07:52,560 --> 00:07:58,000
+think in graphs. As long as this is
+
+169
+00:07:54,720 --> 00:08:00,800
+true, attackers will win." Right? And,
+
+170
+00:07:58,000 --> 00:08:03,280
+uh, and you know, the funny thing is we
+
+171
+00:08:00,800 --> 00:08:05,520
+all need to think like attackers. Um,
+
+172
+00:08:03,280 --> 00:08:07,440
+and so, you know, obviously CISOs need
+
+173
+00:08:05,520 --> 00:08:10,720
+to think like attackers and and really
+
+174
+00:08:07,440 --> 00:08:12,800
+use graphs. Now, I know most of you I I
+
+175
+00:08:10,720 --> 00:08:14,879
+think maybe all of you are very savvy in
+
+176
+00:08:12,800 --> 00:08:16,639
+graphs. So, what I'm going to do is I'm
+
+177
+00:08:14,879 --> 00:08:18,879
+I'm going to just very quickly walk
+
+178
+00:08:16,639 --> 00:08:21,199
+through why graphs are so important for
+
+179
+00:08:18,879 --> 00:08:24,479
+cyber security. There are four main
+
+180
+00:08:21,199 --> 00:08:27,039
+reasons. One is first graphs map complex
+
+181
+00:08:24,479 --> 00:08:30,479
+relationships amongst users, devices and
+
+182
+00:08:27,039 --> 00:08:34,159
+systems. Okay. The second is that graphs
+
+183
+00:08:30,479 --> 00:08:37,200
+detect uh threats. Cyber criminals leave
+
+184
+00:08:34,159 --> 00:08:40,320
+specific patterns during a uh during a
+
+185
+00:08:37,200 --> 00:08:43,279
+crime and graphs reveal these patterns
+
+186
+00:08:40,320 --> 00:08:46,000
+very quickly. The third is that graphs
+
+187
+00:08:43,279 --> 00:08:48,080
+provide um efficient path analysis
+
+188
+00:08:46,000 --> 00:08:51,200
+because they track lateral movements
+
+189
+00:08:48,080 --> 00:08:54,000
+very quickly. And then the last is that
+
+190
+00:08:51,200 --> 00:08:56,800
+um graphs enhance identity and access
+
+191
+00:08:54,000 --> 00:08:58,640
+management systems in two ways. one is
+
+192
+00:08:56,800 --> 00:09:02,080
+that they
+
+193
+00:08:58,640 --> 00:09:05,200
+um they monitor user profiles and uh
+
+194
+00:09:02,080 --> 00:09:08,800
+access uh I'm sorry user patterns and
+
+195
+00:09:05,200 --> 00:09:12,959
+access profiles and um the second is
+
+196
+00:09:08,800 --> 00:09:14,800
+because they um they they detect uh per
+
+197
+00:09:12,959 --> 00:09:17,839
+uh
+
+198
+00:09:14,800 --> 00:09:21,279
+uh they detect per permission escalation
+
+199
+00:09:17,839 --> 00:09:24,160
+and also uh insider threats. Okay. So to
+
+200
+00:09:21,279 --> 00:09:26,720
+defend we need graphs and let's not
+
+201
+00:09:24,160 --> 00:09:28,480
+forget graph algorithms. There are four
+
+202
+00:09:26,720 --> 00:09:30,320
+main classes of graph algorithms that
+
+203
+00:09:28,480 --> 00:09:31,600
+are important in cyber security. What
+
+204
+00:09:30,320 --> 00:09:33,760
+I'm going to do is I'm going to walk you
+
+205
+00:09:31,600 --> 00:09:35,040
+through each one of these classes and
+
+206
+00:09:33,760 --> 00:09:38,160
+then I'm going to give you a specific
+
+207
+00:09:35,040 --> 00:09:41,279
+example in cyber security. The first is
+
+208
+00:09:38,160 --> 00:09:44,480
+path finding and search algorithm.
+
+209
+00:09:41,279 --> 00:09:46,399
+Now um this algorithm what I'm going to
+
+210
+00:09:44,480 --> 00:09:48,640
+do is in this class I'm going to focus
+
+211
+00:09:46,399 --> 00:09:51,680
+specifically on the shortest path
+
+212
+00:09:48,640 --> 00:09:56,160
+algorithm. Shortest path algorithm is uh
+
+213
+00:09:51,680 --> 00:09:59,200
+you know finding the most efficient um
+
+214
+00:09:56,160 --> 00:10:00,959
+path uh most the shortest and the most
+
+215
+00:09:59,200 --> 00:10:03,519
+efficient path between two nodes in a
+
+216
+00:10:00,959 --> 00:10:06,959
+graph. Okay. Where is it used in cyber
+
+217
+00:10:03,519 --> 00:10:09,200
+security? Well, it can be used to detect
+
+218
+00:10:06,959 --> 00:10:11,600
+what path what is the shortest path an
+
+219
+00:10:09,200 --> 00:10:13,600
+attacker might take to access sensitive
+
+220
+00:10:11,600 --> 00:10:15,600
+information. Okay. The second is
+
+221
+00:10:13,600 --> 00:10:18,880
+community detection. Community detection
+
+222
+00:10:15,600 --> 00:10:21,519
+is uh used to uh detect communities or
+
+223
+00:10:18,880 --> 00:10:24,000
+clusters in cyber security. If there is
+
+224
+00:10:21,519 --> 00:10:27,519
+an abnormal cluster, it may indicate
+
+225
+00:10:24,000 --> 00:10:30,399
+that there are groups of um uh groups of
+
+226
+00:10:27,519 --> 00:10:32,399
+individuals collaborating on attacks.
+
+227
+00:10:30,399 --> 00:10:34,320
+Okay. The third is centrality.
+
+228
+00:10:32,399 --> 00:10:37,200
+Centrality algorithms are all about
+
+229
+00:10:34,320 --> 00:10:40,320
+importance. So in cyber security if
+
+230
+00:10:37,200 --> 00:10:42,560
+there is a highly central node that's
+
+231
+00:10:40,320 --> 00:10:46,640
+being unexpectedly accessed by an
+
+232
+00:10:42,560 --> 00:10:49,760
+unusual user that's a mouthful um you
+
+233
+00:10:46,640 --> 00:10:51,839
+can you know you can um you can
+
+234
+00:10:49,760 --> 00:10:54,240
+determine that that's that's a potential
+
+235
+00:10:51,839 --> 00:10:56,480
+insider breach. Okay. And then the last
+
+236
+00:10:54,240 --> 00:10:59,040
+is similarity algorithms. Similarity
+
+237
+00:10:56,480 --> 00:11:01,680
+algorithms are as the name suggests are
+
+238
+00:10:59,040 --> 00:11:04,000
+how two uh nodes are similar to each
+
+239
+00:11:01,680 --> 00:11:05,839
+other in a in a graph. Now it can be
+
+240
+00:11:04,000 --> 00:11:09,120
+used in fishing to uh you know you can
+
+241
+00:11:05,839 --> 00:11:13,279
+use similarity algorithms to detect
+
+242
+00:11:09,120 --> 00:11:15,440
+um uh fishing do uh you can use to
+
+243
+00:11:13,279 --> 00:11:18,720
+detect uh domains and emails uh
+
+244
+00:11:15,440 --> 00:11:21,680
+lookalike domains and emails that may um
+
+245
+00:11:18,720 --> 00:11:24,560
+that may pose as legitimate services.
+
+246
+00:11:21,680 --> 00:11:27,760
+Okay. So having told you very briefly
+
+247
+00:11:24,560 --> 00:11:30,079
+how graphs work um not how graphs work
+
+248
+00:11:27,760 --> 00:11:32,560
+I'm sorry what graphs and graph
+
+249
+00:11:30,079 --> 00:11:34,560
+algorithms are all about. Let's now take
+
+250
+00:11:32,560 --> 00:11:37,200
+a look at how we can use graphs to
+
+251
+00:11:34,560 --> 00:11:39,360
+actually detect a data breach. Okay,
+
+252
+00:11:37,200 --> 00:11:41,360
+before I do that, I need to walk you
+
+253
+00:11:39,360 --> 00:11:44,000
+through the anatomy of a data breach. A
+
+254
+00:11:41,360 --> 00:11:45,920
+data breach occurs in six distinct
+
+255
+00:11:44,000 --> 00:11:47,680
+steps. Okay, so I'm going to walk you
+
+256
+00:11:45,920 --> 00:11:50,240
+through each one of those steps. The
+
+257
+00:11:47,680 --> 00:11:52,959
+first step is known as delivery. This is
+
+258
+00:11:50,240 --> 00:11:57,680
+when an attacker actually chooses a
+
+259
+00:11:52,959 --> 00:11:59,040
+target and um and a weapon. And in this
+
+260
+00:11:57,680 --> 00:12:02,160
+case we're talking about things like
+
+261
+00:11:59,040 --> 00:12:04,800
+malware, ransomware, um let's see what
+
+262
+00:12:02,160 --> 00:12:07,680
+are fishing and any other attack vector.
+
+263
+00:12:04,800 --> 00:12:11,440
+Okay. And then plans the attack. The
+
+264
+00:12:07,680 --> 00:12:13,440
+second step is known as um exploitation.
+
+265
+00:12:11,440 --> 00:12:16,480
+This is actually when a breach occurs.
+
+266
+00:12:13,440 --> 00:12:19,519
+Okay. And um and the attacker gets
+
+267
+00:12:16,480 --> 00:12:22,160
+access to an organization's network. Now
+
+268
+00:12:19,519 --> 00:12:25,760
+once inside the network he'll you know
+
+269
+00:12:22,160 --> 00:12:29,760
+he'll start to um really understand
+
+270
+00:12:25,760 --> 00:12:32,079
+better uh about the network uh and users
+
+271
+00:12:29,760 --> 00:12:34,639
+and accounts and so on and so forth. The
+
+272
+00:12:32,079 --> 00:12:36,800
+third step is known as installation.
+
+273
+00:12:34,639 --> 00:12:39,680
+This is the step where the attacker
+
+274
+00:12:36,800 --> 00:12:42,399
+actually um you know ensures that he has
+
+275
+00:12:39,680 --> 00:12:44,720
+continued access to to the network.
+
+276
+00:12:42,399 --> 00:12:47,120
+Fourth step is called command and uh
+
+277
+00:12:44,720 --> 00:12:48,639
+control and this is probably the most
+
+278
+00:12:47,120 --> 00:12:52,399
+important step. Here's where the
+
+279
+00:12:48,639 --> 00:12:55,040
+attacker gains command of um I'm sorry
+
+280
+00:12:52,399 --> 00:12:57,360
+gains control of uh of uh systems
+
+281
+00:12:55,040 --> 00:12:59,920
+applications and the entire network. So
+
+282
+00:12:57,360 --> 00:13:01,440
+basically he's got admin privileges
+
+283
+00:12:59,920 --> 00:13:04,800
+right now. Right? So there's a privilege
+
+284
+00:13:01,440 --> 00:13:07,440
+escalation and um and you know he may
+
+285
+00:13:04,800 --> 00:13:11,519
+even um act on behalf of unsuspecting
+
+286
+00:13:07,440 --> 00:13:13,519
+users. Um fifth step is known as um
+
+287
+00:13:11,519 --> 00:13:16,720
+expansion. Here's where the attacker
+
+288
+00:13:13,519 --> 00:13:19,519
+moves laterally across the network
+
+289
+00:13:16,720 --> 00:13:22,000
+and uh really expanding his reach. And
+
+290
+00:13:19,519 --> 00:13:25,519
+then the last step is exfiltration where
+
+291
+00:13:22,000 --> 00:13:28,399
+the attacker finds his target
+
+292
+00:13:25,519 --> 00:13:31,519
+um and you know exfiltrates takes the
+
+293
+00:13:28,399 --> 00:13:34,480
+data out. Okay. And at this point the
+
+294
+00:13:31,519 --> 00:13:37,360
+attacker can stay on and continue to
+
+295
+00:13:34,480 --> 00:13:39,680
+keep doing the same process again or the
+
+296
+00:13:37,360 --> 00:13:42,480
+attacker may leave. All right. Now that
+
+297
+00:13:39,680 --> 00:13:45,120
+we know how a data breach occurs, what
+
+298
+00:13:42,480 --> 00:13:49,680
+I'm going to do uh is tell you how we
+
+299
+00:13:45,120 --> 00:13:52,800
+can use u graphs to actually detect um
+
+300
+00:13:49,680 --> 00:13:54,480
+detect a data breach. Okay. So for this
+
+301
+00:13:52,800 --> 00:13:56,000
+for this purpose I'm going to use I'm
+
+302
+00:13:54,480 --> 00:13:59,199
+going to showcase the current company
+
+303
+00:13:56,000 --> 00:14:01,120
+that I'm at and that's that dot. Now,
+
+304
+00:13:59,199 --> 00:14:04,000
+cyber security vendors take anywhere
+
+305
+00:14:01,120 --> 00:14:07,360
+from two to four hours to identify and
+
+306
+00:14:04,000 --> 00:14:10,399
+uh detect a uh I'm sorry to identify and
+
+307
+00:14:07,360 --> 00:14:12,639
+contain a data breach. So, it would be
+
+308
+00:14:10,399 --> 00:14:14,639
+great if they could actually do this
+
+309
+00:14:12,639 --> 00:14:17,920
+much much quicker, right? And that's
+
+310
+00:14:14,639 --> 00:14:20,000
+where um that dot comes in. What that
+
+311
+00:14:17,920 --> 00:14:23,600
+dot does is it enables cyber security
+
+312
+00:14:20,000 --> 00:14:27,360
+vendors to um identify and detect uh
+
+313
+00:14:23,600 --> 00:14:30,079
+detect data breaches in milliseconds.
+
+314
+00:14:27,360 --> 00:14:32,160
+Okay. Um now how does that dot do it?
+
+315
+00:14:30,079 --> 00:14:33,839
+Before I get there I want to uh quickly
+
+316
+00:14:32,160 --> 00:14:36,160
+tell you a little bit about the company.
+
+317
+00:14:33,839 --> 00:14:38,320
+That dot is a streaming uh graph
+
+318
+00:14:36,160 --> 00:14:41,040
+company. Basically what we do is we
+
+319
+00:14:38,320 --> 00:14:43,040
+combine streaming data with graphs.
+
+320
+00:14:41,040 --> 00:14:47,199
+Okay. And that's what enables us to be
+
+321
+00:14:43,040 --> 00:14:49,600
+able to uh detect uh threats uh that
+
+322
+00:14:47,199 --> 00:14:52,800
+quickly. Okay. That dot's product is
+
+323
+00:14:49,600 --> 00:14:55,839
+Quin. And um
+
+324
+00:14:52,800 --> 00:14:57,360
+so how Quin works is as follows. Quin is
+
+325
+00:14:55,839 --> 00:14:59,680
+usually part of a cyber security
+
+326
+00:14:57,360 --> 00:15:02,240
+vendor's detection pipeline. Now the
+
+327
+00:14:59,680 --> 00:15:05,360
+cyber security vendor actually uh
+
+328
+00:15:02,240 --> 00:15:08,160
+detects and classifies uh behaviors and
+
+329
+00:15:05,360 --> 00:15:12,639
+and and uh patterns. Okay. I'm I'm
+
+330
+00:15:08,160 --> 00:15:14,639
+sorry, not patterns, behaviors and uh um
+
+331
+00:15:12,639 --> 00:15:17,279
+users and behaviors. That's that's what
+
+332
+00:15:14,639 --> 00:15:20,160
+I want to say. Okay. So now what quin
+
+333
+00:15:17,279 --> 00:15:22,000
+does is it looks for patterns across all
+
+334
+00:15:20,160 --> 00:15:24,639
+these detections
+
+335
+00:15:22,000 --> 00:15:25,839
+and um and and so that's how Quin is
+
+336
+00:15:24,639 --> 00:15:27,120
+being used. Okay. So now I'm going to
+
+337
+00:15:25,839 --> 00:15:29,519
+what I'm going to do right now is walk
+
+338
+00:15:27,120 --> 00:15:32,320
+you through a very very very simple
+
+339
+00:15:29,519 --> 00:15:35,680
+scenario. Okay. A malicious actor has
+
+340
+00:15:32,320 --> 00:15:38,240
+actually gained access to um some poor
+
+341
+00:15:35,680 --> 00:15:41,440
+unsuspecting users credentials and he's
+
+342
+00:15:38,240 --> 00:15:44,800
+going to use those credentials to um uh
+
+343
+00:15:41,440 --> 00:15:48,399
+enter the user's organization. So that
+
+344
+00:15:44,800 --> 00:15:52,240
+occurs at z at 0 seconds. Okay. So once
+
+345
+00:15:48,399 --> 00:15:54,800
+inside 30 31 seconds later what this
+
+346
+00:15:52,240 --> 00:15:57,279
+malicious actor does is he opens a file
+
+347
+00:15:54,800 --> 00:16:00,720
+browser and looks at the file system.
+
+348
+00:15:57,279 --> 00:16:05,040
+Okay. And then uh two downloads occur.
+
+349
+00:16:00,720 --> 00:16:07,199
+One at 2 minutes and 55 seconds
+
+350
+00:16:05,040 --> 00:16:09,120
+and uh you know the first download is
+
+351
+00:16:07,199 --> 00:16:12,079
+complete and then the second download is
+
+352
+00:16:09,120 --> 00:16:15,040
+complete at 2 minutes and 57 seconds.
+
+353
+00:16:12,079 --> 00:16:18,079
+Okay. And the instant that second
+
+354
+00:16:15,040 --> 00:16:21,199
+download is uh complete, Quin triggers a
+
+355
+00:16:18,079 --> 00:16:24,560
+response. So how does Quin do it this
+
+356
+00:16:21,199 --> 00:16:27,040
+fast? It's by the use of what they call
+
+357
+00:16:24,560 --> 00:16:29,519
+what we call standing queries. Okay, so
+
+358
+00:16:27,040 --> 00:16:32,959
+standing queries are very unique.
+
+359
+00:16:29,519 --> 00:16:35,920
+they're unique to quinine and um so a
+
+360
+00:16:32,959 --> 00:16:38,560
+standing query basically is um you know
+
+361
+00:16:35,920 --> 00:16:41,519
+it monitors streams for specified
+
+362
+00:16:38,560 --> 00:16:43,360
+patterns maintains partial matches and
+
+363
+00:16:41,519 --> 00:16:47,040
+the instant
+
+364
+00:16:43,360 --> 00:16:49,040
+uh uh a match is complete um it'll
+
+365
+00:16:47,040 --> 00:16:51,120
+trigger a response. Okay, so that's how
+
+366
+00:16:49,040 --> 00:16:53,279
+standing query queries work and you can
+
+367
+00:16:51,120 --> 00:16:56,240
+see the standing query here uh for this
+
+368
+00:16:53,279 --> 00:16:58,480
+particular scenario. Now, that dot uses
+
+369
+00:16:56,240 --> 00:17:00,480
+cipher. So, for those of you familiar
+
+370
+00:16:58,480 --> 00:17:03,600
+with cipher, you'll you'll notice that
+
+371
+00:17:00,480 --> 00:17:06,319
+it's it's easy to see the minute that uh
+
+372
+00:17:03,600 --> 00:17:08,720
+client recognizes the tags suspicious or
+
+373
+00:17:06,319 --> 00:17:10,640
+malicious, uh that response is
+
+374
+00:17:08,720 --> 00:17:15,039
+triggered. Okay, so I just want to point
+
+375
+00:17:10,640 --> 00:17:18,160
+out here that you know that response
+
+376
+00:17:15,039 --> 00:17:19,760
+occurs in milliseconds, not seconds, not
+
+377
+00:17:18,160 --> 00:17:22,559
+minutes, and certainly not the hours
+
+378
+00:17:19,760 --> 00:17:25,919
+that cyber security vendors uh usually
+
+379
+00:17:22,559 --> 00:17:28,079
+see. All right. Okay, finally I'm going
+
+380
+00:17:25,919 --> 00:17:29,760
+to finish off. This is my last slide.
+
+381
+00:17:28,079 --> 00:17:31,919
+I'm going to share with you three
+
+382
+00:17:29,760 --> 00:17:36,640
+customer stories
+
+383
+00:17:31,919 --> 00:17:38,720
+um of banks using graphs today for uh
+
+384
+00:17:36,640 --> 00:17:40,799
+cyber security. Okay. So I'm going to
+
+385
+00:17:38,720 --> 00:17:42,799
+walk you through Commonwealth Bank in
+
+386
+00:17:40,799 --> 00:17:45,200
+Australia for and they're using graphs
+
+387
+00:17:42,799 --> 00:17:48,000
+for network observability. Standard
+
+388
+00:17:45,200 --> 00:17:51,200
+Chartered Bank in Singapore for uh
+
+389
+00:17:48,000 --> 00:17:54,000
+detecting insider threat and UBS using
+
+390
+00:17:51,200 --> 00:17:55,760
+graphs for data transparency. So,
+
+391
+00:17:54,000 --> 00:17:58,480
+Commonwealth Bank in Australia,
+
+392
+00:17:55,760 --> 00:18:03,280
+Commonwealth Bank um you know, they they
+
+393
+00:17:58,480 --> 00:18:04,799
+embraced uh um uh the digital trend very
+
+394
+00:18:03,280 --> 00:18:07,760
+very early on. In fact, they were the
+
+395
+00:18:04,799 --> 00:18:12,000
+first bank in Australia to actually uh
+
+396
+00:18:07,760 --> 00:18:15,440
+um go digital. Okay. The uh you know,
+
+397
+00:18:12,000 --> 00:18:18,720
+Commonwealth Bank has a very large IT uh
+
+398
+00:18:15,440 --> 00:18:20,960
+system and uh with a super complex
+
+399
+00:18:18,720 --> 00:18:22,400
+architecture. Now you'll recall from I
+
+400
+00:18:20,960 --> 00:18:24,799
+think one of my early slides where I
+
+401
+00:18:22,400 --> 00:18:27,919
+said the IT complexity. So they really
+
+402
+00:18:24,799 --> 00:18:30,000
+have a very complex uh architecture. Now
+
+403
+00:18:27,919 --> 00:18:32,880
+um you know over the years they've added
+
+404
+00:18:30,000 --> 00:18:35,280
+modified deleted um systems and
+
+405
+00:18:32,880 --> 00:18:37,200
+applications. In addition they also have
+
+406
+00:18:35,280 --> 00:18:40,320
+a large number of legacy systems that
+
+407
+00:18:37,200 --> 00:18:43,360
+are no longer um you know that no longer
+
+408
+00:18:40,320 --> 00:18:46,320
+support customers. So what they wanted
+
+409
+00:18:43,360 --> 00:18:50,160
+to do was to you know take stock of each
+
+410
+00:18:46,320 --> 00:18:51,919
+and every asset and its dependencies.
+
+411
+00:18:50,160 --> 00:18:53,840
+Okay. So that's where of course whenever
+
+412
+00:18:51,919 --> 00:18:56,160
+you think about dependencies you want to
+
+413
+00:18:53,840 --> 00:18:57,919
+use a graph right. So they decided that
+
+414
+00:18:56,160 --> 00:19:00,400
+they were going to use um they were
+
+415
+00:18:57,919 --> 00:19:03,039
+going to build an asset graph and that's
+
+416
+00:19:00,400 --> 00:19:05,520
+exactly what they did. Now once they
+
+417
+00:19:03,039 --> 00:19:09,440
+built the asset graph they got complete
+
+418
+00:19:05,520 --> 00:19:12,799
+visibility into their entire network and
+
+419
+00:19:09,440 --> 00:19:14,720
+um and an important you know point that
+
+420
+00:19:12,799 --> 00:19:16,559
+came out of it was that they noticed
+
+421
+00:19:14,720 --> 00:19:19,280
+that there were some scanners that were
+
+422
+00:19:16,559 --> 00:19:21,360
+scanning various parts of the network.
+
+423
+00:19:19,280 --> 00:19:23,440
+Now what the IT department did
+
+424
+00:19:21,360 --> 00:19:25,120
+immediately was to go contact the cyber
+
+425
+00:19:23,440 --> 00:19:26,880
+security team and let them know that
+
+426
+00:19:25,120 --> 00:19:29,440
+there were some scanners that they
+
+427
+00:19:26,880 --> 00:19:31,440
+didn't know uh who it belonged to. So
+
+428
+00:19:29,440 --> 00:19:33,039
+the cyber security team came back and
+
+429
+00:19:31,440 --> 00:19:35,600
+said, "Hey, hey, don't worry. Those are
+
+430
+00:19:33,039 --> 00:19:37,520
+our scanners. Yes, we know." But what
+
+431
+00:19:35,600 --> 00:19:39,440
+they were surprised about was the fact
+
+432
+00:19:37,520 --> 00:19:41,360
+that they didn't account for that many
+
+433
+00:19:39,440 --> 00:19:43,600
+scanners. They thought they had a
+
+434
+00:19:41,360 --> 00:19:46,240
+certain number. It was much smaller than
+
+435
+00:19:43,600 --> 00:19:48,160
+what what was actually there. Okay? So
+
+436
+00:19:46,240 --> 00:19:50,240
+they reconciled, you know, confirmed
+
+437
+00:19:48,160 --> 00:19:52,960
+that they were all those scanners were
+
+438
+00:19:50,240 --> 00:19:54,799
+all done by the cyber security team.
+
+439
+00:19:52,960 --> 00:19:56,559
+Then the IT department went back to them
+
+440
+00:19:54,799 --> 00:19:59,600
+and said, "Hey guys, do you know you're
+
+441
+00:19:56,559 --> 00:20:01,120
+missing critical parts of the network,
+
+442
+00:19:59,600 --> 00:20:04,160
+you know, you should be scanning those
+
+443
+00:20:01,120 --> 00:20:06,480
+as well." So in effect what happened was
+
+444
+00:20:04,160 --> 00:20:09,919
+the cyber security team thanked the IT
+
+445
+00:20:06,480 --> 00:20:12,320
+department um for uh you know
+
+446
+00:20:09,919 --> 00:20:15,600
+identifying gaps um that could have
+
+447
+00:20:12,320 --> 00:20:17,679
+posed vulnerabil vulnerabilities that
+
+448
+00:20:15,600 --> 00:20:22,400
+you know could have potentially resulted
+
+449
+00:20:17,679 --> 00:20:25,440
+in in um some um you know in something
+
+450
+00:20:22,400 --> 00:20:28,080
+dangerous right so that is cyber that's
+
+451
+00:20:25,440 --> 00:20:29,679
+commonwealth bank in um in Australia the
+
+452
+00:20:28,080 --> 00:20:31,520
+second is Standard Chartered Bank in
+
+453
+00:20:29,679 --> 00:20:34,159
+Singapore
+
+454
+00:20:31,520 --> 00:20:37,120
+Now uh data is at the heart of every
+
+455
+00:20:34,159 --> 00:20:40,960
+operation at Standard uh Chartered Bank
+
+456
+00:20:37,120 --> 00:20:43,039
+in Singapore as well as uh worldwide. Um
+
+457
+00:20:40,960 --> 00:20:45,760
+you know they have a large central data
+
+458
+00:20:43,039 --> 00:20:48,880
+lake from where they um you know they
+
+459
+00:20:45,760 --> 00:20:52,640
+where they stream data from applications
+
+460
+00:20:48,880 --> 00:20:54,480
+and um uh uh and systems. Okay. So it
+
+461
+00:20:52,640 --> 00:20:56,480
+includes everything from client data,
+
+462
+00:20:54,480 --> 00:20:58,480
+client interaction data, client
+
+463
+00:20:56,480 --> 00:21:02,799
+touchpoint data, uh payment touchpoint
+
+464
+00:20:58,480 --> 00:21:06,000
+data, um IP assets, IT assets, security
+
+465
+00:21:02,799 --> 00:21:08,480
+um data, log, you know, application
+
+466
+00:21:06,000 --> 00:21:10,559
+logs, uh CL third party data and so on
+
+467
+00:21:08,480 --> 00:21:12,480
+and so forth. So from all of this, what
+
+468
+00:21:10,559 --> 00:21:15,039
+I'm trying to get at is, you know, the
+
+469
+00:21:12,480 --> 00:21:18,159
+data analytics team knew very well that
+
+470
+00:21:15,039 --> 00:21:21,840
+they had no der of data at uh at the
+
+471
+00:21:18,159 --> 00:21:25,280
+bank. Um and so uh you know what what
+
+472
+00:21:21,840 --> 00:21:28,559
+they really lacked was the context
+
+473
+00:21:25,280 --> 00:21:32,640
+between uh all these different data um
+
+474
+00:21:28,559 --> 00:21:34,960
+silos, right? And um and so you know in
+
+475
+00:21:32,640 --> 00:21:37,600
+they they worked in handinhand with the
+
+476
+00:21:34,960 --> 00:21:39,440
+cyber security team and they decided
+
+477
+00:21:37,600 --> 00:21:42,320
+that they were going to use a graph to
+
+478
+00:21:39,440 --> 00:21:44,159
+get the context and uh and so that they
+
+479
+00:21:42,320 --> 00:21:47,440
+you know when when they built a a threat
+
+480
+00:21:44,159 --> 00:21:49,520
+intelligence graph. Okay. Now the cyber
+
+481
+00:21:47,440 --> 00:21:53,039
+security uh they have a cyber security
+
+482
+00:21:49,520 --> 00:21:54,720
+control policy that h uh it's a it's
+
+483
+00:21:53,039 --> 00:21:56,720
+it's a very broad polic they have a
+
+484
+00:21:54,720 --> 00:21:59,520
+cyber control library I'm sorry that has
+
+485
+00:21:56,720 --> 00:22:02,400
+a very broad policy that includes over
+
+486
+00:21:59,520 --> 00:22:04,159
+900 controls. So to detect insider
+
+487
+00:22:02,400 --> 00:22:06,159
+threat for example what they would do is
+
+488
+00:22:04,159 --> 00:22:08,880
+they would stream uh the bank's IP
+
+489
+00:22:06,159 --> 00:22:12,080
+assets [snorts] and um the relevant
+
+490
+00:22:08,880 --> 00:22:15,600
+controls to spot suspicious behavior and
+
+491
+00:22:12,080 --> 00:22:17,679
+flag any um you know failure points. A
+
+492
+00:22:15,600 --> 00:22:19,840
+failure point is something like a USB
+
+493
+00:22:17,679 --> 00:22:22,320
+access to a company laptop. I mean we
+
+494
+00:22:19,840 --> 00:22:24,400
+all know that's a no no, right? So as
+
+495
+00:22:22,320 --> 00:22:26,960
+soon as that happens, that's flagged as
+
+496
+00:22:24,400 --> 00:22:30,080
+a potential data leak and action is
+
+497
+00:22:26,960 --> 00:22:32,080
+taken immediately. So in this manner um
+
+498
+00:22:30,080 --> 00:22:34,799
+during the uh pandemic, Standard
+
+499
+00:22:32,080 --> 00:22:38,640
+Chartered Bank was very proactive in in
+
+500
+00:22:34,799 --> 00:22:40,559
+uh in uh really cutting down um any data
+
+501
+00:22:38,640 --> 00:22:42,559
+uh leaks that could have potentially
+
+502
+00:22:40,559 --> 00:22:44,480
+happened. Okay. And the last story I'm
+
+503
+00:22:42,559 --> 00:22:47,760
+going to talk about is UBS. And this is
+
+504
+00:22:44,480 --> 00:22:49,360
+the uh the US office. They use uh a
+
+505
+00:22:47,760 --> 00:22:53,440
+graph for data transparency. The
+
+506
+00:22:49,360 --> 00:22:56,799
+challenge for UBS was they needed uh
+
+507
+00:22:53,440 --> 00:22:59,360
+trans uh transparency into all of the uh
+
+508
+00:22:56,799 --> 00:23:01,919
+data flows into uh into their risk
+
+509
+00:22:59,360 --> 00:23:05,280
+reporting mechanisms so that they could
+
+510
+00:23:01,919 --> 00:23:08,720
+uh be compliant with the BCBS uh 239
+
+511
+00:23:05,280 --> 00:23:10,400
+Sarbain uh Oxley um regulation. Okay.
+
+512
+00:23:08,720 --> 00:23:13,200
+Okay. So what they did was they used a
+
+513
+00:23:10,400 --> 00:23:16,720
+graph to build a data lineage tool that
+
+514
+00:23:13,200 --> 00:23:20,000
+allowed them to uh you know monitor data
+
+515
+00:23:16,720 --> 00:23:22,000
+as it flowed throughout the bank uh you
+
+516
+00:23:20,000 --> 00:23:24,799
+know uh
+
+517
+00:23:22,000 --> 00:23:26,720
+um look for any errors and then trace
+
+518
+00:23:24,799 --> 00:23:28,480
+those errors back to the source. So in
+
+519
+00:23:26,720 --> 00:23:31,120
+in that process what happened was they
+
+520
+00:23:28,480 --> 00:23:33,120
+got complete transparency into into all
+
+521
+00:23:31,120 --> 00:23:36,559
+their data flows and that enabled them
+
+522
+00:23:33,120 --> 00:23:39,600
+to be um enabled them to be uh in
+
+523
+00:23:36,559 --> 00:23:42,240
+compliance with the BCB BS239
+
+524
+00:23:39,600 --> 00:23:44,240
+regulations. Now they also talked to
+
+525
+00:23:42,240 --> 00:23:46,080
+their cyber security team who were were
+
+526
+00:23:44,240 --> 00:23:48,799
+very excited that they had complete data
+
+527
+00:23:46,080 --> 00:23:51,600
+transparency and the cyber security team
+
+528
+00:23:48,799 --> 00:23:53,760
+said hey can we use this as well and so
+
+529
+00:23:51,600 --> 00:23:56,080
+what what has happened is that there are
+
+530
+00:23:53,760 --> 00:23:58,400
+two things that came out of it. They the
+
+531
+00:23:56,080 --> 00:24:00,320
+cyber security team uses it to uncover
+
+532
+00:23:58,400 --> 00:24:03,280
+any weak points in the network. For
+
+533
+00:24:00,320 --> 00:24:06,240
+example, um you know uh
+
+534
+00:24:03,280 --> 00:24:09,840
+misconfigurations and also to detect any
+
+535
+00:24:06,240 --> 00:24:12,080
+unauthorized access or um uh
+
+536
+00:24:09,840 --> 00:24:14,240
+modifications to the network. Okay. So
+
+537
+00:24:12,080 --> 00:24:17,200
+in this manner data transparency has
+
+538
+00:24:14,240 --> 00:24:20,080
+enabled them to be compliant with the uh
+
+539
+00:24:17,200 --> 00:24:24,880
+stringent regulations as well as the
+
+540
+00:24:20,080 --> 00:24:27,200
+fact that it provides um uh uh uh a
+
+541
+00:24:24,880 --> 00:24:29,360
+foundation for robust cyber defense.
+
+542
+00:24:27,200 --> 00:24:32,640
+Okay. So with that I hope I've given you
+
+543
+00:24:29,360 --> 00:24:35,760
+uh a you know three reasons why graphs
+
+544
+00:24:32,640 --> 00:24:38,240
+are very important for banks uh in uh in
+
+545
+00:24:35,760 --> 00:24:41,627
+cyber security and um happy to take any
+
+546
+00:24:38,240 --> 00:24:43,647
+questions with that. Thank you.
+
+547
+00:24:41,627 --> 00:24:43,647
+>> [applause]
+
+548
+00:24:45,557 --> 00:24:49,720
+[clears throat]
+
+549
+00:24:45,840 --> 00:24:49,720
+>> I just want to say that actually.
+
+550
+00:24:55,840 --> 00:25:00,880
+>> Yeah. Hi Maya. So the algorithm slide
+
+551
+00:24:58,640 --> 00:25:04,640
+that you had uh I'm just curious what
+
+552
+00:25:00,880 --> 00:25:06,720
+about the latency uh applica latency
+
+553
+00:25:04,640 --> 00:25:08,320
+impact of algorithms [snorts] when you
+
+554
+00:25:06,720 --> 00:25:09,679
+have like a cyber security scenario
+
+555
+00:25:08,320 --> 00:25:12,640
+because graph algorithms are not cheap
+
+556
+00:25:09,679 --> 00:25:14,159
+to compute. So are they at all used in
+
+557
+00:25:12,640 --> 00:25:15,520
+these applications or is it just mostly
+
+558
+00:25:14,159 --> 00:25:17,200
+cipher query based
+
+559
+00:25:15,520 --> 00:25:18,080
+>> which which applications are you talking
+
+560
+00:25:17,200 --> 00:25:20,080
+about in
+
+561
+00:25:18,080 --> 00:25:20,799
+>> like real world use like the production
+
+562
+00:25:20,080 --> 00:25:22,080
+use cases
+
+563
+00:25:20,799 --> 00:25:22,880
+>> like these?
+
+564
+00:25:22,080 --> 00:25:25,120
+>> Yes.
+
+565
+00:25:22,880 --> 00:25:27,679
+>> Uh in these it was no graph algorithms.
+
+566
+00:25:25,120 --> 00:25:29,600
+Okay. Yeah. They were all um
+
+567
+00:25:27,679 --> 00:25:33,120
+>> so unrelated to this than the previous
+
+568
+00:25:29,600 --> 00:25:35,039
+slide the one with the algorithms u are
+
+569
+00:25:33,120 --> 00:25:36,880
+like are those algorithms at all
+
+570
+00:25:35,039 --> 00:25:37,679
+applicable in a streaming platform like
+
+571
+00:25:36,880 --> 00:25:39,279
+coin
+
+572
+00:25:37,679 --> 00:25:42,320
+>> that's a good question we do have
+
+573
+00:25:39,279 --> 00:25:44,480
+algorithms um currently I don't think
+
+574
+00:25:42,320 --> 00:25:47,440
+they're part of the uh they're part of
+
+575
+00:25:44,480 --> 00:25:50,720
+the um package you know quin is only
+
+576
+00:25:47,440 --> 00:25:54,000
+using cipher queries yeah
+
+577
+00:25:50,720 --> 00:25:54,000
+that's a good question by the
+
+578
+00:25:57,440 --> 00:26:00,559
+Hi, thanks for the talk. Um,
+
+579
+00:25:59,919 --> 00:26:02,000
+>> thank you.
+
+580
+00:26:00,559 --> 00:26:04,320
+>> Early in the talk you mentioned
+
+581
+00:26:02,000 --> 00:26:05,440
+something about 20 trillion signals a
+
+582
+00:26:04,320 --> 00:26:06,720
+day like
+
+583
+00:26:05,440 --> 00:26:10,080
+>> two trillion
+
+584
+00:26:06,720 --> 00:26:11,440
+>> something anyway bonkers numbers.
+
+585
+00:26:10,080 --> 00:26:14,960
+Anyways,
+
+586
+00:26:11,440 --> 00:26:15,919
+>> um, is there a bandwidth issue there? Is
+
+587
+00:26:14,960 --> 00:26:18,480
+there what
+
+588
+00:26:15,919 --> 00:26:21,360
+>> does this translates it does every
+
+589
+00:26:18,480 --> 00:26:24,480
+signal translate to a potential query
+
+590
+00:26:21,360 --> 00:26:26,640
+like and if it does I mean generally do
+
+591
+00:26:24,480 --> 00:26:28,480
+you have any bandwidth issues if it's
+
+592
+00:26:26,640 --> 00:26:30,880
+that much signals
+
+593
+00:26:28,480 --> 00:26:31,279
+>> uh I'm sorry I do I do we have any what
+
+594
+00:26:30,880 --> 00:26:32,400
+issues
+
+595
+00:26:31,279 --> 00:26:35,840
+>> bandwidth issues
+
+596
+00:26:32,400 --> 00:26:40,320
+>> bandwidth issues oh okay so that dot can
+
+597
+00:26:35,840 --> 00:26:42,880
+do over one um one million events per
+
+598
+00:26:40,320 --> 00:26:44,720
+second okay now you're not going to
+
+599
+00:26:42,880 --> 00:26:46,559
+stream the 20 trillion
+
+600
+00:26:44,720 --> 00:26:50,559
+all at the same time. But there are
+
+601
+00:26:46,559 --> 00:26:52,720
+mechanisms in quinine to um if there are
+
+602
+00:26:50,559 --> 00:26:56,080
+more if there more signals come more
+
+603
+00:26:52,720 --> 00:26:58,159
+than you know the allotted signals come
+
+604
+00:26:56,080 --> 00:27:01,679
+in there is what's known as a
+
+605
+00:26:58,159 --> 00:27:03,600
+backressured mechanism to uh to really
+
+606
+00:27:01,679 --> 00:27:05,520
+you know make sure that only a certain
+
+607
+00:27:03,600 --> 00:27:06,799
+number go through at at any point in
+
+608
+00:27:05,520 --> 00:27:08,080
+time.
+
+609
+00:27:06,799 --> 00:27:10,480
+>> Thanks.
+
+610
+00:27:08,080 --> 00:27:12,080
+>> That's a good question too. You're
+
+611
+00:27:10,480 --> 00:27:13,760
+you're quizzing me. I I've been with the
+
+612
+00:27:12,080 --> 00:27:15,919
+company only for two months, so I'm
+
+613
+00:27:13,760 --> 00:27:19,559
+still learning. But [laughter]
+
+614
+00:27:15,919 --> 00:27:19,559
+that's a good question.
+
+615
+00:27:23,600 --> 00:27:28,960
+>> Um, how do you balance the amount of
+
+616
+00:27:26,320 --> 00:27:32,720
+data? I mean, you can't take all of the
+
+617
+00:27:28,960 --> 00:27:34,880
+data, right? You can't keep it. Um, do
+
+618
+00:27:32,720 --> 00:27:38,159
+you have to balance between how much
+
+619
+00:27:34,880 --> 00:27:39,600
+data you actually collect and analyze?
+
+620
+00:27:38,159 --> 00:27:42,240
+Um
+
+621
+00:27:39,600 --> 00:27:44,080
+>> so data gets analyzed as it streams
+
+622
+00:27:42,240 --> 00:27:46,240
+past.
+
+623
+00:27:44,080 --> 00:27:48,640
+So that's what happens. So we don't keep
+
+624
+00:27:46,240 --> 00:27:51,120
+the data you know and
+
+625
+00:27:48,640 --> 00:27:54,080
+>> no it's it as it streams by it gets
+
+626
+00:27:51,120 --> 00:27:57,760
+analyzed and then you know streams out.
+
+627
+00:27:54,080 --> 00:28:01,520
+And is that like u what regularly
+
+628
+00:27:57,760 --> 00:28:05,840
+happens in this uh in in cyber
+
+629
+00:28:01,520 --> 00:28:09,840
+>> um in cyber security you know uh what
+
+630
+00:28:05,840 --> 00:28:15,440
+cyber security vendors do is they use um
+
+631
+00:28:09,840 --> 00:28:17,279
+um they use oh my goodness
+
+632
+00:28:15,440 --> 00:28:19,760
+they use batch processing. They'll take
+
+633
+00:28:17,279 --> 00:28:21,600
+a certain amount of data they'll analyze
+
+634
+00:28:19,760 --> 00:28:23,679
+it and then it goes out and then they'll
+
+635
+00:28:21,600 --> 00:28:26,080
+do that. The problem with that is the
+
+636
+00:28:23,679 --> 00:28:28,399
+fact that it's always, you know, there
+
+637
+00:28:26,080 --> 00:28:31,200
+there's that latency, right? It's stuck
+
+638
+00:28:28,399 --> 00:28:35,440
+in there and then it's only uh only a
+
+639
+00:28:31,200 --> 00:28:36,960
+certain time window um is is there for u
+
+640
+00:28:35,440 --> 00:28:39,679
+I'm going to move out of the way. Um
+
+641
+00:28:36,960 --> 00:28:41,840
+there you know data is analyzed within
+
+642
+00:28:39,679 --> 00:28:43,760
+these time window uh window limitations.
+
+643
+00:28:41,840 --> 00:28:46,399
+Right? With streaming data, what happens
+
+644
+00:28:43,760 --> 00:28:50,159
+is that as it passes through, it gets uh
+
+645
+00:28:46,399 --> 00:28:53,840
+it gets analyzed and and with that dot
+
+646
+00:28:50,159 --> 00:28:56,480
+you can stream um not just real time
+
+647
+00:28:53,840 --> 00:29:00,000
+data but also historical data along with
+
+648
+00:28:56,480 --> 00:29:03,039
+it. You can you can actually do it in in
+
+649
+00:29:00,000 --> 00:29:05,520
+um as as stream as it you know you can
+
+650
+00:29:03,039 --> 00:29:09,440
+include historical data to stream past
+
+651
+00:29:05,520 --> 00:29:11,760
+and then use that to analyze as well.
+
+652
+00:29:09,440 --> 00:29:13,919
+No.
+
+653
+00:29:11,760 --> 00:29:15,520
+>> Yeah.
+
+654
+00:29:13,919 --> 00:29:19,240
+>> Thank you so much. This was very
+
+655
+00:29:15,520 --> 00:29:19,240
+enlightening and
+

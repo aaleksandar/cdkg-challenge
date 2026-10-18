@@ -1,0 +1,3160 @@
+1
+00:00:09,780 --> 00:00:14,309
+all right I quickly want to set
+
+2
+00:00:11,879 --> 00:00:15,810
+expectations for the talk that this is a
+
+3
+00:00:14,309 --> 00:00:17,910
+talk not about
+
+4
+00:00:15,810 --> 00:00:19,950
+take web Melbourne link data but it's
+
+5
+00:00:17,910 --> 00:00:22,260
+very much about api's and software
+
+6
+00:00:19,950 --> 00:00:24,270
+architecture and databases not
+
+7
+00:00:22,260 --> 00:00:26,850
+specifically graph databases but
+
+8
+00:00:24,270 --> 00:00:28,050
+databases in general so if you're here
+
+9
+00:00:26,850 --> 00:00:31,170
+and you expect to talk about the
+
+10
+00:00:28,050 --> 00:00:32,610
+Semantic Web or one of the other topics
+
+11
+00:00:31,170 --> 00:00:37,080
+that I mentioned you still have a couple
+
+12
+00:00:32,610 --> 00:00:38,340
+of minutes to switch the room all right
+
+13
+00:00:37,080 --> 00:00:40,020
+so my name is Nicholas Berg
+
+14
+00:00:38,340 --> 00:00:43,079
+I'm based in Berlin and I work at a
+
+15
+00:00:40,020 --> 00:00:46,500
+company called Prisma and we build tools
+
+16
+00:00:43,079 --> 00:00:48,720
+for databases and graph QL so this talk
+
+17
+00:00:46,500 --> 00:00:52,170
+introduces you to graph QL what it is
+
+18
+00:00:48,720 --> 00:00:54,480
+and how Prisma can be used to improve
+
+19
+00:00:52,170 --> 00:00:57,960
+your API development and build graphical
+
+20
+00:00:54,480 --> 00:01:00,030
+servers and this is the agenda that I
+
+21
+00:00:57,960 --> 00:01:02,010
+want to cover today so first we'll start
+
+22
+00:01:00,030 --> 00:01:03,720
+with a graphical introduction so that
+
+23
+00:01:02,010 --> 00:01:05,549
+we're all on the same page about the
+
+24
+00:01:03,720 --> 00:01:06,869
+core concepts that you need to be
+
+25
+00:01:05,549 --> 00:01:08,700
+familiar with when you're using graph
+
+26
+00:01:06,869 --> 00:01:10,229
+key oh then I'll speak about the
+
+27
+00:01:08,700 --> 00:01:12,659
+graphical architectures that are
+
+28
+00:01:10,229 --> 00:01:14,220
+commonly used in the industry
+
+29
+00:01:12,659 --> 00:01:16,470
+we will talk specifically about the
+
+30
+00:01:14,220 --> 00:01:18,210
+graphical schema as well and then of
+
+31
+00:01:16,470 --> 00:01:21,869
+course also about graph queue and Prisma
+
+32
+00:01:18,210 --> 00:01:23,429
+and how they relate to each other so
+
+33
+00:01:21,869 --> 00:01:25,619
+let's get started with the graphical
+
+34
+00:01:23,429 --> 00:01:30,799
+introduction and the big question what
+
+35
+00:01:25,619 --> 00:01:34,229
+is graph QL so it's a new API Studdard
+
+36
+00:01:30,799 --> 00:01:38,490
+that was actually developed an
+
+37
+00:01:34,229 --> 00:01:40,649
+open-source by Facebook in 2015 and it's
+
+38
+00:01:38,490 --> 00:01:43,380
+basically a specification for a type
+
+39
+00:01:40,649 --> 00:01:45,450
+system and a query language so graphical
+
+40
+00:01:43,380 --> 00:01:47,759
+is not bound to a particular programming
+
+41
+00:01:45,450 --> 00:01:49,319
+language but graphical itself really is
+
+42
+00:01:47,759 --> 00:01:51,479
+just a long text document that you can
+
+43
+00:01:49,319 --> 00:01:55,799
+look up on the web that describes the
+
+44
+00:01:51,479 --> 00:01:57,270
+behavior of a graphical server and it
+
+45
+00:01:55,799 --> 00:01:59,819
+has three core primitives that are
+
+46
+00:01:57,270 --> 00:02:02,549
+called query mutation and subscription
+
+47
+00:01:59,819 --> 00:02:05,600
+and we'll talk a bit more we'll talk a
+
+48
+00:02:02,549 --> 00:02:09,539
+bit more about those throughout the talk
+
+49
+00:02:05,600 --> 00:02:11,490
+the the most obvious thing to do when
+
+50
+00:02:09,539 --> 00:02:13,050
+starting to talk about graph QL is to
+
+51
+00:02:11,490 --> 00:02:14,880
+compare it to something that most
+
+52
+00:02:13,050 --> 00:02:16,620
+developers are already familiar with and
+
+53
+00:02:14,880 --> 00:02:19,020
+in that particular situation this is
+
+54
+00:02:16,620 --> 00:02:21,660
+probably a REST API so graph KL is
+
+55
+00:02:19,020 --> 00:02:25,170
+commonly used as an alternative or as a
+
+56
+00:02:21,660 --> 00:02:27,750
+compliment to REST API so let's compare
+
+57
+00:02:25,170 --> 00:02:28,950
+these two technologies rest on the one
+
+58
+00:02:27,750 --> 00:02:32,040
+hand usually
+
+59
+00:02:28,950 --> 00:02:34,410
+poses multiple end points that allow the
+
+60
+00:02:32,040 --> 00:02:38,250
+client applications to talk to a server
+
+61
+00:02:34,410 --> 00:02:40,379
+and perform certain requests so you
+
+62
+00:02:38,250 --> 00:02:42,239
+could for example have a rest endpoint
+
+63
+00:02:40,379 --> 00:02:46,560
+that allows the client to fetch a number
+
+64
+00:02:42,239 --> 00:02:49,290
+of users or to perform a or to perform a
+
+65
+00:02:46,560 --> 00:02:51,750
+user registration with graph QL you only
+
+66
+00:02:49,290 --> 00:02:55,260
+have a single endpoint and the client
+
+67
+00:02:51,750 --> 00:02:57,060
+actually can decide what kind of what
+
+68
+00:02:55,260 --> 00:02:59,099
+kind of data it wants to have and return
+
+69
+00:02:57,060 --> 00:03:01,530
+from the server which brings me to my
+
+70
+00:02:59,099 --> 00:03:04,019
+next point that with REST API s the
+
+71
+00:03:01,530 --> 00:03:07,170
+server decides about the JSON structure
+
+72
+00:03:04,019 --> 00:03:10,380
+that is being returned to the client so
+
+73
+00:03:07,170 --> 00:03:13,290
+each rest endpoint has a fixed structure
+
+74
+00:03:10,380 --> 00:03:15,180
+of data that is going to be returned to
+
+75
+00:03:13,290 --> 00:03:17,819
+a client when that endpoint is being
+
+76
+00:03:15,180 --> 00:03:19,530
+requested with graph QL the client
+
+77
+00:03:17,819 --> 00:03:21,750
+decides how the data is being returned
+
+78
+00:03:19,530 --> 00:03:22,829
+so the client can decide on the
+
+79
+00:03:21,750 --> 00:03:25,260
+understructure
+
+80
+00:03:22,829 --> 00:03:29,670
+of the JSON response that is going to be
+
+81
+00:03:25,260 --> 00:03:33,180
+received and rest per se is schema-less
+
+82
+00:03:29,670 --> 00:03:34,799
+and graph QL is schema for so let's talk
+
+83
+00:03:33,180 --> 00:03:39,329
+about all these three different points
+
+84
+00:03:34,799 --> 00:03:41,400
+in a bit more detail first we have the
+
+85
+00:03:39,329 --> 00:03:43,590
+multiple endpoints so this is what a
+
+86
+00:03:41,400 --> 00:03:47,310
+typical REST API looks like we have a
+
+87
+00:03:43,590 --> 00:03:49,319
+number of HTTP endpoints that our client
+
+88
+00:03:47,310 --> 00:03:52,680
+and mobile applications can access to
+
+89
+00:03:49,319 --> 00:03:54,510
+talk to the server and retrieve data
+
+90
+00:03:52,680 --> 00:03:56,940
+from the database or perform some other
+
+91
+00:03:54,510 --> 00:03:58,410
+kind of functionality with graph QL on
+
+92
+00:03:56,940 --> 00:04:00,690
+the other hand we only have the single
+
+93
+00:03:58,410 --> 00:04:06,060
+endpoint where all the requests are
+
+94
+00:04:00,690 --> 00:04:08,910
+going to the server decides how the data
+
+95
+00:04:06,060 --> 00:04:10,950
+is being returned with the REST API with
+
+96
+00:04:08,910 --> 00:04:12,269
+graph QL the client decides so what does
+
+97
+00:04:10,950 --> 00:04:15,060
+this actually mean what does it look
+
+98
+00:04:12,269 --> 00:04:18,120
+like so on this slide now you're going
+
+99
+00:04:15,060 --> 00:04:20,250
+to see your first graph query on the
+
+100
+00:04:18,120 --> 00:04:21,720
+Left we have a front-end application or
+
+101
+00:04:20,250 --> 00:04:23,370
+a mobile application and on the right we
+
+102
+00:04:21,720 --> 00:04:26,639
+have a graphical server that exposes
+
+103
+00:04:23,370 --> 00:04:28,169
+this graphical endpoint so typically the
+
+104
+00:04:26,639 --> 00:04:31,200
+communication where the graphical server
+
+105
+00:04:28,169 --> 00:04:34,050
+is done via HTTP POST requests and the
+
+106
+00:04:31,200 --> 00:04:37,470
+graphic URI is put into the body of that
+
+107
+00:04:34,050 --> 00:04:39,780
+post request and here is what a
+
+108
+00:04:37,470 --> 00:04:41,789
+graphical query looks like so with this
+
+109
+00:04:39,780 --> 00:04:42,550
+we basically describe the data that
+
+110
+00:04:41,789 --> 00:04:44,289
+we're interested
+
+111
+00:04:42,550 --> 00:04:47,229
+so here we are asking for a specific
+
+112
+00:04:44,289 --> 00:04:49,389
+user by passing an ID and we just
+
+113
+00:04:47,229 --> 00:04:52,419
+request the name of that particular user
+
+114
+00:04:49,389 --> 00:04:55,060
+the server responds with this
+
+115
+00:04:52,419 --> 00:04:57,970
+information with this data which follows
+
+116
+00:04:55,060 --> 00:04:59,830
+exactly the same structure of the query
+
+117
+00:04:57,970 --> 00:05:02,169
+so within the query we have the user
+
+118
+00:04:59,830 --> 00:05:03,639
+field and the name field and the JSON
+
+119
+00:05:02,169 --> 00:05:06,729
+object that is returned by the server
+
+120
+00:05:03,639 --> 00:05:09,009
+also has this user and named keys so
+
+121
+00:05:06,729 --> 00:05:11,409
+basically the graphical query can be
+
+122
+00:05:09,009 --> 00:05:13,150
+viewed as an empty JSON object where we
+
+123
+00:05:11,409 --> 00:05:14,949
+only have the keys of the data that we
+
+124
+00:05:13,150 --> 00:05:19,000
+are interested in and then the server is
+
+125
+00:05:14,949 --> 00:05:20,590
+going to fill in those values for us but
+
+126
+00:05:19,000 --> 00:05:23,800
+graph QL is a lot more powerful than
+
+127
+00:05:20,590 --> 00:05:25,599
+just then than just submitting these
+
+128
+00:05:23,800 --> 00:05:27,819
+kinds of simple queries for example we
+
+129
+00:05:25,599 --> 00:05:30,430
+could extend this query now to also ask
+
+130
+00:05:27,819 --> 00:05:32,259
+for the titles of the posts of a
+
+131
+00:05:30,430 --> 00:05:34,900
+particular user if this was a blogging
+
+132
+00:05:32,259 --> 00:05:37,240
+application for example so then again
+
+133
+00:05:34,900 --> 00:05:39,310
+the graphical server responds with data
+
+134
+00:05:37,240 --> 00:05:41,259
+that again follows the shape of the
+
+135
+00:05:39,310 --> 00:05:43,000
+queries so we have the username post and
+
+136
+00:05:41,259 --> 00:05:44,680
+title fields in here so again this is
+
+137
+00:05:43,000 --> 00:05:46,509
+the empty JSON object that we are
+
+138
+00:05:44,680 --> 00:05:50,280
+sending over to the server and the
+
+139
+00:05:46,509 --> 00:05:50,280
+server's filling in those values for us
+
+140
+00:05:50,759 --> 00:05:57,280
+let's talk about the schema part so rest
+
+141
+00:05:54,280 --> 00:06:00,370
+by default is schema less but we can use
+
+142
+00:05:57,280 --> 00:06:03,909
+tools like swagger or open API to add a
+
+143
+00:06:00,370 --> 00:06:05,919
+schema to our API swagger and open API
+
+144
+00:06:03,909 --> 00:06:07,240
+are using llamó to describe the
+
+145
+00:06:05,919 --> 00:06:10,990
+different functionalities of the rest
+
+146
+00:06:07,240 --> 00:06:14,229
+endpoints so here is an example from the
+
+147
+00:06:10,990 --> 00:06:16,840
+swagger repository which has 109 lines
+
+148
+00:06:14,229 --> 00:06:18,819
+so you can look it up it's the
+
+149
+00:06:16,840 --> 00:06:21,250
+description for a very simple pet store
+
+150
+00:06:18,819 --> 00:06:24,159
+API that basically has three operations
+
+151
+00:06:21,250 --> 00:06:26,289
+of retrieving lists of pets creating new
+
+152
+00:06:24,159 --> 00:06:28,990
+pets and I think retrieving a single pet
+
+153
+00:06:26,289 --> 00:06:30,940
+so let's now look at what or how we can
+
+154
+00:06:28,990 --> 00:06:33,849
+describe this with graph PL and then
+
+155
+00:06:30,940 --> 00:06:35,199
+like in a much more concise way so here
+
+156
+00:06:33,849 --> 00:06:37,539
+we have the graphical schema language
+
+157
+00:06:35,199 --> 00:06:40,330
+that I'm going to talk about a bit more
+
+158
+00:06:37,539 --> 00:06:42,729
+in the next part of the talk but here we
+
+159
+00:06:40,330 --> 00:06:45,400
+also have one operation on the query
+
+160
+00:06:42,729 --> 00:06:47,349
+type here that route which allows us to
+
+161
+00:06:45,400 --> 00:06:50,710
+retrieve a single pet then a list of
+
+162
+00:06:47,349 --> 00:06:53,949
+pets and we also have this mutation that
+
+163
+00:06:50,710 --> 00:06:56,139
+we can use to create a new pet so this
+
+164
+00:06:53,949 --> 00:06:58,120
+basically what's
+
+165
+00:06:56,139 --> 00:07:00,160
+the the same kind of functionally that's
+
+166
+00:06:58,120 --> 00:07:02,080
+described on the left is expressed here
+
+167
+00:07:00,160 --> 00:07:05,980
+on the right and a lot more concise and
+
+168
+00:07:02,080 --> 00:07:08,080
+readable way so why would you want to
+
+169
+00:07:05,980 --> 00:07:10,090
+use graph DL so first and foremost
+
+170
+00:07:08,080 --> 00:07:12,610
+because it has this strongly type schema
+
+171
+00:07:10,090 --> 00:07:14,290
+for your API which leads to a lot of
+
+172
+00:07:12,610 --> 00:07:16,480
+other advantages that I'm going to speak
+
+173
+00:07:14,290 --> 00:07:18,280
+about then it allows front-end
+
+174
+00:07:16,480 --> 00:07:20,200
+developers to query exactly the data
+
+175
+00:07:18,280 --> 00:07:22,510
+that they need instead of having to talk
+
+176
+00:07:20,200 --> 00:07:24,010
+to multiple rest endpoints to query the
+
+177
+00:07:22,510 --> 00:07:26,410
+data for one particular view
+
+178
+00:07:24,010 --> 00:07:28,990
+so there's they're actually saving a lot
+
+179
+00:07:26,410 --> 00:07:32,200
+of their is having a lot of network
+
+180
+00:07:28,990 --> 00:07:34,030
+traffic if they're using graph gel and
+
+181
+00:07:32,200 --> 00:07:36,669
+graph QL despite the fact that it's so
+
+182
+00:07:34,030 --> 00:07:39,490
+young has already really rich ecosystem
+
+183
+00:07:36,669 --> 00:07:41,080
+of tools and a really great community so
+
+184
+00:07:39,490 --> 00:07:43,930
+all of these companies right here
+
+185
+00:07:41,080 --> 00:07:45,010
+github Twitter or Yelp Shopify Pinterest
+
+186
+00:07:43,930 --> 00:07:48,160
+the New York Times
+
+187
+00:07:45,010 --> 00:07:52,090
+of course Facebook are using graph QL in
+
+188
+00:07:48,160 --> 00:07:54,400
+production today if you want to learn
+
+189
+00:07:52,090 --> 00:07:56,200
+more about graph QL you can check out
+
+190
+00:07:54,400 --> 00:07:58,330
+this blog post which has the top 5
+
+191
+00:07:56,200 --> 00:08:00,789
+reasons to use graph QL and then also a
+
+192
+00:07:58,330 --> 00:08:02,800
+more developer focus introduction to
+
+193
+00:08:00,789 --> 00:08:07,690
+graph QL on the full stack tutorial
+
+194
+00:08:02,800 --> 00:08:09,010
+website how to graph your calm let's
+
+195
+00:08:07,690 --> 00:08:10,870
+talk about a couple of common
+
+196
+00:08:09,010 --> 00:08:12,940
+architectures that you'll use when you
+
+197
+00:08:10,870 --> 00:08:15,520
+use graph GL so there are basically
+
+198
+00:08:12,940 --> 00:08:18,580
+three ways how you can use graph QL in
+
+199
+00:08:15,520 --> 00:08:22,210
+your back-end stack one as a graph your
+
+200
+00:08:18,580 --> 00:08:24,550
+monolith then if you have if you have a
+
+201
+00:08:22,210 --> 00:08:28,960
+microservices architecture you can use a
+
+202
+00:08:24,550 --> 00:08:31,300
+graphical gateway and then you you can
+
+203
+00:08:28,960 --> 00:08:36,219
+also use a graphical proxy for your
+
+204
+00:08:31,300 --> 00:08:37,900
+existing legacy systems and again let's
+
+205
+00:08:36,219 --> 00:08:39,940
+talk about these architectures in a bit
+
+206
+00:08:37,900 --> 00:08:41,860
+more detail so first the graphical
+
+207
+00:08:39,940 --> 00:08:43,120
+monitors this is basically what the
+
+208
+00:08:41,860 --> 00:08:45,190
+architecture looks like we have the
+
+209
+00:08:43,120 --> 00:08:47,770
+database we have the graphical web api
+
+210
+00:08:45,190 --> 00:08:49,420
+server and we have the front-end so this
+
+211
+00:08:47,770 --> 00:08:51,270
+is very much the classical three-tier
+
+212
+00:08:49,420 --> 00:08:54,040
+architecture the three-tier architecture
+
+213
+00:08:51,270 --> 00:08:58,120
+that most developers will be familiar
+
+214
+00:08:54,040 --> 00:08:59,950
+with in this set up the graphical server
+
+215
+00:08:58,120 --> 00:09:04,990
+implements the business logic and the
+
+216
+00:08:59,950 --> 00:09:07,360
+database access and this has the
+
+217
+00:09:04,990 --> 00:09:09,640
+advantage over all that it has a fairly
+
+218
+00:09:07,360 --> 00:09:11,589
+simple set up and it's also easy to the
+
+219
+00:09:09,640 --> 00:09:13,149
+so you don't have a lot of operational
+
+220
+00:09:11,589 --> 00:09:15,430
+overhead as you would have with
+
+221
+00:09:13,149 --> 00:09:17,800
+microservices so here we have the
+
+222
+00:09:15,430 --> 00:09:19,660
+microservices and Greta and Graf your
+
+223
+00:09:17,800 --> 00:09:21,490
+gateway approach where we have a bunch
+
+224
+00:09:19,660 --> 00:09:23,529
+of micro services and they all go
+
+225
+00:09:21,490 --> 00:09:25,870
+together into one single graphical
+
+226
+00:09:23,529 --> 00:09:30,279
+gateway API server that our front-end
+
+227
+00:09:25,870 --> 00:09:31,990
+applications that can then talk to so
+
+228
+00:09:30,279 --> 00:09:33,700
+this still allows you to keep this
+
+229
+00:09:31,990 --> 00:09:36,720
+modular and scalable service
+
+230
+00:09:33,700 --> 00:09:39,160
+architecture on your back-end if those
+
+231
+00:09:36,720 --> 00:09:41,260
+if those micro services themselves
+
+232
+00:09:39,160 --> 00:09:43,510
+actually speak graph QL so instead of
+
+233
+00:09:41,260 --> 00:09:45,970
+exposing REST API is they actually also
+
+234
+00:09:43,510 --> 00:09:47,260
+expose graphical api's you can use a
+
+235
+00:09:45,970 --> 00:09:49,660
+technique that is called schema
+
+236
+00:09:47,260 --> 00:09:51,130
+stitching which is really powerful and a
+
+237
+00:09:49,660 --> 00:09:52,870
+really hot topic in the graphical
+
+238
+00:09:51,130 --> 00:09:55,810
+community at the moment which basically
+
+239
+00:09:52,870 --> 00:09:58,540
+allows you in a very very easy way to
+
+240
+00:09:55,810 --> 00:10:01,690
+merge multiple graph QL IP eyes into a
+
+241
+00:09:58,540 --> 00:10:05,230
+single one and again you have the
+
+242
+00:10:01,690 --> 00:10:08,079
+central API gateway that your client
+
+243
+00:10:05,230 --> 00:10:10,500
+applications are going to talk to the
+
+244
+00:10:08,079 --> 00:10:13,029
+third use case is using graphical a
+
+245
+00:10:10,500 --> 00:10:15,100
+graphical proxy for your legacy systems
+
+246
+00:10:13,029 --> 00:10:21,399
+so this is a really neat way to get
+
+247
+00:10:15,100 --> 00:10:22,690
+started with graph QL and so really it's
+
+248
+00:10:21,399 --> 00:10:24,760
+a really easy way to get started with
+
+249
+00:10:22,690 --> 00:10:26,980
+graph kill if you don't want to rewrite
+
+250
+00:10:24,760 --> 00:10:29,290
+your entire back-end but you still want
+
+251
+00:10:26,980 --> 00:10:31,480
+your your front-end developers to take
+
+252
+00:10:29,290 --> 00:10:33,220
+advantage of all the benefits that it
+
+253
+00:10:31,480 --> 00:10:35,110
+offers because front-end developers
+
+254
+00:10:33,220 --> 00:10:39,010
+especially become a lot more productive
+
+255
+00:10:35,110 --> 00:10:41,980
+with graph year and it's a very very
+
+256
+00:10:39,010 --> 00:10:43,810
+common use case actually that couple of
+
+257
+00:10:41,980 --> 00:10:45,699
+companies want to start using graph QL
+
+258
+00:10:43,810 --> 00:10:48,760
+because it makes their front-end
+
+259
+00:10:45,699 --> 00:10:50,130
+developers and their product and and the
+
+260
+00:10:48,760 --> 00:10:52,209
+product engineers a lot more product
+
+261
+00:10:50,130 --> 00:10:54,339
+productive but they don't want to go
+
+262
+00:10:52,209 --> 00:10:56,620
+down that route and rewrite their entire
+
+263
+00:10:54,339 --> 00:10:58,600
+back-end so it's a very common use case
+
+264
+00:10:56,620 --> 00:11:00,430
+to actually do this and kind of put this
+
+265
+00:10:58,600 --> 00:11:03,430
+graphical wrapper on top of your legacy
+
+266
+00:11:00,430 --> 00:11:08,410
+system and then your front-end devs can
+
+267
+00:11:03,430 --> 00:11:12,220
+still speak graph QL and and and take
+
+268
+00:11:08,410 --> 00:11:14,230
+advantage of the benefits now let's talk
+
+269
+00:11:12,220 --> 00:11:16,089
+about the graph Cal schema and what that
+
+270
+00:11:14,230 --> 00:11:18,339
+looks like so in general the graphical
+
+271
+00:11:16,089 --> 00:11:20,079
+schema is strongly typed and written in
+
+272
+00:11:18,339 --> 00:11:21,819
+what's called the graph key of schema
+
+273
+00:11:20,079 --> 00:11:23,260
+definition language so we saw that
+
+274
+00:11:21,819 --> 00:11:24,760
+already on
+
+275
+00:11:23,260 --> 00:11:27,430
+on one of the previous slides and I now
+
+276
+00:11:24,760 --> 00:11:30,220
+want to talk a bit more about this in
+
+277
+00:11:27,430 --> 00:11:33,100
+more detail the graphical schema defines
+
+278
+00:11:30,220 --> 00:11:35,500
+the API capabilities so it can really be
+
+279
+00:11:33,100 --> 00:11:38,170
+seen as the contract for client-server
+
+280
+00:11:35,500 --> 00:11:39,940
+communication if I as a client developer
+
+281
+00:11:38,170 --> 00:11:41,620
+as a front-end or mobile developer have
+
+282
+00:11:39,940 --> 00:11:42,100
+access to the graphical scheme of the
+
+283
+00:11:41,620 --> 00:11:44,740
+backend
+
+284
+00:11:42,100 --> 00:11:47,080
+I always know exactly what kind of
+
+285
+00:11:44,740 --> 00:11:49,900
+operations I can perform against the
+
+286
+00:11:47,080 --> 00:11:51,550
+backend what what kind of parameters I
+
+287
+00:11:49,900 --> 00:11:53,410
+need to provide and what the data
+
+288
+00:11:51,550 --> 00:11:56,560
+structures that are going to be returned
+
+289
+00:11:53,410 --> 00:11:58,390
+actually look actually look like and the
+
+290
+00:11:56,560 --> 00:12:01,510
+graphical schema has a lot of advantages
+
+291
+00:11:58,390 --> 00:12:03,790
+so it is used for example for for
+
+292
+00:12:01,510 --> 00:12:07,230
+documentation so each graph QL API
+
+293
+00:12:03,790 --> 00:12:09,580
+always come comes with an auto-generated
+
+294
+00:12:07,230 --> 00:12:11,530
+documentation so you will never be in
+
+295
+00:12:09,580 --> 00:12:13,180
+the situation again that you're sitting
+
+296
+00:12:11,530 --> 00:12:14,950
+in front of an API and you just don't
+
+297
+00:12:13,180 --> 00:12:16,990
+know how to get the data that you want
+
+298
+00:12:14,950 --> 00:12:18,640
+because there is an auto-generated
+
+299
+00:12:16,990 --> 00:12:20,290
+documentation that comes with every
+
+300
+00:12:18,640 --> 00:12:22,810
+graphical API so you can just look it up
+
+301
+00:12:20,290 --> 00:12:25,060
+in the documentation it can also be used
+
+302
+00:12:22,810 --> 00:12:27,900
+as a foundation for code generation and
+
+303
+00:12:25,060 --> 00:12:30,250
+for automated testing things like that
+
+304
+00:12:27,900 --> 00:12:31,870
+this schema definition language we
+
+305
+00:12:30,250 --> 00:12:34,690
+already saw an example here is another
+
+306
+00:12:31,870 --> 00:12:37,240
+one here we use the schema definite the
+
+307
+00:12:34,690 --> 00:12:39,550
+schema definition language to define two
+
+308
+00:12:37,240 --> 00:12:41,320
+types a user type and the post type and
+
+309
+00:12:39,550 --> 00:12:44,980
+also note that there is a relation
+
+310
+00:12:41,320 --> 00:12:47,800
+between the types so posts the the post
+
+311
+00:12:44,980 --> 00:12:49,330
+field on the user type refers to the
+
+312
+00:12:47,800 --> 00:12:51,520
+post type and the other way around the
+
+313
+00:12:49,330 --> 00:12:56,740
+author field on the post type refers to
+
+314
+00:12:51,520 --> 00:12:58,870
+the user tab this these types these
+
+315
+00:12:56,740 --> 00:13:01,150
+types just by themselves don't express
+
+316
+00:12:58,870 --> 00:13:02,950
+any functionality yet though they don't
+
+317
+00:13:01,150 --> 00:13:05,680
+tell me what kind of operations I can
+
+318
+00:13:02,950 --> 00:13:08,110
+perform against an API that would look
+
+319
+00:13:05,680 --> 00:13:11,830
+like this so there are two special types
+
+320
+00:13:08,110 --> 00:13:13,210
+actually three special types in the in a
+
+321
+00:13:11,830 --> 00:13:16,000
+graphical schema and these are called
+
+322
+00:13:13,210 --> 00:13:17,140
+query mutation and subscription so I'm
+
+323
+00:13:16,000 --> 00:13:19,150
+not going to talk about subscriptions
+
+324
+00:13:17,140 --> 00:13:22,210
+today these are for real-time operations
+
+325
+00:13:19,150 --> 00:13:24,370
+Korean mutations are the root types that
+
+326
+00:13:22,210 --> 00:13:26,260
+we're using in a graphical schema to
+
+327
+00:13:24,370 --> 00:13:27,880
+actually Express the functionality that
+
+328
+00:13:26,260 --> 00:13:30,370
+we want to expose from the server side
+
+329
+00:13:27,880 --> 00:13:32,500
+so curious are just for reading data and
+
+330
+00:13:30,370 --> 00:13:35,470
+mutations are used for causing somehow
+
+331
+00:13:32,500 --> 00:13:37,130
+side effects on the back end so if we
+
+332
+00:13:35,470 --> 00:13:42,890
+now wanted to expose functional
+
+333
+00:13:37,130 --> 00:13:44,870
+for these four four for this model we
+
+334
+00:13:42,890 --> 00:13:47,270
+can add fields to the query and mutation
+
+335
+00:13:44,870 --> 00:13:49,010
+types so here here I would add for
+
+336
+00:13:47,270 --> 00:13:51,260
+example a user field with an ID
+
+337
+00:13:49,010 --> 00:13:54,950
+parameter that allows me to return to
+
+338
+00:13:51,260 --> 00:13:58,760
+retrieve a single user by its ID I could
+
+339
+00:13:54,950 --> 00:14:02,180
+also add a feed query which allows me to
+
+340
+00:13:58,760 --> 00:14:04,760
+retrieve a list of posts for mutations I
+
+341
+00:14:02,180 --> 00:14:08,960
+could add a create user mutation that
+
+342
+00:14:04,760 --> 00:14:11,810
+takes a name or a write post mutation
+
+343
+00:14:08,960 --> 00:14:13,820
+that takes a title and an author ID so
+
+344
+00:14:11,810 --> 00:14:15,590
+here we have a simple API for a very
+
+345
+00:14:13,820 --> 00:14:18,650
+simple blogging application with four
+
+346
+00:14:15,590 --> 00:14:20,450
+different operations so let's take a
+
+347
+00:14:18,650 --> 00:14:22,700
+look at what this actually means in
+
+348
+00:14:20,450 --> 00:14:24,860
+terms of what kind of operations we
+
+349
+00:14:22,700 --> 00:14:27,140
+cannot send so if we look at the user
+
+350
+00:14:24,860 --> 00:14:29,570
+operation for example we can infer from
+
+351
+00:14:27,140 --> 00:14:32,300
+the schema that we can send a query like
+
+352
+00:14:29,570 --> 00:14:34,280
+this to the API so we use the user root
+
+353
+00:14:32,300 --> 00:14:37,130
+field and and then inside the user root
+
+354
+00:14:34,280 --> 00:14:39,080
+field we can add the fields of the user
+
+355
+00:14:37,130 --> 00:14:41,270
+types so ID and name in this particular
+
+356
+00:14:39,080 --> 00:14:44,510
+case because the user field returns a
+
+357
+00:14:41,270 --> 00:14:50,390
+user so we can add the we can add the
+
+358
+00:14:44,510 --> 00:14:53,180
+fields for the user in the query and the
+
+359
+00:14:50,390 --> 00:14:56,720
+query appear would basically correspond
+
+360
+00:14:53,180 --> 00:14:58,490
+to a to an HTTP request that you would
+
+361
+00:14:56,720 --> 00:15:00,170
+have an arrest API that would look like
+
+362
+00:14:58,490 --> 00:15:02,480
+this so you will perform a get request
+
+363
+00:15:00,170 --> 00:15:05,150
+against a user and then user at the
+
+364
+00:15:02,480 --> 00:15:07,730
+endpoint so these two you could deem
+
+365
+00:15:05,150 --> 00:15:10,490
+equivalent except that here we are a bit
+
+366
+00:15:07,730 --> 00:15:12,830
+more flexible because we can actually we
+
+367
+00:15:10,490 --> 00:15:15,050
+can decide ourselves what the data that
+
+368
+00:15:12,830 --> 00:15:18,860
+is going to be returned looks like here
+
+369
+00:15:15,050 --> 00:15:21,290
+we are bound to the to the structure
+
+370
+00:15:18,860 --> 00:15:24,110
+that was previously implemented on the
+
+371
+00:15:21,290 --> 00:15:27,170
+server side all right let's now talk
+
+372
+00:15:24,110 --> 00:15:29,360
+about Prisma what is Prisma you can
+
+373
+00:15:27,170 --> 00:15:31,550
+think about Prisma as kind of a strongly
+
+374
+00:15:29,360 --> 00:15:33,500
+typed access layer for your database so
+
+375
+00:15:31,550 --> 00:15:35,750
+in really simple terms it kind of solves
+
+376
+00:15:33,500 --> 00:15:40,340
+the same problem as an object relational
+
+377
+00:15:35,750 --> 00:15:44,360
+mapper and ORM that's a really or the
+
+378
+00:15:40,340 --> 00:15:46,190
+that's probably the most naive way of
+
+379
+00:15:44,360 --> 00:15:48,740
+thinking about Prisma but it's more than
+
+380
+00:15:46,190 --> 00:15:50,220
+just an or and because it also allows
+
+381
+00:15:48,740 --> 00:15:54,510
+you for example
+
+382
+00:15:50,220 --> 00:15:56,310
+to migrate your database schema and it
+
+383
+00:15:54,510 --> 00:15:58,170
+comes with a type safe and
+
+384
+00:15:56,310 --> 00:16:00,000
+auto-generated client for your database
+
+385
+00:15:58,170 --> 00:16:02,820
+that you can use so that is basically
+
+386
+00:16:00,000 --> 00:16:04,590
+the or M part and it allows you to do
+
+387
+00:16:02,820 --> 00:16:10,560
+declarative data modeling and database
+
+388
+00:16:04,590 --> 00:16:12,930
+migrations Prisma or we reuse graph QL
+
+389
+00:16:10,560 --> 00:16:14,820
+on two levels or in fact graph QL is
+
+390
+00:16:12,930 --> 00:16:17,400
+kind of relevant for Prisma on two
+
+391
+00:16:14,820 --> 00:16:19,950
+levels first we use graph QL as a
+
+392
+00:16:17,400 --> 00:16:21,750
+universal database abstraction so with
+
+393
+00:16:19,950 --> 00:16:23,940
+Prisma we want to support all kinds of
+
+394
+00:16:21,750 --> 00:16:28,170
+databases today we support my sequel
+
+395
+00:16:23,940 --> 00:16:30,720
+Postgres and MongoDB and AWS Arora so
+
+396
+00:16:28,170 --> 00:16:33,540
+these four databases are supported today
+
+397
+00:16:30,720 --> 00:16:35,220
+but we also want to expand to use graph
+
+398
+00:16:33,540 --> 00:16:36,900
+QL as an abstraction for all other
+
+399
+00:16:35,220 --> 00:16:39,480
+databases and make it possible
+
+400
+00:16:36,900 --> 00:16:41,250
+eventually for application developers to
+
+401
+00:16:39,480 --> 00:16:44,250
+talk to their database through the
+
+402
+00:16:41,250 --> 00:16:46,530
+Prisma layer but then also graph GL as a
+
+403
+00:16:44,250 --> 00:16:48,390
+use case so we use graphical on the one
+
+404
+00:16:46,530 --> 00:16:50,010
+hand internally as a tool as an
+
+405
+00:16:48,390 --> 00:16:51,900
+implementation detail but then also
+
+406
+00:16:50,010 --> 00:16:53,880
+graphical as a use case Prisma is a
+
+407
+00:16:51,900 --> 00:16:55,620
+really great way for your application
+
+408
+00:16:53,880 --> 00:16:57,630
+developers to actually build a graphical
+
+409
+00:16:55,620 --> 00:17:00,210
+API and again I'll speak about both of
+
+410
+00:16:57,630 --> 00:17:02,040
+those in a bit more detail so graph QL
+
+411
+00:17:00,210 --> 00:17:05,130
+as a universal database abstraction what
+
+412
+00:17:02,040 --> 00:17:07,530
+does this actually mean basically Prisma
+
+413
+00:17:05,130 --> 00:17:09,330
+turns your databases into a graphical
+
+414
+00:17:07,530 --> 00:17:10,680
+API you have a database you have a my
+
+415
+00:17:09,330 --> 00:17:12,990
+sequel database you have a path quest
+
+416
+00:17:10,680 --> 00:17:14,790
+database you can take Prisma add it as a
+
+417
+00:17:12,990 --> 00:17:17,100
+layer on top and you will have a
+
+418
+00:17:14,790 --> 00:17:20,130
+graphical API that can then be consumed
+
+419
+00:17:17,100 --> 00:17:22,620
+by your application developers Prisma
+
+420
+00:17:20,130 --> 00:17:24,630
+allows you to model and and and migrate
+
+421
+00:17:22,620 --> 00:17:26,580
+your database using the graphical schema
+
+422
+00:17:24,630 --> 00:17:30,270
+definition language so you can define a
+
+423
+00:17:26,580 --> 00:17:33,480
+data model for Prisma in the graph QL
+
+424
+00:17:30,270 --> 00:17:36,090
+SDL and Prisma is then going to map this
+
+425
+00:17:33,480 --> 00:17:37,770
+data model to the actual database schema
+
+426
+00:17:36,090 --> 00:17:40,680
+and it will generate the corresponding
+
+427
+00:17:37,770 --> 00:17:43,710
+sequel statements to also migrate your
+
+428
+00:17:40,680 --> 00:17:45,750
+database schema and it allows you to
+
+429
+00:17:43,710 --> 00:17:48,930
+read and write data using graph GL cruz
+
+430
+00:17:45,750 --> 00:17:50,370
+and mutations so how Prisma works is
+
+431
+00:17:48,930 --> 00:17:52,320
+basically that you start by connecting
+
+432
+00:17:50,370 --> 00:17:54,210
+your database then you define the data
+
+433
+00:17:52,320 --> 00:17:56,370
+model in in the schema definition
+
+434
+00:17:54,210 --> 00:17:59,400
+language if you come with an existing
+
+435
+00:17:56,370 --> 00:18:00,900
+database then the second step looks a
+
+436
+00:17:59,400 --> 00:18:02,610
+bit different because then Prisma is
+
+437
+00:18:00,900 --> 00:18:04,169
+actually going to introspect your
+
+438
+00:18:02,610 --> 00:18:06,330
+current database schema
+
+439
+00:18:04,169 --> 00:18:11,059
+and infer the data model from that then
+
+440
+00:18:06,330 --> 00:18:13,470
+you go and migrate your database you you
+
+441
+00:18:11,059 --> 00:18:15,690
+you can go and generate the Prisma
+
+442
+00:18:13,470 --> 00:18:17,190
+client next which allows you to talk to
+
+443
+00:18:15,690 --> 00:18:18,840
+your database in any programming
+
+444
+00:18:17,190 --> 00:18:21,649
+language so at the moment we support
+
+445
+00:18:18,840 --> 00:18:24,419
+JavaScript typescript flow and and go
+
+446
+00:18:21,649 --> 00:18:26,330
+and then you can start building the
+
+447
+00:18:24,419 --> 00:18:29,190
+applications that you want to build
+
+448
+00:18:26,330 --> 00:18:32,249
+let's not talk about graph QL as a use
+
+449
+00:18:29,190 --> 00:18:35,909
+case and how Prisma helps you building
+
+450
+00:18:32,249 --> 00:18:38,940
+your own graphical servers so with
+
+451
+00:18:35,909 --> 00:18:41,340
+Prisma you get performant query query
+
+452
+00:18:38,940 --> 00:18:42,779
+resolution for example the end has one
+
+453
+00:18:41,340 --> 00:18:45,659
+problem the n plus one problem basically
+
+454
+00:18:42,779 --> 00:18:47,850
+means that on the front end you're
+
+455
+00:18:45,659 --> 00:18:50,100
+trying to retrieve a list of things of n
+
+456
+00:18:47,850 --> 00:18:52,619
+things but then for each of these you
+
+457
+00:18:50,100 --> 00:18:54,119
+need to make an additional request to
+
+458
+00:18:52,619 --> 00:18:56,340
+get more information from the database
+
+459
+00:18:54,119 --> 00:18:58,289
+so that's referred to as the n plus one
+
+460
+00:18:56,340 --> 00:19:00,690
+problem with Prisma this is soft because
+
+461
+00:18:58,289 --> 00:19:03,029
+we have the built-in data loader pattern
+
+462
+00:19:00,690 --> 00:19:05,100
+which is also a pattern that was also
+
+463
+00:19:03,029 --> 00:19:07,350
+developed by Facebook which uses caching
+
+464
+00:19:05,100 --> 00:19:11,279
+and batching to alleviate that problem
+
+465
+00:19:07,350 --> 00:19:14,549
+and actually helps to fetch the required
+
+466
+00:19:11,279 --> 00:19:16,049
+data in in a single request you get
+
+467
+00:19:14,549 --> 00:19:19,230
+out-of-the-box crud and real-time
+
+468
+00:19:16,049 --> 00:19:22,470
+operations and we really value type
+
+469
+00:19:19,230 --> 00:19:25,739
+safety so one core goal one core goal
+
+470
+00:19:22,470 --> 00:19:27,210
+for us at Prisma is to basically bring
+
+471
+00:19:25,739 --> 00:19:29,070
+type safety into the world of
+
+472
+00:19:27,210 --> 00:19:32,580
+application development which is still
+
+473
+00:19:29,070 --> 00:19:34,980
+largely or at least in the in the
+
+474
+00:19:32,580 --> 00:19:38,909
+JavaScript space mostly dominated by
+
+475
+00:19:34,980 --> 00:19:41,399
+just simple no developers but at the
+
+476
+00:19:38,909 --> 00:19:44,460
+moment we have languages like typescript
+
+477
+00:19:41,399 --> 00:19:45,989
+and flow which are which are coming up
+
+478
+00:19:44,460 --> 00:19:47,669
+so we are trying to enforce the type
+
+479
+00:19:45,989 --> 00:19:49,649
+safety aspect and we just recently
+
+480
+00:19:47,669 --> 00:19:53,039
+released a tool that allows you to
+
+481
+00:19:49,649 --> 00:19:55,830
+really build graph you to really build
+
+482
+00:19:53,039 --> 00:19:59,730
+types of graphical server servers which
+
+483
+00:19:55,830 --> 00:20:01,739
+is called graphic Elgin and there are
+
+484
+00:19:59,730 --> 00:20:03,960
+basically the two use cases how you can
+
+485
+00:20:01,739 --> 00:20:05,100
+integrate Prisma in your application
+
+486
+00:20:03,960 --> 00:20:06,899
+architecture when you're building a
+
+487
+00:20:05,100 --> 00:20:09,480
+graphical server so again we have the
+
+488
+00:20:06,899 --> 00:20:11,820
+graphical monolith in which case Prisma
+
+489
+00:20:09,480 --> 00:20:14,009
+basically sits inside your graphical API
+
+490
+00:20:11,820 --> 00:20:17,580
+server and connects your server to the
+
+491
+00:20:14,009 --> 00:20:19,499
+database or if you're using the
+
+492
+00:20:17,580 --> 00:20:22,200
+microservices approach then you would
+
+493
+00:20:19,499 --> 00:20:24,179
+have multiple Prisma instances that each
+
+494
+00:20:22,200 --> 00:20:25,970
+sit on top of your database that are
+
+495
+00:20:24,179 --> 00:20:31,169
+coming together in the gateway server
+
+496
+00:20:25,970 --> 00:20:32,580
+and and can be accessed from there if
+
+497
+00:20:31,169 --> 00:20:34,409
+you want to learn more about Prisma you
+
+498
+00:20:32,580 --> 00:20:36,299
+can go to our documentation check out
+
+499
+00:20:34,409 --> 00:20:38,399
+the QuickStart or read the what is
+
+500
+00:20:36,299 --> 00:20:43,619
+Prisma section also in our documentation
+
+501
+00:20:38,399 --> 00:20:45,539
+I don't think we have time for a demo so
+
+502
+00:20:43,619 --> 00:20:47,580
+I'm going to skip this part if you're
+
+503
+00:20:45,539 --> 00:20:48,869
+interested in that I'm happy to show you
+
+504
+00:20:47,580 --> 00:20:51,809
+a bit what it looks like in practice
+
+505
+00:20:48,869 --> 00:20:54,179
+afterwards I quickly want to make a note
+
+506
+00:20:51,809 --> 00:20:57,359
+because that's very recent about graph
+
+507
+00:20:54,179 --> 00:21:00,090
+QL so here is a tweet from Lee Byron who
+
+508
+00:20:57,359 --> 00:21:02,369
+is the creator of graph QL who used to
+
+509
+00:21:00,090 --> 00:21:04,529
+work at Facebook and just yesterday he
+
+510
+00:21:02,369 --> 00:21:08,249
+tweeted that graph QL will become it's
+
+511
+00:21:04,529 --> 00:21:10,139
+or will get its own foundation in in
+
+512
+00:21:08,249 --> 00:21:11,970
+partnership with the Linux Foundation so
+
+513
+00:21:10,139 --> 00:21:14,429
+this is a really big deal for the
+
+514
+00:21:11,970 --> 00:21:16,440
+graphical community and I know that this
+
+515
+00:21:14,429 --> 00:21:18,299
+is a conference about data and Link data
+
+516
+00:21:16,440 --> 00:21:21,239
+and the Semantic Web so I quickly want
+
+517
+00:21:18,299 --> 00:21:23,850
+to highlight a talk that Rubin forbore
+
+518
+00:21:21,239 --> 00:21:26,509
+gave at the graph geodetic conference
+
+519
+00:21:23,850 --> 00:21:29,369
+which happened this year in April
+
+520
+00:21:26,509 --> 00:21:31,019
+occurring on the decentralized web so
+
+521
+00:21:29,369 --> 00:21:33,179
+this is a talk that brings together the
+
+522
+00:21:31,019 --> 00:21:36,869
+world's of graph QL and the semantic
+
+523
+00:21:33,179 --> 00:21:38,549
+work and the Semantic Web so if you're
+
+524
+00:21:36,869 --> 00:21:39,840
+interested in that then I think you
+
+525
+00:21:38,549 --> 00:21:44,220
+should also go and check out that talk
+
+526
+00:21:39,840 --> 00:21:45,659
+and as we're talking about conferences I
+
+527
+00:21:44,220 --> 00:21:47,519
+also want to tell you that we are
+
+528
+00:21:45,659 --> 00:21:50,220
+hosting the graph key icons in Berlin
+
+529
+00:21:47,519 --> 00:21:52,049
+next year so we already hosted two
+
+530
+00:21:50,220 --> 00:21:53,909
+graphical conferences in Berlin this
+
+531
+00:21:52,049 --> 00:21:56,909
+year and last year last year we had
+
+532
+00:21:53,909 --> 00:21:59,489
+about 300 attendees this year we had 500
+
+533
+00:21:56,909 --> 00:22:04,309
+next year we aim for 800 attendees and
+
+534
+00:21:59,489 --> 00:22:07,080
+we had speakers from github docker from
+
+535
+00:22:04,309 --> 00:22:08,730
+from Facebook from Twitter so all these
+
+536
+00:22:07,080 --> 00:22:10,470
+high profile companies that are using
+
+537
+00:22:08,730 --> 00:22:12,149
+graphical and production have been
+
+538
+00:22:10,470 --> 00:22:13,919
+speaking at this conference and they
+
+539
+00:22:12,149 --> 00:22:14,519
+will be speaking at this conference next
+
+540
+00:22:13,919 --> 00:22:17,390
+year as well
+
+541
+00:22:14,519 --> 00:22:25,140
+and that is all I have thank you so much
+
+542
+00:22:17,390 --> 00:22:25,140
+[Applause]
+
+543
+00:22:32,390 --> 00:22:42,150
+hi do you have any plans for json-ld and
+
+544
+00:22:36,210 --> 00:22:45,840
+abstracting sparkling points no so as I
+
+545
+00:22:42,150 --> 00:22:48,330
+said the link data and Semantic Web the
+
+546
+00:22:45,840 --> 00:22:52,350
+link data and Semantic Web aspects at
+
+547
+00:22:48,330 --> 00:22:53,850
+the moment are not is not like to two
+
+548
+00:22:52,350 --> 00:22:56,070
+relevant in the graph key our space I
+
+549
+00:22:53,850 --> 00:22:57,570
+think that Semantic Web and link data
+
+550
+00:22:56,070 --> 00:23:00,300
+are still topics that are more relevant
+
+551
+00:22:57,570 --> 00:23:03,840
+in in the scientific world at least
+
+552
+00:23:00,300 --> 00:23:05,760
+that's my perception and basically and
+
+553
+00:23:03,840 --> 00:23:08,430
+and then on the other hand graph here
+
+554
+00:23:05,760 --> 00:23:10,950
+really was born in the industry and it's
+
+555
+00:23:08,430 --> 00:23:13,140
+just extremely focused on the industry
+
+556
+00:23:10,950 --> 00:23:14,400
+and I'm not sure how these two
+
+557
+00:23:13,140 --> 00:23:16,290
+technologies are going to come together
+
+558
+00:23:14,400 --> 00:23:17,700
+eventually but I think that this is a
+
+559
+00:23:16,290 --> 00:23:19,860
+good opportunity for you to check out
+
+560
+00:23:17,700 --> 00:23:23,160
+the talk that I mentioned because that's
+
+561
+00:23:19,860 --> 00:23:24,720
+like one effort also from the link data
+
+562
+00:23:23,160 --> 00:23:34,320
+community to bring those two
+
+563
+00:23:24,720 --> 00:23:36,210
+technologies together yes actually so we
+
+564
+00:23:34,320 --> 00:23:38,190
+plan to support a couple of different
+
+565
+00:23:36,210 --> 00:23:39,360
+core like as I said we already support a
+
+566
+00:23:38,190 --> 00:23:41,280
+couple of DBS
+
+567
+00:23:39,360 --> 00:23:45,630
+so we support my sequel Postgres and
+
+568
+00:23:41,280 --> 00:23:47,100
+and we also want to support we
+
+569
+00:23:45,630 --> 00:23:55,620
+also want to support elasticsearch at
+
+570
+00:23:47,100 --> 00:23:59,190
+one point so that's on the roadmap and I
+
+571
+00:23:55,620 --> 00:24:01,830
+have you I like the three patterns that
+
+572
+00:23:59,190 --> 00:24:04,200
+you presented I've got a fourth one in
+
+573
+00:24:01,830 --> 00:24:06,240
+my mind and I wonder if you are kind of
+
+574
+00:24:04,200 --> 00:24:10,530
+planning to support that which is where
+
+575
+00:24:06,240 --> 00:24:12,450
+you might want to sort of cache existing
+
+576
+00:24:10,530 --> 00:24:17,340
+what you might call legacy data sources
+
+577
+00:24:12,450 --> 00:24:18,510
+in a graph QL front-end database
+
+578
+00:24:17,340 --> 00:24:21,900
+interesting
+
+579
+00:24:18,510 --> 00:24:24,390
+so you've had you seen that at all you
+
+580
+00:24:21,900 --> 00:24:25,980
+mean the the data has been cached on the
+
+581
+00:24:24,390 --> 00:24:28,560
+front-end from the legacy system or
+
+582
+00:24:25,980 --> 00:24:29,670
+where exactly yeah see you kind of had
+
+583
+00:24:28,560 --> 00:24:31,110
+the other pattern where you you'd
+
+584
+00:24:29,670 --> 00:24:32,790
+actually go out to the individual
+
+585
+00:24:31,110 --> 00:24:36,180
+systems and do sort of like a federated
+
+586
+00:24:32,790 --> 00:24:37,470
+query there's that one year which I can
+
+587
+00:24:36,180 --> 00:24:39,690
+imagine some people might have
+
+588
+00:24:37,470 --> 00:24:41,370
+difficulty with in terms of performance
+
+589
+00:24:39,690 --> 00:24:42,060
+where you've got an M plus one problem
+
+590
+00:24:41,370 --> 00:24:46,800
+mm-hmm
+
+591
+00:24:42,060 --> 00:24:48,060
+across stores and I've seen a pattern
+
+592
+00:24:46,800 --> 00:24:50,280
+certainly within my own organization
+
+593
+00:24:48,060 --> 00:24:54,650
+where those data sources are actually
+
+594
+00:24:50,280 --> 00:24:57,090
+pushed actively into a graph QL database
+
+595
+00:24:54,650 --> 00:24:59,730
+into a graphical database what is that
+
+596
+00:24:57,090 --> 00:25:03,060
+database into a into a database that is
+
+597
+00:24:59,730 --> 00:25:05,970
+exposed via graph queue and so that
+
+598
+00:25:03,060 --> 00:25:09,300
+because you have a huge set of data that
+
+599
+00:25:05,970 --> 00:25:10,680
+is then kind of squashed into the graph
+
+600
+00:25:09,300 --> 00:25:12,780
+QL schema that you actually want to
+
+601
+00:25:10,680 --> 00:25:14,850
+expose the client so that would also be
+
+602
+00:25:12,780 --> 00:25:16,470
+just for reading data then or would you
+
+603
+00:25:14,850 --> 00:25:18,120
+also perform like mutations again so
+
+604
+00:25:16,470 --> 00:25:20,820
+that that's that's kind of what I was
+
+605
+00:25:18,120 --> 00:25:23,520
+asking which is have you seen that and
+
+606
+00:25:20,820 --> 00:25:25,080
+have you seen any mutation ability so I
+
+607
+00:25:23,520 --> 00:25:26,880
+personally have not seen that pattern
+
+608
+00:25:25,080 --> 00:25:29,340
+yet so I can't really talk about this I
+
+609
+00:25:26,880 --> 00:25:32,070
+imagine that adding mutations so that
+
+610
+00:25:29,340 --> 00:25:33,360
+would be kind of complicated but maybe
+
+611
+00:25:32,070 --> 00:25:35,040
+there are ways to make it work but I
+
+612
+00:25:33,360 --> 00:25:36,540
+think that this would be like probably
+
+613
+00:25:35,040 --> 00:25:44,540
+one of the more experimental use cases
+
+614
+00:25:36,540 --> 00:25:47,160
+of graph QL okay thank you oh hello so
+
+615
+00:25:44,540 --> 00:25:51,120
+what do you think how long would it take
+
+616
+00:25:47,160 --> 00:25:54,270
+to litter if I have any database that
+
+617
+00:25:51,120 --> 00:25:57,020
+you haven't mentioned yet to integrate
+
+618
+00:25:54,270 --> 00:25:59,700
+in a graphical even in a monolithic
+
+619
+00:25:57,020 --> 00:26:02,840
+architecture so how long would it take
+
+620
+00:25:59,700 --> 00:26:06,330
+to put graphical on top of the database
+
+621
+00:26:02,840 --> 00:26:07,590
+so with Prisma that's effectively just a
+
+622
+00:26:06,330 --> 00:26:10,860
+matter of a few commands in your
+
+623
+00:26:07,590 --> 00:26:12,420
+terminal because like that's exactly how
+
+624
+00:26:10,860 --> 00:26:15,120
+Piz my works that you connect your
+
+625
+00:26:12,420 --> 00:26:18,300
+database and then with like two commands
+
+626
+00:26:15,120 --> 00:26:19,650
+you have the graphical layer for the
+
+627
+00:26:18,300 --> 00:26:22,470
+database up and running and I'm happy to
+
+628
+00:26:19,650 --> 00:26:24,390
+show you this after the talk like we
+
+629
+00:26:22,470 --> 00:26:27,380
+didn't have time for the demo but I'm
+
+630
+00:26:24,390 --> 00:26:27,380
+happy to show that efforts
+
+631
+00:26:32,659 --> 00:26:37,769
+thanks great talk um so quick question
+
+632
+00:26:35,760 --> 00:26:40,110
+if I had a bunch of external semantics
+
+633
+00:26:37,769 --> 00:26:42,120
+like an ontology or something which had
+
+634
+00:26:40,110 --> 00:26:45,149
+a very let's say a very simple hierarchy
+
+635
+00:26:42,120 --> 00:26:47,610
+of subclass subtype can I somehow use
+
+636
+00:26:45,149 --> 00:26:49,080
+that in graph QL to say these things are
+
+637
+00:26:47,610 --> 00:26:50,850
+a subtype of this thing therefore if I
+
+638
+00:26:49,080 --> 00:26:54,260
+want that type get all of the subtypes
+
+639
+00:26:50,850 --> 00:26:57,690
+when you do the the typing back-end so
+
+640
+00:26:54,260 --> 00:27:00,269
+so I don't know how ontologies would be
+
+641
+00:26:57,690 --> 00:27:02,399
+mapped to graph care in the graphical
+
+642
+00:27:00,269 --> 00:27:04,110
+schema definite in the graphical schema
+
+643
+00:27:02,399 --> 00:27:06,299
+definition language you do have
+
+644
+00:27:04,110 --> 00:27:09,029
+constructs like interfaces and unions
+
+645
+00:27:06,299 --> 00:27:10,590
+which allow you to express these kinds
+
+646
+00:27:09,029 --> 00:27:12,480
+of relationships but are not nearly as
+
+647
+00:27:10,590 --> 00:27:14,100
+powerful as you would have in an
+
+648
+00:27:12,480 --> 00:27:16,889
+ontology and it would be an interesting
+
+649
+00:27:14,100 --> 00:27:20,279
+question like how an ontology would be
+
+650
+00:27:16,889 --> 00:27:22,320
+mapped to two graphs yeah I think on the
+
+651
+00:27:20,279 --> 00:27:25,080
+other hand it's kind of difficult to
+
+652
+00:27:22,320 --> 00:27:26,340
+bring these together because the way how
+
+653
+00:27:25,080 --> 00:27:29,149
+graph Gale works and how it's
+
+654
+00:27:26,340 --> 00:27:32,970
+implemented on the backend side actually
+
+655
+00:27:29,149 --> 00:27:35,789
+so actually has a couple of patterns
+
+656
+00:27:32,970 --> 00:27:37,980
+that you will see in every graphical
+
+657
+00:27:35,789 --> 00:27:41,909
+server which is based on so called
+
+658
+00:27:37,980 --> 00:27:43,769
+resolver functions and here the the big
+
+659
+00:27:41,909 --> 00:27:47,340
+challenge would be like how can you
+
+660
+00:27:43,769 --> 00:27:49,230
+bring these resolvers together with the
+
+661
+00:27:47,340 --> 00:27:52,380
+ontology basically but I think that this
+
+662
+00:27:49,230 --> 00:27:56,330
+is a very like or like it's an
+
+663
+00:27:52,380 --> 00:27:58,200
+unexplored area and it's probably the
+
+664
+00:27:56,330 --> 00:28:00,570
+responsibility of the community to
+
+665
+00:27:58,200 --> 00:28:03,200
+actually think about ways how you can
+
+666
+00:28:00,570 --> 00:28:03,200
+bring these worlds together
+
+667
+00:28:06,710 --> 00:28:12,659
+Thanks we talked a good question about
+
+668
+00:28:09,630 --> 00:28:14,880
+one of the advantages of having strict
+
+669
+00:28:12,659 --> 00:28:18,059
+requests and Street response formats
+
+670
+00:28:14,880 --> 00:28:20,610
+from a REST API is caching so we gladly
+
+671
+00:28:18,059 --> 00:28:22,950
+lots of caching and because you have a
+
+672
+00:28:20,610 --> 00:28:25,710
+fixed response and just serve your
+
+673
+00:28:22,950 --> 00:28:27,510
+cached data out in this new world when
+
+674
+00:28:25,710 --> 00:28:30,179
+you democratize that and let the client
+
+675
+00:28:27,510 --> 00:28:35,010
+decide the format of the response what
+
+676
+00:28:30,179 --> 00:28:36,600
+happens to caching so the question of
+
+677
+00:28:35,010 --> 00:28:38,669
+caching is a very commonly asked
+
+678
+00:28:36,600 --> 00:28:40,710
+question in the graphical world because
+
+679
+00:28:38,669 --> 00:28:43,590
+basically graphical offers a new
+
+680
+00:28:40,710 --> 00:28:46,559
+approach to API design and rest is very
+
+681
+00:28:43,590 --> 00:28:51,510
+much coupled to HTTP and this allows to
+
+682
+00:28:46,559 --> 00:28:55,500
+cache requests on like on a fairly
+
+683
+00:28:51,510 --> 00:28:57,120
+simple on a fairly simple basis with
+
+684
+00:28:55,500 --> 00:28:58,950
+graphically all the caching layer is
+
+685
+00:28:57,120 --> 00:29:00,600
+just different so you have a lot of
+
+686
+00:28:58,950 --> 00:29:03,299
+caching that happens on the front end
+
+687
+00:29:00,600 --> 00:29:06,179
+actually so you will use what's called a
+
+688
+00:29:03,299 --> 00:29:08,520
+graphical client and there is one from
+
+689
+00:29:06,179 --> 00:29:10,020
+Facebook also that's called relay then
+
+690
+00:29:08,520 --> 00:29:12,570
+there is another really big one that is
+
+691
+00:29:10,020 --> 00:29:14,159
+called Apollo client and these already
+
+692
+00:29:12,570 --> 00:29:15,840
+handle the caching for you
+
+693
+00:29:14,159 --> 00:29:19,080
+caching can also of course be
+
+694
+00:29:15,840 --> 00:29:20,909
+implemented on the backend side but so
+
+695
+00:29:19,080 --> 00:29:23,130
+I'm not sure if there are like a lot of
+
+696
+00:29:20,909 --> 00:29:24,929
+patterns and libraries that have emerged
+
+697
+00:29:23,130 --> 00:29:26,549
+there yet it's just like a new
+
+698
+00:29:24,929 --> 00:29:29,580
+technology and these kinds of questions
+
+699
+00:29:26,549 --> 00:29:31,320
+arise and the the best practices how to
+
+700
+00:29:29,580 --> 00:29:35,010
+deal with those also still have to
+
+701
+00:29:31,320 --> 00:29:36,510
+emerge so I can't provide a really
+
+702
+00:29:35,010 --> 00:29:38,220
+concise answer for how that's done on
+
+703
+00:29:36,510 --> 00:29:39,390
+the back end yet on the front end you
+
+704
+00:29:38,220 --> 00:29:41,250
+have this caching layer with your
+
+705
+00:29:39,390 --> 00:29:43,169
+graphical client on the backend it's
+
+706
+00:29:41,250 --> 00:29:45,299
+basically up to you to figure out a good
+
+707
+00:29:43,169 --> 00:29:46,649
+strategy but that's exactly what the
+
+708
+00:29:45,299 --> 00:29:54,779
+graphical community and the graphical
+
+709
+00:29:46,649 --> 00:29:56,279
+ecosystem is doing at the moment can you
+
+710
+00:29:54,779 --> 00:29:58,679
+give me some insight as to where you
+
+711
+00:29:56,279 --> 00:30:01,919
+think the limitations of graph QL is
+
+712
+00:29:58,679 --> 00:30:03,809
+compared to for example I buy a full
+
+713
+00:30:01,919 --> 00:30:07,490
+semantic database cross DB or something
+
+714
+00:30:03,809 --> 00:30:10,909
+like that I think that like one of the
+
+715
+00:30:07,490 --> 00:30:14,309
+biggest difference between graph QL and
+
+716
+00:30:10,909 --> 00:30:16,470
+semantic technologies is basically that
+
+717
+00:30:14,309 --> 00:30:20,279
+graph QL is really just an API
+
+718
+00:30:16,470 --> 00:30:23,029
+technology that you you entirely have to
+
+719
+00:30:20,279 --> 00:30:27,240
+define yourself so you're not taking
+
+720
+00:30:23,029 --> 00:30:29,820
+advantage of any like meta information
+
+721
+00:30:27,240 --> 00:30:31,710
+as you do with with semantic
+
+722
+00:30:29,820 --> 00:30:34,409
+technologies with graph GL you really
+
+723
+00:30:31,710 --> 00:30:36,480
+just define a schema for an API and you
+
+724
+00:30:34,409 --> 00:30:39,210
+are responsible for implementing that so
+
+725
+00:30:36,480 --> 00:30:41,250
+you cannot just connect you cannot just
+
+726
+00:30:39,210 --> 00:30:43,409
+connect the graphical API to some
+
+727
+00:30:41,250 --> 00:30:44,669
+existing source of data and expect that
+
+728
+00:30:43,409 --> 00:30:47,490
+it's going to work you actually have to
+
+729
+00:30:44,669 --> 00:30:49,409
+implement the connection of graph QL and
+
+730
+00:30:47,490 --> 00:30:51,330
+the data source so I think that this is
+
+731
+00:30:49,409 --> 00:30:55,409
+just the the biggest difference that
+
+732
+00:30:51,330 --> 00:30:56,029
+graph GL has no kind of metadata and I
+
+733
+00:30:55,409 --> 00:30:57,710
+think
+
+734
+00:30:56,029 --> 00:30:59,539
+that the semantic technologies are very
+
+735
+00:30:57,710 --> 00:31:08,330
+much based on the idea of adding
+
+736
+00:30:59,539 --> 00:31:10,009
+metadata to existing data structures so
+
+737
+00:31:08,330 --> 00:31:12,320
+for me it's not actually a question is
+
+738
+00:31:10,009 --> 00:31:15,080
+an answer because graph QL is indeed
+
+739
+00:31:12,320 --> 00:31:17,809
+used in the Semantic Web already awesome
+
+740
+00:31:15,080 --> 00:31:20,989
+it's used in combination with shockin
+
+741
+00:31:17,809 --> 00:31:23,570
+there is an open source now mapping
+
+742
+00:31:20,989 --> 00:31:26,840
+between a graph QL and the Charcot
+
+743
+00:31:23,570 --> 00:31:28,279
+schema and because a lot of people now
+
+744
+00:31:26,840 --> 00:31:31,339
+they don't actually describe their
+
+745
+00:31:28,279 --> 00:31:33,169
+ontology without but with sharpnel so
+
+746
+00:31:31,339 --> 00:31:35,450
+actually there is a one-to-one
+
+747
+00:31:33,169 --> 00:31:38,589
+translation from graph QL to chuckles so
+
+748
+00:31:35,450 --> 00:31:42,609
+you can query your triple store and
+
+749
+00:31:38,589 --> 00:31:45,979
+there are projects that maybe I should
+
+750
+00:31:42,609 --> 00:31:49,309
+okay so for example in Quadrant I know
+
+751
+00:31:45,979 --> 00:31:52,549
+they actually have this automatically so
+
+752
+00:31:49,309 --> 00:31:54,259
+you I do it at graph QL query but
+
+753
+00:31:52,549 --> 00:31:57,019
+actually you are querying the triple
+
+754
+00:31:54,259 --> 00:31:59,450
+store from behind and in our company
+
+755
+00:31:57,019 --> 00:32:01,279
+definitive we are actually going to use
+
+756
+00:31:59,450 --> 00:32:03,649
+graph QL in our triple story
+
+757
+00:32:01,279 --> 00:32:05,359
+awesome yeah so here we have one example
+
+758
+00:32:03,649 --> 00:32:07,849
+of how these tools are being brought
+
+759
+00:32:05,359 --> 00:32:11,059
+together so and I think that yeah so it
+
+760
+00:32:07,849 --> 00:32:13,129
+makes a lot of sense and yeah it's a way
+
+761
+00:32:11,059 --> 00:32:17,690
+to still create ripple store with graph
+
+762
+00:32:13,129 --> 00:32:20,690
+QL so that's a neat way of using it more
+
+763
+00:32:17,690 --> 00:32:24,019
+question creeping into lunchtime now so
+
+764
+00:32:20,690 --> 00:32:26,479
+they better begin sorry you mentioned
+
+765
+00:32:24,019 --> 00:32:30,049
+it's many organizations using graft will
+
+766
+00:32:26,479 --> 00:32:32,839
+are they using exclusively graph QL or
+
+767
+00:32:30,049 --> 00:32:35,659
+of a supporting graft well in addition
+
+768
+00:32:32,839 --> 00:32:38,059
+to the traditional REST API so it really
+
+769
+00:32:35,659 --> 00:32:39,739
+depends on the company it's definitely
+
+770
+00:32:38,059 --> 00:32:42,799
+not the case that all of these companies
+
+771
+00:32:39,739 --> 00:32:45,139
+are just using graph QL so I can give a
+
+772
+00:32:42,799 --> 00:32:48,019
+couple of examples for example so for
+
+773
+00:32:45,139 --> 00:32:51,649
+example Shopify is using graph DL for
+
+774
+00:32:48,019 --> 00:32:53,479
+their external for the external API that
+
+775
+00:32:51,649 --> 00:32:56,509
+people use when they want to interact
+
+776
+00:32:53,479 --> 00:32:59,059
+with their Shopify set up the same for
+
+777
+00:32:56,509 --> 00:33:02,059
+example for github which also in the
+
+778
+00:32:59,059 --> 00:33:04,519
+past only had only had rest ideas that
+
+779
+00:33:02,059 --> 00:33:06,830
+they exposed to developers the fourth
+
+780
+00:33:04,519 --> 00:33:09,760
+version of the github API it's excluded
+
+781
+00:33:06,830 --> 00:33:13,640
+it's exclusively a graphical API
+
+782
+00:33:09,760 --> 00:33:15,470
+and actually most of these companies
+
+783
+00:33:13,640 --> 00:33:17,060
+have been speaking at some graft er
+
+784
+00:33:15,470 --> 00:33:18,680
+conferences in the past so if you're
+
+785
+00:33:17,060 --> 00:33:20,420
+interested in learning more about how
+
+786
+00:33:18,680 --> 00:33:21,920
+they specifically use graph QL I just
+
+787
+00:33:20,420 --> 00:33:27,140
+recommend check out the talks on YouTube
+
+788
+00:33:21,920 --> 00:33:28,620
+I think that's it okay
+
+789
+00:33:27,140 --> 00:33:34,430
+big thanks to Nicolas
+
+790
+00:33:28,620 --> 00:33:34,430
+[Applause]
+

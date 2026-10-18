@@ -431,7 +431,7 @@ def test_the_drawer_reports_what_a_run_spent(client, monkeypatch):
                  {"input_tokens": 1060, "output_tokens": 47})},
             {"stage": "tag_extraction", "status": "completed", "position": 4,
              "message": "", "detail": json.dumps(
-                 {"model": "gemini-3.7-flash", "input_tokens": 15501,
+                 {"model": "gemini-3.8-flash", "input_tokens": 15501,
                   "output_tokens": 400})},
         ],
     }
@@ -718,7 +718,7 @@ def test_an_unknown_file_type_is_refused(client, upload_env):
 def test_taking_a_snapshot_renders_it_in_the_list(client, monkeypatch):
     taken = []
     fake = {"name": "20260915T120000Z", "created_at": "2026-09-15T12:00:00Z",
-            "graph_version": {"built_at": "2026-09-02T10:39:50Z", "model": "gemini-3.7-flash"},
+            "graph_version": {"built_at": "2026-09-02T10:39:50Z", "model": "gemini-3.8-flash"},
             "counts": {"Talk": 45, "Tag": 738, "tagged_talks": 43}, "rows": {},
             "size_bytes": 40960}
     monkeypatch.setattr("ingest.pipeline.snapshot.create_snapshot", lambda: taken.append(1))
@@ -727,7 +727,7 @@ def test_taking_a_snapshot_renders_it_in_the_list(client, monkeypatch):
     listing = client.post("/snapshots").text
 
     assert taken == [1]
-    assert "20260915T120000Z" in listing and "gemini-3.7-flash" in listing
+    assert "20260915T120000Z" in listing and "gemini-3.8-flash" in listing
     assert 'href="/snapshots/20260915T120000Z.zip"' in listing
     assert "40 KB" in listing
 
