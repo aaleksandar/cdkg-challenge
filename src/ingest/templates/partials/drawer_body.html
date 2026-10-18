@@ -168,6 +168,22 @@
 </div>
 {% endif %}
 
+{# A curator's decision, printed with its reason, where the blockers are: it is
+   the answer to "why is this not being processed?". #}
+{% if s.status == 'skipped' %}
+<div class="blocker session">
+  <div class="blocker-head">Skipped — not to be processed</div>
+  <p><strong>{{ s.skip.reason }}</strong><span class="muted"> · marked {{ s.skip.at | day }}</span></p>
+  <p class="muted">Never ingested automatically or by the backlog drain.
+     {% if s.in_csv %}Its row and Talk node stay in the graph; only the transcript is not fetched.{% endif %}</p>
+  <div class="blocker-actions">
+    <button type="button" class="btn btn-quiet"
+            hx-post="{{ base }}/unskip/{{ s.key | urlencode }}"
+            hx-target="#drawer-body" hx-swap="innerHTML" hx-disabled-elt="this">Undo skip</button>
+  </div>
+</div>
+{% endif %}
+
 {# The same one-click action the row offers, where an admin actually decides:
    having read the panel, they should not have to close it and hunt for the row.
    It returns the drawer's own body, so the pipeline appears here immediately,
@@ -177,7 +193,7 @@
   <span class="pulse"></span>
   <span class="muted">Running. The pipeline below updates as it goes.</span>
 </div>
-{% elif s.video_id and s.status in ['not_ingested', 'failed', 'multi_speaker'] %}
+{% elif s.video_id and s.status in ['not_ingested', 'failed', 'multi_speaker', 'skipped'] %}
 <div class="drawer-actions">
   <button type="button" class="btn btn-primary"
           hx-post="{{ base }}/ingest/{{ s.key | urlencode }}?view=drawer"
@@ -186,11 +202,12 @@
                     plain text and then its tags with an LLM, which costs money, and
                     finally rebuilds the graph. Anything already on disk is reused rather
                     than fetched or extracted again.">
-    {{ 'Ingest again' if s.status == 'failed' else 'Ingest anyway' if s.status == 'multi_speaker' else 'Ingest this talk' }}
+    {{ 'Ingest again' if s.status == 'failed' else 'Ingest anyway' if s.status in ['multi_speaker', 'skipped'] else 'Ingest this talk' }}
   </button>
   <span class="muted">
     {% if s.status == 'failed' %}Resumes from whatever is already on disk.
     {% elif s.status == 'multi_speaker' %}Its tags will be attributed to every speaker on the panel. Costs an LLM call.
+    {% elif s.status == 'skipped' %}Overrides the skip for this one run. Costs an LLM call.
     {% else %}Captions, then tags. Costs an LLM call.{% endif %}
   </span>
 </div>
@@ -210,6 +227,40 @@
     {% else %}Curated and tagged; waiting only on a rebuild.{% endif %}
   </span>
 </div>
+{% endif %}
+
+{# The curator's way out of the backlog for a talk that will never have a
+   transcript: the recording was never released, or the video is gone. #}
+{% if s.status in SKIPPABLE %}
+<section class="curate skip">
+  <div class="upload-head">
+    <strong>Don't process this talk</strong>
+    <span class="muted">
+      Moves it to the Skipped tab and out of automatic ingestion and the
+      backlog. {% if s.in_csv %}Its row and Talk node stay. {% endif %}Reversible.
+    </span>
+  </div>
+  <form hx-post="{{ base }}/skip/{{ s.key | urlencode }}" hx-target="#drawer-body"
+        hx-swap="innerHTML" class="curate-form skip-form">
+    {# A real <select>, not a datalist: a datalist filters its options by what
+       the input already holds, so once one was picked it never offered the
+       others again. #}
+    <label>
+      <span>Reason</span>
+      <select name="reason">
+        <option>No recording</option>
+        <option>Video not available</option>
+        <option>Not a talk</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>
+      <span>Details (optional)</span>
+      <input type="text" name="details" placeholder="e.g. speaker withdrew consent">
+    </label>
+    <button type="submit" class="btn btn-quiet">Skip</button>
+  </form>
+</section>
 {% endif %}
 
 {# The way around YouTube refusing the captions: a curator supplies them. Shown

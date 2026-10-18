@@ -247,6 +247,8 @@ class TalkState:
     hs_categories: list[str] = field(default_factory=list)
     # The earlier upload of the same recording, when this video repeats one.
     duplicate_of: str | None = None
+    # A curator's "don't process this": the entry from skips.py, with its reason.
+    skip: dict | None = None
 
     @property
     def when(self) -> str | None:
@@ -347,7 +349,12 @@ class TalkState:
         """
         status = self._status()
         if status in ("not_ingested", "awaiting_video") and self.session:
-            return "multi_speaker"
+            status = "multi_speaker"
+        # A curator's skip covers what is waiting or has failed — a video that
+        # is gone fails every time it is tried. A talk already in the graph, or
+        # being ingested anyway, keeps its own status.
+        if self.skip and status in SKIPPABLE:
+            return "skipped"
         return status
 
     def _status(self) -> str:
@@ -440,6 +447,7 @@ STATUS_LABELS = {
     "duplicate_upload": "Duplicate upload",
     "upcoming": "Premieres soon",
     "junk": "Unusable file",
+    "skipped": "Skipped",
     "in_progress": "Running",
     "failed": "Failed",
 }
@@ -447,8 +455,12 @@ STATUS_LABELS = {
 STATUS_ORDER = [
     "failed", "in_progress", "needs_curation", "ready_for_graph", "orphaned",
     "not_ingested", "awaiting_video", "untagged", "in_graph", "multi_speaker",
-    "excluded_short", "duplicate_upload", "upcoming", "junk",
+    "excluded_short", "duplicate_upload", "upcoming", "junk", "skipped",
 ]
+
+# What a curator's skip applies to: everything still waiting for a run, and a
+# run that failed.
+SKIPPABLE = {"not_ingested", "awaiting_video", "multi_speaker", "upcoming", "failed"}
 
 # The twelve statuses above stay the diagnosis — they are what the drawer shows
 # when an admin asks "why is this not in the graph?". A lane is the triage, and
@@ -477,6 +489,8 @@ LANE_OF = {
     # channel. The row prints its own status instead of the lane's label.
     "upcoming": "not_ingested",
     "junk": "excluded",
+    # Left out by a curator rather than by a rule.
+    "skipped": "excluded",
 }
 
 # Attention first, then anything moving, then the backlog; settled work last.
@@ -591,7 +605,10 @@ def reconcile() -> list[TalkState]:
     graph_ids, graph_tagged = read_graph()
     inventory = db.all_videos()
     runs = db.latest_runs()
+    from . import skips
     from .sources import heysummit
+
+    skipped = skips.read()
 
     try:
         hs_categories = {str(t["id"]): list(t.get("categories") or [])
@@ -716,6 +733,10 @@ def reconcile() -> list[TalkState]:
         state = TalkState(sources={"file": stem}, title=stem, stem=stem)
         apply_repo(state)
         states[state.key] = state
+
+    if skipped:
+        for state in states.values():
+            state.skip = skips.find(skipped, state.talk_id, state.video_id)
 
     return list(states.values())
 

@@ -1407,3 +1407,88 @@ def test_the_sheet_says_how_many_rows_it_is_showing(client, monkeypatch):
     import re
     assert re.search(r'id="shown"[^>]*hx-swap-oob="true"', client.get("/rows?lane=all").text)
     assert 'id="shown"' in client.get("/").text
+
+
+# --- A curator's skip ---------------------------------------------------------
+
+def _with_skips(*states):
+    """reconcile() over fixed states, reading the skip list as the real one does."""
+    from ingest import skips
+
+    def run():
+        entries = skips.read()
+        for s in states:
+            s.skip = skips.find(entries, s.talk_id, s.video_id)
+        return list(states)
+    return run
+
+
+def test_a_talk_with_no_recording_can_be_skipped_and_undone(client, monkeypatch):
+    """The reviewer's ask: HeySummit lists talks whose video will never come,
+    and they sat in "Not ingested" for good."""
+    no_video = R.TalkState(talk_id="t-0000abcd", title="Never Recorded", in_csv=True,
+                           csv_title="Never Recorded", speaker="Jane Doe", event="CDL24")
+    monkeypatch.setattr(R, "reconcile", _with_skips(no_video))
+    assert no_video.status == "awaiting_video"
+
+    drawer = client.get("/video/t-0000abcd?body=1").text
+    assert "Don't process this talk" in drawer and 'hx-post="/skip/t-0000abcd"' in drawer
+
+    drawer = client.post("/skip/t-0000abcd", data={"reason": "No recording"}).text
+    assert no_video.status == "skipped" and no_video.lane == "excluded"
+    assert "Skipped — not to be processed" in drawer and "No recording" in drawer
+    assert "Undo skip" in drawer and "Don't process this talk" not in drawer
+
+    assert "Never Recorded" in client.get("/rows?lane=skipped").text
+    assert "Never Recorded" not in client.get("/rows?lane=not_ingested").text
+
+    client.post("/unskip/t-0000abcd")
+    assert no_video.status == "awaiting_video"
+    assert "Never Recorded" not in client.get("/rows?lane=skipped").text
+
+
+def test_a_skipped_video_is_left_out_of_the_backlog_and_auto_ingestion(client, monkeypatch):
+    from ingest import scheduler
+
+    gone = R.TalkState(sources={"youtube": "ggggggggggg"}, title="Taken Down")
+    fresh = R.TalkState(sources={"youtube": "eeeeeeeeeee"}, title="Waiting")
+    monkeypatch.setattr(R, "reconcile", _with_skips(gone, fresh))
+    db.upsert_videos([{"video_id": v, "title": v, "url": "u", "duration": 2400,
+                       "live_status": "not_live"} for v in ("ggggggggggg", "eeeeeeeeeee")])
+
+    client.post("/skip/youtube:ggggggggggg", data={"reason": "Video not available"})
+    queued = []
+    monkeypatch.setattr("ingest.pipeline.runner.queue_videos",
+                        lambda ids: queued.extend(ids) or len(ids))
+    client.post("/backlog/ingest")
+    assert queued == ["eeeeeeeeeee"]
+    assert dict(scheduler._ingestable(["ggggggggggg"]))["ggggggggggg"] == "skipped by a curator"
+
+    # Still a curator's to override, from the drawer.
+    assert "Ingest anyway" in client.get("/video/youtube:ggggggggggg?body=1").text
+
+
+def test_a_talk_in_the_graph_cannot_be_skipped(client, monkeypatch):
+    monkeypatch.setattr(R, "reconcile", _with_skips(READY))
+    READY.in_graph = READY.tagged_in_graph = True
+    try:
+        assert "Don't process this talk" not in client.get("/video/youtube:aaaaaaaaaaa?body=1").text
+        client.post("/skip/youtube:aaaaaaaaaaa", data={"reason": "x"})
+        assert READY.status == "in_graph"
+    finally:
+        READY.in_graph = READY.tagged_in_graph = False
+        READY.skip = None
+
+
+def test_a_skip_reason_is_the_choice_plus_any_details(client, monkeypatch):
+    from ingest import skips
+
+    no_video = R.TalkState(talk_id="t-0000beef", title="Withdrawn", in_csv=True,
+                           csv_title="Withdrawn", speaker="Jane Doe", event="CDL24")
+    monkeypatch.setattr(R, "reconcile", _with_skips(no_video))
+    assert "<select name=\"reason\">" in client.get("/video/t-0000beef?body=1").text
+
+    client.post("/skip/t-0000beef", data={"reason": "No recording", "details": "speaker declined"})
+    assert skips.read()[0]["reason"] == "No recording: speaker declined"
+    client.post("/skip/t-0000beef", data={"reason": "Other", "details": "Duplicate of a talk"})
+    assert skips.read()[0]["reason"] == "Duplicate of a talk"
