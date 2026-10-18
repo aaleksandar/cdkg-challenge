@@ -5498,5 +5498,51 @@
         "knowledge engineering"
       ]
     }
+  },
+  {
+    "filename": "Question Answering Systems Powered by Ontologies, Knowledge Graphs and Large Language Models.txt",
+    "entities": {
+      "tag": [
+        "knowledge representation and reasoning",
+        "ontologies",
+        "knowledge graphs",
+        "rag",
+        "accord project",
+        "concerto graph",
+        "concerto",
+        "json schema",
+        "vector index",
+        "vector similarity search",
+        "full text search",
+        "neo4j",
+        "graph database",
+        "text to graph",
+        "prompt engineering",
+        "llms",
+        "openai tools",
+        "vector embedding",
+        "cipher",
+        "text to cipher"
+      ]
+    }
+  },
+  {
+    "filename": "Connecting Residents to Their Territory_ Better Planning Intermodality Through Data Visualization.txt",
+    "entities": {
+      "tag": [
+        "data visualization",
+        "isochrone maps",
+        "synthetic population",
+        "trip planning algorithm",
+        "gis",
+        "graph technologies",
+        "modality",
+        "google maps",
+        "citymapper",
+        "gtfs",
+        "netex",
+        "h3"
+      ]
+    }
   }
 ]
