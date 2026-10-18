@@ -140,13 +140,13 @@ The `Exponential` retry policy in `clients.baml` is sized for Google's 503 "high
 
 ### Model choice
 
-All LLM calls go through the single `GeminiFlash` client in `clients.baml`, pinned to `gemini-3.7-flash`. `evaluate.py`'s judge is set to the same model and must be updated alongside it.
+All LLM calls go through the single `GeminiFlash` client in `clients.baml`, pinned to `gemini-3.8-flash`. `evaluate.py`'s judge is set to the same model and must be updated alongside it.
 
 Pin a specific model rather than an alias like `gemini-flash-latest` — these prompts are tuned, and a model shifting underneath them silently changes behavior. Google retires models: `gemini-2.0-flash` was used here previously and now returns 404 on every call. If the whole system suddenly scores 1/5 across the benchmark with `NOT_FOUND` errors, check whether the model was retired before debugging anything else.
 
-Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 1.0/5, `gemini-2.5-flash` 3.3–3.5/5, `gemini-3.6-flash` 4.2–4.6/5, `gemini-3.7-flash` 4.3–4.5/5 — so re-run `evaluate.py` whenever it changes.
+Model choice moves the benchmark substantially — `gemini-2.0-flash` (retired) 1.0/5, `gemini-2.5-flash` 3.3–3.5/5, `gemini-3.6-flash` 4.2–4.6/5, `gemini-3.7-flash` 4.3–4.5/5, `gemini-3.8-flash` not yet measured — so re-run `evaluate.py` whenever it changes.
 
-3.7 is not a clear win over 3.6 on this benchmark; it was adopted to stay ahead of retirement, not for a score. The one stable difference is Q7, where 3.7 writes a narrower `WHERE` clause — literal terms from the question (`hiring`, `recruitment`) where 3.6 reached for the broader `ontolog`/`semantic` tags — and so recalls fewer of the baseline's speakers. If Text2Cypher recall matters more than precision here, that is the prompt to tune.
+3.8 replaced 3.7 in October 2026 because Google deprecated 3.7 and was already routing its calls to 3.8; the benchmark could not be run at the switch, because the free tier allows 20 requests a day per model and one run needs about 36. 3.7 was not a clear win over 3.6 on this benchmark; it was adopted to stay ahead of retirement, not for a score. The one stable difference is Q7, where 3.7 writes a narrower `WHERE` clause — literal terms from the question (`hiring`, `recruitment`) where 3.6 reached for the broader `ontolog`/`semantic` tags — and so recalls fewer of the baseline's speakers. If Text2Cypher recall matters more than precision here, that is the prompt to tune.
 
 ## Data Flow
 
