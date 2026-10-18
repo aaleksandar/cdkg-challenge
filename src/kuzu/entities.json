@@ -5394,5 +5394,55 @@
         "google structured data tool"
       ]
     }
+  },
+  {
+    "filename": "Enabling the Next-Generation of Intelligent Applications. Dominik Tomicevic, Connected Data.txt",
+    "entities": {
+      "tag": [
+        "memgraph",
+        "sql",
+        "nosql",
+        "in-memory computing",
+        "gpu",
+        "key-value store",
+        "hybrid transactional processing",
+        "random walk graph convolutional network",
+        "machine learning",
+        "lock-free data structures",
+        "lock-free skip lists",
+        "simd",
+        "dynamic graph partitioning",
+        "cassandra",
+        "postgresql",
+        "c++",
+        "open cypher",
+        "bolt protocol",
+        "gremlin",
+        "gremlin bytecode",
+        "tinkerpop",
+        "graph streams",
+        "etl",
+        "kafka",
+        "s3",
+        "hdfs",
+        "python",
+        "write-ahead logging",
+        "acid transactions",
+        "snapshot isolation",
+        "cost-based planner",
+        "tensorflow",
+        "breadth-first search",
+        "depth-first search",
+        "shortest path",
+        "ldap",
+        "kerberos",
+        "linux",
+        "docker",
+        "kubernetes",
+        "openshift",
+        "emacs",
+        "rocksdb"
+      ]
+    }
   }
 ]
