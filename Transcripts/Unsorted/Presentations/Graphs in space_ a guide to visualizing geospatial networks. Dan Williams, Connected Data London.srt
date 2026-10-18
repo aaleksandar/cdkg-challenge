@@ -1,0 +1,2232 @@
+1
+00:00:08,690 --> 00:00:12,490
+yeah my name is Dan I look after
+
+2
+00:00:14,700 --> 00:00:19,439
+product called key lines which is a tool
+
+3
+00:00:16,800 --> 00:00:20,580
+for visualizing connected data and we
+
+4
+00:00:19,439 --> 00:00:22,980
+have the booth and all of that stuff
+
+5
+00:00:20,580 --> 00:00:25,189
+over there so feel free to combine and
+
+6
+00:00:22,980 --> 00:00:27,060
+get a more in-depth demo but today I
+
+7
+00:00:25,189 --> 00:00:30,710
+want to talk about this subject of
+
+8
+00:00:27,060 --> 00:00:34,860
+geospatial networks so networks graphs
+
+9
+00:00:30,710 --> 00:00:37,950
+involving some aspects of geographical
+
+10
+00:00:34,860 --> 00:00:42,149
+data so even in the in the keynote this
+
+11
+00:00:37,950 --> 00:00:43,649
+morning the example from the of the band
+
+12
+00:00:42,149 --> 00:00:45,059
+and a little bit of metadata that
+
+13
+00:00:43,649 --> 00:00:46,770
+explained where the band was there was
+
+14
+00:00:45,059 --> 00:00:49,980
+latitude and longitude so geospatial
+
+15
+00:00:46,770 --> 00:00:51,210
+data is kind of everywhere so I want to
+
+16
+00:00:49,980 --> 00:00:53,060
+talk a bit about some of the challenges
+
+17
+00:00:51,210 --> 00:00:56,760
+around it so before I do talk about
+
+18
+00:00:53,060 --> 00:00:58,890
+visualizing geospatial data as a graph I
+
+19
+00:00:56,760 --> 00:01:00,360
+want to talk a little bit about what it
+
+20
+00:00:58,890 --> 00:01:02,790
+even means to visualize data as a graph
+
+21
+00:01:00,360 --> 00:01:04,680
+so I'm not saying I'm not saying graph
+
+22
+00:01:02,790 --> 00:01:06,810
+data visualization because this data
+
+23
+00:01:04,680 --> 00:01:08,549
+could be anything it could be from it
+
+24
+00:01:06,810 --> 00:01:10,409
+could be from a graph database could be
+
+25
+00:01:08,549 --> 00:01:12,450
+from an RDF store it could be from
+
+26
+00:01:10,409 --> 00:01:15,210
+sequel server it could be from a
+
+27
+00:01:12,450 --> 00:01:16,530
+spreadsheet but what key lines is all
+
+28
+00:01:15,210 --> 00:01:21,240
+about and what we do is all about
+
+29
+00:01:16,530 --> 00:01:23,609
+visualizing any data as a graph which is
+
+30
+00:01:21,240 --> 00:01:25,380
+it's all about basically nodes and edges
+
+31
+00:01:23,609 --> 00:01:27,389
+so let me talk a little bit about what I
+
+32
+00:01:25,380 --> 00:01:29,639
+mean by visualizing graph data and then
+
+33
+00:01:27,389 --> 00:01:31,170
+we'll talk about the problems you get
+
+34
+00:01:29,639 --> 00:01:36,840
+when you start trying to put this data
+
+35
+00:01:31,170 --> 00:01:38,459
+onto a map so what is a graph banker a
+
+36
+00:01:36,840 --> 00:01:39,659
+big bag of nodes and edges is really
+
+37
+00:01:38,459 --> 00:01:41,939
+what a graph is that's probably not the
+
+38
+00:01:39,659 --> 00:01:43,740
+mathematical definition of the thing but
+
+39
+00:01:41,939 --> 00:01:46,159
+that's what it is and when you try and
+
+40
+00:01:43,740 --> 00:01:48,270
+visualize a big bag of nodes and edges
+
+41
+00:01:46,159 --> 00:01:51,990
+what you typically get is a bit of a
+
+42
+00:01:48,270 --> 00:01:53,850
+mess because all you've got is the fact
+
+43
+00:01:51,990 --> 00:01:56,100
+that this is a node and it connects to
+
+44
+00:01:53,850 --> 00:01:57,179
+this node so one of the first challenges
+
+45
+00:01:56,100 --> 00:01:59,189
+you've got to figure out if you want to
+
+46
+00:01:57,179 --> 00:02:02,249
+do a visualization is where to put these
+
+47
+00:01:59,189 --> 00:02:05,329
+nodes on the screen and we call that a
+
+48
+00:02:02,249 --> 00:02:07,649
+layout a layout is basically the
+
+49
+00:02:05,329 --> 00:02:09,569
+positioning of nodes on a screen and
+
+50
+00:02:07,649 --> 00:02:11,819
+visualization is usually about a screen
+
+51
+00:02:09,569 --> 00:02:13,319
+and my definition of a layout is that a
+
+52
+00:02:11,819 --> 00:02:14,910
+good layout puts nodes in the best
+
+53
+00:02:13,319 --> 00:02:16,890
+possible location on the screen that's
+
+54
+00:02:14,910 --> 00:02:18,569
+what you've got to do and that's a very
+
+55
+00:02:16,890 --> 00:02:20,220
+subjective thing right what is the best
+
+56
+00:02:18,569 --> 00:02:21,569
+possible location on the screen it
+
+57
+00:02:20,220 --> 00:02:23,010
+really depends what you're trying to do
+
+58
+00:02:21,569 --> 00:02:24,890
+this one is kind of good because it
+
+59
+00:02:23,010 --> 00:02:26,700
+tells me that these ones appear
+
+60
+00:02:24,890 --> 00:02:27,319
+interconnected and have a bit of a
+
+61
+00:02:26,700 --> 00:02:29,540
+cluster
+
+62
+00:02:27,319 --> 00:02:36,590
+and this guy down here is really
+
+63
+00:02:29,540 --> 00:02:38,510
+isolated from hoops really isolated from
+
+64
+00:02:36,590 --> 00:02:40,400
+the rest of the group we got to see
+
+65
+00:02:38,510 --> 00:02:43,730
+James's emails and we may be more
+
+66
+00:02:40,400 --> 00:02:45,469
+interesting um so this is a this is a
+
+67
+00:02:43,730 --> 00:02:47,030
+good layout because it tells me stuff it
+
+68
+00:02:45,469 --> 00:02:49,099
+tells me this guy is very central these
+
+69
+00:02:47,030 --> 00:02:52,489
+guys are very completely isolated and so
+
+70
+00:02:49,099 --> 00:02:54,560
+on so that's a layout and one of the
+
+71
+00:02:52,489 --> 00:02:55,870
+first things you have to do is is its
+
+72
+00:02:54,560 --> 00:02:58,489
+figure out where to put things
+
+73
+00:02:55,870 --> 00:03:01,099
+layouts get more interesting the more
+
+74
+00:02:58,489 --> 00:03:02,480
+data you have it's very easy to do a bad
+
+75
+00:03:01,099 --> 00:03:04,459
+layout it's very hard to do a good
+
+76
+00:03:02,480 --> 00:03:07,310
+layout this is one of our most recent
+
+77
+00:03:04,459 --> 00:03:09,500
+layouts and organic layout which copes
+
+78
+00:03:07,310 --> 00:03:13,699
+very well with big big datasets this is
+
+79
+00:03:09,500 --> 00:03:15,590
+a visualization of insurance claims so
+
+80
+00:03:13,699 --> 00:03:18,290
+typical insurance claim you have a
+
+81
+00:03:15,590 --> 00:03:20,180
+person they have a claim claim is on a
+
+82
+00:03:18,290 --> 00:03:21,889
+policy the claim involves a vehicle the
+
+83
+00:03:20,180 --> 00:03:26,120
+vehicle had these damages and was fixed
+
+84
+00:03:21,889 --> 00:03:27,349
+in this garage and this is what these
+
+85
+00:03:26,120 --> 00:03:28,819
+things look like right so a typical
+
+86
+00:03:27,349 --> 00:03:30,439
+insurance claim when you make one looks
+
+87
+00:03:28,819 --> 00:03:31,759
+like one of these little kind of
+
+88
+00:03:30,439 --> 00:03:33,530
+creatures around the edge of the graph
+
+89
+00:03:31,759 --> 00:03:35,090
+these things in the middle are a bit
+
+90
+00:03:33,530 --> 00:03:36,709
+more unusual because there's too many
+
+91
+00:03:35,090 --> 00:03:38,930
+connections maybe there's a fraud ring
+
+92
+00:03:36,709 --> 00:03:41,269
+or something going on there so a good
+
+93
+00:03:38,930 --> 00:03:44,299
+layout gives you the kind of macroscale
+
+94
+00:03:41,269 --> 00:03:46,220
+information about what's going on but
+
+95
+00:03:44,299 --> 00:03:49,819
+also you can zoom in and look at the
+
+96
+00:03:46,220 --> 00:03:53,000
+detail so layouts can be beautiful and
+
+97
+00:03:49,819 --> 00:03:54,169
+they can can be very powerful the next
+
+98
+00:03:53,000 --> 00:03:55,790
+thing you want to do if you're doing a
+
+99
+00:03:54,169 --> 00:04:00,079
+visualization is think about how to
+
+100
+00:03:55,790 --> 00:04:01,970
+style your data so styling means things
+
+101
+00:04:00,079 --> 00:04:03,139
+like using color it's a little washed
+
+102
+00:04:01,970 --> 00:04:04,549
+out on this screen but some of these
+
+103
+00:04:03,139 --> 00:04:07,370
+nodes are darker than others and we're
+
+104
+00:04:04,549 --> 00:04:09,620
+using color to show importance I said
+
+105
+00:04:07,370 --> 00:04:12,859
+this guy was central well we're using a
+
+106
+00:04:09,620 --> 00:04:14,689
+graph algorithm to calculate importance
+
+107
+00:04:12,859 --> 00:04:16,250
+some kind of centrality measure and
+
+108
+00:04:14,689 --> 00:04:17,509
+where we're drawing the nodes bigger the
+
+109
+00:04:16,250 --> 00:04:19,669
+more important they are it's a simple
+
+110
+00:04:17,509 --> 00:04:21,560
+trick draws the eye to the important
+
+111
+00:04:19,669 --> 00:04:23,090
+people these people up here and maybe a
+
+112
+00:04:21,560 --> 00:04:24,560
+less important because if you took one
+
+113
+00:04:23,090 --> 00:04:26,659
+of them out of the network it wouldn't
+
+114
+00:04:24,560 --> 00:04:28,669
+really change things so we can use
+
+115
+00:04:26,659 --> 00:04:30,229
+visual style we do have a things to
+
+116
+00:04:28,669 --> 00:04:32,539
+we're using a little picture of a person
+
+117
+00:04:30,229 --> 00:04:35,570
+to represent a person sounds sounds
+
+118
+00:04:32,539 --> 00:04:36,919
+silly but this visual modeling of the
+
+119
+00:04:35,570 --> 00:04:38,900
+data is really important if people who
+
+120
+00:04:36,919 --> 00:04:39,400
+want to get immediate insight from a
+
+121
+00:04:38,900 --> 00:04:42,009
+picture
+
+122
+00:04:39,400 --> 00:04:43,620
+they it's probably a lot easier to spot
+
+123
+00:04:42,009 --> 00:04:46,240
+that these are people then if we
+
+124
+00:04:43,620 --> 00:04:47,919
+represented this with a literal
+
+125
+00:04:46,240 --> 00:04:51,070
+depiction of a triple store and said
+
+126
+00:04:47,919 --> 00:04:52,539
+this node is a person and try to get you
+
+127
+00:04:51,070 --> 00:04:54,820
+our eyes on the screen and it would just
+
+128
+00:04:52,539 --> 00:04:55,860
+be much much uglier than simply drawing
+
+129
+00:04:54,820 --> 00:05:00,370
+a person picture
+
+130
+00:04:55,860 --> 00:05:01,870
+so that's styling styling is good and
+
+131
+00:05:00,370 --> 00:05:03,160
+you could stop there but for me one of
+
+132
+00:05:01,870 --> 00:05:05,919
+the most exciting things about
+
+133
+00:05:03,160 --> 00:05:07,870
+visualizing graphs is interaction so
+
+134
+00:05:05,919 --> 00:05:13,660
+rather than just having it having a a
+
+135
+00:05:07,870 --> 00:05:15,669
+dumb picture you have some kind of live
+
+136
+00:05:13,660 --> 00:05:17,410
+interactive visualization so these are a
+
+137
+00:05:15,669 --> 00:05:19,600
+little videos I can play one of these so
+
+138
+00:05:17,410 --> 00:05:21,789
+what do I mean by interaction zooming in
+
+139
+00:05:19,600 --> 00:05:23,860
+and out dragging things around playing
+
+140
+00:05:21,789 --> 00:05:25,720
+with the data may be saying expand
+
+141
+00:05:23,860 --> 00:05:27,990
+outwards click on these things and bring
+
+142
+00:05:25,720 --> 00:05:30,880
+in more data as I as I explore the graph
+
+143
+00:05:27,990 --> 00:05:32,380
+and being able to play with the data
+
+144
+00:05:30,880 --> 00:05:34,720
+like that is another really important
+
+145
+00:05:32,380 --> 00:05:37,840
+aspect of visualization especially when
+
+146
+00:05:34,720 --> 00:05:39,190
+you have very frightening datasets if
+
+147
+00:05:37,840 --> 00:05:40,750
+someone has no idea what they're looking
+
+148
+00:05:39,190 --> 00:05:43,060
+at and they see a big tangle of nodes
+
+149
+00:05:40,750 --> 00:05:44,889
+and links they're much more likely to
+
+150
+00:05:43,060 --> 00:05:46,630
+walk away than if they can play and
+
+151
+00:05:44,889 --> 00:05:48,669
+explore even little things like putting
+
+152
+00:05:46,630 --> 00:05:50,889
+a little plus next to a node that tells
+
+153
+00:05:48,669 --> 00:05:55,449
+me there's more data I can bring in it's
+
+154
+00:05:50,889 --> 00:05:59,440
+really nice ok so that that's
+
+155
+00:05:55,449 --> 00:06:01,289
+interaction and if I show you one more
+
+156
+00:05:59,440 --> 00:06:03,130
+example of the kind of thing you can do
+
+157
+00:06:01,289 --> 00:06:05,590
+there's no limit to this one I think
+
+158
+00:06:03,130 --> 00:06:07,090
+we're only just beginning to touch on
+
+159
+00:06:05,590 --> 00:06:09,220
+the possibilities for interaction this
+
+160
+00:06:07,090 --> 00:06:11,320
+is a cool thing that we can do where you
+
+161
+00:06:09,220 --> 00:06:13,150
+can dive downwards so you can open up
+
+162
+00:06:11,320 --> 00:06:15,039
+one node and see what's inside it and
+
+163
+00:06:13,150 --> 00:06:18,070
+see how the things inside that node are
+
+164
+00:06:15,039 --> 00:06:20,289
+connected to others this is going beyond
+
+165
+00:06:18,070 --> 00:06:23,590
+a simple node and edges diagram it's a
+
+166
+00:06:20,289 --> 00:06:27,280
+more complicated hierarchy but if that's
+
+167
+00:06:23,590 --> 00:06:28,389
+what your users expected and what I want
+
+168
+00:06:27,280 --> 00:06:30,760
+to be able to see then you can learn a
+
+169
+00:06:28,389 --> 00:06:32,289
+lot from that and and hide clutter as
+
+170
+00:06:30,760 --> 00:06:33,729
+well so you know you have a very high
+
+171
+00:06:32,289 --> 00:06:36,280
+level view and if I want the detail I
+
+172
+00:06:33,729 --> 00:06:40,510
+can drill down so interactions are
+
+173
+00:06:36,280 --> 00:06:41,979
+really nice and powerful so that's just
+
+174
+00:06:40,510 --> 00:06:46,389
+a whistle-stop sort of what I mean by
+
+175
+00:06:41,979 --> 00:06:47,919
+graph data visualization and then this
+
+176
+00:06:46,389 --> 00:06:49,770
+guy comes along and says ok that's
+
+177
+00:06:47,919 --> 00:06:51,900
+lovely but can I put it on a map
+
+178
+00:06:49,770 --> 00:06:54,690
+and it sounds like a reasonable question
+
+179
+00:06:51,900 --> 00:06:58,949
+we got geospatial data so okay let's try
+
+180
+00:06:54,690 --> 00:07:02,220
+but what happens when you do this is you
+
+181
+00:06:58,949 --> 00:07:03,690
+get a bit of a mess so this is this is
+
+182
+00:07:02,220 --> 00:07:06,660
+something that I call the Boston
+
+183
+00:07:03,690 --> 00:07:08,070
+hairball and the best thing about the
+
+184
+00:07:06,660 --> 00:07:09,270
+Boston hairball is that you can't even
+
+185
+00:07:08,070 --> 00:07:11,639
+see Boston because it's completely
+
+186
+00:07:09,270 --> 00:07:13,050
+hidden behind the hairball and this is
+
+187
+00:07:11,639 --> 00:07:15,600
+typically what happens when you when you
+
+188
+00:07:13,050 --> 00:07:17,160
+try and put this data on a map one of
+
+189
+00:07:15,600 --> 00:07:19,350
+the first problems that you get is those
+
+190
+00:07:17,160 --> 00:07:21,780
+allowance remember I said aloud is the
+
+191
+00:07:19,350 --> 00:07:23,550
+best possible place to put nodes well if
+
+192
+00:07:21,780 --> 00:07:25,500
+the nodes belong in a particular place
+
+193
+00:07:23,550 --> 00:07:27,240
+on the map you have no choice where they
+
+194
+00:07:25,500 --> 00:07:30,240
+are this no it has to be here this one
+
+195
+00:07:27,240 --> 00:07:32,759
+has to be here so all of that freedom
+
+196
+00:07:30,240 --> 00:07:36,030
+you had to show the network in a nicely
+
+197
+00:07:32,759 --> 00:07:38,720
+useful way is now gone because we're
+
+198
+00:07:36,030 --> 00:07:42,960
+forced to put things where they belong
+
+199
+00:07:38,720 --> 00:07:46,680
+so yeah layouts are a challenge there's
+
+200
+00:07:42,960 --> 00:07:47,940
+other challenges too so you know usually
+
+201
+00:07:46,680 --> 00:07:50,490
+if I have a room full of people and I
+
+202
+00:07:47,940 --> 00:07:52,500
+say how many do you have some geographic
+
+203
+00:07:50,490 --> 00:07:53,880
+information in your database then you
+
+204
+00:07:52,500 --> 00:07:55,470
+know everyone puts their hand up but if
+
+205
+00:07:53,880 --> 00:07:57,210
+you say how many of you have geo
+
+206
+00:07:55,470 --> 00:07:58,770
+information on every single entity in
+
+207
+00:07:57,210 --> 00:08:01,349
+your database then everyone puts their
+
+208
+00:07:58,770 --> 00:08:04,470
+hands down because you know if this if
+
+209
+00:08:01,349 --> 00:08:07,139
+this is a graph representing stations
+
+210
+00:08:04,470 --> 00:08:09,270
+all in a city you might have data that
+
+211
+00:08:07,139 --> 00:08:10,440
+says these are the people who used it or
+
+212
+00:08:09,270 --> 00:08:12,510
+these are the credit cards that they
+
+213
+00:08:10,440 --> 00:08:14,520
+used or any of this kind of information
+
+214
+00:08:12,510 --> 00:08:17,729
+and only the station has the geographic
+
+215
+00:08:14,520 --> 00:08:19,409
+data so you have this problem of the
+
+216
+00:08:17,729 --> 00:08:21,180
+information vanishing as soon as you try
+
+217
+00:08:19,409 --> 00:08:28,409
+to put it on a map or where do you show
+
+218
+00:08:21,180 --> 00:08:30,120
+this non geographic information and then
+
+219
+00:08:28,409 --> 00:08:32,700
+interaction again how do you do
+
+220
+00:08:30,120 --> 00:08:34,440
+interaction I showed you people playing
+
+221
+00:08:32,700 --> 00:08:36,360
+with networks moving nodes around well
+
+222
+00:08:34,440 --> 00:08:37,770
+if the node represents celesta square
+
+223
+00:08:36,360 --> 00:08:42,360
+you can't just move Leicester Square
+
+224
+00:08:37,770 --> 00:08:43,650
+over there it's a real place so some
+
+225
+00:08:42,360 --> 00:08:45,540
+people will say well you can just move
+
+226
+00:08:43,650 --> 00:08:47,339
+Leicester Square because that's exactly
+
+227
+00:08:45,540 --> 00:08:49,800
+what the guy who did this did he took
+
+228
+00:08:47,339 --> 00:08:51,660
+all these stations and was very free and
+
+229
+00:08:49,800 --> 00:08:53,430
+creative about where exactly he placed
+
+230
+00:08:51,660 --> 00:08:55,230
+them and this is a fantastic graph
+
+231
+00:08:53,430 --> 00:08:57,149
+visualization it's exactly what I
+
+232
+00:08:55,230 --> 00:08:59,070
+described it's a layout it's putting the
+
+233
+00:08:57,149 --> 00:09:01,500
+node in the best possible place the best
+
+234
+00:08:59,070 --> 00:09:03,300
+possible place is the best possible
+
+235
+00:09:01,500 --> 00:09:04,920
+place for the use case of helping peep
+
+236
+00:09:03,300 --> 00:09:07,020
+navigate their way underneath the big
+
+237
+00:09:04,920 --> 00:09:09,150
+city and it's a really really good way
+
+238
+00:09:07,020 --> 00:09:10,770
+of doing that but they're kind of
+
+239
+00:09:09,150 --> 00:09:13,770
+cheated because they kind of got rid of
+
+240
+00:09:10,770 --> 00:09:15,750
+the map which is definitely one solution
+
+241
+00:09:13,770 --> 00:09:17,400
+to this but if you need the map to be
+
+242
+00:09:15,750 --> 00:09:19,230
+there if you really need people to be
+
+243
+00:09:17,400 --> 00:09:21,780
+able to look at a map and understand
+
+244
+00:09:19,230 --> 00:09:23,040
+where these nodes are then you don't
+
+245
+00:09:21,780 --> 00:09:26,540
+have that option so I'm going to talk a
+
+246
+00:09:23,040 --> 00:09:29,790
+bit about ways around that
+
+247
+00:09:26,540 --> 00:09:31,260
+so yeah you come back to the question
+
+248
+00:09:29,790 --> 00:09:32,430
+why on earth is this a good idea why
+
+249
+00:09:31,260 --> 00:09:34,260
+should we try and put this beautiful
+
+250
+00:09:32,430 --> 00:09:35,280
+data we've to put all that effort in to
+
+251
+00:09:34,260 --> 00:09:36,570
+make it look good and now we're putting
+
+252
+00:09:35,280 --> 00:09:37,890
+it on a map
+
+253
+00:09:36,570 --> 00:09:41,100
+and there's a lot of foreign use cases
+
+254
+00:09:37,890 --> 00:09:43,200
+for it we work a lot with people in law
+
+255
+00:09:41,100 --> 00:09:45,720
+enforcement and intelligence where
+
+256
+00:09:43,200 --> 00:09:49,260
+you're trying to solve pretty serious
+
+257
+00:09:45,720 --> 00:09:50,520
+problems of threats and crimes there's a
+
+258
+00:09:49,260 --> 00:09:53,940
+lot of insights you get on a map that
+
+259
+00:09:50,520 --> 00:09:56,130
+you wouldn't otherwise get and it's a
+
+260
+00:09:53,940 --> 00:09:57,770
+very good way of understanding data at a
+
+261
+00:09:56,130 --> 00:09:59,430
+very high level if you can see
+
+262
+00:09:57,770 --> 00:10:02,520
+geographical summary so I'm going to
+
+263
+00:09:59,430 --> 00:10:04,080
+show you a few examples of first of all
+
+264
+00:10:02,520 --> 00:10:05,760
+why it's a good idea to put this kind of
+
+265
+00:10:04,080 --> 00:10:11,600
+thing on a map and secondly how you get
+
+266
+00:10:05,760 --> 00:10:13,770
+around some of those those problems so
+
+267
+00:10:11,600 --> 00:10:15,660
+first step is interactions again
+
+268
+00:10:13,770 --> 00:10:17,970
+interactions to the rescue so although I
+
+269
+00:10:15,660 --> 00:10:20,180
+certain to actions you lose some of them
+
+270
+00:10:17,970 --> 00:10:22,290
+you can't move things around so easily
+
+271
+00:10:20,180 --> 00:10:25,290
+there's still an awful lot you can
+
+272
+00:10:22,290 --> 00:10:27,540
+exploit if you if you make the most of
+
+273
+00:10:25,290 --> 00:10:29,550
+it so in this example we've got kind of
+
+274
+00:10:27,540 --> 00:10:31,290
+different things happening this is key
+
+275
+00:10:29,550 --> 00:10:33,060
+lines and these are some nodes and on
+
+276
+00:10:31,290 --> 00:10:35,070
+the graph and behind them we have a map
+
+277
+00:10:33,060 --> 00:10:36,840
+and we're using a mapping engine called
+
+278
+00:10:35,070 --> 00:10:40,470
+leaflet which gives you a whole bunch of
+
+279
+00:10:36,840 --> 00:10:42,090
+geospatial tools things like hovering or
+
+280
+00:10:40,470 --> 00:10:44,340
+clicking on a state and getting the
+
+281
+00:10:42,090 --> 00:10:46,290
+boundary of that state and highlighting
+
+282
+00:10:44,340 --> 00:10:48,660
+the state that's happening in the map
+
+283
+00:10:46,290 --> 00:10:50,190
+but then the graph is now doing a graph
+
+284
+00:10:48,660 --> 00:10:52,500
+calculation it's saying okay I've picked
+
+285
+00:10:50,190 --> 00:10:53,700
+North Carolina look at this Airport
+
+286
+00:10:52,500 --> 00:10:55,320
+finding me its nearest neighbors and
+
+287
+00:10:53,700 --> 00:10:57,960
+just show me the nearest neighbors of
+
+288
+00:10:55,320 --> 00:10:59,820
+this Airport and by by clicking around
+
+289
+00:10:57,960 --> 00:11:01,140
+like this suddenly the hairball becomes
+
+290
+00:10:59,820 --> 00:11:01,850
+less overwhelming we can click around
+
+291
+00:11:01,140 --> 00:11:04,190
+and
+
+292
+00:11:01,850 --> 00:11:06,620
+and get a sense of where we are and a
+
+293
+00:11:04,190 --> 00:11:09,980
+sense of making that Network more
+
+294
+00:11:06,620 --> 00:11:12,560
+manageable so some interactions don't
+
+295
+00:11:09,980 --> 00:11:15,310
+exist but other interactions become
+
+296
+00:11:12,560 --> 00:11:17,480
+incredibly powerful so I would certainly
+
+297
+00:11:15,310 --> 00:11:19,100
+say interactions are your friend if
+
+298
+00:11:17,480 --> 00:11:23,329
+you're trying to do a good job of making
+
+299
+00:11:19,100 --> 00:11:25,490
+a visualization on a map it's one
+
+300
+00:11:23,329 --> 00:11:26,990
+example what about the problem of
+
+301
+00:11:25,490 --> 00:11:29,720
+missing data so this is a really tricky
+
+302
+00:11:26,990 --> 00:11:31,250
+one his remember that picture I showed
+
+303
+00:11:29,720 --> 00:11:32,660
+you the insurance claims and all the
+
+304
+00:11:31,250 --> 00:11:34,279
+little kind of creatures this is one of
+
+305
+00:11:32,660 --> 00:11:36,199
+those creatures so a typical insurance
+
+306
+00:11:34,279 --> 00:11:38,569
+claim here's a person they have an
+
+307
+00:11:36,199 --> 00:11:42,350
+address they have a phone number policy
+
+308
+00:11:38,569 --> 00:11:44,720
+clean cars and so on and most of this
+
+309
+00:11:42,350 --> 00:11:47,420
+data has no geospatial information okay
+
+310
+00:11:44,720 --> 00:11:49,910
+this this address has it we know where
+
+311
+00:11:47,420 --> 00:11:52,250
+the person lives and maybe in my example
+
+312
+00:11:49,910 --> 00:11:55,490
+the garage up here which fixed the
+
+313
+00:11:52,250 --> 00:11:56,750
+damage on the car has a location but the
+
+314
+00:11:55,490 --> 00:11:59,420
+rest of it doesn't these people these
+
+315
+00:11:56,750 --> 00:12:01,610
+these witnesses we don't have data on
+
+316
+00:11:59,420 --> 00:12:02,870
+where they live the car moves around if
+
+317
+00:12:01,610 --> 00:12:05,480
+this is a claim it doesn't have a
+
+318
+00:12:02,870 --> 00:12:07,670
+location at all so if I try to put this
+
+319
+00:12:05,480 --> 00:12:08,720
+on a map what would happen is the only
+
+320
+00:12:07,670 --> 00:12:10,639
+things that would appear on the map
+
+321
+00:12:08,720 --> 00:12:13,189
+would be this pin and this this garys
+
+322
+00:12:10,639 --> 00:12:15,019
+our best and we've lost the connected
+
+323
+00:12:13,189 --> 00:12:17,000
+aspect to the data which is why we're
+
+324
+00:12:15,019 --> 00:12:20,300
+all here this is connected data London
+
+325
+00:12:17,000 --> 00:12:22,490
+so the connections are gone so what can
+
+326
+00:12:20,300 --> 00:12:27,139
+we do and one thing that we can do is
+
+327
+00:12:22,490 --> 00:12:28,250
+say you don't have to use the data that
+
+328
+00:12:27,139 --> 00:12:30,019
+is this data that it's in your
+
+329
+00:12:28,250 --> 00:12:32,149
+underlying database doesn't have to be
+
+330
+00:12:30,019 --> 00:12:33,920
+exactly what you put word-for-word onto
+
+331
+00:12:32,149 --> 00:12:36,259
+the screen so we could make a new model
+
+332
+00:12:33,920 --> 00:12:38,149
+we could say let's say let's connect
+
+333
+00:12:36,259 --> 00:12:39,500
+let's put this address on to this person
+
+334
+00:12:38,149 --> 00:12:42,139
+as if it's just a property of the person
+
+335
+00:12:39,500 --> 00:12:44,120
+and let's say if any person made a claim
+
+336
+00:12:42,139 --> 00:12:45,529
+has a policy which had a claim which was
+
+337
+00:12:44,120 --> 00:12:46,880
+fixed to the garage let's just do a
+
+338
+00:12:45,529 --> 00:12:49,730
+direct link from the person to the
+
+339
+00:12:46,880 --> 00:12:51,110
+garage so this whole creature just
+
+340
+00:12:49,730 --> 00:12:52,910
+becomes a much simpler creature of
+
+341
+00:12:51,110 --> 00:12:55,100
+personal link to garrage and this link
+
+342
+00:12:52,910 --> 00:12:56,800
+may not exist in your database but it's
+
+343
+00:12:55,100 --> 00:13:00,259
+a very useful link for the visual model
+
+344
+00:12:56,800 --> 00:13:01,939
+because what we can then do if we take
+
+345
+00:13:00,259 --> 00:13:03,380
+those creatures here's a few of those
+
+346
+00:13:01,939 --> 00:13:08,389
+creatures from that other slide zoomed
+
+347
+00:13:03,380 --> 00:13:10,630
+in a little bit and and if I play this
+
+348
+00:13:08,389 --> 00:13:10,630
+one
+
+349
+00:13:11,150 --> 00:13:14,660
+that's what the remodeling looks like so
+
+350
+00:13:13,250 --> 00:13:17,570
+a large amount of data is suddenly
+
+351
+00:13:14,660 --> 00:13:19,640
+mortal now into a small number of very
+
+352
+00:13:17,570 --> 00:13:22,160
+different creatures which represent just
+
+353
+00:13:19,640 --> 00:13:24,350
+the geographic subset of information in
+
+354
+00:13:22,160 --> 00:13:27,230
+that graph and then you can put it on a
+
+355
+00:13:24,350 --> 00:13:29,150
+map so remember purple things were
+
+356
+00:13:27,230 --> 00:13:31,130
+people and green things like garages so
+
+357
+00:13:29,150 --> 00:13:32,900
+we can spot a typical pattern now that
+
+358
+00:13:31,130 --> 00:13:34,900
+most people tend to get their car fixed
+
+359
+00:13:32,900 --> 00:13:37,040
+in a garage that's near where they live
+
+360
+00:13:34,900 --> 00:13:38,120
+but this one that I've highlighted in
+
+361
+00:13:37,040 --> 00:13:40,580
+red is a bit more suspicious because
+
+362
+00:13:38,120 --> 00:13:42,290
+people are traveling a long way to get
+
+363
+00:13:40,580 --> 00:13:44,089
+their car fixed in a garage that wasn't
+
+364
+00:13:42,290 --> 00:13:45,560
+really near where they live and if
+
+365
+00:13:44,089 --> 00:13:47,420
+you're an insurance company you might be
+
+366
+00:13:45,560 --> 00:13:49,100
+wondering if this isn't our preferred
+
+367
+00:13:47,420 --> 00:13:51,350
+garage why is everyone going here there
+
+368
+00:13:49,100 --> 00:13:54,800
+was a case where a garage was inflating
+
+369
+00:13:51,350 --> 00:13:56,360
+claims and you could you might spot that
+
+370
+00:13:54,800 --> 00:13:58,430
+and there's no way you could have
+
+371
+00:13:56,360 --> 00:14:02,210
+spotted that in sight if your starting
+
+372
+00:13:58,430 --> 00:14:03,650
+point was your original graph picture
+
+373
+00:14:02,210 --> 00:14:07,070
+which looked like that because those
+
+374
+00:14:03,650 --> 00:14:10,250
+lines wouldn't even be there so that's
+
+375
+00:14:07,070 --> 00:14:13,430
+one trick you can use to to get your
+
+376
+00:14:10,250 --> 00:14:18,230
+data missing data onto a graph is just
+
+377
+00:14:13,430 --> 00:14:22,040
+remodel it and then finally I want to
+
+378
+00:14:18,230 --> 00:14:24,500
+talk a little bit about using the right
+
+379
+00:14:22,040 --> 00:14:26,660
+map so it's one thing to put stuff on a
+
+380
+00:14:24,500 --> 00:14:28,040
+map it's another thing to to get the
+
+381
+00:14:26,660 --> 00:14:31,160
+right map and what do I mean by the
+
+382
+00:14:28,040 --> 00:14:34,339
+right map it really depends on the use
+
+383
+00:14:31,160 --> 00:14:36,860
+case so he's a law enforcement example
+
+384
+00:14:34,339 --> 00:14:38,300
+and if you're if you're from the UK
+
+385
+00:14:36,860 --> 00:14:39,860
+you're probably familiar with Ordnance
+
+386
+00:14:38,300 --> 00:14:41,779
+Survey maps and that's the kind of map
+
+387
+00:14:39,860 --> 00:14:43,850
+you like to see that's the familiar
+
+388
+00:14:41,779 --> 00:14:46,370
+context and background and I want to see
+
+389
+00:14:43,850 --> 00:14:47,750
+on a map if you're from the US or North
+
+390
+00:14:46,370 --> 00:14:50,529
+America in law enforcement you'll be
+
+391
+00:14:47,750 --> 00:14:52,459
+probably familiar with ESRI which is a
+
+392
+00:14:50,529 --> 00:14:54,709
+geospatial information service and they
+
+393
+00:14:52,459 --> 00:14:56,600
+provide mapping and having your own
+
+394
+00:14:54,709 --> 00:14:58,700
+familiar map it's a really nice thing
+
+395
+00:14:56,600 --> 00:15:00,020
+you recognize things so being able to
+
+396
+00:14:58,700 --> 00:15:02,300
+put any maps in the background is
+
+397
+00:15:00,020 --> 00:15:03,800
+important that's something we we let you
+
+398
+00:15:02,300 --> 00:15:06,050
+do at keyline so we try not to be
+
+399
+00:15:03,800 --> 00:15:08,180
+opinionated about the map because it
+
+400
+00:15:06,050 --> 00:15:10,459
+really depends on on the use case and
+
+401
+00:15:08,180 --> 00:15:13,010
+again by exploiting those interactions
+
+402
+00:15:10,459 --> 00:15:16,760
+and letting people
+
+403
+00:15:13,010 --> 00:15:19,820
+play with with our visualization we can
+
+404
+00:15:16,760 --> 00:15:23,560
+let them do things such as changing the
+
+405
+00:15:19,820 --> 00:15:26,330
+tiles so showing street views or showing
+
+406
+00:15:23,560 --> 00:15:28,100
+satellite imagery behind the data so
+
+407
+00:15:26,330 --> 00:15:30,230
+here's a connected data here's the tiles
+
+408
+00:15:28,100 --> 00:15:32,240
+behind it turning on and off overlays
+
+409
+00:15:30,230 --> 00:15:34,760
+that kind of freedom to get the map you
+
+410
+00:15:32,240 --> 00:15:36,410
+want is pretty important we have a
+
+411
+00:15:34,760 --> 00:15:38,690
+little thing here I click show police
+
+412
+00:15:36,410 --> 00:15:39,980
+stations and what's going on here is we
+
+413
+00:15:38,690 --> 00:15:41,570
+don't have any police stations in our
+
+414
+00:15:39,980 --> 00:15:45,200
+database but we can go off to a
+
+415
+00:15:41,570 --> 00:15:47,720
+third-party geocoding service that says
+
+416
+00:15:45,200 --> 00:15:49,510
+find me the police stations nearby bring
+
+417
+00:15:47,720 --> 00:15:51,950
+them in and add them to the visual model
+
+418
+00:15:49,510 --> 00:15:54,200
+these things are not in the original
+
+419
+00:15:51,950 --> 00:15:56,900
+graph they're in the visual model if
+
+420
+00:15:54,200 --> 00:15:58,280
+you're a law enforcement analyst and you
+
+421
+00:15:56,900 --> 00:15:59,810
+want to know where the nearest police
+
+422
+00:15:58,280 --> 00:16:02,750
+stations were so these events then
+
+423
+00:15:59,810 --> 00:16:04,520
+that's a really useful view so again
+
+424
+00:16:02,750 --> 00:16:06,710
+you're you're solving
+
+425
+00:16:04,520 --> 00:16:09,290
+you're basically exporting what maps
+
+426
+00:16:06,710 --> 00:16:11,660
+give you to help you counter some of
+
+427
+00:16:09,290 --> 00:16:15,260
+these difficulties of trying to show
+
+428
+00:16:11,660 --> 00:16:19,550
+data that is inherently not designed to
+
+429
+00:16:15,260 --> 00:16:23,330
+be on a map on a map so the final
+
+430
+00:16:19,550 --> 00:16:24,590
+example case study is all around kind of
+
+431
+00:16:23,330 --> 00:16:27,890
+stretching the idea of a map a little
+
+432
+00:16:24,590 --> 00:16:31,340
+bit but this is a map but this is a map
+
+433
+00:16:27,890 --> 00:16:32,540
+as a dashboard so another really it's a
+
+434
+00:16:31,340 --> 00:16:34,010
+really common phrase aret people say
+
+435
+00:16:32,540 --> 00:16:35,240
+give me the 30,000 foot view or
+
+436
+00:16:34,010 --> 00:16:36,770
+something and you know that's that's
+
+437
+00:16:35,240 --> 00:16:38,060
+what people want to do they want to they
+
+438
+00:16:36,770 --> 00:16:40,210
+want to see the high level before they
+
+439
+00:16:38,060 --> 00:16:43,700
+zoom into the detail and so very often
+
+440
+00:16:40,210 --> 00:16:48,200
+your graph or your your link data
+
+441
+00:16:43,700 --> 00:16:49,460
+represents very complicated stuff that
+
+442
+00:16:48,200 --> 00:16:52,220
+you want to get a very high level view
+
+443
+00:16:49,460 --> 00:16:55,190
+of so here these are representing
+
+444
+00:16:52,220 --> 00:16:58,040
+factories or locations this is a IT
+
+445
+00:16:55,190 --> 00:17:00,520
+network topology of some kind and
+
+446
+00:16:58,040 --> 00:17:02,300
+underlying this are millions of
+
+447
+00:17:00,520 --> 00:17:04,400
+thousands or whatever it is of
+
+448
+00:17:02,300 --> 00:17:06,709
+connections but what you want to know is
+
+449
+00:17:04,400 --> 00:17:08,209
+is get a very brief picture of what's
+
+450
+00:17:06,709 --> 00:17:10,550
+going on so I can see I've got a few
+
+451
+00:17:08,209 --> 00:17:13,699
+sites and something strange is going on
+
+452
+00:17:10,550 --> 00:17:16,250
+here in this case maybe some machine in
+
+453
+00:17:13,699 --> 00:17:17,510
+New York is talking to sites on the
+
+454
+00:17:16,250 --> 00:17:20,390
+public internet that it's never talked
+
+455
+00:17:17,510 --> 00:17:23,060
+to you before and maybe there's this
+
+456
+00:17:20,390 --> 00:17:25,430
+kind of cyber threat problem where you
+
+457
+00:17:23,060 --> 00:17:25,900
+want to spot unusual activity often it's
+
+458
+00:17:25,430 --> 00:17:28,450
+it's a
+
+459
+00:17:25,900 --> 00:17:29,770
+spotting unusual things so if I was in
+
+460
+00:17:28,450 --> 00:17:31,330
+an Operations room and I wanted to get a
+
+461
+00:17:29,770 --> 00:17:32,890
+high-level picture of this network I
+
+462
+00:17:31,330 --> 00:17:34,390
+don't want to see the detail I just want
+
+463
+00:17:32,890 --> 00:17:38,770
+to see something like this and I can see
+
+464
+00:17:34,390 --> 00:17:40,540
+that there's a problem but this map here
+
+465
+00:17:38,770 --> 00:17:42,190
+is not really a map it's just a picture
+
+466
+00:17:40,540 --> 00:17:44,800
+ever map often when you're trying to do
+
+467
+00:17:42,190 --> 00:17:47,230
+a big operations room visualization you
+
+468
+00:17:44,800 --> 00:17:49,180
+you you don't want the clutter of you
+
+469
+00:17:47,230 --> 00:17:50,590
+know country names or all of the detail
+
+470
+00:17:49,180 --> 00:17:53,530
+because there's nothing worse than
+
+471
+00:17:50,590 --> 00:17:55,000
+putting labels on your graph and then
+
+472
+00:17:53,530 --> 00:17:57,370
+having labels on the map and having them
+
+473
+00:17:55,000 --> 00:17:59,950
+clash with each other and just too much
+
+474
+00:17:57,370 --> 00:18:01,450
+too much text so here we're using an
+
+475
+00:17:59,950 --> 00:18:03,880
+image instead of a map it's a very nice
+
+476
+00:18:01,450 --> 00:18:07,390
+way to summarize things and they're a
+
+477
+00:18:03,880 --> 00:18:10,450
+really cool thing just to finish up this
+
+478
+00:18:07,390 --> 00:18:11,650
+is um this is the new version of key
+
+479
+00:18:10,450 --> 00:18:15,010
+lines that we're about to release in the
+
+480
+00:18:11,650 --> 00:18:18,640
+next week or so and you can see if I can
+
+481
+00:18:15,010 --> 00:18:20,920
+find the play button what we can do is
+
+482
+00:18:18,640 --> 00:18:23,530
+if I want to drill down look inside
+
+483
+00:18:20,920 --> 00:18:25,090
+Bangalore we're now not using a map at
+
+484
+00:18:23,530 --> 00:18:30,820
+all we're using a floor plan and we're
+
+485
+00:18:25,090 --> 00:18:34,150
+showing zones or aspects of this network
+
+486
+00:18:30,820 --> 00:18:37,420
+that are not in any way they're not
+
+487
+00:18:34,150 --> 00:18:39,190
+really geo coded but we can treat them
+
+488
+00:18:37,420 --> 00:18:41,050
+as if they're maps and now you start to
+
+489
+00:18:39,190 --> 00:18:43,210
+see the benefit of this because in terms
+
+490
+00:18:41,050 --> 00:18:46,120
+of giving context to a set of what is
+
+491
+00:18:43,210 --> 00:18:47,860
+pretty dry data this is basically log
+
+492
+00:18:46,120 --> 00:18:49,510
+files of a machine talking to a machine
+
+493
+00:18:47,860 --> 00:18:51,520
+if you actually saw the raw data behind
+
+494
+00:18:49,510 --> 00:18:54,280
+this it would be very uninspiring it's
+
+495
+00:18:51,520 --> 00:18:57,850
+pages and pages of this IP address talk
+
+496
+00:18:54,280 --> 00:18:59,830
+to this IP address and trying to have an
+
+497
+00:18:57,850 --> 00:19:01,860
+end user or an analyst understand that
+
+498
+00:18:59,830 --> 00:19:03,910
+connected data is really all about
+
+499
+00:19:01,860 --> 00:19:05,820
+helping them see it in a familiar
+
+500
+00:19:03,910 --> 00:19:10,900
+context so whether that's the high level
+
+501
+00:19:05,820 --> 00:19:12,280
+Geographic view or a floor plan where
+
+502
+00:19:10,900 --> 00:19:14,290
+are these machines physically located
+
+503
+00:19:12,280 --> 00:19:16,270
+with the zones are they in whether
+
+504
+00:19:14,290 --> 00:19:23,320
+they're virtual or real it can be a
+
+505
+00:19:16,270 --> 00:19:24,130
+really powerful tool so come summarize
+
+506
+00:19:23,320 --> 00:19:26,740
+all of that basically
+
+507
+00:19:24,130 --> 00:19:28,270
+my top tip would be if don't let a
+
+508
+00:19:26,740 --> 00:19:29,950
+requirement for a map ruin a good
+
+509
+00:19:28,270 --> 00:19:31,360
+visualization you put a lot of effort
+
+510
+00:19:29,950 --> 00:19:35,020
+into your database you put a lot of
+
+511
+00:19:31,360 --> 00:19:38,260
+effort into thinking about getting that
+
+512
+00:19:35,020 --> 00:19:39,400
+knowledge into one place and it's very
+
+513
+00:19:38,260 --> 00:19:41,050
+easy to
+
+514
+00:19:39,400 --> 00:19:42,490
+and this doesn't just apply to maps it
+
+515
+00:19:41,050 --> 00:19:44,020
+applies to visualization in general it's
+
+516
+00:19:42,490 --> 00:19:45,910
+really easy to spoil all of that by
+
+517
+00:19:44,020 --> 00:19:47,700
+getting a poor user interface and having
+
+518
+00:19:45,910 --> 00:19:50,500
+users just look at it and go oh that's
+
+519
+00:19:47,700 --> 00:19:53,740
+that's horrible I've talked to a lot of
+
+520
+00:19:50,500 --> 00:19:55,360
+people who are you know use the language
+
+521
+00:19:53,740 --> 00:19:57,670
+this they're scared of the graph because
+
+522
+00:19:55,360 --> 00:20:00,340
+the graph is that tangle overwhelming
+
+523
+00:19:57,670 --> 00:20:01,540
+mess the idea sounds great but when I
+
+524
+00:20:00,340 --> 00:20:03,550
+see that thing I'd give me a spreadsheet
+
+525
+00:20:01,540 --> 00:20:06,850
+because I know spreadsheets they I'm
+
+526
+00:20:03,550 --> 00:20:08,170
+familiar with them so obviously we're in
+
+527
+00:20:06,850 --> 00:20:09,910
+the visualization world so we think this
+
+528
+00:20:08,170 --> 00:20:13,540
+is important but I would argue it is it
+
+529
+00:20:09,910 --> 00:20:15,250
+is important and if you're trying to do
+
+530
+00:20:13,540 --> 00:20:16,630
+this on a map try to show geographical
+
+531
+00:20:15,250 --> 00:20:18,700
+stuff there these are the tips so use
+
+532
+00:20:16,630 --> 00:20:20,950
+the interactions where you can exploit
+
+533
+00:20:18,700 --> 00:20:23,710
+what mapping gives you overlays and
+
+534
+00:20:20,950 --> 00:20:26,800
+hovering and so on choose the right data
+
+535
+00:20:23,710 --> 00:20:28,030
+model and if if some of your data is
+
+536
+00:20:26,800 --> 00:20:30,700
+missing think about how you can
+
+537
+00:20:28,030 --> 00:20:32,080
+represent it and pick the right map like
+
+538
+00:20:30,700 --> 00:20:34,030
+something people are familiar with pick
+
+539
+00:20:32,080 --> 00:20:35,830
+something that isn't full of clutter of
+
+540
+00:20:34,030 --> 00:20:37,570
+labels if the labels aren't relevant if
+
+541
+00:20:35,830 --> 00:20:39,070
+labels and streets are relevant then
+
+542
+00:20:37,570 --> 00:20:42,550
+give people the ability to turn them on
+
+543
+00:20:39,070 --> 00:20:45,370
+and off and think about how the map
+
+544
+00:20:42,550 --> 00:20:48,820
+ABB's context rather than adding
+
+545
+00:20:45,370 --> 00:20:49,900
+confusion so that's that's pretty much
+
+546
+00:20:48,820 --> 00:20:52,000
+all I had so I'm happy to take questions
+
+547
+00:20:49,900 --> 00:20:53,650
+we have a booth over there and if you
+
+548
+00:20:52,000 --> 00:20:56,530
+want to see a demo of this in action
+
+549
+00:20:53,650 --> 00:20:58,330
+then we can show it you we go a lot
+
+550
+00:20:56,530 --> 00:21:00,580
+further than just Maps we look at any
+
+551
+00:20:58,330 --> 00:21:03,520
+kind of connected network visualization
+
+552
+00:21:00,580 --> 00:21:05,350
+but our our new release of the software
+
+553
+00:21:03,520 --> 00:21:07,030
+is all about that geospatial aspect so
+
+554
+00:21:05,350 --> 00:21:08,890
+that's that's what I was hoping to get
+
+555
+00:21:07,030 --> 00:21:09,440
+across today so thanks very much happy
+
+556
+00:21:08,890 --> 00:21:16,479
+to take questions
+
+557
+00:21:09,440 --> 00:21:16,479
+[Applause]
+
+558
+00:21:21,059 --> 00:21:23,120
+you
+
