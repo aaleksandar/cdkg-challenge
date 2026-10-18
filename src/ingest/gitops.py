@@ -226,6 +226,8 @@ def _resolve_by_key(path: str, token: str) -> bool:
         key, merge = "TalkID", _union_csv
     elif full == config.ENTITIES_JSON:
         key, merge = "filename", _union_json
+    elif full == config.SKIPPED_TALKS:
+        key, merge = "key", _union_json
     else:
         return False
     try:
@@ -413,6 +415,8 @@ def publish_ingest(ctx: dict):
         # Rewritten by the HeySummit sync and tracked; carried by whichever
         # talk comes next rather than left dirty forever.
         config.HEYSUMMIT_CATALOG,
+        # A curator's skips, likewise carried by the next talk.
+        config.SKIPPED_TALKS,
     ]
 
     with _git_lock:

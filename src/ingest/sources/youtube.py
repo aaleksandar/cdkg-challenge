@@ -400,7 +400,7 @@ def resolve_videos(video_ids: list[str]) -> dict:
     from .. import db
 
     known = {v["video_id"]: v for v in db.all_videos()}
-    updates, aired = [], []
+    updates, aired, unanswered = [], [], []
     for video_id in video_ids:
         base = known.get(video_id)
         if base is None:
@@ -408,7 +408,9 @@ def resolve_videos(video_ids: list[str]) -> dict:
         try:
             info = fetch_video_info(video_id)
         except Exception:  # private or removed
-            continue
+            info = {}
+        if base.get("live_status") in UNSETTLED and not info.get("live_status"):
+            unanswered.append(video_id)
         patch = {}
         if info.get("duration"):
             patch["duration"] = int(info["duration"])
@@ -424,14 +426,15 @@ def resolve_videos(video_ids: list[str]) -> dict:
     if updates:
         db.upsert_videos(updates)
 
-    # A per-video lookup from the server can come back without a running time
-    # (four Shorts were ingested in October 2026 that way), while the uploads
-    # playlist still carries one. Ask it for whatever is still unknown: one
-    # flat read of the newest uploads, which is where a video the feed just
-    # turned up is.
+    # A per-video lookup from the server can come back stripped by the bot
+    # check — no running time (four Shorts were ingested in October 2026 that
+    # way) and no live status, so a premiere that aired on 8 October stayed
+    # "upcoming" for a week and its Ingest button did nothing. The uploads
+    # playlist still carries both: one flat read of the newest uploads, which
+    # is where a video the feed just turned up, or a premiere, is.
     unknown = {v["video_id"] for v in db.all_videos()
                if v["video_id"] in video_ids and not v.get("duration")}
-    if unknown:
+    if unknown or unanswered:
         try:
             recent = enumerate_channel(limit=RECENT_UPLOADS)
         except Exception:
@@ -439,6 +442,17 @@ def resolve_videos(video_ids: list[str]) -> dict:
         timed = [v for v in recent if v["video_id"] in unknown and v["duration"]]
         if timed:
             db.upsert_videos(timed)
+        # The playlist flags a premiere or stream that has not finished; an
+        # entry with a running time and no flag is a video anyone can watch.
+        listed = {v["video_id"]: v for v in recent}
+        settled = [listed[vid] for vid in unanswered
+                   if vid in listed and listed[vid]["duration"]
+                   and not listed[vid].get("live_status")]
+        if settled:
+            now = {v["video_id"]: v for v in db.all_videos()}
+            db.upsert_videos([{**now[v["video_id"]], "duration": v["duration"],
+                               "live_status": "not_live"} for v in settled])
+            aired += [v["video_id"] for v in settled]
     return {"resolved": len(updates), "aired": aired}
 
 
