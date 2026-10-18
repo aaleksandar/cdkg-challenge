@@ -1,0 +1,3256 @@
+1
+00:00:03,639 --> 00:00:09,160
+so welcome everyone to our fourth
+
+2
+00:00:06,879 --> 00:00:11,719
+session tonight it's uh learning with
+
+3
+00:00:09,160 --> 00:00:14,000
+the machines connected data London's
+
+4
+00:00:11,719 --> 00:00:17,039
+first online event for
+
+5
+00:00:14,000 --> 00:00:21,640
+2021 and which is all about graph-based
+
+6
+00:00:17,039 --> 00:00:24,480
+data science and machine learning and we
+
+7
+00:00:21,640 --> 00:00:26,439
+have today with us Tara safavi from the
+
+8
+00:00:24,480 --> 00:00:28,640
+University of Michigan Tara is a
+
+9
+00:00:26,439 --> 00:00:31,000
+researcher who has been working on a
+
+10
+00:00:28,640 --> 00:00:34,040
+number of things including in what's
+
+11
+00:00:31,000 --> 00:00:36,719
+called a codex a comprehensive no graph
+
+12
+00:00:34,040 --> 00:00:39,559
+completion Benchmark uh it sounds a bit
+
+13
+00:00:36,719 --> 00:00:42,360
+cryptic at first but I'm sure Tara will
+
+14
+00:00:39,559 --> 00:00:45,480
+will break it down for you uh Tara floor
+
+15
+00:00:42,360 --> 00:00:50,120
+is yours and well uh hope to enjoy your
+
+16
+00:00:45,480 --> 00:00:52,680
+talk thank you so um thanks everyone for
+
+17
+00:00:50,120 --> 00:00:55,680
+coming to my talk today uh as George
+
+18
+00:00:52,680 --> 00:00:59,280
+already mentioned my name is Tara I'm a
+
+19
+00:00:55,680 --> 00:01:01,120
+PhD candidate soon to be PhD hopefully
+
+20
+00:00:59,280 --> 00:01:04,000
+at the University of Michigan in an
+
+21
+00:01:01,120 --> 00:01:06,080
+arbor and I'm doing research at the
+
+22
+00:01:04,000 --> 00:01:08,080
+intersection of natural language
+
+23
+00:01:06,080 --> 00:01:10,320
+processing and graph based machine
+
+24
+00:01:08,080 --> 00:01:12,640
+learning so specifically I'm really
+
+25
+00:01:10,320 --> 00:01:14,439
+interested in ways that we can represent
+
+26
+00:01:12,640 --> 00:01:16,560
+relational knowledge in machines and
+
+27
+00:01:14,439 --> 00:01:19,119
+then use these representations for
+
+28
+00:01:16,560 --> 00:01:20,880
+graph-based inference tasks and actually
+
+29
+00:01:19,119 --> 00:01:22,360
+as of two days ago um if you're
+
+30
+00:01:20,880 --> 00:01:25,159
+interested in the research side of
+
+31
+00:01:22,360 --> 00:01:26,920
+things uh we have a new preprint on
+
+32
+00:01:25,159 --> 00:01:28,880
+neural and symbolic knowledge
+
+33
+00:01:26,920 --> 00:01:30,640
+representations um which you can find on
+
+34
+00:01:28,880 --> 00:01:32,560
+my website which which is linked right
+
+35
+00:01:30,640 --> 00:01:36,320
+here uh but today I'm going to be
+
+36
+00:01:32,560 --> 00:01:39,320
+talking about my work in Knowledge Graph
+
+37
+00:01:36,320 --> 00:01:41,479
+completion just a bit of background um
+
+38
+00:01:39,320 --> 00:01:43,200
+that I want to give before the talk is
+
+39
+00:01:41,479 --> 00:01:46,200
+that this work that I'm going to present
+
+40
+00:01:43,200 --> 00:01:49,000
+today is based off of a paper that was
+
+41
+00:01:46,200 --> 00:01:51,399
+published recently at the emnlp 2020
+
+42
+00:01:49,000 --> 00:01:53,159
+conference that's an NLP conference um
+
+43
+00:01:51,399 --> 00:01:55,320
+if you search the title of this paper
+
+44
+00:01:53,159 --> 00:01:57,360
+codex a comprehensive Knowledge Graph
+
+45
+00:01:55,320 --> 00:01:59,200
+completion Benchmark you'll find it
+
+46
+00:01:57,360 --> 00:02:01,200
+freely available online you can also
+
+47
+00:01:59,200 --> 00:02:02,680
+find it on my website so if you're
+
+48
+00:02:01,200 --> 00:02:04,920
+interested in diving more into the
+
+49
+00:02:02,680 --> 00:02:08,479
+research details um I would definitely
+
+50
+00:02:04,920 --> 00:02:12,120
+encourage you to check out our
+
+51
+00:02:08,479 --> 00:02:14,720
+paper okay so I want to start by talking
+
+52
+00:02:12,120 --> 00:02:17,519
+about how do we measure the quality of a
+
+53
+00:02:14,720 --> 00:02:19,360
+Knowledge Graph and um I'm sure many of
+
+54
+00:02:17,519 --> 00:02:21,599
+you are already familiar but just in
+
+55
+00:02:19,360 --> 00:02:24,120
+case you're not a knowledge graph is a
+
+56
+00:02:21,599 --> 00:02:25,800
+symbolic n a relation model of machine
+
+57
+00:02:24,120 --> 00:02:27,599
+knowledge usually World Knowledge or
+
+58
+00:02:25,800 --> 00:02:31,120
+some domain knowledge so here I have a
+
+59
+00:02:27,599 --> 00:02:33,440
+little uh Toy example that shows some
+
+60
+00:02:31,120 --> 00:02:36,440
+knowledge related to
+
+61
+00:02:33,440 --> 00:02:38,280
+musicians so one of the first things we
+
+62
+00:02:36,440 --> 00:02:41,680
+ask about when it comes to knowledge
+
+63
+00:02:38,280 --> 00:02:43,959
+graph quality is precision or accuracy
+
+64
+00:02:41,680 --> 00:02:46,200
+basically Precision asks the question
+
+65
+00:02:43,959 --> 00:02:48,120
+out of all the facts that I have in my
+
+66
+00:02:46,200 --> 00:02:51,519
+knowledge graph how many of these facts
+
+67
+00:02:48,120 --> 00:02:54,000
+are actually true um and because most
+
+68
+00:02:51,519 --> 00:02:57,599
+modern successful knowledge graphs like
+
+69
+00:02:54,000 --> 00:02:59,159
+concept net Wiki data so on have a human
+
+70
+00:02:57,599 --> 00:03:01,200
+component so they're either fully
+
+71
+00:02:59,159 --> 00:03:03,879
+constructed by humans or at least
+
+72
+00:03:01,200 --> 00:03:07,120
+verified by humans um they tend to be
+
+73
+00:03:03,879 --> 00:03:07,120
+pretty high
+
+74
+00:03:07,599 --> 00:03:13,000
+Precision on the other hand we can also
+
+75
+00:03:10,319 --> 00:03:15,400
+ask about recall which is a
+
+76
+00:03:13,000 --> 00:03:17,840
+complimentary metric to Precision so
+
+77
+00:03:15,400 --> 00:03:20,440
+whereas Precision asks out of all the
+
+78
+00:03:17,840 --> 00:03:23,120
+facts I have how many are true recall
+
+79
+00:03:20,440 --> 00:03:24,680
+asks out of all the true facts in the
+
+80
+00:03:23,120 --> 00:03:27,959
+entire space that I'm interested in
+
+81
+00:03:24,680 --> 00:03:31,120
+capturing how many does my kg have
+
+82
+00:03:27,959 --> 00:03:34,040
+within it so as you can imagine recall
+
+83
+00:03:31,120 --> 00:03:36,040
+is a lot harder to assess than Precision
+
+84
+00:03:34,040 --> 00:03:38,680
+because the space effect facts can be
+
+85
+00:03:36,040 --> 00:03:42,040
+very large um and moreover we might not
+
+86
+00:03:38,680 --> 00:03:44,319
+know how large it is in advance however
+
+87
+00:03:42,040 --> 00:03:46,680
+um in general knowledge graphs are known
+
+88
+00:03:44,319 --> 00:03:48,760
+to be incomplete so there are some
+
+89
+00:03:46,680 --> 00:03:51,599
+studies that have sampled parts of
+
+90
+00:03:48,760 --> 00:03:53,400
+knowledge graphs like Wiki data or Yago
+
+91
+00:03:51,599 --> 00:03:55,599
+um and have just looked at like let's
+
+92
+00:03:53,400 --> 00:03:59,079
+say a small set of notable people and
+
+93
+00:03:55,599 --> 00:04:01,720
+and seen that many fields or um
+
+94
+00:03:59,079 --> 00:04:04,239
+relationship for those people we still
+
+95
+00:04:01,720 --> 00:04:08,879
+missing so knowledge graphs in general
+
+96
+00:04:04,239 --> 00:04:12,200
+they're growing always but usually not
+
+97
+00:04:08,879 --> 00:04:14,200
+complete so then the question of course
+
+98
+00:04:12,200 --> 00:04:16,199
+becomes how can we improve recall and
+
+99
+00:04:14,200 --> 00:04:17,560
+knowledge graphs and that gets into the
+
+100
+00:04:16,199 --> 00:04:20,359
+whole field of Knowledge Graph
+
+101
+00:04:17,560 --> 00:04:22,520
+construction and completion so there are
+
+102
+00:04:20,359 --> 00:04:24,000
+several different ways that we could do
+
+103
+00:04:22,520 --> 00:04:27,000
+this actually there's whole fields of
+
+104
+00:04:24,000 --> 00:04:29,360
+research dedicated to this um one way is
+
+105
+00:04:27,000 --> 00:04:31,360
+we can always hire more experts or crowd
+
+106
+00:04:29,360 --> 00:04:33,479
+workers to augment our knowledge graph
+
+107
+00:04:31,360 --> 00:04:37,320
+for us and this is a pretty high
+
+108
+00:04:33,479 --> 00:04:39,840
+Precision um but kind of expensive
+
+109
+00:04:37,320 --> 00:04:42,320
+approach uh another approach is that we
+
+110
+00:04:39,840 --> 00:04:44,720
+can devise automated information
+
+111
+00:04:42,320 --> 00:04:47,039
+extraction methods that identify
+
+112
+00:04:44,720 --> 00:04:49,120
+entities and relations in documents so
+
+113
+00:04:47,039 --> 00:04:50,680
+this can be lower Precision but
+
+114
+00:04:49,120 --> 00:04:53,400
+hopefully less
+
+115
+00:04:50,680 --> 00:04:55,680
+expensive and then a third way which I'm
+
+116
+00:04:53,400 --> 00:04:57,800
+going to focus on in this talk is try
+
+117
+00:04:55,680 --> 00:05:00,199
+using Knowledge Graph completion methods
+
+118
+00:04:57,800 --> 00:05:01,880
+like link prediction um so so all of
+
+119
+00:05:00,199 --> 00:05:03,280
+these methods have their place in the
+
+120
+00:05:01,880 --> 00:05:04,560
+knowledge graph construction pipeline
+
+121
+00:05:03,280 --> 00:05:07,560
+but I'm just going to focus on this
+
+122
+00:05:04,560 --> 00:05:10,080
+third one so when I say Knowledge Graph
+
+123
+00:05:07,560 --> 00:05:12,039
+completion in this talk or KGC I'm
+
+124
+00:05:10,080 --> 00:05:15,440
+basically going to be referring to the
+
+125
+00:05:12,039 --> 00:05:17,800
+task of predicting missing edges missing
+
+126
+00:05:15,440 --> 00:05:20,960
+true edges in a Knowledge Graph so here
+
+127
+00:05:17,800 --> 00:05:23,960
+you see in this example um we have this
+
+128
+00:05:20,960 --> 00:05:25,639
+little robot icon it's predicting a
+
+129
+00:05:23,960 --> 00:05:28,360
+missing relationship in this knowledge
+
+130
+00:05:25,639 --> 00:05:31,639
+graph related to um the label of a
+
+131
+00:05:28,360 --> 00:05:31,639
+released song
+
+132
+00:05:33,000 --> 00:05:37,520
+so Knowledge Graph completion can be
+
+133
+00:05:35,440 --> 00:05:39,639
+seen as a supervised or self-supervised
+
+134
+00:05:37,520 --> 00:05:41,479
+machine learning problem so shallow or
+
+135
+00:05:39,639 --> 00:05:43,319
+deep learning models can be developed
+
+136
+00:05:41,479 --> 00:05:46,160
+and have been developed for Knowledge
+
+137
+00:05:43,319 --> 00:05:48,680
+Graph completion and the supervision
+
+138
+00:05:46,160 --> 00:05:50,400
+setup usually works something like this
+
+139
+00:05:48,680 --> 00:05:53,319
+so first let's say you have a model you
+
+140
+00:05:50,400 --> 00:05:56,639
+train it to predict missing entities or
+
+141
+00:05:53,319 --> 00:05:58,400
+relations in a fraction of the triples
+
+142
+00:05:56,639 --> 00:06:00,080
+in your knowledge graph under
+
+143
+00:05:58,400 --> 00:06:02,960
+consideration and then then you will
+
+144
+00:06:00,080 --> 00:06:04,600
+test the model in the same task this
+
+145
+00:06:02,960 --> 00:06:06,440
+prediction task for the remaining
+
+146
+00:06:04,600 --> 00:06:08,039
+triples that you held out and there are
+
+147
+00:06:06,440 --> 00:06:09,759
+also some other variants of this task
+
+148
+00:06:08,039 --> 00:06:11,520
+which one of which I'll discuss later in
+
+149
+00:06:09,759 --> 00:06:14,080
+my
+
+150
+00:06:11,520 --> 00:06:17,479
+talk so of course I'm sure you're
+
+151
+00:06:14,080 --> 00:06:19,680
+wondering does this work um as we looked
+
+152
+00:06:17,479 --> 00:06:21,639
+at in our paper there's there's we have
+
+153
+00:06:19,680 --> 00:06:25,599
+a review and there's certainly a lot of
+
+154
+00:06:21,639 --> 00:06:27,840
+papers that focus on this um across AI
+
+155
+00:06:25,599 --> 00:06:29,720
+conferences machine learning conferences
+
+156
+00:06:27,840 --> 00:06:31,960
+NLP conferences these are just some
+
+157
+00:06:29,720 --> 00:06:34,680
+papers from the last seven years that
+
+158
+00:06:31,960 --> 00:06:34,680
+are fairly
+
+159
+00:06:35,080 --> 00:06:39,120
+notable but just because there are a lot
+
+160
+00:06:37,680 --> 00:06:41,000
+of papers published doesn't really
+
+161
+00:06:39,120 --> 00:06:43,319
+answer my question about does this work
+
+162
+00:06:41,000 --> 00:06:45,800
+or not um so let's take a moment to
+
+163
+00:06:43,319 --> 00:06:47,840
+rewind it's really important to note and
+
+164
+00:06:45,800 --> 00:06:50,479
+I really want to emphasize in this talk
+
+165
+00:06:47,840 --> 00:06:53,120
+that um all measured progress in AI
+
+166
+00:06:50,479 --> 00:06:55,280
+research when not being directly applied
+
+167
+00:06:53,120 --> 00:06:56,680
+to a real world application where we can
+
+168
+00:06:55,280 --> 00:07:00,240
+you know collect a set of metrics that
+
+169
+00:06:56,680 --> 00:07:03,639
+are pretty direct comes from benchmark
+
+170
+00:07:00,240 --> 00:07:05,639
+so a benchmark can be seen as a data set
+
+171
+00:07:03,639 --> 00:07:08,479
+that's supposed to like accurately
+
+172
+00:07:05,639 --> 00:07:11,319
+represent a real world use case or task
+
+173
+00:07:08,479 --> 00:07:13,759
+so in NLP research and ml research
+
+174
+00:07:11,319 --> 00:07:16,759
+benchmarks are used to compare Computing
+
+175
+00:07:13,759 --> 00:07:19,520
+systems or more commonly just algorithms
+
+176
+00:07:16,759 --> 00:07:21,520
+um for some task that The Benchmark is
+
+177
+00:07:19,520 --> 00:07:23,199
+supposed to represent given a metric or
+
+178
+00:07:21,520 --> 00:07:26,080
+a set of metrics and theoretically
+
+179
+00:07:23,199 --> 00:07:29,919
+benchmarks let us say things like Model
+
+180
+00:07:26,080 --> 00:07:32,000
+A is better than model B for task T um
+
+181
+00:07:29,919 --> 00:07:35,680
+on these certain metrics so they let us
+
+182
+00:07:32,000 --> 00:07:37,520
+basically compare models or
+
+183
+00:07:35,680 --> 00:07:39,400
+algorithms so of course since we're
+
+184
+00:07:37,520 --> 00:07:42,360
+talking about knowledge graph completion
+
+185
+00:07:39,400 --> 00:07:44,720
+then um it's natural to wonder what do
+
+186
+00:07:42,360 --> 00:07:46,680
+benchmarks look like in Knowledge Graph
+
+187
+00:07:44,720 --> 00:07:49,000
+completion
+
+188
+00:07:46,680 --> 00:07:52,039
+research if you'll recall from a few
+
+189
+00:07:49,000 --> 00:07:53,720
+slides ago we looked at a lot of papers
+
+190
+00:07:52,039 --> 00:07:56,240
+in Knowledge Graph
+
+191
+00:07:53,720 --> 00:07:58,199
+completion um and we investigated the
+
+192
+00:07:56,240 --> 00:08:00,840
+benchmarks that they use in these papers
+
+193
+00:07:58,199 --> 00:08:02,479
+there are about 12 benchmarks maybe
+
+194
+00:08:00,840 --> 00:08:04,879
+three or so which are like the most
+
+195
+00:08:02,479 --> 00:08:07,319
+represented in these papers and we found
+
+196
+00:08:04,879 --> 00:08:10,080
+a lot of problems with these benchmarks
+
+197
+00:08:07,319 --> 00:08:12,199
+um one of the I would say the most
+
+198
+00:08:10,080 --> 00:08:14,919
+prevalent issues is a Reliance on very
+
+199
+00:08:12,199 --> 00:08:16,440
+outdated data sources like free base
+
+200
+00:08:14,919 --> 00:08:19,039
+another one which has been noted in
+
+201
+00:08:16,440 --> 00:08:20,599
+several papers before is um leakage
+
+202
+00:08:19,039 --> 00:08:22,639
+between training and testing splits and
+
+203
+00:08:20,599 --> 00:08:24,280
+leakage just means that if you train a
+
+204
+00:08:22,639 --> 00:08:26,199
+model on a certain split then it's going
+
+205
+00:08:24,280 --> 00:08:29,080
+to gather a lot of like kind of easy
+
+206
+00:08:26,199 --> 00:08:31,280
+information that makes um testing too
+
+207
+00:08:29,080 --> 00:08:32,680
+easy essentially so if you have leakage
+
+208
+00:08:31,280 --> 00:08:34,479
+then you're not really able to test the
+
+209
+00:08:32,680 --> 00:08:37,039
+generalization capability of a model
+
+210
+00:08:34,479 --> 00:08:39,360
+correctly some other things we noticed
+
+211
+00:08:37,039 --> 00:08:41,560
+are um a lack of standardized versions
+
+212
+00:08:39,360 --> 00:08:43,399
+among different papers um low
+
+213
+00:08:41,560 --> 00:08:45,160
+interpretability for for humans
+
+214
+00:08:43,399 --> 00:08:45,920
+something I'll talk about later also so
+
+215
+00:08:45,160 --> 00:08:48,519
+in
+
+216
+00:08:45,920 --> 00:08:51,040
+general we we found some
+
+217
+00:08:48,519 --> 00:08:53,480
+problems so as a result then we were
+
+218
+00:08:51,040 --> 00:08:55,920
+motivated to propose a new data set a
+
+219
+00:08:53,480 --> 00:08:57,160
+new Benchmark um for the task of
+
+220
+00:08:55,920 --> 00:09:00,519
+Knowledge Graph
+
+221
+00:08:57,160 --> 00:09:02,040
+completion uh which we call codec or a
+
+222
+00:09:00,519 --> 00:09:03,800
+set of knowled graph completion data
+
+223
+00:09:02,040 --> 00:09:06,320
+sets extracted from Wiki data and
+
+224
+00:09:03,800 --> 00:09:08,279
+Wikipedia that's a lot to say so for the
+
+225
+00:09:06,320 --> 00:09:11,560
+rest of this talk I'm just going to say
+
+226
+00:09:08,279 --> 00:09:13,399
+codex um and in the rest of this talk
+
+227
+00:09:11,560 --> 00:09:15,040
+I'm going to be answering a series of
+
+228
+00:09:13,399 --> 00:09:16,920
+questions that you might have about
+
+229
+00:09:15,040 --> 00:09:19,480
+codex or really any Benchmark that
+
+230
+00:09:16,920 --> 00:09:21,360
+someone proposes in research so first of
+
+231
+00:09:19,480 --> 00:09:23,760
+all how was this Benchmark designed and
+
+232
+00:09:21,360 --> 00:09:26,160
+collected what goals did you have second
+
+233
+00:09:23,760 --> 00:09:28,079
+of all what tasks can be tested on The
+
+234
+00:09:26,160 --> 00:09:30,920
+Benchmark um and what are some like
+
+235
+00:09:28,079 --> 00:09:32,760
+preliminary results and then third how
+
+236
+00:09:30,920 --> 00:09:34,480
+does this Benchmark compare to ones that
+
+237
+00:09:32,760 --> 00:09:36,839
+were already existing in the literature
+
+238
+00:09:34,480 --> 00:09:38,360
+and what value does your new Benchmark
+
+239
+00:09:36,839 --> 00:09:40,880
+specifically add that you couldn't get
+
+240
+00:09:38,360 --> 00:09:44,279
+from something else that already
+
+241
+00:09:40,880 --> 00:09:47,000
+existed so before I go on I just want to
+
+242
+00:09:44,279 --> 00:09:48,959
+mention that everything that we did all
+
+243
+00:09:47,000 --> 00:09:51,160
+the data all of the models we ran the
+
+244
+00:09:48,959 --> 00:09:53,120
+code to run the models is publicly
+
+245
+00:09:51,160 --> 00:09:54,800
+accessible and this QR code that you're
+
+246
+00:09:53,120 --> 00:09:56,200
+going to see in the corner of every
+
+247
+00:09:54,800 --> 00:09:58,760
+slide will take you directly to our
+
+248
+00:09:56,200 --> 00:10:00,640
+GitHub repo we have pretty extensive
+
+249
+00:09:58,760 --> 00:10:04,320
+documentation on how to set up and use
+
+250
+00:10:00,640 --> 00:10:08,839
+codex and also open to issues and PRS if
+
+251
+00:10:04,320 --> 00:10:08,839
+you have ideas about how to make it more
+
+252
+00:10:09,079 --> 00:10:15,320
+accessible okay so first question in our
+
+253
+00:10:11,920 --> 00:10:18,600
+road map is how is codex designed and
+
+254
+00:10:15,320 --> 00:10:21,000
+collected um we seated codex with the
+
+255
+00:10:18,600 --> 00:10:22,519
+collaborative Wiki data knowledge base
+
+256
+00:10:21,000 --> 00:10:24,959
+which you might already be familiar with
+
+257
+00:10:22,519 --> 00:10:26,360
+it's a sister project of Wikipedia and
+
+258
+00:10:24,959 --> 00:10:28,240
+we think it's great and I think the
+
+259
+00:10:26,360 --> 00:10:30,240
+research Community thinks it's great for
+
+260
+00:10:28,240 --> 00:10:32,800
+a variety of reasons so one it's
+
+261
+00:10:30,240 --> 00:10:34,600
+publicly available it's quite large um
+
+262
+00:10:32,800 --> 00:10:36,920
+so it's like a treasure Trove of data
+
+263
+00:10:34,600 --> 00:10:38,639
+really it's pretty high Precision it
+
+264
+00:10:36,920 --> 00:10:41,200
+covers a lot of
+
+265
+00:10:38,639 --> 00:10:43,240
+languages um and it's also linked very
+
+266
+00:10:41,200 --> 00:10:46,160
+directly to Wikipedia and I'll talk more
+
+267
+00:10:43,240 --> 00:10:49,959
+about how these things are used in
+
+268
+00:10:46,160 --> 00:10:52,839
+codex so to get our initial seed data
+
+269
+00:10:49,959 --> 00:10:54,680
+from Wiki data we manually defined a set
+
+270
+00:10:52,839 --> 00:10:57,279
+of World Knowledge topics that we were
+
+271
+00:10:54,680 --> 00:10:58,959
+interested in these topics here um and
+
+272
+00:10:57,279 --> 00:11:01,600
+then we collected Wiki data entity and
+
+273
+00:10:58,959 --> 00:11:04,279
+Rel types related to each topic and
+
+274
+00:11:01,600 --> 00:11:06,160
+queried Wiki data for all the triples
+
+275
+00:11:04,279 --> 00:11:08,839
+that satisfi these enti and relation
+
+276
+00:11:06,160 --> 00:11:13,079
+types so that got us around maybe
+
+277
+00:11:08,839 --> 00:11:16,040
+1.2 million triples in total to start
+
+278
+00:11:13,079 --> 00:11:18,040
+with and then from there we filter down
+
+279
+00:11:16,040 --> 00:11:21,560
+these triples into smaller connected
+
+280
+00:11:18,040 --> 00:11:24,639
+cores in three sizes which we call codex
+
+281
+00:11:21,560 --> 00:11:27,720
+M and L to reflect their relative sizes
+
+282
+00:11:24,639 --> 00:11:29,760
+so each size has a different we see each
+
+283
+00:11:27,720 --> 00:11:33,160
+size as having a different use case so
+
+284
+00:11:29,760 --> 00:11:35,959
+codex s the smallest um we see it more
+
+285
+00:11:33,160 --> 00:11:38,040
+for testing of models or running
+
+286
+00:11:35,959 --> 00:11:40,440
+computationally expensive approaches
+
+287
+00:11:38,040 --> 00:11:43,240
+let's say like rule-based learning um
+
+288
+00:11:40,440 --> 00:11:45,279
+and then codex M&L were designed in
+
+289
+00:11:43,240 --> 00:11:47,000
+terms of size to match existing
+
+290
+00:11:45,279 --> 00:11:49,160
+benchmarks that are very commonly used
+
+291
+00:11:47,000 --> 00:11:52,040
+in the knowledge graph embedding
+
+292
+00:11:49,160 --> 00:11:54,360
+literature um so I'll talk more about a
+
+293
+00:11:52,040 --> 00:11:56,800
+comparison of codex M to a existing
+
+294
+00:11:54,360 --> 00:11:59,440
+Benchmark later um so we see these as
+
+295
+00:11:56,800 --> 00:12:01,480
+more general purpose and pretty much
+
+296
+00:11:59,440 --> 00:12:03,920
+Plug and Play for Knowledge Graph
+
+297
+00:12:01,480 --> 00:12:03,920
+embedding
+
+298
+00:12:04,800 --> 00:12:10,079
+models okay so as I said earlier Wiki
+
+299
+00:12:07,839 --> 00:12:12,040
+data and Wikipedia are tightly linked
+
+300
+00:12:10,079 --> 00:12:15,079
+because they're sister projects so
+
+301
+00:12:12,040 --> 00:12:16,800
+they're both um essentially stores of
+
+302
+00:12:15,079 --> 00:12:18,360
+World Knowledge Wiki data stores
+
+303
+00:12:16,800 --> 00:12:20,440
+knowledge in relational form as a
+
+304
+00:12:18,360 --> 00:12:23,800
+Knowledge Graph and then Wikipedia
+
+305
+00:12:20,440 --> 00:12:26,040
+stores knowledge in document form with
+
+306
+00:12:23,800 --> 00:12:29,519
+sort of semi-structured
+
+307
+00:12:26,040 --> 00:12:32,680
+documents so we use this um linkage to
+
+308
+00:12:29,519 --> 00:12:34,800
+our advantage in codex for each entity
+
+309
+00:12:32,680 --> 00:12:37,639
+in all of the Codex data sets we
+
+310
+00:12:34,800 --> 00:12:39,440
+collected um a snippet of text which was
+
+311
+00:12:37,639 --> 00:12:42,079
+the first paragraph of the entity's
+
+312
+00:12:39,440 --> 00:12:44,600
+Wikipedia page and we did this in six
+
+313
+00:12:42,079 --> 00:12:47,760
+languages that are fairly well covered
+
+314
+00:12:44,600 --> 00:12:50,320
+in um Wiki data in Wikipedia spanning a
+
+315
+00:12:47,760 --> 00:12:53,079
+variety of scripts and language families
+
+316
+00:12:50,320 --> 00:12:56,560
+and this is fairly unique because um
+
+317
+00:12:53,079 --> 00:12:59,560
+existing KGC benchmarks either only have
+
+318
+00:12:56,560 --> 00:13:01,720
+text in English or more more L they
+
+319
+00:12:59,560 --> 00:13:04,480
+actually don't contain any texts at all
+
+320
+00:13:01,720 --> 00:13:07,519
+um but our hypothesis is that well you
+
+321
+00:13:04,480 --> 00:13:09,560
+know with the Advent of NLP um it's
+
+322
+00:13:07,519 --> 00:13:11,639
+really useful to do graph-based machine
+
+323
+00:13:09,560 --> 00:13:13,920
+learning with some side information
+
+324
+00:13:11,639 --> 00:13:16,839
+which is
+
+325
+00:13:13,920 --> 00:13:19,040
+text and then we also did something else
+
+326
+00:13:16,839 --> 00:13:23,160
+kind of unique with codec so let me give
+
+327
+00:13:19,040 --> 00:13:25,199
+you a bit of background here um most
+
+328
+00:13:23,160 --> 00:13:27,839
+knowledge graphs like this one I show in
+
+329
+00:13:25,199 --> 00:13:29,639
+this figure contain only true or
+
+330
+00:13:27,839 --> 00:13:33,600
+positive knowledge so that is to say
+
+331
+00:13:29,639 --> 00:13:35,920
+every fact that you see here like Adele
+
+332
+00:13:33,600 --> 00:13:40,120
+created Hello Beyonce is a citizen of
+
+333
+00:13:35,920 --> 00:13:44,199
+the USA all of these facts are true
+
+334
+00:13:40,120 --> 00:13:45,639
+right but sometimes false or explicitly
+
+335
+00:13:44,199 --> 00:13:48,120
+like say let's say negative knowledge
+
+336
+00:13:45,639 --> 00:13:51,360
+can be very useful because it can tell
+
+337
+00:13:48,120 --> 00:13:54,320
+us um what not to believe or maybe what
+
+338
+00:13:51,360 --> 00:13:56,519
+not to do so for example if we had both
+
+339
+00:13:54,320 --> 00:13:58,480
+positive and negative triples Knowledge
+
+340
+00:13:56,519 --> 00:14:01,079
+Graph triples we could train a machine
+
+341
+00:13:58,480 --> 00:14:02,759
+learning model to directly classify them
+
+342
+00:14:01,079 --> 00:14:05,160
+which you could imagine could be useful
+
+343
+00:14:02,759 --> 00:14:06,800
+for things like misinformation detection
+
+344
+00:14:05,160 --> 00:14:09,959
+on the
+
+345
+00:14:06,800 --> 00:14:11,800
+web but then the question is um if we
+
+346
+00:14:09,959 --> 00:14:13,639
+only have positive data how can we
+
+347
+00:14:11,800 --> 00:14:15,639
+construct negatives in the first place
+
+348
+00:14:13,639 --> 00:14:19,320
+where do these negatives come
+
+349
+00:14:15,639 --> 00:14:21,240
+from so um briefly what we did to create
+
+350
+00:14:19,320 --> 00:14:23,680
+negatives for codex is we started with
+
+351
+00:14:21,240 --> 00:14:25,959
+true triples like this one here and then
+
+352
+00:14:23,680 --> 00:14:27,680
+we corrupted the tail entities in each
+
+353
+00:14:25,959 --> 00:14:29,800
+triple with another entity of the same
+
+354
+00:14:27,680 --> 00:14:32,120
+type as predicted by machine learning
+
+355
+00:14:29,800 --> 00:14:33,639
+model to create something that looked
+
+356
+00:14:32,120 --> 00:14:35,480
+plausible but was not necessarily
+
+357
+00:14:33,639 --> 00:14:38,199
+correct so here you can see we replaced
+
+358
+00:14:35,480 --> 00:14:41,519
+the Ned Smooth Operator with another
+
+359
+00:14:38,199 --> 00:14:43,000
+entity another pop song Billy jeene um
+
+360
+00:14:41,519 --> 00:14:44,399
+but this is a triple that's not
+
+361
+00:14:43,000 --> 00:14:45,920
+currently in the knowledge graph and
+
+362
+00:14:44,399 --> 00:14:48,920
+then we manually verified these to make
+
+363
+00:14:45,920 --> 00:14:50,600
+sure these are actually negatives and um
+
+364
+00:14:48,920 --> 00:14:53,480
+here are some examples of actual
+
+365
+00:14:50,600 --> 00:14:55,560
+negatives in codex with examp uh with
+
+366
+00:14:53,480 --> 00:14:59,160
+explanations so for example the first
+
+367
+00:14:55,560 --> 00:15:02,120
+one says that um chopan was a conductor
+
+368
+00:14:59,160 --> 00:15:03,600
+so chopan was a pretty well-known
+
+369
+00:15:02,120 --> 00:15:05,320
+pianist and he wrote a lot of music but
+
+370
+00:15:03,600 --> 00:15:07,120
+he didn't conduct any Orchestra so this
+
+371
+00:15:05,320 --> 00:15:09,440
+is a triple that kind of It's A Hard
+
+372
+00:15:07,120 --> 00:15:12,320
+negative essentially it looks true but
+
+373
+00:15:09,440 --> 00:15:13,839
+it's actually false so uh later in this
+
+374
+00:15:12,320 --> 00:15:15,560
+talk when I talk about benchmarking
+
+375
+00:15:13,839 --> 00:15:19,320
+we're going to return to these negatives
+
+376
+00:15:15,560 --> 00:15:19,320
+and show how they can be used for
+
+377
+00:15:19,720 --> 00:15:24,120
+classification okay so before I go on to
+
+378
+00:15:21,880 --> 00:15:26,279
+the next part of this talk I want to
+
+379
+00:15:24,120 --> 00:15:29,480
+mention that in the GitHub repo which is
+
+380
+00:15:26,279 --> 00:15:32,040
+in this QR code um we have an active
+
+381
+00:15:29,480 --> 00:15:34,079
+Jupiter notebook that you can run
+
+382
+00:15:32,040 --> 00:15:35,680
+locally if you have Jupiter you can run
+
+383
+00:15:34,079 --> 00:15:39,360
+it on a remote server you can also run
+
+384
+00:15:35,680 --> 00:15:41,000
+it in Google collab um and this notebook
+
+385
+00:15:39,360 --> 00:15:43,759
+is called explore codex and it will
+
+386
+00:15:41,000 --> 00:15:45,440
+basically show different stats of codex
+
+387
+00:15:43,759 --> 00:15:47,720
+it will give some examples of content
+
+388
+00:15:45,440 --> 00:15:49,040
+and also has a lot of nice plots in it
+
+389
+00:15:47,720 --> 00:15:52,519
+so if you want to play around with the
+
+390
+00:15:49,040 --> 00:15:52,519
+data more it's a really good place to
+
+391
+00:15:52,680 --> 00:15:59,720
+start okay so next question in the road
+
+392
+00:15:55,120 --> 00:16:02,240
+map what KGC tasks can I test on codex
+
+393
+00:15:59,720 --> 00:16:04,120
+so in our work we focused on two tasks
+
+394
+00:16:02,240 --> 00:16:06,639
+the first of which was link prediction
+
+395
+00:16:04,120 --> 00:16:08,759
+and this is by far the most common task
+
+396
+00:16:06,639 --> 00:16:10,199
+in the KGC literature and Link
+
+397
+00:16:08,759 --> 00:16:13,240
+prediction is essentially a ranking
+
+398
+00:16:10,199 --> 00:16:15,040
+problem um given a set of let's say test
+
+399
+00:16:13,240 --> 00:16:16,839
+triples from a Knowledge Graph you hold
+
+400
+00:16:15,040 --> 00:16:18,600
+out either the head or the tail entities
+
+401
+00:16:16,839 --> 00:16:20,680
+in these triples and then you have your
+
+402
+00:16:18,600 --> 00:16:22,839
+machine learning model um rank the
+
+403
+00:16:20,680 --> 00:16:26,040
+possible entities that like fill in the
+
+404
+00:16:22,839 --> 00:16:28,480
+blank or answer the query for each um
+
+405
+00:16:26,040 --> 00:16:30,680
+for each query so then we just compute
+
+406
+00:16:28,480 --> 00:16:35,000
+ranking metrics like mean reciprocal
+
+407
+00:16:30,680 --> 00:16:37,920
+Rank and hits at k for um this
+
+408
+00:16:35,000 --> 00:16:40,120
+task and then the other task that we did
+
+409
+00:16:37,920 --> 00:16:42,040
+is triple classification and this is
+
+410
+00:16:40,120 --> 00:16:44,319
+less common in the literature much much
+
+411
+00:16:42,040 --> 00:16:46,560
+less common due to the lack of real
+
+412
+00:16:44,319 --> 00:16:48,800
+negative examples however since I talked
+
+413
+00:16:46,560 --> 00:16:50,440
+about earlier uh we actually have real
+
+414
+00:16:48,800 --> 00:16:52,079
+negative examples in codex
+
+415
+00:16:50,440 --> 00:16:53,880
+classification is possible with our data
+
+416
+00:16:52,079 --> 00:16:56,480
+set and here basically you just feed a
+
+417
+00:16:53,880 --> 00:16:58,000
+model triples um and you just have it
+
+418
+00:16:56,480 --> 00:17:00,000
+label them as true or false and you
+
+419
+00:16:58,000 --> 00:17:02,079
+compute binary classification metrics
+
+420
+00:17:00,000 --> 00:17:04,559
+like
+
+421
+00:17:02,079 --> 00:17:06,880
+accuracy um as far as models and
+
+422
+00:17:04,559 --> 00:17:09,480
+implementation we provided Baseline
+
+423
+00:17:06,880 --> 00:17:11,199
+results for five diverse Knowledge Graph
+
+424
+00:17:09,480 --> 00:17:13,439
+embedding models that were proposed
+
+425
+00:17:11,199 --> 00:17:15,679
+within the last 10 years we chose these
+
+426
+00:17:13,439 --> 00:17:17,360
+models pretty carefully for a variety of
+
+427
+00:17:15,679 --> 00:17:20,240
+reasons one because they're all very
+
+428
+00:17:17,360 --> 00:17:21,919
+well known highly cited um and two
+
+429
+00:17:20,240 --> 00:17:23,919
+because they represent essentially
+
+430
+00:17:21,919 --> 00:17:26,319
+different classes of architectures which
+
+431
+00:17:23,919 --> 00:17:28,520
+kind of allowed us to like use each as a
+
+432
+00:17:26,319 --> 00:17:29,480
+representative of its architectural
+
+433
+00:17:28,520 --> 00:17:33,480
+class
+
+434
+00:17:29,480 --> 00:17:35,320
+um so linear nonlinear shallow deep um
+
+435
+00:17:33,480 --> 00:17:38,320
+tensor decomposition Matrix
+
+436
+00:17:35,320 --> 00:17:41,520
+decomposition additive so on so in terms
+
+437
+00:17:38,320 --> 00:17:43,840
+of the libraries that we used um we
+
+438
+00:17:41,520 --> 00:17:45,559
+relied a lot on the Liv kge Library
+
+439
+00:17:43,840 --> 00:17:48,280
+which is an open- Source knowledge graft
+
+440
+00:17:45,559 --> 00:17:50,840
+embedding library that I will advocate
+
+441
+00:17:48,280 --> 00:17:52,400
+for very heavily in general because it
+
+442
+00:17:50,840 --> 00:17:54,360
+provides really good functionality not
+
+443
+00:17:52,400 --> 00:17:57,039
+only for implementing models and testing
+
+444
+00:17:54,360 --> 00:17:58,600
+them but for Fairly comparing them and
+
+445
+00:17:57,039 --> 00:18:01,000
+exhaustively tuning them in terms of
+
+446
+00:17:58,600 --> 00:18:03,159
+hyper parameters it uses pytorch and
+
+447
+00:18:01,000 --> 00:18:05,919
+this um adaptive experimentation
+
+448
+00:18:03,159 --> 00:18:08,240
+platform from Facebook and basically um
+
+449
+00:18:05,919 --> 00:18:09,840
+it makes it really easy to run a lot of
+
+450
+00:18:08,240 --> 00:18:11,400
+different hyper parameter configurations
+
+451
+00:18:09,840 --> 00:18:14,360
+for a model and like checkpoint the
+
+452
+00:18:11,400 --> 00:18:16,320
+results organize the results and so on
+
+453
+00:18:14,360 --> 00:18:17,919
+and I think this is really important and
+
+454
+00:18:16,320 --> 00:18:19,559
+many people in the ml Community think
+
+455
+00:18:17,919 --> 00:18:22,000
+it's important because there's a lot of
+
+456
+00:18:19,559 --> 00:18:24,840
+recent work showing that when you
+
+457
+00:18:22,000 --> 00:18:27,200
+properly compare older maybe simpler
+
+458
+00:18:24,840 --> 00:18:29,240
+models with newer more complex ones and
+
+459
+00:18:27,200 --> 00:18:31,320
+you really exhaustively tune them a lot
+
+460
+00:18:29,240 --> 00:18:34,000
+of performance differences on benchmarks
+
+461
+00:18:31,320 --> 00:18:35,760
+will disappear which is to say that um
+
+462
+00:18:34,000 --> 00:18:40,080
+we as a community aren't always doing a
+
+463
+00:18:35,760 --> 00:18:42,159
+good job of um comparing models fairly
+
+464
+00:18:40,080 --> 00:18:45,640
+we're often biasing towards newer more
+
+465
+00:18:42,159 --> 00:18:50,159
+complex things so lib kge gives us a
+
+466
+00:18:45,640 --> 00:18:52,120
+really good way to fairly compare our
+
+467
+00:18:50,159 --> 00:18:54,000
+models okay so let's look at some
+
+468
+00:18:52,120 --> 00:18:55,360
+results um you're going to see a lot of
+
+469
+00:18:54,000 --> 00:18:56,960
+numbers there's going to be three
+
+470
+00:18:55,360 --> 00:18:58,360
+metrics per model in data set but I
+
+471
+00:18:56,960 --> 00:18:59,840
+would say don't focus on the numbers
+
+472
+00:18:58,360 --> 00:19:02,919
+themselves we're just going to really
+
+473
+00:18:59,840 --> 00:19:04,679
+focus on the takeaways so um the
+
+474
+00:19:02,919 --> 00:19:06,400
+takeaways for link prediction is that we
+
+475
+00:19:04,679 --> 00:19:08,640
+found for two out of the three data sets
+
+476
+00:19:06,400 --> 00:19:11,360
+actually an earlier model which relies
+
+477
+00:19:08,640 --> 00:19:14,039
+on Matrix factorization essentially uh
+
+478
+00:19:11,360 --> 00:19:16,480
+performs best when all the models were
+
+479
+00:19:14,039 --> 00:19:19,240
+fairly compared and then for the largest
+
+480
+00:19:16,480 --> 00:19:21,600
+sta set codex L um a more recent model
+
+481
+00:19:19,240 --> 00:19:23,480
+which relies on tensor factorization
+
+482
+00:19:21,600 --> 00:19:25,440
+performed best and these are all shallow
+
+483
+00:19:23,480 --> 00:19:28,720
+models um the only deep model that we
+
+484
+00:19:25,440 --> 00:19:30,919
+considered it was um competitive but
+
+485
+00:19:28,720 --> 00:19:33,080
+never performed the best which led us to
+
+486
+00:19:30,919 --> 00:19:34,799
+wonder is deeper really better in the
+
+487
+00:19:33,080 --> 00:19:38,200
+case of L prediction and I think this
+
+488
+00:19:34,799 --> 00:19:40,880
+question is still kind of Up For
+
+489
+00:19:38,200 --> 00:19:42,240
+Debate um we also found that depending
+
+490
+00:19:40,880 --> 00:19:43,919
+on the input hyperparameter
+
+491
+00:19:42,240 --> 00:19:46,880
+configuration that you gave to each
+
+492
+00:19:43,919 --> 00:19:48,960
+model performance varied hugely as you
+
+493
+00:19:46,880 --> 00:19:50,200
+can see by this plot um and this has
+
+494
+00:19:48,960 --> 00:19:52,080
+been observed several times in
+
+495
+00:19:50,200 --> 00:19:53,360
+literature before so again this goes
+
+496
+00:19:52,080 --> 00:19:55,720
+back to what I was saying earlier that
+
+497
+00:19:53,360 --> 00:19:57,559
+it's really important to fairly and
+
+498
+00:19:55,720 --> 00:19:59,200
+properly tune your models to get the
+
+499
+00:19:57,559 --> 00:20:01,520
+best performance out of them
+
+500
+00:19:59,200 --> 00:20:05,360
+and also to report actually like means
+
+501
+00:20:01,520 --> 00:20:07,240
+and variances and things of um
+
+502
+00:20:05,360 --> 00:20:09,679
+performance same thing for triple
+
+503
+00:20:07,240 --> 00:20:10,840
+classification we'll just uh there's
+
+504
+00:20:09,679 --> 00:20:13,880
+going to be a bunch of numbers we'll
+
+505
+00:20:10,840 --> 00:20:16,520
+just talk about the takeaways and here
+
+506
+00:20:13,880 --> 00:20:18,159
+um we compared classification on
+
+507
+00:20:16,520 --> 00:20:21,280
+positives and the hard negatives that we
+
+508
+00:20:18,159 --> 00:20:23,280
+came up with in codex to negatives that
+
+509
+00:20:21,280 --> 00:20:24,600
+were just generated at random that's
+
+510
+00:20:23,280 --> 00:20:27,159
+kind of what tends to be done in the
+
+511
+00:20:24,600 --> 00:20:29,240
+literature these days um when triple
+
+512
+00:20:27,159 --> 00:20:31,559
+classification is considered
+
+513
+00:20:29,240 --> 00:20:33,240
+and here the main takeaway is just that
+
+514
+00:20:31,559 --> 00:20:35,760
+when you generate negatives at random
+
+515
+00:20:33,240 --> 00:20:38,280
+all of these kg these um kg embedding
+
+516
+00:20:35,760 --> 00:20:40,640
+models can basically perfectly classify
+
+517
+00:20:38,280 --> 00:20:42,880
+positives and negatives but when you
+
+518
+00:20:40,640 --> 00:20:45,360
+give them hard negatives negatives that
+
+519
+00:20:42,880 --> 00:20:47,960
+look true but are really false then
+
+520
+00:20:45,360 --> 00:20:50,280
+accuracy drops a lot up to like between
+
+521
+00:20:47,960 --> 00:20:52,960
+10 and 19 points so this just is to say
+
+522
+00:20:50,280 --> 00:20:55,720
+there's a lot of room for
+
+523
+00:20:52,960 --> 00:20:58,840
+improvement okay finally uh the last
+
+524
+00:20:55,720 --> 00:21:00,600
+question in the road map um which I'll
+
+525
+00:20:58,840 --> 00:21:03,000
+go through briefly which is just how
+
+526
+00:21:00,600 --> 00:21:04,840
+does codex compare to existing Knowledge
+
+527
+00:21:03,000 --> 00:21:08,039
+Graph completion benchmarks and what
+
+528
+00:21:04,840 --> 00:21:10,440
+value does it add so for this um we
+
+529
+00:21:08,039 --> 00:21:11,919
+compared to a very popular Benchmark in
+
+530
+00:21:10,440 --> 00:21:15,799
+the literature that's based off of
+
+531
+00:21:11,919 --> 00:21:18,360
+Freebase it's called FB 15K 237 it's
+
+532
+00:21:15,799 --> 00:21:20,720
+hard to say um and we're going to focus
+
+533
+00:21:18,360 --> 00:21:23,159
+on codex M here for comparison because
+
+534
+00:21:20,720 --> 00:21:26,640
+they're pretty much exactly the same
+
+535
+00:21:23,159 --> 00:21:28,799
+size so first we did a brief qualitative
+
+536
+00:21:26,640 --> 00:21:31,080
+comparison um we're going to plot the
+
+537
+00:21:28,799 --> 00:21:33,000
+most frequent relations in each data set
+
+538
+00:21:31,080 --> 00:21:34,960
+and just kind of inspect what do we see
+
+539
+00:21:33,000 --> 00:21:37,039
+here I just want to point out though
+
+540
+00:21:34,960 --> 00:21:39,080
+that this plot and several similar
+
+541
+00:21:37,039 --> 00:21:41,080
+frequency plots can be found in our
+
+542
+00:21:39,080 --> 00:21:43,159
+Explorer codex Jupiter notebook that I
+
+543
+00:21:41,080 --> 00:21:45,039
+mentioned earlier so if you want to see
+
+544
+00:21:43,159 --> 00:21:48,080
+some other types of like frequency
+
+545
+00:21:45,039 --> 00:21:50,279
+comparisons just head over there so
+
+546
+00:21:48,080 --> 00:21:53,440
+there's a lot here but again just two
+
+547
+00:21:50,279 --> 00:21:55,799
+takeaways um to consider the first is
+
+548
+00:21:53,440 --> 00:21:57,279
+that um the freebased data sets that
+
+549
+00:21:55,799 --> 00:22:00,720
+tend to be used in the literature right
+
+550
+00:21:57,279 --> 00:22:02,760
+now are very focused on a kind of um
+
+551
+00:22:00,720 --> 00:22:04,919
+narrow subset of World Knowledge which
+
+552
+00:22:02,760 --> 00:22:07,400
+is mostly related to Awards and
+
+553
+00:22:04,919 --> 00:22:09,679
+entertainment so like films and music
+
+554
+00:22:07,400 --> 00:22:11,400
+kodex we actually tried to make it more
+
+555
+00:22:09,679 --> 00:22:14,159
+diverse in terms of content so you'll
+
+556
+00:22:11,400 --> 00:22:16,279
+see that we have we do have films and
+
+557
+00:22:14,159 --> 00:22:18,799
+music but we also have politics we have
+
+558
+00:22:16,279 --> 00:22:20,760
+writing things like that um the other
+
+559
+00:22:18,799 --> 00:22:22,880
+thing is that for codex you can see the
+
+560
+00:22:20,760 --> 00:22:26,039
+the relation labels are pretty easy to
+
+561
+00:22:22,880 --> 00:22:28,919
+read they're just a couple words um but
+
+562
+00:22:26,039 --> 00:22:30,880
+the freebased ones are very lengthy
+
+563
+00:22:28,919 --> 00:22:32,960
+they're hierarchical in some way also
+
+564
+00:22:30,880 --> 00:22:34,919
+the documentation for Freebase has been
+
+565
+00:22:32,960 --> 00:22:38,000
+deprecated because free base isn't
+
+566
+00:22:34,919 --> 00:22:40,520
+maintained anymore um so we would make
+
+567
+00:22:38,000 --> 00:22:44,159
+the claim that codex because it's based
+
+568
+00:22:40,520 --> 00:22:46,279
+on Wiki data is a lot easier to
+
+569
+00:22:44,159 --> 00:22:47,919
+interpret okay and then we also did a
+
+570
+00:22:46,279 --> 00:22:50,480
+quantitative comparison of these two
+
+571
+00:22:47,919 --> 00:22:52,960
+data sets and what we did here is we
+
+572
+00:22:50,480 --> 00:22:55,600
+devised a very simple link prediction
+
+573
+00:22:52,960 --> 00:22:57,320
+Baseline that we ran on each data set um
+
+574
+00:22:55,600 --> 00:22:59,240
+our simple Baseline basically just
+
+575
+00:22:57,320 --> 00:23:02,000
+computes some entity frequency
+
+576
+00:22:59,240 --> 00:23:03,720
+statistics in each uh data set and then
+
+577
+00:23:02,000 --> 00:23:05,880
+it makes predictions solely based on
+
+578
+00:23:03,720 --> 00:23:08,600
+frequency and then what we did is we
+
+579
+00:23:05,880 --> 00:23:11,240
+compared our Baseline to the best
+
+580
+00:23:08,600 --> 00:23:13,919
+Knowledge Graph embedding model um on
+
+581
+00:23:11,240 --> 00:23:15,720
+each data set and then we computed how
+
+582
+00:23:13,919 --> 00:23:18,440
+much does the model improve over the
+
+583
+00:23:15,720 --> 00:23:20,440
+simple Baseline and the hypothesis here
+
+584
+00:23:18,440 --> 00:23:22,880
+is that if the Baseline performs better
+
+585
+00:23:20,440 --> 00:23:25,200
+on a specific data set then that data
+
+586
+00:23:22,880 --> 00:23:27,520
+set is easier to model because you just
+
+587
+00:23:25,200 --> 00:23:29,919
+really need frequency statistics in
+
+588
+00:23:27,520 --> 00:23:31,640
+order to model it well um and then the
+
+589
+00:23:29,919 --> 00:23:33,880
+fancy Knowledge Graph embedding isn't
+
+590
+00:23:31,640 --> 00:23:35,880
+really as
+
+591
+00:23:33,880 --> 00:23:38,960
+necessary um so what you're going to see
+
+592
+00:23:35,880 --> 00:23:41,080
+in this plot here you have an X and A Y
+
+593
+00:23:38,960 --> 00:23:45,039
+AIS this is a cumulative distribution
+
+594
+00:23:41,080 --> 00:23:46,760
+plot and you can basically read as um
+
+595
+00:23:45,039 --> 00:23:49,919
+the Learned Knowledge Graph embedding
+
+596
+00:23:46,760 --> 00:23:52,480
+the KGC model improves up to X points so
+
+597
+00:23:49,919 --> 00:23:57,240
+that's the x-axis over our simple
+
+598
+00:23:52,480 --> 00:24:00,480
+Baseline for y% of the test set so in
+
+599
+00:23:57,240 --> 00:24:02,760
+practice what we found found is that um
+
+600
+00:24:00,480 --> 00:24:04,919
+our Baseline actually outperformed the
+
+601
+00:24:02,760 --> 00:24:07,440
+knowledge graph embedding for around 10%
+
+602
+00:24:04,919 --> 00:24:09,480
+of the free based data set and our
+
+603
+00:24:07,440 --> 00:24:11,440
+Baseline was within five points of the
+
+604
+00:24:09,480 --> 00:24:13,320
+knowledge graph embedding for around 40%
+
+605
+00:24:11,440 --> 00:24:15,279
+so almost half of the data set our
+
+606
+00:24:13,320 --> 00:24:17,200
+Baseline was fairly comparable to the
+
+607
+00:24:15,279 --> 00:24:20,279
+knowledge graph embedding whereas for
+
+608
+00:24:17,200 --> 00:24:22,400
+codex um we didn't find that and why is
+
+609
+00:24:20,279 --> 00:24:24,360
+this basically um we found that the
+
+610
+00:24:22,400 --> 00:24:25,960
+freebased data set has some very very
+
+611
+00:24:24,360 --> 00:24:28,559
+high degree entities in the graph that
+
+612
+00:24:25,960 --> 00:24:30,200
+it's extremely skewed toward for examp
+
+613
+00:24:28,559 --> 00:24:33,240
+The Entity that represents the United
+
+614
+00:24:30,200 --> 00:24:35,399
+States um so because of this bias it's
+
+615
+00:24:33,240 --> 00:24:37,279
+very easy to make accurate predictions
+
+616
+00:24:35,399 --> 00:24:39,200
+using entity frequency alone you can
+
+617
+00:24:37,279 --> 00:24:41,159
+just predict United States is the answer
+
+618
+00:24:39,200 --> 00:24:44,480
+to a lot of queries and get like pretty
+
+619
+00:24:41,159 --> 00:24:46,279
+decent accuracy um by contrast we
+
+620
+00:24:44,480 --> 00:24:47,799
+actually designed codex to cover a wider
+
+621
+00:24:46,279 --> 00:24:50,799
+variety of topics so that it wasn't
+
+622
+00:24:47,799 --> 00:24:52,720
+skewed in this way um so the takeaway
+
+623
+00:24:50,799 --> 00:24:57,279
+here is just that because of the way
+
+624
+00:24:52,720 --> 00:24:59,640
+codex was designed uh it has less bias
+
+625
+00:24:57,279 --> 00:25:02,559
+and therefore is not so easy to model
+
+626
+00:24:59,640 --> 00:25:05,840
+with just entity frequency
+
+627
+00:25:02,559 --> 00:25:08,720
+statistics okay so that's it for my talk
+
+628
+00:25:05,840 --> 00:25:10,720
+um just to recap if you remember
+
+629
+00:25:08,720 --> 00:25:13,240
+anything from this talk it's that one we
+
+630
+00:25:10,720 --> 00:25:16,679
+introduced and motivated and described
+
+631
+00:25:13,240 --> 00:25:18,640
+codex two um I talked about what tasks
+
+632
+00:25:16,679 --> 00:25:20,000
+can be benchmarked on codex and gave
+
+633
+00:25:18,640 --> 00:25:22,000
+some preliminary results which the
+
+634
+00:25:20,000 --> 00:25:24,360
+community can hopefully build off of and
+
+635
+00:25:22,000 --> 00:25:26,840
+then three I showed the value that codex
+
+636
+00:25:24,360 --> 00:25:28,600
+brings to the literature um by comparing
+
+637
+00:25:26,840 --> 00:25:31,000
+it to basically the most popular
+
+638
+00:25:28,600 --> 00:25:33,960
+existing Knowledge Graph completion
+
+639
+00:25:31,000 --> 00:25:36,480
+Benchmark so thank you so much for
+
+640
+00:25:33,960 --> 00:25:38,840
+coming to my talk um I'm always happy to
+
+641
+00:25:36,480 --> 00:25:41,200
+hear from people or to be connected with
+
+642
+00:25:38,840 --> 00:25:42,720
+on social media um you can also check
+
+643
+00:25:41,200 --> 00:25:44,080
+out my website if you're more interested
+
+644
+00:25:42,720 --> 00:25:45,720
+in the type of research that I'm doing
+
+645
+00:25:44,080 --> 00:25:47,360
+and of course definitely check out our
+
+646
+00:25:45,720 --> 00:25:48,960
+GitHub if you want to play around with
+
+647
+00:25:47,360 --> 00:25:52,640
+Cod
+
+648
+00:25:48,960 --> 00:25:55,200
+XMR great uh thank you very much Tara uh
+
+649
+00:25:52,640 --> 00:25:57,880
+that was a really good talk and I really
+
+650
+00:25:55,200 --> 00:26:00,760
+liked how you how well how you made it
+
+651
+00:25:57,880 --> 00:26:03,080
+approach basically because it's quite
+
+652
+00:26:00,760 --> 00:26:05,679
+quite deep actually academic research
+
+653
+00:26:03,080 --> 00:26:09,159
+and so it's it's great that you at least
+
+654
+00:26:05,679 --> 00:26:11,799
+for me I I was able to to follow that uh
+
+655
+00:26:09,159 --> 00:26:14,080
+so there's a couple of questions um one
+
+656
+00:26:11,799 --> 00:26:17,480
+actually is for me and uh it has to do
+
+657
+00:26:14,080 --> 00:26:21,120
+with the hard negative uh issue that you
+
+658
+00:26:17,480 --> 00:26:23,120
+mentioned and I was wondering um well
+
+659
+00:26:21,120 --> 00:26:25,760
+it's a two-part question so if you could
+
+660
+00:26:23,120 --> 00:26:28,399
+give an example of like you know real
+
+661
+00:26:25,760 --> 00:26:30,520
+real world uh case where you would
+
+662
+00:26:28,399 --> 00:26:33,200
+possibly encounter that and you know
+
+663
+00:26:30,520 --> 00:26:35,159
+what what problem you that would cause I
+
+664
+00:26:33,200 --> 00:26:37,960
+mean you already mentioned that the
+
+665
+00:26:35,159 --> 00:26:41,039
+accuracy uh drops in that case but you
+
+666
+00:26:37,960 --> 00:26:43,760
+know bring an example of what that would
+
+667
+00:26:41,039 --> 00:26:46,360
+uh what the repercussions would be and
+
+668
+00:26:43,760 --> 00:26:49,520
+to and if you have any insights as to
+
+669
+00:26:46,360 --> 00:26:52,440
+how you can uh improve uh recall in that
+
+670
+00:26:49,520 --> 00:26:54,799
+case okay so if I understood quite
+
+671
+00:26:52,440 --> 00:26:59,440
+correctly the question is about
+
+672
+00:26:54,799 --> 00:27:02,080
+applications related to classification
+
+673
+00:26:59,440 --> 00:27:05,320
+um I was more specifically referring to
+
+674
+00:27:02,080 --> 00:27:08,640
+uh the issue you mentioned uh around um
+
+675
+00:27:05,320 --> 00:27:11,120
+hard negative so when you have those in
+
+676
+00:27:08,640 --> 00:27:13,559
+uh in the evaluations that that you did
+
+677
+00:27:11,120 --> 00:27:15,559
+uh you found that the uh recall drops
+
+678
+00:27:13,559 --> 00:27:20,880
+quite significally you said somewhere
+
+679
+00:27:15,559 --> 00:27:24,080
+between 10 or to 19 uh uh units right
+
+680
+00:27:20,880 --> 00:27:26,480
+uhuh so I was wondering if you have any
+
+681
+00:27:24,080 --> 00:27:28,880
+uh if you if you have like any real
+
+682
+00:27:26,480 --> 00:27:31,760
+world example where this happened and if
+
+683
+00:27:28,880 --> 00:27:35,120
+you have any insight what you can do to
+
+684
+00:27:31,760 --> 00:27:38,080
+um well to mitigate that uh yeah so I
+
+685
+00:27:35,120 --> 00:27:40,679
+think one real world example of where
+
+686
+00:27:38,080 --> 00:27:43,559
+you might encounter hard negatives is um
+
+687
+00:27:40,679 --> 00:27:45,519
+so if you think about methods that
+
+688
+00:27:43,559 --> 00:27:47,279
+extract information from Tex so I
+
+689
+00:27:45,519 --> 00:27:49,360
+mentioned at the beginning of the talk
+
+690
+00:27:47,279 --> 00:27:51,120
+um one way to construct a knowledge
+
+691
+00:27:49,360 --> 00:27:53,080
+graph is to run a model that will
+
+692
+00:27:51,120 --> 00:27:55,240
+essentially identify entities and
+
+693
+00:27:53,080 --> 00:27:59,200
+relations uh and map in like map
+
+694
+00:27:55,240 --> 00:28:02,120
+relations to a vocabulary um and so so
+
+695
+00:27:59,200 --> 00:28:05,320
+they're not always correct right like it
+
+696
+00:28:02,120 --> 00:28:07,000
+might find something in the like a
+
+697
+00:28:05,320 --> 00:28:09,000
+information extraction model might find
+
+698
+00:28:07,000 --> 00:28:11,480
+something in a document that looks kind
+
+699
+00:28:09,000 --> 00:28:13,960
+of correct um and it outputs it as a
+
+700
+00:28:11,480 --> 00:28:16,120
+triple to add to your knowledge graph
+
+701
+00:28:13,960 --> 00:28:19,120
+but maybe the confidence is not
+
+702
+00:28:16,120 --> 00:28:20,399
+necessarily high so it might be
+
+703
+00:28:19,120 --> 00:28:22,600
+something like the example I showed
+
+704
+00:28:20,399 --> 00:28:24,760
+earlier where it incorrectly outputs a
+
+705
+00:28:22,600 --> 00:28:26,960
+triple that let's say shade wrote the
+
+706
+00:28:24,760 --> 00:28:28,279
+song Billy Jee which is not true so you
+
+707
+00:28:26,960 --> 00:28:30,399
+might at the end want to have have
+
+708
+00:28:28,279 --> 00:28:32,640
+another classification layer on top of
+
+709
+00:28:30,399 --> 00:28:35,360
+that that essentially outputs some more
+
+710
+00:28:32,640 --> 00:28:38,519
+calibrated confidence of like is this
+
+711
+00:28:35,360 --> 00:28:40,600
+triple true or false um and in order to
+
+712
+00:28:38,519 --> 00:28:42,240
+properly have such like train such a
+
+713
+00:28:40,600 --> 00:28:45,960
+model you need examples of good
+
+714
+00:28:42,240 --> 00:28:48,880
+negatives so that it knows essentially
+
+715
+00:28:45,960 --> 00:28:51,200
+um like it's able to accurately classify
+
+716
+00:28:48,880 --> 00:28:55,279
+these things does that kind of answer
+
+717
+00:28:51,200 --> 00:28:58,159
+your question y yeah it does thank you
+
+718
+00:28:55,279 --> 00:29:02,000
+and there's another one from Ben which
+
+719
+00:28:58,159 --> 00:29:04,039
+is kind of related uh so he's asking if
+
+720
+00:29:02,000 --> 00:29:07,039
+I interpret his question correctly uh
+
+721
+00:29:04,039 --> 00:29:10,640
+he's asking of well if you know of any
+
+722
+00:29:07,039 --> 00:29:14,080
+uh use cases where codex has been used
+
+723
+00:29:10,640 --> 00:29:16,000
+um in whether that's research or uh uh
+
+724
+00:29:14,080 --> 00:29:20,039
+industry I
+
+725
+00:29:16,000 --> 00:29:22,279
+guess um yeah so codex is basically
+
+726
+00:29:20,039 --> 00:29:24,799
+intended to be a research Benchmark
+
+727
+00:29:22,279 --> 00:29:26,840
+which is to say um it comes from Wiki
+
+728
+00:29:24,799 --> 00:29:28,320
+data right so all of the knowledge
+
+729
+00:29:26,840 --> 00:29:30,519
+that's within it is something that's
+
+730
+00:29:28,320 --> 00:29:33,080
+within Wiki data it's not being actively
+
+731
+00:29:30,519 --> 00:29:35,279
+used to like augment Wiki data um but
+
+732
+00:29:33,080 --> 00:29:38,360
+rather to test machine learning models
+
+733
+00:29:35,279 --> 00:29:39,919
+and compare them um but the problem of
+
+734
+00:29:38,360 --> 00:29:42,919
+like link prediction or Knowledge Graph
+
+735
+00:29:39,919 --> 00:29:44,960
+completion in general um is one that
+
+736
+00:29:42,919 --> 00:29:49,000
+I've encountered a decent amount in
+
+737
+00:29:44,960 --> 00:29:50,960
+industry and there's still like pretty
+
+738
+00:29:49,000 --> 00:29:52,600
+there's a lot of uncertainty about like
+
+739
+00:29:50,960 --> 00:29:55,440
+whether knowledge graft completion
+
+740
+00:29:52,600 --> 00:29:56,720
+models can be used in those cases and
+
+741
+00:29:55,440 --> 00:29:58,480
+part of the reason is that the
+
+742
+00:29:56,720 --> 00:30:00,039
+benchmarks that exist in the research
+
+743
+00:29:58,480 --> 00:30:02,679
+Community aren't good enough so for
+
+744
+00:30:00,039 --> 00:30:05,279
+example um I have done some internships
+
+745
+00:30:02,679 --> 00:30:07,640
+in the past where there were domain
+
+746
+00:30:05,279 --> 00:30:10,760
+specific knowledge graphs for example in
+
+747
+00:30:07,640 --> 00:30:12,799
+finance or in let's say um personal
+
+748
+00:30:10,760 --> 00:30:15,760
+information settings where graphs were
+
+749
+00:30:12,799 --> 00:30:17,679
+being built to connect people's um
+
+750
+00:30:15,760 --> 00:30:21,159
+entities and relations that were mostly
+
+751
+00:30:17,679 --> 00:30:24,279
+extracted from text and there was like a
+
+752
+00:30:21,159 --> 00:30:27,279
+strong need and desire to use automated
+
+753
+00:30:24,279 --> 00:30:28,880
+methods to expand these knowledge graphs
+
+754
+00:30:27,279 --> 00:30:31,440
+because they were always is always
+
+755
+00:30:28,880 --> 00:30:33,760
+incomplete um but essentially the
+
+756
+00:30:31,440 --> 00:30:35,360
+results it it was hard to tell whether
+
+757
+00:30:33,760 --> 00:30:39,600
+existing models would really work on
+
+758
+00:30:35,360 --> 00:30:41,880
+them so codex is supposed to help us
+
+759
+00:30:39,600 --> 00:30:43,840
+better understand whether existing
+
+760
+00:30:41,880 --> 00:30:47,600
+models newly proposed models can be used
+
+761
+00:30:43,840 --> 00:30:49,159
+for that task so basically Bridge a
+
+762
+00:30:47,600 --> 00:30:50,679
+little bit better what's going on the
+
+763
+00:30:49,159 --> 00:30:52,880
+research Community where there's always
+
+764
+00:30:50,679 --> 00:30:54,640
+progress but on these kind of like
+
+765
+00:30:52,880 --> 00:30:56,080
+artificial benchmarks and what's going
+
+766
+00:30:54,640 --> 00:30:57,559
+on in the real world which is there are
+
+767
+00:30:56,080 --> 00:30:58,440
+some serious problems that people want
+
+768
+00:30:57,559 --> 00:30:59,840
+to solve
+
+769
+00:30:58,440 --> 00:31:01,320
+and they want to use like Innovative
+
+770
+00:30:59,840 --> 00:31:03,240
+methods for them but they're not exactly
+
+771
+00:31:01,320 --> 00:31:06,799
+sure if they'll work or
+
+772
+00:31:03,240 --> 00:31:08,679
+not okay and there's actually um
+
+773
+00:31:06,799 --> 00:31:11,880
+clarification on the question again from
+
+774
+00:31:08,679 --> 00:31:13,760
+from Ben so he's saying that let's say
+
+775
+00:31:11,880 --> 00:31:18,320
+we have a real world issue where we're
+
+776
+00:31:13,760 --> 00:31:21,840
+not sure um which uh he's saying that
+
+777
+00:31:18,320 --> 00:31:23,799
+you have a like a property graph and you
+
+778
+00:31:21,840 --> 00:31:27,039
+don't actually know whether one version
+
+779
+00:31:23,799 --> 00:31:28,720
+is good or another one and he also
+
+780
+00:31:27,039 --> 00:31:31,519
+states that you have a huge number of
+
+781
+00:31:28,720 --> 00:31:33,480
+nodes like a few Millions for example so
+
+782
+00:31:31,519 --> 00:31:35,760
+he's asking if I interpret the question
+
+783
+00:31:33,480 --> 00:31:37,240
+correctly so he's asking how would you
+
+784
+00:31:35,760 --> 00:31:40,200
+um how would
+
+785
+00:31:37,240 --> 00:31:43,440
+you differentiate between one version of
+
+786
+00:31:40,200 --> 00:31:47,360
+the graph versus another one H that's an
+
+787
+00:31:43,440 --> 00:31:49,720
+interesting question I think that um
+
+788
+00:31:47,360 --> 00:31:51,639
+that might not be exactly within the
+
+789
+00:31:49,720 --> 00:31:55,080
+domain of codex itself but I can
+
+790
+00:31:51,639 --> 00:31:57,039
+definitely talk a bit more about um
+
+791
+00:31:55,080 --> 00:31:58,639
+Knowledge Graph quality so I would say
+
+792
+00:31:57,039 --> 00:32:02,519
+that the best
+
+793
+00:31:58,639 --> 00:32:04,639
+way to like verify whether you have a
+
+794
+00:32:02,519 --> 00:32:06,519
+decent quality Knowledge Graph is to do
+
+795
+00:32:04,639 --> 00:32:08,399
+some sampling and human annotation
+
+796
+00:32:06,519 --> 00:32:12,480
+because when it comes to knowledge
+
+797
+00:32:08,399 --> 00:32:14,200
+humans are usually the experts um so
+
+798
+00:32:12,480 --> 00:32:16,760
+that's probably the way I would start
+
+799
+00:32:14,200 --> 00:32:18,720
+I'm not sure if that is like exactly
+
+800
+00:32:16,760 --> 00:32:22,799
+related to the question the earlier
+
+801
+00:32:18,720 --> 00:32:24,320
+question about real world use cases um
+
+802
+00:32:22,799 --> 00:32:28,279
+yeah
+
+803
+00:32:24,320 --> 00:32:31,399
+okay okay great thanks uh I think for
+
+804
+00:32:28,279 --> 00:32:33,960
+the moment we have no other questions
+
+805
+00:32:31,399 --> 00:32:36,480
+I'll just give like a minute or two to
+
+806
+00:32:33,960 --> 00:32:39,360
+see if uh another one comes
+
+807
+00:32:36,480 --> 00:32:42,799
+in sure I'm also happy to talk more in
+
+808
+00:32:39,360 --> 00:32:46,960
+the community hour um
+
+809
+00:32:42,799 --> 00:32:49,000
+yeah Okay cool so right uh let's let's
+
+810
+00:32:46,960 --> 00:32:52,720
+all uh head up to the community hour
+
+811
+00:32:49,000 --> 00:32:55,039
+then uh thanks again Tara uh for a
+
+812
+00:32:52,720 --> 00:32:57,399
+really nice talk and well see you in a
+
+813
+00:32:55,039 --> 00:32:59,840
+couple of minutes uh in the community
+
+814
+00:32:57,399 --> 00:32:59,840
+hour
+

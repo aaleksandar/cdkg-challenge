@@ -1,0 +1,9380 @@
+1
+00:00:05,120 --> 00:00:13,040
+hello hello everyone and uh welcome to
+
+2
+00:00:08,599 --> 00:00:16,279
+today's workshop and um we're going to
+
+3
+00:00:13,040 --> 00:00:19,320
+talk about uh uh Knowledge Graph and uh
+
+4
+00:00:16,279 --> 00:00:22,720
+we're gonna talk about uh multimodel
+
+5
+00:00:19,320 --> 00:00:26,160
+search um I'm Andre volpini and I'm here
+
+6
+00:00:22,720 --> 00:00:28,759
+with uh bo Wang and I will uh make a
+
+7
+00:00:26,160 --> 00:00:32,399
+quick introduction and then and then get
+
+8
+00:00:28,759 --> 00:00:35,680
+started um Elias I think you can
+
+9
+00:00:32,399 --> 00:00:35,680
+share my
+
+10
+00:00:39,800 --> 00:00:46,840
+screen and we can Andrea
+
+11
+00:00:42,520 --> 00:00:49,120
+Andrea I cannot share your screen to uh
+
+12
+00:00:46,840 --> 00:00:52,039
+you must do that okay I can do that but
+
+13
+00:00:49,120 --> 00:00:55,559
+I can do service and ETA great sure sure
+
+14
+00:00:52,039 --> 00:00:55,559
+sure let me do
+
+15
+00:00:57,519 --> 00:01:05,560
+that all right so
+
+16
+00:01:01,519 --> 00:01:09,759
+so Bo um very happy to to have this with
+
+17
+00:01:05,560 --> 00:01:11,280
+you uh can I ask you a quick
+
+18
+00:01:09,759 --> 00:01:14,080
+introduction
+
+19
+00:01:11,280 --> 00:01:16,159
+yeah yeah of course hello everyone thank
+
+20
+00:01:14,080 --> 00:01:18,720
+you for having me here my name my name
+
+21
+00:01:16,159 --> 00:01:22,119
+is B I'm an AI engineer working at Gina
+
+22
+00:01:18,720 --> 00:01:24,360
+Ai and pre I have I was originally from
+
+23
+00:01:22,119 --> 00:01:26,840
+China but I was like an interational
+
+24
+00:01:24,360 --> 00:01:29,079
+student study in the Netherlands and
+
+25
+00:01:26,840 --> 00:01:31,079
+after working in the Netherlands after a
+
+26
+00:01:29,079 --> 00:01:32,920
+couple of years moved to Berlin and
+
+27
+00:01:31,079 --> 00:01:36,119
+joined Gina
+
+28
+00:01:32,920 --> 00:01:38,439
+AI that's it thank you very much and my
+
+29
+00:01:36,119 --> 00:01:41,759
+name is Andre volini I am co-founder and
+
+30
+00:01:38,439 --> 00:01:45,360
+CEO of world lift and we focus on uh
+
+31
+00:01:41,759 --> 00:01:48,840
+search engine optimization and uh and
+
+32
+00:01:45,360 --> 00:01:51,320
+automation um we have a quick survey uh
+
+33
+00:01:48,840 --> 00:01:54,240
+just to get started and uh to learn more
+
+34
+00:01:51,320 --> 00:01:55,479
+about uh uh the audience uh this is an
+
+35
+00:01:54,240 --> 00:02:00,840
+interactive
+
+36
+00:01:55,479 --> 00:02:04,240
+Workshop um so we will um we will uh um
+
+37
+00:02:00,840 --> 00:02:07,920
+walk you through uh some of the concepts
+
+38
+00:02:04,240 --> 00:02:09,959
+that are behind uh uh this uh prototype
+
+39
+00:02:07,920 --> 00:02:13,440
+that has been developed on top of a
+
+40
+00:02:09,959 --> 00:02:17,400
+fictitious Ecom website so we will start
+
+41
+00:02:13,440 --> 00:02:20,280
+by you know a few ideas but before get
+
+42
+00:02:17,400 --> 00:02:22,040
+to that uh uh we would like to ask a few
+
+43
+00:02:20,280 --> 00:02:25,120
+questions to make sure that we can
+
+44
+00:02:22,040 --> 00:02:28,280
+fine-tune the content to to you know
+
+45
+00:02:25,120 --> 00:02:31,360
+your U background and and expectations
+
+46
+00:02:28,280 --> 00:02:34,599
+so I will let you go through the the the
+
+47
+00:02:31,360 --> 00:02:37,840
+simple three questions that we have uh
+
+48
+00:02:34,599 --> 00:02:37,840
+created for for
+
+49
+00:02:47,920 --> 00:02:53,519
+you can everyone see the the poll
+
+50
+00:03:01,640 --> 00:03:07,640
+okay I can see that attendees are coming
+
+51
+00:03:04,480 --> 00:03:10,280
+so welcome and um and we're just uh
+
+52
+00:03:07,640 --> 00:03:13,239
+starting with uh with a quick uh
+
+53
+00:03:10,280 --> 00:03:16,640
+introduction and and a poll um to
+
+54
+00:03:13,239 --> 00:03:20,560
+understand uh more about how to um
+
+55
+00:03:16,640 --> 00:03:20,560
+fine-tune the content of of today's
+
+56
+00:03:22,360 --> 00:03:27,640
+Workshop so I will um keep another
+
+57
+00:03:25,239 --> 00:03:30,599
+minute for for the poll and then then we
+
+58
+00:03:27,640 --> 00:03:33,040
+can close it and uh
+
+59
+00:03:30,599 --> 00:03:33,040
+should be
+
+60
+00:03:53,599 --> 00:03:59,200
+good looks like everyone knows Pyon and
+
+61
+00:03:56,439 --> 00:04:01,079
+everyone is able to access uh part of
+
+62
+00:03:59,200 --> 00:04:04,239
+the demo that would be that will be on
+
+63
+00:04:01,079 --> 00:04:06,360
+collab um so just please um start with
+
+64
+00:04:04,239 --> 00:04:10,079
+uh answering a few
+
+65
+00:04:06,360 --> 00:04:12,400
+questions and um and then we we can
+
+66
+00:04:10,079 --> 00:04:12,400
+start
+
+67
+00:04:12,879 --> 00:04:19,880
+rolling the workshop is divided in in
+
+68
+00:04:15,640 --> 00:04:24,000
+two sections we we will first uh um try
+
+69
+00:04:19,880 --> 00:04:27,759
+to understand uh what it takes uh to
+
+70
+00:04:24,000 --> 00:04:30,280
+take uh an e-commerce website and build
+
+71
+00:04:27,759 --> 00:04:33,240
+U um a product knowledge graph
+
+72
+00:04:30,280 --> 00:04:37,479
+and then uh we will set the requirements
+
+73
+00:04:33,240 --> 00:04:39,600
+for a a new way of creating an internal
+
+74
+00:04:37,479 --> 00:04:43,280
+search experience on this e-commerce
+
+75
+00:04:39,600 --> 00:04:45,160
+site and then uh uh with the help of B
+
+76
+00:04:43,280 --> 00:04:48,520
+we will uh dive
+
+77
+00:04:45,160 --> 00:04:50,360
+into um the technicalities and how this
+
+78
+00:04:48,520 --> 00:04:54,759
+can be
+
+79
+00:04:50,360 --> 00:04:54,759
+um done using using
+
+80
+00:04:55,960 --> 00:05:02,800
+gni so just a few more more seconds but
+
+81
+00:04:59,880 --> 00:05:06,400
+I think we are fairly confident that
+
+82
+00:05:02,800 --> 00:05:10,880
+that we can run um some some some code
+
+83
+00:05:06,400 --> 00:05:10,880
+on on Google collab and
+
+84
+00:05:13,000 --> 00:05:17,440
+um I will just wait a few few more
+
+85
+00:05:15,479 --> 00:05:20,720
+seconds and then then we can
+
+86
+00:05:17,440 --> 00:05:20,720
+um move
+
+87
+00:05:23,199 --> 00:05:31,000
+on while while the poll runs I can see
+
+88
+00:05:26,360 --> 00:05:31,000
+that more people are joining welcome
+
+89
+00:05:35,039 --> 00:05:41,160
+all right as as as more people get in
+
+90
+00:05:37,000 --> 00:05:43,960
+then then I can see that uh we have more
+
+91
+00:05:41,160 --> 00:05:47,280
+data in the in the
+
+92
+00:05:43,960 --> 00:05:50,000
+poll all right I think that uh as um as
+
+93
+00:05:47,280 --> 00:05:53,160
+as we progress um we can uh leave the
+
+94
+00:05:50,000 --> 00:05:54,880
+poll open um just for another few
+
+95
+00:05:53,160 --> 00:05:57,639
+seconds and then we can get started
+
+96
+00:05:54,880 --> 00:06:00,720
+because we have a of course a limited
+
+97
+00:05:57,639 --> 00:06:03,000
+amount of time
+
+98
+00:06:00,720 --> 00:06:05,919
+and
+
+99
+00:06:03,000 --> 00:06:10,800
+uh okay good good good news is that uh
+
+100
+00:06:05,919 --> 00:06:12,919
+is that uh we everyone is able to to to
+
+101
+00:06:10,800 --> 00:06:15,599
+understand the code in Python and
+
+102
+00:06:12,919 --> 00:06:18,440
+everyone is able to to open the code
+
+103
+00:06:15,599 --> 00:06:22,199
+from from from Google collab all right I
+
+104
+00:06:18,440 --> 00:06:24,720
+will uh close the poll now and um thank
+
+105
+00:06:22,199 --> 00:06:28,520
+you for for
+
+106
+00:06:24,720 --> 00:06:30,520
+waiting um so that's a little bit of how
+
+107
+00:06:28,520 --> 00:06:33,280
+much We Gather not too much I would say
+
+108
+00:06:30,520 --> 00:06:37,000
+but but people are still getting in I
+
+109
+00:06:33,280 --> 00:06:39,639
+see that now we have um several
+
+110
+00:06:37,000 --> 00:06:44,759
+participant but uh let's let's uh let's
+
+111
+00:06:39,639 --> 00:06:48,160
+get started so I will share again my my
+
+112
+00:06:44,759 --> 00:06:48,160
+screen and
+
+113
+00:06:50,000 --> 00:06:58,240
+um okay so I'm I'm sharing D is the
+
+114
+00:06:53,560 --> 00:07:00,759
+screen visible right yes okay good good
+
+115
+00:06:58,240 --> 00:07:06,879
+all right so what is a product graph and
+
+116
+00:07:00,759 --> 00:07:06,879
+here um I will let Google speak for
+
+117
+00:07:08,440 --> 00:07:12,960
+us according to word lft a product
+
+118
+00:07:11,360 --> 00:07:14,680
+knowledge graph is an e-commerce
+
+119
+00:07:12,960 --> 00:07:16,720
+specific form of Knowledge Graph built
+
+120
+00:07:14,680 --> 00:07:19,000
+to improve product findability and end
+
+121
+00:07:16,720 --> 00:07:21,520
+user experiences by enriching a Brand's
+
+122
+00:07:19,000 --> 00:07:23,440
+content with data all right so so a
+
+123
+00:07:21,520 --> 00:07:26,800
+product knowledge graph as uh as Google
+
+124
+00:07:23,440 --> 00:07:29,560
+is able now to say by reading a website
+
+125
+00:07:26,800 --> 00:07:32,360
+it's it's really the starting point of
+
+126
+00:07:29,560 --> 00:07:35,759
+of uh what we're going to see today and
+
+127
+00:07:32,360 --> 00:07:38,800
+um in this most essential form a product
+
+128
+00:07:35,759 --> 00:07:42,120
+knowledge graph it's built uh with uh
+
+129
+00:07:38,800 --> 00:07:45,280
+products as as node and and attribute as
+
+130
+00:07:42,120 --> 00:07:48,879
+edges and uh in in our specifical
+
+131
+00:07:45,280 --> 00:07:51,599
+specific implementation um the the core
+
+132
+00:07:48,879 --> 00:07:54,319
+vocabulary is of course the schema or
+
+133
+00:07:51,599 --> 00:07:56,639
+vocabulary that is the vocabulary that
+
+134
+00:07:54,319 --> 00:08:00,520
+uh it's commonly understood by by search
+
+135
+00:07:56,639 --> 00:08:03,599
+engine so if I have a pair of glasses um
+
+136
+00:08:00,520 --> 00:08:06,240
+then then my role in creating a product
+
+137
+00:08:03,599 --> 00:08:09,840
+knowledge graph is to map all the
+
+138
+00:08:06,240 --> 00:08:14,039
+properties using schema and uh and make
+
+139
+00:08:09,840 --> 00:08:16,479
+sure that uh by doing that I am helping
+
+140
+00:08:14,039 --> 00:08:17,840
+uh search engine like Google and Bank
+
+141
+00:08:16,479 --> 00:08:19,639
+find this
+
+142
+00:08:17,840 --> 00:08:23,000
+product
+
+143
+00:08:19,639 --> 00:08:25,840
+now these um product knowledge graph can
+
+144
+00:08:23,000 --> 00:08:31,319
+be created from various
+
+145
+00:08:25,840 --> 00:08:33,200
+sources um ideally uh we you know want
+
+146
+00:08:31,319 --> 00:08:35,880
+to start with the product information
+
+147
+00:08:33,200 --> 00:08:37,919
+management system when this is available
+
+148
+00:08:35,880 --> 00:08:39,440
+that it's the you know primary source of
+
+149
+00:08:37,919 --> 00:08:42,519
+data for for
+
+150
+00:08:39,440 --> 00:08:45,000
+products but uh most commonly of course
+
+151
+00:08:42,519 --> 00:08:48,399
+we start with uh with u you know the
+
+152
+00:08:45,000 --> 00:08:50,320
+various Merchant feed that uh that um
+
+153
+00:08:48,399 --> 00:08:54,440
+the e-commerce have have already
+
+154
+00:08:50,320 --> 00:08:57,560
+prepared for um their Google or Bing or
+
+155
+00:08:54,440 --> 00:08:59,480
+Amazon um campaigns and and
+
+156
+00:08:57,560 --> 00:09:02,880
+visibility uh last but not least at
+
+157
+00:08:59,480 --> 00:09:05,680
+least we might end up in in crawling uh
+
+158
+00:09:02,880 --> 00:09:10,360
+the site or or part of the site in order
+
+159
+00:09:05,680 --> 00:09:13,360
+to um Arvest the data that that we need
+
+160
+00:09:10,360 --> 00:09:15,600
+inside the product knowledge graph we
+
+161
+00:09:13,360 --> 00:09:17,680
+lift automate SEO by creating this
+
+162
+00:09:15,600 --> 00:09:19,519
+knowledge graph and a lot of the work
+
+163
+00:09:17,680 --> 00:09:22,360
+that we do as you know as a as a
+
+164
+00:09:19,519 --> 00:09:24,839
+building block as this um this this data
+
+165
+00:09:22,360 --> 00:09:28,680
+in in a graph form but of course there
+
+166
+00:09:24,839 --> 00:09:31,480
+are challenges in in doing these and uh
+
+167
+00:09:28,680 --> 00:09:34,200
+and while every every website is
+
+168
+00:09:31,480 --> 00:09:36,160
+different um you know most of the
+
+169
+00:09:34,200 --> 00:09:39,440
+challenges can be grouped into these
+
+170
+00:09:36,160 --> 00:09:42,120
+three uh main areas so the biggest
+
+171
+00:09:39,440 --> 00:09:44,240
+challenge of course is data sparsity uh
+
+172
+00:09:42,120 --> 00:09:47,120
+we might have um you know maybe a
+
+173
+00:09:44,240 --> 00:09:49,320
+thousand products but only 10% of these
+
+174
+00:09:47,120 --> 00:09:52,880
+thousand products have you know all the
+
+175
+00:09:49,320 --> 00:09:56,279
+data points that we think are needed for
+
+176
+00:09:52,880 --> 00:09:58,880
+Google to properly identify the product
+
+177
+00:09:56,279 --> 00:10:01,360
+um some of these uh data points are more
+
+178
+00:09:58,880 --> 00:10:03,560
+important than others uh simply because
+
+179
+00:10:01,360 --> 00:10:06,680
+for instance by providing let's say a
+
+180
+00:10:03,560 --> 00:10:11,360
+unique identifier of of a product in the
+
+181
+00:10:06,680 --> 00:10:13,399
+form of a GT or or you know any other um
+
+182
+00:10:11,360 --> 00:10:16,480
+available standardized product
+
+183
+00:10:13,399 --> 00:10:19,279
+identifier a search engine is capable of
+
+184
+00:10:16,480 --> 00:10:21,600
+um harvesting other properties that I
+
+185
+00:10:19,279 --> 00:10:24,320
+might not have in in my data
+
+186
+00:10:21,600 --> 00:10:27,959
+set um another big issue of course is
+
+187
+00:10:24,320 --> 00:10:30,120
+that uh um we want the data to be to be
+
+188
+00:10:27,959 --> 00:10:32,760
+as comprehensive as possible possible
+
+189
+00:10:30,120 --> 00:10:35,880
+and uh and and specifically when when we
+
+190
+00:10:32,760 --> 00:10:39,200
+deal with products we we have you know a
+
+191
+00:10:35,880 --> 00:10:41,880
+multifaceted object that uh it's not
+
+192
+00:10:39,200 --> 00:10:44,600
+only described with uh a textual
+
+193
+00:10:41,880 --> 00:10:48,040
+description or or a set of attributes
+
+194
+00:10:44,600 --> 00:10:50,880
+but uh most probably is described also
+
+195
+00:10:48,040 --> 00:10:53,800
+with uh with images and with product
+
+196
+00:10:50,880 --> 00:10:56,680
+reviews and uh and maybe with
+
+197
+00:10:53,800 --> 00:10:59,000
+fqs so all these um you know multiple
+
+198
+00:10:56,680 --> 00:11:02,600
+formats have to be there uh in order for
+
+199
+00:10:59,000 --> 00:11:04,600
+the product to be you know fully um
+
+200
+00:11:02,600 --> 00:11:06,760
+searchable and of course this is uh this
+
+201
+00:11:04,600 --> 00:11:08,600
+is challenging it's not always possible
+
+202
+00:11:06,760 --> 00:11:09,880
+but we have to ensure that you know the
+
+203
+00:11:08,600 --> 00:11:12,519
+data whether is structured or
+
+204
+00:11:09,880 --> 00:11:15,200
+unstructured is as as comprehensive as
+
+205
+00:11:12,519 --> 00:11:17,440
+possible now we also need to check the
+
+206
+00:11:15,200 --> 00:11:19,880
+the quality and the reliability of this
+
+207
+00:11:17,440 --> 00:11:22,040
+data and this is vital in the context of
+
+208
+00:11:19,880 --> 00:11:25,160
+of search engine optimization because we
+
+209
+00:11:22,040 --> 00:11:28,040
+want to make sure that uh Google is able
+
+210
+00:11:25,160 --> 00:11:30,079
+to find an alignment for instance
+
+211
+00:11:28,040 --> 00:11:33,240
+between the data that we are sending in
+
+212
+00:11:30,079 --> 00:11:35,240
+the form of um XML feeds uh like the
+
+213
+00:11:33,240 --> 00:11:37,360
+Google Merchant feed and in the form of
+
+214
+00:11:35,240 --> 00:11:38,360
+structured data that is embedded on the
+
+215
+00:11:37,360 --> 00:11:40,760
+web
+
+216
+00:11:38,360 --> 00:11:42,519
+pages there is a you know it's very
+
+217
+00:11:40,760 --> 00:11:44,320
+common that that the two things don't
+
+218
+00:11:42,519 --> 00:11:46,680
+don't talk to each other and and of
+
+219
+00:11:44,320 --> 00:11:49,639
+course it's very common that Google
+
+220
+00:11:46,680 --> 00:11:51,680
+doesn't um get the confidence that is
+
+221
+00:11:49,639 --> 00:11:54,760
+required for for bringing that product
+
+222
+00:11:51,680 --> 00:11:58,680
+up in in in the in the result
+
+223
+00:11:54,760 --> 00:12:01,519
+Pages um it also quite common that uh
+
+224
+00:11:58,680 --> 00:12:02,720
+that uh we we end up in having maybe a
+
+225
+00:12:01,519 --> 00:12:04,800
+product description that is
+
+226
+00:12:02,720 --> 00:12:06,760
+contradicting you know the information
+
+227
+00:12:04,800 --> 00:12:09,880
+that we are passing to the search engine
+
+228
+00:12:06,760 --> 00:12:12,800
+in structure form so all of these um you
+
+229
+00:12:09,880 --> 00:12:16,959
+know um issues with the with the quality
+
+230
+00:12:12,800 --> 00:12:19,760
+of our data become vital in order to
+
+231
+00:12:16,959 --> 00:12:23,199
+automate SEO and to create you know the
+
+232
+00:12:19,760 --> 00:12:25,800
+lift that uh you know solution like like
+
+233
+00:12:23,199 --> 00:12:27,880
+wli needs to make in order to to create
+
+234
+00:12:25,800 --> 00:12:30,120
+a you know the required business
+
+235
+00:12:27,880 --> 00:12:32,440
+value so here I'm just going to go
+
+236
+00:12:30,120 --> 00:12:36,320
+through a few of the processes that we
+
+237
+00:12:32,440 --> 00:12:38,480
+use in order to enhance these product
+
+238
+00:12:36,320 --> 00:12:40,800
+knowledge graph starting from you know
+
+239
+00:12:38,480 --> 00:12:44,320
+whatever data source we might have uh
+
+240
+00:12:40,800 --> 00:12:48,440
+received from the client so here you see
+
+241
+00:12:44,320 --> 00:12:51,440
+a text um of a you know the description
+
+242
+00:12:48,440 --> 00:12:54,800
+of of the the product that we saw before
+
+243
+00:12:51,440 --> 00:12:57,720
+the the Prada 199 uh tinted rounded
+
+244
+00:12:54,800 --> 00:13:02,040
+sunglasses and then you see that uh one
+
+245
+00:12:57,720 --> 00:13:06,320
+of the things that we do is um we we we
+
+246
+00:13:02,040 --> 00:13:07,920
+use um either supervise or unsupervise
+
+247
+00:13:06,320 --> 00:13:10,240
+uh machine learning techniques to
+
+248
+00:13:07,920 --> 00:13:12,399
+classify the product into you know
+
+249
+00:13:10,240 --> 00:13:14,160
+whatever taxonomy it's used by that
+
+250
+00:13:12,399 --> 00:13:17,240
+website and in this case you can see
+
+251
+00:13:14,160 --> 00:13:20,000
+that uh I'm calling an API on on the
+
+252
+00:13:17,240 --> 00:13:22,480
+warli back end and uh and I'm sending
+
+253
+00:13:20,000 --> 00:13:24,680
+the labels and then you know the the
+
+254
+00:13:22,480 --> 00:13:26,680
+algorithm is is telling me that uh you
+
+255
+00:13:24,680 --> 00:13:30,639
+know most probably this would fit into
+
+256
+00:13:26,680 --> 00:13:33,160
+the the the accessory um area of the
+
+257
+00:13:30,639 --> 00:13:36,240
+store so product classification is is
+
+258
+00:13:33,160 --> 00:13:38,279
+one of the is one of the of the things
+
+259
+00:13:36,240 --> 00:13:40,600
+that we can do in order to improve the
+
+260
+00:13:38,279 --> 00:13:43,320
+quality of of the data and and that
+
+261
+00:13:40,600 --> 00:13:46,000
+would allow us to add uh an edge you
+
+262
+00:13:43,320 --> 00:13:49,440
+know I can start to say that well this
+
+263
+00:13:46,000 --> 00:13:51,560
+product belongs to that category and it
+
+264
+00:13:49,440 --> 00:13:53,720
+doesn't seem a lot but it really is a
+
+265
+00:13:51,560 --> 00:13:55,720
+lot in terms of SEO because that would
+
+266
+00:13:53,720 --> 00:13:58,680
+create the confidence that that the
+
+267
+00:13:55,720 --> 00:13:59,720
+search engine requires to drive queries
+
+268
+00:13:58,680 --> 00:14:02,680
+that
+
+269
+00:13:59,720 --> 00:14:05,320
+previously were unseen because of course
+
+270
+00:14:02,680 --> 00:14:07,680
+now we know that you know within within
+
+271
+00:14:05,320 --> 00:14:10,480
+the context of of of the catalog of DC
+
+272
+00:14:07,680 --> 00:14:12,959
+Commerce this product it's it's it's you
+
+273
+00:14:10,480 --> 00:14:16,079
+know classifi as as an
+
+274
+00:14:12,959 --> 00:14:20,959
+accessory then of course uh we can uh uh
+
+275
+00:14:16,079 --> 00:14:23,800
+work with images and uh and um and here
+
+276
+00:14:20,959 --> 00:14:25,959
+um you know you can you can quickly um
+
+277
+00:14:23,800 --> 00:14:29,160
+get on this link that that I'm sharing
+
+278
+00:14:25,959 --> 00:14:30,880
+now in the chat and uh and and and you
+
+279
+00:14:29,160 --> 00:14:34,440
+can see
+
+280
+00:14:30,880 --> 00:14:37,000
+um how the structured data it's created
+
+281
+00:14:34,440 --> 00:14:39,720
+by by whift for this specific product
+
+282
+00:14:37,000 --> 00:14:42,279
+and how we are able starting from a
+
+283
+00:14:39,720 --> 00:14:44,639
+single image to create multiple
+
+284
+00:14:42,279 --> 00:14:49,120
+Renditions of the image for that
+
+285
+00:14:44,639 --> 00:14:50,920
+specific product so enhancing um the the
+
+286
+00:14:49,120 --> 00:14:54,240
+the quality and the quantity of the
+
+287
+00:14:50,920 --> 00:14:59,040
+image it's it's something that we do and
+
+288
+00:14:54,240 --> 00:15:01,399
+that uh um allow us to then create one
+
+289
+00:14:59,040 --> 00:15:05,240
+another node which is in this case the
+
+290
+00:15:01,399 --> 00:15:07,480
+schema image property and here we
+
+291
+00:15:05,240 --> 00:15:09,920
+started with an original images and then
+
+292
+00:15:07,480 --> 00:15:13,199
+we start to create you know the various
+
+293
+00:15:09,920 --> 00:15:15,360
+uh sizes of of of the images that uh
+
+294
+00:15:13,199 --> 00:15:18,560
+that uh a search engine like Google or
+
+295
+00:15:15,360 --> 00:15:21,160
+Bing would use for creating you know the
+
+296
+00:15:18,560 --> 00:15:24,759
+various carousels inside the Google
+
+297
+00:15:21,160 --> 00:15:28,759
+shopping inside uh um you know the the
+
+298
+00:15:24,759 --> 00:15:33,720
+the free listing on the universal search
+
+299
+00:15:28,759 --> 00:15:35,959
+and and whatnot so um getting one images
+
+300
+00:15:33,720 --> 00:15:38,399
+creating the images getting the category
+
+301
+00:15:35,959 --> 00:15:41,440
+or try to understand the category from
+
+302
+00:15:38,399 --> 00:15:44,279
+from from the r text are some of the
+
+303
+00:15:41,440 --> 00:15:46,959
+things that we can do in order to uh
+
+304
+00:15:44,279 --> 00:15:49,839
+improve uh the the quality of the data
+
+305
+00:15:46,959 --> 00:15:52,360
+in this product knowledge graph NTI the
+
+306
+00:15:49,839 --> 00:15:55,000
+recognition it's it's another of these
+
+307
+00:15:52,360 --> 00:15:58,560
+uh uh tools that that we use for
+
+308
+00:15:55,000 --> 00:15:59,480
+instance for uh uh detecting uh brands
+
+309
+00:15:58,560 --> 00:16:01,399
+in
+
+310
+00:15:59,480 --> 00:16:03,839
+attributes and uh and in product
+
+311
+00:16:01,399 --> 00:16:08,079
+knowledge graph it's it's interesting to
+
+312
+00:16:03,839 --> 00:16:10,639
+see that uh um we are not dealing just
+
+313
+00:16:08,079 --> 00:16:13,680
+with entities because in some cases
+
+314
+00:16:10,639 --> 00:16:16,920
+we're dealing for instance with uh um
+
+315
+00:16:13,680 --> 00:16:20,519
+properties like materials or property
+
+316
+00:16:16,920 --> 00:16:24,360
+like uh the sizes and uh and all of
+
+317
+00:16:20,519 --> 00:16:27,959
+these uh properties are um inside the
+
+318
+00:16:24,360 --> 00:16:30,959
+custom vocabulary that we create for the
+
+319
+00:16:27,959 --> 00:16:33,519
+specific implement ation that uh we use
+
+320
+00:16:30,959 --> 00:16:37,560
+for training the mty recognition so that
+
+321
+00:16:33,519 --> 00:16:40,279
+then we can uh again improve the quality
+
+322
+00:16:37,560 --> 00:16:42,639
+of the data behind the product and after
+
+323
+00:16:40,279 --> 00:16:45,920
+we have added for instance the category
+
+324
+00:16:42,639 --> 00:16:48,440
+and the images then we can add add the
+
+325
+00:16:45,920 --> 00:16:50,440
+brand by using the the name entity
+
+326
+00:16:48,440 --> 00:16:52,360
+recognition on you know the same text
+
+327
+00:16:50,440 --> 00:16:55,360
+that we add at the beginning and these
+
+328
+00:16:52,360 --> 00:17:00,040
+are just examples of you know the the
+
+329
+00:16:55,360 --> 00:17:03,000
+the required data work that we do for o
+
+330
+00:17:00,040 --> 00:17:05,839
+and again all of this work in the end is
+
+331
+00:17:03,000 --> 00:17:07,799
+measured in terms of uh how many organic
+
+332
+00:17:05,839 --> 00:17:11,480
+clicks can we generate you know what is
+
+333
+00:17:07,799 --> 00:17:14,160
+the actual lift that we can make so
+
+334
+00:17:11,480 --> 00:17:17,600
+that's really our starting point now
+
+335
+00:17:14,160 --> 00:17:19,600
+when we do something like uh the name
+
+336
+00:17:17,600 --> 00:17:23,640
+entity recognition for extracting the
+
+337
+00:17:19,600 --> 00:17:28,439
+brand we also do the referencing so we
+
+338
+00:17:23,640 --> 00:17:31,880
+also look into Wiki data or dbpedia or
+
+339
+00:17:28,439 --> 00:17:34,039
+any data set uh that uh the client has
+
+340
+00:17:31,880 --> 00:17:37,360
+made available to us in order to
+
+341
+00:17:34,039 --> 00:17:39,360
+properly dreference The Entity with you
+
+342
+00:17:37,360 --> 00:17:43,320
+know the equivalent entity in another
+
+343
+00:17:39,360 --> 00:17:47,559
+data set that can provide further
+
+344
+00:17:43,320 --> 00:17:51,520
+insights now in our platform we are also
+
+345
+00:17:47,559 --> 00:17:54,000
+able to merge different graph so on one
+
+346
+00:17:51,520 --> 00:17:56,919
+side we might have a centralized
+
+347
+00:17:54,000 --> 00:17:59,400
+Knowledge Graph with all the brands and
+
+348
+00:17:56,919 --> 00:18:02,039
+then you know with all the link
+
+349
+00:17:59,400 --> 00:18:05,120
+associated with these Brands and then on
+
+350
+00:18:02,039 --> 00:18:07,880
+another data set on another graph we we
+
+351
+00:18:05,120 --> 00:18:11,200
+might have um you know all the list of
+
+352
+00:18:07,880 --> 00:18:14,000
+the attributes for our products now we
+
+353
+00:18:11,200 --> 00:18:17,679
+have uh um created the infrastructure in
+
+354
+00:18:14,000 --> 00:18:19,880
+such a way that we can uh uh merge data
+
+355
+00:18:17,679 --> 00:18:23,679
+coming from different graph into the
+
+356
+00:18:19,880 --> 00:18:26,840
+same Json LD that a search engine would
+
+357
+00:18:23,679 --> 00:18:28,799
+see and this allow us to also work with
+
+358
+00:18:26,840 --> 00:18:30,799
+multiple teams so there is a team that
+
+359
+00:18:28,799 --> 00:18:32,440
+maybe it's curating uh uh the brand
+
+360
+00:18:30,799 --> 00:18:34,640
+names and and teams that maybe it's
+
+361
+00:18:32,440 --> 00:18:37,120
+cating uh you know the different fashion
+
+362
+00:18:34,640 --> 00:18:39,760
+styles and then all of these information
+
+363
+00:18:37,120 --> 00:18:43,919
+from multiple graph it's merged into you
+
+364
+00:18:39,760 --> 00:18:47,240
+know the final um Json LD that that it's
+
+365
+00:18:43,919 --> 00:18:50,280
+packaged for for for for Google and and
+
+366
+00:18:47,240 --> 00:18:50,280
+B to to
+
+367
+00:18:53,039 --> 00:18:59,320
+process now is is all of these helping
+
+368
+00:18:56,080 --> 00:19:02,159
+Google so this is kind of a proof of the
+
+369
+00:18:59,320 --> 00:19:03,919
+padding which which is it's so important
+
+370
+00:19:02,159 --> 00:19:06,080
+when doing marketing and when doing
+
+371
+00:19:03,919 --> 00:19:08,280
+automation because of course we need to
+
+372
+00:19:06,080 --> 00:19:10,720
+make sure as we progress with this data
+
+373
+00:19:08,280 --> 00:19:13,360
+enrichment that you know we are creating
+
+374
+00:19:10,720 --> 00:19:15,440
+a value that is significant enough to
+
+375
+00:19:13,360 --> 00:19:18,280
+justify the the cost of the service and
+
+376
+00:19:15,440 --> 00:19:20,200
+the cost of the DAT data curation but
+
+377
+00:19:18,280 --> 00:19:22,600
+this just an example of you know a
+
+378
+00:19:20,200 --> 00:19:26,520
+recent implementation that we had in
+
+379
+00:19:22,600 --> 00:19:28,320
+Mexico on uh on um thousands of of URLs
+
+380
+00:19:26,520 --> 00:19:31,159
+and and then here you can see the
+
+381
+00:19:28,320 --> 00:19:34,000
+different in terms of clicks generated
+
+382
+00:19:31,159 --> 00:19:36,799
+from Google measure from the search uh
+
+383
+00:19:34,000 --> 00:19:40,440
+from the Google search console on your
+
+384
+00:19:36,799 --> 00:19:45,159
+else where we have uh simply added the
+
+385
+00:19:40,440 --> 00:19:47,280
+images the category and the brand for uh
+
+386
+00:19:45,159 --> 00:19:50,039
+um for a set of products and you can see
+
+387
+00:19:47,280 --> 00:19:53,080
+that you know quite visibly we were able
+
+388
+00:19:50,039 --> 00:19:55,640
+to create a lift you know a double digit
+
+389
+00:19:53,080 --> 00:19:59,080
+growth in this case
+
+390
+00:19:55,640 --> 00:20:01,520
+35% um versus of course the the control
+
+391
+00:19:59,080 --> 00:20:03,240
+group so all of these um you know the
+
+392
+00:20:01,520 --> 00:20:05,760
+creation of the product knowledge graph
+
+393
+00:20:03,240 --> 00:20:09,600
+it's it's you know it's effective in the
+
+394
+00:20:05,760 --> 00:20:12,080
+beginning because we we we provide uh um
+
+395
+00:20:09,600 --> 00:20:15,360
+multiple ways for for Google algorithm
+
+396
+00:20:12,080 --> 00:20:18,840
+to understand what product we are
+
+397
+00:20:15,360 --> 00:20:22,200
+selling now we have recently um started
+
+398
+00:20:18,840 --> 00:20:26,039
+to work also um in direct collaboration
+
+399
+00:20:22,200 --> 00:20:28,120
+with the team of open AI on uh creating
+
+400
+00:20:26,039 --> 00:20:29,480
+the I would say the the ker product
+
+401
+00:20:28,120 --> 00:20:31,559
+description
+
+402
+00:20:29,480 --> 00:20:33,480
+because as we were working more on this
+
+403
+00:20:31,559 --> 00:20:36,840
+product knowledge graph and on
+
+404
+00:20:33,480 --> 00:20:40,679
+e-commerce we we quickly realized that
+
+405
+00:20:36,840 --> 00:20:44,480
+uh um the quality of of the descriptions
+
+406
+00:20:40,679 --> 00:20:47,200
+on on most of the stores it's it's poor
+
+407
+00:20:44,480 --> 00:20:49,679
+and and it also takes a lot of time for
+
+408
+00:20:47,200 --> 00:20:52,720
+uh for um you know the editorial team or
+
+409
+00:20:49,679 --> 00:20:55,760
+the shop owner to to work and improve
+
+410
+00:20:52,720 --> 00:20:57,679
+these these description and so we we we
+
+411
+00:20:55,760 --> 00:21:00,000
+started to look at you know what was
+
+412
+00:20:57,679 --> 00:21:02,240
+around and in the best practices and
+
+413
+00:21:00,000 --> 00:21:05,640
+then we have created our own uh uh
+
+414
+00:21:02,240 --> 00:21:09,080
+pipeline for uh producing new product
+
+415
+00:21:05,640 --> 00:21:11,440
+description by starting um from the data
+
+416
+00:21:09,080 --> 00:21:14,960
+in the product knowledge graph and so
+
+417
+00:21:11,440 --> 00:21:17,440
+I'm going to share quickly um some of
+
+418
+00:21:14,960 --> 00:21:20,080
+the process that we have in place now on
+
+419
+00:21:17,440 --> 00:21:22,440
+the on the left side uh here you see the
+
+420
+00:21:20,080 --> 00:21:24,799
+existing product description which is
+
+421
+00:21:22,440 --> 00:21:27,799
+associated with this fictitious
+
+422
+00:21:24,799 --> 00:21:29,559
+e-commerce website that we're using for
+
+423
+00:21:27,799 --> 00:21:31,440
+today's them
+
+424
+00:21:29,559 --> 00:21:34,440
+and uh and you can quickly recognize
+
+425
+00:21:31,440 --> 00:21:37,559
+that um this is template based and so
+
+426
+00:21:34,440 --> 00:21:40,360
+it's repeated across you know um the
+
+427
+00:21:37,559 --> 00:21:43,039
+products in the same category and uh in
+
+428
+00:21:40,360 --> 00:21:45,720
+the end a lot of the text uh it's really
+
+429
+00:21:43,039 --> 00:21:48,679
+not informative because it's it's it's a
+
+430
+00:21:45,720 --> 00:21:51,880
+repetition of um of a
+
+431
+00:21:48,679 --> 00:21:54,840
+template and uh and on the on the right
+
+432
+00:21:51,880 --> 00:21:57,720
+side you see what we uh have been able
+
+433
+00:21:54,840 --> 00:22:00,360
+to produce uh using the data in the
+
+434
+00:21:57,720 --> 00:22:03,960
+graph and uh and in the language model
+
+435
+00:22:00,360 --> 00:22:05,640
+like gpt3 in this case it's it's
+
+436
+00:22:03,960 --> 00:22:08,520
+something that it's kind of changed in
+
+437
+00:22:05,640 --> 00:22:12,679
+the game because it's it's not only more
+
+438
+00:22:08,520 --> 00:22:14,240
+informative but it allow us to scale um
+
+439
+00:22:12,679 --> 00:22:17,159
+the the creation of these product
+
+440
+00:22:14,240 --> 00:22:18,799
+description to the level of the variant
+
+441
+00:22:17,159 --> 00:22:20,880
+most of the product description are
+
+442
+00:22:18,799 --> 00:22:23,360
+associated with the main version of the
+
+443
+00:22:20,880 --> 00:22:28,200
+product but here the challenge for us is
+
+444
+00:22:23,360 --> 00:22:30,320
+to find uh um a way to to create uh
+
+445
+00:22:28,200 --> 00:22:33,000
+unique unique product description for
+
+446
+00:22:30,320 --> 00:22:37,039
+every for one and every variant of the
+
+447
+00:22:33,000 --> 00:22:39,480
+product now in our cases we also want to
+
+448
+00:22:37,039 --> 00:22:43,400
+respect the tone of voice of the brand
+
+449
+00:22:39,480 --> 00:22:44,919
+so we need to carefully study how the
+
+450
+00:22:43,400 --> 00:22:47,000
+brand is approaching you know the
+
+451
+00:22:44,919 --> 00:22:49,480
+description of the product and and and
+
+452
+00:22:47,000 --> 00:22:51,120
+what are the lesson learned from their
+
+453
+00:22:49,480 --> 00:22:53,039
+editorial team when when writing
+
+454
+00:22:51,120 --> 00:22:54,960
+something like this which it seems
+
+455
+00:22:53,039 --> 00:22:56,640
+simple to the human eye but then it's
+
+456
+00:22:54,960 --> 00:22:59,120
+it's highly complicated when you start
+
+457
+00:22:56,640 --> 00:23:01,400
+looking at it in in terms of uh you know
+
+458
+00:22:59,120 --> 00:23:04,320
+uh training data and and and and and
+
+459
+00:23:01,400 --> 00:23:06,360
+fine-tuning of a of a language model we
+
+460
+00:23:04,320 --> 00:23:08,919
+also want to be SEO friendly and
+
+461
+00:23:06,360 --> 00:23:10,640
+informative that means that we know by
+
+462
+00:23:08,919 --> 00:23:13,480
+looking at the queries behind this
+
+463
+00:23:10,640 --> 00:23:16,279
+product that uh some keywords needs to
+
+464
+00:23:13,480 --> 00:23:17,679
+be there in order for for the product to
+
+465
+00:23:16,279 --> 00:23:20,960
+be easily
+
+466
+00:23:17,679 --> 00:23:24,360
+found just to give you an idea um you
+
+467
+00:23:20,960 --> 00:23:26,799
+know something like um sunglasses or or
+
+468
+00:23:24,360 --> 00:23:28,960
+eyeglasses or the the product type uh
+
+469
+00:23:26,799 --> 00:23:32,520
+it's it's not always available in these
+
+470
+00:23:28,960 --> 00:23:36,880
+product descriptions now as we know um
+
+471
+00:23:32,520 --> 00:23:41,240
+language model are stochastic and um not
+
+472
+00:23:36,880 --> 00:23:44,720
+grounded so it's very hard to repeat the
+
+473
+00:23:41,240 --> 00:23:46,080
+same quality across you know thousands
+
+474
+00:23:44,720 --> 00:23:49,880
+of of different
+
+475
+00:23:46,080 --> 00:23:53,600
+products and that's why we started to
+
+476
+00:23:49,880 --> 00:23:56,480
+work on a on a framework for validating
+
+477
+00:23:53,600 --> 00:23:58,440
+automatically generated content because
+
+478
+00:23:56,480 --> 00:24:00,919
+our goal is to create informative cont
+
+479
+00:23:58,440 --> 00:24:03,400
+content that can rank on Google using
+
+480
+00:24:00,919 --> 00:24:06,080
+using natural language generation and so
+
+481
+00:24:03,400 --> 00:24:08,080
+the real problem is not really to well
+
+482
+00:24:06,080 --> 00:24:10,760
+it's not only to train the model and and
+
+483
+00:24:08,080 --> 00:24:13,200
+make sure that he fits with the with the
+
+484
+00:24:10,760 --> 00:24:15,279
+editorial needs of the brand but most
+
+485
+00:24:13,200 --> 00:24:20,039
+importantly is to make sure that you
+
+486
+00:24:15,279 --> 00:24:21,880
+know the available information um in in
+
+487
+00:24:20,039 --> 00:24:25,120
+in it's it's the it's present in the
+
+488
+00:24:21,880 --> 00:24:27,039
+text and that uh that the taex is valid
+
+489
+00:24:25,120 --> 00:24:30,559
+in terms of you know content guidelines
+
+490
+00:24:27,039 --> 00:24:33,640
+and SEO and and most importantly we need
+
+491
+00:24:30,559 --> 00:24:37,240
+to make sure that uh that the model is
+
+492
+00:24:33,640 --> 00:24:41,039
+is is producing um correct
+
+493
+00:24:37,240 --> 00:24:44,720
+information now this say flow uh can be
+
+494
+00:24:41,039 --> 00:24:47,360
+can be applied uh uh also to uh existing
+
+495
+00:24:44,720 --> 00:24:50,200
+product description and in order for us
+
+496
+00:24:47,360 --> 00:24:52,520
+to understand more about what level of
+
+497
+00:24:50,200 --> 00:24:55,279
+improvement could be brought into the
+
+498
+00:24:52,520 --> 00:24:57,039
+e-commerce store in order to make this
+
+499
+00:24:55,279 --> 00:25:01,760
+product more easy to be
+
+500
+00:24:57,039 --> 00:25:06,919
+found so I'm going to uh quickly um
+
+501
+00:25:01,760 --> 00:25:09,360
+share the validation uh flow and um as
+
+502
+00:25:06,919 --> 00:25:12,039
+you can see here we have uh you know the
+
+503
+00:25:09,360 --> 00:25:14,880
+the the first example what we have uh in
+
+504
+00:25:12,039 --> 00:25:18,159
+in our fictitious shop and then we have
+
+505
+00:25:14,880 --> 00:25:20,360
+one uh of the generated uh copy for for
+
+506
+00:25:18,159 --> 00:25:23,480
+the product and then we have a second
+
+507
+00:25:20,360 --> 00:25:27,520
+version of uh of of these description
+
+508
+00:25:23,480 --> 00:25:29,440
+and uh I have uh um created here a link
+
+509
+00:25:27,520 --> 00:25:31,960
+uh that you you can
+
+510
+00:25:29,440 --> 00:25:38,000
+copy if you want to have a a quick look
+
+511
+00:25:31,960 --> 00:25:40,840
+at uh at U at uh at the code um on how
+
+512
+00:25:38,000 --> 00:25:42,880
+this is working I will uh um not have
+
+513
+00:25:40,840 --> 00:25:47,600
+the time to dive deep because I want to
+
+514
+00:25:42,880 --> 00:25:49,960
+kind of focus on on uh on the um neural
+
+515
+00:25:47,600 --> 00:25:53,159
+search part but uh but this is something
+
+516
+00:25:49,960 --> 00:25:55,679
+that uh we are doing in order to as you
+
+517
+00:25:53,159 --> 00:25:57,679
+can see here detect if uh some
+
+518
+00:25:55,679 --> 00:25:58,880
+attributes are mentioned in the text and
+
+519
+00:25:57,679 --> 00:26:00,960
+you can see that
+
+520
+00:25:58,880 --> 00:26:02,799
+you know here we have the lens color the
+
+521
+00:26:00,960 --> 00:26:06,760
+brand and the product
+
+522
+00:26:02,799 --> 00:26:08,159
+type uh and uh and and and and uh and
+
+523
+00:26:06,760 --> 00:26:10,760
+and for instance we don't have the
+
+524
+00:26:08,159 --> 00:26:12,679
+product name whether in these uh uh two
+
+525
+00:26:10,760 --> 00:26:15,399
+samples here that have been generated
+
+526
+00:26:12,679 --> 00:26:18,320
+with with gpt3 we do have the product
+
+527
+00:26:15,399 --> 00:26:20,120
+name which is you know by the way uh
+
+528
+00:26:18,320 --> 00:26:23,440
+quite relevant for for a lot of the
+
+529
+00:26:20,120 --> 00:26:25,679
+searches out there uh but interesting um
+
+530
+00:26:23,440 --> 00:26:27,399
+also we can see that uh in this case we
+
+531
+00:26:25,679 --> 00:26:30,159
+have very few attributes but they are
+
+532
+00:26:27,399 --> 00:26:32,399
+all correct and here we have generated a
+
+533
+00:26:30,159 --> 00:26:34,440
+description that has more uh density in
+
+534
+00:26:32,399 --> 00:26:37,480
+terms of information but uh but there
+
+535
+00:26:34,440 --> 00:26:40,440
+are two attributes that have uh wrong
+
+536
+00:26:37,480 --> 00:26:43,240
+values now the reason why this is so
+
+537
+00:26:40,440 --> 00:26:45,679
+important is that of course as we can uh
+
+538
+00:26:43,240 --> 00:26:48,559
+generate uh this product description we
+
+539
+00:26:45,679 --> 00:26:50,440
+also want to be able to quickly validate
+
+540
+00:26:48,559 --> 00:26:53,320
+the quality of this product description
+
+541
+00:26:50,440 --> 00:26:56,279
+in a semi-automated way so that we can
+
+542
+00:26:53,320 --> 00:26:58,279
+scale to thousand of products without um
+
+543
+00:26:56,279 --> 00:27:00,559
+you know um having too many people in
+
+544
+00:26:58,279 --> 00:27:04,000
+involved in in the validation
+
+545
+00:27:00,559 --> 00:27:06,159
+process so uh here there is a code uh
+
+546
+00:27:04,000 --> 00:27:09,799
+and uh and you can play with it ask
+
+547
+00:27:06,159 --> 00:27:13,159
+questions but um I will move on and uh
+
+548
+00:27:09,799 --> 00:27:15,440
+and and try to get um to the point where
+
+549
+00:27:13,159 --> 00:27:17,240
+we start using this data for creating a
+
+550
+00:27:15,440 --> 00:27:20,159
+new search
+
+551
+00:27:17,240 --> 00:27:23,200
+experience what else do we do um in
+
+552
+00:27:20,159 --> 00:27:25,679
+order to create uh this uh product
+
+553
+00:27:23,200 --> 00:27:28,000
+knowledge graph how do we how do we help
+
+554
+00:27:25,679 --> 00:27:29,080
+Google uh and and of course the merchant
+
+555
+00:27:28,000 --> 00:27:31,320
+in in
+
+556
+00:27:29,080 --> 00:27:33,480
+creating the information that are
+
+557
+00:27:31,320 --> 00:27:35,679
+required for helping someone find the
+
+558
+00:27:33,480 --> 00:27:38,919
+product that we're selling so one of the
+
+559
+00:27:35,679 --> 00:27:42,200
+things that we do is that uh we we look
+
+560
+00:27:38,919 --> 00:27:44,399
+at the queries that a specific product
+
+561
+00:27:42,200 --> 00:27:47,679
+page is intercepting from the Google
+
+562
+00:27:44,399 --> 00:27:51,960
+search console and then we start to look
+
+563
+00:27:47,679 --> 00:27:54,559
+at uh um either the questions that are
+
+564
+00:27:51,960 --> 00:27:58,279
+being ask in these queries from the
+
+565
+00:27:54,559 --> 00:28:00,640
+Google search console or um reach
+
+566
+00:27:58,279 --> 00:28:03,720
+elements like the people also ask in
+
+567
+00:28:00,640 --> 00:28:06,760
+Google or Bing where we can see the most
+
+568
+00:28:03,720 --> 00:28:10,000
+frequently asked questions about the
+
+569
+00:28:06,760 --> 00:28:12,640
+query for which our product is ranking
+
+570
+00:28:10,000 --> 00:28:15,080
+so we try to seed questions that people
+
+571
+00:28:12,640 --> 00:28:17,360
+are asking around the product and then
+
+572
+00:28:15,080 --> 00:28:20,600
+we generate again with a different
+
+573
+00:28:17,360 --> 00:28:24,120
+workflow but still using a a Transformer
+
+574
+00:28:20,600 --> 00:28:26,880
+based uh uh language model we generate
+
+575
+00:28:24,120 --> 00:28:29,720
+the content that uh it's then reviewed
+
+576
+00:28:26,880 --> 00:28:33,159
+by the editor and then published um on
+
+577
+00:28:29,720 --> 00:28:36,159
+on on multiple pages so here the
+
+578
+00:28:33,159 --> 00:28:38,519
+challenge again is not only to find the
+
+579
+00:28:36,159 --> 00:28:41,840
+right questions for the product but it's
+
+580
+00:28:38,519 --> 00:28:45,240
+also to generate a proper answer that
+
+581
+00:28:41,840 --> 00:28:47,399
+again it's fitting with with the same
+
+582
+00:28:45,240 --> 00:28:49,200
+tone of voice of the brand and then of
+
+583
+00:28:47,399 --> 00:28:52,399
+course we have to maintain this content
+
+584
+00:28:49,200 --> 00:28:55,240
+and so here um the other thing that we
+
+585
+00:28:52,399 --> 00:28:57,760
+do is we analyze the traffic from Google
+
+586
+00:28:55,240 --> 00:29:00,679
+trends for that specific query and we
+
+587
+00:28:57,760 --> 00:29:03,640
+try to predict when the query is going
+
+588
+00:29:00,679 --> 00:29:10,000
+to pick so here we see that for instance
+
+589
+00:29:03,640 --> 00:29:11,840
+for our um sunglasses uh by by by Prada
+
+590
+00:29:10,000 --> 00:29:16,919
+uh the the peak is going to be in
+
+591
+00:29:11,840 --> 00:29:19,000
+January in May and in March so um this
+
+592
+00:29:16,919 --> 00:29:22,880
+this means that we are going to come
+
+593
+00:29:19,000 --> 00:29:25,399
+back on the pages um or or republish or
+
+594
+00:29:22,880 --> 00:29:27,600
+enrich the content of these pages with
+
+595
+00:29:25,399 --> 00:29:28,720
+maybe new questions or or an updated
+
+596
+00:29:27,600 --> 00:29:31,600
+answer
+
+597
+00:29:28,720 --> 00:29:34,159
+before these picks so this is kind of
+
+598
+00:29:31,600 --> 00:29:37,720
+helping us in keeping the the content in
+
+599
+00:29:34,159 --> 00:29:40,559
+the knowledge graph up to dat before the
+
+600
+00:29:37,720 --> 00:29:44,080
+pick arrives and of course uh we have
+
+601
+00:29:40,559 --> 00:29:47,039
+seen a significant uptake in doing that
+
+602
+00:29:44,080 --> 00:29:49,519
+um uptake not only of course in terms of
+
+603
+00:29:47,039 --> 00:29:52,519
+uh clicks from Google but in terms of
+
+604
+00:29:49,519 --> 00:29:54,960
+actual sales so the more content we
+
+605
+00:29:52,519 --> 00:29:57,159
+create around the product and inside the
+
+606
+00:29:54,960 --> 00:29:58,919
+knowledge graph the more we are able to
+
+607
+00:29:57,159 --> 00:30:00,440
+create an enriching experience on the
+
+608
+00:29:58,919 --> 00:30:03,039
+front
+
+609
+00:30:00,440 --> 00:30:06,440
+end and of course um this is a little
+
+610
+00:30:03,039 --> 00:30:11,159
+bit of the validation flow Behind these
+
+611
+00:30:06,440 --> 00:30:12,720
+uh semi-automated FAQ uh creation so we
+
+612
+00:30:11,159 --> 00:30:14,919
+start with the prompt
+
+613
+00:30:12,720 --> 00:30:17,760
+engineering and then we generate the
+
+614
+00:30:14,919 --> 00:30:22,200
+content in this case uh uh we primarily
+
+615
+00:30:17,760 --> 00:30:25,120
+use uh uh T5 and agin face library for
+
+616
+00:30:22,200 --> 00:30:27,559
+for generating the content when possible
+
+617
+00:30:25,120 --> 00:30:29,919
+we try to to reference the data in the
+
+618
+00:30:27,559 --> 00:30:33,039
+graph to see if what we're producing
+
+619
+00:30:29,919 --> 00:30:36,120
+it's it's coherent and it's you know to
+
+620
+00:30:33,039 --> 00:30:38,720
+and and it's true and uh and then we we
+
+621
+00:30:36,120 --> 00:30:40,360
+we move into into validating and then of
+
+622
+00:30:38,720 --> 00:30:42,760
+course uh you know we have our
+
+623
+00:30:40,360 --> 00:30:44,840
+moderation team on our end and then of
+
+624
+00:30:42,760 --> 00:30:47,720
+course the client has its own uh
+
+625
+00:30:44,840 --> 00:30:50,600
+validation on on on their side so that
+
+626
+00:30:47,720 --> 00:30:54,080
+before the content is published you know
+
+627
+00:30:50,600 --> 00:30:55,320
+there are there are two checks um that
+
+628
+00:30:54,080 --> 00:30:58,000
+that we have to go
+
+629
+00:30:55,320 --> 00:31:00,159
+through as we know of course the risk of
+
+630
+00:30:58,000 --> 00:31:03,639
+going out with uh with
+
+631
+00:31:00,159 --> 00:31:05,480
+um uh untrue statement or even bias
+
+632
+00:31:03,639 --> 00:31:08,000
+statement is is extremely ey at this
+
+633
+00:31:05,480 --> 00:31:10,600
+point so we want to make sure that by
+
+634
+00:31:08,000 --> 00:31:12,760
+running our validation workflow and by
+
+635
+00:31:10,600 --> 00:31:15,360
+by by flagging content that needs to be
+
+636
+00:31:12,760 --> 00:31:17,159
+revised by by human editors we prevent
+
+637
+00:31:15,360 --> 00:31:19,919
+this from happening and also we are you
+
+638
+00:31:17,159 --> 00:31:22,559
+know constantly improving the the
+
+639
+00:31:19,919 --> 00:31:26,440
+quality of the
+
+640
+00:31:22,559 --> 00:31:28,720
+generation so let's let's kind of review
+
+641
+00:31:26,440 --> 00:31:31,480
+and wrap up what we've seen
+
+642
+00:31:28,720 --> 00:31:34,600
+um and and and and in order to move to
+
+643
+00:31:31,480 --> 00:31:37,120
+the next to the next step so we have a
+
+644
+00:31:34,600 --> 00:31:40,559
+website we have an ecomerce website and
+
+645
+00:31:37,120 --> 00:31:43,679
+we plugged in our technology that
+
+646
+00:31:40,559 --> 00:31:46,399
+harvest the data from different sources
+
+647
+00:31:43,679 --> 00:31:49,760
+combines this data and then enriches the
+
+648
+00:31:46,399 --> 00:31:53,440
+data in order to add missing attributes
+
+649
+00:31:49,760 --> 00:31:55,880
+or or to fix uh you know false statement
+
+650
+00:31:53,440 --> 00:31:58,760
+or to improve let's say the product
+
+651
+00:31:55,880 --> 00:32:01,559
+description or to integrate Maybe
+
+652
+00:31:58,760 --> 00:32:04,720
+uh video content or maybe images in
+
+653
+00:32:01,559 --> 00:32:06,679
+different formats or even you know uh
+
+654
+00:32:04,720 --> 00:32:08,919
+question and answer pairs about this
+
+655
+00:32:06,679 --> 00:32:12,200
+product so we create all of these
+
+656
+00:32:08,919 --> 00:32:14,200
+metadata into a product knowledge graph
+
+657
+00:32:12,200 --> 00:32:17,200
+and then we use this product knowledge
+
+658
+00:32:14,200 --> 00:32:20,440
+graph for you know creating again the
+
+659
+00:32:17,200 --> 00:32:23,159
+structured data that Google can crawl or
+
+660
+00:32:20,440 --> 00:32:26,000
+even the Google Merchant feed if if if
+
+661
+00:32:23,159 --> 00:32:27,919
+that is not um yet available so we can
+
+662
+00:32:26,000 --> 00:32:31,360
+feed the data that has been improved
+
+663
+00:32:27,919 --> 00:32:35,200
+moved back into Google and these turns
+
+664
+00:32:31,360 --> 00:32:38,919
+as we saw in in more clicks and and more
+
+665
+00:32:35,200 --> 00:32:41,840
+sales so as as we have been doing these
+
+666
+00:32:38,919 --> 00:32:44,960
+and as as we improved our our pipelines
+
+667
+00:32:41,840 --> 00:32:48,960
+to enrich this data we started to think
+
+668
+00:32:44,960 --> 00:32:51,600
+but what if this data is not just for
+
+669
+00:32:48,960 --> 00:32:54,000
+Google what if the information that we
+
+670
+00:32:51,600 --> 00:32:58,159
+have in the product knowledge graph can
+
+671
+00:32:54,000 --> 00:33:01,480
+drive a more enriching and and and and
+
+672
+00:32:58,159 --> 00:33:05,399
+valuable search experience inside the
+
+673
+00:33:01,480 --> 00:33:07,200
+website and and and at that point uh we
+
+674
+00:33:05,399 --> 00:33:08,919
+we have been evaluating different
+
+675
+00:33:07,200 --> 00:33:11,200
+Frameworks different
+
+676
+00:33:08,919 --> 00:33:14,000
+solutions uh different platforms and
+
+677
+00:33:11,200 --> 00:33:17,440
+then we decided that uh we want to this
+
+678
+00:33:14,000 --> 00:33:20,919
+solution to be built on open source and
+
+679
+00:33:17,440 --> 00:33:23,519
+uh and we we partner with G that uh it's
+
+680
+00:33:20,919 --> 00:33:27,799
+it's uh driving this Workshop today with
+
+681
+00:33:23,519 --> 00:33:30,799
+us in order to uh build a new uh search
+
+682
+00:33:27,799 --> 00:33:32,399
+experience for for e-commerce website uh
+
+683
+00:33:30,799 --> 00:33:36,279
+what we're going to see today it's
+
+684
+00:33:32,399 --> 00:33:38,600
+really um the first prototype that gives
+
+685
+00:33:36,279 --> 00:33:40,480
+the direction of where we're going and
+
+686
+00:33:38,600 --> 00:33:42,799
+uh we will uh uh we're planning to
+
+687
+00:33:40,480 --> 00:33:45,240
+launch the product uh at the beginning
+
+688
+00:33:42,799 --> 00:33:49,320
+of the next year and uh we want to scale
+
+689
+00:33:45,240 --> 00:33:51,519
+it to hundreds possibly thousands of
+
+690
+00:33:49,320 --> 00:33:54,120
+websites and uh and today we we're going
+
+691
+00:33:51,519 --> 00:33:56,919
+to look at you know what what type of
+
+692
+00:33:54,120 --> 00:33:59,440
+challenges we we are facing and and how
+
+693
+00:33:56,919 --> 00:34:01,480
+we're planning to create an impact
+
+694
+00:33:59,440 --> 00:34:03,639
+search of course it's something that uh
+
+695
+00:34:01,480 --> 00:34:07,119
+it's it's it's widely available there
+
+696
+00:34:03,639 --> 00:34:10,560
+are multiple solution out there for for
+
+697
+00:34:07,119 --> 00:34:13,159
+creating um an a rich search experience
+
+698
+00:34:10,560 --> 00:34:15,359
+so we wanted to work in this specific
+
+699
+00:34:13,159 --> 00:34:18,440
+sector because of all the work that we
+
+700
+00:34:15,359 --> 00:34:20,560
+do on a daily basis for helping Google
+
+701
+00:34:18,440 --> 00:34:22,440
+and so we decided that you know this
+
+702
+00:34:20,560 --> 00:34:24,639
+massive work that we do for helping
+
+703
+00:34:22,440 --> 00:34:27,280
+search engine uh commercial search
+
+704
+00:34:24,639 --> 00:34:29,240
+engine can can can be actually devoted
+
+705
+00:34:27,280 --> 00:34:33,040
+uh also to create a better internal
+
+706
+00:34:29,240 --> 00:34:36,440
+search experience so there are really
+
+707
+00:34:33,040 --> 00:34:38,599
+kind of three driving requirements that
+
+708
+00:34:36,440 --> 00:34:40,879
+uh that we have set when we started the
+
+709
+00:34:38,599 --> 00:34:42,440
+collaboration with Gen so one one thing
+
+710
+00:34:40,879 --> 00:34:45,639
+is of course that we want to create an
+
+711
+00:34:42,440 --> 00:34:48,599
+impact in terms of sales and uh and and
+
+712
+00:34:45,639 --> 00:34:50,720
+business and that's that's kind of you
+
+713
+00:34:48,599 --> 00:34:53,000
+know changed a lot because you can
+
+714
+00:34:50,720 --> 00:34:55,839
+create the best search experience but
+
+715
+00:34:53,000 --> 00:34:56,960
+but maybe doesn't drive the business
+
+716
+00:34:55,839 --> 00:34:59,200
+because there are there are
+
+717
+00:34:56,960 --> 00:35:01,280
+consideration to be made uh when when
+
+718
+00:34:59,200 --> 00:35:03,720
+designing uh a search engine for an
+
+719
+00:35:01,280 --> 00:35:05,359
+e-commerce website you might get the
+
+720
+00:35:03,720 --> 00:35:08,359
+best results but maybe you know the
+
+721
+00:35:05,359 --> 00:35:10,960
+product is out of stock or uh you might
+
+722
+00:35:08,359 --> 00:35:12,440
+get the best suggestion to the user but
+
+723
+00:35:10,960 --> 00:35:14,720
+but maybe you're selling the product
+
+724
+00:35:12,440 --> 00:35:17,640
+where you have the you know the the
+
+725
+00:35:14,720 --> 00:35:20,359
+minimum margin so you kind of need to
+
+726
+00:35:17,640 --> 00:35:22,960
+instruct the you know the technology to
+
+727
+00:35:20,359 --> 00:35:25,599
+to serve the business purposes in order
+
+728
+00:35:22,960 --> 00:35:27,400
+to create an impact for the end user the
+
+729
+00:35:25,599 --> 00:35:29,880
+client of the e-commerce and and and of
+
+730
+00:35:27,400 --> 00:35:31,280
+course at last for the for the merchant
+
+731
+00:35:29,880 --> 00:35:35,200
+that is making the
+
+732
+00:35:31,280 --> 00:35:37,920
+sales we also thought that uh it was
+
+733
+00:35:35,200 --> 00:35:41,000
+time for the search engine to think in
+
+734
+00:35:37,920 --> 00:35:43,720
+in fital terms now fital it's it's a
+
+735
+00:35:41,000 --> 00:35:46,400
+it's a new term a marketing term a BDS
+
+736
+00:35:43,720 --> 00:35:49,160
+word if you want that combines the
+
+737
+00:35:46,400 --> 00:35:52,119
+physical and the digital experiences and
+
+738
+00:35:49,160 --> 00:35:54,119
+this has become so important uh um after
+
+739
+00:35:52,119 --> 00:35:55,640
+the pandemic and during the pandemic
+
+740
+00:35:54,119 --> 00:35:59,359
+because of course we we're kind of
+
+741
+00:35:55,640 --> 00:36:02,560
+merging um at a very f fast speed the
+
+742
+00:35:59,359 --> 00:36:04,640
+experiences that we we have when we shop
+
+743
+00:36:02,560 --> 00:36:07,800
+uh uh online and the experience that we
+
+744
+00:36:04,640 --> 00:36:11,440
+have when when we are physically present
+
+745
+00:36:07,800 --> 00:36:13,960
+at the point of sales so a digital
+
+746
+00:36:11,440 --> 00:36:16,599
+approach it means that we need to be
+
+747
+00:36:13,960 --> 00:36:18,800
+able to point and shoot uh uh something
+
+748
+00:36:16,599 --> 00:36:21,359
+that we see that we like uh on the
+
+749
+00:36:18,800 --> 00:36:23,920
+street and possibly be able to find
+
+750
+00:36:21,359 --> 00:36:28,079
+something from from our favorite shop
+
+751
+00:36:23,920 --> 00:36:30,640
+that that can feat that specific need
+
+752
+00:36:28,079 --> 00:36:32,440
+last but not least uh we want to create
+
+753
+00:36:30,640 --> 00:36:34,319
+and build something that can scale
+
+754
+00:36:32,440 --> 00:36:36,920
+through thousands of sites and then of
+
+755
+00:36:34,319 --> 00:36:39,560
+course uh it doesn't need to uh kind of
+
+756
+00:36:36,920 --> 00:36:41,839
+um require a tremendous amount of
+
+757
+00:36:39,560 --> 00:36:44,520
+investment because we want to you know
+
+758
+00:36:41,839 --> 00:36:47,839
+build something that can start as as low
+
+759
+00:36:44,520 --> 00:36:50,839
+as uh you know maybe 80 80 EUR per month
+
+760
+00:36:47,839 --> 00:36:53,240
+fee that becomes affordable for a lot of
+
+761
+00:36:50,839 --> 00:36:54,200
+the small business out there that are on
+
+762
+00:36:53,240 --> 00:36:57,040
+on
+
+763
+00:36:54,200 --> 00:36:58,599
+woocommerce so these are kind of the the
+
+764
+00:36:57,040 --> 00:37:02,359
+three
+
+765
+00:36:58,599 --> 00:37:06,319
+um basic requirements that we have and
+
+766
+00:37:02,359 --> 00:37:08,440
+um and um and that's that's you know
+
+767
+00:37:06,319 --> 00:37:12,400
+kind of where we're starting so this is
+
+768
+00:37:08,440 --> 00:37:15,880
+the demo site uh that uh we have uh
+
+769
+00:37:12,400 --> 00:37:19,440
+created for uh for um building uh and
+
+770
+00:37:15,880 --> 00:37:22,880
+and prototyping these these idea and uh
+
+771
+00:37:19,440 --> 00:37:25,319
+it's it's running on on WordPress and
+
+772
+00:37:22,880 --> 00:37:27,560
+woocommerce uh and uh and as you can see
+
+773
+00:37:25,319 --> 00:37:31,119
+on the left side uh if I make a query
+
+774
+00:37:27,560 --> 00:37:33,640
+very like white sneakers by Adidas the
+
+775
+00:37:31,119 --> 00:37:37,640
+result is sorry there are no products
+
+776
+00:37:33,640 --> 00:37:40,560
+but on the right side um we can see um
+
+777
+00:37:37,640 --> 00:37:43,920
+the same demo working on on uh on the
+
+778
+00:37:40,560 --> 00:37:46,599
+new um gen search engine and of course
+
+779
+00:37:43,920 --> 00:37:48,440
+we are getting we're getting results now
+
+780
+00:37:46,599 --> 00:37:51,000
+in terms of requirements again it means
+
+781
+00:37:48,440 --> 00:37:54,000
+that we're moving from a text based only
+
+782
+00:37:51,000 --> 00:37:57,200
+search to to a multimodel search we want
+
+783
+00:37:54,000 --> 00:37:58,079
+to be voice ready or dialog ready if you
+
+784
+00:37:57,200 --> 00:38:00,760
+like
+
+785
+00:37:58,079 --> 00:38:03,640
+that means that we want to as much as
+
+786
+00:38:00,760 --> 00:38:06,760
+possible be able to interpret the need
+
+787
+00:38:03,640 --> 00:38:09,480
+of the user by by analyzing the natural
+
+788
+00:38:06,760 --> 00:38:12,760
+language in the query so as you can see
+
+789
+00:38:09,480 --> 00:38:16,440
+here from this very simple demonstration
+
+790
+00:38:12,760 --> 00:38:19,160
+uh we are able to switch on the facets
+
+791
+00:38:16,440 --> 00:38:24,160
+for the collar and switch on the facets
+
+792
+00:38:19,160 --> 00:38:28,079
+for for for the brand I will do um a
+
+793
+00:38:24,160 --> 00:38:31,560
+quick uh demo of of of the the search
+
+794
+00:38:28,079 --> 00:38:33,240
+engine and then I will I will pass it uh
+
+795
+00:38:31,560 --> 00:38:36,280
+to
+
+796
+00:38:33,240 --> 00:38:39,280
+to I will pass it to B for kind of
+
+797
+00:38:36,280 --> 00:38:41,119
+explaining you a little bit of how how
+
+798
+00:38:39,280 --> 00:38:43,560
+things are working in in the back end
+
+799
+00:38:41,119 --> 00:38:47,000
+and and where we are with implementation
+
+800
+00:38:43,560 --> 00:38:47,000
+so let me share the screen
+
+801
+00:38:48,720 --> 00:38:53,480
+again and I'm going to get the right
+
+802
+00:38:53,960 --> 00:38:57,960
+screen okay
+
+803
+00:38:58,480 --> 00:39:04,240
+all right so so here um we you know we
+
+804
+00:39:02,440 --> 00:39:06,480
+can start with something simple of
+
+805
+00:39:04,240 --> 00:39:09,440
+course that that would probably work on
+
+806
+00:39:06,480 --> 00:39:11,560
+your existing search engine which is Doc
+
+807
+00:39:09,440 --> 00:39:13,800
+boots and uh and we you know we get a
+
+808
+00:39:11,560 --> 00:39:16,280
+list of of different boots and here uh
+
+809
+00:39:13,800 --> 00:39:20,560
+we have kind of designed a super simple
+
+810
+00:39:16,280 --> 00:39:22,920
+uh ux just to test things out uh we can
+
+811
+00:39:20,560 --> 00:39:26,400
+you know filter by color we can filter
+
+812
+00:39:22,920 --> 00:39:28,640
+by price we can filter by brand and uh
+
+813
+00:39:26,400 --> 00:39:30,440
+and we can filter by by category and of
+
+814
+00:39:28,640 --> 00:39:34,680
+course as you know the category are
+
+815
+00:39:30,440 --> 00:39:35,640
+currently limited to only um three main
+
+816
+00:39:34,680 --> 00:39:38,440
+main
+
+817
+00:39:35,640 --> 00:39:43,200
+categories um let's try to do something
+
+818
+00:39:38,440 --> 00:39:47,560
+more enticing uh and uh and um and let's
+
+819
+00:39:43,200 --> 00:39:50,720
+uh let's uh start um going multimodel um
+
+820
+00:39:47,560 --> 00:39:54,599
+and I have here uh a few sample images
+
+821
+00:39:50,720 --> 00:39:56,839
+that that we can use so I'm loading uh
+
+822
+00:39:54,599 --> 00:39:58,800
+now an images from from from my my
+
+823
+00:39:56,839 --> 00:40:00,520
+computer but you can imagine that of
+
+824
+00:39:58,800 --> 00:40:03,160
+course uh you know I can I can also use
+
+825
+00:40:00,520 --> 00:40:07,200
+the camera for for grabbing the images
+
+826
+00:40:03,160 --> 00:40:09,319
+and uh here uh I'm cropping the image um
+
+827
+00:40:07,200 --> 00:40:12,359
+to see if we find something similar to
+
+828
+00:40:09,319 --> 00:40:15,319
+this pair of shoes and
+
+829
+00:40:12,359 --> 00:40:18,839
+um and let's see how it goes and I'm
+
+830
+00:40:15,319 --> 00:40:21,960
+getting something that it's uh okayish I
+
+831
+00:40:18,839 --> 00:40:24,119
+would say um definitely definitely
+
+832
+00:40:21,960 --> 00:40:28,240
+interesting for me to explore new
+
+833
+00:40:24,119 --> 00:40:30,000
+products um and um I'm I'm sure that I
+
+834
+00:40:28,240 --> 00:40:33,319
+will find something that that I like
+
+835
+00:40:30,000 --> 00:40:36,359
+from here uh let's let's run another uh
+
+836
+00:40:33,319 --> 00:40:39,079
+example where we now start to get more
+
+837
+00:40:36,359 --> 00:40:43,760
+things more complicated and we start to
+
+838
+00:40:39,079 --> 00:40:45,560
+combine um the multiple modalities so
+
+839
+00:40:43,760 --> 00:40:47,839
+I'm just going to
+
+840
+00:40:45,560 --> 00:40:50,400
+um get a
+
+841
+00:40:47,839 --> 00:40:52,839
+dress and imagine that this could be a
+
+842
+00:40:50,400 --> 00:40:54,839
+photo that I take to a friend wearing
+
+843
+00:40:52,839 --> 00:40:58,440
+this dress and I say okay I'm going to
+
+844
+00:40:54,839 --> 00:41:00,920
+buy these I'm going to gift these and
+
+845
+00:40:58,440 --> 00:41:02,800
+so I'm just going to get the imerge and
+
+846
+00:41:00,920 --> 00:41:06,240
+then and then run the
+
+847
+00:41:02,800 --> 00:41:08,400
+crop and then trigger the query where we
+
+848
+00:41:06,240 --> 00:41:11,440
+are sending in this case we're starting
+
+849
+00:41:08,400 --> 00:41:11,440
+with um with
+
+850
+00:41:12,480 --> 00:41:20,280
+image and then I get a list of you know
+
+851
+00:41:16,280 --> 00:41:23,839
+results that are pretty good considering
+
+852
+00:41:20,280 --> 00:41:26,319
+you know what I have in stock but um I I
+
+853
+00:41:23,839 --> 00:41:28,400
+I can do something more and say you know
+
+854
+00:41:26,319 --> 00:41:30,839
+I want these in r
+
+855
+00:41:28,400 --> 00:41:33,599
+so here of course I'm using the the
+
+856
+00:41:30,839 --> 00:41:35,920
+keyword but I can also use the voice and
+
+857
+00:41:33,599 --> 00:41:38,680
+here you can see that uh we are
+
+858
+00:41:35,920 --> 00:41:40,800
+automatically selecting the collar from
+
+859
+00:41:38,680 --> 00:41:42,920
+here so I'm filtering everything you
+
+860
+00:41:40,800 --> 00:41:44,680
+know with the with the image and and
+
+861
+00:41:42,920 --> 00:41:47,160
+with the color and I'm getting you know
+
+862
+00:41:44,680 --> 00:41:48,839
+something that it's it's quite relevant
+
+863
+00:41:47,160 --> 00:41:50,480
+you know I I I do have you know
+
+864
+00:41:48,839 --> 00:41:52,960
+something like this that probably is not
+
+865
+00:41:50,480 --> 00:41:55,520
+a good fit but uh but I'm getting
+
+866
+00:41:52,960 --> 00:41:59,680
+results that that resonates with uh with
+
+867
+00:41:55,520 --> 00:42:02,839
+my my my search in intent so um this is
+
+868
+00:41:59,680 --> 00:42:05,800
+a very uh quick and simple demo where we
+
+869
+00:42:02,839 --> 00:42:07,960
+can see that uh uh we we can work with
+
+870
+00:42:05,800 --> 00:42:10,680
+natural language also for setting the
+
+871
+00:42:07,960 --> 00:42:13,400
+facets of the search and we can work
+
+872
+00:42:10,680 --> 00:42:15,560
+with with multiple with multiple
+
+873
+00:42:13,400 --> 00:42:19,800
+modal
+
+874
+00:42:15,560 --> 00:42:23,599
+um I will stop here and uh and uh and I
+
+875
+00:42:19,800 --> 00:42:26,800
+will let uh um B TI it from ins side and
+
+876
+00:42:23,599 --> 00:42:30,760
+so we can get more into what's happening
+
+877
+00:42:26,800 --> 00:42:32,800
+behind the scene and then uh and then um
+
+878
+00:42:30,760 --> 00:42:35,640
+and then we can you know kind of also
+
+879
+00:42:32,800 --> 00:42:37,280
+exchange experiences and and and share
+
+880
+00:42:35,640 --> 00:42:39,640
+ideas and and go through the the
+
+881
+00:42:37,280 --> 00:42:40,760
+question and answer boy you can share
+
+882
+00:42:39,640 --> 00:42:43,400
+the screen
+
+883
+00:42:40,760 --> 00:42:47,480
+now okay thank you so much for your
+
+884
+00:42:43,400 --> 00:42:50,960
+introduction now I will share my screen
+
+885
+00:42:47,480 --> 00:42:50,960
+second share
+
+886
+00:42:55,319 --> 00:43:00,680
+screen I think now you should able to
+
+887
+00:42:58,359 --> 00:43:05,000
+see my
+
+888
+00:43:00,680 --> 00:43:07,359
+screen yes good thank you so thank you
+
+889
+00:43:05,000 --> 00:43:09,760
+for Andrea for the nice introduction now
+
+890
+00:43:07,359 --> 00:43:12,599
+I will continue from the Gina side so
+
+891
+00:43:09,760 --> 00:43:16,480
+I'm I'm going to talk about four like
+
+892
+00:43:12,599 --> 00:43:19,520
+four topics the first thing is about G
+
+893
+00:43:16,480 --> 00:43:22,640
+the second thing is some Basics and some
+
+894
+00:43:19,520 --> 00:43:25,599
+data executor and flow three M basic
+
+895
+00:43:22,640 --> 00:43:28,720
+concepts within Gina and last but not
+
+896
+00:43:25,599 --> 00:43:31,400
+least I will give you a Workshop which
+
+897
+00:43:28,720 --> 00:43:34,640
+runs in Google clab which helps you to
+
+898
+00:43:31,400 --> 00:43:37,680
+use G to build a neuros search system
+
+899
+00:43:34,640 --> 00:43:40,240
+for function data so it's like our
+
+900
+00:43:37,680 --> 00:43:43,559
+collaboration with word lft but I hope
+
+901
+00:43:40,240 --> 00:43:47,960
+you can get most of it so first of all
+
+902
+00:43:43,559 --> 00:43:50,680
+about Gina so imagine you have different
+
+903
+00:43:47,960 --> 00:43:52,920
+search applications you want to build so
+
+904
+00:43:50,680 --> 00:43:55,839
+imagine you want to search by PDF or you
+
+905
+00:43:52,920 --> 00:43:58,760
+want to buy search for a video or you
+
+906
+00:43:55,839 --> 00:44:01,240
+want to search search music by similar
+
+907
+00:43:58,760 --> 00:44:04,160
+audio files or you want to search we do
+
+908
+00:44:01,240 --> 00:44:06,720
+some app search using some keywords or
+
+909
+00:44:04,160 --> 00:44:08,480
+you can type some image and in in your
+
+910
+00:44:06,720 --> 00:44:10,960
+web shop you can find some similar
+
+911
+00:44:08,480 --> 00:44:13,680
+products and you can even think about
+
+912
+00:44:10,960 --> 00:44:16,920
+search which runs in the chatbot which
+
+913
+00:44:13,680 --> 00:44:19,000
+like you you you you input a query image
+
+914
+00:44:16,920 --> 00:44:21,400
+and you also add some text with this
+
+915
+00:44:19,000 --> 00:44:24,720
+query image and you want to find similar
+
+916
+00:44:21,400 --> 00:44:27,599
+product and this is how Gina AI do it so
+
+917
+00:44:24,720 --> 00:44:29,520
+which Gina AI our mission is we want to
+
+918
+00:44:27,599 --> 00:44:31,839
+provide an open-source neuros search
+
+919
+00:44:29,520 --> 00:44:33,800
+ecosystem which allows everyone to
+
+920
+00:44:31,839 --> 00:44:36,160
+search for information of all kinds of
+
+921
+00:44:33,800 --> 00:44:39,040
+data with high availability and
+
+922
+00:44:36,160 --> 00:44:40,319
+scalability and you can get our projects
+
+923
+00:44:39,040 --> 00:44:44,720
+at this
+
+924
+00:44:40,319 --> 00:44:46,880
+link so Gina is actually very simple but
+
+925
+00:44:44,720 --> 00:44:49,599
+let me first give you a very quick
+
+926
+00:44:46,880 --> 00:44:53,079
+introduction about what is neural search
+
+927
+00:44:49,599 --> 00:44:56,079
+or vector search so the basic idea we
+
+928
+00:44:53,079 --> 00:44:59,000
+use embeddings which extracted from Deep
+
+929
+00:44:56,079 --> 00:45:01,680
+learning models for do to do similarity
+
+930
+00:44:59,000 --> 00:45:04,680
+search such as using cosine distance or
+
+931
+00:45:01,680 --> 00:45:07,319
+ukan distance imagine you can see three
+
+932
+00:45:04,680 --> 00:45:10,559
+images from Pokemon go here so the first
+
+933
+00:45:07,319 --> 00:45:13,559
+two are two B which looks quite similar
+
+934
+00:45:10,559 --> 00:45:16,119
+to each other another one is Cher which
+
+935
+00:45:13,559 --> 00:45:19,040
+looks a little bit different so imagine
+
+936
+00:45:16,119 --> 00:45:21,720
+we extract embeddings from Deep learning
+
+937
+00:45:19,040 --> 00:45:24,440
+models which can be fitted into a
+
+938
+00:45:21,720 --> 00:45:27,559
+two-dimensional space you will find out
+
+939
+00:45:24,440 --> 00:45:31,400
+that these two visually similar uh
+
+940
+00:45:27,559 --> 00:45:35,559
+images are located near to each other
+
+941
+00:45:31,400 --> 00:45:37,640
+and the chander which is here which in
+
+942
+00:45:35,559 --> 00:45:40,000
+this two dimensional space Which is far
+
+943
+00:45:37,640 --> 00:45:42,880
+away from these two bub so that's the
+
+944
+00:45:40,000 --> 00:45:46,079
+idea of neur search we use embedding we
+
+945
+00:45:42,880 --> 00:45:48,319
+use embeddings to search instead of the
+
+946
+00:45:46,079 --> 00:45:50,720
+keyword match of this kind of old
+
+947
+00:45:48,319 --> 00:45:54,440
+Technologies such as inverted index or
+
+948
+00:45:50,720 --> 00:45:56,160
+this kind of matching so the neuros
+
+949
+00:45:54,440 --> 00:45:58,839
+search the basic idea is we use
+
+950
+00:45:56,160 --> 00:46:02,040
+embeddings from Deep learning models for
+
+951
+00:45:58,839 --> 00:46:05,079
+similarity search and the advantage of
+
+952
+00:46:02,040 --> 00:46:08,920
+it is semantic it really understands the
+
+953
+00:46:05,079 --> 00:46:11,800
+meaning behind the unstructured data and
+
+954
+00:46:08,920 --> 00:46:14,079
+it is data type agnostic so you can
+
+955
+00:46:11,800 --> 00:46:16,040
+encode basically if you have a model
+
+956
+00:46:14,079 --> 00:46:19,000
+deep learning model you can encode any
+
+957
+00:46:16,040 --> 00:46:21,240
+kind of data into an embedding you want
+
+958
+00:46:19,000 --> 00:46:24,559
+so it could be audio it could be video
+
+959
+00:46:21,240 --> 00:46:26,440
+images or text so also the research
+
+960
+00:46:24,559 --> 00:46:29,760
+community and the engineering community
+
+961
+00:46:26,440 --> 00:46:32,240
+also provided a wide range of models
+
+962
+00:46:29,760 --> 00:46:34,079
+which provide you a good foundation
+
+963
+00:46:32,240 --> 00:46:36,720
+where you can find T and improve this
+
+964
+00:46:34,079 --> 00:46:39,319
+model and make it go to production but
+
+965
+00:46:36,720 --> 00:46:41,960
+the challenges here is it is very tricky
+
+966
+00:46:39,319 --> 00:46:44,920
+to set up the set up the infrastructure
+
+967
+00:46:41,960 --> 00:46:47,200
+to build a search Eng it's very tricky
+
+968
+00:46:44,920 --> 00:46:51,440
+and another thing is how can we optimize
+
+969
+00:46:47,200 --> 00:46:55,280
+our search result and Gina solves this
+
+970
+00:46:51,440 --> 00:46:58,520
+problems so to use Gina you only need to
+
+971
+00:46:55,280 --> 00:47:01,480
+understand three most fundamental like
+
+972
+00:46:58,520 --> 00:47:04,400
+Concepts within gen the first thing is a
+
+973
+00:47:01,480 --> 00:47:08,000
+document then is Executor and
+
+974
+00:47:04,400 --> 00:47:10,160
+flow so in imaging document is the basic
+
+975
+00:47:08,000 --> 00:47:12,160
+genotype to represent a piece of
+
+976
+00:47:10,160 --> 00:47:14,480
+information it could be an audio it
+
+977
+00:47:12,160 --> 00:47:18,240
+could be a piece of text or it could be
+
+978
+00:47:14,480 --> 00:47:20,800
+a video an Executor is how Gina process
+
+979
+00:47:18,240 --> 00:47:23,160
+documents if you imagine you are like on
+
+980
+00:47:20,800 --> 00:47:26,040
+a production line an Executor is like a
+
+981
+00:47:23,160 --> 00:47:29,160
+worker on this production line and the
+
+982
+00:47:26,040 --> 00:47:32,000
+flow is how genus stimulates then
+
+983
+00:47:29,160 --> 00:47:34,079
+distributed the executors the flow
+
+984
+00:47:32,000 --> 00:47:36,040
+change these executors into this
+
+985
+00:47:34,079 --> 00:47:38,960
+production line and giving the user
+
+986
+00:47:36,040 --> 00:47:41,400
+input produce the final search output so
+
+987
+00:47:38,960 --> 00:47:42,760
+these are the three basic concepts
+
+988
+00:47:41,400 --> 00:47:46,000
+within
+
+989
+00:47:42,760 --> 00:47:50,040
+Gina and now I'm going to give you the
+
+990
+00:47:46,000 --> 00:47:53,440
+workshop let's go back to the uh Google
+
+991
+00:47:50,040 --> 00:47:56,160
+clab link this is something we built
+
+992
+00:47:53,440 --> 00:47:58,240
+together with forlift on the e-commerce
+
+993
+00:47:56,160 --> 00:48:01,119
+sector
+
+994
+00:47:58,240 --> 00:48:03,319
+I hope you have the link already but in
+
+995
+00:48:01,119 --> 00:48:06,280
+case someone joined later I will share
+
+996
+00:48:03,319 --> 00:48:10,599
+the link to the chat
+
+997
+00:48:06,280 --> 00:48:13,040
+again let see I will put the link here
+
+998
+00:48:10,599 --> 00:48:14,800
+again hope you can see it and you can
+
+999
+00:48:13,040 --> 00:48:19,520
+play around
+
+1000
+00:48:14,800 --> 00:48:22,760
+it so the the workshop is about to use
+
+1001
+00:48:19,520 --> 00:48:25,240
+Gina with word lft to build a neur
+
+1002
+00:48:22,760 --> 00:48:29,359
+search image neur search engine for
+
+1003
+00:48:25,240 --> 00:48:31,440
+image to for e-commerce product search
+
+1004
+00:48:29,359 --> 00:48:34,000
+so the data set we are going to use is
+
+1005
+00:48:31,440 --> 00:48:36,280
+called fion product image which is a
+
+1006
+00:48:34,000 --> 00:48:39,200
+small version it is open sourced so you
+
+1007
+00:48:36,280 --> 00:48:44,040
+can feel free to just make a copy and to
+
+1008
+00:48:39,200 --> 00:48:47,240
+reuse it and also some some requirements
+
+1009
+00:48:44,040 --> 00:48:49,480
+now you have to install some documents
+
+1010
+00:48:47,240 --> 00:48:52,960
+here we will download some data from the
+
+1011
+00:48:49,480 --> 00:48:55,119
+link which I created previously about
+
+1012
+00:48:52,960 --> 00:48:57,480
+the images funion product images and
+
+1013
+00:48:55,119 --> 00:49:00,760
+here I unzip the images and here I
+
+1014
+00:48:57,480 --> 00:49:04,920
+install all the dependencies we use for
+
+1015
+00:49:00,760 --> 00:49:07,559
+this Workshop so pandas pillow met PL Le
+
+1016
+00:49:04,920 --> 00:49:09,599
+and touch Vision these are for some
+
+1017
+00:49:07,559 --> 00:49:11,520
+dependencies but the real things we're
+
+1018
+00:49:09,599 --> 00:49:14,359
+using is Gina
+
+1019
+00:49:11,520 --> 00:49:16,119
+here and here um since I'm already
+
+1020
+00:49:14,359 --> 00:49:17,960
+having the data here so I will not
+
+1021
+00:49:16,119 --> 00:49:21,160
+download again but here I will remove
+
+1022
+00:49:17,960 --> 00:49:23,760
+the workspace so the workspace is Bina
+
+1023
+00:49:21,160 --> 00:49:24,960
+stores its documents such as the index
+
+1024
+00:49:23,760 --> 00:49:27,640
+such as the
+
+1025
+00:49:24,960 --> 00:49:30,559
+indexes so the table of contents of this
+
+1026
+00:49:27,640 --> 00:49:33,119
+Workshop we are going to talk six topics
+
+1027
+00:49:30,559 --> 00:49:36,240
+the first thing is the basic idea of
+
+1028
+00:49:33,119 --> 00:49:39,040
+document then the flow and executor and
+
+1029
+00:49:36,240 --> 00:49:41,559
+the pipeline how we build a very simple
+
+1030
+00:49:39,040 --> 00:49:44,640
+image to product search system within
+
+1031
+00:49:41,559 --> 00:49:46,599
+this notebook it consists of two parts
+
+1032
+00:49:44,640 --> 00:49:50,079
+the index Pipeline and the searching
+
+1033
+00:49:46,599 --> 00:49:53,079
+pipeline so each search can be concluded
+
+1034
+00:49:50,079 --> 00:49:56,280
+concluded into two high level tasks the
+
+1035
+00:49:53,079 --> 00:50:00,000
+first task is indexing so this this
+
+1036
+00:49:56,280 --> 00:50:03,280
+process allows us to quickly find our uh
+
+1037
+00:50:00,000 --> 00:50:06,119
+quickly provide an index to our pre uh
+
+1038
+00:50:03,280 --> 00:50:08,319
+to our documents within our document
+
+1039
+00:50:06,119 --> 00:50:10,440
+collection and the searching part is
+
+1040
+00:50:08,319 --> 00:50:13,640
+where user type something our system
+
+1041
+00:50:10,440 --> 00:50:16,720
+should give some response and after this
+
+1042
+00:50:13,640 --> 00:50:19,720
+step we will dive into how we build a
+
+1043
+00:50:16,720 --> 00:50:21,960
+search Pipeline with for multimodel
+
+1044
+00:50:19,720 --> 00:50:24,920
+search so multimodel means we are
+
+1045
+00:50:21,960 --> 00:50:28,240
+combining image and text as Andrea just
+
+1046
+00:50:24,920 --> 00:50:30,359
+showed in his presentation and return
+
+1047
+00:50:28,240 --> 00:50:32,599
+the final product because this is much
+
+1048
+00:50:30,359 --> 00:50:35,319
+more complex than to be run in the
+
+1049
+00:50:32,599 --> 00:50:37,799
+notebook so here I will only demonstrate
+
+1050
+00:50:35,319 --> 00:50:40,440
+the the logic ideas or the logic
+
+1051
+00:50:37,799 --> 00:50:43,559
+Concepts how to build it with Gina the
+
+1052
+00:50:40,440 --> 00:50:45,640
+first uh topic is about scale up how to
+
+1053
+00:50:43,559 --> 00:50:48,599
+use G to scale up your search
+
+1054
+00:50:45,640 --> 00:50:51,640
+applications to One customer or to
+
+1055
+00:50:48,599 --> 00:50:54,160
+milons to or to millions of customers
+
+1056
+00:50:51,640 --> 00:50:57,200
+the fifth is the missing block how can
+
+1057
+00:50:54,160 --> 00:50:59,880
+we use on the Shelf pre-rain models to
+
+1058
+00:50:57,200 --> 00:51:02,400
+optimize for your task of Interest here
+
+1059
+00:50:59,880 --> 00:51:05,640
+we are going to talk about e-commerce
+
+1060
+00:51:02,400 --> 00:51:08,040
+and more specifically the funion the
+
+1061
+00:51:05,640 --> 00:51:10,160
+last part is the how can we use flow as
+
+1062
+00:51:08,040 --> 00:51:12,960
+a service and deploy the
+
+1063
+00:51:10,160 --> 00:51:15,640
+flow so the problem that definition is
+
+1064
+00:51:12,960 --> 00:51:18,559
+here so we want to build two
+
+1065
+00:51:15,640 --> 00:51:21,280
+things make the font a little bit
+
+1066
+00:51:18,559 --> 00:51:24,200
+larger uh the first problem is we want
+
+1067
+00:51:21,280 --> 00:51:26,280
+to search fion product by images the
+
+1068
+00:51:24,200 --> 00:51:29,400
+second problem is we want to search fion
+
+1069
+00:51:26,280 --> 00:51:32,799
+product using text and visual so to
+
+1070
+00:51:29,400 --> 00:51:35,240
+conduct a multimodel search so here we
+
+1071
+00:51:32,799 --> 00:51:37,960
+are going to do some import so here you
+
+1072
+00:51:35,240 --> 00:51:40,760
+can see we're importing OS which is some
+
+1073
+00:51:37,960 --> 00:51:43,880
+python building libraries to read the
+
+1074
+00:51:40,760 --> 00:51:47,920
+images and here using p we load the
+
+1075
+00:51:43,880 --> 00:51:50,760
+images and here you see we use Gina this
+
+1076
+00:51:47,920 --> 00:51:53,720
+L we from Gina to import documents and
+
+1077
+00:51:50,760 --> 00:51:55,680
+document so if you remember in my slides
+
+1078
+00:51:53,720 --> 00:51:58,160
+the document contains the piece of
+
+1079
+00:51:55,680 --> 00:52:00,680
+information so a document array can
+
+1080
+00:51:58,160 --> 00:52:04,040
+contains a list of documents so that's
+
+1081
+00:52:00,680 --> 00:52:06,839
+the concepts Behind These two classes
+
+1082
+00:52:04,040 --> 00:52:07,920
+and we also imported M PL live to do do
+
+1083
+00:52:06,839 --> 00:52:10,440
+some
+
+1084
+00:52:07,920 --> 00:52:12,200
+visualization and here I try to set an
+
+1085
+00:52:10,440 --> 00:52:15,319
+environmental variable which sets
+
+1086
+00:52:12,200 --> 00:52:18,280
+through debug mode which we can see the
+
+1087
+00:52:15,319 --> 00:52:21,920
+logs and I'm going to run this of piece
+
+1088
+00:52:18,280 --> 00:52:25,640
+of code so let's first start from the
+
+1089
+00:52:21,920 --> 00:52:28,280
+document which is the uh most basic
+
+1090
+00:52:25,640 --> 00:52:30,680
+elements with withing g a document
+
+1091
+00:52:28,280 --> 00:52:33,599
+contains a piece of uh information and
+
+1092
+00:52:30,680 --> 00:52:35,880
+Gina provides two abstractions for data
+
+1093
+00:52:33,599 --> 00:52:38,880
+so it is a document or it's it is a
+
+1094
+00:52:35,880 --> 00:52:41,520
+document array and this information
+
+1095
+00:52:38,880 --> 00:52:44,839
+could be text image audio data or any
+
+1096
+00:52:41,520 --> 00:52:47,240
+modality data you can imagine so here
+
+1097
+00:52:44,839 --> 00:52:50,200
+because we are running in a workshop or
+
+1098
+00:52:47,240 --> 00:52:53,160
+in a Google clab so we are going to in
+
+1099
+00:52:50,200 --> 00:52:56,960
+index 200 documents so we set the number
+
+1100
+00:52:53,160 --> 00:52:59,480
+of images to be 200 and here I of all
+
+1101
+00:52:56,960 --> 00:53:01,760
+the images within this folder which I
+
+1102
+00:52:59,480 --> 00:53:05,079
+already downloaded you can see my data
+
+1103
+00:53:01,760 --> 00:53:09,720
+sets here images here in this folder and
+
+1104
+00:53:05,079 --> 00:53:12,640
+which is gpack format to load all the
+
+1105
+00:53:09,720 --> 00:53:15,520
+images and I created a get image
+
+1106
+00:53:12,640 --> 00:53:18,280
+function here i initialized a g document
+
+1107
+00:53:15,520 --> 00:53:20,839
+array which is a list of documents which
+
+1108
+00:53:18,280 --> 00:53:23,920
+can be stored and I look through the
+
+1109
+00:53:20,839 --> 00:53:26,720
+image path in our image path and I try
+
+1110
+00:53:23,920 --> 00:53:29,400
+to create Gina documents in this for
+
+1111
+00:53:26,720 --> 00:53:32,760
+Loop so you can you can see docs equals
+
+1112
+00:53:29,400 --> 00:53:35,599
+to document URI equals to image path so
+
+1113
+00:53:32,760 --> 00:53:38,799
+we assign the image path which is text
+
+1114
+00:53:35,599 --> 00:53:42,000
+to this URI property which tells Gina
+
+1115
+00:53:38,799 --> 00:53:44,520
+where is this image has been stalled so
+
+1116
+00:53:42,000 --> 00:53:47,559
+here you can see that I called load URI
+
+1117
+00:53:44,520 --> 00:53:50,280
+to image block so this in this case this
+
+1118
+00:53:47,559 --> 00:53:53,160
+URI Gina document will load the image
+
+1119
+00:53:50,280 --> 00:53:56,480
+and into a threedimensional vector space
+
+1120
+00:53:53,160 --> 00:53:59,760
+so it will be turned into an RGB Matrix
+
+1121
+00:53:56,480 --> 00:54:02,520
+of an image and I also set image blob
+
+1122
+00:53:59,760 --> 00:54:05,160
+Channel access to NE from negative to
+
+1123
+00:54:02,520 --> 00:54:07,839
+one so this means that because the
+
+1124
+00:54:05,160 --> 00:54:10,520
+original image was like organized in
+
+1125
+00:54:07,839 --> 00:54:13,079
+height width and number of channels RGB
+
+1126
+00:54:10,520 --> 00:54:15,240
+channels now the image has been changed
+
+1127
+00:54:13,079 --> 00:54:18,119
+channels Heights and widths which we
+
+1128
+00:54:15,240 --> 00:54:20,480
+will use it later so I will run this
+
+1129
+00:54:18,119 --> 00:54:23,799
+piece of
+
+1130
+00:54:20,480 --> 00:54:26,599
+code so it's not actually running but
+
+1131
+00:54:23,799 --> 00:54:28,720
+here is just we defined the function and
+
+1132
+00:54:26,599 --> 00:54:31,319
+we are going to first look at how this
+
+1133
+00:54:28,720 --> 00:54:34,440
+image looks like I'm going to plot top
+
+1134
+00:54:31,319 --> 00:54:34,440
+five images in my
+
+1135
+00:54:37,119 --> 00:54:43,839
+documentary so this is the first five
+
+1136
+00:54:41,040 --> 00:54:45,920
+images which I showed in this document R
+
+1137
+00:54:43,839 --> 00:54:48,920
+but please remember this one because we
+
+1138
+00:54:45,920 --> 00:54:50,359
+will later use this second image as our
+
+1139
+00:54:48,920 --> 00:54:54,040
+query
+
+1140
+00:54:50,359 --> 00:54:57,319
+document and now if we
+
+1141
+00:54:54,040 --> 00:54:59,960
+print now we try to call this get images
+
+1142
+00:54:57,319 --> 00:55:03,200
+function and load a document array and
+
+1143
+00:54:59,960 --> 00:55:06,799
+we can print the length of
+
+1144
+00:55:03,200 --> 00:55:11,079
+documents so it should be 200 not
+
+1145
+00:55:06,799 --> 00:55:14,040
+5500 because we only try to extract top
+
+1146
+00:55:11,079 --> 00:55:18,079
+200 images within this this this data
+
+1147
+00:55:14,040 --> 00:55:20,280
+set and now we have 200 images stored in
+
+1148
+00:55:18,079 --> 00:55:23,119
+our document
+
+1149
+00:55:20,280 --> 00:55:27,240
+array so the second step
+
+1150
+00:55:23,119 --> 00:55:29,880
+is how can we try to use image to search
+
+1151
+00:55:27,240 --> 00:55:32,720
+product which is corresponded to our
+
+1152
+00:55:29,880 --> 00:55:35,160
+second concept so the first thing is
+
+1153
+00:55:32,720 --> 00:55:38,680
+about flow flow is a m pipeline within
+
+1154
+00:55:35,160 --> 00:55:41,400
+Gina it describes the way Gina the the
+
+1155
+00:55:38,680 --> 00:55:42,160
+way document should be processed labeled
+
+1156
+00:55:41,400 --> 00:55:45,440
+or
+
+1157
+00:55:42,160 --> 00:55:47,480
+stored so if it is made up of components
+
+1158
+00:55:45,440 --> 00:55:50,000
+such as called executors which are the
+
+1159
+00:55:47,480 --> 00:55:52,440
+workers on this production line the flow
+
+1160
+00:55:50,000 --> 00:55:53,280
+is the production line which organize
+
+1161
+00:55:52,440 --> 00:55:57,359
+this
+
+1162
+00:55:53,280 --> 00:55:59,720
+execu and this are
+
+1163
+00:55:57,359 --> 00:55:59,720
+one
+
+1164
+00:56:10,240 --> 00:56:16,559
+second sorry I just I was in the meeting
+
+1165
+00:56:13,520 --> 00:56:21,000
+room but there's too too much
+
+1166
+00:56:16,559 --> 00:56:22,920
+noise but now we can try to build uh now
+
+1167
+00:56:21,000 --> 00:56:24,960
+it's made up of components which is
+
+1168
+00:56:22,920 --> 00:56:27,000
+called executors so executors Can Be
+
+1169
+00:56:24,960 --> 00:56:28,960
+Imagined as per worker is working on the
+
+1170
+00:56:27,000 --> 00:56:31,599
+production line and flow is like
+
+1171
+00:56:28,960 --> 00:56:34,799
+something manage this workers and change
+
+1172
+00:56:31,599 --> 00:56:36,880
+this tasks and first of all we will try
+
+1173
+00:56:34,799 --> 00:56:39,880
+to create a very simple flow which
+
+1174
+00:56:36,880 --> 00:56:42,559
+contains two executors so now you can
+
+1175
+00:56:39,880 --> 00:56:45,559
+see that we from Gina import flow and we
+
+1176
+00:56:42,559 --> 00:56:48,039
+initialize a flow and we call add this
+
+1177
+00:56:45,559 --> 00:56:50,160
+add function is basically calling this
+
+1178
+00:56:48,039 --> 00:56:52,599
+flow we are going to add an Executor to
+
+1179
+00:56:50,160 --> 00:56:55,520
+this flow so we are adding a worker to
+
+1180
+00:56:52,599 --> 00:56:58,680
+this flow so the name is called encoder
+
+1181
+00:56:55,520 --> 00:57:01,280
+so this encoder is basically a deep deep
+
+1182
+00:56:58,680 --> 00:57:03,240
+learning model which ex extract
+
+1183
+00:57:01,280 --> 00:57:06,760
+embeddings from the
+
+1184
+00:57:03,240 --> 00:57:09,599
+image and you can see that we use this G
+
+1185
+00:57:06,760 --> 00:57:12,640
+Hub clip image encoder version number
+
+1186
+00:57:09,599 --> 00:57:16,079
+one so this G Hub is something we built
+
+1187
+00:57:12,640 --> 00:57:19,480
+on the cloud this can be used out of box
+
+1188
+00:57:16,079 --> 00:57:24,000
+so it's like the app store which you can
+
+1189
+00:57:19,480 --> 00:57:27,400
+use to like uh use use in your app which
+
+1190
+00:57:24,000 --> 00:57:30,240
+can be uh added drop and drop in and
+
+1191
+00:57:27,400 --> 00:57:32,039
+drop out to replace your executors this
+
+1192
+00:57:30,240 --> 00:57:34,799
+are something we already previewed on
+
+1193
+00:57:32,039 --> 00:57:37,119
+the cloud so you can already use J have
+
+1194
+00:57:34,799 --> 00:57:40,119
+clip image encoder this clip model was
+
+1195
+00:57:37,119 --> 00:57:43,440
+produced by open AI which is specialized
+
+1196
+00:57:40,119 --> 00:57:46,079
+in text to image search or image to text
+
+1197
+00:57:43,440 --> 00:57:48,799
+search this is model is really
+
+1198
+00:57:46,079 --> 00:57:51,559
+performing good on Cross model
+
+1199
+00:57:48,799 --> 00:57:55,079
+search and the second components or
+
+1200
+00:57:51,559 --> 00:57:57,640
+second executor in this flow is an index
+
+1201
+00:57:55,079 --> 00:58:00,359
+so where because our data amount of data
+
+1202
+00:57:57,640 --> 00:58:03,240
+is quite small so we are going to use
+
+1203
+00:58:00,359 --> 00:58:06,319
+our Gina prebuild simple indexer so this
+
+1204
+00:58:03,240 --> 00:58:08,839
+indexer will just save all the documents
+
+1205
+00:58:06,319 --> 00:58:09,839
+we added into the flow and save it on
+
+1206
+00:58:08,839 --> 00:58:13,200
+our
+
+1207
+00:58:09,839 --> 00:58:17,200
+disk so you can see that we set the
+
+1208
+00:58:13,200 --> 00:58:20,480
+metas with where is where we store the
+
+1209
+00:58:17,200 --> 00:58:23,000
+like vectors to our place so we store it
+
+1210
+00:58:20,480 --> 00:58:25,720
+in the content workspace which I just
+
+1211
+00:58:23,000 --> 00:58:26,839
+deleted at the in the beginning of this
+
+1212
+00:58:25,720 --> 00:58:29,599
+Workshop
+
+1213
+00:58:26,839 --> 00:58:31,720
+and I also SPI install requirements
+
+1214
+00:58:29,599 --> 00:58:33,480
+equals to two because this will
+
+1215
+00:58:31,720 --> 00:58:36,200
+automatically install requirements for
+
+1216
+00:58:33,480 --> 00:58:39,760
+us so this is a very simple flow if I
+
+1217
+00:58:36,200 --> 00:58:42,799
+run this you can visualize it by calling
+
+1218
+00:58:39,760 --> 00:58:45,799
+flow. plot so the data comes in from the
+
+1219
+00:58:42,799 --> 00:58:47,760
+Gateway and then the data will be passed
+
+1220
+00:58:45,799 --> 00:58:51,079
+into our first worker which is the
+
+1221
+00:58:47,760 --> 00:58:53,920
+encoder the encoder encodes the images
+
+1222
+00:58:51,079 --> 00:58:56,799
+which we assigned to the document blocks
+
+1223
+00:58:53,920 --> 00:58:59,000
+into vectors into embeddings and this
+
+1224
+00:58:56,799 --> 00:59:01,480
+edance will be further sent into our
+
+1225
+00:58:59,000 --> 00:59:04,880
+simple indexer so this simple indexer
+
+1226
+00:59:01,480 --> 00:59:08,559
+will persist our edance into our disc
+
+1227
+00:59:04,880 --> 00:59:12,119
+and this the result will be saved our
+
+1228
+00:59:08,559 --> 00:59:15,000
+disk then the the the index the index
+
+1229
+00:59:12,119 --> 00:59:19,640
+indexing flow will be stopped
+
+1230
+00:59:15,000 --> 00:59:21,599
+here and because Gina use like lazy
+
+1231
+00:59:19,640 --> 00:59:24,000
+execution so this is actually not
+
+1232
+00:59:21,599 --> 00:59:27,839
+running in the back end until we call
+
+1233
+00:59:24,000 --> 00:59:31,559
+until the uh python like context manager
+
+1234
+00:59:27,839 --> 00:59:34,960
+so if we we call with flow and flow.
+
+1235
+00:59:31,559 --> 00:59:37,680
+index so this is our inputs our inputs
+
+1236
+00:59:34,960 --> 00:59:39,720
+are the documents and we also set a
+
+1237
+00:59:37,680 --> 00:59:43,200
+parameter called show progress equals to
+
+1238
+00:59:39,720 --> 00:59:45,880
+two we will do the indexing of this 200
+
+1239
+00:59:43,200 --> 00:59:47,200
+images I run this piece of code you will
+
+1240
+00:59:45,880 --> 00:59:49,520
+see a lot of
+
+1241
+00:59:47,200 --> 00:59:51,400
+logs if you are running this for the
+
+1242
+00:59:49,520 --> 00:59:53,440
+first time it might take some time
+
+1243
+00:59:51,400 --> 00:59:56,039
+because it's pulling some images from
+
+1244
+00:59:53,440 --> 00:59:58,640
+the remote machine from our Hub to your
+
+1245
+00:59:56,039 --> 01:00:00,680
+local machine but since I already do it
+
+1246
+00:59:58,640 --> 01:00:03,880
+so it it is much
+
+1247
+01:00:00,680 --> 01:00:06,799
+faster because I set the in progress
+
+1248
+01:00:03,880 --> 01:00:09,280
+equals to true so now you can see that
+
+1249
+01:00:06,799 --> 01:00:12,480
+it's the our indexing flow is actually
+
+1250
+01:00:09,280 --> 01:00:16,440
+working to indexing our images which is
+
+1251
+01:00:12,480 --> 01:00:18,920
+sted in the document array which we did
+
+1252
+01:00:16,440 --> 01:00:22,720
+previously you can also see a nice
+
+1253
+01:00:18,920 --> 01:00:22,720
+progress bar here
+
+1254
+01:00:26,079 --> 01:00:31,000
+and very fast we have finished our
+
+1255
+01:00:28,480 --> 01:00:32,799
+indexing step so the flow will be
+
+1256
+01:00:31,000 --> 01:00:36,960
+terminated automatically after the
+
+1257
+01:00:32,799 --> 01:00:40,160
+indexing was finished now we have 200 of
+
+1258
+01:00:36,960 --> 01:00:42,960
+images indexed in this in using this
+
+1259
+01:00:40,160 --> 01:00:46,400
+simple flow which only can work for
+
+1260
+01:00:42,960 --> 01:00:49,440
+image image search let's now try to
+
+1261
+01:00:46,400 --> 01:00:52,200
+mimic uh the way user try to search
+
+1262
+01:00:49,440 --> 01:00:55,240
+using our flow so you can see that we
+
+1263
+01:00:52,200 --> 01:00:56,599
+also call the same flow an encoder with
+
+1264
+01:00:55,240 --> 01:00:59,400
+the index
+
+1265
+01:00:56,599 --> 01:01:02,079
+and we call the context manager with
+
+1266
+01:00:59,400 --> 01:01:04,960
+flow which triggers the flow again and
+
+1267
+01:01:02,079 --> 01:01:07,119
+we can call we can do f. search which
+
+1268
+01:01:04,960 --> 01:01:10,440
+means that we are trying to search
+
+1269
+01:01:07,119 --> 01:01:12,280
+something in this flow and our input now
+
+1270
+01:01:10,440 --> 01:01:15,839
+is
+
+1271
+01:01:12,280 --> 01:01:19,319
+becomes the first document of the in our
+
+1272
+01:01:15,839 --> 01:01:22,119
+document R which use which I which is
+
+1273
+01:01:19,319 --> 01:01:24,799
+this document so so we imagine this
+
+1274
+01:01:22,119 --> 01:01:28,359
+document now becomes our users want to
+
+1275
+01:01:24,799 --> 01:01:30,720
+search Within using is this image now we
+
+1276
+01:01:28,359 --> 01:01:33,440
+try to use image this image to search
+
+1277
+01:01:30,720 --> 01:01:36,720
+and we set return result equals to true
+
+1278
+01:01:33,440 --> 01:01:39,760
+then we can return something back to our
+
+1279
+01:01:36,720 --> 01:01:42,640
+response and we also set parameters
+
+1280
+01:01:39,760 --> 01:01:45,760
+limit equals to five this means that
+
+1281
+01:01:42,640 --> 01:01:47,119
+Gina will return us top five results
+
+1282
+01:01:45,760 --> 01:01:49,039
+apparently this is something
+
+1283
+01:01:47,119 --> 01:01:52,480
+configurable but now I'm going to use
+
+1284
+01:01:49,039 --> 01:01:55,440
+stick with five and here after the
+
+1285
+01:01:52,480 --> 01:01:58,760
+response has been returned we try to
+
+1286
+01:01:55,440 --> 01:02:01,240
+save the uis into this python list so we
+
+1287
+01:01:58,760 --> 01:02:04,000
+are doing a for Loop trying to look into
+
+1288
+01:02:01,240 --> 01:02:06,480
+the returned documents and get the uis
+
+1289
+01:02:04,000 --> 01:02:10,240
+back to this match
+
+1290
+01:02:06,480 --> 01:02:13,359
+Uris so now Gina is trying to search
+
+1291
+01:02:10,240 --> 01:02:16,240
+this the similar document we input here
+
+1292
+01:02:13,359 --> 01:02:20,160
+this is a query
+
+1293
+01:02:16,240 --> 01:02:22,680
+document and we try to I think the
+
+1294
+01:02:20,160 --> 01:02:24,839
+search has been finished now we try to
+
+1295
+01:02:22,680 --> 01:02:29,039
+see the Matched
+
+1296
+01:02:24,839 --> 01:02:29,039
+urls and we try to plot
+
+1297
+01:02:29,200 --> 01:02:34,119
+them because we only indexed 200
+
+1298
+01:02:32,240 --> 01:02:36,880
+documents you already see that's the top
+
+1299
+01:02:34,119 --> 01:02:39,920
+one result is exactly the same document
+
+1300
+01:02:36,880 --> 01:02:41,880
+we try to index and the top two is kind
+
+1301
+01:02:39,920 --> 01:02:44,559
+of similar product but a little bit
+
+1302
+01:02:41,880 --> 01:02:46,880
+darker the third one not quite relevant
+
+1303
+01:02:44,559 --> 01:02:49,880
+fourth one not quite relevant the fifth
+
+1304
+01:02:46,880 --> 01:02:53,279
+one the color is relevant but not in the
+
+1305
+01:02:49,880 --> 01:02:55,880
+same category but this basically shows
+
+1306
+01:02:53,279 --> 01:02:58,559
+how it works because we only index 200
+
+1307
+01:02:55,880 --> 01:03:00,559
+images so if you have not good quality
+
+1308
+01:02:58,559 --> 01:03:04,599
+of data this search result should be
+
+1309
+01:03:00,559 --> 01:03:06,520
+much better and that is how simple it is
+
+1310
+01:03:04,599 --> 01:03:09,440
+trying to use Gina to build a search
+
+1311
+01:03:06,520 --> 01:03:12,880
+engine so basically what you need to do
+
+1312
+01:03:09,440 --> 01:03:16,359
+is to create a list of documents which
+
+1313
+01:03:12,880 --> 01:03:19,799
+can be using Gina and to stall into
+
+1314
+01:03:16,359 --> 01:03:22,279
+document and document rate and you feed
+
+1315
+01:03:19,799 --> 01:03:25,079
+into your document rate into our
+
+1316
+01:03:22,279 --> 01:03:27,680
+indexing flow so here we use some
+
+1317
+01:03:25,079 --> 01:03:30,640
+prebuild clip image encoder and simple
+
+1318
+01:03:27,680 --> 01:03:33,760
+index so then you call the index flow to
+
+1319
+01:03:30,640 --> 01:03:36,160
+index all your documents and then you do
+
+1320
+01:03:33,760 --> 01:03:38,960
+the search and you try to print the
+
+1321
+01:03:36,160 --> 01:03:40,839
+result and this already gives some
+
+1322
+01:03:38,960 --> 01:03:45,079
+reasonable
+
+1323
+01:03:40,839 --> 01:03:47,839
+result but now this is not enough so now
+
+1324
+01:03:45,079 --> 01:03:49,760
+in the third uh step we are going to
+
+1325
+01:03:47,839 --> 01:03:52,279
+talk about the Flow Design of a
+
+1326
+01:03:49,760 --> 01:03:55,400
+multimodal search engine trying to use
+
+1327
+01:03:52,279 --> 01:03:57,760
+image plus text to search for product
+
+1328
+01:03:55,400 --> 01:04:00,480
+and this is our collaboration with word
+
+1329
+01:03:57,760 --> 01:04:03,240
+bit the search by multiple modalities
+
+1330
+01:04:00,480 --> 01:04:05,960
+Beyond text box is much more common in
+
+1331
+01:04:03,240 --> 01:04:08,799
+this disc multimodel search allows user
+
+1332
+01:04:05,960 --> 01:04:11,920
+to conduct their user query with both
+
+1333
+01:04:08,799 --> 01:04:16,200
+images and text and more but before that
+
+1334
+01:04:11,920 --> 01:04:18,160
+we could ask ask ourselves two questions
+
+1335
+01:04:16,200 --> 01:04:20,920
+the first one is how to create a
+
+1336
+01:04:18,160 --> 01:04:23,000
+customized executor using Gina so
+
+1337
+01:04:20,920 --> 01:04:27,000
+basically what you're seeing
+
+1338
+01:04:23,000 --> 01:04:30,160
+here uh what we did before for this clip
+
+1339
+01:04:27,000 --> 01:04:33,279
+image encoder is a Gina built-in
+
+1340
+01:04:30,160 --> 01:04:35,000
+executor but in your real use case it is
+
+1341
+01:04:33,279 --> 01:04:37,920
+much more common that you are going to
+
+1342
+01:04:35,000 --> 01:04:39,760
+write your own executor so our first
+
+1343
+01:04:37,920 --> 01:04:42,319
+question is how can we create a
+
+1344
+01:04:39,760 --> 01:04:44,359
+customized executor the second question
+
+1345
+01:04:42,319 --> 01:04:46,720
+we are going to ask ourselves is how to
+
+1346
+01:04:44,359 --> 01:04:48,680
+use Gina to create a document which
+
+1347
+01:04:46,720 --> 01:04:51,279
+supports multiple
+
+1348
+01:04:48,680 --> 01:04:52,920
+modalities and let's try to answer the
+
+1349
+01:04:51,279 --> 01:04:56,279
+first question how to create a
+
+1350
+01:04:52,920 --> 01:04:58,880
+customized execut so here you can see
+
+1351
+01:04:56,279 --> 01:05:01,760
+that from Gina I imported executors
+
+1352
+01:04:58,880 --> 01:05:03,960
+requests and documentary these three
+
+1353
+01:05:01,760 --> 01:05:05,920
+things you don't have to care about
+
+1354
+01:05:03,960 --> 01:05:08,720
+request too much but the thing is
+
+1355
+01:05:05,920 --> 01:05:12,079
+Executor and documentary so here I
+
+1356
+01:05:08,720 --> 01:05:15,240
+create very stupid executor called Dy
+
+1357
+01:05:12,079 --> 01:05:18,760
+query intent pth so this Dy query intent
+
+1358
+01:05:15,240 --> 01:05:21,680
+P which you can see that this class
+
+1359
+01:05:18,760 --> 01:05:25,279
+inherent from the G executor so this is
+
+1360
+01:05:21,680 --> 01:05:27,599
+like a upgraded worker in our Pipeline
+
+1361
+01:05:25,279 --> 01:05:28,520
+and here I create function called pass
+
+1362
+01:05:27,599 --> 01:05:31,400
+user
+
+1363
+01:05:28,520 --> 01:05:33,119
+intent this function I'm trying to
+
+1364
+01:05:31,400 --> 01:05:35,680
+understand what is the user trying to
+
+1365
+01:05:33,119 --> 01:05:39,240
+query for and you can see that I
+
+1366
+01:05:35,680 --> 01:05:42,880
+annotated this function with this at
+
+1367
+01:05:39,240 --> 01:05:45,480
+request and decorator this means on
+
+1368
+01:05:42,880 --> 01:05:48,200
+search which means this executor only
+
+1369
+01:05:45,480 --> 01:05:50,960
+works at search time not indexing time
+
+1370
+01:05:48,200 --> 01:05:53,680
+or not other time if you remove this
+
+1371
+01:05:50,960 --> 01:05:56,680
+this will also happen at indexing time
+
+1372
+01:05:53,680 --> 01:05:59,079
+but we will keep it because we only want
+
+1373
+01:05:56,680 --> 01:06:00,760
+to understand the user user intent at
+
+1374
+01:05:59,079 --> 01:06:02,799
+search time because when user is
+
+1375
+01:06:00,760 --> 01:06:05,079
+searching then he will have a something
+
+1376
+01:06:02,799 --> 01:06:07,599
+like a keyword comes in then we can pass
+
+1377
+01:06:05,079 --> 01:06:09,920
+user intent so the first argument we
+
+1378
+01:06:07,599 --> 01:06:12,480
+stand to this function is called docs so
+
+1379
+01:06:09,920 --> 01:06:16,400
+it will be a document array and the
+
+1380
+01:06:12,480 --> 01:06:18,599
+second one is keyword arcs so now we in
+
+1381
+01:06:16,400 --> 01:06:21,279
+inside this function we try to Loop over
+
+1382
+01:06:18,599 --> 01:06:26,200
+this document aray for Doc in docs just
+
+1383
+01:06:21,279 --> 01:06:29,319
+using a for Loop if Adidas is in doc.
+
+1384
+01:06:26,200 --> 01:06:31,520
+content so this is user user query is
+
+1385
+01:06:29,319 --> 01:06:34,279
+normally just one document so but we
+
+1386
+01:06:31,520 --> 01:06:36,640
+always pass a document R inside this in
+
+1387
+01:06:34,279 --> 01:06:39,400
+this inside this docs parameter so if
+
+1388
+01:06:36,640 --> 01:06:42,559
+you see that if Adidas is in dos.
+
+1389
+01:06:39,400 --> 01:06:46,599
+content then we try to assign the tax of
+
+1390
+01:06:42,559 --> 01:06:49,960
+intent to be brand of idas otherwise if
+
+1391
+01:06:46,599 --> 01:06:53,359
+Niki is inside docs. content we set the
+
+1392
+01:06:49,960 --> 01:06:56,520
+do of tax of intent is equals to Brand
+
+1393
+01:06:53,359 --> 01:06:58,599
+equals to Nike then other app if this is
+
+1394
+01:06:56,520 --> 01:07:01,720
+something we don't understand so this is
+
+1395
+01:06:58,599 --> 01:07:05,960
+a really dummy query intent
+
+1396
+01:07:01,720 --> 01:07:09,119
+pass now I try to build this
+
+1397
+01:07:05,960 --> 01:07:11,400
+executor here I want to make use I want
+
+1398
+01:07:09,119 --> 01:07:13,559
+to put this executor or this worker
+
+1399
+01:07:11,400 --> 01:07:16,319
+inside our production line or inside our
+
+1400
+01:07:13,559 --> 01:07:19,559
+flow so we created a new flow called
+
+1401
+01:07:16,319 --> 01:07:21,920
+flow and we added a empty encoder which
+
+1402
+01:07:19,559 --> 01:07:24,559
+doing nothing we just create a name here
+
+1403
+01:07:21,920 --> 01:07:26,200
+and you try to add an empty in indexer
+
+1404
+01:07:24,559 --> 01:07:29,279
+which also do nothing
+
+1405
+01:07:26,200 --> 01:07:32,520
+but we here we also used something new
+
+1406
+01:07:29,279 --> 01:07:36,960
+called intent cler so this executor uses
+
+1407
+01:07:32,520 --> 01:07:37,760
+our D query intent pass so now if we are
+
+1408
+01:07:36,960 --> 01:07:40,520
+trying
+
+1409
+01:07:37,760 --> 01:07:43,680
+to call the flow enter the context
+
+1410
+01:07:40,520 --> 01:07:47,480
+manager we try to when user at searching
+
+1411
+01:07:43,680 --> 01:07:50,319
+time we call with f f. search inputs
+
+1412
+01:07:47,480 --> 01:07:52,640
+equals to A G new Gina document imagine
+
+1413
+01:07:50,319 --> 01:07:56,319
+this is the user's query document and
+
+1414
+01:07:52,640 --> 01:07:58,760
+the content is black addit as spot shoes
+
+1415
+01:07:56,319 --> 01:08:04,079
+and we set return results to CH and we
+
+1416
+01:07:58,760 --> 01:08:04,079
+try to print out the Tex of the query
+
+1417
+01:08:05,000 --> 01:08:10,760
+document as you can see that because our
+
+1418
+01:08:07,839 --> 01:08:14,920
+query is already like like this we want
+
+1419
+01:08:10,760 --> 01:08:18,199
+to try to like detect the user's intent
+
+1420
+01:08:14,920 --> 01:08:20,759
+is trying to find a document which will
+
+1421
+01:08:18,199 --> 01:08:24,319
+brand what's the is the brand of this
+
+1422
+01:08:20,759 --> 01:08:27,159
+user query so we try to print out the
+
+1423
+01:08:24,319 --> 01:08:30,560
+result you can see
+
+1424
+01:08:27,159 --> 01:08:33,520
+here we printed the test of the user
+
+1425
+01:08:30,560 --> 01:08:36,319
+query document which intent of brand is
+
+1426
+01:08:33,520 --> 01:08:38,799
+Adidas this is quite quite simple so
+
+1427
+01:08:36,319 --> 01:08:42,279
+this actually tells you how can we
+
+1428
+01:08:38,799 --> 01:08:45,120
+create a customized executor and add it
+
+1429
+01:08:42,279 --> 01:08:49,560
+into our search flow or index flow added
+
+1430
+01:08:45,120 --> 01:08:51,880
+into our flow but this this uh this like
+
+1431
+01:08:49,560 --> 01:08:54,239
+decorator here at request really means
+
+1432
+01:08:51,880 --> 01:08:56,640
+this will only works on search search
+
+1433
+01:08:54,239 --> 01:08:59,080
+time
+
+1434
+01:08:56,640 --> 01:09:02,359
+and together with slift we created a
+
+1435
+01:08:59,080 --> 01:09:05,159
+much more complex uh executor called
+
+1436
+01:09:02,359 --> 01:09:08,000
+user intent executor which is able to
+
+1437
+01:09:05,159 --> 01:09:11,120
+map user query into four facets
+
+1438
+01:09:08,000 --> 01:09:13,719
+including category color brand and price
+
+1439
+01:09:11,120 --> 01:09:16,400
+so this could be leads to better search
+
+1440
+01:09:13,719 --> 01:09:18,880
+results using post filtering so in the
+
+1441
+01:09:16,400 --> 01:09:22,120
+back end we could config something like
+
+1442
+01:09:18,880 --> 01:09:24,880
+called Auto intent to two to apply this
+
+1443
+01:09:22,120 --> 01:09:27,440
+feature and you can as you can already
+
+1444
+01:09:24,880 --> 01:09:30,719
+see in Andrea's presentation he already
+
+1445
+01:09:27,440 --> 01:09:34,159
+filtered the the result based on the
+
+1446
+01:09:30,719 --> 01:09:38,440
+detected intent so if the user query is
+
+1447
+01:09:34,159 --> 01:09:41,359
+n n shoes maybe SP black black if it
+
+1448
+01:09:38,440 --> 01:09:43,679
+looks like something like this if from
+
+1449
+01:09:41,359 --> 01:09:46,839
+Gina import documents user query equals
+
+1450
+01:09:43,679 --> 01:09:49,759
+to n shoes spot black then we trigger
+
+1451
+01:09:46,839 --> 01:09:52,400
+the flow with the flow we try to do some
+
+1452
+01:09:49,759 --> 01:09:55,000
+search the user input is a user query we
+
+1453
+01:09:52,400 --> 01:09:57,960
+have here this is basically a keyword
+
+1454
+01:09:55,000 --> 01:10:01,120
+and we in the parameter section we allow
+
+1455
+01:09:57,960 --> 01:10:04,199
+Auto intent equals to true so this flow
+
+1456
+01:10:01,120 --> 01:10:07,640
+will automatically detect the intent and
+
+1457
+01:10:04,199 --> 01:10:09,840
+attach the intent into our intent
+
+1458
+01:10:07,640 --> 01:10:12,600
+section which could be used for
+
+1459
+01:10:09,840 --> 01:10:15,440
+filtering in at the end of the search
+
+1460
+01:10:12,600 --> 01:10:17,679
+flow and after matching documents by
+
+1461
+01:10:15,440 --> 01:10:20,600
+similar vectors we could also apply
+
+1462
+01:10:17,679 --> 01:10:24,960
+these filters based on this recognized
+
+1463
+01:10:20,600 --> 01:10:27,080
+text so now let's see how um yeah so
+
+1464
+01:10:24,960 --> 01:10:30,239
+basically this is how can we create a
+
+1465
+01:10:27,080 --> 01:10:32,080
+customized executor and how the our
+
+1466
+01:10:30,239 --> 01:10:34,440
+collaboration with the auto intent
+
+1467
+01:10:32,080 --> 01:10:36,920
+passer works and now we try to answer
+
+1468
+01:10:34,440 --> 01:10:39,159
+our second question how does ginaa
+
+1469
+01:10:36,920 --> 01:10:41,360
+represent a multimodel document which
+
+1470
+01:10:39,159 --> 01:10:44,440
+contains two modalities the first
+
+1471
+01:10:41,360 --> 01:10:46,800
+modality is image the second modality is
+
+1472
+01:10:44,440 --> 01:10:49,560
+text so the answer is called our
+
+1473
+01:10:46,800 --> 01:10:52,120
+recursive document structure so
+
+1474
+01:10:49,560 --> 01:10:54,600
+basically a document can contains chunks
+
+1475
+01:10:52,120 --> 01:10:56,000
+of matches so that document can be a
+
+1476
+01:10:54,600 --> 01:10:58,880
+root of do
+
+1477
+01:10:56,000 --> 01:11:02,040
+and it can be contains a set of Chunk
+
+1478
+01:10:58,880 --> 01:11:04,159
+documents or child documents so if I
+
+1479
+01:11:02,040 --> 01:11:06,920
+create document here you can see this
+
+1480
+01:11:04,159 --> 01:11:10,800
+document is called D1 so I created Gina
+
+1481
+01:11:06,920 --> 01:11:13,560
+document which idal to one and I also
+
+1482
+01:11:10,800 --> 01:11:17,159
+for this for the same document I call
+
+1483
+01:11:13,560 --> 01:11:19,960
+docs. chunks. append I created a new
+
+1484
+01:11:17,159 --> 01:11:21,880
+document which ID equal to two and this
+
+1485
+01:11:19,960 --> 01:11:25,679
+is actually an
+
+1486
+01:11:21,880 --> 01:11:29,760
+image and I also added I appended this
+
+1487
+01:11:25,679 --> 01:11:32,080
+document into this chunks of this D1 and
+
+1488
+01:11:29,760 --> 01:11:34,000
+I also created third document which is
+
+1489
+01:11:32,080 --> 01:11:36,920
+called ID equals to three and the
+
+1490
+01:11:34,000 --> 01:11:39,800
+content is actually text white skirt
+
+1491
+01:11:36,920 --> 01:11:43,320
+summer well spot lady is something like
+
+1492
+01:11:39,800 --> 01:11:45,679
+this and we try to plot how the D1 now
+
+1493
+01:11:43,320 --> 01:11:45,679
+looks
+
+1494
+01:11:46,199 --> 01:11:52,040
+like as you can see here that inside
+
+1495
+01:11:49,360 --> 01:11:54,480
+this notebooks we have our D1 which is
+
+1496
+01:11:52,040 --> 01:11:56,880
+here represented here but this document
+
+1497
+01:11:54,480 --> 01:11:59,199
+also have two chunks of data so the
+
+1498
+01:11:56,880 --> 01:12:02,159
+first chunk is this document the second
+
+1499
+01:11:59,199 --> 01:12:04,560
+chunks is this document and if if we
+
+1500
+01:12:02,159 --> 01:12:07,080
+look bigger we have this document
+
+1501
+01:12:04,560 --> 01:12:10,760
+corresponding to this chunk this one to
+
+1502
+01:12:07,080 --> 01:12:13,120
+this so the idea the document is two and
+
+1503
+01:12:10,760 --> 01:12:15,960
+three and you can see that Gina
+
+1504
+01:12:13,120 --> 01:12:19,320
+automatically try to detect
+
+1505
+01:12:15,960 --> 01:12:21,800
+the mme type for this document because
+
+1506
+01:12:19,320 --> 01:12:24,280
+this is an image so the M type is
+
+1507
+01:12:21,800 --> 01:12:27,280
+actually image gpack because the second
+
+1508
+01:12:24,280 --> 01:12:30,920
+document is actually text so the type is
+
+1509
+01:12:27,280 --> 01:12:33,920
+actually text plan so you might only you
+
+1510
+01:12:30,920 --> 01:12:36,480
+might also notice that we have a propic
+
+1511
+01:12:33,920 --> 01:12:39,560
+called granularity so the granularity
+
+1512
+01:12:36,480 --> 01:12:42,639
+means how high we are at this document
+
+1513
+01:12:39,560 --> 01:12:45,800
+so the root document here D1 with a
+
+1514
+01:12:42,639 --> 01:12:48,880
+granularity of one of zero and this this
+
+1515
+01:12:45,800 --> 01:12:51,760
+chunks of this D1 have a granularity of
+
+1516
+01:12:48,880 --> 01:12:54,320
+one so this granularity represents a
+
+1517
+01:12:51,760 --> 01:12:55,960
+logic relationship between root document
+
+1518
+01:12:54,320 --> 01:12:59,080
+and chunks of do
+
+1519
+01:12:55,960 --> 01:13:01,880
+so this with this recursive do data
+
+1520
+01:12:59,080 --> 01:13:04,800
+structure we are able to capture the
+
+1521
+01:13:01,880 --> 01:13:04,800
+multimodality
+
+1522
+01:13:07,239 --> 01:13:12,679
+search and we try to plot the first
+
+1523
+01:13:10,400 --> 01:13:14,639
+chunk of the data it looks like this
+
+1524
+01:13:12,679 --> 01:13:17,920
+which we already see
+
+1525
+01:13:14,639 --> 01:13:19,960
+before now let's go to continue to
+
+1526
+01:13:17,920 --> 01:13:21,040
+design our multimodel search and
+
+1527
+01:13:19,960 --> 01:13:23,760
+indexing
+
+1528
+01:13:21,040 --> 01:13:25,840
+flow it should be noted that because
+
+1529
+01:13:23,760 --> 01:13:28,280
+this is running in a Google clap so
+
+1530
+01:13:25,840 --> 01:13:31,520
+where I'm not able to write off the code
+
+1531
+01:13:28,280 --> 01:13:34,600
+inside this this clap but only I'm going
+
+1532
+01:13:31,520 --> 01:13:38,080
+to demo the logic the concept of how
+
+1533
+01:13:34,600 --> 01:13:40,199
+this flow was designed let's first start
+
+1534
+01:13:38,080 --> 01:13:42,080
+from the indexing flow but I'm going to
+
+1535
+01:13:40,199 --> 01:13:44,440
+run this you already see that there is a
+
+1536
+01:13:42,080 --> 01:13:47,040
+lot of code compared to before so I'm
+
+1537
+01:13:44,440 --> 01:13:51,320
+going to share the index flow
+
+1538
+01:13:47,040 --> 01:13:55,679
+here so I open this
+
+1539
+01:13:51,320 --> 01:13:58,760
+image which you might already see that
+
+1540
+01:13:55,679 --> 01:14:00,880
+so here is our Gateway you already see
+
+1541
+01:13:58,760 --> 01:14:03,120
+that this is much more complex than the
+
+1542
+01:14:00,880 --> 01:14:06,120
+first very simple pipeline which only
+
+1543
+01:14:03,120 --> 01:14:08,360
+contains an indexer and a encoder this
+
+1544
+01:14:06,120 --> 01:14:10,840
+is much more complex so giving the unit
+
+1545
+01:14:08,360 --> 01:14:12,520
+query starts from here from the Gateway
+
+1546
+01:14:10,840 --> 01:14:14,400
+so we have first of all we have a
+
+1547
+01:14:12,520 --> 01:14:17,159
+document chunker so this document
+
+1548
+01:14:14,400 --> 01:14:19,280
+chunker contains two chunks of sub
+
+1549
+01:14:17,159 --> 01:14:21,159
+document so we have a root document
+
+1550
+01:14:19,280 --> 01:14:23,440
+which has two chunks which what the
+
+1551
+01:14:21,159 --> 01:14:25,679
+first one is an image the second one is
+
+1552
+01:14:23,440 --> 01:14:28,320
+text so this is a document we want to
+
+1553
+01:14:25,679 --> 01:14:32,120
+index and this document is a list of
+
+1554
+01:14:28,320 --> 01:14:34,239
+documents we want to index so in the so
+
+1555
+01:14:32,120 --> 01:14:36,840
+if you can see that we split starting
+
+1556
+01:14:34,239 --> 01:14:39,600
+from this chunker here we split our
+
+1557
+01:14:36,840 --> 01:14:42,159
+pathway into three parts the first one
+
+1558
+01:14:39,600 --> 01:14:44,560
+is the image modality one the second one
+
+1559
+01:14:42,159 --> 01:14:47,000
+is working for the text modality the
+
+1560
+01:14:44,560 --> 01:14:49,760
+third one I will introduce later let's
+
+1561
+01:14:47,000 --> 01:14:52,840
+the first start from the image modality
+
+1562
+01:14:49,760 --> 01:14:55,400
+so this one here I firstly created an
+
+1563
+01:14:52,840 --> 01:14:58,360
+image modality filter so this filter
+
+1564
+01:14:55,400 --> 01:15:01,280
+will this executor will filter the
+
+1565
+01:14:58,360 --> 01:15:04,280
+document we fit from here which only
+
+1566
+01:15:01,280 --> 01:15:07,159
+contains the document has the mme type
+
+1567
+01:15:04,280 --> 01:15:10,280
+of gpack so this this executor will
+
+1568
+01:15:07,159 --> 01:15:11,560
+filter the documents and only Le images
+
+1569
+01:15:10,280 --> 01:15:14,440
+into this
+
+1570
+01:15:11,560 --> 01:15:17,120
+passway and in the second part I
+
+1571
+01:15:14,440 --> 01:15:20,760
+attached we attached an image object
+
+1572
+01:15:17,120 --> 01:15:23,000
+detector so if you are in the like an in
+
+1573
+01:15:20,760 --> 01:15:26,840
+shop retrieval purpose you want to build
+
+1574
+01:15:23,000 --> 01:15:28,840
+something um search search bar with
+
+1575
+01:15:26,840 --> 01:15:31,480
+which your data quality is already very
+
+1576
+01:15:28,840 --> 01:15:33,719
+good this part is not necessary but in
+
+1577
+01:15:31,480 --> 01:15:35,719
+most cases when you're they taking a
+
+1578
+01:15:33,719 --> 01:15:37,920
+picture in the weld so there might be a
+
+1579
+01:15:35,719 --> 01:15:40,760
+lot of like background noise or
+
+1580
+01:15:37,920 --> 01:15:43,320
+different components in this image so we
+
+1581
+01:15:40,760 --> 01:15:46,520
+attached an image object detector here
+
+1582
+01:15:43,320 --> 01:15:49,840
+to crop images with to crop the fion
+
+1583
+01:15:46,520 --> 01:15:52,400
+product within this image the third part
+
+1584
+01:15:49,840 --> 01:15:54,199
+is the clip image encoder as the same
+
+1585
+01:15:52,400 --> 01:15:58,320
+before so we are using the clip
+
+1586
+01:15:54,199 --> 01:16:02,080
+preaching model to get the result to to
+
+1587
+01:15:58,320 --> 01:16:05,239
+encode the image into embeddings and we
+
+1588
+01:16:02,080 --> 01:16:07,639
+attached Anno image indexer so this
+
+1589
+01:16:05,239 --> 01:16:10,360
+indexer is not like the simple indexer
+
+1590
+01:16:07,639 --> 01:16:13,280
+which only stores the result in our
+
+1591
+01:16:10,360 --> 01:16:16,000
+local machine so this one use some
+
+1592
+01:16:13,280 --> 01:16:18,120
+algorithm called approxim nearest
+
+1593
+01:16:16,000 --> 01:16:20,960
+neighbor which sacrifice a little bit of
+
+1594
+01:16:18,120 --> 01:16:23,199
+the performance uh the accuracy but
+
+1595
+01:16:20,960 --> 01:16:25,440
+increase the search speed because in the
+
+1596
+01:16:23,199 --> 01:16:27,600
+searching time you cannot wait too much
+
+1597
+01:16:25,440 --> 01:16:29,960
+time to get the search result but when
+
+1598
+01:16:27,600 --> 01:16:32,920
+your user query is one let's say your
+
+1599
+01:16:29,960 --> 01:16:34,840
+index document is like a meeing document
+
+1600
+01:16:32,920 --> 01:16:37,080
+so you need to compare the similarity
+
+1601
+01:16:34,840 --> 01:16:40,239
+between your query document against one
+
+1602
+01:16:37,080 --> 01:16:43,239
+million documents and that's not
+
+1603
+01:16:40,239 --> 01:16:45,480
+possible if you you you are using like
+
+1604
+01:16:43,239 --> 01:16:47,960
+exhausted search or something like that
+
+1605
+01:16:45,480 --> 01:16:50,280
+so you have to do very quick search and
+
+1606
+01:16:47,960 --> 01:16:53,760
+this technique is called approximate
+
+1607
+01:16:50,280 --> 01:16:55,639
+near neighbor so an no index is one
+
+1608
+01:16:53,760 --> 01:16:58,679
+implementation of this
+
+1609
+01:16:55,639 --> 01:17:02,120
+algorithm so this is allow us to do the
+
+1610
+01:16:58,679 --> 01:17:04,560
+vector search very fast in seconds let's
+
+1611
+01:17:02,120 --> 01:17:07,000
+go back to the second pathway so here we
+
+1612
+01:17:04,560 --> 01:17:09,480
+have image then we go to the text
+
+1613
+01:17:07,000 --> 01:17:11,679
+pathway so similar as the previous
+
+1614
+01:17:09,480 --> 01:17:13,800
+pathway we have a text modality filter
+
+1615
+01:17:11,679 --> 01:17:16,920
+here which filters the documents which
+
+1616
+01:17:13,800 --> 01:17:19,199
+only contains the text modality and we
+
+1617
+01:17:16,920 --> 01:17:22,560
+attached a bird text encoder which
+
+1618
+01:17:19,199 --> 01:17:27,040
+encodes the text into bir embeddings
+
+1619
+01:17:22,560 --> 01:17:30,800
+this is a very uh like a widely used
+
+1620
+01:17:27,040 --> 01:17:33,239
+text encoder in the market now and
+
+1621
+01:17:30,800 --> 01:17:36,280
+similarly we also attached a noise text
+
+1622
+01:17:33,239 --> 01:17:39,760
+indexer which index the text Data into
+
+1623
+01:17:36,280 --> 01:17:42,880
+vectors and store into our local
+
+1624
+01:17:39,760 --> 01:17:45,040
+space and you might also see that we
+
+1625
+01:17:42,880 --> 01:17:47,960
+added another pathway here which is
+
+1626
+01:17:45,040 --> 01:17:50,760
+called chunk merger so basically now we
+
+1627
+01:17:47,960 --> 01:17:52,960
+have this this pathway only works works
+
+1628
+01:17:50,760 --> 01:17:55,679
+on the image chunk of our original
+
+1629
+01:17:52,960 --> 01:17:58,440
+documents this pathway only works on the
+
+1630
+01:17:55,679 --> 01:18:01,120
+text document in our original root
+
+1631
+01:17:58,440 --> 01:18:04,000
+document so this chunk merger basically
+
+1632
+01:18:01,120 --> 01:18:06,600
+merg the two chunks back to its original
+
+1633
+01:18:04,000 --> 01:18:09,000
+like root document which has granularity
+
+1634
+01:18:06,600 --> 01:18:11,600
+equals to one so this one is has a
+
+1635
+01:18:09,000 --> 01:18:14,360
+granularity equals to zero this one as
+
+1636
+01:18:11,600 --> 01:18:16,560
+well but this one trying to merge it
+
+1637
+01:18:14,360 --> 01:18:19,639
+back to its original format and we
+
+1638
+01:18:16,560 --> 01:18:22,199
+finished indexing step this it is much
+
+1639
+01:18:19,639 --> 01:18:25,320
+more complex than the previous simple
+
+1640
+01:18:22,199 --> 01:18:28,280
+one but this is possible
+
+1641
+01:18:25,320 --> 01:18:30,760
+by our collaboration work with forlift
+
+1642
+01:18:28,280 --> 01:18:33,239
+but now let's start it from the second
+
+1643
+01:18:30,760 --> 01:18:35,639
+pathway the search Flow Design it is
+
+1644
+01:18:33,239 --> 01:18:39,440
+also much more complex as you already
+
+1645
+01:18:35,639 --> 01:18:43,360
+see here so I'm going to plot the figure
+
+1646
+01:18:39,440 --> 01:18:43,360
+as well and open the
+
+1647
+01:18:44,440 --> 01:18:49,760
+image so similarly as the indexing
+
+1648
+01:18:47,679 --> 01:18:53,400
+pipeline we have
+
+1649
+01:18:49,760 --> 01:18:55,760
+a nicely but a little bit complex search
+
+1650
+01:18:53,400 --> 01:18:58,760
+pipeline so this this pathway this
+
+1651
+01:18:55,760 --> 01:19:02,000
+pipeline works when user is searching
+
+1652
+01:18:58,760 --> 01:19:05,120
+through our index data so first of all
+
+1653
+01:19:02,000 --> 01:19:07,280
+the user input let's say is a multimodal
+
+1654
+01:19:05,120 --> 01:19:09,080
+document as you can see that an image
+
+1655
+01:19:07,280 --> 01:19:12,360
+and a text maybe
+
+1656
+01:19:09,080 --> 01:19:15,440
+it's um it's an image together with a
+
+1657
+01:19:12,360 --> 01:19:17,600
+piece of text so similarly as before we
+
+1658
+01:19:15,440 --> 01:19:20,239
+have an image modality filter which goes
+
+1659
+01:19:17,600 --> 01:19:22,560
+to the B passway and we have a text
+
+1660
+01:19:20,239 --> 01:19:25,239
+modality filter which goes to the text
+
+1661
+01:19:22,560 --> 01:19:28,120
+fway similarly we apply the the image
+
+1662
+01:19:25,239 --> 01:19:30,760
+object detector to detect the object
+
+1663
+01:19:28,120 --> 01:19:34,040
+within this user query and we try to
+
+1664
+01:19:30,760 --> 01:19:38,360
+encode the user image into an embedding
+
+1665
+01:19:34,040 --> 01:19:41,000
+or into a vector then we also apply a
+
+1666
+01:19:38,360 --> 01:19:43,600
+bird text encoder to encode the user
+
+1667
+01:19:41,000 --> 01:19:47,080
+query or the keywords into
+
+1668
+01:19:43,600 --> 01:19:49,400
+embeding so we try to use the no image
+
+1669
+01:19:47,080 --> 01:19:51,400
+indexer here as well but this app
+
+1670
+01:19:49,400 --> 01:19:53,800
+happens at search time so what it's
+
+1671
+01:19:51,400 --> 01:19:56,480
+doing is it's trying to compare this
+
+1672
+01:19:53,800 --> 01:19:59,800
+image in embeddings with all of our
+
+1673
+01:19:56,480 --> 01:20:03,000
+image embeddings saved in our local disk
+
+1674
+01:19:59,800 --> 01:20:05,600
+so this text also works like the same
+
+1675
+01:20:03,000 --> 01:20:08,400
+way so it's comparing this encoded text
+
+1676
+01:20:05,600 --> 01:20:11,600
+embeddings against all of our text
+
+1677
+01:20:08,400 --> 01:20:14,679
+embeddings saved our local disk and
+
+1678
+01:20:11,600 --> 01:20:17,520
+produce a score for each modality so the
+
+1679
+01:20:14,679 --> 01:20:20,920
+result of this executor will be a list
+
+1680
+01:20:17,520 --> 01:20:23,520
+of scores which how this user query
+
+1681
+01:20:20,920 --> 01:20:25,159
+document image is related to our all of
+
+1682
+01:20:23,520 --> 01:20:27,639
+our other images
+
+1683
+01:20:25,159 --> 01:20:30,280
+how this user text query is related to
+
+1684
+01:20:27,639 --> 01:20:33,239
+our text queries and here we have the
+
+1685
+01:20:30,280 --> 01:20:35,719
+trunk merger similarly but it's try to
+
+1686
+01:20:33,239 --> 01:20:40,760
+find its parents document which is the
+
+1687
+01:20:35,719 --> 01:20:44,000
+use users original query to merge two
+
+1688
+01:20:40,760 --> 01:20:46,840
+modalities and after this merging step
+
+1689
+01:20:44,000 --> 01:20:48,159
+we have rank aggregator so basically
+
+1690
+01:20:46,840 --> 01:20:51,960
+this one because for different
+
+1691
+01:20:48,159 --> 01:20:54,960
+modalities we have different scores for
+
+1692
+01:20:51,960 --> 01:20:57,280
+for chunks so this rank aggregator which
+
+1693
+01:20:54,960 --> 01:20:59,920
+which really means that we can add at
+
+1694
+01:20:57,280 --> 01:21:02,840
+the scores based on its modalities
+
+1695
+01:20:59,920 --> 01:21:05,239
+protex modalities and its Associated
+
+1696
+01:21:02,840 --> 01:21:07,760
+image modality data we add the scores
+
+1697
+01:21:05,239 --> 01:21:11,080
+together to produce the final
+
+1698
+01:21:07,760 --> 01:21:13,760
+rank so after we get the final rank we
+
+1699
+01:21:11,080 --> 01:21:16,639
+can apply the intent P we introduced
+
+1700
+01:21:13,760 --> 01:21:19,719
+before we pass the user query into
+
+1701
+01:21:16,639 --> 01:21:21,960
+intents and this user intent is able to
+
+1702
+01:21:19,719 --> 01:21:23,760
+do the filter that's the last step we
+
+1703
+01:21:21,960 --> 01:21:27,239
+can filter for example the user is
+
+1704
+01:21:23,760 --> 01:21:29,679
+quering for like maybe shoes so in the
+
+1705
+01:21:27,239 --> 01:21:31,440
+product filter we will filter documents
+
+1706
+01:21:29,679 --> 01:21:34,400
+which ranked documents which only
+
+1707
+01:21:31,440 --> 01:21:38,360
+belongs to the shoes category with black
+
+1708
+01:21:34,400 --> 01:21:43,400
+color and produce the result back to the
+
+1709
+01:21:38,360 --> 01:21:43,400
+user so this is how the search pipeline
+
+1710
+01:21:44,159 --> 01:21:50,560
+works so one concept I mentioned this is
+
+1711
+01:21:48,080 --> 01:21:53,280
+how I'm going to introduce a little bit
+
+1712
+01:21:50,560 --> 01:21:56,239
+more complex search flow how to design a
+
+1713
+01:21:53,280 --> 01:21:58,880
+search engine for mul model search and
+
+1714
+01:21:56,239 --> 01:22:01,600
+in The Next Step I'm going to tell you
+
+1715
+01:21:58,880 --> 01:22:04,679
+how can you use Gina to scale it up or
+
+1716
+01:22:01,600 --> 01:22:07,400
+scale it down so Gina is designed to
+
+1717
+01:22:04,679 --> 01:22:09,920
+help everyone to build new Solutions out
+
+1718
+01:22:07,400 --> 01:22:13,000
+of the box from proof of concept to
+
+1719
+01:22:09,920 --> 01:22:15,400
+production and which also give you a lot
+
+1720
+01:22:13,000 --> 01:22:18,800
+of possibilities to scale it up or down
+
+1721
+01:22:15,400 --> 01:22:21,080
+based on your requirements so if you can
+
+1722
+01:22:18,800 --> 01:22:23,600
+say here I'm going to import from G
+
+1723
+01:22:21,080 --> 01:22:27,120
+import flow and I initialize the flow
+
+1724
+01:22:23,600 --> 01:22:30,800
+and add it as clip image encoder also an
+
+1725
+01:22:27,120 --> 01:22:33,920
+annoy text encoder and I try to plot it
+
+1726
+01:22:30,800 --> 01:22:36,480
+here so this is actually a very simple
+
+1727
+01:22:33,920 --> 01:22:40,480
+flow which doesn't do much of
+
+1728
+01:22:36,480 --> 01:22:42,800
+sense but some executors in this case
+
+1729
+01:22:40,480 --> 01:22:45,080
+clip image encoder might becomes the
+
+1730
+01:22:42,800 --> 01:22:48,080
+bottom neck of your search system
+
+1731
+01:22:45,080 --> 01:22:50,600
+because de neur neuron
+
+1732
+01:22:48,080 --> 01:22:54,760
+networks uh Because deep new networks
+
+1733
+01:22:50,600 --> 01:22:58,400
+takes time to inference and on CPU if
+
+1734
+01:22:54,760 --> 01:23:01,320
+you using this blow using a CPU the the
+
+1735
+01:22:58,400 --> 01:23:03,639
+the step of using encoder to encode this
+
+1736
+01:23:01,320 --> 01:23:07,000
+image into embeddings really takes some
+
+1737
+01:23:03,639 --> 01:23:10,400
+time maybe 0.5 seconds but it's already
+
+1738
+01:23:07,000 --> 01:23:13,760
+a lot of time so the first step so the
+
+1739
+01:23:10,400 --> 01:23:16,960
+off the first option for us to speed up
+
+1740
+01:23:13,760 --> 01:23:19,880
+is to use GPU for inference but GPU
+
+1741
+01:23:16,960 --> 01:23:22,320
+because it is very fast for GPU to
+
+1742
+01:23:19,880 --> 01:23:24,920
+optimize deep your networks and Gina
+
+1743
+01:23:22,320 --> 01:23:27,480
+allows you to do with very simple
+
+1744
+01:23:24,920 --> 01:23:30,480
+configuration so imagine now you have a
+
+1745
+01:23:27,480 --> 01:23:33,239
+GPU machine and you addit your encoder
+
+1746
+01:23:30,480 --> 01:23:36,280
+here called clip image encoder GPU and
+
+1747
+01:23:33,239 --> 01:23:39,040
+you config I'm I'm going to use all gpus
+
+1748
+01:23:36,280 --> 01:23:41,440
+on this machine and also you'll specify
+
+1749
+01:23:39,040 --> 01:23:45,360
+the parameter key called device equals
+
+1750
+01:23:41,440 --> 01:23:48,880
+to Cuda so I'm going to use Nvidia Cuda
+
+1751
+01:23:45,360 --> 01:23:52,159
+like uh in this GPU machine and you try
+
+1752
+01:23:48,880 --> 01:23:54,600
+to add another indexer and plots the
+
+1753
+01:23:52,159 --> 01:23:57,600
+result
+
+1754
+01:23:54,600 --> 01:24:00,040
+so now Gina will take care of it and try
+
+1755
+01:23:57,600 --> 01:24:02,960
+to do the other inference on using the
+
+1756
+01:24:00,040 --> 01:24:06,080
+GPU resources on your machine so this is
+
+1757
+01:24:02,960 --> 01:24:08,920
+going to greatly speed up your uh search
+
+1758
+01:24:06,080 --> 01:24:12,520
+time and in the meantime Gina also
+
+1759
+01:24:08,920 --> 01:24:15,040
+supports her horizontally scaling simply
+
+1760
+01:24:12,520 --> 01:24:18,679
+put a number into your executor for
+
+1761
+01:24:15,040 --> 01:24:21,760
+example here we try to import Gina from
+
+1762
+01:24:18,679 --> 01:24:24,440
+G import flow and I initialize the flow
+
+1763
+01:24:21,760 --> 01:24:27,520
+using the clip image encoder as well and
+
+1764
+01:24:24,440 --> 01:24:30,400
+using gpus all and also device equals to
+
+1765
+01:24:27,520 --> 01:24:33,600
+Cuda but I also config something called
+
+1766
+01:24:30,400 --> 01:24:35,719
+replica equals to three I'm going to
+
+1767
+01:24:33,600 --> 01:24:38,239
+tell you later how this replica is
+
+1768
+01:24:35,719 --> 01:24:40,800
+implemented breathing gen so replica
+
+1769
+01:24:38,239 --> 01:24:45,320
+equals to three will help you do
+
+1770
+01:24:40,800 --> 01:24:48,000
+the horizontally SC ofina and added a no
+
+1771
+01:24:45,320 --> 01:24:52,080
+text index here and I'm going to plot
+
+1772
+01:24:48,000 --> 01:24:54,960
+the flow so as you can see that the flow
+
+1773
+01:24:52,080 --> 01:24:57,040
+is already much more complex so giving
+
+1774
+01:24:54,960 --> 01:24:59,760
+this CL clip image encoder we want to
+
+1775
+01:24:57,040 --> 01:25:02,440
+optimize so the user data comes into the
+
+1776
+01:24:59,760 --> 01:25:04,920
+gateway then it will be sent to the rec
+
+1777
+01:25:02,440 --> 01:25:07,159
+call it inside internally we call it
+
+1778
+01:25:04,920 --> 01:25:10,480
+headp but for users you don't have to
+
+1779
+01:25:07,159 --> 01:25:12,840
+care about this so this one we'll try to
+
+1780
+01:25:10,480 --> 01:25:15,520
+create three executors identical
+
+1781
+01:25:12,840 --> 01:25:18,199
+executors within this flow so each flow
+
+1782
+01:25:15,520 --> 01:25:22,199
+is going to help you process your imag
+
+1783
+01:25:18,199 --> 01:25:24,960
+in parallel and at the end this TP will
+
+1784
+01:25:22,199 --> 01:25:27,840
+help you collect all the data back which
+
+1785
+01:25:24,960 --> 01:25:31,440
+processed by this image and the result
+
+1786
+01:25:27,840 --> 01:25:35,239
+will be sent back to the Anno text annoi
+
+1787
+01:25:31,440 --> 01:25:38,639
+index so if this is the way how you try
+
+1788
+01:25:35,239 --> 01:25:41,639
+to reduce the Bott neck in your search
+
+1789
+01:25:38,639 --> 01:25:43,679
+system the above a CP image encoder has
+
+1790
+01:25:41,639 --> 01:25:47,400
+been scaled three times but this
+
+1791
+01:25:43,679 --> 01:25:50,080
+executor is what we call is a state Miss
+
+1792
+01:25:47,400 --> 01:25:52,239
+executor so the state list really means
+
+1793
+01:25:50,080 --> 01:25:55,080
+it does not keep any states or data
+
+1794
+01:25:52,239 --> 01:25:57,719
+inside here so this executor only do a
+
+1795
+01:25:55,080 --> 01:26:00,320
+pass so your data will be not persistent
+
+1796
+01:25:57,719 --> 01:26:03,520
+anywhere but only passed to the next
+
+1797
+01:26:00,320 --> 01:26:06,119
+executor or next worker but sometimes we
+
+1798
+01:26:03,520 --> 01:26:08,159
+will have state stateful executor such
+
+1799
+01:26:06,119 --> 01:26:10,400
+as the indexer which will store our
+
+1800
+01:26:08,159 --> 01:26:13,480
+index data to our local machine or to
+
+1801
+01:26:10,400 --> 01:26:15,360
+some remote storage for instance where
+
+1802
+01:26:13,480 --> 01:26:19,320
+if we are going to use mongod DB to
+
+1803
+01:26:15,360 --> 01:26:21,800
+persist of documents for incremental
+
+1804
+01:26:19,320 --> 01:26:25,320
+indexing now we are going to create a
+
+1805
+01:26:21,800 --> 01:26:29,000
+new flow here from Gina flow and I
+
+1806
+01:26:25,320 --> 01:26:31,159
+initialized a new flow and here I added
+
+1807
+01:26:29,000 --> 01:26:34,119
+three executors as you can see the first
+
+1808
+01:26:31,159 --> 01:26:36,800
+one is called clip image encoder on GPU
+
+1809
+01:26:34,119 --> 01:26:40,440
+the second one is mongod DB storage the
+
+1810
+01:26:36,800 --> 01:26:43,080
+third one is anoa index so the mongod DB
+
+1811
+01:26:40,440 --> 01:26:45,880
+uh mongod DB storage will help us to
+
+1812
+01:26:43,080 --> 01:26:50,440
+keep our documents into a mongod
+
+1813
+01:26:45,880 --> 01:26:53,800
+DB uh database which will can be hosted
+
+1814
+01:26:50,440 --> 01:26:56,960
+for incremental indexing purpose and in
+
+1815
+01:26:53,800 --> 01:26:59,320
+that inside this mongod DB storage we
+
+1816
+01:26:56,960 --> 01:27:02,239
+created parameter called shards shards
+
+1817
+01:26:59,320 --> 01:27:04,080
+equal to three so this will help us
+
+1818
+01:27:02,239 --> 01:27:08,280
+store all the documents onto different
+
+1819
+01:27:04,080 --> 01:27:11,920
+sharts I'm going to plot the flow
+
+1820
+01:27:08,280 --> 01:27:13,800
+now so now you can see that our data
+
+1821
+01:27:11,920 --> 01:27:16,840
+comes into our gateway then it will be
+
+1822
+01:27:13,800 --> 01:27:19,719
+sent to the image encoder on GPU and
+
+1823
+01:27:16,840 --> 01:27:22,760
+inside this sharts we initialized three
+
+1824
+01:27:19,719 --> 01:27:24,320
+mongod DB storage and for each storage
+
+1825
+01:27:22,760 --> 01:27:26,560
+we are going to store some data here
+
+1826
+01:27:24,320 --> 01:27:29,280
+some data here some data here or you are
+
+1827
+01:27:26,560 --> 01:27:32,239
+TR trying to use another ping like
+
+1828
+01:27:29,280 --> 01:27:34,920
+message so we will keep an identity copy
+
+1829
+01:27:32,239 --> 01:27:37,520
+of the data in these three p three
+
+1830
+01:27:34,920 --> 01:27:40,280
+executors here and at the end the
+
+1831
+01:27:37,520 --> 01:27:44,280
+document will be pulled back to the TP
+
+1832
+01:27:40,280 --> 01:27:47,199
+and resend to the next ex so this is how
+
+1833
+01:27:44,280 --> 01:27:48,960
+Gina try to help your skill when you
+
+1834
+01:27:47,199 --> 01:27:53,159
+have stateful
+
+1835
+01:27:48,960 --> 01:27:56,159
+executor so the thing is if you want to
+
+1836
+01:27:53,159 --> 01:27:59,600
+scale it up the first strategy you want
+
+1837
+01:27:56,159 --> 01:28:02,840
+to try is to use a GPU machine for your
+
+1838
+01:27:59,600 --> 01:28:05,320
+executor the second one if you can if
+
+1839
+01:28:02,840 --> 01:28:07,960
+you it is a state list executor it only
+
+1840
+01:28:05,320 --> 01:28:11,199
+do a forward pass with without storing
+
+1841
+01:28:07,960 --> 01:28:14,239
+any data on your machine you can do uh
+
+1842
+01:28:11,199 --> 01:28:16,280
+replicas equals to maybe some number
+
+1843
+01:28:14,239 --> 01:28:18,880
+which on your machine and if you are
+
+1844
+01:28:16,280 --> 01:28:22,000
+using some stateful executers which
+
+1845
+01:28:18,880 --> 01:28:24,320
+needs persist your data onto your system
+
+1846
+01:28:22,000 --> 01:28:28,920
+you might try to use shards because to
+
+1847
+01:28:24,320 --> 01:28:31,800
+some number trying to scill it up so but
+
+1848
+01:28:28,920 --> 01:28:33,800
+this works for like big customers but
+
+1849
+01:28:31,800 --> 01:28:36,360
+what if you have a lot of like small
+
+1850
+01:28:33,800 --> 01:28:39,760
+customers and their budget might comes
+
+1851
+01:28:36,360 --> 01:28:42,239
+to an issue for example when use a GPU
+
+1852
+01:28:39,760 --> 01:28:46,159
+as an executor which process very fast
+
+1853
+01:28:42,239 --> 01:28:48,920
+for this uh iner time so the cost might
+
+1854
+01:28:46,159 --> 01:28:52,679
+be very expensive for instance a GPU
+
+1855
+01:28:48,920 --> 01:28:56,520
+machine hosted on Amazon normally cost
+
+1856
+01:28:52,679 --> 01:28:59,840
+maybe $1 to $15 per hour and this is
+
+1857
+01:28:56,520 --> 01:29:03,600
+something not acceptable for the small
+
+1858
+01:28:59,840 --> 01:29:06,400
+like shop owners so we can do something
+
+1859
+01:29:03,600 --> 01:29:10,239
+Gina but Gina can help you handle this
+
+1860
+01:29:06,400 --> 01:29:13,360
+situation so now you can see
+
+1861
+01:29:10,239 --> 01:29:16,239
+that uh we have a flow called customer
+
+1862
+01:29:13,360 --> 01:29:18,800
+one which calling the basically a clip
+
+1863
+01:29:16,239 --> 01:29:20,880
+image encoder on GPU here and we have a
+
+1864
+01:29:18,800 --> 01:29:23,880
+second customer which also do the same
+
+1865
+01:29:20,880 --> 01:29:23,880
+thing
+
+1866
+01:29:25,800 --> 01:29:32,719
+and this might very costly but we could
+
+1867
+01:29:29,840 --> 01:29:36,679
+how can the user try to reduce their
+
+1868
+01:29:32,719 --> 01:29:40,400
+cost J provides a functionality C and
+
+1869
+01:29:36,679 --> 01:29:42,600
+sharing of executor or a shared executor
+
+1870
+01:29:40,400 --> 01:29:44,719
+so what you can see here is that because
+
+1871
+01:29:42,600 --> 01:29:48,080
+this one is actually Co costing very
+
+1872
+01:29:44,719 --> 01:29:50,920
+fast so we we are actually trying to
+
+1873
+01:29:48,080 --> 01:29:54,400
+call this remote clip shared executor
+
+1874
+01:29:50,920 --> 01:29:57,360
+GPU here and apart from GPU and and use
+
+1875
+01:29:54,400 --> 01:30:00,400
+this with we specified a host which is
+
+1876
+01:29:57,360 --> 01:30:02,960
+means this GP this executor is hosted on
+
+1877
+01:30:00,400 --> 01:30:06,320
+this machine and we add an argument
+
+1878
+01:30:02,960 --> 01:30:08,960
+called external ex2 true so this flow we
+
+1879
+01:30:06,320 --> 01:30:11,480
+first try to use this GPU executor
+
+1880
+01:30:08,960 --> 01:30:14,119
+hosted on this machine and also for the
+
+1881
+01:30:11,480 --> 01:30:17,080
+second customer we also allow they to
+
+1882
+01:30:14,119 --> 01:30:19,560
+connect this GPU on this machine so this
+
+1883
+01:30:17,080 --> 01:30:22,360
+allows this two customers customers
+
+1884
+01:30:19,560 --> 01:30:25,679
+sharing the same GPU machine hosted on
+
+1885
+01:30:22,360 --> 01:30:28,840
+this host using by using the external
+
+1886
+01:30:25,679 --> 01:30:32,440
+x22 and I'm going to try to plot the
+
+1887
+01:30:28,840 --> 01:30:34,480
+flow the flow going looks like this
+
+1888
+01:30:32,440 --> 01:30:37,800
+because this GPU machine is really
+
+1889
+01:30:34,480 --> 01:30:40,880
+expensive so we serve it remotely and we
+
+1890
+01:30:37,800 --> 01:30:43,400
+try to insert Gina we try to use a g
+
+1891
+01:30:40,880 --> 01:30:45,159
+flow to connect to this remote flow and
+
+1892
+01:30:43,400 --> 01:30:47,960
+this also happens for the second
+
+1893
+01:30:45,159 --> 01:30:50,679
+customer so the data will also be sent
+
+1894
+01:30:47,960 --> 01:30:53,440
+to the remote clip image encoder on qpu
+
+1895
+01:30:50,679 --> 01:30:56,719
+hosted on this machine then pass it the
+
+1896
+01:30:53,440 --> 01:30:59,520
+data into his own executors or own flow
+
+1897
+01:30:56,719 --> 01:31:02,000
+so this will tremendously reduce the
+
+1898
+01:30:59,520 --> 01:31:04,960
+budget the small shop owners going to
+
+1899
+01:31:02,000 --> 01:31:07,679
+spent on the GPU machines as you can see
+
+1900
+01:31:04,960 --> 01:31:10,679
+that this also can be applied to storage
+
+1901
+01:31:07,679 --> 01:31:13,679
+or any any other things as if you can
+
+1902
+01:31:10,679 --> 01:31:17,159
+just keep their data
+
+1903
+01:31:13,679 --> 01:31:19,159
+isolated and the one of the very
+
+1904
+01:31:17,159 --> 01:31:22,320
+important thing I want to talk about is
+
+1905
+01:31:19,159 --> 01:31:24,600
+the missing block so as you might
+
+1906
+01:31:22,320 --> 01:31:27,040
+already know that there is a lot of on
+
+1907
+01:31:24,600 --> 01:31:30,600
+the Shelf pre-change
+
+1908
+01:31:27,040 --> 01:31:33,199
+models maybe these models are changed on
+
+1909
+01:31:30,600 --> 01:31:35,800
+some data set public available data set
+
+1910
+01:31:33,199 --> 01:31:38,880
+for academic purpose but they are not
+
+1911
+01:31:35,800 --> 01:31:40,639
+applicable for your task of interest for
+
+1912
+01:31:38,880 --> 01:31:42,320
+example what we are doing now is we are
+
+1913
+01:31:40,639 --> 01:31:45,360
+doing trying to build a search engine
+
+1914
+01:31:42,320 --> 01:31:47,440
+for the fion product but this is very
+
+1915
+01:31:45,360 --> 01:31:50,760
+tricky because on the Shelf preing
+
+1916
+01:31:47,440 --> 01:31:54,040
+models does not maybe useful to build a
+
+1917
+01:31:50,760 --> 01:31:57,679
+proof of concept but not useful but not
+
+1918
+01:31:54,040 --> 01:31:59,280
+enough to serve the real customers why
+
+1919
+01:31:57,679 --> 01:32:02,000
+because most of the pre-change models
+
+1920
+01:31:59,280 --> 01:32:05,040
+are optimized for certain certain domain
+
+1921
+01:32:02,000 --> 01:32:07,440
+for example the VD net rest n or Vision
+
+1922
+01:32:05,040 --> 01:32:10,600
+Transformers they are mostly pre-inked
+
+1923
+01:32:07,440 --> 01:32:14,280
+on image net dat set which contains the
+
+1924
+01:32:10,600 --> 01:32:16,960
+embeding the concept are volum strawber
+
+1925
+01:32:14,280 --> 01:32:20,320
+strawberry which might not related to
+
+1926
+01:32:16,960 --> 01:32:22,560
+your S search system so this model
+
+1927
+01:32:20,320 --> 01:32:25,000
+output embedding of the data set might
+
+1928
+01:32:22,560 --> 01:32:28,360
+not suitable for your time of
+
+1929
+01:32:25,000 --> 01:32:30,880
+Interest so withing Gina we tried to
+
+1930
+01:32:28,360 --> 01:32:33,360
+adopt the idea of transfer learning and
+
+1931
+01:32:30,880 --> 01:32:35,040
+Magic learning and developed a new open
+
+1932
+01:32:33,360 --> 01:32:38,840
+source two Kit called
+
+1933
+01:32:35,040 --> 01:32:41,040
+fer so this idea of transfer learning
+
+1934
+01:32:38,840 --> 01:32:43,280
+which means that in practice very few
+
+1935
+01:32:41,040 --> 01:32:44,960
+people train an entire convolutional
+
+1936
+01:32:43,280 --> 01:32:47,880
+your network from
+
+1937
+01:32:44,960 --> 01:32:50,440
+scratch but because this is relatively
+
+1938
+01:32:47,880 --> 01:32:53,320
+rare to have a DAT set of sufficient SS
+
+1939
+01:32:50,440 --> 01:32:56,480
+instead instead of instead instead of
+
+1940
+01:32:53,320 --> 01:32:58,760
+this it is is very common to preing a
+
+1941
+01:32:56,480 --> 01:33:02,080
+net on a very large dist set such as
+
+1942
+01:32:58,760 --> 01:33:05,679
+image net then we finding our NE
+
+1943
+01:33:02,080 --> 01:33:09,040
+networks on a smaller distance using a
+
+1944
+01:33:05,679 --> 01:33:11,400
+to serve as a fixed feature extractor of
+
+1945
+01:33:09,040 --> 01:33:13,719
+the test of Interest so this is the idea
+
+1946
+01:33:11,400 --> 01:33:16,400
+of transfer learning we try to adopt the
+
+1947
+01:33:13,719 --> 01:33:18,719
+pre-change model from from inet and we
+
+1948
+01:33:16,400 --> 01:33:22,360
+try to funing this model on our search
+
+1949
+01:33:18,719 --> 01:33:25,440
+task such as funion such as maybe
+
+1950
+01:33:22,360 --> 01:33:27,600
+Furniture searching this kind of things
+
+1951
+01:33:25,440 --> 01:33:30,040
+and also deep learning models deep new
+
+1952
+01:33:27,600 --> 01:33:32,719
+networks has a simil has a similar
+
+1953
+01:33:30,040 --> 01:33:34,600
+ability which is able to tell objects
+
+1954
+01:33:32,719 --> 01:33:38,280
+which are visually or semantically
+
+1955
+01:33:34,600 --> 01:33:40,639
+similar and which are not so this is the
+
+1956
+01:33:38,280 --> 01:33:42,960
+idea of matric learning with borrowed so
+
+1957
+01:33:40,639 --> 01:33:45,560
+imagine this is is an anchor document
+
+1958
+01:33:42,960 --> 01:33:48,520
+which is a user query we can build
+
+1959
+01:33:45,560 --> 01:33:51,679
+positive and negative pairs around this
+
+1960
+01:33:48,520 --> 01:33:52,719
+user enter and after we learned after
+
+1961
+01:33:51,679 --> 01:33:56,840
+the model
+
+1962
+01:33:52,719 --> 01:33:59,760
+learning we try to pull the positive uh
+
+1963
+01:33:56,840 --> 01:34:02,080
+product very close to the enter product
+
+1964
+01:33:59,760 --> 01:34:04,520
+and we try to pull away the negative
+
+1965
+01:34:02,080 --> 01:34:07,880
+product from the enter product so that
+
+1966
+01:34:04,520 --> 01:34:09,600
+is the idea of the magic learning so
+
+1967
+01:34:07,880 --> 01:34:12,119
+brething funer would build some
+
+1968
+01:34:09,600 --> 01:34:15,199
+algorithms try to combine this transfer
+
+1969
+01:34:12,119 --> 01:34:18,440
+learning and Magic learning techniques
+
+1970
+01:34:15,199 --> 01:34:22,159
+so what you need to do is just to try to
+
+1971
+01:34:18,440 --> 01:34:24,960
+import fainer as ft and now you have a
+
+1972
+01:34:22,159 --> 01:34:28,080
+pre-train model here I just created very
+
+1973
+01:34:24,960 --> 01:34:31,040
+basic one from torch Vision created
+
+1974
+01:34:28,080 --> 01:34:33,520
+model called V16 and using pre train to
+
+1975
+01:34:31,040 --> 01:34:33,520
+equals to
+
+1976
+01:34:37,320 --> 01:34:42,520
+true and I'm going to I'm not actually
+
+1977
+01:34:40,520 --> 01:34:44,960
+going to funding this model because this
+
+1978
+01:34:42,520 --> 01:34:47,400
+really takes time but I'm going to tell
+
+1979
+01:34:44,960 --> 01:34:49,560
+you how to funding this model so the
+
+1980
+01:34:47,400 --> 01:34:51,679
+first thing you are going to do is you
+
+1981
+01:34:49,560 --> 01:34:53,280
+are going to display this model as
+
+1982
+01:34:51,679 --> 01:34:56,119
+architecture which layer are you going
+
+1983
+01:34:53,280 --> 01:35:01,880
+to use that's embedding layer so you can
+
+1984
+01:34:56,119 --> 01:35:01,880
+call fer display your model your input
+
+1985
+01:35:03,080 --> 01:35:08,960
+size so the funer will try to look into
+
+1986
+01:35:06,239 --> 01:35:11,560
+your neur network architecture and tells
+
+1987
+01:35:08,960 --> 01:35:13,840
+you which layers are suitable for
+
+1988
+01:35:11,560 --> 01:35:16,280
+providing the embedding because this
+
+1989
+01:35:13,840 --> 01:35:20,239
+layer the last layer is like 1,000
+
+1990
+01:35:16,280 --> 01:35:24,159
+classes of image n is St so if you think
+
+1991
+01:35:20,239 --> 01:35:25,760
+okay maybe linearly 30 33 is in layer
+
+1992
+01:35:24,159 --> 01:35:28,960
+I'm going to choose as the future
+
+1993
+01:35:25,760 --> 01:35:32,040
+extractor to extract embeddings from the
+
+1994
+01:35:28,960 --> 01:35:35,280
+image now I'm going to use the linear
+
+1995
+01:35:32,040 --> 01:35:37,080
+layer 33 as my embedding layer so here
+
+1996
+01:35:35,280 --> 01:35:39,000
+I'm going to create some code this is
+
+1997
+01:35:37,080 --> 01:35:40,639
+actually runable so you can you can
+
+1998
+01:35:39,000 --> 01:35:44,719
+actually copy and paste on your machine
+
+1999
+01:35:40,639 --> 01:35:47,119
+but it takes time so I just put a text
+
+2000
+01:35:44,719 --> 01:35:49,920
+here so you can imagine you can see that
+
+2001
+01:35:47,119 --> 01:35:51,920
+here I created a document array which
+
+2002
+01:35:49,920 --> 01:35:54,280
+basically try to host a list of
+
+2003
+01:35:51,920 --> 01:35:57,480
+documents and here I create created some
+
+2004
+01:35:54,280 --> 01:36:02,440
+random images using
+
+2005
+01:35:57,480 --> 01:36:07,440
+NP and these are images of RGB shape 24
+
+2006
+01:36:02,440 --> 01:36:10,520
+the height is 24 224 the weight is also
+
+2007
+01:36:07,440 --> 01:36:13,119
+224 and I try to assign some Texs to
+
+2008
+01:36:10,520 --> 01:36:15,679
+this document this is called funer label
+
+2009
+01:36:13,119 --> 01:36:17,600
+so which means this image belongs to
+
+2010
+01:36:15,679 --> 01:36:19,960
+class one this image belongs to class
+
+2011
+01:36:17,600 --> 01:36:22,199
+two maybe this is Adidas shoe that is a
+
+2012
+01:36:19,960 --> 01:36:24,159
+Nik shoe this kind of thing you assign
+
+2013
+01:36:22,199 --> 01:36:26,480
+labels to this fer
+
+2014
+01:36:24,159 --> 01:36:29,199
+and you P this documents into this
+
+2015
+01:36:26,480 --> 01:36:31,520
+document R and what you need to do it's
+
+2016
+01:36:29,199 --> 01:36:34,440
+only actually one line of
+
+2017
+01:36:31,520 --> 01:36:38,760
+code fun fun model is something you
+
+2018
+01:36:34,440 --> 01:36:41,520
+receive after funing fun you call fun.
+
+2019
+01:36:38,760 --> 01:36:45,440
+Fe so the model is the VG net which you
+
+2020
+01:36:41,520 --> 01:36:46,639
+are using from the pre-t models I get
+
+2021
+01:36:45,440 --> 01:36:49,199
+get
+
+2022
+01:36:46,639 --> 01:36:52,320
+here as the training data is a document
+
+2023
+01:36:49,199 --> 01:36:54,760
+aray you create it to Fun Train for for
+
+2024
+01:36:52,320 --> 01:36:57,400
+training your model and you you can set
+
+2025
+01:36:54,760 --> 01:37:00,440
+appox maybe it's 10 20 something like
+
+2026
+01:36:57,400 --> 01:37:02,639
+that you can finding it so you also send
+
+2027
+01:37:00,440 --> 01:37:05,199
+batch siid you can also send learning
+
+2028
+01:37:02,639 --> 01:37:08,440
+rate this a very common machine learning
+
+2029
+01:37:05,199 --> 01:37:11,800
+technique here you can set device to CPU
+
+2030
+01:37:08,440 --> 01:37:14,199
+or Cuda and the loss function is same is
+
+2031
+01:37:11,800 --> 01:37:18,199
+loss so this means that we are trying to
+
+2032
+01:37:14,199 --> 01:37:21,760
+minimize the U the distance between this
+
+2033
+01:37:18,199 --> 01:37:24,679
+this positive and negative things and we
+
+2034
+01:37:21,760 --> 01:37:27,639
+also call to embedding models so we will
+
+2035
+01:37:24,679 --> 01:37:30,400
+use this because this uh this Bas model
+
+2036
+01:37:27,639 --> 01:37:32,639
+was originally trained for image class
+
+2037
+01:37:30,400 --> 01:37:35,119
+image classification but we are coming
+
+2038
+01:37:32,639 --> 01:37:39,320
+to embedding model so this model will be
+
+2039
+01:37:35,119 --> 01:37:42,000
+one to this uh embedding extra EXT
+
+2040
+01:37:39,320 --> 01:37:45,560
+extraction or feature extraction because
+
+2041
+01:37:42,000 --> 01:37:48,159
+we we try to use this linear 33 layer as
+
+2042
+01:37:45,560 --> 01:37:52,440
+our feature extractor so we said okay we
+
+2043
+01:37:48,159 --> 01:37:55,119
+want to use linear layer of 33 of of our
+
+2044
+01:37:52,440 --> 01:37:58,320
+F extractor and you also specify the
+
+2045
+01:37:55,119 --> 01:38:01,119
+input shape of this one so this will try
+
+2046
+01:37:58,320 --> 01:38:04,000
+to funing your model and produce a new
+
+2047
+01:38:01,119 --> 01:38:07,960
+model then you can save for your future
+
+2048
+01:38:04,000 --> 01:38:11,159
+inference uh uh
+
+2049
+01:38:07,960 --> 01:38:14,119
+task the last topic I'm going to talk is
+
+2050
+01:38:11,159 --> 01:38:16,800
+about how to use flow as a service and
+
+2051
+01:38:14,119 --> 01:38:18,760
+how to deploy your flow I'm not going to
+
+2052
+01:38:16,800 --> 01:38:21,679
+talk too much about this but I'm going
+
+2053
+01:38:18,760 --> 01:38:24,520
+to show you the basic cide so the first
+
+2054
+01:38:21,679 --> 01:38:27,719
+thing is you import Gina from Gina you
+
+2055
+01:38:24,520 --> 01:38:30,080
+import the flow and inside flow you can
+
+2056
+01:38:27,719 --> 01:38:33,840
+actually Define the protocol you want
+
+2057
+01:38:30,080 --> 01:38:36,320
+to connect it allow your connect allow
+
+2058
+01:38:33,840 --> 01:38:40,159
+your client to connect for example with
+
+2059
+01:38:36,320 --> 01:38:42,560
+support grpc web circuit and HTTP and
+
+2060
+01:38:40,159 --> 01:38:45,560
+you can also specify the port you want
+
+2061
+01:38:42,560 --> 01:38:48,080
+to expose and here I added two empty
+
+2062
+01:38:45,560 --> 01:38:50,520
+executors and you can see that instead
+
+2063
+01:38:48,080 --> 01:38:54,880
+of doing the search on index I'm calling
+
+2064
+01:38:50,520 --> 01:38:54,880
+f. block so
+
+2065
+01:38:56,960 --> 01:39:03,440
+as you can see that this process is
+
+2066
+01:38:59,960 --> 01:39:05,800
+going to run and never stop so basically
+
+2067
+01:39:03,440 --> 01:39:08,599
+it is waiting for clients to connect
+
+2068
+01:39:05,800 --> 01:39:11,520
+into your flow and getting the result so
+
+2069
+01:39:08,599 --> 01:39:13,199
+this is what we called flow as a service
+
+2070
+01:39:11,520 --> 01:39:15,639
+and now you have imagine you have
+
+2071
+01:39:13,199 --> 01:39:18,960
+designed your flow and you have all your
+
+2072
+01:39:15,639 --> 01:39:22,400
+model ready you have something it's
+
+2073
+01:39:18,960 --> 01:39:25,840
+ready to full production you can try to
+
+2074
+01:39:22,400 --> 01:39:25,840
+deploy Gina with
+
+2075
+01:39:25,880 --> 01:39:30,520
+kubernetes now I stopped this blocking
+
+2076
+01:39:29,040 --> 01:39:33,960
+flow
+
+2077
+01:39:30,520 --> 01:39:37,719
+and what you need to do it's also not
+
+2078
+01:39:33,960 --> 01:39:40,080
+very complex so the first thing you
+
+2079
+01:39:37,719 --> 01:39:42,320
+initialize the flow and you also specify
+
+2080
+01:39:40,080 --> 01:39:43,400
+a parameter here called infrastructure
+
+2081
+01:39:42,320 --> 01:39:46,920
+equals to
+
+2082
+01:39:43,400 --> 01:39:49,719
+kubernetes so you add some executor one
+
+2083
+01:39:46,920 --> 01:39:52,360
+and you add replica equals to two and
+
+2084
+01:39:49,719 --> 01:39:55,320
+you also create another executor here
+
+2085
+01:39:52,360 --> 01:39:59,000
+and Define repli C equals to three and
+
+2086
+01:39:55,320 --> 01:39:59,000
+you try to plot the
+
+2087
+01:40:00,480 --> 01:40:06,639
+flow what you will see is you after you
+
+2088
+01:40:04,320 --> 01:40:08,360
+you apparently you have to do some
+
+2089
+01:40:06,639 --> 01:40:11,840
+configurations on your kubernetes
+
+2090
+01:40:08,360 --> 01:40:15,080
+cluster maybe on AWS on gcp or something
+
+2091
+01:40:11,840 --> 01:40:18,000
+like that on kubernetes engine but the
+
+2092
+01:40:15,080 --> 01:40:21,280
+idea is that g will try to create two
+
+2093
+01:40:18,000 --> 01:40:23,599
+kubernetes part on the remote cluster
+
+2094
+01:40:21,280 --> 01:40:25,760
+for this first executor and for the
+
+2095
+01:40:23,599 --> 01:40:29,280
+second executor Gina will create three
+
+2096
+01:40:25,760 --> 01:40:32,119
+kubernetes spot on that uh for for this
+
+2097
+01:40:29,280 --> 01:40:36,080
+the second executor and this logic
+
+2098
+01:40:32,119 --> 01:40:39,119
+concepts of replica is aligned with with
+
+2099
+01:40:36,080 --> 01:40:42,199
+P in kubernetes so this way will help
+
+2100
+01:40:39,119 --> 01:40:44,560
+you deploy your flow on kubernetes and
+
+2101
+01:40:42,199 --> 01:40:47,360
+leveraging the kubernetes functionality
+
+2102
+01:40:44,560 --> 01:40:47,360
+to scale it
+
+2103
+01:40:47,440 --> 01:40:56,719
+up so more on the deployment you can
+
+2104
+01:40:51,360 --> 01:40:59,119
+also check um the our R me in on
+
+2105
+01:40:56,719 --> 01:41:02,199
+GitHub it's called Gina you can see
+
+2106
+01:40:59,119 --> 01:41:03,880
+that's deed to kubernetes in s minutes
+
+2107
+01:41:02,199 --> 01:41:07,679
+but here in the workshop we have
+
+2108
+01:41:03,880 --> 01:41:10,599
+introduced the basic idea of the Gen dos
+
+2109
+01:41:07,679 --> 01:41:13,400
+how can you create very simple indexing
+
+2110
+01:41:10,599 --> 01:41:16,440
+flow using just using an one executor
+
+2111
+01:41:13,400 --> 01:41:18,599
+for encoding one executor for indexing
+
+2112
+01:41:16,440 --> 01:41:21,520
+then in the later we try to build a
+
+2113
+01:41:18,599 --> 01:41:25,040
+logically very complex indexing which we
+
+2114
+01:41:21,520 --> 01:41:28,000
+collaborated with forlift for doing some
+
+2115
+01:41:25,040 --> 01:41:29,920
+real world tasks and lastly but not
+
+2116
+01:41:28,000 --> 01:41:34,960
+least we also introduced how to skill
+
+2117
+01:41:29,920 --> 01:41:37,880
+Gina to different like uh um to large
+
+2118
+01:41:34,960 --> 01:41:40,960
+customers or small customers also how to
+
+2119
+01:41:37,880 --> 01:41:44,760
+deploy it to production using kubernetes
+
+2120
+01:41:40,960 --> 01:41:44,760
+and that is my
+
+2121
+01:41:45,199 --> 01:41:50,760
+presentation thank you wow that was
+
+2122
+01:41:48,040 --> 01:41:55,000
+brilliant that was
+
+2123
+01:41:50,760 --> 01:41:55,000
+brilliant thank you
+
+2124
+01:41:55,119 --> 01:42:00,400
+all right I think I think we have time
+
+2125
+01:41:56,560 --> 01:42:03,440
+for uh for some Q&A I think it was um
+
+2126
+01:42:00,400 --> 01:42:07,360
+delightful and and dense a lot of
+
+2127
+01:42:03,440 --> 01:42:10,280
+information uh Al together I hope we uh
+
+2128
+01:42:07,360 --> 01:42:12,880
+we didn't overwhelm the the
+
+2129
+01:42:10,280 --> 01:42:16,719
+participant and and ready of course
+
+2130
+01:42:12,880 --> 01:42:21,520
+we're ready to to take
+
+2131
+01:42:16,719 --> 01:42:21,520
+questions so we are on the chat
+
+2132
+01:42:23,360 --> 01:42:26,360
+e
+
+2133
+01:43:08,159 --> 01:43:15,040
+good so I think if there are no other
+
+2134
+01:43:11,760 --> 01:43:18,159
+question maybe let's see if um Barat is
+
+2135
+01:43:15,040 --> 01:43:18,159
+is writing
+
+2136
+01:43:26,080 --> 01:43:30,639
+that's a good one though that's a that's
+
+2137
+01:43:28,320 --> 01:43:33,480
+a question that I also have I think I
+
+2138
+01:43:30,639 --> 01:43:36,679
+can I can answer for the voice voice is
+
+2139
+01:43:33,480 --> 01:43:38,000
+of course uh working already um also in
+
+2140
+01:43:36,679 --> 01:43:41,119
+our in our
+
+2141
+01:43:38,000 --> 01:43:44,400
+prototype As We As We Gather of course
+
+2142
+01:43:41,119 --> 01:43:46,280
+the the content from from the
+
+2143
+01:43:44,400 --> 01:43:47,960
+application or or the web browser and
+
+2144
+01:43:46,280 --> 01:43:50,320
+then translate it into into natural
+
+2145
+01:43:47,960 --> 01:43:53,440
+language but of course yes I've I've
+
+2146
+01:43:50,320 --> 01:43:55,520
+worked also on audio with with Gina on
+
+2147
+01:43:53,440 --> 01:43:58,199
+on a on a personal
+
+2148
+01:43:55,520 --> 01:44:01,440
+project but what about fact base that's
+
+2149
+01:43:58,199 --> 01:44:01,440
+that's the interesting part
+
+2150
+01:44:02,920 --> 01:44:08,960
+bo uh can you elaborate on what is fact
+
+2151
+01:44:06,080 --> 01:44:11,000
+based yes Gina do support video Gina
+
+2152
+01:44:08,960 --> 01:44:13,560
+basically don't care about your input
+
+2153
+01:44:11,000 --> 01:44:16,840
+what is your input as long as it can be
+
+2154
+01:44:13,560 --> 01:44:18,880
+represent by a g document as long as it
+
+2155
+01:44:16,840 --> 01:44:23,239
+belongs to some modality of data then
+
+2156
+01:44:18,880 --> 01:44:26,320
+Gina can just encode it but this depends
+
+2157
+01:44:23,239 --> 01:44:29,480
+if you have a good Audio model to encode
+
+2158
+01:44:26,320 --> 01:44:32,400
+your audio into a good embedding and we
+
+2159
+01:44:29,480 --> 01:44:34,239
+actually have some some some some like
+
+2160
+01:44:32,400 --> 01:44:38,480
+community members trying to build a
+
+2161
+01:44:34,239 --> 01:44:41,400
+search engine with like um DNA sequence
+
+2162
+01:44:38,480 --> 01:44:44,159
+which use use de learning models to
+
+2163
+01:44:41,400 --> 01:44:46,800
+encode a DNA sequence so this is nothing
+
+2164
+01:44:44,159 --> 01:44:46,800
+you can do
+
+2165
+01:44:47,599 --> 01:44:51,639
+basically
+
+2166
+01:44:49,199 --> 01:44:53,520
+but yeah exactly I think I was I was
+
+2167
+01:44:51,639 --> 01:44:55,880
+thinking about the similar example like
+
+2168
+01:44:53,520 --> 01:44:57,639
+uh based on on on the demo and and the
+
+2169
+01:44:55,880 --> 01:45:01,000
+Prototype that we were working on
+
+2170
+01:44:57,639 --> 01:45:03,840
+together how is it possible to get you
+
+2171
+01:45:01,000 --> 01:45:05,920
+know the factual data of a product like
+
+2172
+01:45:03,840 --> 01:45:08,159
+you know once once I find the product
+
+2173
+01:45:05,920 --> 01:45:10,440
+how can I kind of initiate the dialogue
+
+2174
+01:45:08,159 --> 01:45:12,599
+and ask you know what what what is the
+
+2175
+01:45:10,440 --> 01:45:15,960
+price for that or what are the available
+
+2176
+01:45:12,599 --> 01:45:17,920
+size for that kind of the factual based
+
+2177
+01:45:15,960 --> 01:45:19,639
+in the context of Ecommerce would be you
+
+2178
+01:45:17,920 --> 01:45:23,360
+know what is the size of this product
+
+2179
+01:45:19,639 --> 01:45:23,360
+that you have in stock
+
+2180
+01:45:31,840 --> 01:45:37,639
+yes I think as long as it is a property
+
+2181
+01:45:34,800 --> 01:45:41,560
+of a product you can save it inside a
+
+2182
+01:45:37,639 --> 01:45:43,520
+Gina document like tax tax section which
+
+2183
+01:45:41,560 --> 01:45:46,560
+you can save the documents based on
+
+2184
+01:45:43,520 --> 01:45:48,480
+their tax maybe the size of the
+
+2185
+01:45:46,560 --> 01:45:51,080
+documents which is what we're doing with
+
+2186
+01:45:48,480 --> 01:45:53,320
+the facets right so everything that it's
+
+2187
+01:45:51,080 --> 01:45:55,880
+structural and and and it's coming from
+
+2188
+01:45:53,320 --> 01:45:59,520
+from from the from the graph it's it's
+
+2189
+01:45:55,880 --> 01:46:01,119
+store in G inside the tags and that's
+
+2190
+01:45:59,520 --> 01:46:04,400
+that's kind of the way in which the
+
+2191
+01:46:01,119 --> 01:46:07,119
+document as these uh labels that are
+
+2192
+01:46:04,400 --> 01:46:11,599
+carrying the the the facts that are
+
+2193
+01:46:07,119 --> 01:46:11,599
+translated into faet in the ux
+
+2194
+01:46:25,040 --> 01:46:27,280
+you're
+
+2195
+01:46:27,320 --> 01:46:31,000
+welcome thank you for your
+
+2196
+01:46:33,159 --> 01:46:38,639
+question all right it was it was great
+
+2197
+01:46:36,239 --> 01:46:40,920
+um thanks thanks everyone from from
+
+2198
+01:46:38,639 --> 01:46:44,320
+joining I think uh we we still have a
+
+2199
+01:46:40,920 --> 01:46:47,320
+few minutes in in case U someone else's
+
+2200
+01:46:44,320 --> 01:46:47,320
+questions
+
+2201
+01:46:49,320 --> 01:46:55,920
+um of course for us doing SEO it's uh
+
+2202
+01:46:52,960 --> 01:46:58,960
+it's particularly fascinating as we can
+
+2203
+01:46:55,920 --> 01:47:01,320
+uh kind of apply some of the techniques
+
+2204
+01:46:58,960 --> 01:47:04,440
+that we we study from from analyzing
+
+2205
+01:47:01,320 --> 01:47:07,520
+Google Ser into you know what we want
+
+2206
+01:47:04,440 --> 01:47:09,920
+search to be inside your website and
+
+2207
+01:47:07,520 --> 01:47:11,480
+that's why we're feeding B with a lot of
+
+2208
+01:47:09,920 --> 01:47:14,520
+uh indication and
+
+2209
+01:47:11,480 --> 01:47:18,040
+ideas that uh that um we want to bring
+
+2210
+01:47:14,520 --> 01:47:20,000
+in but um as we can see um you know one
+
+2211
+01:47:18,040 --> 01:47:23,040
+of the biggest challenges really to kind
+
+2212
+01:47:20,000 --> 01:47:25,800
+of scale the project so that we can
+
+2213
+01:47:23,040 --> 01:47:27,920
+deliver something that would work across
+
+2214
+01:47:25,800 --> 01:47:32,199
+hundreds of potentially thousands of
+
+2215
+01:47:27,920 --> 01:47:34,480
+sites without uh you know costing too
+
+2216
+01:47:32,199 --> 01:47:36,239
+much and and and I think a lot of
+
+2217
+01:47:34,480 --> 01:47:39,480
+progress has been made in in these past
+
+2218
+01:47:36,239 --> 01:47:41,119
+months on this area when we started uh
+
+2219
+01:47:39,480 --> 01:47:42,599
+you know the idea of of running into
+
+2220
+01:47:41,119 --> 01:47:45,000
+into kubernetes
+
+2221
+01:47:42,599 --> 01:47:48,239
+wasn't yet
+
+2222
+01:47:45,000 --> 01:47:49,840
+um available but uh but but but I think
+
+2223
+01:47:48,239 --> 01:47:54,000
+now it's it's it's not only available
+
+2224
+01:47:49,840 --> 01:47:54,000
+but it's also very easy to be configured
+
+2225
+01:47:54,440 --> 01:47:59,320
+yes as one of my colleagues says our
+
+2226
+01:47:56,679 --> 01:48:02,280
+collaboration was left was also very eye
+
+2227
+01:47:59,320 --> 01:48:04,719
+opening for us because for us we have a
+
+2228
+01:48:02,280 --> 01:48:07,119
+lot of experience in developing tools
+
+2229
+01:48:04,719 --> 01:48:10,520
+for developers but we don't and we are
+
+2230
+01:48:07,119 --> 01:48:13,800
+not very close to the market or we don't
+
+2231
+01:48:10,520 --> 01:48:16,639
+really understand the users needs or the
+
+2232
+01:48:13,800 --> 01:48:20,560
+SEO community so that is what we learned
+
+2233
+01:48:16,639 --> 01:48:22,119
+from the what LIF we really learn a lot
+
+2234
+01:48:20,560 --> 01:48:24,760
+that's good that's good we we'll keep on
+
+2235
+01:48:22,119 --> 01:48:24,760
+playing together
+
+2236
+01:48:24,840 --> 01:48:29,320
+all right so looks looks like someone is
+
+2237
+01:48:26,599 --> 01:48:30,920
+going to download Gina soon and and run
+
+2238
+01:48:29,320 --> 01:48:35,000
+an important
+
+2239
+01:48:30,920 --> 01:48:38,639
+test on on digital NHS that's
+
+2240
+01:48:35,000 --> 01:48:38,639
+that's that's great to
+
+2241
+01:48:40,159 --> 01:48:46,920
+hear all right of course uh um you can
+
+2242
+01:48:43,080 --> 01:48:49,080
+reach us both on on uh Twitter and Link
+
+2243
+01:48:46,920 --> 01:48:51,320
+in uh bo I don't know if you want to add
+
+2244
+01:48:49,080 --> 01:48:54,920
+your uh if you have an handle on Twitter
+
+2245
+01:48:51,320 --> 01:48:58,199
+that we want to share uh will add mine
+
+2246
+01:48:54,920 --> 01:49:00,239
+uh my fitter so that anyone can uh kind
+
+2247
+01:48:58,199 --> 01:49:03,239
+of continue the
+
+2248
+01:49:00,239 --> 01:49:03,239
+conversation
+
+2249
+01:49:04,360 --> 01:49:07,360
+sure
+
+2250
+01:49:15,679 --> 01:49:24,040
+yeah I don't know boy if you have a
+
+2251
+01:49:18,960 --> 01:49:27,639
+Twitter ID I can share the G I Twitter
+
+2252
+01:49:24,040 --> 01:49:30,639
+which yeah I I did my Twitter in the
+
+2253
+01:49:27,639 --> 01:49:30,639
+link
+
+2254
+01:49:31,280 --> 01:49:34,719
+okay that was
+
+2255
+01:49:38,440 --> 01:49:44,000
+fast okay
+
+2256
+01:49:41,480 --> 01:49:46,599
+awesome all right well thanks thanks
+
+2257
+01:49:44,000 --> 01:49:49,599
+everyone for uh for joining the session
+
+2258
+01:49:46,599 --> 01:49:51,400
+and uh and uh feel free to connect as we
+
+2259
+01:49:49,599 --> 01:49:53,960
+said over Twitter or
+
+2260
+01:49:51,400 --> 01:49:55,800
+LinkedIn uh and uh and kind of continue
+
+2261
+01:49:53,960 --> 01:49:58,199
+the conversation I think the idea for us
+
+2262
+01:49:55,800 --> 01:50:00,800
+was really to share the amazing work
+
+2263
+01:49:58,199 --> 01:50:03,679
+that we're trying to do together and as
+
+2264
+01:50:00,800 --> 01:50:07,520
+as as we're building a new product for
+
+2265
+01:50:03,679 --> 01:50:09,800
+um for e-commerce sites um and also it's
+
+2266
+01:50:07,520 --> 01:50:12,679
+of course these um these these worship
+
+2267
+01:50:09,800 --> 01:50:15,199
+are help to see how the data in the
+
+2268
+01:50:12,679 --> 01:50:17,040
+graph can be transformed into embeddings
+
+2269
+01:50:15,199 --> 01:50:20,960
+and then out of these embeddings we can
+
+2270
+01:50:17,040 --> 01:50:23,400
+create uh new services that uh can help
+
+2271
+01:50:20,960 --> 01:50:26,679
+uh you know companies uh grow their
+
+2272
+01:50:23,400 --> 01:50:28,480
+businesses and uh and and create uh
+
+2273
+01:50:26,679 --> 01:50:30,480
+better content recommendations so there
+
+2274
+01:50:28,480 --> 01:50:33,440
+are there are all sort of use cases that
+
+2275
+01:50:30,480 --> 01:50:37,040
+are attached to to
+
+2276
+01:50:33,440 --> 01:50:41,599
+to something like uh like um multimodal
+
+2277
+01:50:37,040 --> 01:50:44,599
+search we're also uh using gni on um the
+
+2278
+01:50:41,599 --> 01:50:48,360
+context of uh conversational interfaces
+
+2279
+01:50:44,599 --> 01:50:50,920
+where we are indexing uh the content
+
+2280
+01:50:48,360 --> 01:50:53,639
+that we structure in the graph as uh
+
+2281
+01:50:50,920 --> 01:50:57,079
+frequently asked questions and then we
+
+2282
+01:50:53,639 --> 01:50:59,079
+are using these for um uh creating uh
+
+2283
+01:50:57,079 --> 01:51:02,599
+conversational interfaces where the user
+
+2284
+01:50:59,079 --> 01:51:05,159
+can actually um query on the site the
+
+2285
+01:51:02,599 --> 01:51:08,520
+knowledge base that uh has been
+
+2286
+01:51:05,159 --> 01:51:10,679
+organized and structur as as um quest in
+
+2287
+01:51:08,520 --> 01:51:13,320
+and answer pair so there are different
+
+2288
+01:51:10,679 --> 01:51:15,760
+ways in which these idea of you know
+
+2289
+01:51:13,320 --> 01:51:18,040
+getting these offthe shelf models and
+
+2290
+01:51:15,760 --> 01:51:21,480
+then personalizing this model of course
+
+2291
+01:51:18,040 --> 01:51:23,800
+one aspect that it's key is that there's
+
+2292
+01:51:21,480 --> 01:51:25,520
+no solution that fits it all and
+
+2293
+01:51:23,800 --> 01:51:28,079
+especially when you look at you know
+
+2294
+01:51:25,520 --> 01:51:32,320
+these uh large Transformer based
+
+2295
+01:51:28,079 --> 01:51:34,560
+language models or any any sort of uh um
+
+2296
+01:51:32,320 --> 01:51:37,239
+deep learning model you really need to
+
+2297
+01:51:34,560 --> 01:51:40,079
+realize that you will have to go through
+
+2298
+01:51:37,239 --> 01:51:42,280
+the process of you know fine-tuning the
+
+2299
+01:51:40,079 --> 01:51:44,320
+model for your specific use case and I
+
+2300
+01:51:42,280 --> 01:51:46,920
+think that what is important here is to
+
+2301
+01:51:44,320 --> 01:51:49,840
+be able to do it in the most simple way
+
+2302
+01:51:46,920 --> 01:51:52,880
+and also to connect as much as possible
+
+2303
+01:51:49,840 --> 01:51:54,360
+the the the the Machinery with the with
+
+2304
+01:51:52,880 --> 01:51:56,840
+the with the knowledge inside the
+
+2305
+01:51:54,360 --> 01:51:59,320
+organization and I think that for this
+
+2306
+01:51:56,840 --> 01:52:02,199
+specific scope um having a Knowledge
+
+2307
+01:51:59,320 --> 01:52:05,000
+Graph it's it's it's valuable and having
+
+2308
+01:52:02,199 --> 01:52:06,800
+tool like the fine tuner that that b
+
+2309
+01:52:05,000 --> 01:52:08,280
+demonstrated it's extremely helpful
+
+2310
+01:52:06,800 --> 01:52:10,320
+because we can kind of bridge the gap
+
+2311
+01:52:08,280 --> 01:52:13,440
+between the you know the the domain
+
+2312
+01:52:10,320 --> 01:52:16,639
+expert and uh and and and and the AI
+
+2313
+01:52:13,440 --> 01:52:18,960
+infrastructure that uh can can create
+
+2314
+01:52:16,639 --> 01:52:21,760
+the magic that we present to the to the
+
+2315
+01:52:18,960 --> 01:52:24,000
+end user so these are aspects that um
+
+2316
+01:52:21,760 --> 01:52:25,840
+you know in this cont context of graph
+
+2317
+01:52:24,000 --> 01:52:28,560
+based artificial intelligence is
+
+2318
+01:52:25,840 --> 01:52:30,320
+becoming more and more important how we
+
+2319
+01:52:28,560 --> 01:52:32,639
+can kind of bring the human at the
+
+2320
+01:52:30,320 --> 01:52:35,199
+center of the process what do we do to
+
+2321
+01:52:32,639 --> 01:52:38,000
+let the shop owner prioritize some
+
+2322
+01:52:35,199 --> 01:52:41,199
+results and uh as we saw in the in the
+
+2323
+01:52:38,000 --> 01:52:44,440
+pipeline that b demonstrated uh that
+
+2324
+01:52:41,199 --> 01:52:46,920
+there is a ranker component that we can
+
+2325
+01:52:44,440 --> 01:52:49,480
+you know further fine tune and and and
+
+2326
+01:52:46,920 --> 01:52:51,320
+and worked on in order to provide a shop
+
+2327
+01:52:49,480 --> 01:52:54,040
+owner with the you know the tools that
+
+2328
+01:52:51,320 --> 01:52:56,280
+he needs in order to prioritize maybe
+
+2329
+01:52:54,040 --> 01:52:59,079
+you know something that it's it's still
+
+2330
+01:52:56,280 --> 01:53:01,119
+in stock or something that uh you know
+
+2331
+01:52:59,079 --> 01:53:03,159
+uh can be sold faster because it's on
+
+2332
+01:53:01,119 --> 01:53:05,119
+sale so there is a lot of you know kind
+
+2333
+01:53:03,159 --> 01:53:07,679
+of logic that needs to come from from
+
+2334
+01:53:05,119 --> 01:53:10,599
+the business side that we need to convey
+
+2335
+01:53:07,679 --> 01:53:12,480
+to these uh um Ai workflows and I think
+
+2336
+01:53:10,599 --> 01:53:14,679
+the the goal for us is to really create
+
+2337
+01:53:12,480 --> 01:53:16,440
+something that uh that works and that
+
+2338
+01:53:14,679 --> 01:53:19,000
+it's human
+
+2339
+01:53:16,440 --> 01:53:20,880
+friendly and um and that's why also it's
+
+2340
+01:53:19,000 --> 01:53:23,079
+important that we keep stuff open source
+
+2341
+01:53:20,880 --> 01:53:25,480
+and we do this session to share what
+
+2342
+01:53:23,079 --> 01:53:27,920
+what we learn along the way thanks
+
+2343
+01:53:25,480 --> 01:53:31,079
+everyone thanks thanks B and thanks for
+
+2344
+01:53:27,920 --> 01:53:35,280
+following us and uh stay
+
+2345
+01:53:31,079 --> 01:53:35,280
+tuned thank you
+

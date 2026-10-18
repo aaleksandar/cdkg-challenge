@@ -1,0 +1,2644 @@
+1
+00:00:01,730 --> 00:00:09,389
+imagine a world with no fuel no gasoline
+
+2
+00:00:06,680 --> 00:00:11,610
+the streets out there would be very
+
+3
+00:00:09,389 --> 00:00:15,660
+different at least in the number of cars
+
+4
+00:00:11,610 --> 00:00:19,020
+out there imagine a world with no
+
+5
+00:00:15,660 --> 00:00:21,870
+heating oil winters in cities like
+
+6
+00:00:19,020 --> 00:00:24,450
+London in cities like Seattle would be
+
+7
+00:00:21,870 --> 00:00:27,990
+pretty tricky especially in buildings
+
+8
+00:00:24,450 --> 00:00:32,279
+that use it to warm things up imagine a
+
+9
+00:00:27,990 --> 00:00:36,600
+world with no plastics and yes
+
+10
+00:00:32,279 --> 00:00:41,850
+cellphones speakers routers all contain
+
+11
+00:00:36,600 --> 00:00:45,650
+plastics the oil industry got it right a
+
+12
+00:00:41,850 --> 00:00:51,420
+few years ago they said it the world
+
+13
+00:00:45,650 --> 00:00:54,590
+runs on us and they were right but you
+
+14
+00:00:51,420 --> 00:00:56,280
+know what the world has been changing
+
+15
+00:00:54,590 --> 00:00:59,190
+think about it
+
+16
+00:00:56,280 --> 00:01:01,440
+what do we do every morning when we're
+
+17
+00:00:59,190 --> 00:01:05,190
+getting ready to go to work or to go to
+
+18
+00:01:01,440 --> 00:01:08,340
+school what do I do I make sure that I
+
+19
+00:01:05,190 --> 00:01:12,060
+have my wallet on me but before doing
+
+20
+00:01:08,340 --> 00:01:15,840
+that I make sure that I have my cell
+
+21
+00:01:12,060 --> 00:01:19,890
+phone on me and that's because we need
+
+22
+00:01:15,840 --> 00:01:24,000
+data we're craving for data it just
+
+23
+00:01:19,890 --> 00:01:27,150
+makes us way more efficient and don't
+
+24
+00:01:24,000 --> 00:01:31,369
+get me wrong the oil industry is still a
+
+25
+00:01:27,150 --> 00:01:35,369
+very important one but data is a new oil
+
+26
+00:01:31,369 --> 00:01:37,320
+hi everyone my name is David Gerena I am
+
+27
+00:01:35,369 --> 00:01:39,830
+a principal program manager at Microsoft
+
+28
+00:01:37,320 --> 00:01:42,930
+part of the office intelligence
+
+29
+00:01:39,830 --> 00:01:45,150
+organization and today we're gonna be
+
+30
+00:01:42,930 --> 00:01:47,970
+talking about data we're gonna be
+
+31
+00:01:45,150 --> 00:01:50,130
+talking about knowledge graphs and we're
+
+32
+00:01:47,970 --> 00:01:53,369
+going to be talking about artificial
+
+33
+00:01:50,130 --> 00:01:57,060
+intelligence I'm gonna tell you today
+
+34
+00:01:53,369 --> 00:02:00,000
+how all of this is making us way more
+
+35
+00:01:57,060 --> 00:02:04,920
+efficient and how it will continue to be
+
+36
+00:02:00,000 --> 00:02:08,149
+this way both at home and at work I'm
+
+37
+00:02:04,920 --> 00:02:11,039
+also gonna tell you why and how
+
+38
+00:02:08,149 --> 00:02:14,459
+companies enterprises that don't get
+
+39
+00:02:11,039 --> 00:02:17,310
+this are going to fail
+
+40
+00:02:14,459 --> 00:02:20,610
+so let's get started and talk a little
+
+41
+00:02:17,310 --> 00:02:23,159
+bit about the realities of modern work
+
+42
+00:02:20,610 --> 00:02:27,689
+what has been happening in the last few
+
+43
+00:02:23,159 --> 00:02:29,489
+years 15 years ago I used to work for a
+
+44
+00:02:27,689 --> 00:02:34,829
+product at Microsoft called Visual
+
+45
+00:02:29,489 --> 00:02:39,329
+Studio so I worked with a team of nine
+
+46
+00:02:34,829 --> 00:02:41,099
+or ten people in a specific feature for
+
+47
+00:02:39,329 --> 00:02:44,069
+Visual Studio and we would work together
+
+48
+00:02:41,099 --> 00:02:46,560
+for one year two years before we were
+
+49
+00:02:44,069 --> 00:02:52,019
+ready to actually ship something to
+
+50
+00:02:46,560 --> 00:02:55,709
+customers FastTrack that 15 years I'm
+
+51
+00:02:52,019 --> 00:02:58,829
+working every week with more than 50
+
+52
+00:02:55,709 --> 00:03:02,939
+people in more than five projects and
+
+53
+00:02:58,829 --> 00:03:05,970
+the industry numbers that's exactly what
+
+54
+00:03:02,939 --> 00:03:10,260
+they're telling us people are working at
+
+55
+00:03:05,970 --> 00:03:13,739
+least with twice as many teams as they
+
+56
+00:03:10,260 --> 00:03:14,310
+were working with before what does this
+
+57
+00:03:13,739 --> 00:03:19,620
+mean
+
+58
+00:03:14,310 --> 00:03:21,530
+this means that lots more data is being
+
+59
+00:03:19,620 --> 00:03:25,620
+generated every day
+
+60
+00:03:21,530 --> 00:03:28,889
+think about the number of emails between
+
+61
+00:03:25,620 --> 00:03:31,139
+these people the number of documents and
+
+62
+00:03:28,889 --> 00:03:34,500
+PowerPoint presentations being created
+
+63
+00:03:31,139 --> 00:03:36,810
+for all of these projects it's just
+
+64
+00:03:34,500 --> 00:03:42,329
+amazing there's so much more data the
+
+65
+00:03:36,810 --> 00:03:44,489
+messaging between all these people the
+
+66
+00:03:42,329 --> 00:03:47,940
+problem with this is that there is so
+
+67
+00:03:44,489 --> 00:03:52,680
+much data being generated that industry
+
+68
+00:03:47,940 --> 00:03:57,269
+also tells us that 59% of these industry
+
+69
+00:03:52,680 --> 00:04:00,120
+workers cannot find the information that
+
+70
+00:03:57,269 --> 00:04:02,629
+they're actually looking for and the way
+
+71
+00:04:00,120 --> 00:04:05,370
+that I like to think about it is
+
+72
+00:04:02,629 --> 00:04:09,510
+consumer search versus Enterprise Search
+
+73
+00:04:05,370 --> 00:04:13,049
+so what happened 15 or 20 years ago in
+
+74
+00:04:09,510 --> 00:04:14,639
+the consumer search world if you were
+
+75
+00:04:13,049 --> 00:04:18,389
+searching for your favorite football
+
+76
+00:04:14,639 --> 00:04:21,690
+team you would get a bunch of blue links
+
+77
+00:04:18,389 --> 00:04:24,779
+in search engines and if you were lucky
+
+78
+00:04:21,690 --> 00:04:26,550
+enough you would get the official
+
+79
+00:04:24,779 --> 00:04:31,259
+website for your team
+
+80
+00:04:26,550 --> 00:04:33,419
+at the top that has advanced and we have
+
+81
+00:04:31,259 --> 00:04:34,800
+solved that problem today if you search
+
+82
+00:04:33,419 --> 00:04:37,500
+for your favorite football team you're
+
+83
+00:04:34,800 --> 00:04:40,020
+gonna get a very nice experience if your
+
+84
+00:04:37,500 --> 00:04:43,819
+team is playing you'll get live results
+
+85
+00:04:40,020 --> 00:04:48,060
+exactly what's happening in the moment
+
+86
+00:04:43,819 --> 00:04:50,580
+but Enterprise Search that's a different
+
+87
+00:04:48,060 --> 00:04:53,280
+problem and we have not solved that
+
+88
+00:04:50,580 --> 00:04:57,870
+problem I've been in horror stories
+
+89
+00:04:53,280 --> 00:05:01,020
+where I'm at a meeting with xx and I'm
+
+90
+00:04:57,870 --> 00:05:03,870
+presenting a PowerPoint deck and my
+
+91
+00:05:01,020 --> 00:05:05,430
+manager tells me put that back down and
+
+92
+00:05:03,870 --> 00:05:09,330
+bring the other one that we were
+
+93
+00:05:05,430 --> 00:05:12,509
+discussing last week my god finding that
+
+94
+00:05:09,330 --> 00:05:15,509
+bag that we talked about last week is so
+
+95
+00:05:12,509 --> 00:05:17,849
+difficult and that's just because we
+
+96
+00:05:15,509 --> 00:05:21,569
+have not solved the enterprise search
+
+97
+00:05:17,849 --> 00:05:24,419
+problem how can we solve it we can solve
+
+98
+00:05:21,569 --> 00:05:26,099
+it with data of course but we need to
+
+99
+00:05:24,419 --> 00:05:30,120
+make sure that we're representing that
+
+100
+00:05:26,099 --> 00:05:32,699
+data in a knowledge graph and then we
+
+101
+00:05:30,120 --> 00:05:36,509
+have to make sure that we put a layer of
+
+102
+00:05:32,699 --> 00:05:38,430
+intelligence on top of that so that the
+
+103
+00:05:36,509 --> 00:05:39,779
+scenarios makes sense so we're gonna be
+
+104
+00:05:38,430 --> 00:05:42,180
+talking a little bit more about
+
+105
+00:05:39,779 --> 00:05:44,789
+knowledge graphs and how we do that at
+
+106
+00:05:42,180 --> 00:05:47,039
+Microsoft but I want to be very clear
+
+107
+00:05:44,789 --> 00:05:49,770
+and I want to mention this third aspect
+
+108
+00:05:47,039 --> 00:05:52,020
+which is very important specially in the
+
+109
+00:05:49,770 --> 00:05:54,930
+enterprise we need to make sure that the
+
+110
+00:05:52,020 --> 00:05:58,469
+data and the knowledge graphs are hosted
+
+111
+00:05:54,930 --> 00:06:01,050
+in a safe and compliant environment if
+
+112
+00:05:58,469 --> 00:06:03,330
+you do a search today for the last month
+
+113
+00:06:01,050 --> 00:06:06,000
+the last two months on security breaches
+
+114
+00:06:03,330 --> 00:06:09,569
+you're going to see the names of big
+
+115
+00:06:06,000 --> 00:06:12,810
+corporations showing up so this is this
+
+116
+00:06:09,569 --> 00:06:14,430
+an item that we take very seriously and
+
+117
+00:06:12,810 --> 00:06:16,409
+we have to make sure that whatever we
+
+118
+00:06:14,430 --> 00:06:21,659
+implement we implemented the right way
+
+119
+00:06:16,409 --> 00:06:25,139
+with the right designs in place so now
+
+120
+00:06:21,659 --> 00:06:28,740
+I'll ask the question is knowledge and
+
+121
+00:06:25,139 --> 00:06:31,740
+data enough to make this scenarios work
+
+122
+00:06:28,740 --> 00:06:34,199
+and I'll answer it as well no it's not
+
+123
+00:06:31,740 --> 00:06:37,080
+enough we need artificial intelligence
+
+124
+00:06:34,199 --> 00:06:39,529
+as well so let me start by trying to
+
+125
+00:06:37,080 --> 00:06:42,109
+define these artificial intelligence
+
+126
+00:06:39,529 --> 00:06:46,519
+a very simplistic way it is technology
+
+127
+00:06:42,109 --> 00:06:49,779
+that is able to perceive learn and
+
+128
+00:06:46,519 --> 00:06:51,679
+reason in a way that extends our
+
+129
+00:06:49,779 --> 00:06:55,039
+capabilities and the capability
+
+130
+00:06:51,679 --> 00:06:57,169
+capabilities of organizations so let me
+
+131
+00:06:55,039 --> 00:06:59,149
+give you an example and this is where I
+
+132
+00:06:57,169 --> 00:07:01,939
+like to tell my story a story that
+
+133
+00:06:59,149 --> 00:07:05,179
+happened a year maybe a year and a half
+
+134
+00:07:01,939 --> 00:07:09,649
+ago so I was sleeping in my hometown in
+
+135
+00:07:05,179 --> 00:07:12,109
+Seattle when suddenly I was woken up in
+
+136
+00:07:09,649 --> 00:07:14,839
+the middle of the night by my home
+
+137
+00:07:12,109 --> 00:07:18,259
+security system it's the middle of the
+
+138
+00:07:14,839 --> 00:07:20,419
+night so I'm obviously freaked out so
+
+139
+00:07:18,259 --> 00:07:22,849
+one of the good things cool things about
+
+140
+00:07:20,419 --> 00:07:25,039
+my home security system is that it is
+
+141
+00:07:22,849 --> 00:07:29,239
+connected to the Internet so I can take
+
+142
+00:07:25,039 --> 00:07:31,219
+my cell phone log into the app and I see
+
+143
+00:07:29,239 --> 00:07:34,999
+that there was something happening
+
+144
+00:07:31,219 --> 00:07:39,349
+downstairs so there was motion detected
+
+145
+00:07:34,999 --> 00:07:41,959
+in my living room and I can disarm the
+
+146
+00:07:39,349 --> 00:07:44,509
+security system if I want probably not
+
+147
+00:07:41,959 --> 00:07:47,539
+very wise to do especially if you have
+
+148
+00:07:44,509 --> 00:07:51,529
+other small creatures living with you in
+
+149
+00:07:47,539 --> 00:07:53,360
+the upper floor of the home so I'll be
+
+150
+00:07:51,529 --> 00:07:54,139
+very honest with you I'm so freaked out
+
+151
+00:07:53,360 --> 00:07:56,389
+I'm scared
+
+152
+00:07:54,139 --> 00:07:59,649
+I go to my closet and I grab my baseball
+
+153
+00:07:56,389 --> 00:08:06,409
+bat and I start walking slowly
+
+154
+00:07:59,649 --> 00:08:11,359
+downstairs the good news is that I did
+
+155
+00:08:06,409 --> 00:08:15,409
+not find a human being downstairs the
+
+156
+00:08:11,359 --> 00:08:19,479
+bad news though is that that day I found
+
+157
+00:08:15,409 --> 00:08:24,319
+out that my home security system is not
+
+158
+00:08:19,479 --> 00:08:26,589
+intelligent what had happened is that my
+
+159
+00:08:24,319 --> 00:08:29,989
+security system was not able to
+
+160
+00:08:26,589 --> 00:08:34,759
+differentiate between a human being and
+
+161
+00:08:29,989 --> 00:08:37,509
+a balloon Avallone that my daughters had
+
+162
+00:08:34,759 --> 00:08:40,219
+left in the living room the night before
+
+163
+00:08:37,509 --> 00:08:42,469
+if my home security system had been
+
+164
+00:08:40,219 --> 00:08:44,029
+smart had been intelligent it could have
+
+165
+00:08:42,469 --> 00:08:48,079
+been able to perceive the difference
+
+166
+00:08:44,029 --> 00:08:50,839
+between an object and a human being it
+
+167
+00:08:48,079 --> 00:08:52,860
+would have been able to learn it learns
+
+168
+00:08:50,839 --> 00:08:55,080
+about my family members
+
+169
+00:08:52,860 --> 00:08:58,280
+learns that I go to sleep at night and
+
+170
+00:08:55,080 --> 00:09:00,690
+that the motion during the day is
+
+171
+00:08:58,280 --> 00:09:03,120
+probably less important that the motion
+
+172
+00:09:00,690 --> 00:09:06,780
+during the night it's also able to
+
+173
+00:09:03,120 --> 00:09:11,460
+recent differences human beings objects
+
+174
+00:09:06,780 --> 00:09:13,650
+animals or whatnot so that's the example
+
+175
+00:09:11,460 --> 00:09:16,470
+of artificial intelligence that did not
+
+176
+00:09:13,650 --> 00:09:18,360
+work the next slide I'm going to show
+
+177
+00:09:16,470 --> 00:09:21,360
+you an example of artificial
+
+178
+00:09:18,360 --> 00:09:24,480
+intelligence that is working today it's
+
+179
+00:09:21,360 --> 00:09:26,970
+an example of how we use knowledge
+
+180
+00:09:24,480 --> 00:09:30,870
+graphs data and artificial intelligence
+
+181
+00:09:26,970 --> 00:09:32,700
+in enterprise products today so up to
+
+182
+00:09:30,870 --> 00:09:36,300
+six months ago I was still working for
+
+183
+00:09:32,700 --> 00:09:40,860
+the big organization at Microsoft my job
+
+184
+00:09:36,300 --> 00:09:42,840
+was to understand how the our knowledge
+
+185
+00:09:40,860 --> 00:09:46,230
+graph our world north knowledge graph
+
+186
+00:09:42,840 --> 00:09:51,480
+can be infused with intelligence into
+
+187
+00:09:46,230 --> 00:09:53,700
+enterprise products like Excel now word
+
+188
+00:09:51,480 --> 00:09:56,400
+of caution the video that I'm going to
+
+189
+00:09:53,700 --> 00:09:58,590
+show is a marketing video I'm part of
+
+190
+00:09:56,400 --> 00:10:02,700
+the engineering team I don't make good
+
+191
+00:09:58,590 --> 00:10:04,530
+videos but I say this because the video
+
+192
+00:10:02,700 --> 00:10:06,510
+is trying to sell something and I'm not
+
+193
+00:10:04,530 --> 00:10:09,030
+trying to do that today I want us to
+
+194
+00:10:06,510 --> 00:10:12,740
+focus on the technology which we'll be
+
+195
+00:10:09,030 --> 00:10:12,740
+talking about in a few minutes
+
+196
+00:11:51,199 --> 00:11:56,999
+so the idea in this video is that
+
+197
+00:11:54,329 --> 00:11:58,589
+anything that you type into Excel any of
+
+198
+00:11:56,999 --> 00:12:01,709
+the strings that you type there can be
+
+199
+00:11:58,589 --> 00:12:03,569
+converted into actual objects how do we
+
+200
+00:12:01,709 --> 00:12:06,809
+make this happen we can make this happen
+
+201
+00:12:03,569 --> 00:12:09,869
+because the data is being represented in
+
+202
+00:12:06,809 --> 00:12:12,989
+a knowledge graph now one of the things
+
+203
+00:12:09,869 --> 00:12:15,299
+that is not very obvious in this video
+
+204
+00:12:12,989 --> 00:12:17,879
+is the actual intelligence so if you had
+
+205
+00:12:15,299 --> 00:12:21,509
+a spreadsheet and you have two lists one
+
+206
+00:12:17,879 --> 00:12:23,609
+list of countries and the word China is
+
+207
+00:12:21,509 --> 00:12:26,459
+there and the other list of
+
+208
+00:12:23,609 --> 00:12:28,679
+municipalities in Mexico and China is
+
+209
+00:12:26,459 --> 00:12:31,859
+there as well when you click the convert
+
+210
+00:12:28,679 --> 00:12:33,449
+button the China in the countries list
+
+211
+00:12:31,859 --> 00:12:36,720
+is actually going to be converted into
+
+212
+00:12:33,449 --> 00:12:39,539
+the object China the country with its
+
+213
+00:12:36,720 --> 00:12:41,129
+properties and everything the other one
+
+214
+00:12:39,539 --> 00:12:43,319
+is going to be converted into a
+
+215
+00:12:41,129 --> 00:12:46,709
+municipality in Mexico that's called
+
+216
+00:12:43,319 --> 00:12:48,809
+China so again we're able to do this
+
+217
+00:12:46,709 --> 00:12:50,369
+because in the knowledge graph we have
+
+218
+00:12:48,809 --> 00:12:52,769
+the nodes the different nodes
+
+219
+00:12:50,369 --> 00:12:54,629
+representing countries and we know that
+
+220
+00:12:52,769 --> 00:12:57,539
+they have similarities we can understand
+
+221
+00:12:54,629 --> 00:13:00,089
+that in the context of Excel and then we
+
+222
+00:12:57,539 --> 00:13:02,039
+can drill into one of those nodes into
+
+223
+00:13:00,089 --> 00:13:05,029
+one of those countries Mexico in this
+
+224
+00:13:02,039 --> 00:13:08,399
+case and we see other nodes there are
+
+225
+00:13:05,029 --> 00:13:13,949
+actual municipalities in Mexico that's
+
+226
+00:13:08,399 --> 00:13:16,049
+how we can do this so let's talk a
+
+227
+00:13:13,949 --> 00:13:17,879
+little bit about numbers for those that
+
+228
+00:13:16,049 --> 00:13:19,919
+like them like I do
+
+229
+00:13:17,879 --> 00:13:22,559
+how is artificial intelligence going to
+
+230
+00:13:19,919 --> 00:13:25,199
+help moving forward ninety-five percent
+
+231
+00:13:22,559 --> 00:13:29,699
+of customer interactions will be powered
+
+232
+00:13:25,199 --> 00:13:31,679
+by some sort of but by year 2025 we're
+
+233
+00:13:29,699 --> 00:13:34,229
+already starting to see these strengths
+
+234
+00:13:31,679 --> 00:13:36,209
+when we go to websites organizations
+
+235
+00:13:34,229 --> 00:13:39,839
+that provide services many of the
+
+236
+00:13:36,209 --> 00:13:42,059
+questions and answers are made by actual
+
+237
+00:13:39,839 --> 00:13:45,119
+are responded by the actual bots and not
+
+238
+00:13:42,059 --> 00:13:47,939
+human beings seventy-five percent of
+
+239
+00:13:45,119 --> 00:13:49,949
+apps will have some sort of intelligence
+
+240
+00:13:47,939 --> 00:13:53,309
+by the end of this year again this is a
+
+241
+00:13:49,949 --> 00:13:55,519
+trend but we are seeing if we search for
+
+242
+00:13:53,309 --> 00:13:58,309
+pretty much anything through any app
+
+243
+00:13:55,519 --> 00:14:02,639
+there is some sort of intelligence or
+
+244
+00:13:58,309 --> 00:14:04,470
+personalization already 30% of results
+
+245
+00:14:02,639 --> 00:14:07,650
+will be by voice
+
+246
+00:14:04,470 --> 00:14:09,360
+by year 2020 a trend that we're seeing
+
+247
+00:14:07,650 --> 00:14:11,400
+as well people are people are now
+
+248
+00:14:09,360 --> 00:14:13,440
+talking to their cell phones are talking
+
+249
+00:14:11,400 --> 00:14:15,180
+to their cars they're talking to
+
+250
+00:14:13,440 --> 00:14:18,510
+speakers and this trend will just
+
+251
+00:14:15,180 --> 00:14:22,500
+continue and I like the last one because
+
+252
+00:14:18,510 --> 00:14:25,320
+it helped make many of the points that
+
+253
+00:14:22,500 --> 00:14:28,980
+I'm trying to make today 20 billion
+
+254
+00:14:25,320 --> 00:14:31,860
+devices connected to the Internet by
+
+255
+00:14:28,980 --> 00:14:35,040
+year 2020 I'm a single person in this
+
+256
+00:14:31,860 --> 00:14:37,380
+room and I have a SmartWatch I have a
+
+257
+00:14:35,040 --> 00:14:39,110
+cell phone and I have a laptop all
+
+258
+00:14:37,380 --> 00:14:43,860
+connected to the Internet
+
+259
+00:14:39,110 --> 00:14:47,040
+magic data that is being generated every
+
+260
+00:14:43,860 --> 00:14:53,730
+hour every minute just on a single
+
+261
+00:14:47,040 --> 00:14:55,850
+individual and why now why are people
+
+262
+00:14:53,730 --> 00:15:00,270
+talking about artificial intelligence
+
+263
+00:14:55,850 --> 00:15:01,890
+now and not 20 or 30 years ago when we
+
+264
+00:15:00,270 --> 00:15:05,370
+were already talking about powerful
+
+265
+00:15:01,890 --> 00:15:07,140
+calculators so the first one is the
+
+266
+00:15:05,370 --> 00:15:10,410
+point that I just made big data
+
+267
+00:15:07,140 --> 00:15:12,240
+there's devices everywhere generating
+
+268
+00:15:10,410 --> 00:15:16,110
+all these data we didn't used to have
+
+269
+00:15:12,240 --> 00:15:20,070
+this 20 or 30 years ago and the powerful
+
+270
+00:15:16,110 --> 00:15:22,320
+algorithms yes we had algorithms in the
+
+271
+00:15:20,070 --> 00:15:24,540
+past but they were not handling the
+
+272
+00:15:22,320 --> 00:15:29,270
+amounts of data that they need to handle
+
+273
+00:15:24,540 --> 00:15:32,310
+today and we need somewhere to host
+
+274
+00:15:29,270 --> 00:15:34,680
+these powerful algorithms and that's
+
+275
+00:15:32,310 --> 00:15:36,930
+cloud computing 20 or 30 years ago yes
+
+276
+00:15:34,680 --> 00:15:40,560
+we had computing but it was expensive
+
+277
+00:15:36,930 --> 00:15:42,810
+now it's not only cheap but it's
+
+278
+00:15:40,560 --> 00:15:45,330
+scalable which is very important as well
+
+279
+00:15:42,810 --> 00:15:47,520
+so you can see that everything pretty
+
+280
+00:15:45,330 --> 00:15:50,010
+much aligns and the environment is made
+
+281
+00:15:47,520 --> 00:15:56,280
+perfect for artificial intelligence to
+
+282
+00:15:50,010 --> 00:15:57,900
+exist nowadays and let's talk about
+
+283
+00:15:56,280 --> 00:15:59,820
+knowledge let's go back and talk about
+
+284
+00:15:57,900 --> 00:16:01,860
+knowledge what is knowledge the the
+
+285
+00:15:59,820 --> 00:16:04,410
+simplest example that I can give go to
+
+286
+00:16:01,860 --> 00:16:06,690
+bing.com search for pretty much anything
+
+287
+00:16:04,410 --> 00:16:09,600
+the example that I have here is I search
+
+288
+00:16:06,690 --> 00:16:11,850
+for London on the right pane you'll see
+
+289
+00:16:09,600 --> 00:16:14,790
+what we call an entity pane
+
+290
+00:16:11,850 --> 00:16:17,260
+this is basically an object represented
+
+291
+00:16:14,790 --> 00:16:19,180
+in our graph London with a
+
+292
+00:16:17,260 --> 00:16:23,530
+set of properties that includes things
+
+293
+00:16:19,180 --> 00:16:25,210
+like population timezone or whatnot and
+
+294
+00:16:23,530 --> 00:16:29,230
+knowledge has been powering search
+
+295
+00:16:25,210 --> 00:16:32,080
+engines for the last few years and again
+
+296
+00:16:29,230 --> 00:16:34,590
+it it is represented through notes and
+
+297
+00:16:32,080 --> 00:16:37,630
+notes basically talking to each other
+
+298
+00:16:34,590 --> 00:16:41,860
+that's how we're able to say things such
+
+299
+00:16:37,630 --> 00:16:43,900
+as there's similar cities to London or
+
+300
+00:16:41,860 --> 00:16:46,750
+there's other things that people have
+
+301
+00:16:43,900 --> 00:16:49,150
+been searching for when they search for
+
+302
+00:16:46,750 --> 00:16:51,520
+London this is because because of the
+
+303
+00:16:49,150 --> 00:16:56,440
+way we're representing all of this in
+
+304
+00:16:51,520 --> 00:16:59,710
+the graph and there's challenges to
+
+305
+00:16:56,440 --> 00:17:01,540
+having a graph like this so Bing we call
+
+306
+00:16:59,710 --> 00:17:05,949
+it the world knowledge graph at
+
+307
+00:17:01,540 --> 00:17:07,810
+Microsoft so in order to be the world
+
+308
+00:17:05,949 --> 00:17:10,540
+knowledge graph you're claiming that you
+
+309
+00:17:07,810 --> 00:17:11,890
+know about the world so it means that
+
+310
+00:17:10,540 --> 00:17:16,380
+you have to make sure that during
+
+311
+00:17:11,890 --> 00:17:20,350
+ingesting data about everything people
+
+312
+00:17:16,380 --> 00:17:21,850
+animals flights pretty much everything
+
+313
+00:17:20,350 --> 00:17:23,079
+so that's the first challenge that I'm
+
+314
+00:17:21,850 --> 00:17:25,990
+calling out right there it's the
+
+315
+00:17:23,079 --> 00:17:28,980
+coverage you have to have pretty much
+
+316
+00:17:25,990 --> 00:17:32,560
+everything in this knowledge graph and
+
+317
+00:17:28,980 --> 00:17:35,140
+with that comes the challenge of
+
+318
+00:17:32,560 --> 00:17:39,630
+correctness because if we're suddenly
+
+319
+00:17:35,140 --> 00:17:43,840
+ingesting data for one particular person
+
+320
+00:17:39,630 --> 00:17:46,510
+into the graph and we have six different
+
+321
+00:17:43,840 --> 00:17:49,990
+websites that tell us that that person
+
+322
+00:17:46,510 --> 00:17:52,720
+is 29 years old but then we see that
+
+323
+00:17:49,990 --> 00:17:56,820
+there are other five websites that tell
+
+324
+00:17:52,720 --> 00:17:59,380
+that he's 34 years old who do we believe
+
+325
+00:17:56,820 --> 00:18:02,980
+we have to make sure that the knowledge
+
+326
+00:17:59,380 --> 00:18:05,500
+graph is able to cope with this and be
+
+327
+00:18:02,980 --> 00:18:09,250
+able to tell us which is the source of
+
+328
+00:18:05,500 --> 00:18:10,810
+truth and then there's freshness as well
+
+329
+00:18:09,250 --> 00:18:13,540
+two days ago
+
+330
+00:18:10,810 --> 00:18:17,200
+when I was flying from Seattle to London
+
+331
+00:18:13,540 --> 00:18:19,930
+my flight was delayed when I caught on
+
+332
+00:18:17,200 --> 00:18:22,120
+this because of Bing it worked it was
+
+333
+00:18:19,930 --> 00:18:25,050
+pretty cool to see it working the world
+
+334
+00:18:22,120 --> 00:18:28,570
+is changing every day every minute
+
+335
+00:18:25,050 --> 00:18:29,380
+flights are being delayed or getting
+
+336
+00:18:28,570 --> 00:18:30,909
+cancelled
+
+337
+00:18:29,380 --> 00:18:34,720
+people are being born
+
+338
+00:18:30,909 --> 00:18:37,960
+and people die the knowledge graph has
+
+339
+00:18:34,720 --> 00:18:39,729
+to be able to cope with all of this to
+
+340
+00:18:37,960 --> 00:18:43,869
+make sure it's giving us the right
+
+341
+00:18:39,729 --> 00:18:46,239
+information when we ask for it the
+
+342
+00:18:43,869 --> 00:18:48,729
+screen shows that I have right here just
+
+343
+00:18:46,239 --> 00:18:51,489
+make the point of how challenging this
+
+344
+00:18:48,729 --> 00:18:53,979
+can be if you go to Wikipedia dot org
+
+345
+00:18:51,489 --> 00:18:57,119
+and search for Will Smith you'll see
+
+346
+00:18:53,979 --> 00:19:00,369
+that there are hundreds of Will Smith's
+
+347
+00:18:57,119 --> 00:19:02,710
+if you go to Bing comm and search for a
+
+348
+00:19:00,369 --> 00:19:05,619
+particular Will Smith one of these
+
+349
+00:19:02,710 --> 00:19:07,869
+hundreds you see a nice entity pane with
+
+350
+00:19:05,619 --> 00:19:10,090
+a bunch of data this entity pane is
+
+351
+00:19:07,869 --> 00:19:12,909
+actually composed by 41 different
+
+352
+00:19:10,090 --> 00:19:15,009
+websites we have to make sure that all
+
+353
+00:19:12,909 --> 00:19:17,529
+those hundreds of wills made that we
+
+354
+00:19:15,009 --> 00:19:20,590
+ingest into the graph are actually
+
+355
+00:19:17,529 --> 00:19:23,710
+conflated into the right people with the
+
+356
+00:19:20,590 --> 00:19:25,629
+correct data so again some of the
+
+357
+00:19:23,710 --> 00:19:32,499
+challenges of having this world
+
+358
+00:19:25,629 --> 00:19:36,999
+knowledge graph now knowledge artificial
+
+359
+00:19:32,499 --> 00:19:37,629
+intelligence why do they need to go hand
+
+360
+00:19:36,999 --> 00:19:39,970
+in hand
+
+361
+00:19:37,629 --> 00:19:43,029
+why are they needed together let's go
+
+362
+00:19:39,970 --> 00:19:46,389
+back to the home security system example
+
+363
+00:19:43,029 --> 00:19:48,489
+and let's imagine for a second that my
+
+364
+00:19:46,389 --> 00:19:51,820
+home security system is intelligent is
+
+365
+00:19:48,489 --> 00:19:54,190
+smart I should be able to tell it hey
+
+366
+00:19:51,820 --> 00:19:57,220
+home security system make sure that when
+
+367
+00:19:54,190 --> 00:20:00,190
+you see my cat wandering around in the
+
+368
+00:19:57,220 --> 00:20:04,269
+living room don't trigger that's good
+
+369
+00:20:00,190 --> 00:20:06,309
+in that case artificial intelligence is
+
+370
+00:20:04,269 --> 00:20:09,940
+going to be great about translating my
+
+371
+00:20:06,309 --> 00:20:14,169
+voice into text that the powerful
+
+372
+00:20:09,940 --> 00:20:15,700
+algorithms can use but if the home
+
+373
+00:20:14,169 --> 00:20:17,349
+security system is not able to
+
+374
+00:20:15,700 --> 00:20:21,489
+understand what a cat is
+
+375
+00:20:17,349 --> 00:20:23,590
+and the difference between my cat all of
+
+376
+00:20:21,489 --> 00:20:27,690
+the other cats out there then the
+
+377
+00:20:23,590 --> 00:20:27,690
+scenario just doesn't make sense
+
+378
+00:20:31,150 --> 00:20:40,190
+the largest graph of human activity at
+
+379
+00:20:35,720 --> 00:20:43,700
+work ever created it took me a few
+
+380
+00:20:40,190 --> 00:20:46,910
+minutes but I finally got to the slide
+
+381
+00:20:43,700 --> 00:20:49,580
+that I wanted to get to so we've been
+
+382
+00:20:46,910 --> 00:20:53,900
+talking about the world knowledge graph
+
+383
+00:20:49,580 --> 00:20:58,190
+some of its challenges now imagine you
+
+384
+00:20:53,900 --> 00:21:04,000
+combine that with enterprise knowledge
+
+385
+00:20:58,190 --> 00:21:08,210
+and then graph from LinkedIn dynamics
+
+386
+00:21:04,000 --> 00:21:13,429
+Cortana we've just created this huge
+
+387
+00:21:08,210 --> 00:21:15,650
+graph with huge amounts of data the
+
+388
+00:21:13,429 --> 00:21:18,320
+challenges are a bit different
+
+389
+00:21:15,650 --> 00:21:20,360
+especially on the enterprise side of
+
+390
+00:21:18,320 --> 00:21:22,910
+things so when we were talking about the
+
+391
+00:21:20,360 --> 00:21:25,460
+world knowledge graph we're ingesting
+
+392
+00:21:22,910 --> 00:21:27,980
+data from different sources because we
+
+393
+00:21:25,460 --> 00:21:30,320
+want to know about the world in the
+
+394
+00:21:27,980 --> 00:21:34,280
+enterprise knowledge graph we have the
+
+395
+00:21:30,320 --> 00:21:40,550
+data because people are using Word
+
+396
+00:21:34,280 --> 00:21:42,590
+PowerPoint email messages in the world
+
+397
+00:21:40,550 --> 00:21:45,410
+knowledge graph we can look at the data
+
+398
+00:21:42,590 --> 00:21:49,010
+and we can look at the queries made by
+
+399
+00:21:45,410 --> 00:21:53,270
+people in the enterprise world we cannot
+
+400
+00:21:49,010 --> 00:21:57,500
+do that our customers data is private
+
+401
+00:21:53,270 --> 00:22:00,920
+data it's data to them we cannot put
+
+402
+00:21:57,500 --> 00:22:06,080
+human eyes on that data so that's where
+
+403
+00:22:00,920 --> 00:22:09,830
+we need our algorithms looking at that
+
+404
+00:22:06,080 --> 00:22:15,290
+data making assumptions looking at the
+
+405
+00:22:09,830 --> 00:22:19,040
+results and then iterating over that but
+
+406
+00:22:15,290 --> 00:22:21,500
+in essence we have the data the data is
+
+407
+00:22:19,040 --> 00:22:23,929
+represented the same way in the
+
+408
+00:22:21,500 --> 00:22:27,020
+knowledge graph and we have that layer
+
+409
+00:22:23,929 --> 00:22:31,400
+of intelligence that we can put on top
+
+410
+00:22:27,020 --> 00:22:34,940
+of that so to solve the consumer search
+
+411
+00:22:31,400 --> 00:22:37,600
+problem we did that already
+
+412
+00:22:34,940 --> 00:22:41,480
+along with other corporations of course
+
+413
+00:22:37,600 --> 00:22:43,940
+the enterprise problem has not be solved
+
+414
+00:22:41,480 --> 00:22:46,250
+but we want to solve it
+
+415
+00:22:43,940 --> 00:22:48,080
+and this is how we solve it with the
+
+416
+00:22:46,250 --> 00:22:51,049
+data with the knowledge graph and with
+
+417
+00:22:48,080 --> 00:22:53,570
+the intelligence Enterprise search can
+
+418
+00:22:51,049 --> 00:22:56,450
+be solved and Microsoft has a vision for
+
+419
+00:22:53,570 --> 00:22:59,029
+it we call it Microsoft search and
+
+420
+00:22:56,450 --> 00:23:02,169
+that's a video that I'm gonna go ahead
+
+421
+00:22:59,029 --> 00:23:02,169
+and play next
+
+422
+00:23:06,810 --> 00:23:10,240
+[Music]
+
+423
+00:24:07,790 --> 00:24:13,599
+[Music]
+
+424
+00:24:09,960 --> 00:24:17,349
+so the idea as you saw it is pretty
+
+425
+00:24:13,599 --> 00:24:20,440
+simple if I'm searching for anything in
+
+426
+00:24:17,349 --> 00:24:23,200
+the enterprise just give me the answer
+
+427
+00:24:20,440 --> 00:24:25,269
+just like we do today in the consumer
+
+428
+00:24:23,200 --> 00:24:27,729
+search we have so many nice experiences
+
+429
+00:24:25,269 --> 00:24:30,039
+so many nice answers that just pop up
+
+430
+00:24:27,729 --> 00:24:34,299
+when we ask we want to be able to do
+
+431
+00:24:30,039 --> 00:24:36,849
+exactly the same in the enterprise world
+
+432
+00:24:34,299 --> 00:24:39,820
+and of course we want to make this
+
+433
+00:24:36,849 --> 00:24:40,929
+experience consistent any word in the
+
+434
+00:24:39,820 --> 00:24:43,210
+Microsoft products where you're
+
+435
+00:24:40,929 --> 00:24:45,580
+searching the experience is the same if
+
+436
+00:24:43,210 --> 00:24:47,379
+you're in word if you're in Excel if
+
+437
+00:24:45,580 --> 00:24:50,409
+you're in PowerPoint you can ask
+
+438
+00:24:47,379 --> 00:24:53,109
+whatever question you get your answer if
+
+439
+00:24:50,409 --> 00:24:55,659
+I'm in that meeting that we were talking
+
+440
+00:24:53,109 --> 00:24:58,960
+about and I ask I want to see that deck
+
+441
+00:24:55,659 --> 00:25:04,200
+that I was sharing with Tom my manager I
+
+442
+00:24:58,960 --> 00:25:04,200
+just get the right deck in front of me
+
+443
+00:25:06,749 --> 00:25:13,359
+so let's recap a little bit what were we
+
+444
+00:25:09,879 --> 00:25:15,849
+what I've been saying here today so the
+
+445
+00:25:13,359 --> 00:25:18,549
+oil industry definitely got it right a
+
+446
+00:25:15,849 --> 00:25:20,649
+few years ago the world runs on us
+
+447
+00:25:18,549 --> 00:25:23,649
+that's what they were saying and they
+
+448
+00:25:20,649 --> 00:25:27,789
+were right but the world has been
+
+449
+00:25:23,649 --> 00:25:31,450
+changing data is the new oil what
+
+450
+00:25:27,789 --> 00:25:33,639
+industry is telling us if this data that
+
+451
+00:25:31,450 --> 00:25:36,389
+is being generated every day it's just
+
+452
+00:25:33,639 --> 00:25:39,609
+increasing it's expanding exponentially
+
+453
+00:25:36,389 --> 00:25:43,659
+people are working with many other
+
+454
+00:25:39,609 --> 00:25:46,509
+people in many other projects and most
+
+455
+00:25:43,659 --> 00:25:49,599
+of these people cannot find the data
+
+456
+00:25:46,509 --> 00:25:53,159
+that they want to find today what is the
+
+457
+00:25:49,599 --> 00:25:56,859
+solution to this it's having the data
+
+458
+00:25:53,159 --> 00:25:59,080
+represented in a smart way in knowledge
+
+459
+00:25:56,859 --> 00:26:02,619
+graphs and then putting that layer of
+
+460
+00:25:59,080 --> 00:26:06,580
+intelligence so that the scenarios makes
+
+461
+00:26:02,619 --> 00:26:09,759
+sense so the call of action to everyone
+
+462
+00:26:06,580 --> 00:26:12,909
+here today is make sure that your
+
+463
+00:26:09,759 --> 00:26:15,159
+enterprises your organizations have a
+
+464
+00:26:12,909 --> 00:26:17,200
+solution that makes sense it is pretty
+
+465
+00:26:15,159 --> 00:26:19,059
+clear the numbers tells tell us that
+
+466
+00:26:17,200 --> 00:26:19,739
+some organizations are not going to get
+
+467
+00:26:19,059 --> 00:26:21,460
+there
+
+468
+00:26:19,739 --> 00:26:23,710
+organizations are going to
+
+469
+00:26:21,460 --> 00:26:27,039
+way faster are gonna be much more
+
+470
+00:26:23,710 --> 00:26:29,380
+efficient if they give a solution where
+
+471
+00:26:27,039 --> 00:26:31,720
+people can find stuff this is gonna
+
+472
+00:26:29,380 --> 00:26:34,149
+become more and more critical in the
+
+473
+00:26:31,720 --> 00:26:37,570
+years to come so if it is with a custom
+
+474
+00:26:34,149 --> 00:26:40,059
+solution or if it is with a solution out
+
+475
+00:26:37,570 --> 00:26:41,260
+there that makes sense just make sure
+
+476
+00:26:40,059 --> 00:26:44,919
+that you're thinking about these
+
+477
+00:26:41,260 --> 00:26:47,500
+problems and that you make sure that you
+
+478
+00:26:44,919 --> 00:26:50,200
+can solve them in your enterprises again
+
+479
+00:26:47,500 --> 00:26:52,380
+I believe that it is with data with
+
+480
+00:26:50,200 --> 00:26:55,059
+knowledge graphs and with artificial
+
+481
+00:26:52,380 --> 00:26:57,429
+intelligence it's been a pleasure being
+
+482
+00:26:55,059 --> 00:26:59,440
+with all of you here today thank you
+
+483
+00:26:57,429 --> 00:27:11,320
+very much again I'm David Brenna and
+
+484
+00:26:59,440 --> 00:27:13,929
+enjoy the rest of your day big thank you
+
+485
+00:27:11,320 --> 00:27:17,520
+to David really fantastic presentation
+
+486
+00:27:13,929 --> 00:27:17,520
+we've got time for questions
+
+487
+00:27:22,140 --> 00:27:27,980
+hello I'm at an ask Yahoo from context
+
+488
+00:27:25,890 --> 00:27:32,460
+thank you for the wonderful presentation
+
+489
+00:27:27,980 --> 00:27:35,340
+my question is when you get this working
+
+490
+00:27:32,460 --> 00:27:37,649
+within enterprises are you trying to
+
+491
+00:27:35,340 --> 00:27:41,370
+customize the knowledge graph that is
+
+492
+00:27:37,649 --> 00:27:43,649
+used for indexing and search within the
+
+493
+00:27:41,370 --> 00:27:46,380
+specific enterprise like are you trying
+
+494
+00:27:43,649 --> 00:27:49,200
+to pick up specific employees make notes
+
+495
+00:27:46,380 --> 00:27:51,120
+for them disambiguate Jones meeting one
+
+496
+00:27:49,200 --> 00:27:53,580
+division from Jones meeting another
+
+497
+00:27:51,120 --> 00:27:56,730
+division what it takes to do these
+
+498
+00:27:53,580 --> 00:27:59,639
+customizations because the other thing
+
+499
+00:27:56,730 --> 00:28:02,159
+is one big gap for all we know how it
+
+500
+00:27:59,639 --> 00:28:04,169
+works making a specific one for each
+
+501
+00:28:02,159 --> 00:28:07,620
+enterprise is quite a challenge right
+
+502
+00:28:04,169 --> 00:28:12,269
+now thank you for your question that's
+
+503
+00:28:07,620 --> 00:28:14,130
+actually a great question so yes we have
+
+504
+00:28:12,269 --> 00:28:16,559
+in mind and we want to make sure that
+
+505
+00:28:14,130 --> 00:28:19,110
+our solutions are multi-tenant that it
+
+506
+00:28:16,559 --> 00:28:19,919
+works not only within Microsoft we have
+
+507
+00:28:19,110 --> 00:28:23,100
+to start somewhere
+
+508
+00:28:19,919 --> 00:28:25,380
+of course so the our playground is
+
+509
+00:28:23,100 --> 00:28:28,679
+obviously our big corporation that's
+
+510
+00:28:25,380 --> 00:28:31,679
+where we start doing the mining of all
+
+511
+00:28:28,679 --> 00:28:34,110
+these data that happens in emails
+
+512
+00:28:31,679 --> 00:28:37,260
+PowerPoint presentations or whatnot but
+
+513
+00:28:34,110 --> 00:28:39,570
+our solutions are designed to go to
+
+514
+00:28:37,260 --> 00:28:43,529
+other organizations to the other tenants
+
+515
+00:28:39,570 --> 00:28:44,970
+as well and we go instead by step many
+
+516
+00:28:43,529 --> 00:28:47,700
+of these solutions many of the things
+
+517
+00:28:44,970 --> 00:28:49,980
+that you saw today in the video we're
+
+518
+00:28:47,700 --> 00:28:51,990
+actually going out to corporations to
+
+519
+00:28:49,980 --> 00:28:54,269
+private corporations and testing with
+
+520
+00:28:51,990 --> 00:28:57,000
+them and adjusting to make sure that our
+
+521
+00:28:54,269 --> 00:29:01,429
+solutions work not only for Microsoft
+
+522
+00:28:57,000 --> 00:29:01,429
+but for the world so yeah great question
+
+523
+00:29:03,110 --> 00:29:09,240
+I mean if in JPMorgan Chase there is
+
+524
+00:29:07,019 --> 00:29:12,090
+like whatever number of employees with
+
+525
+00:29:09,240 --> 00:29:16,080
+butterman names or considering their
+
+526
+00:29:12,090 --> 00:29:18,149
+clients are you doing something specific
+
+527
+00:29:16,080 --> 00:29:20,850
+for the specific enterprise or not there
+
+528
+00:29:18,149 --> 00:29:23,549
+will be customizations for sure where
+
+529
+00:29:20,850 --> 00:29:26,850
+we're starting is with the assumption
+
+530
+00:29:23,549 --> 00:29:29,850
+that we have access that our algorithms
+
+531
+00:29:26,850 --> 00:29:32,730
+have access to large number of emails
+
+532
+00:29:29,850 --> 00:29:34,889
+large number of documents large number
+
+533
+00:29:32,730 --> 00:29:35,909
+of powerpoints but there will be admin
+
+534
+00:29:34,889 --> 00:29:38,549
+customizations
+
+535
+00:29:35,909 --> 00:29:41,309
+where we will be able to handle some
+
+536
+00:29:38,549 --> 00:29:42,659
+edge cases I would say but where we're
+
+537
+00:29:41,309 --> 00:29:44,999
+starting is we're starting with that
+
+538
+00:29:42,659 --> 00:29:48,029
+assumption and starting especially with
+
+539
+00:29:44,999 --> 00:29:50,729
+big corporations that that are similar
+
+540
+00:29:48,029 --> 00:29:53,339
+to the way Microsoft works but again
+
+541
+00:29:50,729 --> 00:29:55,619
+we're making sure in our designs that we
+
+542
+00:29:53,339 --> 00:29:59,449
+have those those level of customizations
+
+543
+00:29:55,619 --> 00:29:59,449
+available for smaller companies as well
+
+544
+00:29:59,569 --> 00:30:05,279
+question David yeah morning um could you
+
+545
+00:30:04,199 --> 00:30:07,079
+say a little bit about the technology
+
+546
+00:30:05,279 --> 00:30:10,019
+that's behind your knowledge graph is
+
+547
+00:30:07,079 --> 00:30:11,729
+this a bespoke Microsoft only knowledge
+
+548
+00:30:10,019 --> 00:30:13,379
+graph triple store property graph that
+
+549
+00:30:11,729 --> 00:30:14,940
+you've built entirely are you using
+
+550
+00:30:13,379 --> 00:30:16,499
+anything that probably other people in
+
+551
+00:30:14,940 --> 00:30:18,929
+the room are using to support your
+
+552
+00:30:16,499 --> 00:30:20,309
+knowledge graph that's a great question
+
+553
+00:30:18,929 --> 00:30:22,979
+and I wouldn't be the right person to
+
+554
+00:30:20,309 --> 00:30:25,529
+answer that I'm I'm a program manager I
+
+555
+00:30:22,979 --> 00:30:26,969
+asked my folks to make it happen and
+
+556
+00:30:25,529 --> 00:30:29,309
+they make it happen with different
+
+557
+00:30:26,969 --> 00:30:35,759
+technologies so yeah we can follow up
+
+558
+00:30:29,309 --> 00:30:38,789
+offline on that one pushing it there was
+
+559
+00:30:35,759 --> 00:30:41,940
+about maybe public availability
+
+560
+00:30:38,789 --> 00:30:43,949
+availability of LinkedIn data are there
+
+561
+00:30:41,940 --> 00:30:47,969
+any plans to cross-reference it to other
+
+562
+00:30:43,949 --> 00:30:52,049
+database of people organizations GDP our
+
+563
+00:30:47,969 --> 00:30:53,699
+implications stuff like that so to
+
+564
+00:30:52,049 --> 00:30:55,949
+clarify that question are you talking
+
+565
+00:30:53,699 --> 00:30:58,409
+about publicly available api's that you
+
+566
+00:30:55,949 --> 00:31:02,940
+can use to get LinkedIn data or maybe
+
+567
+00:30:58,409 --> 00:31:04,679
+data dumps yeah so again so I don't work
+
+568
+00:31:02,940 --> 00:31:07,889
+in the LinkedIn organization I know that
+
+569
+00:31:04,679 --> 00:31:10,440
+there are api's available to the public
+
+570
+00:31:07,889 --> 00:31:12,389
+I don't know the details but I can
+
+571
+00:31:10,440 --> 00:31:20,639
+follow we can follow up offline on on
+
+572
+00:31:12,389 --> 00:31:21,839
+exact details around that time for now
+
+573
+00:31:20,639 --> 00:31:26,029
+oh sorry
+
+574
+00:31:21,839 --> 00:31:26,029
+destroy your bank sorry about that
+
+575
+00:31:28,570 --> 00:31:32,750
+how important is human curation for the
+
+576
+00:31:31,580 --> 00:31:34,460
+creation of your knowledge graphs
+
+577
+00:31:32,750 --> 00:31:37,789
+especially around the problem of entity
+
+578
+00:31:34,460 --> 00:31:44,419
+resolution so that's a great question
+
+579
+00:31:37,789 --> 00:31:48,289
+and we do both we have a big team doing
+
+580
+00:31:44,419 --> 00:31:50,600
+human curation and making sure that we
+
+581
+00:31:48,289 --> 00:31:55,610
+understand that data but but again that
+
+582
+00:31:50,600 --> 00:31:58,309
+can be scoped to certain organizations
+
+583
+00:31:55,610 --> 00:31:59,990
+and certain amount of data because the
+
+584
+00:31:58,309 --> 00:32:02,570
+problem that we have with data itself
+
+585
+00:31:59,990 --> 00:32:04,279
+and especially with customer data we we
+
+586
+00:32:02,570 --> 00:32:06,529
+can't look at it period
+
+587
+00:32:04,279 --> 00:32:08,720
+so yes we have some of it but it's
+
+588
+00:32:06,529 --> 00:32:15,529
+mostly for internal data not for
+
+589
+00:32:08,720 --> 00:32:18,129
+customer data which is tricky question
+
+590
+00:32:15,529 --> 00:32:18,129
+spanking
+
+591
+00:32:18,639 --> 00:32:22,970
+thanks for representation one of the
+
+592
+00:32:20,870 --> 00:32:24,830
+challenge you mentioned was correctness
+
+593
+00:32:22,970 --> 00:32:27,769
+anything that's released a lot to AI
+
+594
+00:32:24,830 --> 00:32:30,289
+there's no stupid or intelligent AI it's
+
+595
+00:32:27,769 --> 00:32:33,200
+the quality of the data we input to AI
+
+596
+00:32:30,289 --> 00:32:35,629
+how do you guarantee the correctness in
+
+597
+00:32:33,200 --> 00:32:39,860
+your data model and engineering your
+
+598
+00:32:35,629 --> 00:32:41,769
+enterprise solution that's a big problem
+
+599
+00:32:39,860 --> 00:32:45,620
+and that that's a problem that keeps
+
+600
+00:32:41,769 --> 00:32:47,330
+engineers BC day and night the the
+
+601
+00:32:45,620 --> 00:32:50,210
+problem with the world knowledge graph
+
+602
+00:32:47,330 --> 00:32:52,759
+is that you have to understand the data
+
+603
+00:32:50,210 --> 00:32:55,519
+from everywhere and if someone suddenly
+
+604
+00:32:52,759 --> 00:32:58,309
+starts a new website claiming that they
+
+605
+00:32:55,519 --> 00:33:00,440
+have data about something you have to
+
+606
+00:32:58,309 --> 00:33:01,820
+make sure that you are at least not
+
+607
+00:33:00,440 --> 00:33:05,059
+necessarily ingesting the data but
+
+608
+00:33:01,820 --> 00:33:08,149
+understanding it and it is a challenging
+
+609
+00:33:05,059 --> 00:33:12,409
+problem I mean finding the source of
+
+610
+00:33:08,149 --> 00:33:14,720
+truth it's just difficult many people
+
+611
+00:33:12,409 --> 00:33:18,220
+actually claim that it is impossible to
+
+612
+00:33:14,720 --> 00:33:21,679
+find the source of truth so we have
+
+613
+00:33:18,220 --> 00:33:24,649
+things and technology in the knowledge
+
+614
+00:33:21,679 --> 00:33:27,320
+graph to try to get close to answering
+
+615
+00:33:24,649 --> 00:33:29,570
+that and we do it through obviously
+
+616
+00:33:27,320 --> 00:33:31,970
+comparing and then we have a set of
+
+617
+00:33:29,570 --> 00:33:35,570
+sources that that historically have
+
+618
+00:33:31,970 --> 00:33:39,200
+given us the right answers but but
+
+619
+00:33:35,570 --> 00:33:41,120
+there's no no perfect answer to that and
+
+620
+00:33:39,200 --> 00:33:43,190
+you'll see it today if you go to
+
+621
+00:33:41,120 --> 00:33:45,140
+bing.com or if you go to other search
+
+622
+00:33:43,190 --> 00:33:47,030
+engines sometimes they will be wrong
+
+623
+00:33:45,140 --> 00:33:49,580
+sometimes we will be right and they
+
+624
+00:33:47,030 --> 00:33:52,700
+might be it might be a problem with the
+
+625
+00:33:49,580 --> 00:33:55,250
+website itself that we have trusted a
+
+626
+00:33:52,700 --> 00:33:58,340
+particular website and they had a bug or
+
+627
+00:33:55,250 --> 00:34:02,210
+whatnot so it's a difficult problem it's
+
+628
+00:33:58,340 --> 00:34:04,250
+a difficult problem for sure thanks for
+
+629
+00:34:02,210 --> 00:34:09,139
+the presentation you talked about
+
+630
+00:34:04,250 --> 00:34:11,240
+Enterprise so you talked about our
+
+631
+00:34:09,139 --> 00:34:14,419
+enterprise and knowledge graph there are
+
+632
+00:34:11,240 --> 00:34:17,869
+two things one is unification of graphs
+
+633
+00:34:14,419 --> 00:34:19,730
+or knowledge and security and
+
+634
+00:34:17,869 --> 00:34:24,590
+authorization rule based authorization
+
+635
+00:34:19,730 --> 00:34:29,750
+so how do you deal with it yeah so well
+
+636
+00:34:24,590 --> 00:34:31,340
+there's a unification the way that that
+
+637
+00:34:29,750 --> 00:34:33,820
+we envision these graphs is they're
+
+638
+00:34:31,340 --> 00:34:37,310
+together but physically that's not
+
+639
+00:34:33,820 --> 00:34:40,940
+necessarily the case as I mentioned the
+
+640
+00:34:37,310 --> 00:34:43,820
+enterprise knowledge graph has a bigger
+
+641
+00:34:40,940 --> 00:34:46,040
+set of rules there's compliance there
+
+642
+00:34:43,820 --> 00:34:48,830
+security that we have to make sure that
+
+643
+00:34:46,040 --> 00:34:51,859
+we're dealing with so physically it's
+
+644
+00:34:48,830 --> 00:34:54,679
+not necessarily the same graph how do we
+
+645
+00:34:51,859 --> 00:34:56,600
+treat the problem of people having
+
+646
+00:34:54,679 --> 00:35:00,530
+access to some of these data
+
+647
+00:34:56,600 --> 00:35:02,240
+well we present to people the data that
+
+648
+00:35:00,530 --> 00:35:04,130
+we have available for them in the
+
+649
+00:35:02,240 --> 00:35:06,320
+example that you saw in the video if
+
+650
+00:35:04,130 --> 00:35:09,710
+someone is searching for that bassy
+
+651
+00:35:06,320 --> 00:35:13,160
+person we will provide the answer to
+
+652
+00:35:09,710 --> 00:35:15,920
+this person if they have access to this
+
+653
+00:35:13,160 --> 00:35:18,200
+person otherwise we can present it so so
+
+654
+00:35:15,920 --> 00:35:24,530
+that that's how we do it a high light
+
+655
+00:35:18,200 --> 00:35:25,940
+level okay that's about time for
+
+656
+00:35:24,530 --> 00:35:27,440
+questions
+
+657
+00:35:25,940 --> 00:35:30,080
+David's hanging around those who do
+
+658
+00:35:27,440 --> 00:35:33,840
+catch him in the breaks big thanks to
+
+659
+00:35:30,080 --> 00:35:35,340
+David fantastic presentation
+
+660
+00:35:33,840 --> 00:35:38,899
+you
+
+661
+00:35:35,340 --> 00:35:38,899
+[Applause]
+

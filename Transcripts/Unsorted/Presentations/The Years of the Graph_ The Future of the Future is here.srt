@@ -1,0 +1,3020 @@
+1
+00:00:00,480 --> 00:00:05,600
+uh so event organizers normally don't
+
+2
+00:00:03,600 --> 00:00:08,160
+take the stage from themselves but
+
+3
+00:00:05,600 --> 00:00:09,599
+we thought we could do that as a kind of
+
+4
+00:00:08,160 --> 00:00:11,280
+special treat uh
+
+5
+00:00:09,599 --> 00:00:13,759
+well for ourselves and hopefully for you
+
+6
+00:00:11,280 --> 00:00:15,120
+as well just to show you what it is that
+
+7
+00:00:13,759 --> 00:00:17,359
+we do when we're not
+
+8
+00:00:15,120 --> 00:00:18,400
+actually organizing this event and how
+
+9
+00:00:17,359 --> 00:00:21,279
+we actually
+
+10
+00:00:18,400 --> 00:00:23,119
+use this technology ourselves and why in
+
+11
+00:00:21,279 --> 00:00:25,199
+that sense we consider ourselves you
+
+12
+00:00:23,119 --> 00:00:26,480
+know member of the community that we are
+
+13
+00:00:25,199 --> 00:00:29,519
+addressing
+
+14
+00:00:26,480 --> 00:00:32,559
+so today i'm here to present to you
+
+15
+00:00:29,519 --> 00:00:34,160
+uh what i call the year of the graph and
+
+16
+00:00:32,559 --> 00:00:38,000
+actually the first thing
+
+17
+00:00:34,160 --> 00:00:40,160
+to uh to mention in that is
+
+18
+00:00:38,000 --> 00:00:41,120
+where the thirst where the term is
+
+19
+00:00:40,160 --> 00:00:44,719
+coming from
+
+20
+00:00:41,120 --> 00:00:47,760
+right so it's coming from basically
+
+21
+00:00:44,719 --> 00:00:51,039
+an article i wrote at some point
+
+22
+00:00:47,760 --> 00:00:53,680
+uh which as some of you may know uh
+
+23
+00:00:51,039 --> 00:00:54,160
+as again when i'm not organizing this
+
+24
+00:00:53,680 --> 00:00:57,199
+event
+
+25
+00:00:54,160 --> 00:01:00,160
+i run the consultancy which is called
+
+26
+00:00:57,199 --> 00:01:01,359
+link data orchestration and i'm also a
+
+27
+00:01:00,160 --> 00:01:04,479
+contributor
+
+28
+00:01:01,359 --> 00:01:07,760
+uh for zidinet so
+
+29
+00:01:04,479 --> 00:01:11,119
+we're in my zidinet hut i
+
+30
+00:01:07,760 --> 00:01:13,680
+wrote an article in early 2018
+
+31
+00:01:11,119 --> 00:01:16,320
+which was called the year of the graph
+
+32
+00:01:13,680 --> 00:01:20,880
+and it was you know before the whole
+
+33
+00:01:16,320 --> 00:01:22,880
+hype started and it kind of set the tone
+
+34
+00:01:20,880 --> 00:01:24,960
+so i thought you know this is important
+
+35
+00:01:22,880 --> 00:01:27,759
+enough to have its own home
+
+36
+00:01:24,960 --> 00:01:30,320
+and therefore at some point i created a
+
+37
+00:01:27,759 --> 00:01:32,799
+website called year of the graph
+
+38
+00:01:30,320 --> 00:01:34,079
+which aggregates a number of things so
+
+39
+00:01:32,799 --> 00:01:35,200
+many of the things that i'm going to
+
+40
+00:01:34,079 --> 00:01:38,240
+talk to you about
+
+41
+00:01:35,200 --> 00:01:38,960
+today are featured there as well so
+
+42
+00:01:38,240 --> 00:01:41,200
+since i keep
+
+43
+00:01:38,960 --> 00:01:42,960
+an eye on this technology i thought it's
+
+44
+00:01:41,200 --> 00:01:45,360
+worth sharing
+
+45
+00:01:42,960 --> 00:01:46,880
+findings with the world so i also do a
+
+46
+00:01:45,360 --> 00:01:48,240
+newsletter which is called the gear of
+
+47
+00:01:46,880 --> 00:01:49,759
+the graph which is published every
+
+48
+00:01:48,240 --> 00:01:52,880
+couple of months
+
+49
+00:01:49,759 --> 00:01:54,000
+and i also share these these findings on
+
+50
+00:01:52,880 --> 00:01:55,920
+a daily basis
+
+51
+00:01:54,000 --> 00:01:58,320
+actually on social media so if you want
+
+52
+00:01:55,920 --> 00:01:59,200
+to to keep up with that you can follow
+
+53
+00:01:58,320 --> 00:02:01,040
+me on twitter
+
+54
+00:01:59,200 --> 00:02:02,560
+or you can look up the year of the graph
+
+55
+00:02:01,040 --> 00:02:04,880
+on linkedin
+
+56
+00:02:02,560 --> 00:02:07,600
+and last but not least there is a graph
+
+57
+00:02:04,880 --> 00:02:09,840
+database report but i'm going to
+
+58
+00:02:07,600 --> 00:02:10,720
+share more about that when we get to the
+
+59
+00:02:09,840 --> 00:02:13,840
+part about
+
+60
+00:02:10,720 --> 00:02:17,360
+graph databases so
+
+61
+00:02:13,840 --> 00:02:20,080
+let's see what is graph
+
+62
+00:02:17,360 --> 00:02:21,200
+to begin to begin with the way i think
+
+63
+00:02:20,080 --> 00:02:23,760
+about it
+
+64
+00:02:21,200 --> 00:02:25,120
+it's a number of things so i have
+
+65
+00:02:23,760 --> 00:02:27,760
+divided the graph
+
+66
+00:02:25,120 --> 00:02:28,800
+into four categories graph analytics
+
+67
+00:02:27,760 --> 00:02:31,760
+knowledge graphs
+
+68
+00:02:28,800 --> 00:02:33,040
+graph databases and graph ai and i'm
+
+69
+00:02:31,760 --> 00:02:35,840
+going to refer to them
+
+70
+00:02:33,040 --> 00:02:39,040
+well in in order of appearance let's say
+
+71
+00:02:35,840 --> 00:02:41,040
+this is how i first came to be
+
+72
+00:02:39,040 --> 00:02:42,800
+to be connected with those and i think
+
+73
+00:02:41,040 --> 00:02:44,000
+this may be the case for for other
+
+74
+00:02:42,800 --> 00:02:46,560
+people as well
+
+75
+00:02:44,000 --> 00:02:48,239
+so graph analytics this is actually the
+
+76
+00:02:46,560 --> 00:02:51,680
+oldest part of
+
+77
+00:02:48,239 --> 00:02:55,280
+graph and in it dates back to
+
+78
+00:02:51,680 --> 00:02:58,879
+uh to the 18th century actually
+
+79
+00:02:55,280 --> 00:03:03,360
+so this is when a famous mathematician
+
+80
+00:02:58,879 --> 00:03:06,080
+called euler first came across
+
+81
+00:03:03,360 --> 00:03:07,200
+the problem of trying to model how to go
+
+82
+00:03:06,080 --> 00:03:09,280
+from point to point
+
+83
+00:03:07,200 --> 00:03:11,120
+to point basically this is known as the
+
+84
+00:03:09,280 --> 00:03:13,599
+bridges of kenmixberg problem
+
+85
+00:03:11,120 --> 00:03:15,280
+and there's a direct link from that to
+
+86
+00:03:13,599 --> 00:03:18,319
+modern data science
+
+87
+00:03:15,280 --> 00:03:20,480
+so when we talk about graph analytics we
+
+88
+00:03:18,319 --> 00:03:22,720
+basically talk about a number of
+
+89
+00:03:20,480 --> 00:03:24,560
+algorithms that help us do interesting
+
+90
+00:03:22,720 --> 00:03:28,159
+things with graph
+
+91
+00:03:24,560 --> 00:03:28,959
+so we have search and path filing
+
+92
+00:03:28,159 --> 00:03:32,080
+algorithms
+
+93
+00:03:28,959 --> 00:03:34,319
+search enables us to explore a graph
+
+94
+00:03:32,080 --> 00:03:36,879
+either for general discovery or for
+
+95
+00:03:34,319 --> 00:03:39,360
+explicit certain explicit for something
+
+96
+00:03:36,879 --> 00:03:40,959
+and one example where this may be useful
+
+97
+00:03:39,360 --> 00:03:43,760
+is when you're trying to find
+
+98
+00:03:40,959 --> 00:03:44,400
+neighbors in a network pathfinding on
+
+99
+00:03:43,760 --> 00:03:46,799
+the other hand
+
+100
+00:03:44,400 --> 00:03:47,599
+has to do with exploring routes between
+
+101
+00:03:46,799 --> 00:03:49,519
+nodes and
+
+102
+00:03:47,599 --> 00:03:50,720
+an example of where this is useful is
+
+103
+00:03:49,519 --> 00:03:51,519
+obviously when you're trying to find
+
+104
+00:03:50,720 --> 00:03:54,799
+your way so
+
+105
+00:03:51,519 --> 00:03:58,560
+navigation another interesting
+
+106
+00:03:54,799 --> 00:04:00,640
+class of graph algorithms is centrality
+
+107
+00:03:58,560 --> 00:04:01,599
+we have uh probably the most famous
+
+108
+00:04:00,640 --> 00:04:04,080
+graph algorithm
+
+109
+00:04:01,599 --> 00:04:06,239
+belongs to that category so page rank we
+
+110
+00:04:04,080 --> 00:04:08,799
+also have closeness betweenness and
+
+111
+00:04:06,239 --> 00:04:10,799
+degree algorithms and what we're trying
+
+112
+00:04:08,799 --> 00:04:12,720
+to do with centrality is to understand
+
+113
+00:04:10,799 --> 00:04:14,720
+the roles of particular nodes in the
+
+114
+00:04:12,720 --> 00:04:15,280
+graph and their impact on the network
+
+115
+00:04:14,720 --> 00:04:18,079
+and
+
+116
+00:04:15,280 --> 00:04:19,919
+one example is that we can use this this
+
+117
+00:04:18,079 --> 00:04:21,120
+type of algorithm to find influence and
+
+118
+00:04:19,919 --> 00:04:24,400
+pagerank is actually
+
+119
+00:04:21,120 --> 00:04:24,400
+a very good example of that
+
+120
+00:04:24,560 --> 00:04:28,000
+last and not least the the final
+
+121
+00:04:27,440 --> 00:04:30,320
+category
+
+122
+00:04:28,000 --> 00:04:31,520
+in graph algorithms is community
+
+123
+00:04:30,320 --> 00:04:33,360
+detections
+
+124
+00:04:31,520 --> 00:04:34,880
+community detection this class of
+
+125
+00:04:33,360 --> 00:04:37,199
+falcons was
+
+126
+00:04:34,880 --> 00:04:39,040
+to a large extent at least derived to
+
+127
+00:04:37,199 --> 00:04:42,080
+study social networks
+
+128
+00:04:39,040 --> 00:04:42,400
+so hence the name as well it has to do
+
+129
+00:04:42,080 --> 00:04:45,120
+with
+
+130
+00:04:42,400 --> 00:04:46,240
+identifying related sets to reveal
+
+131
+00:04:45,120 --> 00:04:49,440
+clusters of nodes
+
+132
+00:04:46,240 --> 00:04:51,520
+isolated groups and network structure so
+
+133
+00:04:49,440 --> 00:04:54,000
+in this class of algorithm we have
+
+134
+00:04:51,520 --> 00:04:56,560
+algorithms such as
+
+135
+00:04:54,000 --> 00:04:57,040
+components and connected components le
+
+136
+00:04:56,560 --> 00:04:58,960
+ven
+
+137
+00:04:57,040 --> 00:05:00,639
+and so on and so forth different
+
+138
+00:04:58,960 --> 00:05:03,039
+variations uh
+
+139
+00:05:00,639 --> 00:05:04,479
+a typical example and a very common one
+
+140
+00:05:03,039 --> 00:05:06,639
+of what these algorithms
+
+141
+00:05:04,479 --> 00:05:09,360
+are used for are what we call fraud
+
+142
+00:05:06,639 --> 00:05:11,759
+rings or fraud analysis so
+
+143
+00:05:09,360 --> 00:05:13,440
+trying to identify using the connections
+
+144
+00:05:11,759 --> 00:05:17,440
+in networks to identify
+
+145
+00:05:13,440 --> 00:05:21,039
+possible collusion and
+
+146
+00:05:17,440 --> 00:05:22,560
+kind of well known this use case on
+
+147
+00:05:21,039 --> 00:05:25,360
+graph analytics
+
+148
+00:05:22,560 --> 00:05:26,320
+astrozenica but actually lots of pharma
+
+149
+00:05:25,360 --> 00:05:28,800
+companies
+
+150
+00:05:26,320 --> 00:05:29,919
+use graph analytics for for drug
+
+151
+00:05:28,800 --> 00:05:33,919
+discovery which is
+
+152
+00:05:29,919 --> 00:05:37,199
+actually a very timely topic as well
+
+153
+00:05:33,919 --> 00:05:38,320
+so with that we come to the second class
+
+154
+00:05:37,199 --> 00:05:41,440
+of
+
+155
+00:05:38,320 --> 00:05:43,840
+graphs so knowledge graphs basically so
+
+156
+00:05:41,440 --> 00:05:45,600
+if you attended the the previous talk
+
+157
+00:05:43,840 --> 00:05:46,000
+which was about the semantic web you
+
+158
+00:05:45,600 --> 00:05:48,639
+know
+
+159
+00:05:46,000 --> 00:05:49,840
+that there is a direct link going from
+
+160
+00:05:48,639 --> 00:05:52,960
+tim berners-lee
+
+161
+00:05:49,840 --> 00:05:55,600
+to google and beyond so
+
+162
+00:05:52,960 --> 00:05:56,639
+we referred earlier to the semantic web
+
+163
+00:05:55,600 --> 00:06:00,240
+stack
+
+164
+00:05:56,639 --> 00:06:03,360
+and part of that actually is
+
+165
+00:06:00,240 --> 00:06:06,800
+is very much connected to graphs
+
+166
+00:06:03,360 --> 00:06:09,680
+so google it has a lot to do
+
+167
+00:06:06,800 --> 00:06:10,800
+with this kind of renesence we see in
+
+168
+00:06:09,680 --> 00:06:13,360
+graph today
+
+169
+00:06:10,800 --> 00:06:14,960
+so obviously you know the web is a graph
+
+170
+00:06:13,360 --> 00:06:17,120
+as well because we have uh
+
+171
+00:06:14,960 --> 00:06:19,280
+documents and links and you know this
+
+172
+00:06:17,120 --> 00:06:20,400
+it's kind of natural way to model that
+
+173
+00:06:19,280 --> 00:06:23,039
+and google
+
+174
+00:06:20,400 --> 00:06:23,759
+itself obviously benefited a lot by
+
+175
+00:06:23,039 --> 00:06:25,919
+investing
+
+176
+00:06:23,759 --> 00:06:28,800
+in a graph algorithm called patreon
+
+177
+00:06:25,919 --> 00:06:31,919
+which is what gave it itself basically
+
+178
+00:06:28,800 --> 00:06:33,440
+however there came a point where even
+
+179
+00:06:31,919 --> 00:06:34,319
+google realized that if you want to
+
+180
+00:06:33,440 --> 00:06:37,840
+categorize
+
+181
+00:06:34,319 --> 00:06:40,400
+content on web scale you need more than
+
+182
+00:06:37,840 --> 00:06:42,639
+clever albums you need metadata and you
+
+183
+00:06:40,400 --> 00:06:43,120
+need semantics and this is the point
+
+184
+00:06:42,639 --> 00:06:45,199
+where
+
+185
+00:06:43,120 --> 00:06:46,319
+google actually adopted some underwear
+
+186
+00:06:45,199 --> 00:06:48,880
+technology
+
+187
+00:06:46,319 --> 00:06:51,199
+and coined the term knowledge graph and
+
+188
+00:06:48,880 --> 00:06:54,240
+this was a kind of tipping point because
+
+189
+00:06:51,199 --> 00:06:56,479
+it basically signified uh the
+
+190
+00:06:54,240 --> 00:06:58,000
+wider interest uh in this kind of
+
+191
+00:06:56,479 --> 00:07:00,319
+technology
+
+192
+00:06:58,000 --> 00:07:02,479
+uh the thing is that and you know the
+
+193
+00:07:00,319 --> 00:07:05,120
+most famous example that
+
+194
+00:07:02,479 --> 00:07:06,800
+all pretty much everyone would be
+
+195
+00:07:05,120 --> 00:07:07,680
+familiar with or at least in this
+
+196
+00:07:06,800 --> 00:07:10,560
+audience is
+
+197
+00:07:07,680 --> 00:07:11,919
+schema.org and this is basically
+
+198
+00:07:10,560 --> 00:07:15,199
+google's and
+
+199
+00:07:11,919 --> 00:07:17,360
+other it's not just google it's other
+
+200
+00:07:15,199 --> 00:07:19,759
+search engine vendors that collaborate
+
+201
+00:07:17,360 --> 00:07:22,240
+in that but it's basically a kind of
+
+202
+00:07:19,759 --> 00:07:22,960
+schema for the web which enables a
+
+203
+00:07:22,240 --> 00:07:24,319
+number of
+
+204
+00:07:22,960 --> 00:07:26,639
+you know very interesting things to
+
+205
+00:07:24,319 --> 00:07:29,840
+happen it picks up markup
+
+206
+00:07:26,639 --> 00:07:31,440
+it enables semantic search engine
+
+207
+00:07:29,840 --> 00:07:34,240
+optimization
+
+208
+00:07:31,440 --> 00:07:34,880
+uh and basically it's uh what feeds
+
+209
+00:07:34,240 --> 00:07:37,680
+google's
+
+210
+00:07:34,880 --> 00:07:39,360
+uh big knowledge graph and uh it's also
+
+211
+00:07:37,680 --> 00:07:41,759
+i suddenly as it also add that
+
+212
+00:07:39,360 --> 00:07:43,919
+it's the source of some confusion
+
+213
+00:07:41,759 --> 00:07:45,120
+because uh to many people the fact that
+
+214
+00:07:43,919 --> 00:07:47,120
+google uses that
+
+215
+00:07:45,120 --> 00:07:49,280
+and it actually names this kind of
+
+216
+00:07:47,120 --> 00:07:50,080
+information panels that we get to see on
+
+217
+00:07:49,280 --> 00:07:52,160
+our
+
+218
+00:07:50,080 --> 00:07:53,680
+results page as knowledge graphs makes
+
+219
+00:07:52,160 --> 00:07:55,199
+these people think that this is what the
+
+220
+00:07:53,680 --> 00:07:58,319
+knowledge graph is about
+
+221
+00:07:55,199 --> 00:08:00,080
+technically this is actually a result
+
+222
+00:07:58,319 --> 00:08:01,360
+which is based on all this graph but
+
+223
+00:08:00,080 --> 00:08:04,800
+it's not a knowledge graph
+
+224
+00:08:01,360 --> 00:08:06,400
+per se regardless besides google
+
+225
+00:08:04,800 --> 00:08:08,319
+pretty much everyone seems to have a
+
+226
+00:08:06,400 --> 00:08:10,960
+knowledge graph these days and i mean
+
+227
+00:08:08,319 --> 00:08:13,599
+from morgan stanley to the average user
+
+228
+00:08:10,960 --> 00:08:15,199
+and just as a side note here personal
+
+229
+00:08:13,599 --> 00:08:19,039
+knowledge graphs is a very
+
+230
+00:08:15,199 --> 00:08:20,800
+very interesting area and something that
+
+231
+00:08:19,039 --> 00:08:22,319
+you will be hearing more about in the
+
+232
+00:08:20,800 --> 00:08:24,639
+near future
+
+233
+00:08:22,319 --> 00:08:26,080
+so let's let's define semantics a little
+
+234
+00:08:24,639 --> 00:08:28,319
+bit because knowledge graphs are
+
+235
+00:08:26,080 --> 00:08:31,520
+actually about semantics so
+
+236
+00:08:28,319 --> 00:08:33,360
+uh when we start talking about semantics
+
+237
+00:08:31,520 --> 00:08:35,919
+there are different layers that we can
+
+238
+00:08:33,360 --> 00:08:37,839
+do that uh the most fundamental
+
+239
+00:08:35,919 --> 00:08:40,000
+level is what we call the control
+
+240
+00:08:37,839 --> 00:08:42,399
+vocabulary so basically
+
+241
+00:08:40,000 --> 00:08:44,080
+a number of terms that around which
+
+242
+00:08:42,399 --> 00:08:46,720
+there is some consensus this is the
+
+243
+00:08:44,080 --> 00:08:48,959
+easiest way to think about it so
+
+244
+00:08:46,720 --> 00:08:50,720
+as a tag set is also a controlled
+
+245
+00:08:48,959 --> 00:08:52,080
+vocabulary for example as long as we
+
+246
+00:08:50,720 --> 00:08:54,240
+agree that you know these are the terms
+
+247
+00:08:52,080 --> 00:08:56,720
+that we use and this is how we use them
+
+248
+00:08:54,240 --> 00:08:57,839
+it's a control vocabulary the next level
+
+249
+00:08:56,720 --> 00:09:00,240
+is a taxonomy
+
+250
+00:08:57,839 --> 00:09:01,360
+which is basically a controlled
+
+251
+00:09:00,240 --> 00:09:04,000
+vocabulary plus
+
+252
+00:09:01,360 --> 00:09:05,200
+hierarchy so you can have layers
+
+253
+00:09:04,000 --> 00:09:07,519
+basically
+
+254
+00:09:05,200 --> 00:09:09,680
+and then the next level is an ontology
+
+255
+00:09:07,519 --> 00:09:10,640
+which is a taxonomy so control
+
+256
+00:09:09,680 --> 00:09:12,720
+vocabulary
+
+257
+00:09:10,640 --> 00:09:15,279
+plus hierarchy plus in the case of
+
+258
+00:09:12,720 --> 00:09:17,279
+ontology other types of relationships so
+
+259
+00:09:15,279 --> 00:09:20,240
+not just hierarchical relationships but
+
+260
+00:09:17,279 --> 00:09:22,560
+arbitrary relationships basically plus
+
+261
+00:09:20,240 --> 00:09:23,600
+logic maybe but that's a whole different
+
+262
+00:09:22,560 --> 00:09:26,640
+area
+
+263
+00:09:23,600 --> 00:09:27,279
+and finally enormous graph as we also
+
+264
+00:09:26,640 --> 00:09:29,600
+mentioned
+
+265
+00:09:27,279 --> 00:09:31,519
+in the previous talk the distinction
+
+266
+00:09:29,600 --> 00:09:32,080
+between an ontology and knowledge graph
+
+267
+00:09:31,519 --> 00:09:34,880
+is not
+
+268
+00:09:32,080 --> 00:09:36,800
+entirely clear but if there's a simple
+
+269
+00:09:34,880 --> 00:09:39,920
+way to think about it you can think of
+
+270
+00:09:36,800 --> 00:09:41,360
+of it as the ontology being the schema
+
+271
+00:09:39,920 --> 00:09:43,279
+and the knowledge graph being the
+
+272
+00:09:41,360 --> 00:09:45,120
+populated schema so schema
+
+273
+00:09:43,279 --> 00:09:46,800
+plus in distance data basically it's
+
+274
+00:09:45,120 --> 00:09:48,720
+very simplistic but
+
+275
+00:09:46,800 --> 00:09:50,720
+that's the simplest way you can think
+
+276
+00:09:48,720 --> 00:09:53,600
+about it so to wrap up with
+
+277
+00:09:50,720 --> 00:09:55,120
+knowledge graphs um and knowledge graph
+
+278
+00:09:53,600 --> 00:09:58,560
+i would like to point out
+
+279
+00:09:55,120 --> 00:10:01,760
+is basically a way of doing ai
+
+280
+00:09:58,560 --> 00:10:04,640
+george i'm sorry to briefly interrupt
+
+281
+00:10:01,760 --> 00:10:06,880
+members of the audience say that they we
+
+282
+00:10:04,640 --> 00:10:09,760
+haven't moved the slides that the slides
+
+283
+00:10:06,880 --> 00:10:11,360
+the first slide is still on the screen
+
+284
+00:10:09,760 --> 00:10:14,959
+so i don't know if you're okay
+
+285
+00:10:11,360 --> 00:10:16,800
+okay like to great
+
+286
+00:10:14,959 --> 00:10:18,240
+moving on please let us know if
+
+287
+00:10:16,800 --> 00:10:19,680
+everything is okay now
+
+288
+00:10:18,240 --> 00:10:22,320
+and please go on short from the
+
+289
+00:10:19,680 --> 00:10:24,160
+direction yeah no thank you
+
+290
+00:10:22,320 --> 00:10:25,680
+well uh i would like to take the
+
+291
+00:10:24,160 --> 00:10:26,399
+opportunity by the way to let you know
+
+292
+00:10:25,680 --> 00:10:28,560
+that all
+
+293
+00:10:26,399 --> 00:10:29,920
+the slide deck will be shared after the
+
+294
+00:10:28,560 --> 00:10:32,160
+uh after the talk show
+
+295
+00:10:29,920 --> 00:10:34,000
+no worries i'm sorry you missed part of
+
+296
+00:10:32,160 --> 00:10:36,640
+it but it's okay hopefully
+
+297
+00:10:34,000 --> 00:10:39,040
+my narrative kind of made up for it uh
+
+298
+00:10:36,640 --> 00:10:40,959
+anyways i was just uh talking about how
+
+299
+00:10:39,040 --> 00:10:42,240
+a knowledge graph which is as we
+
+300
+00:10:40,959 --> 00:10:44,880
+mentioned uh
+
+301
+00:10:42,240 --> 00:10:46,240
+uh very much connected to an ontology is
+
+302
+00:10:44,880 --> 00:10:49,120
+actually a way of doing
+
+303
+00:10:46,240 --> 00:10:51,120
+ai and to quote here mark hall which he
+
+304
+00:10:49,120 --> 00:10:54,640
+was the executive director of
+
+305
+00:10:51,120 --> 00:10:56,320
+morgan stanley uh marcol said that well
+
+306
+00:10:54,640 --> 00:10:58,160
+traditional data modeling has
+
+307
+00:10:56,320 --> 00:11:00,160
+concerned itself primarily with
+
+308
+00:10:58,160 --> 00:11:02,240
+capturing and retrieving data
+
+309
+00:11:00,160 --> 00:11:04,000
+ontology on the other hand conserve
+
+310
+00:11:02,240 --> 00:11:06,480
+concerns itself with a shared
+
+311
+00:11:04,000 --> 00:11:08,480
+understanding of what that data means so
+
+312
+00:11:06,480 --> 00:11:11,120
+the point that marco wanted to make was
+
+313
+00:11:08,480 --> 00:11:12,560
+that before embarking on your ai journey
+
+314
+00:11:11,120 --> 00:11:15,040
+it's critical to ensure that you
+
+315
+00:11:12,560 --> 00:11:16,880
+understand and document your domain
+
+316
+00:11:15,040 --> 00:11:18,399
+there's more to that as we'll see when
+
+317
+00:11:16,880 --> 00:11:20,399
+you get to the part about
+
+318
+00:11:18,399 --> 00:11:21,680
+graph ai but this is something to to
+
+319
+00:11:20,399 --> 00:11:25,040
+keep in mind
+
+320
+00:11:21,680 --> 00:11:27,920
+and to give you an example of a
+
+321
+00:11:25,040 --> 00:11:28,720
+well-known use case for knowledge graphs
+
+322
+00:11:27,920 --> 00:11:30,880
+and to stick to
+
+323
+00:11:28,720 --> 00:11:31,920
+what we have presented here in connect
+
+324
+00:11:30,880 --> 00:11:35,040
+data london
+
+325
+00:11:31,920 --> 00:11:36,560
+zalando who's a leading retailer in the
+
+326
+00:11:35,040 --> 00:11:38,800
+german-speaking countries
+
+327
+00:11:36,560 --> 00:11:39,839
+with millions and millions of active
+
+328
+00:11:38,800 --> 00:11:42,640
+daily users
+
+329
+00:11:39,839 --> 00:11:44,480
+they are using an anthology in the back
+
+330
+00:11:42,640 --> 00:11:48,240
+end to improve coverage
+
+331
+00:11:44,480 --> 00:11:48,240
+response time and the bottom line
+
+332
+00:11:48,959 --> 00:11:53,040
+so getting to the next category of where
+
+333
+00:11:51,760 --> 00:11:55,519
+graphs are used
+
+334
+00:11:53,040 --> 00:11:57,920
+and the one that have dedicated special
+
+335
+00:11:55,519 --> 00:12:01,279
+attention to graph databases which
+
+336
+00:11:57,920 --> 00:12:03,600
+are about leveraging connections so
+
+337
+00:12:01,279 --> 00:12:05,200
+if you can see the slides hopefully you
+
+338
+00:12:03,600 --> 00:12:07,279
+can see them now
+
+339
+00:12:05,200 --> 00:12:08,839
+what you're seeing here is a kind of
+
+340
+00:12:07,279 --> 00:12:12,560
+visual to
+
+341
+00:12:08,839 --> 00:12:16,079
+classify graph databases along different
+
+342
+00:12:12,560 --> 00:12:18,320
+dimensions and there's different ways of
+
+343
+00:12:16,079 --> 00:12:20,240
+thinking about graph databases and i'm
+
+344
+00:12:18,320 --> 00:12:23,200
+going to refer to some of them
+
+345
+00:12:20,240 --> 00:12:24,000
+but before i do i wanted to give a
+
+346
+00:12:23,200 --> 00:12:25,920
+little bit of
+
+347
+00:12:24,000 --> 00:12:27,040
+warning so when it comes to graph
+
+348
+00:12:25,920 --> 00:12:29,440
+databases
+
+349
+00:12:27,040 --> 00:12:30,079
+mind the hype what i mean by that is
+
+350
+00:12:29,440 --> 00:12:32,720
+that
+
+351
+00:12:30,079 --> 00:12:35,440
+well if you go to database engines for
+
+352
+00:12:32,720 --> 00:12:38,480
+example you can see that you know
+
+353
+00:12:35,440 --> 00:12:40,160
+it's the most trending database category
+
+354
+00:12:38,480 --> 00:12:41,600
+has been the most trending database
+
+355
+00:12:40,160 --> 00:12:44,240
+category for the last
+
+356
+00:12:41,600 --> 00:12:45,279
+couple of years at least and compared to
+
+357
+00:12:44,240 --> 00:12:48,160
+other categories
+
+358
+00:12:45,279 --> 00:12:49,360
+it's you know it's it's very clearly on
+
+359
+00:12:48,160 --> 00:12:52,000
+the on the rising
+
+360
+00:12:49,360 --> 00:12:52,959
+on the rising curve however and then
+
+361
+00:12:52,000 --> 00:12:55,680
+there's very good
+
+362
+00:12:52,959 --> 00:12:57,200
+reasons for that which basically have to
+
+363
+00:12:55,680 --> 00:13:00,240
+do with you know the fact that
+
+364
+00:12:57,200 --> 00:13:02,800
+as as your data grow in
+
+365
+00:13:00,240 --> 00:13:03,839
+volume the volume starts in a way
+
+366
+00:13:02,800 --> 00:13:05,760
+becoming less
+
+367
+00:13:03,839 --> 00:13:08,320
+important and what becomes more
+
+368
+00:13:05,760 --> 00:13:09,200
+important is connections and how your
+
+369
+00:13:08,320 --> 00:13:11,440
+data
+
+370
+00:13:09,200 --> 00:13:12,480
+uh is connected and if you want to
+
+371
+00:13:11,440 --> 00:13:16,000
+explore that
+
+372
+00:13:12,480 --> 00:13:17,440
+a graph database is the the the biggest
+
+373
+00:13:16,000 --> 00:13:19,600
+the the
+
+374
+00:13:17,440 --> 00:13:21,839
+most appropriate way to do that that
+
+375
+00:13:19,600 --> 00:13:22,240
+said however it doesn't mean that you
+
+376
+00:13:21,839 --> 00:13:23,680
+know
+
+377
+00:13:22,240 --> 00:13:25,839
+you should approach you should use a
+
+378
+00:13:23,680 --> 00:13:27,600
+graph database just because everyone
+
+379
+00:13:25,839 --> 00:13:29,760
+else is or regardless of
+
+380
+00:13:27,600 --> 00:13:31,839
+what your what the problem you're trying
+
+381
+00:13:29,760 --> 00:13:34,480
+to solve is basically and a very
+
+382
+00:13:31,839 --> 00:13:37,040
+good way of putting that has been framed
+
+383
+00:13:34,480 --> 00:13:39,360
+by denise cosnell in in her book
+
+384
+00:13:37,040 --> 00:13:40,399
+the practitioner's guide to graph data
+
+385
+00:13:39,360 --> 00:13:42,560
+when she
+
+386
+00:13:40,399 --> 00:13:43,920
+basically said well does your problem
+
+387
+00:13:42,560 --> 00:13:46,079
+need graph data
+
+388
+00:13:43,920 --> 00:13:47,120
+if yes well the answer is clear there
+
+389
+00:13:46,079 --> 00:13:49,279
+you go
+
+390
+00:13:47,120 --> 00:13:50,800
+start you know go get a graph database
+
+391
+00:13:49,279 --> 00:13:52,000
+and you know start start thinking in
+
+392
+00:13:50,800 --> 00:13:54,880
+terms of graph
+
+393
+00:13:52,000 --> 00:13:57,040
+and the key question to ask is do
+
+394
+00:13:54,880 --> 00:13:57,519
+relationships within and across your
+
+395
+00:13:57,040 --> 00:14:00,320
+data
+
+396
+00:13:57,519 --> 00:14:03,120
+help you understand your problem again
+
+397
+00:14:00,320 --> 00:14:05,600
+if the answer is yes fine you know
+
+398
+00:14:03,120 --> 00:14:07,040
+go go ahead the the only question you
+
+399
+00:14:05,600 --> 00:14:07,600
+had to answer was a very big and
+
+400
+00:14:07,040 --> 00:14:09,680
+specific
+
+401
+00:14:07,600 --> 00:14:10,639
+and important one actually but that's a
+
+402
+00:14:09,680 --> 00:14:12,480
+different thing is
+
+403
+00:14:10,639 --> 00:14:14,480
+which database graph database is right
+
+404
+00:14:12,480 --> 00:14:16,320
+for you but if not
+
+405
+00:14:14,480 --> 00:14:18,959
+you shouldn't be you know blindly
+
+406
+00:14:16,320 --> 00:14:18,959
+adopting it
+
+407
+00:14:19,040 --> 00:14:23,279
+so i briefly refer to the question of
+
+408
+00:14:21,440 --> 00:14:25,120
+you know
+
+409
+00:14:23,279 --> 00:14:27,440
+how do you choose a graph database and
+
+410
+00:14:25,120 --> 00:14:29,440
+actually what is a graph database and
+
+411
+00:14:27,440 --> 00:14:30,000
+that may seem like a trivial question to
+
+412
+00:14:29,440 --> 00:14:32,079
+ask but
+
+413
+00:14:30,000 --> 00:14:33,519
+it's actually not and the reason it's
+
+414
+00:14:32,079 --> 00:14:36,480
+not is well
+
+415
+00:14:33,519 --> 00:14:37,279
+precisely because of the hype let's just
+
+416
+00:14:36,480 --> 00:14:40,720
+say that
+
+417
+00:14:37,279 --> 00:14:42,000
+some database vendors have been overly
+
+418
+00:14:40,720 --> 00:14:44,720
+eager to present
+
+419
+00:14:42,000 --> 00:14:45,600
+their products as being a graph database
+
+420
+00:14:44,720 --> 00:14:48,959
+and
+
+421
+00:14:45,600 --> 00:14:50,560
+in my humble opinion that's not always
+
+422
+00:14:48,959 --> 00:14:52,399
+the case so
+
+423
+00:14:50,560 --> 00:14:54,480
+we referred the first category we
+
+424
+00:14:52,399 --> 00:14:56,560
+examined was graph analytics and graph
+
+425
+00:14:54,480 --> 00:14:57,519
+analytics in and by themselves are very
+
+426
+00:14:56,560 --> 00:15:00,480
+very useful
+
+427
+00:14:57,519 --> 00:15:01,760
+however if you take you know any any
+
+428
+00:15:00,480 --> 00:15:03,839
+database and add
+
+429
+00:15:01,760 --> 00:15:05,680
+an analytics layer on top of that does
+
+430
+00:15:03,839 --> 00:15:09,040
+that make it a graph database
+
+431
+00:15:05,680 --> 00:15:11,920
+well no it doesn't because in order
+
+432
+00:15:09,040 --> 00:15:13,760
+to call a database a graph database it
+
+433
+00:15:11,920 --> 00:15:15,120
+means that it should have a fully
+
+434
+00:15:13,760 --> 00:15:16,560
+fledged graph api
+
+435
+00:15:15,120 --> 00:15:18,800
+in other words you should be able to
+
+436
+00:15:16,560 --> 00:15:21,839
+both write and read
+
+437
+00:15:18,800 --> 00:15:24,399
+graph data if you write relational data
+
+438
+00:15:21,839 --> 00:15:26,000
+and then you use some kind of analytics
+
+439
+00:15:24,399 --> 00:15:29,279
+framework to analyze that data
+
+440
+00:15:26,000 --> 00:15:30,959
+well that's a relational database and a
+
+441
+00:15:29,279 --> 00:15:32,399
+graph analytics framework it's not a
+
+442
+00:15:30,959 --> 00:15:35,519
+graph database
+
+443
+00:15:32,399 --> 00:15:37,920
+it's quite simple actually
+
+444
+00:15:35,519 --> 00:15:38,560
+some other important distinction are is
+
+445
+00:15:37,920 --> 00:15:41,440
+between
+
+446
+00:15:38,560 --> 00:15:43,600
+operational and analytical databases and
+
+447
+00:15:41,440 --> 00:15:44,800
+you know some graph databases are better
+
+448
+00:15:43,600 --> 00:15:46,959
+than another in
+
+449
+00:15:44,800 --> 00:15:49,279
+others in in these departments as you
+
+450
+00:15:46,959 --> 00:15:51,040
+know happens with basically any kind of
+
+451
+00:15:49,279 --> 00:15:53,440
+database
+
+452
+00:15:51,040 --> 00:15:54,240
+and another useful distinction to make
+
+453
+00:15:53,440 --> 00:15:56,959
+is well
+
+454
+00:15:54,240 --> 00:15:58,160
+native versus non-native database again
+
+455
+00:15:56,959 --> 00:16:00,639
+this is a quite
+
+456
+00:15:58,160 --> 00:16:02,160
+nuanced topic but let's just say you
+
+457
+00:16:00,639 --> 00:16:05,040
+know broadly speaking that
+
+458
+00:16:02,160 --> 00:16:06,720
+some databases are designed and built
+
+459
+00:16:05,040 --> 00:16:09,279
+from the ground up to work
+
+460
+00:16:06,720 --> 00:16:10,160
+purely as a graph database and you can
+
+461
+00:16:09,279 --> 00:16:12,639
+you can call them
+
+462
+00:16:10,160 --> 00:16:13,680
+native graph databases others on the
+
+463
+00:16:12,639 --> 00:16:16,800
+other hand
+
+464
+00:16:13,680 --> 00:16:19,759
+are what we called multi-modal databases
+
+465
+00:16:16,800 --> 00:16:20,880
+so they may support a relational or
+
+466
+00:16:19,759 --> 00:16:23,440
+document or
+
+467
+00:16:20,880 --> 00:16:24,480
+columnar or whatever other format plus
+
+468
+00:16:23,440 --> 00:16:28,079
+graph
+
+469
+00:16:24,480 --> 00:16:28,880
+so these are not native graph databases
+
+470
+00:16:28,079 --> 00:16:30,959
+in that sense
+
+471
+00:16:28,880 --> 00:16:33,120
+that doesn't make them you know better
+
+472
+00:16:30,959 --> 00:16:34,399
+or worse it just makes them different
+
+473
+00:16:33,120 --> 00:16:36,240
+and this is a distinction
+
+474
+00:16:34,399 --> 00:16:38,800
+you should have in mind if you go out in
+
+475
+00:16:36,240 --> 00:16:42,240
+the market for graph database
+
+476
+00:16:38,800 --> 00:16:44,160
+another very useful distinction to make
+
+477
+00:16:42,240 --> 00:16:47,360
+when we talk about graph databases
+
+478
+00:16:44,160 --> 00:16:50,160
+is their data model so
+
+479
+00:16:47,360 --> 00:16:51,360
+we have two main camps let's say there
+
+480
+00:16:50,160 --> 00:16:54,959
+on the one hand we have
+
+481
+00:16:51,360 --> 00:16:57,360
+property graph databases which are
+
+482
+00:16:54,959 --> 00:16:58,079
+let's put it again simplistically
+
+483
+00:16:57,360 --> 00:17:01,440
+probably
+
+484
+00:16:58,079 --> 00:17:04,079
+easier to work with but they
+
+485
+00:17:01,440 --> 00:17:05,520
+also have their own limitations like
+
+486
+00:17:04,079 --> 00:17:08,079
+lack of standardization
+
+487
+00:17:05,520 --> 00:17:09,120
+for example even though i have to say in
+
+488
+00:17:08,079 --> 00:17:11,039
+advance that
+
+489
+00:17:09,120 --> 00:17:12,240
+these two camps are getting closer and
+
+490
+00:17:11,039 --> 00:17:14,400
+closer these days and
+
+491
+00:17:12,240 --> 00:17:15,679
+actually standardization is being
+
+492
+00:17:14,400 --> 00:17:17,360
+pursued and
+
+493
+00:17:15,679 --> 00:17:19,679
+hopefully we'll see more of that in the
+
+494
+00:17:17,360 --> 00:17:22,319
+future however
+
+495
+00:17:19,679 --> 00:17:24,400
+that said property graph databases
+
+496
+00:17:22,319 --> 00:17:25,839
+generally do better in operational
+
+497
+00:17:24,400 --> 00:17:28,880
+application
+
+498
+00:17:25,839 --> 00:17:30,080
+applications graph analytics and ai a
+
+499
+00:17:28,880 --> 00:17:33,520
+certain type of ai
+
+500
+00:17:30,080 --> 00:17:36,000
+because this is again a broad category
+
+501
+00:17:33,520 --> 00:17:36,640
+rdf graph databases on the other hand
+
+502
+00:17:36,000 --> 00:17:39,840
+rdf
+
+503
+00:17:36,640 --> 00:17:41,120
+is the other data model we have in what
+
+504
+00:17:39,840 --> 00:17:43,120
+modeling graphs
+
+505
+00:17:41,120 --> 00:17:44,160
+are typically do better in data
+
+506
+00:17:43,120 --> 00:17:46,960
+integration
+
+507
+00:17:44,160 --> 00:17:49,120
+knowledge graph scenarios and ai i'll
+
+508
+00:17:46,960 --> 00:17:53,200
+bite a different kind of ai so
+
+509
+00:17:49,120 --> 00:17:55,520
+more the symbolic type while
+
+510
+00:17:53,200 --> 00:17:57,360
+property graph databases do a little bit
+
+511
+00:17:55,520 --> 00:17:59,360
+better usually in machine learning
+
+512
+00:17:57,360 --> 00:18:01,679
+scenarios
+
+513
+00:17:59,360 --> 00:18:02,720
+so to wrap up again this category with
+
+514
+00:18:01,679 --> 00:18:06,559
+an example of
+
+515
+00:18:02,720 --> 00:18:09,919
+a graph database in use by a very
+
+516
+00:18:06,559 --> 00:18:11,200
+well-known client we have telia which is
+
+517
+00:18:09,919 --> 00:18:13,760
+the leading
+
+518
+00:18:11,200 --> 00:18:14,320
+telecom company in the nordics which
+
+519
+00:18:13,760 --> 00:18:16,160
+more
+
+520
+00:18:14,320 --> 00:18:17,840
+which serves more than one and a half
+
+521
+00:18:16,160 --> 00:18:19,679
+million homes and
+
+522
+00:18:17,840 --> 00:18:23,840
+does have a real-time processing
+
+523
+00:18:19,679 --> 00:18:27,039
+application based on a graph database
+
+524
+00:18:23,840 --> 00:18:30,880
+and last but not least we have graph ai
+
+525
+00:18:27,039 --> 00:18:31,440
+so this is in part what has inspired me
+
+526
+00:18:30,880 --> 00:18:33,200
+to
+
+527
+00:18:31,440 --> 00:18:35,760
+call graph the future of the future
+
+528
+00:18:33,200 --> 00:18:36,400
+since people say that ai is the future
+
+529
+00:18:35,760 --> 00:18:39,600
+well
+
+530
+00:18:36,400 --> 00:18:43,039
+graph is in some ways the future
+
+531
+00:18:39,600 --> 00:18:46,320
+of ai or at least this kind of machine
+
+532
+00:18:43,039 --> 00:18:48,320
+learning based ai that most people
+
+533
+00:18:46,320 --> 00:18:49,840
+actually mean when they refer to ai
+
+534
+00:18:48,320 --> 00:18:52,320
+today so you could
+
+535
+00:18:49,840 --> 00:18:55,600
+you know by induction say that graph is
+
+536
+00:18:52,320 --> 00:18:58,320
+the future of the future
+
+537
+00:18:55,600 --> 00:18:59,520
+so there's different ways that this
+
+538
+00:18:58,320 --> 00:19:03,280
+interplay between
+
+539
+00:18:59,520 --> 00:19:06,640
+graph and ai manifests itself so
+
+540
+00:19:03,280 --> 00:19:08,640
+the first way is by this two-way
+
+541
+00:19:06,640 --> 00:19:10,000
+connection between graph analytics and
+
+542
+00:19:08,640 --> 00:19:12,880
+machine learning
+
+543
+00:19:10,000 --> 00:19:13,440
+so when we have graph analytics we can
+
+544
+00:19:12,880 --> 00:19:17,039
+compute
+
+545
+00:19:13,440 --> 00:19:20,160
+certain graph metrics which which may be
+
+546
+00:19:17,039 --> 00:19:21,679
+added to machine learning models to
+
+547
+00:19:20,160 --> 00:19:24,000
+build to help us build
+
+548
+00:19:21,679 --> 00:19:26,320
+machine learning predictive models using
+
+549
+00:19:24,000 --> 00:19:29,039
+metrics based on graph analytics
+
+550
+00:19:26,320 --> 00:19:31,200
+which is you know basically adding extra
+
+551
+00:19:29,039 --> 00:19:33,600
+features to your machine learning model
+
+552
+00:19:31,200 --> 00:19:35,280
+this can also work both ways however so
+
+553
+00:19:33,600 --> 00:19:37,520
+when you have
+
+554
+00:19:35,280 --> 00:19:39,280
+when we have built a model and use it to
+
+555
+00:19:37,520 --> 00:19:42,160
+score or classify data
+
+556
+00:19:39,280 --> 00:19:43,440
+you can take that data and add it to a
+
+557
+00:19:42,160 --> 00:19:45,280
+graph
+
+558
+00:19:43,440 --> 00:19:46,960
+whether it's your original graph or some
+
+559
+00:19:45,280 --> 00:19:49,200
+new graph that you create
+
+560
+00:19:46,960 --> 00:19:50,960
+so you see how this this interplay
+
+561
+00:19:49,200 --> 00:19:52,080
+between these approaches how graph
+
+562
+00:19:50,960 --> 00:19:55,600
+analytics feeds
+
+563
+00:19:52,080 --> 00:19:55,600
+machine learning and vice versa
+
+564
+00:19:56,000 --> 00:20:02,640
+another interesting point that graph
+
+565
+00:19:59,600 --> 00:20:05,360
+cuts across ai is
+
+566
+00:20:02,640 --> 00:20:06,559
+in terms of neural networks so this is
+
+567
+00:20:05,360 --> 00:20:09,600
+an area which is seeing
+
+568
+00:20:06,559 --> 00:20:11,600
+very very big growth and research
+
+569
+00:20:09,600 --> 00:20:14,080
+breakthroughs in the last years
+
+570
+00:20:11,600 --> 00:20:15,120
+graph neural networks which are models
+
+571
+00:20:14,080 --> 00:20:18,080
+that capture
+
+572
+00:20:15,120 --> 00:20:18,720
+dependence of graphs via methods passing
+
+573
+00:20:18,080 --> 00:20:22,000
+between
+
+574
+00:20:18,720 --> 00:20:22,559
+nodes of the graph so the difference
+
+575
+00:20:22,000 --> 00:20:24,320
+between
+
+576
+00:20:22,559 --> 00:20:25,919
+graph neural networks and standard
+
+577
+00:20:24,320 --> 00:20:28,159
+neural networks is that
+
+578
+00:20:25,919 --> 00:20:29,280
+graph neural networks retain a state
+
+579
+00:20:28,159 --> 00:20:31,440
+that can represent
+
+580
+00:20:29,280 --> 00:20:33,039
+information from its neighborhood with
+
+581
+00:20:31,440 --> 00:20:36,159
+arbitrary depth
+
+582
+00:20:33,039 --> 00:20:38,400
+uh there's different ways of structuring
+
+583
+00:20:36,159 --> 00:20:38,880
+graph neural networks and there's more
+
+584
+00:20:38,400 --> 00:20:41,600
+added
+
+585
+00:20:38,880 --> 00:20:42,480
+i would say almost every day however the
+
+586
+00:20:41,600 --> 00:20:44,240
+takeaway from
+
+587
+00:20:42,480 --> 00:20:46,480
+from this part is what makes a
+
+588
+00:20:44,240 --> 00:20:49,200
+difference is the fact that you can have
+
+589
+00:20:46,480 --> 00:20:51,440
+a sort of memory and in that way you can
+
+590
+00:20:49,200 --> 00:20:53,200
+embed some kind of domain knowledge
+
+591
+00:20:51,440 --> 00:20:56,240
+which can effectively help
+
+592
+00:20:53,200 --> 00:20:58,400
+deep learning system bootstrap by
+
+593
+00:20:56,240 --> 00:21:01,840
+encoding primitives instead of forcing
+
+594
+00:20:58,400 --> 00:21:05,840
+the model to learn from scratch
+
+595
+00:21:01,840 --> 00:21:09,039
+with that we come to the last part of
+
+596
+00:21:05,840 --> 00:21:10,480
+how graphs and ai intersect which is
+
+597
+00:21:09,039 --> 00:21:13,360
+graph embeddings
+
+598
+00:21:10,480 --> 00:21:16,320
+so embeddings in general is a method
+
+599
+00:21:13,360 --> 00:21:16,799
+that is used to reduce dimensions of
+
+600
+00:21:16,320 --> 00:21:18,720
+input
+
+601
+00:21:16,799 --> 00:21:20,080
+to to feed that machine learning
+
+602
+00:21:18,720 --> 00:21:22,880
+algorithms
+
+603
+00:21:20,080 --> 00:21:24,159
+typically up to now at least it has been
+
+604
+00:21:22,880 --> 00:21:26,640
+applied to text
+
+605
+00:21:24,159 --> 00:21:28,159
+so we have text embeddings which can
+
+606
+00:21:26,640 --> 00:21:31,280
+take like you know a whole
+
+607
+00:21:28,159 --> 00:21:32,000
+document and reduce it to a sentence or
+
+608
+00:21:31,280 --> 00:21:35,679
+even
+
+609
+00:21:32,000 --> 00:21:37,600
+a word and the same kind of principle
+
+610
+00:21:35,679 --> 00:21:41,120
+can be applied to graphs
+
+611
+00:21:37,600 --> 00:21:43,440
+and graphs have an extra
+
+612
+00:21:41,120 --> 00:21:44,240
+feature which is that graph type data
+
+613
+00:21:43,440 --> 00:21:46,880
+are discrete
+
+614
+00:21:44,240 --> 00:21:48,720
+so graph embeddings pre-process graphs
+
+615
+00:21:46,880 --> 00:21:49,679
+to turn them into a continuous vector
+
+616
+00:21:48,720 --> 00:21:52,080
+space which is
+
+617
+00:21:49,679 --> 00:21:53,520
+what the graph what what machine
+
+618
+00:21:52,080 --> 00:21:55,679
+learning algorithms
+
+619
+00:21:53,520 --> 00:21:58,000
+needs to work with so and there's
+
+620
+00:21:55,679 --> 00:21:59,919
+different ways of doing that so we have
+
+621
+00:21:58,000 --> 00:22:01,039
+walk embedding methods that perform
+
+622
+00:21:59,919 --> 00:22:03,280
+grafter vessels
+
+623
+00:22:01,039 --> 00:22:05,280
+with the goal of preserving structure
+
+624
+00:22:03,280 --> 00:22:06,960
+and we have proximity embedding methods
+
+625
+00:22:05,280 --> 00:22:09,520
+that use deep learning
+
+626
+00:22:06,960 --> 00:22:10,480
+and proximity laws functions to optimize
+
+627
+00:22:09,520 --> 00:22:12,159
+proximity
+
+628
+00:22:10,480 --> 00:22:13,840
+there's more but you know this is a very
+
+629
+00:22:12,159 --> 00:22:15,760
+very nuanced topic so i'm
+
+630
+00:22:13,840 --> 00:22:17,440
+obviously just just starting uh
+
+631
+00:22:15,760 --> 00:22:20,720
+scratching the surface here
+
+632
+00:22:17,440 --> 00:22:21,360
+and uh famous use case here is china
+
+633
+00:22:20,720 --> 00:22:23,760
+mobile
+
+634
+00:22:21,360 --> 00:22:25,280
+uh one of the biggest mobile operators
+
+635
+00:22:23,760 --> 00:22:26,080
+in the world actually that does
+
+636
+00:22:25,280 --> 00:22:28,159
+anti-fraud
+
+637
+00:22:26,080 --> 00:22:29,520
+in real time using graph machine
+
+638
+00:22:28,159 --> 00:22:32,799
+learning
+
+639
+00:22:29,520 --> 00:22:33,360
+so wrapping up and you know this is a
+
+640
+00:22:32,799 --> 00:22:36,880
+very
+
+641
+00:22:33,360 --> 00:22:39,200
+huge topic and i am very
+
+642
+00:22:36,880 --> 00:22:40,400
+aware of the fact that we have only just
+
+643
+00:22:39,200 --> 00:22:42,320
+touched the surface
+
+644
+00:22:40,400 --> 00:22:44,000
+graphs are everywhere and you know
+
+645
+00:22:42,320 --> 00:22:45,600
+they're in hype cycles so it's been a
+
+646
+00:22:44,000 --> 00:22:47,679
+couple of years already since
+
+647
+00:22:45,600 --> 00:22:48,640
+gartner included that in the upward
+
+648
+00:22:47,679 --> 00:22:51,360
+slope of the
+
+649
+00:22:48,640 --> 00:22:53,039
+of emerging technologies all the big
+
+650
+00:22:51,360 --> 00:22:54,240
+technology companies of the world are
+
+651
+00:22:53,039 --> 00:22:57,679
+adopting it and it's
+
+652
+00:22:54,240 --> 00:22:59,200
+trickling down to adoption by by smaller
+
+653
+00:22:57,679 --> 00:23:02,880
+players and actually even
+
+654
+00:22:59,200 --> 00:23:04,480
+by individuals by now so uh if you want
+
+655
+00:23:02,880 --> 00:23:06,480
+to keep up with that which is what i'm
+
+656
+00:23:04,480 --> 00:23:09,039
+trying to do as well
+
+657
+00:23:06,480 --> 00:23:11,520
+again just to recap you can visit the
+
+658
+00:23:09,039 --> 00:23:13,520
+year of the graph.xyz which is the home
+
+659
+00:23:11,520 --> 00:23:15,280
+for all these resources
+
+660
+00:23:13,520 --> 00:23:17,919
+and from there you can navigate to the
+
+661
+00:23:15,280 --> 00:23:19,840
+newsletter and the graph database report
+
+662
+00:23:17,919 --> 00:23:22,080
+or if you want to have like a daily news
+
+663
+00:23:19,840 --> 00:23:23,919
+feed you can follow me on twitter
+
+664
+00:23:22,080 --> 00:23:25,520
+or look up the year of the graph from
+
+665
+00:23:23,919 --> 00:23:30,559
+linkedin
+
+666
+00:23:25,520 --> 00:23:30,559
+thank you and let's see if we have any
+
+667
+00:23:34,840 --> 00:23:37,840
+questions
+
+668
+00:23:42,000 --> 00:23:47,039
+uh just going through the chat box now
+
+669
+00:23:48,960 --> 00:23:52,559
+okay i see one question uh from hamad
+
+670
+00:23:51,679 --> 00:23:55,919
+which is
+
+671
+00:23:52,559 --> 00:23:58,880
+whether time mobile is doing
+
+672
+00:23:55,919 --> 00:23:59,679
+ai graph if i got it correct then the
+
+673
+00:23:58,880 --> 00:24:02,960
+answer is
+
+674
+00:23:59,679 --> 00:24:06,480
+yes and i know that directly from
+
+675
+00:24:02,960 --> 00:24:09,120
+the vendor who worked with with
+
+676
+00:24:06,480 --> 00:24:10,640
+china mobile you know i'm not going to
+
+677
+00:24:09,120 --> 00:24:11,520
+say which switch vendor it is but i'm
+
+678
+00:24:10,640 --> 00:24:13,440
+sure you know if you
+
+679
+00:24:11,520 --> 00:24:14,640
+if you look around a little bit you can
+
+680
+00:24:13,440 --> 00:24:17,760
+find it so
+
+681
+00:24:14,640 --> 00:24:18,000
+yes they are using machine learning in
+
+682
+00:24:17,760 --> 00:24:20,240
+on
+
+683
+00:24:18,000 --> 00:24:21,360
+graphs in real time actually to do fraud
+
+684
+00:24:20,240 --> 00:24:23,679
+detection
+
+685
+00:24:21,360 --> 00:24:24,880
+and since you know it's working for them
+
+686
+00:24:23,679 --> 00:24:28,000
+uh one of the biggest
+
+687
+00:24:24,880 --> 00:24:30,400
+uh uh vendors in the world it's
+
+688
+00:24:28,000 --> 00:24:33,840
+kind of safe to assume that it can work
+
+689
+00:24:30,400 --> 00:24:33,840
+for others as well
+
+690
+00:24:35,039 --> 00:24:42,080
+another question i see here is on
+
+691
+00:24:38,520 --> 00:24:43,360
+recommendations on which tools to start
+
+692
+00:24:42,080 --> 00:24:46,559
+playing with
+
+693
+00:24:43,360 --> 00:24:49,120
+for personal knowledge graphs this
+
+694
+00:24:46,559 --> 00:24:50,559
+is actually something which is very near
+
+695
+00:24:49,120 --> 00:24:54,080
+and dear to my heart
+
+696
+00:24:50,559 --> 00:24:57,520
+um it's it's hard to give you
+
+697
+00:24:54,080 --> 00:24:59,120
+something right away but what i can tell
+
+698
+00:24:57,520 --> 00:25:00,159
+you is that this is something that i'm
+
+699
+00:24:59,120 --> 00:25:02,880
+working on
+
+700
+00:25:00,159 --> 00:25:03,200
+with a group of people actually so we'll
+
+701
+00:25:02,880 --> 00:25:06,400
+be
+
+702
+00:25:03,200 --> 00:25:10,000
+sharing more resources on that soon
+
+703
+00:25:06,400 --> 00:25:12,400
+so again i would advise to
+
+704
+00:25:10,000 --> 00:25:13,679
+if you want to stay in touch either join
+
+705
+00:25:12,400 --> 00:25:17,200
+the newsletter or
+
+706
+00:25:13,679 --> 00:25:19,919
+follow me or the year of the graph on
+
+707
+00:25:17,200 --> 00:25:21,200
+social media and you'll be notified when
+
+708
+00:25:19,919 --> 00:25:24,720
+when the time is right
+
+709
+00:25:21,200 --> 00:25:25,200
+to publish something on that i see
+
+710
+00:25:24,720 --> 00:25:27,440
+there's
+
+711
+00:25:25,200 --> 00:25:29,600
+more questions actually popping up right
+
+712
+00:25:27,440 --> 00:25:30,880
+now but i'm only going to be able to
+
+713
+00:25:29,600 --> 00:25:34,080
+quickly take one
+
+714
+00:25:30,880 --> 00:25:36,559
+because we'll have to wrap up since
+
+715
+00:25:34,080 --> 00:25:40,480
+there's another presentation coming up
+
+716
+00:25:36,559 --> 00:25:44,000
+at 7 30 so in about
+
+717
+00:25:40,480 --> 00:25:47,200
+five minutes let's see
+
+718
+00:25:44,000 --> 00:25:50,320
+so uh is there
+
+719
+00:25:47,200 --> 00:25:54,080
+k is there any use case of graphs for
+
+720
+00:25:50,320 --> 00:25:54,400
+industrial iot well yes of course there
+
+721
+00:25:54,080 --> 00:25:57,120
+is
+
+722
+00:25:54,400 --> 00:25:59,039
+actually the use case i referred to
+
+723
+00:25:57,120 --> 00:26:02,880
+earlier sotelia
+
+724
+00:25:59,039 --> 00:26:05,679
+the telecom company from the nordics
+
+725
+00:26:02,880 --> 00:26:07,440
+their use case is actually iot so to
+
+726
+00:26:05,679 --> 00:26:10,720
+give you a little bit more of
+
+727
+00:26:07,440 --> 00:26:13,039
+background what they do is they work
+
+728
+00:26:10,720 --> 00:26:15,840
+like many uh like many telecom companies
+
+729
+00:26:13,039 --> 00:26:18,559
+do telia does provide a router as well
+
+730
+00:26:15,840 --> 00:26:19,360
+so they have developed an application
+
+731
+00:26:18,559 --> 00:26:21,919
+that
+
+732
+00:26:19,360 --> 00:26:24,400
+lets you connect different sensors in
+
+733
+00:26:21,919 --> 00:26:26,640
+your in your home to this router
+
+734
+00:26:24,400 --> 00:26:28,480
+and so what the router does is that it
+
+735
+00:26:26,640 --> 00:26:30,000
+aggregates the information coming from
+
+736
+00:26:28,480 --> 00:26:32,880
+these sensors and
+
+737
+00:26:30,000 --> 00:26:34,240
+uh tries to to do a little bit of
+
+738
+00:26:32,880 --> 00:26:36,559
+monitoring plus
+
+739
+00:26:34,240 --> 00:26:38,559
+a little bit of smart let's say
+
+740
+00:26:36,559 --> 00:26:40,159
+applications such as you know locking or
+
+741
+00:26:38,559 --> 00:26:43,840
+unlocking doors and
+
+742
+00:26:40,159 --> 00:26:46,559
+this kind of thing uh so
+
+743
+00:26:43,840 --> 00:26:47,279
+with that uh just to give our next
+
+744
+00:26:46,559 --> 00:26:50,080
+presenter
+
+745
+00:26:47,279 --> 00:26:52,000
+our own uh james far the the time to
+
+746
+00:26:50,080 --> 00:26:54,960
+properly set up i will have to
+
+747
+00:26:52,000 --> 00:26:55,760
+wrap up and thank you everyone for your
+
+748
+00:26:54,960 --> 00:26:58,240
+questions
+
+749
+00:26:55,760 --> 00:26:59,440
+rest assured that we'll be taking them
+
+750
+00:26:58,240 --> 00:27:01,760
+and we'll try to
+
+751
+00:26:59,440 --> 00:27:02,799
+answer them all offline thank you very
+
+752
+00:27:01,760 --> 00:27:06,000
+much and
+
+753
+00:27:02,799 --> 00:27:06,799
+well see you all in a bit in james's
+
+754
+00:27:06,000 --> 00:27:10,000
+talk
+
+755
+00:27:06,799 --> 00:27:10,000
+bye for me
+

@@ -1,0 +1,3868 @@
+1
+00:00:00,160 --> 00:00:05,120
+hello everyone and welcome to the latest
+
+2
+00:00:02,879 --> 00:00:06,480
+edition of connected data london's
+
+3
+00:00:05,120 --> 00:00:07,440
+online meter
+
+4
+00:00:06,480 --> 00:00:09,840
+today
+
+5
+00:00:07,440 --> 00:00:12,240
+we have a theme to our meetup which is
+
+6
+00:00:09,840 --> 00:00:14,160
+enterprise knowledge graphs and how they
+
+7
+00:00:12,240 --> 00:00:15,519
+can be used towards a knowledge-based
+
+8
+00:00:14,160 --> 00:00:18,240
+economy
+
+9
+00:00:15,519 --> 00:00:20,160
+we have three talks lined up for you and
+
+10
+00:00:18,240 --> 00:00:21,760
+actually we're already kind of late for
+
+11
+00:00:20,160 --> 00:00:24,320
+the first one so i'll try to keep my
+
+12
+00:00:21,760 --> 00:00:29,960
+intro as short as possible and just give
+
+13
+00:00:24,320 --> 00:00:29,960
+the floor to tony seal our first guest
+
+14
+00:00:40,399 --> 00:00:44,800
+tony the floor is yours actually one
+
+15
+00:00:43,120 --> 00:00:47,920
+last thing before i give you the floor
+
+16
+00:00:44,800 --> 00:00:49,360
+so big thanks to our sponsors today uh
+
+17
+00:00:47,920 --> 00:00:52,399
+enterprise web
+
+18
+00:00:49,360 --> 00:00:55,840
+and france who's also presenting next
+
+19
+00:00:52,399 --> 00:00:58,879
+big thanks tony fleur is yours
+
+20
+00:00:55,840 --> 00:01:00,480
+okay hi guys um presuming everyone can
+
+21
+00:00:58,879 --> 00:01:01,520
+see my screen let me know if there's a
+
+22
+00:01:00,480 --> 00:01:03,520
+problem
+
+23
+00:01:01,520 --> 00:01:05,439
+so so the the the first part of my
+
+24
+00:01:03,520 --> 00:01:08,720
+message really is very simple uh and
+
+25
+00:01:05,439 --> 00:01:09,680
+that is that there is an ai tsunami
+
+26
+00:01:08,720 --> 00:01:12,159
+coming
+
+27
+00:01:09,680 --> 00:01:14,560
+but most people don't realize it yet and
+
+28
+00:01:12,159 --> 00:01:16,479
+enterprises are going to have to perform
+
+29
+00:01:14,560 --> 00:01:18,880
+a 180 in the way they think about their
+
+30
+00:01:16,479 --> 00:01:21,280
+data if they're going to survive that ai
+
+31
+00:01:18,880 --> 00:01:22,479
+tsunami and small tweaks and changes
+
+32
+00:01:21,280 --> 00:01:24,799
+aren't going to cut it we're talking
+
+33
+00:01:22,479 --> 00:01:26,560
+about an existential shift in mindset
+
+34
+00:01:24,799 --> 00:01:29,920
+here
+
+35
+00:01:26,560 --> 00:01:31,680
+and this starts with accepting that uh
+
+36
+00:01:29,920 --> 00:01:33,520
+the way that large enterprises run their
+
+37
+00:01:31,680 --> 00:01:35,439
+data at the moment is fundamentally
+
+38
+00:01:33,520 --> 00:01:37,520
+broken in my opinion
+
+39
+00:01:35,439 --> 00:01:39,600
+yeah how come that your smartphone can
+
+40
+00:01:37,520 --> 00:01:41,759
+recognize your face and understand your
+
+41
+00:01:39,600 --> 00:01:43,200
+speech but your i.t department takes
+
+42
+00:01:41,759 --> 00:01:45,040
+over two months to add a couple of
+
+43
+00:01:43,200 --> 00:01:47,040
+fields to your report
+
+44
+00:01:45,040 --> 00:01:48,560
+and i think the first thing to to to
+
+45
+00:01:47,040 --> 00:01:49,920
+realize here
+
+46
+00:01:48,560 --> 00:01:51,759
+is that
+
+47
+00:01:49,920 --> 00:01:53,680
+ai is built upon
+
+48
+00:01:51,759 --> 00:01:54,399
+top of a data layer
+
+49
+00:01:53,680 --> 00:01:56,560
+and
+
+50
+00:01:54,399 --> 00:01:58,399
+within the modern enterprise outside of
+
+51
+00:01:56,560 --> 00:02:00,960
+the tech giants like google and facebook
+
+52
+00:01:58,399 --> 00:02:03,119
+who have got this one sorted outside of
+
+53
+00:02:00,960 --> 00:02:06,439
+that the data layer is broken within the
+
+54
+00:02:03,119 --> 00:02:09,759
+large large enterprises in fact it's
+
+55
+00:02:06,439 --> 00:02:11,599
+non-existent um in a in a large
+
+56
+00:02:09,759 --> 00:02:14,239
+enterprise they'll have literally
+
+57
+00:02:11,599 --> 00:02:15,280
+thousands of separately siloed pieces of
+
+58
+00:02:14,239 --> 00:02:17,520
+data
+
+59
+00:02:15,280 --> 00:02:19,760
+with systems connected together in a
+
+60
+00:02:17,520 --> 00:02:22,080
+spaghetti of different technology
+
+61
+00:02:19,760 --> 00:02:24,560
+there's little standardization
+
+62
+00:02:22,080 --> 00:02:26,080
+around security access
+
+63
+00:02:24,560 --> 00:02:29,840
+models
+
+64
+00:02:26,080 --> 00:02:33,519
+and there's a lack of a data culture
+
+65
+00:02:29,840 --> 00:02:35,680
+which exists within the tech giants
+
+66
+00:02:33,519 --> 00:02:37,040
+now in many ways this is not a new
+
+67
+00:02:35,680 --> 00:02:38,640
+observation because what we're talking
+
+68
+00:02:37,040 --> 00:02:39,599
+about here is the data integration
+
+69
+00:02:38,640 --> 00:02:42,080
+problem
+
+70
+00:02:39,599 --> 00:02:44,720
+and the classic solution
+
+71
+00:02:42,080 --> 00:02:46,560
+to the data integration problem is to
+
+72
+00:02:44,720 --> 00:02:48,480
+build yourself a data mart or a data
+
+73
+00:02:46,560 --> 00:02:50,000
+warehouse which is just a big database
+
+74
+00:02:48,480 --> 00:02:53,120
+where you grab all of your data and
+
+75
+00:02:50,000 --> 00:02:53,920
+perform what's called an etl process to
+
+76
+00:02:53,120 --> 00:02:56,000
+to
+
+77
+00:02:53,920 --> 00:02:57,040
+to basically merge the data all into one
+
+78
+00:02:56,000 --> 00:02:59,280
+place
+
+79
+00:02:57,040 --> 00:03:01,280
+but the data warehouse has several
+
+80
+00:02:59,280 --> 00:03:03,360
+problems um first of all you've got to
+
+81
+00:03:01,280 --> 00:03:05,519
+define the schema up front
+
+82
+00:03:03,360 --> 00:03:07,519
+which is not very agile and the business
+
+83
+00:03:05,519 --> 00:03:09,519
+as the business changes which they
+
+84
+00:03:07,519 --> 00:03:11,440
+continually do change the data warehouse
+
+85
+00:03:09,519 --> 00:03:13,040
+has really struggled to keep up with
+
+86
+00:03:11,440 --> 00:03:14,800
+that
+
+87
+00:03:13,040 --> 00:03:17,360
+but perhaps more fundamentally and this
+
+88
+00:03:14,800 --> 00:03:19,760
+is where like the change of mindset that
+
+89
+00:03:17,360 --> 00:03:21,840
+i'm proposing comes in
+
+90
+00:03:19,760 --> 00:03:23,760
+is that to order in order to survive the
+
+91
+00:03:21,840 --> 00:03:25,599
+ai wave
+
+92
+00:03:23,760 --> 00:03:27,120
+then enterprises are going to have to
+
+93
+00:03:25,599 --> 00:03:29,040
+kind of change their thinking and got to
+
+94
+00:03:27,120 --> 00:03:30,959
+start thinking about connecting the
+
+95
+00:03:29,040 --> 00:03:33,760
+total sum of the data assets within
+
+96
+00:03:30,959 --> 00:03:34,560
+their company and even with a really
+
+97
+00:03:33,760 --> 00:03:36,480
+good
+
+98
+00:03:34,560 --> 00:03:38,000
+data warehouse solution
+
+99
+00:03:36,480 --> 00:03:39,680
+you're not really talking about
+
+100
+00:03:38,000 --> 00:03:42,560
+connecting more than like say one
+
+101
+00:03:39,680 --> 00:03:45,680
+percent or even less than that really of
+
+102
+00:03:42,560 --> 00:03:48,159
+the total data assets of the company and
+
+103
+00:03:45,680 --> 00:03:49,840
+where i see the future going
+
+104
+00:03:48,159 --> 00:03:52,480
+that's just not gonna that's just not
+
+105
+00:03:49,840 --> 00:03:52,480
+gonna cut it
+
+106
+00:03:52,720 --> 00:03:57,439
+so then we've got the the newer kid on
+
+107
+00:03:54,959 --> 00:03:58,840
+the block which is uh hadoop and various
+
+108
+00:03:57,439 --> 00:04:00,959
+kind of big table
+
+109
+00:03:58,840 --> 00:04:03,200
+technologies and this is a step forward
+
+110
+00:04:00,959 --> 00:04:04,959
+all of these things are important step
+
+111
+00:04:03,200 --> 00:04:06,799
+forward and i wouldn't want to denigrate
+
+112
+00:04:04,959 --> 00:04:08,879
+any of the amazing effort that's that's
+
+113
+00:04:06,799 --> 00:04:09,920
+gone on on the road to progressing
+
+114
+00:04:08,879 --> 00:04:11,040
+towards
+
+115
+00:04:09,920 --> 00:04:13,439
+data
+
+116
+00:04:11,040 --> 00:04:15,280
+data integration but
+
+117
+00:04:13,439 --> 00:04:17,680
+i think it's fair to say that the sort
+
+118
+00:04:15,280 --> 00:04:19,919
+of promise of crystal clear waters of
+
+119
+00:04:17,680 --> 00:04:22,479
+data lakes haven't really materialized
+
+120
+00:04:19,919 --> 00:04:24,479
+uh for for the enterprises they've
+
+121
+00:04:22,479 --> 00:04:26,560
+they've they've blindly followed the
+
+122
+00:04:24,479 --> 00:04:28,400
+tech giants into implementing this
+
+123
+00:04:26,560 --> 00:04:30,800
+technology and in
+
+124
+00:04:28,400 --> 00:04:34,160
+most cases they've ended up with a kind
+
+125
+00:04:30,800 --> 00:04:36,479
+of data swamp which kind of sits there
+
+126
+00:04:34,160 --> 00:04:37,520
+not really doing it very much and that's
+
+127
+00:04:36,479 --> 00:04:39,199
+because
+
+128
+00:04:37,520 --> 00:04:40,479
+although that they've grabbed a load of
+
+129
+00:04:39,199 --> 00:04:42,479
+data they haven't really tackled the
+
+130
+00:04:40,479 --> 00:04:44,960
+hard part of the problem which is
+
+131
+00:04:42,479 --> 00:04:47,360
+conforming to schemas to linking and
+
+132
+00:04:44,960 --> 00:04:51,120
+connecting your data to cleaning it up
+
+133
+00:04:47,360 --> 00:04:51,120
+and extracting out the knowledge
+
+134
+00:04:51,280 --> 00:04:55,840
+and then also i i've got news which
+
+135
+00:04:54,320 --> 00:04:58,479
+maybe is not news to many of the people
+
+136
+00:04:55,840 --> 00:05:00,080
+on on on this presentation but for some
+
+137
+00:04:58,479 --> 00:05:02,400
+people will be that the cool kids have
+
+138
+00:05:00,080 --> 00:05:04,560
+moved on and in fact they moved on quite
+
+139
+00:05:02,400 --> 00:05:05,919
+a long time ago
+
+140
+00:05:04,560 --> 00:05:07,840
+and they've started
+
+141
+00:05:05,919 --> 00:05:10,000
+so so google and facebook have started
+
+142
+00:05:07,840 --> 00:05:12,080
+building knowledge graphs over the top
+
+143
+00:05:10,000 --> 00:05:14,320
+of the data structures they've got and
+
+144
+00:05:12,080 --> 00:05:16,320
+the knowledge graphs provide schema and
+
+145
+00:05:14,320 --> 00:05:17,680
+meaning to the data
+
+146
+00:05:16,320 --> 00:05:19,120
+now
+
+147
+00:05:17,680 --> 00:05:20,880
+i think what we're going to see as
+
+148
+00:05:19,120 --> 00:05:22,080
+knowledge graphs move up the hype cycle
+
+149
+00:05:20,880 --> 00:05:23,759
+and someone told me the other day that
+
+150
+00:05:22,080 --> 00:05:25,440
+it's already kind of into the trough of
+
+151
+00:05:23,759 --> 00:05:27,600
+disappointment already
+
+152
+00:05:25,440 --> 00:05:29,840
+that um that enterprises will
+
+153
+00:05:27,600 --> 00:05:32,000
+increasingly look to adopt uh an
+
+154
+00:05:29,840 --> 00:05:34,000
+enterprise knowledge graph but but i've
+
+155
+00:05:32,000 --> 00:05:36,240
+got a clear message here that i'd like
+
+156
+00:05:34,000 --> 00:05:38,000
+to convey which is that i don't think
+
+157
+00:05:36,240 --> 00:05:40,000
+enterprises should just repeat the
+
+158
+00:05:38,000 --> 00:05:43,440
+mistakes of the past and blindly copy
+
+159
+00:05:40,000 --> 00:05:46,000
+what google and facebook are doing here
+
+160
+00:05:43,440 --> 00:05:47,600
+what do i mean by that well
+
+161
+00:05:46,000 --> 00:05:50,160
+you know the knowledge graph is a
+
+162
+00:05:47,600 --> 00:05:52,320
+genuine innovation so for the first time
+
+163
+00:05:50,160 --> 00:05:54,080
+data relationships are able to be made
+
+164
+00:05:52,320 --> 00:05:56,960
+first class citizens and that's really
+
+165
+00:05:54,080 --> 00:05:58,960
+really important
+
+166
+00:05:56,960 --> 00:06:01,199
+but the situation for the enterprise is
+
+167
+00:05:58,960 --> 00:06:02,880
+different from the internet giants
+
+168
+00:06:01,199 --> 00:06:05,440
+there's the diversity of the data and
+
+169
+00:06:02,880 --> 00:06:07,759
+then just a kind of lack of
+
+170
+00:06:05,440 --> 00:06:09,840
+data culture which is which is deep sea
+
+171
+00:06:07,759 --> 00:06:11,759
+which is deep seeded in in the internet
+
+172
+00:06:09,840 --> 00:06:13,039
+giants but is is not there yet within
+
+173
+00:06:11,759 --> 00:06:14,960
+the enterprise and that needs to be
+
+174
+00:06:13,039 --> 00:06:15,840
+tackled
+
+175
+00:06:14,960 --> 00:06:17,759
+um
+
+176
+00:06:15,840 --> 00:06:19,440
+and in this sense i think what we need
+
+177
+00:06:17,759 --> 00:06:21,840
+to do is we need to
+
+178
+00:06:19,440 --> 00:06:23,600
+combine the powerful technology of
+
+179
+00:06:21,840 --> 00:06:25,680
+enterprise knowledge graphs with a with
+
+180
+00:06:23,600 --> 00:06:27,280
+another topic which is emerging up
+
+181
+00:06:25,680 --> 00:06:28,880
+through the hype cycle which is
+
+182
+00:06:27,280 --> 00:06:29,919
+decentralization
+
+183
+00:06:28,880 --> 00:06:32,880
+and it's actually through the
+
+184
+00:06:29,919 --> 00:06:36,160
+combination of these two things
+
+185
+00:06:32,880 --> 00:06:38,319
+that and creating a sort of distributed
+
+186
+00:06:36,160 --> 00:06:40,400
+enterprise knowledge graph that we can
+
+187
+00:06:38,319 --> 00:06:43,520
+potentially unlock
+
+188
+00:06:40,400 --> 00:06:45,120
+uh this this revolution
+
+189
+00:06:43,520 --> 00:06:47,039
+so
+
+190
+00:06:45,120 --> 00:06:49,280
+let's turn to the the graph part of this
+
+191
+00:06:47,039 --> 00:06:52,160
+then so most of you will know what
+
+192
+00:06:49,280 --> 00:06:54,639
+graphs are but but i'd just like to
+
+193
+00:06:52,160 --> 00:06:56,319
+spend a little bit of time on those to
+
+194
+00:06:54,639 --> 00:06:57,680
+run through them and explain what's so
+
+195
+00:06:56,319 --> 00:06:59,120
+great about them
+
+196
+00:06:57,680 --> 00:07:01,360
+and the first thing that i think is
+
+197
+00:06:59,120 --> 00:07:02,479
+great about them is their very intuitive
+
+198
+00:07:01,360 --> 00:07:04,639
+nature so
+
+199
+00:07:02,479 --> 00:07:06,319
+a graph is made of nodes which we can
+
+200
+00:07:04,639 --> 00:07:07,360
+see as these circles here and these
+
+201
+00:07:06,319 --> 00:07:08,080
+nodes
+
+202
+00:07:07,360 --> 00:07:11,680
+are
+
+203
+00:07:08,080 --> 00:07:14,000
+connected by what are called edges and
+
+204
+00:07:11,680 --> 00:07:15,680
+um
+
+205
+00:07:14,000 --> 00:07:16,960
+in terms of how you might kind of draw
+
+206
+00:07:15,680 --> 00:07:18,800
+out uh
+
+207
+00:07:16,960 --> 00:07:21,360
+your own knowledge about something then
+
+208
+00:07:18,800 --> 00:07:22,880
+this structure this graph structure
+
+209
+00:07:21,360 --> 00:07:24,000
+is probably very intuitive to you and
+
+210
+00:07:22,880 --> 00:07:25,919
+it's like maybe something you'd even
+
+211
+00:07:24,000 --> 00:07:27,599
+kind of like doodle on a piece of piece
+
+212
+00:07:25,919 --> 00:07:30,800
+of paper
+
+213
+00:07:27,599 --> 00:07:33,759
+but okay so that's graphs but what is
+
+214
+00:07:30,800 --> 00:07:35,360
+so great about them in this context
+
+215
+00:07:33,759 --> 00:07:37,199
+well
+
+216
+00:07:35,360 --> 00:07:40,000
+the first thing i think is that they can
+
+217
+00:07:37,199 --> 00:07:41,280
+capture the fundamentally messy nature
+
+218
+00:07:40,000 --> 00:07:43,120
+of data
+
+219
+00:07:41,280 --> 00:07:45,599
+but they still retain enough structure
+
+220
+00:07:43,120 --> 00:07:47,680
+for computers to sort of reason over
+
+221
+00:07:45,599 --> 00:07:50,160
+them and i i've
+
+222
+00:07:47,680 --> 00:07:52,240
+i've started calling it a kind of scruff
+
+223
+00:07:50,160 --> 00:07:53,360
+structured scruffiness
+
+224
+00:07:52,240 --> 00:07:55,120
+um
+
+225
+00:07:53,360 --> 00:07:57,039
+so so let's turn to the main data
+
+226
+00:07:55,120 --> 00:07:58,400
+structures the sort of non-graph data
+
+227
+00:07:57,039 --> 00:08:01,199
+structures that we're all familiar with
+
+228
+00:07:58,400 --> 00:08:05,520
+today and these are tables like excel
+
+229
+00:08:01,199 --> 00:08:07,440
+and relational databases and trees so
+
+230
+00:08:05,520 --> 00:08:10,639
+the tree within your file system or if
+
+231
+00:08:07,440 --> 00:08:12,560
+you're technical your xml documents or
+
+232
+00:08:10,639 --> 00:08:14,080
+json documents or example of tree light
+
+233
+00:08:12,560 --> 00:08:16,960
+structures
+
+234
+00:08:14,080 --> 00:08:20,960
+and the flexible nature of graphs mean
+
+235
+00:08:16,960 --> 00:08:24,400
+that they can model both tree-like data
+
+236
+00:08:20,960 --> 00:08:27,039
+and tabular data with ease and they can
+
+237
+00:08:24,400 --> 00:08:29,199
+also contain even more complicated
+
+238
+00:08:27,039 --> 00:08:32,240
+things like cycles
+
+239
+00:08:29,199 --> 00:08:33,039
+and then this flexible nature
+
+240
+00:08:32,240 --> 00:08:35,120
+uh
+
+241
+00:08:33,039 --> 00:08:36,719
+means that they can even be used and are
+
+242
+00:08:35,120 --> 00:08:39,360
+used sort of out on
+
+243
+00:08:36,719 --> 00:08:41,599
+out on the web to provide islands of
+
+244
+00:08:39,360 --> 00:08:43,919
+sort of certainty and structure within
+
+245
+00:08:41,599 --> 00:08:45,760
+more complicated data structures like
+
+246
+00:08:43,919 --> 00:08:46,480
+text and images
+
+247
+00:08:45,760 --> 00:08:48,560
+so
+
+248
+00:08:46,480 --> 00:08:50,720
+in this sense the graph doesn't so much
+
+249
+00:08:48,560 --> 00:08:53,120
+replace these other data structures as
+
+250
+00:08:50,720 --> 00:08:55,279
+provide a universal way of representing
+
+251
+00:08:53,120 --> 00:08:57,279
+them and connecting them together which
+
+252
+00:08:55,279 --> 00:09:01,120
+i guess is is why it's particularly
+
+253
+00:08:57,279 --> 00:09:01,120
+right for this data integration problem
+
+254
+00:09:02,160 --> 00:09:05,360
+and
+
+255
+00:09:03,360 --> 00:09:08,560
+that kind of goes to what is really the
+
+256
+00:09:05,360 --> 00:09:09,920
+next great thing about graphs and that
+
+257
+00:09:08,560 --> 00:09:12,320
+is
+
+258
+00:09:09,920 --> 00:09:14,560
+that graphs make relationships
+
+259
+00:09:12,320 --> 00:09:17,440
+first-class citizens they're just as
+
+260
+00:09:14,560 --> 00:09:18,320
+important as the nodes themselves
+
+261
+00:09:17,440 --> 00:09:19,839
+and
+
+262
+00:09:18,320 --> 00:09:22,399
+i would suggest that the more time that
+
+263
+00:09:19,839 --> 00:09:25,040
+you spend thinking about data the more
+
+264
+00:09:22,399 --> 00:09:27,600
+that you'll realize that in fact data is
+
+265
+00:09:25,040 --> 00:09:29,920
+all about the the relationships that the
+
+266
+00:09:27,600 --> 00:09:31,839
+facts don't exist in isolation but
+
+267
+00:09:29,920 --> 00:09:35,880
+rather they are positioned within the
+
+268
+00:09:31,839 --> 00:09:35,880
+context of everything else
+
+269
+00:09:37,040 --> 00:09:39,200
+so
+
+270
+00:09:39,360 --> 00:09:43,200
+maybe spend a moment after this
+
+271
+00:09:41,120 --> 00:09:45,200
+contemplating that and
+
+272
+00:09:43,200 --> 00:09:46,880
+and and i guess the ask here is to stop
+
+273
+00:09:45,200 --> 00:09:49,519
+thinking about data in terms of
+
+274
+00:09:46,880 --> 00:09:51,440
+separated business aligned systems and
+
+275
+00:09:49,519 --> 00:09:53,040
+instead concentrate on the relationships
+
+276
+00:09:51,440 --> 00:09:56,959
+between them start thinking about your
+
+277
+00:09:53,040 --> 00:09:56,959
+data as a kind of connected whole
+
+278
+00:09:58,000 --> 00:10:01,920
+now some people will say well i could do
+
+279
+00:10:00,160 --> 00:10:02,880
+all of this within a different data
+
+280
+00:10:01,920 --> 00:10:05,440
+structure i could do this within a
+
+281
+00:10:02,880 --> 00:10:08,160
+relational database or a graph store or
+
+282
+00:10:05,440 --> 00:10:10,079
+sorry or a document store or whatever's
+
+283
+00:10:08,160 --> 00:10:12,000
+the particular favorite one is and
+
+284
+00:10:10,079 --> 00:10:14,160
+whilst this is true i think it misses
+
+285
+00:10:12,000 --> 00:10:17,040
+the point because graphs are made for
+
+286
+00:10:14,160 --> 00:10:19,120
+this job they make it really simple
+
+287
+00:10:17,040 --> 00:10:21,120
+and all you have to do is to break your
+
+288
+00:10:19,120 --> 00:10:24,480
+data down into these like three-part
+
+289
+00:10:21,120 --> 00:10:26,480
+statements so ben is a person
+
+290
+00:10:24,480 --> 00:10:29,200
+bob is a person
+
+291
+00:10:26,480 --> 00:10:31,200
+ben's son is bob bob lives in the uk you
+
+292
+00:10:29,200 --> 00:10:32,399
+can just keep on adding these little
+
+293
+00:10:31,200 --> 00:10:34,959
+triples
+
+294
+00:10:32,399 --> 00:10:37,920
+uh add infinitum
+
+295
+00:10:34,959 --> 00:10:39,519
+and that's it you atomize your data
+
+296
+00:10:37,920 --> 00:10:41,680
+into these three parts statements and
+
+297
+00:10:39,519 --> 00:10:44,959
+then as if by magic
+
+298
+00:10:41,680 --> 00:10:47,440
+out the other side pops the this this
+
+299
+00:10:44,959 --> 00:10:50,399
+this huge graph
+
+300
+00:10:47,440 --> 00:10:52,160
+it's not rocket science and uh
+
+301
+00:10:50,399 --> 00:10:54,000
+there's some misconceptions about that
+
+302
+00:10:52,160 --> 00:10:55,519
+really i think it's actually really
+
+303
+00:10:54,000 --> 00:10:56,560
+rather simple
+
+304
+00:10:55,519 --> 00:11:00,000
+and and
+
+305
+00:10:56,560 --> 00:11:02,000
+and anybody can do this
+
+306
+00:11:00,000 --> 00:11:04,160
+uh and that's why i think that graphs
+
+307
+00:11:02,000 --> 00:11:06,399
+are one of the main keys for connecting
+
+308
+00:11:04,160 --> 00:11:09,519
+enterprises uh data together into a
+
+309
+00:11:06,399 --> 00:11:12,320
+unified layer and what i think is is is
+
+310
+00:11:09,519 --> 00:11:12,320
+so great about
+
+311
+00:11:12,720 --> 00:11:16,640
+so
+
+312
+00:11:13,519 --> 00:11:18,160
+so now i want to turn to the the second
+
+313
+00:11:16,640 --> 00:11:21,120
+key so
+
+314
+00:11:18,160 --> 00:11:23,440
+uh the concept of um
+
+315
+00:11:21,120 --> 00:11:25,600
+decentralization
+
+316
+00:11:23,440 --> 00:11:25,600
+so
+
+317
+00:11:26,959 --> 00:11:31,360
+this this concept is is a bit harder to
+
+318
+00:11:29,120 --> 00:11:34,079
+get your head around um it's even got a
+
+319
+00:11:31,360 --> 00:11:35,519
+complicated name of decentralization so
+
+320
+00:11:34,079 --> 00:11:38,320
+so let's try and
+
+321
+00:11:35,519 --> 00:11:40,720
+break that down a little bit
+
+322
+00:11:38,320 --> 00:11:42,160
+broadly speaking and i'm sorry if i get
+
+323
+00:11:40,720 --> 00:11:44,079
+a little bit philosophical here but i
+
+324
+00:11:42,160 --> 00:11:45,279
+will return back to data but but broadly
+
+325
+00:11:44,079 --> 00:11:47,519
+speaking
+
+326
+00:11:45,279 --> 00:11:50,800
+i think we can break any complicated
+
+327
+00:11:47,519 --> 00:11:52,240
+system any complex system down in in
+
+328
+00:11:50,800 --> 00:11:54,079
+three different ways
+
+329
+00:11:52,240 --> 00:11:56,399
+firstly we've got
+
+330
+00:11:54,079 --> 00:11:58,240
+disordered systems so that's a system
+
+331
+00:11:56,399 --> 00:12:00,320
+with no rules or laws we can think of
+
+332
+00:11:58,240 --> 00:12:02,560
+this as the wild wild west where you can
+
+333
+00:12:00,320 --> 00:12:04,720
+do whatever you like
+
+334
+00:12:02,560 --> 00:12:07,040
+then secondly we have
+
+335
+00:12:04,720 --> 00:12:09,839
+uh highly centralized command and
+
+336
+00:12:07,040 --> 00:12:12,320
+control systems where instructions are
+
+337
+00:12:09,839 --> 00:12:13,839
+issued from the center down to the mass
+
+338
+00:12:12,320 --> 00:12:16,320
+and you can think of like the former
+
+339
+00:12:13,839 --> 00:12:18,560
+ussr here or like in a more scary
+
+340
+00:12:16,320 --> 00:12:21,680
+scenario like uh
+
+341
+00:12:18,560 --> 00:12:23,360
+skynet from the terminator movie
+
+342
+00:12:21,680 --> 00:12:26,399
+and then finally
+
+343
+00:12:23,360 --> 00:12:29,040
+we have decentralized systems
+
+344
+00:12:26,399 --> 00:12:31,760
+where we have a universally agreed upon
+
+345
+00:12:29,040 --> 00:12:34,800
+set of standards that everyone follows
+
+346
+00:12:31,760 --> 00:12:37,040
+and then things are organized
+
+347
+00:12:34,800 --> 00:12:38,480
+amongst
+
+348
+00:12:37,040 --> 00:12:40,240
+nodes themselves
+
+349
+00:12:38,480 --> 00:12:41,920
+where they compete and collaborate with
+
+350
+00:12:40,240 --> 00:12:43,920
+each other within this kind of common
+
+351
+00:12:41,920 --> 00:12:44,800
+framework
+
+352
+00:12:43,920 --> 00:12:47,200
+and
+
+353
+00:12:44,800 --> 00:12:48,560
+to uh sort of elicit the difference
+
+354
+00:12:47,200 --> 00:12:50,880
+between the centralized model and the
+
+355
+00:12:48,560 --> 00:12:54,800
+decentralized model i like to tell a
+
+356
+00:12:50,880 --> 00:12:56,800
+story which is that um apparently an
+
+357
+00:12:54,800 --> 00:12:59,760
+official traveled from the former ussr
+
+358
+00:12:56,800 --> 00:13:01,839
+to learn about the free market in london
+
+359
+00:12:59,760 --> 00:13:04,000
+because despite years of hard work by a
+
+360
+00:13:01,839 --> 00:13:07,440
+really intelligent team
+
+361
+00:13:04,000 --> 00:13:09,360
+the the talented experts uh had failed
+
+362
+00:13:07,440 --> 00:13:10,800
+uh to minimize the bread cues and the
+
+363
+00:13:09,360 --> 00:13:13,279
+russian people were having to queue a
+
+364
+00:13:10,800 --> 00:13:14,959
+long time for for bread anyway whilst
+
+365
+00:13:13,279 --> 00:13:17,200
+traveling around london looking at the
+
+366
+00:13:14,959 --> 00:13:18,720
+london stock exchange etc etc and these
+
+367
+00:13:17,200 --> 00:13:19,760
+various instruments the free market
+
+368
+00:13:18,720 --> 00:13:21,680
+economy
+
+369
+00:13:19,760 --> 00:13:23,600
+he eventually said
+
+370
+00:13:21,680 --> 00:13:25,600
+look what i really want is you to
+
+371
+00:13:23,600 --> 00:13:26,959
+introduce me to the guy who's in charge
+
+372
+00:13:25,600 --> 00:13:28,480
+of bread supply because we've been
+
+373
+00:13:26,959 --> 00:13:30,720
+working on this problem for absolutely
+
+374
+00:13:28,480 --> 00:13:32,800
+ages and you know i'm desperate to meet
+
+375
+00:13:30,720 --> 00:13:35,360
+him and learn his great secrets
+
+376
+00:13:32,800 --> 00:13:38,160
+take me to him right now
+
+377
+00:13:35,360 --> 00:13:40,000
+and of course within london
+
+378
+00:13:38,160 --> 00:13:41,279
+there was no one in charge of bread
+
+379
+00:13:40,000 --> 00:13:43,040
+supply
+
+380
+00:13:41,279 --> 00:13:46,480
+and and let's think about that for a
+
+381
+00:13:43,040 --> 00:13:48,480
+second so within the regulated market
+
+382
+00:13:46,480 --> 00:13:49,680
+the companies collaborated and competed
+
+383
+00:13:48,480 --> 00:13:50,639
+with each other
+
+384
+00:13:49,680 --> 00:13:53,440
+and
+
+385
+00:13:50,639 --> 00:13:55,600
+a highly optimized bread supply chain
+
+386
+00:13:53,440 --> 00:13:57,519
+simply arose
+
+387
+00:13:55,600 --> 00:13:59,920
+that's a really important point there
+
+388
+00:13:57,519 --> 00:14:02,560
+the complexity was just too great for
+
+389
+00:13:59,920 --> 00:14:03,440
+these guys to hold in their heads
+
+390
+00:14:02,560 --> 00:14:05,839
+and
+
+391
+00:14:03,440 --> 00:14:08,320
+in the decentralized system
+
+392
+00:14:05,839 --> 00:14:10,399
+responsibility was instead pushed down
+
+393
+00:14:08,320 --> 00:14:11,680
+into the individual companies
+
+394
+00:14:10,399 --> 00:14:14,000
+and then
+
+395
+00:14:11,680 --> 00:14:16,959
+an optimized bread supply chain simply
+
+396
+00:14:14,000 --> 00:14:20,040
+arises out of thin air that is the power
+
+397
+00:14:16,959 --> 00:14:20,040
+of decentralization
+
+398
+00:14:20,560 --> 00:14:25,440
+so we can turn back to data now and in
+
+399
+00:14:23,279 --> 00:14:27,440
+most large enterprises i think it's fair
+
+400
+00:14:25,440 --> 00:14:29,760
+to say that they operate in some kind of
+
+401
+00:14:27,440 --> 00:14:32,320
+the wild wild west mode where
+
+402
+00:14:29,760 --> 00:14:35,440
+applications exchange data in a
+
+403
+00:14:32,320 --> 00:14:37,120
+hodgepodge of different formats
+
+404
+00:14:35,440 --> 00:14:38,800
+and from a whole from a high level
+
+405
+00:14:37,120 --> 00:14:40,320
+perspective or even the low level
+
+406
+00:14:38,800 --> 00:14:41,600
+perspective as a developer to be honest
+
+407
+00:14:40,320 --> 00:14:43,600
+with you the
+
+408
+00:14:41,600 --> 00:14:46,480
+the whole thing is is a complete
+
+409
+00:14:43,600 --> 00:14:48,880
+nightmare of different technologies and
+
+410
+00:14:46,480 --> 00:14:48,880
+um
+
+411
+00:14:49,519 --> 00:14:53,440
+and just basically a disorganized
+
+412
+00:14:52,160 --> 00:14:55,519
+mess
+
+413
+00:14:53,440 --> 00:14:56,959
+to see this i don't know how many of you
+
+414
+00:14:55,519 --> 00:15:00,480
+are technical but if you've ever seen
+
+415
+00:14:56,959 --> 00:15:02,480
+like a kind of information flow of of
+
+416
+00:15:00,480 --> 00:15:04,800
+your company or just one department
+
+417
+00:15:02,480 --> 00:15:07,839
+within your company you'll know exactly
+
+418
+00:15:04,800 --> 00:15:07,839
+what i'm talking about
+
+419
+00:15:07,920 --> 00:15:13,199
+so let's turn to the centralized
+
+420
+00:15:10,959 --> 00:15:14,959
+model then so the one that we we kind of
+
+421
+00:15:13,199 --> 00:15:17,760
+looked at in the initial couple of
+
+422
+00:15:14,959 --> 00:15:20,720
+slides and and then
+
+423
+00:15:17,760 --> 00:15:23,199
+to be honest like the centralized the
+
+424
+00:15:20,720 --> 00:15:24,480
+the centralized model of organization
+
+425
+00:15:23,199 --> 00:15:26,639
+in general i sort of find something
+
+426
+00:15:24,480 --> 00:15:30,079
+slightly creepy about that but
+
+427
+00:15:26,639 --> 00:15:32,720
+when we turn to looking at the central
+
+428
+00:15:30,079 --> 00:15:36,079
+date central model for data integration
+
+429
+00:15:32,720 --> 00:15:38,079
+then scary efficiency really is the very
+
+430
+00:15:36,079 --> 00:15:39,199
+last of our concerns
+
+431
+00:15:38,079 --> 00:15:41,120
+and
+
+432
+00:15:39,199 --> 00:15:43,120
+my message here is it doesn't seem to
+
+433
+00:15:41,120 --> 00:15:46,320
+matter what you put in the center here
+
+434
+00:15:43,120 --> 00:15:48,639
+be it a data warehouse or a data lake or
+
+435
+00:15:46,320 --> 00:15:50,800
+perhaps controversially a
+
+436
+00:15:48,639 --> 00:15:53,440
+an enterprise knowledge graph
+
+437
+00:15:50,800 --> 00:15:55,279
+it's the centralized system just can't
+
+438
+00:15:53,440 --> 00:15:57,440
+seem to
+
+439
+00:15:55,279 --> 00:16:01,040
+connect more than a very small
+
+440
+00:15:57,440 --> 00:16:02,800
+percentage of the overall company's data
+
+441
+00:16:01,040 --> 00:16:05,759
+and if you think about it
+
+442
+00:16:02,800 --> 00:16:06,720
+then it kind of makes logical sense
+
+443
+00:16:05,759 --> 00:16:09,360
+because
+
+444
+00:16:06,720 --> 00:16:11,120
+these guys are like the ussr guys
+
+445
+00:16:09,360 --> 00:16:12,399
+trying to plan the bread supply for the
+
+446
+00:16:11,120 --> 00:16:14,800
+whole country
+
+447
+00:16:12,399 --> 00:16:18,079
+there's just no way that this central
+
+448
+00:16:14,800 --> 00:16:19,839
+store can pull and organize
+
+449
+00:16:18,079 --> 00:16:21,360
+all the data from thousands upon
+
+450
+00:16:19,839 --> 00:16:24,399
+thousands like literally somewhere
+
+451
+00:16:21,360 --> 00:16:25,839
+between five five uh fifty to seventy
+
+452
+00:16:24,399 --> 00:16:27,440
+thousand
+
+453
+00:16:25,839 --> 00:16:30,240
+different separate systems there's just
+
+454
+00:16:27,440 --> 00:16:32,480
+no way that the centralized system can
+
+455
+00:16:30,240 --> 00:16:34,880
+can contain all that complexity within
+
+456
+00:16:32,480 --> 00:16:37,680
+itself when each one often is quite
+
+457
+00:16:34,880 --> 00:16:39,920
+highly complex in its own right
+
+458
+00:16:37,680 --> 00:16:42,079
+anyway here's the bottom line after 20
+
+459
+00:16:39,920 --> 00:16:45,199
+years of dedicated
+
+460
+00:16:42,079 --> 00:16:46,959
+or more really um effort the the
+
+461
+00:16:45,199 --> 00:16:48,880
+centralized approach is just hasn't been
+
+462
+00:16:46,959 --> 00:16:51,839
+able to link more than a small
+
+463
+00:16:48,880 --> 00:16:54,800
+percentage of the overall company's data
+
+464
+00:16:51,839 --> 00:16:55,920
+meanwhile the ai revolution is unfolding
+
+465
+00:16:54,800 --> 00:16:58,320
+around us
+
+466
+00:16:55,920 --> 00:17:00,720
+and the clock's ticking so
+
+467
+00:16:58,320 --> 00:17:05,120
+let's think about a pivot here
+
+468
+00:17:00,720 --> 00:17:08,079
+let's apply the decentralized model to
+
+469
+00:17:05,120 --> 00:17:10,640
+data integration in a decentralized data
+
+470
+00:17:08,079 --> 00:17:13,360
+mesh applications publish and consume
+
+471
+00:17:10,640 --> 00:17:16,079
+data in a standard structure
+
+472
+00:17:13,360 --> 00:17:18,160
+so data stays where it is but then it's
+
+473
+00:17:16,079 --> 00:17:20,640
+exposed in the standardized layer it's
+
+474
+00:17:18,160 --> 00:17:22,000
+it's it's published rather than pulled
+
+475
+00:17:20,640 --> 00:17:26,480
+and individual applications are
+
+476
+00:17:22,000 --> 00:17:26,480
+responsible for linking to each other
+
+477
+00:17:26,720 --> 00:17:31,600
+in this way responsibility for the data
+
+478
+00:17:29,280 --> 00:17:33,919
+integration is pushed down into the
+
+479
+00:17:31,600 --> 00:17:35,360
+individual applications who after all
+
+480
+00:17:33,919 --> 00:17:37,039
+let's face it are the experts in their
+
+481
+00:17:35,360 --> 00:17:39,039
+own data and already know how they
+
+482
+00:17:37,039 --> 00:17:40,320
+connect to each other in the spaghetti
+
+483
+00:17:39,039 --> 00:17:43,039
+ball
+
+484
+00:17:40,320 --> 00:17:44,559
+so so here i i like to ask a question
+
+485
+00:17:43,039 --> 00:17:47,120
+you know could
+
+486
+00:17:44,559 --> 00:17:48,880
+could this model do better than the the
+
+487
+00:17:47,120 --> 00:17:50,640
+one percent of connection could it come
+
+488
+00:17:48,880 --> 00:17:52,880
+close to connecting all of the data all
+
+489
+00:17:50,640 --> 00:17:55,280
+of a company's data together and then i
+
+490
+00:17:52,880 --> 00:17:56,799
+think well
+
+491
+00:17:55,280 --> 00:17:59,120
+imagine that the ceo of a large
+
+492
+00:17:56,799 --> 00:18:00,640
+enterprise said within the next six
+
+493
+00:17:59,120 --> 00:18:02,400
+months i want every single one of these
+
+494
+00:18:00,640 --> 00:18:05,039
+applications to publish their data
+
+495
+00:18:02,400 --> 00:18:07,120
+according to a standard this standard
+
+496
+00:18:05,039 --> 00:18:08,720
+form and then where they connect to each
+
+497
+00:18:07,120 --> 00:18:10,400
+other i want you to form links between
+
+498
+00:18:08,720 --> 00:18:12,080
+each other go off and do it each one of
+
+499
+00:18:10,400 --> 00:18:13,280
+you it's my number one priority make it
+
+500
+00:18:12,080 --> 00:18:15,120
+happen
+
+501
+00:18:13,280 --> 00:18:16,080
+within six months could the resulting
+
+502
+00:18:15,120 --> 00:18:18,880
+effort
+
+503
+00:18:16,080 --> 00:18:20,080
+uh bring all of the data into a unified
+
+504
+00:18:18,880 --> 00:18:22,240
+whole
+
+505
+00:18:20,080 --> 00:18:24,080
+well i don't know about six months but
+
+506
+00:18:22,240 --> 00:18:25,440
+in a way i think it sort of could it
+
+507
+00:18:24,080 --> 00:18:27,360
+would be rough and
+
+508
+00:18:25,440 --> 00:18:28,880
+and messy at first
+
+509
+00:18:27,360 --> 00:18:31,679
+but if you set up
+
+510
+00:18:28,880 --> 00:18:33,760
+what i'm calling uh like the right
+
+511
+00:18:31,679 --> 00:18:34,720
+internal data market
+
+512
+00:18:33,760 --> 00:18:37,039
+then
+
+513
+00:18:34,720 --> 00:18:39,840
+with a bit of luck and and skill
+
+514
+00:18:37,039 --> 00:18:42,000
+hopefully the motor of decentralizations
+
+515
+00:18:39,840 --> 00:18:43,360
+fire up just like it did with the bread
+
+516
+00:18:42,000 --> 00:18:46,000
+supply chain
+
+517
+00:18:43,360 --> 00:18:49,600
+and a clean and connected
+
+518
+00:18:46,000 --> 00:18:51,520
+data layer would would would arise
+
+519
+00:18:49,600 --> 00:18:54,400
+so i'll leave you to
+
+520
+00:18:51,520 --> 00:18:54,400
+think about that one
+
+521
+00:18:54,960 --> 00:18:57,840
+okay so having looked at
+
+522
+00:18:56,280 --> 00:19:00,400
+decentralization
+
+523
+00:18:57,840 --> 00:19:03,039
+we can now turn back to the more
+
+524
+00:19:00,400 --> 00:19:05,200
+intuitive concept of graphs because of
+
+525
+00:19:03,039 --> 00:19:06,559
+course this standard structure that
+
+526
+00:19:05,200 --> 00:19:08,640
+we're going to ask each of the
+
+527
+00:19:06,559 --> 00:19:10,160
+applications to publish in is the very
+
+528
+00:19:08,640 --> 00:19:12,320
+same one that we talked about before
+
+529
+00:19:10,160 --> 00:19:14,000
+these simple three-part statements so
+
+530
+00:19:12,320 --> 00:19:16,960
+each one of these applications
+
+531
+00:19:14,000 --> 00:19:18,480
+publishing up the three-part statements
+
+532
+00:19:16,960 --> 00:19:20,559
+and
+
+533
+00:19:18,480 --> 00:19:22,480
+they're therefore making available just
+
+534
+00:19:20,559 --> 00:19:23,440
+their part of the graph
+
+535
+00:19:22,480 --> 00:19:27,280
+and then
+
+536
+00:19:23,440 --> 00:19:30,080
+where uh the data a data item from from
+
+537
+00:19:27,280 --> 00:19:31,039
+one of these applications links
+
+538
+00:19:30,080 --> 00:19:32,799
+uh
+
+539
+00:19:31,039 --> 00:19:35,120
+to the data in another one of the
+
+540
+00:19:32,799 --> 00:19:36,480
+applications then the applications
+
+541
+00:19:35,120 --> 00:19:40,559
+create links
+
+542
+00:19:36,480 --> 00:19:44,400
+between each other and therefore our
+
+543
+00:19:40,559 --> 00:19:44,400
+decentralized graph
+
+544
+00:19:47,360 --> 00:19:51,039
+okay
+
+545
+00:19:49,120 --> 00:19:52,960
+so we've kind of like talked in the
+
+546
+00:19:51,039 --> 00:19:55,679
+hypotheticals but down to like a more
+
+547
+00:19:52,960 --> 00:19:57,120
+realistic level like how this still
+
+548
+00:19:55,679 --> 00:19:58,720
+sounds very nice but what would it
+
+549
+00:19:57,120 --> 00:20:00,559
+actually look like to implement
+
+550
+00:19:58,720 --> 00:20:02,799
+something like this and i can't tell you
+
+551
+00:20:00,559 --> 00:20:04,559
+all of that over this this this
+
+552
+00:20:02,799 --> 00:20:05,760
+talk now but but let me give you an
+
+553
+00:20:04,559 --> 00:20:07,440
+intuition
+
+554
+00:20:05,760 --> 00:20:08,880
+because
+
+555
+00:20:07,440 --> 00:20:10,880
+think about the web
+
+556
+00:20:08,880 --> 00:20:13,600
+it's the most successful integration
+
+557
+00:20:10,880 --> 00:20:15,840
+project in human history i would claim
+
+558
+00:20:13,600 --> 00:20:17,600
+it can sort of connected information
+
+559
+00:20:15,840 --> 00:20:19,679
+you've got products
+
+560
+00:20:17,600 --> 00:20:21,120
+on there financial instruments you know
+
+561
+00:20:19,679 --> 00:20:23,120
+you've got facts you've got photos
+
+562
+00:20:21,120 --> 00:20:25,280
+you've got music people have bursted up
+
+563
+00:20:23,120 --> 00:20:27,840
+masterpieces it's it's almost like the
+
+564
+00:20:25,280 --> 00:20:30,000
+near sum of human knowledge
+
+565
+00:20:27,840 --> 00:20:32,799
+it's spread out across the entire planet
+
+566
+00:20:30,000 --> 00:20:34,400
+possible through a browser window and in
+
+567
+00:20:32,799 --> 00:20:37,600
+short i believe
+
+568
+00:20:34,400 --> 00:20:41,679
+that is a proven model for large-scale
+
+569
+00:20:37,600 --> 00:20:41,679
+complex information integration
+
+570
+00:20:43,120 --> 00:20:46,159
+so
+
+571
+00:20:43,919 --> 00:20:48,559
+from a technical perspective we can view
+
+572
+00:20:46,159 --> 00:20:50,960
+the web as a decentralized graph of
+
+573
+00:20:48,559 --> 00:20:53,600
+connected documents
+
+574
+00:20:50,960 --> 00:20:54,799
+and as i've hopefully laid out
+
+575
+00:20:53,600 --> 00:20:57,679
+that this
+
+576
+00:20:54,799 --> 00:20:59,760
+has the potential to revolutionize data
+
+577
+00:20:57,679 --> 00:21:02,640
+into integration
+
+578
+00:20:59,760 --> 00:21:05,200
+so this is the cool thing here i think
+
+579
+00:21:02,640 --> 00:21:07,840
+that the web gives us everything to
+
+580
+00:21:05,200 --> 00:21:11,159
+create all of these building
+
+581
+00:21:07,840 --> 00:21:12,799
+blocks are there already to create this
+
+582
+00:21:11,159 --> 00:21:15,120
+decentralized
+
+583
+00:21:12,799 --> 00:21:17,039
+knowledge graph
+
+584
+00:21:15,120 --> 00:21:19,760
+put more simply the tools of the web to
+
+585
+00:21:17,039 --> 00:21:21,919
+connect all of the near some of the data
+
+586
+00:21:19,760 --> 00:21:23,840
+within an enterprise together so that
+
+587
+00:21:21,919 --> 00:21:25,520
+just like with a web
+
+588
+00:21:23,840 --> 00:21:28,000
+browser through a single
+
+589
+00:21:25,520 --> 00:21:28,000
+lens
+
+590
+00:21:28,960 --> 00:21:32,720
+let's drill into the
+
+591
+00:21:30,799 --> 00:21:36,159
+so so on the web technology we've got
+
+592
+00:21:32,720 --> 00:21:38,240
+some core things p servers
+
+593
+00:21:36,159 --> 00:21:40,480
+uh we have html
+
+594
+00:21:38,240 --> 00:21:42,400
+and then we have hyperlinks
+
+595
+00:21:40,480 --> 00:21:45,039
+and that means that anybody can publish
+
+596
+00:21:42,400 --> 00:21:47,520
+up their document and connect it to
+
+597
+00:21:45,039 --> 00:21:49,440
+someone else's document regardless
+
+598
+00:21:47,520 --> 00:21:52,400
+whether that person is living next door
+
+599
+00:21:49,440 --> 00:21:54,320
+or is on the other side of the world
+
+600
+00:21:52,400 --> 00:21:57,440
+and you used to
+
+601
+00:21:54,320 --> 00:22:00,559
+just describe the web as it is some of
+
+602
+00:21:57,440 --> 00:22:02,240
+you is that over the last few years some
+
+603
+00:22:00,559 --> 00:22:04,480
+incredibly clever people have worked
+
+604
+00:22:02,240 --> 00:22:09,280
+really really hard
+
+605
+00:22:04,480 --> 00:22:12,720
+to use these energy servers and urls
+
+606
+00:22:09,280 --> 00:22:14,960
+and hyperlinks but data so to give you
+
+607
+00:22:12,720 --> 00:22:16,640
+an intuition on that then currently if
+
+608
+00:22:14,960 --> 00:22:18,720
+you click on a link you get back the web
+
+609
+00:22:16,640 --> 00:22:20,960
+equivalent of a word document and with
+
+610
+00:22:18,720 --> 00:22:24,559
+the tech that these guys have created
+
+611
+00:22:20,960 --> 00:22:26,880
+you can click on a link and get back the
+
+612
+00:22:24,559 --> 00:22:29,440
+web equivalent of the next welcome links
+
+613
+00:22:26,880 --> 00:22:33,919
+to another
+
+614
+00:22:29,440 --> 00:22:38,559
+then we use a hyperlink to connect them
+
+615
+00:22:33,919 --> 00:22:42,400
+so at the heart of this idea is the url
+
+616
+00:22:38,559 --> 00:22:44,080
+each data item gets its own unique url
+
+617
+00:22:42,400 --> 00:22:46,320
+and then
+
+618
+00:22:44,080 --> 00:22:47,919
+so just just look like each web page
+
+619
+00:22:46,320 --> 00:22:50,400
+does on the web
+
+620
+00:22:47,919 --> 00:22:52,559
+after idea to write it um
+
+621
+00:22:50,400 --> 00:22:55,520
+we use the url of that data item to
+
+622
+00:22:52,559 --> 00:22:57,679
+create a hyperlink now
+
+623
+00:22:55,520 --> 00:23:00,000
+this is data integration on the web
+
+624
+00:22:57,679 --> 00:23:02,320
+scale and most people don't know their
+
+625
+00:23:00,000 --> 00:23:04,320
+third yeah that's a third of all web
+
+626
+00:23:02,320 --> 00:23:06,240
+pages now containing these little
+
+627
+00:23:04,320 --> 00:23:08,720
+islands of data
+
+628
+00:23:06,240 --> 00:23:11,440
+and google and and
+
+629
+00:23:08,720 --> 00:23:11,440
+facebook are
+
+630
+00:23:11,600 --> 00:23:18,080
+crawling the web and ld out of these so
+
+631
+00:23:14,400 --> 00:23:18,080
+that's in a third of all web pages
+
+632
+00:23:19,679 --> 00:23:23,760
+but
+
+633
+00:23:21,360 --> 00:23:26,159
+wait a second if
+
+634
+00:23:23,760 --> 00:23:28,240
+web scale is built why not take this
+
+635
+00:23:26,159 --> 00:23:29,760
+exact same detect
+
+636
+00:23:28,240 --> 00:23:32,080
+and
+
+637
+00:23:29,760 --> 00:23:33,400
+bring in the enterprise firewall
+
+638
+00:23:32,080 --> 00:23:36,559
+it gives us
+
+639
+00:23:33,400 --> 00:23:40,480
+everything that we need across
+
+640
+00:23:36,559 --> 00:23:40,480
+enterprises knowledge graphs
+
+641
+00:23:43,279 --> 00:23:48,000
+let's let's notation level for a second
+
+642
+00:23:45,919 --> 00:23:49,600
+what would this look like well
+
+643
+00:23:48,000 --> 00:23:52,080
+first of all
+
+644
+00:23:49,600 --> 00:23:54,799
+above each application you'd give it its
+
+645
+00:23:52,080 --> 00:23:58,559
+own little data website
+
+646
+00:23:54,799 --> 00:23:59,919
+so your p server and it publishes its
+
+647
+00:23:58,559 --> 00:24:04,240
+key date
+
+648
+00:23:59,919 --> 00:24:06,559
+the w3c standard rdf which is nothing
+
+649
+00:24:04,240 --> 00:24:08,720
+different than those three little uh
+
+650
+00:24:06,559 --> 00:24:11,039
+statements that create our distributed
+
+651
+00:24:08,720 --> 00:24:13,440
+graph
+
+652
+00:24:11,039 --> 00:24:14,559
+and they give each data item a unique
+
+653
+00:24:13,440 --> 00:24:17,559
+url
+
+654
+00:24:14,559 --> 00:24:17,559
+so
+
+655
+00:24:18,159 --> 00:24:23,120
+the
+
+656
+00:24:19,240 --> 00:24:25,039
+applications part of the
+
+657
+00:24:23,120 --> 00:24:28,480
+and then they're respond connecting and
+
+658
+00:24:25,039 --> 00:24:31,440
+linking together with each other
+
+659
+00:24:28,480 --> 00:24:33,840
+uh resolvable url you're
+
+660
+00:24:31,440 --> 00:24:36,159
+cells
+
+661
+00:24:33,840 --> 00:24:37,760
+this architect's scaleless like the web
+
+662
+00:24:36,159 --> 00:24:40,000
+is the scale of the list you can just
+
+663
+00:24:37,760 --> 00:24:42,559
+keep on adding web servers and
+
+664
+00:24:40,000 --> 00:24:44,799
+that's exactly what you can do here is
+
+665
+00:24:42,559 --> 00:24:46,559
+and it's simply exposed out in this vast
+
+666
+00:24:44,799 --> 00:24:47,919
+connected network
+
+667
+00:24:46,559 --> 00:24:49,320
+and it's this
+
+668
+00:24:47,919 --> 00:24:52,559
+centers it's the
+
+669
+00:24:49,320 --> 00:24:54,880
+application them today for integration
+
+670
+00:24:52,559 --> 00:24:54,880
+work
+
+671
+00:24:57,760 --> 00:25:02,000
+download all of the web into your web
+
+672
+00:24:59,919 --> 00:25:04,880
+browser
+
+673
+00:25:02,000 --> 00:25:07,360
+user or an application doesn't need to
+
+674
+00:25:04,880 --> 00:25:11,039
+have or for that matter doesn't even
+
+675
+00:25:07,360 --> 00:25:12,320
+have the right rights to access all
+
+676
+00:25:11,039 --> 00:25:13,679
+rights
+
+677
+00:25:12,320 --> 00:25:15,360
+and
+
+678
+00:25:13,679 --> 00:25:18,080
+the candlestick level we could view this
+
+679
+00:25:15,360 --> 00:25:20,520
+as splitting the graph we've got this
+
+680
+00:25:18,080 --> 00:25:23,520
+vast slo
+
+681
+00:25:20,520 --> 00:25:25,360
+distributed graph available by the data
+
+682
+00:25:23,520 --> 00:25:27,600
+website publication
+
+683
+00:25:25,360 --> 00:25:30,080
+and then we've got a simple fast compact
+
+684
+00:25:27,600 --> 00:25:32,159
+graphs where
+
+685
+00:25:30,080 --> 00:25:33,360
+the
+
+686
+00:25:32,159 --> 00:25:35,279
+um
+
+687
+00:25:33,360 --> 00:25:38,840
+user is basically just getting the
+
+688
+00:25:35,279 --> 00:25:38,840
+subgroup there
+
+689
+00:25:42,080 --> 00:25:45,919
+connecting the
+
+690
+00:25:43,760 --> 00:25:47,120
+information
+
+691
+00:25:45,919 --> 00:25:50,880
+the web
+
+692
+00:25:47,120 --> 00:25:52,240
+has made humanity more powerful i think
+
+693
+00:25:50,880 --> 00:25:54,480
+and
+
+694
+00:25:52,240 --> 00:25:57,360
+we can say that that
+
+695
+00:25:54,480 --> 00:26:00,559
+not everything about the web is good
+
+696
+00:25:57,360 --> 00:26:02,480
+but i think undeniably a species level
+
+697
+00:26:00,559 --> 00:26:05,520
+by creating this rich network of
+
+698
+00:26:02,480 --> 00:26:08,320
+connections it's made humans
+
+699
+00:26:05,520 --> 00:26:10,640
+fast it's made us
+
+700
+00:26:08,320 --> 00:26:13,919
+more efficient and it's made us more
+
+701
+00:26:10,640 --> 00:26:13,919
+adaptable to change
+
+702
+00:26:14,240 --> 00:26:16,799
+now
+
+703
+00:26:15,200 --> 00:26:18,720
+when we look at the data integration
+
+704
+00:26:16,799 --> 00:26:22,320
+problem and we look at the data that
+
+705
+00:26:18,720 --> 00:26:24,080
+exists within our large enterprise the
+
+706
+00:26:22,320 --> 00:26:26,480
+problem can of course appear to be
+
+707
+00:26:24,080 --> 00:26:28,080
+insurmountable and for me to be coming
+
+708
+00:26:26,480 --> 00:26:29,840
+on here and talking about connecting the
+
+709
+00:26:28,080 --> 00:26:32,559
+near some of that
+
+710
+00:26:29,840 --> 00:26:33,360
+case uh an enterprise's data hole can
+
+711
+00:26:32,559 --> 00:26:36,960
+seem
+
+712
+00:26:33,360 --> 00:26:36,960
+ridiculous and somewhat silly
+
+713
+00:26:37,039 --> 00:26:42,240
+but all i would say to you
+
+714
+00:26:39,360 --> 00:26:44,240
+is knows that it is possible to connect
+
+715
+00:26:42,240 --> 00:26:47,200
+information at scale
+
+716
+00:26:44,240 --> 00:26:48,000
+it gives us a model for success
+
+717
+00:26:47,200 --> 00:26:49,520
+so
+
+718
+00:26:48,000 --> 00:26:52,640
+what do we have to do well we take the
+
+719
+00:26:49,520 --> 00:26:54,720
+standardized battle hardened tech stack
+
+720
+00:26:52,640 --> 00:26:56,960
+that runs the web
+
+721
+00:26:54,720 --> 00:26:59,120
+and we apply in the boundary of our
+
+722
+00:26:56,960 --> 00:27:01,360
+enterprise firewall
+
+723
+00:26:59,120 --> 00:27:03,360
+the result of that would be
+
+724
+00:27:01,360 --> 00:27:05,120
+a decentralized enterprise knowledge
+
+725
+00:27:03,360 --> 00:27:07,039
+graph that is capable of integrating the
+
+726
+00:27:05,120 --> 00:27:10,799
+near sum of all of your data together
+
+727
+00:27:07,039 --> 00:27:10,799
+into a richly connected network
+
+728
+00:27:11,360 --> 00:27:16,240
+and then connecting your
+
+729
+00:27:13,520 --> 00:27:18,720
+data will make your enterprise
+
+730
+00:27:16,240 --> 00:27:22,159
+faster more efficient
+
+731
+00:27:18,720 --> 00:27:25,520
+you'll make it more adaptable to change
+
+732
+00:27:22,159 --> 00:27:27,039
+in short it'll make it more powerful and
+
+733
+00:27:25,520 --> 00:27:28,240
+much better position
+
+734
+00:27:27,039 --> 00:27:29,360
+for
+
+735
+00:27:28,240 --> 00:27:33,159
+the
+
+736
+00:27:29,360 --> 00:27:33,159
+coming ai army
+
+737
+00:27:34,640 --> 00:27:39,799
+and that's
+
+738
+00:27:35,760 --> 00:27:39,799
+that's me finished there
+
+739
+00:27:52,960 --> 00:27:56,000
+a good looking slide some people asked
+
+740
+00:27:54,559 --> 00:27:57,600
+how did you actually produce those
+
+741
+00:27:56,000 --> 00:27:59,600
+slides
+
+742
+00:27:57,600 --> 00:28:01,600
+they are they're hand written
+
+743
+00:27:59,600 --> 00:28:04,080
+it it
+
+744
+00:28:01,600 --> 00:28:05,919
+i guess it shows my how obsessed that uh
+
+745
+00:28:04,080 --> 00:28:06,960
+that i've been with uh with this subject
+
+746
+00:28:05,919 --> 00:28:10,240
+that uh
+
+747
+00:28:06,960 --> 00:28:12,559
+i'd have lovingly hand drawn them
+
+748
+00:28:10,240 --> 00:28:14,159
+i thought so but you know i just i just
+
+749
+00:28:12,559 --> 00:28:16,559
+figured i'd ask many people were
+
+750
+00:28:14,159 --> 00:28:18,320
+actually curious so another question
+
+751
+00:28:16,559 --> 00:28:22,080
+that we got
+
+752
+00:28:18,320 --> 00:28:25,120
+was whether you can actually recommend a
+
+753
+00:28:22,080 --> 00:28:27,120
+technical stack for uh for working for
+
+754
+00:28:25,120 --> 00:28:29,360
+implementing this this vision that you
+
+755
+00:28:27,120 --> 00:28:31,360
+outlined and specifically using open
+
+756
+00:28:29,360 --> 00:28:33,440
+source tools uh something that you're
+
+757
+00:28:31,360 --> 00:28:35,520
+familiar with that you have worked with
+
+758
+00:28:33,440 --> 00:28:37,200
+and you can recommend
+
+759
+00:28:35,520 --> 00:28:38,720
+yeah so
+
+760
+00:28:37,200 --> 00:28:40,159
+so um
+
+761
+00:28:38,720 --> 00:28:42,559
+one of the good things is there is a lot
+
+762
+00:28:40,159 --> 00:28:45,840
+of open source here so if you were if
+
+763
+00:28:42,559 --> 00:28:46,799
+you were looking to create your
+
+764
+00:28:45,840 --> 00:28:48,480
+uh
+
+765
+00:28:46,799 --> 00:28:50,960
+sort of data website and your data
+
+766
+00:28:48,480 --> 00:28:53,279
+consumer you could do a lot worse than
+
+767
+00:28:50,960 --> 00:28:55,760
+uh look at the initiative that's
+
+768
+00:28:53,279 --> 00:28:58,240
+currently being led by tim berners-lee
+
+769
+00:28:55,760 --> 00:28:59,679
+which is the solid initiative so it's
+
+770
+00:28:58,240 --> 00:29:02,159
+it's out on the web they're thinking
+
+771
+00:28:59,679 --> 00:29:05,200
+about it in terms of uh
+
+772
+00:29:02,159 --> 00:29:05,200
+uh um
+
+773
+00:29:06,799 --> 00:29:11,279
+allowing data sharing uh for individuals
+
+774
+00:29:09,440 --> 00:29:14,799
+out on the web but it provides a pretty
+
+775
+00:29:11,279 --> 00:29:17,840
+good model uh as a starter there
+
+776
+00:29:14,799 --> 00:29:20,640
+then in pretty much every language
+
+777
+00:29:17,840 --> 00:29:22,480
+that you can name you will find http
+
+778
+00:29:20,640 --> 00:29:24,320
+servers
+
+779
+00:29:22,480 --> 00:29:26,559
+and you will also find libraries for
+
+780
+00:29:24,320 --> 00:29:28,640
+working with rdf
+
+781
+00:29:26,559 --> 00:29:31,360
+and manipulating that
+
+782
+00:29:28,640 --> 00:29:33,279
+um those libraries will include stores
+
+783
+00:29:31,360 --> 00:29:34,080
+for querying the data
+
+784
+00:29:33,279 --> 00:29:35,120
+but
+
+785
+00:29:34,080 --> 00:29:36,159
+you
+
+786
+00:29:35,120 --> 00:29:38,640
+uh
+
+787
+00:29:36,159 --> 00:29:40,480
+ultimately if you you kind of start
+
+788
+00:29:38,640 --> 00:29:42,720
+pushing the boundaries of that and want
+
+789
+00:29:40,480 --> 00:29:45,200
+to have a lot of information in in one
+
+790
+00:29:42,720 --> 00:29:47,520
+of these these nodes you will probably
+
+791
+00:29:45,200 --> 00:29:49,440
+will want to turn to a commercial
+
+792
+00:29:47,520 --> 00:29:52,080
+uh what they call triple store at that
+
+793
+00:29:49,440 --> 00:29:53,120
+point of which there is a vibrant market
+
+794
+00:29:52,080 --> 00:29:54,720
+um
+
+795
+00:29:53,120 --> 00:29:56,640
+developing
+
+796
+00:29:54,720 --> 00:29:58,399
+yeah yeah i was going to say
+
+797
+00:29:56,640 --> 00:30:00,559
+that yes solid is really a great
+
+798
+00:29:58,399 --> 00:30:03,039
+initiative even though at this point
+
+799
+00:30:00,559 --> 00:30:05,200
+it's not really production ready i mean
+
+800
+00:30:03,039 --> 00:30:07,279
+we have seen some some use cases
+
+801
+00:30:05,200 --> 00:30:09,120
+recently presented by
+
+802
+00:30:07,279 --> 00:30:11,039
+commercial entities that are using it
+
+803
+00:30:09,120 --> 00:30:14,559
+but at this point it's more proof of
+
+804
+00:30:11,039 --> 00:30:16,640
+concept than production already
+
+805
+00:30:14,559 --> 00:30:20,080
+yeah that's right
+
+806
+00:30:16,640 --> 00:30:22,240
+uh another question that we got is
+
+807
+00:30:20,080 --> 00:30:24,320
+whether well whether you can very very
+
+808
+00:30:22,240 --> 00:30:27,120
+quickly outline the difference between a
+
+809
+00:30:24,320 --> 00:30:29,200
+relational database and graph in terms
+
+810
+00:30:27,120 --> 00:30:31,760
+of the result of an application so the
+
+811
+00:30:29,200 --> 00:30:34,240
+question is that well you can query data
+
+812
+00:30:31,760 --> 00:30:36,720
+using both and you can you know to the
+
+813
+00:30:34,240 --> 00:30:38,720
+end user it may look the same
+
+814
+00:30:36,720 --> 00:30:40,720
+i i guess the answer would be that well
+
+815
+00:30:38,720 --> 00:30:43,279
+it's not as easy to integrate data and
+
+816
+00:30:40,720 --> 00:30:44,399
+that's the whole point but
+
+817
+00:30:43,279 --> 00:30:46,080
+yeah
+
+818
+00:30:44,399 --> 00:30:48,240
+um
+
+819
+00:30:46,080 --> 00:30:51,039
+yeah once you execute a query if you
+
+820
+00:30:48,240 --> 00:30:52,960
+execute a query and it's coming back in
+
+821
+00:30:51,039 --> 00:30:54,320
+tabular form i mean generally you get an
+
+822
+00:30:52,960 --> 00:30:55,760
+option of either i'm going to execute a
+
+823
+00:30:54,320 --> 00:30:58,000
+query and i'm going to bring back in
+
+824
+00:30:55,760 --> 00:31:00,480
+tabular form or i'm going to bring back
+
+825
+00:30:58,000 --> 00:31:01,919
+and basically select a sub graph so if
+
+826
+00:31:00,480 --> 00:31:03,360
+it comes back in a
+
+827
+00:31:01,919 --> 00:31:04,960
+graph form then that's a richer
+
+828
+00:31:03,360 --> 00:31:06,559
+structure that you might do like graph
+
+829
+00:31:04,960 --> 00:31:08,799
+visualizations over and that sort of
+
+830
+00:31:06,559 --> 00:31:09,760
+thing so that's kind of one difference
+
+831
+00:31:08,799 --> 00:31:11,919
+um
+
+832
+00:31:09,760 --> 00:31:13,919
+but at the table level uh not not
+
+833
+00:31:11,919 --> 00:31:16,240
+particularly different but but i think
+
+834
+00:31:13,919 --> 00:31:19,360
+you get the point there that it's that
+
+835
+00:31:16,240 --> 00:31:21,919
+for me it's the the power of the graph
+
+836
+00:31:19,360 --> 00:31:23,760
+database is that it's making connections
+
+837
+00:31:21,919 --> 00:31:26,240
+the relations between data items
+
+838
+00:31:23,760 --> 00:31:28,799
+first-class citizens and when you marry
+
+839
+00:31:26,240 --> 00:31:30,880
+that up with http and a decentralized
+
+840
+00:31:28,799 --> 00:31:32,480
+approach it gives you
+
+841
+00:31:30,880 --> 00:31:33,679
+the it gives you the kind of power you
+
+842
+00:31:32,480 --> 00:31:36,720
+need in order to connect your
+
+843
+00:31:33,679 --> 00:31:36,720
+information together
+
+844
+00:31:36,880 --> 00:31:42,320
+so one last question that that we can
+
+845
+00:31:39,840 --> 00:31:44,799
+take let me see so what's the
+
+846
+00:31:42,320 --> 00:31:46,559
+probability that the triples created by
+
+847
+00:31:44,799 --> 00:31:48,960
+different applications actually
+
+848
+00:31:46,559 --> 00:31:50,720
+communicates with different expressions
+
+849
+00:31:48,960 --> 00:31:52,159
+or different spelling i think that's
+
+850
+00:31:50,720 --> 00:31:54,799
+that's a tricky one
+
+851
+00:31:52,159 --> 00:31:56,799
+it is uh but i'd like to speak to it so
+
+852
+00:31:54,799 --> 00:31:59,440
+so um
+
+853
+00:31:56,799 --> 00:32:00,720
+this is where like this kind of idea of
+
+854
+00:31:59,440 --> 00:32:03,360
+a uh
+
+855
+00:32:00,720 --> 00:32:05,919
+creating a a a
+
+856
+00:32:03,360 --> 00:32:07,600
+an internal data market so
+
+857
+00:32:05,919 --> 00:32:10,720
+um
+
+858
+00:32:07,600 --> 00:32:12,559
+it's by no means the end of the job for
+
+859
+00:32:10,720 --> 00:32:14,559
+the people in the centralized data and
+
+860
+00:32:12,559 --> 00:32:16,000
+architecture teams they've got a big job
+
+861
+00:32:14,559 --> 00:32:19,039
+in front of them now
+
+862
+00:32:16,000 --> 00:32:21,039
+it's just kind of changed so so now
+
+863
+00:32:19,039 --> 00:32:22,720
+we're talking about okay we're going to
+
+864
+00:32:21,039 --> 00:32:24,960
+push this data integration problem out
+
+865
+00:32:22,720 --> 00:32:26,480
+to the entire organization and let
+
+866
+00:32:24,960 --> 00:32:28,399
+everybody get involved in it so we're
+
+867
+00:32:26,480 --> 00:32:30,240
+going to let users kind of start
+
+868
+00:32:28,399 --> 00:32:31,679
+specifying the queries that they want
+
+869
+00:32:30,240 --> 00:32:34,000
+and we're going to let applications
+
+870
+00:32:31,679 --> 00:32:35,120
+start publishing the data that they hold
+
+871
+00:32:34,000 --> 00:32:37,039
+and
+
+872
+00:32:35,120 --> 00:32:38,960
+start connecting to each other but if
+
+873
+00:32:37,039 --> 00:32:41,440
+they just publish out exactly what
+
+874
+00:32:38,960 --> 00:32:43,120
+they've got then all you're doing is is
+
+875
+00:32:41,440 --> 00:32:44,880
+publishing a massive hair ball that's
+
+876
+00:32:43,120 --> 00:32:47,039
+just going to be as messy
+
+877
+00:32:44,880 --> 00:32:49,039
+it'll be connected but it will be
+
+878
+00:32:47,039 --> 00:32:51,039
+it will be it will be a disorganized
+
+879
+00:32:49,039 --> 00:32:52,640
+mess so you're not really
+
+880
+00:32:51,039 --> 00:32:55,600
+you've again run away from the problem
+
+881
+00:32:52,640 --> 00:32:57,440
+if you if you do that so so so the job
+
+882
+00:32:55,600 --> 00:32:59,360
+of the um
+
+883
+00:32:57,440 --> 00:33:00,640
+central architecture team becomes a very
+
+884
+00:32:59,360 --> 00:33:02,880
+very hard one
+
+885
+00:33:00,640 --> 00:33:05,440
+which is to kind of steward and shepherd
+
+886
+00:33:02,880 --> 00:33:07,360
+this process so they need to define like
+
+887
+00:33:05,440 --> 00:33:10,240
+uh what's called an upper ontology which
+
+888
+00:33:07,360 --> 00:33:12,240
+is basically uh like the sort of model
+
+889
+00:33:10,240 --> 00:33:15,039
+and and fundamentally this is what this
+
+890
+00:33:12,240 --> 00:33:16,960
+is part of the mindset shift that we go
+
+891
+00:33:15,039 --> 00:33:18,799
+that an enterprise kind of goes about
+
+892
+00:33:16,960 --> 00:33:20,320
+stop thinking about its data in terms of
+
+893
+00:33:18,799 --> 00:33:23,200
+the applications that are holding the
+
+894
+00:33:20,320 --> 00:33:24,720
+data and put a kind of interface over
+
+895
+00:33:23,200 --> 00:33:26,880
+the top of that which and that interface
+
+896
+00:33:24,720 --> 00:33:29,600
+is the model is the common upper
+
+897
+00:33:26,880 --> 00:33:31,120
+enterprise ontology so with
+
+898
+00:33:29,600 --> 00:33:32,720
+within these large enterprises they
+
+899
+00:33:31,120 --> 00:33:35,679
+might have
+
+900
+00:33:32,720 --> 00:33:37,600
+50 to 70 separate applications some of
+
+901
+00:33:35,679 --> 00:33:39,600
+those applications with even thousands
+
+902
+00:33:37,600 --> 00:33:41,360
+of different tables in them
+
+903
+00:33:39,600 --> 00:33:42,880
+but when you kind of boil it down to the
+
+904
+00:33:41,360 --> 00:33:44,720
+type system that's sitting in there the
+
+905
+00:33:42,880 --> 00:33:47,360
+actual entities that these things that
+
+906
+00:33:44,720 --> 00:33:50,080
+the kind of uh representing like the
+
+907
+00:33:47,360 --> 00:33:51,600
+trades or the people or the etc
+
+908
+00:33:50,080 --> 00:33:53,600
+you're probably not talking about more
+
+909
+00:33:51,600 --> 00:33:55,840
+than sort of five or six hundred com
+
+910
+00:33:53,600 --> 00:33:59,519
+concepts so it's a massive massive
+
+911
+00:33:55,840 --> 00:34:00,399
+complexity reduction to abstract away
+
+912
+00:33:59,519 --> 00:34:01,200
+the
+
+913
+00:34:00,399 --> 00:34:02,799
+uh
+
+914
+00:34:01,200 --> 00:34:04,080
+application layer
+
+915
+00:34:02,799 --> 00:34:06,559
+uh
+
+916
+00:34:04,080 --> 00:34:09,359
+and and and put in front of that this
+
+917
+00:34:06,559 --> 00:34:11,919
+nice clean connected uh model
+
+918
+00:34:09,359 --> 00:34:14,240
+um but that's the hard work
+
+919
+00:34:11,919 --> 00:34:16,560
+what what what the architecture that i
+
+920
+00:34:14,240 --> 00:34:18,960
+have laid out here provides you the
+
+921
+00:34:16,560 --> 00:34:21,359
+technical tools in order to
+
+922
+00:34:18,960 --> 00:34:22,720
+do that work so you've got the graph
+
+923
+00:34:21,359 --> 00:34:25,440
+part which allows you to do the
+
+924
+00:34:22,720 --> 00:34:26,720
+connectivity you've got the http and
+
+925
+00:34:25,440 --> 00:34:28,960
+you've got the whole web stack which
+
+926
+00:34:26,720 --> 00:34:30,000
+gives you endless scalability so those
+
+927
+00:34:28,960 --> 00:34:32,639
+things aren't going to be a problem
+
+928
+00:34:30,000 --> 00:34:34,480
+you've got the tools there but
+
+929
+00:34:32,639 --> 00:34:36,399
+it doesn't do the job for you there's
+
+930
+00:34:34,480 --> 00:34:37,839
+not some machine learning algorithm yet
+
+931
+00:34:36,399 --> 00:34:41,280
+that's going to come in and clean and
+
+932
+00:34:37,839 --> 00:34:44,159
+connect up all of your data no no that
+
+933
+00:34:41,280 --> 00:34:46,560
+that uh that job lies in front of you
+
+934
+00:34:44,159 --> 00:34:49,119
+and and hopefully the decentralization
+
+935
+00:34:46,560 --> 00:34:51,599
+process with the correct incentives
+
+936
+00:34:49,119 --> 00:34:53,040
+and the correct regulated market and and
+
+937
+00:34:51,599 --> 00:34:55,280
+the regulation of the market is coming
+
+938
+00:34:53,040 --> 00:34:57,280
+out the central data team so they are
+
+939
+00:34:55,280 --> 00:34:58,960
+they are defining these models they are
+
+940
+00:34:57,280 --> 00:35:00,960
+creating working groups of interested
+
+941
+00:34:58,960 --> 00:35:03,440
+people and getting applications to
+
+942
+00:35:00,960 --> 00:35:05,440
+publish into these models and conform to
+
+943
+00:35:03,440 --> 00:35:07,359
+this up for enterprise ontology they've
+
+944
+00:35:05,440 --> 00:35:09,200
+got to like kind of rate applications
+
+945
+00:35:07,359 --> 00:35:10,720
+and give them star ratings for the
+
+946
+00:35:09,200 --> 00:35:13,280
+quality of the data that they're doing
+
+947
+00:35:10,720 --> 00:35:16,000
+and encourage people to move towards you
+
+948
+00:35:13,280 --> 00:35:18,320
+basically have to create an ecosystem at
+
+949
+00:35:16,000 --> 00:35:19,680
+how long that will take to do you know
+
+950
+00:35:18,320 --> 00:35:22,160
+that it's a
+
+951
+00:35:19,680 --> 00:35:25,760
+it's a big job but you know it's a
+
+952
+00:35:22,160 --> 00:35:26,960
+pathway forward from where we are now
+
+953
+00:35:25,760 --> 00:35:30,079
+to where
+
+954
+00:35:26,960 --> 00:35:32,640
+we need to be
+
+955
+00:35:30,079 --> 00:35:35,280
+okay thank you yes and indeed
+
+956
+00:35:32,640 --> 00:35:37,359
+uh ontology mapping and vocabulary
+
+957
+00:35:35,280 --> 00:35:39,119
+mapping is one of the thorniest problems
+
+958
+00:35:37,359 --> 00:35:41,200
+in in this domain so there's no way we
+
+959
+00:35:39,119 --> 00:35:43,359
+could possibly address it now i think
+
+960
+00:35:41,200 --> 00:35:45,280
+we've already
+
+961
+00:35:43,359 --> 00:35:47,440
+said enough and we're already a bit over
+
+962
+00:35:45,280 --> 00:35:50,320
+time as well so we'll have to wrap up
+
+963
+00:35:47,440 --> 00:35:52,400
+thanks again and we'll try to address us
+
+964
+00:35:50,320 --> 00:35:54,880
+many of the remaining questions and
+
+965
+00:35:52,400 --> 00:35:55,839
+there's many of those offline thank you
+
+966
+00:35:54,880 --> 00:35:58,839
+thanks
+
+967
+00:35:55,839 --> 00:35:58,839
+bye
+

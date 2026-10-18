@@ -1,0 +1,2620 @@
+1
+00:00:07,850 --> 00:00:13,260
+thank you everyone and please please
+
+2
+00:00:11,010 --> 00:00:15,300
+apologize I'll be sitting down as I'm
+
+3
+00:00:13,260 --> 00:00:18,720
+currently 3d printing another human
+
+4
+00:00:15,300 --> 00:00:20,910
+being my belly so easier for me I won't
+
+5
+00:00:18,720 --> 00:00:23,090
+faint during the presentation or get out
+
+6
+00:00:20,910 --> 00:00:27,989
+of breath which I do easily nowadays
+
+7
+00:00:23,090 --> 00:00:29,399
+anyway my name is Katherine Akari I've
+
+8
+00:00:27,989 --> 00:00:31,890
+worked at saladna for two and a half
+
+9
+00:00:29,399 --> 00:00:33,630
+years now and it's actually I want to
+
+10
+00:00:31,890 --> 00:00:35,399
+thank connected data for asked me to
+
+11
+00:00:33,630 --> 00:00:37,829
+give this talk because this is really
+
+12
+00:00:35,399 --> 00:00:40,410
+the first time I'm telling and thinking
+
+13
+00:00:37,829 --> 00:00:43,260
+about the story of the past few years of
+
+14
+00:00:40,410 --> 00:00:44,940
+actually starting this whole project of
+
+15
+00:00:43,260 --> 00:00:48,480
+knowledge graphs that wasn't there
+
+16
+00:00:44,940 --> 00:00:50,850
+before at solando and how how that all
+
+17
+00:00:48,480 --> 00:00:52,739
+was so this talk is going to you I'm
+
+18
+00:00:50,850 --> 00:00:56,100
+just going to give you a small overview
+
+19
+00:00:52,739 --> 00:00:58,079
+of solando then I'm going to move on to
+
+20
+00:00:56,100 --> 00:01:01,109
+define the knowledge graph as we
+
+21
+00:00:58,079 --> 00:01:03,089
+understand it at Sandow tell you a
+
+22
+00:01:01,109 --> 00:01:06,000
+little bit about the beginning and how
+
+23
+00:01:03,089 --> 00:01:07,680
+it all started then what we have
+
+24
+00:01:06,000 --> 00:01:09,860
+actually implemented and where we're
+
+25
+00:01:07,680 --> 00:01:12,810
+seeing currently the added value and
+
+26
+00:01:09,860 --> 00:01:15,390
+just have a few pointers on enterprise
+
+27
+00:01:12,810 --> 00:01:18,899
+knowledge graphs as well which we've
+
+28
+00:01:15,390 --> 00:01:21,259
+experienced and I hope you'll maybe
+
+29
+00:01:18,899 --> 00:01:23,630
+it'll be useful for you as well if
+
+30
+00:01:21,259 --> 00:01:27,079
+especially if you're considering and
+
+31
+00:01:23,630 --> 00:01:29,939
+having a knowledge graph in your company
+
+32
+00:01:27,079 --> 00:01:34,520
+so solando at a glance here you see
+
+33
+00:01:29,939 --> 00:01:37,439
+fantastic numbers from 2017 here we are
+
+34
+00:01:34,520 --> 00:01:42,710
+europe's market leader in fashion
+
+35
+00:01:37,439 --> 00:01:47,280
+ecommerce so we sell fashion online
+
+36
+00:01:42,710 --> 00:01:49,619
+we're in 17 countries which good to note
+
+37
+00:01:47,280 --> 00:01:53,250
+because that means that we need to
+
+38
+00:01:49,619 --> 00:01:56,329
+operate in at least 12 languages we have
+
+39
+00:01:53,250 --> 00:01:59,609
+over 24 million active customers that
+
+40
+00:01:56,329 --> 00:02:04,079
+who are making over 90 millions of
+
+41
+00:01:59,609 --> 00:02:06,119
+orders so there's quite a lot of traffic
+
+42
+00:02:04,079 --> 00:02:08,580
+in terms of the kind of stock
+
+43
+00:02:06,119 --> 00:02:10,679
+availability of our products and of
+
+44
+00:02:08,580 --> 00:02:15,030
+mentioning those products we have over
+
+45
+00:02:10,679 --> 00:02:17,470
+300 thousand products available in our
+
+46
+00:02:15,030 --> 00:02:19,180
+catalog so managing all that and making
+
+47
+00:02:17,470 --> 00:02:21,400
+that accessible to our customers think
+
+48
+00:02:19,180 --> 00:02:25,870
+you defined Apple to your customers is a
+
+49
+00:02:21,400 --> 00:02:28,840
+big topic our vision is to connect
+
+50
+00:02:25,870 --> 00:02:31,960
+people with fashion I think this is
+
+51
+00:02:28,840 --> 00:02:34,330
+really aligns really nicely with how I
+
+52
+00:02:31,960 --> 00:02:37,180
+see knowledge graphs or ontologies and
+
+53
+00:02:34,330 --> 00:02:40,360
+Semantic Web in general I think it's one
+
+54
+00:02:37,180 --> 00:02:44,230
+part of human-computer interaction that
+
+55
+00:02:40,360 --> 00:02:47,080
+is not visual but it's actually based on
+
+56
+00:02:44,230 --> 00:02:51,970
+data so I see the ontology is very much
+
+57
+00:02:47,080 --> 00:02:55,570
+being kind of the human human voice if
+
+58
+00:02:51,970 --> 00:02:59,590
+you want to say in in in data and good
+
+59
+00:02:55,570 --> 00:03:04,750
+at being between people and data and
+
+60
+00:02:59,590 --> 00:03:06,990
+here it states on fashion so what do we
+
+61
+00:03:04,750 --> 00:03:09,870
+mean when we say knowledge graphs I
+
+62
+00:03:06,990 --> 00:03:14,170
+think there are always different ways of
+
+63
+00:03:09,870 --> 00:03:16,570
+understanding them and applying them for
+
+64
+00:03:14,170 --> 00:03:20,650
+us knowledge graph is mainly a name
+
+65
+00:03:16,570 --> 00:03:24,400
+directed graph of concepts that have URL
+
+66
+00:03:20,650 --> 00:03:27,519
+like identifiers and at solando we are
+
+67
+00:03:24,400 --> 00:03:31,660
+building that using RDF so the resource
+
+68
+00:03:27,519 --> 00:03:34,630
+description framework the identifiers we
+
+69
+00:03:31,660 --> 00:03:37,720
+have we are implementing the irise
+
+70
+00:03:34,630 --> 00:03:40,060
+standard but since we're who using latin
+
+71
+00:03:37,720 --> 00:03:43,720
+characters could also be the URI
+
+72
+00:03:40,060 --> 00:03:46,840
+standard and internally those
+
+73
+00:03:43,720 --> 00:03:49,720
+identifiers still work as web pages as
+
+74
+00:03:46,840 --> 00:03:51,400
+well your web pages as well with which
+
+75
+00:03:49,720 --> 00:03:55,390
+you can look up all the information
+
+76
+00:03:51,400 --> 00:03:58,840
+around that one concept like said this
+
+77
+00:03:55,390 --> 00:04:01,140
+the edges are named and directed and we
+
+78
+00:03:58,840 --> 00:04:04,470
+distinguish between two types of edges
+
+79
+00:04:01,140 --> 00:04:07,390
+structural edges such as subsumption
+
+80
+00:04:04,470 --> 00:04:10,980
+instantiation part-whole relationships
+
+81
+00:04:07,390 --> 00:04:13,540
+and associative relationships so
+
+82
+00:04:10,980 --> 00:04:16,840
+structural just means that you can like
+
+83
+00:04:13,540 --> 00:04:20,410
+do a lot of logical reasoning on top of
+
+84
+00:04:16,840 --> 00:04:24,100
+things so if somebody wants to see pumps
+
+85
+00:04:20,410 --> 00:04:25,599
+like high-heeled shoes that means that
+
+86
+00:04:24,100 --> 00:04:29,320
+they're in more embroider in this
+
+87
+00:04:25,599 --> 00:04:31,290
+context of looking at shoes in general
+
+88
+00:04:29,320 --> 00:04:34,180
+that's structural information
+
+89
+00:04:31,290 --> 00:04:36,910
+associative means that we can cross link
+
+90
+00:04:34,180 --> 00:04:39,340
+between concepts that seem to be very
+
+91
+00:04:36,910 --> 00:04:41,770
+different such as Beach and bikinis
+
+92
+00:04:39,340 --> 00:04:44,770
+so Beach is the very structurally very
+
+93
+00:04:41,770 --> 00:04:46,300
+different concept than a bikini but for
+
+94
+00:04:44,770 --> 00:04:51,880
+humans they have a very strong
+
+95
+00:04:46,300 --> 00:04:53,710
+association and so what do we use this
+
+96
+00:04:51,880 --> 00:04:56,919
+knowledge graph for we're driving mainly
+
+97
+00:04:53,710 --> 00:04:59,830
+two types of customer use cases we are
+
+98
+00:04:56,919 --> 00:05:02,500
+in we want to understand the language of
+
+99
+00:04:59,830 --> 00:05:04,330
+our customers and want to also speak the
+
+100
+00:05:02,500 --> 00:05:06,550
+language of our customers or at least
+
+101
+00:05:04,330 --> 00:05:09,520
+speak in a correct way to them in a
+
+102
+00:05:06,550 --> 00:05:11,500
+functional way and so this means in
+
+103
+00:05:09,520 --> 00:05:13,810
+search for example if a customer is
+
+104
+00:05:11,500 --> 00:05:15,870
+typing certain kind of words they might
+
+105
+00:05:13,810 --> 00:05:20,229
+be using where it's like a light-colored
+
+106
+00:05:15,870 --> 00:05:22,479
+top that fits a garden party well none
+
+107
+00:05:20,229 --> 00:05:24,520
+of those things mentioned in that search
+
+108
+00:05:22,479 --> 00:05:27,760
+query are actually in our product data
+
+109
+00:05:24,520 --> 00:05:29,710
+so if you would then try to kind of I
+
+110
+00:05:27,760 --> 00:05:32,880
+don't know elasticsearch your way around
+
+111
+00:05:29,710 --> 00:05:35,020
+deeper our data would necessarily work
+
+112
+00:05:32,880 --> 00:05:36,729
+that's why we have the knowledge graph
+
+113
+00:05:35,020 --> 00:05:41,260
+in between to interpret what
+
+114
+00:05:36,729 --> 00:05:43,510
+light-coloured means in very kind of
+
+115
+00:05:41,260 --> 00:05:46,300
+explicit manner that proc data is
+
+116
+00:05:43,510 --> 00:05:49,810
+understood and that the we're like the
+
+117
+00:05:46,300 --> 00:05:51,610
+databases can operate with and and say
+
+118
+00:05:49,810 --> 00:05:55,389
+what tops are well these are shirts
+
+119
+00:05:51,610 --> 00:05:57,520
+these are can be tank tops and so on so
+
+120
+00:05:55,389 --> 00:06:00,580
+that we can retrieve the right kind of
+
+121
+00:05:57,520 --> 00:06:02,889
+contents to our customers hopefully
+
+122
+00:06:00,580 --> 00:06:04,720
+independent mostly independent of the
+
+123
+00:06:02,889 --> 00:06:07,270
+language they use obviously it's not
+
+124
+00:06:04,720 --> 00:06:09,910
+like we're not complete and perfect yet
+
+125
+00:06:07,270 --> 00:06:12,550
+but we're getting there the other use
+
+126
+00:06:09,910 --> 00:06:14,440
+cases for browsing so depending on our
+
+127
+00:06:12,550 --> 00:06:18,639
+customers context where they find
+
+128
+00:06:14,440 --> 00:06:22,680
+themselves in we can make sure that they
+
+129
+00:06:18,639 --> 00:06:26,200
+have the best possible view of of that
+
+130
+00:06:22,680 --> 00:06:28,419
+available to them so this means also
+
+131
+00:06:26,200 --> 00:06:32,110
+that we work together with teams in the
+
+132
+00:06:28,419 --> 00:06:35,800
+lando that we're comparison ization so
+
+133
+00:06:32,110 --> 00:06:37,870
+we maybe are using our knowledge graph
+
+134
+00:06:35,800 --> 00:06:39,249
+to or maybe they are actually using the
+
+135
+00:06:37,870 --> 00:06:41,949
+knowledge graph to understand
+
+136
+00:06:39,249 --> 00:06:43,719
+and what customers prefer and when they
+
+137
+00:06:41,949 --> 00:06:45,639
+are in this certain context that view
+
+138
+00:06:43,719 --> 00:06:48,159
+might look different too to them than
+
+139
+00:06:45,639 --> 00:06:52,239
+their other other people are the
+
+140
+00:06:48,159 --> 00:06:55,779
+customers but also what we then such as
+
+141
+00:06:52,239 --> 00:06:58,329
+afterwards or how we enable them to move
+
+142
+00:06:55,779 --> 00:06:59,979
+in our shop could be driven dynamically
+
+143
+00:06:58,329 --> 00:07:01,419
+with with this knowledge graph and
+
+144
+00:06:59,979 --> 00:07:05,739
+that's currently something we are
+
+145
+00:07:01,419 --> 00:07:09,599
+working on in this knowledge graph
+
+146
+00:07:05,739 --> 00:07:12,639
+fashion concepts are at the core so
+
+147
+00:07:09,599 --> 00:07:15,159
+these fashion concepts we've designed
+
+148
+00:07:12,639 --> 00:07:17,649
+and modeled them in such a way that we
+
+149
+00:07:15,159 --> 00:07:19,509
+could in the future if you want and if
+
+150
+00:07:17,649 --> 00:07:22,779
+we have the proper business use cases
+
+151
+00:07:19,509 --> 00:07:26,009
+for it the proper endorsement from
+
+152
+00:07:22,779 --> 00:07:28,539
+management to make a schema.org
+
+153
+00:07:26,009 --> 00:07:32,079
+extension miscue underdog is really good
+
+154
+00:07:28,539 --> 00:07:33,759
+for e-commerce but like like set in
+
+155
+00:07:32,079 --> 00:07:36,279
+previous talks
+
+156
+00:07:33,759 --> 00:07:38,199
+it just has things in it and that's not
+
+157
+00:07:36,279 --> 00:07:39,999
+helpful for fashion because all we do is
+
+158
+00:07:38,199 --> 00:07:42,579
+we sell things but we want to be
+
+159
+00:07:39,999 --> 00:07:45,759
+specific of what we're we're selling so
+
+160
+00:07:42,579 --> 00:07:48,659
+we're whole fashion vocabulary could be
+
+161
+00:07:45,759 --> 00:07:51,939
+made available to the public
+
+162
+00:07:48,659 --> 00:07:56,169
+driven by us I at least I think that's
+
+163
+00:07:51,939 --> 00:07:59,399
+how at least we've prepared to do it if
+
+164
+00:07:56,169 --> 00:08:02,049
+that is reasonable the future hotel
+
+165
+00:07:59,399 --> 00:08:03,759
+another thing is we could also take this
+
+166
+00:08:02,049 --> 00:08:05,559
+fashion ontology and just have it as
+
+167
+00:08:03,759 --> 00:08:08,199
+part of the linked open data for anyone
+
+168
+00:08:05,559 --> 00:08:10,929
+to see and use and and so on so at least
+
+169
+00:08:08,199 --> 00:08:16,179
+it's we're prepared for it the knowledge
+
+170
+00:08:10,929 --> 00:08:18,429
+graph also maintains connections to the
+
+171
+00:08:16,179 --> 00:08:21,119
+contents we have at solando so these are
+
+172
+00:08:18,429 --> 00:08:23,619
+among others our products but then also
+
+173
+00:08:21,119 --> 00:08:26,049
+editorial things like blog posts about
+
+174
+00:08:23,619 --> 00:08:28,360
+those like color tops that people are
+
+175
+00:08:26,049 --> 00:08:30,849
+wearing at garden parties or any kind of
+
+176
+00:08:28,360 --> 00:08:34,569
+lifestyle lifestyle ideas and
+
+177
+00:08:30,849 --> 00:08:37,209
+collections and so on we are also
+
+178
+00:08:34,569 --> 00:08:42,129
+maintaining an application ontology to
+
+179
+00:08:37,209 --> 00:08:44,860
+drive our applications so that they know
+
+180
+00:08:42,129 --> 00:08:48,569
+how to use or what to use from those
+
+181
+00:08:44,860 --> 00:08:50,910
+fashion concepts it's it's all very
+
+182
+00:08:48,569 --> 00:08:55,629
+practical and
+
+183
+00:08:50,910 --> 00:08:58,620
+like built-in as-needed basis but it's
+
+184
+00:08:55,629 --> 00:09:00,490
+kind of fun fun to define that as well
+
+185
+00:08:58,620 --> 00:09:02,800
+and then we'll link to external
+
+186
+00:09:00,490 --> 00:09:05,470
+vocabulary so currently what I'm doing
+
+187
+00:09:02,800 --> 00:09:09,850
+is what my TV's other bottlers are doing
+
+188
+00:09:05,470 --> 00:09:12,550
+is we are connecting this our fashion
+
+189
+00:09:09,850 --> 00:09:15,430
+concepts the existing concepts via owl
+
+190
+00:09:12,550 --> 00:09:19,060
+same as properties to concepts in
+
+191
+00:09:15,430 --> 00:09:21,160
+Vicky's data for example and that's so
+
+192
+00:09:19,060 --> 00:09:24,279
+that we are at least prepared to at some
+
+193
+00:09:21,160 --> 00:09:26,860
+point look at harnessing the some of the
+
+194
+00:09:24,279 --> 00:09:28,750
+translation ideas from wiki data because
+
+195
+00:09:26,860 --> 00:09:30,490
+we need to maintain 12 languages and
+
+196
+00:09:28,750 --> 00:09:33,040
+maybe our translators don't have that
+
+197
+00:09:30,490 --> 00:09:36,250
+much time so we could also kind of get
+
+198
+00:09:33,040 --> 00:09:39,329
+it from external vocabularies why not
+
+199
+00:09:36,250 --> 00:09:43,629
+that's just one idea I'm gonna use case
+
+200
+00:09:39,329 --> 00:09:45,189
+which we could support inside the
+
+201
+00:09:43,629 --> 00:09:47,560
+company communicating the knowledge
+
+202
+00:09:45,189 --> 00:09:49,750
+graph I mean now we've defined it in in
+
+203
+00:09:47,560 --> 00:09:51,910
+a very practical way with how we see it
+
+204
+00:09:49,750 --> 00:09:53,949
+or how the team sees it and teams are
+
+205
+00:09:51,910 --> 00:09:55,089
+seeing it but communicating the
+
+206
+00:09:53,949 --> 00:09:59,069
+knowledge graph to different
+
+207
+00:09:55,089 --> 00:10:03,490
+professionals mean it is kind of tricky
+
+208
+00:09:59,069 --> 00:10:06,790
+so practice don't really care at all if
+
+209
+00:10:03,490 --> 00:10:09,910
+it's knowledge graph or an ontology or
+
+210
+00:10:06,790 --> 00:10:12,490
+if it runs on what ever graph database
+
+211
+00:10:09,910 --> 00:10:14,560
+or they really want to know is does it
+
+212
+00:10:12,490 --> 00:10:17,170
+prove the experience of our customers
+
+213
+00:10:14,560 --> 00:10:19,060
+can we like retain more customers can
+
+214
+00:10:17,170 --> 00:10:21,069
+get them back can we create awesome
+
+215
+00:10:19,060 --> 00:10:24,269
+experiences and does this make money
+
+216
+00:10:21,069 --> 00:10:27,660
+those that's all they are interested in
+
+217
+00:10:24,269 --> 00:10:29,889
+and that's how we build our arguments
+
+218
+00:10:27,660 --> 00:10:32,069
+back-end engineers have a hard time
+
+219
+00:10:29,889 --> 00:10:35,910
+understanding the open world assumption
+
+220
+00:10:32,069 --> 00:10:38,380
+so things in the graph might change and
+
+221
+00:10:35,910 --> 00:10:41,230
+there's actually no way to kind of
+
+222
+00:10:38,380 --> 00:10:45,959
+restrict the data in in knowledge graphs
+
+223
+00:10:41,230 --> 00:10:48,639
+so they we've I've already had some like
+
+224
+00:10:45,959 --> 00:10:51,040
+hallway talks about this with with
+
+225
+00:10:48,639 --> 00:10:54,040
+colleagues and it's really interesting
+
+226
+00:10:51,040 --> 00:10:58,059
+it seems to be a kind of persistent
+
+227
+00:10:54,040 --> 00:11:00,069
+problem we are mainly what we're doing
+
+228
+00:10:58,059 --> 00:11:04,060
+here is there's certain modeling
+
+229
+00:11:00,069 --> 00:11:07,090
+principles we uphold also we
+
+230
+00:11:04,060 --> 00:11:08,710
+have maintained some modeling promises
+
+231
+00:11:07,090 --> 00:11:10,780
+that this will never change so this is
+
+232
+00:11:08,710 --> 00:11:12,700
+immutable this is you can rely on nor
+
+233
+00:11:10,780 --> 00:11:15,790
+there's going to be some something else
+
+234
+00:11:12,700 --> 00:11:18,760
+happening but you will be notified and
+
+235
+00:11:15,790 --> 00:11:23,260
+then application ontology helps here
+
+236
+00:11:18,760 --> 00:11:25,270
+slightly as well also many times back
+
+237
+00:11:23,260 --> 00:11:27,040
+and engineers have some favorite Jade
+
+238
+00:11:25,270 --> 00:11:29,320
+database and it might not be a graph
+
+239
+00:11:27,040 --> 00:11:31,660
+database and they'd be like well why
+
+240
+00:11:29,320 --> 00:11:33,160
+graph databases this application this
+
+241
+00:11:31,660 --> 00:11:34,240
+use case we could solve for something
+
+242
+00:11:33,160 --> 00:11:36,730
+else as well
+
+243
+00:11:34,240 --> 00:11:38,290
+but all of the applications and all of
+
+244
+00:11:36,730 --> 00:11:41,380
+the reusability and all the future
+
+245
+00:11:38,290 --> 00:11:42,850
+applications we couldn't necessarily do
+
+246
+00:11:41,380 --> 00:11:45,970
+if we want to start with a graph
+
+247
+00:11:42,850 --> 00:11:49,350
+database here machine learning experts
+
+248
+00:11:45,970 --> 00:11:52,810
+that there are much more of enseñando
+
+249
+00:11:49,350 --> 00:11:54,520
+for them like they'd there's not much
+
+250
+00:11:52,810 --> 00:11:56,650
+knowledge they were or more knowledge
+
+251
+00:11:54,520 --> 00:11:59,380
+and needs to happen with them they
+
+252
+00:11:56,650 --> 00:12:01,840
+receive graph databases as just another
+
+253
+00:11:59,380 --> 00:12:04,120
+data source and they usually complain
+
+254
+00:12:01,840 --> 00:12:06,820
+that I have only hundreds of concepts in
+
+255
+00:12:04,120 --> 00:12:08,220
+there so they're like whoa I can't use
+
+256
+00:12:06,820 --> 00:12:12,220
+that or I need Millions
+
+257
+00:12:08,220 --> 00:12:14,950
+mmm whereas they could they would pick
+
+258
+00:12:12,220 --> 00:12:17,140
+up a book no sorry I need to do that
+
+259
+00:12:14,950 --> 00:12:19,660
+work so in the beginning when we started
+
+260
+00:12:17,140 --> 00:12:21,850
+this we had two hypotheses one was a
+
+261
+00:12:19,660 --> 00:12:23,770
+search can be improved with machine
+
+262
+00:12:21,850 --> 00:12:25,750
+learning algorithm said that was what we
+
+263
+00:12:23,770 --> 00:12:27,520
+were working on already but most
+
+264
+00:12:25,750 --> 00:12:29,580
+successful search engine seems to be
+
+265
+00:12:27,520 --> 00:12:32,350
+using this thing called knowledge graphs
+
+266
+00:12:29,580 --> 00:12:33,820
+we should explore that possibility so
+
+267
+00:12:32,350 --> 00:12:36,000
+this was also coming from upper
+
+268
+00:12:33,820 --> 00:12:39,460
+management saying is this something of
+
+269
+00:12:36,000 --> 00:12:41,920
+strategic value the other one is that is
+
+270
+00:12:39,460 --> 00:12:44,860
+is that especially for fashion is a
+
+271
+00:12:41,920 --> 00:12:47,020
+static category tree with which you can
+
+272
+00:12:44,860 --> 00:12:48,790
+find products or with which customers
+
+273
+00:12:47,020 --> 00:12:51,130
+online can find product is that the best
+
+274
+00:12:48,790 --> 00:12:53,350
+way to represent fashion contents
+
+275
+00:12:51,130 --> 00:12:55,420
+because yes you have some like physical
+
+276
+00:12:53,350 --> 00:12:57,460
+stuff happening in your clothes and
+
+277
+00:12:55,420 --> 00:12:59,410
+things like materials and colors and
+
+278
+00:12:57,460 --> 00:13:02,020
+shapes but then on the other hand
+
+279
+00:12:59,410 --> 00:13:05,800
+there's a lot of like different ways to
+
+280
+00:13:02,020 --> 00:13:08,590
+access that because maybe some items are
+
+281
+00:13:05,800 --> 00:13:11,140
+used to create a particular illusion or
+
+282
+00:13:08,590 --> 00:13:14,590
+for a certain purpose like a style to
+
+283
+00:13:11,140 --> 00:13:18,760
+conform with the formal style or or
+
+284
+00:13:14,590 --> 00:13:21,279
+bohemian style so in the beginning like
+
+285
+00:13:18,760 --> 00:13:26,890
+said there was little semantic web
+
+286
+00:13:21,279 --> 00:13:30,520
+knowledge in the company and they're the
+
+287
+00:13:26,890 --> 00:13:32,350
+kind of first comments I God was well
+
+288
+00:13:30,520 --> 00:13:34,600
+machine learning works better actually
+
+289
+00:13:32,350 --> 00:13:36,910
+surpassed my it was a colleague that now
+
+290
+00:13:34,600 --> 00:13:38,800
+is our elite and the biggest drivers of
+
+291
+00:13:36,910 --> 00:13:41,700
+Semantic Web but he said that in the
+
+292
+00:13:38,800 --> 00:13:44,500
+beginning and so I found myself
+
+293
+00:13:41,700 --> 00:13:52,360
+defending the semantic effect so much in
+
+294
+00:13:44,500 --> 00:13:54,670
+the beginning another one was that a lot
+
+295
+00:13:52,360 --> 00:13:58,360
+of question was around that it's manual
+
+296
+00:13:54,670 --> 00:14:01,150
+work will it scale if you're doing all
+
+297
+00:13:58,360 --> 00:14:04,360
+of this manually and that's when I've
+
+298
+00:14:01,150 --> 00:14:06,400
+could have applied this idea and can't
+
+299
+00:14:04,360 --> 00:14:09,339
+remember who said it but the little
+
+300
+00:14:06,400 --> 00:14:11,800
+semantic goes a long way is they like
+
+301
+00:14:09,339 --> 00:14:12,520
+one of these sentences and which I
+
+302
+00:14:11,800 --> 00:14:14,230
+really love
+
+303
+00:14:12,520 --> 00:14:16,960
+and it's true I mean we're already
+
+304
+00:14:14,230 --> 00:14:20,470
+improving search with only like 20
+
+305
+00:14:16,960 --> 00:14:22,450
+well-defined fashion concepts just the
+
+306
+00:14:20,470 --> 00:14:24,970
+gamer feel some trade secrets is
+
+307
+00:14:22,450 --> 00:14:28,020
+surprising how much a change you can do
+
+308
+00:14:24,970 --> 00:14:30,730
+with just a little bit of semantics and
+
+309
+00:14:28,020 --> 00:14:33,670
+then there was this like idea that okay
+
+310
+00:14:30,730 --> 00:14:36,580
+well I've seen ontology is being used in
+
+311
+00:14:33,670 --> 00:14:39,910
+another company whereas working at they
+
+312
+00:14:36,580 --> 00:14:43,320
+didn't work so that was that but luckily
+
+313
+00:14:39,910 --> 00:14:46,420
+we had upper management endorsement and
+
+314
+00:14:43,320 --> 00:14:49,089
+then we put up this team together that
+
+315
+00:14:46,420 --> 00:14:52,960
+was mainly consisted of back-end
+
+316
+00:14:49,089 --> 00:14:57,400
+developers and some research one product
+
+317
+00:14:52,960 --> 00:14:59,380
+guy actually a lady and so I found
+
+318
+00:14:57,400 --> 00:15:03,040
+myself doing a lot of knowledge sharing
+
+319
+00:14:59,380 --> 00:15:07,000
+on ontology z-- and the frameworks RDF
+
+320
+00:15:03,040 --> 00:15:15,040
+and the Korean language Sparkle for that
+
+321
+00:15:07,000 --> 00:15:17,410
+team picking like these things up I mean
+
+322
+00:15:15,040 --> 00:15:20,020
+getting into this topic of the whole
+
+323
+00:15:17,410 --> 00:15:21,760
+Semantic Web I mean this meant that all
+
+324
+00:15:20,020 --> 00:15:24,970
+the members of my team for them this was
+
+325
+00:15:21,760 --> 00:15:27,250
+a new topic and you can see here the
+
+326
+00:15:24,970 --> 00:15:31,510
+kind of type of skills we had in
+
+327
+00:15:27,250 --> 00:15:33,340
+in the team they old still like after
+
+328
+00:15:31,510 --> 00:15:36,310
+having this learning curve they do see
+
+329
+00:15:33,340 --> 00:15:38,830
+the added value of semantic web and
+
+330
+00:15:36,310 --> 00:15:41,160
+graph databases so we've recognized it
+
+331
+00:15:38,830 --> 00:15:44,260
+and the companies recognizing it and
+
+332
+00:15:41,160 --> 00:15:47,370
+also skeptical leads and management are
+
+333
+00:15:44,260 --> 00:15:50,530
+are seeing it now they're still like
+
+334
+00:15:47,370 --> 00:15:52,090
+someone or there's still the argument
+
+335
+00:15:50,530 --> 00:15:56,920
+that the current applications we could
+
+336
+00:15:52,090 --> 00:16:02,170
+do with other databases as well that's
+
+337
+00:15:56,920 --> 00:16:04,960
+true to some extent but then but not not
+
+338
+00:16:02,170 --> 00:16:07,120
+everywhere and so getting into this
+
+339
+00:16:04,960 --> 00:16:09,370
+topic of Semantic Web what was hard to
+
+340
+00:16:07,120 --> 00:16:10,930
+learn was actually the modeling the
+
+341
+00:16:09,370 --> 00:16:13,300
+modeling and the defining of the
+
+342
+00:16:10,930 --> 00:16:15,550
+concepts and how do you define them and
+
+343
+00:16:13,300 --> 00:16:17,830
+what do you mean with structural and in
+
+344
+00:16:15,550 --> 00:16:19,540
+what why can't I just make an instance
+
+345
+00:16:17,830 --> 00:16:21,550
+out of this why does it have to be a sub
+
+346
+00:16:19,540 --> 00:16:24,040
+class like all these small modeling
+
+347
+00:16:21,550 --> 00:16:28,470
+decisions that an oncologist is doing
+
+348
+00:16:24,040 --> 00:16:32,260
+and I was also using a kind of applied
+
+349
+00:16:28,470 --> 00:16:35,130
+applied idea of on to clean which for
+
+350
+00:16:32,260 --> 00:16:38,380
+the Semantic Web prepares frantic web
+
+351
+00:16:35,130 --> 00:16:41,620
+experts here says maybe something more
+
+352
+00:16:38,380 --> 00:16:43,660
+to most nothing on to clean is also like
+
+353
+00:16:41,620 --> 00:16:48,910
+the research paper on it is really hard
+
+354
+00:16:43,660 --> 00:16:51,339
+to read so we've applied it and these
+
+355
+00:16:48,910 --> 00:16:53,950
+were like these are the things that were
+
+356
+00:16:51,339 --> 00:16:56,890
+hard to understand and the question is
+
+357
+00:16:53,950 --> 00:16:59,110
+still like how can we make sure that if
+
+358
+00:16:56,890 --> 00:17:01,180
+we do a certain kind of modeling and how
+
+359
+00:16:59,110 --> 00:17:03,880
+do you base your modeling decisions that
+
+360
+00:17:01,180 --> 00:17:06,160
+it will work in all applications and so
+
+361
+00:17:03,880 --> 00:17:08,800
+on all these kind of different questions
+
+362
+00:17:06,160 --> 00:17:11,500
+that you can see here but it was easy to
+
+363
+00:17:08,800 --> 00:17:13,480
+learn as maybe because everyone's back
+
+364
+00:17:11,500 --> 00:17:17,350
+into it or the team is very back in TV
+
+365
+00:17:13,480 --> 00:17:20,709
+is spot was Parker or is still Sparkle
+
+366
+00:17:17,350 --> 00:17:22,959
+and RDF and even TTL there's different
+
+367
+00:17:20,709 --> 00:17:25,990
+that simulation that's a serialization
+
+368
+00:17:22,959 --> 00:17:28,449
+we are using and even graph databases in
+
+369
+00:17:25,990 --> 00:17:30,850
+itself how they work so so no problems
+
+370
+00:17:28,449 --> 00:17:36,790
+there really it's more like the idea of
+
+371
+00:17:30,850 --> 00:17:39,820
+the modeling in anthologies so what the
+
+372
+00:17:36,790 --> 00:17:41,140
+team really likes in in Semantic Web and
+
+373
+00:17:39,820 --> 00:17:45,190
+getting into this topic
+
+374
+00:17:41,140 --> 00:17:47,350
+they actually really like Sparkle it's
+
+375
+00:17:45,190 --> 00:17:50,170
+kind of fun to see it and the the next
+
+376
+00:17:47,350 --> 00:17:52,540
+one on list R is the the idea of
+
+377
+00:17:50,170 --> 00:17:55,720
+intellect interlinked nests all ready on
+
+378
+00:17:52,540 --> 00:17:58,960
+data level how seemingly very different
+
+379
+00:17:55,720 --> 00:18:01,360
+things are now connecting via our
+
+380
+00:17:58,960 --> 00:18:05,370
+fashion concepts that we've defined in
+
+381
+00:18:01,360 --> 00:18:08,460
+the graph and yeah that's been really
+
+382
+00:18:05,370 --> 00:18:10,600
+fun to see so what we have have we
+
+383
+00:18:08,460 --> 00:18:13,750
+implemented so far obviously the
+
+384
+00:18:10,600 --> 00:18:16,390
+knowledge graph on a graph database and
+
+385
+00:18:13,750 --> 00:18:18,550
+then tooling with which this the fashion
+
+386
+00:18:16,390 --> 00:18:20,020
+concepts that we maintain can be linked
+
+387
+00:18:18,550 --> 00:18:23,200
+to cylinder contents
+
+388
+00:18:20,020 --> 00:18:26,440
+we've also like mentioned implemented a
+
+389
+00:18:23,200 --> 00:18:29,790
+looker site for for all the fashion
+
+390
+00:18:26,440 --> 00:18:34,420
+concepts tooling to manage translations
+
+391
+00:18:29,790 --> 00:18:36,310
+17 countries very important and data
+
+392
+00:18:34,420 --> 00:18:39,250
+dashboard with which we can see the
+
+393
+00:18:36,310 --> 00:18:42,340
+performance of our concepts plus that
+
+394
+00:18:39,250 --> 00:18:45,970
+noise visualization which is very static
+
+395
+00:18:42,340 --> 00:18:48,430
+now but it actually moves and jumps and
+
+396
+00:18:45,970 --> 00:18:52,060
+it's really cool everybody loves to see
+
+397
+00:18:48,430 --> 00:18:54,340
+it where do we see the most value in in
+
+398
+00:18:52,060 --> 00:18:57,310
+the graph we are actually measuring a
+
+399
+00:18:54,340 --> 00:19:01,420
+significant improvement we are making
+
+400
+00:18:57,310 --> 00:19:06,040
+money with with search that is powered
+
+401
+00:19:01,420 --> 00:19:08,230
+by the graph and the fashion fashion
+
+402
+00:19:06,040 --> 00:19:09,970
+concepts we've defined don't only fetch
+
+403
+00:19:08,230 --> 00:19:11,770
+products but they fetch all this
+
+404
+00:19:09,970 --> 00:19:14,320
+different kind of contents like
+
+405
+00:19:11,770 --> 00:19:18,280
+editorials so the making making up a
+
+406
+00:19:14,320 --> 00:19:22,900
+view on a website for us now is much
+
+407
+00:19:18,280 --> 00:19:25,150
+easier certain learnings and I have more
+
+408
+00:19:22,900 --> 00:19:27,910
+slides than I have time so I hope I'll
+
+409
+00:19:25,150 --> 00:19:30,130
+have time to go through all of these but
+
+410
+00:19:27,910 --> 00:19:32,890
+the graph contents is a peer reviewed
+
+411
+00:19:30,130 --> 00:19:35,080
+and this means that we actually
+
+412
+00:19:32,890 --> 00:19:37,420
+maintaining the fashion concepts as well
+
+413
+00:19:35,080 --> 00:19:41,560
+as the application ontology in a github
+
+414
+00:19:37,420 --> 00:19:45,180
+repository upon which we do pull
+
+415
+00:19:41,560 --> 00:19:48,100
+requests and we merged them to master
+
+416
+00:19:45,180 --> 00:19:49,990
+through before I principle so they need
+
+417
+00:19:48,100 --> 00:19:52,390
+to be approved and the modeling
+
+418
+00:19:49,990 --> 00:19:54,520
+principles that I talked about earlier
+
+419
+00:19:52,390 --> 00:19:54,790
+to make back-end developers make things
+
+420
+00:19:54,520 --> 00:19:57,370
+too
+
+421
+00:19:54,790 --> 00:19:59,290
+for Pocket developers is that we yes
+
+422
+00:19:57,370 --> 00:20:04,300
+like I said adapt it on the clean
+
+423
+00:19:59,290 --> 00:20:06,760
+principle in terms of modeling we are
+
+424
+00:20:04,300 --> 00:20:08,530
+checking consistency in terms of the
+
+425
+00:20:06,760 --> 00:20:12,700
+contents that each fashion concept
+
+426
+00:20:08,530 --> 00:20:15,940
+serves and the modeling is done as
+
+427
+00:20:12,700 --> 00:20:19,210
+needed basis so we are building the
+
+428
+00:20:15,940 --> 00:20:21,730
+graph for each use case it's a use case
+
+429
+00:20:19,210 --> 00:20:24,190
+first but first we have a use case and
+
+430
+00:20:21,730 --> 00:20:25,750
+then we have the modeling but obviously
+
+431
+00:20:24,190 --> 00:20:31,090
+with the hand side that this still can
+
+432
+00:20:25,750 --> 00:20:34,180
+be reused for other use cases we do not
+
+433
+00:20:31,090 --> 00:20:36,010
+store the contents that we serve in the
+
+434
+00:20:34,180 --> 00:20:38,800
+knowledge graph this might be very
+
+435
+00:20:36,010 --> 00:20:41,080
+surprising but we cannot store it in the
+
+436
+00:20:38,800 --> 00:20:44,260
+knowledge graph the stock and
+
+437
+00:20:41,080 --> 00:20:47,230
+availability information of the products
+
+438
+00:20:44,260 --> 00:20:48,910
+we sell changes so fast all the time
+
+439
+00:20:47,230 --> 00:20:52,660
+that a knowledge graph is not the
+
+440
+00:20:48,910 --> 00:20:55,720
+efficient way to do it so it's
+
+441
+00:20:52,660 --> 00:20:59,170
+impossible what we do store is we store
+
+442
+00:20:55,720 --> 00:21:02,110
+the rules with which you can call api's
+
+443
+00:20:59,170 --> 00:21:05,260
+to retrieve the product for each fashion
+
+444
+00:21:02,110 --> 00:21:07,600
+concept and then other services use
+
+445
+00:21:05,260 --> 00:21:10,150
+those rules to then write this
+
+446
+00:21:07,600 --> 00:21:12,490
+information onto the products in their
+
+447
+00:21:10,150 --> 00:21:15,070
+services if they need it and then other
+
+448
+00:21:12,490 --> 00:21:18,730
+services are using that again to drive
+
+449
+00:21:15,070 --> 00:21:21,520
+search for example so we are yeah just
+
+450
+00:21:18,730 --> 00:21:25,360
+an integral one data layer part of a
+
+451
+00:21:21,520 --> 00:21:26,410
+micro service infrastructure you
+
+452
+00:21:25,360 --> 00:21:28,600
+probably want to know what graph
+
+453
+00:21:26,410 --> 00:21:30,940
+database we are using both using Amazon
+
+454
+00:21:28,600 --> 00:21:33,930
+mint would it start with very
+
+455
+00:21:30,940 --> 00:21:37,420
+interesting but slightly slightly failed
+
+456
+00:21:33,930 --> 00:21:41,800
+idea of building our own triple store on
+
+457
+00:21:37,420 --> 00:21:43,780
+the atomic but they moved very fast to
+
+458
+00:21:41,800 --> 00:21:45,580
+using place graph knowing that Amazon
+
+459
+00:21:43,780 --> 00:21:49,420
+map to is going to come and it's based
+
+460
+00:21:45,580 --> 00:21:53,080
+on place craft here's an interesting
+
+461
+00:21:49,420 --> 00:21:55,500
+story how did we decrease the latency in
+
+462
+00:21:53,080 --> 00:21:58,180
+one of in several of our applications
+
+463
+00:21:55,500 --> 00:22:00,130
+but one this is example from one
+
+464
+00:21:58,180 --> 00:22:02,950
+application we have actually really
+
+465
+00:22:00,130 --> 00:22:05,140
+complex modeling sorry about that on
+
+466
+00:22:02,950 --> 00:22:08,410
+what actually is a fashion concept and
+
+467
+00:22:05,140 --> 00:22:11,470
+based on the modeling what is a fashion
+
+468
+00:22:08,410 --> 00:22:14,560
+it is implied that explicitly said and
+
+469
+00:22:11,470 --> 00:22:17,410
+so the sparkle queries which application
+
+470
+00:22:14,560 --> 00:22:20,440
+ontology can be really complex which
+
+471
+00:22:17,410 --> 00:22:22,860
+leads to latency so it's a lot of unions
+
+472
+00:22:20,440 --> 00:22:26,590
+and so on and joins and stuff like this
+
+473
+00:22:22,860 --> 00:22:30,670
+so we actually maintain we use rules and
+
+474
+00:22:26,590 --> 00:22:33,100
+we maintain and invert triples stored in
+
+475
+00:22:30,670 --> 00:22:36,010
+named graphs that we rewrite on each
+
+476
+00:22:33,100 --> 00:22:38,860
+time the graph changes and this way we
+
+477
+00:22:36,010 --> 00:22:42,340
+got this nice job in let's see which was
+
+478
+00:22:38,860 --> 00:22:51,330
+once do I have time for this one this is
+
+479
+00:22:42,340 --> 00:22:54,880
+the final story yeah well I mean I just
+
+480
+00:22:51,330 --> 00:22:57,910
+that's great that's true but so what
+
+481
+00:22:54,880 --> 00:22:58,600
+does Beyonce and gdpr have to do with
+
+482
+00:22:57,910 --> 00:23:01,180
+each other
+
+483
+00:22:58,600 --> 00:23:03,880
+Beyonce was my go-to example when we
+
+484
+00:23:01,180 --> 00:23:07,470
+started knowledge graphs because it was
+
+485
+00:23:03,880 --> 00:23:09,790
+one of the top top no top research
+
+486
+00:23:07,470 --> 00:23:11,860
+search queries that our customer were
+
+487
+00:23:09,790 --> 00:23:14,860
+doing that was because she launched a
+
+488
+00:23:11,860 --> 00:23:16,930
+brand called Ivy Park nobody remembers a
+
+489
+00:23:14,860 --> 00:23:20,470
+new brand but they do remember Beyonce
+
+490
+00:23:16,930 --> 00:23:23,170
+so be like Beyonce and then Salon de
+
+491
+00:23:20,470 --> 00:23:26,560
+wouldn't be able to give any products
+
+492
+00:23:23,170 --> 00:23:29,380
+for that until certain things were fixed
+
+493
+00:23:26,560 --> 00:23:30,970
+and I was back then or again well if you
+
+494
+00:23:29,380 --> 00:23:32,680
+would have knowledge graph this would be
+
+495
+00:23:30,970 --> 00:23:34,960
+solved and we could understand and
+
+496
+00:23:32,680 --> 00:23:37,660
+Beyonce means in fashion concept in
+
+497
+00:23:34,960 --> 00:23:45,400
+fashion world means now serve IV part
+
+498
+00:23:37,660 --> 00:23:48,360
+clothes but currently legal is very
+
+499
+00:23:45,400 --> 00:23:52,120
+legal departments very strict on GD P R
+
+500
+00:23:48,360 --> 00:23:53,860
+so we're not really sure if we can store
+
+501
+00:23:52,120 --> 00:23:58,510
+that kind of thing without making really
+
+502
+00:23:53,860 --> 00:24:00,640
+strong GDP R's GDP are safe keeps around
+
+503
+00:23:58,510 --> 00:24:03,550
+our knowledge graph so currently we're
+
+504
+00:24:00,640 --> 00:24:07,330
+not sorry any kind of people's first
+
+505
+00:24:03,550 --> 00:24:10,750
+names in the graph but um it's just a
+
+506
+00:24:07,330 --> 00:24:13,030
+kind of fun story to sum it up our
+
+507
+00:24:10,750 --> 00:24:14,800
+knowledge graph at solando is satisfying
+
+508
+00:24:13,030 --> 00:24:17,890
+use cases use cases first
+
+509
+00:24:14,800 --> 00:24:19,990
+it's peer reviewed and adapted to a
+
+510
+00:24:17,890 --> 00:24:22,300
+micro service landscape
+
+511
+00:24:19,990 --> 00:24:25,570
+and the knowledge graph at convenience
+
+512
+00:24:22,300 --> 00:24:28,470
+for customers and drives the dynamic
+
+513
+00:24:25,570 --> 00:24:39,700
+shop experience that's the story and
+
+514
+00:24:28,470 --> 00:24:41,530
+that's my talk thank you for a doc first
+
+515
+00:24:39,700 --> 00:24:44,590
+I have to comment that you're very brave
+
+516
+00:24:41,530 --> 00:24:48,880
+when using ontong clean Congrats it's a
+
+517
+00:24:44,590 --> 00:24:51,220
+quite challenging methodology to explain
+
+518
+00:24:48,880 --> 00:24:54,520
+well and you mentioned the beginning
+
+519
+00:24:51,220 --> 00:24:56,020
+that your users may ask things in the
+
+520
+00:24:54,520 --> 00:24:59,350
+form of a question for example I would
+
+521
+00:24:56,020 --> 00:25:02,050
+like a top that goes that is good for
+
+522
+00:24:59,350 --> 00:25:04,870
+the beats or for some garden party etc
+
+523
+00:25:02,050 --> 00:25:07,150
+this reminds me of question answering
+
+524
+00:25:04,870 --> 00:25:10,360
+rather than just assessing with key
+
+525
+00:25:07,150 --> 00:25:12,730
+words have you thought or are you in
+
+526
+00:25:10,360 --> 00:25:14,440
+your plans to start facilitating via the
+
+527
+00:25:12,730 --> 00:25:15,970
+knowledge graph and of course other NLP
+
+528
+00:25:14,440 --> 00:25:19,750
+techniques some kind of question
+
+529
+00:25:15,970 --> 00:25:22,960
+answering instead of just instead of
+
+530
+00:25:19,750 --> 00:25:27,160
+merely transforming words into concepts
+
+531
+00:25:22,960 --> 00:25:29,500
+and then just doing any research we I
+
+532
+00:25:27,160 --> 00:25:31,630
+mean it depends really what customers
+
+533
+00:25:29,500 --> 00:25:33,760
+want they don't really necessarily want
+
+534
+00:25:31,630 --> 00:25:36,700
+an answer to that they want to see
+
+535
+00:25:33,760 --> 00:25:39,520
+products when they sew so they very
+
+536
+00:25:36,700 --> 00:25:42,520
+quickly want to get them to see clothes
+
+537
+00:25:39,520 --> 00:25:44,500
+and products so here we will probably
+
+538
+00:25:42,520 --> 00:25:47,110
+opt for no we're not investing in
+
+539
+00:25:44,500 --> 00:25:49,750
+answering questions but definitely if
+
+540
+00:25:47,110 --> 00:25:51,610
+that kind of use case comes up like what
+
+541
+00:25:49,750 --> 00:25:54,160
+should I in general wear for a garden
+
+542
+00:25:51,610 --> 00:25:56,679
+party then maybe this knowledge graph
+
+543
+00:25:54,160 --> 00:25:59,190
+could be used to drive exactly that kind
+
+544
+00:25:56,679 --> 00:25:59,190
+of use case
+
+545
+00:26:03,700 --> 00:26:08,690
+hi thank you very much you mentioned
+
+546
+00:26:06,290 --> 00:26:10,430
+that he were able to measure the impact
+
+547
+00:26:08,690 --> 00:26:13,190
+at the ontology changes and the
+
+548
+00:26:10,430 --> 00:26:16,250
+introduction of knowledge grant in the
+
+549
+00:26:13,190 --> 00:26:18,050
+application how did you measure it and
+
+550
+00:26:16,250 --> 00:26:21,530
+how did you decouple it from other
+
+551
+00:26:18,050 --> 00:26:26,840
+changes application new features book
+
+552
+00:26:21,530 --> 00:26:28,640
+fixing a be testing so if like you have
+
+553
+00:26:26,840 --> 00:26:31,430
+to a variant where knowledge graphs are
+
+554
+00:26:28,640 --> 00:26:33,200
+not used and then you of the fashion
+
+555
+00:26:31,430 --> 00:26:35,390
+concepts and then you have to be various
+
+556
+00:26:33,200 --> 00:26:37,250
+so this is her search for example the B
+
+557
+00:26:35,390 --> 00:26:38,929
+variant where in this we know that in
+
+558
+00:26:37,250 --> 00:26:41,660
+this interpretation of a search query
+
+559
+00:26:38,929 --> 00:26:45,350
+the knowledge of a fashion concept was
+
+560
+00:26:41,660 --> 00:26:47,720
+used so then we would like in all the
+
+561
+00:26:45,350 --> 00:26:50,030
+cases where we use them and this is how
+
+562
+00:26:47,720 --> 00:26:51,470
+much people were in it ended up buying
+
+563
+00:26:50,030 --> 00:26:53,350
+things or clicking on them and
+
+564
+00:26:51,470 --> 00:26:56,450
+interacting with them and then we
+
+565
+00:26:53,350 --> 00:26:58,429
+calculated the difference so it's an
+
+566
+00:26:56,450 --> 00:27:03,950
+estimate really but a/b testing is what
+
+567
+00:26:58,429 --> 00:27:05,809
+we're using mainly thank you thanks for
+
+568
+00:27:03,950 --> 00:27:08,330
+the talk I live in Switzerland and I buy
+
+569
+00:27:05,809 --> 00:27:11,120
+a lot from Sahand oh it's good to know
+
+570
+00:27:08,330 --> 00:27:14,030
+that actually it's powered by eleven
+
+571
+00:27:11,120 --> 00:27:15,050
+linked data the question I have is how
+
+572
+00:27:14,030 --> 00:27:17,900
+did this all start
+
+573
+00:27:15,050 --> 00:27:19,670
+who at what part of the organization
+
+574
+00:27:17,900 --> 00:27:24,290
+decided that now we're going to
+
+575
+00:27:19,670 --> 00:27:27,710
+introduce a knowledge graph I happen to
+
+576
+00:27:24,290 --> 00:27:29,540
+have lunch with a VP because my
+
+577
+00:27:27,710 --> 00:27:32,780
+colleague said you should talk with him
+
+578
+00:27:29,540 --> 00:27:34,790
+and he got really excited to know that I
+
+579
+00:27:32,780 --> 00:27:37,490
+have actually somebody who knows about
+
+580
+00:27:34,790 --> 00:27:39,590
+Semantic Web because he apparently had
+
+581
+00:27:37,490 --> 00:27:42,740
+been looking for people who know about
+
+582
+00:27:39,590 --> 00:27:45,050
+the Semantic Web so when he found me or
+
+583
+00:27:42,740 --> 00:27:49,450
+when we found each other that's where we
+
+584
+00:27:45,050 --> 00:27:49,450
+started to kind of build the team
+
+585
+00:27:50,200 --> 00:27:55,460
+because in his previous company and he
+
+586
+00:27:53,570 --> 00:27:57,590
+saw the benefit of knowledge graphs and
+
+587
+00:27:55,460 --> 00:28:00,790
+he wanted strategically to surface Iran
+
+588
+00:27:57,590 --> 00:28:00,790
+to explore that as well
+
+589
+00:28:03,590 --> 00:28:07,890
+great doc thanks you said that you put
+
+590
+00:28:06,390 --> 00:28:10,440
+together a team of back-end engineers
+
+591
+00:28:07,890 --> 00:28:12,600
+and some research engineers did you
+
+592
+00:28:10,440 --> 00:28:15,539
+repurpose in-house talent or did you
+
+593
+00:28:12,600 --> 00:28:17,309
+recruit specifically for this at that
+
+594
+00:28:15,539 --> 00:28:19,200
+time we were recruiting anyway in
+
+595
+00:28:17,309 --> 00:28:22,529
+Helsinki in the Helsinki take up quite a
+
+596
+00:28:19,200 --> 00:28:24,630
+lot so in already an interview questions
+
+597
+00:28:22,529 --> 00:28:29,250
+we would ask for kind of readiness and
+
+598
+00:28:24,630 --> 00:28:31,320
+interest in this but we did source
+
+599
+00:28:29,250 --> 00:28:33,179
+in-house talent as well like people
+
+600
+00:28:31,320 --> 00:28:35,789
+would switch from teams to others and
+
+601
+00:28:33,179 --> 00:28:37,470
+was it difficult for some that weren't
+
+602
+00:28:35,789 --> 00:28:39,090
+specifically previously involved in
+
+603
+00:28:37,470 --> 00:28:41,399
+linked data to kind of make the
+
+604
+00:28:39,090 --> 00:28:43,380
+transition or were they on board well I
+
+605
+00:28:41,399 --> 00:28:45,990
+think the use case in itself was so
+
+606
+00:28:43,380 --> 00:28:49,350
+interesting that they wouldn't be like
+
+607
+00:28:45,990 --> 00:28:54,270
+at least to like what was its EMA phobia
+
+608
+00:28:49,350 --> 00:28:57,149
+symma phobic about it but certainly
+
+609
+00:28:54,270 --> 00:29:08,340
+driving them into the topic of Semantic
+
+610
+00:28:57,149 --> 00:29:10,380
+Web was quite a lot of work I can see
+
+611
+00:29:08,340 --> 00:29:12,809
+you have a sort of virtuous circle thing
+
+612
+00:29:10,380 --> 00:29:14,669
+going on here where you're building on
+
+613
+00:29:12,809 --> 00:29:17,279
+successes that you've kind of already
+
+614
+00:29:14,669 --> 00:29:20,010
+had people are getting interested in
+
+615
+00:29:17,279 --> 00:29:22,289
+buying into what you're doing I guess my
+
+616
+00:29:20,010 --> 00:29:24,419
+question is how much work did you have
+
+617
+00:29:22,289 --> 00:29:26,789
+to do right up front before you got the
+
+618
+00:29:24,419 --> 00:29:29,010
+first benefit what was your sort of
+
+619
+00:29:26,789 --> 00:29:30,360
+minimum deliverable product that you you
+
+620
+00:29:29,010 --> 00:29:32,940
+had to do before anybody could see that
+
+621
+00:29:30,360 --> 00:29:35,340
+it was worth doing I mean we only
+
+622
+00:29:32,940 --> 00:29:39,690
+started measuring improvement and
+
+623
+00:29:35,340 --> 00:29:42,779
+success in search this autumn it's one
+
+624
+00:29:39,690 --> 00:29:44,640
+and a half years and then before that I
+
+625
+00:29:42,779 --> 00:29:48,590
+was preparing the to even start this
+
+626
+00:29:44,640 --> 00:29:51,870
+project another half years for two years
+
+627
+00:29:48,590 --> 00:29:54,179
+so not so quickly really oh yeah it's
+
+628
+00:29:51,870 --> 00:29:56,120
+now all good and fun but you know it was
+
+629
+00:29:54,179 --> 00:30:06,720
+a lot of blood and tears before that
+
+630
+00:29:56,120 --> 00:30:10,919
+okay good to know thank you okay one one
+
+631
+00:30:06,720 --> 00:30:13,380
+final questions have a follow-up on the
+
+632
+00:30:10,919 --> 00:30:15,210
+skills question that was asked earlier
+
+633
+00:30:13,380 --> 00:30:16,680
+so you mentioned that one of the
+
+634
+00:30:15,210 --> 00:30:18,809
+challenges was
+
+635
+00:30:16,680 --> 00:30:21,510
+ontology modeling for the people to
+
+636
+00:30:18,809 --> 00:30:26,190
+learn then that means that also
+
+637
+00:30:21,510 --> 00:30:28,380
+engineers the ontology modeling it's not
+
+638
+00:30:26,190 --> 00:30:31,230
+really good for a company to have only a
+
+639
+00:30:28,380 --> 00:30:33,780
+few bottlenecks for modeling so we do
+
+640
+00:30:31,230 --> 00:30:34,320
+want everyone to be involved in this
+
+641
+00:30:33,780 --> 00:30:36,720
+work
+
+642
+00:30:34,320 --> 00:30:39,290
+obviously most modeling tasks do you
+
+643
+00:30:36,720 --> 00:30:42,300
+follow my desk and my colleagues desk
+
+644
+00:30:39,290 --> 00:30:46,860
+but for them to at least understand it
+
+645
+00:30:42,300 --> 00:30:49,320
+is very important and then they do model
+
+646
+00:30:46,860 --> 00:30:51,360
+the application ontology already so the
+
+647
+00:30:49,320 --> 00:30:52,620
+engineers the back-end engineers are
+
+648
+00:30:51,360 --> 00:30:55,470
+working on the application ontology
+
+649
+00:30:52,620 --> 00:30:56,820
+themselves might steal one more then it
+
+650
+00:30:55,470 --> 00:30:58,230
+means that they also had some data
+
+651
+00:30:56,820 --> 00:31:05,929
+modeling experience already
+
+652
+00:30:58,230 --> 00:31:07,110
+no no nothing no politics no thank you
+
+653
+00:31:05,929 --> 00:31:09,230
+okay
+
+654
+00:31:07,110 --> 00:31:15,730
+big thanks to Katerina
+
+655
+00:31:09,230 --> 00:31:15,730
+[Applause]
+

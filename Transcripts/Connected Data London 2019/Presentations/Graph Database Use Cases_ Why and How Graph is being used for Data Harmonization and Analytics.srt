@@ -1,0 +1,2772 @@
+1
+00:00:00,290 --> 00:00:05,970
+great to be here we this is our first
+
+2
+00:00:03,629 --> 00:00:14,009
+time at I'm going to close this door
+
+3
+00:00:05,970 --> 00:00:15,929
+because this this is our first time out
+
+4
+00:00:14,009 --> 00:00:19,380
+here at connector data London and we are
+
+5
+00:00:15,929 --> 00:00:24,510
+very excited to be here I'm joined by
+
+6
+00:00:19,380 --> 00:00:26,640
+Mike Lee Thomas cook and what we are
+
+7
+00:00:24,510 --> 00:00:29,490
+seeing quite a bit of traction missing
+
+8
+00:00:26,640 --> 00:00:32,219
+hunt percent growth rate in top-line and
+
+9
+00:00:29,490 --> 00:00:34,350
+what we want to talk about in this is
+
+10
+00:00:32,219 --> 00:00:39,410
+really talk about some of the use cases
+
+11
+00:00:34,350 --> 00:00:42,600
+and why people are adopting graph and
+
+12
+00:00:39,410 --> 00:00:46,559
+and really also get into some of the
+
+13
+00:00:42,600 --> 00:00:49,010
+myths in terms of for some of the
+
+14
+00:00:46,559 --> 00:00:53,670
+resistance which we saw in the past
+
+15
+00:00:49,010 --> 00:00:55,680
+which we now don't no longer see so with
+
+16
+00:00:53,670 --> 00:00:57,120
+that this one to give quick background
+
+17
+00:00:55,680 --> 00:01:00,870
+from where we are going to be coming
+
+18
+00:00:57,120 --> 00:01:03,870
+from we are with Cambridge semantics we
+
+19
+00:01:00,870 --> 00:01:07,409
+have two core offices in Boston and San
+
+20
+00:01:03,870 --> 00:01:09,390
+Diego though though Tom Thomas is in
+
+21
+00:01:07,409 --> 00:01:12,780
+Austin and we have places people all
+
+22
+00:01:09,390 --> 00:01:15,060
+over us and increasingly we are seeing a
+
+23
+00:01:12,780 --> 00:01:17,400
+strong demand not only in Europe but
+
+24
+00:01:15,060 --> 00:01:22,320
+also in Asia and we've got now a number
+
+25
+00:01:17,400 --> 00:01:25,799
+of customers in Europe the foundation of
+
+26
+00:01:22,320 --> 00:01:28,049
+our team is to core technology groups a
+
+27
+00:01:25,799 --> 00:01:31,799
+team that came out of IBM's Atlanta
+
+28
+00:01:28,049 --> 00:01:33,659
+internet group and another team which
+
+29
+00:01:31,799 --> 00:01:35,939
+were the founders and the technology
+
+30
+00:01:33,659 --> 00:01:37,829
+people behind the teaser they built
+
+31
+00:01:35,939 --> 00:01:40,650
+nathie's and then sold it to IBM and
+
+32
+00:01:37,829 --> 00:01:42,380
+then after that did at par Excel and
+
+33
+00:01:40,650 --> 00:01:44,820
+that's the underlying technology behind
+
+34
+00:01:42,380 --> 00:01:46,710
+redshift so people who can really deal
+
+35
+00:01:44,820 --> 00:01:50,040
+with scale and speed and enterprise
+
+36
+00:01:46,710 --> 00:01:51,720
+great performance and we've got two
+
+37
+00:01:50,040 --> 00:01:54,240
+products so the original product which
+
+38
+00:01:51,720 --> 00:01:56,939
+we started off with was anzo which is a
+
+39
+00:01:54,240 --> 00:02:00,149
+and which is still our core product
+
+40
+00:01:56,939 --> 00:02:02,340
+which is a data management data fabric
+
+41
+00:02:00,149 --> 00:02:04,680
+product which can bring in information
+
+42
+00:02:02,340 --> 00:02:06,930
+from diverse sources create knowledge
+
+43
+00:02:04,680 --> 00:02:09,270
+graphs allow for interactive data
+
+44
+00:02:06,930 --> 00:02:10,140
+discovery and then allow for self-serve
+
+45
+00:02:09,270 --> 00:02:13,710
+and
+
+46
+00:02:10,140 --> 00:02:16,050
+and as a part of that scaling and your
+
+47
+00:02:13,710 --> 00:02:18,390
+graph was the database supporting that
+
+48
+00:02:16,050 --> 00:02:20,160
+in terms of scale and then last year we
+
+49
+00:02:18,390 --> 00:02:23,460
+spun out the answer graph as a
+
+50
+00:02:20,160 --> 00:02:27,420
+standalone graph analytics database so
+
+51
+00:02:23,460 --> 00:02:31,950
+super fast highly scalable award-winning
+
+52
+00:02:27,420 --> 00:02:35,220
+database and and this talk is much more
+
+53
+00:02:31,950 --> 00:02:36,750
+geared towards Angela versus Angela so
+
+54
+00:02:35,220 --> 00:02:39,420
+if you want to learn more about Angela
+
+55
+00:02:36,750 --> 00:02:41,220
+we do have a booth and we would be happy
+
+56
+00:02:39,420 --> 00:02:43,260
+to walk you through what we're doing
+
+57
+00:02:41,220 --> 00:02:47,660
+with Angela but here we are talking much
+
+58
+00:02:43,260 --> 00:02:51,330
+more from a graph database perspective
+
+59
+00:02:47,660 --> 00:02:54,540
+so the types of use cases which we are
+
+60
+00:02:51,330 --> 00:02:55,800
+seeing really we when I went back and
+
+61
+00:02:54,540 --> 00:02:57,300
+looked at all the different use cases
+
+62
+00:02:55,800 --> 00:03:01,200
+which we're doing it I said what could
+
+63
+00:02:57,300 --> 00:03:03,180
+how what would the buckets be so and
+
+64
+00:03:01,200 --> 00:03:06,720
+therefore buckets is the data
+
+65
+00:03:03,180 --> 00:03:08,520
+harmonization data understanding Basin
+
+66
+00:03:06,720 --> 00:03:11,480
+unification site
+
+67
+00:03:08,520 --> 00:03:15,270
+it's then from there then data discovery
+
+68
+00:03:11,480 --> 00:03:17,790
+kinds of use cases data analytics and
+
+69
+00:03:15,270 --> 00:03:18,989
+then processes and one of the key
+
+70
+00:03:17,790 --> 00:03:21,420
+processes where we're seeing other
+
+71
+00:03:18,989 --> 00:03:22,980
+people make deployments is in the
+
+72
+00:03:21,420 --> 00:03:26,280
+compliance and regulatory site where
+
+73
+00:03:22,980 --> 00:03:29,640
+they're using using a graph piece there
+
+74
+00:03:26,280 --> 00:03:32,400
+and from the graph data based
+
+75
+00:03:29,640 --> 00:03:36,500
+perspective what we're really seeing is
+
+76
+00:03:32,400 --> 00:03:39,690
+really a being able to provide scale and
+
+77
+00:03:36,500 --> 00:03:41,850
+and just a package environment for being
+
+78
+00:03:39,690 --> 00:03:43,950
+able to do analytics a variety of
+
+79
+00:03:41,850 --> 00:03:46,530
+different analytics piece the
+
+80
+00:03:43,950 --> 00:03:49,170
+interesting piece which we saw is that a
+
+81
+00:03:46,530 --> 00:03:51,450
+few years back people started looking at
+
+82
+00:03:49,170 --> 00:03:54,120
+knowledge graphs and we were one of the
+
+83
+00:03:51,450 --> 00:03:55,980
+first companies in graph to really start
+
+84
+00:03:54,120 --> 00:03:58,500
+pushing the enterprise knowledge graph
+
+85
+00:03:55,980 --> 00:03:59,730
+on concept specially in pharma is where
+
+86
+00:03:58,500 --> 00:04:03,330
+we started doing that in financial
+
+87
+00:03:59,730 --> 00:04:06,510
+services and and that kind of use case
+
+88
+00:04:03,330 --> 00:04:09,239
+is much more about having common
+
+89
+00:04:06,510 --> 00:04:11,760
+business understanding of data so if you
+
+90
+00:04:09,239 --> 00:04:13,890
+look back at traditional relational
+
+91
+00:04:11,760 --> 00:04:16,930
+systems the schema and the data model
+
+92
+00:04:13,890 --> 00:04:18,880
+was understanded understandable by IT
+
+93
+00:04:16,930 --> 00:04:20,500
+understandable the machines but not
+
+94
+00:04:18,880 --> 00:04:23,080
+really business friendly and
+
+95
+00:04:20,500 --> 00:04:25,030
+understandable by businesses the
+
+96
+00:04:23,080 --> 00:04:26,500
+knowledge graph one of the key reasons
+
+97
+00:04:25,030 --> 00:04:28,660
+where people are saying is that I'm
+
+98
+00:04:26,500 --> 00:04:30,639
+going to have all this diverse data if I
+
+99
+00:04:28,660 --> 00:04:33,400
+have to always go back to IT and they
+
+100
+00:04:30,639 --> 00:04:35,710
+have to create the model then it's a
+
+101
+00:04:33,400 --> 00:04:37,270
+much more slower process and and the
+
+102
+00:04:35,710 --> 00:04:39,250
+whole bunch of reasons why I don't want
+
+103
+00:04:37,270 --> 00:04:41,080
+to go back to IOT and I said let's not
+
+104
+00:04:39,250 --> 00:04:42,430
+just do it so knowledge graph what we
+
+105
+00:04:41,080 --> 00:04:44,169
+started seeing that people started
+
+106
+00:04:42,430 --> 00:04:47,199
+saying I want to have a common business
+
+107
+00:04:44,169 --> 00:04:49,810
+understanding a canonical model so that
+
+108
+00:04:47,199 --> 00:04:51,340
+can I know what data lives where and I
+
+109
+00:04:49,810 --> 00:04:53,560
+want linkages to the different data
+
+110
+00:04:51,340 --> 00:04:57,880
+sources and I can bring information in
+
+111
+00:04:53,560 --> 00:04:59,740
+and give self-service for discovery and
+
+112
+00:04:57,880 --> 00:05:02,410
+understanding and also starting to move
+
+113
+00:04:59,740 --> 00:05:04,599
+towards doing self-service analytics but
+
+114
+00:05:02,410 --> 00:05:06,759
+today where the use case which I want to
+
+115
+00:05:04,599 --> 00:05:08,889
+focus in before I hand it over to Thomas
+
+116
+00:05:06,759 --> 00:05:11,139
+to talk about myths and other items is
+
+117
+00:05:08,889 --> 00:05:13,720
+really on the data analytics side which
+
+118
+00:05:11,139 --> 00:05:16,630
+is a key growth area so as data
+
+119
+00:05:13,720 --> 00:05:18,729
+continues to grow people are really
+
+120
+00:05:16,630 --> 00:05:21,099
+saying it's yep I can do manual data
+
+121
+00:05:18,729 --> 00:05:22,750
+discovery I can do manual data and I'll
+
+122
+00:05:21,099 --> 00:05:25,449
+take some things like that but I really
+
+123
+00:05:22,750 --> 00:05:28,030
+want that machine insight because that's
+
+124
+00:05:25,449 --> 00:05:30,220
+what's going to be more valuable so if I
+
+125
+00:05:28,030 --> 00:05:32,440
+have growing amounts of data and
+
+126
+00:05:30,220 --> 00:05:35,020
+especially with the pace at which
+
+127
+00:05:32,440 --> 00:05:38,949
+unstructured data is growing how can I
+
+128
+00:05:35,020 --> 00:05:41,169
+get insights machine based insight which
+
+129
+00:05:38,949 --> 00:05:43,270
+can make recommendations which can give
+
+130
+00:05:41,169 --> 00:05:46,570
+me a key opinion leader come toward
+
+131
+00:05:43,270 --> 00:05:49,000
+there and use that for my analytics so
+
+132
+00:05:46,570 --> 00:05:51,430
+this bottom-up way of doing it versus
+
+133
+00:05:49,000 --> 00:05:53,320
+the top-down knowledge that way is what
+
+134
+00:05:51,430 --> 00:05:54,699
+we are seeing a lot of traction there
+
+135
+00:05:53,320 --> 00:05:57,490
+and that's where people are starting to
+
+136
+00:05:54,699 --> 00:05:59,680
+use grab databases set so I want to
+
+137
+00:05:57,490 --> 00:06:02,500
+drill down on that use case we've got a
+
+138
+00:05:59,680 --> 00:06:05,949
+customer and partner in a company called
+
+139
+00:06:02,500 --> 00:06:10,630
+parabola AI typology is a cognitive
+
+140
+00:06:05,949 --> 00:06:13,150
+analytics platform and and one of the
+
+141
+00:06:10,630 --> 00:06:17,259
+solutions of the use case which they
+
+142
+00:06:13,150 --> 00:06:20,229
+built is dealing with for fund managers
+
+143
+00:06:17,259 --> 00:06:25,150
+so equity analyst equity fund managers
+
+144
+00:06:20,229 --> 00:06:27,070
+and and what's happening on a key growth
+
+145
+00:06:25,150 --> 00:06:29,340
+area for the fund managers is happening
+
+146
+00:06:27,070 --> 00:06:33,430
+is in the socially responsible investing
+
+147
+00:06:29,340 --> 00:06:35,650
+so a lot of funds are going towards
+
+148
+00:06:33,430 --> 00:06:39,159
+socially responsible investing and fund
+
+149
+00:06:35,650 --> 00:06:41,219
+managers are getting that funding for
+
+150
+00:06:39,159 --> 00:06:43,810
+doing that and unlike traditional
+
+151
+00:06:41,219 --> 00:06:46,479
+investing approaches where you looked at
+
+152
+00:06:43,810 --> 00:06:48,400
+say from a data based on look at data
+
+153
+00:06:46,479 --> 00:06:50,070
+from Bloomberg and things like that here
+
+154
+00:06:48,400 --> 00:06:52,900
+you have to add look at data not only
+
+155
+00:06:50,070 --> 00:06:56,380
+from databases which you'll get but also
+
+156
+00:06:52,900 --> 00:06:59,800
+data from from news articles from reddit
+
+157
+00:06:56,380 --> 00:07:02,529
+three filings and a whole bunch of
+
+158
+00:06:59,800 --> 00:07:05,919
+variety of sources so for a fund manager
+
+159
+00:07:02,529 --> 00:07:07,659
+to go all of that you just there's not
+
+160
+00:07:05,919 --> 00:07:09,669
+enough time and day in the world to
+
+161
+00:07:07,659 --> 00:07:12,430
+really be able to get all those access
+
+162
+00:07:09,669 --> 00:07:15,250
+and find out like okay if ExxonMobil
+
+163
+00:07:12,430 --> 00:07:17,979
+what did they do in koalicka faction or
+
+164
+00:07:15,250 --> 00:07:19,750
+coal processing plants are there some
+
+165
+00:07:17,979 --> 00:07:22,120
+issues they face in a particular area
+
+166
+00:07:19,750 --> 00:07:25,960
+was there a news article that showed up
+
+167
+00:07:22,120 --> 00:07:29,199
+in Asia relating to ExxonMobil activity
+
+168
+00:07:25,960 --> 00:07:30,909
+so that kind of data impact is very
+
+169
+00:07:29,199 --> 00:07:32,380
+important for a fund manager who is
+
+170
+00:07:30,909 --> 00:07:34,870
+investing in socially responsible
+
+171
+00:07:32,380 --> 00:07:38,440
+investing area so what parable this
+
+172
+00:07:34,870 --> 00:07:39,909
+parable has core technology in natural
+
+173
+00:07:38,440 --> 00:07:42,250
+language processing and text processing
+
+174
+00:07:39,909 --> 00:07:45,000
+and plus machine learning capability
+
+175
+00:07:42,250 --> 00:07:47,979
+rate they they created their solution
+
+176
+00:07:45,000 --> 00:07:52,000
+leveraging our hands of graph database
+
+177
+00:07:47,979 --> 00:07:53,680
+which can go out and extract entities
+
+178
+00:07:52,000 --> 00:07:57,190
+and relationships and facts from
+
+179
+00:07:53,680 --> 00:07:59,169
+different sources create a cognitive
+
+180
+00:07:57,190 --> 00:08:02,770
+model which is really an are not a
+
+181
+00:07:59,169 --> 00:08:05,860
+knowledge graph based on what the fund
+
+182
+00:08:02,770 --> 00:08:09,039
+manager has defined as the parameter is
+
+183
+00:08:05,860 --> 00:08:12,190
+important to them and that cognitive
+
+184
+00:08:09,039 --> 00:08:14,610
+model then can pull entities and facts
+
+185
+00:08:12,190 --> 00:08:16,240
+which the fund manager is interested in
+
+186
+00:08:14,610 --> 00:08:19,000
+into
+
+187
+00:08:16,240 --> 00:08:21,940
+Deportes and documents and with all the
+
+188
+00:08:19,000 --> 00:08:24,099
+problems and data lineage so if you want
+
+189
+00:08:21,940 --> 00:08:26,110
+to say ExxonMobil and it says it builds
+
+190
+00:08:24,099 --> 00:08:30,099
+out the fact and saying ExxonMobil
+
+191
+00:08:26,110 --> 00:08:31,930
+here's a spill happened in India you can
+
+192
+00:08:30,099 --> 00:08:35,289
+go to the right to the article and you
+
+193
+00:08:31,930 --> 00:08:37,659
+can see what which way it came from what
+
+194
+00:08:35,289 --> 00:08:39,640
+was the source and you can do that not
+
+195
+00:08:37,659 --> 00:08:42,430
+only by time-base but a whole different
+
+196
+00:08:39,640 --> 00:08:45,520
+set of criteria so that's a practical
+
+197
+00:08:42,430 --> 00:08:47,830
+application of how it's improving the
+
+198
+00:08:45,520 --> 00:08:49,630
+life of a fund manager and analyst and
+
+199
+00:08:47,830 --> 00:08:50,950
+those are the kinds of solutions which
+
+200
+00:08:49,630 --> 00:08:53,290
+people are doing and that's what getting
+
+201
+00:08:50,950 --> 00:08:58,870
+much more rapid traction and adoption
+
+202
+00:08:53,290 --> 00:09:01,029
+there so the piece where we're you know
+
+203
+00:08:58,870 --> 00:09:03,070
+parable already had technology is on the
+
+204
+00:09:01,029 --> 00:09:07,000
+NLP side and tech side where they
+
+205
+00:09:03,070 --> 00:09:09,490
+leveraged anzo graph and graph database
+
+206
+00:09:07,000 --> 00:09:12,520
+it's really for scale speed and also for
+
+207
+00:09:09,490 --> 00:09:15,760
+analytics capabilities so that's that
+
+208
+00:09:12,520 --> 00:09:19,630
+together is where the whole value
+
+209
+00:09:15,760 --> 00:09:21,820
+proposition come in and here's from
+
+210
+00:09:19,630 --> 00:09:23,950
+their perspective if you could talk to
+
+211
+00:09:21,820 --> 00:09:26,500
+Raj even the CEO there one of the things
+
+212
+00:09:23,950 --> 00:09:29,410
+which I had in my outline as to why why
+
+213
+00:09:26,500 --> 00:09:30,760
+us why are you selecting up a graph a
+
+214
+00:09:29,410 --> 00:09:35,350
+databases there's so many different
+
+215
+00:09:30,760 --> 00:09:37,839
+graph databases and and and a number of
+
+216
+00:09:35,350 --> 00:09:39,820
+them claim to be scalable Pisa and one
+
+217
+00:09:37,839 --> 00:09:42,100
+thing which we do a cycling owner saying
+
+218
+00:09:39,820 --> 00:09:43,390
+is that you know we we do need more
+
+219
+00:09:42,100 --> 00:09:45,520
+benchmarking across those different
+
+220
+00:09:43,390 --> 00:09:48,250
+databases so people have much better
+
+221
+00:09:45,520 --> 00:09:49,450
+idea we do we do feel that we have one
+
+222
+00:09:48,250 --> 00:09:52,709
+of the fastest and most scalable
+
+223
+00:09:49,450 --> 00:09:55,630
+database but the four criterias which
+
+224
+00:09:52,709 --> 00:09:58,810
+parable looked at was a we are native
+
+225
+00:09:55,630 --> 00:10:02,410
+graph which is very important for them
+
+226
+00:09:58,810 --> 00:10:05,380
+they're extracting information from from
+
+227
+00:10:02,410 --> 00:10:08,470
+different sources and and they're using
+
+228
+00:10:05,380 --> 00:10:11,350
+RDF and especially with unstructured
+
+229
+00:10:08,470 --> 00:10:13,029
+information having a basic graph kind of
+
+230
+00:10:11,350 --> 00:10:15,579
+infrastructure is important because it's
+
+231
+00:10:13,029 --> 00:10:17,500
+flexible as you can add more easily add
+
+232
+00:10:15,579 --> 00:10:20,490
+different data types and different data
+
+233
+00:10:17,500 --> 00:10:24,640
+sources to that second the blending of
+
+234
+00:10:20,490 --> 00:10:27,320
+analytics with graph so that you can do
+
+235
+00:10:24,640 --> 00:10:29,580
+really quick analytics
+
+236
+00:10:27,320 --> 00:10:31,980
+from a user perspective one of the
+
+237
+00:10:29,580 --> 00:10:34,860
+themes which we have in Cambridge
+
+238
+00:10:31,980 --> 00:10:37,800
+semantics is that you should not have
+
+239
+00:10:34,860 --> 00:10:40,590
+more than sub three-second responses if
+
+240
+00:10:37,800 --> 00:10:43,350
+you have more than three second response
+
+241
+00:10:40,590 --> 00:10:46,770
+then then people are going to walk away
+
+242
+00:10:43,350 --> 00:10:48,930
+from the terminal so whatever you need
+
+243
+00:10:46,770 --> 00:10:50,760
+whatever application whatever piece
+
+244
+00:10:48,930 --> 00:10:52,830
+which you build it needs to have sub
+
+245
+00:10:50,760 --> 00:10:55,410
+three-second respond so the ability to
+
+246
+00:10:52,830 --> 00:10:57,480
+being able to do and and let it's right
+
+247
+00:10:55,410 --> 00:11:01,350
+within that database was an important
+
+248
+00:10:57,480 --> 00:11:04,560
+item and ability to scale linearly scale
+
+249
+00:11:01,350 --> 00:11:07,290
+so that's a very important capability
+
+250
+00:11:04,560 --> 00:11:08,940
+right is that you can start small you
+
+251
+00:11:07,290 --> 00:11:12,780
+can start with the single server small
+
+252
+00:11:08,940 --> 00:11:15,930
+database and as your data needs expands
+
+253
+00:11:12,780 --> 00:11:19,740
+or as your you want more performance you
+
+254
+00:11:15,930 --> 00:11:21,540
+can add more servers and and and the
+
+255
+00:11:19,740 --> 00:11:24,000
+system will get faster and handle more
+
+256
+00:11:21,540 --> 00:11:26,400
+data and that's very important from a
+
+257
+00:11:24,000 --> 00:11:28,080
+business perspective because even from a
+
+258
+00:11:26,400 --> 00:11:29,580
+customer perspective they don't want to
+
+259
+00:11:28,080 --> 00:11:31,320
+spend it they don't want to size up for
+
+260
+00:11:29,580 --> 00:11:32,550
+much larger server or much larger
+
+261
+00:11:31,320 --> 00:11:35,040
+environment you want to spend more
+
+262
+00:11:32,550 --> 00:11:37,170
+improve it and then as their customers
+
+263
+00:11:35,040 --> 00:11:39,750
+and their value grows they they want to
+
+264
+00:11:37,170 --> 00:11:41,370
+be able to add so again from a parable
+
+265
+00:11:39,750 --> 00:11:43,500
+and parables customer perspective that
+
+266
+00:11:41,370 --> 00:11:46,970
+was an important element and then the
+
+267
+00:11:43,500 --> 00:11:48,900
+other piece was IDF was great for
+
+268
+00:11:46,970 --> 00:11:51,990
+understanding that they are describing
+
+269
+00:11:48,900 --> 00:11:53,610
+the data but you want to be able to have
+
+270
+00:11:51,990 --> 00:11:55,230
+other attributes you want to have ways
+
+271
+00:11:53,610 --> 00:11:57,570
+you want and that's why level property
+
+272
+00:11:55,230 --> 00:11:59,310
+graph took off so one of the things
+
+273
+00:11:57,570 --> 00:12:03,690
+which we pushed on on the standards
+
+274
+00:11:59,310 --> 00:12:05,670
+group and is really and we took where
+
+275
+00:12:03,690 --> 00:12:07,440
+what Neptune and Blaise grab started
+
+276
+00:12:05,670 --> 00:12:09,870
+initially doing is saying how can you
+
+277
+00:12:07,440 --> 00:12:11,970
+have label properties with RDF so keep
+
+278
+00:12:09,870 --> 00:12:14,670
+all the values that already have a RDF
+
+279
+00:12:11,970 --> 00:12:17,880
+has and which has all the description
+
+280
+00:12:14,670 --> 00:12:21,240
+and well elements to it but get all the
+
+281
+00:12:17,880 --> 00:12:24,630
+other values of the label properties and
+
+282
+00:12:21,240 --> 00:12:26,880
+so we started using Rd a star and
+
+283
+00:12:24,630 --> 00:12:28,800
+sparkles star the label properties on
+
+284
+00:12:26,880 --> 00:12:30,480
+top of RDF it's important to understand
+
+285
+00:12:28,800 --> 00:12:33,150
+especially if you look at different
+
+286
+00:12:30,480 --> 00:12:35,610
+groups there are vertical groups
+
+287
+00:12:33,150 --> 00:12:39,380
+which have used rdf to create vertical
+
+288
+00:12:35,610 --> 00:12:42,779
+data models so in healthcare you have
+
+289
+00:12:39,380 --> 00:12:45,810
+hl7 file which is using standards based
+
+290
+00:12:42,779 --> 00:12:49,470
+on RDF you are in pharma you have C disk
+
+291
+00:12:45,810 --> 00:12:52,430
+which is based on RDF models and
+
+292
+00:12:49,470 --> 00:12:55,290
+financial services you have fiber so and
+
+293
+00:12:52,430 --> 00:12:57,060
+those are all and and some of those are
+
+294
+00:12:55,290 --> 00:12:58,950
+getting mandated by government to be
+
+295
+00:12:57,060 --> 00:13:01,410
+used from a data exchange perspective so
+
+296
+00:12:58,950 --> 00:13:03,900
+C disk is a standard which FDA is
+
+297
+00:13:01,410 --> 00:13:06,450
+mandating that pharma companies use
+
+298
+00:13:03,900 --> 00:13:08,040
+so having ability to be able to do
+
+299
+00:13:06,450 --> 00:13:10,290
+analytics with that kind of data is
+
+300
+00:13:08,040 --> 00:13:12,029
+something which we thought important but
+
+301
+00:13:10,290 --> 00:13:13,950
+the other side of it we will look at
+
+302
+00:13:12,029 --> 00:13:18,330
+saying that you know there is a broad
+
+303
+00:13:13,950 --> 00:13:20,880
+adoption of of neo4j and other standards
+
+304
+00:13:18,330 --> 00:13:24,300
+and at the end it shouldn't matter what
+
+305
+00:13:20,880 --> 00:13:26,610
+you want what language to use and so we
+
+306
+00:13:24,300 --> 00:13:28,230
+we are going we are going to be
+
+307
+00:13:26,610 --> 00:13:30,060
+supporting open cipher we made an
+
+308
+00:13:28,230 --> 00:13:31,830
+announcement on that and that will be
+
+309
+00:13:30,060 --> 00:13:33,870
+coming soon so right on the same data
+
+310
+00:13:31,830 --> 00:13:35,580
+base you can bring in RDF you can bring
+
+311
+00:13:33,870 --> 00:13:37,320
+an open cipher and the other side and
+
+312
+00:13:35,580 --> 00:13:39,120
+then as we are saying that that
+
+313
+00:13:37,320 --> 00:13:40,860
+shouldn't be the only languages there be
+
+314
+00:13:39,120 --> 00:13:42,930
+other languages which you should be able
+
+315
+00:13:40,860 --> 00:13:44,970
+to access and get information from like
+
+316
+00:13:42,930 --> 00:13:47,040
+Python increasingly as machine learning
+
+317
+00:13:44,970 --> 00:13:51,180
+that's a area where there's a lot of
+
+318
+00:13:47,040 --> 00:13:52,920
+growth happening so again for again what
+
+319
+00:13:51,180 --> 00:13:55,320
+we are saying is that the whole land of
+
+320
+00:13:52,920 --> 00:13:57,150
+the whole area of getting into these
+
+321
+00:13:55,320 --> 00:14:02,940
+weather war fights of whether you should
+
+322
+00:13:57,150 --> 00:14:05,190
+use idea for a cipher or gremlin which
+
+323
+00:14:02,940 --> 00:14:06,630
+we should get away from that from from a
+
+324
+00:14:05,190 --> 00:14:08,730
+business perspective looking at what
+
+325
+00:14:06,630 --> 00:14:11,550
+problem are you really solving so these
+
+326
+00:14:08,730 --> 00:14:12,990
+were the four reasons which from a
+
+327
+00:14:11,550 --> 00:14:14,640
+parable and parables customer
+
+328
+00:14:12,990 --> 00:14:17,430
+perspective why they selected us and
+
+329
+00:14:14,640 --> 00:14:19,800
+what we are really focused on is going
+
+330
+00:14:17,430 --> 00:14:21,630
+to market helping drive things and there
+
+331
+00:14:19,800 --> 00:14:25,339
+are definitely myths and things like
+
+332
+00:14:21,630 --> 00:14:25,339
+that which how much will not talk about
+
+333
+00:14:27,010 --> 00:14:34,810
+a couple of different myths around graph
+
+334
+00:14:32,320 --> 00:14:36,790
+databases and I'm just curious show of
+
+335
+00:14:34,810 --> 00:14:38,260
+hands how many you you are familiar with
+
+336
+00:14:36,790 --> 00:14:40,360
+the RDF I know you've heard about it a
+
+337
+00:14:38,260 --> 00:14:42,730
+lot today but how many of you from there
+
+338
+00:14:40,360 --> 00:14:46,630
+and how many of you familiar with Rd as
+
+339
+00:14:42,730 --> 00:14:51,550
+a star okay so you got just a few
+
+340
+00:14:46,630 --> 00:14:53,440
+lessons over well so one of the first
+
+341
+00:14:51,550 --> 00:14:56,170
+myths that one talk about is is really
+
+342
+00:14:53,440 --> 00:14:59,140
+around the performance of graph I mean
+
+343
+00:14:56,170 --> 00:15:01,960
+this is graph databases we're considered
+
+344
+00:14:59,140 --> 00:15:04,030
+a niche in the past because they don't
+
+345
+00:15:01,960 --> 00:15:06,730
+scale and they don't perform well and so
+
+346
+00:15:04,030 --> 00:15:09,430
+they small you know on small data sets
+
+347
+00:15:06,730 --> 00:15:12,070
+and that type of thing it was typically
+
+348
+00:15:09,430 --> 00:15:14,110
+where they were used and then you also
+
+349
+00:15:12,070 --> 00:15:16,600
+have the breakdown between what is your
+
+350
+00:15:14,110 --> 00:15:18,820
+workload type is it oh Lt P where you're
+
+351
+00:15:16,600 --> 00:15:21,070
+running a lot of transactions or is it
+
+352
+00:15:18,820 --> 00:15:24,430
+OLAP where you're doing more analytical
+
+353
+00:15:21,070 --> 00:15:27,430
+style processing and so we are a
+
+354
+00:15:24,430 --> 00:15:31,210
+massively scalable graph database we
+
+355
+00:15:27,430 --> 00:15:33,010
+have broken the trillion tripled we've
+
+356
+00:15:31,210 --> 00:15:35,650
+done the trillion triple benchmark that
+
+357
+00:15:33,010 --> 00:15:38,170
+was over 200 nodes on Amazon Web
+
+358
+00:15:35,650 --> 00:15:40,600
+Services we published a number of
+
+359
+00:15:38,170 --> 00:15:42,310
+different benchmarks here as Alok said
+
+360
+00:15:40,600 --> 00:15:45,220
+we think there were one of the fastest
+
+361
+00:15:42,310 --> 00:15:46,960
+graph databases on the market and the
+
+362
+00:15:45,220 --> 00:15:48,940
+first benchmark I'll mention here is the
+
+363
+00:15:46,960 --> 00:15:50,830
+Lehigh University benchmark this is a
+
+364
+00:15:48,940 --> 00:15:52,840
+data load benchmark and we were a
+
+365
+00:15:50,830 --> 00:15:54,850
+hundred and thirteen times faster than
+
+366
+00:15:52,840 --> 00:15:58,450
+the previous benchmark that was
+
+367
+00:15:54,850 --> 00:16:00,520
+published in that the TPC H is a data
+
+368
+00:15:58,450 --> 00:16:06,900
+warehouse style workload TP sees a
+
+369
+00:16:00,520 --> 00:16:09,580
+database workload and is a database
+
+370
+00:16:06,900 --> 00:16:10,750
+standard for for benchmarking it's used
+
+371
+00:16:09,580 --> 00:16:12,730
+across industries that work we'll
+
+372
+00:16:10,750 --> 00:16:14,740
+teradata all these use it what we
+
+373
+00:16:12,730 --> 00:16:17,170
+converted that to Sparkle and we
+
+374
+00:16:14,740 --> 00:16:18,340
+converted it to CSV and we load it and
+
+375
+00:16:17,170 --> 00:16:20,910
+we did the same thing on one of the
+
+376
+00:16:18,340 --> 00:16:25,270
+major leading graph databases and we saw
+
+377
+00:16:20,910 --> 00:16:27,940
+217 times performance improvement over
+
+378
+00:16:25,270 --> 00:16:30,070
+that database we did the same thing on
+
+379
+00:16:27,940 --> 00:16:33,640
+spark sequel and we saw anywhere from 10
+
+380
+00:16:30,070 --> 00:16:36,700
+to 30 times faster on spark sequel and
+
+381
+00:16:33,640 --> 00:16:39,250
+then we also published some graph 500
+
+382
+00:16:36,700 --> 00:16:41,680
+benchmarks as well as some graph
+
+383
+00:16:39,250 --> 00:16:43,870
+algorithms weekly connected components
+
+384
+00:16:41,680 --> 00:16:47,019
+against some of the other vendors that
+
+385
+00:16:43,870 --> 00:16:51,190
+you can see there so that myth is is
+
+386
+00:16:47,019 --> 00:16:53,290
+basically busted there are no longer you
+
+387
+00:16:51,190 --> 00:16:56,110
+know niche databases we're doing massive
+
+388
+00:16:53,290 --> 00:16:59,920
+scale massive volumes and we're linearly
+
+389
+00:16:56,110 --> 00:17:03,070
+scalable to in in this benchmark and in
+
+390
+00:16:59,920 --> 00:17:05,319
+this benchmark for the TP CH we did it
+
+391
+00:17:03,070 --> 00:17:08,679
+against a single node against the major
+
+392
+00:17:05,319 --> 00:17:10,329
+leading database OLTP database because
+
+393
+00:17:08,679 --> 00:17:13,360
+they can only run on a single node but
+
+394
+00:17:10,329 --> 00:17:15,459
+we also did it on 40 nodes and we saw
+
+395
+00:17:13,360 --> 00:17:18,250
+linear and loot scalability so we scaled
+
+396
+00:17:15,459 --> 00:17:20,079
+up the data by 40 X and we scaled up the
+
+397
+00:17:18,250 --> 00:17:23,319
+number of nodes by 40 X and we saw
+
+398
+00:17:20,079 --> 00:17:26,350
+almost the exact same performance across
+
+399
+00:17:23,319 --> 00:17:27,910
+that so what that means is if you add 40
+
+400
+00:17:26,350 --> 00:17:29,679
+nodes and you have the same amount of
+
+401
+00:17:27,910 --> 00:17:32,679
+data your queries will run 40 times
+
+402
+00:17:29,679 --> 00:17:34,630
+faster but as your data grows or your
+
+403
+00:17:32,679 --> 00:17:41,380
+performance need grows you simply add
+
+404
+00:17:34,630 --> 00:17:58,480
+more servers yeah
+
+405
+00:17:41,380 --> 00:18:00,340
+sure there are some so in that benchmark
+
+406
+00:17:58,480 --> 00:18:02,110
+you can actually see there's a graph
+
+407
+00:18:00,340 --> 00:18:04,330
+there that shows you some of the query
+
+408
+00:18:02,110 --> 00:18:07,900
+spike because of the type of query that
+
+409
+00:18:04,330 --> 00:18:09,280
+it is it's it it is not there there are
+
+410
+00:18:07,900 --> 00:18:11,950
+certain types of queries that divorce
+
+411
+00:18:09,280 --> 00:18:14,650
+the data onto a single node but across
+
+412
+00:18:11,950 --> 00:18:16,780
+those 22 queries the majority of them
+
+413
+00:18:14,650 --> 00:18:19,630
+are they run in almost the exact same
+
+414
+00:18:16,780 --> 00:18:21,549
+time so I encourage you to download that
+
+415
+00:18:19,630 --> 00:18:23,100
+benchmark and take a look but yeah good
+
+416
+00:18:21,549 --> 00:18:29,309
+point there are certain queries that
+
+417
+00:18:23,100 --> 00:18:32,500
+they do spike like that so not only
+
+418
+00:18:29,309 --> 00:18:34,179
+we're also deployable across all cloud
+
+419
+00:18:32,500 --> 00:18:37,480
+environments so we use kubernetes and
+
+420
+00:18:34,179 --> 00:18:39,940
+helm operators and we can spin up a
+
+421
+00:18:37,480 --> 00:18:42,010
+cluster of as many nodes as you need and
+
+422
+00:18:39,940 --> 00:18:44,350
+automatically load data and run
+
+423
+00:18:42,010 --> 00:18:46,390
+workloads across those so this can
+
+424
+00:18:44,350 --> 00:18:49,690
+really save you an infrastructure cost
+
+425
+00:18:46,390 --> 00:18:51,850
+if you're if you don't need a database
+
+426
+00:18:49,690 --> 00:18:53,919
+up 24 hours a day 7 days a week maybe
+
+427
+00:18:51,850 --> 00:18:56,860
+you just need to do weekend or month in
+
+428
+00:18:53,919 --> 00:18:58,539
+processing you can use kubernetes to
+
+429
+00:18:56,860 --> 00:19:00,730
+spin up the cluster load your data
+
+430
+00:18:58,539 --> 00:19:03,070
+perform the analysis and then bring that
+
+431
+00:19:00,730 --> 00:19:05,890
+cluster back down and greatly save on
+
+432
+00:19:03,070 --> 00:19:07,720
+the on the infrastructure cost we can
+
+433
+00:19:05,890 --> 00:19:09,490
+also deploy on bare metal if you want to
+
+434
+00:19:07,720 --> 00:19:12,789
+run it in your own firewall on your own
+
+435
+00:19:09,490 --> 00:19:18,789
+servers we can give you a red hat or ass
+
+436
+00:19:12,789 --> 00:19:21,429
+in OS tarball to install it from so myth
+
+437
+00:19:18,789 --> 00:19:25,330
+number two that I was leading into is
+
+438
+00:19:21,429 --> 00:19:27,400
+here around labelled property graphs you
+
+439
+00:19:25,330 --> 00:19:29,590
+have to choose between label property
+
+440
+00:19:27,400 --> 00:19:30,700
+graphs and RDF and we've heard a lot
+
+441
+00:19:29,590 --> 00:19:34,270
+about this today in some of the
+
+442
+00:19:30,700 --> 00:19:37,419
+different sessions that I've sat in so
+
+443
+00:19:34,270 --> 00:19:39,610
+really the decision is will you choose
+
+444
+00:19:37,419 --> 00:19:41,740
+an RDF triple store or will you choose a
+
+445
+00:19:39,610 --> 00:19:43,659
+label property graph and here are the
+
+446
+00:19:41,740 --> 00:19:46,900
+differences and the similarities between
+
+447
+00:19:43,659 --> 00:19:48,900
+those and that's a mid because today we
+
+448
+00:19:46,900 --> 00:19:50,580
+have RT of star which is a new
+
+449
+00:19:48,900 --> 00:19:52,830
+standard it's in the standards body at
+
+450
+00:19:50,580 --> 00:19:55,260
+the w3c now so it'll it will become a
+
+451
+00:19:52,830 --> 00:19:58,800
+standard very soon but what this allows
+
+452
+00:19:55,260 --> 00:20:00,720
+you to do is basically add properties to
+
+453
+00:19:58,800 --> 00:20:03,480
+the edges so this is one of the main
+
+454
+00:20:00,720 --> 00:20:05,730
+differences between RDF and label
+
+455
+00:20:03,480 --> 00:20:06,780
+property graphs and here's a very simple
+
+456
+00:20:05,730 --> 00:20:09,450
+graph I'll just walk you through to
+
+457
+00:20:06,780 --> 00:20:12,270
+explain this concept so we have here we
+
+458
+00:20:09,450 --> 00:20:14,400
+have Jack a person and Jill a person
+
+459
+00:20:12,270 --> 00:20:17,730
+they're friends and they both went up
+
+460
+00:20:14,400 --> 00:20:19,980
+the hill okay each one of these nodes or
+
+461
+00:20:17,730 --> 00:20:22,320
+entities has properties associated with
+
+462
+00:20:19,980 --> 00:20:25,080
+it so jack is a man he has a birthday
+
+463
+00:20:22,320 --> 00:20:27,420
+Jill is a woman she has a birthday and
+
+464
+00:20:25,080 --> 00:20:28,260
+the hill has some properties associated
+
+465
+00:20:27,420 --> 00:20:31,980
+with it as well
+
+466
+00:20:28,260 --> 00:20:33,510
+RDF star adds these blue boxes here
+
+467
+00:20:31,980 --> 00:20:37,080
+which is the ability to add the
+
+468
+00:20:33,510 --> 00:20:39,930
+properties directly onto the edges so
+
+469
+00:20:37,080 --> 00:20:42,390
+now I can say on the friend of edge I
+
+470
+00:20:39,930 --> 00:20:44,730
+can say where they met at they met at
+
+471
+00:20:42,390 --> 00:20:47,220
+the hill and the date they they the
+
+472
+00:20:44,730 --> 00:20:49,620
+meant date the same things that went up
+
+473
+00:20:47,220 --> 00:20:53,340
+edge the property there is the date they
+
+474
+00:20:49,620 --> 00:20:56,040
+went up the hill and etc so this is all
+
+475
+00:20:53,340 --> 00:20:58,320
+now with our do star we can express the
+
+476
+00:20:56,040 --> 00:21:04,770
+same data that you can in a label
+
+477
+00:20:58,320 --> 00:21:06,840
+property graph in RDF we're also
+
+478
+00:21:04,770 --> 00:21:09,930
+planning to support open Seifer is a
+
+479
+00:21:06,840 --> 00:21:12,030
+local mission so the data is a it's an
+
+480
+00:21:09,930 --> 00:21:15,030
+RDF triple store but yet the query
+
+481
+00:21:12,030 --> 00:21:16,500
+language we can now because we support
+
+482
+00:21:15,030 --> 00:21:18,770
+labelled property graphs we can now
+
+483
+00:21:16,500 --> 00:21:21,090
+support open Seifer as well so you can
+
+484
+00:21:18,770 --> 00:21:23,340
+those of you that know open cypher and
+
+485
+00:21:21,090 --> 00:21:25,710
+are familiar with that language will
+
+486
+00:21:23,340 --> 00:21:29,360
+soon be able to use that to access the
+
+487
+00:21:25,710 --> 00:21:29,360
+data that's stored in an so graph
+
+488
+00:21:35,360 --> 00:21:40,670
+so miss number three is that analytics
+
+489
+00:21:37,850 --> 00:21:42,650
+is synonymous with graph algorithms and
+
+490
+00:21:40,670 --> 00:21:44,990
+so while graph algorithms are very
+
+491
+00:21:42,650 --> 00:21:47,420
+important there's a lot of other types
+
+492
+00:21:44,990 --> 00:21:50,630
+of analytics or analysis that you may
+
+493
+00:21:47,420 --> 00:21:51,920
+want to do which is important for data
+
+494
+00:21:50,630 --> 00:21:53,660
+that's stored in your graph so if you
+
+495
+00:21:51,920 --> 00:21:55,280
+take all of your data from relational
+
+496
+00:21:53,660 --> 00:21:57,170
+database you want to be able to do a lot
+
+497
+00:21:55,280 --> 00:21:59,660
+of the types of queries that you can do
+
+498
+00:21:57,170 --> 00:22:02,110
+in a relational database such as
+
+499
+00:21:59,660 --> 00:22:05,690
+aggregates or windowed aggregates
+
+500
+00:22:02,110 --> 00:22:07,670
+advanced grouping cubing these types of
+
+501
+00:22:05,690 --> 00:22:10,040
+things we have all the different graph
+
+502
+00:22:07,670 --> 00:22:12,920
+algorithms we also support inferencing
+
+503
+00:22:10,040 --> 00:22:14,900
+so the ability to create additional
+
+504
+00:22:12,920 --> 00:22:19,570
+triples in your database based upon
+
+505
+00:22:14,900 --> 00:22:24,050
+rules that that's an important feature a
+
+506
+00:22:19,570 --> 00:22:25,490
+number of different the database extras
+
+507
+00:22:24,050 --> 00:22:27,830
+here that I've mentioned named views
+
+508
+00:22:25,490 --> 00:22:30,020
+named queries advanced grouping sets
+
+509
+00:22:27,830 --> 00:22:31,850
+like cubing and roll-ups
+
+510
+00:22:30,020 --> 00:22:33,920
+these are important if you want to look
+
+511
+00:22:31,850 --> 00:22:36,350
+at all of your data and do analysis
+
+512
+00:22:33,920 --> 00:22:37,970
+across all your data a lot of these come
+
+513
+00:22:36,350 --> 00:22:41,060
+with sparkle but we've added a number of
+
+514
+00:22:37,970 --> 00:22:43,100
+different extensions to sparkle as well
+
+515
+00:22:41,060 --> 00:22:46,220
+to do the cubing and roll-ups and these
+
+516
+00:22:43,100 --> 00:22:47,360
+type of things window to aggregates we
+
+517
+00:22:46,220 --> 00:22:49,580
+also have a number of different data
+
+518
+00:22:47,360 --> 00:22:52,400
+science extensions so these are
+
+519
+00:22:49,580 --> 00:22:54,350
+available today and you can also write
+
+520
+00:22:52,400 --> 00:22:56,450
+your own so there's hundreds of
+
+521
+00:22:54,350 --> 00:22:58,130
+functions that come inside and I'll
+
+522
+00:22:56,450 --> 00:22:59,600
+graph some of those are part of the
+
+523
+00:22:58,130 --> 00:23:01,790
+sparkle standard some of those are
+
+524
+00:22:59,600 --> 00:23:03,650
+extensions that we've added but if
+
+525
+00:23:01,790 --> 00:23:05,780
+there's a function that is not available
+
+526
+00:23:03,650 --> 00:23:09,350
+there you can easily write your own and
+
+527
+00:23:05,780 --> 00:23:12,760
+either C++ or any JVM based language
+
+528
+00:23:09,350 --> 00:23:15,110
+Java Scala etc and then we provide a
+
+529
+00:23:12,760 --> 00:23:17,870
+mechanism for you to call those
+
+530
+00:23:15,110 --> 00:23:19,100
+functions through the sparkle query
+
+531
+00:23:17,870 --> 00:23:21,620
+language so you can call them as
+
+532
+00:23:19,100 --> 00:23:23,630
+functions or Sparkle endpoints or table
+
+533
+00:23:21,620 --> 00:23:26,120
+functions that type of thing so the
+
+534
+00:23:23,630 --> 00:23:30,700
+language is the platform is is highly
+
+535
+00:23:26,120 --> 00:23:30,700
+extensible with that with that feature
+
+536
+00:23:34,250 --> 00:23:40,470
+so as the data becomes more and more
+
+537
+00:23:38,790 --> 00:23:43,350
+diverse we're really wanting to see
+
+538
+00:23:40,470 --> 00:23:44,670
+analytics across all of those and I have
+
+539
+00:23:43,350 --> 00:23:46,650
+a quick demo here that I'll show you
+
+540
+00:23:44,670 --> 00:23:48,840
+where we're pulling in data from several
+
+541
+00:23:46,650 --> 00:23:50,850
+different sources this is very common
+
+542
+00:23:48,840 --> 00:23:53,160
+with our anzo product as well so the
+
+543
+00:23:50,850 --> 00:23:54,809
+knowledge graph where we're building
+
+544
+00:23:53,160 --> 00:23:56,970
+knowledge graphs are some of the largest
+
+545
+00:23:54,809 --> 00:23:58,710
+Pharma and health and life science and
+
+546
+00:23:56,970 --> 00:24:00,420
+financial services companies they have
+
+547
+00:23:58,710 --> 00:24:01,920
+diverse data from all over an
+
+548
+00:24:00,420 --> 00:24:03,840
+organization they want to pull that all
+
+549
+00:24:01,920 --> 00:24:07,350
+into the single place and we can do that
+
+550
+00:24:03,840 --> 00:24:09,809
+in in anzo graph as well but data sizes
+
+551
+00:24:07,350 --> 00:24:12,030
+are growing exponential rates we want to
+
+552
+00:24:09,809 --> 00:24:15,120
+pull in all these different diverse data
+
+553
+00:24:12,030 --> 00:24:18,330
+sets and do analysis across all of those
+
+554
+00:24:15,120 --> 00:24:20,970
+for single view and traditional ways
+
+555
+00:24:18,330 --> 00:24:24,000
+that that's been done taking you know
+
+556
+00:24:20,970 --> 00:24:26,550
+structured and unstructured data there's
+
+557
+00:24:24,000 --> 00:24:29,160
+different approaches that that we've
+
+558
+00:24:26,550 --> 00:24:33,960
+used over time so enterprise data
+
+559
+00:24:29,160 --> 00:24:36,150
+warehouses hadoo spark you know these
+
+560
+00:24:33,960 --> 00:24:38,160
+these all approaches have been have been
+
+561
+00:24:36,150 --> 00:24:41,460
+used from a data warehouse perspective
+
+562
+00:24:38,160 --> 00:24:44,760
+it's it's very rigid and brittle data
+
+563
+00:24:41,460 --> 00:24:47,130
+model anytime there's a change it's very
+
+564
+00:24:44,760 --> 00:24:50,040
+costly because you have to redesign your
+
+565
+00:24:47,130 --> 00:24:51,630
+your data model and build new ETL and
+
+566
+00:24:50,040 --> 00:24:54,900
+reporting and and that type thing that
+
+567
+00:24:51,630 --> 00:24:57,480
+takes a long time to build the EDW
+
+568
+00:24:54,900 --> 00:25:00,179
+projects can take many years to design
+
+569
+00:24:57,480 --> 00:25:03,030
+and build and millions of dollars is set
+
+570
+00:25:00,179 --> 00:25:05,190
+up Hadoop we've seen many projects fail
+
+571
+00:25:03,030 --> 00:25:07,650
+a lot of the major vendors are failing
+
+572
+00:25:05,190 --> 00:25:10,140
+so Hadoop has not been the answer to
+
+573
+00:25:07,650 --> 00:25:12,210
+create this canonical model and look at
+
+574
+00:25:10,140 --> 00:25:14,520
+data although all across the
+
+575
+00:25:12,210 --> 00:25:17,520
+organization it's good for certain use
+
+576
+00:25:14,520 --> 00:25:20,220
+cases and certain workloads but for what
+
+577
+00:25:17,520 --> 00:25:23,670
+we're talking about is doing enterprise
+
+578
+00:25:20,220 --> 00:25:25,520
+wide analytics this is not a good
+
+579
+00:25:23,670 --> 00:25:30,240
+solution and the same thing with spark
+
+580
+00:25:25,520 --> 00:25:32,520
+you know anecdotal evidence suggested
+
+581
+00:25:30,240 --> 00:25:34,440
+that as people are building these data
+
+582
+00:25:32,520 --> 00:25:37,170
+pipelines and spark you give to data
+
+583
+00:25:34,440 --> 00:25:37,920
+scientists the same the same problem and
+
+584
+00:25:37,170 --> 00:25:39,960
+they'll come back with two different
+
+585
+00:25:37,920 --> 00:25:42,100
+answers a lot of times because the
+
+586
+00:25:39,960 --> 00:25:43,929
+pipelines are complex
+
+587
+00:25:42,100 --> 00:25:46,059
+and they don't always know how to pull
+
+588
+00:25:43,929 --> 00:25:47,770
+that data through from the source
+
+589
+00:25:46,059 --> 00:25:49,360
+systems with the same rules and
+
+590
+00:25:47,770 --> 00:25:52,059
+mechanism with you with the graph
+
+591
+00:25:49,360 --> 00:25:54,700
+database you can track all that lineage
+
+592
+00:25:52,059 --> 00:26:01,510
+you can create automated processes and
+
+593
+00:25:54,700 --> 00:26:04,179
+and see that a lot easier and so here's
+
+594
+00:26:01,510 --> 00:26:05,620
+a view of pulling all that diverse data
+
+595
+00:26:04,179 --> 00:26:08,350
+and you can see the different colors
+
+596
+00:26:05,620 --> 00:26:10,660
+there's as that's pulled together so a
+
+597
+00:26:08,350 --> 00:26:13,090
+quick demo I think we still have a few
+
+598
+00:26:10,660 --> 00:26:16,150
+more minutes actually no we may be
+
+599
+00:26:13,090 --> 00:26:24,370
+running out of time let me know when we
+
+600
+00:26:16,150 --> 00:26:25,390
+when we need to stop okay hell man okay
+
+601
+00:26:24,370 --> 00:26:28,690
+great
+
+602
+00:26:25,390 --> 00:26:30,669
+so we have a flight delay demo where
+
+603
+00:26:28,690 --> 00:26:32,620
+we've downloaded some public flight
+
+604
+00:26:30,669 --> 00:26:34,929
+delay information this is the website
+
+605
+00:26:32,620 --> 00:26:37,900
+that that comes from it basically
+
+606
+00:26:34,929 --> 00:26:40,210
+downloads in a CSV file and here are the
+
+607
+00:26:37,900 --> 00:26:42,159
+different columns that you can see here
+
+608
+00:26:40,210 --> 00:26:44,409
+so this is what the CSV file these are
+
+609
+00:26:42,159 --> 00:26:48,460
+each one of these is a record of flights
+
+610
+00:26:44,409 --> 00:26:49,780
+from 2003 to 2006 teen you can see all
+
+611
+00:26:48,460 --> 00:26:52,510
+the different columns that come in there
+
+612
+00:26:49,780 --> 00:26:55,030
+year-month-day flight number tail number
+
+613
+00:26:52,510 --> 00:26:57,100
+origin airport destination Airport and
+
+614
+00:26:55,030 --> 00:27:00,070
+then a lot of other information about
+
+615
+00:26:57,100 --> 00:27:02,500
+the delays of what type of delay it was
+
+616
+00:27:00,070 --> 00:27:06,250
+how long it was etcetera so how do we
+
+617
+00:27:02,500 --> 00:27:08,440
+take that and create a graph model from
+
+618
+00:27:06,250 --> 00:27:10,900
+that and what we do is we start creating
+
+619
+00:27:08,440 --> 00:27:13,090
+triples or basically facts from that
+
+620
+00:27:10,900 --> 00:27:16,299
+data and so each one of the nodes here
+
+621
+00:27:13,090 --> 00:27:19,090
+represents a type the relationship
+
+622
+00:27:16,299 --> 00:27:20,950
+between those the edge between those is
+
+623
+00:27:19,090 --> 00:27:24,580
+the relationship so an airport has a
+
+624
+00:27:20,950 --> 00:27:26,710
+departure it's a flight airports have
+
+625
+00:27:24,580 --> 00:27:28,600
+arrivals those are also flights and when
+
+626
+00:27:26,710 --> 00:27:30,070
+a flight goes from one Airport to the
+
+627
+00:27:28,600 --> 00:27:32,260
+other one we can connect those with the
+
+628
+00:27:30,070 --> 00:27:34,450
+destination link now there's lots of
+
+629
+00:27:32,260 --> 00:27:36,250
+different ways to to model your data but
+
+630
+00:27:34,450 --> 00:27:38,260
+this is a simple way it really depends
+
+631
+00:27:36,250 --> 00:27:40,480
+on what type of analysis you're going to
+
+632
+00:27:38,260 --> 00:27:41,330
+do so this may be the start of your data
+
+633
+00:27:40,480 --> 00:27:44,150
+model one
+
+634
+00:27:41,330 --> 00:27:46,790
+you have the data in this format as I
+
+635
+00:27:44,150 --> 00:27:48,140
+mentioned the the flight is the is the
+
+636
+00:27:46,790 --> 00:27:50,750
+type and then these are the different
+
+637
+00:27:48,140 --> 00:27:53,360
+properties we saw from the CSV file
+
+638
+00:27:50,750 --> 00:27:55,940
+here's instance data so we have airport
+
+639
+00:27:53,360 --> 00:27:58,250
+code Boston is connected to airport code
+
+640
+00:27:55,940 --> 00:28:02,840
+JFK and then we have an edge property at
+
+641
+00:27:58,250 --> 00:28:05,300
+distance 187 once we have all these
+
+642
+00:28:02,840 --> 00:28:08,690
+diverse data we can now start to do a
+
+643
+00:28:05,300 --> 00:28:11,330
+different analysis on that or actually
+
+644
+00:28:08,690 --> 00:28:12,950
+now I can pull as so this is this demo
+
+645
+00:28:11,330 --> 00:28:14,570
+I'm running short on time but we pulled
+
+646
+00:28:12,950 --> 00:28:17,270
+in data from multiple different sources
+
+647
+00:28:14,570 --> 00:28:19,160
+now we can create a combined so each one
+
+648
+00:28:17,270 --> 00:28:20,900
+of these colors comes in from a
+
+649
+00:28:19,160 --> 00:28:24,130
+different data source and I can give you
+
+650
+00:28:20,900 --> 00:28:26,330
+guys this we have a free download
+
+651
+00:28:24,130 --> 00:28:28,160
+sixty-eight trial if you'd like to try
+
+652
+00:28:26,330 --> 00:28:29,810
+and so graph I encourage you to do that
+
+653
+00:28:28,160 --> 00:28:33,140
+you can install it on the cloud or on
+
+654
+00:28:29,810 --> 00:28:35,450
+docker you can install on Red Hat as
+
+655
+00:28:33,140 --> 00:28:37,400
+well but I can give you these in
+
+656
+00:28:35,450 --> 00:28:40,280
+Zeppelin notebooks so you can run these
+
+657
+00:28:37,400 --> 00:28:42,200
+examples yourself the data is on s3
+
+658
+00:28:40,280 --> 00:28:43,760
+buckets so you simply run the queries it
+
+659
+00:28:42,200 --> 00:28:46,400
+pulls the data in but you'll see it
+
+660
+00:28:43,760 --> 00:28:50,300
+pulls an aircraft registration from the
+
+661
+00:28:46,400 --> 00:28:54,140
+FAA airline information the census data
+
+662
+00:28:50,300 --> 00:28:55,880
+for city state population etc and now we
+
+663
+00:28:54,140 --> 00:28:58,970
+can start doing different bi style
+
+664
+00:28:55,880 --> 00:29:01,250
+analytics and different graph algorithms
+
+665
+00:28:58,970 --> 00:29:03,050
+that we can run on those so we can look
+
+666
+00:29:01,250 --> 00:29:06,110
+at the longest flight segments by
+
+667
+00:29:03,050 --> 00:29:08,960
+distance from Boston airports less than
+
+668
+00:29:06,110 --> 00:29:12,200
+400 miles from Boston you know a number
+
+669
+00:29:08,960 --> 00:29:14,840
+of different queries that the that we
+
+670
+00:29:12,200 --> 00:29:17,840
+can do there and then the different
+
+671
+00:29:14,840 --> 00:29:22,310
+graph algorithms are supported too so
+
+672
+00:29:17,840 --> 00:29:23,630
+let me just switch gears here and I know
+
+673
+00:29:22,310 --> 00:29:28,100
+we're running into the break and I want
+
+674
+00:29:23,630 --> 00:29:34,010
+to save a few minutes for questions but
+
+675
+00:29:28,100 --> 00:29:37,180
+this is not my not my computer so bear
+
+676
+00:29:34,010 --> 00:29:37,180
+with me while I pull up
+
+677
+00:29:50,550 --> 00:29:53,360
+okay
+
+678
+00:29:57,059 --> 00:30:01,909
+sorry I thought this machine was on the
+
+679
+00:29:59,459 --> 00:30:01,909
+Internet
+
+680
+00:30:15,309 --> 00:30:21,190
+all right well I'm not exactly sure I
+
+681
+00:30:18,580 --> 00:30:24,610
+don't see the Wi-Fi names listed here
+
+682
+00:30:21,190 --> 00:30:26,409
+and this is not my machine so I'm happy
+
+683
+00:30:24,610 --> 00:30:28,480
+to show you this demo at our booth or if
+
+684
+00:30:26,409 --> 00:30:31,029
+you like please come by and I can scan
+
+685
+00:30:28,480 --> 00:30:32,559
+your badge I can contact you we can set
+
+686
+00:30:31,029 --> 00:30:35,950
+up a meeting I'm happy to give you this
+
+687
+00:30:32,559 --> 00:30:39,179
+demo personally and answer any questions
+
+688
+00:30:35,950 --> 00:30:41,799
+that you might have so thank you guys I
+
+689
+00:30:39,179 --> 00:30:44,220
+appreciate you coming by and happy to
+
+690
+00:30:41,799 --> 00:30:44,220
+take any questions
+
+691
+00:30:48,670 --> 00:30:51,949
+[Music]
+
+692
+00:30:54,690 --> 00:31:02,549
+there must be cookies out there well
+
+693
+00:30:59,139 --> 00:31:02,549
+thank you guys appreciate you coming
+

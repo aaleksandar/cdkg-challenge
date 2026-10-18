@@ -1,0 +1,3212 @@
+1
+00:00:10,360 --> 00:00:15,100
+it's great to be here and yes it was odd
+
+2
+00:00:13,330 --> 00:00:16,630
+to appear in the comedy half-hour slot
+
+3
+00:00:15,100 --> 00:00:20,439
+hopefully we won't feel like that again
+
+4
+00:00:16,630 --> 00:00:23,880
+today the what I wanted to do I know
+
+5
+00:00:20,439 --> 00:00:26,200
+some of you have been long in the field
+
+6
+00:00:23,880 --> 00:00:29,410
+some of you are new to the whole concept
+
+7
+00:00:26,200 --> 00:00:32,680
+of linked data a graph engines what's
+
+8
+00:00:29,410 --> 00:00:34,420
+going on in that space so I thought I
+
+9
+00:00:32,680 --> 00:00:37,809
+was asked if I'd kind of tell a little
+
+10
+00:00:34,420 --> 00:00:39,640
+bit of the history of how how we perhaps
+
+11
+00:00:37,809 --> 00:00:41,680
+got to where we are actually might
+
+12
+00:00:39,640 --> 00:00:45,729
+really reflect kind of my journey
+
+13
+00:00:41,680 --> 00:00:48,820
+through my academic career in in AI as I
+
+14
+00:00:45,729 --> 00:00:51,339
+said I'm both ahead of house as it's
+
+15
+00:00:48,820 --> 00:00:53,019
+called at Oxford one of the colleges but
+
+16
+00:00:51,339 --> 00:00:55,269
+also a professor of computer science
+
+17
+00:00:53,019 --> 00:01:00,729
+there move there from Southampton three
+
+18
+00:00:55,269 --> 00:01:03,280
+years ago and also co-founded in chair
+
+19
+00:01:00,729 --> 00:01:04,869
+still the open data Institute so what
+
+20
+00:01:03,280 --> 00:01:06,040
+I'm going to be talking about is this
+
+21
+00:01:04,869 --> 00:01:07,960
+concept as link data is critical
+
+22
+00:01:06,040 --> 00:01:09,850
+infrastructure and it's not a done deal
+
+23
+00:01:07,960 --> 00:01:12,250
+by any means and I think we'll go
+
+24
+00:01:09,850 --> 00:01:14,770
+through some of that history now and see
+
+25
+00:01:12,250 --> 00:01:17,560
+where we got to so this is this this is
+
+26
+00:01:14,770 --> 00:01:19,780
+a terrible admission but it's exactly 40
+
+27
+00:01:17,560 --> 00:01:21,760
+years ago that I went to do my PhD in AI
+
+28
+00:01:19,780 --> 00:01:24,370
+at the department of AI there are some
+
+29
+00:01:21,760 --> 00:01:26,830
+of my co yeah hope you can support us
+
+30
+00:01:24,370 --> 00:01:30,130
+you can spot me that kind of line up of
+
+31
+00:01:26,830 --> 00:01:32,470
+hopeful PhD students this was the this
+
+32
+00:01:30,130 --> 00:01:34,360
+was actually deep in the first AI winter
+
+33
+00:01:32,470 --> 00:01:35,770
+this was just post the light Hill report
+
+34
+00:01:34,360 --> 00:01:37,360
+for people who know this stuff they work
+
+35
+00:01:35,770 --> 00:01:39,909
+pretty well closing down most AI
+
+36
+00:01:37,360 --> 00:01:43,120
+research in the UK in 1978 as we arrived
+
+37
+00:01:39,909 --> 00:01:45,159
+at the department about five years later
+
+38
+00:01:43,120 --> 00:01:47,080
+it had a massive Renaissance and
+
+39
+00:01:45,159 --> 00:01:49,450
+resurrection of money as we all got
+
+40
+00:01:47,080 --> 00:01:51,040
+terrified that the Japanese might solve
+
+41
+00:01:49,450 --> 00:01:52,960
+the kind of general intelligent
+
+42
+00:01:51,040 --> 00:01:54,990
+computing problem so the so called I
+
+43
+00:01:52,960 --> 00:01:57,430
+problem fifth generation Japanese
+
+44
+00:01:54,990 --> 00:01:58,930
+computing initiative and their robots
+
+45
+00:01:57,430 --> 00:02:01,570
+would take over the world and destroy
+
+46
+00:01:58,930 --> 00:02:03,310
+all the jobs sound familiar but back
+
+47
+00:02:01,570 --> 00:02:05,890
+then the world was a simpler place there
+
+48
+00:02:03,310 --> 00:02:08,590
+was one textbook on AI that we had oh
+
+49
+00:02:05,890 --> 00:02:10,450
+it's the kind of staple set of notes we
+
+50
+00:02:08,590 --> 00:02:12,190
+were taught these exotic languages like
+
+51
+00:02:10,450 --> 00:02:14,860
+pop 2 which is kind of an interesting
+
+52
+00:02:12,190 --> 00:02:17,409
+blend of Algol like and Lisp like
+
+53
+00:02:14,860 --> 00:02:19,180
+features we also of course would talk
+
+54
+00:02:17,409 --> 00:02:21,160
+Prolog and lists back in those days and
+
+55
+00:02:19,180 --> 00:02:22,490
+kind of the big deal was made out of the
+
+56
+00:02:21,160 --> 00:02:25,490
+fact you're programming languages
+
+57
+00:02:22,490 --> 00:02:28,820
+should have a clear declarative
+
+58
+00:02:25,490 --> 00:02:31,340
+semantics well I don't quite know where
+
+59
+00:02:28,820 --> 00:02:32,660
+those sunny days have gone to because
+
+60
+00:02:31,340 --> 00:02:34,370
+there was become more complex more
+
+61
+00:02:32,660 --> 00:02:35,690
+heterogeneous in a certain sense and
+
+62
+00:02:34,370 --> 00:02:39,260
+there are many more parts to the
+
+63
+00:02:35,690 --> 00:02:43,100
+software stack but back in the day the
+
+64
+00:02:39,260 --> 00:02:45,530
+thought about how you built intelligent
+
+65
+00:02:43,100 --> 00:02:48,770
+systems understood the the cognitive
+
+66
+00:02:45,530 --> 00:02:51,260
+abilities of humans was very much rooted
+
+67
+00:02:48,770 --> 00:02:53,270
+in a rule-based tradition and the
+
+68
+00:02:51,260 --> 00:02:55,340
+rule-based tradition led kind of silly
+
+69
+00:02:53,270 --> 00:02:58,880
+to my my early work this was work I was
+
+70
+00:02:55,340 --> 00:03:01,400
+doing in the 1980s building expert
+
+71
+00:02:58,880 --> 00:03:02,810
+systems to take a diagram on the left
+
+72
+00:03:01,400 --> 00:03:05,030
+and turn it into a diagram on the right
+
+73
+00:03:02,810 --> 00:03:06,530
+now that's non-trivial because that's a
+
+74
+00:03:05,030 --> 00:03:07,820
+process flow sheet as a logical
+
+75
+00:03:06,530 --> 00:03:09,590
+specification of how you make a product
+
+76
+00:03:07,820 --> 00:03:11,840
+and that thing is arranged in
+
+77
+00:03:09,590 --> 00:03:13,310
+three-dimensional space you can tell me
+
+78
+00:03:11,840 --> 00:03:14,450
+it must be about 40 years old the
+
+79
+00:03:13,310 --> 00:03:17,150
+quality of the graphics but there you
+
+80
+00:03:14,450 --> 00:03:18,620
+are it's a non-trivial task but what we
+
+81
+00:03:17,150 --> 00:03:21,170
+would do is we'd takes it down the
+
+82
+00:03:18,620 --> 00:03:22,370
+process engineers and II can't elicit
+
+83
+00:03:21,170 --> 00:03:24,590
+the knowledge from them and try and
+
+84
+00:03:22,370 --> 00:03:26,180
+express the design knowledge as
+
+85
+00:03:24,590 --> 00:03:27,800
+constraints and rules actually
+
+86
+00:03:26,180 --> 00:03:30,380
+constraint based programming was a big
+
+87
+00:03:27,800 --> 00:03:33,590
+part of this as was frame based or
+
+88
+00:03:30,380 --> 00:03:35,060
+object or based representations what we
+
+89
+00:03:33,590 --> 00:03:37,880
+discovered in doing that and it was a
+
+90
+00:03:35,060 --> 00:03:41,600
+successful project it was a ultimately
+
+91
+00:03:37,880 --> 00:03:43,250
+this this teaching company that we set
+
+92
+00:03:41,600 --> 00:03:46,610
+up was acquired by a process control
+
+93
+00:03:43,250 --> 00:03:48,350
+firm in America called Aspen tech to
+
+94
+00:03:46,610 --> 00:03:51,830
+help them lay out their their
+
+95
+00:03:48,350 --> 00:03:53,840
+three-dimensional geometries was that a
+
+96
+00:03:51,830 --> 00:03:56,030
+lot of common sense knowledge that
+
+97
+00:03:53,840 --> 00:03:57,920
+engineers had never appeared in the
+
+98
+00:03:56,030 --> 00:04:00,110
+specification on the left so actually we
+
+99
+00:03:57,920 --> 00:04:03,410
+had to be things like you know moving
+
+100
+00:04:00,110 --> 00:04:05,630
+one liquid to another place very often
+
+101
+00:04:03,410 --> 00:04:07,550
+can be done using gravity flow if you
+
+102
+00:04:05,630 --> 00:04:08,930
+put the containers high enough up you
+
+103
+00:04:07,550 --> 00:04:10,370
+can use gravity flow that's not in the
+
+104
+00:04:08,930 --> 00:04:12,470
+specification on the left that's just
+
+105
+00:04:10,370 --> 00:04:14,810
+common sense knowledge so it was a it
+
+106
+00:04:12,470 --> 00:04:19,850
+was a very interesting experience to
+
+107
+00:04:14,810 --> 00:04:22,700
+realize the limits of formalization and
+
+108
+00:04:19,850 --> 00:04:24,110
+where you had to fill in the gaps and
+
+109
+00:04:22,700 --> 00:04:25,820
+this is very much the trend again in the
+
+110
+00:04:24,110 --> 00:04:27,200
+90s we were doing stuff on searching
+
+111
+00:04:25,820 --> 00:04:29,720
+rescue expert systems there's a
+
+112
+00:04:27,200 --> 00:04:32,960
+rule-based planning system work with
+
+113
+00:04:29,720 --> 00:04:35,130
+Austin Tate at Edinburgh on this was a
+
+114
+00:04:32,960 --> 00:04:37,980
+search and rescue application
+
+115
+00:04:35,130 --> 00:04:39,660
+and we look at it now and it didn't
+
+116
+00:04:37,980 --> 00:04:41,100
+recruit neuron networks it didn't use
+
+117
+00:04:39,660 --> 00:04:44,250
+large amounts of machining what it did
+
+118
+00:04:41,100 --> 00:04:46,440
+was trying to capsulate in a set of
+
+119
+00:04:44,250 --> 00:04:48,120
+process rules the kinds of things you do
+
+120
+00:04:46,440 --> 00:04:49,980
+when you launch a search-and-rescue
+
+121
+00:04:48,120 --> 00:04:53,940
+mission and the kind of encapsulation of
+
+122
+00:04:49,980 --> 00:04:55,380
+knowledge in those days was really as I
+
+123
+00:04:53,940 --> 00:04:59,910
+say based around logic based
+
+124
+00:04:55,380 --> 00:05:02,280
+representations of a well Prolog like
+
+125
+00:04:59,910 --> 00:05:05,630
+formalizations very often rule-based
+
+126
+00:05:02,280 --> 00:05:08,580
+constraint based representations and
+
+127
+00:05:05,630 --> 00:05:10,170
+that's where we were and it was very
+
+128
+00:05:08,580 --> 00:05:12,960
+much that tradition that I took down
+
+129
+00:05:10,170 --> 00:05:14,910
+with me to Southampton when I began in
+
+130
+00:05:12,960 --> 00:05:17,520
+the department there in the early 2000s
+
+131
+00:05:14,910 --> 00:05:20,880
+and began to be intrigued with this idea
+
+132
+00:05:17,520 --> 00:05:22,680
+of of putting some of this knight AI
+
+133
+00:05:20,880 --> 00:05:25,950
+knowledge representation that we
+
+134
+00:05:22,680 --> 00:05:27,960
+developed into the web you know AI got
+
+135
+00:05:25,950 --> 00:05:29,400
+the web very late I often say this we
+
+136
+00:05:27,960 --> 00:05:31,350
+were just you know it was kind of like
+
+137
+00:05:29,400 --> 00:05:35,460
+an application layer wasn't deeply
+
+138
+00:05:31,350 --> 00:05:37,590
+interesting ah yeah and then as we
+
+139
+00:05:35,460 --> 00:05:40,380
+dawned on us how this extraordinary
+
+140
+00:05:37,590 --> 00:05:42,630
+construct was beginning to become in
+
+141
+00:05:40,380 --> 00:05:44,730
+some sense an interesting class of
+
+142
+00:05:42,630 --> 00:05:46,770
+district distributed knowledge base well
+
+143
+00:05:44,730 --> 00:05:48,540
+what could we do what what could we do
+
+144
+00:05:46,770 --> 00:05:52,940
+to make it more like that how could we
+
+145
+00:05:48,540 --> 00:05:56,490
+inject semantics into the web at scale
+
+146
+00:05:52,940 --> 00:05:59,340
+and the work that we began there a great
+
+147
+00:05:56,490 --> 00:06:01,710
+team of researchers there we were
+
+148
+00:05:59,340 --> 00:06:04,230
+building some of the very first scalable
+
+149
+00:06:01,710 --> 00:06:05,850
+triple stores graph engines the three
+
+150
+00:06:04,230 --> 00:06:07,650
+store that was developed there that was
+
+151
+00:06:05,850 --> 00:06:11,190
+the basis for a commercial product
+
+152
+00:06:07,650 --> 00:06:12,660
+eventually that surfaced in a company
+
+153
+00:06:11,190 --> 00:06:16,140
+called garlic that was then acquired by
+
+154
+00:06:12,660 --> 00:06:18,750
+experient the credit scoring company but
+
+155
+00:06:16,140 --> 00:06:20,310
+we were doing things like a early social
+
+156
+00:06:18,750 --> 00:06:21,900
+graph analysis that's a community of
+
+157
+00:06:20,310 --> 00:06:23,370
+practice where we're looking at all the
+
+158
+00:06:21,900 --> 00:06:26,460
+data we have from the publication
+
+159
+00:06:23,370 --> 00:06:28,830
+databases we tended to use ourselves as
+
+160
+00:06:26,460 --> 00:06:30,930
+an academic community as the
+
+161
+00:06:28,830 --> 00:06:32,580
+experimental kind of guinea pig in this
+
+162
+00:06:30,930 --> 00:06:35,250
+case because we had access to the data
+
+163
+00:06:32,580 --> 00:06:37,560
+it was and still remains a challenge to
+
+164
+00:06:35,250 --> 00:06:39,660
+get some of the data at scale but our
+
+165
+00:06:37,560 --> 00:06:41,640
+own publications and our own kind of
+
+166
+00:06:39,660 --> 00:06:44,219
+project engagements was something that
+
+167
+00:06:41,640 --> 00:06:46,469
+we could freely get and and
+
+168
+00:06:44,219 --> 00:06:50,479
+and experiment with and that was the
+
+169
+00:06:46,469 --> 00:06:52,979
+formulation to attempt to understand the
+
+170
+00:06:50,479 --> 00:06:56,699
+co-publishing network the network of
+
+171
+00:06:52,979 --> 00:06:58,889
+coworkers in a domain very well suited
+
+172
+00:06:56,699 --> 00:07:01,919
+to the kind of representations that I I
+
+173
+00:06:58,889 --> 00:07:04,469
+mentioned earlier on in AI and this was
+
+174
+00:07:01,919 --> 00:07:11,309
+kind of the the piece de resistance in
+
+175
+00:07:04,469 --> 00:07:13,979
+about 2003 we we imagined a Semantic Web
+
+176
+00:07:11,309 --> 00:07:15,330
+which did not yet exist in which we will
+
+177
+00:07:13,979 --> 00:07:17,099
+be able to integrate heterogeneous
+
+178
+00:07:15,330 --> 00:07:21,119
+information from a wide variety of
+
+179
+00:07:17,099 --> 00:07:23,330
+sources and almost almost kind of treat
+
+180
+00:07:21,119 --> 00:07:26,369
+the web as a distributed knowledge base
+
+181
+00:07:23,330 --> 00:07:28,199
+but of course people weren't using link
+
+182
+00:07:26,369 --> 00:07:30,779
+deck back in the day so what we did was
+
+183
+00:07:28,199 --> 00:07:33,300
+collected a whole range of harvesting
+
+184
+00:07:30,779 --> 00:07:34,469
+content from around the web sites of all
+
+185
+00:07:33,300 --> 00:07:36,599
+the department of computer science in
+
+186
+00:07:34,469 --> 00:07:38,449
+the country we've been this thing called
+
+187
+00:07:36,599 --> 00:07:41,610
+cs active space it was based
+
+188
+00:07:38,449 --> 00:07:44,369
+fundamentally an RDF based a graph based
+
+189
+00:07:41,610 --> 00:07:47,039
+representation of the world of computing
+
+190
+00:07:44,369 --> 00:07:48,419
+and within that what we did is we
+
+191
+00:07:47,039 --> 00:07:52,379
+provide it kind of a situational
+
+192
+00:07:48,419 --> 00:07:53,879
+awareness system so you could you don't
+
+193
+00:07:52,379 --> 00:07:55,529
+see all of this but you could actually
+
+194
+00:07:53,879 --> 00:07:56,969
+and you won't see any of it because the
+
+195
+00:07:55,529 --> 00:08:02,360
+graphics not rendering that's really
+
+196
+00:07:56,969 --> 00:08:07,409
+tedious there you go okay okay
+
+197
+00:08:02,360 --> 00:08:11,990
+I thought at least that let me see if
+
+198
+00:08:07,409 --> 00:08:11,990
+that will play just delete presently
+
+199
+00:08:15,469 --> 00:08:19,439
+okay okay there you go okay it's
+
+200
+00:08:17,849 --> 00:08:20,759
+catching up gradually so the idea was
+
+201
+00:08:19,439 --> 00:08:23,039
+that you could move your cursor around
+
+202
+00:08:20,759 --> 00:08:24,149
+over some part of the UK designate an
+
+203
+00:08:23,039 --> 00:08:26,459
+area and get all sorts of information
+
+204
+00:08:24,149 --> 00:08:28,769
+about the resolution on that VGA for you
+
+205
+00:08:26,459 --> 00:08:31,169
+sorry but what is showing you is
+
+206
+00:08:28,769 --> 00:08:33,569
+information about an individual what's
+
+207
+00:08:31,169 --> 00:08:35,130
+going on in a in a radius there's a
+
+208
+00:08:33,569 --> 00:08:37,319
+bunch of researchers being returned
+
+209
+00:08:35,130 --> 00:08:39,779
+there actually that's me at the top with
+
+210
+00:08:37,319 --> 00:08:41,699
+a bunch of attributes and this
+
+211
+00:08:39,779 --> 00:08:44,279
+presentation was essentially powered
+
+212
+00:08:41,699 --> 00:08:46,980
+underneath by RDF the triple store the
+
+213
+00:08:44,279 --> 00:08:48,689
+raw representation for this domain we
+
+214
+00:08:46,980 --> 00:08:50,250
+can see here as we browse through the
+
+215
+00:08:48,689 --> 00:08:51,870
+triple store browser that is the worst
+
+216
+00:08:50,250 --> 00:08:56,670
+resolution I've ever seen I've
+
+217
+00:08:51,870 --> 00:08:59,730
+I know HDMI cable I'm sorry anyway there
+
+218
+00:08:56,670 --> 00:09:01,950
+it was a representation in terms of
+
+219
+00:08:59,730 --> 00:09:03,930
+fundamental triples and ontology at the
+
+220
+00:09:01,950 --> 00:09:05,790
+background it was all very clean and
+
+221
+00:09:03,930 --> 00:09:07,350
+dandy and we were very much enjoying
+
+222
+00:09:05,790 --> 00:09:10,350
+ourselves as engineers building these
+
+223
+00:09:07,350 --> 00:09:12,180
+first things we were promoting this
+
+224
+00:09:10,350 --> 00:09:17,010
+whole idea of a linked data set of
+
+225
+00:09:12,180 --> 00:09:18,810
+principles in 2006 Tim and I revisit
+
+226
+00:09:17,010 --> 00:09:21,630
+along with Wendy Hall the the Semantic
+
+227
+00:09:18,810 --> 00:09:26,270
+Web REE presented the fundamental
+
+228
+00:09:21,630 --> 00:09:28,560
+principles of persistent identifiers
+
+229
+00:09:26,270 --> 00:09:30,839
+using your eyes
+
+230
+00:09:28,560 --> 00:09:33,390
+the referenceable UI our eyes and and
+
+231
+00:09:30,839 --> 00:09:36,089
+and and kind of holding up the claim
+
+232
+00:09:33,390 --> 00:09:37,620
+that the key would be to represent your
+
+233
+00:09:36,089 --> 00:09:40,800
+world in terms of these persistent
+
+234
+00:09:37,620 --> 00:09:43,800
+identifies and link link link and that
+
+235
+00:09:40,800 --> 00:09:46,800
+got interest you know in 2005 we began
+
+236
+00:09:43,800 --> 00:09:49,170
+our first work with the with the public
+
+237
+00:09:46,800 --> 00:09:51,480
+sector data set so this was work where
+
+238
+00:09:49,170 --> 00:09:55,470
+we took data from lots of London
+
+239
+00:09:51,480 --> 00:09:57,750
+authorities and services and began to
+
+240
+00:09:55,470 --> 00:10:00,779
+triply fly them put them in graph stores
+
+241
+00:09:57,750 --> 00:10:04,620
+and indeed that work got represented to
+
+242
+00:10:00,779 --> 00:10:07,020
+Parliament in 2007 it was that work that
+
+243
+00:10:04,620 --> 00:10:10,080
+Tim had remembered we were doing and
+
+244
+00:10:07,020 --> 00:10:11,310
+when he had this momentary encounter
+
+245
+00:10:10,080 --> 00:10:13,500
+with the then Prime Minister Gordon
+
+246
+00:10:11,310 --> 00:10:15,839
+Brown who said what can I do to exploit
+
+247
+00:10:13,500 --> 00:10:18,029
+the web he said put your data on it in
+
+248
+00:10:15,839 --> 00:10:19,560
+the disarming way that Tim does and in
+
+249
+00:10:18,029 --> 00:10:25,050
+the rather disarming way that Brown does
+
+250
+00:10:19,560 --> 00:10:27,330
+he said okay what so we had this
+
+251
+00:10:25,050 --> 00:10:31,230
+fantastic period of chasing around in
+
+252
+00:10:27,330 --> 00:10:32,700
+2009 just turning up to these kind of
+
+253
+00:10:31,230 --> 00:10:35,100
+departments and secretaries of state and
+
+254
+00:10:32,700 --> 00:10:39,480
+saying put your data on on the web the
+
+255
+00:10:35,100 --> 00:10:41,010
+prime minister says and and it led to
+
+256
+00:10:39,480 --> 00:10:44,279
+some real changes and there was a whole
+
+257
+00:10:41,010 --> 00:10:47,120
+kind of climate of interest around open
+
+258
+00:10:44,279 --> 00:10:50,790
+data pushing as many of these non
+
+259
+00:10:47,120 --> 00:10:53,730
+personal data sets online as possible we
+
+260
+00:10:50,790 --> 00:10:55,830
+set up data.gov that UK those days we
+
+261
+00:10:53,730 --> 00:10:59,160
+saw this very much as a portal where you
+
+262
+00:10:55,830 --> 00:11:01,860
+could deposit large amounts of public
+
+263
+00:10:59,160 --> 00:11:04,950
+sector data ideally as will come and see
+
+264
+00:11:01,860 --> 00:11:05,670
+in a nice linked data form and progress
+
+265
+00:11:04,950 --> 00:11:07,920
+was made we
+
+266
+00:11:05,670 --> 00:11:11,370
+we still have to this day police UK
+
+267
+00:11:07,920 --> 00:11:15,180
+which is all the reported crime data for
+
+268
+00:11:11,370 --> 00:11:16,950
+any particular zone and place and this
+
+269
+00:11:15,180 --> 00:11:20,029
+is a sensitive data you know this was
+
+270
+00:11:16,950 --> 00:11:23,220
+data that would pinpoint where exactly
+
+271
+00:11:20,029 --> 00:11:24,769
+issues were occurring chief constables
+
+272
+00:11:23,220 --> 00:11:27,209
+weren't comfortable with it the IT
+
+273
+00:11:24,769 --> 00:11:28,920
+couldn't cope when they put this site up
+
+274
+00:11:27,209 --> 00:11:30,990
+there was so much demand for it that all
+
+275
+00:11:28,920 --> 00:11:33,990
+the servers melted immediately literally
+
+276
+00:11:30,990 --> 00:11:35,940
+they had no idea of a load management
+
+277
+00:11:33,990 --> 00:11:41,160
+because no government website had ever
+
+278
+00:11:35,940 --> 00:11:43,850
+been popular - that's probably a bit
+
+279
+00:11:41,160 --> 00:11:47,970
+cruel no it's not it's absolutely true
+
+280
+00:11:43,850 --> 00:11:49,980
+so we've you know those kind of examples
+
+281
+00:11:47,970 --> 00:11:51,959
+the examples we've had in the
+
+282
+00:11:49,980 --> 00:11:55,220
+environmental data the fact we now have
+
+283
+00:11:51,959 --> 00:11:58,260
+routinely real-time data on things like
+
+284
+00:11:55,220 --> 00:11:59,970
+river level heights you'd think well god
+
+285
+00:11:58,260 --> 00:12:01,709
+we've always sat down we have we had it
+
+286
+00:11:59,970 --> 00:12:03,570
+but it wasn't available for public
+
+287
+00:12:01,709 --> 00:12:07,709
+scrutiny it wasn't available as
+
+288
+00:12:03,570 --> 00:12:10,470
+real-time feeds excitingly in the last
+
+289
+00:12:07,709 --> 00:12:11,850
+few years we've had for example in the
+
+290
+00:12:10,470 --> 00:12:16,140
+health service so there's environmental
+
+291
+00:12:11,850 --> 00:12:18,449
+data we've had policing data health data
+
+292
+00:12:16,140 --> 00:12:21,420
+this is the fact that every GP in
+
+293
+00:12:18,449 --> 00:12:23,490
+England has to publish every month the
+
+294
+00:12:21,420 --> 00:12:25,380
+prescriptions they write out not to who
+
+295
+00:12:23,490 --> 00:12:28,350
+but what the drug was for what condition
+
+296
+00:12:25,380 --> 00:12:31,079
+that's an extraordinary resource so it's
+
+297
+00:12:28,350 --> 00:12:33,120
+allowed us to build a services people at
+
+298
+00:12:31,079 --> 00:12:35,810
+Ben Goldacre out there building services
+
+299
+00:12:33,120 --> 00:12:39,000
+to inspect what the prescribing habits
+
+300
+00:12:35,810 --> 00:12:42,029
+across an entire health system are from
+
+301
+00:12:39,000 --> 00:12:44,430
+postcode to postcode from drug type to
+
+302
+00:12:42,029 --> 00:12:46,170
+drug type and it led to some early
+
+303
+00:12:44,430 --> 00:12:49,769
+celebrated successes when the ODI
+
+304
+00:12:46,170 --> 00:12:51,269
+launched over five years ago now one of
+
+305
+00:12:49,769 --> 00:12:53,339
+our lead stories was this recognition
+
+306
+00:12:51,269 --> 00:12:57,660
+that it looked like we were over
+
+307
+00:12:53,339 --> 00:12:59,820
+prescribing patented hard drugs things
+
+308
+00:12:57,660 --> 00:13:02,130
+that lower blood pressure to the extent
+
+309
+00:12:59,820 --> 00:13:05,760
+of 200 million pounds a year when you
+
+310
+00:13:02,130 --> 00:13:09,390
+could have used a white label basically
+
+311
+00:13:05,760 --> 00:13:12,480
+off-patent drug equivalent I mean that's
+
+312
+00:13:09,390 --> 00:13:14,250
+really been a measure of success we feel
+
+313
+00:13:12,480 --> 00:13:17,279
+and also you know postcode variations
+
+314
+00:13:14,250 --> 00:13:18,840
+why is this practice or this authority
+
+315
+00:13:17,279 --> 00:13:21,570
+issuing this kind of drug
+
+316
+00:13:18,840 --> 00:13:23,460
+why is it taking so long for advice from
+
+317
+00:13:21,570 --> 00:13:26,210
+nice for example to catch up with
+
+318
+00:13:23,460 --> 00:13:30,180
+practice so these are very material
+
+319
+00:13:26,210 --> 00:13:33,420
+effects so when the ODI was set up but
+
+320
+00:13:30,180 --> 00:13:36,200
+our whole mission was about trying to
+
+321
+00:13:33,420 --> 00:13:38,850
+build and exploit the value of open data
+
+322
+00:13:36,200 --> 00:13:41,460
+over the last five years in truth we've
+
+323
+00:13:38,850 --> 00:13:43,710
+expanded that to incorporate the whole
+
+324
+00:13:41,460 --> 00:13:46,230
+ecosystem so we think it's really
+
+325
+00:13:43,710 --> 00:13:48,570
+crucial that we understand how the
+
+326
+00:13:46,230 --> 00:13:51,870
+spectrum of data from open to shared to
+
+327
+00:13:48,570 --> 00:13:54,180
+closed operates how the realities of
+
+328
+00:13:51,870 --> 00:13:56,910
+working across those varieties of data
+
+329
+00:13:54,180 --> 00:14:00,990
+is going to be operationalized and also
+
+330
+00:13:56,910 --> 00:14:02,700
+to actually talk seriously about what of
+
+331
+00:14:00,990 --> 00:14:04,110
+course in the hate in the hi day of kind
+
+332
+00:14:02,700 --> 00:14:06,630
+of opening all the data or people said
+
+333
+00:14:04,110 --> 00:14:08,850
+yeah but what are their downsides could
+
+334
+00:14:06,630 --> 00:14:10,590
+there be harmful effects of all of this
+
+335
+00:14:08,850 --> 00:14:13,260
+data potentially triangulating
+
+336
+00:14:10,590 --> 00:14:15,330
+individuals or kind of in other ways
+
+337
+00:14:13,260 --> 00:14:18,360
+giving too much well we're very aware of
+
+338
+00:14:15,330 --> 00:14:21,570
+that conversation nowadays in the notion
+
+339
+00:14:18,360 --> 00:14:23,400
+of profiling so it's important that when
+
+340
+00:14:21,570 --> 00:14:26,880
+we do our work with data we understand
+
+341
+00:14:23,400 --> 00:14:28,980
+these value driven aspects but what I
+
+342
+00:14:26,880 --> 00:14:31,830
+want to kind of talk about the remainder
+
+343
+00:14:28,980 --> 00:14:34,320
+of my slot is this idea of data is
+
+344
+00:14:31,830 --> 00:14:36,480
+infrastructure because I think it's
+
+345
+00:14:34,320 --> 00:14:39,030
+important and I think we have not got
+
+346
+00:14:36,480 --> 00:14:40,860
+there but despite these these successes
+
+347
+00:14:39,030 --> 00:14:44,250
+I can point to of data released here and
+
+348
+00:14:40,860 --> 00:14:46,080
+there this concept here that I want to
+
+349
+00:14:44,250 --> 00:14:49,290
+play play on which is the idea of data
+
+350
+00:14:46,080 --> 00:14:53,100
+as infrastructure 2015 we began to
+
+351
+00:14:49,290 --> 00:14:55,110
+introduce this concept talk about it
+
+352
+00:14:53,100 --> 00:14:56,820
+Prospect magazine laid off on this it's
+
+353
+00:14:55,110 --> 00:14:59,880
+been interesting to see the National
+
+354
+00:14:56,820 --> 00:15:03,150
+Infrastructure Commission now now talks
+
+355
+00:14:59,880 --> 00:15:04,500
+about this what do we mean well when we
+
+356
+00:15:03,150 --> 00:15:05,940
+think of an infrastructure physical
+
+357
+00:15:04,500 --> 00:15:08,370
+infrastructure like a railway or
+
+358
+00:15:05,940 --> 00:15:10,170
+electrical grid we we have some
+
+359
+00:15:08,370 --> 00:15:11,750
+expectation that certain characteristics
+
+360
+00:15:10,170 --> 00:15:13,830
+holes for that data
+
+361
+00:15:11,750 --> 00:15:15,090
+ideally that it's reliable or though
+
+362
+00:15:13,830 --> 00:15:16,830
+that wouldn't have thought so coming on
+
+363
+00:15:15,090 --> 00:15:19,590
+the tube today I have to say it was a
+
+364
+00:15:16,830 --> 00:15:21,810
+bit of a nightmare experience often
+
+365
+00:15:19,590 --> 00:15:23,970
+those aren't technical issues sometimes
+
+366
+00:15:21,810 --> 00:15:25,530
+they're human and socio technical issues
+
+367
+00:15:23,970 --> 00:15:28,790
+but reliability is what you demand
+
+368
+00:15:25,530 --> 00:15:31,680
+degree of safety high quality
+
+369
+00:15:28,790 --> 00:15:32,640
+reproducibility a degree of governance
+
+370
+00:15:31,680 --> 00:15:35,459
+on top
+
+371
+00:15:32,640 --> 00:15:38,579
+interoperability between regions zones
+
+372
+00:15:35,459 --> 00:15:40,320
+and services that you've got some
+
+373
+00:15:38,579 --> 00:15:42,480
+economic advantage investing in this
+
+374
+00:15:40,320 --> 00:15:44,880
+like market access or economies of scale
+
+375
+00:15:42,480 --> 00:15:47,870
+or the ability innovate and that you
+
+376
+00:15:44,880 --> 00:15:50,160
+make sensible decisions about what
+
+377
+00:15:47,870 --> 00:15:52,410
+infrastructural features will give you
+
+378
+00:15:50,160 --> 00:15:54,750
+those properties so if we think about
+
+379
+00:15:52,410 --> 00:15:56,790
+them in terms of rail gauges or
+
+380
+00:15:54,750 --> 00:15:59,790
+signalling or distribution on the
+
+381
+00:15:56,790 --> 00:16:02,910
+electrical trade grid is that a good
+
+382
+00:15:59,790 --> 00:16:05,040
+analogy as we read across well you'd
+
+383
+00:16:02,910 --> 00:16:07,950
+think so right so what's going to mean
+
+384
+00:16:05,040 --> 00:16:10,200
+to talk about data as infrastructure we
+
+385
+00:16:07,950 --> 00:16:12,209
+made an attempt in the early days of
+
+386
+00:16:10,200 --> 00:16:14,640
+open data we were pushing very strong
+
+387
+00:16:12,209 --> 00:16:17,610
+for the linked five star the five star
+
+388
+00:16:14,640 --> 00:16:20,339
+road to perfection which was you know
+
+389
+00:16:17,610 --> 00:16:22,019
+build your data as link data and even
+
+390
+00:16:20,339 --> 00:16:24,779
+give it a sparkle endpoint that's that's
+
+391
+00:16:22,019 --> 00:16:28,410
+the really shiny high-end stuff but we
+
+392
+00:16:24,779 --> 00:16:30,720
+do see even now some of our governmental
+
+393
+00:16:28,410 --> 00:16:32,430
+agencies arms-length agencies and for
+
+394
+00:16:30,720 --> 00:16:36,779
+example the Ordnance Survey the
+
+395
+00:16:32,430 --> 00:16:40,320
+geospatial Authority in the UK producing
+
+396
+00:16:36,779 --> 00:16:42,930
+high quality link data link data which
+
+397
+00:16:40,320 --> 00:16:45,690
+is maintained relates to an authority
+
+398
+00:16:42,930 --> 00:16:48,959
+part of the United Kingdom in this case
+
+399
+00:16:45,690 --> 00:16:51,060
+it's the digital realization of things
+
+400
+00:16:48,959 --> 00:16:54,570
+like administrative boundaries or
+
+401
+00:16:51,060 --> 00:16:56,670
+postcodes so every postcode as a URI or
+
+402
+00:16:54,570 --> 00:16:59,190
+every administrative area as a URI or
+
+403
+00:16:56,670 --> 00:17:02,550
+every major road would have a URI and
+
+404
+00:16:59,190 --> 00:17:05,280
+these are and that analogs they're kind
+
+405
+00:17:02,550 --> 00:17:08,699
+of digital twins to the real things that
+
+406
+00:17:05,280 --> 00:17:10,439
+matter in your real world now agencies
+
+407
+00:17:08,699 --> 00:17:11,850
+like you're not server you need funding
+
+408
+00:17:10,439 --> 00:17:14,189
+and resources and sustainable
+
+409
+00:17:11,850 --> 00:17:17,220
+engineering to keep that stuff current
+
+410
+00:17:14,189 --> 00:17:19,980
+and fresh we rather hoped Tim and I back
+
+411
+00:17:17,220 --> 00:17:21,809
+in the day that this would be how a lot
+
+412
+00:17:19,980 --> 00:17:24,390
+of governmental material would
+
+413
+00:17:21,809 --> 00:17:27,689
+eventually be surfaced it hasn't
+
+414
+00:17:24,390 --> 00:17:30,960
+happened quite that way okay and I think
+
+415
+00:17:27,689 --> 00:17:34,710
+it's unfinished business you can see you
+
+416
+00:17:30,960 --> 00:17:36,990
+can see islands of high ambition the
+
+417
+00:17:34,710 --> 00:17:39,570
+Land Registry for example that keeps all
+
+418
+00:17:36,990 --> 00:17:42,720
+of our cadastral information who owns
+
+419
+00:17:39,570 --> 00:17:44,520
+what their link data project even as a
+
+420
+00:17:42,720 --> 00:17:46,049
+sparkle end point it'll give you the
+
+421
+00:17:44,520 --> 00:17:49,950
+kind of latest price
+
+422
+00:17:46,049 --> 00:17:54,200
+paid for for housing in an area for
+
+423
+00:17:49,950 --> 00:17:56,820
+example but it's very isolated okay
+
+424
+00:17:54,200 --> 00:17:59,070
+you've got people like Companies House
+
+425
+00:17:56,820 --> 00:18:01,409
+who have a doctrine on how you should
+
+426
+00:17:59,070 --> 00:18:05,100
+name and give you our eyes to the
+
+427
+00:18:01,409 --> 00:18:06,869
+companies that are constituted in on the
+
+428
+00:18:05,100 --> 00:18:10,379
+United Kingdom register of legal
+
+429
+00:18:06,869 --> 00:18:14,399
+companies you've got people like open
+
+430
+00:18:10,379 --> 00:18:16,830
+corporates who are moving to this whole
+
+431
+00:18:14,399 --> 00:18:18,600
+idea of an application programming a
+
+432
+00:18:16,830 --> 00:18:20,159
+program a key interface to get to the
+
+433
+00:18:18,600 --> 00:18:22,559
+data now that's another kind of
+
+434
+00:18:20,159 --> 00:18:25,109
+infrastructure if you build the API and
+
+435
+00:18:22,559 --> 00:18:26,609
+of course the paradigm attic example of
+
+436
+00:18:25,109 --> 00:18:28,230
+that you might say would be what
+
+437
+00:18:26,609 --> 00:18:30,869
+transport for long they've done with
+
+438
+00:18:28,230 --> 00:18:36,049
+their transport API and there's a great
+
+439
+00:18:30,869 --> 00:18:39,779
+example where a relatively simple set of
+
+440
+00:18:36,049 --> 00:18:41,940
+verbs and retrieval functions across the
+
+441
+00:18:39,779 --> 00:18:43,499
+underlying real-time data has allowed
+
+442
+00:18:41,940 --> 00:18:47,009
+large amounts of innovation to flourish
+
+443
+00:18:43,499 --> 00:18:48,269
+and citymapper save my bacon today gave
+
+444
+00:18:47,009 --> 00:18:51,239
+me another route through but they're
+
+445
+00:18:48,269 --> 00:18:52,919
+just one example of that that use of
+
+446
+00:18:51,239 --> 00:18:54,210
+course that's not the portal ization of
+
+447
+00:18:52,919 --> 00:18:57,179
+the data that's a different mode of
+
+448
+00:18:54,210 --> 00:19:00,960
+delivery but the effort that is invested
+
+449
+00:18:57,179 --> 00:19:02,879
+to keep that data live and correct the
+
+450
+00:19:00,960 --> 00:19:05,429
+fact that I can generate URLs off the
+
+451
+00:19:02,879 --> 00:19:08,539
+back of many of the elements in there
+
+452
+00:19:05,429 --> 00:19:10,769
+seems to me a very interesting feature
+
+453
+00:19:08,539 --> 00:19:12,929
+so the National Infrastructure
+
+454
+00:19:10,769 --> 00:19:13,559
+Commission talks about data for the
+
+455
+00:19:12,929 --> 00:19:16,259
+public good
+
+456
+00:19:13,559 --> 00:19:18,509
+we had the ambition in the linked open
+
+457
+00:19:16,259 --> 00:19:22,109
+data cloud of beginning to connect these
+
+458
+00:19:18,509 --> 00:19:24,570
+islands of persistent high-quality data
+
+459
+00:19:22,109 --> 00:19:25,950
+I think the jury's out on that you know
+
+460
+00:19:24,570 --> 00:19:30,929
+I think we're looking at much more
+
+461
+00:19:25,950 --> 00:19:33,239
+pragmatic use of elements of the of the
+
+462
+00:19:30,929 --> 00:19:35,869
+data representations that were able to
+
+463
+00:19:33,239 --> 00:19:40,769
+surface in this important infrastructure
+
+464
+00:19:35,869 --> 00:19:43,289
+so for me the challenge is all about how
+
+465
+00:19:40,769 --> 00:19:46,080
+we build infrastructure data for
+
+466
+00:19:43,289 --> 00:19:48,029
+everything from personal data to network
+
+467
+00:19:46,080 --> 00:19:51,509
+data to asset data to organizational
+
+468
+00:19:48,029 --> 00:19:53,429
+data housing roads location operational
+
+469
+00:19:51,509 --> 00:19:55,740
+system resilience schedules traffic
+
+470
+00:19:53,429 --> 00:19:57,720
+flows emissions personal data
+
+471
+00:19:55,740 --> 00:19:59,190
+appropriately anonymize from consumption
+
+472
+00:19:57,720 --> 00:20:02,730
+to location
+
+473
+00:19:59,190 --> 00:20:07,470
+these things deserve attention and work
+
+474
+00:20:02,730 --> 00:20:10,590
+to build agreements around vocabularies
+
+475
+00:20:07,470 --> 00:20:13,110
+URI conventions for example and that is
+
+476
+00:20:10,590 --> 00:20:14,850
+unfinished business it's barely begun in
+
+477
+00:20:13,110 --> 00:20:19,110
+some areas you can still be scrambling
+
+478
+00:20:14,850 --> 00:20:21,120
+around for what constitutes data output
+
+479
+00:20:19,110 --> 00:20:23,820
+into a CSV file essentially you know
+
+480
+00:20:21,120 --> 00:20:28,020
+it's not much more structure to it than
+
+481
+00:20:23,820 --> 00:20:30,090
+that very useful but often the elements
+
+482
+00:20:28,020 --> 00:20:31,410
+in the csv files don't don't dereference
+
+483
+00:20:30,090 --> 00:20:34,110
+themselves and not your eyes themselves
+
+484
+00:20:31,410 --> 00:20:36,180
+so we've got a lot of work to do there
+
+485
+00:20:34,110 --> 00:20:38,610
+are indications that though that there's
+
+486
+00:20:36,180 --> 00:20:40,530
+there's enough programmatic interest in
+
+487
+00:20:38,610 --> 00:20:42,420
+other areas to do this so you may have
+
+488
+00:20:40,530 --> 00:20:45,570
+heard of the concept of digital twin as
+
+489
+00:20:42,420 --> 00:20:48,420
+we build our physical infrastructures
+
+490
+00:20:45,570 --> 00:20:51,630
+become we build a digital analog or a
+
+491
+00:20:48,420 --> 00:20:54,270
+twin that allows us to experiment in
+
+492
+00:20:51,630 --> 00:20:56,880
+silico on the services or the nature of
+
+493
+00:20:54,270 --> 00:20:59,610
+that actual infrastructure well that's
+
+494
+00:20:56,880 --> 00:21:02,040
+going to require just the kinds of
+
+495
+00:20:59,610 --> 00:21:08,670
+infrastructure elements I was talking
+
+496
+00:21:02,040 --> 00:21:11,550
+about so here's the challenge to you and
+
+497
+00:21:08,670 --> 00:21:14,820
+us as a community what are we going to
+
+498
+00:21:11,550 --> 00:21:18,930
+need to do with our data to turn it into
+
+499
+00:21:14,820 --> 00:21:22,590
+a reliable infrastructure how do we make
+
+500
+00:21:18,930 --> 00:21:24,960
+it repeatable and robust and enduring
+
+501
+00:21:22,590 --> 00:21:27,840
+efficient scalable transparent secure
+
+502
+00:21:24,960 --> 00:21:29,730
+can be repurposed has it got sufficient
+
+503
+00:21:27,840 --> 00:21:31,770
+metadata associated with it in
+
+504
+00:21:29,730 --> 00:21:33,270
+particular provenance data so that we
+
+505
+00:21:31,770 --> 00:21:35,610
+have some confidence that it's coming
+
+506
+00:21:33,270 --> 00:21:36,900
+from where we thought it should have
+
+507
+00:21:35,610 --> 00:21:41,430
+come from that it's been through a
+
+508
+00:21:36,900 --> 00:21:45,390
+particular sequence of processes and
+
+509
+00:21:41,430 --> 00:21:47,220
+controls and when we build our abstract
+
+510
+00:21:45,390 --> 00:21:49,620
+and when we build our infrastructures
+
+511
+00:21:47,220 --> 00:21:51,060
+are we thinking about the right levels
+
+512
+00:21:49,620 --> 00:21:53,370
+abstraction do we put enough thought
+
+513
+00:21:51,060 --> 00:21:56,010
+into the conceptual modeling of how
+
+514
+00:21:53,370 --> 00:21:58,800
+these domains couldn't should work as
+
+515
+00:21:56,010 --> 00:22:00,660
+sustainable infrastructures and these
+
+516
+00:21:58,800 --> 00:22:03,120
+are fundamental ideas from software
+
+517
+00:22:00,660 --> 00:22:05,750
+engineering I think that very often when
+
+518
+00:22:03,120 --> 00:22:08,970
+our policymakers are thinking about the
+
+519
+00:22:05,750 --> 00:22:11,280
+kind of power or the utility of open
+
+520
+00:22:08,970 --> 00:22:13,110
+data jobs done when you publish the kind
+
+521
+00:22:11,280 --> 00:22:15,150
+of spreadsheet there's so
+
+522
+00:22:13,110 --> 00:22:17,670
+more that we've got to do and I think
+
+523
+00:22:15,150 --> 00:22:23,570
+that's been one of the reasons why we
+
+524
+00:22:17,670 --> 00:22:23,570
+might have seen the relatively
+
+525
+00:22:23,630 --> 00:22:28,830
+fragmented take-up of the link data
+
+526
+00:22:25,740 --> 00:22:30,809
+story I'm sure that with a whole range
+
+527
+00:22:28,830 --> 00:22:33,480
+of new challenges ahead of us we're
+
+528
+00:22:30,809 --> 00:22:34,980
+going to see new opportunities there so
+
+529
+00:22:33,480 --> 00:22:36,990
+finally I'd like to kind of really get
+
+530
+00:22:34,980 --> 00:22:38,940
+into questions around this actually just
+
+531
+00:22:36,990 --> 00:22:42,000
+a note there are very substantial
+
+532
+00:22:38,940 --> 00:22:44,520
+challenges to us as we think about the
+
+533
+00:22:42,000 --> 00:22:46,230
+link data space even as an engineered
+
+534
+00:22:44,520 --> 00:22:48,690
+infrastructure because it won't be the
+
+535
+00:22:46,230 --> 00:22:50,850
+case that all of your infrastructure
+
+536
+00:22:48,690 --> 00:22:53,549
+necessary has a completely disclosed
+
+537
+00:22:50,850 --> 00:22:56,340
+open function some of me regarded as a
+
+538
+00:22:53,549 --> 00:22:59,940
+critical national infrastructure and
+
+539
+00:22:56,340 --> 00:23:02,460
+require some secure handling others of
+
+540
+00:22:59,940 --> 00:23:04,860
+it may be genuinely closed so we've then
+
+541
+00:23:02,460 --> 00:23:08,070
+got to think about how our technologies
+
+542
+00:23:04,860 --> 00:23:09,780
+will allow us to blend across and bleed
+
+543
+00:23:08,070 --> 00:23:12,240
+across those at various levels of access
+
+544
+00:23:09,780 --> 00:23:14,120
+control and I haven't even begun to talk
+
+545
+00:23:12,240 --> 00:23:16,980
+about the challenge presented by
+
+546
+00:23:14,120 --> 00:23:19,260
+personal data in this linked data space
+
+547
+00:23:16,980 --> 00:23:20,580
+but that's another key note I suspect so
+
+548
+00:23:19,260 --> 00:23:23,390
+thank you thank you very much thinking
+
+549
+00:23:20,580 --> 00:23:23,390
+thank you
+
+550
+00:23:28,370 --> 00:23:39,810
+thank you very much for for the dog any
+
+551
+00:23:30,840 --> 00:23:43,230
+questions yes I stirred last time so I
+
+552
+00:23:39,810 --> 00:23:46,170
+Nigel no mo so question I have do you
+
+553
+00:23:43,230 --> 00:23:48,330
+see a role for public-private
+
+554
+00:23:46,170 --> 00:23:49,950
+partnerships in providing these sorts of
+
+555
+00:23:48,330 --> 00:23:51,540
+data infrastructures we see that in
+
+556
+00:23:49,950 --> 00:23:54,450
+other infrastructure space you see the
+
+557
+00:23:51,540 --> 00:23:56,760
+same role here I do I think I think it
+
+558
+00:23:54,450 --> 00:23:58,590
+isn't being promoted in quite this way
+
+559
+00:23:56,760 --> 00:24:00,750
+be great if it was so I think it's
+
+560
+00:23:58,590 --> 00:24:03,690
+happened in a few areas I'll work with
+
+561
+00:24:00,750 --> 00:24:06,060
+Thomson Reuters on per my plan per my DS
+
+562
+00:24:03,690 --> 00:24:07,740
+which was good example so these are big
+
+563
+00:24:06,060 --> 00:24:09,900
+catalogues of financial products and
+
+564
+00:24:07,740 --> 00:24:12,600
+services identifies which had previously
+
+565
+00:24:09,900 --> 00:24:15,480
+been sold out as commercial products and
+
+566
+00:24:12,600 --> 00:24:16,890
+are now available as as open ID
+
+567
+00:24:15,480 --> 00:24:19,260
+registers
+
+568
+00:24:16,890 --> 00:24:21,210
+I think there's exactly a role and again
+
+569
+00:24:19,260 --> 00:24:24,600
+there the argument is to persuade the
+
+570
+00:24:21,210 --> 00:24:26,610
+private function companies in some cases
+
+571
+00:24:24,600 --> 00:24:28,740
+that certain positive symbol structure
+
+572
+00:24:26,610 --> 00:24:30,690
+will do them very well if it's made
+
+573
+00:24:28,740 --> 00:24:32,850
+openly accessible and available as well
+
+574
+00:24:30,690 --> 00:24:35,610
+yeah but I'm sure there's going to be
+
+575
+00:24:32,850 --> 00:24:37,260
+areas where and we see that already in
+
+576
+00:24:35,610 --> 00:24:44,280
+some of the transport domains I think
+
+577
+00:24:37,260 --> 00:24:46,710
+you see that yeah all right so I'm an
+
+578
+00:24:44,280 --> 00:24:49,230
+aerospace engineer I apply link data in
+
+579
+00:24:46,710 --> 00:24:52,370
+engineering and I love link data I would
+
+580
+00:24:49,230 --> 00:24:55,940
+like to see more adoption of link data
+
+581
+00:24:52,370 --> 00:24:58,290
+my concern is that if we focus on
+
+582
+00:24:55,940 --> 00:25:00,930
+government data which would help
+
+583
+00:24:58,290 --> 00:25:04,050
+governments make decisions but it's a
+
+584
+00:25:00,930 --> 00:25:06,990
+very small group of persons who would
+
+585
+00:25:04,050 --> 00:25:09,180
+benefit from from link data my feeling
+
+586
+00:25:06,990 --> 00:25:10,920
+is that domains like healthcare for
+
+587
+00:25:09,180 --> 00:25:12,870
+example where we're dealing with closed
+
+588
+00:25:10,920 --> 00:25:16,860
+data or even engineering other
+
+589
+00:25:12,870 --> 00:25:19,980
+industries they offer more opportunities
+
+590
+00:25:16,860 --> 00:25:22,560
+I think to really get value of link data
+
+591
+00:25:19,980 --> 00:25:26,370
+because the targeted groups are much
+
+592
+00:25:22,560 --> 00:25:28,410
+larger than than governments and so my
+
+593
+00:25:26,370 --> 00:25:30,150
+ideas in order to promote link data and
+
+594
+00:25:28,410 --> 00:25:32,760
+get faster adoption maybe we should
+
+595
+00:25:30,150 --> 00:25:34,170
+think about other targets than the
+
+596
+00:25:32,760 --> 00:25:36,570
+elements no I wouldn't this I wouldn't
+
+597
+00:25:34,170 --> 00:25:39,300
+disagree that there are really important
+
+598
+00:25:36,570 --> 00:25:40,169
+sectors that are outside government
+
+599
+00:25:39,300 --> 00:25:42,330
+governed is the
+
+600
+00:25:40,169 --> 00:25:44,489
+one that we were we were we hadn't
+
+601
+00:25:42,330 --> 00:25:46,019
+historically to push quite hard and and
+
+602
+00:25:44,489 --> 00:25:47,700
+their the thought this wasn't for
+
+603
+00:25:46,019 --> 00:25:49,350
+governments primer I mean government did
+
+604
+00:25:47,700 --> 00:25:51,509
+consume its own data that was always a
+
+605
+00:25:49,350 --> 00:25:53,249
+hope and ambition departments and public
+
+606
+00:25:51,509 --> 00:25:55,379
+sector services should consume their own
+
+607
+00:25:53,249 --> 00:25:57,269
+data whereas also as a way to kind of
+
+608
+00:25:55,379 --> 00:25:59,299
+communicate the data out on various
+
+609
+00:25:57,269 --> 00:26:02,039
+citizen facing or consumer facing
+
+610
+00:25:59,299 --> 00:26:04,739
+services but I think you're right in
+
+611
+00:26:02,039 --> 00:26:06,450
+everything from drug design to jet
+
+612
+00:26:04,739 --> 00:26:09,450
+design you could argue that there's
+
+613
+00:26:06,450 --> 00:26:11,309
+there's huge opportunities there I think
+
+614
+00:26:09,450 --> 00:26:15,389
+that exactly mirrors the experience we
+
+615
+00:26:11,309 --> 00:26:17,039
+we had when we came from from knowledge
+
+616
+00:26:15,389 --> 00:26:19,619
+engineering and expert system see the
+
+617
+00:26:17,039 --> 00:26:22,169
+thing that intrigues me is is in the in
+
+618
+00:26:19,619 --> 00:26:24,720
+the rush to kind of whet the web scale
+
+619
+00:26:22,169 --> 00:26:29,519
+we've we've lost a lot of the memory of
+
+620
+00:26:24,720 --> 00:26:31,649
+where some very very powerful knowledge
+
+621
+00:26:29,519 --> 00:26:33,119
+engineering methodologies sat which are
+
+622
+00:26:31,649 --> 00:26:34,649
+very well suited to kind of
+
+623
+00:26:33,119 --> 00:26:43,799
+characterization healing the data form
+
+624
+00:26:34,649 --> 00:26:46,019
+yeah hi I'm I'm just wondering whether
+
+625
+00:26:43,799 --> 00:26:48,059
+we need an expert system to look after
+
+626
+00:26:46,019 --> 00:26:48,899
+this my concern we've got these things
+
+627
+00:26:48,059 --> 00:26:51,210
+on the left when you talk about
+
+628
+00:26:48,899 --> 00:26:53,549
+efficiency and reliability and given
+
+629
+00:26:51,210 --> 00:26:57,899
+that data degrades did the semantics
+
+630
+00:26:53,549 --> 00:26:59,070
+drift the problems just gonna get bigger
+
+631
+00:26:57,899 --> 00:27:00,809
+and bigger and I think that's one reason
+
+632
+00:26:59,070 --> 00:27:02,489
+why we haven't seen much business
+
+633
+00:27:00,809 --> 00:27:05,340
+because of the energy required to
+
+634
+00:27:02,489 --> 00:27:08,129
+maintain the existing database so do you
+
+635
+00:27:05,340 --> 00:27:09,929
+see a role for tooling to actually
+
+636
+00:27:08,129 --> 00:27:11,460
+assist that and make that more efficient
+
+637
+00:27:09,929 --> 00:27:13,859
+for the average place yeah and if you
+
+638
+00:27:11,460 --> 00:27:16,559
+take examples like the geospatial data
+
+639
+00:27:13,859 --> 00:27:19,080
+that's a big set of data which is
+
+640
+00:27:16,559 --> 00:27:21,359
+changing changes as you issue new post
+
+641
+00:27:19,080 --> 00:27:25,289
+codes new addresses new and there's a
+
+642
+00:27:21,359 --> 00:27:27,509
+sense in which that investment is a
+
+643
+00:27:25,289 --> 00:27:29,549
+serious one it can be a bit daunting we
+
+644
+00:27:27,509 --> 00:27:30,720
+tend to have this view or I've certainly
+
+645
+00:27:29,549 --> 00:27:31,950
+seen it in some policy areas that
+
+646
+00:27:30,720 --> 00:27:33,690
+somehow the data will take care of
+
+647
+00:27:31,950 --> 00:27:35,759
+itself you know what I got to build this
+
+648
+00:27:33,690 --> 00:27:36,929
+massive maintenance overhead and it just
+
+649
+00:27:35,759 --> 00:27:38,669
+seems to get scare people
+
+650
+00:27:36,929 --> 00:27:40,919
+I think the role for tooling for
+
+651
+00:27:38,669 --> 00:27:43,919
+automated checking and verification or
+
+652
+00:27:40,919 --> 00:27:45,929
+updating or certification of data you
+
+653
+00:27:43,919 --> 00:27:47,639
+know what's the metadata characteristics
+
+654
+00:27:45,929 --> 00:27:49,820
+are they current when was it last we've
+
+655
+00:27:47,639 --> 00:27:53,950
+visited these could all be very helpful
+
+656
+00:27:49,820 --> 00:27:56,530
+again can you make that tooling generic
+
+657
+00:27:53,950 --> 00:27:58,540
+and we may be able to learn lessons from
+
+658
+00:27:56,530 --> 00:27:59,890
+you know people talk about Coda's
+
+659
+00:27:58,540 --> 00:28:03,250
+infrastructure they're starting to think
+
+660
+00:27:59,890 --> 00:28:07,180
+about what the automation of these bases
+
+661
+00:28:03,250 --> 00:28:09,340
+of essentially data are can we carry
+
+662
+00:28:07,180 --> 00:28:15,730
+some of those across I'd still like to
+
+663
+00:28:09,340 --> 00:28:17,590
+see just a higher level of software
+
+664
+00:28:15,730 --> 00:28:19,630
+engineering within sectors that have a
+
+665
+00:28:17,590 --> 00:28:22,690
+large data assets but spend an awful lot
+
+666
+00:28:19,630 --> 00:28:24,400
+of time dealing with just this this fact
+
+667
+00:28:22,690 --> 00:28:26,040
+because the investment in fundamentally
+
+668
+00:28:24,400 --> 00:28:29,140
+re-engineering for maintenance
+
+669
+00:28:26,040 --> 00:28:31,380
+re-engineering for maintenance is a key
+
+670
+00:28:29,140 --> 00:28:31,380
+challenge
+
+671
+00:28:41,920 --> 00:28:49,310
+hello yes do you think there's a role
+
+672
+00:28:45,980 --> 00:28:52,490
+for approval of data I'm very conscious
+
+673
+00:28:49,310 --> 00:28:54,320
+of as data gets more sort of publicized
+
+674
+00:28:52,490 --> 00:28:55,940
+and used in training data sets for some
+
+675
+00:28:54,320 --> 00:28:59,060
+of the machine learning models the
+
+676
+00:28:55,940 --> 00:29:01,250
+context of which data is captured is so
+
+677
+00:28:59,060 --> 00:29:04,010
+critical so that we don't get the biases
+
+678
+00:29:01,250 --> 00:29:05,750
+do you think there's a data should only
+
+679
+00:29:04,010 --> 00:29:08,030
+be used in certain circumstances and
+
+680
+00:29:05,750 --> 00:29:09,890
+have some degree of approval in other
+
+681
+00:29:08,030 --> 00:29:11,750
+contexts I've been arguing when people
+
+682
+00:29:09,890 --> 00:29:13,310
+say are the robots will take our jobs or
+
+683
+00:29:11,750 --> 00:29:14,510
+the algorithms will put us out of work I
+
+684
+00:29:13,310 --> 00:29:16,070
+say you haven't thought about the new
+
+685
+00:29:14,510 --> 00:29:18,470
+professional cadres that will have to be
+
+686
+00:29:16,070 --> 00:29:20,690
+involved so data auditing is just one
+
+687
+00:29:18,470 --> 00:29:24,440
+example I think I think we will see and
+
+688
+00:29:20,690 --> 00:29:27,680
+need and require some guarantees about
+
+689
+00:29:24,440 --> 00:29:30,770
+the nature and quality but it's the last
+
+690
+00:29:27,680 --> 00:29:33,020
+point really about what constitutes a
+
+691
+00:29:30,770 --> 00:29:34,250
+database that is in some sense fit for
+
+692
+00:29:33,020 --> 00:29:36,020
+purpose we see that at the moment of
+
+693
+00:29:34,250 --> 00:29:37,960
+course in a slightly different way in
+
+694
+00:29:36,020 --> 00:29:40,880
+the cut in the worry people have around
+
+695
+00:29:37,960 --> 00:29:43,340
+algorithmic training data sets which may
+
+696
+00:29:40,880 --> 00:29:45,080
+have baiance or suppliers or sampling
+
+697
+00:29:43,340 --> 00:29:48,410
+issues associated with them and so to be
+
+698
+00:29:45,080 --> 00:29:50,660
+to be to be to be to have a framework
+
+699
+00:29:48,410 --> 00:29:55,340
+where you can dress what is it to have
+
+700
+00:29:50,660 --> 00:29:57,110
+the right hallmarks of a decent data set
+
+701
+00:29:55,340 --> 00:29:58,280
+and that will be quite context specific
+
+702
+00:29:57,110 --> 00:29:59,870
+I mean you'd like of course to
+
+703
+00:29:58,280 --> 00:30:04,750
+understand when you're deploying these
+
+704
+00:29:59,870 --> 00:30:07,400
+things as for example if I want to to
+
+705
+00:30:04,750 --> 00:30:09,380
+some bodies to issue this knowledge or
+
+706
+00:30:07,400 --> 00:30:11,590
+read or data already have a statutory
+
+707
+00:30:09,380 --> 00:30:16,400
+obligation that it should be yeah
+
+708
+00:30:11,590 --> 00:30:17,750
+up-to-date as good as possible other
+
+709
+00:30:16,400 --> 00:30:20,270
+areas we don't have that so I think
+
+710
+00:30:17,750 --> 00:30:24,110
+these twin tracks are kind of a duty of
+
+711
+00:30:20,270 --> 00:30:26,720
+care and also the auditing process would
+
+712
+00:30:24,110 --> 00:30:30,370
+be a very important it will be a
+
+713
+00:30:26,720 --> 00:30:34,430
+profession I think we'll see emerge yeah
+
+714
+00:30:30,370 --> 00:30:36,440
+yeah I know so I guess in the lifesigns
+
+715
+00:30:34,430 --> 00:30:38,090
+the min where I work and have worked for
+
+716
+00:30:36,440 --> 00:30:39,620
+a while I think there's there is a lot
+
+717
+00:30:38,090 --> 00:30:41,120
+of link to answer another question I
+
+718
+00:30:39,620 --> 00:30:42,980
+think there's a lot of link data in this
+
+719
+00:30:41,120 --> 00:30:43,760
+space it's it's an area of working for
+
+720
+00:30:42,980 --> 00:30:45,770
+quite a while
+
+721
+00:30:43,760 --> 00:30:47,780
+there's tons done in RDF there's a lot I
+
+722
+00:30:45,770 --> 00:30:49,460
+think one of the key successes we've had
+
+723
+00:30:47,780 --> 00:30:51,230
+is number one there's a lot of data in
+
+724
+00:30:49,460 --> 00:30:52,039
+the public domains there's a lot of play
+
+725
+00:30:51,230 --> 00:30:53,779
+with
+
+726
+00:30:52,039 --> 00:30:55,429
+number two it's a lot of it's really
+
+727
+00:30:53,779 --> 00:30:57,139
+well curators because there's been a lot
+
+728
+00:30:55,429 --> 00:30:58,789
+of people involved in your making good
+
+729
+00:30:57,139 --> 00:31:01,369
+quality did and you need that together
+
+730
+00:30:58,789 --> 00:31:04,009
+good link data so guess the question is
+
+731
+00:31:01,369 --> 00:31:05,929
+in other sectors how do we transfer that
+
+732
+00:31:04,009 --> 00:31:08,960
+when there's no funding typically to
+
+733
+00:31:05,929 --> 00:31:10,879
+hire curators for tidying and doing the
+
+734
+00:31:08,960 --> 00:31:13,489
+data card every on that yeah yeah I mean
+
+735
+00:31:10,879 --> 00:31:14,809
+that that would that that is exactly the
+
+736
+00:31:13,489 --> 00:31:16,489
+best practice we've somehow I've got to
+
+737
+00:31:14,809 --> 00:31:17,960
+expose it seems to me and how do we do
+
+738
+00:31:16,489 --> 00:31:20,479
+it where do we get the funding to do it
+
+739
+00:31:17,960 --> 00:31:22,190
+it's not the first most attractive sexy
+
+740
+00:31:20,479 --> 00:31:28,399
+thing to do is it and then yeah and yeah
+
+741
+00:31:22,190 --> 00:31:30,590
+it's there and you know it's great to
+
+742
+00:31:28,399 --> 00:31:32,450
+know that and hear that and and and your
+
+743
+00:31:30,590 --> 00:31:34,999
+son demise just to share investment in
+
+744
+00:31:32,450 --> 00:31:36,649
+vocabulary management and the agreements
+
+745
+00:31:34,999 --> 00:31:39,259
+on standards that work you're talking
+
+746
+00:31:36,649 --> 00:31:40,519
+about they're hugely impressive but you
+
+747
+00:31:39,259 --> 00:31:42,830
+know what is the exact what is the
+
+748
+00:31:40,519 --> 00:31:45,169
+readout or the analogy into another
+
+749
+00:31:42,830 --> 00:31:48,139
+sector that's got all those same demand
+
+750
+00:31:45,169 --> 00:31:50,090
+characteristics and where's the guiding
+
+751
+00:31:48,139 --> 00:31:51,739
+mind for that when we kind to try and
+
+752
+00:31:50,090 --> 00:31:54,440
+think of the best user I think that
+
+753
+00:31:51,739 --> 00:31:55,999
+would be a great thing for for community
+
+754
+00:31:54,440 --> 00:32:03,019
+like this to try and sit down and work
+
+755
+00:31:55,999 --> 00:32:04,399
+out what could it do yeah well come and
+
+756
+00:32:03,019 --> 00:32:06,019
+talk the ODI as well I mean the oh yeah
+
+757
+00:32:04,399 --> 00:32:07,519
+honestly that that is one of the things
+
+758
+00:32:06,019 --> 00:32:10,519
+that we are meant to be trying to get up
+
+759
+00:32:07,519 --> 00:32:17,389
+wrap our head round yeah okay so one
+
+760
+00:32:10,519 --> 00:32:20,090
+last question and and is there research
+
+761
+00:32:17,389 --> 00:32:22,099
+or evidence around the economic benefit
+
+762
+00:32:20,090 --> 00:32:23,869
+being generated related to their cost of
+
+763
+00:32:22,099 --> 00:32:27,080
+investment around providing all this
+
+764
+00:32:23,869 --> 00:32:28,639
+open access to mmm yeah that's always
+
+765
+00:32:27,080 --> 00:32:32,059
+been a demand you know where's the
+
+766
+00:32:28,639 --> 00:32:34,039
+return on investment actually doing the
+
+767
+00:32:32,059 --> 00:32:36,049
+economics on this is again it's a bit
+
+768
+00:32:34,039 --> 00:32:37,369
+like maintenance is quite expensive it's
+
+769
+00:32:36,049 --> 00:32:39,649
+often done after the fact it's not
+
+770
+00:32:37,369 --> 00:32:43,129
+instrumented from the beginning you know
+
+771
+00:32:39,649 --> 00:32:47,479
+famously I can point to so what's what's
+
+772
+00:32:43,129 --> 00:32:49,190
+what's the biggest open data example you
+
+773
+00:32:47,479 --> 00:32:50,720
+can think of as generated value I'd say
+
+774
+00:32:49,190 --> 00:32:52,489
+with the human genome right because they
+
+775
+00:32:50,720 --> 00:32:53,840
+actually did an experiment where they
+
+776
+00:32:52,489 --> 00:32:55,609
+worked out what the cost of opening that
+
+777
+00:32:53,840 --> 00:32:58,009
+up because it was being painted at one
+
+778
+00:32:55,609 --> 00:32:59,509
+stage if you might will recall when they
+
+779
+00:32:58,009 --> 00:33:01,909
+kind of opened that up as a construct
+
+780
+00:32:59,509 --> 00:33:03,739
+that's generated trillions you know you
+
+781
+00:33:01,909 --> 00:33:05,720
+could take examples from more modest
+
+782
+00:33:03,739 --> 00:33:08,750
+examples like Transport for London
+
+783
+00:33:05,720 --> 00:33:13,130
+opening up their transport data they
+
+784
+00:33:08,750 --> 00:33:14,990
+think is a 36 to one return on the value
+
+785
+00:33:13,130 --> 00:33:16,640
+now you know is that good enough or bad
+
+786
+00:33:14,990 --> 00:33:19,460
+enough but it's tens of millions of
+
+787
+00:33:16,640 --> 00:33:20,600
+pounds in that case and that there are
+
+788
+00:33:19,460 --> 00:33:22,310
+just a few example where they've
+
+789
+00:33:20,600 --> 00:33:23,810
+actually put in the instrumentation
+
+790
+00:33:22,310 --> 00:33:26,480
+beginning at the end to kind of see this
+
+791
+00:33:23,810 --> 00:33:29,480
+is what we think we're saving so not in
+
+792
+00:33:26,480 --> 00:33:32,060
+every case in some case the benefits are
+
+793
+00:33:29,480 --> 00:33:34,010
+are further out one suspects or their
+
+794
+00:33:32,060 --> 00:33:37,220
+second-order effects
+
+795
+00:33:34,010 --> 00:33:39,230
+what is the benefit in the second-order
+
+796
+00:33:37,220 --> 00:33:40,940
+effect of people using a product like
+
+797
+00:33:39,230 --> 00:33:42,440
+citymapper and other things to get
+
+798
+00:33:40,940 --> 00:33:44,090
+themselves efficiently around the London
+
+799
+00:33:42,440 --> 00:33:46,550
+but it's a damn sight more than the just
+
+800
+00:33:44,090 --> 00:33:51,080
+the just a foregone costs from Transport
+
+801
+00:33:46,550 --> 00:33:53,690
+to London having to do it yeah thanks
+
+802
+00:33:51,080 --> 00:33:56,920
+thanks a lot and that wraps up the other
+
+803
+00:33:53,690 --> 00:33:56,920
+key notes we have a so cool
+

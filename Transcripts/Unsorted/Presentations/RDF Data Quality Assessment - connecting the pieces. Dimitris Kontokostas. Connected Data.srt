@@ -1,0 +1,2296 @@
+1
+00:00:06,720 --> 00:00:10,870
+what we're going to see today is this
+
+2
+00:00:09,219 --> 00:00:13,360
+kind of three things first we trying to
+
+3
+00:00:10,870 --> 00:00:17,170
+identify what what quality is and data
+
+4
+00:00:13,360 --> 00:00:21,460
+qualities and it's hard to define data
+
+5
+00:00:17,170 --> 00:00:23,740
+quality but we try to give to define it
+
+6
+00:00:21,460 --> 00:00:26,109
+and then we see how we can identify data
+
+7
+00:00:23,740 --> 00:00:29,169
+quality issues and different ways of we
+
+8
+00:00:26,109 --> 00:00:31,599
+can actually tackle them so what is data
+
+9
+00:00:29,169 --> 00:00:34,800
+quality it's not easy to answer because
+
+10
+00:00:31,599 --> 00:00:37,690
+quality in general is not easy to define
+
+11
+00:00:34,800 --> 00:00:39,579
+let's say for example quality of life so
+
+12
+00:00:37,690 --> 00:00:42,670
+we have a quality flag index that is
+
+13
+00:00:39,579 --> 00:00:44,620
+published every year and what this says
+
+14
+00:00:42,670 --> 00:00:49,570
+is that based on some some metrics like
+
+15
+00:00:44,620 --> 00:00:51,430
+house price or consumer power or
+
+16
+00:00:49,570 --> 00:00:53,199
+criminality pollution in the area
+
+17
+00:00:51,430 --> 00:00:55,359
+different factors play a different role
+
+18
+00:00:53,199 --> 00:00:58,269
+and make a general factor that you can
+
+19
+00:00:55,359 --> 00:01:05,590
+actually say if one seat is better or
+
+20
+00:00:58,269 --> 00:01:09,580
+the other with an Android guy here with
+
+21
+00:01:05,590 --> 00:01:11,470
+a nice guy we win I'm not starting
+
+22
+00:01:09,580 --> 00:01:13,420
+flame wars here but yeah there are
+
+23
+00:01:11,470 --> 00:01:15,460
+different aspects to to quality also in
+
+24
+00:01:13,420 --> 00:01:17,560
+operating systems the point I'm trying
+
+25
+00:01:15,460 --> 00:01:18,490
+to say is that data quality as enter a
+
+26
+00:01:17,560 --> 00:01:20,440
+kind of call this multi-dimensional
+
+27
+00:01:18,490 --> 00:01:23,650
+there are many different aspects you can
+
+28
+00:01:20,440 --> 00:01:26,080
+actually do and and evaluate or assess
+
+29
+00:01:23,650 --> 00:01:28,570
+the quality of data settings not black
+
+30
+00:01:26,080 --> 00:01:30,160
+and white and some things the same thing
+
+31
+00:01:28,570 --> 00:01:33,430
+can be good for one case and not good
+
+32
+00:01:30,160 --> 00:01:36,760
+for another use case for example we have
+
+33
+00:01:33,430 --> 00:01:39,010
+three snippets here food which is a DVD
+
+34
+00:01:36,760 --> 00:01:42,370
+a person has the period birth date with
+
+35
+00:01:39,010 --> 00:01:45,820
+first January 2000 bar which is a fourth
+
+36
+00:01:42,370 --> 00:01:49,660
+person we would forfeit 18 and bass
+
+37
+00:01:45,820 --> 00:01:52,540
+beats data properties P 31 q5 with the
+
+38
+00:01:49,660 --> 00:01:55,680
+human and P 56 nine which is birth date
+
+39
+00:01:52,540 --> 00:01:58,600
+is any of this better than the other and
+
+40
+00:01:55,680 --> 00:02:00,700
+biased to the video of course but people
+
+41
+00:01:58,600 --> 00:02:02,110
+who are used to consume the P today they
+
+42
+00:02:00,700 --> 00:02:05,860
+will find the PDI much more useful
+
+43
+00:02:02,110 --> 00:02:09,190
+people with both and so on so it's not a
+
+44
+00:02:05,860 --> 00:02:10,869
+straight answer another example we have
+
+45
+00:02:09,190 --> 00:02:13,989
+chicken pox which is an infectious
+
+46
+00:02:10,869 --> 00:02:17,049
+disease it has Russ fever and headache
+
+47
+00:02:13,989 --> 00:02:18,010
+as symptoms which are fixed and we say
+
+48
+00:02:17,049 --> 00:02:21,430
+that this can be treated
+
+49
+00:02:18,010 --> 00:02:23,950
+with very very sell a vaccine anybody
+
+50
+00:02:21,430 --> 00:02:26,530
+sell a box in is actually a vaccine that
+
+51
+00:02:23,950 --> 00:02:30,310
+treats both taking pokes and care passes
+
+52
+00:02:26,530 --> 00:02:31,569
+after we do this formation to build some
+
+53
+00:02:30,310 --> 00:02:34,360
+player visualization like a graph that
+
+54
+00:02:31,569 --> 00:02:36,340
+shows diseases and vaccines and then
+
+55
+00:02:34,360 --> 00:02:37,930
+symptoms and yeah have something quite
+
+56
+00:02:36,340 --> 00:02:43,720
+cool that you can showcase your
+
+57
+00:02:37,930 --> 00:02:45,549
+libraries yeah this is website that
+
+58
+00:02:43,720 --> 00:02:48,310
+people can go and look up for for
+
+59
+00:02:45,549 --> 00:02:51,010
+diseases and look at the formation yeah
+
+60
+00:02:48,310 --> 00:02:54,220
+maybe if not too demanding for from the
+
+61
+00:02:51,010 --> 00:02:57,819
+audience would you use it for 30 not
+
+62
+00:02:54,220 --> 00:02:59,440
+automated software so if it finds like
+
+63
+00:02:57,819 --> 00:03:03,790
+you have a headache then it will give
+
+64
+00:02:59,440 --> 00:03:05,530
+you boxing probably not so the point
+
+65
+00:03:03,790 --> 00:03:07,030
+here is that let equalities again
+
+66
+00:03:05,530 --> 00:03:09,340
+fitness for use so the exact same
+
+67
+00:03:07,030 --> 00:03:12,329
+information can be perfectly good for
+
+68
+00:03:09,340 --> 00:03:15,209
+driving in one use case but completely
+
+69
+00:03:12,329 --> 00:03:17,650
+not good enough for something else and
+
+70
+00:03:15,209 --> 00:03:19,769
+there are different dimensions that
+
+71
+00:03:17,650 --> 00:03:22,959
+actually comes through data quality
+
+72
+00:03:19,769 --> 00:03:25,989
+there are four main things that to that
+
+73
+00:03:22,959 --> 00:03:28,449
+its accessibility which means ways of
+
+74
+00:03:25,989 --> 00:03:31,870
+accessing and retrieving data complete
+
+75
+00:03:28,449 --> 00:03:33,790
+data or part of the data contextual
+
+76
+00:03:31,870 --> 00:03:36,160
+dimensions that are related to the user
+
+77
+00:03:33,790 --> 00:03:39,190
+context or the use case of all the
+
+78
+00:03:36,160 --> 00:03:42,340
+consumers for the data entry sink one's
+
+79
+00:03:39,190 --> 00:03:46,480
+weeds are about are deep end of any
+
+80
+00:03:42,340 --> 00:03:47,889
+context and are universal and of course
+
+81
+00:03:46,480 --> 00:03:49,329
+the additional ones is about how you
+
+82
+00:03:47,889 --> 00:03:53,590
+represent the data and how you design
+
+83
+00:03:49,329 --> 00:03:54,970
+the data I will have a some few of them
+
+84
+00:03:53,590 --> 00:03:57,430
+the highlights of these dimensions to
+
+85
+00:03:54,970 --> 00:03:59,500
+showcase what exactly mean there is a
+
+86
+00:03:57,430 --> 00:04:02,980
+very good he says what I call it as a
+
+87
+00:03:59,500 --> 00:04:06,129
+very which has all these details in yeah
+
+88
+00:04:02,980 --> 00:04:10,900
+you know very stark formatting very
+
+89
+00:04:06,129 --> 00:04:12,699
+highly succeed dimensions which means
+
+90
+00:04:10,900 --> 00:04:14,049
+that can you access the data if you
+
+91
+00:04:12,699 --> 00:04:15,400
+cannot access them anymore then it's
+
+92
+00:04:14,049 --> 00:04:17,289
+it's not good for even if it's the best
+
+93
+00:04:15,400 --> 00:04:19,750
+kind of data you can have same with
+
+94
+00:04:17,289 --> 00:04:21,280
+license if you cannot use the data then
+
+95
+00:04:19,750 --> 00:04:23,949
+it's not good for you so the quality for
+
+96
+00:04:21,280 --> 00:04:25,510
+you it is actually zero and performance
+
+97
+00:04:23,949 --> 00:04:26,919
+if you can actually get them in a
+
+98
+00:04:25,510 --> 00:04:29,740
+reasonable time to drive your your
+
+99
+00:04:26,919 --> 00:04:31,919
+application if not then again it's no
+
+100
+00:04:29,740 --> 00:04:31,919
+good
+
+101
+00:04:31,960 --> 00:04:36,460
+contextual means about if the data is
+
+102
+00:04:35,080 --> 00:04:38,770
+relevant for your use case I will show
+
+103
+00:04:36,460 --> 00:04:41,860
+before I kind of actually use them does
+
+104
+00:04:38,770 --> 00:04:43,300
+it cover your your your applications do
+
+105
+00:04:41,860 --> 00:04:45,340
+you trust the publisher or is the
+
+106
+00:04:43,300 --> 00:04:47,260
+publisher good enough for this kind of
+
+107
+00:04:45,340 --> 00:04:50,020
+data maybe he's not good enough for
+
+108
+00:04:47,260 --> 00:04:51,400
+other kind of data do you understand the
+
+109
+00:04:50,020 --> 00:04:54,190
+format and the data is there a
+
+110
+00:04:51,400 --> 00:04:55,960
+recommendation about it yeah which is
+
+111
+00:04:54,190 --> 00:04:57,610
+also highly relevant to your use case if
+
+112
+00:04:55,960 --> 00:04:59,410
+you are used to consuming a specific
+
+113
+00:04:57,610 --> 00:05:01,360
+format and other people know then you
+
+114
+00:04:59,410 --> 00:05:03,820
+the quality for you is better than the
+
+115
+00:05:01,360 --> 00:05:07,480
+others and of course freshness for data
+
+116
+00:05:03,820 --> 00:05:11,020
+is it stored or or up-to-date this doc
+
+117
+00:05:07,480 --> 00:05:14,140
+call this one missing dimensions are
+
+118
+00:05:11,020 --> 00:05:17,110
+actually universal is the for example
+
+119
+00:05:14,140 --> 00:05:19,690
+the file valid syntax are the outliers
+
+120
+00:05:17,110 --> 00:05:23,230
+are their labels correctly used in the
+
+121
+00:05:19,690 --> 00:05:25,960
+data are the inconsistencies in between
+
+122
+00:05:23,230 --> 00:05:28,540
+the values in the in the file are the
+
+123
+00:05:25,960 --> 00:05:30,580
+duplicates is there a beauty or what it
+
+124
+00:05:28,540 --> 00:05:33,820
+does not mean in the data is it is it no
+
+125
+00:05:30,580 --> 00:05:35,080
+value or it is of something special and
+
+126
+00:05:33,820 --> 00:05:36,760
+someone here for example is construction
+
+127
+00:05:35,080 --> 00:05:38,770
+here that we have in our domain is it
+
+128
+00:05:36,760 --> 00:05:40,240
+construction year the year it started or
+
+129
+00:05:38,770 --> 00:05:41,770
+the year it ended sometimes it's kind of
+
+130
+00:05:40,240 --> 00:05:43,570
+a big use anything it can be a big
+
+131
+00:05:41,770 --> 00:05:46,000
+difference in in what you actually get
+
+132
+00:05:43,570 --> 00:05:50,100
+in the end and of course completeness if
+
+133
+00:05:46,000 --> 00:05:53,620
+if you have everything or part of it and
+
+134
+00:05:50,100 --> 00:05:55,270
+presentation is about are the labels and
+
+135
+00:05:53,620 --> 00:05:58,270
+everything you use actually correctly
+
+136
+00:05:55,270 --> 00:06:00,280
+use or reuse across the files otherwise
+
+137
+00:05:58,270 --> 00:06:03,280
+you might have trouble mapping
+
+138
+00:06:00,280 --> 00:06:04,900
+everything to the same vocabulary this
+
+139
+00:06:03,280 --> 00:06:06,550
+is more on linked data site I mean is
+
+140
+00:06:04,900 --> 00:06:08,760
+the data self descriptive this metadata
+
+141
+00:06:06,550 --> 00:06:10,630
+can you access them automatically and
+
+142
+00:06:08,760 --> 00:06:13,230
+can it provide the data in multiple
+
+143
+00:06:10,630 --> 00:06:17,080
+formats or languages which is also
+
+144
+00:06:13,230 --> 00:06:19,000
+indication of quality the other thing
+
+145
+00:06:17,080 --> 00:06:21,720
+that you need to see after you define
+
+146
+00:06:19,000 --> 00:06:26,470
+all the metrics you need to see how much
+
+147
+00:06:21,720 --> 00:06:27,760
+quality you actually need the thing is
+
+148
+00:06:26,470 --> 00:06:30,580
+that they're a very great cost involved
+
+149
+00:06:27,760 --> 00:06:32,740
+in assessing the quality I mean
+
+150
+00:06:30,580 --> 00:06:34,690
+identifying how much quality is this
+
+151
+00:06:32,740 --> 00:06:36,190
+data for you and also there are great
+
+152
+00:06:34,690 --> 00:06:39,220
+cost in improving the quality of a data
+
+153
+00:06:36,190 --> 00:06:41,740
+set and this course actually depends on
+
+154
+00:06:39,220 --> 00:06:43,420
+three things whether the data are within
+
+155
+00:06:41,740 --> 00:06:44,039
+your control outside of your control or
+
+156
+00:06:43,420 --> 00:06:45,659
+if
+
+157
+00:06:44,039 --> 00:06:47,400
+you bought the data if it's outside of
+
+158
+00:06:45,659 --> 00:06:49,400
+your control you then you probably can
+
+159
+00:06:47,400 --> 00:06:51,990
+assess them but not easily improve them
+
+160
+00:06:49,400 --> 00:06:53,580
+if it's in the door then you have more
+
+161
+00:06:51,990 --> 00:06:55,050
+control of the data and if you have
+
+162
+00:06:53,580 --> 00:06:57,719
+boarded many you have some leverage with
+
+163
+00:06:55,050 --> 00:06:59,789
+provider and you can have some some yeah
+
+164
+00:06:57,719 --> 00:07:03,839
+but there is still cost involved in
+
+165
+00:06:59,789 --> 00:07:07,529
+deeply continuously assessing the data
+
+166
+00:07:03,839 --> 00:07:09,749
+you have and in the end you actually
+
+167
+00:07:07,529 --> 00:07:11,569
+need to identify how much quiet is good
+
+168
+00:07:09,749 --> 00:07:13,919
+enough for your use cases because if you
+
+169
+00:07:11,569 --> 00:07:16,169
+try to get more than you need then you
+
+170
+00:07:13,919 --> 00:07:18,360
+have more cost in your data if you have
+
+171
+00:07:16,169 --> 00:07:20,699
+lesson to me then this impacts your of
+
+172
+00:07:18,360 --> 00:07:25,439
+your products your consumers so you need
+
+173
+00:07:20,699 --> 00:07:27,270
+to get it right to get the best line so
+
+174
+00:07:25,439 --> 00:07:29,580
+we identified what quiet means and then
+
+175
+00:07:27,270 --> 00:07:32,930
+we need to see where usually things can
+
+176
+00:07:29,580 --> 00:07:35,699
+go wrong or where data can can go wrong
+
+177
+00:07:32,930 --> 00:07:37,620
+in a typical data integration cases you
+
+178
+00:07:35,699 --> 00:07:39,959
+have a set of sources one or more
+
+179
+00:07:37,620 --> 00:07:42,180
+sources you have a massive schema that
+
+180
+00:07:39,959 --> 00:07:45,089
+you map you use it for your knowledge
+
+181
+00:07:42,180 --> 00:07:46,830
+graph you map your input data into your
+
+182
+00:07:45,089 --> 00:07:49,620
+masters hema you have some rules that
+
+183
+00:07:46,830 --> 00:07:52,289
+you apply on the data and then give you
+
+184
+00:07:49,620 --> 00:07:54,149
+the end resolution and data fusion we
+
+185
+00:07:52,289 --> 00:07:55,529
+won't get into details about the
+
+186
+00:07:54,149 --> 00:07:58,709
+resolution data fusion because it's
+
+187
+00:07:55,529 --> 00:08:01,019
+quite a complex topic for this time but
+
+188
+00:07:58,709 --> 00:08:02,789
+will list all the other things and see
+
+189
+00:08:01,019 --> 00:08:07,439
+that there can be errors in all these
+
+190
+00:08:02,789 --> 00:08:10,559
+kind of faces so you all have experience
+
+191
+00:08:07,439 --> 00:08:11,699
+with actually bad data they you expect
+
+192
+00:08:10,559 --> 00:08:13,259
+to be structure there are semi
+
+193
+00:08:11,699 --> 00:08:15,899
+structured or semi instruction the end
+
+194
+00:08:13,259 --> 00:08:19,319
+then it can be messy different data so
+
+195
+00:08:15,899 --> 00:08:21,599
+incomplete data and so on but one common
+
+196
+00:08:19,319 --> 00:08:23,279
+thing it's it's actually hard to do it
+
+197
+00:08:21,599 --> 00:08:25,559
+with that is that you can actually not
+
+198
+00:08:23,279 --> 00:08:27,300
+actually fit into a schema so you have a
+
+199
+00:08:25,559 --> 00:08:29,639
+domain you model correctly for example
+
+200
+00:08:27,300 --> 00:08:32,550
+you say number of bathrooms is an
+
+201
+00:08:29,639 --> 00:08:33,659
+integer as a number of rooms in the
+
+202
+00:08:32,550 --> 00:08:35,069
+building and then you go into
+
+203
+00:08:33,659 --> 00:08:39,329
+Switzerland and you find out that can be
+
+204
+00:08:35,069 --> 00:08:41,250
+a float so the data that you actually
+
+205
+00:08:39,329 --> 00:08:43,019
+the real world are not what you expect
+
+206
+00:08:41,250 --> 00:08:46,079
+to be always so you need to keep
+
+207
+00:08:43,019 --> 00:08:48,329
+refining your your your schemas and
+
+208
+00:08:46,079 --> 00:08:50,690
+everything and it's quite hard to do
+
+209
+00:08:48,329 --> 00:08:54,360
+this in every time you have an use force
+
+210
+00:08:50,690 --> 00:08:56,370
+on your master schema there can be
+
+211
+00:08:54,360 --> 00:08:57,279
+different types of errors like incorrect
+
+212
+00:08:56,370 --> 00:08:58,899
+modeling so
+
+213
+00:08:57,279 --> 00:09:02,019
+the modeling is not good enough to drive
+
+214
+00:08:58,899 --> 00:09:03,879
+the Hughes case you have you don't model
+
+215
+00:09:02,019 --> 00:09:06,519
+the complete domain it's also quality
+
+216
+00:09:03,879 --> 00:09:09,579
+issue there are case we have an accurate
+
+217
+00:09:06,519 --> 00:09:12,639
+translation from a conceptual model into
+
+218
+00:09:09,579 --> 00:09:14,559
+the actual real model for example you
+
+219
+00:09:12,639 --> 00:09:16,809
+want to have your model into your paper
+
+220
+00:09:14,559 --> 00:09:20,439
+then you have to move it into subtle all
+
+221
+00:09:16,809 --> 00:09:21,999
+RDFS sex and so on and the way it has
+
+222
+00:09:20,439 --> 00:09:23,439
+laid it back you have some errors in the
+
+223
+00:09:21,999 --> 00:09:25,809
+translation or you have undesirable
+
+224
+00:09:23,439 --> 00:09:27,730
+activity you won't have a reasoning on
+
+225
+00:09:25,809 --> 00:09:29,800
+all the l and then you by mistake you
+
+226
+00:09:27,730 --> 00:09:32,230
+add something it gives him and then you
+
+227
+00:09:29,800 --> 00:09:39,040
+go into old fool for example in all your
+
+228
+00:09:32,230 --> 00:09:41,740
+reasoning is is ruined mappings this is
+
+229
+00:09:39,040 --> 00:09:45,610
+a very big common source of errors
+
+230
+00:09:41,740 --> 00:09:48,100
+actually incorrect mappings actually
+
+231
+00:09:45,610 --> 00:09:50,230
+scale it to the data size which can be
+
+232
+00:09:48,100 --> 00:09:52,870
+up to millions or billions of data so if
+
+233
+00:09:50,230 --> 00:09:55,029
+you have a CD file and you map one
+
+234
+00:09:52,870 --> 00:09:57,639
+column incorrectly then every single
+
+235
+00:09:55,029 --> 00:10:01,569
+value in your actually data gets maps
+
+236
+00:09:57,639 --> 00:10:03,579
+and gets mapped into an error and this
+
+237
+00:10:01,569 --> 00:10:07,269
+actually propagates into your data and
+
+238
+00:10:03,579 --> 00:10:08,980
+fixing leaks things after the data is
+
+239
+00:10:07,269 --> 00:10:11,740
+few things integer pastors humor then
+
+240
+00:10:08,980 --> 00:10:14,559
+it's quite hard to to trace them and fix
+
+241
+00:10:11,740 --> 00:10:16,689
+them but in quick mapping you don't map
+
+242
+00:10:14,559 --> 00:10:19,389
+everything of course there can be also
+
+243
+00:10:16,689 --> 00:10:21,639
+software bugs when you run your mappings
+
+244
+00:10:19,389 --> 00:10:25,180
+like in detail code or how are you cheat
+
+245
+00:10:21,639 --> 00:10:28,300
+them and another common thing is when
+
+246
+00:10:25,180 --> 00:10:30,399
+you don't have a good model thing so you
+
+247
+00:10:28,300 --> 00:10:31,930
+have your mappings and your steamer any
+
+248
+00:10:30,399 --> 00:10:33,339
+update your schema and you need also to
+
+249
+00:10:31,930 --> 00:10:36,579
+update the mappings accord and otherwise
+
+250
+00:10:33,339 --> 00:10:40,470
+there is a sync between them and which
+
+251
+00:10:36,579 --> 00:10:40,470
+might get into your data
+
+252
+00:10:42,160 --> 00:10:47,050
+validation rules I didn't choose a
+
+253
+00:10:45,370 --> 00:10:50,470
+specific format you can have different
+
+254
+00:10:47,050 --> 00:10:52,750
+types like all circle sex but if you by
+
+255
+00:10:50,470 --> 00:10:54,670
+mistake for example give birth date like
+
+256
+00:10:52,750 --> 00:10:57,069
+a mass cardinality of one instead of
+
+257
+00:10:54,670 --> 00:10:58,480
+mean or the other way around then you
+
+258
+00:10:57,069 --> 00:11:00,579
+can actually get error that you cannot
+
+259
+00:10:58,480 --> 00:11:04,029
+easily identify in the end or if you say
+
+260
+00:11:00,579 --> 00:11:06,459
+that birth date must be XD date then in
+
+261
+00:11:04,029 --> 00:11:08,889
+the best case you have an error in the
+
+262
+00:11:06,459 --> 00:11:11,589
+worst case you identify very late in the
+
+263
+00:11:08,889 --> 00:11:15,750
+process and you when you try to see why
+
+264
+00:11:11,589 --> 00:11:15,750
+you have a birth date with string and
+
+265
+00:11:16,430 --> 00:11:19,520
+[Music]
+
+266
+00:11:23,910 --> 00:11:27,550
+again this is part of the model thing so
+
+267
+00:11:26,440 --> 00:11:28,930
+if you have the ideal model then you
+
+268
+00:11:27,550 --> 00:11:31,839
+need to also update the validation
+
+269
+00:11:28,930 --> 00:11:35,589
+what's the quality the other thing about
+
+270
+00:11:31,839 --> 00:11:36,850
+quality is that it actually evolves so
+
+271
+00:11:35,589 --> 00:11:38,589
+your data evolves you got a new data
+
+272
+00:11:36,850 --> 00:11:40,329
+source of all the time which means that
+
+273
+00:11:38,589 --> 00:11:43,060
+you need to update your schema in the
+
+274
+00:11:40,329 --> 00:11:45,339
+barrier mappings and your constraints as
+
+275
+00:11:43,060 --> 00:11:47,290
+well and then you your code that ETL
+
+276
+00:11:45,339 --> 00:11:49,810
+code or the other code and your partner
+
+277
+00:11:47,290 --> 00:11:52,149
+queries and everything and the problem
+
+278
+00:11:49,810 --> 00:11:54,160
+actually here is not only local on your
+
+279
+00:11:52,149 --> 00:11:56,529
+team it goes the whole Ganesha because
+
+280
+00:11:54,160 --> 00:11:58,860
+the data use are actually consumed by
+
+281
+00:11:56,529 --> 00:12:01,569
+other people or other things and
+
+282
+00:11:58,860 --> 00:12:05,319
+learning the life cycles between data
+
+283
+00:12:01,569 --> 00:12:07,000
+engineering and other things is a very
+
+284
+00:12:05,319 --> 00:12:08,649
+challenging task there was a project
+
+285
+00:12:07,000 --> 00:12:11,550
+that I was involved was a line project
+
+286
+00:12:08,649 --> 00:12:14,410
+that was working on these these problems
+
+287
+00:12:11,550 --> 00:12:16,540
+and it's it's quite hard issue it's not
+
+288
+00:12:14,410 --> 00:12:20,230
+only technical it's also an additional
+
+289
+00:12:16,540 --> 00:12:21,329
+issue that we need to okay so sounds
+
+290
+00:12:20,230 --> 00:12:24,850
+good so far
+
+291
+00:12:21,329 --> 00:12:27,459
+now what there are different strategies
+
+292
+00:12:24,850 --> 00:12:29,860
+for managing qualcare are three main
+
+293
+00:12:27,459 --> 00:12:32,920
+things you have data testers which are
+
+294
+00:12:29,860 --> 00:12:35,199
+explicit all like have so many who's
+
+295
+00:12:32,920 --> 00:12:36,970
+hard to do that or you are the software
+
+296
+00:12:35,199 --> 00:12:38,980
+engineer that you find any finer than is
+
+297
+00:12:36,970 --> 00:12:42,819
+ready to back it or or analysis and so
+
+298
+00:12:38,980 --> 00:12:46,529
+on and we have crowdsourcing which can
+
+299
+00:12:42,819 --> 00:12:48,639
+be either for for field experts that are
+
+300
+00:12:46,529 --> 00:12:50,860
+value domain they try to identify issues
+
+301
+00:12:48,639 --> 00:12:51,430
+in your data or you can do this on the
+
+302
+00:12:50,860 --> 00:12:53,829
+Mechanical Turk
+
+303
+00:12:51,430 --> 00:12:55,540
+depending on what you want edify and you
+
+304
+00:12:53,829 --> 00:12:55,810
+also have executable validation rules
+
+305
+00:12:55,540 --> 00:13:00,880
+who
+
+306
+00:12:55,810 --> 00:13:03,100
+it's gonna be suckin 600 the thing here
+
+307
+00:13:00,880 --> 00:13:04,930
+is that you actually very good to
+
+308
+00:13:03,100 --> 00:13:07,870
+support otherwise you are wasting time
+
+309
+00:13:04,930 --> 00:13:09,730
+and money if you got your engineers
+
+310
+00:13:07,870 --> 00:13:11,950
+trying to get access to the data without
+
+311
+00:13:09,730 --> 00:13:14,770
+good tools and to support them you
+
+312
+00:13:11,950 --> 00:13:16,060
+actually stealing time from their
+
+313
+00:13:14,770 --> 00:13:17,860
+development in doing these things so you
+
+314
+00:13:16,060 --> 00:13:21,070
+need to develop tools that help them
+
+315
+00:13:17,860 --> 00:13:22,180
+debug things better and the negatives
+
+316
+00:13:21,070 --> 00:13:23,680
+are kind of missing at the moment so
+
+317
+00:13:22,180 --> 00:13:27,160
+usually you have to develop them on your
+
+318
+00:13:23,680 --> 00:13:28,510
+own or based on your own data for field
+
+319
+00:13:27,160 --> 00:13:32,710
+experts of Mechanical Turk we'll have
+
+320
+00:13:28,510 --> 00:13:34,540
+some work done in the past if you need
+
+321
+00:13:32,710 --> 00:13:37,570
+have again a very good interface in
+
+322
+00:13:34,540 --> 00:13:39,490
+order for the expert to be able to find
+
+323
+00:13:37,570 --> 00:13:42,070
+these issues and then give them some
+
+324
+00:13:39,490 --> 00:13:44,470
+some tools that can see the data browser
+
+325
+00:13:42,070 --> 00:13:46,630
+data and and flag the data as wrong
+
+326
+00:13:44,470 --> 00:13:48,610
+otherwise it's quite hard for them to do
+
+327
+00:13:46,630 --> 00:13:51,700
+this thing there are some links that you
+
+328
+00:13:48,610 --> 00:13:52,990
+can actually see later on and on the
+
+329
+00:13:51,700 --> 00:13:54,700
+executable the validation rules it's
+
+330
+00:13:52,990 --> 00:13:56,920
+actually something that you must be
+
+331
+00:13:54,700 --> 00:13:59,320
+doing the good thing here is that you
+
+332
+00:13:56,920 --> 00:14:00,610
+have a lot of options and validation
+
+333
+00:13:59,320 --> 00:14:09,940
+rules are actually improved at the
+
+334
+00:14:00,610 --> 00:14:11,560
+moment so it's it's next so what you
+
+335
+00:14:09,940 --> 00:14:14,740
+need to do actually is you need to move
+
+336
+00:14:11,560 --> 00:14:17,290
+your validation closer into the theory
+
+337
+00:14:14,740 --> 00:14:19,390
+source which is quite important so you
+
+338
+00:14:17,290 --> 00:14:22,210
+need to first validate the model do you
+
+339
+00:14:19,390 --> 00:14:23,440
+need to have did you allow cyclists in
+
+340
+00:14:22,210 --> 00:14:26,290
+your hierarchy do you allow multiple
+
+341
+00:14:23,440 --> 00:14:29,260
+domains and ranges the alarm art proved
+
+342
+00:14:26,290 --> 00:14:31,089
+data types and so on these things need
+
+343
+00:14:29,260 --> 00:14:32,650
+to be checked whenever you change your
+
+344
+00:14:31,089 --> 00:14:34,890
+model because you might lose things by
+
+345
+00:14:32,650 --> 00:14:36,820
+mistake and this actually propagate
+
+346
+00:14:34,890 --> 00:14:38,920
+after that we need to also find that the
+
+347
+00:14:36,820 --> 00:14:41,020
+rules are the rules now you see with a
+
+348
+00:14:38,920 --> 00:14:44,110
+model do you check things that are now
+
+349
+00:14:41,020 --> 00:14:46,330
+obsolete or duplicated or is dirty
+
+350
+00:14:44,110 --> 00:14:48,550
+indeed a property or do you need to find
+
+351
+00:14:46,330 --> 00:14:49,990
+something else
+
+352
+00:14:48,550 --> 00:14:52,150
+using the Valdai there are there
+
+353
+00:14:49,990 --> 00:14:55,830
+mappings there is a lot of research in
+
+354
+00:14:52,150 --> 00:14:57,670
+this area so we did a Wikipedia and
+
+355
+00:14:55,830 --> 00:15:00,700
+validating the completely repeated data
+
+356
+00:14:57,670 --> 00:15:03,880
+set took us around 20 hours to run the
+
+357
+00:15:00,700 --> 00:15:06,910
+validation and we dint find a few
+
+358
+00:15:03,880 --> 00:15:09,130
+million errors there and what we did
+
+359
+00:15:06,910 --> 00:15:09,730
+there when we converted the mappings
+
+360
+00:15:09,130 --> 00:15:12,670
+into our
+
+361
+00:15:09,730 --> 00:15:15,760
+and then we tried to see the mappings
+
+362
+00:15:12,670 --> 00:15:17,800
+into the model and see if the model is
+
+363
+00:15:15,760 --> 00:15:19,270
+included with the mappings or ether maps
+
+364
+00:15:17,800 --> 00:15:23,020
+were using the model in the wrong way
+
+365
+00:15:19,270 --> 00:15:25,420
+and this took around eleven seconds to
+
+366
+00:15:23,020 --> 00:15:27,610
+run and the arrows identified actually
+
+367
+00:15:25,420 --> 00:15:30,790
+account for 30% of the errors in the end
+
+368
+00:15:27,610 --> 00:15:33,250
+data so the the time it takes one date
+
+369
+00:15:30,790 --> 00:15:35,200
+the mappings it's much faster than you
+
+370
+00:15:33,250 --> 00:15:37,870
+can actually find a lot of errors before
+
+371
+00:15:35,200 --> 00:15:40,090
+they propagate into your data and you
+
+372
+00:15:37,870 --> 00:15:41,950
+can also validate experts so have some
+
+373
+00:15:40,090 --> 00:15:45,670
+sample data write them into your
+
+374
+00:15:41,950 --> 00:15:49,030
+markings and then secretary the results
+
+375
+00:15:45,670 --> 00:15:51,970
+blood which is small in size and for
+
+376
+00:15:49,030 --> 00:15:55,720
+children de Valdivia recess data do this
+
+377
+00:15:51,970 --> 00:15:59,440
+anyway the thing here is that if you
+
+378
+00:15:55,720 --> 00:16:02,050
+validate these things easy early these
+
+379
+00:15:59,440 --> 00:16:03,520
+are always in the que trips to the rules
+
+380
+00:16:02,050 --> 00:16:06,970
+and States it's not big so you can
+
+381
+00:16:03,520 --> 00:16:08,650
+easily validated memory and even if your
+
+382
+00:16:06,970 --> 00:16:10,450
+data is quite big or billions of
+
+383
+00:16:08,650 --> 00:16:13,350
+billions of data this is all using the
+
+384
+00:16:10,450 --> 00:16:15,970
+case ID so you can easily actually
+
+385
+00:16:13,350 --> 00:16:17,500
+validating memory the problem here that
+
+386
+00:16:15,970 --> 00:16:19,360
+if you skip something here or you miss
+
+387
+00:16:17,500 --> 00:16:21,430
+something here then also the error scale
+
+388
+00:16:19,360 --> 00:16:24,130
+of this for so anything that goes beyond
+
+389
+00:16:21,430 --> 00:16:26,230
+this phase actually propagates into the
+
+390
+00:16:24,130 --> 00:16:32,530
+data and it's quite hard to fix through
+
+391
+00:16:26,230 --> 00:16:35,470
+their own the other point I make is easy
+
+392
+00:16:32,530 --> 00:16:37,360
+to automate things because even if you
+
+393
+00:16:35,470 --> 00:16:38,980
+do manual testing it's it's sometimes
+
+394
+00:16:37,360 --> 00:16:42,100
+it's hard to find the errors how do you
+
+395
+00:16:38,980 --> 00:16:45,730
+find the error here have a X name which
+
+396
+00:16:42,100 --> 00:16:47,860
+is an RDF long string and food person
+
+397
+00:16:45,730 --> 00:16:52,770
+which city be the person and has X named
+
+398
+00:16:47,860 --> 00:16:52,770
+foo with English can you spot the error
+
+399
+00:16:53,580 --> 00:16:58,840
+so it's actually the language is in the
+
+400
+00:16:57,280 --> 00:17:01,180
+thing not out of the thing so this is
+
+401
+00:16:58,840 --> 00:17:03,250
+quite hard to find and we had this kind
+
+402
+00:17:01,180 --> 00:17:05,440
+of errors and we found them quite late
+
+403
+00:17:03,250 --> 00:17:07,000
+and without automation and validation
+
+404
+00:17:05,440 --> 00:17:11,970
+scripts that are running for matically
+
+405
+00:17:07,000 --> 00:17:11,970
+it's quite hard to get them with yeah
+
+406
+00:17:12,510 --> 00:17:19,300
+and the other point is that you need to
+
+407
+00:17:16,120 --> 00:17:21,310
+automate things and how you to mate you
+
+408
+00:17:19,300 --> 00:17:23,010
+need to do this with a CI you don't have
+
+409
+00:17:21,310 --> 00:17:25,740
+many options at the moment there
+
+410
+00:17:23,010 --> 00:17:28,140
+no big to support for RDF or laughter
+
+411
+00:17:25,740 --> 00:17:31,380
+way so you need to treat data as code
+
+412
+00:17:28,140 --> 00:17:33,090
+and then you need to reduce tools like
+
+413
+00:17:31,380 --> 00:17:37,560
+checking star whiskey to opting City and
+
+414
+00:17:33,090 --> 00:17:39,840
+so on that do code setting to do it for
+
+415
+00:17:37,560 --> 00:17:41,730
+your data so you need to trigger
+
+416
+00:17:39,840 --> 00:17:44,400
+validation on every change you make in
+
+417
+00:17:41,730 --> 00:17:45,750
+your data on your schemas and if you're
+
+418
+00:17:44,400 --> 00:17:51,000
+brave enough you need to fail everything
+
+419
+00:17:45,750 --> 00:17:52,500
+until this is fixed yeah
+
+420
+00:17:51,000 --> 00:17:55,170
+and this way you can actually make sure
+
+421
+00:17:52,500 --> 00:17:58,350
+that that errors don't don't go beyond
+
+422
+00:17:55,170 --> 00:18:00,180
+that part and for the cross-sectional
+
+423
+00:17:58,350 --> 00:18:03,710
+things and within the organization we
+
+424
+00:18:00,180 --> 00:18:07,710
+need also create data integration tests
+
+425
+00:18:03,710 --> 00:18:10,140
+because this helps make sure that the
+
+426
+00:18:07,710 --> 00:18:11,760
+things you build as a data engineer also
+
+427
+00:18:10,140 --> 00:18:14,090
+work with the engineering team and they
+
+428
+00:18:11,760 --> 00:18:18,540
+actually are compatible and all the
+
+429
+00:18:14,090 --> 00:18:20,160
+things are working in like with code if
+
+430
+00:18:18,540 --> 00:18:21,660
+the green sea is green it doesn't mean
+
+431
+00:18:20,160 --> 00:18:23,550
+you don't have bugs or layers in the
+
+432
+00:18:21,660 --> 00:18:25,650
+data it means that you don't have enough
+
+433
+00:18:23,550 --> 00:18:28,760
+tests so you need to keep improving in
+
+434
+00:18:25,650 --> 00:18:31,560
+adding tests in your tests written and
+
+435
+00:18:28,760 --> 00:18:34,890
+put this in the CI in automate things as
+
+436
+00:18:31,560 --> 00:18:37,130
+much as possible otherwise things can go
+
+437
+00:18:34,890 --> 00:18:37,130
+out of control
+
+438
+00:18:37,910 --> 00:18:43,080
+so as a recap data quality is actually
+
+439
+00:18:41,610 --> 00:18:45,030
+fitness for use between are the same
+
+440
+00:18:43,080 --> 00:18:47,040
+data can be good for you or not good for
+
+441
+00:18:45,030 --> 00:18:48,480
+someone else and you can assess the data
+
+442
+00:18:47,040 --> 00:18:51,120
+with different called Dementors which
+
+443
+00:18:48,480 --> 00:18:53,220
+can also be contextual now you need to
+
+444
+00:18:51,120 --> 00:18:55,860
+identify the quality you need actually
+
+445
+00:18:53,220 --> 00:18:58,860
+and more or less can actually hurt your
+
+446
+00:18:55,860 --> 00:19:00,660
+your pocket or your product and you need
+
+447
+00:18:58,860 --> 00:19:02,100
+to look for errors into the schema the
+
+448
+00:19:00,660 --> 00:19:05,370
+rules and the map is because it's a big
+
+449
+00:19:02,100 --> 00:19:06,870
+source of errors usually you evaluate
+
+450
+00:19:05,370 --> 00:19:08,790
+close to the source otherwise there is
+
+451
+00:19:06,870 --> 00:19:11,880
+propagate and it's quite harder to
+
+452
+00:19:08,790 --> 00:19:14,190
+identify in a traceback and you need to
+
+453
+00:19:11,880 --> 00:19:17,910
+automate as much as possible the CI is a
+
+454
+00:19:14,190 --> 00:19:20,650
+very good option for that and that
+
+455
+00:19:17,910 --> 00:19:28,789
+concludes my talk thank you
+
+456
+00:19:20,650 --> 00:19:28,789
+[Applause]
+
+457
+00:20:00,000 --> 00:20:08,940
+you know tips and tricks you know
+
+458
+00:20:03,760 --> 00:20:22,540
+because everyone wants a clean date and
+
+459
+00:20:08,940 --> 00:20:27,190
+the cheapest are possible we grab it
+
+460
+00:20:22,540 --> 00:20:28,510
+grab out yeah it's the data you have is
+
+461
+00:20:27,190 --> 00:20:33,040
+not good enough then they're proud of
+
+462
+00:20:28,510 --> 00:20:55,270
+you pew pew you have will not yep come
+
+463
+00:20:33,040 --> 00:20:57,310
+up to your data find the balance so have
+
+464
+00:20:55,270 --> 00:20:59,650
+a library Khalid it's open source and
+
+465
+00:20:57,310 --> 00:21:01,810
+it's it's our library that you can
+
+466
+00:20:59,650 --> 00:21:04,420
+actually also has a unique decoration so
+
+467
+00:21:01,810 --> 00:21:09,730
+you can have a noir different a ume test
+
+468
+00:21:04,420 --> 00:21:15,220
+and you can put this into the exam which
+
+469
+00:21:09,730 --> 00:21:17,860
+is yeah so you focused mostly that was
+
+470
+00:21:15,220 --> 00:21:20,410
+my impression on like syntactic and
+
+471
+00:21:17,860 --> 00:21:22,990
+structural issues that could can be
+
+472
+00:21:20,410 --> 00:21:26,440
+handled more with this symbolic of
+
+473
+00:21:22,990 --> 00:21:27,460
+methods what about what's the strategy
+
+474
+00:21:26,440 --> 00:21:29,770
+with
+
+475
+00:21:27,460 --> 00:21:32,890
+more like semantic side of things so say
+
+476
+00:21:29,770 --> 00:21:35,920
+a sub concept is classified wrongly
+
+477
+00:21:32,890 --> 00:21:38,170
+under another under another class it's
+
+478
+00:21:35,920 --> 00:21:40,470
+what machine learning methods be of any
+
+479
+00:21:38,170 --> 00:21:46,860
+help or only going to experts is the
+
+480
+00:21:40,470 --> 00:21:50,140
+domain experts would be the basic way I
+
+481
+00:21:46,860 --> 00:21:52,330
+have experienced any way of doing this
+
+482
+00:21:50,140 --> 00:21:53,890
+muscle Eric I don't it could be possible
+
+483
+00:21:52,330 --> 00:21:56,230
+by the middle of a lot of data to do
+
+484
+00:21:53,890 --> 00:21:57,910
+that so if you're in position you have a
+
+485
+00:21:56,230 --> 00:21:59,740
+lot of data that you can actually train
+
+486
+00:21:57,910 --> 00:22:01,930
+models to do that things then probably
+
+487
+00:21:59,740 --> 00:22:05,490
+yes but if you are operating in a small
+
+488
+00:22:01,930 --> 00:22:10,390
+scale then this could be quite hard to
+
+489
+00:22:05,490 --> 00:22:13,470
+to do that at least the way there will
+
+490
+00:22:10,390 --> 00:22:13,470
+have an experience in the field
+
+491
+00:22:18,920 --> 00:22:25,290
+Thank You meeting for the presentation
+
+492
+00:22:21,360 --> 00:22:29,520
+was very nice always a question for
+
+493
+00:22:25,290 --> 00:22:32,760
+sharpen so you did the very good work
+
+494
+00:22:29,520 --> 00:22:35,730
+with Holger actually everything as a
+
+495
+00:22:32,760 --> 00:22:40,230
+standard from w3c do you have any plans
+
+496
+00:22:35,730 --> 00:22:42,870
+in the context of GFI to work on
+
+497
+00:22:40,230 --> 00:22:45,300
+standardizing shakalu rules as well
+
+498
+00:22:42,870 --> 00:22:47,640
+which is now in the advanced features we
+
+499
+00:22:45,300 --> 00:22:50,550
+in riffin it it have a big interest and
+
+500
+00:22:47,640 --> 00:22:54,120
+we want to participate and push towards
+
+501
+00:22:50,550 --> 00:22:57,420
+standardizing rules as well do you have
+
+502
+00:22:54,120 --> 00:23:00,750
+any plans for that not at the moment
+
+503
+00:22:57,420 --> 00:23:04,340
+with common yeah don't have any good
+
+504
+00:23:00,750 --> 00:23:04,340
+case in the moment okay since you have
+
+505
+00:23:25,720 --> 00:23:32,680
+so the moon rules is in informal note of
+
+506
+00:23:29,470 --> 00:23:34,930
+circle it's not yeah and there is no
+
+507
+00:23:32,680 --> 00:23:37,140
+implementation report or support of the
+
+508
+00:23:34,930 --> 00:23:39,070
+moment I think the little quadrant has
+
+509
+00:23:37,140 --> 00:23:42,570
+husband may need this but they also
+
+510
+00:23:39,070 --> 00:23:45,490
+extended in a bit from what I understand
+
+511
+00:23:42,570 --> 00:23:47,140
+yeah for for me I didn't have any use
+
+512
+00:23:45,490 --> 00:23:48,940
+case to extend our divinity with with
+
+513
+00:23:47,140 --> 00:23:52,510
+soccer rules I only prevent circle at
+
+514
+00:23:48,940 --> 00:24:01,570
+the moment so that might be in the
+
+515
+00:23:52,510 --> 00:24:03,040
+future not not for now one of the slides
+
+516
+00:24:01,570 --> 00:24:05,740
+you mentioned that there needs to be
+
+517
+00:24:03,040 --> 00:24:12,070
+letter tooling and it's coming along any
+
+518
+00:24:05,740 --> 00:24:13,480
+examples to kind of get started there
+
+519
+00:24:12,070 --> 00:24:18,220
+are no generic tools actually that's the
+
+520
+00:24:13,480 --> 00:24:20,050
+problem so in our case I mean we had to
+
+521
+00:24:18,220 --> 00:24:23,200
+research papers on that we had a tool
+
+522
+00:24:20,050 --> 00:24:24,910
+for field experts which was our own
+
+523
+00:24:23,200 --> 00:24:28,120
+design and we made an interface that
+
+524
+00:24:24,910 --> 00:24:30,850
+they can actually select some some data
+
+525
+00:24:28,120 --> 00:24:33,400
+and then use it to have some salty text
+
+526
+00:24:30,850 --> 00:24:36,450
+and click the correct errors that they
+
+527
+00:24:33,400 --> 00:24:39,250
+had which was we developed our own and
+
+528
+00:24:36,450 --> 00:24:41,080
+when we use Mechanical Turk for that we
+
+529
+00:24:39,250 --> 00:24:43,270
+also had an interface because the users
+
+530
+00:24:41,080 --> 00:24:45,490
+were not experienced or they had to have
+
+531
+00:24:43,270 --> 00:24:47,740
+some quite simple is this correct or not
+
+532
+00:24:45,490 --> 00:24:50,290
+it was very simple interface so it's
+
+533
+00:24:47,740 --> 00:24:53,290
+also kind of specific to what you want
+
+534
+00:24:50,290 --> 00:24:54,610
+to evaluate so it's it's yeah
+
+535
+00:24:53,290 --> 00:25:01,120
+unfortunately there is not much out
+
+536
+00:24:54,610 --> 00:25:02,800
+there available for for this yes there
+
+537
+00:25:01,120 --> 00:25:04,480
+is a lot of support for from different
+
+538
+00:25:02,800 --> 00:25:07,240
+roles there are different languages like
+
+539
+00:25:04,480 --> 00:25:09,940
+sex suckle all which we could be used
+
+540
+00:25:07,240 --> 00:25:12,820
+from for many people and there are yeah
+
+541
+00:25:09,940 --> 00:25:19,920
+there are many tools that can be used
+
+542
+00:25:12,820 --> 00:25:22,750
+here do you wanna example tools or only
+
+543
+00:25:19,920 --> 00:25:25,690
+top Padron is a cycle implementation are
+
+544
+00:25:22,750 --> 00:25:29,800
+they took the top quadrant gravitation
+
+545
+00:25:25,690 --> 00:25:32,740
+is one my tool or support circle in all
+
+546
+00:25:29,800 --> 00:25:36,610
+and there are sex many six eliminations
+
+547
+00:25:32,740 --> 00:25:38,480
+for validation and yeah there are many
+
+548
+00:25:36,610 --> 00:25:41,470
+options if you can
+
+549
+00:25:38,480 --> 00:25:41,470
+discussed later if you want
+
+550
+00:25:47,389 --> 00:25:51,259
+I had a quick question around you you
+
+551
+00:25:49,279 --> 00:25:52,489
+touched on basic quality dimensions
+
+552
+00:25:51,259 --> 00:25:54,499
+earlier and talked about kind of
+
+553
+00:25:52,489 --> 00:25:56,179
+completeness and there's a consistency
+
+554
+00:25:54,499 --> 00:25:59,479
+conformity that kind of stuff
+
+555
+00:25:56,179 --> 00:26:01,459
+yes it's a semantic web data sets what
+
+556
+00:25:59,479 --> 00:26:04,399
+tends to be the most common type of
+
+557
+00:26:01,459 --> 00:26:10,820
+issue all the most common dimension that
+
+558
+00:26:04,399 --> 00:26:13,129
+you see that yields problems I think if
+
+559
+00:26:10,820 --> 00:26:19,190
+you look at the LD cloud the the problem
+
+560
+00:26:13,129 --> 00:26:20,929
+I see is mostly consistent use of common
+
+561
+00:26:19,190 --> 00:26:24,549
+vocabularies and one thing that's
+
+562
+00:26:20,929 --> 00:26:28,519
+usually commonly abused is all same as
+
+563
+00:26:24,549 --> 00:26:29,959
+yeah so people use some capillaries but
+
+564
+00:26:28,519 --> 00:26:30,589
+they don't use it as they weren't ready
+
+565
+00:26:29,959 --> 00:26:33,859
+to be used
+
+566
+00:26:30,589 --> 00:26:36,319
+and this makes consuming data from the
+
+567
+00:26:33,859 --> 00:26:40,069
+load cloud a bit challenging in the
+
+568
+00:26:36,319 --> 00:26:41,569
+moment yeah there are many qualities of
+
+569
+00:26:40,069 --> 00:26:43,819
+course some data but this is also very
+
+570
+00:26:41,569 --> 00:26:51,109
+big problem on Samadhi website not on
+
+571
+00:26:43,819 --> 00:26:53,340
+the data side okay there are no other
+
+572
+00:26:51,109 --> 00:27:02,270
+questions a big round of applause
+
+573
+00:26:53,340 --> 00:27:02,270
+[Applause]
+
+574
+00:27:08,140 --> 00:27:10,200
+you
+
