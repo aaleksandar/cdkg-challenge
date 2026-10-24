@@ -211,8 +211,10 @@ def sync_heysummit() -> None:
     """Refresh the catalogue, seed the talks it lists, claim their transcripts.
 
     Two valves, both checked here: the scheduler's own, and the HeySummit one,
-    for an admin who wants the channel read but the CMS left alone. Nothing
-    here costs an LLM call; a rebuild follows only when the CSV changed.
+    for an admin who wants the channel read but the CMS left alone. The sync
+    costs no LLM call; a rebuild follows only when the CSV changed. Abstracts
+    that arrived untagged are then tagged like a new video, behind
+    AUTO_INGEST_NEW, in the background.
     """
     from .sources import heysummit
 
@@ -231,6 +233,9 @@ def sync_heysummit() -> None:
         from .pipeline.runner import request_rebuild
 
         request_rebuild()
+    from .pipeline import abstracts
+
+    abstracts.start(automatic=True)
 
 
 def start_scheduler() -> BackgroundScheduler:

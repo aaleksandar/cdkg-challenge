@@ -171,21 +171,29 @@ def _tag_sources(talk_id: str) -> set[str]:
     return sources
 
 
-def test_a_seeded_talk_is_tagged_from_its_abstract_until_its_transcript_arrives(sandbox):
+def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_until_its_transcript_arrives(
+        sandbox, monkeypatch):
+    from ingest.pipeline import abstracts
+
     sb = sandbox
     sb.add_video("bbbbbbbbbbb", "Graph Thinking | Paco Nathan | Connected Data World 2021")
     sb.run("bbbbbbbbbbb")
-    _write_catalog()
-    heysummit.sync(refresh=False)
-    seeded = next(r for r in sb.rows() if r["HeySummit"] == "2")
-    # What 01b_extract_description_tags.py writes, without the LLM.
-    config.DESCRIPTION_TAGS_JSON.write_text(json.dumps(
-        {seeded["TalkID"]: {"hash": "x", "tags": ["knowledge graph", "frontier"]}}))
+    config.HEYSUMMIT_CATALOG.parent.mkdir(parents=True, exist_ok=True)
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps(
+        [{**CATALOG[0], "description": "Knowledge graphs at the frontier of AI. " * 5}]))
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(abstracts, "_in_background", lambda fn: fn())
+    monkeypatch.setattr(heysummit, "refresh_catalog", lambda: 1)   # the catalogue above, not the API
+    sb.baml.calls.clear()
 
-    runner.request_rebuild()
+    # The panel's sync: the talk is seeded, then its abstract tagged, then a rebuild asked for.
+    assert "Tagging 1 abstracts" in sb.client.post("/heysummit").text
+    seeded = next(r for r in sb.rows() if r["HeySummit"] == "2")
+    assert len(sb.baml.calls) == 1 and "frontier" in sb.baml.calls[0]
     sb.drain()
     assert sb.counts()["tagged_talks"] == 2
     assert _tag_sources(seeded["TalkID"]) == {"description"}
+    assert abstracts.pending() == []                      # a second sync costs nothing
 
     # The transcript's tags replace the abstract's: one source per talk.
     sb.add_video("ccccccccccc", "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021")

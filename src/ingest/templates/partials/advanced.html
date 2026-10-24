@@ -53,6 +53,9 @@
               only; the existing backlog is drained below.
             {% else %}Newly published videos are catalogued and listed as
               <em>Not ingested</em>, but wait for a click.{% endif %}
+            Abstracts the HeySummit sync brings in are tagged the same way:
+            {% if on %}automatically, after the sync{% else %}only with the
+            button below{% endif %}.
           {% elif name == 'HEYSUMMIT_SYNC_ENABLED' %}
             {% if on %}Every {{ INVENTORY_REFRESH_HOURS }} h the HeySummit
               catalogue is re-read: a talk not yet in the metadata CSV gets a
@@ -201,6 +204,32 @@
         Nothing waiting. Every video on the channel has been ingested.
       {% endif %}
       {% if queue_depth %}<br><strong>{{ queue_depth }} already queued.</strong>{% endif %}
+    </p>
+  </div>
+
+  <div class="drain">
+    <button type="button" class="btn is-spendy" hx-post="{{ base }}/abstracts/tag"
+            hx-target="#abstracts-flash" hx-disabled-elt="this"
+            {{ 'disabled' if not abstracts_pending or abstracts.running }}>
+      Tag abstracts ({{ abstracts_pending }})
+    </button>
+    <span id="abstracts-flash"></span>
+    <p class="note-body">
+      {% if abstracts.running %}
+        <strong>Tagging abstracts now.</strong>
+      {% elif abstracts_pending %}
+        Talks with an abstract but no transcript have no tags, so nothing that
+        matches on tags can find them. Runs tag extraction on each abstract,
+        <strong>{{ abstracts_pending }} LLM calls</strong>, billed to
+        <code>GOOGLE_API_KEY</code>, in the background; the graph rebuilds at the end.
+        A transcript's tags replace its abstract's when it arrives.
+      {% else %}
+        Nothing waiting. Every talk with an abstract and no transcript is tagged.
+      {% endif %}
+      {% if abstracts.last %}<br>Last run: {{ abstracts.last.tagged | length }} tagged,
+        {{ abstracts.last.failed | length }} failed{% if abstracts.last.input_tokens %},
+        {{ abstracts.last.input_tokens }} input / {{ abstracts.last.output_tokens }} output
+        tokens{% endif %}.{% endif %}
     </p>
   </div>
 </section>
