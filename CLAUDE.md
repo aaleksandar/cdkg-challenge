@@ -19,6 +19,7 @@ uv run baml-cli generate --from src/kuzu/baml_src   # required after ANY .baml e
 cd src/kuzu
 uv run 00_extract_transcripts.py    # .srt -> data/*.txt
 uv run 01_extract_tag_keywords.py   # LLM tag extraction -> entities.json (costs API calls)
+uv run 01b_extract_description_tags.py  # tags from abstracts of untranscribed talks -> description_tags.json (incremental)
 uv run 02_domain_graph.py           # DELETES and rebuilds cdl_db.kuzu with the domain graph
 uv run 03_content_graph.py          # attaches the Tag layer to the existing db
 uv run rag.py                       # smoke-test Graph RAG with sample questions
@@ -78,7 +79,7 @@ Both are gitignored, as is `.kamal/secrets` (template: `.kamal/secrets.example`)
 (:Speaker) -[:GIVES_TALK]-> (:Talk)      // has a `date` property; Talk's key is `talk_id`
 (:Talk) -[:IS_PART_OF]-> (:Event)
 (:Talk) -[:IS_CATEGORIZED_AS]-> (:Category)
-(:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)     // has a `source` property: "transcript" (YouTube captions)
+(:Talk) -[:IS_DESCRIBED_BY]-> (:Tag)     // has a `source` property: "transcript" (YouTube captions) or "description" (the abstract)
 ```
 
 `Talk` carries provenance beside its values: `url` (the HeySummit programme page, from CSV `Web`), `video` (the YouTube URL), `heysummit` (the HeySummit talk id), `transcript` (the caption file's stem, the join key to its tags) and `description_source` (`heysummit` | `curator` | blank). `Event.url` is the page a hard-coded description was taken from. These exist so an answer can say where its knowledge came from (see "Every answer says where it came from" below); the Text2Cypher prompt is told not to filter on them.
@@ -158,9 +159,13 @@ Nothing about the visitor is stored: the photo lives in session state for the ro
 ## Data Flow
 
 1. `.srt` transcripts → `.txt` plain text (`data/`, gitignored)
-2. Transcripts → LLM → `entities.json` (extracted tags)
+2. Transcripts → LLM → `entities.json` (extracted tags); abstracts of talks with no transcript → LLM → `description_tags.json`
 3. Metadata CSV + `entities.json` → Ladybug database (`cdl_db.kuzu`, gitignored)
 4. User question → Text2Cypher → Cypher query → Graph results → sources resolved by `talk_id` → RAG answer + Sources
+
+### Tags from abstracts
+
+A talk with no transcript would carry no tags, and "Talks for you" matches on tags alone, so it could never pick one (every HeySummit-seeded talk, every CDL26 talk). `01b_extract_description_tags.py` runs `ExtractTags` over each such talk's abstract into `description_tags.json` (`DESCRIPTION_TAGS_JSON`, overridable like `ENTITIES_JSON` and passed by `graph._script_env`), keyed by talk id and a hash of the abstract: a re-run costs a call only for a new or changed abstract, and abstracts under 20 words (placeholders) are skipped. `03_content_graph.py` attaches them with `source = 'description'` **only to talks the transcripts left untagged**, so a talk's tags come from one source and a transcript replaces its abstract's tags at the next rebuild. Answers say "matched on tags from its abstract" for those. It is not yet run by the HeySummit sync or the rebuild: after a sync seeds new talks, run it and commit the file. First run (2026-10-24): 109 abstracts, 103 tagged; `evaluate.py` 4.2 → 4.5 (within variance, no regression).
 
 ## Every answer says where it came from
 

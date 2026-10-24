@@ -84,6 +84,7 @@ case "$MODE" in
         # Full pipeline: re-extract tags with LLM, then rebuild db
         python 00_extract_transcripts.py
         python 01_extract_tag_keywords.py
+        python 01b_extract_description_tags.py
         python 02_domain_graph.py
         python 03_content_graph.py
         md5sum /app/entities.json > "$ENTITIES_HASH_FILE"

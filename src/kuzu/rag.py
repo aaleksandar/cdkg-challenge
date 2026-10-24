@@ -199,6 +199,7 @@ RETURN t.talk_id AS talk_id, t.title AS title, t.description AS description,
        t.description_source AS description_source,
        t.description <> '' AS has_description,
        EXISTS { MATCH (t)-[:IS_DESCRIBED_BY]->(:Tag) } AS has_tags,
+       EXISTS { MATCH (t)-[:IS_DESCRIBED_BY {source: 'description'}]->(:Tag) } AS tags_from_description,
        collect(DISTINCT tag.keyword) AS tag_hits
 """
 
@@ -288,6 +289,8 @@ class GraphRAG:
                     "description_source": r["description_source"] or "",
                     "has_description": bool(r["has_description"]),
                     "has_tags": bool(r["has_tags"]),
+                    "tag_source": ("description" if r["tags_from_description"] else
+                                   "transcript" if r["has_tags"] else ""),
                     "evidence": evidence,
                     "tags": r["tag_hits"] or [],
                 })

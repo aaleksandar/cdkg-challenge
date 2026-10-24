@@ -76,7 +76,9 @@ def describe_evidence(source: dict) -> str:
         parts.append("from its HeySummit description")
     if "tags" in source.get("evidence", []):
         tags = source.get("tags") or []
-        parts.append("matched on its transcript's tags (YouTube captions)"
+        origin = ("its abstract" if source.get("tag_source") == "description"
+                  else "its transcript (YouTube captions)")
+        parts.append(f"matched on tags from {origin}"
                      + (f": {', '.join(tags)}" if tags else ""))
     return " and ".join(parts) or "listed in the knowledge graph"
 

@@ -158,3 +158,36 @@ def test_a_video_titled_talk_dot_speaker_joins_the_row_seeded_before_it(sandbox)
     assert run["status"] == "completed"
     assert detail(run, "csv_append")["talk_id"] == seeded["TalkID"]
     assert graph.talk_is_tagged(config.GRAPH_DB_PATH, seeded["TalkID"])
+
+
+def _tag_sources(talk_id: str) -> set[str]:
+    import ladybug as lb
+    conn = lb.Connection(lb.Database(str(config.GRAPH_DB_PATH), read_only=True))
+    result = conn.execute("MATCH (t:Talk {talk_id: $id})-[r:IS_DESCRIBED_BY]->(:Tag) "
+                          "RETURN DISTINCT r.source", parameters={"id": talk_id})
+    sources = set()
+    while result.has_next():
+        sources.add(result.get_next()[0])
+    return sources
+
+
+def test_a_seeded_talk_is_tagged_from_its_abstract_until_its_transcript_arrives(sandbox):
+    sb = sandbox
+    sb.add_video("bbbbbbbbbbb", "Graph Thinking | Paco Nathan | Connected Data World 2021")
+    sb.run("bbbbbbbbbbb")
+    _write_catalog()
+    heysummit.sync(refresh=False)
+    seeded = next(r for r in sb.rows() if r["HeySummit"] == "2")
+    # What 01b_extract_description_tags.py writes, without the LLM.
+    config.DESCRIPTION_TAGS_JSON.write_text(json.dumps(
+        {seeded["TalkID"]: {"hash": "x", "tags": ["knowledge graph", "frontier"]}}))
+
+    runner.request_rebuild()
+    sb.drain()
+    assert sb.counts()["tagged_talks"] == 2
+    assert _tag_sources(seeded["TalkID"]) == {"description"}
+
+    # The transcript's tags replace the abstract's: one source per talk.
+    sb.add_video("ccccccccccc", "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021")
+    assert sb.run("ccccccccccc")["status"] == "completed"
+    assert _tag_sources(seeded["TalkID"]) == {"transcript"}

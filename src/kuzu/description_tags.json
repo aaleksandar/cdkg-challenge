@@ -1,0 +1,1462 @@
+{
+  "t-0186c756": {
+    "hash": "d60bc30511628db4",
+    "tags": [
+      "bottom-up design",
+      "data integration",
+      "european data spaces",
+      "knowledge graphs",
+      "ontologies",
+      "slido",
+      "top-down design",
+      "upper-level ontologies"
+    ]
+  },
+  "t-02b217d0": {
+    "hash": "cc6a103799ba80aa",
+    "tags": [
+      "ai",
+      "bert",
+      "human-in-the-loop",
+      "knowledge graphs",
+      "language model",
+      "linked data",
+      "ontology",
+      "smart"
+    ]
+  },
+  "t-09db30c6": {
+    "hash": "1a973e1a1752ce1b",
+    "tags": [
+      "cataloguing data assets",
+      "data governance",
+      "enterprise knowledge graph",
+      "fair data",
+      "fair principles",
+      "machine readable data dictionaries",
+      "master and reference data",
+      "trust framework"
+    ]
+  },
+  "t-0af65240": {
+    "hash": "faf39aa222420631",
+    "tags": [
+      "etl",
+      "json-ld",
+      "r2rml",
+      "rdf",
+      "rml",
+      "semantic web stack",
+      "shacl",
+      "xslt"
+    ]
+  },
+  "t-11935d63": {
+    "hash": "a8d30cc64750f9c8",
+    "tags": [
+      "ai",
+      "controlled vocabularies",
+      "knowledge graphs",
+      "llms",
+      "ontologies",
+      "taxonomies"
+    ]
+  },
+  "t-175458f8": {
+    "hash": "329355a955b411df",
+    "tags": [
+      "data engineering",
+      "data integration",
+      "data management",
+      "json-ld",
+      "knowledge engineering",
+      "knowledge graphs",
+      "ontology engineering",
+      "owl",
+      "rdf",
+      "rdfs",
+      "shacl",
+      "sparql"
+    ]
+  },
+  "t-17bb3957": {
+    "hash": "d47cee74f843da71",
+    "tags": [
+      "agent orchestration",
+      "agentic workflows",
+      "associative search",
+      "boundary baml",
+      "embeddings",
+      "graph databases",
+      "graph pattern analytics",
+      "graphrag",
+      "mmgraphrag",
+      "multimodal graphrag",
+      "ollama",
+      "python",
+      "query chaining",
+      "rag",
+      "temporal analysis",
+      "vector databases",
+      "vector search"
+    ]
+  },
+  "t-1b431b3b": {
+    "hash": "096e017a47130cf9",
+    "tags": [
+      "ai",
+      "data mesh",
+      "graph rag",
+      "knowledge graph"
+    ]
+  },
+  "t-212ac11c": {
+    "hash": "8f9502a993104dd0",
+    "tags": [
+      "data engineering",
+      "data governance",
+      "data pipelines",
+      "data products",
+      "generative ai",
+      "knowledge graphs",
+      "minimum valuable governance",
+      "pay-as-you-go methodology",
+      "semantics"
+    ]
+  },
+  "t-231d37ed": {
+    "hash": "ebf9ca5e93f3d1e2",
+    "tags": [
+      "annotation",
+      "digital gardening",
+      "graph paradigm",
+      "knowledge graph",
+      "knowledge management",
+      "machine learning",
+      "nlp",
+      "note-taking",
+      "personal knowledge graph"
+    ]
+  },
+  "t-238a2d86": {
+    "hash": "b1694113755e7261",
+    "tags": [
+      "graphrag",
+      "knowledge graph",
+      "large language models",
+      "retrieval-augmented generation",
+      "small language models",
+      "vector-only rag"
+    ]
+  },
+  "t-32f5efe3": {
+    "hash": "72e049ff330133ee",
+    "tags": [
+      "entity-centric data models",
+      "knowledge graphs",
+      "ontologies"
+    ]
+  },
+  "t-33420f7e": {
+    "hash": "e2a09ca605e10c3b",
+    "tags": [
+      "agentic ai",
+      "artificial intelligence",
+      "controlled vocabularies",
+      "data science",
+      "fair principles",
+      "knowledge graphs",
+      "obdm",
+      "ontology based data management",
+      "process automation",
+      "reference model",
+      "semantic technologies",
+      "taxonomies",
+      "w3c standards"
+    ]
+  },
+  "t-33b09974": {
+    "hash": "d82fdecc88cb35cf",
+    "tags": []
+  },
+  "t-33b30235": {
+    "hash": "a75166302e3b0be1",
+    "tags": [
+      "embedding",
+      "entity linking",
+      "entity resolution",
+      "fine-tuning",
+      "github",
+      "graph rag",
+      "jupyter",
+      "knowledge graphs",
+      "lexical graph",
+      "llms",
+      "named entity recognition",
+      "pandas",
+      "python",
+      "relation extraction",
+      "retrieval augmented generation",
+      "text chunking",
+      "textgraph algorithm",
+      "vector database"
+    ]
+  },
+  "t-33c42698": {
+    "hash": "73ca837030e58047",
+    "tags": [
+      "embeddings",
+      "genai",
+      "gitlab",
+      "graph databases",
+      "grounding",
+      "keyword search",
+      "knowledge graphs",
+      "langchain",
+      "large language models",
+      "llms",
+      "neo4j",
+      "openai",
+      "python",
+      "rag",
+      "retrieval augmented generation",
+      "semantic search",
+      "similarity search",
+      "vector indexes",
+      "vs code"
+    ]
+  },
+  "t-3460054a": {
+    "hash": "e17f9b470a64aae9",
+    "tags": [
+      "ai",
+      "esg taxonomy",
+      "graphrag",
+      "issb",
+      "knowledge graphs",
+      "large language models",
+      "llms",
+      "tcfd",
+      "tnfd"
+    ]
+  },
+  "t-34e993bd": {
+    "hash": "22e85093434a4eed",
+    "tags": [
+      "causal discovery",
+      "causal graphs",
+      "causal inference",
+      "causal learn",
+      "causal machine learning",
+      "do-operator",
+      "dowhy",
+      "econ ml",
+      "embeddings",
+      "ergodic",
+      "generative ai",
+      "google colab",
+      "llms",
+      "predictive analytics",
+      "python",
+      "pywhy"
+    ]
+  },
+  "t-3b1f9de4": {
+    "hash": "fd6840533328542d",
+    "tags": [
+      "agent coordination patterns",
+      "agentic memory systems",
+      "autonomous agents",
+      "graph databases",
+      "graph foundation models",
+      "graph rag",
+      "graph-native planning systems",
+      "hybrid neural-symbolic systems",
+      "knowledge graphs",
+      "neural-symbolic reasoning engines",
+      "rag",
+      "tool orchestration frameworks"
+    ]
+  },
+  "t-3d449d12": {
+    "hash": "7b99e3d9e8f06a38",
+    "tags": [
+      "ai agents",
+      "controlled vocabularies",
+      "data pipelines",
+      "knowledge graphs",
+      "metadata schemas",
+      "ontologies",
+      "ontology pipeline",
+      "taxonomies",
+      "thesauri"
+    ]
+  },
+  "t-3e57f67e": {
+    "hash": "7c29b11f544a03c4",
+    "tags": []
+  },
+  "t-3f14ba0d": {
+    "hash": "476f18b506824d97",
+    "tags": [
+      "graphrag",
+      "graphrag toolkit",
+      "knowledge graphs",
+      "lexical property graphs",
+      "ontologies",
+      "rag",
+      "rdf",
+      "taxonomies"
+    ]
+  },
+  "t-40259be2": {
+    "hash": "322c947dd28649e0",
+    "tags": [
+      "ai",
+      "data science",
+      "graph analytics",
+      "graph databases",
+      "knowledge graphs",
+      "neo4j",
+      "semantic technology"
+    ]
+  },
+  "t-405d75ec": {
+    "hash": "bc96c7d82dc131d9",
+    "tags": [
+      "information retrieval",
+      "knowledge graphs",
+      "machine translation",
+      "multilingual seo",
+      "ontologies"
+    ]
+  },
+  "t-4067147c": {
+    "hash": "2acc9871ba558be1",
+    "tags": [
+      "amazon neptune",
+      "aws",
+      "azure",
+      "azure security center",
+      "azure sentinel",
+      "google cloud",
+      "graph database",
+      "graph traversal",
+      "gremlin",
+      "iam",
+      "kubernetes",
+      "property graphs",
+      "s3",
+      "wiz"
+    ]
+  },
+  "t-4496eac1": {
+    "hash": "8e93eb814b85598d",
+    "tags": [
+      "knowledge graph"
+    ]
+  },
+  "t-45bc4cc6": {
+    "hash": "69e896ac0591d4dd",
+    "tags": [
+      "graph databases",
+      "knowledge graphs",
+      "large language models",
+      "microsoft graphrag",
+      "ontology",
+      "rdf"
+    ]
+  },
+  "t-4793d8f0": {
+    "hash": "f911216868f012f9",
+    "tags": [
+      "cypher",
+      "graph data modelling",
+      "graph databases",
+      "graph theory",
+      "graphacademy",
+      "knowledge graphs",
+      "neo4j",
+      "pattern matching"
+    ]
+  },
+  "t-4d14fb44": {
+    "hash": "69f98017eba80c4f",
+    "tags": [
+      "ai agents",
+      "apis",
+      "foundation models",
+      "generative ai",
+      "knowledge graph",
+      "mcp",
+      "model context protocol",
+      "natural language processing"
+    ]
+  },
+  "t-4d22576a": {
+    "hash": "fccb0666c5ce43c4",
+    "tags": [
+      "compass",
+      "digital twin",
+      "knowledge graph",
+      "rdf"
+    ]
+  },
+  "t-4d7e513d": {
+    "hash": "0c52b4157c04840b",
+    "tags": [
+      "agentic workflows",
+      "baml",
+      "betweenness centrality",
+      "bods",
+      "docker",
+      "entity resolution",
+      "followthemoney",
+      "graph algorithms",
+      "graph analytics",
+      "graphrag",
+      "knowledge graphs",
+      "kùzudb",
+      "louvain partitioning",
+      "networkx",
+      "polars",
+      "python",
+      "semantic modeling",
+      "senzing",
+      "yworks yfiles"
+    ]
+  },
+  "t-4f45e3c1": {
+    "hash": "1d5b64fd22833f7e",
+    "tags": [
+      "datalog",
+      "knowledge graphs",
+      "maplib",
+      "ottr",
+      "owl",
+      "python",
+      "rdf",
+      "rdfs",
+      "reasonable ontology templates",
+      "shacl",
+      "sparql"
+    ]
+  },
+  "t-512aada1": {
+    "hash": "dd4f244c0eb3b9da",
+    "tags": [
+      "curation",
+      "open source curation",
+      "peer production",
+      "roam research",
+      "social bookmarks",
+      "wikis"
+    ]
+  },
+  "t-520f1252": {
+    "hash": "bf9c1a0af65cb98e",
+    "tags": [
+      "cypher",
+      "knowledge graphs",
+      "large language models",
+      "llms",
+      "nosql",
+      "property graph",
+      "rdf",
+      "relational databases",
+      "resource description framework",
+      "semantic technologies",
+      "sparql",
+      "sql",
+      "tentris"
+    ]
+  },
+  "t-54642457": {
+    "hash": "bdc51d8abb74641a",
+    "tags": [
+      "css",
+      "html",
+      "knowledge graphs",
+      "neonto coding sandbox",
+      "rdf",
+      "semantic layer cake",
+      "sparql",
+      "vs code",
+      "xml"
+    ]
+  },
+  "t-558af3d3": {
+    "hash": "9704d2e9c3f34b5b",
+    "tags": [
+      "discrete time dynamic graphs",
+      "entity-state model",
+      "graph databases",
+      "property graphs",
+      "temporal modelling",
+      "timeline modelling"
+    ]
+  },
+  "t-567a5549": {
+    "hash": "984c0954e514fbe6",
+    "tags": [
+      "agentic data mapping",
+      "conversational search",
+      "digital twins",
+      "domain centred ontologies",
+      "genai",
+      "knowledge mapping",
+      "linked search",
+      "low-code",
+      "no-code",
+      "semantic conformation",
+      "semantic data products"
+    ]
+  },
+  "t-5939695d": {
+    "hash": "d660a608f4838762",
+    "tags": [
+      "graph database",
+      "graph dbms",
+      "graph processing",
+      "gremlin",
+      "property graphs",
+      "rdf",
+      "rdf*",
+      "sparql"
+    ]
+  },
+  "t-59c13a2d": {
+    "hash": "fd27f7f0dea79396",
+    "tags": [
+      "artificial intelligence",
+      "azure",
+      "bag of words",
+      "big data",
+      "classification methods",
+      "cloud computing",
+      "common data model",
+      "compute with words",
+      "cql",
+      "cypher",
+      "data centric programming",
+      "data models",
+      "entity relationship diagram",
+      "excel",
+      "expert systems",
+      "github",
+      "grakn",
+      "knowledge graphs",
+      "kubernetes",
+      "machine learning",
+      "natural language processing",
+      "neo4j",
+      "power platform",
+      "sentiment analysis",
+      "sql",
+      "turing test",
+      "xbrl"
+    ]
+  },
+  "t-59d474b7": {
+    "hash": "e95ee1f3d0075a23",
+    "tags": [
+      "genai",
+      "graphrag",
+      "knowledge graphs"
+    ]
+  },
+  "t-59ef248f": {
+    "hash": "e8127b65ee8b86cd",
+    "tags": [
+      "centrality",
+      "cypher",
+      "data analysis",
+      "google colab",
+      "graph analysis",
+      "graph data science library",
+      "graph visualisations",
+      "information encoding",
+      "jupyter notebook",
+      "neo4j",
+      "numpy",
+      "pandas",
+      "python",
+      "scikit-learn",
+      "yfiles jupyter graphs",
+      "yfiles jupyter graphs for neo4j"
+    ]
+  },
+  "t-5b4e027e": {
+    "hash": "eabcba02daa73710",
+    "tags": [
+      "etl pipelines",
+      "knowledge graph",
+      "owl",
+      "rdf",
+      "rdf(s)",
+      "shacl",
+      "shape constraint language",
+      "triplestores"
+    ]
+  },
+  "t-5d54e3d9": {
+    "hash": "9b7fe5f063a5195f",
+    "tags": [
+      "decentralization",
+      "linked data",
+      "semantic web"
+    ]
+  },
+  "t-5d99da92": {
+    "hash": "820f3288454890f9",
+    "tags": [
+      "customer 360",
+      "entity resolution"
+    ]
+  },
+  "t-5ef78cf3": {
+    "hash": "69b36f6e5b1c4cc6",
+    "tags": [
+      "knowledge graphs",
+      "large language models",
+      "llms",
+      "non-symbolic ai",
+      "ontologies",
+      "symbolic ai"
+    ]
+  },
+  "t-63c4da30": {
+    "hash": "894d491a2279ab19",
+    "tags": [
+      "knowledge graphs",
+      "llms",
+      "neural-symbolic loop",
+      "ontologies"
+    ]
+  },
+  "t-67380f46": {
+    "hash": "6984aedb9465fc63",
+    "tags": [
+      "data mesh",
+      "data product",
+      "dpds",
+      "dprod",
+      "genai",
+      "knowledge graph",
+      "knowledge mesh",
+      "obda",
+      "ontology-based data access",
+      "team topologies",
+      "virtual knowledge graph"
+    ]
+  },
+  "t-67544187": {
+    "hash": "122c3c8468d2bc45",
+    "tags": []
+  },
+  "t-6836feec": {
+    "hash": "72185f4d04560111",
+    "tags": [
+      "context window optimization",
+      "conversation summarization",
+      "cypher",
+      "dgraph",
+      "entity extraction",
+      "github",
+      "graph modeling",
+      "graphrag",
+      "javascript",
+      "mcp",
+      "memory consolidation",
+      "model context protocol",
+      "neo4j",
+      "relationship mapping",
+      "typescript",
+      "vector-based rag",
+      "vercel ai sdk"
+    ]
+  },
+  "t-68f6d9c2": {
+    "hash": "ebcb496e535a3119",
+    "tags": [
+      "arrow",
+      "foaf",
+      "gensim",
+      "git",
+      "json-ld",
+      "jupyter notebooks",
+      "kglab",
+      "matplotlib",
+      "networkx",
+      "numpy",
+      "owl",
+      "pandas",
+      "parquet",
+      "probabilistic soft logic",
+      "pslpython",
+      "pylev",
+      "python",
+      "pyvis",
+      "rdf",
+      "rdflib",
+      "skos",
+      "sparql",
+      "turtle",
+      "xsd"
+    ]
+  },
+  "t-694de5cb": {
+    "hash": "0788b074a2daaa48",
+    "tags": [
+      "betweenness centrality",
+      "clustering",
+      "graph algorithms",
+      "graph analytics",
+      "graph technology",
+      "real-time visualization",
+      "scoutbee",
+      "transparency-one"
+    ]
+  },
+  "t-69ac2111": {
+    "hash": "609f93acf5d213b8",
+    "tags": [
+      "api",
+      "csv",
+      "json-ld",
+      "rdf",
+      "rss",
+      "uris",
+      "webcal"
+    ]
+  },
+  "t-6b889fb4": {
+    "hash": "f9b47266da0329ed",
+    "tags": [
+      "arm",
+      "asic",
+      "cpu",
+      "fpga",
+      "gpu",
+      "graph analytics",
+      "graph-augmented xai framework",
+      "ultipa",
+      "x86"
+    ]
+  },
+  "t-6fa665b4": {
+    "hash": "833a046a0ceed0eb",
+    "tags": [
+      "adrf framework",
+      "distributed systems",
+      "entity linking",
+      "graph technology",
+      "knowledge graphs",
+      "machine learning algorithms",
+      "project jupyter",
+      "python"
+    ]
+  },
+  "t-6ff71951": {
+    "hash": "2d29642c244d66cd",
+    "tags": [
+      "etl",
+      "hybrid retrieval",
+      "hygm",
+      "hypothetical graph model",
+      "llm-assisted entity extraction",
+      "mcp client",
+      "mcp server",
+      "memgraph",
+      "memgraph ai toolkit",
+      "memgraph lab",
+      "model context protocol",
+      "mysql",
+      "postgres",
+      "sql2graph",
+      "unstructured2graph"
+    ]
+  },
+  "t-70fe8160": {
+    "hash": "eeb5ff0bcb0dc9cf",
+    "tags": [
+      "carml",
+      "data pre-processing",
+      "docker",
+      "duckdb",
+      "expressive-rdf-mapper",
+      "git",
+      "graph refactoring",
+      "java",
+      "ontop-vkg",
+      "r2rml",
+      "rdf",
+      "rml",
+      "shacl",
+      "sparql",
+      "sparql-notebook",
+      "turtle",
+      "unix shell",
+      "vscode",
+      "vscode-rdf-sketch",
+      "xrm"
+    ]
+  },
+  "t-792c8043": {
+    "hash": "6e3edca24ff8958e",
+    "tags": [
+      "data harmonization",
+      "databases",
+      "entity resolution",
+      "knowledge graph visualization tools",
+      "knowledge graphs",
+      "relational technology"
+    ]
+  },
+  "t-7dbe0811": {
+    "hash": "5717f18911512e68",
+    "tags": [
+      "agentic ai",
+      "association strength calculations",
+      "betweenness",
+      "centrality measures",
+      "community detection",
+      "data anonymization",
+      "graph analytics",
+      "graph data science",
+      "graph databases",
+      "human-in-the-loop",
+      "knowledge graphs",
+      "langgraph",
+      "llms",
+      "llms-as-judge",
+      "louvain",
+      "pagerank",
+      "prompt engineering",
+      "python"
+    ]
+  },
+  "t-8335a1b4": {
+    "hash": "671739e2112ee9f8",
+    "tags": [
+      "data curation",
+      "data modeling",
+      "data pipelines",
+      "data processing",
+      "data scraping",
+      "epsilla",
+      "graph ai",
+      "graph analytics",
+      "graph data science",
+      "graph databases",
+      "graphwise",
+      "knowledge graphs",
+      "large language models",
+      "meta-modeling",
+      "question answering",
+      "semantic technology"
+    ]
+  },
+  "t-83f0bd2b": {
+    "hash": "dda5b6d4e4c52570",
+    "tags": [
+      "gql",
+      "grasch",
+      "json schema",
+      "kiro",
+      "lex",
+      "python",
+      "rag",
+      "rdf",
+      "rdf schema",
+      "shacl core constraints",
+      "sql",
+      "text-to-graph",
+      "text2graph"
+    ]
+  },
+  "t-8625fbfc": {
+    "hash": "47a8aaad4c7661a2",
+    "tags": [
+      "ai",
+      "neurosymbolic ai",
+      "ontologies",
+      "semantics"
+    ]
+  },
+  "t-8beefbda": {
+    "hash": "e88e50edf885d500",
+    "tags": [
+      "api contracts",
+      "data products",
+      "database views",
+      "dprod",
+      "graph databases",
+      "knowledge graphs",
+      "multi-target schema generation",
+      "portable data product contracts",
+      "semantic layers",
+      "semantic modeling",
+      "semantic technology",
+      "system mapping architecture",
+      "unified business models"
+    ]
+  },
+  "t-8d6a15b7": {
+    "hash": "4bd54877d5069929",
+    "tags": [
+      "knowledge graph",
+      "ontology"
+    ]
+  },
+  "t-8ec22175": {
+    "hash": "a74d71b71bc5990d",
+    "tags": [
+      "agentic ai",
+      "enterprise knowledge graph",
+      "hybrid graph architecture",
+      "knowledge graph",
+      "linked data"
+    ]
+  },
+  "t-940502b1": {
+    "hash": "d7dabb6d12bebaa2",
+    "tags": [
+      "dataflows",
+      "knowledge graphs",
+      "rdf"
+    ]
+  },
+  "t-99c3306b": {
+    "hash": "1878808af62de07e",
+    "tags": [
+      "graph databases",
+      "graph processing",
+      "graph query languages",
+      "graphql",
+      "property graphs",
+      "rdf",
+      "sql"
+    ]
+  },
+  "t-9a4ba1a5": {
+    "hash": "eb49802170848cdc",
+    "tags": [
+      "datalog",
+      "graph databases",
+      "incremental reasoning",
+      "knowledge graphs",
+      "knowledge-based ai",
+      "llm",
+      "ontological reasoning",
+      "owl",
+      "rag",
+      "retrieval-augmented generation",
+      "semantic reasoning",
+      "sparql"
+    ]
+  },
+  "t-9be89c29": {
+    "hash": "ade944998f4a90f9",
+    "tags": [
+      "enterprise knowledge graph",
+      "entity matching",
+      "entity resolution",
+      "genai",
+      "incremental data loads",
+      "knowledge graph",
+      "minimum viable graph"
+    ]
+  },
+  "t-9cc83d10": {
+    "hash": "defad2ee97318545",
+    "tags": [
+      "artificial intelligence",
+      "data analytics",
+      "deep learning",
+      "graph analytics",
+      "graph processing",
+      "hive project",
+      "machine learning",
+      "tensorflow"
+    ]
+  },
+  "t-9ef2cac7": {
+    "hash": "7204e8febe65305d",
+    "tags": [
+      "ai",
+      "data product",
+      "dprod",
+      "entity linking",
+      "knowledge graphs",
+      "linked data principles",
+      "semantic data products"
+    ]
+  },
+  "t-a1921b82": {
+    "hash": "c4daf7075267a21e",
+    "tags": [
+      "centrality",
+      "deep learning",
+      "dijkstra's algorithm",
+      "graph analytics",
+      "graph embedding models",
+      "semantic web",
+      "sparql"
+    ]
+  },
+  "t-a1bbe65b": {
+    "hash": "6b8afddfef609529",
+    "tags": [
+      "data catalog",
+      "data lake",
+      "data lakehouse",
+      "data mesh",
+      "data products",
+      "data warehouse",
+      "entity resolution",
+      "information retrieval",
+      "knowledge graphs",
+      "machine learning",
+      "mdm",
+      "question/answer",
+      "recsys",
+      "relational technology",
+      "search",
+      "semantic layer"
+    ]
+  },
+  "t-a23f5059": {
+    "hash": "e899af60f54b7464",
+    "tags": [
+      "apache cassandra",
+      "datastax graph",
+      "graph analytics",
+      "graph databases",
+      "labeled property graphs",
+      "multi-model databases",
+      "rdf"
+    ]
+  },
+  "t-a501a410": {
+    "hash": "d556f274fd30c7b5",
+    "tags": [
+      "entity deduplication",
+      "followthemoney",
+      "graph aggregation",
+      "graph etl",
+      "knowledge graph",
+      "opensanctions"
+    ]
+  },
+  "t-a515d394": {
+    "hash": "606756c5c2aa972d",
+    "tags": [
+      "cypher",
+      "docker",
+      "etl",
+      "jupyter notebooks",
+      "knowledge graphs",
+      "kùzu",
+      "kùzu explorer",
+      "llms",
+      "pip",
+      "property graph data model",
+      "python",
+      "rag",
+      "sql"
+    ]
+  },
+  "t-a6dbd935": {
+    "hash": "b695c578c3d20de4",
+    "tags": []
+  },
+  "t-a9da4e94": {
+    "hash": "898e7fc642648d81",
+    "tags": [
+      "data models",
+      "json-ld",
+      "knowledge graph",
+      "machine learning",
+      "natural language processing",
+      "nlp",
+      "ontologies",
+      "question answering",
+      "search engine optimization",
+      "semantic technology",
+      "seo"
+    ]
+  },
+  "t-aae10ee3": {
+    "hash": "13438f3475f6be22",
+    "tags": [
+      "graph databases",
+      "graph queries",
+      "graph structures"
+    ]
+  },
+  "t-aea2e31f": {
+    "hash": "420bda00b3cf31b5",
+    "tags": [
+      "ai",
+      "graph",
+      "multiomics"
+    ]
+  },
+  "t-b075a0ce": {
+    "hash": "4c23a80e78ac6473",
+    "tags": [
+      "agentic ai",
+      "ai agents",
+      "cognite",
+      "data lakes",
+      "genai",
+      "knowledge fabrics",
+      "knowledge graphs",
+      "neo4j",
+      "ontologies",
+      "operations semantic platform",
+      "rdf",
+      "snowflake"
+    ]
+  },
+  "t-b0e6fe76": {
+    "hash": "8a2ff7622e37b63a",
+    "tags": [
+      "generative ai",
+      "graph-based retrieval-augmented generation",
+      "graphrag",
+      "knowledge graphs",
+      "large language models",
+      "llms"
+    ]
+  },
+  "t-b17530c8": {
+    "hash": "4444c82bb2f54fc1",
+    "tags": [
+      "cypherouting",
+      "fixed entity architecture",
+      "graphrag",
+      "layered lexical graph",
+      "llms",
+      "microsoft graphrag",
+      "rag",
+      "text-to-cypher"
+    ]
+  },
+  "t-b4837d9d": {
+    "hash": "ed1ddb0fcb35da44",
+    "tags": [
+      "centree",
+      "ontologies",
+      "semantic api",
+      "semantics",
+      "taxonomies"
+    ]
+  },
+  "t-b70f68f8": {
+    "hash": "f7dd14f22f73fd49",
+    "tags": [
+      "electronic health records",
+      "graphrag",
+      "knowledge graphs",
+      "medical ontologies",
+      "rag",
+      "retrieval-augmented generation"
+    ]
+  },
+  "t-b8b8d13f": {
+    "hash": "3daeede4486baf5b",
+    "tags": [
+      "closed world assumption",
+      "github",
+      "java",
+      "owl",
+      "rdf",
+      "rdf validation",
+      "rdf4j",
+      "semantic knowledge graphs",
+      "shacl",
+      "shape constraint language",
+      "web ontology language"
+    ]
+  },
+  "t-b9a30b4e": {
+    "hash": "d12b82844de3b5f8",
+    "tags": [
+      "json-ld",
+      "knowledge graphs",
+      "schema.org",
+      "semantic seo",
+      "semantics",
+      "seo"
+    ]
+  },
+  "t-b9cc7afc": {
+    "hash": "8cf49559b94c7ed1",
+    "tags": [
+      "connected data",
+      "playlist curation"
+    ]
+  },
+  "t-ba8a020a": {
+    "hash": "cb5baeaf579a4628",
+    "tags": [
+      "fair principles",
+      "inference rules",
+      "knowledge graph",
+      "rdf",
+      "shacl"
+    ]
+  },
+  "t-bb191fc8": {
+    "hash": "6ff942c6dab16a58",
+    "tags": [
+      "knowledge graphs",
+      "knowledge-based ai",
+      "rules language",
+      "semantic reasoning",
+      "semantic rules engine",
+      "semantic technology"
+    ]
+  },
+  "t-bb8e4eeb": {
+    "hash": "c72145c630f94224",
+    "tags": [
+      "graph systems",
+      "knowledge graphs",
+      "temporal graphs",
+      "temporal modelling",
+      "time-aware reasoning"
+    ]
+  },
+  "t-bf20d174": {
+    "hash": "160b85790a42daf8",
+    "tags": [
+      "in-context learning",
+      "knowledge graph",
+      "llm",
+      "ontology",
+      "rag",
+      "retrieval-augmented generation"
+    ]
+  },
+  "t-c0bece22": {
+    "hash": "e0092926b1f77be3",
+    "tags": [
+      "github",
+      "knowledge graphs",
+      "large language models",
+      "owl",
+      "protégé",
+      "rdf",
+      "reasoners",
+      "shacl",
+      "sparql",
+      "webprotégé"
+    ]
+  },
+  "t-c54b3f4f": {
+    "hash": "aa9c08ce8541e3e5",
+    "tags": [
+      "ai",
+      "data modeling",
+      "graph databases",
+      "graph engines",
+      "ml",
+      "real-time analytics"
+    ]
+  },
+  "t-cc94ba9a": {
+    "hash": "940e835e97c7c60d",
+    "tags": [
+      "data modelling",
+      "graph",
+      "knowledge graph",
+      "reasoning",
+      "semantic reasoning"
+    ]
+  },
+  "t-d47072bb": {
+    "hash": "c5788ca31ead55fd",
+    "tags": [
+      "data lake",
+      "knowledge graph building",
+      "llm",
+      "ontology creation",
+      "rag",
+      "semantic layer"
+    ]
+  },
+  "t-d8792664": {
+    "hash": "5e328f86429135ad",
+    "tags": [
+      "avro",
+      "domain modeling",
+      "graphql",
+      "knowledge graph",
+      "rdf",
+      "uda",
+      "unified data architecture"
+    ]
+  },
+  "t-d94392c0": {
+    "hash": "1f1a4aba3ef3af11",
+    "tags": [
+      "fine-grained access control",
+      "kbac",
+      "knowledge graphs",
+      "knowledge-based access control",
+      "knowledge-based systems",
+      "llm-powered agents",
+      "rbac",
+      "role-based access control"
+    ]
+  },
+  "t-d9c9fd9f": {
+    "hash": "6c00c2db70e51a25",
+    "tags": [
+      "databases",
+      "g-rag",
+      "generative ai",
+      "graph algorithms",
+      "graph dbms",
+      "graphrag",
+      "knowledge graphs",
+      "llms",
+      "machine learning",
+      "ontologies",
+      "recommendation engines"
+    ]
+  },
+  "t-da804cc6": {
+    "hash": "d8399fd536018fa7",
+    "tags": [
+      "cypher",
+      "event-driven data pipelines",
+      "graph algorithms",
+      "graph analytics",
+      "graph embedding",
+      "graph neural networks",
+      "machine learning",
+      "python",
+      "quine",
+      "random walks",
+      "rest api",
+      "standing queries",
+      "streaming graphs",
+      "temporal queries",
+      "yaml"
+    ]
+  },
+  "t-dadc4ebf": {
+    "hash": "bf4a20566905ab71",
+    "tags": [
+      "biomedical ontologies",
+      "dbpedia",
+      "graph algorithms",
+      "graph analytics",
+      "graph databases",
+      "graph machine learning",
+      "graph technology",
+      "knowledge graphs",
+      "semantic technology",
+      "semantic web",
+      "wikidata"
+    ]
+  },
+  "t-de118983": {
+    "hash": "ae255ed69da3bcce",
+    "tags": [
+      "semantic modeling",
+      "traditional integration",
+      "zero-touch automation"
+    ]
+  },
+  "t-e3e0f2b9": {
+    "hash": "2fbed52ccd6584ef",
+    "tags": [
+      "cypher",
+      "finite state machines",
+      "graph program interpreter",
+      "hybridagi",
+      "jupyter notebooks",
+      "knowledge graphs",
+      "llm-based agent systems",
+      "mistral api",
+      "neural networks",
+      "neuro-symbolic programming",
+      "prompting techniques",
+      "python"
+    ]
+  },
+  "t-e87b193e": {
+    "hash": "7162bef8243a87f7",
+    "tags": [
+      "graph analytics",
+      "graph data science",
+      "graph databases",
+      "knowledge graphs",
+      "labelled property graphs",
+      "semantic technology",
+      "triple store"
+    ]
+  },
+  "t-ea77ef84": {
+    "hash": "d8fe54ee1822ab24",
+    "tags": []
+  },
+  "t-ef6f784e": {
+    "hash": "f04aefb47fa9e281",
+    "tags": [
+      "deep learning",
+      "graph ai",
+      "graph database",
+      "graph machine learning",
+      "knowledge graphs",
+      "machine learning",
+      "neo4j",
+      "semantic modeling"
+    ]
+  },
+  "t-f3d22d85": {
+    "hash": "723d251f6b0b2cd5",
+    "tags": [
+      "knowledge graphs",
+      "labelled property graphs",
+      "large language models",
+      "llms",
+      "lpgs",
+      "owl",
+      "property graphs",
+      "rdf",
+      "semantic technologies"
+    ]
+  },
+  "t-f45db068": {
+    "hash": "f80cffaf03b7472d",
+    "tags": [
+      "artificial intelligence",
+      "machine learning",
+      "reknowledge"
+    ]
+  },
+  "t-facd3870": {
+    "hash": "224e642706a68384",
+    "tags": [
+      "ai",
+      "generative ai",
+      "graphrag",
+      "knowledge graphs",
+      "ml",
+      "semantic technology"
+    ]
+  },
+  "t-fd6e1e02": {
+    "hash": "883d7b89c6928bfe",
+    "tags": [
+      "ai",
+      "graph technology"
+    ]
+  }
+}

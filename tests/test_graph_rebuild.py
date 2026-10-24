@@ -88,6 +88,7 @@ def test_the_scripts_run_from_the_image_and_read_the_working_copy(monkeypatch, t
     assert calls[0]["cwd"] == str(scripts)
     env = calls[0]["env"]
     assert env["ENTITIES_JSON"] == str(entities)
+    assert env["DESCRIPTION_TAGS_JSON"] == str(config.DESCRIPTION_TAGS_JSON)
     assert env["DB_PATH"] == str(tmp_path / "build.kuzu")
 
 
