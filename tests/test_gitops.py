@@ -114,6 +114,7 @@ def repos(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "METADATA_CSV", server / CSV)
     monkeypatch.setattr(config, "INGEST_CACHE_DIR", server / "Transcripts" / ".ingest")
     monkeypatch.setattr(config, "ENTITIES_JSON", server / "src" / "kuzu" / "entities.json")
+    monkeypatch.setattr(config, "DESCRIPTION_TAGS_JSON", server / "src" / "kuzu" / "description_tags.json")
     monkeypatch.setattr(config, "HEYSUMMIT_CATALOG", server / "Transcripts" / ".heysummit" / "catalog.json")
     monkeypatch.setattr(config, "GITHUB_INGEST_BRANCH", "ingest/auto")
     monkeypatch.setattr(config, "GITHUB_BASE_BRANCH", "main")
@@ -195,6 +196,7 @@ def _fresh_clone(repos, tmp_path, monkeypatch) -> Path:
     for name, rel in (("REPO_ROOT", ""), ("METADATA_CSV", CSV),
                       ("INGEST_CACHE_DIR", "Transcripts/.ingest"),
                       ("ENTITIES_JSON", "src/kuzu/entities.json"),
+                      ("DESCRIPTION_TAGS_JSON", "src/kuzu/description_tags.json"),
                       ("HEYSUMMIT_CATALOG", "Transcripts/.heysummit/catalog.json")):
         monkeypatch.setattr(config, name, fresh / rel if rel else fresh)
     return fresh
@@ -349,3 +351,11 @@ def test_the_heysummit_catalogue_rides_with_the_next_talk(repos):
     gitops.publish_ingest(_ingest_on_server(server, "aaaaaaaaaaa", "First talk"))
 
     assert "Transcripts/.heysummit/catalog.json" in _files_in(origin, "ingest/auto")
+
+
+def test_abstract_tags_tagged_on_both_sides_are_merged_by_talk_id():
+    ours = json.dumps({"t-1": {"hash": "a", "tags": ["x"]}, "t-2": {"hash": "b", "tags": ["y"]}})
+    theirs = json.dumps({"t-2": {"hash": "c", "tags": ["z"]}, "t-3": {"hash": "d", "tags": ["w"]}})
+    merged = json.loads(gitops._union_dict(ours, theirs, None))
+    assert merged == {"t-1": {"hash": "a", "tags": ["x"]}, "t-2": {"hash": "c", "tags": ["z"]},
+                      "t-3": {"hash": "d", "tags": ["w"]}}

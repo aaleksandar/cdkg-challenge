@@ -28,8 +28,8 @@ def paths(monkeypatch, tmp_path):
     config.DESCRIPTION_TAGS_JSON.write_text(json.dumps({"t-done": done, "t-changed": done}))
 
 
-def test_only_untranscribed_talks_with_a_real_abstract_and_no_current_tags_are_pending(paths):
-    assert [talk_id for talk_id, _, _ in abstracts.pending()] == ["t-new", "t-changed"]
+def test_every_real_abstract_without_current_tags_is_pending_transcript_or_not(paths):
+    assert [talk_id for talk_id, _, _ in abstracts.pending()] == ["t-new", "t-transcribed", "t-changed"]
 
 
 def test_arrival_waits_for_auto_ingest_and_the_button_does_not(paths, monkeypatch):
@@ -37,4 +37,4 @@ def test_arrival_waits_for_auto_ingest_and_the_button_does_not(paths, monkeypatc
     monkeypatch.setattr(abstracts, "_in_background", started.append)
     monkeypatch.setattr(config, "AUTO_INGEST_NEW", False)
     assert abstracts.start(automatic=True) == 0 and not started
-    assert abstracts.start(automatic=False) == 2 and len(started) == 1
+    assert abstracts.start(automatic=False) == 3 and len(started) == 1

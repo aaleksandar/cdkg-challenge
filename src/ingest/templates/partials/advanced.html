@@ -218,13 +218,13 @@
       {% if abstracts.running %}
         <strong>Tagging abstracts now.</strong>
       {% elif abstracts_pending %}
-        Talks with an abstract but no transcript have no tags, so nothing that
-        matches on tags can find them. Runs tag extraction on each abstract,
+        Abstracts not yet tagged. A talk with no transcript has no other tags, so
+        nothing that matches on tags can find it. Runs tag extraction on each abstract,
         <strong>{{ abstracts_pending }} LLM calls</strong>, billed to
         <code>GOOGLE_API_KEY</code>, in the background; the graph rebuilds at the end.
-        A transcript's tags replace its abstract's when it arrives.
+        A talk keeps these beside its transcript's tags when its recording arrives.
       {% else %}
-        Nothing waiting. Every talk with an abstract and no transcript is tagged.
+        Nothing waiting. Every abstract is tagged.
       {% endif %}
       {% if abstracts.last %}<br>Last run: {{ abstracts.last.tagged | length }} tagged,
         {{ abstracts.last.failed | length }} failed{% if abstracts.last.input_tokens %},

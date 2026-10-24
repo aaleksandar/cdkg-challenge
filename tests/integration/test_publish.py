@@ -49,6 +49,7 @@ def github(sandbox, tmp_path, monkeypatch):
     # beside the database, which publishing must refuse rather than skip.
     (repo / "src" / "kuzu").mkdir(parents=True)
     monkeypatch.setattr(config, "ENTITIES_JSON", repo / "src" / "kuzu" / "entities.json")
+    monkeypatch.setattr(config, "DESCRIPTION_TAGS_JSON", repo / "src" / "kuzu" / "description_tags.json")
     monkeypatch.setattr(config, "GIT_PUSH_ENABLED", True)
     monkeypatch.setattr(gitops, "installation_token", lambda: "tok")
     monkeypatch.setattr(gitops, "_authenticated_remote", lambda token: str(origin))

@@ -1,12 +1,13 @@
-"""Tags from a talk's abstract, for the talks no transcript has tagged.
+"""Tags from a talk's abstract, beside the tags from its transcript.
 
-Most talks HeySummit seeds have no recording yet, so they carry no tags, and
-anything that matches on tags ("Talks for you") can never pick them. This runs
-the transcript stage's `ExtractTags` over their abstracts and keeps the result
-in DESCRIPTION_TAGS_JSON, keyed by talk id and a hash of the abstract: a talk
-costs a call once per version of its abstract. `03_content_graph.py` attaches
-these with `source = 'description'`, and only to talks the transcripts left
-untagged, so a transcript replaces its abstract's tags at the next rebuild.
+Most talks HeySummit seeds have no recording yet, so without this they carry no
+tags, and anything that matches on tags ("Talks for you") can never pick them.
+This runs the transcript stage's `ExtractTags` over every abstract and keeps the
+result in DESCRIPTION_TAGS_JSON, keyed by talk id and a hash of the abstract: a
+talk costs a call once per version of its abstract. `03_content_graph.py`
+attaches these with `source = 'description'` alongside the transcript's, so a
+talk keeps its abstract's tags when its recording arrives: the abstract is the
+speaker's own framing, the transcript the detail.
 
 Like a new video, an abstract is tagged on arrival — after a HeySummit sync,
 behind AUTO_INGEST_NEW — or on a click in Advanced.
@@ -43,16 +44,13 @@ def _read(path: Path, default):
 
 
 def pending(csv_path: Path | None = None) -> list[tuple[str, str, str]]:
-    """(talk_id, hash, abstract) for each talk that has an abstract, no
-    transcript tags, and no tags for this version of its abstract."""
-    transcribed = {Path(e["filename"]).stem for e in _read(config.ENTITIES_JSON, [])}
+    """(talk_id, hash, abstract) for each talk with an abstract that has no
+    tags for this version of it."""
     cache = _read(config.DESCRIPTION_TAGS_JSON, {})
     out = []
     for row in read_rows(csv_path or config.METADATA_CSV):
         talk_id, text = row.get("TalkID"), (row.get("Description") or "").strip()
         if not talk_id or len(text.split()) < MIN_WORDS:
-            continue
-        if row.get("File") and Path(row["File"]).stem in transcribed:
             continue
         digest = abstract_hash(text)
         if cache.get(talk_id, {}).get("hash") != digest:

@@ -160,18 +160,27 @@ def test_a_video_titled_talk_dot_speaker_joins_the_row_seeded_before_it(sandbox)
     assert graph.talk_is_tagged(config.GRAPH_DB_PATH, seeded["TalkID"])
 
 
-def _tag_sources(talk_id: str) -> set[str]:
+def _tag_edges(talk_id: str) -> dict[str, str]:
     import ladybug as lb
     conn = lb.Connection(lb.Database(str(config.GRAPH_DB_PATH), read_only=True))
-    result = conn.execute("MATCH (t:Talk {talk_id: $id})-[r:IS_DESCRIBED_BY]->(:Tag) "
-                          "RETURN DISTINCT r.source", parameters={"id": talk_id})
-    sources = set()
+    result = conn.execute("MATCH (t:Talk {talk_id: $id})-[r:IS_DESCRIBED_BY]->(g:Tag) "
+                          "RETURN g.keyword, r.source", parameters={"id": talk_id})
+    edges = {}
     while result.has_next():
-        sources.add(result.get_next()[0])
-    return sources
+        keyword, source = result.get_next()
+        edges[keyword] = source
+    return edges
 
 
-def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_until_its_transcript_arrives(
+def _tag_sources(talk_id: str) -> set[str]:
+    return set(_tag_edges(talk_id).values())
+
+
+def _tag_source_of(talk_id: str, keyword: str) -> str:
+    return _tag_edges(talk_id)[keyword]
+
+
+def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_and_keeps_those_tags(
         sandbox, monkeypatch):
     from ingest.pipeline import abstracts
 
@@ -185,6 +194,7 @@ def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_until_its_transcri
     monkeypatch.setattr(abstracts, "_in_background", lambda fn: fn())
     monkeypatch.setattr(heysummit, "refresh_catalog", lambda: 1)   # the catalogue above, not the API
     sb.baml.calls.clear()
+    transcript_tags, sb.baml.tags = sb.baml.tags, ["frontier ai", "ontology"]
 
     # The panel's sync: the talk is seeded, then its abstract tagged, then a rebuild asked for.
     assert "Tagging 1 abstracts" in sb.client.post("/heysummit").text
@@ -195,7 +205,11 @@ def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_until_its_transcri
     assert _tag_sources(seeded["TalkID"]) == {"description"}
     assert abstracts.pending() == []                      # a second sync costs nothing
 
-    # The transcript's tags replace the abstract's: one source per talk.
+    # The transcript's tags join the abstract's; neither replaces the other, and
+    # a tag both produced ("ontology") is the transcript's.
+    sb.baml.tags = transcript_tags
     sb.add_video("ccccccccccc", "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021")
     assert sb.run("ccccccccccc")["status"] == "completed"
-    assert _tag_sources(seeded["TalkID"]) == {"transcript"}
+    assert _tag_sources(seeded["TalkID"]) == {"transcript", "description"}
+    assert _tag_source_of(seeded["TalkID"], "ontology") == "transcript"
+    assert _tag_source_of(seeded["TalkID"], "frontier ai") == "description"

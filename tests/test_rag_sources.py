@@ -96,6 +96,7 @@ def test_a_tag_query_reports_tags_as_the_evidence(graph):
     columns, rows = graph.execute_query(cypher)
     sources = graph.resolve_sources(columns, rows, cypher)
     assert sources[0]["evidence"] == ["tags"] and sources[0]["tags"] == ["owl"]
+    assert sources[0]["tag_sources"] == ["transcript"]
 
 
 def test_speakers_alone_lead_to_their_talks_when_the_query_walked_to_a_talk(graph):
