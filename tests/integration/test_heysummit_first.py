@@ -158,3 +158,58 @@ def test_a_video_titled_talk_dot_speaker_joins_the_row_seeded_before_it(sandbox)
     assert run["status"] == "completed"
     assert detail(run, "csv_append")["talk_id"] == seeded["TalkID"]
     assert graph.talk_is_tagged(config.GRAPH_DB_PATH, seeded["TalkID"])
+
+
+def _tag_edges(talk_id: str) -> dict[str, str]:
+    import ladybug as lb
+    conn = lb.Connection(lb.Database(str(config.GRAPH_DB_PATH), read_only=True))
+    result = conn.execute("MATCH (t:Talk {talk_id: $id})-[r:IS_DESCRIBED_BY]->(g:Tag) "
+                          "RETURN g.keyword, r.source", parameters={"id": talk_id})
+    edges = {}
+    while result.has_next():
+        keyword, source = result.get_next()
+        edges[keyword] = source
+    return edges
+
+
+def _tag_sources(talk_id: str) -> set[str]:
+    return set(_tag_edges(talk_id).values())
+
+
+def _tag_source_of(talk_id: str, keyword: str) -> str:
+    return _tag_edges(talk_id)[keyword]
+
+
+def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_and_keeps_those_tags(
+        sandbox, monkeypatch):
+    from ingest.pipeline import abstracts
+
+    sb = sandbox
+    sb.add_video("bbbbbbbbbbb", "Graph Thinking | Paco Nathan | Connected Data World 2021")
+    sb.run("bbbbbbbbbbb")
+    config.HEYSUMMIT_CATALOG.parent.mkdir(parents=True, exist_ok=True)
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps(
+        [{**CATALOG[0], "description": "Knowledge graphs at the frontier of AI. " * 5}]))
+    monkeypatch.setattr(config, "AUTO_INGEST_NEW", True)
+    monkeypatch.setattr(abstracts, "_in_background", lambda fn: fn())
+    monkeypatch.setattr(heysummit, "refresh_catalog", lambda: 1)   # the catalogue above, not the API
+    sb.baml.calls.clear()
+    transcript_tags, sb.baml.tags = sb.baml.tags, ["frontier ai", "ontology"]
+
+    # The panel's sync: the talk is seeded, then its abstract tagged, then a rebuild asked for.
+    assert "Tagging 1 abstracts" in sb.client.post("/heysummit").text
+    seeded = next(r for r in sb.rows() if r["HeySummit"] == "2")
+    assert len(sb.baml.calls) == 1 and "frontier" in sb.baml.calls[0]
+    sb.drain()
+    assert sb.counts()["tagged_talks"] == 2
+    assert _tag_sources(seeded["TalkID"]) == {"description"}
+    assert abstracts.pending() == []                      # a second sync costs nothing
+
+    # The transcript's tags join the abstract's; neither replaces the other, and
+    # a tag both produced ("ontology") is the transcript's.
+    sb.baml.tags = transcript_tags
+    sb.add_video("ccccccccccc", "Knowledge Graphs: The Frontier | Ada Lovelace | CDW 2021")
+    assert sb.run("ccccccccccc")["status"] == "completed"
+    assert _tag_sources(seeded["TalkID"]) == {"transcript", "description"}
+    assert _tag_source_of(seeded["TalkID"], "ontology") == "transcript"
+    assert _tag_source_of(seeded["TalkID"], "frontier ai") == "description"

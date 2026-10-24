@@ -15,3 +15,12 @@ def _snapshots_in_tmp(monkeypatch, tmp_path):
 def _skips_in_tmp(monkeypatch, tmp_path):
     """A curator's skip list is committed; a test's skips go to its own copy."""
     monkeypatch.setattr(config, "SKIPPED_TALKS", tmp_path / "skipped.json")
+
+
+@pytest.fixture(autouse=True)
+def _no_abstract_tagging_thread(monkeypatch):
+    """A sync starts abstract tagging in a thread, and AUTO_INGEST_NEW ships on:
+    left alone, every test that syncs would call the real model."""
+    from ingest.pipeline import abstracts
+
+    monkeypatch.setattr(abstracts, "_in_background", lambda fn: None)

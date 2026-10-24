@@ -50,9 +50,9 @@ else:
 # Create the necessary node and relationship tables for the lexical graph
 # In this case, the lexical graph is a subgraph that attaches to the domain graph
 conn.execute("CREATE NODE TABLE IF NOT EXISTS Tag(keyword STRING, PRIMARY KEY(keyword));")
-# `source` says where a tag came from. Only transcripts produce tags today; the
-# property is the seam for a second source, and what lets an answer say "from
-# its transcript's tags" rather than guessing.
+# `source` says where a tag came from: "transcript" (YouTube captions) or
+# "description" (the abstract), and is what lets an answer say which rather
+# than guessing.
 conn.execute("CREATE REL TABLE IF NOT EXISTS IS_DESCRIBED_BY(FROM Talk TO Tag, source STRING);")
 
 for data in entities:
@@ -72,3 +72,23 @@ for data in entities:
             """,
             parameters={"data": data, "talk_id": talk[0]},
         )
+
+# Tags from abstracts (ingest/pipeline/abstracts.py), beside the transcript's.
+# A tag both produced keeps source 'transcript': the edge holds one source.
+if os.path.exists(str(config.DESCRIPTION_TAGS_JSON)):
+    with open(str(config.DESCRIPTION_TAGS_JSON), "r", encoding="utf-8") as f:
+        description_tags = json.load(f)
+else:
+    description_tags = {}
+
+for talk_id, entry in description_tags.items():
+    conn.execute(
+        """
+        MATCH (talk:Talk {talk_id: $talk_id})
+        UNWIND $tags AS keyword
+        MERGE (tag:Tag {keyword: keyword})
+        MERGE (tag)<-[r:IS_DESCRIBED_BY]-(talk)
+        ON CREATE SET r.source = 'description'
+        """,
+        parameters={"tags": entry["tags"], "talk_id": talk_id},
+    )
