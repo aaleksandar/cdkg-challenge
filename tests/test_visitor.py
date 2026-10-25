@@ -214,3 +214,21 @@ def test_the_conference_s_own_talks_come_first_in_programme_order_and_are_not_re
     assert visitor.slot(result["this_week"][0]) == "Wed 11 Nov · 09:30 · Rapid Insights Track - Ludgate Suite"
     assert not {"t-early", "t-late"} & {s["talk_id"] for s in result["picks"]}
     assert visitor.slot({"starts_at": "", "stage": ""}) == ""
+
+
+def test_a_graph_built_before_the_schedule_still_lists_the_conference_s_talks(modules, graph, monkeypatch):
+    """A deploy keeps the database; until the next rebuild Talk has no starts_at."""
+    _, visitor = modules
+    vocabulary = visitor.tag_vocabulary(graph)
+    query = graph._query
+
+    def old_schema(cypher, parameters=None):
+        if "starts_at" in cypher:
+            raise RuntimeError("Binder exception: Cannot find property starts_at for t.")
+        return query(cypher, parameters)
+
+    monkeypatch.setattr(graph, "_query", old_schema)
+    this_week = visitor.recommend(graph, ["rdf"], vocabulary)["this_week"]
+
+    assert {s["talk_id"] for s in this_week} == {"t-early", "t-late"}
+    assert all(visitor.slot(s) == "" for s in this_week)

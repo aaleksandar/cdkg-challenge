@@ -27,12 +27,14 @@ HOW_TO = ("Hold your **LinkedIn profile** (open on your phone), your **badge** o
 IDLE_SECONDS = 90
 
 # Read from across a stand: Streamlit's own header and its padding hidden, and
-# everything a quarter larger. The topic buttons wrap: Streamlit lays pills out
+# everything a quarter larger. The tab labels larger still, since they are how
+# a visitor finds the chat. The topic buttons wrap: Streamlit lays pills out
 # on one line that scrolls sideways, which hid five of the twelve off the
 # column's edge, and nobody at a stand scrolls a row of buttons.
 KIOSK_CSS = """<style>
 header[data-testid="stHeader"] { display: none; }
 [data-testid="stMainBlockContainer"] { padding-top: 1.5rem; zoom: 1.25; }
+[data-testid="stTabs"] [role="tab"] p { font-size: 1.4rem; font-weight: 600; }
 [data-testid="stButtonGroup"] [role="toolbar"] { flex-wrap: wrap; }
 </style>"""
 

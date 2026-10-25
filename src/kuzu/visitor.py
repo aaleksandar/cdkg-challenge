@@ -170,7 +170,12 @@ def _scheduled(rag: GraphRAG, sources: list[dict]) -> list[dict]:
     """The sources with their start time and stage, earliest first; undated last."""
     if not sources:
         return []
-    when = {r["talk_id"]: r for r in rag._query(_SCHEDULE, {"ids": [s["talk_id"] for s in sources]})}
+    try:
+        when = {r["talk_id"]: r for r in rag._query(_SCHEDULE, {"ids": [s["talk_id"] for s in sources]})}
+    except RuntimeError:
+        # A graph built before Talk had a schedule: a deploy keeps the database,
+        # and the next rebuild adds the properties. Until then, no time or room.
+        when = {}
     out = [{**s, "starts_at": when.get(s["talk_id"], {}).get("starts_at") or "",
             "stage": when.get(s["talk_id"], {}).get("stage") or ""} for s in sources]
     return sorted(out, key=lambda s: (not s["starts_at"], s["starts_at"]))
