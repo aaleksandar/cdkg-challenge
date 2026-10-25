@@ -213,3 +213,12 @@ def test_a_seeded_talk_is_tagged_from_its_abstract_on_arrival_and_keeps_those_ta
     assert _tag_sources(seeded["TalkID"]) == {"transcript", "description"}
     assert _tag_source_of(seeded["TalkID"], "ontology") == "transcript"
     assert _tag_source_of(seeded["TalkID"], "frontier ai") == "description"
+
+    # An abstract shortened to a placeholder takes its old tags with it.
+    from ingest.pipeline.csv_writer import update_row
+
+    assert update_row(seeded["TalkID"], {"Description": "To be announced."})[0]
+    runner.request_rebuild()
+    sb.drain()
+    assert _tag_sources(seeded["TalkID"]) == {"transcript"}
+    assert abstracts.pending() == []                      # a placeholder is never tagged

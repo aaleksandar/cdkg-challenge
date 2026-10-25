@@ -58,6 +58,25 @@ def pending(csv_path: Path | None = None) -> list[tuple[str, str, str]]:
     return out
 
 
+def _save(talk_id: str, entry: dict) -> None:
+    """One talk's tags into the file, under the publish lock and atomically.
+
+    The lock keeps a write from landing between a publish's commit and its
+    merge, and the read-modify-write from undoing what that merge brought in.
+    The rename means the panel or a rebuild never reads a half-written file.
+    """
+    from ..gitops import _git_lock
+
+    path = config.DESCRIPTION_TAGS_JSON
+    with _git_lock:
+        cache = _read(path, {})
+        cache[talk_id] = entry
+        scratch = path.with_name(path.name + ".tmp")
+        scratch.write_text(json.dumps(cache, indent=2, ensure_ascii=False, sort_keys=True),
+                           encoding="utf-8")
+        scratch.replace(path)
+
+
 def tag_abstracts(csv_path: Path | None = None) -> dict | None:
     """Tag every pending abstract. None when a run is already going."""
     global _last
@@ -79,11 +98,8 @@ def tag_abstracts(csv_path: Path | None = None) -> dict | None:
                 log.exception("Tagging the abstract of %s failed", talk_id)
                 failed.append(talk_id)
                 continue
-            cache = _read(config.DESCRIPTION_TAGS_JSON, {})
-            cache[talk_id] = {"hash": digest,
-                              "tags": sorted({t.strip().lower() for t in tags if t.strip()})}
-            config.DESCRIPTION_TAGS_JSON.write_text(
-                json.dumps(cache, indent=2, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+            _save(talk_id, {"hash": digest,
+                            "tags": sorted({t.strip().lower() for t in tags if t.strip()})})
             tagged.append(talk_id)
         _last = {"tagged": tagged, "failed": failed, "model": stages.tag_model(),
                  **spend.usage_of(collector)}

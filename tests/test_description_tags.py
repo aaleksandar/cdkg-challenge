@@ -38,3 +38,20 @@ def test_arrival_waits_for_auto_ingest_and_the_button_does_not(paths, monkeypatc
     monkeypatch.setattr(config, "AUTO_INGEST_NEW", False)
     assert abstracts.start(automatic=True) == 0 and not started
     assert abstracts.start(automatic=False) == 3 and len(started) == 1
+
+
+def test_a_save_waits_for_a_publish_and_never_leaves_a_half_written_file(paths):
+    import threading
+
+    from ingest import gitops
+
+    with gitops._git_lock:
+        writer = threading.Thread(target=abstracts._save, args=("t-new", {"hash": "h", "tags": ["x"]}))
+        writer.start()
+        writer.join(0.2)
+        assert writer.is_alive()                                  # waiting on the publish
+        assert "t-new" not in json.loads(config.DESCRIPTION_TAGS_JSON.read_text())
+    writer.join(2)
+    saved = json.loads(config.DESCRIPTION_TAGS_JSON.read_text())
+    assert saved["t-new"] == {"hash": "h", "tags": ["x"]} and "t-done" in saved
+    assert list(config.DESCRIPTION_TAGS_JSON.parent.glob("*.tmp")) == []

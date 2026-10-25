@@ -4,6 +4,8 @@ This script creates a lexical graph from the transcripts of the Connected Data K
 Run this script _after_ creating the domain graph, i.e., after running `create_domain_graph.py`.
 """
 
+import csv
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -81,7 +83,18 @@ if os.path.exists(str(config.DESCRIPTION_TAGS_JSON)):
 else:
     description_tags = {}
 
+# Only tags of the abstract as it stands: one cleared, shortened or rewritten
+# since it was tagged contributes none until it is tagged again. The hash is
+# ingest.pipeline.abstracts.abstract_hash; read with csv, as ingest reads it.
+with open(str(config.METADATA_CSV), newline="", encoding="utf-8") as f:
+    current = {
+        row["TalkID"]: hashlib.sha256((row.get("Description") or "").strip().encode("utf-8")).hexdigest()[:16]
+        for row in csv.DictReader(f) if row.get("TalkID")
+    }
+
 for talk_id, entry in description_tags.items():
+    if current.get(talk_id) != entry.get("hash"):
+        continue
     conn.execute(
         """
         MATCH (talk:Talk {talk_id: $talk_id})
