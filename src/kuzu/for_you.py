@@ -22,6 +22,20 @@ HOW_TO = ("Hold your **LinkedIn profile** (open on your phone), your **badge** o
           "**business card** up to the camera and take a photo. It is read once and "
           "never stored.")
 
+# The kiosk (`?tab=for-you`, the demo laptop) clears a visitor's results after
+# this long with nobody touching the screen.
+IDLE_SECONDS = 90
+
+# Read from across a stand: Streamlit's own header and its padding hidden, and
+# everything a quarter larger. The topic buttons wrap: Streamlit lays pills out
+# on one line that scrolls sideways, which hid five of the twelve off the
+# column's edge, and nobody at a stand scrolls a row of buttons.
+KIOSK_CSS = """<style>
+header[data-testid="stHeader"] { display: none; }
+[data-testid="stMainBlockContainer"] { padding-top: 1.5rem; zoom: 1.25; }
+[data-testid="stButtonGroup"] [role="toolbar"] { flex-wrap: wrap; }
+</style>"""
+
 
 @st.cache_resource
 def _vocabulary(version: str, _rag: GraphRAG) -> dict[str, int]:
@@ -33,13 +47,17 @@ def is_takeaway() -> bool:
     return bool(st.query_params.get(visitor.TAKEAWAY_PARAM))
 
 
-def _card(source: dict, why: str | None = None):
+def _card(source: dict, why: str | None = None, when: str = ""):
     """One talk: title, who and when, its links and the shared topics. Returns
-    the slot its reason is written into, which may be filled after it is drawn."""
+    the slot its reason is written into, which may be filled after it is drawn.
+    `when` is a talk's day, time and room at the conference, shown first."""
     with st.container(border=True):
+        if when:
+            st.markdown(f"🗓️ **{when}**")
         st.markdown(f"**{source['title']}**")
+        # The slot line already says the day.
         meta = " · ".join(x for x in (", ".join(source.get("speakers") or []),
-                                      source.get("event"), source.get("date")) if x)
+                                      source.get("event"), "" if when else source.get("date")) if x)
         if meta:
             st.caption(meta)
         reason = st.empty()
@@ -60,7 +78,7 @@ def _results(rag: GraphRAG, vocabulary: dict[str, int], profile: dict, state: di
     """The visitor's own talks, their picks, the speakers to meet, and the
     take-away QR code, drawn into `qr_slot` (beside the camera) when given."""
     result = visitor.recommend(rag, profile.get("tags") or [], vocabulary, profile.get("name"))
-    if not (result["own"] or result["picks"]):
+    if not (result["own"] or result["this_week"] or result["picks"]):
         st.info("Nothing in the graph matches those topics yet. Pick a few topics on the left.")
         return
 
@@ -69,9 +87,18 @@ def _results(rag: GraphRAG, vocabulary: dict[str, int], profile: dict, state: di
         st.success(f"Welcome back{', ' + first if first else ''}: you spoke at Connected Data.")
         for source in result["own"]:
             _card(source)
-        st.markdown("#### Talks closest to yours")
-    else:
-        st.markdown(f"#### {'Hi ' + first + ', h' if first else 'H'}ere are your talks from Connected Data")
+    if result["this_week"]:
+        st.markdown(f"#### {'Hi ' + first + ', d' if first and not result['own'] else 'D'}on't miss "
+                    f"these at {visitor.AT_EVENT}")
+        for source in result["this_week"]:
+            _card(source, when=visitor.slot(source))
+    if result["picks"]:
+        if result["own"]:
+            st.markdown("#### Talks closest to yours")
+        elif result["this_week"]:
+            st.markdown("#### And from earlier editions")
+        else:
+            st.markdown(f"#### {'Hi ' + first + ', h' if first else 'H'}ere are your talks from Connected Data")
 
     intro = st.empty()
     placeholders = {s["talk_id"]: _card(s, state.get("reasons", {}).get(s["talk_id"]))
@@ -97,7 +124,27 @@ def _results(rag: GraphRAG, vocabulary: dict[str, int], profile: dict, state: di
         intro.markdown(state["intro"])
 
 
-def render_tab(rag: GraphRAG, version: str) -> None:
+def _next_person() -> None:
+    """A new round: new widget keys clear the photo and the buttons, and the
+    previous visitor's results are dropped from the session."""
+    st.session_state.visitor_round += 1
+    st.session_state.visitor_results = {}
+
+
+@st.fragment(run_every=10)
+def _clear_when_idle() -> None:
+    """On the kiosk, a visitor who walks away must not leave their name and
+    picks for the next person to find. Every full run (any click, a photo)
+    marks the screen as in use; this rerun alone does not."""
+    n = st.session_state.visitor_round
+    in_use = (st.session_state.get(f"visitor-photo-{n}") is not None
+              or st.session_state.get(f"visitor-topics-{n}"))
+    if in_use and time.monotonic() - st.session_state.visitor_seen > IDLE_SECONDS:
+        _next_person()
+        st.rerun(scope="app")
+
+
+def render_tab(rag: GraphRAG, version: str, kiosk: bool = False) -> None:
     vocabulary = _vocabulary(version, rag)
     if not vocabulary:
         st.warning("The graph has no tagged talks yet, so there is nothing to recommend.")
@@ -106,6 +153,10 @@ def render_tab(rag: GraphRAG, version: str) -> None:
     st.session_state.setdefault("visitor_round", 0)
     st.session_state.setdefault("visitor_results", {})
     n = st.session_state.visitor_round
+    if kiosk:
+        st.markdown(KIOSK_CSS, unsafe_allow_html=True)
+        st.session_state.visitor_seen = time.monotonic()
+        _clear_when_idle()
 
     left, right = st.columns([2, 3], gap="large")
     with left:
@@ -118,10 +169,7 @@ def render_tab(rag: GraphRAG, version: str) -> None:
         topics = st.pills("Or pick what you're into", visitor.topic_buttons(vocabulary),
                           selection_mode="multi", key=f"visitor-topics-{n}")
         if st.button("Next person", icon="🔄", width="stretch"):
-            # A new round: new widget keys clear the photo and the buttons, and
-            # the previous visitor's results are dropped from the session.
-            st.session_state.visitor_round = n + 1
-            st.session_state.visitor_results = {}
+            _next_person()
             st.rerun()
         qr = st.empty()
 

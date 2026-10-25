@@ -51,7 +51,23 @@ def extract_speakers(df: pl.DataFrame) -> pl.DataFrame:
     return speakers_df
 
 
-def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
+def load_schedule(path: Path) -> dict[str, tuple[str, str]]:
+    """HeySummit talk id to (start, stage) from the catalogue the sync writes.
+
+    The CSV's Date holds the day only. The programme also says when a talk
+    starts and where ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track -
+    Ludgate Suite"), and that is what a visitor at the conference needs. No
+    catalogue, or a talk HeySummit does not list, gives blanks.
+    """
+    import json
+
+    if not path.exists():
+        return {}
+    return {str(t["id"]): (t.get("date") or "", t.get("stage") or "")
+            for t in json.loads(path.read_text(encoding="utf-8"))}
+
+
+def extract_talks(df: pl.DataFrame, schedule: dict[str, tuple[str, str]] | None = None) -> pl.DataFrame:
     """Extract unique talks from the dataframe.
 
     Only `talk_id` may not be null — it is the primary key. `url` and `description`
@@ -69,6 +85,7 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
     column order here is the COPY order, which is positional: it must match
     the DDL in ``create_tables``.
     """
+    schedule = schedule or {}
     # Evaluated after the rename below, so the renamed columns are the names.
     has_id = pl.col("heysummit").cast(pl.String).fill_null("").str.strip_chars() != ""
     has_description = pl.col("description").fill_null("").str.strip_chars() != ""
@@ -103,8 +120,14 @@ def extract_talks(df: pl.DataFrame) -> pl.DataFrame:
             .otherwise(pl.lit("curator"))
             .alias("description_source"),
         )
+        .with_columns(
+            pl.col("heysummit").replace_strict({i: s[0] for i, s in schedule.items()}, default="",
+                                               return_dtype=pl.String).alias("starts_at"),
+            pl.col("heysummit").replace_strict({i: s[1] for i, s in schedule.items()}, default="",
+                                               return_dtype=pl.String).alias("stage"),
+        )
         .select(["talk_id", "title", "category", "url", "description", "type",
-                 "video", "heysummit", "transcript", "description_source"])
+                 "video", "heysummit", "transcript", "description_source", "starts_at", "stage"])
         .unique()
     )
     return talks_df
@@ -173,6 +196,8 @@ def create_tables(conn: lb.Connection):
             heysummit STRING,
             transcript STRING,
             description_source STRING,
+            starts_at STRING,
+            stage STRING,
             PRIMARY KEY (talk_id)
         )
     """)
@@ -266,7 +291,7 @@ if __name__ == "__main__":
 
     # Extract nodes
     speakers_df = extract_speakers(df)
-    talks_df = extract_talks(df)
+    talks_df = extract_talks(df, load_schedule(config.HEYSUMMIT_CATALOG))
     events_df = extract_events(df)
     categories_df = extract_categories(df)
     # Get relationships

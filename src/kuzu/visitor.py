@@ -33,6 +33,9 @@ PICKS = 5
 TOPIC_BUTTONS = 12
 # The query parameter of the take-away link: `?for=owl,shacl`.
 TAKEAWAY_PARAM = "for"
+# The conference the demo stands at: its talks are listed with their day, time
+# and room, before the picks from every edition. A line to change each year.
+AT_EVENT = "Connected Data London 2026"
 
 _VOCABULARY = """
 MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag)
@@ -43,6 +46,17 @@ ORDER BY talks DESC, keyword
 _MATCH = """
 MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag) WHERE g.keyword IN $tags
 RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS matched
+"""
+
+_MATCH_AT = """
+MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag), (t)-[:IS_PART_OF]->(:Event {name: $event})
+WHERE g.keyword IN $tags
+RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS matched
+"""
+
+_SCHEDULE = """
+MATCH (t:Talk) WHERE t.talk_id IN $ids
+RETURN t.talk_id AS talk_id, t.starts_at AS starts_at, t.stage AS stage
 """
 
 _OWN_TALKS = """
@@ -91,13 +105,16 @@ def clean_tags(proposed: list[str], vocabulary: dict[str, int]) -> list[str]:
 
 
 def match_talks(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
-                limit: int = PICKS, exclude: set[str] | None = None) -> list[tuple[str, list[str]]]:
-    """Talks ranked by how many tags they share with the visitor, then by their rarity."""
+                limit: int = PICKS, exclude: set[str] | None = None,
+                event: str | None = None) -> list[tuple[str, list[str]]]:
+    """Talks ranked by how many tags they share with the visitor, then by their
+    rarity; only one event's talks when `event` is given."""
     if not tags:
         return []
     exclude = exclude or set()
     scored = []
-    for r in rag._query(_MATCH, {"tags": tags}):
+    query, params = (_MATCH_AT, {"tags": tags, "event": event}) if event else (_MATCH, {"tags": tags})
+    for r in rag._query(query, params):
         if r["talk_id"] in exclude:
             continue
         matched = sorted(r["matched"], key=lambda k: vocabulary.get(k, 1))
@@ -133,15 +150,50 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
                               "RETURN DISTINCT g.keyword AS keyword", {"ids": own_ids}):
             if row["keyword"] not in tags:
                 tags = tags + [row["keyword"]]
-    picks = _sources(rag, match_talks(rag, tags, vocabulary, exclude=set(own_ids)))
+    # The talks they can still go to come first, in the order they are given,
+    # and are not repeated among the picks from every edition.
+    this_week = _scheduled(rag, _sources(rag, match_talks(rag, tags, vocabulary,
+                                                          exclude=set(own_ids), event=AT_EVENT)))
+    shown = set(own_ids) | {s["talk_id"] for s in this_week}
+    picks = _sources(rag, match_talks(rag, tags, vocabulary, exclude=shown))
 
     me = (name or "").strip().lower()
     speakers: list[str] = []
-    for source in picks:
+    for source in this_week + picks:
         for speaker in source["speakers"]:
             if speaker.lower() != me and speaker not in speakers:
                 speakers.append(speaker)
-    return {"own": own, "picks": picks, "speakers": speakers, "tags": tags}
+    return {"own": own, "this_week": this_week, "picks": picks, "speakers": speakers, "tags": tags}
+
+
+def _scheduled(rag: GraphRAG, sources: list[dict]) -> list[dict]:
+    """The sources with their start time and stage, earliest first; undated last."""
+    if not sources:
+        return []
+    when = {r["talk_id"]: r for r in rag._query(_SCHEDULE, {"ids": [s["talk_id"] for s in sources]})}
+    out = [{**s, "starts_at": when.get(s["talk_id"], {}).get("starts_at") or "",
+            "stage": when.get(s["talk_id"], {}).get("stage") or ""} for s in sources]
+    return sorted(out, key=lambda s: (not s["starts_at"], s["starts_at"]))
+
+
+def slot(source: dict) -> str:
+    """ "Wed 11 Nov · 09:30 · Rapid Insights Track - Ludgate Suite": when and where.
+
+    The programme prefixes each stage with its day ("Day 1: …"), which the
+    weekday already says.
+    """
+    from datetime import datetime
+
+    parts = []
+    try:
+        start = datetime.fromisoformat(source.get("starts_at") or "")
+        parts += [f"{start:%a} {start.day} {start:%b}", f"{start:%H:%M}"]
+    except ValueError:
+        pass
+    stage = (source.get("stage") or "").split(": ", 1)[-1]
+    if stage:
+        parts.append(stage)
+    return " · ".join(parts)
 
 
 # --- The model side --------------------------------------------------------------
