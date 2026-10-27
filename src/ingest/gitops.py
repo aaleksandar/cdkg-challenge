@@ -226,6 +226,8 @@ def _resolve_by_key(path: str, token: str) -> bool:
         key, merge = "TalkID", _union_csv
     elif full == config.ENTITIES_JSON:
         key, merge = "filename", _union_json
+    elif full == config.DESCRIPTION_TAGS_JSON:
+        key, merge = None, _union_dict
     elif full == config.SKIPPED_TALKS:
         key, merge = "key", _union_json
     else:
@@ -267,6 +269,14 @@ def _union_json(ours: str, theirs: str, key: str) -> str:
     seen = {e.get(key) for e in other}
     merged = other + [e for e in mine if e.get(key) not in seen]
     return json.dumps(merged, indent=2, ensure_ascii=False)   # as the stage writes it
+
+
+def _union_dict(ours: str, theirs: str, key: None) -> str:
+    """Abstract tags, keyed by talk id; where both tagged a talk, theirs stands."""
+    import json
+
+    merged = {**json.loads(ours), **json.loads(theirs)}
+    return json.dumps(merged, indent=2, ensure_ascii=False, sort_keys=True)   # as abstracts.py writes it
 
 
 def merge_published(token: str) -> None:
@@ -417,6 +427,8 @@ def publish_ingest(ctx: dict):
         config.HEYSUMMIT_CATALOG,
         # A curator's skips, likewise carried by the next talk.
         config.SKIPPED_TALKS,
+        # Abstract tags, written after a HeySummit sync; carried the same way.
+        config.DESCRIPTION_TAGS_JSON,
     ]
 
     with _git_lock:

@@ -874,7 +874,7 @@ async def curate(request: Request, key: str):
 # outward-facing and belongs to the deploy configuration rather than to a click.
 TOGGLEABLE = {
     "SCHEDULER_ENABLED": "Read the channel automatically",
-    "AUTO_INGEST_NEW": "Ingest newly published videos automatically",
+    "AUTO_INGEST_NEW": "Ingest new videos and abstracts automatically",
     "HEYSUMMIT_SYNC_ENABLED": "Sync HeySummit automatically",
     "KG_ENABLED": "Write to the knowledge graph",
 }
@@ -914,6 +914,7 @@ def toggle_flag(request: Request, name: str, lane: str = Form("all"),
 def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> dict:
     """Context for the Advanced panel: the flags, and everything not on the channel."""
     from . import gitops
+    from .pipeline import abstracts
     from .pipeline.runner import last_rebuild, queue_depth
     from .scheduler import is_polling
 
@@ -957,6 +958,8 @@ def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> d
         # means yt-dlp is the only automatic source and a refusal is upload-only.
         "supadata_key_hint": api_key_hint("SUPADATA_API_KEY"),
         "backlog": _backlog(states),
+        "abstracts_pending": len(abstracts.pending()),
+        "abstracts": abstracts.status(),
         "orphans": [s for s in offchannel if s.status == "orphaned"],
         "junk": [s for s in offchannel if s.status == "junk"],
         "stranded": [s for s in offchannel
@@ -1122,6 +1125,9 @@ def heysummit_sync(request: Request):
 
     if summary["changed"] and config.KG_ENABLED:
         request_rebuild()
+    from .pipeline import abstracts
+
+    tagging = abstracts.start(automatic=True)
     candidates = "; ".join(f"{escape(ours)} ≈ {escape(theirs)}"
                            for ours, theirs in summary["candidates"])
     disagreements = "; ".join(f"{escape(title)}: CSV {escape(ours)}, HeySummit {escape(theirs)}"
@@ -1133,11 +1139,27 @@ def heysummit_sync(request: Request):
         f'{len(summary.get("videos_linked", {}))} earlier talks joined to their video, '
         f'{summary["claimed"]} transcripts on disk claimed, {summary["unmatched"]} '
         f'rows with no match.'
+        + (f' Tagging {tagging} abstracts in the background.' if tagging else "")
         + (f' Possibly already a row, so not seeded: {candidates}.' if candidates else "")
         + (f' Event disagrees on {len(summary["disagreements"])} '
            f'(left as is): {disagreements}.' if disagreements else "")
         + '</span>'
     )
+
+
+@router.post("/abstracts/tag", response_class=HTMLResponse)
+def tag_abstracts(request: Request):
+    """Tag every abstract no transcript or earlier run has tagged, then rebuild."""
+    from .pipeline import abstracts
+
+    if abstracts.status()["running"]:
+        return HTMLResponse('<span class="note">Already tagging abstracts.</span>')
+    count = abstracts.start(automatic=False)
+    if not count:
+        return HTMLResponse('<span class="note">Nothing waiting: every abstract is tagged.</span>')
+    return HTMLResponse(
+        f'<span class="note">Tagging {count} abstracts in the background; the graph '
+        f'rebuilds when they are done.</span>')
 
 
 @router.post("/rebuild", response_class=HTMLResponse)

@@ -151,6 +151,7 @@ def sandbox(monkeypatch, tmp_path):
     monkeypatch.setattr(config, "HEYSUMMIT_CATALOG", transcripts / ".heysummit" / "catalog.json")
     monkeypatch.setattr(config, "DATA_DIR", kuzu_data / "data")
     monkeypatch.setattr(config, "ENTITIES_JSON", kuzu_data / "entities.json")
+    monkeypatch.setattr(config, "DESCRIPTION_TAGS_JSON", kuzu_data / "description_tags.json")
     monkeypatch.setattr(config, "GRAPH_DB_PATH", kuzu_data / "cdl_db.kuzu")
     monkeypatch.setattr(config, "SNAPSHOT_DIR", kuzu_data / "snapshots")
     monkeypatch.setattr(config, "STATE_DB_PATH", tmp_path / "state.db")
