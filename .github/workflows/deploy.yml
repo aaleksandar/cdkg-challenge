@@ -10,6 +10,7 @@ on:
     paths-ignore:
       - "Transcripts/**"
       - "src/kuzu/entities.json"
+      - "src/kuzu/description_tags.json"
   workflow_dispatch:
 
 concurrency:

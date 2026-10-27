@@ -4,6 +4,8 @@ This script creates a lexical graph from the transcripts of the Connected Data K
 Run this script _after_ creating the domain graph, i.e., after running `create_domain_graph.py`.
 """
 
+import csv
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -50,9 +52,9 @@ else:
 # Create the necessary node and relationship tables for the lexical graph
 # In this case, the lexical graph is a subgraph that attaches to the domain graph
 conn.execute("CREATE NODE TABLE IF NOT EXISTS Tag(keyword STRING, PRIMARY KEY(keyword));")
-# `source` says where a tag came from. Only transcripts produce tags today; the
-# property is the seam for a second source, and what lets an answer say "from
-# its transcript's tags" rather than guessing.
+# `source` says where a tag came from: "transcript" (YouTube captions) or
+# "description" (the abstract), and is what lets an answer say which rather
+# than guessing.
 conn.execute("CREATE REL TABLE IF NOT EXISTS IS_DESCRIBED_BY(FROM Talk TO Tag, source STRING);")
 
 for data in entities:
@@ -72,3 +74,34 @@ for data in entities:
             """,
             parameters={"data": data, "talk_id": talk[0]},
         )
+
+# Tags from abstracts (ingest/pipeline/abstracts.py), beside the transcript's.
+# A tag both produced keeps source 'transcript': the edge holds one source.
+if os.path.exists(str(config.DESCRIPTION_TAGS_JSON)):
+    with open(str(config.DESCRIPTION_TAGS_JSON), "r", encoding="utf-8") as f:
+        description_tags = json.load(f)
+else:
+    description_tags = {}
+
+# Only tags of the abstract as it stands: one cleared, shortened or rewritten
+# since it was tagged contributes none until it is tagged again. The hash is
+# ingest.pipeline.abstracts.abstract_hash; read with csv, as ingest reads it.
+with open(str(config.METADATA_CSV), newline="", encoding="utf-8") as f:
+    current = {
+        row["TalkID"]: hashlib.sha256((row.get("Description") or "").strip().encode("utf-8")).hexdigest()[:16]
+        for row in csv.DictReader(f) if row.get("TalkID")
+    }
+
+for talk_id, entry in description_tags.items():
+    if current.get(talk_id) != entry.get("hash"):
+        continue
+    conn.execute(
+        """
+        MATCH (talk:Talk {talk_id: $talk_id})
+        UNWIND $tags AS keyword
+        MERGE (tag:Tag {keyword: keyword})
+        MERGE (tag)<-[r:IS_DESCRIBED_BY]-(talk)
+        ON CREATE SET r.source = 'description'
+        """,
+        parameters={"tags": entry["tags"], "talk_id": talk_id},
+    )

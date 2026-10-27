@@ -33,5 +33,9 @@ DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 # derived from BASE_DIR would read the image's stale copy instead.
 ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", BASE_DIR / "entities.json"))
 
+# Tags extracted from the abstracts of talks with no transcript, by talk id.
+# Overridable for the same reason as ENTITIES_JSON.
+DESCRIPTION_TAGS_JSON = Path(os.getenv("DESCRIPTION_TAGS_JSON", BASE_DIR / "description_tags.json"))
+
 # Evaluation benchmark: questions and baseline answers
 QA_CSV = Path(os.getenv("QA_CSV", BASE_DIR.parent.parent / "QA" / "CDKGQA.csv"))
