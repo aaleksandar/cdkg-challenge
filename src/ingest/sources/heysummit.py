@@ -53,6 +53,7 @@ EVENTS = {
     16412: "Connected Data World 2021",
     110574: "Connected Data London 2024",
     138294: "Connected Data London 2025",
+    238614: "Connected Data London 2026",
 }
 
 # Cloudflare in front of the API refuses a library's default User-Agent.
@@ -76,8 +77,25 @@ def _plain_text(markup: str | None) -> str:
     return "\n".join(line.strip() for line in text.splitlines() if line.strip())
 
 
-def trim_talk(talk: dict) -> dict:
-    """The subset worth committing."""
+def _stages(client: httpx.Client, event_id: int) -> dict[int, str]:
+    """Stage id to its name ("Day 1: Rapid Insights Track - Ludgate Suite").
+
+    Only the programme's own schedule says where a talk is given. An event
+    with no stages, or an API that refuses the call, gives none.
+    """
+    try:
+        response = client.get(f"{API}/events/{event_id}/stages/")
+        response.raise_for_status()
+        return {s["id"]: s["title"] for s in response.json().get("items") or []}
+    except (httpx.HTTPError, ValueError, KeyError) as exc:
+        log.warning("No stages for HeySummit event %s: %s", event_id, exc)
+        return {}
+
+
+def trim_talk(talk: dict, stages: dict[int, str] | None = None) -> dict:
+    """The subset worth committing. Stage and length only where the programme
+    names a stage, so the entries of earlier events stay as they were."""
+    stage = (stages or {}).get(talk.get("stage"))
     return {
         "id": talk["id"],
         "event_id": talk["event"],
@@ -88,6 +106,9 @@ def trim_talk(talk: dict) -> dict:
                      for s in talk.get("speakers") or []],
         "categories": [c["title"] for c in talk.get("categories") or []],
         "description": _plain_text(talk.get("description_long")),
+        **({"stage": stage} if stage else {}),
+        **({"duration_mins": talk["broadcast_duration_mins"]}
+           if stage and talk.get("broadcast_duration_mins") else {}),
     }
 
 
@@ -114,8 +135,11 @@ def refresh_catalog() -> int:
     headers = {"Authorization": f"Token {config.HEYSUMMIT_API_TOKEN}",
                "Accept": "application/json", "User-Agent": _UA}
     with httpx.Client(headers=headers, timeout=60) as client:
-        talks = [trim_talk(t) for event_id in EVENTS
-                 for t in _pages(client, f"{API}/events/{event_id}/talks/") if is_talk(t)]
+        talks = []
+        for event_id in EVENTS:
+            stages = _stages(client, event_id)
+            talks += [trim_talk(t, stages) for t in _pages(client, f"{API}/events/{event_id}/talks/")
+                      if is_talk(t)]
     talks.sort(key=lambda t: t["id"])
     config.HEYSUMMIT_CATALOG.parent.mkdir(parents=True, exist_ok=True)
     config.HEYSUMMIT_CATALOG.write_text(
@@ -426,6 +450,11 @@ def seed(csv_path=None) -> dict:
             continue
         if str(talk["id"]) in joined["candidate_ids"]:
             continue
+        # A slot the programme has not filled yet ("TBD", "Morning Keynote #2")
+        # names no speaker, and a row with no Speaker is no Talk. The sync
+        # seeds it once the programme names one.
+        if not talk["speakers"]:
+            continue
         row = {"Title": " ".join(talk["title"].split()), **fields(talk)}
         verdict, video, _ = matching.video_for_talk(
             talk["title"], talk["speakers"], videos, EVENTS.get(talk.get("event_id")))
@@ -542,6 +571,9 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
     show anything new.
     """
     summary: dict = {}
+    # A talk moved to another time or room changes only the catalogue, and the
+    # graph reads its schedule from there (Talk.starts_at, Talk.stage).
+    schedule_before = _schedule(read_catalog())
     if refresh:
         try:
             summary["refreshed"] = refresh_catalog()
@@ -561,9 +593,14 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
     summary.update({k: v for k, v in seeded.items() if k not in {"candidate_ids", "issues"}})
     summary["videos_linked"] = videos["linked"]
     summary.update(claimed)
+    summary["schedule_changed"] = _schedule(read_catalog()) != schedule_before
     summary["changed"] = bool(seeded["filled"] or seeded["seeded"] or videos["linked"]
-                              or claimed["claimed"])
+                              or claimed["claimed"] or summary["schedule_changed"])
     return summary
+
+
+def _schedule(catalog: list[dict]) -> dict:
+    return {t["id"]: (t.get("date"), t.get("stage")) for t in catalog}
 
 
 if __name__ == "__main__":

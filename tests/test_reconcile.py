@@ -195,7 +195,7 @@ def test_a_talk_without_a_description_still_becomes_a_node():
         "HeySummit": [None, None, 587108],
         "File": [None, "/Transcripts/E/Presentations/Freshly ingested talk.srt", None],
     })
-    talks = namespace["extract_talks"](df)
+    talks = namespace["extract_talks"](df, {"587108": ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track")})
     assert set(talks["title"]) == {"Curated talk", "Freshly ingested talk", "Seeded talk"}
     ingested = talks.filter(pl.col("title") == "Freshly ingested talk").row(0, named=True)
     assert ingested["url"] == "" and ingested["description_source"] == ""
@@ -205,9 +205,12 @@ def test_a_talk_without_a_description_still_becomes_a_node():
     assert curated["description_source"] == "curator" and curated["heysummit"] == ""
     seeded = talks.filter(pl.col("title") == "Seeded talk").row(0, named=True)
     assert seeded["description_source"] == "heysummit" and seeded["heysummit"] == "587108"
+    # The programme's schedule, for a talk HeySummit lists; blanks for the rest.
+    assert (seeded["starts_at"], seeded["stage"]) == ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track")
+    assert (curated["starts_at"], curated["stage"]) == ("", "")
     # COPY is positional: the frame's columns are the DDL's, in order.
     assert talks.columns == ["talk_id", "title", "category", "url", "description", "type",
-                             "video", "heysummit", "transcript", "description_source"]
+                             "video", "heysummit", "transcript", "description_source", "starts_at", "stage"]
 
 
 def test_a_short_stays_a_short_even_once_it_has_a_metadata_row():
