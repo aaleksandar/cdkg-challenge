@@ -311,6 +311,21 @@ def test_sync_runs_everything_from_disk_when_the_api_refuses(seeding, monkeypatc
     assert heysummit.sync(refresh=False, csv_path=seeding)["changed"] is False
 
 
+def test_a_talk_moved_to_another_time_or_room_is_a_change_to_rebuild_for(seeding, monkeypatch):
+    heysummit.sync(refresh=False, csv_path=seeding)
+    talks = json.loads(config.HEYSUMMIT_CATALOG.read_text())
+
+    def moved():
+        config.HEYSUMMIT_CATALOG.write_text(json.dumps(
+            [{**t, "stage": "Day 2: Edges Track"} if t["id"] == 2 else t for t in talks]))
+        return len(talks)
+
+    monkeypatch.setattr(heysummit, "refresh_catalog", moved)
+    summary = heysummit.sync(refresh=True, csv_path=seeding)
+
+    assert summary["schedule_changed"] is True and summary["changed"] is True
+
+
 def test_sync_with_no_catalogue_is_an_error_not_a_crash(monkeypatch, tmp_path):
     monkeypatch.setattr(config, "HEYSUMMIT_CATALOG", tmp_path / "missing.json")
     summary = heysummit.sync(refresh=False, csv_path=tmp_path / "x.csv")

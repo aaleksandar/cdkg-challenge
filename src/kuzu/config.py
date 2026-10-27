@@ -19,6 +19,11 @@ DB_PATH = os.getenv("DB_PATH", str(BASE_DIR / "cdl_db.kuzu"))
 # Metadata CSV file
 METADATA_CSV = TRANSCRIPTS_DIR / "Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
 
+# The HeySummit catalogue the ingestion service's sync writes: each talk's
+# start time and stage come from here. Overridable as the ingestion service's
+# own setting is, so the rebuild reads the file the sync wrote.
+HEYSUMMIT_CATALOG = Path(os.getenv("HEYSUMMIT_CATALOG", TRANSCRIPTS_DIR / ".heysummit" / "catalog.json"))
+
 # Data directory for extracted .txt files
 DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 

@@ -40,6 +40,10 @@ function RAGText2Cypher(schema: string, question: string) -> Cypher {
     - Talk.video, Talk.heysummit, Talk.transcript, Talk.description_source, Event.url and
       IS_DESCRIBED_BY.source are provenance fields: they say where a value came from. Do not
       filter on them unless the question asks where something came from.
+    - Talk.starts_at (ISO date and time, e.g. "2026-11-11T09:30:00") and Talk.stage (the room or
+      track, e.g. "Day 1: Rapid Insights Track - Ludgate Suite") are the programme's schedule,
+      blank for talks HeySummit does not list. Use them only when the question asks when or
+      where a talk is given.
 
     EXAMPLES:
     Q: What is Connected Data?
@@ -162,6 +166,8 @@ test Text2Cypher1 {
         - heysummit: string
         - transcript: string
         - description_source: string
+        - starts_at: string
+        - stage: string
     - Speaker
         - name: string
     - Event

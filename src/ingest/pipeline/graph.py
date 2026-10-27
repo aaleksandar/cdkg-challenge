@@ -41,6 +41,7 @@ def _script_env(db_path: Path) -> dict:
         "TRANSCRIPTS_DIR": str(config.TRANSCRIPTS_DIR),
         "DATA_DIR": str(config.DATA_DIR),
         "ENTITIES_JSON": str(config.ENTITIES_JSON),
+        "HEYSUMMIT_CATALOG": str(config.HEYSUMMIT_CATALOG),
         "DESCRIPTION_TAGS_JSON": str(config.DESCRIPTION_TAGS_JSON),
         "BAML_LOG": "WARN",
     }

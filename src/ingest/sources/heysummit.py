@@ -571,6 +571,9 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
     show anything new.
     """
     summary: dict = {}
+    # A talk moved to another time or room changes only the catalogue, and the
+    # graph reads its schedule from there (Talk.starts_at, Talk.stage).
+    schedule_before = _schedule(read_catalog())
     if refresh:
         try:
             summary["refreshed"] = refresh_catalog()
@@ -590,9 +593,14 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
     summary.update({k: v for k, v in seeded.items() if k not in {"candidate_ids", "issues"}})
     summary["videos_linked"] = videos["linked"]
     summary.update(claimed)
+    summary["schedule_changed"] = _schedule(read_catalog()) != schedule_before
     summary["changed"] = bool(seeded["filled"] or seeded["seeded"] or videos["linked"]
-                              or claimed["claimed"])
+                              or claimed["claimed"] or summary["schedule_changed"])
     return summary
+
+
+def _schedule(catalog: list[dict]) -> dict:
+    return {t["id"]: (t.get("date"), t.get("stage")) for t in catalog}
 
 
 if __name__ == "__main__":

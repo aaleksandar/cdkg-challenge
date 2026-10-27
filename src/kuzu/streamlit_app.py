@@ -7,7 +7,11 @@ import for_you
 from rag import GraphRAG
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
-if not for_you.is_takeaway():
+# `?tab=for-you` is the kiosk on the demo laptop: it opens on "Talks for you",
+# with no title or graph caption above the tabs. A visitor can still switch to
+# asking the graph.
+KIOSK = st.query_params.get("tab") == "for-you"
+if not (for_you.is_takeaway() or KIOSK):
     st.title("Graph RAG using Ladybug")
 
 if "messages" not in st.session_state:
@@ -62,7 +66,7 @@ def describe_graph(token: str) -> str:
             + (f" · tagged by {model}" if model else ""))
 
 
-if describe_graph(version):
+if describe_graph(version) and not KIOSK:
     st.caption(describe_graph(version))
 
 GENERAL_KNOWLEDGE = ("No talk in the knowledge graph answers this directly; this comes from "
@@ -120,13 +124,11 @@ if for_you.is_takeaway():
     for_you.render_takeaway(rag, version)
     st.stop()
 
-ask_tab, you_tab = st.tabs(
-    ["Ask the graph", "Talks for you"],
-    default="Talks for you" if st.query_params.get("tab") == "for-you" else "Ask the graph",
-)
+ask_tab, you_tab = st.tabs(["Ask the graph", "Talks for you"],
+                           default="Talks for you" if KIOSK else "Ask the graph")
 
 with you_tab:
-    for_you.render_tab(rag, version)
+    for_you.render_tab(rag, version, kiosk=KIOSK)
 
 with ask_tab:
     # Create the input box

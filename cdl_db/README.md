@@ -29,6 +29,8 @@ Node properties:
     - heysummit: string           # the HeySummit talk id, blank when HeySummit does not list it
     - transcript: string          # the caption file's stem, blank when no transcript; the join key to its tags
     - description_source: string  # "heysummit" | "curator" | "" — where the description was written from
+    - starts_at: string           # the programme's start time, ISO ("2026-11-11T09:30:00"), blank when HeySummit does not list the talk
+    - stage: string               # the programme's room or track ("Day 1: Rapid Insights Track - Ludgate Suite"), blank when it names none
   - Speaker
     - name: string
   - Event
