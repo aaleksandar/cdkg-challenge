@@ -228,6 +228,26 @@ def test_seed_gives_every_free_talk_a_row_and_is_idempotent(seeding):
     assert again["seeded"] == 0 and seeding.read_bytes() == before
 
 
+def test_a_slot_with_no_speaker_yet_is_not_seeded(seeding):
+    talks = json.loads(config.HEYSUMMIT_CATALOG.read_text())
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps(talks + [_talk(5, "TBD", [])]))
+
+    heysummit.seed(seeding)
+
+    assert "5" not in {r["HeySummit"] for r in csv_writer.read_rows(seeding)}
+
+
+def test_the_catalogue_keeps_a_talk_s_stage_and_length_where_the_programme_names_a_stage():
+    raw = {"id": 7, "event": 238614, "title": "A talk", "url": "", "date": "2026-11-11T09:30:00",
+           "speakers": [{"first_name": "Ada", "last_name": "Lovelace"}], "categories": [],
+           "description_long": "<p>Abstract.</p>", "stage": 35312, "broadcast_duration_mins": 20}
+
+    staged = heysummit.trim_talk(raw, {35312: "Day 1: Rapid Insights Track - Ludgate Suite"})
+    assert (staged["stage"], staged["duration_mins"]) == ("Day 1: Rapid Insights Track - Ludgate Suite", 20)
+    unstaged = heysummit.trim_talk({**raw, "stage": None})
+    assert "stage" not in unstaged and "duration_mins" not in unstaged
+
+
 def test_a_candidate_is_reported_and_never_seeded(seeding):
     """The wrong answer is a duplicate row in an append-only file."""
     rows = csv_writer.read_rows(seeding)
