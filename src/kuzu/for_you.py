@@ -128,9 +128,11 @@ def _results(rag: GraphRAG, vocabulary: dict[str, int], profile: dict, state: di
 
 def _next_person() -> None:
     """A new round: new widget keys clear the photo and the buttons, and the
-    previous visitor's results are dropped from the session."""
+    previous visitor's results and their questions to the graph are dropped
+    from the session."""
     st.session_state.visitor_round += 1
     st.session_state.visitor_results = {}
+    st.session_state.messages = []
 
 
 @st.fragment(run_every=10)
@@ -140,7 +142,8 @@ def _clear_when_idle() -> None:
     marks the screen as in use; this rerun alone does not."""
     n = st.session_state.visitor_round
     in_use = (st.session_state.get(f"visitor-photo-{n}") is not None
-              or st.session_state.get(f"visitor-topics-{n}"))
+              or st.session_state.get(f"visitor-topics-{n}")
+              or st.session_state.get("messages"))
     if in_use and time.monotonic() - st.session_state.visitor_seen > IDLE_SECONDS:
         _next_person()
         st.rerun(scope="app")

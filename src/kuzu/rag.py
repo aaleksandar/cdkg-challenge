@@ -15,6 +15,7 @@ from __future__ import annotations
 import os
 import re
 from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 import ladybug as lb
 from dotenv import load_dotenv
@@ -29,6 +30,67 @@ RESULTS_CAP = 200
 # How many talks an answer may cite; a broader query is a listing, not an answer.
 SOURCES_CAP = 25
 DESCRIPTION_PREVIEW = 300
+
+# The conference the kiosk stands at (`visitor.AT_EVENT` is this). At the event
+# a question is asked at a moment in it: "what's on now?", "anything on LLMs this
+# afternoon?". The programme's times are London's, with no zone written.
+CURRENT_EVENT = "Connected Data London 2026"
+LONDON = ZoneInfo("Europe/London")
+
+
+def london_now() -> datetime:
+    """Now in London, without a zone, like the programme's times.
+
+    `CDKG_NOW` ("2026-11-11T10:10") pretends it is another moment, so the
+    kiosk can be rehearsed before the conference.
+    """
+    pretend = os.getenv("CDKG_NOW", "").strip()
+    if pretend:
+        return datetime.fromisoformat(pretend).replace(tzinfo=None)
+    return datetime.now(LONDON).replace(tzinfo=None, second=0, microsecond=0)
+
+
+def _moment(value) -> datetime | None:
+    try:
+        return datetime.fromisoformat(value) if value else None
+    except ValueError:
+        return None
+
+
+def slot(source: dict) -> str:
+    """"Wed 11 Nov · 09:30–09:50 · Rapid Insights Track - Ludgate Suite": when and where.
+
+    The programme prefixes each stage with its day ("Day 1: …"), which the
+    weekday already says. Blank for a talk the programme does not schedule.
+    """
+    start, end = _moment(source.get("starts_at")), _moment(source.get("ends_at"))
+    parts = []
+    if start:
+        parts += [f"{start:%a} {start.day} {start:%b}", f"{start:%H:%M}" + (f"–{end:%H:%M}" if end else "")]
+    stage = (source.get("stage") or "").split(": ", 1)[-1]
+    if stage:
+        parts.append(stage)
+    return " · ".join(parts)
+
+
+def relative(source: dict, now: datetime) -> str:
+    """Where a scheduled talk stands at `now`: "on now", "starts in 25 min", "ended"."""
+    start, end = _moment(source.get("starts_at")), _moment(source.get("ends_at"))
+    if not start:
+        return ""
+    if end and now >= end:
+        return "ended"
+    if start <= now:
+        # Without a length, a started talk's state is unknown, not "on" forever.
+        return "on now" if end else ""
+    if now < start:
+        minutes = int((start - now).total_seconds() // 60)
+        if minutes < 60:
+            return f"starts in {minutes} min"
+        if start.date() == now.date():
+            return f"starts in {minutes // 60} h {minutes % 60:02d} min"
+        return "upcoming"
+    return ""
 
 # The generated Cypher runs against a read-only database, but read-only still
 # reads: LOAD FROM returns any file the process can open, and CALL reaches
@@ -201,6 +263,12 @@ RETURN t.talk_id AS talk_id, t.title AS title, t.description AS description,
        EXISTS { MATCH (t)-[:IS_DESCRIBED_BY]->(:Tag) } AS has_tags,
        collect(DISTINCT tag.keyword) AS tag_hits, collect(DISTINCT d.source) AS tag_sources
 """
+# The same, with the programme's schedule. A deploy keeps the database, so the
+# graph can predate a schedule property until the next rebuild: the fetch then
+# falls back to the one above, and the talks come without a time or room.
+_TALK_FETCH_SCHEDULED = _TALK_FETCH.replace(
+    "RETURN t.talk_id AS talk_id,",
+    "RETURN t.talk_id AS talk_id, t.starts_at AS starts_at, t.ends_at AS ends_at, t.stage AS stage,")
 
 
 class GraphRAG:
@@ -209,6 +277,23 @@ class GraphRAG:
         self.db = lb.Database(self.db_path, read_only=True)
         self.conn = lb.Connection(self.db)
         self.baml_schema = get_schema_baml(self.conn)
+
+    def moment(self, now: datetime) -> str:
+        """The time a question is asked, as both prompts read it, with the
+        conference's days when the graph holds its programme."""
+        text = f"{now:%A} {now.day} {now:%B %Y}, {now:%H:%M} London time ({now.isoformat(timespec='minutes')})."
+        try:
+            days = self._query("MATCH (t:Talk)-[:IS_PART_OF]->(:Event {name: $event}) WHERE t.starts_at <> '' "
+                               "RETURN min(t.starts_at) AS first_start, max(t.starts_at) AS last_start",
+                               {"event": CURRENT_EVENT})
+        except RuntimeError:     # a graph from before the schedule
+            days = []
+        first, last = (_moment(days[0]["first_start"]), _moment(days[0]["last_start"])) if days else (None, None)
+        if first and last:
+            span = (f"{first.day} {first:%B %Y}" if first.date() == last.date()
+                    else f"{first.day}–{last.day} {last:%B %Y}")
+            text += f" The current conference, {CURRENT_EVENT}, runs {span}."
+        return text
 
     def execute_query(self, cypher: str) -> tuple[list[str], list[list]]:
         """Run the generated Cypher, if it only reads; the columns and the distinct rows."""
@@ -263,7 +348,11 @@ class GraphRAG:
 
         sources: list[dict] = []
         if ids:
-            by_id = {r["talk_id"]: r for r in self._query(_TALK_FETCH, {"ids": ids, "tags": tag_hits})}
+            try:
+                fetched = self._query(_TALK_FETCH_SCHEDULED, {"ids": ids, "tags": tag_hits})
+            except RuntimeError:
+                fetched = self._query(_TALK_FETCH, {"ids": ids, "tags": tag_hits})
+            by_id = {r["talk_id"]: r for r in fetched}
             for talk_id in ids:
                 r = by_id.get(talk_id)
                 if r is None:
@@ -292,6 +381,9 @@ class GraphRAG:
                     "tag_sources": sorted(s for s in r["tag_sources"] or [] if s),
                     "evidence": evidence,
                     "tags": r["tag_hits"] or [],
+                    "starts_at": r.get("starts_at") or "",
+                    "ends_at": r.get("ends_at") or "",
+                    "stage": r.get("stage") or "",
                 })
 
         if re.search(r":Event\b", cypher):
@@ -314,8 +406,9 @@ class GraphRAG:
         return sources
 
     @staticmethod
-    def build_context(sources: list[dict], flat: str) -> str:
-        """What the answer model reads: the talks first, each under its id."""
+    def build_context(sources: list[dict], flat: str, now: datetime | None = None) -> str:
+        """What the answer model reads: the talks first, each under its id, with
+        when and where a scheduled talk is given and, given `now`, how it stands."""
         talks = [s for s in sources if s["kind"] == "talk"]
         if not talks:
             return flat
@@ -327,6 +420,10 @@ class GraphRAG:
             where = ", ".join(x for x in (s["event"], s["date"]) if x)
             if where:
                 bits.append(where)
+            when = slot(s) if s["event"] == CURRENT_EVENT else ""
+            if when:
+                state = relative(s, now) if now else ""
+                bits.append("scheduled: " + when + (f" ({state})" if state else ""))
             if s["tags"]:
                 bits.append("tags: " + ", ".join(s["tags"]))
             if s["description"]:
@@ -355,9 +452,11 @@ class GraphRAG:
         # reach the caller (e.g. the Streamlit app) as an unhandled exception:
         # the generated Cypher may be invalid against the schema, and either LLM
         # call may return a response BAML cannot parse into its output type.
+        now = london_now()
+        moment = self.moment(now)
         try:
             b = _client()
-            cypher = b.RAGText2Cypher(self.baml_schema, question)
+            cypher = b.RAGText2Cypher(self.baml_schema, question, moment)
             if not cypher:
                 return result
             result["cypher"] = cypher.query
@@ -371,8 +470,8 @@ class GraphRAG:
                          else "events" if sources else "general")
             result["grounding"] = grounding
 
-            context = self.build_context(sources, format_rows(columns, rows))
-            answer = b.RAGAnswerQuestion(question, context, grounding)
+            context = self.build_context(sources, format_rows(columns, rows), now)
+            answer = b.RAGAnswerQuestion(question, context, grounding, moment)
             result["response"] = answer.answer
             result["from_general_knowledge"] = bool(getattr(answer, "from_general_knowledge", False))
 

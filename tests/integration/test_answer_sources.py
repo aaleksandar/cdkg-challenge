@@ -30,14 +30,14 @@ def test_the_answer_cites_the_ingested_talk_with_its_links_and_evidence(sandbox,
     calls = {}
 
     class FakeB:
-        def RAGText2Cypher(self, schema, question):
+        def RAGText2Cypher(self, schema, question, moment):
             calls["schema"] = schema
             return SimpleNamespace(query=(
                 "MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_DESCRIBED_BY]->(tag:Tag) "
                 "WHERE LOWER(s.name) CONTAINS 'paco nathan' "
                 "RETURN t.talk_id, t.title, collect(tag.keyword) AS tags"))
 
-        def RAGAnswerQuestion(self, question, context, grounding):
+        def RAGAnswerQuestion(self, question, context, grounding, moment):
             calls["context"] = context
             return SimpleNamespace(answer="Paco Nathan spoke about knowledge graphs.",
                                    used_talk_ids=[], from_general_knowledge=False)
@@ -62,10 +62,10 @@ def test_an_event_query_grounds_the_answer_in_events(sandbox, rag, monkeypatch):
     assert sb.run("aaaaaaaaaaa")["status"] == "completed"
 
     class FakeB:
-        def RAGText2Cypher(self, schema, question):
+        def RAGText2Cypher(self, schema, question, moment):
             return SimpleNamespace(query="MATCH (e:Event) RETURN e.name, e.description")
 
-        def RAGAnswerQuestion(self, question, context, grounding):
+        def RAGAnswerQuestion(self, question, context, grounding, moment):
             return SimpleNamespace(answer="A conference.", used_talk_ids=[], from_general_knowledge=True)
     monkeypatch.setattr(rag, "_client", lambda: FakeB())
 

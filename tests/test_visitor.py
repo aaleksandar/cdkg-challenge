@@ -37,7 +37,7 @@ def graph(modules, tmp_path):
     conn.execute("CREATE NODE TABLE Speaker(name STRING, PRIMARY KEY(name))")
     conn.execute("""CREATE NODE TABLE Talk(talk_id STRING, title STRING, category STRING, url STRING,
                     description STRING, type STRING, video STRING, heysummit STRING, transcript STRING,
-                    description_source STRING, starts_at STRING, stage STRING, PRIMARY KEY(talk_id))""")
+                    description_source STRING, starts_at STRING, stage STRING, ends_at STRING, PRIMARY KEY(talk_id))""")
     conn.execute("CREATE NODE TABLE Event(name STRING, description STRING, url STRING, PRIMARY KEY(name))")
     conn.execute("CREATE NODE TABLE Tag(keyword STRING, PRIMARY KEY(keyword))")
     conn.execute("CREATE REL TABLE GIVES_TALK(FROM Speaker TO Talk, date DATE)")

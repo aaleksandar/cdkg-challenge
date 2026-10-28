@@ -51,20 +51,29 @@ def extract_speakers(df: pl.DataFrame) -> pl.DataFrame:
     return speakers_df
 
 
-def load_schedule(path: Path) -> dict[str, tuple[str, str]]:
-    """HeySummit talk id to (start, stage) from the catalogue the sync writes.
+def load_schedule(path: Path) -> dict[str, tuple[str, str, str]]:
+    """HeySummit talk id to (start, stage, end) from the catalogue the sync writes.
 
     The CSV's Date holds the day only. The programme also says when a talk
-    starts and where ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track -
-    Ludgate Suite"), and that is what a visitor at the conference needs. No
-    catalogue, or a talk HeySummit does not list, gives blanks.
+    starts, where and for how long ("2026-11-11T09:30:00", "Day 1: Rapid
+    Insights Track - Ludgate Suite", 20 minutes), and that is what a visitor at
+    the conference needs: the end is what "what's on now?" is answered by. No
+    catalogue, or a talk HeySummit does not list, gives blanks; a talk with no
+    length, no end.
     """
     import json
+    from datetime import datetime, timedelta
 
     if not path.exists():
         return {}
-    return {str(t["id"]): (t.get("date") or "", t.get("stage") or "")
-            for t in json.loads(path.read_text(encoding="utf-8"))}
+    schedule = {}
+    for t in json.loads(path.read_text(encoding="utf-8")):
+        start, minutes = t.get("date") or "", t.get("duration_mins")
+        end = ""
+        if start and minutes:
+            end = (datetime.fromisoformat(start) + timedelta(minutes=minutes)).isoformat(timespec="seconds")
+        schedule[str(t["id"])] = (start, t.get("stage") or "", end)
+    return schedule
 
 
 def extract_talks(df: pl.DataFrame, schedule: dict[str, tuple[str, str]] | None = None) -> pl.DataFrame:
@@ -125,9 +134,11 @@ def extract_talks(df: pl.DataFrame, schedule: dict[str, tuple[str, str]] | None 
                                                return_dtype=pl.String).alias("starts_at"),
             pl.col("heysummit").replace_strict({i: s[1] for i, s in schedule.items()}, default="",
                                                return_dtype=pl.String).alias("stage"),
+            pl.col("heysummit").replace_strict({i: s[2] for i, s in schedule.items()}, default="",
+                                               return_dtype=pl.String).alias("ends_at"),
         )
         .select(["talk_id", "title", "category", "url", "description", "type",
-                 "video", "heysummit", "transcript", "description_source", "starts_at", "stage"])
+                 "video", "heysummit", "transcript", "description_source", "starts_at", "stage", "ends_at"])
         .unique()
     )
     return talks_df
@@ -198,6 +209,7 @@ def create_tables(conn: lb.Connection):
             description_source STRING,
             starts_at STRING,
             stage STRING,
+            ends_at STRING,
             PRIMARY KEY (talk_id)
         )
     """)

@@ -35,7 +35,7 @@ TOPIC_BUTTONS = 12
 TAKEAWAY_PARAM = "for"
 # The conference the demo stands at: its talks are listed with their day, time
 # and room, before the picks from every edition. A line to change each year.
-AT_EVENT = "Connected Data London 2026"
+AT_EVENT = graph_rag.CURRENT_EVENT
 
 _VOCABULARY = """
 MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag)
@@ -52,11 +52,6 @@ _MATCH_AT = """
 MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag), (t)-[:IS_PART_OF]->(:Event {name: $event})
 WHERE g.keyword IN $tags
 RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS matched
-"""
-
-_SCHEDULE = """
-MATCH (t:Talk) WHERE t.talk_id IN $ids
-RETURN t.talk_id AS talk_id, t.starts_at AS starts_at, t.stage AS stage
 """
 
 _OWN_TALKS = """
@@ -167,38 +162,13 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
 
 
 def _scheduled(rag: GraphRAG, sources: list[dict]) -> list[dict]:
-    """The sources with their start time and stage, earliest first; undated last."""
-    if not sources:
-        return []
-    try:
-        when = {r["talk_id"]: r for r in rag._query(_SCHEDULE, {"ids": [s["talk_id"] for s in sources]})}
-    except RuntimeError:
-        # A graph built before Talk had a schedule: a deploy keeps the database,
-        # and the next rebuild adds the properties. Until then, no time or room.
-        when = {}
-    out = [{**s, "starts_at": when.get(s["talk_id"], {}).get("starts_at") or "",
-            "stage": when.get(s["talk_id"], {}).get("stage") or ""} for s in sources]
-    return sorted(out, key=lambda s: (not s["starts_at"], s["starts_at"]))
+    """The sources earliest first, undated last. `rag.resolve_sources` carries
+    each talk's schedule, blank on a graph built before one."""
+    return sorted(sources, key=lambda s: (not s["starts_at"], s["starts_at"]))
 
 
-def slot(source: dict) -> str:
-    """ "Wed 11 Nov · 09:30 · Rapid Insights Track - Ludgate Suite": when and where.
-
-    The programme prefixes each stage with its day ("Day 1: …"), which the
-    weekday already says.
-    """
-    from datetime import datetime
-
-    parts = []
-    try:
-        start = datetime.fromisoformat(source.get("starts_at") or "")
-        parts += [f"{start:%a} {start.day} {start:%b}", f"{start:%H:%M}"]
-    except ValueError:
-        pass
-    stage = (source.get("stage") or "").split(": ", 1)[-1]
-    if stage:
-        parts.append(stage)
-    return " · ".join(parts)
+# When and where, the same line the chat's sources print.
+slot = graph_rag.slot
 
 
 # --- The model side --------------------------------------------------------------
