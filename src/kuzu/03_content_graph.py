@@ -105,3 +105,19 @@ for talk_id, entry in description_tags.items():
         """,
         parameters={"tags": entry["tags"], "talk_id": talk_id},
     )
+
+# One vector per talk (ingest/pipeline/embeddings.py), for "Talks for you" to
+# rank by meaning. Kept out of the schema Text2Cypher sees (rag.HIDDEN_PROPERTIES).
+# A vector from text that has since changed is still the best one there is until
+# the next rebuild embeds it again.
+if os.path.exists(str(config.TALK_EMBEDDINGS_JSON)):
+    with open(str(config.TALK_EMBEDDINGS_JSON), "r", encoding="utf-8") as f:
+        vectors = {talk_id: entry["vec"] for talk_id, entry in json.load(f).items()}
+    if vectors:
+        dimensions = len(next(iter(vectors.values())))
+        conn.execute(f"ALTER TABLE Talk ADD embedding FLOAT[{dimensions}]")
+        for talk_id, vec in vectors.items():
+            conn.execute(
+                f"MATCH (t:Talk {{talk_id: $talk_id}}) SET t.embedding = CAST($vec AS FLOAT[{dimensions}])",
+                parameters={"talk_id": talk_id, "vec": vec},
+            )

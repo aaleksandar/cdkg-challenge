@@ -44,6 +44,7 @@ PIPELINE_SCRIPTS_DIR = Path(os.getenv("PIPELINE_SCRIPTS_DIR", KUZU_DIR))
 load_dotenv(KUZU_DIR / ".env")
 ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", KUZU_DIR / "entities.json"))
 DESCRIPTION_TAGS_JSON = Path(os.getenv("DESCRIPTION_TAGS_JSON", KUZU_DIR / "description_tags.json"))
+TALK_EMBEDDINGS_JSON = Path(os.getenv("TALK_EMBEDDINGS_JSON", KUZU_DIR / "talk_embeddings.json"))
 DATA_DIR = Path(os.getenv("DATA_DIR", KUZU_DIR / "data"))
 GRAPH_DB_PATH = Path(os.getenv("DB_PATH", KUZU_DIR / "cdl_db.kuzu"))
 

@@ -24,3 +24,13 @@ def _no_abstract_tagging_thread(monkeypatch):
     from ingest.pipeline import abstracts
 
     monkeypatch.setattr(abstracts, "_in_background", lambda fn: None)
+
+
+@pytest.fixture(autouse=True)
+def _no_embedding_before_rebuild(monkeypatch):
+    """Every rebuild embeds the talks whose text changed: left alone, a test
+    that rebuilds would call the real model, and one rebuilding the repo's own
+    graph would write into the committed vectors."""
+    from ingest.pipeline import embeddings
+
+    monkeypatch.setattr(embeddings, "embed_pending", lambda csv_path=None: {"embedded": 0, "pending": 0})

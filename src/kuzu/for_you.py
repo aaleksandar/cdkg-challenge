@@ -76,10 +76,13 @@ def _card(source: dict, why: str | None = None, when: str = ""):
 
 
 def _results(rag: GraphRAG, vocabulary: dict[str, int], profile: dict, state: dict,
-             with_reasons: bool, qr_slot=None) -> None:
+             with_reasons: bool, qr_slot=None, query: list[float] | None = None,
+             result: dict | None = None) -> None:
     """The visitor's own talks, their picks, the speakers to meet, and the
-    take-away QR code, drawn into `qr_slot` (beside the camera) when given."""
-    result = visitor.recommend(rag, profile.get("tags") or [], vocabulary, profile.get("name"))
+    take-away QR code, drawn into `qr_slot` (beside the camera) when given.
+    `query` is the visitor's vector; `result` is drawn as given (the take-away)."""
+    if result is None:
+        result = visitor.recommend(rag, profile.get("tags") or [], vocabulary, profile.get("name"), query)
     if not (result["own"] or result["this_week"] or result["picks"]):
         st.info("Nothing in the graph matches those topics yet. Pick a few topics on the left.")
         return
@@ -109,12 +112,14 @@ def _results(rag: GraphRAG, vocabulary: dict[str, int], profile: dict, state: di
     if result["speakers"]:
         st.markdown("**Speakers working on what you work on:** " + ", ".join(result["speakers"]))
 
-    url = visitor.takeaway_url(visitor.public_url(), result["tags"]) if qr_slot else ""
+    shown = [s["talk_id"] for s in result["this_week"] + result["picks"]]
+    url = visitor.takeaway_url(visitor.public_url(), result["tags"], shown) if qr_slot else ""
     if url:
         with qr_slot.container(border=True):
             st.markdown("**📱 Take these with you**")
             st.image(visitor.qr_png(url), width=220)
-            st.caption("Scan to open this list on your phone. The link carries the topics only.")
+            st.caption("Scan to open this list on your phone. The link carries the talks and "
+                       "topics only, never your name.")
 
     # The reasons come last: the cards are already on screen while they are written.
     if with_reasons and "reasons" not in state and result["picks"]:
@@ -186,12 +191,16 @@ def render_tab(rag: GraphRAG, version: str, kiosk: bool = False) -> None:
                     state["profile"], state["error"] = visitor.read_visitor(data, photo.type, vocabulary)
                     state["seconds"] = time.monotonic() - started
             profile = state["profile"]
+            if profile is not None and "query" not in state:
+                # Once per photo, like the reading: a third of a second, None if it fails.
+                state["query"] = visitor.embed_query(visitor.profile_text(profile))
             if profile is None:
                 st.warning("Couldn't read that one. Try again a little closer, or pick a few topics.")
                 with st.expander("Why"):
                     st.caption(state["error"])
                 if topics:
-                    _results(rag, vocabulary, {"tags": list(topics)}, {}, with_reasons=False, qr_slot=qr)
+                    _results(rag, vocabulary, {"tags": list(topics)}, {}, with_reasons=False, qr_slot=qr,
+                             query=_topics_query(topics))
             else:
                 if topics:
                     profile = {**profile, "tags": visitor.clean_tags(profile["tags"] + topics, vocabulary)}
@@ -200,19 +209,35 @@ def render_tab(rag: GraphRAG, version: str, kiosk: bool = False) -> None:
                            f"Read in {state['seconds']:.1f} s")
                 st.caption("Topics: " + ", ".join(profile["tags"]))
                 _results(rag, vocabulary, profile, state if not topics else {}, with_reasons=not topics,
-                         qr_slot=qr)
+                         qr_slot=qr, query=state.get("query"))
         elif topics:
-            _results(rag, vocabulary, {"tags": list(topics)}, {}, with_reasons=False, qr_slot=qr)
+            _results(rag, vocabulary, {"tags": list(topics)}, {}, with_reasons=False, qr_slot=qr,
+                     query=_topics_query(topics))
         else:
             st.markdown("#### What would you like to hear about?")
             st.caption(f"{len(vocabulary)} topics across the talks in the graph, matched to you in seconds.")
 
 
+def _topics_query(topics: list[str]) -> list[float] | None:
+    """The chosen topics as a vector, once per choice, held with this visitor's results."""
+    key = "topics:" + ",".join(sorted(topics))
+    results = st.session_state.visitor_results
+    if key not in results:
+        results[key] = visitor.embed_query("Topics: " + ", ".join(topics))
+    return results[key]
+
+
 def render_takeaway(rag: GraphRAG, version: str) -> None:
-    """The phone view of a visitor's picks, rebuilt from the link's tags. No model call."""
+    """The phone view of a visitor's talks, from the link's ids (the screen's
+    list), or ranked from its topics for a link that has none. No model call."""
     vocabulary = _vocabulary(version, rag)
     tags = visitor.parse_takeaway(st.query_params.get_all(visitor.TAKEAWAY_PARAM), vocabulary)
-    if not tags:
+    talk_ids = [i for i in (st.query_params.get(visitor.TALKS_PARAM) or "").split(",") if i]
+    if talk_ids:
+        if tags:
+            st.caption("Topics: " + ", ".join(tags))
+        _results(rag, vocabulary, {"tags": tags}, {}, with_reasons=False, result=visitor.takeaway(rag, talk_ids))
+    elif not tags:
         st.info("This link's topics are no longer in the graph.")
     else:
         st.caption("Topics: " + ", ".join(tags))

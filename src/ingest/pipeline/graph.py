@@ -43,6 +43,7 @@ def _script_env(db_path: Path) -> dict:
         "ENTITIES_JSON": str(config.ENTITIES_JSON),
         "HEYSUMMIT_CATALOG": str(config.HEYSUMMIT_CATALOG),
         "DESCRIPTION_TAGS_JSON": str(config.DESCRIPTION_TAGS_JSON),
+        "TALK_EMBEDDINGS_JSON": str(config.TALK_EMBEDDINGS_JSON),
         "BAML_LOG": "WARN",
     }
 
@@ -159,6 +160,14 @@ def rebuild_graph(extract_tags: bool = False):
 
     build_path = config.GRAPH_DB_PATH.with_suffix(".build")
     _clear(build_path)
+
+    # Vectors for the talks whose text changed (a call each, cached), so the new
+    # graph ranks them by meaning. It never fails the rebuild.
+    from . import embeddings
+
+    embedded = embeddings.embed_pending()
+    if embedded.get("error"):
+        log.warning("Rebuilding with %d talks not yet embedded", embedded["pending"])
 
     steps = ["02_domain_graph.py", "03_content_graph.py"]
     if extract_tags:
