@@ -37,6 +37,30 @@ client<llm> GeminiFlashLive {
   }
 }
 
+// The same model for "Ask the graph" (graphrag.baml), which a visitor at the
+// kiosk waits on twice per question. Gemini 3.8 Flash thinks before answering
+// by default: measured on 2026-10-28, a schedule question took 18–40 s with it
+// and about 6.5 s at thinkingLevel "low", with answers as good. Like the live
+// client, a spike fails in seconds rather than after a minute of retries.
+// The model name moves with GeminiFlash's above.
+client<llm> GeminiFlashChat {
+  provider google-ai
+  retry_policy Quick
+  options {
+    model "gemini-3.8-flash"
+    api_key env.GOOGLE_API_KEY
+    generationConfig {
+      temperature 0
+      thinkingConfig {
+        thinkingLevel "low"
+      }
+    }
+    http {
+      request_timeout_ms 20000
+    }
+  }
+}
+
 retry_policy Quick {
   max_retries 1
   strategy {

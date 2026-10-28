@@ -4,7 +4,7 @@ import streamlit as st
 
 import config
 import for_you
-from rag import GraphRAG
+from rag import CURRENT_EVENT, GraphRAG, london_now, relative, slot
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
 # `?tab=for-you` is the kiosk on the demo laptop: it opens on "Talks for you",
@@ -115,7 +115,18 @@ def render_sources(output: dict) -> None:
                                       source.get("event"), source.get("date")) if x)
         line = f"- **{source['title']}**" + (f" — {meta}" if meta else "") + (f" — {links}" if links else "")
         st.markdown(line)
+        # Only the current conference's talks can be gone to; the rest carry their date above.
+        when = slot(source) if source.get("event") == CURRENT_EVENT else ""
+        if when:
+            state = relative(source, london_now())
+            st.markdown(f"  🗓️ **{when}**" + (f" · _{state}_" if state else ""))
         st.caption("  " + describe_evidence(source))
+
+
+# Questions a visitor at the kiosk can tap instead of typing.
+EXAMPLES = ["What's on right now?",
+            "What should I see next about LLMs and knowledge graphs?",
+            "Which talks this afternoon are about ontologies?"]
 
 
 # A take-away link (`?for=owl,shacl`), opened on a visitor's phone from the QR
@@ -131,43 +142,42 @@ with you_tab:
     for_you.render_tab(rag, version, kiosk=KIOSK)
 
 with ask_tab:
-    # Create the input box
-    question = st.text_input(
-        "Ask a question to the CDL Knowledge Graph built on top of Ladybug, an embedded graph database:",
-        placeholder="e.g., Can you tell me about Connected Data World 2021?",
-    )
+    if KIOSK:
+        now = london_now()
+        st.caption(f"🕙 {now:%A} {now.day} {now:%B}, {now:%H:%M} in London")
+    # A chat input clears once asked: a text box kept its question, and every
+    # other click on the page asked it again.
+    question = st.chat_input("Ask about the talks, the speakers, or what's on now")
+    if KIOSK:
+        # Tapped rather than typed, at the stand. A button fires once.
+        for column, example in zip(st.columns(len(EXAMPLES)), EXAMPLES):
+            if column.button(example, width="stretch"):
+                question = example
 
     if question:
-        with st.spinner("Generating answer..."):
-            # Get the Cypher query
+        with st.spinner("Asking the graph…"):
             output = rag.run(question)
+        st.session_state.messages.append({
+            "question": question, "answer": output["response"],
+            "sources": output.get("sources") or [],
+            "from_general_knowledge": output.get("from_general_knowledge", False),
+            "cypher": output["cypher"], "results": output.get("results") or [],
+            "row_count": output.get("row_count", 0), "error": output.get("error", ""),
+        })
 
-            # Show the Cypher query in an expander, and the rows it returned
-            with st.expander("View Cypher Query", expanded=True):
-                st.code(output["cypher"], language="sql")
-            if output.get("results"):
-                with st.expander(f"Retrieved rows ({output.get('row_count', len(output['results']))})"):
-                    st.dataframe(output["results"])
-
-            # The Cypher is LLM-generated and may not run against the schema, and the
-            # answer generation can fail to parse — GraphRAG.run reports both here
-            if output.get("error"):
-                st.warning(f"Could not complete the query: {output['error']}")
-
-            # Get and show the response
-            st.write("### Answer")
-            st.write(output["response"])
-            render_sources(output)
-            # Append the question, the answer and where it came from to the history
-            st.session_state.messages.append({
-                "question": question, "answer": output["response"],
-                "sources": output.get("sources") or [],
-                "from_general_knowledge": output.get("from_general_knowledge", False),
-            })
-
-    # Display history
-    for msg in reversed(st.session_state.messages):
+    # Newest first, each answer with the Cypher that found it and where it came from.
+    for i, msg in enumerate(reversed(st.session_state.messages)):
         with st.container(border=True):
             st.write("**Q:** " + msg["question"])
-            st.write("**A:** " + msg["answer"])
+            # The Cypher is LLM-generated and may not run against the schema, and the
+            # answer generation can fail to parse — GraphRAG.run reports both here
+            if msg.get("error"):
+                st.warning(f"Could not complete the query: {msg['error']}")
+            st.write(msg["answer"])
             render_sources(msg)
+            if msg.get("cypher"):
+                with st.expander("How the graph was asked", expanded=(i == 0 and not KIOSK)):
+                    st.code(msg["cypher"], language="sql")
+                    if msg.get("results"):
+                        st.caption(f"{msg['row_count']} rows")
+                        st.dataframe(msg["results"])
