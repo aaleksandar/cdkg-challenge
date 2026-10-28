@@ -68,6 +68,13 @@ def graph(modules, tmp_path):
         conn.execute(f"CREATE (:Speaker {{name: '{name}'}})")
         conn.execute(f"MATCH (s:Speaker {{name: '{name}'}}), (t:Talk {{talk_id: '{talk_id}'}}) "
                      "CREATE (s)-[:GIVES_TALK]->(t)")
+    # Meaning that disagrees with the tags: t-gnn shares no tag with an 'owl'
+    # visitor but means what they mean ([1, 0, 0]); t-early is close, t-late is not.
+    conn.execute("ALTER TABLE Talk ADD embedding FLOAT[3]")
+    for talk_id, vec in (("t-gnn", [1, 0, 0]), ("t-owl", [0, 1, 0]), ("t-ada", [0, 1, 0]),
+                         ("t-er", [0, 0, 1]), ("t-early", [0.9, 0.1, 0]), ("t-late", [0, 0, 1])):
+        conn.execute("MATCH (t:Talk {talk_id: $id}) SET t.embedding = CAST($vec AS FLOAT[3])",
+                     parameters={"id": talk_id, "vec": vec})
     del conn
     return rag.GraphRAG(db_path=str(path))
 
@@ -202,6 +209,54 @@ def test_the_takeaway_link_carries_tags_and_nothing_else(modules, graph, monkeyp
 
     monkeypatch.delenv("CDKG_DOMAIN")
     assert visitor.takeaway_url(visitor.public_url(), ["owl"]) == ""   # no public URL, no QR
+
+
+def test_meaning_finds_a_talk_no_tag_connects_and_a_weak_match_is_left_out(modules, graph):
+    _, visitor = modules
+    vocabulary = visitor.tag_vocabulary(graph)
+
+    result = visitor.recommend(graph, ["owl"], vocabulary, query=[1, 0, 0])
+
+    assert result["picks"][0]["talk_id"] == "t-gnn"              # no shared tag, same meaning
+    assert [s["talk_id"] for s in result["this_week"]] == ["t-early"]   # t-late is below MIN_SCORE
+    assert "t-early" not in {s["talk_id"] for s in result["picks"]}
+
+
+def test_without_vectors_or_a_query_the_tags_rank_alone(modules, graph, monkeypatch):
+    _, visitor = modules
+    vocabulary = visitor.tag_vocabulary(graph)
+    by_tags = visitor.recommend(graph, ["owl", "entity resolution"], vocabulary)
+
+    query = graph._query
+
+    def old_graph(cypher, parameters=None):
+        if "embedding" in cypher:
+            raise RuntimeError("Binder exception: Cannot find property embedding for t.")
+        return query(cypher, parameters)
+
+    monkeypatch.setattr(graph, "_query", old_graph)
+    before_vectors = visitor.recommend(graph, ["owl", "entity resolution"], vocabulary, query=[1, 0, 0])
+
+    assert [s["talk_id"] for s in by_tags["picks"]][:2] == ["t-er", "t-ada"]
+    assert [s["talk_id"] for s in before_vectors["picks"]] == [s["talk_id"] for s in by_tags["picks"]]
+
+
+def test_the_takeaway_link_carries_the_talks_on_screen_and_the_phone_shows_them(modules, graph):
+    _, visitor = modules
+
+    url = visitor.takeaway_url("https://kg.example", ["owl"], ["t-late", "t-gnn", "t-early"])
+    assert url == "https://kg.example/?for=owl&talks=t-late%2Ct-gnn%2Ct-early"
+
+    shown = visitor.takeaway(graph, ["t-late", "t-gnn", "t-early"])
+    assert [s["talk_id"] for s in shown["this_week"]] == ["t-early", "t-late"]   # programme order
+    assert [s["talk_id"] for s in shown["picks"]] == ["t-gnn"]
+
+
+def test_the_visitor_is_embedded_with_the_model_the_talks_were(modules):
+    _, visitor = modules
+    from ingest.pipeline import embeddings
+
+    assert (visitor.EMBEDDING_MODEL, visitor.EMBEDDING_DIMENSIONS) == (embeddings.MODEL, embeddings.DIMENSIONS)
 
 
 def test_the_conference_s_own_talks_come_first_in_programme_order_and_are_not_repeated(modules, graph):

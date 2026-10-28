@@ -12,15 +12,26 @@ hold. A second call (`WhyForYou`) writes one line per card afterwards.
 Nothing about the visitor is stored. The photo is held in memory for the one
 call; the take-away link carries the tags alone, never a name.
 
-The ranking is by how many of the visitor's topics a talk shares, and among
-talks sharing as many, by how rare those topics are (1 / the number of talks
-carrying each), so a match on "entity resolution" beats one on "knowledge
-graphs", which half the tagged talks carry.
+The ranking is by meaning and by the graph together. The visitor's profile is
+embedded (one call, a third of a second) and compared with each talk's vector
+(`Talk.embedding`, written at every rebuild by ingest/pipeline/embeddings.py),
+after both are centred on the average talk: uncentred, a few broad "knowledge
+graphs and AI" talks are close to everyone. To that similarity each shared tag
+adds its rarity (log of talks over talks carrying it) times `TAG_WEIGHT`, so a
+shared "gis" lifts a talk and a shared "knowledge graphs" barely does. Meaning
+finds the geo talks for a visitor who works on community mapping, which no tag
+connects; the graph keeps the picks specific and says why on each card.
+
+Without vectors (a graph built before them) or without the embedding call
+(Gemini down), the ranking is the tags alone: by how many of the visitor's
+topics a talk shares, then by their rarity (1 / the number of talks carrying
+each).
 """
 
 from __future__ import annotations
 
 import base64
+import math
 import os
 from urllib.parse import quote, urlencode
 
@@ -31,11 +42,23 @@ from rag import GraphRAG
 PICKS = 5
 # The topic buttons offered when the photo cannot be read.
 TOPIC_BUTTONS = 12
-# The query parameter of the take-away link: `?for=owl,shacl`.
+# The query parameters of the take-away link: `?for=owl,shacl&talks=t-1,t-2`.
 TAKEAWAY_PARAM = "for"
+TALKS_PARAM = "talks"
 # The conference the demo stands at: its talks are listed with their day, time
 # and room, before the picks from every edition. A line to change each year.
 AT_EVENT = "Connected Data London 2026"
+# The talks' vectors are this model's (ingest.pipeline.embeddings.MODEL; a test
+# holds the two together): a visitor embedded with another could not be compared.
+EMBEDDING_MODEL = "gemini-embedding-2"
+EMBEDDING_DIMENSIONS = 768
+# What a shared tag adds beside meaning, per unit of its rarity. Tuned on the two
+# reference profiles (2026-10-28): at 0.02 the urban-planning talks still lead
+# for a geo visitor, and a Python/LLM engineer's picks stay specific.
+TAG_WEIGHT = 0.02
+# Below this a talk is not a match, so the conference section is left out
+# rather than filled with whatever ranks least badly.
+MIN_SCORE = 0.1
 
 _VOCABULARY = """
 MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag)
@@ -53,6 +76,15 @@ MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag), (t)-[:IS_PART_OF]->(:Event {name: $e
 WHERE g.keyword IN $tags
 RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS matched
 """
+
+_VECTORS = "MATCH (t:Talk) WHERE t.embedding IS NOT NULL RETURN t.talk_id AS talk_id, t.embedding AS vec"
+
+_TALK_TAGS = """
+MATCH (t:Talk)-[:IS_DESCRIBED_BY]->(g:Tag)
+RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS tags
+"""
+
+_AT = "MATCH (t:Talk)-[:IS_PART_OF]->(:Event {name: $event}) RETURN t.talk_id AS talk_id"
 
 _SCHEDULE = """
 MATCH (t:Talk) WHERE t.talk_id IN $ids
@@ -124,6 +156,83 @@ def match_talks(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
     return [(talk_id, matched) for _, _, talk_id, matched in scored[:limit]]
 
 
+def _unit(vec: list[float]) -> list[float]:
+    norm = math.sqrt(sum(x * x for x in vec)) or 1.0
+    return [x / norm for x in vec]
+
+
+def _space(rag: GraphRAG) -> dict | None:
+    """The talks' vectors centred on their mean, and every talk's tags. Read
+    once per connection, which the app keeps one of per graph version. None
+    for a graph built before talks had vectors."""
+    if not hasattr(rag, "_for_you_space"):
+        try:
+            rows = rag._query(_VECTORS)
+        except RuntimeError:   # no `embedding` property yet: the next rebuild adds it
+            rows = []
+        space = None
+        if rows:
+            mean = [sum(col) / len(rows) for col in zip(*(r["vec"] for r in rows))]
+            space = {"mean": mean,
+                     "vecs": {r["talk_id"]: _unit([a - b for a, b in zip(r["vec"], mean)]) for r in rows},
+                     "tags": {r["talk_id"]: set(r["tags"]) for r in rag._query(_TALK_TAGS)}}
+        rag._for_you_space = space
+    return rag._for_you_space
+
+
+def profile_text(profile: dict) -> str:
+    """What is embedded for a visitor: who they are in their own words, then the graph's."""
+    return "\n".join(x for x in (profile.get("headline"), profile.get("company"), profile.get("about"),
+                                 "Works on: " + ", ".join(profile.get("interests") or []) if profile.get("interests") else "",
+                                 "Topics: " + ", ".join(profile.get("tags") or []) if profile.get("tags") else "") if x)
+
+
+def embed_query(text: str) -> list[float] | None:
+    """The visitor's vector, or None when the call fails: the tags still rank."""
+    if not text.strip():
+        return None
+    try:
+        from google import genai
+        from google.genai import types
+
+        # Someone is standing at the screen: a few seconds, then the tags alone.
+        client = genai.Client(http_options=types.HttpOptions(timeout=8000))
+        response = client.models.embed_content(
+            model=EMBEDDING_MODEL, contents=[types.Content(parts=[types.Part(text=text)])],
+            config=types.EmbedContentConfig(task_type="RETRIEVAL_QUERY", output_dimensionality=EMBEDDING_DIMENSIONS))
+        return list(response.embeddings[0].values)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def rank_talks(rag: GraphRAG, query: list[float], tags: list[str], vocabulary: dict[str, int],
+               limit: int = PICKS, exclude: set[str] | None = None,
+               event: str | None = None) -> list[tuple[str, list[str]]] | None:
+    """Talks by meaning and shared tags (see the module's docstring), best
+    first, above MIN_SCORE; only one event's talks when `event` is given. None
+    when the graph has no vectors, for the caller to rank by tags instead."""
+    space = _space(rag)
+    if space is None:
+        return None
+    exclude = exclude or set()
+    q = _unit([a - b for a, b in zip(query, space["mean"])])
+    tagged = max(len(space["tags"]), 1)
+    wanted = set(tags)
+    candidates = set(space["vecs"]) | set(space["tags"])
+    if event:
+        candidates &= {r["talk_id"] for r in rag._query(_AT, {"event": event})}
+    scored = []
+    for talk_id in candidates - exclude:
+        vec = space["vecs"].get(talk_id)
+        similarity = sum(a * b for a, b in zip(q, vec)) if vec else 0.0
+        shared = sorted(space["tags"].get(talk_id, set()) & wanted, key=lambda k: vocabulary.get(k, 1))
+        score = similarity + TAG_WEIGHT * sum(math.log(tagged / max(vocabulary.get(k, 1), 1)) for k in shared)
+        if score >= MIN_SCORE:
+            scored.append((score, talk_id, shared))
+    scored.sort(key=lambda s: (-s[0], s[1]))
+    return [(talk_id, shared) for _, talk_id, shared in scored[:limit]]
+
+
 def own_talks(rag: GraphRAG, name: str | None) -> list[str]:
     """The talks the visitor gave themselves, when their name is a Speaker's."""
     if not (name or "").strip():
@@ -140,8 +249,11 @@ def _sources(rag: GraphRAG, matches: list[tuple[str, list[str]]]) -> list[dict]:
 
 
 def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
-              name: str | None = None) -> dict:
-    """The visitor's own talks (if any), their picks, and the speakers to meet."""
+              name: str | None = None, query: list[float] | None = None) -> dict:
+    """The visitor's own talks (if any), their picks, and the speakers to meet.
+
+    Ranked by meaning and tags when there is a `query` vector and the graph has
+    talk vectors; by tags alone otherwise."""
     own_ids = own_talks(rag, name)
     own = _sources(rag, [(i, []) for i in own_ids])
     # A speaker's own talk is the most relevant way in: its tags join theirs.
@@ -152,10 +264,13 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
                 tags = tags + [row["keyword"]]
     # The talks they can still go to come first, in the order they are given,
     # and are not repeated among the picks from every edition.
-    this_week = _scheduled(rag, _sources(rag, match_talks(rag, tags, vocabulary,
-                                                          exclude=set(own_ids), event=AT_EVENT)))
+    def ranked(exclude: set[str], event: str | None = None):
+        by_meaning = rank_talks(rag, query, tags, vocabulary, exclude=exclude, event=event) if query else None
+        return by_meaning if by_meaning is not None else match_talks(rag, tags, vocabulary, exclude=exclude, event=event)
+
+    this_week = _scheduled(rag, _sources(rag, ranked(set(own_ids), AT_EVENT)))
     shown = set(own_ids) | {s["talk_id"] for s in this_week}
-    picks = _sources(rag, match_talks(rag, tags, vocabulary, exclude=shown))
+    picks = _sources(rag, ranked(shown))
 
     me = (name or "").strip().lower()
     speakers: list[str] = []
@@ -263,11 +378,28 @@ def public_url() -> str:
     return url.rstrip("/")
 
 
-def takeaway_url(base: str, tags: list[str]) -> str:
-    """A link that reproduces the picks from the tags alone: no name, no photo."""
+def takeaway_url(base: str, tags: list[str], talk_ids: list[str] = ()) -> str:
+    """A link to the visitor's talks: their ids and the topics, no name, no photo.
+
+    The ids, because the screen ranked them from the whole profile, which the
+    link does not carry: re-ranking from the topics alone would give the phone
+    a different list.
+    """
     if not (base and tags):
         return ""
-    return f"{base}/?{urlencode({TAKEAWAY_PARAM: ','.join(tags)}, quote_via=quote)}"
+    params = {TAKEAWAY_PARAM: ",".join(tags)}
+    if talk_ids:
+        params[TALKS_PARAM] = ",".join(talk_ids)
+    return f"{base}/?{urlencode(params, quote_via=quote)}"
+
+
+def takeaway(rag: GraphRAG, talk_ids: list[str]) -> dict:
+    """The take-away's talks, in `recommend`'s shape: the conference's first, in
+    programme order, then the rest in the order the screen showed them."""
+    sources = _sources(rag, [(i, []) for i in talk_ids])
+    this_week = _scheduled(rag, [s for s in sources if s["event"] == AT_EVENT])
+    picks = [s for s in sources if s["event"] != AT_EVENT]
+    return {"own": [], "this_week": this_week, "picks": picks, "speakers": [], "tags": []}
 
 
 def parse_takeaway(value: str | list[str] | None, vocabulary: dict[str, int]) -> list[str]:

@@ -18,6 +18,7 @@ RUN baml-cli generate
 COPY src/kuzu/*.py ./
 COPY src/kuzu/entities.json ./
 COPY src/kuzu/description_tags.json ./
+COPY src/kuzu/talk_embeddings.json ./
 COPY Transcripts/ ./Transcripts/
 
 # The ingestion service. Importable as `ingest` via PYTHONPATH below.
