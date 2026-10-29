@@ -1,0 +1,4024 @@
+1
+00:00:05,000 --> 00:00:09,200
+So, I'm delighted to introduce Dexter
+
+2
+00:00:07,520 --> 00:00:11,240
+Lo, who's principal engineer at G
+
+3
+00:00:09,200 --> 00:00:13,200
+Research. Topic
+
+4
+00:00:11,240 --> 00:00:15,480
+uh is Back to the Future of Your Data
+
+5
+00:00:13,200 --> 00:00:16,720
+Wrangling Connected Data Over Time. And
+
+6
+00:00:15,480 --> 00:00:18,960
+the thing that really caught my eye on
+
+7
+00:00:16,720 --> 00:00:21,080
+this one was the practice of modeling
+
+8
+00:00:18,960 --> 00:00:22,840
+the evolution of graph over time, as
+
+9
+00:00:21,080 --> 00:00:25,320
+well as our changing view of the
+
+10
+00:00:22,840 --> 00:00:28,080
+timeline itself. So, please join me in
+
+11
+00:00:25,320 --> 00:00:28,080
+welcoming Dexter.
+
+12
+00:00:30,560 --> 00:00:35,800
+>> Hello. So, yes, time is a very important
+
+13
+00:00:33,800 --> 00:00:37,680
+component, and it's probably about time
+
+14
+00:00:35,800 --> 00:00:39,880
+I get started, eh? I I promise I won't
+
+15
+00:00:37,680 --> 00:00:42,000
+do too many of those jokes.
+
+16
+00:00:39,880 --> 00:00:43,920
+Thank you, Paco, for introducing me. So,
+
+17
+00:00:42,000 --> 00:00:45,600
+uh I currently work at G Research, and
+
+18
+00:00:43,920 --> 00:00:47,760
+one of the things about G Research is we
+
+19
+00:00:45,600 --> 00:00:49,920
+are one of the leading quantitative
+
+20
+00:00:47,760 --> 00:00:51,680
+finance research institutions in the
+
+21
+00:00:49,920 --> 00:00:53,000
+world. And because of that, we have a
+
+22
+00:00:51,680 --> 00:00:55,480
+huge amount of data, lots of different
+
+23
+00:00:53,000 --> 00:00:57,720
+types of data all flowing in every day,
+
+24
+00:00:55,480 --> 00:00:59,680
+lots of different forms, and of those,
+
+25
+00:00:57,720 --> 00:01:01,800
+time is always an important key
+
+26
+00:00:59,680 --> 00:01:04,040
+component. And not just in a single time
+
+27
+00:01:01,800 --> 00:01:05,960
+dimension. Well, what do I mean by that?
+
+28
+00:01:04,040 --> 00:01:06,880
+Well, what I don't mean is time zones.
+
+29
+00:01:05,960 --> 00:01:08,640
+Um
+
+30
+00:01:06,880 --> 00:01:09,480
+we are in three different time zones.
+
+31
+00:01:08,640 --> 00:01:10,920
+That can make things a bit more
+
+32
+00:01:09,480 --> 00:01:12,200
+complicated. You have to care about
+
+33
+00:01:10,920 --> 00:01:14,080
+those things, make sure you're working
+
+34
+00:01:12,200 --> 00:01:16,520
+in a single time zone. But that's not
+
+35
+00:01:14,080 --> 00:01:17,880
+what we're here to talk about today.
+
+36
+00:01:16,520 --> 00:01:19,160
+The first thing we need to understand is
+
+37
+00:01:17,880 --> 00:01:20,760
+what we are talking about, and I hope to
+
+38
+00:01:19,160 --> 00:01:22,640
+convince you that we should be starting
+
+39
+00:01:20,760 --> 00:01:24,120
+to model time in the graphs. I see all
+
+40
+00:01:22,640 --> 00:01:26,120
+of these interesting graph technologies,
+
+41
+00:01:24,120 --> 00:01:27,760
+and up until recently, this has been uh
+
+42
+00:01:26,120 --> 00:01:28,800
+quite an interesting conference so far,
+
+43
+00:01:27,760 --> 00:01:31,640
+there's been quite a lot of mention of
+
+44
+00:01:28,800 --> 00:01:33,040
+time. But it it's a an aspect that's
+
+45
+00:01:31,640 --> 00:01:35,520
+generally ignored in graphs, and
+
+46
+00:01:33,040 --> 00:01:37,680
+actually quite difficult to model. So,
+
+47
+00:01:35,520 --> 00:01:39,320
+the first question is
+
+48
+00:01:37,680 --> 00:01:40,960
+why do we care about this? What do we
+
+49
+00:01:39,320 --> 00:01:43,320
+gain from it? What do we lose by not
+
+50
+00:01:40,960 --> 00:01:45,520
+doing it? And I think the best way to
+
+51
+00:01:43,320 --> 00:01:47,240
+discuss this is to have an actual
+
+52
+00:01:45,520 --> 00:01:49,560
+example, so that we can discuss it
+
+53
+00:01:47,240 --> 00:01:51,480
+simply, we can associate what we're
+
+54
+00:01:49,560 --> 00:01:52,400
+talking about, and we can see how we're
+
+55
+00:01:51,480 --> 00:01:54,720
+going to evolve our different
+
+56
+00:01:52,400 --> 00:01:56,120
+strategies.
+
+57
+00:01:54,720 --> 00:01:58,720
+We're less than 2 weeks from Christmas.
+
+58
+00:01:56,120 --> 00:01:59,760
+So, obviously, the example has to be how
+
+59
+00:01:58,720 --> 00:02:01,560
+do you pick an appropriate gift for
+
+60
+00:01:59,760 --> 00:02:03,800
+someone? We all know how to use graph
+
+61
+00:02:01,560 --> 00:02:05,720
+databases, I'm sure, to make nice little
+
+62
+00:02:03,800 --> 00:02:07,240
+recommender systems. So, obviously, as
+
+63
+00:02:05,720 --> 00:02:09,320
+any person who likes graphs a normal
+
+64
+00:02:07,240 --> 00:02:10,960
+amount, when I want to work out what tea
+
+65
+00:02:09,320 --> 00:02:12,440
+I need to buy someone as a present,
+
+66
+00:02:10,960 --> 00:02:15,000
+first thing I'm going to do is break out
+
+67
+00:02:12,440 --> 00:02:17,320
+my favorite graph recommendation for
+
+68
+00:02:15,000 --> 00:02:18,680
+tea.
+
+69
+00:02:17,320 --> 00:02:20,160
+So, there's three different sorts of
+
+70
+00:02:18,680 --> 00:02:22,680
+nodes that we have to look at here. The
+
+71
+00:02:20,160 --> 00:02:24,680
+orangey nodes are our actual teas. I've
+
+72
+00:02:22,680 --> 00:02:26,000
+represented the teas as their own nodes.
+
+73
+00:02:24,680 --> 00:02:28,440
+This is quite an important modeling
+
+74
+00:02:26,000 --> 00:02:30,040
+decision because if you actually put all
+
+75
+00:02:28,440 --> 00:02:31,640
+of your data in the structure of the
+
+76
+00:02:30,040 --> 00:02:33,400
+graph, the structure is the thing that's
+
+77
+00:02:31,640 --> 00:02:35,280
+unique about graph technologies and this
+
+78
+00:02:33,400 --> 00:02:36,760
+gets much more ability to gain
+
+79
+00:02:35,280 --> 00:02:38,120
+inferences.
+
+80
+00:02:36,760 --> 00:02:39,800
+I've also got people nodes, that's just
+
+81
+00:02:38,120 --> 00:02:41,400
+me and Maria, and I've got these blue
+
+82
+00:02:39,800 --> 00:02:43,640
+nodes. These blue nodes represent my
+
+83
+00:02:41,400 --> 00:02:45,080
+past attempts to give people tea. And we
+
+84
+00:02:43,640 --> 00:02:46,080
+can see we've had two previous attempts
+
+85
+00:02:45,080 --> 00:02:47,280
+at this.
+
+86
+00:02:46,080 --> 00:02:49,320
+The first one,
+
+87
+00:02:47,280 --> 00:02:52,320
+60% success rate. Pretty good. Well
+
+88
+00:02:49,320 --> 00:02:54,160
+received. Lady Grey. Fantastic. We can
+
+89
+00:02:52,320 --> 00:02:55,640
+see I've got a little similar link. It's
+
+90
+00:02:54,160 --> 00:02:56,840
+similar to Earl Grey, which is her
+
+91
+00:02:55,640 --> 00:02:58,959
+favorite tea.
+
+92
+00:02:56,840 --> 00:03:01,400
+Fantastic. Decent present.
+
+93
+00:02:58,959 --> 00:03:04,000
+Following year,
+
+94
+00:03:01,400 --> 00:03:06,040
+I instead got her favorite tea,
+
+95
+00:03:04,000 --> 00:03:07,880
+and she liked it less.
+
+96
+00:03:06,040 --> 00:03:09,239
+Quite a lot less.
+
+97
+00:03:07,880 --> 00:03:11,160
+What?
+
+98
+00:03:09,239 --> 00:03:12,480
+Surely that doesn't make sense. Well,
+
+99
+00:03:11,160 --> 00:03:13,640
+what's happened? Well, it's it's
+
+100
+00:03:12,480 --> 00:03:15,480
+obvious, of course. People should just
+
+101
+00:03:13,640 --> 00:03:17,320
+change their minds. People's tastes
+
+102
+00:03:15,480 --> 00:03:18,560
+evolve over time. At a certain point in
+
+103
+00:03:17,320 --> 00:03:21,519
+her life, I'm sure she didn't like tea
+
+104
+00:03:18,560 --> 00:03:23,800
+at all. Babies generally don't. Um but
+
+105
+00:03:21,519 --> 00:03:25,360
+then, as time goes on, she developed a
+
+106
+00:03:23,800 --> 00:03:28,160
+taste for Yorkshire tea. As time
+
+107
+00:03:25,360 --> 00:03:30,280
+continues to move on, she moved on to
+
+108
+00:03:28,160 --> 00:03:32,239
+Earl Grey, and then by the time I gave
+
+109
+00:03:30,280 --> 00:03:33,400
+that fateful present,
+
+110
+00:03:32,239 --> 00:03:35,760
+she'd actually switched over to liking
+
+111
+00:03:33,400 --> 00:03:38,600
+green tea. So, a black tea was a
+
+112
+00:03:35,760 --> 00:03:41,160
+terrible choice of gift, and well, I've
+
+113
+00:03:38,600 --> 00:03:43,239
+made a mistake, haven't I?
+
+114
+00:03:41,160 --> 00:03:44,440
+So, we can fix this in a few ways. The
+
+115
+00:03:43,239 --> 00:03:46,120
+simplest way, and the way that most
+
+116
+00:03:44,440 --> 00:03:47,560
+people would just do, is simply update
+
+117
+00:03:46,120 --> 00:03:49,200
+that favorite link that I had. Just
+
+118
+00:03:47,560 --> 00:03:51,040
+update it to say green tea. Problem
+
+119
+00:03:49,200 --> 00:03:53,560
+solved. We can move on with our day.
+
+120
+00:03:51,040 --> 00:03:55,960
+Except, if we do that, we lose data. We
+
+121
+00:03:53,560 --> 00:03:57,720
+lose information. And as Bogdan was just
+
+122
+00:03:55,960 --> 00:03:59,920
+talking about, actually what we want to
+
+123
+00:03:57,720 --> 00:04:01,560
+do here is have a log of this stuff. We
+
+124
+00:03:59,920 --> 00:04:04,000
+want to keep the whole history. We don't
+
+125
+00:04:01,560 --> 00:04:05,560
+want to edit the past. The past is a
+
+126
+00:04:04,000 --> 00:04:07,000
+very valuable thing when we're trying to
+
+127
+00:04:05,560 --> 00:04:08,120
+model things, we're trying to develop
+
+128
+00:04:07,000 --> 00:04:11,440
+things.
+
+129
+00:04:08,120 --> 00:04:13,240
+So, how can we model this in our graph?
+
+130
+00:04:11,440 --> 00:04:14,320
+There's a few options.
+
+131
+00:04:13,240 --> 00:04:15,880
+First of all, we have to talk about how
+
+132
+00:04:14,320 --> 00:04:17,200
+we're going to model the concept of time
+
+133
+00:04:15,880 --> 00:04:19,359
+itself.
+
+134
+00:04:17,200 --> 00:04:21,760
+There's two sort of primary options, at
+
+135
+00:04:19,359 --> 00:04:23,560
+least that I think of. Um I like my
+
+136
+00:04:21,760 --> 00:04:26,760
+little acronym of JBOT for the first
+
+137
+00:04:23,560 --> 00:04:28,000
+one, just a bunch of timestamps. And it
+
+138
+00:04:26,760 --> 00:04:29,360
+really is as simple as it sounds. You
+
+139
+00:04:28,000 --> 00:04:30,840
+just stick timestamps on things. You
+
+140
+00:04:29,360 --> 00:04:32,200
+really couldn't make it much easier.
+
+141
+00:04:30,840 --> 00:04:34,200
+It's very conceptually easy to
+
+142
+00:04:32,200 --> 00:04:36,320
+understand, very easy to sell to any
+
+143
+00:04:34,200 --> 00:04:37,960
+kind of executive. Everyone understands
+
+144
+00:04:36,320 --> 00:04:39,320
+a timestamp.
+
+145
+00:04:37,960 --> 00:04:41,520
+Second option.
+
+146
+00:04:39,320 --> 00:04:43,200
+Time trees.
+
+147
+00:04:41,520 --> 00:04:46,640
+We're graph scientists. We're network
+
+148
+00:04:43,200 --> 00:04:48,720
+scientists. We have tools, we have query
+
+149
+00:04:46,640 --> 00:04:50,760
+options that we allow us to manipulate
+
+150
+00:04:48,720 --> 00:04:52,520
+the structure of things.
+
+151
+00:04:50,760 --> 00:04:54,360
+So, can we make time part of that
+
+152
+00:04:52,520 --> 00:04:55,560
+structure? Yes, we can. That's what a
+
+153
+00:04:54,360 --> 00:04:56,840
+time tree is.
+
+154
+00:04:55,560 --> 00:04:59,040
+Here's an example one so that we can get
+
+155
+00:04:56,840 --> 00:05:00,960
+an idea for this. You start out with a
+
+156
+00:04:59,040 --> 00:05:02,800
+just a sort of root node to get into the
+
+157
+00:05:00,960 --> 00:05:04,040
+time tree, and then you have multiple
+
+158
+00:05:02,800 --> 00:05:06,240
+different layers, each of which are
+
+159
+00:05:04,040 --> 00:05:08,200
+different resolution. So, we start with
+
+160
+00:05:06,240 --> 00:05:09,760
+years, then we move to months at the
+
+161
+00:05:08,200 --> 00:05:12,040
+next layer, that's those green ones,
+
+162
+00:05:09,760 --> 00:05:13,440
+then we move to days.
+
+163
+00:05:12,040 --> 00:05:14,960
+This comes with some interesting options
+
+164
+00:05:13,440 --> 00:05:17,680
+because now we can actually use our
+
+165
+00:05:14,960 --> 00:05:19,840
+traversal options in the querying to get
+
+166
+00:05:17,680 --> 00:05:22,120
+around time, not just get around our
+
+167
+00:05:19,840 --> 00:05:23,880
+data. And this is quite interesting. If
+
+168
+00:05:22,120 --> 00:05:26,120
+you want to know all the data, all of
+
+169
+00:05:23,880 --> 00:05:28,320
+the things that ever happened in 2010,
+
+170
+00:05:26,120 --> 00:05:29,440
+just start from 2010, traverse down,
+
+171
+00:05:28,320 --> 00:05:31,000
+you're good.
+
+172
+00:05:29,440 --> 00:05:32,560
+It's quite simple.
+
+173
+00:05:31,000 --> 00:05:34,240
+You also can get some nice extra things.
+
+174
+00:05:32,560 --> 00:05:36,160
+As we know, when we start to work with
+
+175
+00:05:34,240 --> 00:05:37,560
+graphs, you add in extra properties to
+
+176
+00:05:36,160 --> 00:05:39,080
+help with your traversal, make things
+
+177
+00:05:37,560 --> 00:05:40,600
+easier. Because of that, we've got
+
+178
+00:05:39,080 --> 00:05:42,880
+first, we've got last, we've even got
+
+179
+00:05:40,600 --> 00:05:44,080
+next. This lets us shortcut a whole
+
+180
+00:05:42,880 --> 00:05:45,560
+bunch of things that are traditionally a
+
+181
+00:05:44,080 --> 00:05:47,400
+bit of a pain when dealing with time.
+
+182
+00:05:45,560 --> 00:05:48,720
+Things like working out what the first
+
+183
+00:05:47,400 --> 00:05:50,120
+and last day of the month is. I don't
+
+184
+00:05:48,720 --> 00:05:52,960
+know about you, but I never remember how
+
+185
+00:05:50,120 --> 00:05:54,960
+many days are in November. So, I don't
+
+186
+00:05:52,960 --> 00:05:56,880
+have to. I can just follow last.
+
+187
+00:05:54,960 --> 00:05:58,120
+Simple.
+
+188
+00:05:56,880 --> 00:06:01,720
+This leads to an interesting question
+
+189
+00:05:58,120 --> 00:06:03,120
+because I said I said last, I said next.
+
+190
+00:06:01,720 --> 00:06:05,720
+I don't know about you, but I I don't
+
+191
+00:06:03,120 --> 00:06:07,520
+remember there only being 23 days in
+
+192
+00:06:05,720 --> 00:06:08,480
+September.
+
+193
+00:06:07,520 --> 00:06:10,040
+So,
+
+194
+00:06:08,480 --> 00:06:11,320
+it's a bit odd.
+
+195
+00:06:10,040 --> 00:06:13,000
+Well, that's because this is a sparse
+
+196
+00:06:11,320 --> 00:06:15,680
+time tree. What I mean by that is I've
+
+197
+00:06:13,000 --> 00:06:17,960
+only modeled times that are relevant.
+
+198
+00:06:15,680 --> 00:06:19,480
+This is quite interesting because if you
+
+199
+00:06:17,960 --> 00:06:22,160
+take this further, this doesn't have to
+
+200
+00:06:19,480 --> 00:06:24,040
+stop at days. This can go to seconds,
+
+201
+00:06:22,160 --> 00:06:26,400
+milliseconds, picoseconds, whatever you
+
+202
+00:06:24,040 --> 00:06:27,600
+want. But, if you're going that deep,
+
+203
+00:06:26,400 --> 00:06:30,440
+this would be massive if you're
+
+204
+00:06:27,600 --> 00:06:32,400
+representing every possible picosecond.
+
+205
+00:06:30,440 --> 00:06:33,400
+So, don't. Just represent the ones that
+
+206
+00:06:32,400 --> 00:06:35,240
+matter.
+
+207
+00:06:33,400 --> 00:06:36,600
+That does take away some of this option
+
+208
+00:06:35,240 --> 00:06:38,080
+to just be able to go next though
+
+209
+00:06:36,600 --> 00:06:40,840
+because it's quite a nice property to be
+
+210
+00:06:38,080 --> 00:06:43,080
+able to say next three times to be able
+
+211
+00:06:40,840 --> 00:06:44,040
+to look at three months of data. So, you
+
+212
+00:06:43,080 --> 00:06:45,000
+can make your own decision there. You
+
+213
+00:06:44,040 --> 00:06:46,520
+can have it dense, you can have it
+
+214
+00:06:45,000 --> 00:06:48,240
+sparse, you can have it dense up to a
+
+215
+00:06:46,520 --> 00:06:50,400
+point then sparse.
+
+216
+00:06:48,240 --> 00:06:51,560
+Whatever works, but
+
+217
+00:06:50,400 --> 00:06:53,320
+it does start to then get a bit
+
+218
+00:06:51,560 --> 00:06:55,840
+complicated cuz we're having to deal
+
+219
+00:06:53,320 --> 00:06:57,800
+with this this varying level of of
+
+220
+00:06:55,840 --> 00:06:58,800
+resolution. So,
+
+221
+00:06:57,800 --> 00:06:59,760
+what's what's the answer to this
+
+222
+00:06:58,800 --> 00:07:03,640
+problem?
+
+223
+00:06:59,760 --> 00:07:05,760
+Well, just just timestamp everything.
+
+224
+00:07:03,640 --> 00:07:06,600
+Just just everything. The more things
+
+225
+00:07:05,760 --> 00:07:10,320
+you timestamp the better. This is
+
+226
+00:07:06,600 --> 00:07:11,400
+actually a photo of me um at work. Just
+
+227
+00:07:10,320 --> 00:07:12,440
+Yeah.
+
+228
+00:07:11,400 --> 00:07:14,120
+So,
+
+229
+00:07:12,440 --> 00:07:15,320
+how do we go about doing this?
+
+230
+00:07:14,120 --> 00:07:17,160
+Here's an updated version of that same
+
+231
+00:07:15,320 --> 00:07:19,600
+graph we saw before except there's a few
+
+232
+00:07:17,160 --> 00:07:21,360
+other additions. We've now got after
+
+233
+00:07:19,600 --> 00:07:22,840
+that disastrous gift, I sat down with
+
+234
+00:07:21,360 --> 00:07:25,480
+Maria. I asked her what was going on and
+
+235
+00:07:22,840 --> 00:07:26,880
+she said, "You idiot.
+
+236
+00:07:25,480 --> 00:07:27,800
+I prefer green tea these days." So, I'm
+
+237
+00:07:26,880 --> 00:07:29,680
+like, "All right. Fine. All right. Fine.
+
+238
+00:07:27,800 --> 00:07:31,120
+We'll add that to the graph."
+
+239
+00:07:29,680 --> 00:07:33,240
+But, also I've taken the opportunity to
+
+240
+00:07:31,120 --> 00:07:35,520
+stick timestamps on this. So, now all of
+
+241
+00:07:33,240 --> 00:07:36,919
+these relationships have a timestamp.
+
+242
+00:07:35,520 --> 00:07:38,440
+Um not all of them show the timestamp
+
+243
+00:07:36,919 --> 00:07:41,520
+cuz you can only have one label visible,
+
+244
+00:07:38,440 --> 00:07:43,120
+but they all have a timestamp.
+
+245
+00:07:41,520 --> 00:07:44,800
+The The thing about this is actually
+
+246
+00:07:43,120 --> 00:07:46,720
+this is two timestamps. I've got a start
+
+247
+00:07:44,800 --> 00:07:48,160
+and an end. This lets me know when all
+
+248
+00:07:46,720 --> 00:07:50,080
+of this stuff happened. You can model a
+
+249
+00:07:48,160 --> 00:07:51,480
+lot of this as a just simple as ofs with
+
+250
+00:07:50,080 --> 00:07:53,400
+one timestamp.
+
+251
+00:07:51,480 --> 00:07:55,400
+Both work, but as ofs only work if you
+
+252
+00:07:53,400 --> 00:07:57,320
+have a continuum. If things are always
+
+253
+00:07:55,400 --> 00:07:59,600
+true, there can be cases where there
+
+254
+00:07:57,320 --> 00:08:02,280
+isn't something valid at all. So, start
+
+255
+00:07:59,600 --> 00:08:04,080
+and end is a more flexible model.
+
+256
+00:08:02,280 --> 00:08:06,000
+But, what we can now see is exactly what
+
+257
+00:08:04,080 --> 00:08:07,880
+went wrong here. We can see that in
+
+258
+00:08:06,000 --> 00:08:09,040
+September she changed to preferring
+
+259
+00:08:07,880 --> 00:08:10,760
+green tea.
+
+260
+00:08:09,040 --> 00:08:12,240
+I gave that gift in January of the
+
+261
+00:08:10,760 --> 00:08:14,480
+following year, by which time she'd
+
+262
+00:08:12,240 --> 00:08:15,919
+already changed. Okay. We've updated the
+
+263
+00:08:14,480 --> 00:08:17,600
+graph. We have time modeled in our
+
+264
+00:08:15,919 --> 00:08:19,640
+graph. We've solved the problem. We can
+
+265
+00:08:17,600 --> 00:08:21,480
+go home early.
+
+266
+00:08:19,640 --> 00:08:22,480
+How do we use it?
+
+267
+00:08:21,480 --> 00:08:23,960
+Well,
+
+268
+00:08:22,480 --> 00:08:25,320
+it's actually quite simple. You don't
+
+269
+00:08:23,960 --> 00:08:27,560
+have to make very many changes to your
+
+270
+00:08:25,320 --> 00:08:29,560
+code at all. First thing is how to get
+
+271
+00:08:27,560 --> 00:08:31,440
+the latest. Well, it's just one where
+
+272
+00:08:29,560 --> 00:08:34,479
+there isn't an end yet. If if there's no
+
+273
+00:08:31,440 --> 00:08:36,145
+end, you're at the end.
+
+274
+00:08:34,479 --> 00:08:36,520
+There you go. Easy.
+
+275
+00:08:36,145 --> 00:08:38,159
+>> [snorts]
+
+276
+00:08:36,520 --> 00:08:39,479
+>> How can we work out a little bit more
+
+277
+00:08:38,159 --> 00:08:41,520
+information about this? So, we now know
+
+278
+00:08:39,479 --> 00:08:43,240
+that we have this this time dimension of
+
+279
+00:08:41,520 --> 00:08:45,880
+the data. How can we get some insight
+
+280
+00:08:43,240 --> 00:08:48,800
+out of this? So, I want to take that set
+
+281
+00:08:45,880 --> 00:08:50,080
+of failures and annotate it with this
+
+282
+00:08:48,800 --> 00:08:52,600
+extra information I've got from the
+
+283
+00:08:50,080 --> 00:08:55,720
+graph. So, to do that, very simple, we
+
+284
+00:08:52,600 --> 00:08:58,000
+get our basic pattern with Cypher there.
+
+285
+00:08:55,720 --> 00:08:59,760
+We say, go find all the gifts that Maria
+
+286
+00:08:58,000 --> 00:09:01,440
+has received from me.
+
+287
+00:08:59,760 --> 00:09:03,440
+Find her favorite, and then we simply
+
+288
+00:09:01,440 --> 00:09:04,920
+restrict that using the start and end to
+
+289
+00:09:03,440 --> 00:09:07,440
+make sure that we're getting only what
+
+290
+00:09:04,920 --> 00:09:09,480
+was relevant at the time of the gift.
+
+291
+00:09:07,440 --> 00:09:11,200
+Brilliant. We have a table. We have some
+
+292
+00:09:09,480 --> 00:09:12,080
+data. Our data scientists can look at
+
+293
+00:09:11,200 --> 00:09:13,080
+it,
+
+294
+00:09:12,080 --> 00:09:15,520
+and they can probably draw some
+
+295
+00:09:13,080 --> 00:09:16,960
+conclusions from that. Principally among
+
+296
+00:09:15,520 --> 00:09:20,200
+them,
+
+297
+00:09:16,960 --> 00:09:21,440
+why do I ignore people's favorites?
+
+298
+00:09:20,200 --> 00:09:22,680
+Let's Let's take an aside here for a
+
+299
+00:09:21,440 --> 00:09:24,080
+second.
+
+300
+00:09:22,680 --> 00:09:25,320
+What does this look like in RDF? Cuz
+
+301
+00:09:24,080 --> 00:09:27,080
+this has all been labeled property
+
+302
+00:09:25,320 --> 00:09:29,400
+graphs, and a lot of people here prefer
+
+303
+00:09:27,080 --> 00:09:31,440
+RDF. That's fine. I don't particularly
+
+304
+00:09:29,400 --> 00:09:32,640
+have a preference here.
+
+305
+00:09:31,440 --> 00:09:34,760
+Label property graphs can make things a
+
+306
+00:09:32,640 --> 00:09:36,520
+little bit easier in a lot of ways, but
+
+307
+00:09:34,760 --> 00:09:38,720
+there's no real difference because all
+
+308
+00:09:36,520 --> 00:09:40,000
+you have to do is effectively take any
+
+309
+00:09:38,720 --> 00:09:41,880
+relationships that you've put these
+
+310
+00:09:40,000 --> 00:09:43,440
+properties on these timestamps, just
+
+311
+00:09:41,880 --> 00:09:45,040
+break it up, stick a node in the middle,
+
+312
+00:09:43,440 --> 00:09:46,720
+put all your properties off that. There
+
+313
+00:09:45,040 --> 00:09:48,080
+we go. We've turned one into the other.
+
+314
+00:09:46,720 --> 00:09:49,720
+The whole thing's isomorphic. No
+
+315
+00:09:48,080 --> 00:09:51,200
+problems there.
+
+316
+00:09:49,720 --> 00:09:52,560
+In this case, I kept it to just a single
+
+317
+00:09:51,200 --> 00:09:54,600
+timestamp, just the as of, just so you
+
+318
+00:09:52,560 --> 00:09:56,600
+can see both halves of it. In this case,
+
+319
+00:09:54,600 --> 00:09:58,760
+it's fine, but start and end is
+
+320
+00:09:56,600 --> 00:10:02,320
+generally more flexible, but then it
+
+321
+00:09:58,760 --> 00:10:04,000
+wouldn't really have fit on one slide.
+
+322
+00:10:02,320 --> 00:10:05,680
+How does this look to the query? In the
+
+323
+00:10:04,000 --> 00:10:07,440
+same way as the Cypher, for example,
+
+324
+00:10:05,680 --> 00:10:08,920
+there's not much more to the query past
+
+325
+00:10:07,440 --> 00:10:10,920
+a normal query. You've still got your
+
+326
+00:10:08,920 --> 00:10:12,760
+normal match, we're getting the data out
+
+327
+00:10:10,920 --> 00:10:14,200
+here. This answer on the right-hand side
+
+328
+00:10:12,760 --> 00:10:16,120
+we can see is exactly the same as that
+
+329
+00:10:14,200 --> 00:10:17,360
+table we got out of Cypher.
+
+330
+00:10:16,120 --> 00:10:18,600
+The only difference is this little extra
+
+331
+00:10:17,360 --> 00:10:23,280
+filter at the bottom. We're saying
+
+332
+00:10:18,600 --> 00:10:27,120
+filter out any matches where the uh next
+
+333
+00:10:23,280 --> 00:10:28,600
+sort of favorite node starts before the
+
+334
+00:10:27,120 --> 00:10:30,040
+time point. Cuz if there's a new
+
+335
+00:10:28,600 --> 00:10:31,240
+favorite that starts before the time
+
+336
+00:10:30,040 --> 00:10:32,520
+we're interested in, the one we're
+
+337
+00:10:31,240 --> 00:10:34,120
+looking at, not relevant. So, let's
+
+338
+00:10:32,520 --> 00:10:35,720
+ignore that one until we find one that
+
+339
+00:10:34,120 --> 00:10:37,080
+is the latest.
+
+340
+00:10:35,720 --> 00:10:39,360
+So, it's pretty easy to add into your
+
+341
+00:10:37,080 --> 00:10:40,800
+existing queries.
+
+342
+00:10:39,360 --> 00:10:43,360
+The problem is
+
+343
+00:10:40,800 --> 00:10:45,280
+what's the actual insight that the data
+
+344
+00:10:43,360 --> 00:10:47,160
+scientist is going to get from this? He
+
+345
+00:10:45,280 --> 00:10:50,800
+will probably say, "Why are you ignoring
+
+346
+00:10:47,160 --> 00:10:52,800
+favorites?" They might say, uh "Surely
+
+347
+00:10:50,800 --> 00:10:54,839
+this is ridiculous. Why did you buy this
+
+348
+00:10:52,800 --> 00:10:56,720
+black tea?" Well,
+
+349
+00:10:54,839 --> 00:10:58,600
+I didn't know. I wouldn't have had a
+
+350
+00:10:56,720 --> 00:11:00,080
+face like this at the time if I had
+
+351
+00:10:58,600 --> 00:11:01,960
+known. I would have gone, "Oh, yeah,
+
+352
+00:11:00,080 --> 00:11:03,720
+sorry. My bad. I
+
+353
+00:11:01,960 --> 00:11:05,520
+I didn't realize. I had wasn't aware
+
+354
+00:11:03,720 --> 00:11:06,880
+yet. Sorry about that."
+
+355
+00:11:05,520 --> 00:11:08,760
+But,
+
+356
+00:11:06,880 --> 00:11:11,360
+I was surprised.
+
+357
+00:11:08,760 --> 00:11:13,080
+That's information we've lost.
+
+358
+00:11:11,360 --> 00:11:14,760
+Why have we lost this?
+
+359
+00:11:13,080 --> 00:11:16,520
+Well, it's because Marie and I have
+
+360
+00:11:14,760 --> 00:11:18,800
+different views, not just of the data,
+
+361
+00:11:16,520 --> 00:11:20,760
+but of the timeline itself.
+
+362
+00:11:18,800 --> 00:11:21,960
+From my perspective,
+
+363
+00:11:20,760 --> 00:11:23,640
+there was only one element in this
+
+364
+00:11:21,960 --> 00:11:25,280
+timeline. From Marie's perspective,
+
+365
+00:11:23,640 --> 00:11:26,839
+there's three.
+
+366
+00:11:25,280 --> 00:11:28,880
+This is a completely different viewpoint
+
+367
+00:11:26,839 --> 00:11:30,680
+of the data.
+
+368
+00:11:28,880 --> 00:11:32,840
+It's the same data, but from two
+
+369
+00:11:30,680 --> 00:11:34,920
+different perspectives.
+
+370
+00:11:32,840 --> 00:11:35,920
+So, why does this matter?
+
+371
+00:11:34,920 --> 00:11:37,320
+Well,
+
+372
+00:11:35,920 --> 00:11:39,040
+once we start to think about feeding
+
+373
+00:11:37,320 --> 00:11:41,560
+this into a machine, feeding this into
+
+374
+00:11:39,040 --> 00:11:43,160
+model generation, into AI, into, you
+
+375
+00:11:41,560 --> 00:11:44,800
+know, retrieval augmented generation,
+
+376
+00:11:43,160 --> 00:11:46,040
+things like that,
+
+377
+00:11:44,800 --> 00:11:47,280
+we start looking at training models.
+
+378
+00:11:46,040 --> 00:11:49,400
+When we're training models and trying to
+
+379
+00:11:47,280 --> 00:11:50,840
+work out what's improved,
+
+380
+00:11:49,400 --> 00:11:52,040
+we need some way of testing this. And
+
+381
+00:11:50,840 --> 00:11:54,200
+this is very true in the world that I
+
+382
+00:11:52,040 --> 00:11:55,400
+work in. We're working in finance.
+
+383
+00:11:54,200 --> 00:11:57,360
+Therefore, we're coming up with
+
+384
+00:11:55,400 --> 00:11:58,600
+algorithms all the time, and we need to
+
+385
+00:11:57,360 --> 00:11:59,800
+test them. We need to test our
+
+386
+00:11:58,600 --> 00:12:01,400
+algorithms against what happened in the
+
+387
+00:11:59,800 --> 00:12:03,200
+past and have some idea about how
+
+388
+00:12:01,400 --> 00:12:04,600
+they're going to perform.
+
+389
+00:12:03,200 --> 00:12:06,080
+One thing which is a sad truth is that
+
+390
+00:12:04,600 --> 00:12:08,600
+lots of vendors like to be really
+
+391
+00:12:06,080 --> 00:12:10,560
+helpful. They update mistakes. People
+
+392
+00:12:08,600 --> 00:12:12,600
+will sit there and copy down the wrong
+
+393
+00:12:10,560 --> 00:12:14,680
+time from a wall clock because the wall
+
+394
+00:12:12,600 --> 00:12:17,280
+clock has run out of batteries. That's
+
+395
+00:12:14,680 --> 00:12:18,800
+an obvious mistake. They'll correct it 3
+
+396
+00:12:17,280 --> 00:12:20,840
+days later. That's very helpful of them,
+
+397
+00:12:18,800 --> 00:12:22,560
+but the reality is, if you're trying to
+
+398
+00:12:20,840 --> 00:12:23,960
+do a sim, you'll say, "Oh, yeah, my new
+
+399
+00:12:22,560 --> 00:12:25,760
+algorithm is amazing." But it's not
+
+400
+00:12:23,960 --> 00:12:27,560
+amazing cuz it's better. It's amazing
+
+401
+00:12:25,760 --> 00:12:29,320
+cuz it can see the future.
+
+402
+00:12:27,560 --> 00:12:31,040
+You've given your algorithm a time
+
+403
+00:12:29,320 --> 00:12:32,520
+machine.
+
+404
+00:12:31,040 --> 00:12:34,920
+So, it thinks it can make all the money
+
+405
+00:12:32,520 --> 00:12:36,040
+in the world, but it can't.
+
+406
+00:12:34,920 --> 00:12:40,080
+So, how do we fix this problem? We need
+
+407
+00:12:36,040 --> 00:12:41,000
+to learn how to time travel, but safely.
+
+408
+00:12:40,080 --> 00:12:42,520
+There's a couple of different options
+
+409
+00:12:41,000 --> 00:12:44,560
+here.
+
+410
+00:12:42,520 --> 00:12:46,240
+The first one, very, very simple,
+
+411
+00:12:44,560 --> 00:12:47,640
+just take snapshots.
+
+412
+00:12:46,240 --> 00:12:49,440
+Keep it as simple as possible. No
+
+413
+00:12:47,640 --> 00:12:51,160
+changes needed to the code at all. We've
+
+414
+00:12:49,440 --> 00:12:52,680
+already got one time dimension added in.
+
+415
+00:12:51,160 --> 00:12:54,600
+That was simple. Now, we just snapshot
+
+416
+00:12:52,680 --> 00:12:56,040
+it. We can go home.
+
+417
+00:12:54,600 --> 00:12:57,960
+But how often do you update that
+
+418
+00:12:56,040 --> 00:12:59,240
+snapshot?
+
+419
+00:12:57,960 --> 00:13:00,720
+This can become quite problematic. It
+
+420
+00:12:59,240 --> 00:13:02,680
+can become quite large. Where are you
+
+421
+00:13:00,720 --> 00:13:04,400
+keeping all this data? How are you
+
+422
+00:13:02,680 --> 00:13:06,320
+querying across these things? If you
+
+423
+00:13:04,400 --> 00:13:08,320
+need to keep 20 different ones of these
+
+424
+00:13:06,320 --> 00:13:11,560
+online to query at 20 different data
+
+425
+00:13:08,320 --> 00:13:12,760
+data times, how do you do this?
+
+426
+00:13:11,560 --> 00:13:14,160
+There's an interesting middle ground
+
+427
+00:13:12,760 --> 00:13:15,680
+that ties into what Bogdan was talking
+
+428
+00:13:14,160 --> 00:13:17,240
+about, where if you have these
+
+429
+00:13:15,680 --> 00:13:19,120
+snapshots, if you have these compacted
+
+430
+00:13:17,240 --> 00:13:20,680
+views, you can start from a compacted
+
+431
+00:13:19,120 --> 00:13:22,480
+view. And if you have a log of all the
+
+432
+00:13:20,680 --> 00:13:25,480
+changes that went into your graph, you
+
+433
+00:13:22,480 --> 00:13:26,560
+can then play forward from a snapshot or
+
+434
+00:13:25,480 --> 00:13:28,560
+from the beginning of time, which is
+
+435
+00:13:26,560 --> 00:13:29,720
+effectively just an empty snapshot,
+
+436
+00:13:28,560 --> 00:13:31,320
+all of the changes that have ever
+
+437
+00:13:29,720 --> 00:13:32,960
+happened to your log. This is great for
+
+438
+00:13:31,320 --> 00:13:34,320
+simulations cuz when you're simulating
+
+439
+00:13:32,960 --> 00:13:36,440
+what your algorithm is going to do,
+
+440
+00:13:34,320 --> 00:13:38,240
+financial markets, etc., you get a bunch
+
+441
+00:13:36,440 --> 00:13:40,080
+of data in, it comes in in a stream, you
+
+442
+00:13:38,240 --> 00:13:41,840
+start from point X, you say what would
+
+443
+00:13:40,080 --> 00:13:43,200
+have happened at this point, at the next
+
+444
+00:13:41,840 --> 00:13:44,560
+point you're measuring, you just play
+
+445
+00:13:43,200 --> 00:13:46,000
+any changes that have happened between
+
+446
+00:13:44,560 --> 00:13:47,560
+that time, you go, you go, you go,
+
+447
+00:13:46,000 --> 00:13:50,680
+you're probably only applying a small
+
+448
+00:13:47,560 --> 00:13:52,160
+number of changes each time. But,
+
+449
+00:13:50,680 --> 00:13:53,200
+there isn't really a lot of good tooling
+
+450
+00:13:52,160 --> 00:13:54,840
+for this.
+
+451
+00:13:53,200 --> 00:13:57,400
+Some graphs can move you through time.
+
+452
+00:13:54,840 --> 00:13:59,040
+Um things like Quine, for example, is
+
+453
+00:13:57,400 --> 00:14:01,360
+excellent this. There's a very easy way
+
+454
+00:13:59,040 --> 00:14:02,880
+to move through the timeline.
+
+455
+00:14:01,360 --> 00:14:04,400
+But, it's still only in a single time
+
+456
+00:14:02,880 --> 00:14:06,360
+dimension.
+
+457
+00:14:04,400 --> 00:14:07,920
+So, how do we deal with this?
+
+458
+00:14:06,360 --> 00:14:09,720
+Well, I mean, you might remember my my
+
+459
+00:14:07,920 --> 00:14:11,600
+photograph earlier, my file photo. I
+
+460
+00:14:09,720 --> 00:14:13,960
+just just add more timestamps. It's
+
+461
+00:14:11,600 --> 00:14:16,320
+basically always the answer.
+
+462
+00:14:13,960 --> 00:14:17,520
+Um there's also this final option of the
+
+463
+00:14:16,320 --> 00:14:18,840
+entity state model that I'm going to
+
+464
+00:14:17,520 --> 00:14:21,080
+come back to in a minute because it's
+
+465
+00:14:18,840 --> 00:14:22,680
+much more complicated, and I've kind of
+
+466
+00:14:21,080 --> 00:14:24,600
+been cheating and hiding a little bit of
+
+467
+00:14:22,680 --> 00:14:26,280
+complexity.
+
+468
+00:14:24,600 --> 00:14:28,520
+So, first of all, let's consider these
+
+469
+00:14:26,280 --> 00:14:30,400
+options a bit.
+
+470
+00:14:28,520 --> 00:14:32,360
+Just taking snapshots.
+
+471
+00:14:30,400 --> 00:14:34,040
+Not bad. Keep it very easy to clean up.
+
+472
+00:14:32,360 --> 00:14:35,640
+We can just delete a snapshot.
+
+473
+00:14:34,040 --> 00:14:38,120
+Very easy to work with. Very hard to
+
+474
+00:14:35,640 --> 00:14:39,800
+work across snapshot. We can improve by
+
+475
+00:14:38,120 --> 00:14:41,000
+adding that log.
+
+476
+00:14:39,800 --> 00:14:43,200
+Okay, now we've got a log, but now we
+
+477
+00:14:41,000 --> 00:14:44,040
+haven't got tooling to help us out. So,
+
+478
+00:14:43,200 --> 00:14:45,360
+someone's going to have to do some
+
+479
+00:14:44,040 --> 00:14:47,240
+engineering work. Who's going to pay for
+
+480
+00:14:45,360 --> 00:14:48,240
+the engineering work?
+
+481
+00:14:47,240 --> 00:14:50,000
+And how many of these things are we
+
+482
+00:14:48,240 --> 00:14:51,480
+keeping? How far back are we going?
+
+483
+00:14:50,000 --> 00:14:53,760
+Sure, you keep the last few daily
+
+484
+00:14:51,480 --> 00:14:55,520
+snapshots. You keep a weekly snapshot
+
+485
+00:14:53,760 --> 00:14:56,880
+for a month. You keep a monthly snapshot
+
+486
+00:14:55,520 --> 00:15:00,120
+for a year.
+
+487
+00:14:56,880 --> 00:15:00,120
+How far back does this go?
+
+488
+00:15:00,280 --> 00:15:04,360
+Just sticking timestamps on everything.
+
+489
+00:15:02,400 --> 00:15:07,040
+Always my answer to everything.
+
+490
+00:15:04,360 --> 00:15:08,920
+It also has a great acronym. SEKU. I
+
+491
+00:15:07,040 --> 00:15:10,680
+quite like saying it. And obviously,
+
+492
+00:15:08,920 --> 00:15:13,240
+because it has the best acronym, it's
+
+493
+00:15:10,680 --> 00:15:16,000
+the obvious choice. So,
+
+494
+00:15:13,240 --> 00:15:17,400
+um in reality, this is quite a nice
+
+495
+00:15:16,000 --> 00:15:18,839
+model to work with cuz it keeps things
+
+496
+00:15:17,400 --> 00:15:20,960
+relatively simple. It doesn't matter how
+
+497
+00:15:18,839 --> 00:15:24,080
+many time dimensions you add, you simply
+
+498
+00:15:20,960 --> 00:15:25,760
+add another set of uh start and ends to
+
+499
+00:15:24,080 --> 00:15:28,280
+it. So, you have our main time dimension
+
+500
+00:15:25,760 --> 00:15:30,840
+start end, our visibility time if you
+
+501
+00:15:28,280 --> 00:15:32,720
+like, known until, and you can just add
+
+502
+00:15:30,840 --> 00:15:35,360
+as many different copies of this as you
+
+503
+00:15:32,720 --> 00:15:36,880
+need for, for example, the markets view
+
+504
+00:15:35,360 --> 00:15:39,080
+of the time, the vendors view of the
+
+505
+00:15:36,880 --> 00:15:40,640
+time, the data generators view of the
+
+506
+00:15:39,080 --> 00:15:43,440
+time. All of these things can be very
+
+507
+00:15:40,640 --> 00:15:44,440
+relevant in our sort of world.
+
+508
+00:15:43,440 --> 00:15:46,360
+There is a danger that you end up
+
+509
+00:15:44,440 --> 00:15:48,080
+putting a lot of this information in the
+
+510
+00:15:46,360 --> 00:15:49,800
+relationships, and this is exactly why
+
+511
+00:15:48,080 --> 00:15:52,080
+before I put as much information as
+
+512
+00:15:49,800 --> 00:15:53,520
+possible in the actual structure of the
+
+513
+00:15:52,080 --> 00:15:55,680
+graph, because with it being in the
+
+514
+00:15:53,520 --> 00:15:57,880
+structure, I can use these relationships
+
+515
+00:15:55,680 --> 00:15:59,800
+to manage the state over time just by
+
+516
+00:15:57,880 --> 00:16:01,520
+providing a second relationship with
+
+517
+00:15:59,800 --> 00:16:05,000
+another set of timestamps. Keeps things
+
+518
+00:16:01,520 --> 00:16:07,400
+very simple, very easy to filter.
+
+519
+00:16:05,000 --> 00:16:10,200
+What does this look like in reality?
+
+520
+00:16:07,400 --> 00:16:11,640
+Very simple. I haven't put the full SAK
+
+521
+00:16:10,200 --> 00:16:13,520
+you set on all of this because otherwise
+
+522
+00:16:11,640 --> 00:16:15,560
+it'd be very crowded slide,
+
+523
+00:16:13,520 --> 00:16:17,040
+but it's exactly the same as before. We
+
+524
+00:16:15,560 --> 00:16:18,600
+just have two sets of timestamps now, a
+
+525
+00:16:17,040 --> 00:16:21,200
+couple of which end in null to indicate
+
+526
+00:16:18,600 --> 00:16:24,880
+that this is current.
+
+527
+00:16:21,200 --> 00:16:26,600
+So, how can we use this?
+
+528
+00:16:24,880 --> 00:16:28,600
+This might seem similar. This is
+
+529
+00:16:26,600 --> 00:16:30,000
+basically the same code I had before,
+
+530
+00:16:28,600 --> 00:16:32,080
+almost identical in fact. The only
+
+531
+00:16:30,000 --> 00:16:34,080
+difference is that I've added this extra
+
+532
+00:16:32,080 --> 00:16:36,080
+little bit for my known favorite rather
+
+533
+00:16:34,080 --> 00:16:38,680
+than just the actual favorite, and I've
+
+534
+00:16:36,080 --> 00:16:40,560
+added an extra little bit of where
+
+535
+00:16:38,680 --> 00:16:41,960
+clauses there to deal with this extra
+
+536
+00:16:40,560 --> 00:16:43,360
+time dimension.
+
+537
+00:16:41,960 --> 00:16:45,000
+And because of that, we've now got a new
+
+538
+00:16:43,360 --> 00:16:47,240
+table, and this new table provides much
+
+539
+00:16:45,000 --> 00:16:49,400
+better insight. It doesn't provide false
+
+540
+00:16:47,240 --> 00:16:51,720
+information or false indication because
+
+541
+00:16:49,400 --> 00:16:54,560
+we can clearly see the actual cause of
+
+542
+00:16:51,720 --> 00:16:55,920
+the mistake I made. We can see that when
+
+543
+00:16:54,560 --> 00:16:58,320
+I gave a black tea, her favorite tea was
+
+544
+00:16:55,920 --> 00:16:59,640
+black tea, it was a decent present. When
+
+545
+00:16:58,320 --> 00:17:02,000
+I gave a second black tea, her favorite
+
+546
+00:16:59,640 --> 00:17:04,240
+tea was green tea, but I only knew about
+
+547
+00:17:02,000 --> 00:17:05,720
+the black tea, so actually the insight
+
+548
+00:17:04,240 --> 00:17:07,439
+from this isn't that I should pay
+
+549
+00:17:05,720 --> 00:17:11,240
+attention to people, it's probably that
+
+550
+00:17:07,439 --> 00:17:11,240
+we should update this graph more often.
+
+551
+00:17:11,800 --> 00:17:14,920
+Can we make this simpler?
+
+552
+00:17:13,800 --> 00:17:16,439
+Yes.
+
+553
+00:17:14,920 --> 00:17:18,560
+You You want to have to put all of that
+
+554
+00:17:16,439 --> 00:17:19,880
+in every single query you ever write.
+
+555
+00:17:18,560 --> 00:17:21,880
+Fortunately, this is incredibly
+
+556
+00:17:19,880 --> 00:17:23,360
+generalizable. As long as you've done
+
+557
+00:17:21,880 --> 00:17:25,199
+what I said and just put the same
+
+558
+00:17:23,360 --> 00:17:27,640
+timestamps on everything, all you have
+
+559
+00:17:25,199 --> 00:17:30,600
+to do is write this fairly general thing
+
+560
+00:17:27,640 --> 00:17:32,640
+where you can say for the entire path
+
+561
+00:17:30,600 --> 00:17:34,360
+just confirm that we're only following
+
+562
+00:17:32,640 --> 00:17:35,640
+links that actually match our time
+
+563
+00:17:34,360 --> 00:17:37,040
+conditions.
+
+564
+00:17:35,640 --> 00:17:38,840
+As long as we do that, we can write this
+
+565
+00:17:37,040 --> 00:17:40,880
+once, parameterize the whole thing so
+
+566
+00:17:38,840 --> 00:17:44,400
+you can just say at this time point from
+
+567
+00:17:40,880 --> 00:17:46,720
+my viewpoint go work like this. It's
+
+568
+00:17:44,400 --> 00:17:48,160
+quite simple.
+
+569
+00:17:46,720 --> 00:17:50,720
+But we can go further than this. This
+
+570
+00:17:48,160 --> 00:17:52,200
+works for only really controlling all
+
+571
+00:17:50,720 --> 00:17:53,480
+the relationships. That's fine and
+
+572
+00:17:52,200 --> 00:17:55,440
+controlling anything you can model with
+
+573
+00:17:53,480 --> 00:17:57,520
+structure. That's great. But what about
+
+574
+00:17:55,440 --> 00:17:58,760
+the properties on the nodes?
+
+575
+00:17:57,520 --> 00:18:00,080
+Well,
+
+576
+00:17:58,760 --> 00:18:01,480
+if we move away to something like
+
+577
+00:18:00,080 --> 00:18:03,400
+JanusGraph, something like the TinkerPop
+
+578
+00:18:01,480 --> 00:18:05,200
+stack, we get a few extra options. They
+
+579
+00:18:03,400 --> 00:18:06,800
+have meta properties in there.
+
+580
+00:18:05,200 --> 00:18:09,320
+This looks a bit like a list, but the
+
+581
+00:18:06,800 --> 00:18:11,560
+interesting extra point is that not only
+
+582
+00:18:09,320 --> 00:18:13,640
+do you have a list of options, you can
+
+583
+00:18:11,560 --> 00:18:15,600
+add meta properties, which again is
+
+584
+00:18:13,640 --> 00:18:17,960
+those same timestamps. So you can add
+
+585
+00:18:15,600 --> 00:18:20,360
+the start and known until on all of your
+
+586
+00:18:17,960 --> 00:18:22,760
+properties. And this lets you version in
+
+587
+00:18:20,360 --> 00:18:24,480
+the single node all of the modifications
+
+588
+00:18:22,760 --> 00:18:26,400
+to your node over time.
+
+589
+00:18:24,480 --> 00:18:27,680
+Except,
+
+590
+00:18:26,400 --> 00:18:29,600
+if one of these things changes
+
+591
+00:18:27,680 --> 00:18:31,680
+frequently,
+
+592
+00:18:29,600 --> 00:18:33,800
+if it changes really often, you can have
+
+593
+00:18:31,680 --> 00:18:35,400
+nodes that are a megabyte or more. And
+
+594
+00:18:33,800 --> 00:18:36,400
+that might not seem like a lot, but when
+
+595
+00:18:35,400 --> 00:18:37,960
+you're trying to write large graph
+
+596
+00:18:36,400 --> 00:18:39,480
+traversals, you're expecting to be able
+
+597
+00:18:37,960 --> 00:18:41,160
+to hop in nanoseconds or a few
+
+598
+00:18:39,480 --> 00:18:42,760
+milliseconds.
+
+599
+00:18:41,160 --> 00:18:46,600
+That starts to slow down if you have
+
+600
+00:18:42,760 --> 00:18:48,800
+massive nodes. So,
+
+601
+00:18:46,600 --> 00:18:50,480
+for now, let's let's just leave that for
+
+602
+00:18:48,800 --> 00:18:51,920
+a second. We're going to come back to it
+
+603
+00:18:50,480 --> 00:18:54,040
+because this is where the entity state
+
+604
+00:18:51,920 --> 00:18:55,480
+model comes in. But how do we work with
+
+605
+00:18:54,040 --> 00:18:57,280
+the meta properties? How do we work with
+
+606
+00:18:55,480 --> 00:18:59,000
+what we've got so far? If we are in
+
+607
+00:18:57,280 --> 00:19:00,840
+JanusGraph, maybe because we want these
+
+608
+00:18:59,000 --> 00:19:03,400
+meta properties, we've got these options
+
+609
+00:19:00,840 --> 00:19:05,360
+called time Sorry, traversal strategies.
+
+610
+00:19:03,400 --> 00:19:07,160
+In this case, this is one that's called
+
+611
+00:19:05,360 --> 00:19:08,440
+time window. This is a single time
+
+612
+00:19:07,160 --> 00:19:10,560
+dimension, but it's only a very small
+
+613
+00:19:08,440 --> 00:19:12,080
+amount of code. I've written exactly the
+
+614
+00:19:10,560 --> 00:19:15,080
+same thing we had in Cypher a second
+
+615
+00:19:12,080 --> 00:19:16,360
+ago, saying for the entire path make
+
+616
+00:19:15,080 --> 00:19:18,480
+these changes. These traversal
+
+617
+00:19:16,360 --> 00:19:19,920
+strategies basically dynamically modify
+
+618
+00:19:18,480 --> 00:19:21,880
+your queries to add in stuff you
+
+619
+00:19:19,920 --> 00:19:23,240
+shouldn't care about. So, your users no
+
+620
+00:19:21,880 --> 00:19:24,840
+longer have to care about the fact
+
+621
+00:19:23,240 --> 00:19:26,240
+you've added 12 time dimensions to all
+
+622
+00:19:24,840 --> 00:19:28,760
+of your relationships. They can
+
+623
+00:19:26,240 --> 00:19:30,720
+completely ignore time and just say,
+
+624
+00:19:28,760 --> 00:19:32,120
+here's my as of or here's my window that
+
+625
+00:19:30,720 --> 00:19:34,600
+I want to query within, give me the
+
+626
+00:19:32,120 --> 00:19:36,160
+data. Nice and simple.
+
+627
+00:19:34,600 --> 00:19:38,080
+We can make this even simpler by just
+
+628
+00:19:36,160 --> 00:19:40,160
+providing a few little helpers. So, here
+
+629
+00:19:38,080 --> 00:19:41,600
+I've got time point, which is just a
+
+630
+00:19:40,160 --> 00:19:43,640
+window that starts and ends at the same
+
+631
+00:19:41,600 --> 00:19:46,120
+point in time, and current time. So,
+
+632
+00:19:43,640 --> 00:19:48,160
+people can just say, make a new one. And
+
+633
+00:19:46,120 --> 00:19:50,560
+this is how you use it. With strategies,
+
+634
+00:19:48,160 --> 00:19:52,200
+time point, that's it.
+
+635
+00:19:50,560 --> 00:19:55,160
+That's a really nice model for your
+
+636
+00:19:52,200 --> 00:19:55,160
+users to use.
+
+637
+00:19:55,360 --> 00:19:59,240
+So, we've covered the first three.
+
+638
+00:19:57,520 --> 00:20:00,560
+I've mentioned it a few times.
+
+639
+00:19:59,240 --> 00:20:03,160
+The elephant in the room, the entity
+
+640
+00:20:00,560 --> 00:20:03,160
+state model.
+
+641
+00:20:03,240 --> 00:20:07,200
+This is an interesting evolution of this
+
+642
+00:20:05,280 --> 00:20:10,360
+idea. It lets you version relationships
+
+643
+00:20:07,200 --> 00:20:13,160
+by segregating the idea of a state of an
+
+644
+00:20:10,360 --> 00:20:14,400
+entity from its actual existence. This
+
+645
+00:20:13,160 --> 00:20:15,960
+means that you can model both the
+
+646
+00:20:14,400 --> 00:20:17,400
+changes to the properties themselves in
+
+647
+00:20:15,960 --> 00:20:19,520
+something like Neo that doesn't have
+
+648
+00:20:17,400 --> 00:20:21,480
+meta properties, but also the
+
+649
+00:20:19,520 --> 00:20:22,960
+relationships and connections themselves
+
+650
+00:20:21,480 --> 00:20:25,200
+without needing to put it all in the
+
+651
+00:20:22,960 --> 00:20:26,840
+relations directly.
+
+652
+00:20:25,200 --> 00:20:28,960
+I think this makes very difficult to
+
+653
+00:20:26,840 --> 00:20:30,560
+understand graphs, but it is quite
+
+654
+00:20:28,960 --> 00:20:32,760
+powerful.
+
+655
+00:20:30,560 --> 00:20:33,920
+Here is an example. It is very cut down.
+
+656
+00:20:32,760 --> 00:20:36,120
+There are some links at the end that
+
+657
+00:20:33,920 --> 00:20:38,080
+include a full screenshot of this graph
+
+658
+00:20:36,120 --> 00:20:39,320
+without all of the extra bits removed.
+
+659
+00:20:38,080 --> 00:20:41,240
+If I left it all in, you wouldn't be
+
+660
+00:20:39,320 --> 00:20:43,080
+able to see it.
+
+661
+00:20:41,240 --> 00:20:44,720
+Basically, what happens every time any
+
+662
+00:20:43,080 --> 00:20:46,840
+change is made, that includes me
+
+663
+00:20:44,720 --> 00:20:48,720
+learning about those those extra tea
+
+664
+00:20:46,840 --> 00:20:50,600
+preferences, there's a new state of
+
+665
+00:20:48,720 --> 00:20:52,440
+minds. We can see here, the blue this
+
+666
+00:20:50,600 --> 00:20:54,040
+sort of aqua nodes are the people, and
+
+667
+00:20:52,440 --> 00:20:55,840
+they all have this has state and
+
+668
+00:20:54,040 --> 00:20:57,960
+current, a bit like the time tree, where
+
+669
+00:20:55,840 --> 00:20:59,320
+we have these extra little links to help
+
+670
+00:20:57,960 --> 00:21:01,680
+us move through the states. We've got
+
+671
+00:20:59,320 --> 00:21:03,400
+some previous links that should be there
+
+672
+00:21:01,680 --> 00:21:05,360
+between all the states. I've hidden a
+
+673
+00:21:03,400 --> 00:21:06,240
+bunch of mine, so that's why you I see
+
+674
+00:21:05,360 --> 00:21:08,560
+them.
+
+675
+00:21:06,240 --> 00:21:10,640
+Um but, there's also these interesting
+
+676
+00:21:08,560 --> 00:21:13,440
+pink nodes. What are these?
+
+677
+00:21:10,640 --> 00:21:16,600
+This is the R part of the ESR model or
+
+678
+00:21:13,440 --> 00:21:17,880
+entity state R model.
+
+679
+00:21:16,600 --> 00:21:19,600
+Basically, what they do is they just
+
+680
+00:21:17,880 --> 00:21:21,520
+collect all the incoming relationships.
+
+681
+00:21:19,600 --> 00:21:23,560
+So, from an entity, an entity only
+
+682
+00:21:21,520 --> 00:21:25,120
+connects to its own states, and you can
+
+683
+00:21:23,560 --> 00:21:27,200
+then traverse those over time very
+
+684
+00:21:25,120 --> 00:21:28,840
+easily. From a state, you have
+
+685
+00:21:27,200 --> 00:21:30,520
+relationships to all of the things that
+
+686
+00:21:28,840 --> 00:21:32,040
+you knew at that time. So, as long as
+
+687
+00:21:30,520 --> 00:21:34,080
+you're finding a specific state, you
+
+688
+00:21:32,040 --> 00:21:36,320
+know exactly what that particular entity
+
+689
+00:21:34,080 --> 00:21:38,480
+saw from its own perspective at that
+
+690
+00:21:36,320 --> 00:21:40,000
+point in time.
+
+691
+00:21:38,480 --> 00:21:41,520
+I think this is very hard for humans to
+
+692
+00:21:40,000 --> 00:21:43,600
+understand, and that's why we're very
+
+693
+00:21:41,520 --> 00:21:46,240
+fortunate to have the Neo4j version of
+
+694
+00:21:43,600 --> 00:21:48,480
+core, which I used to make this, which
+
+695
+00:21:46,240 --> 00:21:49,720
+does most of this work for you. And I
+
+696
+00:21:48,480 --> 00:21:51,160
+would highly recommend, if you're going
+
+697
+00:21:49,720 --> 00:21:52,720
+to go down this route, using some
+
+698
+00:21:51,160 --> 00:21:54,640
+libraries for it. Unfortunately, the
+
+699
+00:21:52,720 --> 00:21:57,760
+version of core isn't updated to five,
+
+700
+00:21:54,640 --> 00:22:00,520
+but I do think it probably works anyway.
+
+701
+00:21:57,760 --> 00:22:02,400
+But, it is quite complicated. If you can
+
+702
+00:22:00,520 --> 00:22:04,200
+solve this problem without having to go
+
+703
+00:22:02,400 --> 00:22:06,000
+down this route, either by carefully
+
+704
+00:22:04,200 --> 00:22:07,240
+structuring your graph or by using a
+
+705
+00:22:06,000 --> 00:22:09,800
+technology that doesn't have these
+
+706
+00:22:07,240 --> 00:22:11,360
+problems, it's probably easier than
+
+707
+00:22:09,800 --> 00:22:12,840
+taking this route.
+
+708
+00:22:11,360 --> 00:22:14,320
+But, I think it is very interesting to
+
+709
+00:22:12,840 --> 00:22:16,440
+look at cuz we can see exactly what we
+
+710
+00:22:14,320 --> 00:22:18,920
+saw before here. Maria had a state where
+
+711
+00:22:16,440 --> 00:22:20,920
+she had a favorite. She changed states
+
+712
+00:22:18,920 --> 00:22:22,880
+every time she changed favorites, and we
+
+713
+00:22:20,920 --> 00:22:25,520
+can see my original, my sort of first
+
+714
+00:22:22,880 --> 00:22:27,360
+state, I only knew about the Earl Grey.
+
+715
+00:22:25,520 --> 00:22:29,480
+But, in my last state, the current
+
+716
+00:22:27,360 --> 00:22:31,840
+state, I now have a link directly to the
+
+717
+00:22:29,480 --> 00:22:34,680
+R node of all three
+
+718
+00:22:31,840 --> 00:22:37,280
+of those previous entities. So, I now
+
+719
+00:22:34,680 --> 00:22:38,640
+know all of these things.
+
+720
+00:22:37,280 --> 00:22:40,720
+I think this is hard to get your head
+
+721
+00:22:38,640 --> 00:22:42,520
+around, and we don't have the full time
+
+722
+00:22:40,720 --> 00:22:45,760
+in the talk like this to really go into
+
+723
+00:22:42,520 --> 00:22:47,560
+it, but it is a very interesting model.
+
+724
+00:22:45,760 --> 00:22:50,440
+So, the last thing we need to talk about
+
+725
+00:22:47,560 --> 00:22:51,680
+is what can go wrong here.
+
+726
+00:22:50,440 --> 00:22:53,160
+The first thing is just you can end up
+
+727
+00:22:51,680 --> 00:22:54,960
+with really complicated queries. I've
+
+728
+00:22:53,160 --> 00:22:56,800
+kind of covered quite a few ways you can
+
+729
+00:22:54,960 --> 00:22:58,320
+work around this problem, things like
+
+730
+00:22:56,800 --> 00:23:01,280
+those traversal strategies, stored
+
+731
+00:22:58,320 --> 00:23:02,440
+procedures, trying to keep it general.
+
+732
+00:23:01,280 --> 00:23:05,200
+But, at the end of the day, it is going
+
+733
+00:23:02,440 --> 00:23:06,840
+to add
+
+734
+00:23:05,200 --> 00:23:08,840
+some complexities to your query. Hiding
+
+735
+00:23:06,840 --> 00:23:10,320
+that where possible quite important. or
+
+736
+00:23:08,840 --> 00:23:12,000
+you're ignoring that and doing the same
+
+737
+00:23:10,320 --> 00:23:14,080
+sort of thing where you just duplicate
+
+738
+00:23:12,000 --> 00:23:15,920
+your nodes out. 10 copies of a human
+
+739
+00:23:14,080 --> 00:23:18,800
+entity is very hard to understand let
+
+740
+00:23:15,920 --> 00:23:20,600
+alone 10,000. You might want to compact
+
+741
+00:23:18,800 --> 00:23:22,040
+them together. You might want to take
+
+742
+00:23:20,600 --> 00:23:23,800
+updates to properties, stick them in an
+
+743
+00:23:22,040 --> 00:23:25,520
+external store or something like that so
+
+744
+00:23:23,800 --> 00:23:26,680
+that they're easier to version. Be
+
+745
+00:23:25,520 --> 00:23:28,920
+careful about making your graph
+
+746
+00:23:26,680 --> 00:23:30,560
+unusable. And on that note, if you're
+
+747
+00:23:28,920 --> 00:23:32,160
+making lots and lots of lots of these
+
+748
+00:23:30,560 --> 00:23:34,360
+things you can end up with supernodes.
+
+749
+00:23:32,160 --> 00:23:36,840
+So again, be very very cognizant of
+
+750
+00:23:34,360 --> 00:23:39,560
+supernode risk as you're making these.
+
+751
+00:23:36,840 --> 00:23:41,120
+And the final thing to point out is just
+
+752
+00:23:39,560 --> 00:23:44,880
+I've said it so many times, add more
+
+753
+00:23:41,120 --> 00:23:46,880
+timestamps. It's so easy to just ignore
+
+754
+00:23:44,880 --> 00:23:48,760
+a time dimension in these queries. A lot
+
+755
+00:23:46,880 --> 00:23:49,680
+of the ways I've demonstrated adding
+
+756
+00:23:48,760 --> 00:23:51,480
+more and more properties to an
+
+757
+00:23:49,680 --> 00:23:53,560
+individual relationship don't really
+
+758
+00:23:51,480 --> 00:23:55,440
+cause any kind of scaling issue cuz you
+
+759
+00:23:53,560 --> 00:23:57,880
+simply can just ignore those properties.
+
+760
+00:23:55,440 --> 00:23:59,720
+It's not a big impact, but it's very
+
+761
+00:23:57,880 --> 00:24:01,760
+difficult to add time dimensions after
+
+762
+00:23:59,720 --> 00:24:02,720
+the fact if you missed it. So just make
+
+763
+00:24:01,760 --> 00:24:04,200
+sure you're collecting all the
+
+764
+00:24:02,720 --> 00:24:05,760
+information you might need so that you
+
+765
+00:24:04,200 --> 00:24:07,640
+can definitely fill this out when it
+
+766
+00:24:05,760 --> 00:24:08,840
+becomes something that you care about.
+
+767
+00:24:07,640 --> 00:24:10,560
+And this is particularly important when
+
+768
+00:24:08,840 --> 00:24:13,400
+we start to look at things like the the
+
+769
+00:24:10,560 --> 00:24:15,080
+graph rag future because if your graph
+
+770
+00:24:13,400 --> 00:24:17,160
+doesn't understand time, it's going to
+
+771
+00:24:15,080 --> 00:24:19,120
+be giving you incorrect inferences. And
+
+772
+00:24:17,160 --> 00:24:21,560
+worse, if you just give it one of the
+
+773
+00:24:19,120 --> 00:24:22,600
+simple models without trying to protect
+
+774
+00:24:21,560 --> 00:24:24,600
+it with one of these traversal
+
+775
+00:24:22,600 --> 00:24:26,240
+strategies or something like that, it
+
+776
+00:24:24,600 --> 00:24:28,040
+won't understand how to move through
+
+777
+00:24:26,240 --> 00:24:30,240
+time in your graph. It won't understand
+
+778
+00:24:28,040 --> 00:24:32,040
+how to time travel successfully.
+
+779
+00:24:30,240 --> 00:24:33,800
+And therefore, even if you have all the
+
+780
+00:24:32,040 --> 00:24:36,160
+time modeled, it still won't actually
+
+781
+00:24:33,800 --> 00:24:37,440
+work.
+
+782
+00:24:36,160 --> 00:24:38,920
+There's a whole bunch of references
+
+783
+00:24:37,440 --> 00:24:41,640
+there including links to some of the
+
+784
+00:24:38,920 --> 00:24:42,800
+RDF, the Neo4j version of core, things
+
+785
+00:24:41,640 --> 00:24:43,920
+like that.
+
+786
+00:24:42,800 --> 00:24:45,400
+Do find me afterwards if you have
+
+787
+00:24:43,920 --> 00:24:46,680
+further questions.
+
+788
+00:24:45,400 --> 00:24:49,120
+But I think we have some time for
+
+789
+00:24:46,680 --> 00:24:49,120
+questions.
+
+790
+00:24:50,142 --> 00:24:52,162
+>> [applause]
+
+791
+00:24:57,120 --> 00:25:01,800
+>> In get mics, yes.
+
+792
+00:24:59,960 --> 00:25:03,680
+>> Uh, you mentioned you got don't have any
+
+793
+00:25:01,800 --> 00:25:05,640
+preference Oh.
+
+794
+00:25:03,680 --> 00:25:08,640
+You mentioned you don't have ever any
+
+795
+00:25:05,640 --> 00:25:12,120
+preference between label property and
+
+796
+00:25:08,640 --> 00:25:13,800
+RDF. Um, I know how this whole thing
+
+797
+00:25:12,120 --> 00:25:16,880
+works in
+
+798
+00:25:13,800 --> 00:25:20,000
+Neo4j and uh label property.
+
+799
+00:25:16,880 --> 00:25:23,040
+I struggle with um putting timestamps on
+
+800
+00:25:20,000 --> 00:25:25,000
+relation in the RDF world.
+
+801
+00:25:23,040 --> 00:25:27,800
+Do you have any kind of solution for me?
+
+802
+00:25:25,000 --> 00:25:30,320
+>> Yes. So, um it there's the example in
+
+803
+00:25:27,800 --> 00:25:31,560
+the RDF uh thing I had up. You can
+
+804
+00:25:30,320 --> 00:25:34,000
+There's a link on there that takes you
+
+805
+00:25:31,560 --> 00:25:35,880
+to the setup. But, effectively, whenever
+
+806
+00:25:34,000 --> 00:25:38,840
+you want to timestamp things in an RDF
+
+807
+00:25:35,880 --> 00:25:40,240
+world, you just add an extra ersatz node
+
+808
+00:25:38,840 --> 00:25:42,440
+in the middle to hold that information
+
+809
+00:25:40,240 --> 00:25:44,400
+cuz you can always represent properties
+
+810
+00:25:42,440 --> 00:25:46,400
+on a relationship by having effectively
+
+811
+00:25:44,400 --> 00:25:48,320
+splitting the relationship in half and
+
+812
+00:25:46,400 --> 00:25:50,080
+putting a node there to collect it. So,
+
+813
+00:25:48,320 --> 00:25:52,080
+you have the events themselves as their
+
+814
+00:25:50,080 --> 00:25:54,680
+own separate nodes, and then they can be
+
+815
+00:25:52,080 --> 00:25:57,800
+their own subject. Predicate is, you
+
+816
+00:25:54,680 --> 00:25:59,040
+know, start, end, known until linked to
+
+817
+00:25:57,800 --> 00:26:00,760
+all the dates. You've solved your
+
+818
+00:25:59,040 --> 00:26:02,080
+problem. It's a little bit more code to
+
+819
+00:26:00,760 --> 00:26:03,960
+work with in SPARQL, but it's not
+
+820
+00:26:02,080 --> 00:26:06,520
+particularly complicated.
+
+821
+00:26:03,960 --> 00:26:08,680
+>> Okay, so you basically every relation
+
+822
+00:26:06,520 --> 00:26:09,160
+will transform into an extra node and
+
+823
+00:26:08,680 --> 00:26:09,560
+then
+
+824
+00:26:09,160 --> 00:26:10,960
+>> Okay.
+
+825
+00:26:09,560 --> 00:26:11,960
+>> And that's exactly why I generally
+
+826
+00:26:10,960 --> 00:26:14,880
+recommend sticking them on the
+
+827
+00:26:11,960 --> 00:26:17,000
+relationships because otherwise you can
+
+828
+00:26:14,880 --> 00:26:18,560
+run out of node IDs in a lot of these
+
+829
+00:26:17,000 --> 00:26:21,760
+databases, and that is something that's
+
+830
+00:26:18,560 --> 00:26:24,320
+happened to me a few times.
+
+831
+00:26:21,760 --> 00:26:24,320
+>> Thank you.
+
+832
+00:26:24,400 --> 00:26:28,720
+>> One mic.
+
+833
+00:26:25,840 --> 00:26:31,040
+>> So, while I love the tea example,
+
+834
+00:26:28,720 --> 00:26:32,800
+um if I could have just asked, I mean,
+
+835
+00:26:31,040 --> 00:26:34,920
+given you you've worked a lot within the
+
+836
+00:26:32,800 --> 00:26:37,000
+finance sector,
+
+837
+00:26:34,920 --> 00:26:38,440
+from a corporate actions perspective,
+
+838
+00:26:37,000 --> 00:26:42,520
+>> Mhm.
+
+839
+00:26:38,440 --> 00:26:44,120
+>> I see particular use case for that. Um
+
+840
+00:26:42,520 --> 00:26:45,800
+within the various approaches you talked
+
+841
+00:26:44,120 --> 00:26:47,960
+about um
+
+842
+00:26:45,800 --> 00:26:51,160
+I was trying to relate the entity state,
+
+843
+00:26:47,960 --> 00:26:53,400
+the ESR model, to that. Could you speak
+
+844
+00:26:51,160 --> 00:26:54,760
+a little bit about how it could be
+
+845
+00:26:53,400 --> 00:26:56,160
+utilized for that or or if there's a
+
+846
+00:26:54,760 --> 00:26:58,880
+better way of doing it?
+
+847
+00:26:56,160 --> 00:27:00,880
+>> Sure. So, uh the way that I would model
+
+848
+00:26:58,880 --> 00:27:03,600
+this sort of thing is my standard just
+
+849
+00:27:00,880 --> 00:27:04,880
+stick timestamps on everything because I
+
+850
+00:27:03,600 --> 00:27:07,240
+think it's the simplest way to
+
+851
+00:27:04,880 --> 00:27:08,440
+conceptualize these things. Um
+
+852
+00:27:07,240 --> 00:27:10,200
+for things like corporate actions, it
+
+853
+00:27:08,440 --> 00:27:11,520
+does make a huge impact because there
+
+854
+00:27:10,200 --> 00:27:13,160
+are many, many different additional
+
+855
+00:27:11,520 --> 00:27:14,960
+timestamps. We're not just talking start
+
+856
+00:27:13,160 --> 00:27:16,280
+and known until. There's also things
+
+857
+00:27:14,960 --> 00:27:18,200
+like the announced date, the confirmed
+
+858
+00:27:16,280 --> 00:27:21,120
+date. All these other things are their
+
+859
+00:27:18,200 --> 00:27:23,200
+own extra time uh axes. There's one
+
+860
+00:27:21,120 --> 00:27:24,600
+dataset I work with that has eight,
+
+861
+00:27:23,200 --> 00:27:25,640
+which is kind of in the same to work
+
+862
+00:27:24,600 --> 00:27:27,960
+with.
+
+863
+00:27:25,640 --> 00:27:30,200
+The The trick to it is basically just
+
+864
+00:27:27,960 --> 00:27:31,440
+whenever you can, model a lot of these
+
+865
+00:27:30,200 --> 00:27:33,560
+things as state cuz the stuff that's in
+
+866
+00:27:31,440 --> 00:27:35,560
+the corporate actions is obvious is
+
+867
+00:27:33,560 --> 00:27:37,600
+usually related to state in the graph.
+
+868
+00:27:35,560 --> 00:27:39,320
+So, you can extract a lot of it, but not
+
+869
+00:27:37,600 --> 00:27:40,600
+all of it. So, then you do need to go
+
+870
+00:27:39,320 --> 00:27:43,760
+down something like the entity state
+
+871
+00:27:40,600 --> 00:27:45,600
+route or simply duplicate the nodes.
+
+872
+00:27:43,760 --> 00:27:47,840
+In my world, I just duplicate the nodes
+
+873
+00:27:45,600 --> 00:27:50,480
+because I have tighter control over it
+
+874
+00:27:47,840 --> 00:27:52,680
+than using the um the original core,
+
+875
+00:27:50,480 --> 00:27:54,480
+which makes things simpler, but adds a
+
+876
+00:27:52,680 --> 00:27:55,760
+lot of extra stuff. It does work
+
+877
+00:27:54,480 --> 00:27:57,800
+perfectly well though because those
+
+878
+00:27:55,760 --> 00:27:59,800
+corporate actions still link back at the
+
+879
+00:27:57,800 --> 00:28:01,960
+individual states. What you'll have is a
+
+880
+00:27:59,800 --> 00:28:04,040
+document or a corporate action start
+
+881
+00:28:01,960 --> 00:28:05,680
+that then links to both all the entities
+
+882
+00:28:04,040 --> 00:28:08,400
+that it's actually working with and has
+
+883
+00:28:05,680 --> 00:28:09,960
+a state anytime it changes. So, as other
+
+884
+00:28:08,400 --> 00:28:11,560
+things become aware of that corporate
+
+885
+00:28:09,960 --> 00:28:14,000
+action, you can link them to the
+
+886
+00:28:11,560 --> 00:28:15,520
+appropriate state at the time. Um you
+
+887
+00:28:14,000 --> 00:28:17,080
+never link to the state directly. You
+
+888
+00:28:15,520 --> 00:28:19,480
+just link to the entity, but because the
+
+889
+00:28:17,080 --> 00:28:22,080
+thing that's doing the linking itself
+
+890
+00:28:19,480 --> 00:28:23,880
+changes state, that's a new state with a
+
+891
+00:28:22,080 --> 00:28:25,080
+new set of relationships that have time
+
+892
+00:28:23,880 --> 00:28:26,480
+on them. So, then you're back in your
+
+893
+00:28:25,080 --> 00:28:28,920
+world of having all the time axes you
+
+894
+00:28:26,480 --> 00:28:28,920
+need.
+
+895
+00:28:32,000 --> 00:28:35,200
+I think there was a question in the
+
+896
+00:28:32,920 --> 00:28:35,200
+front.
+
+897
+00:28:37,640 --> 00:28:40,880
+>> Yeah, thank you for the talk. It's very
+
+898
+00:28:39,160 --> 00:28:42,720
+interesting. So, this is a bit of an
+
+899
+00:28:40,880 --> 00:28:44,600
+ill-formulated question because I
+
+900
+00:28:42,720 --> 00:28:46,120
+actually don't know how to phrase it.
+
+901
+00:28:44,600 --> 00:28:48,320
+But, if I have, let's say, a
+
+902
+00:28:46,120 --> 00:28:50,760
+manufacturing plant and I have, let's
+
+903
+00:28:48,320 --> 00:28:51,920
+say, a product or parts of the product
+
+904
+00:28:50,760 --> 00:28:53,640
+that are shifting between different
+
+905
+00:28:51,920 --> 00:28:55,120
+lines, usually I'm going to go to
+
+906
+00:28:53,640 --> 00:28:56,680
+someone like Celonis and they're going
+
+907
+00:28:55,120 --> 00:28:57,280
+to give me like that process graph,
+
+908
+00:28:56,680 --> 00:28:57,720
+right?
+
+909
+00:28:57,280 --> 00:28:59,600
+>> Yeah.
+
+910
+00:28:57,720 --> 00:29:02,000
+>> But, that's an incomplete view of the
+
+911
+00:28:59,600 --> 00:29:04,320
+entity because I have things which are
+
+912
+00:29:02,000 --> 00:29:05,640
+unstructured. That's in the knowledge
+
+913
+00:29:04,320 --> 00:29:07,320
+graph.
+
+914
+00:29:05,640 --> 00:29:09,600
+Uh I'm trying to understand your entity
+
+915
+00:29:07,320 --> 00:29:11,960
+state uh model. Is this something like
+
+916
+00:29:09,600 --> 00:29:14,960
+like a tensor product of a knowledge
+
+917
+00:29:11,960 --> 00:29:17,240
+graph and a state model in which, let's
+
+918
+00:29:14,960 --> 00:29:18,760
+say, I have an entity. The entity links
+
+919
+00:29:17,240 --> 00:29:20,560
+to that state, but
+
+920
+00:29:18,760 --> 00:29:22,040
+that those state nodes do they represent
+
+921
+00:29:20,560 --> 00:29:24,480
+something that's equivalent to that
+
+922
+00:29:22,040 --> 00:29:26,520
+process graph?
+
+923
+00:29:24,480 --> 00:29:28,600
+>> Not really. The The state nodes
+
+924
+00:29:26,520 --> 00:29:30,640
+represent any change that's happened.
+
+925
+00:29:28,600 --> 00:29:32,760
+So, you could model a flow through your
+
+926
+00:29:30,640 --> 00:29:34,760
+process graph as this, but it starts
+
+927
+00:29:32,760 --> 00:29:37,360
+from the entity. So, you have a specific
+
+928
+00:29:34,760 --> 00:29:39,400
+entity. Whenever that entity changes, it
+
+929
+00:29:37,360 --> 00:29:41,480
+gains a new state. Then, a lot of the
+
+930
+00:29:39,400 --> 00:29:44,440
+information is held in the relationships
+
+931
+00:29:41,480 --> 00:29:46,200
+back to other entities. So, it's mostly
+
+932
+00:29:44,440 --> 00:29:47,640
+those sort of connections to the R node.
+
+933
+00:29:46,200 --> 00:29:49,000
+Like, you version the relationships and
+
+934
+00:29:47,640 --> 00:29:51,120
+the individual states like you version
+
+935
+00:29:49,000 --> 00:29:53,280
+the properties. So, if you're modeling
+
+936
+00:29:51,120 --> 00:29:54,760
+the individual product, every state
+
+937
+00:29:53,280 --> 00:29:57,000
+would be a step through the process
+
+938
+00:29:54,760 --> 00:29:58,520
+where it's linking to more machines or
+
+939
+00:29:57,000 --> 00:30:01,200
+adding more properties or something like
+
+940
+00:29:58,520 --> 00:30:04,040
+that. Um but, you the actual machine
+
+941
+00:30:01,200 --> 00:30:05,600
+itself would be modeled separately as
+
+942
+00:30:04,040 --> 00:30:07,120
+its own thing with its own states, which
+
+943
+00:30:05,600 --> 00:30:08,720
+probably wouldn't change very often.
+
+944
+00:30:07,120 --> 00:30:09,480
+>> Okay. So, it's more expressive
+
+945
+00:30:08,720 --> 00:30:11,520
+essentially than
+
+946
+00:30:09,480 --> 00:30:13,520
+>> Yeah, but as you've effectively
+
+947
+00:30:11,520 --> 00:30:15,040
+illuminated, it is very hard for humans
+
+948
+00:30:13,520 --> 00:30:16,440
+to understand, which is why I sort of
+
+949
+00:30:15,040 --> 00:30:19,560
+lean away from it.
+
+950
+00:30:16,440 --> 00:30:19,560
+>> That's great. Thank you very much.
+
+951
+00:30:22,800 --> 00:30:29,000
+>> Thank you. Very nice talk. Um
+
+952
+00:30:26,240 --> 00:30:32,720
+I didn't quite understand
+
+953
+00:30:29,000 --> 00:30:35,160
+the solution you proposed. Um
+
+954
+00:30:32,720 --> 00:30:37,840
+how how well does it scale? Do you in
+
+955
+00:30:35,160 --> 00:30:39,880
+the real world with a lot of data,
+
+956
+00:30:37,840 --> 00:30:42,560
+do you ever hit a wall? Like, would you
+
+957
+00:30:39,880 --> 00:30:44,600
+ever want more resolution that you can't
+
+958
+00:30:42,560 --> 00:30:46,000
+have. So,
+
+959
+00:30:44,600 --> 00:30:48,160
+I've mentioned that I've run out of node
+
+960
+00:30:46,000 --> 00:30:49,741
+IDs quite a few times.
+
+961
+00:30:48,160 --> 00:30:50,600
+So, yes, it scales.
+
+962
+00:30:49,741 --> 00:30:52,000
+>> [laughter]
+
+963
+00:30:50,600 --> 00:30:53,880
+>> Um you have to be careful with the
+
+964
+00:30:52,000 --> 00:30:55,000
+model. The trick is the supernodes.
+
+965
+00:30:53,880 --> 00:30:56,480
+There is a real danger that you'll
+
+966
+00:30:55,000 --> 00:30:58,600
+because you're putting more information
+
+967
+00:30:56,480 --> 00:31:00,680
+in the relationships to ease the the
+
+968
+00:30:58,600 --> 00:31:02,120
+mechanisms here that you create more
+
+969
+00:31:00,680 --> 00:31:04,040
+relationships than you're used to, and
+
+970
+00:31:02,120 --> 00:31:06,520
+that can make supernodes. If you're
+
+971
+00:31:04,040 --> 00:31:08,160
+careful about that supernode risk, some
+
+972
+00:31:06,520 --> 00:31:09,800
+tax claim to handle it for you, but you
+
+973
+00:31:08,160 --> 00:31:11,720
+can model this effectively. For example,
+
+974
+00:31:09,800 --> 00:31:13,480
+if you ever connect to the US, the US
+
+975
+00:31:11,720 --> 00:31:14,840
+just becomes a giant ball of mud.
+
+976
+00:31:13,480 --> 00:31:16,480
+Imagine how many states are in the
+
+977
+00:31:14,840 --> 00:31:18,280
+entity state model for the US. It's it's
+
+978
+00:31:16,480 --> 00:31:20,240
+absolutely untenable. So, what you have
+
+979
+00:31:18,280 --> 00:31:22,160
+to do instead is say, "Well, no one
+
+980
+00:31:20,240 --> 00:31:23,720
+talks to the US directly. Let's split
+
+981
+00:31:22,160 --> 00:31:25,360
+the US into states, or let's split the
+
+982
+00:31:23,720 --> 00:31:26,560
+US into this, that, and the other." And
+
+983
+00:31:25,360 --> 00:31:28,480
+as long as you've carefully modeled
+
+984
+00:31:26,560 --> 00:31:30,840
+that, the amount of things you are
+
+985
+00:31:28,480 --> 00:31:32,320
+adding on each relation is actually very
+
+986
+00:31:30,840 --> 00:31:34,600
+small. You're only adding, you know,
+
+987
+00:31:32,320 --> 00:31:36,680
+eight or so timestamps, and those are
+
+988
+00:31:34,600 --> 00:31:38,400
+very quick to filter. You're only
+
+989
+00:31:36,680 --> 00:31:40,640
+looking at a specific type of relation,
+
+990
+00:31:38,400 --> 00:31:42,040
+so that's quick to filter. You're able
+
+991
+00:31:40,640 --> 00:31:44,080
+to cut out a lot of nodes in the
+
+992
+00:31:42,040 --> 00:31:45,880
+traversal because the properties on the
+
+993
+00:31:44,080 --> 00:31:47,720
+relations skip having to go to the
+
+994
+00:31:45,880 --> 00:31:49,200
+second relation. It obviously depends on
+
+995
+00:31:47,720 --> 00:31:52,480
+the individual graph databases to how
+
+996
+00:31:49,200 --> 00:31:54,000
+effectively that works. So, RDF can have
+
+997
+00:31:52,480 --> 00:31:55,840
+a few more scaling issues cuz you have
+
+998
+00:31:54,000 --> 00:31:57,040
+to add those extra nodes to represent
+
+999
+00:31:55,840 --> 00:32:00,120
+the gaps,
+
+1000
+00:31:57,040 --> 00:32:04,320
+but it it does scale to um
+
+1001
+00:32:00,120 --> 00:32:06,800
+tens of billions of nodes very easily.
+
+1002
+00:32:04,320 --> 00:32:07,840
+Thank you.
+
+1003
+00:32:06,800 --> 00:32:09,160
+Yeah. Yeah.
+
+1004
+00:32:07,840 --> 00:32:10,307
+>> Thank you very much.
+
+1005
+00:32:09,160 --> 00:32:12,327
+>> Thank you.
+
+1006
+00:32:10,307 --> 00:32:12,327
+>> [applause]
+
