@@ -19,6 +19,11 @@ DB_PATH = os.getenv("DB_PATH", str(BASE_DIR / "cdl_db.kuzu"))
 # Metadata CSV file
 METADATA_CSV = TRANSCRIPTS_DIR / "Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
 
+# The HeySummit catalogue the ingestion service's sync writes: each talk's
+# start time and stage come from here. Overridable as the ingestion service's
+# own setting is, so the rebuild reads the file the sync wrote.
+HEYSUMMIT_CATALOG = Path(os.getenv("HEYSUMMIT_CATALOG", TRANSCRIPTS_DIR / ".heysummit" / "catalog.json"))
+
 # Data directory for extracted .txt files
 DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 
@@ -27,6 +32,10 @@ DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR / "data"))
 # graph from there, while the scripts themselves run from the image — a default
 # derived from BASE_DIR would read the image's stale copy instead.
 ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", BASE_DIR / "entities.json"))
+
+# Tags extracted from the abstracts of talks with no transcript, by talk id.
+# Overridable for the same reason as ENTITIES_JSON.
+DESCRIPTION_TAGS_JSON = Path(os.getenv("DESCRIPTION_TAGS_JSON", BASE_DIR / "description_tags.json"))
 
 # Evaluation benchmark: questions and baseline answers
 QA_CSV = Path(os.getenv("QA_CSV", BASE_DIR.parent.parent / "QA" / "CDKGQA.csv"))

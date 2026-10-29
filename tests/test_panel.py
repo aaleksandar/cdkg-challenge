@@ -509,7 +509,7 @@ def test_each_switch_draws_its_own_state(client, monkeypatch):
     }
     body = client.get("/advanced?body=1").text
     for label in ("Read the channel automatically",
-                  "Ingest newly published videos automatically",
+                  "Ingest new videos and abstracts automatically",
                   "Sync HeySummit automatically",
                   "Write to the knowledge graph"):
         assert label in body

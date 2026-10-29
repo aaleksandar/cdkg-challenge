@@ -228,6 +228,26 @@ def test_seed_gives_every_free_talk_a_row_and_is_idempotent(seeding):
     assert again["seeded"] == 0 and seeding.read_bytes() == before
 
 
+def test_a_slot_with_no_speaker_yet_is_not_seeded(seeding):
+    talks = json.loads(config.HEYSUMMIT_CATALOG.read_text())
+    config.HEYSUMMIT_CATALOG.write_text(json.dumps(talks + [_talk(5, "TBD", [])]))
+
+    heysummit.seed(seeding)
+
+    assert "5" not in {r["HeySummit"] for r in csv_writer.read_rows(seeding)}
+
+
+def test_the_catalogue_keeps_a_talk_s_stage_and_length_where_the_programme_names_a_stage():
+    raw = {"id": 7, "event": 238614, "title": "A talk", "url": "", "date": "2026-11-11T09:30:00",
+           "speakers": [{"first_name": "Ada", "last_name": "Lovelace"}], "categories": [],
+           "description_long": "<p>Abstract.</p>", "stage": 35312, "broadcast_duration_mins": 20}
+
+    staged = heysummit.trim_talk(raw, {35312: "Day 1: Rapid Insights Track - Ludgate Suite"})
+    assert (staged["stage"], staged["duration_mins"]) == ("Day 1: Rapid Insights Track - Ludgate Suite", 20)
+    unstaged = heysummit.trim_talk({**raw, "stage": None})
+    assert "stage" not in unstaged and "duration_mins" not in unstaged
+
+
 def test_a_candidate_is_reported_and_never_seeded(seeding):
     """The wrong answer is a duplicate row in an append-only file."""
     rows = csv_writer.read_rows(seeding)
@@ -289,6 +309,21 @@ def test_sync_runs_everything_from_disk_when_the_api_refuses(seeding, monkeypatc
     assert summary["seeded"] == 2 and summary["claimed"] == 0 and summary["changed"] is True
     assert "candidate_ids" not in summary
     assert heysummit.sync(refresh=False, csv_path=seeding)["changed"] is False
+
+
+def test_a_talk_moved_to_another_time_or_room_is_a_change_to_rebuild_for(seeding, monkeypatch):
+    heysummit.sync(refresh=False, csv_path=seeding)
+    talks = json.loads(config.HEYSUMMIT_CATALOG.read_text())
+
+    def moved():
+        config.HEYSUMMIT_CATALOG.write_text(json.dumps(
+            [{**t, "stage": "Day 2: Edges Track"} if t["id"] == 2 else t for t in talks]))
+        return len(talks)
+
+    monkeypatch.setattr(heysummit, "refresh_catalog", moved)
+    summary = heysummit.sync(refresh=True, csv_path=seeding)
+
+    assert summary["schedule_changed"] is True and summary["changed"] is True
 
 
 def test_sync_with_no_catalogue_is_an_error_not_a_crash(monkeypatch, tmp_path):

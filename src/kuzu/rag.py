@@ -192,14 +192,14 @@ MATCH (t:Talk) WHERE t.talk_id IN $ids
 OPTIONAL MATCH (s:Speaker)-[g:GIVES_TALK]->(t)
 WITH t, collect(DISTINCT s.name) AS speakers, collect(DISTINCT CAST(g.date AS STRING)) AS dates
 OPTIONAL MATCH (t)-[:IS_PART_OF]->(e:Event)
-OPTIONAL MATCH (t)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE tag.keyword IN $tags
+OPTIONAL MATCH (t)-[d:IS_DESCRIBED_BY]->(tag:Tag) WHERE tag.keyword IN $tags
 RETURN t.talk_id AS talk_id, t.title AS title, t.description AS description,
        speakers, dates, e.name AS event, e.url AS event_url,
        t.video AS video_url, t.url AS heysummit_url, t.heysummit AS heysummit_id,
        t.description_source AS description_source,
        t.description <> '' AS has_description,
        EXISTS { MATCH (t)-[:IS_DESCRIBED_BY]->(:Tag) } AS has_tags,
-       collect(DISTINCT tag.keyword) AS tag_hits
+       collect(DISTINCT tag.keyword) AS tag_hits, collect(DISTINCT d.source) AS tag_sources
 """
 
 
@@ -288,6 +288,8 @@ class GraphRAG:
                     "description_source": r["description_source"] or "",
                     "has_description": bool(r["has_description"]),
                     "has_tags": bool(r["has_tags"]),
+                    # Where the matched tags came from: "transcript", "description", or both.
+                    "tag_sources": sorted(s for s in r["tag_sources"] or [] if s),
                     "evidence": evidence,
                     "tags": r["tag_hits"] or [],
                 })
