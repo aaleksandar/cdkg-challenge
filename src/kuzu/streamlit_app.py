@@ -125,8 +125,8 @@ def render_sources(output: dict) -> None:
 
 # Questions a visitor at the kiosk can tap instead of typing.
 EXAMPLES = ["What's on right now?",
-            "What should I see next about LLMs and knowledge graphs?",
-            "Which talks this afternoon are about ontologies?"]
+            "What's next on LLMs and knowledge graphs?",
+            "Anything on ontologies this afternoon?"]
 
 
 # A take-away link (`?for=owl,shacl`), opened on a visitor's phone from the QR

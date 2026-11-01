@@ -146,10 +146,13 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
             if row["keyword"] not in tags:
                 tags = tags + [row["keyword"]]
     # The talks they can still go to come first, in the order they are given,
-    # and are not repeated among the picks from every edition.
-    this_week = _scheduled(rag, _sources(rag, match_talks(rag, tags, vocabulary,
-                                                          exclude=set(own_ids), event=AT_EVENT)))
-    shown = set(own_ids) | {s["talk_id"] for s in this_week}
+    # and are not repeated among the picks from every edition. One that has
+    # ended is in neither: it is no longer on, and not yet a recording.
+    now = graph_rag.london_now()
+    at_event = _sources(rag, match_talks(rag, tags, vocabulary, limit=50, exclude=set(own_ids), event=AT_EVENT))
+    ended = {s["talk_id"] for s in at_event if graph_rag.relative(s, now) == "ended"}
+    this_week = _scheduled(rag, [s for s in at_event if s["talk_id"] not in ended][:PICKS])
+    shown = set(own_ids) | ended | {s["talk_id"] for s in this_week}
     picks = _sources(rag, match_talks(rag, tags, vocabulary, exclude=shown))
 
     me = (name or "").strip().lower()
