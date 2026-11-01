@@ -53,7 +53,9 @@ function RAGText2Cypher(schema: string, question: string, now: string) -> Cypher
     the same ISO form as NOW: a talk is on now when t.starts_at <= NOW AND t.ends_at > NOW, and
     still to come when t.starts_at > NOW. "This afternoon" is 12:00 to 18:00 of today's date.
     Return t.talk_id, t.title, t.starts_at, t.ends_at and t.stage, ORDER BY t.starts_at, and
-    LIMIT 10. Combine a topic with OR across tags, title and description as elsewhere.
+    LIMIT 10. Combine a topic with OR across title, description and tags; test the tags with
+    EXISTS { MATCH (t)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE ... }, so a talk with no tags yet
+    can still match on its title or description.
     A question that asks for talks on a topic without mentioning the conference ("talks about
     RAG") is about the archive as well: do not filter it by time.
 
@@ -90,13 +92,13 @@ function RAGText2Cypher(schema: string, question: string, now: string) -> Cypher
     NOTE: For technology comparison questions (X vs Y), the UNION query filters ONLY on the technology tags — never add extra WHERE clauses from the question preamble (e.g. "enterprise"). Retrieve all talks mentioning either technology so the answer has real content to compare.
 
     The schedule examples below are for NOW = Wednesday 11 November 2026, 10:10 London time
-    (2026-11-11T10:10), at Connected Data London 2026; use the real NOW above.
+    (2026-11-11T10:10:00), at Connected Data London 2026; use the real NOW above.
 
     Q: What's on right now?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_PART_OF]->(e:Event) WHERE e.name = 'Connected Data London 2026' AND t.starts_at <= '2026-11-11T10:10' AND t.ends_at > '2026-11-11T10:10' RETURN t.talk_id, t.title, t.starts_at, t.ends_at, t.stage, collect(s.name) AS speakers ORDER BY t.starts_at LIMIT 10
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_PART_OF]->(e:Event) WHERE e.name = 'Connected Data London 2026' AND t.starts_at <= '2026-11-11T10:10:00' AND t.ends_at > '2026-11-11T10:10:00' RETURN t.talk_id, t.title, t.starts_at, t.ends_at, t.stage, collect(s.name) AS speakers ORDER BY t.starts_at LIMIT 10
 
     Q: Is there anything on LLMs or RAG later today?
-    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_PART_OF]->(e:Event), (t)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE e.name = 'Connected Data London 2026' AND t.starts_at > '2026-11-11T10:10' AND t.starts_at < '2026-11-12' AND (LOWER(tag.keyword) CONTAINS 'llm' OR LOWER(tag.keyword) CONTAINS 'rag' OR LOWER(t.title) CONTAINS 'llm' OR LOWER(t.title) CONTAINS 'rag' OR LOWER(t.description) CONTAINS 'llm' OR LOWER(t.description) CONTAINS 'retrieval') RETURN DISTINCT t.talk_id, t.title, t.starts_at, t.ends_at, t.stage, s.name ORDER BY t.starts_at LIMIT 10
+    A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_PART_OF]->(e:Event) WHERE e.name = 'Connected Data London 2026' AND t.starts_at > '2026-11-11T10:10:00' AND t.starts_at < '2026-11-12T00:00:00' AND (LOWER(t.title) CONTAINS 'llm' OR LOWER(t.title) CONTAINS 'rag' OR LOWER(t.description) CONTAINS 'llm' OR LOWER(t.description) CONTAINS 'retrieval' OR EXISTS { MATCH (t)-[:IS_DESCRIBED_BY]->(tag:Tag) WHERE LOWER(tag.keyword) CONTAINS 'llm' OR LOWER(tag.keyword) CONTAINS 'rag' }) RETURN DISTINCT t.talk_id, t.title, t.starts_at, t.ends_at, t.stage, s.name ORDER BY t.starts_at LIMIT 10
 
     Q: Where and when is the talk on ontologies without ontologists?
     A: MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk)-[:IS_PART_OF]->(e:Event) WHERE e.name = 'Connected Data London 2026' AND LOWER(t.title) CONTAINS 'ontologies without ontologists' RETURN t.talk_id, t.title, t.starts_at, t.ends_at, t.stage, s.name
@@ -225,7 +227,7 @@ test Text2Cypher1 {
         - source: string
     "#
     question "Who are the speakers whose talks have the tag 'rdf'? Return the speaker names as a numbered list."
-    now "Wednesday 11 November 2026, 10:10 London time (2026-11-11T10:10). The current conference, Connected Data London 2026, runs 11–12 November 2026."
+    now "Wednesday 11 November 2026, 10:10 London time (2026-11-11T10:10:00). The current conference, Connected Data London 2026, runs 11–12 November 2026."
   }
   @@assert(has_return_clause, {{ 'RETURN' in this.query }})
 }
@@ -238,7 +240,7 @@ test RAGAnswer1 {
         ['Marcus Nölke', 'Veronika Heimsbakk', 'Dave Duggal', 'Kurt Cagle', 'Sebastian Schmidt', 'Veronique Moore', 'Atanas Kiryakov', 'Ora Lassila']
     "#
     grounding "talks"
-    now "Wednesday 11 November 2026, 10:10 London time (2026-11-11T10:10)."
+    now "Wednesday 11 November 2026, 10:10 London time (2026-11-11T10:10:00)."
   }
 }
 
@@ -248,7 +250,7 @@ test RAGMissingContext {
     question "What did Paco Nathan say about RDF?"
     context ""
     grounding "general"
-    now "Wednesday 11 November 2026, 10:10 London time (2026-11-11T10:10)."
+    now "Wednesday 11 November 2026, 10:10 London time (2026-11-11T10:10:00)."
   }
   @@assert(flagged, {{ this.from_general_knowledge == true }})
 }

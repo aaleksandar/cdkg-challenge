@@ -281,7 +281,7 @@ class GraphRAG:
     def moment(self, now: datetime) -> str:
         """The time a question is asked, as both prompts read it, with the
         conference's days when the graph holds its programme."""
-        text = f"{now:%A} {now.day} {now:%B %Y}, {now:%H:%M} London time ({now.isoformat(timespec='minutes')})."
+        text = f"{now:%A} {now.day} {now:%B %Y}, {now:%H:%M} London time ({now.isoformat(timespec='seconds')})."
         try:
             days = self._query("MATCH (t:Talk)-[:IS_PART_OF]->(:Event {name: $event}) WHERE t.starts_at <> '' "
                                "RETURN min(t.starts_at) AS first_start, max(t.starts_at) AS last_start",

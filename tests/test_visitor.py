@@ -228,6 +228,11 @@ def test_a_talk_that_has_ended_is_no_longer_one_not_to_miss_nor_a_pick(modules, 
 
     assert [s["talk_id"] for s in result["this_week"]] == ["t-late"]
     assert "t-early" not in {s["talk_id"] for s in result["picks"]}
+    # At the minute it ends it has ended: times compare to the second.
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T09:50")
+    assert [s["talk_id"] for s in visitor.recommend(graph, ["rdf"], vocabulary)["this_week"]] == ["t-late"]
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T09:49")
+    assert [s["talk_id"] for s in visitor.recommend(graph, ["rdf"], vocabulary)["this_week"]] == ["t-early", "t-late"]
 
 
 def test_a_graph_built_before_the_schedule_still_lists_the_conference_s_talks(modules, graph, monkeypatch):

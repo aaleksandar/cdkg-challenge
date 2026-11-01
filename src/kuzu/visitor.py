@@ -54,6 +54,12 @@ WHERE g.keyword IN $tags
 RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS matched
 """
 
+_ENDED = """
+MATCH (t:Talk)-[:IS_PART_OF]->(:Event {name: $event})
+WHERE t.ends_at <> '' AND t.ends_at <= $now
+RETURN t.talk_id AS talk_id
+"""
+
 _OWN_TALKS = """
 MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk) WHERE lower(s.name) = lower($name)
 RETURN DISTINCT t.talk_id AS talk_id, s.name AS speaker
@@ -148,10 +154,9 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
     # The talks they can still go to come first, in the order they are given,
     # and are not repeated among the picks from every edition. One that has
     # ended is in neither: it is no longer on, and not yet a recording.
-    now = graph_rag.london_now()
-    at_event = _sources(rag, match_talks(rag, tags, vocabulary, limit=50, exclude=set(own_ids), event=AT_EVENT))
-    ended = {s["talk_id"] for s in at_event if graph_rag.relative(s, now) == "ended"}
-    this_week = _scheduled(rag, [s for s in at_event if s["talk_id"] not in ended][:PICKS])
+    ended = _ended(rag, graph_rag.london_now())
+    this_week = _scheduled(rag, _sources(rag, match_talks(rag, tags, vocabulary,
+                                                          exclude=set(own_ids) | ended, event=AT_EVENT)))
     shown = set(own_ids) | ended | {s["talk_id"] for s in this_week}
     picks = _sources(rag, match_talks(rag, tags, vocabulary, exclude=shown))
 
@@ -162,6 +167,16 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
             if speaker.lower() != me and speaker not in speakers:
                 speakers.append(speaker)
     return {"own": own, "this_week": this_week, "picks": picks, "speakers": speakers, "tags": tags}
+
+
+def _ended(rag: GraphRAG, now) -> set[str]:
+    """The conference's talks that are over at `now`, found before anything is
+    ranked or capped. None on a graph built before talks had an end."""
+    try:
+        rows = rag._query(_ENDED, {"event": AT_EVENT, "now": now.isoformat(timespec="seconds")})
+    except RuntimeError:
+        return set()
+    return {r["talk_id"] for r in rows}
 
 
 def _scheduled(rag: GraphRAG, sources: list[dict]) -> list[dict]:
