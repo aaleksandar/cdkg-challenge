@@ -46,7 +46,7 @@ def _vocabulary(version: str, _rag: GraphRAG) -> dict[str, int]:
 
 
 def is_takeaway() -> bool:
-    return bool(st.query_params.get(visitor.TAKEAWAY_PARAM))
+    return bool(st.query_params.get(visitor.TAKEAWAY_PARAM) or st.query_params.get(visitor.TALKS_PARAM))
 
 
 def _card(source: dict, why: str | None = None, when: str = ""):
@@ -191,9 +191,6 @@ def render_tab(rag: GraphRAG, version: str, kiosk: bool = False) -> None:
                     state["profile"], state["error"] = visitor.read_visitor(data, photo.type, vocabulary)
                     state["seconds"] = time.monotonic() - started
             profile = state["profile"]
-            if profile is not None and "query" not in state:
-                # Once per photo, like the reading: a third of a second, None if it fails.
-                state["query"] = visitor.embed_query(visitor.profile_text(profile))
             if profile is None:
                 st.warning("Couldn't read that one. Try again a little closer, or pick a few topics.")
                 with st.expander("Why"):
@@ -204,12 +201,18 @@ def render_tab(rag: GraphRAG, version: str, kiosk: bool = False) -> None:
             else:
                 if topics:
                     profile = {**profile, "tags": visitor.clean_tags(profile["tags"] + topics, vocabulary)}
+                # Once per photo and choice of topics, like the reading: half a
+                # second, None if it fails. A topic added after the photo moves
+                # the meaning too, not only the tag bonus.
+                query_key = "query:" + ",".join(sorted(topics or []))
+                if query_key not in state:
+                    state[query_key] = visitor.embed_query(visitor.profile_text(profile))
                 who = " · ".join(x for x in (profile["name"], profile["headline"], profile["company"]) if x)
                 st.caption(f"Read in {state['seconds']:.1f} s: {who}" if who else
                            f"Read in {state['seconds']:.1f} s")
                 st.caption("Topics: " + ", ".join(profile["tags"]))
                 _results(rag, vocabulary, profile, state if not topics else {}, with_reasons=not topics,
-                         qr_slot=qr, query=state.get("query"))
+                         qr_slot=qr, query=state[query_key])
         elif topics:
             _results(rag, vocabulary, {"tags": list(topics)}, {}, with_reasons=False, qr_slot=qr,
                      query=_topics_query(topics))

@@ -222,6 +222,17 @@ def test_meaning_finds_a_talk_no_tag_connects_and_a_weak_match_is_left_out(modul
     assert "t-early" not in {s["talk_id"] for s in result["picks"]}
 
 
+def test_a_talk_not_yet_embedded_still_matches_on_a_shared_tag(modules, graph):
+    _, visitor = modules
+    vocabulary = visitor.tag_vocabulary(graph)
+    del visitor._space(graph)["vecs"]["t-er"]          # its embedding batch failed
+
+    result = visitor.recommend(graph, ["entity resolution"], vocabulary, query=[1, 0, 0])
+
+    assert "t-er" in {s["talk_id"] for s in result["picks"]}
+    assert all(s["event"] != visitor.AT_EVENT for s in result["picks"])   # picks are earlier editions
+
+
 def test_without_vectors_or_a_query_the_tags_rank_alone(modules, graph, monkeypatch):
     _, visitor = modules
     vocabulary = visitor.tag_vocabulary(graph)
@@ -246,6 +257,9 @@ def test_the_takeaway_link_carries_the_talks_on_screen_and_the_phone_shows_them(
 
     url = visitor.takeaway_url("https://kg.example", ["owl"], ["t-late", "t-gnn", "t-early"])
     assert url == "https://kg.example/?for=owl&talks=t-late%2Ct-gnn%2Ct-early"
+    # Matched by meaning alone, with no topic of the graph's: the ids are the link.
+    assert visitor.takeaway_url("https://kg.example", [], ["t-gnn"]) == "https://kg.example/?talks=t-gnn"
+    assert visitor.takeaway_url("https://kg.example", [], []) == ""
 
     shown = visitor.takeaway(graph, ["t-late", "t-gnn", "t-early"])
     assert [s["talk_id"] for s in shown["this_week"]] == ["t-early", "t-late"]   # programme order

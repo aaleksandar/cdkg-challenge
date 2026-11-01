@@ -154,12 +154,20 @@ def rebuild_graph(extract_tags: bool = False):
     ``extract_tags`` re-runs LLM tag extraction over every transcript, which is
     what a model change calls for. It is off by default: transcripts and their
     extracted text are already on disk, so an ordinary rebuild contacts neither
-    YouTube nor the LLM.
+    YouTube nor the chat model. It does embed the talks whose text changed since
+    the last rebuild (cached, usually none; a fraction of a cent each).
     """
     from .stages import StageResult
 
     build_path = config.GRAPH_DB_PATH.with_suffix(".build")
     _clear(build_path)
+
+    # New tags first: a talk's vector is made from its tags too.
+    if extract_tags:
+        ok, error = _run_script("01_extract_tag_keywords.py", build_path)
+        if not ok:
+            _clear(build_path)
+            return StageResult(False, error)
 
     # Vectors for the talks whose text changed (a call each, cached), so the new
     # graph ranks them by meaning. It never fails the rebuild.
@@ -170,8 +178,6 @@ def rebuild_graph(extract_tags: bool = False):
         log.warning("Rebuilding with %d talks not yet embedded", embedded["pending"])
 
     steps = ["02_domain_graph.py", "03_content_graph.py"]
-    if extract_tags:
-        steps.insert(0, "01_extract_tag_keywords.py")
 
     for script in steps:
         ok, error = _run_script(script, build_path)

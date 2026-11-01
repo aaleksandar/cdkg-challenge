@@ -59,6 +59,31 @@ def test_a_talk_is_embedded_again_only_when_its_text_changes(real, paths, monkey
     assert real.embed_pending()["embedded"] == 1
 
 
+def test_a_talk_with_nothing_left_to_embed_loses_its_vector(real, paths, monkeypatch):
+    monkeypatch.setattr(real, "_embed", lambda texts: [[0.1, 0.2]] * len(texts))
+    real.embed_pending()
+    rows = list(csv.reader(open(config.METADATA_CSV)))
+    with open(config.METADATA_CSV, "w", newline="") as f:      # t-abstract's abstract cleared
+        csv.writer(f).writerows([r if r[0] != "t-abstract" else [r[0], r[1], "", ""] for r in rows])
+
+    real.embed_pending()
+
+    assert "t-abstract" not in json.loads(config.TALK_EMBEDDINGS_JSON.read_text())
+
+
+def test_a_full_retag_runs_before_the_vectors_are_made(real, monkeypatch, tmp_path):
+    from ingest.pipeline import graph
+
+    order = []
+    monkeypatch.setattr(graph, "_run_script", lambda name, db: order.append(name) or (False, "stop"))
+    monkeypatch.setattr(real, "embed_pending", lambda csv_path=None: order.append("embed") or {})
+    monkeypatch.setattr(config, "GRAPH_DB_PATH", tmp_path / "g.kuzu")
+
+    graph.rebuild_graph(extract_tags=True)
+
+    assert order == ["01_extract_tag_keywords.py"]       # failed there, before embedding anything
+
+
 def test_a_failed_call_is_reported_and_never_raised(real, paths, monkeypatch):
     monkeypatch.setattr(real, "_embed", lambda texts: (_ for _ in ()).throw(RuntimeError("503 high demand")))
 

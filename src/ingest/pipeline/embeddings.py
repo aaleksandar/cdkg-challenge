@@ -96,15 +96,17 @@ def _embed(texts: list[str]) -> list[list[float]]:
     return [e.values for e in response.embeddings]
 
 
-def _save(entries: dict[str, dict]) -> None:
-    """Merge entries into the file, under the publish lock and atomically,
-    as `abstracts._save` does and for the same reasons."""
+def _save(entries: dict[str, dict], drop: set[str] = frozenset()) -> None:
+    """Merge entries into the file and drop others, under the publish lock and
+    atomically, as `abstracts._save` does and for the same reasons."""
     from ..gitops import _git_lock
 
     path = config.TALK_EMBEDDINGS_JSON
     with _git_lock:
         cache = _read(path, {})
         cache.update(entries)
+        for talk_id in drop:
+            cache.pop(talk_id, None)
         # One talk per line: re-embedding a talk is a one-line diff.
         body = ",\n".join(f"{json.dumps(k)}: {json.dumps(cache[k], separators=(',', ':'))}"
                           for k in sorted(cache))
@@ -115,8 +117,18 @@ def _save(entries: dict[str, dict]) -> None:
 
 def embed_pending(csv_path: Path | None = None) -> dict:
     """Embed every talk whose text changed. Never raises: a rebuild without new
-    vectors is still a rebuild, and the talk is ranked by its tags meanwhile."""
-    todo = pending(csv_path)
+    vectors is still a rebuild, and the talk is ranked by its tags meanwhile.
+
+    A talk that no longer has anything to embed (its abstract cleared, the row
+    gone) loses its vector: kept, it would go on recommending text that no
+    longer exists."""
+    texts = talk_texts(csv_path)
+    cache = _read(config.TALK_EMBEDDINGS_JSON, {})
+    stale = set(cache) - set(texts)
+    if stale:
+        _save({}, drop=stale)
+    todo = {talk_id: text for talk_id, text in texts.items()
+            if cache.get(talk_id, {}).get("hash") != text_hash(text)}
     done = 0
     try:
         items = sorted(todo.items())

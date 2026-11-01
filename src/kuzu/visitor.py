@@ -224,8 +224,11 @@ def rank_talks(rag: GraphRAG, query: list[float], tags: list[str], vocabulary: d
     scored = []
     for talk_id in candidates - exclude:
         vec = space["vecs"].get(talk_id)
-        similarity = sum(a * b for a, b in zip(q, vec)) if vec else 0.0
         shared = sorted(space["tags"].get(talk_id, set()) & wanted, key=lambda k: vocabulary.get(k, 1))
+        # A talk not yet embedded (a batch failed; the next rebuild retries) is
+        # still a match on a shared tag, as it was before vectors: it ranks at
+        # the threshold, after the confident matches by meaning.
+        similarity = sum(a * b for a, b in zip(q, vec)) if vec else (MIN_SCORE if shared else 0.0)
         score = similarity + TAG_WEIGHT * sum(math.log(tagged / max(vocabulary.get(k, 1), 1)) for k in shared)
         if score >= MIN_SCORE:
             scored.append((score, talk_id, shared))
@@ -269,7 +272,11 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
         return by_meaning if by_meaning is not None else match_talks(rag, tags, vocabulary, exclude=exclude, event=event)
 
     this_week = _scheduled(rag, _sources(rag, ranked(set(own_ids), AT_EVENT)))
-    shown = set(own_ids) | {s["talk_id"] for s in this_week}
+    # The picks are from earlier editions, as the screen says: a sixth match at
+    # the conference is not one of them, and the take-away's sections are then
+    # the screen's, read back from each talk's event.
+    at_event = {r["talk_id"] for r in rag._query(_AT, {"event": AT_EVENT})}
+    shown = set(own_ids) | at_event
     picks = _sources(rag, ranked(shown))
 
     me = (name or "").strip().lower()
@@ -383,11 +390,13 @@ def takeaway_url(base: str, tags: list[str], talk_ids: list[str] = ()) -> str:
 
     The ids, because the screen ranked them from the whole profile, which the
     link does not carry: re-ranking from the topics alone would give the phone
-    a different list.
+    a different list. A visitor matched by meaning alone has no topics, and the
+    ids are then the whole link. A speaker's own talks are left out: they would
+    say who the visitor is.
     """
-    if not (base and tags):
+    if not (base and (tags or talk_ids)):
         return ""
-    params = {TAKEAWAY_PARAM: ",".join(tags)}
+    params = {TAKEAWAY_PARAM: ",".join(tags)} if tags else {}
     if talk_ids:
         params[TALKS_PARAM] = ",".join(talk_ids)
     return f"{base}/?{urlencode(params, quote_via=quote)}"

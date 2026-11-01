@@ -115,7 +115,7 @@ if os.path.exists(str(config.TALK_EMBEDDINGS_JSON)):
         vectors = {talk_id: entry["vec"] for talk_id, entry in json.load(f).items()}
     if vectors:
         dimensions = len(next(iter(vectors.values())))
-        conn.execute(f"ALTER TABLE Talk ADD embedding FLOAT[{dimensions}]")
+        conn.execute(f"ALTER TABLE Talk ADD IF NOT EXISTS embedding FLOAT[{dimensions}]")
         for talk_id, vec in vectors.items():
             conn.execute(
                 f"MATCH (t:Talk {{talk_id: $talk_id}}) SET t.embedding = CAST($vec AS FLOAT[{dimensions}])",
