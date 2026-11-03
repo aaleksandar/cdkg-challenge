@@ -600,7 +600,9 @@ def sync(refresh: bool = True, csv_path=None) -> dict:
 
 
 def _schedule(catalog: list[dict]) -> dict:
-    return {t["id"]: (t.get("date"), t.get("stage")) for t in catalog}
+    """What the graph's schedule is built from: start, room, and the length that
+    gives the end."""
+    return {t["id"]: (t.get("date"), t.get("stage"), t.get("duration_mins")) for t in catalog}
 
 
 if __name__ == "__main__":

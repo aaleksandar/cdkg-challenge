@@ -47,7 +47,7 @@ TAKEAWAY_PARAM = "for"
 TALKS_PARAM = "talks"
 # The conference the demo stands at: its talks are listed with their day, time
 # and room, before the picks from every edition. A line to change each year.
-AT_EVENT = "Connected Data London 2026"
+AT_EVENT = graph_rag.CURRENT_EVENT
 # The talks' vectors are this model's (ingest.pipeline.embeddings.MODEL; a test
 # holds the two together): a visitor embedded with another could not be compared.
 EMBEDDING_MODEL = "gemini-embedding-2"
@@ -77,6 +77,12 @@ WHERE g.keyword IN $tags
 RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS matched
 """
 
+_ENDED = """
+MATCH (t:Talk)-[:IS_PART_OF]->(:Event {name: $event})
+WHERE t.ends_at <> '' AND t.ends_at <= $now
+RETURN t.talk_id AS talk_id
+"""
+
 _VECTORS = "MATCH (t:Talk) WHERE t.embedding IS NOT NULL RETURN t.talk_id AS talk_id, t.embedding AS vec"
 
 _TALK_TAGS = """
@@ -85,11 +91,6 @@ RETURN t.talk_id AS talk_id, collect(DISTINCT g.keyword) AS tags
 """
 
 _AT = "MATCH (t:Talk)-[:IS_PART_OF]->(:Event {name: $event}) RETURN t.talk_id AS talk_id"
-
-_SCHEDULE = """
-MATCH (t:Talk) WHERE t.talk_id IN $ids
-RETURN t.talk_id AS talk_id, t.starts_at AS starts_at, t.stage AS stage
-"""
 
 _OWN_TALKS = """
 MATCH (s:Speaker)-[:GIVES_TALK]->(t:Talk) WHERE lower(s.name) = lower($name)
@@ -266,12 +267,15 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
             if row["keyword"] not in tags:
                 tags = tags + [row["keyword"]]
     # The talks they can still go to come first, in the order they are given,
-    # and are not repeated among the picks from every edition.
+    # and are not repeated among the picks from every edition. One that has
+    # ended is in neither: it is no longer on, and not yet a recording.
+    ended = _ended(rag, graph_rag.london_now())
+
     def ranked(exclude: set[str], event: str | None = None):
         by_meaning = rank_talks(rag, query, tags, vocabulary, exclude=exclude, event=event) if query else None
         return by_meaning if by_meaning is not None else match_talks(rag, tags, vocabulary, exclude=exclude, event=event)
 
-    this_week = _scheduled(rag, _sources(rag, ranked(set(own_ids), AT_EVENT)))
+    this_week = _scheduled(rag, _sources(rag, ranked(set(own_ids) | ended, AT_EVENT)))
     # The picks are from earlier editions, as the screen says: a sixth match at
     # the conference is not one of them, and the take-away's sections are then
     # the screen's, read back from each talk's event.
@@ -288,39 +292,24 @@ def recommend(rag: GraphRAG, tags: list[str], vocabulary: dict[str, int],
     return {"own": own, "this_week": this_week, "picks": picks, "speakers": speakers, "tags": tags}
 
 
-def _scheduled(rag: GraphRAG, sources: list[dict]) -> list[dict]:
-    """The sources with their start time and stage, earliest first; undated last."""
-    if not sources:
-        return []
+def _ended(rag: GraphRAG, now) -> set[str]:
+    """The conference's talks that are over at `now`, found before anything is
+    ranked or capped. None on a graph built before talks had an end."""
     try:
-        when = {r["talk_id"]: r for r in rag._query(_SCHEDULE, {"ids": [s["talk_id"] for s in sources]})}
+        rows = rag._query(_ENDED, {"event": AT_EVENT, "now": now.isoformat(timespec="seconds")})
     except RuntimeError:
-        # A graph built before Talk had a schedule: a deploy keeps the database,
-        # and the next rebuild adds the properties. Until then, no time or room.
-        when = {}
-    out = [{**s, "starts_at": when.get(s["talk_id"], {}).get("starts_at") or "",
-            "stage": when.get(s["talk_id"], {}).get("stage") or ""} for s in sources]
-    return sorted(out, key=lambda s: (not s["starts_at"], s["starts_at"]))
+        return set()
+    return {r["talk_id"] for r in rows}
 
 
-def slot(source: dict) -> str:
-    """ "Wed 11 Nov · 09:30 · Rapid Insights Track - Ludgate Suite": when and where.
+def _scheduled(rag: GraphRAG, sources: list[dict]) -> list[dict]:
+    """The sources earliest first, undated last. `rag.resolve_sources` carries
+    each talk's schedule, blank on a graph built before one."""
+    return sorted(sources, key=lambda s: (not s["starts_at"], s["starts_at"]))
 
-    The programme prefixes each stage with its day ("Day 1: …"), which the
-    weekday already says.
-    """
-    from datetime import datetime
 
-    parts = []
-    try:
-        start = datetime.fromisoformat(source.get("starts_at") or "")
-        parts += [f"{start:%a} {start.day} {start:%b}", f"{start:%H:%M}"]
-    except ValueError:
-        pass
-    stage = (source.get("stage") or "").split(": ", 1)[-1]
-    if stage:
-        parts.append(stage)
-    return " · ".join(parts)
+# When and where, the same line the chat's sources print.
+slot = graph_rag.slot
 
 
 # --- The model side --------------------------------------------------------------
@@ -404,9 +393,12 @@ def takeaway_url(base: str, tags: list[str], talk_ids: list[str] = ()) -> str:
 
 def takeaway(rag: GraphRAG, talk_ids: list[str]) -> dict:
     """The take-away's talks, in `recommend`'s shape: the conference's first, in
-    programme order, then the rest in the order the screen showed them."""
+    programme order, then the rest in the order the screen showed them. A
+    conference talk that has ended since the link was made is left out, as the
+    screen would leave it out now."""
     sources = _sources(rag, [(i, []) for i in talk_ids])
-    this_week = _scheduled(rag, [s for s in sources if s["event"] == AT_EVENT])
+    ended = _ended(rag, graph_rag.london_now())
+    this_week = _scheduled(rag, [s for s in sources if s["event"] == AT_EVENT and s["talk_id"] not in ended])
     picks = [s for s in sources if s["event"] != AT_EVENT]
     return {"own": [], "this_week": this_week, "picks": picks, "speakers": [], "tags": []}
 

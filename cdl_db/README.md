@@ -31,6 +31,7 @@ Node properties:
     - description_source: string  # "heysummit" | "curator" | "" — where the description was written from
     - starts_at: string           # the programme's start time, ISO ("2026-11-11T09:30:00"), blank when HeySummit does not list the talk
     - stage: string               # the programme's room or track ("Day 1: Rapid Insights Track - Ludgate Suite"), blank when it names none
+    - ends_at: string             # the programme's start plus its length, ISO, blank when it gives no length
   - Speaker
     - name: string
   - Event

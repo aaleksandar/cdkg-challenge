@@ -37,7 +37,7 @@ def graph(modules, tmp_path):
     conn.execute("CREATE NODE TABLE Speaker(name STRING, PRIMARY KEY(name))")
     conn.execute("""CREATE NODE TABLE Talk(talk_id STRING, title STRING, category STRING, url STRING,
                     description STRING, type STRING, video STRING, heysummit STRING, transcript STRING,
-                    description_source STRING, starts_at STRING, stage STRING, PRIMARY KEY(talk_id))""")
+                    description_source STRING, starts_at STRING, stage STRING, ends_at STRING, PRIMARY KEY(talk_id))""")
     conn.execute("CREATE NODE TABLE Event(name STRING, description STRING, url STRING, PRIMARY KEY(name))")
     conn.execute("CREATE NODE TABLE Tag(keyword STRING, PRIMARY KEY(keyword))")
     conn.execute("CREATE REL TABLE GIVES_TALK(FROM Speaker TO Talk, date DATE)")
@@ -51,12 +51,14 @@ def graph(modules, tmp_path):
                         heysummit: '', transcript: '', description_source: '', starts_at: '', stage: ''}})""")
     # Two talks at the conference the demo stands at, listed in the wrong order.
     conn.execute(f"CREATE (:Event {{name: '{visitor_module.AT_EVENT}', description: '', url: ''}})")
-    for talk_id, starts_at, stage in (("t-late", "2026-11-12T11:00:00", "Day 2: Nodes Track - Warwick Suite"),
-                                      ("t-early", "2026-11-11T09:30:00", "Day 1: Rapid Insights Track - Ludgate Suite")):
+    for talk_id, starts_at, stage, ends_at in (
+            ("t-late", "2026-11-12T11:00:00", "Day 2: Nodes Track - Warwick Suite", "2026-11-12T11:30:00"),
+            ("t-early", "2026-11-11T09:30:00", "Day 1: Rapid Insights Track - Ludgate Suite", "2026-11-11T09:50:00")):
         talks[talk_id] = ["rdf"]
         conn.execute(f"""CREATE (:Talk {{talk_id: '{talk_id}', title: 'Talk {talk_id}', category: '', url: '',
                         description: '', type: '', video: '', heysummit: '', transcript: '',
-                        description_source: '', starts_at: '{starts_at}', stage: '{stage}'}})""")
+                        description_source: '', starts_at: '{starts_at}', stage: '{stage}',
+                        ends_at: '{ends_at}'}})""")
         conn.execute(f"MATCH (t:Talk {{talk_id: '{talk_id}'}}), (e:Event) CREATE (t)-[:IS_PART_OF]->(e)")
     for keyword in {k for tags in talks.values() for k in tags} | {"unused"}:
         conn.execute(f"CREATE (:Tag {{keyword: '{keyword}'}})")
@@ -211,8 +213,9 @@ def test_the_takeaway_link_carries_tags_and_nothing_else(modules, graph, monkeyp
     assert visitor.takeaway_url(visitor.public_url(), ["owl"]) == ""   # no public URL, no QR
 
 
-def test_meaning_finds_a_talk_no_tag_connects_and_a_weak_match_is_left_out(modules, graph):
+def test_meaning_finds_a_talk_no_tag_connects_and_a_weak_match_is_left_out(modules, graph, monkeypatch):
     _, visitor = modules
+    monkeypatch.setenv("CDKG_NOW", "2026-11-04T12:00")          # the week before
     vocabulary = visitor.tag_vocabulary(graph)
 
     result = visitor.recommend(graph, ["owl"], vocabulary, query=[1, 0, 0])
@@ -252,8 +255,9 @@ def test_without_vectors_or_a_query_the_tags_rank_alone(modules, graph, monkeypa
     assert [s["talk_id"] for s in before_vectors["picks"]] == [s["talk_id"] for s in by_tags["picks"]]
 
 
-def test_the_takeaway_link_carries_the_talks_on_screen_and_the_phone_shows_them(modules, graph):
+def test_the_takeaway_link_carries_the_talks_on_screen_and_the_phone_shows_them(modules, graph, monkeypatch):
     _, visitor = modules
+    monkeypatch.setenv("CDKG_NOW", "2026-11-04T12:00")          # the week before
 
     url = visitor.takeaway_url("https://kg.example", ["owl"], ["t-late", "t-gnn", "t-early"])
     assert url == "https://kg.example/?for=owl&talks=t-late%2Ct-gnn%2Ct-early"
@@ -266,6 +270,26 @@ def test_the_takeaway_link_carries_the_talks_on_screen_and_the_phone_shows_them(
     assert [s["talk_id"] for s in shown["picks"]] == ["t-gnn"]
 
 
+def test_a_takeaway_opened_after_a_talk_ended_no_longer_lists_it(modules, graph, monkeypatch):
+    _, visitor = modules
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T12:00")          # t-early ended at 09:50
+
+    shown = visitor.takeaway(graph, ["t-late", "t-gnn", "t-early"])
+
+    assert [s["talk_id"] for s in shown["this_week"]] == ["t-late"]
+    assert [s["talk_id"] for s in shown["picks"]] == ["t-gnn"]
+
+
+def test_a_talk_that_has_ended_is_left_out_when_ranked_by_meaning_too(modules, graph, monkeypatch):
+    _, visitor = modules
+    vocabulary = visitor.tag_vocabulary(graph)
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T12:00")          # t-early, the close one, has ended
+
+    result = visitor.recommend(graph, ["owl"], vocabulary, query=[1, 0, 0])
+
+    assert "t-early" not in {s["talk_id"] for s in result["this_week"] + result["picks"]}
+
+
 def test_the_visitor_is_embedded_with_the_model_the_talks_were(modules):
     _, visitor = modules
     from ingest.pipeline import embeddings
@@ -273,16 +297,33 @@ def test_the_visitor_is_embedded_with_the_model_the_talks_were(modules):
     assert (visitor.EMBEDDING_MODEL, visitor.EMBEDDING_DIMENSIONS) == (embeddings.MODEL, embeddings.DIMENSIONS)
 
 
-def test_the_conference_s_own_talks_come_first_in_programme_order_and_are_not_repeated(modules, graph):
+def test_the_conference_s_own_talks_come_first_in_programme_order_and_are_not_repeated(modules, graph, monkeypatch):
     _, visitor = modules
     vocabulary = visitor.tag_vocabulary(graph)
+    monkeypatch.setenv("CDKG_NOW", "2026-11-04T12:00")          # the week before
 
     result = visitor.recommend(graph, ["rdf", "owl"], vocabulary)
 
     assert [s["talk_id"] for s in result["this_week"]] == ["t-early", "t-late"]
-    assert visitor.slot(result["this_week"][0]) == "Wed 11 Nov · 09:30 · Rapid Insights Track - Ludgate Suite"
+    assert visitor.slot(result["this_week"][0]) == "Wed 11 Nov · 09:30–09:50 · Rapid Insights Track - Ludgate Suite"
     assert not {"t-early", "t-late"} & {s["talk_id"] for s in result["picks"]}
     assert visitor.slot({"starts_at": "", "stage": ""}) == ""
+
+
+def test_a_talk_that_has_ended_is_no_longer_one_not_to_miss_nor_a_pick(modules, graph, monkeypatch):
+    _, visitor = modules
+    vocabulary = visitor.tag_vocabulary(graph)
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T12:00")          # t-early ended at 09:50
+
+    result = visitor.recommend(graph, ["rdf"], vocabulary)
+
+    assert [s["talk_id"] for s in result["this_week"]] == ["t-late"]
+    assert "t-early" not in {s["talk_id"] for s in result["picks"]}
+    # At the minute it ends it has ended: times compare to the second.
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T09:50")
+    assert [s["talk_id"] for s in visitor.recommend(graph, ["rdf"], vocabulary)["this_week"]] == ["t-late"]
+    monkeypatch.setenv("CDKG_NOW", "2026-11-11T09:49")
+    assert [s["talk_id"] for s in visitor.recommend(graph, ["rdf"], vocabulary)["this_week"]] == ["t-early", "t-late"]
 
 
 def test_a_graph_built_before_the_schedule_still_lists_the_conference_s_talks(modules, graph, monkeypatch):

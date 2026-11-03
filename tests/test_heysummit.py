@@ -326,6 +326,21 @@ def test_a_talk_moved_to_another_time_or_room_is_a_change_to_rebuild_for(seeding
     assert summary["schedule_changed"] is True and summary["changed"] is True
 
 
+def test_a_talk_that_only_changed_length_is_a_change_to_rebuild_for(seeding, monkeypatch):
+    """The length gives the graph's end time, which answers "what's on now?"."""
+    heysummit.sync(refresh=False, csv_path=seeding)
+    talks = json.loads(config.HEYSUMMIT_CATALOG.read_text())
+
+    def longer():
+        config.HEYSUMMIT_CATALOG.write_text(json.dumps(
+            [{**t, "duration_mins": 45} if t["id"] == 2 else t for t in talks]))
+        return len(talks)
+
+    monkeypatch.setattr(heysummit, "refresh_catalog", longer)
+
+    assert heysummit.sync(refresh=True, csv_path=seeding)["schedule_changed"] is True
+
+
 def test_sync_with_no_catalogue_is_an_error_not_a_crash(monkeypatch, tmp_path):
     monkeypatch.setattr(config, "HEYSUMMIT_CATALOG", tmp_path / "missing.json")
     summary = heysummit.sync(refresh=False, csv_path=tmp_path / "x.csv")
