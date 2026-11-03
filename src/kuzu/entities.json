@@ -5565,5 +5565,29 @@
         "levenshtein distances"
       ]
     }
+  },
+  {
+    "filename": "Back to the Future Of Your Data.txt",
+    "entities": {
+      "tag": [
+        "graph databases",
+        "recommender systems",
+        "time trees",
+        "cypher",
+        "rdf",
+        "labeled property graphs",
+        "sparql",
+        "retrieval augmented generation",
+        "graph rag",
+        "snapshots",
+        "quine",
+        "entity state model",
+        "janusgraph",
+        "tinkerpop",
+        "traversal strategies",
+        "neo4j",
+        "celonis"
+      ]
+    }
   }
 ]
