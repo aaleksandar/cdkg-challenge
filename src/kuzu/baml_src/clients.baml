@@ -40,7 +40,9 @@ client<llm> GeminiFlashLive {
 // The same model for "Ask the graph" (graphrag.baml), which a visitor at the
 // kiosk waits on twice per question. Gemini 3.8 Flash thinks before answering
 // by default: measured on 2026-10-28, a schedule question took 18–40 s with it
-// and about 6.5 s at thinkingLevel "low", with answers as good. Like the live
+// and about 6.5 s at thinkingLevel "low". Five evaluate.py runs each on
+// 2026-11-03: 4.07 at "low" against 4.13 at the default, inside the noise, in
+// a third of the time. Like the live
 // client, a spike fails in seconds rather than after a minute of retries.
 // The model name moves with GeminiFlash's above.
 client<llm> GeminiFlashChat {
