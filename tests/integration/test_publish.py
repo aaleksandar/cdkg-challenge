@@ -50,6 +50,7 @@ def github(sandbox, tmp_path, monkeypatch):
     (repo / "src" / "kuzu").mkdir(parents=True)
     monkeypatch.setattr(config, "ENTITIES_JSON", repo / "src" / "kuzu" / "entities.json")
     monkeypatch.setattr(config, "DESCRIPTION_TAGS_JSON", repo / "src" / "kuzu" / "description_tags.json")
+    monkeypatch.setattr(config, "TALK_EMBEDDINGS_JSON", repo / "src" / "kuzu" / "talk_embeddings.json")
     monkeypatch.setattr(config, "GIT_PUSH_ENABLED", True)
     monkeypatch.setattr(gitops, "installation_token", lambda: "tok")
     monkeypatch.setattr(gitops, "_authenticated_remote", lambda token: str(origin))

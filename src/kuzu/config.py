@@ -37,5 +37,9 @@ ENTITIES_JSON = Path(os.getenv("ENTITIES_JSON", BASE_DIR / "entities.json"))
 # Overridable for the same reason as ENTITIES_JSON.
 DESCRIPTION_TAGS_JSON = Path(os.getenv("DESCRIPTION_TAGS_JSON", BASE_DIR / "description_tags.json"))
 
+# One vector per talk (ingest/pipeline/embeddings.py), by talk id. Overridable
+# for the same reason.
+TALK_EMBEDDINGS_JSON = Path(os.getenv("TALK_EMBEDDINGS_JSON", BASE_DIR / "talk_embeddings.json"))
+
 # Evaluation benchmark: questions and baseline answers
 QA_CSV = Path(os.getenv("QA_CSV", BASE_DIR.parent.parent / "QA" / "CDKGQA.csv"))

@@ -11,6 +11,7 @@ on:
       - "Transcripts/**"
       - "src/kuzu/entities.json"
       - "src/kuzu/description_tags.json"
+      - "src/kuzu/talk_embeddings.json"
   workflow_dispatch:
 
 concurrency:

@@ -226,7 +226,7 @@ def _resolve_by_key(path: str, token: str) -> bool:
         key, merge = "TalkID", _union_csv
     elif full == config.ENTITIES_JSON:
         key, merge = "filename", _union_json
-    elif full == config.DESCRIPTION_TAGS_JSON:
+    elif full in (config.DESCRIPTION_TAGS_JSON, config.TALK_EMBEDDINGS_JSON):
         key, merge = None, _union_dict
     elif full == config.SKIPPED_TALKS:
         key, merge = "key", _union_json
@@ -429,6 +429,8 @@ def publish_ingest(ctx: dict):
         config.SKIPPED_TALKS,
         # Abstract tags, written after a HeySummit sync; carried the same way.
         config.DESCRIPTION_TAGS_JSON,
+        # Talk vectors, written before a rebuild; likewise.
+        config.TALK_EMBEDDINGS_JSON,
     ]
 
     with _git_lock:
