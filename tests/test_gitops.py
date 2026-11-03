@@ -115,6 +115,7 @@ def repos(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "INGEST_CACHE_DIR", server / "Transcripts" / ".ingest")
     monkeypatch.setattr(config, "ENTITIES_JSON", server / "src" / "kuzu" / "entities.json")
     monkeypatch.setattr(config, "DESCRIPTION_TAGS_JSON", server / "src" / "kuzu" / "description_tags.json")
+    monkeypatch.setattr(config, "TALK_EMBEDDINGS_JSON", server / "src" / "kuzu" / "talk_embeddings.json")
     monkeypatch.setattr(config, "HEYSUMMIT_CATALOG", server / "Transcripts" / ".heysummit" / "catalog.json")
     monkeypatch.setattr(config, "GITHUB_INGEST_BRANCH", "ingest/auto")
     monkeypatch.setattr(config, "GITHUB_BASE_BRANCH", "main")
@@ -197,6 +198,7 @@ def _fresh_clone(repos, tmp_path, monkeypatch) -> Path:
                       ("INGEST_CACHE_DIR", "Transcripts/.ingest"),
                       ("ENTITIES_JSON", "src/kuzu/entities.json"),
                       ("DESCRIPTION_TAGS_JSON", "src/kuzu/description_tags.json"),
+                      ("TALK_EMBEDDINGS_JSON", "src/kuzu/talk_embeddings.json"),
                       ("HEYSUMMIT_CATALOG", "Transcripts/.heysummit/catalog.json")):
         monkeypatch.setattr(config, name, fresh / rel if rel else fresh)
     return fresh

@@ -103,6 +103,12 @@ def get_schema_dict(conn: lb.Connection) -> dict[str, list[dict]]:
     return schema
 
 
+# Kept out of the schema Text2Cypher sees: `Talk.embedding` is 768 floats for
+# "Talks for you" to rank by, and a query that returned it would fill the
+# answer prompt with numbers.
+HIDDEN_PROPERTIES = {"embedding"}
+
+
 def get_schema_baml(conn: lb.Connection) -> str:
     schema = get_schema_dict(conn)
     lines = []
@@ -118,6 +124,8 @@ def get_schema_baml(conn: lb.Connection) -> str:
     for node in schema.get("nodes", []):
         lines.append(f"  - {node['label']}")
         for prop in node.get("properties", []):
+            if prop["name"] in HIDDEN_PROPERTIES:
+                continue
             ptype = prop["type"].lower()
             lines.append(f"    - {prop['name']}: {ptype}")
 
