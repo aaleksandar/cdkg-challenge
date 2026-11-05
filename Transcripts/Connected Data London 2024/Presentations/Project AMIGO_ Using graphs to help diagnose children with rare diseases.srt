@@ -1,0 +1,3452 @@
+1
+00:00:05,000 --> 00:00:10,120
+It's my pleasure to induce
+
+2
+00:00:07,640 --> 00:00:12,640
+to introduce our next speaker Tim
+
+3
+00:00:10,120 --> 00:00:15,800
+Amstutz and Micah Kusters.
+
+4
+00:00:12,640 --> 00:00:19,080
+Tim is a senior solution architect and
+
+5
+00:00:15,800 --> 00:00:21,480
+graph expert at Capgemini and Dr.
+
+6
+00:00:19,080 --> 00:00:24,120
+Kusters is a consultant at the Pediatric
+
+7
+00:00:21,480 --> 00:00:26,880
+Immunology at Great Ormond Street
+
+8
+00:00:24,120 --> 00:00:29,160
+Hospital. That is a mouthful for me and
+
+9
+00:00:26,880 --> 00:00:30,880
+an associate professor at UCL
+
+10
+00:00:29,160 --> 00:00:33,160
+specializing in treating children with
+
+11
+00:00:30,880 --> 00:00:35,040
+rare immune disorders.
+
+12
+00:00:33,160 --> 00:00:36,680
+This is kind of a for me I think a very
+
+13
+00:00:35,040 --> 00:00:38,080
+important presentation and they're going
+
+14
+00:00:36,680 --> 00:00:40,480
+to share
+
+15
+00:00:38,080 --> 00:00:42,920
+how collaborative effort using AI and
+
+16
+00:00:40,480 --> 00:00:44,560
+graph technology to diagnose rare
+
+17
+00:00:42,920 --> 00:00:45,720
+diseases in children.
+
+18
+00:00:44,560 --> 00:00:46,920
+Merging
+
+19
+00:00:45,720 --> 00:00:49,120
+multi
+
+20
+00:00:46,920 --> 00:00:50,280
+Oh my goodness, multi-omic patient data.
+
+21
+00:00:49,120 --> 00:00:51,560
+Oh gosh, you're going to have to you're
+
+22
+00:00:50,280 --> 00:00:52,920
+going to have to explain that to me
+
+23
+00:00:51,560 --> 00:00:54,760
+hopefully
+
+24
+00:00:52,920 --> 00:01:01,240
+with research knowledge
+
+25
+00:00:54,760 --> 00:01:01,240
+and so please welcome Tim and Micah.
+
+26
+00:01:03,960 --> 00:01:09,760
+>> So, thank you for having us.
+
+27
+00:01:07,520 --> 00:01:11,360
+Let's get started.
+
+28
+00:01:09,760 --> 00:01:12,920
+I think yeah.
+
+29
+00:01:11,360 --> 00:01:14,920
+So,
+
+30
+00:01:12,920 --> 00:01:16,000
+you already got an introduction who we
+
+31
+00:01:14,920 --> 00:01:18,760
+are.
+
+32
+00:01:16,000 --> 00:01:21,000
+Just you will see the Capgemini slides
+
+33
+00:01:18,760 --> 00:01:24,640
+and this Capgemini
+
+34
+00:01:21,000 --> 00:01:27,440
+design. Please let me tell you that what
+
+35
+00:01:24,640 --> 00:01:30,680
+we are presenting here is a project that
+
+36
+00:01:27,440 --> 00:01:33,320
+has a lot of collaborators from many
+
+37
+00:01:30,680 --> 00:01:36,960
+different spaces. So, as Capgemini we
+
+38
+00:01:33,320 --> 00:01:39,560
+are doing this as a pro bono project as
+
+39
+00:01:36,960 --> 00:01:42,320
+system integrator, but
+
+40
+00:01:39,560 --> 00:01:44,960
+yeah, there are research organizations
+
+41
+00:01:42,320 --> 00:01:47,440
+like MI4People, there are a lot of
+
+42
+00:01:44,960 --> 00:01:48,640
+clinics involved like
+
+43
+00:01:47,440 --> 00:01:51,080
+yeah,
+
+44
+00:01:48,640 --> 00:01:52,880
+I have been getting in touch with the
+
+45
+00:01:51,080 --> 00:01:55,680
+Munich
+
+46
+00:01:52,880 --> 00:01:57,080
+Ludwig Maximilian University
+
+47
+00:01:55,680 --> 00:01:58,680
+University
+
+48
+00:01:57,080 --> 00:02:02,200
+clinic.
+
+49
+00:01:58,680 --> 00:02:06,240
+Yeah, Micah is from London. Um so a lot
+
+50
+00:02:02,200 --> 00:02:08,759
+of clinics involved. Um we have
+
+51
+00:02:06,240 --> 00:02:13,160
+uh sponsorship and
+
+52
+00:02:08,759 --> 00:02:16,720
+database from from Neo4j and also uh
+
+53
+00:02:13,160 --> 00:02:19,200
+other funded companies from European
+
+54
+00:02:16,720 --> 00:02:21,880
+side like Feature Cloud and so on and so
+
+55
+00:02:19,200 --> 00:02:24,240
+on. So a lot of people working together
+
+56
+00:02:21,880 --> 00:02:26,160
+to make this happen. Yeah.
+
+57
+00:02:24,240 --> 00:02:29,000
+As I said as already said, I'm a
+
+58
+00:02:26,160 --> 00:02:31,760
+solution architect with Capgemini
+
+59
+00:02:29,000 --> 00:02:34,480
+and yeah, Mike already
+
+60
+00:02:31,760 --> 00:02:36,120
+will give you the introduction on yeah,
+
+61
+00:02:34,480 --> 00:02:37,800
+what's at stake and what's the problem
+
+62
+00:02:36,120 --> 00:02:40,600
+here.
+
+63
+00:02:37,800 --> 00:02:42,520
+>> Thank you, Tim. So I'm Mike Custers. I
+
+64
+00:02:40,600 --> 00:02:45,440
+work in Great Ormond Street as already
+
+65
+00:02:42,520 --> 00:02:47,440
+said. So we are children's hospital,
+
+66
+00:02:45,440 --> 00:02:50,120
+actually top five children's hospital in
+
+67
+00:02:47,440 --> 00:02:52,266
+the world and we are specialized in
+
+68
+00:02:50,120 --> 00:02:52,440
+quite rare and unique
+
+69
+00:02:52,266 --> 00:02:55,000
+>> [snorts]
+
+70
+00:02:52,440 --> 00:02:57,320
+>> diseases for children. It's only
+
+71
+00:02:55,000 --> 00:02:59,200
+children that I treat, which is exactly
+
+72
+00:02:57,320 --> 00:03:02,440
+why I'm working there.
+
+73
+00:02:59,200 --> 00:03:05,160
+Um the problem that we are facing or the
+
+74
+00:03:02,440 --> 00:03:08,200
+challenge you might say is that we have
+
+75
+00:03:05,160 --> 00:03:10,400
+lots and lots of rare diseases. So you
+
+76
+00:03:08,200 --> 00:03:13,120
+could have a unique rare disease which
+
+77
+00:03:10,400 --> 00:03:15,840
+might be really really hard to diagnose
+
+78
+00:03:13,120 --> 00:03:17,760
+or even to get to a specialized center
+
+79
+00:03:15,840 --> 00:03:20,640
+such as Great Ormond Street. Might take
+
+80
+00:03:17,760 --> 00:03:23,040
+you many many years, which is incredibly
+
+81
+00:03:20,640 --> 00:03:26,000
+frustrating for parents but also can
+
+82
+00:03:23,040 --> 00:03:27,720
+impact on the disease progression
+
+83
+00:03:26,000 --> 00:03:29,400
+and ultimately on the outcome of the
+
+84
+00:03:27,720 --> 00:03:30,920
+child, whether the child will actually
+
+85
+00:03:29,400 --> 00:03:33,560
+live or die.
+
+86
+00:03:30,920 --> 00:03:35,160
+Um but together, if you accumulate all
+
+87
+00:03:33,560 --> 00:03:37,360
+these rare diseases, they're not so
+
+88
+00:03:35,160 --> 00:03:39,920
+rare. If you accumulate all the diseases
+
+89
+00:03:37,360 --> 00:03:41,280
+that are out there, it's quite a large
+
+90
+00:03:39,920 --> 00:03:43,680
+group.
+
+91
+00:03:41,280 --> 00:03:46,480
+So it's for us really really vital if
+
+92
+00:03:43,680 --> 00:03:48,840
+you have for instance a three-year-old
+
+93
+00:03:46,480 --> 00:03:51,560
+and you don't know what the child is
+
+94
+00:03:48,840 --> 00:03:53,480
+having, what is actually the diagnosis
+
+95
+00:03:51,560 --> 00:03:55,800
+and you have to wait for genetics, but
+
+96
+00:03:53,480 --> 00:03:57,600
+the genetics come back as negative. You
+
+97
+00:03:55,800 --> 00:03:59,800
+don't know how to treat.
+
+98
+00:03:57,600 --> 00:04:02,080
+And I'm, you know, in in my field is
+
+99
+00:03:59,800 --> 00:04:04,480
+immunology. So, if you have a major
+
+100
+00:04:02,080 --> 00:04:06,520
+problem in your immune system, we need
+
+101
+00:04:04,480 --> 00:04:08,840
+to make a decision there and then. Do I
+
+102
+00:04:06,520 --> 00:04:10,040
+need to replace your immune system? Do I
+
+103
+00:04:08,840 --> 00:04:13,280
+need to give you a bone marrow
+
+104
+00:04:10,040 --> 00:04:15,760
+transplant or thymus transplant? Or if I
+
+105
+00:04:13,280 --> 00:04:18,920
+actually can find the gene, I can maybe
+
+106
+00:04:15,760 --> 00:04:21,359
+edit your gene and do a gene therapy as
+
+107
+00:04:18,920 --> 00:04:24,680
+a curative approach. If I don't know
+
+108
+00:04:21,359 --> 00:04:27,480
+these things, then I am guided but
+
+109
+00:04:24,680 --> 00:04:30,000
+whatever I have at that moment in time
+
+110
+00:04:27,480 --> 00:04:32,280
+with the members I have around this, you
+
+111
+00:04:30,000 --> 00:04:34,520
+know, 3-year-old bed
+
+112
+00:04:32,280 --> 00:04:35,960
+toddler in this bed to make a decision
+
+113
+00:04:34,520 --> 00:04:37,360
+there and then. If you don't make the
+
+114
+00:04:35,960 --> 00:04:40,000
+decision,
+
+115
+00:04:37,360 --> 00:04:41,720
+it likely has a fatal outcome. If we
+
+116
+00:04:40,000 --> 00:04:43,919
+make a decision, but it's not the right
+
+117
+00:04:41,720 --> 00:04:46,280
+decision, it can also have a fatal
+
+118
+00:04:43,919 --> 00:04:48,720
+outcome. So, it's quite relevant that we
+
+119
+00:04:46,280 --> 00:04:50,800
+have all the data that we can have to
+
+120
+00:04:48,720 --> 00:04:52,520
+make the right decision there and then
+
+121
+00:04:50,800 --> 00:04:54,480
+because, you know, you can't live
+
+122
+00:04:52,520 --> 00:04:56,360
+without an immune system.
+
+123
+00:04:54,480 --> 00:04:59,360
+So, this is why
+
+124
+00:04:56,360 --> 00:05:02,000
+um we have actually tried to make a
+
+125
+00:04:59,360 --> 00:05:04,520
+different approach.
+
+126
+00:05:02,000 --> 00:05:05,680
+Maybe I can do the first part of the
+
+127
+00:05:04,520 --> 00:05:06,919
+slide.
+
+128
+00:05:05,680 --> 00:05:10,400
+Yeah so
+
+129
+00:05:06,919 --> 00:05:12,840
+originally how people look at data, they
+
+130
+00:05:10,400 --> 00:05:14,360
+say, "Okay, we have these clinical signs
+
+131
+00:05:12,840 --> 00:05:15,880
+and symptoms." So, that's sort of the
+
+132
+00:05:14,360 --> 00:05:17,680
+phenotype.
+
+133
+00:05:15,880 --> 00:05:19,560
+And then on the other sort of side of
+
+134
+00:05:17,680 --> 00:05:22,720
+the things in the cell at the sort of
+
+135
+00:05:19,560 --> 00:05:24,480
+deep end, we have genetics, the DNA.
+
+136
+00:05:22,720 --> 00:05:26,800
+But what hap- happens sort of in
+
+137
+00:05:24,480 --> 00:05:28,680
+between, sort of the surface area, the
+
+138
+00:05:26,800 --> 00:05:31,080
+clinical signs and symptoms, and what
+
+139
+00:05:28,680 --> 00:05:33,480
+happens on the inside, the DNA, what
+
+140
+00:05:31,080 --> 00:05:35,000
+happens in that path, the RNA, the
+
+141
+00:05:33,480 --> 00:05:36,080
+protein level, all these different
+
+142
+00:05:35,000 --> 00:05:38,360
+levels,
+
+143
+00:05:36,080 --> 00:05:40,919
+that actually is not investigated in
+
+144
+00:05:38,360 --> 00:05:43,760
+this way in children. And children are
+
+145
+00:05:40,919 --> 00:05:46,040
+not just small adults. It's not like,
+
+146
+00:05:43,760 --> 00:05:48,720
+"Okay, I have a medicine. I try all this
+
+147
+00:05:46,040 --> 00:05:51,000
+in a group of adults, which is easier to
+
+148
+00:05:48,720 --> 00:05:53,320
+do because it's easier to get ethics,
+
+149
+00:05:51,000 --> 00:05:55,360
+it's easier to get consent in adults
+
+150
+00:05:53,320 --> 00:05:58,040
+than a child. And then I'm just going to
+
+151
+00:05:55,360 --> 00:06:00,200
+half the dose because this child is
+
+152
+00:05:58,040 --> 00:06:02,240
+roughly half the weight of this adult.
+
+153
+00:06:00,200 --> 00:06:07,320
+That's not how it works. We need
+
+154
+00:06:02,240 --> 00:06:07,320
+specific data for children over time.
+
+155
+00:06:07,640 --> 00:06:15,440
+>> Yes, and that is where the Skive study
+
+156
+00:06:11,160 --> 00:06:17,200
+or the foundation of our project Amigo
+
+157
+00:06:15,440 --> 00:06:20,400
+has been starting.
+
+158
+00:06:17,200 --> 00:06:24,280
+So, the numbers here that you can see of
+
+159
+00:06:20,400 --> 00:06:27,040
+2,500 children are 2,500 children that
+
+160
+00:06:24,280 --> 00:06:28,560
+are collected inside that project
+
+161
+00:06:27,040 --> 00:06:31,200
+already
+
+162
+00:06:28,560 --> 00:06:36,320
+with all clinics coming in and a lot
+
+163
+00:06:31,200 --> 00:06:39,720
+more to come. This will hopefully rise.
+
+164
+00:06:36,320 --> 00:06:42,880
+Obviously, it's a challenging thing to
+
+165
+00:06:39,720 --> 00:06:45,480
+get all the people or children involved.
+
+166
+00:06:42,880 --> 00:06:48,800
+But, the good thing is since that study
+
+167
+00:06:45,480 --> 00:06:52,760
+is coming through and is the data is
+
+168
+00:06:48,800 --> 00:06:55,919
+there, we actually have the genes and so
+
+169
+00:06:52,760 --> 00:06:57,520
+multiomics, basically genomics,
+
+170
+00:06:55,919 --> 00:06:59,840
+metabolomics,
+
+171
+00:06:57,520 --> 00:07:03,360
+transcriptomic, and so on. So, all of
+
+172
+00:06:59,840 --> 00:07:04,520
+that is multiomics just as a
+
+173
+00:07:03,360 --> 00:07:07,320
+Yeah.
+
+174
+00:07:04,520 --> 00:07:10,080
+We are collecting these for the children
+
+175
+00:07:07,320 --> 00:07:14,440
+together also with OCT images, which are
+
+176
+00:07:10,080 --> 00:07:17,840
+still also an open field that So, it's a
+
+177
+00:07:14,440 --> 00:07:17,840
+scans of the eye.
+
+178
+00:07:17,960 --> 00:07:24,600
+And yeah, that way we can actually have
+
+179
+00:07:22,520 --> 00:07:25,919
+very very detailed data for the
+
+180
+00:07:24,600 --> 00:07:28,880
+children.
+
+181
+00:07:25,919 --> 00:07:30,440
+Now, the the idea we would all have
+
+182
+00:07:28,880 --> 00:07:32,040
+together is
+
+183
+00:07:30,440 --> 00:07:34,120
+obviously
+
+184
+00:07:32,040 --> 00:07:36,200
+Yeah, we have everything we got. So,
+
+185
+00:07:34,120 --> 00:07:39,600
+let's solve this with AI. This is a
+
+186
+00:07:36,200 --> 00:07:41,040
+problem. We have data, so let's let's go
+
+187
+00:07:39,600 --> 00:07:42,440
+on with it.
+
+188
+00:07:41,040 --> 00:07:44,960
+Um
+
+189
+00:07:42,440 --> 00:07:47,880
+The point is that Michael already said
+
+190
+00:07:44,960 --> 00:07:50,680
+um with the normal AI strategies where
+
+191
+00:07:47,880 --> 00:07:54,080
+we searching for some kind of pattern
+
+192
+00:07:50,680 --> 00:07:56,760
+where we say we don't have
+
+193
+00:07:54,080 --> 00:07:58,720
+a huge amount of
+
+194
+00:07:56,760 --> 00:08:00,600
+people with this disease where we could
+
+195
+00:07:58,720 --> 00:08:02,800
+say, "Okay, we have a
+
+196
+00:08:00,600 --> 00:08:04,680
+sample set of a few thousand patient
+
+197
+00:08:02,800 --> 00:08:06,000
+patients having that disease. So, let's
+
+198
+00:08:04,680 --> 00:08:07,880
+train the
+
+199
+00:08:06,000 --> 00:08:10,240
+train the model to recognize these
+
+200
+00:08:07,880 --> 00:08:12,360
+patterns." That's not how it's how it
+
+201
+00:08:10,240 --> 00:08:15,520
+works because we have a very specific
+
+202
+00:08:12,360 --> 00:08:18,360
+disease. A disease that is like Michael
+
+203
+00:08:15,520 --> 00:08:21,040
+said, the the amount of rare diseases
+
+204
+00:08:18,360 --> 00:08:23,200
+which are in all patients are quite
+
+205
+00:08:21,040 --> 00:08:26,000
+significant, but the
+
+206
+00:08:23,200 --> 00:08:28,400
+the patient that has this specific one
+
+207
+00:08:26,000 --> 00:08:30,960
+is maybe one of five in the world. So,
+
+208
+00:08:28,400 --> 00:08:32,800
+you have to go with the logical
+
+209
+00:08:30,960 --> 00:08:35,960
+reasoning. There is some kind of reason
+
+210
+00:08:32,800 --> 00:08:37,640
+behind this. So, let's find it.
+
+211
+00:08:35,960 --> 00:08:42,599
+Um
+
+212
+00:08:37,640 --> 00:08:47,680
+and so we cannot really train this. Um
+
+213
+00:08:42,599 --> 00:08:49,880
+we are actually having trouble even so
+
+214
+00:08:47,680 --> 00:08:51,680
+if there is So, it's not just a problem
+
+215
+00:08:49,880 --> 00:08:54,760
+that there is no specialist in the in
+
+216
+00:08:51,680 --> 00:08:58,040
+the room. So, there even a specialist
+
+217
+00:08:54,760 --> 00:09:00,760
+can have no idea. And yeah, most of the
+
+218
+00:08:58,040 --> 00:09:02,560
+children went through an odyssey of
+
+219
+00:09:00,760 --> 00:09:05,320
+doctors [snorts] that all had different
+
+220
+00:09:02,560 --> 00:09:07,560
+things. And I didn't talk about the ICD
+
+221
+00:09:05,320 --> 00:09:09,680
+uh codes that we said. So, we have
+
+222
+00:09:07,560 --> 00:09:10,800
+disease codes. We have actually probably
+
+223
+00:09:09,680 --> 00:09:12,680
+a lot of
+
+224
+00:09:10,800 --> 00:09:15,760
+uh diagnosis for these children. It's
+
+225
+00:09:12,680 --> 00:09:17,560
+not like a lack of diagnosis, but the
+
+226
+00:09:15,760 --> 00:09:18,600
+right one isn't there.
+
+227
+00:09:17,560 --> 00:09:21,040
+Or
+
+228
+00:09:18,600 --> 00:09:22,880
+yeah, even if we find the right one,
+
+229
+00:09:21,040 --> 00:09:24,960
+then that's the the point where the
+
+230
+00:09:22,880 --> 00:09:27,760
+process starts.
+
+231
+00:09:24,960 --> 00:09:30,120
+So, um and at the same time we are
+
+232
+00:09:27,760 --> 00:09:32,120
+working with data for children. So, we
+
+233
+00:09:30,120 --> 00:09:35,000
+cannot go the brute force and making it
+
+234
+00:09:32,120 --> 00:09:36,600
+available for everybody and let's see
+
+235
+00:09:35,000 --> 00:09:39,480
+let's [snorts] see who finds the answer
+
+236
+00:09:36,600 --> 00:09:43,080
+because we are dealing with a gene pool
+
+237
+00:09:39,480 --> 00:09:44,280
+of children. And so it wouldn't be uh
+
+238
+00:09:43,080 --> 00:09:46,360
+gene at
+
+239
+00:09:44,280 --> 00:09:49,320
+Yeah, it's what if we given one central
+
+240
+00:09:46,360 --> 00:09:51,520
+point of a check of uh a a group of
+
+241
+00:09:49,320 --> 00:09:53,280
+children with the whole genome uh
+
+242
+00:09:51,520 --> 00:09:55,760
+stored.
+
+243
+00:09:53,280 --> 00:09:58,200
+Yeah, this is not the best idea to uh to
+
+244
+00:09:55,760 --> 00:10:00,320
+have. And for regulatory requirements or
+
+245
+00:09:58,200 --> 00:10:01,760
+the personal data protection and so on,
+
+246
+00:10:00,320 --> 00:10:04,200
+that is uh a
+
+247
+00:10:01,760 --> 00:10:05,880
+quite pro quite a
+
+248
+00:10:04,200 --> 00:10:07,000
+hard shell.
+
+249
+00:10:05,880 --> 00:10:08,880
+So,
+
+250
+00:10:07,000 --> 00:10:11,760
+what did we do? So, um we are the
+
+251
+00:10:08,880 --> 00:10:15,560
+knowledge graph conference. So, um or
+
+252
+00:10:11,760 --> 00:10:17,440
+one uh the connected data, sorry. Um but
+
+253
+00:10:15,560 --> 00:10:19,240
+uh knowledge graph guys,
+
+254
+00:10:17,440 --> 00:10:21,520
+so uh
+
+255
+00:10:19,240 --> 00:10:24,160
+we have the patient, we have the
+
+256
+00:10:21,520 --> 00:10:26,360
+multi-omics data, and let's stitch it
+
+257
+00:10:24,160 --> 00:10:30,080
+together with a knowledge graph to have
+
+258
+00:10:26,360 --> 00:10:31,720
+a bigger picture. And that is um
+
+259
+00:10:30,080 --> 00:10:34,480
+yeah,
+
+260
+00:10:31,720 --> 00:10:36,640
+the thought process here is to have the
+
+261
+00:10:34,480 --> 00:10:39,120
+data collected from the children, but
+
+262
+00:10:36,640 --> 00:10:41,320
+also collect or uh stitch it together
+
+263
+00:10:39,120 --> 00:10:44,600
+with all the data that is coming from
+
+264
+00:10:41,320 --> 00:10:46,760
+the medical experts. And so that we have
+
+265
+00:10:44,600 --> 00:10:49,320
+the full power of the of the system
+
+266
+00:10:46,760 --> 00:10:52,640
+here. Um we have to go somehow
+
+267
+00:10:49,320 --> 00:10:55,520
+unsupervised because uh we don't have a
+
+268
+00:10:52,640 --> 00:10:57,520
+good label, so we can give some kind of
+
+269
+00:10:55,520 --> 00:10:58,680
+suggestion and nobody knows if it's the
+
+270
+00:10:57,520 --> 00:11:01,280
+right one.
+
+271
+00:10:58,680 --> 00:11:02,960
+And yeah, so that's the path to having
+
+272
+00:11:01,280 --> 00:11:06,400
+some kind of
+
+273
+00:11:02,960 --> 00:11:09,440
+algorithm where we could child comes in.
+
+274
+00:11:06,400 --> 00:11:11,760
+Um test test are being made, data is
+
+275
+00:11:09,440 --> 00:11:14,160
+collected, and the system would give
+
+276
+00:11:11,760 --> 00:11:18,120
+some kind of diagno- diagnosis or at
+
+277
+00:11:14,160 --> 00:11:20,480
+least suggestion. That's the dream.
+
+278
+00:11:18,120 --> 00:11:23,839
+The same time, uh we want to protect the
+
+279
+00:11:20,480 --> 00:11:25,920
+data, so the system is designed like
+
+280
+00:11:23,839 --> 00:11:28,120
+this. Basically, we'll build a Kaggle
+
+281
+00:11:25,920 --> 00:11:31,040
+challenge, but the Kaggle challenge with
+
+282
+00:11:28,120 --> 00:11:34,680
+a huge door in the middle where you you
+
+283
+00:11:31,040 --> 00:11:37,600
+will not be able to see the data itself,
+
+284
+00:11:34,680 --> 00:11:38,640
+but we opened it to
+
+285
+00:11:37,600 --> 00:11:41,840
+um
+
+286
+00:11:38,640 --> 00:11:44,760
+have basically your algorithm evaluated.
+
+287
+00:11:41,840 --> 00:11:48,520
+So, we provided a synthetic data set
+
+288
+00:11:44,760 --> 00:11:49,160
+with genetic data um which which has the
+
+289
+00:11:48,520 --> 00:11:51,160
+um
+
+290
+00:11:49,160 --> 00:11:54,400
+expertise from the
+
+291
+00:11:51,160 --> 00:11:57,120
+from the medical experts and uh
+
+292
+00:11:54,400 --> 00:11:58,960
+gene data and all different data sets
+
+293
+00:11:57,120 --> 00:12:01,240
+provided by research
+
+294
+00:11:58,960 --> 00:12:03,440
+uh or for
+
+295
+00:12:01,240 --> 00:12:05,520
+for research stitched together to
+
+296
+00:12:03,440 --> 00:12:07,360
+synthetic data sets
+
+297
+00:12:05,520 --> 00:12:12,560
+>> Check 1
+
+298
+00:12:07,360 --> 00:12:12,560
+2 2 2 3 3 Yeah.
+
+299
+00:12:12,640 --> 00:12:17,000
+>> app store
+
+300
+00:12:14,120 --> 00:12:20,120
+which is uh then connected to the server
+
+301
+00:12:17,000 --> 00:12:22,200
+from the clinics. So, the guy who's
+
+302
+00:12:20,120 --> 00:12:25,080
+administering uh the thing from the
+
+303
+00:12:22,200 --> 00:12:27,880
+clinic has the application provided to
+
+304
+00:12:25,080 --> 00:12:30,080
+that in a containerized format. They
+
+305
+00:12:27,880 --> 00:12:33,520
+will download it. They will execute it
+
+306
+00:12:30,080 --> 00:12:36,760
+on servers standing in the clinic with
+
+307
+00:12:33,520 --> 00:12:40,240
+all the hardware in the clinic, the data
+
+308
+00:12:36,760 --> 00:12:43,760
+residing in the clinic. So, nothing from
+
+309
+00:12:40,240 --> 00:12:46,080
+the or not no data from that child will
+
+310
+00:12:43,760 --> 00:12:48,600
+leave the clinic.
+
+311
+00:12:46,080 --> 00:12:51,080
+At the same time, we give it possibility
+
+312
+00:12:48,600 --> 00:12:53,360
+to evaluate the performance of your of
+
+313
+00:12:51,080 --> 00:12:57,080
+your algorithm, give you feedback, and
+
+314
+00:12:53,360 --> 00:12:59,520
+hopefully move forward. So, we are able
+
+315
+00:12:57,080 --> 00:13:02,400
+to do this. We tested this with
+
+316
+00:12:59,520 --> 00:13:03,240
+students. So, there was a in April, we
+
+317
+00:13:02,400 --> 00:13:05,839
+had a
+
+318
+00:13:03,240 --> 00:13:07,920
+make-a-thon at the TUM
+
+319
+00:13:05,839 --> 00:13:10,320
+uh so, the TUM Munich
+
+320
+00:13:07,920 --> 00:13:12,839
+uh where they just we just said, "Okay,
+
+321
+00:13:10,320 --> 00:13:14,240
+here's we give you genetic data from
+
+322
+00:13:12,839 --> 00:13:16,920
+children.
+
+323
+00:13:14,240 --> 00:13:19,520
+Let's try if we see if we can at least
+
+324
+00:13:16,920 --> 00:13:21,440
+do some kind of classification to ICD-10
+
+325
+00:13:19,520 --> 00:13:23,640
+codes so we at least know
+
+326
+00:13:21,440 --> 00:13:25,960
+the first letter. So, we can tell you if
+
+327
+00:13:23,640 --> 00:13:27,720
+it's a heart thing or a head thing or
+
+328
+00:13:25,960 --> 00:13:30,480
+something at
+
+329
+00:13:27,720 --> 00:13:32,320
+And it worked. So, we are still open, so
+
+330
+00:13:30,480 --> 00:13:33,040
+you can
+
+331
+00:13:32,320 --> 00:13:35,160
+uh
+
+332
+00:13:33,040 --> 00:13:36,320
+send in your algorithm and we can work
+
+333
+00:13:35,160 --> 00:13:38,000
+on this.
+
+334
+00:13:36,320 --> 00:13:39,720
+So,
+
+335
+00:13:38,000 --> 00:13:42,120
+what are we using in the background?
+
+336
+00:13:39,720 --> 00:13:44,160
+Because I said we try to
+
+337
+00:13:42,120 --> 00:13:47,080
+incorporate all the medical knowledge.
+
+338
+00:13:44,160 --> 00:13:49,360
+Um so, there are different kind of
+
+339
+00:13:47,080 --> 00:13:52,920
+projects and these are definitely not
+
+340
+00:13:49,360 --> 00:13:54,720
+all of them, but um yeah, we are using
+
+341
+00:13:52,920 --> 00:13:59,040
+um especially the clinical knowledge
+
+342
+00:13:54,720 --> 00:14:01,640
+graph to I think 250 GB of graph data
+
+343
+00:13:59,040 --> 00:14:03,720
+available um that you can
+
+344
+00:14:01,640 --> 00:14:05,520
+you can download and bring into your
+
+345
+00:14:03,720 --> 00:14:07,880
+system.
+
+346
+00:14:05,520 --> 00:14:10,400
+And also the human phenotype ontology
+
+347
+00:14:07,880 --> 00:14:11,680
+and there I want to give um
+
+348
+00:14:10,400 --> 00:14:12,600
+somebody who really
+
+349
+00:14:11,680 --> 00:14:15,920
+>> Yeah.
+
+350
+00:14:12,600 --> 00:14:18,240
+Big fan of human phenotype ontology. Um
+
+351
+00:14:15,920 --> 00:14:20,200
+yeah, I I have to try to explain this to
+
+352
+00:14:18,240 --> 00:14:21,160
+my colleagues or whoever wants to hear
+
+353
+00:14:20,200 --> 00:14:22,680
+it.
+
+354
+00:14:21,160 --> 00:14:24,480
+It's basically like, you know, we're
+
+355
+00:14:22,680 --> 00:14:27,760
+trying to build build here a sort of an
+
+356
+00:14:24,480 --> 00:14:29,920
+ecosystem with different beehives, you
+
+357
+00:14:27,760 --> 00:14:32,000
+know, the highly protective beehives,
+
+358
+00:14:29,920 --> 00:14:34,440
+the different hospitals involved across
+
+359
+00:14:32,000 --> 00:14:36,760
+Europe, across multiple centers.
+
+360
+00:14:34,440 --> 00:14:38,200
+And all these bees, these healthcare
+
+361
+00:14:36,760 --> 00:14:40,120
+professionals, they're bringing, you
+
+362
+00:14:38,200 --> 00:14:42,680
+know, the ingredients to the beehive and
+
+363
+00:14:40,120 --> 00:14:44,480
+this is how we collect uh the data. But
+
+364
+00:14:42,680 --> 00:14:46,839
+what we're missing is actually the queen
+
+365
+00:14:44,480 --> 00:14:49,240
+bee, like who decides what is actually
+
+366
+00:14:46,839 --> 00:14:51,640
+our common language? Who is deciding
+
+367
+00:14:49,240 --> 00:14:53,560
+what goes into the beehive and is
+
+368
+00:14:51,640 --> 00:14:55,320
+actually the data, the ingredients that
+
+369
+00:14:53,560 --> 00:14:57,560
+you need to, you know, get to the need
+
+370
+00:14:55,320 --> 00:15:00,040
+to get to the diagnosis. So, we have
+
+371
+00:14:57,560 --> 00:15:02,880
+snow meds, we have ICD,
+
+372
+00:15:00,040 --> 00:15:04,320
+uh whatever number we are at.
+
+373
+00:15:02,880 --> 00:15:06,560
+But it's actually not good enough
+
+374
+00:15:04,320 --> 00:15:09,680
+because it's far more
+
+375
+00:15:06,560 --> 00:15:11,560
+financial driven that uh for instance,
+
+376
+00:15:09,680 --> 00:15:13,680
+if this is the package, this is the
+
+377
+00:15:11,560 --> 00:15:16,120
+chest infection or this is the new hip
+
+378
+00:15:13,680 --> 00:15:17,400
+surgery, then this there is a financial
+
+379
+00:15:16,120 --> 00:15:19,720
+package behind it and that's
+
+380
+00:15:17,400 --> 00:15:21,640
+interesting, but not for me because I'm
+
+381
+00:15:19,720 --> 00:15:24,040
+in the business of rare diseases. So, I
+
+382
+00:15:21,640 --> 00:15:25,520
+want to actually diagnose the child and
+
+383
+00:15:24,040 --> 00:15:27,640
+understand what's going on and
+
+384
+00:15:25,520 --> 00:15:30,080
+understand if I need a curative
+
+385
+00:15:27,640 --> 00:15:32,240
+treatment or maybe a targeted treatment
+
+386
+00:15:30,080 --> 00:15:34,680
+with the least possible side effects or
+
+387
+00:15:32,240 --> 00:15:37,560
+complications and with the best outcome
+
+388
+00:15:34,680 --> 00:15:39,880
+for that child. So, there is another
+
+389
+00:15:37,560 --> 00:15:42,400
+language that already exists for very
+
+390
+00:15:39,880 --> 00:15:44,480
+long time. Peter Robinson and Sebastian
+
+391
+00:15:42,400 --> 00:15:46,400
+Kohler have like sort of invented it
+
+392
+00:15:44,480 --> 00:15:48,440
+many years ago and this is human
+
+393
+00:15:46,400 --> 00:15:51,720
+phenotype ontology. And this is
+
+394
+00:15:48,440 --> 00:15:54,400
+basically trying to describe every
+
+395
+00:15:51,720 --> 00:15:56,310
+single thing that you can think of in
+
+396
+00:15:54,400 --> 00:15:56,360
+sort of human phenotype.
+
+397
+00:15:56,310 --> 00:15:58,120
+>> [snorts]
+
+398
+00:15:56,360 --> 00:15:59,800
+>> The geneticists, of course, were there
+
+399
+00:15:58,120 --> 00:16:02,040
+the first and they have been working on
+
+400
+00:15:59,800 --> 00:16:03,360
+their part of these trees, the parent
+
+401
+00:16:02,040 --> 00:16:05,800
+and the child elements of these
+
+402
+00:16:03,360 --> 00:16:07,600
+different trees for many, many years.
+
+403
+00:16:05,800 --> 00:16:09,880
+But then when we felt, "Okay, as
+
+404
+00:16:07,600 --> 00:16:13,040
+immunology people and infectious disease
+
+405
+00:16:09,880 --> 00:16:15,280
+people, let's have a look at our tree."
+
+406
+00:16:13,040 --> 00:16:17,320
+Then we were a bit shocked because the
+
+407
+00:16:15,280 --> 00:16:19,800
+tree was not fit for purpose. It doesn't
+
+408
+00:16:17,320 --> 00:16:22,400
+give the type of granularity that I want
+
+409
+00:16:19,800 --> 00:16:24,400
+to have to describe all these beautiful
+
+410
+00:16:22,400 --> 00:16:26,960
+functional assays I'm doing in the lab
+
+411
+00:16:24,400 --> 00:16:28,839
+or all the types of infections which for
+
+412
+00:16:26,960 --> 00:16:30,600
+instance has COVID or any other new
+
+413
+00:16:28,839 --> 00:16:32,800
+pathogens that are out there. They need
+
+414
+00:16:30,600 --> 00:16:35,400
+to be updated by the specialist. So, now
+
+415
+00:16:32,800 --> 00:16:38,600
+we're updating the whole tree and we're
+
+416
+00:16:35,400 --> 00:16:41,839
+also now already integrating HBO next to
+
+417
+00:16:38,600 --> 00:16:44,040
+SNOMED and ICD into our electronic
+
+418
+00:16:41,839 --> 00:16:46,320
+healthcare records. And I already did
+
+419
+00:16:44,040 --> 00:16:48,560
+some preliminary work just, you know, if
+
+420
+00:16:46,320 --> 00:16:50,800
+you get a consult on ICU or you see a
+
+421
+00:16:48,560 --> 00:16:53,480
+patient in the clinic and instead of
+
+422
+00:16:50,800 --> 00:16:56,520
+saying you're typing a string of text,
+
+423
+00:16:53,480 --> 00:16:58,160
+"This child has a snotty nose." What
+
+424
+00:16:56,520 --> 00:17:00,720
+does that mean? Snotty nose? Is it
+
+425
+00:16:58,160 --> 00:17:03,000
+coryzal? Is it a viral infection? Like
+
+426
+00:17:00,720 --> 00:17:04,600
+that's not a code, is it? And if you
+
+427
+00:17:03,000 --> 00:17:07,160
+even would make it worse, you're in
+
+428
+00:17:04,600 --> 00:17:09,439
+Spain with a Spanish snotty nose or a
+
+429
+00:17:07,160 --> 00:17:11,640
+German snotty nose. Like how does that
+
+430
+00:17:09,439 --> 00:17:14,760
+translate? If we have one language and
+
+431
+00:17:11,640 --> 00:17:17,199
+it's HBO and the code is just the same.
+
+432
+00:17:14,760 --> 00:17:19,199
+It doesn't manage manage manage
+
+433
+00:17:17,199 --> 00:17:21,920
+It it matter if you have a Spanish
+
+434
+00:17:19,199 --> 00:17:24,240
+snotty snotty snotty nose or a British
+
+435
+00:17:21,920 --> 00:17:26,520
+snotty nose. It it's it's the same term.
+
+436
+00:17:24,240 --> 00:17:29,120
+It's the same code. If you then already
+
+437
+00:17:26,520 --> 00:17:30,760
+put it through different AI tools and
+
+438
+00:17:29,120 --> 00:17:32,480
+and you're saying, you know, what's the
+
+439
+00:17:30,760 --> 00:17:34,800
+likelihood of this child having an
+
+440
+00:17:32,480 --> 00:17:37,320
+immune deficiency and if so, what are
+
+441
+00:17:34,800 --> 00:17:39,840
+your two suggestions? You already get a
+
+442
+00:17:37,320 --> 00:17:41,840
+lot of really good suggestions, but it's
+
+443
+00:17:39,840 --> 00:17:44,120
+better if you have an agreed language
+
+444
+00:17:41,840 --> 00:17:48,240
+and at this moment of time, that's not
+
+445
+00:17:44,120 --> 00:17:48,240
+happening in healthcare as we are.
+
+446
+00:17:49,680 --> 00:17:55,400
+>> But we have a starting point. So, um if
+
+447
+00:17:53,240 --> 00:17:58,160
+you want to see So, this is how it
+
+448
+00:17:55,400 --> 00:18:00,920
+basically looks like. If you we have a
+
+449
+00:17:58,160 --> 00:18:04,760
+part that we are collecting from the
+
+450
+00:18:00,920 --> 00:18:08,080
+child and we have a lot of parts that we
+
+451
+00:18:04,760 --> 00:18:10,760
+have known variants. We have things like
+
+452
+00:18:08,080 --> 00:18:13,800
+how the genes can be evaluated. There
+
+453
+00:18:10,760 --> 00:18:16,440
+are pathways. There are They are both
+
+454
+00:18:13,800 --> 00:18:17,640
+protein pathways and so on. So, there's
+
+455
+00:18:16,440 --> 00:18:20,280
+a whole lot of knowledge in the
+
+456
+00:18:17,640 --> 00:18:22,320
+background and we are providing
+
+457
+00:18:20,280 --> 00:18:24,360
+basically with the samples, with genes,
+
+458
+00:18:22,320 --> 00:18:27,080
+with proteins and so on that we find
+
+459
+00:18:24,360 --> 00:18:29,000
+within the child um provide the
+
+460
+00:18:27,080 --> 00:18:32,840
+connection point there.
+
+461
+00:18:29,000 --> 00:18:36,160
+And trying to to get this together. Um
+
+462
+00:18:32,840 --> 00:18:38,200
+Yeah, obviously one thing that is also
+
+463
+00:18:36,160 --> 00:18:38,840
+we are not storing the whole genome from
+
+464
+00:18:38,200 --> 00:18:41,120
+the
+
+465
+00:18:38,840 --> 00:18:44,120
+child because that would not be
+
+466
+00:18:41,120 --> 00:18:47,160
+effective at all. So, there are really
+
+467
+00:18:44,120 --> 00:18:50,160
+selection processes in there to find the
+
+468
+00:18:47,160 --> 00:18:51,560
+right mutation. So, find things that are
+
+469
+00:18:50,160 --> 00:18:55,320
+actually
+
+470
+00:18:51,560 --> 00:19:00,920
+known for causing some kind of
+
+471
+00:18:55,320 --> 00:19:03,640
+uh thing just to be efficient in in data
+
+472
+00:19:00,920 --> 00:19:05,240
+storage and also in analysis because you
+
+473
+00:19:03,640 --> 00:19:07,680
+could have a lot of
+
+474
+00:19:05,240 --> 00:19:09,520
+We all know how much we have genes we
+
+475
+00:19:07,680 --> 00:19:10,920
+have in common with all the other types
+
+476
+00:19:09,520 --> 00:19:13,920
+of uh
+
+477
+00:19:10,920 --> 00:19:15,240
+mammals and species around the world.
+
+478
+00:19:13,920 --> 00:19:17,320
+So um
+
+479
+00:19:15,240 --> 00:19:20,480
+having all of it would
+
+480
+00:19:17,320 --> 00:19:22,440
+leads to a lot of big mess with a lot of
+
+481
+00:19:20,480 --> 00:19:23,520
+noise and
+
+482
+00:19:22,440 --> 00:19:26,360
+everything.
+
+483
+00:19:23,520 --> 00:19:26,360
+So uh
+
+484
+00:19:26,640 --> 00:19:32,800
+as I said, most of the time we also have
+
+485
+00:19:29,680 --> 00:19:33,800
+ICD-10 codes, but
+
+486
+00:19:32,800 --> 00:19:34,428
+yeah,
+
+487
+00:19:33,800 --> 00:19:35,280
+it's
+
+488
+00:19:34,428 --> 00:19:37,760
+>> [snorts]
+
+489
+00:19:35,280 --> 00:19:39,160
+>> useful in some kind of analysis to say,
+
+490
+00:19:37,760 --> 00:19:42,240
+"Okay,
+
+491
+00:19:39,160 --> 00:19:45,720
+what happens during time?" And,
+
+492
+00:19:42,240 --> 00:19:47,600
+yeah, we also, that is, I think, one
+
+493
+00:19:45,720 --> 00:19:49,320
+important point that we missed in the
+
+494
+00:19:47,600 --> 00:19:52,280
+beginning was, um,
+
+495
+00:19:49,320 --> 00:19:55,640
+the children are tested multiple times
+
+496
+00:19:52,280 --> 00:19:58,640
+over their uh,
+
+497
+00:19:55,640 --> 00:20:01,640
+yeah, cycle of the
+
+498
+00:19:58,640 --> 00:20:04,920
+treatment or, hopefully, at least,
+
+499
+00:20:01,640 --> 00:20:07,520
+yeah, the disease is is monitored. So,
+
+500
+00:20:04,920 --> 00:20:09,880
+we have multiple data spots, at least,
+
+501
+00:20:07,520 --> 00:20:13,080
+or the plan is, at least, have two.
+
+502
+00:20:09,880 --> 00:20:17,520
+Um, to have some kind of direction and
+
+503
+00:20:13,080 --> 00:20:17,520
+see what what's happening over time.
+
+504
+00:20:17,560 --> 00:20:19,960
+So,
+
+505
+00:20:22,680 --> 00:20:25,920
+what are we going to do? I already
+
+506
+00:20:24,360 --> 00:20:26,880
+mentioned,
+
+507
+00:20:25,920 --> 00:20:28,920
+um,
+
+508
+00:20:26,880 --> 00:20:30,960
+we have tested this with with
+
+509
+00:20:28,920 --> 00:20:33,200
+make-a-thons and we want to keep it as
+
+510
+00:20:30,960 --> 00:20:35,720
+open as possible. So, if anybody knows
+
+511
+00:20:33,200 --> 00:20:37,560
+somebody who wants to integrate and help
+
+512
+00:20:35,720 --> 00:20:40,320
+with that whole,
+
+513
+00:20:37,560 --> 00:20:42,680
+endeavor, we are basically having
+
+514
+00:20:40,320 --> 00:20:45,720
+clinics and there are a lot of clinics
+
+515
+00:20:42,680 --> 00:20:48,480
+that want to be involved and
+
+516
+00:20:45,720 --> 00:20:51,560
+are very open to that. We have some IT
+
+517
+00:20:48,480 --> 00:20:54,080
+providers in the middle that try to to
+
+518
+00:20:51,560 --> 00:20:55,600
+make things possible as good as
+
+519
+00:20:54,080 --> 00:20:58,280
+possible.
+
+520
+00:20:55,600 --> 00:21:00,040
+But, yeah, startups who want to build
+
+521
+00:20:58,280 --> 00:21:02,720
+algorithms,
+
+522
+00:21:00,040 --> 00:21:05,760
+farmer companies that have So, we are
+
+523
+00:21:02,720 --> 00:21:07,560
+open to any kind of idea to help this
+
+524
+00:21:05,760 --> 00:21:10,840
+move forward.
+
+525
+00:21:07,560 --> 00:21:13,360
+And uh also there are
+
+526
+00:21:10,840 --> 00:21:15,880
+Yeah, efforts to go into funding with
+
+527
+00:21:13,360 --> 00:21:18,600
+the EU discussions there. So, if
+
+528
+00:21:15,880 --> 00:21:21,520
+somebody is interested to help
+
+529
+00:21:18,600 --> 00:21:23,640
+collaborating there, um always welcome
+
+530
+00:21:21,520 --> 00:21:24,720
+to talk.
+
+531
+00:21:23,640 --> 00:21:27,000
+So,
+
+532
+00:21:24,720 --> 00:21:29,840
+next steps for the future. So,
+
+533
+00:21:27,000 --> 00:21:33,520
+we have a lot of things that uh we can
+
+534
+00:21:29,840 --> 00:21:37,080
+already uh achieve and run algorithms on
+
+535
+00:21:33,520 --> 00:21:40,120
+top, but we are not there yet. So, we do
+
+536
+00:21:37,080 --> 00:21:41,120
+not have the possibility to say, "Okay,
+
+537
+00:21:40,120 --> 00:21:44,160
+we
+
+538
+00:21:41,120 --> 00:21:46,880
+can protect the children from
+
+539
+00:21:44,160 --> 00:21:49,640
+going that down that path." We also not
+
+540
+00:21:46,880 --> 00:21:52,960
+having the the answer yet to give the
+
+541
+00:21:49,640 --> 00:21:55,280
+direct gene for the pharma company to
+
+542
+00:21:52,960 --> 00:21:56,800
+build that treatment specifically for
+
+543
+00:21:55,280 --> 00:21:59,680
+that child.
+
+544
+00:21:56,800 --> 00:22:02,960
+But, we have we are hopeful that we are
+
+545
+00:21:59,680 --> 00:22:05,080
+basically sitting there and um can with
+
+546
+00:22:02,960 --> 00:22:07,680
+all the ingenuity that I that is around
+
+547
+00:22:05,080 --> 00:22:09,680
+the world um to get there. First
+
+548
+00:22:07,680 --> 00:22:12,240
+starting points are already done. So, I
+
+549
+00:22:09,680 --> 00:22:14,280
+think you can also give very short
+
+550
+00:22:12,240 --> 00:22:15,120
+outcome already.
+
+551
+00:22:14,280 --> 00:22:17,960
+>> Yeah.
+
+552
+00:22:15,120 --> 00:22:17,960
+I think um
+
+553
+00:22:18,360 --> 00:22:22,040
+I think for next year we will be
+
+554
+00:22:20,080 --> 00:22:24,680
+focusing on HBO
+
+555
+00:22:22,040 --> 00:22:27,350
+and also about integration of uh
+
+556
+00:22:24,680 --> 00:22:27,960
+AI in clinic.
+
+557
+00:22:27,350 --> 00:22:31,160
+>> [cough]
+
+558
+00:22:27,960 --> 00:22:33,560
+>> I think you have to talk because
+
+559
+00:22:31,160 --> 00:22:36,560
+>> Yeah, just just imagine really having
+
+560
+00:22:33,560 --> 00:22:38,520
+this um on at point of care. So, Mikey
+
+561
+00:22:36,560 --> 00:22:40,280
+is really working with the children
+
+562
+00:22:38,520 --> 00:22:43,360
+having uh
+
+563
+00:22:40,280 --> 00:22:45,840
+when she's basically examining
+
+564
+00:22:43,360 --> 00:22:47,360
+and uh having all the things
+
+565
+00:22:45,840 --> 00:22:50,280
+automatically
+
+566
+00:22:47,360 --> 00:22:51,680
+uh yeah, incorporated into
+
+567
+00:22:50,280 --> 00:22:53,480
+>> Can I speak now?
+
+568
+00:22:51,680 --> 00:22:56,160
+For instance, um
+
+569
+00:22:53,480 --> 00:22:58,520
+we tried it in clinic. For instance, if
+
+570
+00:22:56,160 --> 00:23:00,840
+you have a new patient coming in, how
+
+571
+00:22:58,520 --> 00:23:03,375
+you do it now? You get for instance
+
+572
+00:23:00,840 --> 00:23:03,560
+uh patient referral and
+
+573
+00:23:03,375 --> 00:23:06,200
+>> [snorts]
+
+574
+00:23:03,560 --> 00:23:08,760
+>> the referral is scanned in in a PDF,
+
+575
+00:23:06,200 --> 00:23:10,640
+sometimes even upside down. So, I don't
+
+576
+00:23:08,760 --> 00:23:12,040
+know at a given point of time how many
+
+577
+00:23:10,640 --> 00:23:14,000
+doctors are
+
+578
+00:23:12,040 --> 00:23:15,640
+preparing their clinic upside down, but
+
+579
+00:23:14,000 --> 00:23:18,360
+this is happening, guys.
+
+580
+00:23:15,640 --> 00:23:21,080
+Without any text mining tools, without
+
+581
+00:23:18,360 --> 00:23:22,840
+any translation to HPO, for instance, is
+
+582
+00:23:21,080 --> 00:23:25,280
+a text mining tool. So, that's like
+
+583
+00:23:22,840 --> 00:23:28,520
+baffling. So, what I'm going to do for
+
+584
+00:23:25,280 --> 00:23:30,440
+next year is just a sort of a pilot to
+
+585
+00:23:28,520 --> 00:23:32,080
+showcase most of the rest of the
+
+586
+00:23:30,440 --> 00:23:33,840
+hospital because healthcare
+
+587
+00:23:32,080 --> 00:23:35,960
+professionals, they love to keep the
+
+588
+00:23:33,840 --> 00:23:38,280
+status quo. Let's not change anything.
+
+589
+00:23:35,960 --> 00:23:40,640
+Let's just keep doing however it is
+
+590
+00:23:38,280 --> 00:23:42,400
+we're doing it the last 100 years. Okay,
+
+591
+00:23:40,640 --> 00:23:44,880
+we have a computer now, but apart from
+
+592
+00:23:42,400 --> 00:23:46,680
+that, let's not change anything.
+
+593
+00:23:44,880 --> 00:23:48,400
+Uh and that's not reality. That's not
+
+594
+00:23:46,680 --> 00:23:50,640
+where we are. AI is not coming, it's
+
+595
+00:23:48,400 --> 00:23:52,880
+already there. We have to use it, and we
+
+596
+00:23:50,640 --> 00:23:55,280
+have to move a bit faster
+
+597
+00:23:52,880 --> 00:23:57,720
+than we're doing normally. So, what
+
+598
+00:23:55,280 --> 00:23:58,680
+we're going to do is if I get a referral
+
+599
+00:23:57,720 --> 00:24:00,880
+in,
+
+600
+00:23:58,680 --> 00:24:03,280
+I will get all the information out so
+
+601
+00:24:00,880 --> 00:24:05,000
+that I get what's there for imaging,
+
+602
+00:24:03,280 --> 00:24:07,000
+what's there from lab, what's there from
+
+603
+00:24:05,000 --> 00:24:08,960
+other brilliant specialists who already
+
+604
+00:24:07,000 --> 00:24:11,560
+have seen the child, the referral
+
+605
+00:24:08,960 --> 00:24:13,880
+letter, not upside down, and then do
+
+606
+00:24:11,560 --> 00:24:16,720
+some text mining and get some HPO out,
+
+607
+00:24:13,880 --> 00:24:18,800
+and then run already that HPO through a
+
+608
+00:24:16,720 --> 00:24:20,880
+couple of AI tools. I have a specific
+
+609
+00:24:18,800 --> 00:24:23,480
+preference, but I'm not sure if I'm
+
+610
+00:24:20,880 --> 00:24:25,760
+allowed to advertise, so let's not.
+
+611
+00:24:23,480 --> 00:24:28,440
+And then see what's already sort of the
+
+612
+00:24:25,760 --> 00:24:30,240
+diagnostic suggestions that come out,
+
+613
+00:24:28,440 --> 00:24:32,680
+and also what's the direction of the
+
+614
+00:24:30,240 --> 00:24:34,160
+diagnostic test that I should do next,
+
+615
+00:24:32,680 --> 00:24:35,920
+or the likelihood that I should go
+
+616
+00:24:34,160 --> 00:24:37,280
+straight to genetics because it's quite
+
+617
+00:24:35,920 --> 00:24:39,120
+likely this child has a genetic
+
+618
+00:24:37,280 --> 00:24:41,520
+disorder. And I think it will actually
+
+619
+00:24:39,120 --> 00:24:43,840
+be cost-saving in terms of time, but
+
+620
+00:24:41,520 --> 00:24:45,880
+also in terms of the type of diagnostics
+
+621
+00:24:43,840 --> 00:24:47,360
+you're going to request, and also how
+
+622
+00:24:45,880 --> 00:24:49,440
+quick you get to the diagnosis and
+
+623
+00:24:47,360 --> 00:24:51,760
+therefore to the treatment. Why it's so
+
+624
+00:24:49,440 --> 00:24:54,320
+important that Tim mentions we do
+
+625
+00:24:51,760 --> 00:24:56,560
+multiple time points. A child is not
+
+626
+00:24:54,320 --> 00:24:58,560
+born with a classic textbook disease.
+
+627
+00:24:56,560 --> 00:25:00,880
+You are, you know, as a baby, you have
+
+628
+00:24:58,560 --> 00:25:02,920
+multiple organs that are actually fine.
+
+629
+00:25:00,880 --> 00:25:05,320
+And then over time you're growing into
+
+630
+00:25:02,920 --> 00:25:07,840
+your sort of classic textbook, you know,
+
+631
+00:25:05,320 --> 00:25:10,360
+condition. I don't want as a
+
+632
+00:25:07,840 --> 00:25:13,067
+immunologist to only recognize you when
+
+633
+00:25:10,360 --> 00:25:15,240
+you hit the full spectrum of the signs
+
+634
+00:25:13,067 --> 00:25:17,440
+[snorts] and symptoms of that condition
+
+635
+00:25:15,240 --> 00:25:19,520
+because then I might not be able to save
+
+636
+00:25:17,440 --> 00:25:21,840
+you. So, I need to catch you at an
+
+637
+00:25:19,520 --> 00:25:23,680
+earlier stage while you're growing,
+
+638
+00:25:21,840 --> 00:25:26,000
+while you're evolving into your full
+
+639
+00:25:23,680 --> 00:25:28,880
+phenotype. And that's possible if you
+
+640
+00:25:26,000 --> 00:25:31,280
+have healthy children data and unhealthy
+
+641
+00:25:28,880 --> 00:25:32,640
+children data for whatever diagnosis
+
+642
+00:25:31,280 --> 00:25:34,720
+with multiple time points with
+
+643
+00:25:32,640 --> 00:25:37,000
+phenotypical evolution. So, that's
+
+644
+00:25:34,720 --> 00:25:39,440
+another project that you can't capture
+
+645
+00:25:37,000 --> 00:25:42,880
+in a normal problem list with ICD or
+
+646
+00:25:39,440 --> 00:25:47,040
+Snowmed, but you can in this way.
+
+647
+00:25:42,880 --> 00:25:49,840
+>> So, drive home points. We have a path to
+
+648
+00:25:47,040 --> 00:25:53,440
+work with genomic children data in a
+
+649
+00:25:49,840 --> 00:25:57,680
+secure way. So, that is that
+
+650
+00:25:53,440 --> 00:26:00,240
+uh a problem is basically solved. We
+
+651
+00:25:57,680 --> 00:26:01,360
+want to cooperate. We want to bring in
+
+652
+00:26:00,240 --> 00:26:03,800
+all the
+
+653
+00:26:01,360 --> 00:26:06,040
+ingenuity of the world to to make this
+
+654
+00:26:03,800 --> 00:26:08,760
+solvable. We have the first algorithms
+
+655
+00:26:06,040 --> 00:26:11,960
+that give us some kind of indications,
+
+656
+00:26:08,760 --> 00:26:14,080
+some kind of diagnosis suggestions. The
+
+657
+00:26:11,960 --> 00:26:15,000
+good thing in all of this also to to
+
+658
+00:26:14,080 --> 00:26:18,000
+make this
+
+659
+00:26:15,000 --> 00:26:19,640
+if we just find similarities or we find
+
+660
+00:26:18,000 --> 00:26:24,000
+some kind of hints that we can give a
+
+661
+00:26:19,640 --> 00:26:25,880
+doctor. This is not the typical medical
+
+662
+00:26:24,000 --> 00:26:28,520
+thing where we sit here and say, "Okay,
+
+663
+00:26:25,880 --> 00:26:31,280
+we have to be 99.999%
+
+664
+00:26:28,520 --> 00:26:32,960
+sure that it's really this." If we can
+
+665
+00:26:31,280 --> 00:26:35,280
+get just give some kind of hint or
+
+666
+00:26:32,960 --> 00:26:38,880
+suggestion that helps
+
+667
+00:26:35,280 --> 00:26:41,960
+um and that for one child or for a
+
+668
+00:26:38,880 --> 00:26:44,520
+significant number of children, um that
+
+669
+00:26:41,960 --> 00:26:48,200
+is already so much more helpful than it
+
+670
+00:26:44,520 --> 00:26:51,120
+was before. And uh that is hopefully
+
+671
+00:26:48,200 --> 00:26:52,840
+something we can achieve together. And
+
+672
+00:26:51,120 --> 00:26:56,720
+yeah, everything is connected with a
+
+673
+00:26:52,840 --> 00:26:58,640
+graph, which makes me pretty happy. And
+
+674
+00:26:56,720 --> 00:26:59,760
+that is this is the
+
+675
+00:26:58,640 --> 00:27:01,800
+um yeah,
+
+676
+00:26:59,760 --> 00:27:04,840
+connecting all the medical knowledge out
+
+677
+00:27:01,800 --> 00:27:07,480
+there and not just some project that is
+
+678
+00:27:04,840 --> 00:27:09,000
+doing some kind of data wrangling in the
+
+679
+00:27:07,480 --> 00:27:10,960
+in the background and saying, "Okay,
+
+680
+00:27:09,000 --> 00:27:13,720
+yeah, we did some good results on a test
+
+681
+00:27:10,960 --> 00:27:17,600
+data set and have some nice benchmarks."
+
+682
+00:27:13,720 --> 00:27:20,200
+It's it's the real deal and uh we hope
+
+683
+00:27:17,600 --> 00:27:23,040
+to get to the point where at some point
+
+684
+00:27:20,200 --> 00:27:23,600
+in the future I can run around here and
+
+685
+00:27:23,040 --> 00:27:25,800
+uh
+
+686
+00:27:23,600 --> 00:27:26,800
+say, "Yeah, we saved somebody."
+
+687
+00:27:25,800 --> 00:27:28,760
+Um
+
+688
+00:27:26,800 --> 00:27:31,480
+that's what we're aiming for. And if you
+
+689
+00:27:28,760 --> 00:27:35,480
+are interested to help us, um I have put
+
+690
+00:27:31,480 --> 00:27:36,320
+in the link here uh in in the QR code.
+
+691
+00:27:35,480 --> 00:27:38,240
+Um
+
+692
+00:27:36,320 --> 00:27:40,440
+We have a website with contact points
+
+693
+00:27:38,240 --> 00:27:43,440
+and so on, uh which is also explaining
+
+694
+00:27:40,440 --> 00:27:45,680
+that project a little bit more. And uh
+
+695
+00:27:43,440 --> 00:27:45,680
+yeah.
+
+696
+00:27:46,600 --> 00:27:50,000
+We're open for questions.
+
+697
+00:27:47,880 --> 00:27:52,160
+>> Awesome. Thank you very much. Wonderful
+
+698
+00:27:50,000 --> 00:27:53,800
+presentation. Thank you, Mika. Thank
+
+699
+00:27:52,160 --> 00:27:55,360
+you, Tim. We do have time for a couple
+
+700
+00:27:53,800 --> 00:27:56,840
+questions. We got one right here in
+
+701
+00:27:55,360 --> 00:27:58,880
+front. If you Yeah, if you want to grab
+
+702
+00:27:56,840 --> 00:27:58,880
+it.
+
+703
+00:28:00,680 --> 00:28:04,880
+>> Thank you. Great talk. Um
+
+704
+00:28:03,400 --> 00:28:07,000
+I understand the challenge you have. I
+
+705
+00:28:04,880 --> 00:28:08,440
+tried to um bring together multi-omics
+
+706
+00:28:07,000 --> 00:28:09,760
+data around clinical studies. So at
+
+707
+00:28:08,440 --> 00:28:10,920
+least there
+
+708
+00:28:09,760 --> 00:28:12,080
+at least within one company. I'm not
+
+709
+00:28:10,920 --> 00:28:14,160
+going to say they're consistent between
+
+710
+00:28:12,080 --> 00:28:16,640
+study or anything like that.
+
+711
+00:28:14,160 --> 00:28:18,800
+Um it's a huge effort and hugely
+
+712
+00:28:16,640 --> 00:28:20,360
+valuable. Have you thought to con- or
+
+713
+00:28:18,800 --> 00:28:22,760
+had the opportunity to connect with like
+
+714
+00:28:20,360 --> 00:28:24,000
+the Swiss personal healthcare network or
+
+715
+00:28:22,760 --> 00:28:25,320
+the similar activities that are
+
+716
+00:28:24,000 --> 00:28:27,560
+occurring in the Netherlands around
+
+717
+00:28:25,320 --> 00:28:29,680
+trying to join hospital patient data
+
+718
+00:28:27,560 --> 00:28:31,680
+together? I mean, the challenge is the
+
+719
+00:28:29,680 --> 00:28:33,120
+rareness of your diseases that you need
+
+720
+00:28:31,680 --> 00:28:34,120
+a very large pool to be able to find
+
+721
+00:28:33,120 --> 00:28:36,800
+them in, yeah?
+
+722
+00:28:34,120 --> 00:28:38,440
+>> Yes, that is actually also the um the
+
+723
+00:28:36,800 --> 00:28:41,920
+group of Echo
+
+724
+00:28:38,440 --> 00:28:45,640
+um hospitals. I think yeah, London, uh
+
+725
+00:28:41,920 --> 00:28:47,360
+Helsinki, Barcelona, and but yeah, so
+
+726
+00:28:45,640 --> 00:28:50,040
+our clinical colleagues have been
+
+727
+00:28:47,360 --> 00:28:53,600
+running around Europe for a long time. I
+
+728
+00:28:50,040 --> 00:28:56,320
+think probably you, too. Um and yeah,
+
+729
+00:28:53,600 --> 00:28:59,320
+trying to connect every part in every
+
+730
+00:28:56,320 --> 00:29:02,200
+possible way to get the number of
+
+731
+00:28:59,320 --> 00:29:03,640
+of subjects higher. That's obvious, but
+
+732
+00:29:02,200 --> 00:29:05,080
+uh yeah.
+
+733
+00:29:03,640 --> 00:29:06,400
+>> And also you want to have a like a
+
+734
+00:29:05,080 --> 00:29:08,640
+different
+
+735
+00:29:06,400 --> 00:29:11,560
+like ethnic background, so it also needs
+
+736
+00:29:08,640 --> 00:29:13,280
+to have like sort of that diversity in
+
+737
+00:29:11,560 --> 00:29:16,280
+your data set. A lot of for instance the
+
+738
+00:29:13,280 --> 00:29:19,080
+genetic backgrounds like how I run for
+
+739
+00:29:16,280 --> 00:29:21,520
+instance my immunodeficiency genetic
+
+740
+00:29:19,080 --> 00:29:24,200
+panel past the backgrounds sort of data
+
+741
+00:29:21,520 --> 00:29:26,960
+set. That data set is heavily sort of
+
+742
+00:29:24,200 --> 00:29:29,175
+Caucasian influenced, which is really
+
+743
+00:29:26,960 --> 00:29:29,720
+unfair. Like really unfair.
+
+744
+00:29:29,175 --> 00:29:33,160
+>> [laughter]
+
+745
+00:29:29,720 --> 00:29:35,480
+>> Because um sometimes I can't then find a
+
+746
+00:29:33,160 --> 00:29:36,200
+diagnosis because it's then
+
+747
+00:29:35,480 --> 00:29:38,440
+uh
+
+748
+00:29:36,200 --> 00:29:40,760
+sort of reported not reported because
+
+749
+00:29:38,440 --> 00:29:42,760
+it's a variant of unknown significance
+
+750
+00:29:40,760 --> 00:29:44,880
+in an African child, but actually it's
+
+751
+00:29:42,760 --> 00:29:46,520
+really relevant. And then I have to
+
+752
+00:29:44,880 --> 00:29:48,960
+update like ClinVar and you know the
+
+753
+00:29:46,520 --> 00:29:50,160
+genetic data sets because that's not
+
+754
+00:29:48,960 --> 00:29:52,400
+right.
+
+755
+00:29:50,160 --> 00:29:54,600
+So, that's also why of course this is a
+
+756
+00:29:52,400 --> 00:29:56,480
+European project with the ECHO, you
+
+757
+00:29:54,600 --> 00:29:58,480
+know, the children hospital network.
+
+758
+00:29:56,480 --> 00:30:00,240
+We're using basically that network. It's
+
+759
+00:29:58,480 --> 00:30:03,240
+very important for us to have like
+
+760
+00:30:00,240 --> 00:30:05,360
+different ethnicity and diversity in the
+
+761
+00:30:03,240 --> 00:30:07,000
+the data set. I think we're very well
+
+762
+00:30:05,360 --> 00:30:10,000
+positioned in London because we have a
+
+763
+00:30:07,000 --> 00:30:12,440
+very multicultural influx of patients,
+
+764
+00:30:10,000 --> 00:30:14,680
+so that's why I'm hopeful if you do like
+
+765
+00:30:12,440 --> 00:30:17,840
+Rotterdam and you do Helsinki and you do
+
+766
+00:30:14,680 --> 00:30:20,360
+Barcelona and Germany and London that we
+
+767
+00:30:17,840 --> 00:30:22,640
+have nice diversity.
+
+768
+00:30:20,360 --> 00:30:24,440
+>> One final question.
+
+769
+00:30:22,640 --> 00:30:26,280
+>> Yeah, thank you. Um
+
+770
+00:30:24,440 --> 00:30:28,880
+So, firstly thank you very much. I find
+
+771
+00:30:26,280 --> 00:30:30,720
+it a fascinating topic for on two
+
+772
+00:30:28,880 --> 00:30:32,960
+levels. On the personal as a father of
+
+773
+00:30:30,720 --> 00:30:34,640
+young children, um
+
+774
+00:30:32,960 --> 00:30:36,520
+I will talk to you afterwards about they
+
+775
+00:30:34,640 --> 00:30:38,640
+they happen to be healthy and and I
+
+776
+00:30:36,520 --> 00:30:39,960
+haven't thought about contributing to
+
+777
+00:30:38,640 --> 00:30:40,760
+such a thing, so I'll I'll talk to you
+
+778
+00:30:39,960 --> 00:30:42,560
+about that. Unfortunately, they're
+
+779
+00:30:40,760 --> 00:30:43,760
+Caucasian, so you might
+
+780
+00:30:42,560 --> 00:30:47,160
+uh not be as interested in them
+
+781
+00:30:43,760 --> 00:30:49,480
+otherwise, but also as friends of of
+
+782
+00:30:47,160 --> 00:30:52,360
+parents with
+
+783
+00:30:49,480 --> 00:30:54,560
+relatively rare disease allergic um
+
+784
+00:30:52,360 --> 00:30:56,480
+based things. So, fascinating on that
+
+785
+00:30:54,560 --> 00:30:58,200
+front. Unfortunately, I don't know
+
+786
+00:30:56,480 --> 00:31:01,000
+enough about the medical to ask you any
+
+787
+00:30:58,200 --> 00:31:03,200
+useful questions on the medical front.
+
+788
+00:31:01,000 --> 00:31:05,440
+But also professionally really
+
+789
+00:31:03,200 --> 00:31:08,640
+interesting from the the point of view
+
+790
+00:31:05,440 --> 00:31:11,000
+of the challenge of making this stuff
+
+791
+00:31:08,640 --> 00:31:12,640
+available for the evaluation and
+
+792
+00:31:11,000 --> 00:31:15,600
+development of algorithms without making
+
+793
+00:31:12,640 --> 00:31:16,360
+the the the personal data available. Can
+
+794
+00:31:15,600 --> 00:31:18,120
+you
+
+795
+00:31:16,360 --> 00:31:20,280
+talk a little bit more about how you do
+
+796
+00:31:18,120 --> 00:31:23,240
+that? I didn't quite understand. Are you
+
+797
+00:31:20,280 --> 00:31:25,680
+using techniques of differential privacy
+
+798
+00:31:23,240 --> 00:31:27,360
+there or are you totally synthesizing
+
+799
+00:31:25,680 --> 00:31:30,040
+the data? I didn't quite get that.
+
+800
+00:31:27,360 --> 00:31:33,040
+>> So, the data is tokenized and so on
+
+801
+00:31:30,040 --> 00:31:35,320
+protected within the clinic, but you as
+
+802
+00:31:33,040 --> 00:31:38,000
+a developer will never see the child
+
+803
+00:31:35,320 --> 00:31:40,880
+data, even the anonymized child data.
+
+804
+00:31:38,000 --> 00:31:43,880
+So, you can get a synthesized data set
+
+805
+00:31:40,880 --> 00:31:45,880
+of um which is giving you the structure
+
+806
+00:31:43,880 --> 00:31:47,720
+and giving you the
+
+807
+00:31:45,880 --> 00:31:50,720
+This is This is how it will look like
+
+808
+00:31:47,720 --> 00:31:51,880
+with data from adults that
+
+809
+00:31:50,720 --> 00:31:53,560
+um
+
+810
+00:31:51,880 --> 00:31:55,560
+Yeah, it looks like real data, but you
+
+811
+00:31:53,560 --> 00:31:57,400
+will not be able to diagnose them. And
+
+812
+00:31:55,560 --> 00:31:59,160
+that's real challenge because you cannot
+
+813
+00:31:57,400 --> 00:32:01,200
+just sit sit there and as a data
+
+814
+00:31:59,160 --> 00:32:02,720
+scientist and really go deep into the
+
+815
+00:32:01,200 --> 00:32:04,680
+data set
+
+816
+00:32:02,720 --> 00:32:07,760
+uh because that's
+
+817
+00:32:04,680 --> 00:32:09,240
+pretty hard to do. So, that is the
+
+818
+00:32:07,760 --> 00:32:11,640
+the balance we have to find. We
+
+819
+00:32:09,240 --> 00:32:14,200
+basically give you the possibility to
+
+820
+00:32:11,640 --> 00:32:17,040
+hand in an algorithm and say what do you
+
+821
+00:32:14,200 --> 00:32:20,160
+want out of it as some kind of
+
+822
+00:32:17,040 --> 00:32:22,120
+feedback, but you will we have to run it
+
+823
+00:32:20,160 --> 00:32:25,680
+basically for you and you will get all
+
+824
+00:32:22,120 --> 00:32:27,720
+the feedback back that you requested
+
+825
+00:32:25,680 --> 00:32:30,400
+other than anything that is personally
+
+826
+00:32:27,720 --> 00:32:30,400
+related.
+
+827
+00:32:30,840 --> 00:32:35,240
+>> Ideally then you would have like sort of
+
+828
+00:32:33,680 --> 00:32:36,720
+like a needle in a haystack, you know,
+
+829
+00:32:35,240 --> 00:32:38,680
+you you sort of
+
+830
+00:32:36,720 --> 00:32:40,280
+make the haystack smaller and then you
+
+831
+00:32:38,680 --> 00:32:42,120
+see like this child's now critically
+
+832
+00:32:40,280 --> 00:32:44,360
+unwell, that would be sort of the dream.
+
+833
+00:32:42,120 --> 00:32:46,520
+What other sort of needles are out there
+
+834
+00:32:44,360 --> 00:32:48,320
+in our data set that are so close to the
+
+835
+00:32:46,520 --> 00:32:51,000
+child that even if I can't get to the
+
+836
+00:32:48,320 --> 00:32:53,560
+diagnosis in that moment of time because
+
+837
+00:32:51,000 --> 00:32:55,360
+the child's ICU, I need to decide now if
+
+838
+00:32:53,560 --> 00:32:56,920
+the other two needles are the closest
+
+839
+00:32:55,360 --> 00:32:59,720
+connected and they have been treated
+
+840
+00:32:56,920 --> 00:33:01,960
+with for instance this medication, that
+
+841
+00:32:59,720 --> 00:33:05,320
+might be your best shot. So, let's do
+
+842
+00:33:01,960 --> 00:33:06,720
+that. So, yeah, it's also in that way it
+
+843
+00:33:05,320 --> 00:33:09,680
+should be helpful in the future if we
+
+844
+00:33:06,720 --> 00:33:09,680
+have enough data.
+
+845
+00:33:09,800 --> 00:33:15,000
+>> So, it's a difficult challenge. We are
+
+846
+00:33:11,560 --> 00:33:18,680
+not 100% know how [snorts] to tackle it.
+
+847
+00:33:15,000 --> 00:33:18,680
+Every approach welcome.
+
+848
+00:33:19,920 --> 00:33:25,160
+>> Okay, I think we may have to leave extra
+
+849
+00:33:23,320 --> 00:33:26,680
+questions.
+
+850
+00:33:25,160 --> 00:33:28,440
+I I think we're kind of running a little
+
+851
+00:33:26,680 --> 00:33:29,760
+bit behind.
+
+852
+00:33:28,440 --> 00:33:33,160
+We are we're supposed to start again
+
+853
+00:33:29,760 --> 00:33:35,240
+another So, I I apologize, but but Ben
+
+854
+00:33:33,160 --> 00:33:37,880
+and Micah or sorry, Tim and Micah will
+
+855
+00:33:35,240 --> 00:33:40,200
+be at the panel tomorrow
+
+856
+00:33:37,880 --> 00:33:42,560
+and so you'll have a chance to ask and
+
+857
+00:33:40,200 --> 00:33:44,880
+have discussion tomorrow as well. So,
+
+858
+00:33:42,560 --> 00:33:46,800
+apologize, but we have about 2 minutes
+
+859
+00:33:44,880 --> 00:33:47,800
+and we're going to get our next speaker
+
+860
+00:33:46,800 --> 00:33:49,360
+on.
+
+861
+00:33:47,800 --> 00:33:50,840
+So, again, thank you very much. Really
+
+862
+00:33:49,360 --> 00:33:53,520
+appreciate it. Catch them in the
+
+863
+00:33:50,840 --> 00:33:53,520
+networking.
+
