@@ -195,7 +195,8 @@ def test_a_talk_without_a_description_still_becomes_a_node():
         "HeySummit": [None, None, 587108],
         "File": [None, "/Transcripts/E/Presentations/Freshly ingested talk.srt", None],
     })
-    talks = namespace["extract_talks"](df, {"587108": ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track")})
+    talks = namespace["extract_talks"](df, {"587108": ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track",
+                                                       "2026-11-11T09:50:00")})
     assert set(talks["title"]) == {"Curated talk", "Freshly ingested talk", "Seeded talk"}
     ingested = talks.filter(pl.col("title") == "Freshly ingested talk").row(0, named=True)
     assert ingested["url"] == "" and ingested["description_source"] == ""
@@ -206,11 +207,37 @@ def test_a_talk_without_a_description_still_becomes_a_node():
     seeded = talks.filter(pl.col("title") == "Seeded talk").row(0, named=True)
     assert seeded["description_source"] == "heysummit" and seeded["heysummit"] == "587108"
     # The programme's schedule, for a talk HeySummit lists; blanks for the rest.
-    assert (seeded["starts_at"], seeded["stage"]) == ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track")
-    assert (curated["starts_at"], curated["stage"]) == ("", "")
+    assert (seeded["starts_at"], seeded["stage"], seeded["ends_at"]) == (
+        "2026-11-11T09:30:00", "Day 1: Rapid Insights Track", "2026-11-11T09:50:00")
+    assert (curated["starts_at"], curated["stage"], curated["ends_at"]) == ("", "", "")
     # COPY is positional: the frame's columns are the DDL's, in order.
     assert talks.columns == ["talk_id", "title", "category", "url", "description", "type",
-                             "video", "heysummit", "transcript", "description_source", "starts_at", "stage"]
+                             "video", "heysummit", "transcript", "description_source", "starts_at", "stage",
+                             "ends_at"]
+
+
+def test_a_talk_ends_its_length_after_it_starts_and_one_with_no_length_has_no_end(tmp_path):
+    """`load_schedule` reads the catalogue the sync writes; the end answers "what's on now?"."""
+    import json
+    from pathlib import Path
+
+    from ingest import config as ingest_config
+
+    source = (Path(ingest_config.KUZU_DIR) / "02_domain_graph.py").read_text()
+    namespace: dict = {}
+    exec(source.split('if __name__ == "__main__":')[0], namespace)  # noqa: S102
+    catalogue = tmp_path / "catalog.json"
+    catalogue.write_text(json.dumps([
+        {"id": 1, "date": "2026-11-11T09:30:00", "stage": "Day 1: Rapid Insights Track", "duration_mins": 20},
+        {"id": 2, "date": "2026-11-11T12:30:00", "stage": "Day 1: Masterclass", "duration_mins": 120},
+        {"id": 3, "date": "2019-11-07T10:00:00"},
+    ]))
+
+    schedule = namespace["load_schedule"](catalogue)
+
+    assert schedule["1"] == ("2026-11-11T09:30:00", "Day 1: Rapid Insights Track", "2026-11-11T09:50:00")
+    assert schedule["2"][2] == "2026-11-11T14:30:00"
+    assert schedule["3"] == ("2019-11-07T10:00:00", "", "")
 
 
 def test_a_short_stays_a_short_even_once_it_has_a_metadata_row():
