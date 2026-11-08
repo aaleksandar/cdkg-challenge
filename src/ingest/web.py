@@ -1263,12 +1263,17 @@ def _questions_asked() -> int:
 @router.get("/questions.jsonl")
 def download_questions():
     """Every question asked in "Ask the graph", one JSON object per line."""
-    from fastapi.responses import FileResponse
+    from fastapi.responses import Response
 
-    if not config.QUESTIONS_LOG.exists():
+    # Read once, not streamed: the app keeps appending, and a stream sized by
+    # an earlier stat would send more bytes than it advertised.
+    # ponytail: whole file in memory; fine for a conference's questions (~1 KB each).
+    try:
+        body = config.QUESTIONS_LOG.read_bytes()
+    except FileNotFoundError:
         return HTMLResponse("No questions asked yet.", 404)
-    return FileResponse(config.QUESTIONS_LOG, media_type="application/x-ndjson",
-                        filename="cdkg-questions.jsonl")
+    return Response(body, media_type="application/x-ndjson",
+                    headers={"Content-Disposition": 'attachment; filename="cdkg-questions.jsonl"'})
 
 
 def _backlog(states) -> list[str]:

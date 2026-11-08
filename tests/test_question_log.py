@@ -54,3 +54,21 @@ def test_a_failed_write_never_breaks_the_chat(monkeypatch, tmp_path):
     question_log = _question_log()
     monkeypatch.setattr(question_log.config, "QUESTIONS_LOG", tmp_path / "missing" / "q.jsonl")
     question_log.record("Q", {}, kiosk=False, tapped=False, seconds=1)
+
+
+def test_a_half_written_line_is_taken_back(monkeypatch, tmp_path):
+    """A full disk mid-write must not glue a fragment to the next question."""
+    log = tmp_path / "questions.jsonl"
+    question_log = _question_log()
+    monkeypatch.setattr(question_log.config, "QUESTIONS_LOG", log)
+    question_log.record("First", {}, kiosk=False, tapped=False, seconds=1)
+    kept = log.read_bytes()
+
+    real_write = question_log.os.write
+    monkeypatch.setattr(question_log.os, "write", lambda fd, data: real_write(fd, data[:10]))
+    question_log.record("Lost", {}, kiosk=False, tapped=False, seconds=1)
+    assert log.read_bytes() == kept
+
+    monkeypatch.setattr(question_log.os, "write", real_write)
+    question_log.record("Third", {}, kiosk=False, tapped=False, seconds=1)
+    assert [json.loads(line)["question"] for line in log.read_text().splitlines()] == ["First", "Third"]
