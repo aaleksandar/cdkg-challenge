@@ -5159,6 +5159,7 @@
   "date": "2026-11-11T15:30:00",
   "speakers": [
    "David Hughes",
+   "Bryce Merkl Sasaki",
    "Prashanth Rao"
   ],
   "categories": [
@@ -5404,7 +5405,7 @@
  {
   "id": 1100211,
   "event_id": 238614,
-  "title": "From Fragmented to Findable: Scientific Intelligence FAIR & AI Ready Semantic Data Products at AstraZeneca",
+  "title": "From Fragmented to Findable: Scientific Intelligence FAIR & AI Ready Semantic Data Products",
   "url": "https://2026.connected-data.london/talks/from-fragmented-to-findable-scientific-intelligence-fair-ai-ready-semantic-data-products-at-astrazeneca/",
   "date": "2026-11-12T14:50:00",
   "speakers": [
@@ -5627,8 +5628,8 @@
  {
   "id": 1100549,
   "event_id": 238614,
-  "title": "Neurosymbolic AI - the best of both worlds",
-  "url": "https://2026.connected-data.london/talks/neurosymbolic-ai-the-best-of-both-worlds/",
+  "title": "Breaking the Trust Ceiling: From Evi and Alexa to Neurosymbolic AI",
+  "url": "https://2026.connected-data.london/talks/breaking-the-trust-ceiling-from-evi-and-alexa-to-neurosymbolic-ai/",
   "date": "2026-11-12T09:30:00",
   "speakers": [
    "William Tunstall-Pedoe"
@@ -5641,7 +5642,7 @@
    "Semantic Technology",
    "Keynotes"
   ],
-  "description": "Neurosymbolic systems can reach 100% precision, which means being able to fully trust the answers they give as accurate, and be fully auditable with every influence on the answer being visible to the customer.\nFor many applications, such as health care or finance, this can make the difference for adopting the technology at all.\nThe ability to work with graphs is a fundamental part of the art of reasoning, and this isn't going to be accomplished via some large-scale emergence but needs to be a core part of the architecture from the outset.\nThe knowledge graph acts as a contract with the LLM as to the representation of information to humans and other processes. Without it, there is no way to truly synchronize services and perform integration.",
+  "description": "Large language models are the most capable AI systems ever built, yet they hallucinate, can't explain themselves and can't be relied on where being wrong is costly. The result is a trust ceiling: trillions of dollars of value, and any real prospect of AI running critical processes end to end, sit behind a line the industry cannot simply scale past.\nWilliam Tunstall-Pedoe has spent his career building machines that reason with knowledge, from True Knowledge and Evi, the technology behind Amazon Alexa, to UnlikelyAI today. He'll argue that bolting tools and retrieval onto a statistical model produces chains of guesses, not trust, and that the answer is an architecture with neural networks at the edges and deterministic, explainable symbolic reasoning at the core.\nHe'll show what that looks like in practice in regulated, high-stakes settings, and what it means for a community that has spent a decade building knowledge graphs and ontologies.",
   "stage": "Day 2: Keynotes Track - Warwick/Salisbury Suite",
   "duration_mins": 30
  },
@@ -5659,5 +5660,17 @@
   "description": "Coming soon",
   "stage": "Day 2: Keynotes Track - Warwick/Salisbury Suite",
   "duration_mins": 30
+ },
+ {
+  "id": 1121981,
+  "event_id": 238614,
+  "title": "Lunch & Learn: GPUs in Graph DBs: Still Waiting for the Revolution",
+  "url": "https://2026.connected-data.london/talks/gpus-in-graph-dbs-still-waiting-for-the-revolution/",
+  "date": "2026-11-12T12:40:00",
+  "speakers": [
+   "Roi Lipman"
+  ],
+  "categories": [],
+  "description": "While graphics processors transformed AI and matrix computing overnight, graph databases present an irregular, pointer-heavy workload that resists traditional parallel acceleration. This talk examines the fundamental hardware and architectural bottlenecks, from memory latency to dynamic frontier traversal, that have kept GPU-native graph stores largely in the academic lab. We explore what modern interconnects, unified memory, and specialised kernels are finally changing, and what realistic performance gains look like in production today.\nSign up to attend here."
  }
 ]
