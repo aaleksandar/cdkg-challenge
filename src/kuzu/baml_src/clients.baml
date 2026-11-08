@@ -22,6 +22,11 @@ client<llm> GeminiFlash {
 // standing in front of the screen, so a Gemini spike must fail in seconds and
 // drop to the topic buttons rather than ride Exponential's minute of retries.
 // The model name moves with GeminiFlash's above.
+// thinkingLevel "low", as for GeminiFlashChat below: ReadVisitor took 7–13 s
+// per photo at the default thinking (2026-11-08, the two reference photos),
+// close to the timeout, which is how a 27 s read (timeout + retry) happened.
+// At "low": 3.4–8.7 s, tags as specific, one stalled call in six. The timeout
+// is 10 s rather than 15 so a stalled call is retried sooner.
 client<llm> GeminiFlashLive {
   provider google-ai
   retry_policy Quick
@@ -30,9 +35,12 @@ client<llm> GeminiFlashLive {
     api_key env.GOOGLE_API_KEY
     generationConfig {
       temperature 0
+      thinkingConfig {
+        thinkingLevel "low"
+      }
     }
     http {
-      request_timeout_ms 15000
+      request_timeout_ms 10000
     }
   }
 }
