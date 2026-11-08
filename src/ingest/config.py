@@ -52,6 +52,9 @@ GRAPH_DB_PATH = Path(os.getenv("DB_PATH", KUZU_DIR / "cdl_db.kuzu"))
 # the shared data volume so they survive a redeploy. Bounded, because every
 # snapshot is a full export and nobody prunes by hand.
 SNAPSHOT_DIR = Path(os.getenv("SNAPSHOT_DIR", GRAPH_DB_PATH.parent / "snapshots"))
+# Questions asked in "Ask the graph", written by the app beside the database
+# (src/kuzu/question_log.py) and downloaded from Advanced.
+QUESTIONS_LOG = Path(os.getenv("QUESTIONS_LOG", GRAPH_DB_PATH.parent / "questions.jsonl"))
 SNAPSHOT_KEEP = int(os.getenv("SNAPSHOT_KEEP", "20"))
 
 # Cached yt-dlp metadata, committed so a parser improvement can be re-applied
