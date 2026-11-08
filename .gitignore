@@ -175,3 +175,6 @@ ingest_state.db-shm
 
 # Graph build marker (written on swap; sits beside the gitignored database)
 .graph-version
+
+# Claude Code local state (worktrees)
+.claude/
