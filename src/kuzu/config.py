@@ -16,6 +16,10 @@ TRANSCRIPTS_DIR = Path(os.getenv("TRANSCRIPTS_DIR", BASE_DIR.parent.parent / "Tr
 # Database path
 DB_PATH = os.getenv("DB_PATH", str(BASE_DIR / "cdl_db.kuzu"))
 
+# Questions asked in "Ask the graph" (question_log.py), beside the database so
+# production keeps them on the data volume.
+QUESTIONS_LOG = Path(os.getenv("QUESTIONS_LOG", Path(DB_PATH).parent / "questions.jsonl"))
+
 # Metadata CSV file
 METADATA_CSV = TRANSCRIPTS_DIR / "Connected Data Knowledge Graph Challenge - Transcript Metadata.csv"
 

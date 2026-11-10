@@ -178,3 +178,5 @@ ingest_state.db-shm
 
 # Claude Code local state (worktrees)
 .claude/
+# "Ask the graph" question log (written beside the local database)
+src/kuzu/questions.jsonl
