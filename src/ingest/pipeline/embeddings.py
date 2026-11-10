@@ -96,6 +96,14 @@ def _embed(texts: list[str]) -> list[list[float]]:
     return [e.values for e in response.embeddings]
 
 
+def dumps(cache: dict[str, dict]) -> str:
+    """The file's text. One talk per line: re-embedding a talk is a one-line
+    diff. `gitops` writes a merge through this too."""
+    body = ",\n".join(f"{json.dumps(k)}: {json.dumps(cache[k], separators=(',', ':'))}"
+                      for k in sorted(cache))
+    return "{\n" + body + "\n}\n"
+
+
 def _save(entries: dict[str, dict], drop: set[str] = frozenset()) -> None:
     """Merge entries into the file and drop others, under the publish lock and
     atomically, as `abstracts._save` does and for the same reasons."""
@@ -107,11 +115,8 @@ def _save(entries: dict[str, dict], drop: set[str] = frozenset()) -> None:
         cache.update(entries)
         for talk_id in drop:
             cache.pop(talk_id, None)
-        # One talk per line: re-embedding a talk is a one-line diff.
-        body = ",\n".join(f"{json.dumps(k)}: {json.dumps(cache[k], separators=(',', ':'))}"
-                          for k in sorted(cache))
         scratch = path.with_name(path.name + ".tmp")
-        scratch.write_text("{\n" + body + "\n}\n", encoding="utf-8")
+        scratch.write_text(dumps(cache), encoding="utf-8")
         scratch.replace(path)
 
 
