@@ -1,9 +1,11 @@
+import time
 from pathlib import Path
 
 import streamlit as st
 
 import config
 import for_you
+import question_log
 from rag import CURRENT_EVENT, GraphRAG, london_now, relative, slot
 
 st.set_page_config(page_title="Graph RAG Q&A", layout="wide")
@@ -148,15 +150,19 @@ with ask_tab:
     # A chat input clears once asked: a text box kept its question, and every
     # other click on the page asked it again.
     question = st.chat_input("Ask about the talks, the speakers, or what's on now")
+    tapped = False
     if KIOSK:
         # Tapped rather than typed, at the stand. A button fires once.
         for column, example in zip(st.columns(len(EXAMPLES)), EXAMPLES):
             if column.button(example, width="stretch"):
-                question = example
+                question, tapped = example, True
 
     if question:
         with st.spinner("Asking the graph…"):
+            started = time.monotonic()
             output = rag.run(question)
+        question_log.record(question, output, kiosk=KIOSK, tapped=tapped,
+                            seconds=time.monotonic() - started)
         st.session_state.messages.append({
             "question": question, "answer": output["response"],
             "sources": output.get("sources") or [],

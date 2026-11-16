@@ -361,3 +361,13 @@ def test_abstract_tags_tagged_on_both_sides_are_merged_by_talk_id():
     merged = json.loads(gitops._union_dict(ours, theirs, None))
     assert merged == {"t-1": {"hash": "a", "tags": ["x"]}, "t-2": {"hash": "c", "tags": ["z"]},
                       "t-3": {"hash": "d", "tags": ["w"]}}
+
+
+def test_talk_vectors_merge_one_talk_per_line():
+    """A merged vectors file keeps embeddings.py's layout, not one number per line."""
+    ours = json.dumps({"t-1": {"hash": "a", "vec": [0.1, 0.2]}, "t-2": {"hash": "b", "vec": [0.3]}})
+    theirs = json.dumps({"t-2": {"hash": "c", "vec": [0.4]}})
+    text = gitops._union_vectors(ours, theirs, None)
+    assert json.loads(text) == {"t-1": {"hash": "a", "vec": [0.1, 0.2]}, "t-2": {"hash": "c", "vec": [0.4]}}
+    assert text.splitlines() == ["{", '"t-1": {"hash":"a","vec":[0.1,0.2]},',
+                                 '"t-2": {"hash":"c","vec":[0.4]}', "}"]

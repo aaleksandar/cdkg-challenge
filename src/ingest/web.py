@@ -942,6 +942,7 @@ def _advanced_view(lane: str | None, q: str | None, show_all: bool = False) -> d
         "flags": {name: getattr(config, name) for name in TOGGLEABLE},
         "KG_ENABLED": config.KG_ENABLED,
         "GIT_PUSH_ENABLED": config.GIT_PUSH_ENABLED,
+        "questions_asked": _questions_asked(),
         "publish": gitops.health(),
         # The intention, and whether jobs are actually running. The switch keeps
         # the two in step, so they agree in the served app — but a flag says what
@@ -1248,6 +1249,31 @@ def download_snapshot(name: str):
         return HTMLResponse("Not found.", 404)
     return FileResponse(path, media_type="application/zip",
                         filename=f"cdkg-graph-{name}.zip")
+
+
+def _questions_asked() -> int:
+    """How many questions "Ask the graph" has logged (src/kuzu/question_log.py)."""
+    try:
+        with open(config.QUESTIONS_LOG, "rb") as f:
+            return sum(1 for _ in f)
+    except OSError:
+        return 0
+
+
+@router.get("/questions.jsonl")
+def download_questions():
+    """Every question asked in "Ask the graph", one JSON object per line."""
+    from fastapi.responses import Response
+
+    # Read once, not streamed: the app keeps appending, and a stream sized by
+    # an earlier stat would send more bytes than it advertised.
+    # ponytail: whole file in memory; fine for a conference's questions (~1 KB each).
+    try:
+        body = config.QUESTIONS_LOG.read_bytes()
+    except FileNotFoundError:
+        return HTMLResponse("No questions asked yet.", 404)
+    return Response(body, media_type="application/x-ndjson",
+                    headers={"Content-Disposition": 'attachment; filename="cdkg-questions.jsonl"'})
 
 
 def _backlog(states) -> list[str]:

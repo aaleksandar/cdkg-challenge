@@ -15,6 +15,8 @@ function ExtractTags(text: string) -> Entity {
     {{ ctx.output_format }}
 
     Return individual names without repetition.
+    Leave out names that appear only in a speaker's career history (products
+    they worked on before, past employers); keep everything the talk itself covers.
   "#
 }
 

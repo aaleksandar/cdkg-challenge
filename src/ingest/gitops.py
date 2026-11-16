@@ -226,8 +226,10 @@ def _resolve_by_key(path: str, token: str) -> bool:
         key, merge = "TalkID", _union_csv
     elif full == config.ENTITIES_JSON:
         key, merge = "filename", _union_json
-    elif full in (config.DESCRIPTION_TAGS_JSON, config.TALK_EMBEDDINGS_JSON):
+    elif full == config.DESCRIPTION_TAGS_JSON:
         key, merge = None, _union_dict
+    elif full == config.TALK_EMBEDDINGS_JSON:
+        key, merge = None, _union_vectors
     elif full == config.SKIPPED_TALKS:
         key, merge = "key", _union_json
     else:
@@ -277,6 +279,17 @@ def _union_dict(ours: str, theirs: str, key: None) -> str:
 
     merged = {**json.loads(ours), **json.loads(theirs)}
     return json.dumps(merged, indent=2, ensure_ascii=False, sort_keys=True)   # as abstracts.py writes it
+
+
+def _union_vectors(ours: str, theirs: str, key: None) -> str:
+    """Talk vectors, keyed by talk id; theirs stands. Written one talk per line,
+    as embeddings.py writes it: indented, every number took a line of its own
+    and the file grew from 267 lines to 245,000 (#48)."""
+    import json
+
+    from .pipeline import embeddings
+
+    return embeddings.dumps({**json.loads(ours), **json.loads(theirs)})
 
 
 def merge_published(token: str) -> None:
