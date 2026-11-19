@@ -1,0 +1,796 @@
+1
+00:00:02,560 --> 00:00:06,560
+quicker.
+
+2
+00:00:04,000 --> 00:00:08,639
+>> That's who I am.
+
+3
+00:00:06,560 --> 00:00:11,679
+>> Okay. So,
+
+4
+00:00:08,639 --> 00:00:13,840
+>> I'm known for doing odd things. Uh I
+
+5
+00:00:11,679 --> 00:00:17,600
+gave her one of these where I did a
+
+6
+00:00:13,840 --> 00:00:20,720
+completely in Dr. Seuss Ryan. Uh did
+
+7
+00:00:17,600 --> 00:00:22,480
+another one, you know, which was like
+
+8
+00:00:20,720 --> 00:00:26,320
+the world's worst standup comedy
+
+9
+00:00:22,480 --> 00:00:30,240
+routine. So, I decided tonight I better
+
+10
+00:00:26,320 --> 00:00:32,640
+be like really serious. So,
+
+11
+00:00:30,240 --> 00:00:37,840
+really introduce some of the thoughts
+
+12
+00:00:32,640 --> 00:00:40,640
+that made all this stuff happen. So, um,
+
+13
+00:00:37,840 --> 00:00:42,480
+you know, this is kind of I was asked at
+
+14
+00:00:40,640 --> 00:00:47,520
+a at a recent conference to give a
+
+15
+00:00:42,480 --> 00:00:49,440
+provocative talk on the, you know,
+
+16
+00:00:47,520 --> 00:00:52,079
+history of the semantic web and some of
+
+17
+00:00:49,440 --> 00:00:55,520
+that. Uh, you know, this is the famous
+
+18
+00:00:52,079 --> 00:00:59,399
+paper. Uh, the paper was known as Tim
+
+19
+00:00:55,520 --> 00:00:59,399
+Ber's at
+
+20
+00:01:03,520 --> 00:01:08,479
+Ora is sorry he can't be here with us.
+
+21
+00:01:06,479 --> 00:01:10,320
+Uh I'm also really sorry that Nigel
+
+22
+00:01:08,479 --> 00:01:11,760
+Shadwell can't be here with us tonight
+
+23
+00:01:10,320 --> 00:01:13,520
+because he was supposed to be the dinner
+
+24
+00:01:11,760 --> 00:01:14,320
+speaker. Uh
+
+25
+00:01:13,520 --> 00:01:16,720
+>> yes he was.
+
+26
+00:01:14,320 --> 00:01:19,520
+>> You know we'll do what we can. But this
+
+27
+00:01:16,720 --> 00:01:23,600
+paper 25 years ago
+
+28
+00:01:19,520 --> 00:01:25,360
+right um was really not like the first
+
+29
+00:01:23,600 --> 00:01:29,040
+mention of semantic web. In fact, the
+
+30
+00:01:25,360 --> 00:01:31,439
+first one we can find online was uh Tim
+
+31
+00:01:29,040 --> 00:01:33,920
+used the term semantic web in a talk he
+
+32
+00:01:31,439 --> 00:01:35,840
+gave in 1995.
+
+33
+00:01:33,920 --> 00:01:38,720
+Uh he has these things called design
+
+34
+00:01:35,840 --> 00:01:41,280
+notes at the worldwide web consortium.
+
+35
+00:01:38,720 --> 00:01:45,439
+So he had a 1998
+
+36
+00:01:41,280 --> 00:01:48,159
+design note on the semantic web. Uh now
+
+37
+00:01:45,439 --> 00:01:52,240
+these start these talked a lot about RDF
+
+38
+00:01:48,159 --> 00:01:54,640
+but had no no mention ofies or agents.
+
+39
+00:01:52,240 --> 00:01:57,920
+So what really was the thing that this
+
+40
+00:01:54,640 --> 00:02:02,479
+paper was known for is it introduced the
+
+41
+00:01:57,920 --> 00:02:05,520
+idea of the semantic web to refer to
+
+42
+00:02:02,479 --> 00:02:07,600
+ontology based agents on the web. Uh a
+
+43
+00:02:05,520 --> 00:02:10,319
+lot of the underlying technology that
+
+44
+00:02:07,600 --> 00:02:11,840
+you now call knowledge graphs triple
+
+45
+00:02:10,319 --> 00:02:15,200
+stores
+
+46
+00:02:11,840 --> 00:02:17,440
+uh on and on and on. So you know I got
+
+47
+00:02:15,200 --> 00:02:20,160
+to tell you it's stunning. I could not
+
+48
+00:02:17,440 --> 00:02:22,959
+25 years ago have believed that someday
+
+49
+00:02:20,160 --> 00:02:24,480
+I would stand be standing in front of a
+
+50
+00:02:22,959 --> 00:02:26,000
+I figured I'd be standing in front of an
+
+51
+00:02:24,480 --> 00:02:29,040
+audience of people but it would be at an
+
+52
+00:02:26,000 --> 00:02:33,040
+academic conference with 10 people who
+
+53
+00:02:29,040 --> 00:02:36,640
+you know would go out drinking after. Um
+
+54
+00:02:33,040 --> 00:02:39,760
+so to see this many people really
+
+55
+00:02:36,640 --> 00:02:42,319
+helping to make this vision real is
+
+56
+00:02:39,760 --> 00:02:47,280
+great. But there is one thing that
+
+57
+00:02:42,319 --> 00:02:49,519
+really worries me which is um
+
+58
+00:02:47,280 --> 00:02:51,840
+we have some ideas about how we were
+
+59
+00:02:49,519 --> 00:02:54,640
+going to do some of this stuff and now
+
+60
+00:02:51,840 --> 00:02:57,040
+it's just like all getting reinvented
+
+61
+00:02:54,640 --> 00:03:00,720
+not by you folks who are are staying
+
+62
+00:02:57,040 --> 00:03:02,640
+close to the vision but there's just
+
+63
+00:03:00,720 --> 00:03:05,360
+these forces outside that are mostly
+
+64
+00:03:02,640 --> 00:03:08,599
+large AI forces that are really forcing
+
+65
+00:03:05,360 --> 00:03:08,599
+a reinvention.
+
+66
+00:03:08,720 --> 00:03:14,319
+So
+
+67
+00:03:11,040 --> 00:03:17,360
+>> I got um Professor Handler,
+
+68
+00:03:14,319 --> 00:03:18,319
+>> I I got a I got a question comment here
+
+69
+00:03:17,360 --> 00:03:21,680
+for you.
+
+70
+00:03:18,319 --> 00:03:24,080
+>> Um so
+
+71
+00:03:21,680 --> 00:03:27,440
+actually you don't know me.
+
+72
+00:03:24,080 --> 00:03:29,920
+>> My name is Chad Scales.
+
+73
+00:03:27,440 --> 00:03:32,080
+>> I actually have I want to share kind of
+
+74
+00:03:29,920 --> 00:03:34,239
+this plan that I have right now and you
+
+75
+00:03:32,080 --> 00:03:35,920
+will not believe what I'm doing. Like I
+
+76
+00:03:34,239 --> 00:03:37,680
+have this really fantastic startup right
+
+77
+00:03:35,920 --> 00:03:41,440
+now that we're doing and we have
+
+78
+00:03:37,680 --> 00:03:42,319
+completely rethought data.
+
+79
+00:03:41,440 --> 00:03:44,480
+>> All of it?
+
+80
+00:03:42,319 --> 00:03:47,280
+>> Yeah. All of it.
+
+81
+00:03:44,480 --> 00:03:50,080
+>> That must have been tiring.
+
+82
+00:03:47,280 --> 00:03:50,879
+>> All these companies they have pabytes of
+
+83
+00:03:50,080 --> 00:03:51,680
+data.
+
+84
+00:03:50,879 --> 00:03:52,959
+>> Yeah.
+
+85
+00:03:51,680 --> 00:03:55,360
+>> The thing guess but they don't
+
+86
+00:03:52,959 --> 00:03:58,159
+understand what that data means.
+
+87
+00:03:55,360 --> 00:04:01,120
+>> Oh well well you I sure wrote an article
+
+88
+00:03:58,159 --> 00:04:02,560
+about that a few years back.
+
+89
+00:04:01,120 --> 00:04:05,040
+>> Is that is it online or where can I find
+
+90
+00:04:02,560 --> 00:04:06,640
+that? Uh well it was about wrapped web.
+
+91
+00:04:05,040 --> 00:04:09,760
+>> Uh can you send me a link? I have I'll
+
+92
+00:04:06,640 --> 00:04:12,239
+have my AI agent to summarize it for me.
+
+93
+00:04:09,760 --> 00:04:15,200
+>> Anyway, so look our our breakthrough
+
+94
+00:04:12,239 --> 00:04:19,199
+here. We said we've built this AI native
+
+95
+00:04:15,200 --> 00:04:20,560
+semantic data fabric.
+
+96
+00:04:19,199 --> 00:04:21,519
+>> Yeah. Yeah. Exactly. That's what we've
+
+97
+00:04:20,560 --> 00:04:22,800
+invented here.
+
+98
+00:04:21,519 --> 00:04:27,080
+>> You invented
+
+99
+00:04:22,800 --> 00:04:27,080
+>> well at at scale.
+
+100
+00:04:28,400 --> 00:04:34,639
+>> How does that work?
+
+101
+00:04:30,080 --> 00:04:36,639
+>> Well, first of all, has a persistent
+
+102
+00:04:34,639 --> 00:04:39,120
+identifier.
+
+103
+00:04:36,639 --> 00:04:41,280
+>> No, no, no. These are like it's a global
+
+104
+00:04:39,120 --> 00:04:42,720
+data handle handle, you know, like a
+
+105
+00:04:41,280 --> 00:04:44,000
+like in Twitter and X, I have my own
+
+106
+00:04:42,720 --> 00:04:45,759
+handle. It's a unique thing. Like that's
+
+107
+00:04:44,000 --> 00:04:47,040
+what it is. You have to have that.
+
+108
+00:04:45,759 --> 00:04:50,240
+>> So what's the difference?
+
+109
+00:04:47,040 --> 00:04:51,919
+>> Oh, ours has an API. It has MCP. It
+
+110
+00:04:50,240 --> 00:04:54,960
+supports A to A.
+
+111
+00:04:51,919 --> 00:04:56,720
+>> Uh you've heard
+
+112
+00:04:54,960 --> 00:04:58,320
+we we're representing relationships
+
+113
+00:04:56,720 --> 00:04:59,440
+here.
+
+114
+00:04:58,320 --> 00:05:01,840
+>> Oh, an RDF.
+
+115
+00:04:59,440 --> 00:05:04,639
+>> No, no, no. This is AI ready
+
+116
+00:05:01,840 --> 00:05:07,520
+relationship data.
+
+117
+00:05:04,639 --> 00:05:09,280
+>> Relationship like like subject,
+
+118
+00:05:07,520 --> 00:05:10,080
+predicate object.
+
+119
+00:05:09,280 --> 00:05:11,600
+>> Yeah.
+
+120
+00:05:10,080 --> 00:05:14,479
+>> Yeah. Kind of. You know what? It's
+
+121
+00:05:11,600 --> 00:05:17,280
+actually not that. It's it's four parts.
+
+122
+00:05:14,479 --> 00:05:19,120
+It's a quad.
+
+123
+00:05:17,280 --> 00:05:21,120
+>> I like that.
+
+124
+00:05:19,120 --> 00:05:23,520
+>> So, but hold on. What we do is that we
+
+125
+00:05:21,120 --> 00:05:26,000
+connect all of these entities and these
+
+126
+00:05:23,520 --> 00:05:27,280
+relationship in this massive enterprise
+
+127
+00:05:26,000 --> 00:05:30,240
+structure. We're building like this
+
+128
+00:05:27,280 --> 00:05:32,639
+enterprise brain. I'm not a craft.
+
+129
+00:05:30,240 --> 00:05:36,280
+>> No, it's an enterprise contextual data
+
+130
+00:05:32,639 --> 00:05:36,280
+intelligence mesh.
+
+131
+00:05:37,600 --> 00:05:41,919
+>> It's a craft.
+
+132
+00:05:38,639 --> 00:05:44,160
+>> Well, underneath something underneath
+
+133
+00:05:41,919 --> 00:05:48,160
+and does represent
+
+134
+00:05:44,160 --> 00:05:48,800
+>> we really don't use that word.
+
+135
+00:05:48,160 --> 00:05:52,400
+>> Why not?
+
+136
+00:05:48,800 --> 00:05:54,400
+>> It's hard a lot of times. Of course, but
+
+137
+00:05:52,400 --> 00:05:56,320
+here's the killer feature, right? With
+
+138
+00:05:54,400 --> 00:05:59,280
+this though, we can actually navigate
+
+139
+00:05:56,320 --> 00:06:00,960
+data. We can reason over that data. We
+
+140
+00:05:59,280 --> 00:06:02,720
+can go find that data and then we can
+
+141
+00:06:00,960 --> 00:06:03,680
+take actions for you too.
+
+142
+00:06:02,720 --> 00:06:07,280
+>> Oh, agents.
+
+143
+00:06:03,680 --> 00:06:07,919
+>> No, it's aentic AI.
+
+144
+00:06:07,280 --> 00:06:10,319
+>> Agents?
+
+145
+00:06:07,919 --> 00:06:13,039
+>> No, aentic.
+
+146
+00:06:10,319 --> 00:06:13,680
+>> Uh, we had agents in the original
+
+147
+00:06:13,039 --> 00:06:15,759
+article.
+
+148
+00:06:13,680 --> 00:06:17,120
+>> But was it really AI needed?
+
+149
+00:06:15,759 --> 00:06:21,360
+>> They were AI.
+
+150
+00:06:17,120 --> 00:06:23,280
+>> Yeah, but was it at scale?
+
+151
+00:06:21,360 --> 00:06:26,560
+>> I think you've reinvented the semantic
+
+152
+00:06:23,280 --> 00:06:29,960
+>> that's just old technology. So you have
+
+153
+00:06:26,560 --> 00:06:29,960
+unique identif
+
+154
+00:06:35,520 --> 00:06:38,520
+>> aentic.
+
+155
+00:06:40,960 --> 00:06:45,000
+>> Wait, so
+
+156
+00:06:41,600 --> 00:06:45,000
+>> this thing is
+
+157
+00:06:50,639 --> 00:06:55,520
+so so we were talking to agents.
+
+158
+00:06:54,080 --> 00:06:59,199
+>> Why did you guys do this? We
+
+159
+00:06:55,520 --> 00:07:02,319
+accomplished it in 2001. Holy When
+
+160
+00:06:59,199 --> 00:07:05,280
+did he
+
+161
+00:07:02,319 --> 00:07:06,000
+>> what? So he had this whole idea and then
+
+162
+00:07:05,280 --> 00:07:07,840
+>> Yeah, pretty much.
+
+163
+00:07:06,000 --> 00:07:09,680
+>> He didn't start a company for it.
+
+164
+00:07:07,840 --> 00:07:12,680
+>> Uh well, we were sort of academically
+
+165
+00:07:09,680 --> 00:07:12,680
+inclined.
+
+166
+00:07:14,000 --> 00:07:19,919
+>> So, uh can I license this?
+
+167
+00:07:16,639 --> 00:07:21,759
+>> Uh it's an open standard. God, open
+
+168
+00:07:19,919 --> 00:07:24,000
+standards. I Who's going to be funding
+
+169
+00:07:21,759 --> 00:07:25,039
+the creative companies behind this song?
+
+170
+00:07:24,000 --> 00:07:27,919
+Come on, J.
+
+171
+00:07:25,039 --> 00:07:29,680
+>> Yeah. Well, you know, maybe someday some
+
+172
+00:07:27,919 --> 00:07:33,240
+people will figure out how to put this
+
+173
+00:07:29,680 --> 00:07:33,240
+stuff in the enterprise.
+
+174
+00:07:42,000 --> 00:07:47,800
+>> Please give a big thanks to Chad or
+
+175
+00:07:51,759 --> 00:07:57,680
+that's good. That's
+
+176
+00:07:55,360 --> 00:07:59,120
+so this is what was going to be the
+
+177
+00:07:57,680 --> 00:08:03,199
+punch line if I actually gave a real
+
+178
+00:07:59,120 --> 00:08:07,120
+talk. Uh but this was more fun.
+
+179
+00:08:03,199 --> 00:08:11,280
+But here's my real point.
+
+180
+00:08:07,120 --> 00:08:13,599
+The folks in this room get it
+
+181
+00:08:11,280 --> 00:08:16,000
+right. But we're still not there.
+
+182
+00:08:13,599 --> 00:08:18,560
+There's still a long way to go. And we
+
+183
+00:08:16,000 --> 00:08:21,440
+really need to say like keep this
+
+184
+00:08:18,560 --> 00:08:22,720
+vision, keep it going, and make it
+
+185
+00:08:21,440 --> 00:08:24,800
+happen.
+
+186
+00:08:22,720 --> 00:08:27,039
+Right. So, you know, I always like to
+
+187
+00:08:24,800 --> 00:08:28,560
+end my talks with some kind of call to
+
+188
+00:08:27,039 --> 00:08:31,680
+action. So, my call to action on this
+
+189
+00:08:28,560 --> 00:08:34,159
+one is, "Hey folks, you're doing great
+
+190
+00:08:31,680 --> 00:08:37,039
+stuff. Let's do it. Let's really make it
+
+191
+00:08:34,159 --> 00:08:38,399
+work." So, with that, for those of you
+
+192
+00:08:37,039 --> 00:08:40,000
+that still have champagne in your
+
+193
+00:08:38,399 --> 00:08:43,560
+glasses
+
+194
+00:08:40,000 --> 00:08:43,560
+or anything else,
+
+195
+00:08:43,680 --> 00:08:49,680
+>> not after, but to all of you who have
+
+196
+00:08:47,600 --> 00:08:52,720
+made the vision real.
+
+197
+00:08:49,680 --> 00:08:53,920
+>> Cheers. Cheers.
+
+198
+00:08:52,720 --> 00:08:56,720
+>> Cheers.
+
+199
+00:08:53,920 --> 00:08:56,720
+>> Cheers, guys.
+

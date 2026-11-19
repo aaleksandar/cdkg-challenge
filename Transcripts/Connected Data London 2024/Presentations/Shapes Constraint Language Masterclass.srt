@@ -1,0 +1,8316 @@
+1
+00:00:05,000 --> 00:00:11,720
+Hi, my name is Veronica Heimdal.
+
+2
+00:00:09,360 --> 00:00:14,720
+I work as a knowledge graph lead in
+
+3
+00:00:11,720 --> 00:00:15,920
+Capgemini, this super small consultancy
+
+4
+00:00:14,720 --> 00:00:19,480
+firm.
+
+5
+00:00:15,920 --> 00:00:22,640
+I am based in Oslo, Norway.
+
+6
+00:00:19,480 --> 00:00:27,040
+And today I will have this master class
+
+7
+00:00:22,640 --> 00:00:27,040
+on the shapes constraint language.
+
+8
+00:00:27,200 --> 00:00:32,560
+I will be using at the end of the master
+
+9
+00:00:29,720 --> 00:00:34,960
+class, if we have time, a demo that is
+
+10
+00:00:32,560 --> 00:00:36,840
+available on my GitHub.
+
+11
+00:00:34,960 --> 00:00:39,200
+It's an open repository that is named
+
+12
+00:00:36,840 --> 00:00:41,400
+Shackle Master Class, if you want to
+
+13
+00:00:39,200 --> 00:00:44,280
+to follow examples and code. And there
+
+14
+00:00:41,400 --> 00:00:45,680
+is also the slide deck is also available
+
+15
+00:00:44,280 --> 00:00:48,440
+online.
+
+16
+00:00:45,680 --> 00:00:52,320
+A teeny tiny disclaimer before we start.
+
+17
+00:00:48,440 --> 00:00:54,480
+I have a severe hearing disability. So,
+
+18
+00:00:52,320 --> 00:00:56,760
+if you have questions, raise your hand,
+
+19
+00:00:54,480 --> 00:00:57,920
+I will come to you.
+
+20
+00:00:56,760 --> 00:01:00,200
+Okay?
+
+21
+00:00:57,920 --> 00:01:01,720
+Awesome.
+
+22
+00:01:00,200 --> 00:01:05,080
+Yeah. Um,
+
+23
+00:01:01,720 --> 00:01:06,560
+I can perhaps tell a little bit about my
+
+24
+00:01:05,080 --> 00:01:08,800
+my background.
+
+25
+00:01:06,560 --> 00:01:10,920
+I have a very traditional computer
+
+26
+00:01:08,800 --> 00:01:13,840
+science degree from the University of
+
+27
+00:01:10,920 --> 00:01:17,600
+Oslo. And during my studies, I fell in
+
+28
+00:01:13,840 --> 00:01:19,360
+love with logic. Everything logic.
+
+29
+00:01:17,600 --> 00:01:22,240
+And
+
+30
+00:01:19,360 --> 00:01:24,440
+as I was approaching the end of my time
+
+31
+00:01:22,240 --> 00:01:27,280
+at the university, I thought,
+
+32
+00:01:24,440 --> 00:01:30,120
+"What shall I do with my life? Shall I
+
+33
+00:01:27,280 --> 00:01:32,120
+write Turing machines for for a living?
+
+34
+00:01:30,120 --> 00:01:33,160
+Or
+
+35
+00:01:32,120 --> 00:01:34,880
+what
+
+36
+00:01:33,160 --> 00:01:37,280
+was I supposed to do with all this
+
+37
+00:01:34,880 --> 00:01:40,120
+awesome logic that I wanted to to work
+
+38
+00:01:37,280 --> 00:01:42,600
+with?" And then, a head hunter actually
+
+39
+00:01:40,120 --> 00:01:44,760
+called me from a consultancy firm asking
+
+40
+00:01:42,600 --> 00:01:46,680
+if I knew semantic technologies. And I
+
+41
+00:01:44,760 --> 00:01:48,680
+said, "No, I do not know semantic
+
+42
+00:01:46,680 --> 00:01:51,560
+technologies. But I know there is a
+
+43
+00:01:48,680 --> 00:01:53,760
+course here at the uni that I can take."
+
+44
+00:01:51,560 --> 00:01:57,720
+So, I took that one. It's the Martin
+
+45
+00:01:53,760 --> 00:02:00,932
+Giese's course, if any of you know him.
+
+46
+00:01:57,720 --> 00:02:03,972
+Um, so I took that course on semantic
+
+47
+00:02:00,932 --> 00:02:06,132
+web technologies and found out damn, I
+
+48
+00:02:03,972 --> 00:02:07,612
+can use that logic to something
+
+49
+00:02:06,132 --> 00:02:10,372
+practical.
+
+50
+00:02:07,612 --> 00:02:12,572
+And I got that job. And 10 years later
+
+51
+00:02:10,372 --> 00:02:15,332
+I'm here talking to you about semantic
+
+52
+00:02:12,572 --> 00:02:17,492
+technologies. So isn't that nice?
+
+53
+00:02:15,332 --> 00:02:20,052
+I I find that kind of nice.
+
+54
+00:02:17,492 --> 00:02:22,252
+So I've been working with um semantic
+
+55
+00:02:20,052 --> 00:02:23,532
+technologies RDF
+
+56
+00:02:22,252 --> 00:02:26,452
+um
+
+57
+00:02:23,532 --> 00:02:29,252
+the RDF stack for the past 10 years
+
+58
+00:02:26,452 --> 00:02:31,772
+both in public sector, private sector,
+
+59
+00:02:29,252 --> 00:02:34,292
+first as a Java developer, now as a
+
+60
+00:02:31,772 --> 00:02:38,372
+ontology architect.
+
+61
+00:02:34,292 --> 00:02:39,892
+I've been working with SHACL since 2016.
+
+62
+00:02:38,372 --> 00:02:42,572
+So the year it
+
+63
+00:02:39,892 --> 00:02:44,892
+before it became standardized. So the
+
+64
+00:02:42,572 --> 00:02:48,132
+first SHACL engine I implemented was on
+
+65
+00:02:44,892 --> 00:02:50,652
+the working draft
+
+66
+00:02:48,132 --> 00:02:55,212
+uh vocabulary. So that doesn't work
+
+67
+00:02:50,652 --> 00:02:59,092
+anymore. But anyway that first SHACL
+
+68
+00:02:55,212 --> 00:03:02,612
+engine back in 2016 it was actually
+
+69
+00:02:59,092 --> 00:03:05,852
+that work which became RDF4J's SHACL
+
+70
+00:03:02,612 --> 00:03:09,332
+engine. And RDF4J's SHACL engine is
+
+71
+00:03:05,852 --> 00:03:12,932
+adopted by Ontotext. So something good
+
+72
+00:03:09,332 --> 00:03:16,502
+happened out of that work back in 2016.
+
+73
+00:03:12,932 --> 00:03:18,522
+Anyways, enough about that.
+
+74
+00:03:16,502 --> 00:03:18,522
+>> [clears throat]
+
+75
+00:03:23,252 --> 00:03:27,652
+>> I tend to say very many words in very
+
+76
+00:03:25,452 --> 00:03:30,052
+little time so that
+
+77
+00:03:27,652 --> 00:03:31,732
+need water a lot.
+
+78
+00:03:30,052 --> 00:03:32,852
+Okay.
+
+79
+00:03:31,732 --> 00:03:36,772
+So
+
+80
+00:03:32,852 --> 00:03:39,252
+as most of you probably know
+
+81
+00:03:36,772 --> 00:03:41,892
+semantic technologies and semantic
+
+82
+00:03:39,252 --> 00:03:44,052
+knowledge graphs aren't something new
+
+83
+00:03:41,892 --> 00:03:46,132
+and fancy and scary. We have been doing
+
+84
+00:03:44,052 --> 00:03:48,172
+this for quite some time.
+
+85
+00:03:46,132 --> 00:03:49,252
+And
+
+86
+00:03:48,172 --> 00:03:51,692
+yeah,
+
+87
+00:03:49,252 --> 00:03:53,732
+I don't need to take the whole history
+
+88
+00:03:51,692 --> 00:03:57,252
+for you guys, but we've been doing these
+
+89
+00:03:53,732 --> 00:04:01,252
+things since the mid and late '90s. And
+
+90
+00:03:57,252 --> 00:04:05,214
+that's quite a gap from standardizing
+
+91
+00:04:01,252 --> 00:04:07,894
+structuring data as directed graphs to
+
+92
+00:04:05,214 --> 00:04:11,454
+being able to validate them, right?
+
+93
+00:04:07,894 --> 00:04:15,894
+With a standardized language. So, SHACL,
+
+94
+00:04:11,454 --> 00:04:15,894
+it became standardized in 2017.
+
+95
+00:04:18,734 --> 00:04:22,694
+And is
+
+96
+00:04:20,174 --> 00:04:25,214
+by now the latest addition to what I
+
+97
+00:04:22,694 --> 00:04:29,334
+call the semantic web stack.
+
+98
+00:04:25,214 --> 00:04:32,734
+More standards are on their way.
+
+99
+00:04:29,334 --> 00:04:34,574
+But before I start I start to talk about
+
+100
+00:04:32,734 --> 00:04:37,254
+SHACL,
+
+101
+00:04:34,574 --> 00:04:40,774
+I will talk about things.
+
+102
+00:04:37,254 --> 00:04:42,734
+So, I set some kind of common foundation
+
+103
+00:04:40,774 --> 00:04:45,494
+for us for what I'm going to be talking
+
+104
+00:04:42,734 --> 00:04:47,494
+about. And I'm a bit excited on this
+
+105
+00:04:45,494 --> 00:04:50,694
+section really because
+
+106
+00:04:47,494 --> 00:04:53,574
+um I created some new slides
+
+107
+00:04:50,694 --> 00:04:57,414
+um which reflects how
+
+108
+00:04:53,574 --> 00:05:01,414
+my brain is thinking about things. So,
+
+109
+00:04:57,414 --> 00:05:03,494
+let's see if you are able to to follow.
+
+110
+00:05:01,414 --> 00:05:07,054
+And remember, I come from the world of a
+
+111
+00:05:03,494 --> 00:05:10,054
+world of logic, right? So, when I think
+
+112
+00:05:07,054 --> 00:05:13,574
+about things, I think about sets of
+
+113
+00:05:10,054 --> 00:05:14,654
+things. I think about set theory.
+
+114
+00:05:13,574 --> 00:05:15,654
+And
+
+115
+00:05:14,654 --> 00:05:18,134
+thing
+
+116
+00:05:15,654 --> 00:05:21,774
+like this owl thing is the universe,
+
+117
+00:05:18,134 --> 00:05:24,214
+right? It's everything. And everything
+
+118
+00:05:21,774 --> 00:05:27,494
+are things.
+
+119
+00:05:24,214 --> 00:05:31,014
+And within the universe or within thing,
+
+120
+00:05:27,494 --> 00:05:33,174
+we have sets of things.
+
+121
+00:05:31,014 --> 00:05:34,894
+For example, we have the set of all
+
+122
+00:05:33,174 --> 00:05:38,654
+works.
+
+123
+00:05:34,894 --> 00:05:41,614
+And we can divide that set into smaller
+
+124
+00:05:38,654 --> 00:05:43,734
+subsets, but it's still some kind of
+
+125
+00:05:41,614 --> 00:05:44,974
+work, but something more specific,
+
+126
+00:05:43,734 --> 00:05:47,014
+right?
+
+127
+00:05:44,974 --> 00:05:50,854
+So, we have the set of all books,
+
+128
+00:05:47,014 --> 00:05:53,294
+albums, and we have persons that isn't a
+
+129
+00:05:50,854 --> 00:05:55,854
+work, but something else. And we have
+
+130
+00:05:53,294 --> 00:05:55,854
+bands.
+
+131
+00:05:56,534 --> 00:06:02,374
+And I have also stated that
+
+132
+00:05:59,294 --> 00:06:05,655
+there is nothing in common between book
+
+133
+00:06:02,374 --> 00:06:09,095
+and album. Therefore, they are disjoint
+
+134
+00:06:05,655 --> 00:06:11,295
+sets or disjoint classes.
+
+135
+00:06:09,095 --> 00:06:12,455
+So, all these sets are what we call a
+
+136
+00:06:11,295 --> 00:06:16,495
+class
+
+137
+00:06:12,455 --> 00:06:16,495
+in owl, for example.
+
+138
+00:06:20,255 --> 00:06:25,775
+And within those sets,
+
+139
+00:06:22,775 --> 00:06:29,615
+yeah. So,
+
+140
+00:06:25,775 --> 00:06:29,615
+the triple equivalent
+
+141
+00:06:31,295 --> 00:06:37,495
+And classes and sets, they doesn't they
+
+142
+00:06:34,015 --> 00:06:40,375
+do not describe those physical actual
+
+143
+00:06:37,495 --> 00:06:43,055
+items, right? Those are abstract
+
+144
+00:06:40,375 --> 00:06:45,975
+descriptions for a group of things, a
+
+145
+00:06:43,055 --> 00:06:48,615
+set of things, not that actual physical
+
+146
+00:06:45,975 --> 00:06:51,815
+objects.
+
+147
+00:06:48,615 --> 00:06:56,215
+And we can have a relationship or
+
+148
+00:06:51,815 --> 00:06:58,815
+functions between these sets.
+
+149
+00:06:56,215 --> 00:07:01,695
+For example, we have artist, which is a
+
+150
+00:06:58,815 --> 00:07:02,855
+relationship that goes from album to
+
+151
+00:07:01,695 --> 00:07:06,935
+band.
+
+152
+00:07:02,855 --> 00:07:10,055
+Meaning, we have album as the domain
+
+153
+00:07:06,935 --> 00:07:11,455
+for the relationship artist, and band as
+
+154
+00:07:10,055 --> 00:07:14,975
+the range.
+
+155
+00:07:11,455 --> 00:07:18,215
+And same for member and and author.
+
+156
+00:07:14,975 --> 00:07:20,855
+And here are the turtle equivalents
+
+157
+00:07:18,215 --> 00:07:20,855
+for those.
+
+158
+00:07:22,895 --> 00:07:27,335
+Everyone familiar with domain and range
+
+159
+00:07:26,055 --> 00:07:30,815
+from before?
+
+160
+00:07:27,335 --> 00:07:32,975
+Careful nods. Nice.
+
+161
+00:07:30,815 --> 00:07:37,055
+And then we have the actual physical
+
+162
+00:07:32,975 --> 00:07:39,455
+things as elements in the sets, right?
+
+163
+00:07:37,055 --> 00:07:42,735
+They're named individuals
+
+164
+00:07:39,455 --> 00:07:44,175
+in a class or instantiation of a class,
+
+165
+00:07:42,735 --> 00:07:47,295
+right?
+
+166
+00:07:44,175 --> 00:07:50,055
+But I think of them as elements in the
+
+167
+00:07:47,295 --> 00:07:52,295
+set of those things.
+
+168
+00:07:50,055 --> 00:07:55,495
+So, The Hobbit is an element in a set of
+
+169
+00:07:52,295 --> 00:07:57,255
+all books. And The Hobbit is also a work
+
+170
+00:07:55,495 --> 00:08:00,095
+since book
+
+171
+00:07:57,255 --> 00:08:04,015
+is a subclass of work.
+
+172
+00:08:00,095 --> 00:08:07,095
+And Tolkien, he is a element in the set
+
+173
+00:08:04,015 --> 00:08:07,095
+of all persons.
+
+174
+00:08:08,777 --> 00:08:14,817
+Yeah.
+
+175
+00:08:10,577 --> 00:08:17,497
+So, that's the RDF type
+
+176
+00:08:14,817 --> 00:08:17,497
+description.
+
+177
+00:08:21,377 --> 00:08:26,337
+A little bit more terminology before we
+
+178
+00:08:23,617 --> 00:08:28,297
+grasp on to to SHACL and that is world
+
+179
+00:08:26,337 --> 00:08:30,377
+assumptions.
+
+180
+00:08:28,297 --> 00:08:33,177
+So traditionally
+
+181
+00:08:30,377 --> 00:08:35,937
+we have been building ontologies and
+
+182
+00:08:33,177 --> 00:08:38,897
+machine-readable information models
+
+183
+00:08:35,937 --> 00:08:45,537
+in RDF OWL, right?
+
+184
+00:08:38,897 --> 00:08:48,337
+And OWL as a ontology modeling language
+
+185
+00:08:45,537 --> 00:08:49,537
+relies on the open world assumption
+
+186
+00:08:48,337 --> 00:08:52,577
+because
+
+187
+00:08:49,537 --> 00:08:55,497
+we admit that we have incomplete
+
+188
+00:08:52,577 --> 00:08:59,177
+knowledge about our universe because
+
+189
+00:08:55,497 --> 00:09:01,617
+there can always exist some statement
+
+190
+00:08:59,177 --> 00:09:03,817
+that we don't know, but it can exist
+
+191
+00:09:01,617 --> 00:09:06,217
+some statement out there in the world
+
+192
+00:09:03,817 --> 00:09:08,297
+that fulfill any of my statements,
+
+193
+00:09:06,217 --> 00:09:10,897
+right? And that's the open world
+
+194
+00:09:08,297 --> 00:09:13,697
+assumption.
+
+195
+00:09:10,897 --> 00:09:16,377
+So, if we take an example
+
+196
+00:09:13,697 --> 00:09:19,337
+that everything I know in the entire
+
+197
+00:09:16,377 --> 00:09:21,137
+world is that in a hole in the ground
+
+198
+00:09:19,337 --> 00:09:23,177
+there lived a hobbit.
+
+199
+00:09:21,137 --> 00:09:26,577
+And that's everything I know in the
+
+200
+00:09:23,177 --> 00:09:30,417
+entire world and somebody asks me
+
+201
+00:09:26,577 --> 00:09:32,577
+do Gandalf live in a hole in the ground?
+
+202
+00:09:30,417 --> 00:09:35,937
+In an open world assumption, the answer
+
+203
+00:09:32,577 --> 00:09:39,377
+to this would be I don't know because I
+
+204
+00:09:35,937 --> 00:09:41,897
+do not have information on
+
+205
+00:09:39,377 --> 00:09:44,457
+Gandalf is a hobbit or if he lives in
+
+206
+00:09:41,897 --> 00:09:44,457
+the ground.
+
+207
+00:09:44,897 --> 00:09:48,257
+But it could be, right?
+
+208
+00:09:49,777 --> 00:09:54,177
+On the other hand, we have the closed
+
+209
+00:09:52,497 --> 00:09:57,017
+world assumption.
+
+210
+00:09:54,177 --> 00:09:59,857
+And every the closed world assumption
+
+211
+00:09:57,017 --> 00:10:02,497
+says that everything that is not known
+
+212
+00:09:59,857 --> 00:10:04,777
+to be true is false.
+
+213
+00:10:02,497 --> 00:10:07,897
+So, every statement is either true or
+
+214
+00:10:04,777 --> 00:10:11,698
+false right?
+
+215
+00:10:07,897 --> 00:10:14,018
+And that you can't state with OWL
+
+216
+00:10:11,698 --> 00:10:17,058
+when we are building ontologies.
+
+217
+00:10:14,018 --> 00:10:19,538
+But a lot of real-life use cases do have
+
+218
+00:10:17,058 --> 00:10:23,138
+the need to say that this statement is
+
+219
+00:10:19,538 --> 00:10:23,138
+either true or false.
+
+220
+00:10:24,938 --> 00:10:28,178
+We do not allow for incomplete
+
+221
+00:10:26,898 --> 00:10:30,498
+knowledge.
+
+222
+00:10:28,178 --> 00:10:32,818
+So, take the same example. In a hole in
+
+223
+00:10:30,498 --> 00:10:35,218
+the ground there lived a hobbit.
+
+224
+00:10:32,818 --> 00:10:37,178
+And somebody asks you, "Did Gandalf live
+
+225
+00:10:35,218 --> 00:10:39,818
+in a hole in the ground?" Under the
+
+226
+00:10:37,178 --> 00:10:43,338
+closed world assumption, the answer
+
+227
+00:10:39,818 --> 00:10:45,898
+would be no. Because you do not know
+
+228
+00:10:43,338 --> 00:10:48,618
+based on the facts you have available if
+
+229
+00:10:45,898 --> 00:10:51,978
+Gandalf is a hobbit or if he lives
+
+230
+00:10:48,618 --> 00:10:51,978
+in a hole in the ground.
+
+231
+00:10:52,538 --> 00:10:57,458
+So, with that, folks,
+
+232
+00:10:54,978 --> 00:10:59,058
+we are going to start talking about the
+
+233
+00:10:57,458 --> 00:11:01,418
+Shapes Constraint Language. Any
+
+234
+00:10:59,058 --> 00:11:06,138
+questions so far?
+
+235
+00:11:01,418 --> 00:11:06,138
+Did my set theory journey make sense?
+
+236
+00:11:06,338 --> 00:11:09,738
+Okay good.
+
+237
+00:11:08,578 --> 00:11:11,338
+So,
+
+238
+00:11:09,738 --> 00:11:13,538
+I just have to say I
+
+239
+00:11:11,338 --> 00:11:18,218
+Uh when I work together with my clients,
+
+240
+00:11:13,538 --> 00:11:20,618
+we we tend to draw our universe on the
+
+241
+00:11:18,218 --> 00:11:22,778
+whiteboard, write all the sets that we
+
+242
+00:11:20,618 --> 00:11:25,378
+are talking about and how they relate to
+
+243
+00:11:22,778 --> 00:11:27,898
+each other to be able to read the axioms
+
+244
+00:11:25,378 --> 00:11:31,738
+directly from the whiteboard. So, I I
+
+245
+00:11:27,898 --> 00:11:34,298
+draw a lot of circles in my my daily
+
+246
+00:11:31,738 --> 00:11:34,298
+work.
+
+247
+00:11:34,378 --> 00:11:36,938
+Okay.
+
+248
+00:11:41,338 --> 00:11:46,458
+So, I'm going to start with SHACL and
+
+249
+00:11:44,538 --> 00:11:50,618
+OWL.
+
+250
+00:11:46,458 --> 00:11:52,618
+SHACL is not here to replace OWL.
+
+251
+00:11:50,618 --> 00:11:53,898
+That's something I need to say
+
+252
+00:11:52,618 --> 00:11:55,218
+first.
+
+253
+00:11:53,898 --> 00:11:59,058
+But
+
+254
+00:11:55,218 --> 00:12:02,458
+these two standards, they are
+
+255
+00:11:59,058 --> 00:12:06,858
+constructed for two completely different
+
+256
+00:12:02,458 --> 00:12:09,098
+capabilities and different use cases.
+
+257
+00:12:06,858 --> 00:12:12,779
+So,
+
+258
+00:12:09,098 --> 00:12:16,739
+OWL and the open world assumption are
+
+259
+00:12:12,779 --> 00:12:19,019
+designed for inferencing and reasoning,
+
+260
+00:12:16,739 --> 00:12:22,379
+logical deduction and data.
+
+261
+00:12:19,019 --> 00:12:25,619
+Stating that or inferring that some
+
+262
+00:12:22,379 --> 00:12:27,259
+statements are true based on the facts
+
+263
+00:12:25,619 --> 00:12:28,539
+available.
+
+264
+00:12:27,259 --> 00:12:30,659
+So a
+
+265
+00:12:28,539 --> 00:12:32,739
+reasoner will
+
+266
+00:12:30,659 --> 00:12:35,899
+add the facts
+
+267
+00:12:32,739 --> 00:12:37,979
+based on what it already has available
+
+268
+00:12:35,899 --> 00:12:40,899
+in the knowledge graph, right? Will add
+
+269
+00:12:37,979 --> 00:12:42,459
+facts to your knowledge graph, enrich
+
+270
+00:12:40,899 --> 00:12:43,979
+your knowledge graph.
+
+271
+00:12:42,459 --> 00:12:46,299
+Deriving
+
+272
+00:12:43,979 --> 00:12:48,219
+new potential insights based on the
+
+273
+00:12:46,299 --> 00:12:50,899
+existing data.
+
+274
+00:12:48,219 --> 00:12:55,139
+While SHACL and the shape constraint
+
+275
+00:12:50,899 --> 00:12:55,139
+language validate data.
+
+276
+00:12:55,419 --> 00:13:00,499
+During an inference process, you can
+
+277
+00:12:57,299 --> 00:13:02,859
+discover logical contradictions, but you
+
+278
+00:13:00,499 --> 00:13:06,739
+can't discover
+
+279
+00:13:02,859 --> 00:13:06,739
+things that are not true.
+
+280
+00:13:07,979 --> 00:13:13,579
+But with SHACL, you can validate data.
+
+281
+00:13:10,219 --> 00:13:16,299
+So, you describe rules and constraints
+
+282
+00:13:13,579 --> 00:13:17,819
+that your data need to conform to.
+
+283
+00:13:16,299 --> 00:13:20,579
+And if the data
+
+284
+00:13:17,819 --> 00:13:23,099
+doesn't conform to that, you will
+
+285
+00:13:20,579 --> 00:13:25,699
+get a validation result in return
+
+286
+00:13:23,099 --> 00:13:28,659
+stating exactly what's missing for the
+
+287
+00:13:25,699 --> 00:13:29,819
+data to conform to the rules.
+
+288
+00:13:28,659 --> 00:13:32,499
+So it's
+
+289
+00:13:29,819 --> 00:13:34,939
+different use cases, different purposes,
+
+290
+00:13:32,499 --> 00:13:37,219
+different capabilities between those
+
+291
+00:13:34,939 --> 00:13:37,219
+two.
+
+292
+00:13:41,019 --> 00:13:46,539
+And when to use SHACL?
+
+293
+00:13:44,139 --> 00:13:49,499
+Sometimes you
+
+294
+00:13:46,539 --> 00:13:51,899
+have the need for using SHACL instead of
+
+295
+00:13:49,499 --> 00:13:51,899
+OWL.
+
+296
+00:13:58,739 --> 00:14:01,979
+Oh.
+
+297
+00:13:59,619 --> 00:14:04,939
+Oh, I haven't done
+
+298
+00:14:01,979 --> 00:14:08,659
+nothing about that. Let me see. Maybe I
+
+299
+00:14:04,939 --> 00:14:08,659
+lost the connection for a while.
+
+300
+00:14:11,419 --> 00:14:17,061
+Share screen.
+
+301
+00:14:13,219 --> 00:14:17,061
+Let us try entire screen.
+
+302
+00:14:17,541 --> 00:14:20,621
+And share.
+
+303
+00:14:21,701 --> 00:14:25,381
+Okay, let's try again.
+
+304
+00:14:26,421 --> 00:14:31,701
+Okay, so in some use cases, you might
+
+305
+00:14:29,221 --> 00:14:34,101
+have a need for for only owl and not
+
+306
+00:14:31,701 --> 00:14:35,461
+shackle. Some use cases, you have the
+
+307
+00:14:34,101 --> 00:14:36,661
+need for
+
+308
+00:14:35,461 --> 00:14:39,661
+for
+
+309
+00:14:36,661 --> 00:14:41,021
+shackle, not owl, or owl, not shackle,
+
+310
+00:14:39,661 --> 00:14:42,621
+or both.
+
+311
+00:14:41,021 --> 00:14:44,261
+It depends on the use case and it
+
+312
+00:14:42,621 --> 00:14:46,101
+depends on the problem you're solving
+
+313
+00:14:44,261 --> 00:14:48,621
+for your clients, right?
+
+314
+00:14:46,101 --> 00:14:48,621
+And
+
+315
+00:14:49,021 --> 00:14:52,741
+I tend to Yeah.
+
+316
+00:14:51,501 --> 00:14:54,821
+>> I have a
+
+317
+00:14:52,741 --> 00:14:57,501
+I have a question related to this, which
+
+318
+00:14:54,821 --> 00:15:00,101
+is this only tells you about this if
+
+319
+00:14:57,501 --> 00:15:00,701
+something's in a set.
+
+320
+00:15:00,101 --> 00:15:01,901
+Right?
+
+321
+00:15:00,701 --> 00:15:03,661
+>> Shackle? Yeah.
+
+322
+00:15:01,901 --> 00:15:06,381
+>> Yeah. The question is
+
+323
+00:15:03,661 --> 00:15:07,301
+can you use it to determine all members
+
+324
+00:15:06,381 --> 00:15:09,261
+of a set?
+
+325
+00:15:07,301 --> 00:15:10,901
+>> Yes. We'll get back to that.
+
+326
+00:15:09,261 --> 00:15:11,501
+>> the set of all things?
+
+327
+00:15:10,901 --> 00:15:11,941
+>> Yes.
+
+328
+00:15:11,501 --> 00:15:13,141
+>> Okay.
+
+329
+00:15:11,941 --> 00:15:13,421
+>> We'll get back to that.
+
+330
+00:15:13,141 --> 00:15:15,741
+>> Okay.
+
+331
+00:15:13,421 --> 00:15:15,741
+>> Yeah.
+
+332
+00:15:16,421 --> 00:15:20,621
+Yes.
+
+333
+00:15:18,975 --> 00:15:23,541
+>> [clears throat]
+
+334
+00:15:20,621 --> 00:15:25,661
+>> So, at the end of this master class, I
+
+335
+00:15:23,541 --> 00:15:27,661
+will walk through a couple of real-life
+
+336
+00:15:25,661 --> 00:15:30,741
+use cases that I've been working on,
+
+337
+00:15:27,661 --> 00:15:34,421
+putting in in production, where
+
+338
+00:15:30,741 --> 00:15:39,141
+basically all these cases are covered
+
+339
+00:15:34,421 --> 00:15:43,501
+except from generating user interfaces.
+
+340
+00:15:39,141 --> 00:15:45,701
+So, we'll get back to to the use cases.
+
+341
+00:15:43,501 --> 00:15:48,341
+Okay, so now I'm going to walk you
+
+342
+00:15:45,701 --> 00:15:50,301
+through a shackle core constraint
+
+343
+00:15:48,341 --> 00:15:53,261
+vocabulary.
+
+344
+00:15:50,301 --> 00:15:56,581
+Providing examples for basically every
+
+345
+00:15:53,261 --> 00:16:00,301
+single core constraint. And then I have
+
+346
+00:15:56,581 --> 00:16:02,861
+a little bit on shackle sparkle.
+
+347
+00:16:00,301 --> 00:16:05,781
+But shackle sparkle is so weird, so I
+
+348
+00:16:02,861 --> 00:16:09,341
+won't use too much time on it, but a
+
+349
+00:16:05,781 --> 00:16:09,341
+little bit, so you know what it is.
+
+350
+00:16:09,821 --> 00:16:13,981
+And then I will show you
+
+351
+00:16:12,021 --> 00:16:16,221
+the validation result and validation
+
+352
+00:16:13,981 --> 00:16:17,901
+reports and the validation result
+
+353
+00:16:16,221 --> 00:16:19,582
+vocabulary.
+
+354
+00:16:17,901 --> 00:16:23,542
+And then we're going to have a look at a
+
+355
+00:16:19,582 --> 00:16:27,342
+couple of SHACL stories.
+
+356
+00:16:23,542 --> 00:16:30,102
+Okay. So, the Shapes Constraint Language
+
+357
+00:16:27,342 --> 00:16:31,942
+is all about shapes.
+
+358
+00:16:30,102 --> 00:16:34,582
+We have node shapes
+
+359
+00:16:31,942 --> 00:16:37,782
+and we have property shapes. And node
+
+360
+00:16:34,582 --> 00:16:41,822
+shapes, they are shapes that describe
+
+361
+00:16:37,782 --> 00:16:44,062
+and constrain so-called focus nodes.
+
+362
+00:16:41,822 --> 00:16:46,342
+The standard the standard spec call it
+
+363
+00:16:44,062 --> 00:16:48,742
+focus nodes. It's basically the subject
+
+364
+00:16:46,342 --> 00:16:50,582
+of a triple, right? You have subject,
+
+365
+00:16:48,742 --> 00:16:54,742
+predicate object.
+
+366
+00:16:50,582 --> 00:16:57,782
+Node shapes describe subjects.
+
+367
+00:16:54,742 --> 00:16:59,622
+And then we have property shapes
+
+368
+00:16:57,782 --> 00:17:01,222
+where you can describe
+
+369
+00:16:59,622 --> 00:17:04,782
+rules and constraints for your
+
+370
+00:17:01,222 --> 00:17:07,702
+predicates and objects.
+
+371
+00:17:04,782 --> 00:17:12,022
+Or value nodes as the spec call it and
+
+372
+00:17:07,702 --> 00:17:12,022
+paths they call predicates.
+
+373
+00:17:17,222 --> 00:17:21,782
+So throughout
+
+374
+00:17:18,862 --> 00:17:23,942
+the examples, I would use I will use the
+
+375
+00:17:21,782 --> 00:17:26,622
+namespace rule
+
+376
+00:17:23,942 --> 00:17:30,942
+for all the constraints and I will use
+
+377
+00:17:26,622 --> 00:17:32,982
+the example namespace ex for example for
+
+378
+00:17:30,942 --> 00:17:35,462
+all the data.
+
+379
+00:17:32,982 --> 00:17:38,182
+We usually talk about data graph and
+
+380
+00:17:35,462 --> 00:17:40,942
+shapes graph in SHACL where the shapes
+
+381
+00:17:38,182 --> 00:17:43,462
+graph holds all the constraints and the
+
+382
+00:17:40,942 --> 00:17:48,382
+data graph holds the data that's going
+
+383
+00:17:43,462 --> 00:17:48,382
+to be validated against those shapes.
+
+384
+00:17:48,502 --> 00:17:53,902
+So, this node shape here
+
+385
+00:17:51,102 --> 00:17:56,342
+I call it book. It's a node shape
+
+386
+00:17:53,902 --> 00:17:58,822
+and it targets the class book.
+
+387
+00:17:56,342 --> 00:18:01,782
+Meaning that every single constraint
+
+388
+00:17:58,822 --> 00:18:06,142
+follow in this shape has to do with
+
+389
+00:18:01,782 --> 00:18:08,062
+instances of book or elements in the set
+
+390
+00:18:06,142 --> 00:18:13,102
+of all books.
+
+391
+00:18:08,062 --> 00:18:13,102
+So, it targets the whole class of books.
+
+392
+00:18:16,942 --> 00:18:21,783
+And property shapes
+
+393
+00:18:19,142 --> 00:18:23,983
+actually in the the standard
+
+394
+00:18:21,783 --> 00:18:25,863
+the definition of a property shape is a
+
+395
+00:18:23,983 --> 00:18:30,863
+shape that has
+
+396
+00:18:25,863 --> 00:18:31,983
+sh path or shackle path as a predicate.
+
+397
+00:18:30,863 --> 00:18:35,103
+So,
+
+398
+00:18:31,983 --> 00:18:37,983
+it's very common that you will see blank
+
+399
+00:18:35,103 --> 00:18:40,263
+node notation for property shapes
+
+400
+00:18:37,983 --> 00:18:41,903
+both in tooling, but also in examples
+
+401
+00:18:40,263 --> 00:18:43,223
+and in the standard specification
+
+402
+00:18:41,903 --> 00:18:46,183
+online.
+
+403
+00:18:43,223 --> 00:18:47,583
+Because the definition is if this thing
+
+404
+00:18:46,183 --> 00:18:49,783
+is present,
+
+405
+00:18:47,583 --> 00:18:52,503
+it's a property shape.
+
+406
+00:18:49,783 --> 00:18:54,223
+So, in most cases, it isn't typed as a
+
+407
+00:18:52,503 --> 00:18:56,063
+property shape, either. So, that's
+
+408
+00:18:54,223 --> 00:18:58,743
+important to remember.
+
+409
+00:18:56,063 --> 00:19:01,703
+So, whenever this path thing shows up,
+
+410
+00:18:58,743 --> 00:19:01,703
+it's a property shape.
+
+411
+00:19:02,343 --> 00:19:06,583
+And in this case, I have book {hyphen}
+
+412
+00:19:05,343 --> 00:19:09,583
+author
+
+413
+00:19:06,583 --> 00:19:14,063
+that is a property shape with a path
+
+414
+00:19:09,583 --> 00:19:14,063
+author, and that's from the data, right?
+
+415
+00:19:14,103 --> 00:19:19,983
+So, in this shape comes every single
+
+416
+00:19:17,103 --> 00:19:22,783
+rule and constraint that has to do with
+
+417
+00:19:19,983 --> 00:19:26,903
+the relationship, the predicate author,
+
+418
+00:19:22,783 --> 00:19:26,903
+and whatever it points to.
+
+419
+00:19:31,503 --> 00:19:36,143
+And we want to describe books with
+
+420
+00:19:33,823 --> 00:19:37,623
+authors, right? So, we want to link
+
+421
+00:19:36,143 --> 00:19:39,343
+property shapes and node shapes
+
+422
+00:19:37,623 --> 00:19:41,863
+together.
+
+423
+00:19:39,343 --> 00:19:43,503
+Then we can use the resource
+
+424
+00:19:41,863 --> 00:19:46,423
+property
+
+425
+00:19:43,503 --> 00:19:50,863
+to state what property shapes are
+
+426
+00:19:46,423 --> 00:19:50,863
+relevant for this particular node shape.
+
+427
+00:19:51,143 --> 00:19:55,223
+And this notation here,
+
+428
+00:19:53,343 --> 00:19:57,063
+it's not like
+
+429
+00:19:55,223 --> 00:20:00,783
+a uh a uh
+
+430
+00:19:57,063 --> 00:20:02,823
+an unspoken best practice of uh naming
+
+431
+00:20:00,783 --> 00:20:05,503
+for uh node shapes and property shapes.
+
+432
+00:20:02,823 --> 00:20:08,183
+I'm re-using the same notation as
+
+433
+00:20:05,503 --> 00:20:09,663
+TopQuadrant does in their product
+
+434
+00:20:08,183 --> 00:20:12,583
+TopBraid Edge.
+
+435
+00:20:09,663 --> 00:20:15,303
+Uh and that's the the way I've been
+
+436
+00:20:12,583 --> 00:20:17,663
+writing shape names for for the past
+
+437
+00:20:15,303 --> 00:20:20,343
+couple of years. But I've seen a lot of
+
+438
+00:20:17,663 --> 00:20:22,585
+different naming conventions, and there
+
+439
+00:20:20,343 --> 00:20:26,705
+isn't really a standard or a best
+
+440
+00:20:22,585 --> 00:20:26,705
+practice established for that yet.
+
+441
+00:20:26,829 --> 00:20:29,465
+>> [clears throat]
+
+442
+00:20:27,265 --> 00:20:32,145
+>> Just so you know.
+
+443
+00:20:29,465 --> 00:20:32,145
+Okay.
+
+444
+00:20:36,105 --> 00:20:41,705
+Any questions before I go on to the
+
+445
+00:20:38,105 --> 00:20:41,705
+constraints themselves?
+
+446
+00:20:42,745 --> 00:20:44,985
+Yeah.
+
+447
+00:20:45,665 --> 00:20:49,185
+>> Will you cover the difference between
+
+448
+00:20:47,905 --> 00:20:51,025
+the
+
+449
+00:20:49,185 --> 00:20:54,185
+RDF property
+
+450
+00:20:51,025 --> 00:20:56,665
+of book versus the shape?
+
+451
+00:20:54,185 --> 00:20:58,345
+So, you have an author you can describe
+
+452
+00:20:56,665 --> 00:21:01,225
+you've got ex-off
+
+453
+00:20:58,345 --> 00:21:02,225
+and its definition versus the shape of
+
+454
+00:21:01,225 --> 00:21:02,905
+book author.
+
+455
+00:21:02,225 --> 00:21:03,985
+>> Mhm.
+
+456
+00:21:02,905 --> 00:21:06,065
+>> Will you explain
+
+457
+00:21:03,985 --> 00:21:08,105
+>> I can say a couple of words about that.
+
+458
+00:21:06,065 --> 00:21:09,985
+Yeah. So,
+
+459
+00:21:08,105 --> 00:21:11,665
+author.
+
+460
+00:21:09,985 --> 00:21:14,065
+What's the difference between the
+
+461
+00:21:11,665 --> 00:21:17,385
+description of author in the ontology
+
+462
+00:21:14,065 --> 00:21:19,385
+and the description of author in shapes?
+
+463
+00:21:17,385 --> 00:21:22,185
+So, I can take that quick one.
+
+464
+00:21:19,385 --> 00:21:23,385
+So, if we go back to
+
+465
+00:21:22,185 --> 00:21:26,065
+here
+
+466
+00:21:23,385 --> 00:21:27,665
+and we have the definition of author in
+
+467
+00:21:26,065 --> 00:21:29,705
+the ontology
+
+468
+00:21:27,665 --> 00:21:32,665
+as a object property.
+
+469
+00:21:29,705 --> 00:21:34,985
+So, we know that we only expect
+
+470
+00:21:32,665 --> 00:21:37,225
+IRIs in
+
+471
+00:21:34,985 --> 00:21:39,385
+in object position where author is the
+
+472
+00:21:37,225 --> 00:21:43,065
+predicate right?
+
+473
+00:21:39,385 --> 00:21:46,425
+And we state that domain is book. So,
+
+474
+00:21:43,065 --> 00:21:49,465
+author is a predicate or a relationships
+
+475
+00:21:46,425 --> 00:21:51,705
+that goes from some kind of book, an
+
+476
+00:21:49,465 --> 00:21:52,705
+instance of the class book,
+
+477
+00:21:51,705 --> 00:21:54,585
+to
+
+478
+00:21:52,705 --> 00:21:57,025
+an instance
+
+479
+00:21:54,585 --> 00:21:58,705
+of the class person, so some kind of
+
+480
+00:21:57,025 --> 00:22:00,225
+person. So, that's a relationship
+
+481
+00:21:58,705 --> 00:22:02,305
+between
+
+482
+00:22:00,225 --> 00:22:04,345
+one particular book and one particular
+
+483
+00:22:02,305 --> 00:22:07,665
+person.
+
+484
+00:22:04,345 --> 00:22:10,025
+And that information is property
+
+485
+00:22:07,665 --> 00:22:12,745
+semantics. It tells us something about
+
+486
+00:22:10,025 --> 00:22:15,665
+the meaning of the relationship author
+
+487
+00:22:12,745 --> 00:22:19,985
+and can be used to infer
+
+488
+00:22:15,665 --> 00:22:19,985
+relationships, new facts, right?
+
+489
+00:22:20,465 --> 00:22:24,185
+If
+
+490
+00:22:21,705 --> 00:22:27,026
+you get data with a string
+
+491
+00:22:24,185 --> 00:22:29,386
+instead of a person,
+
+492
+00:22:27,026 --> 00:22:31,106
+A reasoner would trigger a logical
+
+493
+00:22:29,386 --> 00:22:33,026
+contradiction, something that doesn't
+
+494
+00:22:31,106 --> 00:22:35,826
+make sense because the description of
+
+495
+00:22:33,026 --> 00:22:39,826
+the relationship is that
+
+496
+00:22:35,826 --> 00:22:42,786
+the range is a person and I arrive.
+
+497
+00:22:39,826 --> 00:22:45,946
+So, this is property semantics.
+
+498
+00:22:42,786 --> 00:22:49,266
+Shapes doesn't describe semantics.
+
+499
+00:22:45,946 --> 00:22:51,746
+It describes what we expect of the data
+
+500
+00:22:49,266 --> 00:22:51,746
+value.
+
+501
+00:22:53,626 --> 00:22:57,506
+And
+
+502
+00:22:54,786 --> 00:22:59,306
+in OWL, for example, object properties
+
+503
+00:22:57,506 --> 00:23:01,506
+and data properties, they are two
+
+504
+00:22:59,306 --> 00:23:03,266
+disjoint sets.
+
+505
+00:23:01,506 --> 00:23:07,906
+So, you can't have a relationship that
+
+506
+00:23:03,266 --> 00:23:10,106
+points to both IRI and literal value.
+
+507
+00:23:07,906 --> 00:23:12,426
+But in SHACL, that's allowed because
+
+508
+00:23:10,106 --> 00:23:14,426
+SHACL, if I'm going to put it
+
+509
+00:23:12,426 --> 00:23:15,746
+on the edge, doesn't care about
+
+510
+00:23:14,426 --> 00:23:18,266
+semantics.
+
+511
+00:23:15,746 --> 00:23:21,186
+It only cares about content of
+
+512
+00:23:18,266 --> 00:23:23,986
+information. The semantics is handled in
+
+513
+00:23:21,186 --> 00:23:26,506
+the ontology.
+
+514
+00:23:23,986 --> 00:23:30,826
+And I know that's a truth with some
+
+515
+00:23:26,506 --> 00:23:30,826
+twists, but to put it on the far edge.
+
+516
+00:23:33,586 --> 00:23:38,826
+Okay. So, I have divided
+
+517
+00:23:37,186 --> 00:23:42,186
+uh the different core constraints
+
+518
+00:23:38,826 --> 00:23:46,306
+components into categories that are
+
+519
+00:23:42,186 --> 00:23:48,106
+similar to the SHACL spec itself.
+
+520
+00:23:46,306 --> 00:23:49,666
+So, we start with value types and there
+
+521
+00:23:48,106 --> 00:23:52,746
+we can find
+
+522
+00:23:49,666 --> 00:23:54,866
+three ways of constraining our data.
+
+523
+00:23:52,746 --> 00:23:57,226
+We can say something about a class. We
+
+524
+00:23:54,866 --> 00:23:59,306
+can say something about a data type. And
+
+525
+00:23:57,226 --> 00:24:04,066
+we can say something about what kind of
+
+526
+00:23:59,306 --> 00:24:04,066
+node do we expect in object position.
+
+527
+00:24:04,291 --> 00:24:05,906
+>> [clears throat]
+
+528
+00:24:04,946 --> 00:24:08,786
+>> So,
+
+529
+00:24:05,906 --> 00:24:10,626
+in this case, I have the book as a node
+
+530
+00:24:08,786 --> 00:24:13,026
+shape that targets
+
+531
+00:24:10,626 --> 00:24:15,106
+all kinds of books, right?
+
+532
+00:24:13,026 --> 00:24:17,186
+And
+
+533
+00:24:15,106 --> 00:24:19,986
+here I'm using the notation that's
+
+534
+00:24:17,186 --> 00:24:23,746
+typical in the spec itself, but also in
+
+535
+00:24:19,986 --> 00:24:26,066
+examples online. And that is
+
+536
+00:24:23,746 --> 00:24:28,908
+blank node property shapes without any
+
+537
+00:24:26,066 --> 00:24:30,987
+RDF type. But we have this path thing,
+
+538
+00:24:28,908 --> 00:24:33,827
+right? And that means
+
+539
+00:24:30,987 --> 00:24:33,827
+property shape.
+
+540
+00:24:34,827 --> 00:24:38,347
+So, the first property shape
+
+541
+00:24:37,028 --> 00:24:40,028
+describes
+
+542
+00:24:38,347 --> 00:24:42,668
+author.
+
+543
+00:24:40,028 --> 00:24:44,388
+And we expect
+
+544
+00:24:42,668 --> 00:24:48,507
+author
+
+545
+00:24:44,388 --> 00:24:51,507
+to have an instance of FOAF person
+
+546
+00:24:48,507 --> 00:24:55,627
+in object position, where author is the
+
+547
+00:24:51,507 --> 00:24:55,627
+predicate in a triple, right?
+
+548
+00:24:57,587 --> 00:25:02,427
+And we have another one
+
+549
+00:25:00,067 --> 00:25:03,987
+regarding published.
+
+550
+00:25:02,427 --> 00:25:08,028
+And published
+
+551
+00:25:03,987 --> 00:25:08,028
+should point to some kind of date.
+
+552
+00:25:10,507 --> 00:25:15,467
+So,
+
+553
+00:25:12,788 --> 00:25:17,268
+this data here, a book
+
+554
+00:25:15,467 --> 00:25:19,148
+with an author Tolkien, and we see
+
+555
+00:25:17,268 --> 00:25:21,187
+Tolkien is a person,
+
+556
+00:25:19,148 --> 00:25:24,547
+FOAF person, that is.
+
+557
+00:25:21,187 --> 00:25:26,507
+And it's published on 22nd of September
+
+558
+00:25:24,547 --> 00:25:29,107
+1937.
+
+559
+00:25:26,507 --> 00:25:31,987
+And that's typed as a date.
+
+560
+00:25:29,107 --> 00:25:35,467
+And that conforms to the rules we have
+
+561
+00:25:31,987 --> 00:25:37,947
+set for book regarding author
+
+562
+00:25:35,467 --> 00:25:40,827
+as person, FOAF person,
+
+563
+00:25:37,947 --> 00:25:43,547
+and published as date from the XSD
+
+564
+00:25:40,827 --> 00:25:43,547
+vocabulary.
+
+565
+00:25:45,307 --> 00:25:50,987
+But
+
+566
+00:25:47,107 --> 00:25:52,827
+if this were the data graph,
+
+567
+00:25:50,987 --> 00:25:56,107
+we would have
+
+568
+00:25:52,827 --> 00:25:58,268
+gotten a couple of errors.
+
+569
+00:25:56,107 --> 00:26:00,467
+The validation report would contain two
+
+570
+00:25:58,268 --> 00:26:03,107
+results, and can anybody see what result
+
+571
+00:26:00,467 --> 00:26:03,107
+that is?
+
+572
+00:26:03,388 --> 00:26:08,067
+Hands up, first one to the one to
+
+573
+00:26:05,547 --> 00:26:08,067
+answer.
+
+574
+00:26:10,227 --> 00:26:13,668
+>> Um the the published is not a date, and
+
+575
+00:26:12,668 --> 00:26:16,028
+the
+
+576
+00:26:13,668 --> 00:26:18,028
+the person is not a FOAF person.
+
+577
+00:26:16,028 --> 00:26:20,467
+>> Correct.
+
+578
+00:26:18,028 --> 00:26:22,827
+So, the SHACL engine
+
+579
+00:26:20,467 --> 00:26:25,507
+would then return
+
+580
+00:26:22,827 --> 00:26:29,148
+a validation report in RDF with the
+
+581
+00:26:25,507 --> 00:26:33,149
+information exactly on what's missing,
+
+582
+00:26:29,148 --> 00:26:35,069
+and that's author is the wrong kind of
+
+583
+00:26:33,149 --> 00:26:37,669
+type and
+
+584
+00:26:35,069 --> 00:26:40,909
+published date is not a date.
+
+585
+00:26:37,669 --> 00:26:40,909
+It's a year, right?
+
+586
+00:26:41,909 --> 00:26:44,509
+Awesome.
+
+587
+00:26:48,109 --> 00:26:54,549
+And then we have cardinality.
+
+588
+00:26:51,069 --> 00:26:57,149
+And we have value ranges.
+
+589
+00:26:54,549 --> 00:26:58,829
+Cardinality is uh
+
+590
+00:26:57,149 --> 00:27:01,549
+quite easy to understand. It's min
+
+591
+00:26:58,829 --> 00:27:02,629
+counter max count or both for that
+
+592
+00:27:01,549 --> 00:27:04,709
+matter.
+
+593
+00:27:02,629 --> 00:27:06,549
+So,
+
+594
+00:27:04,709 --> 00:27:07,789
+if we set the min count and max count to
+
+595
+00:27:06,549 --> 00:27:09,509
+be one,
+
+596
+00:27:07,789 --> 00:27:12,269
+we technically say that this kind of
+
+597
+00:27:09,509 --> 00:27:14,029
+property or relationship or predicate,
+
+598
+00:27:12,269 --> 00:27:16,269
+it's a bit confusing that we have so
+
+599
+00:27:14,029 --> 00:27:18,509
+many words for the same thing.
+
+600
+00:27:16,269 --> 00:27:22,989
+But anyways,
+
+601
+00:27:18,509 --> 00:27:25,509
+that that particular pre- relationship
+
+602
+00:27:22,989 --> 00:27:27,389
+should be unique and mandatory
+
+603
+00:27:25,509 --> 00:27:28,869
+for that resource.
+
+604
+00:27:27,389 --> 00:27:32,069
+So, here we are talking about books
+
+605
+00:27:28,869 --> 00:27:33,149
+again. We're targeting the class books.
+
+606
+00:27:32,069 --> 00:27:35,669
+And
+
+607
+00:27:33,149 --> 00:27:37,509
+path main title should be some kind of
+
+608
+00:27:35,669 --> 00:27:42,589
+string,
+
+609
+00:27:37,509 --> 00:27:45,469
+and we need at least one, but only one
+
+610
+00:27:42,589 --> 00:27:48,029
+for every single book.
+
+611
+00:27:45,469 --> 00:27:50,229
+And then we have another
+
+612
+00:27:48,029 --> 00:27:54,189
+property shape
+
+613
+00:27:50,229 --> 00:27:57,109
+that's about pages, the number of pages,
+
+614
+00:27:54,189 --> 00:27:58,069
+which is some kind of integer between
+
+615
+00:27:57,109 --> 00:28:01,629
+10
+
+616
+00:27:58,069 --> 00:28:01,629
+and up to 9,999.
+
+617
+00:28:01,709 --> 00:28:05,069
+That's a very weird rule to set for a
+
+618
+00:28:03,829 --> 00:28:07,229
+book, I know,
+
+619
+00:28:05,069 --> 00:28:09,429
+but still
+
+620
+00:28:07,229 --> 00:28:12,509
+it was hard to come up with a creative
+
+621
+00:28:09,429 --> 00:28:14,909
+example on on value ranges.
+
+622
+00:28:12,509 --> 00:28:16,829
+So again, I won't be giving
+
+623
+00:28:14,909 --> 00:28:19,789
+I won't be handing out chocolates for
+
+624
+00:28:16,829 --> 00:28:22,309
+every single constraint. Just so that's
+
+625
+00:28:19,789 --> 00:28:24,389
+that, but a couple of chocolates is it
+
+626
+00:28:22,309 --> 00:28:27,029
+will will happen.
+
+627
+00:28:24,389 --> 00:28:29,669
+Okay. So, confirming data. We have the
+
+628
+00:28:27,029 --> 00:28:31,029
+main title, the Hobbit or There and Back
+
+629
+00:28:29,669 --> 00:28:34,830
+Again,
+
+630
+00:28:31,029 --> 00:28:36,190
+and pages 310
+
+631
+00:28:34,830 --> 00:28:38,670
+integer.
+
+632
+00:28:36,190 --> 00:28:41,670
+So, that's conforming to the rules
+
+633
+00:28:38,670 --> 00:28:43,830
+that we set for for
+
+634
+00:28:41,670 --> 00:28:47,390
+for uh for the book.
+
+635
+00:28:43,830 --> 00:28:49,470
+A non-conforming data. And here we see
+
+636
+00:28:47,390 --> 00:28:51,470
+we have two main titles, but the rule
+
+637
+00:28:49,470 --> 00:28:54,590
+said only one.
+
+638
+00:28:51,470 --> 00:28:56,390
+So, that doesn't conform.
+
+639
+00:28:54,590 --> 00:28:59,550
+And that's a pity because the second
+
+640
+00:28:56,390 --> 00:29:02,310
+one, Hobbiten eller Dvergene ved enden,
+
+641
+00:28:59,550 --> 00:29:05,190
+is in New Norwegian, the most wonderful
+
+642
+00:29:02,310 --> 00:29:05,190
+language ever.
+
+643
+00:29:06,230 --> 00:29:11,430
+And pages five. That's a very very small
+
+644
+00:29:08,990 --> 00:29:14,765
+book. It's a pamphlet, right?
+
+645
+00:29:11,430 --> 00:29:14,910
+And the Hobbit isn't that short.
+
+646
+00:29:14,765 --> 00:29:18,710
+>> [clears throat]
+
+647
+00:29:14,910 --> 00:29:18,710
+>> So, that won't work.
+
+648
+00:29:20,110 --> 00:29:24,990
+And then we have string-based
+
+649
+00:29:22,630 --> 00:29:26,150
+constraint components. And these are
+
+650
+00:29:24,990 --> 00:29:27,670
+fun.
+
+651
+00:29:26,150 --> 00:29:29,230
+We have the min and max length of a
+
+652
+00:29:27,670 --> 00:29:31,310
+string.
+
+653
+00:29:29,230 --> 00:29:33,870
+That's easy to understand. And we have
+
+654
+00:29:31,310 --> 00:29:35,550
+regular expressions.
+
+655
+00:29:33,870 --> 00:29:37,510
+And what in the world can we do with
+
+656
+00:29:35,550 --> 00:29:39,790
+regular expressions? We can do almost
+
+657
+00:29:37,510 --> 00:29:43,310
+everything right?
+
+658
+00:29:39,790 --> 00:29:46,870
+One have to love regular expressions.
+
+659
+00:29:43,310 --> 00:29:50,510
+And we have something called language
+
+660
+00:29:46,870 --> 00:29:53,110
+in, which is a list-taking constraint.
+
+661
+00:29:50,510 --> 00:29:54,470
+Yeah, SHACL has a lot of list-taking
+
+662
+00:29:53,110 --> 00:29:56,350
+constraints.
+
+663
+00:29:54,470 --> 00:29:59,550
+Which can be a bit hassle as a
+
+664
+00:29:56,350 --> 00:30:01,590
+developer, but we have
+
+665
+00:29:59,550 --> 00:30:04,270
+but we need to be
+
+666
+00:30:01,590 --> 00:30:06,750
+used with living with list traversal in
+
+667
+00:30:04,270 --> 00:30:09,710
+in SPARQL one way.
+
+668
+00:30:06,750 --> 00:30:12,230
+Anyways, and we can also state that we
+
+669
+00:30:09,710 --> 00:30:15,270
+expect a unique language. And that's a
+
+670
+00:30:12,230 --> 00:30:18,750
+Boolean value. So, if we set Boolean
+
+671
+00:30:15,270 --> 00:30:20,190
+true, we expect that only one language
+
+672
+00:30:18,750 --> 00:30:22,790
+per tag.
+
+673
+00:30:20,190 --> 00:30:26,110
+Much like RDFS label and the definition
+
+674
+00:30:22,790 --> 00:30:29,230
+of RDFS label, right?
+
+675
+00:30:26,110 --> 00:30:31,430
+Okay, so we have these books again.
+
+676
+00:30:29,230 --> 00:30:32,830
+And a main title, and this time it's a
+
+677
+00:30:31,430 --> 00:30:35,830
+lang string,
+
+678
+00:30:32,830 --> 00:30:39,432
+not just a string. Remember from
+
+679
+00:30:35,830 --> 00:30:40,632
+from for the data here if we want
+
+680
+00:30:39,432 --> 00:30:42,792
+more
+
+681
+00:30:40,632 --> 00:30:45,472
+titles, you should language check them
+
+682
+00:30:42,792 --> 00:30:45,472
+at least.
+
+683
+00:30:46,952 --> 00:30:52,672
+Minimum length of two and maximum length
+
+684
+00:30:49,152 --> 00:30:55,912
+of 100. That's reasonable.
+
+685
+00:30:52,672 --> 00:30:58,392
+And unique language.
+
+686
+00:30:55,912 --> 00:30:59,632
+And then we have just throwing that for
+
+687
+00:30:58,392 --> 00:31:02,472
+fun.
+
+688
+00:30:59,632 --> 00:31:05,712
+The regular expression that matches ISBN
+
+689
+00:31:02,472 --> 00:31:05,712
+10 and 13.
+
+690
+00:31:08,472 --> 00:31:15,752
+So again, example of conforming data. We
+
+691
+00:31:12,112 --> 00:31:17,752
+have The Hobbit with no less than three
+
+692
+00:31:15,752 --> 00:31:20,351
+different titles.
+
+693
+00:31:17,752 --> 00:31:22,231
+Hobbiten eller dit ut og at ende in
+
+694
+00:31:20,351 --> 00:31:24,672
+nynorsk in
+
+695
+00:31:22,231 --> 00:31:26,992
+um Hobbiten eller fram og tilbake igjen
+
+696
+00:31:24,672 --> 00:31:28,472
+in Norwegian Bokmål
+
+697
+00:31:26,992 --> 00:31:30,752
+or or
+
+698
+00:31:28,472 --> 00:31:32,632
+main Norwegian. I don't know what that
+
+699
+00:31:30,752 --> 00:31:34,552
+is in English.
+
+700
+00:31:32,632 --> 00:31:36,632
+Doesn't matter. And we have The Hobbit
+
+701
+00:31:34,552 --> 00:31:38,752
+or There and Back Again in English. And
+
+702
+00:31:36,632 --> 00:31:41,832
+then we have the ISBN
+
+703
+00:31:38,752 --> 00:31:43,672
+for one of the publications at least. If
+
+704
+00:31:41,832 --> 00:31:46,312
+there are any librarians in the
+
+705
+00:31:43,672 --> 00:31:48,471
+audience, I know this is
+
+706
+00:31:46,312 --> 00:31:50,152
+hard to watch that I'm not doing
+
+707
+00:31:48,471 --> 00:31:52,952
+publications
+
+708
+00:31:50,152 --> 00:31:57,712
+but going straight to book and work.
+
+709
+00:31:52,952 --> 00:32:00,432
+Anyways, and then we have The Hobbit
+
+710
+00:31:57,712 --> 00:32:02,552
+and in English and then The Hobbit or
+
+711
+00:32:00,432 --> 00:32:05,592
+There and Back Again in English. And
+
+712
+00:32:02,552 --> 00:32:06,672
+that's not allowed because we stated
+
+713
+00:32:05,592 --> 00:32:09,072
+that
+
+714
+00:32:06,672 --> 00:32:12,352
+we want unique languages, right? So we
+
+715
+00:32:09,072 --> 00:32:15,231
+can't have the main title in two
+
+716
+00:32:12,352 --> 00:32:16,192
+of the same language. So not
+
+717
+00:32:15,231 --> 00:32:18,632
+So
+
+718
+00:32:16,192 --> 00:32:21,752
+this will create a validation result and
+
+719
+00:32:18,632 --> 00:32:25,952
+also the ISBN which should be
+
+720
+00:32:21,752 --> 00:32:25,952
+10 or 13 digits.
+
+721
+00:32:25,992 --> 00:32:30,352
+So 1 2 3 isn't sufficient enough.
+
+722
+00:32:32,872 --> 00:32:37,672
+Okay.
+
+723
+00:32:34,632 --> 00:32:39,127
+And then we have property the constraint
+
+724
+00:32:37,672 --> 00:32:39,633
+components.
+
+725
+00:32:39,127 --> 00:32:43,433
+>> [snorts]
+
+726
+00:32:39,633 --> 00:32:45,553
+>> And this was actually the very last
+
+727
+00:32:43,433 --> 00:32:48,153
+constraint component that RDF for J's
+
+728
+00:32:45,553 --> 00:32:52,273
+SHACL engine got to support. It's uh
+
+729
+00:32:48,153 --> 00:32:52,273
+quite a hassle of implementing, really.
+
+730
+00:32:52,433 --> 00:32:58,473
+Anyways, we have equals, disjoint, less
+
+731
+00:32:55,753 --> 00:33:01,113
+than, and less than or equals. And what
+
+732
+00:32:58,473 --> 00:33:03,313
+these does is that it investigate the
+
+733
+00:33:01,113 --> 00:33:06,273
+value node, the
+
+734
+00:33:03,313 --> 00:33:08,033
+the object value for the triple
+
+735
+00:33:06,273 --> 00:33:11,153
+where
+
+736
+00:33:08,033 --> 00:33:13,953
+the path is the predicate and where the
+
+737
+00:33:11,153 --> 00:33:16,553
+less than or equals or any of the other
+
+738
+00:33:13,953 --> 00:33:18,353
+is present.
+
+739
+00:33:16,553 --> 00:33:21,993
+If you know what I'm saying.
+
+740
+00:33:18,353 --> 00:33:25,313
+So, this thing, for persons this time,
+
+741
+00:33:21,993 --> 00:33:27,993
+the person's birth date should be less
+
+742
+00:33:25,313 --> 00:33:30,313
+than or equals the value for the
+
+743
+00:33:27,993 --> 00:33:34,673
+person's death date.
+
+744
+00:33:30,313 --> 00:33:37,433
+Meaning that no persons can die before
+
+745
+00:33:34,673 --> 00:33:37,433
+they are born.
+
+746
+00:33:42,873 --> 00:33:46,273
+So, example again.
+
+747
+00:33:46,753 --> 00:33:52,393
+So, Tolkien, he was born
+
+748
+00:33:49,193 --> 00:33:54,753
+3rd of January in 1892 and he died 2nd
+
+749
+00:33:52,393 --> 00:33:56,313
+of September in '73.
+
+750
+00:33:54,753 --> 00:33:57,753
+So, that's the facts and that's
+
+751
+00:33:56,313 --> 00:33:59,793
+confirming
+
+752
+00:33:57,753 --> 00:34:01,033
+because the death date
+
+753
+00:33:59,793 --> 00:34:04,473
+is
+
+754
+00:34:01,033 --> 00:34:08,193
+more closer in time than the birth date.
+
+755
+00:34:04,473 --> 00:34:12,553
+And don't confirming data for Tolkien,
+
+756
+00:34:08,193 --> 00:34:14,513
+he was born in 1992 but died in 1973.
+
+757
+00:34:12,553 --> 00:34:15,473
+That doesn't make any sense.
+
+758
+00:34:14,513 --> 00:34:18,833
+And that
+
+759
+00:34:15,473 --> 00:34:20,953
+is not valid either.
+
+760
+00:34:18,833 --> 00:34:22,433
+On the rules that we set for for the
+
+761
+00:34:20,953 --> 00:34:25,033
+relationships.
+
+762
+00:34:22,433 --> 00:34:29,273
+So, all these property pair constraint
+
+763
+00:34:25,033 --> 00:34:33,073
+components, they evaluate what's on the
+
+764
+00:34:29,273 --> 00:34:38,313
+object position of where these different
+
+765
+00:34:33,073 --> 00:34:38,313
+resources are present as predicates.
+
+766
+00:34:45,954 --> 00:34:51,074
+>> And then we have logical
+
+767
+00:34:48,954 --> 00:34:53,434
+constraint components.
+
+768
+00:34:51,074 --> 00:34:54,714
+And I love them.
+
+769
+00:34:53,434 --> 00:34:57,954
+They are
+
+770
+00:34:54,714 --> 00:34:59,954
+list value taking constraints.
+
+771
+00:34:57,954 --> 00:35:04,194
+Not the first one, but the rest of them.
+
+772
+00:34:59,954 --> 00:35:07,034
+So, not takes in one shape as
+
+773
+00:35:04,194 --> 00:35:09,274
+its element, while and or and x1 takes
+
+774
+00:35:07,034 --> 00:35:11,914
+in a list of things.
+
+775
+00:35:09,274 --> 00:35:14,034
+So, I'll walk you through it.
+
+776
+00:35:11,914 --> 00:35:17,354
+So, here is a person
+
+777
+00:35:14,034 --> 00:35:19,954
+and rules about persons.
+
+778
+00:35:17,354 --> 00:35:24,674
+And we have a x1 constraint component.
+
+779
+00:35:19,954 --> 00:35:27,074
+That's the same as xor, exclusive or.
+
+780
+00:35:24,674 --> 00:35:29,354
+So, we say that a person
+
+781
+00:35:27,074 --> 00:35:30,474
+could have a birth date with a data type
+
+782
+00:35:29,354 --> 00:35:33,674
+date
+
+783
+00:35:30,474 --> 00:35:33,674
+with a mean count of one.
+
+784
+00:35:33,834 --> 00:35:38,354
+Or
+
+785
+00:35:35,434 --> 00:35:39,834
+birth year with a data type year with a
+
+786
+00:35:38,354 --> 00:35:44,274
+mean count of one.
+
+787
+00:35:39,834 --> 00:35:45,394
+So, at least one birth date or a birth
+
+788
+00:35:44,274 --> 00:35:48,154
+year.
+
+789
+00:35:45,394 --> 00:35:50,754
+And since it's exclusive or, you can't
+
+790
+00:35:48,154 --> 00:35:52,994
+have both at the same time and you can't
+
+791
+00:35:50,754 --> 00:35:56,394
+can't have none at the same time. So,
+
+792
+00:35:52,994 --> 00:35:58,834
+you need to have at least one birth date
+
+793
+00:35:56,394 --> 00:36:01,474
+or at least one
+
+794
+00:35:58,834 --> 00:36:04,194
+birth year. And when I think about it,
+
+795
+00:36:01,474 --> 00:36:05,594
+it should probably be max count one, not
+
+796
+00:36:04,194 --> 00:36:07,074
+mean count one.
+
+797
+00:36:05,594 --> 00:36:09,834
+But anyways,
+
+798
+00:36:07,074 --> 00:36:11,674
+I think you get it. And if it's been
+
+799
+00:36:09,834 --> 00:36:14,634
+or
+
+800
+00:36:11,674 --> 00:36:16,274
+instead of x1,
+
+801
+00:36:14,634 --> 00:36:19,754
+one should have
+
+802
+00:36:16,274 --> 00:36:24,194
+at least one birth date or a birth year.
+
+803
+00:36:19,754 --> 00:36:27,354
+Both is also fine. None is not fine.
+
+804
+00:36:24,194 --> 00:36:30,234
+And if it's been and,
+
+805
+00:36:27,354 --> 00:36:33,594
+you would have needed to have both birth
+
+806
+00:36:30,234 --> 00:36:33,594
+date and birth year
+
+807
+00:36:33,714 --> 00:36:37,954
+present at the same time to for the
+
+808
+00:36:36,034 --> 00:36:40,314
+whole expression to be valid.
+
+809
+00:36:37,954 --> 00:36:40,314
+Right?
+
+810
+00:36:42,135 --> 00:36:44,155
+>> [snorts]
+
+811
+00:36:45,394 --> 00:36:50,436
+>> So, probably the most boring example of
+
+812
+00:36:47,836 --> 00:36:51,756
+non-conforming data and conforming for
+
+813
+00:36:50,436 --> 00:36:54,796
+that matter.
+
+814
+00:36:51,756 --> 00:36:56,036
+So, we have a birth date. That's fine.
+
+815
+00:36:54,796 --> 00:36:58,076
+Birth year
+
+816
+00:36:56,036 --> 00:37:00,156
+uh would also have been fine. But, birth
+
+817
+00:36:58,076 --> 00:37:05,116
+date is fine. But,
+
+818
+00:37:00,156 --> 00:37:05,116
+not having any of them is not not fine.
+
+819
+00:37:06,836 --> 00:37:12,716
+I got a notification on my watch that I
+
+820
+00:37:08,956 --> 00:37:12,716
+was uh good at moving.
+
+821
+00:37:12,996 --> 00:37:16,236
+That's uh encouraging.
+
+822
+00:37:16,276 --> 00:37:19,076
+Okay.
+
+823
+00:37:17,516 --> 00:37:21,196
+Um so, more
+
+824
+00:37:19,076 --> 00:37:23,316
+we have seen the property
+
+825
+00:37:21,196 --> 00:37:25,756
+thing a couple of times now for linking
+
+826
+00:37:23,316 --> 00:37:28,556
+property shapes onto node shapes.
+
+827
+00:37:25,756 --> 00:37:30,756
+But, we can also link node shapes onto
+
+828
+00:37:28,556 --> 00:37:32,436
+node shape node shapes. So, if you want
+
+829
+00:37:30,756 --> 00:37:34,676
+to inherit
+
+830
+00:37:32,436 --> 00:37:36,356
+constraints from a
+
+831
+00:37:34,676 --> 00:37:38,716
+other node shape that is higher up in
+
+832
+00:37:36,356 --> 00:37:41,996
+the hierarchy, for example, book
+
+833
+00:37:38,716 --> 00:37:45,036
+inheriting stuff from work since book is
+
+834
+00:37:41,996 --> 00:37:48,556
+a subclass of work, that makes sense.
+
+835
+00:37:45,036 --> 00:37:51,436
+So, then I can use that node resource to
+
+836
+00:37:48,556 --> 00:37:53,796
+link node shapes to node shapes.
+
+837
+00:37:51,436 --> 00:37:55,516
+And you can actually use that property
+
+838
+00:37:53,796 --> 00:37:57,876
+thing to link property shapes to
+
+839
+00:37:55,516 --> 00:37:59,516
+property shapes, but that's not
+
+840
+00:37:57,876 --> 00:38:01,396
+a part of
+
+841
+00:37:59,516 --> 00:38:04,196
+this master class. That would be SHACL
+
+842
+00:38:01,396 --> 00:38:06,276
+master class plus plus.
+
+843
+00:38:04,196 --> 00:38:08,916
+Okay. Um
+
+844
+00:38:06,276 --> 00:38:10,956
+then I have a group of constraints that
+
+845
+00:38:08,916 --> 00:38:14,396
+are hard to categorize.
+
+846
+00:38:10,956 --> 00:38:16,596
+So, just a group of other.
+
+847
+00:38:14,396 --> 00:38:19,436
+And the first one there is a Boolean
+
+848
+00:38:16,596 --> 00:38:22,556
+signalizing a complete shape that you
+
+849
+00:38:19,436 --> 00:38:25,396
+close a shape. And then you need to set
+
+850
+00:38:22,556 --> 00:38:28,116
+constraints for every single
+
+851
+00:38:25,396 --> 00:38:30,596
+relationship that you expect for that
+
+852
+00:38:28,116 --> 00:38:33,916
+shape. Or that um
+
+853
+00:38:30,596 --> 00:38:35,396
+type of thing. Even RDF type. And there
+
+854
+00:38:33,916 --> 00:38:37,116
+is
+
+855
+00:38:35,396 --> 00:38:41,076
+You don't have to set rules and
+
+856
+00:38:37,116 --> 00:38:41,076
+constraints for RDF type, right?
+
+857
+00:38:41,396 --> 00:38:46,676
+So, then we can put RDF type in the list
+
+858
+00:38:43,596 --> 00:38:49,437
+of ignored properties.
+
+859
+00:38:46,676 --> 00:38:52,437
+So, we ignore RDF type even though the
+
+860
+00:38:49,437 --> 00:38:52,437
+shape is closed.
+
+861
+00:38:53,157 --> 00:38:58,157
+And this has value thing, it points to
+
+862
+00:38:55,517 --> 00:39:02,157
+one specific value.
+
+863
+00:38:58,157 --> 00:39:04,397
+And the constraint in points to a list
+
+864
+00:39:02,157 --> 00:39:06,277
+of values.
+
+865
+00:39:04,397 --> 00:39:07,597
+That the value for the data coming in
+
+866
+00:39:06,277 --> 00:39:08,557
+should be
+
+867
+00:39:07,597 --> 00:39:12,797
+in
+
+868
+00:39:08,557 --> 00:39:12,797
+should be an element in this list.
+
+869
+00:39:12,877 --> 00:39:18,517
+So, for this property the shape
+
+870
+00:39:14,717 --> 00:39:21,237
+describing author has value Tolkien
+
+871
+00:39:18,517 --> 00:39:24,157
+because in this case, whoops, I'm
+
+872
+00:39:21,237 --> 00:39:26,477
+targeting a node.
+
+873
+00:39:24,157 --> 00:39:30,917
+Not a class of things. I'm setting
+
+874
+00:39:26,477 --> 00:39:32,477
+constraints for that particular node.
+
+875
+00:39:30,917 --> 00:39:35,317
+So,
+
+876
+00:39:32,477 --> 00:39:39,997
+there are more targets
+
+877
+00:39:35,317 --> 00:39:39,997
+than just target class in Shackle.
+
+878
+00:39:42,157 --> 00:39:47,717
+In 95% of your cases,
+
+879
+00:39:45,677 --> 00:39:49,277
+you would use target class.
+
+880
+00:39:47,717 --> 00:39:52,397
+But it's nice to know that you can
+
+881
+00:39:49,277 --> 00:39:54,597
+target other stuff than just the class.
+
+882
+00:39:52,397 --> 00:39:56,117
+You can target node,
+
+883
+00:39:54,597 --> 00:39:58,037
+that one
+
+884
+00:39:56,117 --> 00:39:59,317
+particular element,
+
+885
+00:39:58,037 --> 00:40:01,357
+right?
+
+886
+00:39:59,317 --> 00:40:04,357
+That one thing.
+
+887
+00:40:01,357 --> 00:40:06,157
+Or you can target the subjects of a
+
+888
+00:40:04,357 --> 00:40:08,557
+relationship.
+
+889
+00:40:06,157 --> 00:40:10,357
+And the subjects of is the same as the
+
+890
+00:40:08,557 --> 00:40:13,517
+domain.
+
+891
+00:40:10,357 --> 00:40:15,557
+So, the subjects of author is the class
+
+892
+00:40:13,517 --> 00:40:17,197
+of books.
+
+893
+00:40:15,557 --> 00:40:19,397
+Because we have established a couple of
+
+894
+00:40:17,197 --> 00:40:23,197
+times that author is a relationship
+
+895
+00:40:19,397 --> 00:40:25,957
+between book and person.
+
+896
+00:40:23,197 --> 00:40:27,197
+And you can also
+
+897
+00:40:25,957 --> 00:40:29,397
+target
+
+898
+00:40:27,197 --> 00:40:31,317
+objects of.
+
+899
+00:40:29,397 --> 00:40:34,557
+So, we have author here.
+
+900
+00:40:31,317 --> 00:40:36,997
+Target objects of in that is done person
+
+901
+00:40:34,557 --> 00:40:40,197
+since that's the range
+
+902
+00:40:36,997 --> 00:40:40,197
+for this property.
+
+903
+00:40:41,637 --> 00:40:47,597
+>> But can you if you have a constraint
+
+904
+00:40:44,197 --> 00:40:49,277
+for a property without the semantic
+
+905
+00:40:47,597 --> 00:40:52,078
+relationship,
+
+906
+00:40:49,277 --> 00:40:54,278
+when do you ever use that?
+
+907
+00:40:52,078 --> 00:40:56,838
+>> Uh to be honest with you, I've never
+
+908
+00:40:54,278 --> 00:40:59,718
+used target subjects of and never used
+
+909
+00:40:56,838 --> 00:41:01,838
+target objects of in any of my projects
+
+910
+00:40:59,718 --> 00:41:03,078
+and I work with Chuckle for almost 10
+
+911
+00:41:01,838 --> 00:41:05,638
+years now.
+
+912
+00:41:03,078 --> 00:41:09,398
+>> But even in the top case, I can still
+
+913
+00:41:05,638 --> 00:41:10,038
+say a person in my semantic model, my L
+
+914
+00:41:09,398 --> 00:41:10,518
+model,
+
+915
+00:41:10,038 --> 00:41:13,438
+>> Mhm.
+
+916
+00:41:10,518 --> 00:41:13,598
+>> has doesn't have name, for example.
+
+917
+00:41:13,438 --> 00:41:15,358
+>> Yeah.
+
+918
+00:41:13,598 --> 00:41:17,358
+>> But in my Chuckle,
+
+919
+00:41:15,358 --> 00:41:18,718
+it must have name as a property.
+
+920
+00:41:17,358 --> 00:41:20,598
+>> Yeah, if you say so.
+
+921
+00:41:18,718 --> 00:41:22,398
+>> But then which means I can't reason
+
+922
+00:41:20,598 --> 00:41:23,478
+about it, but it must have it.
+
+923
+00:41:22,398 --> 00:41:26,318
+>> Well,
+
+924
+00:41:23,478 --> 00:41:28,638
+uh you you can reason about it if you if
+
+925
+00:41:26,318 --> 00:41:31,358
+you have it in in the model and if
+
+926
+00:41:28,638 --> 00:41:34,398
+anything else in the model
+
+927
+00:41:31,358 --> 00:41:37,158
+could be inferred as person having name,
+
+928
+00:41:34,398 --> 00:41:39,198
+right? Even though it's not explicitly
+
+929
+00:41:37,158 --> 00:41:42,278
+stated in your model, it's possible to
+
+930
+00:41:39,198 --> 00:41:45,918
+infer it if the rest of the model is
+
+931
+00:41:42,278 --> 00:41:48,958
+backing that fact, right? So, typically,
+
+932
+00:41:45,918 --> 00:41:51,398
+you can you do inference before you do
+
+933
+00:41:48,958 --> 00:41:54,558
+validation in the data pipeline because
+
+934
+00:41:51,398 --> 00:41:58,118
+you want to validate the whole result
+
+935
+00:41:54,558 --> 00:41:58,118
+set of your model.
+
+936
+00:41:58,198 --> 00:42:00,318
+>> Okay.
+
+937
+00:42:00,758 --> 00:42:04,918
+But can you validate
+
+938
+00:42:02,758 --> 00:42:06,678
+your Chuckle constraint against your
+
+939
+00:42:04,918 --> 00:42:07,918
+model to see you're not doing something
+
+940
+00:42:06,678 --> 00:42:08,678
+strange?
+
+941
+00:42:07,918 --> 00:42:09,198
+>> Yes.
+
+942
+00:42:08,678 --> 00:42:11,078
+>> You can?
+
+943
+00:42:09,198 --> 00:42:13,758
+>> Yes, that's possible. And that's one of
+
+944
+00:42:11,078 --> 00:42:15,878
+my examples. I think I have it
+
+945
+00:42:13,758 --> 00:42:17,358
+in my slides that you can use Chuckle to
+
+946
+00:42:15,878 --> 00:42:19,358
+validate
+
+947
+00:42:17,358 --> 00:42:20,678
+the L itself.
+
+948
+00:42:19,358 --> 00:42:23,238
+Was that what you were thinking?
+
+949
+00:42:20,678 --> 00:42:23,638
+>> I was thinking I created my shape
+
+950
+00:42:23,238 --> 00:42:26,838
+>> Mhm.
+
+951
+00:42:23,638 --> 00:42:27,198
+>> constraints for a class I defined in L.
+
+952
+00:42:26,838 --> 00:42:28,678
+>> Yeah.
+
+953
+00:42:27,198 --> 00:42:30,558
+>> Or RDF L.
+
+954
+00:42:28,678 --> 00:42:32,638
+But then I want to make sure I didn't
+
+955
+00:42:30,558 --> 00:42:33,918
+make a mistake and say you should have
+
+956
+00:42:32,638 --> 00:42:36,598
+this property, but it's not in my
+
+957
+00:42:33,918 --> 00:42:36,598
+semantic model.
+
+958
+00:42:36,758 --> 00:42:39,238
+>> Mhm.
+
+959
+00:42:36,998 --> 00:42:41,318
+>> Like how is there a way to check Chuckle
+
+960
+00:42:39,238 --> 00:42:43,918
+constraints against somehow consistent
+
+961
+00:42:41,318 --> 00:42:46,278
+semantic definitions?
+
+962
+00:42:43,918 --> 00:42:46,278
+>> Um
+
+963
+00:42:46,398 --> 00:42:51,920
+Yeah.
+
+964
+00:42:48,958 --> 00:42:54,560
+Yes and no. Uh it depends how you decide
+
+965
+00:42:51,920 --> 00:42:55,320
+to model your your data, really.
+
+966
+00:42:54,560 --> 00:42:57,080
+>> Yeah. It's just really hard for me to
+
+967
+00:42:55,320 --> 00:42:58,440
+validate because often I get stuck in a
+
+968
+00:42:57,080 --> 00:42:59,960
+situation where I'm doing a shackle
+
+969
+00:42:58,440 --> 00:43:01,400
+constraint and I have to keep flipping
+
+970
+00:42:59,960 --> 00:43:02,920
+back to the model.
+
+971
+00:43:01,400 --> 00:43:04,320
+>> Yeah, to see what's in there.
+
+972
+00:43:02,920 --> 00:43:05,560
+>> am I actually
+
+973
+00:43:04,320 --> 00:43:05,920
+doing the right thing?
+
+974
+00:43:05,560 --> 00:43:07,520
+>> Mhm.
+
+975
+00:43:05,920 --> 00:43:08,920
+>> And I'm consistent because in one I'm
+
+976
+00:43:07,520 --> 00:43:11,040
+doing reasoning and the other I'm
+
+977
+00:43:08,920 --> 00:43:12,920
+checking instances.
+
+978
+00:43:11,040 --> 00:43:14,960
+>> Yeah.
+
+979
+00:43:12,920 --> 00:43:16,440
+You can perhaps discover it by closing
+
+980
+00:43:14,960 --> 00:43:18,320
+your shapes, though.
+
+981
+00:43:16,440 --> 00:43:19,920
+>> Yeah, that's probably true.
+
+982
+00:43:18,320 --> 00:43:21,280
+I never used closed.
+
+983
+00:43:19,920 --> 00:43:24,160
+>> You can try.
+
+984
+00:43:21,280 --> 00:43:24,160
+See what happens.
+
+985
+00:43:26,000 --> 00:43:30,880
+Okay. So, this quirk I already mentioned
+
+986
+00:43:28,760 --> 00:43:34,520
+that you could actually say to range to
+
+987
+00:43:30,880 --> 00:43:37,760
+be either object property or state that
+
+988
+00:43:34,520 --> 00:43:39,880
+a property is a object property or data
+
+989
+00:43:37,760 --> 00:43:42,760
+type property at the same time.
+
+990
+00:43:39,880 --> 00:43:45,200
+So, that's a quirk.
+
+991
+00:43:42,760 --> 00:43:47,920
+Other nice things to know about shackle,
+
+992
+00:43:45,200 --> 00:43:50,040
+there is a lot of different annotational
+
+993
+00:43:47,920 --> 00:43:51,960
+resources that you can read use to
+
+994
+00:43:50,040 --> 00:43:53,360
+describe your shapes.
+
+995
+00:43:51,960 --> 00:43:56,600
+And
+
+996
+00:43:53,360 --> 00:44:00,080
+some tooling on the market use these
+
+997
+00:43:56,600 --> 00:44:02,880
+annotations, especially group and order,
+
+998
+00:44:00,080 --> 00:44:04,800
+name and description, to to visualize
+
+999
+00:44:02,880 --> 00:44:06,520
+the shackle shapes in their graphical
+
+1000
+00:44:04,800 --> 00:44:09,600
+user interface.
+
+1001
+00:44:06,520 --> 00:44:09,600
+So, that's nice to know.
+
+1002
+00:44:11,520 --> 00:44:16,480
+But they have no no um
+
+1003
+00:44:13,840 --> 00:44:19,520
+validational purposes. It's only
+
+1004
+00:44:16,480 --> 00:44:22,520
+annotational values.
+
+1005
+00:44:19,520 --> 00:44:24,960
+And then comes shackle sparkle.
+
+1006
+00:44:22,520 --> 00:44:27,560
+And I need to comment a tiny disclaimer
+
+1007
+00:44:24,960 --> 00:44:30,120
+here also.
+
+1008
+00:44:27,560 --> 00:44:33,400
+When I ask
+
+1009
+00:44:30,120 --> 00:44:35,800
+around for what people are interested in
+
+1010
+00:44:33,400 --> 00:44:39,200
+hearing more about when it comes to
+
+1011
+00:44:35,800 --> 00:44:41,160
+shackle, I always hear or almost always
+
+1012
+00:44:39,200 --> 00:44:42,880
+hear, "I want to learn more about
+
+1013
+00:44:41,160 --> 00:44:44,520
+shackle sparkle."
+
+1014
+00:44:42,880 --> 00:44:46,440
+And I think,
+
+1015
+00:44:44,520 --> 00:44:48,360
+"Why?
+
+1016
+00:44:46,440 --> 00:44:51,160
+Isn't the shackle core constraint
+
+1017
+00:44:48,360 --> 00:44:52,680
+vocabulary sufficient enough for you? Do
+
+1018
+00:44:51,160 --> 00:44:57,321
+you really need to create your own
+
+1019
+00:44:52,680 --> 00:44:58,921
+constraints using shackle or sparkle.
+
+1020
+00:44:57,321 --> 00:45:01,001
+Uh
+
+1021
+00:44:58,921 --> 00:45:02,961
+it it um
+
+1022
+00:45:01,001 --> 00:45:04,601
+By by the response I get, it looks like
+
+1023
+00:45:02,961 --> 00:45:06,841
+it but
+
+1024
+00:45:04,601 --> 00:45:09,761
+I don't really see the need for for
+
+1025
+00:45:06,841 --> 00:45:12,841
+shackle shackle sparkle, or I understand
+
+1026
+00:45:09,761 --> 00:45:15,721
+why people want to use it, but I have
+
+1027
+00:45:12,841 --> 00:45:17,761
+never had the need to use it myself,
+
+1028
+00:45:15,721 --> 00:45:20,321
+since I find the core constraint
+
+1029
+00:45:17,761 --> 00:45:24,081
+vocabulary so rich and so extensive that
+
+1030
+00:45:20,321 --> 00:45:26,681
+you can do whatever with that.
+
+1031
+00:45:24,081 --> 00:45:30,401
+But anyways, let me show you how it
+
+1032
+00:45:26,681 --> 00:45:32,121
+looks like. So, in this case
+
+1033
+00:45:30,401 --> 00:45:36,921
+I have a node shape,
+
+1034
+00:45:32,121 --> 00:45:39,721
+and the main title must be in Nynorsk.
+
+1035
+00:45:36,921 --> 00:45:41,201
+New Norwegian, that is. I don't accept
+
+1036
+00:45:39,721 --> 00:45:46,201
+or accept
+
+1037
+00:45:41,201 --> 00:45:46,201
+anything except New Norwegian.
+
+1038
+00:45:47,201 --> 00:45:54,041
+And then comes this resource
+
+1039
+00:45:49,841 --> 00:45:55,881
+sparkle from the shackle vocabulary.
+
+1040
+00:45:54,041 --> 00:45:58,881
+Where then
+
+1041
+00:45:55,881 --> 00:46:00,721
+give it an instance of shackle sparkle
+
+1042
+00:45:58,881 --> 00:46:03,881
+constraint,
+
+1043
+00:46:00,721 --> 00:46:05,881
+and then you can set a prefix mapping.
+
+1044
+00:46:03,881 --> 00:46:09,041
+I'll get back to the mapping.
+
+1045
+00:46:05,881 --> 00:46:11,801
+And then you state a query.
+
+1046
+00:46:09,041 --> 00:46:14,721
+Select in in this case, and then I write
+
+1047
+00:46:11,801 --> 00:46:19,721
+the query, and this is bound to the
+
+1048
+00:46:14,721 --> 00:46:19,721
+focus node. So, it's bound to to books.
+
+1049
+00:46:20,041 --> 00:46:26,081
+Uh where the main title
+
+1050
+00:46:22,841 --> 00:46:29,321
+will be in NN or tagged with NN, which
+
+1051
+00:46:26,081 --> 00:46:29,321
+stands for New Norwegian.
+
+1052
+00:46:29,881 --> 00:46:34,121
+And the prefixes
+
+1053
+00:46:34,241 --> 00:46:38,481
+is actually
+
+1054
+00:46:35,761 --> 00:46:41,161
+an the ontology
+
+1055
+00:46:38,481 --> 00:46:43,721
+that imports shackle
+
+1056
+00:46:41,161 --> 00:46:46,921
+and declares, so we see that's from the
+
+1057
+00:46:43,721 --> 00:46:50,441
+shackle vocabulary, declare, and then we
+
+1058
+00:46:46,921 --> 00:46:53,361
+declare prefix and namespace
+
+1059
+00:46:50,441 --> 00:46:54,921
+for the stuff we want to do in the
+
+1060
+00:46:53,361 --> 00:46:57,803
+sparkle query.
+
+1061
+00:46:54,921 --> 00:46:59,963
+So, if we need resources from
+
+1062
+00:46:57,803 --> 00:47:02,602
+the data
+
+1063
+00:46:59,963 --> 00:47:05,483
+or the rules,
+
+1064
+00:47:02,602 --> 00:47:08,483
+we can prefix those name spaces and then
+
+1065
+00:47:05,483 --> 00:47:11,483
+use the name space or prefixed name
+
+1066
+00:47:08,483 --> 00:47:15,563
+space in the query itself. So, that's
+
+1067
+00:47:11,483 --> 00:47:15,563
+the prefix mapping.
+
+1068
+00:47:16,563 --> 00:47:21,523
+And that mapping is then used with the
+
+1069
+00:47:18,763 --> 00:47:26,083
+resource prefixes,
+
+1070
+00:47:21,523 --> 00:47:29,483
+not prefix, but prefixes in in the query
+
+1071
+00:47:26,083 --> 00:47:32,003
+constraint itself.
+
+1072
+00:47:29,483 --> 00:47:34,362
+And I'll leave it there for SHACL
+
+1073
+00:47:32,003 --> 00:47:36,483
+SPARQL. And if you want to learn more
+
+1074
+00:47:34,362 --> 00:47:38,162
+about SHACL SPARQL, I'm writing a book
+
+1075
+00:47:36,483 --> 00:47:42,003
+on the topic of SHACL that will be
+
+1076
+00:47:38,162 --> 00:47:46,442
+released sometime during 2025 with where
+
+1077
+00:47:42,003 --> 00:47:49,122
+we can read more about SHACL SPARQL.
+
+1078
+00:47:46,442 --> 00:47:49,122
+Okay.
+
+1079
+00:47:49,283 --> 00:47:54,442
+So, let's talk about the engine. So, the
+
+1080
+00:47:51,843 --> 00:47:56,882
+engine is very simple. It takes in two
+
+1081
+00:47:54,442 --> 00:47:58,922
+things and it spits out one thing.
+
+1082
+00:47:56,882 --> 00:48:01,203
+So, it takes in the data graph and it
+
+1083
+00:47:58,922 --> 00:48:05,642
+takes in the shapes graph. Remember I
+
+1084
+00:48:01,203 --> 00:48:08,483
+divided my things into rules, examples,
+
+1085
+00:48:05,642 --> 00:48:11,122
+where the example name space is my data
+
+1086
+00:48:08,483 --> 00:48:13,563
+graph. So, that's the instances and the
+
+1087
+00:48:11,122 --> 00:48:17,602
+ontology.
+
+1088
+00:48:13,563 --> 00:48:19,523
+And the shapes graph contains the rules
+
+1089
+00:48:17,602 --> 00:48:22,483
+and constraints.
+
+1090
+00:48:19,523 --> 00:48:25,483
+It's perfectly fine if you combine all
+
+1091
+00:48:22,483 --> 00:48:28,362
+these things into one huge file or data
+
+1092
+00:48:25,483 --> 00:48:30,843
+sets because it's all triples, right?
+
+1093
+00:48:28,362 --> 00:48:33,122
+But, the SHACL engine
+
+1094
+00:48:30,843 --> 00:48:37,283
+looks at the data and it looks at the
+
+1095
+00:48:33,122 --> 00:48:39,882
+rules. And it compare the data or
+
+1096
+00:48:37,283 --> 00:48:41,602
+yeah, compare the data against the rules
+
+1097
+00:48:39,882 --> 00:48:43,642
+and constraints you have set for the
+
+1098
+00:48:41,602 --> 00:48:46,362
+data.
+
+1099
+00:48:43,642 --> 00:48:49,602
+And if all the data complies to the
+
+1100
+00:48:46,362 --> 00:48:50,803
+rules in the shapes graph, you get a
+
+1101
+00:48:49,602 --> 00:48:54,122
+couple of
+
+1102
+00:48:50,803 --> 00:48:57,243
+triples in the validation result
+
+1103
+00:48:54,122 --> 00:49:01,124
+that says it confirms true.
+
+1104
+00:48:57,243 --> 00:49:04,004
+But, if there are any data that doesn't
+
+1105
+00:49:01,124 --> 00:49:07,444
+comply to the rules and regula- rules
+
+1106
+00:49:04,004 --> 00:49:09,804
+and constraints set in the shapes graph,
+
+1107
+00:49:07,444 --> 00:49:12,764
+you will get a validation report in
+
+1108
+00:49:09,804 --> 00:49:16,124
+return containing the validation results
+
+1109
+00:49:12,764 --> 00:49:21,124
+of exactly what went wrong
+
+1110
+00:49:16,124 --> 00:49:21,124
+in the data according to the rules.
+
+1111
+00:49:22,364 --> 00:49:30,284
+Okay, so this is the confirms true, very
+
+1112
+00:49:26,124 --> 00:49:33,564
+boring, but very nice indeed. And this
+
+1113
+00:49:30,284 --> 00:49:35,684
+is the potential result set
+
+1114
+00:49:33,564 --> 00:49:37,044
+that you can get back from from the
+
+1115
+00:49:35,684 --> 00:49:38,884
+engine.
+
+1116
+00:49:37,044 --> 00:49:41,004
+So, we have information about focus
+
+1117
+00:49:38,884 --> 00:49:43,844
+node, result path, and value. So, that's
+
+1118
+00:49:41,004 --> 00:49:47,084
+the failing triple.
+
+1119
+00:49:43,844 --> 00:49:49,124
+The focus node, the subject, result path
+
+1120
+00:49:47,084 --> 00:49:50,284
+is the predicate, and the value is the
+
+1121
+00:49:49,124 --> 00:49:52,604
+object,
+
+1122
+00:49:50,284 --> 00:49:55,244
+right?
+
+1123
+00:49:52,604 --> 00:49:57,084
+And then we have information about the
+
+1124
+00:49:55,244 --> 00:50:00,084
+shape
+
+1125
+00:49:57,084 --> 00:50:02,484
+where it all began.
+
+1126
+00:50:00,084 --> 00:50:05,044
+The violation, and then what kind of
+
+1127
+00:50:02,484 --> 00:50:06,524
+constraint component that triggered the
+
+1128
+00:50:05,044 --> 00:50:10,284
+failure.
+
+1129
+00:50:06,524 --> 00:50:13,164
+So, if main title should be unique and
+
+1130
+00:50:10,284 --> 00:50:16,284
+mandatory for a book, and then comes a
+
+1131
+00:50:13,164 --> 00:50:18,084
+book without any main title,
+
+1132
+00:50:16,284 --> 00:50:20,044
+then the source constraint component
+
+1133
+00:50:18,084 --> 00:50:23,084
+would be a mean count constraint
+
+1134
+00:50:20,044 --> 00:50:23,084
+component right?
+
+1135
+00:50:23,404 --> 00:50:29,324
+And then we have detail, so we can link
+
+1136
+00:50:26,564 --> 00:50:33,804
+reports to other reports
+
+1137
+00:50:29,324 --> 00:50:37,004
+to explain more about the violation.
+
+1138
+00:50:33,804 --> 00:50:40,284
+And then we have a annotational
+
+1139
+00:50:37,004 --> 00:50:42,764
+property with textual details that you
+
+1140
+00:50:40,284 --> 00:50:46,044
+can use for whatever.
+
+1141
+00:50:42,764 --> 00:50:48,324
+And then we have the severity level.
+
+1142
+00:50:46,044 --> 00:50:51,364
+So, if you don't state the severity
+
+1143
+00:50:48,324 --> 00:50:55,244
+level for any of your shapes, its
+
+1144
+00:50:51,364 --> 00:50:58,324
+default value is violation.
+
+1145
+00:50:55,244 --> 00:50:59,644
+You also have info for information and
+
+1146
+00:50:58,324 --> 00:51:03,205
+warning
+
+1147
+00:50:59,644 --> 00:51:05,565
+by default in in SHACL. But,
+
+1148
+00:51:03,205 --> 00:51:09,925
+you can also state your own as long as
+
+1149
+00:51:05,565 --> 00:51:09,925
+you type them as severity.
+
+1150
+00:51:12,885 --> 00:51:18,685
+So, take a look at this
+
+1151
+00:51:15,725 --> 00:51:18,685
+shapes graph.
+
+1152
+00:51:22,125 --> 00:51:27,965
+This is how I visualize graphs. So,
+
+1153
+00:51:25,005 --> 00:51:31,525
+every single IRI is a circle and every
+
+1154
+00:51:27,965 --> 00:51:34,045
+single literal value is a rectangle and
+
+1155
+00:51:31,525 --> 00:51:37,845
+every single relationship or predicate
+
+1156
+00:51:34,045 --> 00:51:37,845
+has a arrow head.
+
+1157
+00:51:39,045 --> 00:51:43,725
+So, let that sink in for a bit. We have
+
+1158
+00:51:41,845 --> 00:51:46,045
+book
+
+1159
+00:51:43,725 --> 00:51:48,325
+with a title shape
+
+1160
+00:51:46,045 --> 00:51:49,565
+on the title relationship should be
+
+1161
+00:51:48,325 --> 00:51:51,365
+string.
+
+1162
+00:51:49,565 --> 00:51:54,445
+We have authors
+
+1163
+00:51:51,365 --> 00:51:56,925
+that should be an instance of author and
+
+1164
+00:51:54,445 --> 00:52:02,045
+we require that
+
+1165
+00:51:56,925 --> 00:52:02,045
+books should have at least one author.
+
+1166
+00:52:02,165 --> 00:52:05,325
+And then we have
+
+1167
+00:52:05,365 --> 00:52:11,125
+rules about persons, targets the class
+
+1168
+00:52:08,485 --> 00:52:13,325
+person on and we have rules on the
+
+1169
+00:52:11,125 --> 00:52:15,605
+relationship name.
+
+1170
+00:52:13,325 --> 00:52:18,365
+And name should also be some kind of
+
+1171
+00:52:15,605 --> 00:52:19,845
+string and we expect that all people
+
+1172
+00:52:18,365 --> 00:52:22,925
+should have
+
+1173
+00:52:19,845 --> 00:52:22,925
+at least one name.
+
+1174
+00:52:25,765 --> 00:52:31,085
+So, if I pass this
+
+1175
+00:52:27,965 --> 00:52:34,365
+rules to my Shackle engine together with
+
+1176
+00:52:31,085 --> 00:52:34,365
+this data here,
+
+1177
+00:52:34,685 --> 00:52:39,725
+and I know that this data don't comply.
+
+1178
+00:52:37,205 --> 00:52:42,925
+Can anyone spot
+
+1179
+00:52:39,725 --> 00:52:44,685
+what's the validation result?
+
+1180
+00:52:42,925 --> 00:52:47,085
+First hand gets a chocolate if you're
+
+1181
+00:52:44,685 --> 00:52:47,085
+right.
+
+1182
+00:52:50,725 --> 00:52:53,045
+>> Heather?
+
+1183
+00:52:55,885 --> 00:52:59,645
+>> Do you want to try?
+
+1184
+00:52:56,605 --> 00:53:01,045
+>> Yeah, because birth date goes directly
+
+1185
+00:52:59,645 --> 00:53:02,485
+to
+
+1186
+00:53:01,045 --> 00:53:04,485
+literal. So, I don't I don't know if
+
+1187
+00:53:02,485 --> 00:53:04,965
+that's the problem or not.
+
+1188
+00:53:04,485 --> 00:53:05,925
+>> Mhm?
+
+1189
+00:53:04,965 --> 00:53:07,447
+>> No, it's okay.
+
+1190
+00:53:05,925 --> 00:53:09,607
+>> Mhm? It's okay. It doesn't have to be
+
+1191
+00:53:07,447 --> 00:53:09,607
+there.
+
+1192
+00:53:11,407 --> 00:53:15,607
+>> Yes.
+
+1193
+00:53:11,927 --> 00:53:18,007
+>> I think we don't have fourth person.
+
+1194
+00:53:15,607 --> 00:53:18,007
+>> No.
+
+1195
+00:53:18,207 --> 00:53:21,687
+>> No, we don't have fourth person. That's
+
+1196
+00:53:19,967 --> 00:53:23,647
+true.
+
+1197
+00:53:21,687 --> 00:53:26,127
+But should we have fourth person?
+
+1198
+00:53:23,647 --> 00:53:28,367
+>> Shall I go back to the rules again?
+
+1199
+00:53:26,127 --> 00:53:28,367
+Hm?
+
+1200
+00:53:29,807 --> 00:53:35,247
+>> person
+
+1201
+00:53:32,367 --> 00:53:35,927
+So, a author talking a author.
+
+1202
+00:53:35,247 --> 00:53:37,967
+>> Hm?
+
+1203
+00:53:35,927 --> 00:53:40,527
+>> This is a sub class of person. Person is
+
+1204
+00:53:37,967 --> 00:53:43,207
+the relationship to J.R.R. Tolkien, not
+
+1205
+00:53:40,527 --> 00:53:43,207
+to the author.
+
+1206
+00:53:45,687 --> 00:53:50,287
+>> Not exactly what I'm looking for, but
+
+1207
+00:53:47,767 --> 00:53:50,287
+okay.
+
+1208
+00:53:55,847 --> 00:54:00,447
+>> The date type's wrong.
+
+1209
+00:53:57,527 --> 00:54:00,447
+>> The date type?
+
+1210
+00:54:01,367 --> 00:54:06,327
+Yeah somehow.
+
+1211
+00:54:04,087 --> 00:54:08,967
+Did I even describe
+
+1212
+00:54:06,327 --> 00:54:08,967
+dates?
+
+1213
+00:54:10,407 --> 00:54:15,327
+We have titles as some kind of strings,
+
+1214
+00:54:12,967 --> 00:54:18,127
+and author as some kind of authors, and
+
+1215
+00:54:15,327 --> 00:54:20,487
+authors should have or person should
+
+1216
+00:54:18,127 --> 00:54:23,247
+have
+
+1217
+00:54:20,487 --> 00:54:23,247
+names.
+
+1218
+00:54:27,647 --> 00:54:32,287
+This is a tricky one. I'll keep the
+
+1219
+00:54:29,087 --> 00:54:35,647
+chocolate for myself then. So,
+
+1220
+00:54:32,287 --> 00:54:39,127
+the error or about violation is actually
+
+1221
+00:54:35,647 --> 00:54:41,087
+on data type for title.
+
+1222
+00:54:39,127 --> 00:54:42,647
+That's the first one.
+
+1223
+00:54:41,087 --> 00:54:44,287
+And why is that?
+
+1224
+00:54:42,647 --> 00:54:47,527
+We have set
+
+1225
+00:54:44,287 --> 00:54:50,767
+title to be data type string,
+
+1226
+00:54:47,527 --> 00:54:53,007
+but what data says is that
+
+1227
+00:54:50,767 --> 00:54:56,287
+it's a language type string, and that's
+
+1228
+00:54:53,007 --> 00:55:01,367
+something different than string. That's
+
+1229
+00:54:56,287 --> 00:55:03,047
+RDF long string, not XSD string.
+
+1230
+00:55:01,367 --> 00:55:06,167
+So, that's the first one.
+
+1231
+00:55:03,047 --> 00:55:09,047
+And this happens, you know, in the data.
+
+1232
+00:55:06,167 --> 00:55:09,047
+Because data are not
+
+1233
+00:55:09,048 --> 00:55:13,448
+And then we have Tolkien.
+
+1234
+00:55:11,248 --> 00:55:14,728
+And Tolkien is a author.
+
+1235
+00:55:13,448 --> 00:55:17,168
+Um
+
+1236
+00:55:14,728 --> 00:55:18,808
+that's completely fine.
+
+1237
+00:55:17,168 --> 00:55:21,928
+He should be an author.
+
+1238
+00:55:18,808 --> 00:55:25,288
+And we also say that author
+
+1239
+00:55:21,928 --> 00:55:28,408
+is some kind of person. Therefore, all
+
+1240
+00:55:25,288 --> 00:55:29,848
+rules regarding persons also applies to
+
+1241
+00:55:28,408 --> 00:55:31,288
+authors.
+
+1242
+00:55:29,848 --> 00:55:34,128
+Right?
+
+1243
+00:55:31,288 --> 00:55:37,168
+So that author or person should also
+
+1244
+00:55:34,128 --> 00:55:40,008
+have a name. So that's a mean count
+
+1245
+00:55:37,168 --> 00:55:42,968
+constraint component.
+
+1246
+00:55:40,008 --> 00:55:45,808
+>> But if you're if you're applying the
+
+1247
+00:55:42,968 --> 00:55:47,648
+SHACL before any inferencing, how does
+
+1248
+00:55:45,808 --> 00:55:49,808
+the SHACL engine know that author is a
+
+1249
+00:55:47,648 --> 00:55:52,328
+subclass of person? [snorts]
+
+1250
+00:55:49,808 --> 00:55:55,088
+>> Um because it's stated in the data
+
+1251
+00:55:52,328 --> 00:55:57,448
+itself here.
+
+1252
+00:55:55,088 --> 00:56:00,448
+Because I passed this data, right?
+
+1253
+00:55:57,448 --> 00:56:03,328
+But if this wasn't a part of data, the
+
+1254
+00:56:00,448 --> 00:56:05,008
+subclass of statement, it wouldn't have
+
+1255
+00:56:03,328 --> 00:56:08,328
+known.
+
+1256
+00:56:05,008 --> 00:56:11,928
+So then it wouldn't have had a violation
+
+1257
+00:56:08,328 --> 00:56:11,928
+on on Tolkien.
+
+1258
+00:56:13,128 --> 00:56:18,088
+Sorry.
+
+1259
+00:56:15,248 --> 00:56:19,648
+>> SHACL propagates types. It does that
+
+1260
+00:56:18,088 --> 00:56:22,128
+level of inferencing.
+
+1261
+00:56:19,648 --> 00:56:22,128
+>> Yes.
+
+1262
+00:56:23,128 --> 00:56:27,728
+But
+
+1263
+00:56:25,248 --> 00:56:30,808
+truth with variations that differs from
+
+1264
+00:56:27,728 --> 00:56:33,128
+SHACL engine to SHACL engine.
+
+1265
+00:56:30,808 --> 00:56:33,128
+Yeah.
+
+1266
+00:56:34,448 --> 00:56:40,088
+It's like with with SPARQL, right?
+
+1267
+00:56:37,088 --> 00:56:41,648
+SPARQL engines differs because you have
+
+1268
+00:56:40,088 --> 00:56:44,928
+a spec
+
+1269
+00:56:41,648 --> 00:56:46,088
+and it's up to the implementer of the
+
+1270
+00:56:44,928 --> 00:56:49,568
+spec
+
+1271
+00:56:46,088 --> 00:56:51,208
+to interpret the spec and to add what
+
+1272
+00:56:49,568 --> 00:56:54,488
+kind of functionality the spec
+
+1273
+00:56:51,208 --> 00:56:56,968
+describes. And if the spec is
+
+1274
+00:56:54,488 --> 00:57:01,008
+diffuse or unclear,
+
+1275
+00:56:56,968 --> 00:57:01,008
+the implementation will also differ.
+
+1276
+00:57:02,888 --> 00:57:06,448
+Okay.
+
+1277
+00:57:03,928 --> 00:57:07,968
+So the results at
+
+1278
+00:57:06,448 --> 00:57:10,929
+looks
+
+1279
+00:57:07,968 --> 00:57:14,529
+somewhat like this. So this is run
+
+1280
+00:57:10,929 --> 00:57:18,209
+RDF4J. I can do the code instead. Maybe
+
+1281
+00:57:14,529 --> 00:57:21,049
+that's better. Where is my code?
+
+1282
+00:57:18,209 --> 00:57:24,009
+Oh, I have to start it again.
+
+1283
+00:57:21,049 --> 00:57:24,009
+Bear with me.
+
+1284
+00:57:25,569 --> 00:57:29,569
+It was the correct project.
+
+1285
+00:57:32,489 --> 00:57:35,009
+So,
+
+1286
+00:57:37,809 --> 00:57:43,129
+I have data. Is it readable back there?
+
+1287
+00:57:45,569 --> 00:57:49,529
+I've recently gotten an update of
+
+1288
+00:57:47,809 --> 00:57:51,129
+IntelliJ so
+
+1289
+00:57:49,529 --> 00:57:53,649
+I don't know where to find things
+
+1290
+00:57:51,129 --> 00:57:53,649
+anymore.
+
+1291
+00:57:53,729 --> 00:57:58,089
+Is that a a
+
+1292
+00:57:55,609 --> 00:57:59,769
+a hint of that you're getting old when
+
+1293
+00:57:58,089 --> 00:58:03,129
+you're getting software updates and
+
+1294
+00:57:59,769 --> 00:58:06,769
+everything is hidden to you?
+
+1295
+00:58:03,129 --> 00:58:06,769
+Can't adapt to new things.
+
+1296
+00:58:10,129 --> 00:58:13,609
+Yeah.
+
+1297
+00:58:11,689 --> 00:58:17,809
+Let me see.
+
+1298
+00:58:13,609 --> 00:58:17,809
+Size. Where is size?
+
+1299
+00:58:24,449 --> 00:58:27,009
+Where?
+
+1300
+00:58:27,649 --> 00:58:33,489
+There. Oh, Jesus Christ.
+
+1301
+00:58:30,769 --> 00:58:35,729
+Sorry.
+
+1302
+00:58:33,489 --> 00:58:37,849
+Maybe a little bit bigger.
+
+1303
+00:58:35,729 --> 00:58:40,609
+20.
+
+1304
+00:58:37,849 --> 00:58:40,609
+Apply.
+
+1305
+00:58:41,009 --> 00:58:43,529
+Better?
+
+1306
+00:58:44,209 --> 00:58:48,609
+Awesome.
+
+1307
+00:58:46,369 --> 00:58:50,449
+Yes. So, this is the same stuff just in
+
+1308
+00:58:48,609 --> 00:58:52,849
+total instead of
+
+1309
+00:58:50,449 --> 00:58:54,649
+this drawing. So, we have the Hobbit,
+
+1310
+00:58:52,849 --> 00:58:57,289
+which is some kind of book. It has a
+
+1311
+00:58:54,649 --> 00:59:00,169
+title, which is Hobbit or There and Back
+
+1312
+00:58:57,289 --> 00:59:02,249
+Again, language tagged with English.
+
+1313
+00:59:00,169 --> 00:59:04,009
+And we have the author Tolkien. And
+
+1314
+00:59:02,249 --> 00:59:06,089
+Tolkien is the author.
+
+1315
+00:59:04,009 --> 00:59:07,209
+The birth date is blah blah blah as
+
+1316
+00:59:06,089 --> 00:59:10,329
+date.
+
+1317
+00:59:07,209 --> 00:59:11,929
+And author is subclass of person. So,
+
+1318
+00:59:10,329 --> 00:59:15,971
+that's basically
+
+1319
+00:59:11,929 --> 00:59:15,971
+the same stuff as the drawing.
+
+1320
+00:59:16,571 --> 00:59:21,491
+And then we have
+
+1321
+00:59:19,171 --> 00:59:24,171
+the shapes. Let's see if they can fit in
+
+1322
+00:59:21,491 --> 00:59:24,171
+one view.
+
+1323
+00:59:25,731 --> 00:59:30,291
+Like that. So,
+
+1324
+00:59:28,771 --> 00:59:35,291
+books
+
+1325
+00:59:30,291 --> 00:59:37,851
+have rules about titles and authors.
+
+1326
+00:59:35,291 --> 00:59:40,371
+And the rule for title is that the data
+
+1327
+00:59:37,851 --> 00:59:43,451
+type is string, right? And the rule for
+
+1328
+00:59:40,371 --> 00:59:47,091
+author is that the class is author and
+
+1329
+00:59:43,451 --> 00:59:49,131
+all books have at least one author.
+
+1330
+00:59:47,091 --> 00:59:52,571
+And then you have person.
+
+1331
+00:59:49,131 --> 00:59:54,451
+And the rules for person regards name.
+
+1332
+00:59:52,571 --> 00:59:57,571
+And the relationship name should be some
+
+1333
+00:59:54,451 --> 00:59:59,291
+kind of string. And all persons should
+
+1334
+00:59:57,571 --> 01:00:02,131
+have at least
+
+1335
+00:59:59,291 --> 01:00:02,131
+one name.
+
+1336
+01:00:02,451 --> 01:00:06,011
+And
+
+1337
+01:00:04,451 --> 01:00:08,931
+the version
+
+1338
+01:00:06,011 --> 01:00:11,291
+or the SHACL engine that I'm using here
+
+1339
+01:00:08,931 --> 01:00:14,931
+is
+
+1340
+01:00:11,291 --> 01:00:16,971
+RDF4J. And I'm a being a little bit
+
+1341
+01:00:14,931 --> 01:00:20,091
+um
+
+1342
+01:00:16,971 --> 01:00:21,331
+What's the What's the word?
+
+1343
+01:00:20,091 --> 01:00:23,491
+Oh.
+
+1344
+01:00:21,331 --> 01:00:25,971
+It's completely disappeared from my
+
+1345
+01:00:23,491 --> 01:00:25,971
+mind.
+
+1346
+01:00:28,211 --> 01:00:31,611
+Ah.
+
+1347
+01:00:29,611 --> 01:00:34,531
+Ah, never mind.
+
+1348
+01:00:31,611 --> 01:00:37,131
+Being a bit biased, perhaps, because
+
+1349
+01:00:34,531 --> 01:00:38,931
+the implementer of the RDF4J SHACL
+
+1350
+01:00:37,131 --> 01:00:41,691
+engine is a dear friend of mine, Håvard
+
+1351
+01:00:38,931 --> 01:00:43,011
+Ottestad, which introduced me to SHACL
+
+1352
+01:00:41,691 --> 01:00:44,811
+in
+
+1353
+01:00:43,011 --> 01:00:46,731
+2015.
+
+1354
+01:00:44,811 --> 01:00:49,491
+So, therefore, I'm being a good girl and
+
+1355
+01:00:46,731 --> 01:00:52,611
+using his SHACL engine in my
+
+1356
+01:00:49,491 --> 01:00:56,331
+examples. So, anyway, the RDF4J SHACL
+
+1357
+01:00:52,611 --> 01:00:59,611
+engine version number five
+
+1358
+01:00:56,331 --> 01:01:03,291
+and data and the shapes graph
+
+1359
+01:00:59,611 --> 01:01:05,691
+are then being fed to that SHACL engine,
+
+1360
+01:01:03,291 --> 01:01:07,211
+and it produces a report and write that
+
+1361
+01:01:05,691 --> 01:01:09,731
+to file.
+
+1362
+01:01:07,211 --> 01:01:11,691
+So, running this thing, I'm also writing
+
+1363
+01:01:09,731 --> 01:01:14,411
+it to
+
+1364
+01:01:11,691 --> 01:01:18,052
+to the command line here.
+
+1365
+01:01:14,411 --> 01:01:19,212
+You can see the result from RDF/JS SHACL
+
+1366
+01:01:18,052 --> 01:01:20,492
+engine.
+
+1367
+01:01:19,212 --> 01:01:23,492
+So, we get the
+
+1368
+01:01:20,492 --> 01:01:25,652
+a blank node, which is typed as a
+
+1369
+01:01:23,492 --> 01:01:29,332
+validation report,
+
+1370
+01:01:25,652 --> 01:01:29,332
+and it confirms false.
+
+1371
+01:01:29,932 --> 01:01:37,852
+And the result is two other blank nodes,
+
+1372
+01:01:33,972 --> 01:01:39,412
+blah blah blah 25 and blah blah blah 26.
+
+1373
+01:01:37,852 --> 01:01:42,932
+And 25
+
+1374
+01:01:39,412 --> 01:01:46,732
+is a validation result
+
+1375
+01:01:42,932 --> 01:01:50,332
+on the focus node, The Hobbit.
+
+1376
+01:01:46,732 --> 01:01:52,292
+Source constraint component is data type
+
+1377
+01:01:50,332 --> 01:01:56,052
+constraint component,
+
+1378
+01:01:52,292 --> 01:01:57,572
+and the source shape is book title, so
+
+1379
+01:01:56,052 --> 01:02:01,052
+it has something to do with the
+
+1380
+01:01:57,572 --> 01:02:01,052
+relationship title, right?
+
+1381
+01:02:01,412 --> 01:02:06,532
+Result path title, and the value is The
+
+1382
+01:02:04,292 --> 01:02:08,812
+Hobbit or There and Back Again in
+
+1383
+01:02:06,532 --> 01:02:10,852
+English.
+
+1384
+01:02:08,812 --> 01:02:13,052
+And we already know it's a data type
+
+1385
+01:02:10,852 --> 01:02:17,572
+constraint component that triggered the
+
+1386
+01:02:13,052 --> 01:02:17,572
+violation, so it's the wrong data type.
+
+1387
+01:02:19,492 --> 01:02:25,732
+So, either I go back and fix
+
+1388
+01:02:22,972 --> 01:02:28,132
+uh my uh data,
+
+1389
+01:02:25,732 --> 01:02:29,812
+or I fix my
+
+1390
+01:02:28,132 --> 01:02:31,892
+rule,
+
+1391
+01:02:29,812 --> 01:02:34,012
+depending on what's
+
+1392
+01:02:31,892 --> 01:02:37,172
+true.
+
+1393
+01:02:34,012 --> 01:02:39,172
+So, if I then remove
+
+1394
+01:02:37,172 --> 01:02:40,132
+the language type,
+
+1395
+01:02:39,172 --> 01:02:43,572
+then
+
+1396
+01:02:40,132 --> 01:02:46,772
+the value is just a string.
+
+1397
+01:02:43,572 --> 01:02:48,492
+And in that case,
+
+1398
+01:02:46,772 --> 01:02:52,052
+I only get one
+
+1399
+01:02:48,492 --> 01:02:52,052
+validation error.
+
+1400
+01:02:53,172 --> 01:02:58,972
+So, now the result set is reduced to one
+
+1401
+01:02:55,652 --> 01:03:00,732
+validation result on the focus node of
+
+1402
+01:02:58,972 --> 01:03:03,012
+Tolkien.
+
+1403
+01:03:00,732 --> 01:03:05,652
+Mean count constraint component, so
+
+1404
+01:03:03,012 --> 01:03:07,252
+there is something missing here, right?
+
+1405
+01:03:05,652 --> 01:03:10,212
+Because it should be at least one of
+
+1406
+01:03:07,252 --> 01:03:12,692
+that thing. And that thing has to do
+
+1407
+01:03:10,212 --> 01:03:15,332
+with name.
+
+1408
+01:03:12,692 --> 01:03:18,332
+And the rules for name are stated in
+
+1409
+01:03:15,332 --> 01:03:18,332
+person-name.
+
+1410
+01:03:18,732 --> 01:03:23,733
+So, then I go back to my data
+
+1411
+01:03:21,813 --> 01:03:26,213
+and I see that Tolkien doesn't have a
+
+1412
+01:03:23,733 --> 01:03:26,213
+name.
+
+1413
+01:03:27,133 --> 01:03:33,133
+So, I go there and add
+
+1414
+01:03:30,773 --> 01:03:33,133
+John.
+
+1415
+01:03:34,653 --> 01:03:39,053
+Like that.
+
+1416
+01:03:35,973 --> 01:03:39,053
+And I run again.
+
+1417
+01:03:39,973 --> 01:03:47,493
+And now everything confirms true.
+
+1418
+01:03:44,093 --> 01:03:47,493
+So, more chocolate for me.
+
+1419
+01:03:47,773 --> 01:03:52,933
+Let's see. Uh so, this demo
+
+1420
+01:03:50,853 --> 01:03:55,413
+with um all the slide decks from my
+
+1421
+01:03:52,933 --> 01:03:58,613
+previous years and data and everything
+
+1422
+01:03:55,413 --> 01:04:00,613
+are available on my my GitHub account
+
+1423
+01:03:58,613 --> 01:04:02,693
+for those of you who like to write in
+
+1424
+01:04:00,613 --> 01:04:05,133
+Java
+
+1425
+01:04:02,693 --> 01:04:07,613
+or are as old as me that still writes
+
+1426
+01:04:05,133 --> 01:04:07,613
+Java.
+
+1427
+01:04:08,013 --> 01:04:14,333
+So, you can find it at github.com/
+
+1428
+01:04:11,333 --> 01:04:14,333
+belliada/shacl-masterclass
+
+1429
+01:04:15,173 --> 01:04:19,053
+for those of you who want to have a
+
+1430
+01:04:16,733 --> 01:04:19,053
+look.
+
+1431
+01:04:20,053 --> 01:04:26,533
+I can perhaps
+
+1432
+01:04:21,493 --> 01:04:26,533
+drop this in the chats here.
+
+1433
+01:04:29,173 --> 01:04:31,773
+Okay.
+
+1434
+01:04:32,493 --> 01:04:36,253
+How much time do I have left, Ashley?
+
+1435
+01:04:37,093 --> 01:04:43,253
+Oh perfect.
+
+1436
+01:04:39,973 --> 01:04:43,253
+Any questions?
+
+1437
+01:04:45,813 --> 01:04:48,693
+Yes.
+
+1438
+01:04:46,493 --> 01:04:50,973
+>> So, we like SHACL. We have we're having
+
+1439
+01:04:48,693 --> 01:04:51,453
+challenges with validation engines.
+
+1440
+01:04:50,973 --> 01:04:53,373
+>> Okay.
+
+1441
+01:04:51,453 --> 01:04:56,333
+>> And the big issue we're having at the
+
+1442
+01:04:53,373 --> 01:04:57,773
+moment is we're using by SHACL and it
+
+1443
+01:04:56,333 --> 01:04:58,013
+has to put everything into memory.
+
+1444
+01:04:57,773 --> 01:04:59,653
+>> Yeah.
+
+1445
+01:04:58,013 --> 01:04:59,933
+>> And when we have a large graph
+
+1446
+01:04:59,653 --> 01:05:01,533
+>> Mhm.
+
+1447
+01:04:59,933 --> 01:05:02,613
+>> we have problems.
+
+1448
+01:05:01,533 --> 01:05:03,893
+>> Yeah.
+
+1449
+01:05:02,613 --> 01:05:06,453
+How large is your graph?
+
+1450
+01:05:03,893 --> 01:05:08,573
+>> Um well, it's about 170 million.
+
+1451
+01:05:06,453 --> 01:05:09,013
+>> Have you tried RDF4J?
+
+1452
+01:05:08,573 --> 01:05:11,653
+>> No.
+
+1453
+01:05:09,013 --> 01:05:13,973
+>> It's a transactional implementation. So,
+
+1454
+01:05:11,653 --> 01:05:15,533
+it does things in parallel and doesn't
+
+1455
+01:05:13,973 --> 01:05:16,653
+load everything into memory.
+
+1456
+01:05:15,533 --> 01:05:19,495
+>> No.
+
+1457
+01:05:16,653 --> 01:05:20,253
+>> So, that yeah, might It'd
+
+1458
+01:05:19,495 --> 01:05:22,295
+uh
+
+1459
+01:05:20,253 --> 01:05:25,655
+And if you happen to have OntoText
+
+1460
+01:05:22,295 --> 01:05:28,335
+GraphDB in your company, they have
+
+1461
+01:05:25,655 --> 01:05:31,375
+RDF for J SHACL engine as their SHACL
+
+1462
+01:05:28,335 --> 01:05:34,415
+engine. But it's also open sourced, so
+
+1463
+01:05:31,375 --> 01:05:35,335
+you can find it on RDF for J Eclipse,
+
+1464
+01:05:34,415 --> 01:05:35,895
+blah blah blah.
+
+1465
+01:05:35,335 --> 01:05:36,855
+>> Okay.
+
+1466
+01:05:35,895 --> 01:05:37,975
+>> Mhm.
+
+1467
+01:05:36,855 --> 01:05:38,415
+>> Have a look at that.
+
+1468
+01:05:37,975 --> 01:05:41,535
+>> Yeah.
+
+1469
+01:05:38,415 --> 01:05:43,375
+>> Um the other one we really like this. We
+
+1470
+01:05:41,535 --> 01:05:46,055
+have our OWL graph and we're putting our
+
+1471
+01:05:43,375 --> 01:05:48,495
+SHACL shapes around all of the objects.
+
+1472
+01:05:46,055 --> 01:05:50,895
+My question is, have you ever
+
+1473
+01:05:48,495 --> 01:05:53,975
+serialized SHACL as JSON so it can be
+
+1474
+01:05:50,895 --> 01:05:55,295
+passed back to relational engineers as a
+
+1475
+01:05:53,975 --> 01:05:58,415
+specification?
+
+1476
+01:05:55,295 --> 01:05:59,135
+>> Uh I have as JSON-LD.
+
+1477
+01:05:58,415 --> 01:06:03,255
+>> JSON-LD?
+
+1478
+01:05:59,135 --> 01:06:05,735
+>> Yeah, for indexing in Elastic.
+
+1479
+01:06:03,255 --> 01:06:07,895
+But that's a long time ago. Yeah, but it
+
+1480
+01:06:05,735 --> 01:06:10,735
+works as JSON-LD as JSON-LD as a
+
+1481
+01:06:07,895 --> 01:06:12,975
+serialization of RDF, and this is RDF.
+
+1482
+01:06:10,735 --> 01:06:12,975
+Yeah.
+
+1483
+01:06:13,135 --> 01:06:17,495
+Yeah.
+
+1484
+01:06:15,415 --> 01:06:19,855
+>> So I'm just wondering if I'm thinking
+
+1485
+01:06:17,495 --> 01:06:22,255
+about the distinction between OWL and
+
+1486
+01:06:19,855 --> 01:06:23,415
+SHACL right because I understand the
+
+1487
+01:06:22,255 --> 01:06:25,255
+distinction between an open and closed
+
+1488
+01:06:23,415 --> 01:06:27,335
+world and the different use cases.
+
+1489
+01:06:25,255 --> 01:06:28,495
+But is it a temporary situation that
+
+1490
+01:06:27,335 --> 01:06:29,695
+there are two languages? Is it
+
+1491
+01:06:28,495 --> 01:06:31,455
+conceivable that there's a world in
+
+1492
+01:06:29,695 --> 01:06:33,895
+which there is a new language that that
+
+1493
+01:06:31,455 --> 01:06:35,495
+allows both in the same language? Or is
+
+1494
+01:06:33,895 --> 01:06:38,255
+that the wrong way to think about it?
+
+1495
+01:06:35,495 --> 01:06:39,655
+>> Well, um
+
+1496
+01:06:38,255 --> 01:06:42,175
+it depends on what the level you're
+
+1497
+01:06:39,655 --> 01:06:43,935
+thinking also because it's all RDF. It's
+
+1498
+01:06:42,175 --> 01:06:45,935
+all triples, so you can basically write
+
+1499
+01:06:43,935 --> 01:06:48,175
+everything in one file or one data set
+
+1500
+01:06:45,935 --> 01:06:49,615
+if you like. Uh
+
+1501
+01:06:48,175 --> 01:06:53,575
+but
+
+1502
+01:06:49,615 --> 01:06:57,455
+uh I think um well, there is a reason
+
+1503
+01:06:53,575 --> 01:06:59,455
+for having two separate languages for
+
+1504
+01:06:57,455 --> 01:07:01,855
+open world reasoning and closed world
+
+1505
+01:06:59,455 --> 01:07:03,935
+validation. It's two completely
+
+1506
+01:07:01,855 --> 01:07:05,775
+different things and serves different
+
+1507
+01:07:03,935 --> 01:07:08,495
+kinds of use cases.
+
+1508
+01:07:05,775 --> 01:07:10,975
+Um so I I think that distinction is
+
+1509
+01:07:08,495 --> 01:07:14,295
+important to know about because I find
+
+1510
+01:07:10,975 --> 01:07:17,015
+it often especially among newcomers to
+
+1511
+01:07:14,295 --> 01:07:18,375
+to OWL that they think OWL restrictions
+
+1512
+01:07:17,015 --> 01:07:21,295
+validate.
+
+1513
+01:07:18,375 --> 01:07:23,975
+They don't. Right?
+
+1514
+01:07:21,295 --> 01:07:25,616
+Because of the open world assumption.
+
+1515
+01:07:23,975 --> 01:07:27,176
+>> But is that not an overlap there when
+
+1516
+01:07:25,616 --> 01:07:28,616
+you start getting into the restrictions
+
+1517
+01:07:27,176 --> 01:07:30,896
+and you start getting into cardinality
+
+1518
+01:07:28,616 --> 01:07:32,456
+restrictions, especially with data type
+
+1519
+01:07:30,896 --> 01:07:34,176
+properties? Is it not an overlap?
+
+1520
+01:07:32,456 --> 01:07:36,176
+>> No, because the capability is completely
+
+1521
+01:07:34,176 --> 01:07:40,576
+different. So, even though you have a
+
+1522
+01:07:36,176 --> 01:07:42,416
+cardinality restriction in OWL, that's a
+
+1523
+01:07:40,576 --> 01:07:43,456
+a um
+
+1524
+01:07:42,416 --> 01:07:46,256
+uh
+
+1525
+01:07:43,456 --> 01:07:48,536
+What's it called? Like a a com- command
+
+1526
+01:07:46,256 --> 01:07:51,416
+to the reasoner engine how to inference.
+
+1527
+01:07:48,536 --> 01:07:52,656
+It describes steps in inference.
+
+1528
+01:07:51,416 --> 01:07:56,056
+Well, when you say something about
+
+1529
+01:07:52,656 --> 01:07:58,816
+cardinality in SHACL, that's a rule.
+
+1530
+01:07:56,056 --> 01:08:01,096
+That's something you have to comply to
+
+1531
+01:07:58,816 --> 01:08:03,336
+or not.
+
+1532
+01:08:01,096 --> 01:08:07,056
+You see the difference? Something uh
+
+1533
+01:08:03,336 --> 01:08:11,936
+restrictions, steps in reasoning, how to
+
+1534
+01:08:07,056 --> 01:08:13,656
+infer new facts based on existing axioms
+
+1535
+01:08:11,936 --> 01:08:16,496
+and existing data,
+
+1536
+01:08:13,656 --> 01:08:20,616
+while validation is
+
+1537
+01:08:16,496 --> 01:08:20,616
+comply to this. Yes or no?
+
+1538
+01:08:21,456 --> 01:08:24,856
+Yes. Yes.
+
+1539
+01:08:22,896 --> 01:08:27,256
+>> I do see that, but I
+
+1540
+01:08:24,856 --> 01:08:29,736
+take that example, if you have
+
+1541
+01:08:27,256 --> 01:08:33,616
+a validation rule that you have to have
+
+1542
+01:08:29,736 --> 01:08:38,416
+a string a a language string for a name,
+
+1543
+01:08:33,616 --> 01:08:39,896
+uh then surely that also should imply
+
+1544
+01:08:38,416 --> 01:08:42,576
+the the restriction.
+
+1545
+01:08:39,896 --> 01:08:45,216
+>> Yes. Yes. And and now you're touch-
+
+1546
+01:08:42,576 --> 01:08:47,696
+touching into a subject that isn't
+
+1547
+01:08:45,216 --> 01:08:50,336
+standardized yet, and that's SHACL
+
+1548
+01:08:47,696 --> 01:08:52,896
+rules. Or it's called SHACL rules, but
+
+1549
+01:08:50,336 --> 01:08:54,216
+it's actually inference rules written in
+
+1550
+01:08:52,896 --> 01:08:56,376
+SHACL.
+
+1551
+01:08:54,216 --> 01:08:59,976
+Yes.
+
+1552
+01:08:56,376 --> 01:09:03,416
+But that's uh SHACL advanced features as
+
+1553
+01:08:59,976 --> 01:09:03,416
+as it's called. Yeah.
+
+1554
+01:09:06,816 --> 01:09:10,496
+>> If I understood it correctly, you always
+
+1555
+01:09:08,776 --> 01:09:13,056
+validate the whole graph, but can you
+
+1556
+01:09:10,496 --> 01:09:14,176
+also validate only the new triples
+
+1557
+01:09:13,056 --> 01:09:16,056
+going to the graph?
+
+1558
+01:09:14,176 --> 01:09:17,336
+>> Yes, and that's depending how you set up
+
+1559
+01:09:16,056 --> 01:09:17,496
+your data pipelines.
+
+1560
+01:09:17,336 --> 01:09:20,336
+>> Okay.
+
+1561
+01:09:17,496 --> 01:09:20,336
+>> And that's possible.
+
+1562
+01:09:21,056 --> 01:09:23,296
+Yeah.
+
+1563
+01:09:24,736 --> 01:09:29,418
+>> Can you use SHACL for modeling?
+
+1564
+01:09:27,777 --> 01:09:32,578
+>> Yes, I'm going to show you that in a
+
+1565
+01:09:29,418 --> 01:09:32,578
+minute. Yeah.
+
+1566
+01:09:32,777 --> 01:09:35,858
+So,
+
+1567
+01:09:34,418 --> 01:09:37,338
+it's uh
+
+1568
+01:09:35,858 --> 01:09:39,257
+SHACL
+
+1569
+01:09:37,338 --> 01:09:41,578
+it has had in
+
+1570
+01:09:39,257 --> 01:09:43,898
+the huge increase in popularity since it
+
+1571
+01:09:41,578 --> 01:09:46,217
+became standardized.
+
+1572
+01:09:43,898 --> 01:09:48,898
+Uh and
+
+1573
+01:09:46,217 --> 01:09:52,737
+not every single use case is purely on
+
+1574
+01:09:48,898 --> 01:09:54,458
+SHACL validation, but also on describing
+
+1575
+01:09:52,737 --> 01:09:56,698
+data.
+
+1576
+01:09:54,458 --> 01:09:58,938
+And now I'm going to
+
+1577
+01:09:56,698 --> 01:10:01,818
+take you through a couple of SHACL
+
+1578
+01:09:58,938 --> 01:10:04,738
+stories. I'm just going to fix my my
+
+1579
+01:10:01,818 --> 01:10:04,738
+hair first.
+
+1580
+01:10:05,097 --> 01:10:07,778
+Sorry about that.
+
+1581
+01:10:15,137 --> 01:10:18,938
+And this
+
+1582
+01:10:16,378 --> 01:10:21,498
+book I'm writing on SHACL, it's called
+
+1583
+01:10:18,938 --> 01:10:23,778
+SHACL for the practitioner, and it's
+
+1584
+01:10:21,498 --> 01:10:25,778
+going through the SHACL standard in
+
+1585
+01:10:23,778 --> 01:10:28,578
+great detail.
+
+1586
+01:10:25,778 --> 01:10:32,418
+But the main weight of that book is on
+
+1587
+01:10:28,578 --> 01:10:35,738
+SHACL stories, actual implementations,
+
+1588
+01:10:32,418 --> 01:10:37,018
+applications, and adaptations of SHACL
+
+1589
+01:10:35,738 --> 01:10:39,818
+to show
+
+1590
+01:10:37,018 --> 01:10:41,338
+the huge variety of different
+
+1591
+01:10:39,818 --> 01:10:43,137
+implementation. And we have a
+
+1592
+01:10:41,338 --> 01:10:46,218
+contributor to that book in the
+
+1593
+01:10:43,137 --> 01:10:48,938
+audience. Woo. Thank you, Ashley.
+
+1594
+01:10:46,218 --> 01:10:53,338
+And here are a sneak peek to some of my
+
+1595
+01:10:48,938 --> 01:10:56,578
+own SHACL stories. And the first one is
+
+1596
+01:10:53,338 --> 01:10:59,818
+regulatory requirements.
+
+1597
+01:10:56,578 --> 01:11:01,137
+So, I work as a consultant. So, I've
+
+1598
+01:10:59,818 --> 01:11:04,418
+been
+
+1599
+01:11:01,137 --> 01:11:06,538
+involved with many different clients for
+
+1600
+01:11:04,418 --> 01:11:07,738
+the past years or my whole career for
+
+1601
+01:11:06,538 --> 01:11:10,218
+that matter.
+
+1602
+01:11:07,738 --> 01:11:12,938
+And for the past 4 years, I've been
+
+1603
+01:11:10,218 --> 01:11:15,258
+working with the Norwegian Maritime
+
+1604
+01:11:12,938 --> 01:11:16,818
+Authorities.
+
+1605
+01:11:15,258 --> 01:11:19,097
+And they
+
+1606
+01:11:16,818 --> 01:11:20,978
+came to me and said,
+
+1607
+01:11:19,097 --> 01:11:25,338
+"We want to model
+
+1608
+01:11:20,978 --> 01:11:28,458
+all our regulations in RDF."
+
+1609
+01:11:25,338 --> 01:11:30,419
+And they maintain approximately 200
+
+1610
+01:11:28,458 --> 01:11:33,179
+regulations.
+
+1611
+01:11:30,419 --> 01:11:36,499
+And then I thought, "Hmm,
+
+1612
+01:11:33,179 --> 01:11:38,739
+how to model regulations?" Well,
+
+1613
+01:11:36,499 --> 01:11:41,659
+regulations and legislation data, they
+
+1614
+01:11:38,739 --> 01:11:44,299
+do not allow for incomplete knowledge.
+
+1615
+01:11:41,659 --> 01:11:46,659
+They are facts. They are either true or
+
+1616
+01:11:44,299 --> 01:11:49,219
+false.
+
+1617
+01:11:46,659 --> 01:11:52,579
+Especially with technical regulations as
+
+1618
+01:11:49,219 --> 01:11:55,699
+the maritime authorities maintain.
+
+1619
+01:11:52,579 --> 01:11:59,099
+So, this is a actually quite nice case
+
+1620
+01:11:55,699 --> 01:12:01,259
+for modeling data with SHACL. So, we
+
+1621
+01:11:59,099 --> 01:12:04,579
+don't care or don't care about the
+
+1622
+01:12:01,259 --> 01:12:08,339
+validation purposes when we structure
+
+1623
+01:12:04,579 --> 01:12:12,419
+the regulatory requirements.
+
+1624
+01:12:08,339 --> 01:12:15,579
+So, every single requirement
+
+1625
+01:12:12,419 --> 01:12:18,419
+in the NMA's data, I will abbreviate the
+
+1626
+01:12:15,579 --> 01:12:20,419
+maritime authority to NMA.
+
+1627
+01:12:18,419 --> 01:12:22,099
+Uh every single requirement is a node
+
+1628
+01:12:20,419 --> 01:12:25,139
+shape
+
+1629
+01:12:22,099 --> 01:12:27,299
+that reflects a regulatory requirement
+
+1630
+01:12:25,139 --> 01:12:31,059
+at the NMA. And the regulatory
+
+1631
+01:12:27,299 --> 01:12:33,659
+requirement is a part of a paragraph.
+
+1632
+01:12:31,059 --> 01:12:36,939
+So, that's the granularity. We do not
+
+1633
+01:12:33,659 --> 01:12:39,339
+add subparts. We stop at part.
+
+1634
+01:12:36,939 --> 01:12:41,339
+So, if a part has subparts, that's a
+
+1635
+01:12:39,339 --> 01:12:42,379
+part of the part, if you know what I
+
+1636
+01:12:41,339 --> 01:12:43,499
+mean.
+
+1637
+01:12:42,379 --> 01:12:44,699
+Okay.
+
+1638
+01:12:43,499 --> 01:12:47,139
+And
+
+1639
+01:12:44,699 --> 01:12:48,659
+a requirement
+
+1640
+01:12:47,139 --> 01:12:52,699
+can have
+
+1641
+01:12:48,659 --> 01:12:56,019
+zero or more so-called legal scopes. I
+
+1642
+01:12:52,699 --> 01:13:00,419
+have no idea for the correct English
+
+1643
+01:12:56,019 --> 01:13:02,299
+word for for scope, but it's virkeområde
+
+1644
+01:13:00,419 --> 01:13:05,299
+in Norwegian if that tells you
+
+1645
+01:13:02,299 --> 01:13:06,899
+something. But, it's about the
+
+1646
+01:13:05,299 --> 01:13:09,659
+characteristics
+
+1647
+01:13:06,899 --> 01:13:12,259
+in the requirement. And for maritime
+
+1648
+01:13:09,659 --> 01:13:15,659
+legislations, the characteristics or the
+
+1649
+01:13:12,259 --> 01:13:16,699
+scope has to do with the built date of a
+
+1650
+01:13:15,659 --> 01:13:19,539
+vessel,
+
+1651
+01:13:16,699 --> 01:13:21,779
+the vessel type, the trade area. Is it
+
+1652
+01:13:19,539 --> 01:13:24,819
+fjord fishing? Is it uh
+
+1653
+01:13:21,779 --> 01:13:26,499
+uh sea fishing? Is it uh
+
+1654
+01:13:24,819 --> 01:13:30,459
+um
+
+1655
+01:13:26,499 --> 01:13:34,700
+trade or passenger voyages
+
+1656
+01:13:30,459 --> 01:13:36,900
+and stuff like that. Gross tonnage if it
+
+1657
+01:13:34,700 --> 01:13:39,980
+if it's a vessel that carries
+
+1658
+01:13:36,900 --> 01:13:42,540
+industrial personnel and so on. A lot of
+
+1659
+01:13:39,980 --> 01:13:45,460
+different kinds of scopes.
+
+1660
+01:13:42,540 --> 01:13:49,060
+So we have implemented automated
+
+1661
+01:13:45,460 --> 01:13:50,900
+pipeline for the MMA that takes in the
+
+1662
+01:13:49,060 --> 01:13:52,820
+regulation
+
+1663
+01:13:50,900 --> 01:13:54,900
+and spits out RDF.
+
+1664
+01:13:52,820 --> 01:13:57,340
+And that RDF is
+
+1665
+01:13:54,900 --> 01:14:00,700
+heavily influenced with
+
+1666
+01:13:57,340 --> 01:14:02,740
+Shackle. So we use Shackle to describe
+
+1667
+01:14:00,700 --> 01:14:04,781
+the requirements. So requirements, they
+
+1668
+01:14:02,740 --> 01:14:07,500
+are node shapes
+
+1669
+01:14:04,781 --> 01:14:08,980
+and the scopes are property shapes. And
+
+1670
+01:14:07,500 --> 01:14:12,620
+they are linked together with this
+
+1671
+01:14:08,980 --> 01:14:12,620
+property relationship.
+
+1672
+01:14:14,051 --> 01:14:18,220
+>> [clears throat]
+
+1673
+01:14:14,820 --> 01:14:21,620
+>> And I wrote together with
+
+1674
+01:14:18,220 --> 01:14:23,940
+my client a paper on why we chose
+
+1675
+01:14:21,620 --> 01:14:26,860
+Shackle for modeling
+
+1676
+01:14:23,940 --> 01:14:28,180
+regulatory requirements, which is
+
+1677
+01:14:26,860 --> 01:14:31,580
+available
+
+1678
+01:14:28,180 --> 01:14:33,100
+on this URL. The slides are also on my
+
+1679
+01:14:31,580 --> 01:14:37,100
+my GitHub and all the links are
+
+1680
+01:14:33,100 --> 01:14:39,660
+clickable if you want to to have a look.
+
+1681
+01:14:37,100 --> 01:14:44,500
+And this is how it looks like. So this
+
+1682
+01:14:39,660 --> 01:14:46,860
+is copy-paste from our database.
+
+1683
+01:14:44,500 --> 01:14:50,140
+So this is regarding
+
+1684
+01:14:46,860 --> 01:14:53,060
+one particular requirement. So
+
+1685
+01:14:50,140 --> 01:14:55,100
+the ID at the top is a little bit
+
+1686
+01:14:53,060 --> 01:14:56,460
+inspired by the European legislation
+
+1687
+01:14:55,100 --> 01:14:59,820
+identifier
+
+1688
+01:14:56,460 --> 01:15:02,300
+for how we construct URIs for
+
+1689
+01:14:59,820 --> 01:15:03,820
+requirements. So reg stands for
+
+1690
+01:15:02,300 --> 01:15:09,860
+regulation
+
+1691
+01:15:03,820 --> 01:15:13,740
+the year 2014, month 07, day 01
+
+1692
+01:15:09,860 --> 01:15:16,100
+and then we have um løpenummer eller
+
+1693
+01:15:13,740 --> 01:15:19,140
+Birgitta?
+
+1694
+01:15:16,100 --> 01:15:21,460
+Serial number for Yeah, the number for
+
+1695
+01:15:19,140 --> 01:15:24,820
+the regulation 955
+
+1696
+01:15:21,460 --> 01:15:28,580
+and S stands for section or paragraph
+
+1697
+01:15:24,820 --> 01:15:31,100
+one and P stands for part one, V stands
+
+1698
+01:15:28,580 --> 01:15:34,062
+for version zero.
+
+1699
+01:15:31,100 --> 01:15:37,262
+So if there comes a new regulation along
+
+1700
+01:15:34,062 --> 01:15:39,782
+that amends this requirement,
+
+1701
+01:15:37,262 --> 01:15:42,502
+the new one version one would then get
+
+1702
+01:15:39,782 --> 01:15:45,862
+another resource here
+
+1703
+01:15:42,502 --> 01:15:48,902
+amends pointing back to this one.
+
+1704
+01:15:45,862 --> 01:15:51,462
+Because keeping track track of history
+
+1705
+01:15:48,902 --> 01:15:54,022
+in regulations are super important.
+
+1706
+01:15:51,462 --> 01:15:56,062
+Because vessels built in the '90s have
+
+1707
+01:15:54,022 --> 01:15:59,422
+completely different requirements than
+
+1708
+01:15:56,062 --> 01:16:01,702
+vessels built today.
+
+1709
+01:15:59,422 --> 01:16:05,222
+Okay. So,
+
+1710
+01:16:01,702 --> 01:16:06,582
+this thing is a requirement and it's an
+
+1711
+01:16:05,222 --> 01:16:10,542
+old shape. Yep.
+
+1712
+01:16:06,582 --> 01:16:13,942
+>> So, you're not using L to distinguish V1
+
+1713
+01:16:10,542 --> 01:16:16,422
+cuz we So, the idea we have is a
+
+1714
+01:16:13,942 --> 01:16:18,102
+you stop at paragraph one.
+
+1715
+01:16:16,422 --> 01:16:20,902
+>> I stop at the part of the paragraph.
+
+1716
+01:16:18,102 --> 01:16:22,302
+>> Part of the paragraph and the V0 is just
+
+1717
+01:16:20,902 --> 01:16:23,582
+So, if you go to even if you can
+
+1718
+01:16:22,302 --> 01:16:23,862
+reference V0.
+
+1719
+01:16:23,582 --> 01:16:25,622
+>> Yeah.
+
+1720
+01:16:23,862 --> 01:16:27,622
+>> Are you using that? Because if you've
+
+1721
+01:16:25,622 --> 01:16:28,902
+got a reference back to
+
+1722
+01:16:27,622 --> 01:16:32,582
+it means you have to go and change your
+
+1723
+01:16:28,902 --> 01:16:34,102
+record every time you update.
+
+1724
+01:16:32,582 --> 01:16:37,622
+>> Um
+
+1725
+01:16:34,102 --> 01:16:39,902
+Yeah, so So, we have decided on one
+
+1726
+01:16:37,622 --> 01:16:43,062
+version of the regulation is the base
+
+1727
+01:16:39,902 --> 01:16:45,102
+document. That's zero. So, for every
+
+1728
+01:16:43,062 --> 01:16:46,502
+time it comes a change to that
+
+1729
+01:16:45,102 --> 01:16:50,542
+particular
+
+1730
+01:16:46,502 --> 01:16:53,302
+regulation, then the new node gets the
+
+1731
+01:16:50,542 --> 01:16:54,702
+counter plus one
+
+1732
+01:16:53,302 --> 01:16:56,822
+as a version.
+
+1733
+01:16:54,702 --> 01:16:57,862
+So, it's very simple.
+
+1734
+01:16:56,822 --> 01:16:59,422
+And
+
+1735
+01:16:57,862 --> 01:17:02,382
+since we can
+
+1736
+01:16:59,422 --> 01:17:06,062
+build these URIs automatically in the
+
+1737
+01:17:02,382 --> 01:17:08,102
+code, we can then construct the previous
+
+1738
+01:17:06,062 --> 01:17:10,702
+version when we are building the
+
+1739
+01:17:08,102 --> 01:17:10,702
+triples.
+
+1740
+01:17:10,902 --> 01:17:19,422
+Um yeah. And we see that this particular
+
+1741
+01:17:14,742 --> 01:17:21,022
+requirement has 1 2 3 4
+
+1742
+01:17:19,422 --> 01:17:24,262
+properties
+
+1743
+01:17:21,022 --> 01:17:26,582
+which are property shapes that describe
+
+1744
+01:17:24,262 --> 01:17:28,622
+the different kinds of scopes. And I
+
+1745
+01:17:26,582 --> 01:17:33,022
+think I have some examples of that also.
+
+1746
+01:17:28,622 --> 01:17:36,623
+Yep. Here are two different scopes. So,
+
+1747
+01:17:33,022 --> 01:17:39,583
+also copy paste including an error that
+
+1748
+01:17:36,623 --> 01:17:43,063
+we haven't fixed yet. You see?
+
+1749
+01:17:39,583 --> 01:17:46,103
+We were able to to language type
+
+1750
+01:17:43,063 --> 01:17:49,503
+incorrectly in the code, so we have some
+
+1751
+01:17:46,103 --> 01:17:51,263
+duplicated names. That is to be fixed.
+
+1752
+01:17:49,503 --> 01:17:52,703
+It's in the backlog.
+
+1753
+01:17:51,263 --> 01:17:55,423
+Anyways,
+
+1754
+01:17:52,703 --> 01:17:57,543
+we have cargo ship as a property shape
+
+1755
+01:17:55,423 --> 01:17:59,863
+and the scope.
+
+1756
+01:17:57,543 --> 01:18:01,103
+Regarding the path vessel type, so we
+
+1757
+01:17:59,863 --> 01:18:03,623
+know
+
+1758
+01:18:01,103 --> 01:18:05,663
+the category of the scope. So, we use
+
+1759
+01:18:03,623 --> 01:18:06,703
+it. We are using path
+
+1760
+01:18:05,663 --> 01:18:09,823
+as
+
+1761
+01:18:06,703 --> 01:18:12,263
+some kind of category scope category.
+
+1762
+01:18:09,823 --> 01:18:15,663
+There are plenty of vessel types, but
+
+1763
+01:18:12,263 --> 01:18:16,823
+it's still vessel type, right?
+
+1764
+01:18:15,663 --> 01:18:19,183
+Um
+
+1765
+01:18:16,823 --> 01:18:21,103
+yeah, and the value is
+
+1766
+01:18:19,183 --> 01:18:24,503
+cargo ship
+
+1767
+01:18:21,103 --> 01:18:26,543
+from the vessel type ontology.
+
+1768
+01:18:24,503 --> 01:18:28,063
+So, we have a separate ontology that
+
+1769
+01:18:26,543 --> 01:18:30,863
+describes
+
+1770
+01:18:28,063 --> 01:18:32,983
+every single vessel type and connected
+
+1771
+01:18:30,863 --> 01:18:35,423
+information with the different vessel
+
+1772
+01:18:32,983 --> 01:18:35,423
+types.
+
+1773
+01:18:35,943 --> 01:18:41,263
+And that's the description of the scope
+
+1774
+01:18:38,623 --> 01:18:43,103
+of cargo ships.
+
+1775
+01:18:41,263 --> 01:18:45,183
+And then we have something called the
+
+1776
+01:18:43,103 --> 01:18:47,183
+compound scope
+
+1777
+01:18:45,183 --> 01:18:49,903
+where
+
+1778
+01:18:47,183 --> 01:18:53,343
+two or more scopes
+
+1779
+01:18:49,903 --> 01:18:53,343
+are grouped together.
+
+1780
+01:18:53,943 --> 01:18:58,943
+And in this case,
+
+1781
+01:18:56,863 --> 01:19:01,983
+you can also see how we link property
+
+1782
+01:18:58,943 --> 01:19:04,983
+shapes to property shapes.
+
+1783
+01:19:01,983 --> 01:19:07,943
+So, a compound scope is done
+
+1784
+01:19:04,983 --> 01:19:09,783
+a collection of several
+
+1785
+01:19:07,943 --> 01:19:12,143
+regular scopes, if I'm going to call
+
+1786
+01:19:09,783 --> 01:19:13,783
+them that. And in this case, it's
+
+1787
+01:19:12,143 --> 01:19:18,863
+leisure boat
+
+1788
+01:19:13,783 --> 01:19:18,863
+min length overall 24 m.
+
+1789
+01:19:19,383 --> 01:19:27,503
+So, those two appears together for this
+
+1790
+01:19:24,503 --> 01:19:27,503
+requirement.
+
+1791
+01:19:33,263 --> 01:19:40,385
+So, that's super brief on regulatory
+
+1792
+01:19:36,103 --> 01:19:40,385
+requirements as SHACL.
+
+1793
+01:19:44,344 --> 01:19:49,545
+Another case also at the Maritime
+
+1794
+01:19:46,784 --> 01:19:49,545
+Authorities
+
+1795
+01:19:50,104 --> 01:19:56,025
+is leveraging the validation
+
+1796
+01:19:52,545 --> 01:19:56,025
+capabilities of SHACL.
+
+1797
+01:19:56,104 --> 01:20:01,985
+There is one regulation at the NMA that
+
+1798
+01:19:59,104 --> 01:20:04,144
+regulates all personal certificates for
+
+1799
+01:20:01,985 --> 01:20:05,624
+sailors.
+
+1800
+01:20:04,144 --> 01:20:08,985
+And that's
+
+1801
+01:20:05,624 --> 01:20:10,864
+quite a complex regulation.
+
+1802
+01:20:08,985 --> 01:20:13,824
+Is at least my opinion because it
+
+1803
+01:20:10,864 --> 01:20:16,585
+contains a lot of equally valid
+
+1804
+01:20:13,824 --> 01:20:18,624
+alternatives of things. And one
+
+1805
+01:20:16,585 --> 01:20:21,144
+alternative is some kind of seagoing
+
+1806
+01:20:18,624 --> 01:20:25,184
+service. And a seagoing service is a
+
+1807
+01:20:21,144 --> 01:20:28,425
+group of different kinds of constraints.
+
+1808
+01:20:25,184 --> 01:20:33,144
+So, it has to do with what kind of
+
+1809
+01:20:28,425 --> 01:20:35,864
+vessel, in what kind of occupation
+
+1810
+01:20:33,144 --> 01:20:37,744
+Is that me or
+
+1811
+01:20:35,864 --> 01:20:38,824
+Is it you, Heather?
+
+1812
+01:20:37,744 --> 01:20:41,465
+Yeah.
+
+1813
+01:20:38,824 --> 01:20:44,425
+Okay. So, a seagoing service is
+
+1814
+01:20:41,465 --> 01:20:48,144
+regarding the combination of what kind
+
+1815
+01:20:44,425 --> 01:20:50,425
+of vessel, and length, gross tonnage, so
+
+1816
+01:20:48,144 --> 01:20:52,905
+forth for that vessel, what kind of
+
+1817
+01:20:50,425 --> 01:20:56,864
+occupation for the sailor, and what
+
+1818
+01:20:52,905 --> 01:21:00,065
+duration, in what geographical area, and
+
+1819
+01:20:56,864 --> 01:21:02,425
+so forth. And that's a seagoing service.
+
+1820
+01:21:00,065 --> 01:21:04,425
+So, you can have one seagoing service,
+
+1821
+01:21:02,425 --> 01:21:06,864
+or you can have a combination of two
+
+1822
+01:21:04,425 --> 01:21:09,704
+other different seagoing services. And
+
+1823
+01:21:06,864 --> 01:21:10,744
+those two alternatives are equally valid
+
+1824
+01:21:09,704 --> 01:21:15,065
+for
+
+1825
+01:21:10,744 --> 01:21:15,065
+achieving a certificate, for example.
+
+1826
+01:21:16,905 --> 01:21:19,465
+So,
+
+1827
+01:21:19,545 --> 01:21:25,065
+when describing the rules for
+
+1828
+01:21:22,224 --> 01:21:27,465
+certificates in great detail, we are
+
+1829
+01:21:25,065 --> 01:21:29,631
+doing this by hand, so this isn't
+
+1830
+01:21:27,465 --> 01:21:29,824
+automated.
+
+1831
+01:21:29,631 --> 01:21:32,905
+>> [clears throat]
+
+1832
+01:21:29,824 --> 01:21:35,744
+>> We are using a combination of and and or
+
+1833
+01:21:32,905 --> 01:21:35,744
+constraints.
+
+1834
+01:21:36,065 --> 01:21:39,784
+So, the whole expression is an or
+
+1835
+01:21:38,505 --> 01:21:43,785
+constraint because you have two
+
+1836
+01:21:39,784 --> 01:21:46,745
+different alternatives. So, one is okay,
+
+1837
+01:21:43,785 --> 01:21:48,146
+none is not okay, both is also okay,
+
+1838
+01:21:46,745 --> 01:21:51,466
+right?
+
+1839
+01:21:48,146 --> 01:21:53,106
+And the first alternative is an
+
+1840
+01:21:51,466 --> 01:21:56,026
+constraint
+
+1841
+01:21:53,106 --> 01:21:58,466
+that contains another or constraint
+
+1842
+01:21:56,026 --> 01:22:01,106
+because you need to have at least one of
+
+1843
+01:21:58,466 --> 01:22:03,666
+these certificates to get this
+
+1844
+01:22:01,106 --> 01:22:06,705
+particular certificate.
+
+1845
+01:22:03,666 --> 01:22:10,026
+And you need to have this kind of
+
+1846
+01:22:06,705 --> 01:22:13,265
+seagoing service. Um this resource over
+
+1847
+01:22:10,026 --> 01:22:15,785
+here is actually a node shape or it
+
+1848
+01:22:13,265 --> 01:22:18,066
+triggers a node shape described
+
+1849
+01:22:15,785 --> 01:22:22,026
+somewhere else containing the different
+
+1850
+01:22:18,066 --> 01:22:24,466
+rules for that seagoing service.
+
+1851
+01:22:22,026 --> 01:22:25,506
+So, that's alternative one. Alternative
+
+1852
+01:22:24,466 --> 01:22:28,106
+two
+
+1853
+01:22:25,506 --> 01:22:31,865
+is also a list of certificates. So, you
+
+1854
+01:22:28,106 --> 01:22:31,865
+need to have at least one of them.
+
+1855
+01:22:32,345 --> 01:22:37,305
+And two seagoing services. So, you need
+
+1856
+01:22:35,506 --> 01:22:39,385
+to have a combination of two different
+
+1857
+01:22:37,305 --> 01:22:41,385
+seagoing services
+
+1858
+01:22:39,385 --> 01:22:43,345
+instead of that one if you don't have
+
+1859
+01:22:41,385 --> 01:22:47,146
+that one
+
+1860
+01:22:43,345 --> 01:22:49,186
+in order to achieve the certificate.
+
+1861
+01:22:47,146 --> 01:22:51,345
+Oh, it's a pity I don't have the nice
+
+1862
+01:22:49,186 --> 01:22:55,066
+architecture image for that.
+
+1863
+01:22:51,345 --> 01:22:59,186
+So, what we essentially do then is when
+
+1864
+01:22:55,066 --> 01:23:01,186
+a sailor applies for a certificate let's
+
+1865
+01:22:59,186 --> 01:23:02,385
+say a deck officer wants to become a sea
+
+1866
+01:23:01,186 --> 01:23:04,426
+captain
+
+1867
+01:23:02,385 --> 01:23:05,785
+he or she has to apply to the maritime
+
+1868
+01:23:04,426 --> 01:23:08,466
+authorities.
+
+1869
+01:23:05,785 --> 01:23:11,626
+So, he or she goes online typing some
+
+1870
+01:23:08,466 --> 01:23:12,785
+information. I want to become a sea
+
+1871
+01:23:11,626 --> 01:23:14,225
+captain.
+
+1872
+01:23:12,785 --> 01:23:16,946
+Sea captain.
+
+1873
+01:23:14,225 --> 01:23:19,146
+And then we the application it gathers
+
+1874
+01:23:16,946 --> 01:23:21,825
+information from three party sources.
+
+1875
+01:23:19,146 --> 01:23:24,345
+It's previous employers, it's the
+
+1876
+01:23:21,825 --> 01:23:26,906
+Norwegian welfare system, it's
+
+1877
+01:23:24,345 --> 01:23:31,426
+educational institutions, and we create
+
+1878
+01:23:26,906 --> 01:23:34,946
+this kind of 360 profile of the person
+
+1879
+01:23:31,426 --> 01:23:38,066
+in RDF, and that's the data graph.
+
+1880
+01:23:34,946 --> 01:23:40,146
+And then we have all the rules
+
+1881
+01:23:38,066 --> 01:23:44,026
+for the certificate described in the
+
+1882
+01:23:40,146 --> 01:23:46,627
+regulation as the shapes graph.
+
+1883
+01:23:44,026 --> 01:23:49,027
+And in the SHACL engine,
+
+1884
+01:23:46,627 --> 01:23:52,867
+the SHACL engine will then validate the
+
+1885
+01:23:49,027 --> 01:23:54,507
+data graph accordingly to the shapes or
+
+1886
+01:23:52,867 --> 01:23:55,467
+constraints and rules in the shapes
+
+1887
+01:23:54,507 --> 01:23:57,907
+graph.
+
+1888
+01:23:55,467 --> 01:24:00,427
+And if all the data
+
+1889
+01:23:57,907 --> 01:24:02,827
+conforms true,
+
+1890
+01:24:00,427 --> 01:24:06,627
+the sailor can get a new certificate.
+
+1891
+01:24:02,827 --> 01:24:08,387
+And if not, it will get a detailed
+
+1892
+01:24:06,627 --> 01:24:10,587
+result set back
+
+1893
+01:24:08,387 --> 01:24:13,467
+stating exactly what the person is
+
+1894
+01:24:10,587 --> 01:24:16,307
+missing in order to achieve the
+
+1895
+01:24:13,467 --> 01:24:16,307
+certificate.
+
+1896
+01:24:16,427 --> 01:24:20,547
+>> Yeah. Is there a way to assign a
+
+1897
+01:24:18,107 --> 01:24:23,427
+priority to these rules, meaning, you
+
+1898
+01:24:20,547 --> 01:24:25,947
+know, rule one has the highest priority?
+
+1899
+01:24:23,427 --> 01:24:28,707
+And then, if that's true, then I have my
+
+1900
+01:24:25,947 --> 01:24:30,187
+output and I get out of this.
+
+1901
+01:24:28,707 --> 01:24:31,667
+>> Um
+
+1902
+01:24:30,187 --> 01:24:32,547
+>> This is slightly different use case.
+
+1903
+01:24:31,667 --> 01:24:33,747
+It's more of a
+
+1904
+01:24:32,547 --> 01:24:36,307
+>> Yeah, I only
+
+1905
+01:24:33,747 --> 01:24:38,267
+I understand what you mean.
+
+1906
+01:24:36,307 --> 01:24:40,547
+Uh I'm not quite sure, actually, if you
+
+1907
+01:24:38,267 --> 01:24:41,667
+can arrange it so
+
+1908
+01:24:40,547 --> 01:24:42,987
+>> Right. And then,
+
+1909
+01:24:41,667 --> 01:24:43,867
+if I get my first
+
+1910
+01:24:42,987 --> 01:24:44,987
+condition,
+
+1911
+01:24:43,867 --> 01:24:46,227
+because that's the highest priority,
+
+1912
+01:24:44,987 --> 01:24:46,747
+then I just get out.
+
+1913
+01:24:46,227 --> 01:24:49,747
+>> Yeah, I am.
+
+1914
+01:24:46,747 --> 01:24:49,747
+>> No need to keep going down the
+
+1915
+01:24:50,467 --> 01:24:54,027
+>> You could probably solve it somehow, but
+
+1916
+01:24:52,507 --> 01:24:56,387
+I don't have the solution on the top of
+
+1917
+01:24:54,027 --> 01:24:59,067
+my brain. You You have this thing called
+
+1918
+01:24:56,387 --> 01:25:02,507
+order, but that's a non-validating
+
+1919
+01:24:59,067 --> 01:25:04,307
+resource just for for arranging the
+
+1920
+01:25:02,507 --> 01:25:06,467
+different shapes in a graphical user
+
+1921
+01:25:04,307 --> 01:25:09,107
+interface, for example, but it's not for
+
+1922
+01:25:06,467 --> 01:25:11,307
+validational purposes. So, you have to
+
+1923
+01:25:09,107 --> 01:25:15,027
+mix and match some other kinds of
+
+1924
+01:25:11,307 --> 01:25:15,027
+constraints to make that happen.
+
+1925
+01:25:16,027 --> 01:25:20,587
+>> I think my question relates a little bit
+
+1926
+01:25:17,627 --> 01:25:21,827
+back to the one around OWL versus this.
+
+1927
+01:25:20,587 --> 01:25:23,307
+So,
+
+1928
+01:25:21,827 --> 01:25:25,467
+there's the inverse of this. You've
+
+1929
+01:25:23,307 --> 01:25:28,027
+encoded everything about what I need to
+
+1930
+01:25:25,467 --> 01:25:30,107
+be valid, but I have a question of what
+
+1931
+01:25:28,027 --> 01:25:32,827
+do I need to be valid?
+
+1932
+01:25:30,107 --> 01:25:34,267
+So, if you start, I have nothing,
+
+1933
+01:25:32,827 --> 01:25:36,627
+you're going to have all these errors
+
+1934
+01:25:34,267 --> 01:25:38,387
+and I'm going to have to infer
+
+1935
+01:25:36,627 --> 01:25:40,147
+what's going to enable me to become a
+
+1936
+01:25:38,387 --> 01:25:42,187
+sea captain. Like, if I start from
+
+1937
+01:25:40,147 --> 01:25:43,947
+nothing. So, the question is if you have
+
+1938
+01:25:42,187 --> 01:25:45,387
+OWL for inference and you can go
+
+1939
+01:25:43,947 --> 01:25:47,389
+backwards
+
+1940
+01:25:45,387 --> 01:25:49,349
+and say, "I want to be a sea captain.
+
+1941
+01:25:47,389 --> 01:25:50,869
+And it gives you 15 options like you can
+
+1942
+01:25:49,349 --> 01:25:52,709
+either get these three certificates or
+
+1943
+01:25:50,869 --> 01:25:54,989
+these two or these two.
+
+1944
+01:25:52,709 --> 01:25:56,428
+So, why would you use this? Cuz this is
+
+1945
+01:25:54,989 --> 01:25:58,149
+only going to tell you when you aren't
+
+1946
+01:25:56,428 --> 01:25:59,389
+compliant as opposed to what do I need
+
+1947
+01:25:58,149 --> 01:26:01,389
+to be compliant?
+
+1948
+01:25:59,389 --> 01:26:03,669
+>> Yes, and that's some related to the
+
+1949
+01:26:01,389 --> 01:26:06,428
+validation result also.
+
+1950
+01:26:03,669 --> 01:26:08,229
+Uh because the validation result gives
+
+1951
+01:26:06,428 --> 01:26:10,389
+you exactly that information what you're
+
+1952
+01:26:08,229 --> 01:26:12,749
+missing in order to comply to that
+
+1953
+01:26:10,389 --> 01:26:14,749
+certificate. And that's the result back
+
+1954
+01:26:12,749 --> 01:26:17,309
+to the end user also when it doesn't
+
+1955
+01:26:14,749 --> 01:26:19,789
+comply. So, if the the sailor that wants
+
+1956
+01:26:17,309 --> 01:26:22,589
+to become a sea captain, if he or she is
+
+1957
+01:26:19,789 --> 01:26:24,948
+16 years old and the the
+
+1958
+01:26:22,589 --> 01:26:26,948
+requirement is is 20 years old, then you
+
+1959
+01:26:24,948 --> 01:26:29,829
+will get the result set back stating
+
+1960
+01:26:26,948 --> 01:26:33,229
+that this value is uh
+
+1961
+01:26:29,829 --> 01:26:33,229
+is under 20.
+
+1962
+01:26:34,309 --> 01:26:40,109
+>> You can do the same with owl inference.
+
+1963
+01:26:37,029 --> 01:26:41,709
+>> Uh owl inference, you can infer who
+
+1964
+01:26:40,109 --> 01:26:42,709
+uh are
+
+1965
+01:26:41,709 --> 01:26:45,789
+um
+
+1966
+01:26:42,709 --> 01:26:45,789
+you can infer
+
+1967
+01:26:46,109 --> 01:26:53,349
+or regulate uh class membership. So, so
+
+1968
+01:26:49,749 --> 01:26:56,109
+the person is inferred to be a master
+
+1969
+01:26:53,349 --> 01:26:57,989
+mariner or a sea captain based on the
+
+1970
+01:26:56,109 --> 01:27:01,469
+the set of uh
+
+1971
+01:26:57,989 --> 01:27:04,469
+of information. But, we want to negate
+
+1972
+01:27:01,469 --> 01:27:07,069
+also. We want to state that no, you you
+
+1973
+01:27:04,469 --> 01:27:09,829
+can't because you're missing this.
+
+1974
+01:27:07,069 --> 01:27:12,829
+And I have a discussion on exactly that
+
+1975
+01:27:09,829 --> 01:27:15,869
+in that paper I mentioned. So, and there
+
+1976
+01:27:12,829 --> 01:27:18,629
+you will have the owl Manchester syntax
+
+1977
+01:27:15,869 --> 01:27:22,109
+equivalent to to the example here also,
+
+1978
+01:27:18,629 --> 01:27:22,109
+so you can compare.
+
+1979
+01:27:23,589 --> 01:27:29,709
+Okay, so the this automated
+
+1980
+01:27:27,669 --> 01:27:31,428
+issuing of personal certificates at the
+
+1981
+01:27:29,709 --> 01:27:34,189
+NMA has
+
+1982
+01:27:31,428 --> 01:27:36,428
+been able to reduce case working time of
+
+1983
+01:27:34,189 --> 01:27:38,789
+issuing certificates from several weeks
+
+1984
+01:27:36,428 --> 01:27:42,749
+to few seconds
+
+1985
+01:27:38,789 --> 01:27:44,869
+based on a purely 100% data-driven
+
+1986
+01:27:42,749 --> 01:27:46,309
+pipeline based on Shackel.
+
+1987
+01:27:44,869 --> 01:27:49,110
+And that's uh
+
+1988
+01:27:46,309 --> 01:27:51,590
+a little bit magic if you if you ask me.
+
+1989
+01:27:49,110 --> 01:27:54,030
+So, save the the authorities a lot of
+
+1990
+01:27:51,590 --> 01:27:54,030
+time.
+
+1991
+01:27:56,110 --> 01:28:02,590
+Another case I want to quickly mention
+
+1992
+01:27:58,910 --> 01:28:05,430
+is that you can use SHACL to validate
+
+1993
+01:28:02,590 --> 01:28:07,830
+the structure of an ontology. So, if
+
+1994
+01:28:05,430 --> 01:28:09,430
+you're working in a huge company and
+
+1995
+01:28:07,830 --> 01:28:13,630
+there is a lot of people that are
+
+1996
+01:28:09,430 --> 01:28:15,110
+creating ontologies and RDF and and
+
+1997
+01:28:13,630 --> 01:28:18,310
+stuff like that,
+
+1998
+01:28:15,110 --> 01:28:20,990
+and you have some basic guidelines for
+
+1999
+01:28:18,310 --> 01:28:23,790
+how you work with ontologies in your
+
+2000
+01:28:20,990 --> 01:28:26,630
+company. For example, that we require
+
+2001
+01:28:23,790 --> 01:28:28,190
+every single class to have at least a
+
+2002
+01:28:26,630 --> 01:28:30,390
+label.
+
+2003
+01:28:28,190 --> 01:28:34,550
+Or that you should be
+
+2004
+01:28:30,390 --> 01:28:35,550
+DCAT-AP compliant, for example, then you
+
+2005
+01:28:34,550 --> 01:28:38,350
+can
+
+2006
+01:28:35,550 --> 01:28:42,030
+build shapes that
+
+2007
+01:28:38,350 --> 01:28:44,750
+checks if the ontology itself or the
+
+2008
+01:28:42,030 --> 01:28:47,350
+data itself complies to those different
+
+2009
+01:28:44,750 --> 01:28:50,030
+standards, internal policies or external
+
+2010
+01:28:47,350 --> 01:28:50,030
+policies.
+
+2011
+01:28:53,350 --> 01:28:57,110
+Yeah.
+
+2012
+01:28:54,670 --> 01:28:57,110
+So,
+
+2013
+01:28:57,310 --> 01:29:02,710
+this thing is just uh
+
+2014
+01:28:59,910 --> 01:29:04,830
+for for the fun fact, this was the SHACL
+
+2015
+01:29:02,710 --> 01:29:08,030
+engine that we implemented before SHACL
+
+2016
+01:29:04,830 --> 01:29:11,110
+became a standard. And that was for a
+
+2017
+01:29:08,030 --> 01:29:12,430
+project at the Norwegian Digitalisation
+
+2018
+01:29:11,110 --> 01:29:15,150
+Agency,
+
+2019
+01:29:12,430 --> 01:29:18,270
+where we were going to build a new
+
+2020
+01:29:15,150 --> 01:29:20,950
+implementation for insight portal every
+
+2021
+01:29:18,270 --> 01:29:22,750
+single public document in Norway.
+
+2022
+01:29:20,950 --> 01:29:26,430
+It's called uh
+
+2023
+01:29:22,750 --> 01:29:29,830
+public electronic journal posts. That
+
+2024
+01:29:26,430 --> 01:29:29,830
+was the old name.
+
+2025
+01:29:29,870 --> 01:29:35,790
+Uh
+
+2026
+01:29:30,430 --> 01:29:38,270
+and these journal posts, they followed a
+
+2027
+01:29:35,790 --> 01:29:40,750
+standard called Noark, which is short
+
+2028
+01:29:38,270 --> 01:29:43,790
+for Norwegian archive standard.
+
+2029
+01:29:40,750 --> 01:29:46,670
+And we were supposed to support Noark 4
+
+2030
+01:29:43,790 --> 01:29:48,550
+and 5 and then JSON-LD.
+
+2031
+01:29:46,670 --> 01:29:51,830
+But now the National Archives has
+
+2032
+01:29:48,550 --> 01:29:54,111
+decided to s- to uh
+
+2033
+01:29:51,830 --> 01:29:56,911
+not continue using Newark. So, now they
+
+2034
+01:29:54,111 --> 01:29:59,631
+are building ontologies based on records
+
+2035
+01:29:56,911 --> 01:30:01,391
+in context plus plus for the national
+
+2036
+01:29:59,631 --> 01:30:02,831
+archives. So, that's the that's good
+
+2037
+01:30:01,391 --> 01:30:04,391
+news.
+
+2038
+01:30:02,831 --> 01:30:07,087
+Anyways,
+
+2039
+01:30:04,391 --> 01:30:08,471
+um the use of SHACL in this manner was
+
+2040
+01:30:07,087 --> 01:30:10,751
+[snorts] to create
+
+2041
+01:30:08,471 --> 01:30:13,471
+uh the Norwegian archive standard in
+
+2042
+01:30:10,751 --> 01:30:16,031
+SHACL to be able to validate the
+
+2043
+01:30:13,471 --> 01:30:18,351
+metadata connected to the journal posts
+
+2044
+01:30:16,031 --> 01:30:20,991
+coming into the service.
+
+2045
+01:30:18,351 --> 01:30:24,072
+Because we did require that you had a
+
+2046
+01:30:20,991 --> 01:30:28,191
+specific set of metadata in place before
+
+2047
+01:30:24,072 --> 01:30:28,191
+being indexed in the database.
+
+2048
+01:30:30,031 --> 01:30:34,871
+Yes.
+
+2049
+01:30:32,031 --> 01:30:36,911
+We are approaching the end.
+
+2050
+01:30:34,871 --> 01:30:39,431
+So, demo the
+
+2051
+01:30:36,911 --> 01:30:42,552
+the little little code snippet I showed
+
+2052
+01:30:39,431 --> 01:30:43,951
+you and data and slides are available at
+
+2053
+01:30:42,552 --> 01:30:45,671
+GitHub.
+
+2054
+01:30:43,951 --> 01:30:49,191
+Um
+
+2055
+01:30:45,671 --> 01:30:50,791
+yeah, references and resources I've used
+
+2056
+01:30:49,191 --> 01:30:53,511
+um
+
+2057
+01:30:50,791 --> 01:30:55,231
+in this uh presentation.
+
+2058
+01:30:53,511 --> 01:30:57,151
+I can also do some shameless
+
+2059
+01:30:55,231 --> 01:30:58,791
+self-promotion.
+
+2060
+01:30:57,151 --> 01:31:01,351
+You could look
+
+2061
+01:30:58,791 --> 01:31:03,871
+have a look at me and Evil's SHACL Wiki
+
+2062
+01:31:01,351 --> 01:31:07,111
+if you like. It's a uh
+
+2063
+01:31:03,871 --> 01:31:09,471
+wiki online wiki where we have tried to
+
+2064
+01:31:07,111 --> 01:31:12,351
+make SHACL human friendly.
+
+2065
+01:31:09,471 --> 01:31:14,471
+And the the web page itself is actually
+
+2066
+01:31:12,351 --> 01:31:17,511
+a graph. So, if you go to that wiki and
+
+2067
+01:31:14,471 --> 01:31:19,991
+hit GG on your keyboard, you can uh
+
+2068
+01:31:17,511 --> 01:31:21,191
+browse the content as a graph.
+
+2069
+01:31:19,991 --> 01:31:23,311
+It's very fun.
+
+2070
+01:31:21,191 --> 01:31:25,151
+And Evil, he's showing up later this
+
+2071
+01:31:23,311 --> 01:31:28,951
+evening, so he'll be here tomorrow. So,
+
+2072
+01:31:25,151 --> 01:31:28,951
+you can bother him about SHACL also.
+
+2073
+01:31:29,231 --> 01:31:32,351
+Yeah.
+
+2074
+01:31:30,791 --> 01:31:34,592
+Um
+
+2075
+01:31:32,351 --> 01:31:36,391
+that's it, actually.
+
+2076
+01:31:34,592 --> 01:31:39,231
+So, I'll just skip
+
+2077
+01:31:36,391 --> 01:31:40,831
+there with my contact information.
+
+2078
+01:31:39,231 --> 01:31:44,511
+Thank you for listening and thank you
+
+2079
+01:31:40,831 --> 01:31:44,511
+for all the wonderful questions.
+

@@ -5595,16 +5595,19 @@
  {
   "id": 1100538,
   "event_id": 238614,
-  "title": "TBD",
-  "url": "https://2026.connected-data.london/talks/tbd/",
+  "title": "Maia: Permissions, context, and the tension of semi-autonomous AI agents",
+  "url": "https://2026.connected-data.london/talks/maia-permissions-context-and-the-tension-of-semi-autonomous-ai-agents/",
   "date": "2026-11-12T14:50:00",
-  "speakers": [],
+  "speakers": [
+   "Richard Lewis",
+   "Nicole Moldovan"
+  ],
   "categories": [
    "Presentations"
   ],
-  "description": "Coming soon",
+  "description": "This session will explore how Matillion built its AI Data Automation platform on top of a knowledge graph on Amazon Neptune",
   "stage": "Day 2: Edges Track - Salisbury Suite",
-  "duration_mins": 60
+  "duration_mins": 30
  },
  {
   "id": 1100540,
@@ -5649,15 +5652,18 @@
  {
   "id": 1103765,
   "event_id": 238614,
-  "title": "Morning Keynote #2",
+  "title": "The Missing Layer: From Schema to Ontology to Agent",
   "url": "https://2026.connected-data.london/talks/morning-keynote-2/",
   "date": "2026-11-12T10:00:00",
-  "speakers": [],
+  "speakers": [
+   "Kevin Phillips",
+   "Nicole Moldovan"
+  ],
   "categories": [
    "Knowledge Graphs",
    "Keynotes"
   ],
-  "description": "Coming soon",
+  "description": "Enterprise AI is limited less by models than by missing semantics. The Context Ontology Accelerator is an open-source AWS project that induces OWL ontologies and knowledge graphs from existing schemas and documents, then serves them to agents over MCP.\n﻿This session covers measured results from enterprise deployments: what induction gets right, where human authorship is non-negotiable, how far the approach scales, and why retrieval-time grounding is not constraint enforcement.",
   "stage": "Day 2: Keynotes Track - Warwick/Salisbury Suite",
   "duration_mins": 30
  },
